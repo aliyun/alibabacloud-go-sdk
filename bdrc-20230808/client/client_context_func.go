@@ -2,64 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-shanghai-finance-1": dara.String("bdrc.cn-shanghai-finance-1.aliyuncs.com"),
-		"cn-shanghai":           dara.String("bdrc.cn-shanghai.aliyuncs.com"),
-		"ap-southeast-1":        dara.String("bdrc.ap-southeast-1.aliyuncs.com"),
-	}
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("bdrc"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -72,7 +18,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CheckRulesResponse
-func (client *Client) CheckRulesWithOptions(request *CheckRulesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CheckRulesResponse, _err error) {
+func (client *Client) CheckRulesWithContext(ctx context.Context, request *CheckRulesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CheckRulesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -104,30 +50,11 @@ func (client *Client) CheckRulesWithOptions(request *CheckRulesRequest, headers 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CheckRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Checks data protection scoring rules. Calling this operation triggers an asynchronous task to check whether your resources meet the data protection scoring requirements.
-//
-// @param request - CheckRulesRequest
-//
-// @return CheckRulesResponse
-func (client *Client) CheckRules(request *CheckRulesRequest) (_result *CheckRulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CheckRulesResponse{}
-	_body, _err := client.CheckRulesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -140,7 +67,7 @@ func (client *Client) CheckRules(request *CheckRulesRequest) (_result *CheckRule
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CloseBdrcServiceResponse
-func (client *Client) CloseBdrcServiceWithOptions(headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CloseBdrcServiceResponse, _err error) {
+func (client *Client) CloseBdrcServiceWithContext(ctx context.Context, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CloseBdrcServiceResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -156,28 +83,11 @@ func (client *Client) CloseBdrcServiceWithOptions(headers map[string]*string, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &CloseBdrcServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Shuts down the Backup and Disaster Recovery Center.
-//
-// @return CloseBdrcServiceResponse
-func (client *Client) CloseBdrcService() (_result *CloseBdrcServiceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CloseBdrcServiceResponse{}
-	_body, _err := client.CloseBdrcServiceWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -192,7 +102,7 @@ func (client *Client) CloseBdrcService() (_result *CloseBdrcServiceResponse, _er
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateProtectionPolicyResponse
-func (client *Client) CreateProtectionPolicyWithOptions(tmpReq *CreateProtectionPolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateProtectionPolicyResponse, _err error) {
+func (client *Client) CreateProtectionPolicyWithContext(ctx context.Context, tmpReq *CreateProtectionPolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateProtectionPolicyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -246,30 +156,11 @@ func (client *Client) CreateProtectionPolicyWithOptions(tmpReq *CreateProtection
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateProtectionPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a protection policy.
-//
-// @param request - CreateProtectionPolicyRequest
-//
-// @return CreateProtectionPolicyResponse
-func (client *Client) CreateProtectionPolicy(request *CreateProtectionPolicyRequest) (_result *CreateProtectionPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateProtectionPolicyResponse{}
-	_body, _err := client.CreateProtectionPolicyWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -284,7 +175,7 @@ func (client *Client) CreateProtectionPolicy(request *CreateProtectionPolicyRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateResourceCategoryResponse
-func (client *Client) CreateResourceCategoryWithOptions(request *CreateResourceCategoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateResourceCategoryResponse, _err error) {
+func (client *Client) CreateResourceCategoryWithContext(ctx context.Context, request *CreateResourceCategoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateResourceCategoryResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -320,30 +211,11 @@ func (client *Client) CreateResourceCategoryWithOptions(request *CreateResourceC
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateResourceCategoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a resource category.
-//
-// @param request - CreateResourceCategoryRequest
-//
-// @return CreateResourceCategoryResponse
-func (client *Client) CreateResourceCategory(request *CreateResourceCategoryRequest) (_result *CreateResourceCategoryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateResourceCategoryResponse{}
-	_body, _err := client.CreateResourceCategoryWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -358,7 +230,7 @@ func (client *Client) CreateResourceCategory(request *CreateResourceCategoryRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteProtectionPolicyResponse
-func (client *Client) DeleteProtectionPolicyWithOptions(ProtectionPolicyId *string, request *DeleteProtectionPolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteProtectionPolicyResponse, _err error) {
+func (client *Client) DeleteProtectionPolicyWithContext(ctx context.Context, ProtectionPolicyId *string, request *DeleteProtectionPolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteProtectionPolicyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -380,30 +252,11 @@ func (client *Client) DeleteProtectionPolicyWithOptions(ProtectionPolicyId *stri
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteProtectionPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a protection policy.
-//
-// @param request - DeleteProtectionPolicyRequest
-//
-// @return DeleteProtectionPolicyResponse
-func (client *Client) DeleteProtectionPolicy(ProtectionPolicyId *string, request *DeleteProtectionPolicyRequest) (_result *DeleteProtectionPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteProtectionPolicyResponse{}
-	_body, _err := client.DeleteProtectionPolicyWithOptions(ProtectionPolicyId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -418,7 +271,7 @@ func (client *Client) DeleteProtectionPolicy(ProtectionPolicyId *string, request
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteResourceCategoryResponse
-func (client *Client) DeleteResourceCategoryWithOptions(request *DeleteResourceCategoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteResourceCategoryResponse, _err error) {
+func (client *Client) DeleteResourceCategoryWithContext(ctx context.Context, request *DeleteResourceCategoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteResourceCategoryResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -446,30 +299,11 @@ func (client *Client) DeleteResourceCategoryWithOptions(request *DeleteResourceC
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteResourceCategoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a resource category.
-//
-// @param request - DeleteResourceCategoryRequest
-//
-// @return DeleteResourceCategoryResponse
-func (client *Client) DeleteResourceCategory(request *DeleteResourceCategoryRequest) (_result *DeleteResourceCategoryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteResourceCategoryResponse{}
-	_body, _err := client.DeleteResourceCategoryWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -484,7 +318,7 @@ func (client *Client) DeleteResourceCategory(request *DeleteResourceCategoryRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCheckDetailsResponse
-func (client *Client) DescribeCheckDetailsWithOptions(request *DescribeCheckDetailsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeCheckDetailsResponse, _err error) {
+func (client *Client) DescribeCheckDetailsWithContext(ctx context.Context, request *DescribeCheckDetailsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeCheckDetailsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -524,30 +358,11 @@ func (client *Client) DescribeCheckDetailsWithOptions(request *DescribeCheckDeta
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeCheckDetailsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Retrieves the check results for data protection rules.
-//
-// @param request - DescribeCheckDetailsRequest
-//
-// @return DescribeCheckDetailsResponse
-func (client *Client) DescribeCheckDetails(request *DescribeCheckDetailsRequest) (_result *DescribeCheckDetailsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeCheckDetailsResponse{}
-	_body, _err := client.DescribeCheckDetailsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -562,7 +377,7 @@ func (client *Client) DescribeCheckDetails(request *DescribeCheckDetailsRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeProductDataRedundancyTypeStatResponse
-func (client *Client) DescribeProductDataRedundancyTypeStatWithOptions(tmpReq *DescribeProductDataRedundancyTypeStatRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeProductDataRedundancyTypeStatResponse, _err error) {
+func (client *Client) DescribeProductDataRedundancyTypeStatWithContext(ctx context.Context, tmpReq *DescribeProductDataRedundancyTypeStatRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeProductDataRedundancyTypeStatResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -604,30 +419,11 @@ func (client *Client) DescribeProductDataRedundancyTypeStatWithOptions(tmpReq *D
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeProductDataRedundancyTypeStatResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries statistics on data redundancy types for a cloud service.
-//
-// @param request - DescribeProductDataRedundancyTypeStatRequest
-//
-// @return DescribeProductDataRedundancyTypeStatResponse
-func (client *Client) DescribeProductDataRedundancyTypeStat(request *DescribeProductDataRedundancyTypeStatRequest) (_result *DescribeProductDataRedundancyTypeStatResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeProductDataRedundancyTypeStatResponse{}
-	_body, _err := client.DescribeProductDataRedundancyTypeStatWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -642,7 +438,7 @@ func (client *Client) DescribeProductDataRedundancyTypeStat(request *DescribePro
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeProductsResponse
-func (client *Client) DescribeProductsWithOptions(tmpReq *DescribeProductsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeProductsResponse, _err error) {
+func (client *Client) DescribeProductsWithContext(ctx context.Context, tmpReq *DescribeProductsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeProductsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -688,30 +484,11 @@ func (client *Client) DescribeProductsWithOptions(tmpReq *DescribeProductsReques
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeProductsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the data protection score status for cloud products.
-//
-// @param request - DescribeProductsRequest
-//
-// @return DescribeProductsResponse
-func (client *Client) DescribeProducts(request *DescribeProductsRequest) (_result *DescribeProductsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeProductsResponse{}
-	_body, _err := client.DescribeProductsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -726,7 +503,7 @@ func (client *Client) DescribeProducts(request *DescribeProductsRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeResourcesResponse
-func (client *Client) DescribeResourcesWithOptions(tmpReq *DescribeResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeResourcesResponse, _err error) {
+func (client *Client) DescribeResourcesWithContext(ctx context.Context, tmpReq *DescribeResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeResourcesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -808,30 +585,11 @@ func (client *Client) DescribeResourcesWithOptions(tmpReq *DescribeResourcesRequ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Query resources
-//
-// @param request - DescribeResourcesRequest
-//
-// @return DescribeResourcesResponse
-func (client *Client) DescribeResources(request *DescribeResourcesRequest) (_result *DescribeResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeResourcesResponse{}
-	_body, _err := client.DescribeResourcesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -846,7 +604,7 @@ func (client *Client) DescribeResources(request *DescribeResourcesRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRulesResponse
-func (client *Client) DescribeRulesWithOptions(tmpReq *DescribeRulesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeRulesResponse, _err error) {
+func (client *Client) DescribeRulesWithContext(ctx context.Context, tmpReq *DescribeRulesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeRulesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -900,30 +658,11 @@ func (client *Client) DescribeRulesWithOptions(tmpReq *DescribeRulesRequest, hea
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Lists all data protection rules.
-//
-// @param request - DescribeRulesRequest
-//
-// @return DescribeRulesResponse
-func (client *Client) DescribeRules(request *DescribeRulesRequest) (_result *DescribeRulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeRulesResponse{}
-	_body, _err := client.DescribeRulesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -936,7 +675,7 @@ func (client *Client) DescribeRules(request *DescribeRulesRequest) (_result *Des
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeTaskResponse
-func (client *Client) DescribeTaskWithOptions(TaskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeTaskResponse, _err error) {
+func (client *Client) DescribeTaskWithContext(ctx context.Context, TaskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeTaskResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -952,28 +691,11 @@ func (client *Client) DescribeTaskWithOptions(TaskId *string, headers map[string
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Retrieves the details of an asynchronous task.
-//
-// @return DescribeTaskResponse
-func (client *Client) DescribeTask(TaskId *string) (_result *DescribeTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeTaskResponse{}
-	_body, _err := client.DescribeTaskWithOptions(TaskId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -988,7 +710,7 @@ func (client *Client) DescribeTask(TaskId *string) (_result *DescribeTaskRespons
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeTasksResponse
-func (client *Client) DescribeTasksWithOptions(request *DescribeTasksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeTasksResponse, _err error) {
+func (client *Client) DescribeTasksWithContext(ctx context.Context, request *DescribeTasksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeTasksResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1028,30 +750,11 @@ func (client *Client) DescribeTasksWithOptions(request *DescribeTasksRequest, he
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Retrieves asynchronous tasks.
-//
-// @param request - DescribeTasksRequest
-//
-// @return DescribeTasksResponse
-func (client *Client) DescribeTasks(request *DescribeTasksRequest) (_result *DescribeTasksResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeTasksResponse{}
-	_body, _err := client.DescribeTasksWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1066,7 +769,7 @@ func (client *Client) DescribeTasks(request *DescribeTasksRequest) (_result *Des
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeTopRiskyResourcesResponse
-func (client *Client) DescribeTopRiskyResourcesWithOptions(tmpReq *DescribeTopRiskyResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeTopRiskyResourcesResponse, _err error) {
+func (client *Client) DescribeTopRiskyResourcesWithContext(ctx context.Context, tmpReq *DescribeTopRiskyResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeTopRiskyResourcesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -1108,30 +811,11 @@ func (client *Client) DescribeTopRiskyResourcesWithOptions(tmpReq *DescribeTopRi
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeTopRiskyResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Lists the most threatened resources.
-//
-// @param request - DescribeTopRiskyResourcesRequest
-//
-// @return DescribeTopRiskyResourcesResponse
-func (client *Client) DescribeTopRiskyResources(request *DescribeTopRiskyResourcesRequest) (_result *DescribeTopRiskyResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeTopRiskyResourcesResponse{}
-	_body, _err := client.DescribeTopRiskyResourcesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1146,7 +830,7 @@ func (client *Client) DescribeTopRiskyResources(request *DescribeTopRiskyResourc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DisableCheckProductResponse
-func (client *Client) DisableCheckProductWithOptions(request *DisableCheckProductRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DisableCheckProductResponse, _err error) {
+func (client *Client) DisableCheckProductWithContext(ctx context.Context, request *DisableCheckProductRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DisableCheckProductResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1174,30 +858,11 @@ func (client *Client) DisableCheckProductWithOptions(request *DisableCheckProduc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DisableCheckProductResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disables the data protection score for a cloud product.
-//
-// @param request - DisableCheckProductRequest
-//
-// @return DisableCheckProductResponse
-func (client *Client) DisableCheckProduct(request *DisableCheckProductRequest) (_result *DisableCheckProductResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DisableCheckProductResponse{}
-	_body, _err := client.DisableCheckProductWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1212,7 +877,7 @@ func (client *Client) DisableCheckProduct(request *DisableCheckProductRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DisableCheckResourceResponse
-func (client *Client) DisableCheckResourceWithOptions(request *DisableCheckResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DisableCheckResourceResponse, _err error) {
+func (client *Client) DisableCheckResourceWithContext(ctx context.Context, request *DisableCheckResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DisableCheckResourceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1240,30 +905,11 @@ func (client *Client) DisableCheckResourceWithOptions(request *DisableCheckResou
 		BodyType:    dara.String("json"),
 	}
 	_result = &DisableCheckResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disables the data protection score for a resource.
-//
-// @param request - DisableCheckResourceRequest
-//
-// @return DisableCheckResourceResponse
-func (client *Client) DisableCheckResource(request *DisableCheckResourceRequest) (_result *DisableCheckResourceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DisableCheckResourceResponse{}
-	_body, _err := client.DisableCheckResourceWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1278,7 +924,7 @@ func (client *Client) DisableCheckResource(request *DisableCheckResourceRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnableCheckProductResponse
-func (client *Client) EnableCheckProductWithOptions(request *EnableCheckProductRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *EnableCheckProductResponse, _err error) {
+func (client *Client) EnableCheckProductWithContext(ctx context.Context, request *EnableCheckProductRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *EnableCheckProductResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1306,30 +952,11 @@ func (client *Client) EnableCheckProductWithOptions(request *EnableCheckProductR
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnableCheckProductResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Enables data protection scoring for a cloud product.
-//
-// @param request - EnableCheckProductRequest
-//
-// @return EnableCheckProductResponse
-func (client *Client) EnableCheckProduct(request *EnableCheckProductRequest) (_result *EnableCheckProductResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &EnableCheckProductResponse{}
-	_body, _err := client.EnableCheckProductWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1344,7 +971,7 @@ func (client *Client) EnableCheckProduct(request *EnableCheckProductRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnableCheckResourceResponse
-func (client *Client) EnableCheckResourceWithOptions(request *EnableCheckResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *EnableCheckResourceResponse, _err error) {
+func (client *Client) EnableCheckResourceWithContext(ctx context.Context, request *EnableCheckResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *EnableCheckResourceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1372,30 +999,11 @@ func (client *Client) EnableCheckResourceWithOptions(request *EnableCheckResourc
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnableCheckResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Enables data protection scoring for a single resource.
-//
-// @param request - EnableCheckResourceRequest
-//
-// @return EnableCheckResourceResponse
-func (client *Client) EnableCheckResource(request *EnableCheckResourceRequest) (_result *EnableCheckResourceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &EnableCheckResourceResponse{}
-	_body, _err := client.EnableCheckResourceWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1408,7 +1016,7 @@ func (client *Client) EnableCheckResource(request *EnableCheckResourceRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetBdrcServiceResponse
-func (client *Client) GetBdrcServiceWithOptions(headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetBdrcServiceResponse, _err error) {
+func (client *Client) GetBdrcServiceWithContext(ctx context.Context, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetBdrcServiceResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1424,28 +1032,11 @@ func (client *Client) GetBdrcServiceWithOptions(headers map[string]*string, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetBdrcServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the status of the Backup and Disaster Recovery Center.
-//
-// @return GetBdrcServiceResponse
-func (client *Client) GetBdrcService() (_result *GetBdrcServiceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetBdrcServiceResponse{}
-	_body, _err := client.GetBdrcServiceWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1460,7 +1051,7 @@ func (client *Client) GetBdrcService() (_result *GetBdrcServiceResponse, _err er
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetMessageResponse
-func (client *Client) GetMessageWithOptions(MessageId *string, request *GetMessageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMessageResponse, _err error) {
+func (client *Client) GetMessageWithContext(ctx context.Context, MessageId *string, request *GetMessageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMessageResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1482,30 +1073,11 @@ func (client *Client) GetMessageWithOptions(MessageId *string, request *GetMessa
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetMessageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Retrieves a single message.
-//
-// @param request - GetMessageRequest
-//
-// @return GetMessageResponse
-func (client *Client) GetMessage(MessageId *string, request *GetMessageRequest) (_result *GetMessageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetMessageResponse{}
-	_body, _err := client.GetMessageWithOptions(MessageId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1520,7 +1092,7 @@ func (client *Client) GetMessage(MessageId *string, request *GetMessageRequest) 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetProtectionPolicyResponse
-func (client *Client) GetProtectionPolicyWithOptions(ProtectionPolicyId *string, request *GetProtectionPolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetProtectionPolicyResponse, _err error) {
+func (client *Client) GetProtectionPolicyWithContext(ctx context.Context, ProtectionPolicyId *string, request *GetProtectionPolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetProtectionPolicyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1542,30 +1114,11 @@ func (client *Client) GetProtectionPolicyWithOptions(ProtectionPolicyId *string,
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetProtectionPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Retrieves a protection policy.
-//
-// @param request - GetProtectionPolicyRequest
-//
-// @return GetProtectionPolicyResponse
-func (client *Client) GetProtectionPolicy(ProtectionPolicyId *string, request *GetProtectionPolicyRequest) (_result *GetProtectionPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetProtectionPolicyResponse{}
-	_body, _err := client.GetProtectionPolicyWithOptions(ProtectionPolicyId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1580,7 +1133,7 @@ func (client *Client) GetProtectionPolicy(ProtectionPolicyId *string, request *G
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetResourceCategoryResponse
-func (client *Client) GetResourceCategoryWithOptions(request *GetResourceCategoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetResourceCategoryResponse, _err error) {
+func (client *Client) GetResourceCategoryWithContext(ctx context.Context, request *GetResourceCategoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetResourceCategoryResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1608,30 +1161,11 @@ func (client *Client) GetResourceCategoryWithOptions(request *GetResourceCategor
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetResourceCategoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Retrieves a single resource category.
-//
-// @param request - GetResourceCategoryRequest
-//
-// @return GetResourceCategoryResponse
-func (client *Client) GetResourceCategory(request *GetResourceCategoryRequest) (_result *GetResourceCategoryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetResourceCategoryResponse{}
-	_body, _err := client.GetResourceCategoryWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1646,7 +1180,7 @@ func (client *Client) GetResourceCategory(request *GetResourceCategoryRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListMessagesResponse
-func (client *Client) ListMessagesWithOptions(request *ListMessagesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMessagesResponse, _err error) {
+func (client *Client) ListMessagesWithContext(ctx context.Context, request *ListMessagesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMessagesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1694,30 +1228,11 @@ func (client *Client) ListMessagesWithOptions(request *ListMessagesRequest, head
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListMessagesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries messages in batches.
-//
-// @param request - ListMessagesRequest
-//
-// @return ListMessagesResponse
-func (client *Client) ListMessages(request *ListMessagesRequest) (_result *ListMessagesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListMessagesResponse{}
-	_body, _err := client.ListMessagesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1732,7 +1247,7 @@ func (client *Client) ListMessages(request *ListMessagesRequest) (_result *ListM
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListProtectionPoliciesResponse
-func (client *Client) ListProtectionPoliciesWithOptions(request *ListProtectionPoliciesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListProtectionPoliciesResponse, _err error) {
+func (client *Client) ListProtectionPoliciesWithContext(ctx context.Context, request *ListProtectionPoliciesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListProtectionPoliciesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1772,30 +1287,11 @@ func (client *Client) ListProtectionPoliciesWithOptions(request *ListProtectionP
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListProtectionPoliciesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Retrieves a list of protection policies.
-//
-// @param request - ListProtectionPoliciesRequest
-//
-// @return ListProtectionPoliciesResponse
-func (client *Client) ListProtectionPolicies(request *ListProtectionPoliciesRequest) (_result *ListProtectionPoliciesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListProtectionPoliciesResponse{}
-	_body, _err := client.ListProtectionPoliciesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1810,7 +1306,7 @@ func (client *Client) ListProtectionPolicies(request *ListProtectionPoliciesRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListProtectionPolicyApplicationsResponse
-func (client *Client) ListProtectionPolicyApplicationsWithOptions(ProtectionPolicyId *string, request *ListProtectionPolicyApplicationsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListProtectionPolicyApplicationsResponse, _err error) {
+func (client *Client) ListProtectionPolicyApplicationsWithContext(ctx context.Context, ProtectionPolicyId *string, request *ListProtectionPolicyApplicationsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListProtectionPolicyApplicationsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1858,30 +1354,11 @@ func (client *Client) ListProtectionPolicyApplicationsWithOptions(ProtectionPoli
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListProtectionPolicyApplicationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Retrieves the application history of the protection policy.
-//
-// @param request - ListProtectionPolicyApplicationsRequest
-//
-// @return ListProtectionPolicyApplicationsResponse
-func (client *Client) ListProtectionPolicyApplications(ProtectionPolicyId *string, request *ListProtectionPolicyApplicationsRequest) (_result *ListProtectionPolicyApplicationsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListProtectionPolicyApplicationsResponse{}
-	_body, _err := client.ListProtectionPolicyApplicationsWithOptions(ProtectionPolicyId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1896,7 +1373,7 @@ func (client *Client) ListProtectionPolicyApplications(ProtectionPolicyId *strin
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListResourceCategoriesResponse
-func (client *Client) ListResourceCategoriesWithOptions(request *ListResourceCategoriesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListResourceCategoriesResponse, _err error) {
+func (client *Client) ListResourceCategoriesWithContext(ctx context.Context, request *ListResourceCategoriesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListResourceCategoriesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1932,30 +1409,11 @@ func (client *Client) ListResourceCategoriesWithOptions(request *ListResourceCat
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListResourceCategoriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Retrieves a list of resource categories.
-//
-// @param request - ListResourceCategoriesRequest
-//
-// @return ListResourceCategoriesResponse
-func (client *Client) ListResourceCategories(request *ListResourceCategoriesRequest) (_result *ListResourceCategoriesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListResourceCategoriesResponse{}
-	_body, _err := client.ListResourceCategoriesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1968,7 +1426,7 @@ func (client *Client) ListResourceCategories(request *ListResourceCategoriesRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return OpenBdrcServiceResponse
-func (client *Client) OpenBdrcServiceWithOptions(headers map[string]*string, runtime *dara.RuntimeOptions) (_result *OpenBdrcServiceResponse, _err error) {
+func (client *Client) OpenBdrcServiceWithContext(ctx context.Context, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *OpenBdrcServiceResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1984,28 +1442,11 @@ func (client *Client) OpenBdrcServiceWithOptions(headers map[string]*string, run
 		BodyType:    dara.String("json"),
 	}
 	_result = &OpenBdrcServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Enables the Backup and Disaster Recovery Center.
-//
-// @return OpenBdrcServiceResponse
-func (client *Client) OpenBdrcService() (_result *OpenBdrcServiceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &OpenBdrcServiceResponse{}
-	_body, _err := client.OpenBdrcServiceWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2020,7 +1461,7 @@ func (client *Client) OpenBdrcService() (_result *OpenBdrcServiceResponse, _err 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateProtectionPolicyResponse
-func (client *Client) UpdateProtectionPolicyWithOptions(ProtectionPolicyId *string, tmpReq *UpdateProtectionPolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateProtectionPolicyResponse, _err error) {
+func (client *Client) UpdateProtectionPolicyWithContext(ctx context.Context, ProtectionPolicyId *string, tmpReq *UpdateProtectionPolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateProtectionPolicyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -2070,30 +1511,11 @@ func (client *Client) UpdateProtectionPolicyWithOptions(ProtectionPolicyId *stri
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateProtectionPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a protection policy.
-//
-// @param request - UpdateProtectionPolicyRequest
-//
-// @return UpdateProtectionPolicyResponse
-func (client *Client) UpdateProtectionPolicy(ProtectionPolicyId *string, request *UpdateProtectionPolicyRequest) (_result *UpdateProtectionPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateProtectionPolicyResponse{}
-	_body, _err := client.UpdateProtectionPolicyWithOptions(ProtectionPolicyId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2108,7 +1530,7 @@ func (client *Client) UpdateProtectionPolicy(ProtectionPolicyId *string, request
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateResourceCategoryResponse
-func (client *Client) UpdateResourceCategoryWithOptions(request *UpdateResourceCategoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateResourceCategoryResponse, _err error) {
+func (client *Client) UpdateResourceCategoryWithContext(ctx context.Context, request *UpdateResourceCategoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateResourceCategoryResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2144,30 +1566,11 @@ func (client *Client) UpdateResourceCategoryWithOptions(request *UpdateResourceC
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateResourceCategoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a resource category.
-//
-// @param request - UpdateResourceCategoryRequest
-//
-// @return UpdateResourceCategoryResponse
-func (client *Client) UpdateResourceCategory(request *UpdateResourceCategoryRequest) (_result *UpdateResourceCategoryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateResourceCategoryResponse{}
-	_body, _err := client.UpdateResourceCategoryWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2182,7 +1585,7 @@ func (client *Client) UpdateResourceCategory(request *UpdateResourceCategoryRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateResourcesResponse
-func (client *Client) UpdateResourcesWithOptions(request *UpdateResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateResourcesResponse, _err error) {
+func (client *Client) UpdateResourcesWithContext(ctx context.Context, request *UpdateResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateResourcesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2210,29 +1613,10 @@ func (client *Client) UpdateResourcesWithOptions(request *UpdateResourcesRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the resource list. When you call this operation, an asynchronous task is triggered to update your resource list and data protection score.
-//
-// @param request - UpdateResourcesRequest
-//
-// @return UpdateResourcesResponse
-func (client *Client) UpdateResources(request *UpdateResourcesRequest) (_result *UpdateResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateResourcesResponse{}
-	_body, _err := client.UpdateResourcesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
