@@ -28,7 +28,7 @@ type iUpdateDnsGtmMonitorRequest interface {
 }
 
 type UpdateDnsGtmMonitorRequest struct {
-	// The maximum number of consecutive exceptions detected. If the number of consecutive exceptions detected reaches the maximum number, the application service is deemed abnormal.
+	// The number of consecutive health checks.
 	//
 	// example:
 	//
@@ -40,75 +40,75 @@ type UpdateDnsGtmMonitorRequest struct {
 	//
 	// 60
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The monitored nodes.
+	// The list of city nodes for health checks.
 	//
 	// This parameter is required.
 	IspCityNode []*UpdateDnsGtmMonitorRequestIspCityNode `json:"IspCityNode,omitempty" xml:"IspCityNode,omitempty" type:"Repeated"`
-	// The language of the values of specific response parameters. Default value: en. Valid values: en, zh, and ja.
+	// The language of the response. Default value: en. Valid values: en, zh, and ja.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the health check configuration.
+	// The ID of the health check configuration. You can call the [DescribeDnsGtmInstanceAddressPool](https://www.alibabacloud.com/help/en/dns/api-alidns-2015-01-09-describednsgtminstanceaddresspool) operation to obtain the ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// MonitorConfigId1
+	// Monito******
 	MonitorConfigId *string `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
 	// The extended information. The required parameters vary based on the health check protocol.
 	//
-	// 	- HTTP or HTTPS
+	// - HTTP(S):
 	//
-	//     	- port: the port that you want to check
+	//   - port: The port for the health check.
 	//
-	//     	- host: the host settings
+	//   - host: The Host header.
 	//
-	//     	- path: the URL path
+	//   - path: The URL path.
 	//
-	//     	- code: the return code. If the return value of code is greater than the specified value, the health check result is deemed abnormal. For example, if code is set to 400 and the code 404 is returned, the health check result is deemed abnormal.
+	//   - code: The health check is considered abnormal if the returned status code is greater than the specified value. For example, if you set this parameter to 400, a returned status code of 404 is considered abnormal.
 	//
-	//     	- failureRate: the failure rate
+	//   - failureRate: The failure rate.
 	//
-	//     	- sni: specifies whether to enable server name indication (SNI). This parameter is available only when ProtocolType is set to HTTPS. Valid values:
+	//   - sni: Specifies whether to enable Server Name Indication (SNI). This parameter is available only for the HTTPS protocol.
 	//
-	//         	- true: enables SNI.
+	//     - true: Enable SNI.
 	//
-	//         	- false: disables SNI.
+	//     - false: Disable SNI.
 	//
-	//     	- nodeType: the type of the monitoring node when the address pool type is domain name. Valid values:
+	//   - nodeType: The type of the node for health checks when the address pool type is DOMAIN.
 	//
-	//         	- IPV4
+	//     - IPV4
 	//
-	//         	- IPV6
+	//     - IPV6
 	//
-	// 	- PING
+	// - PING:
 	//
-	//     	- failureRate: the failure rate
+	//   - failureRate: The failure rate.
 	//
-	//     	- packetNum: the number of ping packets
+	//   - packetNum: The number of ping packets.
 	//
-	//     	- packetLossRate: the loss rate of ping packets
+	//   - packetLossRate: The packet loss rate.
 	//
-	//     	- nodeType: the type of the monitoring node when the address pool type is domain name. Valid values:
+	//   - nodeType: The type of the node for health checks when the address pool type is DOMAIN.
 	//
-	//         	- IPV4
+	//     - IPV4
 	//
-	//         	- IPV6
+	//     - IPV6
 	//
-	// 	- TCP
+	// - TCP:
 	//
-	//     	- port: the port that you want to check
+	//   - port: The port for the health check.
 	//
-	//     	- failureRate: the failure rate
+	//   - failureRate: The failure rate.
 	//
-	//     	- nodeType: the type of the monitoring node when the address pool type is domain name. Valid values:
+	//   - nodeType: The type of the node for health checks when the address pool type is DOMAIN.
 	//
-	//         	- IPV4
+	//     - IPV4
 	//
-	//         	- IPV6
+	//     - IPV6
 	//
 	// This parameter is required.
 	//
@@ -116,15 +116,15 @@ type UpdateDnsGtmMonitorRequest struct {
 	//
 	// {\\"code\\":200,\\"path\\":\\"\\\\index.htm\\",\\"host\\":\\"aliyun.com\\"}
 	MonitorExtendInfo *string `json:"MonitorExtendInfo,omitempty" xml:"MonitorExtendInfo,omitempty"`
-	// The protocol used for the health check. Valid values:
+	// The health check protocol. Valid values:
 	//
-	// 	- HTTP
+	// - HTTP
 	//
-	// 	- HTTPS
+	// - HTTPS
 	//
-	// 	- PING
+	// - PING
 	//
-	// 	- TCP
+	// - TCP
 	//
 	// This parameter is required.
 	//
@@ -132,7 +132,7 @@ type UpdateDnsGtmMonitorRequest struct {
 	//
 	// http
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	// The timeout period. Unit: milliseconds.
+	// The timeout period for a health check. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -234,13 +234,13 @@ func (s *UpdateDnsGtmMonitorRequest) Validate() error {
 }
 
 type UpdateDnsGtmMonitorRequestIspCityNode struct {
-	// The code of the city where the monitored node is deployed.
+	// The city code of the health check node.
 	//
 	// example:
 	//
 	// 123
 	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	// The code of the Internet service provider (ISP) to which the monitored node belongs.
+	// The carrier code of the health check node.
 	//
 	// example:
 	//

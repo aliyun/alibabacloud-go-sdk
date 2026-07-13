@@ -42,48 +42,48 @@ type iDescribeGtmRecoveryPlanResponseBody interface {
 }
 
 type DescribeGtmRecoveryPlanResponseBody struct {
-	// The time when the disaster recovery plan was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	// The time when the disaster recovery plan was created.
 	//
 	// example:
 	//
 	// 2019-08-11T05:04Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the disaster recovery plan was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the disaster recovery plan was created. This value is a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1565499867000
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The number of faulty address pools.
+	// The number of abnormal address pools.
 	//
 	// example:
 	//
 	// 2
 	FaultAddrPoolNum *int32                                             `json:"FaultAddrPoolNum,omitempty" xml:"FaultAddrPoolNum,omitempty"`
 	FaultAddrPools   *DescribeGtmRecoveryPlanResponseBodyFaultAddrPools `json:"FaultAddrPools,omitempty" xml:"FaultAddrPools,omitempty" type:"Struct"`
-	// The time when the disaster recovery plan was last executed. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	// The time when the disaster recovery plan was last executed.
 	//
 	// example:
 	//
 	// 2019-08-11T05:04Z
 	LastExecuteTime *string `json:"LastExecuteTime,omitempty" xml:"LastExecuteTime,omitempty"`
-	// The time when the disaster recovery plan was last executed. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the disaster recovery plan was last executed. This value is a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1565505898000
 	LastExecuteTimestamp *int64 `json:"LastExecuteTimestamp,omitempty" xml:"LastExecuteTimestamp,omitempty"`
-	// The time when the disaster recovery plan was last rolled back. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 2019-08-11T06:45Z
-	LastRollbackTime *string `json:"LastRollbackTime,omitempty" xml:"LastRollbackTime,omitempty"`
-	// The time when the disaster recovery plan was last rolled back. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the disaster recovery plan was last rolled back. The value is a string that represents a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1565505919000
+	LastRollbackTime *string `json:"LastRollbackTime,omitempty" xml:"LastRollbackTime,omitempty"`
+	// The time when the disaster recovery plan was last rolled back. This value is a UNIX timestamp.
+	//
+	// example:
+	//
+	// 1565505898000
 	LastRollbackTimestamp *int64 `json:"LastRollbackTimestamp,omitempty" xml:"LastRollbackTimestamp,omitempty"`
 	// The name of the disaster recovery plan.
 	//
@@ -95,9 +95,9 @@ type DescribeGtmRecoveryPlanResponseBody struct {
 	//
 	// example:
 	//
-	// 55
+	// 10****
 	RecoveryPlanId *int64 `json:"RecoveryPlanId,omitempty" xml:"RecoveryPlanId,omitempty"`
-	// The description of the disaster recovery plan.
+	// The remarks.
 	//
 	// example:
 	//
@@ -109,23 +109,29 @@ type DescribeGtmRecoveryPlanResponseBody struct {
 	//
 	// 0A5F4315-D6E8-435E-82DF-24F4C97D6999
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the disaster recovery plan.
+	// The status of the disaster recovery plan:
+	//
+	// - UNEXECUTED: The disaster recovery plan is not executed.
+	//
+	// - EXECUTED: The disaster recovery plan is being executed.
+	//
+	// - ROLLED_BACK: The disaster recovery plan is being rolled back.
 	//
 	// example:
 	//
 	// UNEXECUTED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the disaster recovery plan was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	// The time when the disaster recovery plan was last updated.
 	//
 	// example:
 	//
-	// 2019-08-11T06:45Z
+	// 2024-03-29T13:20Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The time when the disaster recovery plan was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the disaster recovery plan was last updated. This value is a UNIX timestamp.
 	//
 	// example:
 	//
-	// 1565499867000
+	// 1565505898000
 	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
 }
 

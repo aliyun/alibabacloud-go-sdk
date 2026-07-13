@@ -16,7 +16,7 @@ type iUpdateCloudGtmInstanceConfigBasicResponseBody interface {
 }
 
 type UpdateCloudGtmInstanceConfigBasicResponseBody struct {
-	// Unique request identification code.
+	// The unique ID of the request.
 	//
 	// example:
 	//
@@ -24,7 +24,7 @@ type UpdateCloudGtmInstanceConfigBasicResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the operation was successful:
 	//
-	// - **true**: The call succeeded.
+	// - **true**: The call was successful.
 	//
 	// - **false**: The call failed.
 	//

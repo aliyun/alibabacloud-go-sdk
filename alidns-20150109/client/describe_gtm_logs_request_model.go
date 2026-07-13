@@ -26,31 +26,31 @@ type iDescribeGtmLogsRequest interface {
 }
 
 type DescribeGtmLogsRequest struct {
-	// The timestamp that specifies the end of the time range to query.
+	// The end of the time range to query. This value is a UNIX timestamp.
 	//
 	// example:
 	//
-	// 1363453350000
+	// 1363453340000
 	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	// The ID of the GTM instance whose logs you want to query.
+	// The ID of the instance.
 	//
 	// example:
 	//
 	// gtm-cn-xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The keyword for searching logs, in case-insensitive "%Keyword%" format.
+	// The keyword for a fuzzy search. The search uses the %Keyword% pattern and is case-insensitive.
 	//
 	// example:
 	//
 	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The language used by the user.
+	// The language of the response.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of the page to return. Pages start from page **1**. Default value: **1**.
+	// The number of the page to return. The value starts from **1**. Default value: **1**.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type DescribeGtmLogsRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The beginning of the time range to query.
+	// The beginning of the time range to query. This value is a UNIX timestamp.
 	//
 	// example:
 	//

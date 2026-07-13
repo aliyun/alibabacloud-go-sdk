@@ -18,13 +18,15 @@ type iUpdateDomainGroupRequest interface {
 }
 
 type UpdateDomainGroupRequest struct {
-	// The ID of the domain name group whose name you want to modify. You can call the [DescribeDomainGroups ](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomaingroups?spm=a2c63.p38356.help-menu-search-29697.d_0)operation to obtain the ID.
+	// The ID of the domain name group. <props="china">Call the [DescribeDomainGroups](https://help.aliyun.com/zh/dns/api-alidns-2015-01-09-describedomaingroups?spm=a2c4g.11186623.help-menu-search-29697.d_0) operation to obtain the group ID.
+	//
+	// <props="intl">Call the [DescribeDomainGroups](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomaingroups?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the group ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 2223
+	// 60bb3ef15ace449082cf914ed3ea****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The new name of the domain name group.
 	//
@@ -36,11 +38,11 @@ type UpdateDomainGroupRequest struct {
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
-	// Default value: en.
+	// Default value: en
 	//
 	// example:
 	//

@@ -18,19 +18,19 @@ type iBindInstanceDomainsResponseBody interface {
 }
 
 type BindInstanceDomainsResponseBody struct {
-	// The number of domain names that failed to be bound to the instance.
+	// The number of domain names that failed to be bound.
 	//
 	// example:
 	//
 	// 0
 	FailedCount *int32 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of domain names that are bound to the instance.
+	// The number of domain names that were successfully bound.
 	//
 	// example:
 	//

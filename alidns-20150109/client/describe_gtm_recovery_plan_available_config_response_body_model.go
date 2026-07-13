@@ -17,7 +17,7 @@ type iDescribeGtmRecoveryPlanAvailableConfigResponseBody interface {
 
 type DescribeGtmRecoveryPlanAvailableConfigResponseBody struct {
 	Instances *DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iSetDnsGtmMonitorStatusResponseBody interface {
 }
 
 type SetDnsGtmMonitorStatusResponseBody struct {
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//

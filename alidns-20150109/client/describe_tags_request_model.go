@@ -20,27 +20,27 @@ type iDescribeTagsRequest interface {
 }
 
 type DescribeTagsRequest struct {
-	// The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages. Default value: en. Valid values: en, zh, and ja.
+	// The language of the response. Default: en. Valid values: en, zh, and ja.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The page number. Pages start from page **1**. Default value: **1**.
+	// The page number. Pages start from **1**. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return per page. Default value: 200.
+	// The number of entries per page. Default value: 200.
 	//
 	// example:
 	//
 	// 200
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The type of the resource. Valid values:
+	// The resource type. Valid value:
 	//
-	// 	- **DOMAIN**: domain name
+	// - **DOMAIN**: domain name
 	//
 	// This parameter is required.
 	//

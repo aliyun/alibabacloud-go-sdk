@@ -14,7 +14,7 @@ type iDeleteDnsGtmAccessStrategyResponseBody interface {
 }
 
 type DeleteDnsGtmAccessStrategyResponseBody struct {
-	// The ID of the request.
+	// The unique request ID.
 	//
 	// example:
 	//

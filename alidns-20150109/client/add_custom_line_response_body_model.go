@@ -22,13 +22,13 @@ type AddCustomLineResponseBody struct {
 	//
 	// example:
 	//
-	// hra0yc-597
+	// hra0yc-5******
 	LineCode *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
 	// The unique ID of the custom line.
 	//
 	// example:
 	//
-	// 597
+	// 5*****
 	LineId *int64 `json:"LineId,omitempty" xml:"LineId,omitempty"`
 	// The request ID.
 	//

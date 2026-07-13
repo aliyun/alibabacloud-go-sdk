@@ -36,47 +36,47 @@ type iSearchCloudGtmInstanceConfigsRequest interface {
 type SearchCloudGtmInstanceConfigsRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh-CN: Chinese
+	// - `zh-CN`: Chinese
 	//
-	// 	- en-US (default): English
+	// - `en-US` (default): English
 	//
 	// example:
 	//
 	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The availability state of the access domain name. Valid values:
+	// The service availability status of the instance configuration. Valid values:
 	//
-	// 	- available: If the access domain name is **enabled*	- and the health state is **normal**, the access domain name is deemed **available**.
+	// - `available`: The service for the GTM access domain is available when the instance configuration is **enabled*	- and its health status is **Normal*	- or Alert.
 	//
-	// 	- unavailable: If the access domain name is **disabled*	- or the health state is **abnormal**, the access domain name is deemed **unavailable**.
+	// - `unavailable`: The service for the GTM access domain is unavailable when the instance configuration is **disabled*	- or its health status is **Exceptional**.
 	//
 	// example:
 	//
 	// available
 	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client-generated token to ensure the idempotence of the request. The token must be unique across requests and can contain up to 64 ASCII characters.
 	//
 	// example:
 	//
-	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	// 1ae05db4-10e7-11ef-b126-00163e24****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The enabling state of the access domain name. Valid values:
+	// The status of the instance configuration. Valid values:
 	//
-	// 	- enable: The access domain name is enabled and the intelligent scheduling policy of the corresponding GTM instance takes effect.
+	// - `enable`: Enabled. The intelligent scheduling policy of the GTM instance is in effect.
 	//
-	// 	- disable: The access domain name is disabled and the intelligent scheduling policy of the corresponding GTM instance does not take effect.
+	// - `disable`: Disabled. The intelligent scheduling policy of the GTM instance is unavailable.
 	//
 	// example:
 	//
 	// enable
 	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
-	// The health state of the access domain name. Valid values:
+	// The health status of the instance configuration. Valid values:
 	//
-	// 	- ok: The health state of the access domain name is normal and all address pools that are referenced by the access domain name are available.
+	// - `ok`: Normal. All address pools referenced by the GTM access domain are available.
 	//
-	// 	- ok_alert: The health state of the access domain name is warning and some of the address pools that are referenced by the access domain name are unavailable. In this case, only the available address pools are returned for Domain Name System (DNS) requests.
+	// - `ok_alert`: Alert. Some address pools referenced by the GTM access domain are unavailable. In this state, DNS resolution continues for available address pools but stops for unavailable ones.
 	//
-	// 	- exceptional: The health state of the access domain name is abnormal and all address pools that are referenced by the access domain name are unavailable. In this case, addresses in the non-empty address pool with the smallest sequence number are preferentially used for fallback resolution. This returns DNS results for clients as much as possible.
+	// - `exceptional`: Exceptional. All address pools referenced by the GTM access domain are unavailable. In this case, failover resolution uses the addresses from the non-empty address pool with the smallest sequence number to ensure clients receive a resolution result.
 	//
 	// example:
 	//
@@ -86,9 +86,9 @@ type SearchCloudGtmInstanceConfigsRequest struct {
 	//
 	// example:
 	//
-	// gtm-cn-wwo3a3hbz**
+	// gtm-cn-wwo3a3h****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Current page number, starting from 1, default is 1.
+	// The page number. Pages start from 1. The default value is 1.
 	//
 	// This parameter is required.
 	//
@@ -96,7 +96,7 @@ type SearchCloudGtmInstanceConfigsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of rows per page when paginating queries, with a maximum value of **100**, and a default of **20**.
+	// The number of entries per page for a paged query. The maximum value is **100*	- and the default value is **20**.
 	//
 	// This parameter is required.
 	//
@@ -104,19 +104,19 @@ type SearchCloudGtmInstanceConfigsRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Remarks for the domain instance.
+	// A note for the instance configuration.
 	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The access domain name. The value of this parameter is composed of the value of ScheduleHostname and the value of ScheduleZoneName.
+	// The GTM access domain. It is formed by combining the host record (`ScheduleHostname`) with the primary or subdomain name (`ScheduleZoneName`).
 	//
 	// example:
 	//
 	// www.example.com
 	ScheduleDomainName *string `json:"ScheduleDomainName,omitempty" xml:"ScheduleDomainName,omitempty"`
-	// The zone such as example.com or subzone such as a.example.com of the access domain name. In most cases, the zone or subzone is hosted by the Public Authoritative DNS module of Alibaba Cloud DNS. This zone belongs to the account to which the GTM instance belongs.
+	// The primary domain name (for example, `example.com`) or subdomain name (for example, `a.example.com`) of the GTM access domain. This is typically a domain name managed by Alibaba Cloud DNS under the same account that owns the GTM instance.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type AddDomainGroupResponseBody struct {
 	//
 	// example:
 	//
-	// 2223
+	// d367113100944e488352f99e3c7d****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The name of the domain name group.
 	//

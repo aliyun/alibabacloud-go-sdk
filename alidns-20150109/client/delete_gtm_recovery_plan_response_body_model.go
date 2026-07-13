@@ -14,7 +14,7 @@ type iDeleteGtmRecoveryPlanResponseBody interface {
 }
 
 type DeleteGtmRecoveryPlanResponseBody struct {
-	// The ID of the request.
+	// The unique ID of the request.
 	//
 	// example:
 	//

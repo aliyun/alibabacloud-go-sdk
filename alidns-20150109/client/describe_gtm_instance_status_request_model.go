@@ -22,7 +22,7 @@ type DescribeGtmInstanceStatusRequest struct {
 	//
 	// example:
 	//
-	// instance1
+	// gtm-cn-wwo3a3hbz**
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The language.
 	//

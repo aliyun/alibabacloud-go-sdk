@@ -22,21 +22,21 @@ type iDescribeCloudGtmInstanceConfigAlertRequest interface {
 type DescribeCloudGtmInstanceConfigAlertRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- **zh-CN**: Chinese
+	// - **zh-CN**: Chinese.
 	//
-	// 	- **en-US**: English
+	// - **en-US**: English.
 	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client token that is used to ensure the idempotence of the request. The client generates this value. The value must be unique among different requests. It can be up to 64 ASCII characters in length and cannot contain non-ASCII characters.
 	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
+	// The ID of the instance configuration. For the same access domain name and GTM instance, you can configure both A and AAAA records. This creates two instance configurations. \\`ConfigId\\` uniquely identifies an instance configuration.
 	//
 	// example:
 	//

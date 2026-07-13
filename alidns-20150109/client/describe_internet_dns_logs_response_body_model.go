@@ -26,38 +26,38 @@ type iDescribeInternetDnsLogsResponseBody interface {
 }
 
 type DescribeInternetDnsLogsResponseBody struct {
-	// Indicates whether the log query is precise.
+	// Indicates whether the DNS resolution log query is precise.
 	//
 	// example:
 	//
 	// true
 	Complete *bool `json:"Complete,omitempty" xml:"Complete,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurPage *int32                                   `json:"CurPage,omitempty" xml:"CurPage,omitempty"`
 	Logs    *DescribeInternetDnsLogsResponseBodyLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Struct"`
-	// Page size for query.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Unique request identifier.
+	// The unique ID of the request.
 	//
 	// example:
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//
 	// 5
 	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
-	// Total quantity.
+	// The total number of entries.
 	//
 	// example:
 	//

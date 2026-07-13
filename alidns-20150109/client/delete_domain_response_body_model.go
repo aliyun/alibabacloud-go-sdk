@@ -22,7 +22,7 @@ type DeleteDomainResponseBody struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//

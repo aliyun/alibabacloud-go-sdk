@@ -22,7 +22,9 @@ type iDeleteSubDomainRecordsRequest interface {
 }
 
 type DeleteSubDomainRecordsRequest struct {
-	// The domain name. You can call the [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the domain name.
+	// The domain name.<props="china">You can call [DescribeDomains](https://help.aliyun.com/en/dns/api-alidns-2015-01-09-describedomains?spm=a2c4g.11186623.help-menu-search-29697.d_0) to obtain the domain name.
+	//
+	// <props="intl">You can call [DescribeDomains](https://www.alibabacloud.com/help/en/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) to obtain the domain name.
 	//
 	// This parameter is required.
 	//
@@ -30,19 +32,19 @@ type DeleteSubDomainRecordsRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The hostname field in the DNS record.
+	// The host record.
 	//
-	// For example, if you want to resolve @.example.com, you must set this parameter to an at sign (@) instead of leaving it empty.
+	// To resolve @.example.com, set the host record to \\"@\\" instead of leaving it empty.
 	//
 	// This parameter is required.
 	//
@@ -50,9 +52,9 @@ type DeleteSubDomainRecordsRequest struct {
 	//
 	// www
 	RR *string `json:"RR,omitempty" xml:"RR,omitempty"`
-	// The type of DNS records. If you do not specify this parameter, all types of DNS records corresponding to the subdomain are returned.
+	// The type of the DNS record. If you do not specify this parameter, all types of DNS records for the subdomain are deleted.
 	//
-	// Valid values: **A, MX, CNAME, TXT, REDIRECT_URL, FORWORD_URL, NS, AAAA, and SRV**. The value is not case-sensitive.
+	// Valid values (case-insensitive): A, MX, CNAME, TXT, REDIRECT_URL, FORWARD_URL, NS, AAAA, and **SRV**.
 	//
 	// example:
 	//
@@ -62,7 +64,7 @@ type DeleteSubDomainRecordsRequest struct {
 	//
 	// example:
 	//
-	// 192.0.2.0
+	// 192.0.2.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 

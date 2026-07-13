@@ -22,16 +22,24 @@ type iUpdateRspDomainServerProhibitStatusForGatewayResponseBody interface {
 }
 
 type UpdateRspDomainServerProhibitStatusForGatewayResponseBody struct {
+	// The details about the access denial. This field is returned only when Resource Access Management (RAM) authentication fails.
 	AccessDeniedDetail *UpdateRspDomainServerProhibitStatusForGatewayResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	Data               *UpdateRspDomainServerProhibitStatusForGatewayResponseBodyData               `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned data.
+	Data *UpdateRspDomainServerProhibitStatusForGatewayResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Indicates whether the request can be retried if it fails. true: The request can be retried. false: The request cannot be retried.
+	//
 	// example:
 	//
 	// true
 	RecoverableError *bool `json:"RecoverableError,omitempty" xml:"RecoverableError,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 0629502C-6224-5DC9-A8ED-2ED73A2E3931
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. true: The request was successful. false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -106,30 +114,48 @@ func (s *UpdateRspDomainServerProhibitStatusForGatewayResponseBody) Validate() e
 }
 
 type UpdateRspDomainServerProhibitStatusForGatewayResponseBodyAccessDeniedDetail struct {
+	// The unauthorized operation that was attempted.
+	//
 	// example:
 	//
-	// CreateUser
+	// UpdateRspDomainServerProhibitStatusForGateway
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
+	// The display name of the authorized entity.
+	//
 	// example:
 	//
 	// 2015555733387XXXX
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
+	// The ID of the owner of the authorized entity.
+	//
 	// example:
 	//
 	// 10469733312XXX
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
+	// The identity type.
+	//
 	// example:
 	//
 	// SubUser
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
+	// The encrypted complete diagnostic information.
+	//
 	// example:
 	//
 	// AQFohtp4aIbaeEXXXXQxNjFDLUIzMzgtNTXXXX05NkFCLUI2RkY5XXXXzAzQQ==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
+	// The reason why authentication failed. Valid values:
+	//
+	// - ExplicitDeny: The access is explicitly denied.
+	//
+	// - ImplicitDeny: The access is implicitly denied.
+	//
 	// example:
 	//
 	// ImplicitDeny
 	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
+	// The policy type.
+	//
 	// example:
 	//
 	// DlpSend
@@ -212,10 +238,13 @@ func (s *UpdateRspDomainServerProhibitStatusForGatewayResponseBodyAccessDeniedDe
 }
 
 type UpdateRspDomainServerProhibitStatusForGatewayResponseBodyData struct {
+	// The domain name.
+	//
 	// example:
 	//
 	// example.com
-	DomainName *string                                                                    `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The status information of the task.
 	StatusList []*UpdateRspDomainServerProhibitStatusForGatewayResponseBodyDataStatusList `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
 }
 
@@ -259,14 +288,23 @@ func (s *UpdateRspDomainServerProhibitStatusForGatewayResponseBodyData) Validate
 }
 
 type UpdateRspDomainServerProhibitStatusForGatewayResponseBodyDataStatusList struct {
+	// The domain name.
+	//
 	// example:
 	//
 	// uptp.test.abchina.com.cn
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The current status of the domain name.
+	//
 	// example:
 	//
 	// serverUpdateProhibited
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The message for the domain name status.
+	//
+	// example:
+	//
+	// 实名认证未通过，增加serverUpdateProhibited状态
 	StatusMsg *string `json:"StatusMsg,omitempty" xml:"StatusMsg,omitempty"`
 }
 

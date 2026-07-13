@@ -20,7 +20,7 @@ type iDescribeCloudGtmSummaryResponseBody interface {
 }
 
 type DescribeCloudGtmSummaryResponseBody struct {
-	// The total number of instances within the current account.
+	// The total number of instances in your account.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type DescribeCloudGtmSummaryResponseBody struct {
 	//
 	// 101
 	MonitorTaskTotalQuota *int32 `json:"MonitorTaskTotalQuota,omitempty" xml:"MonitorTaskTotalQuota,omitempty"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//

@@ -23,37 +23,39 @@ type iDescribeInstanceDomainsRequest interface {
 
 type DescribeInstanceDomainsRequest struct {
 	DomainKeywords *string `json:"DomainKeywords,omitempty" xml:"DomainKeywords,omitempty"`
-	// The ID of the Alibaba Cloud Domain Name System (DNS) instance. You can call the [DescribeDomainInfo](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomaininfo?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the ID.
+	// The instance ID.<props="china"> You can call [DescribeDomainInfo](https://help.aliyun.com/zh/dns/api-alidns-2015-01-09-describedomaininfo?spm=a2c4g.11186623.help-menu-search-29697.d_0) to obtain the ID.
+	//
+	// <props="intl">You can call [DescribeDomainInfo](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomaininfo?spm=a2c63.p38356.help-menu-search-29697.d_0) to obtain the ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// weriwieru
+	// dns-cn-9lb38ldq9**
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
-	// Default value: English.
+	// Default: en
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of the page to return. Pages start from page 1. Default value: 1.
+	// The page number. The value starts from 1. Default: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	// The number of entries per page. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//
-	// 2
+	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 

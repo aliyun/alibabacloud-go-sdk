@@ -18,16 +18,22 @@ type iMoveGtmResourceGroupRequest interface {
 }
 
 type MoveGtmResourceGroupRequest struct {
+	// The language of the response. Valid values: en, zh, and ja. Default value: en.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the new resource group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// AgIDE1MA_XXX
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
+	// The resource ID.
+	//
 	// This parameter is required.
 	//
 	// example:

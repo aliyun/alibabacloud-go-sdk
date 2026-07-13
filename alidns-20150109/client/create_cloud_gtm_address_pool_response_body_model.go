@@ -18,23 +18,23 @@ type iCreateCloudGtmAddressPoolResponseBody interface {
 }
 
 type CreateCloudGtmAddressPoolResponseBody struct {
-	// The ID of the address pool. This ID uniquely identifies the address pool.
+	// The unique ID of the address pool.
 	//
 	// example:
 	//
-	// pool-89528023225442**16
+	// pool-89528023225442****
 	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
-	// Unique request identification code.
+	// The unique ID of the request.
 	//
 	// example:
 	//
 	// 46973D4C-E3E4-4ABA-9190-9A9DE406C7E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the address pool creation operation was successful:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true: Operation was successful
+	// - true: The operation was successful.
 	//
-	// - false: Operation was failed
+	// - false: The operation failed.
 	//
 	// example:
 	//

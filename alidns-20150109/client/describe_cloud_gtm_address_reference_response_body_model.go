@@ -22,26 +22,26 @@ type iDescribeCloudGtmAddressReferenceResponseBody interface {
 }
 
 type DescribeCloudGtmAddressReferenceResponseBody struct {
-	// IP address or domain name.
+	// The IP address or domain name.
 	//
 	// example:
 	//
 	// 223.5.XX.XX
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The address ID. This ID uniquely identifies the address.
+	// The unique ID of the address.
 	//
 	// example:
 	//
-	// addr-89564584963974**40
+	// addr-89564584963974****
 	AddressId    *string                                                   `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
 	AddressPools *DescribeCloudGtmAddressReferenceResponseBodyAddressPools `json:"AddressPools,omitempty" xml:"AddressPools,omitempty" type:"Struct"`
-	// Address name.
+	// The name of the address.
 	//
 	// example:
 	//
 	// Address-1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Unique request identification code.
+	// The unique request ID.
 	//
 	// example:
 	//

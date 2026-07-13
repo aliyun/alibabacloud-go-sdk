@@ -24,23 +24,33 @@ type iSearchCloudGtmMonitorTemplatesResponseBody interface {
 }
 
 type SearchCloudGtmMonitorTemplatesResponseBody struct {
+	// The current page number. The value starts from **1**. The default value is **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned on each page. The maximum value is 100. The default value is 20.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The unique request ID.
+	//
 	// example:
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
 	RequestId *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Templates *SearchCloudGtmMonitorTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Struct"`
+	// The total number of health check templates that are found.
+	//
 	// example:
 	//
 	// 1
 	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 1

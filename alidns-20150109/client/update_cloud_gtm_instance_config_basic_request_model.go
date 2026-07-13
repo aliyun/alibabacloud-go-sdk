@@ -28,47 +28,47 @@ type iUpdateCloudGtmInstanceConfigBasicRequest interface {
 type UpdateCloudGtmInstanceConfigBasicRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- **zh-CN**: Chinese
+	// - **zh-CN**: Chinese.
 	//
-	// 	- **en-US*	- (default): English
+	// - **en-US*	- (default): English.
 	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client-generated token that you can use to ensure the idempotence of the request. Make sure that the token is unique among different requests. The token can contain a maximum of 64 ASCII characters.
 	//
 	// example:
 	//
-	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	// 1ae05db4-10e7-11ef-b126-00163e24****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
+	// The ID of the domain name instance configuration. For the same access domain name and GTM instance, you can configure both A and AAAA records. This results in two domain name instance configurations for the same GTM instance. The ConfigId uniquely identifies the configuration object that you want to modify.
 	//
-	// You can call the [ListCloudGtmInstanceConfigs](https://help.aliyun.com/document_detail/2797349.html) operation to query the value of ConfigId for the access domain name.
+	// Call the [ListCloudGtmInstanceConfigs](~~ListCloudGtmInstanceConfigs~~) operation to query the ConfigId of a domain name instance.
 	//
 	// example:
 	//
-	// Config-000**11
+	// Config-000****
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The ID of the GTM 3.0 instance for which you want to modify the TTL configuration.
+	// The ID of the GTM 3.0 instance that you want to modify.
 	//
 	// example:
 	//
-	// gtm-cn-wwo3a3hbz**
+	// gtm-cn-wwo3a3h****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Host record of the domain accessed by GTM.
+	// The host record of the GTM access domain name.
 	//
 	// example:
 	//
 	// www
 	ScheduleHostname *string `json:"ScheduleHostname,omitempty" xml:"ScheduleHostname,omitempty"`
-	// The zone (such as example.com) or subzone (such as a.example.com) of the GTM access domain name. In most cases, the zone or subzone is hosted in Authoritative DNS Resolution of the Alibaba Cloud DNS console within the account to which the GTM instance belongs.
+	// The root domain (such as example.com) or subdomain (such as a.example.com) of the GTM access domain name. This is usually a domain name that is hosted in the authoritative zone of the Alibaba Cloud DNS console under the account that owns the GTM instance.
 	//
 	// example:
 	//
 	// example.com
 	ScheduleZoneName *string `json:"ScheduleZoneName,omitempty" xml:"ScheduleZoneName,omitempty"`
-	// The global TTL value, in seconds. The global TTL value affects how long the DNS records that map the access domain name to the addresses in the address pools are cached in the local DNS servers of Internet service providers (ISPs).
+	// The global Time to Live (TTL) in seconds. This is the TTL for the DNS record that resolves the access domain name to an address in an address pool. The TTL affects how long the DNS record is cached on a carrier\\"s Local DNS server.
 	//
 	// example:
 	//

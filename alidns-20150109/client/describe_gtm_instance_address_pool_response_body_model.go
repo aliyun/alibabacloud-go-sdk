@@ -40,7 +40,7 @@ type iDescribeGtmInstanceAddressPoolResponseBody interface {
 }
 
 type DescribeGtmInstanceAddressPoolResponseBody struct {
-	// The number of addresses in the address pool queried.
+	// The number of addresses in the address pool.
 	//
 	// example:
 	//
@@ -59,37 +59,43 @@ type DescribeGtmInstanceAddressPoolResponseBody struct {
 	//
 	// 2017-12-28T13:08Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the address pool was created. This is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1527690629357
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The minimum number of available addresses in the address pool.
+	// The minimum number of available addresses.
 	//
 	// example:
 	//
-	// 2
+	// 1
 	MinAvailableAddrNum *int32 `json:"MinAvailableAddrNum,omitempty" xml:"MinAvailableAddrNum,omitempty"`
-	// The health check ID of the address pool.
+	// The ID of the monitoring configuration.
 	//
 	// example:
 	//
 	// 100abc
 	MonitorConfigId *string `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
-	// Indicates whether health check was enabled for the address pool. Valid values:
+	// The monitoring status. Valid values:
 	//
-	// 	- **OPEN**: Enabled
+	// - **OPEN**: Enabled
 	//
-	// 	- **CLOSE**: Disabled
+	// - **CLOSE**: Disabled
 	//
-	// 	- **UNCONFIGURED**: Not configured
+	// - **UNCONFIGURED**: Not configured
 	//
 	// example:
 	//
 	// OPEN
 	MonitorStatus *string `json:"MonitorStatus,omitempty" xml:"MonitorStatus,omitempty"`
 	// The name of the address pool.
+	//
+	// example:
+	//
+	// 名称
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the request.
+	// The unique request ID.
 	//
 	// example:
 	//
@@ -97,9 +103,9 @@ type DescribeGtmInstanceAddressPoolResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The availability status of the address pool. Valid values:
 	//
-	// 	- **AVAILABLE**: Available
+	// - **AVAILABLE**: The address pool is available.
 	//
-	// 	- **NOT_AVAILABLE**: Unavailable
+	// - **NOT_AVAILABLE**: The address pool is unavailable.
 	//
 	// example:
 	//
@@ -107,21 +113,21 @@ type DescribeGtmInstanceAddressPoolResponseBody struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The type of the address pool. Valid values:
 	//
-	// 	- **IP**: IP address
+	// - **IP**: IP address
 	//
-	// 	- **DOMAIN**: Domain name
+	// - **DOMAIN**: Domain name
 	//
 	// example:
 	//
 	// IP
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The last time when the address pool was updated.
+	// The time when the address pool was last updated.
 	//
 	// example:
 	//
 	// 2017-12-28T13:08Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// A timestamp that indicates the last time the address pool was updated.
+	// The time when the address pool was last updated. This is a UNIX timestamp.
 	//
 	// example:
 	//

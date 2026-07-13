@@ -24,7 +24,7 @@ type iDescribeCustomLinesResponseBody interface {
 }
 
 type DescribeCustomLinesResponseBody struct {
-	// The custom lines.
+	// The list of custom lines.
 	CustomLines []*DescribeCustomLinesResponseBodyCustomLines `json:"CustomLines,omitempty" xml:"CustomLines,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -50,7 +50,7 @@ type DescribeCustomLinesResponseBody struct {
 	//
 	// 1
 	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	// The total number of pages returned.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -138,20 +138,21 @@ type DescribeCustomLinesResponseBodyCustomLines struct {
 	//
 	// example:
 	//
-	// hra0yc-597
+	// hra0yc-5********
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The unique ID of the custom line.
 	//
 	// example:
 	//
-	// 597
-	Id            *int64                                                     `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 5*********
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The list of IP address range. Use a hyphen (-) to separate the start and end IP address ranges. Enter one range per line. You can specify 1 to 50 lines. For a single IP address, enter it as IP1-IP1. IP address ranges cannot overlap.
 	IpSegmentList []*DescribeCustomLinesResponseBodyCustomLinesIpSegmentList `json:"IpSegmentList,omitempty" xml:"IpSegmentList,omitempty" type:"Repeated"`
-	// The name of the custom line.
+	// The name of the line.
 	//
 	// example:
 	//
-	// hra0yd-597
+	// hra0yd-5********
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -213,7 +214,17 @@ func (s *DescribeCustomLinesResponseBodyCustomLines) Validate() error {
 }
 
 type DescribeCustomLinesResponseBodyCustomLinesIpSegmentList struct {
-	EndIp   *string `json:"EndIp,omitempty" xml:"EndIp,omitempty"`
+	// The end IP address.
+	//
+	// example:
+	//
+	// 1.1.XX.XX
+	EndIp *string `json:"EndIp,omitempty" xml:"EndIp,omitempty"`
+	// The start IP address.
+	//
+	// example:
+	//
+	// 1.2.XX.XX
 	StartIp *string `json:"StartIp,omitempty" xml:"StartIp,omitempty"`
 }
 

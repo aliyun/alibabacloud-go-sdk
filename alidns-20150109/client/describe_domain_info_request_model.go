@@ -18,23 +18,35 @@ type iDescribeDomainInfoRequest interface {
 }
 
 type DescribeDomainInfoRequest struct {
-	// The domain name.
+	// The domain name. Call [DescribeDomains](https://help.aliyun.com/document_detail/2357286.html) to obtain the domain name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// dns-example.com
+	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The language type.
+	// The language of the response. Valid values:
+	//
+	// - zh: Chinese
+	//
+	// - en: English
+	//
+	// Default value: en.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Specifies whether detailed attributes are required. Default value: **false**, which indicates that detailed attributes are not returned.
+	// Specifies whether to return detailed attributes of the domain name. Valid values:
 	//
-	// If you set this parameter to **true**, the values of the following parameters are returned: LineType, MinTtl, RecordLineTreeJson, RecordLines, LineCode, LineDisplayName, LineName, RegionLines, and SlaveDns.
+	// - true
+	//
+	// - false
+	//
+	// The default value is false.
+	//
+	// If you set this parameter to **true**, the response includes the following parameters: lineType, minTtl, recordLineTreeJson, recordLines, lineCode, lineDisplayName, lineName, regionLines, and slaveDns.
 	//
 	// example:
 	//

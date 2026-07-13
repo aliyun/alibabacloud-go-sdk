@@ -22,31 +22,31 @@ type iUpdateCloudGtmAddressPoolEnableStatusRequest interface {
 type UpdateCloudGtmAddressPoolEnableStatusRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh-CN: Chinese
+	// - zh-CN: Chinese
 	//
-	// 	- en-US (default): English
+	// - en-US (default): English
 	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The ID of the address pool. This ID uniquely identifies the address pool.
+	// The unique ID of the address pool.
 	//
 	// example:
 	//
-	// pool-89528023225442**16
+	// pool-89528023225442****
 	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client token to ensure the idempotence of the request. Generate a unique value from your client for this parameter. The client token can contain only ASCII characters and must be no more than 64 characters in length.
 	//
 	// example:
 	//
-	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	// 1ae05db4-10e7-11ef-b126-00163e24****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The enabling state of the address pool. Valid values:
+	// The enabled status of the address pool:
 	//
-	// 	- enable: The address pool is enabled, and the addresses in the address pool are returned for DNS resolution when the health check results are normal.
+	// - enable: Enables the address pool. If the health check is normal, the address pool is included in DNS resolution.
 	//
-	// 	- disable: The address pool is disabled, and the addresses in the address pool are not returned for DNS resolution regardless of whether the health check results are normal or not.
+	// - disable: Disables the address pool. The address pool is not included in DNS resolution, regardless of its health check status.
 	//
 	// example:
 	//

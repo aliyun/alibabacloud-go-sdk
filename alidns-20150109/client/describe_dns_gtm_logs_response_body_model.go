@@ -25,31 +25,31 @@ type iDescribeDnsGtmLogsResponseBody interface {
 
 type DescribeDnsGtmLogsResponseBody struct {
 	Logs *DescribeDnsGtmLogsResponseBodyLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Struct"`
-	// The number of the returned page.
+	// The page number. The value starts from 1. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries returned per page. The maximum value is 100. The default value is 20.
 	//
 	// example:
 	//
-	// 1
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// 50C60A29-2E93-425A-ABA8-068686E28873
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned on all pages.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 1
 	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	// The total number of pages returned.
+	// The total number of pages.
 	//
 	// example:
 	//

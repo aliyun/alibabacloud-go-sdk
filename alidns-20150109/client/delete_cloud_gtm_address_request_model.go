@@ -20,27 +20,27 @@ type iDeleteCloudGtmAddressRequest interface {
 type DeleteCloudGtmAddressRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh-CN: Chinese
+	// - zh-CN: Chinese.
 	//
-	// 	- en-US (default): English
+	// - en-US (default): English.
 	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The address ID. This ID uniquely identifies the address.
+	// The unique ID of the address.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// addr-895182181143688192
+	// addr-89518218114368****
 	AddressId *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client token that ensures the idempotence of the request. The token must be unique among different requests. The token can be up to 64 ASCII characters long.
 	//
 	// example:
 	//
-	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	// 1ae05db4-10e7-11ef-b126-00163e24****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 }
 

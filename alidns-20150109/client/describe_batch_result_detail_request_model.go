@@ -26,43 +26,43 @@ type iDescribeBatchResultDetailRequest interface {
 type DescribeBatchResultDetailRequest struct {
 	// The type of the batch operation. Valid values:
 	//
-	// 	- **DOMAIN_ADD**: adds domain names in batches.
+	// - **DOMAIN_ADD**: Add domain names in batches.
 	//
-	// 	- **DOMAIN_DEL**: deletes domain names in batches.
+	// - **DOMAIN_DEL**: Delete domain names in batches.
 	//
-	// 	- **RR_ADD**: adds Domain Name System (DNS) records in batches.
+	// - **RR_ADD**: Add DNS records in batches.
 	//
-	// 	- **RR_DEL**: deletes DNS records in batches.
+	// - **RR_DEL**: Delete DNS records in batches.
 	//
-	// >  Do not perform filtering when this field is empty.
+	// > If you leave this parameter empty, the results are not filtered by operation type.
 	//
 	// example:
 	//
 	// DOMAIN_ADD
 	BatchType *string `json:"BatchType,omitempty" xml:"BatchType,omitempty"`
-	// The language of the content within the request and response. Default: **zh**. Valid values:
+	// The language of the request and response. The default value is **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The page number. Default value: **1**.
+	// The current page number. The default value is **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The execution result. If you do not specify this parameter, all results are returned.
+	// The status of the task. If you do not specify this parameter, the details of tasks in all states are returned.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type DescribeBatchResultDetailRequest struct {
 	//
 	// example:
 	//
-	// 83618818
+	// 8*******
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 

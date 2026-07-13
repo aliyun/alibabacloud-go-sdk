@@ -38,115 +38,117 @@ type iAddDnsGtmAddressPoolRequest interface {
 }
 
 type AddDnsGtmAddressPoolRequest struct {
-	// The address pools.
+	// The list of addresses in the address pool.
 	//
 	// This parameter is required.
 	Addr []*AddDnsGtmAddressPoolRequestAddr `json:"Addr,omitempty" xml:"Addr,omitempty" type:"Repeated"`
-	// The number of consecutive failures.
+	// The number of consecutive failed health checks.
 	//
 	// example:
 	//
-	// 1
+	// 2
 	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
 	// The instance ID.
+	//
+	// <props="intl">Call [DescribeDnsGtmInstances](https://www.alibabacloud.com/help/en/dns/api-alidns-2015-01-09-describednsgtminstances) to obtain the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// instance1
+	// gtm-cn-cs02xyk****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The health check interval. Unit: seconds.
 	//
 	// example:
 	//
-	// 1
+	// 60
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The nodes for monitoring.
+	// The list of health check nodes. If MonitorStatus is set to OPEN, you must specify at least one valid health check node.
 	IspCityNode []*AddDnsGtmAddressPoolRequestIspCityNode `json:"IspCityNode,omitempty" xml:"IspCityNode,omitempty" type:"Repeated"`
-	// The language of the values of specific response parameters. Default value: en. Valid values: en, zh, and ja.
+	// The language of some returned parameters. Default value: en. Valid values: en, zh, and ja.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The load balancing policy of the address pool. Valid values:
+	// The load balancing policy. Valid values:
 	//
-	// 	- ALL_RR: returns all addresses.
+	// - ALL_RR: returns all addresses.
 	//
-	// 	- RATIO: returns addresses by weight.
+	// - RATIO: returns addresses by weight.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// all_rr
+	// ALL_RR
 	LbaStrategy *string `json:"LbaStrategy,omitempty" xml:"LbaStrategy,omitempty"`
-	// The extended information. The required parameters vary based on the health check protocol.
+	// The extended information. This parameter is a JSON string. The required parameters vary based on the health check protocol:
 	//
-	// 	- HTTP or HTTPS:
+	// - HTTP and HTTPS:
 	//
-	//     	- port: the port that you want to check
+	//   - port: The health check port.
 	//
-	//     	- host: the host settings
+	//   - host: The host settings.
 	//
-	//     	- path: the URL
+	//   - path: The URL path.
 	//
-	//     	- code: the return code. The health check result is deemed abnormal if the returned value is greater than the specified value. Valid values: 400 and 500.
+	//   - code: The return code. A response with a status code greater than this value is considered abnormal. Valid values: 400 and 500.
 	//
-	//     	- failureRate: the failure rate
+	//   - failureRate: The failure rate.
 	//
-	//     	- sni: specifies whether to enable Server Name Indication (SNI). This parameter is available only when ProtocolType is set to HTTPS. Valid values:
+	//   - sni: Specifies whether to enable Server Name Indication (SNI). This parameter is available only for the HTTPS protocol.
 	//
-	//         	- true: enables SNI.
+	//     - true: Enable SNI.
 	//
-	//         	- other: disables SNI.
+	//     - Other values: Disable SNI.
 	//
-	//     	- nodeType: the type of the node for monitoring when Type is set to DOMAIN. Valid values:
+	//   - nodeType: The type of the health check node when the address pool type is DOMAIN. Valid values:
 	//
-	//         	- IPV4
+	//     - IPV4
 	//
-	//         	- IPV6
+	//     - IPV6
 	//
-	// 	- ping:
+	// - PING:
 	//
-	//     	- failureRate: the failure rate
+	//   - failureRate: The failure rate.
 	//
-	//     	- packetNum: the number of ping packets
+	//   - packetNum: The number of ping packets.
 	//
-	//     	- packetLossRate: the loss rate of ping packets
+	//   - packetLossRate: The packet loss rate.
 	//
-	//     	- nodeType: the type of the node for monitoring when Type is set to DOMAIN. Valid values:
+	//   - nodeType: The type of the health check node when the address pool type is DOMAIN. Valid values:
 	//
-	//         	- IPV4
+	//     - IPV4
 	//
-	//         	- IPV6
+	//     - IPV6
 	//
-	// 	- TCP:
+	// - TCP:
 	//
-	//     	- port: the port that you want to check
+	//   - port: The health check port.
 	//
-	//     	- failureRate: the failure rate
+	//   - failureRate: The failure rate.
 	//
-	//     	- nodeType: the type of the node for monitoring when Type is set to DOMAIN. Valid values:
+	//   - nodeType: The type of the health check node when the address pool type is DOMAIN. Valid values:
 	//
-	//         	- IPV4
+	//     - IPV4
 	//
-	//         	- IPV6
+	//     - IPV6
 	//
 	// example:
 	//
-	// {\\"code\\":200,\\"path\\":\\"\\\\index.htm\\",\\"host\\":\\"aliyun.com\\"}
+	// {"failureRate":50,"port":80}
 	MonitorExtendInfo *string `json:"MonitorExtendInfo,omitempty" xml:"MonitorExtendInfo,omitempty"`
-	// Specifies whether to enable the health check feature. If you set this parameter to OPEN, the system verifies the health check configurations. If you set this parameter to CLOSE, the system discards the health check configurations. Default value: CLOSE. Valid values:
+	// The status of the health check feature. Default value: CLOSE. If you set this parameter to OPEN, the health check configuration is verified. Otherwise, the configuration is ignored.
 	//
-	// 	- OPEN: enables the health check feature.
+	// - OPEN: enabled
 	//
-	// 	- CLOSE: disables the health check feature.
+	// - CLOSE: disabled
 	//
 	// example:
 	//
-	// open
+	// OPEN
 	MonitorStatus *string `json:"MonitorStatus,omitempty" xml:"MonitorStatus,omitempty"`
 	// The name of the address pool.
 	//
@@ -158,37 +160,37 @@ type AddDnsGtmAddressPoolRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The health check protocol. Valid values:
 	//
-	// 	- HTTP
+	// - HTTP
 	//
-	// 	- HTTPS
+	// - HTTPS
 	//
-	// 	- PING
+	// - PING
 	//
-	// 	- TCP
+	// - TCP
 	//
 	// example:
 	//
-	// http
+	// TCP
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
 	// The timeout period. Unit: milliseconds.
 	//
 	// example:
 	//
-	// 1
+	// 2000
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 	// The type of the address pool. Valid values:
 	//
-	// 	- IPV4: IPv4 address
+	// - IPV4: IPv4 address
 	//
-	// 	- IPV6: IPv6 address
+	// - IPV6: IPv6 address
 	//
-	// 	- DOMAIN: domain name
+	// - DOMAIN: domain name
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ipv4
+	// IPV4
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -340,53 +342,53 @@ func (s *AddDnsGtmAddressPoolRequest) Validate() error {
 }
 
 type AddDnsGtmAddressPoolRequestAddr struct {
-	// The address in the address pool.
+	// The address.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 1.1.1.1
+	// 223.5.XX.XX
 	Addr *string `json:"Addr,omitempty" xml:"Addr,omitempty"`
-	// The information about the source region of the address. The value of this parameter is a JSON string. Valid values:
+	// The source region of the address. This parameter is a JSON string.
 	//
-	// 	- lineCode: the line code of the source region for the address
+	// - lineCode: The line code of the source region.
 	//
-	// 	- lineCodeRectifyType: the rectification type of the line code. Default value: AUTO. Valid values:
+	// - lineCodeRectifyType: The rectification type for the line code. Default value: AUTO.
 	//
-	//     	- NO_NEED: no need for rectification
+	//   - NO_NEED: No rectification is performed.
 	//
-	//     	- RECTIFIED: rectified
+	//   - RECTIFIED: The line code is rectified.
 	//
-	//     	- AUTO: automatic rectification
+	//   - AUTO: The line code is automatically rectified.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// default
+	// {"lineCodeRectifyType":"AUTO", "lineCode":[]}
 	AttributeInfo *string `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty"`
-	// The weight of the address.
+	// The weight.
 	//
 	// example:
 	//
 	// 1
 	LbaWeight *int32 `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
-	// The return mode of the addresses: Valid values:
+	// The mode. Valid values:
 	//
-	// 	- SMART: smart return
+	// - SMART: smart return
 	//
-	// 	- ONLINE: always online
+	// - ONLINE: always online
 	//
-	// 	- OFFLINE: always offline
+	// - OFFLINE: always offline
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// online
+	// SMART
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The description of the address pool.
+	// The remarks.
 	//
 	// example:
 	//
@@ -452,19 +454,17 @@ func (s *AddDnsGtmAddressPoolRequestAddr) Validate() error {
 }
 
 type AddDnsGtmAddressPoolRequestIspCityNode struct {
-	// The city code.
+	// The city code. If MonitorStatus is set to OPEN, CityCode is required.
 	//
-	// Specify the parameter according to the value of CityCode returned by the DescribeGtmMonitorAvailableConfig operation.
+	// For information about the valid values, see the response of the DescribeDnsGtmMonitorAvailableConfig operation.
 	//
 	// example:
 	//
 	// 503
 	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	// 	- The Internet service provider (ISP) node. Specify the parameter according to the value of IspCode returned by the DescribeGtmMonitorAvailableConfig operation.
+	// If MonitorStatus is set to OPEN, IspCode is required.
 	//
-	// 	- If the returned value of GroupType for the DescribeGtmMonitorAvailableConfig operation is BGP or Overseas, IspCode is not required and is set to 465 by default.
-	//
-	// 	- If the returned value of GroupType for the DescribeGtmMonitorAvailableConfig operation is not BGP or Overseas, IspCode is required. When IspCode is specified, CityCode is required.
+	// For information about the valid values, see the response of the DescribeDnsGtmMonitorAvailableConfig operation.
 	//
 	// example:
 	//

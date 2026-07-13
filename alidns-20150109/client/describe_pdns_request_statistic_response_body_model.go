@@ -16,9 +16,9 @@ type iDescribePdnsRequestStatisticResponseBody interface {
 }
 
 type DescribePdnsRequestStatisticResponseBody struct {
-	// The statistics on the DNS requests.
+	// A list of request statistics.
 	Data []*DescribePdnsRequestStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ func (s *DescribePdnsRequestStatisticResponseBody) Validate() error {
 }
 
 type DescribePdnsRequestStatisticResponseBodyData struct {
-	// The total number of DoH requests, including HTTP and HTTPS requests.
+	// The total number of DNS-over-HTTPS (DoH) requests. This value includes both HTTP and HTTPS requests.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type DescribePdnsRequestStatisticResponseBodyData struct {
 	//
 	// 0
 	HttpCount *int64 `json:"HttpCount,omitempty" xml:"HttpCount,omitempty"`
-	// The number of HTTPS requests. On the Traffic Analysis tab of the Public DNS console, the value of this parameter includes the number of DNS over HTTPs (DoH) requests. Therefore, the number of DoH requests is not separately displayed in the console.
+	// The number of HTTPS requests. On the Traffic Analysis tab of the Public DNS console, this parameter includes the number of DNS-over-HTTPS (DoH) requests. Therefore, DoH requests are not displayed separately in the console.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type DescribePdnsRequestStatisticResponseBodyData struct {
 	//
 	// 10
 	IpCount *int64 `json:"IpCount,omitempty" xml:"IpCount,omitempty"`
-	// The statistical timestamp. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The timestamp of the statistics. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -108,37 +108,37 @@ type DescribePdnsRequestStatisticResponseBodyData struct {
 	//
 	// 5000
 	UdpTotalCount *int64 `json:"UdpTotalCount,omitempty" xml:"UdpTotalCount,omitempty"`
-	// The number of IPv4-based requests.
+	// The number of IPv4 requests.
 	//
 	// example:
 	//
 	// 0
 	V4Count *int64 `json:"V4Count,omitempty" xml:"V4Count,omitempty"`
-	// The number of IPv4-based HTTP requests.
+	// The number of IPv4 HTTP requests.
 	//
 	// example:
 	//
 	// 0
 	V4HttpCount *int64 `json:"V4HttpCount,omitempty" xml:"V4HttpCount,omitempty"`
-	// The number of IPv4-based HTTPS requests.
+	// The number of IPv4 HTTPS requests.
 	//
 	// example:
 	//
 	// 0
 	V4HttpsCount *int64 `json:"V4HttpsCount,omitempty" xml:"V4HttpsCount,omitempty"`
-	// The number of IPv6-based requests.
+	// The number of IPv6 requests.
 	//
 	// example:
 	//
 	// 0
 	V6Count *int64 `json:"V6Count,omitempty" xml:"V6Count,omitempty"`
-	// The number of IPv6-based HTTP requests.
+	// The number of IPv6 HTTP requests.
 	//
 	// example:
 	//
 	// 0
 	V6HttpCount *int64 `json:"V6HttpCount,omitempty" xml:"V6HttpCount,omitempty"`
-	// The number of IPv6-based HTTPS requests.
+	// The number of IPv6 HTTPS requests.
 	//
 	// example:
 	//

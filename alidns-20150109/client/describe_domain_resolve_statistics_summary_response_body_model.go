@@ -24,33 +24,33 @@ type iDescribeDomainResolveStatisticsSummaryResponseBody interface {
 }
 
 type DescribeDomainResolveStatisticsSummaryResponseBody struct {
-	// The page number. Pages start from page **1**. Default value: **1**.
+	// The page number. The value starts from 1. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: **100**. Default value: **20**.
+	// The number of entries returned on each page. The maximum value is 100. The default value is 20.
 	//
 	// example:
 	//
-	// 10
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//
 	// 6856BCF6-11D6-4D7E-AC53-FD579933522B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The statistics.
+	// The list of statistics.
 	Statistics []*DescribeDomainResolveStatisticsSummaryResponseBodyStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 1
 	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	// The total number of pages returned.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *DescribeDomainResolveStatisticsSummaryResponseBody) Validate() error {
 }
 
 type DescribeDomainResolveStatisticsSummaryResponseBodyStatistics struct {
-	// The number of DNS requests.
+	// The number of requests.
 	//
 	// example:
 	//
@@ -146,11 +146,11 @@ type DescribeDomainResolveStatisticsSummaryResponseBodyStatistics struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The type of the domain name. Valid values:
+	// The type of the domain name.
 	//
-	// 	- PUBLIC: hosted public domain name
+	// - PUBLIC: Authoritative domain name
 	//
-	// 	- CACHE: cache-accelerated domain name
+	// - CACHE: Authoritative proxy domain name
 	//
 	// example:
 	//

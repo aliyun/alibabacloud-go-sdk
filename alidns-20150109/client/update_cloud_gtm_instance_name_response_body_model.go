@@ -16,17 +16,17 @@ type iUpdateCloudGtmInstanceNameResponseBody interface {
 }
 
 type UpdateCloudGtmInstanceNameResponseBody struct {
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//
 	// 29D0F8F8-5499-4F6C-9FDC-1EE13BF55925
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- true
+	// - true: The operation was successful.
 	//
-	// 	- false
+	// - false: The operation failed.
 	//
 	// example:
 	//

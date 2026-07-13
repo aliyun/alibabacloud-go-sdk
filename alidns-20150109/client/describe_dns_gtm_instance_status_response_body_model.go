@@ -24,13 +24,13 @@ type iDescribeDnsGtmInstanceStatusResponseBody interface {
 }
 
 type DescribeDnsGtmInstanceStatusResponseBody struct {
-	// The number of available addresses.
+	// The number of healthy addresses.
 	//
 	// example:
 	//
 	// 1
 	AddrAvailableNum *int32 `json:"AddrAvailableNum,omitempty" xml:"AddrAvailableNum,omitempty"`
-	// The number of unavailable addresses.
+	// The number of unhealthy addresses.
 	//
 	// example:
 	//
@@ -42,19 +42,19 @@ type DescribeDnsGtmInstanceStatusResponseBody struct {
 	//
 	// 1
 	AddrPoolGroupNotAvailableNum *int32 `json:"AddrPoolGroupNotAvailableNum,omitempty" xml:"AddrPoolGroupNotAvailableNum,omitempty"`
-	// The ID of the request.
+	// The unique ID of the request.
 	//
 	// example:
 	//
 	// 389DFFA3-77A5-4A9E-BF3D-147C6F98A5BA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of access policies that are unavailable in the current active address pool group.
+	// The number of unavailable access policies for the active address pool group.
 	//
 	// example:
 	//
 	// 1
 	StrategyNotAvailableNum *int32 `json:"StrategyNotAvailableNum,omitempty" xml:"StrategyNotAvailableNum,omitempty"`
-	// The number of access policies switched to the secondary address pool group.
+	// The number of access policies that are switched to the failover address pool group.
 	//
 	// example:
 	//

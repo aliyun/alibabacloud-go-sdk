@@ -20,14 +20,20 @@ type iUpdateRspDomainServerProhibitStatusForGatewayOteRequest interface {
 }
 
 type UpdateRspDomainServerProhibitStatusForGatewayOteRequest struct {
+	// List of domain name statuses to add.
 	AddStatusList []*UpdateRspDomainServerProhibitStatusForGatewayOteRequestAddStatusList `json:"AddStatusList,omitempty" xml:"AddStatusList,omitempty" type:"Repeated"`
+	// Idempotency token.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// qwoefasdf
-	ClientToken      *string                                                                    `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// List of domain name statuses to remove.
 	DeleteStatusList []*UpdateRspDomainServerProhibitStatusForGatewayOteRequestDeleteStatusList `json:"DeleteStatusList,omitempty" xml:"DeleteStatusList,omitempty" type:"Repeated"`
+	// Domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -103,10 +109,17 @@ func (s *UpdateRspDomainServerProhibitStatusForGatewayOteRequest) Validate() err
 }
 
 type UpdateRspDomainServerProhibitStatusForGatewayOteRequestAddStatusList struct {
+	// Domain name status.
+	//
 	// example:
 	//
 	// serverDeleteProhibited
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Description of the status.
+	//
+	// example:
+	//
+	// 实名认证未通过，增加serverUpdateProhibited状态
 	StatusMsg *string `json:"StatusMsg,omitempty" xml:"StatusMsg,omitempty"`
 }
 
@@ -141,10 +154,17 @@ func (s *UpdateRspDomainServerProhibitStatusForGatewayOteRequestAddStatusList) V
 }
 
 type UpdateRspDomainServerProhibitStatusForGatewayOteRequestDeleteStatusList struct {
+	// Domain name status.
+	//
 	// example:
 	//
 	// serverDeleteProhibited
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Description of the status.
+	//
+	// example:
+	//
+	// 实名认证通过，删除serverUpdateProhibited状态
 	StatusMsg *string `json:"StatusMsg,omitempty" xml:"StatusMsg,omitempty"`
 }
 

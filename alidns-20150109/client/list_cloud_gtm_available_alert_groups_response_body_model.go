@@ -17,7 +17,7 @@ type iListCloudGtmAvailableAlertGroupsResponseBody interface {
 
 type ListCloudGtmAvailableAlertGroupsResponseBody struct {
 	AlertGroups *ListCloudGtmAvailableAlertGroupsResponseBodyAlertGroups `json:"AlertGroups,omitempty" xml:"AlertGroups,omitempty" type:"Struct"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//

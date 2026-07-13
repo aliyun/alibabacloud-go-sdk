@@ -14,6 +14,8 @@ type iUpdateRecursionZoneEffectiveScopeResponseBody interface {
 }
 
 type UpdateRecursionZoneEffectiveScopeResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382

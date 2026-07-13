@@ -14,7 +14,7 @@ type iDescribeGtmMonitorAvailableConfigRequest interface {
 }
 
 type DescribeGtmMonitorAvailableConfigRequest struct {
-	// The language of the values of specific response parameters.
+	// The language of the response.
 	//
 	// example:
 	//

@@ -14,13 +14,13 @@ type iDescribeGtmRecoveryPlanAvailableConfigRequest interface {
 }
 
 type DescribeGtmRecoveryPlanAvailableConfigRequest struct {
-	// The language in which the returned results are displayed. Valid values:
+	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
-	// Default value: en.
+	// Default: en
 	//
 	// example:
 	//

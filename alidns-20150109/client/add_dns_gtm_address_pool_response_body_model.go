@@ -22,19 +22,19 @@ type AddDnsGtmAddressPoolResponseBody struct {
 	//
 	// example:
 	//
-	// testpool1
+	// hrbv**
 	AddrPoolId *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
 	// The ID of the health check configuration.
 	//
 	// example:
 	//
-	// test1
+	// hra**a
 	MonitorConfigId *string `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//
-	// 6856BCF6-11D6-4D7E-AC53-FD579933522B
+	// 6856BCF6-11D6-4D7E-AC53-FD5799335**B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

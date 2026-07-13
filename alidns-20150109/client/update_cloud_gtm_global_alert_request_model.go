@@ -22,19 +22,19 @@ type iUpdateCloudGtmGlobalAlertRequest interface {
 type UpdateCloudGtmGlobalAlertRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh-CN: Chinese
+	// - `zh-CN`: Chinese
 	//
-	// 	- en-US: English
+	// - `en-US`: English
 	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The alert configurations.
+	// A list of alert configurations.
 	AlertConfig []*UpdateCloudGtmGlobalAlertRequestAlertConfig `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty" type:"Repeated"`
-	// The alert contact groups.
+	// A list of alert notification groups.
 	AlertGroup []*string `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty" type:"Repeated"`
-	// The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client-generated token to ensure request idempotence. This token must be unique for each request, contain only ASCII characters, and be no more than 64 characters in length.
 	//
 	// example:
 	//
@@ -100,56 +100,60 @@ func (s *UpdateCloudGtmGlobalAlertRequest) Validate() error {
 }
 
 type UpdateCloudGtmGlobalAlertRequestAlertConfig struct {
-	// Specifies whether to configure DingTalk notifications. Valid values:
+	// Whether to send a DingTalk notification when an alert is triggered. Valid values:
 	//
-	// 	- true: configures DingTalk notifications. DingTalk notifications are sent when alerts are triggered.
+	// - `true`: A DingTalk notification is sent.
 	//
-	// 	- false: does not configure DingTalk notifications.
+	// - `false`: Do not send a DingTalk notification.
 	//
 	// example:
 	//
 	// false
 	DingtalkNotice *bool `json:"DingtalkNotice,omitempty" xml:"DingtalkNotice,omitempty"`
-	// Specifies whether to configure email notifications. Valid values:
+	// Whether to send an email notification when an alert is triggered. Valid values:
 	//
-	// 	- true: configures email notifications. Emails are sent when alerts are triggered.
+	// - `true`: An email notification is sent.
 	//
-	// 	- false｜null: does not configure email notifications.
+	// - `false` or `null`: Do not send an email notification.
 	//
 	// example:
 	//
 	// true
 	EmailNotice *bool `json:"EmailNotice,omitempty" xml:"EmailNotice,omitempty"`
-	// The type of the alert event. Valid values:
+	// The alert event type. Valid values:
 	//
-	// 	- addr_alert: The address is unavailable.
+	// - `addr_alert`: An address becomes unavailable.
 	//
-	// 	- addr_resume: The address becomes available.
+	// - `addr_resume`: An address becomes available.
 	//
-	// 	- addr_pool_unavailable: The address pool is unavailable.
+	// - `addr_pool_unavailable`: An address pool becomes unavailable.
 	//
-	// 	- addr_pool_available: The address pool becomes available.
+	// - `addr_pool_available`: An address pool becomes available.
 	//
 	// example:
 	//
 	// addr_alert
 	NoticeType *string `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
+	// The alert threshold for queries per second (QPS).
+	//
 	// example:
 	//
 	// 10
 	QpsThreshold *int64 `json:"QpsThreshold,omitempty" xml:"QpsThreshold,omitempty"`
-	// Specifies whether to configure text message notifications. Valid values:
+	// Whether to send a text message notification when an alert is triggered. Valid values:
 	//
-	// 	- true: configures text message notifications. Text messages are sent when alerts are triggered.
+	// - `true`: A text message notification is sent.
 	//
-	// 	- false｜null: does not configure text message notifications.
+	// - `false` or `null`: Do not send a text message notification.
 	//
-	// Only the China site (aliyun.com) supports text message notifications.
+	// Text message notifications are available only on the China site.
 	//
 	// example:
 	//
 	// true
 	SmsNotice *bool `json:"SmsNotice,omitempty" xml:"SmsNotice,omitempty"`
+	// The alert threshold.
+	//
 	// example:
 	//
 	// 100

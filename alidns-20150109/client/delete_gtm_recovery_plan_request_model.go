@@ -16,19 +16,23 @@ type iDeleteGtmRecoveryPlanRequest interface {
 }
 
 type DeleteGtmRecoveryPlanRequest struct {
-	// The language used by the user.
+	// The language of the response. The default value is **zh**. Valid values:
+	//
+	// - **zh**: Chinese
+	//
+	// - **en**: English
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the disaster recovery plan that you want to delete.
+	// The ID of the disaster recovery plan.<props="intl"> To obtain the ID, call [DescribeGtmRecoveryPlans](https://www.alibabacloud.com/help/en/dns/api-alidns-2015-01-09-describegtmrecoveryplans?spm=a2c63.p38356.help-menu-search-29697.d_0).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 100
+	// 10********
 	RecoveryPlanId *int64 `json:"RecoveryPlanId,omitempty" xml:"RecoveryPlanId,omitempty"`
 }
 

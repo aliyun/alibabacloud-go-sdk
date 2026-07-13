@@ -38,17 +38,17 @@ type iAddGtmAddressPoolRequest interface {
 }
 
 type AddGtmAddressPoolRequest struct {
-	// The address pools.
+	// The list of addresses in the address pool.
 	//
 	// This parameter is required.
 	Addr []*AddGtmAddressPoolRequestAddr `json:"Addr,omitempty" xml:"Addr,omitempty" type:"Repeated"`
-	// The number of consecutive failures.
+	// The number of consecutive failed health checks.
 	//
 	// example:
 	//
 	// 2
 	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
-	// The ID of the GTM instance for which you want to create an address pool.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -56,65 +56,65 @@ type AddGtmAddressPoolRequest struct {
 	//
 	// gtm-cn-xxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The health check interval. Unit: seconds. Set the value to 60.
+	// The health check interval. Unit: seconds. The value must be 60.
 	//
 	// example:
 	//
 	// 60
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The monitored nodes.
+	// The list of city nodes for monitoring.
 	IspCityNode []*AddGtmAddressPoolRequestIspCityNode `json:"IspCityNode,omitempty" xml:"IspCityNode,omitempty" type:"Repeated"`
-	// The language of the values of specific response parameters.
+	// The response language.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The minimum number of available addresses in the address pool.
+	// The minimum number of available addresses.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 2
+	// 1
 	MinAvailableAddrNum *int32 `json:"MinAvailableAddrNum,omitempty" xml:"MinAvailableAddrNum,omitempty"`
-	// The extended information. The required parameters vary based on the value of ProtocolType.
+	// The extended information. The parameters that you must configure vary based on the health check protocol.
 	//
-	// When ProtocolType is set to HTTP or HTTPS:
+	// HTTP and HTTPS:
 	//
-	// 	- port: the port that you want to check
+	// - port: The health check port.
 	//
-	// 	- failureRate: the failure rate
+	// - failureRate: The failure rate.
 	//
-	// 	- code: the return code. The health check result is deemed abnormal if the returned value is greater than the specified value. Valid values: 400 and 500.
+	// - code: The return code. A response with a return code greater than the specified value is considered abnormal. Valid values: 400 and 500.
 	//
-	// 	- host: the host settings
+	// - host: The host setting.
 	//
-	// 	- path: the URL path
+	// - path: The URL path.
 	//
-	// When ProtocolType is set to PING:
+	// PING:
 	//
-	// 	- packetNum: the number of ping packets
+	// - packetNum: The number of ping packets.
 	//
-	// 	- packetLossRate: the packet loss rate
+	// - packetLossRate: The packet loss rate.
 	//
-	// 	- failureRate: the failure rate
+	// - failureRate: The failure rate.
 	//
-	// When ProtocolType is set to TCP:
+	// TCP:
 	//
-	// 	- port: the port that you want to check
+	// - port: The health check port.
 	//
-	// 	- failureRate: the failure rate
+	// - failureRate: The failure rate.
 	//
 	// example:
 	//
 	// {"host":"aliyun.com","port":80}
 	MonitorExtendInfo *string `json:"MonitorExtendInfo,omitempty" xml:"MonitorExtendInfo,omitempty"`
-	// Specifies whether to enable the health check. Valid values:
+	// The status of the health check. Valid values:
 	//
-	// 	- **OPEN**: enables the health check.
+	// - **OPEN**: enabled
 	//
-	// 	- **CLOSE**: disables the health check. This is the default value.
+	// - **CLOSE*	- (default): disabled
 	//
 	// example:
 	//
@@ -126,33 +126,33 @@ type AddGtmAddressPoolRequest struct {
 	//
 	// example:
 	//
-	// Alibaba Cloud cluster
+	// 测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The health check protocol. Valid values:
 	//
-	// 	- HTTP
+	// - HTTP
 	//
-	// 	- HTTPS
+	// - HTTPS
 	//
-	// 	- Ping
+	// - Ping
 	//
-	// 	- TCP
+	// - TCP
 	//
 	// example:
 	//
-	// HTTPS
+	// TCP
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
 	// The timeout period. Unit: milliseconds. Valid values: 2000, 3000, 5000, and 10000.
 	//
 	// example:
 	//
-	// 60
+	// 5000
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 	// The type of the address pool. Valid values:
 	//
-	// 	- **IP**: IPv4 address
+	// - **IP**: IPv4 address
 	//
-	// 	- **DOMAIN**: domain name
+	// - **DOMAIN**: domain name
 	//
 	// This parameter is required.
 	//
@@ -310,29 +310,29 @@ func (s *AddGtmAddressPoolRequest) Validate() error {
 }
 
 type AddGtmAddressPoolRequestAddr struct {
-	// The weight of the address pool.
+	// The weight of the address.
 	//
 	// example:
 	//
 	// 1
 	LbaWeight *int32 `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
-	// The mode of the address pool. Valid values:
+	// The mode of the address. Valid values:
 	//
-	// 	- **SMART**: smart return
+	// - **SMART**: smart return
 	//
-	// 	- **ONLINE**: always online
+	// - **ONLINE**: always online
 	//
-	// 	- **OFFLINE**: always offline
+	// - **OFFLINE**: always offline
 	//
 	// example:
 	//
 	// SMART
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The address in the address pool.
+	// The address.
 	//
 	// example:
 	//
-	// 1.1.1.1
+	// 1.1.XX.XX
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -376,17 +376,17 @@ func (s *AddGtmAddressPoolRequestAddr) Validate() error {
 }
 
 type AddGtmAddressPoolRequestIspCityNode struct {
-	// The code of the city where the monitored node is deployed. For more information about specific values, see the response parameters of DescribeGtmMonitorAvailableConfig.
+	// The city code of the monitoring node. For information about valid values, see the response of DescribeGtmMonitorAvailableConfig.
 	//
 	// example:
 	//
 	// 546
 	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	// 	- The code of the Internet service provider (ISP) to which the monitored node belongs. For more information about specific values, see the response parameters of DescribeGtmMonitorAvailableConfig.
+	// - For information about valid values, see the response of DescribeGtmMonitorAvailableConfig.
 	//
-	// 	- If the value of the GroupType parameter is BGP or OVERSEAS, IspCode is optional. The default value is 465.
+	// - If GroupType is set to Border Gateway Protocol (BGP) or Overseas, IspCityNode.N.IspCode is optional. The default value is 465.
 	//
-	// 	- If the value of the GroupType parameter is not BGP or OVERSEAS, IspCode is required and is used together with CityCode.
+	// - If GroupType is not set to BGP or Overseas, IspCityNode.N.IspCode is required and must be used with IspCityNode.N.CityCode.
 	//
 	// example:
 	//

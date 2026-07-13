@@ -18,29 +18,29 @@ type iDeleteDomainRecordRequest interface {
 }
 
 type DeleteDomainRecordRequest struct {
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the DNS record. You can call the [DescribeDomainRecords](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomainrecords?spm=a2c63.p38356.help-menu-search-29697.d_0) to obtain the ID.
+	// The ID of the DNS record. Call the [DescribeDomainRecords](https://www.alibabacloud.com/help/en/dns/api-alidns-2015-01-09-describedomainrecords?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 9999985
+	// 99******
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The IP address of the client.
+	// The client IP address.
 	//
 	// example:
 	//
-	// 192.0.2.0
+	// 192.0.2.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 

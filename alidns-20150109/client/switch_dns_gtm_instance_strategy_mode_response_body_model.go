@@ -14,7 +14,7 @@ type iSwitchDnsGtmInstanceStrategyModeResponseBody interface {
 }
 
 type SwitchDnsGtmInstanceStrategyModeResponseBody struct {
-	// The ID of the request.
+	// The unique ID of the request.
 	//
 	// example:
 	//

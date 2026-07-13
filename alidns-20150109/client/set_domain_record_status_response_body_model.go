@@ -22,7 +22,7 @@ type SetDomainRecordStatusResponseBody struct {
 	//
 	// example:
 	//
-	// 9999985
+	// 9*******
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
 	// The request ID.
 	//
@@ -30,7 +30,7 @@ type SetDomainRecordStatusResponseBody struct {
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the DNS record.
+	// The current status of the DNS record.
 	//
 	// example:
 	//

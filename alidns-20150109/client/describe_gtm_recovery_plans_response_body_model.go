@@ -24,32 +24,32 @@ type iDescribeGtmRecoveryPlansResponseBody interface {
 }
 
 type DescribeGtmRecoveryPlansResponseBody struct {
-	// The page number of the returned page.
+	// The page number of the returned page. Pages start from **1**. The default value is **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries returned on each page. The maximum value is **100**. The default value is **20**.
 	//
 	// example:
 	//
 	// 20
 	PageSize      *int32                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RecoveryPlans *DescribeGtmRecoveryPlansResponseBodyRecoveryPlans `json:"RecoveryPlans,omitempty" xml:"RecoveryPlans,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// 2BA072CF-CA21-4A34-B6C2-227BE2C58079
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 10
 	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	// The total number of pages returned.
+	// The total number of pages.
 	//
 	// example:
 	//

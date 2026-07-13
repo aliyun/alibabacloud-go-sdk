@@ -16,9 +16,13 @@ type iDescribeGtmAvailableAlertGroupResponseBody interface {
 }
 
 type DescribeGtmAvailableAlertGroupResponseBody struct {
-	// The available alert groups of the GTM instance.
+	// The available alert contact groups.
+	//
+	// example:
+	//
+	// [\\"研发组\\",\\"GTM测试组\\"]
 	AvailableAlertGroup *string `json:"AvailableAlertGroup,omitempty" xml:"AvailableAlertGroup,omitempty"`
-	// The ID of the request.
+	// The unique request ID.
 	//
 	// example:
 	//

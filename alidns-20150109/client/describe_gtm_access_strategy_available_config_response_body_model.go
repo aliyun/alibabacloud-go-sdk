@@ -22,13 +22,13 @@ type iDescribeGtmAccessStrategyAvailableConfigResponseBody interface {
 type DescribeGtmAccessStrategyAvailableConfigResponseBody struct {
 	AddrPools *DescribeGtmAccessStrategyAvailableConfigResponseBodyAddrPools `json:"AddrPools,omitempty" xml:"AddrPools,omitempty" type:"Struct"`
 	Lines     *DescribeGtmAccessStrategyAvailableConfigResponseBodyLines     `json:"Lines,omitempty" xml:"Lines,omitempty" type:"Struct"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// C2851BA9-CE56-49AF-8D12-4FC6A49EE688
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the global line is recommended.
+	// Indicates whether a global line is suggested.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iMoveDomainResourceGroupResponseBody interface {
 }
 
 type MoveDomainResourceGroupResponseBody struct {
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//

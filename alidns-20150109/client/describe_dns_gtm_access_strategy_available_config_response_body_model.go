@@ -34,7 +34,7 @@ type DescribeDnsGtmAccessStrategyAvailableConfigResponseBody struct {
 	Ipv4AddrPools   *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv4AddrPools   `json:"Ipv4AddrPools,omitempty" xml:"Ipv4AddrPools,omitempty" type:"Struct"`
 	Ipv6AddrPools   *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv6AddrPools   `json:"Ipv6AddrPools,omitempty" xml:"Ipv6AddrPools,omitempty" type:"Struct"`
 	Lines           *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyLines           `json:"Lines,omitempty" xml:"Lines,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The unique request ID.
 	//
 	// example:
 	//
@@ -43,7 +43,7 @@ type DescribeDnsGtmAccessStrategyAvailableConfigResponseBody struct {
 	SelectedDomainLines *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedDomainLines `json:"SelectedDomainLines,omitempty" xml:"SelectedDomainLines,omitempty" type:"Struct"`
 	SelectedIpv4Lines   *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedIpv4Lines   `json:"SelectedIpv4Lines,omitempty" xml:"SelectedIpv4Lines,omitempty" type:"Struct"`
 	SelectedIpv6Lines   *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedIpv6Lines   `json:"SelectedIpv6Lines,omitempty" xml:"SelectedIpv6Lines,omitempty" type:"Struct"`
-	// Indicates whether we recommend that you set the source region to global.
+	// Indicates whether it is recommended to set a default line.
 	//
 	// example:
 	//

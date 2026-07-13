@@ -48,126 +48,126 @@ type iDescribeCloudGtmAddressResponseBody interface {
 }
 
 type DescribeCloudGtmAddressResponseBody struct {
-	// IP address or domain name.
+	// The IP address or domain name.
 	//
 	// example:
 	//
 	// 223.5.XX.XX
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The address ID. This ID uniquely identifies the address.
+	// The unique ID of the address.
 	//
 	// example:
 	//
-	// addr-89518218114368**92
+	// addr-89518218114368****
 	AddressId *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
-	// Address ownership information.
+	// The attribution information of the address.
 	//
 	// example:
 	//
-	// The current version does not support passing this parameter, please do not input the parameter.
+	// 当前版本不支持此参数，不会返回地址归属信息。
 	AttributeInfo *string `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty"`
-	// The failover method that is used if the address fails health checks. Valid values:
+	// The switchover mode for the address when a health check detects an exception:
 	//
-	// 	- auto: the automatic mode. The system determines whether to return an address based on the health check results. If the address fails health checks, the system does not return the address. If the address passes health checks, the system returns the address.
+	// - auto: Automatic mode. The system determines whether to stop or resume DNS resolution for the address based on health check results. DNS resolution is stopped if the address is abnormal and is resumed if the address becomes normal.
 	//
-	// 	- manual: the manual mode. If an address is in the unavailable state, the address is not returned for Domain Name System (DNS) requests even if the address passes health checks. If an address is in the available state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+	// - manual: Manual mode. You manually control the address status. If the address is set to abnormal, DNS resolution is stopped and is not resumed even if the health check result is normal. If the address is set to normal, DNS resolution is performed. An alert is triggered but DNS resolution is not stopped if a health check detects an exception.
 	//
 	// example:
 	//
 	// auto
 	AvailableMode *string `json:"AvailableMode,omitempty" xml:"AvailableMode,omitempty"`
-	// Address availability status:
+	// The availability status of the address:
 	//
-	// - available: Available
+	// - available: The address is available.
 	//
-	// - unavailable: Unavailable
+	// - unavailable: The address is unavailable.
 	//
 	// example:
 	//
 	// available
 	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
-	// Address creation time.
+	// The time when the address was created.
 	//
 	// example:
 	//
 	// 2024-03-23T13:09Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Creation time (timestamp).
+	// The UNIX timestamp when the address was created.
 	//
 	// example:
 	//
 	// 1527690629357
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// Indicates the current enabled status of the address:
+	// The enabled status of the address:
 	//
-	// enabled: enabled state
+	// enable: The address is enabled.
 	//
-	// disabled: disabled state
+	// disable: The address is disabled.
 	//
 	// example:
 	//
 	// enable
 	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
-	// The condition for determining the health status of the address. Valid values:
+	// The health determination condition for the address:
 	//
-	// 	- any_ok: The health check results of at least one health check template are normal.
+	// - any_ok: At least one health check probe is normal.
 	//
-	// 	- p30_ok: The health check results of at least 30% of health check templates are normal.
+	// - p30_ok: At least 30% of health check probes are normal.
 	//
-	// 	- p50_ok: The health check results of at least 50% of health check templates are normal.
+	// - p50_ok: At least 50% of health check probes are normal.
 	//
-	// 	- p70_ok: The health check results of at least 70% of health check templates are normal.
+	// - p70_ok: At least 70% of health check probes are normal.
 	//
-	// 	- all_ok: The health check results of all health check templates are normal.
+	// - all_ok: All health check probes are normal.
 	//
 	// example:
 	//
 	// p50_ok
 	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
-	// The health check state of the address. Valid values:
+	// The health check result of the address:
 	//
-	// 	- ok: The address passes all health checks of the referenced health check templates.
+	// - ok: All health check tasks that are associated with the address are normal.
 	//
-	// 	- ok_alert: The address fails some health checks of the referenced health check templates but the address is deemed normal.
+	// - ok_alert: Some health check tasks that are associated with the address are abnormal, but the address is still considered normal.
 	//
-	// 	- ok_no_monitor: The address does not reference a health check template.
+	// - ok_no_monitor: The address is not associated with any health check tasks.
 	//
-	// 	- exceptional: The address fails some or all health checks of the referenced health check templates and the address is deemed abnormal.
+	// - exceptional: Some or all health check tasks that are associated with the address are abnormal, and the address is considered abnormal.
 	//
 	// example:
 	//
 	// ok
 	HealthStatus *string                                         `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
 	HealthTasks  *DescribeCloudGtmAddressResponseBodyHealthTasks `json:"HealthTasks,omitempty" xml:"HealthTasks,omitempty" type:"Struct"`
-	// The availability state of the address when AvailableMode is set to manual. Valid values:
+	// The availability status of the address that is set when the switchover mode is manual:
 	//
-	// 	- available: The address is normal. In this state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+	// - available: The address is available. DNS resolution is performed for the address. If a health check detects an exception, an alert is triggered but DNS resolution is not stopped.
 	//
-	// 	- unavailable: The address is abnormal. In this state, the address is not returned for DNS requests even if the address passes health checks.
+	// - unavailable: The address is unavailable. DNS resolution is stopped for the address and is not resumed even if the health check result is normal.
 	//
 	// example:
 	//
 	// available
 	ManualAvailableStatus *string `json:"ManualAvailableStatus,omitempty" xml:"ManualAvailableStatus,omitempty"`
-	// Address name.
+	// The name of the address.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Remarks.
+	// The remarks.
 	//
 	// example:
 	//
 	// test1
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// Unique request identification code.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// B57C121B-A45F-44D8-A9B2-13E5A5044195
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Address type:
+	// The type of the address. Valid values:
 	//
 	// - IPv4
 	//
@@ -179,13 +179,13 @@ type DescribeCloudGtmAddressResponseBody struct {
 	//
 	// IPv4
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The last modification time of the address configuration.
+	// The time when the address configuration was last modified.
 	//
 	// example:
 	//
 	// 2024-03-29T13:20Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// Modified time (timestamp).
+	// The UNIX timestamp when the address was last modified.
 	//
 	// example:
 	//

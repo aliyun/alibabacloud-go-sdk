@@ -28,31 +28,45 @@ type iSearchRecursionRecordsResponseBody interface {
 }
 
 type SearchRecursionRecordsResponseBody struct {
+	// The maximum number of records returned for the current request.
+	//
 	// example:
 	//
 	// 500
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token for the next query.
+	//
 	// example:
 	//
 	// 4698691
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The current page number. The value starts from **1**. The default value is **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page. The maximum value is **100**. The default value is **20**.
+	//
 	// example:
 	//
 	// 1
 	PageSize *int32                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Records  *SearchRecursionRecordsResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
 	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 1

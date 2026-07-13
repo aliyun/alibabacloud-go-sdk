@@ -14,6 +14,8 @@ type iDescribeRecursionRecordRequest interface {
 }
 
 type DescribeRecursionRecordRequest struct {
+	// The unique ID of the DNS record.
+	//
 	// This parameter is required.
 	//
 	// example:

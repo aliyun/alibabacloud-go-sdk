@@ -24,9 +24,11 @@ type iUpdateGtmAddressPoolRequest interface {
 }
 
 type UpdateGtmAddressPoolRequest struct {
+	// The list of addresses in the address pool.
+	//
 	// This parameter is required.
 	Addr []*UpdateGtmAddressPoolRequestAddr `json:"Addr,omitempty" xml:"Addr,omitempty" type:"Repeated"`
-	// The ID of the address pool that you want to modify.
+	// The ID of the address pool.
 	//
 	// This parameter is required.
 	//
@@ -34,21 +36,29 @@ type UpdateGtmAddressPoolRequest struct {
 	//
 	// 1234abc
 	AddrPoolId *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
-	// The language used by the user.
+	// The language.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The minimum number of available addresses in the address pool.
+	// The minimum number of active addresses in the address pool.
 	//
 	// example:
 	//
 	// 2
 	MinAvailableAddrNum *int32 `json:"MinAvailableAddrNum,omitempty" xml:"MinAvailableAddrNum,omitempty"`
-	// The name of the address pool that you want to modify.
+	// The name of the address pool.
+	//
+	// example:
+	//
+	// 名称
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the address pool that you want to modify.
+	// The type of the address pool. Valid values:
+	//
+	// - IP: IPv4 addresses
+	//
+	// - DOMAIN: Domain names
 	//
 	// This parameter is required.
 	//
@@ -134,29 +144,29 @@ func (s *UpdateGtmAddressPoolRequest) Validate() error {
 }
 
 type UpdateGtmAddressPoolRequestAddr struct {
-	// The weight of the address pool that you want to modify.
+	// The weight of the address.
 	//
 	// example:
 	//
 	// 1
 	LbaWeight *int32 `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
-	// The mode of the address pool that you want to modify.
+	// The mode. Valid values:
 	//
-	// 	- **SMART**: Intelligent return
+	// - **SMART**: Intelligent return
 	//
-	// 	- **ONLINE**: Always online
+	// - **ONLINE**: Always online
 	//
-	// 	- **OFFLINE**: Always offline
+	// - **OFFLINE**: Always offline
 	//
 	// example:
 	//
 	// SMART
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The addresses in the address pool.
+	// The address.
 	//
 	// example:
 	//
-	// 1.1.1.1
+	// 1.1.XX.XX
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

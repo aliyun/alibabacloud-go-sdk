@@ -22,15 +22,15 @@ type iUpdateCloudGtmInstanceNameRequest interface {
 type UpdateCloudGtmInstanceNameRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh-CN: Chinese
+	// - zh-CN: Chinese
 	//
-	// 	- en-US: English
+	// - en-US: English
 	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can contain a maximum of 64 ASCII characters.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type UpdateCloudGtmInstanceNameRequest struct {
 	//
 	// gtm-cn-jmp3qnw**03
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the instance. You cannot leave this parameter empty.
+	// The name of the instance. The value cannot be empty.
 	//
 	// example:
 	//

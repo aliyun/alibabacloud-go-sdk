@@ -16,9 +16,9 @@ type iDescribeCloudGtmSummaryRequest interface {
 type DescribeCloudGtmSummaryRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh-CN: Chinese
+	// - zh-CN: Chinese.
 	//
-	// 	- en-US: English
+	// - en-US: English.
 	//
 	// example:
 	//

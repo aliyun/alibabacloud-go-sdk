@@ -20,7 +20,7 @@ type iCopyGtmConfigRequest interface {
 }
 
 type CopyGtmConfigRequest struct {
-	// The type of the object that is copied. Only the INSTANCE type is supported.
+	// The type of copy. Only INSTANCE is supported.
 	//
 	// This parameter is required.
 	//

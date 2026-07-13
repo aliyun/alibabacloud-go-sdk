@@ -40,11 +40,11 @@ type DescribeBatchResultCountResponseBody struct {
 	//
 	// 2
 	FailedCount *int32 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	// The cause of the execution failure.
+	// The reason why the task failed.
 	//
 	// example:
 	//
-	// failed_reason
+	// No match is found for the domain name specified in the file.
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The request ID.
 	//
@@ -52,21 +52,21 @@ type DescribeBatchResultCountResponseBody struct {
 	//
 	// 75446CC1-FC9A-4595-8D96-089D73D7A63D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The state of the task. Valid values:
+	// The status of the task. Valid values:
 	//
-	// 	- **-1**: No task for importing domain names or DNS records is submitted.
+	// - **-1**: No task was submitted to import domain names or DNS records.
 	//
-	// 	- **0**: The task is being processed.
+	// - **0**: Processing
 	//
-	// 	- **1**: The task is complete.
+	// - **1**: Completed
 	//
-	// 	- **2**: The task failed.
+	// - **2**: Failed
 	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The total number of domain names or DNS records that were processed.
+	// The total number of domain names or DNS records that were successfully processed.
 	//
 	// example:
 	//
@@ -76,9 +76,9 @@ type DescribeBatchResultCountResponseBody struct {
 	//
 	// example:
 	//
-	// 123456
+	// 1******
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The total number of DNS records that were processed in batches.
+	// The total number of records that are processed in batches.
 	//
 	// example:
 	//

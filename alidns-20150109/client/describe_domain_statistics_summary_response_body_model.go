@@ -30,26 +30,26 @@ type DescribeDomainStatisticsSummaryResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries returned on each page.
 	//
 	// example:
 	//
 	// 5
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// CC625C21-8832-4683-BF10-C3CFB1A4FA13
 	RequestId  *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Statistics *DescribeDomainStatisticsSummaryResponseBodyStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Struct"`
-	// The total number of data records.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 68
 	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	// The total number of returned pages.
+	// The total number of pages.
 	//
 	// example:
 	//

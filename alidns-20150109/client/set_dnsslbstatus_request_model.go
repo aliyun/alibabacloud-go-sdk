@@ -32,33 +32,33 @@ type SetDNSSLBStatusRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The language of the content within the request and response. Default: **zh**. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The DNS resolution line. The line can be the default line, China Telecom, and China Mobile.
+	// The DNS resolution line, such as default, telecom, or mobile.
 	//
 	// example:
 	//
-	// China Mobile.
+	// telecom
 	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
-	// Specifies whether to enable or disable weighted round-robin. Valid values:
+	// Specifies whether to enable the weight configuration. Valid values:
 	//
-	// 	- **true*	- (default): enables weighted round-robin.
+	// - **true*	- (default): Enable
 	//
-	// 	- **false**: disables weighted round-robin.
+	// - **false**: Disable
 	//
 	// example:
 	//
 	// true
 	Open *bool `json:"Open,omitempty" xml:"Open,omitempty"`
-	// The subdomain name for which you want to enable weighted round-robin. Set the parameter to @.example.com instead of example.com.
+	// The subdomain for which to configure weights. A primary domain name, such as example.com, is not valid. Use @.example.com instead.
 	//
 	// This parameter is required.
 	//
@@ -66,17 +66,17 @@ type SetDNSSLBStatusRequest struct {
 	//
 	// www.example.com
 	SubDomain *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
-	// The type of the Domain Name System (DNS) record. Valid values: A and AAAA. Default value: A.
+	// The type of the DNS record. Valid values: A and AAAA. Default value: A.
 	//
 	// example:
 	//
 	// A
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The IP address of the client.
+	// The IP address of the user.
 	//
 	// example:
 	//
-	// 192.0.2.0
+	// 192.0.2.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 

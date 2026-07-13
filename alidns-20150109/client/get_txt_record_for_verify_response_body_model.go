@@ -24,25 +24,25 @@ type iGetTxtRecordForVerifyResponseBody interface {
 type GetTxtRecordForVerifyResponseBody struct {
 	// The domain name.
 	//
-	// >  If you do not specify this parameter, it is not returned.
+	// > This parameter is not returned if no value is specified for the DomainName parameter in the request.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The top-level domain name.
+	// The top-level domain (TLD).
 	//
 	// example:
 	//
 	// com
 	ParentDomainName *string `json:"ParentDomainName,omitempty" xml:"ParentDomainName,omitempty"`
-	// The hostname.
+	// The host record.
 	//
 	// example:
 	//
-	// aliyunRetrieval
+	// aliyun******
 	RR *string `json:"RR,omitempty" xml:"RR,omitempty"`
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetTxtRecordForVerifyResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The record value.
 	//
-	// >  The validity period is three days.
+	// > The value is valid for three days.
 	//
 	// example:
 	//

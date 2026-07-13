@@ -20,7 +20,7 @@ type iListCloudGtmMonitorNodesResponseBody interface {
 type ListCloudGtmMonitorNodesResponseBody struct {
 	Ipv4IspCityNodes *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodes `json:"Ipv4IspCityNodes,omitempty" xml:"Ipv4IspCityNodes,omitempty" type:"Struct"`
 	Ipv6IspCityNodes *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodes `json:"Ipv6IspCityNodes,omitempty" xml:"Ipv6IspCityNodes,omitempty" type:"Struct"`
-	// Unique request identification code.
+	// The unique request ID.
 	//
 	// example:
 	//

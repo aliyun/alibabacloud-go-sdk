@@ -22,19 +22,19 @@ type iUpdateCloudGtmGlobalAlertShrinkRequest interface {
 type UpdateCloudGtmGlobalAlertShrinkRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh-CN: Chinese
+	// - `zh-CN`: Chinese
 	//
-	// 	- en-US: English
+	// - `en-US`: English
 	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The alert configurations.
+	// A list of alert configurations.
 	AlertConfigShrink *string `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty"`
-	// The alert contact groups.
+	// A list of alert notification groups.
 	AlertGroupShrink *string `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client-generated token to ensure request idempotence. This token must be unique for each request, contain only ASCII characters, and be no more than 64 characters in length.
 	//
 	// example:
 	//

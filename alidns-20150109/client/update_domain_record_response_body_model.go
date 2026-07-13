@@ -20,7 +20,7 @@ type UpdateDomainRecordResponseBody struct {
 	//
 	// example:
 	//
-	// 9999985
+	// 99******
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
 	// The request ID.
 	//

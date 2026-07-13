@@ -18,7 +18,7 @@ type iDeleteSubDomainRecordsResponseBody interface {
 }
 
 type DeleteSubDomainRecordsResponseBody struct {
-	// The hostname.
+	// The host record.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type DeleteSubDomainRecordsResponseBody struct {
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of the DNS records to be deleted.
+	// The total number of DNS records that were deleted.
 	//
 	// example:
 	//

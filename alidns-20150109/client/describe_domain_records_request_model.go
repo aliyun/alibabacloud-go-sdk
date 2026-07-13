@@ -42,13 +42,15 @@ type iDescribeDomainRecordsRequest interface {
 }
 
 type DescribeDomainRecordsRequest struct {
-	// The order in which you want to sort the returned DNS records. Valid values: DESC and ASC. Default value: DESC.
+	// The sorting direction. Valid values: DESC, ASC. Default value: DESC.
 	//
 	// example:
 	//
 	// DESC
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The domain name. You can call the [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the domain name.
+	// The domain name.<props="china"> For more information, see [DescribeDomains](https://help.aliyun.com/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c4g.11186623.help-menu-search-29697.d_0).
+	//
+	// <props="intl">For more information, see [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0).
 	//
 	// This parameter is required.
 	//
@@ -56,23 +58,25 @@ type DescribeDomainRecordsRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The ID of the domain name group.
+	// The ID of the domain group.
 	//
-	// 	- If you do not specify GroupId, all domain names are queried.
+	// - If you do not specify GroupId, the query is performed on all domain names.
 	//
-	// 	- If you set GroupId to 0, no value is returned.
+	// - If you set GroupId to 0, an empty result is returned.
 	//
-	// 	- If you set GroupId to 1, the domain names in the default group are queried.
+	// - If you set GroupId to -1, the query is performed on the default group. The default group includes domain names that are not assigned to a group.
 	//
-	// 	- If you set GroupId to -2, all domain names are queried.
+	// - If you set GroupId to -2, the query is performed on all domain names.
 	//
-	// 	- You can also specify GroupId based on the actual group ID.
+	// - If you specify another value for GroupId, the query is performed on the specified group.
 	//
-	// You can call the [DescribeDomainGroups ](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomaingroups?spm=a2c63.p38356.help-menu-search-29697.d_0)operation to obtain the ID of the domain name group.
+	//   <props="china">For more information, see [DescribeDomainGroups](https://help.aliyun.com/zh/dns/api-alidns-2015-01-09-describedomaingroups?spm=a2c4g.11186623.help-menu-search-29697.d_0).
+	//
+	//   <props="intl">For more information, see [DescribeDomainGroups](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomaingroups?spm=a2c63.p38356.help-menu-search-29697.d_0).
 	//
 	// example:
 	//
-	// 2223
+	// 2****
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The keyword.
 	//
@@ -80,83 +84,99 @@ type DescribeDomainRecordsRequest struct {
 	//
 	// test
 	KeyWord *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
-	// The language.
+	// The language of the request and response. Default value: **zh**. Valid values:
+	//
+	// - **zh**: Chinese
+	//
+	// - **en**: English
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The resolution line. Default value: **default**.
+	// The DNS resolution line. Default value: **default**.
 	//
-	// For more information, see
+	// For more information, see:
 	//
-	// [DNS lines](https://www.alibabacloud.com/help/zh/doc-detail/29807.htm).
+	// <props="china">[Enumeration of DNS resolution lines](https://help.aliyun.com/document_detail/29807.html).
+	//
+	// <props="intl">
+	//
+	// [Enumeration of DNS resolution lines](https://www.alibabacloud.com/help/zh/doc-detail/29807.htm)
 	//
 	// example:
 	//
 	// cn_mobile_anhui
 	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
-	// The method that is used to sort the returned DNS records. By default, the DNS records are sorted in reverse chronological order based on the time when they were added.
+	// The sorting method. Records are sorted in descending order based on the time they were added.
 	//
 	// example:
 	//
 	// default
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The page number. Pages start from page **1**. Default value: **1**.
+	// The page number. The value starts from **1**. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: **1 to 500**. Default value: **20**.
+	// The number of entries to return on each page for a paged query. Maximum value: **500**. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The hostname keyword based on which the system queries DNS records. The system queries DNS records based on the value of this parameter in fuzzy match mode. The value is not case-sensitive.
+	// The keyword for the host record. The search uses a fuzzy match pattern and is not case-sensitive.
 	//
 	// example:
 	//
 	// www
 	RRKeyWord *string `json:"RRKeyWord,omitempty" xml:"RRKeyWord,omitempty"`
-	// The search mode. Valid values: **LIKE, EXACT, and ADVANCED**.
+	// The search mode. Valid values: LIKE, EXACT, ADVANCED, and **COMBINATION**.
 	//
-	// 	- If you set SearchMode to LIKE or EXACT, specify KeyWord. In this case, RRKeyWord, TypeKeyWord, ValueKeyWord, Type, Line, and Status are invalid.
+	// - If you set this parameter to LIKE or EXACT, use the KeyWord parameter. The RRKeyWord, TypeKeyWord, ValueKeyWord, Type, Line, and Status parameters are invalid.
 	//
-	// 	- If you set SearchMode to ADVANCED, specify RRKeyWord, TypeKeyWord, ValueKeyWord, Type, Line, and Status.
+	// - If you set this parameter to ADVANCED, use the RRKeyWord, TypeKeyWord, ValueKeyWord, Type, Line, and Status parameters. The RRKeyWord and ValueKeyWord parameters support fuzzy matching.
 	//
-	// 	- If you do not specify SearchMode, the system determines the search mode based on the following rules:
+	// - If you set this parameter to COMBINATION, use the RRKeyWord, TypeKeyWord, ValueKeyWord, Type, Line, and Status parameters. All these parameters support only exact matching.
 	//
-	//     	- If KeyWord is specified, the system uses the LIKE mode.
+	// - If you do not specify this parameter:
 	//
-	//     	- If KeyWord is not specified, the system queries DNS records based on values of RRKeyWord and ValueKeyWord in fuzzy match mode, and based on the values of TypeKeyWord, Type, Line, and Status in exact match mode.
+	//   - If you specify the keyWord parameter, the search mode is set to LIKE.
+	//
+	//   - If you do not specify the keyWord parameter, RRKeyWord and ValueKeyWord support fuzzy matching, and TypeKeyWord, Type, Line, and Status support exact matching.
 	//
 	// example:
 	//
 	// LIKE
 	SearchMode *string `json:"SearchMode,omitempty" xml:"SearchMode,omitempty"`
-	// The status of the DNS records to query. Valid values: **Enable and Disable**.
+	// The status of the DNS record. Valid values:
+	//
+	// Enable: The DNS record is enabled.
+	//
+	// Disable: The DNS record is paused.
 	//
 	// example:
 	//
 	// Enable
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the DNS records to query. For more information, see
+	// The type of the DNS record. For more information, see:
 	//
-	// [DNS record types](https://www.alibabacloud.com/help/zh/doc-detail/29805.htm).
+	// <props="china">[DNS record types](https://help.aliyun.com/document_detail/29805.html)
+	//
+	// <props="intl">[DNS record types](https://www.alibabacloud.com/help/zh/doc-detail/29805.htm)
 	//
 	// example:
 	//
 	// A
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The type keyword based on which the system queries DNS records. The system queries DNS records based on the value of this parameter in exact match mode. The value is not case-sensitive.
+	// The keyword for the record type. The search uses an exact match and is not case-sensitive.
 	//
 	// example:
 	//
 	// MX
 	TypeKeyWord *string `json:"TypeKeyWord,omitempty" xml:"TypeKeyWord,omitempty"`
-	// The record value keyword based on which the system queries DNS records. The system queries DNS records based on the value of this parameter in fuzzy match mode. The value is not case-sensitive.
+	// The keyword for the record value. The search uses a fuzzy match pattern and is not case-sensitive.
 	//
 	// example:
 	//

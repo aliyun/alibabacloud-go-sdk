@@ -18,15 +18,23 @@ type iAddRecursionZoneResponseBody interface {
 }
 
 type AddRecursionZoneResponseBody struct {
+	// The unique request ID.
+	//
 	// example:
 	//
 	// 51899B6F-04A5-5B96-977D-340673091ACA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful. Valid values:
+	//
+	// - true: The operation was successful.
+	//
+	// - false: The operation failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Zone ID。
+	// The zone ID.
 	//
 	// example:
 	//

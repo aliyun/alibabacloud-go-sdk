@@ -14,7 +14,7 @@ type iUpdateGtmInstanceGlobalConfigResponseBody interface {
 }
 
 type UpdateGtmInstanceGlobalConfigResponseBody struct {
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//

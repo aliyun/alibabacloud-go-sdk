@@ -24,32 +24,32 @@ type iListCloudGtmMonitorTemplatesResponseBody interface {
 }
 
 type ListCloudGtmMonitorTemplatesResponseBody struct {
-	// Current page number, starting from 1, default is 1.
+	// The number of the returned page. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of rows per page when paginating queries, with a maximum value of 100 and a default of 20.
+	// The number of entries returned on each page. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Unique request identification code.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// 75446CC1-FC9A-4595-8D96-089D73D7A63D
 	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Templates *ListCloudGtmMonitorTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Struct"`
-	// Total number of health check template entries retrieved.
+	// The total number of health check templates.
 	//
 	// example:
 	//
 	// 30
 	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	// Total number of pages after data pagination.
+	// The total number of pages returned.
 	//
 	// example:
 	//

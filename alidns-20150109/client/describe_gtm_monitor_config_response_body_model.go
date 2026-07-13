@@ -42,13 +42,13 @@ type DescribeGtmMonitorConfigResponseBody struct {
 	//
 	// 2017-12-28T13:08Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The timestamp that indicates the time when the health check configuration was created.
+	// The UNIX timestamp that indicates when the health check configuration was created.
 	//
 	// example:
 	//
 	// 1527690629357
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The maximum number of consecutive exceptions detected. If the number of consecutive exceptions detected reaches the maximum number, the application service is deemed abnormal.
+	// The number of consecutive health checks.
 	//
 	// example:
 	//
@@ -67,33 +67,33 @@ type DescribeGtmMonitorConfigResponseBody struct {
 	//
 	// 1234abc
 	MonitorConfigId *string `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
-	// The extended information, that is, the parameters required for the protocol. Different protocols require different parameters:
+	// The extended information. The parameters vary based on the protocol.
 	//
-	// HTTP or HTTPS:
+	// For HTTP and HTTPS:
 	//
-	// 	- port: the port to check.
+	// - port: The health check port.
 	//
-	// 	- failureRate: the failure rate.
+	// - failureRate: The failure rate.
 	//
-	// 	- code: the status code threshold. If the returned status code is greater than the specified threshold, the application service is deemed abnormal. Valid values: 400 and 500.
+	// - code: The return code. A response is considered abnormal if its status code is greater than the specified value. Valid values: 400 and 500.
 	//
-	// 	- host: the host configuration.
+	// - host: The Host header of the request.
 	//
-	// 	- path: the health check URL.
+	// - path: The path of the URL.
 	//
-	// PING:
+	// For PING:
 	//
-	// 	- packetNum: the number of ping packets.
+	// - packetNum: The number of ping packets.
 	//
-	// 	- packetLossRate: the loss rate of ping packets.
+	// - packetLossRate: The packet loss rate.
 	//
-	// 	- failureRate: the failure rate.
+	// - failureRate: The failure rate.
 	//
-	// TCP:
+	// For TCP:
 	//
-	// 	- port: the port to check.
+	// - port: The health check port.
 	//
-	// 	- failureRate: the failure rate.
+	// - failureRate: The failure rate.
 	//
 	// example:
 	//
@@ -105,13 +105,13 @@ type DescribeGtmMonitorConfigResponseBody struct {
 	//
 	// HTTP
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	// The ID of the request.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// 6856BCF6-11D6-4D7E-AC53-FD579933522B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The health check timeout period. Unit: milliseconds. Valid values: 2000, 3000, 5000, and 10000.
+	// The timeout period. Unit: milliseconds. Valid values: 2000, 3000, 5000, and 10000.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ type DescribeGtmMonitorConfigResponseBody struct {
 	//
 	// 2017-12-28T13:08Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The timestamp that indicates the time when the health check configuration was last updated.
+	// The UNIX timestamp that indicates when the health check configuration was last updated.
 	//
 	// example:
 	//

@@ -48,7 +48,7 @@ type DescribeDnsGtmInstanceAddressPoolResponseBody struct {
 	//
 	// example:
 	//
-	// testpool1
+	// test*****
 	AddrPoolId *string                                             `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
 	Addrs      *DescribeDnsGtmInstanceAddressPoolResponseBodyAddrs `json:"Addrs,omitempty" xml:"Addrs,omitempty" type:"Struct"`
 	// The time when the address pool was created.
@@ -57,21 +57,21 @@ type DescribeDnsGtmInstanceAddressPoolResponseBody struct {
 	//
 	// 2017-12-28T13:08Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The timestamp that indicates the time when the address pool was created.
+	// The time when the address pool was created. This value is a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1527690629357
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The load balancing policy for the address pool. Valid values:
+	// The load balancing policy.
 	//
-	// 	- ALL_RR: returns all addresses.
+	// - ALL_RR: Returns all addresses.
 	//
-	// 	- RATIO: returns addresses by weight.
+	// - RATIO: Returns addresses by weight.
 	//
 	// example:
 	//
-	// all_rr
+	// ALL_RR
 	LbaStrategy *string `json:"LbaStrategy,omitempty" xml:"LbaStrategy,omitempty"`
 	// The ID of the health check configuration.
 	//
@@ -79,17 +79,17 @@ type DescribeDnsGtmInstanceAddressPoolResponseBody struct {
 	//
 	// test1
 	MonitorConfigId *string `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
-	// Indicates the status of the health check. Valid values:
+	// The health check status of the address pool.
 	//
-	// 	- OPEN: The health check is enabled.
+	// - OPEN: Enabled
 	//
-	// 	- CLOSE: The health check is disabled.
+	// - CLOSE: Disabled
 	//
-	// 	- UNCONFIGURED: The health check is not configured.
+	// - UNCONFIGURED: Not configured
 	//
 	// example:
 	//
-	// open
+	// OPEN
 	MonitorStatus *string `json:"MonitorStatus,omitempty" xml:"MonitorStatus,omitempty"`
 	// The name of the address pool.
 	//
@@ -97,23 +97,23 @@ type DescribeDnsGtmInstanceAddressPoolResponseBody struct {
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the request.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// 6856BCF6-11D6-4D7E-AC53-FD579933522B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The type of the address pool. Valid values:
+	// The type of the address pool.
 	//
-	// 	- IPV4: IPv4 address
+	// - IPV4: IPv4 address
 	//
-	// 	- IPV6: IPv6 address
+	// - IPV6: IPv6 address
 	//
-	// 	- DOMAIN: domain name
+	// - DOMAIN: Domain name
 	//
 	// example:
 	//
-	// ipv4
+	// IPV4
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The time when the address pool was last updated.
 	//
@@ -121,7 +121,7 @@ type DescribeDnsGtmInstanceAddressPoolResponseBody struct {
 	//
 	// 2017-12-28T13:08Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The timestamp that indicates the time when the address pool was last updated.
+	// The time when the address pool was last updated. This value is a UNIX timestamp.
 	//
 	// example:
 	//

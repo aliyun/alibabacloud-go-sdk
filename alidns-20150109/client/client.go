@@ -24,7 +24,10 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("central")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"public": dara.String("alidns.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,13 +61,13 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Adds a custom line to the domain name.
+// Adds a custom line for a domain name.
 //
 // Description:
 //
-// In each CIDR block, the end IP address must be greater than or equal to the start IP address.\\
+// The end IP address of an IP address segment must be greater than or equal to its start IP address.
 //
-// The CIDR blocks that are specified for all custom lines of a domain name cannot be overlapped.
+// The IP address ranges of segments cannot overlap across any custom lines for the domain name.
 //
 // @param request - AddCustomLineRequest
 //
@@ -120,13 +123,13 @@ func (client *Client) AddCustomLineWithOptions(request *AddCustomLineRequest, ru
 
 // Summary:
 //
-// Adds a custom line to the domain name.
+// Adds a custom line for a domain name.
 //
 // Description:
 //
-// In each CIDR block, the end IP address must be greater than or equal to the start IP address.\\
+// The end IP address of an IP address segment must be greater than or equal to its start IP address.
 //
-// The CIDR blocks that are specified for all custom lines of a domain name cannot be overlapped.
+// The IP address ranges of segments cannot overlap across any custom lines for the domain name.
 //
 // @param request - AddCustomLineRequest
 //
@@ -144,7 +147,7 @@ func (client *Client) AddCustomLine(request *AddCustomLineRequest) (_result *Add
 
 // Summary:
 //
-// Adds a cache-accelerated domain name based on the specified parameters.
+// Adds a domain name to the DNS authoritative proxy service.
 //
 // @param request - AddDnsCacheDomainRequest
 //
@@ -220,7 +223,7 @@ func (client *Client) AddDnsCacheDomainWithOptions(request *AddDnsCacheDomainReq
 
 // Summary:
 //
-// Adds a cache-accelerated domain name based on the specified parameters.
+// Adds a domain name to the DNS authoritative proxy service.
 //
 // @param request - AddDnsCacheDomainRequest
 //
@@ -238,7 +241,7 @@ func (client *Client) AddDnsCacheDomain(request *AddDnsCacheDomainRequest) (_res
 
 // Summary:
 //
-// Creates an access policy.
+// Adds an access strategy.
 //
 // @param request - AddDnsGtmAccessStrategyRequest
 //
@@ -346,7 +349,7 @@ func (client *Client) AddDnsGtmAccessStrategyWithOptions(request *AddDnsGtmAcces
 
 // Summary:
 //
-// Creates an access policy.
+// Adds an access strategy.
 //
 // @param request - AddDnsGtmAccessStrategyRequest
 //
@@ -364,7 +367,7 @@ func (client *Client) AddDnsGtmAccessStrategy(request *AddDnsGtmAccessStrategyRe
 
 // Summary:
 //
-// Creates an address pool.
+// Adds an address pool.
 //
 // @param request - AddDnsGtmAddressPoolRequest
 //
@@ -456,7 +459,7 @@ func (client *Client) AddDnsGtmAddressPoolWithOptions(request *AddDnsGtmAddressP
 
 // Summary:
 //
-// Creates an address pool.
+// Adds an address pool.
 //
 // @param request - AddDnsGtmAddressPoolRequest
 //
@@ -474,7 +477,7 @@ func (client *Client) AddDnsGtmAddressPool(request *AddDnsGtmAddressPoolRequest)
 
 // Summary:
 //
-// Creates a health check task.
+// Creates a health check.
 //
 // Description:
 //
@@ -550,7 +553,7 @@ func (client *Client) AddDnsGtmMonitorWithOptions(request *AddDnsGtmMonitorReque
 
 // Summary:
 //
-// Creates a health check task.
+// Creates a health check.
 //
 // Description:
 //
@@ -572,13 +575,11 @@ func (client *Client) AddDnsGtmMonitor(request *AddDnsGtmMonitorRequest) (_resul
 
 // Summary:
 //
-// Adds a domain name based on the specified parameters.
+// Adds a domain name.
 //
 // Description:
 //
-// # For more information about how to check whether a domain name is valid, see
-//
-// [Domain name validity](https://www.alibabacloud.com/help/zh/doc-detail/67788.htm).
+// For more information, see <props="china">[Domain name validity](https://help.aliyun.com/document_detail/67788.html)<props="intl">[Domain name validity](https://www.alibabacloud.com/help/zh/doc-detail/67788.htm).
 //
 // @param request - AddDomainRequest
 //
@@ -634,13 +635,11 @@ func (client *Client) AddDomainWithOptions(request *AddDomainRequest, runtime *d
 
 // Summary:
 //
-// Adds a domain name based on the specified parameters.
+// Adds a domain name.
 //
 // Description:
 //
-// # For more information about how to check whether a domain name is valid, see
-//
-// [Domain name validity](https://www.alibabacloud.com/help/zh/doc-detail/67788.htm).
+// For more information, see <props="china">[Domain name validity](https://help.aliyun.com/document_detail/67788.html)<props="intl">[Domain name validity](https://www.alibabacloud.com/help/zh/doc-detail/67788.htm).
 //
 // @param request - AddDomainRequest
 //
@@ -658,7 +657,7 @@ func (client *Client) AddDomain(request *AddDomainRequest) (_result *AddDomainRe
 
 // Summary:
 //
-// Creates a backup for the domain name based on the specified domain name and backup cycle.
+// Creates a backup for a domain based on the specified domain name and backup cycle.
 //
 // @param request - AddDomainBackupRequest
 //
@@ -710,7 +709,7 @@ func (client *Client) AddDomainBackupWithOptions(request *AddDomainBackupRequest
 
 // Summary:
 //
-// Creates a backup for the domain name based on the specified domain name and backup cycle.
+// Creates a backup for a domain based on the specified domain name and backup cycle.
 //
 // @param request - AddDomainBackupRequest
 //
@@ -728,7 +727,7 @@ func (client *Client) AddDomainBackup(request *AddDomainBackupRequest) (_result 
 
 // Summary:
 //
-// Creates a domain name group based on the specified parameters.
+// Creates a domain name group.
 //
 // @param request - AddDomainGroupRequest
 //
@@ -776,7 +775,7 @@ func (client *Client) AddDomainGroupWithOptions(request *AddDomainGroupRequest, 
 
 // Summary:
 //
-// Creates a domain name group based on the specified parameters.
+// Creates a domain name group.
 //
 // @param request - AddDomainGroupRequest
 //
@@ -794,7 +793,7 @@ func (client *Client) AddDomainGroup(request *AddDomainGroupRequest) (_result *A
 
 // Summary:
 //
-// Adds a Domain Name System (DNS) record based on the specified parameters.
+// Adds a DNS record.
 //
 // @param request - AddDomainRecordRequest
 //
@@ -870,7 +869,7 @@ func (client *Client) AddDomainRecordWithOptions(request *AddDomainRecordRequest
 
 // Summary:
 //
-// Adds a Domain Name System (DNS) record based on the specified parameters.
+// Adds a DNS record.
 //
 // @param request - AddDomainRecordRequest
 //
@@ -888,7 +887,7 @@ func (client *Client) AddDomainRecord(request *AddDomainRecordRequest) (_result 
 
 // Summary:
 //
-// You can call this operation to create an access policy for a Global Traffic Manager (GTM) instance.
+// Creates an access strategy based on the specified parameters.
 //
 // @param request - AddGtmAccessStrategyRequest
 //
@@ -952,7 +951,7 @@ func (client *Client) AddGtmAccessStrategyWithOptions(request *AddGtmAccessStrat
 
 // Summary:
 //
-// You can call this operation to create an access policy for a Global Traffic Manager (GTM) instance.
+// Creates an access strategy based on the specified parameters.
 //
 // @param request - AddGtmAccessStrategyRequest
 //
@@ -970,7 +969,7 @@ func (client *Client) AddGtmAccessStrategy(request *AddGtmAccessStrategyRequest)
 
 // Summary:
 //
-// Creates an address pool.
+// Adds an address pool.
 //
 // @param request - AddGtmAddressPoolRequest
 //
@@ -1062,7 +1061,7 @@ func (client *Client) AddGtmAddressPoolWithOptions(request *AddGtmAddressPoolReq
 
 // Summary:
 //
-// Creates an address pool.
+// Adds an address pool.
 //
 // @param request - AddGtmAddressPoolRequest
 //
@@ -1080,7 +1079,7 @@ func (client *Client) AddGtmAddressPool(request *AddGtmAddressPoolRequest) (_res
 
 // Summary:
 //
-// Creates a health check task.
+// Adds a health check.
 //
 // @param request - AddGtmMonitorRequest
 //
@@ -1152,7 +1151,7 @@ func (client *Client) AddGtmMonitorWithOptions(request *AddGtmMonitorRequest, ru
 
 // Summary:
 //
-// Creates a health check task.
+// Adds a health check.
 //
 // @param request - AddGtmMonitorRequest
 //
@@ -1170,7 +1169,7 @@ func (client *Client) AddGtmMonitor(request *AddGtmMonitorRequest) (_result *Add
 
 // Summary:
 //
-// Creates a disaster recovery plan.
+// Adds a disaster recovery plan.
 //
 // @param request - AddGtmRecoveryPlanRequest
 //
@@ -1226,7 +1225,7 @@ func (client *Client) AddGtmRecoveryPlanWithOptions(request *AddGtmRecoveryPlanR
 
 // Summary:
 //
-// Creates a disaster recovery plan.
+// Adds a disaster recovery plan.
 //
 // @param request - AddGtmRecoveryPlanRequest
 //
@@ -1244,7 +1243,17 @@ func (client *Client) AddGtmRecoveryPlan(request *AddGtmRecoveryPlanRequest) (_r
 
 // Summary:
 //
-// # Adds HTTPDNS authoritative DNS resolution records
+// Adds an authoritative record for recursive resolution.
+//
+// Description:
+//
+// - You can specify a domain name (DomainName), page number (PageNumber), and page size (PageSize) to retrieve the list of DNS records for that domain name.
+//
+// - To find DNS records that contain a specific keyword, you can specify the keyword for the host record (RRKeyWord), record type (TypeKeyWord), or record value (ValueKeyWord).
+//
+// - By default, the list of DNS records is sorted from newest to oldest.
+//
+// - You can specify a domain group ID (GroupId). The \\`All Domains\\` group includes all domain names. The \\`Default Group\\` includes domain names that are not assigned to a group.
 //
 // @param request - AddRecursionRecordRequest
 //
@@ -1324,7 +1333,17 @@ func (client *Client) AddRecursionRecordWithOptions(request *AddRecursionRecordR
 
 // Summary:
 //
-// # Adds HTTPDNS authoritative DNS resolution records
+// Adds an authoritative record for recursive resolution.
+//
+// Description:
+//
+// - You can specify a domain name (DomainName), page number (PageNumber), and page size (PageSize) to retrieve the list of DNS records for that domain name.
+//
+// - To find DNS records that contain a specific keyword, you can specify the keyword for the host record (RRKeyWord), record type (TypeKeyWord), or record value (ValueKeyWord).
+//
+// - By default, the list of DNS records is sorted from newest to oldest.
+//
+// - You can specify a domain group ID (GroupId). The \\`All Domains\\` group includes all domain names. The \\`Default Group\\` includes domain names that are not assigned to a group.
 //
 // @param request - AddRecursionRecordRequest
 //
@@ -1342,7 +1361,13 @@ func (client *Client) AddRecursionRecord(request *AddRecursionRecordRequest) (_r
 
 // Summary:
 //
-// # Adds HTTPDNS zone
+// Adds a built-in authoritative domain name zone for recursive resolution.
+//
+// Description:
+//
+// The end IP address of each IP range must be greater than or equal to the start IP address.
+//
+// The IP address ranges of all IP ranges in all custom lines for a domain name cannot overlap.
 //
 // @param request - AddRecursionZoneRequest
 //
@@ -1394,7 +1419,13 @@ func (client *Client) AddRecursionZoneWithOptions(request *AddRecursionZoneReque
 
 // Summary:
 //
-// # Adds HTTPDNS zone
+// Adds a built-in authoritative domain name zone for recursive resolution.
+//
+// Description:
+//
+// The end IP address of each IP range must be greater than or equal to the start IP address.
+//
+// The IP address ranges of all IP ranges in all custom lines for a domain name cannot overlap.
 //
 // @param request - AddRecursionZoneRequest
 //
@@ -1412,21 +1443,13 @@ func (client *Client) AddRecursionZone(request *AddRecursionZoneRequest) (_resul
 
 // Summary:
 //
-// 用于添加特定域名的serverHold状态信息。
+// Adds the serverHold status to a specified domain name.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 本接口专为注册局用户设计，允许他们更新指定顶级域名（TLD）的各种属性。
-//
-// - 必须提供`RegistryId`和`Tld`参数以标识要修改的具体TLD。
-//
-// - 可选参数包括但不限于宽限期设置、DNS解析缓存时间、价格设定等，这些都可根据需要进行调整。
-//
-// - 环境(`Env`)参数指定了API调用的目标环境，默认值为“DAILY”表示日常测试环境；正式上线前，请确保已正确设置此参数。
-//
-// - 某些时间戳字段如`SunriseStartTimeStamp`要求输入Unix时间戳格式的数据。
+// - This API adds the serverHold property to a specified domain name.
 //
 // @param request - AddRspDomainServerHoldStatusForGatewayRequest
 //
@@ -1478,21 +1501,13 @@ func (client *Client) AddRspDomainServerHoldStatusForGatewayWithOptions(request 
 
 // Summary:
 //
-// 用于添加特定域名的serverHold状态信息。
+// Adds the serverHold status to a specified domain name.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 本接口专为注册局用户设计，允许他们更新指定顶级域名（TLD）的各种属性。
-//
-// - 必须提供`RegistryId`和`Tld`参数以标识要修改的具体TLD。
-//
-// - 可选参数包括但不限于宽限期设置、DNS解析缓存时间、价格设定等，这些都可根据需要进行调整。
-//
-// - 环境(`Env`)参数指定了API调用的目标环境，默认值为“DAILY”表示日常测试环境；正式上线前，请确保已正确设置此参数。
-//
-// - 某些时间戳字段如`SunriseStartTimeStamp`要求输入Unix时间戳格式的数据。
+// - This API adds the serverHold property to a specified domain name.
 //
 // @param request - AddRspDomainServerHoldStatusForGatewayRequest
 //
@@ -1510,21 +1525,13 @@ func (client *Client) AddRspDomainServerHoldStatusForGateway(request *AddRspDoma
 
 // Summary:
 //
-// 用于删除特定域名的serverHold状态信息。
+// Adds the serverHold status for a specified domain name.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 本接口专为注册局用户设计，允许他们更新指定顶级域名（TLD）的各种属性。
-//
-// - 必须提供`RegistryId`和`Tld`参数以标识要修改的具体TLD。
-//
-// - 可选参数包括但不限于宽限期设置、DNS解析缓存时间、价格设定等，这些都可根据需要进行调整。
-//
-// - 环境(`Env`)参数指定了API调用的目标环境，默认值为“DAILY”表示日常测试环境；正式上线前，请确保已正确设置此参数。
-//
-// - 某些时间戳字段如`SunriseStartTimeStamp`要求输入Unix时间戳格式的数据。
+// - Adds the serverHold status for a specified domain name.
 //
 // @param request - AddRspDomainServerHoldStatusForGatewayOteRequest
 //
@@ -1576,21 +1583,13 @@ func (client *Client) AddRspDomainServerHoldStatusForGatewayOteWithOptions(reque
 
 // Summary:
 //
-// 用于删除特定域名的serverHold状态信息。
+// Adds the serverHold status for a specified domain name.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 本接口专为注册局用户设计，允许他们更新指定顶级域名（TLD）的各种属性。
-//
-// - 必须提供`RegistryId`和`Tld`参数以标识要修改的具体TLD。
-//
-// - 可选参数包括但不限于宽限期设置、DNS解析缓存时间、价格设定等，这些都可根据需要进行调整。
-//
-// - 环境(`Env`)参数指定了API调用的目标环境，默认值为“DAILY”表示日常测试环境；正式上线前，请确保已正确设置此参数。
-//
-// - 某些时间戳字段如`SunriseStartTimeStamp`要求输入Unix时间戳格式的数据。
+// - Adds the serverHold status for a specified domain name.
 //
 // @param request - AddRspDomainServerHoldStatusForGatewayOteRequest
 //
@@ -1608,13 +1607,13 @@ func (client *Client) AddRspDomainServerHoldStatusForGatewayOte(request *AddRspD
 
 // Summary:
 //
-// Binds one or more domain names to a paid Alibaba Cloud DNS instance.
+// Binds paid domain names in Alibaba Cloud DNS to an instance ID.
 //
 // Description:
 //
-// A paid Alibaba Cloud DNS instance whose ID starts with dns is an instance of the new version. You can call this API operation to bind multiple domain names to the instance. If the upper limit is exceeded, an error message is returned.\\
+// An instance is considered a new instance if its ID starts with \\"dns-\\". New instances support multiple domain names. You can call this operation to bind domain names directly to the instance. An error occurs if the number of domain names exceeds the instance\\"s limit.
 //
-// A paid Alibaba Cloud DNS instance whose ID does not start with dns is an instance of the old version. You can call this API operation to bind only one domain name to the instance. However, if the instance is already bound to a domain name, you must unbind the original domain name from the instance and bind the desired domain name to the instance.
+// An instance is considered a legacy instance if its ID does not start with \\"dns-\\". Legacy instances support only one domain name. If you call this operation on a legacy instance that already has a domain name, the existing domain name is replaced.
 //
 // @param request - BindInstanceDomainsRequest
 //
@@ -1666,13 +1665,13 @@ func (client *Client) BindInstanceDomainsWithOptions(request *BindInstanceDomain
 
 // Summary:
 //
-// Binds one or more domain names to a paid Alibaba Cloud DNS instance.
+// Binds paid domain names in Alibaba Cloud DNS to an instance ID.
 //
 // Description:
 //
-// A paid Alibaba Cloud DNS instance whose ID starts with dns is an instance of the new version. You can call this API operation to bind multiple domain names to the instance. If the upper limit is exceeded, an error message is returned.\\
+// An instance is considered a new instance if its ID starts with \\"dns-\\". New instances support multiple domain names. You can call this operation to bind domain names directly to the instance. An error occurs if the number of domain names exceeds the instance\\"s limit.
 //
-// A paid Alibaba Cloud DNS instance whose ID does not start with dns is an instance of the old version. You can call this API operation to bind only one domain name to the instance. However, if the instance is already bound to a domain name, you must unbind the original domain name from the instance and bind the desired domain name to the instance.
+// An instance is considered a legacy instance if its ID does not start with \\"dns-\\". Legacy instances support only one domain name. If you call this operation on a legacy instance that already has a domain name, the existing domain name is replaced.
 //
 // @param request - BindInstanceDomainsRequest
 //
@@ -1690,11 +1689,11 @@ func (client *Client) BindInstanceDomains(request *BindInstanceDomainsRequest) (
 
 // Summary:
 //
-// Moves a domain name from the original group to the new group based on the specified parameters.
+// Moves a domain name to a new group.
 //
 // Description:
 //
-// You can specify GroupId to move a domain name to a specific domain name group. You can move the domain name to the group that contains all domain names or the default group.
+// You can specify the ID of a domain name group (GroupId). The All Domains group contains all domain names, while the Default group contains domain names that are not assigned to any group.
 //
 // @param request - ChangeDomainGroupRequest
 //
@@ -1746,11 +1745,11 @@ func (client *Client) ChangeDomainGroupWithOptions(request *ChangeDomainGroupReq
 
 // Summary:
 //
-// Moves a domain name from the original group to the new group based on the specified parameters.
+// Moves a domain name to a new group.
 //
 // Description:
 //
-// You can specify GroupId to move a domain name to a specific domain name group. You can move the domain name to the group that contains all domain names or the default group.
+// You can specify the ID of a domain name group (GroupId). The All Domains group contains all domain names, while the Default group contains domain names that are not assigned to any group.
 //
 // @param request - ChangeDomainGroupRequest
 //
@@ -1768,13 +1767,13 @@ func (client *Client) ChangeDomainGroup(request *ChangeDomainGroupRequest) (_res
 
 // Summary:
 //
-// Changes the domain name that is bound to an Alibaba Cloud DNS instance.
+// Changes the domain name that is attached to a Cloud DNS product.
 //
 // Description:
 //
-//	  **You can call this operation regardless of whether the Alibaba Cloud DNS instance is bound to a domain name. You can also call this operation to unbind the domain name from the Alibaba Cloud DNS instance by leaving the NewDomain parameter empty.**
+// - **You can call this operation to change the domain name that is attached to a Cloud DNS product. To detach a domain name, call this operation and leave the NewDomain parameter empty.**
 //
-//		- **This operation applies to instances of the custom edition. To change the domain name that is bound to an Alibaba Cloud DNS instance of Personal Edition, Enterprise Standard Edition, or Enterprise Ultimate Edition, call the BindInstanceDomains operation.
+// - **This operation applies to instances of earlier versions. If you use a new edition, such as Personal Edition, Enterprise Standard Edition, or Enterprise Ultimate Edition, call the BindInstanceDomains operation instead.**
 //
 // @param request - ChangeDomainOfDnsProductRequest
 //
@@ -1834,13 +1833,13 @@ func (client *Client) ChangeDomainOfDnsProductWithOptions(request *ChangeDomainO
 
 // Summary:
 //
-// Changes the domain name that is bound to an Alibaba Cloud DNS instance.
+// Changes the domain name that is attached to a Cloud DNS product.
 //
 // Description:
 //
-//	  **You can call this operation regardless of whether the Alibaba Cloud DNS instance is bound to a domain name. You can also call this operation to unbind the domain name from the Alibaba Cloud DNS instance by leaving the NewDomain parameter empty.**
+// - **You can call this operation to change the domain name that is attached to a Cloud DNS product. To detach a domain name, call this operation and leave the NewDomain parameter empty.**
 //
-//		- **This operation applies to instances of the custom edition. To change the domain name that is bound to an Alibaba Cloud DNS instance of Personal Edition, Enterprise Standard Edition, or Enterprise Ultimate Edition, call the BindInstanceDomains operation.
+// - **This operation applies to instances of earlier versions. If you use a new edition, such as Personal Edition, Enterprise Standard Edition, or Enterprise Ultimate Edition, call the BindInstanceDomains operation instead.**
 //
 // @param request - ChangeDomainOfDnsProductRequest
 //
@@ -1858,7 +1857,7 @@ func (client *Client) ChangeDomainOfDnsProduct(request *ChangeDomainOfDnsProduct
 
 // Summary:
 //
-// Copies the configurations of a Global Traffic Manager (GTM) instance.
+// Copies a Global Traffic Manager (GTM) configuration.
 //
 // @param request - CopyGtmConfigRequest
 //
@@ -1914,7 +1913,7 @@ func (client *Client) CopyGtmConfigWithOptions(request *CopyGtmConfigRequest, ru
 
 // Summary:
 //
-// Copies the configurations of a Global Traffic Manager (GTM) instance.
+// Copies a Global Traffic Manager (GTM) configuration.
 //
 // @param request - CopyGtmConfigRequest
 //
@@ -1932,7 +1931,267 @@ func (client *Client) CopyGtmConfig(request *CopyGtmConfigRequest) (_result *Cop
 
 // Summary:
 //
-// Creates an address.
+// Registers an agent.
+//
+// @param tmpReq - CreateAtiAgentRegisterInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAtiAgentRegisterInfoResponse
+func (client *Client) CreateAtiAgentRegisterInfoWithOptions(tmpReq *CreateAtiAgentRegisterInfoRequest, runtime *dara.RuntimeOptions) (_result *CreateAtiAgentRegisterInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateAtiAgentRegisterInfoShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Endpoints) {
+		request.EndpointsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Endpoints, dara.String("Endpoints"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentDescription) {
+		query["AgentDescription"] = request.AgentDescription
+	}
+
+	if !dara.IsNil(request.AgentDisplayName) {
+		query["AgentDisplayName"] = request.AgentDisplayName
+	}
+
+	if !dara.IsNil(request.AgentHost) {
+		query["AgentHost"] = request.AgentHost
+	}
+
+	if !dara.IsNil(request.AgentVersion) {
+		query["AgentVersion"] = request.AgentVersion
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.EndpointsShrink) {
+		query["Endpoints"] = request.EndpointsShrink
+	}
+
+	if !dara.IsNil(request.RegistrantId) {
+		query["RegistrantId"] = request.RegistrantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAtiAgentRegisterInfo"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAtiAgentRegisterInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Registers an agent.
+//
+// @param request - CreateAtiAgentRegisterInfoRequest
+//
+// @return CreateAtiAgentRegisterInfoResponse
+func (client *Client) CreateAtiAgentRegisterInfo(request *CreateAtiAgentRegisterInfoRequest) (_result *CreateAtiAgentRegisterInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateAtiAgentRegisterInfoResponse{}
+	_body, _err := client.CreateAtiAgentRegisterInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Registers an agent - Step 2: Generates a DNS record for domain ownership verification.
+//
+// @param request - CreateAtiAgentRegisterInfoAcmeChallengeRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAtiAgentRegisterInfoAcmeChallengeRecordResponse
+func (client *Client) CreateAtiAgentRegisterInfoAcmeChallengeRecordWithOptions(request *CreateAtiAgentRegisterInfoAcmeChallengeRecordRequest, runtime *dara.RuntimeOptions) (_result *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentRegisterInfoId) {
+		query["AgentRegisterInfoId"] = request.AgentRegisterInfoId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAtiAgentRegisterInfoAcmeChallengeRecord"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAtiAgentRegisterInfoAcmeChallengeRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Registers an agent - Step 2: Generates a DNS record for domain ownership verification.
+//
+// @param request - CreateAtiAgentRegisterInfoAcmeChallengeRecordRequest
+//
+// @return CreateAtiAgentRegisterInfoAcmeChallengeRecordResponse
+func (client *Client) CreateAtiAgentRegisterInfoAcmeChallengeRecord(request *CreateAtiAgentRegisterInfoAcmeChallengeRecordRequest) (_result *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateAtiAgentRegisterInfoAcmeChallengeRecordResponse{}
+	_body, _err := client.CreateAtiAgentRegisterInfoAcmeChallengeRecordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits a real-name registrant.
+//
+// @param request - CreateAtiRegistrantRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAtiRegistrantResponse
+func (client *Client) CreateAtiRegistrantWithOptions(request *CreateAtiRegistrantRequest, runtime *dara.RuntimeOptions) (_result *CreateAtiRegistrantResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Cc) {
+		query["Cc"] = request.Cc
+	}
+
+	if !dara.IsNil(request.City) {
+		query["City"] = request.City
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DocumentCode) {
+		query["DocumentCode"] = request.DocumentCode
+	}
+
+	if !dara.IsNil(request.DocumentImage) {
+		query["DocumentImage"] = request.DocumentImage
+	}
+
+	if !dara.IsNil(request.DocumentType) {
+		query["DocumentType"] = request.DocumentType
+	}
+
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Phone) {
+		query["Phone"] = request.Phone
+	}
+
+	if !dara.IsNil(request.State) {
+		query["State"] = request.State
+	}
+
+	if !dara.IsNil(request.Street) {
+		query["Street"] = request.Street
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAtiRegistrant"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAtiRegistrantResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits a real-name registrant.
+//
+// @param request - CreateAtiRegistrantRequest
+//
+// @return CreateAtiRegistrantResponse
+func (client *Client) CreateAtiRegistrant(request *CreateAtiRegistrantRequest) (_result *CreateAtiRegistrantResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateAtiRegistrantResponse{}
+	_body, _err := client.CreateAtiRegistrantWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an address in Global Traffic Manager (GTM) 3.0.
 //
 // @param tmpReq - CreateCloudGtmAddressRequest
 //
@@ -2026,7 +2285,7 @@ func (client *Client) CreateCloudGtmAddressWithOptions(tmpReq *CreateCloudGtmAdd
 
 // Summary:
 //
-// Creates an address.
+// Creates an address in Global Traffic Manager (GTM) 3.0.
 //
 // @param request - CreateCloudGtmAddressRequest
 //
@@ -2044,7 +2303,7 @@ func (client *Client) CreateCloudGtmAddress(request *CreateCloudGtmAddressReques
 
 // Summary:
 //
-// Creates an address pool.
+// Creates an address pool based on the specified parameters.
 //
 // @param request - CreateCloudGtmAddressPoolRequest
 //
@@ -2112,7 +2371,7 @@ func (client *Client) CreateCloudGtmAddressPoolWithOptions(request *CreateCloudG
 
 // Summary:
 //
-// Creates an address pool.
+// Creates an address pool based on the specified parameters.
 //
 // @param request - CreateCloudGtmAddressPoolRequest
 //
@@ -2130,7 +2389,7 @@ func (client *Client) CreateCloudGtmAddressPool(request *CreateCloudGtmAddressPo
 
 // Summary:
 //
-// 创建gtm实例配置
+// Creates a configuration for a Global Traffic Manager (GTM) instance.
 //
 // @param request - CreateCloudGtmInstanceConfigRequest
 //
@@ -2214,7 +2473,7 @@ func (client *Client) CreateCloudGtmInstanceConfigWithOptions(request *CreateClo
 
 // Summary:
 //
-// 创建gtm实例配置
+// Creates a configuration for a Global Traffic Manager (GTM) instance.
 //
 // @param request - CreateCloudGtmInstanceConfigRequest
 //
@@ -2232,7 +2491,7 @@ func (client *Client) CreateCloudGtmInstanceConfig(request *CreateCloudGtmInstan
 
 // Summary:
 //
-// Creates a health check template.
+// Creates a health check template in Global Traffic Manager (GTM) 3.0.
 //
 // @param tmpReq - CreateCloudGtmMonitorTemplateRequest
 //
@@ -2322,7 +2581,7 @@ func (client *Client) CreateCloudGtmMonitorTemplateWithOptions(tmpReq *CreateClo
 
 // Summary:
 //
-// Creates a health check template.
+// Creates a health check template in Global Traffic Manager (GTM) 3.0.
 //
 // @param request - CreateCloudGtmMonitorTemplateRequest
 //
@@ -2340,7 +2599,7 @@ func (client *Client) CreateCloudGtmMonitorTemplate(request *CreateCloudGtmMonit
 
 // Summary:
 //
-// Creates an AppKey in Alibaba Cloud Public DNS.
+// Creates a public DNS AccessKey.
 //
 // @param request - CreatePdnsAppKeyRequest
 //
@@ -2388,7 +2647,7 @@ func (client *Client) CreatePdnsAppKeyWithOptions(request *CreatePdnsAppKeyReque
 
 // Summary:
 //
-// Creates an AppKey in Alibaba Cloud Public DNS.
+// Creates a public DNS AccessKey.
 //
 // @param request - CreatePdnsAppKeyRequest
 //
@@ -2406,7 +2665,7 @@ func (client *Client) CreatePdnsAppKey(request *CreatePdnsAppKeyRequest) (_resul
 
 // Summary:
 //
-// 创建公共DNS Udp Ip地址段
+// # Create Public DNS UDP IP Address Segment
 //
 // @param request - CreatePdnsUdpIpSegmentRequest
 //
@@ -2462,7 +2721,7 @@ func (client *Client) CreatePdnsUdpIpSegmentWithOptions(request *CreatePdnsUdpIp
 
 // Summary:
 //
-// 创建公共DNS Udp Ip地址段
+// # Create Public DNS UDP IP Address Segment
 //
 // @param request - CreatePdnsUdpIpSegmentRequest
 //
@@ -2471,6 +2730,138 @@ func (client *Client) CreatePdnsUdpIpSegment(request *CreatePdnsUdpIpSegmentRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreatePdnsUdpIpSegmentResponse{}
 	_body, _err := client.CreatePdnsUdpIpSegmentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes Agent registration information.
+//
+// @param request - DeleteAtiAgentRegisterInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAtiAgentRegisterInfoResponse
+func (client *Client) DeleteAtiAgentRegisterInfoWithOptions(request *DeleteAtiAgentRegisterInfoRequest, runtime *dara.RuntimeOptions) (_result *DeleteAtiAgentRegisterInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentRegisterInfoId) {
+		query["AgentRegisterInfoId"] = request.AgentRegisterInfoId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAtiAgentRegisterInfo"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAtiAgentRegisterInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes Agent registration information.
+//
+// @param request - DeleteAtiAgentRegisterInfoRequest
+//
+// @return DeleteAtiAgentRegisterInfoResponse
+func (client *Client) DeleteAtiAgentRegisterInfo(request *DeleteAtiAgentRegisterInfoRequest) (_result *DeleteAtiAgentRegisterInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteAtiAgentRegisterInfoResponse{}
+	_body, _err := client.DeleteAtiAgentRegisterInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Revokes a verified registrant.
+//
+// @param request - DeleteAtiRegistrantRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAtiRegistrantResponse
+func (client *Client) DeleteAtiRegistrantWithOptions(request *DeleteAtiRegistrantRequest, runtime *dara.RuntimeOptions) (_result *DeleteAtiRegistrantResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.RegistrantId) {
+		query["RegistrantId"] = request.RegistrantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAtiRegistrant"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAtiRegistrantResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Revokes a verified registrant.
+//
+// @param request - DeleteAtiRegistrantRequest
+//
+// @return DeleteAtiRegistrantResponse
+func (client *Client) DeleteAtiRegistrant(request *DeleteAtiRegistrantRequest) (_result *DeleteAtiRegistrantResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteAtiRegistrantResponse{}
+	_body, _err := client.DeleteAtiRegistrantWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2620,7 +3011,7 @@ func (client *Client) DeleteCloudGtmAddressPool(request *DeleteCloudGtmAddressPo
 
 // Summary:
 //
-// Deletes an access domain name that is configured for a Global Traffic Manager (GTM) 3.0 instance.
+// Deletes an access domain name from the configuration of a Global Traffic Manager (GTM) 3.0 instance.
 //
 // @param request - DeleteCloudGtmInstanceConfigRequest
 //
@@ -2676,7 +3067,7 @@ func (client *Client) DeleteCloudGtmInstanceConfigWithOptions(request *DeleteClo
 
 // Summary:
 //
-// Deletes an access domain name that is configured for a Global Traffic Manager (GTM) 3.0 instance.
+// Deletes an access domain name from the configuration of a Global Traffic Manager (GTM) 3.0 instance.
 //
 // @param request - DeleteCloudGtmInstanceConfigRequest
 //
@@ -2764,7 +3155,7 @@ func (client *Client) DeleteCloudGtmMonitorTemplate(request *DeleteCloudGtmMonit
 
 // Summary:
 //
-// Deletes custom lines at a time by using the unique IDs.
+// Deletes a batch of custom lines by specifying their unique IDs.
 //
 // @param request - DeleteCustomLinesRequest
 //
@@ -2812,7 +3203,7 @@ func (client *Client) DeleteCustomLinesWithOptions(request *DeleteCustomLinesReq
 
 // Summary:
 //
-// Deletes custom lines at a time by using the unique IDs.
+// Deletes a batch of custom lines by specifying their unique IDs.
 //
 // @param request - DeleteCustomLinesRequest
 //
@@ -2830,7 +3221,7 @@ func (client *Client) DeleteCustomLines(request *DeleteCustomLinesRequest) (_res
 
 // Summary:
 //
-// Deletes a specified cache-accelerated domain name.
+// Deletes a specified domain name from the authoritative DNS proxy.
 //
 // @param request - DeleteDnsCacheDomainRequest
 //
@@ -2878,7 +3269,7 @@ func (client *Client) DeleteDnsCacheDomainWithOptions(request *DeleteDnsCacheDom
 
 // Summary:
 //
-// Deletes a specified cache-accelerated domain name.
+// Deletes a specified domain name from the authoritative DNS proxy.
 //
 // @param request - DeleteDnsCacheDomainRequest
 //
@@ -2896,7 +3287,7 @@ func (client *Client) DeleteDnsCacheDomain(request *DeleteDnsCacheDomainRequest)
 
 // Summary:
 //
-// Deletes an access policy by policy ID.
+// Deletes an access policy by its ID.
 //
 // @param request - DeleteDnsGtmAccessStrategyRequest
 //
@@ -2944,7 +3335,7 @@ func (client *Client) DeleteDnsGtmAccessStrategyWithOptions(request *DeleteDnsGt
 
 // Summary:
 //
-// Deletes an access policy by policy ID.
+// Deletes an access policy by its ID.
 //
 // @param request - DeleteDnsGtmAccessStrategyRequest
 //
@@ -2962,7 +3353,7 @@ func (client *Client) DeleteDnsGtmAccessStrategy(request *DeleteDnsGtmAccessStra
 
 // Summary:
 //
-// Deletes an address pool by address pool ID.
+// Deletes an address pool by its ID.
 //
 // @param request - DeleteDnsGtmAddressPoolRequest
 //
@@ -3010,7 +3401,7 @@ func (client *Client) DeleteDnsGtmAddressPoolWithOptions(request *DeleteDnsGtmAd
 
 // Summary:
 //
-// Deletes an address pool by address pool ID.
+// Deletes an address pool by its ID.
 //
 // @param request - DeleteDnsGtmAddressPoolRequest
 //
@@ -3028,7 +3419,7 @@ func (client *Client) DeleteDnsGtmAddressPool(request *DeleteDnsGtmAddressPoolRe
 
 // Summary:
 //
-// Deletes a domain name based on the specified parameters.
+// Deletes the specified domain name.
 //
 // @param request - DeleteDomainRequest
 //
@@ -3076,7 +3467,7 @@ func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runt
 
 // Summary:
 //
-// Deletes a domain name based on the specified parameters.
+// Deletes the specified domain name.
 //
 // @param request - DeleteDomainRequest
 //
@@ -3094,11 +3485,11 @@ func (client *Client) DeleteDomain(request *DeleteDomainRequest) (_result *Delet
 
 // Summary:
 //
-// Deletes a domain name group. After you delete the domain name group, the domain names in the group are moved to the default group.
+// Deletes a domain name group and moves its domain names to the default group.
 //
 // Description:
 //
-// >  The default group cannot be deleted.
+// > The default group cannot be deleted.
 //
 // @param request - DeleteDomainGroupRequest
 //
@@ -3146,11 +3537,11 @@ func (client *Client) DeleteDomainGroupWithOptions(request *DeleteDomainGroupReq
 
 // Summary:
 //
-// Deletes a domain name group. After you delete the domain name group, the domain names in the group are moved to the default group.
+// Deletes a domain name group and moves its domain names to the default group.
 //
 // Description:
 //
-// >  The default group cannot be deleted.
+// > The default group cannot be deleted.
 //
 // @param request - DeleteDomainGroupRequest
 //
@@ -3168,7 +3559,7 @@ func (client *Client) DeleteDomainGroup(request *DeleteDomainGroupRequest) (_res
 
 // Summary:
 //
-// Deletes an Alibaba Cloud DNS (DNS) record based on the specified parameters.
+// Deletes a DNS record based on the specified request parameters.
 //
 // @param request - DeleteDomainRecordRequest
 //
@@ -3220,7 +3611,7 @@ func (client *Client) DeleteDomainRecordWithOptions(request *DeleteDomainRecordR
 
 // Summary:
 //
-// Deletes an Alibaba Cloud DNS (DNS) record based on the specified parameters.
+// Deletes a DNS record based on the specified request parameters.
 //
 // @param request - DeleteDomainRecordRequest
 //
@@ -3238,7 +3629,7 @@ func (client *Client) DeleteDomainRecord(request *DeleteDomainRecordRequest) (_r
 
 // Summary:
 //
-// You can call this operation to delete an access policy of a Global Traffic Manager (GTM) instance.
+// Deletes an access policy.
 //
 // @param request - DeleteGtmAccessStrategyRequest
 //
@@ -3286,7 +3677,7 @@ func (client *Client) DeleteGtmAccessStrategyWithOptions(request *DeleteGtmAcces
 
 // Summary:
 //
-// You can call this operation to delete an access policy of a Global Traffic Manager (GTM) instance.
+// Deletes an access policy.
 //
 // @param request - DeleteGtmAccessStrategyRequest
 //
@@ -3304,7 +3695,7 @@ func (client *Client) DeleteGtmAccessStrategy(request *DeleteGtmAccessStrategyRe
 
 // Summary:
 //
-// You can call this operation to delete an address pool of a Global Traffic Manager (GTM).
+// Deletes an address pool.
 //
 // @param request - DeleteGtmAddressPoolRequest
 //
@@ -3352,7 +3743,7 @@ func (client *Client) DeleteGtmAddressPoolWithOptions(request *DeleteGtmAddressP
 
 // Summary:
 //
-// You can call this operation to delete an address pool of a Global Traffic Manager (GTM).
+// Deletes an address pool.
 //
 // @param request - DeleteGtmAddressPoolRequest
 //
@@ -3436,7 +3827,7 @@ func (client *Client) DeleteGtmRecoveryPlan(request *DeleteGtmRecoveryPlanReques
 
 // Summary:
 //
-// # Deletes HTTPDNS resolution records
+// Deletes a built-in authoritative DNS record used for recursive resolution.
 //
 // @param request - DeleteRecursionRecordRequest
 //
@@ -3484,7 +3875,7 @@ func (client *Client) DeleteRecursionRecordWithOptions(request *DeleteRecursionR
 
 // Summary:
 //
-// # Deletes HTTPDNS resolution records
+// Deletes a built-in authoritative DNS record used for recursive resolution.
 //
 // @param request - DeleteRecursionRecordRequest
 //
@@ -3502,7 +3893,11 @@ func (client *Client) DeleteRecursionRecord(request *DeleteRecursionRecordReques
 
 // Summary:
 //
-// # Deletes HTTPDNS authoritative domain zone
+// Deletes a built-in authoritative zone used for recursive resolution.
+//
+// Description:
+//
+// If a zone contains locked DNS records, this operation does not delete them.
 //
 // @param request - DeleteRecursionZoneRequest
 //
@@ -3550,7 +3945,11 @@ func (client *Client) DeleteRecursionZoneWithOptions(request *DeleteRecursionZon
 
 // Summary:
 //
-// # Deletes HTTPDNS authoritative domain zone
+// Deletes a built-in authoritative zone used for recursive resolution.
+//
+// Description:
+//
+// If a zone contains locked DNS records, this operation does not delete them.
 //
 // @param request - DeleteRecursionZoneRequest
 //
@@ -3568,11 +3967,11 @@ func (client *Client) DeleteRecursionZone(request *DeleteRecursionZoneRequest) (
 
 // Summary:
 //
-// Deletes the DNS records that are corresponding to a hostname based on the specified parameters.
+// Deletes the DNS records for a specified host record.
 //
 // Description:
 //
-// If the DNS records to be deleted contain locked DNS records, the locked DNS records will not be deleted.
+// Locked DNS records will not be deleted.
 //
 // @param request - DeleteSubDomainRecordsRequest
 //
@@ -3632,11 +4031,11 @@ func (client *Client) DeleteSubDomainRecordsWithOptions(request *DeleteSubDomain
 
 // Summary:
 //
-// Deletes the DNS records that are corresponding to a hostname based on the specified parameters.
+// Deletes the DNS records for a specified host record.
 //
 // Description:
 //
-// If the DNS records to be deleted contain locked DNS records, the locked DNS records will not be deleted.
+// Locked DNS records will not be deleted.
 //
 // @param request - DeleteSubDomainRecordsRequest
 //
@@ -3654,7 +4053,267 @@ func (client *Client) DeleteSubDomainRecords(request *DeleteSubDomainRecordsRequ
 
 // Summary:
 //
-// Queries the execution result of a batch operation task based on the task ID. If you do not specify task ID, the execution result of the last batch operation task is returned.
+// Queries the details of an Agent registration.
+//
+// @param request - DescribeAtiAgentRegisterInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAtiAgentRegisterInfoResponse
+func (client *Client) DescribeAtiAgentRegisterInfoWithOptions(request *DescribeAtiAgentRegisterInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeAtiAgentRegisterInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentRegisterInfoId) {
+		query["AgentRegisterInfoId"] = request.AgentRegisterInfoId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAtiAgentRegisterInfo"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAtiAgentRegisterInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of an Agent registration.
+//
+// @param request - DescribeAtiAgentRegisterInfoRequest
+//
+// @return DescribeAtiAgentRegisterInfoResponse
+func (client *Client) DescribeAtiAgentRegisterInfo(request *DescribeAtiAgentRegisterInfoRequest) (_result *DescribeAtiAgentRegisterInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeAtiAgentRegisterInfoResponse{}
+	_body, _err := client.DescribeAtiAgentRegisterInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries alert settings.
+//
+// @param request - DescribeAtiAlertSettingsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAtiAlertSettingsResponse
+func (client *Client) DescribeAtiAlertSettingsWithOptions(request *DescribeAtiAlertSettingsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAtiAlertSettingsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAtiAlertSettings"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAtiAlertSettingsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries alert settings.
+//
+// @param request - DescribeAtiAlertSettingsRequest
+//
+// @return DescribeAtiAlertSettingsResponse
+func (client *Client) DescribeAtiAlertSettings(request *DescribeAtiAlertSettingsRequest) (_result *DescribeAtiAlertSettingsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeAtiAlertSettingsResponse{}
+	_body, _err := client.DescribeAtiAlertSettingsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a certificate.
+//
+// @param request - DescribeAtiCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAtiCertificateResponse
+func (client *Client) DescribeAtiCertificateWithOptions(request *DescribeAtiCertificateRequest, runtime *dara.RuntimeOptions) (_result *DescribeAtiCertificateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentCertificateId) {
+		query["AgentCertificateId"] = request.AgentCertificateId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAtiCertificate"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAtiCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a certificate.
+//
+// @param request - DescribeAtiCertificateRequest
+//
+// @return DescribeAtiCertificateResponse
+func (client *Client) DescribeAtiCertificate(request *DescribeAtiCertificateRequest) (_result *DescribeAtiCertificateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeAtiCertificateResponse{}
+	_body, _err := client.DescribeAtiCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of a real-name verified registrant.
+//
+// @param request - DescribeAtiRegistrantRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAtiRegistrantResponse
+func (client *Client) DescribeAtiRegistrantWithOptions(request *DescribeAtiRegistrantRequest, runtime *dara.RuntimeOptions) (_result *DescribeAtiRegistrantResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.RegistrantId) {
+		query["RegistrantId"] = request.RegistrantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAtiRegistrant"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAtiRegistrantResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of a real-name verified registrant.
+//
+// @param request - DescribeAtiRegistrantRequest
+//
+// @return DescribeAtiRegistrantResponse
+func (client *Client) DescribeAtiRegistrant(request *DescribeAtiRegistrantRequest) (_result *DescribeAtiRegistrantResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeAtiRegistrantResponse{}
+	_body, _err := client.DescribeAtiRegistrantWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the execution results of a batch operation task using a task ID. If you do not specify a task ID, the results of the most recent batch task are returned.
 //
 // @param request - DescribeBatchResultCountRequest
 //
@@ -3706,7 +4365,7 @@ func (client *Client) DescribeBatchResultCountWithOptions(request *DescribeBatch
 
 // Summary:
 //
-// Queries the execution result of a batch operation task based on the task ID. If you do not specify task ID, the execution result of the last batch operation task is returned.
+// Queries the execution results of a batch operation task using a task ID. If you do not specify a task ID, the results of the most recent batch task are returned.
 //
 // @param request - DescribeBatchResultCountRequest
 //
@@ -3724,11 +4383,11 @@ func (client *Client) DescribeBatchResultCount(request *DescribeBatchResultCount
 
 // Summary:
 //
-// Queries the detailed results of a batch operation task.
+// Retrieves the details of a batch processing result.
 //
 // Description:
 //
-// Before you call this operation, make sure that the batch operation task is complete.
+// *Prerequisite: You can call this operation after the batch task is complete.**
 //
 // @param request - DescribeBatchResultDetailRequest
 //
@@ -3792,11 +4451,11 @@ func (client *Client) DescribeBatchResultDetailWithOptions(request *DescribeBatc
 
 // Summary:
 //
-// Queries the detailed results of a batch operation task.
+// Retrieves the details of a batch processing result.
 //
 // Description:
 //
-// Before you call this operation, make sure that the batch operation task is complete.
+// *Prerequisite: You can call this operation after the batch task is complete.**
 //
 // @param request - DescribeBatchResultDetailRequest
 //
@@ -3814,7 +4473,7 @@ func (client *Client) DescribeBatchResultDetail(request *DescribeBatchResultDeta
 
 // Summary:
 //
-// Queries the configurations of an address.
+// Queries the configuration of an address based on the specified input parameters.
 //
 // @param request - DescribeCloudGtmAddressRequest
 //
@@ -3866,7 +4525,7 @@ func (client *Client) DescribeCloudGtmAddressWithOptions(request *DescribeCloudG
 
 // Summary:
 //
-// Queries the configurations of an address.
+// Queries the configuration of an address based on the specified input parameters.
 //
 // @param request - DescribeCloudGtmAddressRequest
 //
@@ -3884,7 +4543,7 @@ func (client *Client) DescribeCloudGtmAddress(request *DescribeCloudGtmAddressRe
 
 // Summary:
 //
-// Queries the configurations of an address pool.
+// Retrieves the configuration of a specified address pool.
 //
 // @param request - DescribeCloudGtmAddressPoolRequest
 //
@@ -3936,7 +4595,7 @@ func (client *Client) DescribeCloudGtmAddressPoolWithOptions(request *DescribeCl
 
 // Summary:
 //
-// Queries the configurations of an address pool.
+// Retrieves the configuration of a specified address pool.
 //
 // @param request - DescribeCloudGtmAddressPoolRequest
 //
@@ -3954,7 +4613,7 @@ func (client *Client) DescribeCloudGtmAddressPool(request *DescribeCloudGtmAddre
 
 // Summary:
 //
-// Queries the information about the access domain names that reference an address pool.
+// Retrieves information about the instances that reference an address pool.
 //
 // @param request - DescribeCloudGtmAddressPoolReferenceRequest
 //
@@ -4006,7 +4665,7 @@ func (client *Client) DescribeCloudGtmAddressPoolReferenceWithOptions(request *D
 
 // Summary:
 //
-// Queries the information about the access domain names that reference an address pool.
+// Retrieves information about the instances that reference an address pool.
 //
 // @param request - DescribeCloudGtmAddressPoolReferenceRequest
 //
@@ -4024,7 +4683,7 @@ func (client *Client) DescribeCloudGtmAddressPoolReference(request *DescribeClou
 
 // Summary:
 //
-// Queries the information about the address pools and Global Traffic Manager (GTM) 3.0 instances that reference an address.
+// Queries the address pools and Global Traffic Manager (GTM) 3.0 instances that reference a specified address.
 //
 // @param request - DescribeCloudGtmAddressReferenceRequest
 //
@@ -4076,7 +4735,7 @@ func (client *Client) DescribeCloudGtmAddressReferenceWithOptions(request *Descr
 
 // Summary:
 //
-// Queries the information about the address pools and Global Traffic Manager (GTM) 3.0 instances that reference an address.
+// Queries the address pools and Global Traffic Manager (GTM) 3.0 instances that reference a specified address.
 //
 // @param request - DescribeCloudGtmAddressReferenceRequest
 //
@@ -4094,7 +4753,7 @@ func (client *Client) DescribeCloudGtmAddressReference(request *DescribeCloudGtm
 
 // Summary:
 //
-// 查询全局流量管理告警配置
+// Queries the global alert configuration for Global Traffic Manager (GTM).
 //
 // @param request - DescribeCloudGtmGlobalAlertRequest
 //
@@ -4142,7 +4801,7 @@ func (client *Client) DescribeCloudGtmGlobalAlertWithOptions(request *DescribeCl
 
 // Summary:
 //
-// 查询全局流量管理告警配置
+// Queries the global alert configuration for Global Traffic Manager (GTM).
 //
 // @param request - DescribeCloudGtmGlobalAlertRequest
 //
@@ -4158,6 +4817,10 @@ func (client *Client) DescribeCloudGtmGlobalAlert(request *DescribeCloudGtmGloba
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the alert configuration for an instance.
+//
 // @param request - DescribeCloudGtmInstanceConfigAlertRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4210,6 +4873,10 @@ func (client *Client) DescribeCloudGtmInstanceConfigAlertWithOptions(request *De
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the alert configuration for an instance.
+//
 // @param request - DescribeCloudGtmInstanceConfigAlertRequest
 //
 // @return DescribeCloudGtmInstanceConfigAlertResponse
@@ -4226,7 +4893,7 @@ func (client *Client) DescribeCloudGtmInstanceConfigAlert(request *DescribeCloud
 
 // Summary:
 //
-// Queries the complete configuration information about a Global Traffic Manager (GTM) instance.
+// Queries the full configuration of a GTM 3.0 access domain name, including alert settings, address pools, and address details.
 //
 // @param request - DescribeCloudGtmInstanceConfigFullInfoRequest
 //
@@ -4282,7 +4949,7 @@ func (client *Client) DescribeCloudGtmInstanceConfigFullInfoWithOptions(request 
 
 // Summary:
 //
-// Queries the complete configuration information about a Global Traffic Manager (GTM) instance.
+// Queries the full configuration of a GTM 3.0 access domain name, including alert settings, address pools, and address details.
 //
 // @param request - DescribeCloudGtmInstanceConfigFullInfoRequest
 //
@@ -4300,7 +4967,7 @@ func (client *Client) DescribeCloudGtmInstanceConfigFullInfo(request *DescribeCl
 
 // Summary:
 //
-// Queries the configurations of a health check template.
+// Retrieves the configuration of a specified health check template.
 //
 // @param request - DescribeCloudGtmMonitorTemplateRequest
 //
@@ -4348,7 +5015,7 @@ func (client *Client) DescribeCloudGtmMonitorTemplateWithOptions(request *Descri
 
 // Summary:
 //
-// Queries the configurations of a health check template.
+// Retrieves the configuration of a specified health check template.
 //
 // @param request - DescribeCloudGtmMonitorTemplateRequest
 //
@@ -4418,6 +5085,10 @@ func (client *Client) DescribeCloudGtmSummary(request *DescribeCloudGtmSummaryRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the system lines supported by Global Traffic Manager (GTM).
+//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCloudGtmSystemLinesResponse
@@ -4443,6 +5114,10 @@ func (client *Client) DescribeCloudGtmSystemLinesWithOptions(runtime *dara.Runti
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the system lines supported by Global Traffic Manager (GTM).
+//
 // @return DescribeCloudGtmSystemLinesResponse
 func (client *Client) DescribeCloudGtmSystemLines() (_result *DescribeCloudGtmSystemLinesResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
@@ -4457,7 +5132,7 @@ func (client *Client) DescribeCloudGtmSystemLines() (_result *DescribeCloudGtmSy
 
 // Summary:
 //
-// Queries the details of a custom line by its unique ID.
+// Queries a custom line by its unique ID.
 //
 // @param request - DescribeCustomLineRequest
 //
@@ -4505,7 +5180,7 @@ func (client *Client) DescribeCustomLineWithOptions(request *DescribeCustomLineR
 
 // Summary:
 //
-// Queries the details of a custom line by its unique ID.
+// Queries a custom line by its unique ID.
 //
 // @param request - DescribeCustomLineRequest
 //
@@ -4523,7 +5198,7 @@ func (client *Client) DescribeCustomLine(request *DescribeCustomLineRequest) (_r
 
 // Summary:
 //
-// Queries custom lines by domain name.
+// Queries the custom lines for a domain name.
 //
 // @param request - DescribeCustomLinesRequest
 //
@@ -4579,7 +5254,7 @@ func (client *Client) DescribeCustomLinesWithOptions(request *DescribeCustomLine
 
 // Summary:
 //
-// Queries custom lines by domain name.
+// Queries the custom lines for a domain name.
 //
 // @param request - DescribeCustomLinesRequest
 //
@@ -4597,7 +5272,7 @@ func (client *Client) DescribeCustomLines(request *DescribeCustomLinesRequest) (
 
 // Summary:
 //
-// Queries the subdomains for which weighted round-robin is enabled based on the specified parameters.
+// Retrieves a list of subdomains that have weight configurations based on the specified parameters.
 //
 // @param request - DescribeDNSSLBSubDomainsRequest
 //
@@ -4661,7 +5336,7 @@ func (client *Client) DescribeDNSSLBSubDomainsWithOptions(request *DescribeDNSSL
 
 // Summary:
 //
-// Queries the subdomains for which weighted round-robin is enabled based on the specified parameters.
+// Retrieves a list of subdomains that have weight configurations based on the specified parameters.
 //
 // @param request - DescribeDNSSLBSubDomainsRequest
 //
@@ -4679,7 +5354,7 @@ func (client *Client) DescribeDNSSLBSubDomains(request *DescribeDNSSLBSubDomains
 
 // Summary:
 //
-// Queries cache-accelerated domain names within your account based on the specified parameters.
+// Queries authoritative proxy domain names based on the specified parameters.
 //
 // @param request - DescribeDnsCacheDomainsRequest
 //
@@ -4735,7 +5410,7 @@ func (client *Client) DescribeDnsCacheDomainsWithOptions(request *DescribeDnsCac
 
 // Summary:
 //
-// Queries cache-accelerated domain names within your account based on the specified parameters.
+// Queries authoritative proxy domain names based on the specified parameters.
 //
 // @param request - DescribeDnsCacheDomainsRequest
 //
@@ -4753,7 +5428,7 @@ func (client *Client) DescribeDnsCacheDomains(request *DescribeDnsCacheDomainsRe
 
 // Summary:
 //
-// Queries the access policies of a GTM instance.
+// Queries the access strategies for a Global Traffic Manager (GTM) instance.
 //
 // @param request - DescribeDnsGtmAccessStrategiesRequest
 //
@@ -4813,7 +5488,7 @@ func (client *Client) DescribeDnsGtmAccessStrategiesWithOptions(request *Describ
 
 // Summary:
 //
-// Queries the access policies of a GTM instance.
+// Queries the access strategies for a Global Traffic Manager (GTM) instance.
 //
 // @param request - DescribeDnsGtmAccessStrategiesRequest
 //
@@ -4831,7 +5506,7 @@ func (client *Client) DescribeDnsGtmAccessStrategies(request *DescribeDnsGtmAcce
 
 // Summary:
 //
-// Queries the details about an access policy.
+// Retrieves the details of a specified access strategy.
 //
 // @param request - DescribeDnsGtmAccessStrategyRequest
 //
@@ -4879,7 +5554,7 @@ func (client *Client) DescribeDnsGtmAccessStrategyWithOptions(request *DescribeD
 
 // Summary:
 //
-// Queries the details about an access policy.
+// Retrieves the details of a specified access strategy.
 //
 // @param request - DescribeDnsGtmAccessStrategyRequest
 //
@@ -4897,7 +5572,7 @@ func (client *Client) DescribeDnsGtmAccessStrategy(request *DescribeDnsGtmAccess
 
 // Summary:
 //
-// Queries the configuration items that can be set for an access policy.
+// Describes the available configurations for an access policy based on an instance ID.
 //
 // @param request - DescribeDnsGtmAccessStrategyAvailableConfigRequest
 //
@@ -4949,7 +5624,7 @@ func (client *Client) DescribeDnsGtmAccessStrategyAvailableConfigWithOptions(req
 
 // Summary:
 //
-// Queries the configuration items that can be set for an access policy.
+// Describes the available configurations for an access policy based on an instance ID.
 //
 // @param request - DescribeDnsGtmAccessStrategyAvailableConfigRequest
 //
@@ -4967,7 +5642,7 @@ func (client *Client) DescribeDnsGtmAccessStrategyAvailableConfig(request *Descr
 
 // Summary:
 //
-// Queries the source regions of addresses.
+// Queries the region where an address is located.
 //
 // @param request - DescribeDnsGtmAddrAttributeInfoRequest
 //
@@ -5019,7 +5694,7 @@ func (client *Client) DescribeDnsGtmAddrAttributeInfoWithOptions(request *Descri
 
 // Summary:
 //
-// Queries the source regions of addresses.
+// Queries the region where an address is located.
 //
 // @param request - DescribeDnsGtmAddrAttributeInfoRequest
 //
@@ -5037,7 +5712,7 @@ func (client *Client) DescribeDnsGtmAddrAttributeInfo(request *DescribeDnsGtmAdd
 
 // Summary:
 //
-// Queries the available configurations of an address pool of a GTM instance.
+// Queries the available configurations for an address pool in a Global Traffic Manager (GTM) instance.
 //
 // @param request - DescribeDnsGtmAddressPoolAvailableConfigRequest
 //
@@ -5085,7 +5760,7 @@ func (client *Client) DescribeDnsGtmAddressPoolAvailableConfigWithOptions(reques
 
 // Summary:
 //
-// Queries the available configurations of an address pool of a GTM instance.
+// Queries the available configurations for an address pool in a Global Traffic Manager (GTM) instance.
 //
 // @param request - DescribeDnsGtmAddressPoolAvailableConfigRequest
 //
@@ -5103,7 +5778,7 @@ func (client *Client) DescribeDnsGtmAddressPoolAvailableConfig(request *Describe
 
 // Summary:
 //
-// Queries the available alert groups of a Global Traffic Manager (GTM) instance.
+// Queries the available alert contact groups.
 //
 // @param request - DescribeDnsGtmAvailableAlertGroupRequest
 //
@@ -5147,7 +5822,7 @@ func (client *Client) DescribeDnsGtmAvailableAlertGroupWithOptions(request *Desc
 
 // Summary:
 //
-// Queries the available alert groups of a Global Traffic Manager (GTM) instance.
+// Queries the available alert contact groups.
 //
 // @param request - DescribeDnsGtmAvailableAlertGroupRequest
 //
@@ -5165,7 +5840,7 @@ func (client *Client) DescribeDnsGtmAvailableAlertGroup(request *DescribeDnsGtmA
 
 // Summary:
 //
-// Obtains the details of an instance based on the ID of the instance.
+// Queries the details of an instance based on the specified instance ID.
 //
 // @param request - DescribeDnsGtmInstanceRequest
 //
@@ -5213,7 +5888,7 @@ func (client *Client) DescribeDnsGtmInstanceWithOptions(request *DescribeDnsGtmI
 
 // Summary:
 //
-// Obtains the details of an instance based on the ID of the instance.
+// Queries the details of an instance based on the specified instance ID.
 //
 // @param request - DescribeDnsGtmInstanceRequest
 //
@@ -5231,7 +5906,7 @@ func (client *Client) DescribeDnsGtmInstance(request *DescribeDnsGtmInstanceRequ
 
 // Summary:
 //
-// Queries detailed information about an address pool by address pool ID.
+// Queries the details of an address pool by its ID.
 //
 // @param request - DescribeDnsGtmInstanceAddressPoolRequest
 //
@@ -5279,7 +5954,7 @@ func (client *Client) DescribeDnsGtmInstanceAddressPoolWithOptions(request *Desc
 
 // Summary:
 //
-// Queries detailed information about an address pool by address pool ID.
+// Queries the details of an address pool by its ID.
 //
 // @param request - DescribeDnsGtmInstanceAddressPoolRequest
 //
@@ -5297,7 +5972,7 @@ func (client *Client) DescribeDnsGtmInstanceAddressPool(request *DescribeDnsGtmI
 
 // Summary:
 //
-// Queries address pools by the IDs of GTM instances.
+// Retrieves the address pools of a Global Traffic Manager (GTM) instance.
 //
 // @param request - DescribeDnsGtmInstanceAddressPoolsRequest
 //
@@ -5353,7 +6028,7 @@ func (client *Client) DescribeDnsGtmInstanceAddressPoolsWithOptions(request *Des
 
 // Summary:
 //
-// Queries address pools by the IDs of GTM instances.
+// Retrieves the address pools of a Global Traffic Manager (GTM) instance.
 //
 // @param request - DescribeDnsGtmInstanceAddressPoolsRequest
 //
@@ -5371,7 +6046,7 @@ func (client *Client) DescribeDnsGtmInstanceAddressPools(request *DescribeDnsGtm
 
 // Summary:
 //
-// Obtains the current status of the instance by instance ID.
+// Describes the status of an instance based on its ID.
 //
 // @param request - DescribeDnsGtmInstanceStatusRequest
 //
@@ -5419,7 +6094,7 @@ func (client *Client) DescribeDnsGtmInstanceStatusWithOptions(request *DescribeD
 
 // Summary:
 //
-// Obtains the current status of the instance by instance ID.
+// Describes the status of an instance based on its ID.
 //
 // @param request - DescribeDnsGtmInstanceStatusRequest
 //
@@ -5437,7 +6112,7 @@ func (client *Client) DescribeDnsGtmInstanceStatus(request *DescribeDnsGtmInstan
 
 // Summary:
 //
-// Queries the canonical name (CNAME) assigned by the system for a GTM instance.
+// Retrieves the system-assigned CNAME based on the specified instance ID.
 //
 // @param request - DescribeDnsGtmInstanceSystemCnameRequest
 //
@@ -5485,7 +6160,7 @@ func (client *Client) DescribeDnsGtmInstanceSystemCnameWithOptions(request *Desc
 
 // Summary:
 //
-// Queries the canonical name (CNAME) assigned by the system for a GTM instance.
+// Retrieves the system-assigned CNAME based on the specified instance ID.
 //
 // @param request - DescribeDnsGtmInstanceSystemCnameRequest
 //
@@ -5581,7 +6256,7 @@ func (client *Client) DescribeDnsGtmInstances(request *DescribeDnsGtmInstancesRe
 
 // Summary:
 //
-// Obtains the operation logs by instance ID.
+// Queries the operation logs for an instance.
 //
 // @param request - DescribeDnsGtmLogsRequest
 //
@@ -5649,7 +6324,7 @@ func (client *Client) DescribeDnsGtmLogsWithOptions(request *DescribeDnsGtmLogsR
 
 // Summary:
 //
-// Obtains the operation logs by instance ID.
+// Queries the operation logs for an instance.
 //
 // @param request - DescribeDnsGtmLogsRequest
 //
@@ -5667,7 +6342,7 @@ func (client *Client) DescribeDnsGtmLogs(request *DescribeDnsGtmLogsRequest) (_r
 
 // Summary:
 //
-// Queries the configuration items that can be set for a health check task.
+// Queries the available configurations for DNS health checks.
 //
 // @param request - DescribeDnsGtmMonitorAvailableConfigRequest
 //
@@ -5711,7 +6386,7 @@ func (client *Client) DescribeDnsGtmMonitorAvailableConfigWithOptions(request *D
 
 // Summary:
 //
-// Queries the configuration items that can be set for a health check task.
+// Queries the available configurations for DNS health checks.
 //
 // @param request - DescribeDnsGtmMonitorAvailableConfigRequest
 //
@@ -5729,7 +6404,7 @@ func (client *Client) DescribeDnsGtmMonitorAvailableConfig(request *DescribeDnsG
 
 // Summary:
 //
-// Queries the health check configuration of an address pool.
+// Queries the health check configuration for an address pool.
 //
 // @param request - DescribeDnsGtmMonitorConfigRequest
 //
@@ -5777,7 +6452,7 @@ func (client *Client) DescribeDnsGtmMonitorConfigWithOptions(request *DescribeDn
 
 // Summary:
 //
-// Queries the health check configuration of an address pool.
+// Queries the health check configuration for an address pool.
 //
 // @param request - DescribeDnsGtmMonitorConfigRequest
 //
@@ -5795,7 +6470,7 @@ func (client *Client) DescribeDnsGtmMonitorConfig(request *DescribeDnsGtmMonitor
 
 // Summary:
 //
-// Queries the details about a paid Alibaba Cloud DNS instance based on the instance ID.
+// Retrieves the details of a paid Alibaba Cloud DNS instance by its instance ID.
 //
 // @param request - DescribeDnsProductInstanceRequest
 //
@@ -5847,7 +6522,7 @@ func (client *Client) DescribeDnsProductInstanceWithOptions(request *DescribeDns
 
 // Summary:
 //
-// Queries the details about a paid Alibaba Cloud DNS instance based on the instance ID.
+// Retrieves the details of a paid Alibaba Cloud DNS instance by its instance ID.
 //
 // @param request - DescribeDnsProductInstanceRequest
 //
@@ -5865,11 +6540,11 @@ func (client *Client) DescribeDnsProductInstance(request *DescribeDnsProductInst
 
 // Summary:
 //
-// Calls the DescribeDnsProductInstances operation to query the list of paid Alibaba Cloud DNS instances based on input parameters.
+// Retrieves a list of paid DNS product instances that match the specified parameters.
 //
 // Description:
 //
-// >  If the response parameters of an Alibaba Cloud DNS instance do not contain domain names, no domain names are bound to the instance.
+// > **If the response does not contain a domain name, the Alibaba Cloud DNS instance is not associated with any domain names.**
 //
 // @param request - DescribeDnsProductInstancesRequest
 //
@@ -5941,11 +6616,11 @@ func (client *Client) DescribeDnsProductInstancesWithOptions(request *DescribeDn
 
 // Summary:
 //
-// Calls the DescribeDnsProductInstances operation to query the list of paid Alibaba Cloud DNS instances based on input parameters.
+// Retrieves a list of paid DNS product instances that match the specified parameters.
 //
 // Description:
 //
-// >  If the response parameters of an Alibaba Cloud DNS instance do not contain domain names, no domain names are bound to the instance.
+// > **If the response does not contain a domain name, the Alibaba Cloud DNS instance is not associated with any domain names.**
 //
 // @param request - DescribeDnsProductInstancesRequest
 //
@@ -5963,7 +6638,7 @@ func (client *Client) DescribeDnsProductInstances(request *DescribeDnsProductIns
 
 // Summary:
 //
-// Queries the statistics on DoH-based requests for a domain name.
+// Queries an overview of request statistics for a DNS over HTTPS (DoH) account.
 //
 // @param request - DescribeDohAccountStatisticsRequest
 //
@@ -6015,7 +6690,7 @@ func (client *Client) DescribeDohAccountStatisticsWithOptions(request *DescribeD
 
 // Summary:
 //
-// Queries the statistics on DoH-based requests for a domain name.
+// Queries an overview of request statistics for a DNS over HTTPS (DoH) account.
 //
 // @param request - DescribeDohAccountStatisticsRequest
 //
@@ -6033,7 +6708,7 @@ func (client *Client) DescribeDohAccountStatistics(request *DescribeDohAccountSt
 
 // Summary:
 //
-// The statistics on DoH-based requests for a domain name are queried.
+// Retrieves an overview of statistics for DNS over HTTPS (DoH) requests for a domain name.
 //
 // @param request - DescribeDohDomainStatisticsRequest
 //
@@ -6089,7 +6764,7 @@ func (client *Client) DescribeDohDomainStatisticsWithOptions(request *DescribeDo
 
 // Summary:
 //
-// The statistics on DoH-based requests for a domain name are queried.
+// Retrieves an overview of statistics for DNS over HTTPS (DoH) requests for a domain name.
 //
 // @param request - DescribeDohDomainStatisticsRequest
 //
@@ -6107,7 +6782,7 @@ func (client *Client) DescribeDohDomainStatistics(request *DescribeDohDomainStat
 
 // Summary:
 //
-// Queries the statistics on DoH-based requests for domain names.
+// Queries request statistics for DNS over HTTPS (DoH) domain names.
 //
 // @param request - DescribeDohDomainStatisticsSummaryRequest
 //
@@ -6171,7 +6846,7 @@ func (client *Client) DescribeDohDomainStatisticsSummaryWithOptions(request *Des
 
 // Summary:
 //
-// Queries the statistics on DoH-based requests for domain names.
+// Queries request statistics for DNS over HTTPS (DoH) domain names.
 //
 // @param request - DescribeDohDomainStatisticsSummaryRequest
 //
@@ -6189,7 +6864,7 @@ func (client *Client) DescribeDohDomainStatisticsSummary(request *DescribeDohDom
 
 // Summary:
 //
-// Obtains the statistics on DoH-based requests for a subdomain name.
+// Queries for statistics on DNS over HTTPS (DoH) requests for a subdomain.
 //
 // @param request - DescribeDohSubDomainStatisticsRequest
 //
@@ -6245,7 +6920,7 @@ func (client *Client) DescribeDohSubDomainStatisticsWithOptions(request *Describ
 
 // Summary:
 //
-// Obtains the statistics on DoH-based requests for a subdomain name.
+// Queries for statistics on DNS over HTTPS (DoH) requests for a subdomain.
 //
 // @param request - DescribeDohSubDomainStatisticsRequest
 //
@@ -6263,7 +6938,7 @@ func (client *Client) DescribeDohSubDomainStatistics(request *DescribeDohSubDoma
 
 // Summary:
 //
-// Queries the statistics on DoH-based requests for subdomain names.
+// Queries a summary of request statistics for subdomains using DNS over HTTPS (DoH).
 //
 // @param request - DescribeDohSubDomainStatisticsSummaryRequest
 //
@@ -6331,7 +7006,7 @@ func (client *Client) DescribeDohSubDomainStatisticsSummaryWithOptions(request *
 
 // Summary:
 //
-// Queries the statistics on DoH-based requests for subdomain names.
+// Queries a summary of request statistics for subdomains using DNS over HTTPS (DoH).
 //
 // @param request - DescribeDohSubDomainStatisticsSummaryRequest
 //
@@ -6349,7 +7024,7 @@ func (client *Client) DescribeDohSubDomainStatisticsSummary(request *DescribeDoh
 
 // Summary:
 //
-// Queries the numbers of accessed domains and subdomains by using DNS over HTTPS (DoH).
+// Retrieves the basic information of a DNS over HTTPS (DoH) user.
 //
 // @param request - DescribeDohUserInfoRequest
 //
@@ -6401,7 +7076,7 @@ func (client *Client) DescribeDohUserInfoWithOptions(request *DescribeDohUserInf
 
 // Summary:
 //
-// Queries the numbers of accessed domains and subdomains by using DNS over HTTPS (DoH).
+// Retrieves the basic information of a DNS over HTTPS (DoH) user.
 //
 // @param request - DescribeDohUserInfoRequest
 //
@@ -6419,7 +7094,7 @@ func (client *Client) DescribeDohUserInfo(request *DescribeDohUserInfoRequest) (
 
 // Summary:
 //
-// Queries the Domain Name System Security Extensions (DNSSEC) configurations of a domain name based on the specified parameters.
+// Queries the Domain Name System Security Extensions (DNSSEC) information for a specified domain name.
 //
 // @param request - DescribeDomainDnssecInfoRequest
 //
@@ -6467,7 +7142,7 @@ func (client *Client) DescribeDomainDnssecInfoWithOptions(request *DescribeDomai
 
 // Summary:
 //
-// Queries the Domain Name System Security Extensions (DNSSEC) configurations of a domain name based on the specified parameters.
+// Queries the Domain Name System Security Extensions (DNSSEC) information for a specified domain name.
 //
 // @param request - DescribeDomainDnssecInfoRequest
 //
@@ -6485,7 +7160,7 @@ func (client *Client) DescribeDomainDnssecInfo(request *DescribeDomainDnssecInfo
 
 // Summary:
 //
-// Queries all domain name groups based on the specified parameters.
+// Queries domain name groups.
 //
 // @param request - DescribeDomainGroupsRequest
 //
@@ -6541,7 +7216,7 @@ func (client *Client) DescribeDomainGroupsWithOptions(request *DescribeDomainGro
 
 // Summary:
 //
-// Queries all domain name groups based on the specified parameters.
+// Queries domain name groups.
 //
 // @param request - DescribeDomainGroupsRequest
 //
@@ -6559,11 +7234,11 @@ func (client *Client) DescribeDomainGroups(request *DescribeDomainGroupsRequest)
 
 // Summary:
 //
-// Queries the information about a domain name based on specified parameters.
+// Queries information about a specified domain name.
 //
 // Description:
 //
-// In this example, the domain name is bound to an instance of Alibaba Cloud DNS Enterprise Ultimate Edition. For more information about valid Domain Name System (DNS) request lines, see the return values of the RecordLines parameter.
+// In this example, the domain name is bound to an instance of Alibaba Cloud DNS Ultimate Edition. For more information about line enumeration, see the RecordLines response parameter.
 //
 // @param request - DescribeDomainInfoRequest
 //
@@ -6615,11 +7290,11 @@ func (client *Client) DescribeDomainInfoWithOptions(request *DescribeDomainInfoR
 
 // Summary:
 //
-// Queries the information about a domain name based on specified parameters.
+// Queries information about a specified domain name.
 //
 // Description:
 //
-// In this example, the domain name is bound to an instance of Alibaba Cloud DNS Enterprise Ultimate Edition. For more information about valid Domain Name System (DNS) request lines, see the return values of the RecordLines parameter.
+// In this example, the domain name is bound to an instance of Alibaba Cloud DNS Ultimate Edition. For more information about line enumeration, see the RecordLines response parameter.
 //
 // @param request - DescribeDomainInfoRequest
 //
@@ -6637,7 +7312,7 @@ func (client *Client) DescribeDomainInfo(request *DescribeDomainInfoRequest) (_r
 
 // Summary:
 //
-// Queries the operation logs of domain names based on the specified parameters.
+// Queries the operation logs for a domain name based on the specified parameters.
 //
 // @param request - DescribeDomainLogsRequest
 //
@@ -6709,7 +7384,7 @@ func (client *Client) DescribeDomainLogsWithOptions(request *DescribeDomainLogsR
 
 // Summary:
 //
-// Queries the operation logs of domain names based on the specified parameters.
+// Queries the operation logs for a domain name based on the specified parameters.
 //
 // @param request - DescribeDomainLogsRequest
 //
@@ -6727,11 +7402,11 @@ func (client *Client) DescribeDomainLogs(request *DescribeDomainLogsRequest) (_r
 
 // Summary:
 //
-// Queries the name servers configured for a specified domain name and checks whether all the name servers are Alibaba Cloud Domain Name System (DNS) servers.
+// Queries the current list of name servers for a domain name and determines whether the servers are managed by Alibaba Cloud DNS.
 //
 // Description:
 //
-// >  You can call this operation to query the authoritative servers of a domain name registry to obtain the name servers for a domain name. If the domain name is in an invalid state, such as serverHold or clientHold, an error may be returned.
+// > This operation directly queries the authoritative server of the domain name registry to retrieve the DNS server names for the domain name. An error may be returned if the domain name is inactive. For example, if the domain name has a serverHold or clientHold status, or has not passed identity verification.
 //
 // @param request - DescribeDomainNsRequest
 //
@@ -6779,11 +7454,11 @@ func (client *Client) DescribeDomainNsWithOptions(request *DescribeDomainNsReque
 
 // Summary:
 //
-// Queries the name servers configured for a specified domain name and checks whether all the name servers are Alibaba Cloud Domain Name System (DNS) servers.
+// Queries the current list of name servers for a domain name and determines whether the servers are managed by Alibaba Cloud DNS.
 //
 // Description:
 //
-// >  You can call this operation to query the authoritative servers of a domain name registry to obtain the name servers for a domain name. If the domain name is in an invalid state, such as serverHold or clientHold, an error may be returned.
+// > This operation directly queries the authoritative server of the domain name registry to retrieve the DNS server names for the domain name. An error may be returned if the domain name is inactive. For example, if the domain name has a serverHold or clientHold status, or has not passed identity verification.
 //
 // @param request - DescribeDomainNsRequest
 //
@@ -6801,13 +7476,7 @@ func (client *Client) DescribeDomainNs(request *DescribeDomainNsRequest) (_resul
 
 // Summary:
 //
-// Queries the information about a Domain Name System (DNS) record by the ID of the DNS record.
-//
-// Description:
-//
-// ## Debugging
-//
-// [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Alidns\\&api=DescribeDomainRecordInfo\\&type=RPC\\&version=2015-01-09)
+// Retrieves the details of a DNS record by its ID.
 //
 // @param request - DescribeDomainRecordInfoRequest
 //
@@ -6859,13 +7528,7 @@ func (client *Client) DescribeDomainRecordInfoWithOptions(request *DescribeDomai
 
 // Summary:
 //
-// Queries the information about a Domain Name System (DNS) record by the ID of the DNS record.
-//
-// Description:
-//
-// ## Debugging
-//
-// [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Alidns\\&api=DescribeDomainRecordInfo\\&type=RPC\\&version=2015-01-09)
+// Retrieves the details of a DNS record by its ID.
 //
 // @param request - DescribeDomainRecordInfoRequest
 //
@@ -6883,17 +7546,17 @@ func (client *Client) DescribeDomainRecordInfo(request *DescribeDomainRecordInfo
 
 // Summary:
 //
-// Queries all Domain Name System (DNS) records of the specified primary domain names based on the specified parameters.
+// Retrieves the DNS records for a specified root domain based on the input parameters.
 //
 // Description:
 //
-//	  You can specify DomainName, PageNumber, and PageSize to query the DNS records of the specified domain names.
+// - You can specify the domain name (DomainName), page number (PageNumber), and page size (PageSize) to retrieve a list of DNS records.
 //
-//		- You can also specify RRKeyWord, TypeKeyWord, or ValueKeyWord to query the DNS records that contain the specified keyword.
+// - You can specify a keyword for the host record (RRKeyWord), record type (TypeKeyWord), or record value (ValueKeyWord) to query DNS records that contain the keyword.
 //
-//		- By default, the DNS records are sorted in reverse chronological order based on the time when they were added.
+// - By default, DNS records are sorted in descending order by the time they were added.
 //
-//		- You can specify GroupId to query the DNS records of the specified domain names based on the group ID. You can query the DNS records of all domain names and the domain names in the default group.
+// - You can specify a domain group ID (GroupId) to query the DNS records in a specific group.
 //
 // @param request - DescribeDomainRecordsRequest
 //
@@ -6993,17 +7656,17 @@ func (client *Client) DescribeDomainRecordsWithOptions(request *DescribeDomainRe
 
 // Summary:
 //
-// Queries all Domain Name System (DNS) records of the specified primary domain names based on the specified parameters.
+// Retrieves the DNS records for a specified root domain based on the input parameters.
 //
 // Description:
 //
-//	  You can specify DomainName, PageNumber, and PageSize to query the DNS records of the specified domain names.
+// - You can specify the domain name (DomainName), page number (PageNumber), and page size (PageSize) to retrieve a list of DNS records.
 //
-//		- You can also specify RRKeyWord, TypeKeyWord, or ValueKeyWord to query the DNS records that contain the specified keyword.
+// - You can specify a keyword for the host record (RRKeyWord), record type (TypeKeyWord), or record value (ValueKeyWord) to query DNS records that contain the keyword.
 //
-//		- By default, the DNS records are sorted in reverse chronological order based on the time when they were added.
+// - By default, DNS records are sorted in descending order by the time they were added.
 //
-//		- You can specify GroupId to query the DNS records of the specified domain names based on the group ID. You can query the DNS records of all domain names and the domain names in the default group.
+// - You can specify a domain group ID (GroupId) to query the DNS records in a specific group.
 //
 // @param request - DescribeDomainRecordsRequest
 //
@@ -7021,7 +7684,7 @@ func (client *Client) DescribeDomainRecords(request *DescribeDomainRecordsReques
 
 // Summary:
 //
-// Queries the resolution requests of all paid domain names within your account.
+// Queries the request volumes for all paid domain names in your account.
 //
 // @param request - DescribeDomainResolveStatisticsSummaryRequest
 //
@@ -7097,7 +7760,7 @@ func (client *Client) DescribeDomainResolveStatisticsSummaryWithOptions(request 
 
 // Summary:
 //
-// Queries the resolution requests of all paid domain names within your account.
+// Queries the request volumes for all paid domain names in your account.
 //
 // @param request - DescribeDomainResolveStatisticsSummaryRequest
 //
@@ -7115,11 +7778,11 @@ func (client *Client) DescribeDomainResolveStatisticsSummary(request *DescribeDo
 
 // Summary:
 //
-// Queries the real-time statistics on the Domain Name System (DNS) requests for a primary domain name.
+// Queries the number of real-time requests for a specified primary domain name.
 //
 // Description:
 //
-// Real-time data is collected per hour.
+// Real-time data is collected hourly.
 //
 // @param request - DescribeDomainStatisticsRequest
 //
@@ -7179,11 +7842,11 @@ func (client *Client) DescribeDomainStatisticsWithOptions(request *DescribeDomai
 
 // Summary:
 //
-// Queries the real-time statistics on the Domain Name System (DNS) requests for a primary domain name.
+// Queries the number of real-time requests for a specified primary domain name.
 //
 // Description:
 //
-// Real-time data is collected per hour.
+// Real-time data is collected hourly.
 //
 // @param request - DescribeDomainStatisticsRequest
 //
@@ -7201,7 +7864,7 @@ func (client *Client) DescribeDomainStatistics(request *DescribeDomainStatistics
 
 // Summary:
 //
-// Calls the DescribeDomainStatisticsSummary operation to obtain the query volume of all paid domain names under your account.
+// Queries the number of requests for all paid domain names in your account.
 //
 // @param request - DescribeDomainStatisticsSummaryRequest
 //
@@ -7273,7 +7936,7 @@ func (client *Client) DescribeDomainStatisticsSummaryWithOptions(request *Descri
 
 // Summary:
 //
-// Calls the DescribeDomainStatisticsSummary operation to obtain the query volume of all paid domain names under your account.
+// Queries the number of requests for all paid domain names in your account.
 //
 // @param request - DescribeDomainStatisticsSummaryRequest
 //
@@ -7291,17 +7954,17 @@ func (client *Client) DescribeDomainStatisticsSummary(request *DescribeDomainSta
 
 // Summary:
 //
-// Calls the DescribeDomains operation to query domain names of a user based on input parameters.
+// Queries a list of domain names based on specified parameters.
 //
 // Description:
 //
-//	  You can specify the PageNumber and PageSize parameters to query domain names.
+// 1. You can specify a page number (PageNumber) and page size (PageSize) to retrieve a paginated list of domain names.
 //
-//		- You can specify the KeyWord parameter to query domain names that contain the specified keyword.
+// 2. You can specify a keyword (KeyWord) to query for domain names that contain the specified keyword.
 //
-//		- By default, the domain names in a list are sorted in descending order of the time they were added.
+// 3. By default, domain names are sorted in descending order of their creation time.
 //
-//		- You can specify the GroupId parameter. If you do not specify this parameter, all domain names are queried by default.
+// 4. You can specify a domain name group ID (GroupId) to query for domain names in a specific group. This lets you retrieve all domain names or only the domain names that are not assigned to a group.
 //
 // @param request - DescribeDomainsRequest
 //
@@ -7373,17 +8036,17 @@ func (client *Client) DescribeDomainsWithOptions(request *DescribeDomainsRequest
 
 // Summary:
 //
-// Calls the DescribeDomains operation to query domain names of a user based on input parameters.
+// Queries a list of domain names based on specified parameters.
 //
 // Description:
 //
-//	  You can specify the PageNumber and PageSize parameters to query domain names.
+// 1. You can specify a page number (PageNumber) and page size (PageSize) to retrieve a paginated list of domain names.
 //
-//		- You can specify the KeyWord parameter to query domain names that contain the specified keyword.
+// 2. You can specify a keyword (KeyWord) to query for domain names that contain the specified keyword.
 //
-//		- By default, the domain names in a list are sorted in descending order of the time they were added.
+// 3. By default, domain names are sorted in descending order of their creation time.
 //
-//		- You can specify the GroupId parameter. If you do not specify this parameter, all domain names are queried by default.
+// 4. You can specify a domain name group ID (GroupId) to query for domain names in a specific group. This lets you retrieve all domain names or only the domain names that are not assigned to a group.
 //
 // @param request - DescribeDomainsRequest
 //
@@ -7401,7 +8064,7 @@ func (client *Client) DescribeDomains(request *DescribeDomainsRequest) (_result 
 
 // Summary:
 //
-// You can call this operation to query the access policies of a Global Traffic Manager (GTM) instance.
+// Queries the access policies for an instance.
 //
 // @param request - DescribeGtmAccessStrategiesRequest
 //
@@ -7457,7 +8120,7 @@ func (client *Client) DescribeGtmAccessStrategiesWithOptions(request *DescribeGt
 
 // Summary:
 //
-// You can call this operation to query the access policies of a Global Traffic Manager (GTM) instance.
+// Queries the access policies for an instance.
 //
 // @param request - DescribeGtmAccessStrategiesRequest
 //
@@ -7475,7 +8138,7 @@ func (client *Client) DescribeGtmAccessStrategies(request *DescribeGtmAccessStra
 
 // Summary:
 //
-// You can call this operation to query the details about an access policy of a Global Traffic Manager (GTM) instance based on the policy ID.
+// Queries the details of an access policy based on the policy ID.
 //
 // @param request - DescribeGtmAccessStrategyRequest
 //
@@ -7523,7 +8186,7 @@ func (client *Client) DescribeGtmAccessStrategyWithOptions(request *DescribeGtmA
 
 // Summary:
 //
-// You can call this operation to query the details about an access policy of a Global Traffic Manager (GTM) instance based on the policy ID.
+// Queries the details of an access policy based on the policy ID.
 //
 // @param request - DescribeGtmAccessStrategyRequest
 //
@@ -7541,7 +8204,7 @@ func (client *Client) DescribeGtmAccessStrategy(request *DescribeGtmAccessStrate
 
 // Summary:
 //
-// Queries the configuration items that can be set for an access policy.
+// Queries the available configurations for an access policy.
 //
 // @param request - DescribeGtmAccessStrategyAvailableConfigRequest
 //
@@ -7589,7 +8252,7 @@ func (client *Client) DescribeGtmAccessStrategyAvailableConfigWithOptions(reques
 
 // Summary:
 //
-// Queries the configuration items that can be set for an access policy.
+// Queries the available configurations for an access policy.
 //
 // @param request - DescribeGtmAccessStrategyAvailableConfigRequest
 //
@@ -7607,7 +8270,7 @@ func (client *Client) DescribeGtmAccessStrategyAvailableConfig(request *Describe
 
 // Summary:
 //
-// You can call this operation to query the available alert groups for a Global Traffic Manager (GTM) instance.
+// Queries the list of available alert contact groups for a Global Traffic Manager (GTM) instance.
 //
 // @param request - DescribeGtmAvailableAlertGroupRequest
 //
@@ -7651,7 +8314,7 @@ func (client *Client) DescribeGtmAvailableAlertGroupWithOptions(request *Describ
 
 // Summary:
 //
-// You can call this operation to query the available alert groups for a Global Traffic Manager (GTM) instance.
+// Queries the list of available alert contact groups for a Global Traffic Manager (GTM) instance.
 //
 // @param request - DescribeGtmAvailableAlertGroupRequest
 //
@@ -7669,7 +8332,7 @@ func (client *Client) DescribeGtmAvailableAlertGroup(request *DescribeGtmAvailab
 
 // Summary:
 //
-// Queries the details about a Global Traffic Manager (GTM) instance.
+// Queries the details of a Global Traffic Manager (GTM) instance.
 //
 // @param request - DescribeGtmInstanceRequest
 //
@@ -7721,7 +8384,7 @@ func (client *Client) DescribeGtmInstanceWithOptions(request *DescribeGtmInstanc
 
 // Summary:
 //
-// Queries the details about a Global Traffic Manager (GTM) instance.
+// Queries the details of a Global Traffic Manager (GTM) instance.
 //
 // @param request - DescribeGtmInstanceRequest
 //
@@ -7739,7 +8402,7 @@ func (client *Client) DescribeGtmInstance(request *DescribeGtmInstanceRequest) (
 
 // Summary:
 //
-// You can call this operation to query the details about an address pool of a Global Traffic Manager (GTM) instance.
+// Describes the details of an address pool.
 //
 // @param request - DescribeGtmInstanceAddressPoolRequest
 //
@@ -7787,7 +8450,7 @@ func (client *Client) DescribeGtmInstanceAddressPoolWithOptions(request *Describ
 
 // Summary:
 //
-// You can call this operation to query the details about an address pool of a Global Traffic Manager (GTM) instance.
+// Describes the details of an address pool.
 //
 // @param request - DescribeGtmInstanceAddressPoolRequest
 //
@@ -7805,7 +8468,7 @@ func (client *Client) DescribeGtmInstanceAddressPool(request *DescribeGtmInstanc
 
 // Summary:
 //
-// You can call this operation to query the address pools of a Global Traffic Manager (GTM) instance.
+// Describes the address pools of a Global Traffic Manager (GTM) instance.
 //
 // @param request - DescribeGtmInstanceAddressPoolsRequest
 //
@@ -7861,7 +8524,7 @@ func (client *Client) DescribeGtmInstanceAddressPoolsWithOptions(request *Descri
 
 // Summary:
 //
-// You can call this operation to query the address pools of a Global Traffic Manager (GTM) instance.
+// Describes the address pools of a Global Traffic Manager (GTM) instance.
 //
 // @param request - DescribeGtmInstanceAddressPoolsRequest
 //
@@ -7879,7 +8542,7 @@ func (client *Client) DescribeGtmInstanceAddressPools(request *DescribeGtmInstan
 
 // Summary:
 //
-// Queries the status of a Global Traffic Manager (GTM) instance.
+// Queries the current status of an instance.
 //
 // @param request - DescribeGtmInstanceStatusRequest
 //
@@ -7927,7 +8590,7 @@ func (client *Client) DescribeGtmInstanceStatusWithOptions(request *DescribeGtmI
 
 // Summary:
 //
-// Queries the status of a Global Traffic Manager (GTM) instance.
+// Queries the current status of an instance.
 //
 // @param request - DescribeGtmInstanceStatusRequest
 //
@@ -7945,7 +8608,7 @@ func (client *Client) DescribeGtmInstanceStatus(request *DescribeGtmInstanceStat
 
 // Summary:
 //
-// You can call this operation to query the CNAME record assigned by the system.
+// Retrieves the system-assigned CNAME domain name.
 //
 // @param request - DescribeGtmInstanceSystemCnameRequest
 //
@@ -7993,7 +8656,7 @@ func (client *Client) DescribeGtmInstanceSystemCnameWithOptions(request *Describ
 
 // Summary:
 //
-// You can call this operation to query the CNAME record assigned by the system.
+// Retrieves the system-assigned CNAME domain name.
 //
 // @param request - DescribeGtmInstanceSystemCnameRequest
 //
@@ -8011,7 +8674,7 @@ func (client *Client) DescribeGtmInstanceSystemCname(request *DescribeGtmInstanc
 
 // Summary:
 //
-// Queries the Global Traffic Manager (GTM) instances under your account.
+// Queries Global Traffic Manager (GTM) instances.
 //
 // @param request - DescribeGtmInstancesRequest
 //
@@ -8075,7 +8738,7 @@ func (client *Client) DescribeGtmInstancesWithOptions(request *DescribeGtmInstan
 
 // Summary:
 //
-// Queries the Global Traffic Manager (GTM) instances under your account.
+// Queries Global Traffic Manager (GTM) instances.
 //
 // @param request - DescribeGtmInstancesRequest
 //
@@ -8093,7 +8756,7 @@ func (client *Client) DescribeGtmInstances(request *DescribeGtmInstancesRequest)
 
 // Summary:
 //
-// You can call this operation to query logs of a Global Traffic Manager (GTM) instance.
+// Queries a list of logs.
 //
 // @param request - DescribeGtmLogsRequest
 //
@@ -8161,7 +8824,7 @@ func (client *Client) DescribeGtmLogsWithOptions(request *DescribeGtmLogsRequest
 
 // Summary:
 //
-// You can call this operation to query logs of a Global Traffic Manager (GTM) instance.
+// Queries a list of logs.
 //
 // @param request - DescribeGtmLogsRequest
 //
@@ -8179,7 +8842,7 @@ func (client *Client) DescribeGtmLogs(request *DescribeGtmLogsRequest) (_result 
 
 // Summary:
 //
-// Queries available monitored nodes.
+// Retrieves the available configurations for health checks.
 //
 // @param request - DescribeGtmMonitorAvailableConfigRequest
 //
@@ -8223,7 +8886,7 @@ func (client *Client) DescribeGtmMonitorAvailableConfigWithOptions(request *Desc
 
 // Summary:
 //
-// Queries available monitored nodes.
+// Retrieves the available configurations for health checks.
 //
 // @param request - DescribeGtmMonitorAvailableConfigRequest
 //
@@ -8241,7 +8904,7 @@ func (client *Client) DescribeGtmMonitorAvailableConfig(request *DescribeGtmMoni
 
 // Summary:
 //
-// Queries the health check configuration of an address pool of a Global Traffic Manager (GTM) instance.
+// Retrieves the health check configuration for an address pool.
 //
 // @param request - DescribeGtmMonitorConfigRequest
 //
@@ -8289,7 +8952,7 @@ func (client *Client) DescribeGtmMonitorConfigWithOptions(request *DescribeGtmMo
 
 // Summary:
 //
-// Queries the health check configuration of an address pool of a Global Traffic Manager (GTM) instance.
+// Retrieves the health check configuration for an address pool.
 //
 // @param request - DescribeGtmMonitorConfigRequest
 //
@@ -8307,7 +8970,7 @@ func (client *Client) DescribeGtmMonitorConfig(request *DescribeGtmMonitorConfig
 
 // Summary:
 //
-// Queries the details of a disaster recovery plan.
+// Retrieves the details of a disaster recovery plan.
 //
 // @param request - DescribeGtmRecoveryPlanRequest
 //
@@ -8355,7 +9018,7 @@ func (client *Client) DescribeGtmRecoveryPlanWithOptions(request *DescribeGtmRec
 
 // Summary:
 //
-// Queries the details of a disaster recovery plan.
+// Retrieves the details of a disaster recovery plan.
 //
 // @param request - DescribeGtmRecoveryPlanRequest
 //
@@ -8373,7 +9036,7 @@ func (client *Client) DescribeGtmRecoveryPlan(request *DescribeGtmRecoveryPlanRe
 
 // Summary:
 //
-// Queries the configuration items that can be set for a disaster recovery plan.
+// Describes the available configurations for a disaster recovery plan.
 //
 // @param request - DescribeGtmRecoveryPlanAvailableConfigRequest
 //
@@ -8417,7 +9080,7 @@ func (client *Client) DescribeGtmRecoveryPlanAvailableConfigWithOptions(request 
 
 // Summary:
 //
-// Queries the configuration items that can be set for a disaster recovery plan.
+// Describes the available configurations for a disaster recovery plan.
 //
 // @param request - DescribeGtmRecoveryPlanAvailableConfigRequest
 //
@@ -8435,7 +9098,7 @@ func (client *Client) DescribeGtmRecoveryPlanAvailableConfig(request *DescribeGt
 
 // Summary:
 //
-// Queries disaster recovery plans.
+// Queries a list of disaster recovery plans.
 //
 // @param request - DescribeGtmRecoveryPlansRequest
 //
@@ -8491,7 +9154,7 @@ func (client *Client) DescribeGtmRecoveryPlansWithOptions(request *DescribeGtmRe
 
 // Summary:
 //
-// Queries disaster recovery plans.
+// Queries a list of disaster recovery plans.
 //
 // @param request - DescribeGtmRecoveryPlansRequest
 //
@@ -8509,7 +9172,7 @@ func (client *Client) DescribeGtmRecoveryPlans(request *DescribeGtmRecoveryPlans
 
 // Summary:
 //
-// Queries the domain names that are bound to an Alibaba Cloud DNS instance.
+// Retrieves a list of domain names that are attached to an instance.
 //
 // @param request - DescribeInstanceDomainsRequest
 //
@@ -8569,7 +9232,7 @@ func (client *Client) DescribeInstanceDomainsWithOptions(request *DescribeInstan
 
 // Summary:
 //
-// Queries the domain names that are bound to an Alibaba Cloud DNS instance.
+// Retrieves a list of domain names that are attached to an instance.
 //
 // @param request - DescribeInstanceDomainsRequest
 //
@@ -8587,7 +9250,11 @@ func (client *Client) DescribeInstanceDomains(request *DescribeInstanceDomainsRe
 
 // Summary:
 //
-// 公网权威解析统计信息全局总览
+// Retrieves a global overview of statistics for public authoritative DNS.
+//
+// Description:
+//
+// Real-time data is aggregated hourly.
 //
 // @param request - DescribeInterAuthStatisticsGlobalOverviewRequest
 //
@@ -8643,7 +9310,11 @@ func (client *Client) DescribeInterAuthStatisticsGlobalOverviewWithOptions(reque
 
 // Summary:
 //
-// 公网权威解析统计信息全局总览
+// Retrieves a global overview of statistics for public authoritative DNS.
+//
+// Description:
+//
+// Real-time data is aggregated hourly.
 //
 // @param request - DescribeInterAuthStatisticsGlobalOverviewRequest
 //
@@ -8661,7 +9332,11 @@ func (client *Client) DescribeInterAuthStatisticsGlobalOverview(request *Describ
 
 // Summary:
 //
-// 公网权威解析统计信息趋势
+// # Historical statistics for public authoritative DNS resolution
+//
+// Description:
+//
+// Real-time data statistics are aggregated hourly.
 //
 // @param request - DescribeInterAuthStatisticsHistoryRequest
 //
@@ -8729,7 +9404,11 @@ func (client *Client) DescribeInterAuthStatisticsHistoryWithOptions(request *Des
 
 // Summary:
 //
-// 公网权威解析统计信息趋势
+// # Historical statistics for public authoritative DNS resolution
+//
+// Description:
+//
+// Real-time data statistics are aggregated hourly.
 //
 // @param request - DescribeInterAuthStatisticsHistoryRequest
 //
@@ -8747,7 +9426,11 @@ func (client *Client) DescribeInterAuthStatisticsHistory(request *DescribeInterA
 
 // Summary:
 //
-// 公网权威解析统计信息摘要列表
+// Queries the summary list of public authoritative parse statistics.
+//
+// Description:
+//
+// Real-time data is aggregated by hour.
 //
 // @param request - DescribeInterAuthStatisticsSummaryRequest
 //
@@ -8843,7 +9526,11 @@ func (client *Client) DescribeInterAuthStatisticsSummaryWithOptions(request *Des
 
 // Summary:
 //
-// 公网权威解析统计信息摘要列表
+// Queries the summary list of public authoritative parse statistics.
+//
+// Description:
+//
+// Real-time data is aggregated by hour.
 //
 // @param request - DescribeInterAuthStatisticsSummaryRequest
 //
@@ -8861,7 +9548,7 @@ func (client *Client) DescribeInterAuthStatisticsSummary(request *DescribeInterA
 
 // Summary:
 //
-// 公网权威解析统计信息Zone维度总览
+// Retrieves a zone-level overview of statistics for public authoritative DNS.
 //
 // @param request - DescribeInterAuthStatisticsZoneOverviewRequest
 //
@@ -8913,7 +9600,7 @@ func (client *Client) DescribeInterAuthStatisticsZoneOverviewWithOptions(request
 
 // Summary:
 //
-// 公网权威解析统计信息Zone维度总览
+// Retrieves a zone-level overview of statistics for public authoritative DNS.
 //
 // @param request - DescribeInterAuthStatisticsZoneOverviewRequest
 //
@@ -8931,7 +9618,7 @@ func (client *Client) DescribeInterAuthStatisticsZoneOverview(request *DescribeI
 
 // Summary:
 //
-// 查询解析日志
+// # Query parsing logs
 //
 // @param request - DescribeInternetDnsLogsRequest
 //
@@ -9015,7 +9702,7 @@ func (client *Client) DescribeInternetDnsLogsWithOptions(request *DescribeIntern
 
 // Summary:
 //
-// 查询解析日志
+// # Query parsing logs
 //
 // @param request - DescribeInternetDnsLogsRequest
 //
@@ -9033,7 +9720,7 @@ func (client *Client) DescribeInternetDnsLogs(request *DescribeInternetDnsLogsRe
 
 // Summary:
 //
-// 获取缓存刷新套餐包列表
+// Queries the list of cache refresh instances.
 //
 // @param request - DescribeIspFlushCacheInstancesRequest
 //
@@ -9105,7 +9792,7 @@ func (client *Client) DescribeIspFlushCacheInstancesWithOptions(request *Describ
 
 // Summary:
 //
-// 获取缓存刷新套餐包列表
+// Queries the list of cache refresh instances.
 //
 // @param request - DescribeIspFlushCacheInstancesRequest
 //
@@ -9123,7 +9810,7 @@ func (client *Client) DescribeIspFlushCacheInstances(request *DescribeIspFlushCa
 
 // Summary:
 //
-// 获取剩余可缓存刷新次数
+// Retrieves the remaining number of cache refresh operations available.
 //
 // @param request - DescribeIspFlushCacheRemainQuotaRequest
 //
@@ -9167,7 +9854,7 @@ func (client *Client) DescribeIspFlushCacheRemainQuotaWithOptions(request *Descr
 
 // Summary:
 //
-// 获取剩余可缓存刷新次数
+// Retrieves the remaining number of cache refresh operations available.
 //
 // @param request - DescribeIspFlushCacheRemainQuotaRequest
 //
@@ -9185,7 +9872,7 @@ func (client *Client) DescribeIspFlushCacheRemainQuota(request *DescribeIspFlush
 
 // Summary:
 //
-// 获取缓存刷新任务详情
+// Queries the details of a cache flush task.
 //
 // @param request - DescribeIspFlushCacheTaskRequest
 //
@@ -9233,7 +9920,7 @@ func (client *Client) DescribeIspFlushCacheTaskWithOptions(request *DescribeIspF
 
 // Summary:
 //
-// 获取缓存刷新任务详情
+// Queries the details of a cache flush task.
 //
 // @param request - DescribeIspFlushCacheTaskRequest
 //
@@ -9251,7 +9938,7 @@ func (client *Client) DescribeIspFlushCacheTask(request *DescribeIspFlushCacheTa
 
 // Summary:
 //
-// 获取缓存刷新任务列表
+// Queries the list of cache refresh tasks.
 //
 // @param request - DescribeIspFlushCacheTasksRequest
 //
@@ -9323,7 +10010,7 @@ func (client *Client) DescribeIspFlushCacheTasksWithOptions(request *DescribeIsp
 
 // Summary:
 //
-// 获取缓存刷新任务列表
+// Queries the list of cache refresh tasks.
 //
 // @param request - DescribeIspFlushCacheTasksRequest
 //
@@ -9341,7 +10028,7 @@ func (client *Client) DescribeIspFlushCacheTasks(request *DescribeIspFlushCacheT
 
 // Summary:
 //
-// 获取公共DNS用户数据概览
+// Queries the overview of Public DNS user data.
 //
 // @param request - DescribePdnsAccountSummaryRequest
 //
@@ -9393,7 +10080,7 @@ func (client *Client) DescribePdnsAccountSummaryWithOptions(request *DescribePdn
 
 // Summary:
 //
-// 获取公共DNS用户数据概览
+// Queries the overview of Public DNS user data.
 //
 // @param request - DescribePdnsAccountSummaryRequest
 //
@@ -9411,7 +10098,7 @@ func (client *Client) DescribePdnsAccountSummary(request *DescribePdnsAccountSum
 
 // Summary:
 //
-// 获取公共DNS AppKey 详情
+// # Query the details of a public DNS AppKey
 //
 // @param request - DescribePdnsAppKeyRequest
 //
@@ -9463,7 +10150,7 @@ func (client *Client) DescribePdnsAppKeyWithOptions(request *DescribePdnsAppKeyR
 
 // Summary:
 //
-// 获取公共DNS AppKey 详情
+// # Query the details of a public DNS AppKey
 //
 // @param request - DescribePdnsAppKeyRequest
 //
@@ -9481,7 +10168,7 @@ func (client *Client) DescribePdnsAppKey(request *DescribePdnsAppKeyRequest) (_r
 
 // Summary:
 //
-// 获取公共DNS AppKey 列表
+// # Queries the list of AppKeys of Public DNS
 //
 // @param request - DescribePdnsAppKeysRequest
 //
@@ -9525,7 +10212,7 @@ func (client *Client) DescribePdnsAppKeysWithOptions(request *DescribePdnsAppKey
 
 // Summary:
 //
-// 获取公共DNS AppKey 列表
+// # Queries the list of AppKeys of Public DNS
 //
 // @param request - DescribePdnsAppKeysRequest
 //
@@ -9543,7 +10230,7 @@ func (client *Client) DescribePdnsAppKeys(request *DescribePdnsAppKeysRequest) (
 
 // Summary:
 //
-// 获取公共DNS 操作日志列表
+// Queries the operation log list of Public DNS.
 //
 // @param request - DescribePdnsOperateLogsRequest
 //
@@ -9615,7 +10302,7 @@ func (client *Client) DescribePdnsOperateLogsWithOptions(request *DescribePdnsOp
 
 // Summary:
 //
-// 获取公共DNS 操作日志列表
+// Queries the operation log list of Public DNS.
 //
 // @param request - DescribePdnsOperateLogsRequest
 //
@@ -9633,7 +10320,7 @@ func (client *Client) DescribePdnsOperateLogs(request *DescribePdnsOperateLogsRe
 
 // Summary:
 //
-// Queries the number of requests for public DNS.
+// Queries the request statistics for Public DNS.
 //
 // @param request - DescribePdnsRequestStatisticRequest
 //
@@ -9697,7 +10384,7 @@ func (client *Client) DescribePdnsRequestStatisticWithOptions(request *DescribeP
 
 // Summary:
 //
-// Queries the number of requests for public DNS.
+// Queries the request statistics for Public DNS.
 //
 // @param request - DescribePdnsRequestStatisticRequest
 //
@@ -9715,7 +10402,7 @@ func (client *Client) DescribePdnsRequestStatistic(request *DescribePdnsRequestS
 
 // Summary:
 //
-// Queries a list of statistics on requests for Alibaba Cloud Public DNS.
+// Queries the request statistics for a specified subdomain.
 //
 // @param request - DescribePdnsRequestStatisticsRequest
 //
@@ -9787,7 +10474,7 @@ func (client *Client) DescribePdnsRequestStatisticsWithOptions(request *Describe
 
 // Summary:
 //
-// Queries a list of statistics on requests for Alibaba Cloud Public DNS.
+// Queries the request statistics for a specified subdomain.
 //
 // @param request - DescribePdnsRequestStatisticsRequest
 //
@@ -9805,7 +10492,7 @@ func (client *Client) DescribePdnsRequestStatistics(request *DescribePdnsRequest
 
 // Summary:
 //
-// 获取公共DNS 威胁日志列表
+// Queries the list of Public DNS threat logs.
 //
 // @param request - DescribePdnsThreatLogsRequest
 //
@@ -9881,7 +10568,7 @@ func (client *Client) DescribePdnsThreatLogsWithOptions(request *DescribePdnsThr
 
 // Summary:
 //
-// 获取公共DNS 威胁日志列表
+// Queries the list of Public DNS threat logs.
 //
 // @param request - DescribePdnsThreatLogsRequest
 //
@@ -9899,7 +10586,7 @@ func (client *Client) DescribePdnsThreatLogs(request *DescribePdnsThreatLogsRequ
 
 // Summary:
 //
-// 获取公共DNS 威胁统计
+// Retrieves Public DNS threat statistics.
 //
 // @param request - DescribePdnsThreatStatisticRequest
 //
@@ -9955,7 +10642,7 @@ func (client *Client) DescribePdnsThreatStatisticWithOptions(request *DescribePd
 
 // Summary:
 //
-// 获取公共DNS 威胁统计
+// Retrieves Public DNS threat statistics.
 //
 // @param request - DescribePdnsThreatStatisticRequest
 //
@@ -9973,7 +10660,7 @@ func (client *Client) DescribePdnsThreatStatistic(request *DescribePdnsThreatSta
 
 // Summary:
 //
-// 获取公共DNS 威胁统计列表
+// Retrieves the public DNS threat statistics list.
 //
 // @param request - DescribePdnsThreatStatisticsRequest
 //
@@ -10065,7 +10752,7 @@ func (client *Client) DescribePdnsThreatStatisticsWithOptions(request *DescribeP
 
 // Summary:
 //
-// 获取公共DNS 威胁统计列表
+// Retrieves the public DNS threat statistics list.
 //
 // @param request - DescribePdnsThreatStatisticsRequest
 //
@@ -10083,7 +10770,7 @@ func (client *Client) DescribePdnsThreatStatistics(request *DescribePdnsThreatSt
 
 // Summary:
 //
-// 获取公共DNS Udp IP段列表
+// Retrieves the list of Public DNS UDP IP address ranges.
 //
 // @param request - DescribePdnsUdpIpSegmentsRequest
 //
@@ -10135,7 +10822,7 @@ func (client *Client) DescribePdnsUdpIpSegmentsWithOptions(request *DescribePdns
 
 // Summary:
 //
-// 获取公共DNS Udp IP段列表
+// Retrieves the list of Public DNS UDP IP address ranges.
 //
 // @param request - DescribePdnsUdpIpSegmentsRequest
 //
@@ -10153,7 +10840,7 @@ func (client *Client) DescribePdnsUdpIpSegments(request *DescribePdnsUdpIpSegmen
 
 // Summary:
 //
-// Queries the information about users in Alibaba Cloud Public DNS.
+// Retrieves user information for Public DNS.
 //
 // @param request - DescribePdnsUserInfoRequest
 //
@@ -10197,7 +10884,7 @@ func (client *Client) DescribePdnsUserInfoWithOptions(request *DescribePdnsUserI
 
 // Summary:
 //
-// Queries the information about users in Alibaba Cloud Public DNS.
+// Retrieves user information for Public DNS.
 //
 // @param request - DescribePdnsUserInfoRequest
 //
@@ -10215,7 +10902,7 @@ func (client *Client) DescribePdnsUserInfo(request *DescribePdnsUserInfoRequest)
 
 // Summary:
 //
-// Queries the operation logs of a domain name based on the specified parameters.
+// Queries the operation logs for the DNS records of a domain name.
 //
 // @param request - DescribeRecordLogsRequest
 //
@@ -10287,7 +10974,7 @@ func (client *Client) DescribeRecordLogsWithOptions(request *DescribeRecordLogsR
 
 // Summary:
 //
-// Queries the operation logs of a domain name based on the specified parameters.
+// Queries the operation logs for the DNS records of a domain name.
 //
 // @param request - DescribeRecordLogsRequest
 //
@@ -10305,7 +10992,7 @@ func (client *Client) DescribeRecordLogs(request *DescribeRecordLogsRequest) (_r
 
 // Summary:
 //
-// Queries the number of resolution requests for all subdomain names of a specified domain name.
+// Queries statistics on the request volume for all subdomains of a specified domain name.
 //
 // @param request - DescribeRecordResolveStatisticsSummaryRequest
 //
@@ -10389,7 +11076,7 @@ func (client *Client) DescribeRecordResolveStatisticsSummaryWithOptions(request 
 
 // Summary:
 //
-// Queries the number of resolution requests for all subdomain names of a specified domain name.
+// Queries statistics on the request volume for all subdomains of a specified domain name.
 //
 // @param request - DescribeRecordResolveStatisticsSummaryRequest
 //
@@ -10407,11 +11094,11 @@ func (client *Client) DescribeRecordResolveStatisticsSummary(request *DescribeRe
 
 // Summary:
 //
-// Queries the real-time statistics on the Domain Name System (DNS) requests for a subdomain name.
+// Queries real-time data about DNS requests for a specified subdomain.
 //
 // Description:
 //
-// Real-time data is collected per hour.
+// Real-time data is collected hourly.
 //
 // @param request - DescribeRecordStatisticsRequest
 //
@@ -10475,11 +11162,11 @@ func (client *Client) DescribeRecordStatisticsWithOptions(request *DescribeRecor
 
 // Summary:
 //
-// Queries the real-time statistics on the Domain Name System (DNS) requests for a subdomain name.
+// Queries real-time data about DNS requests for a specified subdomain.
 //
 // Description:
 //
-// Real-time data is collected per hour.
+// Real-time data is collected hourly.
 //
 // @param request - DescribeRecordStatisticsRequest
 //
@@ -10497,7 +11184,7 @@ func (client *Client) DescribeRecordStatistics(request *DescribeRecordStatistics
 
 // Summary:
 //
-// Queries the number of Domain Name System (DNS) requests for all subdomain names of a specified domain name.
+// Queries statistics on the request volume for all subdomains of a specified domain name.
 //
 // @param request - DescribeRecordStatisticsSummaryRequest
 //
@@ -10577,7 +11264,7 @@ func (client *Client) DescribeRecordStatisticsSummaryWithOptions(request *Descri
 
 // Summary:
 //
-// Queries the number of Domain Name System (DNS) requests for all subdomain names of a specified domain name.
+// Queries statistics on the request volume for all subdomains of a specified domain name.
 //
 // @param request - DescribeRecordStatisticsSummaryRequest
 //
@@ -10595,7 +11282,7 @@ func (client *Client) DescribeRecordStatisticsSummary(request *DescribeRecordSta
 
 // Summary:
 //
-// # Queries the details of HTTPDNS resolution records
+// Describes a built-in authoritative DNS record used for recursive resolution.
 //
 // @param request - DescribeRecursionRecordRequest
 //
@@ -10639,7 +11326,7 @@ func (client *Client) DescribeRecursionRecordWithOptions(request *DescribeRecurs
 
 // Summary:
 //
-// # Queries the details of HTTPDNS resolution records
+// Describes a built-in authoritative DNS record used for recursive resolution.
 //
 // @param request - DescribeRecursionRecordRequest
 //
@@ -10657,7 +11344,11 @@ func (client *Client) DescribeRecursionRecord(request *DescribeRecursionRecordRe
 
 // Summary:
 //
-// 查询递归解析内置权威域名zone详情
+// Queries the details of an authoritative zone for recursive resolution.
+//
+// Description:
+//
+// Real-time data is measured hourly.
 //
 // @param request - DescribeRecursionZoneRequest
 //
@@ -10701,7 +11392,11 @@ func (client *Client) DescribeRecursionZoneWithOptions(request *DescribeRecursio
 
 // Summary:
 //
-// 查询递归解析内置权威域名zone详情
+// Queries the details of an authoritative zone for recursive resolution.
+//
+// Description:
+//
+// Real-time data is measured hourly.
 //
 // @param request - DescribeRecursionZoneRequest
 //
@@ -10719,7 +11414,7 @@ func (client *Client) DescribeRecursionZone(request *DescribeRecursionZoneReques
 
 // Summary:
 //
-// Queries all Domain Name System (DNS) records of a subdomain name based on the specified parameters.
+// Retrieves all DNS records for a specific subdomain based on the specified parameters.
 //
 // @param request - DescribeSubDomainRecordsRequest
 //
@@ -10791,7 +11486,7 @@ func (client *Client) DescribeSubDomainRecordsWithOptions(request *DescribeSubDo
 
 // Summary:
 //
-// Queries all Domain Name System (DNS) records of a subdomain name based on the specified parameters.
+// Retrieves all DNS records for a specific subdomain based on the specified parameters.
 //
 // @param request - DescribeSubDomainRecordsRequest
 //
@@ -10809,7 +11504,7 @@ func (client *Client) DescribeSubDomainRecords(request *DescribeSubDomainRecords
 
 // Summary:
 //
-// Queries all lines that are supported by Alibaba Cloud DNS.
+// Queries all lines supported by Cloud DNS.
 //
 // @param request - DescribeSupportLinesRequest
 //
@@ -10861,7 +11556,7 @@ func (client *Client) DescribeSupportLinesWithOptions(request *DescribeSupportLi
 
 // Summary:
 //
-// Queries all lines that are supported by Alibaba Cloud DNS.
+// Queries all lines supported by Cloud DNS.
 //
 // @param request - DescribeSupportLinesRequest
 //
@@ -10953,7 +11648,7 @@ func (client *Client) DescribeTags(request *DescribeTagsRequest) (_result *Descr
 
 // Summary:
 //
-// Queries the domain names that were transferred between the current account and another account based on the specified parameters.
+// Queries the domain names transferred between accounts based on the specified input parameters.
 //
 // @param request - DescribeTransferDomainsRequest
 //
@@ -11021,7 +11716,7 @@ func (client *Client) DescribeTransferDomainsWithOptions(request *DescribeTransf
 
 // Summary:
 //
-// Queries the domain names that were transferred between the current account and another account based on the specified parameters.
+// Queries the domain names transferred between accounts based on the specified input parameters.
 //
 // @param request - DescribeTransferDomainsRequest
 //
@@ -11105,13 +11800,15 @@ func (client *Client) ExecuteGtmRecoveryPlan(request *ExecuteGtmRecoveryPlanRequ
 
 // Summary:
 //
-// Queries a primary domain name based on the specified parameters.
+// Retrieves the primary domain name from a specified domain name.
 //
 // Description:
 //
-// # For more information about the difference between primary domain names and subdomain names, see
+// # For more information about primary and subdomain name levels, see
 //
-// [Subdomain levels](https://www.alibabacloud.com/help/zh/faq-detail/39803.htm). For example, if you enter `www.abc.com`, abc.com is obtained.
+// <props="china">[Domain name levels](https://help.aliyun.com/document_detail/39803.html?spm=a2c4g.2357293.0.0.211f41ffUR1cPb). For example, if you enter `www.abc.com`, the output is abc.com.
+//
+// <props="intl">[Domain name levels](https://www.alibabacloud.com/help/zh/faq-detail/39803.htm). For example, if you enter `www.abc.com`, the output is abc.com.
 //
 // @param request - GetMainDomainNameRequest
 //
@@ -11159,13 +11856,15 @@ func (client *Client) GetMainDomainNameWithOptions(request *GetMainDomainNameReq
 
 // Summary:
 //
-// Queries a primary domain name based on the specified parameters.
+// Retrieves the primary domain name from a specified domain name.
 //
 // Description:
 //
-// # For more information about the difference between primary domain names and subdomain names, see
+// # For more information about primary and subdomain name levels, see
 //
-// [Subdomain levels](https://www.alibabacloud.com/help/zh/faq-detail/39803.htm). For example, if you enter `www.abc.com`, abc.com is obtained.
+// <props="china">[Domain name levels](https://help.aliyun.com/document_detail/39803.html?spm=a2c4g.2357293.0.0.211f41ffUR1cPb). For example, if you enter `www.abc.com`, the output is abc.com.
+//
+// <props="intl">[Domain name levels](https://www.alibabacloud.com/help/zh/faq-detail/39803.htm). For example, if you enter `www.abc.com`, the output is abc.com.
 //
 // @param request - GetMainDomainNameRequest
 //
@@ -11183,7 +11882,7 @@ func (client *Client) GetMainDomainName(request *GetMainDomainNameRequest) (_res
 
 // Summary:
 //
-// Generates a text (TXT) record. TXT records are used to retrieve domain names and subdomain names, enable the subdomain name verification feature, and perform batch retrievals.
+// Generates a TXT record for domain and subdomain verification. This operation supports batch retrieval.
 //
 // @param request - GetTxtRecordForVerifyRequest
 //
@@ -11235,7 +11934,7 @@ func (client *Client) GetTxtRecordForVerifyWithOptions(request *GetTxtRecordForV
 
 // Summary:
 //
-// Generates a text (TXT) record. TXT records are used to retrieve domain names and subdomain names, enable the subdomain name verification feature, and perform batch retrievals.
+// Generates a TXT record for domain and subdomain verification. This operation supports batch retrieval.
 //
 // @param request - GetTxtRecordForVerifyRequest
 //
@@ -11253,7 +11952,285 @@ func (client *Client) GetTxtRecordForVerify(request *GetTxtRecordForVerifyReques
 
 // Summary:
 //
-// Queries a list of address pools.
+// Queries the list of Agent registration information.
+//
+// @param request - ListAtiAgentRegisterInfosRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAtiAgentRegisterInfosResponse
+func (client *Client) ListAtiAgentRegisterInfosWithOptions(request *ListAtiAgentRegisterInfosRequest, runtime *dara.RuntimeOptions) (_result *ListAtiAgentRegisterInfosResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentDisplayName) {
+		query["AgentDisplayName"] = request.AgentDisplayName
+	}
+
+	if !dara.IsNil(request.AgentHost) {
+		query["AgentHost"] = request.AgentHost
+	}
+
+	if !dara.IsNil(request.AgentId) {
+		query["AgentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.AgentVersion) {
+		query["AgentVersion"] = request.AgentVersion
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAtiAgentRegisterInfos"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAtiAgentRegisterInfosResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of Agent registration information.
+//
+// @param request - ListAtiAgentRegisterInfosRequest
+//
+// @return ListAtiAgentRegisterInfosResponse
+func (client *Client) ListAtiAgentRegisterInfos(request *ListAtiAgentRegisterInfosRequest) (_result *ListAtiAgentRegisterInfosResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAtiAgentRegisterInfosResponse{}
+	_body, _err := client.ListAtiAgentRegisterInfosWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of real-name registered contacts.
+//
+// @param request - ListAtiChangeLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAtiChangeLogsResponse
+func (client *Client) ListAtiChangeLogsWithOptions(request *ListAtiChangeLogsRequest, runtime *dara.RuntimeOptions) (_result *ListAtiChangeLogsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		query["AgentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.EndTimestamp) {
+		query["EndTimestamp"] = request.EndTimestamp
+	}
+
+	if !dara.IsNil(request.OperationType) {
+		query["OperationType"] = request.OperationType
+	}
+
+	if !dara.IsNil(request.OperatorAccount) {
+		query["OperatorAccount"] = request.OperatorAccount
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StartTimestamp) {
+		query["StartTimestamp"] = request.StartTimestamp
+	}
+
+	if !dara.IsNil(request.TimeRange) {
+		query["TimeRange"] = request.TimeRange
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAtiChangeLogs"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAtiChangeLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of real-name registered contacts.
+//
+// @param request - ListAtiChangeLogsRequest
+//
+// @return ListAtiChangeLogsResponse
+func (client *Client) ListAtiChangeLogs(request *ListAtiChangeLogsRequest) (_result *ListAtiChangeLogsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAtiChangeLogsResponse{}
+	_body, _err := client.ListAtiChangeLogsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实名注册人列表
+//
+// @param request - ListAtiRegistrantsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAtiRegistrantsResponse
+func (client *Client) ListAtiRegistrantsWithOptions(request *ListAtiRegistrantsRequest, runtime *dara.RuntimeOptions) (_result *ListAtiRegistrantsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAtiRegistrants"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAtiRegistrantsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实名注册人列表
+//
+// @param request - ListAtiRegistrantsRequest
+//
+// @return ListAtiRegistrantsResponse
+func (client *Client) ListAtiRegistrants(request *ListAtiRegistrantsRequest) (_result *ListAtiRegistrantsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAtiRegistrantsResponse{}
+	_body, _err := client.ListAtiRegistrantsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of address pools in Global Traffic Manager (GTM) 3.0.
 //
 // @param request - ListCloudGtmAddressPoolsRequest
 //
@@ -11325,7 +12302,7 @@ func (client *Client) ListCloudGtmAddressPoolsWithOptions(request *ListCloudGtmA
 
 // Summary:
 //
-// Queries a list of address pools.
+// Queries the list of address pools in Global Traffic Manager (GTM) 3.0.
 //
 // @param request - ListCloudGtmAddressPoolsRequest
 //
@@ -11343,7 +12320,7 @@ func (client *Client) ListCloudGtmAddressPools(request *ListCloudGtmAddressPools
 
 // Summary:
 //
-// Queries a list of addresses.
+// Queries a list of addresses based on the specified parameters.
 //
 // @param request - ListCloudGtmAddressesRequest
 //
@@ -11427,7 +12404,7 @@ func (client *Client) ListCloudGtmAddressesWithOptions(request *ListCloudGtmAddr
 
 // Summary:
 //
-// Queries a list of addresses.
+// Queries a list of addresses based on the specified parameters.
 //
 // @param request - ListCloudGtmAddressesRequest
 //
@@ -11443,6 +12420,10 @@ func (client *Client) ListCloudGtmAddresses(request *ListCloudGtmAddressesReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of alert logs.
+//
 // @param request - ListCloudGtmAlertLogsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11511,6 +12492,10 @@ func (client *Client) ListCloudGtmAlertLogsWithOptions(request *ListCloudGtmAler
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of alert logs.
+//
 // @param request - ListCloudGtmAlertLogsRequest
 //
 // @return ListCloudGtmAlertLogsResponse
@@ -11581,7 +12566,7 @@ func (client *Client) ListCloudGtmAvailableAlertGroups(request *ListCloudGtmAvai
 
 // Summary:
 //
-// Queries the configurations of a Global Traffic Manager (GTM) instance, including the information about access domain names and address pools.
+// Retrieves a list of instance configurations that contain access domain names and address pool information.
 //
 // @param request - ListCloudGtmInstanceConfigsRequest
 //
@@ -11657,7 +12642,7 @@ func (client *Client) ListCloudGtmInstanceConfigsWithOptions(request *ListCloudG
 
 // Summary:
 //
-// Queries the configurations of a Global Traffic Manager (GTM) instance, including the information about access domain names and address pools.
+// Retrieves a list of instance configurations that contain access domain names and address pool information.
 //
 // @param request - ListCloudGtmInstanceConfigsRequest
 //
@@ -11675,7 +12660,7 @@ func (client *Client) ListCloudGtmInstanceConfigs(request *ListCloudGtmInstanceC
 
 // Summary:
 //
-// Obtains the GTM 3.0 instances based on the specified parameters.
+// Retrieves a list of GTM 3.0 instances based on the specified parameters.
 //
 // @param request - ListCloudGtmInstancesRequest
 //
@@ -11743,7 +12728,7 @@ func (client *Client) ListCloudGtmInstancesWithOptions(request *ListCloudGtmInst
 
 // Summary:
 //
-// Obtains the GTM 3.0 instances based on the specified parameters.
+// Retrieves a list of GTM 3.0 instances based on the specified parameters.
 //
 // @param request - ListCloudGtmInstancesRequest
 //
@@ -11761,7 +12746,7 @@ func (client *Client) ListCloudGtmInstances(request *ListCloudGtmInstancesReques
 
 // Summary:
 //
-// Queries a list of health check nodes.
+// Lists the health check monitoring nodes based on the specified input parameters.
 //
 // @param request - ListCloudGtmMonitorNodesRequest
 //
@@ -11809,7 +12794,7 @@ func (client *Client) ListCloudGtmMonitorNodesWithOptions(request *ListCloudGtmM
 
 // Summary:
 //
-// Queries a list of health check nodes.
+// Lists the health check monitoring nodes based on the specified input parameters.
 //
 // @param request - ListCloudGtmMonitorNodesRequest
 //
@@ -11827,7 +12812,7 @@ func (client *Client) ListCloudGtmMonitorNodes(request *ListCloudGtmMonitorNodes
 
 // Summary:
 //
-// Queries a list of health check templates based on specified parameters.
+// Queries health check templates based on the specified parameters.
 //
 // @param request - ListCloudGtmMonitorTemplatesRequest
 //
@@ -11891,7 +12876,7 @@ func (client *Client) ListCloudGtmMonitorTemplatesWithOptions(request *ListCloud
 
 // Summary:
 //
-// Queries a list of health check templates based on specified parameters.
+// Queries health check templates based on the specified parameters.
 //
 // @param request - ListCloudGtmMonitorTemplatesRequest
 //
@@ -11909,7 +12894,7 @@ func (client *Client) ListCloudGtmMonitorTemplates(request *ListCloudGtmMonitorT
 
 // Summary:
 //
-// # Queries the record details of HTTPDNS resolution records
+// Lists the built-in authoritative records for recursive resolution.
 //
 // @param request - ListRecursionRecordsRequest
 //
@@ -11997,7 +12982,7 @@ func (client *Client) ListRecursionRecordsWithOptions(request *ListRecursionReco
 
 // Summary:
 //
-// # Queries the record details of HTTPDNS resolution records
+// Lists the built-in authoritative records for recursive resolution.
 //
 // @param request - ListRecursionRecordsRequest
 //
@@ -12015,7 +13000,17 @@ func (client *Client) ListRecursionRecords(request *ListRecursionRecordsRequest)
 
 // Summary:
 //
-// # Queries HTTPDNS authoritative zones
+// Queries the zones that are used for recursive resolution of built-in authoritative domain names.
+//
+// Description:
+//
+// - Specify at least ResourceId.N or Tag.N (Tag.N.Key and Tag.N.Value) in your request to identify the resources to retrieve.
+//
+// - Tag.N is a resource tag that consists of a key-value pair. If you specify only Tag.N.Key, all tag values associated with the tag key are returned. An error is returned if you specify only Tag.N.Value.
+//
+// - If you specify both Tag.N and ResourceId.N to filter resources, only the resources that are specified by ResourceId.N and match all the specified key-value pairs are returned.
+//
+// - If you specify multiple tag key-value pairs, the resources that match all of them are returned.
 //
 // @param request - ListRecursionZonesRequest
 //
@@ -12079,7 +13074,17 @@ func (client *Client) ListRecursionZonesWithOptions(request *ListRecursionZonesR
 
 // Summary:
 //
-// # Queries HTTPDNS authoritative zones
+// Queries the zones that are used for recursive resolution of built-in authoritative domain names.
+//
+// Description:
+//
+// - Specify at least ResourceId.N or Tag.N (Tag.N.Key and Tag.N.Value) in your request to identify the resources to retrieve.
+//
+// - Tag.N is a resource tag that consists of a key-value pair. If you specify only Tag.N.Key, all tag values associated with the tag key are returned. An error is returned if you specify only Tag.N.Value.
+//
+// - If you specify both Tag.N and ResourceId.N to filter resources, only the resources that are specified by ResourceId.N and match all the specified key-value pairs are returned.
+//
+// - If you specify multiple tag key-value pairs, the resources that match all of them are returned.
 //
 // @param request - ListRecursionZonesRequest
 //
@@ -12101,13 +13106,13 @@ func (client *Client) ListRecursionZones(request *ListRecursionZonesRequest) (_r
 //
 // Description:
 //
-//	  Set ResourceId.N or Tag.N that consists of Tag.N.Key and Tag.N.Value in the request to specify the object to be queried.
+// - To specify the objects to retrieve, your request must contain at least one of the following parameters: `ResourceId.N` or `Tag.N` (which consists of Tag.N.Key and Tag.N.Value).
 //
-//		- Tag.N is a resource tag that consists of a key-value pair. If you set only Tag.N.Key, all tag values that are assigned to the specified key are returned. If you set only Tag.N.Value, an error message is returned.
+// - Tag.N is a resource tag that consists of a key-value pair. If you specify only Tag.N.Key, all tag values associated with that tag key are returned. An error occurs if you specify only Tag.N.Value.
 //
-//		- If you set both Tag.N and ResourceId.N to filter tags, ResourceId.N must match all specified key-value pairs.
+// - If you specify both Tag.N and ResourceId.N to filter resources, only the resources that are specified by ResourceId.N and match all the specified tag key-value pairs are returned.
 //
-//		- If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
+// - If you specify multiple tag key-value pairs, only the resources that have all the specified key-value pairs are returned.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -12171,13 +13176,13 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 //
 // Description:
 //
-//	  Set ResourceId.N or Tag.N that consists of Tag.N.Key and Tag.N.Value in the request to specify the object to be queried.
+// - To specify the objects to retrieve, your request must contain at least one of the following parameters: `ResourceId.N` or `Tag.N` (which consists of Tag.N.Key and Tag.N.Value).
 //
-//		- Tag.N is a resource tag that consists of a key-value pair. If you set only Tag.N.Key, all tag values that are assigned to the specified key are returned. If you set only Tag.N.Value, an error message is returned.
+// - Tag.N is a resource tag that consists of a key-value pair. If you specify only Tag.N.Key, all tag values associated with that tag key are returned. An error occurs if you specify only Tag.N.Value.
 //
-//		- If you set both Tag.N and ResourceId.N to filter tags, ResourceId.N must match all specified key-value pairs.
+// - If you specify both Tag.N and ResourceId.N to filter resources, only the resources that are specified by ResourceId.N and match all the specified tag key-value pairs are returned.
 //
-//		- If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
+// - If you specify multiple tag key-value pairs, only the resources that have all the specified key-value pairs are returned.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -12195,13 +13200,13 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// Changes the names of DNS servers bound to a domain name from DNS server names provided by a third-party service provider to DNS server names provided by Alibaba Cloud DNS.
+// Changes the DNS servers for a domain name from a third-party provider to Alibaba Cloud DNS.
 //
 // Description:
 //
-// If the operation succeeds, the names of DNS servers change to those of Alibaba Cloud DNS servers (ending with hichina.com).
+// After the operation is successful, the DNS servers are changed to Alibaba Cloud DNS servers. The names of these new servers end with hichina.com.
 //
-// >  **Before you call this operation, make sure that your domain name has been registered with Alibaba Cloud and the DNS servers in use are not Alibaba Cloud DNS servers.
+// > **Prerequisite: This operation applies to domain names that are registered with Alibaba Cloud and currently use third-party DNS servers.**
 //
 // @param request - ModifyHichinaDomainDNSRequest
 //
@@ -12253,13 +13258,13 @@ func (client *Client) ModifyHichinaDomainDNSWithOptions(request *ModifyHichinaDo
 
 // Summary:
 //
-// Changes the names of DNS servers bound to a domain name from DNS server names provided by a third-party service provider to DNS server names provided by Alibaba Cloud DNS.
+// Changes the DNS servers for a domain name from a third-party provider to Alibaba Cloud DNS.
 //
 // Description:
 //
-// If the operation succeeds, the names of DNS servers change to those of Alibaba Cloud DNS servers (ending with hichina.com).
+// After the operation is successful, the DNS servers are changed to Alibaba Cloud DNS servers. The names of these new servers end with hichina.com.
 //
-// >  **Before you call this operation, make sure that your domain name has been registered with Alibaba Cloud and the DNS servers in use are not Alibaba Cloud DNS servers.
+// > **Prerequisite: This operation applies to domain names that are registered with Alibaba Cloud and currently use third-party DNS servers.**
 //
 // @param request - ModifyHichinaDomainDNSRequest
 //
@@ -12277,7 +13282,7 @@ func (client *Client) ModifyHichinaDomainDNS(request *ModifyHichinaDomainDNSRequ
 
 // Summary:
 //
-// Moves a domain name to another resource group.
+// Moves a domain name to a different resource group.
 //
 // @param request - MoveDomainResourceGroupRequest
 //
@@ -12329,7 +13334,7 @@ func (client *Client) MoveDomainResourceGroupWithOptions(request *MoveDomainReso
 
 // Summary:
 //
-// Moves a domain name to another resource group.
+// Moves a domain name to a different resource group.
 //
 // @param request - MoveDomainResourceGroupRequest
 //
@@ -12345,6 +13350,10 @@ func (client *Client) MoveDomainResourceGroup(request *MoveDomainResourceGroupRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Moves a Global Traffic Manager (GTM) instance to a new resource group.
+//
 // @param request - MoveGtmResourceGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12393,6 +13402,10 @@ func (client *Client) MoveGtmResourceGroupWithOptions(request *MoveGtmResourceGr
 	return _result, _err
 }
 
+// Summary:
+//
+// Moves a Global Traffic Manager (GTM) instance to a new resource group.
+//
 // @param request - MoveGtmResourceGroupRequest
 //
 // @return MoveGtmResourceGroupResponse
@@ -12409,11 +13422,11 @@ func (client *Client) MoveGtmResourceGroup(request *MoveGtmResourceGroupRequest)
 
 // Summary:
 //
-// Adds or deletes domain names and Domain Name System (DNS) records in batches.
+// Adds or deletes domain names and DNS records in batches.
 //
 // Description:
 //
-// Scenario: You need to execute a large number of tasks related to DNS resolution and you do not have high requirements for efficiency.
+// Use this operation for batch DNS tasks that do not require immediate execution.
 //
 // @param request - OperateBatchDomainRequest
 //
@@ -12465,11 +13478,11 @@ func (client *Client) OperateBatchDomainWithOptions(request *OperateBatchDomainR
 
 // Summary:
 //
-// Adds or deletes domain names and Domain Name System (DNS) records in batches.
+// Adds or deletes domain names and DNS records in batches.
 //
 // Description:
 //
-// Scenario: You need to execute a large number of tasks related to DNS resolution and you do not have high requirements for efficiency.
+// Use this operation for batch DNS tasks that do not require immediate execution.
 //
 // @param request - OperateBatchDomainRequest
 //
@@ -12487,7 +13500,7 @@ func (client *Client) OperateBatchDomain(request *OperateBatchDomainRequest) (_r
 
 // Summary:
 //
-// 暂停公共DNS服务
+// # Pause Public DNS Service
 //
 // @param request - PausePdnsServiceRequest
 //
@@ -12535,7 +13548,7 @@ func (client *Client) PausePdnsServiceWithOptions(request *PausePdnsServiceReque
 
 // Summary:
 //
-// 暂停公共DNS服务
+// # Pause Public DNS Service
 //
 // @param request - PausePdnsServiceRequest
 //
@@ -12553,7 +13566,7 @@ func (client *Client) PausePdnsService(request *PausePdnsServiceRequest) (_resul
 
 // Summary:
 //
-// Views disaster recovery plan.
+// Previews a disaster recovery plan.
 //
 // @param request - PreviewGtmRecoveryPlanRequest
 //
@@ -12609,7 +13622,7 @@ func (client *Client) PreviewGtmRecoveryPlanWithOptions(request *PreviewGtmRecov
 
 // Summary:
 //
-// Views disaster recovery plan.
+// Previews a disaster recovery plan.
 //
 // @param request - PreviewGtmRecoveryPlanRequest
 //
@@ -12627,7 +13640,7 @@ func (client *Client) PreviewGtmRecoveryPlan(request *PreviewGtmRecoveryPlanRequ
 
 // Summary:
 //
-// 删除公共DNS AppKey
+// # Delete Public DNS AppKey
 //
 // @param request - RemovePdnsAppKeyRequest
 //
@@ -12675,7 +13688,7 @@ func (client *Client) RemovePdnsAppKeyWithOptions(request *RemovePdnsAppKeyReque
 
 // Summary:
 //
-// 删除公共DNS AppKey
+// # Delete Public DNS AppKey
 //
 // @param request - RemovePdnsAppKeyRequest
 //
@@ -12693,7 +13706,7 @@ func (client *Client) RemovePdnsAppKey(request *RemovePdnsAppKeyRequest) (_resul
 
 // Summary:
 //
-// 删除公共DNS Udp Ip地址段
+// # Remove Public DNS UDP IP Segment
 //
 // @param request - RemovePdnsUdpIpSegmentRequest
 //
@@ -12741,7 +13754,7 @@ func (client *Client) RemovePdnsUdpIpSegmentWithOptions(request *RemovePdnsUdpIp
 
 // Summary:
 //
-// 删除公共DNS Udp Ip地址段
+// # Remove Public DNS UDP IP Segment
 //
 // @param request - RemovePdnsUdpIpSegmentRequest
 //
@@ -12759,21 +13772,13 @@ func (client *Client) RemovePdnsUdpIpSegment(request *RemovePdnsUdpIpSegmentRequ
 
 // Summary:
 //
-// 用于删除特定域名的serverHold状态信息。
+// Removes the serverHold status of a specified domain name.
 //
 // Description:
 //
-// ## 请求说明
+// ## Description
 //
-// - 本接口专为注册局用户设计，允许他们更新指定顶级域名（TLD）的各种属性。
-//
-// - 必须提供`RegistryId`和`Tld`参数以标识要修改的具体TLD。
-//
-// - 可选参数包括但不限于宽限期设置、DNS解析缓存时间、价格设定等，这些都可根据需要进行调整。
-//
-// - 环境(`Env`)参数指定了API调用的目标环境，默认值为“DAILY”表示日常测试环境；正式上线前，请确保已正确设置此参数。
-//
-// - 某些时间戳字段如`SunriseStartTimeStamp`要求输入Unix时间戳格式的数据。
+// - This operation removes the serverHold status of a specified domain name.
 //
 // @param request - RemoveRspDomainServerHoldStatusForGatewayRequest
 //
@@ -12825,21 +13830,13 @@ func (client *Client) RemoveRspDomainServerHoldStatusForGatewayWithOptions(reque
 
 // Summary:
 //
-// 用于删除特定域名的serverHold状态信息。
+// Removes the serverHold status of a specified domain name.
 //
 // Description:
 //
-// ## 请求说明
+// ## Description
 //
-// - 本接口专为注册局用户设计，允许他们更新指定顶级域名（TLD）的各种属性。
-//
-// - 必须提供`RegistryId`和`Tld`参数以标识要修改的具体TLD。
-//
-// - 可选参数包括但不限于宽限期设置、DNS解析缓存时间、价格设定等，这些都可根据需要进行调整。
-//
-// - 环境(`Env`)参数指定了API调用的目标环境，默认值为“DAILY”表示日常测试环境；正式上线前，请确保已正确设置此参数。
-//
-// - 某些时间戳字段如`SunriseStartTimeStamp`要求输入Unix时间戳格式的数据。
+// - This operation removes the serverHold status of a specified domain name.
 //
 // @param request - RemoveRspDomainServerHoldStatusForGatewayRequest
 //
@@ -12857,21 +13854,13 @@ func (client *Client) RemoveRspDomainServerHoldStatusForGateway(request *RemoveR
 
 // Summary:
 //
-// 用于删除特定域名的serverHold状态信息。
+// Removes the serverHold status for a specified domain name.
 //
 // Description:
 //
-// ## 请求说明
+// ## Description
 //
-// - 本接口专为注册局用户设计，允许他们更新指定顶级域名（TLD）的各种属性。
-//
-// - 必须提供`RegistryId`和`Tld`参数以标识要修改的具体TLD。
-//
-// - 可选参数包括但不限于宽限期设置、DNS解析缓存时间、价格设定等，这些都可根据需要进行调整。
-//
-// - 环境(`Env`)参数指定了API调用的目标环境，默认值为“DAILY”表示日常测试环境；正式上线前，请确保已正确设置此参数。
-//
-// - 某些时间戳字段如`SunriseStartTimeStamp`要求输入Unix时间戳格式的数据。
+// - This operation removes the serverHold status for a specified domain name.
 //
 // @param request - RemoveRspDomainServerHoldStatusForGatewayOteRequest
 //
@@ -12923,21 +13912,13 @@ func (client *Client) RemoveRspDomainServerHoldStatusForGatewayOteWithOptions(re
 
 // Summary:
 //
-// 用于删除特定域名的serverHold状态信息。
+// Removes the serverHold status for a specified domain name.
 //
 // Description:
 //
-// ## 请求说明
+// ## Description
 //
-// - 本接口专为注册局用户设计，允许他们更新指定顶级域名（TLD）的各种属性。
-//
-// - 必须提供`RegistryId`和`Tld`参数以标识要修改的具体TLD。
-//
-// - 可选参数包括但不限于宽限期设置、DNS解析缓存时间、价格设定等，这些都可根据需要进行调整。
-//
-// - 环境(`Env`)参数指定了API调用的目标环境，默认值为“DAILY”表示日常测试环境；正式上线前，请确保已正确设置此参数。
-//
-// - 某些时间戳字段如`SunriseStartTimeStamp`要求输入Unix时间戳格式的数据。
+// - This operation removes the serverHold status for a specified domain name.
 //
 // @param request - RemoveRspDomainServerHoldStatusForGatewayOteRequest
 //
@@ -12955,7 +13936,7 @@ func (client *Client) RemoveRspDomainServerHoldStatusForGatewayOte(request *Remo
 
 // Summary:
 //
-// Replaces the addresses referenced by an address pool.
+// Replaces the addresses in a specified address pool.
 //
 // @param tmpReq - ReplaceCloudGtmAddressPoolAddressRequest
 //
@@ -13017,7 +13998,7 @@ func (client *Client) ReplaceCloudGtmAddressPoolAddressWithOptions(tmpReq *Repla
 
 // Summary:
 //
-// Replaces the addresses referenced by an address pool.
+// Replaces the addresses in a specified address pool.
 //
 // @param request - ReplaceCloudGtmAddressPoolAddressRequest
 //
@@ -13035,7 +14016,7 @@ func (client *Client) ReplaceCloudGtmAddressPoolAddress(request *ReplaceCloudGtm
 
 // Summary:
 //
-// Replaces address pools that are associated with a GTM instance with new address pools.
+// Replaces the address pools associated with an instance.
 //
 // @param tmpReq - ReplaceCloudGtmInstanceConfigAddressPoolRequest
 //
@@ -13101,7 +14082,7 @@ func (client *Client) ReplaceCloudGtmInstanceConfigAddressPoolWithOptions(tmpReq
 
 // Summary:
 //
-// Replaces address pools that are associated with a GTM instance with new address pools.
+// Replaces the address pools associated with an instance.
 //
 // @param request - ReplaceCloudGtmInstanceConfigAddressPoolRequest
 //
@@ -13119,7 +14100,7 @@ func (client *Client) ReplaceCloudGtmInstanceConfigAddressPool(request *ReplaceC
 
 // Summary:
 //
-// 恢复公共DNS服务
+// # Resume Public DNS Service
 //
 // @param request - ResumePdnsServiceRequest
 //
@@ -13167,7 +14148,7 @@ func (client *Client) ResumePdnsServiceWithOptions(request *ResumePdnsServiceReq
 
 // Summary:
 //
-// 恢复公共DNS服务
+// # Resume Public DNS Service
 //
 // @param request - ResumePdnsServiceRequest
 //
@@ -13189,7 +14170,7 @@ func (client *Client) ResumePdnsService(request *ResumePdnsServiceRequest) (_res
 //
 // Description:
 //
-// To retrieve a domain name, you must verify a text (TXT) record. Therefore, before you call this API operation to retrieve a domain name, call the [GetTxtRecordForVerify](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/generating-a-txt-record) operation to generate a TXT record.
+// Before you can retrieve a domain name, you must verify it using a TXT record. Use this operation in conjunction with the <props="china">[Generate a TXT record](https://help.aliyun.com/document_detail/145533.html) <props="intl">[Generate a TXT record](https://www.alibabacloud.com/help/zh/alibaba-cloud-dns/latest/generating-a-txt-record) operation.
 //
 // @param request - RetrieveDomainRequest
 //
@@ -13241,7 +14222,7 @@ func (client *Client) RetrieveDomainWithOptions(request *RetrieveDomainRequest, 
 //
 // Description:
 //
-// To retrieve a domain name, you must verify a text (TXT) record. Therefore, before you call this API operation to retrieve a domain name, call the [GetTxtRecordForVerify](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/generating-a-txt-record) operation to generate a TXT record.
+// Before you can retrieve a domain name, you must verify it using a TXT record. Use this operation in conjunction with the <props="china">[Generate a TXT record](https://help.aliyun.com/document_detail/145533.html) <props="intl">[Generate a TXT record](https://www.alibabacloud.com/help/zh/alibaba-cloud-dns/latest/generating-a-txt-record) operation.
 //
 // @param request - RetrieveDomainRequest
 //
@@ -13250,6 +14231,146 @@ func (client *Client) RetrieveDomain(request *RetrieveDomainRequest) (_result *R
 	runtime := &dara.RuntimeOptions{}
 	_result = &RetrieveDomainResponse{}
 	_body, _err := client.RetrieveDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Revokes the registration information of an Agent.
+//
+// @param request - RevokeAtiAgentRegisterInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeAtiAgentRegisterInfoResponse
+func (client *Client) RevokeAtiAgentRegisterInfoWithOptions(request *RevokeAtiAgentRegisterInfoRequest, runtime *dara.RuntimeOptions) (_result *RevokeAtiAgentRegisterInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentRegisterInfoId) {
+		query["AgentRegisterInfoId"] = request.AgentRegisterInfoId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Reason) {
+		query["Reason"] = request.Reason
+	}
+
+	if !dara.IsNil(request.ReasonCode) {
+		query["ReasonCode"] = request.ReasonCode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RevokeAtiAgentRegisterInfo"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RevokeAtiAgentRegisterInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Revokes the registration information of an Agent.
+//
+// @param request - RevokeAtiAgentRegisterInfoRequest
+//
+// @return RevokeAtiAgentRegisterInfoResponse
+func (client *Client) RevokeAtiAgentRegisterInfo(request *RevokeAtiAgentRegisterInfoRequest) (_result *RevokeAtiAgentRegisterInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RevokeAtiAgentRegisterInfoResponse{}
+	_body, _err := client.RevokeAtiAgentRegisterInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Revokes a real-name registrant.
+//
+// @param request - RevokeAtiRegistrantRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeAtiRegistrantResponse
+func (client *Client) RevokeAtiRegistrantWithOptions(request *RevokeAtiRegistrantRequest, runtime *dara.RuntimeOptions) (_result *RevokeAtiRegistrantResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.RegistrantId) {
+		query["RegistrantId"] = request.RegistrantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RevokeAtiRegistrant"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RevokeAtiRegistrantResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Revokes a real-name registrant.
+//
+// @param request - RevokeAtiRegistrantRequest
+//
+// @return RevokeAtiRegistrantResponse
+func (client *Client) RevokeAtiRegistrant(request *RevokeAtiRegistrantRequest) (_result *RevokeAtiRegistrantResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RevokeAtiRegistrantResponse{}
+	_body, _err := client.RevokeAtiRegistrantWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13325,7 +14446,101 @@ func (client *Client) RollbackGtmRecoveryPlan(request *RollbackGtmRecoveryPlanRe
 
 // Summary:
 //
-// Queries a list of address pools.
+// Searches for agents in the Agent Marketplace.
+//
+// @param request - SearchAtiAgentRegisterInfoMarketRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchAtiAgentRegisterInfoMarketResponse
+func (client *Client) SearchAtiAgentRegisterInfoMarketWithOptions(request *SearchAtiAgentRegisterInfoMarketRequest, runtime *dara.RuntimeOptions) (_result *SearchAtiAgentRegisterInfoMarketResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Protocol) {
+		query["Protocol"] = request.Protocol
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TrustLevel) {
+		query["TrustLevel"] = request.TrustLevel
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SearchAtiAgentRegisterInfoMarket"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SearchAtiAgentRegisterInfoMarketResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Searches for agents in the Agent Marketplace.
+//
+// @param request - SearchAtiAgentRegisterInfoMarketRequest
+//
+// @return SearchAtiAgentRegisterInfoMarketResponse
+func (client *Client) SearchAtiAgentRegisterInfoMarket(request *SearchAtiAgentRegisterInfoMarketRequest) (_result *SearchAtiAgentRegisterInfoMarketResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SearchAtiAgentRegisterInfoMarketResponse{}
+	_body, _err := client.SearchAtiAgentRegisterInfoMarketWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Searches for address pools by name, remarks, or other criteria.
 //
 // @param request - SearchCloudGtmAddressPoolsRequest
 //
@@ -13405,7 +14620,7 @@ func (client *Client) SearchCloudGtmAddressPoolsWithOptions(request *SearchCloud
 
 // Summary:
 //
-// Queries a list of address pools.
+// Searches for address pools by name, remarks, or other criteria.
 //
 // @param request - SearchCloudGtmAddressPoolsRequest
 //
@@ -13423,7 +14638,7 @@ func (client *Client) SearchCloudGtmAddressPools(request *SearchCloudGtmAddressP
 
 // Summary:
 //
-// Queries a list of addresses based on address names, descriptions, health check templates referenced by the addresses, or address IDs.
+// Searches for addresses based on criteria such as address name, remarks, referenced health check template, or address ID.
 //
 // @param request - SearchCloudGtmAddressesRequest
 //
@@ -13519,7 +14734,7 @@ func (client *Client) SearchCloudGtmAddressesWithOptions(request *SearchCloudGtm
 
 // Summary:
 //
-// Queries a list of addresses based on address names, descriptions, health check templates referenced by the addresses, or address IDs.
+// Searches for addresses based on criteria such as address name, remarks, referenced health check template, or address ID.
 //
 // @param request - SearchCloudGtmAddressesRequest
 //
@@ -13537,7 +14752,7 @@ func (client *Client) SearchCloudGtmAddresses(request *SearchCloudGtmAddressesRe
 
 // Summary:
 //
-// Queries the configurations of an access domain name.
+// Retrieves instance configurations that match the specified parameters.
 //
 // @param request - SearchCloudGtmInstanceConfigsRequest
 //
@@ -13621,7 +14836,7 @@ func (client *Client) SearchCloudGtmInstanceConfigsWithOptions(request *SearchCl
 
 // Summary:
 //
-// Queries the configurations of an access domain name.
+// Retrieves instance configurations that match the specified parameters.
 //
 // @param request - SearchCloudGtmInstanceConfigsRequest
 //
@@ -13639,7 +14854,7 @@ func (client *Client) SearchCloudGtmInstanceConfigs(request *SearchCloudGtmInsta
 
 // Summary:
 //
-// Queries a list of instances.
+// This operation searches for instances based on specified parameters.
 //
 // @param request - SearchCloudGtmInstancesRequest
 //
@@ -13707,7 +14922,7 @@ func (client *Client) SearchCloudGtmInstancesWithOptions(request *SearchCloudGtm
 
 // Summary:
 //
-// Queries a list of instances.
+// This operation searches for instances based on specified parameters.
 //
 // @param request - SearchCloudGtmInstancesRequest
 //
@@ -13725,7 +14940,7 @@ func (client *Client) SearchCloudGtmInstances(request *SearchCloudGtmInstancesRe
 
 // Summary:
 //
-// Queries the list of health check templates.
+// Searches for health check templates.
 //
 // @param request - SearchCloudGtmMonitorTemplatesRequest
 //
@@ -13789,7 +15004,7 @@ func (client *Client) SearchCloudGtmMonitorTemplatesWithOptions(request *SearchC
 
 // Summary:
 //
-// Queries the list of health check templates.
+// Searches for health check templates.
 //
 // @param request - SearchCloudGtmMonitorTemplatesRequest
 //
@@ -13807,7 +15022,7 @@ func (client *Client) SearchCloudGtmMonitorTemplates(request *SearchCloudGtmMoni
 
 // Summary:
 //
-// 搜索递归解析内置权威解析记录
+// Searches for built-in authoritative DNS records used for recursive resolution.
 //
 // @param request - SearchRecursionRecordsRequest
 //
@@ -13907,7 +15122,7 @@ func (client *Client) SearchRecursionRecordsWithOptions(request *SearchRecursion
 
 // Summary:
 //
-// 搜索递归解析内置权威解析记录
+// Searches for built-in authoritative DNS records used for recursive resolution.
 //
 // @param request - SearchRecursionRecordsRequest
 //
@@ -13925,7 +15140,17 @@ func (client *Client) SearchRecursionRecords(request *SearchRecursionRecordsRequ
 
 // Summary:
 //
-// 搜索递归解析内置权威域名zone
+// Searches for zones of built-in authoritative domain names used for recursive resolution.
+//
+// Description:
+//
+// - To retrieve resources, you must specify at least `ResourceId.N` or `Tag.N` (`Tag.N.Key` and `Tag.N.Value`) in the request.
+//
+// - `Tag.N` is a resource tag that consists of a key-value pair. If you specify only `Tag.N.Key`, all tag values associated with that key are returned. If you specify only `Tag.N.Value`, an error is returned.
+//
+// - If you specify both `Tag.N` and `ResourceId.N`, the operation returns only the resources that are identified by `ResourceId.N` and match all the specified tag key-value pairs.
+//
+// - If you specify multiple tag key-value pairs, only resources that match all of them are returned.
 //
 // @param tmpReq - SearchRecursionZonesRequest
 //
@@ -14007,7 +15232,17 @@ func (client *Client) SearchRecursionZonesWithOptions(tmpReq *SearchRecursionZon
 
 // Summary:
 //
-// 搜索递归解析内置权威域名zone
+// Searches for zones of built-in authoritative domain names used for recursive resolution.
+//
+// Description:
+//
+// - To retrieve resources, you must specify at least `ResourceId.N` or `Tag.N` (`Tag.N.Key` and `Tag.N.Value`) in the request.
+//
+// - `Tag.N` is a resource tag that consists of a key-value pair. If you specify only `Tag.N.Key`, all tag values associated with that key are returned. If you specify only `Tag.N.Value`, an error is returned.
+//
+// - If you specify both `Tag.N` and `ResourceId.N`, the operation returns only the resources that are identified by `ResourceId.N` and match all the specified tag key-value pairs.
+//
+// - If you specify multiple tag key-value pairs, only resources that match all of them are returned.
 //
 // @param request - SearchRecursionZonesRequest
 //
@@ -14025,7 +15260,7 @@ func (client *Client) SearchRecursionZones(request *SearchRecursionZonesRequest)
 
 // Summary:
 //
-// 设置全局流量管理实例配置日志开关
+// Enables or disables the network traffic analysis feature for a Global Traffic Manager (GTM) instance. After this feature is enabled, you can view resolution logs and statistical reports for the domain name. You can also use the intelligent alerting feature based on abnormal metrics, such as resolution success rate and sudden changes in queries per second (QPS). This improves the observability and operations and maintenance (O&M) efficiency of the GTM instance.
 //
 // @param request - SetCloudGtmInstanceConfigLogSwitchRequest
 //
@@ -14081,7 +15316,7 @@ func (client *Client) SetCloudGtmInstanceConfigLogSwitchWithOptions(request *Set
 
 // Summary:
 //
-// 设置全局流量管理实例配置日志开关
+// Enables or disables the network traffic analysis feature for a Global Traffic Manager (GTM) instance. After this feature is enabled, you can view resolution logs and statistical reports for the domain name. You can also use the intelligent alerting feature based on abnormal metrics, such as resolution success rate and sudden changes in queries per second (QPS). This improves the observability and operations and maintenance (O&M) efficiency of the GTM instance.
 //
 // @param request - SetCloudGtmInstanceConfigLogSwitchRequest
 //
@@ -14099,7 +15334,7 @@ func (client *Client) SetCloudGtmInstanceConfigLogSwitch(request *SetCloudGtmIns
 
 // Summary:
 //
-// Enables or disables weighted round-robin based on the specified parameters.
+// Enables or disables the weight configuration.
 //
 // @param request - SetDNSSLBStatusRequest
 //
@@ -14167,7 +15402,7 @@ func (client *Client) SetDNSSLBStatusWithOptions(request *SetDNSSLBStatusRequest
 
 // Summary:
 //
-// Enables or disables weighted round-robin based on the specified parameters.
+// Enables or disables the weight configuration.
 //
 // @param request - SetDNSSLBStatusRequest
 //
@@ -14185,11 +15420,11 @@ func (client *Client) SetDNSSLBStatus(request *SetDNSSLBStatusRequest) (_result 
 
 // Summary:
 //
-// Modifies the access policy that is available in address pools.
+// Sets the access mode for an access policy.
 //
 // Description:
 //
-// ***
+// **
 //
 // @param request - SetDnsGtmAccessModeRequest
 //
@@ -14241,11 +15476,11 @@ func (client *Client) SetDnsGtmAccessModeWithOptions(request *SetDnsGtmAccessMod
 
 // Summary:
 //
-// Modifies the access policy that is available in address pools.
+// Sets the access mode for an access policy.
 //
 // Description:
 //
-// ***
+// **
 //
 // @param request - SetDnsGtmAccessModeRequest
 //
@@ -14263,7 +15498,7 @@ func (client *Client) SetDnsGtmAccessMode(request *SetDnsGtmAccessModeRequest) (
 
 // Summary:
 //
-// Specifies the health check status of an address pool.
+// Sets the health check status for an address pool.
 //
 // @param request - SetDnsGtmMonitorStatusRequest
 //
@@ -14315,7 +15550,7 @@ func (client *Client) SetDnsGtmMonitorStatusWithOptions(request *SetDnsGtmMonito
 
 // Summary:
 //
-// Specifies the health check status of an address pool.
+// Sets the health check status for an address pool.
 //
 // @param request - SetDnsGtmMonitorStatusRequest
 //
@@ -14333,7 +15568,7 @@ func (client *Client) SetDnsGtmMonitorStatus(request *SetDnsGtmMonitorStatusRequ
 
 // Summary:
 //
-// Enables or disables the Domain Name System Security Extensions (DNSSEC) for a domain name. This feature is available only for the users of the paid editions of Alibaba Cloud DNS.
+// Enables or disables Domain Name System Security Extensions (DNSSEC) for a domain name. This feature is available only to users of paid Alibaba Cloud DNS.
 //
 // @param request - SetDomainDnssecStatusRequest
 //
@@ -14385,7 +15620,7 @@ func (client *Client) SetDomainDnssecStatusWithOptions(request *SetDomainDnssecS
 
 // Summary:
 //
-// Enables or disables the Domain Name System Security Extensions (DNSSEC) for a domain name. This feature is available only for the users of the paid editions of Alibaba Cloud DNS.
+// Enables or disables Domain Name System Security Extensions (DNSSEC) for a domain name. This feature is available only to users of paid Alibaba Cloud DNS.
 //
 // @param request - SetDomainDnssecStatusRequest
 //
@@ -14403,7 +15638,7 @@ func (client *Client) SetDomainDnssecStatus(request *SetDomainDnssecStatusReques
 
 // Summary:
 //
-// Specifies the status of an Alibaba Cloud DNS (DNS) record based on the specified parameters.
+// Sets the status of a DNS record.
 //
 // @param request - SetDomainRecordStatusRequest
 //
@@ -14459,7 +15694,7 @@ func (client *Client) SetDomainRecordStatusWithOptions(request *SetDomainRecordS
 
 // Summary:
 //
-// Specifies the status of an Alibaba Cloud DNS (DNS) record based on the specified parameters.
+// Sets the status of a DNS record.
 //
 // @param request - SetDomainRecordStatusRequest
 //
@@ -14477,7 +15712,7 @@ func (client *Client) SetDomainRecordStatus(request *SetDomainRecordStatusReques
 
 // Summary:
 //
-// Modifies a policy for switchover between address pool sets.
+// Modifies the address pool switchover policy based on the request parameters.
 //
 // @param request - SetGtmAccessModeRequest
 //
@@ -14529,7 +15764,7 @@ func (client *Client) SetGtmAccessModeWithOptions(request *SetGtmAccessModeReque
 
 // Summary:
 //
-// Modifies a policy for switchover between address pool sets.
+// Modifies the address pool switchover policy based on the request parameters.
 //
 // @param request - SetGtmAccessModeRequest
 //
@@ -14547,7 +15782,7 @@ func (client *Client) SetGtmAccessMode(request *SetGtmAccessModeRequest) (_resul
 
 // Summary:
 //
-// You can call this operation to enable health check for an address pool of a Global Traffic Manager (GTM) instance.
+// Sets the health check status of an address pool.
 //
 // @param request - SetGtmMonitorStatusRequest
 //
@@ -14599,7 +15834,7 @@ func (client *Client) SetGtmMonitorStatusWithOptions(request *SetGtmMonitorStatu
 
 // Summary:
 //
-// You can call this operation to enable health check for an address pool of a Global Traffic Manager (GTM) instance.
+// Sets the health check status of an address pool.
 //
 // @param request - SetGtmMonitorStatusRequest
 //
@@ -14617,7 +15852,81 @@ func (client *Client) SetGtmMonitorStatus(request *SetGtmMonitorStatusRequest) (
 
 // Summary:
 //
-// 提交缓存刷新任务
+// Submits Agent registration information.
+//
+// @param request - SubmitAtiAgentRegisterInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitAtiAgentRegisterInfoResponse
+func (client *Client) SubmitAtiAgentRegisterInfoWithOptions(request *SubmitAtiAgentRegisterInfoRequest, runtime *dara.RuntimeOptions) (_result *SubmitAtiAgentRegisterInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentRegisterInfoId) {
+		query["AgentRegisterInfoId"] = request.AgentRegisterInfoId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.IdentityCsr) {
+		query["IdentityCsr"] = request.IdentityCsr
+	}
+
+	if !dara.IsNil(request.ServerCertPem) {
+		query["ServerCertPem"] = request.ServerCertPem
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitAtiAgentRegisterInfo"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitAtiAgentRegisterInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits Agent registration information.
+//
+// @param request - SubmitAtiAgentRegisterInfoRequest
+//
+// @return SubmitAtiAgentRegisterInfoResponse
+func (client *Client) SubmitAtiAgentRegisterInfo(request *SubmitAtiAgentRegisterInfoRequest) (_result *SubmitAtiAgentRegisterInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SubmitAtiAgentRegisterInfoResponse{}
+	_body, _err := client.SubmitAtiAgentRegisterInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits a cache refresh task.
 //
 // @param request - SubmitIspFlushCacheTaskRequest
 //
@@ -14673,7 +15982,7 @@ func (client *Client) SubmitIspFlushCacheTaskWithOptions(request *SubmitIspFlush
 
 // Summary:
 //
-// 提交缓存刷新任务
+// Submits a cache refresh task.
 //
 // @param request - SubmitIspFlushCacheTaskRequest
 //
@@ -14691,7 +16000,7 @@ func (client *Client) SubmitIspFlushCacheTask(request *SubmitIspFlushCacheTaskRe
 
 // Summary:
 //
-// Changes the access policy type for a GTM instance.
+// Switches the access strategy mode of an instance.
 //
 // @param request - SwitchDnsGtmInstanceStrategyModeRequest
 //
@@ -14743,7 +16052,7 @@ func (client *Client) SwitchDnsGtmInstanceStrategyModeWithOptions(request *Switc
 
 // Summary:
 //
-// Changes the access policy type for a GTM instance.
+// Switches the access strategy mode of an instance.
 //
 // @param request - SwitchDnsGtmInstanceStrategyModeRequest
 //
@@ -14761,7 +16070,7 @@ func (client *Client) SwitchDnsGtmInstanceStrategyMode(request *SwitchDnsGtmInst
 
 // Summary:
 //
-// Adds and modifies a tag for a resource.
+// Adds or modifies tags for resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -14817,7 +16126,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 
 // Summary:
 //
-// Adds and modifies a tag for a resource.
+// Adds or modifies tags for resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -14835,7 +16144,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// Transfers multiple domain names from the current account to another account at a time.
+// Batch transfers DNS permissions for multiple domain names to a specified execution account.
 //
 // @param request - TransferDomainRequest
 //
@@ -14891,7 +16200,7 @@ func (client *Client) TransferDomainWithOptions(request *TransferDomainRequest, 
 
 // Summary:
 //
-// Transfers multiple domain names from the current account to another account at a time.
+// Batch transfers DNS permissions for multiple domain names to a specified execution account.
 //
 // @param request - TransferDomainRequest
 //
@@ -14909,13 +16218,13 @@ func (client *Client) TransferDomain(request *TransferDomainRequest) (_result *T
 
 // Summary:
 //
-// Unbinds one or more domain names from a paid Alibaba Cloud DNS instance based on the instance ID.
+// Detaches domain names from a paid Alibaba Cloud DNS instance.
 //
 // Description:
 //
-// A paid Alibaba Cloud DNS instance whose ID starts with dns is an instance of the new version. You can call an API operation to bind multiple domain names to the instance. If the upper limit is exceeded, an error message is returned.\\
+// An instance with an ID that starts with \\`dns-\\` is a new version instance. New version instances support attaching multiple domain names. You can call an API operation to attach domain names directly to an instance. An error is returned if the number of domain names exceeds the instance limit.
 //
-// A paid Alibaba Cloud DNS instance whose ID does not start with dns is an instance of the old version. You can call an API operation to bind only one domain name to the instance. However, if the instance that you want to bind to the desired domain name is already bound to a domain name, you can call this operation to unbind the original domain name from the instance and then bind the desired domain name to the instance.
+// An instance with an ID that does not start with \\`dns-\\` is a legacy instance. Legacy instances support only one domain name. Therefore, if you call this operation for an instance that already has a domain name attached, the domain name is replaced.
 //
 // @param request - UnbindInstanceDomainsRequest
 //
@@ -14967,13 +16276,13 @@ func (client *Client) UnbindInstanceDomainsWithOptions(request *UnbindInstanceDo
 
 // Summary:
 //
-// Unbinds one or more domain names from a paid Alibaba Cloud DNS instance based on the instance ID.
+// Detaches domain names from a paid Alibaba Cloud DNS instance.
 //
 // Description:
 //
-// A paid Alibaba Cloud DNS instance whose ID starts with dns is an instance of the new version. You can call an API operation to bind multiple domain names to the instance. If the upper limit is exceeded, an error message is returned.\\
+// An instance with an ID that starts with \\`dns-\\` is a new version instance. New version instances support attaching multiple domain names. You can call an API operation to attach domain names directly to an instance. An error is returned if the number of domain names exceeds the instance limit.
 //
-// A paid Alibaba Cloud DNS instance whose ID does not start with dns is an instance of the old version. You can call an API operation to bind only one domain name to the instance. However, if the instance that you want to bind to the desired domain name is already bound to a domain name, you can call this operation to unbind the original domain name from the instance and then bind the desired domain name to the instance.
+// An instance with an ID that does not start with \\`dns-\\` is a legacy instance. Legacy instances support only one domain name. Therefore, if you call this operation for an instance that already has a domain name attached, the domain name is replaced.
 //
 // @param request - UnbindInstanceDomainsRequest
 //
@@ -15069,7 +16378,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// 修改 AppKey 状态
+// # Modify AppKey State
 //
 // @param request - UpdateAppKeyStateRequest
 //
@@ -15121,7 +16430,7 @@ func (client *Client) UpdateAppKeyStateWithOptions(request *UpdateAppKeyStateReq
 
 // Summary:
 //
-// 修改 AppKey 状态
+// # Modify AppKey State
 //
 // @param request - UpdateAppKeyStateRequest
 //
@@ -15139,7 +16448,279 @@ func (client *Client) UpdateAppKeyState(request *UpdateAppKeyStateRequest) (_res
 
 // Summary:
 //
-// Modifies the condition for determining the health status of a specified address.
+// Updates the registration information of an Agent.
+//
+// @param tmpReq - UpdateAtiAgentRegisterInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAtiAgentRegisterInfoResponse
+func (client *Client) UpdateAtiAgentRegisterInfoWithOptions(tmpReq *UpdateAtiAgentRegisterInfoRequest, runtime *dara.RuntimeOptions) (_result *UpdateAtiAgentRegisterInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateAtiAgentRegisterInfoShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Endpoints) {
+		request.EndpointsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Endpoints, dara.String("Endpoints"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentDescription) {
+		query["AgentDescription"] = request.AgentDescription
+	}
+
+	if !dara.IsNil(request.AgentDisplayName) {
+		query["AgentDisplayName"] = request.AgentDisplayName
+	}
+
+	if !dara.IsNil(request.AgentHost) {
+		query["AgentHost"] = request.AgentHost
+	}
+
+	if !dara.IsNil(request.AgentRegisterInfoId) {
+		query["AgentRegisterInfoId"] = request.AgentRegisterInfoId
+	}
+
+	if !dara.IsNil(request.AgentVersion) {
+		query["AgentVersion"] = request.AgentVersion
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.EndpointsShrink) {
+		query["Endpoints"] = request.EndpointsShrink
+	}
+
+	if !dara.IsNil(request.RegistrantId) {
+		query["RegistrantId"] = request.RegistrantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAtiAgentRegisterInfo"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAtiAgentRegisterInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the registration information of an Agent.
+//
+// @param request - UpdateAtiAgentRegisterInfoRequest
+//
+// @return UpdateAtiAgentRegisterInfoResponse
+func (client *Client) UpdateAtiAgentRegisterInfo(request *UpdateAtiAgentRegisterInfoRequest) (_result *UpdateAtiAgentRegisterInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateAtiAgentRegisterInfoResponse{}
+	_body, _err := client.UpdateAtiAgentRegisterInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新告警设置
+//
+// @param request - UpdateAtiAlertSettingsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAtiAlertSettingsResponse
+func (client *Client) UpdateAtiAlertSettingsWithOptions(request *UpdateAtiAlertSettingsRequest, runtime *dara.RuntimeOptions) (_result *UpdateAtiAlertSettingsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AlertConfig) {
+		query["AlertConfig"] = request.AlertConfig
+	}
+
+	if !dara.IsNil(request.AlertGroup) {
+		query["AlertGroup"] = request.AlertGroup
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAtiAlertSettings"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAtiAlertSettingsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新告警设置
+//
+// @param request - UpdateAtiAlertSettingsRequest
+//
+// @return UpdateAtiAlertSettingsResponse
+func (client *Client) UpdateAtiAlertSettings(request *UpdateAtiAlertSettingsRequest) (_result *UpdateAtiAlertSettingsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateAtiAlertSettingsResponse{}
+	_body, _err := client.UpdateAtiAlertSettingsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies a registrant profile.
+//
+// @param request - UpdateAtiRegistrantRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAtiRegistrantResponse
+func (client *Client) UpdateAtiRegistrantWithOptions(request *UpdateAtiRegistrantRequest, runtime *dara.RuntimeOptions) (_result *UpdateAtiRegistrantResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Cc) {
+		query["Cc"] = request.Cc
+	}
+
+	if !dara.IsNil(request.City) {
+		query["City"] = request.City
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DocumentCode) {
+		query["DocumentCode"] = request.DocumentCode
+	}
+
+	if !dara.IsNil(request.DocumentImage) {
+		query["DocumentImage"] = request.DocumentImage
+	}
+
+	if !dara.IsNil(request.DocumentType) {
+		query["DocumentType"] = request.DocumentType
+	}
+
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Phone) {
+		query["Phone"] = request.Phone
+	}
+
+	if !dara.IsNil(request.RegistrantId) {
+		query["RegistrantId"] = request.RegistrantId
+	}
+
+	if !dara.IsNil(request.State) {
+		query["State"] = request.State
+	}
+
+	if !dara.IsNil(request.Street) {
+		query["Street"] = request.Street
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAtiRegistrant"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAtiRegistrantResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies a registrant profile.
+//
+// @param request - UpdateAtiRegistrantRequest
+//
+// @return UpdateAtiRegistrantResponse
+func (client *Client) UpdateAtiRegistrant(request *UpdateAtiRegistrantRequest) (_result *UpdateAtiRegistrantResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateAtiRegistrantResponse{}
+	_body, _err := client.UpdateAtiRegistrantWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the basic configuration of a specified address, such as the address name, type, and value.
 //
 // @param tmpReq - UpdateCloudGtmAddressRequest
 //
@@ -15217,7 +16798,7 @@ func (client *Client) UpdateCloudGtmAddressWithOptions(tmpReq *UpdateCloudGtmAdd
 
 // Summary:
 //
-// Modifies the condition for determining the health status of a specified address.
+// Modifies the basic configuration of a specified address, such as the address name, type, and value.
 //
 // @param request - UpdateCloudGtmAddressRequest
 //
@@ -15235,13 +16816,13 @@ func (client *Client) UpdateCloudGtmAddress(request *UpdateCloudGtmAddressReques
 
 // Summary:
 //
-// Modifies the enabling status of an address.
+// Updates the enabled status of an address.
 //
 // Description:
 //
-//	  If an address is **enabled*	- and the health status of the address is **Normal**, the availability status of the address is **Available**.
+// - The service status of an address is **active*	- if the address is **enabled*	- and its health check status is **Normal**.
 //
-//		- If an address is **disabled*	- or the health status of the address is **Abnormal**, the availability status of the address is **Unavailable**.
+// - The service status of an address is **unavailable*	- if the address is **disabled*	- or its health check status is **abnormal**.
 //
 // @param request - UpdateCloudGtmAddressEnableStatusRequest
 //
@@ -15297,13 +16878,13 @@ func (client *Client) UpdateCloudGtmAddressEnableStatusWithOptions(request *Upda
 
 // Summary:
 //
-// Modifies the enabling status of an address.
+// Updates the enabled status of an address.
 //
 // Description:
 //
-//	  If an address is **enabled*	- and the health status of the address is **Normal**, the availability status of the address is **Available**.
+// - The service status of an address is **active*	- if the address is **enabled*	- and its health check status is **Normal**.
 //
-//		- If an address is **disabled*	- or the health status of the address is **Abnormal**, the availability status of the address is **Unavailable**.
+// - The service status of an address is **unavailable*	- if the address is **disabled*	- or its health check status is **abnormal**.
 //
 // @param request - UpdateCloudGtmAddressEnableStatusRequest
 //
@@ -15321,7 +16902,7 @@ func (client *Client) UpdateCloudGtmAddressEnableStatus(request *UpdateCloudGtmA
 
 // Summary:
 //
-// Modifies the failover mode that is used when address exceptions are identified.
+// Updates the failover method for an address based on the specified parameters.
 //
 // @param request - UpdateCloudGtmAddressManualAvailableStatusRequest
 //
@@ -15381,7 +16962,7 @@ func (client *Client) UpdateCloudGtmAddressManualAvailableStatusWithOptions(requ
 
 // Summary:
 //
-// Modifies the failover mode that is used when address exceptions are identified.
+// Updates the failover method for an address based on the specified parameters.
 //
 // @param request - UpdateCloudGtmAddressManualAvailableStatusRequest
 //
@@ -15399,7 +16980,7 @@ func (client *Client) UpdateCloudGtmAddressManualAvailableStatus(request *Update
 
 // Summary:
 //
-// Modifies the basic configurations of an address pool.
+// Modifies the basic configuration of an address pool.
 //
 // @param request - UpdateCloudGtmAddressPoolBasicConfigRequest
 //
@@ -15459,7 +17040,7 @@ func (client *Client) UpdateCloudGtmAddressPoolBasicConfigWithOptions(request *U
 
 // Summary:
 //
-// Modifies the basic configurations of an address pool.
+// Modifies the basic configuration of an address pool.
 //
 // @param request - UpdateCloudGtmAddressPoolBasicConfigRequest
 //
@@ -15477,13 +17058,13 @@ func (client *Client) UpdateCloudGtmAddressPoolBasicConfig(request *UpdateCloudG
 
 // Summary:
 //
-// Modifies the enabling status of an address pool.
+// Updates the enabled status of an address pool.
 //
 // Description:
 //
-//	  If an address pool is **enabled*	- and the health status of the address pool is **Normal**, the availability status of the address pool is **Available**.
+// - An address pool is considered **active*	- if it is **enabled*	- and its health check status is **Normal**.
 //
-//		- If an address pool is **disabled*	- or the health status of the address pool is **Abnormal**, the availability status of the address pool is **unavailable**.
+// - An address pool is considered **unavailable*	- if it is **disabled*	- or its health check status is **abnormal**.
 //
 // @param request - UpdateCloudGtmAddressPoolEnableStatusRequest
 //
@@ -15539,13 +17120,13 @@ func (client *Client) UpdateCloudGtmAddressPoolEnableStatusWithOptions(request *
 
 // Summary:
 //
-// Modifies the enabling status of an address pool.
+// Updates the enabled status of an address pool.
 //
 // Description:
 //
-//	  If an address pool is **enabled*	- and the health status of the address pool is **Normal**, the availability status of the address pool is **Available**.
+// - An address pool is considered **active*	- if it is **enabled*	- and its health check status is **Normal**.
 //
-//		- If an address pool is **disabled*	- or the health status of the address pool is **Abnormal**, the availability status of the address pool is **unavailable**.
+// - An address pool is considered **unavailable*	- if it is **disabled*	- or its health check status is **abnormal**.
 //
 // @param request - UpdateCloudGtmAddressPoolEnableStatusRequest
 //
@@ -15563,7 +17144,7 @@ func (client *Client) UpdateCloudGtmAddressPoolEnableStatus(request *UpdateCloud
 
 // Summary:
 //
-// Modifies the load balancing policy of an address pool.
+// Updates the load balancing policy of an address pool.
 //
 // @param request - UpdateCloudGtmAddressPoolLbStrategyRequest
 //
@@ -15623,7 +17204,7 @@ func (client *Client) UpdateCloudGtmAddressPoolLbStrategyWithOptions(request *Up
 
 // Summary:
 //
-// Modifies the load balancing policy of an address pool.
+// Updates the load balancing policy of an address pool.
 //
 // @param request - UpdateCloudGtmAddressPoolLbStrategyRequest
 //
@@ -15641,7 +17222,7 @@ func (client *Client) UpdateCloudGtmAddressPoolLbStrategy(request *UpdateCloudGt
 
 // Summary:
 //
-// Modifies the remarks of an address pool.
+// Updates the remarks of an address pool.
 //
 // @param request - UpdateCloudGtmAddressPoolRemarkRequest
 //
@@ -15697,7 +17278,7 @@ func (client *Client) UpdateCloudGtmAddressPoolRemarkWithOptions(request *Update
 
 // Summary:
 //
-// Modifies the remarks of an address pool.
+// Updates the remarks of an address pool.
 //
 // @param request - UpdateCloudGtmAddressPoolRemarkRequest
 //
@@ -15715,7 +17296,7 @@ func (client *Client) UpdateCloudGtmAddressPoolRemark(request *UpdateCloudGtmAdd
 
 // Summary:
 //
-// Modifies the remarks of an address.
+// Updates the remarks for an address in Global Traffic Manager (GTM) 3.0.
 //
 // @param request - UpdateCloudGtmAddressRemarkRequest
 //
@@ -15771,7 +17352,7 @@ func (client *Client) UpdateCloudGtmAddressRemarkWithOptions(request *UpdateClou
 
 // Summary:
 //
-// Modifies the remarks of an address.
+// Updates the remarks for an address in Global Traffic Manager (GTM) 3.0.
 //
 // @param request - UpdateCloudGtmAddressRemarkRequest
 //
@@ -15961,7 +17542,7 @@ func (client *Client) UpdateCloudGtmInstanceConfigAlert(request *UpdateCloudGtmI
 
 // Summary:
 //
-// Updates the global time-to-live (TTL) configuration of a GTM 3.0 instance.
+// Updates the global TTL configuration of a Global Traffic Manager (GTM) 3.0 instance based on the specified parameters.
 //
 // @param request - UpdateCloudGtmInstanceConfigBasicRequest
 //
@@ -16029,7 +17610,7 @@ func (client *Client) UpdateCloudGtmInstanceConfigBasicWithOptions(request *Upda
 
 // Summary:
 //
-// Updates the global time-to-live (TTL) configuration of a GTM 3.0 instance.
+// Updates the global TTL configuration of a Global Traffic Manager (GTM) 3.0 instance based on the specified parameters.
 //
 // @param request - UpdateCloudGtmInstanceConfigBasicRequest
 //
@@ -16047,13 +17628,13 @@ func (client *Client) UpdateCloudGtmInstanceConfigBasic(request *UpdateCloudGtmI
 
 // Summary:
 //
-// Updates the enabling status of an access domain name based on the specified parameters.
+// Updates the enablement status of an instance configuration based on the input parameters.
 //
 // Description:
 //
-//	  If an access domain name is **enabled*	- and the health state is **normal**, the access domain name is deemed **available**.
+// - If a domain name is **enabled*	- and its health status is **Normal**, the service associated with the access domain name is **active**.
 //
-//		- If an access domain name is **disabled*	- or the health state is **abnormal**, the access domain name is deemed **unavailable**.
+// - If a domain name is **disabled*	- or its health status is **abnormal**, the service associated with the access domain name is **unavailable**.
 //
 // @param request - UpdateCloudGtmInstanceConfigEnableStatusRequest
 //
@@ -16113,13 +17694,13 @@ func (client *Client) UpdateCloudGtmInstanceConfigEnableStatusWithOptions(reques
 
 // Summary:
 //
-// Updates the enabling status of an access domain name based on the specified parameters.
+// Updates the enablement status of an instance configuration based on the input parameters.
 //
 // Description:
 //
-//	  If an access domain name is **enabled*	- and the health state is **normal**, the access domain name is deemed **available**.
+// - If a domain name is **enabled*	- and its health status is **Normal**, the service associated with the access domain name is **active**.
 //
-//		- If an access domain name is **disabled*	- or the health state is **abnormal**, the access domain name is deemed **unavailable**.
+// - If a domain name is **disabled*	- or its health status is **abnormal**, the service associated with the access domain name is **unavailable**.
 //
 // @param request - UpdateCloudGtmInstanceConfigEnableStatusRequest
 //
@@ -16137,7 +17718,7 @@ func (client *Client) UpdateCloudGtmInstanceConfigEnableStatus(request *UpdateCl
 
 // Summary:
 //
-// Updates the load balancing policy of a GTM instance.
+// Updates the load balancing policy for an instance configuration.
 //
 // @param request - UpdateCloudGtmInstanceConfigLbStrategyRequest
 //
@@ -16201,7 +17782,7 @@ func (client *Client) UpdateCloudGtmInstanceConfigLbStrategyWithOptions(request 
 
 // Summary:
 //
-// Updates the load balancing policy of a GTM instance.
+// Updates the load balancing policy for an instance configuration.
 //
 // @param request - UpdateCloudGtmInstanceConfigLbStrategyRequest
 //
@@ -16219,7 +17800,7 @@ func (client *Client) UpdateCloudGtmInstanceConfigLbStrategy(request *UpdateClou
 
 // Summary:
 //
-// Updates the description of a GTM instance based on the specified parameters.
+// Updates the remarks for an instance configuration.
 //
 // @param request - UpdateCloudGtmInstanceConfigRemarkRequest
 //
@@ -16279,7 +17860,7 @@ func (client *Client) UpdateCloudGtmInstanceConfigRemarkWithOptions(request *Upd
 
 // Summary:
 //
-// Updates the description of a GTM instance based on the specified parameters.
+// Updates the remarks for an instance configuration.
 //
 // @param request - UpdateCloudGtmInstanceConfigRemarkRequest
 //
@@ -16363,7 +17944,7 @@ func (client *Client) UpdateCloudGtmInstanceName(request *UpdateCloudGtmInstance
 
 // Summary:
 //
-// Modifies the information about a health check template based on specified parameters.
+// Updates the configuration of a health check template.
 //
 // @param tmpReq - UpdateCloudGtmMonitorTemplateRequest
 //
@@ -16449,7 +18030,7 @@ func (client *Client) UpdateCloudGtmMonitorTemplateWithOptions(tmpReq *UpdateClo
 
 // Summary:
 //
-// Modifies the information about a health check template based on specified parameters.
+// Updates the configuration of a health check template.
 //
 // @param request - UpdateCloudGtmMonitorTemplateRequest
 //
@@ -16533,13 +18114,13 @@ func (client *Client) UpdateCloudGtmMonitorTemplateRemark(request *UpdateCloudGt
 
 // Summary:
 //
-// Modifies a custom line with its unique ID.
+// Updates a custom line specified by its unique ID.
 //
 // Description:
 //
-// In each CIDR block, the end IP address must be greater than or equal to the start IP address.\\
+// For each IP range, the value of EndIp must be greater than or equal to the value of StartIp.
 //
-// The CIDR blocks that are specified for all custom lines of a domain name cannot be overlapped.
+// The IP ranges of IP ranges cannot overlap across all custom lines for a domain name.
 //
 // @param request - UpdateCustomLineRequest
 //
@@ -16595,13 +18176,13 @@ func (client *Client) UpdateCustomLineWithOptions(request *UpdateCustomLineReque
 
 // Summary:
 //
-// Modifies a custom line with its unique ID.
+// Updates a custom line specified by its unique ID.
 //
 // Description:
 //
-// In each CIDR block, the end IP address must be greater than or equal to the start IP address.\\
+// For each IP range, the value of EndIp must be greater than or equal to the value of StartIp.
 //
-// The CIDR blocks that are specified for all custom lines of a domain name cannot be overlapped.
+// The IP ranges of IP ranges cannot overlap across all custom lines for a domain name.
 //
 // @param request - UpdateCustomLineRequest
 //
@@ -16619,7 +18200,7 @@ func (client *Client) UpdateCustomLine(request *UpdateCustomLineRequest) (_resul
 
 // Summary:
 //
-// Modifies the weight of a Domain Name System (DNS) record based on the specified parameters.
+// Modifies the weight of a DNS record based on the specified parameters.
 //
 // @param request - UpdateDNSSLBWeightRequest
 //
@@ -16675,7 +18256,7 @@ func (client *Client) UpdateDNSSLBWeightWithOptions(request *UpdateDNSSLBWeightR
 
 // Summary:
 //
-// Modifies the weight of a Domain Name System (DNS) record based on the specified parameters.
+// Modifies the weight of a DNS record based on the specified parameters.
 //
 // @param request - UpdateDNSSLBWeightRequest
 //
@@ -16693,7 +18274,7 @@ func (client *Client) UpdateDNSSLBWeight(request *UpdateDNSSLBWeightRequest) (_r
 
 // Summary:
 //
-// Updates the cache-accelerated domain name based on the specified parameters.
+// Updates a DNS authoritative proxy domain.
 //
 // @param request - UpdateDnsCacheDomainRequest
 //
@@ -16765,7 +18346,7 @@ func (client *Client) UpdateDnsCacheDomainWithOptions(request *UpdateDnsCacheDom
 
 // Summary:
 //
-// Updates the cache-accelerated domain name based on the specified parameters.
+// Updates a DNS authoritative proxy domain.
 //
 // @param request - UpdateDnsCacheDomainRequest
 //
@@ -16783,7 +18364,7 @@ func (client *Client) UpdateDnsCacheDomain(request *UpdateDnsCacheDomainRequest)
 
 // Summary:
 //
-// Updates the remarks for the cache-accelerated domain name of the destination domain name.
+// Updates the remark for a domain name in the DNS cache.
 //
 // @param request - UpdateDnsCacheDomainRemarkRequest
 //
@@ -16835,7 +18416,7 @@ func (client *Client) UpdateDnsCacheDomainRemarkWithOptions(request *UpdateDnsCa
 
 // Summary:
 //
-// Updates the remarks for the cache-accelerated domain name of the destination domain name.
+// Updates the remark for a domain name in the DNS cache.
 //
 // @param request - UpdateDnsCacheDomainRemarkRequest
 //
@@ -16853,7 +18434,7 @@ func (client *Client) UpdateDnsCacheDomainRemark(request *UpdateDnsCacheDomainRe
 
 // Summary:
 //
-// Modifies an access policy.
+// Updates an existing access policy.
 //
 // @param request - UpdateDnsGtmAccessStrategyRequest
 //
@@ -16961,7 +18542,7 @@ func (client *Client) UpdateDnsGtmAccessStrategyWithOptions(request *UpdateDnsGt
 
 // Summary:
 //
-// Modifies an access policy.
+// Updates an existing access policy.
 //
 // @param request - UpdateDnsGtmAccessStrategyRequest
 //
@@ -16979,7 +18560,7 @@ func (client *Client) UpdateDnsGtmAccessStrategy(request *UpdateDnsGtmAccessStra
 
 // Summary:
 //
-// Modifies an address pool based on the specified parameters.
+// Updates the configuration of an address pool.
 //
 // @param request - UpdateDnsGtmAddressPoolRequest
 //
@@ -17039,7 +18620,7 @@ func (client *Client) UpdateDnsGtmAddressPoolWithOptions(request *UpdateDnsGtmAd
 
 // Summary:
 //
-// Modifies an address pool based on the specified parameters.
+// Updates the configuration of an address pool.
 //
 // @param request - UpdateDnsGtmAddressPoolRequest
 //
@@ -17057,7 +18638,7 @@ func (client *Client) UpdateDnsGtmAddressPool(request *UpdateDnsGtmAddressPoolRe
 
 // Summary:
 //
-// Modifies the configurations of a Global Traffic Manager (GTM) instance by instance ID.
+// Updates the configuration of a Global Traffic Manager (GTM) instance.
 //
 // @param request - UpdateDnsGtmInstanceGlobalConfigRequest
 //
@@ -17145,7 +18726,7 @@ func (client *Client) UpdateDnsGtmInstanceGlobalConfigWithOptions(request *Updat
 
 // Summary:
 //
-// Modifies the configurations of a Global Traffic Manager (GTM) instance by instance ID.
+// Updates the configuration of a Global Traffic Manager (GTM) instance.
 //
 // @param request - UpdateDnsGtmInstanceGlobalConfigRequest
 //
@@ -17163,7 +18744,7 @@ func (client *Client) UpdateDnsGtmInstanceGlobalConfig(request *UpdateDnsGtmInst
 
 // Summary:
 //
-// Modifies a health check task.
+// Modifies a health check configuration.
 //
 // @param request - UpdateDnsGtmMonitorRequest
 //
@@ -17235,7 +18816,7 @@ func (client *Client) UpdateDnsGtmMonitorWithOptions(request *UpdateDnsGtmMonito
 
 // Summary:
 //
-// Modifies a health check task.
+// Modifies a health check configuration.
 //
 // @param request - UpdateDnsGtmMonitorRequest
 //
@@ -17253,11 +18834,11 @@ func (client *Client) UpdateDnsGtmMonitor(request *UpdateDnsGtmMonitorRequest) (
 
 // Summary:
 //
-// Modifies the name of a domain name group based on the specified parameters.
+// Modifies the name of a domain name group.
 //
 // Description:
 //
-// Modifies the name of an existing domain name group.
+// This operation modifies the name of an existing domain name group.
 //
 // @param request - UpdateDomainGroupRequest
 //
@@ -17309,11 +18890,11 @@ func (client *Client) UpdateDomainGroupWithOptions(request *UpdateDomainGroupReq
 
 // Summary:
 //
-// Modifies the name of a domain name group based on the specified parameters.
+// Modifies the name of a domain name group.
 //
 // Description:
 //
-// Modifies the name of an existing domain name group.
+// This operation modifies the name of an existing domain name group.
 //
 // @param request - UpdateDomainGroupRequest
 //
@@ -17331,7 +18912,7 @@ func (client *Client) UpdateDomainGroup(request *UpdateDomainGroupRequest) (_res
 
 // Summary:
 //
-// Modifies a Domain Name System (DNS) record based on the specified parameters.
+// Modifies a DNS record based on the specified parameters.
 //
 // @param request - UpdateDomainRecordRequest
 //
@@ -17407,7 +18988,7 @@ func (client *Client) UpdateDomainRecordWithOptions(request *UpdateDomainRecordR
 
 // Summary:
 //
-// Modifies a Domain Name System (DNS) record based on the specified parameters.
+// Modifies a DNS record based on the specified parameters.
 //
 // @param request - UpdateDomainRecordRequest
 //
@@ -17425,7 +19006,7 @@ func (client *Client) UpdateDomainRecord(request *UpdateDomainRecordRequest) (_r
 
 // Summary:
 //
-// Modifies the description of a Domain Name System (DNS) record based on the specified parameters.
+// Updates the remarks of a DNS record.
 //
 // @param request - UpdateDomainRecordRemarkRequest
 //
@@ -17481,7 +19062,7 @@ func (client *Client) UpdateDomainRecordRemarkWithOptions(request *UpdateDomainR
 
 // Summary:
 //
-// Modifies the description of a Domain Name System (DNS) record based on the specified parameters.
+// Updates the remarks of a DNS record.
 //
 // @param request - UpdateDomainRecordRemarkRequest
 //
@@ -17499,7 +19080,7 @@ func (client *Client) UpdateDomainRecordRemark(request *UpdateDomainRecordRemark
 
 // Summary:
 //
-// Modifies the description of a domain name based on the specified parameters.
+// Updates the remarks for a domain name.
 //
 // @param request - UpdateDomainRemarkRequest
 //
@@ -17551,7 +19132,7 @@ func (client *Client) UpdateDomainRemarkWithOptions(request *UpdateDomainRemarkR
 
 // Summary:
 //
-// Modifies the description of a domain name based on the specified parameters.
+// Updates the remarks for a domain name.
 //
 // @param request - UpdateDomainRemarkRequest
 //
@@ -17569,7 +19150,7 @@ func (client *Client) UpdateDomainRemark(request *UpdateDomainRemarkRequest) (_r
 
 // Summary:
 //
-// You can call this operation to modify the access policy of a Global Traffic Manager (GTM) instance.
+// Updates an access policy.
 //
 // @param request - UpdateGtmAccessStrategyRequest
 //
@@ -17633,7 +19214,7 @@ func (client *Client) UpdateGtmAccessStrategyWithOptions(request *UpdateGtmAcces
 
 // Summary:
 //
-// You can call this operation to modify the access policy of a Global Traffic Manager (GTM) instance.
+// Updates an access policy.
 //
 // @param request - UpdateGtmAccessStrategyRequest
 //
@@ -17651,7 +19232,7 @@ func (client *Client) UpdateGtmAccessStrategy(request *UpdateGtmAccessStrategyRe
 
 // Summary:
 //
-// You can call this operation to modify an address pool of a Global Traffic Manager (GTM) instance.
+// Modifies an address pool.
 //
 // @param request - UpdateGtmAddressPoolRequest
 //
@@ -17715,7 +19296,7 @@ func (client *Client) UpdateGtmAddressPoolWithOptions(request *UpdateGtmAddressP
 
 // Summary:
 //
-// You can call this operation to modify an address pool of a Global Traffic Manager (GTM) instance.
+// Modifies an address pool.
 //
 // @param request - UpdateGtmAddressPoolRequest
 //
@@ -17733,7 +19314,7 @@ func (client *Client) UpdateGtmAddressPool(request *UpdateGtmAddressPoolRequest)
 
 // Summary:
 //
-// Modifies the configurations of a Global Traffic Manager (GTM) instance based on the specified parameters.
+// Updates the global configuration of a Global Traffic Manager (GTM) instance.
 //
 // @param request - UpdateGtmInstanceGlobalConfigRequest
 //
@@ -17809,7 +19390,7 @@ func (client *Client) UpdateGtmInstanceGlobalConfigWithOptions(request *UpdateGt
 
 // Summary:
 //
-// Modifies the configurations of a Global Traffic Manager (GTM) instance based on the specified parameters.
+// Updates the global configuration of a Global Traffic Manager (GTM) instance.
 //
 // @param request - UpdateGtmInstanceGlobalConfigRequest
 //
@@ -17827,7 +19408,7 @@ func (client *Client) UpdateGtmInstanceGlobalConfig(request *UpdateGtmInstanceGl
 
 // Summary:
 //
-// Modifies the health check configuration for an address pool of a Global Traffic Manager (GTM) instance.
+// Updates a health check configuration.
 //
 // @param request - UpdateGtmMonitorRequest
 //
@@ -17899,7 +19480,7 @@ func (client *Client) UpdateGtmMonitorWithOptions(request *UpdateGtmMonitorReque
 
 // Summary:
 //
-// Modifies the health check configuration for an address pool of a Global Traffic Manager (GTM) instance.
+// Updates a health check configuration.
 //
 // @param request - UpdateGtmMonitorRequest
 //
@@ -17917,7 +19498,7 @@ func (client *Client) UpdateGtmMonitor(request *UpdateGtmMonitorRequest) (_resul
 
 // Summary:
 //
-// Modifies a disaster recovery plan.
+// Updates a disaster recovery plan.
 //
 // @param request - UpdateGtmRecoveryPlanRequest
 //
@@ -17977,7 +19558,7 @@ func (client *Client) UpdateGtmRecoveryPlanWithOptions(request *UpdateGtmRecover
 
 // Summary:
 //
-// Modifies a disaster recovery plan.
+// Updates a disaster recovery plan.
 //
 // @param request - UpdateGtmRecoveryPlanRequest
 //
@@ -17995,7 +19576,7 @@ func (client *Client) UpdateGtmRecoveryPlan(request *UpdateGtmRecoveryPlanReques
 
 // Summary:
 //
-// 修改缓存刷新套餐包配置
+// Modifies the configuration of a cache refresh plan.
 //
 // @param request - UpdateIspFlushCacheInstanceConfigRequest
 //
@@ -18047,7 +19628,7 @@ func (client *Client) UpdateIspFlushCacheInstanceConfigWithOptions(request *Upda
 
 // Summary:
 //
-// 修改缓存刷新套餐包配置
+// Modifies the configuration of a cache refresh plan.
 //
 // @param request - UpdateIspFlushCacheInstanceConfigRequest
 //
@@ -18065,7 +19646,11 @@ func (client *Client) UpdateIspFlushCacheInstanceConfig(request *UpdateIspFlushC
 
 // Summary:
 //
-// Modifies HTTPDNS resolution records.
+// Modifies a built-in authoritative record for recursive resolution.
+//
+// Description:
+//
+// If a DNS record is locked, it cannot be deleted.
 //
 // @param request - UpdateRecursionRecordRequest
 //
@@ -18141,7 +19726,11 @@ func (client *Client) UpdateRecursionRecordWithOptions(request *UpdateRecursionR
 
 // Summary:
 //
-// Modifies HTTPDNS resolution records.
+// Modifies a built-in authoritative record for recursive resolution.
+//
+// Description:
+//
+// If a DNS record is locked, it cannot be deleted.
 //
 // @param request - UpdateRecursionRecordRequest
 //
@@ -18159,7 +19748,7 @@ func (client *Client) UpdateRecursionRecord(request *UpdateRecursionRecordReques
 
 // Summary:
 //
-// # Modifies the status of HTTPDNS authoritative DNS resolution records
+// Updates the enable status of a recursion record.
 //
 // @param request - UpdateRecursionRecordEnableStatusRequest
 //
@@ -18211,7 +19800,7 @@ func (client *Client) UpdateRecursionRecordEnableStatusWithOptions(request *Upda
 
 // Summary:
 //
-// # Modifies the status of HTTPDNS authoritative DNS resolution records
+// Updates the enable status of a recursion record.
 //
 // @param request - UpdateRecursionRecordEnableStatusRequest
 //
@@ -18229,7 +19818,7 @@ func (client *Client) UpdateRecursionRecordEnableStatus(request *UpdateRecursion
 
 // Summary:
 //
-// Modifies description of HTTPDNS resolution records.
+// Updates the remarks for a built-in authoritative record in HTTPDNS.
 //
 // @param request - UpdateRecursionRecordRemarkRequest
 //
@@ -18281,7 +19870,7 @@ func (client *Client) UpdateRecursionRecordRemarkWithOptions(request *UpdateRecu
 
 // Summary:
 //
-// Modifies description of HTTPDNS resolution records.
+// Updates the remarks for a built-in authoritative record in HTTPDNS.
 //
 // @param request - UpdateRecursionRecordRemarkRequest
 //
@@ -18299,7 +19888,7 @@ func (client *Client) UpdateRecursionRecordRemark(request *UpdateRecursionRecord
 
 // Summary:
 //
-// Modifies HTTPDNS authoritative DNS resolution record weights.
+// Updates the weight of a DNS record for recursive resolution.
 //
 // @param request - UpdateRecursionRecordWeightRequest
 //
@@ -18351,7 +19940,7 @@ func (client *Client) UpdateRecursionRecordWeightWithOptions(request *UpdateRecu
 
 // Summary:
 //
-// Modifies HTTPDNS authoritative DNS resolution record weights.
+// Updates the weight of a DNS record for recursive resolution.
 //
 // @param request - UpdateRecursionRecordWeightRequest
 //
@@ -18369,7 +19958,7 @@ func (client *Client) UpdateRecursionRecordWeight(request *UpdateRecursionRecord
 
 // Summary:
 //
-// # Modifies the status of weight algorithm of authoritative records
+// Updates the enabled status of the weight algorithm for a DNS record used for recursive resolution.
 //
 // @param request - UpdateRecursionRecordWeightEnableStatusRequest
 //
@@ -18433,7 +20022,7 @@ func (client *Client) UpdateRecursionRecordWeightEnableStatusWithOptions(request
 
 // Summary:
 //
-// # Modifies the status of weight algorithm of authoritative records
+// Updates the enabled status of the weight algorithm for a DNS record used for recursive resolution.
 //
 // @param request - UpdateRecursionRecordWeightEnableStatusRequest
 //
@@ -18451,7 +20040,7 @@ func (client *Client) UpdateRecursionRecordWeightEnableStatus(request *UpdateRec
 
 // Summary:
 //
-// # Modifies the effective scope of HTTPDNS
+// Updates the effective scope of a built-in authoritative domain name zone in HTTPDNS.
 //
 // @param tmpReq - UpdateRecursionZoneEffectiveScopeRequest
 //
@@ -18509,7 +20098,7 @@ func (client *Client) UpdateRecursionZoneEffectiveScopeWithOptions(tmpReq *Updat
 
 // Summary:
 //
-// # Modifies the effective scope of HTTPDNS
+// Updates the effective scope of a built-in authoritative domain name zone in HTTPDNS.
 //
 // @param request - UpdateRecursionZoneEffectiveScopeRequest
 //
@@ -18527,7 +20116,13 @@ func (client *Client) UpdateRecursionZoneEffectiveScope(request *UpdateRecursion
 
 // Summary:
 //
-// # Modify the HTTPDNS recursive proxy mode
+// Modifies the recursive proxy mode for a zone.
+//
+// Description:
+//
+// The end IP address of each IP segment must be greater than or equal to the start IP address.
+//
+// The IP address ranges of all IP segments for the domain name cannot overlap across custom lines.
 //
 // @param request - UpdateRecursionZoneProxyPatternRequest
 //
@@ -18579,7 +20174,13 @@ func (client *Client) UpdateRecursionZoneProxyPatternWithOptions(request *Update
 
 // Summary:
 //
-// # Modify the HTTPDNS recursive proxy mode
+// Modifies the recursive proxy mode for a zone.
+//
+// Description:
+//
+// The end IP address of each IP segment must be greater than or equal to the start IP address.
+//
+// The IP address ranges of all IP segments for the domain name cannot overlap across custom lines.
 //
 // @param request - UpdateRecursionZoneProxyPatternRequest
 //
@@ -18597,7 +20198,13 @@ func (client *Client) UpdateRecursionZoneProxyPattern(request *UpdateRecursionZo
 
 // Summary:
 //
-// Modifies the description of HTTPDNS authoritative domain names.
+// Modifies the remarks for a built-in authoritative domain name zone used for recursive resolution.
+//
+// Description:
+//
+// The end IP address of each IP segment must be greater than or equal to the start IP address.
+//
+// For a domain name, the IP address ranges of all IP segments in all custom lines cannot overlap.
 //
 // @param request - UpdateRecursionZoneRemarkRequest
 //
@@ -18649,7 +20256,13 @@ func (client *Client) UpdateRecursionZoneRemarkWithOptions(request *UpdateRecurs
 
 // Summary:
 //
-// Modifies the description of HTTPDNS authoritative domain names.
+// Modifies the remarks for a built-in authoritative domain name zone used for recursive resolution.
+//
+// Description:
+//
+// The end IP address of each IP segment must be greater than or equal to the start IP address.
+//
+// For a domain name, the IP address ranges of all IP segments in all custom lines cannot overlap.
 //
 // @param request - UpdateRecursionZoneRemarkRequest
 //
@@ -18667,21 +20280,13 @@ func (client *Client) UpdateRecursionZoneRemark(request *UpdateRecursionZoneRema
 
 // Summary:
 //
-// 用于更新特定域名的状态信息。
+// Updates the server-side status of a domain name.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 本接口专为注册局用户设计，允许他们更新指定顶级域名（TLD）的各种属性。
-//
-// - 必须提供`RegistryId`和`Tld`参数以标识要修改的具体TLD。
-//
-// - 可选参数包括但不限于宽限期设置、DNS解析缓存时间、价格设定等，这些都可根据需要进行调整。
-//
-// - 环境(`Env`)参数指定了API调用的目标环境，默认值为“DAILY”表示日常测试环境；正式上线前，请确保已正确设置此参数。
-//
-// - 某些时间戳字段如`SunriseStartTimeStamp`要求输入Unix时间戳格式的数据。
+// - This operation updates the server-side status of a domain name.
 //
 // @param request - UpdateRspDomainServerProhibitStatusForGatewayRequest
 //
@@ -18737,21 +20342,13 @@ func (client *Client) UpdateRspDomainServerProhibitStatusForGatewayWithOptions(r
 
 // Summary:
 //
-// 用于更新特定域名的状态信息。
+// Updates the server-side status of a domain name.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 本接口专为注册局用户设计，允许他们更新指定顶级域名（TLD）的各种属性。
-//
-// - 必须提供`RegistryId`和`Tld`参数以标识要修改的具体TLD。
-//
-// - 可选参数包括但不限于宽限期设置、DNS解析缓存时间、价格设定等，这些都可根据需要进行调整。
-//
-// - 环境(`Env`)参数指定了API调用的目标环境，默认值为“DAILY”表示日常测试环境；正式上线前，请确保已正确设置此参数。
-//
-// - 某些时间戳字段如`SunriseStartTimeStamp`要求输入Unix时间戳格式的数据。
+// - This operation updates the server-side status of a domain name.
 //
 // @param request - UpdateRspDomainServerProhibitStatusForGatewayRequest
 //
@@ -18769,21 +20366,11 @@ func (client *Client) UpdateRspDomainServerProhibitStatusForGateway(request *Upd
 
 // Summary:
 //
-// 用于更新特定域名的状态信息。
+// Updates the server-side status of a domain name.
 //
 // Description:
 //
-// ## 请求说明
-//
-// - 本接口专为注册局用户设计，允许他们更新指定顶级域名（TLD）的各种属性。
-//
-// - 必须提供`RegistryId`和`Tld`参数以标识要修改的具体TLD。
-//
-// - 可选参数包括但不限于宽限期设置、DNS解析缓存时间、价格设定等，这些都可根据需要进行调整。
-//
-// - 环境(`Env`)参数指定了API调用的目标环境，默认值为“DAILY”表示日常测试环境；正式上线前，请确保已正确设置此参数。
-//
-// - 某些时间戳字段如`SunriseStartTimeStamp`要求输入Unix时间戳格式的数据。
+// This operation updates the server-side status of a domain name.
 //
 // @param request - UpdateRspDomainServerProhibitStatusForGatewayOteRequest
 //
@@ -18839,21 +20426,11 @@ func (client *Client) UpdateRspDomainServerProhibitStatusForGatewayOteWithOption
 
 // Summary:
 //
-// 用于更新特定域名的状态信息。
+// Updates the server-side status of a domain name.
 //
 // Description:
 //
-// ## 请求说明
-//
-// - 本接口专为注册局用户设计，允许他们更新指定顶级域名（TLD）的各种属性。
-//
-// - 必须提供`RegistryId`和`Tld`参数以标识要修改的具体TLD。
-//
-// - 可选参数包括但不限于宽限期设置、DNS解析缓存时间、价格设定等，这些都可根据需要进行调整。
-//
-// - 环境(`Env`)参数指定了API调用的目标环境，默认值为“DAILY”表示日常测试环境；正式上线前，请确保已正确设置此参数。
-//
-// - 某些时间戳字段如`SunriseStartTimeStamp`要求输入Unix时间戳格式的数据。
+// This operation updates the server-side status of a domain name.
 //
 // @param request - UpdateRspDomainServerProhibitStatusForGatewayOteRequest
 //
@@ -18871,7 +20448,7 @@ func (client *Client) UpdateRspDomainServerProhibitStatusForGatewayOte(request *
 
 // Summary:
 //
-// 检查实例主机名是否可添加
+// Checks whether an instance hostname can be added.
 //
 // @param request - ValidateDnsGtmCnameRrCanUseRequest
 //
@@ -18935,7 +20512,7 @@ func (client *Client) ValidateDnsGtmCnameRrCanUseWithOptions(request *ValidateDn
 
 // Summary:
 //
-// 检查实例主机名是否可添加
+// Checks whether an instance hostname can be added.
 //
 // @param request - ValidateDnsGtmCnameRrCanUseRequest
 //
@@ -18953,7 +20530,7 @@ func (client *Client) ValidateDnsGtmCnameRrCanUse(request *ValidateDnsGtmCnameRr
 
 // Summary:
 //
-// 验证公共DNS Udp Ip地址段
+// Validates a UDP IP address segment for Public DNS.
 //
 // @param request - ValidatePdnsUdpIpSegmentRequest
 //
@@ -19005,7 +20582,7 @@ func (client *Client) ValidatePdnsUdpIpSegmentWithOptions(request *ValidatePdnsU
 
 // Summary:
 //
-// 验证公共DNS Udp Ip地址段
+// Validates a UDP IP address segment for Public DNS.
 //
 // @param request - ValidatePdnsUdpIpSegmentRequest
 //
@@ -19014,6 +20591,138 @@ func (client *Client) ValidatePdnsUdpIpSegment(request *ValidatePdnsUdpIpSegment
 	runtime := &dara.RuntimeOptions{}
 	_result = &ValidatePdnsUdpIpSegmentResponse{}
 	_body, _err := client.ValidatePdnsUdpIpSegmentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Verifies DNS records.
+//
+// @param request - VerifyAtiAgentDnsRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VerifyAtiAgentDnsRecordsResponse
+func (client *Client) VerifyAtiAgentDnsRecordsWithOptions(request *VerifyAtiAgentDnsRecordsRequest, runtime *dara.RuntimeOptions) (_result *VerifyAtiAgentDnsRecordsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentRegisterInfoId) {
+		query["AgentRegisterInfoId"] = request.AgentRegisterInfoId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("VerifyAtiAgentDnsRecords"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &VerifyAtiAgentDnsRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Verifies DNS records.
+//
+// @param request - VerifyAtiAgentDnsRecordsRequest
+//
+// @return VerifyAtiAgentDnsRecordsResponse
+func (client *Client) VerifyAtiAgentDnsRecords(request *VerifyAtiAgentDnsRecordsRequest) (_result *VerifyAtiAgentDnsRecordsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &VerifyAtiAgentDnsRecordsResponse{}
+	_body, _err := client.VerifyAtiAgentDnsRecordsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 触发 ACME 预检
+//
+// @param request - VerifyAtiAgentRegisterInfoAcmeChallengeRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VerifyAtiAgentRegisterInfoAcmeChallengeRecordResponse
+func (client *Client) VerifyAtiAgentRegisterInfoAcmeChallengeRecordWithOptions(request *VerifyAtiAgentRegisterInfoAcmeChallengeRecordRequest, runtime *dara.RuntimeOptions) (_result *VerifyAtiAgentRegisterInfoAcmeChallengeRecordResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentRegisterInfoId) {
+		query["AgentRegisterInfoId"] = request.AgentRegisterInfoId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("VerifyAtiAgentRegisterInfoAcmeChallengeRecord"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &VerifyAtiAgentRegisterInfoAcmeChallengeRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 触发 ACME 预检
+//
+// @param request - VerifyAtiAgentRegisterInfoAcmeChallengeRecordRequest
+//
+// @return VerifyAtiAgentRegisterInfoAcmeChallengeRecordResponse
+func (client *Client) VerifyAtiAgentRegisterInfoAcmeChallengeRecord(request *VerifyAtiAgentRegisterInfoAcmeChallengeRecordRequest) (_result *VerifyAtiAgentRegisterInfoAcmeChallengeRecordResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &VerifyAtiAgentRegisterInfoAcmeChallengeRecordResponse{}
+	_body, _err := client.VerifyAtiAgentRegisterInfoAcmeChallengeRecordWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

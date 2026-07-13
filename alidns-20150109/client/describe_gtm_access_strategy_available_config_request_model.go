@@ -22,7 +22,7 @@ type DescribeGtmAccessStrategyAvailableConfigRequest struct {
 	//
 	// example:
 	//
-	// gtm-cn-xxxx
+	// gtm-cn-wwo3a3hbz**
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The language.
 	//

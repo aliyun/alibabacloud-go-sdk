@@ -24,33 +24,33 @@ type iDescribeDohDomainStatisticsSummaryResponseBody interface {
 }
 
 type DescribeDohDomainStatisticsSummaryResponseBody struct {
-	// The page number of the returned page.
+	// The number of the returned page. The value starts from **1**. The default value is **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries returned on each page. The maximum value is 100. The default value is 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// 0F32959D-417B-4D66-8463-68606605E3E2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The statistics list.
+	// A list of statistics.
 	Statistics []*DescribeDohDomainStatisticsSummaryResponseBodyStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 300
 	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	// The total number of pages returned.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -164,25 +164,25 @@ type DescribeDohDomainStatisticsSummaryResponseBodyStatistics struct {
 	//
 	// 14141592653
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The number of IPv4-based HTTP requests.
+	// The number of IPv4 HTTP requests.
 	//
 	// example:
 	//
 	// 3141592653
 	V4HttpCount *int64 `json:"V4HttpCount,omitempty" xml:"V4HttpCount,omitempty"`
-	// The number of IPv4-based HTTPS requests.
+	// The number of IPv4 HTTPS requests.
 	//
 	// example:
 	//
 	// 3141592653
 	V4HttpsCount *int64 `json:"V4HttpsCount,omitempty" xml:"V4HttpsCount,omitempty"`
-	// The number of IPv6-based HTTP requests.
+	// The number of IPv6 HTTP requests.
 	//
 	// example:
 	//
 	// 3141592653
 	V6HttpCount *int64 `json:"V6HttpCount,omitempty" xml:"V6HttpCount,omitempty"`
-	// The number of IPv6-based HTTPS requests.
+	// The number of IPv6 HTTPS requests.
 	//
 	// example:
 	//

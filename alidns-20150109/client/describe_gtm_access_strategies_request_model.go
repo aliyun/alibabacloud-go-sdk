@@ -20,25 +20,25 @@ type iDescribeGtmAccessStrategiesRequest interface {
 }
 
 type DescribeGtmAccessStrategiesRequest struct {
-	// The ID of the GTM instance whose access policies you want to query.
+	// The ID of the instance.
 	//
 	// example:
 	//
-	// instance1
+	// gtm-cn-wwo3a3hbz**
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language used by the user.
+	// The language of the response.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of the page to return.
+	// The page number. The value starts from 1. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return per page.
+	// The number of entries to return on each page. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//

@@ -22,51 +22,55 @@ type iChangeDomainOfDnsProductRequest interface {
 }
 
 type ChangeDomainOfDnsProductRequest struct {
-	// Specifies whether to forcibly bind a domain name to the instance. Valid values:
+	// Specifies whether to forcefully attach the domain name.
 	//
-	// 	- **false****: no**
+	// Valid values:
 	//
-	// 	- **true**: **yes**
+	// - **false**: No
 	//
-	// Default value: **false**.
+	// - **true**: Yes
+	//
+	// The default value is **false**.
 	//
 	// example:
 	//
 	// false
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
-	// The ID of the Alibaba Cloud Domain Name System (DNS) instance.
+	// The ID of the Cloud DNS product.
 	//
-	// You can call the [ListCloudGtmInstances ](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-listcloudgtminstances?spm=a2c63.p38356.help-menu-search-29697.d_0)operation to obtain the ID.
+	// You can obtain the ID by calling [ListCloudGtmInstances](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-listcloudgtminstances?spm=a2c63.p38356.help-menu-search-29697.d_0).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// i-7sb
+	// i-7XX
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response.
 	//
-	// 	- **zh**: Chinese
+	// Valid values:
 	//
-	// 	- **en**: English
+	// - **zh**: Chinese
 	//
-	// Default value: **zh**.
+	// - **en**: English
+	//
+	// The default value is **zh**.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The domain name that you want to bind to the instance. If you leave this parameter empty, the domain name that is bound to the instance is unbound from the instance.
+	// The domain name that you want to attach. If you leave this parameter empty, the currently attached domain name is detached.
 	//
 	// example:
 	//
-	// newdomain.com
+	// example.com
 	NewDomain *string `json:"NewDomain,omitempty" xml:"NewDomain,omitempty"`
-	// The IP address of the client.
+	// The client IP address.
 	//
 	// example:
 	//
-	// 1.1.1.1
+	// 1.1.XX.XX
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 

@@ -18,18 +18,18 @@ type iDescribeCloudGtmSystemLinesResponseBody interface {
 }
 
 type DescribeCloudGtmSystemLinesResponseBody struct {
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// 389DFFA3-77A5-4A9E-BF3D-147C6F98A5BA
 	RequestId   *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SystemLines *DescribeCloudGtmSystemLinesResponseBodySystemLines `json:"SystemLines,omitempty" xml:"SystemLines,omitempty" type:"Struct"`
-	// The system lines, which are in a tree structure. Only a system line is listed in this example.
+	// The data of the system lines in a tree structure. The complete data is not listed due to its large size.
 	//
 	// example:
 	//
-	// [{\\"displayName\\":\\"Default\\",\\"id\\":\\"default\\",\\"isAvailable\\":true,\\"name\\":\\"Default\\",\\"parentId\\":\\"\\"}]
+	// "SystemLinesTree":"[{\\"displayName\\":\\"默认\\",\\"id\\":\\"default\\",\\"isAvailable\\":true,\\"name\\":\\"默认\\",\\"parentId\\":\\"\\"}
 	SystemLinesTree *string `json:"SystemLinesTree,omitempty" xml:"SystemLinesTree,omitempty"`
 }
 

@@ -20,7 +20,7 @@ type iUpdateCloudGtmAddressEnableStatusRequest interface {
 }
 
 type UpdateCloudGtmAddressEnableStatusRequest struct {
-	// The language of the returned results. Valid values:
+	// The language of the response. Valid values:
 	//
 	// - zh-CN: Chinese
 	//
@@ -30,25 +30,25 @@ type UpdateCloudGtmAddressEnableStatusRequest struct {
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The ID of the address. This ID uniquely identifies the address.
+	// The unique ID of the address.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// addr-89518218114368**92
+	// addr-89518218114368****
 	AddressId *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client-generated token that is used to ensure the idempotence of the request. Make sure that the token is unique among different requests. The token can contain a maximum of 64 ASCII characters.
 	//
 	// example:
 	//
-	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	// 1ae05db4-10e7-11ef-b126-00163e24****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The enabling state of the address. Valid values:
+	// The enabled status of the address:
 	//
-	// 	- enable: The address is enabled and the address can be used for Domain Name System (DNS) resolution if the address passes health checks.
+	// - enable: The address can be used for DNS resolution if its health check is normal.
 	//
-	// 	- disable: The address is disabled and the address cannot be used for DNS resolution regardless of whether the address passes health checks or not.
+	// - disable: The address cannot be used for DNS resolution, regardless of its health check status.
 	//
 	// This parameter is required.
 	//

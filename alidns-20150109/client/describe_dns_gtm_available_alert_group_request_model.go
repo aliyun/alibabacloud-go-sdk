@@ -14,7 +14,7 @@ type iDescribeDnsGtmAvailableAlertGroupRequest interface {
 }
 
 type DescribeDnsGtmAvailableAlertGroupRequest struct {
-	// The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
+	// The language of some returned parameters. Default value: en. Valid values: en, zh, and ja.
 	//
 	// example:
 	//

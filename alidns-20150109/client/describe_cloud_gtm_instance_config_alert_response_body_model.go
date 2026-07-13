@@ -26,17 +26,17 @@ type iDescribeCloudGtmInstanceConfigAlertResponseBody interface {
 type DescribeCloudGtmInstanceConfigAlertResponseBody struct {
 	AlertConfig *DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfig `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty" type:"Struct"`
 	AlertGroup  *DescribeCloudGtmInstanceConfigAlertResponseBodyAlertGroup  `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty" type:"Struct"`
-	// The alert configuration mode of the instance. Valid values:
+	// The alert configuration mode for the instance.
 	//
-	// 	- global: global alert configuration
+	// - global: The instance inherits the global alert configuration.
 	//
-	// 	- instance_config: custom alert configuration
+	// - instance_config: The instance uses a custom alert configuration.
 	//
 	// example:
 	//
 	// global
 	AlertMode *string `json:"AlertMode,omitempty" xml:"AlertMode,omitempty"`
-	// The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
+	// The ID of the instance configuration. For the same access domain name and GTM instance, you can configure both A and AAAA records. This creates two instance configurations. \\`ConfigId\\` uniquely identifies an instance configuration.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type DescribeCloudGtmInstanceConfigAlertResponseBody struct {
 	//
 	// gtm-cn-wwo3a3hbz**
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//

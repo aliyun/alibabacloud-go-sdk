@@ -16,17 +16,17 @@ type iUpdateCloudGtmAddressRemarkResponseBody interface {
 }
 
 type UpdateCloudGtmAddressRemarkResponseBody struct {
-	// Unique request identification code.
+	// The request ID.
 	//
 	// example:
 	//
 	// B57C121B-A45F-44D8-A9B2-13E5A5044195
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the modification operation was successful:
+	// Indicates whether the operation was successful.
 	//
-	// - true: Operation was successful
+	// - true: The operation was successful.
 	//
-	// - false: Operation was failed
+	// - false: The operation failed.
 	//
 	// example:
 	//

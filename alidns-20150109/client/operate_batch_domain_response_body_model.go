@@ -26,7 +26,7 @@ type OperateBatchDomainResponseBody struct {
 	//
 	// example:
 	//
-	// 345345
+	// 34****
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 

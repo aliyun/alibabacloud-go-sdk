@@ -20,7 +20,7 @@ type iGetMainDomainNameResponseBody interface {
 }
 
 type GetMainDomainNameResponseBody struct {
-	// The level of the entered domain name.
+	// The level of the input domain name.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type GetMainDomainNameResponseBody struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The hostname.
+	// The host record.
 	//
 	// example:
 	//
 	// www
 	RR *string `json:"RR,omitempty" xml:"RR,omitempty"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//

@@ -22,13 +22,13 @@ type iDescribeRecordLogsResponseBody interface {
 }
 
 type DescribeRecordLogsResponseBody struct {
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of logs returned on the current page.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeRecordLogsResponseBody struct {
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of logs.
 	//
 	// example:
 	//

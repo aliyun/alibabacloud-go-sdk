@@ -24,25 +24,25 @@ type iDescribeRecordResolveStatisticsSummaryResponseBody interface {
 }
 
 type DescribeRecordResolveStatisticsSummaryResponseBody struct {
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. The value starts from 1. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: **1 to 500**. Default value: **20**.
+	// The number of entries returned per page. The maximum value is **500**. The default value is **20**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// 389DFFA3-77A5-4A9E-BF3D-147C6F98A5BA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The statistics.
+	// The list of statistics.
 	Statistics []*DescribeRecordResolveStatisticsSummaryResponseBodyStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Repeated"`
 	// The total number of entries returned.
 	//
@@ -134,23 +134,23 @@ func (s *DescribeRecordResolveStatisticsSummaryResponseBody) Validate() error {
 }
 
 type DescribeRecordResolveStatisticsSummaryResponseBodyStatistics struct {
-	// The number of DNS requests.
+	// The number of requests.
 	//
 	// example:
 	//
 	// 330
 	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The subdomain name.
+	// The subdomain.
 	//
 	// example:
 	//
-	// tes.example.com
+	// test.example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The type of the domain name. The parameter value is not case-sensitive. Valid values:
+	// The type of the domain name. This parameter is not case-sensitive. Valid values:
 	//
-	// 	- PUBLIC (default): hosted public domain name
+	// - PUBLIC: an authoritative domain name (default)
 	//
-	// 	- CACHE: cache-accelerated domain name
+	// - CACHE: an authoritative proxy domain name
 	//
 	// example:
 	//

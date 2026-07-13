@@ -26,7 +26,7 @@ type DescribeDnsGtmMonitorAvailableConfigResponseBody struct {
 	DomainIpv6IspCityNodes *DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv6IspCityNodes `json:"DomainIpv6IspCityNodes,omitempty" xml:"DomainIpv6IspCityNodes,omitempty" type:"Struct"`
 	Ipv4IspCityNodes       *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv4IspCityNodes       `json:"Ipv4IspCityNodes,omitempty" xml:"Ipv4IspCityNodes,omitempty" type:"Struct"`
 	Ipv6IspCityNodes       *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodes       `json:"Ipv6IspCityNodes,omitempty" xml:"Ipv6IspCityNodes,omitempty" type:"Struct"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//

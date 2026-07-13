@@ -24,30 +24,42 @@ type iListRecursionZonesRequest interface {
 }
 
 type ListRecursionZonesRequest struct {
+	// The maximum number of entries to return for this request.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token to start the next query.
+	//
 	// example:
 	//
 	// 4698691
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The current page number. The value starts from **1**. The default value is **1**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page for a paged query. The maximum value is 100. The default value is 20.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The remarks.
+	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The name of the zone.
+	//
 	// example:
 	//
 	// lisheng999.com

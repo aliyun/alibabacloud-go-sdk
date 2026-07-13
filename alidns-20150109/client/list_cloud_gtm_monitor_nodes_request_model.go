@@ -18,13 +18,13 @@ type iListCloudGtmMonitorNodesRequest interface {
 type ListCloudGtmMonitorNodesRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- **zh-CN**: Chinese
+	// - **zh-CN**: Chinese
 	//
-	// 	- **en-US*	- (default): English
+	// - **en-US*	- (default): English
 	//
 	// example:
 	//
-	// en-US
+	// zh-CN
 	AcceptLanguage    *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	ShowDisabledNodes *bool   `json:"ShowDisabledNodes,omitempty" xml:"ShowDisabledNodes,omitempty"`
 }

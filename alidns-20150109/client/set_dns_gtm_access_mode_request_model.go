@@ -18,33 +18,33 @@ type iSetDnsGtmAccessModeRequest interface {
 }
 
 type SetDnsGtmAccessModeRequest struct {
-	// The switchover policy for primary and secondary address pool sets. Valid values:
+	// The switchover policy for the address pool collection:
 	//
-	// 	- AUTO: performs automatic switchover between the primary and secondary address pool sets upon failures.
+	// - AUTO: Automatic switchover
 	//
-	// 	- DEFAULT: the primary address pool set
+	// - DEFAULT: The primary address pool collection
 	//
-	// 	- FAILOVER: the secondary address pool set
+	// - FAILOVER: The secondary address pool collection
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// auto
+	// AUTO
 	AccessMode *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
-	// The language of the values for specific response parameters. Default value: en. Valid values: en, zh, and ja.
+	// The language of certain response parameters. Default: en. Valid values: en, zh, and ja.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The policy ID.
+	// The ID of the access policy. Call [DescribeDnsGtmAccessStrategies](https://help.aliyun.com/document_detail/2357191.html) to obtain the policy ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// strategyId
+	// hr**zb
 	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
 }
 

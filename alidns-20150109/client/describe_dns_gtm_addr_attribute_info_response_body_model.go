@@ -17,7 +17,7 @@ type iDescribeDnsGtmAddrAttributeInfoResponseBody interface {
 
 type DescribeDnsGtmAddrAttributeInfoResponseBody struct {
 	Addr *DescribeDnsGtmAddrAttributeInfoResponseBodyAddr `json:"Addr,omitempty" xml:"Addr,omitempty" type:"Struct"`
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//

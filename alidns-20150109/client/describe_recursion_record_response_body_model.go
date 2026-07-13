@@ -40,63 +40,85 @@ type iDescribeRecursionRecordResponseBody interface {
 }
 
 type DescribeRecursionRecordResponseBody struct {
+	// The time when the record was created.
+	//
 	// example:
 	//
 	// 2024-03-23T13:09Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The timestamp that indicates when the record was created.
+	//
 	// example:
 	//
 	// 1527690629357
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The priority of the Mail Exchange (MX) record.
+	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// record ID
+	// The record ID.
 	//
 	// example:
 	//
 	// 1903634198947606528
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The remarks.
+	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6856BCF6-11D6-4D7E-AC53-FD579933522B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The host record.
+	//
 	// example:
 	//
 	// test
 	Rr *string `json:"Rr,omitempty" xml:"Rr,omitempty"`
-	// ttl
+	// The Time to Live (TTL).
 	//
 	// example:
 	//
 	// 60
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// The type of the DNS record.
+	//
 	// example:
 	//
 	// A
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The time when the record was last updated.
+	//
 	// example:
 	//
 	// 2024-03-29T13:20Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The timestamp that indicates when the record was last updated.
+	//
 	// example:
 	//
 	// 1527690629357
 	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// The value of the DNS record.
+	//
 	// example:
 	//
 	// 1.1.XX.XX
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The weight.
+	//
 	// example:
 	//
 	// 2
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
-	// zone ID
+	// The zone ID.
 	//
 	// example:
 	//

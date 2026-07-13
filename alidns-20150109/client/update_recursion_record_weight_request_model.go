@@ -18,16 +18,22 @@ type iUpdateRecursionRecordWeightRequest interface {
 }
 
 type UpdateRecursionRecordWeightRequest struct {
+	// The client token that ensures the idempotence of the request. Generate a unique token for each request. The token can be up to 64 ASCII characters in length.
+	//
 	// example:
 	//
 	// 21079fa016944979537637959d09bc
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The unique ID of the DNS record.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 17363242424
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The weight. The value can be an integer from 0 to 100.
+	//
 	// example:
 	//
 	// 1

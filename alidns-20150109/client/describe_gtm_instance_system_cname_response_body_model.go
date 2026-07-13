@@ -16,17 +16,17 @@ type iDescribeGtmInstanceSystemCnameResponseBody interface {
 }
 
 type DescribeGtmInstanceSystemCnameResponseBody struct {
-	// The ID of the request.
+	// The unique ID of the request.
 	//
 	// example:
 	//
 	// 6856BCF6-11D6-4D7E-AC53-FD579933522B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The CNAME record assigned by the system.
+	// The system-assigned CNAME domain name.
 	//
 	// example:
 	//
-	// gtm-cn-mp91004xxxx.gtm-a2b4.com
+	// gtm-cn-mp91004xxxx.gtm-a2**.com
 	SystemCname *string `json:"SystemCname,omitempty" xml:"SystemCname,omitempty"`
 }
 

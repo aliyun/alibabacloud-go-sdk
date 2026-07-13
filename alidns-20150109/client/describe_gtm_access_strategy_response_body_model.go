@@ -44,7 +44,13 @@ type iDescribeGtmAccessStrategyResponseBody interface {
 }
 
 type DescribeGtmAccessStrategyResponseBody struct {
-	// The access policy.
+	// The switchover policy for the address pool groups:
+	//
+	// - **AUTO**: Automatic switchover
+	//
+	// - **DEFAULT**: Primary address pool group
+	//
+	// - **FAILOVER**: Secondary address pool group
 	//
 	// example:
 	//
@@ -52,80 +58,112 @@ type DescribeGtmAccessStrategyResponseBody struct {
 	AccessMode *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
 	// The access status. Valid values:
 	//
-	// 	- **DEFAULT**: Indicates normal when the default address pool is accessed.
+	// - **DEFAULT**: Normal. Access requests are routed to the primary address pool group.
 	//
-	// 	- **FAILOVER**: Indicates an exception when a failover address pool is accessed.
+	// - **FAILOVER**: Abnormal. Access requests are routed to the secondary address pool group.
 	//
 	// example:
 	//
 	// DEFAULT
 	AccessStatus *string `json:"AccessStatus,omitempty" xml:"AccessStatus,omitempty"`
-	// Indicates whether health check is enabled for the default address pool.
+	// The health check status of the primary address pool group. Valid values:
+	//
+	// - **OPEN**: Enabled
+	//
+	// - **CLOSE**: Disabled
+	//
+	// - **UNCONFIGURED**: Not configured
 	//
 	// example:
 	//
 	// OPEN
 	DefaultAddrPoolMonitorStatus *string `json:"DefaultAddrPoolMonitorStatus,omitempty" xml:"DefaultAddrPoolMonitorStatus,omitempty"`
-	// The name of the default address pool.
+	// The name of the primary address pool group.
+	//
+	// example:
+	//
+	// 地址池1
 	DefaultAddrPoolName *string `json:"DefaultAddrPoolName,omitempty" xml:"DefaultAddrPoolName,omitempty"`
-	// The availability status of the default address pool.
+	// The availability status of the primary address pool group. Valid values:
+	//
+	// - **AVAILABLE**: The address pool group is available.
+	//
+	// - **NOT_AVAILABLE**: The address pool group is unavailable.
 	//
 	// example:
 	//
 	// AVAILABLE
 	DefaultAddrPoolStatus *string `json:"DefaultAddrPoolStatus,omitempty" xml:"DefaultAddrPoolStatus,omitempty"`
-	// The ID of the default address pool.
+	// The ID of the primary address pool group.
 	//
 	// example:
 	//
 	// hra0i1
 	DefultAddrPoolId *string `json:"DefultAddrPoolId,omitempty" xml:"DefultAddrPoolId,omitempty"`
-	// The ID of the failover address pool.
+	// The ID of the secondary address pool group. If no secondary address pool group is configured, **EMPTY*	- is returned.
 	//
 	// example:
 	//
 	// hra0i2
 	FailoverAddrPoolId *string `json:"FailoverAddrPoolId,omitempty" xml:"FailoverAddrPoolId,omitempty"`
-	// Indicates whether health check is enabled for the failover address pool.
+	// The health check status of the secondary address pool group. Valid values:
+	//
+	// - **OPEN**: Enabled
+	//
+	// - **CLOSE**: Disabled
+	//
+	// - **UNCONFIGURED**: Not configured
 	//
 	// example:
 	//
 	// OPEN
 	FailoverAddrPoolMonitorStatus *string `json:"FailoverAddrPoolMonitorStatus,omitempty" xml:"FailoverAddrPoolMonitorStatus,omitempty"`
-	// The name of the failover address pool.
+	// The name of the secondary address pool group.
+	//
+	// example:
+	//
+	// 地址池2
 	FailoverAddrPoolName *string `json:"FailoverAddrPoolName,omitempty" xml:"FailoverAddrPoolName,omitempty"`
-	// The availability status of the failover address pool.
+	// The availability status of the secondary address pool group. Valid values:
+	//
+	// - **AVAILABLE**: The address pool group is available.
+	//
+	// - **NOT_AVAILABLE**: The address pool group is unavailable.
 	//
 	// example:
 	//
 	// AVAILABLE
 	FailoverAddrPoolStatus *string `json:"FailoverAddrPoolStatus,omitempty" xml:"FailoverAddrPoolStatus,omitempty"`
-	// The ID of the GTM instance whose access policy details you want to query.
+	// The ID of the associated Global Traffic Manager (GTM) instance.
 	//
 	// example:
 	//
-	// instance1
+	// gtm-cn-wwo3a3hbz**
 	InstanceId *string                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Lines      *DescribeGtmAccessStrategyResponseBodyLines `json:"Lines,omitempty" xml:"Lines,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// BA1608CA-834C-4E63-8682-8AF0B11ED72D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the access policy queried.
+	// The policy ID.
 	//
 	// example:
 	//
 	// hra0hs
 	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-	// The mode of traffic scheduling.
+	// The policy mode. SELF_DEFINED indicates a custom policy.
 	//
 	// example:
 	//
 	// SELF_DEFINED
 	StrategyMode *string `json:"StrategyMode,omitempty" xml:"StrategyMode,omitempty"`
-	// The name of the access policy queried.
+	// The name of the access policy.
+	//
+	// example:
+	//
+	// 全局
 	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
 }
 

@@ -28,21 +28,21 @@ type iDescribeDnsProductInstancesRequest interface {
 }
 
 type DescribeDnsProductInstancesRequest struct {
-	// The order in which you want to sort returned entries. Valid values:
+	// The sorting order. Valid values:
 	//
-	// 	- DESC: Returned entries are sorted in descending order. If this parameter is left empty, returned entries are sorted in descending order by default.
+	// - DESC: Descending order. This is the default value.
 	//
-	// 	- ASC: Returned entries are sorted in ascending order.
+	// - ASC: Ascending order.
 	//
 	// example:
 	//
 	// DESC
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The type of the domain name. Valid values:
+	// The type of the domain name. This parameter is not case-sensitive. Valid values:
 	//
-	// 	- PUBLIC (default): hosted public domain name
+	// - PUBLIC: authoritative domain name (default)
 	//
-	// 	- CACHE: cached public domain name
+	// - CACHE: authoritative proxy domain name
 	//
 	// example:
 	//
@@ -50,9 +50,9 @@ type DescribeDnsProductInstancesRequest struct {
 	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// Default value: en
 	//
@@ -60,17 +60,17 @@ type DescribeDnsProductInstancesRequest struct {
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The method that is used to sort returned entries. Valid values:
+	// The field to sort the results by. Valid values:
 	//
-	// 	- createDate: sorts returned entries by creation time. If this parameter is left empty, returned entries are sorted by creation time by default.
+	// - createDate: Sorts the results by creation time. This is the default value.
 	//
-	// 	- expireDate: sorts returned entries by expiration time.
+	// - expireDate: Sorts the results by expiration time.
 	//
 	// example:
 	//
 	// createDate
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The number of the page to return. Pages start from page **1**. Default value: **1**.
+	// The page number. Pages start from **1**. Default value: **1**.
 	//
 	// example:
 	//
@@ -82,13 +82,13 @@ type DescribeDnsProductInstancesRequest struct {
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The IP address of the client.
+	// The client\\"s IP address.
 	//
 	// example:
 	//
 	// 192.0.2.0
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	// The version code of the Alibaba Cloud DNS instance.
+	// The edition code of the Alibaba Cloud DNS instance.
 	//
 	// example:
 	//

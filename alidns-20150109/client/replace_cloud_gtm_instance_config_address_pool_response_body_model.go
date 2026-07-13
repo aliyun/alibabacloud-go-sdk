@@ -16,17 +16,17 @@ type iReplaceCloudGtmInstanceConfigAddressPoolResponseBody interface {
 }
 
 type ReplaceCloudGtmInstanceConfigAddressPoolResponseBody struct {
-	// Unique request identification code.
+	// The unique ID of the request.
 	//
 	// example:
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful, with values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true: Success.
+	// - true: The operation was successful.
 	//
-	// - false: Failure.
+	// - false: The operation failed.
 	//
 	// example:
 	//

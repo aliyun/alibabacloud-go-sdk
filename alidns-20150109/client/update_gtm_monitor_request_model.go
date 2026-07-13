@@ -28,23 +28,23 @@ type iUpdateGtmMonitorRequest interface {
 }
 
 type UpdateGtmMonitorRequest struct {
-	// The maximum number of consecutive exceptions detected. If the number of consecutive exceptions detected reaches the maximum number, the application service is deemed abnormal.
+	// The number of consecutive health checks.
 	//
 	// example:
 	//
 	// 3
 	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
-	// The health check interval. Unit: seconds. Set the value to 60.
+	// The interval between health checks. Unit: seconds. The value must be 60.
 	//
 	// example:
 	//
 	// 60
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The monitored nodes.
+	// The list of monitoring nodes.
 	//
 	// This parameter is required.
 	IspCityNode []*UpdateGtmMonitorRequestIspCityNode `json:"IspCityNode,omitempty" xml:"IspCityNode,omitempty" type:"Repeated"`
-	// The language of the values of specific response parameters.
+	// The language of the response.
 	//
 	// example:
 	//
@@ -58,33 +58,33 @@ type UpdateGtmMonitorRequest struct {
 	//
 	// 1234abc
 	MonitorConfigId *string `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
-	// The extended information, that is, the parameters required for the protocol. Different protocols require different parameters:
+	// The extended information. The parameters vary based on the protocol.
 	//
-	// HTTP or HTTPS:
+	// HTTP and HTTPS:
 	//
-	// 	- port: the port to check.
+	// - port: The health check port.
 	//
-	// 	- failureRate: the failure rate.
+	// - failureRate: The failure rate.
 	//
-	// 	- code: the status code threshold. If the returned status code is greater than the specified threshold, the application service is deemed abnormal. Valid values: 400 and 500.
+	// - code: The return code. A response with a status code greater than the specified value is considered abnormal. Valid values: 400 and 500.
 	//
-	// 	- host: the host configuration.
+	// - host: The host settings.
 	//
-	// 	- path: the health check URL.
+	// - path: The URL path.
 	//
 	// PING:
 	//
-	// 	- packetNum: the number of ping packets.
+	// - packetNum: The number of ping packets.
 	//
-	// 	- packetLossRate: the loss rate of ping packets.
+	// - packetLossRate: The packet loss rate.
 	//
-	// 	- failureRate: the failure rate.
+	// - failureRate: The failure rate.
 	//
 	// TCP:
 	//
-	// 	- port: the port to check.
+	// - port: The health check port.
 	//
-	// 	- failureRate: the failure rate.
+	// - failureRate: The failure rate.
 	//
 	// This parameter is required.
 	//
@@ -92,7 +92,7 @@ type UpdateGtmMonitorRequest struct {
 	//
 	// {\\"code\\":200,\\"path\\":\\"\\\\index.htm\\",\\"host\\":\\"aliyun.com\\"}
 	MonitorExtendInfo *string `json:"MonitorExtendInfo,omitempty" xml:"MonitorExtendInfo,omitempty"`
-	// The protocol used for the health check.
+	// The health check protocol.
 	//
 	// This parameter is required.
 	//
@@ -100,7 +100,7 @@ type UpdateGtmMonitorRequest struct {
 	//
 	// HTTP
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	// The health check timeout period. Unit: milliseconds. Valid values: 2000, 3000, 5000, and 10000.
+	// The timeout period for a health check. Unit: milliseconds. Valid values: 2000, 3000, 5000, and 10000.
 	//
 	// example:
 	//
@@ -202,17 +202,17 @@ func (s *UpdateGtmMonitorRequest) Validate() error {
 }
 
 type UpdateGtmMonitorRequestIspCityNode struct {
-	// The code of the city where the monitored node is deployed.
+	// The city code.
 	//
 	// example:
 	//
 	// 572
 	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	// 	- The code of the Internet service provider (ISP) to which the monitored node belongs. For more information about specific values, see the response parameters of DescribeGtmMonitorAvailableConfig.
+	// - For more information about the valid values, see the response of the DescribeGtmMonitorAvailableConfig operation.
 	//
-	// 	- If the value of the GroupType parameter is BGP or OVERSEAS, IspCode is optional. The default value is 465.
+	// - If GroupType is set to Border Gateway Protocol (BGP) or Overseas, IspCityNode.N.IspCode is optional. The default value is 465.
 	//
-	// 	- If the value of the GroupType parameter is not BGP or OVERSEAS, IspCode is required and is used together with CityCode.
+	// - If GroupType is not set to BGP or Overseas, IspCityNode.N.IspCode is required. You must specify a value that matches the value of IspCityNode.N.CityCode.
 	//
 	// example:
 	//

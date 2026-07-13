@@ -46,59 +46,59 @@ type iDescribeGtmInstanceResponseBody interface {
 }
 
 type DescribeGtmInstanceResponseBody struct {
-	// The number of access policies of the GTM instance.
+	// The number of access policies.
 	//
 	// example:
 	//
 	// 5
 	AccessStrategyNum *int32 `json:"AccessStrategyNum,omitempty" xml:"AccessStrategyNum,omitempty"`
-	// The number of address pools of the GTM instance.
+	// The number of address pools.
 	//
 	// example:
 	//
 	// 5
 	AddressPoolNum *int32 `json:"AddressPoolNum,omitempty" xml:"AddressPoolNum,omitempty"`
-	// The alert group of the GTM instance.
+	// The alert contact group.
 	//
 	// example:
 	//
-	// [\\\\"Daily test - R\\&D group\\\\"]
+	// [\\"日常测试-研发组\\"]
 	AlertGroup *string `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
-	// The domain name of the GTM instance to which the service domain name is mapped by using a CNAME record.
+	// The CNAME access domain name.
 	//
 	// example:
 	//
-	// instance1.14.com
+	// gtm-cn-wwo3a3hbz**.dns-example.top
 	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
-	// Indicates whether the CNAME is a custom domain name or is assigned by the system. Valid values:
+	// The CNAME access mode. Valid values:
 	//
-	// 	- **SYSTEM_ASSIGN**
+	// - **SYSTEM_ASSIGN**: The system assigns a domain name.
 	//
-	// 	- **CUSTOM**
+	// - **CUSTOM**: You use a custom domain name.
 	//
 	// example:
 	//
-	// SYSTEM_ASSIGN
+	// CUSTOM
 	CnameMode *string `json:"CnameMode,omitempty" xml:"CnameMode,omitempty"`
-	// The time when the GTM instance was created.
+	// The time when the instance was created.
 	//
 	// example:
 	//
 	// 2018-06-06T11:34Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The timestamp that indicates the time when the GTM instance was created.
+	// The time when the instance was created. This is a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1528284856000
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The time when the GTM instance expires.
+	// The time when the instance expires.
 	//
 	// example:
 	//
 	// 2018-06-06T11:34Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The timestamp that indicates the time when the GTM instance expires.
+	// The expiration time of the instance. This is a UNIX timestamp.
 	//
 	// example:
 	//
@@ -108,25 +108,25 @@ type DescribeGtmInstanceResponseBody struct {
 	//
 	// example:
 	//
-	// instance1
+	// gtm-cn-wwo3a3hbz**
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the GTM instance.
+	// The name of the instance.
 	//
 	// example:
 	//
 	// test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The load balancing policy. Valid values:
+	// The load balancing policy.
 	//
-	// 	- **ALL_RR**: round robin
+	// - **ALL_RR**: round-robin
 	//
-	// 	- **RATIO**: weighted round-robin
+	// - **RATIO**: weighted round-robin
 	//
 	// example:
 	//
 	// RATIO
 	LbaStrategy *string `json:"LbaStrategy,omitempty" xml:"LbaStrategy,omitempty"`
-	// The ID of the request.
+	// The unique ID of the request.
 	//
 	// example:
 	//
@@ -138,17 +138,17 @@ type DescribeGtmInstanceResponseBody struct {
 	//
 	// rg-testgroupid
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The global time to live (TTL).
+	// The global TTL.
 	//
 	// example:
 	//
 	// 60
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	// The domain name of the application.
+	// The custom domain name.
 	//
 	// example:
 	//
-	// www.example.com
+	// dns-example.top
 	UserDomainName *string `json:"UserDomainName,omitempty" xml:"UserDomainName,omitempty"`
 	// The version code.
 	//

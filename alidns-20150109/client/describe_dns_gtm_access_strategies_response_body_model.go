@@ -24,26 +24,26 @@ type iDescribeDnsGtmAccessStrategiesResponseBody interface {
 }
 
 type DescribeDnsGtmAccessStrategiesResponseBody struct {
-	// The page number of the returned page.
+	// The page number of the returned page. The value starts from **1**. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries returned per page. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//
 	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// 0CCC9971-CEC9-4132-824B-4AE611C07623
 	RequestId  *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Strategies *DescribeDnsGtmAccessStrategiesResponseBodyStrategies `json:"Strategies,omitempty" xml:"Strategies,omitempty" type:"Struct"`
-	// The total number of entries returned on all pages.
+	// The total number of entries returned.
 	//
 	// example:
 	//

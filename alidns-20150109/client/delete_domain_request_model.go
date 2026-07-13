@@ -16,7 +16,7 @@ type iDeleteDomainRequest interface {
 }
 
 type DeleteDomainRequest struct {
-	// The domain name that already exists in Alibaba Cloud DNS. You can call the [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the domain name.
+	// The domain name to delete. The domain name must exist in Alibaba Cloud DNS. Call the [DescribeDomains](https://www.alibabacloud.com/help/en/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain existing domain names.
 	//
 	// This parameter is required.
 	//
@@ -26,9 +26,9 @@ type DeleteDomainRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// Default value: en.
 	//

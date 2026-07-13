@@ -18,13 +18,13 @@ type iSetGtmAccessModeRequest interface {
 }
 
 type SetGtmAccessModeRequest struct {
-	// The desired access policy. Valid values:
+	// The access mode. Valid values:
 	//
-	// 	- **AUTO: performs automatic switchover between the primary and secondary address pool sets upon failures.**
+	// - **AUTO**: Automatic switchover
 	//
-	// 	- **DEFAULT: specifies the primary address pool set.**
+	// - **DEFAULT**: The primary address pool collection
 	//
-	// 	- **FAILOVER: specifies the secondary address pool set.
+	// - **FAILOVER**: The secondary address pool collection
 	//
 	// This parameter is required.
 	//

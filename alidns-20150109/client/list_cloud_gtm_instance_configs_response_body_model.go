@@ -25,31 +25,31 @@ type iListCloudGtmInstanceConfigsResponseBody interface {
 
 type ListCloudGtmInstanceConfigsResponseBody struct {
 	InstanceConfigs *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigs `json:"InstanceConfigs,omitempty" xml:"InstanceConfigs,omitempty" type:"Struct"`
-	// Current page number, starting from **1**, default is **1**.
+	// The page number. The value starts from **1**. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of rows per page when paginating queries, with a maximum value of 100 and a default of 20.
+	// The number of entries per page. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Unique request identification code.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of entries for domain instance configurations.
+	// The total number of domain name instance configurations.
 	//
 	// example:
 	//
 	// 10
 	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//

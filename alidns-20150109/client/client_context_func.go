@@ -9,13 +9,13 @@ import (
 
 // Summary:
 //
-// Adds a custom line to the domain name.
+// Adds a custom line for a domain name.
 //
 // Description:
 //
-// In each CIDR block, the end IP address must be greater than or equal to the start IP address.\\
+// The end IP address of an IP address segment must be greater than or equal to its start IP address.
 //
-// The CIDR blocks that are specified for all custom lines of a domain name cannot be overlapped.
+// The IP address ranges of segments cannot overlap across any custom lines for the domain name.
 //
 // @param request - AddCustomLineRequest
 //
@@ -71,7 +71,7 @@ func (client *Client) AddCustomLineWithContext(ctx context.Context, request *Add
 
 // Summary:
 //
-// Adds a cache-accelerated domain name based on the specified parameters.
+// Adds a domain name to the DNS authoritative proxy service.
 //
 // @param request - AddDnsCacheDomainRequest
 //
@@ -147,7 +147,7 @@ func (client *Client) AddDnsCacheDomainWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Creates an access policy.
+// Adds an access strategy.
 //
 // @param request - AddDnsGtmAccessStrategyRequest
 //
@@ -255,7 +255,7 @@ func (client *Client) AddDnsGtmAccessStrategyWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Creates an address pool.
+// Adds an address pool.
 //
 // @param request - AddDnsGtmAddressPoolRequest
 //
@@ -347,7 +347,7 @@ func (client *Client) AddDnsGtmAddressPoolWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Creates a health check task.
+// Creates a health check.
 //
 // Description:
 //
@@ -423,13 +423,11 @@ func (client *Client) AddDnsGtmMonitorWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Adds a domain name based on the specified parameters.
+// Adds a domain name.
 //
 // Description:
 //
-// # For more information about how to check whether a domain name is valid, see
-//
-// [Domain name validity](https://www.alibabacloud.com/help/zh/doc-detail/67788.htm).
+// For more information, see <props="china">[Domain name validity](https://help.aliyun.com/document_detail/67788.html)<props="intl">[Domain name validity](https://www.alibabacloud.com/help/zh/doc-detail/67788.htm).
 //
 // @param request - AddDomainRequest
 //
@@ -485,7 +483,7 @@ func (client *Client) AddDomainWithContext(ctx context.Context, request *AddDoma
 
 // Summary:
 //
-// Creates a backup for the domain name based on the specified domain name and backup cycle.
+// Creates a backup for a domain based on the specified domain name and backup cycle.
 //
 // @param request - AddDomainBackupRequest
 //
@@ -537,7 +535,7 @@ func (client *Client) AddDomainBackupWithContext(ctx context.Context, request *A
 
 // Summary:
 //
-// Creates a domain name group based on the specified parameters.
+// Creates a domain name group.
 //
 // @param request - AddDomainGroupRequest
 //
@@ -585,7 +583,7 @@ func (client *Client) AddDomainGroupWithContext(ctx context.Context, request *Ad
 
 // Summary:
 //
-// Adds a Domain Name System (DNS) record based on the specified parameters.
+// Adds a DNS record.
 //
 // @param request - AddDomainRecordRequest
 //
@@ -661,7 +659,7 @@ func (client *Client) AddDomainRecordWithContext(ctx context.Context, request *A
 
 // Summary:
 //
-// You can call this operation to create an access policy for a Global Traffic Manager (GTM) instance.
+// Creates an access strategy based on the specified parameters.
 //
 // @param request - AddGtmAccessStrategyRequest
 //
@@ -725,7 +723,7 @@ func (client *Client) AddGtmAccessStrategyWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Creates an address pool.
+// Adds an address pool.
 //
 // @param request - AddGtmAddressPoolRequest
 //
@@ -817,7 +815,7 @@ func (client *Client) AddGtmAddressPoolWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Creates a health check task.
+// Adds a health check.
 //
 // @param request - AddGtmMonitorRequest
 //
@@ -889,7 +887,7 @@ func (client *Client) AddGtmMonitorWithContext(ctx context.Context, request *Add
 
 // Summary:
 //
-// Creates a disaster recovery plan.
+// Adds a disaster recovery plan.
 //
 // @param request - AddGtmRecoveryPlanRequest
 //
@@ -945,7 +943,17 @@ func (client *Client) AddGtmRecoveryPlanWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Adds HTTPDNS authoritative DNS resolution records
+// Adds an authoritative record for recursive resolution.
+//
+// Description:
+//
+// - You can specify a domain name (DomainName), page number (PageNumber), and page size (PageSize) to retrieve the list of DNS records for that domain name.
+//
+// - To find DNS records that contain a specific keyword, you can specify the keyword for the host record (RRKeyWord), record type (TypeKeyWord), or record value (ValueKeyWord).
+//
+// - By default, the list of DNS records is sorted from newest to oldest.
+//
+// - You can specify a domain group ID (GroupId). The \\`All Domains\\` group includes all domain names. The \\`Default Group\\` includes domain names that are not assigned to a group.
 //
 // @param request - AddRecursionRecordRequest
 //
@@ -1025,7 +1033,13 @@ func (client *Client) AddRecursionRecordWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Adds HTTPDNS zone
+// Adds a built-in authoritative domain name zone for recursive resolution.
+//
+// Description:
+//
+// The end IP address of each IP range must be greater than or equal to the start IP address.
+//
+// The IP address ranges of all IP ranges in all custom lines for a domain name cannot overlap.
 //
 // @param request - AddRecursionZoneRequest
 //
@@ -1077,21 +1091,13 @@ func (client *Client) AddRecursionZoneWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 用于添加特定域名的serverHold状态信息。
+// Adds the serverHold status to a specified domain name.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 本接口专为注册局用户设计，允许他们更新指定顶级域名（TLD）的各种属性。
-//
-// - 必须提供`RegistryId`和`Tld`参数以标识要修改的具体TLD。
-//
-// - 可选参数包括但不限于宽限期设置、DNS解析缓存时间、价格设定等，这些都可根据需要进行调整。
-//
-// - 环境(`Env`)参数指定了API调用的目标环境，默认值为“DAILY”表示日常测试环境；正式上线前，请确保已正确设置此参数。
-//
-// - 某些时间戳字段如`SunriseStartTimeStamp`要求输入Unix时间戳格式的数据。
+// - This API adds the serverHold property to a specified domain name.
 //
 // @param request - AddRspDomainServerHoldStatusForGatewayRequest
 //
@@ -1143,21 +1149,13 @@ func (client *Client) AddRspDomainServerHoldStatusForGatewayWithContext(ctx cont
 
 // Summary:
 //
-// 用于删除特定域名的serverHold状态信息。
+// Adds the serverHold status for a specified domain name.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 本接口专为注册局用户设计，允许他们更新指定顶级域名（TLD）的各种属性。
-//
-// - 必须提供`RegistryId`和`Tld`参数以标识要修改的具体TLD。
-//
-// - 可选参数包括但不限于宽限期设置、DNS解析缓存时间、价格设定等，这些都可根据需要进行调整。
-//
-// - 环境(`Env`)参数指定了API调用的目标环境，默认值为“DAILY”表示日常测试环境；正式上线前，请确保已正确设置此参数。
-//
-// - 某些时间戳字段如`SunriseStartTimeStamp`要求输入Unix时间戳格式的数据。
+// - Adds the serverHold status for a specified domain name.
 //
 // @param request - AddRspDomainServerHoldStatusForGatewayOteRequest
 //
@@ -1209,13 +1207,13 @@ func (client *Client) AddRspDomainServerHoldStatusForGatewayOteWithContext(ctx c
 
 // Summary:
 //
-// Binds one or more domain names to a paid Alibaba Cloud DNS instance.
+// Binds paid domain names in Alibaba Cloud DNS to an instance ID.
 //
 // Description:
 //
-// A paid Alibaba Cloud DNS instance whose ID starts with dns is an instance of the new version. You can call this API operation to bind multiple domain names to the instance. If the upper limit is exceeded, an error message is returned.\\
+// An instance is considered a new instance if its ID starts with \\"dns-\\". New instances support multiple domain names. You can call this operation to bind domain names directly to the instance. An error occurs if the number of domain names exceeds the instance\\"s limit.
 //
-// A paid Alibaba Cloud DNS instance whose ID does not start with dns is an instance of the old version. You can call this API operation to bind only one domain name to the instance. However, if the instance is already bound to a domain name, you must unbind the original domain name from the instance and bind the desired domain name to the instance.
+// An instance is considered a legacy instance if its ID does not start with \\"dns-\\". Legacy instances support only one domain name. If you call this operation on a legacy instance that already has a domain name, the existing domain name is replaced.
 //
 // @param request - BindInstanceDomainsRequest
 //
@@ -1267,11 +1265,11 @@ func (client *Client) BindInstanceDomainsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Moves a domain name from the original group to the new group based on the specified parameters.
+// Moves a domain name to a new group.
 //
 // Description:
 //
-// You can specify GroupId to move a domain name to a specific domain name group. You can move the domain name to the group that contains all domain names or the default group.
+// You can specify the ID of a domain name group (GroupId). The All Domains group contains all domain names, while the Default group contains domain names that are not assigned to any group.
 //
 // @param request - ChangeDomainGroupRequest
 //
@@ -1323,13 +1321,13 @@ func (client *Client) ChangeDomainGroupWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Changes the domain name that is bound to an Alibaba Cloud DNS instance.
+// Changes the domain name that is attached to a Cloud DNS product.
 //
 // Description:
 //
-//	  **You can call this operation regardless of whether the Alibaba Cloud DNS instance is bound to a domain name. You can also call this operation to unbind the domain name from the Alibaba Cloud DNS instance by leaving the NewDomain parameter empty.**
+// - **You can call this operation to change the domain name that is attached to a Cloud DNS product. To detach a domain name, call this operation and leave the NewDomain parameter empty.**
 //
-//		- **This operation applies to instances of the custom edition. To change the domain name that is bound to an Alibaba Cloud DNS instance of Personal Edition, Enterprise Standard Edition, or Enterprise Ultimate Edition, call the BindInstanceDomains operation.
+// - **This operation applies to instances of earlier versions. If you use a new edition, such as Personal Edition, Enterprise Standard Edition, or Enterprise Ultimate Edition, call the BindInstanceDomains operation instead.**
 //
 // @param request - ChangeDomainOfDnsProductRequest
 //
@@ -1389,7 +1387,7 @@ func (client *Client) ChangeDomainOfDnsProductWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Copies the configurations of a Global Traffic Manager (GTM) instance.
+// Copies a Global Traffic Manager (GTM) configuration.
 //
 // @param request - CopyGtmConfigRequest
 //
@@ -1445,7 +1443,213 @@ func (client *Client) CopyGtmConfigWithContext(ctx context.Context, request *Cop
 
 // Summary:
 //
-// Creates an address.
+// Registers an agent.
+//
+// @param tmpReq - CreateAtiAgentRegisterInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAtiAgentRegisterInfoResponse
+func (client *Client) CreateAtiAgentRegisterInfoWithContext(ctx context.Context, tmpReq *CreateAtiAgentRegisterInfoRequest, runtime *dara.RuntimeOptions) (_result *CreateAtiAgentRegisterInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateAtiAgentRegisterInfoShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Endpoints) {
+		request.EndpointsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Endpoints, dara.String("Endpoints"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentDescription) {
+		query["AgentDescription"] = request.AgentDescription
+	}
+
+	if !dara.IsNil(request.AgentDisplayName) {
+		query["AgentDisplayName"] = request.AgentDisplayName
+	}
+
+	if !dara.IsNil(request.AgentHost) {
+		query["AgentHost"] = request.AgentHost
+	}
+
+	if !dara.IsNil(request.AgentVersion) {
+		query["AgentVersion"] = request.AgentVersion
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.EndpointsShrink) {
+		query["Endpoints"] = request.EndpointsShrink
+	}
+
+	if !dara.IsNil(request.RegistrantId) {
+		query["RegistrantId"] = request.RegistrantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAtiAgentRegisterInfo"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAtiAgentRegisterInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Registers an agent - Step 2: Generates a DNS record for domain ownership verification.
+//
+// @param request - CreateAtiAgentRegisterInfoAcmeChallengeRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAtiAgentRegisterInfoAcmeChallengeRecordResponse
+func (client *Client) CreateAtiAgentRegisterInfoAcmeChallengeRecordWithContext(ctx context.Context, request *CreateAtiAgentRegisterInfoAcmeChallengeRecordRequest, runtime *dara.RuntimeOptions) (_result *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentRegisterInfoId) {
+		query["AgentRegisterInfoId"] = request.AgentRegisterInfoId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAtiAgentRegisterInfoAcmeChallengeRecord"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAtiAgentRegisterInfoAcmeChallengeRecordResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits a real-name registrant.
+//
+// @param request - CreateAtiRegistrantRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAtiRegistrantResponse
+func (client *Client) CreateAtiRegistrantWithContext(ctx context.Context, request *CreateAtiRegistrantRequest, runtime *dara.RuntimeOptions) (_result *CreateAtiRegistrantResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Cc) {
+		query["Cc"] = request.Cc
+	}
+
+	if !dara.IsNil(request.City) {
+		query["City"] = request.City
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DocumentCode) {
+		query["DocumentCode"] = request.DocumentCode
+	}
+
+	if !dara.IsNil(request.DocumentImage) {
+		query["DocumentImage"] = request.DocumentImage
+	}
+
+	if !dara.IsNil(request.DocumentType) {
+		query["DocumentType"] = request.DocumentType
+	}
+
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Phone) {
+		query["Phone"] = request.Phone
+	}
+
+	if !dara.IsNil(request.State) {
+		query["State"] = request.State
+	}
+
+	if !dara.IsNil(request.Street) {
+		query["Street"] = request.Street
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAtiRegistrant"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAtiRegistrantResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an address in Global Traffic Manager (GTM) 3.0.
 //
 // @param tmpReq - CreateCloudGtmAddressRequest
 //
@@ -1539,7 +1743,7 @@ func (client *Client) CreateCloudGtmAddressWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// Creates an address pool.
+// Creates an address pool based on the specified parameters.
 //
 // @param request - CreateCloudGtmAddressPoolRequest
 //
@@ -1607,7 +1811,7 @@ func (client *Client) CreateCloudGtmAddressPoolWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 创建gtm实例配置
+// Creates a configuration for a Global Traffic Manager (GTM) instance.
 //
 // @param request - CreateCloudGtmInstanceConfigRequest
 //
@@ -1691,7 +1895,7 @@ func (client *Client) CreateCloudGtmInstanceConfigWithContext(ctx context.Contex
 
 // Summary:
 //
-// Creates a health check template.
+// Creates a health check template in Global Traffic Manager (GTM) 3.0.
 //
 // @param tmpReq - CreateCloudGtmMonitorTemplateRequest
 //
@@ -1781,7 +1985,7 @@ func (client *Client) CreateCloudGtmMonitorTemplateWithContext(ctx context.Conte
 
 // Summary:
 //
-// Creates an AppKey in Alibaba Cloud Public DNS.
+// Creates a public DNS AccessKey.
 //
 // @param request - CreatePdnsAppKeyRequest
 //
@@ -1829,7 +2033,7 @@ func (client *Client) CreatePdnsAppKeyWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 创建公共DNS Udp Ip地址段
+// # Create Public DNS UDP IP Address Segment
 //
 // @param request - CreatePdnsUdpIpSegmentRequest
 //
@@ -1875,6 +2079,102 @@ func (client *Client) CreatePdnsUdpIpSegmentWithContext(ctx context.Context, req
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreatePdnsUdpIpSegmentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes Agent registration information.
+//
+// @param request - DeleteAtiAgentRegisterInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAtiAgentRegisterInfoResponse
+func (client *Client) DeleteAtiAgentRegisterInfoWithContext(ctx context.Context, request *DeleteAtiAgentRegisterInfoRequest, runtime *dara.RuntimeOptions) (_result *DeleteAtiAgentRegisterInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentRegisterInfoId) {
+		query["AgentRegisterInfoId"] = request.AgentRegisterInfoId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAtiAgentRegisterInfo"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAtiAgentRegisterInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Revokes a verified registrant.
+//
+// @param request - DeleteAtiRegistrantRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAtiRegistrantResponse
+func (client *Client) DeleteAtiRegistrantWithContext(ctx context.Context, request *DeleteAtiRegistrantRequest, runtime *dara.RuntimeOptions) (_result *DeleteAtiRegistrantResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.RegistrantId) {
+		query["RegistrantId"] = request.RegistrantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAtiRegistrant"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAtiRegistrantResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1989,7 +2289,7 @@ func (client *Client) DeleteCloudGtmAddressPoolWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Deletes an access domain name that is configured for a Global Traffic Manager (GTM) 3.0 instance.
+// Deletes an access domain name from the configuration of a Global Traffic Manager (GTM) 3.0 instance.
 //
 // @param request - DeleteCloudGtmInstanceConfigRequest
 //
@@ -2097,7 +2397,7 @@ func (client *Client) DeleteCloudGtmMonitorTemplateWithContext(ctx context.Conte
 
 // Summary:
 //
-// Deletes custom lines at a time by using the unique IDs.
+// Deletes a batch of custom lines by specifying their unique IDs.
 //
 // @param request - DeleteCustomLinesRequest
 //
@@ -2145,7 +2445,7 @@ func (client *Client) DeleteCustomLinesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Deletes a specified cache-accelerated domain name.
+// Deletes a specified domain name from the authoritative DNS proxy.
 //
 // @param request - DeleteDnsCacheDomainRequest
 //
@@ -2193,7 +2493,7 @@ func (client *Client) DeleteDnsCacheDomainWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Deletes an access policy by policy ID.
+// Deletes an access policy by its ID.
 //
 // @param request - DeleteDnsGtmAccessStrategyRequest
 //
@@ -2241,7 +2541,7 @@ func (client *Client) DeleteDnsGtmAccessStrategyWithContext(ctx context.Context,
 
 // Summary:
 //
-// Deletes an address pool by address pool ID.
+// Deletes an address pool by its ID.
 //
 // @param request - DeleteDnsGtmAddressPoolRequest
 //
@@ -2289,7 +2589,7 @@ func (client *Client) DeleteDnsGtmAddressPoolWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Deletes a domain name based on the specified parameters.
+// Deletes the specified domain name.
 //
 // @param request - DeleteDomainRequest
 //
@@ -2337,11 +2637,11 @@ func (client *Client) DeleteDomainWithContext(ctx context.Context, request *Dele
 
 // Summary:
 //
-// Deletes a domain name group. After you delete the domain name group, the domain names in the group are moved to the default group.
+// Deletes a domain name group and moves its domain names to the default group.
 //
 // Description:
 //
-// >  The default group cannot be deleted.
+// > The default group cannot be deleted.
 //
 // @param request - DeleteDomainGroupRequest
 //
@@ -2389,7 +2689,7 @@ func (client *Client) DeleteDomainGroupWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Deletes an Alibaba Cloud DNS (DNS) record based on the specified parameters.
+// Deletes a DNS record based on the specified request parameters.
 //
 // @param request - DeleteDomainRecordRequest
 //
@@ -2441,7 +2741,7 @@ func (client *Client) DeleteDomainRecordWithContext(ctx context.Context, request
 
 // Summary:
 //
-// You can call this operation to delete an access policy of a Global Traffic Manager (GTM) instance.
+// Deletes an access policy.
 //
 // @param request - DeleteGtmAccessStrategyRequest
 //
@@ -2489,7 +2789,7 @@ func (client *Client) DeleteGtmAccessStrategyWithContext(ctx context.Context, re
 
 // Summary:
 //
-// You can call this operation to delete an address pool of a Global Traffic Manager (GTM).
+// Deletes an address pool.
 //
 // @param request - DeleteGtmAddressPoolRequest
 //
@@ -2585,7 +2885,7 @@ func (client *Client) DeleteGtmRecoveryPlanWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Deletes HTTPDNS resolution records
+// Deletes a built-in authoritative DNS record used for recursive resolution.
 //
 // @param request - DeleteRecursionRecordRequest
 //
@@ -2633,7 +2933,11 @@ func (client *Client) DeleteRecursionRecordWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Deletes HTTPDNS authoritative domain zone
+// Deletes a built-in authoritative zone used for recursive resolution.
+//
+// Description:
+//
+// If a zone contains locked DNS records, this operation does not delete them.
 //
 // @param request - DeleteRecursionZoneRequest
 //
@@ -2681,11 +2985,11 @@ func (client *Client) DeleteRecursionZoneWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Deletes the DNS records that are corresponding to a hostname based on the specified parameters.
+// Deletes the DNS records for a specified host record.
 //
 // Description:
 //
-// If the DNS records to be deleted contain locked DNS records, the locked DNS records will not be deleted.
+// Locked DNS records will not be deleted.
 //
 // @param request - DeleteSubDomainRecordsRequest
 //
@@ -2745,7 +3049,195 @@ func (client *Client) DeleteSubDomainRecordsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the execution result of a batch operation task based on the task ID. If you do not specify task ID, the execution result of the last batch operation task is returned.
+// Queries the details of an Agent registration.
+//
+// @param request - DescribeAtiAgentRegisterInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAtiAgentRegisterInfoResponse
+func (client *Client) DescribeAtiAgentRegisterInfoWithContext(ctx context.Context, request *DescribeAtiAgentRegisterInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeAtiAgentRegisterInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentRegisterInfoId) {
+		query["AgentRegisterInfoId"] = request.AgentRegisterInfoId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAtiAgentRegisterInfo"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAtiAgentRegisterInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries alert settings.
+//
+// @param request - DescribeAtiAlertSettingsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAtiAlertSettingsResponse
+func (client *Client) DescribeAtiAlertSettingsWithContext(ctx context.Context, request *DescribeAtiAlertSettingsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAtiAlertSettingsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAtiAlertSettings"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAtiAlertSettingsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a certificate.
+//
+// @param request - DescribeAtiCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAtiCertificateResponse
+func (client *Client) DescribeAtiCertificateWithContext(ctx context.Context, request *DescribeAtiCertificateRequest, runtime *dara.RuntimeOptions) (_result *DescribeAtiCertificateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentCertificateId) {
+		query["AgentCertificateId"] = request.AgentCertificateId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAtiCertificate"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAtiCertificateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of a real-name verified registrant.
+//
+// @param request - DescribeAtiRegistrantRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAtiRegistrantResponse
+func (client *Client) DescribeAtiRegistrantWithContext(ctx context.Context, request *DescribeAtiRegistrantRequest, runtime *dara.RuntimeOptions) (_result *DescribeAtiRegistrantResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.RegistrantId) {
+		query["RegistrantId"] = request.RegistrantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAtiRegistrant"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAtiRegistrantResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the execution results of a batch operation task using a task ID. If you do not specify a task ID, the results of the most recent batch task are returned.
 //
 // @param request - DescribeBatchResultCountRequest
 //
@@ -2797,11 +3289,11 @@ func (client *Client) DescribeBatchResultCountWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the detailed results of a batch operation task.
+// Retrieves the details of a batch processing result.
 //
 // Description:
 //
-// Before you call this operation, make sure that the batch operation task is complete.
+// *Prerequisite: You can call this operation after the batch task is complete.**
 //
 // @param request - DescribeBatchResultDetailRequest
 //
@@ -2865,7 +3357,7 @@ func (client *Client) DescribeBatchResultDetailWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the configurations of an address.
+// Queries the configuration of an address based on the specified input parameters.
 //
 // @param request - DescribeCloudGtmAddressRequest
 //
@@ -2917,7 +3409,7 @@ func (client *Client) DescribeCloudGtmAddressWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the configurations of an address pool.
+// Retrieves the configuration of a specified address pool.
 //
 // @param request - DescribeCloudGtmAddressPoolRequest
 //
@@ -2969,7 +3461,7 @@ func (client *Client) DescribeCloudGtmAddressPoolWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the information about the access domain names that reference an address pool.
+// Retrieves information about the instances that reference an address pool.
 //
 // @param request - DescribeCloudGtmAddressPoolReferenceRequest
 //
@@ -3021,7 +3513,7 @@ func (client *Client) DescribeCloudGtmAddressPoolReferenceWithContext(ctx contex
 
 // Summary:
 //
-// Queries the information about the address pools and Global Traffic Manager (GTM) 3.0 instances that reference an address.
+// Queries the address pools and Global Traffic Manager (GTM) 3.0 instances that reference a specified address.
 //
 // @param request - DescribeCloudGtmAddressReferenceRequest
 //
@@ -3073,7 +3565,7 @@ func (client *Client) DescribeCloudGtmAddressReferenceWithContext(ctx context.Co
 
 // Summary:
 //
-// 查询全局流量管理告警配置
+// Queries the global alert configuration for Global Traffic Manager (GTM).
 //
 // @param request - DescribeCloudGtmGlobalAlertRequest
 //
@@ -3119,6 +3611,10 @@ func (client *Client) DescribeCloudGtmGlobalAlertWithContext(ctx context.Context
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the alert configuration for an instance.
+//
 // @param request - DescribeCloudGtmInstanceConfigAlertRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3173,7 +3669,7 @@ func (client *Client) DescribeCloudGtmInstanceConfigAlertWithContext(ctx context
 
 // Summary:
 //
-// Queries the complete configuration information about a Global Traffic Manager (GTM) instance.
+// Queries the full configuration of a GTM 3.0 access domain name, including alert settings, address pools, and address details.
 //
 // @param request - DescribeCloudGtmInstanceConfigFullInfoRequest
 //
@@ -3229,7 +3725,7 @@ func (client *Client) DescribeCloudGtmInstanceConfigFullInfoWithContext(ctx cont
 
 // Summary:
 //
-// Queries the configurations of a health check template.
+// Retrieves the configuration of a specified health check template.
 //
 // @param request - DescribeCloudGtmMonitorTemplateRequest
 //
@@ -3317,7 +3813,7 @@ func (client *Client) DescribeCloudGtmSummaryWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the details of a custom line by its unique ID.
+// Queries a custom line by its unique ID.
 //
 // @param request - DescribeCustomLineRequest
 //
@@ -3365,7 +3861,7 @@ func (client *Client) DescribeCustomLineWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries custom lines by domain name.
+// Queries the custom lines for a domain name.
 //
 // @param request - DescribeCustomLinesRequest
 //
@@ -3421,7 +3917,7 @@ func (client *Client) DescribeCustomLinesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the subdomains for which weighted round-robin is enabled based on the specified parameters.
+// Retrieves a list of subdomains that have weight configurations based on the specified parameters.
 //
 // @param request - DescribeDNSSLBSubDomainsRequest
 //
@@ -3485,7 +3981,7 @@ func (client *Client) DescribeDNSSLBSubDomainsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries cache-accelerated domain names within your account based on the specified parameters.
+// Queries authoritative proxy domain names based on the specified parameters.
 //
 // @param request - DescribeDnsCacheDomainsRequest
 //
@@ -3541,7 +4037,7 @@ func (client *Client) DescribeDnsCacheDomainsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the access policies of a GTM instance.
+// Queries the access strategies for a Global Traffic Manager (GTM) instance.
 //
 // @param request - DescribeDnsGtmAccessStrategiesRequest
 //
@@ -3601,7 +4097,7 @@ func (client *Client) DescribeDnsGtmAccessStrategiesWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the details about an access policy.
+// Retrieves the details of a specified access strategy.
 //
 // @param request - DescribeDnsGtmAccessStrategyRequest
 //
@@ -3649,7 +4145,7 @@ func (client *Client) DescribeDnsGtmAccessStrategyWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the configuration items that can be set for an access policy.
+// Describes the available configurations for an access policy based on an instance ID.
 //
 // @param request - DescribeDnsGtmAccessStrategyAvailableConfigRequest
 //
@@ -3701,7 +4197,7 @@ func (client *Client) DescribeDnsGtmAccessStrategyAvailableConfigWithContext(ctx
 
 // Summary:
 //
-// Queries the source regions of addresses.
+// Queries the region where an address is located.
 //
 // @param request - DescribeDnsGtmAddrAttributeInfoRequest
 //
@@ -3753,7 +4249,7 @@ func (client *Client) DescribeDnsGtmAddrAttributeInfoWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries the available configurations of an address pool of a GTM instance.
+// Queries the available configurations for an address pool in a Global Traffic Manager (GTM) instance.
 //
 // @param request - DescribeDnsGtmAddressPoolAvailableConfigRequest
 //
@@ -3801,7 +4297,7 @@ func (client *Client) DescribeDnsGtmAddressPoolAvailableConfigWithContext(ctx co
 
 // Summary:
 //
-// Queries the available alert groups of a Global Traffic Manager (GTM) instance.
+// Queries the available alert contact groups.
 //
 // @param request - DescribeDnsGtmAvailableAlertGroupRequest
 //
@@ -3845,7 +4341,7 @@ func (client *Client) DescribeDnsGtmAvailableAlertGroupWithContext(ctx context.C
 
 // Summary:
 //
-// Obtains the details of an instance based on the ID of the instance.
+// Queries the details of an instance based on the specified instance ID.
 //
 // @param request - DescribeDnsGtmInstanceRequest
 //
@@ -3893,7 +4389,7 @@ func (client *Client) DescribeDnsGtmInstanceWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries detailed information about an address pool by address pool ID.
+// Queries the details of an address pool by its ID.
 //
 // @param request - DescribeDnsGtmInstanceAddressPoolRequest
 //
@@ -3941,7 +4437,7 @@ func (client *Client) DescribeDnsGtmInstanceAddressPoolWithContext(ctx context.C
 
 // Summary:
 //
-// Queries address pools by the IDs of GTM instances.
+// Retrieves the address pools of a Global Traffic Manager (GTM) instance.
 //
 // @param request - DescribeDnsGtmInstanceAddressPoolsRequest
 //
@@ -3997,7 +4493,7 @@ func (client *Client) DescribeDnsGtmInstanceAddressPoolsWithContext(ctx context.
 
 // Summary:
 //
-// Obtains the current status of the instance by instance ID.
+// Describes the status of an instance based on its ID.
 //
 // @param request - DescribeDnsGtmInstanceStatusRequest
 //
@@ -4045,7 +4541,7 @@ func (client *Client) DescribeDnsGtmInstanceStatusWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the canonical name (CNAME) assigned by the system for a GTM instance.
+// Retrieves the system-assigned CNAME based on the specified instance ID.
 //
 // @param request - DescribeDnsGtmInstanceSystemCnameRequest
 //
@@ -4153,7 +4649,7 @@ func (client *Client) DescribeDnsGtmInstancesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Obtains the operation logs by instance ID.
+// Queries the operation logs for an instance.
 //
 // @param request - DescribeDnsGtmLogsRequest
 //
@@ -4221,7 +4717,7 @@ func (client *Client) DescribeDnsGtmLogsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the configuration items that can be set for a health check task.
+// Queries the available configurations for DNS health checks.
 //
 // @param request - DescribeDnsGtmMonitorAvailableConfigRequest
 //
@@ -4265,7 +4761,7 @@ func (client *Client) DescribeDnsGtmMonitorAvailableConfigWithContext(ctx contex
 
 // Summary:
 //
-// Queries the health check configuration of an address pool.
+// Queries the health check configuration for an address pool.
 //
 // @param request - DescribeDnsGtmMonitorConfigRequest
 //
@@ -4313,7 +4809,7 @@ func (client *Client) DescribeDnsGtmMonitorConfigWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the details about a paid Alibaba Cloud DNS instance based on the instance ID.
+// Retrieves the details of a paid Alibaba Cloud DNS instance by its instance ID.
 //
 // @param request - DescribeDnsProductInstanceRequest
 //
@@ -4365,11 +4861,11 @@ func (client *Client) DescribeDnsProductInstanceWithContext(ctx context.Context,
 
 // Summary:
 //
-// Calls the DescribeDnsProductInstances operation to query the list of paid Alibaba Cloud DNS instances based on input parameters.
+// Retrieves a list of paid DNS product instances that match the specified parameters.
 //
 // Description:
 //
-// >  If the response parameters of an Alibaba Cloud DNS instance do not contain domain names, no domain names are bound to the instance.
+// > **If the response does not contain a domain name, the Alibaba Cloud DNS instance is not associated with any domain names.**
 //
 // @param request - DescribeDnsProductInstancesRequest
 //
@@ -4441,7 +4937,7 @@ func (client *Client) DescribeDnsProductInstancesWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the statistics on DoH-based requests for a domain name.
+// Queries an overview of request statistics for a DNS over HTTPS (DoH) account.
 //
 // @param request - DescribeDohAccountStatisticsRequest
 //
@@ -4493,7 +4989,7 @@ func (client *Client) DescribeDohAccountStatisticsWithContext(ctx context.Contex
 
 // Summary:
 //
-// The statistics on DoH-based requests for a domain name are queried.
+// Retrieves an overview of statistics for DNS over HTTPS (DoH) requests for a domain name.
 //
 // @param request - DescribeDohDomainStatisticsRequest
 //
@@ -4549,7 +5045,7 @@ func (client *Client) DescribeDohDomainStatisticsWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the statistics on DoH-based requests for domain names.
+// Queries request statistics for DNS over HTTPS (DoH) domain names.
 //
 // @param request - DescribeDohDomainStatisticsSummaryRequest
 //
@@ -4613,7 +5109,7 @@ func (client *Client) DescribeDohDomainStatisticsSummaryWithContext(ctx context.
 
 // Summary:
 //
-// Obtains the statistics on DoH-based requests for a subdomain name.
+// Queries for statistics on DNS over HTTPS (DoH) requests for a subdomain.
 //
 // @param request - DescribeDohSubDomainStatisticsRequest
 //
@@ -4669,7 +5165,7 @@ func (client *Client) DescribeDohSubDomainStatisticsWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the statistics on DoH-based requests for subdomain names.
+// Queries a summary of request statistics for subdomains using DNS over HTTPS (DoH).
 //
 // @param request - DescribeDohSubDomainStatisticsSummaryRequest
 //
@@ -4737,7 +5233,7 @@ func (client *Client) DescribeDohSubDomainStatisticsSummaryWithContext(ctx conte
 
 // Summary:
 //
-// Queries the numbers of accessed domains and subdomains by using DNS over HTTPS (DoH).
+// Retrieves the basic information of a DNS over HTTPS (DoH) user.
 //
 // @param request - DescribeDohUserInfoRequest
 //
@@ -4789,7 +5285,7 @@ func (client *Client) DescribeDohUserInfoWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the Domain Name System Security Extensions (DNSSEC) configurations of a domain name based on the specified parameters.
+// Queries the Domain Name System Security Extensions (DNSSEC) information for a specified domain name.
 //
 // @param request - DescribeDomainDnssecInfoRequest
 //
@@ -4837,7 +5333,7 @@ func (client *Client) DescribeDomainDnssecInfoWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries all domain name groups based on the specified parameters.
+// Queries domain name groups.
 //
 // @param request - DescribeDomainGroupsRequest
 //
@@ -4893,11 +5389,11 @@ func (client *Client) DescribeDomainGroupsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the information about a domain name based on specified parameters.
+// Queries information about a specified domain name.
 //
 // Description:
 //
-// In this example, the domain name is bound to an instance of Alibaba Cloud DNS Enterprise Ultimate Edition. For more information about valid Domain Name System (DNS) request lines, see the return values of the RecordLines parameter.
+// In this example, the domain name is bound to an instance of Alibaba Cloud DNS Ultimate Edition. For more information about line enumeration, see the RecordLines response parameter.
 //
 // @param request - DescribeDomainInfoRequest
 //
@@ -4949,7 +5445,7 @@ func (client *Client) DescribeDomainInfoWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the operation logs of domain names based on the specified parameters.
+// Queries the operation logs for a domain name based on the specified parameters.
 //
 // @param request - DescribeDomainLogsRequest
 //
@@ -5021,11 +5517,11 @@ func (client *Client) DescribeDomainLogsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the name servers configured for a specified domain name and checks whether all the name servers are Alibaba Cloud Domain Name System (DNS) servers.
+// Queries the current list of name servers for a domain name and determines whether the servers are managed by Alibaba Cloud DNS.
 //
 // Description:
 //
-// >  You can call this operation to query the authoritative servers of a domain name registry to obtain the name servers for a domain name. If the domain name is in an invalid state, such as serverHold or clientHold, an error may be returned.
+// > This operation directly queries the authoritative server of the domain name registry to retrieve the DNS server names for the domain name. An error may be returned if the domain name is inactive. For example, if the domain name has a serverHold or clientHold status, or has not passed identity verification.
 //
 // @param request - DescribeDomainNsRequest
 //
@@ -5073,13 +5569,7 @@ func (client *Client) DescribeDomainNsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the information about a Domain Name System (DNS) record by the ID of the DNS record.
-//
-// Description:
-//
-// ## Debugging
-//
-// [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Alidns\\&api=DescribeDomainRecordInfo\\&type=RPC\\&version=2015-01-09)
+// Retrieves the details of a DNS record by its ID.
 //
 // @param request - DescribeDomainRecordInfoRequest
 //
@@ -5131,17 +5621,17 @@ func (client *Client) DescribeDomainRecordInfoWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries all Domain Name System (DNS) records of the specified primary domain names based on the specified parameters.
+// Retrieves the DNS records for a specified root domain based on the input parameters.
 //
 // Description:
 //
-//	  You can specify DomainName, PageNumber, and PageSize to query the DNS records of the specified domain names.
+// - You can specify the domain name (DomainName), page number (PageNumber), and page size (PageSize) to retrieve a list of DNS records.
 //
-//		- You can also specify RRKeyWord, TypeKeyWord, or ValueKeyWord to query the DNS records that contain the specified keyword.
+// - You can specify a keyword for the host record (RRKeyWord), record type (TypeKeyWord), or record value (ValueKeyWord) to query DNS records that contain the keyword.
 //
-//		- By default, the DNS records are sorted in reverse chronological order based on the time when they were added.
+// - By default, DNS records are sorted in descending order by the time they were added.
 //
-//		- You can specify GroupId to query the DNS records of the specified domain names based on the group ID. You can query the DNS records of all domain names and the domain names in the default group.
+// - You can specify a domain group ID (GroupId) to query the DNS records in a specific group.
 //
 // @param request - DescribeDomainRecordsRequest
 //
@@ -5241,7 +5731,7 @@ func (client *Client) DescribeDomainRecordsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the resolution requests of all paid domain names within your account.
+// Queries the request volumes for all paid domain names in your account.
 //
 // @param request - DescribeDomainResolveStatisticsSummaryRequest
 //
@@ -5317,11 +5807,11 @@ func (client *Client) DescribeDomainResolveStatisticsSummaryWithContext(ctx cont
 
 // Summary:
 //
-// Queries the real-time statistics on the Domain Name System (DNS) requests for a primary domain name.
+// Queries the number of real-time requests for a specified primary domain name.
 //
 // Description:
 //
-// Real-time data is collected per hour.
+// Real-time data is collected hourly.
 //
 // @param request - DescribeDomainStatisticsRequest
 //
@@ -5381,7 +5871,7 @@ func (client *Client) DescribeDomainStatisticsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Calls the DescribeDomainStatisticsSummary operation to obtain the query volume of all paid domain names under your account.
+// Queries the number of requests for all paid domain names in your account.
 //
 // @param request - DescribeDomainStatisticsSummaryRequest
 //
@@ -5453,17 +5943,17 @@ func (client *Client) DescribeDomainStatisticsSummaryWithContext(ctx context.Con
 
 // Summary:
 //
-// Calls the DescribeDomains operation to query domain names of a user based on input parameters.
+// Queries a list of domain names based on specified parameters.
 //
 // Description:
 //
-//	  You can specify the PageNumber and PageSize parameters to query domain names.
+// 1. You can specify a page number (PageNumber) and page size (PageSize) to retrieve a paginated list of domain names.
 //
-//		- You can specify the KeyWord parameter to query domain names that contain the specified keyword.
+// 2. You can specify a keyword (KeyWord) to query for domain names that contain the specified keyword.
 //
-//		- By default, the domain names in a list are sorted in descending order of the time they were added.
+// 3. By default, domain names are sorted in descending order of their creation time.
 //
-//		- You can specify the GroupId parameter. If you do not specify this parameter, all domain names are queried by default.
+// 4. You can specify a domain name group ID (GroupId) to query for domain names in a specific group. This lets you retrieve all domain names or only the domain names that are not assigned to a group.
 //
 // @param request - DescribeDomainsRequest
 //
@@ -5535,7 +6025,7 @@ func (client *Client) DescribeDomainsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// You can call this operation to query the access policies of a Global Traffic Manager (GTM) instance.
+// Queries the access policies for an instance.
 //
 // @param request - DescribeGtmAccessStrategiesRequest
 //
@@ -5591,7 +6081,7 @@ func (client *Client) DescribeGtmAccessStrategiesWithContext(ctx context.Context
 
 // Summary:
 //
-// You can call this operation to query the details about an access policy of a Global Traffic Manager (GTM) instance based on the policy ID.
+// Queries the details of an access policy based on the policy ID.
 //
 // @param request - DescribeGtmAccessStrategyRequest
 //
@@ -5639,7 +6129,7 @@ func (client *Client) DescribeGtmAccessStrategyWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the configuration items that can be set for an access policy.
+// Queries the available configurations for an access policy.
 //
 // @param request - DescribeGtmAccessStrategyAvailableConfigRequest
 //
@@ -5687,7 +6177,7 @@ func (client *Client) DescribeGtmAccessStrategyAvailableConfigWithContext(ctx co
 
 // Summary:
 //
-// You can call this operation to query the available alert groups for a Global Traffic Manager (GTM) instance.
+// Queries the list of available alert contact groups for a Global Traffic Manager (GTM) instance.
 //
 // @param request - DescribeGtmAvailableAlertGroupRequest
 //
@@ -5731,7 +6221,7 @@ func (client *Client) DescribeGtmAvailableAlertGroupWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the details about a Global Traffic Manager (GTM) instance.
+// Queries the details of a Global Traffic Manager (GTM) instance.
 //
 // @param request - DescribeGtmInstanceRequest
 //
@@ -5783,7 +6273,7 @@ func (client *Client) DescribeGtmInstanceWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// You can call this operation to query the details about an address pool of a Global Traffic Manager (GTM) instance.
+// Describes the details of an address pool.
 //
 // @param request - DescribeGtmInstanceAddressPoolRequest
 //
@@ -5831,7 +6321,7 @@ func (client *Client) DescribeGtmInstanceAddressPoolWithContext(ctx context.Cont
 
 // Summary:
 //
-// You can call this operation to query the address pools of a Global Traffic Manager (GTM) instance.
+// Describes the address pools of a Global Traffic Manager (GTM) instance.
 //
 // @param request - DescribeGtmInstanceAddressPoolsRequest
 //
@@ -5887,7 +6377,7 @@ func (client *Client) DescribeGtmInstanceAddressPoolsWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries the status of a Global Traffic Manager (GTM) instance.
+// Queries the current status of an instance.
 //
 // @param request - DescribeGtmInstanceStatusRequest
 //
@@ -5935,7 +6425,7 @@ func (client *Client) DescribeGtmInstanceStatusWithContext(ctx context.Context, 
 
 // Summary:
 //
-// You can call this operation to query the CNAME record assigned by the system.
+// Retrieves the system-assigned CNAME domain name.
 //
 // @param request - DescribeGtmInstanceSystemCnameRequest
 //
@@ -5983,7 +6473,7 @@ func (client *Client) DescribeGtmInstanceSystemCnameWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the Global Traffic Manager (GTM) instances under your account.
+// Queries Global Traffic Manager (GTM) instances.
 //
 // @param request - DescribeGtmInstancesRequest
 //
@@ -6047,7 +6537,7 @@ func (client *Client) DescribeGtmInstancesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// You can call this operation to query logs of a Global Traffic Manager (GTM) instance.
+// Queries a list of logs.
 //
 // @param request - DescribeGtmLogsRequest
 //
@@ -6115,7 +6605,7 @@ func (client *Client) DescribeGtmLogsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Queries available monitored nodes.
+// Retrieves the available configurations for health checks.
 //
 // @param request - DescribeGtmMonitorAvailableConfigRequest
 //
@@ -6159,7 +6649,7 @@ func (client *Client) DescribeGtmMonitorAvailableConfigWithContext(ctx context.C
 
 // Summary:
 //
-// Queries the health check configuration of an address pool of a Global Traffic Manager (GTM) instance.
+// Retrieves the health check configuration for an address pool.
 //
 // @param request - DescribeGtmMonitorConfigRequest
 //
@@ -6207,7 +6697,7 @@ func (client *Client) DescribeGtmMonitorConfigWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the details of a disaster recovery plan.
+// Retrieves the details of a disaster recovery plan.
 //
 // @param request - DescribeGtmRecoveryPlanRequest
 //
@@ -6255,7 +6745,7 @@ func (client *Client) DescribeGtmRecoveryPlanWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the configuration items that can be set for a disaster recovery plan.
+// Describes the available configurations for a disaster recovery plan.
 //
 // @param request - DescribeGtmRecoveryPlanAvailableConfigRequest
 //
@@ -6299,7 +6789,7 @@ func (client *Client) DescribeGtmRecoveryPlanAvailableConfigWithContext(ctx cont
 
 // Summary:
 //
-// Queries disaster recovery plans.
+// Queries a list of disaster recovery plans.
 //
 // @param request - DescribeGtmRecoveryPlansRequest
 //
@@ -6355,7 +6845,7 @@ func (client *Client) DescribeGtmRecoveryPlansWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the domain names that are bound to an Alibaba Cloud DNS instance.
+// Retrieves a list of domain names that are attached to an instance.
 //
 // @param request - DescribeInstanceDomainsRequest
 //
@@ -6415,7 +6905,11 @@ func (client *Client) DescribeInstanceDomainsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 公网权威解析统计信息全局总览
+// Retrieves a global overview of statistics for public authoritative DNS.
+//
+// Description:
+//
+// Real-time data is aggregated hourly.
 //
 // @param request - DescribeInterAuthStatisticsGlobalOverviewRequest
 //
@@ -6471,7 +6965,11 @@ func (client *Client) DescribeInterAuthStatisticsGlobalOverviewWithContext(ctx c
 
 // Summary:
 //
-// 公网权威解析统计信息趋势
+// # Historical statistics for public authoritative DNS resolution
+//
+// Description:
+//
+// Real-time data statistics are aggregated hourly.
 //
 // @param request - DescribeInterAuthStatisticsHistoryRequest
 //
@@ -6539,7 +7037,11 @@ func (client *Client) DescribeInterAuthStatisticsHistoryWithContext(ctx context.
 
 // Summary:
 //
-// 公网权威解析统计信息摘要列表
+// Queries the summary list of public authoritative parse statistics.
+//
+// Description:
+//
+// Real-time data is aggregated by hour.
 //
 // @param request - DescribeInterAuthStatisticsSummaryRequest
 //
@@ -6635,7 +7137,7 @@ func (client *Client) DescribeInterAuthStatisticsSummaryWithContext(ctx context.
 
 // Summary:
 //
-// 公网权威解析统计信息Zone维度总览
+// Retrieves a zone-level overview of statistics for public authoritative DNS.
 //
 // @param request - DescribeInterAuthStatisticsZoneOverviewRequest
 //
@@ -6687,7 +7189,7 @@ func (client *Client) DescribeInterAuthStatisticsZoneOverviewWithContext(ctx con
 
 // Summary:
 //
-// 查询解析日志
+// # Query parsing logs
 //
 // @param request - DescribeInternetDnsLogsRequest
 //
@@ -6771,7 +7273,7 @@ func (client *Client) DescribeInternetDnsLogsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 获取缓存刷新套餐包列表
+// Queries the list of cache refresh instances.
 //
 // @param request - DescribeIspFlushCacheInstancesRequest
 //
@@ -6843,7 +7345,7 @@ func (client *Client) DescribeIspFlushCacheInstancesWithContext(ctx context.Cont
 
 // Summary:
 //
-// 获取剩余可缓存刷新次数
+// Retrieves the remaining number of cache refresh operations available.
 //
 // @param request - DescribeIspFlushCacheRemainQuotaRequest
 //
@@ -6887,7 +7389,7 @@ func (client *Client) DescribeIspFlushCacheRemainQuotaWithContext(ctx context.Co
 
 // Summary:
 //
-// 获取缓存刷新任务详情
+// Queries the details of a cache flush task.
 //
 // @param request - DescribeIspFlushCacheTaskRequest
 //
@@ -6935,7 +7437,7 @@ func (client *Client) DescribeIspFlushCacheTaskWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 获取缓存刷新任务列表
+// Queries the list of cache refresh tasks.
 //
 // @param request - DescribeIspFlushCacheTasksRequest
 //
@@ -7007,7 +7509,7 @@ func (client *Client) DescribeIspFlushCacheTasksWithContext(ctx context.Context,
 
 // Summary:
 //
-// 获取公共DNS用户数据概览
+// Queries the overview of Public DNS user data.
 //
 // @param request - DescribePdnsAccountSummaryRequest
 //
@@ -7059,7 +7561,7 @@ func (client *Client) DescribePdnsAccountSummaryWithContext(ctx context.Context,
 
 // Summary:
 //
-// 获取公共DNS AppKey 详情
+// # Query the details of a public DNS AppKey
 //
 // @param request - DescribePdnsAppKeyRequest
 //
@@ -7111,7 +7613,7 @@ func (client *Client) DescribePdnsAppKeyWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 获取公共DNS AppKey 列表
+// # Queries the list of AppKeys of Public DNS
 //
 // @param request - DescribePdnsAppKeysRequest
 //
@@ -7155,7 +7657,7 @@ func (client *Client) DescribePdnsAppKeysWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 获取公共DNS 操作日志列表
+// Queries the operation log list of Public DNS.
 //
 // @param request - DescribePdnsOperateLogsRequest
 //
@@ -7227,7 +7729,7 @@ func (client *Client) DescribePdnsOperateLogsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the number of requests for public DNS.
+// Queries the request statistics for Public DNS.
 //
 // @param request - DescribePdnsRequestStatisticRequest
 //
@@ -7291,7 +7793,7 @@ func (client *Client) DescribePdnsRequestStatisticWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries a list of statistics on requests for Alibaba Cloud Public DNS.
+// Queries the request statistics for a specified subdomain.
 //
 // @param request - DescribePdnsRequestStatisticsRequest
 //
@@ -7363,7 +7865,7 @@ func (client *Client) DescribePdnsRequestStatisticsWithContext(ctx context.Conte
 
 // Summary:
 //
-// 获取公共DNS 威胁日志列表
+// Queries the list of Public DNS threat logs.
 //
 // @param request - DescribePdnsThreatLogsRequest
 //
@@ -7439,7 +7941,7 @@ func (client *Client) DescribePdnsThreatLogsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 获取公共DNS 威胁统计
+// Retrieves Public DNS threat statistics.
 //
 // @param request - DescribePdnsThreatStatisticRequest
 //
@@ -7495,7 +7997,7 @@ func (client *Client) DescribePdnsThreatStatisticWithContext(ctx context.Context
 
 // Summary:
 //
-// 获取公共DNS 威胁统计列表
+// Retrieves the public DNS threat statistics list.
 //
 // @param request - DescribePdnsThreatStatisticsRequest
 //
@@ -7587,7 +8089,7 @@ func (client *Client) DescribePdnsThreatStatisticsWithContext(ctx context.Contex
 
 // Summary:
 //
-// 获取公共DNS Udp IP段列表
+// Retrieves the list of Public DNS UDP IP address ranges.
 //
 // @param request - DescribePdnsUdpIpSegmentsRequest
 //
@@ -7639,7 +8141,7 @@ func (client *Client) DescribePdnsUdpIpSegmentsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the information about users in Alibaba Cloud Public DNS.
+// Retrieves user information for Public DNS.
 //
 // @param request - DescribePdnsUserInfoRequest
 //
@@ -7683,7 +8185,7 @@ func (client *Client) DescribePdnsUserInfoWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the operation logs of a domain name based on the specified parameters.
+// Queries the operation logs for the DNS records of a domain name.
 //
 // @param request - DescribeRecordLogsRequest
 //
@@ -7755,7 +8257,7 @@ func (client *Client) DescribeRecordLogsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the number of resolution requests for all subdomain names of a specified domain name.
+// Queries statistics on the request volume for all subdomains of a specified domain name.
 //
 // @param request - DescribeRecordResolveStatisticsSummaryRequest
 //
@@ -7839,11 +8341,11 @@ func (client *Client) DescribeRecordResolveStatisticsSummaryWithContext(ctx cont
 
 // Summary:
 //
-// Queries the real-time statistics on the Domain Name System (DNS) requests for a subdomain name.
+// Queries real-time data about DNS requests for a specified subdomain.
 //
 // Description:
 //
-// Real-time data is collected per hour.
+// Real-time data is collected hourly.
 //
 // @param request - DescribeRecordStatisticsRequest
 //
@@ -7907,7 +8409,7 @@ func (client *Client) DescribeRecordStatisticsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the number of Domain Name System (DNS) requests for all subdomain names of a specified domain name.
+// Queries statistics on the request volume for all subdomains of a specified domain name.
 //
 // @param request - DescribeRecordStatisticsSummaryRequest
 //
@@ -7987,7 +8489,7 @@ func (client *Client) DescribeRecordStatisticsSummaryWithContext(ctx context.Con
 
 // Summary:
 //
-// # Queries the details of HTTPDNS resolution records
+// Describes a built-in authoritative DNS record used for recursive resolution.
 //
 // @param request - DescribeRecursionRecordRequest
 //
@@ -8031,7 +8533,11 @@ func (client *Client) DescribeRecursionRecordWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 查询递归解析内置权威域名zone详情
+// Queries the details of an authoritative zone for recursive resolution.
+//
+// Description:
+//
+// Real-time data is measured hourly.
 //
 // @param request - DescribeRecursionZoneRequest
 //
@@ -8075,7 +8581,7 @@ func (client *Client) DescribeRecursionZoneWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries all Domain Name System (DNS) records of a subdomain name based on the specified parameters.
+// Retrieves all DNS records for a specific subdomain based on the specified parameters.
 //
 // @param request - DescribeSubDomainRecordsRequest
 //
@@ -8147,7 +8653,7 @@ func (client *Client) DescribeSubDomainRecordsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries all lines that are supported by Alibaba Cloud DNS.
+// Queries all lines supported by Cloud DNS.
 //
 // @param request - DescribeSupportLinesRequest
 //
@@ -8255,7 +8761,7 @@ func (client *Client) DescribeTagsWithContext(ctx context.Context, request *Desc
 
 // Summary:
 //
-// Queries the domain names that were transferred between the current account and another account based on the specified parameters.
+// Queries the domain names transferred between accounts based on the specified input parameters.
 //
 // @param request - DescribeTransferDomainsRequest
 //
@@ -8371,13 +8877,15 @@ func (client *Client) ExecuteGtmRecoveryPlanWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries a primary domain name based on the specified parameters.
+// Retrieves the primary domain name from a specified domain name.
 //
 // Description:
 //
-// # For more information about the difference between primary domain names and subdomain names, see
+// # For more information about primary and subdomain name levels, see
 //
-// [Subdomain levels](https://www.alibabacloud.com/help/zh/faq-detail/39803.htm). For example, if you enter `www.abc.com`, abc.com is obtained.
+// <props="china">[Domain name levels](https://help.aliyun.com/document_detail/39803.html?spm=a2c4g.2357293.0.0.211f41ffUR1cPb). For example, if you enter `www.abc.com`, the output is abc.com.
+//
+// <props="intl">[Domain name levels](https://www.alibabacloud.com/help/zh/faq-detail/39803.htm). For example, if you enter `www.abc.com`, the output is abc.com.
 //
 // @param request - GetMainDomainNameRequest
 //
@@ -8425,7 +8933,7 @@ func (client *Client) GetMainDomainNameWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Generates a text (TXT) record. TXT records are used to retrieve domain names and subdomain names, enable the subdomain name verification feature, and perform batch retrievals.
+// Generates a TXT record for domain and subdomain verification. This operation supports batch retrieval.
 //
 // @param request - GetTxtRecordForVerifyRequest
 //
@@ -8477,7 +8985,231 @@ func (client *Client) GetTxtRecordForVerifyWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries a list of address pools.
+// Queries the list of Agent registration information.
+//
+// @param request - ListAtiAgentRegisterInfosRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAtiAgentRegisterInfosResponse
+func (client *Client) ListAtiAgentRegisterInfosWithContext(ctx context.Context, request *ListAtiAgentRegisterInfosRequest, runtime *dara.RuntimeOptions) (_result *ListAtiAgentRegisterInfosResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentDisplayName) {
+		query["AgentDisplayName"] = request.AgentDisplayName
+	}
+
+	if !dara.IsNil(request.AgentHost) {
+		query["AgentHost"] = request.AgentHost
+	}
+
+	if !dara.IsNil(request.AgentId) {
+		query["AgentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.AgentVersion) {
+		query["AgentVersion"] = request.AgentVersion
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAtiAgentRegisterInfos"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAtiAgentRegisterInfosResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of real-name registered contacts.
+//
+// @param request - ListAtiChangeLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAtiChangeLogsResponse
+func (client *Client) ListAtiChangeLogsWithContext(ctx context.Context, request *ListAtiChangeLogsRequest, runtime *dara.RuntimeOptions) (_result *ListAtiChangeLogsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		query["AgentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.EndTimestamp) {
+		query["EndTimestamp"] = request.EndTimestamp
+	}
+
+	if !dara.IsNil(request.OperationType) {
+		query["OperationType"] = request.OperationType
+	}
+
+	if !dara.IsNil(request.OperatorAccount) {
+		query["OperatorAccount"] = request.OperatorAccount
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StartTimestamp) {
+		query["StartTimestamp"] = request.StartTimestamp
+	}
+
+	if !dara.IsNil(request.TimeRange) {
+		query["TimeRange"] = request.TimeRange
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAtiChangeLogs"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAtiChangeLogsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实名注册人列表
+//
+// @param request - ListAtiRegistrantsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAtiRegistrantsResponse
+func (client *Client) ListAtiRegistrantsWithContext(ctx context.Context, request *ListAtiRegistrantsRequest, runtime *dara.RuntimeOptions) (_result *ListAtiRegistrantsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAtiRegistrants"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAtiRegistrantsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of address pools in Global Traffic Manager (GTM) 3.0.
 //
 // @param request - ListCloudGtmAddressPoolsRequest
 //
@@ -8549,7 +9281,7 @@ func (client *Client) ListCloudGtmAddressPoolsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries a list of addresses.
+// Queries a list of addresses based on the specified parameters.
 //
 // @param request - ListCloudGtmAddressesRequest
 //
@@ -8631,6 +9363,10 @@ func (client *Client) ListCloudGtmAddressesWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of alert logs.
+//
 // @param request - ListCloudGtmAlertLogsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8741,7 +9477,7 @@ func (client *Client) ListCloudGtmAvailableAlertGroupsWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries the configurations of a Global Traffic Manager (GTM) instance, including the information about access domain names and address pools.
+// Retrieves a list of instance configurations that contain access domain names and address pool information.
 //
 // @param request - ListCloudGtmInstanceConfigsRequest
 //
@@ -8817,7 +9553,7 @@ func (client *Client) ListCloudGtmInstanceConfigsWithContext(ctx context.Context
 
 // Summary:
 //
-// Obtains the GTM 3.0 instances based on the specified parameters.
+// Retrieves a list of GTM 3.0 instances based on the specified parameters.
 //
 // @param request - ListCloudGtmInstancesRequest
 //
@@ -8885,7 +9621,7 @@ func (client *Client) ListCloudGtmInstancesWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries a list of health check nodes.
+// Lists the health check monitoring nodes based on the specified input parameters.
 //
 // @param request - ListCloudGtmMonitorNodesRequest
 //
@@ -8933,7 +9669,7 @@ func (client *Client) ListCloudGtmMonitorNodesWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries a list of health check templates based on specified parameters.
+// Queries health check templates based on the specified parameters.
 //
 // @param request - ListCloudGtmMonitorTemplatesRequest
 //
@@ -8997,7 +9733,7 @@ func (client *Client) ListCloudGtmMonitorTemplatesWithContext(ctx context.Contex
 
 // Summary:
 //
-// # Queries the record details of HTTPDNS resolution records
+// Lists the built-in authoritative records for recursive resolution.
 //
 // @param request - ListRecursionRecordsRequest
 //
@@ -9085,7 +9821,17 @@ func (client *Client) ListRecursionRecordsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # Queries HTTPDNS authoritative zones
+// Queries the zones that are used for recursive resolution of built-in authoritative domain names.
+//
+// Description:
+//
+// - Specify at least ResourceId.N or Tag.N (Tag.N.Key and Tag.N.Value) in your request to identify the resources to retrieve.
+//
+// - Tag.N is a resource tag that consists of a key-value pair. If you specify only Tag.N.Key, all tag values associated with the tag key are returned. An error is returned if you specify only Tag.N.Value.
+//
+// - If you specify both Tag.N and ResourceId.N to filter resources, only the resources that are specified by ResourceId.N and match all the specified key-value pairs are returned.
+//
+// - If you specify multiple tag key-value pairs, the resources that match all of them are returned.
 //
 // @param request - ListRecursionZonesRequest
 //
@@ -9153,13 +9899,13 @@ func (client *Client) ListRecursionZonesWithContext(ctx context.Context, request
 //
 // Description:
 //
-//	  Set ResourceId.N or Tag.N that consists of Tag.N.Key and Tag.N.Value in the request to specify the object to be queried.
+// - To specify the objects to retrieve, your request must contain at least one of the following parameters: `ResourceId.N` or `Tag.N` (which consists of Tag.N.Key and Tag.N.Value).
 //
-//		- Tag.N is a resource tag that consists of a key-value pair. If you set only Tag.N.Key, all tag values that are assigned to the specified key are returned. If you set only Tag.N.Value, an error message is returned.
+// - Tag.N is a resource tag that consists of a key-value pair. If you specify only Tag.N.Key, all tag values associated with that tag key are returned. An error occurs if you specify only Tag.N.Value.
 //
-//		- If you set both Tag.N and ResourceId.N to filter tags, ResourceId.N must match all specified key-value pairs.
+// - If you specify both Tag.N and ResourceId.N to filter resources, only the resources that are specified by ResourceId.N and match all the specified tag key-value pairs are returned.
 //
-//		- If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
+// - If you specify multiple tag key-value pairs, only the resources that have all the specified key-value pairs are returned.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -9219,13 +9965,13 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Changes the names of DNS servers bound to a domain name from DNS server names provided by a third-party service provider to DNS server names provided by Alibaba Cloud DNS.
+// Changes the DNS servers for a domain name from a third-party provider to Alibaba Cloud DNS.
 //
 // Description:
 //
-// If the operation succeeds, the names of DNS servers change to those of Alibaba Cloud DNS servers (ending with hichina.com).
+// After the operation is successful, the DNS servers are changed to Alibaba Cloud DNS servers. The names of these new servers end with hichina.com.
 //
-// >  **Before you call this operation, make sure that your domain name has been registered with Alibaba Cloud and the DNS servers in use are not Alibaba Cloud DNS servers.
+// > **Prerequisite: This operation applies to domain names that are registered with Alibaba Cloud and currently use third-party DNS servers.**
 //
 // @param request - ModifyHichinaDomainDNSRequest
 //
@@ -9277,7 +10023,7 @@ func (client *Client) ModifyHichinaDomainDNSWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Moves a domain name to another resource group.
+// Moves a domain name to a different resource group.
 //
 // @param request - MoveDomainResourceGroupRequest
 //
@@ -9327,6 +10073,10 @@ func (client *Client) MoveDomainResourceGroupWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// Moves a Global Traffic Manager (GTM) instance to a new resource group.
+//
 // @param request - MoveGtmResourceGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9377,11 +10127,11 @@ func (client *Client) MoveGtmResourceGroupWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Adds or deletes domain names and Domain Name System (DNS) records in batches.
+// Adds or deletes domain names and DNS records in batches.
 //
 // Description:
 //
-// Scenario: You need to execute a large number of tasks related to DNS resolution and you do not have high requirements for efficiency.
+// Use this operation for batch DNS tasks that do not require immediate execution.
 //
 // @param request - OperateBatchDomainRequest
 //
@@ -9433,7 +10183,7 @@ func (client *Client) OperateBatchDomainWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 暂停公共DNS服务
+// # Pause Public DNS Service
 //
 // @param request - PausePdnsServiceRequest
 //
@@ -9481,7 +10231,7 @@ func (client *Client) PausePdnsServiceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Views disaster recovery plan.
+// Previews a disaster recovery plan.
 //
 // @param request - PreviewGtmRecoveryPlanRequest
 //
@@ -9537,7 +10287,7 @@ func (client *Client) PreviewGtmRecoveryPlanWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 删除公共DNS AppKey
+// # Delete Public DNS AppKey
 //
 // @param request - RemovePdnsAppKeyRequest
 //
@@ -9585,7 +10335,7 @@ func (client *Client) RemovePdnsAppKeyWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 删除公共DNS Udp Ip地址段
+// # Remove Public DNS UDP IP Segment
 //
 // @param request - RemovePdnsUdpIpSegmentRequest
 //
@@ -9633,21 +10383,13 @@ func (client *Client) RemovePdnsUdpIpSegmentWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 用于删除特定域名的serverHold状态信息。
+// Removes the serverHold status of a specified domain name.
 //
 // Description:
 //
-// ## 请求说明
+// ## Description
 //
-// - 本接口专为注册局用户设计，允许他们更新指定顶级域名（TLD）的各种属性。
-//
-// - 必须提供`RegistryId`和`Tld`参数以标识要修改的具体TLD。
-//
-// - 可选参数包括但不限于宽限期设置、DNS解析缓存时间、价格设定等，这些都可根据需要进行调整。
-//
-// - 环境(`Env`)参数指定了API调用的目标环境，默认值为“DAILY”表示日常测试环境；正式上线前，请确保已正确设置此参数。
-//
-// - 某些时间戳字段如`SunriseStartTimeStamp`要求输入Unix时间戳格式的数据。
+// - This operation removes the serverHold status of a specified domain name.
 //
 // @param request - RemoveRspDomainServerHoldStatusForGatewayRequest
 //
@@ -9699,21 +10441,13 @@ func (client *Client) RemoveRspDomainServerHoldStatusForGatewayWithContext(ctx c
 
 // Summary:
 //
-// 用于删除特定域名的serverHold状态信息。
+// Removes the serverHold status for a specified domain name.
 //
 // Description:
 //
-// ## 请求说明
+// ## Description
 //
-// - 本接口专为注册局用户设计，允许他们更新指定顶级域名（TLD）的各种属性。
-//
-// - 必须提供`RegistryId`和`Tld`参数以标识要修改的具体TLD。
-//
-// - 可选参数包括但不限于宽限期设置、DNS解析缓存时间、价格设定等，这些都可根据需要进行调整。
-//
-// - 环境(`Env`)参数指定了API调用的目标环境，默认值为“DAILY”表示日常测试环境；正式上线前，请确保已正确设置此参数。
-//
-// - 某些时间戳字段如`SunriseStartTimeStamp`要求输入Unix时间戳格式的数据。
+// - This operation removes the serverHold status for a specified domain name.
 //
 // @param request - RemoveRspDomainServerHoldStatusForGatewayOteRequest
 //
@@ -9765,7 +10499,7 @@ func (client *Client) RemoveRspDomainServerHoldStatusForGatewayOteWithContext(ct
 
 // Summary:
 //
-// Replaces the addresses referenced by an address pool.
+// Replaces the addresses in a specified address pool.
 //
 // @param tmpReq - ReplaceCloudGtmAddressPoolAddressRequest
 //
@@ -9827,7 +10561,7 @@ func (client *Client) ReplaceCloudGtmAddressPoolAddressWithContext(ctx context.C
 
 // Summary:
 //
-// Replaces address pools that are associated with a GTM instance with new address pools.
+// Replaces the address pools associated with an instance.
 //
 // @param tmpReq - ReplaceCloudGtmInstanceConfigAddressPoolRequest
 //
@@ -9893,7 +10627,7 @@ func (client *Client) ReplaceCloudGtmInstanceConfigAddressPoolWithContext(ctx co
 
 // Summary:
 //
-// 恢复公共DNS服务
+// # Resume Public DNS Service
 //
 // @param request - ResumePdnsServiceRequest
 //
@@ -9945,7 +10679,7 @@ func (client *Client) ResumePdnsServiceWithContext(ctx context.Context, request 
 //
 // Description:
 //
-// To retrieve a domain name, you must verify a text (TXT) record. Therefore, before you call this API operation to retrieve a domain name, call the [GetTxtRecordForVerify](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/generating-a-txt-record) operation to generate a TXT record.
+// Before you can retrieve a domain name, you must verify it using a TXT record. Use this operation in conjunction with the <props="china">[Generate a TXT record](https://help.aliyun.com/document_detail/145533.html) <props="intl">[Generate a TXT record](https://www.alibabacloud.com/help/zh/alibaba-cloud-dns/latest/generating-a-txt-record) operation.
 //
 // @param request - RetrieveDomainRequest
 //
@@ -9983,6 +10717,110 @@ func (client *Client) RetrieveDomainWithContext(ctx context.Context, request *Re
 		BodyType:    dara.String("json"),
 	}
 	_result = &RetrieveDomainResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Revokes the registration information of an Agent.
+//
+// @param request - RevokeAtiAgentRegisterInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeAtiAgentRegisterInfoResponse
+func (client *Client) RevokeAtiAgentRegisterInfoWithContext(ctx context.Context, request *RevokeAtiAgentRegisterInfoRequest, runtime *dara.RuntimeOptions) (_result *RevokeAtiAgentRegisterInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentRegisterInfoId) {
+		query["AgentRegisterInfoId"] = request.AgentRegisterInfoId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Reason) {
+		query["Reason"] = request.Reason
+	}
+
+	if !dara.IsNil(request.ReasonCode) {
+		query["ReasonCode"] = request.ReasonCode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RevokeAtiAgentRegisterInfo"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RevokeAtiAgentRegisterInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Revokes a real-name registrant.
+//
+// @param request - RevokeAtiRegistrantRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeAtiRegistrantResponse
+func (client *Client) RevokeAtiRegistrantWithContext(ctx context.Context, request *RevokeAtiRegistrantRequest, runtime *dara.RuntimeOptions) (_result *RevokeAtiRegistrantResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.RegistrantId) {
+		query["RegistrantId"] = request.RegistrantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RevokeAtiRegistrant"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RevokeAtiRegistrantResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -10041,7 +10879,83 @@ func (client *Client) RollbackGtmRecoveryPlanWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries a list of address pools.
+// Searches for agents in the Agent Marketplace.
+//
+// @param request - SearchAtiAgentRegisterInfoMarketRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchAtiAgentRegisterInfoMarketResponse
+func (client *Client) SearchAtiAgentRegisterInfoMarketWithContext(ctx context.Context, request *SearchAtiAgentRegisterInfoMarketRequest, runtime *dara.RuntimeOptions) (_result *SearchAtiAgentRegisterInfoMarketResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Protocol) {
+		query["Protocol"] = request.Protocol
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TrustLevel) {
+		query["TrustLevel"] = request.TrustLevel
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SearchAtiAgentRegisterInfoMarket"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SearchAtiAgentRegisterInfoMarketResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Searches for address pools by name, remarks, or other criteria.
 //
 // @param request - SearchCloudGtmAddressPoolsRequest
 //
@@ -10121,7 +11035,7 @@ func (client *Client) SearchCloudGtmAddressPoolsWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries a list of addresses based on address names, descriptions, health check templates referenced by the addresses, or address IDs.
+// Searches for addresses based on criteria such as address name, remarks, referenced health check template, or address ID.
 //
 // @param request - SearchCloudGtmAddressesRequest
 //
@@ -10217,7 +11131,7 @@ func (client *Client) SearchCloudGtmAddressesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the configurations of an access domain name.
+// Retrieves instance configurations that match the specified parameters.
 //
 // @param request - SearchCloudGtmInstanceConfigsRequest
 //
@@ -10301,7 +11215,7 @@ func (client *Client) SearchCloudGtmInstanceConfigsWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries a list of instances.
+// This operation searches for instances based on specified parameters.
 //
 // @param request - SearchCloudGtmInstancesRequest
 //
@@ -10369,7 +11283,7 @@ func (client *Client) SearchCloudGtmInstancesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the list of health check templates.
+// Searches for health check templates.
 //
 // @param request - SearchCloudGtmMonitorTemplatesRequest
 //
@@ -10433,7 +11347,7 @@ func (client *Client) SearchCloudGtmMonitorTemplatesWithContext(ctx context.Cont
 
 // Summary:
 //
-// 搜索递归解析内置权威解析记录
+// Searches for built-in authoritative DNS records used for recursive resolution.
 //
 // @param request - SearchRecursionRecordsRequest
 //
@@ -10533,7 +11447,17 @@ func (client *Client) SearchRecursionRecordsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 搜索递归解析内置权威域名zone
+// Searches for zones of built-in authoritative domain names used for recursive resolution.
+//
+// Description:
+//
+// - To retrieve resources, you must specify at least `ResourceId.N` or `Tag.N` (`Tag.N.Key` and `Tag.N.Value`) in the request.
+//
+// - `Tag.N` is a resource tag that consists of a key-value pair. If you specify only `Tag.N.Key`, all tag values associated with that key are returned. If you specify only `Tag.N.Value`, an error is returned.
+//
+// - If you specify both `Tag.N` and `ResourceId.N`, the operation returns only the resources that are identified by `ResourceId.N` and match all the specified tag key-value pairs.
+//
+// - If you specify multiple tag key-value pairs, only resources that match all of them are returned.
 //
 // @param tmpReq - SearchRecursionZonesRequest
 //
@@ -10615,7 +11539,7 @@ func (client *Client) SearchRecursionZonesWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// 设置全局流量管理实例配置日志开关
+// Enables or disables the network traffic analysis feature for a Global Traffic Manager (GTM) instance. After this feature is enabled, you can view resolution logs and statistical reports for the domain name. You can also use the intelligent alerting feature based on abnormal metrics, such as resolution success rate and sudden changes in queries per second (QPS). This improves the observability and operations and maintenance (O&M) efficiency of the GTM instance.
 //
 // @param request - SetCloudGtmInstanceConfigLogSwitchRequest
 //
@@ -10671,7 +11595,7 @@ func (client *Client) SetCloudGtmInstanceConfigLogSwitchWithContext(ctx context.
 
 // Summary:
 //
-// Enables or disables weighted round-robin based on the specified parameters.
+// Enables or disables the weight configuration.
 //
 // @param request - SetDNSSLBStatusRequest
 //
@@ -10739,11 +11663,11 @@ func (client *Client) SetDNSSLBStatusWithContext(ctx context.Context, request *S
 
 // Summary:
 //
-// Modifies the access policy that is available in address pools.
+// Sets the access mode for an access policy.
 //
 // Description:
 //
-// ***
+// **
 //
 // @param request - SetDnsGtmAccessModeRequest
 //
@@ -10795,7 +11719,7 @@ func (client *Client) SetDnsGtmAccessModeWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Specifies the health check status of an address pool.
+// Sets the health check status for an address pool.
 //
 // @param request - SetDnsGtmMonitorStatusRequest
 //
@@ -10847,7 +11771,7 @@ func (client *Client) SetDnsGtmMonitorStatusWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Enables or disables the Domain Name System Security Extensions (DNSSEC) for a domain name. This feature is available only for the users of the paid editions of Alibaba Cloud DNS.
+// Enables or disables Domain Name System Security Extensions (DNSSEC) for a domain name. This feature is available only to users of paid Alibaba Cloud DNS.
 //
 // @param request - SetDomainDnssecStatusRequest
 //
@@ -10899,7 +11823,7 @@ func (client *Client) SetDomainDnssecStatusWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Specifies the status of an Alibaba Cloud DNS (DNS) record based on the specified parameters.
+// Sets the status of a DNS record.
 //
 // @param request - SetDomainRecordStatusRequest
 //
@@ -10955,7 +11879,7 @@ func (client *Client) SetDomainRecordStatusWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Modifies a policy for switchover between address pool sets.
+// Modifies the address pool switchover policy based on the request parameters.
 //
 // @param request - SetGtmAccessModeRequest
 //
@@ -11007,7 +11931,7 @@ func (client *Client) SetGtmAccessModeWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// You can call this operation to enable health check for an address pool of a Global Traffic Manager (GTM) instance.
+// Sets the health check status of an address pool.
 //
 // @param request - SetGtmMonitorStatusRequest
 //
@@ -11059,7 +11983,63 @@ func (client *Client) SetGtmMonitorStatusWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 提交缓存刷新任务
+// Submits Agent registration information.
+//
+// @param request - SubmitAtiAgentRegisterInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitAtiAgentRegisterInfoResponse
+func (client *Client) SubmitAtiAgentRegisterInfoWithContext(ctx context.Context, request *SubmitAtiAgentRegisterInfoRequest, runtime *dara.RuntimeOptions) (_result *SubmitAtiAgentRegisterInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentRegisterInfoId) {
+		query["AgentRegisterInfoId"] = request.AgentRegisterInfoId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.IdentityCsr) {
+		query["IdentityCsr"] = request.IdentityCsr
+	}
+
+	if !dara.IsNil(request.ServerCertPem) {
+		query["ServerCertPem"] = request.ServerCertPem
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitAtiAgentRegisterInfo"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitAtiAgentRegisterInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits a cache refresh task.
 //
 // @param request - SubmitIspFlushCacheTaskRequest
 //
@@ -11115,7 +12095,7 @@ func (client *Client) SubmitIspFlushCacheTaskWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Changes the access policy type for a GTM instance.
+// Switches the access strategy mode of an instance.
 //
 // @param request - SwitchDnsGtmInstanceStrategyModeRequest
 //
@@ -11167,7 +12147,7 @@ func (client *Client) SwitchDnsGtmInstanceStrategyModeWithContext(ctx context.Co
 
 // Summary:
 //
-// Adds and modifies a tag for a resource.
+// Adds or modifies tags for resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -11223,7 +12203,7 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// Transfers multiple domain names from the current account to another account at a time.
+// Batch transfers DNS permissions for multiple domain names to a specified execution account.
 //
 // @param request - TransferDomainRequest
 //
@@ -11279,13 +12259,13 @@ func (client *Client) TransferDomainWithContext(ctx context.Context, request *Tr
 
 // Summary:
 //
-// Unbinds one or more domain names from a paid Alibaba Cloud DNS instance based on the instance ID.
+// Detaches domain names from a paid Alibaba Cloud DNS instance.
 //
 // Description:
 //
-// A paid Alibaba Cloud DNS instance whose ID starts with dns is an instance of the new version. You can call an API operation to bind multiple domain names to the instance. If the upper limit is exceeded, an error message is returned.\\
+// An instance with an ID that starts with \\`dns-\\` is a new version instance. New version instances support attaching multiple domain names. You can call an API operation to attach domain names directly to an instance. An error is returned if the number of domain names exceeds the instance limit.
 //
-// A paid Alibaba Cloud DNS instance whose ID does not start with dns is an instance of the old version. You can call an API operation to bind only one domain name to the instance. However, if the instance that you want to bind to the desired domain name is already bound to a domain name, you can call this operation to unbind the original domain name from the instance and then bind the desired domain name to the instance.
+// An instance with an ID that does not start with \\`dns-\\` is a legacy instance. Legacy instances support only one domain name. Therefore, if you call this operation for an instance that already has a domain name attached, the domain name is replaced.
 //
 // @param request - UnbindInstanceDomainsRequest
 //
@@ -11397,7 +12377,7 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 
 // Summary:
 //
-// 修改 AppKey 状态
+// # Modify AppKey State
 //
 // @param request - UpdateAppKeyStateRequest
 //
@@ -11449,7 +12429,225 @@ func (client *Client) UpdateAppKeyStateWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Modifies the condition for determining the health status of a specified address.
+// Updates the registration information of an Agent.
+//
+// @param tmpReq - UpdateAtiAgentRegisterInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAtiAgentRegisterInfoResponse
+func (client *Client) UpdateAtiAgentRegisterInfoWithContext(ctx context.Context, tmpReq *UpdateAtiAgentRegisterInfoRequest, runtime *dara.RuntimeOptions) (_result *UpdateAtiAgentRegisterInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateAtiAgentRegisterInfoShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Endpoints) {
+		request.EndpointsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Endpoints, dara.String("Endpoints"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentDescription) {
+		query["AgentDescription"] = request.AgentDescription
+	}
+
+	if !dara.IsNil(request.AgentDisplayName) {
+		query["AgentDisplayName"] = request.AgentDisplayName
+	}
+
+	if !dara.IsNil(request.AgentHost) {
+		query["AgentHost"] = request.AgentHost
+	}
+
+	if !dara.IsNil(request.AgentRegisterInfoId) {
+		query["AgentRegisterInfoId"] = request.AgentRegisterInfoId
+	}
+
+	if !dara.IsNil(request.AgentVersion) {
+		query["AgentVersion"] = request.AgentVersion
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.EndpointsShrink) {
+		query["Endpoints"] = request.EndpointsShrink
+	}
+
+	if !dara.IsNil(request.RegistrantId) {
+		query["RegistrantId"] = request.RegistrantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAtiAgentRegisterInfo"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAtiAgentRegisterInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新告警设置
+//
+// @param request - UpdateAtiAlertSettingsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAtiAlertSettingsResponse
+func (client *Client) UpdateAtiAlertSettingsWithContext(ctx context.Context, request *UpdateAtiAlertSettingsRequest, runtime *dara.RuntimeOptions) (_result *UpdateAtiAlertSettingsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AlertConfig) {
+		query["AlertConfig"] = request.AlertConfig
+	}
+
+	if !dara.IsNil(request.AlertGroup) {
+		query["AlertGroup"] = request.AlertGroup
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAtiAlertSettings"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAtiAlertSettingsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies a registrant profile.
+//
+// @param request - UpdateAtiRegistrantRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAtiRegistrantResponse
+func (client *Client) UpdateAtiRegistrantWithContext(ctx context.Context, request *UpdateAtiRegistrantRequest, runtime *dara.RuntimeOptions) (_result *UpdateAtiRegistrantResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Cc) {
+		query["Cc"] = request.Cc
+	}
+
+	if !dara.IsNil(request.City) {
+		query["City"] = request.City
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DocumentCode) {
+		query["DocumentCode"] = request.DocumentCode
+	}
+
+	if !dara.IsNil(request.DocumentImage) {
+		query["DocumentImage"] = request.DocumentImage
+	}
+
+	if !dara.IsNil(request.DocumentType) {
+		query["DocumentType"] = request.DocumentType
+	}
+
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Phone) {
+		query["Phone"] = request.Phone
+	}
+
+	if !dara.IsNil(request.RegistrantId) {
+		query["RegistrantId"] = request.RegistrantId
+	}
+
+	if !dara.IsNil(request.State) {
+		query["State"] = request.State
+	}
+
+	if !dara.IsNil(request.Street) {
+		query["Street"] = request.Street
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAtiRegistrant"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAtiRegistrantResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the basic configuration of a specified address, such as the address name, type, and value.
 //
 // @param tmpReq - UpdateCloudGtmAddressRequest
 //
@@ -11527,13 +12725,13 @@ func (client *Client) UpdateCloudGtmAddressWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// Modifies the enabling status of an address.
+// Updates the enabled status of an address.
 //
 // Description:
 //
-//	  If an address is **enabled*	- and the health status of the address is **Normal**, the availability status of the address is **Available**.
+// - The service status of an address is **active*	- if the address is **enabled*	- and its health check status is **Normal**.
 //
-//		- If an address is **disabled*	- or the health status of the address is **Abnormal**, the availability status of the address is **Unavailable**.
+// - The service status of an address is **unavailable*	- if the address is **disabled*	- or its health check status is **abnormal**.
 //
 // @param request - UpdateCloudGtmAddressEnableStatusRequest
 //
@@ -11589,7 +12787,7 @@ func (client *Client) UpdateCloudGtmAddressEnableStatusWithContext(ctx context.C
 
 // Summary:
 //
-// Modifies the failover mode that is used when address exceptions are identified.
+// Updates the failover method for an address based on the specified parameters.
 //
 // @param request - UpdateCloudGtmAddressManualAvailableStatusRequest
 //
@@ -11649,7 +12847,7 @@ func (client *Client) UpdateCloudGtmAddressManualAvailableStatusWithContext(ctx 
 
 // Summary:
 //
-// Modifies the basic configurations of an address pool.
+// Modifies the basic configuration of an address pool.
 //
 // @param request - UpdateCloudGtmAddressPoolBasicConfigRequest
 //
@@ -11709,13 +12907,13 @@ func (client *Client) UpdateCloudGtmAddressPoolBasicConfigWithContext(ctx contex
 
 // Summary:
 //
-// Modifies the enabling status of an address pool.
+// Updates the enabled status of an address pool.
 //
 // Description:
 //
-//	  If an address pool is **enabled*	- and the health status of the address pool is **Normal**, the availability status of the address pool is **Available**.
+// - An address pool is considered **active*	- if it is **enabled*	- and its health check status is **Normal**.
 //
-//		- If an address pool is **disabled*	- or the health status of the address pool is **Abnormal**, the availability status of the address pool is **unavailable**.
+// - An address pool is considered **unavailable*	- if it is **disabled*	- or its health check status is **abnormal**.
 //
 // @param request - UpdateCloudGtmAddressPoolEnableStatusRequest
 //
@@ -11771,7 +12969,7 @@ func (client *Client) UpdateCloudGtmAddressPoolEnableStatusWithContext(ctx conte
 
 // Summary:
 //
-// Modifies the load balancing policy of an address pool.
+// Updates the load balancing policy of an address pool.
 //
 // @param request - UpdateCloudGtmAddressPoolLbStrategyRequest
 //
@@ -11831,7 +13029,7 @@ func (client *Client) UpdateCloudGtmAddressPoolLbStrategyWithContext(ctx context
 
 // Summary:
 //
-// Modifies the remarks of an address pool.
+// Updates the remarks of an address pool.
 //
 // @param request - UpdateCloudGtmAddressPoolRemarkRequest
 //
@@ -11887,7 +13085,7 @@ func (client *Client) UpdateCloudGtmAddressPoolRemarkWithContext(ctx context.Con
 
 // Summary:
 //
-// Modifies the remarks of an address.
+// Updates the remarks for an address in Global Traffic Manager (GTM) 3.0.
 //
 // @param request - UpdateCloudGtmAddressRemarkRequest
 //
@@ -12083,7 +13281,7 @@ func (client *Client) UpdateCloudGtmInstanceConfigAlertWithContext(ctx context.C
 
 // Summary:
 //
-// Updates the global time-to-live (TTL) configuration of a GTM 3.0 instance.
+// Updates the global TTL configuration of a Global Traffic Manager (GTM) 3.0 instance based on the specified parameters.
 //
 // @param request - UpdateCloudGtmInstanceConfigBasicRequest
 //
@@ -12151,13 +13349,13 @@ func (client *Client) UpdateCloudGtmInstanceConfigBasicWithContext(ctx context.C
 
 // Summary:
 //
-// Updates the enabling status of an access domain name based on the specified parameters.
+// Updates the enablement status of an instance configuration based on the input parameters.
 //
 // Description:
 //
-//	  If an access domain name is **enabled*	- and the health state is **normal**, the access domain name is deemed **available**.
+// - If a domain name is **enabled*	- and its health status is **Normal**, the service associated with the access domain name is **active**.
 //
-//		- If an access domain name is **disabled*	- or the health state is **abnormal**, the access domain name is deemed **unavailable**.
+// - If a domain name is **disabled*	- or its health status is **abnormal**, the service associated with the access domain name is **unavailable**.
 //
 // @param request - UpdateCloudGtmInstanceConfigEnableStatusRequest
 //
@@ -12217,7 +13415,7 @@ func (client *Client) UpdateCloudGtmInstanceConfigEnableStatusWithContext(ctx co
 
 // Summary:
 //
-// Updates the load balancing policy of a GTM instance.
+// Updates the load balancing policy for an instance configuration.
 //
 // @param request - UpdateCloudGtmInstanceConfigLbStrategyRequest
 //
@@ -12281,7 +13479,7 @@ func (client *Client) UpdateCloudGtmInstanceConfigLbStrategyWithContext(ctx cont
 
 // Summary:
 //
-// Updates the description of a GTM instance based on the specified parameters.
+// Updates the remarks for an instance configuration.
 //
 // @param request - UpdateCloudGtmInstanceConfigRemarkRequest
 //
@@ -12393,7 +13591,7 @@ func (client *Client) UpdateCloudGtmInstanceNameWithContext(ctx context.Context,
 
 // Summary:
 //
-// Modifies the information about a health check template based on specified parameters.
+// Updates the configuration of a health check template.
 //
 // @param tmpReq - UpdateCloudGtmMonitorTemplateRequest
 //
@@ -12531,13 +13729,13 @@ func (client *Client) UpdateCloudGtmMonitorTemplateRemarkWithContext(ctx context
 
 // Summary:
 //
-// Modifies a custom line with its unique ID.
+// Updates a custom line specified by its unique ID.
 //
 // Description:
 //
-// In each CIDR block, the end IP address must be greater than or equal to the start IP address.\\
+// For each IP range, the value of EndIp must be greater than or equal to the value of StartIp.
 //
-// The CIDR blocks that are specified for all custom lines of a domain name cannot be overlapped.
+// The IP ranges of IP ranges cannot overlap across all custom lines for a domain name.
 //
 // @param request - UpdateCustomLineRequest
 //
@@ -12593,7 +13791,7 @@ func (client *Client) UpdateCustomLineWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Modifies the weight of a Domain Name System (DNS) record based on the specified parameters.
+// Modifies the weight of a DNS record based on the specified parameters.
 //
 // @param request - UpdateDNSSLBWeightRequest
 //
@@ -12649,7 +13847,7 @@ func (client *Client) UpdateDNSSLBWeightWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Updates the cache-accelerated domain name based on the specified parameters.
+// Updates a DNS authoritative proxy domain.
 //
 // @param request - UpdateDnsCacheDomainRequest
 //
@@ -12721,7 +13919,7 @@ func (client *Client) UpdateDnsCacheDomainWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Updates the remarks for the cache-accelerated domain name of the destination domain name.
+// Updates the remark for a domain name in the DNS cache.
 //
 // @param request - UpdateDnsCacheDomainRemarkRequest
 //
@@ -12773,7 +13971,7 @@ func (client *Client) UpdateDnsCacheDomainRemarkWithContext(ctx context.Context,
 
 // Summary:
 //
-// Modifies an access policy.
+// Updates an existing access policy.
 //
 // @param request - UpdateDnsGtmAccessStrategyRequest
 //
@@ -12881,7 +14079,7 @@ func (client *Client) UpdateDnsGtmAccessStrategyWithContext(ctx context.Context,
 
 // Summary:
 //
-// Modifies an address pool based on the specified parameters.
+// Updates the configuration of an address pool.
 //
 // @param request - UpdateDnsGtmAddressPoolRequest
 //
@@ -12941,7 +14139,7 @@ func (client *Client) UpdateDnsGtmAddressPoolWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Modifies the configurations of a Global Traffic Manager (GTM) instance by instance ID.
+// Updates the configuration of a Global Traffic Manager (GTM) instance.
 //
 // @param request - UpdateDnsGtmInstanceGlobalConfigRequest
 //
@@ -13029,7 +14227,7 @@ func (client *Client) UpdateDnsGtmInstanceGlobalConfigWithContext(ctx context.Co
 
 // Summary:
 //
-// Modifies a health check task.
+// Modifies a health check configuration.
 //
 // @param request - UpdateDnsGtmMonitorRequest
 //
@@ -13101,11 +14299,11 @@ func (client *Client) UpdateDnsGtmMonitorWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Modifies the name of a domain name group based on the specified parameters.
+// Modifies the name of a domain name group.
 //
 // Description:
 //
-// Modifies the name of an existing domain name group.
+// This operation modifies the name of an existing domain name group.
 //
 // @param request - UpdateDomainGroupRequest
 //
@@ -13157,7 +14355,7 @@ func (client *Client) UpdateDomainGroupWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Modifies a Domain Name System (DNS) record based on the specified parameters.
+// Modifies a DNS record based on the specified parameters.
 //
 // @param request - UpdateDomainRecordRequest
 //
@@ -13233,7 +14431,7 @@ func (client *Client) UpdateDomainRecordWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Modifies the description of a Domain Name System (DNS) record based on the specified parameters.
+// Updates the remarks of a DNS record.
 //
 // @param request - UpdateDomainRecordRemarkRequest
 //
@@ -13289,7 +14487,7 @@ func (client *Client) UpdateDomainRecordRemarkWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Modifies the description of a domain name based on the specified parameters.
+// Updates the remarks for a domain name.
 //
 // @param request - UpdateDomainRemarkRequest
 //
@@ -13341,7 +14539,7 @@ func (client *Client) UpdateDomainRemarkWithContext(ctx context.Context, request
 
 // Summary:
 //
-// You can call this operation to modify the access policy of a Global Traffic Manager (GTM) instance.
+// Updates an access policy.
 //
 // @param request - UpdateGtmAccessStrategyRequest
 //
@@ -13405,7 +14603,7 @@ func (client *Client) UpdateGtmAccessStrategyWithContext(ctx context.Context, re
 
 // Summary:
 //
-// You can call this operation to modify an address pool of a Global Traffic Manager (GTM) instance.
+// Modifies an address pool.
 //
 // @param request - UpdateGtmAddressPoolRequest
 //
@@ -13469,7 +14667,7 @@ func (client *Client) UpdateGtmAddressPoolWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Modifies the configurations of a Global Traffic Manager (GTM) instance based on the specified parameters.
+// Updates the global configuration of a Global Traffic Manager (GTM) instance.
 //
 // @param request - UpdateGtmInstanceGlobalConfigRequest
 //
@@ -13545,7 +14743,7 @@ func (client *Client) UpdateGtmInstanceGlobalConfigWithContext(ctx context.Conte
 
 // Summary:
 //
-// Modifies the health check configuration for an address pool of a Global Traffic Manager (GTM) instance.
+// Updates a health check configuration.
 //
 // @param request - UpdateGtmMonitorRequest
 //
@@ -13617,7 +14815,7 @@ func (client *Client) UpdateGtmMonitorWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Modifies a disaster recovery plan.
+// Updates a disaster recovery plan.
 //
 // @param request - UpdateGtmRecoveryPlanRequest
 //
@@ -13677,7 +14875,7 @@ func (client *Client) UpdateGtmRecoveryPlanWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 修改缓存刷新套餐包配置
+// Modifies the configuration of a cache refresh plan.
 //
 // @param request - UpdateIspFlushCacheInstanceConfigRequest
 //
@@ -13729,7 +14927,11 @@ func (client *Client) UpdateIspFlushCacheInstanceConfigWithContext(ctx context.C
 
 // Summary:
 //
-// Modifies HTTPDNS resolution records.
+// Modifies a built-in authoritative record for recursive resolution.
+//
+// Description:
+//
+// If a DNS record is locked, it cannot be deleted.
 //
 // @param request - UpdateRecursionRecordRequest
 //
@@ -13805,7 +15007,7 @@ func (client *Client) UpdateRecursionRecordWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Modifies the status of HTTPDNS authoritative DNS resolution records
+// Updates the enable status of a recursion record.
 //
 // @param request - UpdateRecursionRecordEnableStatusRequest
 //
@@ -13857,7 +15059,7 @@ func (client *Client) UpdateRecursionRecordEnableStatusWithContext(ctx context.C
 
 // Summary:
 //
-// Modifies description of HTTPDNS resolution records.
+// Updates the remarks for a built-in authoritative record in HTTPDNS.
 //
 // @param request - UpdateRecursionRecordRemarkRequest
 //
@@ -13909,7 +15111,7 @@ func (client *Client) UpdateRecursionRecordRemarkWithContext(ctx context.Context
 
 // Summary:
 //
-// Modifies HTTPDNS authoritative DNS resolution record weights.
+// Updates the weight of a DNS record for recursive resolution.
 //
 // @param request - UpdateRecursionRecordWeightRequest
 //
@@ -13961,7 +15163,7 @@ func (client *Client) UpdateRecursionRecordWeightWithContext(ctx context.Context
 
 // Summary:
 //
-// # Modifies the status of weight algorithm of authoritative records
+// Updates the enabled status of the weight algorithm for a DNS record used for recursive resolution.
 //
 // @param request - UpdateRecursionRecordWeightEnableStatusRequest
 //
@@ -14025,7 +15227,7 @@ func (client *Client) UpdateRecursionRecordWeightEnableStatusWithContext(ctx con
 
 // Summary:
 //
-// # Modifies the effective scope of HTTPDNS
+// Updates the effective scope of a built-in authoritative domain name zone in HTTPDNS.
 //
 // @param tmpReq - UpdateRecursionZoneEffectiveScopeRequest
 //
@@ -14083,7 +15285,13 @@ func (client *Client) UpdateRecursionZoneEffectiveScopeWithContext(ctx context.C
 
 // Summary:
 //
-// # Modify the HTTPDNS recursive proxy mode
+// Modifies the recursive proxy mode for a zone.
+//
+// Description:
+//
+// The end IP address of each IP segment must be greater than or equal to the start IP address.
+//
+// The IP address ranges of all IP segments for the domain name cannot overlap across custom lines.
 //
 // @param request - UpdateRecursionZoneProxyPatternRequest
 //
@@ -14135,7 +15343,13 @@ func (client *Client) UpdateRecursionZoneProxyPatternWithContext(ctx context.Con
 
 // Summary:
 //
-// Modifies the description of HTTPDNS authoritative domain names.
+// Modifies the remarks for a built-in authoritative domain name zone used for recursive resolution.
+//
+// Description:
+//
+// The end IP address of each IP segment must be greater than or equal to the start IP address.
+//
+// For a domain name, the IP address ranges of all IP segments in all custom lines cannot overlap.
 //
 // @param request - UpdateRecursionZoneRemarkRequest
 //
@@ -14187,21 +15401,13 @@ func (client *Client) UpdateRecursionZoneRemarkWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 用于更新特定域名的状态信息。
+// Updates the server-side status of a domain name.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 本接口专为注册局用户设计，允许他们更新指定顶级域名（TLD）的各种属性。
-//
-// - 必须提供`RegistryId`和`Tld`参数以标识要修改的具体TLD。
-//
-// - 可选参数包括但不限于宽限期设置、DNS解析缓存时间、价格设定等，这些都可根据需要进行调整。
-//
-// - 环境(`Env`)参数指定了API调用的目标环境，默认值为“DAILY”表示日常测试环境；正式上线前，请确保已正确设置此参数。
-//
-// - 某些时间戳字段如`SunriseStartTimeStamp`要求输入Unix时间戳格式的数据。
+// - This operation updates the server-side status of a domain name.
 //
 // @param request - UpdateRspDomainServerProhibitStatusForGatewayRequest
 //
@@ -14257,21 +15463,11 @@ func (client *Client) UpdateRspDomainServerProhibitStatusForGatewayWithContext(c
 
 // Summary:
 //
-// 用于更新特定域名的状态信息。
+// Updates the server-side status of a domain name.
 //
 // Description:
 //
-// ## 请求说明
-//
-// - 本接口专为注册局用户设计，允许他们更新指定顶级域名（TLD）的各种属性。
-//
-// - 必须提供`RegistryId`和`Tld`参数以标识要修改的具体TLD。
-//
-// - 可选参数包括但不限于宽限期设置、DNS解析缓存时间、价格设定等，这些都可根据需要进行调整。
-//
-// - 环境(`Env`)参数指定了API调用的目标环境，默认值为“DAILY”表示日常测试环境；正式上线前，请确保已正确设置此参数。
-//
-// - 某些时间戳字段如`SunriseStartTimeStamp`要求输入Unix时间戳格式的数据。
+// This operation updates the server-side status of a domain name.
 //
 // @param request - UpdateRspDomainServerProhibitStatusForGatewayOteRequest
 //
@@ -14327,7 +15523,7 @@ func (client *Client) UpdateRspDomainServerProhibitStatusForGatewayOteWithContex
 
 // Summary:
 //
-// 检查实例主机名是否可添加
+// Checks whether an instance hostname can be added.
 //
 // @param request - ValidateDnsGtmCnameRrCanUseRequest
 //
@@ -14391,7 +15587,7 @@ func (client *Client) ValidateDnsGtmCnameRrCanUseWithContext(ctx context.Context
 
 // Summary:
 //
-// 验证公共DNS Udp Ip地址段
+// Validates a UDP IP address segment for Public DNS.
 //
 // @param request - ValidatePdnsUdpIpSegmentRequest
 //
@@ -14433,6 +15629,102 @@ func (client *Client) ValidatePdnsUdpIpSegmentWithContext(ctx context.Context, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &ValidatePdnsUdpIpSegmentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Verifies DNS records.
+//
+// @param request - VerifyAtiAgentDnsRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VerifyAtiAgentDnsRecordsResponse
+func (client *Client) VerifyAtiAgentDnsRecordsWithContext(ctx context.Context, request *VerifyAtiAgentDnsRecordsRequest, runtime *dara.RuntimeOptions) (_result *VerifyAtiAgentDnsRecordsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentRegisterInfoId) {
+		query["AgentRegisterInfoId"] = request.AgentRegisterInfoId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("VerifyAtiAgentDnsRecords"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &VerifyAtiAgentDnsRecordsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 触发 ACME 预检
+//
+// @param request - VerifyAtiAgentRegisterInfoAcmeChallengeRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VerifyAtiAgentRegisterInfoAcmeChallengeRecordResponse
+func (client *Client) VerifyAtiAgentRegisterInfoAcmeChallengeRecordWithContext(ctx context.Context, request *VerifyAtiAgentRegisterInfoAcmeChallengeRecordRequest, runtime *dara.RuntimeOptions) (_result *VerifyAtiAgentRegisterInfoAcmeChallengeRecordResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentRegisterInfoId) {
+		query["AgentRegisterInfoId"] = request.AgentRegisterInfoId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("VerifyAtiAgentRegisterInfoAcmeChallengeRecord"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &VerifyAtiAgentRegisterInfoAcmeChallengeRecordResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

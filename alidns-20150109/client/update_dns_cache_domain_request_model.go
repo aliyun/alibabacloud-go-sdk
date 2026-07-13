@@ -28,51 +28,61 @@ type iUpdateDnsCacheDomainRequest interface {
 }
 
 type UpdateDnsCacheDomainRequest struct {
-	// The maximum TTL period of the cached data retrieved from the origin DNS server. Unit: seconds. Valid values: 30 to 86400.
+	// The maximum TTL for cached data retrieved from the origin server. The value ranges from 30 to 86400.
 	//
 	// example:
 	//
 	// 86400
 	CacheTtlMax *int32 `json:"CacheTtlMax,omitempty" xml:"CacheTtlMax,omitempty"`
-	// The minimum time-to-live (TTL) period of the cached data retrieved from the origin Domain Name System (DNS) server. Unit: seconds. Valid values: 30 to 86400.
+	// The minimum time-to-live (TTL) for cached data retrieved from the origin server. The value ranges from 30 to 86400.
 	//
 	// example:
 	//
 	// 30
 	CacheTtlMin *int32 `json:"CacheTtlMin,omitempty" xml:"CacheTtlMin,omitempty"`
-	// The domain name. You can call the [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtian the domain name.
+	// The domain name.<props="china"> To query the domain name, call [DescribeDomains](https://help.aliyun.com/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c4g.11186623.help-menu-search-29697.d_0).
+	//
+	// <props="intl">To query the domain name, call [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// dns.example.com
+	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The instance ID of the cache-accelerated domain name. You can call the [ListCloudGtmInstances](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-listcloudgtminstances?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the ID.
+	// The ID of the authoritative proxy domain name instance.<props="china"> To query the instance ID, call [ListCloudGtmInstances](https://help.aliyun.com/zh/dns/api-alidns-2015-01-09-listcloudgtminstances?spm=a2c4g.11186623.help-menu-search-29697.d_0).
+	//
+	// <props="intl">To query the instance ID, call [ListCloudGtmInstances](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-listcloudgtminstances?spm=a2c63.p38356.help-menu-search-29697.d_0).
 	//
 	// example:
 	//
-	// dns-sg-l9u2ux1fw01
+	// dns-sg-l*******
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English Default: **zh**
+	// - **en**: English
+	//
+	// **zh**
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The origin DNS servers. A maximum of 10 origin DNS servers are supported.
+	// A list of origin DNS servers. You can add up to 10 servers.
 	SourceDnsServer []*UpdateDnsCacheDomainRequestSourceDnsServer `json:"SourceDnsServer,omitempty" xml:"SourceDnsServer,omitempty" type:"Repeated"`
-	// Specifies whether the origin DNS server supports Extension Mechanisms for DNS (EDNS). Valid values: NOT_SUPPORT and SUPPORT.
+	// Specifies whether the origin server supports Extension Mechanisms for DNS (EDNS).
+	//
+	// SUPPORT: The origin server supports EDNS.
+	//
+	// NOT_SUPPORT: The origin server does not support EDNS.
 	//
 	// example:
 	//
 	// SUPPORT
 	SourceEdns *string `json:"SourceEdns,omitempty" xml:"SourceEdns,omitempty"`
-	// The origin protocol policy. Valid values: TCP and UDP. Default value: UDP.
+	// The origin protocol. Valid values: TCP and UDP. Default value: UDP.
 	//
 	// example:
 	//
@@ -174,11 +184,11 @@ func (s *UpdateDnsCacheDomainRequest) Validate() error {
 }
 
 type UpdateDnsCacheDomainRequestSourceDnsServer struct {
-	// The domain name or IP address of the origin DNS server.
+	// The domain name or IP address of the origin server.
 	//
 	// example:
 	//
-	// 223.5.5.5
+	// 192.168.0.1
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	// The port of the origin DNS server.
 	//

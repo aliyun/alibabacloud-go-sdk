@@ -14,7 +14,7 @@ type iUpdateCustomLineResponseBody interface {
 }
 
 type UpdateCustomLineResponseBody struct {
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//

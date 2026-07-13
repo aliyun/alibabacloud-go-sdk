@@ -14,11 +14,11 @@ type iUpdateDnsGtmInstanceGlobalConfigResponseBody interface {
 }
 
 type UpdateDnsGtmInstanceGlobalConfigResponseBody struct {
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//
-	// 29D0F8F8-5499-4F6C-9FDC-1EE13BF55925
+	// 29D0F8F8-5499-4F6C-9FDC-1EE13BF559**
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

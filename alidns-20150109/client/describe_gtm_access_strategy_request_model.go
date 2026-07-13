@@ -16,13 +16,13 @@ type iDescribeGtmAccessStrategyRequest interface {
 }
 
 type DescribeGtmAccessStrategyRequest struct {
-	// The language used by the user.
+	// The language.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the access policy that you want to query.
+	// The ID of the access policy.
 	//
 	// This parameter is required.
 	//

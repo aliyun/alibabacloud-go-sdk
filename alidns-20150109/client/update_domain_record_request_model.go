@@ -30,59 +30,61 @@ type iUpdateDomainRecordRequest interface {
 }
 
 type UpdateDomainRecordRequest struct {
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The resolution line. Default value: **default**.
+	// The resolution line. The default value is **default**.
 	//
 	// For more information, see
 	//
-	// [DNS resolution lines](https://www.alibabacloud.com/help/zh/doc-detail/29807.htm).
+	// <props="china">[Enumeration of resolution lines](https://help.aliyun.com/document_detail/29807.html).
+	//
+	// <props="intl">[Enumeration of resolution lines](https://www.alibabacloud.com/help/en/doc-detail/29807.htm).
 	//
 	// example:
 	//
 	// default
 	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
-	// The priority of the mail exchanger (MX) record. Valid values: `1 to 50`.
+	// The priority of the MX record. Valid values: `[1, 50]`.
 	//
-	// This parameter is required if the type of the DNS record is MX.
+	// This parameter is required if the record type is MX.
 	//
 	// example:
 	//
 	// 1
 	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The hostname.
+	// The host record.
 	//
-	// For example, if you want to resolve @.example.com, you must set RR to an at sign (@) instead of leaving it empty.
+	// To resolve the root domain, such as example.com, set the host record to the at sign (@).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// www
+	// @
 	RR *string `json:"RR,omitempty" xml:"RR,omitempty"`
-	// The ID of the Domain Name System (DNS) record.
-	//
-	// You can call the [DescribeDomainRecords](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomainrecords?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the ID.
+	// The ID of the DNS record. To obtain the ID, call the [DescribeDomainRecords](https://help.aliyun.com/document_detail/2357159.html) operation.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 9999985
+	// 99*******
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The time to live (TTL) period of the Alibaba Cloud DNS (DNS) record. Default value: 600. Unit: seconds.
+	// The time to live (TTL). The default value is 600 seconds (10 minutes).
 	//
 	// For more information, see
 	//
-	// [TTL definition](https://www.alibabacloud.com/help/zh/doc-detail/29806.htm).
+	// <props="china">[TTL definition](https://help.aliyun.com/document_detail/29806.html).
+	//
+	// <props="intl">[TTL definition](https://www.alibabacloud.com/help/en/doc-detail/29806.htm).
 	//
 	// example:
 	//
@@ -90,7 +92,9 @@ type UpdateDomainRecordRequest struct {
 	TTL *int64 `json:"TTL,omitempty" xml:"TTL,omitempty"`
 	// The type of the DNS record. For more information, see
 	//
-	// [DNS record types](https://www.alibabacloud.com/help/zh/doc-detail/29805.htm).
+	// <props="china">[DNS record types](https://help.aliyun.com/document_detail/29805.html).
+	//
+	// <props="intl">[DNS record types](https://www.alibabacloud.com/help/en/doc-detail/29805.htm).
 	//
 	// This parameter is required.
 	//
@@ -98,19 +102,19 @@ type UpdateDomainRecordRequest struct {
 	//
 	// A
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The IP address of the client.
+	// The client IP address.
 	//
 	// example:
 	//
-	// 192.0.2.0
+	// 192.0.2.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	// The value of the DNS record.
+	// The record value.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 192.0.2.254
+	// 192.0.2.1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

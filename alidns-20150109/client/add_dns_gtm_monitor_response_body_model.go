@@ -20,9 +20,9 @@ type AddDnsGtmMonitorResponseBody struct {
 	//
 	// example:
 	//
-	// MonitorConfigId1
+	// Mon*******
 	MonitorConfigId *string `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
-	// The ID of the request.
+	// The unique ID of the request.
 	//
 	// example:
 	//

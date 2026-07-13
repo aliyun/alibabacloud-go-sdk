@@ -14,7 +14,7 @@ type iUpdateDomainRemarkResponseBody interface {
 }
 
 type UpdateDomainRemarkResponseBody struct {
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//

@@ -16,15 +16,15 @@ type iDescribeGtmInstanceSystemCnameRequest interface {
 }
 
 type DescribeGtmInstanceSystemCnameRequest struct {
-	// The ID of the Global Traffic Manager (GTM) instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// instance1
+	// gtm-cn-wwo3a3hbz**
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language used by the user.
+	// The user language.
 	//
 	// example:
 	//

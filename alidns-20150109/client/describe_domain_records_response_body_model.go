@@ -23,13 +23,13 @@ type iDescribeDomainRecordsResponseBody interface {
 
 type DescribeDomainRecordsResponseBody struct {
 	DomainRecords *DescribeDomainRecordsResponseBodyDomainRecords `json:"DomainRecords,omitempty" xml:"DomainRecords,omitempty" type:"Struct"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of DNS records returned in this query.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeDomainRecordsResponseBody struct {
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of DNS records.
 	//
 	// example:
 	//

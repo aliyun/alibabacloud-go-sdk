@@ -14,7 +14,7 @@ type iDescribeDnsGtmMonitorAvailableConfigRequest interface {
 }
 
 type DescribeDnsGtmMonitorAvailableConfigRequest struct {
-	// The language of the values of specific response parameters. Default value: en. Valid values: en, zh, and ja.
+	// The language of the response. The default value is en. Valid values: en, zh, and ja.
 	//
 	// example:
 	//

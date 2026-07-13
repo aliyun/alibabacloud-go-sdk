@@ -18,19 +18,19 @@ type iUnbindInstanceDomainsResponseBody interface {
 }
 
 type UnbindInstanceDomainsResponseBody struct {
-	// The number of domain names that failed to be unbound from the instance.
+	// The number of domain names that failed to be detached.
 	//
 	// example:
 	//
 	// 0
 	FailedCount *int32 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//
 	// 123
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of domain names that are unbound from the instance.
+	// The number of domain names that were successfully detached.
 	//
 	// example:
 	//

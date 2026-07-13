@@ -56,13 +56,13 @@ type DescribeDomainDnssecInfoResponseBody struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The delegation signer (DS) record. This parameter is returned if DNSSEC is enabled.
+	// The Delegation Signer (DS) record. This parameter is returned if DNSSEC is enabled.
 	//
 	// example:
 	//
-	// example.com. 3600 IN DS 2371 13 2 C1A0424B97A049F1F9B2EA139CC298533219668164E343BD21203ABC4608C02A
+	// example.com. 3600 IN DS 2371 13 2 C1A0424B97A049F1F9B2EA139CC29853321966816***************
 	DsRecord *string `json:"DsRecord,omitempty" xml:"DsRecord,omitempty"`
-	// The flag. This parameter is returned if DNSSEC is enabled.
+	// The flags. This parameter is returned if DNSSEC is enabled.
 	//
 	// example:
 	//
@@ -78,19 +78,19 @@ type DescribeDomainDnssecInfoResponseBody struct {
 	//
 	// example:
 	//
-	// mdsswUyr3DPW132mOi8V9xESWE8jTo0dxCjjnopKl+GqJxpVXckHAeF+KkxLbxILfDLUT0rAK9iUzy1L53eKGQ==
+	// mdsswUyr3DPW132m******************
 	PublicKey *string `json:"PublicKey,omitempty" xml:"PublicKey,omitempty"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The state of the DNSSEC. Valid values:
+	// The status of DNSSEC. Valid values:
 	//
-	// 	- ON
+	// - ON: Enabled
 	//
-	// 	- OFF
+	// - OFF: Disabled
 	//
 	// example:
 	//

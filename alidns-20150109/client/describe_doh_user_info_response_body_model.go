@@ -20,13 +20,13 @@ type iDescribeDohUserInfoResponseBody interface {
 }
 
 type DescribeDohUserInfoResponseBody struct {
-	// The number of accessed domains.
+	// The number of added domain names.
 	//
 	// example:
 	//
-	// 123
+	// 2
 	DomainCount *int32 `json:"DomainCount,omitempty" xml:"DomainCount,omitempty"`
-	// The ID of the Alibaba Cloud public DNS user.
+	// The ID of the Public DNS user.
 	//
 	// example:
 	//
@@ -38,11 +38,11 @@ type DescribeDohUserInfoResponseBody struct {
 	//
 	// 0F32959D-417B-4D66-8463-68606605E3E2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of accessed subdomains.
+	// The number of added subdomains.
 	//
 	// example:
 	//
-	// 123
+	// 5
 	SubDomainCount *int32 `json:"SubDomainCount,omitempty" xml:"SubDomainCount,omitempty"`
 }
 

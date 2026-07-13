@@ -20,25 +20,31 @@ type iDescribeGtmRecoveryPlansRequest interface {
 }
 
 type DescribeGtmRecoveryPlansRequest struct {
-	// The keyword for the query. Fuzzy match is supported by disaster recovery plan name.
+	// The keyword for the query. This parameter supports a fuzzy search by disaster recovery plan name.
 	//
 	// example:
 	//
 	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages.
+	// The language of the response. Valid values are `en` for English and `zh` for Chinese. The default value is `zh`.
+	//
+	// en: English.
+	//
+	// en: English
+	//
+	// Default value: zh.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The page number to return. The page number starts from **1**. Default value: **1**.
+	// The number of the page to return. Pages start from **1**. The default value is **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return per page. Maximum value: **100**. Default value: **20**.
+	// The number of entries to return on each page. The maximum value is **100**. The default value is **20**.
 	//
 	// example:
 	//

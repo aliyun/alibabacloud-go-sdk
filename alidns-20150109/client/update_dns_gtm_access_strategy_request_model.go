@@ -46,63 +46,63 @@ type iUpdateDnsGtmAccessStrategyRequest interface {
 }
 
 type UpdateDnsGtmAccessStrategyRequest struct {
-	// The primary/secondary switchover policy for address pool sets. Valid values:
+	// The switchover policy for the address pool collection:
 	//
-	// 	- AUTO: performs automatic switchover between the primary and secondary address pool sets upon failures.
+	// - AUTO: Automatic switchover
 	//
-	// 	- DEFAULT: the primary address pool set
+	// - DEFAULT: Primary address pool collection
 	//
-	// 	- FAILOVER: the secondary address pool set
+	// - FAILOVER: Failover address pool collection
 	//
 	// example:
 	//
 	// DEFAULT
 	AccessMode *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
-	// The address pools in the primary address pool set.
+	// The primary address pool collection.
 	//
 	// This parameter is required.
 	DefaultAddrPool []*UpdateDnsGtmAccessStrategyRequestDefaultAddrPool `json:"DefaultAddrPool,omitempty" xml:"DefaultAddrPool,omitempty" type:"Repeated"`
-	// The type of the primary address pool. Valid values:
+	// The type of the primary address pool:
 	//
-	// 	- IPV4
+	// - IPV4
 	//
-	// 	- IPV6
+	// - IPV6
 	//
-	// 	- DOMAIN
+	// - DOMAIN
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ipv4
+	// IPV4
 	DefaultAddrPoolType *string `json:"DefaultAddrPoolType,omitempty" xml:"DefaultAddrPoolType,omitempty"`
-	// Specifies whether to enable Domain Name System (DNS) resolution with optimal latency for the primary address pool set. Valid values:
+	// Specifies whether to enable latency-based scheduling for the primary address pool collection:
 	//
-	// 	- OPEN
+	// - OPEN: Enabled
 	//
-	// 	- CLOSE
+	// - CLOSE: Disabled
 	//
 	// example:
 	//
-	// open
+	// OPEN
 	DefaultLatencyOptimization *string `json:"DefaultLatencyOptimization,omitempty" xml:"DefaultLatencyOptimization,omitempty"`
-	// The load balancing policy of the primary address pool set. Valid values:
+	// The load balancing policy for the primary address pool collection:
 	//
-	// 	- ALL_RR: returns all addresses.
+	// - ALL_RR: Returns all addresses.
 	//
-	// 	- RATIO: returns addresses by weight.
+	// - RATIO: Returns addresses by weight.
 	//
 	// example:
 	//
-	// all_rr
+	// ALL_RR
 	DefaultLbaStrategy *string `json:"DefaultLbaStrategy,omitempty" xml:"DefaultLbaStrategy,omitempty"`
-	// The maximum number of addresses returned from the primary address pool set.
+	// The maximum number of addresses returned from the primary address pool collection.
 	//
 	// example:
 	//
 	// 1
 	DefaultMaxReturnAddrNum *int32 `json:"DefaultMaxReturnAddrNum,omitempty" xml:"DefaultMaxReturnAddrNum,omitempty"`
-	// The minimum number of available addresses in the primary address pool set.
+	// The minimum number of available addresses in the primary address pool collection.
 	//
 	// This parameter is required.
 	//
@@ -110,79 +110,79 @@ type UpdateDnsGtmAccessStrategyRequest struct {
 	//
 	// 1
 	DefaultMinAvailableAddrNum *int32 `json:"DefaultMinAvailableAddrNum,omitempty" xml:"DefaultMinAvailableAddrNum,omitempty"`
-	// The address pools in the secondary address pool set. If no address pool exists in the secondary address pool set, set this parameter to EMPTY.
+	// The failover address pool collection. If no failover address pool collection is configured, enter "EMPTY".
 	FailoverAddrPool []*UpdateDnsGtmAccessStrategyRequestFailoverAddrPool `json:"FailoverAddrPool,omitempty" xml:"FailoverAddrPool,omitempty" type:"Repeated"`
-	// The type of the secondary address pool. Valid values:
+	// The type of the failover address pool:
 	//
-	// 	- IPV4
+	// - IPV4
 	//
-	// 	- IPV6
+	// - IPV6
 	//
-	// 	- DOMAIN
+	// - DOMAIN
 	//
 	// example:
 	//
-	// ipv4
+	// IPV4
 	FailoverAddrPoolType *string `json:"FailoverAddrPoolType,omitempty" xml:"FailoverAddrPoolType,omitempty"`
-	// Specifies whether to enable DNS resolution with optimal latency for the secondary address pool set. Valid values:
+	// Specifies whether to enable latency-based scheduling for the failover address pool collection:
 	//
-	// 	- OPEN
+	// - OPEN: Enabled
 	//
-	// 	- CLOSE
+	// - CLOSE: Disabled
 	//
 	// example:
 	//
-	// open
+	// OPEN
 	FailoverLatencyOptimization *string `json:"FailoverLatencyOptimization,omitempty" xml:"FailoverLatencyOptimization,omitempty"`
-	// The load balancing policy of the secondary address pool set. Valid values:
+	// The load balancing policy for the failover address pool collection:
 	//
-	// 	- ALL_RR: returns all addresses.
+	// - ALL_RR: Returns all addresses.
 	//
-	// 	- RATIO: returns addresses by weight.
+	// - RATIO: Returns addresses by weight.
 	//
 	// example:
 	//
-	// all_rr
+	// ALL_RR
 	FailoverLbaStrategy *string `json:"FailoverLbaStrategy,omitempty" xml:"FailoverLbaStrategy,omitempty"`
-	// The maximum number of addresses returned from the secondary address pool set.
+	// The maximum number of addresses returned from the failover address pool collection.
 	//
 	// example:
 	//
 	// 1
 	FailoverMaxReturnAddrNum *int32 `json:"FailoverMaxReturnAddrNum,omitempty" xml:"FailoverMaxReturnAddrNum,omitempty"`
-	// The minimum number of available addresses in the secondary address pool set.
+	// The minimum number of available addresses in the failover address pool collection.
 	//
 	// example:
 	//
 	// 1
 	FailoverMinAvailableAddrNum *int32 `json:"FailoverMinAvailableAddrNum,omitempty" xml:"FailoverMinAvailableAddrNum,omitempty"`
-	// The language of the values for specific response parameters. Default value: en. Valid values: en, zh, and ja.
+	// The language of the response. Default value: en. Valid values: en, zh, and ja.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The line codes of the source regions. Example: `["default", "drpeng"]`, which indicates the global line and Dr. Peng Group line.
+	// The line codes of the access regions. For example, `["default", "drpeng"]` specifies the global line and the Dr. Peng line.
 	//
 	// example:
 	//
 	// ["default", "drpeng"]
 	Lines *string `json:"Lines,omitempty" xml:"Lines,omitempty"`
-	// The ID of the access policy.
+	// The ID of the policy. To obtain the policy ID, call [DescribeDnsGtmAccessStrategies](https://help.aliyun.com/document_detail/2357191.html).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// StrategyId1
+	// hrb**
 	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-	// The name of the access policy.
+	// The name of the policy.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// StrategyName1
+	// test
 	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
 }
 
@@ -370,13 +370,13 @@ func (s *UpdateDnsGtmAccessStrategyRequest) Validate() error {
 }
 
 type UpdateDnsGtmAccessStrategyRequestDefaultAddrPool struct {
-	// The ID of the address pool in the primary address pool set.
+	// The ID of the address pool in the primary address pool collection.
 	//
 	// example:
 	//
-	// pool1
+	// po***
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The weight of the address pool in the primary address pool set.
+	// The weight of the address pool in the primary address pool collection.
 	//
 	// example:
 	//
@@ -415,13 +415,13 @@ func (s *UpdateDnsGtmAccessStrategyRequestDefaultAddrPool) Validate() error {
 }
 
 type UpdateDnsGtmAccessStrategyRequestFailoverAddrPool struct {
-	// The ID of the address pool in the secondary address pool set.
+	// The ID of the address pool in the failover address pool collection.
 	//
 	// example:
 	//
-	// pool1
+	// po**
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The weight of the address pool in the secondary address pool set.
+	// The weight of the address pool in the failover address pool collection.
 	//
 	// example:
 	//

@@ -22,15 +22,15 @@ type AddDomainBackupResponseBody struct {
 	//
 	// example:
 	//
-	// test.aliyun.com
+	// dns-example.top
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The backup cycle.
 	//
 	// example:
 	//
-	// DAY
+	// HOUR
 	PeriodType *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//

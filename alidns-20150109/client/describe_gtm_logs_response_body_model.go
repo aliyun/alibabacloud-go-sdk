@@ -43,7 +43,7 @@ type DescribeGtmLogsResponseBody struct {
 	//
 	// 50C60A29-2E93-425A-ABA8-068686E28873
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned on all pages.
+	// The total number of entries returned.
 	//
 	// example:
 	//

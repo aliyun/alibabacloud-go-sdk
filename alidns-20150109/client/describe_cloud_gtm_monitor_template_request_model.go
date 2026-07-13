@@ -18,21 +18,21 @@ type iDescribeCloudGtmMonitorTemplateRequest interface {
 type DescribeCloudGtmMonitorTemplateRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- **zh-CN**: Chinese
+	// - **zh-CN**: Chinese.
 	//
-	// 	- **en-US*	- (default): English
+	// - **en-US*	- (default): English.
 	//
 	// example:
 	//
-	// en-US
+	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The ID of the health check template that you want to query. This ID uniquely identifies the health check template.
+	// The unique ID of the health check template.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// mtp-89518052425100**80
+	// mtp-89518052425100****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 

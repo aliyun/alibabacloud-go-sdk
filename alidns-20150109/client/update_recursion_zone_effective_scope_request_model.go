@@ -18,11 +18,16 @@ type iUpdateRecursionZoneEffectiveScopeRequest interface {
 }
 
 type UpdateRecursionZoneEffectiveScopeRequest struct {
+	// A client-generated token to ensure request idempotence. The token must be unique for each request. It can contain a maximum of 64 ASCII characters.
+	//
 	// example:
 	//
 	// 21079fa016944979537637959d09bc
-	ClientToken     *string                                                    `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// A list of effective scopes.
 	EffectiveScopes []*UpdateRecursionZoneEffectiveScopeRequestEffectiveScopes `json:"EffectiveScopes,omitempty" xml:"EffectiveScopes,omitempty" type:"Repeated"`
+	// The unique ID of the zone.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -80,11 +85,14 @@ func (s *UpdateRecursionZoneEffectiveScopeRequest) Validate() error {
 }
 
 type UpdateRecursionZoneEffectiveScopeRequestEffectiveScopes struct {
+	// The type of the effective scope. Valid value: *account*.
+	//
 	// example:
 	//
 	// account
-	EffectiveType *string   `json:"EffectiveType,omitempty" xml:"EffectiveType,omitempty"`
-	Scope         []*string `json:"Scope,omitempty" xml:"Scope,omitempty" type:"Repeated"`
+	EffectiveType *string `json:"EffectiveType,omitempty" xml:"EffectiveType,omitempty"`
+	// The values for the scope, which depend on the value of `EffectiveType`. If `EffectiveType` is set to `account`, this parameter is a list of account IDs.
+	Scope []*string `json:"Scope,omitempty" xml:"Scope,omitempty" type:"Repeated"`
 }
 
 func (s UpdateRecursionZoneEffectiveScopeRequestEffectiveScopes) String() string {

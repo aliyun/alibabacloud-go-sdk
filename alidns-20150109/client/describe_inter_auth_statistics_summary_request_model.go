@@ -40,57 +40,126 @@ type iDescribeInterAuthStatisticsSummaryRequest interface {
 }
 
 type DescribeInterAuthStatisticsSummaryRequest struct {
+	// The sort direction. Valid values:
+	//
+	// - DESC (default): descending order
+	//
+	// - ASC: ascending order.
+	//
 	// example:
 	//
 	// DESC
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The domain name.
+	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The end time of the query. The value is a UNIX timestamp in milliseconds.
+	//
+	// 	Warning: If the query time range is large and the domain name has an excessive volume of resolution logs, the query may time out or return inaccurate results..
+	//
 	// example:
 	//
 	// 1741526400000
 	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	// Used for the report of subdomain names with sudden increases or decreases in request volume.
+	//
 	// example:
 	//
 	// up
 	//
 	// down
 	GrowType *string `json:"GrowType,omitempty" xml:"GrowType,omitempty"`
+	// The sort parameter. Valid values:
+	//
+	// - createDate: sorts by creation time (default if left empty)
+	//
+	// - expireDate: sorts by expiration time.
+	//
 	// example:
 	//
 	// default
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The page number. The value starts from 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page in a paged query. Maximum value: 100. Default value: 20.
+	//
 	// example:
 	//
 	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The sampling period. Valid values:
+	//
+	// - DAY: day
+	//
+	// - WEEK: week
+	//
+	// - MONTH: month.
+	//
 	// example:
 	//
-	// 300
+	// DAY
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The DNS response code.
+	//
 	// example:
 	//
 	// 0
 	Rcode *string `json:"Rcode,omitempty" xml:"Rcode,omitempty"`
+	// The region of the resolution cluster.
+	//
 	// example:
 	//
 	// ap-southeast-3
 	ServerRegion *string `json:"ServerRegion,omitempty" xml:"ServerRegion,omitempty"`
+	// The route type. Valid values: cloud: cloud route. local: on-premises route.
+	//
 	// example:
 	//
 	// File
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The start time of the query. The value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1516779348000
-	StartTimestamp  *int64  `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
+	StartTimestamp *int64 `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
+	// The type of statistical metric.
+	//
+	// example:
+	//
+	// QTYPE_RATIO
+	//
+	// 枚举值：
+	//
+	// QTYPE_RATIO：DNS请求记录类型占比
+	//
+	// RCODE_DOMAIN：否定应答域名TOP排行
+	//
+	// RCODE_SOURCE_IP：某否定应答域名的请求源地址TOP排行
+	//
+	// REQUEST_ZONE：域名请求量排行（zone级别）
+	//
+	// REQUEST_DOMAIN：子域名请求量排行（domain name级别）
+	//
+	// SOURCE_REGION：请求来源地域分布
+	//
+	// SOURCE_ISP：请求来源运营商（ISP）分布
+	//
+	// SOURCE_IP：请求源IP详情（含地域、运营商、占比）
+	//
+	// LINE_HIT：解析线路命中详情
+	//
+	// LINE_RATIO：解析线路流量占比
 	StatisticalType *string `json:"StatisticalType,omitempty" xml:"StatisticalType,omitempty"`
+	// The zone name.
+	//
 	// example:
 	//
 	// example.com

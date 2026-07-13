@@ -14,6 +14,8 @@ type iMoveGtmResourceGroupResponseBody interface {
 }
 
 type MoveGtmResourceGroupResponseBody struct {
+	// The unique request ID.
+	//
 	// example:
 	//
 	// C6F1D541-E7A6-447A-A2B5-9F7A20B2A8FB

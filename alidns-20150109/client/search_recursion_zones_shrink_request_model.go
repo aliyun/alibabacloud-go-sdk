@@ -30,39 +30,56 @@ type iSearchRecursionZonesShrinkRequest interface {
 }
 
 type SearchRecursionZonesShrinkRequest struct {
+	// The sort order. Valid values: `asc`: ascending. `desc`: descending.
+	//
 	// example:
 	//
 	// asc
-	Direction             *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The list of effective scopes.
 	EffectiveScopesShrink *string `json:"EffectiveScopes,omitempty" xml:"EffectiveScopes,omitempty"`
+	// The maximum number of entries to return. Valid values: **1*	- to **100**. Default value: **20**.
+	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token to retrieve the next page of results.
+	//
 	// example:
 	//
 	// 4698691
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The sort field. Valid values: `UpdateTime`: the update time of the zone. `RecordCount`: the number of DNS records.
+	//
 	// example:
 	//
 	// default
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The page number. Pages start at **1**. Default value: **1**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return per page. Valid values: 1 to 100. Default value: 20.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 5
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The remark for the zone. Fuzzy search is supported.
+	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The name of the zone.
+	//
 	// example:
 	//
 	// cheng.suow.cc

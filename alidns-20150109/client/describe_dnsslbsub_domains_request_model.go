@@ -24,7 +24,7 @@ type iDescribeDNSSLBSubDomainsRequest interface {
 }
 
 type DescribeDNSSLBSubDomainsRequest struct {
-	// The domain name. You can call the [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the domain name.
+	// The domain name. Call the [DescribeDomains](https://www.alibabacloud.com/help/en/dns/api-alidns-2015-01-09-describedomains) operation to obtain the domain name.
 	//
 	// This parameter is required.
 	//
@@ -32,39 +32,39 @@ type DescribeDNSSLBSubDomainsRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The language of the response. Valid values:
+	// The language of the response. Valid values are:
 	//
-	// 	- **zh*	- (default): Chinese
+	// - **zh**: Chinese. This is the default value.
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The page number. Pages start from page **1**. Default value: **1**.
+	// The page number. The value starts from **1**. The default value is **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: **1 to 100**. Default value: **20**.
+	// The number of entries to return on each page. The maximum value is **100**. The default value is **20**.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The hostname.
+	// The host record.
 	//
 	// example:
 	//
 	// test
 	Rr *string `json:"Rr,omitempty" xml:"Rr,omitempty"`
-	// The IP address of the user account.
+	// The IP address of the client.
 	//
 	// example:
 	//
-	// 1.1.1.1
+	// 1.1.XX.XX
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 

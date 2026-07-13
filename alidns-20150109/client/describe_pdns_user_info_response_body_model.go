@@ -16,13 +16,13 @@ type iDescribePdnsUserInfoResponseBody interface {
 }
 
 type DescribePdnsUserInfoResponseBody struct {
-	// The ID of the request.
+	// The unique ID of the request.
 	//
 	// example:
 	//
 	// FD552816-FCC8-4832-B4A2-2DA0C2BA1688
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the user.
+	// The user information.
 	UserInfo *DescribePdnsUserInfoResponseBodyUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
 }
 
@@ -62,29 +62,29 @@ func (s *DescribePdnsUserInfoResponseBody) Validate() error {
 }
 
 type DescribePdnsUserInfoResponseBodyUserInfo struct {
-	// The enabled access security types.
+	// The enabled secure access type. INSECURE indicates non-encrypted access. SECURE indicates encrypted access.
 	//
 	// example:
 	//
 	// SECURE
 	AvailableAccessSecurityType *string `json:"AvailableAccessSecurityType,omitempty" xml:"AvailableAccessSecurityType,omitempty"`
-	// The enabled public recursive DNS service.
+	// The public recursive DNS services that are enabled.
 	//
 	// example:
 	//
 	// HTTP,HTTPS
 	AvailableService *string `json:"AvailableService,omitempty" xml:"AvailableService,omitempty"`
-	// The configuration ID of the users in public recursive DNS.
+	// The ID of the dedicated configuration for public recursive DNS.
 	//
 	// example:
 	//
-	// 10001
+	// 1***1
 	PdnsId *int64 `json:"PdnsId,omitempty" xml:"PdnsId,omitempty"`
-	// The SecretKey configured for a UDP-based CIDR block.
+	// The SecretKey for configuring the UDP access IP address segment.
 	//
 	// example:
 	//
-	// 1c092d715b7a48de
+	// 1c09*******
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
 	// The type of the public recursive DNS service.
 	//
@@ -98,13 +98,13 @@ type DescribePdnsUserInfoResponseBodyUserInfo struct {
 	//
 	// AVAILABLE
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The status of the traffic analysis switch for the user in public recursive DNS service.
+	// The status of the switch for public recursive DNS traffic analysis.
 	//
 	// example:
 	//
 	// CLOSED
 	StatisticSwitchStatus *string `json:"StatisticSwitchStatus,omitempty" xml:"StatisticSwitchStatus,omitempty"`
-	// The disabled public recursive DNS service.
+	// The public recursive DNS services that are shut down.
 	StoppedService *string `json:"StoppedService,omitempty" xml:"StoppedService,omitempty"`
 }
 

@@ -22,19 +22,19 @@ type iDescribeDnsGtmInstancesRequest interface {
 }
 
 type DescribeDnsGtmInstancesRequest struct {
-	// The keyword that you use for the query. Fuzzy search by instance ID or instance name is supported.
+	// The keyword for the query. Fuzzy search by instance ID and instance name is supported.
 	//
 	// example:
 	//
-	// instance1
+	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The language of the values for specific response parameters. Default value: en. Valid values: en, zh, and ja.
+	// The language of the response. Default value: en. Valid values: en, zh, and ja.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The page number. Pages start from page **1**. Default value: **1**.
+	// The number of the page to return. The value starts from **1**. Default value: **1**.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DescribeDnsGtmInstancesRequest struct {
 	//
 	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//

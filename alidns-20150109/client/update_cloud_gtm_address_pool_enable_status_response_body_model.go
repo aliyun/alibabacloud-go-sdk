@@ -18,23 +18,23 @@ type iUpdateCloudGtmAddressPoolEnableStatusResponseBody interface {
 }
 
 type UpdateCloudGtmAddressPoolEnableStatusResponseBody struct {
-	// The ID of the address pool. This ID uniquely identifies the address pool.
+	// The unique ID of the address pool.
 	//
 	// example:
 	//
-	// pool-89528023225442**16
+	// pool-89528023225442****
 	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
-	// Unique request identification code.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// 89184F33-48A1-4401-9C0F-40E45DB091AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the modification operation was successful:
+	// Indicates whether the operation was successful:
 	//
-	// - true: Operation was successful
+	// - true: The operation was successful.
 	//
-	// - false: Operation failed
+	// - false: The operation failed.
 	//
 	// example:
 	//

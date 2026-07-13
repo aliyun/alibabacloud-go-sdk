@@ -20,20 +20,20 @@ type iDescribeCloudGtmAddressPoolReferenceResponseBody interface {
 }
 
 type DescribeCloudGtmAddressPoolReferenceResponseBody struct {
-	// The ID of the address pool. This ID uniquely identifies the address pool.
+	// The unique ID of the address pool.
 	//
 	// example:
 	//
-	// pool-89528023225442**16
+	// pool-89528023225442****
 	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
-	// Address pool name.
+	// The name of the address pool.
 	//
 	// example:
 	//
 	// app
 	AddressPoolName *string                                                          `json:"AddressPoolName,omitempty" xml:"AddressPoolName,omitempty"`
 	InstanceConfigs *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigs `json:"InstanceConfigs,omitempty" xml:"InstanceConfigs,omitempty" type:"Struct"`
-	// Unique request identification code.
+	// The unique ID of the request.
 	//
 	// example:
 	//

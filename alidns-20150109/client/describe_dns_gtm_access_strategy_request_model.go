@@ -16,19 +16,19 @@ type iDescribeDnsGtmAccessStrategyRequest interface {
 }
 
 type DescribeDnsGtmAccessStrategyRequest struct {
-	// The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
+	// The language of some returned parameters. The default value is en. Valid values: en, zh, and ja.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the access policy.
+	// The ID of the access policy. For more information, see [DescribeDnsGtmAccessStrategies](https://help.aliyun.com/document_detail/2357191.html).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// strategyId1
+	// hr****
 	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
 }
 

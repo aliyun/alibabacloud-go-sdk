@@ -18,13 +18,13 @@ type iSetGtmMonitorStatusRequest interface {
 }
 
 type SetGtmMonitorStatusRequest struct {
-	// The language used by the user.
+	// The language.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The health check ID.
+	// The health check configuration ID.
 	//
 	// This parameter is required.
 	//
@@ -32,11 +32,11 @@ type SetGtmMonitorStatusRequest struct {
 	//
 	// abc1234
 	MonitorConfigId *string `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
-	// Specifies whether health check is enabled for the address pool. Valid values:
+	// The enabling status. Valid values:
 	//
-	// 	- **OPEN**: Enabled
+	// - **OPEN**: Enable
 	//
-	// 	- **CLOSE**: Disabled
+	// - **CLOSE**: Disable
 	//
 	// This parameter is required.
 	//

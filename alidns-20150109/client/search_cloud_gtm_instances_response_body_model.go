@@ -25,31 +25,31 @@ type iSearchCloudGtmInstancesResponseBody interface {
 
 type SearchCloudGtmInstancesResponseBody struct {
 	Instances *SearchCloudGtmInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
-	// Current page number, starting at **1**, default is **1**.
+	// The number of the returned page. The value starts from **1**. The default value is **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of rows per page when paginating queries, with a maximum value of 100 and a default of 20.
+	// The number of entries returned per page. The maximum value is 100. The default value is 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Unique request identification code.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// 6856BCF6-11D6-4D7E-AC53-FD579933522B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of instances found from the search.
+	// The total number of instances found.
 	//
 	// example:
 	//
 	// 10
 	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//

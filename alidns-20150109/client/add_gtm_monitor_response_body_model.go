@@ -22,7 +22,7 @@ type AddGtmMonitorResponseBody struct {
 	//
 	// 1234abc
 	MonitorConfigId *string `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

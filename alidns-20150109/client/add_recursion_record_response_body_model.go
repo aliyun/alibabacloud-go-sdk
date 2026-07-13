@@ -18,14 +18,24 @@ type iAddRecursionRecordResponseBody interface {
 }
 
 type AddRecursionRecordResponseBody struct {
+	// The ID of the DNS record.
+	//
 	// example:
 	//
 	// 173671468000010
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 29D0F8F8-5499-4F6C-9FDC-1EE13BF55925
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful:
+	//
+	// - true: The operation was successful.
+	//
+	// - false: The operation failed.
+	//
 	// example:
 	//
 	// true

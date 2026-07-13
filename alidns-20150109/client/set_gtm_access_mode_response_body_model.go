@@ -14,7 +14,7 @@ type iSetGtmAccessModeResponseBody interface {
 }
 
 type SetGtmAccessModeResponseBody struct {
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iSetDomainDnssecStatusRequest interface {
 }
 
 type SetDomainDnssecStatusRequest struct {
-	// The domain name for which you want to enable the DNSSEC. Only the users of the paid editions of Alibaba Cloud DNS can enable this feature.
+	// The domain name for which you want to enable DNSSEC. This feature is available only to users of paid Alibaba Cloud DNS.
 	//
 	// This parameter is required.
 	//
@@ -26,23 +26,23 @@ type SetDomainDnssecStatusRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The language of the response. Valid values:
+	// The language of the return value. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
-	// Default value: en.
+	// Default value: en
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The DNSSEC status. Valid values:
+	// The status of DNSSEC. Valid values:
 	//
-	// 	- ON: enables DNSSEC for the domain name.
+	// - ON: Enables DNSSEC.
 	//
-	// 	- OFF: disables DNSSEC for the domain name.
+	// - OFF: Disables DNSSEC.
 	//
 	// This parameter is required.
 	//

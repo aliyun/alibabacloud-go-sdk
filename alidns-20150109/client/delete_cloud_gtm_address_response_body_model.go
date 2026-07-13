@@ -16,17 +16,17 @@ type iDeleteCloudGtmAddressResponseBody interface {
 }
 
 type DeleteCloudGtmAddressResponseBody struct {
-	// Unique request identification code.
+	// The unique ID of the request.
 	//
 	// example:
 	//
 	// 6856BCF6-11D6-4D7E-AC53-FD579933522B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the address deletion operation was successful:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true: Operation successful
+	// - true: The operation was successful.
 	//
-	// - false: Operation failed
+	// - false: The operation failed.
 	//
 	// example:
 	//

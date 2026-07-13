@@ -28,53 +28,61 @@ type iDescribeDomainLogsRequest interface {
 }
 
 type DescribeDomainLogsRequest struct {
-	// The ID of the domain name group.
+	// The ID of the domain name group. If you do not specify this parameter, all groups are queried.
 	//
 	// example:
 	//
-	// 2223
+	// 2****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The keyword for the query in "%KeyWord%" mode. The keyword is not case-sensitive.
+	// The keyword for the query. A case-insensitive \\`contains\\` search is performed.
 	//
 	// example:
 	//
 	// test
 	KeyWord *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
-	// The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages.
+	// The language of the request and response.
+	//
+	// - **zh**: Chinese
+	//
+	// - **en**: English
+	//
+	// The default value is **zh**.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The page number to return. The page number starts from **1**. Default value: **1**.
+	// The number of the page to return. The value starts from **1**. The default value is **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return per page. Maximum value: **100**. Default value: **20**.
+	// The number of entries to return on each page. The maximum value is **100**. The default value is **20**.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The start time for the query. Format: **YYYY-MM-DD**
+	// The start date. The format is **YYYY-MM-DD**.
 	//
 	// example:
 	//
 	// 2019-07-04
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	// The type of object of which you want to query operation logs. Valid values:
+	// The type of content to query.
 	//
-	// 	- domain: domain name
+	// - domain: domain name
 	//
-	// 	- slavedns: secondary Domain Name System (DNS)
+	// - slavedns: secondary DNS
+	//
+	// If you do not specify this parameter, all types are queried.
 	//
 	// example:
 	//
 	// domain
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The end time for the query. Format: **YYYY-MM-DD**
+	// The end date. The format is **YYYY-MM-DD**.
 	//
 	// example:
 	//

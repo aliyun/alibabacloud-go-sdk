@@ -24,7 +24,7 @@ type iAddGtmAccessStrategyRequest interface {
 }
 
 type AddGtmAccessStrategyRequest struct {
-	// The line codes of access regions.
+	// The source of the DNS requests.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type AddGtmAccessStrategyRequest struct {
 	//
 	// ["default", "drpeng"]
 	AccessLines *string `json:"AccessLines,omitempty" xml:"AccessLines,omitempty"`
-	// The ID of the default address pool.
+	// The ID of the primary address pool collection.
 	//
 	// This parameter is required.
 	//
@@ -40,9 +40,9 @@ type AddGtmAccessStrategyRequest struct {
 	//
 	// hrsix
 	DefaultAddrPoolId *string `json:"DefaultAddrPoolId,omitempty" xml:"DefaultAddrPoolId,omitempty"`
-	// The ID of the failover address pool.
+	// The ID of the failover address pool collection.
 	//
-	// If the failover address pool is not set, pass the **Empty*	- value.
+	// If a failover address pool collection is not configured, set this parameter to **EMPTY**.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type AddGtmAccessStrategyRequest struct {
 	//
 	// hrsyw
 	FailoverAddrPoolId *string `json:"FailoverAddrPoolId,omitempty" xml:"FailoverAddrPoolId,omitempty"`
-	// The ID of the GTM instance for which you want to create an access policy.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -58,15 +58,19 @@ type AddGtmAccessStrategyRequest struct {
 	//
 	// instance1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language used by the user.
+	// The language.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The name of the access policy.
+	// The policy name.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 访问策略测试
 	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
 }
 

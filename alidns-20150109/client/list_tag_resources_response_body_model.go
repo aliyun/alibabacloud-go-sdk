@@ -18,19 +18,19 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
-	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	// The token to start the next query. An empty value indicates that there are no more results.
 	//
 	// example:
 	//
 	// 4698691
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//
 	// 61092C8D-6AEB-4310-B74D-C632F89BF4FB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array that consists of the resource and the tags that are added to the resource, including information such as the resource ID, resource type, tag keys, and tag values.
+	// A collection of resources and their tags. It includes information such as the resource ID, resource type, tag key, and tag value.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -83,13 +83,13 @@ func (s *ListTagResourcesResponseBody) Validate() error {
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	// The ID of the resource.
+	// The resource ID.
 	//
 	// example:
 	//
-	// dns-example.com
+	// example.com
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource. Only DOMAIN is returned.
+	// The resource type. The value is DOMAIN.
 	//
 	// example:
 	//

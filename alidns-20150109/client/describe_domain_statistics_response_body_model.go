@@ -16,7 +16,7 @@ type iDescribeDomainStatisticsResponseBody interface {
 }
 
 type DescribeDomainStatisticsResponseBody struct {
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//

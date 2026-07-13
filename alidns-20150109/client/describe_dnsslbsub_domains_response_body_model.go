@@ -22,26 +22,26 @@ type iDescribeDNSSLBSubDomainsResponseBody interface {
 }
 
 type DescribeDNSSLBSubDomainsResponseBody struct {
-	// The page number. Pages start from page **1**. Default value: **1**.
+	// The page number. The value starts from **1**. The default value is **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: **1 to 100**. Default value: **20**.
+	// The number of entries returned per page. The maximum value is **100**. The default value is **20**.
 	//
 	// example:
 	//
 	// 1
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
 	RequestId     *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SlbSubDomains *DescribeDNSSLBSubDomainsResponseBodySlbSubDomains `json:"SlbSubDomains,omitempty" xml:"SlbSubDomains,omitempty" type:"Struct"`
-	// The total number of entries returned.
+	// The total number of subdomains.
 	//
 	// example:
 	//

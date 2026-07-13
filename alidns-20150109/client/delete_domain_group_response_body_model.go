@@ -22,7 +22,7 @@ type DeleteDomainGroupResponseBody struct {
 	//
 	// MyGroup
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The ID of the request.
+	// The unique request ID.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iDescribeGtmInstanceAddressPoolsRequest interface {
 }
 
 type DescribeGtmInstanceAddressPoolsRequest struct {
-	// The ID of the GTM instance that you want to query.
+	// The ID of the GTM instance.
 	//
 	// This parameter is required.
 	//
@@ -28,19 +28,19 @@ type DescribeGtmInstanceAddressPoolsRequest struct {
 	//
 	// gtmtest
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language used by the user.
+	// The language.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of the page to return. Pages start from page **1**. Default value: **1**.
+	// The page number. The value starts from **1**. The default value is **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return per page. Maximum value: **100**. Default value: **20**.
+	// The number of entries to return on each page for a paged query. The maximum value is **100**. The default value is **20**.
 	//
 	// example:
 	//

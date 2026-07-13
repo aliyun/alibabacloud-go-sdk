@@ -18,19 +18,28 @@ type iRemoveRspDomainServerHoldStatusForGatewayOteRequest interface {
 }
 
 type RemoveRspDomainServerHoldStatusForGatewayOteRequest struct {
+	// Idempotency token
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// qwoefasdf
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Domain name
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	StatusMsg  *string `json:"StatusMsg,omitempty" xml:"StatusMsg,omitempty"`
+	// Description of the status change
+	//
+	// example:
+	//
+	// 实名认证通过，解除serverHold状态
+	StatusMsg *string `json:"StatusMsg,omitempty" xml:"StatusMsg,omitempty"`
 }
 
 func (s RemoveRspDomainServerHoldStatusForGatewayOteRequest) String() string {

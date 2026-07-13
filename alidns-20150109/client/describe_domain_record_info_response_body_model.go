@@ -44,23 +44,23 @@ type iDescribeDomainRecordInfoResponseBody interface {
 }
 
 type DescribeDomainRecordInfoResponseBody struct {
-	// The ID of the domain name.
+	// The domain ID.
 	//
 	// example:
 	//
-	// 00efd71a-770e-4255-b54e-6fe5659baffe
+	// 00efd71a-7************
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	// The domain name.
 	//
 	// example:
 	//
-	// dns-example.top
+	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The ID of the domain name group.
 	//
 	// example:
 	//
-	// 2223
+	// 2****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The name of the domain name group.
 	//
@@ -68,25 +68,25 @@ type DescribeDomainRecordInfoResponseBody struct {
 	//
 	// MyGroup
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The DNS resolution line.
+	// The resolution line.
 	//
 	// example:
 	//
 	// default
 	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
-	// The lock state of the DNS record. Valid values: **true and false**.
+	// The lock status of the DNS record. Valid values: true and **false**.
 	//
 	// example:
 	//
 	// true
 	Locked *bool `json:"Locked,omitempty" xml:"Locked,omitempty"`
-	// The priority of the mail exchanger (MX) record.
+	// The priority of the MX record.
 	//
 	// example:
 	//
 	// 5
 	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The Punycode for the domain name. This parameter is returned only for Chinese domain names.
+	// The Punycode for the Chinese domain name.
 	//
 	// example:
 	//
@@ -102,9 +102,9 @@ type DescribeDomainRecordInfoResponseBody struct {
 	//
 	// example:
 	//
-	// 9999985
+	// 9******
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The description of your DNS record.
+	// The remarks for the DNS record.
 	//
 	// example:
 	//
@@ -118,21 +118,21 @@ type DescribeDomainRecordInfoResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status of the DNS record. Valid values:
 	//
-	// Enable: enabled
+	// Enable: The DNS record is enabled.
 	//
-	// Disable: disabled
+	// Disable: The DNS record is paused.
 	//
 	// example:
 	//
 	// Enable
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time for which the DNS record is cached in a local DNS system.
+	// The time to live (TTL). This specifies the duration for which the DNS record is cached on a local DNS server.
 	//
 	// example:
 	//
 	// 600
 	TTL *int64 `json:"TTL,omitempty" xml:"TTL,omitempty"`
-	// The type of the DNS record.
+	// The record type.
 	//
 	// example:
 	//

@@ -24,43 +24,43 @@ type iUpdateCloudGtmAddressManualAvailableStatusRequest interface {
 type UpdateCloudGtmAddressManualAvailableStatusRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh-CN: Chinese
+	// - zh-CN: Chinese
 	//
-	// 	- en-US (default): English
+	// - en-US (Default): English
 	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The ID of the address. This ID uniquely identifies the address.
+	// The unique ID of the address.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// addr-89518218114368**92
+	// addr-89518218114368****
 	AddressId *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
-	// The failover mode that is used when address exceptions are identified. Valid values:
+	// The failover method for the address. Valid values:
 	//
-	// 	- auto: the automatic mode. The system determines whether to return an address based on health check results. If the address fails health checks, the system does not return the address. If the address passes health checks, the system returns the address.
+	// - auto: Automatic. The address status is determined by health check results. If a health check fails, DNS resolution stops. If it succeeds, DNS resolution resumes.
 	//
-	// 	- manual: the manual mode. If an address is in the unavailable state, the address is not returned for DNS requests even if the address passes health checks. If an address is in the available state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+	// - manual: Manual. You control the address status. If set to abnormal, DNS resolution stops and does not resume even if health checks succeed. If set to normal, DNS resolution resumes. If a health check fails, an alert is triggered but resolution does not stop.
 	//
 	// example:
 	//
 	// manual
 	AvailableMode *string `json:"AvailableMode,omitempty" xml:"AvailableMode,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client-generated token that is used to ensure the idempotence of the request. Make sure that the token is unique among different requests. The token can contain a maximum of 64 ASCII characters.
 	//
 	// example:
 	//
-	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	// 1ae05db4-10e7-11ef-b126-00163e24****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The availability state of the address when AvailableMode is set to manual. Valid values:
+	// The availability status of the address. This parameter takes effect only when AvailableMode is set to manual. Valid values:
 	//
-	// 	- available: The address is normal. In this state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+	// - available: Normal. The address is available. If a health check fails, an alert is triggered but DNS resolution continues.
 	//
-	// 	- unavailable: The address is abnormal. In this state, the address is not returned for DNS requests even if the address passes health checks.
+	// - unavailable: Abnormal. DNS resolution for the address is stopped. It does not resume even if health checks succeed.
 	//
 	// example:
 	//

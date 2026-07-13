@@ -36,7 +36,7 @@ type AddGtmMonitorRequest struct {
 	//
 	// xxxx
 	AddrPoolId *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
-	// The number of consecutive failures.
+	// The number of consecutive failed health checks.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type AddGtmMonitorRequest struct {
 	//
 	// 3
 	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
-	// The health check interval. Unit: seconds. Set the value to 60.
+	// The health check interval. Unit: seconds. The value must be 60.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type AddGtmMonitorRequest struct {
 	//
 	// 60
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The nodes for monitoring.
+	// The list of monitoring nodes.
 	//
 	// This parameter is required.
 	IspCityNode []*AddGtmMonitorRequestIspCityNode `json:"IspCityNode,omitempty" xml:"IspCityNode,omitempty" type:"Repeated"`
@@ -62,33 +62,33 @@ type AddGtmMonitorRequest struct {
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The extended information. The required parameters vary based on the health check protocol.
+	// The extended information. You must pass parameters based on the value of ProtocolType:
 	//
-	// HTTP or HTTPS
+	// For HTTP and HTTPS:
 	//
-	// 	- port: the port that you want to check
+	// - port: The health check port.
 	//
-	// 	- failureRate: the failure rate
+	// - failureRate: The failure rate.
 	//
-	// 	- code: the return code. The health check result is deemed abnormal if the returned value is greater than the specified value. Valid values: 400 and 500.
+	// - code: The return code. A response with a status code greater than this value is considered abnormal. Valid values: 400 and 500.
 	//
-	// 	- host: the host settings
+	// - host: The host settings.
 	//
-	// 	- path: the URL path
+	// - path: The URL path.
 	//
-	// PING
+	// For PING:
 	//
-	// 	- packetNum: the number of ping packets
+	// - packetNum: The number of ping packets.
 	//
-	// 	- packetLossRate: the packet loss rate
+	// - packetLossRate: The packet loss rate.
 	//
-	// 	- failureRate: the failure rate
+	// - failureRate: The failure rate.
 	//
-	// TCP
+	// For TCP:
 	//
-	// 	- port: the port that you want to check
+	// - port: The health check port.
 	//
-	// 	- failureRate: the failure rate
+	// - failureRate: The failure rate.
 	//
 	// This parameter is required.
 	//
@@ -96,15 +96,15 @@ type AddGtmMonitorRequest struct {
 	//
 	// {\\"code\\":200,\\"path\\":\\"/index.htm\\",\\"host\\":\\"aliyun.com\\"}
 	MonitorExtendInfo *string `json:"MonitorExtendInfo,omitempty" xml:"MonitorExtendInfo,omitempty"`
-	// The protocol used for the health check. Valid values:
+	// The health check protocol. Valid values:
 	//
-	// 	- HTTP
+	// - HTTP
 	//
-	// 	- HTTPS
+	// - HTTPS
 	//
-	// 	- PING
+	// - PING
 	//
-	// 	- TCP
+	// - TCP
 	//
 	// This parameter is required.
 	//
@@ -112,7 +112,7 @@ type AddGtmMonitorRequest struct {
 	//
 	// HTTP
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	// The health check timeout period. Unit: milliseconds. Valid values: 2000, 3000, 5000, and 10000.
+	// The timeout period. Unit: milliseconds. Valid values: 2000, 3000, 5000, and 10000.
 	//
 	// This parameter is required.
 	//
@@ -218,17 +218,17 @@ func (s *AddGtmMonitorRequest) Validate() error {
 type AddGtmMonitorRequestIspCityNode struct {
 	// The city code.
 	//
-	// Specify the parameter according to the value of CityCode returned by the DescribeGtmMonitorAvailableConfig operation.
+	// For more information about the valid values, see the response of the DescribeGtmMonitorAvailableConfig operation.
 	//
 	// example:
 	//
 	// 503
 	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	// The Internet service provider (ISP) node. Specify the parameter according to the value of IspCode returned by the DescribeGtmMonitorAvailableConfig operation.
+	// For more information about the valid values, see the response of the DescribeGtmMonitorAvailableConfig operation.
 	//
-	// 	- If the return value of GroupType for the DescribeGtmMonitorAvailableConfig operation is BGP or Overseas, IspCode is not required and is set to 465 by default.
+	// - If GroupType is set to Border Gateway Protocol (BGP) or Overseas, you do not need to specify IspCityNode.N.IspCode. The default value is 465.
 	//
-	// 	- If the return value of GroupType for the DescribeGtmMonitorAvailableConfig operation is not BGP or Overseas, IspCode is required. When IspCode is specified, CityCode is required.
+	// - If GroupType is not set to BGP or Overseas, you must specify IspCityNode.N.IspCode. The value of IspCityNode.N.IspCode must be consistent with the value of IspCityNode.N.CityCode.
 	//
 	// example:
 	//

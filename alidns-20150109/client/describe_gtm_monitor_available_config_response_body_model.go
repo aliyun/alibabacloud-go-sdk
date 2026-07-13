@@ -17,7 +17,7 @@ type iDescribeGtmMonitorAvailableConfigResponseBody interface {
 
 type DescribeGtmMonitorAvailableConfigResponseBody struct {
 	IspCityNodes *DescribeGtmMonitorAvailableConfigResponseBodyIspCityNodes `json:"IspCityNodes,omitempty" xml:"IspCityNodes,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The unique ID of the request.
 	//
 	// example:
 	//

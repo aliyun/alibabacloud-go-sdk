@@ -14,7 +14,7 @@ type iUpdateDnsCacheDomainResponseBody interface {
 }
 
 type UpdateDnsCacheDomainResponseBody struct {
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//

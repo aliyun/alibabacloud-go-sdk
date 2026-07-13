@@ -16,10 +16,14 @@ type iUpdateRecursionRecordResponseBody interface {
 }
 
 type UpdateRecursionRecordResponseBody struct {
+	// The ID of the DNS record.
+	//
 	// example:
 	//
 	// 12*****
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 6856BCF6-11D6-4D7E-AC53-FD579933522B

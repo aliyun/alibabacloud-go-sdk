@@ -22,29 +22,29 @@ type iUpdateCloudGtmAddressRemarkRequest interface {
 type UpdateCloudGtmAddressRemarkRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh-CN: Chinese
+	// - zh-CN: Chinese
 	//
-	// 	- en-US (default): English
+	// - en-US (default): English
 	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The ID of the address. This ID uniquely identifies the address.
+	// The unique ID of the address.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// addr-89518218114368**92
+	// addr-89518218114368****
 	AddressId *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client-generated token that ensures the idempotence of the request. The token must be unique across requests and can be up to 64 ASCII characters long.
 	//
 	// example:
 	//
-	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	// 1ae05db4-10e7-11ef-b126-00163e24****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The input parameter serves as the updated note; if an empty value is passed, the note will be deleted.
+	// The new remarks for the address. To delete the remarks, leave this parameter empty.
 	//
 	// example:
 	//

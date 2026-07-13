@@ -24,15 +24,15 @@ type AddDomainBackupRequest struct {
 	//
 	// example:
 	//
-	// test.aliyun.com
+	// dns-example.top
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
-	// Default value: en.
+	// Default value: en
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type AddDomainBackupRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The backup cycle. Valid values:
 	//
-	// 	- DAY: backs up data on a daily basis.
+	// - DAY: Backs up the domain once a day.
 	//
-	// 	- HOUR: backs up data on an hourly basis.
+	// - HOUR: Backs up the domain once an hour.
 	//
 	// This parameter is required.
 	//

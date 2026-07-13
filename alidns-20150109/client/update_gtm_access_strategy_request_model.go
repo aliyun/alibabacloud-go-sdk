@@ -24,31 +24,31 @@ type iUpdateGtmAccessStrategyRequest interface {
 }
 
 type UpdateGtmAccessStrategyRequest struct {
-	// The line codes of access regions.
+	// The source of the DNS requests.
 	//
 	// example:
 	//
 	// ["default", "mobile"]
 	AccessLines *string `json:"AccessLines,omitempty" xml:"AccessLines,omitempty"`
-	// The ID of the default address pool.
+	// The ID of the primary address pool collection.
 	//
 	// example:
 	//
 	// hrsix
 	DefaultAddrPoolId *string `json:"DefaultAddrPoolId,omitempty" xml:"DefaultAddrPoolId,omitempty"`
-	// The ID of the failover address pool.
+	// The ID of the failover address pool collection.
 	//
 	// example:
 	//
 	// hrsyw
 	FailoverAddrPoolId *string `json:"FailoverAddrPoolId,omitempty" xml:"FailoverAddrPoolId,omitempty"`
-	// The language used by the user.
+	// The language.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the access policy that you want to query for the GTM instance.
+	// The ID of the access policy.
 	//
 	// This parameter is required.
 	//
@@ -57,6 +57,10 @@ type UpdateGtmAccessStrategyRequest struct {
 	// hrmxc
 	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
 	// The name of the access policy.
+	//
+	// example:
+	//
+	// 访问策略测试
 	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
 }
 

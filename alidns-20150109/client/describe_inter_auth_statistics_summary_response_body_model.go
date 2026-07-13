@@ -24,11 +24,16 @@ type iDescribeInterAuthStatisticsSummaryResponseBody interface {
 }
 
 type DescribeInterAuthStatisticsSummaryResponseBody struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
-	CurPage  *int32                                                    `json:"CurPage,omitempty" xml:"CurPage,omitempty"`
+	CurPage *int32 `json:"CurPage,omitempty" xml:"CurPage,omitempty"`
+	// The paginated data.
 	PageData []*DescribeInterAuthStatisticsSummaryResponseBodyPageData `json:"PageData,omitempty" xml:"PageData,omitempty" type:"Repeated"`
+	// The number of entries per page in a paged query. Maximum value: 100. Default value: 20.
+	//
 	// example:
 	//
 	// 5
@@ -39,10 +44,14 @@ type DescribeInterAuthStatisticsSummaryResponseBody struct {
 	//
 	// 853805EA-3D47-47D5-9A1A-A45C24313ABD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 5
 	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 48
@@ -125,58 +134,90 @@ func (s *DescribeInterAuthStatisticsSummaryResponseBody) Validate() error {
 }
 
 type DescribeInterAuthStatisticsSummaryResponseBodyPageData struct {
+	// The start time of the current period (the 0th second of the minute).
+	//
 	// example:
 	//
 	// 1776754800000
 	AggrTimestamp *int64 `json:"AggrTimestamp,omitempty" xml:"AggrTimestamp,omitempty"`
+	// The number of requests.
+	//
 	// example:
 	//
 	// 20
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The domain name. Queries the transfer records of the specified domain name.
+	//
 	// example:
 	//
 	// nervermsf.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The fluctuation rate.
+	//
 	// example:
 	//
 	// 19
 	FluctuationValue *int32 `json:"FluctuationValue,omitempty" xml:"FluctuationValue,omitempty"`
+	// The resolution line.
+	//
 	// example:
 	//
 	// default
 	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
+	// The value of the previous period.
+	//
 	// example:
 	//
 	// 2227
 	PreviousCount *int64 `json:"PreviousCount,omitempty" xml:"PreviousCount,omitempty"`
+	// The protocol type of the DNS resolution query request. Valid values:
+	//
+	// - UDP
+	//
+	// - TCP.
+	//
 	// example:
 	//
 	// TCP%DF\\"
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The request record type.
+	//
 	// example:
 	//
 	// A
 	Qtype *string `json:"Qtype,omitempty" xml:"Qtype,omitempty"`
+	// The success rate or proportion.
+	//
 	// example:
 	//
 	// 20
 	Ratio *int64 `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	// The DNS response code.
+	//
 	// example:
 	//
 	// 0
 	Rcode *string `json:"Rcode,omitempty" xml:"Rcode,omitempty"`
+	// The source IP address.
+	//
 	// example:
 	//
 	// 112.16.17.203
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The ISP of the request source.
+	//
 	// example:
 	//
 	// telecom
 	SourceIsp *string `json:"SourceIsp,omitempty" xml:"SourceIsp,omitempty"`
+	// The source region for copying the image. If not specified, a random region is selected.
+	//
 	// example:
 	//
 	// cn-shenzhen
 	SourceRegion *string `json:"SourceRegion,omitempty" xml:"SourceRegion,omitempty"`
+	// The zone name.
+	//
 	// example:
 	//
 	// longzi.xyz

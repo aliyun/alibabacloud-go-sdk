@@ -22,13 +22,19 @@ type iUpdateGtmRecoveryPlanRequest interface {
 }
 
 type UpdateGtmRecoveryPlanRequest struct {
-	// The list of faulty address pools.
+	// The list of IDs of the fault address pools.
 	//
 	// example:
 	//
-	// ["hra0or"]
+	// ["hra0**"]
 	FaultAddrPool *string `json:"FaultAddrPool,omitempty" xml:"FaultAddrPool,omitempty"`
-	// The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages.
+	// The language of the response. Valid values:
+	//
+	// - zh: Chinese
+	//
+	// - en: English
+	//
+	// Default value: en
 	//
 	// example:
 	//
@@ -40,15 +46,17 @@ type UpdateGtmRecoveryPlanRequest struct {
 	//
 	// abc
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the disaster recovery plan.
+	// The ID of the disaster recovery plan.<props="china">You can call the [DescribeGtmRecoveryPlans](https://help.aliyun.com/zh/dns/api-alidns-2015-01-09-describegtmrecoveryplans?spm=a2c4g.11186623.help-menu-29697.d_0_5_1_3_13_5.6dd83618vW4yD7) operation to obtain the ID.
+	//
+	// <props="intl">You can call the [DescribeGtmRecoveryPlans](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describegtmrecoveryplans?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 100
+	// 10*******
 	RecoveryPlanId *int64 `json:"RecoveryPlanId,omitempty" xml:"RecoveryPlanId,omitempty"`
-	// The remarks about the disaster recovery plan.
+	// The remarks.
 	//
 	// example:
 	//

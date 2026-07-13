@@ -44,33 +44,33 @@ type iDescribeCloudGtmAddressPoolResponseBody interface {
 }
 
 type DescribeCloudGtmAddressPoolResponseBody struct {
-	// Load balancing policy among addresses in the address pool:
+	// The load balancing policy for the addresses in the address pool. Valid values:
 	//
-	// - round_robin: Round-robin, where for any source of DNS resolution requests, all addresses are returned, with a rotation of the order for every request.
+	// - round_robin: For a DNS request from any source, all addresses are returned. The addresses are rotated in each response.
 	//
-	// - sequence: Sequential, where for any source of DNS resolution requests, the address with the lower sequence number (indicating a higher priority, the smaller the number, the higher the priority) is returned. If the address with the lower sequence number is unavailable, the next address with a lower sequence number is returned.
+	// - sequence: For a DNS request from any source, the address with the highest priority is returned. Priority is determined by the \\`SerialNumber\\`, where a smaller value indicates a higher priority. If the highest-priority address is unavailable, the address with the next highest priority is returned.
 	//
-	// - weight: Weighted, supporting the setting of different weight values for each address to realize returning addresses according to the weight ratio of query resolutions.
+	// - weight: A weight can be set for each address. DNS requests are resolved based on the specified weight ratio.
 	//
-	// - source_nearest: Source-nearest, also known as intelligent resolution, where GTM can return different addresses based on the source of different DNS resolution requests, achieving the effect of users accessing nearby servers.
+	// - source_nearest: Global Traffic Manager (GTM) returns an address based on the source of the DNS request. This implements proximity-based access for users.
 	//
 	// example:
 	//
 	// round_robin
 	AddressLbStrategy *string `json:"AddressLbStrategy,omitempty" xml:"AddressLbStrategy,omitempty"`
-	// The ID of the address pool. This ID uniquely identifies the address pool.
+	// The unique ID of the address pool.
 	//
 	// example:
 	//
-	// pool-89564674533755**96
+	// pool-89564674533755****
 	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
-	// Address pool name.
+	// The name of the address pool.
 	//
 	// example:
 	//
 	// AddressPool-1
 	AddressPoolName *string `json:"AddressPoolName,omitempty" xml:"AddressPoolName,omitempty"`
-	// Address pool type:
+	// The type of the address pool. Valid values:
 	//
 	// - IPv4
 	//
@@ -83,95 +83,95 @@ type DescribeCloudGtmAddressPoolResponseBody struct {
 	// IPv4
 	AddressPoolType *string                                           `json:"AddressPoolType,omitempty" xml:"AddressPoolType,omitempty"`
 	Addresses       *DescribeCloudGtmAddressPoolResponseBodyAddresses `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Struct"`
-	// Address pool availability status:
+	// The availability status of the address pool. Valid values:
 	//
-	// - available: Available
+	// - available: Available.
 	//
-	// - unavailable: Unavailable
+	// - unavailable: Unavailable.
 	//
 	// example:
 	//
 	// available
 	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
-	// Address pool creation time.
+	// The time when the address pool was created.
 	//
 	// example:
 	//
 	// 2024-03-15T01:46Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Address pool creation time (timestamp).
+	// The timestamp that indicates when the address pool was created.
 	//
 	// example:
 	//
 	// 1527690629357
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// Address pool status:
+	// The status of the address pool. Valid values:
 	//
-	// - enable: Enabled status
+	// - enable: Enabled
 	//
-	// - disable: Disabled status
+	// - disable: Disabled
 	//
 	// example:
 	//
 	// enable
 	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
-	// The condition for determining the health status of the address pool. Valid values:
+	// The condition used to determine the health status of the address pool. Valid values:
 	//
-	// 	- any_ok: At least one address in the address pool is available.
+	// - any_ok: At least one address is available.
 	//
-	// 	- p30_ok: At least 30% of the addresses in the address pool are available.
+	// - p30_ok: At least 30% of the addresses are available.
 	//
-	// 	- p50_ok: At least 50% of the addresses in the address pool are available.
+	// - p50_ok: At least 50% of the addresses are available.
 	//
-	// 	- p70_ok: At least 70% of the addresses in the address pool are available.
+	// - p70_ok: At least 70% of the addresses are available.
 	//
-	// 	- all_ok: All addresses in the address pool are available.
+	// - all_ok: All addresses are available.
 	//
 	// example:
 	//
 	// any_ok
 	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
-	// The health state of the address pool. Valid values:
+	// The health status of the address pool. Valid values:
 	//
-	// 	- ok: The health state of the address pool is normal and all addresses that are referenced by the address pool are available.
+	// - ok: The address pool is healthy. All addresses in the address pool are available.
 	//
-	// 	- ok_alert: The health state of the address pool is warning and some of the addresses that are referenced by the address pool are unavailable. However, the address pool is deemed normal. In this case, only the available addresses are returned for Domain Name System (DNS) requests.
+	// - ok_alert: The address pool is in an alert state. Some addresses are unavailable, but the address pool is still considered healthy. In this state, DNS resolution is performed for available addresses, but not for unavailable addresses.
 	//
-	// 	- exceptional: The health state of the address pool is abnormal and some or all of the addresses that are referenced by the address pool are unavailable. In this case, the address pool is deemed abnormal.
+	// - exceptional: The address pool is unhealthy. Some or all addresses are unavailable, and the address pool is considered unhealthy.
 	//
 	// example:
 	//
 	// ok
 	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
-	// Remarks for the address.
+	// The notes on the address.
 	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// Unique request identification code.
+	// The unique ID of the request.
 	//
 	// example:
 	//
 	// 6856BCF6-11D6-4D7E-AC53-FD579933522B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The mode used if the address with the smallest sequence number is recovered. This parameter is returned only when the policy for load balancing between addresses is sequence. Valid values:
+	// The service recovery mode for a primary address that becomes available again when the load balancing policy is set to \\`sequence\\`. Valid values:
 	//
-	// 	- preemptive: The address with the smallest sequence number is preferentially used if this address is recovered.
+	// - preemptive: The system preferentially uses the address with a smaller \\`SerialNumber\\`.
 	//
-	// 	- non_preemptive: The current address is still used even if the address with the smallest sequence number is recovered.
+	// - non_preemptive: The system continues to use the current address.
 	//
 	// example:
 	//
 	// preemptive
 	SequenceLbStrategyMode *string `json:"SequenceLbStrategyMode,omitempty" xml:"SequenceLbStrategyMode,omitempty"`
-	// The last modification time of the address pool.
+	// The time when the address pool was last modified.
 	//
 	// example:
 	//
 	// 2024-03-15T01:46Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// Last modification time of the address pool (timestamp).
+	// The timestamp that indicates when the address pool was last modified.
 	//
 	// example:
 	//

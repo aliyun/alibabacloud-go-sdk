@@ -14,7 +14,7 @@ type iDeleteCustomLinesResponseBody interface {
 }
 
 type DeleteCustomLinesResponseBody struct {
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//

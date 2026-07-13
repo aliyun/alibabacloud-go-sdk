@@ -25,7 +25,7 @@ type iDescribeGtmInstanceAddressPoolsResponseBody interface {
 
 type DescribeGtmInstanceAddressPoolsResponseBody struct {
 	AddrPools *DescribeGtmInstanceAddressPoolsResponseBodyAddrPools `json:"AddrPools,omitempty" xml:"AddrPools,omitempty" type:"Struct"`
-	// The number of the page returned.
+	// The page number of the returned page.
 	//
 	// example:
 	//
@@ -37,13 +37,13 @@ type DescribeGtmInstanceAddressPoolsResponseBody struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// 6856BCF6-11D6-4D7E-AC53-FD579933522B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned on all pages.
+	// The total number of entries returned.
 	//
 	// example:
 	//

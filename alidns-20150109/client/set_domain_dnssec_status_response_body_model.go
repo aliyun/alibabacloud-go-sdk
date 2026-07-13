@@ -14,7 +14,7 @@ type iSetDomainDnssecStatusResponseBody interface {
 }
 
 type SetDomainDnssecStatusResponseBody struct {
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//

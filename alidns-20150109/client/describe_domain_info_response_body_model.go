@@ -62,7 +62,7 @@ type iDescribeDomainInfoResponseBody interface {
 }
 
 type DescribeDomainInfoResponseBody struct {
-	// Indicates whether the domain name was registered in Alibaba Cloud.
+	// Indicates whether the domain name was registered with Alibaba Cloud.
 	//
 	// example:
 	//
@@ -80,9 +80,15 @@ type DescribeDomainInfoResponseBody struct {
 	//
 	// example:
 	//
-	// 00efd71a-770e-4255-b54e-6fe5659baffe
+	// 00efd71a-7************
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	// Indicates whether the DNS traffic analysis feature is enabled. Valid values:
+	// The status of the logging feature.
+	//
+	// example:
+	//
+	// CLOSE：关闭状态
+	//
+	// OPEN：开启状态
 	DomainLoggingSwitchStatus *string `json:"DomainLoggingSwitchStatus,omitempty" xml:"DomainLoggingSwitchStatus,omitempty"`
 	// The domain name.
 	//
@@ -94,7 +100,7 @@ type DescribeDomainInfoResponseBody struct {
 	//
 	// example:
 	//
-	// 2223
+	// 2***
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The name of the domain name group.
 	//
@@ -102,13 +108,13 @@ type DescribeDomainInfoResponseBody struct {
 	//
 	// mygroup
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// Indicates whether blackhole filtering was triggered.
+	// Indicates whether blackhole filtering is activated for the domain name.
 	//
 	// example:
 	//
 	// false
 	InBlackHole *bool `json:"InBlackHole,omitempty" xml:"InBlackHole,omitempty"`
-	// Indicates whether traffic scrubbing was in progress.
+	// Indicates whether the domain name is being scrubbed.
 	//
 	// example:
 	//
@@ -118,46 +124,46 @@ type DescribeDomainInfoResponseBody struct {
 	//
 	// example:
 	//
-	// i-7bg
+	// i-7**
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the DNS request line.
+	// The type of the DNS request source line.
 	//
 	// example:
 	//
 	// region_province
 	LineType *string `json:"LineType,omitempty" xml:"LineType,omitempty"`
-	// The minimum TTL value.
+	// The minimum TTL.
 	//
 	// example:
 	//
 	// 1
 	MinTtl *int64 `json:"MinTtl,omitempty" xml:"MinTtl,omitempty"`
-	// The Punycode for the domain name. This parameter is returned only for Chinese domain names.
+	// The Punycode for the Chinese domain name.
 	//
 	// example:
 	//
 	// example.com
 	PunyCode *string `json:"PunyCode,omitempty" xml:"PunyCode,omitempty"`
-	// The tree-structure DNS request lines.
+	// The list of DNS request source lines in a tree structure.
 	//
 	// example:
 	//
 	// {"default":{},"unicom":{},"telecom":{},"mobile":{},"edu":{},"oversea":{},"baidu":{},"biying":{},"google":{}}
 	RecordLineTreeJson *string                                    `json:"RecordLineTreeJson,omitempty" xml:"RecordLineTreeJson,omitempty"`
 	RecordLines        *DescribeDomainInfoResponseBodyRecordLines `json:"RecordLines,omitempty" xml:"RecordLines,omitempty" type:"Struct"`
-	// Indicates whether the DNS request lines are regional lines.
+	// Indicates whether the line is a regional line.
 	//
 	// example:
 	//
 	// false
 	RegionLines *bool `json:"RegionLines,omitempty" xml:"RegionLines,omitempty"`
-	// The description.
+	// The remarks.
 	//
 	// example:
 	//
 	// remark
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//
@@ -167,7 +173,7 @@ type DescribeDomainInfoResponseBody struct {
 	//
 	// example:
 	//
-	// rg-aek3dj3wvclgcxo
+	// rg-aek3dj3******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Indicates whether secondary DNS is supported.
 	//
@@ -175,23 +181,33 @@ type DescribeDomainInfoResponseBody struct {
 	//
 	// true
 	SlaveDns *bool `json:"SlaveDns,omitempty" xml:"SlaveDns,omitempty"`
-	// Indicates whether the queried domain name is a hosted subdomain name. Valid values:
+	// Indicates whether the queried domain is a hosted subdomain. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
 	// false
 	SubDomain *bool `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
-	// The version ID of Alibaba Cloud DNS.
+	// The edition ID of Alibaba Cloud DNS. Valid values:
+	//
+	// - version_enterprise_advanced: Ultimate Edition
+	//
+	// - version_personal: Personal Edition
+	//
+	// - mianfei: Free Edition
 	//
 	// example:
 	//
-	// version1
+	// mianfei
 	VersionCode *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
-	// The edition of Alibaba Cloud DNS.
+	// The name of the Alibaba Cloud DNS edition.
+	//
+	// example:
+	//
+	// 企业旗舰版
 	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 

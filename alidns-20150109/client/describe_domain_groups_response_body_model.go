@@ -23,25 +23,25 @@ type iDescribeDomainGroupsResponseBody interface {
 
 type DescribeDomainGroupsResponseBody struct {
 	DomainGroups *DescribeDomainGroupsResponseBodyDomainGroups `json:"DomainGroups,omitempty" xml:"DomainGroups,omitempty" type:"Struct"`
-	// The page number. Pages start from page **1**. Default value: **1**.
+	// The page number. The start value is **1**. The default value is **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: **1 to 100**. Default value: **20**.
+	// The number of entries to return on each page. The maximum value is **100**. The default value is **20**.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of domain name groups.
 	//
 	// example:
 	//

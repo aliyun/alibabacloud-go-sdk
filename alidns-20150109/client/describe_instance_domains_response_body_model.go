@@ -24,33 +24,33 @@ type iDescribeInstanceDomainsResponseBody interface {
 }
 
 type DescribeInstanceDomainsResponseBody struct {
-	// The domain names that are bound to the DNS instance.
+	// A list of domain names attached to the instance.
 	InstanceDomains []*DescribeInstanceDomainsResponseBodyInstanceDomains `json:"InstanceDomains,omitempty" xml:"InstanceDomains,omitempty" type:"Repeated"`
-	// The page number. Pages start from page **1**. Default value: **1**.
+	// The page number. The value starts from **1**. Default: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: **1 to 100**. Default value: **20**.
+	// The number of entries per page. Maximum value: **100**. Default value: **20**.
 	//
 	// example:
 	//
 	// 2
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// 68386699-8B9E-4D5B-BC4C-75A28F6C2A00
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned on all pages.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 2
 	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	// The total number of pages returned.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -134,13 +134,13 @@ func (s *DescribeInstanceDomainsResponseBody) Validate() error {
 }
 
 type DescribeInstanceDomainsResponseBodyInstanceDomains struct {
-	// The time when the instance was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	// The time when the instance was created.
 	//
 	// example:
 	//
 	// 2020-03-09T02:15Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the instance was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The UNIX timestamp that indicates when the instance was created.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type DescribeInstanceDomainsResponseBodyInstanceDomains struct {
 	//
 	// example:
 	//
-	// example.com
+	// example.top
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 }
 

@@ -16,13 +16,13 @@ type iDeleteGtmAccessStrategyRequest interface {
 }
 
 type DeleteGtmAccessStrategyRequest struct {
-	// The language used by the user.
+	// The language.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the access policy that you want to delete.
+	// The policy ID.
 	//
 	// example:
 	//

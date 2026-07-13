@@ -16,7 +16,7 @@ type iGetMainDomainNameRequest interface {
 }
 
 type GetMainDomainNameRequest struct {
-	// The string. The string can be up to 128 characters in length.
+	// The domain name.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,13 @@ type GetMainDomainNameRequest struct {
 	//
 	// www.example.com
 	InputString *string `json:"InputString,omitempty" xml:"InputString,omitempty"`
-	// The language.
+	// The language of the response. Valid values:
+	//
+	// - zh: Chinese
+	//
+	// - en: English
+	//
+	// Default: zh
 	//
 	// example:
 	//

@@ -18,14 +18,22 @@ type iAddRecursionZoneRequest interface {
 }
 
 type AddRecursionZoneRequest struct {
+	// A client token that ensures the idempotence of the request. You can specify a custom value. Make sure that the value is unique among different requests. The value can contain up to 64 ASCII characters.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to enable recursive proxy for subdomains. Valid values:
+	//
+	// zone: Disables recursive proxy. An NXDOMAIN response is returned for non-existent subdomains. record: Enables recursive proxy. For non-existent subdomains, the system queries the forwarding and recursion modules in sequence and returns the final result.
+	//
 	// example:
 	//
 	// record
 	ProxyPattern *string `json:"ProxyPattern,omitempty" xml:"ProxyPattern,omitempty"`
+	// The name of the zone.
+	//
 	// example:
 	//
 	// example.com

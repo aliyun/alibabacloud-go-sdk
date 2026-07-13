@@ -18,19 +18,27 @@ type iCreateCloudGtmMonitorTemplateResponseBody interface {
 }
 
 type CreateCloudGtmMonitorTemplateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// B57C121B-A45F-44D8-A9B2-13E5A5044195
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful.
+	//
+	// - true: The operation was successful.
+	//
+	// - false: The operation failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the health check template. This ID uniquely identifies the health check template.
+	// The ID of the health check template. The ID is the unique identifier of the template.
 	//
 	// example:
 	//
-	// mtp-89518052425100**80
+	// mtp-89518052425100****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 

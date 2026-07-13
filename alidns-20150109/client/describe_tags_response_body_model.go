@@ -22,7 +22,7 @@ type iDescribeTagsResponseBody interface {
 }
 
 type DescribeTagsResponseBody struct {
-	// The page number. Pages start from page **1**. Default value: **1**.
+	// The page number. Pages start from **1**. Default value: **1**.
 	//
 	// example:
 	//
@@ -34,15 +34,15 @@ type DescribeTagsResponseBody struct {
 	//
 	// 200
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// 89184F33-48A1-4401-9C0F-40E45DB091AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The tags added to the resource.
+	// The list of tags.
 	Tags []*DescribeTagsResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,13 +117,13 @@ func (s *DescribeTagsResponseBody) Validate() error {
 }
 
 type DescribeTagsResponseBodyTags struct {
-	// The key of tag N added to the resource.
+	// The tag key.
 	//
 	// example:
 	//
 	// abc
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The values of tags added to the resource.
+	// A list of tag values.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 

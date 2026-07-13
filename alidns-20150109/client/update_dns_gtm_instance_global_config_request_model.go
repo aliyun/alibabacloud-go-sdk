@@ -36,86 +36,87 @@ type iUpdateDnsGtmInstanceGlobalConfigRequest interface {
 }
 
 type UpdateDnsGtmInstanceGlobalConfigRequest struct {
+	// The alert configurations.
 	AlertConfig []*UpdateDnsGtmInstanceGlobalConfigRequestAlertConfig `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty" type:"Repeated"`
-	// The name of the alert group in the JSON format.
+	// The alert contact group. The value is a JSON-formatted \\`List\\<string>\\`.
 	//
 	// example:
 	//
-	// alertGroup1
+	// ["test1","test2"]
 	AlertGroup *string `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
-	// The type of the canonical name (CNAME).
+	// The type of the CNAME record. Valid value:
 	//
-	// 	- Set the value to PUBLIC.
+	// - PUBLIC: The CNAME record is used for Internet access.
 	//
 	// example:
 	//
-	// public
+	// PUBLIC
 	CnameType *string `json:"CnameType,omitempty" xml:"CnameType,omitempty"`
-	// Specifies whether to enable force updates. Valid values:
+	// Specifies whether to forcefully update the instance. Valid values:
 	//
-	// 	- true: enables force update without a conflict alert.
+	// - true: Forcefully updates the instance without checking for conflicts.
 	//
-	// 	- false: disables force update. If a conflict occurs, the system displays an alert. null: This valid value of ForceUpdate provides the same information as the false value.
+	// - false or null: Does not forcefully update the instance. The system checks for conflicts before the update.
 	//
 	// example:
 	//
 	// true
 	ForceUpdate *bool `json:"ForceUpdate,omitempty" xml:"ForceUpdate,omitempty"`
-	// The ID of the instance.
+	// The ID of the GTM instance. To obtain the instance ID, call the [DescribeDnsGtmInstances](https://www.alibabacloud.com/help/en/dns/api-alidns-2015-01-09-describednsgtminstances?spm=a2c63.p38356.help-menu-search-29697.d_0) operation.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// instance1
+	// gtm-cn-wwo3a3hbz**
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the instance. This parameter is required only for the first update.
+	// The name of the instance. This parameter is required when you update the instance for the first time. It is optional for subsequent updates.
 	//
 	// example:
 	//
-	// test
+	// test-1
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The language of the values of specific response parameters. Default value: en. Valid values: en, zh, and ja.
+	// The language of the response. Valid values: en, zh, and ja. The default value is en.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Specifies whether to use a custom CNAME domain name or a CNAME domain name assigned by the system to access the instance over the Internet. Valid values:
+	// The method used to access the instance over the Internet. Valid values:
 	//
-	// 	- SYSTEM_ASSIGN: a CNAME domain name assigned by the system
+	// - SYSTEM_ASSIGN: The system assigns a canonical name (CNAME) record. This option is disabled.
 	//
-	// 	- CUSTOM: a custom CNAME domain name
+	// - CUSTOM: You specify a CNAME record.
 	//
 	// example:
 	//
-	// custom
+	// CUSTOM
 	PublicCnameMode *string `json:"PublicCnameMode,omitempty" xml:"PublicCnameMode,omitempty"`
-	// The hostname corresponding to the CNAME domain name that is used to access the instance over the Internet.
+	// The hostname of the CNAME record that is used for Internet access.
 	//
 	// example:
 	//
 	// test.rr
 	PublicRr *string `json:"PublicRr,omitempty" xml:"PublicRr,omitempty"`
-	// The service domain name that is used over the Internet.
+	// The service domain name that is accessed over the Internet.
 	//
 	// example:
 	//
 	// example.com
 	PublicUserDomainName *string `json:"PublicUserDomainName,omitempty" xml:"PublicUserDomainName,omitempty"`
-	// The CNAME domain name that is used to access the instance over the Internet, which is the primary domain name. This parameter is required when the PublicCnameMode parameter is set to CUSTOM.
+	// The primary domain name that is used to access the instance over the Internet using a CNAME record. This parameter is required if you set PublicCnameMode to CUSTOM.
 	//
-	// >  You must use the primary domain name. Do not include the hostname specified by the PublicRr parameter.
+	// > Enter the primary domain name. Do not include the hostname specified by the PublicRr parameter.
 	//
 	// example:
 	//
-	// gtm-003.com
+	// www.example.com
 	PublicZoneName *string `json:"PublicZoneName,omitempty" xml:"PublicZoneName,omitempty"`
 	// The global time to live (TTL).
 	//
 	// example:
 	//
-	// 1
+	// 60
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
 }
 
@@ -249,18 +250,50 @@ func (s *UpdateDnsGtmInstanceGlobalConfigRequest) Validate() error {
 }
 
 type UpdateDnsGtmInstanceGlobalConfigRequestAlertConfig struct {
+	// Specifies whether to send alerts through DingTalk. Valid values:
+	//
+	// - true: yes
+	//
+	// - false: no
+	//
 	// example:
 	//
 	// true
 	DingtalkNotice *bool `json:"DingtalkNotice,omitempty" xml:"DingtalkNotice,omitempty"`
+	// Specifies whether to send alerts by email. Valid values:
+	//
+	// - true: yes
+	//
+	// - false or null: no
+	//
 	// example:
 	//
 	// true
 	EmailNotice *bool `json:"EmailNotice,omitempty" xml:"EmailNotice,omitempty"`
+	// The type of the alert event. Valid values:
+	//
+	// - ADDR_ALERT: An address becomes unavailable.
+	//
+	// - ADDR_RESUME: An address becomes available.
+	//
+	// - ADDR_POOL_GROUP_UNAVAILABLE: An address pool group becomes unavailable.
+	//
+	// - ADDR_POOL_GROUP_AVAILABLE: An address pool group becomes available.
+	//
+	// - ACCESS_STRATEGY_POOL_GROUP_SWITCH: A switchover occurs between the primary and secondary address pools.
+	//
+	// - MONITOR_NODE_IP_CHANGE: The IP address of a monitoring node changes.
+	//
 	// example:
 	//
 	// ADDR_ALERT
 	NoticeType *string `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
+	// Specifies whether to send alerts through text messages. Valid values:
+	//
+	// - true: yes
+	//
+	// - false or null: no
+	//
 	// example:
 	//
 	// true

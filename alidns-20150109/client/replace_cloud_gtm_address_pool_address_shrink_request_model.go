@@ -20,29 +20,29 @@ type iReplaceCloudGtmAddressPoolAddressShrinkRequest interface {
 }
 
 type ReplaceCloudGtmAddressPoolAddressShrinkRequest struct {
-	// The language of the response. Valid values:
+	// The response language. Valid values:
 	//
-	// 	- **zh-CN**: Chinese
+	// - **zh-CN**: Chinese
 	//
-	// 	- **en-US (default)**: English
+	// - **en-US*	- (Default): English
 	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The ID of the address pool for which you want to replace addresses. This ID uniquely identifies the address pool.
+	// The unique ID of the address pool to update.
 	//
 	// example:
 	//
-	// pool-89618921167339**24
+	// pool-89618921167339****
 	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
-	// The addresses.
+	// The list of addresses.
 	AddressesShrink *string `json:"Addresses,omitempty" xml:"Addresses,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. Ensure the client token is unique for each request. The token can contain a maximum of 64 ASCII characters.
 	//
 	// example:
 	//
-	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	// 1ae05db4-10e7-11ef-b126-00163e24****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 }
 

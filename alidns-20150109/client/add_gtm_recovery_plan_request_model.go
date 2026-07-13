@@ -20,7 +20,7 @@ type iAddGtmRecoveryPlanRequest interface {
 }
 
 type AddGtmRecoveryPlanRequest struct {
-	// The IDs of faulty address pools.
+	// The IDs of the faulty address pools.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type AddGtmRecoveryPlanRequest struct {
 	//
 	// ["hra0or"]
 	FaultAddrPool *string `json:"FaultAddrPool,omitempty" xml:"FaultAddrPool,omitempty"`
-	// The language.
+	// The language of the user.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type AddGtmRecoveryPlanRequest struct {
 	//
 	// name-example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The description of the disaster recovery plan.
+	// The remarks.
 	//
 	// example:
 	//

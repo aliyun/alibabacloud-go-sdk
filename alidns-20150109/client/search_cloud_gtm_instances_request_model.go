@@ -26,7 +26,7 @@ type iSearchCloudGtmInstancesRequest interface {
 }
 
 type SearchCloudGtmInstancesRequest struct {
-	// The language of the return value. Options are:
+	// The language of the response. Valid values:
 	//
 	// - **zh-CN**: Chinese.
 	//
@@ -40,25 +40,25 @@ type SearchCloudGtmInstancesRequest struct {
 	//
 	// prepay / postpay
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see How to ensure idempotence.
+	// The client token that is used to ensure the idempotence of the request. Make sure that the token is unique for each request. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see How to ensure idempotence.
 	//
 	// example:
 	//
-	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	// 1ae05db4-10e7-11ef-b126-00163e24****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the Global Traffic Manager (GTM) 3.0 instance.
 	//
 	// example:
 	//
-	// gtm-cn-wwo3a3hbz**
+	// gtm-cn-wwo3a3h****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Schedule instance name, supports fuzzy search.
+	// The name of the scheduling instance. Fuzzy search is supported.
 	//
 	// example:
 	//
 	// test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Current page number, starting from 1, default is 1.
+	// The number of the page to return. The value starts from 1. The default value is 1.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type SearchCloudGtmInstancesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of rows per page when paginating queries, with a maximum value of **100**, and a default of **20**.
+	// The number of entries to return on each page. The maximum value is **100**. The default value is **20**.
 	//
 	// This parameter is required.
 	//

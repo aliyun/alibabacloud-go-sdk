@@ -34,7 +34,7 @@ type iDescribeInternetDnsLogsRequest interface {
 }
 
 type DescribeInternetDnsLogsRequest struct {
-	// The account ID displayed on the Recursive Resolution (Public DNS) page after you activate Alibaba Cloud Public DNS.
+	// The ID of the Public DNS configuration.
 	//
 	// example:
 	//
@@ -44,73 +44,75 @@ type DescribeInternetDnsLogsRequest struct {
 	//
 	// example:
 	//
-	// example.com
+	// www.example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end time of the query (timestamp, unit: milliseconds). 	Warning: If the query time span is too large and the amount of resolution logs for the queried domain is excessive, it may lead to a query timeout or inaccurate query results.
+	// The end of the time range to query. This is a UNIX timestamp in milliseconds.
+	//
+	// 	Warning: If you specify a wide time range, many logs may be returned. This can cause a query timeout or inaccurate results.
 	//
 	// example:
 	//
-	// 1709196299999
+	// 1741526400000
 	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	// Return value language, options:
+	// The language of the response. Valid values:
 	//
 	// - zh: Chinese
 	//
 	// - en: English
 	//
-	// Default: en
+	// Default value: en.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Module type
+	// The module type.
 	//
-	// - AUTHORITY (default): Public Authoritative DNS
+	// - AUTHORITY (default): public authoritative DNS
 	//
-	// - RECURSION: Public Recursive DNS
+	// - RECURSION: public recursive DNS
 	//
 	// example:
 	//
 	// AUTHORITY
 	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
-	// Page number, default value is 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Page size for query.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
 	// 10
 	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PreciseSort *bool  `json:"PreciseSort,omitempty" xml:"PreciseSort,omitempty"`
-	// Query parameters
+	// The query parameters.
 	//
-	// - sourceIp: Source IP address
+	// - sourceIp: the source IP address
 	//
-	// - queryNameFuzzy: Domain name (fuzzy value)
+	// - queryNameFuzzy: the domain name (fuzzy match)
 	//
-	// - queryType: Record type
+	// - queryType: the record type
 	//
-	// - value: Resolution result
+	// - value: the resolution result
 	//
-	// - status: Status
+	// - status: the status
 	//
-	// - serverIp: Resolution server IP
+	// - serverIp: the IP address of the resolution server
 	//
 	// example:
 	//
 	// {"sourceIp":"59.82.XX.XX","queryType":"A"}
 	QueryCondition        *string `json:"QueryCondition,omitempty" xml:"QueryCondition,omitempty"`
 	RecursionProtocolType *string `json:"RecursionProtocolType,omitempty" xml:"RecursionProtocolType,omitempty"`
-	// The start time of the query (timestamp, unit: milliseconds).
+	// The start of the time range to query. This is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
-	// 1709192640000
+	// 1738848000000
 	StartTimestamp *int64 `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 }
 

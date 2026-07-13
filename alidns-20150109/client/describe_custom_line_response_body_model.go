@@ -28,7 +28,7 @@ type DescribeCustomLineResponseBody struct {
 	//
 	// example:
 	//
-	// hra0yc-597
+	// hra0yc-*********
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The domain name.
 	//
@@ -36,17 +36,21 @@ type DescribeCustomLineResponseBody struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The ID/Name of the custom line.
+	// The ID of the custom line.
 	//
 	// example:
 	//
-	// 597
+	// 5*******
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The CIDR blocks. Separate IP addresses with a hyphen (-). Enter a CIDR block in each row. You can enter 1 to 50 CIDR blocks at a time. If a CIDR block contains only one IP address, enter the IP address in the format of IP1-IP1. Different CIDR blocks cannot be overlapped.
+	// The list of IP address segments. Use a hyphen (-) to separate the start and end IP addresses. Each line represents one segment. You can specify from 1 to 50 segments. For a single IP address, use the format IP1-IP1. IP address segments cannot overlap.
 	IpSegmentList []*DescribeCustomLineResponseBodyIpSegmentList `json:"IpSegmentList,omitempty" xml:"IpSegmentList,omitempty" type:"Repeated"`
 	// The name of the custom line.
+	//
+	// example:
+	//
+	// 测试线路
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//
@@ -130,17 +134,17 @@ func (s *DescribeCustomLineResponseBody) Validate() error {
 }
 
 type DescribeCustomLineResponseBodyIpSegmentList struct {
-	// The end IP address of the CIDR block.
+	// The end IP address of the segment.
 	//
 	// example:
 	//
-	// 11.1.1.3
+	// 1.1.XX.XX
 	EndIp *string `json:"EndIp,omitempty" xml:"EndIp,omitempty"`
-	// The start IP address of the CIDR block.
+	// The start IP address of the segment.
 	//
 	// example:
 	//
-	// 11.1.1.2
+	// 1.2.XX.XX
 	StartIp *string `json:"StartIp,omitempty" xml:"StartIp,omitempty"`
 }
 

@@ -44,19 +44,19 @@ type iDescribeCloudGtmMonitorTemplateResponseBody interface {
 }
 
 type DescribeCloudGtmMonitorTemplateResponseBody struct {
-	// Health check template creation time.
+	// The time when the health check template was created.
 	//
 	// example:
 	//
 	// 2024-03-23T13:09Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Health check template creation time (timestamp).
+	// The UNIX timestamp that indicates when the health check template was created.
 	//
 	// example:
 	//
 	// 1527690629357
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// Retries count. The system will only judge the application service as abnormal after consecutive monitoring failures to prevent inaccurate monitoring results due to momentary network fluctuations or other reasons. Available retry counts are:
+	// The number of consecutive times that a health check must fail before the application service is declared abnormal. This prevents false alarms caused by transient issues such as network jitter. Valid values:
 	//
 	// - 1
 	//
@@ -68,43 +68,43 @@ type DescribeCloudGtmMonitorTemplateResponseBody struct {
 	//
 	// 2
 	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
-	// The extended information. The value of this parameter is a JSON string. The required parameters vary based on the health check protocol.
+	// The extended information in a JSON string. The parameters vary based on the protocol.
 	//
-	// 	- HTTP or HTTPS:
+	// - For HTTP and HTTPS:
 	//
-	//     **host**: the Host field of an HTTP or HTTPS request header during an HTTP or HTTPS health check. The parameter value indicates the HTTP website that you want to visit. By default, the value is the primary domain name. You can change the value based on your business requirements.
+	//   **host**: The Host field in the HTTP or HTTPS request header. This field identifies the website that you want to access. The default value is the primary domain name. If the target website has specific host requirements, modify this parameter.
 	//
-	//     **path**: the URL for HTTP or HTTPS health checks. Default value: /.
+	//   **path**: The URL path for HTTP or HTTPS health checks. The default value is /.
 	//
-	//     **code**: the alert threshold. During an HTTP or HTTPS health check, the system checks whether a web server functions as expected based on the status code that is returned from the web server. If the returned status code is greater than the specified threshold, the corresponding application service address is deemed abnormal. Valid values:
+	//   **code**: The system determines whether the web server is working as expected based on the return code. If the return code is greater than the specified threshold, the application service is considered abnormal.
 	//
-	//     	- 400: indicates an invalid request. If an HTTP or HTTPS request contains invalid request parameters, a web server returns a status code that is greater than 400. You must specify an exact URL for path if you set code to 400.
+	//   - 400: Bad Request. If an HTTP or HTTPS request contains incorrect parameters, the web server returns a code greater than 400. If you set the threshold to 400, specify the exact URL path.
 	//
-	//     	- 500: indicates a server error. If some exceptions occur on a web server, the web server returns a status code that is greater than 500. This value is used by default.
+	//   - 500: Server Error. If an exception occurs on the web server, it returns a code greater than 500. The default threshold is 500.
 	//
-	//     **sni**: indicates whether Server Name Indication (SNI) is enabled. This parameter is used only when the health check protocol is HTTPS. SNI is an extension to the Transport Layer Security (TLS) protocol, which allows a client to specify the host to be connected when the client sends a TLS handshake request. TLS handshakes occur before any data of HTTP requests is sent. Therefore, SNI enables servers to identify the services that clients are attempting to access before certificates are sent. This allows the servers to present correct certificates to the clients. Valid values:
+	//   **sni**: Specifies whether to enable Server Name Indication (SNI). This parameter is used only for the HTTPS protocol. SNI is a Transport Layer Security (TLS) extension that allows a client to specify the hostname it wants to connect to at the start of the TLS handshake. This allows the server to present the correct certificate for that hostname.
 	//
-	//     	- true: SNI is enabled.
+	//   - true: Enable SNI.
 	//
-	//     	- false: SNI is disabled.
+	//   - false: Disable SNI.
 	//
-	//     **followRedirect**: indicates whether 3XX redirects are followed. Valid values:
+	//   **followRedirect**: Specifies whether to follow 3xx redirections.
 	//
-	//     	- true: 3XX redirects are followed. You are redirected to the destination address if a 3XX status code such as 301, 302, 303, 307, or 308 is returned.
+	//   - true: If the status code returned by the detection point is 3xx (301, 302, 303, 307, or 308), the system follows the redirection.
 	//
-	//     	- false: 3XX redirects are not followed.
+	//   - false: The system does not follow the redirection.
 	//
-	// 	- ping:
+	// - For ping:
 	//
-	//     **packetNum**: the total number of Internet Control Message Protocol (ICMP) packets that are sent to the address for each ping-based health check. Valid values: 20, 50, and 100.
+	//   **packetNum**: The number of ICMP packets to send for each ping health check. Valid values: 20, 50, and 100.
 	//
-	//     **packetLossRate**: the ICMP packet loss rate for each ping-based health check. The packet loss rate in a health check can be calculated by using the following formula: Packet loss rate in a health check = (Number of lost packets/Total number of sent ICMP packets) × 100%. If the packet loss rate reaches the threshold, an alert is triggered. Valid values: 10, 30, 40, 80, 90, and 100.
+	//   **packetLossRate**: The packet loss rate threshold. For each ping health check, the system calculates the packet loss rate. If the packet loss rate reaches the threshold, an alert is triggered. Packet loss rate = (Number of lost packets / Total number of sent ICMP packets) × 100%. Valid values for the packet loss rate are 10, 30, 40, 80, 90, and 100.
 	//
 	// example:
 	//
 	// {\\"code\\":200,\\"path\\":\\"\\\\index.htm\\",\\"host\\":\\"aliyun.com\\"}
 	ExtendInfo *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
-	// Percentage of selected node probe failures (%), that is, the percentage of abnormal detection points among the total detection points. When the failure ratio exceeds the set threshold, the service address is judged as abnormal. The available failure ratio thresholds are:
+	// The percentage of failed detection points. If the percentage of failed detection points exceeds this value, the endpoint is declared abnormal. Valid values:
 	//
 	// - 20
 	//
@@ -118,30 +118,30 @@ type DescribeCloudGtmMonitorTemplateResponseBody struct {
 	//
 	// 50
 	FailureRate *int32 `json:"FailureRate,omitempty" xml:"FailureRate,omitempty"`
-	// The time interval (in seconds) between each check, with a default interval of 1 minute. The minimum supported health check interval is 15 seconds, available for flagship edition instances.
+	// The interval between health checks in seconds. The default value is 60. The minimum interval is 15 seconds. This feature is available only for Ultimate Edition instances.
 	//
 	// example:
 	//
 	// 60
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// Detect the type of the node IP address:
+	// The IP address type of the detection points:
 	//
-	// - IPv4: Applicable when the target address type is IPv4;
+	// - IPv4: The target address is an IPv4 address.
 	//
-	// - IPv6: Applicable when the target address type is IPv6.
+	// - IPv6: The target address is an IPv6 address.
 	//
 	// example:
 	//
 	// IPv4
 	IpVersion    *string                                                  `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 	IspCityNodes *DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodes `json:"IspCityNodes,omitempty" xml:"IspCityNodes,omitempty" type:"Struct"`
-	// The name of the health check probe template, which is recommended to be distinguishable for configuration personnel to differentiate and remember, ideally indicating the health check protocol.
+	// The name of the health check template. To easily identify the template, specify a name that indicates the health check protocol.
 	//
 	// example:
 	//
 	// Ping-IPv4
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Protocol types to initiate probes to the target IP address:
+	// The protocol used to probe the target IP address:
 	//
 	// - ping
 	//
@@ -155,25 +155,25 @@ type DescribeCloudGtmMonitorTemplateResponseBody struct {
 	//
 	// ping
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// Remarks for the health check template.
+	// The remarks on the health check template.
 	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// Unique request identification code.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// 6AEC7A64-3CB1-4C49-8B35-0B901F1E26BF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the health check template. This ID uniquely identifies the health check template.
+	// The unique ID of the health check template.
 	//
 	// example:
 	//
-	// mtp-89518052425100**80
+	// mtp-89518052425100****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// Probe timeout (in milliseconds), data packets not returned within the timeout period are deemed as health check timeouts:
+	// The health check timeout period in milliseconds. If a packet is not returned within the specified timeout period, the health check fails. Valid values:
 	//
 	// - 2000
 	//
@@ -187,13 +187,13 @@ type DescribeCloudGtmMonitorTemplateResponseBody struct {
 	//
 	// 5000
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// Health check template configuration modification time.
+	// The time when the health check template was last modified.
 	//
 	// example:
 	//
 	// 2024-03-29T13:20Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// Health check template configuration modification time (timestamp).
+	// The UNIX timestamp that indicates when the health check template was last modified.
 	//
 	// example:
 	//

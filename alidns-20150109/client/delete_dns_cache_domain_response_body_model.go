@@ -14,7 +14,7 @@ type iDeleteDnsCacheDomainResponseBody interface {
 }
 
 type DeleteDnsCacheDomainResponseBody struct {
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iUpdateDnsGtmAddressPoolResponseBody interface {
 }
 
 type UpdateDnsGtmAddressPoolResponseBody struct {
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//

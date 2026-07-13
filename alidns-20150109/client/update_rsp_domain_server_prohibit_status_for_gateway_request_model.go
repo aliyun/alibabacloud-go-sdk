@@ -20,14 +20,20 @@ type iUpdateRspDomainServerProhibitStatusForGatewayRequest interface {
 }
 
 type UpdateRspDomainServerProhibitStatusForGatewayRequest struct {
+	// A collection of domain name statuses to add.
 	AddStatusList []*UpdateRspDomainServerProhibitStatusForGatewayRequestAddStatusList `json:"AddStatusList,omitempty" xml:"AddStatusList,omitempty" type:"Repeated"`
+	// A parameter that ensures idempotence.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// asdf
-	ClientToken      *string                                                                 `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// A collection of domain name statuses to delete.
 	DeleteStatusList []*UpdateRspDomainServerProhibitStatusForGatewayRequestDeleteStatusList `json:"DeleteStatusList,omitempty" xml:"DeleteStatusList,omitempty" type:"Repeated"`
+	// The domain name whose serverHold status you want to change.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -103,10 +109,17 @@ func (s *UpdateRspDomainServerProhibitStatusForGatewayRequest) Validate() error 
 }
 
 type UpdateRspDomainServerProhibitStatusForGatewayRequestAddStatusList struct {
+	// The domain name status.
+	//
 	// example:
 	//
 	// serverDeleteProhibited
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The description of the status.
+	//
+	// example:
+	//
+	// 实名认证未通过，增加serverUpdateProhibited状态
 	StatusMsg *string `json:"StatusMsg,omitempty" xml:"StatusMsg,omitempty"`
 }
 
@@ -141,10 +154,17 @@ func (s *UpdateRspDomainServerProhibitStatusForGatewayRequestAddStatusList) Vali
 }
 
 type UpdateRspDomainServerProhibitStatusForGatewayRequestDeleteStatusList struct {
+	// The domain name status.
+	//
 	// example:
 	//
 	// serverDeleteProhibited
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The description of the status.
+	//
+	// example:
+	//
+	// 实名认证通过，删除serverUpdateProhibited状态
 	StatusMsg *string `json:"StatusMsg,omitempty" xml:"StatusMsg,omitempty"`
 }
 

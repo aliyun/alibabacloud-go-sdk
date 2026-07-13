@@ -18,11 +18,13 @@ type iUpdateRecursionRecordRemarkRequest interface {
 }
 
 type UpdateRecursionRecordRemarkRequest struct {
+	// A client token used to ensure the idempotence of the request. Generate a unique value for this parameter from your client. The value can contain only ASCII characters and must be no more than 64 characters long.
+	//
 	// example:
 	//
 	// e432232342423ew423
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// record id
+	// The ID of the record.
 	//
 	// This parameter is required.
 	//
@@ -30,6 +32,8 @@ type UpdateRecursionRecordRemarkRequest struct {
 	//
 	// 173671468000010
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The remarks.
+	//
 	// example:
 	//
 	// test

@@ -40,81 +40,81 @@ type iSearchCloudGtmAddressesRequest interface {
 }
 
 type SearchCloudGtmAddressesRequest struct {
-	// The language of the response. Valid values:
+	// The language of the return value. Valid values:
 	//
-	// 	- zh-CN: Chinese
+	// - zh-CN: Chinese.
 	//
-	// 	- en-US (default): English
+	// - en-US: English. This is the default value.
 	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// Query by service address with precise conditions, supporting IP addresses or domain names.
+	// Performs an exact search by endpoint. IP addresses and domain names are supported.
 	//
 	// example:
 	//
 	// 223.5.XX.XX
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The address ID. This ID uniquely identifies the address.
+	// The ID of the address. The address ID is a unique identifier.
 	//
 	// example:
 	//
-	// addr-89518218114368**92
+	// addr-89518218114368****
 	AddressId *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
-	// Search by address availability status with precise conditions:
+	// Performs an exact search by the availability status of the address.
 	//
-	// - available
+	// - available: The address is available.
 	//
-	// - unavailable
+	// - unavailable: The address is unavailable.
 	//
 	// example:
 	//
 	// available
 	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
-	// Query by exact address enable status:
+	// Performs an exact search by the status of the address.
 	//
-	// - enable: enabled status
+	// - enable: The address is enabled.
 	//
-	// - disable: disabled status
+	// - disable: The address is disabled.
 	//
 	// example:
 	//
 	// enable
 	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
-	// The health state of the addresses that you want to query. Valid values:
+	// Performs an exact search by the health status of the address.
 	//
-	// 	- ok: The addresses pass all health checks of the referenced health check templates.
+	// - ok: All health check tasks for the referenced health check template are normal.
 	//
-	// 	- ok_alert: The addresses fail some health checks of the referenced health check templates, but the addresses are deemed available.
+	// - ok_alert: Some health check tasks for the referenced health check template are abnormal, but the address is still considered normal.
 	//
-	// 	- ok_no_monitor: The addresses do not reference any health check template.
+	// - ok_no_monitor: The address does not reference any health check templates.
 	//
-	// 	- exceptional: The addresses fail some or all health checks of the referenced health check templates, and the addresses are deemed unavailable.
+	// - exceptional: Some or all health check tasks for the referenced health check template are abnormal, and the address is considered abnormal.
 	//
 	// example:
 	//
 	// ok
 	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
-	// Health check template name.
+	// The name of the health check template.
 	//
 	// example:
 	//
 	// Ping-IPv4
 	MonitorTemplateName *string `json:"MonitorTemplateName,omitempty" xml:"MonitorTemplateName,omitempty"`
-	// The logical condition for querying addresses by name. This parameter is required if you want to query addresses by name. Valid values:
+	// The search logic for querying by address name. This parameter is required when you query by address name.
 	//
-	// 	- and: displays the results that match all search conditions.
+	// - and: The query returns results that match all the specified keywords.
 	//
-	// 	- or: displays the results that match some or all search conditions.
+	// - or: The query returns results that match some or all of the specified keywords.
 	//
 	// example:
 	//
 	// or
 	NameSearchCondition *string `json:"NameSearchCondition,omitempty" xml:"NameSearchCondition,omitempty"`
-	// Address name, usually for users to distinguish between different addresses.
+	// The name of the address. This name is used for easy identification.
 	Names []*string `json:"Names,omitempty" xml:"Names,omitempty" type:"Repeated"`
-	// Current page number, starting from 1, default is 1.
+	// The current page number. The value starts from 1. The default value is 1.
 	//
 	// This parameter is required.
 	//
@@ -122,7 +122,7 @@ type SearchCloudGtmAddressesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of rows per page when paginating queries, with a maximum value of 100 and a default of 20.
+	// The number of entries to return on each page for a paged query. The maximum value is 100. The default value is 20.
 	//
 	// This parameter is required.
 	//
@@ -130,19 +130,19 @@ type SearchCloudGtmAddressesRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The logical condition for querying addresses by additional description. This parameter is required if you want to query addresses by additional description. Valid values:
+	// The search logic for querying by address remarks. This parameter is required when you query by address remarks.
 	//
-	// and: displays the results that match all search conditions.
+	// and: The query returns results that match all the specified keywords.
 	//
-	// or: displays the results that match some or all search conditions.
+	// or: The query returns results that match some or all of the specified keywords.
 	//
 	// example:
 	//
 	// or
 	RemarkSearchCondition *string `json:"RemarkSearchCondition,omitempty" xml:"RemarkSearchCondition,omitempty"`
-	// Remarks for the address.
+	// The remarks for the address.
 	Remarks []*string `json:"Remarks,omitempty" xml:"Remarks,omitempty" type:"Repeated"`
-	// Search precisely by address type conditions:
+	// Performs an exact search by the address type.
 	//
 	// - IPv4
 	//

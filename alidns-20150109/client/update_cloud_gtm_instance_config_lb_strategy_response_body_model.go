@@ -16,10 +16,18 @@ type iUpdateCloudGtmInstanceConfigLbStrategyResponseBody interface {
 }
 
 type UpdateCloudGtmInstanceConfigLbStrategyResponseBody struct {
+	// The unique identifier for the request.
+	//
 	// example:
 	//
 	// 0F32959D-417B-4D66-8463-68606605E3E2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful. Valid values:
+	//
+	// - **true**: The operation was successful.
+	//
+	// - **false**: The operation failed.
+	//
 	// example:
 	//
 	// true

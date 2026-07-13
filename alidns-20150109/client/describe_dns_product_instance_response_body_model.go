@@ -84,150 +84,158 @@ type iDescribeDnsProductInstanceResponseBody interface {
 }
 
 type DescribeDnsProductInstanceResponseBody struct {
-	// Indicates whether auto-renewal was enabled. Valid values:
+	// Indicates whether auto-renewal is enabled for the instance.
 	//
-	// 	- true: Auto-renewal was enabled.
+	// - true: Auto-renewal is enabled.
 	//
-	// 	- false: Auto-renewal was not enabled.
+	// - false: Auto-renewal is disabled.
 	//
 	// example:
 	//
 	// true
 	AutoRenewal *bool `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	// The number of times that you can change the domain names that are bound to the paid Alibaba Cloud DNS instance. This parameter applies to Alibaba Cloud DNS instances of the custom edition.
+	// The number of times the domain name can be changed for the paid DNS instance. This parameter is available for the Custom Edition.
 	//
 	// example:
 	//
 	// 3
 	BindCount *int64 `json:"BindCount,omitempty" xml:"BindCount,omitempty"`
-	// The number of domain names that can be bound to the paid Alibaba Cloud DNS instance. This parameter applies to Alibaba Cloud DNS instances of Personal Edition, Enterprise Standard Edition, and Enterprise Ultimate Edition.
+	// The number of domain names that can be attached to the paid DNS instance. This parameter is available for the Personal and Ultimate editions.
 	//
 	// example:
 	//
 	// 5
 	BindDomainCount *int64 `json:"BindDomainCount,omitempty" xml:"BindDomainCount,omitempty"`
-	// The number of domain names that are bound to the paid Alibaba Cloud DNS instance. This parameter applies to Alibaba Cloud DNS instances of Personal Edition, Enterprise Standard Edition, and Enterprise Ultimate Edition.
+	// The number of domain names that are attached to the paid DNS instance. This parameter is available for the Personal and Ultimate editions.
 	//
 	// example:
 	//
 	// 3
 	BindDomainUsedCount *int64 `json:"BindDomainUsedCount,omitempty" xml:"BindDomainUsedCount,omitempty"`
-	// The number of times that you have changed the domain names that are bound to the paid Alibaba Cloud DNS instance. This parameter applies to Alibaba Cloud DNS instances of the custom edition.
+	// The number of times the domain name has been changed for the paid DNS instance. This parameter is available for the Custom Edition.
 	//
 	// example:
 	//
 	// 1
 	BindUsedCount *int64 `json:"BindUsedCount,omitempty" xml:"BindUsedCount,omitempty"`
-	// The DDoS protection traffic. Unit: GB.
+	// The DDoS protection bandwidth. Unit: Gbit/s.
 	//
 	// example:
 	//
 	// 50
 	DDosDefendFlow *int64 `json:"DDosDefendFlow,omitempty" xml:"DDosDefendFlow,omitempty"`
-	// The DDoS protection frequency. Unit: 10,000 QPS. This parameter applies to Alibaba Cloud DNS instances of the custom edition.
+	// The DDoS protection capacity in queries per second (QPS). The unit is 10,000 QPS. This parameter is available for the Custom Edition.
 	//
 	// example:
 	//
 	// 50
 	DDosDefendQuery *int64 `json:"DDosDefendQuery,omitempty" xml:"DDosDefendQuery,omitempty"`
-	// The maximum number of IP addresses that are used for load balancing in a single line of a domain name.
+	// The Server Load Balancer (SLB) capacity. This is the number of IP addresses that can be configured for a domain name on a single line.
 	//
 	// example:
 	//
 	// 15
 	DnsSLBCount *int64 `json:"DnsSLBCount,omitempty" xml:"DnsSLBCount,omitempty"`
-	// The level of DNS protection. Valid values:
+	// The DNS security level. Valid values:
 	//
-	// 	- no: No DNS protection is provided.
+	// - no: Not required
 	//
-	// 	- basic: Basic DNS protection is provided.
+	// - basic: Basic DNS attack protection
 	//
-	// 	- advanced: Advanced DNS protection is provided.
+	// - advanced: Advanced DNS attack protection
 	//
 	// example:
 	//
 	// advanced
 	DnsSecurity *string                                           `json:"DnsSecurity,omitempty" xml:"DnsSecurity,omitempty"`
 	DnsServers  *DescribeDnsProductInstanceResponseBodyDnsServers `json:"DnsServers,omitempty" xml:"DnsServers,omitempty" type:"Struct"`
-	// The domain name that is bound to the paid instance.
+	// The attached domain name.
 	//
-	// If no value is returned for this parameter, no domain name is bound to the paid instance.
+	// If this parameter is empty, no domain name is attached.
 	//
 	// example:
 	//
 	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The type of the instance. Valid values:
+	// The type of the instance:
 	//
-	// 	- PUBLIC: authoritative domain name
+	// - PUBLIC: An instance for an authoritative domain name.
 	//
-	// 	- CACHE: cache-accelerated domain name
+	// - CACHE: An instance for a recursive DNS proxy.
 	//
 	// example:
 	//
 	// PUBLIC
 	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
-	// The time when the instance expired. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time when the instance expires.
 	//
 	// example:
 	//
 	// 2015-12-12T09:23Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time when the instance expired. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the instance expires. This is a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1474335170000
 	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	// Indicates whether global server load balancing (GSLB) is supported. Valid values:
+	// Indicates whether Global Server Load Balancer (GSLB) is allowed.
 	//
-	// 	- true: GSLB is supported.
+	// - true: Allowed
 	//
-	// 	- false: GSLB is not supported.
+	// - false: Not allowed
 	//
 	// example:
 	//
 	// true
 	Gslb *bool `json:"Gslb,omitempty" xml:"Gslb,omitempty"`
-	// The ISP resolution lines. Valid values:
+	// The carrier line from which the DNS request was initiated. Valid values:
 	//
-	// 	- China Telecom
+	// - China Telecom
 	//
-	// 	- China Mobile
+	// - China Mobile
 	//
-	// 	- China Unicom
+	// - China Unicom
 	//
-	// 	- China Education and Research Network (CERNET)
+	// - China Education and Research Network
 	//
-	// 	- China Broadcasting Network (CBN)
+	// - China Broadcasting Network
 	//
-	// 	- Dr Peng Telecom & Media Group
+	// - Dr. Peng Group
+	//
+	// example:
+	//
+	// 中国电信
 	ISPLines *string `json:"ISPLines,omitempty" xml:"ISPLines,omitempty"`
-	// The regional ISP resolution lines. Valid values:
+	// The carrier line and province from which the DNS request was initiated. Valid values:
 	//
-	// 	- China Telecom (province)
+	// - China Telecom (by province)
 	//
-	// 	- China Mobile (province)
+	// - China Mobile (by province)
 	//
-	// 	- China Unicom (province)
+	// - China Unicom (by province)
 	//
-	// 	- CERNET (province)
+	// - China Education and Research Network (by province)
+	//
+	// example:
+	//
+	// 电信_浙江
 	ISPRegionLines *string `json:"ISPRegionLines,omitempty" xml:"ISPRegionLines,omitempty"`
-	// Indicates whether the Domain Name System (DNS) servers stopped responding to all DNS requests. Valid values:
+	// Indicates whether the domain name is in a blackhole filtering status.
 	//
-	// 	- true: The DNS servers stopped responding to all DNS requests.
+	// - true: The domain name is in a blackhole filtering status.
 	//
-	// 	- false: The DNS servers did not stop responding to all DNS requests.
+	// - false: The domain name is not in a blackhole filtering status.
 	//
 	// example:
 	//
 	// false
 	InBlackHole *bool `json:"InBlackHole,omitempty" xml:"InBlackHole,omitempty"`
-	// Indicates whether the DNS servers stopped responding to abnormal requests sent to the domain names.
+	// Indicates whether the domain name is undergoing traffic scrubbing.
 	//
-	// 	- true: The DNS servers stopped responding to abnormal requests sent to the domain names.
+	// - true: Traffic scrubbing is in progress.
 	//
-	// 	- false: The DNS servers did not stop responding to abnormal requests sent to the domain names.
+	// - false: Traffic scrubbing is not in progress.
 	//
 	// example:
 	//
@@ -239,7 +247,7 @@ type DescribeDnsProductInstanceResponseBody struct {
 	//
 	// i-8fxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The interval at which the instance is monitored. Unit: minutes.
+	// The monitoring frequency. Unit: minutes.
 	//
 	// example:
 	//
@@ -251,19 +259,23 @@ type DescribeDnsProductInstanceResponseBody struct {
 	//
 	// 5
 	MonitorNodeCount *int64 `json:"MonitorNodeCount,omitempty" xml:"MonitorNodeCount,omitempty"`
-	// The number of monitoring tasks.
+	// The number of monitoring jobs.
 	//
 	// example:
 	//
 	// 2
 	MonitorTaskCount *int64 `json:"MonitorTaskCount,omitempty" xml:"MonitorTaskCount,omitempty"`
-	// The DDoS protection traffic outside the Chinese mainland. Unit: GB.
+	// The DDoS protection bandwidth for regions outside China. Unit: Gbit/s.
 	//
 	// example:
 	//
 	// 1
 	OverseaDDosDefendFlow *int64 `json:"OverseaDDosDefendFlow,omitempty" xml:"OverseaDDosDefendFlow,omitempty"`
-	// The line outside the Chinese mainland.
+	// The line for regions outside China.
+	//
+	// example:
+	//
+	// 海外大洲
 	OverseaLine *string `json:"OverseaLine,omitempty" xml:"OverseaLine,omitempty"`
 	// The billing method.
 	//
@@ -271,69 +283,77 @@ type DescribeDnsProductInstanceResponseBody struct {
 	//
 	// Subscription
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// Indicates whether the DNS request lines are regional lines. Valid values:
+	// Indicates whether regional lines are used.
 	//
-	// 	- true: The DNS request lines are regional lines.
+	// - true: Regional lines are used.
 	//
-	// 	- false: The DNS request lines are not regional lines.
+	// - false: Regional lines are not used.
 	//
 	// example:
 	//
 	// true
 	RegionLines *bool `json:"RegionLines,omitempty" xml:"RegionLines,omitempty"`
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//
-	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
+	// 536E9CAD-DB30-4647-AC87-xxxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The search engine resolution lines. Valid values:
+	// The search engine line. Valid values:
 	//
-	// 	- Google
+	// - Google
 	//
-	// 	- Baidu
+	// - Baidu
 	//
-	// 	- Bing
+	// - Bing
 	//
-	// 	- Youdao
+	// - Youdao
+	//
+	// example:
+	//
+	// 谷歌
 	SearchEngineLines *string `json:"SearchEngineLines,omitempty" xml:"SearchEngineLines,omitempty"`
-	// The time when the instance was purchased. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time when the instance was purchased.
 	//
 	// example:
 	//
 	// 2015-12-12T09:23Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The time when the instance was purchased. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the instance was purchased. This is a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1474335170000
 	StartTimestamp *int64 `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
-	// The number of subdomain name levels.
+	// The number of subdomain levels.
 	//
 	// example:
 	//
 	// 6
 	SubDomainLevel *int64 `json:"SubDomainLevel,omitempty" xml:"SubDomainLevel,omitempty"`
-	// The minimum time-to-live (TTL) period. Unit: seconds.
+	// The minimum Time to Live (TTL) value. Unit: seconds.
 	//
 	// example:
 	//
 	// 10
 	TTLMinValue *int64 `json:"TTLMinValue,omitempty" xml:"TTLMinValue,omitempty"`
-	// The number of the forwarded URLs.
+	// The number of URL forwards.
 	//
 	// example:
 	//
 	// 20
 	URLForwardCount *int64 `json:"URLForwardCount,omitempty" xml:"URLForwardCount,omitempty"`
-	// The version code of Alibaba Cloud DNS.
+	// The code of the Alibaba Cloud DNS edition.
 	//
 	// example:
 	//
 	// version1
 	VersionCode *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
-	// The edition of Alibaba Cloud DNS.
+	// The name of the Alibaba Cloud DNS edition.
+	//
+	// example:
+	//
+	// 企业旗舰版
 	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 

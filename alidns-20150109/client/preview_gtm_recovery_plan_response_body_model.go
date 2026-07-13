@@ -24,32 +24,32 @@ type iPreviewGtmRecoveryPlanResponseBody interface {
 }
 
 type PreviewGtmRecoveryPlanResponseBody struct {
-	// The page number of the returned page.
+	// The page number. The value starts from **1**. Default: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries returned per page. Maximum value: **100**. Default: **20**.
 	//
 	// example:
 	//
 	// 5
 	PageSize *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Previews *PreviewGtmRecoveryPlanResponseBodyPreviews `json:"Previews,omitempty" xml:"Previews,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// 853805EA-3D47-47D5-9A1A-A45C24313ABD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned on all pages.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 15
 	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	// The total number of pages returned.
+	// The total number of pages.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iSetGtmMonitorStatusResponseBody interface {
 }
 
 type SetGtmMonitorStatusResponseBody struct {
-	// The ID of the request.
+	// The unique request ID.
 	//
 	// example:
 	//

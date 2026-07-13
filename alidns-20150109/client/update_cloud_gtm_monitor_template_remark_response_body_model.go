@@ -16,17 +16,17 @@ type iUpdateCloudGtmMonitorTemplateRemarkResponseBody interface {
 }
 
 type UpdateCloudGtmMonitorTemplateRemarkResponseBody struct {
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//
 	// 6856BCF6-11D6-4D7E-AC53-FD579933522B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Modify the health check template remark operation status:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true: Operation successful
+	// - true: The operation was successful.
 	//
-	// - false: Operation failed
+	// - false: The operation failed.
 	//
 	// example:
 	//

@@ -18,11 +18,20 @@ type iUpdateRecursionZoneRemarkRequest interface {
 }
 
 type UpdateRecursionZoneRemarkRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You must generate a unique value for this parameter. The client token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 21079fa016944979537637959d09bc
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Remark      *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The remarks.
+	//
+	// example:
+	//
+	// 备注
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The zone ID. This is the unique identifier of the zone.
+	//
 	// example:
 	//
 	// 173671468000011

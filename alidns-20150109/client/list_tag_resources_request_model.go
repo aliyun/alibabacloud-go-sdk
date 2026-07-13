@@ -22,27 +22,27 @@ type iListTagResourcesRequest interface {
 }
 
 type ListTagResourcesRequest struct {
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The pagination token. It can be used in the next request to retrieve a new page of results.
+	// The token used to start the next query.
 	//
 	// example:
 	//
 	// 4698691
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the resource.
+	// The resource ID.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the resource. Valid values:
+	// The resource type. Valid value:
 	//
-	// 	- **DOMAIN**: domain name
+	// - **DOMAIN**: domain name
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type ListTagResourcesRequest struct {
 	//
 	// DOMAIN
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags.
+	// An array of tag key-value pairs.
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -127,7 +127,7 @@ type ListTagResourcesRequestTag struct {
 	//
 	// abcd
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The key value.
+	// The tag value.
 	//
 	// example:
 	//

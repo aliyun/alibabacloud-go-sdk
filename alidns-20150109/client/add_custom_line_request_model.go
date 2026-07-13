@@ -20,7 +20,7 @@ type iAddCustomLineRequest interface {
 }
 
 type AddCustomLineRequest struct {
-	// The domain name. You can call the [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the domain name.
+	// The domain name.<props="china">Call the [DescribeDomains](https://help.aliyun.com/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c4g.11186623.help-menu-search-29697.d_0) operation to obtain the domain name.<props="intl">Call the [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the domain name.
 	//
 	// This parameter is required.
 	//
@@ -28,15 +28,15 @@ type AddCustomLineRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The CIDR blocks.
+	// The list of IP address segments.
 	//
 	// This parameter is required.
 	IpSegment []*AddCustomLineRequestIpSegment `json:"IpSegment,omitempty" xml:"IpSegment,omitempty" type:"Repeated"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
@@ -45,6 +45,10 @@ type AddCustomLineRequest struct {
 	// The name of the custom line.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 北京线路
 	LineName *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
 }
 
@@ -106,13 +110,13 @@ func (s *AddCustomLineRequest) Validate() error {
 }
 
 type AddCustomLineRequestIpSegment struct {
-	// The end IP address of the CIDR block.
+	// The end IP address of the segment.
 	//
 	// example:
 	//
 	// 192.0.2.254
 	EndIp *string `json:"EndIp,omitempty" xml:"EndIp,omitempty"`
-	// The start IP address of the CIDR block.
+	// The start IP address of the segment.
 	//
 	// example:
 	//

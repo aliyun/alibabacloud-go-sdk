@@ -16,8 +16,9 @@ type iDescribeInterAuthStatisticsHistoryResponseBody interface {
 }
 
 type DescribeInterAuthStatisticsHistoryResponseBody struct {
+	// An array of data objects.
 	Data []*DescribeInterAuthStatisticsHistoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -65,30 +66,48 @@ func (s *DescribeInterAuthStatisticsHistoryResponseBody) Validate() error {
 }
 
 type DescribeInterAuthStatisticsHistoryResponseBodyData struct {
+	// The request count.
+	//
 	// example:
 	//
 	// 20
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The domain name.
+	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The DNS query protocol.
+	//
+	// - UDP
+	//
+	// - TCP
+	//
 	// example:
 	//
 	// HTTP
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The query type.
+	//
 	// example:
 	//
 	// A
 	Qtype *string `json:"Qtype,omitempty" xml:"Qtype,omitempty"`
+	// The success rate or ratio.
+	//
 	// example:
 	//
 	// 100
 	Ratio *int64 `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	// The timestamp of the data point in milliseconds.
+	//
 	// example:
 	//
 	// 1706716800000
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The zone name.
+	//
 	// example:
 	//
 	// mt2.cn

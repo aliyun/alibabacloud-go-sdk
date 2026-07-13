@@ -18,11 +18,16 @@ type iUpdateRecursionZoneEffectiveScopeShrinkRequest interface {
 }
 
 type UpdateRecursionZoneEffectiveScopeShrinkRequest struct {
+	// A client-generated token to ensure request idempotence. The token must be unique for each request. It can contain a maximum of 64 ASCII characters.
+	//
 	// example:
 	//
 	// 21079fa016944979537637959d09bc
-	ClientToken           *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// A list of effective scopes.
 	EffectiveScopesShrink *string `json:"EffectiveScopes,omitempty" xml:"EffectiveScopes,omitempty"`
+	// The unique ID of the zone.
+	//
 	// This parameter is required.
 	//
 	// example:

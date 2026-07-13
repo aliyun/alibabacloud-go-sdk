@@ -18,27 +18,27 @@ type iGetTxtRecordForVerifyRequest interface {
 }
 
 type GetTxtRecordForVerifyRequest struct {
-	// The ID of the Domain Name System (DNS) record. You can call the [DescribeDomainRecords](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomainrecords?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the ID.
+	// The domain name. The [DescribeDomains](https://www.alibabacloud.com/help/en/dns/api-alidns-2015-01-09-describedomains) operation returns a list of domain names.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The feature verified by using the TXT record. Valid values:
+	// The purpose of the TXT record verification. Valid values:
 	//
-	// 	- ADD_SUB_DOMAIN: add a subdomain for verification.
+	// - ADD_SUB_DOMAIN: Add a subdomain for verification.
 	//
-	// 	- RETRIEVAL: add other subdomains for verification
+	// - RETRIEVAL: Other verifications.
 	//
 	// This parameter is required.
 	//

@@ -17,6 +17,8 @@ type iDescribeSupportLinesResponseBody interface {
 
 type DescribeSupportLinesResponseBody struct {
 	RecordLines *DescribeSupportLinesResponseBodyRecordLines `json:"RecordLines,omitempty" xml:"RecordLines,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CFDA0830-7D6E-4C13-8632-B57C7EDCF079

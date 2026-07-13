@@ -38,63 +38,69 @@ type DescribeRecordStatisticsSummaryRequest struct {
 	//
 	// example:
 	//
-	// dns-example.com
+	// example.top
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The type of the domain name. The parameter value is not case-sensitive. Valid values:
+	// The type of the domain name. This parameter is not case-sensitive. Valid values:
 	//
-	// 	- PUBLIC (default): hosted public domain name
+	// - PUBLIC: authoritative domain name (default)
 	//
-	// 	- CACHE: cache-accelerated domain name
+	// - CACHE: proxy domain name
 	//
 	// example:
 	//
 	// PUBLIC
 	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
-	// The end date of the query. Specify the start date in the **YYYY-MM-DD*	- format.
+	// The end date of the query. The format is **YYYY-MM-DD**.
 	//
-	// The default value is the day when you query the data.
+	// The default value is the current day.
 	//
 	// example:
 	//
 	// 2019-07-04
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The keyword for searches in %KeyWord% mode. The value is not case-sensitive.
+	// The keyword. The search is performed in the %KeyWord% format and is not case-sensitive.
 	//
 	// example:
 	//
 	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The language.
+	// The language of the response. Valid values:
+	//
+	// - zh: Chinese
+	//
+	// - en: English
+	//
+	// The default value is en.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The page number. Pages start from page **1**. Default value: **1**.
+	// The page number. The value starts from **1**. The default value is **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: **1 to 100**. Default value: **20**.
+	// The number of entries to return on each page. The maximum value is **100**, the minimum value is **1**, and the default value is **20**.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The search mode of the keyword. Valid values:
+	// The search mode for the keyword. Valid values:
 	//
-	// 	- **LIKE*	- (default): fuzzy search
+	// - **LIKE**: fuzzy search (default)
 	//
-	// 	- **EXACT**: exact search
+	// - **EXACT**: exact match
 	//
 	// example:
 	//
 	// EXACT
 	SearchMode *string `json:"SearchMode,omitempty" xml:"SearchMode,omitempty"`
-	// The start date of the query. Specify the start date in the **YYYY-MM-DD*	- format.
+	// The start date of the query. The format is **YYYY-MM-DD**.
 	//
-	// You can only query the DNS records within the last 90 days.``
+	// You can query data only from the last 90 days. The value of `StartDate` must be greater than or equal to the current date minus 90 days.
 	//
 	// This parameter is required.
 	//
@@ -102,7 +108,13 @@ type DescribeRecordStatisticsSummaryRequest struct {
 	//
 	// 2019-07-04
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	// The maximum number of DNS requests that you can obtain. You can obtain data about a domain name with DNS request volume less than or equal to the maximum number. For example, if you set this parameter to 100, you can query domain names with less than 100 DNS requests.
+	// The threshold for the number of DNS requests. This operation returns data for subdomains whose request count is less than or equal to this value.
+	//
+	// - If you set this parameter to 100, subdomains with a request count from 1 to 100 are returned.
+	//
+	// - If you leave this parameter empty, all subdomains that have DNS requests are returned.
+	//
+	// - If you set this parameter to 0, subdomains with no DNS requests are returned. If a domain name is added on the current day and has no requests, you can query its data on the next day.
 	//
 	// example:
 	//

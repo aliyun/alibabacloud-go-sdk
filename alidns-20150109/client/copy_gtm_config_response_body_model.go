@@ -14,7 +14,7 @@ type iCopyGtmConfigResponseBody interface {
 }
 
 type CopyGtmConfigResponseBody struct {
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//

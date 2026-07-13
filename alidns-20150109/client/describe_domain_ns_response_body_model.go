@@ -24,13 +24,13 @@ type iDescribeDomainNsResponseBody interface {
 }
 
 type DescribeDomainNsResponseBody struct {
-	// Indicates whether all the name servers are Alibaba Cloud DNS servers.
+	// Indicates whether all name servers are Alibaba Cloud DNS servers.
 	//
 	// example:
 	//
 	// true
 	AllAliDns *bool `json:"AllAliDns,omitempty" xml:"AllAliDns,omitempty"`
-	// The cause code of the detection failure.
+	// The error code returned if the detection fails.
 	//
 	// example:
 	//
@@ -38,13 +38,13 @@ type DescribeDomainNsResponseBody struct {
 	DetectFailedReasonCode *string                                       `json:"DetectFailedReasonCode,omitempty" xml:"DetectFailedReasonCode,omitempty"`
 	DnsServers             *DescribeDomainNsResponseBodyDnsServers       `json:"DnsServers,omitempty" xml:"DnsServers,omitempty" type:"Struct"`
 	ExpectDnsServers       *DescribeDomainNsResponseBodyExpectDnsServers `json:"ExpectDnsServers,omitempty" xml:"ExpectDnsServers,omitempty" type:"Struct"`
-	// Indicates whether the name servers include Alibaba Cloud DNS servers.
+	// Indicates whether the list of name servers includes Alibaba Cloud DNS servers.
 	//
 	// example:
 	//
 	// true
 	IncludeAliDns *bool `json:"IncludeAliDns,omitempty" xml:"IncludeAliDns,omitempty"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//

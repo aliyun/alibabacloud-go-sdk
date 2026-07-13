@@ -16,8 +16,9 @@ type iDescribeInterAuthStatisticsZoneOverviewResponseBody interface {
 }
 
 type DescribeInterAuthStatisticsZoneOverviewResponseBody struct {
+	// The overview data for the zone.
 	Data *DescribeInterAuthStatisticsZoneOverviewResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -61,14 +62,20 @@ func (s *DescribeInterAuthStatisticsZoneOverviewResponseBody) Validate() error {
 }
 
 type DescribeInterAuthStatisticsZoneOverviewResponseBodyData struct {
+	// The number of domain names with refused responses.
+	//
 	// example:
 	//
 	// 6
 	RefusedDomainCount *int64 `json:"RefusedDomainCount,omitempty" xml:"RefusedDomainCount,omitempty"`
+	// The number of domain names with a sudden drop in QPS.
+	//
 	// example:
 	//
 	// 66
 	SuddenDropDomainCount *int64 `json:"SuddenDropDomainCount,omitempty" xml:"SuddenDropDomainCount,omitempty"`
+	// The number of domain names with a sudden increase in QPS.
+	//
 	// example:
 	//
 	// 56

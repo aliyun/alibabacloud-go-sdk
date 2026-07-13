@@ -22,7 +22,7 @@ type UpdateDomainGroupResponseBody struct {
 	//
 	// example:
 	//
-	// 2223
+	// 60bb3ef15ace449082cf914ed3ea****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The new name of the domain name group.
 	//
@@ -30,7 +30,7 @@ type UpdateDomainGroupResponseBody struct {
 	//
 	// NewName
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//

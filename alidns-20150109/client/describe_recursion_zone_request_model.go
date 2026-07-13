@@ -14,6 +14,8 @@ type iDescribeRecursionZoneRequest interface {
 }
 
 type DescribeRecursionZoneRequest struct {
+	// The zone ID. This is the unique identifier of the zone.
+	//
 	// This parameter is required.
 	//
 	// example:

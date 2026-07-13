@@ -30,21 +30,25 @@ type iUpdateGtmInstanceGlobalConfigRequest interface {
 }
 
 type UpdateGtmInstanceGlobalConfigRequest struct {
-	// The alert group. Only one alert group is supported.
+	// The alert contact group. Only one alert contact group is supported.
 	//
-	// >  This parameter is required only for the first modification.
-	AlertGroup *string `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
-	// If you set **CnameMode*	- to **CUSTOM**, you must specify the CnameCustomDomainName parameter, which must be set to a primary domain name.
+	// > This parameter is required when you update the instance for the first time. It is optional for subsequent updates.
 	//
 	// example:
 	//
-	// www.example.com
+	// [\\"研发组\\"]
+	AlertGroup *string `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
+	// This parameter is required when you set **CnameMode*	- to **CUSTOM**. The value must be the primary domain name.
+	//
+	// example:
+	//
+	// dns-example.top
 	CnameCustomDomainName *string `json:"CnameCustomDomainName,omitempty" xml:"CnameCustomDomainName,omitempty"`
-	// Specifies whether to use a system-assigned canonical name (CNAME) or a custom CNAME to access GTM. Valid values:
+	// The connection type. Valid values:
 	//
-	// 	- **SYSTEM_ASSIGN**: system-assigned CNAME
+	// - **SYSTEM_ASSIGN**: system-assigned
 	//
-	// 	- **CUSTOM**: custom CNAME
+	// - **CUSTOM**: custom
 	//
 	// example:
 	//
@@ -56,11 +60,15 @@ type UpdateGtmInstanceGlobalConfigRequest struct {
 	//
 	// example:
 	//
-	// instance1
+	// gtm-cn-cs02xyk4a**
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the GTM instance.
+	// The name of the instance.
 	//
-	// >  This parameter is required only for the first modification.
+	// > This parameter is required when you update the instance for the first time. It is optional for subsequent updates.
+	//
+	// example:
+	//
+	// 测试实例
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The language.
 	//
@@ -68,19 +76,19 @@ type UpdateGtmInstanceGlobalConfigRequest struct {
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The balancing policy. Valid values:
+	// The load balancing policy. Valid values:
 	//
-	// 	- **ALL_RR**: load balancing
+	// - **ALL_RR**: round-robin
 	//
-	// 	- **RATIO**: weighted round-robin
+	// - **RATIO**: weighted round-robin
 	//
-	// >  This parameter is required only for the first modification.
+	// > This parameter is required when you update the instance for the first time. It is optional for subsequent updates.
 	//
 	// example:
 	//
 	// RATIO
 	LbaStrategy *string `json:"LbaStrategy,omitempty" xml:"LbaStrategy,omitempty"`
-	// The global time-to-live (TTL).
+	// The global Time to Live (TTL).
 	//
 	// example:
 	//
@@ -88,11 +96,11 @@ type UpdateGtmInstanceGlobalConfigRequest struct {
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
 	// The primary domain name.
 	//
-	// >  This parameter is required only for the first modification.
+	// > This parameter is required when you update the instance for the first time. It is optional for subsequent updates.
 	//
 	// example:
 	//
-	// www.example.com
+	// dns-example.top
 	UserDomainName *string `json:"UserDomainName,omitempty" xml:"UserDomainName,omitempty"`
 }
 

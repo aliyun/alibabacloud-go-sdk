@@ -16,23 +16,23 @@ type iDeleteCustomLinesRequest interface {
 }
 
 type DeleteCustomLinesRequest struct {
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the request and response. The default value is **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The unique IDs of the custom lines that you want to delete. Separate the unique IDs with commas (,). You can call the [DescribeCustomLines](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describecustomlines?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the ID.
+	// The unique IDs of the custom lines. Separate multiple IDs with commas (,). To obtain the unique IDs, call the [DescribeCustomLines](https://www.alibabacloud.com/help/en/dns/api-alidns-2015-01-09-describecustomlines?spm=a2c63.p38356.help-menu-search-29697.d_0) operation.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 1234,1235
+	// 1*******,2*********
 	LineIds *string `json:"LineIds,omitempty" xml:"LineIds,omitempty"`
 }
 

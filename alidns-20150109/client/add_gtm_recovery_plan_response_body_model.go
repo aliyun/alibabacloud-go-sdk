@@ -22,7 +22,7 @@ type AddGtmRecoveryPlanResponseBody struct {
 	//
 	// 100
 	RecoveryPlanId *string `json:"RecoveryPlanId,omitempty" xml:"RecoveryPlanId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

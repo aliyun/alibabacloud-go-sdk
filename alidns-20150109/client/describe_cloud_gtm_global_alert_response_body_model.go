@@ -18,8 +18,10 @@ type iDescribeCloudGtmGlobalAlertResponseBody interface {
 }
 
 type DescribeCloudGtmGlobalAlertResponseBody struct {
+	// The alert configurations.
 	AlertConfig *DescribeCloudGtmGlobalAlertResponseBodyAlertConfig `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty" type:"Struct"`
-	AlertGroup  *DescribeCloudGtmGlobalAlertResponseBodyAlertGroup  `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty" type:"Struct"`
+	// The alert notification groups.
+	AlertGroup *DescribeCloudGtmGlobalAlertResponseBodyAlertGroup `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:

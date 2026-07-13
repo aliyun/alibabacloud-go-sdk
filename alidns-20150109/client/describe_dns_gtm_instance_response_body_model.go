@@ -38,7 +38,7 @@ type iDescribeDnsGtmInstanceResponseBody interface {
 }
 
 type DescribeDnsGtmInstanceResponseBody struct {
-	// The configurations of the instance.
+	// The instance configuration.
 	Config *DescribeDnsGtmInstanceResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
 	// The time when the instance was created.
 	//
@@ -46,19 +46,19 @@ type DescribeDnsGtmInstanceResponseBody struct {
 	//
 	// 2020-10-14T06:58Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The UNIX timestamp that indicates when the instance was created.
+	// The UNIX timestamp when the instance was created.
 	//
 	// example:
 	//
 	// 1602656937000
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The time when the instance expires.
+	// The expiration date.
 	//
 	// example:
 	//
 	// 2020-10-14T06:58Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The UNIX timestamp that indicates when the instance expires.
+	// The UNIX timestamp when the instance expires.
 	//
 	// example:
 	//
@@ -68,35 +68,35 @@ type DescribeDnsGtmInstanceResponseBody struct {
 	//
 	// example:
 	//
-	// instanceid1
+	// gtm-cn-wwo3a3hbz**
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The billing method. Valid value:
+	// The billing method.
 	//
-	// 	- Subscription: You can pay in advance for the use of resources.
+	// - Subscription: subscription
 	//
 	// example:
 	//
 	// Subscription
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// The ID of the request.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// 84314904-D047-4176-A0EC-256D7F68C7F5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group to which the instance belongs.
+	// The ID of the resource group.
 	//
 	// example:
 	//
-	// resourcegroupid1
+	// resourc*****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The total number of SMS notifications.
+	// The quota on the number of text message notifications.
 	//
 	// example:
 	//
 	// 100
 	SmsQuota *int32 `json:"SmsQuota,omitempty" xml:"SmsQuota,omitempty"`
-	// The total number of detection tasks.
+	// The quota on the number of health check tasks.
 	//
 	// example:
 	//
@@ -108,7 +108,7 @@ type DescribeDnsGtmInstanceResponseBody struct {
 	//
 	// example:
 	//
-	// versioncode1
+	// standard
 	VersionCode *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
 }
 
@@ -253,69 +253,69 @@ func (s *DescribeDnsGtmInstanceResponseBody) Validate() error {
 
 type DescribeDnsGtmInstanceResponseBodyConfig struct {
 	AlertConfig *DescribeDnsGtmInstanceResponseBodyConfigAlertConfig `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty" type:"Struct"`
-	// The name of the alert group.
+	// The alert contact group. The value is a \\`List\\<string>\\` in JSON format.
 	//
 	// example:
 	//
-	// alertgroup1
+	// ["test1","test2"]
 	AlertGroup *string `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
-	// The type of the CNAME domain name that is used to access the instance. Valid value:
+	// The type of the CNAME domain name used for access.
 	//
-	// 	- PUBLIC: The CNAME domain name is used to access the instance over the Internet.
+	// - PUBLIC: Internet-facing
 	//
 	// example:
 	//
-	// public
+	// PUBLIC
 	CnameType *string `json:"CnameType,omitempty" xml:"CnameType,omitempty"`
 	// The name of the instance.
 	//
 	// example:
 	//
-	// instancetest1
+	// test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The domain name that is used to access the instance over the Internet.
+	// The public access domain name.
 	//
 	// example:
 	//
-	// test.rr.gtm-003.com
+	// gtm-cn-wwo3a3hbz**.example.com
 	PubicZoneName *string `json:"PubicZoneName,omitempty" xml:"PubicZoneName,omitempty"`
-	// Indicates whether a custom CNAME domain name or a CNAME domain name assigned by the system is used to access the instance over the Internet. Valid values:
+	// The access method for the public CNAME.
 	//
-	// 	- CUSTOM: A custom CNAME domain name is used.
+	// - CUSTOM: custom
 	//
-	// 	- SYSTEM_ASSIGN: A CNAME domain name assigned by the system is used.
+	// - SYSTEM_ASSIGN: system-assigned. This feature is disabled.
 	//
 	// example:
 	//
-	// custom
+	// CUSTOM
 	PublicCnameMode *string `json:"PublicCnameMode,omitempty" xml:"PublicCnameMode,omitempty"`
-	// The hostname corresponding to the CNAME domain name that is used to access the instance over the Internet.
+	// The hostname for public access.
 	//
 	// example:
 	//
 	// test.rr
 	PublicRr *string `json:"PublicRr,omitempty" xml:"PublicRr,omitempty"`
-	// The service domain name that is used over the Internet.
+	// The user\\"s public service domain name.
 	//
 	// example:
 	//
 	// example.com
 	PublicUserDomainName *string `json:"PublicUserDomainName,omitempty" xml:"PublicUserDomainName,omitempty"`
-	// The type of the access policy. Valid values:
+	// The access policy mode.
 	//
-	// 	- LATENCY: Latency-based
+	// - LATENCY: latency-based
 	//
-	// 	- GEO: Geographical location-based
+	// - GEO: geography-based
 	//
 	// example:
 	//
 	// GEO
 	StrategyMode *string `json:"StrategyMode,omitempty" xml:"StrategyMode,omitempty"`
-	// The global time to live (TTL).
+	// The global TTL.
 	//
 	// example:
 	//
-	// 1
+	// 60
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
 }
 
@@ -516,20 +516,25 @@ func (s *DescribeDnsGtmInstanceResponseBodyConfigAlertConfigAlertConfig) Validat
 }
 
 type DescribeDnsGtmInstanceResponseBodyUsedQuota struct {
+	// The number of DingTalk notifications that were sent.
+	//
+	// example:
+	//
+	// 123
 	DingtalkUsedCount *int32 `json:"DingtalkUsedCount,omitempty" xml:"DingtalkUsedCount,omitempty"`
-	// The total number of emails that were sent.
+	// The number of email notifications that were sent.
 	//
 	// example:
 	//
 	// 123
 	EmailUsedCount *int32 `json:"EmailUsedCount,omitempty" xml:"EmailUsedCount,omitempty"`
-	// The total number of short messages that were sent.
+	// The number of text messages that were sent.
 	//
 	// example:
 	//
 	// 123
 	SmsUsedCount *int32 `json:"SmsUsedCount,omitempty" xml:"SmsUsedCount,omitempty"`
-	// The number of detection tasks that were created.
+	// The number of health check tasks that were created.
 	//
 	// example:
 	//

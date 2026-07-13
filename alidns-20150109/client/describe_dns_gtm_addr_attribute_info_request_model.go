@@ -18,33 +18,37 @@ type iDescribeDnsGtmAddrAttributeInfoRequest interface {
 }
 
 type DescribeDnsGtmAddrAttributeInfoRequest struct {
-	// The addresses.
+	// The list of addresses.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ["1.1.1.1"]
+	// [
+	//
+	//       "1.1.XX.XX"
+	//
+	// ]
 	Addrs *string `json:"Addrs,omitempty" xml:"Addrs,omitempty"`
-	// The language of the values for specific response parameters. Default value: en. Valid values: en, zh, and ja.
+	// The language of some returned parameters. Default value: en. Valid values: en, zh, and ja.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The type of addresses. Valid values:
+	// The address type:
 	//
-	// 	- IPV4: IPv4 address
+	// - IPV4: IPv4 address
 	//
-	// 	- IPv6: IPv6 address
+	// - IPV6: IPv6 address
 	//
-	// 	- DOMAIN: domain name
+	// - DOMAIN: domain name
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ipv4
+	// IPV4
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

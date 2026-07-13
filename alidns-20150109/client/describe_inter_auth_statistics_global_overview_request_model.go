@@ -20,18 +20,30 @@ type iDescribeInterAuthStatisticsGlobalOverviewRequest interface {
 }
 
 type DescribeInterAuthStatisticsGlobalOverviewRequest struct {
+	// The language of the returned availability zone names. Valid values:
+	//
+	// - **zh-CN**: Chinese.
+	//
+	// - **en-US*	- (default): English.
+	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// A unique, client-generated token to ensure the idempotence of the request. The token must be a string of ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 23445411234395894586....
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The statistical period.
+	//
 	// example:
 	//
 	// DAY
 	OverviewPeriod *string `json:"OverviewPeriod,omitempty" xml:"OverviewPeriod,omitempty"`
+	// The ID of the region.
+	//
 	// example:
 	//
 	// cn-beijing

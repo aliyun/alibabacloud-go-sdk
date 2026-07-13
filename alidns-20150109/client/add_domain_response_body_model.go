@@ -31,19 +31,19 @@ type AddDomainResponseBody struct {
 	//
 	// example:
 	//
-	// 00efd71a-770e-4255-b54e-6fe5659baffe
+	// xxxxx6615cf240c697f9f7e207xxxxxx
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	// The domain name.
 	//
 	// example:
 	//
-	// dns-example.top
+	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The ID of the domain name group.
 	//
 	// example:
 	//
-	// 2223
+	// defaultGroup
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The name of the domain name group.
 	//
@@ -51,17 +51,17 @@ type AddDomainResponseBody struct {
 	//
 	// MyGroup
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The Punycode for the domain name. This parameter is returned only for Chinese domain names.
+	// The Punycode for the Chinese domain name. This parameter is returned only for Chinese domain names.
 	//
 	// example:
 	//
 	// xn--fsq270a.com
 	PunyCode *string `json:"PunyCode,omitempty" xml:"PunyCode,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
-	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
+	// xxx508EF-00FD-xxx9-95A4-1E10BACxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

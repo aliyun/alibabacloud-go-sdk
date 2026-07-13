@@ -20,25 +20,31 @@ type iDescribeDomainGroupsRequest interface {
 }
 
 type DescribeDomainGroupsRequest struct {
-	// The keyword of the domain name group for searches in %KeyWord% mode. The value is not case-sensitive.
+	// The keyword for the group name. The search uses the %KeyWord% pattern and is case-insensitive.
 	//
 	// example:
 	//
 	// Group
 	KeyWord *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
-	// The language.
+	// The language of the response. Valid values:
+	//
+	// - zh: Chinese
+	//
+	// - en: English
+	//
+	// Default value: zh
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The page number. Pages start from page **1**. Default value: **1**.
+	// The page number. The start value is **1**. The default value is **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: **1 to 100**. Default value: **20**.
+	// The number of entries to return on each page. The maximum value is **100**. The default value is **20**.
 	//
 	// example:
 	//

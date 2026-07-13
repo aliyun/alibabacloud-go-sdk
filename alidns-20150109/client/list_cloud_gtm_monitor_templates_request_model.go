@@ -26,31 +26,31 @@ type iListCloudGtmMonitorTemplatesRequest interface {
 type ListCloudGtmMonitorTemplatesRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh-CN: Chinese
+	// - zh-CN: Chinese.
 	//
-	// 	- en-US (default): English
+	// - en-US (default): English.
 	//
 	// example:
 	//
-	// en-US
+	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The IP address type of health check nodes. Valid values:
+	// The IP version of the detection points.
 	//
-	// 	- IPv4: applicable when health checks are performed on IPv4 addresses.
+	// - IPv4: The destination address is an IPv4 address.
 	//
-	// 	- IPv6: applicable when health checks are performed on IPv6 addresses.
+	// - IPv6: The destination address is an IPv6 address.
 	//
 	// example:
 	//
 	// IPv4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The name of the health check probe template, which is recommended to be distinguishable for configuration personnel to differentiate and remember, ideally indicating the health check protocol.
+	// The name of the health check template. Name the template in a way that helps you distinguish between different health check protocols.
 	//
 	// example:
 	//
 	// IPv4-Ping
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Current page number, starting from **1**, default is **1**.
+	// The page number. The value starts from **1**. The default value is **1**.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type ListCloudGtmMonitorTemplatesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of rows per page when paginating queries, with a maximum value of 100 and a default of 20.
+	// The number of entries to return on each page. Maximum value: 100. Default value: 20.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type ListCloudGtmMonitorTemplatesRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Protocol types for initiating probes to the target IP address:
+	// The protocol used for the health check.
 	//
 	// - ping
 	//

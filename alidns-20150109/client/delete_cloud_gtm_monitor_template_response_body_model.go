@@ -16,17 +16,17 @@ type iDeleteCloudGtmMonitorTemplateResponseBody interface {
 }
 
 type DeleteCloudGtmMonitorTemplateResponseBody struct {
-	// Unique request identification code.
+	// The unique ID of the request.
 	//
 	// example:
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation to delete the health check template was successful:
+	// Indicates whether the operation was successful.
 	//
-	// - true: Operation successful
+	// - true: The operation was successful.
 	//
-	// - false: Operation failed
+	// - false: The operation failed.
 	//
 	// example:
 	//

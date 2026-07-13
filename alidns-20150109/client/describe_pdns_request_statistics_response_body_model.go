@@ -22,27 +22,27 @@ type iDescribePdnsRequestStatisticsResponseBody interface {
 }
 
 type DescribePdnsRequestStatisticsResponseBody struct {
-	// The statistics on the DNS requests.
+	// The list of request statistics.
 	Data []*DescribePdnsRequestStatisticsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The page number. Pages start from page **1**. Default value: **1**.
+	// The page number. The value starts from **1**. The default value is **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **20**. Valid values: **1 to 100**.
+	// The number of entries returned per page. The maximum value is **100**. The default value is **20**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *DescribePdnsRequestStatisticsResponseBody) Validate() error {
 }
 
 type DescribePdnsRequestStatisticsResponseBodyData struct {
-	// The total number of DoH requests, including the HTTP and HTTPS requests.
+	// The total number of DoH requests. This includes the total number of HTTP and HTTPS requests.
 	//
 	// example:
 	//
@@ -135,7 +135,7 @@ type DescribePdnsRequestStatisticsResponseBodyData struct {
 	//
 	// 0
 	HttpCount *int64 `json:"HttpCount,omitempty" xml:"HttpCount,omitempty"`
-	// The number of HTTPS requests. On the Traffic Analysis tab of the public DNS console, the value of this parameter includes the number of DNS over HTTPs (DoH) requests. Therefore, the number of DoH requests is not separately displayed in the console.
+	// The number of HTTPS requests. On the Traffic Analysis tab of the Public DNS console, this parameter includes the number of DNS over HTTPS (DoH) requests. Therefore, the number of DoH requests is not separately displayed in the console.
 	//
 	// example:
 	//
@@ -147,25 +147,25 @@ type DescribePdnsRequestStatisticsResponseBodyData struct {
 	//
 	// 10
 	IpCount *int64 `json:"IpCount,omitempty" xml:"IpCount,omitempty"`
-	// The current version does not support this parameter.
+	// This parameter is not supported in the current version.
 	//
 	// example:
 	//
 	// -
 	MaxThreatLevel *string `json:"MaxThreatLevel,omitempty" xml:"MaxThreatLevel,omitempty"`
-	// The subdomain name.
+	// The subdomain.
 	//
 	// example:
 	//
 	// www.example.com
 	SubDomain *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
-	// The current version does not support this parameter.
+	// This parameter is not supported in the current version.
 	//
 	// example:
 	//
 	// -
 	ThreatCount *int64 `json:"ThreatCount,omitempty" xml:"ThreatCount,omitempty"`
-	// The current version does not support this parameter.
+	// This parameter is not supported in the current version.
 	ThreatInfo []*DescribePdnsRequestStatisticsResponseBodyDataThreatInfo `json:"ThreatInfo,omitempty" xml:"ThreatInfo,omitempty" type:"Repeated"`
 	// The total number of requests.
 	//
@@ -179,37 +179,37 @@ type DescribePdnsRequestStatisticsResponseBodyData struct {
 	//
 	// 500
 	UdpTotalCount *int64 `json:"UdpTotalCount,omitempty" xml:"UdpTotalCount,omitempty"`
-	// The number of IPv4-based requests.
+	// The number of IPv4 requests.
 	//
 	// example:
 	//
 	// 0
 	V4Count *int64 `json:"V4Count,omitempty" xml:"V4Count,omitempty"`
-	// The number of IPv4-based HTTP requests.
+	// The number of IPv4 HTTP requests.
 	//
 	// example:
 	//
 	// 0
 	V4HttpCount *int64 `json:"V4HttpCount,omitempty" xml:"V4HttpCount,omitempty"`
-	// The number of IPv4-based HTTPS requests.
+	// The number of IPv4 HTTPS requests.
 	//
 	// example:
 	//
 	// 0
 	V4HttpsCount *int64 `json:"V4HttpsCount,omitempty" xml:"V4HttpsCount,omitempty"`
-	// The number of IPv6-based requests.
+	// The number of IPv6 requests.
 	//
 	// example:
 	//
 	// 0
 	V6Count *int64 `json:"V6Count,omitempty" xml:"V6Count,omitempty"`
-	// The number of IPv6-based HTTP requests.
+	// The number of IPv6 HTTP requests.
 	//
 	// example:
 	//
 	// 0
 	V6HttpCount *int64 `json:"V6HttpCount,omitempty" xml:"V6HttpCount,omitempty"`
-	// The number of IPv6-based HTTPS requests.
+	// The number of IPv6 HTTPS requests.
 	//
 	// example:
 	//
@@ -392,13 +392,13 @@ func (s *DescribePdnsRequestStatisticsResponseBodyData) Validate() error {
 }
 
 type DescribePdnsRequestStatisticsResponseBodyDataThreatInfo struct {
-	// The current version does not support this parameter.
+	// This parameter is not supported in the current version.
 	//
 	// example:
 	//
 	// -
 	ThreatLevel *string `json:"ThreatLevel,omitempty" xml:"ThreatLevel,omitempty"`
-	// The current version does not support this parameter.
+	// This parameter is not supported in the current version.
 	//
 	// example:
 	//

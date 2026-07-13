@@ -14,7 +14,7 @@ type iDescribeGtmAvailableAlertGroupRequest interface {
 }
 
 type DescribeGtmAvailableAlertGroupRequest struct {
-	// The language used by the user.
+	// The language.
 	//
 	// example:
 	//

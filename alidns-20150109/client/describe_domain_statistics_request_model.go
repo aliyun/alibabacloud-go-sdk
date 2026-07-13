@@ -22,7 +22,9 @@ type iDescribeDomainStatisticsRequest interface {
 }
 
 type DescribeDomainStatisticsRequest struct {
-	// The domain name. You can call the [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the domain name.
+	// The domain name.<props="china"> Call the [DescribeDomains](https://help.aliyun.com/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c4g.11186623.help-menu-search-29697.d_0) operation to obtain the domain name.
+	//
+	// <props="intl">Call the [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the domain name.
 	//
 	// example:
 	//
@@ -30,35 +32,35 @@ type DescribeDomainStatisticsRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The type of the domain name. Valid values:
 	//
-	// 	- PUBLIC (default): hosted public domain name
+	// - PUBLIC: The domain name is hosted on Alibaba Cloud DNS (default).
 	//
-	// 	- CACHE: cached public domain name
+	// - CACHE: Alibaba Cloud DNS is used as a proxy for the domain name.
 	//
 	// example:
 	//
-	// PUBLIC CACHE
+	// PUBLIC
 	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
-	// The end date of the query. Specify the end date in the **YYYY-MM-DD*	- format.
+	// The end date of the query. The format is **YYYY-MM-DD**.
 	//
-	// The default value is the day when you query the data.
+	// The default value is the current date.
 	//
 	// example:
 	//
 	// 2019-07-04
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The language of the content within the request and response.
+	// The language of the request and response.
 	//
-	// 	- **zh**: Chinese (default)
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The start date of the query. Specify the start date in the **YYYY-MM-DD*	- format.
+	// The start date of the query. The format is **YYYY-MM-DD**.
 	//
-	// You can only query the DNS records within the last 90 days.``
+	// You can query records only from the last 90 days. This means `StartDate >= Now - 90`.
 	//
 	// This parameter is required.
 	//

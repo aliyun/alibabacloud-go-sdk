@@ -18,13 +18,13 @@ type iSetDNSSLBStatusResponseBody interface {
 }
 
 type SetDNSSLBStatusResponseBody struct {
-	// Indicates whether weighted round-robin is enabled for the subdomain name.
+	// The latest status of the weight configuration.
 	//
 	// example:
 	//
 	// true
 	Open *bool `json:"Open,omitempty" xml:"Open,omitempty"`
-	// The number of A records that are matched.
+	// The number of DNS records that match the rule.
 	//
 	// example:
 	//

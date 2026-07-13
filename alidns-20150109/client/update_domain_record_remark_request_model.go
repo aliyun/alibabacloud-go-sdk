@@ -20,31 +20,35 @@ type iUpdateDomainRecordRemarkRequest interface {
 }
 
 type UpdateDomainRecordRemarkRequest struct {
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the request and the response. The default value is **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
-	// cn
+	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the DNS record. You can call the [DescribeDomainRecords](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomainrecords?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the ID.
+	// The ID of the DNS record.<props="china"> Call the [DescribeDomainRecords](https://help.aliyun.com/zh/dns/api-alidns-2015-01-09-describedomainrecords?spm=a2c4g.11186623.help-menu-search-29697.d_0) operation to obtain the record ID.<props="intl"> Call the [DescribeDomainRecords](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomainrecords?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the record ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 12345678
+	// 12*****
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The description of the DNS record. This parameter is empty by default. If this parameter is empty, the original remarks are deleted.
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The IP address of the client.
+	// The remarks for the DNS record. The default value is empty. If this parameter is left empty, the original remarks are deleted.
 	//
 	// example:
 	//
-	// 192.0.2.0
+	// 我的第一个解析记录
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The client IP address.
+	//
+	// example:
+	//
+	// 192.0.2.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 

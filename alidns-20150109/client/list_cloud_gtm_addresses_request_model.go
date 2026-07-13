@@ -34,7 +34,7 @@ type iListCloudGtmAddressesRequest interface {
 }
 
 type ListCloudGtmAddressesRequest struct {
-	// Return language value, options:
+	// The language of the return value. Valid values:
 	//
 	// - zh-CN: Chinese.
 	//
@@ -44,61 +44,61 @@ type ListCloudGtmAddressesRequest struct {
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// IP address or domain name.
+	// The IP address or domain name.
 	//
 	// example:
 	//
 	// 223.5.XX.XX
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The address ID. This ID uniquely identifies the address.
+	// The unique ID of the address.
 	//
 	// example:
 	//
-	// addr-89518218114368**92
+	// addr-89518218114368****
 	AddressId *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client token that is used to ensure the idempotence of the request. The client must generate a unique token for each request. The token can contain a maximum of 64 ASCII characters.
 	//
 	// example:
 	//
-	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	// 1ae05db4-10e7-11ef-b126-00163e24****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Indicates the current availability of the address:
+	// The state of the address. Valid values:
 	//
-	// - enable: Enabled status
+	// - enable: The address is enabled.
 	//
-	// - disable: Disabled status
+	// - disable: The address is disabled.
 	//
 	// example:
 	//
 	// enable
 	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
-	// The health check state of the address. Valid values:
+	// The health status of the address. Valid values:
 	//
-	// 	- ok: The address passes all health checks of the referenced health check templates.
+	// - ok: All health check tasks that are associated with the address are normal.
 	//
-	// 	- ok_alert: The address fails some health checks of the referenced health check templates but the address is deemed normal.
+	// - ok_alert: Some health check tasks that are associated with the address are abnormal, but the address is still considered normal.
 	//
-	// 	- ok_no_monitor: The address does not reference a health check template.
+	// - ok_no_monitor: No health check template is associated with the address.
 	//
-	// 	- exceptional: The address fails some or all health checks of the referenced health check templates and the address is deemed abnormal.
+	// - exceptional: Some or all health check tasks that are associated with the address are abnormal, and the address is considered abnormal.
 	//
 	// example:
 	//
 	// ok
 	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
-	// The ID of the health check template. This ID uniquely identifies the health check template.
+	// The unique ID of the health check template.
 	//
 	// example:
 	//
-	// mtp-89518052425100**80
+	// mtp-89518052425100****
 	MonitorTemplateId *string `json:"MonitorTemplateId,omitempty" xml:"MonitorTemplateId,omitempty"`
-	// Address name.
+	// The name of the address.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Current page number, starting from **1**, default is **1**.
+	// The page number. The value starts from **1**. The default value is **1**.
 	//
 	// This parameter is required.
 	//
@@ -106,7 +106,7 @@ type ListCloudGtmAddressesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of rows per page when paginating queries, with a maximum value of 100 and a default of 20.
+	// The number of entries to return on each page for a paged query. The maximum value is 100. The default value is 20.
 	//
 	// This parameter is required.
 	//
@@ -114,7 +114,7 @@ type ListCloudGtmAddressesRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Address type:
+	// The type of the address. Valid values:
 	//
 	// - IPv4
 	//

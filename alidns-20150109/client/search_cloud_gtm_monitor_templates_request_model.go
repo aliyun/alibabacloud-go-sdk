@@ -26,40 +26,56 @@ type iSearchCloudGtmMonitorTemplatesRequest interface {
 type SearchCloudGtmMonitorTemplatesRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh-CN: Chinese
+	// - zh-CN: Chinese
 	//
-	// 	- en-US (default): English
+	// - en-US (default): English
 	//
 	// example:
 	//
-	// en-US
+	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The IP address type of health check nodes. An exact search is performed based on the IP address type. Valid values:
+	// The IP version of the detection points. An exact search is performed. Valid values:
 	//
-	// 	- IPv4: applicable when the destination address of health checks is an IPv4 address
+	// - IPv4: This version is applicable when the target address is an IPv4 address.
 	//
-	// 	- IPv6: applicable when the destination address of health checks is an IPv6 address
+	// - IPv6: This version is applicable when the target address is an IPv6 address.
 	//
 	// example:
 	//
 	// IPv4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// The name of the health check template. A fuzzy search is performed based on the keyword that you enter.
+	//
 	// example:
 	//
 	// IPv4-Ping
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The current page number. The value starts from 1. The default value is 1.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page for a paged query. The maximum value is **100**. The default value is **20**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The protocol used for detection. An exact search is performed. Valid values:
+	//
+	// - ping
+	//
+	// - tcp
+	//
+	// - http
+	//
+	// - https
+	//
 	// example:
 	//
 	// ping

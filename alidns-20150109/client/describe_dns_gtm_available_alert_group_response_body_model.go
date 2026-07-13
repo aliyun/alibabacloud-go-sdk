@@ -16,9 +16,13 @@ type iDescribeDnsGtmAvailableAlertGroupResponseBody interface {
 }
 
 type DescribeDnsGtmAvailableAlertGroupResponseBody struct {
-	// The returned available alert groups.
+	// The available alert contact groups.
+	//
+	// example:
+	//
+	// [\\"测试报警组\\",\\"研发报警组\\"]
 	AvailableAlertGroup *string `json:"AvailableAlertGroup,omitempty" xml:"AvailableAlertGroup,omitempty"`
-	// The ID of the request.
+	// The unique request ID.
 	//
 	// example:
 	//

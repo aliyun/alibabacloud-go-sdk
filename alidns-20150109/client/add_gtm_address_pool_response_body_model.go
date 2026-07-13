@@ -18,7 +18,7 @@ type iAddGtmAddressPoolResponseBody interface {
 }
 
 type AddGtmAddressPoolResponseBody struct {
-	// The ID of the address pool created.
+	// The ID of the address pool.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type AddGtmAddressPoolResponseBody struct {
 	//
 	// hraf14
 	MonitorConfigId *string `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//

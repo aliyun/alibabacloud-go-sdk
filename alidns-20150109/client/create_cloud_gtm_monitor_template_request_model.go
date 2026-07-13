@@ -36,79 +36,99 @@ type iCreateCloudGtmMonitorTemplateRequest interface {
 type CreateCloudGtmMonitorTemplateRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh-CN: Chinese
+	// - zh-CN: Chinese.
 	//
-	// 	- en-US (default): English
+	// - en-US: English. This is the default value.
 	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. Make sure that the client token is unique for each request. The token can contain a maximum of 64 ASCII characters.
 	//
 	// example:
 	//
-	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	// 1ae05db4-10e7-11ef-b126-00163e24****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The number of consecutive failures that must occur before the system considers the application service unhealthy. This setting helps prevent false alarms caused by transient issues such as network jitter. Valid values:
+	//
+	// - 1
+	//
+	// - 2
+	//
+	// - 3
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2
 	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
-	// The extended information. The value of this parameter is a JSON string. The required parameters vary based on the health check protocol.
+	// The extended information in a JSON string. The parameters vary based on the protocol.
 	//
-	// 	- HTTP or HTTPS:
+	// - http(s):
 	//
-	//     **host**: the Host field of an HTTP or HTTPS request header during an HTTP or HTTPS health check. The parameter value indicates the HTTP website that you want to visit. By default, the value is the primary domain name. You can change the value based on your business requirements.
+	//   **host**: The Host field in the header of the HTTP or HTTPS request. This field identifies the website that you want to access. The default value is the primary domain name. If the destination website uses a specific host, change this value as needed.
 	//
-	//     **path**: the URL for HTTP or HTTPS health checks. Default value: /.
+	//   **path**: The URL path for the HTTP or HTTPS health check. The default value is "/".
 	//
-	//     **code**: the alert threshold. During an HTTP or HTTPS health check, the system checks whether a web server functions as expected based on the status code that is returned from the web server. If the returned status code is greater than the specified threshold, the corresponding application service address is deemed abnormal. Valid values:
+	//   **code**: For an HTTP or HTTPS health check, the system determines whether the web server is working correctly based on the return code. If the return code is greater than this threshold, the system considers the application service unhealthy.
 	//
-	//     	- 400: specifies an invalid request. If an HTTP or HTTPS request contains invalid request parameters, a web server returns a status code that is greater than 400. You must set path to an exact URL if you set code to 400.
+	//   - 400: Bad Request. If an HTTP or HTTPS request contains incorrect parameters, the web server returns a code greater than 400. If you set the threshold to 400, make sure that you specify the exact URL path.
 	//
-	//     	- 500: specifies a server error. If some exceptions occur on a web server, the web server returns a status code that is greater than 500. This value is used by default.
+	//   - 500: Server Error. If an exception occurs on the web server, it returns a code greater than 500. The default threshold is 500.
 	//
-	//     **sni**: specifies whether to enable Server Name Indication (SNI). This parameter is used only when the health check protocol is HTTPS. SNI is an extension to the Transport Layer Security (TLS) protocol, which allows a client to specify the host to be connected when the client sends a TLS handshake request. TLS handshakes occur before any data of HTTP requests is sent. Therefore, SNI enables servers to identify the services that clients are attempting to access before certificates are sent. This allows the servers to present correct certificates to the clients. Valid values:
+	//   **sni**: Specifies whether to enable Server Name Indication (SNI). This parameter applies only to the HTTPS protocol. SNI is a Transport Layer Security (TLS) extension that allows a client to specify the hostname to connect to at the start of the TLS handshake. This allows the server to present the correct certificate for the requested service.
 	//
-	//     	- true: enables SNI.
+	//   - true: Enable SNI.
 	//
-	//     	- false: disables SNI.
+	//   - false: Disable SNI.
 	//
-	//     **followRedirect**: specifies whether to follow 3XX redirects. Valid values:
+	//   **followRedirect**: Specifies whether to follow 3xx redirects.
 	//
-	//     	- true: follows 3XX redirects. You are redirected to the destination address if a 3XX status code such as 301, 302, 303, 307, or 308 is returned.
+	//   - true: Follows the redirect if the detection point receives a 3xx status code, such as 301, 302, 303, 307, or 308.
 	//
-	//     	- false: does not follow 3XX redirects.
+	//   - false: Does not follow the redirect.
 	//
-	// 	- ping:
+	// - ping:
 	//
-	//     **packetNum**: the total number of Internet Control Message Protocol (ICMP) packets that are sent to the address for each ping-based health check. Valid values: 20, 50, and 100.
+	//   **packetNum**: The number of ICMP packets to send for each ping health check. Valid values: 20, 50, and 100.
 	//
-	//     **packetLossRate**: the ICMP packet loss rate for each ping-based health check. The packet loss rate in a health check can be calculated by using the following formula: Packet loss rate in a health check = (Number of lost packets/Total number of sent ICMP packets) × 100%. If the packet loss rate reaches the threshold, an alert is triggered. Valid values: 10, 30, 40, 80, 90, and 100.
+	//   **packetLossRate**: The packet loss rate that triggers an alarm. For each ping health check, the system calculates the packet loss rate based on the sent ICMP packets. Packet loss rate = (Number of lost packets / Total number of sent ICMP packets) × 100%. An alarm is triggered if the packet loss rate reaches this threshold. Valid values: 10, 30, 40, 80, 90, and 100.
 	//
 	// example:
 	//
 	// {\\"code\\":200,\\"path\\":\\"\\\\index.htm\\",\\"host\\":\\"aliyun.com\\"}
 	ExtendInfo *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
+	// The failure rate threshold. An endpoint is considered unhealthy if the percentage of unhealthy detection points exceeds this value. Valid values:
+	//
+	// - 20
+	//
+	// - 50
+	//
+	// - 80
+	//
+	// - 100
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 50
 	FailureRate *int32 `json:"FailureRate,omitempty" xml:"FailureRate,omitempty"`
+	// The health check interval in seconds. The default value is 60. The minimum interval is 15 seconds, which is available only for Ultimate Edition instances.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 60
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The IP address type of health check nodes. Valid values:
+	// The IP address type for health checks.
 	//
-	// 	- IPv4: You can set IpVersion to IPv4 to perform health checks on IPv4 addresses.
+	// - IPv4: The destination address is an IPv4 address.
 	//
-	// 	- IPv6: You can set IpVersion to IPv6 to perform health checks on IPv6 addresses.
+	// - IPv6: The destination address is an IPv6 address.
 	//
 	// This parameter is required.
 	//
@@ -116,11 +136,11 @@ type CreateCloudGtmMonitorTemplateRequest struct {
 	//
 	// IPv4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The health check nodes. You can call the [ListCloudGtmMonitorNodes](~~ListCloudGtmMonitorNodes~~) operation to obtain the health check nodes.
+	// A list of detection points. For more information, see [ListCloudGtmMonitorNodes](https://help.aliyun.com/document_detail/2797349.html).
 	//
 	// This parameter is required.
 	IspCityNodes []*CreateCloudGtmMonitorTemplateRequestIspCityNodes `json:"IspCityNodes,omitempty" xml:"IspCityNodes,omitempty" type:"Repeated"`
-	// The name of the health check template. We recommend that you use a name that distinguishes the type of health check protocol used.
+	// The name of the health check template. Name the template to easily identify the health check protocol.
 	//
 	// This parameter is required.
 	//
@@ -128,12 +148,32 @@ type CreateCloudGtmMonitorTemplateRequest struct {
 	//
 	// Ping-IPv4
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The protocol for health checks on the destination IP address.
+	//
+	// - ping
+	//
+	// - tcp
+	//
+	// - http
+	//
+	// - https
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ping
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The health check timeout in milliseconds. If a packet is not returned within the timeout period, the health check is considered to have timed out. Valid values:
+	//
+	// - 2000
+	//
+	// - 3000
+	//
+	// - 5000
+	//
+	// - 10000
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -263,13 +303,13 @@ func (s *CreateCloudGtmMonitorTemplateRequest) Validate() error {
 }
 
 type CreateCloudGtmMonitorTemplateRequestIspCityNodes struct {
-	// The city code of the health check node.
+	// The city code for the detection point.
 	//
 	// example:
 	//
 	// 503
 	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	// The Internet service provider (ISP) code of the health check node.
+	// The ISP code for the detection point.
 	//
 	// example:
 	//

@@ -24,9 +24,9 @@ type iDescribeDnsGtmInstancesResponseBody interface {
 }
 
 type DescribeDnsGtmInstancesResponseBody struct {
-	// The Global Traffic Manager (GTM) instances.
+	// The list of Global Traffic Manager (GTM) instances.
 	GtmInstances []*DescribeDnsGtmInstancesResponseBodyGtmInstances `json:"GtmInstances,omitempty" xml:"GtmInstances,omitempty" type:"Repeated"`
-	// The page number. Pages start from page **1**. Default value: **1**.
+	// The number of the page returned. The value starts from **1**. Default value: **1**.
 	//
 	// example:
 	//
@@ -38,19 +38,19 @@ type DescribeDnsGtmInstancesResponseBody struct {
 	//
 	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// 84314904-D047-4176-A0EC-256D7F68C7F5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 100
 	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	// The total number of pages returned.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -134,41 +134,41 @@ func (s *DescribeDnsGtmInstancesResponseBody) Validate() error {
 }
 
 type DescribeDnsGtmInstancesResponseBodyGtmInstances struct {
-	// The configurations of the instance.
+	// The configuration of the instance.
 	Config *DescribeDnsGtmInstancesResponseBodyGtmInstancesConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-	// The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time when the instance was created.
 	//
 	// example:
 	//
 	// 2020-10-14T06:58Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the instance was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The timestamp that indicates when the instance was created.
 	//
 	// example:
 	//
 	// 1602658709000
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The time when the instance expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time when the instance expires.
 	//
 	// example:
 	//
 	// 2020-10-14T06:58Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The time when the instance expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The timestamp that indicates when the instance expires.
 	//
 	// example:
 	//
 	// 1602658709000
 	ExpireTimestamp *int64 `json:"ExpireTimestamp,omitempty" xml:"ExpireTimestamp,omitempty"`
-	// The instance ID.
+	// The ID of the instance.
 	//
 	// example:
 	//
-	// instance1
+	// gtm-cn-wwo3a3hbz**
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The billing method of the GTM instance. Valid value:
+	// The billing method. Valid value:
 	//
-	// 	- Subscription.
+	// - Subscription
 	//
 	// example:
 	//
@@ -180,13 +180,13 @@ type DescribeDnsGtmInstancesResponseBodyGtmInstances struct {
 	//
 	// resourceGroupid123
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The total number of Short Message Service (SMS) notifications.
+	// The total quota of text message notifications.
 	//
 	// example:
 	//
 	// 1
 	SmsQuota *int32 `json:"SmsQuota,omitempty" xml:"SmsQuota,omitempty"`
-	// The total number of detection tasks.
+	// The total number of health check tasks.
 	//
 	// example:
 	//
@@ -198,7 +198,7 @@ type DescribeDnsGtmInstancesResponseBodyGtmInstances struct {
 	//
 	// example:
 	//
-	// testVersion1
+	// standard
 	VersionCode *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
 }
 
@@ -333,21 +333,21 @@ func (s *DescribeDnsGtmInstancesResponseBodyGtmInstances) Validate() error {
 }
 
 type DescribeDnsGtmInstancesResponseBodyGtmInstancesConfig struct {
-	// The alert notification method.
+	// The alert notification methods.
 	AlertConfig []*DescribeDnsGtmInstancesResponseBodyGtmInstancesConfigAlertConfig `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty" type:"Repeated"`
-	// The alert contact groups. The value is in the JSON format.
+	// The alert contact group. The value is a JSON-formatted list of strings.
 	//
 	// example:
 	//
-	// testgroup
+	// ["test1","test2"]
 	AlertGroup *string `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
-	// The type of the CNAME. Valid value:
+	// The type of the CNAME domain name used for access. Valid value:
 	//
-	// 	- PUBLIC
+	// - PUBLIC: for Internet access
 	//
 	// example:
 	//
-	// public
+	// PUBLIC
 	CnameType *string `json:"CnameType,omitempty" xml:"CnameType,omitempty"`
 	// The name of the instance.
 	//
@@ -355,49 +355,49 @@ type DescribeDnsGtmInstancesResponseBodyGtmInstancesConfig struct {
 	//
 	// instanceTest
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Specifies whether to use a custom CNAME or a system-assigned CNAME to access GTM over the Internet. Valid values:
+	// The method to access the instance over the Internet using a CNAME record. Valid values:
 	//
-	// 	- CUSTOM: a custom CNAME
+	// - CUSTOM: custom
 	//
-	// 	- SYSTEM_ASSIGN: a system-assigned CNAME. You cannot set PublicCnameMode to this value.
+	// - SYSTEM_ASSIGN: system-assigned (This feature is disabled.)
 	//
 	// example:
 	//
-	// custom
+	// CUSTOM
 	PublicCnameMode *string `json:"PublicCnameMode,omitempty" xml:"PublicCnameMode,omitempty"`
-	// The hostname of the domain name that is used to access GTM over the Internet.
+	// The hostname for Internet access.
 	//
 	// example:
 	//
 	// test.rr
 	PublicRr *string `json:"PublicRr,omitempty" xml:"PublicRr,omitempty"`
-	// The domain name that is used to access GTM over the Internet.
+	// The user\\"s service domain name that is accessible over the Internet.
 	//
 	// example:
 	//
-	// example.com
+	// dns-example.top
 	PublicUserDomainName *string `json:"PublicUserDomainName,omitempty" xml:"PublicUserDomainName,omitempty"`
-	// The canonical name (CNAME) that is used to access GTM over the Internet.
+	// The domain name used for Internet access.
 	//
 	// example:
 	//
-	// test.rr.gtm-003.com
+	// gtm-cn-wwo3a3hbz**.dns-example.top
 	PublicZoneName *string `json:"PublicZoneName,omitempty" xml:"PublicZoneName,omitempty"`
-	// The type of the access policy. Valid values:
+	// The mode of the access policy. Valid values:
 	//
-	// 	- LATENCY: latency-based access policy
+	// - LATENCY: latency-based
 	//
-	// 	- GEO: geographical location-based access policy
+	// - GEO: geography-based
 	//
 	// example:
 	//
-	// geo
+	// GEO
 	StrategyMode *string `json:"StrategyMode,omitempty" xml:"StrategyMode,omitempty"`
-	// The global time to live (TTL).
+	// The global TTL.
 	//
 	// example:
 	//
-	// 1
+	// 60
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
 }
 
@@ -513,11 +513,11 @@ func (s *DescribeDnsGtmInstancesResponseBodyGtmInstancesConfig) Validate() error
 }
 
 type DescribeDnsGtmInstancesResponseBodyGtmInstancesConfigAlertConfig struct {
-	// Indicates whether DingTalk alert notifications are configured. Valid values:
+	// Indicates whether DingTalk notifications are configured. Valid values:
 	//
-	// 	- true
+	// - true: configured
 	//
-	// 	- false | null
+	// - false or null: not configured
 	//
 	// example:
 	//
@@ -525,9 +525,9 @@ type DescribeDnsGtmInstancesResponseBodyGtmInstancesConfigAlertConfig struct {
 	DingtalkNotice *string `json:"DingtalkNotice,omitempty" xml:"DingtalkNotice,omitempty"`
 	// Indicates whether email notifications are configured. Valid values:
 	//
-	// 	- true
+	// - true: configured
 	//
-	// 	- false | null
+	// - false or null: not configured
 	//
 	// example:
 	//
@@ -535,25 +535,25 @@ type DescribeDnsGtmInstancesResponseBodyGtmInstancesConfigAlertConfig struct {
 	EmailNotice *string `json:"EmailNotice,omitempty" xml:"EmailNotice,omitempty"`
 	// The type of the alert event. Valid values:
 	//
-	// 	- ADDR_ALERT: The address is unavailable.
+	// - ADDR_ALERT: The address is unavailable.
 	//
-	// 	- ADDR_RESUME: The address becomes available.
+	// - ADDR_RESUME: The address is restored.
 	//
-	// 	- ADDR_POOL_GROUP_UNAVAILABLE: The address pool set is unavailable.
+	// - ADDR_POOL_GROUP_UNAVAILABLE: The address pool collection is unavailable.
 	//
-	// 	- ADDR_POOL_GROUP_AVAILABLE: The address pool set becomes available.
+	// - ADDR_POOL_GROUP_AVAILABLE: The address pool collection is restored.
 	//
-	// 	- ACCESS_STRATEGY_POOL_GROUP_SWITCH: Switchover is triggered between the primary and secondary address pools.
+	// - ACCESS_STRATEGY_POOL_GROUP_SWITCH: A switchover occurs between the primary and secondary address pools.
 	//
 	// example:
 	//
 	// ADDR_ALERT
 	NoticeType *string `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
-	// Indicates whether SMS notifications are configured. Valid values:
+	// Indicates whether text message notifications are configured. Valid values:
 	//
-	// 	- true
+	// - true: configured
 	//
-	// 	- false | null
+	// - false or null: not configured
 	//
 	// example:
 	//
@@ -610,25 +610,25 @@ func (s *DescribeDnsGtmInstancesResponseBodyGtmInstancesConfigAlertConfig) Valid
 }
 
 type DescribeDnsGtmInstancesResponseBodyGtmInstancesUsedQuota struct {
-	// The total number of sent DingTalk notifications.
+	// The total number of DingTalk messages that were sent.
 	//
 	// example:
 	//
 	// 100
 	DingtalkUsedCount *int32 `json:"DingtalkUsedCount,omitempty" xml:"DingtalkUsedCount,omitempty"`
-	// The total number of sent email notifications.
+	// The total number of emails that were sent.
 	//
 	// example:
 	//
 	// 100
 	EmailUsedCount *int32 `json:"EmailUsedCount,omitempty" xml:"EmailUsedCount,omitempty"`
-	// The total number of sent SMS notifications.
+	// The total number of text messages that were sent.
 	//
 	// example:
 	//
 	// 100
 	SmsUsedCount *int32 `json:"SmsUsedCount,omitempty" xml:"SmsUsedCount,omitempty"`
-	// The number of created detection tasks.
+	// The number of health check tasks that were created.
 	//
 	// example:
 	//

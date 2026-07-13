@@ -16,7 +16,7 @@ type iDeleteGtmAddressPoolRequest interface {
 }
 
 type DeleteGtmAddressPoolRequest struct {
-	// The ID of the address pool that you want to delete.
+	// The ID of the address pool.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteGtmAddressPoolRequest struct {
 	//
 	// 1234
 	AddrPoolId *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
-	// The language used by the user.
+	// The language.
 	//
 	// example:
 	//

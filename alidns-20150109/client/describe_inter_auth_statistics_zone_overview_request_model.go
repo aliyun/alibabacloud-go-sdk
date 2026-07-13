@@ -18,14 +18,20 @@ type iDescribeInterAuthStatisticsZoneOverviewRequest interface {
 }
 
 type DescribeInterAuthStatisticsZoneOverviewRequest struct {
+	// The statistical period. Valid values: DAY, WEEK, and MONTH.
+	//
 	// example:
 	//
 	// DAY、WEEK、MONTH
 	OverviewPeriod *string `json:"OverviewPeriod,omitempty" xml:"OverviewPeriod,omitempty"`
+	// The region.
+	//
 	// example:
 	//
 	// DescribeInterAuthStatisticsZoneOverview
 	ServerRegion *string `json:"ServerRegion,omitempty" xml:"ServerRegion,omitempty"`
+	// The name of the zone.
+	//
 	// example:
 	//
 	// cheng.suow.cc

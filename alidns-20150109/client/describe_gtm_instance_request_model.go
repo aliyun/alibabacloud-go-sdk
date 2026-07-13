@@ -26,13 +26,13 @@ type DescribeGtmInstanceRequest struct {
 	//
 	// instance1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language of the values of specific response parameters.
+	// The language.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Specifies whether additional information is required. Default value: **false**. If the value is **true**, the AccessStrategyNum and AddressPoolNum parameters are returned.
+	// Specifies whether to return additional information. The default value is **false**. If you set this parameter to **true**, the response includes AccessStrategyNum (the number of access policies) and AddressPoolNum (the number of address pools).
 	//
 	// example:
 	//

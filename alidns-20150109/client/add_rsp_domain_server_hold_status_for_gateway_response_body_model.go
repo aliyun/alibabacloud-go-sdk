@@ -22,16 +22,24 @@ type iAddRspDomainServerHoldStatusForGatewayResponseBody interface {
 }
 
 type AddRspDomainServerHoldStatusForGatewayResponseBody struct {
+	// The details about the access denial. This field is returned only when Resource Access Management (RAM) verification fails.
 	AccessDeniedDetail *AddRspDomainServerHoldStatusForGatewayResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	Data               *AddRspDomainServerHoldStatusForGatewayResponseBodyData               `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned data list.
+	Data *AddRspDomainServerHoldStatusForGatewayResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Indicates whether you can retry the request if it fails. A value of `true` indicates that you can retry. A value of `false` indicates that you cannot.
+	//
 	// example:
 	//
 	// true
 	RecoverableError *bool `json:"RecoverableError,omitempty" xml:"RecoverableError,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 0629502C-XXXX-5DC9-XXXX-2ED73A2E3931
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. A value of `true` indicates success. A value of `false` indicates failure.
+	//
 	// example:
 	//
 	// true
@@ -106,30 +114,48 @@ func (s *AddRspDomainServerHoldStatusForGatewayResponseBody) Validate() error {
 }
 
 type AddRspDomainServerHoldStatusForGatewayResponseBodyAccessDeniedDetail struct {
+	// The unauthorized operation that was attempted.
+	//
 	// example:
 	//
-	// CreateUser
+	// AddRspDomainServerHoldStatusForGateway
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
+	// The display name of the authorized entity.
+	//
 	// example:
 	//
 	// 2015555733387XXXX
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
+	// The ID of the owner of the authorized entity.
+	//
 	// example:
 	//
 	// 1046973331XXXX
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
+	// The identity type.
+	//
 	// example:
 	//
 	// SubUser
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
+	// The complete diagnostic information after encryption.
+	//
 	// example:
 	//
 	// AQEAAAAAaNIARXXXXUQwNjE0LUQzN0XXXXVEQy1BQzExLTMzXXXXNTkxRjk1Ng==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
+	// The reason why the authorization failed. Valid values:
+	//
+	// - ExplicitDeny: The access is explicitly denied.
+	//
+	// - ImplicitDeny: The access is implicitly denied.
+	//
 	// example:
 	//
 	// ImplicitDeny
 	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
+	// The policy type.
+	//
 	// example:
 	//
 	// DlpSend
@@ -212,6 +238,8 @@ func (s *AddRspDomainServerHoldStatusForGatewayResponseBodyAccessDeniedDetail) V
 }
 
 type AddRspDomainServerHoldStatusForGatewayResponseBodyData struct {
+	// The domain name.
+	//
 	// example:
 	//
 	// example.com

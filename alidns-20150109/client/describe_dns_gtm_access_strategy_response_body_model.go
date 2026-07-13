@@ -64,17 +64,17 @@ type iDescribeDnsGtmAccessStrategyResponseBody interface {
 }
 
 type DescribeDnsGtmAccessStrategyResponseBody struct {
-	// The primary/secondary switchover policy for address pool groups. Valid values:
+	// The switchover policy for the address pool group. Valid values:
 	//
-	// 	- AUTO: performs automatic switchover between the primary and secondary address pool groups upon failures.
+	// - AUTO: automatic switchover.
 	//
-	// 	- DEFAULT: uses the primary address pool group.
+	// - DEFAULT: the primary address pool group.
 	//
-	// 	- FAILOVER: uses the secondary address pool group.
+	// - FAILOVER: the secondary address pool group.
 	//
 	// example:
 	//
-	// auto
+	// AUTO
 	AccessMode *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
 	// The time when the access policy was created.
 	//
@@ -82,7 +82,7 @@ type DescribeDnsGtmAccessStrategyResponseBody struct {
 	//
 	// 2018-08-09T00:10Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The timestamp that indicates when the access policy was created.
+	// The time when the access policy was created. This value is a UNIX timestamp.
 	//
 	// example:
 	//
@@ -90,9 +90,9 @@ type DescribeDnsGtmAccessStrategyResponseBody struct {
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
 	// The status of the primary address pool group. Valid values:
 	//
-	// 	- AVAILABLE: available
+	// - AVAILABLE
 	//
-	// 	- NOT_AVAILABLE: unavailable
+	// - NOT_AVAILABLE
 	//
 	// example:
 	//
@@ -100,15 +100,15 @@ type DescribeDnsGtmAccessStrategyResponseBody struct {
 	DefaultAddrPoolGroupStatus *string `json:"DefaultAddrPoolGroupStatus,omitempty" xml:"DefaultAddrPoolGroupStatus,omitempty"`
 	// The type of the primary address pool. Valid values:
 	//
-	// 	- IPV4
+	// - IPV4
 	//
-	// 	- IPV6
+	// - IPV6
 	//
-	// 	- DOMAIN
+	// - DOMAIN
 	//
 	// example:
 	//
-	// ipv4
+	// IPV4
 	DefaultAddrPoolType *string                                                   `json:"DefaultAddrPoolType,omitempty" xml:"DefaultAddrPoolType,omitempty"`
 	DefaultAddrPools    *DescribeDnsGtmAccessStrategyResponseBodyDefaultAddrPools `json:"DefaultAddrPools,omitempty" xml:"DefaultAddrPools,omitempty" type:"Struct"`
 	// The number of available addresses in the primary address pool.
@@ -117,27 +117,27 @@ type DescribeDnsGtmAccessStrategyResponseBody struct {
 	//
 	// 1
 	DefaultAvailableAddrNum *int32 `json:"DefaultAvailableAddrNum,omitempty" xml:"DefaultAvailableAddrNum,omitempty"`
-	// Indicates whether scheduling optimization for latency resolution was enabled for the primary address pool group. Valid values:
+	// Indicates whether latency-based scheduling is enabled for the primary address pool group. Valid values:
 	//
-	// 	- OPEN: enabled
+	// - OPEN: enabled.
 	//
-	// 	- CLOSE: disabled
+	// - CLOSE: disabled.
 	//
 	// example:
 	//
-	// open
+	// OPEN
 	DefaultLatencyOptimization *string `json:"DefaultLatencyOptimization,omitempty" xml:"DefaultLatencyOptimization,omitempty"`
-	// The load balancing policy of the primary address pool group. Valid values:
+	// The load balancing policy for the primary address pool group. Valid values:
 	//
-	// 	- ALL_RR: returns all addresses.
+	// - ALL_RR: returns all addresses.
 	//
-	// 	- RATIO: returns addresses by weight.
+	// - RATIO: returns addresses by weight.
 	//
 	// example:
 	//
-	// all_rr
+	// ALL_RR
 	DefaultLbaStrategy *string `json:"DefaultLbaStrategy,omitempty" xml:"DefaultLbaStrategy,omitempty"`
-	// The maximum number of addresses returned from the primary address pool group.
+	// The maximum number of addresses that can be returned from the primary address pool group.
 	//
 	// example:
 	//
@@ -149,11 +149,11 @@ type DescribeDnsGtmAccessStrategyResponseBody struct {
 	//
 	// 1
 	DefaultMinAvailableAddrNum *int32 `json:"DefaultMinAvailableAddrNum,omitempty" xml:"DefaultMinAvailableAddrNum,omitempty"`
-	// The type of the active address pool group. Valid values:
+	// The type of the address pool group that is currently in effect. Valid values:
 	//
-	// 	- DEFAULT: the primary address pool group
+	// - DEFAULT: the primary address pool group.
 	//
-	// 	- FAILOVER: the secondary address pool group
+	// - FAILOVER: the secondary address pool group.
 	//
 	// example:
 	//
@@ -161,9 +161,9 @@ type DescribeDnsGtmAccessStrategyResponseBody struct {
 	EffectiveAddrPoolGroupType *string `json:"EffectiveAddrPoolGroupType,omitempty" xml:"EffectiveAddrPoolGroupType,omitempty"`
 	// The status of the secondary address pool group. Valid values:
 	//
-	// 	- AVAILABLE: available
+	// - AVAILABLE
 	//
-	// 	- NOT_AVAILABLE: unavailable
+	// - NOT_AVAILABLE
 	//
 	// example:
 	//
@@ -171,15 +171,15 @@ type DescribeDnsGtmAccessStrategyResponseBody struct {
 	FailoverAddrPoolGroupStatus *string `json:"FailoverAddrPoolGroupStatus,omitempty" xml:"FailoverAddrPoolGroupStatus,omitempty"`
 	// The type of the secondary address pool. Valid values:
 	//
-	// 	- IPV4
+	// - IPV4
 	//
-	// 	- IPV6
+	// - IPV6
 	//
-	// 	- DOMAIN
+	// - DOMAIN
 	//
 	// example:
 	//
-	// ipv4
+	// IPV4
 	FailoverAddrPoolType *string                                                    `json:"FailoverAddrPoolType,omitempty" xml:"FailoverAddrPoolType,omitempty"`
 	FailoverAddrPools    *DescribeDnsGtmAccessStrategyResponseBodyFailoverAddrPools `json:"FailoverAddrPools,omitempty" xml:"FailoverAddrPools,omitempty" type:"Struct"`
 	// The number of available addresses in the secondary address pool.
@@ -188,27 +188,27 @@ type DescribeDnsGtmAccessStrategyResponseBody struct {
 	//
 	// 1
 	FailoverAvailableAddrNum *int32 `json:"FailoverAvailableAddrNum,omitempty" xml:"FailoverAvailableAddrNum,omitempty"`
-	// Indicates whether scheduling optimization for latency resolution was enabled for the secondary address pool group. Valid values:
+	// Indicates whether latency-based scheduling is enabled for the secondary address pool group. Valid values:
 	//
-	// 	- OPEN: enabled
+	// - OPEN: enabled.
 	//
-	// 	- CLOSE: disabled
+	// - CLOSE: disabled.
 	//
 	// example:
 	//
-	// open
+	// OPEN
 	FailoverLatencyOptimization *string `json:"FailoverLatencyOptimization,omitempty" xml:"FailoverLatencyOptimization,omitempty"`
-	// The load balancing policy of the secondary address pool group. Valid values:
+	// The load balancing policy for the secondary address pool group. Valid values:
 	//
-	// 	- ALL_RR: returns all addresses.
+	// - ALL_RR: returns all addresses.
 	//
-	// 	- RATIO: returns addresses by weight.
+	// - RATIO: returns addresses by weight.
 	//
 	// example:
 	//
-	// all_rr
+	// ALL_RR
 	FailoverLbaStrategy *string `json:"FailoverLbaStrategy,omitempty" xml:"FailoverLbaStrategy,omitempty"`
-	// The maximum number of addresses returned from the secondary address pool group.
+	// The maximum number of addresses that can be returned from the secondary address pool group.
 	//
 	// example:
 	//
@@ -220,14 +220,14 @@ type DescribeDnsGtmAccessStrategyResponseBody struct {
 	//
 	// 1
 	FailoverMinAvailableAddrNum *int32 `json:"FailoverMinAvailableAddrNum,omitempty" xml:"FailoverMinAvailableAddrNum,omitempty"`
-	// The ID of the associated instance.
+	// The ID of the associated Global Traffic Manager (GTM) instance.
 	//
 	// example:
 	//
-	// instance1
+	// gtm-cn-wwo3a3hbz**
 	InstanceId *string                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Lines      *DescribeDnsGtmAccessStrategyResponseBodyLines `json:"Lines,omitempty" xml:"Lines,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The unique request ID.
 	//
 	// example:
 	//
@@ -237,17 +237,17 @@ type DescribeDnsGtmAccessStrategyResponseBody struct {
 	//
 	// example:
 	//
-	// strategyId1
+	// hr***
 	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
 	// The type of the access policy. Valid values:
 	//
-	// 	- GEO: geographical location-based
+	// - GEO: a geolocation-based access policy.
 	//
-	// 	- LATENCY: latency-based
+	// - LATENCY: a latency-based access policy.
 	//
 	// example:
 	//
-	// geo
+	// GEO
 	StrategyMode *string `json:"StrategyMode,omitempty" xml:"StrategyMode,omitempty"`
 	// The name of the access policy.
 	//

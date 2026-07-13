@@ -32,35 +32,39 @@ type DescribeDohSubDomainStatisticsSummaryRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. Specify the time in the YYYY-MM-DD format.
+	// The end date of the query. The format is YYYY-MM-DD.
 	//
-	// The default value is the day when you query the required data.
+	// The default value is the current day.
 	//
 	// example:
 	//
 	// 2019-07-04
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The language type.
+	// The language of the request and response. Default value: **zh**. Valid values:
+	//
+	// - **zh**: Chinese
+	//
+	// - **en**: English
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of the page to return. Pages start from page 1. Default value: 1.
+	// The current page number. The value starts from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: 100. Default value: 20.
+	// The number of entries to return on each page for a paged query. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The beginning of the time range to query. Specify the time in the YYYY-MM-DD format.
+	// The start date of the query. The format is YYYY-MM-DD.
 	//
-	// You can query only the DNS records of the last 90 days. `The value of StartDate must be greater than or equal to the difference between the current date and 90`.
+	// You can query data only from the last 90 days. StartDate must be greater than or equal to `Now - 90`.
 	//
 	// example:
 	//

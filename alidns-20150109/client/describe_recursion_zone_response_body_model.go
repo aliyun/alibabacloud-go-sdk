@@ -42,59 +42,91 @@ type iDescribeRecursionZoneResponseBody interface {
 }
 
 type DescribeRecursionZoneResponseBody struct {
+	// The time when the zone was created.
+	//
 	// example:
 	//
 	// 2018-06-06T11:34Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The UNIX timestamp that indicates when the zone was created.
+	//
 	// example:
 	//
 	// 1533773400000
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The ID of the creator.
+	//
 	// example:
 	//
 	// SOAR
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The subtype of the creator.
+	//
 	// example:
 	//
 	// SUB
 	CreatorSubType *string `json:"CreatorSubType,omitempty" xml:"CreatorSubType,omitempty"`
+	// The type of the creator.
+	//
 	// example:
 	//
 	// USER
 	CreatorType     *string                                           `json:"CreatorType,omitempty" xml:"CreatorType,omitempty"`
 	EffectiveScopes *DescribeRecursionZoneResponseBodyEffectiveScopes `json:"EffectiveScopes,omitempty" xml:"EffectiveScopes,omitempty" type:"Struct"`
+	// Indicates whether recursive proxy for subdomains is enabled. Valid values:
+	//
+	// zone: Disabled. If a non-existent subdomain is requested, an NXDOMAIN response is returned to indicate that the subdomain does not exist.
+	//
+	// record: Enabled. If a non-existent subdomain is requested, the system queries the forwarding and recursion modules in sequence. The final query result is used to respond to the DNS request.
+	//
 	// example:
 	//
 	// record
 	ProxyPattern *string `json:"ProxyPattern,omitempty" xml:"ProxyPattern,omitempty"`
+	// The number of DNS records in the zone.
+	//
 	// example:
 	//
 	// 8
 	RecordCount *int32 `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
+	// The remarks.
+	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 6856BCF6-11D6-4D7E-AC53-FD579933522B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The time when the zone was last updated.
+	//
 	// example:
 	//
 	// 2018-01-03T08:57Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The UNIX timestamp that indicates when the zone was last updated.
+	//
 	// example:
 	//
 	// 1527690629357
 	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 1527690629357
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The zone ID. This is the unique identifier of the zone.
+	//
 	// example:
 	//
 	// 169438909000011
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The name of the zone.
+	//
 	// example:
 	//
 	// cheng.suow.cc

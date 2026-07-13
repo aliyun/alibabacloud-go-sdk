@@ -46,51 +46,51 @@ type iAddDnsGtmAccessStrategyRequest interface {
 }
 
 type AddDnsGtmAccessStrategyRequest struct {
-	// The address pools in the primary address pool set.
+	// The collection of primary address pools.
 	//
 	// This parameter is required.
 	DefaultAddrPool []*AddDnsGtmAccessStrategyRequestDefaultAddrPool `json:"DefaultAddrPool,omitempty" xml:"DefaultAddrPool,omitempty" type:"Repeated"`
-	// The type of the primary address pool. Valid values:
+	// The type of the primary address pool.
 	//
-	// 	- IPV4
+	// - IPV4
 	//
-	// 	- IPV6
+	// - IPV6
 	//
-	// 	- DOMAIN
+	// - DOMAIN
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ipv4
+	// IPV4
 	DefaultAddrPoolType *string `json:"DefaultAddrPoolType,omitempty" xml:"DefaultAddrPoolType,omitempty"`
-	// Specifies whether to enable DNS resolution with optimal latency for the primary address pool set. Valid values:
+	// The latency-based scheduling optimization for the primary address pool collection.
 	//
-	// 	- OPEN
+	// - OPEN: enabled
 	//
-	// 	- CLOSE
+	// - CLOSE: disabled
 	//
 	// example:
 	//
-	// open
+	// OPEN
 	DefaultLatencyOptimization *string `json:"DefaultLatencyOptimization,omitempty" xml:"DefaultLatencyOptimization,omitempty"`
-	// The load balancing policy of the primary address pool set. Valid values:
+	// The load balancing policy for the primary address pool collection.
 	//
-	// 	- ALL_RR: returns all addresses.
+	// - ALL_RR: returns all addresses.
 	//
-	// 	- RATIO: returns addresses by weight.
+	// - RATIO: returns addresses by weight.
 	//
 	// example:
 	//
-	// all_rr
+	// ALL_RR
 	DefaultLbaStrategy *string `json:"DefaultLbaStrategy,omitempty" xml:"DefaultLbaStrategy,omitempty"`
-	// The maximum number of addresses returned from the primary address pool set.
+	// The maximum number of addresses returned from the primary address pool collection.
 	//
 	// example:
 	//
 	// 3
 	DefaultMaxReturnAddrNum *int32 `json:"DefaultMaxReturnAddrNum,omitempty" xml:"DefaultMaxReturnAddrNum,omitempty"`
-	// The minimum number of available addresses in the primary address pool set.
+	// The minimum number of active addresses in the primary address pool collection.
 	//
 	// This parameter is required.
 	//
@@ -98,47 +98,47 @@ type AddDnsGtmAccessStrategyRequest struct {
 	//
 	// 1
 	DefaultMinAvailableAddrNum *int32 `json:"DefaultMinAvailableAddrNum,omitempty" xml:"DefaultMinAvailableAddrNum,omitempty"`
-	// The address pools in the secondary address pool set. If no address pool exists in the secondary address pool set, set this parameter to EMPTY.
+	// The collection of failover address pools. If a failover address pool collection is not configured, enter "EMPTY".
 	FailoverAddrPool []*AddDnsGtmAccessStrategyRequestFailoverAddrPool `json:"FailoverAddrPool,omitempty" xml:"FailoverAddrPool,omitempty" type:"Repeated"`
-	// The type of the secondary address pool. Valid values:
+	// The type of the failover address pool.
 	//
-	// 	- IPV4
+	// - IPV4
 	//
-	// 	- IPV6
+	// - IPV6
 	//
-	// 	- DOMAIN
+	// - DOMAIN
 	//
 	// example:
 	//
-	// ipv4
+	// IPV4
 	FailoverAddrPoolType *string `json:"FailoverAddrPoolType,omitempty" xml:"FailoverAddrPoolType,omitempty"`
-	// Specifies whether to enable DNS resolution with optimal latency for the secondary address pool set. Valid values:
+	// The latency-based scheduling optimization for the failover address pool collection.
 	//
-	// 	- OPEN
+	// - OPEN: enabled
 	//
-	// 	- CLOSE
+	// - CLOSE: disabled
 	//
 	// example:
 	//
-	// open
+	// OPEN
 	FailoverLatencyOptimization *string `json:"FailoverLatencyOptimization,omitempty" xml:"FailoverLatencyOptimization,omitempty"`
-	// The load balancing policy of the secondary address pool set. Valid values:
+	// The load balancing policy for the failover address pool collection.
 	//
-	// 	- ALL_RR: returns all addresses.
+	// - ALL_RR: returns all addresses.
 	//
-	// 	- RATIO: returns addresses by weight.
+	// - RATIO: returns addresses by weight.
 	//
 	// example:
 	//
-	// all_rr
+	// ALL_RR
 	FailoverLbaStrategy *string `json:"FailoverLbaStrategy,omitempty" xml:"FailoverLbaStrategy,omitempty"`
-	// The maximum number of addresses returned from the secondary address pool set.
+	// The maximum number of addresses returned from the failover address pool collection.
 	//
 	// example:
 	//
 	// 1
 	FailoverMaxReturnAddrNum *int32 `json:"FailoverMaxReturnAddrNum,omitempty" xml:"FailoverMaxReturnAddrNum,omitempty"`
-	// The minimum number of available addresses in the secondary address pool set.
+	// The minimum number of active addresses in the failover address pool collection.
 	//
 	// example:
 	//
@@ -152,31 +152,31 @@ type AddDnsGtmAccessStrategyRequest struct {
 	//
 	// instance1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language of the values for specific response parameters. Default value: en. Valid values: en, zh, and ja.
+	// The language of some returned parameters. Default value: en. Valid values: en, zh, and ja.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The Domain Name System (DNS) request source. For example: `["default", "drpeng"]` indicates Global and Dr. Peng Group.
+	// The source of the DNS request. For example, `["default", "drpeng"]` indicates a global policy and Dr. Peng Group.
 	//
 	// example:
 	//
 	// ["default", "drpeng"]
 	Lines *string `json:"Lines,omitempty" xml:"Lines,omitempty"`
-	// The type of the access policy. Valid values:
+	// The type of the access policy.
 	//
-	// 	- GEO: geographical location-based access policy
+	// - GEO: a location-based access policy.
 	//
-	// 	- LATENCY: latency-based access policy
+	// - LATENCY: a latency-based access policy.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// geo
+	// GEO
 	StrategyMode *string `json:"StrategyMode,omitempty" xml:"StrategyMode,omitempty"`
-	// The name of the access policy.
+	// The policy name.
 	//
 	// This parameter is required.
 	//
@@ -370,13 +370,13 @@ func (s *AddDnsGtmAccessStrategyRequest) Validate() error {
 }
 
 type AddDnsGtmAccessStrategyRequestDefaultAddrPool struct {
-	// The ID of the address pool in the primary address pool set.
+	// The ID of the address pool.
 	//
 	// example:
 	//
 	// pool1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The weight of the address pool in the primary address pool set.
+	// The weight of the address pool.
 	//
 	// example:
 	//
@@ -415,13 +415,13 @@ func (s *AddDnsGtmAccessStrategyRequestDefaultAddrPool) Validate() error {
 }
 
 type AddDnsGtmAccessStrategyRequestFailoverAddrPool struct {
-	// The ID of the address pool in the secondary address pool set.
+	// The ID of the address pool.
 	//
 	// example:
 	//
 	// pool1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The weight of the address pool in the secondary address pool set.
+	// The weight of the address pool.
 	//
 	// example:
 	//

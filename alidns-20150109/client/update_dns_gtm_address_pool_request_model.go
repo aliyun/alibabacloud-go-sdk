@@ -22,35 +22,35 @@ type iUpdateDnsGtmAddressPoolRequest interface {
 }
 
 type UpdateDnsGtmAddressPoolRequest struct {
-	// The address pools.
+	// A list of addresses in the address pool.
 	//
 	// This parameter is required.
 	Addr []*UpdateDnsGtmAddressPoolRequestAddr `json:"Addr,omitempty" xml:"Addr,omitempty" type:"Repeated"`
-	// The ID of the address pool.
+	// The ID of the address pool. For more information, see [DescribeDnsGtmInstanceAddressPools](https://www.alibabacloud.com/help/en/dns/api-alidns-2015-01-09-describednsgtminstanceaddresspools).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// testpool1
+	// testp******
 	AddrPoolId *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
-	// The language of the values of specific response parameters. Default value: en. Valid values: en, zh, and ja.
+	// The language of the response. Default value: en. Valid values: en, zh, and ja.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The load balancing policy of the address pool. Valid values:
+	// The load balancing policy. Valid values:
 	//
-	// 	- ALL_RR: returns all addresses.
+	// - ALL_RR: Returns all addresses.
 	//
-	// 	- RATIO: returns addresses by weight.
+	// - RATIO: Returns addresses by weight.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// all_rr
+	// ALL_RR
 	LbaStrategy *string `json:"LbaStrategy,omitempty" xml:"LbaStrategy,omitempty"`
 	// The name of the address pool.
 	//
@@ -127,53 +127,57 @@ func (s *UpdateDnsGtmAddressPoolRequest) Validate() error {
 }
 
 type UpdateDnsGtmAddressPoolRequestAddr struct {
-	// The address in the address pool.
+	// The address.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 1.1.1.1
+	// 1.1.XX.XX
 	Addr *string `json:"Addr,omitempty" xml:"Addr,omitempty"`
-	// The information about the source region of the address. The value of the parameter is a string in the JSON format. Valid values:
+	// The source region of the address. This parameter is a JSON string.
 	//
-	// 	- LineCode: the line code of the source region. This parameter is deprecated. Use lineCodes instead.
+	// - LineCode: The line code of the source region. This parameter is deprecated. Use lineCodes instead.
 	//
-	// 	- lineCodes: the line codes of the source region
+	// - lineCodes: A list of line codes for the source regions.
 	//
-	// 	- lineCodeRectifyType: the rectification type of the line code. Default value: AUTO. Valid values:
+	// - lineCodeRectifyType: The type of line code rectification. Default value: AUTO. Valid values:
 	//
-	//     	- NO_NEED: no need for rectification
+	//   - NO_NEED: No rectification is required.
 	//
-	//     	- RECTIFIED: rectified
+	//   - RECTIFIED: The line code is rectified.
 	//
-	//     	- AUTO: automatic rectification
+	//   - AUTO: The line code is automatically rectified.
 	//
 	// example:
 	//
-	// Linecode:default,lineCodes:["default"],lineCodeRectifyType:"NO_NEED"
+	// Linecode: default
+	//
+	// lineCodes： ["default"]
+	//
+	// lineCodeRectifyType: AUTO
 	AttributeInfo *string `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty"`
-	// The weight of the address.
+	// The weight.
 	//
 	// example:
 	//
 	// 1
 	LbaWeight *int32 `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
-	// The return mode of the addresses. Valid values:
+	// The mode. Valid values:
 	//
-	// 	- SMART: smart return
+	// - SMART: Smart return
 	//
-	// 	- ONLINE: always online
+	// - ONLINE: Always online
 	//
-	// 	- OFFLINE: always offline
+	// - OFFLINE: Always offline
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// online
+	// SMART
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The description of the address pool.
+	// The remarks.
 	//
 	// example:
 	//

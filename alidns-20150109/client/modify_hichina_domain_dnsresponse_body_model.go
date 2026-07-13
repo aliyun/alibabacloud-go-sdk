@@ -20,7 +20,7 @@ type iModifyHichinaDomainDNSResponseBody interface {
 type ModifyHichinaDomainDNSResponseBody struct {
 	NewDnsServers      *ModifyHichinaDomainDNSResponseBodyNewDnsServers      `json:"NewDnsServers,omitempty" xml:"NewDnsServers,omitempty" type:"Struct"`
 	OriginalDnsServers *ModifyHichinaDomainDNSResponseBodyOriginalDnsServers `json:"OriginalDnsServers,omitempty" xml:"OriginalDnsServers,omitempty" type:"Struct"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//

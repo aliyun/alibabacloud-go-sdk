@@ -27,21 +27,21 @@ type DescribeDnsProductInstancesResponseBody struct {
 	DnsProducts *DescribeDnsProductInstancesResponseBodyDnsProducts `json:"DnsProducts,omitempty" xml:"DnsProducts,omitempty" type:"Struct"`
 	// The type of the domain name. Valid values:
 	//
-	// 	- PUBLIC (default): hosted public domain name
+	// - PUBLIC: authoritative domain name (default)
 	//
-	// 	- CACHE: cached public domain name
+	// - CACHE: authoritative proxy domain name
 	//
 	// example:
 	//
 	// PUBLIC
 	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries on the current page.
 	//
 	// example:
 	//
@@ -51,9 +51,9 @@ type DescribeDnsProductInstancesResponseBody struct {
 	//
 	// example:
 	//
-	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
+	// 536E9CAD-DB30-4647-AC87-AA5CC38xxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of domain names.
+	// The total number of instances that match the query.
 	//
 	// example:
 	//

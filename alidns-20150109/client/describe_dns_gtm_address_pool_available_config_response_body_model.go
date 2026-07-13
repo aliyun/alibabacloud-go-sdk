@@ -17,7 +17,7 @@ type iDescribeDnsGtmAddressPoolAvailableConfigResponseBody interface {
 
 type DescribeDnsGtmAddressPoolAvailableConfigResponseBody struct {
 	AttributeInfos *DescribeDnsGtmAddressPoolAvailableConfigResponseBodyAttributeInfos `json:"AttributeInfos,omitempty" xml:"AttributeInfos,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The unique request ID.
 	//
 	// example:
 	//

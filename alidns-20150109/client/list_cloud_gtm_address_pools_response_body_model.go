@@ -24,32 +24,33 @@ type iListCloudGtmAddressPoolsResponseBody interface {
 }
 
 type ListCloudGtmAddressPoolsResponseBody struct {
+	// The address pools.
 	AddressPools *ListCloudGtmAddressPoolsResponseBodyAddressPools `json:"AddressPools,omitempty" xml:"AddressPools,omitempty" type:"Struct"`
-	// Current page number, starting at **1**, default is **1**.
+	// The page number. The value starts from **1**. The default value is **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of rows per page when paginating queries, with a maximum value of 100 and a default of 20.
+	// The number of entries returned on each page. The maximum value is 100. The default value is 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Unique request identification code.
+	// The request ID.
 	//
 	// example:
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of entries in the address pool.
+	// The total number of address pools.
 	//
 	// example:
 	//
 	// 11
 	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//

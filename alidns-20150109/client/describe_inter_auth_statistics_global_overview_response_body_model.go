@@ -16,8 +16,9 @@ type iDescribeInterAuthStatisticsGlobalOverviewResponseBody interface {
 }
 
 type DescribeInterAuthStatisticsGlobalOverviewResponseBody struct {
+	// The statistical data.
 	Data *DescribeInterAuthStatisticsGlobalOverviewResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -61,18 +62,26 @@ func (s *DescribeInterAuthStatisticsGlobalOverviewResponseBody) Validate() error
 }
 
 type DescribeInterAuthStatisticsGlobalOverviewResponseBodyData struct {
+	// The average success ratio.
+	//
 	// example:
 	//
 	// 72
 	AvgSuccessRatio *int64 `json:"AvgSuccessRatio,omitempty" xml:"AvgSuccessRatio,omitempty"`
+	// The change in the average success ratio compared to the previous statistical period.
+	//
 	// example:
 	//
 	// 75
 	AvgSuccessRatioTrend *int64 `json:"AvgSuccessRatioTrend,omitempty" xml:"AvgSuccessRatioTrend,omitempty"`
+	// The total resolve count.
+	//
 	// example:
 	//
 	// 18349
 	TotalResolveCount *int64 `json:"TotalResolveCount,omitempty" xml:"TotalResolveCount,omitempty"`
+	// The change in the total resolve count compared to the previous statistical period.
+	//
 	// example:
 	//
 	// 2341

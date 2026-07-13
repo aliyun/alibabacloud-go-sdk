@@ -16,13 +16,13 @@ type iDescribeDohSubDomainStatisticsResponseBody interface {
 }
 
 type DescribeDohSubDomainStatisticsResponseBody struct {
-	// The ID of the request.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// 0F32959D-417B-4D66-8463-68606605E3E2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The statistics list.
+	// A list of statistics.
 	Statistics []*DescribeDohSubDomainStatisticsResponseBodyStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Repeated"`
 }
 
@@ -66,7 +66,7 @@ func (s *DescribeDohSubDomainStatisticsResponseBody) Validate() error {
 }
 
 type DescribeDohSubDomainStatisticsResponseBodyStatistics struct {
-	// The timestamp.
+	// The timestamp of the statistical data, in milliseconds.
 	//
 	// example:
 	//
@@ -78,25 +78,25 @@ type DescribeDohSubDomainStatisticsResponseBodyStatistics struct {
 	//
 	// 3141592653
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The number of IPv4-based HTTP requests.
+	// The number of IPv4 HTTP requests.
 	//
 	// example:
 	//
 	// 3141592653
 	V4HttpCount *int64 `json:"V4HttpCount,omitempty" xml:"V4HttpCount,omitempty"`
-	// The number of IPv4-based HTTPS requests.
+	// The number of IPv4 HTTPS requests.
 	//
 	// example:
 	//
 	// 3141592653
 	V4HttpsCount *int64 `json:"V4HttpsCount,omitempty" xml:"V4HttpsCount,omitempty"`
-	// The number of IPv6-based HTTP requests.
+	// The number of IPv6 HTTP requests.
 	//
 	// example:
 	//
 	// 3141592653
 	V6HttpCount *int64 `json:"V6HttpCount,omitempty" xml:"V6HttpCount,omitempty"`
-	// The number of IPv6-based HTTPS requests.
+	// The number of IPv6 HTTPS requests.
 	//
 	// example:
 	//

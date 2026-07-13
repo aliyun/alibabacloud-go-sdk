@@ -18,9 +18,9 @@ type iUnbindInstanceDomainsRequest interface {
 }
 
 type UnbindInstanceDomainsRequest struct {
-	// The domain names.
+	// The list of domain names.
 	//
-	// Separate multiple domain names with commas (,). Up to 100 domain names can be entered.
+	// Separate multiple domain names with commas (,). You can specify up to 100 domain names.<props="intl"> For more information, see [DescribeDomains](https://www.alibabacloud.com/help/en/dns/api-alidns-2015-01-09-describedomains).
 	//
 	// This parameter is required.
 	//
@@ -28,15 +28,19 @@ type UnbindInstanceDomainsRequest struct {
 	//
 	// example.com,example.net
 	DomainNames *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
-	// The instance ID.
+	// The ID of the authoritative domain name instance.<props="intl"> For more information, see [ListCloudGtmInstances](https://www.alibabacloud.com/help/en/dns/api-alidns-2015-01-09-listcloudgtminstances).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 123
+	// dns-cn-9lb38ldq9**
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language.
+	// The language of the request and response. Default value: **zh**. Valid values:
+	//
+	// - **zh**: Chinese
+	//
+	// - **en**: English
 	//
 	// example:
 	//

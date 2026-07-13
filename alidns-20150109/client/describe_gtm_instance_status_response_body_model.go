@@ -38,39 +38,39 @@ type DescribeGtmInstanceStatusResponseBody struct {
 	//
 	// 10
 	AddrPoolNotAvailableNum *int32 `json:"AddrPoolNotAvailableNum,omitempty" xml:"AddrPoolNotAvailableNum,omitempty"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// 389DFFA3-77A5-4A9E-BF3D-147C6F98A5BA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The state of the instance. Valid values:
+	// The status of the instance. Valid values:
 	//
-	// 	- ALLOW: The operation on the instance is allowed.
+	// - ALLOW: Operations are allowed.
 	//
-	// 	- DENY: The operation on the instance is not allowed.
+	// - DENY: Operations are denied.
 	//
 	// example:
 	//
 	// ALLOW
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The reasons why the instance is in the current state. Valid values:
+	// A list of reasons for the instance status. Valid values:
 	//
-	// 	- INSTANCE_OPERATE_BLACK_LIST: The operation on the instance is not allowed.
+	// - INSTANCE_OPERATE_BLACK_LIST: The instance is in a blacklist.
 	//
-	// 	- BETA_INSTANCE: The instance is in public preview.
+	// - BETA_INSTANCE: The instance is in public preview.
 	//
 	// example:
 	//
 	// ["BETA_INSTANCE"]
 	StatusReason *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
-	// The number of unavailable access policies.
+	// The number of access policies for which the active address pool is unavailable.
 	//
 	// example:
 	//
 	// 10
 	StrategyNotAvailableNum *int32 `json:"StrategyNotAvailableNum,omitempty" xml:"StrategyNotAvailableNum,omitempty"`
-	// The number of access policies switched to the secondary address pool.
+	// The number of access policies that are switched to the failover address pool.
 	//
 	// example:
 	//

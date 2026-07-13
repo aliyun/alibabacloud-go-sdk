@@ -26,47 +26,55 @@ type iDescribeTransferDomainsRequest interface {
 }
 
 type DescribeTransferDomainsRequest struct {
-	// Specifies the domain name for which you want to view the transfer record.
+	// The domain name. Use this parameter to query the transfer records of a specific domain name.
 	//
 	// example:
 	//
-	// alidns.com
+	// example.top
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The user ID from which the domain name was transferred to the current account.
+	// The ID of the source account. Use this parameter to query the list of domain names transferred from this account to the current account.
 	//
 	// example:
 	//
-	// 123456
+	// 1*******
 	FromUserId *int64 `json:"FromUserId,omitempty" xml:"FromUserId,omitempty"`
-	// The language.
+	// The language of the response.
+	//
+	// Valid values:
+	//
+	// zh: Chinese
+	//
+	// en: English
+	//
+	// The default value is zh.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. The value starts from 1. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	// The number of entries per page. The maximum value is 100. The default value is 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The user ID to which the domain name was transferred from the current account.
+	// The ID of the destination account. Use this parameter to query the list of domain names transferred from the current account to this account.
 	//
 	// example:
 	//
-	// 123456
+	// 1*******
 	TargetUserId *int64 `json:"TargetUserId,omitempty" xml:"TargetUserId,omitempty"`
-	// The transfer type. Valid values:
+	// The type of transfer. Valid values:
 	//
-	// 	- IN: The domain name was transferred to the current account.
+	// - IN: The list of domain names transferred to the current account.
 	//
-	// 	- OUT: The domain name was transferred from the current account.
+	// - OUT: The list of domain names transferred from the current account.
 	//
 	// This parameter is required.
 	//

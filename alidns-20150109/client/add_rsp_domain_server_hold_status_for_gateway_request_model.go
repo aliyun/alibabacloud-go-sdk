@@ -18,19 +18,29 @@ type iAddRspDomainServerHoldStatusForGatewayRequest interface {
 }
 
 type AddRspDomainServerHoldStatusForGatewayRequest struct {
+	// An idempotency parameter.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// token123
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dns-example.top
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The status description.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 实名认证通过，解除serverHold状态
 	StatusMsg *string `json:"StatusMsg,omitempty" xml:"StatusMsg,omitempty"`
 }
 

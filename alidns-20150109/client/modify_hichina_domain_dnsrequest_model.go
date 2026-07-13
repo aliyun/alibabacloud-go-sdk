@@ -24,21 +24,21 @@ type ModifyHichinaDomainDNSRequest struct {
 	//
 	// example:
 	//
-	// example.com
+	// dns-example.top
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The language of the response. Valid values:
+	// The language of the return value. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
-	// Default value: en
+	// Default: en
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The IP address of the client.
+	// The client IP address.
 	//
 	// example:
 	//

@@ -16,10 +16,16 @@ type iDeleteRecursionZoneRequest interface {
 }
 
 type DeleteRecursionZoneRequest struct {
+	// A client token used to ensure the idempotence of the request.
+	//
+	// Generate a unique value from your client for each request. The ClientToken parameter supports only ASCII characters.
+	//
 	// example:
 	//
 	// 21079fa016944979537637959d09bc
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The unique ID of the zone.
+	//
 	// example:
 	//
 	// 169783221000012
