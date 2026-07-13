@@ -15,6 +15,10 @@ type iCreateQueueShrinkRequest interface {
 	GetDlqPolicyShrink() *string
 	SetEnableLogging(v bool) *CreateQueueShrinkRequest
 	GetEnableLogging() *bool
+	SetEnableSSE(v bool) *CreateQueueShrinkRequest
+	GetEnableSSE() *bool
+	SetKmsKeyId(v string) *CreateQueueShrinkRequest
+	GetKmsKeyId() *string
 	SetMaximumMessageSize(v int64) *CreateQueueShrinkRequest
 	GetMaximumMessageSize() *int64
 	SetMessageRetentionPeriod(v int64) *CreateQueueShrinkRequest
@@ -25,6 +29,10 @@ type iCreateQueueShrinkRequest interface {
 	GetQueueName() *string
 	SetQueueType(v string) *CreateQueueShrinkRequest
 	GetQueueType() *string
+	SetSseAlgorithm(v string) *CreateQueueShrinkRequest
+	GetSseAlgorithm() *string
+	SetSseType(v string) *CreateQueueShrinkRequest
+	GetSseType() *string
 	SetTag(v []*CreateQueueShrinkRequestTag) *CreateQueueShrinkRequest
 	GetTag() []*CreateQueueShrinkRequestTag
 	SetTenantRateLimitPolicyShrink(v string) *CreateQueueShrinkRequest
@@ -34,39 +42,57 @@ type iCreateQueueShrinkRequest interface {
 }
 
 type CreateQueueShrinkRequest struct {
-	// The period after which all messages sent to the queue are consumed. Valid values: 0 to 604800. Unit: seconds. Default value: 0
+	// The delay period for all messages sent to the queue. A message sent to the queue can be consumed only after the delay period specified by this parameter elapses. Unit: seconds.
+	//
+	// Valid values: 0 to 604800.
+	//
+	// Default value: 0.
 	//
 	// example:
 	//
 	// 0
 	DelaySeconds *int64 `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
-	// The dead-letter queue policy.
+	// The dead-letter policy.
 	DlqPolicyShrink *string `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty"`
 	// Specifies whether to enable the log management feature. Valid values:
 	//
-	// 	- true: enabled.
+	// - true: Enabled.
 	//
-	// 	- false: disabled.
+	// - false: Disabled.
 	//
 	// Default value: false.
 	//
 	// example:
 	//
 	// true
-	EnableLogging *bool `json:"EnableLogging,omitempty" xml:"EnableLogging,omitempty"`
-	// The maximum length of the message that is sent to the queue. Valid values: 1024 to 65536. Unit: bytes. Default value: 65536.
+	EnableLogging *bool   `json:"EnableLogging,omitempty" xml:"EnableLogging,omitempty"`
+	EnableSSE     *bool   `json:"EnableSSE,omitempty" xml:"EnableSSE,omitempty"`
+	KmsKeyId      *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	// The maximum size of a message body that can be sent to the queue. Unit: bytes.
+	//
+	// Valid values: 1024 to 65536.
+	//
+	// Default value: 65536.
 	//
 	// example:
 	//
 	// 65536
 	MaximumMessageSize *int64 `json:"MaximumMessageSize,omitempty" xml:"MaximumMessageSize,omitempty"`
-	// The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is consumed. Valid values: 60 to 604800. Unit: seconds. Default value: 345600.
+	// The maximum duration for which a message is retained in the queue. After the specified duration elapses from the time the message is sent to the queue, the message is deleted regardless of whether it has been consumed. Unit: seconds.
+	//
+	// Valid values: 60 to 604800.
+	//
+	// Default value: 345600.
 	//
 	// example:
 	//
 	// 345600
 	MessageRetentionPeriod *int64 `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
-	// The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: 0 to 30. Unit: seconds. Default value: 0
+	// The maximum wait time for a ReceiveMessage request when the queue is empty. Unit: seconds.
+	//
+	// Valid values: 0 to 30.
+	//
+	// Default value: 0.
 	//
 	// example:
 	//
@@ -80,11 +106,27 @@ type CreateQueueShrinkRequest struct {
 	//
 	// 06273500-249F-5863-121D-74D51123****
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	QueueType *string `json:"QueueType,omitempty" xml:"QueueType,omitempty"`
-	// The tags.
-	Tag                         []*CreateQueueShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	TenantRateLimitPolicyShrink *string                        `json:"TenantRateLimitPolicy,omitempty" xml:"TenantRateLimitPolicy,omitempty"`
-	// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
+	// The type of the queue. Valid values:
+	//
+	//    	- normal: standard queue.
+	//
+	//    	- fifo: FIFO queue.
+	//
+	// example:
+	//
+	// normal
+	QueueType    *string `json:"QueueType,omitempty" xml:"QueueType,omitempty"`
+	SseAlgorithm *string `json:"SseAlgorithm,omitempty" xml:"SseAlgorithm,omitempty"`
+	SseType      *string `json:"SseType,omitempty" xml:"SseType,omitempty"`
+	// The list of resource tags.
+	Tag []*CreateQueueShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The rate limiting policy.
+	TenantRateLimitPolicyShrink *string `json:"TenantRateLimitPolicy,omitempty" xml:"TenantRateLimitPolicy,omitempty"`
+	// The duration for which a consumed message stays in the Inactive state after it is changed from the Active state. Unit: seconds.
+	//
+	// Valid values: 1 to 43200.
+	//
+	// Default value: 30.
 	//
 	// example:
 	//
@@ -112,6 +154,14 @@ func (s *CreateQueueShrinkRequest) GetEnableLogging() *bool {
 	return s.EnableLogging
 }
 
+func (s *CreateQueueShrinkRequest) GetEnableSSE() *bool {
+	return s.EnableSSE
+}
+
+func (s *CreateQueueShrinkRequest) GetKmsKeyId() *string {
+	return s.KmsKeyId
+}
+
 func (s *CreateQueueShrinkRequest) GetMaximumMessageSize() *int64 {
 	return s.MaximumMessageSize
 }
@@ -130,6 +180,14 @@ func (s *CreateQueueShrinkRequest) GetQueueName() *string {
 
 func (s *CreateQueueShrinkRequest) GetQueueType() *string {
 	return s.QueueType
+}
+
+func (s *CreateQueueShrinkRequest) GetSseAlgorithm() *string {
+	return s.SseAlgorithm
+}
+
+func (s *CreateQueueShrinkRequest) GetSseType() *string {
+	return s.SseType
 }
 
 func (s *CreateQueueShrinkRequest) GetTag() []*CreateQueueShrinkRequestTag {
@@ -159,6 +217,16 @@ func (s *CreateQueueShrinkRequest) SetEnableLogging(v bool) *CreateQueueShrinkRe
 	return s
 }
 
+func (s *CreateQueueShrinkRequest) SetEnableSSE(v bool) *CreateQueueShrinkRequest {
+	s.EnableSSE = &v
+	return s
+}
+
+func (s *CreateQueueShrinkRequest) SetKmsKeyId(v string) *CreateQueueShrinkRequest {
+	s.KmsKeyId = &v
+	return s
+}
+
 func (s *CreateQueueShrinkRequest) SetMaximumMessageSize(v int64) *CreateQueueShrinkRequest {
 	s.MaximumMessageSize = &v
 	return s
@@ -181,6 +249,16 @@ func (s *CreateQueueShrinkRequest) SetQueueName(v string) *CreateQueueShrinkRequ
 
 func (s *CreateQueueShrinkRequest) SetQueueType(v string) *CreateQueueShrinkRequest {
 	s.QueueType = &v
+	return s
+}
+
+func (s *CreateQueueShrinkRequest) SetSseAlgorithm(v string) *CreateQueueShrinkRequest {
+	s.SseAlgorithm = &v
+	return s
+}
+
+func (s *CreateQueueShrinkRequest) SetSseType(v string) *CreateQueueShrinkRequest {
+	s.SseType = &v
 	return s
 }
 
@@ -219,7 +297,7 @@ type CreateQueueShrinkRequestTag struct {
 	//
 	// tag1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of the tag.
 	//
 	// example:
 	//

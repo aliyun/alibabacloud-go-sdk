@@ -15,6 +15,10 @@ type iCreateQueueRequest interface {
 	GetDlqPolicy() *CreateQueueRequestDlqPolicy
 	SetEnableLogging(v bool) *CreateQueueRequest
 	GetEnableLogging() *bool
+	SetEnableSSE(v bool) *CreateQueueRequest
+	GetEnableSSE() *bool
+	SetKmsKeyId(v string) *CreateQueueRequest
+	GetKmsKeyId() *string
 	SetMaximumMessageSize(v int64) *CreateQueueRequest
 	GetMaximumMessageSize() *int64
 	SetMessageRetentionPeriod(v int64) *CreateQueueRequest
@@ -25,6 +29,10 @@ type iCreateQueueRequest interface {
 	GetQueueName() *string
 	SetQueueType(v string) *CreateQueueRequest
 	GetQueueType() *string
+	SetSseAlgorithm(v string) *CreateQueueRequest
+	GetSseAlgorithm() *string
+	SetSseType(v string) *CreateQueueRequest
+	GetSseType() *string
 	SetTag(v []*CreateQueueRequestTag) *CreateQueueRequest
 	GetTag() []*CreateQueueRequestTag
 	SetTenantRateLimitPolicy(v *CreateQueueRequestTenantRateLimitPolicy) *CreateQueueRequest
@@ -34,39 +42,57 @@ type iCreateQueueRequest interface {
 }
 
 type CreateQueueRequest struct {
-	// The period after which all messages sent to the queue are consumed. Valid values: 0 to 604800. Unit: seconds. Default value: 0
+	// The delay period for all messages sent to the queue. A message sent to the queue can be consumed only after the delay period specified by this parameter elapses. Unit: seconds.
+	//
+	// Valid values: 0 to 604800.
+	//
+	// Default value: 0.
 	//
 	// example:
 	//
 	// 0
 	DelaySeconds *int64 `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
-	// The dead-letter queue policy.
+	// The dead-letter policy.
 	DlqPolicy *CreateQueueRequestDlqPolicy `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty" type:"Struct"`
 	// Specifies whether to enable the log management feature. Valid values:
 	//
-	// 	- true: enabled.
+	// - true: Enabled.
 	//
-	// 	- false: disabled.
+	// - false: Disabled.
 	//
 	// Default value: false.
 	//
 	// example:
 	//
 	// true
-	EnableLogging *bool `json:"EnableLogging,omitempty" xml:"EnableLogging,omitempty"`
-	// The maximum length of the message that is sent to the queue. Valid values: 1024 to 65536. Unit: bytes. Default value: 65536.
+	EnableLogging *bool   `json:"EnableLogging,omitempty" xml:"EnableLogging,omitempty"`
+	EnableSSE     *bool   `json:"EnableSSE,omitempty" xml:"EnableSSE,omitempty"`
+	KmsKeyId      *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	// The maximum size of a message body that can be sent to the queue. Unit: bytes.
+	//
+	// Valid values: 1024 to 65536.
+	//
+	// Default value: 65536.
 	//
 	// example:
 	//
 	// 65536
 	MaximumMessageSize *int64 `json:"MaximumMessageSize,omitempty" xml:"MaximumMessageSize,omitempty"`
-	// The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is consumed. Valid values: 60 to 604800. Unit: seconds. Default value: 345600.
+	// The maximum duration for which a message is retained in the queue. After the specified duration elapses from the time the message is sent to the queue, the message is deleted regardless of whether it has been consumed. Unit: seconds.
+	//
+	// Valid values: 60 to 604800.
+	//
+	// Default value: 345600.
 	//
 	// example:
 	//
 	// 345600
 	MessageRetentionPeriod *int64 `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
-	// The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: 0 to 30. Unit: seconds. Default value: 0
+	// The maximum wait time for a ReceiveMessage request when the queue is empty. Unit: seconds.
+	//
+	// Valid values: 0 to 30.
+	//
+	// Default value: 0.
 	//
 	// example:
 	//
@@ -80,11 +106,27 @@ type CreateQueueRequest struct {
 	//
 	// 06273500-249F-5863-121D-74D51123****
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	QueueType *string `json:"QueueType,omitempty" xml:"QueueType,omitempty"`
-	// The tags.
-	Tag                   []*CreateQueueRequestTag                 `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The type of the queue. Valid values:
+	//
+	//    	- normal: standard queue.
+	//
+	//    	- fifo: FIFO queue.
+	//
+	// example:
+	//
+	// normal
+	QueueType    *string `json:"QueueType,omitempty" xml:"QueueType,omitempty"`
+	SseAlgorithm *string `json:"SseAlgorithm,omitempty" xml:"SseAlgorithm,omitempty"`
+	SseType      *string `json:"SseType,omitempty" xml:"SseType,omitempty"`
+	// The list of resource tags.
+	Tag []*CreateQueueRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The rate limiting policy.
 	TenantRateLimitPolicy *CreateQueueRequestTenantRateLimitPolicy `json:"TenantRateLimitPolicy,omitempty" xml:"TenantRateLimitPolicy,omitempty" type:"Struct"`
-	// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
+	// The duration for which a consumed message stays in the Inactive state after it is changed from the Active state. Unit: seconds.
+	//
+	// Valid values: 1 to 43200.
+	//
+	// Default value: 30.
 	//
 	// example:
 	//
@@ -112,6 +154,14 @@ func (s *CreateQueueRequest) GetEnableLogging() *bool {
 	return s.EnableLogging
 }
 
+func (s *CreateQueueRequest) GetEnableSSE() *bool {
+	return s.EnableSSE
+}
+
+func (s *CreateQueueRequest) GetKmsKeyId() *string {
+	return s.KmsKeyId
+}
+
 func (s *CreateQueueRequest) GetMaximumMessageSize() *int64 {
 	return s.MaximumMessageSize
 }
@@ -130,6 +180,14 @@ func (s *CreateQueueRequest) GetQueueName() *string {
 
 func (s *CreateQueueRequest) GetQueueType() *string {
 	return s.QueueType
+}
+
+func (s *CreateQueueRequest) GetSseAlgorithm() *string {
+	return s.SseAlgorithm
+}
+
+func (s *CreateQueueRequest) GetSseType() *string {
+	return s.SseType
 }
 
 func (s *CreateQueueRequest) GetTag() []*CreateQueueRequestTag {
@@ -159,6 +217,16 @@ func (s *CreateQueueRequest) SetEnableLogging(v bool) *CreateQueueRequest {
 	return s
 }
 
+func (s *CreateQueueRequest) SetEnableSSE(v bool) *CreateQueueRequest {
+	s.EnableSSE = &v
+	return s
+}
+
+func (s *CreateQueueRequest) SetKmsKeyId(v string) *CreateQueueRequest {
+	s.KmsKeyId = &v
+	return s
+}
+
 func (s *CreateQueueRequest) SetMaximumMessageSize(v int64) *CreateQueueRequest {
 	s.MaximumMessageSize = &v
 	return s
@@ -181,6 +249,16 @@ func (s *CreateQueueRequest) SetQueueName(v string) *CreateQueueRequest {
 
 func (s *CreateQueueRequest) SetQueueType(v string) *CreateQueueRequest {
 	s.QueueType = &v
+	return s
+}
+
+func (s *CreateQueueRequest) SetSseAlgorithm(v string) *CreateQueueRequest {
+	s.SseAlgorithm = &v
+	return s
+}
+
+func (s *CreateQueueRequest) SetSseType(v string) *CreateQueueRequest {
+	s.SseType = &v
 	return s
 }
 
@@ -223,19 +301,19 @@ func (s *CreateQueueRequest) Validate() error {
 }
 
 type CreateQueueRequestDlqPolicy struct {
-	// The queue to which dead-letter messages are delivered.
+	// The target queue for dead-letter message delivery.
 	//
 	// example:
 	//
 	// deadLetterQueue
 	DeadLetterTargetQueue *string `json:"DeadLetterTargetQueue,omitempty" xml:"DeadLetterTargetQueue,omitempty"`
-	// Specifies whether to enable the dead-letter message delivery.
+	// Specifies whether to enable dead-letter message delivery.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The maximum number of retries.
+	// The maximum number of times a message can be delivered.
 	//
 	// example:
 	//
@@ -289,7 +367,7 @@ type CreateQueueRequestTag struct {
 	//
 	// tag1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of the tag.
 	//
 	// example:
 	//
@@ -328,7 +406,21 @@ func (s *CreateQueueRequestTag) Validate() error {
 }
 
 type CreateQueueRequestTenantRateLimitPolicy struct {
-	Enabled              *bool  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// Specifies whether to enable rate limiting. Valid values:
+	//
+	// - true
+	//
+	// - false
+	//
+	// example:
+	//
+	// false
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The maximum number of receives per second.
+	//
+	// example:
+	//
+	// 1000
 	MaxReceivesPerSecond *int32 `json:"MaxReceivesPerSecond,omitempty" xml:"MaxReceivesPerSecond,omitempty"`
 }
 

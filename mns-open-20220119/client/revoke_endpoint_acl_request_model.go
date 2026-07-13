@@ -18,9 +18,9 @@ type iRevokeEndpointAclRequest interface {
 }
 
 type RevokeEndpointAclRequest struct {
-	// The ACL policy. Value:
+	// The ACL policy. Valid values:
 	//
-	// 	- **allow**: indicates that this operation is included in the Cidr whitelist. (Only the allow is supported.)
+	// - **allow**: The operation is for a Classless Inter-Domain Routing (CIDR) whitelist. Currently, only \\`allow\\` is supported.
 	//
 	// This parameter is required.
 	//
@@ -28,13 +28,13 @@ type RevokeEndpointAclRequest struct {
 	//
 	// allow
 	AclStrategy *string `json:"AclStrategy,omitempty" xml:"AclStrategy,omitempty"`
-	// The list of CIDR block.
+	// The list of network segments.
 	//
 	// This parameter is required.
 	CidrList []*string `json:"CidrList,omitempty" xml:"CidrList,omitempty" type:"Repeated"`
-	// The type of the endpoint. Valid values:
+	// The endpoint type. Valid values:
 	//
-	// 	- **public**: indicates public endpoint. (Only the public is supported.)
+	// - **public**: The Internet endpoint. Currently, only \\`public\\` is supported.
 	//
 	// This parameter is required.
 	//

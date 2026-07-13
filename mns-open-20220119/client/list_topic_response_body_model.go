@@ -30,21 +30,21 @@ type ListTopicResponseBody struct {
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The response data.
 	Data *ListTopicResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 06273500-249F-5863-121D-74D51123****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The response status.
+	// The status of the response.
 	//
 	// example:
 	//
@@ -130,21 +130,21 @@ func (s *ListTopicResponseBody) Validate() error {
 }
 
 type ListTopicResponseBodyData struct {
-	// The data returned on the current page.
+	// The results returned on the current page.
 	PageData []*ListTopicResponseBodyDataPageData `json:"PageData,omitempty" xml:"PageData,omitempty" type:"Repeated"`
-	// The page number.
+	// The page number of the returned results.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries per page.
+	// The number of results returned per page.
 	//
 	// example:
 	//
 	// 50
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of results.
 	//
 	// example:
 	//
@@ -210,29 +210,32 @@ func (s *ListTopicResponseBodyData) Validate() error {
 }
 
 type ListTopicResponseBodyDataPageData struct {
-	// The time when the subscription was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the subscription was created. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
 	// 1449554962
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the subscription was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EnableSSE         *bool   `json:"EnableSSE,omitempty" xml:"EnableSSE,omitempty"`
+	EncryptionEnabled *bool   `json:"EncryptionEnabled,omitempty" xml:"EncryptionEnabled,omitempty"`
+	KmsKeyId          *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	// The time when the subscription attributes were last modified. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
 	// 1449554962
 	LastModifyTime *int64 `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
-	// Indicates whether the logging feature is enabled.
+	// Indicates whether the Log Management feature is enabled. Valid values:
 	//
-	// 	- True
+	// - True: Enabled.
 	//
-	// 	- False
+	// - False: Disabled.
 	//
 	// example:
 	//
 	// True
 	LoggingEnabled *bool `json:"LoggingEnabled,omitempty" xml:"LoggingEnabled,omitempty"`
-	// The maximum length of the message that is sent to the topic. Unit: bytes.
+	// The maximum length of the message body sent to the topic. Unit: bytes.
 	//
 	// example:
 	//
@@ -244,15 +247,17 @@ type ListTopicResponseBodyDataPageData struct {
 	//
 	// 0
 	MessageCount *int64 `json:"MessageCount,omitempty" xml:"MessageCount,omitempty"`
-	// The maximum duration for which a message is retained in the topic. After the specified retention period ends, the message is deleted regardless of whether the message is received. Unit: seconds.
+	// The maximum duration for which a message is retained in the topic. After the time specified by this parameter elapses since the message is sent to the topic, the message is deleted regardless of whether it has been successfully pushed to the user. Unit: seconds.
 	//
 	// example:
 	//
 	// 86400
-	MessageRetentionPeriod *int64 `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
-	// The tags added to the resources.
+	MessageRetentionPeriod *int64  `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
+	SseAlgorithm           *string `json:"SseAlgorithm,omitempty" xml:"SseAlgorithm,omitempty"`
+	SseType                *string `json:"SseType,omitempty" xml:"SseType,omitempty"`
+	// The list of resource tags.
 	Tags []*ListTopicResponseBodyDataPageDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The internal URL of the message topic. The internal URL can be accessed over an internal network.
+	// The internal URL of the topic.
 	//
 	// example:
 	//
@@ -264,8 +269,17 @@ type ListTopicResponseBodyDataPageData struct {
 	//
 	// demo-topic
 	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
+	// The type of the topic. Valid values:
+	//
+	//    	- normal: normal topic
+	//
+	//    	- fifo: FIFO topic
+	//
+	// example:
+	//
+	// normal
 	TopicType *string `json:"TopicType,omitempty" xml:"TopicType,omitempty"`
-	// The URL of the message topic.
+	// The URL of the topic.
 	//
 	// example:
 	//
@@ -283,6 +297,18 @@ func (s ListTopicResponseBodyDataPageData) GoString() string {
 
 func (s *ListTopicResponseBodyDataPageData) GetCreateTime() *int64 {
 	return s.CreateTime
+}
+
+func (s *ListTopicResponseBodyDataPageData) GetEnableSSE() *bool {
+	return s.EnableSSE
+}
+
+func (s *ListTopicResponseBodyDataPageData) GetEncryptionEnabled() *bool {
+	return s.EncryptionEnabled
+}
+
+func (s *ListTopicResponseBodyDataPageData) GetKmsKeyId() *string {
+	return s.KmsKeyId
 }
 
 func (s *ListTopicResponseBodyDataPageData) GetLastModifyTime() *int64 {
@@ -303,6 +329,14 @@ func (s *ListTopicResponseBodyDataPageData) GetMessageCount() *int64 {
 
 func (s *ListTopicResponseBodyDataPageData) GetMessageRetentionPeriod() *int64 {
 	return s.MessageRetentionPeriod
+}
+
+func (s *ListTopicResponseBodyDataPageData) GetSseAlgorithm() *string {
+	return s.SseAlgorithm
+}
+
+func (s *ListTopicResponseBodyDataPageData) GetSseType() *string {
+	return s.SseType
 }
 
 func (s *ListTopicResponseBodyDataPageData) GetTags() []*ListTopicResponseBodyDataPageDataTags {
@@ -330,6 +364,21 @@ func (s *ListTopicResponseBodyDataPageData) SetCreateTime(v int64) *ListTopicRes
 	return s
 }
 
+func (s *ListTopicResponseBodyDataPageData) SetEnableSSE(v bool) *ListTopicResponseBodyDataPageData {
+	s.EnableSSE = &v
+	return s
+}
+
+func (s *ListTopicResponseBodyDataPageData) SetEncryptionEnabled(v bool) *ListTopicResponseBodyDataPageData {
+	s.EncryptionEnabled = &v
+	return s
+}
+
+func (s *ListTopicResponseBodyDataPageData) SetKmsKeyId(v string) *ListTopicResponseBodyDataPageData {
+	s.KmsKeyId = &v
+	return s
+}
+
 func (s *ListTopicResponseBodyDataPageData) SetLastModifyTime(v int64) *ListTopicResponseBodyDataPageData {
 	s.LastModifyTime = &v
 	return s
@@ -352,6 +401,16 @@ func (s *ListTopicResponseBodyDataPageData) SetMessageCount(v int64) *ListTopicR
 
 func (s *ListTopicResponseBodyDataPageData) SetMessageRetentionPeriod(v int64) *ListTopicResponseBodyDataPageData {
 	s.MessageRetentionPeriod = &v
+	return s
+}
+
+func (s *ListTopicResponseBodyDataPageData) SetSseAlgorithm(v string) *ListTopicResponseBodyDataPageData {
+	s.SseAlgorithm = &v
+	return s
+}
+
+func (s *ListTopicResponseBodyDataPageData) SetSseType(v string) *ListTopicResponseBodyDataPageData {
+	s.SseType = &v
 	return s
 }
 
@@ -394,13 +453,13 @@ func (s *ListTopicResponseBodyDataPageData) Validate() error {
 }
 
 type ListTopicResponseBodyDataPageDataTags struct {
-	// The tag key.
+	// The key of the tag.
 	//
 	// example:
 	//
 	// tag1
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
+	// The value of the tag.
 	//
 	// example:
 	//

@@ -20,12 +20,29 @@ type iEventMatchRule interface {
 }
 
 type EventMatchRule struct {
+  // Specifies whether to match.
+  // 
   // example:
   // 
   // true
   MatchState *bool `json:"MatchState,omitempty" xml:"MatchState,omitempty"`
+  // The full name to match.
+  // 
+  // example:
+  // 
+  // testBucket/folder1/file1
   Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+  // The prefix to match.
+  // 
+  // example:
+  // 
+  // testBucket/prefix1xxx
   Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+  // The suffix to match.
+  // 
+  // example:
+  // 
+  // suffix/xxxx.test
   Suffix *string `json:"Suffix,omitempty" xml:"Suffix,omitempty"`
 }
 

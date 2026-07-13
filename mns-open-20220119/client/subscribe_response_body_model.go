@@ -30,13 +30,13 @@ type SubscribeResponseBody struct {
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The response data.
 	//
 	// example:
 	//
 	// {\\"Code\\": 200, \\"Success\\": True}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//

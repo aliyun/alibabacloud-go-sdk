@@ -28,20 +28,42 @@ type iCreateEventRuleRequest interface {
 }
 
 type CreateEventRuleRequest struct {
-	ClientToken  *string                            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DeliveryMode *string                            `json:"DeliveryMode,omitempty" xml:"DeliveryMode,omitempty"`
-	Endpoint     *CreateEventRuleRequestEndpoint    `json:"Endpoint,omitempty" xml:"Endpoint,omitempty" type:"Struct"`
-	Endpoints    []*CreateEventRuleRequestEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
+	// A client token to ensure the idempotence of the request.
+	//
+	// Generate a unique value for this parameter from your client for each request.
+	//
+	// example:
+	//
+	// 06273500-249F-5863-121D-74D51123****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is deprecated.
+	//
+	// example:
+	//
+	// --
+	DeliveryMode *string `json:"DeliveryMode,omitempty" xml:"DeliveryMode,omitempty"`
+	// The endpoint that receives messages for this subscription.
+	Endpoint *CreateEventRuleRequestEndpoint `json:"Endpoint,omitempty" xml:"Endpoint,omitempty" type:"Struct"`
+	// This parameter is deprecated. Use Endpoint instead.
+	Endpoints []*CreateEventRuleRequestEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
+	// A list of event types.
+	//
 	// This parameter is required.
 	EventTypes []*string `json:"EventTypes,omitempty" xml:"EventTypes,omitempty" type:"Repeated"`
+	// A list of matching rules. The logical relationship between the rules is OR.
+	//
 	// This parameter is required.
 	MatchRules [][]*EventMatchRule `json:"MatchRules,omitempty" xml:"MatchRules,omitempty" type:"Repeated"`
+	// The name of the Alibaba Cloud product for which you want to receive event notifications.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// The name of the event rule.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -149,7 +171,21 @@ func (s *CreateEventRuleRequest) Validate() error {
 }
 
 type CreateEventRuleRequestEndpoint struct {
-	EndpointType  *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	// The endpoint type. Valid values:
+	//
+	// - **topic**: The endpoint is a topic. A topic can deliver messages to multiple subscribers. You can add or remove subscribers later.
+	//
+	// - **queue**: The endpoint is a queue. Messages are delivered directly to the queue. This simplifies the delivery path, but you cannot add new subscribers later.
+	//
+	// example:
+	//
+	// topic
+	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	// The value of the endpoint.
+	//
+	// example:
+	//
+	// test-topic
 	EndpointValue *string `json:"EndpointValue,omitempty" xml:"EndpointValue,omitempty"`
 }
 
@@ -184,10 +220,14 @@ func (s *CreateEventRuleRequestEndpoint) Validate() error {
 }
 
 type CreateEventRuleRequestEndpoints struct {
+	// Deprecated. Use Endpoint.EndpointType instead.
+	//
 	// example:
 	//
 	// http
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	// Deprecated. Use Endpoint.EndpointValue instead.
+	//
 	// example:
 	//
 	// test-xxx-queue

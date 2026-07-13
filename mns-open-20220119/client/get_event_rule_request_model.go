@@ -16,12 +16,16 @@ type iGetEventRuleRequest interface {
 }
 
 type GetEventRuleRequest struct {
+	// The name of the Alibaba Cloud product that triggers the event notification.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// The name of the event notification rule.
+	//
 	// This parameter is required.
 	//
 	// example:

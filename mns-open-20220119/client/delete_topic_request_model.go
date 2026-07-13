@@ -14,7 +14,7 @@ type iDeleteTopicRequest interface {
 }
 
 type DeleteTopicRequest struct {
-	// The name of the topic that you want to delete.
+	// The name of the topic to delete.
 	//
 	// This parameter is required.
 	//

@@ -30,9 +30,9 @@ type GetTopicAttributesResponseBody struct {
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The response data.
 	Data *GetTopicAttributesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
@@ -135,24 +135,27 @@ type GetTopicAttributesResponseBodyData struct {
 	// example:
 	//
 	// 1449554277
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the topic was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EnableSSE         *bool   `json:"EnableSSE,omitempty" xml:"EnableSSE,omitempty"`
+	EncryptionEnabled *bool   `json:"EncryptionEnabled,omitempty" xml:"EncryptionEnabled,omitempty"`
+	KmsKeyId          *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	// The most recent time when the topic attributes were modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
 	// 1449554460
 	LastModifyTime *int64 `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
-	// Indicates whether the logging feature is enabled. Valid values:
+	// Indicates whether the Log Management feature is enabled. Valid values:
 	//
-	// 	- True
+	// - True: Enabled.
 	//
-	// 	- False
+	// - False: Disabled.
 	//
 	// example:
 	//
 	// True
 	LoggingEnabled *bool `json:"LoggingEnabled,omitempty" xml:"LoggingEnabled,omitempty"`
-	// The maximum length of the message that is sent to the topic. Unit: bytes.
+	// The maximum length of the message body sent to the topic. Unit: bytes.
 	//
 	// example:
 	//
@@ -164,13 +167,15 @@ type GetTopicAttributesResponseBodyData struct {
 	//
 	// 0
 	MessageCount *int64 `json:"MessageCount,omitempty" xml:"MessageCount,omitempty"`
-	// The maximum duration for which a message is retained in the topic. After the specified retention period ends, the message is deleted regardless of whether the message is received. Unit: seconds.
+	// The maximum duration for which a message is retained in the topic. After the period of time specified by this parameter elapses since the message is sent to the topic, the message is deleted regardless of whether it is successfully pushed to the user. Unit: seconds.
 	//
 	// example:
 	//
 	// 86400
-	MessageRetentionPeriod *int64 `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
-	// The tags added to the resources.
+	MessageRetentionPeriod *int64  `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
+	SseAlgorithm           *string `json:"SseAlgorithm,omitempty" xml:"SseAlgorithm,omitempty"`
+	SseType                *string `json:"SseType,omitempty" xml:"SseType,omitempty"`
+	// The list of resource tags.
 	Tags []*GetTopicAttributesResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -182,6 +187,15 @@ type GetTopicAttributesResponseBodyData struct {
 	//
 	// demo-topic
 	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
+	// The type of the topic. Valid values:
+	//
+	//    	- normal: normal topic
+	//
+	//    	- fifo: FIFO topic
+	//
+	// example:
+	//
+	// normal
 	TopicType *string `json:"TopicType,omitempty" xml:"TopicType,omitempty"`
 	// example:
 	//
@@ -199,6 +213,18 @@ func (s GetTopicAttributesResponseBodyData) GoString() string {
 
 func (s *GetTopicAttributesResponseBodyData) GetCreateTime() *int64 {
 	return s.CreateTime
+}
+
+func (s *GetTopicAttributesResponseBodyData) GetEnableSSE() *bool {
+	return s.EnableSSE
+}
+
+func (s *GetTopicAttributesResponseBodyData) GetEncryptionEnabled() *bool {
+	return s.EncryptionEnabled
+}
+
+func (s *GetTopicAttributesResponseBodyData) GetKmsKeyId() *string {
+	return s.KmsKeyId
 }
 
 func (s *GetTopicAttributesResponseBodyData) GetLastModifyTime() *int64 {
@@ -219,6 +245,14 @@ func (s *GetTopicAttributesResponseBodyData) GetMessageCount() *int64 {
 
 func (s *GetTopicAttributesResponseBodyData) GetMessageRetentionPeriod() *int64 {
 	return s.MessageRetentionPeriod
+}
+
+func (s *GetTopicAttributesResponseBodyData) GetSseAlgorithm() *string {
+	return s.SseAlgorithm
+}
+
+func (s *GetTopicAttributesResponseBodyData) GetSseType() *string {
+	return s.SseType
 }
 
 func (s *GetTopicAttributesResponseBodyData) GetTags() []*GetTopicAttributesResponseBodyDataTags {
@@ -246,6 +280,21 @@ func (s *GetTopicAttributesResponseBodyData) SetCreateTime(v int64) *GetTopicAtt
 	return s
 }
 
+func (s *GetTopicAttributesResponseBodyData) SetEnableSSE(v bool) *GetTopicAttributesResponseBodyData {
+	s.EnableSSE = &v
+	return s
+}
+
+func (s *GetTopicAttributesResponseBodyData) SetEncryptionEnabled(v bool) *GetTopicAttributesResponseBodyData {
+	s.EncryptionEnabled = &v
+	return s
+}
+
+func (s *GetTopicAttributesResponseBodyData) SetKmsKeyId(v string) *GetTopicAttributesResponseBodyData {
+	s.KmsKeyId = &v
+	return s
+}
+
 func (s *GetTopicAttributesResponseBodyData) SetLastModifyTime(v int64) *GetTopicAttributesResponseBodyData {
 	s.LastModifyTime = &v
 	return s
@@ -268,6 +317,16 @@ func (s *GetTopicAttributesResponseBodyData) SetMessageCount(v int64) *GetTopicA
 
 func (s *GetTopicAttributesResponseBodyData) SetMessageRetentionPeriod(v int64) *GetTopicAttributesResponseBodyData {
 	s.MessageRetentionPeriod = &v
+	return s
+}
+
+func (s *GetTopicAttributesResponseBodyData) SetSseAlgorithm(v string) *GetTopicAttributesResponseBodyData {
+	s.SseAlgorithm = &v
+	return s
+}
+
+func (s *GetTopicAttributesResponseBodyData) SetSseType(v string) *GetTopicAttributesResponseBodyData {
+	s.SseType = &v
 	return s
 }
 
@@ -310,13 +369,13 @@ func (s *GetTopicAttributesResponseBodyData) Validate() error {
 }
 
 type GetTopicAttributesResponseBodyDataTags struct {
-	// The tag key.
+	// The key of the tag.
 	//
 	// example:
 	//
 	// tag1
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
+	// The value of the tag.
 	//
 	// example:
 	//

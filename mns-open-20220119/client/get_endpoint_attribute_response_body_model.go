@@ -24,7 +24,7 @@ type iGetEndpointAttributeResponseBody interface {
 }
 
 type GetEndpointAttributeResponseBody struct {
-	// The HTTP status code.
+	// The response code.
 	//
 	// example:
 	//
@@ -32,19 +32,19 @@ type GetEndpointAttributeResponseBody struct {
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The response data.
 	Data *GetEndpointAttributeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 06273500-249F-5863-121D-74D51123****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The response status.
+	// The status of the response.
 	//
 	// example:
 	//
@@ -130,9 +130,9 @@ func (s *GetEndpointAttributeResponseBody) Validate() error {
 }
 
 type GetEndpointAttributeResponseBodyData struct {
-	// The list of CIDR block.
+	// The list of CIDR blocks.
 	CidrList []*GetEndpointAttributeResponseBodyDataCidrList `json:"CidrList,omitempty" xml:"CidrList,omitempty" type:"Repeated"`
-	// Specifies whether the endpoint is enabled.
+	// Indicates whether the endpoint is enabled.
 	//
 	// example:
 	//
@@ -180,9 +180,9 @@ func (s *GetEndpointAttributeResponseBodyData) Validate() error {
 }
 
 type GetEndpointAttributeResponseBodyDataCidrList struct {
-	// The ACL policy. Valid values:
+	// The access control list (ACL) policy. Valid value:
 	//
-	// 	- **allow**: indicates that the current endpoint allows access from the corresponding CIDR block. (Only allow is supported.)
+	// - **allow**: The endpoint allows access from the specified CIDR block. This is the only supported value.
 	//
 	// example:
 	//
@@ -194,7 +194,7 @@ type GetEndpointAttributeResponseBodyDataCidrList struct {
 	//
 	// 172.18.0.0/24
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	// The creation time.
+	// The time when the CIDR block was created.
 	//
 	// example:
 	//

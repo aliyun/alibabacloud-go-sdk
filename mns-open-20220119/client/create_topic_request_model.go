@@ -11,8 +11,16 @@ type iCreateTopicRequest interface {
 	GoString() string
 	SetEnableLogging(v bool) *CreateTopicRequest
 	GetEnableLogging() *bool
+	SetEnableSSE(v bool) *CreateTopicRequest
+	GetEnableSSE() *bool
+	SetKmsKeyId(v string) *CreateTopicRequest
+	GetKmsKeyId() *string
 	SetMaxMessageSize(v int64) *CreateTopicRequest
 	GetMaxMessageSize() *int64
+	SetSseAlgorithm(v string) *CreateTopicRequest
+	GetSseAlgorithm() *string
+	SetSseType(v string) *CreateTopicRequest
+	GetSseType() *string
 	SetTag(v []*CreateTopicRequestTag) *CreateTopicRequest
 	GetTag() []*CreateTopicRequestTag
 	SetTopicName(v string) *CreateTopicRequest
@@ -24,23 +32,29 @@ type iCreateTopicRequest interface {
 type CreateTopicRequest struct {
 	// Specifies whether to enable the log management feature. Valid values:
 	//
-	// 	- true: enabled.
+	// - true: Enabled.
 	//
-	// 	- false: disabled. Default value: false.
+	// - false: Disabled.
+	//
+	// Default value: false.
 	//
 	// example:
 	//
 	// true
-	EnableLogging *bool `json:"EnableLogging,omitempty" xml:"EnableLogging,omitempty"`
-	// The maximum length of the message that is sent to the topic. Valid values: 1024 to 65536. Unit: bytes. Default value: 65536.
+	EnableLogging *bool   `json:"EnableLogging,omitempty" xml:"EnableLogging,omitempty"`
+	EnableSSE     *bool   `json:"EnableSSE,omitempty" xml:"EnableSSE,omitempty"`
+	KmsKeyId      *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	// The maximum length of the message body sent to the topic. Valid values: 1024 to 65536. Unit: bytes. Default value: 65536.
 	//
 	// example:
 	//
 	// 10240
-	MaxMessageSize *int64 `json:"MaxMessageSize,omitempty" xml:"MaxMessageSize,omitempty"`
-	// The tags.
+	MaxMessageSize *int64  `json:"MaxMessageSize,omitempty" xml:"MaxMessageSize,omitempty"`
+	SseAlgorithm   *string `json:"SseAlgorithm,omitempty" xml:"SseAlgorithm,omitempty"`
+	SseType        *string `json:"SseType,omitempty" xml:"SseType,omitempty"`
+	// The list of resource tags.
 	Tag []*CreateTopicRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The name of the topic that you want to create.
+	// The name of the topic to create.
 	//
 	// This parameter is required.
 	//
@@ -48,6 +62,15 @@ type CreateTopicRequest struct {
 	//
 	// test
 	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
+	// The type of the topic. Valid values:
+	//
+	//    	- normal: normal topic
+	//
+	//    	- fifo: FIFO topic
+	//
+	// example:
+	//
+	// normal
 	TopicType *string `json:"TopicType,omitempty" xml:"TopicType,omitempty"`
 }
 
@@ -63,8 +86,24 @@ func (s *CreateTopicRequest) GetEnableLogging() *bool {
 	return s.EnableLogging
 }
 
+func (s *CreateTopicRequest) GetEnableSSE() *bool {
+	return s.EnableSSE
+}
+
+func (s *CreateTopicRequest) GetKmsKeyId() *string {
+	return s.KmsKeyId
+}
+
 func (s *CreateTopicRequest) GetMaxMessageSize() *int64 {
 	return s.MaxMessageSize
+}
+
+func (s *CreateTopicRequest) GetSseAlgorithm() *string {
+	return s.SseAlgorithm
+}
+
+func (s *CreateTopicRequest) GetSseType() *string {
+	return s.SseType
 }
 
 func (s *CreateTopicRequest) GetTag() []*CreateTopicRequestTag {
@@ -84,8 +123,28 @@ func (s *CreateTopicRequest) SetEnableLogging(v bool) *CreateTopicRequest {
 	return s
 }
 
+func (s *CreateTopicRequest) SetEnableSSE(v bool) *CreateTopicRequest {
+	s.EnableSSE = &v
+	return s
+}
+
+func (s *CreateTopicRequest) SetKmsKeyId(v string) *CreateTopicRequest {
+	s.KmsKeyId = &v
+	return s
+}
+
 func (s *CreateTopicRequest) SetMaxMessageSize(v int64) *CreateTopicRequest {
 	s.MaxMessageSize = &v
+	return s
+}
+
+func (s *CreateTopicRequest) SetSseAlgorithm(v string) *CreateTopicRequest {
+	s.SseAlgorithm = &v
+	return s
+}
+
+func (s *CreateTopicRequest) SetSseType(v string) *CreateTopicRequest {
+	s.SseType = &v
 	return s
 }
 
@@ -118,17 +177,17 @@ func (s *CreateTopicRequest) Validate() error {
 }
 
 type CreateTopicRequestTag struct {
-	// The tag key.
+	// The key of the tag.
 	//
 	// example:
 	//
 	// tag1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of the tag.
 	//
 	// example:
 	//
-	// joyce.wang
+	// test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

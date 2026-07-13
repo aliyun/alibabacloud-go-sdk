@@ -24,7 +24,7 @@ type GetQueueAttributesRequest struct {
 	//
 	// demo-queue
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	// The tags.
+	// The list of resource tags.
 	Tag []*GetQueueAttributesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -68,13 +68,13 @@ func (s *GetQueueAttributesRequest) Validate() error {
 }
 
 type GetQueueAttributesRequestTag struct {
-	// The tag key.
+	// The key of the tag.
 	//
 	// example:
 	//
 	// tag1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of the tag.
 	//
 	// example:
 	//

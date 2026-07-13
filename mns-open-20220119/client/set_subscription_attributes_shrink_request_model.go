@@ -26,11 +26,11 @@ type iSetSubscriptionAttributesShrinkRequest interface {
 type SetSubscriptionAttributesShrinkRequest struct {
 	// The dead-letter queue policy.
 	DlqPolicyShrink *string `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty"`
-	// The retry policy that is applied if an error occurs when Message Service (MNS) pushes messages to the endpoint. Valid values:
+	// The retry policy for message delivery failures to the endpoint. Valid values:
 	//
-	// 	- BACKOFF_RETRY
+	// - BACKOFF_RETRY: backoff retry.
 	//
-	// 	- EXPONENTIAL_DECAY_RETRY
+	// - EXPONENTIAL_DECAY_RETRY: exponential decay retry.
 	//
 	// example:
 	//

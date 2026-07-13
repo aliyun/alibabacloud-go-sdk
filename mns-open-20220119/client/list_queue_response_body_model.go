@@ -30,21 +30,21 @@ type ListQueueResponseBody struct {
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The response data.
 	Data *ListQueueResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 06273500-249F-5863-121D-74D51123****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The response status.
+	// The status of the response.
 	//
 	// example:
 	//
@@ -130,27 +130,27 @@ func (s *ListQueueResponseBody) Validate() error {
 }
 
 type ListQueueResponseBodyData struct {
-	// The data returned on the current page.
+	// The results returned on the current page.
 	PageData []*ListQueueResponseBodyDataPageData `json:"PageData,omitempty" xml:"PageData,omitempty" type:"Repeated"`
-	// The page number.
+	// The page number of the returned results.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries per page.
+	// The maximum number of entries returned per page.
 	//
 	// example:
 	//
 	// 50
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of pages returned.
+	// The total number of pages.
 	//
 	// example:
 	//
 	// 3
 	Pages *int64 `json:"Pages,omitempty" xml:"Pages,omitempty"`
-	// The number of entries on the current page.
+	// The number of entries returned on the current page.
 	//
 	// example:
 	//
@@ -240,67 +240,76 @@ func (s *ListQueueResponseBodyData) Validate() error {
 }
 
 type ListQueueResponseBodyDataPageData struct {
-	// The total number of messages that are in the Active state in the queue. The value is an approximate number. Default value: 0. We recommend that you do not use the return value and that you call CloudMonitor API operations to query the metric value.
+	// The approximate total number of messages in the Active state in this queue.
+	//
+	// This field will default to 0 in the future and is not recommended. Use CloudMonitor API to retrieve this metric instead.
 	//
 	// example:
 	//
-	// 20
+	// 0
 	ActiveMessages *int64 `json:"ActiveMessages,omitempty" xml:"ActiveMessages,omitempty"`
-	// The time when the queue was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the queue was created. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
 	// 1250700999
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The total number of the messages that are in the Delayed state in the queue. The value is an approximate number. Default value: 0. We recommend that you do not use the return value and that you call CloudMonitor API operations to query the metric value.
+	// The approximate total number of messages in the Delayed state in this queue.
+	//
+	// This field will default to 0 in the future and is not recommended. Use CloudMonitor API to retrieve this metric instead.
 	//
 	// example:
 	//
 	// 0
 	DelayMessages *int64 `json:"DelayMessages,omitempty" xml:"DelayMessages,omitempty"`
-	// The period after which all messages sent to the queue are consumed. Unit: seconds.
+	// The delay period after which all messages sent to this queue become consumable. Unit: seconds.
 	//
 	// example:
 	//
 	// 30
 	DelaySeconds *int64 `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
 	// The dead-letter queue policy.
-	DlqPolicy *ListQueueResponseBodyDataPageDataDlqPolicy `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty" type:"Struct"`
-	// The total number of the messages that are in the Inactive state in the queue. The value is an approximate number. Default value: 0. We recommend that you do not use the return value and that you call CloudMonitor API operations to query the metric value.
+	DlqPolicy         *ListQueueResponseBodyDataPageDataDlqPolicy `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty" type:"Struct"`
+	EnableSSE         *bool                                       `json:"EnableSSE,omitempty" xml:"EnableSSE,omitempty"`
+	EncryptionEnabled *bool                                       `json:"EncryptionEnabled,omitempty" xml:"EncryptionEnabled,omitempty"`
+	// The approximate total number of messages in the Inactive state in this queue.
+	//
+	// This field will default to 0 in the future and is not recommended. Use CloudMonitor API to retrieve this metric instead.
 	//
 	// example:
 	//
 	// 0
-	InactiveMessages *int64 `json:"InactiveMessages,omitempty" xml:"InactiveMessages,omitempty"`
-	// The time when the queue was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	InactiveMessages *int64  `json:"InactiveMessages,omitempty" xml:"InactiveMessages,omitempty"`
+	KmsKeyId         *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	// The most recent time when the queue attributes were modified. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
 	// 1250700999
 	LastModifyTime *int64 `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
-	// Indicates whether the logging feature is enabled. Valid values:
+	// Indicates whether the log management feature is enabled.
 	//
-	// 	- True
+	// - True: Enabled.
 	//
-	// 	- False
+	// - False: Disabled.
 	//
 	// example:
 	//
 	// True
 	LoggingEnabled *bool `json:"LoggingEnabled,omitempty" xml:"LoggingEnabled,omitempty"`
-	// The maximum length of the message that is sent to the queue. Unit: bytes.
+	// The maximum size of a message body that can be sent to this queue. Unit: bytes.
 	//
 	// example:
 	//
 	// 65536
 	MaximumMessageSize *int64 `json:"MaximumMessageSize,omitempty" xml:"MaximumMessageSize,omitempty"`
-	// The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Unit: seconds.
+	// The maximum period for which a message can be retained in this queue. After the specified period elapses since a message is sent to the queue, the message is deleted regardless of whether it has been consumed. Unit: seconds.
 	//
 	// example:
 	//
 	// 65536
 	MessageRetentionPeriod *int64 `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
-	// The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Unit: seconds.
+	// The maximum wait time for a ReceiveMessage request when the queue is empty. Unit: seconds.
 	//
 	// example:
 	//
@@ -312,10 +321,25 @@ type ListQueueResponseBodyDataPageData struct {
 	//
 	// demo-queue
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	QueueType *string `json:"QueueType,omitempty" xml:"QueueType,omitempty"`
-	// The tags added to the resources.
+	// The type of the queue. Valid values:
+	//
+	//    	- normal: standard queue
+	//
+	//    	- fifo: FIFO queue
+	//
+	// example:
+	//
+	// normal
+	QueueType    *string `json:"QueueType,omitempty" xml:"QueueType,omitempty"`
+	SseAlgorithm *string `json:"SseAlgorithm,omitempty" xml:"SseAlgorithm,omitempty"`
+	SseType      *string `json:"SseType,omitempty" xml:"SseType,omitempty"`
+	// The list of resource tags.
 	Tags []*ListQueueResponseBodyDataPageDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
+	// The duration for which a message stays in the Inactive state after it is consumed from the queue.
+	//
+	// Valid values: 1 to 43200. Unit: seconds.
+	//
+	// Default value: 30.
 	//
 	// example:
 	//
@@ -351,8 +375,20 @@ func (s *ListQueueResponseBodyDataPageData) GetDlqPolicy() *ListQueueResponseBod
 	return s.DlqPolicy
 }
 
+func (s *ListQueueResponseBodyDataPageData) GetEnableSSE() *bool {
+	return s.EnableSSE
+}
+
+func (s *ListQueueResponseBodyDataPageData) GetEncryptionEnabled() *bool {
+	return s.EncryptionEnabled
+}
+
 func (s *ListQueueResponseBodyDataPageData) GetInactiveMessages() *int64 {
 	return s.InactiveMessages
+}
+
+func (s *ListQueueResponseBodyDataPageData) GetKmsKeyId() *string {
+	return s.KmsKeyId
 }
 
 func (s *ListQueueResponseBodyDataPageData) GetLastModifyTime() *int64 {
@@ -381,6 +417,14 @@ func (s *ListQueueResponseBodyDataPageData) GetQueueName() *string {
 
 func (s *ListQueueResponseBodyDataPageData) GetQueueType() *string {
 	return s.QueueType
+}
+
+func (s *ListQueueResponseBodyDataPageData) GetSseAlgorithm() *string {
+	return s.SseAlgorithm
+}
+
+func (s *ListQueueResponseBodyDataPageData) GetSseType() *string {
+	return s.SseType
 }
 
 func (s *ListQueueResponseBodyDataPageData) GetTags() []*ListQueueResponseBodyDataPageDataTags {
@@ -416,8 +460,23 @@ func (s *ListQueueResponseBodyDataPageData) SetDlqPolicy(v *ListQueueResponseBod
 	return s
 }
 
+func (s *ListQueueResponseBodyDataPageData) SetEnableSSE(v bool) *ListQueueResponseBodyDataPageData {
+	s.EnableSSE = &v
+	return s
+}
+
+func (s *ListQueueResponseBodyDataPageData) SetEncryptionEnabled(v bool) *ListQueueResponseBodyDataPageData {
+	s.EncryptionEnabled = &v
+	return s
+}
+
 func (s *ListQueueResponseBodyDataPageData) SetInactiveMessages(v int64) *ListQueueResponseBodyDataPageData {
 	s.InactiveMessages = &v
+	return s
+}
+
+func (s *ListQueueResponseBodyDataPageData) SetKmsKeyId(v string) *ListQueueResponseBodyDataPageData {
+	s.KmsKeyId = &v
 	return s
 }
 
@@ -456,6 +515,16 @@ func (s *ListQueueResponseBodyDataPageData) SetQueueType(v string) *ListQueueRes
 	return s
 }
 
+func (s *ListQueueResponseBodyDataPageData) SetSseAlgorithm(v string) *ListQueueResponseBodyDataPageData {
+	s.SseAlgorithm = &v
+	return s
+}
+
+func (s *ListQueueResponseBodyDataPageData) SetSseType(v string) *ListQueueResponseBodyDataPageData {
+	s.SseType = &v
+	return s
+}
+
 func (s *ListQueueResponseBodyDataPageData) SetTags(v []*ListQueueResponseBodyDataPageDataTags) *ListQueueResponseBodyDataPageData {
 	s.Tags = v
 	return s
@@ -485,19 +554,19 @@ func (s *ListQueueResponseBodyDataPageData) Validate() error {
 }
 
 type ListQueueResponseBodyDataPageDataDlqPolicy struct {
-	// The queue to which dead-letter messages are delivered.
+	// The target queue for dead-letter message delivery.
 	//
 	// example:
 	//
 	// deadLetterTargetQueue
 	DeadLetterTargetQueue *string `json:"DeadLetterTargetQueue,omitempty" xml:"DeadLetterTargetQueue,omitempty"`
-	// Specifies whether to enable the dead-letter message delivery.
+	// Indicates whether dead-letter message delivery is enabled.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The maximum number of retries.
+	// The maximum number of times a message can be delivered.
 	//
 	// example:
 	//
@@ -545,13 +614,13 @@ func (s *ListQueueResponseBodyDataPageDataDlqPolicy) Validate() error {
 }
 
 type ListQueueResponseBodyDataPageDataTags struct {
-	// The tag key.
+	// The key of the tag.
 	//
 	// example:
 	//
 	// tag1
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
+	// The value of the tag.
 	//
 	// example:
 	//

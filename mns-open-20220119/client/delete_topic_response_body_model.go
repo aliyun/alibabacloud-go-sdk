@@ -30,9 +30,9 @@ type DeleteTopicResponseBody struct {
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The response data.
 	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//

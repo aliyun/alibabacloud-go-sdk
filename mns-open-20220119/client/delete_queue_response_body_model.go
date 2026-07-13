@@ -30,21 +30,21 @@ type DeleteQueueResponseBody struct {
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The response data.
 	Data *DeleteQueueResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 06273500-249F-5863-121D-74D51123****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The response status.
+	// The status of the response.
 	//
 	// example:
 	//
@@ -136,7 +136,11 @@ type DeleteQueueResponseBodyData struct {
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// The response message.
+	//
+	// example:
+	//
+	// 无
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Indicates whether the request was successful.
 	//

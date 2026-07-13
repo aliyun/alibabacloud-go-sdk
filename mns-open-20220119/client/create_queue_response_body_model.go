@@ -30,9 +30,9 @@ type CreateQueueResponseBody struct {
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The response data.
 	Data *CreateQueueResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
@@ -136,7 +136,11 @@ type CreateQueueResponseBodyData struct {
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// The response message.
+	//
+	// example:
+	//
+	// 无
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Indicates whether the request was successful.
 	//

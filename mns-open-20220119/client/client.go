@@ -25,6 +25,37 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"us-west-1":             dara.String("mns-open.us-west-1.aliyuncs.com"),
+		"us-east-1":             dara.String("mns-open.us-east-1.aliyuncs.com"),
+		"me-east-1":             dara.String("mns-open.me-east-1.aliyuncs.com"),
+		"me-central-1":          dara.String("mns-open.me-central-1.aliyuncs.com"),
+		"eu-west-1":             dara.String("mns-open.eu-west-1.aliyuncs.com"),
+		"eu-central-1":          dara.String("mns-open.eu-central-1.aliyuncs.com"),
+		"cn-zhengzhou-jva":      dara.String("mns-open.cn-zhengzhou-jva.aliyuncs.com"),
+		"cn-zhangjiakou":        dara.String("mns-open.cn-zhangjiakou.aliyuncs.com"),
+		"cn-wulanchabu":         dara.String("mns-open.cn-wulanchabu.aliyuncs.com"),
+		"cn-shenzhen-finance-1": dara.String("mns-open.cn-shenzhen-finance-1.aliyuncs.com"),
+		"cn-shenzhen":           dara.String("mns-open.cn-shenzhen.aliyuncs.com"),
+		"cn-shanghai-finance-1": dara.String("mns-open.cn-shanghai-finance-1.aliyuncs.com"),
+		"cn-shanghai":           dara.String("mns-open.cn-shanghai.aliyuncs.com"),
+		"cn-qingdao":            dara.String("mns-open.cn-qingdao.aliyuncs.com"),
+		"cn-huhehaote":          dara.String("mns-open.cn-huhehaote.aliyuncs.com"),
+		"cn-hongkong":           dara.String("mns-open.cn-hongkong.aliyuncs.com"),
+		"cn-heyuan-acdr-1":      dara.String("mns-open.cn-heyuan-acdr-1.aliyuncs.com"),
+		"cn-heyuan":             dara.String("mns-open.cn-heyuan.aliyuncs.com"),
+		"cn-hangzhou-finance":   dara.String("mns-open.cn-hangzhou-finance.aliyuncs.com"),
+		"cn-hangzhou":           dara.String("mns-open.cn-hangzhou.aliyuncs.com"),
+		"cn-guangzhou":          dara.String("mns-open.cn-guangzhou.aliyuncs.com"),
+		"cn-chengdu":            dara.String("mns-open.cn-chengdu.aliyuncs.com"),
+		"cn-beijing":            dara.String("mns-open.cn-beijing.aliyuncs.com"),
+		"ap-southeast-7":        dara.String("mns-open.ap-southeast-7.aliyuncs.com"),
+		"ap-southeast-5":        dara.String("mns-open.ap-southeast-5.aliyuncs.com"),
+		"ap-southeast-3":        dara.String("mns-open.ap-southeast-3.aliyuncs.com"),
+		"ap-southeast-1":        dara.String("mns-open.ap-southeast-1.aliyuncs.com"),
+		"ap-northeast-2":        dara.String("mns-open.ap-northeast-2.aliyuncs.com"),
+		"ap-northeast-1":        dara.String("mns-open.ap-northeast-1.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +89,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// You can call this operation to add one or more rules of access control lists (ACLs) for the endpoint of a type.
+// Adds one or more Access Control List (ACL) rules to an endpoint of a specified type.
 //
 // @param tmpReq - AuthorizeEndpointAclRequest
 //
@@ -116,7 +147,7 @@ func (client *Client) AuthorizeEndpointAclWithOptions(tmpReq *AuthorizeEndpointA
 
 // Summary:
 //
-// You can call this operation to add one or more rules of access control lists (ACLs) for the endpoint of a type.
+// Adds one or more Access Control List (ACL) rules to an endpoint of a specified type.
 //
 // @param request - AuthorizeEndpointAclRequest
 //
@@ -134,7 +165,7 @@ func (client *Client) AuthorizeEndpointAcl(request *AuthorizeEndpointAclRequest)
 
 // Summary:
 //
-// 创建事件规则
+// Creates an event rule.
 //
 // @param tmpReq - CreateEventRuleRequest
 //
@@ -224,7 +255,7 @@ func (client *Client) CreateEventRuleWithOptions(tmpReq *CreateEventRuleRequest,
 
 // Summary:
 //
-// 创建事件规则
+// Creates an event rule.
 //
 // @param request - CreateEventRuleRequest
 //
@@ -279,6 +310,14 @@ func (client *Client) CreateQueueWithOptions(tmpReq *CreateQueueRequest, runtime
 		query["EnableLogging"] = request.EnableLogging
 	}
 
+	if !dara.IsNil(request.EnableSSE) {
+		query["EnableSSE"] = request.EnableSSE
+	}
+
+	if !dara.IsNil(request.KmsKeyId) {
+		query["KmsKeyId"] = request.KmsKeyId
+	}
+
 	if !dara.IsNil(request.MaximumMessageSize) {
 		query["MaximumMessageSize"] = request.MaximumMessageSize
 	}
@@ -297,6 +336,14 @@ func (client *Client) CreateQueueWithOptions(tmpReq *CreateQueueRequest, runtime
 
 	if !dara.IsNil(request.QueueType) {
 		query["QueueType"] = request.QueueType
+	}
+
+	if !dara.IsNil(request.SseAlgorithm) {
+		query["SseAlgorithm"] = request.SseAlgorithm
+	}
+
+	if !dara.IsNil(request.SseType) {
+		query["SseType"] = request.SseType
 	}
 
 	if !dara.IsNil(request.Tag) {
@@ -354,7 +401,7 @@ func (client *Client) CreateQueue(request *CreateQueueRequest) (_result *CreateQ
 
 // Summary:
 //
-// Creates a topic.
+// Calls the CreateTopic operation to create a topic.
 //
 // @param request - CreateTopicRequest
 //
@@ -382,8 +429,24 @@ func (client *Client) CreateTopicWithOptions(request *CreateTopicRequest, runtim
 		body["EnableLogging"] = request.EnableLogging
 	}
 
+	if !dara.IsNil(request.EnableSSE) {
+		body["EnableSSE"] = request.EnableSSE
+	}
+
+	if !dara.IsNil(request.KmsKeyId) {
+		body["KmsKeyId"] = request.KmsKeyId
+	}
+
 	if !dara.IsNil(request.MaxMessageSize) {
 		body["MaxMessageSize"] = request.MaxMessageSize
+	}
+
+	if !dara.IsNil(request.SseAlgorithm) {
+		body["SseAlgorithm"] = request.SseAlgorithm
+	}
+
+	if !dara.IsNil(request.SseType) {
+		body["SseType"] = request.SseType
 	}
 
 	if !dara.IsNil(request.TopicName) {
@@ -416,7 +479,7 @@ func (client *Client) CreateTopicWithOptions(request *CreateTopicRequest, runtim
 
 // Summary:
 //
-// Creates a topic.
+// Calls the CreateTopic operation to create a topic.
 //
 // @param request - CreateTopicRequest
 //
@@ -434,7 +497,7 @@ func (client *Client) CreateTopic(request *CreateTopicRequest) (_result *CreateT
 
 // Summary:
 //
-// 删除事件规则
+// Deletes an event rule.
 //
 // @param request - DeleteEventRuleRequest
 //
@@ -482,7 +545,7 @@ func (client *Client) DeleteEventRuleWithOptions(request *DeleteEventRuleRequest
 
 // Summary:
 //
-// 删除事件规则
+// Deletes an event rule.
 //
 // @param request - DeleteEventRuleRequest
 //
@@ -500,7 +563,7 @@ func (client *Client) DeleteEventRule(request *DeleteEventRuleRequest) (_result 
 
 // Summary:
 //
-// Deletes a queue.
+// Calls the DeleteQueue operation to delete a created queue.
 //
 // @param request - DeleteQueueRequest
 //
@@ -544,7 +607,7 @@ func (client *Client) DeleteQueueWithOptions(request *DeleteQueueRequest, runtim
 
 // Summary:
 //
-// Deletes a queue.
+// Calls the DeleteQueue operation to delete a created queue.
 //
 // @param request - DeleteQueueRequest
 //
@@ -562,7 +625,7 @@ func (client *Client) DeleteQueue(request *DeleteQueueRequest) (_result *DeleteQ
 
 // Summary:
 //
-// Deletes a topic.
+// Calls the DeleteTopic operation to delete a topic.
 //
 // @param request - DeleteTopicRequest
 //
@@ -606,7 +669,7 @@ func (client *Client) DeleteTopicWithOptions(request *DeleteTopicRequest, runtim
 
 // Summary:
 //
-// Deletes a topic.
+// Calls the DeleteTopic operation to delete a topic.
 //
 // @param request - DeleteTopicRequest
 //
@@ -624,7 +687,7 @@ func (client *Client) DeleteTopic(request *DeleteTopicRequest) (_result *DeleteT
 
 // Summary:
 //
-// You can call this operation to disenable the endpoint of a type. After the endpoint is disabled, all requests from the endpoint are blocked and an error is returned.
+// This operation disables an endpoint of a specified type, blocking all subsequent requests from the endpoint and returning an error.
 //
 // @param request - DisableEndpointRequest
 //
@@ -668,7 +731,7 @@ func (client *Client) DisableEndpointWithOptions(request *DisableEndpointRequest
 
 // Summary:
 //
-// You can call this operation to disenable the endpoint of a type. After the endpoint is disabled, all requests from the endpoint are blocked and an error is returned.
+// This operation disables an endpoint of a specified type, blocking all subsequent requests from the endpoint and returning an error.
 //
 // @param request - DisableEndpointRequest
 //
@@ -686,7 +749,7 @@ func (client *Client) DisableEndpoint(request *DisableEndpointRequest) (_result 
 
 // Summary:
 //
-// You can call this operation to enable the endpoint of a type. If the endpoint is enabled, requests from the endpoint that are included in the access control lists (ACLs) are not blocked.
+// This operation enables an endpoint of a specified type. After the endpoint is enabled, requests that originate from the endpoint and are on the Access Control List (ACL) whitelist are not blocked.
 //
 // @param request - EnableEndpointRequest
 //
@@ -730,7 +793,7 @@ func (client *Client) EnableEndpointWithOptions(request *EnableEndpointRequest, 
 
 // Summary:
 //
-// You can call this operation to enable the endpoint of a type. If the endpoint is enabled, requests from the endpoint that are included in the access control lists (ACLs) are not blocked.
+// This operation enables an endpoint of a specified type. After the endpoint is enabled, requests that originate from the endpoint and are on the Access Control List (ACL) whitelist are not blocked.
 //
 // @param request - EnableEndpointRequest
 //
@@ -748,7 +811,7 @@ func (client *Client) EnableEndpoint(request *EnableEndpointRequest) (_result *E
 
 // Summary:
 //
-// # GetEndpointAttribute
+// Queries the attributes of an endpoint.
 //
 // @param request - GetEndpointAttributeRequest
 //
@@ -792,7 +855,7 @@ func (client *Client) GetEndpointAttributeWithOptions(request *GetEndpointAttrib
 
 // Summary:
 //
-// # GetEndpointAttribute
+// Queries the attributes of an endpoint.
 //
 // @param request - GetEndpointAttributeRequest
 //
@@ -810,7 +873,7 @@ func (client *Client) GetEndpointAttribute(request *GetEndpointAttributeRequest)
 
 // Summary:
 //
-// 获取事件通知规则
+// Retrieves an event notification rule.
 //
 // @param request - GetEventRuleRequest
 //
@@ -858,7 +921,7 @@ func (client *Client) GetEventRuleWithOptions(request *GetEventRuleRequest, runt
 
 // Summary:
 //
-// 获取事件通知规则
+// Retrieves an event notification rule.
 //
 // @param request - GetEventRuleRequest
 //
@@ -876,7 +939,45 @@ func (client *Client) GetEventRule(request *GetEventRuleRequest) (_result *GetEv
 
 // Summary:
 //
-// Queries the attributes of an existing queue.
+// Retrieves the attributes of a created queue.
+//
+// Description:
+//
+//	Warning:
+//
+// <p>For optimization of service performance, Simple Message Queue (formerly MNS) will offline the return values of the following fields (the default value will be 0):
+//
+//   - ActiveMessages
+//
+//   - InactiveMessages
+//
+//   - DelayMessages
+//
+//     </p>
+//
+//     <p>Use the following alternatives to obtain replacement solutions:</p>
+//
+//     <ul>
+//
+//     <li>Use the CloudMonitor OpenAPI to retrieve queue monitoring metrics. For more information, see <a href="https://api.aliyun.com/api/Cms/2019-01-01/DescribeMetricLast?RegionId=ap-southeast-1&params={%22Namespace%22:%22acs_smq%22,%22MetricName%22:%22NumberOfMessagesVisible%22}&tab=DEBUG">CloudMonitor OpenAPI documentation</a></li>
+//
+//     <li> <a href="https://cloudmonitornext.console.aliyun.com/metric-meta/acs_smq/smq/all?spm=5176.2020520111.0.0.5d0c66102s05T4">CloudMonitor monitoring metrics documentation</a>. The mapping between deprecated fields and monitoring metrics:
+//
+//     <ul>
+//
+//     <li>ActiveMessages → monitoring metric NumberOfMessagesVisible</li>
+//
+//     <li>InactiveMessages → monitoring metric NumberOfMessagesInvisible</li>
+//
+//     <li>DelayMessages → monitoring metric NumberOfMessagesDelayed</li>
+//
+//     </ul>
+//
+//     </li>
+//
+//     </ul>
+//
+// </warning>
 //
 // @param request - GetQueueAttributesRequest
 //
@@ -924,7 +1025,45 @@ func (client *Client) GetQueueAttributesWithOptions(request *GetQueueAttributesR
 
 // Summary:
 //
-// Queries the attributes of an existing queue.
+// Retrieves the attributes of a created queue.
+//
+// Description:
+//
+//	Warning:
+//
+// <p>For optimization of service performance, Simple Message Queue (formerly MNS) will offline the return values of the following fields (the default value will be 0):
+//
+//   - ActiveMessages
+//
+//   - InactiveMessages
+//
+//   - DelayMessages
+//
+//     </p>
+//
+//     <p>Use the following alternatives to obtain replacement solutions:</p>
+//
+//     <ul>
+//
+//     <li>Use the CloudMonitor OpenAPI to retrieve queue monitoring metrics. For more information, see <a href="https://api.aliyun.com/api/Cms/2019-01-01/DescribeMetricLast?RegionId=ap-southeast-1&params={%22Namespace%22:%22acs_smq%22,%22MetricName%22:%22NumberOfMessagesVisible%22}&tab=DEBUG">CloudMonitor OpenAPI documentation</a></li>
+//
+//     <li> <a href="https://cloudmonitornext.console.aliyun.com/metric-meta/acs_smq/smq/all?spm=5176.2020520111.0.0.5d0c66102s05T4">CloudMonitor monitoring metrics documentation</a>. The mapping between deprecated fields and monitoring metrics:
+//
+//     <ul>
+//
+//     <li>ActiveMessages → monitoring metric NumberOfMessagesVisible</li>
+//
+//     <li>InactiveMessages → monitoring metric NumberOfMessagesInvisible</li>
+//
+//     <li>DelayMessages → monitoring metric NumberOfMessagesDelayed</li>
+//
+//     </ul>
+//
+//     </li>
+//
+//     </ul>
+//
+// </warning>
 //
 // @param request - GetQueueAttributesRequest
 //
@@ -942,7 +1081,7 @@ func (client *Client) GetQueueAttributes(request *GetQueueAttributesRequest) (_r
 
 // Summary:
 //
-// Queries the attributes of a subscription.
+// Retrieves the properties of a subscription.
 //
 // @param request - GetSubscriptionAttributesRequest
 //
@@ -990,7 +1129,7 @@ func (client *Client) GetSubscriptionAttributesWithOptions(request *GetSubscript
 
 // Summary:
 //
-// Queries the attributes of a subscription.
+// Retrieves the properties of a subscription.
 //
 // @param request - GetSubscriptionAttributesRequest
 //
@@ -1074,7 +1213,7 @@ func (client *Client) GetTopicAttributes(request *GetTopicAttributesRequest) (_r
 
 // Summary:
 //
-// 查询事件通知列表
+// Queries a list of event notification rules.
 //
 // @param tmpReq - ListEventRulesRequest
 //
@@ -1156,7 +1295,7 @@ func (client *Client) ListEventRulesWithOptions(tmpReq *ListEventRulesRequest, r
 
 // Summary:
 //
-// 查询事件通知列表
+// Queries a list of event notification rules.
 //
 // @param request - ListEventRulesRequest
 //
@@ -1174,7 +1313,7 @@ func (client *Client) ListEventRules(request *ListEventRulesRequest) (_result *L
 
 // Summary:
 //
-// Queries all queues that belong to an Alibaba Cloud account. The queues are displayed by page.
+// Lists all queues under a specified Alibaba Cloud account with pagination support.
 //
 // @param request - ListQueueRequest
 //
@@ -1234,7 +1373,7 @@ func (client *Client) ListQueueWithOptions(request *ListQueueRequest, runtime *d
 
 // Summary:
 //
-// Queries all queues that belong to an Alibaba Cloud account. The queues are displayed by page.
+// Lists all queues under a specified Alibaba Cloud account with pagination support.
 //
 // @param request - ListQueueRequest
 //
@@ -1252,7 +1391,7 @@ func (client *Client) ListQueue(request *ListQueueRequest) (_result *ListQueueRe
 
 // Summary:
 //
-// Queries all subscriptions to a topic. The subscriptions are displayed by page.
+// You can call the ListSubscriptionByTopic operation to retrieve a paginated list of subscriptions for a topic.
 //
 // @param request - ListSubscriptionByTopicRequest
 //
@@ -1316,7 +1455,7 @@ func (client *Client) ListSubscriptionByTopicWithOptions(request *ListSubscripti
 
 // Summary:
 //
-// Queries all subscriptions to a topic. The subscriptions are displayed by page.
+// You can call the ListSubscriptionByTopic operation to retrieve a paginated list of subscriptions for a topic.
 //
 // @param request - ListSubscriptionByTopicRequest
 //
@@ -1334,7 +1473,7 @@ func (client *Client) ListSubscriptionByTopic(request *ListSubscriptionByTopicRe
 
 // Summary:
 //
-// Queries the topics that belong to an Alibaba Cloud account. The topics are displayed by page.
+// Queries the list of topics under an Alibaba Cloud account with paginated results.
 //
 // @param request - ListTopicRequest
 //
@@ -1394,7 +1533,7 @@ func (client *Client) ListTopicWithOptions(request *ListTopicRequest, runtime *d
 
 // Summary:
 //
-// Queries the topics that belong to an Alibaba Cloud account. The topics are displayed by page.
+// Queries the list of topics under an Alibaba Cloud account with paginated results.
 //
 // @param request - ListTopicRequest
 //
@@ -1412,7 +1551,7 @@ func (client *Client) ListTopic(request *ListTopicRequest) (_result *ListTopicRe
 
 // Summary:
 //
-// You can call this operation to delete one or more rules of access control lists (ACLs) for the endpoint of a type.
+// Revokes one or more Access Control List (ACL) rules for a specified endpoint type.
 //
 // @param tmpReq - RevokeEndpointAclRequest
 //
@@ -1470,7 +1609,7 @@ func (client *Client) RevokeEndpointAclWithOptions(tmpReq *RevokeEndpointAclRequ
 
 // Summary:
 //
-// You can call this operation to delete one or more rules of access control lists (ACLs) for the endpoint of a type.
+// Revokes one or more Access Control List (ACL) rules for a specified endpoint type.
 //
 // @param request - RevokeEndpointAclRequest
 //
@@ -1488,7 +1627,7 @@ func (client *Client) RevokeEndpointAcl(request *RevokeEndpointAclRequest) (_res
 
 // Summary:
 //
-// Modifies a queue.
+// Calls the SetQueueAttributes operation to modify queue attributes.
 //
 // @param tmpReq - SetQueueAttributesRequest
 //
@@ -1525,6 +1664,14 @@ func (client *Client) SetQueueAttributesWithOptions(tmpReq *SetQueueAttributesRe
 		query["EnableLogging"] = request.EnableLogging
 	}
 
+	if !dara.IsNil(request.EnableSSE) {
+		query["EnableSSE"] = request.EnableSSE
+	}
+
+	if !dara.IsNil(request.KmsKeyId) {
+		query["KmsKeyId"] = request.KmsKeyId
+	}
+
 	if !dara.IsNil(request.MaximumMessageSize) {
 		query["MaximumMessageSize"] = request.MaximumMessageSize
 	}
@@ -1539,6 +1686,14 @@ func (client *Client) SetQueueAttributesWithOptions(tmpReq *SetQueueAttributesRe
 
 	if !dara.IsNil(request.QueueName) {
 		query["QueueName"] = request.QueueName
+	}
+
+	if !dara.IsNil(request.SseAlgorithm) {
+		query["SseAlgorithm"] = request.SseAlgorithm
+	}
+
+	if !dara.IsNil(request.SseType) {
+		query["SseType"] = request.SseType
 	}
 
 	if !dara.IsNil(request.TenantRateLimitPolicyShrink) {
@@ -1574,7 +1729,7 @@ func (client *Client) SetQueueAttributesWithOptions(tmpReq *SetQueueAttributesRe
 
 // Summary:
 //
-// Modifies a queue.
+// Calls the SetQueueAttributes operation to modify queue attributes.
 //
 // @param request - SetQueueAttributesRequest
 //
@@ -1592,7 +1747,7 @@ func (client *Client) SetQueueAttributes(request *SetQueueAttributesRequest) (_r
 
 // Summary:
 //
-// Modifies the attributes of a subscription.
+// Call the SetSubscriptionAttributes operation to modify a subscription\\"s attributes.
 //
 // @param tmpReq - SetSubscriptionAttributesRequest
 //
@@ -1666,7 +1821,7 @@ func (client *Client) SetSubscriptionAttributesWithOptions(tmpReq *SetSubscripti
 
 // Summary:
 //
-// Modifies the attributes of a subscription.
+// Call the SetSubscriptionAttributes operation to modify a subscription\\"s attributes.
 //
 // @param request - SetSubscriptionAttributesRequest
 //
@@ -1684,7 +1839,7 @@ func (client *Client) SetSubscriptionAttributes(request *SetSubscriptionAttribut
 
 // Summary:
 //
-// Modifies the attributes of a topic.
+// Calls the SetTopicAttributes operation to modify the attributes of a topic.
 //
 // @param request - SetTopicAttributesRequest
 //
@@ -1703,8 +1858,24 @@ func (client *Client) SetTopicAttributesWithOptions(request *SetTopicAttributesR
 		query["EnableLogging"] = request.EnableLogging
 	}
 
+	if !dara.IsNil(request.EnableSSE) {
+		query["EnableSSE"] = request.EnableSSE
+	}
+
+	if !dara.IsNil(request.KmsKeyId) {
+		query["KmsKeyId"] = request.KmsKeyId
+	}
+
 	if !dara.IsNil(request.MaxMessageSize) {
 		query["MaxMessageSize"] = request.MaxMessageSize
+	}
+
+	if !dara.IsNil(request.SseAlgorithm) {
+		query["SseAlgorithm"] = request.SseAlgorithm
+	}
+
+	if !dara.IsNil(request.SseType) {
+		query["SseType"] = request.SseType
 	}
 
 	if !dara.IsNil(request.TopicName) {
@@ -1736,7 +1907,7 @@ func (client *Client) SetTopicAttributesWithOptions(request *SetTopicAttributesR
 
 // Summary:
 //
-// Modifies the attributes of a topic.
+// Calls the SetTopicAttributes operation to modify the attributes of a topic.
 //
 // @param request - SetTopicAttributesRequest
 //
@@ -1754,7 +1925,7 @@ func (client *Client) SetTopicAttributes(request *SetTopicAttributesRequest) (_r
 
 // Summary:
 //
-// Creates a subscription to a topic.
+// Calls the Subscribe operation to create a subscription for a topic.
 //
 // @param tmpReq - SubscribeRequest
 //
@@ -1868,7 +2039,7 @@ func (client *Client) SubscribeWithOptions(tmpReq *SubscribeRequest, runtime *da
 
 // Summary:
 //
-// Creates a subscription to a topic.
+// Calls the Subscribe operation to create a subscription for a topic.
 //
 // @param request - SubscribeRequest
 //
@@ -1886,7 +2057,7 @@ func (client *Client) Subscribe(request *SubscribeRequest) (_result *SubscribeRe
 
 // Summary:
 //
-// Deletes a subscription.
+// You can call Unsubscribe to cancel an existing subscription.
 //
 // @param request - UnsubscribeRequest
 //
@@ -1934,7 +2105,7 @@ func (client *Client) UnsubscribeWithOptions(request *UnsubscribeRequest, runtim
 
 // Summary:
 //
-// Deletes a subscription.
+// You can call Unsubscribe to cancel an existing subscription.
 //
 // @param request - UnsubscribeRequest
 //

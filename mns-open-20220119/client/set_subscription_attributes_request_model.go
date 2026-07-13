@@ -26,11 +26,11 @@ type iSetSubscriptionAttributesRequest interface {
 type SetSubscriptionAttributesRequest struct {
 	// The dead-letter queue policy.
 	DlqPolicy *SetSubscriptionAttributesRequestDlqPolicy `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty" type:"Struct"`
-	// The retry policy that is applied if an error occurs when Message Service (MNS) pushes messages to the endpoint. Valid values:
+	// The retry policy for message delivery failures to the endpoint. Valid values:
 	//
-	// 	- BACKOFF_RETRY
+	// - BACKOFF_RETRY: backoff retry.
 	//
-	// 	- EXPONENTIAL_DECAY_RETRY
+	// - EXPONENTIAL_DECAY_RETRY: exponential decay retry.
 	//
 	// example:
 	//
@@ -136,13 +136,13 @@ func (s *SetSubscriptionAttributesRequest) Validate() error {
 }
 
 type SetSubscriptionAttributesRequestDlqPolicy struct {
-	// The queue to which dead-letter messages are delivered.
+	// The destination queue for dead-letter messages.
 	//
 	// example:
 	//
 	// deadLetterTargetQueue
 	DeadLetterTargetQueue *string `json:"DeadLetterTargetQueue,omitempty" xml:"DeadLetterTargetQueue,omitempty"`
-	// Specifies whether to enable the dead-letter message delivery.
+	// Whether to enable dead-letter message delivery.
 	//
 	// example:
 	//

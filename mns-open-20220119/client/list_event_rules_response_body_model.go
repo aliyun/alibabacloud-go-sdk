@@ -24,23 +24,34 @@ type iListEventRulesResponseBody interface {
 }
 
 type ListEventRulesResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *int64                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
 	Data *ListEventRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 06273500-249F-5863-121D-74D51123E62C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the response.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -119,31 +130,46 @@ func (s *ListEventRulesResponseBody) Validate() error {
 }
 
 type ListEventRulesResponseBodyData struct {
+	// This parameter is deprecated. The maximum number of entries is based on Total.
+	//
 	// example:
 	//
 	// 1
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// This parameter is deprecated. Paged queries are based on PageNum.
+	//
 	// example:
 	//
 	// a88f58d504b8b4c4e0b5e8707e68181f
-	NextToken *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	PageData  []*ListEventRulesResponseBodyDataPageData `json:"PageData,omitempty" xml:"PageData,omitempty" type:"Repeated"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The data entries.
+	PageData []*ListEventRulesResponseBodyDataPageData `json:"PageData,omitempty" xml:"PageData,omitempty" type:"Repeated"`
+	// The page number of the returned results.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 50
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 3
 	Pages *int64 `json:"Pages,omitempty" xml:"Pages,omitempty"`
+	// The number of entries on the current page.
+	//
 	// example:
 	//
 	// 20
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 130
@@ -244,18 +270,28 @@ func (s *ListEventRulesResponseBodyData) Validate() error {
 }
 
 type ListEventRulesResponseBodyDataPageData struct {
+	// This parameter is deprecated.
+	//
 	// example:
 	//
 	// --
-	DeliveryMode *string                                         `json:"DeliveryMode,omitempty" xml:"DeliveryMode,omitempty"`
-	Endpoint     *ListEventRulesResponseBodyDataPageDataEndpoint `json:"Endpoint,omitempty" xml:"Endpoint,omitempty" type:"Struct"`
-	EventTypes   []*string                                       `json:"EventTypes,omitempty" xml:"EventTypes,omitempty" type:"Repeated"`
-	MatchRules   [][]*EventMatchRule                             `json:"MatchRules,omitempty" xml:"MatchRules,omitempty" type:"Repeated"`
+	DeliveryMode *string `json:"DeliveryMode,omitempty" xml:"DeliveryMode,omitempty"`
+	// The endpoint of the subscription.
+	Endpoint *ListEventRulesResponseBodyDataPageDataEndpoint `json:"Endpoint,omitempty" xml:"Endpoint,omitempty" type:"Struct"`
+	// The list of event types.
+	EventTypes []*string `json:"EventTypes,omitempty" xml:"EventTypes,omitempty" type:"Repeated"`
+	// The event matching rules. The rules have an OR relationship.
+	MatchRules [][]*EventMatchRule `json:"MatchRules,omitempty" xml:"MatchRules,omitempty" type:"Repeated"`
+	// The name of the event notification rule.
+	//
 	// example:
 	//
 	// rule-xsXDW
-	RuleName      *string                                                `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The subscribers. A maximum of 20 entries are returned. If there are more subscribers, see [List Subscriptions](https://help.aliyun.com/document_detail/2804757.html).
 	Subscriptions []*ListEventRulesResponseBodyDataPageDataSubscriptions `json:"Subscriptions,omitempty" xml:"Subscriptions,omitempty" type:"Repeated"`
+	// The name of the topic.
+	//
 	// example:
 	//
 	// demo-topic
@@ -352,10 +388,18 @@ func (s *ListEventRulesResponseBodyDataPageData) Validate() error {
 }
 
 type ListEventRulesResponseBodyDataPageDataEndpoint struct {
+	// The endpoint type. Valid values:
+	//
+	// - **topic**: A topic can deliver messages to multiple subscribers. You can add or remove subscribers later.
+	//
+	// - **queue**: Messages are delivered directly to a queue. This simplifies the delivery path, but you cannot add new subscribers later.
+	//
 	// example:
 	//
 	// topic
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	// The actual value of the endpoint.
+	//
 	// example:
 	//
 	// test-topic
@@ -393,10 +437,14 @@ func (s *ListEventRulesResponseBodyDataPageDataEndpoint) Validate() error {
 }
 
 type ListEventRulesResponseBodyDataPageDataSubscriptions struct {
+	// The endpoint type.
+	//
 	// example:
 	//
 	// queue
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	// The actual value of the endpoint.
+	//
 	// example:
 	//
 	// wyx-vp-complete-queue

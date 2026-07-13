@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// You can call this operation to add one or more rules of access control lists (ACLs) for the endpoint of a type.
+// Adds one or more Access Control List (ACL) rules to an endpoint of a specified type.
 //
 // @param tmpReq - AuthorizeEndpointAclRequest
 //
@@ -67,7 +67,7 @@ func (client *Client) AuthorizeEndpointAclWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// 创建事件规则
+// Creates an event rule.
 //
 // @param tmpReq - CreateEventRuleRequest
 //
@@ -194,6 +194,14 @@ func (client *Client) CreateQueueWithContext(ctx context.Context, tmpReq *Create
 		query["EnableLogging"] = request.EnableLogging
 	}
 
+	if !dara.IsNil(request.EnableSSE) {
+		query["EnableSSE"] = request.EnableSSE
+	}
+
+	if !dara.IsNil(request.KmsKeyId) {
+		query["KmsKeyId"] = request.KmsKeyId
+	}
+
 	if !dara.IsNil(request.MaximumMessageSize) {
 		query["MaximumMessageSize"] = request.MaximumMessageSize
 	}
@@ -212,6 +220,14 @@ func (client *Client) CreateQueueWithContext(ctx context.Context, tmpReq *Create
 
 	if !dara.IsNil(request.QueueType) {
 		query["QueueType"] = request.QueueType
+	}
+
+	if !dara.IsNil(request.SseAlgorithm) {
+		query["SseAlgorithm"] = request.SseAlgorithm
+	}
+
+	if !dara.IsNil(request.SseType) {
+		query["SseType"] = request.SseType
 	}
 
 	if !dara.IsNil(request.Tag) {
@@ -251,7 +267,7 @@ func (client *Client) CreateQueueWithContext(ctx context.Context, tmpReq *Create
 
 // Summary:
 //
-// Creates a topic.
+// Calls the CreateTopic operation to create a topic.
 //
 // @param request - CreateTopicRequest
 //
@@ -279,8 +295,24 @@ func (client *Client) CreateTopicWithContext(ctx context.Context, request *Creat
 		body["EnableLogging"] = request.EnableLogging
 	}
 
+	if !dara.IsNil(request.EnableSSE) {
+		body["EnableSSE"] = request.EnableSSE
+	}
+
+	if !dara.IsNil(request.KmsKeyId) {
+		body["KmsKeyId"] = request.KmsKeyId
+	}
+
 	if !dara.IsNil(request.MaxMessageSize) {
 		body["MaxMessageSize"] = request.MaxMessageSize
+	}
+
+	if !dara.IsNil(request.SseAlgorithm) {
+		body["SseAlgorithm"] = request.SseAlgorithm
+	}
+
+	if !dara.IsNil(request.SseType) {
+		body["SseType"] = request.SseType
 	}
 
 	if !dara.IsNil(request.TopicName) {
@@ -313,7 +345,7 @@ func (client *Client) CreateTopicWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
-// 删除事件规则
+// Deletes an event rule.
 //
 // @param request - DeleteEventRuleRequest
 //
@@ -361,7 +393,7 @@ func (client *Client) DeleteEventRuleWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Deletes a queue.
+// Calls the DeleteQueue operation to delete a created queue.
 //
 // @param request - DeleteQueueRequest
 //
@@ -405,7 +437,7 @@ func (client *Client) DeleteQueueWithContext(ctx context.Context, request *Delet
 
 // Summary:
 //
-// Deletes a topic.
+// Calls the DeleteTopic operation to delete a topic.
 //
 // @param request - DeleteTopicRequest
 //
@@ -449,7 +481,7 @@ func (client *Client) DeleteTopicWithContext(ctx context.Context, request *Delet
 
 // Summary:
 //
-// You can call this operation to disenable the endpoint of a type. After the endpoint is disabled, all requests from the endpoint are blocked and an error is returned.
+// This operation disables an endpoint of a specified type, blocking all subsequent requests from the endpoint and returning an error.
 //
 // @param request - DisableEndpointRequest
 //
@@ -493,7 +525,7 @@ func (client *Client) DisableEndpointWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// You can call this operation to enable the endpoint of a type. If the endpoint is enabled, requests from the endpoint that are included in the access control lists (ACLs) are not blocked.
+// This operation enables an endpoint of a specified type. After the endpoint is enabled, requests that originate from the endpoint and are on the Access Control List (ACL) whitelist are not blocked.
 //
 // @param request - EnableEndpointRequest
 //
@@ -537,7 +569,7 @@ func (client *Client) EnableEndpointWithContext(ctx context.Context, request *En
 
 // Summary:
 //
-// # GetEndpointAttribute
+// Queries the attributes of an endpoint.
 //
 // @param request - GetEndpointAttributeRequest
 //
@@ -581,7 +613,7 @@ func (client *Client) GetEndpointAttributeWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 获取事件通知规则
+// Retrieves an event notification rule.
 //
 // @param request - GetEventRuleRequest
 //
@@ -629,7 +661,45 @@ func (client *Client) GetEventRuleWithContext(ctx context.Context, request *GetE
 
 // Summary:
 //
-// Queries the attributes of an existing queue.
+// Retrieves the attributes of a created queue.
+//
+// Description:
+//
+//	Warning:
+//
+// <p>For optimization of service performance, Simple Message Queue (formerly MNS) will offline the return values of the following fields (the default value will be 0):
+//
+//   - ActiveMessages
+//
+//   - InactiveMessages
+//
+//   - DelayMessages
+//
+//     </p>
+//
+//     <p>Use the following alternatives to obtain replacement solutions:</p>
+//
+//     <ul>
+//
+//     <li>Use the CloudMonitor OpenAPI to retrieve queue monitoring metrics. For more information, see <a href="https://api.aliyun.com/api/Cms/2019-01-01/DescribeMetricLast?RegionId=ap-southeast-1&params={%22Namespace%22:%22acs_smq%22,%22MetricName%22:%22NumberOfMessagesVisible%22}&tab=DEBUG">CloudMonitor OpenAPI documentation</a></li>
+//
+//     <li> <a href="https://cloudmonitornext.console.aliyun.com/metric-meta/acs_smq/smq/all?spm=5176.2020520111.0.0.5d0c66102s05T4">CloudMonitor monitoring metrics documentation</a>. The mapping between deprecated fields and monitoring metrics:
+//
+//     <ul>
+//
+//     <li>ActiveMessages → monitoring metric NumberOfMessagesVisible</li>
+//
+//     <li>InactiveMessages → monitoring metric NumberOfMessagesInvisible</li>
+//
+//     <li>DelayMessages → monitoring metric NumberOfMessagesDelayed</li>
+//
+//     </ul>
+//
+//     </li>
+//
+//     </ul>
+//
+// </warning>
 //
 // @param request - GetQueueAttributesRequest
 //
@@ -677,7 +747,7 @@ func (client *Client) GetQueueAttributesWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the attributes of a subscription.
+// Retrieves the properties of a subscription.
 //
 // @param request - GetSubscriptionAttributesRequest
 //
@@ -773,7 +843,7 @@ func (client *Client) GetTopicAttributesWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 查询事件通知列表
+// Queries a list of event notification rules.
 //
 // @param tmpReq - ListEventRulesRequest
 //
@@ -855,7 +925,7 @@ func (client *Client) ListEventRulesWithContext(ctx context.Context, tmpReq *Lis
 
 // Summary:
 //
-// Queries all queues that belong to an Alibaba Cloud account. The queues are displayed by page.
+// Lists all queues under a specified Alibaba Cloud account with pagination support.
 //
 // @param request - ListQueueRequest
 //
@@ -915,7 +985,7 @@ func (client *Client) ListQueueWithContext(ctx context.Context, request *ListQue
 
 // Summary:
 //
-// Queries all subscriptions to a topic. The subscriptions are displayed by page.
+// You can call the ListSubscriptionByTopic operation to retrieve a paginated list of subscriptions for a topic.
 //
 // @param request - ListSubscriptionByTopicRequest
 //
@@ -979,7 +1049,7 @@ func (client *Client) ListSubscriptionByTopicWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the topics that belong to an Alibaba Cloud account. The topics are displayed by page.
+// Queries the list of topics under an Alibaba Cloud account with paginated results.
 //
 // @param request - ListTopicRequest
 //
@@ -1039,7 +1109,7 @@ func (client *Client) ListTopicWithContext(ctx context.Context, request *ListTop
 
 // Summary:
 //
-// You can call this operation to delete one or more rules of access control lists (ACLs) for the endpoint of a type.
+// Revokes one or more Access Control List (ACL) rules for a specified endpoint type.
 //
 // @param tmpReq - RevokeEndpointAclRequest
 //
@@ -1097,7 +1167,7 @@ func (client *Client) RevokeEndpointAclWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Modifies a queue.
+// Calls the SetQueueAttributes operation to modify queue attributes.
 //
 // @param tmpReq - SetQueueAttributesRequest
 //
@@ -1134,6 +1204,14 @@ func (client *Client) SetQueueAttributesWithContext(ctx context.Context, tmpReq 
 		query["EnableLogging"] = request.EnableLogging
 	}
 
+	if !dara.IsNil(request.EnableSSE) {
+		query["EnableSSE"] = request.EnableSSE
+	}
+
+	if !dara.IsNil(request.KmsKeyId) {
+		query["KmsKeyId"] = request.KmsKeyId
+	}
+
 	if !dara.IsNil(request.MaximumMessageSize) {
 		query["MaximumMessageSize"] = request.MaximumMessageSize
 	}
@@ -1148,6 +1226,14 @@ func (client *Client) SetQueueAttributesWithContext(ctx context.Context, tmpReq 
 
 	if !dara.IsNil(request.QueueName) {
 		query["QueueName"] = request.QueueName
+	}
+
+	if !dara.IsNil(request.SseAlgorithm) {
+		query["SseAlgorithm"] = request.SseAlgorithm
+	}
+
+	if !dara.IsNil(request.SseType) {
+		query["SseType"] = request.SseType
 	}
 
 	if !dara.IsNil(request.TenantRateLimitPolicyShrink) {
@@ -1183,7 +1269,7 @@ func (client *Client) SetQueueAttributesWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Modifies the attributes of a subscription.
+// Call the SetSubscriptionAttributes operation to modify a subscription\\"s attributes.
 //
 // @param tmpReq - SetSubscriptionAttributesRequest
 //
@@ -1257,7 +1343,7 @@ func (client *Client) SetSubscriptionAttributesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Modifies the attributes of a topic.
+// Calls the SetTopicAttributes operation to modify the attributes of a topic.
 //
 // @param request - SetTopicAttributesRequest
 //
@@ -1276,8 +1362,24 @@ func (client *Client) SetTopicAttributesWithContext(ctx context.Context, request
 		query["EnableLogging"] = request.EnableLogging
 	}
 
+	if !dara.IsNil(request.EnableSSE) {
+		query["EnableSSE"] = request.EnableSSE
+	}
+
+	if !dara.IsNil(request.KmsKeyId) {
+		query["KmsKeyId"] = request.KmsKeyId
+	}
+
 	if !dara.IsNil(request.MaxMessageSize) {
 		query["MaxMessageSize"] = request.MaxMessageSize
+	}
+
+	if !dara.IsNil(request.SseAlgorithm) {
+		query["SseAlgorithm"] = request.SseAlgorithm
+	}
+
+	if !dara.IsNil(request.SseType) {
+		query["SseType"] = request.SseType
 	}
 
 	if !dara.IsNil(request.TopicName) {
@@ -1309,7 +1411,7 @@ func (client *Client) SetTopicAttributesWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Creates a subscription to a topic.
+// Calls the Subscribe operation to create a subscription for a topic.
 //
 // @param tmpReq - SubscribeRequest
 //
@@ -1423,7 +1525,7 @@ func (client *Client) SubscribeWithContext(ctx context.Context, tmpReq *Subscrib
 
 // Summary:
 //
-// Deletes a subscription.
+// You can call Unsubscribe to cancel an existing subscription.
 //
 // @param request - UnsubscribeRequest
 //

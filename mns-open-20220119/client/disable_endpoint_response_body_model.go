@@ -22,25 +22,25 @@ type iDisableEndpointResponseBody interface {
 }
 
 type DisableEndpointResponseBody struct {
-	// The HTTP status code.
+	// The response code.
 	//
 	// example:
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 06273500-249F-5863-121D-74D51123****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The response status.
+	// The status of the response.
 	//
 	// example:
 	//

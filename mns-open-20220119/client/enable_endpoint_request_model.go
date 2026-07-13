@@ -16,7 +16,7 @@ type iEnableEndpointRequest interface {
 type EnableEndpointRequest struct {
   // The type of the endpoint. Valid value:
   // 
-  // 	- **public**: indicates public endpoint. (Only the public is supported.)
+  // - **public**: The Internet endpoint. Only public is supported.
   // 
   // This parameter is required.
   // 

@@ -16,7 +16,7 @@ type iGetTopicAttributesRequest interface {
 }
 
 type GetTopicAttributesRequest struct {
-	// The tag.
+	// The list of resource tags.
 	Tag []*GetTopicAttributesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The name of the topic.
 	//
@@ -68,13 +68,13 @@ func (s *GetTopicAttributesRequest) Validate() error {
 }
 
 type GetTopicAttributesRequestTag struct {
-	// The tag key.
+	// The key of the tag.
 	//
 	// example:
 	//
 	// tag1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of the tag.
 	//
 	// example:
 	//

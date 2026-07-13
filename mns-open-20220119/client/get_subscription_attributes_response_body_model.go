@@ -30,21 +30,21 @@ type GetSubscriptionAttributesResponseBody struct {
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The response data.
 	Data *GetSubscriptionAttributesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 06273500-249F-5863-121D-74D51123****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The response status.
+	// The status of the response.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ func (s *GetSubscriptionAttributesResponseBody) Validate() error {
 }
 
 type GetSubscriptionAttributesResponseBodyData struct {
-	// The time when the subscription was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the subscription was created. The value is a UNIX timestamp that represents the number of seconds that have elapsed since 00:00:00 on January 1, 1970.
 	//
 	// example:
 	//
@@ -138,41 +138,43 @@ type GetSubscriptionAttributesResponseBodyData struct {
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The dead-letter queue policy.
 	DlqPolicy *GetSubscriptionAttributesResponseBodyDataDlqPolicy `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty" type:"Struct"`
-	// The endpoint to which the messages are pushed.
+	// The endpoint of the subscription.
 	//
 	// example:
 	//
 	// http://example.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// The tag that is used to filter messages. Only the messages that are attached with the specified tag can be pushed.
+	// The tag used for message filtering. Only messages that have a matching tag are pushed.
 	//
 	// example:
 	//
 	// important
 	FilterTag *string `json:"FilterTag,omitempty" xml:"FilterTag,omitempty"`
-	// The time when the subscription was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the subscription properties were last modified. The value is a UNIX timestamp that represents the number of seconds that have elapsed since 00:00:00 on January 1, 1970.
 	//
 	// example:
 	//
 	// 1449554962
 	LastModifyTime *int64 `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
-	// The content format of the messages that are pushed to the endpoint. Valid values:
+	// The format of the message content that is pushed to an endpoint.
 	//
-	// 	- XML
+	// Valid values:
 	//
-	// 	- JSON
+	// - XML
 	//
-	// 	- SIMPLIFIED
+	// - JSON
+	//
+	// - SIMPLIFIED
 	//
 	// example:
 	//
 	// XML
 	NotifyContentFormat *string `json:"NotifyContentFormat,omitempty" xml:"NotifyContentFormat,omitempty"`
-	// The retry policy that is applied if an error occurs when Message Service (MNS) pushes messages to the endpoint. Valid values:
+	// The retry policy that is used when a message fails to be pushed to an endpoint. Valid values:
 	//
-	// 	- BACKOFF_RETRY
+	// - BACKOFF_RETRY: backoff retry.
 	//
-	// 	- EXPONENTIAL_DECAY_RETRY
+	// - EXPONENTIAL_DECAY_RETRY: exponential decay retry.
 	//
 	// example:
 	//
@@ -185,13 +187,13 @@ type GetSubscriptionAttributesResponseBodyData struct {
 	// MySubscription
 	SubscriptionName      *string                                                         `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
 	TenantRateLimitPolicy *GetSubscriptionAttributesResponseBodyDataTenantRateLimitPolicy `json:"TenantRateLimitPolicy,omitempty" xml:"TenantRateLimitPolicy,omitempty" type:"Struct"`
-	// The name of the topic.
+	// The name of the topic to which the subscription belongs.
 	//
 	// example:
 	//
 	// MyTopic
 	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
-	// The Alibaba Cloud account ID of the topic owner.
+	// The AccountId of the owner of the topic to which the subscription belongs.
 	//
 	// example:
 	//
@@ -321,13 +323,13 @@ func (s *GetSubscriptionAttributesResponseBodyData) Validate() error {
 }
 
 type GetSubscriptionAttributesResponseBodyDataDlqPolicy struct {
-	// The queue to which dead-letter messages are delivered.
+	// The target queue to which dead-letter messages are delivered.
 	//
 	// example:
 	//
 	// deadLetterTargetQueue
 	DeadLetterTargetQueue *string `json:"DeadLetterTargetQueue,omitempty" xml:"DeadLetterTargetQueue,omitempty"`
-	// Specifies whether to enable the dead-letter message delivery.
+	// Indicates whether dead-letter message delivery is enabled.
 	//
 	// example:
 	//

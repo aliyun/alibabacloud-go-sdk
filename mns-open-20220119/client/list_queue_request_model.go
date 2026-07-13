@@ -22,13 +22,21 @@ type iListQueueRequest interface {
 }
 
 type ListQueueRequest struct {
-	// The page number. Valid values: 1 to 100000000. If you set this parameter to a value smaller than 1, the value of this parameter is 1 by default. If you set this parameter to a value greater than 100000000, the value of this parameter is 100000000 by default.
+	// The page number of the results to return.
+	//
+	// Valid values: 1 to 100000000.
+	//
+	// If you set this parameter to a value less than 1, the system uses 1 by default. If you set this parameter to a value greater than 100000000, the system uses 100000000 by default.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries per page. Value values: 10 to 50. If you set this parameter to a value smaller than 10, the value of this parameter is 10 by default. If you set this parameter to a value greater than 50, the value of this parameter is 50 by default.
+	// The number of entries to return on each page.
+	//
+	// Valid values: 10 to 50.
+	//
+	// If you set this parameter to a value less than 10, the system uses 10 by default. If you set this parameter to a value greater than 50, the system uses 50 by default.
 	//
 	// example:
 	//
@@ -40,8 +48,17 @@ type ListQueueRequest struct {
 	//
 	// demo-queue
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	// The type of the queue. Valid values:
+	//
+	//    	- normal: standard queue
+	//
+	//    	- fifo: FIFO queue
+	//
+	// example:
+	//
+	// normal
 	QueueType *string `json:"QueueType,omitempty" xml:"QueueType,omitempty"`
-	// The tags.
+	// The list of resource tags.
 	Tag []*ListQueueRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -112,13 +129,13 @@ func (s *ListQueueRequest) Validate() error {
 }
 
 type ListQueueRequestTag struct {
-	// The tag key.
+	// The key of the tag.
 	//
 	// example:
 	//
 	// tag1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of the tag.
 	//
 	// example:
 	//

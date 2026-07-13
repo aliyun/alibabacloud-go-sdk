@@ -22,19 +22,19 @@ type iRevokeEndpointAclResponseBody interface {
 }
 
 type RevokeEndpointAclResponseBody struct {
-	// The HTTP status code.
+	// The response code.
 	//
 	// example:
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type RevokeEndpointAclResponseBody struct {
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

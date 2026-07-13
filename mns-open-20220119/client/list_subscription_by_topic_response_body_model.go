@@ -30,9 +30,9 @@ type ListSubscriptionByTopicResponseBody struct {
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The response data.
 	Data *ListSubscriptionByTopicResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
@@ -130,21 +130,21 @@ func (s *ListSubscriptionByTopicResponseBody) Validate() error {
 }
 
 type ListSubscriptionByTopicResponseBodyData struct {
-	// The data returned on the current page.
+	// The entries on the current page.
 	PageData []*ListSubscriptionByTopicResponseBodyDataPageData `json:"PageData,omitempty" xml:"PageData,omitempty" type:"Repeated"`
-	// The page number.
+	// The page number of the returned page.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 50
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of pages returned.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -156,7 +156,7 @@ type ListSubscriptionByTopicResponseBodyData struct {
 	//
 	// 20
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -240,7 +240,7 @@ func (s *ListSubscriptionByTopicResponseBodyData) Validate() error {
 }
 
 type ListSubscriptionByTopicResponseBodyDataPageData struct {
-	// The time when the subscription was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the subscription was created, in Unix time format.
 	//
 	// example:
 	//
@@ -248,59 +248,61 @@ type ListSubscriptionByTopicResponseBodyDataPageData struct {
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The dead-letter queue policy.
 	DlqPolicy *ListSubscriptionByTopicResponseBodyDataPageDataDlqPolicy `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty" type:"Struct"`
-	// The endpoint to which the messages are pushed.
+	// The endpoint of the subscription.
 	//
 	// example:
 	//
 	// http://example.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// The tag that is used to filter messages. Only the messages that are attached with the specified tag can be pushed.
+	// The tag for message filtering in the subscription. Only messages with the same tag are pushed.
 	//
 	// example:
 	//
 	// important
 	FilterTag *string `json:"FilterTag,omitempty" xml:"FilterTag,omitempty"`
-	// The time when the subscription was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the subscription properties were last modified. This value is a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1449554806
 	LastModifyTime *int64 `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
-	// The content format of the messages that are pushed to the endpoint. Valid values:
+	// The format of the message content pushed to the endpoint.
 	//
-	// 	- XML
+	// Valid values:
 	//
-	// 	- JSON
+	// - XML
 	//
-	// 	- SIMPLIFIED
+	// - JSON
+	//
+	// - SIMPLIFIED
 	//
 	// example:
 	//
 	// XML
 	NotifyContentFormat *string `json:"NotifyContentFormat,omitempty" xml:"NotifyContentFormat,omitempty"`
-	// The retry policy that is applied if an error occurs when Message Service (MNS) pushes messages to the endpoint. Valid values:
+	// The retry policy for message push failures to the endpoint. Valid values:
 	//
-	// 	- BACKOFF_RETRY
+	// - BACKOFF_RETRY: backoff retry.
 	//
-	// 	- EXPONENTIAL_DECAY_RETRY
+	// - EXPONENTIAL_DECAY_RETRY: exponential decay retry.
 	//
 	// example:
 	//
 	// BACKOFF_RETRY
 	NotifyStrategy *string `json:"NotifyStrategy,omitempty" xml:"NotifyStrategy,omitempty"`
-	// The name of the subscription.
+	// The subscription name.
 	//
 	// example:
 	//
 	// MySubscription
 	SubscriptionName *string `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
-	// The name of the topic.
+	// The name of the topic to which the subscription belongs.
 	//
 	// example:
 	//
 	// MyTopic
 	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
-	// The Alibaba Cloud account ID of the topic owner.
+	// The AccountId of the owner of the topic to which the subscription belongs.
 	//
 	// example:
 	//
@@ -416,13 +418,13 @@ func (s *ListSubscriptionByTopicResponseBodyDataPageData) Validate() error {
 }
 
 type ListSubscriptionByTopicResponseBodyDataPageDataDlqPolicy struct {
-	// The queue to which dead-letter messages are delivered.
+	// The destination queue for dead-letter messages.
 	//
 	// example:
 	//
 	// dead-letter-queue
 	DeadLetterTargetQueue *string `json:"DeadLetterTargetQueue,omitempty" xml:"DeadLetterTargetQueue,omitempty"`
-	// Specifies whether to enable the dead-letter message delivery.
+	// Indicates whether dead-letter message delivery is enabled.
 	//
 	// example:
 	//

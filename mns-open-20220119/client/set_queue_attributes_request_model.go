@@ -15,6 +15,10 @@ type iSetQueueAttributesRequest interface {
 	GetDlqPolicy() *SetQueueAttributesRequestDlqPolicy
 	SetEnableLogging(v bool) *SetQueueAttributesRequest
 	GetEnableLogging() *bool
+	SetEnableSSE(v bool) *SetQueueAttributesRequest
+	GetEnableSSE() *bool
+	SetKmsKeyId(v string) *SetQueueAttributesRequest
+	GetKmsKeyId() *string
 	SetMaximumMessageSize(v int64) *SetQueueAttributesRequest
 	GetMaximumMessageSize() *int64
 	SetMessageRetentionPeriod(v int64) *SetQueueAttributesRequest
@@ -23,6 +27,10 @@ type iSetQueueAttributesRequest interface {
 	GetPollingWaitSeconds() *int64
 	SetQueueName(v string) *SetQueueAttributesRequest
 	GetQueueName() *string
+	SetSseAlgorithm(v string) *SetQueueAttributesRequest
+	GetSseAlgorithm() *string
+	SetSseType(v string) *SetQueueAttributesRequest
+	GetSseType() *string
 	SetTenantRateLimitPolicy(v *SetQueueAttributesRequestTenantRateLimitPolicy) *SetQueueAttributesRequest
 	GetTenantRateLimitPolicy() *SetQueueAttributesRequestTenantRateLimitPolicy
 	SetVisibilityTimeout(v int64) *SetQueueAttributesRequest
@@ -30,7 +38,11 @@ type iSetQueueAttributesRequest interface {
 }
 
 type SetQueueAttributesRequest struct {
-	// The period after which all messages sent to the queue are consumed. Valid values: 0 to 604800. Unit: seconds. Default value: 0
+	// The delay time for all messages sent to this queue. Messages sent to the queue can be consumed only after the delay time specified by this parameter has elapsed.
+	//
+	// Valid values: 0 to 604800. Unit: seconds.
+	//
+	// Default value: 0.
 	//
 	// example:
 	//
@@ -40,27 +52,43 @@ type SetQueueAttributesRequest struct {
 	DlqPolicy *SetQueueAttributesRequestDlqPolicy `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty" type:"Struct"`
 	// Specifies whether to enable the log management feature. Valid values:
 	//
-	// 	- true: enabled.
+	// - true: Enabled.
 	//
-	// 	- false: disabled. Default value: false.
+	// - false: Disabled.
+	//
+	// Default value: false.
 	//
 	// example:
 	//
-	// True
-	EnableLogging *bool `json:"EnableLogging,omitempty" xml:"EnableLogging,omitempty"`
-	// The maximum length of the message that is sent to the queue. Valid values: 1024 to 65536. Unit: bytes. Default value: 65536.
+	// true
+	EnableLogging *bool   `json:"EnableLogging,omitempty" xml:"EnableLogging,omitempty"`
+	EnableSSE     *bool   `json:"EnableSSE,omitempty" xml:"EnableSSE,omitempty"`
+	KmsKeyId      *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	// The maximum length of the message body sent to this queue.
+	//
+	// Valid values: 1024 to 65536. Unit: bytes.
+	//
+	// Default value: 65536.
 	//
 	// example:
 	//
 	// 1024
 	MaximumMessageSize *int64 `json:"MaximumMessageSize,omitempty" xml:"MaximumMessageSize,omitempty"`
-	// The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: 60 to 604800. Unit: seconds. Default value: 345600.
+	// The maximum duration for which a message is retained in this queue. After the time specified by this parameter has elapsed since the message was sent to the queue, the message is deleted regardless of whether it has been consumed.
+	//
+	// Valid values: 60 to 604800. Unit: seconds.
+	//
+	// Default value: 345600.
 	//
 	// example:
 	//
 	// 120
 	MessageRetentionPeriod *int64 `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
-	// The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: 0 to 30. Unit: seconds. Default value: 0
+	// The maximum wait time for a ReceiveMessage request on this queue when no messages are available in the queue.
+	//
+	// Valid values: 0 to 30. Unit: seconds.
+	//
+	// Default value: 0.
 	//
 	// example:
 	//
@@ -74,8 +102,14 @@ type SetQueueAttributesRequest struct {
 	//
 	// testqueue
 	QueueName             *string                                         `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	SseAlgorithm          *string                                         `json:"SseAlgorithm,omitempty" xml:"SseAlgorithm,omitempty"`
+	SseType               *string                                         `json:"SseType,omitempty" xml:"SseType,omitempty"`
 	TenantRateLimitPolicy *SetQueueAttributesRequestTenantRateLimitPolicy `json:"TenantRateLimitPolicy,omitempty" xml:"TenantRateLimitPolicy,omitempty" type:"Struct"`
-	// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
+	// The duration for which a message stays in the Inactive state after it is consumed from the queue and changes from the Active state to the Inactive state.
+	//
+	// Valid values: 1 to 43200. Unit: seconds.
+	//
+	// Default value: 30.
 	//
 	// example:
 	//
@@ -103,6 +137,14 @@ func (s *SetQueueAttributesRequest) GetEnableLogging() *bool {
 	return s.EnableLogging
 }
 
+func (s *SetQueueAttributesRequest) GetEnableSSE() *bool {
+	return s.EnableSSE
+}
+
+func (s *SetQueueAttributesRequest) GetKmsKeyId() *string {
+	return s.KmsKeyId
+}
+
 func (s *SetQueueAttributesRequest) GetMaximumMessageSize() *int64 {
 	return s.MaximumMessageSize
 }
@@ -117,6 +159,14 @@ func (s *SetQueueAttributesRequest) GetPollingWaitSeconds() *int64 {
 
 func (s *SetQueueAttributesRequest) GetQueueName() *string {
 	return s.QueueName
+}
+
+func (s *SetQueueAttributesRequest) GetSseAlgorithm() *string {
+	return s.SseAlgorithm
+}
+
+func (s *SetQueueAttributesRequest) GetSseType() *string {
+	return s.SseType
 }
 
 func (s *SetQueueAttributesRequest) GetTenantRateLimitPolicy() *SetQueueAttributesRequestTenantRateLimitPolicy {
@@ -142,6 +192,16 @@ func (s *SetQueueAttributesRequest) SetEnableLogging(v bool) *SetQueueAttributes
 	return s
 }
 
+func (s *SetQueueAttributesRequest) SetEnableSSE(v bool) *SetQueueAttributesRequest {
+	s.EnableSSE = &v
+	return s
+}
+
+func (s *SetQueueAttributesRequest) SetKmsKeyId(v string) *SetQueueAttributesRequest {
+	s.KmsKeyId = &v
+	return s
+}
+
 func (s *SetQueueAttributesRequest) SetMaximumMessageSize(v int64) *SetQueueAttributesRequest {
 	s.MaximumMessageSize = &v
 	return s
@@ -159,6 +219,16 @@ func (s *SetQueueAttributesRequest) SetPollingWaitSeconds(v int64) *SetQueueAttr
 
 func (s *SetQueueAttributesRequest) SetQueueName(v string) *SetQueueAttributesRequest {
 	s.QueueName = &v
+	return s
+}
+
+func (s *SetQueueAttributesRequest) SetSseAlgorithm(v string) *SetQueueAttributesRequest {
+	s.SseAlgorithm = &v
+	return s
+}
+
+func (s *SetQueueAttributesRequest) SetSseType(v string) *SetQueueAttributesRequest {
+	s.SseType = &v
 	return s
 }
 
@@ -187,19 +257,19 @@ func (s *SetQueueAttributesRequest) Validate() error {
 }
 
 type SetQueueAttributesRequestDlqPolicy struct {
-	// The queue to which dead-letter messages are delivered.
+	// The target queue for dead-letter message delivery.
 	//
 	// example:
 	//
 	// deadLetterTargetQueue
 	DeadLetterTargetQueue *string `json:"DeadLetterTargetQueue,omitempty" xml:"DeadLetterTargetQueue,omitempty"`
-	// Specifies whether to enable the dead-letter message delivery.
+	// Specifies whether to enable dead-letter message delivery.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The maximum number of retries.
+	// The maximum number of times a message can be delivered.
 	//
 	// example:
 	//
