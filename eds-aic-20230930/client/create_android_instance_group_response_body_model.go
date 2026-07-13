@@ -22,9 +22,9 @@ type iCreateAndroidInstanceGroupResponseBody interface {
 }
 
 type CreateAndroidInstanceGroupResponseBody struct {
-	// The instance group IDs.
+	// The list of instance group IDs.
 	InstanceGroupIds []*string `json:"InstanceGroupIds,omitempty" xml:"InstanceGroupIds,omitempty" type:"Repeated"`
-	// The created instance groups.
+	// The instance group information.
 	InstanceGroupInfos       []*CreateAndroidInstanceGroupResponseBodyInstanceGroupInfos     `json:"InstanceGroupInfos,omitempty" xml:"InstanceGroupInfos,omitempty" type:"Repeated"`
 	NetworkPackageOrderModel *CreateAndroidInstanceGroupResponseBodyNetworkPackageOrderModel `json:"NetworkPackageOrderModel,omitempty" xml:"NetworkPackageOrderModel,omitempty" type:"Struct"`
 	// The order ID.
@@ -119,7 +119,7 @@ type CreateAndroidInstanceGroupResponseBodyInstanceGroupInfos struct {
 	//
 	// ag-cuv4scs4obxch****
 	InstanceGroupId *string `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
-	// The instance IDs.
+	// The list of instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 }
 

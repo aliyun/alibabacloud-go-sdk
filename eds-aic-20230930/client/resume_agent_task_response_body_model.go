@@ -38,7 +38,7 @@ type ResumeAgentTaskResponseBody struct {
 	//
 	// 1A923337-44D9-5CAD-9A53-95084BD4****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of tasks.
+	// The list of tasks.
 	Tasks []*ResumeAgentTaskResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
@@ -102,19 +102,19 @@ func (s *ResumeAgentTaskResponseBody) Validate() error {
 type ResumeAgentTaskResponseBodyTasks struct {
 	// The current status of the task. Valid values:
 	//
-	// `PENDING`: The task is being created.
+	// - PENDING: The task is being created.
 	//
-	// `RUNNING`: The task is running.
+	// - RUNNING: The task is running.
 	//
-	// `COMPLETED`: The task has completed.
+	// - COMPLETED: The task is completed.
 	//
-	// `FAILED`: The task has failed.
+	// - FAILED: The task has failed.
 	//
-	// `TIMEOUT`: The task has timed out.
+	// - TIMEOUT: The task has timed out.
 	//
-	// `PAUSING`: The task is pausing.
+	// - PAUSING: The task is being paused.
 	//
-	// `PAUSED`: The task is paused.
+	// - PAUSED: The task is paused.
 	//
 	// example:
 	//
@@ -126,19 +126,19 @@ type ResumeAgentTaskResponseBodyTasks struct {
 	//
 	// Task status [COMPLETED] does not support resume, only PAUSED tasks can be resumed.
 	FailedReason *string `json:"FailedReason,omitempty" xml:"FailedReason,omitempty"`
-	// The ID of the mobile instance.
+	// The Mobile node ID.
 	//
 	// example:
 	//
 	// acp-ek65k51zoxia3x8xz
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time when the task was resumed, in ISO 8601 format.
+	// The time when the task is resumed, in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2026-04-13T17:42:19Z
 	ResumingAt *string `json:"ResumingAt,omitempty" xml:"ResumingAt,omitempty"`
-	// The globally unique ID of the task.
+	// The task ID, which is globally unique.
 	//
 	// example:
 	//

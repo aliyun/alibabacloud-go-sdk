@@ -24,15 +24,15 @@ type iDescribeCreditPackageResponseBody interface {
 }
 
 type DescribeCreditPackageResponseBody struct {
-	// An array of credit package details.
+	// The credit booster package information.
 	CreditsPackageInfos []*DescribeCreditPackageResponseBodyCreditsPackageInfos `json:"CreditsPackageInfos,omitempty" xml:"CreditsPackageInfos,omitempty" type:"Repeated"`
-	// Indicates whether this is your first purchase.
+	// Indicates whether this is the first purchase.
 	//
 	// example:
 	//
 	// true
 	IsFirstPurchase *bool `json:"IsFirstPurchase,omitempty" xml:"IsFirstPurchase,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DescribeCreditPackageResponseBody struct {
 	//
 	// 10
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The total number of exhausted credits.
+	// The total number of consumed credits.
 	//
 	// example:
 	//
@@ -134,43 +134,44 @@ func (s *DescribeCreditPackageResponseBody) Validate() error {
 }
 
 type DescribeCreditPackageResponseBodyCreditsPackageInfos struct {
-	// The number of available credits in the credit package.
+	// The number of available credits in the current credit booster package.
 	//
 	// example:
 	//
 	// 70
 	AvailableCredits *string `json:"AvailableCredits,omitempty" xml:"AvailableCredits,omitempty"`
-	// The ID of the credit package.
+	CreateTime       *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the credit booster package.
 	//
 	// example:
 	//
 	// crp-xagydbhfkah****
 	CreditPackageId *string `json:"CreditPackageId,omitempty" xml:"CreditPackageId,omitempty"`
-	// The status of the credit package.
+	// The status of the credit booster package.
 	//
 	// example:
 	//
 	// ACTIVE
 	CreditPackageStatus *string `json:"CreditPackageStatus,omitempty" xml:"CreditPackageStatus,omitempty"`
-	// The time when the credit package becomes effective.
+	// The effective period of the credit booster package.
 	//
 	// example:
 	//
 	// 2026-04-30 00:00:00
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The number of exhausted credits in the credit package.
+	// The number of consumed credits in the current credit booster package.
 	//
 	// example:
 	//
 	// 30
 	ExhaustedCredits *string `json:"ExhaustedCredits,omitempty" xml:"ExhaustedCredits,omitempty"`
-	// The time when the credit package expires.
+	// The expiration time of the credit booster package.
 	//
 	// example:
 	//
 	// 2026-10-30 00:00:00
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The total number of credits in the credit package.
+	// The total number of credits in the current credit booster package.
 	//
 	// example:
 	//
@@ -188,6 +189,10 @@ func (s DescribeCreditPackageResponseBodyCreditsPackageInfos) GoString() string 
 
 func (s *DescribeCreditPackageResponseBodyCreditsPackageInfos) GetAvailableCredits() *string {
 	return s.AvailableCredits
+}
+
+func (s *DescribeCreditPackageResponseBodyCreditsPackageInfos) GetCreateTime() *string {
+	return s.CreateTime
 }
 
 func (s *DescribeCreditPackageResponseBodyCreditsPackageInfos) GetCreditPackageId() *string {
@@ -216,6 +221,11 @@ func (s *DescribeCreditPackageResponseBodyCreditsPackageInfos) GetTotalCredits()
 
 func (s *DescribeCreditPackageResponseBodyCreditsPackageInfos) SetAvailableCredits(v string) *DescribeCreditPackageResponseBodyCreditsPackageInfos {
 	s.AvailableCredits = &v
+	return s
+}
+
+func (s *DescribeCreditPackageResponseBodyCreditsPackageInfos) SetCreateTime(v string) *DescribeCreditPackageResponseBodyCreditsPackageInfos {
+	s.CreateTime = &v
 	return s
 }
 

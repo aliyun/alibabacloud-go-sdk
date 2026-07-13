@@ -11,6 +11,8 @@ type iCreateCreditPackageResponseBody interface {
 	GoString() string
 	SetCreditPackageId(v string) *CreateCreditPackageResponseBody
 	GetCreditPackageId() *string
+	SetCreditPackageIds(v []*string) *CreateCreditPackageResponseBody
+	GetCreditPackageIds() []*string
 	SetEffectiveTime(v string) *CreateCreditPackageResponseBody
 	GetEffectiveTime() *string
 	SetExpiredTime(v string) *CreateCreditPackageResponseBody
@@ -22,19 +24,20 @@ type iCreateCreditPackageResponseBody interface {
 }
 
 type CreateCreditPackageResponseBody struct {
-	// The credit package ID.
+	// The ID of the credit booster pack.
 	//
 	// example:
 	//
 	// crp-bt7e2t4anbq50****
-	CreditPackageId *string `json:"CreditPackageId,omitempty" xml:"CreditPackageId,omitempty"`
-	// The time when the credit package takes effect.
+	CreditPackageId  *string   `json:"CreditPackageId,omitempty" xml:"CreditPackageId,omitempty"`
+	CreditPackageIds []*string `json:"CreditPackageIds,omitempty" xml:"CreditPackageIds,omitempty" type:"Repeated"`
+	// The effective period of the credit booster pack.
 	//
 	// example:
 	//
 	// 2026-04-30 00:00:00
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The time when the credit package expires.
+	// The time when the credit booster pack expires.
 	//
 	// example:
 	//
@@ -66,6 +69,10 @@ func (s *CreateCreditPackageResponseBody) GetCreditPackageId() *string {
 	return s.CreditPackageId
 }
 
+func (s *CreateCreditPackageResponseBody) GetCreditPackageIds() []*string {
+	return s.CreditPackageIds
+}
+
 func (s *CreateCreditPackageResponseBody) GetEffectiveTime() *string {
 	return s.EffectiveTime
 }
@@ -84,6 +91,11 @@ func (s *CreateCreditPackageResponseBody) GetRequestId() *string {
 
 func (s *CreateCreditPackageResponseBody) SetCreditPackageId(v string) *CreateCreditPackageResponseBody {
 	s.CreditPackageId = &v
+	return s
+}
+
+func (s *CreateCreditPackageResponseBody) SetCreditPackageIds(v []*string) *CreateCreditPackageResponseBody {
+	s.CreditPackageIds = v
 	return s
 }
 

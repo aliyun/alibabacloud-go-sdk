@@ -21,6 +21,8 @@ type iCreateAndroidInstanceGroupShrinkRequest interface {
 	GetBandwidthPackageType() *string
 	SetBizRegionId(v string) *CreateAndroidInstanceGroupShrinkRequest
 	GetBizRegionId() *string
+	SetChannelCookie(v string) *CreateAndroidInstanceGroupShrinkRequest
+	GetChannelCookie() *string
 	SetChargeType(v string) *CreateAndroidInstanceGroupShrinkRequest
 	GetChargeType() *string
 	SetClientToken(v string) *CreateAndroidInstanceGroupShrinkRequest
@@ -70,7 +72,7 @@ type iCreateAndroidInstanceGroupShrinkRequest interface {
 }
 
 type CreateAndroidInstanceGroupShrinkRequest struct {
-	// The number of instance groups to create. Valid values: 1 to 100. Default value: 1.
+	// The number of instance groups. Default value: 1. Maximum value: 100.
 	//
 	// example:
 	//
@@ -82,7 +84,7 @@ type CreateAndroidInstanceGroupShrinkRequest struct {
 	//
 	// false
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// Specifies whether to enable auto-renewal for subscription resources. Default value: false.
+	// Specifies whether to enable auto-renewal. Default value: false.
 	//
 	// example:
 	//
@@ -90,21 +92,22 @@ type CreateAndroidInstanceGroupShrinkRequest struct {
 	AutoRenew            *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	BandwidthPackageId   *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
 	BandwidthPackageType *string `json:"BandwidthPackageType,omitempty" xml:"BandwidthPackageType,omitempty"`
-	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions where Cloud Phone instances are available.
+	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the list of regions where cloud phone instances can be purchased.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	// The billing method.
+	BizRegionId   *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	ChannelCookie *string `json:"ChannelCookie,omitempty" xml:"ChannelCookie,omitempty"`
+	// The billing type.
 	//
 	// example:
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// A client-generated token to ensure request idempotence. This parameter prevents duplicate requests. The token can be up to 100 characters in length.
+	// The client token that is used to ensure the idempotence of the request and prevent repeated submissions. The value cannot exceed 100 characters in length.
 	//
 	// example:
 	//
@@ -122,7 +125,7 @@ type CreateAndroidInstanceGroupShrinkRequest struct {
 	//
 	// false
 	GpuAcceleration *bool `json:"GpuAcceleration,omitempty" xml:"GpuAcceleration,omitempty"`
-	// The image ID. You can call the [DescribeImageList](~~DescribeImageList~~) operation to query available images for Cloud Phone instances.
+	// The image ID. You can call [DescribeImageList](~~DescribeImageList~~) to query the list of cloud phone images.
 	//
 	// This parameter is required.
 	//
@@ -130,15 +133,15 @@ type CreateAndroidInstanceGroupShrinkRequest struct {
 	//
 	// imgc-06zyt9m93zwax****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The name of the instance group.
+	// The instance group name.
 	//
-	// > The name can be up to 30 characters in length. It must start with an uppercase or lowercase letter or a Chinese character, and cannot start with `http://` or `https://`. The name can contain only Chinese characters, letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+	// > The instance group name cannot exceed 30 characters in length. It must start with an uppercase letter, lowercase letter, or Chinese character. It cannot start with `http://` or `https://`. It can contain Chinese characters, letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
 	//
 	// example:
 	//
 	// Cloud phoneA
 	InstanceGroupName *string `json:"InstanceGroupName,omitempty" xml:"InstanceGroupName,omitempty"`
-	// The instance group specification. You can call the [DescribeSpec](~~DescribeSpec~~) operation to query the specifications that are available for Cloud Phone instances.
+	// The instance group specification. You can call [DescribeSpec](~~DescribeSpec~~) to query the specifications available for cloud phone instances.
 	//
 	// This parameter is required.
 	//
@@ -153,9 +156,9 @@ type CreateAndroidInstanceGroupShrinkRequest struct {
 	//
 	// null
 	Ipv6Bandwidth *int32 `json:"Ipv6Bandwidth,omitempty" xml:"Ipv6Bandwidth,omitempty"`
-	// The key pair ID. If you specify a valid key pair ID when you create the instance group, the system attaches the key pair to all successfully created instances. No separate API call is required to attach the key pair.
+	// The key pair ID. If you specify a valid key pair ID when creating an instance group, the key pair is bound to all instances that are successfully created, without the need to call the bindng operation again.
 	//
-	// > Attaching a key pair during a scale-out operation is not supported.
+	// > Binding a key pair during scale-out is not supported.
 	//
 	// example:
 	//
@@ -163,7 +166,7 @@ type CreateAndroidInstanceGroupShrinkRequest struct {
 	KeyPairId         *string `json:"KeyPairId,omitempty" xml:"KeyPairId,omitempty"`
 	NetworkInfoShrink *string `json:"NetworkInfo,omitempty" xml:"NetworkInfo,omitempty"`
 	NetworkType       *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The number of instances in the instance group. The maximum value is 100.
+	// The number of instances in the instance group. Maximum value: 100.
 	//
 	// example:
 	//
@@ -171,9 +174,9 @@ type CreateAndroidInstanceGroupShrinkRequest struct {
 	NumberOfInstances *int32 `json:"NumberOfInstances,omitempty" xml:"NumberOfInstances,omitempty"`
 	// The network ID.
 	//
-	// - To create instances in a Shared Network: This parameter is optional. Specify the ID of a **Shared Network**. You can find the ID on the [Cloud Phone console > Network](https://wya.wuying.aliyun.com/network) page. If no Shared Network is available in the console, you can omit this parameter. The system automatically creates a Shared Network when you create the instance group.
+	// - To create a shared network instance: the network ID is optional. Specify the network ID of the **Shared Network*	- type on the [Cloud Phone console > Network](https://wya.wuying.aliyun.com/network) page. If no shared network exists in the console, you can leave this parameter empty. A shared network is automatically created when the instance group is created.
 	//
-	// - To create instances in a VPC: This parameter is required. Specify the ID of a **VPC**. You can find the ID on the [Cloud Phone console > Network](https://wya.wuying.aliyun.com/network) page. If no VPC is available in the console, you must create one first.
+	// - To create a VPC network instance: the network ID is required. Specify the network ID of the **VPC Network*	- type on the [Cloud Phone console > Network](https://wya.wuying.aliyun.com/network) page. If no VPC network exists in the console, create a network first.
 	//
 	// example:
 	//
@@ -183,7 +186,7 @@ type CreateAndroidInstanceGroupShrinkRequest struct {
 	//
 	// wya.wuying.aliyun.com/instanceGroup
 	PaidCallBackUrl *string `json:"PaidCallBackUrl,omitempty" xml:"PaidCallBackUrl,omitempty"`
-	// The subscription duration. The PeriodUnit parameter specifies the unit.
+	// The subscription duration of the resource. The unit is specified by PeriodUnit.
 	//
 	// example:
 	//
@@ -195,7 +198,7 @@ type CreateAndroidInstanceGroupShrinkRequest struct {
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The policy ID. You can call the [ListPolicyGroups](~~ListPolicyGroups~~) operation to query available policies.
+	// The policy ID. You can call [ListPolicyGroups](~~ListPolicyGroups~~) to query the list of policies.
 	//
 	// example:
 	//
@@ -204,13 +207,13 @@ type CreateAndroidInstanceGroupShrinkRequest struct {
 	PromotionId   *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 	SaleMode      *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
 	StreamMode    *int32  `json:"StreamMode,omitempty" xml:"StreamMode,omitempty"`
-	// The resource tags.
+	// The tags of the resource.
 	Tag []*CreateAndroidInstanceGroupShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The vSwitch ID. You can call the [DescribeVSwitches](https://help.aliyun.com/document_detail/448774.html) operation to query available vSwitches.
+	// The vSwitch ID. You can call [DescribeVSwitches](https://help.aliyun.com/document_detail/448774.html) to query the list of vSwitches.
 	//
-	// - If you create instances in a Shared Network, omit this parameter.
+	// - To create a shared network instance: leave this parameter empty.
 	//
-	// - If you create instances in a VPC, this parameter is required. The system creates the instances in the specified vSwitch.
+	// - To create a VPC network instance: the vSwitch ID is required. The specified vSwitch is used to create the instance.
 	//
 	// example:
 	//
@@ -248,6 +251,10 @@ func (s *CreateAndroidInstanceGroupShrinkRequest) GetBandwidthPackageType() *str
 
 func (s *CreateAndroidInstanceGroupShrinkRequest) GetBizRegionId() *string {
 	return s.BizRegionId
+}
+
+func (s *CreateAndroidInstanceGroupShrinkRequest) GetChannelCookie() *string {
+	return s.ChannelCookie
 }
 
 func (s *CreateAndroidInstanceGroupShrinkRequest) GetChargeType() *string {
@@ -369,6 +376,11 @@ func (s *CreateAndroidInstanceGroupShrinkRequest) SetBandwidthPackageType(v stri
 
 func (s *CreateAndroidInstanceGroupShrinkRequest) SetBizRegionId(v string) *CreateAndroidInstanceGroupShrinkRequest {
 	s.BizRegionId = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupShrinkRequest) SetChannelCookie(v string) *CreateAndroidInstanceGroupShrinkRequest {
+	s.ChannelCookie = &v
 	return s
 }
 

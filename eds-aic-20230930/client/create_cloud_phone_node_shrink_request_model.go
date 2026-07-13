@@ -19,6 +19,8 @@ type iCreateCloudPhoneNodeShrinkRequest interface {
 	GetBandwidthPackageType() *string
 	SetBizRegionId(v string) *CreateCloudPhoneNodeShrinkRequest
 	GetBizRegionId() *string
+	SetChannelCookie(v string) *CreateCloudPhoneNodeShrinkRequest
+	GetChannelCookie() *string
 	SetChargeType(v string) *CreateCloudPhoneNodeShrinkRequest
 	GetChargeType() *string
 	SetCount(v string) *CreateCloudPhoneNodeShrinkRequest
@@ -88,7 +90,7 @@ type CreateCloudPhoneNodeShrinkRequest struct {
 	//
 	// true
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The ID of the Shared Bandwidth instance.
+	// The ID of the Internet Shared Bandwidth instance.
 	//
 	// example:
 	//
@@ -107,14 +109,15 @@ type CreateCloudPhoneNodeShrinkRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	// The billing method. Only the subscription billing method is supported.
+	BizRegionId   *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	ChannelCookie *string `json:"ChannelCookie,omitempty" xml:"ChannelCookie,omitempty"`
+	// The billing type. Only subscription is supported.
 	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The number of Cloud Phone matrices to purchase.
+	// The number of cloud phone matrices to purchase.
 	//
 	// example:
 	//
@@ -122,7 +125,7 @@ type CreateCloudPhoneNodeShrinkRequest struct {
 	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The display settings.
 	DisplayConfigShrink *string `json:"DisplayConfig,omitempty" xml:"DisplayConfig,omitempty"`
-	// The downstream bandwidth limit, in Mbit/s.
+	// The downstream bandwidth throttling. Unit: Mbit/s.
 	//
 	// example:
 	//
@@ -149,7 +152,7 @@ type CreateCloudPhoneNodeShrinkRequest struct {
 	//
 	// cn-hangzhou+dir-5mwr9azebliva****
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	// The network settings for the instance.
+	// The network mapping information of the instance.
 	NetworkInfoShrink *string `json:"NetworkInfo,omitempty" xml:"NetworkInfo,omitempty"`
 	// The network type of the instance.
 	//
@@ -157,18 +160,18 @@ type CreateCloudPhoneNodeShrinkRequest struct {
 	//
 	// network_pro_ecd
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The name of the Cloud Phone matrix.
+	// The name of the cloud phone matrix.
 	//
 	// example:
 	//
 	// node_name
 	NodeName        *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 	PaidCallBackUrl *string `json:"PaidCallBackUrl,omitempty" xml:"PaidCallBackUrl,omitempty"`
-	// The subscription duration. The unit is specified by the `PeriodUnit` parameter.
+	// The subscription duration. The unit is specified by PeriodUnit.
 	//
-	// - If `PeriodUnit` is set to **Year**, this parameter can only be set to 1.
+	// - If PeriodUnit is set to **year**, the value can only be 1.
 	//
-	// - If `PeriodUnit` is set to **Month**, valid values are 1, 2, 3, and 6.
+	// - If PeriodUnit is set to **month**, valid values are 1, 2, 3, and 6.
 	//
 	// example:
 	//
@@ -180,40 +183,40 @@ type CreateCloudPhoneNodeShrinkRequest struct {
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The number of Cloud Phone instances to create in a single Cloud Phone matrix.
+	// The number of cloud phone instances to create in a single matrix.
 	//
 	// example:
 	//
 	// 25
 	PhoneCount *int32 `json:"PhoneCount,omitempty" xml:"PhoneCount,omitempty"`
-	// The size of the independent internal storage, in GiB.
+	// The size of the independent device storage. Unit: GiB.
 	//
 	// example:
 	//
 	// 10
 	PhoneDataVolume *int32  `json:"PhoneDataVolume,omitempty" xml:"PhoneDataVolume,omitempty"`
 	PromotionId     *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	// The vertical resolution, in pixels.
+	// The height of the resolution. Unit: pixels.
 	//
 	// example:
 	//
 	// 1280
 	ResolutionHeight *int32 `json:"ResolutionHeight,omitempty" xml:"ResolutionHeight,omitempty"`
-	// The horizontal resolution, in pixels.
+	// The width of the resolution. Unit: pixels.
 	//
 	// example:
 	//
 	// 720
 	ResolutionWidth *int32 `json:"ResolutionWidth,omitempty" xml:"ResolutionWidth,omitempty"`
-	// The size of the shared internal storage, in GiB.
+	// The size of the shared device storage. Unit: GiB.
 	//
-	// > The size must exceed 10 GiB per instance in the matrix.
+	// > The minimum value of the shared device storage must be greater than the number of instances in the matrix multiplied by 10 GiB.
 	//
 	// example:
 	//
 	// 200
 	ServerShareDataVolume *int32 `json:"ServerShareDataVolume,omitempty" xml:"ServerShareDataVolume,omitempty"`
-	// The server type.
+	// The specifications of the cloud phone matrix.
 	//
 	// This parameter is required.
 	//
@@ -221,28 +224,28 @@ type CreateCloudPhoneNodeShrinkRequest struct {
 	//
 	// cpm.gx7.10xlarge
 	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
-	// The streaming mode for instances in the Cloud Phone matrix. Defaults to preemption mode.
+	// The streaming mode for instances in the cloud phone matrix. If this parameter is not specified, the default value is preemptive mode.
 	//
 	// example:
 	//
 	// 1
 	StreamMode *int32 `json:"StreamMode,omitempty" xml:"StreamMode,omitempty"`
 	SwapSize   *int32 `json:"SwapSize,omitempty" xml:"SwapSize,omitempty"`
-	// The resource tags.
+	// The tags of the resource.
 	Tag []*CreateCloudPhoneNodeShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The upstream bandwidth limit, in Mbit/s.
+	// The upstream bandwidth throttling. Unit: Mbit/s.
 	//
 	// example:
 	//
 	// 50
 	UpBandwidthLimit *int32 `json:"UpBandwidthLimit,omitempty" xml:"UpBandwidthLimit,omitempty"`
-	// The template for instance creation. Set this parameter to `Random` to use a random template, or specify a template ID to use a specific template.
+	// Specifies whether to use a template during creation. Set this parameter to `Random` to use a random template from the template list. Alternatively, specify a template ID to use that template.
 	//
 	// example:
 	//
 	// Random
 	UseTemplate *string `json:"UseTemplate,omitempty" xml:"UseTemplate,omitempty"`
-	// The VSwitch ID.
+	// The vSwitch ID.
 	//
 	// example:
 	//
@@ -276,6 +279,10 @@ func (s *CreateCloudPhoneNodeShrinkRequest) GetBandwidthPackageType() *string {
 
 func (s *CreateCloudPhoneNodeShrinkRequest) GetBizRegionId() *string {
 	return s.BizRegionId
+}
+
+func (s *CreateCloudPhoneNodeShrinkRequest) GetChannelCookie() *string {
+	return s.ChannelCookie
 }
 
 func (s *CreateCloudPhoneNodeShrinkRequest) GetChargeType() *string {
@@ -408,6 +415,11 @@ func (s *CreateCloudPhoneNodeShrinkRequest) SetBandwidthPackageType(v string) *C
 
 func (s *CreateCloudPhoneNodeShrinkRequest) SetBizRegionId(v string) *CreateCloudPhoneNodeShrinkRequest {
 	s.BizRegionId = &v
+	return s
+}
+
+func (s *CreateCloudPhoneNodeShrinkRequest) SetChannelCookie(v string) *CreateCloudPhoneNodeShrinkRequest {
+	s.ChannelCookie = &v
 	return s
 }
 

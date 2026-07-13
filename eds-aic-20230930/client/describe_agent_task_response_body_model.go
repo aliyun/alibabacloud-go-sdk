@@ -22,19 +22,19 @@ type iDescribeAgentTaskResponseBody interface {
 }
 
 type DescribeAgentTaskResponseBody struct {
-	// The status code.
+	// The API status code.
 	//
 	// example:
 	//
 	// For example, "200" indicates success.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The task count.
+	// The number of tasks.
 	//
 	// example:
 	//
 	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The response message.
+	// The message returned by the API.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DescribeAgentTaskResponseBody struct {
 	//
 	// 310A783E-CC46-5452-A8A3-71AE5DB5****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of tasks.
+	// The list of tasks.
 	Tasks []*DescribeAgentTaskResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
@@ -117,29 +117,31 @@ func (s *DescribeAgentTaskResponseBody) Validate() error {
 }
 
 type DescribeAgentTaskResponseBodyTasks struct {
-	// The task\\"s current status. Valid values:
+	// The current status of the task. Valid values:
 	//
-	// `PENDING`: The task is being created.
+	// PENDING: The task is being created.
 	//
-	// `RUNNING`: The task is running.
+	// RUNNING: The task is running.
 	//
-	// `COMPLETED`: The task has completed.
+	// COMPLETED: The task is completed.
 	//
-	// `FAILED`: The task failed.
+	// FAILED: The task failed.
 	//
-	// `TIMEOUT`: The task timed out.
+	// TIMEOUT: The task execution timed out.
 	//
 	// example:
 	//
 	// COMPLETED
 	CurrentStatus *string `json:"CurrentStatus,omitempty" xml:"CurrentStatus,omitempty"`
-	// The mobile node ID.
+	DigestSource  *string `json:"DigestSource,omitempty" xml:"DigestSource,omitempty"`
+	// The Mobile node ID.
 	//
 	// example:
 	//
 	// acp-anzzuho371azi44xr
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The task\\"s creation time, in ISO 8601 format.
+	Reason     *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The time when the task was created, in ISO 8601 format.
 	//
 	// example:
 	//
@@ -150,26 +152,27 @@ type DescribeAgentTaskResponseBodyTasks struct {
 	// example:
 	//
 	// 30
-	Steps *string `json:"Steps,omitempty" xml:"Steps,omitempty"`
-	// The task duration. This field is returned only when `CurrentStatus` is `FAILED` or `COMPLETED`.
+	Steps      *string `json:"Steps,omitempty" xml:"Steps,omitempty"`
+	TaskDigest *string `json:"TaskDigest,omitempty" xml:"TaskDigest,omitempty"`
+	// The task duration. This field is returned only when CurrentStatus is FAILED or COMPLETED.
 	//
 	// example:
 	//
 	// 50
 	TaskDuration *string `json:"TaskDuration,omitempty" xml:"TaskDuration,omitempty"`
-	// The globally unique task ID.
+	// The task ID, which is globally unique.
 	//
 	// example:
 	//
 	// t-imr0fufqd7cle****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The task result. This field is returned only when `CurrentStatus` is `COMPLETED` or `FAILED`.
+	// The task result in the desired state. This field is returned only when CurrentStatus is COMPLETED or FAILED.
 	//
 	// example:
 	//
 	// Download DingTalk succeeded.
 	TaskResult *string `json:"TaskResult,omitempty" xml:"TaskResult,omitempty"`
-	// The user prompt that the Agent uses to perform the task.
+	// The user instruction in natural language. The Agent performs operations based on this instruction.
 	//
 	// example:
 	//
@@ -189,8 +192,16 @@ func (s *DescribeAgentTaskResponseBodyTasks) GetCurrentStatus() *string {
 	return s.CurrentStatus
 }
 
+func (s *DescribeAgentTaskResponseBodyTasks) GetDigestSource() *string {
+	return s.DigestSource
+}
+
 func (s *DescribeAgentTaskResponseBodyTasks) GetInstanceId() *string {
 	return s.InstanceId
+}
+
+func (s *DescribeAgentTaskResponseBodyTasks) GetReason() *string {
+	return s.Reason
 }
 
 func (s *DescribeAgentTaskResponseBodyTasks) GetRunningAt() *string {
@@ -199,6 +210,10 @@ func (s *DescribeAgentTaskResponseBodyTasks) GetRunningAt() *string {
 
 func (s *DescribeAgentTaskResponseBodyTasks) GetSteps() *string {
 	return s.Steps
+}
+
+func (s *DescribeAgentTaskResponseBodyTasks) GetTaskDigest() *string {
+	return s.TaskDigest
 }
 
 func (s *DescribeAgentTaskResponseBodyTasks) GetTaskDuration() *string {
@@ -222,8 +237,18 @@ func (s *DescribeAgentTaskResponseBodyTasks) SetCurrentStatus(v string) *Describ
 	return s
 }
 
+func (s *DescribeAgentTaskResponseBodyTasks) SetDigestSource(v string) *DescribeAgentTaskResponseBodyTasks {
+	s.DigestSource = &v
+	return s
+}
+
 func (s *DescribeAgentTaskResponseBodyTasks) SetInstanceId(v string) *DescribeAgentTaskResponseBodyTasks {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeAgentTaskResponseBodyTasks) SetReason(v string) *DescribeAgentTaskResponseBodyTasks {
+	s.Reason = &v
 	return s
 }
 
@@ -234,6 +259,11 @@ func (s *DescribeAgentTaskResponseBodyTasks) SetRunningAt(v string) *DescribeAge
 
 func (s *DescribeAgentTaskResponseBodyTasks) SetSteps(v string) *DescribeAgentTaskResponseBodyTasks {
 	s.Steps = &v
+	return s
+}
+
+func (s *DescribeAgentTaskResponseBodyTasks) SetTaskDigest(v string) *DescribeAgentTaskResponseBodyTasks {
+	s.TaskDigest = &v
 	return s
 }
 

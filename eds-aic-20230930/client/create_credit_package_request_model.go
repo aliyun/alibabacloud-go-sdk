@@ -11,8 +11,12 @@ type iCreateCreditPackageRequest interface {
 	GoString() string
 	SetAutoPay(v bool) *CreateCreditPackageRequest
 	GetAutoPay() *bool
+	SetChannelCookie(v string) *CreateCreditPackageRequest
+	GetChannelCookie() *string
 	SetCreditAmount(v string) *CreateCreditPackageRequest
 	GetCreditAmount() *string
+	SetPackageAmount(v string) *CreateCreditPackageRequest
+	GetPackageAmount() *string
 	SetPeriod(v int32) *CreateCreditPackageRequest
 	GetPeriod() *int32
 	SetPeriodUnit(v string) *CreateCreditPackageRequest
@@ -22,43 +26,48 @@ type iCreateCreditPackageRequest interface {
 }
 
 type CreateCreditPackageRequest struct {
-	// Whether to enable auto-payment. Valid values:
+	// Specifies whether to enable automatic payment. Valid values:
 	//
-	// - **true**: Enables auto-payment. Make sure that your account has a sufficient balance.
+	// - **true**: enables automatic payment. Make sure that your account balance is sufficient.
 	//
-	// - **false*	- (Default): Creates an unpaid order.
+	// - **false*	- (default): generates an order without charging your account.
 	//
-	// > If your account has an insufficient balance, you can set this parameter to false. This generates an unpaid order. You can then pay for the order in the Wuying Cloud Phone management console.
+	//
+	//
+	//
+	// > If your payment method has an insufficient balance, set this parameter to false. An unpaid order is generated, and you can log on to the Elastic Cloud Phone console to complete the payment.
 	//
 	// example:
 	//
 	// false
-	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoPay       *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	ChannelCookie *string `json:"ChannelCookie,omitempty" xml:"ChannelCookie,omitempty"`
 	// The number of credits.
 	//
 	// example:
 	//
 	// 1000
-	CreditAmount *string `json:"CreditAmount,omitempty" xml:"CreditAmount,omitempty"`
-	// The subscription duration. The PeriodUnit parameter specifies the unit for the duration.
+	CreditAmount  *string `json:"CreditAmount,omitempty" xml:"CreditAmount,omitempty"`
+	PackageAmount *string `json:"PackageAmount,omitempty" xml:"PackageAmount,omitempty"`
+	// The duration for which you want to purchase the resource. The unit is specified by PeriodUnit.
 	//
 	// example:
 	//
 	// 6
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the subscription duration.
+	// The unit of the duration for which you want to purchase the resource.
 	//
 	// Valid values:
 	//
-	// - **Month**: The period is measured in months.
+	// - **Month**: month.
 	//
-	// - **Year**: The period is measured in years.
+	// - **Year**: year.
 	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The promotion ID.
+	// The ID of the promotional campaign.
 	//
 	// example:
 	//
@@ -78,8 +87,16 @@ func (s *CreateCreditPackageRequest) GetAutoPay() *bool {
 	return s.AutoPay
 }
 
+func (s *CreateCreditPackageRequest) GetChannelCookie() *string {
+	return s.ChannelCookie
+}
+
 func (s *CreateCreditPackageRequest) GetCreditAmount() *string {
 	return s.CreditAmount
+}
+
+func (s *CreateCreditPackageRequest) GetPackageAmount() *string {
+	return s.PackageAmount
 }
 
 func (s *CreateCreditPackageRequest) GetPeriod() *int32 {
@@ -99,8 +116,18 @@ func (s *CreateCreditPackageRequest) SetAutoPay(v bool) *CreateCreditPackageRequ
 	return s
 }
 
+func (s *CreateCreditPackageRequest) SetChannelCookie(v string) *CreateCreditPackageRequest {
+	s.ChannelCookie = &v
+	return s
+}
+
 func (s *CreateCreditPackageRequest) SetCreditAmount(v string) *CreateCreditPackageRequest {
 	s.CreditAmount = &v
+	return s
+}
+
+func (s *CreateCreditPackageRequest) SetPackageAmount(v string) *CreateCreditPackageRequest {
+	s.PackageAmount = &v
 	return s
 }
 
