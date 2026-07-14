@@ -13,6 +13,10 @@ type iCommercializeFetchRequest interface {
 	GetChannelId() *string
 	SetData(v string) *CommercializeFetchRequest
 	GetData() *string
+	SetEncryptType(v string) *CommercializeFetchRequest
+	GetEncryptType() *string
+	SetEnv(v string) *CommercializeFetchRequest
+	GetEnv() *string
 	SetProductId(v string) *CommercializeFetchRequest
 	GetProductId() *string
 	SetRequestId(v string) *CommercializeFetchRequest
@@ -21,6 +25,8 @@ type iCommercializeFetchRequest interface {
 	GetSecretKey() *string
 	SetSign(v string) *CommercializeFetchRequest
 	GetSign() *string
+	SetSignType(v string) *CommercializeFetchRequest
+	GetSignType() *string
 }
 
 type CommercializeFetchRequest struct {
@@ -28,6 +34,11 @@ type CommercializeFetchRequest struct {
 	ChannelId *string `json:"channelId,omitempty" xml:"channelId,omitempty"`
 	// This parameter is required.
 	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// AES
+	EncryptType *string `json:"encryptType,omitempty" xml:"encryptType,omitempty"`
+	Env         *string `json:"env,omitempty" xml:"env,omitempty"`
 	// This parameter is required.
 	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
 	// This parameter is required.
@@ -36,6 +47,10 @@ type CommercializeFetchRequest struct {
 	SecretKey *string `json:"secretKey,omitempty" xml:"secretKey,omitempty"`
 	// This parameter is required.
 	Sign *string `json:"sign,omitempty" xml:"sign,omitempty"`
+	// example:
+	//
+	// RSA
+	SignType *string `json:"signType,omitempty" xml:"signType,omitempty"`
 }
 
 func (s CommercializeFetchRequest) String() string {
@@ -54,6 +69,14 @@ func (s *CommercializeFetchRequest) GetData() *string {
 	return s.Data
 }
 
+func (s *CommercializeFetchRequest) GetEncryptType() *string {
+	return s.EncryptType
+}
+
+func (s *CommercializeFetchRequest) GetEnv() *string {
+	return s.Env
+}
+
 func (s *CommercializeFetchRequest) GetProductId() *string {
 	return s.ProductId
 }
@@ -70,6 +93,10 @@ func (s *CommercializeFetchRequest) GetSign() *string {
 	return s.Sign
 }
 
+func (s *CommercializeFetchRequest) GetSignType() *string {
+	return s.SignType
+}
+
 func (s *CommercializeFetchRequest) SetChannelId(v string) *CommercializeFetchRequest {
 	s.ChannelId = &v
 	return s
@@ -77,6 +104,16 @@ func (s *CommercializeFetchRequest) SetChannelId(v string) *CommercializeFetchRe
 
 func (s *CommercializeFetchRequest) SetData(v string) *CommercializeFetchRequest {
 	s.Data = &v
+	return s
+}
+
+func (s *CommercializeFetchRequest) SetEncryptType(v string) *CommercializeFetchRequest {
+	s.EncryptType = &v
+	return s
+}
+
+func (s *CommercializeFetchRequest) SetEnv(v string) *CommercializeFetchRequest {
+	s.Env = &v
 	return s
 }
 
@@ -97,6 +134,11 @@ func (s *CommercializeFetchRequest) SetSecretKey(v string) *CommercializeFetchRe
 
 func (s *CommercializeFetchRequest) SetSign(v string) *CommercializeFetchRequest {
 	s.Sign = &v
+	return s
+}
+
+func (s *CommercializeFetchRequest) SetSignType(v string) *CommercializeFetchRequest {
+	s.SignType = &v
 	return s
 }
 

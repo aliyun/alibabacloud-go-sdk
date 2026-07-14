@@ -36,6 +36,14 @@ func (client *Client) CommercializeFetchWithContext(ctx context.Context, workspa
 		body["data"] = request.Data
 	}
 
+	if !dara.IsNil(request.EncryptType) {
+		body["encryptType"] = request.EncryptType
+	}
+
+	if !dara.IsNil(request.Env) {
+		body["env"] = request.Env
+	}
+
 	if !dara.IsNil(request.ProductId) {
 		body["productId"] = request.ProductId
 	}
@@ -50,6 +58,10 @@ func (client *Client) CommercializeFetchWithContext(ctx context.Context, workspa
 
 	if !dara.IsNil(request.Sign) {
 		body["sign"] = request.Sign
+	}
+
+	if !dara.IsNil(request.SignType) {
+		body["signType"] = request.SignType
 	}
 
 	req := &openapiutil.OpenApiRequest{

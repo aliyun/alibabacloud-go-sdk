@@ -168,6 +168,14 @@ func (client *Client) CommercializeFetchWithOptions(workspaceId *string, cjfCode
 		body["data"] = request.Data
 	}
 
+	if !dara.IsNil(request.EncryptType) {
+		body["encryptType"] = request.EncryptType
+	}
+
+	if !dara.IsNil(request.Env) {
+		body["env"] = request.Env
+	}
+
 	if !dara.IsNil(request.ProductId) {
 		body["productId"] = request.ProductId
 	}
@@ -182,6 +190,10 @@ func (client *Client) CommercializeFetchWithOptions(workspaceId *string, cjfCode
 
 	if !dara.IsNil(request.Sign) {
 		body["sign"] = request.Sign
+	}
+
+	if !dara.IsNil(request.SignType) {
+		body["signType"] = request.SignType
 	}
 
 	req := &openapiutil.OpenApiRequest{
