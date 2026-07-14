@@ -19,6 +19,10 @@ type iNotifyConfigUnified interface {
 	GetChannels() []*DirectNotifyChannel
 	SetNotifyStrategies(v []*string) *NotifyConfigUnified
 	GetNotifyStrategies() []*string
+	SetSendRecoverNotification(v bool) *NotifyConfigUnified
+	GetSendRecoverNotification() *bool
+	SetSeverityChannels(v map[string]*SeverityNotifyConfig) *NotifyConfigUnified
+	GetSeverityChannels() map[string]*SeverityNotifyConfig
 	SetSilenceTimeSecs(v int32) *NotifyConfigUnified
 	GetSilenceTimeSecs() *int32
 	SetType(v string) *NotifyConfigUnified
@@ -28,12 +32,14 @@ type iNotifyConfigUnified interface {
 }
 
 type NotifyConfigUnified struct {
-	ActiveDays       []*int32               `json:"activeDays,omitempty" xml:"activeDays,omitempty" type:"Repeated"`
-	ActiveEndTime    *string                `json:"activeEndTime,omitempty" xml:"activeEndTime,omitempty"`
-	ActiveStartTime  *string                `json:"activeStartTime,omitempty" xml:"activeStartTime,omitempty"`
-	Channels         []*DirectNotifyChannel `json:"channels,omitempty" xml:"channels,omitempty" type:"Repeated"`
-	NotifyStrategies []*string              `json:"notifyStrategies,omitempty" xml:"notifyStrategies,omitempty" type:"Repeated"`
-	SilenceTimeSecs  *int32                 `json:"silenceTimeSecs,omitempty" xml:"silenceTimeSecs,omitempty"`
+	ActiveDays              []*int32                         `json:"activeDays,omitempty" xml:"activeDays,omitempty" type:"Repeated"`
+	ActiveEndTime           *string                          `json:"activeEndTime,omitempty" xml:"activeEndTime,omitempty"`
+	ActiveStartTime         *string                          `json:"activeStartTime,omitempty" xml:"activeStartTime,omitempty"`
+	Channels                []*DirectNotifyChannel           `json:"channels,omitempty" xml:"channels,omitempty" type:"Repeated"`
+	NotifyStrategies        []*string                        `json:"notifyStrategies,omitempty" xml:"notifyStrategies,omitempty" type:"Repeated"`
+	SendRecoverNotification *bool                            `json:"sendRecoverNotification,omitempty" xml:"sendRecoverNotification,omitempty"`
+	SeverityChannels        map[string]*SeverityNotifyConfig `json:"severityChannels,omitempty" xml:"severityChannels,omitempty"`
+	SilenceTimeSecs         *int32                           `json:"silenceTimeSecs,omitempty" xml:"silenceTimeSecs,omitempty"`
 	// This parameter is required.
 	Type      *string `json:"type,omitempty" xml:"type,omitempty"`
 	UtcOffset *string `json:"utcOffset,omitempty" xml:"utcOffset,omitempty"`
@@ -65,6 +71,14 @@ func (s *NotifyConfigUnified) GetChannels() []*DirectNotifyChannel {
 
 func (s *NotifyConfigUnified) GetNotifyStrategies() []*string {
 	return s.NotifyStrategies
+}
+
+func (s *NotifyConfigUnified) GetSendRecoverNotification() *bool {
+	return s.SendRecoverNotification
+}
+
+func (s *NotifyConfigUnified) GetSeverityChannels() map[string]*SeverityNotifyConfig {
+	return s.SeverityChannels
 }
 
 func (s *NotifyConfigUnified) GetSilenceTimeSecs() *int32 {
@@ -101,6 +115,16 @@ func (s *NotifyConfigUnified) SetChannels(v []*DirectNotifyChannel) *NotifyConfi
 
 func (s *NotifyConfigUnified) SetNotifyStrategies(v []*string) *NotifyConfigUnified {
 	s.NotifyStrategies = v
+	return s
+}
+
+func (s *NotifyConfigUnified) SetSendRecoverNotification(v bool) *NotifyConfigUnified {
+	s.SendRecoverNotification = &v
+	return s
+}
+
+func (s *NotifyConfigUnified) SetSeverityChannels(v map[string]*SeverityNotifyConfig) *NotifyConfigUnified {
+	s.SeverityChannels = v
 	return s
 }
 

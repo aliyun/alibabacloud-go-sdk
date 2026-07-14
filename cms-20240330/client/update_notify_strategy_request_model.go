@@ -16,9 +16,9 @@ type iUpdateNotifyStrategyRequest interface {
 }
 
 type UpdateNotifyStrategyRequest struct {
-	// The request body.
+	// The request body parameters.
 	Body *NotifyStrategyForModify `json:"body,omitempty" xml:"body,omitempty"`
-	// The name of the workspace.
+	// The workspace name.
 	//
 	// example:
 	//

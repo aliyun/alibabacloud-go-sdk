@@ -22,7 +22,7 @@ type UpdateNotifyStrategyResponseBody struct {
 	//
 	// 12312-31-23-123-1-23123
 	NotifyStrategyId *string `json:"notifyStrategyId,omitempty" xml:"notifyStrategyId,omitempty"`
-	// The ID of the request. This is a unique identifier for troubleshooting.
+	// The unique ID of the request, which is used for troubleshooting.
 	//
 	// example:
 	//

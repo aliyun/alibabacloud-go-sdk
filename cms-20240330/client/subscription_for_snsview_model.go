@@ -23,6 +23,8 @@ type iSubscriptionForSNSView interface {
 	GetNotifyStrategyUuid() *string
 	SetRegionId(v string) *SubscriptionForSNSView
 	GetRegionId() *string
+	SetSubscribeLegacyEvent(v bool) *SubscriptionForSNSView
+	GetSubscribeLegacyEvent() *bool
 	SetSubscriptionType(v string) *SubscriptionForSNSView
 	GetSubscriptionType() *string
 	SetSyncFromType(v string) *SubscriptionForSNSView
@@ -40,13 +42,15 @@ type iSubscriptionForSNSView interface {
 }
 
 type SubscriptionForSNSView struct {
-	CreateTime             *string                 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Enable                 *bool                   `json:"enable,omitempty" xml:"enable,omitempty"`
-	FilterSetting          *FilterSetting          `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
-	Mode                   *string                 `json:"mode,omitempty" xml:"mode,omitempty"`
-	Name                   *string                 `json:"name,omitempty" xml:"name,omitempty"`
-	NotifyStrategyUuid     *string                 `json:"notifyStrategyUuid,omitempty" xml:"notifyStrategyUuid,omitempty"`
-	RegionId               *string                 `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	CreateTime         *string        `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Enable             *bool          `json:"enable,omitempty" xml:"enable,omitempty"`
+	FilterSetting      *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
+	Mode               *string        `json:"mode,omitempty" xml:"mode,omitempty"`
+	Name               *string        `json:"name,omitempty" xml:"name,omitempty"`
+	NotifyStrategyUuid *string        `json:"notifyStrategyUuid,omitempty" xml:"notifyStrategyUuid,omitempty"`
+	RegionId           *string        `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// Specifies whether to subscribe to legacy product events (CMS 1.0, ARMS, or SLS events where workspace=null). Valid values: true: subscribed. false or null: not subscribed.
+	SubscribeLegacyEvent   *bool                   `json:"subscribeLegacyEvent,omitempty" xml:"subscribeLegacyEvent,omitempty"`
 	SubscriptionType       *string                 `json:"subscriptionType,omitempty" xml:"subscriptionType,omitempty"`
 	SyncFromType           *string                 `json:"syncFromType,omitempty" xml:"syncFromType,omitempty"`
 	UpdateTime             *string                 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
@@ -90,6 +94,10 @@ func (s *SubscriptionForSNSView) GetNotifyStrategyUuid() *string {
 
 func (s *SubscriptionForSNSView) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *SubscriptionForSNSView) GetSubscribeLegacyEvent() *bool {
+	return s.SubscribeLegacyEvent
 }
 
 func (s *SubscriptionForSNSView) GetSubscriptionType() *string {
@@ -152,6 +160,11 @@ func (s *SubscriptionForSNSView) SetNotifyStrategyUuid(v string) *SubscriptionFo
 
 func (s *SubscriptionForSNSView) SetRegionId(v string) *SubscriptionForSNSView {
 	s.RegionId = &v
+	return s
+}
+
+func (s *SubscriptionForSNSView) SetSubscribeLegacyEvent(v bool) *SubscriptionForSNSView {
+	s.SubscribeLegacyEvent = &v
 	return s
 }
 

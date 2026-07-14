@@ -44,38 +44,22 @@ type iNotifyStrategyForSNSView interface {
 }
 
 type NotifyStrategyForSNSView struct {
-	// The creation time of the notification strategy.
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The list of custom templates.
-	CustomTemplateEntries []*NotifyStrategyForSNSViewCustomTemplateEntries `json:"customTemplateEntries,omitempty" xml:"customTemplateEntries,omitempty" type:"Repeated"`
-	// The description of the notification strategy.
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Specifies whether to enable the notification strategy. Valid values: true, false.
-	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// Specifies whether to enable incident management. Valid values: true, false.
-	EnableIncidentManagement *bool `json:"enableIncidentManagement,omitempty" xml:"enableIncidentManagement,omitempty"`
-	// The settings for alert grouping.
-	GroupingSetting *NotifyStrategyForSNSViewGroupingSetting `json:"groupingSetting,omitempty" xml:"groupingSetting,omitempty" type:"Struct"`
-	// Specifies whether to ignore notifications for restored alerts. Valid values: true, false.
-	IgnoreRestoredNotification *bool `json:"ignoreRestoredNotification,omitempty" xml:"ignoreRestoredNotification,omitempty"`
-	// The ID of the incident response plan.
-	IncidentResponsePlanId *string `json:"incidentResponsePlanId,omitempty" xml:"incidentResponsePlanId,omitempty"`
-	// The mode of the notification strategy.
-	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
-	// The ID of the notification strategy.
-	NotifyStrategyId *string `json:"notifyStrategyId,omitempty" xml:"notifyStrategyId,omitempty"`
-	// The name of the notification strategy.
-	NotifyStrategyName *string `json:"notifyStrategyName,omitempty" xml:"notifyStrategyName,omitempty"`
-	// The list of notification routes.
-	Routes []*NotifyStrategyForSNSViewRoutes `json:"routes,omitempty" xml:"routes,omitempty" type:"Repeated"`
-	// The source from which the strategy is synchronized.
-	SyncFromType *string `json:"syncFromType,omitempty" xml:"syncFromType,omitempty"`
-	// The last update time of the notification strategy.
-	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// The user ID.
-	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	// The workspace to which the notification strategy belongs.
-	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	CreateTime                 *string                                          `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	CustomTemplateEntries      []*NotifyStrategyForSNSViewCustomTemplateEntries `json:"customTemplateEntries,omitempty" xml:"customTemplateEntries,omitempty" type:"Repeated"`
+	Description                *string                                          `json:"description,omitempty" xml:"description,omitempty"`
+	Enable                     *bool                                            `json:"enable,omitempty" xml:"enable,omitempty"`
+	EnableIncidentManagement   *bool                                            `json:"enableIncidentManagement,omitempty" xml:"enableIncidentManagement,omitempty"`
+	GroupingSetting            *NotifyStrategyForSNSViewGroupingSetting         `json:"groupingSetting,omitempty" xml:"groupingSetting,omitempty" type:"Struct"`
+	IgnoreRestoredNotification *bool                                            `json:"ignoreRestoredNotification,omitempty" xml:"ignoreRestoredNotification,omitempty"`
+	IncidentResponsePlanId     *string                                          `json:"incidentResponsePlanId,omitempty" xml:"incidentResponsePlanId,omitempty"`
+	Mode                       *string                                          `json:"mode,omitempty" xml:"mode,omitempty"`
+	NotifyStrategyId           *string                                          `json:"notifyStrategyId,omitempty" xml:"notifyStrategyId,omitempty"`
+	NotifyStrategyName         *string                                          `json:"notifyStrategyName,omitempty" xml:"notifyStrategyName,omitempty"`
+	Routes                     []*NotifyStrategyForSNSViewRoutes                `json:"routes,omitempty" xml:"routes,omitempty" type:"Repeated"`
+	SyncFromType               *string                                          `json:"syncFromType,omitempty" xml:"syncFromType,omitempty"`
+	UpdateTime                 *string                                          `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	UserId                     *string                                          `json:"userId,omitempty" xml:"userId,omitempty"`
+	Workspace                  *string                                          `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s NotifyStrategyForSNSView) String() string {
@@ -258,9 +242,7 @@ func (s *NotifyStrategyForSNSView) Validate() error {
 }
 
 type NotifyStrategyForSNSViewCustomTemplateEntries struct {
-	// The target type for the custom template.
-	TargetType *string `json:"targetType,omitempty" xml:"targetType,omitempty"`
-	// The unique identifier (UUID) of the template.
+	TargetType   *string `json:"targetType,omitempty" xml:"targetType,omitempty"`
 	TemplateUuid *string `json:"templateUuid,omitempty" xml:"templateUuid,omitempty"`
 }
 
@@ -295,14 +277,10 @@ func (s *NotifyStrategyForSNSViewCustomTemplateEntries) Validate() error {
 }
 
 type NotifyStrategyForSNSViewGroupingSetting struct {
-	// The keys for grouping alerts.
 	GroupingKeys []*string `json:"groupingKeys,omitempty" xml:"groupingKeys,omitempty" type:"Repeated"`
-	// The time window in minutes for grouping alerts.
-	PeriodMin *int32 `json:"periodMin,omitempty" xml:"periodMin,omitempty"`
-	// The silence period in seconds after a notification is sent for a group.
-	SilenceSec *int32 `json:"silenceSec,omitempty" xml:"silenceSec,omitempty"`
-	// The number of times to send notifications for a group.
-	Times *int32 `json:"times,omitempty" xml:"times,omitempty"`
+	PeriodMin    *int32    `json:"periodMin,omitempty" xml:"periodMin,omitempty"`
+	SilenceSec   *int32    `json:"silenceSec,omitempty" xml:"silenceSec,omitempty"`
+	Times        *int32    `json:"times,omitempty" xml:"times,omitempty"`
 }
 
 func (s NotifyStrategyForSNSViewGroupingSetting) String() string {
@@ -354,18 +332,12 @@ func (s *NotifyStrategyForSNSViewGroupingSetting) Validate() error {
 }
 
 type NotifyStrategyForSNSViewRoutes struct {
-	// The notification channels for the route.
-	Channels []*NotifyStrategyForSNSViewRoutesChannels `json:"channels,omitempty" xml:"channels,omitempty" type:"Repeated"`
-	// The name of the digital employee assigned to this route.
-	DigitalEmployeeName *string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
-	// The time range during which the notification route is active.
-	EffectTimeRange *NotifyStrategyForSNSViewRoutesEffectTimeRange `json:"effectTimeRange,omitempty" xml:"effectTimeRange,omitempty" type:"Struct"`
-	// Specifies whether to enable root cause analysis (RCA) for alerts that match this route. Valid values: true, false.
-	EnableRca *bool `json:"enableRca,omitempty" xml:"enableRca,omitempty"`
-	// The filter settings for the route.
-	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
-	// The alert severities that trigger this route.
-	Severities []*string `json:"severities,omitempty" xml:"severities,omitempty" type:"Repeated"`
+	Channels            []*NotifyStrategyForSNSViewRoutesChannels      `json:"channels,omitempty" xml:"channels,omitempty" type:"Repeated"`
+	DigitalEmployeeName *string                                        `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
+	EffectTimeRange     *NotifyStrategyForSNSViewRoutesEffectTimeRange `json:"effectTimeRange,omitempty" xml:"effectTimeRange,omitempty" type:"Struct"`
+	EnableRca           *bool                                          `json:"enableRca,omitempty" xml:"enableRca,omitempty"`
+	FilterSetting       *FilterSetting                                 `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
+	Severities          []*string                                      `json:"severities,omitempty" xml:"severities,omitempty" type:"Repeated"`
 }
 
 func (s NotifyStrategyForSNSViewRoutes) String() string {
@@ -454,12 +426,9 @@ func (s *NotifyStrategyForSNSViewRoutes) Validate() error {
 }
 
 type NotifyStrategyForSNSViewRoutesChannels struct {
-	// The type of the notification channel, such as \\"sms\\" or \\"email\\".
-	ChannelType *string `json:"channelType,omitempty" xml:"channelType,omitempty"`
-	// The enabled sub-channels.
+	ChannelType        *string   `json:"channelType,omitempty" xml:"channelType,omitempty"`
 	EnabledSubChannels []*string `json:"enabledSubChannels,omitempty" xml:"enabledSubChannels,omitempty" type:"Repeated"`
-	// The list of receivers for the channel.
-	Receivers []*string `json:"receivers,omitempty" xml:"receivers,omitempty" type:"Repeated"`
+	Receivers          []*string `json:"receivers,omitempty" xml:"receivers,omitempty" type:"Repeated"`
 }
 
 func (s NotifyStrategyForSNSViewRoutesChannels) String() string {
@@ -502,14 +471,10 @@ func (s *NotifyStrategyForSNSViewRoutesChannels) Validate() error {
 }
 
 type NotifyStrategyForSNSViewRoutesEffectTimeRange struct {
-	// The days of the week when the route is active.
-	DayInWeek []*int32 `json:"dayInWeek,omitempty" xml:"dayInWeek,omitempty" type:"Repeated"`
-	// The end time of the active period, specified in minutes from 00:00.
-	EndTimeInMinute *int32 `json:"endTimeInMinute,omitempty" xml:"endTimeInMinute,omitempty"`
-	// The start time of the active period, specified in minutes from 00:00.
-	StartTimeInMinute *int32 `json:"startTimeInMinute,omitempty" xml:"startTimeInMinute,omitempty"`
-	// The time zone for the active period. For example, \\"Asia/Shanghai\\".
-	TimeZone *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
+	DayInWeek         []*int32 `json:"dayInWeek,omitempty" xml:"dayInWeek,omitempty" type:"Repeated"`
+	EndTimeInMinute   *int32   `json:"endTimeInMinute,omitempty" xml:"endTimeInMinute,omitempty"`
+	StartTimeInMinute *int32   `json:"startTimeInMinute,omitempty" xml:"startTimeInMinute,omitempty"`
+	TimeZone          *string  `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
 }
 
 func (s NotifyStrategyForSNSViewRoutesEffectTimeRange) String() string {

@@ -24,18 +24,11 @@ type iDatasourceConfigUnified interface {
 }
 
 type DatasourceConfigUnified struct {
-	// The unique instance ID.
-	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The raw string value of the legacy configuration, used for backward compatibility.
-	LegacyRaw *string `json:"legacyRaw,omitempty" xml:"legacyRaw,omitempty"`
-	// The legacy type of the data source, used for backward compatibility.
-	LegacyType *string `json:"legacyType,omitempty" xml:"legacyType,omitempty"`
-	// The product category of the data source.
+	InstanceId      *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	LegacyRaw       *string `json:"legacyRaw,omitempty" xml:"legacyRaw,omitempty"`
+	LegacyType      *string `json:"legacyType,omitempty" xml:"legacyType,omitempty"`
 	ProductCategory *string `json:"productCategory,omitempty" xml:"productCategory,omitempty"`
-	// The region ID.
-	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The type of the data source.
-	//
+	RegionId        *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	// This parameter is required.
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }

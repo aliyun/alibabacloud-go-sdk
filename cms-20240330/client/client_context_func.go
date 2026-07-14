@@ -1004,6 +1004,58 @@ func (client *Client) CreateMemoryStoreWithContext(ctx context.Context, workspac
 
 // Summary:
 //
+// Creates a notification policy.
+//
+// Description:
+//
+// Creates a notification policy in a specified workspace. The notifyStrategy field in the request body NotifyPolicyConfig is required, while subscription and responsePlan are optional. After the policy is created, the generated policy UUID and complete policy details are returned. If a policy with the same Policy Name already exists in the workspace, a ConflictName error is returned.
+//
+// @param request - CreateNotifyPolicyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateNotifyPolicyResponse
+func (client *Client) CreateNotifyPolicyWithContext(ctx context.Context, request *CreateNotifyPolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateNotifyPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Workspace) {
+		query["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateNotifyPolicy"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/eventbase/notify-policy/create"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateNotifyPolicyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Create a pipeline.
 //
 // @param request - CreatePipelineRequest
@@ -2289,6 +2341,61 @@ func (client *Client) DeleteMemoryStoreWithContext(ctx context.Context, workspac
 
 // Summary:
 //
+// Deletes a notification policy in a specified workspace. After deletion, the policy no longer sends notifications for subscribed events.
+//
+// Description:
+//
+// Deletes a notification policy by specifying the workspace and uuid. Returns success to indicate the deletion result and the uuid of the deleted policy.
+//
+// @param request - DeleteNotifyPolicyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteNotifyPolicyResponse
+func (client *Client) DeleteNotifyPolicyWithContext(ctx context.Context, request *DeleteNotifyPolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteNotifyPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Uuid) {
+		query["uuid"] = request.Uuid
+	}
+
+	if !dara.IsNil(request.Workspace) {
+		query["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteNotifyPolicy"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/eventbase/notify-policy"),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteNotifyPolicyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a pipeline.
 //
 // @param request - DeletePipelineRequest
@@ -2863,6 +2970,108 @@ func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *D
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRegionsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Disables a specified notification policy. After the policy is disabled, notifications are paused but all configurations are retained. The policy can be re-enabled.
+//
+// Description:
+//
+// Disables a notification policy by specifying the workspace and uuid (path parameter). Returns success and the policy uuid.
+//
+// @param request - DisableNotifyPolicyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableNotifyPolicyResponse
+func (client *Client) DisableNotifyPolicyWithContext(ctx context.Context, uuid *string, request *DisableNotifyPolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DisableNotifyPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Workspace) {
+		query["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableNotifyPolicy"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/eventbase/notify-policy/" + dara.PercentEncode(dara.StringValue(uuid)) + "/disable"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableNotifyPolicyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables a disabled notification policy in a specified workspace. After the policy is enabled, it resumes sending notifications for subscribed events.
+//
+// Description:
+//
+// Enables a notification policy by specifying the workspace and uuid path parameters. Returns success and the policy uuid.
+//
+// @param request - EnableNotifyPolicyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableNotifyPolicyResponse
+func (client *Client) EnableNotifyPolicyWithContext(ctx context.Context, uuid *string, request *EnableNotifyPolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *EnableNotifyPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Workspace) {
+		query["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableNotifyPolicy"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/eventbase/notify-policy/" + dara.PercentEncode(dara.StringValue(uuid)) + "/enable"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableNotifyPolicyResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3944,6 +4153,61 @@ func (client *Client) GetMemoryStoreWithContext(ctx context.Context, workspace *
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetMemoryStoreResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of a specified notification policy.
+//
+// Description:
+//
+// Queries a specified notification policy by workspace and UUID. If the UUID does not exist, a ResourceNotFound error is returned.
+//
+// @param request - GetNotifyPolicyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetNotifyPolicyResponse
+func (client *Client) GetNotifyPolicyWithContext(ctx context.Context, request *GetNotifyPolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetNotifyPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Uuid) {
+		query["uuid"] = request.Uuid
+	}
+
+	if !dara.IsNil(request.Workspace) {
+		query["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetNotifyPolicy"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/eventbase/notify-policy"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetNotifyPolicyResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5891,6 +6155,77 @@ func (client *Client) ListMemoryStoresWithContext(ctx context.Context, workspace
 
 // Summary:
 //
+// Lists notify policies.
+//
+// Description:
+//
+// Queries the list of notify policies in a specified workspace with paging. You can filter results by name using fuzzy match. The response contains a list of NotifyPolicySummary lightweight views.
+//
+// @param request - ListNotifyPoliciesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListNotifyPoliciesResponse
+func (client *Client) ListNotifyPoliciesWithContext(ctx context.Context, request *ListNotifyPoliciesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListNotifyPoliciesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.OrderBy) {
+		query["orderBy"] = request.OrderBy
+	}
+
+	if !dara.IsNil(request.OrderDesc) {
+		query["orderDesc"] = request.OrderDesc
+	}
+
+	if !dara.IsNil(request.Workspace) {
+		query["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListNotifyPolicies"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/eventbase/notify-policies"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListNotifyPoliciesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Lists pipelines.
 //
 // @param request - ListPipelinesRequest
@@ -7784,6 +8119,58 @@ func (client *Client) UpdateMemoryStoreWithContext(ctx context.Context, workspac
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateMemoryStoreResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a notification policy.
+//
+// Description:
+//
+// Updates a notification policy by workspace and body (containing uuid and version). The version field is an optimistic lock version number that must match the current record on the backend. Otherwise, OptimisticLockFailed is returned. After a successful update, the latest policy details are returned.
+//
+// @param request - UpdateNotifyPolicyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateNotifyPolicyResponse
+func (client *Client) UpdateNotifyPolicyWithContext(ctx context.Context, request *UpdateNotifyPolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateNotifyPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Workspace) {
+		query["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateNotifyPolicy"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/eventbase/notify-policy/update"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateNotifyPolicyResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

@@ -25,6 +25,10 @@ type iAlertRuleNotification interface {
 	GetNotifyTime() *AlertRuleTimeSpan
 	SetQwencloudContacts(v map[string]map[string]interface{}) *AlertRuleNotification
 	GetQwencloudContacts() map[string]map[string]interface{}
+	SetSendOk(v bool) *AlertRuleNotification
+	GetSendOk() *bool
+	SetSeverityNotifications(v map[string]*SeverityNotifyConfig) *AlertRuleNotification
+	GetSeverityNotifications() map[string]*SeverityNotifyConfig
 	SetSilenceTime(v int64) *AlertRuleNotification
 	GetSilenceTime() *int64
 	SetSlackWebhooks(v []*string) *AlertRuleNotification
@@ -34,30 +38,32 @@ type iAlertRuleNotification interface {
 }
 
 type AlertRuleNotification struct {
-	// A list of contact IDs.
+	// The list of contact IDs.
 	Contacts []*string `json:"contacts,omitempty" xml:"contacts,omitempty" type:"Repeated"`
-	// A list of custom webhook notification object IDs.
+	// The list of custom webhook Notification Recipient IDs.
 	CustomWebhooks []*string `json:"customWebhooks,omitempty" xml:"customWebhooks,omitempty" type:"Repeated"`
-	// A list of DingTalk Cool App webhook notification object IDs.
+	// The list of DingTalk Cool App webhook Notification Recipient IDs.
 	DingCoolAppWebhooks []*string `json:"dingCoolAppWebhooks,omitempty" xml:"dingCoolAppWebhooks,omitempty" type:"Repeated"`
-	// A list of DingTalk webhook notification object IDs.
+	// The list of DingTalk webhook Notification Recipient IDs.
 	DingWebhooks []*string `json:"dingWebhooks,omitempty" xml:"dingWebhooks,omitempty" type:"Repeated"`
-	// A list of Lark webhook notification object IDs.
+	// The list of Lark webhook Notification Recipient IDs.
 	FsWebhooks []*string `json:"fsWebhooks,omitempty" xml:"fsWebhooks,omitempty" type:"Repeated"`
-	// A list of contact group IDs.
+	// The list of contact group IDs.
 	Groups []*string `json:"groups,omitempty" xml:"groups,omitempty" type:"Repeated"`
-	// The notification period. Notifications are sent only within this period.
-	NotifyTime        *AlertRuleTimeSpan                `json:"notifyTime,omitempty" xml:"notifyTime,omitempty"`
-	QwencloudContacts map[string]map[string]interface{} `json:"qwencloudContacts,omitempty" xml:"qwencloudContacts,omitempty"`
-	// The notification silence period. Unit: seconds.
+	// The notification time period. Notifications are sent only during this time period.
+	NotifyTime            *AlertRuleTimeSpan                `json:"notifyTime,omitempty" xml:"notifyTime,omitempty"`
+	QwencloudContacts     map[string]map[string]interface{} `json:"qwencloudContacts,omitempty" xml:"qwencloudContacts,omitempty"`
+	SendOk                *bool                             `json:"sendOk,omitempty" xml:"sendOk,omitempty"`
+	SeverityNotifications map[string]*SeverityNotifyConfig  `json:"severityNotifications,omitempty" xml:"severityNotifications,omitempty"`
+	// The notification mute duration, in seconds.
 	//
 	// example:
 	//
 	// 86400
 	SilenceTime *int64 `json:"silenceTime,omitempty" xml:"silenceTime,omitempty"`
-	// A list of Slack webhook notification object IDs.
+	// The list of Slack webhook Notification Recipient IDs.
 	SlackWebhooks []*string `json:"slackWebhooks,omitempty" xml:"slackWebhooks,omitempty" type:"Repeated"`
-	// A list of WeChat webhook notification object IDs.
+	// The list of WeChat webhook Notification Recipient IDs.
 	WxWebhooks []*string `json:"wxWebhooks,omitempty" xml:"wxWebhooks,omitempty" type:"Repeated"`
 }
 
@@ -99,6 +105,14 @@ func (s *AlertRuleNotification) GetNotifyTime() *AlertRuleTimeSpan {
 
 func (s *AlertRuleNotification) GetQwencloudContacts() map[string]map[string]interface{} {
 	return s.QwencloudContacts
+}
+
+func (s *AlertRuleNotification) GetSendOk() *bool {
+	return s.SendOk
+}
+
+func (s *AlertRuleNotification) GetSeverityNotifications() map[string]*SeverityNotifyConfig {
+	return s.SeverityNotifications
 }
 
 func (s *AlertRuleNotification) GetSilenceTime() *int64 {
@@ -150,6 +164,16 @@ func (s *AlertRuleNotification) SetNotifyTime(v *AlertRuleTimeSpan) *AlertRuleNo
 
 func (s *AlertRuleNotification) SetQwencloudContacts(v map[string]map[string]interface{}) *AlertRuleNotification {
 	s.QwencloudContacts = v
+	return s
+}
+
+func (s *AlertRuleNotification) SetSendOk(v bool) *AlertRuleNotification {
+	s.SendOk = &v
+	return s
+}
+
+func (s *AlertRuleNotification) SetSeverityNotifications(v map[string]*SeverityNotifyConfig) *AlertRuleNotification {
+	s.SeverityNotifications = v
 	return s
 }
 

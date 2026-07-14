@@ -214,8 +214,11 @@ func (s *NotifyStrategyForSNSModifyGroupingSetting) Validate() error {
 }
 
 type NotifyStrategyForSNSModifyRoutes struct {
-	Channels        []*NotifyStrategyForSNSModifyRoutesChannels      `json:"channels,omitempty" xml:"channels,omitempty" type:"Repeated"`
+	Channels            []*NotifyStrategyForSNSModifyRoutesChannels `json:"channels,omitempty" xml:"channels,omitempty" type:"Repeated"`
+	DigitalEmployeeName *string                                     `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
+	// The effective period settings for notifications. Defines on which days and during which time range the system sends notifications.
 	EffectTimeRange *NotifyStrategyForSNSModifyRoutesEffectTimeRange `json:"effectTimeRange,omitempty" xml:"effectTimeRange,omitempty" type:"Struct"`
+	EnableRca       *bool                                            `json:"enableRca,omitempty" xml:"enableRca,omitempty"`
 	FilterSetting   *NotifyStrategyForSNSModifyRoutesFilterSetting   `json:"filterSetting,omitempty" xml:"filterSetting,omitempty" type:"Struct"`
 	Severities      []*string                                        `json:"severities,omitempty" xml:"severities,omitempty" type:"Repeated"`
 }
@@ -232,8 +235,16 @@ func (s *NotifyStrategyForSNSModifyRoutes) GetChannels() []*NotifyStrategyForSNS
 	return s.Channels
 }
 
+func (s *NotifyStrategyForSNSModifyRoutes) GetDigitalEmployeeName() *string {
+	return s.DigitalEmployeeName
+}
+
 func (s *NotifyStrategyForSNSModifyRoutes) GetEffectTimeRange() *NotifyStrategyForSNSModifyRoutesEffectTimeRange {
 	return s.EffectTimeRange
+}
+
+func (s *NotifyStrategyForSNSModifyRoutes) GetEnableRca() *bool {
+	return s.EnableRca
 }
 
 func (s *NotifyStrategyForSNSModifyRoutes) GetFilterSetting() *NotifyStrategyForSNSModifyRoutesFilterSetting {
@@ -249,8 +260,18 @@ func (s *NotifyStrategyForSNSModifyRoutes) SetChannels(v []*NotifyStrategyForSNS
 	return s
 }
 
+func (s *NotifyStrategyForSNSModifyRoutes) SetDigitalEmployeeName(v string) *NotifyStrategyForSNSModifyRoutes {
+	s.DigitalEmployeeName = &v
+	return s
+}
+
 func (s *NotifyStrategyForSNSModifyRoutes) SetEffectTimeRange(v *NotifyStrategyForSNSModifyRoutesEffectTimeRange) *NotifyStrategyForSNSModifyRoutes {
 	s.EffectTimeRange = v
+	return s
+}
+
+func (s *NotifyStrategyForSNSModifyRoutes) SetEnableRca(v bool) *NotifyStrategyForSNSModifyRoutes {
+	s.EnableRca = &v
 	return s
 }
 
@@ -288,10 +309,27 @@ func (s *NotifyStrategyForSNSModifyRoutes) Validate() error {
 }
 
 type NotifyStrategyForSNSModifyRoutesChannels struct {
+	// The notification channel type. The value must be one of the following uppercase enum values: DING (DingTalk chatbot), WEIXIN (WeCom chatbot), FEISHU (Lark chatbot), SLACK, TEAMS, WEBHOOK (custom webhook), CONTACT (contact, requires enabledSubChannels to specify sub-channels), GROUP (contact group), DUTY (on-call schedule), or DING_COOL_APP (DingTalk Cool App). Note: Lowercase values such as EMAIL or SMS are not supported. To send email, text message, or voice notifications, set channelType to CONTACT and specify EMAIL, SMS, or VOICE in enabledSubChannels.
+	//
 	// This parameter is required.
-	ChannelType        *string   `json:"channelType,omitempty" xml:"channelType,omitempty"`
+	//
+	// example:
+	//
+	// WEBHOOK
+	ChannelType *string `json:"channelType,omitempty" xml:"channelType,omitempty"`
+	// Required only when channelType is CONTACT, GROUP, or DUTY. Valid values: EMAIL (email), SMS (text message), VOICE (voice call), DING (DingTalk work notification), WEIXIN (WeCom message), FEISHU (Lark message), and WEBHOOK. For example, to notify a contact by email and text message, set channelType to CONTACT and enabledSubChannels to ["EMAIL","SMS"]. This field is not required for other channelType values such as WEBHOOK or DING.
+	//
+	// example:
+	//
+	// ["EMAIL","SMS"]
 	EnabledSubChannels []*string `json:"enabledSubChannels,omitempty" xml:"enabledSubChannels,omitempty" type:"Repeated"`
+	// The list of receiver identifiers. For the WEBHOOK type, specify the webhook UUID. For DING, WEIXIN, or FEISHU, specify the chatbot UUID. For CONTACT, specify the contact ID. For GROUP, specify the contact group ID. For DUTY, specify the on-call schedule UUID. At least one element is required.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// ["my-webhook-uuid"]
 	Receivers []*string `json:"receivers,omitempty" xml:"receivers,omitempty" type:"Repeated"`
 }
 
@@ -335,10 +373,30 @@ func (s *NotifyStrategyForSNSModifyRoutesChannels) Validate() error {
 }
 
 type NotifyStrategyForSNSModifyRoutesEffectTimeRange struct {
-	DayInWeek         []*int32 `json:"dayInWeek,omitempty" xml:"dayInWeek,omitempty" type:"Repeated"`
-	EndTimeInMinute   *int32   `json:"endTimeInMinute,omitempty" xml:"endTimeInMinute,omitempty"`
-	StartTimeInMinute *int32   `json:"startTimeInMinute,omitempty" xml:"startTimeInMinute,omitempty"`
-	TimeZone          *string  `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
+	// The days of the week on which the setting takes effect. Array element values range from 0 to 6 (0 = Sunday, 1 = Monday, 2 = Tuesday, ... 6 = Saturday). Note: The value 7 is not supported. The maximum value is 6. Example for all days: [0,1,2,3,4,5,6]. Example for weekdays only: [1,2,3,4,5].
+	//
+	// example:
+	//
+	// [0,1,2,3,4,5,6]
+	DayInWeek []*int32 `json:"dayInWeek,omitempty" xml:"dayInWeek,omitempty" type:"Repeated"`
+	// The end time of the day, expressed as the number of minutes from 00:00. Valid values: 0 to 1439 (23 × 60 + 59 = 1439, which represents 23:59).
+	//
+	// example:
+	//
+	// 1439
+	EndTimeInMinute *int32 `json:"endTimeInMinute,omitempty" xml:"endTimeInMinute,omitempty"`
+	// The start time of the day, expressed as the number of minutes from 00:00. Valid values: 0 to 1439 (0 represents 00:00).
+	//
+	// example:
+	//
+	// 0
+	StartTimeInMinute *int32 `json:"startTimeInMinute,omitempty" xml:"startTimeInMinute,omitempty"`
+	// The IANA time zone identifier, such as Asia/Shanghai or America/Los_Angeles.
+	//
+	// example:
+	//
+	// Asia/Shanghai
+	TimeZone *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
 }
 
 func (s NotifyStrategyForSNSModifyRoutesEffectTimeRange) String() string {

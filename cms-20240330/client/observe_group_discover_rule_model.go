@@ -41,33 +41,33 @@ type iObserveGroupDiscoverRule interface {
 
 type ObserveGroupDiscoverRule struct {
 	// Indicates whether the rule is enabled. If set to false, the data plane skips this rule and does not perform matching, tagging, or delivery.
-	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The entity type (legacy). This parameter is retained for backward compatibility. Use entityTypes instead.
-	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// The list of entity types. A single rule can match across multiple types, such as acs.ecs.instance, acs.rds.instance, and acs.arms.service.
-	EntityTypes []*string `json:"EntityTypes,omitempty" xml:"EntityTypes,omitempty" type:"Repeated"`
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The entity type (legacy). Retained for backward compatibility. Use entityTypes instead.
+	EntityType *string `json:"entityType,omitempty" xml:"entityType,omitempty"`
+	// The list of entity types. A single rule can match multiple types, such as acs.ecs.instance, acs.rds.instance, and acs.arms.service.
+	EntityTypes []*string `json:"entityTypes,omitempty" xml:"entityTypes,omitempty" type:"Repeated"`
 	// The time when the rule was created, in UNIX millisecond timestamp format. This value is used for display in the console.
-	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The list of manually specified instance IDs. This is an enumeration type and includes instances synchronized manually in version 1.0.
-	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// The list of manually specified instance IDs in enumeration mode, including instances synchronized manually in version 1.0.
+	InstanceIds []*string `json:"instanceIds,omitempty" xml:"instanceIds,omitempty" type:"Repeated"`
 	// The name matching rules.
-	NameRules *ObserveGroupDiscoverRuleNameRules `json:"NameRules,omitempty" xml:"NameRules,omitempty" type:"Struct"`
-	// The list of region IDs used for region-based filtering.
-	RegionIds []*string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
+	NameRules *ObserveGroupDiscoverRuleNameRules `json:"nameRules,omitempty" xml:"nameRules,omitempty" type:"Struct"`
+	// The list of region IDs used for filtering by region.
+	RegionIds []*string `json:"regionIds,omitempty" xml:"regionIds,omitempty" type:"Repeated"`
 	// The resource group ID used for filtering.
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The stable ID of the rule, used as an anchor for editing, deleting, and enabling or disabling operations. Format: dr-<16-character hash>.
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The stable rule ID used as an anchor for editing, deleting, and enabling or disabling operations. Format: dr-<16-character hash>.
+	RuleId *string `json:"ruleId,omitempty" xml:"ruleId,omitempty"`
 	// The matching method. Valid values: byTag, byResourceGroup, byInstanceName, byManual, and bySpl.
-	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	RuleType *string `json:"ruleType,omitempty" xml:"ruleType,omitempty"`
 	// The applicable scope. Valid values: all (all entity types, exclusive) and entity (specified entity types).
-	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The complete SPL expression for advanced configuration. If this parameter is not empty, it takes precedence over other filter fields.
-	Spl *string `json:"Spl,omitempty" xml:"Spl,omitempty"`
+	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	// The full SPL expression for advanced configuration. If this parameter is not empty, it takes precedence over other filter fields.
+	Spl *string `json:"spl,omitempty" xml:"spl,omitempty"`
 	// The tag matching rules.
-	TagRules *ObserveGroupDiscoverRuleTagRules `json:"TagRules,omitempty" xml:"TagRules,omitempty" type:"Struct"`
+	TagRules *ObserveGroupDiscoverRuleTagRules `json:"tagRules,omitempty" xml:"tagRules,omitempty" type:"Struct"`
 	// The UID of the user to whom the rule belongs.
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s ObserveGroupDiscoverRule) String() string {
@@ -220,9 +220,9 @@ func (s *ObserveGroupDiscoverRule) Validate() error {
 
 type ObserveGroupDiscoverRuleNameRules struct {
 	// The name matching logic.
-	Op *string `json:"Op,omitempty" xml:"Op,omitempty"`
-	// The list of name conditions.
-	Tags []*ObserveGroupDiscoverRuleNameRulesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Op *string `json:"op,omitempty" xml:"op,omitempty"`
+	// The name condition list.
+	Tags []*ObserveGroupDiscoverRuleNameRulesTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
 func (s ObserveGroupDiscoverRuleNameRules) String() string {
@@ -266,9 +266,9 @@ func (s *ObserveGroupDiscoverRuleNameRules) Validate() error {
 
 type ObserveGroupDiscoverRuleNameRulesTags struct {
 	// The matching operation.
-	Op *string `json:"Op,omitempty" xml:"Op,omitempty"`
-	// The list of matching values.
-	TagValues []*string `json:"TagValues,omitempty" xml:"TagValues,omitempty" type:"Repeated"`
+	Op *string `json:"op,omitempty" xml:"op,omitempty"`
+	// The matching value list.
+	TagValues []*string `json:"tagValues,omitempty" xml:"tagValues,omitempty" type:"Repeated"`
 }
 
 func (s ObserveGroupDiscoverRuleNameRulesTags) String() string {
@@ -303,9 +303,9 @@ func (s *ObserveGroupDiscoverRuleNameRulesTags) Validate() error {
 
 type ObserveGroupDiscoverRuleTagRules struct {
 	// The tag matching logic.
-	Op *string `json:"Op,omitempty" xml:"Op,omitempty"`
-	// The list of tag conditions.
-	Tags []*ObserveGroupDiscoverRuleTagRulesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Op *string `json:"op,omitempty" xml:"op,omitempty"`
+	// The tag condition list.
+	Tags []*ObserveGroupDiscoverRuleTagRulesTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
 func (s ObserveGroupDiscoverRuleTagRules) String() string {
@@ -349,11 +349,11 @@ func (s *ObserveGroupDiscoverRuleTagRules) Validate() error {
 
 type ObserveGroupDiscoverRuleTagRulesTags struct {
 	// The matching operation.
-	Op *string `json:"Op,omitempty" xml:"Op,omitempty"`
+	Op *string `json:"op,omitempty" xml:"op,omitempty"`
 	// The tag key.
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The list of tag values.
-	TagValues []*string `json:"TagValues,omitempty" xml:"TagValues,omitempty" type:"Repeated"`
+	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	// The tag value list.
+	TagValues []*string `json:"tagValues,omitempty" xml:"tagValues,omitempty" type:"Repeated"`
 }
 
 func (s ObserveGroupDiscoverRuleTagRulesTags) String() string {

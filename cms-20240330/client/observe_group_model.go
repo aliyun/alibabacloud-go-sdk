@@ -15,8 +15,8 @@ type iObserveGroup interface {
 	GetCreateTime() *string
 	SetDescription(v string) *ObserveGroup
 	GetDescription() *string
-	SetDiscoverRules(v string) *ObserveGroup
-	GetDiscoverRules() *string
+	SetDiscoverRules(v []*ObserveGroupDiscoverRule) *ObserveGroup
+	GetDiscoverRules() []*ObserveGroupDiscoverRule
 	SetEntityCounts(v map[string]*int32) *ObserveGroup
 	GetEntityCounts() map[string]*int32
 	SetExtraInfo(v string) *ObserveGroup
@@ -33,6 +33,10 @@ type iObserveGroup interface {
 	GetHealth() *int32
 	SetModifyTime(v string) *ObserveGroup
 	GetModifyTime() *string
+	SetOgEntityInfoEnabled(v bool) *ObserveGroup
+	GetOgEntityInfoEnabled() *bool
+	SetOgEntityInfoPromInstances(v []*ObserveGroupPromInstance) *ObserveGroup
+	GetOgEntityInfoPromInstances() []*ObserveGroupPromInstance
 	SetOriginGroupId(v string) *ObserveGroup
 	GetOriginGroupId() *string
 	SetRegionId(v string) *ObserveGroup
@@ -50,21 +54,21 @@ type iObserveGroup interface {
 type ObserveGroup struct {
 	// The UID of the Alibaba Cloud account to which the group belongs.
 	AliUid *string `json:"aliUid,omitempty" xml:"aliUid,omitempty"`
-	// The time when the group was created, in UTC format (yyyy-MM-ddTHH:mm:ssZ).
+	// The creation time in UTC format: yyyy-MM-ddTHH:mm:ssZ.
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The description of the observability group, which describes the business purpose.
+	// The description of the observability group, which explains its business purpose.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The list of entity discovery rules that define which entities the group automatically matches.
-	DiscoverRules *string `json:"discoverRules,omitempty" xml:"discoverRules,omitempty"`
-	// The number of entities in each category. The key is the category domain (such as acs for Alibaba Cloud services, apm, or rum, which is extensible). The value is the number of entities in that category that belong to this group. This parameter is returned only when withEntityCount is set to true.
+	DiscoverRules []*ObserveGroupDiscoverRule `json:"discoverRules,omitempty" xml:"discoverRules,omitempty" type:"Repeated"`
+	// The number of entities in each category. The key is the category domain (acs for cloud services, apm, or rum, which is extensible). The value is the number of entities in that category that belong to this group. Returned only when withEntityCount is set to true.
 	EntityCounts map[string]*int32 `json:"entityCounts,omitempty" xml:"entityCounts,omitempty"`
-	// The extended information, which is a JSON string that contains alert templates, alert contact groups, pause policies, and other settings.
+	// The extended information as a JSON string, which carries alert templates, alert contact groups, and suspension policies.
 	ExtraInfo *string `json:"extraInfo,omitempty" xml:"extraInfo,omitempty"`
-	// Indicates whether the current user has favorited this group. This value is used as the filter criterion for the My Favorites feature.
+	// Indicates whether the current user has followed this group. This value is used as the filter criterion for the My Favorites feature.
 	Favorited *bool `json:"favorited,omitempty" xml:"favorited,omitempty"`
-	// The globally unique ID of the observability group, in the format of og-<16-character hash>. This ID is used across metrics, alerts, and the console.
+	// The globally unique ID of the observability group. Format: og-<16-character hash>. Used uniformly across metrics, alerts, and consoles.
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	// The name of the observability group. The name must be unique within the workspace.
+	// The name of the observability group. Must be unique within the same workspace.
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
 	// The type of the observability group.
 	GroupType *string `json:"groupType,omitempty" xml:"groupType,omitempty"`
@@ -76,11 +80,15 @@ type ObserveGroup struct {
 	//
 	// - 0: unhealthy.
 	Health *int32 `json:"health,omitempty" xml:"health,omitempty"`
-	// The time when the group was last modified, in UTC format (yyyy-MM-ddTHH:mm:ssZ). This value is automatically updated when any property of the resource changes.
+	// The last modification time in UTC format: yyyy-MM-ddTHH:mm:ssZ. Automatically updated when any resource attribute changes.
 	ModifyTime *string `json:"modifyTime,omitempty" xml:"modifyTime,omitempty"`
-	// The product_group.id of the version 1.0 application group. This parameter is returned only when sourceOrigin is set to synced_from_1_0.
+	// Specifies whether og_entity_info metric output is enabled. When enabled, the data plane writes the group membership information to the target Prometheus instance.
+	OgEntityInfoEnabled *bool `json:"ogEntityInfoEnabled,omitempty" xml:"ogEntityInfoEnabled,omitempty"`
+	// The set of Prometheus instances to which og_entity_info is written. Includes two source types: system (automatically identified by the system) and custom (user-defined).
+	OgEntityInfoPromInstances []*ObserveGroupPromInstance `json:"ogEntityInfoPromInstances,omitempty" xml:"ogEntityInfoPromInstances,omitempty" type:"Repeated"`
+	// The product_group.id of the version 1.0 application group. This parameter is valid only when sourceOrigin is set to synced_from_1_0.
 	OriginGroupId *string `json:"originGroupId,omitempty" xml:"originGroupId,omitempty"`
-	// The region ID of the group.
+	// The region ID to which the group belongs.
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	// The Alibaba Cloud resource group ID.
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
@@ -90,9 +98,9 @@ type ObserveGroup struct {
 	//
 	// - synced_from_1_0: synchronized from a version 1.0 application group.
 	SourceOrigin *string `json:"sourceOrigin,omitempty" xml:"sourceOrigin,omitempty"`
-	// The resource tags (Alibaba Cloud standard tags), which are an array of key-value pairs.
+	// The resource tags (Alibaba Cloud standard tags) as an array of key-value pairs.
 	Tags []*ObserveGroupTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The workspace ID to which the group belongs. This value is set at the workspace level and cannot be changed after the group is created.
+	// The workspace ID to which the group belongs. This value is set at the workspace level and cannot be changed after creation.
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
@@ -116,7 +124,7 @@ func (s *ObserveGroup) GetDescription() *string {
 	return s.Description
 }
 
-func (s *ObserveGroup) GetDiscoverRules() *string {
+func (s *ObserveGroup) GetDiscoverRules() []*ObserveGroupDiscoverRule {
 	return s.DiscoverRules
 }
 
@@ -150,6 +158,14 @@ func (s *ObserveGroup) GetHealth() *int32 {
 
 func (s *ObserveGroup) GetModifyTime() *string {
 	return s.ModifyTime
+}
+
+func (s *ObserveGroup) GetOgEntityInfoEnabled() *bool {
+	return s.OgEntityInfoEnabled
+}
+
+func (s *ObserveGroup) GetOgEntityInfoPromInstances() []*ObserveGroupPromInstance {
+	return s.OgEntityInfoPromInstances
 }
 
 func (s *ObserveGroup) GetOriginGroupId() *string {
@@ -191,8 +207,8 @@ func (s *ObserveGroup) SetDescription(v string) *ObserveGroup {
 	return s
 }
 
-func (s *ObserveGroup) SetDiscoverRules(v string) *ObserveGroup {
-	s.DiscoverRules = &v
+func (s *ObserveGroup) SetDiscoverRules(v []*ObserveGroupDiscoverRule) *ObserveGroup {
+	s.DiscoverRules = v
 	return s
 }
 
@@ -236,6 +252,16 @@ func (s *ObserveGroup) SetModifyTime(v string) *ObserveGroup {
 	return s
 }
 
+func (s *ObserveGroup) SetOgEntityInfoEnabled(v bool) *ObserveGroup {
+	s.OgEntityInfoEnabled = &v
+	return s
+}
+
+func (s *ObserveGroup) SetOgEntityInfoPromInstances(v []*ObserveGroupPromInstance) *ObserveGroup {
+	s.OgEntityInfoPromInstances = v
+	return s
+}
+
 func (s *ObserveGroup) SetOriginGroupId(v string) *ObserveGroup {
 	s.OriginGroupId = &v
 	return s
@@ -267,6 +293,24 @@ func (s *ObserveGroup) SetWorkspaceId(v string) *ObserveGroup {
 }
 
 func (s *ObserveGroup) Validate() error {
+	if s.DiscoverRules != nil {
+		for _, item := range s.DiscoverRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OgEntityInfoPromInstances != nil {
+		for _, item := range s.OgEntityInfoPromInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.Tags != nil {
 		for _, item := range s.Tags {
 			if item != nil {
