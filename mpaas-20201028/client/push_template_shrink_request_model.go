@@ -65,6 +65,8 @@ type iPushTemplateShrinkRequest interface {
 	GetTransparentMessagePayload() interface{}
 	SetTransparentMessageUrgency(v string) *PushTemplateShrinkRequest
 	GetTransparentMessageUrgency() *string
+	SetVendorTemplate(v string) *PushTemplateShrinkRequest
+	GetVendorTemplate() *string
 	SetWorkspaceId(v string) *PushTemplateShrinkRequest
 	GetWorkspaceId() *string
 }
@@ -103,6 +105,7 @@ type PushTemplateShrinkRequest struct {
 	ThirdChannelCategoryShrink *string     `json:"ThirdChannelCategory,omitempty" xml:"ThirdChannelCategory,omitempty"`
 	TransparentMessagePayload  interface{} `json:"TransparentMessagePayload,omitempty" xml:"TransparentMessagePayload,omitempty"`
 	TransparentMessageUrgency  *string     `json:"TransparentMessageUrgency,omitempty" xml:"TransparentMessageUrgency,omitempty"`
+	VendorTemplate             *string     `json:"VendorTemplate,omitempty" xml:"VendorTemplate,omitempty"`
 	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
@@ -225,6 +228,10 @@ func (s *PushTemplateShrinkRequest) GetTransparentMessagePayload() interface{} {
 
 func (s *PushTemplateShrinkRequest) GetTransparentMessageUrgency() *string {
 	return s.TransparentMessageUrgency
+}
+
+func (s *PushTemplateShrinkRequest) GetVendorTemplate() *string {
+	return s.VendorTemplate
 }
 
 func (s *PushTemplateShrinkRequest) GetWorkspaceId() *string {
@@ -368,6 +375,11 @@ func (s *PushTemplateShrinkRequest) SetTransparentMessagePayload(v interface{}) 
 
 func (s *PushTemplateShrinkRequest) SetTransparentMessageUrgency(v string) *PushTemplateShrinkRequest {
 	s.TransparentMessageUrgency = &v
+	return s
+}
+
+func (s *PushTemplateShrinkRequest) SetVendorTemplate(v string) *PushTemplateShrinkRequest {
+	s.VendorTemplate = &v
 	return s
 }
 
