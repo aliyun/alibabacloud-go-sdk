@@ -67,6 +67,8 @@ type iPushBroadcastRequest interface {
 	GetUnBindPeriod() *int64
 	SetUnBindStartTime(v int64) *PushBroadcastRequest
 	GetUnBindStartTime() *int64
+	SetVendorTemplate(v string) *PushBroadcastRequest
+	GetVendorTemplate() *string
 	SetWorkspaceId(v string) *PushBroadcastRequest
 	GetWorkspaceId() *string
 }
@@ -106,6 +108,7 @@ type PushBroadcastRequest struct {
 	UnBindEndTime             *int64                 `json:"UnBindEndTime,omitempty" xml:"UnBindEndTime,omitempty"`
 	UnBindPeriod              *int64                 `json:"UnBindPeriod,omitempty" xml:"UnBindPeriod,omitempty"`
 	UnBindStartTime           *int64                 `json:"UnBindStartTime,omitempty" xml:"UnBindStartTime,omitempty"`
+	VendorTemplate            *string                `json:"VendorTemplate,omitempty" xml:"VendorTemplate,omitempty"`
 	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
@@ -232,6 +235,10 @@ func (s *PushBroadcastRequest) GetUnBindPeriod() *int64 {
 
 func (s *PushBroadcastRequest) GetUnBindStartTime() *int64 {
 	return s.UnBindStartTime
+}
+
+func (s *PushBroadcastRequest) GetVendorTemplate() *string {
+	return s.VendorTemplate
 }
 
 func (s *PushBroadcastRequest) GetWorkspaceId() *string {
@@ -380,6 +387,11 @@ func (s *PushBroadcastRequest) SetUnBindPeriod(v int64) *PushBroadcastRequest {
 
 func (s *PushBroadcastRequest) SetUnBindStartTime(v int64) *PushBroadcastRequest {
 	s.UnBindStartTime = &v
+	return s
+}
+
+func (s *PushBroadcastRequest) SetVendorTemplate(v string) *PushBroadcastRequest {
+	s.VendorTemplate = &v
 	return s
 }
 

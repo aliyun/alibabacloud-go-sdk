@@ -57,6 +57,8 @@ type iPushTemplateRequest interface {
 	GetTransparentMessagePayload() interface{}
 	SetTransparentMessageUrgency(v string) *PushTemplateRequest
 	GetTransparentMessageUrgency() *string
+	SetVendorTemplate(v string) *PushTemplateRequest
+	GetVendorTemplate() *string
 	SetWorkspaceId(v string) *PushTemplateRequest
 	GetWorkspaceId() *string
 }
@@ -91,6 +93,7 @@ type PushTemplateRequest struct {
 	ThirdChannelCategory      map[string]interface{} `json:"ThirdChannelCategory,omitempty" xml:"ThirdChannelCategory,omitempty"`
 	TransparentMessagePayload interface{}            `json:"TransparentMessagePayload,omitempty" xml:"TransparentMessagePayload,omitempty"`
 	TransparentMessageUrgency *string                `json:"TransparentMessageUrgency,omitempty" xml:"TransparentMessageUrgency,omitempty"`
+	VendorTemplate            *string                `json:"VendorTemplate,omitempty" xml:"VendorTemplate,omitempty"`
 	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
@@ -197,6 +200,10 @@ func (s *PushTemplateRequest) GetTransparentMessagePayload() interface{} {
 
 func (s *PushTemplateRequest) GetTransparentMessageUrgency() *string {
 	return s.TransparentMessageUrgency
+}
+
+func (s *PushTemplateRequest) GetVendorTemplate() *string {
+	return s.VendorTemplate
 }
 
 func (s *PushTemplateRequest) GetWorkspaceId() *string {
@@ -320,6 +327,11 @@ func (s *PushTemplateRequest) SetTransparentMessagePayload(v interface{}) *PushT
 
 func (s *PushTemplateRequest) SetTransparentMessageUrgency(v string) *PushTemplateRequest {
 	s.TransparentMessageUrgency = &v
+	return s
+}
+
+func (s *PushTemplateRequest) SetVendorTemplate(v string) *PushTemplateRequest {
+	s.VendorTemplate = &v
 	return s
 }
 

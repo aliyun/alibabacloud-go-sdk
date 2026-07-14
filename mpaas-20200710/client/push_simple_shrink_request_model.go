@@ -65,6 +65,8 @@ type iPushSimpleShrinkRequest interface {
 	GetTransparentMessageUrgency() *string
 	SetUri(v string) *PushSimpleShrinkRequest
 	GetUri() *string
+	SetVendorTemplate(v string) *PushSimpleShrinkRequest
+	GetVendorTemplate() *string
 	SetWorkspaceId(v string) *PushSimpleShrinkRequest
 	GetWorkspaceId() *string
 }
@@ -104,6 +106,7 @@ type PushSimpleShrinkRequest struct {
 	TransparentMessagePayload interface{} `json:"TransparentMessagePayload,omitempty" xml:"TransparentMessagePayload,omitempty"`
 	TransparentMessageUrgency *string     `json:"TransparentMessageUrgency,omitempty" xml:"TransparentMessageUrgency,omitempty"`
 	Uri                       *string     `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	VendorTemplate            *string     `json:"VendorTemplate,omitempty" xml:"VendorTemplate,omitempty"`
 	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
@@ -226,6 +229,10 @@ func (s *PushSimpleShrinkRequest) GetTransparentMessageUrgency() *string {
 
 func (s *PushSimpleShrinkRequest) GetUri() *string {
 	return s.Uri
+}
+
+func (s *PushSimpleShrinkRequest) GetVendorTemplate() *string {
+	return s.VendorTemplate
 }
 
 func (s *PushSimpleShrinkRequest) GetWorkspaceId() *string {
@@ -369,6 +376,11 @@ func (s *PushSimpleShrinkRequest) SetTransparentMessageUrgency(v string) *PushSi
 
 func (s *PushSimpleShrinkRequest) SetUri(v string) *PushSimpleShrinkRequest {
 	s.Uri = &v
+	return s
+}
+
+func (s *PushSimpleShrinkRequest) SetVendorTemplate(v string) *PushSimpleShrinkRequest {
+	s.VendorTemplate = &v
 	return s
 }
 

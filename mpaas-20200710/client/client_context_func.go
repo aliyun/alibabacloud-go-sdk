@@ -2990,6 +2990,10 @@ func (client *Client) PushBroadcastWithContext(ctx context.Context, tmpReq *Push
 		body["UnBindStartTime"] = request.UnBindStartTime
 	}
 
+	if !dara.IsNil(request.VendorTemplate) {
+		body["VendorTemplate"] = request.VendorTemplate
+	}
+
 	if !dara.IsNil(request.WorkspaceId) {
 		body["WorkspaceId"] = request.WorkspaceId
 	}
@@ -3130,6 +3134,10 @@ func (client *Client) PushMultipleWithContext(ctx context.Context, tmpReq *PushM
 
 	if !dara.IsNil(request.TransparentMessageUrgency) {
 		body["TransparentMessageUrgency"] = request.TransparentMessageUrgency
+	}
+
+	if !dara.IsNil(request.VendorTemplate) {
+		body["VendorTemplate"] = request.VendorTemplate
 	}
 
 	if !dara.IsNil(request.WorkspaceId) {
@@ -3354,6 +3362,10 @@ func (client *Client) PushSimpleWithContext(ctx context.Context, tmpReq *PushSim
 		body["Uri"] = request.Uri
 	}
 
+	if !dara.IsNil(request.VendorTemplate) {
+		body["VendorTemplate"] = request.VendorTemplate
+	}
+
 	if !dara.IsNil(request.WorkspaceId) {
 		body["WorkspaceId"] = request.WorkspaceId
 	}
@@ -3498,6 +3510,10 @@ func (client *Client) PushTemplateWithContext(ctx context.Context, tmpReq *PushT
 
 	if !dara.IsNil(request.TransparentMessageUrgency) {
 		body["TransparentMessageUrgency"] = request.TransparentMessageUrgency
+	}
+
+	if !dara.IsNil(request.VendorTemplate) {
+		body["VendorTemplate"] = request.VendorTemplate
 	}
 
 	if !dara.IsNil(request.WorkspaceId) {
