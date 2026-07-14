@@ -28,7 +28,7 @@ type GetChatappTemplateMetricResponseBody struct {
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The status code of the request. Valid values:
+	// The request status code. Valid values:
 	//
 	// - OK: The request was successful.
 	//
@@ -121,7 +121,7 @@ func (s *GetChatappTemplateMetricResponseBody) Validate() error {
 }
 
 type GetChatappTemplateMetricResponseBodyData struct {
-	// The statistics about button clicks.
+	// The list of button click statistics.
 	Cliented []*GetChatappTemplateMetricResponseBodyDataCliented `json:"Cliented,omitempty" xml:"Cliented,omitempty" type:"Repeated"`
 	// The number of delivered messages.
 	//
@@ -129,13 +129,13 @@ type GetChatappTemplateMetricResponseBodyData struct {
 	//
 	// 6
 	DeliveredCount *int32 `json:"DeliveredCount,omitempty" xml:"DeliveredCount,omitempty"`
-	// The end time for metric collection. This is a UNIX timestamp. Unit: milliseconds.
+	// The end time of the metric collection period. This value is a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1668138331485
 	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
-	// The language of the template.
+	// The template language.
 	//
 	// example:
 	//
@@ -153,7 +153,7 @@ type GetChatappTemplateMetricResponseBodyData struct {
 	//
 	// 10
 	SentCount *int32 `json:"SentCount,omitempty" xml:"SentCount,omitempty"`
-	// The start time for metric collection. This is a UNIX timestamp. Unit: milliseconds.
+	// The start time of the metric collection period. This value is a timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -275,11 +275,11 @@ type GetChatappTemplateMetricResponseBodyDataCliented struct {
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The button type. Valid values:
 	//
-	// - phone_number_button: The call button.
+	// - phone_number_button: a phone call button.
 	//
-	// - url_button: The URL button.
+	// - url_button: a URL button.
 	//
-	// - quick_reply_button: The auto-reply button.
+	// - quick_relpy_button: a quick reply button.
 	//
 	// example:
 	//

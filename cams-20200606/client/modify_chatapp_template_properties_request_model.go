@@ -30,40 +30,54 @@ type iModifyChatappTemplatePropertiesRequest interface {
 }
 
 type ModifyChatappTemplatePropertiesRequest struct {
+	// Specifies whether sending is allowed.
+	//
 	// example:
 	//
 	// true
 	AllowSend *bool `json:"AllowSend,omitempty" xml:"AllowSend,omitempty"`
+	// Specifies whether to block sending after the Utility template category is changed.
+	//
 	// example:
 	//
 	// false
 	CategoryChangePaused *bool `json:"CategoryChangePaused,omitempty" xml:"CategoryChangePaused,omitempty"`
+	// The space ID of the ISV sub-customer or the instance ID of the direct customer.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// cams-idk***
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The template language. For more information about language codes, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// zh_CN
 	Language             *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The template code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 929938***
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// The templatetype.
+	//
+	// - **WHATSAPP**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// WHATSAPP
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 

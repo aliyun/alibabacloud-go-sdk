@@ -24,19 +24,22 @@ type iGetWhatsappConversionApiResponseBody interface {
 }
 
 type GetWhatsappConversionApiResponseBody struct {
+	// example:
+	//
+	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//
-	// 示例值示例值示例值
+	// OK
 	Code *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data []*GetWhatsappConversionApiResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// example:
 	//
-	// 示例值示例值
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// example:
 	//
-	// 示例值示例值
+	// 90E63D28-E31D-1EB2-8939-A9486641****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// example:
 	//
@@ -122,15 +125,15 @@ func (s *GetWhatsappConversionApiResponseBody) Validate() error {
 type GetWhatsappConversionApiResponseBodyData struct {
 	// example:
 	//
-	// 示例值
+	// 111
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
 	// example:
 	//
-	// 示例值示例值示例值
+	// 7832312
 	PageId *string `json:"PageId,omitempty" xml:"PageId,omitempty"`
 	// example:
 	//
-	// 示例值
+	// aaa
 	PageName *string `json:"PageName,omitempty" xml:"PageName,omitempty"`
 }
 

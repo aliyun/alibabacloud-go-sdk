@@ -28,32 +28,50 @@ type iListFlowNodePrototypeV2Request interface {
 }
 
 type ListFlowNodePrototypeV2Request struct {
+	// The business tenant code. The default value is ALICOM_OPAAS.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// ALICOM_OPAAS
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// The code for the component group. Valid values:
+	//
+	// - Messaging: Message components.
+	//
+	// - Core: Core components.
+	//
+	// - Intelligence: Intelligence components.
+	//
+	// - Contact: Contact management components.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// Core
 	GroupCode *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
+	// The search keyword. This parameter is used to perform a fuzzy query by flow component name.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// WhatsApp
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 6
+	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 7
+	// 20
 	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

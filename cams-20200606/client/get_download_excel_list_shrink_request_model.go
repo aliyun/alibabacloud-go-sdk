@@ -41,7 +41,7 @@ type GetDownloadExcelListShrinkRequest struct {
 	BizExtendShrink *string `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
 	// example:
 	//
-	// 示例值示例值
+	// aa
 	Condition          *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
 	CountryNamesShrink *string `json:"CountryNames,omitempty" xml:"CountryNames,omitempty"`
 	// example:

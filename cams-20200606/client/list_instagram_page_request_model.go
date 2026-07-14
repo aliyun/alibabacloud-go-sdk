@@ -20,11 +20,13 @@ type iListInstagramPageRequest interface {
 }
 
 type ListInstagramPageRequest struct {
+	// The instance ID. Only non-Alibaba Cloud hosts are supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// inst-8t47hh***5pyj0ps
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

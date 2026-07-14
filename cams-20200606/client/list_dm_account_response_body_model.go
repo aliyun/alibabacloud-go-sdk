@@ -26,24 +26,48 @@ type iListDmAccountResponseBody interface {
 }
 
 type ListDmAccountResponseBody struct {
+	// The details of the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response status code. Valid values:
+	//
+	// - OK: The request was successful.
+	//
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	//
 	// example:
 	//
-	// 示例值示例值
-	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data []*ListDmAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error message.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
-	// 示例值
+	// xis-sx***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 1
@@ -135,18 +159,30 @@ func (s *ListDmAccountResponseBody) Validate() error {
 }
 
 type ListDmAccountResponseBodyData struct {
+	// The account name.
+	//
 	// example:
 	//
 	// send1@xx.xx.asia
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The time when the account was created.
+	//
 	// example:
 	//
 	// 1743579634000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the email address.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// a@b.com
 	MailAddressId *string `json:"MailAddressId,omitempty" xml:"MailAddressId,omitempty"`
+	// The type of the sender address. Valid values:
+	//
+	// - batch: batch emails
+	//
+	// - trigger: triggered emails
+	//
 	// example:
 	//
 	// trigger

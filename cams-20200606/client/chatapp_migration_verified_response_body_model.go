@@ -22,15 +22,15 @@ type iChatappMigrationVerifiedResponseBody interface {
 }
 
 type ChatappMigrationVerifiedResponseBody struct {
-	// Details about the access denial.
+	// The details about the access denial.
 	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The response code.
+	// The request status code.
 	//
-	// - A value of OK indicates that the request was successful.
+	// - OK indicates that the request was successful.
 	//
 	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
@@ -117,7 +117,7 @@ func (s *ChatappMigrationVerifiedResponseBody) Validate() error {
 }
 
 type ChatappMigrationVerifiedResponseBodyData struct {
-	// The ID of the phone number.
+	// The phone number ID.
 	//
 	// example:
 	//

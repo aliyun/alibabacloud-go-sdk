@@ -22,12 +22,16 @@ type iGetChatFlowTemplateRequest interface {
 }
 
 type GetChatFlowTemplateRequest struct {
+	// The code of the business tenant. The default value is ALICOM_OPAAS.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值
+	// ALICOM_OPAAS
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// The ID of the template. You can call the [ListChatFlowTemplate](https://help.aliyun.com/document_detail/2937208.html) operation to obtain the template ID.
+	//
 	// example:
 	//
 	// 2

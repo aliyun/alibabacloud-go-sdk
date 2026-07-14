@@ -24,15 +24,15 @@ type iListChatGroupResponseBody interface {
 }
 
 type ListChatGroupResponseBody struct {
-	// Details about the access denied error.
+	// The details about the access denial.
 	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The status code. Valid values:
+	// The request status code. Valid values:
 	//
-	// - `OK`: The request succeeded.
+	// - OK: The request was successful.
 	//
 	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
@@ -42,7 +42,7 @@ type ListChatGroupResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *ListChatGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message. This parameter is returned only when an error occurs.
+	// The prompt message. This parameter has a value when an exception is returned.
 	//
 	// example:
 	//
@@ -54,11 +54,11 @@ type ListChatGroupResponseBody struct {
 	//
 	// 90E63D28-E31D-1EB2-8939-A94866411B2O
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request succeeded. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - **true**: The request succeeded.
+	// - **true**: The call was successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: The call failed.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ func (s *ListChatGroupResponseBody) Validate() error {
 type ListChatGroupResponseBodyData struct {
 	// The group list.
 	List []*ListChatGroupResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -188,7 +188,7 @@ func (s *ListChatGroupResponseBodyData) Validate() error {
 }
 
 type ListChatGroupResponseBodyDataList struct {
-	// The business number.
+	// The business phone number.
 	//
 	// example:
 	//
@@ -200,13 +200,13 @@ type ListChatGroupResponseBodyDataList struct {
 	//
 	// example
 	BusinessRole *string `json:"BusinessRole,omitempty" xml:"BusinessRole,omitempty"`
-	// The group description.
+	// The description.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time the group was last updated.
+	// The update time.
 	//
 	// example:
 	//
@@ -236,13 +236,13 @@ type ListChatGroupResponseBodyDataList struct {
 	//
 	// example
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// The group invitation link.
+	// The invite link.
 	//
 	// example:
 	//
 	// https://chat.whatsapp.com/***
 	InviteLink *string `json:"InviteLink,omitempty" xml:"InviteLink,omitempty"`
-	// The group\\"s profile picture.
+	// The group profile picture.
 	ProfilePictureFile *string `json:"ProfilePictureFile,omitempty" xml:"ProfilePictureFile,omitempty"`
 	// The group subject.
 	//
@@ -250,7 +250,7 @@ type ListChatGroupResponseBodyDataList struct {
 	//
 	// This is a test subject
 	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
-	// The total number of group participants.
+	// The number of group members.
 	//
 	// example:
 	//

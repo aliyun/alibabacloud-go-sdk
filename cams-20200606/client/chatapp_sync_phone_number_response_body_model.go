@@ -30,33 +30,33 @@ type ChatappSyncPhoneNumberResponseBody struct {
 	//
 	// 无
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The HTTP status code returned.
+	// The response code.
 	//
-	// - A value of OK indicates that the call is successful.
+	// - A value of OK indicates that the request is successful.
 	//
-	// - Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// 无
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The phone numbers.
+	// The list of phone numbers.
 	PhoneNumbers []*ChatappSyncPhoneNumberResponseBodyPhoneNumbers `json:"PhoneNumbers,omitempty" xml:"PhoneNumbers,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 90E63D28-E31D-1EB2-8939-A94866411B2O
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the call is successful. Valid values:
 	//
-	// - **true**: The call was successful.
+	// - **true**: The call is successful.
 	//
 	// - **false**: The call failed.
 	//
@@ -143,39 +143,39 @@ func (s *ChatappSyncPhoneNumberResponseBody) Validate() error {
 
 type ChatappSyncPhoneNumberResponseBodyPhoneNumbers struct {
 	CallingConfigure *ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigure `json:"CallingConfigure,omitempty" xml:"CallingConfigure,omitempty" type:"Struct"`
-	// The verification state of the phone number.
+	// The verification status. Valid values:
 	//
-	// Valid values:
+	// - REVOKED: The verification request is revoked.
 	//
-	// - REVOKED: The review application is revoked.
+	// - MORE_INFORMATION_REQUESTED: More information is required.
 	//
-	// - MORE_INFORMATION_REQUESTED: More information needs to be provided.
+	// - VERIFIED: The verification is passed.
 	//
-	// - VERIFIED: The phone number passes the verification.
-	//
-	// - REJECTED: The phone number fails to pass the verification.
+	// - REJECTED: The verification is rejected.
 	//
 	// example:
 	//
 	// VERIFIED
 	CodeVerificationStatus *string `json:"CodeVerificationStatus,omitempty" xml:"CodeVerificationStatus,omitempty"`
+	// Indicates whether the phone number is OBA-certified.
+	//
 	// example:
 	//
 	// N
 	IsOfficial *string `json:"IsOfficial,omitempty" xml:"IsOfficial,omitempty"`
-	// The number of phone numbers to which messages can be sent in a day.
+	// The messaging limit tier of the phone number.
 	//
 	// example:
 	//
 	// TIER_10K
 	MessagingLimitTier *string `json:"MessagingLimitTier,omitempty" xml:"MessagingLimitTier,omitempty"`
-	// The review status of the business display name.
+	// The name review status.
 	//
 	// example:
 	//
 	// Approval
 	NameStatus *string `json:"NameStatus,omitempty" xml:"NameStatus,omitempty"`
-	// The review status of the new business display name.
+	// The review status of the new name.
 	//
 	// example:
 	//
@@ -189,49 +189,17 @@ type ChatappSyncPhoneNumberResponseBodyPhoneNumbers struct {
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	// The quality rating of the phone number.
 	//
-	// Valid values:
-	//
-	// - RED
-	//
-	// - YELLOW
-	//
-	// - GREEN
-	//
 	// example:
 	//
 	// GREEN
 	QualityRating *string `json:"QualityRating,omitempty" xml:"QualityRating,omitempty"`
-	// The state of the phone number.
-	//
-	// Valid values:
-	//
-	// - MIGRATED
-	//
-	// - FLAGGED
-	//
-	// - DISCONNECTED
-	//
-	// - UNVERIFIED
-	//
-	// - BANNED
-	//
-	// - RATE_LIMITED
-	//
-	// - PENDING
-	//
-	// - CONNECTED
-	//
-	// - UNKNOWN
-	//
-	// - DELETED
-	//
-	// - RESTRICTED
+	// The status of the phone number.
 	//
 	// example:
 	//
 	// PENDING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The callback URL to which status reports are sent by using HTTP callbacks.
+	// The callback URL for status reports.
 	//
 	// example:
 	//
@@ -243,19 +211,19 @@ type ChatappSyncPhoneNumberResponseBodyPhoneNumbers struct {
 	//
 	// alicom-0939****-queue
 	StatusQueue *string `json:"StatusQueue,omitempty" xml:"StatusQueue,omitempty"`
-	// The URL that receives the MO messages.
+	// The callback URL for upstream messages.
 	//
 	// example:
 	//
 	// https://www.alibaba.com/inbound
 	UpCallbackUrl *string `json:"UpCallbackUrl,omitempty" xml:"UpCallbackUrl,omitempty"`
-	// The mobile originated (MO) message queue.
+	// The upstream MSMQ.
 	//
 	// example:
 	//
 	// alicom-0939****-queue
 	UpQueue *string `json:"UpQueue,omitempty" xml:"UpQueue,omitempty"`
-	// The display name of the business to which the phone number belongs.
+	// The verified name of the phone number.
 	//
 	// example:
 	//

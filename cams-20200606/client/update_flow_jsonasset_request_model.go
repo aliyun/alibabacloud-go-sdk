@@ -24,21 +24,27 @@ type iUpdateFlowJSONAssetRequest interface {
 }
 
 type UpdateFlowJSONAssetRequest struct {
+	// The space ID of the ISV sub-customer.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// cams-sdk2j3dnxxxx
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The file path.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// http://www.xxxx.com/files/document.json
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// The flow ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// 2322334234234
 	FlowId               *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

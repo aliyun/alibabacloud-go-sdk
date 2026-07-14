@@ -22,17 +22,17 @@ type iSendChatappMessageResponseBody interface {
 }
 
 type SendChatappMessageResponseBody struct {
-	// Details about the access denial.
+	// The access denied details.
 	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The status code of the request.
+	// The response code.
 	//
-	// - A value of OK indicates a successful request.
+	// - OK indicates that the request was successful.
 	//
-	// - For other status codes, see [error codes](https://help.aliyun.com/document_detail/196974.html).
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
@@ -44,13 +44,13 @@ type SendChatappMessageResponseBody struct {
 	//
 	// User not authorized to operate on the specified resource.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the message.
+	// The message ID.
 	//
 	// example:
 	//
 	// 61851ccb2f1365b16aee****
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

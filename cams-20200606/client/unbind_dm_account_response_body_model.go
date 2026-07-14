@@ -24,22 +24,25 @@ type iUnbindDmAccountResponseBody interface {
 }
 
 type UnbindDmAccountResponseBody struct {
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//
-	// 示例值示例值
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// example:
 	//
-	// 示例值
+	// NONE
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// example:
 	//
-	// 示例值示例值
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// example:
 	//
-	// 示例值示例值
+	// xx-xx***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// example:
 	//

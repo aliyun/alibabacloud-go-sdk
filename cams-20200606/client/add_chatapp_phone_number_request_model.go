@@ -36,7 +36,7 @@ type AddChatappPhoneNumberRequest struct {
 	//
 	// 86
 	Cc *string `json:"Cc,omitempty" xml:"Cc,omitempty"`
-	// The Space ID of the Independent Software Vendor (ISV) sub-customer.
+	// The space ID of the ISV sub-customer.
 	//
 	// This parameter is required.
 	//
@@ -55,7 +55,7 @@ type AddChatappPhoneNumberRequest struct {
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	// Deprecated
 	//
-	// The pre-verified phone number.
+	// The pre-validated phone number.
 	//
 	// > This parameter is deprecated.
 	//
@@ -65,7 +65,7 @@ type AddChatappPhoneNumberRequest struct {
 	PreValidateId        *string `json:"PreValidateId,omitempty" xml:"PreValidateId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The name of the phone number.
+	// The display name of the phone number.
 	//
 	// This parameter is required.
 	//

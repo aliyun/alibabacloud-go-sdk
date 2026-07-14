@@ -24,13 +24,13 @@ type iUpdateChatGroupResponseBody interface {
 }
 
 type UpdateChatGroupResponseBody struct {
-	// Details about the access denial.
+	// The details about the access denial.
 	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The request status code. Valid values:
+	// The response code. Valid values:
 	//
 	// - OK: The request was successful.
 	//

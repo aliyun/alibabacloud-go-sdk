@@ -22,6 +22,11 @@ type iUpdatePhoneMessageQrdlResponseBody interface {
 }
 
 type UpdatePhoneMessageQrdlResponseBody struct {
+	// The access denial details.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The error code. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
@@ -132,13 +137,13 @@ type UpdatePhoneMessageQrdlResponseBodyData struct {
 	//
 	// Hello
 	PrefilledMessage *string `json:"PrefilledMessage,omitempty" xml:"PrefilledMessage,omitempty"`
-	// The URL of the QR code.
+	// The QR code image URL.
 	//
 	// example:
 	//
 	// https://img.png
 	QrImageUrl *string `json:"QrImageUrl,omitempty" xml:"QrImageUrl,omitempty"`
-	// The code.
+	// The QR code encoding.
 	//
 	// example:
 	//

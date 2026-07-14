@@ -26,21 +26,29 @@ type iCreateFlowShrinkRequest interface {
 }
 
 type CreateFlowShrinkRequest struct {
+	// The categories.
+	//
 	// This parameter is required.
 	CategoriesShrink *string `json:"Categories,omitempty" xml:"Categories,omitempty"`
+	// The space ID of the ISV sub-customer.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// cams-alk21lk3j2k3lj
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The URL of the WA Flow Endpoint
+	//
 	// example:
 	//
 	// http://www.***.com
 	EndpointUri *string `json:"EndpointUri,omitempty" xml:"EndpointUri,omitempty"`
+	// The name of the Flow.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// flow-001
 	FlowName             *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

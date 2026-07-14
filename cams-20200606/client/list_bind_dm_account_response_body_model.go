@@ -24,19 +24,22 @@ type iListBindDmAccountResponseBody interface {
 }
 
 type ListBindDmAccountResponseBody struct {
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//
-	// 示例值示例值
+	// OK
 	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data []*ListBindDmAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// example:
 	//
-	// 示例值示例值
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// example:
 	//
-	// 示例值示例值
+	// xxx-xx**
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// example:
 	//
@@ -122,16 +125,16 @@ func (s *ListBindDmAccountResponseBody) Validate() error {
 type ListBindDmAccountResponseBodyData struct {
 	// example:
 	//
-	// 示例值示例值
+	// xx@xx.com
 	AccountCode *string                                      `json:"AccountCode,omitempty" xml:"AccountCode,omitempty"`
 	ExtendAttr  *ListBindDmAccountResponseBodyDataExtendAttr `json:"ExtendAttr,omitempty" xml:"ExtendAttr,omitempty" type:"Struct"`
 	// example:
 	//
-	// 示例值示例值示例值
+	// cams-*
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// example:
 	//
-	// 示例值
+	// ins
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 }
 
@@ -191,11 +194,11 @@ func (s *ListBindDmAccountResponseBodyData) Validate() error {
 type ListBindDmAccountResponseBodyDataExtendAttr struct {
 	// example:
 	//
-	// 示例值示例值示例值
+	// xx@xx.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// example:
 	//
-	// 示例值
+	// batch
 	SendType *string `json:"SendType,omitempty" xml:"SendType,omitempty"`
 }
 

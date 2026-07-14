@@ -22,15 +22,15 @@ type iSyncBusinessAppHistoryResponseBody interface {
 }
 
 type SyncBusinessAppHistoryResponseBody struct {
-	// The access denied detail.
+	// The details about the access denial.
 	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The status code.
+	// The request status code. Valid values:
 	//
-	// - `OK`: The request was successful.
+	// - OK: The request was successful.
 	//
 	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
@@ -50,11 +50,11 @@ type SyncBusinessAppHistoryResponseBody struct {
 	//
 	// example
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The call was successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: The call failed.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iModifyChatappTemplateResponseBody interface {
 }
 
 type ModifyChatappTemplateResponseBody struct {
-	// Details about the access denial.
+	// The access denied details.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type ModifyChatappTemplateResponseBody struct {
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The request status code.
 	//
-	// - A value of OK indicates a successful request.
+	// - OK indicates the request was successful.
 	//
 	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//

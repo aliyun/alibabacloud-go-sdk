@@ -46,28 +46,46 @@ type iListChatappMessageShrinkRequest interface {
 }
 
 type ListChatappMessageShrinkRequest struct {
+	// The business phone number.
+	//
+	// - For WhatsApp channels, view the business phone number in the [**Channel Management**](https://chatapp.console.aliyun.com/CustomerList) > **Management*	- > **WABA Management*	- > **Phone Number Management*	- console.
+	//
+	// <props="intl">- For Viber channels, view the Service ID in the [**Channel Management**](https://chatapp.console.aliyun.com/CustomerList) > **Management*	- > **Service Account Management*	- console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 8613800****
 	BusinessNumber *string `json:"BusinessNumber,omitempty" xml:"BusinessNumber,omitempty"`
+	// The channel type. Valid values:
+	//
+	// - **whatsapp**
+	//
+	// - **viber**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// WHATSAPP
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// The message receiving status of the user.
+	//
 	// example:
 	//
 	// success
 	ClientAcceptStatus *string `json:"ClientAcceptStatus,omitempty" xml:"ClientAcceptStatus,omitempty"`
+	// The space ID of the ISV sub-customer or the instance ID of the direct customer. View the Space ID in the [Channel Management](https://chatapp.console.aliyun.com/CustomerList) console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// cams-************
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The end time. This value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1727057232686
@@ -76,23 +94,37 @@ type ListChatappMessageShrinkRequest struct {
 	//
 	// 2024-01-30 00:00:00
 	EndTimeStr *string `json:"EndTimeStr,omitempty" xml:"EndTimeStr,omitempty"`
+	// The message type. Valid values:
+	//
+	// - DOWN: outbound message.
+	//
+	// - UP: inbound message.
+	//
 	// example:
 	//
 	// UP
 	EventAction *string `json:"EventAction,omitempty" xml:"EventAction,omitempty"`
+	// The bulk message ID. View the bulk message ID in the [**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Management*	- > **Message List*	- > **Bulk Sending List*	- console.
+	//
 	// example:
 	//
 	// 9292****
 	GroupMessageId *string `json:"GroupMessageId,omitempty" xml:"GroupMessageId,omitempty"`
+	// The message status.
+	//
 	// example:
 	//
 	// success
 	MessageStatus *string `json:"MessageStatus,omitempty" xml:"MessageStatus,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The pagination object.
+	//
 	// This parameter is required.
 	PageShrink           *string `json:"Page,omitempty" xml:"Page,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The start time. This value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1727057232686
@@ -101,10 +133,14 @@ type ListChatappMessageShrinkRequest struct {
 	//
 	// 2024-01-01 00:00:00
 	StartTimeStr *string `json:"StartTimeStr,omitempty" xml:"StartTimeStr,omitempty"`
+	// The template code. View the template code in the [**Channel Management**](https://chatapp.console.aliyun.com/CustomerList) > **Management*	- > **Template Design*	- console.
+	//
 	// example:
 	//
 	// 9938***
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// The user phone number. This is the phone number that you imported when sending messages in the [**Channel Management**](https://chatapp.console.aliyun.com/CustomerList) > **Management*	- > **Message Sending*	- console.
+	//
 	// example:
 	//
 	// 86138***

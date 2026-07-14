@@ -30,15 +30,15 @@ type UpdateConversationalAutomationResponseBody struct {
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response code.
 	//
-	// - The value OK indicates that the request was successful.
+	// - OK indicates that the request was successful.
 	//
-	// - For more information about other response codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message.
+	// The prompt message. This parameter is returned when an exception occurs.
 	//
 	// example:
 	//
@@ -50,11 +50,11 @@ type UpdateConversationalAutomationResponseBody struct {
 	//
 	// 90E63D28-E31D-1EB2-8939-A94866411B2O
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - **true**
+	// - **true**: The call was successful.
 	//
-	// - **false**
+	// - **false**: The call failed.
 	//
 	// example:
 	//

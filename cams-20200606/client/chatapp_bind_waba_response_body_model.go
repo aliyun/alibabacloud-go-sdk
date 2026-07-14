@@ -24,7 +24,7 @@ type iChatappBindWabaResponseBody interface {
 }
 
 type ChatappBindWabaResponseBody struct {
-	// Details about the access denial.
+	// The access denied detail.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type ChatappBindWabaResponseBody struct {
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The request status code.
 	//
-	// - A value of OK indicates that the request was successful.
+	// - OK indicates that the request was successful.
 	//
 	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
@@ -56,9 +56,9 @@ type ChatappBindWabaResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful.
 	//
-	// - **true**: successful.
+	// - **true**: The call was successful.
 	//
-	// - **false**: failed.
+	// - **false**: The call failed.
 	//
 	// example:
 	//
@@ -138,13 +138,13 @@ func (s *ChatappBindWabaResponseBody) Validate() error {
 }
 
 type ChatappBindWabaResponseBodyData struct {
-	// The customer\\"s Space ID.
+	// The customer space ID.
 	//
 	// example:
 	//
 	// C0202939293****
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The WABA ID.
+	// waba Id。
 	//
 	// example:
 	//

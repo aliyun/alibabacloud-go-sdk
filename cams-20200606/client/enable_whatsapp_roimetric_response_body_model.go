@@ -20,17 +20,17 @@ type iEnableWhatsappROIMetricResponseBody interface {
 }
 
 type EnableWhatsappROIMetricResponseBody struct {
-  // Details about the access denial.
+  // The access denied details.
   // 
   // example:
   // 
   // None
   AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-  // The status code of the request. Valid values:
+  // The request status code. Valid values:
   // 
-  // - A value of OK indicates that the request is successful.
+  // - OK: The request was successful.
   // 
-  // - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+  // - For other error codes, see [API error codes](https://help.aliyun.com/document_detail/196974.html).
   // 
   // example:
   // 

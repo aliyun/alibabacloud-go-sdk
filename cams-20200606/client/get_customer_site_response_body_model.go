@@ -22,22 +22,39 @@ type iGetCustomerSiteResponseBody interface {
 }
 
 type GetCustomerSiteResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The request status code.
+	//
+	// - OK: The request was successful.
+	//
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	//
 	// example:
 	//
-	// 示例值示例值
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data object.
+	//
 	// example:
 	//
-	// 示例值
+	// cn
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
-	// 示例值
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request. You can use the ID to troubleshoot issues.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 3R938***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

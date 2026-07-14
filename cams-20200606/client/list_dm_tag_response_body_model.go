@@ -26,19 +26,22 @@ type iListDmTagResponseBody interface {
 }
 
 type ListDmTagResponseBody struct {
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//
-	// 示例值示例值
+	// OK
 	Code *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data []*ListDmTagResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// example:
 	//
-	// 示例值示例值示例值
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// example:
 	//
-	// 示例值
+	// hgfh77-gfh55***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// example:
 	//

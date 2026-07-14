@@ -20,14 +20,19 @@ type iDeleteFlowResponseBody interface {
 }
 
 type DeleteFlowResponseBody struct {
+	// The details of the permission verification failure.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// A value of OK indicates that the request was successful.
+	// The result. OK indicates success.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message.
+	// The error description.
 	//
 	// example:
 	//

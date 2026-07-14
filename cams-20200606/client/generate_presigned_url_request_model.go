@@ -20,11 +20,13 @@ type iGeneratePresignedUrlRequest interface {
 }
 
 type GeneratePresignedUrlRequest struct {
+	// The OSS path.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// /aaa/111/aa.png
 	FilePath             *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

@@ -34,36 +34,76 @@ type iGetChatFlowMetricRequest interface {
 }
 
 type GetChatFlowMetricRequest struct {
+	// The business tenant code. Default value: ALICOM_OPAAS.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
-	BizCode   *string                `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// The business extension information. Default value: an empty collection.
+	//
+	// example:
+	//
+	// {}
 	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// The flow code. You can view the flow code on the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 9ccc41**************************
 	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// The flow version. On the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page, click the flow name to open the canvas and view the flow version.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 1
 	FlowVersion *string `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
+	// The start time. This value is a UNIX timestamp. Unit: seconds.
+	//
 	// example:
 	//
-	// 31
+	// 1751299200
 	From *int64 `json:"From,omitempty" xml:"From,omitempty"`
+	// The metric name. Valid values:
+	//
+	// - nodeUsageStatistics: node usage statistics.
+	//
+	// - nodeErrorDetails: node error details.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
-	MetricName           *string                `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// nodeUsageStatistics
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// The extended parameter for the metric query. When MetricName is set to nodeErrorDetails, pass in a JSON string. Valid values for the JSON fields:
+	//
+	// - pageNo: the current page number.
+	//
+	// - pageSize: the number of entries per page.
+	//
+	// - nodeId: the node ID. On the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page, click the flow name to open the canvas and copy the node ID.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "pageNo": 1,
+	//
+	//   "pageSize": 20,
+	//
+	//   "nodeId": "SendWhatsAppMessage#H7fKq5rM"
+	//
+	// }
 	MetricParam          map[string]interface{} `json:"MetricParam,omitempty" xml:"MetricParam,omitempty"`
 	OwnerId              *int64                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string                `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64                 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The end time. This value is a UNIX timestamp. Unit: seconds.
+	//
 	// example:
 	//
-	// 81
+	// 1751385599
 	To *int64 `json:"To,omitempty" xml:"To,omitempty"`
 }
 

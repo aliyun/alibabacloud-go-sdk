@@ -33,7 +33,7 @@ type GetGroupExistShrinkRequest struct {
 	//
 	// example:
 	//
-	// 示例值示例值
+	// aaa
 	GroupName            *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

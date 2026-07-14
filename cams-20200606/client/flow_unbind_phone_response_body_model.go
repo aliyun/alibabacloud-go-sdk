@@ -24,20 +24,41 @@ type iFlowUnbindPhoneResponseBody interface {
 }
 
 type FlowUnbindPhoneResponseBody struct {
+	// Details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The request status code.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the operation was successful. Valid values:
+	//
+	// - true: The operation was successful.
+	//
+	// - false: The operation failed.
+	//
 	// example:
 	//
-	// false
+	// true
 	Model     *bool   `json:"Model,omitempty" xml:"Model,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful. Valid values:
+	//
+	// - true: The operation was successful.
+	//
+	// - false: The operation failed.
+	//
 	// example:
 	//
 	// true

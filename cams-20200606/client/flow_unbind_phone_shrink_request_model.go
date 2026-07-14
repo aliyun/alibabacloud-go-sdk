@@ -26,21 +26,38 @@ type iFlowUnbindPhoneShrinkRequest interface {
 }
 
 type FlowUnbindPhoneShrinkRequest struct {
+	// The message channel type. Valid values:
+	//
+	// - INSTAGRAM
+	//
+	// - WHATSAPP
+	//
+	// - MESSENGER
+	//
+	// <props="intl">
+	//
+	// - VIBER
+	//
 	// example:
 	//
-	// 示例值示例值
+	// WHATSAPP
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// The flow code. View the flow code in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值
+	// 9ccc41**************************
 	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// The flow version. In the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder), click the flow name to go to the orchestration canvas and view the flow version.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
-	FlowVersion          *string `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 1
+	FlowVersion *string `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// A list of phone numbers, Page IDs, Account IDs, or Service IDs for the channel instance.
 	PhoneNumbersShrink   *string `json:"PhoneNumbers,omitempty" xml:"PhoneNumbers,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

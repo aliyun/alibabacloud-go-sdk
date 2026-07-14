@@ -23,17 +23,21 @@ type iListFlowNodeGroupRequest interface {
 
 type ListFlowNodeGroupRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 85
+	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of records per page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 84
+	// 10
 	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

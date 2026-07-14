@@ -22,6 +22,11 @@ type iGetPhoneEncryptionPublicKeyResponseBody interface {
 }
 
 type GetPhoneEncryptionPublicKeyResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The error code. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
@@ -114,11 +119,11 @@ type GetPhoneEncryptionPublicKeyResponseBodyData struct {
 	//
 	// -----BEGIN PUBLIC KEY-----\\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAt+PMrYw4zUDEk+VeTrp0\\n8LZaoVpiVFErX7iuoDjUs4F9vkxMQuIABjcXw\\/swzTMEopLORQV28uqN\\/2\\/x9hjU\\****\\/Zwa\\/Vk5Svp4\\niVY4e22FsJCCWUEMvayO8Q+3UGq0eXXQ+8SlUWEMq1VaJ4pwCLsMnmgybA+VmJxi\\nkwIDAQAB\\n-----END PUBLIC KEY-----"
 	EncryptionPublicKey *string `json:"EncryptionPublicKey,omitempty" xml:"EncryptionPublicKey,omitempty"`
-	// The status of the public key. Valid values:
+	// The validity status of the public key. Valid values:
 	//
-	// - MISMATCH: The public key is invalid.
+	// - MISMATCH: invalid.
 	//
-	// - VALID: The public key is valid.
+	// - VALID: valid.
 	//
 	// example:
 	//

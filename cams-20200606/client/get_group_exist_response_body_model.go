@@ -24,22 +24,25 @@ type iGetGroupExistResponseBody interface {
 }
 
 type GetGroupExistResponseBody struct {
+	// example:
+	//
+	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//
-	// 示例值示例值
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// example:
 	//
-	// 示例值示例值示例值
+	// False
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// example:
 	//
-	// 示例值示例值
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// example:
 	//
-	// 示例值
+	// 90E63D28-E31D-1EB2-8939-A9486641****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// example:
 	//

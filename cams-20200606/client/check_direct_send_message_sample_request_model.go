@@ -20,7 +20,7 @@ type iCheckDirectSendMessageSampleRequest interface {
 }
 
 type CheckDirectSendMessageSampleRequest struct {
-	// The SpaceId of an ISV sub-customer or the instance ID of a direct customer.
+	// The space ID of the ISV sub-customer or the instance ID of the direct customer.
 	//
 	// This parameter is required.
 	//
@@ -28,15 +28,15 @@ type CheckDirectSendMessageSampleRequest struct {
 	//
 	// cams-xx**
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The body of an interactive message.
+	// The message body of the interactive type.
 	Interactive map[string]interface{} `json:"Interactive,omitempty" xml:"Interactive,omitempty"`
-	// The body of a text message.
+	// The message body of the text content.
 	//
 	// example:
 	//
 	// {"text": "This is a direct send message"}
 	Text map[string]interface{} `json:"Text,omitempty" xml:"Text,omitempty"`
-	// The type of the direct message content. Valid values:
+	// The direct-send content type. Valid values:
 	//
 	// - interactive
 	//

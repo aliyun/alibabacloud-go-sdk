@@ -24,17 +24,42 @@ type iListFlowNodeGroupResponseBody interface {
 }
 
 type ListFlowNodeGroupResponseBody struct {
+	// The details about the access denial. This field is returned only when RAM verification fails.
+	//
+	// example:
+	//
+	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The request status code.
+	//
+	// - OK indicates that the request was successful.
+	//
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	//
 	// example:
 	//
-	// 43
-	Code *int64                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	// OK
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data object.
 	Data *ListFlowNodeGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
-	// 示例值示例值
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
+	//
+	// example:
+	//
+	// 90E63D28-E31D-1EB2-8939-A9486641****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - **true**: The call was successful.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -113,6 +138,7 @@ func (s *ListFlowNodeGroupResponseBody) Validate() error {
 }
 
 type ListFlowNodeGroupResponseBodyData struct {
+	// The request result data.
 	Model []*ListFlowNodeGroupResponseBodyDataModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
 }
 
@@ -147,13 +173,17 @@ func (s *ListFlowNodeGroupResponseBodyData) Validate() error {
 }
 
 type ListFlowNodeGroupResponseBodyDataModel struct {
+	// The status code.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 0
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The public extension field.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// {}
 	PublicExtend *string `json:"PublicExtend,omitempty" xml:"PublicExtend,omitempty"`
 }
 

@@ -20,7 +20,7 @@ type iChatappSyncPhoneNumberRequest interface {
 }
 
 type ChatappSyncPhoneNumberRequest struct {
-	// The space ID of the user under the independent software vendor (ISV) account.
+	// The SpaceId of the ISV sub-customer.
 	//
 	// This parameter is required.
 	//

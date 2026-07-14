@@ -26,24 +26,48 @@ type iListMarketingFlowResponseBody interface {
 }
 
 type ListMarketingFlowResponseBody struct {
-	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The details about the access denial.
+	//
 	// example:
 	//
-	// 2993***
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	// {}
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The request status code.
+	//
+	// - OK indicates that the request was successful.
+	//
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data object.
 	Data []*ListMarketingFlowResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The message returned for the request.
+	//
 	// example:
 	//
 	// NULL
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID. Alibaba Cloud generates a unique identifier for each request. You can use this ID to troubleshoot issues.
+	//
 	// example:
 	//
-	// OK
+	// CB6122C9-09B5-5926-**476A96CB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - true: The call was successful.
+	//
+	// - false: The call failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of entries in the list.
+	//
 	// example:
 	//
 	// 15
@@ -135,83 +159,133 @@ func (s *ListMarketingFlowResponseBody) Validate() error {
 }
 
 type ListMarketingFlowResponseBodyData struct {
+	// The campaign code.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 3243243***
 	ActivityCode *string `json:"ActivityCode,omitempty" xml:"ActivityCode,omitempty"`
+	// The campaign description.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// aaa
 	ActivityDesc *string `json:"ActivityDesc,omitempty" xml:"ActivityDesc,omitempty"`
+	// The campaign name.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// aaa
 	ActivityName *string `json:"ActivityName,omitempty" xml:"ActivityName,omitempty"`
+	// The campaign status.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// active
 	ActivityStatus *string `json:"ActivityStatus,omitempty" xml:"ActivityStatus,omitempty"`
+	// The business tenant code. Default value: ALICOM_OPAAS.
+	//
 	// example:
 	//
-	// 示例值示例值
-	BizCode   *string                `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// {}
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// The business extension information. Default value: "{}".
+	//
+	// example:
+	//
+	// {}
 	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// The upgrade start time. The upgrade start time is specified as a cron expression.
+	//
+	// For example, `0 0 4 1/1 	- ?` indicates that the upgrade starts at 4:00 on the first day of each month and is performed at 4:00 every day.
+	//
 	// example:
 	//
-	// 示例值
+	// 0 0 4 1/1 	- ?
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
+	// The end time.
+	//
 	// example:
 	//
-	// 示例值
+	// 2025-01-01 XX1:11:11
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The execution method.
+	//
 	// example:
 	//
-	// 示例值
+	// 1(默认corn)
 	ExecutionType *string `json:"ExecutionType,omitempty" xml:"ExecutionType,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
-	// 示例值
+	// 2025-XX-01 11:11:11
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The modification time (deprecated).
+	//
 	// example:
 	//
-	// 示例值
+	// N/A
 	GmtModifier *string `json:"GmtModifier,omitempty" xml:"GmtModifier,omitempty"`
+	// The operational activity ID.
+	//
 	// example:
 	//
 	// 99
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Indicates whether custom parameters are enabled.
+	//
 	// example:
 	//
 	// Y
-	ParamFlag *string                `json:"ParamFlag,omitempty" xml:"ParamFlag,omitempty"`
-	Params    map[string]interface{} `json:"Params,omitempty" xml:"Params,omitempty"`
+	ParamFlag *string `json:"ParamFlag,omitempty" xml:"ParamFlag,omitempty"`
+	// The custom user parameters.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// {\\"CustomerLimit\\":false}
+	Params map[string]interface{} `json:"Params,omitempty" xml:"Params,omitempty"`
+	// The associated flow code.
+	//
+	// example:
+	//
+	// dsafdsf***
 	RelatedFlowCode *string `json:"RelatedFlowCode,omitempty" xml:"RelatedFlowCode,omitempty"`
+	// The name of the associated flow.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// aaa
 	RelatedFlowName *string `json:"RelatedFlowName,omitempty" xml:"RelatedFlowName,omitempty"`
+	// The ID of the associated group.
+	//
 	// example:
 	//
-	// 示例值
+	// 54354**
 	RelatedGroupId *string `json:"RelatedGroupId,omitempty" xml:"RelatedGroupId,omitempty"`
+	// The name of the associated group.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// AAA
 	RelatedGroupName *string `json:"RelatedGroupName,omitempty" xml:"RelatedGroupName,omitempty"`
+	// The specific time. This parameter is valid when the execution method is set to 2.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 特定时间(执行方式为2时)
 	SpecificTime *string `json:"SpecificTime,omitempty" xml:"SpecificTime,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 2025-01-XX 11:11:11
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// The tenant.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 1111
 	TenantCode *string `json:"TenantCode,omitempty" xml:"TenantCode,omitempty"`
 }
 

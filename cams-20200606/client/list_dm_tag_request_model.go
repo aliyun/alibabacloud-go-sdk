@@ -26,16 +26,16 @@ type iListDmTagRequest interface {
 type ListDmTagRequest struct {
 	// example:
 	//
-	// 示例值
+	// a
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// example:
 	//
-	// 82
+	// 1
 	PageIndex *int64 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
 	// example:
 	//
-	// 89
+	// 10
 	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

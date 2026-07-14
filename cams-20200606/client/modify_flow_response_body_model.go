@@ -22,8 +22,13 @@ type iModifyFlowResponseBody interface {
 }
 
 type ModifyFlowResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// A value of OK indicates that the request was successful.
+	// The response code. OK indicates success.
 	//
 	// example:
 	//
@@ -108,19 +113,21 @@ func (s *ModifyFlowResponseBody) Validate() error {
 }
 
 type ModifyFlowResponseBodyData struct {
-	// The flow categories.
+	// The flow folder.
 	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	// The URL of the WA Flow Endpoint
+	//
 	// example:
 	//
 	// http://www.abc.com
 	EndpointUri *string `json:"EndpointUri,omitempty" xml:"EndpointUri,omitempty"`
-	// The flow ID.
+	// Flow ID。
 	//
 	// example:
 	//
 	// 92675332812643****
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// The flow name.
+	// The name of the flow.
 	//
 	// example:
 	//

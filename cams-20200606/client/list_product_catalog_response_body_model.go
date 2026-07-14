@@ -30,11 +30,11 @@ type ListProductCatalogResponseBody struct {
 	//
 	// 无
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The response code.
+	// The request status code.
 	//
-	// - The value OK indicates that the request was successful.
+	// - OK indicates that the request was successful.
 	//
-	// - Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ListProductCatalogResponseBody struct {
 	//
 	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The returned data.
+	// The returned result.
 	Model *ListProductCatalogResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -54,11 +54,11 @@ type ListProductCatalogResponseBody struct {
 	//
 	// 90E63D28-E31D-1EB2-8939-A9486641****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - **true**
+	// - **true**: The call was successful.
 	//
-	// - **false**
+	// - **false**: The call failed.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ func (s *ListProductCatalogResponseBody) Validate() error {
 }
 
 type ListProductCatalogResponseBodyModel struct {
-	// The returned data.
+	// The returned data object.
 	Data []map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The pagination details.
 	Paging *ListProductCatalogResponseBodyModelPaging `json:"Paging,omitempty" xml:"Paging,omitempty" type:"Struct"`
@@ -180,7 +180,7 @@ func (s *ListProductCatalogResponseBodyModel) Validate() error {
 }
 
 type ListProductCatalogResponseBodyModelPaging struct {
-	// The cursors for pagination.
+	// The cursor position for pagination.
 	Cursors *ListProductCatalogResponseBodyModelPagingCursors `json:"Cursors,omitempty" xml:"Cursors,omitempty" type:"Struct"`
 }
 
@@ -211,13 +211,13 @@ func (s *ListProductCatalogResponseBodyModelPaging) Validate() error {
 }
 
 type ListProductCatalogResponseBodyModelPagingCursors struct {
-	// The cursor that points to the end of the page of the returned data.
+	// The position of the next record.
 	//
 	// example:
 	//
 	// sjsuueu83838
 	After *string `json:"After,omitempty" xml:"After,omitempty"`
-	// The cursor that points to the beginning of the page of the returned data.
+	// The position of the previous record.
 	//
 	// example:
 	//

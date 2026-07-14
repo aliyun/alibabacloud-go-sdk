@@ -22,8 +22,13 @@ type iListPhoneMessageQrdlResponseBody interface {
 }
 
 type ListPhoneMessageQrdlResponseBody struct {
+	// The access denied details.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// A value of OK indicates that the request was successful.
+	// The response code. OK indicates success.
 	//
 	// example:
 	//
@@ -130,19 +135,19 @@ type ListPhoneMessageQrdlResponseBodyData struct {
 	//
 	// 86138009****
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// The message content.
+	// The prefilled message content.
 	//
 	// example:
 	//
 	// Hello
 	PrefilledMessage *string `json:"PrefilledMessage,omitempty" xml:"PrefilledMessage,omitempty"`
-	// The URL of the QR code.
+	// The URL of the QR code image.
 	//
 	// example:
 	//
 	// https://img.png
 	QrImageUrl *string `json:"QrImageUrl,omitempty" xml:"QrImageUrl,omitempty"`
-	// The code.
+	// The QR code identifier.
 	//
 	// example:
 	//

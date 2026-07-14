@@ -28,9 +28,9 @@ type iUpdateConversationalAutomationShrinkRequest interface {
 }
 
 type UpdateConversationalAutomationShrinkRequest struct {
-	// The commands.
+	// The list of commands.
 	CommandsShrink *string `json:"Commands,omitempty" xml:"Commands,omitempty"`
-	// The space ID of the RAM user within the independent software vendor (ISV) account or the instance ID of the customer of Alibaba Cloud.
+	// The space ID of the ISV sub-customer or the instance ID of the direct customer.
 	//
 	// This parameter is required.
 	//
@@ -38,14 +38,14 @@ type UpdateConversationalAutomationShrinkRequest struct {
 	//
 	// 2993****
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// Specifies whether to enable the welcoming message.
+	// Specifies whether to enable the welcome message.
 	//
 	// example:
 	//
 	// true
 	EnableWelcomeMessage *bool  `json:"EnableWelcomeMessage,omitempty" xml:"EnableWelcomeMessage,omitempty"`
 	OwnerId              *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The phone number of the enterprise.
+	// The business phone number.
 	//
 	// This parameter is required.
 	//
@@ -53,7 +53,7 @@ type UpdateConversationalAutomationShrinkRequest struct {
 	//
 	// 86130000***
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// The opening remarks.
+	// The list of conversation starters.
 	PromptsShrink        *string `json:"Prompts,omitempty" xml:"Prompts,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

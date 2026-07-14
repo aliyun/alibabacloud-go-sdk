@@ -22,6 +22,7 @@ type iGetFlowPreviewUrlResponseBody interface {
 }
 
 type GetFlowPreviewUrlResponseBody struct {
+	// The details about the access denial.
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The error code. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//

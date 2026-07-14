@@ -22,8 +22,13 @@ type iUpdateFlowJSONAssetResponseBody interface {
 }
 
 type UpdateFlowJSONAssetResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The response code. A value of OK indicates a successful request.
+	// The response code. OK indicates success.
 	//
 	// example:
 	//
@@ -108,7 +113,7 @@ func (s *UpdateFlowJSONAssetResponseBody) Validate() error {
 }
 
 type UpdateFlowJSONAssetResponseBodyData struct {
-	// The flow ID.
+	// Flow ID。
 	//
 	// example:
 	//

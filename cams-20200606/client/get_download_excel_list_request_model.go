@@ -41,7 +41,7 @@ type GetDownloadExcelListRequest struct {
 	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
 	// example:
 	//
-	// 示例值示例值
+	// aa
 	Condition    *string   `json:"Condition,omitempty" xml:"Condition,omitempty"`
 	CountryNames []*string `json:"CountryNames,omitempty" xml:"CountryNames,omitempty" type:"Repeated"`
 	// example:

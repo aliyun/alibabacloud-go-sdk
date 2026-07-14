@@ -28,25 +28,46 @@ type iReadFlowVersionRequest interface {
 }
 
 type ReadFlowVersionRequest struct {
+	// The business tenant code. Default value: ALICOM_OPAAS.
+	//
 	// example:
 	//
-	// 示例值示例值
-	BizCode   *string                `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// The business extension information. Default value: an empty collection.
+	//
+	// example:
+	//
+	// {}
 	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// The flow code. You can view the flow code on the [flow editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 9ccc41**************************
 	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// The flow version. You can click a flow name on the [flow editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page to go to the canvas orchestration page and view the flow version, or call [ListFlowVersion](https://help.aliyun.com/document_detail/2937202.html) to retrieve the flow version.
+	//
 	// example:
 	//
-	// 示例值
+	// 1
 	FlowVersion          *string `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The flow version status. Valid values:
+	//
+	// - DRAFT: draft.
+	//
+	// - DELETED: deleted.
+	//
+	// - ONLINE: online.
+	//
+	// - OFFLINE: offline.
+	//
 	// example:
 	//
-	// 示例值
+	// DRAFT
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 

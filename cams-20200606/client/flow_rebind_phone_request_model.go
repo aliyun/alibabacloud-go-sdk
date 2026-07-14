@@ -30,37 +30,60 @@ type iFlowRebindPhoneRequest interface {
 }
 
 type FlowRebindPhoneRequest struct {
+	// The message channel code, which is the channel ID. You can view the channel ID on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// cams-8c8*********
 	ChannelCode *string `json:"ChannelCode,omitempty" xml:"ChannelCode,omitempty"`
+	// The message channel type. Valid values:
+	//
+	// - INSTAGRAM
+	//
+	// - WHATSAPP
+	//
+	// - MESSENGER
+	//
+	// <props="intl">- VIBER
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// WHATSAPP
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// The flow code. You can view it on the [Flow Builder](https://chatapp.console.aliyun.com/ChatFlowBuilder) page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// 9ccc41**************************
 	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// The flow version. On the [Flow Builder](https://chatapp.console.aliyun.com/ChatFlowBuilder) page, click the flow name to open the flow builder canvas and view the flow version.
+	//
 	// example:
 	//
-	// 示例值
-	FlowVersion          *string   `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 1
+	FlowVersion *string `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The list of phone numbers, PageIds, or AccountIds<props="intl">, or ServiceIds under the channel instance.
 	PhoneNumbers         []*string `json:"PhoneNumbers,omitempty" xml:"PhoneNumbers,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The WABA account ID, PageId, or AccountId<props="intl">, or ServiceId.
+	//
+	// - If ChannelType is set to WHATSAPP, specify the WABA account ID. You can view the WABA account ID on the Channel Management > Manage > WABA Management page.
+	//
+	// - If ChannelType is not set to WHATSAPP, specify the PageId for MESSENGER, the AccountId for INSTAGRAM<props="intl">, or the ServiceId for VIBER.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// 1952************
 	WabaId *string `json:"WabaId,omitempty" xml:"WabaId,omitempty"`
 }
 

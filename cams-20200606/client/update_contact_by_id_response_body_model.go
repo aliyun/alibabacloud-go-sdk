@@ -24,6 +24,9 @@ type iUpdateContactByIdResponseBody interface {
 }
 
 type UpdateContactByIdResponseBody struct {
+	// example:
+	//
+	// 无
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//

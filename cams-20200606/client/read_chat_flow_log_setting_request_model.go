@@ -20,9 +20,11 @@ type iReadChatFlowLogSettingRequest interface {
 }
 
 type ReadChatFlowLogSettingRequest struct {
+	// The code of the flow. You can find the flow code in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder).
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 9ccc41**************************
 	FlowCode             *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

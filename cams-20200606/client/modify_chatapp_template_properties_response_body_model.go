@@ -24,20 +24,46 @@ type iModifyChatappTemplatePropertiesResponseBody interface {
 }
 
 type ModifyChatappTemplatePropertiesResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The request status code.
+	//
+	// - OK indicates that the request was successful.
+	//
+	// - For other error codes, see [Error codes](https://www.alibabacloud.com/help/zh/cams/latest/api-error-codes).
+	//
 	// example:
 	//
-	// 示例值
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
-	// 示例值示例值
-	Message *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model   map[string]interface{} `json:"Model,omitempty" xml:"Model,omitempty"`
+	// None
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned result.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// true
+	Model map[string]interface{} `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 399s88-***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - **true**: The call was successful.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// false

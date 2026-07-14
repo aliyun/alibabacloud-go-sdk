@@ -24,20 +24,38 @@ type iCopyTemplateResponseBody interface {
 }
 
 type CopyTemplateResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// 无
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// 示例值示例值
-	Code *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *CopyTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
 	// example:
 	//
 	// 示例值
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 示例值示例值
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - **true**: The call was successful.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -116,14 +134,20 @@ func (s *CopyTemplateResponseBody) Validate() error {
 }
 
 type CopyTemplateResponseBodyData struct {
+	// The template code.
+	//
 	// example:
 	//
 	// 示例值示例值
 	SceneTemplateCode *string `json:"SceneTemplateCode,omitempty" xml:"SceneTemplateCode,omitempty"`
+	// The template name.
+	//
 	// example:
 	//
 	// 示例值示例值示例值
 	SceneTemplateName *string `json:"SceneTemplateName,omitempty" xml:"SceneTemplateName,omitempty"`
+	// The WhatsApp category.
+	//
 	// example:
 	//
 	// 示例值示例值

@@ -22,13 +22,17 @@ type iGetPledgeTemplateAddressRequest interface {
 }
 
 type GetPledgeTemplateAddressRequest struct {
+	// The space ID or instance ID of the ISV sub-customer. This is the channel ID, which can be viewed on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) interface.
+	//
 	// example:
 	//
-	// 示例值
+	// cams-x***
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The industry type.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// it
 	IndustryType         *string `json:"IndustryType,omitempty" xml:"IndustryType,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

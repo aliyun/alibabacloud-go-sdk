@@ -24,17 +24,17 @@ type iDeleteChatGroupResponseBody interface {
 }
 
 type DeleteChatGroupResponseBody struct {
-	// The details about the access denial.
+	// The access denial details.
 	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The request status code. Valid values:
+	// The response code. Valid values:
 	//
 	// - OK: The request was successful.
 	//
-	// - For information about other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//

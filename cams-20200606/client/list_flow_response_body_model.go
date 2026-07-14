@@ -22,6 +22,7 @@ type iListFlowResponseBody interface {
 }
 
 type ListFlowResponseBody struct {
+	// The details about the access denial.
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// A value of OK indicates that the request was successful.
 	//

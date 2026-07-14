@@ -24,23 +24,46 @@ type iAddGroupResponseBody interface {
 }
 
 type AddGroupResponseBody struct {
-	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The access denied details.
+	//
 	// example:
 	//
-	// 200
+	// 无
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The request status code.
+	//
+	// - OK indicates that the request was successful.
+	//
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data object.
+	//
 	// example:
 	//
 	// true
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The prompt message. This parameter has a value when an exception is returned.
+	//
 	// example:
 	//
 	// true
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// dgdf5-bvcv**
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - **true**: The call was successful.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// false

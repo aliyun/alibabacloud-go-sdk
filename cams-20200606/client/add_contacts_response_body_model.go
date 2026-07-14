@@ -24,23 +24,42 @@ type iAddContactsResponseBody interface {
 }
 
 type AddContactsResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// 示例值
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	//
 	// example:
 	//
 	// true
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// 示例值示例值
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 示例值示例值示例值
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful.
+	//
+	// - **true**: The call was successful.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// true

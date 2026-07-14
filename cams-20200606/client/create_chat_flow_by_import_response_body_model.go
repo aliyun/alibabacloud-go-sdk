@@ -24,23 +24,41 @@ type iCreateChatFlowByImportResponseBody interface {
 }
 
 type CreateChatFlowByImportResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The error code. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	//
 	// example:
 	//
-	// 示例值示例值
-	Code *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data object.
 	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 90E63D28-E31D-1EB2-8939-A94866411B2O
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful. Valid values:
+	//
+	// - true: The operation was successful.
+	//
+	// - false: The operation failed.
+	//
 	// example:
 	//
-	// false
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 

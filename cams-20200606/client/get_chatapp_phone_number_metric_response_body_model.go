@@ -22,23 +22,23 @@ type iGetChatappPhoneNumberMetricResponseBody interface {
 }
 
 type GetChatappPhoneNumberMetricResponseBody struct {
-	// Details about the access denial.
+	// The access denied details.
 	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The status code of the request. Valid values:
+	// The request status code. Valid values:
 	//
 	// - OK: The request was successful.
 	//
-	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	// - For other error codes, see [API error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The list of returned data.
 	Data []*GetChatappPhoneNumberMetricResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The error message.
 	//
@@ -127,13 +127,13 @@ type GetChatappPhoneNumberMetricResponseBodyData struct {
 	//
 	// 5
 	DeliveredCount *int32 `json:"DeliveredCount,omitempty" xml:"DeliveredCount,omitempty"`
-	// The end time of metric collection. This is a UNIX timestamp in milliseconds.
+	// The end time of the metric collection period. This value is a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1667196043904
 	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
-	// The granularity of the metrics.
+	// The metric granularity.
 	//
 	// example:
 	//
@@ -151,7 +151,7 @@ type GetChatappPhoneNumberMetricResponseBodyData struct {
 	//
 	// 10
 	SentCount *int32 `json:"SentCount,omitempty" xml:"SentCount,omitempty"`
-	// The start time of metric collection. This is a UNIX timestamp in milliseconds.
+	// The start time of the metric collection period. This value is a timestamp in milliseconds.
 	//
 	// example:
 	//

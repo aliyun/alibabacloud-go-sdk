@@ -30,27 +30,62 @@ type iUpdateFlowVersionRequest interface {
 }
 
 type UpdateFlowVersionRequest struct {
+	// The tenant code. Default value: ALICOM_OPAAS.
+	//
 	// example:
 	//
-	// 示例值示例值
-	BizCode   *string                `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// The extended business information. The default value is an empty collection.
+	//
+	// example:
+	//
+	// {}
 	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// The code of the flow. View the flow code in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder).
+	//
 	// example:
 	//
-	// 示例值
+	// 9ccc41**************************
 	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// The version of the flow. In the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder), click the flow name to open the canvas and view the flow version.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 1
 	FlowVersion *string `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
+	// The DSL data of the flow version, in JSON format. To obtain this data, orchestrate the components on the canvas in the Flow Editor. After you save the flow, click **Settings*	- > **Export*	- in the upper-right corner of the canvas to export the flow as a JSON data file.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// {
+	//
+	//   "schema": {
+	//
+	//     "namespace": "External",
+	//
+	//     "version": "1.0",
+	//
+	//     "copyright": "Alibaba Cloud"
+	//
+	//   },
+	//
+	//   "editor": "H4sIAAAAAAAAA+1YbU/c***********************",
+	//
+	//   "flow": {
+	//
+	//     "triggerType": "TriggeredByWhatsApp"
+	//
+	//   }
+	//
+	// }
 	FlowViewModel *string `json:"FlowViewModel,omitempty" xml:"FlowViewModel,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The remarks for the version.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 修复发送WhatsApp消息错误
 	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

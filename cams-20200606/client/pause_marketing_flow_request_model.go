@@ -24,11 +24,11 @@ type iPauseMarketingFLowRequest interface {
 type PauseMarketingFLowRequest struct {
 	// example:
 	//
-	// 示例值示例值
+	// 439859845**234
 	ActivityCode *string `json:"ActivityCode,omitempty" xml:"ActivityCode,omitempty"`
 	// example:
 	//
-	// 示例值示例值
+	// N/A
 	ActivityId           *string `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

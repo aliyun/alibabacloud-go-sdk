@@ -44,59 +44,84 @@ type iUpdateMarketingFLowShrinkRequest interface {
 }
 
 type UpdateMarketingFLowShrinkRequest struct {
+	// The code of the campaign to modify.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 115311507XXXX49888
 	ActivityCode *string `json:"ActivityCode,omitempty" xml:"ActivityCode,omitempty"`
+	// The campaign description.
+	//
 	// example:
 	//
-	// 示例值
+	// 活动描述
 	ActivityDesc *string `json:"ActivityDesc,omitempty" xml:"ActivityDesc,omitempty"`
+	// The ID of the campaign to modify.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 674574575658675XX
 	ActivityId *string `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
+	// The campaign name.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// test
 	ActivityName *string `json:"ActivityName,omitempty" xml:"ActivityName,omitempty"`
-	// example:
-	//
-	// 示例值示例值示例值
+	// The cron expression for timed scheduling.
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
+	// The end time.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 2025-11-26 09:59:00
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The execution method. Set this parameter to 1 (cron).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 1
 	ExecutionType *string `json:"ExecutionType,omitempty" xml:"ExecutionType,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Specifies whether to use custom pass-through parameters.
+	//
 	// example:
 	//
-	// 示例值
-	ParamFlag    *string `json:"ParamFlag,omitempty" xml:"ParamFlag,omitempty"`
+	// Y:传入自定义参数 N:不传参数
+	ParamFlag *string `json:"ParamFlag,omitempty" xml:"ParamFlag,omitempty"`
+	// The custom pass-through parameters.
+	//
+	// example:
+	//
+	// {"testEmail":"wy****999@alibaba-inc.com"}
 	ParamsShrink *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// The code of the associated flow.
+	//
 	// example:
 	//
-	// 示例值
+	// cf-kr3k31**mfeir8w
 	RelatedFlowCode *string `json:"RelatedFlowCode,omitempty" xml:"RelatedFlowCode,omitempty"`
+	// The name of the associated flow.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// testflow
 	RelatedFlowName *string `json:"RelatedFlowName,omitempty" xml:"RelatedFlowName,omitempty"`
+	// The ID of the associated group.
+	//
 	// example:
 	//
-	// 42
+	// 114345654645XX
 	RelatedGroupId       *int64  `json:"RelatedGroupId,omitempty" xml:"RelatedGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 2025-11-25 09:59:00
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 

@@ -24,19 +24,22 @@ type iListViberServiceMessageResponseBody interface {
 }
 
 type ListViberServiceMessageResponseBody struct {
+	// example:
+	//
+	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//
-	// 示例值
+	// OK
 	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data []*ListViberServiceMessageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// example:
 	//
-	// 示例值示例值示例值
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// example:
 	//
-	// 示例值示例值
+	// ddhjdn-dnjdnkdjknd**
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// example:
 	//
@@ -122,23 +125,23 @@ func (s *ListViberServiceMessageResponseBody) Validate() error {
 type ListViberServiceMessageResponseBodyData struct {
 	// example:
 	//
-	// 示例值示例值
+	// 测试
 	BusinessAccountName               *string   `json:"BusinessAccountName,omitempty" xml:"BusinessAccountName,omitempty"`
 	DestinationCountryId              []*string `json:"DestinationCountryId,omitempty" xml:"DestinationCountryId,omitempty" type:"Repeated"`
 	DestinationInternationalCountryId []*string `json:"DestinationInternationalCountryId,omitempty" xml:"DestinationInternationalCountryId,omitempty" type:"Repeated"`
 	// example:
 	//
-	// 示例值
+	// 医疗服务
 	IndustryInvolved                       *string   `json:"IndustryInvolved,omitempty" xml:"IndustryInvolved,omitempty"`
 	MessageDestinationCountry              []*string `json:"MessageDestinationCountry,omitempty" xml:"MessageDestinationCountry,omitempty" type:"Repeated"`
 	MessageDestinationInternationalCountry []*string `json:"MessageDestinationInternationalCountry,omitempty" xml:"MessageDestinationInternationalCountry,omitempty" type:"Repeated"`
 	// example:
 	//
-	// 示例值示例值示例值
+	// 25644
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// example:
 	//
-	// 示例值示例值示例值
+	// stop
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 

@@ -24,12 +24,42 @@ type iGetChatFlowTemplateResponseBody interface {
 }
 
 type GetChatFlowTemplateResponseBody struct {
-	AccessDeniedDetail *string                              `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data               *GetChatFlowTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message            *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId          *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success            *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The error code. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *GetChatFlowTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
+	// example:
+	//
+	// None
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request.
+	//
+	// example:
+	//
+	// 90E63D28-E31D-1EB2-8939-A94866411B2O
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful. Valid values:
+	//
+	// - true: The operation was successful.
+	//
+	// - false: The operation failed.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetChatFlowTemplateResponseBody) String() string {
@@ -104,6 +134,7 @@ func (s *GetChatFlowTemplateResponseBody) Validate() error {
 }
 
 type GetChatFlowTemplateResponseBodyData struct {
+	// The content of the returned data.
 	Response map[string]interface{} `json:"Response,omitempty" xml:"Response,omitempty"`
 }
 

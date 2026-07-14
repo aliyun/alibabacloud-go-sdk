@@ -24,23 +24,46 @@ type iDeleteMarketingFlowResponseBody interface {
 }
 
 type DeleteMarketingFlowResponseBody struct {
+	// The access denied details.
+	//
+	// example:
+	//
+	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The request status code.
+	//
+	// - OK indicates that the request was successful.
+	//
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	//
 	// example:
 	//
-	// 示例值示例值
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data object.
+	//
 	// example:
 	//
-	// 示例值
+	// {}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID. Alibaba Cloud generates a unique identifier for each request. You can use this ID to troubleshoot issues.
+	//
 	// example:
 	//
-	// 示例值
+	// 90E63D28-E31D-1EB2-8939-A9486641****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
+	//
 	// example:
 	//
 	// false

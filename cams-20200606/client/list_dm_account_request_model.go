@@ -26,24 +26,32 @@ type iListDmAccountRequest interface {
 }
 
 type ListDmAccountRequest struct {
+	// The search keyword.
+	//
 	// example:
 	//
-	// 示例值
+	// a
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
-	// 83
+	// 1
 	PageIndex *int64 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
-	// 86
+	// 10
 	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The sending type.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// batch
 	SendType *string `json:"SendType,omitempty" xml:"SendType,omitempty"`
 }
 

@@ -30,7 +30,7 @@ type iUpdatePhoneWebhookRequest interface {
 }
 
 type UpdatePhoneWebhookRequest struct {
-	// SpaceId for ISV sub clients.
+	// The SpaceId of the ISV sub-customer.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type UpdatePhoneWebhookRequest struct {
 	//
 	// 293483938849493****
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// Whether to use HTTP to receive receipts. Value:
+	// Specifies whether to use HTTP to receive receipts. Valid values:
 	//
 	// - Y: Yes.
 	//
@@ -49,7 +49,7 @@ type UpdatePhoneWebhookRequest struct {
 	// Y
 	HttpFlag *string `json:"HttpFlag,omitempty" xml:"HttpFlag,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// phone number.
+	// The phone number.
 	//
 	// This parameter is required.
 	//
@@ -57,7 +57,7 @@ type UpdatePhoneWebhookRequest struct {
 	//
 	// 861380000****
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// Whether to use queue method to receive receipts. Value:
+	// Specifies whether to use a queue to receive receipts. Valid values:
 	//
 	// - Y: Yes.
 	//
@@ -69,13 +69,13 @@ type UpdatePhoneWebhookRequest struct {
 	QueueFlag            *string `json:"QueueFlag,omitempty" xml:"QueueFlag,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// HTTP status report interface callback address.
+	// The callback URL for the HTTP-based status report.
 	//
 	// example:
 	//
 	// http://www.aliyun.com
 	StatusCallbackUrl *string `json:"StatusCallbackUrl,omitempty" xml:"StatusCallbackUrl,omitempty"`
-	// HTTP upstream message interface callback address.
+	// The callback URL for the HTTP-based upstream message.
 	//
 	// example:
 	//

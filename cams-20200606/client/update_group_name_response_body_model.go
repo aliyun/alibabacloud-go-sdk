@@ -24,6 +24,9 @@ type iUpdateGroupNameResponseBody interface {
 }
 
 type UpdateGroupNameResponseBody struct {
+	// example:
+	//
+	// 无
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//

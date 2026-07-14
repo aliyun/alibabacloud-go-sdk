@@ -24,22 +24,30 @@ type iIsvGetAppIdRequest interface {
 }
 
 type IsvGetAppIdRequest struct {
+	// The version.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 2
 	IntlVersion *string `json:"IntlVersion,omitempty" xml:"IntlVersion,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The permissions.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// Example value
 	Permissions          *string `json:"Permissions,omitempty" xml:"Permissions,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The channel type. Valid values:
+	//
+	// - whatsapp: WhatsApp.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// whatsapp
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

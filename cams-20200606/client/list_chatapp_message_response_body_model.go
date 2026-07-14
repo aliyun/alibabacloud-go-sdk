@@ -24,20 +24,42 @@ type iListChatappMessageResponseBody interface {
 }
 
 type ListChatappMessageResponseBody struct {
+	// The access denied details.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response code.
+	//
+	// - OK: The request was successful.
+	//
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	//
 	// example:
 	//
-	// 示例值示例值示例值
-	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The list of returned data objects.
 	Data []*ListChatappMessageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error message.
+	//
 	// example:
 	//
-	// 示例值
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
-	// 示例值
+	// 608F9CCA-B5EB-3D72-8047-B25D6D75BDEC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - **true**: The call was successful.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// false
@@ -120,109 +142,169 @@ func (s *ListChatappMessageResponseBody) Validate() error {
 }
 
 type ListChatappMessageResponseBodyData struct {
+	// The business phone number.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 86183********
 	BusinessNumber *string `json:"BusinessNumber,omitempty" xml:"BusinessNumber,omitempty"`
+	// The channel type.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// WHATSAPP
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// The name of the message receiving status.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// Success
 	ClientAcceptStatusName *string `json:"ClientAcceptStatusName,omitempty" xml:"ClientAcceptStatusName,omitempty"`
+	// The message read status.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// success
 	ClientReadStatus *string `json:"ClientReadStatus,omitempty" xml:"ClientReadStatus,omitempty"`
+	// The message read status name.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// Success
 	ClientReadStatusName *string `json:"ClientReadStatusName,omitempty" xml:"ClientReadStatusName,omitempty"`
+	// The conversation ID.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 805a66**************************
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// The inbound or outbound message type.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// DOWN
 	EventAction *string `json:"EventAction,omitempty" xml:"EventAction,omitempty"`
+	// The name of the inbound or outbound message type. Valid values:
+	//
+	// - DOWN: outbound message.
+	//
+	// - UP: inbound message.
+	//
 	// example:
 	//
-	// 示例值
+	// DOWN
 	EventActionName *string `json:"EventActionName,omitempty" xml:"EventActionName,omitempty"`
+	// The fallback content.
+	//
 	// example:
 	//
-	// 示例值
+	// None
 	FailBackContent *string `json:"FailBackContent,omitempty" xml:"FailBackContent,omitempty"`
+	// Indicates whether the message falls back to SMS. Valid values:
+	//
+	// - Y: Yes.
+	//
+	// - N: No.
+	//
 	// example:
 	//
 	// Y
 	FailBackFlag *string `json:"FailBackFlag,omitempty" xml:"FailBackFlag,omitempty"`
+	// The reason for the sending failure.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// timeout
 	FailReason *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
+	// The template language. For more languages, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
+	//
 	// example:
 	//
-	// 示例值示例值
+	// en
 	LanguageCode *string `json:"LanguageCode,omitempty" xml:"LanguageCode,omitempty"`
+	// The message content.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// test
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The message ID.
+	//
 	// example:
 	//
-	// 示例值
+	// 202509*******************
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// The message source.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// api
 	MessageSource *string `json:"MessageSource,omitempty" xml:"MessageSource,omitempty"`
+	// The message status.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// success
 	MessageStatus *string `json:"MessageStatus,omitempty" xml:"MessageStatus,omitempty"`
+	// The message status name.
+	//
 	// example:
 	//
-	// 示例值
+	// Success
 	MessageStatusName *string `json:"MessageStatusName,omitempty" xml:"MessageStatusName,omitempty"`
+	// The message type.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// INTERACTIVE
 	MessageType *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
+	// The message type name.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// interactive
 	MessageTypeName *string `json:"MessageTypeName,omitempty" xml:"MessageTypeName,omitempty"`
+	// The month of the message.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 202507
 	Month *string `json:"Month,omitempty" xml:"Month,omitempty"`
+	// The sending time.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 2025-07-11T01:16:49.761+00:00
 	SendTime *string `json:"SendTime,omitempty" xml:"SendTime,omitempty"`
+	// The template code.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 1103***************
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// The template name.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// picture_template
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The type.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// message
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The unique message ID.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 20250911******************************
 	UniqueMessageId *string `json:"UniqueMessageId,omitempty" xml:"UniqueMessageId,omitempty"`
+	// The user phone number.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 86177********
 	UserNumber *string `json:"UserNumber,omitempty" xml:"UserNumber,omitempty"`
 }
 

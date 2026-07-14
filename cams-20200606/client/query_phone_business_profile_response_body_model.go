@@ -30,9 +30,9 @@ type QueryPhoneBusinessProfileResponseBody struct {
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The status code of the request.
+	// The request status code.
 	//
-	// - OK indicates that the request is successful.
+	// - OK indicates that the request was successful.
 	//
 	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
@@ -40,7 +40,7 @@ type QueryPhoneBusinessProfileResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *QueryPhoneBusinessProfileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -54,11 +54,11 @@ type QueryPhoneBusinessProfileResponseBody struct {
 	//
 	// 90E63D28-E31D-1EB2-8939-A94866411B2O
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful.
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - **true**: successful.
+	// - **true**: The call was successful.
 	//
-	// - **false**: failed.
+	// - **false**: The call failed.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ func (s *QueryPhoneBusinessProfileResponseBody) Validate() error {
 }
 
 type QueryPhoneBusinessProfileResponseBodyData struct {
-	// The business profile.
+	// The about information.
 	//
 	// example:
 	//
@@ -162,7 +162,7 @@ type QueryPhoneBusinessProfileResponseBodyData struct {
 	//
 	// example@aliyun.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The profile picture.
+	// The profile picture URL.
 	//
 	// example:
 	//

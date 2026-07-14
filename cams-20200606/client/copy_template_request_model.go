@@ -26,10 +26,14 @@ type iCopyTemplateRequest interface {
 }
 
 type CopyTemplateRequest struct {
+	// The space ID of the ISV sub-customer.
+	//
 	// example:
 	//
 	// 示例值示例值示例值
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The language.
+	//
 	// example:
 	//
 	// 示例值示例值示例值
@@ -37,12 +41,16 @@ type CopyTemplateRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The template code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值
+	// 12456
 	SceneTemplateCode *string `json:"SceneTemplateCode,omitempty" xml:"SceneTemplateCode,omitempty"`
+	// The template name.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -20,8 +20,13 @@ type iUpdatePhoneEncryptionPublicKeyResponseBody interface {
 }
 
 type UpdatePhoneEncryptionPublicKeyResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The status code of the request. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	// The error code. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
@@ -33,7 +38,7 @@ type UpdatePhoneEncryptionPublicKeyResponseBody struct {
 	//
 	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

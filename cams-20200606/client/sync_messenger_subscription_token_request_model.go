@@ -26,7 +26,7 @@ type iSyncMessengerSubscriptionTokenRequest interface {
 }
 
 type SyncMessengerSubscriptionTokenRequest struct {
-	// The Space ID of the Independent Software Vendor (ISV) sub-customer or the instance ID of the direct customer.
+	// The space ID of the ISV sub-customer or the instance ID of the direct customer.
 	//
 	// This parameter is required.
 	//
@@ -41,7 +41,7 @@ type SyncMessengerSubscriptionTokenRequest struct {
 	// 20399***
 	CustomAudienceId *string `json:"CustomAudienceId,omitempty" xml:"CustomAudienceId,omitempty"`
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The Page ID.
+	// The PageId of Messenger.
 	//
 	// This parameter is required.
 	//

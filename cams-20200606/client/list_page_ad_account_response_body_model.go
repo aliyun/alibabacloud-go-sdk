@@ -24,20 +24,42 @@ type iListPageAdAccountResponseBody interface {
 }
 
 type ListPageAdAccountResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// 无
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The request status code.
+	//
+	// - OK indicates that the request was successful.
+	//
+	// - For other error codes, refer to [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	//
 	// example:
 	//
-	// 示例值示例值
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data object.
 	Data []*ListPageAdAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error message.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 39**
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
+	//
 	// example:
 	//
 	// true
@@ -120,18 +142,26 @@ func (s *ListPageAdAccountResponseBody) Validate() error {
 }
 
 type ListPageAdAccountResponseBodyData struct {
+	// The Meta ad account ID.
+	//
 	// example:
 	//
 	// 29393****
 	AdAccountId *string `json:"AdAccountId,omitempty" xml:"AdAccountId,omitempty"`
+	// The name of the ad account.
+	//
 	// example:
 	//
 	// Alibaba
 	AdAccountName *string `json:"AdAccountName,omitempty" xml:"AdAccountName,omitempty"`
+	// The currency.
+	//
 	// example:
 	//
 	// USD
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The PageId of Messenger.
+	//
 	// example:
 	//
 	// 2030***

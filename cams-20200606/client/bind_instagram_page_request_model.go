@@ -24,6 +24,8 @@ type iBindInstagramPageRequest interface {
 }
 
 type BindInstagramPageRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -31,12 +33,16 @@ type BindInstagramPageRequest struct {
 	// 示例值
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 14711522522
 	PageId *string `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	// The region of the instance.
+	//
 	// example:
 	//
 	// ap-southeast-1

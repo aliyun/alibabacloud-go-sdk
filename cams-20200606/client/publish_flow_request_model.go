@@ -22,15 +22,25 @@ type iPublishFlowRequest interface {
 }
 
 type PublishFlowRequest struct {
+	// The space ID of the ISV sub-customer or the instance ID of the direct customer. You can view the Space ID on the
+	//
+	// <props="china">[Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement)
+	//
+	// <props="intl">[Channel Management](https://chatapp.console.alibabacloud.com/CustomerList)
+	//
+	// page.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// cams-kei****
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The Flow ID, which is the FlowId returned by the [CreateFlow](https://help.aliyun.com/document_detail/2638742.html) operation when you create a WhatsApp Flow.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 333993838***
 	FlowId               *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

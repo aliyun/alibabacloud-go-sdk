@@ -28,23 +28,36 @@ type iOnlineFlowVersionRequest interface {
 }
 
 type OnlineFlowVersionRequest struct {
+	// The business tenant code. The default value is ALICOM_OPAAS.
+	//
 	// example:
 	//
-	// 示例值示例值
-	BizCode   *string                `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// Business extension information. The default value is an empty object.
+	//
+	// example:
+	//
+	// {}
 	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// The flow code. View the flow code in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder).
+	//
 	// example:
 	//
-	// 示例值示例值
+	// f4912c16943b4dfba44bd6fedacf****
 	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// The flow version. In the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder), click the flow name to open the orchestration canvas and view the flow version.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 1
 	FlowVersion *string `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The remarks for the flow. You can view the remarks in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder).
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 通过API触发下发验证模板
 	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

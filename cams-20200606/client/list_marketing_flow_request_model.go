@@ -36,36 +36,57 @@ type iListMarketingFlowRequest interface {
 }
 
 type ListMarketingFlowRequest struct {
+	// The campaign code. You can use the system code or modify it to use a custom code.
+	//
 	// example:
 	//
 	// rewrwerw
 	ActivityCode *string `json:"ActivityCode,omitempty" xml:"ActivityCode,omitempty"`
+	// The name of the node task instance.
+	//
 	// example:
 	//
 	// werewew
 	ActivityName *string `json:"ActivityName,omitempty" xml:"ActivityName,omitempty"`
+	// The campaign status.
+	//
 	// example:
 	//
 	// sucess
 	ActivityStatus *string `json:"ActivityStatus,omitempty" xml:"ActivityStatus,omitempty"`
+	// The business tenant code. Default value: ALICOM_OPAAS.
+	//
 	// example:
 	//
-	// 示例值
-	BizCode   *string                `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// The business extension information. Default value: "{}".
+	//
+	// example:
+	//
+	// {}
 	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
 	OwnerId   *int64                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 1
 	PageIndex *string `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 1
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the associated flow.
+	//
 	// example:
 	//
 	// asdfsdfdsfs
 	RelatedFlowCode *string `json:"RelatedFlowCode,omitempty" xml:"RelatedFlowCode,omitempty"`
+	// The ID of the associated group.
+	//
 	// example:
 	//
 	// 68

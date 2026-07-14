@@ -32,7 +32,7 @@ type iUpdateChatGroupRequest interface {
 }
 
 type UpdateChatGroupRequest struct {
-	// The business number. To view the business numbers, call the [ListChatGroup](https://help.aliyun.com/document_detail/2932629.html) operation.
+	// The business phone number. You can view the business phone number by calling the [ListChatGroup](https://help.aliyun.com/document_detail/2932629.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -40,19 +40,17 @@ type UpdateChatGroupRequest struct {
 	//
 	// 8613800***
 	BusinessNumber *string `json:"BusinessNumber,omitempty" xml:"BusinessNumber,omitempty"`
-	// The channel type. Valid value:
+	// The channel type. Valid values:
 	//
 	// - **WHATSAPP**.
 	//
-	// > Only the WhatsApp channel is supported.
+	// > Only the WhatsApp channel type is supported.
 	//
 	// example:
 	//
 	// WHATSAPP
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
-	// The Space ID of the ISV sub-customer, or the instance ID of the direct customer. View the Space ID on the
-	//
-	// <props="china">[Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[Channel Management](https://chatapp.console.alibabacloud.com/CustomerList) page.
+	// The space ID of the ISV sub-customer, which is also the instance ID. This is the channel ID, which can be viewed on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
 	//
 	// This parameter is required.
 	//
@@ -64,9 +62,9 @@ type UpdateChatGroupRequest struct {
 	//
 	// example:
 	//
-	// Test
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The group ID. To view the group IDs, call the [ListChatGroup](https://help.aliyun.com/document_detail/2932629.html) operation.
+	// The group ID. You can view the group ID by calling the [ListChatGroup](https://help.aliyun.com/document_detail/2932629.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -77,27 +75,21 @@ type UpdateChatGroupRequest struct {
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The group profile picture.
 	//
-	// > Image requirements
+	// > Image restrictions:
 	//
-	// >
+	// > - Supported MIME type: image/jpeg
 	//
-	// > - Supported MIME type: image/jpeg.
+	// > - Maximum image size: 5 MB
 	//
-	// >
-	//
-	// > - Maximum file size: 5 MB.
-	//
-	// >
-	//
-	// > - The image must be square. Minimum dimensions: 192x192 pixels.
+	// > - The image must be square with a minimum dimension of 192 × 192 pixels.
 	ProfilePictureFile   *string `json:"ProfilePictureFile,omitempty" xml:"ProfilePictureFile,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The group title.
+	// The group subject.
 	//
 	// example:
 	//
-	// This is a test title.
+	// test title
 	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
 }
 

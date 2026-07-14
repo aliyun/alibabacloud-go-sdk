@@ -24,14 +24,23 @@ type iDeleteChatFlowShrinkRequest interface {
 }
 
 type DeleteChatFlowShrinkRequest struct {
+	// The business tenant code. The default value is ALICOM_OPAAS.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
-	BizCode         *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// The extended business information. The default value is an empty collection.
+	//
+	// example:
+	//
+	// {}
 	BizExtendShrink *string `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// The flow code. View the flow code in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder).
+	//
 	// example:
 	//
-	// 示例值
+	// 9ccc41**************************
 	FlowCode             *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

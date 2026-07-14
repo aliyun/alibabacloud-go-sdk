@@ -24,19 +24,25 @@ type iGetViberPauseTimesResponseBody interface {
 }
 
 type GetViberPauseTimesResponseBody struct {
+	// example:
+	//
+	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//
-	// 示例值示例值示例值
-	Code *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 11
 	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
 	// example:
 	//
-	// 示例值示例值示例值
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// example:
 	//
-	// 示例值
+	// 90E63D28-E31D-1EB2**9-A94866411B2O
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// example:
 	//

@@ -20,6 +20,8 @@ type iDeleteContactsByIdsRequest interface {
 }
 
 type DeleteContactsByIdsRequest struct {
+	// The list of contact codes, separated by commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:

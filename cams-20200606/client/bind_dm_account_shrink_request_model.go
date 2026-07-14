@@ -24,18 +24,24 @@ type iBindDmAccountShrinkRequest interface {
 }
 
 type BindDmAccountShrinkRequest struct {
+	// The account code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 示例值示例值示例值
 	AccountCode *string `json:"AccountCode,omitempty" xml:"AccountCode,omitempty"`
+	// The SpaceId of the ISV sub-customer.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 示例值示例值
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The extended attributes.
+	//
 	// This parameter is required.
 	ExtendAttrShrink     *string `json:"ExtendAttr,omitempty" xml:"ExtendAttr,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

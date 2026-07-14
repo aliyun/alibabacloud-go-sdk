@@ -34,37 +34,70 @@ type iListChatFlowShrinkRequest interface {
 }
 
 type ListChatFlowShrinkRequest struct {
+	// The business tenant code. Default value: ALICOM_OPAAS.
+	//
 	// example:
 	//
-	// 示例值示例值
-	BizCode         *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// The business extension information. Default value: an empty collection.
+	//
+	// example:
+	//
+	// {}
 	BizExtendShrink *string `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// The flow trigger type. Valid values:
+	//
+	// - TriggeredManually
+	//
+	// - TriggeredByWhatsApp
+	//
+	// - TriggeredByInstagram
+	//
+	// - TriggeredByViber
+	//
+	// - TriggeredByMessenger
+	//
 	// example:
 	//
-	// 示例值
+	// TriggeredByWhatsApp
 	FlowTriggerType *string `json:"FlowTriggerType,omitempty" xml:"FlowTriggerType,omitempty"`
+	// The search keyword. This parameter is used for fuzzy match of flow names.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// LLM
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
-	// 41
+	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
-	// 42
+	// 20
 	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Specifies whether to return the online status. Valid values:
+	//
+	// - true: Yes.
+	//
+	// - false: No.
+	//
 	// example:
 	//
 	// true
 	ReturnWithOnlineVersion *bool `json:"ReturnWithOnlineVersion,omitempty" xml:"ReturnWithOnlineVersion,omitempty"`
+	// The flow status. Default value: NORMAL.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// NORMAL
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 

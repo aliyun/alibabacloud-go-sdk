@@ -24,12 +24,17 @@ type iAddAddressRecoverSuspendRequest interface {
 }
 
 type AddAddressRecoverSuspendRequest struct {
+	// The audit record.
 	AuditRecord *AddAddressRecoverSuspendRequestAuditRecord `json:"AuditRecord,omitempty" xml:"AuditRecord,omitempty" type:"Struct"`
+	// The customer space ID.
+	//
 	// example:
 	//
 	// 示例值示例值示例值
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The request type.
+	//
 	// example:
 	//
 	// 示例值
@@ -110,16 +115,24 @@ func (s *AddAddressRecoverSuspendRequest) Validate() error {
 }
 
 type AddAddressRecoverSuspendRequestAuditRecord struct {
+	// The reason for the application.
+	//
 	// example:
 	//
 	// 示例值示例值示例值
-	ApplyReason                            *string   `json:"ApplyReason,omitempty" xml:"ApplyReason,omitempty"`
-	MessageDestinationCountry              []*string `json:"MessageDestinationCountry,omitempty" xml:"MessageDestinationCountry,omitempty" type:"Repeated"`
+	ApplyReason *string `json:"ApplyReason,omitempty" xml:"ApplyReason,omitempty"`
+	// The list of destination countries for messages.
+	MessageDestinationCountry []*string `json:"MessageDestinationCountry,omitempty" xml:"MessageDestinationCountry,omitempty" type:"Repeated"`
+	// The list of international destination countries for messages.
 	MessageDestinationInternationalCountry []*string `json:"MessageDestinationInternationalCountry,omitempty" xml:"MessageDestinationInternationalCountry,omitempty" type:"Repeated"`
+	// The recovery date.
+	//
 	// example:
 	//
 	// 示例值示例值
 	RecoveryDate *string `json:"RecoveryDate,omitempty" xml:"RecoveryDate,omitempty"`
+	// The suspension date.
+	//
 	// example:
 	//
 	// 示例值示例值

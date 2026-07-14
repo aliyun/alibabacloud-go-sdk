@@ -24,20 +24,42 @@ type iDeleteContactsByIdsResponseBody interface {
 }
 
 type DeleteContactsByIdsResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// 示例值
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// 示例值示例值
-	Message *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model   map[string]interface{} `json:"Model,omitempty" xml:"Model,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned result.
+	//
+	// example:
+	//
+	// True
+	Model map[string]interface{} `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 示例值示例值
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - **true**: The call was successful.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// false

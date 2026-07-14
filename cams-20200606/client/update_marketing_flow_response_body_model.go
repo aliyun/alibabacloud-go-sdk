@@ -24,23 +24,49 @@ type iUpdateMarketingFLowResponseBody interface {
 }
 
 type UpdateMarketingFLowResponseBody struct {
+	// The detailed reason why access was denied.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The request status code.
+	//
+	// - OK indicates that the request was successful.
+	//
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	//
 	// example:
 	//
-	// 示例值示例值
-	Code *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The result details of the monitoring task.
+	//
+	// example:
+	//
+	// True
 	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// true
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// ewtrew-fghdfg43564ZZ
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
+	//
 	// example:
 	//
-	// false
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 

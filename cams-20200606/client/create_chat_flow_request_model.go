@@ -28,25 +28,48 @@ type iCreateChatFlowRequest interface {
 }
 
 type CreateChatFlowRequest struct {
+	// The business tenant code. The default value is ALICOM_OPAAS.
+	//
 	// example:
 	//
-	// 示例值示例值
-	BizCode   *string                `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// Business extension information. The default value is an empty collection.
+	//
+	// example:
+	//
+	// {}
 	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// The trigger type for the flow. Valid values:
+	//
+	// - TriggeredManually
+	//
+	// - TriggeredByWhatsApp
+	//
+	// - TriggeredByMessenger
+	//
+	// - TriggeredByInstagram
+	//
+	// - TriggeredByViber
+	//
 	// example:
 	//
-	// 示例值
+	// TriggeredByWhatsApp
 	FlowTriggerType *string `json:"FlowTriggerType,omitempty" xml:"FlowTriggerType,omitempty"`
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The remarks for the flow.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 通过API触发下发验证模板
 	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The title of the flow.
+	//
 	// example:
 	//
-	// 示例值
+	// WhatsApp自动回复
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

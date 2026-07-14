@@ -36,28 +36,50 @@ type iAddGroupRequest interface {
 }
 
 type AddGroupRequest struct {
+	// The business tenant code.
+	//
 	// example:
 	//
 	// 示例值示例值示例值
-	BizCode   *string                `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// The business extension information.
+	//
+	// example:
+	//
+	// {}
 	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// The contact description.
+	//
 	// example:
 	//
 	// 15111111111
 	ContactDetails *string `json:"ContactDetails,omitempty" xml:"ContactDetails,omitempty"`
+	// The contact name.
+	//
 	// example:
 	//
 	// mary
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
+	// The country.
+	//
 	// example:
 	//
 	// China
 	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// The email address.
+	//
 	// example:
 	//
 	// 示例值示例值
-	Email    *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The file path.
+	//
+	// example:
+	//
+	// src/main/resources/config/promql_node.yaml
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// The group name.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -65,6 +87,8 @@ type AddGroupRequest struct {
 	// testgroup
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The remarks.
+	//
 	// example:
 	//
 	// test

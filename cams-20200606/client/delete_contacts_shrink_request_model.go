@@ -37,19 +37,19 @@ type DeleteContactsShrinkRequest struct {
 	BizExtendShrink *string `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
 	// example:
 	//
-	// 示例值示例值
+	// 1507486****
 	ContactDetails *string `json:"ContactDetails,omitempty" xml:"ContactDetails,omitempty"`
 	// example:
 	//
-	// 示例值示例值示例值
+	// hahaha
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
 	// example:
 	//
-	// 示例值
+	// China
 	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
 	// example:
 	//
-	// 示例值示例值示例值
+	// http://****
 	FilePath             *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

@@ -24,7 +24,7 @@ type iDeleteChatGroupInviteLinkResponseBody interface {
 }
 
 type DeleteChatGroupInviteLinkResponseBody struct {
-	// Details about the access denial.
+	// The details about the access denial.
 	//
 	// example:
 	//
@@ -58,11 +58,11 @@ type DeleteChatGroupInviteLinkResponseBody struct {
 	//
 	// 1
 	Result *int64 `json:"Result,omitempty" xml:"Result,omitempty"`
-	// Indicates if the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The call was successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: The call failed.
 	//
 	// example:
 	//

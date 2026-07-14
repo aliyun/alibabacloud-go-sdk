@@ -26,13 +26,13 @@ type RemoveContactByIdRequest struct {
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 3456456346**
 	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值
+	// 46546546546**
 	GroupId              *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

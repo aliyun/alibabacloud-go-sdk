@@ -20,6 +20,7 @@ type iDeprecateFlowResponseBody interface {
 }
 
 type DeprecateFlowResponseBody struct {
+	// The reason why access was denied.
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// OK indicates that the request was successful.
 	//

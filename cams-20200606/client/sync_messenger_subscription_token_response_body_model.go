@@ -24,7 +24,7 @@ type iSyncMessengerSubscriptionTokenResponseBody interface {
 }
 
 type SyncMessengerSubscriptionTokenResponseBody struct {
-	// Details about the access denial.
+	// The details about the access denial.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type SyncMessengerSubscriptionTokenResponseBody struct {
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The request status code.
 	//
-	// - A value of OK indicates that the request was successful.
+	// - OK indicates that the request was successful.
 	//
 	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
@@ -54,9 +54,9 @@ type SyncMessengerSubscriptionTokenResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true: successful.
+	// - true: Successful.
 	//
-	// - false: failed.
+	// - false: Failed.
 	//
 	// example:
 	//

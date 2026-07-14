@@ -38,37 +38,62 @@ type iAddContactsShrinkRequest interface {
 }
 
 type AddContactsShrinkRequest struct {
+	// The business code.
+	//
 	// example:
 	//
 	// 示例值示例值示例值
-	BizCode         *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// The business extension information. Default value: an empty collection.
+	//
+	// example:
+	//
+	// {}
 	BizExtendShrink *string `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// The description of the contact.
+	//
 	// example:
 	//
 	// 15111111111
 	ContactDetails *string `json:"ContactDetails,omitempty" xml:"ContactDetails,omitempty"`
+	// The name of the contact.
+	//
 	// example:
 	//
 	// mary
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
+	// The country.
+	//
 	// example:
 	//
 	// China
 	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// The email address.
+	//
 	// example:
 	//
 	// 示例值示例值
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The file path.
+	//
 	// example:
 	//
 	// 示例值示例值示例值
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// The user group information.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 示例值示例值
 	Groups *string `json:"Groups,omitempty" xml:"Groups,omitempty"`
+	// Indicates whether the back-to-origin IP address whitelist needs to be updated. This parameter returns true when the current back-to-origin IP address whitelist differs from the latest back-to-origin IP address whitelist.
+	//
+	// - true: The whitelist needs to be updated.
+	//
+	// - false: The whitelist does not need to be updated.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -76,6 +101,8 @@ type AddContactsShrinkRequest struct {
 	// true
 	NeedUpdate *bool  `json:"NeedUpdate,omitempty" xml:"NeedUpdate,omitempty"`
 	OwnerId    *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The remarks.
+	//
 	// example:
 	//
 	// test

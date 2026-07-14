@@ -36,7 +36,7 @@ type iModifyPhoneBusinessProfileShrinkRequest interface {
 }
 
 type ModifyPhoneBusinessProfileShrinkRequest struct {
-	// The business information.
+	// The about information.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type ModifyPhoneBusinessProfileShrinkRequest struct {
 	//
 	// Sichuan
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The space ID of the RAM user within the independent software vendor (ISV) account.
+	// The space ID of the ISV sub-customer.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type ModifyPhoneBusinessProfileShrinkRequest struct {
 	//
 	// 293483938849****
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The description of the phone number.
+	// The description.
 	//
 	// example:
 	//
@@ -69,7 +69,7 @@ type ModifyPhoneBusinessProfileShrinkRequest struct {
 	// aa@aliyun.com
 	Email   *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The mobile phone number.
+	// The phone number.
 	//
 	// This parameter is required.
 	//
@@ -77,7 +77,7 @@ type ModifyPhoneBusinessProfileShrinkRequest struct {
 	//
 	// 861380000****
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// The URL of the profile picture.
+	// The profile picture URL.
 	//
 	// example:
 	//
@@ -85,15 +85,13 @@ type ModifyPhoneBusinessProfileShrinkRequest struct {
 	ProfilePictureUrl    *string `json:"ProfilePictureUrl,omitempty" xml:"ProfilePictureUrl,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The industry.
-	//
-	// > Valid values: OTHER, AUTO, BEAUTY, APPAREL, EDU, ENTERTAIN, EVENT_PLAN, FINANCE, GROCERY, GOVT, HOTEL, HEALTH, NONPROFIT, PROF_SERVICES, RETAIL, TRAVEL, and RESTAURANT.
+	// The industry vertical.
 	//
 	// example:
 	//
 	// OTHER
 	Vertical *string `json:"Vertical,omitempty" xml:"Vertical,omitempty"`
-	// The URLs of the websites.
+	// The websites.
 	WebsitesShrink *string `json:"Websites,omitempty" xml:"Websites,omitempty"`
 }
 

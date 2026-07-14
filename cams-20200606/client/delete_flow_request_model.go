@@ -22,15 +22,19 @@ type iDeleteFlowRequest interface {
 }
 
 type DeleteFlowRequest struct {
+	// The SpaceId of the ISV sub-customer.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// cams-awlkj23a09jd
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The workflow ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// 346699123
 	FlowId               *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

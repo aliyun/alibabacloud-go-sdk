@@ -22,10 +22,13 @@ type iCreateWhatsappConversionApiResponseBody interface {
 }
 
 type CreateWhatsappConversionApiResponseBody struct {
+	// example:
+	//
+	// 无
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//
-	// 示例值示例值
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// example:
 	//

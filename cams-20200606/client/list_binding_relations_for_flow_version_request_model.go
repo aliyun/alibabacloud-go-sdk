@@ -22,17 +22,31 @@ type iListBindingRelationsForFlowVersionRequest interface {
 }
 
 type ListBindingRelationsForFlowVersionRequest struct {
+	// The channel type. Valid values:
+	//
+	// - INSTAGRAM
+	//
+	// - WHATSAPP
+	//
+	// - MESSENGER
+	//
+	// <props="intl">
+	//
+	// - VIBER
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值
+	// WHATSAPP
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// The flow code. You can view the flow code in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// 9ccc41**************************
 	FlowCode             *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

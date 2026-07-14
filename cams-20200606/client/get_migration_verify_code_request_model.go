@@ -26,7 +26,7 @@ type iGetMigrationVerifyCodeRequest interface {
 }
 
 type GetMigrationVerifyCodeRequest struct {
-	// The Space ID of the Independent Software Vendor (ISV) sub-customer.
+	// The space ID of the ISV sub-customer.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type GetMigrationVerifyCodeRequest struct {
 	//
 	// zh_CN
 	Locale *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
-	// The verification method.
+	// The verification code delivery method.
 	//
 	// This parameter is required.
 	//

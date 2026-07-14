@@ -26,7 +26,7 @@ type SyncFlowRequest struct {
 	//
 	// example:
 	//
-	// 示例值示例值
+	// cams-kei****
 	CustSpaceId          *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

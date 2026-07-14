@@ -24,20 +24,38 @@ type iBindInstagramPageResponseBody interface {
 }
 
 type BindInstagramPageResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// 无
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// ok
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data []*BindInstagramPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error message.
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// fdsfdsf-22fk***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - **true**: The call was successful.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// false
@@ -120,18 +138,26 @@ func (s *BindInstagramPageResponseBody) Validate() error {
 }
 
 type BindInstagramPageResponseBodyData struct {
+	// The account ID.
+	//
 	// example:
 	//
 	// 13243543543
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The connection status.
+	//
 	// example:
 	//
 	// connected
 	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
+	// The current page ID.
+	//
 	// example:
 	//
 	// 1234322333
 	PageId *string `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	// The page name.
+	//
 	// example:
 	//
 	// iwhalecloud

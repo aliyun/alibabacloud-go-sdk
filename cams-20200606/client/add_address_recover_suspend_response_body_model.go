@@ -24,20 +24,42 @@ type iAddAddressRecoverSuspendResponseBody interface {
 }
 
 type AddAddressRecoverSuspendResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// 示例值示例值
-	Code *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	//
+	// example:
+	//
+	// 示例值
 	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message. A success message is returned if the request succeeds. A failure reason is returned if the request fails.
+	//
 	// example:
 	//
 	// 示例值示例值
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 示例值示例值示例值
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
+	//
 	// example:
 	//
 	// false

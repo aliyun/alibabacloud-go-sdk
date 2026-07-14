@@ -24,7 +24,7 @@ type UnbindDmAccountRequest struct {
 	//
 	// example:
 	//
-	// 示例值
+	// cams-*
 	CustSpaceId          *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

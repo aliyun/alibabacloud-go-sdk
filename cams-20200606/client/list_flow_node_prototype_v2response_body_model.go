@@ -24,17 +24,34 @@ type iListFlowNodePrototypeV2ResponseBody interface {
 }
 
 type ListFlowNodePrototypeV2ResponseBody struct {
+	// Details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The error code. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	//
 	// example:
 	//
-	// 91
-	Code *int64                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	// OK
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *ListFlowNodePrototypeV2ResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
-	// 示例值示例值
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// None
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - true: The call was successful.
+	//
+	// - false: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -113,6 +130,7 @@ func (s *ListFlowNodePrototypeV2ResponseBody) Validate() error {
 }
 
 type ListFlowNodePrototypeV2ResponseBodyData struct {
+	// A list of the returned data.
 	Model []*ListFlowNodePrototypeV2ResponseBodyDataModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
 }
 
@@ -147,21 +165,47 @@ func (s *ListFlowNodePrototypeV2ResponseBodyData) Validate() error {
 }
 
 type ListFlowNodePrototypeV2ResponseBodyDataModel struct {
+	// The code of the component prototype.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// SendWhatsAppMessageNode
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The code of the component group.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// Core
 	GroupCode *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
+	// The public extension information. This is a JSON string that contains extension information for the frontend to display the flow component. The fields are described as follows:
+	//
+	// - en: The English information about the flow component.
+	//
+	// - zh: The Chinese information about the flow component.
+	//
+	// - name: The name of the flow component.
+	//
+	// - remark: The remarks on the flow component.
+	//
+	// - order: The display order of the flow component.
+	//
+	// - style: The style of the flow component.
+	//
+	// - svg: The URL of the flow component icon.
+	//
+	// - icon: This field is deprecated.
+	//
+	// - bgcolor: The background color of the icon.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// {\\"i18n\\": {\\"en\\": {\\"name\\": \\"Send a WhatsApp Message\\", \\"remark\\": \\"Send a message with the ability for the user to reply utilizing WhatsApp specific features.\\"}, \\"zh\\": {\\"name\\": \\"Send WhatsApp messages\\", \\"remark\\": \\"Send a message that allows users to reply using specific features of WhatsApp\\"}}, \\"order\\": \\"9000\\", \\"style\\": {\\"svg\\": \\"https://img.alicdn.com/***********************************\\", \\"icon\\": \\"https://img.alicdn.com/***********************************\\", \\"bgcolor\\": \\"blue\\"}}
 	PublicExtend *string `json:"PublicExtend,omitempty" xml:"PublicExtend,omitempty"`
+	// The status of the component prototype. The default value is NORMAL.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// NORMAL
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 

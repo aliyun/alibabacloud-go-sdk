@@ -22,13 +22,17 @@ type iDeleteMarketingFlowRequest interface {
 }
 
 type DeleteMarketingFlowRequest struct {
+	// The activity code. You can use the system-generated code or modify it to use a custom code.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 1111
 	ActivityCode *string `json:"ActivityCode,omitempty" xml:"ActivityCode,omitempty"`
+	// The activity ID (deprecated).
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 已弃用
 	ActivityId           *string `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

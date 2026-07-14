@@ -28,9 +28,9 @@ type iUpdateConversationalAutomationRequest interface {
 }
 
 type UpdateConversationalAutomationRequest struct {
-	// The commands.
+	// The list of commands.
 	Commands []*UpdateConversationalAutomationRequestCommands `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
-	// The space ID of the RAM user within the independent software vendor (ISV) account or the instance ID of the customer of Alibaba Cloud.
+	// The space ID of the ISV sub-customer or the instance ID of the direct customer.
 	//
 	// This parameter is required.
 	//
@@ -38,14 +38,14 @@ type UpdateConversationalAutomationRequest struct {
 	//
 	// 2993****
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// Specifies whether to enable the welcoming message.
+	// Specifies whether to enable the welcome message.
 	//
 	// example:
 	//
 	// true
 	EnableWelcomeMessage *bool  `json:"EnableWelcomeMessage,omitempty" xml:"EnableWelcomeMessage,omitempty"`
 	OwnerId              *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The phone number of the enterprise.
+	// The business phone number.
 	//
 	// This parameter is required.
 	//
@@ -53,7 +53,7 @@ type UpdateConversationalAutomationRequest struct {
 	//
 	// 86130000***
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// The opening remarks.
+	// The list of conversation starters.
 	Prompts              []*string `json:"Prompts,omitempty" xml:"Prompts,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -153,7 +153,7 @@ func (s *UpdateConversationalAutomationRequest) Validate() error {
 }
 
 type UpdateConversationalAutomationRequestCommands struct {
-	// The description of the command.
+	// The command description.
 	//
 	// example:
 	//

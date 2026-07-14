@@ -22,7 +22,7 @@ type iGetMigrationVerifyCodeResponseBody interface {
 }
 
 type GetMigrationVerifyCodeResponseBody struct {
-	// Details about the access denial.
+	// The details about the access denial.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type GetMigrationVerifyCodeResponseBody struct {
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The request status code.
 	//
-	// - A value of OK indicates that the request was successful.
+	// - OK indicates that the request was successful.
 	//
 	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//

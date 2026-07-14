@@ -24,7 +24,7 @@ type iChatappVerifyAndRegisterRequest interface {
 }
 
 type ChatappVerifyAndRegisterRequest struct {
-	// The space ID of the ISV sub-customer.
+	// The SpaceId of the ISV sub-customer.
 	//
 	// This parameter is required.
 	//

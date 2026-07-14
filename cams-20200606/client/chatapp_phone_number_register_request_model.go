@@ -22,7 +22,7 @@ type iChatappPhoneNumberRegisterRequest interface {
 }
 
 type ChatappPhoneNumberRegisterRequest struct {
-	// The Space ID of the Independent Software Vendor (ISV) sub-customer.
+	// The space ID of the ISV sub-customer.
 	//
 	// This parameter is required.
 	//

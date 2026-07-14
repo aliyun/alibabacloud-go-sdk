@@ -36,20 +36,25 @@ type iModifyChatappTemplateShrinkRequest interface {
 }
 
 type ModifyChatappTemplateShrinkRequest struct {
-	// The templatetype is immutable.
+	// The templatetype cannot be modified.
 	//
 	// example:
 	//
 	// text
-	Category             *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	CategoryChangePaused *bool   `json:"CategoryChangePaused,omitempty" xml:"CategoryChangePaused,omitempty"`
-	// A list of message template components.
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// Specifies whether to pause sending when a Utility template is changed to Marketing type.
 	//
-	// > When Category is AUTHENTICATION, Components cannot contain a node with Type set to HEADER. If Type is BODY or FOOTER, the Text content is empty and is automatically generated.
+	// example:
+	//
+	// 120
+	CategoryChangePaused *bool `json:"CategoryChangePaused,omitempty" xml:"CategoryChangePaused,omitempty"`
+	// The list of message template components.
+	//
+	// > When Category is set to AUTHENTICATION, Components cannot contain a node with Type set to HEADER. When Type is set to BODY or FOOTER and the Text content is empty, the content is automatically generated.
 	//
 	// This parameter is required.
 	ComponentsShrink *string `json:"Components,omitempty" xml:"Components,omitempty"`
-	// The Space ID of the ISV sub-customer, or the instance ID of a direct customer.
+	// The SpaceId of the ISV sub-customer or the instance ID of a direct customer.
 	//
 	// example:
 	//
@@ -57,23 +62,23 @@ type ModifyChatappTemplateShrinkRequest struct {
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	// Deprecated
 	//
-	// The WhatsApp Business Account (WABA) ID of the independent software vendor (ISV) customer.
+	// The ISV customer WabaId.
 	//
-	// > This parameter is deprecated. Use CustSpaceId instead.
+	// > Deprecated parameter. Use CustSpaceId instead.
 	//
 	// example:
 	//
 	// 65921621816****
 	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
-	// The template example.
+	// The examples for creating the template.
 	ExampleShrink *string `json:"Example,omitempty" xml:"Example,omitempty"`
-	// The ISV verification code. This code is used to verify that the RAM user is authorized by the ISV.
+	// The ISV verification code used to verify whether the RAM user is authorized by the ISV.
 	//
 	// example:
 	//
 	// ksiekdki39ksks93939
 	IsvCode *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
-	// The template language. For a list of language codes, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
+	// The template language. For detailed language codes, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
 	//
 	// This parameter is required.
 	//
@@ -81,11 +86,11 @@ type ModifyChatappTemplateShrinkRequest struct {
 	//
 	// en
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The time-to-live (TTL) of the template message in seconds.
+	// The validity period for sending template messages in WhatsApp.
 	//
-	// - For AUTHENTICATION templates, the value ranges from 30 to 900.
+	// - AUTHENTICATION: valid values are 30 to 900.
 	//
-	// - For UTILITY templates, the value ranges from 30 to 43,200.
+	// - UTILITY: valid values are 30 to 43200.
 	//
 	// example:
 	//
@@ -103,7 +108,7 @@ type ModifyChatappTemplateShrinkRequest struct {
 	//
 	// test_name
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The template type.
+	// The templatetype.
 	//
 	// - **WHATSAPP**
 	//

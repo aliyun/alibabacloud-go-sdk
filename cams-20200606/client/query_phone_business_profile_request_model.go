@@ -22,7 +22,7 @@ type iQueryPhoneBusinessProfileRequest interface {
 }
 
 type QueryPhoneBusinessProfileRequest struct {
-	// The Space ID of the independent software vendor (ISV) sub-customer.
+	// The space ID of the ISV sub-customer.
 	//
 	// This parameter is required.
 	//

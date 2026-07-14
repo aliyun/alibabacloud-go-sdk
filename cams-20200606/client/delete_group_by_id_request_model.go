@@ -24,7 +24,7 @@ type DeleteGroupByIdRequest struct {
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 112
 	GroupId              *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

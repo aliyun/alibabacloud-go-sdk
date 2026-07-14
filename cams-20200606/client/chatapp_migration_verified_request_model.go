@@ -24,7 +24,7 @@ type iChatappMigrationVerifiedRequest interface {
 }
 
 type ChatappMigrationVerifiedRequest struct {
-	// The Space ID of the Independent Software Vendor (ISV) sub-customer.
+	// The space ID of the ISV sub-customer.
 	//
 	// This parameter is required.
 	//

@@ -28,25 +28,35 @@ type iModifyFlowShrinkRequest interface {
 }
 
 type ModifyFlowShrinkRequest struct {
+	// The folder.
+	//
 	// This parameter is required.
 	CategoriesShrink *string `json:"Categories,omitempty" xml:"Categories,omitempty"`
+	// The space ID of the ISV sub-customer.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// cams-1sdkjwen2
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The URL of the WA Flow Endpoint
+	//
 	// example:
 	//
 	// http://www.***.com
 	EndpointUri *string `json:"EndpointUri,omitempty" xml:"EndpointUri,omitempty"`
+	// The ID of the flow.
+	//
 	// example:
 	//
-	// 示例值
+	// 21231232312
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The name of the flow.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// Flow-**001
 	FlowName             *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

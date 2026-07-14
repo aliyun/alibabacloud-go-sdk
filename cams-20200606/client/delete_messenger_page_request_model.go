@@ -26,7 +26,7 @@ type DeleteMessengerPageRequest struct {
 	//
 	// example:
 	//
-	// 示例值示例值
+	// e01-in-71cc15xxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// This parameter is required.

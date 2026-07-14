@@ -24,10 +24,13 @@ type iDeleteGroupByIdResponseBody interface {
 }
 
 type DeleteGroupByIdResponseBody struct {
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//
-	// 示例值示例值
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// example:
 	//
@@ -39,7 +42,7 @@ type DeleteGroupByIdResponseBody struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// example:
 	//
-	// 示例值示例值
+	// 1223-1111
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// example:
 	//

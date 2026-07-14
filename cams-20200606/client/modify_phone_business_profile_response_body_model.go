@@ -28,29 +28,33 @@ type ModifyPhoneBusinessProfileResponseBody struct {
 	//
 	// 无
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The URL of the website.
+	// The request status code.
+	//
+	// - OK indicates that the request was successful.
+	//
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the request.
+	// The prompt message. A value is returned when an exception occurs.
 	//
 	// example:
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The websites.
+	// The request ID.
 	//
 	// example:
 	//
 	// 90E63D28-E31D-1EB2-8939-A94866411B2O
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - **true**
+	// - **true**: The call was successful.
 	//
-	// - **false**
+	// - **false**: The call failed.
 	//
 	// example:
 	//

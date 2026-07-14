@@ -60,9 +60,7 @@ type SendChatappMassMessageRequest struct {
 	//
 	// - **instagram**
 	//
-	// <props="intl">
-	//
-	// - **viber**
+	// <props="intl">- **viber**
 	//
 	// This parameter is required.
 	//
@@ -70,7 +68,7 @@ type SendChatappMassMessageRequest struct {
 	//
 	// whatsapp
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
-	// The Space ID of the ISV sub-customer, or the instance ID for a direct customer. View it on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) page.
+	// The ISV sub-customer SpaceId or direct customer instance ID. You can view it on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) page.
 	//
 	// example:
 	//
@@ -78,57 +76,51 @@ type SendChatappMassMessageRequest struct {
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	// Deprecated
 	//
-	// The WhatsApp Business Account (WABA) ID of the Independent Software Vendor (ISV) customer. This is a deprecated parameter. Use CustSpaceId instead, which is the direct customer\\"s instance ID. View the ID on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) page.
+	// The ISV customer WABA ID. This parameter is deprecated. Use CustSpaceId instead, which is the direct customer instance ID. You can view it on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) page.
 	//
 	// example:
 	//
 	// cams-8c8*********
 	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
-	// The custom fallback content. This parameter is for the international site (alibabacloud.com). You can ignore it for the China site (aliyun.com).
+	// The custom fallback content. This parameter is for the China site (Chinese). China site users can ignore this parameter.
 	//
 	// example:
 	//
 	// Fallback SMS
 	FallBackContent *string `json:"FallBackContent,omitempty" xml:"FallBackContent,omitempty"`
-	// The time to trigger a fallback. This parameter is for the international site (alibabacloud.com). You can ignore it for the China site (aliyun.com).<props="intl">If a delivery receipt is not returned within the specified time, a fallback is triggered. If you leave this parameter empty, the fallback is not determined by time. A fallback is triggered only when the message fails to be sent or a failed status report is received. Unit: seconds. Minimum value: 60. Maximum value: 43200.
+	// The fallback trigger time. This parameter is for the international site. China site users can ignore this parameter. <props="intl">If no delivery receipt is returned within the specified time, the fallback is triggered. If this parameter is not specified, the fallback is triggered only when the message fails to send or a failure status report is received. Unit: seconds. Minimum value: 60. Maximum value: 43200.
 	//
 	// example:
 	//
 	// 120
 	FallBackDuration *int32 `json:"FallBackDuration,omitempty" xml:"FallBackDuration,omitempty"`
-	// The fallback policy ID. This parameter is for the international site (alibabacloud.com). You can ignore it for the China site (aliyun.com).<props="intl">View the policy ID on the [**Fallback Policy**](https://chatapp.console.alibabacloud.com/FallbackStrategy) page.
+	// The fallback policy ID. This parameter is for the China site (Chinese). China site users can ignore this parameter. <props="intl">You can view the policy ID on the [**Fallback Policy**](https://chatapp.console.alibabacloud.com/FallbackStrategy) page.
 	//
 	// example:
 	//
 	// S0****
 	FallBackId *string `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
-	// The fallback rule. This parameter is for the international site (alibabacloud.com). You can ignore it for the China site (aliyun.com). <props="intl">Valid values:
+	// The fallback rule. This parameter is for the international site. China site users can ignore this parameter.
 	//
-	// <props="intl">
+	// <props="intl">Valid values:
 	//
-	// - **undelivered**: A fallback is triggered if the message cannot be delivered to the recipient. This rule requires that the template and parameters pass verification before sending. The rule does not apply if the message is blocked from sending, for example, due to a blacklisted template or phone number. This is the default rule if this parameter is empty.
+	// <props="intl">- **undelivered**: the fallback is triggered when the message cannot be delivered to the device. During sending, the template and parameters must pass validation. Blocked templates or blocked numbers are not validated. This rule is used by default if the parameter value is empty.
 	//
-	//
-	//
-	// <props="intl">
-	//
-	// - **sentFailed**: A fallback is triggered if the template, template variables, or other parameters fail verification. Only the channelType, type, messageType, to, and the existence of the from parameter are strictly verified.
+	// <props="intl">- **sentFailed**: the fallback is triggered when validation of the template or template variables fails. Only channelType, type, messageType, to, and from (whether it exists) are strictly validated.
 	//
 	// example:
 	//
 	// undelivered
 	FallBackRule *string `json:"FallBackRule,omitempty" xml:"FallBackRule,omitempty"`
-	// The sender\\"s number.
+	// The sender phone number.
 	//
-	// - If ChannelType is **whatsapp**, this is the phone number registered and bound with WhatsApp. View the number on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Manage*	- > **WABA Management*	- > **Phone Number Management*	- page.
+	// - If ChannelType is **whatsapp**, this is the phone number registered and bindng with WhatsApp. You can view it on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Management*	- > **WABA Management*	- > **Phone Number Management*	- page.
 	//
-	// - If ChannelType is **messenger**, this is the Page ID. View the ID on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Manage*	- > **Facebook Homepage*	- page.
+	// - If ChannelType is **messenger**, this is the Page ID. You can view it on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Management*	- > **Public Page*	- page.
 	//
-	// - If ChannelType is **instagram**, this is the Instagram professional account ID. View the ID on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Manage*	- > **Professional Account*	- page.
+	// - If ChannelType is **instagram**, this is the Instagram professional Account ID. You can view it on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Management*	- > **Professional Account*	- page.
 	//
-	// <props="intl">
-	//
-	// - If ChannelType is **viber**, this is the Viber service ID. View the ID on the [**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Manage*	- > **Service Number Management&#x20;**&#x70;age.
+	// <props="intl">- If ChannelType is **viber**, this is the Viber Service ID. You can view it on the [**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Management*	- > **Service ID Management*	- page.
 	//
 	// This parameter is required.
 	//
@@ -138,29 +130,25 @@ type SendChatappMassMessageRequest struct {
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
 	// Deprecated
 	//
-	// ISV verification code, used to verify if the user is authorized by an ISV. This parameter is deprecated.
+	// The ISV verification code used to verify whether a RAM user is authorized by the ISV. This parameter is deprecated and can be ignored.
 	//
 	// example:
 	//
 	// skdi3kksloslikd****
 	IsvCode *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
-	// The Viber message type. This parameter is for the international site (alibabacloud.com). You can ignore it for the China site (aliyun.com). <props="intl">Valid values:
+	// The Viber message type. This parameter is for the international site. China site users can ignore this parameter.
 	//
-	// <props="intl">
+	// <props="intl">Valid values:
 	//
-	// - **promotion**: marketing messages.
+	// <props="intl">- **pormotion**: marketing or promotional messages.
 	//
-	//
-	//
-	// <props="intl">
-	//
-	// - **transaction**: notification messages.
+	// <props="intl">- **transaction**: notification messages.
 	//
 	// example:
 	//
 	// promotion
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The language. For language codes, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
+	// The language. For a list of language codes, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
 	//
 	// This parameter is required.
 	//
@@ -171,9 +159,9 @@ type SendChatappMassMessageRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// A list of recipients.
+	// The list of recipient phone numbers.
 	SenderList []*SendChatappMassMessageRequestSenderList `json:"SenderList,omitempty" xml:"SenderList,omitempty" type:"Repeated"`
-	// A custom tag for a Viber message.
+	// The tag information. Custom tag information for Viber message sending.
 	//
 	// example:
 	//
@@ -185,19 +173,19 @@ type SendChatappMassMessageRequest struct {
 	//
 	// 10000****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The template code. View the template code on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Manage*	- > **Template Design*	- page.
+	// The template code. You can view the template code on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Management*	- > **Template Design*	- page.
 	//
 	// example:
 	//
 	// 1119***************
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	// The template name. View the template name on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Manage*	- > **Template Design*	- page.
+	// The template name. You can view the template name on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Management*	- > **Template Design*	- page.
 	//
 	// example:
 	//
 	// test_name
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The timeout period for sending a Viber message. This parameter is for the international site (alibabacloud.com). You can ignore it for the China site (aliyun.com).<props="intl">Unit: seconds. Valid values: 30 to 1209600.
+	// The timeout period for Viber message sending. This parameter is for the international site. China site users can ignore this parameter. <props="intl">Unit: seconds. Valid values: 30 to 1209600.
 	//
 	// example:
 	//
@@ -409,23 +397,25 @@ func (s *SendChatappMassMessageRequest) Validate() error {
 type SendChatappMassMessageRequestSenderList struct {
 	// The Flow message object.
 	FlowAction *SendChatappMassMessageRequestSenderListFlowAction `json:"FlowAction,omitempty" xml:"FlowAction,omitempty" type:"Struct"`
-	// The list of payloads for the buttons.
+	// The list of button trigger message identifiers.
 	Payload []*string `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Repeated"`
-	// Product information. This parameter is only for WhatsApp channels and refers to product information uploaded to Meta.
+	// The product information. This parameter applies only to WhatsApp channels and refers to the product information you uploaded on Meta.
 	ProductAction *SendChatappMassMessageRequestSenderListProductAction `json:"ProductAction,omitempty" xml:"ProductAction,omitempty" type:"Struct"`
+	// example:
+	//
+	// individual
+	RecipientType *string `json:"RecipientType,omitempty" xml:"RecipientType,omitempty"`
 	// The collection of template parameters.
 	TemplateParams map[string]*string `json:"TemplateParams,omitempty" xml:"TemplateParams,omitempty"`
-	// The recipient\\"s number.
+	// The recipient phone number.
 	//
-	// - If ChannelType is **whatsapp**, this is the recipient\\"s phone number.
+	// - If ChannelType is **whatsapp**, this is the phone number of the message recipient.
 	//
-	// - If ChannelType is **messenger**, this is a Page-Scoped User ID generated when a user interacts with a Facebook page.
+	// - If ChannelType is **messenger**, this is the Page-Scoped User ID generated when the user interacts with the Facebook page.
 	//
-	// - If ChannelType is **instagram**, this is an Instagram User ID generated when a user interacts with an Instagram business or creator account.
+	// - If ChannelType is **instagram**, this is the Instagram User ID generated when the user interacts with the Instagram business or creator account.
 	//
-	// <props="intl">
-	//
-	// - If ChannelType is **viber**, this is the recipient\\"s phone number.
+	// <props="intl">- If ChannelType is **viber**, this is the phone number of the message recipient.
 	//
 	// example:
 	//
@@ -453,6 +443,10 @@ func (s *SendChatappMassMessageRequestSenderList) GetProductAction() *SendChatap
 	return s.ProductAction
 }
 
+func (s *SendChatappMassMessageRequestSenderList) GetRecipientType() *string {
+	return s.RecipientType
+}
+
 func (s *SendChatappMassMessageRequestSenderList) GetTemplateParams() map[string]*string {
 	return s.TemplateParams
 }
@@ -473,6 +467,11 @@ func (s *SendChatappMassMessageRequestSenderList) SetPayload(v []*string) *SendC
 
 func (s *SendChatappMassMessageRequestSenderList) SetProductAction(v *SendChatappMassMessageRequestSenderListProductAction) *SendChatappMassMessageRequestSenderList {
 	s.ProductAction = v
+	return s
+}
+
+func (s *SendChatappMassMessageRequestSenderList) SetRecipientType(v string) *SendChatappMassMessageRequestSenderList {
+	s.RecipientType = &v
 	return s
 }
 
@@ -501,7 +500,7 @@ func (s *SendChatappMassMessageRequestSenderList) Validate() error {
 }
 
 type SendChatappMassMessageRequestSenderListFlowAction struct {
-	// A collection of default flow parameters.
+	// The collection of flow default parameters.
 	FlowActionData map[string]interface{} `json:"FlowActionData,omitempty" xml:"FlowActionData,omitempty"`
 	// The custom flow token information.
 	//
@@ -542,9 +541,9 @@ func (s *SendChatappMassMessageRequestSenderListFlowAction) Validate() error {
 }
 
 type SendChatappMassMessageRequestSenderListProductAction struct {
-	// The list of product categories. You can have up to 10 categories and 30 products.
+	// The list of product categories. A maximum of 10 categories and 30 products are supported.
 	Sections []*SendChatappMassMessageRequestSenderListProductActionSections `json:"Sections,omitempty" xml:"Sections,omitempty" type:"Repeated"`
-	// The product catalog ID. Get it by calling the [ListProductCatalog](https://help.aliyun.com/document_detail/2539783.html) API.
+	// The product catalog ID. You can obtain this ID by calling the [ListProductCatalog](https://help.aliyun.com/document_detail/2539783.html) operation.
 	//
 	// example:
 	//
@@ -594,7 +593,7 @@ func (s *SendChatappMassMessageRequestSenderListProductAction) Validate() error 
 type SendChatappMassMessageRequestSenderListProductActionSections struct {
 	// The list of product information.
 	ProductItems []*SendChatappMassMessageRequestSenderListProductActionSectionsProductItems `json:"ProductItems,omitempty" xml:"ProductItems,omitempty" type:"Repeated"`
-	// The category name. View it on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Manage*	- > **Catalog Management*	- > **Product Management*	- page or get it by calling the [ListProduct](https://help.aliyun.com/document_detail/2557786.html) API.
+	// The category name. You can view it on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Management*	- > **Catalog Management*	- > **Product Management*	- page, or obtain it by calling the [ListProduct](https://help.aliyun.com/document_detail/2557786.html) operation.
 	//
 	// example:
 	//
@@ -642,7 +641,7 @@ func (s *SendChatappMassMessageRequestSenderListProductActionSections) Validate(
 }
 
 type SendChatappMassMessageRequestSenderListProductActionSectionsProductItems struct {
-	// The product ID. View it on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Manage*	- > **Catalog Management*	- > **Product Management*	- page or get it by calling the [ListProduct](https://help.aliyun.com/document_detail/2557786.html) API.
+	// The product ID. You can view it on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Management*	- > **Catalog Management*	- > **Product Management*	- page, or obtain it by calling the [ListProduct](https://help.aliyun.com/document_detail/2557786.html) operation.
 	//
 	// example:
 	//

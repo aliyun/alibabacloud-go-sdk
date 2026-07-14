@@ -24,18 +24,24 @@ type iBindDmAccountRequest interface {
 }
 
 type BindDmAccountRequest struct {
+	// The account code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 示例值示例值示例值
 	AccountCode *string `json:"AccountCode,omitempty" xml:"AccountCode,omitempty"`
+	// The SpaceId of the ISV sub-customer.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 示例值示例值
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The extended attributes.
+	//
 	// This parameter is required.
 	ExtendAttr           *BindDmAccountRequestExtendAttr `json:"ExtendAttr,omitempty" xml:"ExtendAttr,omitempty" type:"Struct"`
 	OwnerId              *int64                          `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -115,12 +121,16 @@ func (s *BindDmAccountRequest) Validate() error {
 }
 
 type BindDmAccountRequestExtendAttr struct {
+	// The account name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 示例值示例值
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The send type.
+	//
 	// This parameter is required.
 	//
 	// example:

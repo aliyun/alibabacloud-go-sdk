@@ -22,16 +22,20 @@ type iListPhoneMessageQrdlRequest interface {
 }
 
 type ListPhoneMessageQrdlRequest struct {
+	// The space ID of the ISV sub-customer, or the instance ID of the direct customer.
+	//
 	// example:
 	//
-	// 示例值
+	// cams-8filvjc8snw
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The phone number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值
+	// 86163********
 	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

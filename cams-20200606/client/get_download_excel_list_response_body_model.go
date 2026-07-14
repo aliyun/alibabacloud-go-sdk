@@ -24,22 +24,25 @@ type iGetDownloadExcelListResponseBody interface {
 }
 
 type GetDownloadExcelListResponseBody struct {
+	// example:
+	//
+	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//
-	// 示例值示例值
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// example:
 	//
-	// 示例值示例值
+	// {}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// example:
 	//
-	// 示例值
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// example:
 	//
-	// 示例值示例值
+	// 39***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// example:
 	//

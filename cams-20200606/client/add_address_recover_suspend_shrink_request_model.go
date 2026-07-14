@@ -24,12 +24,17 @@ type iAddAddressRecoverSuspendShrinkRequest interface {
 }
 
 type AddAddressRecoverSuspendShrinkRequest struct {
+	// The audit record.
 	AuditRecordShrink *string `json:"AuditRecord,omitempty" xml:"AuditRecord,omitempty"`
+	// The customer space ID.
+	//
 	// example:
 	//
 	// 示例值示例值示例值
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The request type.
+	//
 	// example:
 	//
 	// 示例值

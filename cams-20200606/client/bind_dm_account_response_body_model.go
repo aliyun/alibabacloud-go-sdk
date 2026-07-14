@@ -24,23 +24,46 @@ type iBindDmAccountResponseBody interface {
 }
 
 type BindDmAccountResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// 无
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The request status code.
+	//
+	// - OK indicates that the request was successful.
+	//
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	//
 	// example:
 	//
 	// 示例值示例值
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	//
 	// example:
 	//
 	// 示例值
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// 示例值示例值
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 示例值示例值示例值
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - **true**: The call was successful.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// true

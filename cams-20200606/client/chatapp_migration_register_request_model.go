@@ -22,7 +22,7 @@ type iChatappMigrationRegisterRequest interface {
 }
 
 type ChatappMigrationRegisterRequest struct {
-	// None
+	// The space ID of the ISV sub-customer.
 	//
 	// This parameter is required.
 	//
@@ -31,7 +31,7 @@ type ChatappMigrationRegisterRequest struct {
 	// 29348393884****
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// phone number.
+	// The phone number.
 	//
 	// This parameter is required.
 	//

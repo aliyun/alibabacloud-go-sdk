@@ -26,11 +26,11 @@ type ChatappMigrationRegisterResponseBody struct {
 	//
 	// 无
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The HTTP status code returned.
+	// The request status code.
 	//
-	// - A value of OK indicates that the call is successful.
+	// - OK indicates that the request was successful.
 	//
-	// - Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ChatappMigrationRegisterResponseBody struct {
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

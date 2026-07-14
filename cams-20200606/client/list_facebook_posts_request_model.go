@@ -20,6 +20,8 @@ type iListFacebookPostsRequest interface {
 }
 
 type ListFacebookPostsRequest struct {
+	// The space ID of the ISV sub-customer.
+	//
 	// This parameter is required.
 	//
 	// example:

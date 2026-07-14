@@ -24,20 +24,32 @@ type iUpdateChatFlowLogSettingRequest interface {
 }
 
 type UpdateChatFlowLogSettingRequest struct {
+	// The flow code. You can view the flow code in the [Flow Builder](https://chatapp.console.aliyun.com/ChatFlowBuilder).
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 9ccc41**************************
 	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// The unique ID of the setting. You can obtain this ID by calling the [ReadChatFlowLogSetting](https://help.aliyun.com/document_detail/2937212.html) operation.
+	//
 	// example:
 	//
-	// 74
+	// 100
 	Id                   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The log enabling status. Valid values:
+	//
+	// - ENABLED: Enables log writing.
+	//
+	// - DISABLED: Disables log writing but retains the Simple Log Service log instance.
+	//
+	// - DELETED: Disables log writing and deletes the Simple Log Service log instance.
+	//
 	// example:
 	//
-	// 示例值
+	// ENABLED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 

@@ -34,7 +34,7 @@ type iListChatGroupShrinkRequest interface {
 }
 
 type ListChatGroupShrinkRequest struct {
-	// The business number.
+	// The business phone number.
 	//
 	// This parameter is required.
 	//
@@ -42,15 +42,15 @@ type ListChatGroupShrinkRequest struct {
 	//
 	// 8613800***
 	BusinessNumber *string `json:"BusinessNumber,omitempty" xml:"BusinessNumber,omitempty"`
-	// The channel type. Valid value: **WHATSAPP**.
+	// The channel type. Valid values: **WHATSAPP**.
 	//
-	// > Only the WhatsApp channel is supported.
+	// > Only the WhatsApp channel type is supported.
 	//
 	// example:
 	//
 	// WHATSAPP
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
-	// The instance ID (or SpaceId) of an ISV sub-customer, which also serves as the channel ID. You can find it on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
+	// The SpaceId or instance ID of the ISV sub-customer. This is the channel ID, which can be viewed on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
 	//
 	// This parameter is required.
 	//
@@ -89,17 +89,13 @@ type ListChatGroupShrinkRequest struct {
 	// example
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The paging information.
+	// The pagination information.
 	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// Example value
 	PageShrink           *string `json:"Page,omitempty" xml:"Page,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The group title.
+	// The group subject.
 	//
 	// example:
 	//

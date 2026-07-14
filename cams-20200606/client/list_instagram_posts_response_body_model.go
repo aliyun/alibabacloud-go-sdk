@@ -24,19 +24,22 @@ type iListInstagramPostsResponseBody interface {
 }
 
 type ListInstagramPostsResponseBody struct {
+	// example:
+	//
+	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//
-	// 示例值示例值
+	// OK
 	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data []*ListInstagramPostsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// example:
 	//
-	// 示例值
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// example:
 	//
-	// 示例值示例值
+	// 90E63D28-E31D-1EB2-8939-A***66411B2O
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// example:
 	//
@@ -122,31 +125,31 @@ func (s *ListInstagramPostsResponseBody) Validate() error {
 type ListInstagramPostsResponseBodyData struct {
 	// example:
 	//
-	// 示例值
+	// 2024-09-30T15:53:01+08:00
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	// example:
 	//
-	// 示例值示例值
+	// https://xxxxxxxx
 	FullPicture *string `json:"FullPicture,omitempty" xml:"FullPicture,omitempty"`
 	// example:
 	//
-	// 示例值
+	// 111
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// example:
 	//
-	// 示例值示例值
+	// image
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 	// example:
 	//
-	// 示例值示例值示例值
+	// https://qjck.oss-cn-shanghai.aliyuncs.com/xcx/2025-08-29/0bfa1c8d-d35f-2dd5-e082-7b00***ee9.jpg?x-oss-process=image/resize,m_lfit,w_1200
 	MediaUrl *string `json:"MediaUrl,omitempty" xml:"MediaUrl,omitempty"`
 	// example:
 	//
-	// 示例值示例值
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// example:
 	//
-	// 示例值示例值
+	// https://xxxxxxxx
 	PermalinkUrl *string `json:"PermalinkUrl,omitempty" xml:"PermalinkUrl,omitempty"`
 }
 

@@ -24,12 +24,16 @@ type iUpdateWabaMmlStatusRequest interface {
 }
 
 type UpdateWabaMmlStatusRequest struct {
+	// The Meta embedded authorization code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 示例值示例值
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The space ID or instance ID of the ISV sub-customer, which is the channel ID. You can view it on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -39,6 +43,8 @@ type UpdateWabaMmlStatusRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// waba Id。
+	//
 	// This parameter is required.
 	//
 	// example:

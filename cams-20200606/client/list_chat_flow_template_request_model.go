@@ -28,30 +28,50 @@ type iListChatFlowTemplateRequest interface {
 }
 
 type ListChatFlowTemplateRequest struct {
+	// The business tenant code. Default value: ALICOM_OPAAS.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值
+	// ALICOM_OPAAS
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// The keyword for the search. The operation performs a fuzzy query for template names based on this keyword.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// LLM
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
-	// 75
+	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
-	// 72
+	// 10
 	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The trigger type of the flow. Valid values:
+	//
+	// - TriggeredManually
+	//
+	// - TriggeredByWhatsApp
+	//
+	// - TriggeredByInstagram
+	//
+	// - TriggeredByViber
+	//
+	// - TriggeredByMessenger
+	//
 	// example:
 	//
-	// 示例值
+	// TriggeredByWhatsApp
 	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
 }
 

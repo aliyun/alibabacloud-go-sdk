@@ -28,23 +28,23 @@ type ChatappVerifyAndRegisterResponseBody struct {
 	//
 	// 无
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The HTTP status code returned.
+	// The status code.
 	//
-	// - A value of OK indicates that the call is successful.
+	// - OK indicates that the request was successful.
 	//
-	// - Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

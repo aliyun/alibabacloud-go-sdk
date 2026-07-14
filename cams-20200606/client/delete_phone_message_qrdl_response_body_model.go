@@ -20,6 +20,11 @@ type iDeletePhoneMessageQrdlResponseBody interface {
 }
 
 type DeletePhoneMessageQrdlResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The error code. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//

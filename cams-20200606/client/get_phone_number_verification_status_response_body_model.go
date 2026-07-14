@@ -22,6 +22,7 @@ type iGetPhoneNumberVerificationStatusResponseBody interface {
 }
 
 type GetPhoneNumberVerificationStatusResponseBody struct {
+	// The details about the access denial.
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The request status code.
 	//

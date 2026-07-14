@@ -37,15 +37,15 @@ type MoveContactToGroupRequest struct {
 	//
 	// example:
 	//
-	// 示例值示例值
+	// [{"id":1}]
 	Contacts *string `json:"Contacts,omitempty" xml:"Contacts,omitempty"`
 	// example:
 	//
-	// 示例值
+	// [{"id":1}]
 	LinkExistGroups *string `json:"LinkExistGroups,omitempty" xml:"LinkExistGroups,omitempty"`
 	// example:
 	//
-	// 示例值示例值示例值
+	// [{"groupName":"aaa"}]
 	LinkNewGroups        *string `json:"LinkNewGroups,omitempty" xml:"LinkNewGroups,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

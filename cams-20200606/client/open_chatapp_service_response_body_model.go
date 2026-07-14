@@ -20,10 +20,22 @@ type iOpenChatappServiceResponseBody interface {
 }
 
 type OpenChatappServiceResponseBody struct {
-	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	OpenStatus *bool   `json:"OpenStatus,omitempty" xml:"OpenStatus,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// true
+	OpenStatus *bool `json:"OpenStatus,omitempty" xml:"OpenStatus,omitempty"`
+	// example:
+	//
+	// 3D2FFEE6-368D-532D-87AA-F45B02DD28B7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s OpenChatappServiceResponseBody) String() string {
