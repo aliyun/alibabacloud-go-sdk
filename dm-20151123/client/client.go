@@ -293,7 +293,7 @@ func (client *Client) ApproveReplyMailAddress(request *ApproveReplyMailAddressRe
 
 // Summary:
 //
-// Sends emails in batch.
+// Sends emails in batches.
 //
 // @param tmpReq - BatchSendMailRequest
 //
@@ -417,7 +417,7 @@ func (client *Client) BatchSendMailWithOptions(tmpReq *BatchSendMailRequest, run
 
 // Summary:
 //
-// Sends emails in batch.
+// Sends emails in batches.
 //
 // @param request - BatchSendMailRequest
 //
@@ -6659,7 +6659,7 @@ func (client *Client) UpdateUser(request *UpdateUserRequest) (_result *UpdateUse
 
 // Summary:
 //
-// Validate an email address.
+// Validates an email address.
 //
 // @param request - ValidateEmailRequest
 //
@@ -6715,7 +6715,7 @@ func (client *Client) ValidateEmailWithOptions(request *ValidateEmailRequest, ru
 
 // Summary:
 //
-// Validate an email address.
+// Validates an email address.
 //
 // @param request - ValidateEmailRequest
 //

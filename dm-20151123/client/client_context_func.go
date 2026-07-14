@@ -121,7 +121,7 @@ func (client *Client) ApproveReplyMailAddressWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Sends emails in batch.
+// Sends emails in batches.
 //
 // @param tmpReq - BatchSendMailRequest
 //
@@ -4671,7 +4671,7 @@ func (client *Client) UpdateUserWithContext(ctx context.Context, tmpReq *UpdateU
 
 // Summary:
 //
-// Validate an email address.
+// Validates an email address.
 //
 // @param request - ValidateEmailRequest
 //

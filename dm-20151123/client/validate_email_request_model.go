@@ -20,13 +20,13 @@ type iValidateEmailRequest interface {
 }
 
 type ValidateEmailRequest struct {
-	// Specifies whether to check the graylist. Default value: false. Results will be sent as asynchronous notifications through EventBridge.
+	// Specifies whether to check the graylist. Default value: false. The result is asynchronously notified through EventBridge.
 	//
 	// example:
 	//
 	// true
 	CheckGraylist *bool `json:"CheckGraylist,omitempty" xml:"CheckGraylist,omitempty"`
-	// The email address to validate
+	// The email address to validate.
 	//
 	// This parameter is required.
 	//
@@ -34,17 +34,17 @@ type ValidateEmailRequest struct {
 	//
 	// xxx@yyy.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The detection type:
+	// The probe type. Valid values:
 	//
-	// - FULL: Enables all detection capabilities, including SMTP probing. Since SMTP probing involves remote connections, the overall latency is higher. This is suitable for scenarios that are not sensitive to response time. Each detection consumes 1 address validation quota.
+	// - FULL: Enables all detection capabilities, including SMTP probing. Because SMTP probing involves remote connections, the overall latency is high. This value is suitable for scenarios that are not sensitive to response time. Each detection consumes 1 address validation quota.
 	//
-	// - BASIC_ONLY: Enables all detection capabilities except SMTP probing, with low latency. This is suitable for scenarios sensitive to response time, such as real-time validation during registration to check whether an email address is a disposable email or an abnormal address such as MX forwarding, to defend against mass registration by malicious actors. Each detection consumes 1/3 of an address validation quota.
+	// - BASIC_ONLY: Enables all detection capabilities except SMTP probing, with low latency. This value is suitable for scenarios that are sensitive to response time, such as real-time validation during registration to check whether an email address is a disposable mailbox or an MX-forwarded abnormal address, to prevent batch registration by the cyber underground economy chain. Each detection consumes 1/3 of an address validation quota.
 	//
 	// example:
 	//
 	// FULL
 	ProbeType *string `json:"ProbeType,omitempty" xml:"ProbeType,omitempty"`
-	// Timeout period. Default value: 60 seconds.
+	// The timeout period. Default value: 60 seconds.
 	//
 	// example:
 	//

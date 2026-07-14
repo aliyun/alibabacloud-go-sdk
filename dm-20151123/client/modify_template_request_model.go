@@ -36,11 +36,7 @@ type iModifyTemplateRequest interface {
 }
 
 type ModifyTemplateRequest struct {
-	// The source channel through which the user accesses the service. Default value: 1. Valid values:
-	//
-	// - 1: Direct access through Alibaba Cloud.
-	//
-	// - 2: Access through a partner channel.
+	// The source channel through which the user connects. Default value: 1.
 	//
 	// example:
 	//
@@ -61,11 +57,7 @@ type ModifyTemplateRequest struct {
 	//
 	// <p>hello {name}</p>
 	SmsContent *string `json:"SmsContent,omitempty" xml:"SmsContent,omitempty"`
-	// The business type of the SMS template. This parameter is required only when the templatetype is SMS. Valid values:
-	//
-	// - 0: verification code
-	//
-	// - 2: notification or promotion.
+	// The business type of the SMS template. This parameter is required only when the templatetype is SMS.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iModifyTemplateResponseBody interface {
 }
 
 type ModifyTemplateResponseBody struct {
-	// The request ID.
+	// The unique request identifier.
 	//
 	// example:
 	//
