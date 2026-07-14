@@ -26,7 +26,7 @@ type iRestoreSnapshotRequest interface {
 }
 
 type RestoreSnapshotRequest struct {
-	// The idempotence token. Ensures that repeated requests do not execute the same operation more than once.
+	// The idempotency token. Ensures that repeated requests do not execute the same operation more than once.
 	//
 	// example:
 	//

@@ -26,7 +26,7 @@ type PauseSupabaseProjectRequest struct {
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The region ID.
 	//
-	// > Call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the available region IDs.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query available region IDs.
 	//
 	// example:
 	//

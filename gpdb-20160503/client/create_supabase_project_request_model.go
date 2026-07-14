@@ -60,13 +60,13 @@ type CreateSupabaseProjectRequest struct {
 	//
 	// TestPassword123!
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
-	// Specifies whether to enable auto start/stop. If this parameter is not specified, the default value is false.
+	// Specifies whether to enable auto start/stop. If this parameter is not specified, the default value false is used.
 	//
 	// example:
 	//
 	// false
 	AutoScale *bool `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
-	// The idempotency token. This token ensures that duplicate requests do not trigger the same operation more than once.
+	// The idempotency token. Ensures that duplicate requests do not result in duplicate operations.
 	//
 	// example:
 	//
@@ -82,19 +82,19 @@ type CreateSupabaseProjectRequest struct {
 	//
 	// - PL2
 	//
-	// - PL3.
+	// - PL3
 	//
 	// example:
 	//
 	// PL0
 	DiskPerformanceLevel *string `json:"DiskPerformanceLevel,omitempty" xml:"DiskPerformanceLevel,omitempty"`
-	// The DPI engine version. If this parameter is not specified, the default value PG15 is used.
+	// The DPI engine version. If this parameter is not specified, the default value PG15 is used. PG17 and later versions support the data sandbox (branch) feature.
 	//
 	// Valid values:
 	//
 	// - PG15: PostgreSQL 15.
 	//
-	// - PG17: PostgreSQL 17.
+	// - PG17: PostgreSQL 17, which supports the data sandbox feature.
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ type CreateSupabaseProjectRequest struct {
 	//
 	// supabase_demo
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The specifications of the Supabase project. The Free billing type uses free-tier specifications. For paid billing types, the specifications must match those available on the console.
+	// The specifications of the Supabase project. The Free billing type uses free-tier specifications. For paid billing types, the specifications must match those available in the console.
 	//
 	// This parameter is required.
 	//
@@ -170,7 +170,7 @@ type CreateSupabaseProjectRequest struct {
 	//
 	// 50
 	StorageSize *int64 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	// The subscription duration of the resource. This parameter takes effect only when PayType is set to PrePay. If this parameter is not specified, the default value is 1.
+	// The subscription duration. This parameter takes effect only when PayType is set to PrePay. If this parameter is not specified, the default value is 1.
 	//
 	// example:
 	//
@@ -192,7 +192,7 @@ type CreateSupabaseProjectRequest struct {
 	//
 	// vpc-bp1234567890
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The zone ID. The zone of the vSwitch specified by VSwitchId must be the same as the value of this parameter.
+	// The zone ID. The zone of the vSwitch specified by VSwitchId must be the same as this parameter value.
 	//
 	// This parameter is required.
 	//

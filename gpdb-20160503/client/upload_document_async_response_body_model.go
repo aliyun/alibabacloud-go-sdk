@@ -20,7 +20,7 @@ type iUploadDocumentAsyncResponseBody interface {
 }
 
 type UploadDocumentAsyncResponseBody struct {
-	// The job ID.
+	// The job ID, which is used to check the job status or cancel the job.
 	//
 	// example:
 	//
@@ -38,11 +38,11 @@ type UploadDocumentAsyncResponseBody struct {
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// API execution status, with the following values:
+	// The creation status. Valid values:
 	//
-	// - **success**: Execution succeeded.
+	// - success: The document was uploaded.
 	//
-	// - **fail**: Execution failed.
+	// - fail: The document failed to be uploaded.
 	//
 	// example:
 	//

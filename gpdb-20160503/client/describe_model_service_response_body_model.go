@@ -62,7 +62,7 @@ type DescribeModelServiceResponseBody struct {
 	//
 	// Qwen3-Embedding-8B
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	// Model parameters.
+	// The model parameters.
 	//
 	// example:
 	//
@@ -74,31 +74,31 @@ type DescribeModelServiceResponseBody struct {
 	//
 	// ms-xxxxxxxxx
 	ModelServiceId *string `json:"ModelServiceId,omitempty" xml:"ModelServiceId,omitempty"`
-	// The internal endpoint.
+	// The internal network connection string.
 	//
 	// example:
 	//
 	// http://ms-xxxxxxx.xxxx.rds.aliyuncs.com
 	PrivateConnectUrl *string `json:"PrivateConnectUrl,omitempty" xml:"PrivateConnectUrl,omitempty"`
-	// The public endpoint.
+	// The public network connection string.
 	//
 	// example:
 	//
 	// http://ms-xxxxxxx-o.xxxx.rds.aliyuncs.com
 	PublicConnectUrl *string `json:"PublicConnectUrl,omitempty" xml:"PublicConnectUrl,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A comma-separated list of IP addresses and CIDR blocks allowed to connect.
+	// The list of IP addresses in the IP whitelist, separated by commas.
 	//
 	// example:
 	//
 	// 127.0.0.1
 	SecurityIpList *string `json:"SecurityIpList,omitempty" xml:"SecurityIpList,omitempty"`
-	// The status of the model service.
+	// The model service status.
 	//
 	// example:
 	//

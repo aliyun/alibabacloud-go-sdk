@@ -14,7 +14,7 @@ type iResumeSupabaseProjectResponseBody interface {
 }
 
 type ResumeSupabaseProjectResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

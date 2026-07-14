@@ -50,13 +50,13 @@ type CreateBranchRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-426614174000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The branch description.
+	// The description of the branch.
 	//
 	// example:
 	//
 	// test branch
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time at which the branch automatically expires and is deleted. The value is in ISO 8601 UTC format.
+	// The time when the branch automatically expires and is deleted. The value is in the ISO 8601 UTC format.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type CreateBranchRequest struct {
 	//
 	// ParentData
 	InitSource *string `json:"InitSource,omitempty" xml:"InitSource,omitempty"`
-	// The parent branch ID. This parameter specifies the parent branch for the new branch or query condition.
+	// The ID of the parent branch. This parameter specifies the parent branch for the new branch or query condition.
 	//
 	// This parameter is required.
 	//
@@ -82,13 +82,13 @@ type CreateBranchRequest struct {
 	//
 	// br-main
 	ParentBranchId *string `json:"ParentBranchId,omitempty" xml:"ParentBranchId,omitempty"`
-	// The log sequence number (LSN) from the parent branch at which the branch is created.
+	// The log sequence number (LSN) selected when creating a branch from the parent branch.
 	//
 	// example:
 	//
 	// 0/3522648
 	ParentLsn *string `json:"ParentLsn,omitempty" xml:"ParentLsn,omitempty"`
-	// The point in time for data synchronization from the parent branch when creating the branch. The value is in ISO 8601 UTC format.
+	// The point in time for data synchronization when creating a branch from the parent branch. The value is in the ISO 8601 UTC format.
 	//
 	// Default value: the current time.
 	//
@@ -96,7 +96,7 @@ type CreateBranchRequest struct {
 	//
 	// 2026-04-08T09:11:12Z
 	ParentTimestamp *string `json:"ParentTimestamp,omitempty" xml:"ParentTimestamp,omitempty"`
-	// The Supabase project ID that corresponds to the primary branch.
+	// The ID of the Supabase project that corresponds to the primary branch.
 	//
 	// This parameter is required.
 	//

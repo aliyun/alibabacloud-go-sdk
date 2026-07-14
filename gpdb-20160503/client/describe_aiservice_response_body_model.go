@@ -34,13 +34,13 @@ type iDescribeAIServiceResponseBody interface {
 }
 
 type DescribeAIServiceResponseBody struct {
-	// The time when the service was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2026-03-01T00:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the service.
+	// The description.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type DescribeAIServiceResponseBody struct {
 	//
 	// 192.168.0.1/api-docs
 	PrivateApiDevUrl *string `json:"PrivateApiDevUrl,omitempty" xml:"PrivateApiDevUrl,omitempty"`
-	// The internal endpoint of the Workbench.
+	// The internal endpoint of the workbench.
 	//
 	// example:
 	//
@@ -64,19 +64,19 @@ type DescribeAIServiceResponseBody struct {
 	//
 	// 8.8.8.8/api-docs
 	PublicApiDevUrl *string `json:"PublicApiDevUrl,omitempty" xml:"PublicApiDevUrl,omitempty"`
-	// The public endpoint of the Workbench.
+	// The public endpoint of the workbench.
 	//
 	// example:
 	//
 	// 8.8.8.8
 	PublicWorkbenchUrl *string `json:"PublicWorkbenchUrl,omitempty" xml:"PublicWorkbenchUrl,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A comma-separated list of IP addresses in the IP address whitelist group.
+	// The IP addresses in the IP address whitelist group, separated by commas (,).
 	//
 	// example:
 	//
@@ -88,17 +88,17 @@ type DescribeAIServiceResponseBody struct {
 	//
 	// dramauser
 	ServiceAccount *string `json:"ServiceAccount,omitempty" xml:"ServiceAccount,omitempty"`
-	// The ID of the service.
+	// The service ID.
 	//
 	// example:
 	//
 	// drama-123456
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The status of the service. Valid values:
+	// The service status. Valid values:
 	//
-	// - deploying: The service is being deployed.
+	// - deploying: being deployed.
 	//
-	// - active: The service is running.
+	// - active: running.
 	//
 	// example:
 	//

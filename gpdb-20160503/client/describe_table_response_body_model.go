@@ -21,7 +21,7 @@ type iDescribeTableResponseBody interface {
 
 type DescribeTableResponseBody struct {
 	ColumnList *DescribeTableResponseBodyColumnList `json:"ColumnList,omitempty" xml:"ColumnList,omitempty" type:"Struct"`
-	// The returned message.
+	// The detailed information returned by the operation.
 	//
 	// example:
 	//
@@ -33,11 +33,11 @@ type DescribeTableResponseBody struct {
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the operation. Valid values:
+	// The execution status of the API operation. Valid values:
 	//
-	// 	- **success**
+	// - **success**: The execution was successful.
 	//
-	// 	- **fail**
+	// - **fail**: The execution failed.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type ModifySupabaseProjectResourceResponseBody struct {
 	//
 	// *********
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The Supabase project ID.
+	// The Supabase instance ID.
 	//
 	// example:
 	//

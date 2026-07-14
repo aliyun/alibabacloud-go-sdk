@@ -18,13 +18,13 @@ type iCreateBranchResponseBody interface {
 }
 
 type CreateBranchResponseBody struct {
-	// The branch ID. This ID uniquely identifies a Supabase branch.
+	// The branch ID, which uniquely identifies a Supabase branch.
 	//
 	// example:
 	//
 	// br-xxxx
 	BranchId *string `json:"BranchId,omitempty" xml:"BranchId,omitempty"`
-	// The Supabase project ID that corresponds to the primary branch.
+	// The ID of the Supabase project that corresponds to the primary branch.
 	//
 	// example:
 	//

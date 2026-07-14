@@ -54,7 +54,7 @@ type QueryKnowledgeBasesContentShrinkRequest struct {
 	//
 	// - RRF
 	//
-	// - Weight.
+	// - Weight
 	//
 	// example:
 	//

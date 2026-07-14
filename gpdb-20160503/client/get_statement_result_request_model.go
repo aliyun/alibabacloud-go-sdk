@@ -24,7 +24,7 @@ type iGetStatementResultRequest interface {
 }
 
 type GetStatementResultRequest struct {
-	// Instance ID. Can be obtained by calling DescribeDBInstances.
+	// The instance ID. You can call DescribeDBInstances to obtain the ID.
 	//
 	// This parameter is required.
 	//
@@ -32,13 +32,13 @@ type GetStatementResultRequest struct {
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// Database name.
+	// The database name.
 	//
 	// example:
 	//
 	// test
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// Task ID for asynchronous SQL execution.
+	// The task ID of the asynchronous SQL execution.
 	//
 	// This parameter is required.
 	//
@@ -47,7 +47,7 @@ type GetStatementResultRequest struct {
 	// 9A920F47-416A-4044-817C-7C2A72AD16D3
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Region ID where the instance is located.
+	// The region ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -55,9 +55,9 @@ type GetStatementResultRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Access credential. Created through the CreateSecret interface.
+	// The access credential. Created by calling the CreateSecret operation.
 	//
-	// > When accessing this interface with a sub-account, the sub-account must have the UseSecret or GetSecretValue permission for this SecretArn.
+	// > When you access this operation by using a RAM user, you must have the UseSecret or GetSecretValue permission on this SecretArn.
 	//
 	// This parameter is required.
 	//

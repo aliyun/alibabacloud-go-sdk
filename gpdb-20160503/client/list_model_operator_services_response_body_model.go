@@ -22,19 +22,28 @@ type iListModelOperatorServicesResponseBody interface {
 }
 
 type ListModelOperatorServicesResponseBody struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries on the current page.
+	//
 	// example:
 	//
 	// 1
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
-	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Services  []*ListModelOperatorServicesResponseBodyServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of services.
+	Services []*ListModelOperatorServicesResponseBodyServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 2
@@ -108,6 +117,8 @@ func (s *ListModelOperatorServicesResponseBody) Validate() error {
 }
 
 type ListModelOperatorServicesResponseBodyServices struct {
+	// The service ID.
+	//
 	// example:
 	//
 	// agdb-xxx

@@ -20,29 +20,29 @@ type iCreateIndexResponseBody interface {
 }
 
 type CreateIndexResponseBody struct {
-	// The job ID. It can be used to query the job status or cancel the job.
+	// The task ID, which is used to query the task status or cancel the task.
 	//
 	// example:
 	//
 	// 231460f8-75dc-405e-a669-0c5204887e91
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The returned message.
+	// The detailed information returned by the operation.
 	//
 	// example:
 	//
 	// Successfully create job
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the operation. Valid values:
+	// The execution status of the API operation. Valid values:
 	//
-	// 	- **success**
+	// - **success**: The operation was successful.
 	//
-	// 	- **fail**
+	// - **fail**: The operation failed.
 	//
 	// example:
 	//

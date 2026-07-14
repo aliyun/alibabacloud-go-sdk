@@ -40,7 +40,7 @@ type CreateSaasServiceRequest struct {
 	//
 	// - **Prepaid**: subscription.
 	//
-	// > - If you leave this parameter empty, a Free service is created by default.
+	// > - If you leave this parameter empty, a Free type is created by default.
 	//
 	// > - The subscription billing method offers discounts for purchases of one year or longer. Select a billing method as needed.
 	//
@@ -76,7 +76,7 @@ type CreateSaasServiceRequest struct {
 	//
 	// - **memroy**
 	//
-	// - **drama**.
+	// - **drama**
 	//
 	// This parameter is required.
 	//

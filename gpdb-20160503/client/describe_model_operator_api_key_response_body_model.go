@@ -24,26 +24,38 @@ type iDescribeModelOperatorApiKeyResponseBody interface {
 }
 
 type DescribeModelOperatorApiKeyResponseBody struct {
+	// The API key content.
+	//
 	// example:
 	//
 	// QEDGOTAJOG
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// API KEY ID。
+	//
 	// example:
 	//
 	// 1
 	ApiKeyId *int32 `json:"ApiKeyId,omitempty" xml:"ApiKeyId,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2026-06-01T00:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// test-apikey
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The endpoint.
+	//
 	// example:
 	//
 	// https://xxxx
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521

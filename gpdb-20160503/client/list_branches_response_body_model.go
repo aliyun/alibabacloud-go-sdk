@@ -27,13 +27,13 @@ type iListBranchesResponseBody interface {
 
 type ListBranchesResponseBody struct {
 	Branches *ListBranchesResponseBodyBranches `json:"Branches,omitempty" xml:"Branches,omitempty" type:"Struct"`
-	// The maximum number of records returned in this query.
+	// The maximum number of records to return in this request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. It is not required for the first query. For subsequent queries, use the NextToken returned from the previous query.
+	// The cursor for the paged query. You do not need to specify this parameter for the first request. For subsequent requests, use the NextToken value returned in the previous response for paging.
 	//
 	// example:
 	//
@@ -69,7 +69,7 @@ type ListBranchesResponseBody struct {
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of branches that match the query conditions.
+	// The total number of branches that match the query criteria.
 	//
 	// example:
 	//

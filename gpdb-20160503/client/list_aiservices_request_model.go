@@ -20,9 +20,9 @@ type iListAIServicesRequest interface {
 }
 
 type ListAIServicesRequest struct {
-	// The ID of the AnalyticDB for PostgreSQL instance.
+	// The instance ID.
 	//
-	// > To view details of all AnalyticDB for PostgreSQL instances in a region, including their instance IDs, call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a region, including instance IDs.
 	//
 	// This parameter is required.
 	//
@@ -30,13 +30,13 @@ type ListAIServicesRequest struct {
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values:
+	// The number of entries per page. Valid values:
 	//
 	// - 20
 	//
@@ -50,7 +50,7 @@ type ListAIServicesRequest struct {
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The type of the AI service. Valid value: drama.
+	// The service type. Currently, only drama is supported.
 	//
 	// This parameter is required.
 	//

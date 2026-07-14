@@ -22,15 +22,15 @@ type iListSaasServiceResponseBody interface {
 }
 
 type ListSaasServiceResponseBody struct {
-	// The list of service details.
+	// The list of instance details.
 	Items []*ListSaasServiceResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The maximum number of entries returned in this request. Default value: 10.
+	// The maximum number of entries to return. Default value: 10.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query to begin with.
+	// The pagination token for the next query.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ type ListSaasServiceResponseBodyItems struct {
 	//
 	// 2021-10-09T04:54:08Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The computing resources.
+	// The compute resource.
 	//
 	// example:
 	//
@@ -137,9 +137,9 @@ type ListSaasServiceResponseBodyItems struct {
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The billing type. Valid values:
 	//
-	// - **POSTPAY**: pay-as-you-go.
+	// - **POSTPAY**: Pay-as-you-go.
 	//
-	// - **PREPAY**: subscription.
+	// - **PREPAY**: Subscription.
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ type ListSaasServiceResponseBodyItems struct {
 	//
 	// agdb-xxxx
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The service type:
+	// The service type. Valid values:
 	//
 	// - **memory**
 	//
@@ -173,11 +173,11 @@ type ListSaasServiceResponseBodyItems struct {
 	//
 	// memory
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	// The service status:
+	// The service status. Valid values:
 	//
-	// - active: Running
+	// - active: Running.
 	//
-	// - creating: Being created
+	// - creating: Being created.
 	//
 	// example:
 	//

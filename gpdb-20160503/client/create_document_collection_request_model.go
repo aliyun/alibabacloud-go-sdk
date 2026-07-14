@@ -72,17 +72,17 @@ type CreateDocumentCollectionRequest struct {
 	//
 	// Valid values:
 	//
-	// - `hnswflat`: An HNSW index without quantization compression. This is the default value.
+	// - hnswflat: HNSW index without quantization compression (default).
 	//
-	// - `novam`: A graph index without quantization compression. This algorithm is suitable for high-performance scenarios such as real-time recommendation.
+	// - novam: graph index without quantization compression, suitable for high-performance scenarios such as real-time recommendations.
 	//
-	// - `novad`: A partitioned index with rabitq quantization. This algorithm is suitable for large-scale, low-cost retrieval scenarios.
+	// - novad: partitioned index with RaBitQ quantization, suitable for large-scale low-cost retrieval scenarios.
 	//
 	// example:
 	//
 	// hnswflat
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// The name of the document collection to create.
+	// The name of the knowledge base to create.
 	//
 	// > The name must comply with PostgreSQL object naming conventions.
 	//
@@ -92,9 +92,9 @@ type CreateDocumentCollectionRequest struct {
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in the target region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a region, including instance IDs.
 	//
 	// This parameter is required.
 	//
@@ -102,199 +102,149 @@ type CreateDocumentCollectionRequest struct {
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The vector dimension. If you omit this parameter, the system uses a default dimension for the selected `EmbeddingModel`.
+	// The vector dimensions. The default value is the dimension supported by the embedding model.
 	//
 	// example:
 	//
 	// 1024
 	Dimension *int32 `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	// The embedding model. The default value is `text-embedding-v3`.
+	// The embedding model. Default value: text-embedding-v3.
 	//
 	// > Supported models:
 	//
-	// >
+	// > - text-embedding-v3 (recommended, default): 1024, 768, or 512 dimensions
 	//
-	// > - `text-embedding-v3` (Recommended, Default): 1,024, 768, or 512 dimensions
+	// > - multimodal-embedding-v1 (recommended): 1024 dimensions, multimodal embedding model
 	//
-	// >
+	// > - text-embedding-v1: 1536 dimensions
 	//
-	// > - `multimodal-embedding-v1` (Recommended): 1,024 dimensions, a multimodal embedding model
+	// > - text-embedding-v2: 1536 dimensions
 	//
-	// >
+	// > - text2vec (not recommended): 1024 dimensions
 	//
-	// > - `text-embedding-v1`: 1,536 dimensions
+	// > - m3e-base (not recommended): 768 dimensions
 	//
-	// >
+	// > - m3e-small (not recommended): 512 dimensions
 	//
-	// > - `text-embedding-v2`: 1,536 dimensions
+	// > - clip-vit-b-32 (not recommended): CLIP ViT-B/32 model, 512 dimensions, image embedding model
 	//
-	// >
+	// > - clip-vit-b-16 (not recommended): CLIP ViT-B/16 model, 512 dimensions, image embedding model
 	//
-	// > - `text2vec` (Not recommended): 1,024 dimensions
+	// > - clip-vit-l-14 (not recommended): CLIP ViT-L/14 model, 768 dimensions, image embedding model
 	//
-	// >
+	// > - clip-vit-l-14-336px (not recommended): CLIP ViT-L/14@336px model, 768 dimensions, image embedding model
 	//
-	// > - `m3e-base` (Not recommended): 768 dimensions
+	// > - clip-rn50 (not recommended): CLIP RN50 model, 1024 dimensions, image embedding model
 	//
-	// >
+	// > - clip-rn101 (not recommended): CLIP RN101 model, 512 dimensions, image embedding model
 	//
-	// > - `m3e-small` (Not recommended): 512 dimensions
+	// > - clip-rn50x4 (not recommended): CLIP RN50x4 model, 640 dimensions, image embedding model
 	//
-	// >
+	// > - clip-rn50x16 (not recommended): CLIP RN50x16 model, 768 dimensions, image embedding model
 	//
-	// > - `clip-vit-b-32` (Not recommended): CLIP ViT-B/32 model, 512 dimensions, an image embedding model
-	//
-	// >
-	//
-	// > - `clip-vit-b-16` (Not recommended): CLIP ViT-B/16 model, 512 dimensions, an image embedding model
-	//
-	// >
-	//
-	// > - `clip-vit-l-14` (Not recommended): CLIP ViT-L/14 model, 768 dimensions, an image embedding model
-	//
-	// >
-	//
-	// > - `clip-vit-l-14-336px` (Not recommended): CLIP ViT-L/14\\@336px model, 768 dimensions, an image embedding model
-	//
-	// >
-	//
-	// > - `clip-rn50` (Not recommended): CLIP RN50 model, 1,024 dimensions, an image embedding model
-	//
-	// >
-	//
-	// > - `clip-rn101` (Not recommended): CLIP RN101 model, 512 dimensions, an image embedding model
-	//
-	// >
-	//
-	// > - `clip-rn50x4` (Not recommended): CLIP RN50x4 model, 640 dimensions, an image embedding model
-	//
-	// >
-	//
-	// > - `clip-rn50x16` (Not recommended): CLIP RN50x16 model, 768 dimensions, an image embedding model
-	//
-	// >
-	//
-	// > - `clip-rn50x64` (Not recommended): CLIP RN50x64 model, 1,024 dimensions, an image embedding model
+	// > - clip-rn50x64 (not recommended): CLIP RN50x64 model, 1024 dimensions, image embedding model
 	//
 	// example:
 	//
 	// text-embedding-v1
 	EmbeddingModel *string `json:"EmbeddingModel,omitempty" xml:"EmbeddingModel,omitempty"`
-	// Specifies whether to build a knowledge graph. The default value is `false`.
+	// Specifies whether to enable knowledge graph construction. Default value: false.
 	//
-	// > To use this parameter, you must first upgrade your instance to a version that supports the graph engine. During the public preview period, submit a ticket to request an upgrade.
+	// > Before using this parameter, upgrade the instance to a version that supports the graph engine. (During the public preview, submit a ticket to upgrade the version.)
 	//
 	// example:
 	//
 	// true
 	EnableGraph *bool `json:"EnableGraph,omitempty" xml:"EnableGraph,omitempty"`
-	// A list of entity types.
+	// The list of entity types.
 	//
-	// > This parameter is required when `EnableGraph` is set to `true`.
+	// > This parameter is required when knowledge graph construction is enabled.
 	//
 	// example:
 	//
 	// Location
 	EntityTypes []*string `json:"EntityTypes,omitempty" xml:"EntityTypes,omitempty" type:"Repeated"`
-	// Specifies whether to use memory-mapped files (mmap) to build the HNSW index. The default value is 0. Setting this to `1` is recommended if you do not need to delete data and require high upload performance.
+	// Specifies whether to use mmap to build the HNSW index. Default value: 0. If data does not need to be deleted and you require high upload performance, set this parameter to 1.
 	//
 	// Valid values:
 	//
-	// - `0`: Builds the index by using segmented page storage. This mode supports delete and update operations and can use the `shared_buffer` in PostgreSQL for caching. This is the default value.
+	// - 0: uses segment-page storage to build the index. This mode uses shared_buffer in PostgreSQL as cache and supports delete and update operations.
 	//
-	// - `1`: Builds the index by using mmap. This mode does not support delete or update operations.
+	// - 1: uses mmap to build the index. This mode does not support delete or update operations.
 	//
-	// 	Notice:
-	//
-	// The `ExternalStorage` parameter is supported only by AnalyticDB for PostgreSQL V6.0 instances. It is not supported by V7.0 instances.
+	// 	Notice: Only version 6.0 supports the ExternalStorage parameter. Version 7.0 does not support this parameter.
 	//
 	// example:
 	//
 	// 0
 	ExternalStorage *int32 `json:"ExternalStorage,omitempty" xml:"ExternalStorage,omitempty"`
-	// The metadata fields to use for full-text search. These fields must be keys defined in `Metadata`. Separate multiple fields with a comma (,).
+	// The fields used for full-text retrieval. Separate multiple fields with commas (,). The fields must be keys defined in Metadata.
 	//
 	// example:
 	//
 	// title,page
 	FullTextRetrievalFields *string `json:"FullTextRetrievalFields,omitempty" xml:"FullTextRetrievalFields,omitempty"`
-	// The size of the candidate set (`ef_construction`) for HNSW index construction. The value must be greater than or equal to `2 	- HnswM`.
+	// The candidate set size when building an index with the HNSW algorithm. The value must be >= 2*HNSW_M.
 	//
-	// > Value range:
+	// > Valid values:
 	//
-	// >
+	// >- AnalyticDB for PostgreSQL 6.0 instances: 40 to 4000.
 	//
-	// > - For AnalyticDB for PostgreSQL V6.0 instances: 40 to 4,000.
-	//
-	// >
-	//
-	// > - For AnalyticDB for PostgreSQL V7.0 instances: 4 to 1,000. The default value is 64.
+	// >- AnalyticDB for PostgreSQL 7.0 instances: 4 to 1000. Default value: 64.
 	//
 	// example:
 	//
 	// 128
 	HnswEfConstruction *string `json:"HnswEfConstruction,omitempty" xml:"HnswEfConstruction,omitempty"`
-	// The maximum number of neighbors (M) for the HNSW algorithm. You do not typically need to set this parameter, as the system automatically sets it based on the vector dimension.
+	// The maximum number of neighbors in the HNSW algorithm. This value is automatically set based on the vector dimensions. Manual configuration is generally not required.
 	//
-	// > Value range:
+	// > Valid values:
 	//
-	// >
+	// >- AnalyticDB for PostgreSQL 6.0 instances: 1 to 1000.
 	//
-	// > - For AnalyticDB for PostgreSQL V6.0 instances: 1 to 1,000.
+	// >- AnalyticDB for PostgreSQL 7.0 instances: 2 to 100. Default value: 16.
 	//
-	// >
+	// > Recommended values based on vector dimensions:
 	//
-	// > - For AnalyticDB for PostgreSQL V7.0 instances: 2 to 100. The default value is 16.
+	// >- 384 or fewer: 16
 	//
-	// > We recommend that you set this parameter based on the vector dimension:
+	// >- Greater than 384 and up to 768: 32
 	//
-	// >
+	// >- Greater than 768 and up to 1024: 64
 	//
-	// > - If the dimension is 384 or less: 16
-	//
-	// >
-	//
-	// > - If the dimension is greater than 384 and less than or equal to 768: 32
-	//
-	// >
-	//
-	// > - If the dimension is greater than 768 and less than or equal to 1,024: 64
-	//
-	// >
-	//
-	// > - If the dimension is greater than 1,024: 128
+	// >- Greater than 1024: 128
 	//
 	// example:
 	//
 	// 64
 	HnswM *int32 `json:"HnswM,omitempty" xml:"HnswM,omitempty"`
-	// The name of the LLM model. Valid values:
+	// The LLM model name. Valid values:
 	//
-	// - `knowledge-extract-standard`: The default value.
+	// - knowledge-extract-standard: default value.
 	//
-	// - `knowledge-extract-mini`
+	// - knowledge-extract-mini
 	//
-	// > This parameter takes effect only when `EnableGraph` is set to `true`.
+	// > This parameter takes effect only when knowledge graph construction is enabled.
 	//
 	// example:
 	//
 	// knowledge-extract-standard
 	LLMModel *string `json:"LLMModel,omitempty" xml:"LLMModel,omitempty"`
-	// The language used to build the knowledge graph. Valid values:
+	// The language used for knowledge graph construction. Valid values:
 	//
-	// - `Simplified Chinese`: The default value.
+	// - Simplified Chinese: Simplified Chinese. Default value.
 	//
-	// - `English`
+	// - English: English.
 	//
-	// > This parameter takes effect only when `EnableGraph` is set to `true`.
+	// > This parameter takes effect only when knowledge graph construction is enabled.
 	//
 	// example:
 	//
 	// Simplified Chinese
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The name of the manager account that has `rds_superuser` permissions.
+	// The name of the management account that has the rds_superuser permission.
 	//
-	// > You can create an account in the console on the \\*\\*Account Management\\*\\	- page or by calling the [CreateAccount](https://help.aliyun.com/document_detail/2361789.html) operation.
+	// > You can create an account in the console by navigating to Account Management, or by calling the [CreateAccount](https://help.aliyun.com/document_detail/2361789.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -302,7 +252,7 @@ type CreateDocumentCollectionRequest struct {
 	//
 	// testaccount
 	ManagerAccount *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
-	// The password for the manager account.
+	// The password of the management account.
 	//
 	// This parameter is required.
 	//
@@ -310,66 +260,60 @@ type CreateDocumentCollectionRequest struct {
 	//
 	// testpassword
 	ManagerAccountPassword *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
-	// The metadata schema for the vector data, specified as a JSON map where keys are field names and values are data types.
+	// The metadata of vector data, in the format of a JSON string representing a MAP. The key represents the field name, and the value represents the data type.
 	//
-	// > Supported data types
+	// > Supported data types:
 	//
-	// >
+	// > - For the list of data types, see [Data types](https://help.aliyun.com/document_detail/424383.html).
 	//
-	// > - For a list of supported data types, see [Data types](https://help.aliyun.com/document_detail/424383.html).
+	// > - The money type is not supported.
 	//
-	// >
-	//
-	// > - The `money` data type is not supported.
-	//
-	// 	Warning:
-	//
-	// The following fields are reserved and cannot be used: `id`, `vector`, `doc_name`, `content`, `loader_metadata`, `source`, and `to_tsvector`.
+	// 	Warning: The following fields are reserved and cannot be used: id, vector, doc_name, content, loader_metadata, source, and to_tsvector.
 	//
 	// example:
 	//
 	// {"title":"text","page":"int"}
 	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// The metadata fields on which to create scalar indexes. These fields must be keys defined in `Metadata`. Separate multiple fields with a comma (,).
+	// The scalar index fields. Separate multiple fields with commas (,). The fields must be keys defined in Metadata.
 	//
 	// example:
 	//
 	// title
 	MetadataIndices *string `json:"MetadataIndices,omitempty" xml:"MetadataIndices,omitempty"`
-	// The distance metric for the vector index.
+	// The distance metric used for building vector indexes.
 	//
 	// Valid values:
 	//
-	// - **`l2`**: Euclidean distance.
+	// - **l2**: Euclidean distance.
 	//
-	// - **`ip`**: dot product (inner product) distance.
+	// - **ip**: inner product distance.
 	//
-	// - **`cosine`*	- (Default): cosine similarity.
+	// - **cosine*	- (default): cosine similarity.
 	//
 	// example:
 	//
 	// cosine
 	Metrics *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
-	// The namespace. The default value is `public`.
+	// The namespace. Default value: public.
 	//
-	// > You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to list namespaces.
+	// > You can create a namespace by calling the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation and query the list of namespaces by calling the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation.
 	//
 	// example:
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The tokenizer for full-text search. The default value is `zh_cn`.
+	// The tokenizer used for full-text retrieval. Default value: zh_cn.
 	//
 	// example:
 	//
 	// zh_cn
 	Parser *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
-	// Specifies whether to enable the PQ (product quantization) algorithm to accelerate indexing. This is recommended for datasets with over 500,000 entries. Valid values:
+	// Specifies whether to enable Product Quantization (PQ) algorithm acceleration for the index. We recommend enabling this feature when the data volume exceeds 500,000. Valid values:
 	//
-	// - `0`: Disables the feature.
+	// - 0: disabled.
 	//
-	// - `1`: Enables the feature. This is the default value.
+	// - 1: enabled (default).
 	//
 	// example:
 	//
@@ -383,29 +327,29 @@ type CreateDocumentCollectionRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// A list of relationship types.
+	// The list of relationship edge types.
 	//
-	// > This parameter is required when `EnableGraph` is set to `true`.
+	// > This parameter is required when knowledge graph construction is enabled.
 	//
 	// example:
 	//
 	// Occurred
 	RelationshipTypes []*string `json:"RelationshipTypes,omitempty" xml:"RelationshipTypes,omitempty" type:"Repeated"`
-	// The metadata fields used to build the sparse vector. These fields must be keys defined in `Metadata`. Separate multiple fields with a comma (,).
+	// The metadata fields used for building sparse vectors. Separate multiple fields with commas (,). The fields must be keys defined in Metadata.
 	//
 	// example:
 	//
 	// title,abstract
 	SparseRetrievalFields *string `json:"SparseRetrievalFields,omitempty" xml:"SparseRetrievalFields,omitempty"`
-	// Configuration for the sparse vector index. Specifying this parameter creates the index.
+	// The sparse vector index configuration. If specified, a sparse vector index is created.
 	SparseVectorIndexConfig *CreateDocumentCollectionRequestSparseVectorIndexConfig `json:"SparseVectorIndexConfig,omitempty" xml:"SparseVectorIndexConfig,omitempty" type:"Struct"`
-	// Specifies whether to support sparse vectors. The default value is `false`.
+	// Specifies whether to support sparse vectors. Default value: false.
 	//
 	// example:
 	//
 	// true
 	SupportSparse *bool `json:"SupportSparse,omitempty" xml:"SupportSparse,omitempty"`
-	// Configuration for the dense vector index.
+	// The dense vector index configuration.
 	VectorIndexConfig *CreateDocumentCollectionRequestVectorIndexConfig `json:"VectorIndexConfig,omitempty" xml:"VectorIndexConfig,omitempty" type:"Struct"`
 }
 
@@ -688,51 +632,39 @@ type CreateDocumentCollectionRequestSparseVectorIndexConfig struct {
 	//
 	// Valid values:
 	//
-	// - `hnswflat`: An HNSW index without quantization compression. This is the default value.
+	// - hnswflat: HNSW index without quantization compression (default).
 	//
-	// - `novam`: A graph index without quantization compression. This algorithm is suitable for high-performance scenarios such as real-time recommendation.
+	// - novam: graph index without quantization compression, suitable for high-performance scenarios such as real-time recommendations.
 	//
 	// example:
 	//
 	// hnswflat
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// The size of the candidate set (`ef_construction`) for HNSW index construction. Valid values: 4 to 1,000. The default value is 64.
+	// The candidate set size when building an index with the HNSW algorithm. Valid values: 4 to 1000. Default value: 64.
 	//
-	// > This parameter is applicable only to AnalyticDB for PostgreSQL V7.0 instances, and its value must be greater than or equal to `2 	- HnswM`.
+	// > This parameter is required only for AnalyticDB for PostgreSQL 7.0 instances, and the value must be >= 2*HNSW_M.
 	//
 	// example:
 	//
 	// 128
 	HnswEfConstruction *int32 `json:"HnswEfConstruction,omitempty" xml:"HnswEfConstruction,omitempty"`
-	// The maximum number of neighbors (M) for the HNSW algorithm. You do not typically need to set this parameter, as the system automatically sets it based on the vector dimension.
+	// The maximum number of neighbors in the HNSW algorithm. This value is automatically set based on the vector dimensions. Manual configuration is generally not required.
 	//
-	// > Value range:
+	// > Valid values:
 	//
-	// >
+	// >- AnalyticDB for PostgreSQL 6.0 instances: 1 to 1000.
 	//
-	// > - For AnalyticDB for PostgreSQL V6.0 instances: 1 to 1,000.
+	// >- AnalyticDB for PostgreSQL 7.0 instances: 2 to 100. Default value: 16.
 	//
-	// >
+	// > Recommended values based on vector dimensions:
 	//
-	// > - For AnalyticDB for PostgreSQL V7.0 instances: 2 to 100. The default value is 16.
+	// >- 384 or fewer: 16
 	//
-	// > We recommend that you set this parameter based on the vector dimension:
+	// >- Greater than 384 and up to 768: 32
 	//
-	// >
+	// >- Greater than 768 and up to 1024: 64
 	//
-	// > - If the dimension is 384 or less: 16
-	//
-	// >
-	//
-	// > - If the dimension is greater than 384 and less than or equal to 768: 32
-	//
-	// >
-	//
-	// > - If the dimension is greater than 768 and less than or equal to 1,024: 64
-	//
-	// >
-	//
-	// > - If the dimension is greater than 1,024: 128
+	// >- Greater than 1024: 128
 	//
 	// example:
 	//
@@ -780,13 +712,13 @@ func (s *CreateDocumentCollectionRequestSparseVectorIndexConfig) Validate() erro
 }
 
 type CreateDocumentCollectionRequestVectorIndexConfig struct {
-	// The number of lists (partitions) for the novad algorithm. Valid values: [2, 1073741824]. The default value is 256.
+	// The Novad list count (number of partitions). Valid values: 2 to 1073741824. Default value: 256.
 	//
 	// example:
 	//
 	// 256
 	Nlist *int32 `json:"Nlist,omitempty" xml:"Nlist,omitempty"`
-	// The number of bits used for rabitq compression. Valid values: [1, 8]. The default value is 3.
+	// The number of RaBitQ compression bits. Valid values: 1 to 8. Default value: 3.
 	//
 	// example:
 	//

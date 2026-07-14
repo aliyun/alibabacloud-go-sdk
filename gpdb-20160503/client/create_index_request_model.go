@@ -32,9 +32,9 @@ type iCreateIndexRequest interface {
 }
 
 type CreateIndexRequest struct {
-	// The name of the collection.
+	// The collection name.
 	//
-	// > You can call the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) operation to query a list of collections.
+	// > You can call the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) operation to query the list.
 	//
 	// This parameter is required.
 	//
@@ -42,41 +42,41 @@ type CreateIndexRequest struct {
 	//
 	// testcollection
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	// The cluster ID.
+	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in the specified region.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a region.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The index parameter. If you do not specify this parameter, a B-tree index is created.
+	// The index parameters. If this parameter is not specified, a B-tree index is created by default.
 	//
 	// >
 	//
-	// 	- b-tree: To create a B-tree index, set the fillFactor parameter to a value between 10 and 100. Default value: 90.
+	// >- b-tree: The fillFactor parameter. Valid values: 10 to 100. Default value: 90.
 	//
-	// 	- gin: To create a GIN index, set the fastUpdate parameter to true or false. Default value: true.
+	// >- gin: The fastUpdate parameter. Valid values: true and false. Default value: true.
 	//
 	// example:
 	//
 	// {"b-tree":{"fillFactor":90}} or {"gin":{"fastUpdate":false}}
 	IndexConfig *string `json:"IndexConfig,omitempty" xml:"IndexConfig,omitempty"`
-	// The index field. Only a single field is supported, and it must be a key defined in metadata.
+	// The index field. Only a single field is supported, and the field must be a key defined in Metadata.
 	//
 	// example:
 	//
 	// title
 	IndexField *string `json:"IndexField,omitempty" xml:"IndexField,omitempty"`
-	// The name of the index.
+	// The index name.
 	//
 	// example:
 	//
 	// testindex
 	IndexName *string `json:"IndexName,omitempty" xml:"IndexName,omitempty"`
-	// The namespace name.
+	// The namespace.
 	//
-	// > You can call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
+	// > You can call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query the list.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type CreateIndexRequest struct {
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The password of the namespace.
 	//
-	// > The value of this parameter is specified by the CreateNamespace operation.
+	// > This value is specified by the CreateNamespace operation.
 	//
 	// This parameter is required.
 	//
@@ -103,15 +103,7 @@ type CreateIndexRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. This parameter and DBInstanceId cannot both be empty. If both parameters are specified, this value takes precedence.
-	//
-	// Valid values:
-	//
-	// 	- ip
-	//
-	// 	- l2
-	//
-	// 	- cosine
+	// The ID of the workspace that consists of multiple database instances. This parameter and DBInstanceId cannot both be empty. If both this parameter and DBInstanceId are specified, this parameter takes precedence.
 	//
 	// example:
 	//

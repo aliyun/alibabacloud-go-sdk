@@ -22,24 +22,24 @@ type iTextEmbeddingResponseBody interface {
 }
 
 type TextEmbeddingResponseBody struct {
-	// The returned message.
+	// The message details.
 	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Results   *TextEmbeddingResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
-	// The status of the operation. Valid values:
+	// The API execution status. Valid values:
 	//
-	// 	- **success**
+	// - **success**: The execution is successful.
 	//
-	// 	- **fail**
+	// - **fail**: The execution failed.
 	//
 	// example:
 	//

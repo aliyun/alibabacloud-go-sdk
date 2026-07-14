@@ -14,7 +14,7 @@ type iModifyAIServiceSecurityIpsResponseBody interface {
 }
 
 type ModifyAIServiceSecurityIpsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type iExecuteStatementResponseBody interface {
 }
 
 type ExecuteStatementResponseBody struct {
-  // The time when the SQL statements were created.
+  // The creation time.
   // 
   // example:
   // 
@@ -42,21 +42,21 @@ type ExecuteStatementResponseBody struct {
   // 
   // gp-xxxxxxxxx
   DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-  // The returned results of the synchronous call.
+  // The result returned for synchronous calls.
   Data *ExecuteStatementResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-  // The name of the database.
+  // The database name.
   // 
   // example:
   // 
   // adbtest
   Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-  // The ID of the job for asynchronously executing the SQL statements.
+  // The task ID for asynchronous SQL execution.
   // 
   // example:
   // 
   // ABB39CC3
   Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-  // The returned message.
+  // The response message.
   // 
   // example:
   // 
@@ -68,17 +68,17 @@ type ExecuteStatementResponseBody struct {
   // 
   // ABB39CC3-4488-4857-905D-2E4A051D0521
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // The ARN of the access credential for the created Data API account.
+  // The access credential.
   // 
   // example:
   // 
   // acs:gpdb:cn-beijing:1033**:secret/testsecret-eG2AQGRIwQ0zFp4VA7mYL3uiCXTfDQbQ
   SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
-  // The status of the operation. Valid values:
+  // The execution status of the API operation. Valid values:
   // 
-  // 	- **success**
+  // - **success**: The execution is successful.
   // 
-  // 	- **fail**
+  // - **fail**: The execution failed.
   // 
   // example:
   // 
@@ -187,7 +187,7 @@ func (s *ExecuteStatementResponseBody) Validate() error {
 type ExecuteStatementResponseBodyData struct {
   ColumnMetadata *ExecuteStatementResponseBodyDataColumnMetadata `json:"ColumnMetadata,omitempty" xml:"ColumnMetadata,omitempty" type:"Struct"`
   Records *ExecuteStatementResponseBodyDataRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Struct"`
-  // The total number of entries returned.
+  // The total number of rows.
   // 
   // example:
   // 

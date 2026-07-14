@@ -22,19 +22,28 @@ type iListModelOperatorApiKeysResponseBody interface {
 }
 
 type ListModelOperatorApiKeysResponseBody struct {
+	// The list of API keys.
 	ApiKeys []*ListModelOperatorApiKeysResponseBodyApiKeys `json:"ApiKeys,omitempty" xml:"ApiKeys,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records on the current page.
+	//
 	// example:
 	//
 	// 1
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 2
@@ -108,18 +117,26 @@ func (s *ListModelOperatorApiKeysResponseBody) Validate() error {
 }
 
 type ListModelOperatorApiKeysResponseBodyApiKeys struct {
+	// API KEY ID。
+	//
 	// example:
 	//
 	// 1
 	ApiKeyId *int32 `json:"ApiKeyId,omitempty" xml:"ApiKeyId,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2026-06-01T00:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// test-apikey
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The endpoint.
+	//
 	// example:
 	//
 	// https://xxxx

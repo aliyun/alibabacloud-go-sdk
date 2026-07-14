@@ -28,7 +28,7 @@ type iGetUploadDocumentJobRequest interface {
 type GetUploadDocumentJobRequest struct {
 	// The name of the document collection.
 	//
-	// > You can call the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) operation to create a document collection and call the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) operation to query a list of document collections.
+	// > A document collection is created by calling the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) operation. You can call the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) operation to view existing document collections.
 	//
 	// This parameter is required.
 	//
@@ -36,9 +36,9 @@ type GetUploadDocumentJobRequest struct {
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	// The ID of the instance for which vector engine optimization is enabled.
+	// The ID of the instance that has the vector engine optimization feature enabled.
 	//
-	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a region, including instance IDs.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type GetUploadDocumentJobRequest struct {
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The ID of the document upload job. You can call the `UploadDocumentAsync` operation to obtain the job ID.
+	// The ID of the document upload task, which is obtained from the UploadDocumentAsync operation.
 	//
 	// This parameter is required.
 	//
@@ -54,9 +54,9 @@ type GetUploadDocumentJobRequest struct {
 	//
 	// bf8f7bc4-9276-44f7-9c22-1d06edc8dfd1
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The name of the namespace for tenant isolation. Default value: public.
+	// The namespace, which is used for tenant isolation. Default value: public.
 	//
-	// > You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
+	// > You can create a namespace by calling [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) and view the list of namespaces by calling [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html).
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type GetUploadDocumentJobRequest struct {
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The password of the namespace.
 	//
-	// > The value of this parameter is specified when you call the CreateNamespace operation.
+	// > This value is specified by the CreateNamespace operation.
 	//
 	// This parameter is required.
 	//
@@ -73,7 +73,7 @@ type GetUploadDocumentJobRequest struct {
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the cluster.
+	// The region ID of the instance.
 	//
 	// This parameter is required.
 	//

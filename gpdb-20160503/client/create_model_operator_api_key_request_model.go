@@ -14,6 +14,8 @@ type iCreateModelOperatorApiKeyRequest interface {
 }
 
 type CreateModelOperatorApiKeyRequest struct {
+	// The description. Spaces are not allowed, and the value cannot exceed 256 characters.
+	//
 	// This parameter is required.
 	//
 	// example:

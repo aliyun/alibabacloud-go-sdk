@@ -14,7 +14,7 @@ type iModifyDBInstanceDeploymentModeResponseBody interface {
 }
 
 type ModifyDBInstanceDeploymentModeResponseBody struct {
-	// The unique ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

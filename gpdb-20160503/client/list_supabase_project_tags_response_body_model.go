@@ -18,19 +18,19 @@ type iListSupabaseProjectTagsResponseBody interface {
 }
 
 type ListSupabaseProjectTagsResponseBody struct {
-	// The pagination token for the next page of results. This parameter is not returned if no more results are available.
+	// The token for the next query.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 34b32a0a-08ef-4a87-b6be-cdd9f56fc3ad
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of tagged resources.
+	// The details.
 	TagResources []*ListSupabaseProjectTagsResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 

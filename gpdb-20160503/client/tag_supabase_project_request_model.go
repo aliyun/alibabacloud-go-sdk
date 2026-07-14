@@ -26,15 +26,15 @@ type TagSupabaseProjectRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IDs of the instances. You can specify up to 50 instance IDs.
+	// The Nth instance. Valid values of N: 1 to 50.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The resource type. Set this parameter to `instance`.
+	// The resource type. Set the value to `instance`.
 	//
 	// example:
 	//
 	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags to add. You can specify up to 20 tags.
+	// The Nth tag. Valid values of N: 1 to 20.
 	Tag []*TagSupabaseProjectRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -96,13 +96,13 @@ func (s *TagSupabaseProjectRequest) Validate() error {
 }
 
 type TagSupabaseProjectRequestTag struct {
-	// The tag key. The key cannot be empty and can be up to 64 characters long. It cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
+	// The tag key. This parameter cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// test-key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. The value can be empty or up to 128 characters long. It cannot contain `http://` or `https://`.
+	// The tag value. This parameter can be an empty string. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

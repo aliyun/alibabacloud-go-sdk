@@ -16,7 +16,7 @@ type iListAINodePoolsResponseBody interface {
 }
 
 type ListAINodePoolsResponseBody struct {
-	// The details of the AINode resource pools.
+	// The details of the AI node resource pools.
 	AINodePoolInfos []*ListAINodePoolsResponseBodyAINodePoolInfos `json:"AINodePoolInfos,omitempty" xml:"AINodePoolInfos,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,9 +66,9 @@ func (s *ListAINodePoolsResponseBody) Validate() error {
 }
 
 type ListAINodePoolsResponseBodyAINodePoolInfos struct {
-	// The details of AINodes.
+	// The detailed information about the AI nodes.
 	AINodeInfos []*ListAINodePoolsResponseBodyAINodePoolInfosAINodeInfos `json:"AINodeInfos,omitempty" xml:"AINodeInfos,omitempty" type:"Repeated"`
-	// The ID of the AINode resource pool.
+	// The ID of the resource pool to which the AI node belongs.
 	//
 	// example:
 	//
@@ -131,23 +131,23 @@ func (s *ListAINodePoolsResponseBodyAINodePoolInfos) Validate() error {
 }
 
 type ListAINodePoolsResponseBodyAINodePoolInfosAINodeInfos struct {
-	// The type of the bound object.
+	// The type of the object to which the AI node is bound.
 	//
 	// example:
 	//
 	// model_serving
 	BindObject *string `json:"BindObject,omitempty" xml:"BindObject,omitempty"`
-	// The binding status.
+	// The status of the AI node. Valid values:
 	//
-	// - `unbound`: The node is not bound.
+	// - unbound: The AI node is not bound.
 	//
-	// - `bound`: The node is bound.
+	// - bound: The AI node is bound.
 	//
 	// example:
 	//
 	// bound
 	BindStatus *string `json:"BindStatus,omitempty" xml:"BindStatus,omitempty"`
-	// The creation time.
+	// The time when the AI node was created.
 	//
 	// example:
 	//
@@ -159,13 +159,13 @@ type ListAINodePoolsResponseBodyAINodePoolInfosAINodeInfos struct {
 	//
 	// adbpg-ainode
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The name of the AINode.
+	// The name of the AI node.
 	//
 	// example:
 	//
 	// ai-xxxxxxxxx
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The AINode specification. The following specifications are supported:
+	// The node specifications of the AI node. The following specifications are supported:
 	//
 	// ```
 	//
@@ -229,7 +229,7 @@ type ListAINodePoolsResponseBodyAINodePoolInfosAINodeInfos struct {
 	//
 	// ADB.AIStandard.1
 	NodeSpec *string `json:"NodeSpec,omitempty" xml:"NodeSpec,omitempty"`
-	// The update time.
+	// The time when the AI node was last updated.
 	//
 	// example:
 	//

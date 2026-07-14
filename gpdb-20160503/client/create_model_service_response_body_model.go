@@ -16,7 +16,7 @@ type iCreateModelServiceResponseBody interface {
 }
 
 type CreateModelServiceResponseBody struct {
-	// The ID of the model service.
+	// The model service ID.
 	//
 	// example:
 	//

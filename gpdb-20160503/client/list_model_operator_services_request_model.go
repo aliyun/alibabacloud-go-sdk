@@ -16,10 +16,22 @@ type iListModelOperatorServicesRequest interface {
 }
 
 type ListModelOperatorServicesRequest struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values:
+	//
+	// - **20**
+	//
+	// - **50**
+	//
+	// - **100**
+	//
+	// Default value: **20**.
+	//
 	// example:
 	//
 	// 20

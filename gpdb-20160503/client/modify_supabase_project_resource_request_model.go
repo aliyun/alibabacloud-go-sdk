@@ -22,7 +22,7 @@ type iModifySupabaseProjectResourceRequest interface {
 }
 
 type ModifySupabaseProjectResourceRequest struct {
-	// The modification type.
+	// The specification change type.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type ModifySupabaseProjectResourceRequest struct {
 	//
 	// UPGRADE,DOWNGRADE
 	ModifyType *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
-	// The Supabase project ID.
+	// The Supabase instance ID.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type ModifySupabaseProjectResourceRequest struct {
 	//
 	// sbp-tyarplz****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The new project specifications.
+	// The specifications of the Supabase instance.
 	//
 	// example:
 	//

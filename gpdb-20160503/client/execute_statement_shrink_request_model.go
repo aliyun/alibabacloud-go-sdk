@@ -38,13 +38,13 @@ type iExecuteStatementShrinkRequest interface {
 type ExecuteStatementShrinkRequest struct {
   // The instance ID.
   // 
-  // >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+  // > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a region, including instance IDs.
   // 
   // example:
   // 
   // gp-xxxxxxxxx
   DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-  // The name of the database.
+  // The database name.
   // 
   // This parameter is required.
   // 
@@ -53,11 +53,11 @@ type ExecuteStatementShrinkRequest struct {
   // adbtest
   Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
   OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-  // The configuration parameters.
+  // The list of configuration parameters.
   ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-  // Parameters for the vector dataset.  
+  // The vector dataset parameters.
   // 
-  // > When WorkspaceId is not empty, you must also pass this parameter.
+  // > If WorkspaceId is not empty, this parameter is required.
   RagWorkspaceCollectionShrink *string `json:"RagWorkspaceCollection,omitempty" xml:"RagWorkspaceCollection,omitempty"`
   // The region ID of the instance.
   // 
@@ -67,19 +67,19 @@ type ExecuteStatementShrinkRequest struct {
   // 
   // cn-beijing
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-  // The execution type. Valid values:
+  // The run type. Valid values:
   // 
-  // 	- synchronous
+  // - synchronous: synchronous execution.
   // 
-  // 	- asynchronous (not supported)
+  // - asynchronous: asynchronous execution. Currently not supported.
   // 
   // example:
   // 
   // synchronous
   RunType *string `json:"RunType,omitempty" xml:"RunType,omitempty"`
-  // The Alibaba Cloud Resource Name (ARN) of the access credential for the created Data API account. You can call the CreateSecret operation to create an access credential.
+  // The access credential. Created by calling the CreateSecret operation.
   // 
-  // >  To call the ExecuteStatement operation as a Resource Access Management (RAM) user, the RAM user must have the permissions to call the UseSecret or GetSecretValue operation on the ARN of the access credential.
+  // > When you access this operation by using a RAM user, you must have the UseSecret or GetSecretValue permission on this SecretArn.
   // 
   // This parameter is required.
   // 
@@ -87,21 +87,21 @@ type ExecuteStatementShrinkRequest struct {
   // 
   // acs:gpdb:cn-beijing:1033**:secret/testsecret-eG2AQGRIwQ0zFp4VA7mYL3uiCXTfDQbQ
   SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
-  // The SQL statements that you want to execute.
+  // The SQL statement to execute.
   // 
   // example:
   // 
   // select 	- from table1
   Sql *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
-  // The SQL statements.
+  // The list of multiple SQL statements.
   SqlsShrink *string `json:"Sqls,omitempty" xml:"Sqls,omitempty"`
-  // The name of the set of SQL statements that you want to execute. This parameter takes effect when the RunType parameter is set to asynchronous.
+  // The name of the execution statement. This parameter takes effect only when RunType is set to asynchronous.
   // 
   // example:
   // 
   // test
   StatementName *string `json:"StatementName,omitempty" xml:"StatementName,omitempty"`
-  // The ID of a workspace composed of multiple database instances. This parameter and DBInstanceId cannot both be empty. If both are specified, this parameter takes precedence.
+  // The ID of the workspace that consists of multiple database instances. This parameter and DBInstanceId cannot both be empty. If both this parameter and DBInstanceId are specified, this parameter takes precedence.
   // 
   // example:
   // 

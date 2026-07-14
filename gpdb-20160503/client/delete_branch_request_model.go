@@ -16,7 +16,7 @@ type iDeleteBranchRequest interface {
 }
 
 type DeleteBranchRequest struct {
-	// The branch ID that uniquely identifies a Supabase branch.
+	// The branch ID, which uniquely identifies a Supabase branch.
 	//
 	// This parameter is required.
 	//

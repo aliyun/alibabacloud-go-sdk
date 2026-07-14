@@ -30,13 +30,13 @@ type iListBranchesRequest interface {
 }
 
 type ListBranchesRequest struct {
-	// The maximum number of records to return in this query.
+	// The maximum number of records to return in this request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. It is not required for the first query. For subsequent queries, use the NextToken returned from the previous query.
+	// The cursor for the paged query. You do not need to specify this parameter for the first request. For subsequent requests, use the NextToken value returned in the previous response for paging.
 	//
 	// example:
 	//
@@ -66,33 +66,33 @@ type ListBranchesRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The parent branch ID, used to specify the parent branch for a new branch or as a query filter condition.
+	// The parent branch ID. This parameter specifies the parent branch for a new branch or a query filter.
 	//
 	// example:
 	//
 	// br-main
 	ParentBranchId *string `json:"ParentBranchId,omitempty" xml:"ParentBranchId,omitempty"`
-	// The region ID. Must be specified when creating a primary branch. When creating a sub-branch, it inherits the region of the primary branch by default.
+	// The region ID. This parameter is required when you create a primary branch. When you create a sub-branch, the region is inherited from the primary branch by default.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The search keyword. Supports fuzzy search by branch ID or branch name.
+	// The search keyword. Fuzzy search by branch ID or branch name is supported.
 	//
 	// example:
 	//
 	// main
 	Search *string `json:"Search,omitempty" xml:"Search,omitempty"`
-	// The sort field.
+	// The field by which to sort the results.
 	//
 	// Valid values:
 	//
-	// - BranchName: Sort by branch name.
+	// - BranchName: sorts by branch name.
 	//
-	// - CreateTime: Sort by creation time.
+	// - CreateTime: sorts by creation time.
 	//
-	// - LastRunTime: Sort by last run time.
+	// - LastRunTime: sorts by last run time.
 	//
 	// Default value: CreateTime.
 	//
@@ -100,13 +100,13 @@ type ListBranchesRequest struct {
 	//
 	// CreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The sort direction.
+	// The sort order.
 	//
 	// Valid values:
 	//
-	// - Asc: Ascending order.
+	// - Asc: ascending order.
 	//
-	// - Desc: Descending order.
+	// - Desc: descending order.
 	//
 	// Default value: Desc.
 	//

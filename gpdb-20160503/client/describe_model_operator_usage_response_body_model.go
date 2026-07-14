@@ -22,19 +22,28 @@ type iDescribeModelOperatorUsageResponseBody interface {
 }
 
 type DescribeModelOperatorUsageResponseBody struct {
+	// The end time of the query. The time is in the <i>YYYY-MM-DDThh:mmZ</i> format (UTC).
+	//
 	// example:
 	//
 	// 2026-06-02T00:00Z
-	EndTime *string                                       `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Keys    []*DescribeModelOperatorUsageResponseBodyKeys `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The list of metric values.
+	Keys []*DescribeModelOperatorUsageResponseBodyKeys `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
+	// The actual bucket size used, in seconds.
+	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The start time of the query. The time is in the <i>YYYY-MM-DDThh:mmZ</i> format (UTC).
+	//
 	// example:
 	//
 	// 2026-06-01T00:00Z
@@ -108,11 +117,22 @@ func (s *DescribeModelOperatorUsageResponseBody) Validate() error {
 }
 
 type DescribeModelOperatorUsageResponseBodyKeys struct {
+	// The metric name.
+	//
 	// example:
 	//
 	// request_count
-	Name   *string                                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The collection of metric values.
 	Series []*DescribeModelOperatorUsageResponseBodyKeysSeries `json:"Series,omitempty" xml:"Series,omitempty" type:"Repeated"`
+	// The unit. Valid values:
+	//
+	// - requests
+	//
+	// - tokens
+	//
+	// - %
+	//
 	// example:
 	//
 	// requests
@@ -168,18 +188,25 @@ func (s *DescribeModelOperatorUsageResponseBodyKeys) Validate() error {
 }
 
 type DescribeModelOperatorUsageResponseBodyKeysSeries struct {
+	// The API key ID. This value is returned only when GroupBy contains api_key.
+	//
 	// example:
 	//
 	// 1
 	ApiKeyId *int32 `json:"ApiKeyId,omitempty" xml:"ApiKeyId,omitempty"`
+	// The model name when GroupBy contains model. The api_key_id string when GroupBy contains only api_key.
+	//
 	// example:
 	//
 	// qwen3.6-plus
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The normalized GroupBy value: model, api_key, or model,api_key.
+	//
 	// example:
 	//
 	// model
-	Role   *string                                                   `json:"Role,omitempty" xml:"Role,omitempty"`
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The list of metric values. Each value corresponds to a collection time point.
 	Values []*DescribeModelOperatorUsageResponseBodyKeysSeriesValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -241,6 +268,7 @@ func (s *DescribeModelOperatorUsageResponseBodyKeysSeries) Validate() error {
 }
 
 type DescribeModelOperatorUsageResponseBodyKeysSeriesValues struct {
+	// The specific metric information, consisting of a timestamp and a metric value.
 	Point []*string `json:"Point,omitempty" xml:"Point,omitempty" type:"Repeated"`
 }
 

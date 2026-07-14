@@ -38,7 +38,7 @@ type CreateSnapshotResponseBody struct {
 	//
 	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The actual point in time that corresponds to the created snapshot.
+	// The actual point in time corresponding to the created snapshot.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iDescribeBranchResponseBody interface {
 }
 
 type DescribeBranchResponseBody struct {
-	// The branch list. Each element represents a Supabase branch.
+	// The branch information. Each element represents a Supabase branch.
 	Branch *DescribeBranchResponseBodyBranch `json:"Branch,omitempty" xml:"Branch,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -92,7 +92,7 @@ type DescribeBranchResponseBodyBranch struct {
 	//
 	// test branch
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the branch expires and is automatically deleted, in ISO 8601 UTC format.
+	// The time when the branch automatically expires and is deleted, in ISO 8601 UTC format.
 	//
 	// example:
 	//
@@ -110,13 +110,13 @@ type DescribeBranchResponseBodyBranch struct {
 	//
 	// ParentData
 	InitSource *string `json:"InitSource,omitempty" xml:"InitSource,omitempty"`
-	// Indicates whether this is the default branch.
+	// Indicates whether the branch is the default branch.
 	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The parent branch ID, which specifies the parent branch of a new branch or a query condition.
+	// The parent branch ID, which specifies the parent branch for a new branch or a query condition.
 	//
 	// example:
 	//
@@ -128,7 +128,7 @@ type DescribeBranchResponseBodyBranch struct {
 	//
 	// main
 	ParentBranchName *string `json:"ParentBranchName,omitempty" xml:"ParentBranchName,omitempty"`
-	// The Log Sequence Number (LSN) of the parent branch at the time this branch was created.
+	// The LSN of the parent branch at the time this branch was created.
 	//
 	// example:
 	//
@@ -146,7 +146,7 @@ type DescribeBranchResponseBodyBranch struct {
 	//
 	// 2026-04-08T09:11:12Z
 	ParentTimestamp *string `json:"ParentTimestamp,omitempty" xml:"ParentTimestamp,omitempty"`
-	// The Supabase project ID that corresponds to the primary branch.
+	// The Supabase project ID associated with the primary branch.
 	//
 	// example:
 	//
@@ -176,7 +176,7 @@ type DescribeBranchResponseBodyBranch struct {
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The list of branch tags.
+	// The branch tag list.
 	Tags []*DescribeBranchResponseBodyBranchTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 

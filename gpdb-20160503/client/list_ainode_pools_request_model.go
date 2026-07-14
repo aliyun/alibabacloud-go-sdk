@@ -24,7 +24,7 @@ type ListAINodePoolsRequest struct {
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The region ID.
+	// Region ID。
 	//
 	// example:
 	//

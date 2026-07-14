@@ -18,18 +18,24 @@ type iDeleteSnapshotRequest interface {
 }
 
 type DeleteSnapshotRequest struct {
+	// The LSN of the snapshot to delete.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0/3522648
 	Lsn *string `json:"Lsn,omitempty" xml:"Lsn,omitempty"`
+	// The Supabase project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// spb-xxxx
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID. Specifies the region in which to query or perform the operation.
+	//
 	// example:
 	//
 	// cn-hangzhou

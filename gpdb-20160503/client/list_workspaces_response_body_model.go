@@ -377,7 +377,7 @@ type ListWorkspacesResponseBodyItemsApikeysAuthServices struct {
 	//
 	// - memory
 	//
-	// - drama.
+	// - drama
 	//
 	// example:
 	//
@@ -448,7 +448,7 @@ type ListWorkspacesResponseBodyItemsServices struct {
 	//
 	// POSTPAY
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// [Deprecated].
+	// [Deprecated]
 	//
 	// example:
 	//
@@ -470,7 +470,7 @@ type ListWorkspacesResponseBodyItemsServices struct {
 	//
 	// - memory
 	//
-	// - drama.
+	// - drama
 	//
 	// example:
 	//

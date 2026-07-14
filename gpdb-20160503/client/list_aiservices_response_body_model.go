@@ -22,7 +22,7 @@ type iListAIServicesResponseBody interface {
 }
 
 type ListAIServicesResponseBody struct {
-	// The page number of the current page.
+	// The current page number.
 	//
 	// example:
 	//
@@ -34,13 +34,13 @@ type ListAIServicesResponseBody struct {
 	//
 	// 1
 	PageRecordCount *string `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of AI services.
+	// The list of services.
 	Services []*ListAIServicesResponseBodyServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
 	// The total number of entries.
 	//
@@ -117,25 +117,25 @@ func (s *ListAIServicesResponseBody) Validate() error {
 }
 
 type ListAIServicesResponseBodyServices struct {
-	// The time when the AI service was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2026-03-01T00:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the AI service.
+	// The description.
 	//
 	// example:
 	//
 	// dramatest
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The private endpoint for API debugging.
+	// The internal endpoint for API debugging.
 	//
 	// example:
 	//
 	// 192.168.0.1/api-docs
 	PrivateApiDevUrl *string `json:"PrivateApiDevUrl,omitempty" xml:"PrivateApiDevUrl,omitempty"`
-	// The private endpoint of the Workbench.
+	// The internal endpoint of the workbench.
 	//
 	// example:
 	//
@@ -147,13 +147,13 @@ type ListAIServicesResponseBodyServices struct {
 	//
 	// 8.8.8.8/api-docs
 	PublicApiDevUrl *string `json:"PublicApiDevUrl,omitempty" xml:"PublicApiDevUrl,omitempty"`
-	// The public endpoint of the Workbench.
+	// The public endpoint of the workbench.
 	//
 	// example:
 	//
 	// 8.8.8.8
 	PublicWorkbenchUrl *string `json:"PublicWorkbenchUrl,omitempty" xml:"PublicWorkbenchUrl,omitempty"`
-	// The list of IP addresses in the IP address whitelist group. Separate multiple IP addresses with commas.
+	// The list of IP addresses in the IP address whitelist group, separated by commas.
 	//
 	// example:
 	//
@@ -165,17 +165,17 @@ type ListAIServicesResponseBodyServices struct {
 	//
 	// dramauser
 	ServiceAccount *string `json:"ServiceAccount,omitempty" xml:"ServiceAccount,omitempty"`
-	// The ID of the AI service.
+	// The service ID.
 	//
 	// example:
 	//
 	// drama-123456
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The status of the AI service. Valid values:
+	// The service status. Valid values:
 	//
-	// - deploying
+	// - deploying: being deployed
 	//
-	// - active
+	// - active: running
 	//
 	// example:
 	//

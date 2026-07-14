@@ -22,23 +22,23 @@ type iGetStatementResultResponseBody interface {
 type GetStatementResultResponseBody struct {
 	// The result of the asynchronous call.
 	Data *GetStatementResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Return message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// API execution status, with values as follows:
+	// The execution status of the API operation. Valid values:
 	//
-	// - **false**: Execution failed.
+	// - **false**: Failed.
 	//
-	// - **true**: Execution succeeded.
+	// - **true**: Succeeded.
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ func (s *GetStatementResultResponseBody) Validate() error {
 type GetStatementResultResponseBodyData struct {
 	ColumnMetadata *GetStatementResultResponseBodyDataColumnMetadata `json:"ColumnMetadata,omitempty" xml:"ColumnMetadata,omitempty" type:"Struct"`
 	Records        *GetStatementResultResponseBodyDataRecords        `json:"Records,omitempty" xml:"Records,omitempty" type:"Struct"`
-	// Total number of entries.
+	// The total number of rows.
 	//
 	// example:
 	//

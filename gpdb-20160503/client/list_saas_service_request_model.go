@@ -22,13 +22,13 @@ type iListSaasServiceRequest interface {
 }
 
 type ListSaasServiceRequest struct {
-	// The maximum number of entries to return in this request. Default value: 10.
+	// The maximum number of entries to return. Default value: 10.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query to begin with during a paginated query.
+	// The token for the next query when paging. Use this token to start the next query.
 	//
 	// example:
 	//
