@@ -18,7 +18,7 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
-	// A pagination token. If NextToken is empty, no next page exists.
+	// The token that determines the start point of the next query. If this parameter is empty, no next query is to be sent.
 	//
 	// example:
 	//
@@ -83,29 +83,25 @@ func (s *ListTagResourcesResponseBody) Validate() error {
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	// The resource ID, which is the cloud computer ID.
+	// The ID of the resource, that is, the ID of the cloud computer.
 	//
 	// example:
 	//
 	// ecd-ia2zw38bi6cm7****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource.
-	//
-	// Valid values:
-	//
-	// - ALIYUN::GWS::INSTANCE: cloud computer.
+	// The resource type.
 	//
 	// example:
 	//
 	// ALIYUN::GWS::INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag keys.
+	// The tag key.
 	//
 	// example:
 	//
 	// department
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag values.
+	// The tag value.
 	//
 	// example:
 	//

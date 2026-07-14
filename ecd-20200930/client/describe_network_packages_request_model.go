@@ -19,51 +19,48 @@ type iDescribeNetworkPackagesRequest interface {
 	GetNextToken() *string
 	SetRegionId(v string) *DescribeNetworkPackagesRequest
 	GetRegionId() *string
+	SetTag(v []*DescribeNetworkPackagesRequestTag) *DescribeNetworkPackagesRequest
+	GetTag() []*DescribeNetworkPackagesRequestTag
 }
 
 type DescribeNetworkPackagesRequest struct {
-	// The charge type of the pay-as-you-go premium bandwidth plan.
-	//
-	// Valid values:
-	//
-	// - PayByTraffic: charges by data transfer.
-	//
-	// - PayByBandwidth: charges by fixed bandwidth.
+	// The billing method of the pay-as-you-go premium Internet bandwidth plan.
 	//
 	// example:
 	//
 	// PayByBandwidth
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page in a paged query.
 	//
-	// - Maximum value: 100
+	// - Maximum value: 100.
 	//
-	// - Default value: 10
+	// - Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The ID of the premium bandwidth plan. You can specify 1 to 100 IDs.
+	// The IDs of the premium Internet bandwidth plans. You can specify 1 to 100 IDs.
 	//
 	// example:
 	//
 	// np-amtp8e8q1o9e4****
 	NetworkPackageId []*string `json:"NetworkPackageId,omitempty" xml:"NetworkPackageId,omitempty" type:"Repeated"`
-	// The token that determines the start point of the next query.
+	// The token for the next query.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Tag      []*DescribeNetworkPackagesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeNetworkPackagesRequest) String() string {
@@ -94,6 +91,10 @@ func (s *DescribeNetworkPackagesRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *DescribeNetworkPackagesRequest) GetTag() []*DescribeNetworkPackagesRequestTag {
+	return s.Tag
+}
+
 func (s *DescribeNetworkPackagesRequest) SetInternetChargeType(v string) *DescribeNetworkPackagesRequest {
 	s.InternetChargeType = &v
 	return s
@@ -119,6 +120,55 @@ func (s *DescribeNetworkPackagesRequest) SetRegionId(v string) *DescribeNetworkP
 	return s
 }
 
+func (s *DescribeNetworkPackagesRequest) SetTag(v []*DescribeNetworkPackagesRequestTag) *DescribeNetworkPackagesRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *DescribeNetworkPackagesRequest) Validate() error {
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeNetworkPackagesRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeNetworkPackagesRequestTag) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeNetworkPackagesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkPackagesRequestTag) GetKey() *string {
+	return s.Key
+}
+
+func (s *DescribeNetworkPackagesRequestTag) GetValue() *string {
+	return s.Value
+}
+
+func (s *DescribeNetworkPackagesRequestTag) SetKey(v string) *DescribeNetworkPackagesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeNetworkPackagesRequestTag) SetValue(v string) *DescribeNetworkPackagesRequestTag {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribeNetworkPackagesRequestTag) Validate() error {
 	return dara.Validate(s)
 }

@@ -40,19 +40,21 @@ type DescribeCenterPolicyListRequest struct {
 	// 1
 	BusinessType *int32  `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
 	ModelLibrary *string `json:"ModelLibrary,omitempty" xml:"ModelLibrary,omitempty"`
-	// The page number to return in a paged query.<br>Default value: 1.
+	// The page number of the current page in a paged query. Paging starts from page 1.
+	//
+	// Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of entries per page in a paged query.
+	// The maximum number of entries per page in a paged query. Paging is used to return results in batches.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of Cloud Desktop policy IDs.
+	// The list of cloud desktop policy IDs.
 	PolicyGroupId []*string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty" type:"Repeated"`
 	PortProxy     *string   `json:"PortProxy,omitempty" xml:"PortProxy,omitempty"`
 	// The resource type.
@@ -63,7 +65,7 @@ type DescribeCenterPolicyListRequest struct {
 	//
 	// desktop
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The scope where the Cloud Desktop policy takes effect.
+	// The effective scope of the cloud desktop policy.
 	//
 	// example:
 	//

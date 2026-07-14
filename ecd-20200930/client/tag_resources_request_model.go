@@ -20,7 +20,7 @@ type iTagResourcesRequest interface {
 }
 
 type TagResourcesRequest struct {
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions supported by Wuying Cloud Desktop.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type TagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource IDs, which are cloud computer IDs. You can specify 1 to 50 IDs.
+	// The list of resource IDs, that is, the list of cloud desktop IDs. You can specify 1 to 50 resource IDs.
 	//
 	// This parameter is required.
 	//
@@ -36,11 +36,7 @@ type TagResourcesRequest struct {
 	//
 	// ecd-ia2zw38bi6cm7****
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the resource.
-	//
-	// Valid values:
-	//
-	// - ALIYUN::GWS::INSTANCE: cloud computer.
+	// The resource type.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +44,7 @@ type TagResourcesRequest struct {
 	//
 	// ALIYUN::GWS::INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags that you want to add to the cloud computers. You can specify 1 to 20 tags.
+	// The list of tags. You can specify 1 to 20 tags.
 	//
 	// This parameter is required.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -112,13 +108,13 @@ func (s *TagResourcesRequest) Validate() error {
 }
 
 type TagResourcesRequestTag struct {
-	// The tag keys. The tag key cannot be an empty string. The tag key can be up to 128 characters in length. It cannot start with `acs:` or `aliyun` and cannot contain `http://` or `https://`.
+	// The tag key. If you specify this parameter, the value cannot be an empty string. The value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// department
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag values. The tag value can be an empty string. The tag value can be up to 128 characters in length. It cannot start with `acs:` and cannot contain `http://` or `https://`.
+	// The tag value. The value can be an empty string. The value can be up to 128 characters in length and cannot start with `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

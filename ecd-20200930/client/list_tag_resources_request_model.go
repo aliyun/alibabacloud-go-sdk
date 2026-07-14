@@ -30,13 +30,13 @@ type ListTagResourcesRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The token that determines the start point of the next query.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list supported by WUYING Workspace.
 	//
 	// This parameter is required.
 	//
@@ -44,17 +44,13 @@ type ListTagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource IDs, which are cloud computer IDs. You can specify 1 to 50 IDs.
+	// The IDs of the resources, that is, the IDs of the cloud computers. Valid values of N: 1 to 50.
 	//
 	// example:
 	//
 	// ecd-ia2zw38bi6cm7****
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the resource.
-	//
-	// Valid values:
-	//
-	// - ALIYUN::GWS::INSTANCE: cloud computer.
+	// The resource type.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +58,7 @@ type ListTagResourcesRequest struct {
 	//
 	// ALIYUN::GWS::INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags that you want to query.
+	// The tags.
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -142,13 +138,13 @@ func (s *ListTagResourcesRequest) Validate() error {
 }
 
 type ListTagResourcesRequestTag struct {
-	// The tag keys. You can specify 1 to 20 tag keys.
+	// The tag key. Valid values of N: 1 to 20.
 	//
 	// example:
 	//
 	// department
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag values. You can specify 1 to 20 tag values.
+	// The tag value. Valid values of N: 1 to 20.
 	//
 	// example:
 	//

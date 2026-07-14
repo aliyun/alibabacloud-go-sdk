@@ -1995,7 +1995,7 @@ func (client *Client) CreateADConnectorOfficeSiteWithContext(ctx context.Context
 
 // Summary:
 //
-// Creates a NAS file system and associate it with the office network of the shared cloud computer.
+// Creates a NAS file system and binds it to the office network of a shared cloud computer.
 //
 // @param request - CreateAndBindNasFileSystemRequest
 //
@@ -3725,41 +3725,37 @@ func (client *Client) CreateDesktopOversoldGroupWithContext(ctx context.Context,
 
 // Summary:
 //
-// Creates one or more Elastic Desktop Service (EDS) desktops. If you provide user information, the desktops are automatically assigned to the specified users.
+// Creates one or more cloud desktops. If user information is specified during creation, the cloud desktops are directly assigned to the users.
 //
 // Description:
 //
-// Before you create a cloud desktop, meet the following requirements:
+// Before creating cloud desktops, complete the following preparations:
 //
-// - Create an office site (formerly a workspace) and users:
+// - Create an office network (formerly workspace) and users. For more information, see the following API operations or documentation:
 //
-//   - Simple office site: [CreateSimpleOfficeSite](https://help.aliyun.com/document_detail/215416.html) and [CreateUsers](https://help.aliyun.com/document_detail/437832.html).
+//   - Convenience office network: [CreateSimpleOfficeSite](https://help.aliyun.com/document_detail/215416.html) and [CreateUsers](https://help.aliyun.com/document_detail/437832.html).
 //
-//   - AD connector office site: [CreateADConnectorOfficeSite](https://help.aliyun.com/document_detail/215417.html) and [Create AD users](https://help.aliyun.com/document_detail/188619.html).
+//   - AD office network: [CreateADConnectorOfficeSite](https://help.aliyun.com/document_detail/215417.html) and [Create AD users](https://help.aliyun.com/document_detail/188619.html).
 //
-// - Call [CreatePolicyGroup](https://help.aliyun.com/document_detail/188889.html) to create a policy, or use an existing policy.
+// - Call [CreatePolicyGroup](https://help.aliyun.com/document_detail/188889.html) to create a policy, or confirm that an existing policy is available.
 //
-// **Request examples**
+// **Call examples:**
 //
 // <details>
 //
-// <summary>
-//
-// Example: Create a cloud desktop from a bundle
-//
-// </summary>
+// <summary>Example of creating with a template</summary>
 //
 // ```
 //
 // {
 //
-//	"RegionId": "cn-hangzhou",
+//	"RegionId": "ap-southeast-1",
 //
 //	"DesktopName": "test-desktop-name",
 //
 //	"Amount": "1",
 //
-//	"OfficeSiteId": "cn-hangzhou+dir-xxx",// You must create an office site in advance.
+//	"OfficeSiteId": "ap-southeast-1+dir-xxx",// Create an office network in advance
 //
 //	"PolicyGroupId": "system-all-enabled-policy",
 //
@@ -3775,23 +3771,19 @@ func (client *Client) CreateDesktopOversoldGroupWithContext(ctx context.Context,
 //
 // <details>
 //
-// <summary>
-//
-// Example: Create a cloud desktop with custom settings
-//
-// </summary>
+// <summary>Example of creating without a template</summary>
 //
 // ```
 //
 // {
 //
-//	"RegionId": "cn-hangzhou",
+//	"RegionId": "ap-southeast-1",
 //
 //	"DesktopName": "test-desktop-name",
 //
 //	"Amount": "1",
 //
-//	"OfficeSiteId": "cn-hangzhou+dir-xxx",// You must create an office site in advance.
+//	"OfficeSiteId": "ap-southeast-1+dir-xxx",// Create an office network in advance
 //
 //	"PolicyGroupId": "system-all-enabled-policy",
 //
@@ -3819,23 +3811,19 @@ func (client *Client) CreateDesktopOversoldGroupWithContext(ctx context.Context,
 //
 // <details>
 //
-// <summary>
-//
-// Example: Create a cloud desktop with a monthly usage package
-//
-// </summary>
+// <summary>Example of creating a monthly hourly package</summary>
 //
 // ```
 //
 // {
 //
-//	"RegionId": "cn-hangzhou",
+//	"RegionId": "ap-southeast-1",
 //
 //	"DesktopName": "test-desktop-name",
 //
 //	"Amount": "1",
 //
-//	"OfficeSiteId": "cn-hangzhou+dir-xxx",// You must create an office site in advance.
+//	"OfficeSiteId": "ap-southeast-1+dir-xxx",// Create an office network in advance
 //
 //	"PolicyGroupId": "system-all-enabled-policy",
 //
@@ -3873,17 +3861,13 @@ func (client *Client) CreateDesktopOversoldGroupWithContext(ctx context.Context,
 //
 // <details>
 //
-// <summary>
-//
-// Example: Create an agent resource
-//
-// </summary>
+// <summary>Example of creating an Agent resource</summary>
 //
 // ```
 //
 // {
 //
-//	"RegionId": "cn-hangzhou",
+//	"RegionId": "ap-southeast-1",
 //
 //	"BundleId": "b-openclaw-linux",
 //
@@ -3891,7 +3875,7 @@ func (client *Client) CreateDesktopOversoldGroupWithContext(ctx context.Context,
 //
 //	"Amount": "1",
 //
-//	"OfficeSiteId": "cn-hangzhou+dir-xxx",// You must create an office site in advance.
+//	"OfficeSiteId": "ap-southeast-1+dir-xxx",// Create an office network in advance
 //
 //	"ChargeType": "PostPaid",
 //
@@ -3917,7 +3901,7 @@ func (client *Client) CreateDesktopOversoldGroupWithContext(ctx context.Context,
 //
 // </details>
 //
-// To automatically run user commands on a cloud desktop, configure the `UserCommands` parameter.
+// To have cloud desktops automatically run custom command scripts, use the `UserCommands` field to configure custom commands.
 //
 // @param tmpReq - CreateDesktopsRequest
 //
@@ -4022,6 +4006,10 @@ func (client *Client) CreateDesktopsWithContext(ctx context.Context, tmpReq *Cre
 		query["OfficeSiteId"] = request.OfficeSiteId
 	}
 
+	if !dara.IsNil(request.OuPath) {
+		query["OuPath"] = request.OuPath
+	}
+
 	if !dara.IsNil(request.Period) {
 		query["Period"] = request.Period
 	}
@@ -4064,6 +4052,10 @@ func (client *Client) CreateDesktopsWithContext(ctx context.Context, tmpReq *Cre
 
 	if !dara.IsNil(request.SnapshotPolicyId) {
 		query["SnapshotPolicyId"] = request.SnapshotPolicyId
+	}
+
+	if !dara.IsNil(request.SubPayType) {
+		query["SubPayType"] = request.SubPayType
 	}
 
 	if !dara.IsNil(request.SubnetId) {
@@ -4605,7 +4597,7 @@ func (client *Client) CreateNatGatewayWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Creates a network package for an office network.
+// Creates a premium bandwidth plan for an office network.
 //
 // @param request - CreateNetworkPackageRequest
 //
@@ -4666,6 +4658,10 @@ func (client *Client) CreateNetworkPackageWithContext(ctx context.Context, reque
 
 	if !dara.IsNil(request.ResellerOwnerUid) {
 		query["ResellerOwnerUid"] = request.ResellerOwnerUid
+	}
+
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -7638,7 +7634,7 @@ func (client *Client) DescribeCensWithContext(ctx context.Context, request *Desc
 
 // Summary:
 //
-// Query details of policies that are not region-specific.
+// Queries the details of region-free policies.
 //
 // @param request - DescribeCenterPolicyListRequest
 //
@@ -9658,74 +9654,6 @@ func (client *Client) DescribeFlowMetricWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries cloud computer-level traffic statistics of a single office network.
-//
-// Description:
-//
-// > You can query only the traffic data in the last 90 days.
-//
-// @param request - DescribeFlowStatisticRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeFlowStatisticResponse
-func (client *Client) DescribeFlowStatisticWithContext(ctx context.Context, request *DescribeFlowStatisticRequest, runtime *dara.RuntimeOptions) (_result *DescribeFlowStatisticResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.DesktopId) {
-		query["DesktopId"] = request.DesktopId
-	}
-
-	if !dara.IsNil(request.OfficeSiteId) {
-		query["OfficeSiteId"] = request.OfficeSiteId
-	}
-
-	if !dara.IsNil(request.PageNumber) {
-		query["PageNumber"] = request.PageNumber
-	}
-
-	if !dara.IsNil(request.PageSize) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !dara.IsNil(request.Period) {
-		query["Period"] = request.Period
-	}
-
-	if !dara.IsNil(request.RegionId) {
-		query["RegionId"] = request.RegionId
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("DescribeFlowStatistic"),
-		Version:     dara.String("2020-09-30"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &DescribeFlowStatisticResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
 // 查询DNAT条目
 //
 // @param request - DescribeForwardTableEntriesRequest
@@ -10890,7 +10818,7 @@ func (client *Client) DescribeNatGatewaysWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the details of one or more premium bandwidth plans.
+// Queries the details of one or more premium Internet bandwidth plans.
 //
 // @param request - DescribeNetworkPackagesRequest
 //
@@ -10923,6 +10851,10 @@ func (client *Client) DescribeNetworkPackagesWithContext(ctx context.Context, re
 
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -12372,7 +12304,7 @@ func (client *Client) DescribeSubnetsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Query the details of Cloud Desktop templates.
+// Queries the details of cloud computer templates.
 //
 // @param request - DescribeTemplatesRequest
 //
@@ -14440,11 +14372,11 @@ func (client *Client) ListOfficeSiteUsersWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the tags of cloud computers.
+// Queries the list of tags that are added to cloud computers.
 //
 // Description:
 //
-// You must use at least one of the following parameters in the request to determine the object that you want to query: `ResourceId.N`, `Tag.N.Key`, and `Tag.N.Value`.
+// You must specify at least one of the following parameters in the request to specify the query object: `ResourceId.N`, `Tag.N.Key`, or `Tag.N.Value`.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -15084,7 +15016,7 @@ func (client *Client) ModifyAclEntriesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Modifies the name and snapshot retention period of an automatic snapshot policy.
+// Modifies the configuration items of an automatic snapshot policy, including the policy name and snapshot retention period.
 //
 // @param request - ModifyAutoSnapshotPolicyRequest
 //
@@ -20329,11 +20261,11 @@ func (client *Client) SetDesktopMaintenanceWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Enables or disables the single sign-on (SSO) feature for an Active Directory (AD) account-based office network.
+// Enables or disables the single sign-on (SSO) feature for an AD-based office network.
 //
 // Description:
 //
-// This operation is supported only for AD directories, not for RAM directories.
+// This operation has the same effect as [SetOfficeSiteSsoStatus](~~SetOfficeSiteSsoStatus~~). Use the SetOfficeSiteSsoStatus operation instead.
 //
 // @param request - SetDirectorySsoStatusRequest
 //
@@ -20735,11 +20667,11 @@ func (client *Client) StopInvocationWithContext(ctx context.Context, request *St
 
 // Summary:
 //
-// Adds tags to cloud computers. This allows you to filter and manage cloud computers by tag.
+// Adds tags to specified cloud desktops. This makes it easier to filter and manage cloud desktops by tag.
 //
 // Description:
 //
-// If TagKey is specified, the new TagValue value overrides the original TagValue value.
+// If the specified TagKey already exists, the new TagValue overwrites the original TagValue.
 //
 // @param request - TagResourcesRequest
 //
@@ -21015,7 +20947,7 @@ func (client *Client) UnlockVirtualMFADeviceWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Removes tags from cloud computers. After you remove a tag, if the tag is not added to a cloud computer, the tag is automatically deleted.
+// Removes tags from cloud desktops. After a tag is removed, if the tag is not added to any cloud desktop, the tag is automatically deleted.
 //
 // @param request - UntagResourcesRequest
 //

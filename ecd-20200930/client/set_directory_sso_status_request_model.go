@@ -18,7 +18,7 @@ type iSetDirectorySsoStatusRequest interface {
 }
 
 type SetDirectorySsoStatusRequest struct {
-	// The AD directory ID.
+	// The ID of the AD office network.
 	//
 	// This parameter is required.
 	//
@@ -26,9 +26,9 @@ type SetDirectorySsoStatusRequest struct {
 	//
 	// cn-hangzhou+dir-h95efs1mbukd9****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// Specifies whether to enable SSO. Valid values:
+	// Specifies whether to enable or disable single sign-on (SSO). Valid values:
 	//
-	// - true: enables SSO.
+	// - true: enables SSO
 	//
 	// - false: disables SSO.
 	//
@@ -38,7 +38,7 @@ type SetDirectorySsoStatusRequest struct {
 	//
 	// true
 	EnableSso *bool `json:"EnableSso,omitempty" xml:"EnableSso,omitempty"`
-	// The region ID.
+	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//

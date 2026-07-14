@@ -33,10 +33,12 @@ type iCreateNetworkPackageRequest interface {
 	GetRegionId() *string
 	SetResellerOwnerUid(v int64) *CreateNetworkPackageRequest
 	GetResellerOwnerUid() *int64
+	SetTag(v []*CreateNetworkPackageRequestTag) *CreateNetworkPackageRequest
+	GetTag() []*CreateNetworkPackageRequestTag
 }
 
 type CreateNetworkPackageRequest struct {
-	// Specifies whether to enable auto-payment.
+	// Specifies whether to enable automatic payment.
 	//
 	// example:
 	//
@@ -48,13 +50,13 @@ type CreateNetworkPackageRequest struct {
 	//
 	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The bandwidth of the network package, in Mbps.
+	// The bandwidth of the premium bandwidth plan. Unit: Mbit/s.
 	//
-	// - For subscription network packages, the value range is 2 to 1,000.
+	// - If the premium bandwidth plan uses the subscription billing method, the valid values are 2 to 1000.
 	//
-	// - For pay-as-you-go network packages that are billed by traffic, the value range is 2 to 200.
+	// - If the premium bandwidth plan uses the pay-as-you-go billing method and the billing type is pay-by-data-transfer (PayByTraffic), the valid values are 2 to 200.
 	//
-	// - For pay-as-you-go network packages that are billed by bandwidth, the value range is 2 to 1,000.
+	// - If the premium bandwidth plan uses the pay-as-you-go billing method and the billing type is pay-by-bandwidth (PayByBandwidth), the valid values are 2 to 1000.
 	//
 	// This parameter is required.
 	//
@@ -63,17 +65,17 @@ type CreateNetworkPackageRequest struct {
 	// 2
 	Bandwidth     *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	ChannelCookie *string `json:"ChannelCookie,omitempty" xml:"ChannelCookie,omitempty"`
-	// The billing method for the network package.
+	// The billable methods of the premium bandwidth plan.
 	//
-	// - When `PayType` is set to `PrePaid`, the only valid value is:
+	// - If the parameter `PayType` is set to `PrePaid`, valid values:
 	//
-	//   - `PayByBandwidth`: pay-by-bandwidth.
+	//     - PayByBandwidth: billing by fixed bandwidth.
 	//
-	// - When `PayType` is set to `PostPaid`, valid values are:
+	// - If the parameter `PayType` is set to `PostPaid`, valid values:
 	//
-	//   - `PayByTraffic`: pay-by-traffic.
+	//     - PayByTraffic: billing by data transfer.
 	//
-	//   - `PayByBandwidth`: pay-by-bandwidth.
+	//     - PayByBandwidth: billing by fixed bandwidth.
 	//
 	// example:
 	//
@@ -91,13 +93,13 @@ type CreateNetworkPackageRequest struct {
 	//
 	// PrePaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The subscription duration of the network package. This parameter is required and applies only when `PayType` is set to `PrePaid`. The valid values for this parameter depend on the value of `PeriodUnit`.
+	// The subscription duration of the premium bandwidth plan. This parameter takes effect and is required only when PayType is set to PrePaid. Valid values are determined by the PeriodUnit parameter.
 	//
-	// - If `PeriodUnit` is set to `Week`, the only valid value is 1.
+	// - If PeriodUnit is set to Week, the valid value is 1.
 	//
-	// - If `PeriodUnit` is set to `Month`, valid values are 1, 2, 3, and 6.
+	// - If PeriodUnit is set to Month, valid values are 1, 2, 3, and 6.
 	//
-	// - If `PeriodUnit` is set to `Year`, valid values are 1, 2, and 3.
+	// - If PeriodUnit is set to Year, valid values are 1, 2, and 3.
 	//
 	// Default value: 1.
 	//
@@ -105,7 +107,7 @@ type CreateNetworkPackageRequest struct {
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the subscription duration for the network package. This parameter is required and applies only when `PayType` is set to `PrePaid`.
+	// The unit of the subscription duration for the premium bandwidth plan. This parameter takes effect and is required only when PayType is set to PrePaid.
 	//
 	// example:
 	//
@@ -117,15 +119,16 @@ type CreateNetworkPackageRequest struct {
 	//
 	// 23141
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to get the list of regions supported by Elastic Desktop Service.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResellerOwnerUid *int64  `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
+	RegionId         *string                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResellerOwnerUid *int64                            `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
+	Tag              []*CreateNetworkPackageRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateNetworkPackageRequest) String() string {
@@ -182,6 +185,10 @@ func (s *CreateNetworkPackageRequest) GetRegionId() *string {
 
 func (s *CreateNetworkPackageRequest) GetResellerOwnerUid() *int64 {
 	return s.ResellerOwnerUid
+}
+
+func (s *CreateNetworkPackageRequest) GetTag() []*CreateNetworkPackageRequestTag {
+	return s.Tag
 }
 
 func (s *CreateNetworkPackageRequest) SetAutoPay(v bool) *CreateNetworkPackageRequest {
@@ -244,6 +251,55 @@ func (s *CreateNetworkPackageRequest) SetResellerOwnerUid(v int64) *CreateNetwor
 	return s
 }
 
+func (s *CreateNetworkPackageRequest) SetTag(v []*CreateNetworkPackageRequestTag) *CreateNetworkPackageRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateNetworkPackageRequest) Validate() error {
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type CreateNetworkPackageRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateNetworkPackageRequestTag) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateNetworkPackageRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNetworkPackageRequestTag) GetKey() *string {
+	return s.Key
+}
+
+func (s *CreateNetworkPackageRequestTag) GetValue() *string {
+	return s.Value
+}
+
+func (s *CreateNetworkPackageRequestTag) SetKey(v string) *CreateNetworkPackageRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateNetworkPackageRequestTag) SetValue(v string) *CreateNetworkPackageRequestTag {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateNetworkPackageRequestTag) Validate() error {
 	return dara.Validate(s)
 }

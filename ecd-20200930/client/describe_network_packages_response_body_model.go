@@ -18,15 +18,15 @@ type iDescribeNetworkPackagesResponseBody interface {
 }
 
 type DescribeNetworkPackagesResponseBody struct {
-	// The premium bandwidth plans.
+	// The list of premium Internet bandwidth plans.
 	NetworkPackages []*DescribeNetworkPackagesResponseBodyNetworkPackages `json:"NetworkPackages,omitempty" xml:"NetworkPackages,omitempty" type:"Repeated"`
-	// The token that is used to start the next query. If the value of this parameter is empty, all results are returned.
+	// The token for the next query. If NextToken is empty, no more results exist.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *DescribeNetworkPackagesResponseBody) Validate() error {
 }
 
 type DescribeNetworkPackagesResponseBodyNetworkPackages struct {
-	// The bandwidth provided by the premium bandwidth plan. Unit: Mbit/s.
+	// The bandwidth of the premium Internet bandwidth plan. Unit: Mbit/s.
 	//
 	// example:
 	//
@@ -91,103 +91,51 @@ type DescribeNetworkPackagesResponseBodyNetworkPackages struct {
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The business status.
 	//
-	// Valid values:
-	//
-	// - Expired
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	// - Normal
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
 	// example:
 	//
 	// Normal
 	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	// The time when the premium bandwidth plan was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2021-05-10T02:35:26Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The public egress IP address of the premium bandwidth plan.
+	// The public egress IP address of the premium Internet bandwidth plan.
 	EipAddresses []*string `json:"EipAddresses,omitempty" xml:"EipAddresses,omitempty" type:"Repeated"`
-	// The time when the premium bandwidth plan expires.
+	// The expiration time of the premium Internet bandwidth plan.
 	//
-	// - If the plan is a subscription one, the time when the plan expires is returned.
+	// - If the plan uses the subscription billing method, the actual expiration time is returned.
 	//
-	// - If the plan is a pay-as-you-go one, `2099-12-31T15:59:59Z` is returned.
+	// - If the plan uses the pay-as-you-go billing method, `2099-12-31T15:59:59Z` is returned.
 	//
 	// example:
 	//
 	// 2099-12-31T15:59:59Z
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The charge type of the premium bandwidth plan.
+	// The billing method of the premium Internet bandwidth plan.
 	//
-	// - Valid value when the `PayType` parameter is set to `PrePaid`:
+	// - If the parameter `PayType` is set to `PrePaid`, valid values:
 	//
-	//   - PayByBandwidth: charges by fixed bandwidth.
+	//     - PayByBandwidth: pay-by-bandwidth.
 	//
-	// - Valid values when the `PayType` parameter is set to `PostPaid`:
+	// - If the parameter `PayType` is set to `PostPaid`, valid values:
 	//
-	//   - PayByTraffic: charges by data transfer.
+	//     - PayByTraffic: pay-by-data-transfer.
 	//
-	//   - PayByBandwidth: charges by fixed bandwidth.
+	//     - PayByBandwidth: pay-by-bandwidth.
 	//
 	// example:
 	//
 	// PayByTraffic
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// The ID of the premium bandwidth plan.
+	// The ID of the premium Internet bandwidth plan.
 	//
 	// example:
 	//
 	// np-amtp8e8q1o9e4****
 	NetworkPackageId *string `json:"NetworkPackageId,omitempty" xml:"NetworkPackageId,omitempty"`
-	// The status of the premium bandwidth plan.
-	//
-	// Valid values:
-	//
-	// - Creating
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	// - Released
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	// - InUse
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	// - Releasing
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
+	// The status of the premium Internet bandwidth plan.
 	//
 	// example:
 	//
@@ -205,39 +153,25 @@ type DescribeNetworkPackagesResponseBodyNetworkPackages struct {
 	//
 	// default
 	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
-	// The type of the office network.
-	//
-	// Valid values:
-	//
-	// - standard: advanced office network
-	//
-	// - customized: custom office network
-	//
-	// - basic: basic office network
+	// The office network type.
 	//
 	// example:
 	//
 	// basic
 	OfficeSiteVpcType *string `json:"OfficeSiteVpcType,omitempty" xml:"OfficeSiteVpcType,omitempty"`
-	// The billing method of the premium bandwidth plan.
-	//
-	// Valid values:
-	//
-	// - PostPaid: pay-as-you-go
-	//
-	// - PrePaid: subscription
+	// The billing method.
 	//
 	// example:
 	//
 	// PostPaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The time when the reserved network bandwidth took effect.
+	// The effective period of the reserved network bandwidth.
 	//
 	// example:
 	//
 	// 2021-07-10T00:00:00Z
 	ReservationActiveTime *string `json:"ReservationActiveTime,omitempty" xml:"ReservationActiveTime,omitempty"`
-	// The peak bandwidth that is reserved for the premium bandwidth plan. Unit: Mbit/s.
+	// The peak reserved network bandwidth. Unit: Mbit/s.
 	//
 	// example:
 	//
@@ -245,16 +179,11 @@ type DescribeNetworkPackagesResponseBodyNetworkPackages struct {
 	ReservationBandwidth *int32 `json:"ReservationBandwidth,omitempty" xml:"ReservationBandwidth,omitempty"`
 	// The billing method of the reserved network bandwidth.
 	//
-	// Valid values:
-	//
-	// - PayByTraffic: charges by data transfer.
-	//
-	// - PayByBandwidth: charges by fixed bandwidth.
-	//
 	// example:
 	//
 	// PayByBandwidth
-	ReservationInternetChargeType *string `json:"ReservationInternetChargeType,omitempty" xml:"ReservationInternetChargeType,omitempty"`
+	ReservationInternetChargeType *string                                                   `json:"ReservationInternetChargeType,omitempty" xml:"ReservationInternetChargeType,omitempty"`
+	Tags                          []*DescribeNetworkPackagesResponseBodyNetworkPackagesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeNetworkPackagesResponseBodyNetworkPackages) String() string {
@@ -323,6 +252,10 @@ func (s *DescribeNetworkPackagesResponseBodyNetworkPackages) GetReservationBandw
 
 func (s *DescribeNetworkPackagesResponseBodyNetworkPackages) GetReservationInternetChargeType() *string {
 	return s.ReservationInternetChargeType
+}
+
+func (s *DescribeNetworkPackagesResponseBodyNetworkPackages) GetTags() []*DescribeNetworkPackagesResponseBodyNetworkPackagesTags {
+	return s.Tags
 }
 
 func (s *DescribeNetworkPackagesResponseBodyNetworkPackages) SetBandwidth(v int32) *DescribeNetworkPackagesResponseBodyNetworkPackages {
@@ -400,6 +333,55 @@ func (s *DescribeNetworkPackagesResponseBodyNetworkPackages) SetReservationInter
 	return s
 }
 
+func (s *DescribeNetworkPackagesResponseBodyNetworkPackages) SetTags(v []*DescribeNetworkPackagesResponseBodyNetworkPackagesTags) *DescribeNetworkPackagesResponseBodyNetworkPackages {
+	s.Tags = v
+	return s
+}
+
 func (s *DescribeNetworkPackagesResponseBodyNetworkPackages) Validate() error {
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeNetworkPackagesResponseBodyNetworkPackagesTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeNetworkPackagesResponseBodyNetworkPackagesTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeNetworkPackagesResponseBodyNetworkPackagesTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkPackagesResponseBodyNetworkPackagesTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *DescribeNetworkPackagesResponseBodyNetworkPackagesTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *DescribeNetworkPackagesResponseBodyNetworkPackagesTags) SetKey(v string) *DescribeNetworkPackagesResponseBodyNetworkPackagesTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeNetworkPackagesResponseBodyNetworkPackagesTags) SetValue(v string) *DescribeNetworkPackagesResponseBodyNetworkPackagesTags {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribeNetworkPackagesResponseBodyNetworkPackagesTags) Validate() error {
 	return dara.Validate(s)
 }
