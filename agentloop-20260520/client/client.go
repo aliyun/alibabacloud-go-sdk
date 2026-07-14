@@ -841,6 +841,98 @@ func (client *Client) CreateEvaluatorSkill(name *string, request *CreateEvaluato
 
 // Summary:
 //
+// Creates a pipeline.
+//
+// @param request - CreatePipelineRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePipelineResponse
+func (client *Client) CreatePipelineWithOptions(agentSpace *string, request *CreatePipelineRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePipelineResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ExecutePolicy) {
+		body["executePolicy"] = request.ExecutePolicy
+	}
+
+	if !dara.IsNil(request.Pipeline) {
+		body["pipeline"] = request.Pipeline
+	}
+
+	if !dara.IsNil(request.PipelineName) {
+		body["pipelineName"] = request.PipelineName
+	}
+
+	if !dara.IsNil(request.Sink) {
+		body["sink"] = request.Sink
+	}
+
+	if !dara.IsNil(request.Source) {
+		body["source"] = request.Source
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePipeline"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/agentspace/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/pipeline"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePipelineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a pipeline.
+//
+// @param request - CreatePipelineRequest
+//
+// @return CreatePipelineResponse
+func (client *Client) CreatePipeline(agentSpace *string, request *CreatePipelineRequest) (_result *CreatePipelineResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreatePipelineResponse{}
+	_body, _err := client.CreatePipelineWithOptions(agentSpace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an AgentSpace.
 //
 // @param request - DeleteAgentSpaceRequest
@@ -1524,6 +1616,10 @@ func (client *Client) ExecuteQueryWithOptions(agentSpace *string, datasetName *s
 
 	if !dara.IsNil(request.Type) {
 		body["type"] = request.Type
+	}
+
+	if !dara.IsNil(request.Version) {
+		body["version"] = request.Version
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -3118,6 +3214,112 @@ func (client *Client) PausePipeline(agentSpace *string, pipelineName *string, re
 	headers := make(map[string]*string)
 	_result = &PausePipelineResponse{}
 	_body, _err := client.PausePipelineWithOptions(agentSpace, pipelineName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Previews a pipeline. Without creating pipeline resources, performs a trial query based on the specified data source, node orchestration, and time range, and returns a small number of sample data records for authenticating parameter settings and previewing processing results.
+//
+// Description:
+//
+// ## Request description
+//
+// - **agentSpace*	- must be an AgentSpace instance that has been created under the current account.
+//
+// - **source.type*	- currently supports only the `logstore` type. The `logstore.project` and `logstore.logstore` must be authorized within the AgentSpace and located in the same region.
+//
+// - **pipeline.nodes*	- must contain at least one node of the `Source` type and cannot be empty.
+//
+// - **fromTime*	- and **toTime*	- are UNIX timestamps in seconds. **fromTime*	- must be less than **toTime**.
+//
+// - A maximum of 5 records are returned, and internal system fields of the data source are automatically filtered out.
+//
+// @param request - PreviewPipelineRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PreviewPipelineResponse
+func (client *Client) PreviewPipelineWithOptions(agentSpace *string, request *PreviewPipelineRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PreviewPipelineResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.FromTime) {
+		body["fromTime"] = request.FromTime
+	}
+
+	if !dara.IsNil(request.Pipeline) {
+		body["pipeline"] = request.Pipeline
+	}
+
+	if !dara.IsNil(request.Source) {
+		body["source"] = request.Source
+	}
+
+	if !dara.IsNil(request.ToTime) {
+		body["toTime"] = request.ToTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PreviewPipeline"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/agentspace/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/pipeline/preview"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PreviewPipelineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Previews a pipeline. Without creating pipeline resources, performs a trial query based on the specified data source, node orchestration, and time range, and returns a small number of sample data records for authenticating parameter settings and previewing processing results.
+//
+// Description:
+//
+// ## Request description
+//
+// - **agentSpace*	- must be an AgentSpace instance that has been created under the current account.
+//
+// - **source.type*	- currently supports only the `logstore` type. The `logstore.project` and `logstore.logstore` must be authorized within the AgentSpace and located in the same region.
+//
+// - **pipeline.nodes*	- must contain at least one node of the `Source` type and cannot be empty.
+//
+// - **fromTime*	- and **toTime*	- are UNIX timestamps in seconds. **fromTime*	- must be less than **toTime**.
+//
+// - A maximum of 5 records are returned, and internal system fields of the data source are automatically filtered out.
+//
+// @param request - PreviewPipelineRequest
+//
+// @return PreviewPipelineResponse
+func (client *Client) PreviewPipeline(agentSpace *string, request *PreviewPipelineRequest) (_result *PreviewPipelineResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PreviewPipelineResponse{}
+	_body, _err := client.PreviewPipelineWithOptions(agentSpace, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

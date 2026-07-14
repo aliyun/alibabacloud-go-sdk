@@ -23,6 +23,8 @@ type iExecuteQueryRequest interface {
   GetTo() *int32 
   SetType(v string) *ExecuteQueryRequest
   GetType() *string 
+  SetVersion(v string) *ExecuteQueryRequest
+  GetVersion() *string 
 }
 
 type ExecuteQueryRequest struct {
@@ -47,6 +49,7 @@ type ExecuteQueryRequest struct {
   // 
   // SQL
   Type *string `json:"type,omitempty" xml:"type,omitempty"`
+  Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s ExecuteQueryRequest) String() string {
@@ -85,6 +88,10 @@ func (s *ExecuteQueryRequest) GetType() *string  {
   return s.Type
 }
 
+func (s *ExecuteQueryRequest) GetVersion() *string  {
+  return s.Version
+}
+
 func (s *ExecuteQueryRequest) SetFrom(v int32) *ExecuteQueryRequest {
   s.From = &v
   return s
@@ -117,6 +124,11 @@ func (s *ExecuteQueryRequest) SetTo(v int32) *ExecuteQueryRequest {
 
 func (s *ExecuteQueryRequest) SetType(v string) *ExecuteQueryRequest {
   s.Type = &v
+  return s
+}
+
+func (s *ExecuteQueryRequest) SetVersion(v string) *ExecuteQueryRequest {
+  s.Version = &v
   return s
 }
 
