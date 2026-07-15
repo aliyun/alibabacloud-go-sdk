@@ -22,7 +22,7 @@ type iDescribeSnapshotsResponseBody interface {
 }
 
 type DescribeSnapshotsResponseBody struct {
-	// The page number.
+	// The page number of the snapshot list.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeSnapshotsResponseBody struct {
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Snapshots *DescribeSnapshotsResponseBodySnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Struct"`
-	// The total number of snapshots returned.
+	// The total number of snapshots.
 	//
 	// example:
 	//

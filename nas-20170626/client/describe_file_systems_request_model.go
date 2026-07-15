@@ -19,6 +19,8 @@ type iDescribeFileSystemsRequest interface {
 	GetPageSize() *int32
 	SetResourceGroupId(v string) *DescribeFileSystemsRequest
 	GetResourceGroupId() *string
+	SetStorageType(v string) *DescribeFileSystemsRequest
+	GetStorageType() *string
 	SetTag(v []*DescribeFileSystemsRequestTag) *DescribeFileSystemsRequest
 	GetTag() []*DescribeFileSystemsRequestTag
 	SetVpcId(v string) *DescribeFileSystemsRequest
@@ -30,11 +32,11 @@ type DescribeFileSystemsRequest struct {
 	//
 	// - General-purpose NAS: 31a8e4****.
 	//
-	// - Extreme NAS: Must start with extreme-, such as extreme-0015****.
+	// - Extreme NAS: must start with extreme-, such as extreme-0015****.
 	//
-	// - CPFS (locally redundant): Must start with cpfs-, such as cpfs-125487****.
+	// - Cloud Parallel File Storage (CPFS) (locally redundant): must start with cpfs-, such as cpfs-125487****.
 	//
-	// - CPFS SE (zone-redundant): Must start with cpfsse-, such as cpfsse-022c71b134****.
+	// - CPFS SE (zone-redundant): must start with cpfsse-, such as cpfsse-022c71b134****.
 	//
 	// example:
 	//
@@ -68,7 +70,7 @@ type DescribeFileSystemsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of file systems on each page in a paging query.
+	// The number of file systems on each page during a paged query.
 	//
 	// Valid values: 1 to 100.
 	//
@@ -86,6 +88,7 @@ type DescribeFileSystemsRequest struct {
 	//
 	// rg-acfmwavnfef****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	StorageType     *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	// The tag information.
 	Tag []*DescribeFileSystemsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The virtual private cloud (VPC) ID.
@@ -126,6 +129,10 @@ func (s *DescribeFileSystemsRequest) GetResourceGroupId() *string {
 	return s.ResourceGroupId
 }
 
+func (s *DescribeFileSystemsRequest) GetStorageType() *string {
+	return s.StorageType
+}
+
 func (s *DescribeFileSystemsRequest) GetTag() []*DescribeFileSystemsRequestTag {
 	return s.Tag
 }
@@ -156,6 +163,11 @@ func (s *DescribeFileSystemsRequest) SetPageSize(v int32) *DescribeFileSystemsRe
 
 func (s *DescribeFileSystemsRequest) SetResourceGroupId(v string) *DescribeFileSystemsRequest {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeFileSystemsRequest) SetStorageType(v string) *DescribeFileSystemsRequest {
+	s.StorageType = &v
 	return s
 }
 

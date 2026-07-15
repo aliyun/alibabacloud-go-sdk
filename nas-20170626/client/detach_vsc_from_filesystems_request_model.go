@@ -22,17 +22,20 @@ type DetachVscFromFilesystemsRequest struct {
 	//
 	// The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
-	// > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may be different for each API request.
+	// > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may differ for each API request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID information of file systems and virtual storage channels. A maximum of 10 entries can be specified per batch.
+	// The ID information of the file system and virtual storage channel. A maximum of 10 entries can be specified per batch.
 	//
 	// This parameter is required.
 	ResourceIds []*DetachVscFromFilesystemsRequestResourceIds `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
-	RoleChain   []*DetachVscFromFilesystemsRequestRoleChain   `json:"RoleChain,omitempty" xml:"RoleChain,omitempty" type:"Repeated"`
+	// The role chain.
+	//
+	// > This parameter is required only for cross-account scenarios.
+	RoleChain []*DetachVscFromFilesystemsRequestRoleChain `json:"RoleChain,omitempty" xml:"RoleChain,omitempty" type:"Repeated"`
 }
 
 func (s DetachVscFromFilesystemsRequest) String() string {
@@ -138,9 +141,24 @@ func (s *DetachVscFromFilesystemsRequestResourceIds) Validate() error {
 }
 
 type DetachVscFromFilesystemsRequestRoleChain struct {
+	// The UID of the Alibaba Cloud account on whose behalf the service assumes the role.
+	//
+	// example:
+	//
+	// 528394183225****
 	AssumeRoleFor *string `json:"AssumeRoleFor,omitempty" xml:"AssumeRoleFor,omitempty"`
-	RoleArn       *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	RoleType      *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The resource descriptor of the specified role. Format: acs:ram::$accountID:role/$roleName.
+	//
+	// example:
+	//
+	// acs:ram::123472233814****:role/aliyunnasclientvsc****
+	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// The role type. Valid values: service and user.
+	//
+	// example:
+	//
+	// service
+	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DetachVscFromFilesystemsRequestRoleChain) String() string {

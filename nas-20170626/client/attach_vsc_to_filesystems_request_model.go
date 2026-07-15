@@ -28,11 +28,14 @@ type AttachVscToFilesystemsRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID information of file systems and virtual storage channels. A maximum of 10 entries can be specified per batch.
+	// The ID information of file systems and Virtual Storage Channels. A maximum of 10 entries can be specified per batch.
 	//
 	// This parameter is required.
 	ResourceIds []*AttachVscToFilesystemsRequestResourceIds `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
-	RoleChain   []*AttachVscToFilesystemsRequestRoleChain   `json:"RoleChain,omitempty" xml:"RoleChain,omitempty" type:"Repeated"`
+	// The role chain.
+	//
+	// > This parameter is required only for cross-account scenarios.
+	RoleChain []*AttachVscToFilesystemsRequestRoleChain `json:"RoleChain,omitempty" xml:"RoleChain,omitempty" type:"Repeated"`
 }
 
 func (s AttachVscToFilesystemsRequest) String() string {
@@ -99,7 +102,7 @@ type AttachVscToFilesystemsRequestResourceIds struct {
 	//
 	// bmcpfs-290t15yn4uo8lid****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The virtual storage channel ID.
+	// The Virtual Storage Channel ID.
 	//
 	// example:
 	//
@@ -138,9 +141,24 @@ func (s *AttachVscToFilesystemsRequestResourceIds) Validate() error {
 }
 
 type AttachVscToFilesystemsRequestRoleChain struct {
+	// The UID of the Alibaba Cloud account on whose behalf the service assumes the role.
+	//
+	// example:
+	//
+	// 176498472570****
 	AssumeRoleFor *string `json:"AssumeRoleFor,omitempty" xml:"AssumeRoleFor,omitempty"`
-	RoleArn       *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	RoleType      *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The resource descriptor of the specified role. Format: acs:ram::$accountID:role/$roleName.
+	//
+	// example:
+	//
+	// acs:ram::123472233814****:role/aliyunnasclientvsc****
+	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// The role type. Valid values: service and user.
+	//
+	// example:
+	//
+	// service
+	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s AttachVscToFilesystemsRequestRoleChain) String() string {

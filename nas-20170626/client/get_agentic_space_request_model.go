@@ -16,12 +16,16 @@ type iGetAgenticSpaceRequest interface {
 }
 
 type GetAgenticSpaceRequest struct {
+	// AgenticSpace Id。
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// agentic-229oypxjgpau2****
 	AgenticSpaceId *string `json:"AgenticSpaceId,omitempty" xml:"AgenticSpaceId,omitempty"`
+	// The file system ID.
+	//
 	// This parameter is required.
 	//
 	// example:

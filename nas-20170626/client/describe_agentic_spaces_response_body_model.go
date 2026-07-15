@@ -19,10 +19,14 @@ type iDescribeAgenticSpacesResponseBody interface {
 
 type DescribeAgenticSpacesResponseBody struct {
 	AgenticSpaces *DescribeAgenticSpacesResponseBodyAgenticSpaces `json:"AgenticSpaces,omitempty" xml:"AgenticSpaces,omitempty" type:"Struct"`
+	// The query token. Set this parameter to the NextToken value returned in the previous API call.
+	//
 	// example:
 	//
 	// MTc2NTg1MTUyMzA1OTczNTc1OCM0NjQxMzQ****=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BC7C825C-5F65-4B56-BEF6-98C56C7C****

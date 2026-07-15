@@ -14,6 +14,8 @@ type iDeleteAgenticSpaceResponseBody interface {
 }
 
 type DeleteAgenticSpaceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 98696EF0-1607-4E9D-B01D-F20930B6****

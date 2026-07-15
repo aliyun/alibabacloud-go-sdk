@@ -16,10 +16,14 @@ type iCreateAgenticSpaceResponseBody interface {
 }
 
 type CreateAgenticSpaceResponseBody struct {
+	// The AgenticSpace ID. This is a globally unique identifier assigned by the system after the AgenticSpace (an independent workspace allocated to a single Agent end user in AgenticFS) is created.
+	//
 	// example:
 	//
 	// agentic-229oypxjgpau2****
 	AgenticSpaceId *string `json:"AgenticSpaceId,omitempty" xml:"AgenticSpaceId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 98696EF0-1607-4E9D-B01D-F20930B6****

@@ -16,7 +16,10 @@ type iGetAgenticSpaceResponseBody interface {
 }
 
 type GetAgenticSpaceResponseBody struct {
+	// The AgenticSpace information.
 	AgenticSpace *GetAgenticSpaceResponseBodyAgenticSpace `json:"AgenticSpace,omitempty" xml:"AgenticSpace,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0D****3E
@@ -59,43 +62,66 @@ func (s *GetAgenticSpaceResponseBody) Validate() error {
 }
 
 type GetAgenticSpaceResponseBodyAgenticSpace struct {
+	// AgenticSpace Id。
+	//
 	// example:
 	//
 	// agentic-229oypxjgpau2****
 	AgenticSpaceId *string `json:"AgenticSpaceId,omitempty" xml:"AgenticSpaceId,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-i
 	Azone *string `json:"Azone,omitempty" xml:"Azone,omitempty"`
+	// The time when the AgenticSpace was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+	//
 	// example:
 	//
 	// 2026-06-10T10:08:08Z
 	CreateTimeUtc *string `json:"CreateTimeUtc,omitempty" xml:"CreateTimeUtc,omitempty"`
+	// AgenticSpace Description。
+	//
 	// example:
 	//
 	// AgenticSpace Description。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The number of files used.
+	//
 	// example:
 	//
 	// 100
 	FileCountUsage *int64 `json:"FileCountUsage,omitempty" xml:"FileCountUsage,omitempty"`
+	// The file system ID.
+	//
 	// example:
 	//
 	// 06229oypxjgox0u****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The absolute path of the file.
+	//
 	// example:
 	//
 	// /test/
-	FileSystemPath *string                                       `json:"FileSystemPath,omitempty" xml:"FileSystemPath,omitempty"`
-	Quota          *GetAgenticSpaceResponseBodyAgenticSpaceQuota `json:"Quota,omitempty" xml:"Quota,omitempty" type:"Struct"`
+	FileSystemPath *string `json:"FileSystemPath,omitempty" xml:"FileSystemPath,omitempty"`
+	// The quota information.
+	Quota *GetAgenticSpaceResponseBodyAgenticSpaceQuota `json:"Quota,omitempty" xml:"Quota,omitempty" type:"Struct"`
+	// The capacity usage. Unit: bytes.
+	//
 	// example:
 	//
 	// 1024
 	SpaceUsage *int64 `json:"SpaceUsage,omitempty" xml:"SpaceUsage,omitempty"`
+	// The status of the AgenticSpace. Valid values:
+	//
+	// - Running
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the AgenticSpace was last updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+	//
 	// example:
 	//
 	// 2026-06-10T10:08:08Z
@@ -219,10 +245,26 @@ func (s *GetAgenticSpaceResponseBodyAgenticSpace) Validate() error {
 }
 
 type GetAgenticSpaceResponseBodyAgenticSpaceQuota struct {
+	// The file count limit of the quota. Valid values:
+	//
+	// - Minimum value: 10,000.
+	//
+	// - Maximum value: 100,000,000.
+	//
 	// example:
 	//
 	// 10000000
 	FileCountLimit *int64 `json:"FileCountLimit,omitempty" xml:"FileCountLimit,omitempty"`
+	// The total capacity limit of the quota. Unit: bytes.
+	//
+	// Valid values:
+	//
+	// - Minimum value: 10,737,418,240 (10 GiB).
+	//
+	// - Maximum value: 1,099,511,627,776,000 (1024000 GiB).
+	//
+	// - Step: 1,073,741,824 (1 GiB).
+	//
 	// example:
 	//
 	// 10737418240

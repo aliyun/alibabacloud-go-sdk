@@ -40,7 +40,10 @@ type DescribeFilesystemsVscAttachInfoRequest struct {
 	//
 	// This parameter is required.
 	ResourceIds []*DescribeFilesystemsVscAttachInfoRequestResourceIds `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
-	RoleChain   []*DescribeFilesystemsVscAttachInfoRequestRoleChain   `json:"RoleChain,omitempty" xml:"RoleChain,omitempty" type:"Repeated"`
+	// The role chain.
+	//
+	// >Required only for cross-account scenarios.
+	RoleChain []*DescribeFilesystemsVscAttachInfoRequestRoleChain `json:"RoleChain,omitempty" xml:"RoleChain,omitempty" type:"Repeated"`
 }
 
 func (s DescribeFilesystemsVscAttachInfoRequest) String() string {
@@ -155,9 +158,24 @@ func (s *DescribeFilesystemsVscAttachInfoRequestResourceIds) Validate() error {
 }
 
 type DescribeFilesystemsVscAttachInfoRequestRoleChain struct {
+	// The UID of the Alibaba Cloud account, which specifies the account on whose behalf the service assumes the role.
+	//
+	// example:
+	//
+	// 101522855006****
 	AssumeRoleFor *string `json:"AssumeRoleFor,omitempty" xml:"AssumeRoleFor,omitempty"`
-	RoleArn       *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	RoleType      *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The resource descriptor of the specified role. Format: acs:ram::$accountID:role/$roleName.
+	//
+	// example:
+	//
+	// acs:ram::123472233814****:role/aliyunnasclientvsc****
+	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// The role type. Valid values: service and user.
+	//
+	// example:
+	//
+	// service
+	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeFilesystemsVscAttachInfoRequestRoleChain) String() string {

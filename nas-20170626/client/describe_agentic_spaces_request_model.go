@@ -20,17 +20,26 @@ type iDescribeAgenticSpacesRequest interface {
 }
 
 type DescribeAgenticSpacesRequest struct {
+	// The file system ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1ca404****
-	FileSystemId *string                                `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	Filters      []*DescribeAgenticSpacesRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The collection of filter key information.
+	Filters []*DescribeAgenticSpacesRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	// The number of results per query.
+	//
+	// Valid values: 10 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The query token. Set this parameter to the NextToken value returned in the previous API call.
+	//
 	// example:
 	//
 	// MTc3OTkzNTA0Mjg0NTc1MDI4OCM0MDQ0MzA****=
@@ -95,10 +104,18 @@ func (s *DescribeAgenticSpacesRequest) Validate() error {
 }
 
 type DescribeAgenticSpacesRequestFilters struct {
+	// The name of the filter key. Valid values:
+	//
+	// - AgenticSpaceIds
+	//
 	// example:
 	//
 	// AgenticSpaceIds
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the filter key. Wildcards are not supported.
+	//
+	// - AgenticSpaceIds: only a single ID is supported.
+	//
 	// example:
 	//
 	// 06229oypxjgox0u****

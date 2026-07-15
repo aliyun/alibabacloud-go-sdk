@@ -22,15 +22,14 @@ type iDescribeMountTargetsResponseBody interface {
 }
 
 type DescribeMountTargetsResponseBody struct {
-	// A collection of mount targets.
 	MountTargets *DescribeMountTargetsResponseBodyMountTargets `json:"MountTargets,omitempty" xml:"MountTargets,omitempty" type:"Struct"`
-	// The page number.
+	// The page number of the file system list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of mount targets per page.
+	// The number of mount targets on each page when paging is used.
 	//
 	// example:
 	//
