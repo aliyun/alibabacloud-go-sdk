@@ -16,7 +16,10 @@ type iDescribeCacheReservePriceGapResponseBody interface {
 }
 
 type DescribeCacheReservePriceGapResponseBody struct {
+	// The pricing information.
 	PriceModel *DescribeCacheReservePriceGapResponseBodyPriceModel `json:"PriceModel,omitempty" xml:"PriceModel,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 40423A7F-A83D-1E24-B80E-86DD25790759
@@ -59,23 +62,39 @@ func (s *DescribeCacheReservePriceGapResponseBody) Validate() error {
 }
 
 type DescribeCacheReservePriceGapResponseBodyPriceModel struct {
+	// The currency. Valid values:
+	//
+	// - JPY: Japanese Yen.
+	//
+	// - USD: US Dollar.
+	//
+	// - CNY: Chinese Yuan.
+	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The discount amount of the order.
+	//
 	// example:
 	//
 	// 1
 	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// esa-cr-9tuv*********
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The final order price, which is the actual transaction price.
+	//
 	// example:
 	//
 	// 1
 	Price *float32                                                `json:"Price,omitempty" xml:"Price,omitempty"`
 	Rule  *DescribeCacheReservePriceGapResponseBodyPriceModelRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Struct"`
+	// The original order price. Original order price = actual transaction price + discount amount.
+	//
 	// example:
 	//
 	// 2

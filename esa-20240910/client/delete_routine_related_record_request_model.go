@@ -20,7 +20,7 @@ type iDeleteRoutineRelatedRecordRequest interface {
 }
 
 type DeleteRoutineRelatedRecordRequest struct {
-	// The routine name.
+	// The name of the Edge Routine.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type DeleteRoutineRelatedRecordRequest struct {
 	//
 	// test-xxx.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	// The website ID.
+	// The site ID.
 	//
 	// This parameter is required.
 	//

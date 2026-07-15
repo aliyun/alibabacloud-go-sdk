@@ -64,7 +64,7 @@ type UpdateWaitingRoomShrinkRequest struct {
 	//
 	// example:
 	//
-	// 特别活动排队页面
+	// Special event queue page
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to disable session renewal. Valid values:
 	//
@@ -114,7 +114,7 @@ type UpdateWaitingRoomShrinkRequest struct {
 	//
 	// example:
 	//
-	// 节假日促销等候室
+	// holiday-promotion-waiting-room
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The number of new users per minute.
 	//
@@ -146,7 +146,7 @@ type UpdateWaitingRoomShrinkRequest struct {
 	//
 	// random
 	QueuingMethod *string `json:"QueuingMethod,omitempty" xml:"QueuingMethod,omitempty"`
-	// The HTTP status code returned by the waiting room. Valid values:
+	// The status code returned by the waiting room. Valid values:
 	//
 	// - **200**
 	//

@@ -18,14 +18,25 @@ type iListWafUsageOfRulesRequest interface {
 }
 
 type ListWafUsageOfRulesRequest struct {
+	// The WAF instance ID.
+	//
+	// If this parameter is left empty, the API returns an empty result. We recommend that you always specify this parameter.
+	//
+	// example:
+	//
+	// esa-site-b0wdsrlba3nk
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the WAF execution phase.
+	// The phase in which the WAF rule runs. This parameter is required.
+	//
+	// Common values: http_custom, http_ratelimit, http_anti_scan, http_bot, http_managed, http_whitelist, and http_threat_intelligence.
+	//
+	// > Note: This parameter is required on the server side. If this parameter is not specified, the API returns InvalidParameter (400).
 	//
 	// example:
 	//
 	// http_custom
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The site ID. To get this ID, call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
 	//
 	// example:
 	//

@@ -16,10 +16,14 @@ type iDescribeCacheReservePriceGapRequest interface {
 }
 
 type DescribeCacheReservePriceGapRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// esa-cr-9tuv*********
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The requested cache size. Unit: GB.
+	//
 	// example:
 	//
 	// 1000

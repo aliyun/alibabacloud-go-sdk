@@ -38,15 +38,15 @@ type UpdateHttpResponseHeaderModificationRuleShrinkRequest struct {
 	ResponseHeaderModificationShrink *string `json:"ResponseHeaderModification,omitempty" xml:"ResponseHeaderModification,omitempty"`
 	// The rule content, which uses a conditional expression to match user requests. This parameter is not required when you add a global configuration. Two scenarios are supported:
 	//
-	// - Match all incoming requests: Set the value to true.
+	// - Match all incoming requests: set the value to true.
 	//
-	// - Match specified requests: Set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
+	// - Match specified requests: set the value to a custom expression, for example, (http.host eq \\"video.example.com\\").
 	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
+	// The rule switch. This parameter is not required when you add a global configuration. Valid values:
 	//
 	// - on: enabled.
 	//

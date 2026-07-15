@@ -16,13 +16,13 @@ type iListWaitingRoomsResponseBody interface {
 }
 
 type ListWaitingRoomsResponseBody struct {
-	// The request ID, which is used to trace a call.
+	// The request ID, which is used to trace API calls.
 	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The waiting rooms.
+	// The list of waiting rooms.
 	WaitingRooms []*ListWaitingRoomsResponseBodyWaitingRooms `json:"WaitingRooms,omitempty" xml:"WaitingRooms,omitempty" type:"Repeated"`
 }
 
@@ -66,85 +66,85 @@ func (s *ListWaitingRoomsResponseBody) Validate() error {
 }
 
 type ListWaitingRoomsResponseBodyWaitingRooms struct {
-	// The name of the custom cookie.
+	// The custom cookie name.
 	//
 	// example:
 	//
 	// __aliwaitingroom_example
 	CookieName *string `json:"CookieName,omitempty" xml:"CookieName,omitempty"`
-	// The HTML content or identifier of the custom queuing page. This parameter is valid only when `WaitingRoomType` is set to `custom`. The content must be URL-encoded.
+	// The HTML content or identifier of the custom queuing page. This parameter is valid only when WaitingRoomType is set to custom. The content must be URL-encoded.
 	//
 	// example:
 	//
 	// Custom HTML content
 	CustomPageHtml *string `json:"CustomPageHtml,omitempty" xml:"CustomPageHtml,omitempty"`
-	// The description of the waiting room.
+	// The waiting room description.
 	//
 	// example:
 	//
 	// Test waiting room
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether session renewal is disabled. Valid values:
+	// Specifies whether to disable session renewal. Valid values:
 	//
-	// - on
+	// - **on**: Enabled.
 	//
-	// - off
+	// - **off**: Disabled.
 	//
 	// example:
 	//
 	// on
 	DisableSessionRenewalEnable *string `json:"DisableSessionRenewalEnable,omitempty" xml:"DisableSessionRenewalEnable,omitempty"`
-	// Indicates whether the waiting room is enabled. Valid values:
+	// The enabled status. Valid values:
 	//
-	// - on
+	// - **on**: Enabled.
 	//
-	// - off
+	// - **off**: Disabled.
 	//
 	// example:
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The hostname and path.
+	// The hostname and path configurations.
 	HostNameAndPath []*ListWaitingRoomsResponseBodyWaitingRoomsHostNameAndPath `json:"HostNameAndPath,omitempty" xml:"HostNameAndPath,omitempty" type:"Repeated"`
-	// Indicates whether JSON response is enabled. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
+	// Specifies whether to enable JSON response. When enabled, requests with an Accept header containing "application/json" return JSON data. Valid values:
 	//
-	// - on
+	// - **on**: Enabled.
 	//
-	// - off
+	// - **off**: Disabled.
 	//
 	// example:
 	//
 	// on
 	JsonResponseEnable *string `json:"JsonResponseEnable,omitempty" xml:"JsonResponseEnable,omitempty"`
-	// The language of the waiting room page. This parameter is returned when the waiting room type is set to default. Valid values:
+	// The language of the waiting room page. This parameter is required when the waiting room type is default. Valid values:
 	//
-	// - enus: English.
+	// - **enus**: English.
 	//
-	// - zhcn: Simplified Chinese.
+	// - **zhcn**: Simplified Chinese.
 	//
-	// - zhhk: Traditional Chinese.
+	// - **zhhk**: Traditional Chinese.
 	//
 	// example:
 	//
 	// zhcn
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The name of the waiting room.
+	// The waiting room name.
 	//
 	// example:
 	//
 	// Test waiting room
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The maximum number of new users per minute.
+	// The number of new users per minute.
 	//
 	// example:
 	//
 	// 200
 	NewUsersPerMinute *string `json:"NewUsersPerMinute,omitempty" xml:"NewUsersPerMinute,omitempty"`
-	// Indicates whether all requests must be queued. Valid values:
+	// Specifies whether to queue all visitors. Valid values:
 	//
-	// - on
+	// - **on**: Enabled.
 	//
-	// - off
+	// - **off**: Disabled.
 	//
 	// example:
 	//
@@ -152,53 +152,53 @@ type ListWaitingRoomsResponseBodyWaitingRooms struct {
 	QueueAllEnable *string `json:"QueueAllEnable,omitempty" xml:"QueueAllEnable,omitempty"`
 	// The queuing method. Valid values:
 	//
-	// - random: Users gain access to the origin randomly, regardless of the arrival time.
+	// - **random**: Random.
 	//
-	// - fifo: Users gain access to the origin in order of arrival.
+	// - **fifo**: First in, first out.
 	//
-	// - passthrough: Users pass through the waiting room and go straight to the origin.
+	// - **passthrough**: Passthrough.
 	//
-	// - reject-all: Users are blocked from reaching the origin.
+	// - **reject-all**: Reject all.
 	//
 	// example:
 	//
 	// random
 	QueuingMethod *string `json:"QueuingMethod,omitempty" xml:"QueuingMethod,omitempty"`
-	// The HTTP status code to return while a user is in the queue. Valid values:
+	// The waiting room status code. Valid values:
 	//
-	// - 200
+	// - **200**
 	//
-	// - 202
+	// - **202**
 	//
-	// - 429
+	// - **429**
 	//
 	// example:
 	//
 	// 200
 	QueuingStatusCode *string `json:"QueuingStatusCode,omitempty" xml:"QueuingStatusCode,omitempty"`
-	// The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+	// The session duration, in minutes.
 	//
 	// example:
 	//
 	// 3600
 	SessionDuration *string `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
-	// The maximum number of active users.
+	// The total number of active users.
 	//
 	// example:
 	//
 	// 300
 	TotalActiveUsers *string `json:"TotalActiveUsers,omitempty" xml:"TotalActiveUsers,omitempty"`
-	// The unique ID of the waiting room.
+	// The waiting room ID, which uniquely identifies a waiting room.
 	//
 	// example:
 	//
 	// 6a51d5bc6460887abd1291dc7d4d****
 	WaitingRoomId *string `json:"WaitingRoomId,omitempty" xml:"WaitingRoomId,omitempty"`
-	// The type of the waiting room. Valid values:
+	// The waiting room type. Valid values:
 	//
-	// - default
+	// - **default**: Default type.
 	//
-	// - custom
+	// - **custom**: Custom type.
 	//
 	// example:
 	//

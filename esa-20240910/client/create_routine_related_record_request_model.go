@@ -18,7 +18,7 @@ type iCreateRoutineRelatedRecordRequest interface {
 }
 
 type CreateRoutineRelatedRecordRequest struct {
-	// The name of the edge function Routine.
+	// The name of the Edge Routine function.
 	//
 	// This parameter is required.
 	//

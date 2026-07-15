@@ -16,7 +16,7 @@ type iBatchGetExpressionFieldsResponseBody interface {
 }
 
 type BatchGetExpressionFieldsResponseBody struct {
-	// A list of objects, each containing the match fields for a corresponding expression.
+	// The list of matching fields.
 	Fields []*BatchGetExpressionFieldsResponseBodyFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,9 +66,9 @@ func (s *BatchGetExpressionFieldsResponseBody) Validate() error {
 }
 
 type BatchGetExpressionFieldsResponseBodyFields struct {
-	// A list of match fields for the expression.
+	// The list of matching fields for a single expression.
 	Fields []*string `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
-	// The ID of the expression. This value corresponds to the `Id` of an expression in the request.
+	// The ID of the expression, which corresponds to the ID in the request parameters.
 	//
 	// example:
 	//

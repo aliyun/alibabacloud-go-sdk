@@ -134,9 +134,9 @@ func (s *ListPostpaidRatePlanInstancesResponseBody) Validate() error {
 }
 
 type ListPostpaidRatePlanInstancesResponseBodyInstanceInfo struct {
-	// The billable methods. Valid values:
+	// The billing method. Valid values:
 	//
-	// - dps_month95: monthly 95th percentile billing.
+	// - dps_month95: Monthly 95th Percentile.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type ListPostpaidRatePlanInstancesResponseBodyInstanceInfo struct {
 	//
 	// POSTPAY
 	BillingMode *string `json:"BillingMode,omitempty" xml:"BillingMode,omitempty"`
-	// The acceleration regions to which the instance can bindable sites. Multiple values are separated by commas (,). Valid values:
+	// The acceleration regions to which sites can be associated with this instance. Multiple values are separated by commas (,). Valid values:
 	//
 	// - domestic: the Chinese mainland.
 	//
@@ -162,13 +162,13 @@ type ListPostpaidRatePlanInstancesResponseBodyInstanceInfo struct {
 	//
 	// domestic
 	Coverages *string `json:"Coverages,omitempty" xml:"Coverages,omitempty"`
-	// The time when the instance was created. The value is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2026-04-19T11:15:20Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The scheduled specification change time. The value is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The scheduled specification change time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -190,13 +190,13 @@ type ListPostpaidRatePlanInstancesResponseBodyInstanceInfo struct {
 	//
 	// example:
 	//
-	// 测试套餐
+	// test-plan
 	PlanNameCn *string `json:"PlanNameCn,omitempty" xml:"PlanNameCn,omitempty"`
 	// The plan type of the instance. Valid values:
 	//
-	// - normal: Fixed plan.
+	// - normal: Fixed edition plan.
 	//
-	// - enterprise: Enterprise plan.
+	// - enterprise: Enterprise edition plan.
 	//
 	// example:
 	//

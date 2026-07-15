@@ -22,19 +22,28 @@ type iListCasCertificatesResponseBody interface {
 }
 
 type ListCasCertificatesResponseBody struct {
+	// The certificate list.
 	Certificates []*ListCasCertificatesResponseBodyCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F61CDR30-E83C-4FDA-BF73-9A94CDD44229
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 20
@@ -108,30 +117,44 @@ func (s *ListCasCertificatesResponseBody) Validate() error {
 }
 
 type ListCasCertificatesResponseBodyCertificates struct {
+	// The common name of the certificate.
+	//
 	// example:
 	//
 	// example.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The certificate fingerprint.
+	//
 	// example:
 	//
 	// 0151xxxx
 	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	// The certificate ID.
+	//
 	// example:
 	//
 	// 30000145
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The certificate issuer.
+	//
 	// example:
 	//
 	// DigiCert
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The certificate name.
+	//
 	// example:
 	//
 	// demo
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The expiration time of the certificate.
+	//
 	// example:
 	//
 	// 1708423200000
 	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// The region where the certificate resides. Supported values: **cn-hangzhou*	- and **ap-southeast-1**.
+	//
 	// example:
 	//
 	// ap-southeast-1

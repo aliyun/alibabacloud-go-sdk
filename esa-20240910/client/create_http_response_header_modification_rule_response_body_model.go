@@ -16,13 +16,13 @@ type iCreateHttpResponseHeaderModificationRuleResponseBody interface {
 }
 
 type CreateHttpResponseHeaderModificationRuleResponseBody struct {
-	// A unique identifier for the configuration.
+	// The configuration ID.
 	//
 	// example:
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// A unique identifier for the request.
+	// The request ID.
 	//
 	// example:
 	//

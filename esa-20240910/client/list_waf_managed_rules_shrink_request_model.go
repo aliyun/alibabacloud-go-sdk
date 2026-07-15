@@ -32,25 +32,25 @@ type iListWafManagedRulesShrinkRequest interface {
 }
 
 type ListWafManagedRulesShrinkRequest struct {
-	// The attack type to filter the results by. Valid values:
+	// The attack type of the vulnerability prevention event. Valid values:
 	//
 	// - SQL injection
 	//
-	// - cross-site scripting
+	// - cross-site scripting (XSS)
 	//
-	// - code execution
+	// - code execute
 	//
 	// - CRLF
 	//
-	// - local file inclusion
+	// - local file inclusion (LFI)
 	//
-	// - remote file inclusion
+	// - remote file inclusion (RFI)
 	//
 	// - webshell
 	//
 	// - cross-site request forgery
 	//
-	// - Other
+	// - Others
 	//
 	// - SEMA
 	//
@@ -65,9 +65,14 @@ type ListWafManagedRulesShrinkRequest struct {
 	// example:
 	//
 	// 10000001
-	Id         *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The WAF instance ID.
+	//
+	// example:
+	//
+	// esa-site-awmmx25y2igw
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The response language. Valid values:
+	// The language type. The response is returned in the specified language. Valid values:
 	//
 	// - **en**: English.
 	//
@@ -76,24 +81,40 @@ type ListWafManagedRulesShrinkRequest struct {
 	// example:
 	//
 	// zh
-	Language             *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The managed ruleset configuration in JSON string format.
+	//
+	// Contains the AttackType, ProtectionLevel, Action, and ManagedRules subfields. When ProtectionLevel is set to -1 (custom mode), specify the status and action for each rule through the ManagedRules array.
 	ManagedRulesetShrink *string `json:"ManagedRuleset,omitempty" xml:"ManagedRuleset,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The page size.
 	//
 	// example:
 	//
 	// 20
-	PageSize        *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The currently saved protection level, which represents the existing configuration state in the database.
+	//
+	// Valid values: -1 (custom mode), 1 (loose), 2 (medium), 3 (strict), 4 (super strict).
+	//
+	// Difference from ManagedRuleset.ProtectionLevel: this parameter indicates the currently effective configuration, while ManagedRuleset.ProtectionLevel indicates the target value being passed in.
+	//
+	// example:
+	//
+	// 1
 	ProtectionLevel *int32 `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
 	// The query conditions.
+	//
+	// example:
+	//
+	// {\\"Status\\":\\"\\",\\"ProtectionLevels\\":[2,1],\\"Action\\":\\"\\",\\"IdNameLike\\":\\"\\"}
 	QueryArgsShrink *string `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty"`
-	// The ID of the site. Call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain this ID.
+	// The site ID. You can obtain the site ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// example:
 	//

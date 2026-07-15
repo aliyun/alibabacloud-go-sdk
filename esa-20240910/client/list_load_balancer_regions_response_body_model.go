@@ -24,33 +24,33 @@ type iListLoadBalancerRegionsResponseBody interface {
 }
 
 type ListLoadBalancerRegionsResponseBody struct {
-	// Page number
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Number of records per page
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 1024
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// List of region information
+	// The list of region information.
 	Regions []*ListLoadBalancerRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 81A5E222-24BF-17EF-9E80-A68D9B8F363D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of records
+	// The total number of records.
 	//
 	// example:
 	//
 	// 12
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// Total number of pages
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -134,25 +134,25 @@ func (s *ListLoadBalancerRegionsResponseBody) Validate() error {
 }
 
 type ListLoadBalancerRegionsResponseBodyRegions struct {
-	// Primary region Chinese full name
+	// The full name of the primary region in Chinese.
 	//
 	// example:
 	//
-	// 东南亚
+	// South East Asia
 	RegionCnName *string `json:"RegionCnName,omitempty" xml:"RegionCnName,omitempty"`
-	// Primary region code
+	// The primary region code.
 	//
 	// example:
 	//
 	// SEAS
 	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
-	// Primary region English full name
+	// The full name of the primary region in English.
 	//
 	// example:
 	//
 	// South East Asia
 	RegionEnName *string `json:"RegionEnName,omitempty" xml:"RegionEnName,omitempty"`
-	// List of secondary region information
+	// The list of secondary region information.
 	SubRegions []*ListLoadBalancerRegionsResponseBodyRegionsSubRegions `json:"SubRegions,omitempty" xml:"SubRegions,omitempty" type:"Repeated"`
 }
 
@@ -214,19 +214,19 @@ func (s *ListLoadBalancerRegionsResponseBodyRegions) Validate() error {
 }
 
 type ListLoadBalancerRegionsResponseBodyRegionsSubRegions struct {
-	// Secondary region Chinese full name
+	// The full name of the primary region in Chinese.
 	//
 	// example:
 	//
-	// 印度尼西亚
+	// Indonesia
 	SubRegionCnName *string `json:"SubRegionCnName,omitempty" xml:"SubRegionCnName,omitempty"`
-	// Secondary region code
+	// The secondary region code.
 	//
 	// example:
 	//
 	// ID
 	SubRegionCode *string `json:"SubRegionCode,omitempty" xml:"SubRegionCode,omitempty"`
-	// Secondary region English full name
+	// The full name of the secondary region in English.
 	//
 	// example:
 	//

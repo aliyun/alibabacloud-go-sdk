@@ -22,13 +22,13 @@ type iListWafManagedRulesResponseBody interface {
 }
 
 type ListWafManagedRulesResponseBody struct {
-	// The current page number.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type ListWafManagedRulesResponseBody struct {
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array of managed rules.
+	// The list of managed rules.
 	Rules []*ListWafManagedRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 	// The total number of rules after filtering.
 	//
@@ -117,7 +117,7 @@ func (s *ListWafManagedRulesResponseBody) Validate() error {
 }
 
 type ListWafManagedRulesResponseBodyRules struct {
-	// The managed rule\\"s action.
+	// The protection action of the managed rule.
 	//
 	// example:
 	//
@@ -135,13 +135,13 @@ type ListWafManagedRulesResponseBodyRules struct {
 	//
 	// SQL injection
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The managed rule\\"s protection level.
+	// The protection level of the managed rule.
 	//
 	// example:
 	//
 	// 1
 	ProtectionLevel *int32 `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
-	// The managed rule\\"s status.
+	// The protection status of the managed rule.
 	//
 	// example:
 	//

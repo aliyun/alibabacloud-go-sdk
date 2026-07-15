@@ -20,18 +20,26 @@ type iGetEdgeContainerResponseBody interface {
 }
 
 type GetEdgeContainerResponseBody struct {
+	// The billing mode.
+	//
 	// example:
 	//
 	// container_95
 	BillingMode *string `json:"BillingMode,omitempty" xml:"BillingMode,omitempty"`
+	// The plan instance ID.
+	//
 	// example:
 	//
 	// esa-cn-jea67jfbs0x
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9BEB8659-9CDE-5F2C-83E9-50F55277E844
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The plan instance status.
+	//
 	// example:
 	//
 	// Running

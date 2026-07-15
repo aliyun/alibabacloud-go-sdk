@@ -20,14 +20,20 @@ type iListCasCertificatesRequest interface {
 }
 
 type ListCasCertificatesRequest struct {
+	// The current page number. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size. Valid values: any integer from 1 to 1000.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The certificate name for fuzzy match.
+	//
 	// example:
 	//
 	// aliyun

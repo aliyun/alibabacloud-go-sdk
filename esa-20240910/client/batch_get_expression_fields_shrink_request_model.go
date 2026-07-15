@@ -24,22 +24,37 @@ type iBatchGetExpressionFieldsShrinkRequest interface {
 }
 
 type BatchGetExpressionFieldsShrinkRequest struct {
-	// A list of expression objects to process.
+	// The list of expressions.
 	//
 	// example:
 	//
 	// http_bot
 	ExpressionsShrink *string `json:"Expressions,omitempty" xml:"Expressions,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Kind              *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	// The plan instance ID.
+	//
+	// example:
+	//
+	// esa-site-bitkull7uubk
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The type of the expression.
+	//
+	// example:
+	//
+	// wireshark
+	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
 	// The WAF phase.
 	//
 	// example:
 	//
 	// http_bot
-	Phase      *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The plan name (in English).
+	//
+	// example:
+	//
+	// entranceplan
 	PlanNameEn *string `json:"PlanNameEn,omitempty" xml:"PlanNameEn,omitempty"`
-	// The ID of the site.
+	// The site ID.
 	//
 	// example:
 	//

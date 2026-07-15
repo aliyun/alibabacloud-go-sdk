@@ -14,7 +14,7 @@ type iDeleteRoutineRequest interface {
 }
 
 type DeleteRoutineRequest struct {
-	// The routine name.
+	// The name of the Edge Routine.
 	//
 	// This parameter is required.
 	//

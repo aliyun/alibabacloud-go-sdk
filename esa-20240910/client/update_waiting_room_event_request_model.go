@@ -116,7 +116,7 @@ type UpdateWaitingRoomEventRequest struct {
 	//
 	// example:
 	//
-	// 测试事件2
+	// test event
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The number of new users per minute.
 	//
@@ -144,7 +144,7 @@ type UpdateWaitingRoomEventRequest struct {
 	//
 	// - **random**: random.
 	//
-	// - **fifo**: first-in, first-out.
+	// - **fifo**: first-in-first-out.
 	//
 	// - **passthrough**: passthrough.
 	//

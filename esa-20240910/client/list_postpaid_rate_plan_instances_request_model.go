@@ -38,19 +38,19 @@ type ListPostpaidRatePlanInstancesRequest struct {
 	//
 	// true
 	CheckRemainingSiteQuota *string `json:"CheckRemainingSiteQuota,omitempty" xml:"CheckRemainingSiteQuota,omitempty"`
-	// The instance ID. Use this parameter to query a specific instance.
+	// The instance ID. Specify this parameter to query a specific instance.
 	//
 	// example:
 	//
 	// sp-dps-xxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number for paging. The value must be greater than or equal to 1.
+	// The page number for paging queries. The value must be greater than or equal to 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for paging. Valid values: 1 to 500.
+	// The number of entries per page for paging queries. Valid values: 1 to 500.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type ListPostpaidRatePlanInstancesRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The field by which to sort the results. Valid values:
 	//
-	// - CreateTime: sorts by creation time.
+	// - CreateTime: sorted by creation time
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type ListPostpaidRatePlanInstancesRequest struct {
 	//
 	//  	- asc: ascending order
 	//
-	//  	- desc: descending order.
+	//  	- desc: descending order
 	//
 	// example:
 	//

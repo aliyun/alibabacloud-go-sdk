@@ -99,6 +99,74 @@ func (client *Client) ActivateVersionManagementWithContext(ctx context.Context, 
 
 // Summary:
 //
+// Creates a user opportunity order.
+//
+// @param request - AddUserBusinessFormRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddUserBusinessFormResponse
+func (client *Client) AddUserBusinessFormWithContext(ctx context.Context, request *AddUserBusinessFormRequest, runtime *dara.RuntimeOptions) (_result *AddUserBusinessFormResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Company) {
+		query["Company"] = request.Company
+	}
+
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.PhoneNumber) {
+		query["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !dara.IsNil(request.Position) {
+		query["Position"] = request.Position
+	}
+
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
+	}
+
+	if !dara.IsNil(request.UserName) {
+		query["UserName"] = request.UserName
+	}
+
+	if !dara.IsNil(request.Website) {
+		query["Website"] = request.Website
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddUserBusinessForm"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddUserBusinessFormResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Applies for a free certificate.
 //
 // @param request - ApplyCertificateRequest
@@ -513,7 +581,7 @@ func (client *Client) BatchDeleteKvWithHighCapacityWithContext(ctx context.Conte
 
 // Summary:
 //
-// Retrieves match fields for a batch of expressions.
+// Retrieves matching items for expressions in batches.
 //
 // @param tmpReq - BatchGetExpressionFieldsRequest
 //
@@ -907,6 +975,54 @@ func (client *Client) BlockObjectWithContext(ctx context.Context, tmpReq *BlockO
 		BodyType:    dara.String("json"),
 	}
 	_result = &BlockObjectResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Validates whether a site is compatible with the target plan during site plan migration.
+//
+// @param request - CheckSiteFeaturesMatchPlanRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckSiteFeaturesMatchPlanResponse
+func (client *Client) CheckSiteFeaturesMatchPlanWithContext(ctx context.Context, request *CheckSiteFeaturesMatchPlanRequest, runtime *dara.RuntimeOptions) (_result *CheckSiteFeaturesMatchPlanResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.NewInstanceId) {
+		query["NewInstanceId"] = request.NewInstanceId
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckSiteFeaturesMatchPlan"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckSiteFeaturesMatchPlanResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2017,7 +2133,7 @@ func (client *Client) CreateHttpIncomingResponseHeaderModificationRuleWithContex
 
 // Summary:
 //
-// Adds a Configuration for modifying a Site\\"s HTTP Request Headers.
+// Creates an HTTP request header modification configuration for a site.
 //
 // @param tmpReq - CreateHttpRequestHeaderModificationRuleRequest
 //
@@ -2091,7 +2207,7 @@ func (client *Client) CreateHttpRequestHeaderModificationRuleWithContext(ctx con
 
 // Summary:
 //
-// Creates a rule to modify HTTP response headers.
+// Creates an HTTP response header modification configuration.
 //
 // @param tmpReq - CreateHttpResponseHeaderModificationRuleRequest
 //
@@ -3479,7 +3595,7 @@ func (client *Client) CreateRoutineCodeDeploymentWithContext(ctx context.Context
 
 // Summary:
 //
-// Adds a new record to a site that triggers a specified edge function Routine.
+// Adds an associated site record for an Edge Routine function. This creates a new record under the site to trigger the execution of the Edge Routine function code.
 //
 // @param request - CreateRoutineRelatedRecordRequest
 //
@@ -6605,7 +6721,7 @@ func (client *Client) DeleteRewriteUrlRuleWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Deletes a routine in Edge Routine.
+// Deletes an Edge Routine.
 //
 // @param request - DeleteRoutineRequest
 //
@@ -6697,7 +6813,7 @@ func (client *Client) DeleteRoutineCodeVersionWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Deletes a record that is associated with a routine.
+// Deletes an association record of an Edge Routine.
 //
 // @param request - DeleteRoutineRelatedRecordRequest
 //
@@ -7629,7 +7745,7 @@ func (client *Client) DescribeCacheReservePriceWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the price for a configuration change of a cache reserve instance.
+// Queries the price for a cache-retained specification change.
 //
 // @param request - DescribeCacheReservePriceGapRequest
 //
@@ -10141,7 +10257,7 @@ func (client *Client) GetDevelopmentModeWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # GetEdgeImage
+// Retrieves the details of an edge container plan instance.
 //
 // @param request - GetEdgeContainerRequest
 //
@@ -13117,7 +13233,7 @@ func (client *Client) GetWafQuotaWithContext(ctx context.Context, request *GetWa
 
 // Summary:
 //
-// Retrieves the details of a single rule in Web Application Firewall (WAF). You can call this operation to query the configuration and status of a specific rule.
+// Retrieves the details of a single rule in Web Application Firewall (WAF). You can use this operation to query the configuration and status of a specific rule.
 //
 // @param request - GetWafRuleRequest
 //
@@ -13297,7 +13413,7 @@ func (client *Client) ListCacheRulesWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// 查询证书列表，支持翻页
+// Queries the list of China Shield certificates.
 //
 // @param request - ListCasCertificatesRequest
 //
@@ -14711,11 +14827,11 @@ func (client *Client) ListLoadBalancerOriginStatusWithContext(ctx context.Contex
 
 // Summary:
 //
-// # Query Load Balancer Region List
+// Queries the primary and secondary region information of a load balancing instance to obtain geographic region codes, descriptions, and other basic information that are active and can be used to configure a country/region-based scheduling policy for the load balancing instance.
 //
 // Description:
 //
-// When creating a load balancer \\"based on country/region scheduling\\" strategy through OpenAPI, use the code of primary or secondary regions to represent traffic from this geographical area.
+// When you create a country/region-based scheduling policy for a load balancing instance by calling an OpenAPI operation, use the primary or secondary region code from the lookup table to represent traffic originating from the corresponding geographic region.
 //
 // @param request - ListLoadBalancerRegionsRequest
 //
@@ -14795,7 +14911,7 @@ func (client *Client) ListLoadBalancersWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # List Custom Managed Rule Groups
+// Lists all WAF managed rule groups under the current account. You can call this operation to retrieve a list of all rule groups and their summary information.
 //
 // @param request - ListManagedRulesGroupsRequest
 //
@@ -16277,7 +16393,7 @@ func (client *Client) ListVideoProcessingsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Retrieves a list of WAF managed rules, optionally filtered by specific criteria. The response is paginated.
+// Lists all managed rules under Web Application Firewall (WAF) or filters rules based on specific conditions. You can use this operation to query detailed information about WAF managed rules in a paginated manner.
 //
 // @param tmpReq - ListWafManagedRulesRequest
 //
@@ -16761,11 +16877,11 @@ func (client *Client) ListWaitingRoomRulesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries all waiting rooms in a website.
+// Queries the details of all configured waiting rooms for a specified site.
 //
 // Description:
 //
-// Use this operation to query detailed configurations about all waiting rooms in a website, including the status, name, and queuing rules of each waiting room.
+// This API allows you to query the configuration details of all waiting rooms for a specified site, including the enabled status, name, and queuing rules.
 //
 // @param request - ListWaitingRoomsRequest
 //
@@ -17039,7 +17155,7 @@ func (client *Client) PublishEdgeContainerAppVersionWithContext(ctx context.Cont
 
 // Summary:
 //
-// Publishes a specific version of Edge Routine code to the staging or production environment. When publishing to the production environment, you can choose canary release to specific regions.
+// Publishes a specific version of Edge Routine code to a staging or production environment. When publishing to the production environment, you can perform a canary release to specific regions.
 //
 // @param request - PublishRoutineCodeVersionRequest
 //

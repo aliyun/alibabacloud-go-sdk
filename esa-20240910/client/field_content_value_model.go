@@ -82,7 +82,7 @@ type FieldContentValueFieldList struct {
 	//
 	// example:
 	//
-	// 客户端的IP地址
+	// IP
 	DescriptionCn *string `json:"DescriptionCn,omitempty" xml:"DescriptionCn,omitempty"`
 	// The category of the field.
 	//

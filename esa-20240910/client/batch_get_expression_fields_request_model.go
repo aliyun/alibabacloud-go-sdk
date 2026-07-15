@@ -24,22 +24,37 @@ type iBatchGetExpressionFieldsRequest interface {
 }
 
 type BatchGetExpressionFieldsRequest struct {
-	// A list of expression objects to process.
+	// The list of expressions.
 	//
 	// example:
 	//
 	// http_bot
 	Expressions []*BatchGetExpressionFieldsRequestExpressions `json:"Expressions,omitempty" xml:"Expressions,omitempty" type:"Repeated"`
-	InstanceId  *string                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Kind        *string                                       `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	// The plan instance ID.
+	//
+	// example:
+	//
+	// esa-site-bitkull7uubk
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The type of the expression.
+	//
+	// example:
+	//
+	// wireshark
+	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
 	// The WAF phase.
 	//
 	// example:
 	//
 	// http_bot
-	Phase      *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The plan name (in English).
+	//
+	// example:
+	//
+	// entranceplan
 	PlanNameEn *string `json:"PlanNameEn,omitempty" xml:"PlanNameEn,omitempty"`
-	// The ID of the site.
+	// The site ID.
 	//
 	// example:
 	//
@@ -129,7 +144,7 @@ type BatchGetExpressionFieldsRequestExpressions struct {
 	//
 	// ip.src eq 1.1.1.1
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	// The ID of the expression. This ID is used to associate an expression in the request with its corresponding result in the response.
+	// The sequence number of the expression.
 	//
 	// example:
 	//

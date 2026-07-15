@@ -22,11 +22,11 @@ type DeleteRoutineRelatedRecordResponseBody struct {
 	//
 	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation is successful.
+	// The operation status. Valid values:
 	//
-	// 	- OK
+	// 	- **OK**: The operation was successful.
 	//
-	// 	- Fail
+	// 	- **Fail**: The operation failed.
 	//
 	// example:
 	//

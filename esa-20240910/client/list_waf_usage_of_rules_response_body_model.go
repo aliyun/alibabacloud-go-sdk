@@ -20,15 +20,25 @@ type iListWafUsageOfRulesResponseBody interface {
 }
 
 type ListWafUsageOfRulesResponseBody struct {
+	// The number of rules or rule sets for the specified phase under instance-level batch configuration.
+	//
+	// example:
+	//
+	// 1
 	BatchConfigUsage *int64 `json:"BatchConfigUsage,omitempty" xml:"BatchConfigUsage,omitempty"`
-	InstanceUsage    *int64 `json:"InstanceUsage,omitempty" xml:"InstanceUsage,omitempty"`
+	// The total number of rules or rule sets for the instance under the specified phase, including both site-level and instance-level rules.
+	//
+	// example:
+	//
+	// 2
+	InstanceUsage *int64 `json:"InstanceUsage,omitempty" xml:"InstanceUsage,omitempty"`
 	// The request ID.
 	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of sites and their respective WAF rule usage.
+	// The list of site usage.
 	Sites []*ListWafUsageOfRulesResponseBodySites `json:"Sites,omitempty" xml:"Sites,omitempty" type:"Repeated"`
 }
 
@@ -102,7 +112,7 @@ type ListWafUsageOfRulesResponseBodySites struct {
 	//
 	// example.com
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of WAF rules or rule sets used by the site.
+	// The number of WAF rules or WAF rule sets that have been used.
 	//
 	// example:
 	//

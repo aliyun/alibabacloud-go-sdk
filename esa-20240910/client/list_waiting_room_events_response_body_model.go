@@ -130,7 +130,7 @@ type ListWaitingRoomEventsResponseBodyWaitingRoomEvents struct {
 	//
 	// example:
 	//
-	// Test event
+	// test event
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The maximum number of new users per minute.
 	//
