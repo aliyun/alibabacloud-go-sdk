@@ -22,7 +22,11 @@ type iImageMattingRequest interface {
 }
 
 type ImageMattingRequest struct {
-	// The URL of the image to process.
+	// Specifies the background type of the returned image. Valid values:
+	//
+	// - WHITE_BACKGROUND: white background image.
+	//
+	// - TRANSPARENT: transparent background image.
 	//
 	// This parameter is required.
 	//
@@ -30,13 +34,13 @@ type ImageMattingRequest struct {
 	//
 	// WHITE_BACKGROUND
 	BackGroundType *string `json:"BackGroundType,omitempty" xml:"BackGroundType,omitempty"`
-	// The target image height in pixels.
+	// BGColor
 	//
 	// example:
 	//
 	// 255,255,255
 	BgColor *string `json:"BgColor,omitempty" xml:"BgColor,omitempty"`
-	// The URL of the original image. The image must be in JPG, JPEG, PNG, BMP, or WEBP format. The resolution must be between 256 × 256 and 3000 × 3000 pixels. The file size cannot exceed 10 MB.<br>**Example**: `"https://ae01.alicdn.com/kf/S342f0070dc9f4be09a6cbed34e90dc8fs.jpg"`.
+	// The URL of the original image. The image must be in JPG, JPEG, PNG, BMP, or WEBP format. The resolution must be between 256 × 256 and 3000 × 3000 pixels. The file size cannot exceed 10 MB.<br>**Example**: `"https://ae01.alicdn.com/kf/S342f0070dc9f4be09a6cbed34e90dc8fs.jpg"`
 	//
 	// This parameter is required.
 	//
@@ -44,17 +48,13 @@ type ImageMattingRequest struct {
 	//
 	// https://sc02.alicdn.com/kf/H09364d2c7fc942e685d3b0f656261b24Q.png
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// The target image width in pixels.
+	// The target image height in pixels.
 	//
 	// example:
 	//
 	// 800
 	TargetHeight *int32 `json:"TargetHeight,omitempty" xml:"TargetHeight,omitempty"`
-	// The background type of the returned image. Valid values:
-	//
-	// - WHITE_BACKGROUND: white background.
-	//
-	// - TRANSPARENT: transparent background.
+	// The target image width in pixels.
 	//
 	// example:
 	//

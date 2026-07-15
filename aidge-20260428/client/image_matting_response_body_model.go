@@ -42,7 +42,7 @@ type ImageMattingResponseBody struct {
 	//
 	// E1AD60F1-BAC7-546B-9533-E7AD02B16E3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the call is successful. Valid values:
 	//
 	// - true: Successful.
 	//
@@ -129,7 +129,7 @@ type ImageMattingResponseBodyData struct {
 	//
 	// http://dashscope-7c2c.oss-cn-shanghai.aliyuncs.com/xxx.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// The quality score of the matting result.
+	// The matting quality score.
 	//
 	// example:
 	//

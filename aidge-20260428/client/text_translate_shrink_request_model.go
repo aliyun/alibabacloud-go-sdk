@@ -9,6 +9,8 @@ type iTextTranslateShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBizName(v string) *TextTranslateShrinkRequest
+	GetBizName() *string
 	SetFormatType(v string) *TextTranslateShrinkRequest
 	GetFormatType() *string
 	SetGlossary(v string) *TextTranslateShrinkRequest
@@ -19,28 +21,34 @@ type iTextTranslateShrinkRequest interface {
 	GetSourceTextListShrink() *string
 	SetTargetLanguage(v string) *TextTranslateShrinkRequest
 	GetTargetLanguage() *string
+	SetTranslateScene(v string) *TextTranslateShrinkRequest
+	GetTranslateScene() *string
 }
 
 type TextTranslateShrinkRequest struct {
-	// The format type of the source text. Optional. Valid values: text (plain text format) and html (web page format that preserves HTML tags).
+	// example:
+	//
+	// MyCompany-Chat
+	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
+	// The format type of the source text. This parameter is optional. Valid values: text (plain text format) and html (web page format that preserves HTML tags).
 	//
 	// example:
 	//
 	// text
 	FormatType *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
-	// The intervention glossary ID. Optional. Create the glossary in the console and provide its ID. If the glossary ID is empty, the translation results are not modified.
+	// The intervention glossary ID. This parameter is optional. The glossary must be created separately in the console and its ID provided here. If the glossary ID is empty, the translation result is not modified.
 	//
 	// example:
 	//
 	// glossary_1
 	Glossary *string `json:"Glossary,omitempty" xml:"Glossary,omitempty"`
-	// The source language code. Optional. If not specified, the language is automatically detected. Set to auto for automatic language detection.
+	// The source language code. This parameter is optional. If not specified, the language is automatically detected. You can pass auto for language detection.
 	//
 	// example:
 	//
 	// auto
 	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
-	// The list of texts to translate. Required. The total character length cannot exceed 50,000, and the list length cannot exceed 50.
+	// The list of texts to translate. This parameter is required. The total character length cannot exceed 50,000, and the list length cannot exceed 50.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +56,7 @@ type TextTranslateShrinkRequest struct {
 	//
 	// ["Hello world"]
 	SourceTextListShrink *string `json:"SourceTextList,omitempty" xml:"SourceTextList,omitempty"`
-	// The target language code. Required. More than 100 language directions are supported. For details, refer to the supported language directions list.
+	// The target language code. This parameter is required. More than 100 language directions are supported. For details, refer to the supported language directions list.
 	//
 	// This parameter is required.
 	//
@@ -56,6 +64,10 @@ type TextTranslateShrinkRequest struct {
 	//
 	// ko
 	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
+	// example:
+	//
+	// e-commerce-title
+	TranslateScene *string `json:"TranslateScene,omitempty" xml:"TranslateScene,omitempty"`
 }
 
 func (s TextTranslateShrinkRequest) String() string {
@@ -64,6 +76,10 @@ func (s TextTranslateShrinkRequest) String() string {
 
 func (s TextTranslateShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *TextTranslateShrinkRequest) GetBizName() *string {
+	return s.BizName
 }
 
 func (s *TextTranslateShrinkRequest) GetFormatType() *string {
@@ -84,6 +100,15 @@ func (s *TextTranslateShrinkRequest) GetSourceTextListShrink() *string {
 
 func (s *TextTranslateShrinkRequest) GetTargetLanguage() *string {
 	return s.TargetLanguage
+}
+
+func (s *TextTranslateShrinkRequest) GetTranslateScene() *string {
+	return s.TranslateScene
+}
+
+func (s *TextTranslateShrinkRequest) SetBizName(v string) *TextTranslateShrinkRequest {
+	s.BizName = &v
+	return s
 }
 
 func (s *TextTranslateShrinkRequest) SetFormatType(v string) *TextTranslateShrinkRequest {
@@ -108,6 +133,11 @@ func (s *TextTranslateShrinkRequest) SetSourceTextListShrink(v string) *TextTran
 
 func (s *TextTranslateShrinkRequest) SetTargetLanguage(v string) *TextTranslateShrinkRequest {
 	s.TargetLanguage = &v
+	return s
+}
+
+func (s *TextTranslateShrinkRequest) SetTranslateScene(v string) *TextTranslateShrinkRequest {
+	s.TranslateScene = &v
 	return s
 }
 

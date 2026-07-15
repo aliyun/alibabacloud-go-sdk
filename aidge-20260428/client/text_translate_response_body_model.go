@@ -22,27 +22,27 @@ type iTextTranslateResponseBody interface {
 }
 
 type TextTranslateResponseBody struct {
-	// The response code. The value "success" is returned for a successful call.
+	// The response code. Returns "success" for successful calls.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The translation result data, which contains the translation list and usage information.
+	// The translation result data, including the translation list and usage information.
 	Data *TextTranslateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. The value "Success" is returned for a successful call. For a failed call, a specific error message is returned, such as "The parameters contain sensitive information. Try other input.".
+	// The error message. Returns "Success" for successful calls. Returns specific error information for exceptions, such as "The parameters contain sensitive information. Try other input."
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID, which uniquely identifies the request.
+	// The request ID, used to identify a unique request call.
 	//
 	// example:
 	//
 	// 922E43BB-EE0E-1A29-B143-BB91BB3EA6AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values: true and false.
+	// Indicates whether the call is successful. true indicates success. false indicates failure.
 	//
 	// example:
 	//
@@ -113,9 +113,9 @@ func (s *TextTranslateResponseBody) Validate() error {
 }
 
 type TextTranslateResponseBodyData struct {
-	// The list of translation results. Each element corresponds to a translation result for an entry in the input text list.
+	// The translation result list. Each element corresponds to a translation result for an entry in the input text list.
 	Translations []*TextTranslateResponseBodyDataTranslations `json:"Translations,omitempty" xml:"Translations,omitempty" type:"Repeated"`
-	// The usage information, including the number of input characters.
+	// The usage information, including the input character count.
 	//
 	// example:
 	//

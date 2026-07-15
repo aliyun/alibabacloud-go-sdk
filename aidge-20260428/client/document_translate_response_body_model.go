@@ -30,7 +30,7 @@ type DocumentTranslateResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The asynchronous task information.
 	Data *DocumentTranslateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. This parameter is not returned if the call is successful.
+	// The error message. Not returned for successful calls.
 	//
 	// example:
 	//
@@ -42,11 +42,7 @@ type DocumentTranslateResponseBody struct {
 	//
 	// 39E8A74B-F99E-1195-A5FF-3ECC5F94F304
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
-	//
-	// - true: The call was successful.
-	//
-	// - false: The call failed.
+	// Indicates whether the call is successful. Valid values: true: The call is successful. false: The call failed.
 	//
 	// example:
 	//
@@ -117,7 +113,7 @@ func (s *DocumentTranslateResponseBody) Validate() error {
 }
 
 type DocumentTranslateResponseBodyData struct {
-	// The unique identifier of the asynchronous task. Use this ID to query the task status and result.
+	// The unique identifier of the asynchronous task, used to query the task status and result.
 	//
 	// example:
 	//

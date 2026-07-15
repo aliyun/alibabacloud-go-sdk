@@ -22,19 +22,28 @@ type iMaterialInspectionResponseBody interface {
 }
 
 type MaterialInspectionResponseBody struct {
+	// The error code. This parameter is not returned for successful calls.
+	//
 	// example:
 	//
 	// 200
-	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The material display detection result.
 	Data *MaterialInspectionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message. This parameter is not returned for successful calls.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// E1AD60F1-BAC7-546B-9533-E7AD02B16E3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values: true: The call was successful. false: The call failed.
+	//
 	// example:
 	//
 	// True
@@ -104,7 +113,10 @@ func (s *MaterialInspectionResponseBody) Validate() error {
 }
 
 type MaterialInspectionResponseBodyData struct {
+	// The inspection result.
 	Result *MaterialInspectionResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// The usage information. The key is the usage metric name and the value is the count.
+	//
 	// example:
 	//
 	// {"ProcessingCount":1}
@@ -147,19 +159,28 @@ func (s *MaterialInspectionResponseBodyData) Validate() error {
 }
 
 type MaterialInspectionResponseBodyDataResult struct {
+	// The natural language summary, such as "1 rule: 1 PASS, all inspection items are compliant."
+	//
 	// example:
 	//
 	// 1项规则：1 PASS，所有检测项合规
 	Evidence *string `json:"Evidence,omitempty" xml:"Evidence,omitempty"`
+	// The overall result. Valid values: PASS and FAIL.
+	//
 	// example:
 	//
 	// PASS
 	OverallResult *string `json:"OverallResult,omitempty" xml:"OverallResult,omitempty"`
+	// The request ID returned as-is from the input.
+	//
 	// example:
 	//
 	// req-001
-	ReqId *string                                          `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
+	ReqId *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
+	// The list of detection steps.
 	Steps []*MaterialInspectionResponseBodyDataResultSteps `json:"Steps,omitempty" xml:"Steps,omitempty" type:"Repeated"`
+	// The detection type.
+	//
 	// example:
 	//
 	// Stamp
@@ -233,10 +254,14 @@ func (s *MaterialInspectionResponseBodyDataResult) Validate() error {
 }
 
 type MaterialInspectionResponseBodyDataResultSteps struct {
+	// The step result. Valid values: PASS, FAIL, and UNABLE_TO_JUDGE.
+	//
 	// example:
 	//
 	// PASS
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The step ID.
+	//
 	// example:
 	//
 	// XXX
