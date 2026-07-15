@@ -103,17 +103,22 @@ type ManualModerationResultResponseBodyData struct {
 	// data1234
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
 	// The detailed label results.
-	Result      []*ManualModerationResultResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	ReviewCount *string                                         `json:"ReviewCount,omitempty" xml:"ReviewCount,omitempty"`
+	Result []*ManualModerationResultResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The number of reviews.
+	//
+	// example:
+	//
+	// 1
+	ReviewCount *string `json:"ReviewCount,omitempty" xml:"ReviewCount,omitempty"`
 	// The risk level, returned based on the configured high and low risk scores. Valid values:
 	//
-	// - high: high risk
+	// - high: High risk.
 	//
 	//
 	//
-	// - low: low risk
+	// - low: Low risk.
 	//
-	// - none: no risk detected
+	// - none: No risk detected.
 	//
 	// example:
 	//

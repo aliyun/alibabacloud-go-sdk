@@ -18,14 +18,20 @@ type iMultiModalGuardForBase64Request interface {
 }
 
 type MultiModalGuardForBase64Request struct {
+	// The base64-encoded string of the image.
+	//
 	// example:
 	//
 	// {base64}
 	ImageBase64Str *string `json:"ImageBase64Str,omitempty" xml:"ImageBase64Str,omitempty"`
+	// Service
+	//
 	// example:
 	//
 	// query_security_check
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// The service parameters.
+	//
 	// example:
 	//
 	// {"content":"test"}

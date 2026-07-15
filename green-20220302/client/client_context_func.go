@@ -3,6 +3,7 @@ package client
 
 import (
 	"context"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	websocketutils "github.com/alibabacloud-go/darabonba-openapi/v2/websocketUtils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -730,6 +731,81 @@ func (client *Client) MultiModalAgentWithContext(ctx context.Context, request *M
 
 // Summary:
 //
+// Synchronously detects multimodal content by using the Agent API.
+//
+// Description:
+//
+// The content moderation Agent.
+//
+// @param request - MultiModalAgentSSERequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MultiModalAgentSSEResponse
+func (client *Client) MultiModalAgentSSEWithSSECtx(ctx context.Context, request *MultiModalAgentSSERequest, runtime *dara.RuntimeOptions, _yield chan *MultiModalAgentSSEResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.multiModalAgentSSEWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, request, runtime)
+	return
+}
+
+// Summary:
+//
+// Synchronously detects multimodal content by using the Agent API.
+//
+// Description:
+//
+// The content moderation Agent.
+//
+// @param request - MultiModalAgentSSERequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MultiModalAgentSSEResponse
+func (client *Client) MultiModalAgentSSEWithContext(ctx context.Context, request *MultiModalAgentSSERequest, runtime *dara.RuntimeOptions) (_result *MultiModalAgentSSEResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppID) {
+		body["AppID"] = request.AppID
+	}
+
+	if !dara.IsNil(request.ServiceParameters) {
+		body["ServiceParameters"] = request.ServiceParameters
+	}
+
+	if !dara.IsNil(request.Stream) {
+		body["Stream"] = request.Stream
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("MultiModalAgentSSE"),
+		Version:     dara.String("2022-03-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &MultiModalAgentSSEResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # API for synchronous detection
 //
 // @param request - MultiModalGuardRequest
@@ -882,7 +958,7 @@ func (client *Client) MultiModalGuardAsyncResultWithContext(ctx context.Context,
 
 // Summary:
 //
-// 多模态同步检测接口，支持图片base64字符串
+// Performs synchronous multimodal content moderation. Supports base64-encoded image strings.
 //
 // @param request - MultiModalGuardForBase64Request
 //
@@ -1491,4 +1567,60 @@ func (client *Client) VoiceModerationResultWithContext(ctx context.Context, requ
 	}
 	_err = dara.Convert(_body, &_result)
 	return _result, _err
+}
+
+func (client *Client) multiModalAgentSSEWithSSECtx_opYieldFunc(_yield chan *MultiModalAgentSSEResponse, _yieldErr chan error, ctx context.Context, request *MultiModalAgentSSERequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppID) {
+		body["AppID"] = request.AppID
+	}
+
+	if !dara.IsNil(request.ServiceParameters) {
+		body["ServiceParameters"] = request.ServiceParameters
+	}
+
+	if !dara.IsNil(request.Stream) {
+		body["Stream"] = request.Stream
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("MultiModalAgentSSE"),
+		Version:     dara.String("2022-03-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
 }

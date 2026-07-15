@@ -20,15 +20,22 @@ type iMultiModalGuardForBase64ResponseBody interface {
 }
 
 type MultiModalGuardForBase64ResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
 	Data *MultiModalGuardForBase64ResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique identifier of the request.
+	//
 	// example:
 	//
 	// XXXX
@@ -89,11 +96,16 @@ func (s *MultiModalGuardForBase64ResponseBody) Validate() error {
 }
 
 type MultiModalGuardForBase64ResponseBodyData struct {
+	// The data ID.
+	//
 	// example:
 	//
 	// xxx
-	DataId *string                                           `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// The details.
 	Detail []*MultiModalGuardForBase64ResponseBodyDataDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
+	// The suggested action.
+	//
 	// example:
 	//
 	// pass
@@ -149,15 +161,22 @@ func (s *MultiModalGuardForBase64ResponseBodyData) Validate() error {
 }
 
 type MultiModalGuardForBase64ResponseBodyDataDetail struct {
+	// The risk level.
+	//
 	// example:
 	//
 	// low
-	Level  *string                                                 `json:"Level,omitempty" xml:"Level,omitempty"`
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The result.
 	Result []*MultiModalGuardForBase64ResponseBodyDataDetailResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The suggested action.
+	//
 	// example:
 	//
 	// pass
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	// The category.
+	//
 	// example:
 	//
 	// contentModeration
@@ -222,22 +241,32 @@ func (s *MultiModalGuardForBase64ResponseBodyDataDetail) Validate() error {
 }
 
 type MultiModalGuardForBase64ResponseBodyDataDetailResult struct {
+	// The confidence level.
+	//
 	// example:
 	//
 	// 100
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// 未检测出风险
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The extension information.
+	//
 	// example:
 	//
 	// json格式数据
 	Ext interface{} `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	// The label.
+	//
 	// example:
 	//
 	// nonLable
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The risk level.
+	//
 	// example:
 	//
 	// low

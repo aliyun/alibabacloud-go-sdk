@@ -72,6 +72,7 @@ type ResponseMessageEventData struct {
   Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
   DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
   SeqList []*string `json:"SeqList,omitempty" xml:"SeqList,omitempty" type:"Repeated"`
+  ProcessedOutput *string `json:"ProcessedOutput,omitempty" xml:"ProcessedOutput,omitempty"`
 }
 
 func (s ResponseMessageEventData) String() string {
@@ -98,6 +99,10 @@ func (s *ResponseMessageEventData) GetSeqList() []*string  {
   return s.SeqList
 }
 
+func (s *ResponseMessageEventData) GetProcessedOutput() *string  {
+  return s.ProcessedOutput
+}
+
 func (s *ResponseMessageEventData) SetDetail(v []*ResponseMessageEventDataDetail) *ResponseMessageEventData {
   s.Detail = v
   return s
@@ -115,6 +120,11 @@ func (s *ResponseMessageEventData) SetDataId(v string) *ResponseMessageEventData
 
 func (s *ResponseMessageEventData) SetSeqList(v []*string) *ResponseMessageEventData {
   s.SeqList = v
+  return s
+}
+
+func (s *ResponseMessageEventData) SetProcessedOutput(v string) *ResponseMessageEventData {
+  s.ProcessedOutput = &v
   return s
 }
 
