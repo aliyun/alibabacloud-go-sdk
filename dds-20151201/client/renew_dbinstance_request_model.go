@@ -36,9 +36,9 @@ type iRenewDBInstanceRequest interface {
 type RenewDBInstanceRequest struct {
 	// Specifies whether to enable automatic payment. Valid values:
 	//
-	// 	- **true**: enables automatic payment. Make sure that you have sufficient balance within your account.
+	// - **true**: enables automatic payment. Make sure that you have sufficient balance within your account.
 	//
-	// 	- **false**: disables automatic payment. You must perform the following operations to pay for the instance: Log on to the ApsaraDB for MongoDB console. In the upper-right corner, click **Expenses*	- and select **User Center*	- from the drop-down list. The User Center page appears. In the left-side navigation pane, choose **Order Management*	- > Renew. On the Renewal tab, find the bill that you want to pay and then click Renew in the Actions column.
+	// - **false**: disables automatic payment. You must perform the following operations to pay for the instance: Log on to the ApsaraDB for MongoDB console. In the upper-right corner, click **Expenses*	- and select **User Center*	- from the drop-down list. The User Center page appears. In the left-side navigation pane, choose **Order Management*	- > Renew. On the Renewal tab, find the bill that you want to pay and then click Renew in the Actions column.
 	//
 	// Default value: **true**.
 	//
@@ -48,9 +48,9 @@ type RenewDBInstanceRequest struct {
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// Specifies whether to enable auto-renewal. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// Default value: **false**.
 	//
@@ -72,13 +72,13 @@ type RenewDBInstanceRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to use coupons. Default value: null. Valid values:
 	//
-	// 	- **default*	- or **null**: uses coupons.
+	// - **default*	- or **null**: uses coupons.
 	//
-	// 	- **youhuiquan_promotion_option_id_for_blank**: does not use coupons.
+	// - **youhuiquan_promotion_option_id_for_blank**: does not use coupons.
 	//
 	// example:
 	//
-	// 1111111111111111
+	// default
 	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
 	// The instance ID.
 	//

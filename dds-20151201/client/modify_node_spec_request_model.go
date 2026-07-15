@@ -56,9 +56,9 @@ type iModifyNodeSpecRequest interface {
 type ModifyNodeSpecRequest struct {
 	// Specifies whether to enable automatic payment. Valid values:
 	//
-	// 	- **true*	- (default): enables automatic payment. Make sure that you have sufficient balance within your account.
+	// - **true*	- (default): Enables automatic payment. Make sure that your account has a sufficient balance.
 	//
-	// 	- **false**: disables automatic payment. In this case, you must manually pay for the instance.
+	// - **false**: Disables automatic payment. You must manually pay for the order.
 	//
 	// example:
 	//
@@ -70,19 +70,23 @@ type ModifyNodeSpecRequest struct {
 	//
 	// {“ActivityId":"000000000"}
 	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
+	// Specifies whether to use a coupon. Valid values:
+	//
+	// - **default*	- or **null*	- (default): A coupon is used.
+	//
+	// - **youhuiquan_promotion_option_id_for_blank**: A coupon is not used.
 	//
 	// example:
 	//
-	// youhuiquan_promotion_option_id_for_blank
+	// default
 	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -90,11 +94,11 @@ type ModifyNodeSpecRequest struct {
 	//
 	// dds-bp1c0b990184****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The time when the changed configurations take effect. Valid values:
+	// The effective time of the configuration change. Valid values:
 	//
-	// 	- **Immediately*	- (default): The new configurations immediately take effect
+	// - **Immediately*	- (default): The change takes effect immediately.
 	//
-	// 	- **MaintainTime**: The new configurations take effect during the maintenance window of the instance.
+	// - **MaintainTime**: The change takes effect during the O\\&M window of the instance.
 	//
 	// example:
 	//
@@ -102,23 +106,23 @@ type ModifyNodeSpecRequest struct {
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
 	// The source of the request. Valid values:
 	//
-	// 	- **OpenApi**: the ApsaraDB for MongoDB API
+	// - **OpenApi**: The request is from OpenAPI.
 	//
-	// 	- **mongo_buy**: the ApsaraDB for MongoDB console
+	// - **mongo_buy**: The request is from the console.
 	//
 	// example:
 	//
 	// OpenApi
 	FromApp *string `json:"FromApp,omitempty" xml:"FromApp,omitempty"`
-	// The specifications of the shard or mongos node. For more information, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
+	// The instance type of the shard or Mongos node. For more information, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
 	//
 	// example:
 	//
 	// dds.mongos.standard
 	NodeClass *string `json:"NodeClass,omitempty" xml:"NodeClass,omitempty"`
-	// The ID of the shard or mongos node in the sharded cluster instance. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to query the node ID.
+	// The ID of the shard or Mongos node in the sharded cluster instance. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to query the node ID.
 	//
-	// > If you set this parameter to the ID of the shard node, you must also specify the **NodeStorage*	- parameter.
+	// > If you set this parameter to the ID of a shard node, you must also specify the **NodeStorage*	- parameter.
 	//
 	// This parameter is required.
 	//
@@ -126,13 +130,11 @@ type ModifyNodeSpecRequest struct {
 	//
 	// s-bp143e1b1637****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The storage capacity of the shard node. Unit: GB.
+	// The storage space of the shard node. The step size is 10. Unit: GB.
 	//
-	// 	- Valid values are **10*	- to **2000*	- if the instance uses local SSDs.
+	// - SSD local disk: **10*	- to **2000**.
 	//
-	// 	- Valid values are **20*	- to **16000*	- if the instance uses enhanced SSDs (ESSDs) at PL1.
-	//
-	// > The value must be a multiple of 10.
+	// - ESSD PL1 disk: **20*	- to **16000**.
 	//
 	// example:
 	//
@@ -140,9 +142,9 @@ type ModifyNodeSpecRequest struct {
 	NodeStorage *int32 `json:"NodeStorage,omitempty" xml:"NodeStorage,omitempty"`
 	// The order type. Valid values:
 	//
-	// 	- **UPGRADE**
+	// - **UPGRADE**: upgrades the instance configuration.
 	//
-	// 	- **DOWNGRADE**
+	// - **DOWNGRADE**: downgrades the instance configuration.
 	//
 	// example:
 	//
@@ -152,7 +154,7 @@ type ModifyNodeSpecRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The number of read-only nodes in the shard node.
 	//
-	// Valid values: **0*	- to **5**. The value must be an integer. Default value: **0**.
+	// Valid values: **0*	- to **5**. The value must be an integer.
 	//
 	// example:
 	//
@@ -160,16 +162,54 @@ type ModifyNodeSpecRequest struct {
 	ReadonlyReplicas     *int32  `json:"ReadonlyReplicas,omitempty" xml:"ReadonlyReplicas,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The execution time. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The time when the configuration change takes effect. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	//
+	// > This parameter is deprecated. Use the EffectiveTime parameter instead.
 	//
 	// example:
 	//
 	// 2022-01-05T03:18:53Z
-	SwitchTime            *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
-	TargetHiddenZoneId    *string `json:"TargetHiddenZoneId,omitempty" xml:"TargetHiddenZoneId,omitempty"`
+	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
+	// The hidden zone to which you want to migrate the instance.
+	//
+	// 	Notice:
+	//
+	// This parameter is applicable only to instances that use disks.
+	//
+	// example:
+	//
+	// cn-hangzhou-j
+	TargetHiddenZoneId *string `json:"TargetHiddenZoneId,omitempty" xml:"TargetHiddenZoneId,omitempty"`
+	// The secondary zone to which you want to migrate the instance.
+	//
+	// 	Notice:
+	//
+	// This parameter is applicable only to instances that use disks.
+	//
+	// example:
+	//
+	// cn-hangzhou-e
 	TargetSecondaryZoneId *string `json:"TargetSecondaryZoneId,omitempty" xml:"TargetSecondaryZoneId,omitempty"`
-	TargetVswitchId       *string `json:"TargetVswitchId,omitempty" xml:"TargetVswitchId,omitempty"`
-	TargetZoneId          *string `json:"TargetZoneId,omitempty" xml:"TargetZoneId,omitempty"`
+	// The ID of the vSwitch in the destination zone.
+	//
+	// 	Notice:
+	//
+	// This parameter is applicable only to instances that use disks.
+	//
+	// example:
+	//
+	// vsw-xxxxxxxx
+	TargetVswitchId *string `json:"TargetVswitchId,omitempty" xml:"TargetVswitchId,omitempty"`
+	// The primary zone to which you want to migrate the instance.
+	//
+	// 	Notice:
+	//
+	// This parameter is applicable only to instances that use disks.
+	//
+	// example:
+	//
+	// cn-hangzhou-h
+	TargetZoneId *string `json:"TargetZoneId,omitempty" xml:"TargetZoneId,omitempty"`
 }
 
 func (s ModifyNodeSpecRequest) String() string {

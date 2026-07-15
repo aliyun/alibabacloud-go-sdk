@@ -30,9 +30,9 @@ type iModifyAccountDescriptionRequest interface {
 type ModifyAccountDescriptionRequest struct {
 	// The description of the account.
 	//
-	// 	- The description must start with a letter and cannot start with http:// or https://.
+	// - The description must start with a letter and cannot start with http\\:// or https\\://.
 	//
-	// 	- The description must be 2 to 256 characters in length, and can contain letters, digits, underscores (_), and hyphens (-).
+	// - The description must be 2 to 256 characters in length, and can contain letters, digits, underscores (_), and hyphens (-).
 	//
 	// This parameter is required.
 	//
@@ -50,13 +50,13 @@ type ModifyAccountDescriptionRequest struct {
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The type of the account whose description you can modify. Valid values:
 	//
-	// 	- **db**: shard account
+	// - **db**: shard account
 	//
-	// 	- **cs**: ConfigServer account
+	// - **cs**: ConfigServer account
 	//
-	// 	- **normal*	- (default): replica set account (available)
+	// - **normal*	- (default): replica set account (available)
 	//
-	// >  You can set this parameter only to **normal**.
+	// > You can set this parameter only to **normal**.
 	//
 	// example:
 	//

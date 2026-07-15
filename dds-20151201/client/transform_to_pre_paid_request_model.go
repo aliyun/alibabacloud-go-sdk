@@ -34,11 +34,11 @@ type iTransformToPrePaidRequest interface {
 type TransformToPrePaidRequest struct {
 	// Specifies whether to enable automatic payment. Valid values:
 	//
-	// 	- **true**: enables automatic payment.
+	// - **true**: enables automatic payment.
 	//
-	// 	- **false**: disables automatic payment. For more information, see [Renew an ApsaraDB for MongoDB subscription instance](https://help.aliyun.com/document_detail/85052.html).
+	// - **false**: disables automatic payment. For more information, see [Renew an ApsaraDB for MongoDB subscription instance](https://help.aliyun.com/document_detail/85052.html).
 	//
-	// >  Default value: **true**.
+	// > Default value: **true**.
 	//
 	// example:
 	//
@@ -46,11 +46,11 @@ type TransformToPrePaidRequest struct {
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// Specifies whether to enable auto-renewal for the instance. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
-	// >  Default value: **false**.
+	// > Default value: **false**.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type TransformToPrePaidRequest struct {
 	//
 	// example:
 	//
-	// youhuiquan_promotion_option_id_for_blank
+	// default
 	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
 	// The ID of the instance.
 	//

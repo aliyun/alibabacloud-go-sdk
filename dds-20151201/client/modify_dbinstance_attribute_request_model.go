@@ -24,12 +24,20 @@ type iModifyDBInstanceAttributeRequest interface {
 }
 
 type ModifyDBInstanceAttributeRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dds-7xv0912d85924194
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Specifies whether to enable instance release protection. Valid values:
+	//
+	// - **true**: enabled.
+	//
+	// - **false**: disabled.
+	//
 	// example:
 	//
 	// false

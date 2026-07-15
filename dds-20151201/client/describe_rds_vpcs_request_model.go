@@ -26,12 +26,16 @@ type iDescribeRdsVpcsRequest interface {
 type DescribeRdsVpcsRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-acfmyiu4ekp****
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-beijing-l

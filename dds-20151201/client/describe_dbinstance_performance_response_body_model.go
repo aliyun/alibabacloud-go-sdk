@@ -20,7 +20,7 @@ type iDescribeDBInstancePerformanceResponseBody interface {
 }
 
 type DescribeDBInstancePerformanceResponseBody struct {
-	// The end of the queried time range. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
+	// The end of the time range to query. The time is in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -33,7 +33,7 @@ type DescribeDBInstancePerformanceResponseBody struct {
 	//
 	// 4A300BC7-6D8F-527F-A2DB-A7768D26E9AC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the queried time range. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
+	// The beginning of the time range to query. The time is in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
 	//
 	// example:
 	//

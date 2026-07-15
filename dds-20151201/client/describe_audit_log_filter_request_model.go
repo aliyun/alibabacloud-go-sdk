@@ -38,11 +38,11 @@ type DescribeAuditLogFilterRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The role of the node in the instance. Valid values:
 	//
-	// 	- **mongos**: mongos node.
+	// - **mongos**: mongos node.
 	//
-	// 	- **db*	- : shard node.
+	// - **db*	- : shard node.
 	//
-	// 	- **logic*	- : logical instance.
+	// - **logic*	- : logical instance.
 	//
 	// example:
 	//

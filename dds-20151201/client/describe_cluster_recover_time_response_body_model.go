@@ -22,7 +22,7 @@ type DescribeClusterRecoverTimeResponseBody struct {
 	//
 	// 60EEBD77-227C-5B39-86EA-D89163C5****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The cluster backup sets of the instance. A cluster backup file contains the backup sets of each node.
+	// The list of cluster backup sets. A cluster backup contains the backup set of each node.
 	RestoreRanges []*DescribeClusterRecoverTimeResponseBodyRestoreRanges `json:"RestoreRanges,omitempty" xml:"RestoreRanges,omitempty" type:"Repeated"`
 }
 
@@ -66,21 +66,21 @@ func (s *DescribeClusterRecoverTimeResponseBody) Validate() error {
 }
 
 type DescribeClusterRecoverTimeResponseBodyRestoreRanges struct {
-	// The beginning of the time range to which data can be restored.
+	// The beginning of the restorable time range.
 	//
 	// example:
 	//
 	// 2023-10-16T19:33:20Z
 	RestoreBeginTime *string `json:"RestoreBeginTime,omitempty" xml:"RestoreBeginTime,omitempty"`
-	// The end of the time range to which data can be restored.
+	// The end of the restorable time range.
 	//
 	// example:
 	//
 	// 2023-10-16T19:43:20Z
 	RestoreEndTime *string `json:"RestoreEndTime,omitempty" xml:"RestoreEndTime,omitempty"`
-	// The method used to restore data. Valid values:
+	// The restoration method. Valid values:
 	//
-	// 	- **PointInTime*	- (default): Data is restored based on point in time
+	// 	- **PointInTime*	- (default): point-in-time restoration.
 	//
 	// example:
 	//

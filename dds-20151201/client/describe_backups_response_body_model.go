@@ -23,7 +23,7 @@ type iDescribeBackupsResponseBody interface {
 
 type DescribeBackupsResponseBody struct {
 	Backups *DescribeBackupsResponseBodyBackups `json:"Backups,omitempty" xml:"Backups,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
@@ -31,11 +31,11 @@ type DescribeBackupsResponseBody struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page. Valid values:
 	//
-	// 	- **30*	- (default)
+	// - **30*	- (Default)
 	//
-	// 	- **50**
+	// - **50**
 	//
-	// 	- **100**
+	// - **100**
 	//
 	// example:
 	//
@@ -45,9 +45,9 @@ type DescribeBackupsResponseBody struct {
 	//
 	// example:
 	//
-	// 275D43C3-F12F-5224-B375-0C6BF453BD56
+	// 275D43C3-F12F-5224-B375-************
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of backup sets.
+	// The total number of backups.
 	//
 	// example:
 	//

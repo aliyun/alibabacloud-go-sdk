@@ -26,18 +26,24 @@ type iModifyDBInstanceConfigRequest interface {
 }
 
 type ModifyDBInstanceConfigRequest struct {
+	// The configuration item name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// manual_check
 	ConfigName *string `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
+	// The configuration item value
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

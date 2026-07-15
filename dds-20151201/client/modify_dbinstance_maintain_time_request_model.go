@@ -36,7 +36,7 @@ type ModifyDBInstanceMaintainTimeRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The end time of the maintenance window. Specify the time in the ISO 8601 standard in the *HH:mm*Z format. The time must be in UTC.
 	//
-	// >  The end time must be later than the start time of the maintenance window.
+	// > The end time must be later than the start time of the maintenance window.
 	//
 	// This parameter is required.
 	//

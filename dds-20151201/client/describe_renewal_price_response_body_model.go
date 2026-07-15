@@ -20,15 +20,17 @@ type iDescribeRenewalPriceResponseBody interface {
 }
 
 type DescribeRenewalPriceResponseBody struct {
-	// The list of orders.
+	// The order details.
 	Order *DescribeRenewalPriceResponseBodyOrder `json:"Order,omitempty" xml:"Order,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// EFD65226-08CC-4C4D-B6A4-CB3C382F67B0
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rules     *DescribeRenewalPriceResponseBodyRules     `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details of the available promotion rules.
+	Rules *DescribeRenewalPriceResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
+	// The sub-order details.
 	SubOrders *DescribeRenewalPriceResponseBodySubOrders `json:"SubOrders,omitempty" xml:"SubOrders,omitempty" type:"Struct"`
 }
 
@@ -96,31 +98,29 @@ func (s *DescribeRenewalPriceResponseBody) Validate() error {
 }
 
 type DescribeRenewalPriceResponseBodyOrder struct {
+	// The coupon details.
 	Coupons *DescribeRenewalPriceResponseBodyOrderCoupons `json:"Coupons,omitempty" xml:"Coupons,omitempty" type:"Struct"`
-	// The type of the currency. Valid values:
-	//
-	// 	- USD: United States dollar
-	//
-	// 	- JPY: Japanese Yen
+	// The currency of the transaction.
 	//
 	// example:
 	//
 	// USD
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The discount amount of the order.
+	// The total discount amount for the order.
 	//
 	// example:
 	//
 	// 1144.8
 	DiscountAmount *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
-	// The original price of the order.
+	// The original amount for the order.
 	//
 	// example:
 	//
 	// 1144.8
-	OriginalAmount *float32                                      `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
-	RuleIds        *DescribeRenewalPriceResponseBodyOrderRuleIds `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
-	// The actual price of the order.
+	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	// The matched rule IDs.
+	RuleIds *DescribeRenewalPriceResponseBodyOrderRuleIds `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
+	// The final trade amount for the order.
 	//
 	// example:
 	//

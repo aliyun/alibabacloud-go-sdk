@@ -22,6 +22,8 @@ type iDescribeRoleTagStatusRequest interface {
 }
 
 type DescribeRoleTagStatusRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

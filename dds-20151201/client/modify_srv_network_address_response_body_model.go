@@ -14,6 +14,8 @@ type iModifySrvNetworkAddressResponseBody interface {
 }
 
 type ModifySrvNetworkAddressResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 45D2B592-DEBA-4347-BBF3-xxxxxC97DBBC

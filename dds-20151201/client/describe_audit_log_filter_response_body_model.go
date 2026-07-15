@@ -20,19 +20,19 @@ type iDescribeAuditLogFilterResponseBody interface {
 type DescribeAuditLogFilterResponseBody struct {
 	// The type of the audit log entries. Valid values:
 	//
-	// 	- **admin**: O\\&M and management operations
+	// - **admin**: O\\&M and management operations
 	//
-	// 	- **slow**: slow query logs
+	// - **slow**: slow query logs
 	//
-	// 	- **query**: query operations
+	// - **query**: query operations
 	//
-	// 	- **insert**: insert operations
+	// - **insert**: insert operations
 	//
-	// 	- **update**: update operations
+	// - **update**: update operations
 	//
-	// 	- **delete**: delete operations
+	// - **delete**: delete operations
 	//
-	// 	- **command**: protocol commands such as the aggregate method
+	// - **command**: protocol commands such as the aggregate method
 	//
 	// example:
 	//

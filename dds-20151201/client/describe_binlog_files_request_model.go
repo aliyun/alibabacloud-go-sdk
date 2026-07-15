@@ -42,45 +42,82 @@ type iDescribeBinlogFilesRequest interface {
 }
 
 type DescribeBinlogFilesRequest struct {
+	// The binlog ID. This parameter is not currently supported.
+	//
+	// example:
+	//
+	// null
 	BinlogId *string `json:"BinlogId,omitempty" xml:"BinlogId,omitempty"`
+	// The ID of the instance. If the instance is a sharded cluster, you must also specify the **NodeId*	- parameter.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dds-wz9ca592fc637a54
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DestRegion   *string `json:"DestRegion,omitempty" xml:"DestRegion,omitempty"`
+	// The region where the cross-region backup is stored.
+	//
+	// > This parameter is required when you query cross-region backups.
+	//
+	// example:
+	//
+	// cn-beijing
+	DestRegion *string `json:"DestRegion,omitempty" xml:"DestRegion,omitempty"`
+	// The end time of the query. The time must be later than the start time. The time is in the *yyyy-MM-dd*T*HH:mm:ss.xxx*Z format. The time is displayed in UTC.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2023-04-17T05:50:28.914Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the mongos node or shard node in the sharded cluster instance.
+	//
+	// > This parameter is applicable only to sharded cluster instances.
+	//
 	// example:
 	//
 	// d-uf696817a1b5d9f4
 	NodeId       *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the region.
+	//
 	// example:
 	//
 	// cn-zhangjiakou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-xxxx
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SrcRegion            *string `json:"SrcRegion,omitempty" xml:"SrcRegion,omitempty"`
+	// The region of the source instance for a cross-region backup.
+	//
+	// > - This parameter is required when you query cross-region backups.
+	//
+	// example:
+	//
+	// ap-southeast-1
+	SrcRegion *string `json:"SrcRegion,omitempty" xml:"SrcRegion,omitempty"`
+	// The start time of the query. The time is in the *yyyy-MM-dd*T*HH:mm:ss.xxx*Z format. The time is displayed in UTC.
+	//
 	// This parameter is required.
 	//
 	// example:

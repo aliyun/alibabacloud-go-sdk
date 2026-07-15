@@ -24,11 +24,11 @@ type iDescribeActiveOperationTaskRegionRequest interface {
 }
 
 type DescribeActiveOperationTaskRegionRequest struct {
-	// Specifies whether to return the historical tasks. Default value: 0. Valid values:
+	// Specifies whether to return historical tasks. Valid values:
 	//
-	// - 0: returns the current task.
+	// - 0: The default value. Returns current tasks.
 	//
-	// - 1: returns the historical tasks.
+	// - 1: Returns historical tasks.
 	//
 	// example:
 	//
@@ -38,15 +38,13 @@ type DescribeActiveOperationTaskRegionRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the task. Valid values:
+	// The task type. Valid values:
 	//
-	// - rds_apsaradb_ha: master-replica switchover
+	// - rds_apsaradb_ha: a primary/secondary node switchover.
 	//
-	// - rds_apsaradb_transfer: instance migration
+	// - rds_apsaradb_transfer: an instance migration.
 	//
-	// - rds_apsaradb_upgrade: minor version update
-	//
-	// - all: all types
+	// - rds_apsaradb_upgrade: a minor version upgrade.
 	//
 	// This parameter is required.
 	//

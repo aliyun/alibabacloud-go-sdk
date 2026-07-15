@@ -20,14 +20,20 @@ type iDescribeReplicaSetRoleResponseBody interface {
 }
 
 type DescribeReplicaSetRoleResponseBody struct {
+	// The domain name suffix for the connection string.
+	//
+	// example:
+	//
+	// .mongodb.rds.aliyuncs.com
 	ConnectionStringSuffix *string `json:"ConnectionStringSuffix,omitempty" xml:"ConnectionStringSuffix,omitempty"`
 	// The instance ID.
 	//
 	// example:
 	//
 	// dds-bpxxxxxxxx
-	DBInstanceId *string                                        `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	ReplicaSets  *DescribeReplicaSetRoleResponseBodyReplicaSets `json:"ReplicaSets,omitempty" xml:"ReplicaSets,omitempty" type:"Struct"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Details of the replica set.
+	ReplicaSets *DescribeReplicaSetRoleResponseBodyReplicaSets `json:"ReplicaSets,omitempty" xml:"ReplicaSets,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:

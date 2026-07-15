@@ -18,7 +18,7 @@ type iDescribeDBInstancesOverviewResponseBody interface {
 }
 
 type DescribeDBInstancesOverviewResponseBody struct {
-	// The information of instances.
+	// A list of instance details.
 	DBInstances []*DescribeDBInstancesOverviewResponseBodyDBInstances `json:"DBInstances,omitempty" xml:"DBInstances,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type DescribeDBInstancesOverviewResponseBody struct {
 	//
 	// 52820D2B-B2DD-59F0-BDF2-83EC19C6F1CA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of instances in the query results.
+	// The number of instances returned.
 	//
 	// example:
 	//
@@ -83,13 +83,13 @@ func (s *DescribeDBInstancesOverviewResponseBody) Validate() error {
 }
 
 type DescribeDBInstancesOverviewResponseBodyDBInstances struct {
-	// The read and write throughput consumed by the instance.
+	// The read/write throughput of the instance.
+	//
+	// > - This parameter is returned only for Serverless instances.
 	//
 	// >
 	//
-	// 	- This parameter is returned when the instance is a serverless instance.
-	//
-	// 	- Serverless instances are available only in the China site (aliyun.com).
+	// > - Serverless instances are available only on the China site (aliyun.com).
 	//
 	// example:
 	//
@@ -97,27 +97,31 @@ type DescribeDBInstancesOverviewResponseBodyDBInstances struct {
 	CapacityUnit *string `json:"CapacityUnit,omitempty" xml:"CapacityUnit,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
-	// 	- **PrePaid**: subscription
+	// - **PrePaid**: subscription
 	//
-	// 	- **PostPaid**: pay-as-you-go
+	// - **PostPaid**: pay-as-you-go
 	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The time when the instance was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the instance was created. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is in UTC.
 	//
 	// example:
 	//
 	// 2022-01-05T03:18:53Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The instance type. The instance type varies based on the instance architecture. For more information about instance types supported by different instance architectures, see the following references:
+	// The instance type. For more information about the instance types available for different instance architectures, see:
 	//
-	// 	- [Standalone instance types](https://help.aliyun.com/document_detail/311407.html)
+	// - [Standalone instance types](https://help.aliyun.com/document_detail/311407.html)
 	//
-	// 	- [Replica set instance types](https://help.aliyun.com/document_detail/311410.html)
+	// - [Replica set instance types](https://help.aliyun.com/document_detail/311410.html)
 	//
-	// 	- [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html)
+	// - [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html)
+	//
+	// <props="china">
+	//
+	// > This parameter is not required for Serverless instances.
 	//
 	// example:
 	//
@@ -127,7 +131,7 @@ type DescribeDBInstancesOverviewResponseBodyDBInstances struct {
 	//
 	// example:
 	//
-	// test db
+	// Test database
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
 	// The instance ID.
 	//
@@ -135,35 +139,39 @@ type DescribeDBInstancesOverviewResponseBodyDBInstances struct {
 	//
 	// dds-bp12c5b040dc****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The state of the instance. For more information about valid values, see [Instance states](https://help.aliyun.com/document_detail/63870.html).
+	// The status of the instance. For more information, see [Instance states](https://help.aliyun.com/document_detail/63870.html).
 	//
 	// example:
 	//
 	// Running
 	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	// The storage space of the instance. Unit: GB.
+	// The storage capacity of the instance, in GB.
 	//
 	// example:
 	//
 	// 20
 	DBInstanceStorage *int32 `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
-	// The architecture of the instance. Valid values:
+	// The instance architecture. Valid values:
 	//
-	// 	- **sharding**: sharded cluster instance
+	// - **sharding**: sharded cluster instance
 	//
-	// 	- **replicate**: replica set or standalone instance
+	// - **replicate**: replica set or standalone instance
+	//
+	// <props="china">
+	//
+	// - **serverless**: Serverless instance
 	//
 	// example:
 	//
 	// replicate
 	DBInstanceType *string `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
-	// The time when the instance data was destroyed. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time when the data of the instance was destroyed. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC.
 	//
 	// example:
 	//
 	// 2021-12-10T16:00:00Z
 	DestroyTime *string `json:"DestroyTime,omitempty" xml:"DestroyTime,omitempty"`
-	// The database engine of the instance. Set the value to **MongoDB**.
+	// The database engine. The value is **MongoDB**.
 	//
 	// example:
 	//
@@ -175,45 +183,45 @@ type DescribeDBInstancesOverviewResponseBodyDBInstances struct {
 	//
 	// 4.2
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The time when the instance expires. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
+	// The expiration time of the subscription instance. The time is in the *yyyy-MM-dd*T*HH:mm*Z format. The time is in UTC.
 	//
 	// example:
 	//
 	// 2022-02-05T16:00Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The kind code of the instance. Valid values:
+	// The instance edition. Valid values:
 	//
-	// 	- **0**: physical machine
+	// - **0**: physical server
 	//
-	// 	- **1**: Elastic Compute Service (ECS) instance
+	// - **1**: ECS
 	//
-	// 	- **2**: Docker cluster
+	// - **2**: DOCKER
 	//
-	// 	- **18**: Kubernetes cluster
+	// - **18**: instance on the new Kubernetes-based architecture
 	//
 	// example:
 	//
 	// 0
 	KindCode *string `json:"KindCode,omitempty" xml:"KindCode,omitempty"`
-	// The date when the last downgrade operation was performed.
+	// The time when the instance was last downgraded.
 	//
 	// example:
 	//
 	// 2021-05-08
 	LastDowngradeTime *string `json:"LastDowngradeTime,omitempty" xml:"LastDowngradeTime,omitempty"`
-	// Indicates whether the instance is locked. Valid values:
+	// The lock mode of the instance.
 	//
-	// 	- **Unlock**: The instance is not locked.
+	// - **Unlock**: The instance is not locked.
 	//
-	// 	- **ManualLock**: The instance is manually locked.
+	// - **ManualLock**: The instance is manually locked.
 	//
-	// 	- **LockByExpiration**: The instance is automatically locked due to instance expiration.
+	// - **LockByExpiration**: The instance is automatically locked after it expires.
 	//
-	// 	- **LockByRestoration**: The instance is automatically locked before it is rolled back.
+	// - **LockByRestoration**: The instance is automatically locked before a rollback.
 	//
-	// 	- **LockByDiskQuota**: The instance is automatically locked after the storage space is exhausted.
+	// - **LockByDiskQuota**: The instance is automatically locked after its storage space is exhausted.
 	//
-	// 	- **Released**: The instance is released. After an instance is released, the instance cannot be unlocked. You can only restore the backup data of the instance to a new instance. This process requires a long period of time.
+	// - **Released**: The instance is released. You cannot unlock a released instance. You can only restore the data of the instance to a new instance. The restoration may take a long time.
 	//
 	// example:
 	//
@@ -221,13 +229,13 @@ type DescribeDBInstancesOverviewResponseBodyDBInstances struct {
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
 	// The details of the mongos nodes.
 	//
-	// >  This parameter is returned when the instance is a sharded cluster instance.
+	// > This parameter is returned only for sharded cluster instances.
 	MongosList []*DescribeDBInstancesOverviewResponseBodyDBInstancesMongosList `json:"MongosList,omitempty" xml:"MongosList,omitempty" type:"Repeated"`
 	// The network type of the instance. Valid values:
 	//
-	// 	- **Classic**
+	// - **Classic**: classic network
 	//
-	// 	- **VPC**
+	// - **VPC**: virtual private cloud (VPC)
 	//
 	// example:
 	//
@@ -241,7 +249,7 @@ type DescribeDBInstancesOverviewResponseBodyDBInstances struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The number of nodes in the instance.
 	//
-	// >  This parameter is returned when the instance is a replica set instance.
+	// > This parameter is returned only for replica set instances.
 	//
 	// example:
 	//
@@ -255,21 +263,21 @@ type DescribeDBInstancesOverviewResponseBodyDBInstances struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The details of the shard nodes.
 	//
-	// >  This parameter is returned when the instance is a sharded cluster instance.
+	// > This parameter is returned only for sharded cluster instances.
 	ShardList []*DescribeDBInstancesOverviewResponseBodyDBInstancesShardList `json:"ShardList,omitempty" xml:"ShardList,omitempty" type:"Repeated"`
-	// The tags to add to the instance.
+	// The tags of the instance.
 	Tags []*DescribeDBInstancesOverviewResponseBodyDBInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// Indicates whether password-free access over VPC is enabled. Valid values:
+	// Indicates whether password-free access over a VPC is enabled. Valid values:
 	//
-	// 	- **Open**: Password-free access over VPC is enabled.
+	// - **Open**: enabled
 	//
-	// 	- **Close**: Password-free access over VPC is disabled.
+	// - **Close**: disabled
 	//
 	// example:
 	//
 	// Open
 	VpcAuthMode *string `json:"VpcAuthMode,omitempty" xml:"VpcAuthMode,omitempty"`
-	// The zone ID of the instance.
+	// The zone of the instance.
 	//
 	// example:
 	//
@@ -552,7 +560,7 @@ type DescribeDBInstancesOverviewResponseBodyDBInstancesMongosList struct {
 	//
 	// example:
 	//
-	// mongos node describe.
+	// Test mongos node
 	NodeDescription *string `json:"NodeDescription,omitempty" xml:"NodeDescription,omitempty"`
 	// The ID of the mongos node.
 	//
@@ -612,7 +620,7 @@ type DescribeDBInstancesOverviewResponseBodyDBInstancesShardList struct {
 	//
 	// example:
 	//
-	// testshard
+	// Test shard node
 	NodeDescription *string `json:"NodeDescription,omitempty" xml:"NodeDescription,omitempty"`
 	// The ID of the shard node.
 	//
@@ -620,13 +628,13 @@ type DescribeDBInstancesOverviewResponseBodyDBInstancesShardList struct {
 	//
 	// d-bp1cac6f2083****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The storage space of the shard node. Unit: GB.
+	// The storage capacity of the shard node, in GB.
 	//
 	// example:
 	//
 	// 10
 	NodeStorage *int32 `json:"NodeStorage,omitempty" xml:"NodeStorage,omitempty"`
-	// The number of read-only nodes in the shard node. Valid values: **0*	- to **5**.
+	// The number of read-only nodes in the shard. Valid values: **0*	- to **5**.
 	//
 	// example:
 	//
@@ -692,25 +700,25 @@ func (s *DescribeDBInstancesOverviewResponseBodyDBInstancesShardList) Validate()
 }
 
 type DescribeDBInstancesOverviewResponseBodyDBInstancesTags struct {
-	// The tag key. Valid values of N: **1*	- to **20**.
+	// The tag key.
 	//
-	// 	- The key cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+	// - The key cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
 	//
-	// 	- It can be up to 64 characters in length.
+	// - The key can be up to 64 characters in length.
 	//
-	// 	- It cannot be an empty string.
+	// - The key cannot be an empty string.
 	//
 	// example:
 	//
 	// testdatabase
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. Valid values of N: **1*	- to **20**.
+	// The tag value.
 	//
-	// 	- The value cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+	// - The value cannot start with `aliyun`, `acs`:, `http://`, or `https://`.
 	//
-	// 	- The value can be up to 128 characters in length.
+	// - The value can be up to 128 characters in length.
 	//
-	// 	- The value can be an empty string.
+	// - The value can be an empty string.
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iDescribeAuditPolicyResponseBody interface {
 }
 
 type DescribeAuditPolicyResponseBody struct {
-	// Indicates whether the log audit feature is enabled. Valid values:
+	// The status of the audit log.
 	//
-	// 	- Enable
+	// - Enable: The audit log is enabled.
 	//
-	// 	- Disabled
+	// - Disabled: The audit log is disabled.
 	//
-	// Default value: Disabled.
+	// The default value is Disabled.
 	//
 	// example:
 	//

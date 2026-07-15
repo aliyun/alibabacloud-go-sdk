@@ -16,7 +16,7 @@ type iDescribeBackupTasksResponseBody interface {
 }
 
 type DescribeBackupTasksResponseBody struct {
-	// The details of the backup task.
+	// The details of the backup jobs.
 	BackupJobs []*DescribeBackupTasksResponseBodyBackupJobs `json:"BackupJobs,omitempty" xml:"BackupJobs,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,27 +66,27 @@ func (s *DescribeBackupTasksResponseBody) Validate() error {
 }
 
 type DescribeBackupTasksResponseBodyBackupJobs struct {
-	// The backup task status. Valid values:
+	// The status of the backup job.
 	//
-	// 	- **Scheduled**: The backup task is in planning. Regular backup tasks that have not started are also in this state.
+	// - **Scheduled**: The backup job is scheduled. This includes regular backup jobs that have not started.
 	//
-	// 	- **Checking**: The instance is being checked before the backup.
+	// - **Checking**: The instance is being checked before the backup.
 	//
-	// 	- **Backuping**: The backup task is in progress.
+	// - **Backuping**: The backup is in progress.
 	//
-	// 	- **Finished**: The backup task is completed.
+	// - **Finished**: The backup is complete.
 	//
 	// example:
 	//
 	// Scheduled
 	BackupSetStatus *string `json:"BackupSetStatus,omitempty" xml:"BackupSetStatus,omitempty"`
-	// The start time of the backup task.
+	// The start time of the backup.
 	//
 	// example:
 	//
 	// 2024-01-16T11:04:56Z
 	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
-	// The ID of the backup task.
+	// The backup job ID.
 	//
 	// example:
 	//
@@ -94,15 +94,15 @@ type DescribeBackupTasksResponseBodyBackupJobs struct {
 	BackupjobId *string `json:"BackupjobId,omitempty" xml:"BackupjobId,omitempty"`
 	// The backup mode. Valid values:
 	//
-	// 	- **Automated**: automatic backup
+	// - **Automated**: automatic backup.
 	//
-	// 	- **Manual**: manual backup
+	// - **Manual**: manual backup.
 	//
 	// example:
 	//
 	// Manual
 	JobMode *string `json:"JobMode,omitempty" xml:"JobMode,omitempty"`
-	// The progress of the backup task. Unit: %. The progress is returned only for running backup tasks.
+	// The backup progress in percentage. The progress is displayed only for running backup jobs.
 	//
 	// example:
 	//

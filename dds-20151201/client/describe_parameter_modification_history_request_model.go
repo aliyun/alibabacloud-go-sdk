@@ -32,13 +32,13 @@ type iDescribeParameterModificationHistoryRequest interface {
 type DescribeParameterModificationHistoryRequest struct {
 	// The role of the instance. Valid values:
 	//
-	// 	- **db**: shard
+	// - **db**: shard
 	//
-	// 	- **cs**: Configserver
+	// - **cs**: Configserver
 	//
-	// 	- **mongos**: mongos
+	// - **mongos**: mongos
 	//
-	// 	- **logic**: sharded cluster instance
+	// - **logic**: sharded cluster instance
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DescribeParameterModificationHistoryRequest struct {
 	CharacterType *string `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
 	// The instance ID.
 	//
-	// >  If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId*	- parameter.
+	// > If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId*	- parameter.
 	//
 	// This parameter is required.
 	//
@@ -60,11 +60,11 @@ type DescribeParameterModificationHistoryRequest struct {
 	//
 	// example:
 	//
-	// 2019-01-02T12:10:10Z
+	// 2019-01-02T12:10Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the mongos node or shard node whose parameter modification records you want to query in the instance.
 	//
-	// >  This parameter is valid only when **DBInstanceId*	- is set to the ID of a sharded cluster instance.
+	// > This parameter is valid only when **DBInstanceId*	- is set to the ID of a sharded cluster instance.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type DescribeParameterModificationHistoryRequest struct {
 	//
 	// example:
 	//
-	// 2019-01-01T12:10:10Z
+	// 2019-01-01T12:10Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 

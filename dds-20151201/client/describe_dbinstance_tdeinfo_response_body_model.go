@@ -22,31 +22,31 @@ type iDescribeDBInstanceTDEInfoResponseBody interface {
 }
 
 type DescribeDBInstanceTDEInfoResponseBody struct {
-	// 实例的自定义密钥。
+	// The custom key of the instance.
 	//
-	// 目前仅以下地域支持BYOK（Bring Your Own Key，用户可以自行管理和拥有加密密钥）：
+	// Currently, only the following regions support Bring Your Own Key (BYOK), which allows you to manage and own encryption keys:
 	//
-	// - 华东1（杭州）
+	// - China (Hangzhou)
 	//
-	// - 华东2（上海）
+	// - China (Shanghai)
 	//
-	// - 华北2（北京）
+	// - China (Beijing)
 	//
-	// - 华南1（深圳）
+	// - China (Shenzhen)
 	//
-	// - 中国（香港）
+	// - Hong Kong (China)
 	//
-	// - 新加坡
+	// - Singapore
 	//
-	// - 马来西亚（吉隆坡）
+	// - Malaysia (Kuala Lumpur)
 	//
-	// > 支持BYOK，用户可以管理且拥有密钥，系统将返回用户的自定义密钥；不支持BYOK，用户不可管理密钥，系统将返回字符串`NoActiveBYOK`。
+	// > If BYOK is supported, you can manage and own the key, and the system returns your custom key. If BYOK is not supported, you cannot manage the key, and the system returns the string `NoActiveBYOK`.
 	//
 	// example:
 	//
 	// 2axxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
-	// 加密算法。
+	// The encryption algorithm.
 	//
 	// example:
 	//
@@ -58,17 +58,19 @@ type DescribeDBInstanceTDEInfoResponseBody struct {
 	//
 	// F4DD0E29-361B-42F2-9301-B0048CCCE5D6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 指定待授权角色的全局资源描述符ARN（Alibaba Cloud Resource Name）信息。
+	// The global resource descriptor ARN (Alibaba Cloud Resource Name) of the role pending authorization.
 	//
 	// example:
 	//
 	// acs:ram::123456789012****:role/aliyunrdsinstanceencryptiondefaultrole
 	RoleARN *string `json:"RoleARN,omitempty" xml:"RoleARN,omitempty"`
-	// The TDE status. Valid values:
+	// The TDE enabling status. Valid values:
 	//
-	// 	- **enabled**
+	// - **enabled**: TDE is enabled.
 	//
-	// 	- **disabled**
+	// - **disabled**: TDE is disabled.
+	//
+	// > If the TDE status is disabled, the **RoleARN**, **EncryptionKey**, and **EncryptorName*	- parameters are not returned.
 	//
 	// example:
 	//

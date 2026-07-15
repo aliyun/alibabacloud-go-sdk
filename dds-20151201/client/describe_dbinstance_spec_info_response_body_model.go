@@ -20,15 +20,26 @@ type iDescribeDBInstanceSpecInfoResponseBody interface {
 }
 
 type DescribeDBInstanceSpecInfoResponseBody struct {
+	// The number of CPU cores.
+	//
 	// example:
 	//
 	// 2
-	CPU         *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// The description of the instance type.
+	//
+	// example:
+	//
+	// 2核8GB（独享型）
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The memory size, in GB.
+	//
 	// example:
 	//
 	// 8
 	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6B82A9EF-9961-5A31-A19F-009B709xxxxx

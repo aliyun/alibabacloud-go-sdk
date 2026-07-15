@@ -20,7 +20,7 @@ type iDescribeTagsResponseBody interface {
 type DescribeTagsResponseBody struct {
 	// The token used to start the next query.
 	//
-	// >  If not all results are returned in the first query, this parameter is returned. You can pass in the value of this parameter in the next query.
+	// > If not all results are returned in the first query, this parameter is returned. You can pass in the value of this parameter in the next query.
 	//
 	// example:
 	//
@@ -89,9 +89,13 @@ type DescribeTagsResponseBodyTags struct {
 	//
 	// example:
 	//
-	// newKey
+	// Test group
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// The values of the tags.
+	//
+	// example:
+	//
+	// 3.4 environment
 	TagValues []*string `json:"TagValues,omitempty" xml:"TagValues,omitempty" type:"Repeated"`
 }
 

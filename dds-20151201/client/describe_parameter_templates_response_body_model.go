@@ -22,26 +22,26 @@ type iDescribeParameterTemplatesResponseBody interface {
 }
 
 type DescribeParameterTemplatesResponseBody struct {
-	// The database engine of the instance.
+	// The database engine.
 	//
 	// example:
 	//
 	// mongodb
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine version of the instance.
+	// The database version number.
 	//
 	// example:
 	//
 	// 5.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The number of parameters that are supported by the instance.
+	// The number of parameters.
 	//
 	// example:
 	//
 	// 10
 	ParameterCount *string                                           `json:"ParameterCount,omitempty" xml:"ParameterCount,omitempty"`
 	Parameters     *DescribeParameterTemplatesResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

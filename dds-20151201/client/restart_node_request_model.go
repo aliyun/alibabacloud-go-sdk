@@ -30,7 +30,7 @@ type iRestartNodeRequest interface {
 type RestartNodeRequest struct {
 	// The instance ID.
 	//
-	// >  If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId*	- parameter.
+	// > If the instance is a sharded cluster instance, also set the `NodeId` parameter.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +38,9 @@ type RestartNodeRequest struct {
 	//
 	// dds-bpxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The ID of the shard, mongos, or ConfigServer node in a child instance of the sharded cluster instance.
+	// The ID of the Mongos, shard, or Configserver node in the sharded cluster instance. Call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to query the node ID.
 	//
-	// >  If you set the **DBInstanceId*	- parameter to the ID of a sharded cluster instance, you must specify this parameter.
+	// > This parameter is required if **DBInstanceId*	- is set to the ID of a sharded cluster instance.
 	//
 	// example:
 	//
@@ -52,16 +52,27 @@ type RestartNodeRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The role ID of the node.
 	//
-	// 1.  You can call the [DescribeReplicaSetRole](https://help.aliyun.com/document_detail/468469.html) operation to query the role ID of a node in a replica set instance.
+	// 1. Call the [DescribeReplicaSetRole](https://help.aliyun.com/document_detail/468469.html) operation to query the role ID of a node in a replica set instance.
 	//
-	// 2.  You can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/468472.html) operation to query the role ID of a node in a sharded cluster instance.
+	// 2. Call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/468472.html) operation to query the role ID of a node in a sharded cluster instance.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 6025****
-	RoleId     *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// The time to execute the task. Valid values:
+	//
+	// - **0**: The task is executed immediately. This is the default value.
+	//
+	// - **1**: The task is executed during the maintenance window.
+	//
+	// > Call the [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/473775.html) operation to modify the maintenance window of the instance.
+	//
+	// example:
+	//
+	// 1
 	SwitchMode *string `json:"SwitchMode,omitempty" xml:"SwitchMode,omitempty"`
 }
 

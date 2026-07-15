@@ -36,19 +36,19 @@ type ModifyAuditLogFilterRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
 	//
-	// 	- **admin**: O\\&M and management operations
+	// - **admin**: O\\&M and management operations
 	//
-	// 	- **slow**: slow query logs
+	// - **slow**: slow query logs
 	//
-	// 	- **query**: query operations
+	// - **query**: query operations
 	//
-	// 	- **insert**: insert operations
+	// - **insert**: insert operations
 	//
-	// 	- **update**: update operations
+	// - **update**: update operations
 	//
-	// 	- **delete**: delete operations
+	// - **delete**: delete operations
 	//
-	// 	- **command**: protocol commands such as the aggregate method
+	// - **command**: protocol commands such as the aggregate method
 	//
 	// This parameter is required.
 	//
@@ -62,9 +62,9 @@ type ModifyAuditLogFilterRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The role of the node in the instance. Valid values:
 	//
-	// 	- **primary**
+	// - **primary**
 	//
-	// 	- **secondary**
+	// - **secondary**
 	//
 	// example:
 	//

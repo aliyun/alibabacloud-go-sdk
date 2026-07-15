@@ -17,7 +17,7 @@ type iDescribeUserEncryptionKeyListResponseBody interface {
 
 type DescribeUserEncryptionKeyListResponseBody struct {
 	KeyIds *DescribeUserEncryptionKeyListResponseBodyKeyIds `json:"KeyIds,omitempty" xml:"KeyIds,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

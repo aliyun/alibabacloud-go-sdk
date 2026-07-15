@@ -24,12 +24,16 @@ type iDeleteBackupRequest interface {
 }
 
 type DeleteBackupRequest struct {
+	// The backup ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 5664****
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

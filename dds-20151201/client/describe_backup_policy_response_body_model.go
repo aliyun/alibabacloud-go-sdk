@@ -52,177 +52,192 @@ type iDescribeBackupPolicyResponseBody interface {
 }
 
 type DescribeBackupPolicyResponseBody struct {
-	// The frequency at which high-frequency backup is created. Valid values:
+	// The high-frequency backup frequency. Valid values:
 	//
-	// 	- **-1**: High-frequency backup is disabled.
+	// - **-1**: high-frequency backup is disabled.
 	//
-	// 	- **15**: every 15 minutes.
+	// - **15**: every 15 minutes.
 	//
-	// 	- **30**: every 30 minutes.
+	// - **30**: every 30 minutes.
 	//
-	// 	- **60**: every hour.
+	// - **60**: every 1 hour.
 	//
-	// 	- **120**: every 2 hours.
+	// - **120**: every 2 hours.
 	//
-	// 	- **180**: every 3 hours.
+	// - **180**: every 3 hours.
 	//
-	// 	- **240**: every 4 hours.
+	// - **240**: every 4 hours.
 	//
-	// 	- **360**: every 6 hours.
+	// - **360**: every 6 hours.
 	//
-	// 	- **480**: every 8 hours.
+	// - **480**: every 8 hours.
 	//
-	// 	- **720**: every 12 hours.
+	// - **720**: every 12 hours.
 	//
 	// example:
 	//
 	// -1
 	BackupInterval *int32 `json:"BackupInterval,omitempty" xml:"BackupInterval,omitempty"`
-	// The retention period of the backup data. Unit: day.
+	// The backup retention period in days.
 	//
 	// example:
 	//
 	// 30
 	BackupRetentionPeriod *string `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
-	// The backup retention policy configured for the instance. Valid values:
+	// The backup retention policy.
 	//
-	// 1.  0: All backup sets are immediately deleted when the instance is released.
+	// 1. 0: All backup sets of the instance are immediately deleted when the instance is released
 	//
-	// 2.  1: Automatic backup is performed and the backup set is retained for a long period of time when the instance is released.
+	// 2. 1: The instance is automatically backed up when it is released, and the backup set is retained for a long time
 	//
-	// 3.  2: Automatic backup is performed and all backup sets are retained for a long period of time when the instance is released.
+	// 3. 2: The instance is automatically backed up when it is released, and all backup sets of the cluster are retained for a long time
 	//
-	// For more information, see [Retain the backup files of an ApsaraDB for MongoDB instance for a long period of time](https://help.aliyun.com/document_detail/2779111.html).
+	// For more information, see [Long-term backup retention](https://help.aliyun.com/document_detail/2779111.html)
 	//
 	// example:
 	//
 	// 0
 	BackupRetentionPolicyOnClusterDeletion *int32 `json:"BackupRetentionPolicyOnClusterDeletion,omitempty" xml:"BackupRetentionPolicyOnClusterDeletion,omitempty"`
-	// The retention period of Cross-regional backup.
+	// The geo-redundancy backup retention time.
 	//
-	// Valid values:
+	// 1. Monday: Monday.
 	//
-	// 	- **Monday**
+	// 2. Tuesday: Tuesday.
 	//
-	// 	- **Tuesday**
+	// 3. Wednesday: Wednesday.
 	//
-	// 	- **Wednesday**
+	// 4. Thursday: Thursday.
 	//
-	// 	- **Thursday**
+	// 5. Friday: Friday.
 	//
-	// 	- **Friday**
+	// 6. Saturday: Saturday.
 	//
-	// 	- **Saturday**
+	// 7. Sunday: Sunday.
 	//
-	// 	- **Sunday**
+	// > Required for geo-redundancy backup
 	//
 	// example:
 	//
 	// Monday
 	CrossBackupPeriod *string `json:"CrossBackupPeriod,omitempty" xml:"CrossBackupPeriod,omitempty"`
-	// The retention type of Cross-regional  log backup.
+	// The geo-redundancy log backup retention type.
 	//
-	// - delay : retain the backup for a period of time.
+	// - delay: retained for a period of time
 	//
-	// - never : retain the backup permanently.
+	// - never: never expires
 	//
 	// example:
 	//
 	// delay
 	CrossLogRetentionType *string `json:"CrossLogRetentionType,omitempty" xml:"CrossLogRetentionType,omitempty"`
-	// The retention time of Cross-regional log backup.
+	// The geo-redundancy log backup retention period.
 	//
 	// example:
 	//
 	// 7
 	CrossLogRetentionValue *int32 `json:"CrossLogRetentionValue,omitempty" xml:"CrossLogRetentionValue,omitempty"`
-	// The retention type of Cross-regional backup.
+	// The geo-redundancy backup retention type.
 	//
-	// - delay : retain the backup for a period of time.
+	// - delay: retained for a period of time
 	//
-	// - never : retain the backup permanently.
+	// - never: never expires
 	//
 	// example:
 	//
 	// delay
 	CrossRetentionType *string `json:"CrossRetentionType,omitempty" xml:"CrossRetentionType,omitempty"`
-	// The retention time of Cross-regional backup.
+	// The geo-redundancy backup retention period.
 	//
 	// example:
 	//
 	// 7
 	CrossRetentionValue *int32 `json:"CrossRetentionValue,omitempty" xml:"CrossRetentionValue,omitempty"`
-	// The region ID of the cross-regional backup..
+	// The region where the geo-redundancy backup is located.
 	//
 	// example:
 	//
 	// cn-shenzhen
 	DestRegion *string `json:"DestRegion,omitempty" xml:"DestRegion,omitempty"`
-	// Indicates whether the log backup feature is enabled. Valid values:
+	// Indicates whether log backup is enabled. Valid values:
 	//
-	// 	- **0*	- (default): The log backup feature is disabled.
+	// - **0**: disabled (default).
 	//
-	// 	- **1**: The log backup feature is enabled.
+	// - **1**: enabled.
 	//
 	// example:
 	//
 	// 1
 	EnableBackupLog *int32 `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
-	// Whether to turn on cross-regional log backup.
+	// Indicates whether cross-region log backup is enabled.
 	//
-	// - 1: turn on . Used for sharded cluster.
+	// > Required for geo-redundancy backup
 	//
-	// - 0: turn off. Used for replicate set.
+	// >
+	//
+	// > - 1: enabled (must be 1 for sharded cluster instances)
+	//
+	// >
+	//
+	// > - 0: disabled (must be 0 for replica set instances)
 	//
 	// example:
 	//
 	// 1
 	EnableCrossLogBackup *int32 `json:"EnableCrossLogBackup,omitempty" xml:"EnableCrossLogBackup,omitempty"`
-	// The retention period of high-frequency backups. Unit: day.
+	// The high-frequency backup retention period in days.
 	//
 	// example:
 	//
 	// 1
 	HighFrequencyBackupRetention *string `json:"HighFrequencyBackupRetention,omitempty" xml:"HighFrequencyBackupRetention,omitempty"`
-	// The number of days for which log backups are retained. Valid values: 7 to 730.
+	// The log backup retention period in days. Valid values: 7 to 730.
 	//
 	// example:
 	//
 	// 7
 	LogBackupRetentionPeriod *int32 `json:"LogBackupRetentionPeriod,omitempty" xml:"LogBackupRetentionPeriod,omitempty"`
-	// The day of a week on which to back up data. Valid values:
+	// The backup cycle. Valid values:
 	//
-	// 	- **Monday**
+	// - **Monday**: Monday.
 	//
-	// 	- **Tuesday**
+	// - **Tuesday**: Tuesday.
 	//
-	// 	- **Wednesday**
+	// - **Wednesday**: Wednesday.
 	//
-	// 	- **Thursday**
+	// - **Thursday**: Thursday.
 	//
-	// 	- **Friday**
+	// - **Friday**: Friday.
 	//
-	// 	- **Saturday**
+	// - **Saturday**: Saturday.
 	//
-	// 	- **Sunday**
+	// - **Sunday**: Sunday.
 	//
 	// example:
 	//
 	// Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday
 	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
-	// The time range during which the backup was created. The time follows the ISO 8601 standard in the *HH:mm*Z-*HH:mm*Z format. The time is displayed in UTC.
+	// The backup time in the format of *HH:mm*Z-*HH:mm*Z (UTC time).
 	//
 	// example:
 	//
 	// 09:00Z-10:00Z
 	PreferredBackupTime *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
-	// The time of next standard backup.
+	// The next regular backup time in the format of *yyyy-mm-dd*t*hh:mm*z (UTC time).
 	//
 	// example:
 	//
 	// 2024-06-19T19:11Z
 	PreferredNextBackupTime *string `json:"PreferredNextBackupTime,omitempty" xml:"PreferredNextBackupTime,omitempty"`
-	PreserveOneEachHour     *bool   `json:"PreserveOneEachHour,omitempty" xml:"PreserveOneEachHour,omitempty"`
+	// Indicates whether sparse backup within an hour is enabled.
+	//
+	// - true: When the backup frequency is at the minute level, all snapshots within 1 hour from the current time are retained. For snapshots that are more than 1 hour but within 24 hours from the current time, only the first snapshot after each hour is retained.
+	//
+	// - false: Sparse backup within an hour is disabled: all snapshots within the high-frequency backup retention period are retained.
+	//
+	// example:
+	//
+	// false
+	PreserveOneEachHour *bool `json:"PreserveOneEachHour,omitempty" xml:"PreserveOneEachHour,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -231,15 +246,15 @@ type DescribeBackupPolicyResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The snapshot backup type. Valid values:
 	//
-	// 	- **Flash**: single-digit second backup
+	// - **Flash**: second-level backup.
 	//
-	// 	- **Standard*	- (default): standard backup
+	// - **Standard**: regular backup (default).
 	//
 	// example:
 	//
 	// Standard
 	SnapshotBackupType *string `json:"SnapshotBackupType,omitempty" xml:"SnapshotBackupType,omitempty"`
-	// The region ID of the instance.
+	// The region where the source instance is located.
 	//
 	// example:
 	//

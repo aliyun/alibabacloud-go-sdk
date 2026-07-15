@@ -13,6 +13,8 @@ type iDescribeInstanceRecoverTimeRequest interface {
 	GetDBInstanceId() *string
 	SetDestRegion(v string) *DescribeInstanceRecoverTimeRequest
 	GetDestRegion() *string
+	SetOnlyDbTableRecovery(v bool) *DescribeInstanceRecoverTimeRequest
+	GetOnlyDbTableRecovery() *bool
 	SetOwnerAccount(v string) *DescribeInstanceRecoverTimeRequest
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *DescribeInstanceRecoverTimeRequest
@@ -38,9 +40,21 @@ type DescribeInstanceRecoverTimeRequest struct {
 	//
 	// dds-bpxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DestRegion   *string `json:"DestRegion,omitempty" xml:"DestRegion,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region where the geo-redundancy backup set is stored.
+	//
+	// >
+	//
+	// > - This parameter is required when you query geo-redundancy backups.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	DestRegion          *string `json:"DestRegion,omitempty" xml:"DestRegion,omitempty"`
+	OnlyDbTableRecovery *bool   `json:"OnlyDbTableRecovery,omitempty" xml:"OnlyDbTableRecovery,omitempty"`
+	OwnerAccount        *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId             *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-xxxx
@@ -48,7 +62,16 @@ type DescribeInstanceRecoverTimeRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	SrcRegion            *string `json:"SrcRegion,omitempty" xml:"SrcRegion,omitempty"`
+	// The area where the source instance of the geo-redundancy backup resides.
+	//
+	// >
+	//
+	// > - This parameter is required when you query geo-redundancy backups.
+	//
+	// example:
+	//
+	// cn-beijing
+	SrcRegion *string `json:"SrcRegion,omitempty" xml:"SrcRegion,omitempty"`
 }
 
 func (s DescribeInstanceRecoverTimeRequest) String() string {
@@ -65,6 +88,10 @@ func (s *DescribeInstanceRecoverTimeRequest) GetDBInstanceId() *string {
 
 func (s *DescribeInstanceRecoverTimeRequest) GetDestRegion() *string {
 	return s.DestRegion
+}
+
+func (s *DescribeInstanceRecoverTimeRequest) GetOnlyDbTableRecovery() *bool {
+	return s.OnlyDbTableRecovery
 }
 
 func (s *DescribeInstanceRecoverTimeRequest) GetOwnerAccount() *string {
@@ -102,6 +129,11 @@ func (s *DescribeInstanceRecoverTimeRequest) SetDBInstanceId(v string) *Describe
 
 func (s *DescribeInstanceRecoverTimeRequest) SetDestRegion(v string) *DescribeInstanceRecoverTimeRequest {
 	s.DestRegion = &v
+	return s
+}
+
+func (s *DescribeInstanceRecoverTimeRequest) SetOnlyDbTableRecovery(v bool) *DescribeInstanceRecoverTimeRequest {
+	s.OnlyDbTableRecovery = &v
 	return s
 }
 

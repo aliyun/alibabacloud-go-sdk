@@ -44,7 +44,7 @@ type iDescribeErrorLogRecordsRequest interface {
 type DescribeErrorLogRecordsRequest struct {
 	// The ID of the instance.
 	//
-	// >  If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId*	- parameter.
+	// > If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId*	- parameter.
 	//
 	// This parameter is required.
 	//
@@ -68,9 +68,9 @@ type DescribeErrorLogRecordsRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The logical relationship between multiple keywords. Valid values:
 	//
-	// 	- **or**
+	// - **or**
 	//
-	// 	- **and*	- (default value)
+	// - **and*	- (default value)
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type DescribeErrorLogRecordsRequest struct {
 	LogicalOperator *string `json:"LogicalOperator,omitempty" xml:"LogicalOperator,omitempty"`
 	// The ID of the mongos node or shard node whose error logs you want to query in the instance. If the instance is a sharded cluster instance, you must specify this parameter.
 	//
-	// >  This parameter is valid only when **DBInstanceId*	- is set to the ID of a sharded cluster instance.
+	// > This parameter is valid only when **DBInstanceId*	- is set to the ID of a sharded cluster instance.
 	//
 	// example:
 	//
@@ -114,11 +114,11 @@ type DescribeErrorLogRecordsRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The role of the node whose error logs you want to query in the instance. Valid values:
 	//
-	// 	- **primary**
+	// - **primary**
 	//
-	// 	- **secondary**
+	// - **secondary**
 	//
-	// >  If you set the **NodeId*	- parameter to the ID of a mongos node, the RoleType parameter must be set to **primary**.
+	// > If you set the **NodeId*	- parameter to the ID of a mongos node, the RoleType parameter must be set to **primary**.
 	//
 	// example:
 	//

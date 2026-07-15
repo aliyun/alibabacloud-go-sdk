@@ -34,11 +34,11 @@ type AllocateNodePrivateNetworkAddressRequest struct {
 	//
 	// >
 	//
-	// 	- The username must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). The username must start with a lowercase letter.
+	// - The username must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). The username must start with a lowercase letter.
 	//
-	// 	- You must configure the account and password only when you apply for the endpoint of a shard or Configserver node for the first time. The account and password are required for all shard and Configserver nodes.
+	// - You must configure the account and password only when you apply for the endpoint of a shard or Configserver node for the first time. The account and password are required for all shard and Configserver nodes.
 	//
-	// 	- The permissions of this account are fixed to read-only.
+	// - The permissions of this account are fixed to read-only.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type AllocateNodePrivateNetworkAddressRequest struct {
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The password for the account.
 	//
-	// 	- The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ & 	- ( ) _ + - =`
+	// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ & 	- ( ) _ + - =`
 	//
-	// 	- The password must be 8 to 32 characters in length.
+	// - The password must be 8 to 32 characters in length.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type AllocateNodePrivateNetworkAddressRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The ID of the shard or Configserver node.
 	//
-	// >  You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to query the ID of the shard or Configserver node.
+	// > You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to query the ID of the shard or Configserver node.
 	//
 	// This parameter is required.
 	//
@@ -78,7 +78,7 @@ type AllocateNodePrivateNetworkAddressRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The ID of the zone to which the instance belongs.
 	//
-	// >  You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to query the zone ID of the instance.
+	// > You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to query the zone ID of the instance.
 	//
 	// example:
 	//

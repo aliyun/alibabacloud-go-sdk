@@ -62,9 +62,9 @@ type DescribeSlowLogRecordsRequest struct {
 	//
 	// >
 	//
-	// 	- The end time must be later than the start time.
+	// - The end time must be later than the start time.
 	//
-	// 	- The end time must be within 24 hours from the start time. Otherwise, the query fails.
+	// - The end time must be within 24 hours from the start time. Otherwise, the query fails.
 	//
 	// This parameter is required.
 	//
@@ -74,9 +74,9 @@ type DescribeSlowLogRecordsRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The logical relationship among multiple keywords.
 	//
-	// 	- **or**
+	// - **or**
 	//
-	// 	- **and*	- (default value)
+	// - **and*	- (default value)
 	//
 	// example:
 	//
@@ -92,9 +92,9 @@ type DescribeSlowLogRecordsRequest struct {
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The order of time in which the log entries to return are sorted. Valid values:
 	//
-	// 	- asc: The log entries are sorted by time in ascending order.
+	// - asc: The log entries are sorted by time in ascending order.
 	//
-	// 	- desc: The log entries are sorted by time in descending order.
+	// - desc: The log entries are sorted by time in descending order.
 	//
 	// example:
 	//

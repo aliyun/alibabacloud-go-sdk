@@ -48,9 +48,21 @@ type iModifyNodeSpecBatchRequest interface {
 type ModifyNodeSpecBatchRequest struct {
 	// Specifies whether to enable automatic payment. Valid values:
 	//
-	// 	- **true**: enables automatic payment. Make sure that you have sufficient balance within your account.
+	// - **true**: Automatic payment is enabled. Make sure that your account has a sufficient balance.
 	//
-	// 	- **false**: disables automatic payment. You can perform the following operations to pay for the instance: Log on to the ApsaraDB for MongoDB console. In the upper-right corner of the page, click **Expenses*	- to go to the **Billing Management*	- console. In the left-side navigation pane, click **Orders**. On the **Orders*	- page, find the order and complete the payment.
+	// <props="china">
+	//
+	// - **false**: Manual payment is enabled. Log on to the ApsaraDB for MongoDB console. In the upper-right corner, choose **Expenses*	- > **Expenses and Costs**. In the navigation pane on the left, choose **Subscription Orders*	- > **My Orders**. On the **Product Orders*	- tab, find the target order and pay for it.
+	//
+	//
+	//
+	//
+	// <props="intl">
+	//
+	// - **false**: Manual payment is enabled. Log on to the ApsaraDB for MongoDB console. In the upper-right corner, choose **Expenses*	- > **Expenses and Costs**. In the navigation pane on the left, click **Order Management**. On the **Product Orders*	- page, find the target order and pay for it.
+	//
+	//
+	//
 	//
 	// Default value: **true**.
 	//
@@ -64,19 +76,23 @@ type ModifyNodeSpecBatchRequest struct {
 	//
 	// {“ActivityId":"000000000"}
 	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client token. It is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
+	// Specifies whether to use a coupon. Valid values:
+	//
+	// - **default*	- or **null*	- (default): A coupon is used.
+	//
+	// - **youhuiquan_promotion_option_id_for_blank**: A coupon is not used.
 	//
 	// example:
 	//
-	// youhuiquan_promotion_option_id_for_blank
+	// default
 	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	// The ID of the instance whose configurations you want to change.
+	// The ID of the instance for which you want to change configurations.
 	//
 	// This parameter is required.
 	//
@@ -84,17 +100,17 @@ type ModifyNodeSpecBatchRequest struct {
 	//
 	// dds-bp1337621e8f****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The time when the changed configurations take effect. Valid values:
+	// The effective period of the configuration change. Valid values:
 	//
-	// 	- **Immediately**: The configurations immediately take effect.
+	// - **Immediately**: The change takes effect immediately.
 	//
-	// 	- **MaintainTime**: The configurations take effect during the maintenance window of the instance.
+	// - **MaintainTime**: The change takes effect during the maintenance window of the instance.
+	//
+	// > 	- You can call the [ModifyDBInstanceMaintainTime](https://help.aliyun.com/document_detail/62008.html) operation to change the maintenance window of an instance.
 	//
 	// >
 	//
-	// 	- You can call the [ModifyDBInstanceMaintainTime](https://help.aliyun.com/document_detail/62008.html) operation to modify the maintenance window of an instance.
-	//
-	// 	- You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to view the maintenance window of an instance.
+	// > 	- You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to view the maintenance window of an instance.
 	//
 	// Default value: **Immediately**.
 	//
@@ -102,7 +118,7 @@ type ModifyNodeSpecBatchRequest struct {
 	//
 	// Immediately
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The configuration information of the mongos nodes or shard nodes whose configurations you want to change. For more information, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
+	// The instance types of the Mongos and shard nodes that you want to change. For more information, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
 	//
 	// This parameter is required.
 	//
@@ -110,13 +126,13 @@ type ModifyNodeSpecBatchRequest struct {
 	//
 	// {"Shards":[{"DBInstanceClass":"dds.shard.mid","DBInstanceName":"d-bp14ae4572fd****","Storage":20},{"DBInstanceClass":"dds.shard.mid","DBInstanceName":"d-bp19f4f92dc5****","Storage":30}]}
 	NodesInfo *string `json:"NodesInfo,omitempty" xml:"NodesInfo,omitempty"`
-	// The type of configuration changes. Valid values:
+	// The type of configuration change. Valid values:
 	//
-	// 	- **UPGRADE**
+	// - **UPGRADE**: Upgrades the instance configuration.
 	//
-	// 	- **DOWNGRADE**
+	// - **DOWNGRADE**: Downgrades the instance configuration.
 	//
-	// > This parameter is only applicable to instances whose billing method is subscription.
+	// > This parameter is available only when the billing method of the instance is subscription.
 	//
 	// example:
 	//
@@ -124,18 +140,88 @@ type ModifyNodeSpecBatchRequest struct {
 	OrderType    *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the most recent region list.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TargetHiddenZoneId    *string `json:"TargetHiddenZoneId,omitempty" xml:"TargetHiddenZoneId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The destination zone of the hidden node for a configuration change that involves a zone migration.
+	//
+	// 	Notice:
+	//
+	// This parameter applies only to instances that use disks.
+	//
+	//
+	//
+	// 	Notice:
+	//
+	// The value of this parameter cannot be the same as the value of the TargetZoneId or TargetSecondaryZoneId parameter.
+	//
+	//
+	//
+	// > - This parameter is required only for a configuration change that involves a zone migration.
+	//
+	// example:
+	//
+	// cn-hangzhou-e
+	TargetHiddenZoneId *string `json:"TargetHiddenZoneId,omitempty" xml:"TargetHiddenZoneId,omitempty"`
+	// The destination zone of the secondary node for a configuration change that involves a zone migration.
+	//
+	// 	Notice:
+	//
+	// This parameter applies only to instances that use disks.
+	//
+	//
+	//
+	// 	Notice:
+	//
+	// The value of this parameter cannot be the same as the value of the TargetZoneId or TargetHiddenZoneId parameter.
+	//
+	//
+	//
+	// > - This parameter is required only for a configuration change that involves a zone migration.
+	//
+	// example:
+	//
+	// cn-hangzhou-j
 	TargetSecondaryZoneId *string `json:"TargetSecondaryZoneId,omitempty" xml:"TargetSecondaryZoneId,omitempty"`
-	TargetVswitchId       *string `json:"TargetVswitchId,omitempty" xml:"TargetVswitchId,omitempty"`
-	TargetZoneId          *string `json:"TargetZoneId,omitempty" xml:"TargetZoneId,omitempty"`
+	// The ID of the destination virtual switch for a configuration change that involves a zone migration.
+	//
+	// 	Notice:
+	//
+	// This parameter applies only to instances that use disks.
+	//
+	//
+	//
+	// > - This parameter is required only for a configuration change that involves a zone migration.
+	//
+	// example:
+	//
+	// vsw-xxxxxxxx
+	TargetVswitchId *string `json:"TargetVswitchId,omitempty" xml:"TargetVswitchId,omitempty"`
+	// The destination zone of the primary node for a configuration change that involves a zone migration.
+	//
+	// 	Notice:
+	//
+	// This parameter applies only to instances that use disks.
+	//
+	//
+	//
+	// 	Notice:
+	//
+	// The value of this parameter cannot be the same as the value of the TargetSecondaryZoneId or TargetHiddenZoneId parameter.
+	//
+	//
+	//
+	// > - This parameter is required only for a configuration change that involves a zone migration.
+	//
+	// example:
+	//
+	// cn-hangzhou-h
+	TargetZoneId *string `json:"TargetZoneId,omitempty" xml:"TargetZoneId,omitempty"`
 }
 
 func (s ModifyNodeSpecBatchRequest) String() string {

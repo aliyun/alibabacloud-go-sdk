@@ -24,9 +24,9 @@ type DescribeGlobalSecurityIPGroupRelationResponseBody struct {
 	//
 	// dds-2ze6069764423m0l
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The global IP whitelist templates associated with the instance.
+	// The mapping of the global IP address whitelist template.
 	GlobalSecurityIPGroupRel []*DescribeGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel `json:"GlobalSecurityIPGroupRel,omitempty" xml:"GlobalSecurityIPGroupRel,omitempty" type:"Repeated"`
-	// The unique ID of the request. If the request fails, provide this ID for technical support to troubleshoot the failure.
+	// The ID of the request. If you encounter a problem, provide this ID to our support staff for troubleshooting.
 	//
 	// example:
 	//
@@ -85,25 +85,25 @@ func (s *DescribeGlobalSecurityIPGroupRelationResponseBody) Validate() error {
 type DescribeGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel struct {
 	// The IP addresses in the whitelist template.
 	//
-	// >  Separate multiple IP addresses with commas (,). You can create up to 1,000 IP addresses or CIDR blocks for all IP whitelists.
+	// > Separate multiple IP addresses with commas. A maximum of 1,000 IP addresses or CIDR blocks can be added across all IP address whitelists.
 	//
 	// example:
 	//
 	// 27.16.214.10,111.60.117.181
 	GIpList *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
-	// The name of the IP whitelist template.
+	// The name of the IP address whitelist template.
 	//
 	// example:
 	//
 	// dev_baoxian_k8s_bj
 	GlobalIgName *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
-	// The ID of the IP whitelist template.
+	// The ID of the IP address whitelist template.
 	//
 	// example:
 	//
 	// g-gfurfpsh4ycbrm2avst7
 	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
-	// The region ID of the instance.
+	// The region ID.
 	//
 	// example:
 	//

@@ -46,9 +46,9 @@ type DescribeAvailableResourceRequest struct {
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
 	// The architecture of the instance. Valid values:
 	//
-	// 	- **normal**: replica set instance
+	// - **normal**: replica set instance
 	//
-	// 	- **sharding**: sharded cluster instance
+	// - **sharding**: sharded cluster instance
 	//
 	// example:
 	//
@@ -62,9 +62,9 @@ type DescribeAvailableResourceRequest struct {
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
-	// 	- **PrePaid*	- (default): subscription
+	// - **PrePaid*	- (default): subscription
 	//
-	// 	- **PostPaid**: pay-as-you-go
+	// - **PostPaid**: pay-as-you-go
 	//
 	// example:
 	//
@@ -96,15 +96,15 @@ type DescribeAvailableResourceRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The storage type of the instance. Valid values:
 	//
-	// 	- local_ssd: local SSD
+	// - local_ssd: local SSD
 	//
-	// 	- cloud_essd1: PL1 enhanced SSD (ESSD)
+	// - cloud_essd1: PL1 enhanced SSD (ESSD)
 	//
-	// 	- cloud_essd2: PL2 ESSD
+	// - cloud_essd2: PL2 ESSD
 	//
-	// 	- cloud_essd3: PL3 ESSD
+	// - cloud_essd3: PL3 ESSD
 	//
-	// 	- cloud_auto: ESSD AutoPL disk
+	// - cloud_auto: ESSD AutoPL disk
 	//
 	// This parameter is empty by default, which indicates all types of storage resources are queried.
 	//

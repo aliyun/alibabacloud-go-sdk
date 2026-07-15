@@ -16,10 +16,13 @@ type iDescribeRdsVSwitchsResponseBody interface {
 }
 
 type DescribeRdsVSwitchsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 60EEBD77-227C-5B39-86EA-D89163C5****
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of vSwitches.
 	VSwitches *DescribeRdsVSwitchsResponseBodyVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Struct"`
 }
 
@@ -59,6 +62,7 @@ func (s *DescribeRdsVSwitchsResponseBody) Validate() error {
 }
 
 type DescribeRdsVSwitchsResponseBodyVSwitches struct {
+	// The vSwitch information.
 	VSwitch []*DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch `json:"VSwitch,omitempty" xml:"VSwitch,omitempty" type:"Repeated"`
 }
 
@@ -93,48 +97,72 @@ func (s *DescribeRdsVSwitchsResponseBodyVSwitches) Validate() error {
 }
 
 type DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch struct {
+	// This parameter is deprecated. No value is returned.
+	//
 	// example:
 	//
 	// null
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// This parameter is deprecated. No value is returned.
+	//
 	// example:
 	//
 	// null
 	Bid *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
+	// The CIDR block of the vSwitch.
+	//
 	// example:
 	//
 	// 192.**.**.0/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// This parameter is deprecated. No value is returned.
+	//
 	// example:
 	//
 	// null
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// This parameter is deprecated. No value is returned.
+	//
 	// example:
 	//
 	// null
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Indicates whether the vSwitch is the default vSwitch. Valid values:
+	//
+	// - **true**: The vSwitch is the default vSwitch.
+	//
+	// - **false**: The vSwitch is not the default vSwitch.
+	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-h
 	IzNo *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
+	// This parameter is deprecated. No value is returned.
+	//
 	// example:
 	//
 	// null
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The status of the vSwitch. A value of **Available*	- indicates that the vSwitch is active.
+	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// VSwitch ID。
+	// The vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-bp*******************
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The name of the vSwitch.
+	//
 	// example:
 	//
 	// vsw-name

@@ -26,18 +26,38 @@ type iModifySrvNetworkAddressRequest interface {
 }
 
 type ModifySrvNetworkAddressRequest struct {
+	// The type of the SRV connection address to modify. Valid values:
+	//
+	// - **VPC**: virtual private cloud (VPC)
+	//
+	// - **Public**: Internet connection
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// VPC
 	ConnectionType *string `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dds-bp1fd530f271****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The new connection address. The address must meet the following requirements:
+	//
+	// - Starts with a lowercase letter.
+	//
+	// - Ends with a lowercase letter or a digit.
+	//
+	// - Contains only lowercase letters, digits, and hyphens (-).
+	//
+	// - Is 8 to 63 characters in length.
+	//
+	// > You only need to specify the prefix of the connection address. The rest of the address cannot be modified.
+	//
 	// This parameter is required.
 	//
 	// example:

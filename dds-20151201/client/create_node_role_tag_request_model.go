@@ -24,6 +24,8 @@ type iCreateNodeRoleTagRequest interface {
 }
 
 type CreateNodeRoleTagRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -34,6 +36,10 @@ type CreateNodeRoleTagRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the shard node.
+	//
+	// > - This parameter applies only to sharded cluster instances.
+	//
 	// example:
 	//
 	// d-l5xf98b78b9fxxxx,d-l5xf98b7sf9fxxxx

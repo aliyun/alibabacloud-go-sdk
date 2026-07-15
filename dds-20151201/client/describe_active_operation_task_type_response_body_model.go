@@ -74,9 +74,9 @@ type DescribeActiveOperationTaskTypeResponseBodyTypeList struct {
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The type of the task. Valid values:
 	//
-	// 	- **rds_apsaradb_transfer**: data migration
+	// - **rds_apsaradb_transfer**: data migration
 	//
-	// 	- **rds_apsaradb_upgrade**: minor version update
+	// - **rds_apsaradb_upgrade**: minor version update
 	//
 	// example:
 	//
@@ -92,7 +92,7 @@ type DescribeActiveOperationTaskTypeResponseBodyTypeList struct {
 	//
 	// example:
 	//
-	// rds_apsaradb_upgrade
+	// 小版本升级
 	TaskTypeInfoZh *string `json:"TaskTypeInfoZh,omitempty" xml:"TaskTypeInfoZh,omitempty"`
 }
 

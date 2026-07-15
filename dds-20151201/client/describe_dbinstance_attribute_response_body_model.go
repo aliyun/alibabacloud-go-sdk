@@ -17,7 +17,7 @@ type iDescribeDBInstanceAttributeResponseBody interface {
 
 type DescribeDBInstanceAttributeResponseBody struct {
 	DBInstances *DescribeDBInstanceAttributeResponseBodyDBInstances `json:"DBInstances,omitempty" xml:"DBInstances,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -95,6 +95,7 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstances) Validate() error {
 }
 
 type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance struct {
+	AIGatewayEnabled            *bool                                                                         `json:"AIGatewayEnabled,omitempty" xml:"AIGatewayEnabled,omitempty"`
 	BurstingEnabled             *bool                                                                         `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
 	CapacityUnit                *string                                                                       `json:"CapacityUnit,omitempty" xml:"CapacityUnit,omitempty"`
 	ChargeType                  *string                                                                       `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
@@ -148,19 +149,20 @@ type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance struct {
 	// example:
 	//
 	// 20
-	SearchNodeStorage   *int32                                                                 `json:"SearchNodeStorage,omitempty" xml:"SearchNodeStorage,omitempty"`
-	SecondaryZoneId     *string                                                                `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
-	ShardList           *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardList `json:"ShardList,omitempty" xml:"ShardList,omitempty" type:"Struct"`
-	StorageEngine       *string                                                                `json:"StorageEngine,omitempty" xml:"StorageEngine,omitempty"`
-	StorageType         *string                                                                `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	SyncPercent         *string                                                                `json:"SyncPercent,omitempty" xml:"SyncPercent,omitempty"`
-	Tags                *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceTags      `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	UseClusterBackup    *bool                                                                  `json:"UseClusterBackup,omitempty" xml:"UseClusterBackup,omitempty"`
-	VPCCloudInstanceIds *string                                                                `json:"VPCCloudInstanceIds,omitempty" xml:"VPCCloudInstanceIds,omitempty"`
-	VPCId               *string                                                                `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	VSwitchId           *string                                                                `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcAuthMode         *string                                                                `json:"VpcAuthMode,omitempty" xml:"VpcAuthMode,omitempty"`
-	ZoneId              *string                                                                `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	SearchNodeStorage   *int32                                                                        `json:"SearchNodeStorage,omitempty" xml:"SearchNodeStorage,omitempty"`
+	SecondaryZoneId     *string                                                                       `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
+	ShardList           *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardList        `json:"ShardList,omitempty" xml:"ShardList,omitempty" type:"Struct"`
+	ShardSearchNodes    *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodes `json:"ShardSearchNodes,omitempty" xml:"ShardSearchNodes,omitempty" type:"Struct"`
+	StorageEngine       *string                                                                       `json:"StorageEngine,omitempty" xml:"StorageEngine,omitempty"`
+	StorageType         *string                                                                       `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	SyncPercent         *string                                                                       `json:"SyncPercent,omitempty" xml:"SyncPercent,omitempty"`
+	Tags                *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceTags             `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	UseClusterBackup    *bool                                                                         `json:"UseClusterBackup,omitempty" xml:"UseClusterBackup,omitempty"`
+	VPCCloudInstanceIds *string                                                                       `json:"VPCCloudInstanceIds,omitempty" xml:"VPCCloudInstanceIds,omitempty"`
+	VPCId               *string                                                                       `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	VSwitchId           *string                                                                       `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcAuthMode         *string                                                                       `json:"VpcAuthMode,omitempty" xml:"VpcAuthMode,omitempty"`
+	ZoneId              *string                                                                       `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) String() string {
@@ -169,6 +171,10 @@ func (s DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) String() s
 
 func (s DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) GetAIGatewayEnabled() *bool {
+	return s.AIGatewayEnabled
 }
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) GetBurstingEnabled() *bool {
@@ -359,6 +365,10 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) GetShardL
 	return s.ShardList
 }
 
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) GetShardSearchNodes() *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodes {
+	return s.ShardSearchNodes
+}
+
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) GetStorageEngine() *string {
 	return s.StorageEngine
 }
@@ -397,6 +407,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) GetVpcAut
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) GetZoneId() *string {
 	return s.ZoneId
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetAIGatewayEnabled(v bool) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
+	s.AIGatewayEnabled = &v
+	return s
 }
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetBurstingEnabled(v bool) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
@@ -634,6 +649,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetShardL
 	return s
 }
 
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetShardSearchNodes(v *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodes) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
+	s.ShardSearchNodes = v
+	return s
+}
+
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetStorageEngine(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
 	s.StorageEngine = &v
 	return s
@@ -702,6 +722,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) Validate(
 	}
 	if s.ShardList != nil {
 		if err := s.ShardList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ShardSearchNodes != nil {
+		if err := s.ShardSearchNodes.Validate(); err != nil {
 			return err
 		}
 	}
@@ -1366,6 +1391,105 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListSh
 }
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShardAttribute) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodes struct {
+	ShardSearchNodes []*DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodesShardSearchNodes `json:"ShardSearchNodes,omitempty" xml:"ShardSearchNodes,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodes) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodes) GetShardSearchNodes() []*DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodesShardSearchNodes {
+	return s.ShardSearchNodes
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodes) SetShardSearchNodes(v []*DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodesShardSearchNodes) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodes {
+	s.ShardSearchNodes = v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodes) Validate() error {
+	if s.ShardSearchNodes != nil {
+		for _, item := range s.ShardSearchNodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodesShardSearchNodes struct {
+	NodeId            *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	SearchNodeClass   *string `json:"SearchNodeClass,omitempty" xml:"SearchNodeClass,omitempty"`
+	SearchNodeCount   *string `json:"SearchNodeCount,omitempty" xml:"SearchNodeCount,omitempty"`
+	SearchNodeId      *string `json:"SearchNodeId,omitempty" xml:"SearchNodeId,omitempty"`
+	SearchNodeStorage *string `json:"SearchNodeStorage,omitempty" xml:"SearchNodeStorage,omitempty"`
+}
+
+func (s DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodesShardSearchNodes) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodesShardSearchNodes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodesShardSearchNodes) GetNodeId() *string {
+	return s.NodeId
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodesShardSearchNodes) GetSearchNodeClass() *string {
+	return s.SearchNodeClass
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodesShardSearchNodes) GetSearchNodeCount() *string {
+	return s.SearchNodeCount
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodesShardSearchNodes) GetSearchNodeId() *string {
+	return s.SearchNodeId
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodesShardSearchNodes) GetSearchNodeStorage() *string {
+	return s.SearchNodeStorage
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodesShardSearchNodes) SetNodeId(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodesShardSearchNodes {
+	s.NodeId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodesShardSearchNodes) SetSearchNodeClass(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodesShardSearchNodes {
+	s.SearchNodeClass = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodesShardSearchNodes) SetSearchNodeCount(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodesShardSearchNodes {
+	s.SearchNodeCount = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodesShardSearchNodes) SetSearchNodeId(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodesShardSearchNodes {
+	s.SearchNodeId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodesShardSearchNodes) SetSearchNodeStorage(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodesShardSearchNodes {
+	s.SearchNodeStorage = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardSearchNodesShardSearchNodes) Validate() error {
 	return dara.Validate(s)
 }
 

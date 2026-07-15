@@ -20,21 +20,21 @@ type iDescribeBackupStorageResponseBody interface {
 }
 
 type DescribeBackupStorageResponseBody struct {
-	// The free quota for the storage capacity used for backup. Unit: bytes.
+	// The free backup quota for the instance. Unit: bytes.
 	//
 	// example:
 	//
 	// 42949672960
 	FreeSize *int64 `json:"FreeSize,omitempty" xml:"FreeSize,omitempty"`
-	// The storage capacity used for the full backup. Unit: bytes.
+	// The storage space used by full backups. Unit: bytes.
 	//
-	// >  Instances that use cloud disks support snapshot backup. The size of the storage used for the current full backup is the size of the snapshot chain.
+	// > Instances that use cloud disks are backed up using snapshots. The size of a full backup is the total size of the snapshot chain.
 	//
 	// example:
 	//
 	// 789221621
 	FullStorageSize *int64 `json:"FullStorageSize,omitempty" xml:"FullStorageSize,omitempty"`
-	// The storage capacity used for the log backup. Unit: bytes.
+	// The storage space used by log backups. Unit: bytes.
 	//
 	// example:
 	//

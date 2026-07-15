@@ -36,11 +36,11 @@ type DescribeBackupPolicyRequest struct {
 	//
 	// dds-bp16cb162771****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The architecture of the instance. Valid values:
+	// The instance type.
 	//
-	// 	- **sharding**: sharded cluster instance
+	// - replicate: replica set instance
 	//
-	// 	- **replicate**: replica set or standalone instance
+	// - sharding: sharded cluster instance
 	//
 	// example:
 	//
@@ -51,7 +51,7 @@ type DescribeBackupPolicyRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The region ID of the instance.
+	// The region where the instance is located.
 	//
 	// example:
 	//

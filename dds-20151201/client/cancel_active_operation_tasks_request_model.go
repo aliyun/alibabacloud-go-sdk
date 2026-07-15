@@ -24,6 +24,8 @@ type iCancelActiveOperationTasksRequest interface {
 }
 
 type CancelActiveOperationTasksRequest struct {
+	// The IDs of the O\\&M events to cancel. Separate multiple IDs with commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -32,6 +34,8 @@ type CancelActiveOperationTasksRequest struct {
 	Ids          *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-xxxx

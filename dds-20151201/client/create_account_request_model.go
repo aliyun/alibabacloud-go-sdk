@@ -46,13 +46,13 @@ type CreateAccountRequest struct {
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
 	// The type of the account that you want to create. Valid values:
 	//
-	// 	- **db*	- (default): shard account (available)
+	// - **db*	- (default): shard account (available)
 	//
-	// 	- **cs**: ConfigServer account
+	// - **cs**: ConfigServer account
 	//
-	// 	- **normal**: replica set account
+	// - **normal**: replica set account
 	//
-	// >  You can set this parameter only to **db**.
+	// > You can set this parameter only to **db**.
 	//
 	// example:
 	//

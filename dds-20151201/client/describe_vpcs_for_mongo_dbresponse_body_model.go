@@ -22,23 +22,32 @@ type iDescribeVpcsForMongoDBResponseBody interface {
 }
 
 type DescribeVpcsForMongoDBResponseBody struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 53924AF0-1628-5AA2-9C95-D4**********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 4
-	TotalCount *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Vpcs       []*DescribeVpcsForMongoDBResponseBodyVpcs `json:"Vpcs,omitempty" xml:"Vpcs,omitempty" type:"Repeated"`
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of VPCs.
+	Vpcs []*DescribeVpcsForMongoDBResponseBodyVpcs `json:"Vpcs,omitempty" xml:"Vpcs,omitempty" type:"Repeated"`
 }
 
 func (s DescribeVpcsForMongoDBResponseBody) String() string {
@@ -108,42 +117,64 @@ func (s *DescribeVpcsForMongoDBResponseBody) Validate() error {
 }
 
 type DescribeVpcsForMongoDBResponseBodyVpcs struct {
+	// This parameter is deprecated. No value is returned.
+	//
 	// example:
 	//
 	// null
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// This parameter is deprecated. No value is returned.
+	//
 	// example:
 	//
 	// null
-	Bid       *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
+	Bid *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
+	// The CIDR block of the VPC.
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// This parameter is deprecated. No value is returned.
+	//
 	// example:
 	//
 	// null
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// This parameter is deprecated. No value is returned.
+	//
 	// example:
 	//
 	// null
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Indicates whether the VPC is the default one. Valid values:
+	//
+	// - **true**: The VPC is the default one.
+	//
+	// - **false**: The VPC is not the default one.
+	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The status of the VPC. A value of **Available*	- indicates that the VPC is active.
+	//
 	// example:
 	//
 	// Available
-	Status   *string                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The list of vSwitches.
 	VSwitchs []*DescribeVpcsForMongoDBResponseBodyVpcsVSwitchs `json:"VSwitchs,omitempty" xml:"VSwitchs,omitempty" type:"Repeated"`
-	// VPC ID。
+	// The VPC ID.
 	//
 	// example:
 	//
 	// vpc-2zep2pepkthg5ueal****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The name of the VPC.
+	//
 	// example:
 	//
 	// vpc-name
@@ -271,33 +302,50 @@ func (s *DescribeVpcsForMongoDBResponseBodyVpcs) Validate() error {
 }
 
 type DescribeVpcsForMongoDBResponseBodyVpcsVSwitchs struct {
+	// The CIDR block of the vSwitch.
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// This parameter is deprecated. No value is returned.
+	//
 	// example:
 	//
 	// null
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// This parameter is deprecated. No value is returned.
+	//
 	// example:
 	//
 	// null
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Indicates whether the vSwitch is the default vSwitch. Valid values:
+	//
+	// - **true**: The vSwitch is the default vSwitch.
+	//
+	// - **false**: The vSwitch is not the default vSwitch.
+	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The zone to which the vSwitch belongs.
+	//
 	// example:
 	//
 	// cn-hangzhou-i
 	IzNo *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
+	// The status of the vSwitch. A value of **Available*	- indicates that the vSwitch is active.
+	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// VSwitch ID。
+	// The vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-bp*******************
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The name of the vSwitch.
+	//
 	// example:
 	//
 	// vsw-name

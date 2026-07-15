@@ -36,7 +36,7 @@ type DescribeBackupStorageRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The ID of the shard node in the sharded cluster instance.
 	//
-	// >  This parameter is required only when the **DBInstanceId*	- parameter is set to the ID of a sharded cluster instance.
+	// > This parameter is required if the **DBInstanceId*	- parameter specifies the ID of a sharded cluster instance.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type DescribeBackupStorageRequest struct {
 	NodeId       *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to query the most recent region list.
+	// The ID of the region where the instance is located. Call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to query the region ID.
 	//
 	// example:
 	//

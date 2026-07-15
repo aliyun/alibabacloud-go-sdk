@@ -66,33 +66,33 @@ type iDescribeDBInstancesRequest interface {
 type DescribeDBInstancesRequest struct {
 	// The billing method of the instance. Valid values:
 	//
-	// 	- **PrePaid**: subscription
+	// - **PrePaid**: subscription.
 	//
-	// 	- **PostPaid**: pay-as-you-go
+	// - **PostPaid**: pay-as-you-go.
 	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The endpoint of the node. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to query the endpoint of the node.
+	// The endpoint of the node. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to query the endpoint.
 	//
 	// example:
 	//
 	// dds-bp1ea17b41abecf43****.mongodb.rds.aliyuncs.com
 	ConnectionDomain *string `json:"ConnectionDomain,omitempty" xml:"ConnectionDomain,omitempty"`
-	// The instance type. For more information about valid values, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
+	// The instance type. For more information, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
 	//
 	// example:
 	//
 	// dds.mongo.mid
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
-	// The name of the instance. The name must meet the following requirements:
+	// The instance name. The name must meet the following requirements:
 	//
-	// 	- The name must start with a letter.
+	// - It must start with a Chinese character or a letter.
 	//
-	// 	- It can contain digits, letters, underscores (_), and hyphens (-).
+	// - It can contain digits, Chinese characters, letters, underscores (_), and hyphens (-).
 	//
-	// 	- It must be 2 to 256 characters in length.
+	// - It must be 2 to 256 characters in length.
 	//
 	// example:
 	//
@@ -104,69 +104,75 @@ type DescribeDBInstancesRequest struct {
 	//
 	// dds-bp199659b178****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The state of the instance. For more information about valid values, see [Instance states](https://help.aliyun.com/document_detail/63870.html).
+	// The instance status. For more information, see [Instance states](https://help.aliyun.com/document_detail/63870.html).
 	//
 	// example:
 	//
 	// Running
 	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	// The architecture of the instance. Valid values:
+	// The instance architecture. Valid values:
 	//
-	// 	- **sharding**: sharded cluster instance
+	// - **sharding**: sharded cluster instance.
 	//
-	// 	- **replicate**: replica set or standalone instance
+	// - **replicate**: replica set or standalone instance. This is the default value.
+	//
+	// <props="china">
+	//
+	// - **serverless**: serverless instance.
 	//
 	// example:
 	//
 	// sharding
 	DBInstanceType *string `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
-	// The type of the node in the instance. This parameter is used to filter standard or test instance.
+	// Filters instances by type. Valid values:
 	//
-	// 1.  Valid value for a standalone or DBFS instance.
+	// 1. customized: standalone instances and DBFS instances.
 	//
-	// 2.  Valid value for a standard instance that comes in the replica set or sharded cluster architecture: standard
+	// 2. standard: standard instances, which include replica set and sharded cluster instances.
 	//
-	// 3.  Valid value when all instances are displayed: default
+	// 3. default: all instances.
 	//
 	// example:
 	//
 	// default
 	DBNodeType *string `json:"DBNodeType,omitempty" xml:"DBNodeType,omitempty"`
-	// The database engine of the instance. Set the value to **MongoDB**.
+	// The database engine. Set the value to **MongoDB**.
 	//
 	// example:
 	//
 	// MongoDB
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine version of the instance.
+	// The database engine version. Valid values:
 	//
-	// 	- **6.0**
+	// - **7.0**
 	//
-	// 	- **5.0**
+	// - **6.0**
 	//
-	// 	- **4.4**
+	// - **5.0**
 	//
-	// 	- **4.2**
+	// - **4.4**
 	//
-	// 	- **4.0**
+	// - **4.2**
 	//
-	// 	- **3.4**
+	// - **4.0**
+	//
+	// - **3.4**
 	//
 	// example:
 	//
 	// 4.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The time when the instance expires.
+	// The expiration time of the instance. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. This parameter is used to filter instances that expire on or before the specified time.
 	//
 	// example:
 	//
-	// 2019-12-26T16:00Z
+	// 2019-12-26T16:00:00Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// Specifies whether the instance has expired. Valid values:
+	// The expiration status of the instance. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The instance is expired.
 	//
-	// 	- **false**
+	// - **false**: The instance is not expired.
 	//
 	// example:
 	//
@@ -174,9 +180,9 @@ type DescribeDBInstancesRequest struct {
 	Expired *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
 	// The network type of the instance. Valid values:
 	//
-	// 	- **Classic**
+	// - **Classic**: classic network.
 	//
-	// 	- **VPC**
+	// - **VPC**: virtual private cloud (VPC).
 	//
 	// example:
 	//
@@ -184,7 +190,7 @@ type DescribeDBInstancesRequest struct {
 	NetworkType  *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. The value of this parameter must be an integer that is greater than 0. Default value: **1**.
+	// The page number. The value must be greater than 0 and no greater than the maximum value of the integer data type. Default value: **1**.
 	//
 	// example:
 	//
@@ -192,17 +198,17 @@ type DescribeDBInstancesRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Valid values:
 	//
-	// 	- **30*	- (default)
+	// - **30*	- (default)
 	//
-	// 	- **50**
+	// - **50**
 	//
-	// 	- **100**
+	// - **100**
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the region ID.
 	//
 	// example:
 	//
@@ -210,17 +216,17 @@ type DescribeDBInstancesRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The number of nodes in the replica set instance. Valid values:
 	//
-	// 	- **3**
+	// - **3**
 	//
-	// 	- **5**
+	// - **5**
 	//
-	// 	- **7**
+	// - **7**
 	//
 	// example:
 	//
 	// 3
 	ReplicationFactor *string `json:"ReplicationFactor,omitempty" xml:"ReplicationFactor,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -230,19 +236,19 @@ type DescribeDBInstancesRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The tags of the instance.
 	Tag []*DescribeDBInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The vSwitch ID of the instance.
+	// The vSwitch ID of the VPC.
 	//
 	// example:
 	//
 	// vsw-bp1vj604nj5a9zz74****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The VPC ID of the instance.
+	// The VPC ID.
 	//
 	// example:
 	//
 	// vpc-bp1n3i15v90el48nx****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The zone ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the most recent zone list.
+	// The zone ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the zone ID.
 	//
 	// example:
 	//
@@ -506,25 +512,25 @@ func (s *DescribeDBInstancesRequest) Validate() error {
 }
 
 type DescribeDBInstancesRequestTag struct {
-	// The tag key of the instance. Valid values of N: **1*	- to **20**.
+	// The key of tag N. The value of N must be in the range of **1*	- to **20**.
 	//
-	// 	- The key cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+	// - The tag key cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
 	//
-	// 	- It can be up to 64 characters in length.
+	// - The tag key can be up to 64 characters in length.
 	//
-	// 	- It cannot be an empty string.
+	// - The tag key cannot be an empty string.
 	//
 	// example:
 	//
 	// testdatabase
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the instance. Valid values of N: **1*	- to **20**.
+	// The value of tag N. The value of N must be in the range of **1*	- to **20**.
 	//
-	// 	- The value cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+	// - The tag value cannot start with `aliyun`, `acs`:, `http://`, or `https://`.
 	//
-	// 	- The value can be up to 128 characters in length.
+	// - The tag value can be up to 128 characters in length.
 	//
-	// 	- It can be an empty string.
+	// - The tag value can be an empty string.
 	//
 	// example:
 	//

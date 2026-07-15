@@ -62,139 +62,143 @@ type iModifyBackupPolicyRequest interface {
 }
 
 type ModifyBackupPolicyRequest struct {
-	// The frequency at which high-frequency backups are generated. Valid values:
+	// The frequency of high-frequency backups. Valid values:
 	//
-	// 	- **-1**: High-frequency backup is disabled.
+	// - **-1**: High-frequency backup is disabled.
 	//
-	// 	- **30**: High-frequency backups are generated every 30 minutes.
+	// - **30**: every 30 minutes.
 	//
-	// 	- **60**: High-frequency backups are generated every 1 hour.
+	// - **60**: every 1 hour.
 	//
-	// 	- **120**: High-frequency backups are generated every 2 hours.
+	// - **120**: every 2 hours.
 	//
-	// 	- **180**: High-frequency backups are generated every 3 hours.
+	// - **180**: every 3 hours.
 	//
-	// 	- **240**: High-frequency backups are generated every 4 hours.
+	// - **240**: every 4 hours.
 	//
-	// 	- **360**: High-frequency backups are generated every 6 hours.
+	// - **360**: every 6 hours.
 	//
-	// 	- **480**: High-frequency backups are generated every 8 hours.
+	// - **480**: every 8 hours.
 	//
-	// 	- **720**: High-frequency backups are generated every 12 hours.
+	// - **720**: every 12 hours.
+	//
+	// > 	- If you set **SnapshotBackupType*	- to **Standard**, the value of this parameter is -1.
 	//
 	// >
 	//
-	// 	- If you set the **SnapshotBackupType*	- parameter to **Standard**, you must fix the value of this parameter to -1.
-	//
-	// 	- High-frequency backup takes effect only when you set the **SnapshotBackupType*	- parameter to **Flash*	- and this parameter to a value greater than 0.
+	// > 	- High-frequency backup takes effect only if you set **SnapshotBackupType*	- to **Flash*	- and set this parameter to a value greater than 0.
 	//
 	// example:
 	//
 	// -1
 	BackupInterval *string `json:"BackupInterval,omitempty" xml:"BackupInterval,omitempty"`
-	// The retention period of full backups.
+	// The number of days to retain full backups.
+	//
+	// > - For instances that were created before September 10, 2021, the default retention period is 7 days.
 	//
 	// >
 	//
-	// 	- If your instance is created before September 10, 2021, backups are retained for seven days by default.
-	//
-	// 	- If your instance is created after September 10, 2021, backups are retained for 30 days by default.
+	// > - For instances that are created after September 10, 2021, the default retention period is 30 days.
 	//
 	// example:
 	//
 	// 30
 	BackupRetentionPeriod *int64 `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
-	// The backup retention policy configured for the instance. Valid values:
+	// The policy to retain backups when you release the instance.
 	//
-	// 	- 0: All backup sets are immediately deleted when the instance is released.
+	// - 0: All backup sets of the instance are deleted when the instance is released.
 	//
-	// 	- 1: Automatic backup is performed when the instance is released and the backup set is retained for a long period of time.
+	// - 1: An automatic backup is performed when the instance is released, and this backup is retained for a long time.
 	//
-	// 	- 2: Automatic backup is performed when the instance is released and all backup sets are retained for a long period of time.
+	// - 2: An automatic backup is performed when the instance is released, and all backup sets of the instance are retained for a long time.
 	//
-	// For more information, see [Retain the backup files of an ApsaraDB for MongoDB instance for a long period of time](https://help.aliyun.com/document_detail/2779111.html).
+	// For more information, see [Long-term backup retention](https://help.aliyun.com/document_detail/2779111.html).
 	//
 	// example:
 	//
 	// 2
 	BackupRetentionPolicyOnClusterDeletion *int32 `json:"BackupRetentionPolicyOnClusterDeletion,omitempty" xml:"BackupRetentionPolicyOnClusterDeletion,omitempty"`
-	// The day of the week on which the cross-region backup files are retained. Valid values:
+	// The days of the week to perform geo-redundant backups. Valid values:
 	//
-	// 1.  Monday
+	// 1. Monday
 	//
-	// 2.  Tuesday
+	// 2. Tuesday
 	//
-	// 3.  Wednesday
+	// 3. Wednesday
 	//
-	// 4.  Thursday
+	// 4. Thursday
 	//
-	// 5.  Friday
+	// 5. Friday
 	//
-	// 6.  Saturday
+	// 6. Saturday
 	//
-	// 7.  Sunday
+	// 7. Sunday
 	//
-	// >  This parameter is required for a cross-region backup operation.
+	// > This parameter is required if you enable geo-redundancy.
 	//
-	// 	- Separate multiple values with commas (,).
+	// >
 	//
-	// 	- If you set the SnapshotBackupType parameter to Standard, the parameter value must fall within the value of the PreferredBackupPeriod parameter that specifies the standard backup period.
+	// > - To specify multiple days, separate them with commas (,).
+	//
+	// >
+	//
+	// > - If you set the backup method to conventional backup, the days of the week specified by this parameter must be a subset of the days of the week specified by PreferredBackupPeriod.
 	//
 	// example:
 	//
 	// Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday
 	CrossBackupPeriod *string `json:"CrossBackupPeriod,omitempty" xml:"CrossBackupPeriod,omitempty"`
-	// The action performed for the cross-region backup policy. Valid values:
+	// The policy for geo-redundant backups. Valid values:
 	//
-	// 	- update: modifies the cross-region backup policy.
+	// - update: Modify the geo-redundancy policy.
 	//
-	// 	- delete: deletes the cross-region backup policy.
+	// - delete: Delete the geo-redundancy policy.
 	//
-	// >  This parameter is required for a cross-region backup operation.
+	// > This parameter is required if you enable geo-redundancy.
 	//
 	// example:
 	//
 	// update
 	CrossBackupType *string `json:"CrossBackupType,omitempty" xml:"CrossBackupType,omitempty"`
-	// The retention type of the cross-region log backup files. Valid values:
+	// The retention policy for cross-region log backups. Valid values:
 	//
-	// 	- delay: retains the cross-region backup files for a period of time.
+	// - delay: Retain the backup for a specified period.
 	//
-	// 	- never: permanently retains the cross-region backup files.
+	// - never: Retain the backup permanently.
 	//
-	// >  This parameter is required for a cross-region backup operation.
+	// > This parameter is required if you enable geo-redundancy.
 	//
 	// example:
 	//
 	// delay
 	CrossLogRetentionType *string `json:"CrossLogRetentionType,omitempty" xml:"CrossLogRetentionType,omitempty"`
-	// The retention period of the cross-region log backup files. Valid values: 3 to 1825. Unit: day. The parameter value must be less than or equal to the value of the CrossRetentionValue parameter.
+	// The number of days to retain cross-region log backups. Valid values: 3 to 1825. The value must be less than or equal to the value of CrossRetentionValue.
 	//
-	// >  This parameter is required for a cross-region backup operation.
+	// > This parameter is required if you enable geo-redundancy.
 	//
 	// example:
 	//
 	// 3
 	CrossLogRetentionValue *int32 `json:"CrossLogRetentionValue,omitempty" xml:"CrossLogRetentionValue,omitempty"`
-	// The retention type of the cross-region backup files. Valid values:
+	// The retention policy for geo-redundant backups. Valid values:
 	//
-	// 	- delay: retains the cross-region backup files for a period of time.
+	// - delay: Retain the backup for a specified period.
 	//
-	// 	- never: permanently retains the cross-region backup files.
+	// - never: Retain the backup permanently.
 	//
-	// >  This parameter is required for a cross-region backup operation.
+	// > This parameter is required if you enable geo-redundancy.
 	//
 	// example:
 	//
 	// delay
 	CrossRetentionType *string `json:"CrossRetentionType,omitempty" xml:"CrossRetentionType,omitempty"`
-	// The retention period of the cross-region backup files. Valid values: 3 to 1825. Unit: day.
+	// The number of days to retain geo-redundant backups. Valid values: 3 to 1825.
+	//
+	// > - This parameter is required if you enable geo-redundancy.
 	//
 	// >
 	//
-	// 	- This parameter is required for a cross-region backup operation.
-	//
-	// 	- This parameter is required when you set the CrossRetentionType parameter to delay.
+	// > - This parameter is required if you set CrossRetentionType to delay.
 	//
 	// example:
 	//
@@ -208,59 +212,67 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// dds-bp16cb162771****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The region in which the backup files are retained.
+	// The region ID of the geo-redundant backup.
 	//
-	// >  This parameter is required for a cross-region backup operation.
+	// > This parameter is required if you enable geo-redundancy.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	DestRegion *string `json:"DestRegion,omitempty" xml:"DestRegion,omitempty"`
-	// Specifies whether to enable the log backup feature. Valid values:
+	// Specifies whether to enable log backup. Valid values:
 	//
-	// 	- **0*	- (default): The log backup feature is disabled.
+	// - **0**: Disable log backup. This is the default value.
 	//
-	// 	- **1**: The log backup feature is enabled.
+	// - **1**: Enable log backup.
+	//
+	// 	Notice:
+	//
+	// You cannot disable log backup for sharded cluster instances.
 	//
 	// example:
 	//
 	// 0
 	EnableBackupLog *int64 `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
-	// Specifies whether to enable the cross-region log backup feature.
+	// Specifies whether to enable cross-region log backup. Valid values:
 	//
-	// >  This parameter is required for a cross-region backup operation.
+	// > This parameter is required if you enable geo-redundancy.
 	//
-	// 	- Valid values:1: enables the feature. The parameter value must be 1 for sharded cluster instances.
+	// >
 	//
-	// 	- 0: disables the feature. The parameter value must be 0 for replica set instances.
+	// > - 1: Enable cross-region log backup. This value is required for sharded cluster instances. This value is also required for replica set instances if you want to enable geo-redundant point-in-time recovery.
+	//
+	// >
+	//
+	// > - 0: Disable cross-region log backup.
 	//
 	// example:
 	//
 	// 1
 	EnableCrossLogBackup *int32 `json:"EnableCrossLogBackup,omitempty" xml:"EnableCrossLogBackup,omitempty"`
-	// The number of days for which high-frequency backup files are retained. Before you use this parameter, make sure that you specify the BackupInterval parameter. By default, high-frequency backup files are retained for one day.
+	// The number of days to retain high-frequency backups. Before you specify this parameter, you must set the BackupInterval parameter. The default retention period is 1 day.
 	//
 	// example:
 	//
 	// 1
 	HighFrequencyBackupRetention *int64 `json:"HighFrequencyBackupRetention,omitempty" xml:"HighFrequencyBackupRetention,omitempty"`
-	// The instance architecture. Valid values:
+	// The instance type. Valid values:
 	//
-	// 	- replicate
+	// - replicate
 	//
-	// 	- sharding
+	// - sharding
+	//
+	// > 	- This parameter is required when you restore a deleted instance.
 	//
 	// >
 	//
-	// 	- This parameter is required when you set the RestoreType parameter to 2.
-	//
-	// 	- This parameter is required when you set the RestoreType parameter to 3.
+	// > 	- This parameter is required when you clone an instance from a geo-redundant backup.
 	//
 	// example:
 	//
 	// replicate
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The number of days for which log backups are retained. Default value: 7.
+	// The number of days to retain log backups. Default value: 7.
 	//
 	// Valid values: 7 to 730.
 	//
@@ -270,48 +282,59 @@ type ModifyBackupPolicyRequest struct {
 	LogBackupRetentionPeriod *int64  `json:"LogBackupRetentionPeriod,omitempty" xml:"LogBackupRetentionPeriod,omitempty"`
 	OwnerAccount             *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The day of a week when the system regularly backs up data. Valid values:
+	// The backup cycle. Valid values:
 	//
-	// 	- **Monday**
+	// - **Monday**
 	//
-	// 	- **Tuesday**
+	// - **Tuesday**
 	//
-	// 	- **Wednesday**
+	// - **Wednesday**
 	//
-	// 	- **Thursday**
+	// - **Thursday**
 	//
-	// 	- **Friday**
+	// - **Friday**
 	//
-	// 	- **Saturday**
+	// - **Saturday**
 	//
-	// 	- **Sunday**
+	// - **Sunday**
 	//
-	// **
+	// 	Notice:
 	//
-	// **Notice**: To ensure data security, make sure that the system backs up data at least twice a week.
+	// To ensure data security, back up the MongoDB instance at least twice a week.
 	//
-	// >  Separate multiple values with commas (,).
+	//
+	//
+	// > To specify multiple backup cycles, separate them with commas (,).
 	//
 	// example:
 	//
 	// Monday,Wednesday,Friday,Sunday
 	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
-	// The start time of the backup. Specify the time in the ISO 8601 standard in the *HH:mm*Z-*HH:mm*Z format. The time must be in UTC.
+	// The time range to perform a backup. Specify the time in the *HH:mm*Z-*HH:mm*Z format. The time is displayed in Coordinated Universal Time (UTC).
 	//
-	// >  The time range is 1 hour.
+	// > The time range must be 1 hour.
 	//
 	// example:
 	//
 	// 03:00Z-04:00Z
-	PreferredBackupTime  *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
+	PreferredBackupTime *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
+	// Specifies whether to enable hourly sparse backup. Valid values:
+	//
+	// - true: If the backup frequency is in minutes, all snapshots that are generated within the last hour are retained. For snapshots that were generated more than 1 hour ago but less than 24 hours ago, only the first snapshot that is generated after each full hour is retained.
+	//
+	// - false: All snapshots are retained within the high-frequency backup retention period.
+	//
+	// example:
+	//
+	// true
 	PreserveOneEachHour  *bool   `json:"PreserveOneEachHour,omitempty" xml:"PreserveOneEachHour,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The snapshot backup type. Valid values:
 	//
-	// 	- **Flash**: single-digit second backup
+	// - **Flash**: second-level backup.
 	//
-	// 	- **Standard*	- (default): standard backup
+	// - **Standard**: conventional backup. This is the default value.
 	//
 	// example:
 	//
@@ -319,11 +342,11 @@ type ModifyBackupPolicyRequest struct {
 	SnapshotBackupType *string `json:"SnapshotBackupType,omitempty" xml:"SnapshotBackupType,omitempty"`
 	// The region ID of the instance.
 	//
+	// > - This parameter is required if you restore a deleted instance.
+	//
 	// >
 	//
-	// 	- This parameter is required for the data restoration of a deleted instance.
-	//
-	// 	- This parameter is required for a cross-region backup operation.
+	// > - This parameter is required if you enable geo-redundancy.
 	//
 	// example:
 	//

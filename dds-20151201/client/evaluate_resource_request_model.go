@@ -40,45 +40,45 @@ type iEvaluateResourceRequest interface {
 }
 
 type EvaluateResourceRequest struct {
-  // The type of the instance.
+  // The instance type.
   // 
-  // > This parameter is required when you check whether resources are sufficient for creating or upgrading a replica set instance. For more information about instance types, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
+  // > This parameter is required when you evaluate resources for a replica set instance. For details about instance types, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
   // 
   // example:
   // 
   // dds.mongo.mid
   DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
-  // The ID of the instance. This parameter is required when you check whether resources are sufficient for upgrading an instance.
+  // The instance ID. This parameter is required when you evaluate resources for an instance upgrade or downgrade.
   // 
   // example:
   // 
   // dds-bp14bf67a76d****
   DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-  // The database engine of the instance. Set the value to **MongoDB**.
+  // The database engine. Set the value to **MongoDB**.
   // 
   // example:
   // 
   // MongoDB
   Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-  // The version of the database engine.
+  // The database engine version.
   // 
   // This parameter is required.
   // 
   // example:
   // 
-  // 4.0
+  // 4.2
   EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
   OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
   OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
   // The number of read-only nodes in the instance. Valid values: **1*	- to **5**.
   // 
-  // > This parameter is not required for standalone or serverless instances.
+  // > This parameter is not required for standalone instances<props="china"> and Serverless instances.
   // 
   // example:
   // 
   // 1
   ReadonlyReplicas *string `json:"ReadonlyReplicas,omitempty" xml:"ReadonlyReplicas,omitempty"`
-  // The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the region ID.
+  // The ID of the region. For more information, see [DescribeRegions](https://help.aliyun.com/document_detail/61933.html).
   // 
   // This parameter is required.
   // 
@@ -88,11 +88,15 @@ type EvaluateResourceRequest struct {
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
   // The number of nodes in the instance.
   // 
-  // 	- Set the value to **1*	- for standalone instances.
+  // - Set the value to **1*	- for a standalone instance.
   // 
-  // 	- Valid values for replica set instances: **3**, **5**, and **7**
+  // - Set the value to **2*	- for an instance that uses shared storage.
   // 
-  // > This parameter is not required for serverless instances.
+  // - For a replica set instance, valid values are **3**, **5**, and **7**.
+  // 
+  // <props="china">
+  // 
+  // > This parameter is not required for Serverless instances.
   // 
   // example:
   // 
@@ -100,65 +104,73 @@ type EvaluateResourceRequest struct {
   ReplicationFactor *string `json:"ReplicationFactor,omitempty" xml:"ReplicationFactor,omitempty"`
   ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
   ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-  // The node information about the sharded cluster instance. This parameter is required when you check whether resources are sufficient for creating or upgrading a sharded cluster instance.
+  // The shard information of the sharded cluster. This parameter is required when you evaluate resources for a sharded cluster instance.
   // 
-  // To check whether resources are sufficient for creating a sharded cluster instance, specify the specifications of each node in the instance. The value must be a JSON string. Example:
+  // To evaluate resources for a new sharded cluster instance, specify the instance type for each shard in a JSON string. Example:
   // 
-  //     {
+  // ```
   // 
-  //          "ConfigSvrs":
+  // {
   // 
-  //              [{"Storage":20,"DBInstanceClass":"dds.cs.mid"}],
+  //      "ConfigSvrs":
   // 
-  //          "Mongos":
+  //          [{"Storage":20,"DBInstanceClass":"dds.cs.mid"}],
   // 
-  //              [{"DBInstanceClass":"dds.mongos.standard"},{"DBInstanceClass":"dds.mongos.standard"}],
+  //      "Mongos":
   // 
-  //          "Shards":
+  //          [{"DBInstanceClass":"dds.mongos.standard"},{"DBInstanceClass":"dds.mongos.standard"}],
   // 
-  //              [{"Storage":50,"DBInstanceClass":"dds.shard.standard"},{"Storage":50,"DBInstanceClass":"dds.shard.standard"},   {"Storage":50,"DBInstanceClass":"dds.shard.standard"}]
+  //      "Shards":
   // 
-  //      }
+  //          [{"Storage":50,"DBInstanceClass":"dds.shard.standard"},{"Storage":50,"DBInstanceClass":"dds.shard.standard"},   {"Storage":50,"DBInstanceClass":"dds.shard.standard"}]
   // 
-  // Parameters in the example:
+  //  }
   // 
-  // 	- ConfigSvrs: the Configserver node.
+  // ```
   // 
-  // 	- Mongos: the mongos node.
+  // The parameters in the example are described as follows:
   // 
-  // 	- Shards: the shard node.
+  // - ConfigSvrs: The ConfigServer nodes.
   // 
-  // 	- Storage: the storage space of the node.
+  // - Mongos: The Mongos nodes.
   // 
-  // 	- DBInstanceClass: the instance type of the node. For more information, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
+  // - Shards: The shard nodes.
   // 
-  // To check whether resources are sufficient for upgrading a single node of a sharded cluster instance, specify only the information about the node to be upgraded. The value must be a JSON string. Example:
+  // - Storage: The storage space of the target shard.
   // 
-  //     {
+  // - DBInstanceClass: The instance type of the target shard. For details about instance types, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
   // 
-  //          "NodeId": "d-bp147c4d9ca7****", "NodeClass": "dds.shard.standard"
+  // To evaluate resources for upgrading or downgrading a sharded cluster instance, specify only the node information in a JSON string. Example:
   // 
-  //     } 
+  // ```
   // 
-  // Parameters in the example:
+  // {
   // 
-  // 	- NodeId: the ID of the node.
+  //      "NodeId": "d-bp147c4d9ca7****", "NodeClass": "dds.shard.standard"
   // 
-  // 	- NodeClass: the instance type of the node. For more information, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
+  // } 
+  // 
+  // ```
+  // 
+  // The parameters in the example are described as follows:
+  // 
+  // - NodeId: The ID of the target node.
+  // 
+  // - NodeClass: The instance type of the target node. For details about instance types, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
   // 
   // example:
   // 
   // {"NodeId": "d-bp147c4d9ca7****", "NodeClass": "dds.shard.standard"}
   ShardsInfo *string `json:"ShardsInfo,omitempty" xml:"ShardsInfo,omitempty"`
-  // The storage capacity of the replica set instance. Unit: GB.
+  // The storage space of the replica set. Unit: GB.
   // 
-  // > This parameter is required for the instances that use cloud disks.
+  // > This parameter is required if the instance uses cloud disks.
   // 
   // example:
   // 
   // 10
   Storage *string `json:"Storage,omitempty" xml:"Storage,omitempty"`
-  // The zone ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the zone ID.
+  // The ID of the zone. For more information, see [DescribeRegions](https://help.aliyun.com/document_detail/61933.html).
   // 
   // This parameter is required.
   // 

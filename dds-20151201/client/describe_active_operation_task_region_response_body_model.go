@@ -16,7 +16,7 @@ type iDescribeActiveOperationTaskRegionResponseBody interface {
 }
 
 type DescribeActiveOperationTaskRegionResponseBody struct {
-	// The region ID.
+	// The list of regions.
 	RegionList []*DescribeActiveOperationTaskRegionResponseBodyRegionList `json:"RegionList,omitempty" xml:"RegionList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,13 +66,13 @@ func (s *DescribeActiveOperationTaskRegionResponseBody) Validate() error {
 }
 
 type DescribeActiveOperationTaskRegionResponseBodyRegionList struct {
-	// The total number of tasks.
+	// The number of tasks.
 	//
 	// example:
 	//
 	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The region ID of the instance.
+	// The region ID.
 	//
 	// example:
 	//

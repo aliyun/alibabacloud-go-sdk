@@ -34,15 +34,15 @@ type iUntagResourcesRequest interface {
 type UntagResourcesRequest struct {
 	// Specifies whether to remove all tags from the instances. Valid values:
 	//
-	// 	- **true**: removes all tags from the instances.
+	// - **true**: removes all tags from the instances.
 	//
-	// 	- **false**: does not remove all tags from the instances.
+	// - **false**: does not remove all tags from the instances.
 	//
 	// >
 	//
-	// 	- Default value: **false**.
+	// - Default value: **false**.
 	//
-	// 	- If you specify the **TagKey*	- parameter together with this parameter, this parameter does not take effect.
+	// - If you specify the **TagKey*	- parameter together with this parameter, this parameter does not take effect.
 	//
 	// example:
 	//
@@ -83,6 +83,10 @@ type UntagResourcesRequest struct {
 	// INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tag keys of the resource.
+	//
+	// example:
+	//
+	// Development group
 	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 

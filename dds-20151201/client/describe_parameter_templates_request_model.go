@@ -28,7 +28,7 @@ type iDescribeParameterTemplatesRequest interface {
 }
 
 type DescribeParameterTemplatesRequest struct {
-	// The database engine of the instance. Set the value to **MongoDB**.
+	// The database engine. Set the value to **mongodb**.
 	//
 	// This parameter is required.
 	//
@@ -36,17 +36,21 @@ type DescribeParameterTemplatesRequest struct {
 	//
 	// mongodb
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine version of the instance. Valid values:
+	// The database version number. Valid values:
 	//
-	// 	- **5.0**
+	// - **7.0**
 	//
-	// 	- **4.4**
+	// - **6.0**
 	//
-	// 	- **4.2**
+	// - **5.0**
 	//
-	// 	- **4.0**
+	// - **4.4**
 	//
-	// 	- **3.4**
+	// - **4.2**
+	//
+	// - **4.0**
+	//
+	// - **3.4**
 	//
 	// This parameter is required.
 	//
@@ -56,7 +60,7 @@ type DescribeParameterTemplatesRequest struct {
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the most recent region list.
 	//
 	// example:
 	//
@@ -66,17 +70,17 @@ type DescribeParameterTemplatesRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The role of the instance. Valid values:
 	//
-	// 1. db:  a shard node.
+	// - db: the shard role of a sharded cluster instance.
 	//
-	// 1. cs:  a Configserver node.
+	// - cs: the config server role of a sharded cluster instance.
 	//
-	// 1. mongos:  a mongos node.
+	// - mongos: the mongos role of a sharded cluster instance.
 	//
-	// 1. normal: a replica set node.
+	// - normal: the role of a replica set instance.
 	//
-	// 1. physical: a standalone node.
+	// - physical: the role of a single node instance.
 	//
-	// default: normal
+	// The default value is normal.
 	//
 	// example:
 	//

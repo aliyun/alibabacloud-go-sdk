@@ -52,13 +52,13 @@ type iDescribeAvailabilityZonesRequest interface {
 type DescribeAvailabilityZonesRequest struct {
 	// The language of the returned **RegionName*	- and **ZoneName*	- parameter values. Valid values:
 	//
-	// 	- **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
-	// en
+	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The instance type of the instance.
 	//
@@ -68,9 +68,9 @@ type DescribeAvailabilityZonesRequest struct {
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
 	// The architecture of the instance. Valid values:
 	//
-	// 	- **normal**: replica set instance
+	// - **normal**: replica set instance
 	//
-	// 	- **sharding**: sharded cluster instance
+	// - **sharding**: sharded cluster instance
 	//
 	// example:
 	//
@@ -96,9 +96,9 @@ type DescribeAvailabilityZonesRequest struct {
 	ExcludeZoneId *string `json:"ExcludeZoneId,omitempty" xml:"ExcludeZoneId,omitempty"`
 	// The billing method of the product. Valid values:
 	//
-	// 	- **PrePaid**: subscription
+	// - **PrePaid**: subscription
 	//
-	// 	- **PostPaid:*	- pay-as-you-go
+	// - **PostPaid:*	- pay-as-you-go
 	//
 	// example:
 	//
@@ -106,9 +106,9 @@ type DescribeAvailabilityZonesRequest struct {
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
 	// The architecture of the instance. Valid values:
 	//
-	// 	- **sharding**: sharded cluster instance
+	// - **sharding**: sharded cluster instance
 	//
-	// 	- **replicate**: replica set or standalone instance
+	// - **replicate**: replica set or standalone instance
 	//
 	// example:
 	//
@@ -132,17 +132,17 @@ type DescribeAvailabilityZonesRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The number of nodes in the instance.
 	//
-	// >  This parameter is available only for replica set instances.
+	// > This parameter is available only for replica set instances.
 	//
 	// Valid values:
 	//
-	// 	- 1
+	// - 1
 	//
-	// 	- 3
+	// - 3
 	//
-	// 	- 5
+	// - 5
 	//
-	// 	- 7
+	// - 7
 	//
 	// example:
 	//
@@ -158,11 +158,11 @@ type DescribeAvailabilityZonesRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The storage type. Valid values:
 	//
-	// 	- **cloud**: displays only zones available for instances that use cloud disks.
+	// - **cloud**: displays only zones available for instances that use cloud disks.
 	//
-	// 	- **local**: only displays zones available for instances that use local disks instances.
+	// - **local**: only displays zones available for instances that use local disks instances.
 	//
-	// 	- **default*	- or unspecified: displays zones available for instances that use cloud disks and those that use local disks.
+	// - **default*	- or unspecified: displays zones available for instances that use cloud disks and those that use local disks.
 	//
 	// example:
 	//
@@ -170,15 +170,17 @@ type DescribeAvailabilityZonesRequest struct {
 	StorageSupport *string `json:"StorageSupport,omitempty" xml:"StorageSupport,omitempty"`
 	// The storage type. Valid values:
 	//
-	// 	- **cloud_essd1**: PL1 Enterprise SSDs (ESSDs)
+	// - **cloud_essd1**: PL1 Enterprise SSDs (ESSDs)
 	//
-	// 	- **cloud_essd2**: PL2 ESSDs
+	// - **cloud_essd2**: PL2 ESSDs
 	//
-	// 	- **cloud_essd3**: PL3 ESSDs
+	// - **cloud_essd3**: PL3 ESSDs
 	//
-	// 	- **local_ssd**: local SSDs
+	// - **local_ssd**: local SSDs
 	//
 	// > 	- Instances that run MongoDB 4.4 or later only use cloud disks to store data. If you do not specify this parameter, the value **cloud_essd1*	- is used by default.
+	//
+	// >
 	//
 	// > 	- Instances that run MongoDB 4.2 and earlier only use local disks to store data. If you do not specify this parameter, the value **local_ssd*	- is used by default.
 	//

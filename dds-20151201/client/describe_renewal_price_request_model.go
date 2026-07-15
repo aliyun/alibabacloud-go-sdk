@@ -26,19 +26,23 @@ type iDescribeRenewalPriceRequest interface {
 }
 
 type DescribeRenewalPriceRequest struct {
-	// The business information. This is an additional parameter.
+	// Additional business information, provided as a JSON string.
 	//
 	// example:
 	//
 	// {“ActivityId":"000000000"}
 	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
-	// The coupon code. Default value: **youhuiquan_promotion_option_id_for_blank**.
+	// Specifies whether to use a coupon. Valid values:
+	//
+	// - **default*	- or **null*	- (default): Use a coupon.
+	//
+	// - **youhuiquan_promotion_option_id_for_blank**: Do not use a coupon.
 	//
 	// example:
 	//
-	// youhuiquan_promotion_option_id_for_blank
+	// default
 	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

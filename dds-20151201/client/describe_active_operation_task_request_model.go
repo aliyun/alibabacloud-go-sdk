@@ -66,7 +66,7 @@ type DescribeActiveOperationTaskRequest struct {
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
 	// The region ID of the instance.
 	//
-	// >  If you set the Region parameter to **all**, all tasks created within your Alibaba Cloud account are queried. In this case, you must set the **taskType*	- parameter to **all**.
+	// > If you set the Region parameter to **all**, all tasks created within your Alibaba Cloud account are queried. In this case, you must set the **taskType*	- parameter to **all**.
 	//
 	// This parameter is required.
 	//

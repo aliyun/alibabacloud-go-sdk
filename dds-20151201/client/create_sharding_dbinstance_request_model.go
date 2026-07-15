@@ -90,13 +90,13 @@ type iCreateShardingDBInstanceRequest interface {
 type CreateShardingDBInstanceRequest struct {
 	// The password of the root account. The password must meet the following requirements:
 	//
-	// 	- The password contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	// - It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	//
-	// 	- The following special characters are supported: ! @ # $ % ^ & \\	- ( ) _ + - =.
+	// - Special characters include !@#$%^&\\*()_+-=
 	//
-	// 	- The password must be 8 to 32 characters in length.
+	// - It must be 8 to 32 characters in length.
 	//
-	// >  For more information about how to resolve failed database connections due to special characters, see [What do I do if my instance is not connected due to special characters in the password in the connection string of the instance?](https://help.aliyun.com/document_detail/471568.html)
+	// > For information about how to resolve connection failures caused by special characters in passwords, see [How do I fix connection failures caused by special characters in a password?](https://help.aliyun.com/document_detail/471568.html).
 	//
 	// example:
 	//
@@ -104,19 +104,19 @@ type CreateShardingDBInstanceRequest struct {
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
 	// Specifies whether to enable auto-renewal for the instance. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Auto-renewal is enabled.
 	//
-	// 	- **false*	- (default)
+	// - **false**: Auto-renewal is disabled. You must manually renew the instance. This is the default value.
 	//
-	// > This parameter is available and optional if you set the value of **ChargeType*	- to **PrePaid**.
+	// > This parameter is optional and takes effect only when you set the **ChargeType*	- parameter to **PrePaid**.
 	//
 	// example:
 	//
 	// true
 	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The ID of the backup set.
+	// The cluster backup ID.
 	//
-	// > When you call this operation to clone an instance based on the backup set, this parameter is required. The **SrcDBInstanceId*	- parameter is also required.
+	// > - This parameter is required only when RestoreType is set to 2 or 3.
 	//
 	// example:
 	//
@@ -124,41 +124,39 @@ type CreateShardingDBInstanceRequest struct {
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
-	// 	- **PostPaid*	- (default): pay-as-you-go
+	// - **PostPaid**: pay-as-you-go. This is the default value.
 	//
-	// 	- **PrePaid**: subscription
+	// - **PrePaid**: subscription.
 	//
-	// >  If you set this parameter to **PrePaid**, you must also configure the **Period*	- parameter.
+	// > If you set this parameter to **PrePaid**, you must also specify the **Period*	- parameter.
 	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ConfigServer nodes of the instance.
+	// The information of Configserver nodes.
 	//
 	// This parameter is required.
 	ConfigServer []*CreateShardingDBInstanceRequestConfigServer `json:"ConfigServer,omitempty" xml:"ConfigServer,omitempty" type:"Repeated"`
-	// The name of the instance. The name of the instance must meet the following requirements:
+	// The name of the instance. The name must meet the following requirements:
 	//
-	// 	- The name must start with a letter.
+	// - It must start with a Chinese character or a letter.
 	//
-	// 	- It can contain digits, letters, underscores (_), and hyphens (-).
+	// - It can contain digits, Chinese characters, letters, underscores (_), periods (.), and hyphens (-).
 	//
-	// 	- It must be 2 to 256 characters in length.
+	// - It must be 2 to 256 characters in length.
 	//
 	// example:
 	//
 	// test
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	// The region of the backup set used for the cross-region backup and restoration.
-	//
-	// >  This parameter is required when you set the RestoreType parameter to 3.
+	// The region where the geo-redundant backup is stored.
 	//
 	// example:
 	//
@@ -170,13 +168,13 @@ type CreateShardingDBInstanceRequest struct {
 	//
 	// true
 	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// The ID of the custom key.
+	// The custom key ID.
 	//
 	// example:
 	//
 	// 2axxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
-	// The database engine of the instance. Set the value to **MongoDB**.
+	// The database engine. Set the value to **MongoDB**.
 	//
 	// This parameter is required.
 	//
@@ -184,25 +182,27 @@ type CreateShardingDBInstanceRequest struct {
 	//
 	// MongoDB
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine version of the instance. Valid values:
+	// The database version. Valid values:
 	//
-	// 	- **7.0**
+	// - **8.0**
 	//
-	// 	- **6.0**
+	// - **7.0**
 	//
-	// 	- **5.0**
+	// - **6.0**
 	//
-	// 	- **4.4**
+	// - **5.0**
 	//
-	// 	- **4.2**
+	// - **4.4**
 	//
-	// 	- **4.0**
+	// - **4.2**
+	//
+	// - **4.0**
+	//
+	// > 	- For more information about the constraints on storage engines and database versions, see [Versions and storage engines](https://help.aliyun.com/document_detail/61906.html).
 	//
 	// >
 	//
-	// 	- For more information about the limits on database versions and storage engines, see [MongoDB versions and storage engines](https://help.aliyun.com/document_detail/61906.html).
-	//
-	// 	- If you call this operation to clone an instance, set the value of this parameter to the database engine version of the source instance.
+	// > 	- When you clone an instance by calling this operation, the value of this parameter must be the same as that of the source instance.
 	//
 	// This parameter is required.
 	//
@@ -210,67 +210,71 @@ type CreateShardingDBInstanceRequest struct {
 	//
 	// 4.4
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The global IP address whitelist template of the instance. Separate multiple templates with commas (,). The template name must be globally unique.
+	// The global IP address whitelist templates of the instance. Separate multiple templates with commas (,). Each template must be unique.
 	//
 	// example:
 	//
-	// g-qxieqf40xjst1ngp****
+	// g-qxieqf40xjst1ngpr3jz
 	GlobalSecurityGroupIds *string `json:"GlobalSecurityGroupIds,omitempty" xml:"GlobalSecurityGroupIds,omitempty"`
-	// The ID of secondary zone 2 for multi-zone deployment. Valid values:
+	// The secondary zone 2 for multi-zone deployment. Valid values:
 	//
-	// 	- **cn-hangzhou-g**: Hangzhou Zone G
+	// - **cn-hangzhou-g**: Hangzhou Zone G.
 	//
-	// 	- **cn-hangzhou-h**: Hangzhou Zone H
+	// - **cn-hangzhou-h**: Hangzhou Zone H.
 	//
-	// 	- **cn-hangzhou-i**: Hangzhou Zone I
+	// - **cn-hangzhou-i**: Hangzhou Zone I.
 	//
-	// 	- **cn-hongkong-b**: Hong Kong Zone B
+	// - **cn-hongkong-b**: Hong Kong (China) Zone B.
 	//
-	// 	- **cn-hongkong-c**: Hong Kong Zone C
+	// - **cn-hongkong-c**: Hong Kong (China) Zone C.
 	//
-	// 	- **cn-hongkong-d**: Hong Kong Zone D
+	// - **cn-hongkong-d**: Hong Kong (China) Zone D.
 	//
-	// 	- **cn-wulanchabu-a**: Ulanqab Zone A
+	// - **cn-wulanchabu-a**: Ulanqab Zone A.
 	//
-	// 	- **cn-wulanchabu-b**: Ulanqab Zone B
+	// - **cn-wulanchabu-b**: Ulanqab Zone B.
 	//
-	// 	- **cn-wulanchabu-c**: Ulanqab Zone C
+	// - **cn-wulanchabu-c**: Ulanqab Zone C.
 	//
-	// 	- **ap-southeast-1a**: Singapore Zone A
+	// - **ap-southeast-1a**: Singapore Zone A.
 	//
-	// 	- **ap-southeast-1b**: Singapore Zone B
+	// - **ap-southeast-1b**: Singapore Zone B.
 	//
-	// 	- **ap-southeast-1c**: Singapore Zone C
+	// - **ap-southeast-1c**: Singapore Zone C.
 	//
-	// 	- **ap-southeast-5a**: Jakarta Zone A
+	// - **ap-southeast-5a**: Jakarta Zone A.
 	//
-	// 	- **ap-southeast-5b**: Jakarta Zone B
+	// - **ap-southeast-5b**: Jakarta Zone B.
 	//
-	// 	- **ap-southeast-5c**: Jakarta Zone C
+	// - **ap-southeast-5c**: Jakarta Zone C.
 	//
-	// 	- **eu-central-1a**: Frankfurt Zone A
+	// - **eu-central-1a**: Frankfurt Zone A.
 	//
-	// 	- **eu-central-1b**: Frankfurt Zone B
+	// - **eu-central-1b**: Frankfurt Zone B.
 	//
-	// 	- **eu-central-1c**: Frankfurt Zone C
+	// - **eu-central-1c**: Frankfurt Zone C.
 	//
-	// > 	- This parameter is available and required if you set the value of **EngineVersion*	- to **4.4*	- or **5.0**.
+	// > 	- This parameter is available for disk-based instances.
+	//
+	// >
 	//
 	// > 	- The value of this parameter cannot be the same as the value of **ZoneId*	- or **SecondaryZoneId**.
 	//
-	// > 	- For more information about the multi-zone deployment policy of a sharded cluster instance, see [Create a multi-zone sharded cluster instance](https://help.aliyun.com/document_detail/117865.html).
+	// >
+	//
+	// > 	- For more information about the multi-zone deployment policy for sharded cluster instances, see [Create a multi-zone sharded cluster instance](https://help.aliyun.com/document_detail/117865.html).
 	//
 	// example:
 	//
 	// cn-hangzhou-i
 	HiddenZoneId *string `json:"HiddenZoneId,omitempty" xml:"HiddenZoneId,omitempty"`
-	// The mongos nodes of the instance.
+	// The information of Mongos nodes.
 	//
 	// This parameter is required.
 	Mongos []*CreateShardingDBInstanceRequestMongos `json:"Mongos,omitempty" xml:"Mongos,omitempty" type:"Repeated"`
-	// The network type of the instance. Set the value to VPC.
+	// The network type of the instance. Valid values:
 	//
-	// ****
+	// **VPC**: virtual private cloud.
 	//
 	// example:
 	//
@@ -278,33 +282,33 @@ type CreateShardingDBInstanceRequest struct {
 	NetworkType  *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The subscription period of the instance. Unit: months.
+	// The subscription duration of the instance. Unit: month.
 	//
-	// Valid values: **1*	- to **9**, **12**, **24**, **36**, and **60**.
+	// Valid values: **1*	- to **9*	- (integer), **12**, **24**, **36**, and **60**.
 	//
-	// > When you set the **ChargeType*	- parameter to **PrePaid**, this parameter is valid and required.
+	// > This parameter is required and takes effect only when you set the **ChargeType*	- parameter to **PrePaid**.
 	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The access protocol type of the instance. Valid values:
+	// The protocol type of the instance. Valid values:
 	//
-	// 	- **mongodb**
+	// - **mongodb**: MongoDB protocol.
 	//
-	// 	- **dynamodb**
+	// - **dynamodb**: DynamoDB protocol.
 	//
 	// example:
 	//
 	// mongodb
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	// The provisioned IOPS of the instance:
+	// The provisioned IOPS.
 	//
 	// example:
 	//
 	// 1960
 	ProvisionedIops *int64 `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -312,97 +316,98 @@ type CreateShardingDBInstanceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The information of the shard component.
+	// The information of shard nodes.
 	//
 	// This parameter is required.
-	ReplicaSet []*CreateShardingDBInstanceRequestReplicaSet `json:"ReplicaSet,omitempty" xml:"ReplicaSet,omitempty" type:"Repeated"`
-	// The resource group ID. For more information, see [View the basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+	ReplicaSet           []*CreateShardingDBInstanceRequestReplicaSet `json:"ReplicaSet,omitempty" xml:"ReplicaSet,omitempty" type:"Repeated"`
+	ResourceGroupId      *string                                      `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string                                      `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                                       `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The point in time to which you want to restore data. You can specify any point in time within the last seven days. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is in Coordinated Universal Time (UTC).
 	//
-	// example:
-	//
-	// rg-acfmyiu4ekp****
-	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The point in time to restore the instance, which must be within seven days. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in Coordinated Universal Time (UTC).
-	//
-	// > This parameter is required only if you call this operation to clone an instance. If you specify this parameter, you must also specify **SrcDBInstanceId**.
+	// > This parameter is required only when you clone an instance by calling this operation. You must also specify the **SrcDBInstanceId*	- parameter.
 	//
 	// example:
 	//
 	// 2022-03-08T02:30:25Z
 	RestoreTime *string `json:"RestoreTime,omitempty" xml:"RestoreTime,omitempty"`
-	// The restoration type of the instance. Valid values:
+	// The backup-based instance restoration method.
 	//
-	// 	- 1: restores the instance data to the specified point in time.
+	// - 1: Restore the instance to a specific point in time.
 	//
-	// 	- 2: restores the data of the released instance to the specified backup set.
+	// - 2: Restore a released instance from a specific backup set.
 	//
-	// 	- 3: restores the instance data to the specified cross-region backup set.
+	// - 3: Restore the instance from a specific geo-redundant backup set.
 	//
 	// example:
 	//
 	// 1
 	RestoreType *string `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
-	// The ID of secondary zone 1 for multi-zone deployment. Valid values:
+	// The secondary zone 1 for multi-zone deployment. Valid values:
 	//
-	// 	- **cn-hangzhou-g**: Hangzhou Zone G
+	// - **cn-hangzhou-g**: Hangzhou Zone G.
 	//
-	// 	- **cn-hangzhou-h**: Hangzhou Zone H
+	// - **cn-hangzhou-h**: Hangzhou Zone H.
 	//
-	// 	- **cn-hangzhou-i**: Hangzhou Zone I
+	// - **cn-hangzhou-i**: Hangzhou Zone I.
 	//
-	// 	- **cn-hongkong-b**: Hong Kong Zone B
+	// - **cn-hongkong-b**: Hong Kong (China) Zone B.
 	//
-	// 	- **cn-hongkong-c**: Hong Kong Zone C
+	// - **cn-hongkong-c**: Hong Kong (China) Zone C.
 	//
-	// 	- **cn-hongkong-d**: Hong Kong Zone D
+	// - **cn-hongkong-d**: Hong Kong (China) Zone D.
 	//
-	// 	- **cn-wulanchabu-a**: Ulanqab Zone A
+	// - **cn-wulanchabu-a**: Ulanqab Zone A.
 	//
-	// 	- **cn-wulanchabu-b**: Ulanqab Zone B
+	// - **cn-wulanchabu-b**: Ulanqab Zone B.
 	//
-	// 	- **cn-wulanchabu-c**: Ulanqab Zone C
+	// - **cn-wulanchabu-c**: Ulanqab Zone C.
 	//
-	// 	- **ap-southeast-1a**: Singapore Zone A
+	// - **ap-southeast-1a**: Singapore Zone A.
 	//
-	// 	- **ap-southeast-1b**: Singapore Zone B
+	// - **ap-southeast-1b**: Singapore Zone B.
 	//
-	// 	- **ap-southeast-1c**: Singapore Zone C
+	// - **ap-southeast-1c**: Singapore Zone C.
 	//
-	// 	- **ap-southeast-5a**: Jakarta Zone A
+	// - **ap-southeast-5a**: Jakarta Zone A.
 	//
-	// 	- **ap-southeast-5b**: Jakarta Zone B
+	// - **ap-southeast-5b**: Jakarta Zone B.
 	//
-	// 	- **ap-southeast-5c**: Jakarta Zone C
+	// - **ap-southeast-5c**: Jakarta Zone C.
 	//
-	// 	- **eu-central-1a**: Frankfurt Zone A
+	// - **eu-central-1a**: Frankfurt Zone A.
 	//
-	// 	- **eu-central-1b**: Frankfurt Zone B
+	// - **eu-central-1b**: Frankfurt Zone B.
 	//
-	// 	- **eu-central-1c**: Frankfurt Zone C
+	// - **eu-central-1c**: Frankfurt Zone C.
 	//
-	// > 	- This parameter is available and required if you set the value of **EngineVersion*	- to **4.4*	- or **5.0**.
+	// > 	- This parameter is available for disk-based instances.
+	//
+	// >
 	//
 	// > 	- The value of this parameter cannot be the same as the value of **ZoneId*	- or **HiddenZoneId**.
 	//
-	// > 	- For more information about the multi-zone deployment policy of a sharded cluster instance, see [Create a multi-zone sharded cluster instance](https://help.aliyun.com/document_detail/117865.html).
+	// >
+	//
+	// > 	- For more information about the multi-zone deployment policy for sharded cluster instances, see [Create a multi-zone sharded cluster instance](https://help.aliyun.com/document_detail/117865.html).
 	//
 	// example:
 	//
 	// cn-hangzhou-h
 	SecondaryZoneId *string `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
-	// The IP addresses in an IP address whitelist of the instance. Multiple IP addresses are separated by commas (,), and each IP address in the IP address whitelist must be unique. The following types of values are supported:
+	// The IP address whitelist of the instance. Separate multiple IP addresses with commas (,). Each IP address in the whitelist must be unique. The following formats are supported:
 	//
-	// 	- 0.0.0.0/0
+	// - 0.0.0.0/0
 	//
-	// 	- IP addresses, such as 10.23.12.24.
+	// - IP addresses, such as 10.23.12.24.
 	//
-	// 	- CIDR blocks, such as 10.23.12.0/24. In this case, 24 indicates that the prefix of each IP address is 24-bit long. You can replace 24 with a value within the range of 1 to 32.
+	// - CIDR blocks, such as 10.23.12.0/24. The /24 part indicates the prefix length of the CIDR block. The prefix length ranges from 1 to 32.
 	//
-	// > 	- A maximum of 1,000 IP addresses and CIDR blocks can be configured for each instance.
+	// > 	- You can add a maximum of 1,000 IP addresses or CIDR blocks to all IP address whitelists.
 	//
-	// > 	- If you enter 0.0.0.0/0, all IP addresses can access the instance. This may introduce security risks to the instance. Proceed with caution.
+	// >
+	//
+	// > 	- The 0.0.0.0/0 entry allows access from all IP addresses. This is a high-risk setting. Configure it with caution.
 	//
 	// example:
 	//
@@ -410,15 +415,19 @@ type CreateShardingDBInstanceRequest struct {
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
 	// The source instance ID.
 	//
-	// > This parameter is required only if you call this operation to clone an instance. If you specify this parameter, you must also specify **RestoreTime**.
+	// > This parameter is required only when you clone an instance by calling this operation. You must also specify the **RestoreTime*	- parameter.
 	//
 	// example:
 	//
 	// dds-bp11483712c1****
 	SrcDBInstanceId *string `json:"SrcDBInstanceId,omitempty" xml:"SrcDBInstanceId,omitempty"`
-	// The region ID of the instance.
+	// The region of the source instance.
 	//
-	// > This parameter is required when restore type is set to 2 or 3.
+	// > - This parameter is required when you recreate a released instance from a backup.
+	//
+	// >
+	//
+	// > - This parameter is required when you clone an instance from a geo-redundant backup.
 	//
 	// example:
 	//
@@ -426,49 +435,51 @@ type CreateShardingDBInstanceRequest struct {
 	SrcRegion *string `json:"SrcRegion,omitempty" xml:"SrcRegion,omitempty"`
 	// The storage engine of the instance. Set the value to **WiredTiger**.
 	//
+	// > - When you clone an instance by calling this operation, the value of this parameter must be the same as that of the source instance.
+	//
 	// >
 	//
-	// 	- If you call this operation to clone an instance, set the value of this parameter to the storage engine of the source instance.
-	//
-	// 	- For more information about the limits on database versions and storage engines, see [MongoDB versions and storage engines](https://help.aliyun.com/document_detail/61906.html).
+	// > - For more information about the constraints on storage engines and database versions, see [Versions and storage engines](https://help.aliyun.com/document_detail/61906.html).
 	//
 	// example:
 	//
 	// WiredTiger
 	StorageEngine *string `json:"StorageEngine,omitempty" xml:"StorageEngine,omitempty"`
-	// The storage type of the instance. Valid values:
+	// The storage type. Valid values:
 	//
-	// 	- **cloud_essd1**: ESSD PL1
+	// - **cloud_essd1**: enhanced SSD (ESSD) PL1.
 	//
-	// 	- **cloud_essd2**: ESSD PL2
+	// - **cloud_essd2**: ESSD PL2.
 	//
-	// 	- **cloud_essd3**: ESSD PL3
+	// - **cloud_essd3**: ESSD PL3.
 	//
-	// 	- **local_ssd**: local SSD
+	// - **local_ssd**: local SSD.
 	//
-	// > 	- Instances of MongoDB 4.4 and later support only cloud disks. **cloud_essd1*	- is selected if you leave this parameter empty.
+	// > 	- Instances that run MongoDB 4.4 or later support only disks. If you do not specify this parameter, **cloud_essd1*	- is used.
 	//
-	// > 	- Instances of MongoDB 4.2 and earlier support only local disks. **local_ssd*	- is selected if you leave this parameter empty.
+	// >
+	//
+	// > 	- Instances that run MongoDB 4.2 or earlier support only local disks. If you do not specify this parameter, **local_ssd*	- is used.
 	//
 	// example:
 	//
 	// cloud_essd1
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The custom tags that you want to add to the instance.
+	// The custom tags.
 	Tag []*CreateShardingDBInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The vSwitch ID of the instance.
+	// The virtual switch ID.
 	//
 	// example:
 	//
 	// vsw-bp1vj604nj5a9zz74****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC.
+	// The virtual private cloud (VPC) ID.
 	//
 	// example:
 	//
 	// vpc-bp1n3i15v90el48nx****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The zone ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the most recent zone list.
+	// The zone ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the zone ID.
 	//
 	// example:
 	//
@@ -867,11 +878,11 @@ func (s *CreateShardingDBInstanceRequest) Validate() error {
 }
 
 type CreateShardingDBInstanceRequestConfigServer struct {
-	// The instance type of the ConfigServer node. Valid values:
+	// The instance type of the Configserver node. Valid values:
 	//
-	// 	- **mdb.shard.2x.xlarge.d**: 4 cores, 8 GB (dedicated). Only instances that run MongoDB 4.4 and later support this instance type.
+	// - **mdb.shard.2x.xlarge.d**: 4-core 8 GB (dedicated). This instance type is available only for instances that run MongoDB 4.4 or later.
 	//
-	// 	- **dds.cs.mid*	- :1 core, 2 GB (general-purpose). Only instances that run MongoDB 4.2 and earlier support this instance type.
+	// - **dds.cs.mid**: 1-core 2 GB (general-purpose). This instance type is available only for instances that run MongoDB 4.2 or earlier.
 	//
 	// This parameter is required.
 	//
@@ -879,9 +890,9 @@ type CreateShardingDBInstanceRequestConfigServer struct {
 	//
 	// mdb.shard.2x.xlarge.d
 	Class *string `json:"Class,omitempty" xml:"Class,omitempty"`
-	// The storage space of the ConfigServer node. Unit: GB.
+	// The storage space of the Configserver node. Unit: GB.
 	//
-	// > The values that can be specified for this parameter vary based on the instance types. For more information, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
+	// > The value of this parameter is constrained by the instance type. For more information, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
 	//
 	// This parameter is required.
 	//
@@ -922,11 +933,13 @@ func (s *CreateShardingDBInstanceRequestConfigServer) Validate() error {
 }
 
 type CreateShardingDBInstanceRequestMongos struct {
-	// The instance type of the mongos node. For more information, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
+	// The instance type of the Mongos node. For more information, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
 	//
-	// > 	- **N*	- specifies the serial number of the mongos node for which the instance type is specified. For example, **Mongos.2.Class*	- specifies the instance type of the second mongos node.
+	// > - **N*	- in the parameter name specifies the serial number of the Mongos node. For example, **Mongos.2.Class*	- specifies the instance type of the second Mongos node.
 	//
-	// > 	- Valid values for **N**: **2*	- to **32**.
+	// >
+	//
+	// > - The value of **N*	- ranges from **2*	- to **32**.
 	//
 	// This parameter is required.
 	//
@@ -958,13 +971,13 @@ func (s *CreateShardingDBInstanceRequestMongos) Validate() error {
 }
 
 type CreateShardingDBInstanceRequestReplicaSet struct {
-	// The instance type of the shard component. For more information, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
+	// The instance type of the shard node. For more information, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
+	//
+	// > - **N*	- in the parameter name specifies the serial number of the shard node. For example, **ReplicaSet.2.Class*	- specifies the instance type of the second shard node.
 	//
 	// >
 	//
-	// 	- **N*	- specifies the serial number of the shard component for which the instance type is specified. For example, **ReplicaSet.2.Class*	- specifies the instance type of the second shard component.
-	//
-	// 	- Valid values of **N**: **2*	- to **32**.
+	// > - The value of **N*	- ranges from **2*	- to **32**.
 	//
 	// This parameter is required.
 	//
@@ -972,23 +985,23 @@ type CreateShardingDBInstanceRequestReplicaSet struct {
 	//
 	// dds.shard.standard
 	Class *string `json:"Class,omitempty" xml:"Class,omitempty"`
-	// The number of read-only nodes in the shard component.
+	// The number of read-only nodes in the shard node.
 	//
-	// Valid values: **0**, **1, 2, 3, 4, and 5**. Default value: **0**.
+	// Valid values: **0*	- to **5**. The default value is **0**.
 	//
-	// >  **N*	- specifies the serial number of the shard component for which you want to set the number of read-only nodes. **ReplicaSet.2.ReadonlyReplicas*	- specifies the number of read-only nodes in the second shard component.
+	// > **N*	- in the parameter name specifies the serial number of the shard node. For example, **ReplicaSet.2.ReadonlyReplicas*	- specifies the number of read-only nodes in the second shard node.
 	//
 	// example:
 	//
 	// 0
 	ReadonlyReplicas *int32 `json:"ReadonlyReplicas,omitempty" xml:"ReadonlyReplicas,omitempty"`
-	// The storage capacity of the shard component. Unit: GB.
+	// The storage space of the shard node. Unit: GB.
+	//
+	// > - The value of this parameter is constrained by the instance type. For more information, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
 	//
 	// >
 	//
-	// 	- The values that can be specified for this parameter vary based on the instance types. For more information, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
-	//
-	// 	- **N*	- specifies the serial number of the shard component for which the storage capacity is specified. For example, **ReplicaSet.2.Storage*	- specifies the storage capacity of the second shard component.
+	// > - **N*	- in the parameter name specifies the serial number of the shard node. For example, **ReplicaSet.2.Storage*	- specifies the storage space of the second shard node.
 	//
 	// This parameter is required.
 	//
@@ -1038,17 +1051,17 @@ func (s *CreateShardingDBInstanceRequestReplicaSet) Validate() error {
 }
 
 type CreateShardingDBInstanceRequestTag struct {
-	// The tag key.
+	// The key of the tag.
 	//
-	// >  **N*	- specifies the serial number of the tag. For example, **Tag.1.Key*	- specifies the key of the first tag and **Tag.2.Key*	- specifies the key of the second tag.
+	// > - **N*	- specifies the serial number of the tag. For example, **Tag.1.Key*	- specifies the key of the first tag, and **Tag.2.Key*	- specifies the key of the second tag.
 	//
 	// example:
 	//
 	// testdatabase
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of the tag.
 	//
-	// >  **N*	- specifies the serial number of the tag. For example, **Tag.1.Value*	- specifies the value of the first tag and Tag.2.Value specifies the value of the second tag.
+	// > **N*	- specifies the serial number of the tag. For example, **Tag.1.Value*	- specifies the value of the first tag, and **Tag.2.Value*	- specifies the value of the second tag.
 	//
 	// example:
 	//

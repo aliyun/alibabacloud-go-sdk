@@ -18,14 +18,30 @@ type iDescribeRoleTagStatusResponseBody interface {
 }
 
 type DescribeRoleTagStatusResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 69D55DEC-B219-569F-A686-AC2F67A1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The tag status of the ReplicaSet node. Valid values:
+	//
+	// - **true**: The tag is created.
+	//
+	// - **false**: The tag is not created.
+	//
+	// > If the instance is a sharded cluster, this parameter returns false.
+	//
 	// example:
 	//
 	// false
 	RoleTagStatus *string `json:"RoleTagStatus,omitempty" xml:"RoleTagStatus,omitempty"`
+	// The tag status of each node in the sharded cluster. Valid values:
+	//
+	// - **true**: The tag is created.
+	//
+	// - **false**: The tag is not created.
+	//
 	// example:
 	//
 	// {

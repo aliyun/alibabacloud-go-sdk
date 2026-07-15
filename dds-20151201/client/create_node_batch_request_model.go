@@ -48,11 +48,15 @@ type CreateNodeBatchRequest struct {
 	//
 	// - The username is 4 to 16 characters in length.
 	//
-	// > - Keywords cannot be used as account usernames.
+	// > 	- Keywords cannot be used as account usernames.
 	//
-	// > - The permissions of this account are fixed at read-only.
+	// >
 	//
-	// > - The username and password are required to be set only when you apply for an endpoint for the shard node for the first time.
+	// > 	- The permissions of this account are fixed at read-only.
+	//
+	// >
+	//
+	// > 	- The username and password are required to be set only when you apply for an endpoint for the shard node for the first time.
 	//
 	// example:
 	//
@@ -62,7 +66,7 @@ type CreateNodeBatchRequest struct {
 	//
 	// - The password contains at least three of the following character types: uppercase letters, lowercase letters, digits, and specific special characters.
 	//
-	// - These special characters include ! @ # $ % ^ & 	- ( ) _ + - =
+	// - These special characters include ! @ # $ % ^ & \\	- ( ) _ + - =
 	//
 	// - The password is 8 to 32 characters in length.
 	//
@@ -70,7 +74,7 @@ type CreateNodeBatchRequest struct {
 	//
 	// example:
 	//
-	// 123+abc
+	// PassWord123
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
 	// Specifies whether to enable automatic payment. Default value: true. Valid values:
 	//
@@ -96,13 +100,13 @@ type CreateNodeBatchRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to use coupons. Default value: null. Valid values:
 	//
-	// 	- **default*	- or **null**: uses coupons.
+	// - **default*	- or **null**: uses coupons.
 	//
-	// 	- **youhuiquan_promotion_option_id_for_blank**: does not use coupons.
+	// - **youhuiquan_promotion_option_id_for_blank**: does not use coupons.
 	//
 	// example:
 	//
-	// youhuiquan_promotion_option_id_for_blank
+	// default
 	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
 	// The ID of the instance for which you want to add nodes.
 	//

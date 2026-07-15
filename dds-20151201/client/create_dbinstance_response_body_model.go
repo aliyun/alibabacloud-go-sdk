@@ -18,19 +18,19 @@ type iCreateDBInstanceResponseBody interface {
 }
 
 type CreateDBInstanceResponseBody struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// dds-bp144a7f2db8****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//
 	// 21077576248****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -34,9 +34,9 @@ type iModifyDBInstanceNetworkTypeRequest interface {
 }
 
 type ModifyDBInstanceNetworkTypeRequest struct {
-	// The retention period of the original classic network address when you change the network type to VPC. Valid values: **14**, **30**, **60**, and **120**. Unit: days.
+	// The retention period of the original classic network address when you switch the network type to VPC. Settings. Valid values: **14**, **30**, **60**, and **120**. Unit: days.
 	//
-	// > This parameter is required when the **NetworkType*	- parameter is set to **VPC*	- and the **RetainClassic*	- parameter is set to **True**.
+	// > This parameter is required when the **NetworkType*	- parameter settings is set to **VPC*	- and the **RetainClassic*	- parameter settings is set to **True**.
 	//
 	// example:
 	//
@@ -50,9 +50,9 @@ type ModifyDBInstanceNetworkTypeRequest struct {
 	//
 	// dds-bp11483712c1****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The network type to switch to. Valid value:
+	// The target network type to which you want to switch the instance. Valid values:
 	//
-	// 	- **VPC**
+	// - **VPC**: switches the network type to VPC.
 	//
 	// This parameter is required.
 	//
@@ -64,39 +64,37 @@ type ModifyDBInstanceNetworkTypeRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Specifies whether to retain the original classic network address when you change the network type to VPC. Valid values:
+	// Specifies whether to retain the original classic network address when you switch the network type to VPC. Settings. Valid values:
 	//
-	// 	- **True**: retains the original classic network address.
+	// - **True**: retains the original classic network address.
 	//
-	// 	- **False**: does not retain the original classic network address.
+	// - **False**: does not retain the original classic network address.
 	//
-	// >
+	// > - This parameter is required when the **NetworkType*	- parameter settings is set to **VPC**.
 	//
-	// 	- This parameter is required when the **NetworkType*	- parameter is set to **VPC**.
-	//
-	// 	- If you set this parameter to **True**, you must also specify the **ClassicExpiredDays*	- parameter.
+	// > - If this parameter settings is set to **True**, you must also specify the **ClassicExpiredDays*	- parameter.
 	//
 	// example:
 	//
 	// False
 	RetainClassic *string `json:"RetainClassic,omitempty" xml:"RetainClassic,omitempty"`
-	// The ID of the vSwitch in the VPC.
+	// The vSwitch ID in the VPC.
 	//
-	// > This parameter is required when the **NetworkType*	- parameter is set to **VPC**.
+	// > This parameter is required when the **NetworkType*	- parameter settings is set to **VPC**.
 	//
 	// example:
 	//
 	// vsw-bp1vj604nj5a9zz74****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC.
+	// The VPC ID.
 	//
-	// > This parameter is required when the **NetworkType*	- parameter is set to **VPC**.
+	// > This parameter is required when the **NetworkType*	- parameter settings is set to **VPC**.
 	//
 	// example:
 	//
 	// vpc-bp1n3i15v90el48nx****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// 可用区ID，您可以通过调用[DescribeRegions](https://help.aliyun.com/document_detail/61933.html)接口查询可用区ID。
+	// The zone ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the zone ID.
 	//
 	// This parameter is required.
 	//

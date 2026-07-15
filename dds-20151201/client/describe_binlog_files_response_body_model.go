@@ -23,18 +23,26 @@ type iDescribeBinlogFilesResponseBody interface {
 
 type DescribeBinlogFilesResponseBody struct {
 	Items *DescribeBinlogFilesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The number of entries to return on each page.
+	//
 	// example:
 	//
 	// 30
 	MaxRecordsPerPage *int32 `json:"MaxRecordsPerPage,omitempty" xml:"MaxRecordsPerPage,omitempty"`
+	// The page number of the returned results.
+	//
 	// example:
 	//
 	// 3
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// F8CA8312-530A-413A-9129-F2BB32A8D404
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of binlog files found.
+	//
 	// example:
 	//
 	// 240

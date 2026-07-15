@@ -22,7 +22,7 @@ type iDescribeMongoDBLogConfigRequest interface {
 }
 
 type DescribeMongoDBLogConfigRequest struct {
-	// The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/61939.html) operation to query the ID of the instance.
+	// The instance ID. Call [DescribeDBInstances](https://help.aliyun.com/document_detail/61939.html) to query the instance ID.
 	//
 	// This parameter is required.
 	//

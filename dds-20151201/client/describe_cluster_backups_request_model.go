@@ -42,12 +42,14 @@ type iDescribeClusterBackupsRequest interface {
 }
 
 type DescribeClusterBackupsRequest struct {
-	// The ID of the cluster backup set.
+	// The ID of the cluster backup.
 	//
 	// example:
 	//
 	// 5664****
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	// The ID of the backup job.
+	//
 	// example:
 	//
 	// 775051
@@ -60,25 +62,27 @@ type DescribeClusterBackupsRequest struct {
 	//
 	// dds-bp16cb162771****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The region where cross-region backups reside.
+	// The region where the geo-redundant backup resides.
 	//
-	// >  This parameter is required if you want to query cross-region backups.
+	// > This parameter is required when you query geo-redundant backups.
 	//
 	// example:
 	//
 	// cn-shanghai
 	DestRegion *string `json:"DestRegion,omitempty" xml:"DestRegion,omitempty"`
-	// The end of the time range to query. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC. The end time must be later than the start time.
+	// The end of the time range to query. The end time must be later than the start time. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	//
+	// > This parameter is invalid if you specify the BackupId parameter.
 	//
 	// example:
 	//
 	// 2019-03-14T13:10Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Specifies whether to query information about child nodes in the cluster backup. Valid values:
+	// Specifies whether to query the information about the child nodes in the cluster backup. Valid values:
 	//
-	// 	- **true**: The system returns only the basic information of the cluster backup.
+	// - **true**: Returns only the basic information about the cluster backup, not the backup information about all child nodes.
 	//
-	// 	- **false*	- (default): The system returns the backup information of all child nodes.
+	// - **false*	- (Default): Returns the backup information about all child nodes.
 	//
 	// example:
 	//
@@ -86,7 +90,7 @@ type DescribeClusterBackupsRequest struct {
 	IsOnlyGetClusterBackUp *bool   `json:"IsOnlyGetClusterBackUp,omitempty" xml:"IsOnlyGetClusterBackUp,omitempty"`
 	OwnerAccount           *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Default value: **1**. The page number must be a positive integer.
+	// The number of the page to return. The value must be a positive integer. Default value: **1**.
 	//
 	// example:
 	//
@@ -94,39 +98,43 @@ type DescribeClusterBackupsRequest struct {
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries to return on each page. Valid values:
 	//
-	// 	- **30*	- (default)
+	// - **30*	- (Default)
 	//
-	// 	- **50**
+	// - **50**
 	//
-	// 	- **100**
+	// - **100**
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-xxxx
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The region ID of the instance.
+	// The region where the instance resides.
+	//
+	// > - This parameter is required when you query the backup sets of a released instance.
 	//
 	// >
 	//
-	// 	- This parameter is required if you want to query the backup sets of a released instance.
-	//
-	// 	- This parameter is required if you want to query cross-region backups.
+	// > - This parameter is required when you query geo-redundant backups.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	SrcRegion *string `json:"SrcRegion,omitempty" xml:"SrcRegion,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	// The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in Coordinated Universal Time (UTC).
+	//
+	// > This parameter is invalid if you specify the BackupId parameter.
 	//
 	// example:
 	//
-	// 2019-03-13T12:11:14Z
+	// 2019-03-13T12:11Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 

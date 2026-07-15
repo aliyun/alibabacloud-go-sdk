@@ -36,7 +36,7 @@ type ModifyInstanceVpcAuthModeRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The ID of the mongos node in the sharded cluster instance.
 	//
-	// >  This parameter can be used only when the instance type is sharded cluster.
+	// > This parameter can be used only when the instance type is sharded cluster.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ModifyInstanceVpcAuthModeRequest struct {
 	//
 	// example:
 	//
-	// Open
+	// Close
 	VpcAuthMode *string `json:"VpcAuthMode,omitempty" xml:"VpcAuthMode,omitempty"`
 }
 

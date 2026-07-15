@@ -185,7 +185,7 @@ type TagResourcesRequestTag struct {
 	//
 	// example:
 	//
-	// Development team
+	// Development group
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of tag.
 	//
@@ -199,7 +199,7 @@ type TagResourcesRequestTag struct {
 	//
 	// example:
 	//
-	// MongoDB 4.0 environment
+	// 4.0 environment
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

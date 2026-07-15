@@ -30,7 +30,7 @@ type iDescribeDBInstanceAttributeRequest interface {
 }
 
 type DescribeDBInstanceAttributeRequest struct {
-	// The instance ID.
+	// The ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -38,17 +38,17 @@ type DescribeDBInstanceAttributeRequest struct {
 	//
 	// dds-bp11483712c1****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The database engine. Set the value to **MongoDB**.
+	// The database engine. Valid value: **MongoDB**.
 	//
 	// example:
 	//
 	// MongoDB
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// Specifies whether to query instances that are deleted. Valid values:
+	// Indicates whether the instance has been deleted. Valid values:
 	//
-	// 	- **false**: queries instances that are running.
+	// - **false**: The instance is running normally. Query information about a running instance.
 	//
-	// 	- **true**: queries instance that are deleted.
+	// - **true**: The instance has been deleted. Query information about a deleted instance.
 	//
 	// example:
 	//
@@ -56,9 +56,9 @@ type DescribeDBInstanceAttributeRequest struct {
 	IsDelete     *bool   `json:"IsDelete,omitempty" xml:"IsDelete,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the resource group. For more information, see [View the basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+	// The ID of the resource group. For more information, see [View basic information about a resource group](https://help.aliyun.com/document_detail/151181.html).
 	//
-	// > This parameter is available only if you use the China site (aliyun.com).
+	// > This parameter is supported only on Alibaba Cloud China Website (www\\.aliyun.com).
 	//
 	// example:
 	//

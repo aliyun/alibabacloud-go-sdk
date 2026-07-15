@@ -32,13 +32,13 @@ type iModifyParametersRequest interface {
 }
 
 type ModifyParametersRequest struct {
-	// The role of the instance. Valid values:
+	// The type of the node. Valid values:
 	//
-	// 	- **db**: a shard node.
+	// - **db**: shard node.
 	//
-	// 	- **cs**: a Configserver node.
+	// - **cs**: Configserver node.
 	//
-	// 	- **mongos**: a mongos node.
+	// - **mongos**: mongos node.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ModifyParametersRequest struct {
 	CharacterType *string `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
 	// The instance ID.
 	//
-	// >  If you set this parameter to the ID of a sharded cluster instance, you must also specify the NodeId parameter.
+	// > If this parameter is a sharded cluster instance ID, you must also specify the NodeId parameter.
 	//
 	// This parameter is required.
 	//
@@ -54,9 +54,9 @@ type ModifyParametersRequest struct {
 	//
 	// dds-bp19f409d75****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The ID of the mongos or shard node in the specified sharded cluster instance.
+	// The ID of the mongos or shard node in the sharded cluster instance.
 	//
-	// >  This parameter is valid only when DBInstanceId is set to the ID of a sharded cluster instance.
+	// > This parameter is active only when the DBInstanceId parameter is set to a sharded cluster instance ID.
 	//
 	// example:
 	//
@@ -64,9 +64,9 @@ type ModifyParametersRequest struct {
 	NodeId       *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The instance parameters that you want to modify and their values. Specify this parameter in a JSON string. Sample format: {"ParameterName1":"ParameterValue1","ParameterName2":"ParameterValue2"}.
+	// The parameters and their new values. The value must be a JSON string. Example: {"ParameterName1":"ParameterValue1","ParameterName2":"ParameterValue2"}.
 	//
-	// >  You can call the [DescribeParameterTemplates](https://help.aliyun.com/document_detail/67618.html) operation to query a list of default parameter templates.
+	// > Call the [DescribeParameterTemplates](https://help.aliyun.com/document_detail/67618.html) operation to query the list of default parameter templates.
 	//
 	// This parameter is required.
 	//
@@ -74,7 +74,7 @@ type ModifyParametersRequest struct {
 	//
 	// {"operationProfiling.mode":"all","operationProfiling.slowOpThresholdMs":"200"}
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the most recent region list.
+	// The region ID of the instance. To query the latest region list, call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation.
 	//
 	// example:
 	//
@@ -82,7 +82,16 @@ type ModifyParametersRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SwitchMode           *string `json:"SwitchMode,omitempty" xml:"SwitchMode,omitempty"`
+	// The time to apply the parameter modifications. Valid values:
+	//
+	// - 0: Immediately.
+	//
+	// - 1: During the maintenance window.
+	//
+	// example:
+	//
+	// 0
+	SwitchMode *string `json:"SwitchMode,omitempty" xml:"SwitchMode,omitempty"`
 }
 
 func (s ModifyParametersRequest) String() string {

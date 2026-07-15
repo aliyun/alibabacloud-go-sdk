@@ -52,9 +52,9 @@ type SwitchDBInstanceHARequest struct {
 	//
 	// >
 	//
-	// 	- Separate role IDs with commas (,). If this parameter is not specified, the primary and secondary nodes are switched.
+	// - Separate role IDs with commas (,). If this parameter is not specified, the primary and secondary nodes are switched.
 	//
-	// 	- If you set the **DBInstanceId*	- parameter to the ID of a sharded cluster instance, the roles who switch the primary and secondary nodes for the instance must belong to one shard node.
+	// - If you set the **DBInstanceId*	- parameter to the ID of a sharded cluster instance, the roles who switch the primary and secondary nodes for the instance must belong to one shard node.
 	//
 	// example:
 	//
@@ -62,9 +62,9 @@ type SwitchDBInstanceHARequest struct {
 	RoleIds *string `json:"RoleIds,omitempty" xml:"RoleIds,omitempty"`
 	// The time when the primary and secondary nodes are switched. Valid values:
 	//
-	// 	- 0: The primary and secondary nodes are immediately switched.
+	// - 0: The primary and secondary nodes are immediately switched.
 	//
-	// 	- 1: The primary and secondary nodes are switched during the O\\&M time period.
+	// - 1: The primary and secondary nodes are switched during the O\\&M time period.
 	//
 	// example:
 	//

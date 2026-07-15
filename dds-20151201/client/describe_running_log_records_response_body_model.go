@@ -31,25 +31,25 @@ type DescribeRunningLogRecordsResponseBody struct {
 	// MongoDB
 	Engine *string                                     `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	Items  *DescribeRunningLogRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of records per page.
 	//
 	// example:
 	//
 	// 30
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 45D2B592-DEBA-4347-BBF3-47FF6C97DBBC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//

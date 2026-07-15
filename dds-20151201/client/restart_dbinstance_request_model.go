@@ -13,6 +13,8 @@ type iRestartDBInstanceRequest interface {
 	GetDBInstanceId() *string
 	SetNodeId(v string) *RestartDBInstanceRequest
 	GetNodeId() *string
+	SetNodeType(v string) *RestartDBInstanceRequest
+	GetNodeType() *string
 	SetOwnerAccount(v string) *RestartDBInstanceRequest
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *RestartDBInstanceRequest
@@ -34,19 +36,29 @@ type RestartDBInstanceRequest struct {
 	//
 	// dds-bpxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The ID of the shard or mongos node in the sharded cluster instance.
+	// The ID of a shard or Mongos node in a sharded cluster instance.
 	//
-	// > The sharded cluster instance is restarted if you do not specify this parameter.
+	// > If you do not specify this parameter for a sharded cluster instance, the entire instance is restarted.
 	//
 	// example:
 	//
 	// d-bpxxxxxxxx
 	NodeId               *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeType             *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SwitchMode           *string `json:"SwitchMode,omitempty" xml:"SwitchMode,omitempty"`
+	// The time to restart the instance. Valid values:
+	//
+	// - 0: The instance is restarted immediately.
+	//
+	// - 1: The instance is restarted within the maintenance window.
+	//
+	// example:
+	//
+	// 0
+	SwitchMode *string `json:"SwitchMode,omitempty" xml:"SwitchMode,omitempty"`
 }
 
 func (s RestartDBInstanceRequest) String() string {
@@ -63,6 +75,10 @@ func (s *RestartDBInstanceRequest) GetDBInstanceId() *string {
 
 func (s *RestartDBInstanceRequest) GetNodeId() *string {
 	return s.NodeId
+}
+
+func (s *RestartDBInstanceRequest) GetNodeType() *string {
+	return s.NodeType
 }
 
 func (s *RestartDBInstanceRequest) GetOwnerAccount() *string {
@@ -92,6 +108,11 @@ func (s *RestartDBInstanceRequest) SetDBInstanceId(v string) *RestartDBInstanceR
 
 func (s *RestartDBInstanceRequest) SetNodeId(v string) *RestartDBInstanceRequest {
 	s.NodeId = &v
+	return s
+}
+
+func (s *RestartDBInstanceRequest) SetNodeType(v string) *RestartDBInstanceRequest {
+	s.NodeType = &v
 	return s
 }
 

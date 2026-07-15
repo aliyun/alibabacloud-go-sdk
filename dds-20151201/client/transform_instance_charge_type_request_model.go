@@ -38,9 +38,9 @@ type iTransformInstanceChargeTypeRequest interface {
 type TransformInstanceChargeTypeRequest struct {
 	// Specifies whether to enable automatic payment. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// > Default value: **true**.
 	//
@@ -50,9 +50,9 @@ type TransformInstanceChargeTypeRequest struct {
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// Specifies whether to enable auto-renewal. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// > Default value: **false**.
 	//
@@ -68,9 +68,9 @@ type TransformInstanceChargeTypeRequest struct {
 	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
-	// 	- **PrePaid:*	- subscription.
+	// - **PrePaid:*	- subscription.
 	//
-	// 	- **PostPaid:*	- pay-as-you-go.
+	// - **PostPaid:*	- pay-as-you-go.
 	//
 	// This parameter is required.
 	//
@@ -82,7 +82,7 @@ type TransformInstanceChargeTypeRequest struct {
 	//
 	// example:
 	//
-	// youhuiquan_promotion_option_id_for_blank
+	// default
 	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
 	// The ID of the instance.
 	//
@@ -94,21 +94,19 @@ type TransformInstanceChargeTypeRequest struct {
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The subscription duration of the instance. Unit: months. Valid values: **1, 2, 3, 4, 5, 6, 7, 8, 9******, **12**, **24**, and **36**.
+	// The subscription duration of the instance. Unit: months. Valid values: **1, 2, 3, 4, 5, 6, 7, 8, 9**\\*\\*\\*\\*, **12**, **24**, and **36**.
 	//
 	// example:
 	//
 	// 1
 	Period *int64 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// 实例付费时长单位
+	// The unit of the subscription duration. Valid values:
 	//
-	// 取值说明：
+	// - **Month**: month.
 	//
-	// - **Month：*	- 月
+	// - **Year**: year.
 	//
-	// -  **Year：*	- 年
-	//
-	// 默认值：Month
+	// Default value: Month.
 	//
 	// example:
 	//

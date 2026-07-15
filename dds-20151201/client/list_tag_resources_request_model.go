@@ -32,7 +32,7 @@ type iListTagResourcesRequest interface {
 type ListTagResourcesRequest struct {
 	// The token used to start the next query to retrieve more results.
 	//
-	// >  This parameter is not required in the first query. If not all results are returned in one query, you can pass in the **NextToken*	- value returned in the previous query to perform the query again.
+	// > This parameter is not required in the first query. If not all results are returned in one query, you can pass in the **NextToken*	- value returned in the previous query to perform the query again.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type ListTagResourcesRequest struct {
 	//
 	// example:
 	//
-	// dds-bpxxxxxxxx
+	// Development group
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -175,13 +175,13 @@ type ListTagResourcesRequestTag struct {
 	//
 	// example:
 	//
-	// env
+	// Development group
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of tag.
 	//
 	// example:
 	//
-	// dev
+	// 4.0 environment
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

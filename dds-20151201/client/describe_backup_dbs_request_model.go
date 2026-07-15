@@ -36,9 +36,9 @@ type DescribeBackupDBsRequest struct {
 	//
 	// >
 	//
-	// 	- You can call the [DescribeBackups](https://help.aliyun.com/document_detail/62172.html) operation to query the backup ID.
+	// - You can call the [DescribeBackups](https://help.aliyun.com/document_detail/62172.html) operation to query the backup ID.
 	//
-	// 	- You must specify one of the **RestoreTime*	- and BackupId parameters.
+	// - You must specify one of the **RestoreTime*	- and BackupId parameters.
 	//
 	// example:
 	//
@@ -70,9 +70,9 @@ type DescribeBackupDBsRequest struct {
 	//
 	// >
 	//
-	// 	- The time can be a point in time within the previous seven days. The time must be earlier than the current time, but later than the time when the instance was created.
+	// - The time can be a point in time within the previous seven days. The time must be earlier than the current time, but later than the time when the instance was created.
 	//
-	// 	- You must specify one of the RestoreTime and **BackupId*	- parameters.
+	// - You must specify one of the RestoreTime and **BackupId*	- parameters.
 	//
 	// example:
 	//

@@ -26,19 +26,40 @@ type iCreateBackupRequest interface {
 }
 
 type CreateBackupRequest struct {
-	// The backup method of the instance. Valid values:
+	// The backup method. Valid values:
 	//
-	// 	- **Logical**
+	// - **Snapshot**: A snapshot backup.
 	//
-	// 	- **Physical*	- (default)
+	// - **Logical**: A logical backup.
 	//
-	// > Only replica set instances and sharded cluster instances support this parameter. You do not need to specify this parameter for standalone instances. All standalone instances use snapshot backup.
+	// - **Physical*	- (default): A physical backup.
+	//
+	// > 	- Instances with cloud disks support only snapshot backups.
+	//
+	// >
+	//
+	// > 	- This parameter applies only to replica set and sharded cluster instances. This parameter is not required for standalone instances, which use snapshot backups.
 	//
 	// example:
 	//
 	// Logical
-	BackupMethod          *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
-	BackupRetentionPeriod *int64  `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
+	BackupMethod *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
+	// The backup retention period in days. This parameter applies only to replica set and sharded cluster instances that use cloud disks.
+	//
+	// > If you do not specify this parameter, the retention period from the default backup policy is used. You can set this parameter to one of the following values:
+	//
+	// >
+	//
+	// > - A value from 7 to 730
+	//
+	// >
+	//
+	// > - -1 (permanent retention)
+	//
+	// example:
+	//
+	// 30
+	BackupRetentionPeriod *int64 `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
 	// The instance ID.
 	//
 	// This parameter is required.

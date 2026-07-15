@@ -42,21 +42,23 @@ type iDescribeBackupsRequest interface {
 }
 
 type DescribeBackupsRequest struct {
-	// The ID of the backup set. You can call the [CreateBackup](https://help.aliyun.com/document_detail/62171.html) operation to query the backup set ID.
+	// The backup ID.
 	//
-	// If you set the **DBInstanceId*	- parameter to the ID of a sharded cluster instance, the number of backup IDs is the same as the number of shard nodes. Multiple backup IDs are separated with commas (,).
+	// If you specify the ID of a sharded cluster instance for the **DBInstanceId*	- parameter, the number of backup IDs must be the same as the number of shard nodes. Separate the backup IDs with commas (,).
 	//
 	// example:
 	//
 	// 2072****,2072****,2072****
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	// The backup job ID.
+	//
 	// example:
 	//
 	// 775051
 	BackupJobId *string `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
-	// The instance ID.
+	// The ID of the instance.
 	//
-	// > If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId*	- parameter.
+	// > If the instance is a sharded cluster instance, you must also specify the **NodeId*	- parameter.
 	//
 	// This parameter is required.
 	//
@@ -64,15 +66,17 @@ type DescribeBackupsRequest struct {
 	//
 	// dds-bp1a7009eb24****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The region ID of the Cross-regional backup.
+	// The region where the backup resides.
 	//
-	// >  This parameter is required for the Cross-regional backup.
+	// > This parameter is required for geo-redundancy.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	DestRegion *string `json:"DestRegion,omitempty" xml:"DestRegion,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
+	// The end of the time range to query. The end time must be later than the start time. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	//
+	// > This parameter is invalid if you specify the BackupId parameter.
 	//
 	// example:
 	//
@@ -80,7 +84,7 @@ type DescribeBackupsRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the shard node in the sharded cluster instance.
 	//
-	// > This parameter takes effect only when you set the **DBInstanceId*	- parameter to the ID of a sharded cluster instance.
+	// > This parameter is required if you specify the ID of a sharded cluster instance for the **DBInstanceId*	- parameter.
 	//
 	// example:
 	//
@@ -88,41 +92,47 @@ type DescribeBackupsRequest struct {
 	NodeId       *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Pages start from page 1. Default value: **1**.
+	// The page number. The value must be greater than 0 and not greater than the maximum value of the integer data type. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return per page. Valid values:
+	// The number of entries to return on each page. Valid values:
 	//
-	// 	- **30*	- (default)
+	// - **30*	- (Default)
 	//
-	// 	- **50**
+	// - **50**
 	//
-	// 	- **100**
+	// - **100**
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-xxxx
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The region ID of the instance.
+	// The region where the instance resides.
 	//
-	// >- This parameter is required if you want to query the backup sets of a released instance.
+	// > - This parameter is required to restore a deleted instance.
 	//
-	// >-  This parameter is required if you want to query cross-region backups.
+	// >
+	//
+	// > - This parameter is required for geo-redundancy.
 	//
 	// example:
 	//
 	// cn-beijing
 	SrcRegion *string `json:"SrcRegion,omitempty" xml:"SrcRegion,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	// The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in Coordinated Universal Time (UTC).
+	//
+	// > This parameter is invalid if you specify the BackupId parameter.
 	//
 	// example:
 	//

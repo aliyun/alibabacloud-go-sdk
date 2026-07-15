@@ -20,9 +20,14 @@ type iDescribeShardingNetworkAddressResponseBody interface {
 }
 
 type DescribeShardingNetworkAddressResponseBody struct {
-	CompatibleConnections  *DescribeShardingNetworkAddressResponseBodyCompatibleConnections `json:"CompatibleConnections,omitempty" xml:"CompatibleConnections,omitempty" type:"Struct"`
-	ConnectionStringSuffix *string                                                          `json:"ConnectionStringSuffix,omitempty" xml:"ConnectionStringSuffix,omitempty"`
-	NetworkAddresses       *DescribeShardingNetworkAddressResponseBodyNetworkAddresses      `json:"NetworkAddresses,omitempty" xml:"NetworkAddresses,omitempty" type:"Struct"`
+	CompatibleConnections *DescribeShardingNetworkAddressResponseBodyCompatibleConnections `json:"CompatibleConnections,omitempty" xml:"CompatibleConnections,omitempty" type:"Struct"`
+	// The suffix of the connection string.
+	//
+	// example:
+	//
+	// .mongodb.rds.aliyuncs.com
+	ConnectionStringSuffix *string                                                     `json:"ConnectionStringSuffix,omitempty" xml:"ConnectionStringSuffix,omitempty"`
+	NetworkAddresses       *DescribeShardingNetworkAddressResponseBodyNetworkAddresses `json:"NetworkAddresses,omitempty" xml:"NetworkAddresses,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:

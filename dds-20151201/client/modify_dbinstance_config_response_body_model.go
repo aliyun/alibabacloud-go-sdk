@@ -14,6 +14,8 @@ type iModifyDBInstanceConfigResponseBody interface {
 }
 
 type ModifyDBInstanceConfigResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// E466EFD6-2AD2-xxxx-A1A6-C7AFA1B323E1

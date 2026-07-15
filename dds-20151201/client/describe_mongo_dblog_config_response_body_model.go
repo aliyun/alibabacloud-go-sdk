@@ -40,44 +40,49 @@ type iDescribeMongoDBLogConfigResponseBody interface {
 }
 
 type DescribeMongoDBLogConfigResponseBody struct {
-	// Indicates whether to enable the audit log feature.
+	// Indicates whether the audit log feature is enabled for the ApsaraDB for MongoDB instance.
 	//
-	// 	- **true**: The audit log feature is enabled.
+	// - **true**: Enabled.
 	//
-	// 	- **false**: The audit log feature is disabled.
+	// - **false**: Disabled.
 	//
 	// example:
 	//
 	// true
-	EnableAudit         *bool  `json:"EnableAudit,omitempty" xml:"EnableAudit,omitempty"`
+	EnableAudit *bool `json:"EnableAudit,omitempty" xml:"EnableAudit,omitempty"`
+	// The retention period of hot storage for the V2_Standard (DAS Enterprise Edition (NoSQL-compatible)) version of audit logs. Unit: days.
+	//
+	// example:
+	//
+	// 7
 	HotTtlForV2Standard *int64 `json:"HotTtlForV2Standard,omitempty" xml:"HotTtlForV2Standard,omitempty"`
-	// Indicates whether a rule to distribute logs to Logtail is created. For more information, see [Logtail overview](https://help.aliyun.com/document_detail/28979.html). Valid values:
+	// Indicates whether a rule is created to ship audit logs to Logtail. For more information about Logtail, see [What is Logtail?](https://help.aliyun.com/document_detail/28979.html). Valid values:
 	//
-	// 	- **1**: A rule to distribute logs to Logtail is created.
+	// - **1**: A rule is created.
 	//
-	// 	- **0*	- or **null**: A rule to distribute logs to Logtail is not created.
+	// - **0*	- or **null**: No rule is created.
 	//
 	// example:
 	//
 	// 1
 	IsEtlMetaExist *int32 `json:"IsEtlMetaExist,omitempty" xml:"IsEtlMetaExist,omitempty"`
-	// Indicates whether a project exists in the current region. Valid values:
+	// Indicates whether a Simple Log Service project for audit logs exists in the current region. Valid values:
 	//
-	// 	- **1**: A logging project exists in the current region.
+	// - **1**: The project exists.
 	//
-	// 	- **0*	- or **null**: A logging project does not exist in the current region.
+	// - **0*	- or **null**: The project does not exist.
 	//
 	// example:
 	//
 	// 1
 	IsUserProjectLogstoreExist *int32 `json:"IsUserProjectLogstoreExist,omitempty" xml:"IsUserProjectLogstoreExist,omitempty"`
-	// The maximum storage capacity for the formal edition of the audit log feature. If the value is -1, no maximum storage capacity is set.
+	// The maximum storage capacity for the official version of audit logs. A value of -1 indicates that no upper limit is set.
 	//
 	// example:
 	//
 	// -1
 	PreserveStorageForStandard *int64 `json:"PreserveStorageForStandard,omitempty" xml:"PreserveStorageForStandard,omitempty"`
-	// The maximum storage capacity for the free trial edition of the audit log feature. Unit: bytes. You can set the maximum storage capacity to 107,374,182,400 bytes.
+	// The maximum storage capacity for the free trial version of audit logs. Unit: bytes. The maximum value is 107374182400 bytes.
 	//
 	// example:
 	//
@@ -89,42 +94,49 @@ type DescribeMongoDBLogConfigResponseBody struct {
 	//
 	// 664ECE26-658A-47C5-88F6-870B0132E8D2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The type of the audit log feature. Valid values:
+	// The version of the audit log feature.
 	//
-	// 	- **Trail**: the free trial edition
+	// - **Trial**: Free trial version.
 	//
-	// 	- **Standard**: the official edition
+	// - **Standard**: Official version.
+	//
+	// - **V2_Standard**: DAS Enterprise Edition (NoSQL-compatible) version.
 	//
 	// example:
 	//
 	// Standard
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	// The retention period for the official edition of the audit log feature. Valid values: 1 to 365. Unit: day.
+	// The retention period of audit logs for the official version. The value ranges from 1 to 365. Unit: days.
 	//
 	// example:
 	//
 	// 30
 	TtlForStandard *int64 `json:"TtlForStandard,omitempty" xml:"TtlForStandard,omitempty"`
-	// The retention period for the free trial edition of the audit log feature.
+	// The retention period of audit logs for the free trial version. Unit: days.
 	//
 	// example:
 	//
 	// 1
-	TtlForTrail      *int64 `json:"TtlForTrail,omitempty" xml:"TtlForTrail,omitempty"`
+	TtlForTrail *int64 `json:"TtlForTrail,omitempty" xml:"TtlForTrail,omitempty"`
+	// The retention period of cold storage for the V2_Standard (DAS Enterprise Edition (NoSQL-compatible)) version of audit logs. Unit: days.
+	//
+	// example:
+	//
+	// 30
 	TtlForV2Standard *int64 `json:"TtlForV2Standard,omitempty" xml:"TtlForV2Standard,omitempty"`
-	// The used storage capacity for the formal edition of the audit log feature. Unit: bytes.
+	// The storage capacity that is used by audit logs for the official version. Unit: bytes.
 	//
 	// example:
 	//
 	// 20163
 	UsedStorageForStandard *int64 `json:"UsedStorageForStandard,omitempty" xml:"UsedStorageForStandard,omitempty"`
-	// The used storage capacity for the free trial edition of the audit log feature. Unit: bytes.
+	// The storage capacity that is used by audit logs for the free trial version. Unit: bytes.
 	//
 	// example:
 	//
 	// 12548178759
 	UsedStorageForTrail *int64 `json:"UsedStorageForTrail,omitempty" xml:"UsedStorageForTrail,omitempty"`
-	// The name of the project.
+	// The name of the Simple Log Service project for the audit logs.
 	//
 	// example:
 	//

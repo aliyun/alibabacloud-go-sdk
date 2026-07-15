@@ -48,9 +48,9 @@ type iDescribeDBInstancesOverviewRequest interface {
 type DescribeDBInstancesOverviewRequest struct {
 	// The billing method of the instance. Valid values:
 	//
-	// 	- **PrePaid**: subscription
+	// - **PrePaid**: subscription
 	//
-	// 	- **PostPaid**: pay-as-you-go
+	// - **PostPaid**: pay-as-you-go
 	//
 	// example:
 	//
@@ -62,47 +62,58 @@ type DescribeDBInstancesOverviewRequest struct {
 	//
 	// 4.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The instance type. The instance type varies based on the instance architecture. For more information about instance types supported by different instance architectures, see the following references:
+	// The instance type. For more information about the instance types available for different instance architectures, see:
 	//
-	// 	- [Standalone instance types](https://help.aliyun.com/document_detail/311407.html)
+	// - [Standalone instance types](https://help.aliyun.com/document_detail/311407.html)
 	//
-	// 	- [Replica set instance types](https://help.aliyun.com/document_detail/311410.html)
+	// - [Replica set instance types](https://help.aliyun.com/document_detail/311410.html)
 	//
-	// 	- [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html)
+	// - [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html)
+	//
+	// <props="china">
+	//
+	// > This parameter is not required for Serverless instances.
 	//
 	// example:
 	//
 	// dds.mongo.2xlarge
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// The ID of the instance for which you want to query the overview information.
+	// The ID of the instance whose overview you want to query.
+	//
+	// > - If you do not specify this parameter, an overview of all instances in your Alibaba Cloud account is returned.
 	//
 	// >
 	//
-	// 	- If you do not specify this parameter, the overview information of all instances within this account is queried.
-	//
-	// 	- Separate the instance IDs with commas (,).
+	// > - You can specify multiple instance IDs. Separate the IDs with commas (,).
 	//
 	// example:
 	//
 	// dds-bp12c5b040dc****
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	// The state of the instance. For more information about valid values, see [Instance states](https://help.aliyun.com/document_detail/63870.html).
+	// The status of the instance. For more information, see [Instance states](https://help.aliyun.com/document_detail/63870.html).
 	//
 	// example:
 	//
 	// Running
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// The architecture of the instance. Valid values:
+	// The instance architecture. Valid values:
 	//
-	// 	- **sharding**: sharded cluster instance
+	// - **sharding**: sharded cluster instance
 	//
-	// 	- **replicate**: replica set or standalone instance
+	// - **replicate**: replica set or standalone instance
+	//
+	// <props="china">
+	//
+	// - **serverless**: Serverless instance
+	//
+	//
+	//
+	//
+	// > 	- Set this parameter as needed. For example, to query the overview of a sharded cluster instance, set this parameter to **sharding**.
 	//
 	// >
 	//
-	// 	- To query the overview information of a sharded cluster instance, you must set the parameter to **sharding**.
-	//
-	// 	- If you do not specify this parameter, the overview information of all instances within this account is queried.
+	// > 	- If you do not specify this parameter, an overview of all instances is returned.
 	//
 	// example:
 	//
@@ -110,9 +121,9 @@ type DescribeDBInstancesOverviewRequest struct {
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The network type of the instance. Valid values:
 	//
-	// 	- **Classic**: classic network
+	// - **Classic**: classic network
 	//
-	// 	- **VPC**: Virtual Private Cloud (VPC)
+	// - **VPC**: virtual private cloud (VPC)
 	//
 	// example:
 	//
@@ -120,7 +131,7 @@ type DescribeDBInstancesOverviewRequest struct {
 	NetworkType  *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the most recent region list.
+	// The region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) to query the latest region list.
 	//
 	// This parameter is required.
 	//
@@ -128,7 +139,7 @@ type DescribeDBInstancesOverviewRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the instance belongs. For more information, see [View the basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+	// The ID of the resource group. For more information about resource groups, see [View basic information about a resource group](https://help.aliyun.com/document_detail/151181.html).
 	//
 	// example:
 	//
@@ -136,25 +147,25 @@ type DescribeDBInstancesOverviewRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Specifies whether to display instance tags. Default value: False.
+	// Specifies whether to return instance tags. The default value is false.
 	//
 	// example:
 	//
 	// false
 	ShowTags *bool `json:"ShowTags,omitempty" xml:"ShowTags,omitempty"`
-	// The ID of the vSwitch to which the instance is connected.
+	// The ID of the vSwitch.
 	//
 	// example:
 	//
 	// vsw-bp1e7clcw529l773d****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC in which the instance is deployed.
+	// The ID of the VPC.
 	//
 	// example:
 	//
 	// vpc-bp1nme44gek34slfc****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The zone ID of the instance.
+	// The ID of the zone.
 	//
 	// example:
 	//

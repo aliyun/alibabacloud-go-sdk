@@ -30,11 +30,11 @@ type iDescribeParametersRequest interface {
 type DescribeParametersRequest struct {
 	// The role of the instance. Valid values:
 	//
-	// 	- db: a shard node.
+	// - db: a shard node.
 	//
-	// 	- cs: a Configserver node.
+	// - cs: a Configserver node.
 	//
-	// 	- mongos: a mongos node.
+	// - mongos: a mongos node.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeParametersRequest struct {
 	CharacterType *string `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
 	// The instance ID.
 	//
-	// >  If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId*	- parameter.
+	// > If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId*	- parameter.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type DescribeParametersRequest struct {
 	ExtraParam *string `json:"ExtraParam,omitempty" xml:"ExtraParam,omitempty"`
 	// The ID of the mongos or shard node in the specified sharded cluster instance.
 	//
-	// >  This parameter is valid when the **DBInstanceId*	- parameter is set to the ID of a sharded cluster instance.
+	// > This parameter is valid when the **DBInstanceId*	- parameter is set to the ID of a sharded cluster instance.
 	//
 	// example:
 	//

@@ -22,15 +22,15 @@ type iDescribeActiveOperationTasksResponseBody interface {
 }
 
 type DescribeActiveOperationTasksResponseBody struct {
-	// The O\\&M tasks.
+	// The list of O\\&M tasks.
 	Items []*DescribeActiveOperationTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type DescribeActiveOperationTasksResponseBody struct {
 	//
 	// example:
 	//
-	// 111E7B16-0A87-4CBA-B271-F34AD61E099F
+	// 111E7B16-0A87-4CBA-B271-F34AD61E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned entries.
+	// The number of returned task records.
 	//
 	// example:
 	//
-	// 727
+	// 1
 	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
@@ -117,162 +117,195 @@ func (s *DescribeActiveOperationTasksResponseBody) Validate() error {
 }
 
 type DescribeActiveOperationTasksResponseBodyItems struct {
-	// N/A
+	// Indicates whether the task can be canceled.
+	//
+	// - **1**: The task can be canceled.
+	//
+	// - **0**: The task cannot be canceled.
 	//
 	// example:
 	//
-	// ***
+	// 1
 	AllowCancel *string `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
-	// Indicates whether the modification operation is allowed.
+	// Indicates whether the time can be changed.
 	//
-	// 	- **0**: The modification operation is not allowed.
+	// - **1**: The time can be changed.
 	//
-	// 	- **1**: The modification operation is allowed.
+	// - **0**: The time cannot be changed.
 	//
 	// example:
 	//
-	// 0
+	// 1
 	AllowChange *string `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
-	// The change level of the O\\&M task.
+	// The code of the event level.
+	//
+	// - **S1**: system O\\&M.
+	//
+	// - **S0**: threat fixing.
 	//
 	// example:
 	//
-	// ***
+	// S1
 	ChangeLevel *string `json:"ChangeLevel,omitempty" xml:"ChangeLevel,omitempty"`
-	// N/A
+	// The event level in English.
 	//
 	// example:
 	//
-	// ***
+	// System maintenance
 	ChangeLevelEn *string `json:"ChangeLevelEn,omitempty" xml:"ChangeLevelEn,omitempty"`
-	// The task type in English.
+	// The event level in Chinese.
 	//
 	// example:
 	//
-	// ***
+	// 系统运维
 	ChangeLevelZh *string `json:"ChangeLevelZh,omitempty" xml:"ChangeLevelZh,omitempty"`
-	// The time when the task was created.
+	// The time when the task was created. The time is in the *yyyy-mm-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
-	// 2021-07-14 10:48:43
+	// 2023-05-30T14:30:00Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// N/A
+	// The current zone.
 	//
 	// example:
 	//
-	// ***
+	// cn-beijing-h
 	CurrentAVZ *string `json:"CurrentAVZ,omitempty" xml:"CurrentAVZ,omitempty"`
-	// The type of the database engine.
+	// The database engine type.
 	//
 	// example:
 	//
 	// mongoDb
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The version of the database engine.
+	// The database engine version number.
 	//
 	// example:
 	//
 	// 5.6
 	DbVersion *string `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
-	// The end time of the O\\&M task.
+	// The latest time to which the task execution time can be postponed. The time is in the *yyyy-mm-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
-	// 1646014421633
+	// 2023-05-30T23:59:59Z
 	Deadline *string `json:"Deadline,omitempty" xml:"Deadline,omitempty"`
 	// The task ID.
 	//
 	// example:
 	//
-	// ***
+	// 11111
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// N/A
+	// The impact of the event in English.
 	//
 	// example:
 	//
-	// ***
+	// Transient instance disconnection
 	ImpactEn *string `json:"ImpactEn,omitempty" xml:"ImpactEn,omitempty"`
-	// N/A
+	// The impact of the event in Chinese.
 	//
 	// example:
 	//
-	// ***
+	// 实例闪断
 	ImpactZh *string `json:"ImpactZh,omitempty" xml:"ImpactZh,omitempty"`
-	// The description of the instance.
+	// The alias or description of the instance.
 	//
 	// example:
 	//
-	// ***
+	// test
 	InsComment *string `json:"InsComment,omitempty" xml:"InsComment,omitempty"`
-	// The ID of the node.
+	// The instance name.
 	//
 	// example:
 	//
-	// ***
+	// dds-bp16aaccfe10****
 	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
-	// The time when the task is modified. The time follows the ISO 8601 standard in the *yyyy-mm-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the task was modified. The time is in the *yyyy-mm-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
-	// 2022-12-24T09:48:01Z
+	// 2023-05-30T14:30:00Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The required preparation period between the task start time and the switchover time. The time is displayed in the *HH:mm:ss	- format.
+	// The preparation time required between the start time of the O\\&M task and the switchover time. The time is in the *HH:mm:ss	- format.
 	//
 	// example:
 	//
-	// ***
+	// 04:00:00
 	PrepareInterval *string `json:"PrepareInterval,omitempty" xml:"PrepareInterval,omitempty"`
-	// The region of the instance.
+	// The ID of the region where the pending event is located.
 	//
 	// example:
 	//
-	// cn-hangzhou
+	// cn-beijing
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The result information. The value of this parameter can be ignored.
+	// The information about the execution result.
 	//
 	// example:
 	//
-	// ***
+	// userCancel
 	ResultInfo *string `json:"ResultInfo,omitempty" xml:"ResultInfo,omitempty"`
-	// The start time of the task. The time follows the ISO 8601 standard in the *yyyy-mm-dd	- T*hh:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the task was executed. The time is in the *yyyy-mm-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
-	// 2022-12-24T06:01:05Z
+	// 2023-05-30T00:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// N/A
+	// The task status.
+	//
+	// - **3**: pending.
+	//
+	// - **4**: running.
+	//
+	// - **5**: successful.
+	//
+	// - **6**: failed.
+	//
+	// - **7**: canceled.
 	//
 	// example:
 	//
-	// ***
+	// 3
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The subinstances.
+	// The list of child instances.
 	SubInsNames []*string `json:"SubInsNames,omitempty" xml:"SubInsNames,omitempty" type:"Repeated"`
-	// The switchover point in time in which disconnection may occur. The time follows the ISO 8601 standard in the *yyyy-mm-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the switchover was initiated. The time is in the *yyyy-mm-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
-	// 2022-11-24T11:20:00Z
+	// 2023-05-30T14:30:00Z
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
+	// The task parameters.
+	//
+	// example:
+	//
+	// ""
 	TaskParams *string `json:"TaskParams,omitempty" xml:"TaskParams,omitempty"`
-	// The task type.
+	// The task type. Valid values:
+	//
+	// - **rds_apsaradb_ha**: primary-secondary node switchover.
+	//
+	// - **rds_apsaradb_transfer**: instance migration.
+	//
+	// - **rds_apsaradb_upgrade**: minor version upgrade.
+	//
+	// - **rds_apsaradb_maxscale**: proxy minor version upgrade.
+	//
+	// - **all**: all task types.
 	//
 	// example:
 	//
-	// ***
+	// rds_apsaradb_upgrade
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// N/A
+	// The reason for the task in English.
 	//
 	// example:
 	//
-	// ***
+	// Minor version update
 	TaskTypeEn *string `json:"TaskTypeEn,omitempty" xml:"TaskTypeEn,omitempty"`
-	// The task type in Chinese.
+	// The reason for the task in Chinese.
 	//
 	// example:
 	//
-	// ***
+	// 小版本升级
 	TaskTypeZh *string `json:"TaskTypeZh,omitempty" xml:"TaskTypeZh,omitempty"`
 }
 

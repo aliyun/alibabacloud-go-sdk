@@ -56,9 +56,9 @@ type DescribeDBInstanceEncryptionKeyResponseBody struct {
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
 	// Indicates whether the key for the instance is enabled. Valid values:
 	//
-	// 	- **Enabled**
+	// - **Enabled**
 	//
-	// 	- **Disabled**
+	// - **Disabled**
 	//
 	// example:
 	//

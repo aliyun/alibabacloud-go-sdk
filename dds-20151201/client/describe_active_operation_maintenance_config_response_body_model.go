@@ -18,19 +18,19 @@ type iDescribeActiveOperationMaintenanceConfigResponseBody interface {
 }
 
 type DescribeActiveOperationMaintenanceConfigResponseBody struct {
-	// The description of the configuration.
+	// The details of the configuration.
 	Config *DescribeActiveOperationMaintenanceConfigResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-	// Indicates whether the O\\&M task is configured. Valid values:
+	// Indicates whether a configuration is set.
 	//
-	// 	- 1: The O\\&M task is configured.
+	// - 1: A configuration is set.
 	//
-	// 	- 0: The O\\&M task is not configured.
+	// - 0: No configuration is set.
 	//
 	// example:
 	//
 	// 0
 	HasConfig *int32 `json:"HasConfig,omitempty" xml:"HasConfig,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -83,43 +83,55 @@ func (s *DescribeActiveOperationMaintenanceConfigResponseBody) Validate() error 
 }
 
 type DescribeActiveOperationMaintenanceConfigResponseBodyConfig struct {
-	// The time when the O\\&M task was created. The timefollows the *yyyy-mm-dd*t*hh:mm:ss*z format. The time is displayed in UTC.
+	// The time when the O\\&M task configuration was created. The time is in the *yyyy-mm-dd*T*hh:mm:ss*Z format and is displayed in UTC.
 	//
 	// example:
 	//
-	// 2022-01-20T00:05:54+08:00
+	// 2018-05-30T14:30:00Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The start time of the O\\&M period. The time follows the *hh:mm	- z format. The time is displayed in UTC.
+	// The days of the cycle.
+	//
+	// - If CycleType is set to Month, this parameter returns the days of the month. Valid values: 1 to 28. Multiple values are separated by commas (,).
+	//
+	// - If CycleType is set to Week, this parameter returns the days of the week. Valid values: 1 to 7. Multiple values are separated by commas (,).
 	//
 	// example:
 	//
-	// 6
+	// 1,2,3
 	CycleTime *string `json:"CycleTime,omitempty" xml:"CycleTime,omitempty"`
-	// The cyclical type of the O\\&M task.
+	// The cycle type.
+	//
+	// - Month
+	//
+	// - Week
 	//
 	// example:
 	//
-	// ***
+	// Month
 	CycleType *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
-	// The end time of the maintenance window. The time follows the *hh:mm*z format. The time is displayed in UTC.
+	// The end time of the O\\&M time window. The time is in the *hh:mm:ss*Z format and is displayed in UTC.
 	//
 	// example:
 	//
-	// 04:00:00Z
+	// 20:00:00Z
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	// The start time of the maintenance window. The time follows the *hh:mm*z format.
+	// The start time of the O\\&M time window. The time is in the *hh:mm:ss*Z format and is displayed in UTC.
 	//
 	// example:
 	//
 	// 18:00:00Z
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	// The time when the O\\&M task was modified. The time follows the *yyyy-mm-dd*t*hh:mm:ss*z format. The time is displayed in Coordinated Universal Time (UTC).
+	// The time when the operations and maintenance (O\\&M) task configuration was modified. The time is in the *yyyy-mm-dd*T*hh:mm:ss*Z format and is displayed in UTC.
 	//
 	// example:
 	//
-	// 2021-07-26T05:50:34.000+00:00
+	// 2024-05-30T14:30:00Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The state of the O\\&M task. Valid values: **0**: The O\\&M task is in the starting state. **1**: The O\\&M task is in the running state. **2**: The O\\&M task is in the stopped state.
+	// Indicates whether the configuration is enabled.
+	//
+	// - 1: Enabled
+	//
+	// - 2: Disabled
 	//
 	// example:
 	//

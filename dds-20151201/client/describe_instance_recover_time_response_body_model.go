@@ -22,7 +22,7 @@ type DescribeInstanceRecoverTimeResponseBody struct {
 	//
 	// F8CA8312-530A-413A-9129-F2BB32A8D404
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The time ranges to which data can be restored. The time ranges include those used for point-in-time data restoration.
+	// The list of restorable time ranges. This list contains all time ranges available for point-in-time restoration.
 	RestoreRanges []*DescribeInstanceRecoverTimeResponseBodyRestoreRanges `json:"RestoreRanges,omitempty" xml:"RestoreRanges,omitempty" type:"Repeated"`
 }
 
@@ -66,21 +66,21 @@ func (s *DescribeInstanceRecoverTimeResponseBody) Validate() error {
 }
 
 type DescribeInstanceRecoverTimeResponseBodyRestoreRanges struct {
-	// The beginning of the time range to which data can be restored.
+	// The beginning of the restorable time range.
 	//
 	// example:
 	//
 	// 2023-10-16T19:33:20Z
 	RestoreBeginTime *string `json:"RestoreBeginTime,omitempty" xml:"RestoreBeginTime,omitempty"`
-	// The end of the time range to which data can be restored.
+	// The end of the restorable time range.
 	//
 	// example:
 	//
 	// 2023-10-16T19:43:20Z
 	RestoreEndTime *string `json:"RestoreEndTime,omitempty" xml:"RestoreEndTime,omitempty"`
-	// The method used to restore data. Valid value:
+	// The restoration method. Valid values:
 	//
-	// 	- PointInTime (default): Data is restored to a point in time.
+	// 	- PointInTime (default): point-in-time restoration.
 	//
 	// example:
 	//

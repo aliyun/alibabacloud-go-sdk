@@ -26,9 +26,9 @@ type iDescribeRegionsRequest interface {
 type DescribeRegionsRequest struct {
 	// The language of the values of the returned **RegionName*	- and **ZoneName*	- parameters. Valid values:
 	//
-	// 	- **zh*	- (default)
+	// - **zh*	- (default)
 	//
-	// 	- **en**
+	// - **en**
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type DescribeRegionsRequest struct {
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
 	//
-	// >  If you do not specify this parameter, all supported regions are queried.
+	// > If you do not specify this parameter, all supported regions are queried.
 	//
 	// example:
 	//

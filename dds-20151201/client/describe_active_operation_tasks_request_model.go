@@ -44,79 +44,83 @@ type iDescribeActiveOperationTasksRequest interface {
 }
 
 type DescribeActiveOperationTasksRequest struct {
-	// Specifies whether to allow the cancellation operation. Valid values:
+	// Specifies whether the task can be canceled. Valid values:
 	//
-	// 	- **0**: The cancellation operation is not allowed.
+	// - **-1*	- (default): returns all tasks.
 	//
-	// 	- **1**: The cancellation operation is allowed.
+	// - **0**: returns only tasks that cannot be canceled.
+	//
+	// - **1**: returns only tasks that can be canceled.
 	//
 	// example:
 	//
-	// ***
+	// -1
 	AllowCancel *int32 `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
-	// Specifies whether to allow the modification operation. Valid values:
+	// Specifies whether the time can be changed. Valid values:
 	//
-	// 	- **0**: The modification operation is not allowed.
+	// - **-1*	- (default): returns all tasks.
 	//
-	// 	- **1**: The modification operation is allowed.
+	// - **0**: returns only tasks whose time cannot be changed.
+	//
+	// - **1**: returns only tasks whose time can be changed.
 	//
 	// example:
 	//
 	// -1
 	AllowChange *int32 `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
-	// The type of task configuration change. Valid values:
+	// The level of the task. Valid values:
 	//
-	// 	- **all*	- (default): The configurations of all O\\&M tasks are changed.
+	// - **all*	- (default): returns all tasks.
 	//
-	// 	- **S0**: The configurations of tasks initiated to fix exceptions are changed.
+	// - **S0**: returns tasks for exception fixing.
 	//
-	// 	- **S1**: The configurations of system O\\&M tasks are changed.
+	// - **S1**: returns tasks for system O\\&M.
 	//
 	// example:
 	//
 	// ***
 	ChangeLevel *string `json:"ChangeLevel,omitempty" xml:"ChangeLevel,omitempty"`
-	// The type of the database engine.
+	// The database type. Default value: **all**.
 	//
 	// example:
 	//
-	// ***
+	// mongoDb
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The name of the instance.
+	// The name of the instance. This parameter is optional. You can specify only one instance name.
 	//
 	// example:
 	//
-	// dds-bp16aaccfe10e3e4
+	// dds-bp16aaccfe10****
 	InsName      *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Specify the parameter to a positive integer that is greater than **0**. Default value: **1**.
+	// The page number. The value must be greater than **0**. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: **30**.
+	// The number of entries per page. Valid values: **30**, **50**, and **100**. Default value: **30**.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the service.
+	// The product name. For MongoDB instances, set this parameter to **MongoDB**.
 	//
 	// example:
 	//
-	// ***
+	// MongoDB
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The region ID of the instance.
+	// The ID of the region where the pending event is located. Call the DescribeRegions operation to obtain the region ID.
 	//
-	// >  If you set the Region parameter to **all**, all tasks created within your Alibaba Cloud account are queried. In this case, you must set the **taskType*	- parameter to **all**.
+	// > A value of **all*	- indicates all region IDs.
 	//
 	// example:
 	//
 	// cn-beijing
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -124,25 +128,39 @@ type DescribeActiveOperationTasksRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The status of the task. Valid values:
+	// The task status. This parameter filters the returned tasks.
 	//
-	// 	- **0**: waiting for execution
+	// - **-1**: all tasks.
 	//
-	// 	- **1**: being executed
+	// - **3**: pending tasks.
 	//
-	// 	- **2**: successful
+	// - **4**: running tasks.
 	//
-	// 	- **3**: failed
+	// - **5**: successfully completed tasks.
+	//
+	// - **6**: failed tasks.
+	//
+	// - **7**: canceled tasks.
 	//
 	// example:
 	//
-	// 0
+	// -1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The task type.
+	// The task type. Valid values:
+	//
+	// - **rds_apsaradb_ha**: primary-secondary node switchover.
+	//
+	// - **rds_apsaradb_transfer**: instance migration.
+	//
+	// - **rds_apsaradb_upgrade**: minor version upgrade.
+	//
+	// - **rds_apsaradb_maxscale**: proxy minor version upgrade.
+	//
+	// - **all**: all task types.
 	//
 	// example:
 	//
-	// ***
+	// all
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 

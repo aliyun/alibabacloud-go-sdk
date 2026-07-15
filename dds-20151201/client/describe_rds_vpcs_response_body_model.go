@@ -16,11 +16,14 @@ type iDescribeRdsVpcsResponseBody interface {
 }
 
 type DescribeRdsVpcsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 53924AF0-1628-5AA2-9C95-D4**********
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Vpcs      *DescribeRdsVpcsResponseBodyVpcs `json:"Vpcs,omitempty" xml:"Vpcs,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of VPCs.
+	Vpcs *DescribeRdsVpcsResponseBodyVpcs `json:"Vpcs,omitempty" xml:"Vpcs,omitempty" type:"Struct"`
 }
 
 func (s DescribeRdsVpcsResponseBody) String() string {
@@ -59,6 +62,7 @@ func (s *DescribeRdsVpcsResponseBody) Validate() error {
 }
 
 type DescribeRdsVpcsResponseBodyVpcs struct {
+	// VPC details.
 	Vpc []*DescribeRdsVpcsResponseBodyVpcsVpc `json:"Vpc,omitempty" xml:"Vpc,omitempty" type:"Repeated"`
 }
 
@@ -93,45 +97,68 @@ func (s *DescribeRdsVpcsResponseBodyVpcs) Validate() error {
 }
 
 type DescribeRdsVpcsResponseBodyVpcsVpc struct {
+	// This parameter is deprecated. No value is returned.
+	//
 	// example:
 	//
 	// null
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// This parameter is deprecated. No value is returned.
+	//
 	// example:
 	//
 	// null
 	Bid *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
+	// The CIDR block of the VPC.
+	//
 	// example:
 	//
 	// 10.**.**.0/8
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// This parameter is deprecated. No value is returned.
+	//
 	// example:
 	//
 	// null
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// This parameter is deprecated. No value is returned.
+	//
 	// example:
 	//
 	// null
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Indicates whether the VPC is the default VPC. Valid values:
+	//
+	// - **true**
+	//
+	// - **false**
+	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The status of the VPC. A value of **Available*	- indicates that the VPC is available.
+	//
 	// example:
 	//
 	// Available
-	Status   *string                                       `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// A list of vSwitches.
 	VSwitchs []*DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs `json:"VSwitchs,omitempty" xml:"VSwitchs,omitempty" type:"Repeated"`
-	// VPC ID。
+	// The ID of the VPC.
 	//
 	// example:
 	//
 	// vpc-bp*******************
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The name of the VPC.
+	//
 	// example:
 	//
 	// vpc-name
@@ -259,36 +286,54 @@ func (s *DescribeRdsVpcsResponseBodyVpcsVpc) Validate() error {
 }
 
 type DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs struct {
+	// The CIDR block of the vSwitch.
+	//
 	// example:
 	//
 	// 10.**.**.0/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// This parameter is deprecated. No value is returned.
+	//
 	// example:
 	//
 	// null
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// This parameter is deprecated. No value is returned.
+	//
 	// example:
 	//
 	// null
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Indicates whether the vSwitch is the default vSwitch. Valid values:
+	//
+	// - **true**: The vSwitch is the default vSwitch.
+	//
+	// - **false**: The vSwitch is not the default vSwitch.
+	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The ID of the zone where the vSwitch is located.
+	//
 	// example:
 	//
 	// cn-hangzhou-i
 	IzNo *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
+	// The status of the vSwitch. A value of **Available*	- indicates that the vSwitch is available.
+	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// VSwitch ID。
+	// The ID of the vSwitch.
 	//
 	// example:
 	//
 	// vsw-bp*******************
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The name of the vSwitch.
+	//
 	// example:
 	//
 	// vsw-name
