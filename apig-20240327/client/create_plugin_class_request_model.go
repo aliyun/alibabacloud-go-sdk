@@ -32,22 +32,79 @@ type iCreatePluginClassRequest interface {
 }
 
 type CreatePluginClassRequest struct {
+	// The alias of the plugin.
+	//
+	// example:
+	//
+	// My Wasm Plugin
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
+	// The description of the plugin.
+	//
 	// This parameter is required.
-	Description     *string `json:"description,omitempty" xml:"description,omitempty"`
-	ExecutePriority *int32  `json:"executePriority,omitempty" xml:"executePriority,omitempty"`
+	//
+	// example:
+	//
+	// Custom authentication plugin for validating tokens in request headers
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The execution priority of the plugin.
+	//
+	// example:
+	//
+	// 100
+	ExecutePriority *int32 `json:"executePriority,omitempty" xml:"executePriority,omitempty"`
+	// The execution stage of the plugin.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// AUTHN
 	ExecuteStage *string `json:"executeStage,omitempty" xml:"executeStage,omitempty"`
+	// The name of the plugin class.
+	//
 	// This parameter is required.
-	Name                       *string `json:"name,omitempty" xml:"name,omitempty"`
+	//
+	// example:
+	//
+	// my-wasm-plugin
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The minimum gateway version that the plugin is compatible with.
+	//
+	// example:
+	//
+	// 2.0.0
 	SupportedMinGatewayVersion *string `json:"supportedMinGatewayVersion,omitempty" xml:"supportedMinGatewayVersion,omitempty"`
+	// The version number of the plugin.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1.0.0
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// The description of the current version.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Initial version with basic token validation
 	VersionDescription *string `json:"versionDescription,omitempty" xml:"versionDescription,omitempty"`
+	// The programming language used to develop the WASM plugin.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Rust
 	WasmLanguage *string `json:"wasmLanguage,omitempty" xml:"wasmLanguage,omitempty"`
+	// The download URL of the WASM plugin binary file.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// https://example.com/plugins/my-plugin.wasm
 	WasmUrl *string `json:"wasmUrl,omitempty" xml:"wasmUrl,omitempty"`
 }
 

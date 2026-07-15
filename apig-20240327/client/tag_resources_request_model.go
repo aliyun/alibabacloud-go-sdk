@@ -18,7 +18,7 @@ type iTagResourcesRequest interface {
 }
 
 type TagResourcesRequest struct {
-	// The resource IDs. You can specify up to 50 subkeys.
+	// The resource IDs. A maximum of 50 subkeys are supported.
 	ResourceId []*string `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
 	// The resource type.
 	//

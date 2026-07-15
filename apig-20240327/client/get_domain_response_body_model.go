@@ -108,6 +108,24 @@ type GetDomainResponseBodyData struct {
 	//
 	// 8237***-cn-hangzhou
 	CaCertIdentifier *string `json:"caCertIdentifier,omitempty" xml:"caCertIdentifier,omitempty"`
+	// The certificate detail error code.
+	//
+	// example:
+	//
+	// -
+	CertDetailErrorCode *string `json:"certDetailErrorCode,omitempty" xml:"certDetailErrorCode,omitempty"`
+	// The certificate detail error message.
+	//
+	// example:
+	//
+	// -
+	CertDetailErrorMessage *string `json:"certDetailErrorMessage,omitempty" xml:"certDetailErrorMessage,omitempty"`
+	// The certificate detail status.
+	//
+	// example:
+	//
+	// -
+	CertDetailStatus *string `json:"certDetailStatus,omitempty" xml:"certDetailStatus,omitempty"`
 	// The certificate identifier.
 	//
 	// example:
@@ -164,11 +182,13 @@ type GetDomainResponseBodyData struct {
 	//
 	// d-cq1m3utlhtgvgkv7sitg
 	DomainId *string `json:"domainId,omitempty" xml:"domainId,omitempty"`
+	// The domain name scope.
+	//
 	// example:
 	//
 	// Serverless
 	DomainScope *string `json:"domainScope,omitempty" xml:"domainScope,omitempty"`
-	// Specifies whether to enable forced HTTPS redirect when the HTTPS protocol type is configured.
+	// Specifies whether to enable forced HTTPS redirect when the protocol type is set to HTTPS.
 	//
 	// example:
 	//
@@ -180,7 +200,7 @@ type GetDomainResponseBodyData struct {
 	//
 	// Open
 	Http2Option *string `json:"http2Option,omitempty" xml:"http2Option,omitempty"`
-	// The certification authority.
+	// The certificate issue authority.
 	//
 	// example:
 	//
@@ -210,11 +230,11 @@ type GetDomainResponseBodyData struct {
 	//
 	// 1719386834548
 	NotBeforeTimestamp *int64 `json:"notBeforeTimestamp,omitempty" xml:"notBeforeTimestamp,omitempty"`
-	// The protocol type supported by the domain name.
+	// The protocol type supported by the domain name. Valid values:
 	//
-	// - HTTP: supports only the HTTP protocol.
+	// - HTTP: only HTTP is supported.
 	//
-	// - HTTPS: supports only the HTTPS protocol.
+	// - HTTPS: only HTTPS is supported.
 	//
 	// example:
 	//
@@ -270,6 +290,18 @@ func (s *GetDomainResponseBodyData) GetAlgorithm() *string {
 
 func (s *GetDomainResponseBodyData) GetCaCertIdentifier() *string {
 	return s.CaCertIdentifier
+}
+
+func (s *GetDomainResponseBodyData) GetCertDetailErrorCode() *string {
+	return s.CertDetailErrorCode
+}
+
+func (s *GetDomainResponseBodyData) GetCertDetailErrorMessage() *string {
+	return s.CertDetailErrorMessage
+}
+
+func (s *GetDomainResponseBodyData) GetCertDetailStatus() *string {
+	return s.CertDetailStatus
 }
 
 func (s *GetDomainResponseBodyData) GetCertIdentifier() *string {
@@ -371,6 +403,21 @@ func (s *GetDomainResponseBodyData) SetAlgorithm(v string) *GetDomainResponseBod
 
 func (s *GetDomainResponseBodyData) SetCaCertIdentifier(v string) *GetDomainResponseBodyData {
 	s.CaCertIdentifier = &v
+	return s
+}
+
+func (s *GetDomainResponseBodyData) SetCertDetailErrorCode(v string) *GetDomainResponseBodyData {
+	s.CertDetailErrorCode = &v
+	return s
+}
+
+func (s *GetDomainResponseBodyData) SetCertDetailErrorMessage(v string) *GetDomainResponseBodyData {
+	s.CertDetailErrorMessage = &v
+	return s
+}
+
+func (s *GetDomainResponseBodyData) SetCertDetailStatus(v string) *GetDomainResponseBodyData {
+	s.CertDetailStatus = &v
 	return s
 }
 

@@ -44,6 +44,8 @@ type QueryConsumerAuthorizationRulesRequest struct {
 	//
 	// api-xx
 	ApiNameLike *string `json:"apiNameLike,omitempty" xml:"apiNameLike,omitempty"`
+	// The consumer group ID. If specified, the authorization rules of the consumer group are queried.
+	//
 	// example:
 	//
 	// csg-8c13d2b4f8a1
@@ -90,6 +92,8 @@ type QueryConsumerAuthorizationRulesRequest struct {
 	//
 	// ha-cn-li942gy8p01
 	ParentResourceId *string `json:"parentResourceId,omitempty" xml:"parentResourceId,omitempty"`
+	// The principal type. Valid values: Consumer or ConsumerGroup.
+	//
 	// example:
 	//
 	// ConsumerGroup

@@ -184,10 +184,13 @@ type QueryConsumerAuthorizationRulesResponseBodyDataItems struct {
 	//
 	// car-csgeka5lhtggrjcprok0
 	ConsumerAuthorizationRuleId *string `json:"consumerAuthorizationRuleId,omitempty" xml:"consumerAuthorizationRuleId,omitempty"`
+	// The consumer group ID. This field is returned for consumer group authorization rules.
+	//
 	// example:
 	//
 	// csg-8c13d2b4f8a1
-	ConsumerGroupId   *string            `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+	// The consumer group information. This field is returned for consumer group authorization rules.
 	ConsumerGroupInfo *ConsumerGroupInfo `json:"consumerGroupInfo,omitempty" xml:"consumerGroupInfo,omitempty"`
 	// The consumer ID.
 	//
@@ -235,6 +238,8 @@ type QueryConsumerAuthorizationRulesResponseBodyDataItems struct {
 	ExpireTimestamp *int64 `json:"expireTimestamp,omitempty" xml:"expireTimestamp,omitempty"`
 	// The gateway information.
 	GatewayInfo *GatewayInfo `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty"`
+	// The principal type. Valid values: Consumer or ConsumerGroup.
+	//
 	// example:
 	//
 	// ConsumerGroup
@@ -466,7 +471,7 @@ func (s *QueryConsumerAuthorizationRulesResponseBodyDataItems) Validate() error 
 }
 
 type QueryConsumerAuthorizationRulesResponseBodyDataItemsResourceInfo struct {
-	// The operation information.
+	// The API operation information.
 	OperationInfo *HttpApiOperationInfo `json:"operationInfo,omitempty" xml:"operationInfo,omitempty"`
 	// The routing rule.
 	Route *HttpRoute `json:"route,omitempty" xml:"route,omitempty"`

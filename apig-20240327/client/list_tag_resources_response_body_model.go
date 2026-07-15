@@ -18,7 +18,7 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
-	// The token that determines the start point of the next query. An empty value of NextToken indicates that no more results exist.
+	// The token for the next query. An empty NextToken indicates that no more results exist.
 	//
 	// example:
 	//

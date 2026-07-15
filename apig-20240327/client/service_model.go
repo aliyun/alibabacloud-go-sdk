@@ -45,6 +45,10 @@ type iService interface {
 	GetQualifier() *string
 	SetResourceGroupId(v string) *Service
 	GetResourceGroupId() *string
+	SetRuntimeDetailErrorCode(v string) *Service
+	GetRuntimeDetailErrorCode() *string
+	SetRuntimeDetailStatus(v string) *Service
+	GetRuntimeDetailStatus() *string
 	SetServiceId(v string) *Service
 	GetServiceId() *string
 	SetSourceType(v string) *Service
@@ -58,13 +62,13 @@ type iService interface {
 }
 
 type Service struct {
-	// The address information, including IP addresses or domain name lists.
+	// The address information, including IP addresses or domain names.
 	Addresses []*string `json:"addresses,omitempty" xml:"addresses,omitempty" type:"Repeated"`
 	// The agent service configuration.
 	AgentServiceConfig *AgentServiceConfig `json:"agentServiceConfig,omitempty" xml:"agentServiceConfig,omitempty"`
 	// The AI service configuration.
 	AiServiceConfig *AiServiceConfig `json:"aiServiceConfig,omitempty" xml:"aiServiceConfig,omitempty"`
-	// The creation time.
+	// The time when the service was created.
 	//
 	// example:
 	//
@@ -90,7 +94,11 @@ type Service struct {
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
 	// The health check configuration.
 	HealthCheck *ServiceHealthCheck `json:"healthCheck,omitempty" xml:"healthCheck,omitempty"`
-	// The health check status. Valid values: Healthy and Unhealthy.
+	// The health check status. Valid values:
+	//
+	// - Healthy
+	//
+	// - Unhealthy
 	//
 	// example:
 	//
@@ -124,18 +132,26 @@ type Service struct {
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The function qualifier.
+	// The qualifier of the function.
 	//
 	// example:
 	//
 	// LATEST
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-xxx
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// example:
+	//
+	// RuntimeEndpointTimeout
+	RuntimeDetailErrorCode *string `json:"runtimeDetailErrorCode,omitempty" xml:"runtimeDetailErrorCode,omitempty"`
+	// example:
+	//
+	// Available
+	RuntimeDetailStatus *string `json:"runtimeDetailStatus,omitempty" xml:"runtimeDetailStatus,omitempty"`
 	// The unique ID of the service.
 	//
 	// example:
@@ -150,7 +166,7 @@ type Service struct {
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
 	// The unhealthy endpoints.
 	UnhealthyEndpoints []*string `json:"unhealthyEndpoints,omitempty" xml:"unhealthyEndpoints,omitempty" type:"Repeated"`
-	// The update time.
+	// The time when the service was updated.
 	//
 	// example:
 	//
@@ -238,6 +254,14 @@ func (s *Service) GetQualifier() *string {
 
 func (s *Service) GetResourceGroupId() *string {
 	return s.ResourceGroupId
+}
+
+func (s *Service) GetRuntimeDetailErrorCode() *string {
+	return s.RuntimeDetailErrorCode
+}
+
+func (s *Service) GetRuntimeDetailStatus() *string {
+	return s.RuntimeDetailStatus
 }
 
 func (s *Service) GetServiceId() *string {
@@ -347,6 +371,16 @@ func (s *Service) SetQualifier(v string) *Service {
 
 func (s *Service) SetResourceGroupId(v string) *Service {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *Service) SetRuntimeDetailErrorCode(v string) *Service {
+	s.RuntimeDetailErrorCode = &v
+	return s
+}
+
+func (s *Service) SetRuntimeDetailStatus(v string) *Service {
+	s.RuntimeDetailStatus = &v
 	return s
 }
 

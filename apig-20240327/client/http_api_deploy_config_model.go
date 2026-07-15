@@ -44,7 +44,7 @@ type iHttpApiDeployConfig interface {
 }
 
 type HttpApiDeployConfig struct {
-	// Specifies whether to automatically deploy.
+	// Indicates whether auto-deploy is enabled.
 	//
 	// example:
 	//
@@ -60,11 +60,11 @@ type HttpApiDeployConfig struct {
 	BuiltinRouteNames []*string `json:"builtinRouteNames,omitempty" xml:"builtinRouteNames,omitempty" type:"Repeated"`
 	// The list of custom domain name IDs.
 	CustomDomainIds []*string `json:"customDomainIds,omitempty" xml:"customDomainIds,omitempty" type:"Repeated"`
-	// The list of custom domain name details.
+	// The list of custom domain name information.
 	CustomDomainInfos []*HttpApiDeployConfigCustomDomainInfos `json:"customDomainInfos,omitempty" xml:"customDomainInfos,omitempty" type:"Repeated"`
-	// The list of environment domain name IDs. If this parameter is not specified, all environment domain names are associated. An empty array indicates that no environment domain names are associated.
+	// The list of environment domain name IDs. If this parameter is not specified, all environment domain names are bound. An empty array indicates that no environment domain names are bound.
 	EnvDomainIds []*string `json:"envDomainIds,omitempty" xml:"envDomainIds,omitempty" type:"Repeated"`
-	// The list of environment domain name details.
+	// The list of environment domain name information.
 	EnvDomainInfos []*HttpApiDeployConfigEnvDomainInfos `json:"envDomainInfos,omitempty" xml:"envDomainInfos,omitempty" type:"Repeated"`
 	// The environment ID.
 	//
@@ -103,7 +103,7 @@ type HttpApiDeployConfig struct {
 	RouteBackend *Backend `json:"routeBackend,omitempty" xml:"routeBackend,omitempty"`
 	// The list of service configurations.
 	ServiceConfigs []*HttpApiDeployConfigServiceConfigs `json:"serviceConfigs,omitempty" xml:"serviceConfigs,omitempty" type:"Repeated"`
-	// The list of subdomain details.
+	// The list of subdomain information.
 	SubDomains []*HttpApiDeployConfigSubDomains `json:"subDomains,omitempty" xml:"subDomains,omitempty" type:"Repeated"`
 }
 
@@ -482,7 +482,7 @@ type HttpApiDeployConfigServiceConfigs struct {
 	//
 	// Qwen-Max-Service
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The observability metric routing configuration.
+	// The observability-based routing configuration.
 	//
 	// if can be null:
 	// true

@@ -14,7 +14,7 @@ type iHiMarketAgentConfig interface {
 }
 
 type HiMarketAgentConfig struct {
-	// Contains the API configuration for the agent.
+	// The agent API configuration list.
 	AgentAPIConfig *HiMarketAgentConfigAgentAPIConfig `json:"agentAPIConfig,omitempty" xml:"agentAPIConfig,omitempty" type:"Struct"`
 }
 
@@ -45,9 +45,9 @@ func (s *HiMarketAgentConfig) Validate() error {
 }
 
 type HiMarketAgentConfigAgentAPIConfig struct {
-	// The communication protocols supported by the agent.
+	// The list of agent protocols.
 	AgentProtocols []*string `json:"agentProtocols,omitempty" xml:"agentProtocols,omitempty" type:"Repeated"`
-	// The routing rules for incoming requests.
+	// The list of agent API routing configurations.
 	Routes []*HiMarketHttpRoute `json:"routes,omitempty" xml:"routes,omitempty" type:"Repeated"`
 }
 

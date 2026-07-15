@@ -20,7 +20,7 @@ type iUntagResourcesShrinkRequest interface {
 }
 
 type UntagResourcesShrinkRequest struct {
-	// Specifies whether to delete all tags. This parameter takes effect only when tags are empty. Valid values:
+	// Specifies whether to delete all tags. This parameter is valid only when tags are empty. Valid values:
 	//
 	// - true
 	//

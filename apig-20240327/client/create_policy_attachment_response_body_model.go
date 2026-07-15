@@ -20,21 +20,21 @@ type iCreatePolicyAttachmentResponseBody interface {
 }
 
 type CreatePolicyAttachmentResponseBody struct {
-	// Response code.
+	// The response code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Response data.
+	// The response data.
 	Data *CreatePolicyAttachmentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Response message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *CreatePolicyAttachmentResponseBody) Validate() error {
 }
 
 type CreatePolicyAttachmentResponseBodyData struct {
-	// Policy Mount ID
+	// The policy attachment ID.
 	//
 	// example:
 	//

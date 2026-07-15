@@ -96,11 +96,12 @@ func (s *GetConsumerResponseBody) Validate() error {
 }
 
 type GetConsumerResponseBodyData struct {
-	// The AccessKey pair authentication configuration.
+	// The AccessKey identity authentication configurations.
 	AkSkIdentityConfigs []*AkSkIdentityConfig `json:"akSkIdentityConfigs,omitempty" xml:"akSkIdentityConfigs,omitempty" type:"Repeated"`
-	// The API key authentication configuration.
-	ApiKeyIdentityConfig *ApiKeyIdentityConfig                        `json:"apiKeyIdentityConfig,omitempty" xml:"apiKeyIdentityConfig,omitempty"`
-	ConsumerGroups       []*GetConsumerResponseBodyDataConsumerGroups `json:"consumerGroups,omitempty" xml:"consumerGroups,omitempty" type:"Repeated"`
+	// The API key identity authentication configuration.
+	ApiKeyIdentityConfig *ApiKeyIdentityConfig `json:"apiKeyIdentityConfig,omitempty" xml:"apiKeyIdentityConfig,omitempty"`
+	// The list of consumer groups to which the API consumer belongs.
+	ConsumerGroups []*GetConsumerResponseBodyDataConsumerGroups `json:"consumerGroups,omitempty" xml:"consumerGroups,omitempty" type:"Repeated"`
 	// The API consumer ID.
 	//
 	// example:
@@ -113,7 +114,7 @@ type GetConsumerResponseBodyData struct {
 	//
 	// 1719386834548
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	// The publish status of the API in the current environment.
+	// The deployment status of the API in the current environment.
 	//
 	// example:
 	//
@@ -131,7 +132,7 @@ type GetConsumerResponseBodyData struct {
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The JWT authentication configuration.
+	// The JWT identity authentication configuration.
 	JwtIdentityConfig *JwtIdentityConfig `json:"jwtIdentityConfig,omitempty" xml:"jwtIdentityConfig,omitempty"`
 	// The API consumer name.
 	//
@@ -287,18 +288,26 @@ func (s *GetConsumerResponseBodyData) Validate() error {
 }
 
 type GetConsumerResponseBodyDataConsumerGroups struct {
+	// The consumer group ID.
+	//
 	// example:
 	//
 	// csg-8c13d2b4f8a1
 	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+	// The consumer group description.
+	//
 	// example:
 	//
 	// 用于线上 API 调用方分组
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The time when the API consumer joined the consumer group. The value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1715769600000
 	JoinTimestamp *int64 `json:"joinTimestamp,omitempty" xml:"joinTimestamp,omitempty"`
+	// The consumer group name.
+	//
 	// example:
 	//
 	// api-consumer-group

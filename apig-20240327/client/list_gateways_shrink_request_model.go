@@ -64,7 +64,7 @@ type ListGatewaysShrinkRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The resource group ID.
+	// The resource group.
 	//
 	// example:
 	//

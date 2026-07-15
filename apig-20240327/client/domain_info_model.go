@@ -33,6 +33,10 @@ type iDomainInfo interface {
 	GetResourceGroupId() *string
 	SetStatus(v string) *DomainInfo
 	GetStatus() *string
+	SetTlsMax(v string) *DomainInfo
+	GetTlsMax() *string
+	SetTlsMin(v string) *DomainInfo
+	GetTlsMin() *string
 	SetUpdateTimestamp(v int64) *DomainInfo
 	GetUpdateTimestamp() *int64
 }
@@ -58,7 +62,7 @@ type DomainInfo struct {
 	//
 	// -----END CERTIFICATE-----
 	ClientCACert *string `json:"clientCACert,omitempty" xml:"clientCACert,omitempty"`
-	// The source from which the domain name is created.
+	// The source from which the domain name was created.
 	//
 	// example:
 	//
@@ -88,7 +92,7 @@ type DomainInfo struct {
 	//
 	// false
 	ForceHttps *bool `json:"forceHttps,omitempty" xml:"forceHttps,omitempty"`
-	// Indicates whether MTLS mutual authentication is enabled.
+	// Specifies whether to enable mTLS mutual authentication.
 	//
 	// example:
 	//
@@ -102,9 +106,9 @@ type DomainInfo struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The protocol type supported by the domain name.
 	//
-	// - HTTP: Only the HTTP protocol is supported.
+	// - HTTP: Only HTTP is supported.
 	//
-	// - HTTP: Only the HTTPS protocol is supported.
+	// - HTTPS: Only HTTPS is supported.
 	//
 	// example:
 	//
@@ -122,6 +126,8 @@ type DomainInfo struct {
 	//
 	// Published
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	TlsMax *string `json:"tlsMax,omitempty" xml:"tlsMax,omitempty"`
+	TlsMin *string `json:"tlsMin,omitempty" xml:"tlsMin,omitempty"`
 	// The update timestamp.
 	//
 	// example:
@@ -186,6 +192,14 @@ func (s *DomainInfo) GetStatus() *string {
 	return s.Status
 }
 
+func (s *DomainInfo) GetTlsMax() *string {
+	return s.TlsMax
+}
+
+func (s *DomainInfo) GetTlsMin() *string {
+	return s.TlsMin
+}
+
 func (s *DomainInfo) GetUpdateTimestamp() *int64 {
 	return s.UpdateTimestamp
 }
@@ -247,6 +261,16 @@ func (s *DomainInfo) SetResourceGroupId(v string) *DomainInfo {
 
 func (s *DomainInfo) SetStatus(v string) *DomainInfo {
 	s.Status = &v
+	return s
+}
+
+func (s *DomainInfo) SetTlsMax(v string) *DomainInfo {
+	s.TlsMax = &v
+	return s
+}
+
+func (s *DomainInfo) SetTlsMin(v string) *DomainInfo {
+	s.TlsMin = &v
 	return s
 }
 

@@ -196,7 +196,7 @@ type ListSecretsResponseBodyDataItems struct {
 	//
 	// my_secret
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The resource count of resources that reference the current key.
+	// The resource count that references the current key.
 	//
 	// example:
 	//

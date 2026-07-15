@@ -26,19 +26,39 @@ type iHiMarketOidcConfig interface {
 }
 
 type HiMarketOidcConfig struct {
-	// Configuration settings for the authorization code grant type.
+	// The OAuth2 Authorization Code configuration.
 	AuthCodeConfig *HiMarketOidcConfigAuthCodeConfig `json:"authCodeConfig,omitempty" xml:"authCodeConfig,omitempty" type:"Struct"`
-	// Enables or disables this identity provider. If set to `false`, users cannot sign in with this provider.
+	// Indicates whether the OIDC configuration is enabled.
+	//
+	// example:
+	//
+	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The OAuth 2.0 grant type. For OIDC, this must be `authorization_code`.
+	// The authorization type.
+	//
+	// example:
+	//
+	// authorization_code
 	GrantType *string `json:"grantType,omitempty" xml:"grantType,omitempty"`
-	// Specifies how to map claims from an ID token to user attributes in your system.
+	// The identity field mapping configuration.
 	IdentityMapping *HiMarketOidcConfigIdentityMapping `json:"identityMapping,omitempty" xml:"identityMapping,omitempty" type:"Struct"`
-	// The URL for the provider\\"s logo. This logo appears on the sign-in page.
+	// The provider logo URL.
+	//
+	// example:
+	//
+	// https://example.com/logo.png
 	LogoUrl *string `json:"logoUrl,omitempty" xml:"logoUrl,omitempty"`
-	// The provider\\"s display name. This name appears on the sign-in page.
+	// The OIDC configuration name.
+	//
+	// example:
+	//
+	// my-oidc-config
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The unique identifier for the identity provider.
+	// The OIDC provider name.
+	//
+	// example:
+	//
+	// 阿里云IDaaS
 	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
 }
 
@@ -128,23 +148,59 @@ func (s *HiMarketOidcConfig) Validate() error {
 }
 
 type HiMarketOidcConfigAuthCodeConfig struct {
-	// The URL of the identity provider\\"s authorization endpoint.
+	// The authorization endpoint URL.
+	//
+	// example:
+	//
+	// https://idaas.example.com/oauth2/authorize
 	AuthorizationEndpoint *string `json:"authorizationEndpoint,omitempty" xml:"authorizationEndpoint,omitempty"`
-	// The client ID obtained from the identity provider after registering your application.
+	// The OAuth2 client ID.
+	//
+	// example:
+	//
+	// my-client-id
 	ClientId *string `json:"clientId,omitempty" xml:"clientId,omitempty"`
-	// The client secret obtained from the identity provider after registering your application.
+	// The OAuth2 client secret.
+	//
+	// example:
+	//
+	// my-client-secret
 	ClientSecret *string `json:"clientSecret,omitempty" xml:"clientSecret,omitempty"`
-	// The identity provider\\"s unique issuer URL, used to validate ID tokens.
+	// The OIDC issuer URL.
+	//
+	// example:
+	//
+	// https://idaas.example.com
 	Issuer *string `json:"issuer,omitempty" xml:"issuer,omitempty"`
-	// The provider\\"s JWK Set URI. This URI provides the public keys needed to verify ID token signatures.
+	// The JWKS public key set URI.
+	//
+	// example:
+	//
+	// https://idaas.example.com/.well-known/jwks.json
 	JwkSetUri *string `json:"jwkSetUri,omitempty" xml:"jwkSetUri,omitempty"`
-	// The application\\"s redirect URI. The provider sends the authorization code to this URI after successful authentication. You must register this URI with the identity provider.
+	// The OAuth2 redirect URI.
+	//
+	// example:
+	//
+	// https://gateway.example.com/callback
 	RedirectUri *string `json:"redirectUri,omitempty" xml:"redirectUri,omitempty"`
-	// A space-separated list of scopes to request from the provider. The `openid` scope is required for OIDC authentication. For example: `openid profile email`.
+	// The OAuth2 authorization scopes.
+	//
+	// example:
+	//
+	// openid profile email
 	Scopes *string `json:"scopes,omitempty" xml:"scopes,omitempty"`
-	// The URL of the identity provider\\"s token endpoint.
+	// The token endpoint URL.
+	//
+	// example:
+	//
+	// https://idaas.example.com/oauth2/token
 	TokenEndpoint *string `json:"tokenEndpoint,omitempty" xml:"tokenEndpoint,omitempty"`
-	// The URL of the identity provider\\"s user info endpoint.
+	// The UserInfo endpoint URL.
+	//
+	// example:
+	//
+	// https://idaas.example.com/userinfo
 	UserInfoEndpoint *string `json:"userInfoEndpoint,omitempty" xml:"userInfoEndpoint,omitempty"`
 }
 
@@ -242,13 +298,25 @@ func (s *HiMarketOidcConfigAuthCodeConfig) Validate() error {
 }
 
 type HiMarketOidcConfigIdentityMapping struct {
-	// Maps additional claims from the ID token to custom user attributes. For each mapping, the key is the target attribute in your system, and the value is the name of the claim from the ID token.
+	// The custom field mappings.
 	CustomFields map[string]*string `json:"customFields,omitempty" xml:"customFields,omitempty"`
-	// The ID token claim that maps to the user\\"s email address. The `email` claim is a common choice.
+	// The identity field name that corresponds to the email address.
+	//
+	// example:
+	//
+	// email
 	EmailField *string `json:"emailField,omitempty" xml:"emailField,omitempty"`
-	// The ID token claim that maps to the user\\"s unique ID. The `sub` claim is a common choice.
+	// The identity field name that corresponds to the user ID.
+	//
+	// example:
+	//
+	// sub
 	UserIdField *string `json:"userIdField,omitempty" xml:"userIdField,omitempty"`
-	// The ID token claim that maps to the user\\"s display name. Common choices include `name` and `preferred_username`.
+	// The identity field name that corresponds to the username.
+	//
+	// example:
+	//
+	// name
 	UserNameField *string `json:"userNameField,omitempty" xml:"userNameField,omitempty"`
 }
 

@@ -18,11 +18,23 @@ type iHiMarketPortalDomainConfig interface {
 }
 
 type HiMarketPortalDomainConfig struct {
-	// The domain name.
+	// The domain name address.
+	//
+	// example:
+	//
+	// portal.example.com
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// The domain protocol.
+	// The request protocol.
+	//
+	// example:
+	//
+	// HTTPS
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The domain type.
+	// The domain name type.
+	//
+	// example:
+	//
+	// custom
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 

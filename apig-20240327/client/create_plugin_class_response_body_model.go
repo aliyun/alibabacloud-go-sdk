@@ -20,10 +20,25 @@ type iCreatePluginClassResponseBody interface {
 }
 
 type CreatePluginClassResponseBody struct {
-	Code    *string                            `json:"code,omitempty" xml:"code,omitempty"`
-	Data    *CreatePluginClassResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	Message *string                            `json:"message,omitempty" xml:"message,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
+	Data *CreatePluginClassResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The response message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 880F8DC9-1CD9-5A83-AA54-AD2D3B7D2466
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -81,6 +96,11 @@ func (s *CreatePluginClassResponseBody) Validate() error {
 }
 
 type CreatePluginClassResponseBodyData struct {
+	// The plugin class ID.
+	//
+	// example:
+	//
+	// pls-csqmjxxxxxxx
 	PluginClassId *string `json:"pluginClassId,omitempty" xml:"pluginClassId,omitempty"`
 }
 

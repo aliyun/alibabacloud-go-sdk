@@ -20,7 +20,7 @@ type iListTagResourcesShrinkRequest interface {
 }
 
 type ListTagResourcesShrinkRequest struct {
-	// The token that determines the start point of the next query.
+	// The token for the next query.
 	//
 	// example:
 	//

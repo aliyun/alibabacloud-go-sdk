@@ -48,7 +48,12 @@ type UpdateServiceRequest struct {
 	//
 	// 80
 	HealthyPanicThreshold *float32 `json:"healthyPanicThreshold,omitempty" xml:"healthyPanicThreshold,omitempty"`
-	ModelProviderId       *string  `json:"modelProviderId,omitempty" xml:"modelProviderId,omitempty"`
+	// The model provider ID.
+	//
+	// example:
+	//
+	// mp-xxx****
+	ModelProviderId *string `json:"modelProviderId,omitempty" xml:"modelProviderId,omitempty"`
 	// The passive health check parameter settings.
 	OutlierDetectionConfig *UpdateServiceRequestOutlierDetectionConfig `json:"outlierDetectionConfig,omitempty" xml:"outlierDetectionConfig,omitempty" type:"Struct"`
 	// The port information.
@@ -199,7 +204,7 @@ type UpdateServiceRequestHealthCheckConfig struct {
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The list of expected HTTP status codes that indicate a healthy response. This parameter is required when the protocol is HTTP.
+	// The list of expected normal status codes returned by requests. This parameter is required when the protocol is HTTP.
 	ExpectedStatuses []*string `json:"expectedStatuses,omitempty" xml:"expectedStatuses,omitempty" type:"Repeated"`
 	// The healthy threshold for health checks.
 	//
@@ -339,7 +344,7 @@ func (s *UpdateServiceRequestHealthCheckConfig) Validate() error {
 }
 
 type UpdateServiceRequestOutlierDetectionConfig struct {
-	// The base ejection time, which is the initial isolation duration after a node is ejected (for example, 30 seconds). The isolation time is calculated by using the following formula: k × base_ejection_time (the initial value of k is 1). Each ejection increases the isolation time (k is incremented by 1). If consecutive checks are healthy, the isolation time is gradually reduced (k is decremented by 1).
+	// The initial ejection duration. This is the initial isolation duration after a node is ejected (for example, 30 seconds). The isolation duration is calculated by using the formula: k × base_ejection_time (k starts at 1). Each ejection increases the isolation duration (k is incremented by 1). If consecutive checks are normal, the isolation duration is gradually reduced (k is decremented by 1).
 	//
 	// example:
 	//
@@ -353,7 +358,7 @@ type UpdateServiceRequestOutlierDetectionConfig struct {
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
 	// The panic threshold.
 	//
-	// When the proportion of healthy nodes in the service is greater than the panic threshold, health checks function normally. Requests are sent only to healthy nodes and not to ejected nodes. When the proportion of healthy nodes in the service is less than or equal to the panic threshold, health checks are effectively disabled. Requests are sent to all nodes, including ejected nodes.
+	// When the proportion of healthy nodes in the service is greater than the panic threshold, health checks function normally and requests are sent only to healthy nodes, not to ejected nodes. When the proportion of healthy nodes in the service is less than or equal to the panic threshold, health checks are effectively disabled and requests are sent to all nodes, including ejected nodes.
 	//
 	// example:
 	//
@@ -437,7 +442,7 @@ type UpdateServiceRequestPorts struct {
 	//
 	// catalog
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The port number.
+	// The port.
 	//
 	// example:
 	//

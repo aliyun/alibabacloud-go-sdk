@@ -18,29 +18,23 @@ type iHiMarketPortalSettingConfig interface {
 }
 
 type HiMarketPortalSettingConfig struct {
-	// Specifies whether to automatically approve new developer registrations. If set to `false`, you must manually approve each new developer.\\
+	// Specifies whether to automatically approve developer registration requests.
 	//
-	// \\
+	// example:
 	//
-	// **Default**: `false`.\\
-	//
-	// \\
+	// false
 	AutoApproveDevelopers *bool `json:"autoApproveDevelopers,omitempty" xml:"autoApproveDevelopers,omitempty"`
-	// Specifies whether to automatically approve new API subscriptions. If set to `false`, you must manually approve each new subscription.\\
+	// Specifies whether to automatically approve API subscription requests.
 	//
-	// \\
+	// example:
 	//
-	// **Default**: `false`.\\
-	//
-	// \\
+	// false
 	AutoApproveSubscriptions *bool `json:"autoApproveSubscriptions,omitempty" xml:"autoApproveSubscriptions,omitempty"`
-	// Specifies whether to enable built-in authentication. If set to `true`, users must sign in to access the portal.\\
+	// Specifies whether to enable username-password authentication (built-in authentication).
 	//
-	// \\
+	// example:
 	//
-	// **Default**: `false`.\\
-	//
-	// \\
+	// true
 	BuiltinAuthEnabled *bool `json:"builtinAuthEnabled,omitempty" xml:"builtinAuthEnabled,omitempty"`
 }
 

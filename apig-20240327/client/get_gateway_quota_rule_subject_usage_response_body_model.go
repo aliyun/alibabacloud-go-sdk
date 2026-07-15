@@ -333,11 +333,11 @@ type GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems struct {
 	//
 	// 80
 	OutputAmount *int64 `json:"outputAmount,omitempty" xml:"outputAmount,omitempty"`
-	// The consumption (request) time.
+	// The consumption (request) time in the format of YYYY-MM-DD.
 	//
 	// example:
 	//
-	// 2026-06-05 13:16:31
+	// 2026-06-05
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
 	// The total consumption.
 	//

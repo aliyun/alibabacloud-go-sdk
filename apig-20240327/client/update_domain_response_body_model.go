@@ -96,7 +96,7 @@ func (s *UpdateDomainResponseBody) Validate() error {
 }
 
 type UpdateDomainResponseBodyData struct {
-	// The deployment revision ID.
+	// The publish version ID.
 	//
 	// example:
 	//

@@ -16,9 +16,13 @@ type iHiMarketProductRefConfig interface {
 }
 
 type HiMarketProductRefConfig struct {
-	// Reference settings for the API gateway.
+	// The APIG resource reference configuration.
 	ApigRefConfig *HiMarketProductRefConfigApigRefConfig `json:"apigRefConfig,omitempty" xml:"apigRefConfig,omitempty" type:"Struct"`
-	// Unique identifier for the gateway.
+	// The ID of the associated gateway.
+	//
+	// example:
+	//
+	// gw-xxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
 }
 
@@ -58,19 +62,47 @@ func (s *HiMarketProductRefConfig) Validate() error {
 }
 
 type HiMarketProductRefConfigApigRefConfig struct {
-	// Unique identifier for the agent API.
+	// The associated Agent API ID.
+	//
+	// example:
+	//
+	// api-xxx
 	AgentApiId *string `json:"agentApiId,omitempty" xml:"agentApiId,omitempty"`
-	// The name of the agent API.
+	// The Agent API name.
+	//
+	// example:
+	//
+	// my-agent-api
 	AgentApiName *string `json:"agentApiName,omitempty" xml:"agentApiName,omitempty"`
-	// Unique identifier for the MCP route.
+	// The associated MCP route ID.
+	//
+	// example:
+	//
+	// route-xxx
 	McpRouteId *string `json:"mcpRouteId,omitempty" xml:"mcpRouteId,omitempty"`
-	// Unique identifier for the MCP server.
+	// The associated MCP Server ID.
+	//
+	// example:
+	//
+	// mcp-xxx
 	McpServerId *string `json:"mcpServerId,omitempty" xml:"mcpServerId,omitempty"`
-	// The name of the MCP server.
+	// The MCP Server name.
+	//
+	// example:
+	//
+	// my-mcp-server
 	McpServerName *string `json:"mcpServerName,omitempty" xml:"mcpServerName,omitempty"`
-	// Unique identifier for the model API.
+	// The associated Model API ID.
+	//
+	// example:
+	//
+	// api-yyy
 	ModelApiId *string `json:"modelApiId,omitempty" xml:"modelApiId,omitempty"`
-	// The name of the model API.
+	// The Model API name.
+	//
+	// example:
+	//
+	// qwen-model-api
 	ModelApiName *string `json:"modelApiName,omitempty" xml:"modelApiName,omitempty"`
 }
 

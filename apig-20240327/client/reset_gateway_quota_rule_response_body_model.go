@@ -100,7 +100,7 @@ func (s *ResetGatewayQuotaRuleResponseBody) Validate() error {
 }
 
 type ResetGatewayQuotaRuleResponseBodyData struct {
-	// Indicates whether the write request semantics are accepted by the system. A value of false typically indicates a retryable scenario such as an unconfirmed conflict overwrite.
+	// Indicates whether the write request is accepted by the system. A value of false typically indicates a retryable scenario, such as an unconfirmed conflict overwrite.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type ResetGatewayQuotaRuleResponseBodyData struct {
 	//
 	// false
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
-	// The rule ID.
+	// The ID of the rule.
 	//
 	// example:
 	//
@@ -176,7 +176,7 @@ func (s *ResetGatewayQuotaRuleResponseBodyData) Validate() error {
 }
 
 type ResetGatewayQuotaRuleResponseBodyDataConflictPreview struct {
-	// The conflict hash.
+	// The hash of the conflict snapshot.
 	//
 	// example:
 	//
@@ -241,13 +241,23 @@ func (s *ResetGatewayQuotaRuleResponseBodyDataConflictPreview) Validate() error 
 }
 
 type ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems struct {
-	// The period type of the existing conflicting rule on the consumer. Valid values: day (daily period), week (weekly period), or month (monthly period).
+	// The period type of the existing conflicting rule on the consumer. Valid values:
+	//
+	// - day: daily period.
+	//
+	// - week: weekly period.
+	//
+	// - month: monthly period.
 	//
 	// example:
 	//
 	// week
 	ConflictPeriodType *string `json:"conflictPeriodType,omitempty" xml:"conflictPeriodType,omitempty"`
-	// The type of the existing conflicting rule on the consumer. Valid values: calendar (the conflicting rule uses a calendar period) and epoch (the conflicting rule uses a custom period).
+	// The type of the existing conflicting rule on the consumer. Valid values:
+	//
+	// - calendar: The existing conflicting rule uses a calendar period.
+	//
+	// - epoch: The existing conflicting rule uses a custom period.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iHiMarketHmacConfig interface {
 }
 
 type HiMarketHmacConfig struct {
-	// The authentication credentials.
+	// The list of credentials.
 	Credentials []*HiMarketHmacConfigCredentials `json:"credentials,omitempty" xml:"credentials,omitempty" type:"Repeated"`
 }
 
@@ -49,11 +49,23 @@ func (s *HiMarketHmacConfig) Validate() error {
 }
 
 type HiMarketHmacConfigCredentials struct {
-	// The AccessKey ID.
+	// Access Key ID
+	//
+	// example:
+	//
+	// my-access-key-123
 	Ak *string `json:"ak,omitempty" xml:"ak,omitempty"`
-	// The HMAC mode.
+	// The generation mode.
+	//
+	// example:
+	//
+	// Custom
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
-	// The AccessKey Secret.
+	// Access Key Secret
+	//
+	// example:
+	//
+	// my-secret-key-456
 	Sk *string `json:"sk,omitempty" xml:"sk,omitempty"`
 }
 

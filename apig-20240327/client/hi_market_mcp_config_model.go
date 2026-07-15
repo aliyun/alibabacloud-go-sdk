@@ -20,13 +20,21 @@ type iHiMarketMcpConfig interface {
 }
 
 type HiMarketMcpConfig struct {
-	// Configuration for the MCP server.
+	// The MCP Server configuration.
 	McpServerConfig *HiMarketMcpConfigMcpServerConfig `json:"mcpServerConfig,omitempty" xml:"mcpServerConfig,omitempty" type:"Struct"`
-	// A unique name for the MCP server.
+	// The MCP Server name.
+	//
+	// example:
+	//
+	// my-mcp-server
 	McpServerName *string `json:"mcpServerName,omitempty" xml:"mcpServerName,omitempty"`
-	// Metadata for the configuration.
+	// The metadata.
 	Meta *HiMarketMcpConfigMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
-	// The tools associated with this configuration, typically provided as a JSON-formatted string.
+	// The MCP tool definitions.
+	//
+	// example:
+	//
+	// [{\\"name\\":\\"search\\",\\"description\\":\\"搜索工具\\"}]
 	Tools *string `json:"tools,omitempty" xml:"tools,omitempty"`
 }
 
@@ -89,9 +97,13 @@ func (s *HiMarketMcpConfig) Validate() error {
 }
 
 type HiMarketMcpConfigMcpServerConfig struct {
-	// The domains managed by the server.
+	// The list of associated domain names.
 	Domains []*HiMarketDomain `json:"domains,omitempty" xml:"domains,omitempty" type:"Repeated"`
-	// The base path for the service endpoint.
+	// The path exposed by the MCP server.
+	//
+	// example:
+	//
+	// /mcp
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
 }
 
@@ -135,7 +147,11 @@ func (s *HiMarketMcpConfigMcpServerConfig) Validate() error {
 }
 
 type HiMarketMcpConfigMeta struct {
-	// The communication protocol. Can be `http` or `https`.
+	// The MCP protocol type.
+	//
+	// example:
+	//
+	// StreamableHTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
 }
 

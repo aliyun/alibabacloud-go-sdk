@@ -20,10 +20,19 @@ type iCreateAiModelProviderResponseBody interface {
 }
 
 type CreateAiModelProviderResponseBody struct {
-	Code      *string                                `json:"code,omitempty" xml:"code,omitempty"`
-	Data      *CreateAiModelProviderResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	Message   *string                                `json:"message,omitempty" xml:"message,omitempty"`
-	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                                `json:"code,omitempty" xml:"code,omitempty"`
+	Data *CreateAiModelProviderResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 464F9EA0-1052-51BD-8187-D292AA2D8D24
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s CreateAiModelProviderResponseBody) String() string {
@@ -80,15 +89,36 @@ func (s *CreateAiModelProviderResponseBody) Validate() error {
 }
 
 type CreateAiModelProviderResponseBodyData struct {
-	BoundServices   []*ServiceInfo                                     `json:"boundServices,omitempty" xml:"boundServices,omitempty" type:"Repeated"`
-	DisplayName     *string                                            `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	GatewayId       *string                                            `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	ModelCards      []*CreateAiModelProviderResponseBodyDataModelCards `json:"modelCards,omitempty" xml:"modelCards,omitempty" type:"Repeated"`
-	ModelCount      *int32                                             `json:"modelCount,omitempty" xml:"modelCount,omitempty"`
-	ModelProviderId *string                                            `json:"modelProviderId,omitempty" xml:"modelProviderId,omitempty"`
-	Provider        *string                                            `json:"provider,omitempty" xml:"provider,omitempty"`
-	Source          *string                                            `json:"source,omitempty" xml:"source,omitempty"`
-	UpdateTime      *string                                            `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	BoundServices []*ServiceInfo `json:"boundServices,omitempty" xml:"boundServices,omitempty" type:"Repeated"`
+	// example:
+	//
+	// OpenAI
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// example:
+	//
+	// gw-ucbx3s2m****
+	GatewayId  *string                                            `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	ModelCards []*CreateAiModelProviderResponseBodyDataModelCards `json:"modelCards,omitempty" xml:"modelCards,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 3
+	ModelCount *int32 `json:"modelCount,omitempty" xml:"modelCount,omitempty"`
+	// example:
+	//
+	// mp-xxx****
+	ModelProviderId *string `json:"modelProviderId,omitempty" xml:"modelProviderId,omitempty"`
+	// example:
+	//
+	// openai
+	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
+	// example:
+	//
+	// custom
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// example:
+	//
+	// 2024-07-03T10:48:00Z
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s CreateAiModelProviderResponseBodyData) String() string {
@@ -205,14 +235,35 @@ func (s *CreateAiModelProviderResponseBodyData) Validate() error {
 type CreateAiModelProviderResponseBodyDataModelCards struct {
 	AvailablePaths []*CreateAiModelProviderResponseBodyDataModelCardsAvailablePaths `json:"availablePaths,omitempty" xml:"availablePaths,omitempty" type:"Repeated"`
 	Credit         *CreateAiModelProviderResponseBodyDataModelCardsCredit           `json:"credit,omitempty" xml:"credit,omitempty" type:"Struct"`
-	Features       map[string]interface{}                                           `json:"features,omitempty" xml:"features,omitempty"`
-	GatewayId      *string                                                          `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	Meta           *CreateAiModelProviderResponseBodyDataModelCardsMeta             `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
-	ModelCardId    *string                                                          `json:"modelCardId,omitempty" xml:"modelCardId,omitempty"`
-	ModelName      *string                                                          `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	ModelProvider  *string                                                          `json:"modelProvider,omitempty" xml:"modelProvider,omitempty"`
-	Source         *string                                                          `json:"source,omitempty" xml:"source,omitempty"`
-	UpdateTime     *string                                                          `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// example:
+	//
+	// {"stream":true,"tools":true}
+	Features map[string]interface{} `json:"features,omitempty" xml:"features,omitempty"`
+	// example:
+	//
+	// gw-ucbx3s2m****
+	GatewayId *string                                              `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	Meta      *CreateAiModelProviderResponseBodyDataModelCardsMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
+	// example:
+	//
+	// mc-xxx****
+	ModelCardId *string `json:"modelCardId,omitempty" xml:"modelCardId,omitempty"`
+	// example:
+	//
+	// gpt-4
+	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	// example:
+	//
+	// openai
+	ModelProvider *string `json:"modelProvider,omitempty" xml:"modelProvider,omitempty"`
+	// example:
+	//
+	// custom
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// example:
+	//
+	// 2024-07-03T10:48:00Z
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s CreateAiModelProviderResponseBodyDataModelCards) String() string {
@@ -337,7 +388,13 @@ func (s *CreateAiModelProviderResponseBodyDataModelCards) Validate() error {
 }
 
 type CreateAiModelProviderResponseBodyDataModelCardsAvailablePaths struct {
+	// example:
+	//
+	// /v1/chat/completions
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// example:
+	//
+	// chat
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -372,10 +429,22 @@ func (s *CreateAiModelProviderResponseBodyDataModelCardsAvailablePaths) Validate
 }
 
 type CreateAiModelProviderResponseBodyDataModelCardsCredit struct {
-	CacheCost  *float32 `json:"cacheCost,omitempty" xml:"cacheCost,omitempty"`
-	InputCost  *float32 `json:"inputCost,omitempty" xml:"inputCost,omitempty"`
+	// example:
+	//
+	// 0.015
+	CacheCost *float32 `json:"cacheCost,omitempty" xml:"cacheCost,omitempty"`
+	// example:
+	//
+	// 0.03
+	InputCost *float32 `json:"inputCost,omitempty" xml:"inputCost,omitempty"`
+	// example:
+	//
+	// 0.06
 	OutputCost *float32 `json:"outputCost,omitempty" xml:"outputCost,omitempty"`
-	Type       *string  `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// token
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s CreateAiModelProviderResponseBodyDataModelCardsCredit) String() string {
@@ -427,8 +496,17 @@ func (s *CreateAiModelProviderResponseBodyDataModelCardsCredit) Validate() error
 }
 
 type CreateAiModelProviderResponseBodyDataModelCardsMeta struct {
-	MaxInputTokens            *int64    `json:"maxInputTokens,omitempty" xml:"maxInputTokens,omitempty"`
-	MaxOutputTokens           *int64    `json:"maxOutputTokens,omitempty" xml:"maxOutputTokens,omitempty"`
+	// example:
+	//
+	// 128000
+	MaxInputTokens *int64 `json:"maxInputTokens,omitempty" xml:"maxInputTokens,omitempty"`
+	// example:
+	//
+	// 4096
+	MaxOutputTokens *int64 `json:"maxOutputTokens,omitempty" xml:"maxOutputTokens,omitempty"`
+	// example:
+	//
+	// 132096
 	MaxTokens                 *int64    `json:"maxTokens,omitempty" xml:"maxTokens,omitempty"`
 	SupportedInputModalities  []*string `json:"supportedInputModalities,omitempty" xml:"supportedInputModalities,omitempty" type:"Repeated"`
 	SupportedOutputModalities []*string `json:"supportedOutputModalities,omitempty" xml:"supportedOutputModalities,omitempty" type:"Repeated"`

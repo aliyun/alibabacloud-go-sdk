@@ -150,13 +150,13 @@ type GetGatewayQuotaRuleResponseBodyData struct {
 	//
 	// enabled
 	RuleStatus *string `json:"ruleStatus,omitempty" xml:"ruleStatus,omitempty"`
-	// The time zone corresponding to the calendar period, in UTC+x format.
+	// The time zone for the calendar period, in UTC+x format.
 	//
 	// example:
 	//
 	// GMT+8
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
-	// The reset period type. Currently, only calendar period is supported, which means windowAlignment="calendar".
+	// The reset period type.
 	//
 	// example:
 	//
@@ -285,13 +285,13 @@ func (s *GetGatewayQuotaRuleResponseBodyData) Validate() error {
 }
 
 type GetGatewayQuotaRuleResponseBodyDataConsumers struct {
-	// The principal (consumer) ID.
+	// The ID of the principal (consumer).
 	//
 	// example:
 	//
 	// c-aaa
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The principal (consumer) name.
+	// The name of the principal (consumer).
 	//
 	// example:
 	//

@@ -135,7 +135,7 @@ func (s *CreateServiceRequest) Validate() error {
 type CreateServiceRequestServiceConfigs struct {
 	// The list of domain names or fixed addresses.
 	Addresses []*string `json:"addresses,omitempty" xml:"addresses,omitempty" type:"Repeated"`
-	// The Agent service configuration. This parameter is required when `sourceType` is set to `AGENT`.
+	// The Agent service configuration. This parameter is required when sourceType is set to AGENT.
 	AgentServiceConfig *AgentServiceConfig `json:"agentServiceConfig,omitempty" xml:"agentServiceConfig,omitempty"`
 	// The AI service configuration.
 	AiServiceConfig *AiServiceConfig `json:"aiServiceConfig,omitempty" xml:"aiServiceConfig,omitempty"`
@@ -152,7 +152,12 @@ type CreateServiceRequestServiceConfigs struct {
 	// example:
 	//
 	// DEFAULT_GROUP
-	GroupName       *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	// The model provider ID.
+	//
+	// example:
+	//
+	// mp-xxx****
 	ModelProviderId *string `json:"modelProviderId,omitempty" xml:"modelProviderId,omitempty"`
 	// The service name.
 	//
@@ -160,7 +165,7 @@ type CreateServiceRequestServiceConfigs struct {
 	//
 	// user-service
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The namespace of the service:
+	// The namespace of the service.
 	//
 	// - If sourceType is set to K8S, this parameter specifies the namespace of the Kubernetes service.
 	//

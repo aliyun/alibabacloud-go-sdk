@@ -89,23 +89,23 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // Description:
 //
-// This operation adds a consumer-based quota rule to an AI gateway. This operation takes effect only on AI gateways of version 2.1.19 or later.
+// Creates a consumer-based quota rule for an AI gateway. This operation takes effect only on AI gateways of version 2.1.19 or later.
 //
 // >
 //
-// >  Recommended call logic:
+// >  Recommended call sequence:
 //
-// > - 1. Perform a dry run to check for rule conflicts.
+// > - Step 1: Perform a dry run to check for rule conflicts.
 //
-// > - - Set dryRun=true.
+// > - - Set dryRun to true.
 //
-// > - - The response contains a conflict preview with conflictHash.
+// > - - The response contains a conflict preview with a conflictHash value.
 //
-// > - 2. Submit the request after confirmation.
+// > - Step 2: Submit the request after confirmation.
 //
-// > - - No conflict: dryRun=false, overwrite=false.
+// > - - No conflicts: Set dryRun to false and overwrite to false.
 //
-// > - - Conflict exists and overwrite confirmed: dryRun=false, overwrite=true, conflictHash=<value returned in the previous step>
+// > - - Conflicts exist and you confirm the overwrite: Set dryRun to false, overwrite to true, and conflictHash to the value returned in the previous step.
 //
 // @param request - AddGatewayQuotaRuleRequest
 //
@@ -200,23 +200,23 @@ func (client *Client) AddGatewayQuotaRuleWithOptions(gatewayId *string, request 
 //
 // Description:
 //
-// This operation adds a consumer-based quota rule to an AI gateway. This operation takes effect only on AI gateways of version 2.1.19 or later.
+// Creates a consumer-based quota rule for an AI gateway. This operation takes effect only on AI gateways of version 2.1.19 or later.
 //
 // >
 //
-// >  Recommended call logic:
+// >  Recommended call sequence:
 //
-// > - 1. Perform a dry run to check for rule conflicts.
+// > - Step 1: Perform a dry run to check for rule conflicts.
 //
-// > - - Set dryRun=true.
+// > - - Set dryRun to true.
 //
-// > - - The response contains a conflict preview with conflictHash.
+// > - - The response contains a conflict preview with a conflictHash value.
 //
-// > - 2. Submit the request after confirmation.
+// > - Step 2: Submit the request after confirmation.
 //
-// > - - No conflict: dryRun=false, overwrite=false.
+// > - - No conflicts: Set dryRun to false and overwrite to false.
 //
-// > - - Conflict exists and overwrite confirmed: dryRun=false, overwrite=true, conflictHash=<value returned in the previous step>
+// > - - Conflicts exist and you confirm the overwrite: Set dryRun to false, overwrite to true, and conflictHash to the value returned in the previous step.
 //
 // @param request - AddGatewayQuotaRuleRequest
 //
@@ -235,7 +235,7 @@ func (client *Client) AddGatewayQuotaRule(gatewayId *string, request *AddGateway
 
 // Summary:
 //
-// Authorizes a security group to allow gateway access to services.
+// Authorizes a security group that allows a gateway to access services.
 //
 // @param request - AddGatewaySecurityGroupRuleRequest
 //
@@ -290,7 +290,7 @@ func (client *Client) AddGatewaySecurityGroupRuleWithOptions(gatewayId *string, 
 
 // Summary:
 //
-// Authorizes a security group to allow gateway access to services.
+// Authorizes a security group that allows a gateway to access services.
 //
 // @param request - AddGatewaySecurityGroupRuleRequest
 //
@@ -375,7 +375,7 @@ func (client *Client) BatchDeleteConsumerAuthorizationRule(request *BatchDeleteC
 
 // Summary:
 //
-// Transfers a resource to a different resource group.
+// Moves a resource to a different resource group.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -434,7 +434,7 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 
 // Summary:
 //
-// Transfers a resource to a different resource group.
+// Moves a resource to a different resource group.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -1864,7 +1864,7 @@ func (client *Client) CreatePolicy(request *CreatePolicyRequest) (_result *Creat
 
 // Summary:
 //
-// Creates a policy attachment.
+// Creates a policy attachment to a resource.
 //
 // @param request - CreatePolicyAttachmentRequest
 //
@@ -1927,7 +1927,7 @@ func (client *Client) CreatePolicyAttachmentWithOptions(request *CreatePolicyAtt
 
 // Summary:
 //
-// Creates a policy attachment.
+// Creates a policy attachment to a resource.
 //
 // @param request - CreatePolicyAttachmentRequest
 //
@@ -2535,7 +2535,7 @@ func (client *Client) DeleteGateway(gatewayId *string) (_result *DeleteGatewayRe
 //
 // Description:
 //
-// Deletes a consumer-based quota rule from an AI gateway. This operation applies only to AI gateways of version 2.1.19 or later.
+// Deletes a consumer-based quota rule from an AI gateway. This operation takes effect only for AI gateways of version 2.1.19 or later.
 //
 // @param request - DeleteGatewayQuotaRuleRequest
 //
@@ -2580,7 +2580,7 @@ func (client *Client) DeleteGatewayQuotaRuleWithOptions(gatewayId *string, ruleI
 //
 // Description:
 //
-// Deletes a consumer-based quota rule from an AI gateway. This operation applies only to AI gateways of version 2.1.19 or later.
+// Deletes a consumer-based quota rule from an AI gateway. This operation takes effect only for AI gateways of version 2.1.19 or later.
 //
 // @param request - DeleteGatewayQuotaRuleRequest
 //
@@ -2599,7 +2599,7 @@ func (client *Client) DeleteGatewayQuotaRule(gatewayId *string, ruleId *string, 
 
 // Summary:
 //
-// Deletes a gateway security group rule.
+// Deletes a security group rule from a gateway.
 //
 // @param request - DeleteGatewaySecurityGroupRuleRequest
 //
@@ -2646,7 +2646,7 @@ func (client *Client) DeleteGatewaySecurityGroupRuleWithOptions(gatewayId *strin
 
 // Summary:
 //
-// Deletes a gateway security group rule.
+// Deletes a security group rule from a gateway.
 //
 // @param request - DeleteGatewaySecurityGroupRuleRequest
 //
@@ -2906,6 +2906,66 @@ func (client *Client) DeletePluginAttachment(pluginAttachmentId *string) (_resul
 	headers := make(map[string]*string)
 	_result = &DeletePluginAttachmentResponse{}
 	_body, _err := client.DeletePluginAttachmentWithOptions(pluginAttachmentId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # DeletePluginClass
+//
+// @param request - DeletePluginClassRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePluginClassResponse
+func (client *Client) DeletePluginClassWithOptions(pluginClassId *string, request *DeletePluginClassRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeletePluginClassResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeletePluginClass"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/plugin-classes/" + dara.PercentEncode(dara.StringValue(pluginClassId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeletePluginClassResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # DeletePluginClass
+//
+// @param request - DeletePluginClassRequest
+//
+// @return DeletePluginClassResponse
+func (client *Client) DeletePluginClass(pluginClassId *string, request *DeletePluginClassRequest) (_result *DeletePluginClassResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeletePluginClassResponse{}
+	_body, _err := client.DeletePluginClassWithOptions(pluginClassId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3832,7 +3892,7 @@ func (client *Client) GetEnvironment(environmentId *string, request *GetEnvironm
 
 // Summary:
 //
-// Queries the basic information about an instance, such as the virtual private cloud (VPC) and vSwitch to which the instance belongs and its ingress.
+// Retrieves basic information about a gateway, including the associated VPC, vSwitch, and gateway ingress.
 //
 // @param headers - map
 //
@@ -3865,7 +3925,7 @@ func (client *Client) GetGatewayWithOptions(gatewayId *string, headers map[strin
 
 // Summary:
 //
-// Queries the basic information about an instance, such as the virtual private cloud (VPC) and vSwitch to which the instance belongs and its ingress.
+// Retrieves basic information about a gateway, including the associated VPC, vSwitch, and gateway ingress.
 //
 // @return GetGatewayResponse
 func (client *Client) GetGateway(gatewayId *string) (_result *GetGatewayResponse, _err error) {
@@ -3886,7 +3946,7 @@ func (client *Client) GetGateway(gatewayId *string) (_result *GetGatewayResponse
 //
 // Description:
 //
-// This operation queries a specific consumer quota rule on an AI gateway.
+// Queries the details of a consumer quota rule on an AI gateway.
 //
 // @param request - GetGatewayQuotaRuleRequest
 //
@@ -3945,7 +4005,7 @@ func (client *Client) GetGatewayQuotaRuleWithOptions(gatewayId *string, ruleId *
 //
 // Description:
 //
-// This operation queries a specific consumer quota rule on an AI gateway.
+// Queries the details of a consumer quota rule on an AI gateway.
 //
 // @param request - GetGatewayQuotaRuleRequest
 //
@@ -3964,7 +4024,7 @@ func (client *Client) GetGatewayQuotaRule(gatewayId *string, ruleId *string, req
 
 // Summary:
 //
-// Queries the usage details of a subject under a gateway quota rate-limiting rule, including used quota, total quota, whether the limit is exceeded, usage details, and consumption records.
+// Queries the usage details of a subject under a gateway quota throttling rule, including used quota, total quota, whether the limit is exceeded, usage details, and consumption records.
 //
 // Description:
 //
@@ -4019,7 +4079,7 @@ func (client *Client) GetGatewayQuotaRuleSubjectUsageWithOptions(gatewayId *stri
 
 // Summary:
 //
-// Queries the usage details of a subject under a gateway quota rate-limiting rule, including used quota, total quota, whether the limit is exceeded, usage details, and consumption records.
+// Queries the usage details of a subject under a gateway quota throttling rule, including used quota, total quota, whether the limit is exceeded, usage details, and consumption records.
 //
 // Description:
 //
@@ -4300,7 +4360,7 @@ func (client *Client) GetPluginAttachment(pluginAttachmentId *string) (_result *
 
 // Summary:
 //
-// Retrieves a custom plugin class.
+// Retrieves a custom plug-in class.
 //
 // @param request - GetPluginClassRequest
 //
@@ -4341,7 +4401,7 @@ func (client *Client) GetPluginClassWithOptions(pluginClassId *string, request *
 
 // Summary:
 //
-// Retrieves a custom plugin class.
+// Retrieves a custom plug-in class.
 //
 // @param request - GetPluginClassRequest
 //
@@ -4808,7 +4868,7 @@ func (client *Client) GetTraceConfig(gatewayId *string, request *GetTraceConfigR
 
 // Summary:
 //
-// Imports an HTTP API. You can import an OpenAPI 2.0 or OpenAPI 3.0.x definition file as a REST API.
+// Imports an HTTP API. This operation supports importing OpenAPI 2.0 and OpenAPI 3.0.x definition files as REST-type APIs.
 //
 // @param request - ImportHttpApiRequest
 //
@@ -4907,7 +4967,7 @@ func (client *Client) ImportHttpApiWithOptions(request *ImportHttpApiRequest, he
 
 // Summary:
 //
-// Imports an HTTP API. You can import an OpenAPI 2.0 or OpenAPI 3.0.x definition file as a REST API.
+// Imports an HTTP API. This operation supports importing OpenAPI 2.0 and OpenAPI 3.0.x definition files as REST-type APIs.
 //
 // @param request - ImportHttpApiRequest
 //
@@ -5555,11 +5615,11 @@ func (client *Client) ListGatewayFeatures(gatewayId *string) (_result *ListGatew
 
 // Summary:
 //
-// Queries the list of API consumer quota rules bound to a gateway.
+// Queries the list of consumer quota rules bound to a gateway.
 //
 // Description:
 //
-// Queries the list of API consumer quota rules bound to a gateway.
+// Queries the list of consumer quota rules bound to a gateway.
 //
 // @param request - ListGatewayQuotaRulesRequest
 //
@@ -5622,11 +5682,11 @@ func (client *Client) ListGatewayQuotaRulesWithOptions(gatewayId *string, reques
 
 // Summary:
 //
-// Queries the list of API consumer quota rules bound to a gateway.
+// Queries the list of consumer quota rules bound to a gateway.
 //
 // Description:
 //
-// Queries the list of API consumer quota rules bound to a gateway.
+// Queries the list of consumer quota rules bound to a gateway.
 //
 // @param request - ListGatewayQuotaRulesRequest
 //
@@ -7119,16 +7179,30 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// Retrieves the zones available for a cloud-native API gateway in a specified region.
+// Retrieves the zones available for a cloud-native API gateway in a specific region.
+//
+// @param request - ListZonesRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListZonesResponse
-func (client *Client) ListZonesWithOptions(headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListZonesResponse, _err error) {
+func (client *Client) ListZonesWithOptions(request *ListZonesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListZonesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GatewayEdition) {
+		query["gatewayEdition"] = request.GatewayEdition
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("ListZones"),
@@ -7152,14 +7226,16 @@ func (client *Client) ListZonesWithOptions(headers map[string]*string, runtime *
 
 // Summary:
 //
-// Retrieves the zones available for a cloud-native API gateway in a specified region.
+// Retrieves the zones available for a cloud-native API gateway in a specific region.
+//
+// @param request - ListZonesRequest
 //
 // @return ListZonesResponse
-func (client *Client) ListZones() (_result *ListZonesResponse, _err error) {
+func (client *Client) ListZones(request *ListZonesRequest) (_result *ListZonesResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &ListZonesResponse{}
-	_body, _err := client.ListZonesWithOptions(headers, runtime)
+	_body, _err := client.ListZonesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7169,7 +7245,7 @@ func (client *Client) ListZones() (_result *ListZonesResponse, _err error) {
 
 // Summary:
 //
-// Queries a list of consumer authorization rules.
+// Queries the list of consumer authorization rules.
 //
 // @param request - QueryConsumerAuthorizationRulesRequest
 //
@@ -7264,7 +7340,7 @@ func (client *Client) QueryConsumerAuthorizationRulesWithOptions(request *QueryC
 
 // Summary:
 //
-// Queries a list of consumer authorization rules.
+// Queries the list of consumer authorization rules.
 //
 // @param request - QueryConsumerAuthorizationRulesRequest
 //
@@ -7333,27 +7409,27 @@ func (client *Client) RemoveConsumerAuthorizationRule(consumerAuthorizationRuleI
 
 // Summary:
 //
-// Resets a quota rate limiting rule on a gateway.
+// Resets a quota throttling rule on a gateway.
 //
 // Description:
 //
-// Resets a quota rate limiting rule on a gateway. This operation takes effect only for AI gateways with a version later than 2.1.19. The reset clears the historical usage of consumers on the rule.
+// Resets a quota throttling rule on a gateway. This operation takes effect only on AI gateways running version 2.1.19 or later. Resetting a rule clears the historical usage of consumers associated with the rule.
 //
 // >
 //
-// >  Recommended call logic:
+// >  Recommended call sequence:
 //
 // > - 1. Perform a dry run to check for rule conflicts.
 //
-// > - - Set dryRun=true.
+// > - - Set dryRun to true.
 //
 // > - - The response contains a conflict preview with conflictHash.
 //
 // > - 2. Submit the request after confirmation.
 //
-// > - - No conflict: dryRun=false, overwrite=false.
+// > - - No conflicts: Set dryRun to false and overwrite to false.
 //
-// > - - Conflict exists and overwrite confirmed: dryRun=false, overwrite=true, conflictHash=<value returned in the previous step>
+// > - - Conflicts exist and you confirm the overwrite: Set dryRun to false, overwrite to true, and conflictHash to the value returned in the previous step.
 //
 // @param request - ResetGatewayQuotaRuleRequest
 //
@@ -7428,27 +7504,27 @@ func (client *Client) ResetGatewayQuotaRuleWithOptions(gatewayId *string, ruleId
 
 // Summary:
 //
-// Resets a quota rate limiting rule on a gateway.
+// Resets a quota throttling rule on a gateway.
 //
 // Description:
 //
-// Resets a quota rate limiting rule on a gateway. This operation takes effect only for AI gateways with a version later than 2.1.19. The reset clears the historical usage of consumers on the rule.
+// Resets a quota throttling rule on a gateway. This operation takes effect only on AI gateways running version 2.1.19 or later. Resetting a rule clears the historical usage of consumers associated with the rule.
 //
 // >
 //
-// >  Recommended call logic:
+// >  Recommended call sequence:
 //
 // > - 1. Perform a dry run to check for rule conflicts.
 //
-// > - - Set dryRun=true.
+// > - - Set dryRun to true.
 //
 // > - - The response contains a conflict preview with conflictHash.
 //
 // > - 2. Submit the request after confirmation.
 //
-// > - - No conflict: dryRun=false, overwrite=false.
+// > - - No conflicts: Set dryRun to false and overwrite to false.
 //
-// > - - Conflict exists and overwrite confirmed: dryRun=false, overwrite=true, conflictHash=<value returned in the previous step>
+// > - - Conflicts exist and you confirm the overwrite: Set dryRun to false, overwrite to true, and conflictHash to the value returned in the previous step.
 //
 // @param request - ResetGatewayQuotaRuleRequest
 //
@@ -8993,7 +9069,7 @@ func (client *Client) UpdateHttpApiRoute(httpApiId *string, routeId *string, req
 //
 // Description:
 //
-// Only sources of the **Container Service*	- type are allowed to update the listener Ingress configuration.
+// Only sources of the **Container Service*	- type can update the Ingress listener configuration.
 //
 // @param request - UpdateMcpServerRequest
 //
@@ -9088,7 +9164,7 @@ func (client *Client) UpdateMcpServerWithOptions(mcpServerId *string, request *U
 //
 // Description:
 //
-// Only sources of the **Container Service*	- type are allowed to update the listener Ingress configuration.
+// Only sources of the **Container Service*	- type can update the Ingress listener configuration.
 //
 // @param request - UpdateMcpServerRequest
 //

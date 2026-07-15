@@ -40,21 +40,21 @@ type iCreateMcpServerRequest interface {
 }
 
 type CreateMcpServerRequest struct {
-	// The list of assembled sources. This parameter is required when type is set to AssemblyMCP.
+	// The list of assembly sources. This parameter is required when type is set to AssemblyMCP.
 	AssembledSources []*CreateMcpServerRequestAssembledSources `json:"assembledSources,omitempty" xml:"assembledSources,omitempty" type:"Repeated"`
 	// The backend service configuration of the route.
 	BackendConfig *CreateMcpServerRequestBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
 	// The creation source type. Valid values:
 	//
-	// - ApiGatewayHttpToMCP: gateway-managed HTTP-to-MCP conversion.
+	// - ApiGatewayHttpToMCP: gateway-managed HTTP-to-MCP conversion
 	//
-	// - ApiGatewayProxyMcpHosting: gateway-managed direct MCP proxy.
+	// - ApiGatewayProxyMcpHosting: gateway-managed direct MCP proxy
 	//
-	// - ApiGatewayAssembly: gateway MCP assembly.
+	// - ApiGatewayAssembly: gateway MCP assembly
 	//
-	// - NacosHttpToMCP: gateway-managed Nacos-synced HTTP-to-MCP conversion.
+	// - NacosHttpToMCP: gateway-managed Nacos-synced HTTP-to-MCP conversion
 	//
-	// - NacosMcpHosting: gateway-managed Nacos-synced direct MCP proxy.
+	// - NacosMcpHosting: gateway-managed Nacos-synced direct MCP proxy
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type CreateMcpServerRequest struct {
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
 	// The type. Valid values:
 	//
-	// - RealMCP: standard MCP service.
+	// - RealMCP: standard MCP service
 	//
 	// This parameter is required.
 	//
@@ -406,9 +406,9 @@ type CreateMcpServerRequestBackendConfigServices struct {
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
 	// The service protocol. Valid values:
 	//
-	// - HTTP.
+	// - HTTP
 	//
-	// - HTTPS.
+	// - HTTPS
 	//
 	// example:
 	//

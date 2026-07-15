@@ -30,7 +30,7 @@ type ListPoliciesRequest struct {
 	//
 	// api-cq7l5s5lhtgi6qasrdc0
 	AttachResourceId *string `json:"attachResourceId,omitempty" xml:"attachResourceId,omitempty"`
-	// The type of attachment point supported by the policy.
+	// The type of the attachment point supported by the policy.
 	//
 	// Valid values:
 	//

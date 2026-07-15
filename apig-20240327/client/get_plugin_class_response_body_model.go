@@ -20,10 +20,25 @@ type iGetPluginClassResponseBody interface {
 }
 
 type GetPluginClassResponseBody struct {
-	Code    *string                         `json:"code,omitempty" xml:"code,omitempty"`
-	Data    *GetPluginClassResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	Message *string                         `json:"message,omitempty" xml:"message,omitempty"`
+	// The response status code.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
+	Data *GetPluginClassResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The response message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 29D8B6AE-326F-51AA-83F8-CC00DAF513F8
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -81,13 +96,48 @@ func (s *GetPluginClassResponseBody) Validate() error {
 }
 
 type GetPluginClassResponseBodyData struct {
-	Alias         *string `json:"alias,omitempty" xml:"alias,omitempty"`
-	Description   *string `json:"description,omitempty" xml:"description,omitempty"`
-	Document      *string `json:"document,omitempty" xml:"document,omitempty"`
-	Name          *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The plug-in alias.
+	//
+	// example:
+	//
+	// Key Auth
+	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
+	// The plug-in description.
+	//
+	// example:
+	//
+	// Authentication based on API Key
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The document key.
+	//
+	// example:
+	//
+	// doc-key-auth
+	Document *string `json:"document,omitempty" xml:"document,omitempty"`
+	// The plug-in name.
+	//
+	// example:
+	//
+	// key-auth
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The publish status.
+	//
+	// example:
+	//
+	// Success
 	PublishStatus *string `json:"publishStatus,omitempty" xml:"publishStatus,omitempty"`
-	Type          *string `json:"type,omitempty" xml:"type,omitempty"`
-	WasmLanguage  *string `json:"wasmLanguage,omitempty" xml:"wasmLanguage,omitempty"`
+	// The plug-in type.
+	//
+	// example:
+	//
+	// Auth
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The Wasm plug-in programming language.
+	//
+	// example:
+	//
+	// TinyGo
+	WasmLanguage *string `json:"wasmLanguage,omitempty" xml:"wasmLanguage,omitempty"`
 }
 
 func (s GetPluginClassResponseBodyData) String() string {

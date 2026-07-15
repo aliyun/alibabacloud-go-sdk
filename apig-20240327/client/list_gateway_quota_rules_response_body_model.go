@@ -36,7 +36,7 @@ type ListGatewayQuotaRulesResponseBody struct {
 	//
 	// {"totalSize":100}
 	Data *ListGatewayQuotaRulesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The maximum number of records to retrieve in a single request. This parameter is not supported.
+	// The maximum number of records to retrieve at a time. This parameter is not supported.
 	//
 	// example:
 	//
@@ -254,13 +254,13 @@ type ListGatewayQuotaRulesResponseBodyDataItems struct {
 	//
 	// enabled
 	RuleStatus *string `json:"ruleStatus,omitempty" xml:"ruleStatus,omitempty"`
-	// The time zone for the calendar period, in UTC+x format.
+	// The time zone for the natural period, in UTC+x format.
 	//
 	// example:
 	//
 	// GMT+8
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
-	// The reset period type. Only calendar periods are supported, which means windowAlignment="calendar".
+	// The reset period type.
 	//
 	// example:
 	//

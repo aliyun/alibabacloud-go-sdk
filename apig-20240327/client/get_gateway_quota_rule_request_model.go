@@ -28,13 +28,13 @@ type GetGatewayQuotaRuleRequest struct {
 	ConsumerPageNumber *string `json:"consumerPageNumber,omitempty" xml:"consumerPageNumber,omitempty"`
 	// Deprecated
 	//
-	// The page size of the consumer list.
+	// The number of consumers per page.
 	//
 	// example:
 	//
 	// 10
 	ConsumerPageSize *string `json:"consumerPageSize,omitempty" xml:"consumerPageSize,omitempty"`
-	// Specifies whether to return the consumer list.
+	// Specifies whether to include the consumer list in the response.
 	WithConsumers *bool `json:"withConsumers,omitempty" xml:"withConsumers,omitempty"`
 }
 

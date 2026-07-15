@@ -14,7 +14,7 @@ type iHiMarketModelConfig interface {
 }
 
 type HiMarketModelConfig struct {
-	// Configuration for the model API.
+	// The Model API configuration wrapper.
 	ModelAPIConfig *HiMarketModelConfigModelAPIConfig `json:"modelAPIConfig,omitempty" xml:"modelAPIConfig,omitempty" type:"Struct"`
 }
 
@@ -45,11 +45,15 @@ func (s *HiMarketModelConfig) Validate() error {
 }
 
 type HiMarketModelConfigModelAPIConfig struct {
-	// The AI protocols supported by the model.
+	// The list of AI protocols.
 	AiProtocols []*string `json:"aiProtocols,omitempty" xml:"aiProtocols,omitempty" type:"Repeated"`
-	// The model category.
+	// The model categorization.
+	//
+	// example:
+	//
+	// Text
 	ModelCategory *string `json:"modelCategory,omitempty" xml:"modelCategory,omitempty"`
-	// Route configurations for the model API.
+	// The list of routing configurations.
 	Routes []*HiMarketHttpRoute `json:"routes,omitempty" xml:"routes,omitempty" type:"Repeated"`
 }
 

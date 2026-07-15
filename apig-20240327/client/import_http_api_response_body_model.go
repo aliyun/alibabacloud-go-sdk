@@ -157,21 +157,28 @@ func (s *ImportHttpApiResponseBodyData) Validate() error {
 }
 
 type ImportHttpApiResponseBodyDataDryRunInfo struct {
-	// The error messages. If error messages are not empty, the API cannot be imported successfully.
+	// The error messages. If error messages are not empty, the API cannot be successfully imported.
 	ErrorMessages []*string `json:"errorMessages,omitempty" xml:"errorMessages,omitempty" type:"Repeated"`
-	// The information about the existing API. If this field is not empty, the import updates this API.
+	// The information about the existing API. If this field is not empty, the import action updates this API.
 	ExistHttpApiInfo *HttpApiApiInfo `json:"existHttpApiInfo,omitempty" xml:"existHttpApiInfo,omitempty"`
 	// The list of data structures that failed the dry run.
 	FailureComponents []*ImportHttpApiResponseBodyDataDryRunInfoFailureComponents `json:"failureComponents,omitempty" xml:"failureComponents,omitempty" type:"Repeated"`
 	// The list of operations that failed the dry run.
-	FailureOperations  []*ImportHttpApiResponseBodyDataDryRunInfoFailureOperations `json:"failureOperations,omitempty" xml:"failureOperations,omitempty" type:"Repeated"`
-	FailureRoutes      []*ImportHttpApiResponseBodyDataDryRunInfoFailureRoutes     `json:"failureRoutes,omitempty" xml:"failureRoutes,omitempty" type:"Repeated"`
-	McpToolsDefinition *string                                                     `json:"mcpToolsDefinition,omitempty" xml:"mcpToolsDefinition,omitempty"`
+	FailureOperations []*ImportHttpApiResponseBodyDataDryRunInfoFailureOperations `json:"failureOperations,omitempty" xml:"failureOperations,omitempty" type:"Repeated"`
+	// The list of routes that failed.
+	FailureRoutes []*ImportHttpApiResponseBodyDataDryRunInfoFailureRoutes `json:"failureRoutes,omitempty" xml:"failureRoutes,omitempty" type:"Repeated"`
+	// The MCP tool definition information.
+	//
+	// example:
+	//
+	// ...
+	McpToolsDefinition *string `json:"mcpToolsDefinition,omitempty" xml:"mcpToolsDefinition,omitempty"`
 	// The list of data structures that passed the dry run.
 	SuccessComponents []*ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents `json:"successComponents,omitempty" xml:"successComponents,omitempty" type:"Repeated"`
 	// The list of operations that passed the dry run.
 	SuccessOperations []*ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations `json:"successOperations,omitempty" xml:"successOperations,omitempty" type:"Repeated"`
-	SuccessRoutes     []*ImportHttpApiResponseBodyDataDryRunInfoSuccessRoutes     `json:"successRoutes,omitempty" xml:"successRoutes,omitempty" type:"Repeated"`
+	// The list of routes that were successfully imported.
+	SuccessRoutes []*ImportHttpApiResponseBodyDataDryRunInfoSuccessRoutes `json:"successRoutes,omitempty" xml:"successRoutes,omitempty" type:"Repeated"`
 	// The warning messages. If warning messages are not empty, some operations or data structures may not be imported successfully.
 	WarningMessages []*string `json:"warningMessages,omitempty" xml:"warningMessages,omitempty" type:"Repeated"`
 }
@@ -443,8 +450,18 @@ func (s *ImportHttpApiResponseBodyDataDryRunInfoFailureOperations) Validate() er
 }
 
 type ImportHttpApiResponseBodyDataDryRunInfoFailureRoutes struct {
+	// The error message.
+	//
+	// example:
+	//
+	// conflict
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	Name         *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The parameter name.
+	//
+	// example:
+	//
+	// admin-route
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s ImportHttpApiResponseBodyDataDryRunInfoFailureRoutes) String() string {
@@ -480,9 +497,9 @@ func (s *ImportHttpApiResponseBodyDataDryRunInfoFailureRoutes) Validate() error 
 type ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents struct {
 	// The action to be performed after the dry run. Valid values:
 	//
-	// - Create: create.
+	// - Create: Create.
 	//
-	// - Update: update.
+	// - Update: Update.
 	//
 	// example:
 	//
@@ -529,9 +546,9 @@ func (s *ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents) Validate() er
 type ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations struct {
 	// The action to be performed after the dry run. Valid values:
 	//
-	// - Create: create.
+	// - Create: Create.
 	//
-	// - Update: update.
+	// - Update: Update.
 	//
 	// example:
 	//
@@ -606,8 +623,18 @@ func (s *ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations) Validate() er
 }
 
 type ImportHttpApiResponseBodyDataDryRunInfoSuccessRoutes struct {
+	// The action type.
+	//
+	// example:
+	//
+	// Create
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The name.
+	//
+	// example:
+	//
+	// user-route
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s ImportHttpApiResponseBodyDataDryRunInfoSuccessRoutes) String() string {

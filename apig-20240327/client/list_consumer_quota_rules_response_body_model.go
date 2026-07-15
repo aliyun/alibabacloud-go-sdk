@@ -238,7 +238,7 @@ type ListConsumerQuotaRulesResponseBodyDataItems struct {
 	//
 	// enabled
 	RuleStatus *string `json:"ruleStatus,omitempty" xml:"ruleStatus,omitempty"`
-	// The time zone corresponding to the natural cycle, in UTC+x format.
+	// The time zone corresponding to the calendar cycle, in UTC+x format.
 	//
 	// example:
 	//
@@ -246,9 +246,9 @@ type ListConsumerQuotaRulesResponseBodyDataItems struct {
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
 	// The cycle type. Valid values:
 	//
-	// - calendar: Natural cycle.
+	// - calendar: calendar cycle.
 	//
-	// - epoch: Custom cycle.
+	// - epoch: custom cycle.
 	//
 	// example:
 	//

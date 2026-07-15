@@ -21,10 +21,22 @@ type iCreateAiModelProviderRequest interface {
 
 type CreateAiModelProviderRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// OpenAI
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// gw-ucbx3s2m****
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// openai
 	Provider   *string   `json:"provider,omitempty" xml:"provider,omitempty"`
 	ServiceIds []*string `json:"serviceIds,omitempty" xml:"serviceIds,omitempty" type:"Repeated"`
 }

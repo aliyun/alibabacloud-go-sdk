@@ -20,13 +20,21 @@ type iHiMarketHttpRoute interface {
 }
 
 type HiMarketHttpRoute struct {
-	// Indicates whether this is a system-defined route. Users cannot modify or delete built-in routes. Defaults to `false`.
+	// Indicates whether the route is a built-in route.
+	//
+	// example:
+	//
+	// false
 	Builtin *bool `json:"builtin,omitempty" xml:"builtin,omitempty"`
-	// An optional description for the HTTP route. This field is for informational purposes only.
+	// The route description.
+	//
+	// example:
+	//
+	// Agent route
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// A list of hostnames to which this route applies. The request\\"s `Host` header must match one of the hostnames in this list.
+	// The list of associated domain names.
 	Domains []*HiMarketDomain `json:"domains,omitempty" xml:"domains,omitempty" type:"Repeated"`
-	// Defines the matching criteria for an incoming HTTP request. The request must meet all specified conditions for this route to apply.
+	// The route matching rule.
 	Match *HiMarketHttpRouteMatch `json:"match,omitempty" xml:"match,omitempty" type:"Struct"`
 }
 
@@ -93,15 +101,15 @@ func (s *HiMarketHttpRoute) Validate() error {
 }
 
 type HiMarketHttpRouteMatch struct {
-	// A list of HTTP header match conditions. The request must match all of these conditions.
+	// The list of header matching rules.
 	Headers []*HiMarketHttpRouteMatchHeaders `json:"headers,omitempty" xml:"headers,omitempty" type:"Repeated"`
-	// A list of HTTP methods to match, such as `GET` or `POST`. If this field is not specified, the route matches requests with any HTTP method.
+	// The list of HTTP methods.
 	Methods []*string `json:"methods,omitempty" xml:"methods,omitempty" type:"Repeated"`
-	// A list of conditions for matching against a data model. Use this to validate the request body or other structured data.
+	// The list of model matching rules (specific to Agent API).
 	ModelMatches []*HiMarketHttpRouteMatchModelMatches `json:"modelMatches,omitempty" xml:"modelMatches,omitempty" type:"Repeated"`
-	// Specifies the conditions for matching the request path.
+	// The path matching rule.
 	Path *HiMarketHttpRouteMatchPath `json:"path,omitempty" xml:"path,omitempty" type:"Struct"`
-	// A list of URL query parameter match conditions. The request must match all of these conditions.
+	// The list of query parameter matching rules.
 	QueryParams []*HiMarketHttpRouteMatchQueryParams `json:"queryParams,omitempty" xml:"queryParams,omitempty" type:"Repeated"`
 }
 
@@ -195,13 +203,29 @@ func (s *HiMarketHttpRouteMatch) Validate() error {
 }
 
 type HiMarketHttpRouteMatchHeaders struct {
-	// Specifies whether the header match is case-sensitive. Defaults to `true`.
+	// Indicates whether the matching is case-sensitive.
+	//
+	// example:
+	//
+	// true
 	CaseSensitive *bool `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
-	// The name of the HTTP header to match, such as `Content-Type`.
+	// The parameter name.
+	//
+	// example:
+	//
+	// X-Agent-Type
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The type of header match. Valid values are `Exact` and `RegularExpression`. Defaults to `Exact`.
+	// The matching type.
+	//
+	// example:
+	//
+	// Exact
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The value to match against the header. The match `type` determines how this value is interpreted.
+	// The matching value.
+	//
+	// example:
+	//
+	// dashscope
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -254,13 +278,29 @@ func (s *HiMarketHttpRouteMatchHeaders) Validate() error {
 }
 
 type HiMarketHttpRouteMatchModelMatches struct {
-	// Specifies whether the model field match is case-sensitive. Defaults to `true`.
+	// Indicates whether the matching is case-sensitive.
+	//
+	// example:
+	//
+	// true
 	CaseSensitive *bool `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
-	// The name of the model field to match.
+	// The parameter name.
+	//
+	// example:
+	//
+	// X-Agent-Type
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The type of match, such as `Exact`, `Pattern`, or `Range`.
+	// The matching type.
+	//
+	// example:
+	//
+	// Exact
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The value or pattern to match against the model field.
+	// The matching value.
+	//
+	// example:
+	//
+	// dashscope
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -313,11 +353,23 @@ func (s *HiMarketHttpRouteMatchModelMatches) Validate() error {
 }
 
 type HiMarketHttpRouteMatchPath struct {
-	// Specifies whether the path match is case-sensitive. Defaults to `true`.
+	// Indicates whether the matching is case-sensitive.
+	//
+	// example:
+	//
+	// false
 	CaseSensitive *bool `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
-	// The type of path match. Valid values are `Exact` and `Prefix`. Defaults to `Exact` if not specified.
+	// The matching type.
+	//
+	// example:
+	//
+	// Prefix
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The path value to match. The specified `type` determines how this value is interpreted.
+	// The path value.
+	//
+	// example:
+	//
+	// /v1/agents/invoke
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -361,13 +413,29 @@ func (s *HiMarketHttpRouteMatchPath) Validate() error {
 }
 
 type HiMarketHttpRouteMatchQueryParams struct {
-	// Specifies whether the query parameter match is case-sensitive. Defaults to `true`.
+	// Indicates whether the matching is case-sensitive.
+	//
+	// example:
+	//
+	// true
 	CaseSensitive *bool `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
-	// The name of the query parameter to match.
+	// The parameter name.
+	//
+	// example:
+	//
+	// X-Agent-Type
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The type of query parameter match. Valid values are `Exact` and `RegularExpression`. Defaults to `Exact`.
+	// The matching type.
+	//
+	// example:
+	//
+	// Exact
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The value to match against the query parameter. The match `type` determines how this value is interpreted.
+	// The matching value.
+	//
+	// example:
+	//
+	// dashscope
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

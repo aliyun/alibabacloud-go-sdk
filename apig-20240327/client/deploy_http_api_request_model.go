@@ -252,7 +252,7 @@ type DeployHttpApiRequestRestApiConfigEnvironment struct {
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
 	// Deprecated
 	//
-	// The existing service configurations. In the single-service scenario, only one entry is allowed. In ratio-based or content-based scenarios, multiple entries are allowed.
+	// The existing service configurations. In the single-service scenario, only one entry is allowed. In scenarios such as by-ratio or by-content, multiple entries are allowed.
 	//
 	// if can be null:
 	// true
@@ -351,7 +351,7 @@ type DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs struct {
 	//
 	// v1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The weight. Valid values: 1 to 100. This parameter takes effect only in the ratio-based scenario.
+	// The weight. Valid values: 1 to 100. This parameter takes effect only in the by-ratio scenario.
 	//
 	// example:
 	//
@@ -431,7 +431,7 @@ func (s *DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs) Validate() 
 }
 
 type DeployHttpApiRequestRestApiConfigOperationDeployments struct {
-	// The operation type.
+	// The action type.
 	//
 	// example:
 	//

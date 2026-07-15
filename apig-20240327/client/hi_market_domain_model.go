@@ -20,13 +20,29 @@ type iHiMarketDomain interface {
 }
 
 type HiMarketDomain struct {
-	// The custom domain name. This must be a valid DNS hostname.
+	// The domain name address.
+	//
+	// example:
+	//
+	// api.example.com
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// The network type of the endpoint. For example, `VPC` for an internal network or `INTERNET` for a public network.
+	// The network type.
+	//
+	// example:
+	//
+	// Internet
 	NetworkType *string `json:"networkType,omitempty" xml:"networkType,omitempty"`
-	// The port number for the endpoint. For example, `80` for HTTP or `443` for HTTPS.
+	// The port.
+	//
+	// example:
+	//
+	// 443
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The communication protocol. Valid values include `HTTP` and `HTTPS`.
+	// The access protocol.
+	//
+	// example:
+	//
+	// HTTPS
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
 }
 

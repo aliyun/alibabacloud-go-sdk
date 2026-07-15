@@ -22,7 +22,7 @@ type iCreatePolicyAttachmentRequest interface {
 }
 
 type CreatePolicyAttachmentRequest struct {
-	// Attached resource ID
+	// The ID of the resource to which the policy is attached.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type CreatePolicyAttachmentRequest struct {
 	//
 	// api-cu07jj6m1hkokaus***
 	AttachResourceId *string `json:"attachResourceId,omitempty" xml:"attachResourceId,omitempty"`
-	// Attached resource type, such as HttpApi, GatewayRoute, Operation, GatewayService, GatewayServicePort, Gateway, Domain
+	// The type of the resource to which the policy is attached. Valid values: HttpApi, GatewayRoute, Operation, GatewayService, GatewayServicePort, Gateway, and Domain.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type CreatePolicyAttachmentRequest struct {
 	//
 	// HttpApi
 	AttachResourceType *string `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
-	// Environment ID
+	// The environment ID.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type CreatePolicyAttachmentRequest struct {
 	//
 	// env-cquqsollhtgid***
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// Gateway instance ID
+	// The gateway instance ID.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type CreatePolicyAttachmentRequest struct {
 	//
 	// gw-cq7l5s5lhtgi6qas***
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// Policy ID
+	// The policy ID.
 	//
 	// This parameter is required.
 	//

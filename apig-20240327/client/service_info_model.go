@@ -36,18 +36,70 @@ type iServiceInfo interface {
 }
 
 type ServiceInfo struct {
-	ExpressType      *string                `json:"expressType,omitempty" xml:"expressType,omitempty"`
-	GroupName        *string                `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	Name             *string                `json:"name,omitempty" xml:"name,omitempty"`
-	Namespace        *string                `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	PaiWorkspaceId   *string                `json:"paiWorkspaceId,omitempty" xml:"paiWorkspaceId,omitempty"`
-	PaiWorkspaceName *string                `json:"paiWorkspaceName,omitempty" xml:"paiWorkspaceName,omitempty"`
-	Ports            []*ServiceInfoPorts    `json:"ports,omitempty" xml:"ports,omitempty" type:"Repeated"`
-	Qualifier        *string                `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	ServiceId        *string                `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	SourceType       *string                `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	Status           *string                `json:"status,omitempty" xml:"status,omitempty"`
-	Versions         []*ServiceInfoVersions `json:"versions,omitempty" xml:"versions,omitempty" type:"Repeated"`
+	// The service routing type.
+	//
+	// example:
+	//
+	// normal
+	ExpressType *string `json:"expressType,omitempty" xml:"expressType,omitempty"`
+	// The service group name.
+	//
+	// example:
+	//
+	// default-group
+	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	// The service name.
+	//
+	// example:
+	//
+	// my-openai-service
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The service namespace.
+	//
+	// example:
+	//
+	// default
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The PAI workspace ID.
+	//
+	// example:
+	//
+	// ws-xxx****
+	PaiWorkspaceId *string `json:"paiWorkspaceId,omitempty" xml:"paiWorkspaceId,omitempty"`
+	// The PAI workspace name.
+	//
+	// example:
+	//
+	// my-workspace
+	PaiWorkspaceName *string `json:"paiWorkspaceName,omitempty" xml:"paiWorkspaceName,omitempty"`
+	// The list of service ports.
+	Ports []*ServiceInfoPorts `json:"ports,omitempty" xml:"ports,omitempty" type:"Repeated"`
+	// The service version qualifier.
+	//
+	// example:
+	//
+	// v1
+	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	// The service ID.
+	//
+	// example:
+	//
+	// svc-xxx****
+	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// The service source type.
+	//
+	// example:
+	//
+	// user
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	// The service status.
+	//
+	// example:
+	//
+	// running
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The list of service versions.
+	Versions []*ServiceInfoVersions `json:"versions,omitempty" xml:"versions,omitempty" type:"Repeated"`
 }
 
 func (s ServiceInfo) String() string {
@@ -189,8 +241,23 @@ func (s *ServiceInfo) Validate() error {
 }
 
 type ServiceInfoPorts struct {
-	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
-	Port     *int32  `json:"port,omitempty" xml:"port,omitempty"`
+	// The port name.
+	//
+	// example:
+	//
+	// http
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The port number.
+	//
+	// example:
+	//
+	// 8080
+	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
+	// The port protocol.
+	//
+	// example:
+	//
+	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
 }
 
@@ -234,8 +301,14 @@ func (s *ServiceInfoPorts) Validate() error {
 }
 
 type ServiceInfoVersions struct {
+	// The list of version labels.
 	Labels []*ServiceInfoVersionsLabels `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
-	Name   *string                      `json:"name,omitempty" xml:"name,omitempty"`
+	// The version name.
+	//
+	// example:
+	//
+	// v1.0.0
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s ServiceInfoVersions) String() string {
@@ -278,7 +351,17 @@ func (s *ServiceInfoVersions) Validate() error {
 }
 
 type ServiceInfoVersionsLabels struct {
-	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The label key.
+	//
+	// example:
+	//
+	// env
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The label value.
+	//
+	// example:
+	//
+	// production
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

@@ -96,10 +96,14 @@ func (s *GetSourceResponseBody) Validate() error {
 }
 
 type GetSourceResponseBodyData struct {
+	// The reason for the association status
+	//
 	// example:
 	//
 	// Association completed
 	AssociationReason *string `json:"associationReason,omitempty" xml:"associationReason,omitempty"`
+	// The association status of the source
+	//
 	// example:
 	//
 	// ASSOCIATED

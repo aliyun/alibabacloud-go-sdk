@@ -16,9 +16,17 @@ type iHiMarketIcon interface {
 }
 
 type HiMarketIcon struct {
-	// Specifies the icon type. Example: `URL`.
+	// The icon type.
+	//
+	// example:
+	//
+	// url
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The value of the icon, based on the specified `type`. For example, if `type` is `URL`, this is the URL of the icon.
+	// The icon value.
+	//
+	// example:
+	//
+	// https://example.com/icon.png
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

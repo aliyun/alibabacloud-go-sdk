@@ -24,17 +24,41 @@ type iHiMarketProductPublicationDetail interface {
 }
 
 type HiMarketProductPublicationDetail struct {
-	// The unique ID of the portal.
+	// The portal ID.
+	//
+	// example:
+	//
+	// portal-xxx
 	PortalId *string `json:"portalId,omitempty" xml:"portalId,omitempty"`
-	// The name of the portal.
+	// The portal name.
+	//
+	// example:
+	//
+	// 开发者门户
 	PortalName *string `json:"portalName,omitempty" xml:"portalName,omitempty"`
-	// The unique ID of the product.
+	// The product ID.
+	//
+	// example:
+	//
+	// prod-xxx
 	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
-	// The name of the product.
+	// The product name.
+	//
+	// example:
+	//
+	// AI网关API
 	ProductName *string `json:"productName,omitempty" xml:"productName,omitempty"`
-	// The type of the product.
+	// The product type.
+	//
+	// example:
+	//
+	// ApiGateway
 	ProductType *string `json:"productType,omitempty" xml:"productType,omitempty"`
-	// The unique ID of the product publication.
+	// The product publish ID.
+	//
+	// example:
+	//
+	// pub-xxx
 	PublicationId *string `json:"publicationId,omitempty" xml:"publicationId,omitempty"`
 }
 

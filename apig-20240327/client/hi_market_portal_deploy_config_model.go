@@ -20,13 +20,25 @@ type iHiMarketPortalDeployConfig interface {
 }
 
 type HiMarketPortalDeployConfig struct {
-	// Additional information about the deployment status, such as error details.
+	// The deployment status message.
+	//
+	// example:
+	//
+	// message
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The target deployment platform. For example, set this to `SAE` to deploy on Serverless App Engine.
+	// The deployment platform type.
+	//
+	// example:
+	//
+	// SAE
 	Platform *string `json:"platform,omitempty" xml:"platform,omitempty"`
-	// Configuration settings for deploying to Serverless App Engine (SAE). This object is required when the `platform` is `SAE`.
+	// The SAE (Serverless App Engine) deployment configuration.
 	SaeConfig *HiMarketPortalDeployConfigSaeConfig `json:"saeConfig,omitempty" xml:"saeConfig,omitempty" type:"Struct"`
-	// The current status of the deployment. Possible values include `succeeded`, `failed`, and `in_progress`.
+	// The deployment status.
+	//
+	// example:
+	//
+	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
@@ -84,21 +96,53 @@ func (s *HiMarketPortalDeployConfig) Validate() error {
 }
 
 type HiMarketPortalDeployConfigSaeConfig struct {
-	// The ID of the application in Serverless App Engine.
+	// The SAE application ID.
+	//
+	// example:
+	//
+	// app-xxx
 	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
-	// The ID of the namespace that logically isolates the application.
+	// The SAE namespace ID.
+	//
+	// example:
+	//
+	// cn-hangzhou:default
 	NamespaceId *string `json:"namespaceId,omitempty" xml:"namespaceId,omitempty"`
-	// The name of the OIDC role that grants permissions to the application.
+	// The OIDC role name used for SAE to access other cloud resources.
+	//
+	// example:
+	//
+	// apig-portal-oidc-role
 	OidcRoleName *string `json:"oidcRoleName,omitempty" xml:"oidcRoleName,omitempty"`
-	// The ID of the region in which to deploy the application.
+	// The region ID of SAE.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The desired number of application replicas.
+	// The number of instance replicas.
+	//
+	// example:
+	//
+	// 2
 	Replicas *string `json:"replicas,omitempty" xml:"replicas,omitempty"`
-	// The ID of the security group to apply to the application instances. A security group acts as a virtual firewall.
+	// The security group ID.
+	//
+	// example:
+	//
+	// sg-xxx
 	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
-	// The ID of the vSwitch within the specified VPC. Serverless App Engine launches application instances in the vSwitch\\"s zone.
+	// The vSwitch ID.
+	//
+	// example:
+	//
+	// vsw-xxx
 	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
-	// The ID of the VPC to connect the application to.
+	// VPC ID
+	//
+	// example:
+	//
+	// vpc-xxx
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 

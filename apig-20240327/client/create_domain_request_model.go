@@ -40,7 +40,7 @@ type iCreateDomainRequest interface {
 }
 
 type CreateDomainRequest struct {
-	// The CA certificate identifier.
+	// The CA certificate identifier. This parameter is required for Dedicated+HTTPS.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type CreateDomainRequest struct {
 	//
 	// Dedicated
 	DomainScope *string `json:"domainScope,omitempty" xml:"domainScope,omitempty"`
-	// Specifies whether to enable forced HTTPS redirect when the protocol type is set to HTTPS.
+	// Specifies whether to enable forced HTTPS redirect for the HTTPS protocol type. This parameter is required for Serverless and for Dedicated+HTTPS. This parameter is not validated for Dedicated+HTTP.
 	//
 	// example:
 	//
@@ -100,11 +100,7 @@ type CreateDomainRequest struct {
 	//
 	// abc.com
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The protocol type supported by the domain name. Valid values:
-	//
-	// - HTTP: Only HTTP is supported.
-	//
-	// - HTTPS: Only HTTPS is supported.
+	// The protocol type supported by the domain name. This parameter is required for Dedicated and only allows HTTP or HTTPS. This parameter is not allowed for Serverless.
 	//
 	// example:
 	//
