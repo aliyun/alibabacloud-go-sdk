@@ -21,6 +21,8 @@ type iJobSpec interface {
 	GetElasticSpotSpecs() []*ElasticSpotSpec
 	SetExtraPodSpec(v *ExtraPodSpec) *JobSpec
 	GetExtraPodSpec() *ExtraPodSpec
+	SetHyperNodeSchedulingConfig(v *HyperNodeSchedulingConfig) *JobSpec
+	GetHyperNodeSchedulingConfig() *HyperNodeSchedulingConfig
 	SetImage(v string) *JobSpec
 	GetImage() *string
 	SetImageConfig(v *ImageConfig) *JobSpec
@@ -31,6 +33,8 @@ type iJobSpec interface {
 	GetIsChief() *bool
 	SetLocalMountSpecs(v []*LocalMountSpec) *JobSpec
 	GetLocalMountSpecs() []*LocalMountSpec
+	SetOversoldType(v string) *JobSpec
+	GetOversoldType() *string
 	SetPodCount(v int64) *JobSpec
 	GetPodCount() *int64
 	SetQuotaId(v string) *JobSpec
@@ -54,38 +58,39 @@ type iJobSpec interface {
 }
 
 type JobSpec struct {
-	// The scheduling node configurations.
+	// The scheduling node assignment configuration.
 	AssignNodeSpec *AssignNodeSpec `json:"AssignNodeSpec,omitempty" xml:"AssignNodeSpec,omitempty"`
-	// The auto scaling configurations.
-	AutoScalingSpec         *AutoScalingSpec `json:"AutoScalingSpec,omitempty" xml:"AutoScalingSpec,omitempty"`
-	ConsiderInSuccessPolicy *bool            `json:"ConsiderInSuccessPolicy,omitempty" xml:"ConsiderInSuccessPolicy,omitempty"`
-	// The hardware specifications of the worker. For more information, see [Billing of DLC](https://help.aliyun.com/document_detail/171758.html) of PAI.
-	//
-	// >  The price varies based on instance types.
+	// The auto scaling configuration.
+	AutoScalingSpec *AutoScalingSpec `json:"AutoScalingSpec,omitempty" xml:"AutoScalingSpec,omitempty"`
+	// Specifies whether to consider this role when determining job success. This parameter takes effect only when the success policy is set to Partial.
+	ConsiderInSuccessPolicy *bool `json:"ConsiderInSuccessPolicy,omitempty" xml:"ConsiderInSuccessPolicy,omitempty"`
+	// The hardware specifications of the worker. Visit [PAI-DLC billing](https://help.aliyun.com/document_detail/171758.html) for the detailed list of specifications.	Notice: Prices vary depending on the specifications.
 	//
 	// example:
 	//
 	// ecs.c6.large
 	EcsSpec          *string            `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
 	ElasticSpotSpecs []*ElasticSpotSpec `json:"ElasticSpotSpecs,omitempty" xml:"ElasticSpotSpecs,omitempty" type:"Repeated"`
-	// The additional pod configurations.
-	ExtraPodSpec *ExtraPodSpec `json:"ExtraPodSpec,omitempty" xml:"ExtraPodSpec,omitempty"`
-	// The address of the image that is run by the worker node. You can call [ListImages](https://help.aliyun.com/document_detail/449118.html) to obtain the image provided by PAI. You can also specify a third-party public image.
+	// The additional pod configuration.
+	ExtraPodSpec              *ExtraPodSpec              `json:"ExtraPodSpec,omitempty" xml:"ExtraPodSpec,omitempty"`
+	HyperNodeSchedulingConfig *HyperNodeSchedulingConfig `json:"HyperNodeSchedulingConfig,omitempty" xml:"HyperNodeSchedulingConfig,omitempty"`
+	// The runtime image address for this type of worker. Call [ListImages](https://help.aliyun.com/document_detail/449118.html) to obtain images provided by the PAI platform. You can also specify a third-party public image.
 	//
 	// example:
 	//
 	// registry-vpc.cn-hangzhou.aliyuncs.com/cloud-dsw/tensorflow:1.12PAI-gpu-py36-cu101-ubuntu18.04
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The configuration of the private image.
+	// The private image configuration.
 	ImageConfig *ImageConfig `json:"ImageConfig,omitempty" xml:"ImageConfig,omitempty"`
 	// Deprecated
 	//
-	// Deprecated.
+	// Deprecated due to a spelling error.
 	IsCheif *bool `json:"IsCheif,omitempty" xml:"IsCheif,omitempty"`
-	// Whether the role is a Chief role. Chief role must be unique.
+	// Indicates whether this role is the Chief role. Only one Chief role is allowed.
 	IsChief *bool `json:"IsChief,omitempty" xml:"IsChief,omitempty"`
 	// The list of local mount configurations.
 	LocalMountSpecs []*LocalMountSpec `json:"LocalMountSpecs,omitempty" xml:"LocalMountSpecs,omitempty" type:"Repeated"`
+	OversoldType    *string           `json:"OversoldType,omitempty" xml:"OversoldType,omitempty"`
 	// The number of replicas.
 	//
 	// example:
@@ -93,7 +98,7 @@ type JobSpec struct {
 	// 1
 	PodCount *int64  `json:"PodCount,omitempty" xml:"PodCount,omitempty"`
 	QuotaId  *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
-	// The resource configurations.
+	// The resource configuration.
 	ResourceConfig *ResourceConfig `json:"ResourceConfig,omitempty" xml:"ResourceConfig,omitempty"`
 	// The restart policy. Valid values: Always, Never, OnFailure, and ExitCode.
 	//
@@ -101,25 +106,28 @@ type JobSpec struct {
 	//
 	// ExitCode
 	RestartPolicy *string `json:"RestartPolicy,omitempty" xml:"RestartPolicy,omitempty"`
-	// The service configurations.
+	// The service configuration.
 	ServiceSpec *ServiceSpec `json:"ServiceSpec,omitempty" xml:"ServiceSpec,omitempty"`
-	// The configurations of the preemptible instance.
-	SpotSpec            *SpotSpec            `json:"SpotSpec,omitempty" xml:"SpotSpec,omitempty"`
+	// The spot instance configuration.
+	SpotSpec *SpotSpec `json:"SpotSpec,omitempty" xml:"SpotSpec,omitempty"`
+	// The dependencies required before this role starts.
 	StartupDependencies []*StartupDependency `json:"StartupDependencies,omitempty" xml:"StartupDependencies,omitempty" type:"Repeated"`
 	SystemDisk          *SystemDisk          `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty"`
-	// The worker type, which is related to JobType. The valid values of this parameter vary based on the value of JobType.
+	// Type is closely related to Job Type. Different Job Types support different Worker Types.
 	//
-	// 	- Valid values when JobType is set to **TFJob**: Chief, PS, Worker, Evaluator, and GraphLearn.
+	// - **TFJob**: Supports Chief, PS, Worker, Evaluator, and GraphLearn.
 	//
-	// 	- Valid values when JobType is set to **PyTorchJob**: Worker and Master.
+	// - **PyTorchJob**: Supports Worker and Master.
 	//
-	// 	- Valid values when JobType is set to **XGBoostJob**: Worker and Master.
+	// - **XGBoostJob**: Supports Worker and Master.
 	//
-	// 	- Valid values when JobType is set to **OneFlowJob**: Worker and Master.
+	// - **OneFlowJob**: Supports Worker and Master.
 	//
-	// 	- Valid values when JobType is set to **ElasticBatch**: Worker and Master.
+	// - **ElasticBatch**: Supports Worker and Master.
 	//
-	// The Master node in jobs of the PyTorchJob, XGBoostJob, OneFlowJob, or ElasticBatch type is optional. If you do not specify the Master node, the system automatically uses the first Worker node as the Master node.
+	// - **RayJob**: Supports Head, Worker, and Worker[-xxx].
+	//
+	// Master is optional in PyTorchJob, XGBoostJob, OneFlowJob, and ElasticBatch. If Master is not specified, the system automatically designates the first Worker node as Master.
 	//
 	// example:
 	//
@@ -127,7 +135,7 @@ type JobSpec struct {
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// Deprecated
 	//
-	// Whether to use preemptible instances.
+	// Specifies whether to use spot instances.
 	//
 	// example:
 	//
@@ -167,6 +175,10 @@ func (s *JobSpec) GetExtraPodSpec() *ExtraPodSpec {
 	return s.ExtraPodSpec
 }
 
+func (s *JobSpec) GetHyperNodeSchedulingConfig() *HyperNodeSchedulingConfig {
+	return s.HyperNodeSchedulingConfig
+}
+
 func (s *JobSpec) GetImage() *string {
 	return s.Image
 }
@@ -185,6 +197,10 @@ func (s *JobSpec) GetIsChief() *bool {
 
 func (s *JobSpec) GetLocalMountSpecs() []*LocalMountSpec {
 	return s.LocalMountSpecs
+}
+
+func (s *JobSpec) GetOversoldType() *string {
+	return s.OversoldType
 }
 
 func (s *JobSpec) GetPodCount() *int64 {
@@ -257,6 +273,11 @@ func (s *JobSpec) SetExtraPodSpec(v *ExtraPodSpec) *JobSpec {
 	return s
 }
 
+func (s *JobSpec) SetHyperNodeSchedulingConfig(v *HyperNodeSchedulingConfig) *JobSpec {
+	s.HyperNodeSchedulingConfig = v
+	return s
+}
+
 func (s *JobSpec) SetImage(v string) *JobSpec {
 	s.Image = &v
 	return s
@@ -279,6 +300,11 @@ func (s *JobSpec) SetIsChief(v bool) *JobSpec {
 
 func (s *JobSpec) SetLocalMountSpecs(v []*LocalMountSpec) *JobSpec {
 	s.LocalMountSpecs = v
+	return s
+}
+
+func (s *JobSpec) SetOversoldType(v string) *JobSpec {
+	s.OversoldType = &v
 	return s
 }
 
@@ -354,6 +380,11 @@ func (s *JobSpec) Validate() error {
 	}
 	if s.ExtraPodSpec != nil {
 		if err := s.ExtraPodSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HyperNodeSchedulingConfig != nil {
+		if err := s.HyperNodeSchedulingConfig.Validate(); err != nil {
 			return err
 		}
 	}

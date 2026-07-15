@@ -26,22 +26,23 @@ type iExtraPodSpec interface {
 }
 
 type ExtraPodSpec struct {
-  // The containers to be initialized.
+  // A list of init containers that run to completion before the main container starts.
   InitContainers []*ContainerSpec `json:"InitContainers,omitempty" xml:"InitContainers,omitempty" type:"Repeated"`
-  // The lifecycle object.
+  // Defines lifecycle hooks for the main container.
   Lifecycle *Lifecycle `json:"Lifecycle,omitempty" xml:"Lifecycle,omitempty"`
+  // Defines the security context for the main container.
   MainContainerSecurityContext *SecurityContext `json:"MainContainerSecurityContext,omitempty" xml:"MainContainerSecurityContext,omitempty"`
   // Deprecated
   // 
-  // The pod annotations.
+  // Key-value pairs to apply to the pod as annotations. Use annotations to attach arbitrary, non-identifying metadata.
   PodAnnotations map[string]*string `json:"PodAnnotations,omitempty" xml:"PodAnnotations,omitempty"`
   // Deprecated
   // 
-  // The pod labels.
+  // Key-value pairs to apply to the pod as labels. Use labels to organize and select pods.
   PodLabels map[string]*string `json:"PodLabels,omitempty" xml:"PodLabels,omitempty"`
-  // The local paths shared between containers.
+  // A list of local directory paths to mount and share among all containers in the pod.
   SharedVolumeMountPaths []*string `json:"SharedVolumeMountPaths,omitempty" xml:"SharedVolumeMountPaths,omitempty" type:"Repeated"`
-  // The sidecar containers.
+  // A list of sidecar containers.
   SideCarContainers []*ContainerSpec `json:"SideCarContainers,omitempty" xml:"SideCarContainers,omitempty" type:"Repeated"`
 }
 

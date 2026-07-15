@@ -18,19 +18,21 @@ type iSetJobTemplateDefaultVersionResponseBody interface {
 }
 
 type SetJobTemplateDefaultVersionResponseBody struct {
-	// 设置后的默认版本号
+	// The current default version number.
 	//
 	// example:
 	//
 	// 2
 	DefaultVersion *int32 `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
+	// The time the template was last modified.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 2021-01-12T14:36:00Z
 	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
-	// 本次请求的 ID，用于诊断和答疑。
+	// The request ID.
 	//
 	// example:
 	//

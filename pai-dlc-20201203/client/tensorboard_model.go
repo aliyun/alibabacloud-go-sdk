@@ -72,173 +72,137 @@ type iTensorboard interface {
 }
 
 type Tensorboard struct {
-	// The visibility.
+	// Visibility.
 	//
 	// example:
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// The CPU resources.
-	//
-	// example:
-	//
-	// 1
-	Cpu *int64 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The data source ID.
+	Cpu           *int64  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// Data source ID.
 	//
 	// example:
 	//
 	// datasource-test
-	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// The dataset type.
-	//
-	// example:
-	//
-	// OSS
+	DataSourceId   *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// The display name.
+	// Display name.
 	//
 	// example:
 	//
 	// test
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The run duration (seconds).
+	// Runtime duration (seconds).
 	//
 	// example:
 	//
-	// 1234567
+	// 60
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The create time (UTC).
+	// Creation time (UTC).
 	//
 	// example:
 	//
 	// 2021-01-12T14:35:00Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The end time (UTC).
+	// End time (UTC).
 	//
 	// example:
 	//
 	// null
 	GmtFinishTime *string `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
-	// The modify time (UTC).
+	// Modification time (UTC).
 	//
 	// example:
 	//
 	// 2021-01-12T14:36:00Z
 	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
-	// The job ID.
+	// Job ID.
 	//
 	// example:
 	//
 	// dlc-20210114104214-vf9lowjt3pso
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The maximum run time (minutes).
-	//
-	// example:
-	//
-	// 240
-	MaxRunningTimeMinutes *int64 `json:"MaxRunningTimeMinutes,omitempty" xml:"MaxRunningTimeMinutes,omitempty"`
-	// The memory size (GB).
-	//
-	// example:
-	//
-	// 1000
-	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The extended fields of the dataset are in the JSON format. mountpath: the path to mount the custom dataset.
-	//
-	// example:
-	//
-	// {"mountpath":"/root/data/"}
-	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	// The priority of the TensorBoard job.
+	JobId                 *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	MaxRunningTimeMinutes *int64  `json:"MaxRunningTimeMinutes,omitempty" xml:"MaxRunningTimeMinutes,omitempty"`
+	Memory                *int64  `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Options               *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// Tensorboard Job priority.
 	//
 	// example:
 	//
 	// 1
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The resource group ID used by TensorBoard.
+	// Resource group ID used by Tensorboard.
 	//
 	// example:
 	//
 	// quota12***
 	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
-	// The name of the resource quota used by TensorBoard.
+	// Name of the resource quota used by Tensorboard.
 	//
 	// example:
 	//
 	// dlc-quota
 	QuotaName *string `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
-	// The status code.
+	// Status details code.
 	//
 	// example:
 	//
-	// Delete by user
+	// ""
 	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	// The status details.
+	// Status details.
 	//
 	// example:
 	//
-	// Tensorboard is deleted
+	// ""
 	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status.
+	// Status.
 	//
 	// example:
 	//
 	// running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The file path.
+	// File path.
 	//
 	// example:
 	//
 	// /root/data
-	SummaryPath *string `json:"SummaryPath,omitempty" xml:"SummaryPath,omitempty"`
-	// The relative path of Summary.
-	//
-	// example:
-	//
-	// /summary/
+	SummaryPath         *string `json:"SummaryPath,omitempty" xml:"SummaryPath,omitempty"`
 	SummaryRelativePath *string `json:"SummaryRelativePath,omitempty" xml:"SummaryRelativePath,omitempty"`
-	// The mounted dataset for the TensorBoard job.
+	// Datasets mounted by the Tensorboard Job.
 	TensorboardDataSources []*TensorboardDataSourceSpec `json:"TensorboardDataSources,omitempty" xml:"TensorboardDataSources,omitempty" type:"Repeated"`
-	// The TensorBoard ID
+	// Tensorboard ID.
 	//
 	// example:
 	//
 	// tensorboard-xxx
 	TensorboardId *string `json:"TensorboardId,omitempty" xml:"TensorboardId,omitempty"`
-	// The pay-as-you-go configurations for the TensorBoard job.
+	// Pay-as-you-go configuration for the Tensorboard Job.
 	TensorboardSpec *TensorboardSpec `json:"TensorboardSpec,omitempty" xml:"TensorboardSpec,omitempty"`
-	// The TensorBoard URL.
+	// Tensorboard URL.
 	//
 	// example:
 	//
 	// http://xxxxxx
 	TensorboardUrl *string `json:"TensorboardUrl,omitempty" xml:"TensorboardUrl,omitempty"`
-	// The value of the token.
-	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	// The ID of the creator.
+	Token          *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// Creator ID.
 	//
 	// example:
 	//
 	// lycxxxxx
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The username of the creator.
+	// Creator username.
 	//
 	// example:
 	//
 	// tensorboard.pai
-	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
-	// The workspace ID.
-	//
-	// example:
-	//
-	// 123***
+	Username    *string `json:"Username,omitempty" xml:"Username,omitempty"`
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

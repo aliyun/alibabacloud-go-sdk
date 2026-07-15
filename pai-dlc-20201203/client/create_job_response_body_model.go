@@ -16,13 +16,13 @@ type iCreateJobResponseBody interface {
 }
 
 type CreateJobResponseBody struct {
-	// The job ID.
+	// The ID of the job created by this call.
 	//
 	// example:
 	//
 	// dlc7*******
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The request ID used to troubleshoot issues.
+	// The request ID, used for diagnostics and troubleshooting.
 	//
 	// example:
 	//

@@ -18,11 +18,16 @@ type iListRayHistoryServersResponseBody interface {
 }
 
 type ListRayHistoryServersResponseBody struct {
+	// The list of RayHistoryServer entries.
 	RayHistoryServers []*ListRayHistoryServersResponseBodyRayHistoryServers `json:"RayHistoryServers,omitempty" xml:"RayHistoryServers,omitempty" type:"Repeated"`
+	// The request ID, which is used for diagnostics and troubleshooting.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-xxxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries that match the filter conditions.
+	//
 	// example:
 	//
 	// 1
@@ -78,34 +83,54 @@ func (s *ListRayHistoryServersResponseBody) Validate() error {
 }
 
 type ListRayHistoryServersResponseBodyRayHistoryServers struct {
+	// The visibility of the job. Valid values:
+	//
+	// - PUBLIC: visible to all users in the workspace.
+	//
+	// - PRIVATE (default): visible only to you and administrators in the workspace.
+	//
 	// example:
 	//
 	// PUBLIC
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// The display name of the job.
+	//
 	// example:
 	//
 	// AEB-RECHARGE-TASK-14478-1778466397-main-4-
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The hardware specifications of the public resource group. Visit [PAI-DLC billing](https://help.aliyun.com/document_detail/171758.html) for a detailed list of specifications.	Notice: Prices vary depending on the specifications..
+	//
 	// example:
 	//
 	// ecs.g6.xlarge
 	EcsSpec *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	// The time when the job was created, in UTC.
+	//
 	// example:
 	//
 	// 2025-12-30T02:43:52Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time when the job ended, in UTC.
+	//
 	// example:
 	//
 	// 2026-01-27T09:17:11Z
 	GmtFinishTime *string `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
+	// The time when the job was last modified, in UTC.
+	//
 	// example:
 	//
 	// 2026-05-19T04:05:46Z
 	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
+	// The maximum runtime in minutes.
+	//
 	// example:
 	//
 	// 1000
 	MaxRuntimeMinutes *int32 `json:"MaxRuntimeMinutes,omitempty" xml:"MaxRuntimeMinutes,omitempty"`
+	// The ID of the created RayHistoryServer.
+	//
 	// example:
 	//
 	// rhsxxx
@@ -116,42 +141,72 @@ type ListRayHistoryServersResponseBodyRayHistoryServers struct {
 	//
 	// https://rhsxxx-dashboard.dsw-gateway-cn-wulanchabu.data.aliyun.com/
 	RayHistoryServerUrl *string `json:"RayHistoryServerUrl,omitempty" xml:"RayHistoryServerUrl,omitempty"`
+	// The status detail code.
+	//
 	// example:
 	//
 	// InvalidParameter
 	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// The status details.
+	//
 	// example:
 	//
 	// PyTorchJob dlc1tx4b9lw3ntb9 is running.
 	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	// The resource group ID. For information about how to query the ID of a dedicated resource group, see [Manage resource quotas](https://help.aliyun.com/document_detail/2651299.html).
+	//
 	// example:
 	//
 	// quotazoqd53w0q75
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The name of the resource on which the job runs.
+	//
 	// example:
 	//
 	// OWNER_REPO
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The RayHistoryServer status. Valid values:
+	//
+	// - Creating: being created.
+	//
+	// - Running: running.
+	//
+	// - Stopped: stopped.
+	//
+	// - Succeeded: succeeded.
+	//
+	// - Failed: failed.
+	//
 	// example:
 	//
 	// Created
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The storage path of Ray logs.
+	//
 	// example:
 	//
 	// oss://bucket-test-hangzhou.oss-cn-hangzhou-internal.aliyuncs.com/tmp
 	StoragePath *string `json:"StoragePath,omitempty" xml:"StoragePath,omitempty"`
+	// The tenant ID.
+	//
 	// example:
 	//
 	// 1335237941080704
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 123456789
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// myusername
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// The workspace ID. <props="china">For information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html)..
+	//
 	// example:
 	//
 	// 153466

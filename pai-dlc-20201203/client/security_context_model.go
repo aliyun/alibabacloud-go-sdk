@@ -22,16 +22,23 @@ type iSecurityContext interface {
 }
 
 type SecurityContext struct {
+	// The Linux capabilities configuration of the container.
 	Capabilities *SecurityContextCapabilities `json:"Capabilities,omitempty" xml:"Capabilities,omitempty"`
-	Privileged   *bool                        `json:"Privileged,omitempty" xml:"Privileged,omitempty"`
+	// Specifies whether to enable privileged mode. This option is available only for specific Lingjun AI Computing Service subscription user scenarios.
+	Privileged *bool `json:"Privileged,omitempty" xml:"Privileged,omitempty"`
+	// The GID of the user that runs the container.
+	//
 	// example:
 	//
 	// 1000
 	RunAsGroup *int64 `json:"RunAsGroup,omitempty" xml:"RunAsGroup,omitempty"`
+	// The UID of the user that runs the container.
+	//
 	// example:
 	//
 	// 1000
-	RunAsUser      *int64          `json:"RunAsUser,omitempty" xml:"RunAsUser,omitempty"`
+	RunAsUser *int64 `json:"RunAsUser,omitempty" xml:"RunAsUser,omitempty"`
+	// The Seccomp profile configuration.
 	SeccompProfile *SeccompProfile `json:"SeccompProfile,omitempty" xml:"SeccompProfile,omitempty"`
 }
 

@@ -28,41 +28,49 @@ type iListJobTemplatesRequest interface {
 }
 
 type ListJobTemplatesRequest struct {
+	// The sort order. Valid values: `asc` for ascending and `desc` for descending. Default value: `desc`.
+	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number to retrieve.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of results to return per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The field to sort the results by. Default value: `GmtCreateTime`.
+	//
 	// example:
 	//
 	// GmtCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// 按模板 ID 精确筛选。
+	// The job template ID. Use this parameter to filter for an exact match.
 	//
 	// example:
 	//
 	// tpl1****6jcq2q
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 按模板名称模糊筛选。
+	// The job template name. Use this parameter to filter for a partial match.
 	//
 	// example:
 	//
 	// job-template-example-1778047****
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// 按创建者用户 ID 筛选。
+	// The ID of the creator. Use this parameter to filter results by a specific creator.
 	//
 	// example:
 	//
 	// 20**************02
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// 工作空间 ID。如何获取工作空间 ID，请参见 ListWorkspaces。
+	// The ID of the workspace.
 	//
 	// This parameter is required.
 	//

@@ -16,10 +16,14 @@ type iCreateRayHistoryServerResponseBody interface {
 }
 
 type CreateRayHistoryServerResponseBody struct {
+	// The ID of the created Ray History Server.
+	//
 	// example:
 	//
 	// rhsxxxx
 	RayHistoryServerId *string `json:"RayHistoryServerId,omitempty" xml:"RayHistoryServerId,omitempty"`
+	// The request ID of this call, used for diagnostics and troubleshooting.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-xxxxxxx

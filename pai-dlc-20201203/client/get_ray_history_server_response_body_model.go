@@ -50,80 +50,116 @@ type iGetRayHistoryServerResponseBody interface {
 }
 
 type GetRayHistoryServerResponseBody struct {
+	// The visibility of the job.
+	//
 	// example:
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// The display name of the job.
+	//
 	// example:
 	//
 	// my-ray-history-server
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The specifications of the public resource group. For a list of supported instance types, see [PAI-DLC billing](https://help.aliyun.com/document_detail/171758.html).	Notice: Pricing varies based on the specifications.
+	//
 	// example:
 	//
 	// ecs.g6.large
 	EcsSpec *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	// The time when the job was created. The time is in UTC.
+	//
 	// example:
 	//
 	// 2021-01-12T14:35:01Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time when the job is complete. The time is in UTC.
+	//
 	// example:
 	//
 	// 2021-01-12T15:36:08Z
 	GmtFinishTime *string `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
+	// The time when the job was last modified. The time is in UTC.
+	//
 	// example:
 	//
 	// 2021-01-12T14:36:00Z
 	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
+	// The maximum running time. Unit: minutes.
+	//
 	// example:
 	//
 	// 1000
 	MaxRuntimeMinutes *int32 `json:"MaxRuntimeMinutes,omitempty" xml:"MaxRuntimeMinutes,omitempty"`
+	// The ID of the Ray history server.
+	//
 	// example:
 	//
 	// rhsxxx
 	RayHistoryServerId *string `json:"RayHistoryServerId,omitempty" xml:"RayHistoryServerId,omitempty"`
-	// Ray Dashboard URL。
+	// The URL of the Ray dashboard.
 	//
 	// example:
 	//
 	// https://rhsxxx-dashboard.dsw-gateway-cn-wulanchabu.data.aliyun.com/
 	RayHistoryServerUrl *string `json:"RayHistoryServerUrl,omitempty" xml:"RayHistoryServerUrl,omitempty"`
+	// The code of the job status.
+	//
 	// example:
 	//
 	// NotFound
 	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// The message that describes the job status.
+	//
 	// example:
 	//
 	// ""
 	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	// The ID of the resource group to which the job belongs.
+	//
 	// example:
 	//
 	// quotaxxx
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The name of the resource on which the job runs.
+	//
 	// example:
 	//
 	// my-resource-name
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The status of the job.
+	//
 	// example:
 	//
 	// running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The storage path of Ray logs.
+	//
 	// example:
 	//
 	// oss://bucket-test-hangzhou.oss-cn-hangzhou-internal.aliyuncs.com/tmp
 	StoragePath *string `json:"StoragePath,omitempty" xml:"StoragePath,omitempty"`
+	// The tenant ID.
+	//
 	// example:
 	//
 	// 10**************14
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The ID of the user who creates the job.
+	//
 	// example:
 	//
 	// 123456789
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The username of the user who creates the job.
+	//
 	// example:
 	//
 	// myusername
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// The ID of the workspace to which the job belongs.
+	//
 	// example:
 	//
 	// 46099

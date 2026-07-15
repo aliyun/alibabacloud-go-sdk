@@ -14,7 +14,7 @@ type iGetJobRequest interface {
 }
 
 type GetJobRequest struct {
-	// Specifies whether to return the job details. Default value: true.
+	// Specifies whether to return job details. Default value: true.
 	//
 	// example:
 	//

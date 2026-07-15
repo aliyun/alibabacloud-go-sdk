@@ -26,7 +26,7 @@ type iDebuggerConfig interface {
 type DebuggerConfig struct {
 	// example:
 	//
-	// {\"description\":\"这是一个新的pytorchjob模板\"}
+	// {\\"description\\":\\"这是一个新的pytorchjob模板\\"}
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// example:
 	//

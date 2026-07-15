@@ -16,19 +16,13 @@ type iGetDashboardRequest interface {
 }
 
 type GetDashboardRequest struct {
-	// Specifies whether the link is a sharing link. If yes, a token is required.
-	//
-	// Enumerated values:
-	//
-	// 	- true
-	//
-	// 	- false
+	// Indicates whether this is a shared link. If it is, the \\`token\\` parameter is also required.
 	//
 	// example:
 	//
 	// false
 	IsShared *bool `json:"isShared,omitempty" xml:"isShared,omitempty"`
-	// The token obtained from GetToken
+	// The token obtained from GetToken.
 	//
 	// example:
 	//

@@ -18,9 +18,12 @@ type iCredentialConfig interface {
 }
 
 type CredentialConfig struct {
-	AliyunEnvRoleKey       *string                 `json:"AliyunEnvRoleKey,omitempty" xml:"AliyunEnvRoleKey,omitempty"`
-	CredentialConfigItems  []*CredentialConfigItem `json:"CredentialConfigItems,omitempty" xml:"CredentialConfigItems,omitempty" type:"Repeated"`
-	EnableCredentialInject *bool                   `json:"EnableCredentialInject,omitempty" xml:"EnableCredentialInject,omitempty"`
+	// The role identity key injected into environment variables.
+	AliyunEnvRoleKey *string `json:"AliyunEnvRoleKey,omitempty" xml:"AliyunEnvRoleKey,omitempty"`
+	// The list of credential configuration items.
+	CredentialConfigItems []*CredentialConfigItem `json:"CredentialConfigItems,omitempty" xml:"CredentialConfigItems,omitempty" type:"Repeated"`
+	// Specifies whether to enable credential injection.
+	EnableCredentialInject *bool `json:"EnableCredentialInject,omitempty" xml:"EnableCredentialInject,omitempty"`
 }
 
 func (s CredentialConfig) String() string {

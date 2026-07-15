@@ -86,7 +86,7 @@ type ListEcsSpecsRequest struct {
 	//
 	// example:
 	//
-	// Gpu
+	// GPU
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 }
 

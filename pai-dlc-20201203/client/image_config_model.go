@@ -20,21 +20,21 @@ type iImageConfig interface {
 }
 
 type ImageConfig struct {
-	// The authentication information of the image repository.
+	// Image repository authentication information
 	Auth *string `json:"Auth,omitempty" xml:"Auth,omitempty"`
-	// The address of the image repository.
+	// Image repository address
 	//
 	// example:
 	//
 	// docker****registry.com
 	DockerRegistry *string `json:"DockerRegistry,omitempty" xml:"DockerRegistry,omitempty"`
-	// The password that is used to log on to the image repository.
+	// Image repository password
 	//
 	// example:
 	//
 	// password
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The username that is used to log on to the image repository.
+	// Image repository username
 	//
 	// example:
 	//

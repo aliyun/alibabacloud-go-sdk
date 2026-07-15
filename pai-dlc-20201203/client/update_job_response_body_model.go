@@ -16,13 +16,13 @@ type iUpdateJobResponseBody interface {
 }
 
 type UpdateJobResponseBody struct {
-	// The job ID.
+	// The ID of the job.
 	//
 	// example:
 	//
 	// dlc*************
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The request ID, which is used for diagnostics and Q\\&A.
+	// The request ID, used for diagnostics and support.
 	//
 	// example:
 	//

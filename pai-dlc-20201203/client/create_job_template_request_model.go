@@ -24,13 +24,13 @@ type iCreateJobTemplateRequest interface {
 }
 
 type CreateJobTemplateRequest struct {
-	// 字段约束规则。Key 为 JSONPath 表达式，Value 为约束类型：locked（锁定不可覆盖）、overridable（可覆盖）、required（必填）。
+	// The field constraint rules. The key is a JSONPath expression, and the value is a constraint type: `locked` (cannot be overridden), `overridable` (can be overridden), or `required` (must be specified).
 	//
 	// example:
 	//
 	// {\\"JobSpecs[0].Image\\":\\"locked\\",\\"UserCommand\\":\\"locked\\",\\"JobType\\":\\"locked\\"}
 	Constraints map[string]interface{} `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
-	// 任务模板的配置内容，包含作业配置参数，以 JSON 格式传入。
+	// The configuration of the job template, which must be a JSON string containing the job configuration parameters.
 	//
 	// This parameter is required.
 	//
@@ -38,23 +38,27 @@ type CreateJobTemplateRequest struct {
 	//
 	// {\\"WorkspaceId\\":\\"15****05\\",\\"JobType\\":\\"PyTorchJob\\",\\"UserCommand\\":\\"echo hello\\",\\"JobSpecs\\":[{\\"Type\\":\\"Worker\\",\\"PodCount\\":1,\\"Image\\":\\"dsw-registry-vpc.cn-hangzhou.cr.aliyuncs.com/pai/pytorch:2.8.0-gpu-py313-cu129-ubuntu22.04-3995b779-1764361782\\",\\"EcsSpec\\":\\"ecs.gn7i-c8g1.2xlarge\\"}],\\"ResourceType\\":\\"ECS\\",\\"_ResourcePaymentType\\":\\"PostPaid\\",\\"CredentialConfig\\":{\\"EnableCredentialInject\\":false},\\"Accessibility\\":\\"PRIVATE\\",\\"Settings\\":{\\"JobReservedMinutes\\":0,\\"Tags\\":{}}}
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The description of the job template.
+	//
 	// example:
 	//
 	// Template description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 用户自定义的键值对元数据，用于存储模板的附加信息。
+	// User-defined key-value metadata.
 	//
 	// example:
 	//
 	// {}
 	Metadata map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// The name of the job template.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// job-template-example-1778047****
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// 工作空间 ID。如何获取工作空间 ID，请参见 ListWorkspaces。
+	// The ID of the workspace that contains the job template.
 	//
 	// This parameter is required.
 	//

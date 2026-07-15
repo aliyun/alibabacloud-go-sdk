@@ -53,17 +53,21 @@ type iJobSettings interface {
 	GetPipelineId() *string
 	SetSanityCheckArgs(v string) *JobSettings
 	GetSanityCheckArgs() *string
+	SetShell(v string) *JobSettings
+	GetShell() *string
 	SetTags(v map[string]*string) *JobSettings
 	GetTags() map[string]*string
+	SetTerminationGracePeriodSeconds(v int64) *JobSettings
+	GetTerminationGracePeriodSeconds() *int64
 }
 
 type JobSettings struct {
-	// The additional advanced parameter configurations.
+	// The extra advanced parameter settings.
 	AdvancedSettings map[string]interface{} `json:"AdvancedSettings,omitempty" xml:"AdvancedSettings,omitempty"`
-	// Whether to mount all RDMA network interface controllers
+	// Specifies whether to mount all RDMA network interfaces.
 	AllocateAllRDMADevices  *bool `json:"AllocateAllRDMADevices,omitempty" xml:"AllocateAllRDMADevices,omitempty"`
 	AllowUnschedulableNodes *bool `json:"AllowUnschedulableNodes,omitempty" xml:"AllowUnschedulableNodes,omitempty"`
-	// The ID of the user associated with the job.
+	// The user ID associated with the job.
 	//
 	// example:
 	//
@@ -74,88 +78,89 @@ type JobSettings struct {
 	// example:
 	//
 	// SilkFlow
-	Caller           *string           `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	// The DataJuicer task configuration.
 	DataJuicerConfig *DataJuicerConfig `json:"DataJuicerConfig,omitempty" xml:"DataJuicerConfig,omitempty"`
-	// Whether inventory check is skipped. Valid values:
+	// Specifies whether to skip the inventory check. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
 	// false
 	DisableEcsStockCheck *bool `json:"DisableEcsStockCheck,omitempty" xml:"DisableEcsStockCheck,omitempty"`
-	// The NVIDIA driver configurations.
+	// The NVIDIA driver configuration.
 	//
 	// example:
 	//
 	// 535.54.03
 	Driver *string `json:"Driver,omitempty" xml:"Driver,omitempty"`
-	// Whether the CPU affinity is enabled. This parameter takes effect only when you use subscription general computing resources.
+	// The CPU affinity setting. This setting takes effect only when general-purpose subscription computing resources are used.
 	//
 	// example:
 	//
 	// true
 	EnableCPUAffinity *bool `json:"EnableCPUAffinity,omitempty" xml:"EnableCPUAffinity,omitempty"`
 	EnableDSWDev      *bool `json:"EnableDSWDev,omitempty" xml:"EnableDSWDev,omitempty"`
-	// Whether fault tolerance monitoring is enabled for the job. Valid values:
+	// Specifies whether to enable fault tolerance monitoring for the job. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
 	// false
 	EnableErrorMonitoringInAIMaster *bool `json:"EnableErrorMonitoringInAIMaster,omitempty" xml:"EnableErrorMonitoringInAIMaster,omitempty"`
-	// Whether data is written to Object Storage Service (OSS) in append mode. Valid values:
+	// Specifies whether OSS append writes are allowed. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
 	// true
 	EnableOssAppend *bool `json:"EnableOssAppend,omitempty" xml:"EnableOssAppend,omitempty"`
-	// Whether RDMA is enabled for the job. Valid values:
+	// Specifies whether the job is allowed to use RDMA. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
 	// true
 	EnableRDMA *bool `json:"EnableRDMA,omitempty" xml:"EnableRDMA,omitempty"`
-	// Whether sanity check is enabled for the job. Valid values:
+	// Specifies whether to enable computing power health check for the job. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
 	// true
 	EnableSanityCheck *bool `json:"EnableSanityCheck,omitempty" xml:"EnableSanityCheck,omitempty"`
-	// Whether tidal resources are allowed for the job. Valid values:
+	// Specifies whether the job is allowed to use tidal resources. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
 	// true
 	EnableTideResource *bool `json:"EnableTideResource,omitempty" xml:"EnableTideResource,omitempty"`
-	// The configuration parameters after you enable fault tolerance monitoring. For example, you can specify whether to enable log hang-based detection.
+	// The configuration parameters for fault tolerance monitoring after it is enabled. For example, you can specify whether to enable log hang-based detection.
 	//
 	// example:
 	//
 	// --enable-log-hang-detection true
 	ErrorMonitoringArgs *string `json:"ErrorMonitoringArgs,omitempty" xml:"ErrorMonitoringArgs,omitempty"`
-	// The retention period after the job ends. Unit: minutes.
+	// The duration (in minutes) for which the job is retained after it ends.
 	//
 	// example:
 	//
@@ -166,28 +171,34 @@ type JobSettings struct {
 	// example:
 	//
 	// Always
-	JobReservedPolicy *string      `json:"JobReservedPolicy,omitempty" xml:"JobReservedPolicy,omitempty"`
-	ModelConfig       *ModelConfig `json:"ModelConfig,omitempty" xml:"ModelConfig,omitempty"`
-	// Whether the job accepts oversold resources. Valid values: ForbiddenQuotaOverSold, AcceptQuotaOverSold, and ForceQuotaOverSold.
+	JobReservedPolicy *string `json:"JobReservedPolicy,omitempty" xml:"JobReservedPolicy,omitempty"`
+	// The output model configuration. This parameter currently takes effect only in federated training scenarios.
+	ModelConfig *ModelConfig `json:"ModelConfig,omitempty" xml:"ModelConfig,omitempty"`
+	// The oversold resource usage mode for the job (not accepted, acceptable, or only accepted).
 	//
 	// example:
 	//
 	// AcceptQuotaOverSold
 	OversoldType *string `json:"OversoldType,omitempty" xml:"OversoldType,omitempty"`
-	// The pipeline ID.
+	// The workflow ID.
 	//
 	// example:
 	//
-	// pid-123456
+	// pid-12****
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// The configuration parameters for sanity check.
+	// The configuration parameters for computing power health check.
 	//
 	// example:
 	//
 	// --sanity-check-timing=AfterJobFaultTolerant --sanity-check-timeout-ops=MarkJobFail
 	SanityCheckArgs *string `json:"SanityCheckArgs,omitempty" xml:"SanityCheckArgs,omitempty"`
-	// The custom tag.
-	Tags map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// example:
+	//
+	// /bin/bash
+	Shell *string `json:"Shell,omitempty" xml:"Shell,omitempty"`
+	// The custom tags.
+	Tags                          map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TerminationGracePeriodSeconds *int64             `json:"TerminationGracePeriodSeconds,omitempty" xml:"TerminationGracePeriodSeconds,omitempty"`
 }
 
 func (s JobSettings) String() string {
@@ -286,8 +297,16 @@ func (s *JobSettings) GetSanityCheckArgs() *string {
 	return s.SanityCheckArgs
 }
 
+func (s *JobSettings) GetShell() *string {
+	return s.Shell
+}
+
 func (s *JobSettings) GetTags() map[string]*string {
 	return s.Tags
+}
+
+func (s *JobSettings) GetTerminationGracePeriodSeconds() *int64 {
+	return s.TerminationGracePeriodSeconds
 }
 
 func (s *JobSettings) SetAdvancedSettings(v map[string]interface{}) *JobSettings {
@@ -400,8 +419,18 @@ func (s *JobSettings) SetSanityCheckArgs(v string) *JobSettings {
 	return s
 }
 
+func (s *JobSettings) SetShell(v string) *JobSettings {
+	s.Shell = &v
+	return s
+}
+
 func (s *JobSettings) SetTags(v map[string]*string) *JobSettings {
 	s.Tags = v
+	return s
+}
+
+func (s *JobSettings) SetTerminationGracePeriodSeconds(v int64) *JobSettings {
+	s.TerminationGracePeriodSeconds = &v
 	return s
 }
 

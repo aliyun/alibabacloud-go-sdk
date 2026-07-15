@@ -9,11 +9,13 @@ import (
 
 // Summary:
 //
-// Creates a job that runs in a cluster. You can configure the data source, code source, startup command, and computing resources of each node on which a job runs.
+// Creates a job and runs it in a cluster. You can specify the datasource config, code source configuration, startup command, and compute resource configuration for each node on which the job runs.
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of Deep Learning Containers (DLC) of Platform for AI (PAI).
+// Before you call this operation, make sure that you are familiar with the billing and [pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC.
+//
+//	Notice: The total length of CreateJob request parameters, including system-generated parameters, cannot exceed 65,536 bytes..
 //
 // @param request - CreateJobRequest
 //
@@ -160,7 +162,7 @@ func (client *Client) CreateJobWithContext(ctx context.Context, request *CreateJ
 
 // Summary:
 //
-// Create a job template.
+// Creates a job template.
 //
 // @param request - CreateJobTemplateRequest
 //
@@ -227,7 +229,13 @@ func (client *Client) CreateJobTemplateWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # Create RayHistoryServer
+// Creates a RayHistoryServer.
+//
+// Description:
+//
+// Before you use this operation, make sure that you are familiar with the billing of PAI-DLC and the [pricing](https://help.aliyun.com/document_detail/171758.html).
+//
+//	Notice: The total length of CreateJob request parameters, including system-generated parameters, cannot exceed 65,536 bytes..
 //
 // @param request - CreateRayHistoryServerRequest
 //
@@ -454,7 +462,7 @@ func (client *Client) DeleteJobWithContext(ctx context.Context, JobId *string, h
 
 // Summary:
 //
-// Deletes an unused job template. Templates that are used by jobs cannot be deleted.
+// Deletes a job template. You cannot delete a job template that is in use by a job.
 //
 // @param request - DeleteJobTemplateRequest
 //
@@ -495,7 +503,11 @@ func (client *Client) DeleteJobTemplateWithContext(ctx context.Context, Template
 
 // Summary:
 //
-// # Delete RayHistoryServer
+// Deletes a Ray History Server.
+//
+// Description:
+//
+// Before calling this API, ensure you understand the billing methods and [Pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC.
 //
 // @param request - DeleteRayHistoryServerRequest
 //
@@ -583,11 +595,11 @@ func (client *Client) DeleteTensorboardWithContext(ctx context.Context, Tensorbo
 
 // Summary:
 //
-// Gets the DLC task\\"s Dashboard URL, if one exists.
+// Retrieves the Dashboard URL for a DLC job, if available.
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of Deep Learning Containers (DLC) of Platform for AI (PAI).
+// Before using this API, review the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) for PAI-DLC.
 //
 // @param request - GetDashboardRequest
 //
@@ -638,7 +650,7 @@ func (client *Client) GetDashboardWithContext(ctx context.Context, jobId *string
 
 // Summary:
 //
-// Obtains the configuration and runtime information of a job.
+// Retrieves the detailed configuration and runtime information of a DLC job.
 //
 // @param request - GetJobRequest
 //
@@ -858,7 +870,7 @@ func (client *Client) GetJobSanityCheckResultWithContext(ctx context.Context, Jo
 
 // Summary:
 //
-// Obtains the details of a job template.
+// Retrieves the details of a job template.
 //
 // @param request - GetJobTemplateRequest
 //
@@ -905,7 +917,23 @@ func (client *Client) GetJobTemplateWithContext(ctx context.Context, TemplateId 
 
 // Summary:
 //
-// Queries metrics data.
+// Retrieve metrics data.
+//
+// Description:
+//
+// ## Request description
+//
+// - This API retrieves monitoring metrics for a specific job (JobId) or dimensions under a given namespace.
+//
+// - It supports custom time ranges. By default, it returns data from the last hour.
+//
+// - Select different time intervals (Period) to obtain data points with finer or coarser granularity.
+//
+// - To paginate through large datasets, use the `NextToken` parameter.
+//
+// - The `MetricName` parameter is required and specifies the monitoring metric to query.
+//
+// - For advanced features or specific metric types, see the related documentation.
 //
 // @param request - GetMetricsRequest
 //
@@ -1110,11 +1138,11 @@ func (client *Client) GetPodLogsWithContext(ctx context.Context, JobId *string, 
 
 // Summary:
 //
-// Obtains a Ray Dashboard URL.
+// Retrieve the Ray Dashboard URL.
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of Deep Learning Containers (DLC) of Platform for AI (PAI).
+// Before you use this operation, review the PAI-DLC billing model and [pricing](https://help.aliyun.com/document_detail/171758.html).
 //
 // @param request - GetRayDashboardRequest
 //
@@ -1165,7 +1193,11 @@ func (client *Client) GetRayDashboardWithContext(ctx context.Context, jobId *str
 
 // Summary:
 //
-// # Query RayHistoryServer
+// Retrieves the details of a specific RayHistoryServer.
+//
+// Description:
+//
+// Before you call this API operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC.	Notice: The total length of the parameters for the CreateJob API, including system-generated parameters, cannot exceed 65,536 bytes.
 //
 // @param request - GetRayHistoryServerRequest
 //
@@ -1206,7 +1238,7 @@ func (client *Client) GetRayHistoryServerWithContext(ctx context.Context, RayHis
 
 // Summary:
 //
-// Queries the information of a TensorBoard instance.
+// Retrieves the details of a Tensorboard instance.
 //
 // @param request - GetTensorboardRequest
 //
@@ -1532,7 +1564,7 @@ func (client *Client) ListJobSanityCheckResultsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// List job templates by workspace. Support paging and sorting. Filter by creator, TemplateId, or TemplateName.
+// Lists job templates in a specified workspace. You can paginate, sort, and filter the results by creator, `TemplateId`, or `TemplateName`.
 //
 // @param request - ListJobTemplatesRequest
 //
@@ -1607,7 +1639,7 @@ func (client *Client) ListJobTemplatesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries a list of jobs and supports pagination, sorting, and filtering by conditions.
+// Retrieves a list of jobs with support for pagination, sorting, and conditional filtering.
 //
 // @param tmpReq - ListJobsRequest
 //
@@ -1800,7 +1832,13 @@ func (client *Client) ListJobsWithContext(ctx context.Context, tmpReq *ListJobsR
 
 // Summary:
 //
-// # List resource RayHistoryServer
+// Lists RayHistoryServer resources.
+//
+// Description:
+//
+// Before you use this operation, make sure that you are familiar with the billing and [pricing](https://help.aliyun.com/document_detail/171758.html) of Platform for AI - Deep Learning Containers (PAI-DLC).
+//
+//	Notice: The total length of the CreateJob operation parameters, including system-generated parameters, cannot exceed 65,536 bytes..
 //
 // @param request - ListRayHistoryServersRequest
 //
@@ -1869,6 +1907,10 @@ func (client *Client) ListRayHistoryServersWithContext(ctx context.Context, requ
 		query["Status"] = request.Status
 	}
 
+	if !dara.IsNil(request.StoragePath) {
+		query["StoragePath"] = request.StoragePath
+	}
+
 	if !dara.IsNil(request.UserIdForFilter) {
 		query["UserIdForFilter"] = request.UserIdForFilter
 	}
@@ -1907,7 +1949,7 @@ func (client *Client) ListRayHistoryServersWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries a list of TensorBoard instances.
+// Queries a list of created Tensorboard instances.
 //
 // @param request - ListTensorboardsRequest
 //
@@ -2030,7 +2072,7 @@ func (client *Client) ListTensorboardsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Sets the default version of the template.
+// Sets the default version of a job template.
 //
 // @param request - SetJobTemplateDefaultVersionRequest
 //
@@ -2077,7 +2119,11 @@ func (client *Client) SetJobTemplateDefaultVersionWithContext(ctx context.Contex
 
 // Summary:
 //
-// # Start Ray History Server
+// Starts a Ray History Server.
+//
+// Description:
+//
+// Before calling this operation, familiarize yourself with the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC.	Notice: The total length of the API parameters for the CreateJob operation, including system-generated parameters, cannot exceed 65,536 bytes.
 //
 // @param request - StartRayHistoryServerRequest
 //
@@ -2198,7 +2244,11 @@ func (client *Client) StopJobWithContext(ctx context.Context, JobId *string, hea
 
 // Summary:
 //
-// # Stop Ray History Server
+// Stops a Ray History Server.
+//
+// Description:
+//
+// Before calling this operation, ensure you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) for PAI-DLC.	Notice: The total length of the parameters for the CreateJob interface, including system-generated parameters, cannot exceed 65,536 bytes.
 //
 // @param request - StopRayHistoryServerRequest
 //
@@ -2286,7 +2336,7 @@ func (client *Client) StopTensorboardWithContext(ctx context.Context, Tensorboar
 
 // Summary:
 //
-// Updates the configuration information of a job. For example, you can modify the priority of a job in a queue.
+// Updates a job\\"s configuration, such as its priority.
 //
 // @param request - UpdateJobRequest
 //
@@ -2416,7 +2466,7 @@ func (client *Client) UpdateJobTemplateWithContext(ctx context.Context, Template
 
 // Summary:
 //
-// Updates a TensorBoard instance.
+// Update a Tensorboard.
 //
 // @param request - UpdateTensorboardRequest
 //

@@ -16,9 +16,9 @@ type iResourceRequirements interface {
 }
 
 type ResourceRequirements struct {
-	// The resource limit.
+	// Resource limits
 	Limits map[string]*string `json:"Limits,omitempty" xml:"Limits,omitempty"`
-	// The resource request.
+	// Resource requests
 	Requests map[string]*string `json:"Requests,omitempty" xml:"Requests,omitempty"`
 }
 

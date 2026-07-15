@@ -52,61 +52,61 @@ type iListTensorboardsRequest interface {
 }
 
 type ListTensorboardsRequest struct {
-	// The instance visibility.
+	// The visibility of the Tensorboard instance. Valid values:
 	//
-	// 	- PUBLIC: TensorBoard instances are visible to all members in the workspace.
+	// - PUBLIC: visible to all members in the workspace.
 	//
-	// 	- PRIVATE: TensorBoard instances are visible only to you and the administrator of the workspace.
+	// - PRIVATE: visible only to you and administrators in the workspace.
 	//
 	// example:
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// The TensorBoard instance name.
+	// The display name of the Tensorboard instance.
 	//
 	// example:
 	//
 	// TestTensorboard
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The end time of the query. Use the UTC time when the TensorBoard instance is created to filter data. If you leave this parameter empty, the default value is the current time.
+	// The end time of the query range. Tensorboard instances are filtered by their creation time in UTC. If this parameter is left empty, the default value is the current time.
 	//
 	// example:
 	//
 	// 2020-11-09T14:45:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The job ID used to filter TensorBoard instances. For more information about how to obtain the ID of a job, see [ListJobs](https://help.aliyun.com/document_detail/459676.html).
+	// The DLC job ID used to filter Tensorboard instances. Call [ListJobs](https://help.aliyun.com/document_detail/459676.html) to obtain the job ID.
 	//
 	// example:
 	//
 	// dlc-xxx
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The sorting order.
+	// The sort order. Valid values:
 	//
-	// 	- desc
+	// - desc: descending order.
 	//
-	// 	- asc
+	// - asc: ascending order.
 	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number. Minimum value: 1.
+	// The page number for paging. The value starts from 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of TensorBoard instances per page.
+	// The number of Tensorboard instances to return on each page for paging.
 	//
 	// example:
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The billing method of TensorBoard instances.
+	// The billing method of the Tensorboard instance. Valid values:
 	//
-	// 	- Free: the TensorBoard instance that uses free resources.
+	// - Free: a Tensorboard instance that uses free resources.
 	//
-	// 	- Postpaid: the TensorBoard instance that uses pay-as-you-go resources.
+	// - Postpaid: a Tensorboard instance that uses pay-as-you-go resources.
 	//
 	// example:
 	//
@@ -114,67 +114,65 @@ type ListTensorboardsRequest struct {
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
 	// The resource quota ID.
 	//
-	// >
+	// > - Currently, only whitelisted users can use resource quota resources to create Tensorboard instances. To use this feature, contact us.
 	//
-	// 	- Only whitelisted users can use resource quotas to create TensorBoard instances. If you want to use this feature, contact us.
-	//
-	// 	- This parameter takes effect only when TensorBoard instances use resource quotas.
+	// > - This parameter takes effect only when the Tensorboard instance uses resource quota resources.
 	//
 	// example:
 	//
 	// quota12***
 	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
-	// Specifies whether to return only the TensorBoard instances created by the current logon account.
+	// Specifies whether to return only Tensorboard instances created by the current user.
 	//
 	// example:
 	//
 	// false
 	ShowOwn *bool `json:"ShowOwn,omitempty" xml:"ShowOwn,omitempty"`
-	// The returned field used to sort TensorBoard instances.
+	// The field by which the results are sorted. Valid values:
 	//
-	// 	- DisplayName: the name of the TensorBoard instance.
+	// - DisplayName: the job name.
 	//
-	// 	- GmtCreateTime: the time when the TensorBoard instance is created.
+	// - GmtCreateTime: the job creation time.
 	//
 	// example:
 	//
 	// GmtCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The data source ID. For more information about how to obtain the ID of a job, see [ListJobs](https://help.aliyun.com/document_detail/459676.html).
+	// The data source ID. Call [ListJobs](https://help.aliyun.com/document_detail/459676.html) to obtain the job ID.
 	//
 	// example:
 	//
 	// dlc-xxxxxx
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	// The data source associated with the TensorBoard instance. This parameter is no longer used. Only Deep Learning Containers (DLC) training jobs are supported.
+	// The data source type. Currently, only DLC training jobs are supported, which means the value is job.
 	//
 	// example:
 	//
 	// job
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The start time of the query. Use the UTC time when the TensorBoard instance is created to filter data. If you leave this parameter empty, the default value is seven days before the current time.
+	// The start time of the query range. Tensorboard instances are filtered by their creation time in UTC. If this parameter is left empty, the default value is 7 days before the current time.
 	//
 	// example:
 	//
 	// 2020-11-08T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The TensorBoard instance status. Valid values:
+	// The Tensorboard status. Valid values:
 	//
-	// 	- Creating
+	// - Creating: being created.
 	//
-	// 	- Running
+	// - Running: running.
 	//
-	// 	- Stopped
+	// - Stopped: stopped.
 	//
-	// 	- Succeeded
+	// - Succeeded: succeeded.
 	//
-	// 	- Failed
+	// - Failed: failed.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The TensorBoard instance ID used to filter TensorBoard instances.
+	// The Tensorboard ID used to filter the Tensorboard list.
 	//
 	// example:
 	//
@@ -192,17 +190,17 @@ type ListTensorboardsRequest struct {
 	//
 	// she****mo
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
-	// Specifies whether to return the information about the TensorBoard instance.
+	// Specifies whether to display details.
 	//
-	// 	- true
+	// - true: Display details.
 	//
-	// 	- false
+	// - false: Do not display details.
 	//
 	// example:
 	//
 	// true
 	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
-	// The workspace ID. Obtain a list of TensorBoard instances based on the workspace ID.
+	// The workspace ID. Tensorboard instances are filtered by workspace ID. <props="china">Call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID..
 	//
 	// example:
 	//

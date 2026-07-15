@@ -26,14 +26,20 @@ type iGetMetricsResponseBody interface {
 }
 
 type GetMetricsResponseBody struct {
+	// The status code. A value of 200 indicates success.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The monitoring metric data.
+	//
 	// example:
 	//
 	// [{\\"Content\\": \\"\\", \\"OperationName\\": \\"purchase\\", \\"Success\\": 1, \\"Id\\": \\"217\\", \\"LogDatetime\\": 1687679582923}]
 	DataPoints *string `json:"DataPoints,omitempty" xml:"DataPoints,omitempty"`
+	// Detailed result message.
+	//
 	// example:
 	//
 	// Success.
@@ -44,14 +50,20 @@ type GetMetricsResponseBody struct {
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6lESTRpd5hnHNnmKOP/+w9F
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The statistical period for monitoring data. Valid values: 15, 60, 900, and 3600. Unit: seconds. If you do not specify a statistical period, the system uses the reporting period registered for the metric. Each cloud service metric (MetricName) may have a different statistical period. For more information, see cloud service monitoring metrics.
+	//
 	// example:
 	//
 	// 5
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded. Valid values: true (success) and false (failure).
+	//
 	// example:
 	//
 	// True

@@ -28,18 +28,28 @@ type iJobReplicaStatus interface {
 }
 
 type JobReplicaStatus struct {
-	Active                  *int32  `json:"Active,omitempty" xml:"Active,omitempty"`
+	// The number of active pods for this replica type.
+	Active *int32 `json:"Active,omitempty" xml:"Active,omitempty"`
+	// The type of spot instance in use, if any.
 	CurrentSpotInstanceType *string `json:"CurrentSpotInstanceType,omitempty" xml:"CurrentSpotInstanceType,omitempty"`
-	Dequeued                *int32  `json:"Dequeued,omitempty" xml:"Dequeued,omitempty"`
+	// The number of dequeued pods.
+	Dequeued *int32 `json:"Dequeued,omitempty" xml:"Dequeued,omitempty"`
+	// The estimated auto scaling specification.
+	//
 	// if can be null:
 	// true
 	EstimatedAutoScalingSpec *AutoScalingSpec `json:"EstimatedAutoScalingSpec,omitempty" xml:"EstimatedAutoScalingSpec,omitempty"`
-	EstimatedPodCount        *int64           `json:"EstimatedPodCount,omitempty" xml:"EstimatedPodCount,omitempty"`
+	// The estimated number of pods for this replica type, used for auto scaling.
+	EstimatedPodCount *int64 `json:"EstimatedPodCount,omitempty" xml:"EstimatedPodCount,omitempty"`
+	// The estimated resource configuration.
+	//
 	// if can be null:
 	// true
 	EstimatedResourceConfig *ResourceConfig `json:"EstimatedResourceConfig,omitempty" xml:"EstimatedResourceConfig,omitempty"`
-	Queuing                 *int32          `json:"Queuing,omitempty" xml:"Queuing,omitempty"`
-	Type                    *string         `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The number of queued pods.
+	Queuing *int32 `json:"Queuing,omitempty" xml:"Queuing,omitempty"`
+	// The type of the job replica.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s JobReplicaStatus) String() string {

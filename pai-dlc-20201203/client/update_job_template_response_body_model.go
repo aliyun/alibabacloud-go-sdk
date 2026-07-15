@@ -22,26 +22,34 @@ type iUpdateJobTemplateResponseBody interface {
 }
 
 type UpdateJobTemplateResponseBody struct {
+	// The default version number.
+	//
 	// example:
 	//
 	// 2
 	DefaultVersion *int32 `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
+	// The time the template was last modified.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 2021-01-12T14:36:00Z
 	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
-	// 本次请求的 ID，用于诊断和答疑。
+	// The request ID, used for diagnostics and troubleshooting.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-xxxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The version number.
+	//
 	// example:
 	//
 	// 2
 	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
+	// Indicates whether a new version was created.
+	//
 	// example:
 	//
 	// true

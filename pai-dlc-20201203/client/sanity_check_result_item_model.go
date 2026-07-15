@@ -24,33 +24,33 @@ type iSanityCheckResultItem interface {
 }
 
 type SanityCheckResultItem struct {
-	// The nth time the check is performed.
+	// The sequence number of the check.
 	//
 	// example:
 	//
 	// 1
 	CheckNumber *int32 `json:"CheckNumber,omitempty" xml:"CheckNumber,omitempty"`
-	// The time when the check ends.
+	// The end time of the check.
 	//
 	// example:
 	//
 	// 2023-11-30T16:47:30.378817+08:00
 	FinishedAt *string `json:"FinishedAt,omitempty" xml:"FinishedAt,omitempty"`
-	// The detailed information about the check results.
+	// The details of the check result.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The check phase.
+	// The phase of the check.
 	//
 	// example:
 	//
 	// CheckInit
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The time when the check starts.
+	// The start time of the check.
 	//
 	// example:
 	//
 	// 2023-11-30T16:47:30.343005+08:00
 	StartedAt *string `json:"StartedAt,omitempty" xml:"StartedAt,omitempty"`
-	// The check status.
+	// The status of the check.
 	//
 	// example:
 	//

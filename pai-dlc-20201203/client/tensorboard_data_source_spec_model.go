@@ -78,7 +78,7 @@ type TensorboardDataSourceSpec struct {
 	//
 	// example:
 	//
-	// oss://.oss-cn-shanghai-finance-1.aliyuncs.com/
+	// oss://examplebucket.oss-cn-shanghai-internal.aliyuncs.com/
 	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 

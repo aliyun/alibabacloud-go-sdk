@@ -18,11 +18,16 @@ type iServiceSpec interface {
 }
 
 type ServiceSpec struct {
+	// The default port for the service.
+	//
 	// example:
 	//
 	// 8080
-	DefaultPort *int32   `json:"DefaultPort,omitempty" xml:"DefaultPort,omitempty"`
-	ExtraPorts  []*int32 `json:"ExtraPorts,omitempty" xml:"ExtraPorts,omitempty" type:"Repeated"`
+	DefaultPort *int32 `json:"DefaultPort,omitempty" xml:"DefaultPort,omitempty"`
+	// The list of extra ports for the service.
+	ExtraPorts []*int32 `json:"ExtraPorts,omitempty" xml:"ExtraPorts,omitempty" type:"Repeated"`
+	// The service pattern. Valid values are PerRole and PerPod. The default value is PerPod.
+	//
 	// example:
 	//
 	// PerRole

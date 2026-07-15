@@ -48,24 +48,42 @@ type iDownloadJobResult interface {
 }
 
 type DownloadJobResult struct {
-	DisplayName   *string   `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	DownloadJobId *string   `json:"DownloadJobId,omitempty" xml:"DownloadJobId,omitempty"`
-	DownloadUrl   *string   `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	EndTime       *string   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	FileType      *string   `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	GmtCreated    *string   `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	GmtModified   *string   `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	LogCount      *int32    `json:"LogCount,omitempty" xml:"LogCount,omitempty"`
-	PodIds        []*string `json:"PodIds,omitempty" xml:"PodIds,omitempty" type:"Repeated"`
-	PodUids       []*string `json:"PodUids,omitempty" xml:"PodUids,omitempty" type:"Repeated"`
-	SourceJobId   *string   `json:"SourceJobId,omitempty" xml:"SourceJobId,omitempty"`
-	StartTime     *string   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status        *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	TenantId      *string   `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	Type          *string   `json:"Type,omitempty" xml:"Type,omitempty"`
-	UrlExpireTime *string   `json:"UrlExpireTime,omitempty" xml:"UrlExpireTime,omitempty"`
-	UserId        *string   `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	WorkspaceId   *string   `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The display name of the download job.
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The ID of the download job.
+	DownloadJobId *string `json:"DownloadJobId,omitempty" xml:"DownloadJobId,omitempty"`
+	// A temporary, pre-signed URL for downloading the result file.
+	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	// The completion time of the download job, in UTC format.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The type of file to download, such as `logs` or `output`.
+	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// The creation time of the download job, in UTC format.
+	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The last modification time of the download job, in UTC format.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The number of log entries included in the download.
+	LogCount *int32 `json:"LogCount,omitempty" xml:"LogCount,omitempty"`
+	// The IDs of the pods for the source job.
+	PodIds []*string `json:"PodIds,omitempty" xml:"PodIds,omitempty" type:"Repeated"`
+	// The UIDs of the pods for the source job.
+	PodUids []*string `json:"PodUids,omitempty" xml:"PodUids,omitempty" type:"Repeated"`
+	// The ID of the source job whose results are downloaded.
+	SourceJobId *string `json:"SourceJobId,omitempty" xml:"SourceJobId,omitempty"`
+	// The start time of the download job, in UTC format.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the download job. Valid values: `Running`, `Succeeded`, and `Failed`.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the tenant that the job belongs to.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The type of the download job.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The time when the download URL expires, in UTC format.
+	UrlExpireTime *string `json:"UrlExpireTime,omitempty" xml:"UrlExpireTime,omitempty"`
+	// The ID of the user who created the job.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the workspace where the job was created.
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s DownloadJobResult) String() string {

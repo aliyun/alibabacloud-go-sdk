@@ -20,11 +20,24 @@ type iDataJuicerConfig interface {
 }
 
 type DataJuicerConfig struct {
+	// The command type.
+	//
+	// - shell: A shell command.
+	//
+	// - config: The YAML configuration for DataJuicer.
+	//
 	// example:
 	//
 	// config
-	CommandType              *string `json:"CommandType,omitempty" xml:"CommandType,omitempty"`
-	EnableResourceEstimation *bool   `json:"EnableResourceEstimation,omitempty" xml:"EnableResourceEstimation,omitempty"`
+	CommandType *string `json:"CommandType,omitempty" xml:"CommandType,omitempty"`
+	// Specifies whether to enable resource estimation.
+	EnableResourceEstimation *bool `json:"EnableResourceEstimation,omitempty" xml:"EnableResourceEstimation,omitempty"`
+	// The execution mode.
+	//
+	// - standalone: Single node.
+	//
+	// - distributed: Distributed.
+	//
 	// example:
 	//
 	// standalone

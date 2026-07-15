@@ -69,6 +69,24 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"eu-west-1-oxs":               dara.String("pai-dlc.aliyuncs.com"),
 		"me-east-1":                   dara.String("pai-dlc.aliyuncs.com"),
 		"rus-west-1-pop":              dara.String("pai-dlc.aliyuncs.com"),
+		"us-west-1":                   dara.String("pai-dlc.us-west-1.aliyuncs.com"),
+		"us-southeast-1":              dara.String("pai-dlc.us-southeast-1.aliyuncs.com"),
+		"us-east-1":                   dara.String("pai-dlc.us-east-1.aliyuncs.com"),
+		"eu-central-1":                dara.String("pai-dlc.eu-central-1.aliyuncs.com"),
+		"cn-wulanchabu":               dara.String("pai-dlc.cn-wulanchabu.aliyuncs.com"),
+		"cn-shenzhen":                 dara.String("pai-dlc.cn-shenzhen.aliyuncs.com"),
+		"cn-shanghai-finance-1":       dara.String("pai-dlc.cn-shanghai-finance-1.aliyuncs.com"),
+		"cn-shanghai":                 dara.String("pai-dlc.cn-shanghai.aliyuncs.com"),
+		"cn-hongkong":                 dara.String("pai-dlc.cn-hongkong.aliyuncs.com"),
+		"cn-hangzhou":                 dara.String("pai-dlc.cn-hangzhou.aliyuncs.com"),
+		"cn-guangzhou":                dara.String("pai-dlc.cn-guangzhou.aliyuncs.com"),
+		"cn-beijing":                  dara.String("pai-dlc.cn-beijing.aliyuncs.com"),
+		"ap-southeast-8":              dara.String("pai-dlc.ap-southeast-8.aliyuncs.com"),
+		"ap-southeast-7":              dara.String("pai-dlc.ap-southeast-7.aliyuncs.com"),
+		"ap-southeast-5":              dara.String("pai-dlc.ap-southeast-5.aliyuncs.com"),
+		"ap-southeast-3":              dara.String("pai-dlc.ap-southeast-3.aliyuncs.com"),
+		"ap-southeast-1":              dara.String("pai-dlc.ap-southeast-1.aliyuncs.com"),
+		"ap-northeast-1":              dara.String("pai-dlc.ap-northeast-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -103,11 +121,13 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Creates a job that runs in a cluster. You can configure the data source, code source, startup command, and computing resources of each node on which a job runs.
+// Creates a job and runs it in a cluster. You can specify the datasource config, code source configuration, startup command, and compute resource configuration for each node on which the job runs.
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of Deep Learning Containers (DLC) of Platform for AI (PAI).
+// Before you call this operation, make sure that you are familiar with the billing and [pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC.
+//
+//	Notice: The total length of CreateJob request parameters, including system-generated parameters, cannot exceed 65,536 bytes..
 //
 // @param request - CreateJobRequest
 //
@@ -254,11 +274,13 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers ma
 
 // Summary:
 //
-// Creates a job that runs in a cluster. You can configure the data source, code source, startup command, and computing resources of each node on which a job runs.
+// Creates a job and runs it in a cluster. You can specify the datasource config, code source configuration, startup command, and compute resource configuration for each node on which the job runs.
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of Deep Learning Containers (DLC) of Platform for AI (PAI).
+// Before you call this operation, make sure that you are familiar with the billing and [pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC.
+//
+//	Notice: The total length of CreateJob request parameters, including system-generated parameters, cannot exceed 65,536 bytes..
 //
 // @param request - CreateJobRequest
 //
@@ -277,7 +299,7 @@ func (client *Client) CreateJob(request *CreateJobRequest) (_result *CreateJobRe
 
 // Summary:
 //
-// Create a job template.
+// Creates a job template.
 //
 // @param request - CreateJobTemplateRequest
 //
@@ -344,7 +366,7 @@ func (client *Client) CreateJobTemplateWithOptions(request *CreateJobTemplateReq
 
 // Summary:
 //
-// Create a job template.
+// Creates a job template.
 //
 // @param request - CreateJobTemplateRequest
 //
@@ -363,7 +385,13 @@ func (client *Client) CreateJobTemplate(request *CreateJobTemplateRequest) (_res
 
 // Summary:
 //
-// # Create RayHistoryServer
+// Creates a RayHistoryServer.
+//
+// Description:
+//
+// Before you use this operation, make sure that you are familiar with the billing of PAI-DLC and the [pricing](https://help.aliyun.com/document_detail/171758.html).
+//
+//	Notice: The total length of CreateJob request parameters, including system-generated parameters, cannot exceed 65,536 bytes..
 //
 // @param request - CreateRayHistoryServerRequest
 //
@@ -434,7 +462,13 @@ func (client *Client) CreateRayHistoryServerWithOptions(request *CreateRayHistor
 
 // Summary:
 //
-// # Create RayHistoryServer
+// Creates a RayHistoryServer.
+//
+// Description:
+//
+// Before you use this operation, make sure that you are familiar with the billing of PAI-DLC and the [pricing](https://help.aliyun.com/document_detail/171758.html).
+//
+//	Notice: The total length of CreateJob request parameters, including system-generated parameters, cannot exceed 65,536 bytes..
 //
 // @param request - CreateRayHistoryServerRequest
 //
@@ -645,7 +679,7 @@ func (client *Client) DeleteJob(JobId *string) (_result *DeleteJobResponse, _err
 
 // Summary:
 //
-// Deletes an unused job template. Templates that are used by jobs cannot be deleted.
+// Deletes a job template. You cannot delete a job template that is in use by a job.
 //
 // @param request - DeleteJobTemplateRequest
 //
@@ -686,7 +720,7 @@ func (client *Client) DeleteJobTemplateWithOptions(TemplateId *string, request *
 
 // Summary:
 //
-// Deletes an unused job template. Templates that are used by jobs cannot be deleted.
+// Deletes a job template. You cannot delete a job template that is in use by a job.
 //
 // @param request - DeleteJobTemplateRequest
 //
@@ -705,7 +739,11 @@ func (client *Client) DeleteJobTemplate(TemplateId *string, request *DeleteJobTe
 
 // Summary:
 //
-// # Delete RayHistoryServer
+// Deletes a Ray History Server.
+//
+// Description:
+//
+// Before calling this API, ensure you understand the billing methods and [Pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC.
 //
 // @param request - DeleteRayHistoryServerRequest
 //
@@ -746,7 +784,11 @@ func (client *Client) DeleteRayHistoryServerWithOptions(RayHistoryServerId *stri
 
 // Summary:
 //
-// # Delete RayHistoryServer
+// Deletes a Ray History Server.
+//
+// Description:
+//
+// Before calling this API, ensure you understand the billing methods and [Pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC.
 //
 // @param request - DeleteRayHistoryServerRequest
 //
@@ -831,11 +873,11 @@ func (client *Client) DeleteTensorboard(TensorboardId *string, request *DeleteTe
 
 // Summary:
 //
-// Gets the DLC task\\"s Dashboard URL, if one exists.
+// Retrieves the Dashboard URL for a DLC job, if available.
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of Deep Learning Containers (DLC) of Platform for AI (PAI).
+// Before using this API, review the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) for PAI-DLC.
 //
 // @param request - GetDashboardRequest
 //
@@ -886,11 +928,11 @@ func (client *Client) GetDashboardWithOptions(jobId *string, request *GetDashboa
 
 // Summary:
 //
-// Gets the DLC task\\"s Dashboard URL, if one exists.
+// Retrieves the Dashboard URL for a DLC job, if available.
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of Deep Learning Containers (DLC) of Platform for AI (PAI).
+// Before using this API, review the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) for PAI-DLC.
 //
 // @param request - GetDashboardRequest
 //
@@ -909,7 +951,7 @@ func (client *Client) GetDashboard(jobId *string, request *GetDashboardRequest) 
 
 // Summary:
 //
-// Obtains the configuration and runtime information of a job.
+// Retrieves the detailed configuration and runtime information of a DLC job.
 //
 // @param request - GetJobRequest
 //
@@ -956,7 +998,7 @@ func (client *Client) GetJobWithOptions(JobId *string, request *GetJobRequest, h
 
 // Summary:
 //
-// Obtains the configuration and runtime information of a job.
+// Retrieves the detailed configuration and runtime information of a DLC job.
 //
 // @param request - GetJobRequest
 //
@@ -1205,7 +1247,7 @@ func (client *Client) GetJobSanityCheckResult(JobId *string, request *GetJobSani
 
 // Summary:
 //
-// Obtains the details of a job template.
+// Retrieves the details of a job template.
 //
 // @param request - GetJobTemplateRequest
 //
@@ -1252,7 +1294,7 @@ func (client *Client) GetJobTemplateWithOptions(TemplateId *string, request *Get
 
 // Summary:
 //
-// Obtains the details of a job template.
+// Retrieves the details of a job template.
 //
 // @param request - GetJobTemplateRequest
 //
@@ -1271,7 +1313,23 @@ func (client *Client) GetJobTemplate(TemplateId *string, request *GetJobTemplate
 
 // Summary:
 //
-// Queries metrics data.
+// Retrieve metrics data.
+//
+// Description:
+//
+// ## Request description
+//
+// - This API retrieves monitoring metrics for a specific job (JobId) or dimensions under a given namespace.
+//
+// - It supports custom time ranges. By default, it returns data from the last hour.
+//
+// - Select different time intervals (Period) to obtain data points with finer or coarser granularity.
+//
+// - To paginate through large datasets, use the `NextToken` parameter.
+//
+// - The `MetricName` parameter is required and specifies the monitoring metric to query.
+//
+// - For advanced features or specific metric types, see the related documentation.
 //
 // @param request - GetMetricsRequest
 //
@@ -1354,7 +1412,23 @@ func (client *Client) GetMetricsWithOptions(request *GetMetricsRequest, headers 
 
 // Summary:
 //
-// Queries metrics data.
+// Retrieve metrics data.
+//
+// Description:
+//
+// ## Request description
+//
+// - This API retrieves monitoring metrics for a specific job (JobId) or dimensions under a given namespace.
+//
+// - It supports custom time ranges. By default, it returns data from the last hour.
+//
+// - Select different time intervals (Period) to obtain data points with finer or coarser granularity.
+//
+// - To paginate through large datasets, use the `NextToken` parameter.
+//
+// - The `MetricName` parameter is required and specifies the monitoring metric to query.
+//
+// - For advanced features or specific metric types, see the related documentation.
 //
 // @param request - GetMetricsRequest
 //
@@ -1533,11 +1607,11 @@ func (client *Client) GetPodLogs(JobId *string, PodId *string, request *GetPodLo
 
 // Summary:
 //
-// Obtains a Ray Dashboard URL.
+// Retrieve the Ray Dashboard URL.
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of Deep Learning Containers (DLC) of Platform for AI (PAI).
+// Before you use this operation, review the PAI-DLC billing model and [pricing](https://help.aliyun.com/document_detail/171758.html).
 //
 // @param request - GetRayDashboardRequest
 //
@@ -1588,11 +1662,11 @@ func (client *Client) GetRayDashboardWithOptions(jobId *string, request *GetRayD
 
 // Summary:
 //
-// Obtains a Ray Dashboard URL.
+// Retrieve the Ray Dashboard URL.
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of Deep Learning Containers (DLC) of Platform for AI (PAI).
+// Before you use this operation, review the PAI-DLC billing model and [pricing](https://help.aliyun.com/document_detail/171758.html).
 //
 // @param request - GetRayDashboardRequest
 //
@@ -1611,7 +1685,11 @@ func (client *Client) GetRayDashboard(jobId *string, request *GetRayDashboardReq
 
 // Summary:
 //
-// # Query RayHistoryServer
+// Retrieves the details of a specific RayHistoryServer.
+//
+// Description:
+//
+// Before you call this API operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC.	Notice: The total length of the parameters for the CreateJob API, including system-generated parameters, cannot exceed 65,536 bytes.
 //
 // @param request - GetRayHistoryServerRequest
 //
@@ -1652,7 +1730,11 @@ func (client *Client) GetRayHistoryServerWithOptions(RayHistoryServerId *string,
 
 // Summary:
 //
-// # Query RayHistoryServer
+// Retrieves the details of a specific RayHistoryServer.
+//
+// Description:
+//
+// Before you call this API operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC.	Notice: The total length of the parameters for the CreateJob API, including system-generated parameters, cannot exceed 65,536 bytes.
 //
 // @param request - GetRayHistoryServerRequest
 //
@@ -1671,7 +1753,7 @@ func (client *Client) GetRayHistoryServer(RayHistoryServerId *string, request *G
 
 // Summary:
 //
-// Queries the information of a TensorBoard instance.
+// Retrieves the details of a Tensorboard instance.
 //
 // @param request - GetTensorboardRequest
 //
@@ -1726,7 +1808,7 @@ func (client *Client) GetTensorboardWithOptions(TensorboardId *string, request *
 
 // Summary:
 //
-// Queries the information of a TensorBoard instance.
+// Retrieves the details of a Tensorboard instance.
 //
 // @param request - GetTensorboardRequest
 //
@@ -2111,7 +2193,7 @@ func (client *Client) ListJobSanityCheckResults(JobId *string, request *ListJobS
 
 // Summary:
 //
-// List job templates by workspace. Support paging and sorting. Filter by creator, TemplateId, or TemplateName.
+// Lists job templates in a specified workspace. You can paginate, sort, and filter the results by creator, `TemplateId`, or `TemplateName`.
 //
 // @param request - ListJobTemplatesRequest
 //
@@ -2186,7 +2268,7 @@ func (client *Client) ListJobTemplatesWithOptions(request *ListJobTemplatesReque
 
 // Summary:
 //
-// List job templates by workspace. Support paging and sorting. Filter by creator, TemplateId, or TemplateName.
+// Lists job templates in a specified workspace. You can paginate, sort, and filter the results by creator, `TemplateId`, or `TemplateName`.
 //
 // @param request - ListJobTemplatesRequest
 //
@@ -2205,7 +2287,7 @@ func (client *Client) ListJobTemplates(request *ListJobTemplatesRequest) (_resul
 
 // Summary:
 //
-// Queries a list of jobs and supports pagination, sorting, and filtering by conditions.
+// Retrieves a list of jobs with support for pagination, sorting, and conditional filtering.
 //
 // @param tmpReq - ListJobsRequest
 //
@@ -2398,7 +2480,7 @@ func (client *Client) ListJobsWithOptions(tmpReq *ListJobsRequest, headers map[s
 
 // Summary:
 //
-// Queries a list of jobs and supports pagination, sorting, and filtering by conditions.
+// Retrieves a list of jobs with support for pagination, sorting, and conditional filtering.
 //
 // @param request - ListJobsRequest
 //
@@ -2417,7 +2499,13 @@ func (client *Client) ListJobs(request *ListJobsRequest) (_result *ListJobsRespo
 
 // Summary:
 //
-// # List resource RayHistoryServer
+// Lists RayHistoryServer resources.
+//
+// Description:
+//
+// Before you use this operation, make sure that you are familiar with the billing and [pricing](https://help.aliyun.com/document_detail/171758.html) of Platform for AI - Deep Learning Containers (PAI-DLC).
+//
+//	Notice: The total length of the CreateJob operation parameters, including system-generated parameters, cannot exceed 65,536 bytes..
 //
 // @param request - ListRayHistoryServersRequest
 //
@@ -2486,6 +2574,10 @@ func (client *Client) ListRayHistoryServersWithOptions(request *ListRayHistorySe
 		query["Status"] = request.Status
 	}
 
+	if !dara.IsNil(request.StoragePath) {
+		query["StoragePath"] = request.StoragePath
+	}
+
 	if !dara.IsNil(request.UserIdForFilter) {
 		query["UserIdForFilter"] = request.UserIdForFilter
 	}
@@ -2524,7 +2616,13 @@ func (client *Client) ListRayHistoryServersWithOptions(request *ListRayHistorySe
 
 // Summary:
 //
-// # List resource RayHistoryServer
+// Lists RayHistoryServer resources.
+//
+// Description:
+//
+// Before you use this operation, make sure that you are familiar with the billing and [pricing](https://help.aliyun.com/document_detail/171758.html) of Platform for AI - Deep Learning Containers (PAI-DLC).
+//
+//	Notice: The total length of the CreateJob operation parameters, including system-generated parameters, cannot exceed 65,536 bytes..
 //
 // @param request - ListRayHistoryServersRequest
 //
@@ -2543,7 +2641,7 @@ func (client *Client) ListRayHistoryServers(request *ListRayHistoryServersReques
 
 // Summary:
 //
-// Queries a list of TensorBoard instances.
+// Queries a list of created Tensorboard instances.
 //
 // @param request - ListTensorboardsRequest
 //
@@ -2666,7 +2764,7 @@ func (client *Client) ListTensorboardsWithOptions(request *ListTensorboardsReque
 
 // Summary:
 //
-// Queries a list of TensorBoard instances.
+// Queries a list of created Tensorboard instances.
 //
 // @param request - ListTensorboardsRequest
 //
@@ -2685,7 +2783,7 @@ func (client *Client) ListTensorboards(request *ListTensorboardsRequest) (_resul
 
 // Summary:
 //
-// Sets the default version of the template.
+// Sets the default version of a job template.
 //
 // @param request - SetJobTemplateDefaultVersionRequest
 //
@@ -2732,7 +2830,7 @@ func (client *Client) SetJobTemplateDefaultVersionWithOptions(TemplateId *string
 
 // Summary:
 //
-// Sets the default version of the template.
+// Sets the default version of a job template.
 //
 // @param request - SetJobTemplateDefaultVersionRequest
 //
@@ -2751,7 +2849,11 @@ func (client *Client) SetJobTemplateDefaultVersion(TemplateId *string, request *
 
 // Summary:
 //
-// # Start Ray History Server
+// Starts a Ray History Server.
+//
+// Description:
+//
+// Before calling this operation, familiarize yourself with the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC.	Notice: The total length of the API parameters for the CreateJob operation, including system-generated parameters, cannot exceed 65,536 bytes.
 //
 // @param request - StartRayHistoryServerRequest
 //
@@ -2792,7 +2894,11 @@ func (client *Client) StartRayHistoryServerWithOptions(RayHistoryServerId *strin
 
 // Summary:
 //
-// # Start Ray History Server
+// Starts a Ray History Server.
+//
+// Description:
+//
+// Before calling this operation, familiarize yourself with the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC.	Notice: The total length of the API parameters for the CreateJob operation, including system-generated parameters, cannot exceed 65,536 bytes.
 //
 // @param request - StartRayHistoryServerRequest
 //
@@ -2927,7 +3033,11 @@ func (client *Client) StopJob(JobId *string) (_result *StopJobResponse, _err err
 
 // Summary:
 //
-// # Stop Ray History Server
+// Stops a Ray History Server.
+//
+// Description:
+//
+// Before calling this operation, ensure you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) for PAI-DLC.	Notice: The total length of the parameters for the CreateJob interface, including system-generated parameters, cannot exceed 65,536 bytes.
 //
 // @param request - StopRayHistoryServerRequest
 //
@@ -2968,7 +3078,11 @@ func (client *Client) StopRayHistoryServerWithOptions(RayHistoryServerId *string
 
 // Summary:
 //
-// # Stop Ray History Server
+// Stops a Ray History Server.
+//
+// Description:
+//
+// Before calling this operation, ensure you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) for PAI-DLC.	Notice: The total length of the parameters for the CreateJob interface, including system-generated parameters, cannot exceed 65,536 bytes.
 //
 // @param request - StopRayHistoryServerRequest
 //
@@ -3053,7 +3167,7 @@ func (client *Client) StopTensorboard(TensorboardId *string, request *StopTensor
 
 // Summary:
 //
-// Updates the configuration information of a job. For example, you can modify the priority of a job in a queue.
+// Updates a job\\"s configuration, such as its priority.
 //
 // @param request - UpdateJobRequest
 //
@@ -3112,7 +3226,7 @@ func (client *Client) UpdateJobWithOptions(JobId *string, request *UpdateJobRequ
 
 // Summary:
 //
-// Updates the configuration information of a job. For example, you can modify the priority of a job in a queue.
+// Updates a job\\"s configuration, such as its priority.
 //
 // @param request - UpdateJobRequest
 //
@@ -3221,7 +3335,7 @@ func (client *Client) UpdateJobTemplate(TemplateId *string, request *UpdateJobTe
 
 // Summary:
 //
-// Updates a TensorBoard instance.
+// Update a Tensorboard.
 //
 // @param request - UpdateTensorboardRequest
 //
@@ -3280,7 +3394,7 @@ func (client *Client) UpdateTensorboardWithOptions(TensorboardId *string, reques
 
 // Summary:
 //
-// Updates a TensorBoard instance.
+// Update a Tensorboard.
 //
 // @param request - UpdateTensorboardRequest
 //

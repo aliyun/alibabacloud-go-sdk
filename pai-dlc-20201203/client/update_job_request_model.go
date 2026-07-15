@@ -20,23 +20,22 @@ type iUpdateJobRequest interface {
 }
 
 type UpdateJobRequest struct {
-	// The job visibility. Valid values:
+	// The job\\"s visibility. You can only increase, not decrease, the visibility. Valid value:
 	//
-	// 	- PUBLIC: The job is visible to all members in the workspace.
-	//
-	// 	- PRIVATE: The job is visible only to you and the administrator of the workspace.
+	// - `PUBLIC`: The job is visible to all users in the workspace.
 	//
 	// example:
 	//
-	// PRIVATE
-	Accessibility *string    `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	Description   *string    `json:"Description,omitempty" xml:"Description,omitempty"`
-	JobSpecs      []*JobSpec `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
-	// The job priority. Valid values: 1 to 9.
+	// PUBLIC
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The job specifications.
+	JobSpecs []*JobSpec `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
+	// The priority of the job. Valid values range from 1 to 9:
 	//
-	// 	- 1: the lowest priority.
+	// - 1 indicates the lowest priority.
 	//
-	// 	- 9: the highest priority.
+	// - 9 indicates the highest priority.
 	//
 	// example:
 	//

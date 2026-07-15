@@ -14,7 +14,7 @@ type iGetDashboardResponseBody interface {
 }
 
 type GetDashboardResponseBody struct {
-	// The Dashboard URL
+	// The Dashboard URL.
 	//
 	// example:
 	//

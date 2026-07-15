@@ -16,10 +16,14 @@ type iSeccompProfile interface {
 }
 
 type SeccompProfile struct {
+	// The path of the Seccomp profile on the node. This parameter takes effect only when Type is set to Localhost.
+	//
 	// example:
 	//
 	// my-profiles/profile-allow.json
 	LocalhostProfile *string `json:"LocalhostProfile,omitempty" xml:"LocalhostProfile,omitempty"`
+	// The Seccomp configuration type. Valid values: Localhost, RuntimeDefault, Unconfined.
+	//
 	// example:
 	//
 	// Unconfined

@@ -22,11 +22,16 @@ type iStatusTransitionItem interface {
 }
 
 type StatusTransitionItem struct {
-	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	ReasonCode    *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// The end time of this status (UTC).
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The reason code for this status.
+	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// The detailed message for this status.
 	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
-	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The start time of this status (UTC).
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The job status.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s StatusTransitionItem) String() string {

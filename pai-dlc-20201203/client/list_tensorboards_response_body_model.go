@@ -24,9 +24,9 @@ type ListTensorboardsResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The TensorBoard instances.
+	// The list and details of Tensorboard instances.
 	Tensorboards []*Tensorboard `json:"Tensorboards,omitempty" xml:"Tensorboards,omitempty" type:"Repeated"`
-	// The total number of data sources that meet the conditions.
+	// The total number of Tensorboard instances that match the specified conditions.
 	//
 	// example:
 	//

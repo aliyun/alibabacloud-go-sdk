@@ -20,10 +20,14 @@ type iAutoscalingMetricSpec interface {
 }
 
 type AutoscalingMetricSpec struct {
-	MetricName                 *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	StabilizationWindowSeconds *int32  `json:"StabilizationWindowSeconds,omitempty" xml:"StabilizationWindowSeconds,omitempty"`
-	TargetValue                *int32  `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
-	Tolerance                  *string `json:"Tolerance,omitempty" xml:"Tolerance,omitempty"`
+	// The name of the metric for autoscaling. This can be a predefined or a custom metric.
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// The cooldown period, in seconds, after a scaling activity. This prevents the service from initiating another scaling action before the effects of the previous one are observable, stabilizing resource fluctuations.
+	StabilizationWindowSeconds *int32 `json:"StabilizationWindowSeconds,omitempty" xml:"StabilizationWindowSeconds,omitempty"`
+	// The target value for the specified metric. The autoscaling service tries to maintain the metric at or near this value.
+	TargetValue *int32 `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
+	// The acceptable deviation from the `TargetValue`, specified as a percentage string. A scaling action is triggered only if the metric value moves outside the range defined by the `TargetValue` and this tolerance. This prevents scaling actions based on minor fluctuations.
+	Tolerance *string `json:"Tolerance,omitempty" xml:"Tolerance,omitempty"`
 }
 
 func (s AutoscalingMetricSpec) String() string {
