@@ -42,7 +42,7 @@ type CarApplyAddResponseBody struct {
 	//
 	// 1002923002
 	Module *int64 `json:"module,omitempty" xml:"module,omitempty"`
-	// The unique request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//

@@ -2422,9 +2422,9 @@ func (client *Client) BtripBillInfoAdjust(request *BtripBillInfoAdjustRequest) (
 //
 // Synchronizes an intra-city car service approval form for a specified enterprise.
 //
-// 1. To use this operation, enable the permission for synchronizing intra-city car service approvals in your application. For more information about how to apply for data permissions, see [API Permission Application Process](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435).
+// 1. To use this operation, you must enable the permission to synchronize intra-city car service approvals in your application. For more information about how to apply for data permissions, see [API Permission Application Process](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435).
 //
-// 2. To use this operation, include the enterprise access credential (x-acs-btrip-so-corp-token) in the request header. For more information about how to obtain the enterprise access credential, see [Enterprise Access Credential](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985).
+// 2. To use this operation, you must include the enterprise access credential (x-acs-btrip-so-corp-token) in the request header. For more information about how to obtain the enterprise access credential, see [Enterprise Access Credential](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985).
 //
 // @param tmpReq - CarApplyAddRequest
 //
@@ -2564,9 +2564,9 @@ func (client *Client) CarApplyAddWithOptions(tmpReq *CarApplyAddRequest, headers
 //
 // Synchronizes an intra-city car service approval form for a specified enterprise.
 //
-// 1. To use this operation, enable the permission for synchronizing intra-city car service approvals in your application. For more information about how to apply for data permissions, see [API Permission Application Process](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435).
+// 1. To use this operation, you must enable the permission to synchronize intra-city car service approvals in your application. For more information about how to apply for data permissions, see [API Permission Application Process](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435).
 //
-// 2. To use this operation, include the enterprise access credential (x-acs-btrip-so-corp-token) in the request header. For more information about how to obtain the enterprise access credential, see [Enterprise Access Credential](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985).
+// 2. To use this operation, you must include the enterprise access credential (x-acs-btrip-so-corp-token) in the request header. For more information about how to obtain the enterprise access credential, see [Enterprise Access Credential](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985).
 //
 // @param request - CarApplyAddRequest
 //
@@ -5593,6 +5593,101 @@ func (client *Client) EstimatedPriceQuery(request *EstimatedPriceQueryRequest) (
 	headers := &EstimatedPriceQueryHeaders{}
 	_result = &EstimatedPriceQueryResponse{}
 	_body, _err := client.EstimatedPriceQueryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 预估价格查询v2.0
+//
+// @param request - EstimatedPriceQueryV2Request
+//
+// @param headers - EstimatedPriceQueryV2Headers
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EstimatedPriceQueryV2Response
+func (client *Client) EstimatedPriceQueryV2WithOptions(request *EstimatedPriceQueryV2Request, headers *EstimatedPriceQueryV2Headers, runtime *dara.RuntimeOptions) (_result *EstimatedPriceQueryV2Response, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizType) {
+		query["biz_type"] = request.BizType
+	}
+
+	if !dara.IsNil(request.DepartDate) {
+		query["depart_date"] = request.DepartDate
+	}
+
+	if !dara.IsNil(request.FromCity) {
+		query["from_city"] = request.FromCity
+	}
+
+	if !dara.IsNil(request.LeaveDate) {
+		query["leave_date"] = request.LeaveDate
+	}
+
+	if !dara.IsNil(request.ToCity) {
+		query["to_city"] = request.ToCity
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["user_id"] = request.UserId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.XAcsBtripSoCorpToken) {
+		realHeaders["x-acs-btrip-so-corp-token"] = dara.String(dara.ToString(dara.StringValue(headers.XAcsBtripSoCorpToken)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EstimatedPriceQueryV2"),
+		Version:     dara.String("2022-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/costcenter/v3/estimated-price"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EstimatedPriceQueryV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 预估价格查询v2.0
+//
+// @param request - EstimatedPriceQueryV2Request
+//
+// @return EstimatedPriceQueryV2Response
+func (client *Client) EstimatedPriceQueryV2(request *EstimatedPriceQueryV2Request) (_result *EstimatedPriceQueryV2Response, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &EstimatedPriceQueryV2Headers{}
+	_result = &EstimatedPriceQueryV2Response{}
+	_body, _err := client.EstimatedPriceQueryV2WithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
