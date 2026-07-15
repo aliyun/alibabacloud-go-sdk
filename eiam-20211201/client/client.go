@@ -9953,12 +9953,28 @@ func (client *Client) GenerateOauthTokenWithOptions(request *GenerateOauthTokenR
 		query["Audience"] = request.Audience
 	}
 
+	if !dara.IsNil(request.GrantType) {
+		query["GrantType"] = request.GrantType
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !dara.IsNil(request.RequestedTokenType) {
+		query["RequestedTokenType"] = request.RequestedTokenType
+	}
+
 	if !dara.IsNil(request.ScopeValues) {
 		query["ScopeValues"] = request.ScopeValues
+	}
+
+	if !dara.IsNil(request.SubjectToken) {
+		query["SubjectToken"] = request.SubjectToken
+	}
+
+	if !dara.IsNil(request.SubjectTokenType) {
+		query["SubjectTokenType"] = request.SubjectTokenType
 	}
 
 	req := &openapiutil.OpenApiRequest{

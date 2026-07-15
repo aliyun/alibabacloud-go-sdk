@@ -68,7 +68,7 @@ type GenerateOauthTokenResponseBodyTokenResponse struct {
 	//
 	// ***
 	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	// The expiration time, in UNIX timestamp format. Unit: seconds.
+	// The expiration time, in UNIX timestamp format, in seconds.
 	//
 	// example:
 	//
@@ -79,7 +79,8 @@ type GenerateOauthTokenResponseBodyTokenResponse struct {
 	// example:
 	//
 	// 1200
-	ExpiresIn *int64 `json:"ExpiresIn,omitempty" xml:"ExpiresIn,omitempty"`
+	ExpiresIn       *int64  `json:"ExpiresIn,omitempty" xml:"ExpiresIn,omitempty"`
+	IssuedTokenType *string `json:"IssuedTokenType,omitempty" xml:"IssuedTokenType,omitempty"`
 	// The token type. Currently, only Bearer is supported.
 	//
 	// example:
@@ -108,6 +109,10 @@ func (s *GenerateOauthTokenResponseBodyTokenResponse) GetExpiresIn() *int64 {
 	return s.ExpiresIn
 }
 
+func (s *GenerateOauthTokenResponseBodyTokenResponse) GetIssuedTokenType() *string {
+	return s.IssuedTokenType
+}
+
 func (s *GenerateOauthTokenResponseBodyTokenResponse) GetTokenType() *string {
 	return s.TokenType
 }
@@ -124,6 +129,11 @@ func (s *GenerateOauthTokenResponseBodyTokenResponse) SetExpiresAt(v int64) *Gen
 
 func (s *GenerateOauthTokenResponseBodyTokenResponse) SetExpiresIn(v int64) *GenerateOauthTokenResponseBodyTokenResponse {
 	s.ExpiresIn = &v
+	return s
+}
+
+func (s *GenerateOauthTokenResponseBodyTokenResponse) SetIssuedTokenType(v string) *GenerateOauthTokenResponseBodyTokenResponse {
+	s.IssuedTokenType = &v
 	return s
 }
 
