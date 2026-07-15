@@ -22,31 +22,31 @@ type iCreateAppGroupResponseBody interface {
 }
 
 type CreateAppGroupResponseBody struct {
-	// The HTTP status code.
+	// The return code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the job group.
+	// Information about the created Application Group.
 	Data *CreateAppGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message that is returned only if the corresponding error occurs.
+	// The error message. Returned only when the request fails.
 	//
 	// example:
 	//
 	// Your request is denied as lack of ssl protect.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The unique identifier for the request.
 	//
 	// example:
 	//
 	// 883AFE93-FB03-4FA9-A958-E750C6DE120C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the application was created. Valid values:
+	// Indicates whether the Application Group was successfully created. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The Application Group was successfully created.
 	//
-	// 	- **false**
+	// - **false**: The Application Group failed to be created.
 	//
 	// example:
 	//
@@ -117,13 +117,13 @@ func (s *CreateAppGroupResponseBody) Validate() error {
 }
 
 type CreateAppGroupResponseBodyData struct {
-	// The job group ID.
+	// The Application Group ID.
 	//
 	// example:
 	//
 	// 6607
 	AppGroupId *int64 `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
-	// The AppKey for the application.
+	// The Application Key (AppKey).
 	//
 	// example:
 	//

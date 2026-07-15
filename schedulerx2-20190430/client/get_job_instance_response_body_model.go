@@ -34,7 +34,7 @@ type GetJobInstanceResponseBody struct {
 	//
 	// example:
 	//
-	// jobid: 92583 not match groupId: testSchedulerx.defaultGroup
+	// jobId=xxx is not existed
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -44,9 +44,9 @@ type GetJobInstanceResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -164,13 +164,13 @@ type GetJobInstanceResponseBodyDataJobInstanceDetail struct {
 	//
 	// example:
 	//
-	// A
+	// John Smith
 	Executor *string `json:"Executor,omitempty" xml:"Executor,omitempty"`
 	// The job instance ID.
 	//
 	// example:
 	//
-	// 11111111
+	// 1189853849
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The job ID.
 	//
@@ -194,13 +194,13 @@ type GetJobInstanceResponseBodyDataJobInstanceDetail struct {
 	//
 	// example:
 	//
-	// complete
+	// {"taskProgress":[{"name":"MAP_TASK_ROOT","total":1,"pulled":1,"running":0,"success":0,"failed":0}],"workerProgress":[{"workerAddr":"11.122.241.245:34865","total":1,"pulled":1,"running":0,"success":0,"failed":0}]}
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	// The execution results of the job instance.
 	//
 	// example:
 	//
-	// success
+	// {\\"TotalSize\\": 31, \\"CurrentPage\\": 5, \\"PageSize\\": 10}
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 	// The time when the job was scheduled to run.
 	//
@@ -216,15 +216,15 @@ type GetJobInstanceResponseBodyDataJobInstanceDetail struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The state of the job instance. Valid values:
 	//
-	// 	- **1**: The job instance is waiting for execution.
+	// - **1**: The job instance is waiting for execution.
 	//
-	// 	- **3**: The job instance is running.
+	// - **3**: The job instance is running.
 	//
-	// 	- **4**: The job instance is successful.
+	// - **4**: The job instance is successful.
 	//
-	// 	- **5**: The job instance failed.
+	// - **5**: The job instance failed.
 	//
-	// 	- **9**: The job instance is rejected.
+	// - **9**: The job instance is rejected.
 	//
 	// Enumeration class: com.alibaba.schedulerx.common.domain.InstanceStatus
 	//
@@ -234,13 +234,13 @@ type GetJobInstanceResponseBodyDataJobInstanceDetail struct {
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The method that is used to specify the time when to schedule the job instance. Valid values:
 	//
-	// 	- **1**: cron
+	// - **1**: cron
 	//
-	// 	- **3**: fix_rate
+	// - **3**: fix_rate
 	//
-	// 	- **4**: second_delay
+	// - **4**: second_delay
 	//
-	// 	- **100**: api
+	// - **100**: api
 	//
 	// Enumeration class: com.alibaba.schedulerx.common.domain.TimeType
 	//
@@ -256,21 +256,21 @@ type GetJobInstanceResponseBodyDataJobInstanceDetail struct {
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 	// The trigger type of the job instance. Valid values:
 	//
-	// 	- **1**: The job instance was triggered at the scheduled time.
+	// - **1**: The job instance was triggered at the scheduled time.
 	//
-	// 	- **2**: The job instance was triggered due to data update.
+	// - **2**: The job instance was triggered due to data update.
 	//
-	// 	- **3**: The job instance was triggered by an API call.
+	// - **3**: The job instance was triggered by an API call.
 	//
-	// 	- **4**: The job instance was triggered because it is manually rerun.
+	// - **4**: The job instance was triggered because it is manually rerun.
 	//
-	// 	- **5**: The job instance was triggered because the system automatically reruns the job instance upon a system exception, such as a database exception.
+	// - **5**: The job instance was triggered because the system automatically reruns the job instance upon a system exception, such as a database exception.
 	//
 	// Enumeration class: com.alibaba.schedulerx.common.domain.TriggerType
 	//
 	// example:
 	//
-	// 3
+	// 1
 	TriggerType *int32 `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
 	// The endpoint of the triggered client. The value is in the IP address:Port number format.
 	//

@@ -22,7 +22,7 @@ type iBatchDeleteJobsRequest interface {
 }
 
 type BatchDeleteJobsRequest struct {
-	// The ID of the application. You can obtain the application ID on the **Application Management*	- page in the SchedulerX console.
+	// The ID of the Application. You can find this ID on the **Application Management*	- page in the Console.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type BatchDeleteJobsRequest struct {
 	//
 	// testSchedulerx.defaultGroup
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The job IDs. Separate multiple job IDs with commas (,).
+	// The IDs of the Jobs to delete.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type BatchDeleteJobsRequest struct {
 	//
 	// 99341
 	JobIdList []*int64 `json:"JobIdList,omitempty" xml:"JobIdList,omitempty" type:"Repeated"`
-	// The ID of the namespace to which the job belongs. You can obtain the ID of the namespace on the **Namespace*	- page in the SchedulerX console.
+	// The ID of the Namespace that contains the Jobs. You can find this ID on the **Namespace*	- page in the Console.
 	//
 	// This parameter is required.
 	//
@@ -46,13 +46,13 @@ type BatchDeleteJobsRequest struct {
 	//
 	// adcfc35d-e2fe-4fe9-bbaa-20e90ffc****
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The source of the namespace. This parameter is required only for a special third party.
+	// This parameter is required only for specific third-party integrations.
 	//
 	// example:
 	//
 	// Schedulerx
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
-	// The ID of the region to which the job belongs.
+	// The Region where the Jobs are located.
 	//
 	// This parameter is required.
 	//

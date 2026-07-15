@@ -20,13 +20,13 @@ type iCreateNamespaceRequest interface {
 }
 
 type CreateNamespaceRequest struct {
-	// The description of the namespace.
+	// The namespace description.
 	//
 	// example:
 	//
 	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the namespace.
+	// The namespace name.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type CreateNamespaceRequest struct {
 	//
 	// test-env
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The region ID.
+	// The region ID. For example, `cn-hangzhou` specifies the China (Hangzhou) region.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type CreateNamespaceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The unique identifier (UID) of the namespace. We recommend that you use the universally unique identifier (UUID) to generate the UID.
+	// The namespace UID. This value must be globally unique. We recommend that you use a UUID.
 	//
 	// example:
 	//

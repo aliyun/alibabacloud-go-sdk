@@ -22,7 +22,7 @@ type iReadSchedulerxDesignateInfoRequest interface {
 }
 
 type ReadSchedulerxDesignateInfoRequest struct {
-	// The ID of the application. You can obtain the application ID on the **Applications*	- page in the SchedulerX console.
+	// The application ID. You can find this ID on the **Application Management*	- page in the console.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type ReadSchedulerxDesignateInfoRequest struct {
 	//
 	// test.defalutGroup
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The job ID. You can obtain the ID on the Tasks page in the SchedulerX console.
+	// The job ID. You can find this ID on the **Task Management*	- page in the console.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type ReadSchedulerxDesignateInfoRequest struct {
 	//
 	// 368
 	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The unique identifier (UID) of the namespace. You can obtain the namespace UID on the Namespaces page in the SchedulerX console.
+	// The namespace UID. You can find this UID on the **Namespace*	- page in the console.
 	//
 	// This parameter is required.
 	//
@@ -46,13 +46,13 @@ type ReadSchedulerxDesignateInfoRequest struct {
 	//
 	// adcfc35d-e2fe-4fe9-bbaa-20e90ffc****
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The source of the namespace. This parameter is required only for a special third party.
+	// This parameter is required only for specific third-party integrations.
 	//
 	// example:
 	//
 	// schedulerx
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// This parameter is required.
 	//

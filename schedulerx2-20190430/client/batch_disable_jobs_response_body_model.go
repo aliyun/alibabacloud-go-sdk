@@ -20,29 +20,29 @@ type iBatchDisableJobsResponseBody interface {
 }
 
 type BatchDisableJobsResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The additional information that was returned.
+	// A message that provides more information about the response.
 	//
 	// example:
 	//
 	// disable failed jobs=[99341]
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The unique ID of the request.
 	//
 	// example:
 	//
 	// 71BCC0E3-64B2-4B63-A870-AFB64EBCB5A7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Whether the operation was successful. Valid values:
 	//
-	// 	- **true**: The request was successful.
+	// - **true**: The operation was successful.
 	//
-	// 	- **false**: The request failed.
+	// - **false**: The operation failed.
 	//
 	// example:
 	//

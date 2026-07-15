@@ -22,21 +22,21 @@ type iGetAppGroupResponseBody interface {
 }
 
 type GetAppGroupResponseBody struct {
-	// The HTTP status code that is returned.
+	// The returned status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the application group.
+	// The details of the App Group.
 	Data *GetAppGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The additional information that is returned.
+	// The returned message.
 	//
 	// example:
 	//
 	// app is not existed, groupId=xxxx, namesapce=xxxx
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -117,71 +117,88 @@ func (s *GetAppGroupResponseBody) Validate() error {
 }
 
 type GetAppGroupResponseBodyData struct {
-	// The AppKey of the application.
+	// The application\\"s AppKey.
 	//
 	// example:
 	//
 	// QI4lWMZ+xk1rNB67jFUhaw==
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
 	// DocTest
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The application version. 1: Basic version, 2: Professional version.
+	// The application version. Valid values:
 	//
 	// example:
 	//
 	// 2
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// The number of jobs that are configured for the application group.
+	// The number of jobs currently configured for the App Group.
 	//
 	// example:
 	//
 	// 1
 	CurJobs *int32 `json:"CurJobs,omitempty" xml:"CurJobs,omitempty"`
-	// The description of the application.
+	// The application description.
 	//
 	// example:
 	//
 	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnableLog   *bool   `json:"EnableLog,omitempty" xml:"EnableLog,omitempty"`
-	// The ID of the application.
+	// Specifies whether to enable log collection. The default value is false.
+	EnableLog *bool `json:"EnableLog,omitempty" xml:"EnableLog,omitempty"`
+	// The App Group ID.
 	//
 	// example:
 	//
 	// testSchedulerx.defaultGroup
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The maximum number of jobs that can be configured for the application group.
+	// The maximum number of jobs that can be configured for the App Group.
 	//
 	// example:
 	//
 	// 1000
 	MaxJobs *int32 `json:"MaxJobs,omitempty" xml:"MaxJobs,omitempty"`
-	// The alert notification configurations.
+	// The alarm notification configuration.
 	//
-	// >  For more information about this parameter, see the following **additional information about request parameters**.
+	// > For more information, see the **MonitorConfigJson*	- section below.
 	//
 	// example:
 	//
-	// {"sendChannel":"sms,mail,ding"}
+	// {
+	//
+	//     "sendChannel": "ding,sms,mail,phone",
+	//
+	//     "alarmType": "Contacts",
+	//
+	//     "webhookIsAtAll": false
+	//
+	// }
 	MonitorConfigJson *string `json:"MonitorConfigJson,omitempty" xml:"MonitorConfigJson,omitempty"`
-	// The alert contact configurations.
+	// The alarm contact configuration.
 	//
-	// >  For more information about this parameter, see the following **additional information about request parameters**.
+	// > For more information, see the **MonitorContactsJson*	- section below.
 	//
 	// example:
 	//
-	// [ {"name": "Peter"}, {"name": "Paul"} ]
+	// [
+	//
+	//     {"name": "Alice Johnson"},
+	//
+	//     {"name": "Lee Smith"}
+	//
+	// ]
 	MonitorContactsJson *string `json:"MonitorContactsJson,omitempty" xml:"MonitorContactsJson,omitempty"`
-	// The ID of the namespace.
+	// The namespace ID.
 	//
 	// example:
 	//
 	// adcfc35d-e2fe-4fe9-bbaa-20e90ffc****
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The name of the notification policy.
+	//
 	// example:
 	//
 	// test-workday-notification

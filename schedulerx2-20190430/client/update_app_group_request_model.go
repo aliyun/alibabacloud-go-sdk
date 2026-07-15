@@ -44,7 +44,8 @@ type UpdateAppGroupRequest struct {
 	//
 	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnableLog   *bool   `json:"EnableLog,omitempty" xml:"EnableLog,omitempty"`
+	// Enable logging
+	EnableLog *bool `json:"EnableLog,omitempty" xml:"EnableLog,omitempty"`
 	// The ID of the application. You can obtain the application ID on the **Application Management*	- page in the SchedulerX console.
 	//
 	// This parameter is required.
@@ -77,7 +78,13 @@ type UpdateAppGroupRequest struct {
 	//
 	// example:
 	//
-	// [{"userName":"Tom","userPhone":"89756******"},{"userName":"Bob","ding":"http://www.example.com"}]
+	// [
+	//
+	//     {"name": "Alice Johnson"},
+	//
+	//     {"name": "Lee Smith"}
+	//
+	// ]
 	MonitorContactsJson *string `json:"MonitorContactsJson,omitempty" xml:"MonitorContactsJson,omitempty"`
 	// The ID of the namespace. You can obtain the ID of the namespace on the Namespace page in the SchedulerX console.
 	//
@@ -87,6 +94,8 @@ type UpdateAppGroupRequest struct {
 	//
 	// adcfc35d-e2fe-4fe9-bbaa-20e90ffc****
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// Notification policy name
+	//
 	// example:
 	//
 	// test-workday-notification

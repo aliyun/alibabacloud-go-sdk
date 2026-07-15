@@ -40,7 +40,7 @@ type GetJobInstanceListResponseBody struct {
 	//
 	// example:
 	//
-	// 4F68ABED-AC31-4412-9297-D9A8F0401108
+	// 704A2A61-3681-5568-92F7-2DFCC53F33D1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
@@ -174,7 +174,7 @@ type GetJobInstanceListResponseBodyDataJobInstanceDetails struct {
 	//
 	// example:
 	//
-	// 11111111
+	// 1042499986
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The job ID.
 	//

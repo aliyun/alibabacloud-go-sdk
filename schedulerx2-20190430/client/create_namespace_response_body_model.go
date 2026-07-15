@@ -22,15 +22,15 @@ type iCreateNamespaceResponseBody interface {
 }
 
 type CreateNamespaceResponseBody struct {
-	// The HTTP status code.
+	// The return code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the namespace.
+	// The namespace information.
 	Data *CreateNamespaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message that is returned only if the corresponding error occurs.
+	// The error message returned if the request fails.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type CreateNamespaceResponseBody struct {
 	//
 	// 4F68ABED-AC31-4412-9297-D9A8F0401108
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the application was created. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The namespace was successfully created.
 	//
-	// 	- **false**
+	// - **false**: The namespace failed to be created.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *CreateNamespaceResponseBody) Validate() error {
 }
 
 type CreateNamespaceResponseBodyData struct {
-	// The UID of the namespace.
+	// The namespace UID.
 	//
 	// example:
 	//

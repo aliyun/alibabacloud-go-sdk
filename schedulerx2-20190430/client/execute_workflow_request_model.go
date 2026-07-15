@@ -24,7 +24,7 @@ type iExecuteWorkflowRequest interface {
 }
 
 type ExecuteWorkflowRequest struct {
-  // The application ID. You can obtain the application ID on the Application Management page in the SchedulerX console.
+  // The ID of the application group. You can find this ID on the **Application Management*	- page in the console.
   // 
   // This parameter is required.
   // 
@@ -32,13 +32,13 @@ type ExecuteWorkflowRequest struct {
   // 
   // testSchedulerx.defaultGroup
   GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-  // The dynamic parameter of the workflow instance. The value of the parameter can be up to 1,000 bytes in length.
+  // The dynamic parameters for the workflow instance. The value cannot exceed 1,000 bytes.
   // 
   // example:
   // 
   // test
   InstanceParameters *string `json:"InstanceParameters,omitempty" xml:"InstanceParameters,omitempty"`
-  // The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+  // The ID of the namespace. You can find this ID on the **Namespace*	- page in the console.
   // 
   // This parameter is required.
   // 
@@ -46,13 +46,13 @@ type ExecuteWorkflowRequest struct {
   // 
   // adcfc35d-e2fe-4fe9-bbaa-20e90ffc****
   Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-  // The source of the namespace. This parameter is required only for a special third party.
+  // This parameter is required only for specific third-party integrations.
   // 
   // example:
   // 
   // schedulerx
   NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
-  // The region information.
+  // The ID of the region.
   // 
   // This parameter is required.
   // 

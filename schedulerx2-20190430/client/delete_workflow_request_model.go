@@ -22,13 +22,13 @@ type iDeleteWorkflowRequest interface {
 }
 
 type DeleteWorkflowRequest struct {
-	// The application group ID. You can obtain the application group ID on the Application Management page in the SchedulerX console.
+	// The ID of the application group. You can find this ID on the **Application Management*	- page in the Console.
 	//
 	// example:
 	//
 	// testSchedulerx.defaultGroup
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+	// The ID of the namespace. You can find this ID on the **Namespace*	- page in the Console.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type DeleteWorkflowRequest struct {
 	//
 	// adcfc35d-e2fe-4fe9-bbaa-20e90ffc****
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The source of the namespace. This parameter is required only for a special third party.
+	// Required only for specific third-party scenarios.
 	//
 	// example:
 	//

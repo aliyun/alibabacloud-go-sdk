@@ -24,7 +24,7 @@ type UpdateNamespaceRequest struct {
 	//
 	// example:
 	//
-	// Test
+	// Namespace reserved for testing
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The namespace ID. You can obtain the namespace ID on the Namespaces page in the SchedulerX console.
 	//
@@ -38,7 +38,7 @@ type UpdateNamespaceRequest struct {
 	//
 	// example:
 	//
-	// test
+	// Test Namespace
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 	// The region ID.
 	//

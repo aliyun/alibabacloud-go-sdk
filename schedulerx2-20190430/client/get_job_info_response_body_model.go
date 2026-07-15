@@ -44,9 +44,9 @@ type GetJobInfoResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the job details were obtained. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -174,15 +174,15 @@ type GetJobInfoResponseBodyDataJobConfigInfo struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The execution mode of the job. Valid values:
 	//
-	// 	- **Stand-alone operation**: standalone
+	// - **Stand-alone operation**: standalone
 	//
-	// 	- **Broadcast run**: broadcast
+	// - **Broadcast run**: broadcast
 	//
-	// 	- **Visual MapReduce**: parallel
+	// - **Visual MapReduce**: parallel
 	//
-	// 	- **MapReduce**: batch
+	// - **MapReduce**: batch
 	//
-	// 	- **Shard run**: sharding
+	// - **Shard run**: sharding
 	//
 	// example:
 	//
@@ -238,9 +238,9 @@ type GetJobInfoResponseBodyDataJobConfigInfo struct {
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// Indicates whether the job was enabled. Valid values:
 	//
-	// 	- **1**: The job was enabled and could be triggered.
+	// - **1**: The job was enabled and could be triggered.
 	//
-	// 	- **0**: The job was disabled and could not be triggered.
+	// - **0**: The job was disabled and could not be triggered.
 	//
 	// example:
 	//
@@ -565,9 +565,9 @@ func (s *GetJobInfoResponseBodyDataJobConfigInfoJobMonitorInfoContactInfo) Valid
 type GetJobInfoResponseBodyDataJobConfigInfoJobMonitorInfoMonitorConfig struct {
 	// Indicates whether the Failure alarm switch was turned on. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -593,9 +593,9 @@ type GetJobInfoResponseBodyDataJobConfigInfoJobMonitorInfoMonitorConfig struct {
 	Timeout *int64 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 	// Indicates whether the Timeout alarm switch was turned on. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -785,7 +785,7 @@ type GetJobInfoResponseBodyDataJobConfigInfoTimeConfig struct {
 	//
 	// example:
 	//
-	// Business days
+	// workday
 	Calendar *string `json:"Calendar,omitempty" xml:"Calendar,omitempty"`
 	// The time offset specified if TimeType is set to **1*	- (cron). Unit: seconds.
 	//
@@ -795,13 +795,13 @@ type GetJobInfoResponseBodyDataJobConfigInfoTimeConfig struct {
 	DataOffset *int32 `json:"DataOffset,omitempty" xml:"DataOffset,omitempty"`
 	// The time expression specified based on the value of TimeType:
 	//
-	// 	- If TimeType is set to **100*	- (api), no time expression is required.
+	// - If TimeType is set to **100*	- (api), no time expression is required.
 	//
-	// 	- If TimeType is set to **3*	- (fix_rate), this parameter value indicates the specific and fixed frequency. For example, if the value is 30, the system triggers a job every 30 seconds.
+	// - If TimeType is set to **3*	- (fix_rate), this parameter value indicates the specific and fixed frequency. For example, if the value is 30, the system triggers a job every 30 seconds.
 	//
-	// 	- If TimeType is set to **1*	- (cron), this parameter value indicates the standard CRON expression used to specify the time when to schedule the job.
+	// - If TimeType is set to **1*	- (cron), this parameter value indicates the standard CRON expression used to specify the time when to schedule the job.
 	//
-	// 	- If TimeType is set to **4*	- (second_delay), this parameter value indicates the fixed delay after which the job is triggered. Valid values: 1 to 60. Unit: seconds.
+	// - If TimeType is set to **4*	- (second_delay), this parameter value indicates the fixed delay after which the job is triggered. Valid values: 1 to 60. Unit: seconds.
 	//
 	// example:
 	//
@@ -809,15 +809,15 @@ type GetJobInfoResponseBodyDataJobConfigInfoTimeConfig struct {
 	TimeExpression *string `json:"TimeExpression,omitempty" xml:"TimeExpression,omitempty"`
 	// The time type. Valid values:
 	//
-	// 	- **1**: cron
+	// - **1**: cron
 	//
-	// 	- **3**: fix_rate
+	// - **3**: fix_rate
 	//
-	// 	- **4**: second_delay
+	// - **4**: second_delay
 	//
-	// 	- **5**: one_time
+	// - **5**: one_time
 	//
-	// 	- **100**: api
+	// - **100**: api
 	//
 	// example:
 	//

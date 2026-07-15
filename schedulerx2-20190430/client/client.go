@@ -26,10 +26,30 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	}
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
-		"cn-beijing":  dara.String("schedulerx.cn-beijing.aliyuncs.com"),
-		"cn-hangzhou": dara.String("schedulerx.cn-hangzhou.aliyuncs.com"),
-		"cn-shanghai": dara.String("schedulerx.cn-shanghai.aliyuncs.com"),
-		"cn-shenzhen": dara.String("schedulerx.cn-shenzhen.aliyuncs.com"),
+		"cn-beijing":            dara.String("schedulerx.cn-beijing.aliyuncs.com"),
+		"cn-hangzhou":           dara.String("schedulerx.cn-hangzhou.aliyuncs.com"),
+		"cn-shanghai":           dara.String("schedulerx.cn-shanghai.aliyuncs.com"),
+		"cn-shenzhen":           dara.String("schedulerx.cn-shenzhen.aliyuncs.com"),
+		"us-west-1":             dara.String("schedulerx.aliyuncs.com"),
+		"us-east-1":             dara.String("schedulerx.aliyuncs.com"),
+		"public":                dara.String("schedulerx.aliyuncs.com"),
+		"eu-west-1":             dara.String("schedulerx.aliyuncs.com"),
+		"eu-central-1":          dara.String("schedulerx.aliyuncs.com"),
+		"cn-zhangjiakou":        dara.String("schedulerx.aliyuncs.com"),
+		"cn-wulanchabu":         dara.String("schedulerx.aliyuncs.com"),
+		"cn-shanghai-finance-1": dara.String("schedulerx.aliyuncs.com"),
+		"cn-qingdao":            dara.String("schedulerx.aliyuncs.com"),
+		"cn-huhehaote":          dara.String("schedulerx.aliyuncs.com"),
+		"cn-hongkong":           dara.String("schedulerx.aliyuncs.com"),
+		"cn-guangzhou":          dara.String("schedulerx.aliyuncs.com"),
+		"cn-chengdu":            dara.String("schedulerx.aliyuncs.com"),
+		"ap-southeast-8":        dara.String("schedulerx.aliyuncs.com"),
+		"ap-southeast-7":        dara.String("schedulerx.aliyuncs.com"),
+		"ap-southeast-6":        dara.String("schedulerx.aliyuncs.com"),
+		"ap-southeast-5":        dara.String("schedulerx.aliyuncs.com"),
+		"ap-southeast-3":        dara.String("schedulerx.aliyuncs.com"),
+		"ap-southeast-1":        dara.String("schedulerx.aliyuncs.com"),
+		"ap-northeast-1":        dara.String("schedulerx.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -64,11 +84,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Deletes multiple jobs at a time.
+// Deletes multiple Jobs.
 //
 // Description:
 //
-// Before you call this operation, you must add the following dependency to the pom.xml file:
+// Before you call this API, add the following dependency to your POM file:
 //
 // ```xml
 //
@@ -144,11 +164,11 @@ func (client *Client) BatchDeleteJobsWithOptions(request *BatchDeleteJobsRequest
 
 // Summary:
 //
-// Deletes multiple jobs at a time.
+// Deletes multiple Jobs.
 //
 // Description:
 //
-// Before you call this operation, you must add the following dependency to the pom.xml file:
+// Before you call this API, add the following dependency to your POM file:
 //
 // ```xml
 //
@@ -180,7 +200,7 @@ func (client *Client) BatchDeleteJobs(request *BatchDeleteJobsRequest) (_result 
 
 // Summary:
 //
-// Deletes multiple routing policies at a time.
+// Deletes multiple Route Strategies in a batch.
 //
 // @param request - BatchDeleteRouteStrategyRequest
 //
@@ -238,7 +258,7 @@ func (client *Client) BatchDeleteRouteStrategyWithOptions(request *BatchDeleteRo
 
 // Summary:
 //
-// Deletes multiple routing policies at a time.
+// Deletes multiple Route Strategies in a batch.
 //
 // @param request - BatchDeleteRouteStrategyRequest
 //
@@ -256,11 +276,11 @@ func (client *Client) BatchDeleteRouteStrategy(request *BatchDeleteRouteStrategy
 
 // Summary:
 //
-// Disables multiple jobs at a time.
+// Disables multiple jobs in a batch.
 //
 // Description:
 //
-// Before you call this operation, you must add the following dependency to the pom.xml file:
+// To call this API, add the following dependency to your POM File:
 //
 // ```xml
 //
@@ -336,11 +356,11 @@ func (client *Client) BatchDisableJobsWithOptions(request *BatchDisableJobsReque
 
 // Summary:
 //
-// Disables multiple jobs at a time.
+// Disables multiple jobs in a batch.
 //
 // Description:
 //
-// Before you call this operation, you must add the following dependency to the pom.xml file:
+// To call this API, add the following dependency to your POM File:
 //
 // ```xml
 //
@@ -488,7 +508,7 @@ func (client *Client) BatchEnableJobs(request *BatchEnableJobsRequest) (_result 
 
 // Summary:
 //
-// Creates an application group. The AppKey is returned.
+// Creates an app group and returns an AppKey.
 //
 // @param request - CreateAppGroupRequest
 //
@@ -528,7 +548,7 @@ func (client *Client) CreateAppGroupWithOptions(request *CreateAppGroupRequest, 
 
 // Summary:
 //
-// Creates an application group. The AppKey is returned.
+// Creates an app group and returns an AppKey.
 //
 // @param request - CreateAppGroupRequest
 //
@@ -546,7 +566,7 @@ func (client *Client) CreateAppGroup(request *CreateAppGroupRequest) (_result *C
 
 // Summary:
 //
-// Creates a job and obtains the job ID.
+// Creates a node and returns the node ID.
 //
 // @param request - CreateJobRequest
 //
@@ -666,6 +686,10 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, runtime *d
 		body["SendChannel"] = request.SendChannel
 	}
 
+	if !dara.IsNil(request.StartTime) {
+		body["StartTime"] = request.StartTime
+	}
+
 	if !dara.IsNil(request.Status) {
 		body["Status"] = request.Status
 	}
@@ -736,7 +760,7 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, runtime *d
 
 // Summary:
 //
-// Creates a job and obtains the job ID.
+// Creates a node and returns the node ID.
 //
 // @param request - CreateJobRequest
 //
@@ -1572,7 +1596,7 @@ func (client *Client) DeleteSchedulerxNotificationPolicy(request *DeleteSchedule
 
 // Summary:
 //
-// Deletes a workflow.
+// Deletes the specified workflow.
 //
 // @param request - DeleteWorkflowRequest
 //
@@ -1612,7 +1636,7 @@ func (client *Client) DeleteWorkflowWithOptions(request *DeleteWorkflowRequest, 
 
 // Summary:
 //
-// Deletes a workflow.
+// Deletes the specified workflow.
 //
 // @param request - DeleteWorkflowRequest
 //
@@ -1630,7 +1654,7 @@ func (client *Client) DeleteWorkflow(request *DeleteWorkflowRequest) (_result *D
 
 // Summary:
 //
-// Returns available regions.
+// Returns a list of available regions.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -1674,7 +1698,7 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 
 // Summary:
 //
-// Returns available regions.
+// Returns a list of available regions.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -1750,7 +1774,7 @@ func (client *Client) DesignateWorkers(request *DesignateWorkersRequest) (_resul
 
 // Summary:
 //
-// Disables a specified task.
+// Disables a job.
 //
 // @param request - DisableJobRequest
 //
@@ -1790,7 +1814,7 @@ func (client *Client) DisableJobWithOptions(request *DisableJobRequest, runtime 
 
 // Summary:
 //
-// Disables a specified task.
+// Disables a job.
 //
 // @param request - DisableJobRequest
 //
@@ -1868,6 +1892,10 @@ func (client *Client) DisableWorkflow(request *DisableWorkflowRequest) (_result 
 //
 // Enables a job.
 //
+// Description:
+//
+// 任务创建完成以后默认启用，所以该功能是在停用任务后使用。
+//
 // @param request - EnableJobRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1908,6 +1936,10 @@ func (client *Client) EnableJobWithOptions(request *EnableJobRequest, runtime *d
 //
 // Enables a job.
 //
+// Description:
+//
+// 任务创建完成以后默认启用，所以该功能是在停用任务后使用。
+//
 // @param request - EnableJobRequest
 //
 // @return EnableJobResponse
@@ -1924,7 +1956,7 @@ func (client *Client) EnableJob(request *EnableJobRequest) (_result *EnableJobRe
 
 // Summary:
 //
-// Enables a specified workflow.
+// Enables a workflow.
 //
 // @param request - EnableWorkflowRequest
 //
@@ -1964,7 +1996,7 @@ func (client *Client) EnableWorkflowWithOptions(request *EnableWorkflowRequest, 
 
 // Summary:
 //
-// Enables a specified workflow.
+// Enables a workflow.
 //
 // @param request - EnableWorkflowRequest
 //
@@ -2048,7 +2080,7 @@ func (client *Client) ExecuteJob(request *ExecuteJobRequest) (_result *ExecuteJo
 
 // Summary:
 //
-// Immediately triggers a workflow.
+// Executes a workflow immediately.
 //
 // @param request - ExecuteWorkflowRequest
 //
@@ -2088,7 +2120,7 @@ func (client *Client) ExecuteWorkflowWithOptions(request *ExecuteWorkflowRequest
 
 // Summary:
 //
-// Immediately triggers a workflow.
+// Executes a workflow immediately.
 //
 // @param request - ExecuteWorkflowRequest
 //
@@ -2106,7 +2138,7 @@ func (client *Client) ExecuteWorkflow(request *ExecuteWorkflowRequest) (_result 
 
 // Summary:
 //
-// The configuration of the alert. The value is a JSON string. For more information, see \\\\\\\\*\\\\\\\\*the additional information about response parameters below this table\\\\\\\\*\\\\\\\\*.
+// Retrieves the details of an App Group.
 //
 // @param request - GetAppGroupRequest
 //
@@ -2158,7 +2190,7 @@ func (client *Client) GetAppGroupWithOptions(request *GetAppGroupRequest, runtim
 
 // Summary:
 //
-// The configuration of the alert. The value is a JSON string. For more information, see \\\\\\\\*\\\\\\\\*the additional information about response parameters below this table\\\\\\\\*\\\\\\\\*.
+// Retrieves the details of an App Group.
 //
 // @param request - GetAppGroupRequest
 //
@@ -2234,7 +2266,7 @@ func (client *Client) GetJobInfo(request *GetJobInfoRequest) (_result *GetJobInf
 
 // Summary:
 //
-// Queries the information about a job instance. You can view the status and progress of the job instance.
+// Returns the information of a job instance, allowing you to view its status and progress.
 //
 // @param request - GetJobInstanceRequest
 //
@@ -2274,7 +2306,7 @@ func (client *Client) GetJobInstanceWithOptions(request *GetJobInstanceRequest, 
 
 // Summary:
 //
-// Queries the information about a job instance. You can view the status and progress of the job instance.
+// Returns the information of a job instance, allowing you to view its status and progress.
 //
 // @param request - GetJobInstanceRequest
 //
@@ -2408,7 +2440,7 @@ func (client *Client) GetLog(request *GetLogRequest) (_result *GetLogResponse, _
 
 // Summary:
 //
-// Retrieves job scheduling data for Professional Edition applications.
+// Retrieves the overview data of task scheduling for a professional edition application.
 //
 // @param request - GetOverviewRequest
 //
@@ -2480,7 +2512,7 @@ func (client *Client) GetOverviewWithOptions(request *GetOverviewRequest, runtim
 
 // Summary:
 //
-// Retrieves job scheduling data for Professional Edition applications.
+// Retrieves the overview data of task scheduling for a professional edition application.
 //
 // @param request - GetOverviewRequest
 //
@@ -2498,7 +2530,7 @@ func (client *Client) GetOverview(request *GetOverviewRequest) (_result *GetOver
 
 // Summary:
 //
-// Obtains the information about a workflow.
+// Retrieves workflow information.
 //
 // @param request - GetWorkFlowRequest
 //
@@ -2538,7 +2570,7 @@ func (client *Client) GetWorkFlowWithOptions(request *GetWorkFlowRequest, runtim
 
 // Summary:
 //
-// Obtains the information about a workflow.
+// Retrieves workflow information.
 //
 // @param request - GetWorkFlowRequest
 //
@@ -2758,11 +2790,11 @@ func (client *Client) GrantPermission(request *GrantPermissionRequest) (_result 
 
 // Summary:
 //
-// Queries a list of applications.
+// Gets the list of applications.
 //
 // Description:
 //
-// Before you call this operation, you must add the following dependency to the pom.xml file:
+// Before you call this operation, add the following dependency to your POM file:
 //
 // ```xml
 //
@@ -2832,11 +2864,11 @@ func (client *Client) ListGroupsWithOptions(request *ListGroupsRequest, runtime 
 
 // Summary:
 //
-// Queries a list of applications.
+// Gets the list of applications.
 //
 // Description:
 //
-// Before you call this operation, you must add the following dependency to the pom.xml file:
+// Before you call this operation, add the following dependency to your POM file:
 //
 // ```xml
 //
@@ -2946,21 +2978,25 @@ func (client *Client) ListJobScriptHistory(request *ListJobScriptHistoryRequest)
 
 // Summary:
 //
-// Queries jobs.
+// Retrieves a list of nodes.
 //
 // Description:
 //
-// Before you call this operation, you must add the following dependency to the pom.xml file:
+// Before calling this operation, add the following dependency to the POM file:
 //
-//	<dependency>
+// ```
 //
-//	      <groupId>com.aliyun</groupId>
+// <dependency>
 //
-//	      <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+//	<groupId>com.aliyun</groupId>
 //
-//	      <version>1.0.5</version>
+//	<artifactId>aliyun-java-sdk-schedulerx2</artifactId>
 //
-//	</dependency>
+//	<version>1.0.5</version>
+//
+// </dependency>
+//
+// ```
 //
 // @param request - ListJobsRequest
 //
@@ -3000,21 +3036,25 @@ func (client *Client) ListJobsWithOptions(request *ListJobsRequest, runtime *dar
 
 // Summary:
 //
-// Queries jobs.
+// Retrieves a list of nodes.
 //
 // Description:
 //
-// Before you call this operation, you must add the following dependency to the pom.xml file:
+// Before calling this operation, add the following dependency to the POM file:
 //
-//	<dependency>
+// ```
 //
-//	      <groupId>com.aliyun</groupId>
+// <dependency>
 //
-//	      <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+//	<groupId>com.aliyun</groupId>
 //
-//	      <version>1.0.5</version>
+//	<artifactId>aliyun-java-sdk-schedulerx2</artifactId>
 //
-//	</dependency>
+//	<version>1.0.5</version>
+//
+// </dependency>
+//
+// ```
 //
 // @param request - ListJobsRequest
 //
@@ -3690,7 +3730,7 @@ func (client *Client) ReadSchedulerxDesignateDetail(request *ReadSchedulerxDesig
 
 // Summary:
 //
-// Queries the basic information of specified workers.
+// Retrieves basic information for the specified instance.
 //
 // @param request - ReadSchedulerxDesignateInfoRequest
 //
@@ -3750,7 +3790,7 @@ func (client *Client) ReadSchedulerxDesignateInfoWithOptions(request *ReadSchedu
 
 // Summary:
 //
-// Queries the basic information of specified workers.
+// Retrieves basic information for the specified instance.
 //
 // @param request - ReadSchedulerxDesignateInfoRequest
 //
@@ -3932,7 +3972,7 @@ func (client *Client) RerunJob(request *RerunJobRequest) (_result *RerunJobRespo
 
 // Summary:
 //
-// Reruns a successful or failed job instance. You can call this operation only in the professional edition.
+// Reruns a node instance in the failed or successful state. Only the professional edition supports this operation.
 //
 // @param request - RetryJobInstanceRequest
 //
@@ -3996,7 +4036,7 @@ func (client *Client) RetryJobInstanceWithOptions(request *RetryJobInstanceReque
 
 // Summary:
 //
-// Reruns a successful or failed job instance. You can call this operation only in the professional edition.
+// Reruns a node instance in the failed or successful state. Only the professional edition supports this operation.
 //
 // @param request - RetryJobInstanceRequest
 //
@@ -4092,7 +4132,7 @@ func (client *Client) RevokePermission(request *RevokePermissionRequest) (_resul
 
 // Summary:
 //
-// Forcibly sets the state of a job instance to successful. You can call this operation only in the professional edition.
+// Forcibly sets the instance status of a node to successful. Only the professional edition supports this operation.
 //
 // @param request - SetJobInstanceSuccessRequest
 //
@@ -4156,7 +4196,7 @@ func (client *Client) SetJobInstanceSuccessWithOptions(request *SetJobInstanceSu
 
 // Summary:
 //
-// Forcibly sets the state of a job instance to successful. You can call this operation only in the professional edition.
+// Forcibly sets the instance status of a node to successful. Only the professional edition supports this operation.
 //
 // @param request - SetJobInstanceSuccessRequest
 //
@@ -4314,7 +4354,7 @@ func (client *Client) StopInstance(request *StopInstanceRequest) (_result *StopI
 
 // Summary:
 //
-// Updates the application group.
+// Update the application group.
 //
 // @param request - UpdateAppGroupRequest
 //
@@ -4394,7 +4434,7 @@ func (client *Client) UpdateAppGroupWithOptions(request *UpdateAppGroupRequest, 
 
 // Summary:
 //
-// Updates the application group.
+// Update the application group.
 //
 // @param request - UpdateAppGroupRequest
 //
@@ -4412,7 +4452,7 @@ func (client *Client) UpdateAppGroup(request *UpdateAppGroupRequest) (_result *U
 
 // Summary:
 //
-// Updates the configuration information about a job. By default, you need to call the GetJobInfo operation to obtain the original configuration of the job before you call this operation to modify the configuration as required.
+// Updates the configuration of a node. By default, call the get node operation first to find the corresponding fields to modify.
 //
 // @param request - UpdateJobRequest
 //
@@ -4532,6 +4572,10 @@ func (client *Client) UpdateJobWithOptions(request *UpdateJobRequest, runtime *d
 		body["SendChannel"] = request.SendChannel
 	}
 
+	if !dara.IsNil(request.StartTime) {
+		body["StartTime"] = request.StartTime
+	}
+
 	if !dara.IsNil(request.SuccessNoticeEnable) {
 		body["SuccessNoticeEnable"] = request.SuccessNoticeEnable
 	}
@@ -4606,7 +4650,7 @@ func (client *Client) UpdateJobWithOptions(request *UpdateJobRequest, runtime *d
 
 // Summary:
 //
-// Updates the configuration information about a job. By default, you need to call the GetJobInfo operation to obtain the original configuration of the job before you call this operation to modify the configuration as required.
+// Updates the configuration of a node. By default, call the get node operation first to find the corresponding fields to modify.
 //
 // @param request - UpdateJobRequest
 //
@@ -4880,7 +4924,7 @@ func (client *Client) UpdateWorkflow(request *UpdateWorkflowRequest) (_result *U
 
 // Summary:
 //
-// Modifies the nodes and dependencies of a workflow. You can call this operation only in the professional edition.
+// Updates the nodes and dependencies of a workflow. This operation is available only in the Enterprise Edition.
 //
 // @param request - UpdateWorkflowDagRequest
 //
@@ -4946,7 +4990,7 @@ func (client *Client) UpdateWorkflowDagWithOptions(request *UpdateWorkflowDagReq
 
 // Summary:
 //
-// Modifies the nodes and dependencies of a workflow. You can call this operation only in the professional edition.
+// Updates the nodes and dependencies of a workflow. This operation is available only in the Enterprise Edition.
 //
 // @param request - UpdateWorkflowDagRequest
 //

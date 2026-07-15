@@ -28,7 +28,7 @@ type iGetOverviewRequest interface {
 }
 
 type GetOverviewRequest struct {
-	// The end of the time range to query. The value must be a UNIX timestamp (in seconds). If left empty, the current time is used.
+	// The end timestamp of the data, in seconds. Example: 1684166400. If this parameter is not specified, the current time is used by default.
 	//
 	// example:
 	//
@@ -42,9 +42,9 @@ type GetOverviewRequest struct {
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The metric type. Valid values:
 	//
-	// 	- 0: the basic job data.
+	// - 0: basic task information.
 	//
-	// 	- 1: the job running data.
+	// - 1: task execution information.
 	//
 	// This parameter is required.
 	//
@@ -52,23 +52,23 @@ type GetOverviewRequest struct {
 	//
 	// 0
 	MetricType *int32 `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	// The unique identifier (UID) of the namespace.
+	// The namespace UID.
 	//
 	// example:
 	//
 	// adcfc35d-e2fe-4fe9-bbaa-20e90ffc****
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The source of the namespace. This parameter is required only for a special third party.
+	// The source of the namespace. This parameter is required only for special third-party integrations.
 	//
 	// example:
 	//
 	// schedulerx
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
-	// The query type. Valid values:
+	// The operation type. Valid values:
 	//
-	// 	- query: queries data in a time range.
+	// - query: queries interval data.
 	//
-	// 	- query_range: queries time series data in a time range.
+	// - query_range: queries interval time series data.
 	//
 	// This parameter is required.
 	//
@@ -84,7 +84,7 @@ type GetOverviewRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query. The value must be a UNIX timestamp (in seconds).
+	// The start timestamp of the data, in seconds. Example: 1684166400.
 	//
 	// This parameter is required.
 	//

@@ -9,11 +9,11 @@ import (
 
 // Summary:
 //
-// Deletes multiple jobs at a time.
+// Deletes multiple Jobs.
 //
 // Description:
 //
-// Before you call this operation, you must add the following dependency to the pom.xml file:
+// Before you call this API, add the following dependency to your POM file:
 //
 // ```xml
 //
@@ -89,7 +89,7 @@ func (client *Client) BatchDeleteJobsWithContext(ctx context.Context, request *B
 
 // Summary:
 //
-// Deletes multiple routing policies at a time.
+// Deletes multiple Route Strategies in a batch.
 //
 // @param request - BatchDeleteRouteStrategyRequest
 //
@@ -147,11 +147,11 @@ func (client *Client) BatchDeleteRouteStrategyWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Disables multiple jobs at a time.
+// Disables multiple jobs in a batch.
 //
 // Description:
 //
-// Before you call this operation, you must add the following dependency to the pom.xml file:
+// To call this API, add the following dependency to your POM File:
 //
 // ```xml
 //
@@ -307,7 +307,7 @@ func (client *Client) BatchEnableJobsWithContext(ctx context.Context, request *B
 
 // Summary:
 //
-// Creates an application group. The AppKey is returned.
+// Creates an app group and returns an AppKey.
 //
 // @param request - CreateAppGroupRequest
 //
@@ -347,7 +347,7 @@ func (client *Client) CreateAppGroupWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// Creates a job and obtains the job ID.
+// Creates a node and returns the node ID.
 //
 // @param request - CreateJobRequest
 //
@@ -465,6 +465,10 @@ func (client *Client) CreateJobWithContext(ctx context.Context, request *CreateJ
 
 	if !dara.IsNil(request.SendChannel) {
 		body["SendChannel"] = request.SendChannel
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		body["StartTime"] = request.StartTime
 	}
 
 	if !dara.IsNil(request.Status) {
@@ -1157,7 +1161,7 @@ func (client *Client) DeleteSchedulerxNotificationPolicyWithContext(ctx context.
 
 // Summary:
 //
-// Deletes a workflow.
+// Deletes the specified workflow.
 //
 // @param request - DeleteWorkflowRequest
 //
@@ -1197,7 +1201,7 @@ func (client *Client) DeleteWorkflowWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Returns available regions.
+// Returns a list of available regions.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -1281,7 +1285,7 @@ func (client *Client) DesignateWorkersWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Disables a specified task.
+// Disables a job.
 //
 // @param request - DisableJobRequest
 //
@@ -1363,6 +1367,10 @@ func (client *Client) DisableWorkflowWithContext(ctx context.Context, request *D
 //
 // Enables a job.
 //
+// Description:
+//
+// 任务创建完成以后默认启用，所以该功能是在停用任务后使用。
+//
 // @param request - EnableJobRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1401,7 +1409,7 @@ func (client *Client) EnableJobWithContext(ctx context.Context, request *EnableJ
 
 // Summary:
 //
-// Enables a specified workflow.
+// Enables a workflow.
 //
 // @param request - EnableWorkflowRequest
 //
@@ -1485,7 +1493,7 @@ func (client *Client) ExecuteJobWithContext(ctx context.Context, request *Execut
 
 // Summary:
 //
-// Immediately triggers a workflow.
+// Executes a workflow immediately.
 //
 // @param request - ExecuteWorkflowRequest
 //
@@ -1525,7 +1533,7 @@ func (client *Client) ExecuteWorkflowWithContext(ctx context.Context, request *E
 
 // Summary:
 //
-// The configuration of the alert. The value is a JSON string. For more information, see \\\\\\\\*\\\\\\\\*the additional information about response parameters below this table\\\\\\\\*\\\\\\\\*.
+// Retrieves the details of an App Group.
 //
 // @param request - GetAppGroupRequest
 //
@@ -1617,7 +1625,7 @@ func (client *Client) GetJobInfoWithContext(ctx context.Context, request *GetJob
 
 // Summary:
 //
-// Queries the information about a job instance. You can view the status and progress of the job instance.
+// Returns the information of a job instance, allowing you to view its status and progress.
 //
 // @param request - GetJobInstanceRequest
 //
@@ -1737,7 +1745,7 @@ func (client *Client) GetLogWithContext(ctx context.Context, request *GetLogRequ
 
 // Summary:
 //
-// Retrieves job scheduling data for Professional Edition applications.
+// Retrieves the overview data of task scheduling for a professional edition application.
 //
 // @param request - GetOverviewRequest
 //
@@ -1809,7 +1817,7 @@ func (client *Client) GetOverviewWithContext(ctx context.Context, request *GetOv
 
 // Summary:
 //
-// Obtains the information about a workflow.
+// Retrieves workflow information.
 //
 // @param request - GetWorkFlowRequest
 //
@@ -1997,11 +2005,11 @@ func (client *Client) GrantPermissionWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// Queries a list of applications.
+// Gets the list of applications.
 //
 // Description:
 //
-// Before you call this operation, you must add the following dependency to the pom.xml file:
+// Before you call this operation, add the following dependency to your POM file:
 //
 // ```xml
 //
@@ -2131,21 +2139,25 @@ func (client *Client) ListJobScriptHistoryWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries jobs.
+// Retrieves a list of nodes.
 //
 // Description:
 //
-// Before you call this operation, you must add the following dependency to the pom.xml file:
+// Before calling this operation, add the following dependency to the POM file:
 //
-//	<dependency>
+// ```
 //
-//	      <groupId>com.aliyun</groupId>
+// <dependency>
 //
-//	      <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+//	<groupId>com.aliyun</groupId>
 //
-//	      <version>1.0.5</version>
+//	<artifactId>aliyun-java-sdk-schedulerx2</artifactId>
 //
-//	</dependency>
+//	<version>1.0.5</version>
+//
+// </dependency>
+//
+// ```
 //
 // @param request - ListJobsRequest
 //
@@ -2685,7 +2697,7 @@ func (client *Client) ReadSchedulerxDesignateDetailWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the basic information of specified workers.
+// Retrieves basic information for the specified instance.
 //
 // @param request - ReadSchedulerxDesignateInfoRequest
 //
@@ -2873,7 +2885,7 @@ func (client *Client) RerunJobWithContext(ctx context.Context, request *RerunJob
 
 // Summary:
 //
-// Reruns a successful or failed job instance. You can call this operation only in the professional edition.
+// Reruns a node instance in the failed or successful state. Only the professional edition supports this operation.
 //
 // @param request - RetryJobInstanceRequest
 //
@@ -2997,7 +3009,7 @@ func (client *Client) RevokePermissionWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Forcibly sets the state of a job instance to successful. You can call this operation only in the professional edition.
+// Forcibly sets the instance status of a node to successful. Only the professional edition supports this operation.
 //
 // @param request - SetJobInstanceSuccessRequest
 //
@@ -3165,7 +3177,7 @@ func (client *Client) StopInstanceWithContext(ctx context.Context, request *Stop
 
 // Summary:
 //
-// Updates the application group.
+// Update the application group.
 //
 // @param request - UpdateAppGroupRequest
 //
@@ -3245,7 +3257,7 @@ func (client *Client) UpdateAppGroupWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// Updates the configuration information about a job. By default, you need to call the GetJobInfo operation to obtain the original configuration of the job before you call this operation to modify the configuration as required.
+// Updates the configuration of a node. By default, call the get node operation first to find the corresponding fields to modify.
 //
 // @param request - UpdateJobRequest
 //
@@ -3363,6 +3375,10 @@ func (client *Client) UpdateJobWithContext(ctx context.Context, request *UpdateJ
 
 	if !dara.IsNil(request.SendChannel) {
 		body["SendChannel"] = request.SendChannel
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		body["StartTime"] = request.StartTime
 	}
 
 	if !dara.IsNil(request.SuccessNoticeEnable) {
@@ -3641,7 +3657,7 @@ func (client *Client) UpdateWorkflowWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// Modifies the nodes and dependencies of a workflow. You can call this operation only in the professional edition.
+// Updates the nodes and dependencies of a workflow. This operation is available only in the Enterprise Edition.
 //
 // @param request - UpdateWorkflowDagRequest
 //

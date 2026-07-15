@@ -36,7 +36,7 @@ type EnableJobResponseBody struct {
   // 
   // example:
   // 
-  // 71BCC0E3-64B2-4B63-A870-AFB64EBCB5A7
+  // 71BCC0E3-64B2-4B63-A870-AFB64EBC***
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
   // Indicates whether the request was successful. Valid values:
   // 

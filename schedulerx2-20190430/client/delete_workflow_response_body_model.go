@@ -20,29 +20,29 @@ type iDeleteWorkflowResponseBody interface {
 }
 
 type DeleteWorkflowResponseBody struct {
-	// The HTTP status code.
+	// The return code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message that is returned only if the corresponding error occurs.
+	// The error message. This parameter is returned only if the request fails.
 	//
 	// example:
 	//
 	// Your request is denied as lack of ssl protect.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 4F68ABED-AC31-4412-9297-D9A8F0401108
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the workflow was deleted. Valid values:
+	// Indicates whether the workflow was deleted successfully. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The workflow was deleted.
 	//
-	// 	- **false**
+	// - **false**: The workflow was not deleted.
 	//
 	// example:
 	//

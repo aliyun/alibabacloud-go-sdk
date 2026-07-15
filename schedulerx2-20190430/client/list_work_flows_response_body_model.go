@@ -227,7 +227,7 @@ type ListWorkFlowsResponseBodyDataRecords struct {
 	//
 	// example:
 	//
-	// test3
+	// Test3
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
 	//

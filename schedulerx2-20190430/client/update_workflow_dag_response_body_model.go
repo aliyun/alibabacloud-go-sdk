@@ -20,25 +20,25 @@ type iUpdateWorkflowDagResponseBody interface {
 }
 
 type UpdateWorkflowDagResponseBody struct {
-	// The HTTP status code.
+	// The Return Code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned error message.
+	// The Error Message returned on failure.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The Request ID.
 	//
 	// example:
 	//
 	// 39090022-1F3B-4797-8518-6B61095F1AF0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the API call succeeded. Valid values:
 	//
-	// 	- true
+	// - true: The API call succeeded.
 	//
-	// 	- false
+	// - false: The API call failed.
 	//
 	// example:
 	//

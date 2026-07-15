@@ -46,7 +46,7 @@ type GetJobInstanceRequest struct {
 	//
 	// example:
 	//
-	// 11111111
+	// 1685883418
 	JobInstanceId *int64 `json:"JobInstanceId,omitempty" xml:"JobInstanceId,omitempty"`
 	// The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
 	//
@@ -62,6 +62,8 @@ type GetJobInstanceRequest struct {
 	//
 	// schedulerx
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
+	// Region ID
+	//
 	// This parameter is required.
 	//
 	// example:

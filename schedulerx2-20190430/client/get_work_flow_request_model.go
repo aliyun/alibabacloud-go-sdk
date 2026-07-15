@@ -22,7 +22,7 @@ type iGetWorkFlowRequest interface {
 }
 
 type GetWorkFlowRequest struct {
-	// The ID of the application group.
+	// The application group ID.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type GetWorkFlowRequest struct {
 	//
 	// hxm.test
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the namespace.
+	// The namespace ID.
 	//
 	// This parameter is required.
 	//
@@ -38,13 +38,13 @@ type GetWorkFlowRequest struct {
 	//
 	// 4a06d5ea-f576-4326-842c-fb14ea043d8d
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The source of the namespace.
+	// The namespace source.
 	//
 	// example:
 	//
 	// source
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
-	// The region information.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type GetWorkFlowRequest struct {
 	//
 	// public
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the workflow.
+	// The workflow ID.
 	//
 	// This parameter is required.
 	//

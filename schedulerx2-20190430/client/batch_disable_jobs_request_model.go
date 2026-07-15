@@ -22,13 +22,13 @@ type iBatchDisableJobsRequest interface {
 }
 
 type BatchDisableJobsRequest struct {
-	// The ID of the application. You can obtain the application ID on the **Application Management*	- page in the SchedulerX console.
+	// The ID of the application group. You can find this ID on the **Application Management*	- page in the console.
 	//
 	// example:
 	//
 	// testSchedulerx.defaultGroup
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The job IDs. Separate multiple job IDs with commas (,).
+	// The IDs of the jobs to disable.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type BatchDisableJobsRequest struct {
 	//
 	// 99341
 	JobIdList []*int64 `json:"JobIdList,omitempty" xml:"JobIdList,omitempty" type:"Repeated"`
-	// The ID of the namespace to which the job belongs. You can obtain the ID of the namespace on the **Namespace*	- page in the SchedulerX console.
+	// The ID of the namespace that contains the jobs. You can find this ID on the **Namespaces*	- page in the console.
 	//
 	// This parameter is required.
 	//
@@ -44,13 +44,13 @@ type BatchDisableJobsRequest struct {
 	//
 	// adcfc35d-e2fe-4fe9-bbaa-20e90ffc****
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The source of the namespace. This parameter is required only for a special third party.
+	// This parameter is used only by specific third-party services.
 	//
 	// example:
 	//
 	// schedulerx
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
-	// The ID of the region to which the job belongs.
+	// The ID of the region where the jobs are located.
 	//
 	// This parameter is required.
 	//

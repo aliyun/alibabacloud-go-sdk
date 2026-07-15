@@ -18,7 +18,7 @@ type iGetAppGroupRequest interface {
 }
 
 type GetAppGroupRequest struct {
-	// The ID of the application. You can obtain the application ID on the **Application Management*	- page in the SchedulerX console.
+	// The App Group ID. You can obtain this ID on the **Application Management*	- page in the console.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type GetAppGroupRequest struct {
 	//
 	// testSchedulerx.defaultGroup
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the namespace. You can obtain the ID of the namespace on the **Namespace*	- page in the SchedulerX console.
+	// The namespace ID. You can obtain this ID on the **Namespaces*	- page in the console.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type GetAppGroupRequest struct {
 	//
 	// adcfc35d-e2fe-4fe9-bbaa-20e90ffc****
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//

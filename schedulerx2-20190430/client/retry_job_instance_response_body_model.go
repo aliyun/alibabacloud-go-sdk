@@ -20,13 +20,13 @@ type iRetryJobInstanceResponseBody interface {
 }
 
 type RetryJobInstanceResponseBody struct {
-	// The HTTP status code.
+	// The return code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned error message.
+	// The error message.
 	//
 	// example:
 	//
@@ -38,11 +38,11 @@ type RetryJobInstanceResponseBody struct {
 	//
 	// 39090022-1F3B-4797-8518-6B61095F1AF0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the API call was successful. Valid values:
 	//
-	// 	- true
+	// - true: Successful.
 	//
-	// 	- false
+	// - false: Failed.
 	//
 	// example:
 	//

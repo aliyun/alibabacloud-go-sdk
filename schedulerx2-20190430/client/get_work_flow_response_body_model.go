@@ -22,27 +22,27 @@ type iGetWorkFlowResponseBody interface {
 }
 
 type GetWorkFlowResponseBody struct {
-	// Error codes
+	// The error code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data of the workflow.
+	// The workflow data.
 	Data *GetWorkFlowResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Error message
+	// The error message.
 	//
 	// example:
 	//
 	// workflow is not existed
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 45678xxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the API call.
+	// Indicates whether the request succeeded.
 	//
 	// example:
 	//
@@ -113,9 +113,9 @@ func (s *GetWorkFlowResponseBody) Validate() error {
 }
 
 type GetWorkFlowResponseBodyData struct {
-	// The basic information of the workflow.
+	// The basic information about the workflow.
 	WorkFlowInfo *GetWorkFlowResponseBodyDataWorkFlowInfo `json:"WorkFlowInfo,omitempty" xml:"WorkFlowInfo,omitempty" type:"Struct"`
-	// The node information of the workflow.
+	// The workflow node information.
 	WorkFlowNodeInfo *GetWorkFlowResponseBodyDataWorkFlowNodeInfo `json:"WorkFlowNodeInfo,omitempty" xml:"WorkFlowNodeInfo,omitempty" type:"Struct"`
 }
 
@@ -165,23 +165,38 @@ type GetWorkFlowResponseBodyDataWorkFlowInfo struct {
 	// example:
 	//
 	// my first workflow
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the application group.
+	//
+	// example:
+	//
+	// hxm.test
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The maximum number of concurrent instances.
+	//
+	// example:
+	//
+	// 1
 	MaxConcurrency *string `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
-	// The name of the workflow.
+	// The workflow name.
 	//
 	// example:
 	//
 	// workflow_111
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The status of the workflow.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the namespace.
 	//
 	// example:
 	//
-	// Successful
+	// 8150f906-2a40-4420-8cc1-68d2fe4dd69c
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The workflow status.
+	//
+	// example:
+	//
+	// enable
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time expression of the workflow.
+	// The time expression for the workflow.
 	//
 	// example:
 	//
@@ -193,7 +208,7 @@ type GetWorkFlowResponseBodyDataWorkFlowInfo struct {
 	//
 	// cron
 	TimeType *string `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
-	// The ID of the workflow.
+	// The workflow ID.
 	//
 	// example:
 	//
@@ -295,7 +310,7 @@ func (s *GetWorkFlowResponseBodyDataWorkFlowInfo) Validate() error {
 }
 
 type GetWorkFlowResponseBodyDataWorkFlowNodeInfo struct {
-	// The workflow edges.
+	// The list of workflow edges.
 	Edges []*GetWorkFlowResponseBodyDataWorkFlowNodeInfoEdges `json:"Edges,omitempty" xml:"Edges,omitempty" type:"Repeated"`
 	// The list of workflow nodes.
 	Nodes []*GetWorkFlowResponseBodyDataWorkFlowNodeInfoNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
@@ -350,13 +365,13 @@ func (s *GetWorkFlowResponseBodyDataWorkFlowNodeInfo) Validate() error {
 }
 
 type GetWorkFlowResponseBodyDataWorkFlowNodeInfoEdges struct {
-	// The ID of the source job.
+	// The source job ID.
 	//
 	// example:
 	//
 	// 100
 	Source *int64 `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The ID of the object job.
+	// The target job ID.
 	//
 	// example:
 	//
@@ -395,19 +410,19 @@ func (s *GetWorkFlowResponseBodyDataWorkFlowNodeInfoEdges) Validate() error {
 }
 
 type GetWorkFlowResponseBodyDataWorkFlowNodeInfoNodes struct {
-	// The ID of the job.
+	// The job ID.
 	//
 	// example:
 	//
 	// 123456xxx
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the job.
+	// The job name.
 	//
 	// example:
 	//
 	// job_111
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The status of the job.
+	// The job status.
 	//
 	// example:
 	//

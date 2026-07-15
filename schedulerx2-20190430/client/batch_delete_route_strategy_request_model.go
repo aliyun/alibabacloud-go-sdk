@@ -20,7 +20,7 @@ type iBatchDeleteRouteStrategyRequest interface {
 }
 
 type BatchDeleteRouteStrategyRequest struct {
-	// The ID of the application. You can obtain the application ID on the Application Management page in the SchedulerX console.
+	// The ID of the Application. You can find the ID on the **Application Management*	- page in the Console.
 	//
 	// This parameter is required.
 	//
@@ -28,9 +28,9 @@ type BatchDeleteRouteStrategyRequest struct {
 	//
 	// testSchedulerx.defaultGroup
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The IDs of the jobs.
+	// A list of Job IDs.
 	JobIdList []*int64 `json:"JobIdList,omitempty" xml:"JobIdList,omitempty" type:"Repeated"`
-	// The ID of the namespace. You can obtain the ID of the namespace on the Namespace page in the SchedulerX console.
+	// The ID of the Namespace. You can find the ID on the **Namespaces*	- page in the Console.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type BatchDeleteRouteStrategyRequest struct {
 	//
 	// adcfc35d-e2fe-4fe9-bbaa-20e90ffc****
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The ID of the region.
+	// The ID of the Region.
 	//
 	// This parameter is required.
 	//

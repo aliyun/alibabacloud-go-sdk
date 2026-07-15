@@ -44,13 +44,13 @@ type iCreateAppGroupRequest interface {
 }
 
 type CreateAppGroupRequest struct {
-	// The AppKey for the application.
+	// The AppKey of the application.
 	//
 	// example:
 	//
 	// adcExHZviLcl****
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// This parameter is required.
 	//
@@ -58,39 +58,39 @@ type CreateAppGroupRequest struct {
 	//
 	// DocTest
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The type of application. Valid values:
+	// The application type.
 	//
-	// 	- `TRACE`: Application Monitoring
+	// - `1`: Standard application.
 	//
-	// 	- `EBPF`: Application Monitoring eBPF Edition
+	// - `2`: Kubernetes (K8s) application.
 	//
 	// example:
 	//
 	// 1
 	AppType *int32 `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// The application version. 1: Basic version, 2: Professional version.
+	// The application version. Valid values: `1` (Basic Edition) and `2` (Professional Edition).
 	//
 	// example:
 	//
 	// 2
 	AppVersion *int32 `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// The description of the application.
+	// The application description.
 	//
 	// example:
 	//
 	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to enable logging. Valid values:
+	// Specifies whether to enable logging.
 	//
-	// 	- `true`: enabled
+	// - `true`: Enable logging.
 	//
-	// 	- `false`: disabled
+	// - `false`: Disable logging.
 	//
 	// example:
 	//
 	// true
 	EnableLog *bool `json:"EnableLog,omitempty" xml:"EnableLog,omitempty"`
-	// The application ID. You can obtain the application ID on the Application Management page in the SchedulerX console.
+	// The ID of the application group. You can find this ID on the **Application Management*	- page in the console.
 	//
 	// This parameter is required.
 	//
@@ -104,19 +104,37 @@ type CreateAppGroupRequest struct {
 	//
 	// 1000
 	MaxJobs *int32 `json:"MaxJobs,omitempty" xml:"MaxJobs,omitempty"`
-	// The configuration of the alert. The value is a JSON string. For more information about this parameter, see **Additional information about request parameters**.
+	// Specifies the alert notification configuration as a JSON string. The string can contain the following properties: `sendChannel`, `alarmType`, and `webhookIsAtAll`.
+	//
+	// > For more information, see the **Additional information about request parameters*	- section.
 	//
 	// example:
 	//
-	// {"sendChannel":"sms,ding"}
+	// {
+	//
+	//     "sendChannel": "ding,sms,mail,phone",
+	//
+	//     "alarmType": "Contacts",
+	//
+	//     "webhookIsAtAll": false
+	//
+	// }
 	MonitorConfigJson *string `json:"MonitorConfigJson,omitempty" xml:"MonitorConfigJson,omitempty"`
-	// The configuration of alert contacts. The value is a JSON string.
+	// The alert contacts. This can include individual contacts and contact groups.
+	//
+	// > For more information, see the **Additional information about request parameters*	- section.
 	//
 	// example:
 	//
-	// [{"userName":"Tom","userPhone":"89756******"},{"userName":"Bob","ding":"http://www.example.com"}]
+	// [
+	//
+	//     {"name": "Alice Johnson"},
+	//
+	//     {"name": "Lee Smith"}
+	//
+	// ]
 	MonitorContactsJson *string `json:"MonitorContactsJson,omitempty" xml:"MonitorContactsJson,omitempty"`
-	// The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+	// The ID of the namespace. You can find this ID on the **Namespace*	- page in the console.
 	//
 	// This parameter is required.
 	//
@@ -130,23 +148,25 @@ type CreateAppGroupRequest struct {
 	//
 	// Test
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	// This parameter is not supported. You do not need to specify this parameter.
+	// This parameter is currently unsupported and can be left unspecified.
 	//
 	// example:
 	//
 	// schedulerx
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
+	// The notification policy name.
+	//
 	// example:
 	//
 	// test-workday-notification
 	NotificationPolicyName *string `json:"NotificationPolicyName,omitempty" xml:"NotificationPolicyName,omitempty"`
-	// The region ID.
+	// The ID of the region.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Specifies whether to schedule a busy worker.
+	// Specifies whether to schedule jobs on a busy worker.
 	//
 	// example:
 	//

@@ -72,9 +72,9 @@ type ListWorkFlowsRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The job status.
 	//
-	// 	- **0**: disables the job.
+	// - **0**: disables the job.
 	//
-	// 	- **1**: enables the routing policy.
+	// - **1**: enables the routing policy.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type ListWorkFlowsRequest struct {
 	//
 	// example:
 	//
-	// test3
+	// Test3
 	WorkflowName *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
 }
 

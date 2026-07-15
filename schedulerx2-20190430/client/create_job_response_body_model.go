@@ -22,15 +22,15 @@ type iCreateJobResponseBody interface {
 }
 
 type CreateJobResponseBody struct {
-	// The HTTP status code.
+	// The response code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the job.
+	// The node details.
 	Data *CreateJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The additional information returned.
+	// The additional information.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type CreateJobResponseBody struct {
 	//
 	// 39090022-1F3B-4797-8518-6B61095F1AF0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// If you set JobType to k8s, this parameter is required. Valid values:
+	// Indicates whether the node was created successfully. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The node was created successfully.
 	//
-	// 	- **false**
+	// - **false**: The node failed to be created.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *CreateJobResponseBody) Validate() error {
 }
 
 type CreateJobResponseBodyData struct {
-	// The job ID.
+	// The node ID.
 	//
 	// example:
 	//

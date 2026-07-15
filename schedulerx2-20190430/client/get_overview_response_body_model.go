@@ -28,19 +28,19 @@ type GetOverviewResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned in JSON format. Valid data types:
+	// The overview data in JSON format, which corresponds to the overview data on the console. The result is returned in one of the following three formats:
 	//
-	// 	- Basic job data.
+	// - Basic information.
 	//
-	// 	- Job running data.
+	// - Node runtime information within a time interval.
 	//
-	// 	- Time series data for job execution: includes triggering statistics, records of successful and failed executions, and their associated timestamps within a specific time range.
+	// - Node runtime timing information within a time interval. This format returns statistics information at each time point for three data items: node triggers, successful executions, and failed executions.
 	//
 	// example:
 	//
-	// {"schedulerx_job_counter_disable": "4","schedulerx_job_trigger_counter_running": "0","schedulerx_job_counter_enable": "70","schedulerx_job_counter_all": "74","schedulerx_worker_counter": "2"}
+	// Basic info: {"schedulerx_job_counter_disable": "4","schedulerx_job_trigger_counter_running": "0","schedulerx_job_counter_enable": "70","schedulerx_job_counter_all": "74","schedulerx_worker_counter": "2"}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Additional information. Returned only if an error occurs.
+	// The error message. This parameter is returned only when an error occurs.
 	//
 	// example:
 	//
@@ -52,11 +52,11 @@ type GetOverviewResponseBody struct {
 	//
 	// 39090022-1F3B-4797-8518-6B61095F1AF0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the API call was successful. Valid values:
 	//
-	// 	- **true**
+	// - true: Successful.
 	//
-	// 	- **false**
+	// - false: Failed.
 	//
 	// example:
 	//

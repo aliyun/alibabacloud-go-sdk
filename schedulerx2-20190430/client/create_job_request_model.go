@@ -61,6 +61,8 @@ type iCreateJobRequest interface {
 	GetRegionId() *string
 	SetSendChannel(v string) *CreateJobRequest
 	GetSendChannel() *string
+	SetStartTime(v int64) *CreateJobRequest
+	GetStartTime() *int64
 	SetStatus(v int32) *CreateJobRequest
 	GetStatus() *int32
 	SetSuccessNoticeEnable(v bool) *CreateJobRequest
@@ -86,69 +88,69 @@ type iCreateJobRequest interface {
 }
 
 type CreateJobRequest struct {
-	// The time interval between retry attempts in case of a job failure. Unit: seconds. Default value: 30.
+	// The retry interval on failure. Unit: seconds. Default value: 30.
 	//
 	// example:
 	//
 	// 30
 	AttemptInterval *int32 `json:"AttemptInterval,omitempty" xml:"AttemptInterval,omitempty"`
-	// If you set TimeType to 1 (cron), you can specify calendar days.
-	//
-	// example:
-	//
-	// This parameter is not supported. You do not need to specify this parameter.
+	// The custom calendar. This parameter is available for the cron time type.
 	Calendar *string `json:"Calendar,omitempty" xml:"Calendar,omitempty"`
-	// The full path of the job interface class.
+	// The full path of the node interface class.
 	//
-	// This parameter is available only when you set JobType to java. You must enter a full path.
+	// This field is required only when you select the Java node type. Specify the full path.
 	//
 	// example:
 	//
 	// com.alibaba.schedulerx.test.helloworld
 	ClassName *string `json:"ClassName,omitempty" xml:"ClassName,omitempty"`
-	// The number of threads that a single worker triggers simultaneously. You can specify this parameter for MapReduce jobs. Default value: 5.
+	// The advanced configuration for parallel grid nodes. The number of threads triggered for a single execution on a single machine. Default value: 5.
 	//
 	// example:
 	//
 	// 5
 	ConsumerSize *int32 `json:"ConsumerSize,omitempty" xml:"ConsumerSize,omitempty"`
-	// The information about the alert contact.
+	// The node contact information.
+	//
+	// 	Notice: This field is deprecated.</notice>
 	ContactInfo []*CreateJobRequestContactInfo `json:"ContactInfo,omitempty" xml:"ContactInfo,omitempty" type:"Repeated"`
-	// The script content. This parameter is required when you set JobType to python, shell, go, or k8s.
+	// - If the node type is python, shell, or k8s, specify the corresponding script content.
+	//
+	// - If the node type is golang, the content format example is {"jobName":"HelloWorld"}.
 	//
 	// example:
 	//
 	// echo \\"hello\\"
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// If you set TimeType to 1 (cron), you can specify a time offset. Unit: seconds.
+	// The time offset. Unit: seconds. This parameter is available for the cron time type.
 	//
 	// example:
 	//
 	// 2400
 	DataOffset *int32 `json:"DataOffset,omitempty" xml:"DataOffset,omitempty"`
-	// The job description.
+	// The node description.
 	//
 	// example:
 	//
 	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The number of task distribution threads. This parameter is an advanced configuration item of the MapReduce job. Default value: 5.
+	// The advanced configuration for parallel grid nodes. The number of subtask dispatch threads. Default value: 5.
 	//
 	// example:
 	//
 	// 5
 	DispatcherSize *int32 `json:"DispatcherSize,omitempty" xml:"DispatcherSize,omitempty"`
-	// The execution mode of the job. Valid values:
+	// The node execution mode. The following execution modes are supported:
 	//
-	// 	- **Stand-alone operation**
+	// - **Standalone**: standalone
 	//
-	// 	- **Broadcast run**
+	// - **Broadcast**: broadcast
 	//
-	// 	- **Visual MapReduce**
+	// - **Visual MapReduce**: parallel
 	//
-	// 	- **MapReduce**
+	// - **MapReduce**: batch
 	//
-	// 	- **Shard run**
+	// - **Sharding**: sharding
 	//
 	// This parameter is required.
 	//
@@ -156,23 +158,23 @@ type CreateJobRequest struct {
 	//
 	// standalone
 	ExecuteMode *string `json:"ExecuteMode,omitempty" xml:"ExecuteMode,omitempty"`
-	// Specifies whether to trigger an alert when a job fails. Valid values:
+	// Specifies whether to enable the failure alert. Valid values:
 	//
-	// 	- **true**: triggers an alert when a job fails.
+	// - **true**: Enables the failure alert.
 	//
-	// 	- **false**: does not trigger an alert when a job fails.
+	// - **false**: Disables the failure alert.
 	//
 	// example:
 	//
 	// false
 	FailEnable *bool `json:"FailEnable,omitempty" xml:"FailEnable,omitempty"`
-	// The maximum number of consecutive failures before an alert is triggered. An alert will be triggered if the number of consecutive failures reaches the value of this parameter.
+	// The number of consecutive failures before an alert is triggered.
 	//
 	// example:
 	//
 	// 2
 	FailTimes *int32 `json:"FailTimes,omitempty" xml:"FailTimes,omitempty"`
-	// The application ID. You can obtain the application ID on the Application Management page in the SchedulerX console.
+	// The application ID. You can obtain the application ID on the Application Management page in the console.
 	//
 	// This parameter is required.
 	//
@@ -180,25 +182,25 @@ type CreateJobRequest struct {
 	//
 	// testSchedulerx.defaultGroup
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The job type. Valid values:
+	// The node type. The following node types are supported:
 	//
-	// 	- java
+	// - java
 	//
-	// 	- python
+	// - python
 	//
-	// 	- shell
+	// - shell
 	//
-	// 	- go
+	// - go
 	//
-	// 	- http
+	// - http
 	//
-	// 	- xxljob
+	// - xxljob
 	//
-	// 	- dataworks
+	// - dataworks
 	//
-	// 	- k8s
+	// - k8s
 	//
-	// 	- springschedule
+	// - springschedule
 	//
 	// This parameter is required.
 	//
@@ -206,29 +208,29 @@ type CreateJobRequest struct {
 	//
 	// java
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The maximum number of retry attempts in case of a job failure. Specify this parameter based on your business requirements. Default value: 0.
+	// The maximum number of retries on failure. Set this parameter based on your business requirements. Default value: 0.
 	//
 	// example:
 	//
 	// 0
 	MaxAttempt *int32 `json:"MaxAttempt,omitempty" xml:"MaxAttempt,omitempty"`
-	// The maximum number of concurrent instances. By default, only one instance can run at a time. When an instance is running, the next instance is not triggered even if the scheduled start time arrives.
+	// The maximum number of concurrently running instances. Default value: 1. This means that if the previous trigger has not finished running, the next trigger is not performed even if the scheduled time arrives.
 	//
 	// example:
 	//
 	// 1
 	MaxConcurrency *int32 `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
-	// Specifies whether to generate an alert if no machines are available to run the job. Valid values:
+	// Specifies whether to enable the no-available-machine alert. Valid values:
 	//
-	// 	- **true**: generates an alert if no machines are available to run the job.
+	// - **true**: Enables the no-available-machine alert.
 	//
-	// 	- **false**: does not generate an alert if no machines are available to run the job.
+	// - **false**: Disables the no-available-machine alert.
 	//
 	// example:
 	//
 	// false
 	MissWorkerEnable *bool `json:"MissWorkerEnable,omitempty" xml:"MissWorkerEnable,omitempty"`
-	// The job name.
+	// The node name.
 	//
 	// This parameter is required.
 	//
@@ -236,7 +238,7 @@ type CreateJobRequest struct {
 	//
 	// helloworld
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+	// The namespace ID. You can obtain the namespace ID on the Namespace page in the console.
 	//
 	// This parameter is required.
 	//
@@ -244,26 +246,39 @@ type CreateJobRequest struct {
 	//
 	// adcfc35d-e2fe-4fe9-bbaa-20e90ffc****
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The source of the namespace. You must specify this parameter only if the namespace is provided by a third party.
+	// This parameter is required only for special third-party users.
 	//
 	// example:
 	//
 	// schedulerx
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
-	// The number of entries per page. You can specify this parameter for MapReduce jobs. Default value: 100.
+	// The advanced configuration for parallel grid nodes. The number of subtasks pulled in a single request. Default value: 100.
 	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The user-defined parameters that you can obtain when the job is running.
+	// The user-defined parameters that can be obtained at runtime.
 	//
 	// example:
 	//
 	// test
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	Priority   *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The maximum capacity of the task queue. You can specify this parameter for MapReduce jobs. Default value: 10000.
+	// The node priority. Valid values:
+	//
+	// - **1**: low
+	//
+	// - **5**: medium
+	//
+	// - **10**: high
+	//
+	// - **15**: very high
+	//
+	// example:
+	//
+	// 5
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The advanced configuration for parallel grid nodes. The maximum cache size of the subtask queue. Default value: 10000.
 	//
 	// example:
 	//
@@ -277,63 +292,70 @@ type CreateJobRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The method that is used to send alerts. Set the value to sms. Default value: sms.
+	// The alert notification channel.
+	//
+	// - Use the default channel of the application group: default.
+	//
+	// - Specify a notification channel for the node: sms, mail, phone, or webhook.
 	//
 	// example:
 	//
 	// sms
 	SendChannel *string `json:"SendChannel,omitempty" xml:"SendChannel,omitempty"`
-	// Specifies whether to enable the job. If this parameter is set to 0, the job is disabled. If this parameter is set to 1, the job is enabled. Default value: 1.
+	StartTime   *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The node status. Valid values: 0: disabled. 1: enabled. Default value: 1 (enabled).
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Specifies whether to send notifications for successfully running the job.
+	// Specifies whether to enable the success notification.
 	//
 	// example:
 	//
 	// false
 	SuccessNoticeEnable *bool `json:"SuccessNoticeEnable,omitempty" xml:"SuccessNoticeEnable,omitempty"`
-	// The time interval between retry attempts in case of a job failure. This parameter is an advanced configuration item of the MapReduce job. Default value: 0.
+	// The advanced configuration for parallel grid nodes. The retry interval for a failed subtask. Default value: 0.
 	//
 	// example:
 	//
 	// 0
 	TaskAttemptInterval *int32 `json:"TaskAttemptInterval,omitempty" xml:"TaskAttemptInterval,omitempty"`
-	// The maximum number of retry attempts in case of a job failure. This parameter is an advanced configuration item of the MapReduce job. Default value: 0.
+	// The advanced configuration for parallel grid nodes. The number of retries for a failed subtask. Default value: 0.
 	//
 	// example:
 	//
 	// 0
 	TaskMaxAttempt *int32 `json:"TaskMaxAttempt,omitempty" xml:"TaskMaxAttempt,omitempty"`
-	// The time expression. Specify the time expression based on the value of TimeType:
+	// The time expression. Set the time expression based on the selected time type.
 	//
-	// 	- If you set TimeType to **1*	- (cron), specify this parameter to a standard CRON expression.
+	// - **cron**: Specify a standard cron expression. Online verification is supported.
 	//
-	// 	- If you set TimeType to **100*	- (api), no time expression is required.
+	// - **api**: No time expression is required.
 	//
-	// 	- If you set TimeType to **3*	- (fixed_rate), specify this parameter to a fixed frequency in seconds. For example, if you set this parameter to 30, the system triggers a job every 30 seconds.
+	// - **fixed_rate**: Specify a fixed frequency value in seconds. For example, 30 indicates that the node is triggered every 30 seconds.
 	//
-	// 	- If you set TimeType to **4*	- (second_delay), specify this parameter to a fixed delay after which the job is triggered. Valid values: 1 to 60. Unit: seconds.
+	// - **second_delay**: Specify a fixed delay in seconds before each execution (1s to 60s).
 	//
-	// 	- If you set TimeType to **5*	- (one_time), specify this parameter to a specific time point at which the job is triggered. The time is in the format of yyyy-MM-dd HH:mm:ss, such as 2022-10-10 10:10:00, or a timestamp in milliseconds.
+	// - **one_time**: Specify a time in the format of yyyy-MM-dd HH:mm:ss or a timestamp in milliseconds. For example, "2022-10-10 10:10:00".
 	//
 	// example:
 	//
 	// 0 0/10 	- 	- 	- ?
 	TimeExpression *string `json:"TimeExpression,omitempty" xml:"TimeExpression,omitempty"`
-	// The time type. Valid values:
+	// The time type. The following time types are supported:
 	//
-	// 	- **1**: cron
+	// - **cron**: 1
 	//
-	// 	- **3**: fixed_rate
+	// - **fixed_rate**: 3
 	//
-	// 	- **4**: second_delay
+	// - **second_delay**: 4
 	//
-	// 	- **5**: one_time
+	// - **one_time**: 5
 	//
-	// 	- **100**: api
+	// - **api**: 100
+	//
+	// - **none**: -1
 	//
 	// This parameter is required.
 	//
@@ -347,33 +369,37 @@ type CreateJobRequest struct {
 	//
 	// 7200
 	Timeout *int64 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// Specifies whether to enable the timeout alert feature. If the feature is enabled, an alert will be triggered upon a timeout. Valid values:
+	// Specifies whether to enable the timeout alert. Valid values:
 	//
-	// 	- **true**: enables the timeout alert feature.
+	// - **true**: Enables the timeout alert.
 	//
-	// 	- **false**: disables the timeout alert feature.
+	// - **false**: Disables the timeout alert.
 	//
 	// example:
 	//
 	// false
 	TimeoutEnable *bool `json:"TimeoutEnable,omitempty" xml:"TimeoutEnable,omitempty"`
-	// Specifies whether to enable the timeout termination feature. If the feature is enabled, a job will automatically be terminated if it times out. Valid values:
+	// Specifies whether to enable timeout termination. Valid values:
 	//
-	// 	- **true**: enables the timeout termination feature.
+	// - **true**: Enables timeout termination.
 	//
-	// 	- **false**: disables the timeout termination feature.
+	// - **false**: Disables timeout termination.
 	//
 	// example:
 	//
 	// false
 	TimeoutKillEnable *bool `json:"TimeoutKillEnable,omitempty" xml:"TimeoutKillEnable,omitempty"`
-	// Time zone.
+	// The time zone.
 	//
 	// example:
 	//
 	// GMT+8
 	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
-	// The extended attributes. If you set JobType to k8s, this parameter is required. For a job whose resource type is Job-YAML, set this parameter to {"resource":"job"}. For a job whose resource type is Shell-Script, set this parameter to {"image":"busybox","resource":"shell"}.
+	// If the node type is k8s, configure this parameter.
+	//
+	// Job task: {"resource":"job"}
+	//
+	// Shell task: {"image":"busybox","resource":"shell"}
 	//
 	// example:
 	//
@@ -491,6 +517,10 @@ func (s *CreateJobRequest) GetRegionId() *string {
 
 func (s *CreateJobRequest) GetSendChannel() *string {
 	return s.SendChannel
+}
+
+func (s *CreateJobRequest) GetStartTime() *int64 {
+	return s.StartTime
 }
 
 func (s *CreateJobRequest) GetStatus() *int32 {
@@ -667,6 +697,11 @@ func (s *CreateJobRequest) SetSendChannel(v string) *CreateJobRequest {
 	return s
 }
 
+func (s *CreateJobRequest) SetStartTime(v int64) *CreateJobRequest {
+	s.StartTime = &v
+	return s
+}
+
 func (s *CreateJobRequest) SetStatus(v int32) *CreateJobRequest {
 	s.Status = &v
 	return s
@@ -736,7 +771,7 @@ func (s *CreateJobRequest) Validate() error {
 }
 
 type CreateJobRequestContactInfo struct {
-	// The webhook URL of the DingTalk chatbot.[](https://open.dingtalk.com/document/org/application-types)
+	// The webhook URL of the DingTalk chatbot for the alert contact\\"s DingTalk group. References: [DingTalk development documentation](https://open.dingtalk.com/document/org/application-types).
 	//
 	// example:
 	//
@@ -752,9 +787,9 @@ type CreateJobRequestContactInfo struct {
 	//
 	// example:
 	//
-	// Tom
+	// John Smith
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// The mobile number of the alert contact.
+	// The mobile phone number of the alert recipient.
 	//
 	// example:
 	//

@@ -20,13 +20,13 @@ type iBatchDeleteRouteStrategyResponseBody interface {
 }
 
 type BatchDeleteRouteStrategyResponseBody struct {
-	// The HTTP status code that is returned.
+	// The returned status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The additional information that is returned.
+	// The returned message.
 	//
 	// example:
 	//
@@ -38,11 +38,11 @@ type BatchDeleteRouteStrategyResponseBody struct {
 	//
 	// 704A2A61-3681-5568-92F7-2DFCC53F33D1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request succeeded. Valid values:
 	//
-	// true: The request was successful.
+	// - **true**: The request succeeded.
 	//
-	// false: The request failed.
+	// - **false**: The request failed.
 	//
 	// example:
 	//

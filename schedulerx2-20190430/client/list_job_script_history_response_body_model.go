@@ -170,25 +170,25 @@ type ListJobScriptHistoryResponseBodyDataJobScriptHistoryInfos struct {
 	//
 	// #!/bin/bash
 	//
-	// # The following are predefined variables provided by the system. You can use them to obtain information about the job run.
+	// # The following are built-in variables provided by the system to retrieve job runtime information
 	//
 	// echo "Job parameters: #{schedulerx.jobParameters}"
 	//
-	// echo "Shard index: #{schedulerx.shardingId}"
+	// echo "Sharding ID: #{schedulerx.shardingId}"
 	//
-	// echo "Shard parameters: #{schedulerx.shardingParameters}"
+	// echo "Sharding parameters: #{schedulerx.shardingParameters}"
 	//
-	// echo "Total number of shards: #{schedulerx.shardingNum}"
+	// echo "Total shards: #{schedulerx.shardingNum}"
 	//
-	// echo "Current retry count: #{schedulerx.attempt}"
+	// echo "Retry attempts: #{schedulerx.attempt}"
 	//
 	// echo "Trigger type: #{schedulerx.triggerType}"
 	//
-	// echo "Scheduled timestamp: #{schedulerx.scheduleTime}"
+	// echo "Schedule timestamp: #{schedulerx.scheduleTime}"
 	//
 	// echo "Data timestamp: #{schedulerx.dataTime}"
 	//
-	// # The output of the last line will be returned as the result
+	// # The last line of output will be returned as the result
 	//
 	// echo "hello world"
 	//

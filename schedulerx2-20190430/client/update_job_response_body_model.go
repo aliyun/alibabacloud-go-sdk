@@ -20,13 +20,13 @@ type iUpdateJobResponseBody interface {
 }
 
 type UpdateJobResponseBody struct {
-	// The HTTP status code.
+	// The return code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The additional information returned only if an error occurs.
+	// The additional information. The error message is returned only when a fault occurs.
 	//
 	// example:
 	//

@@ -34,7 +34,7 @@ type EnableJobRequest struct {
   // 
   // example:
   // 
-  // 92583
+  // 92555
   JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
   // The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
   // 

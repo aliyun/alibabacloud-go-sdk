@@ -468,7 +468,7 @@ type ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVosMetrics stru
 	//
 	// example:
 	//
-	// 0.14865875
+	// 148
 	DiskUsed *int32 `json:"DiskUsed,omitempty" xml:"DiskUsed,omitempty"`
 	// The number of job executions.
 	//

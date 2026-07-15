@@ -28,7 +28,7 @@ type ListGroupsResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The applications.
+	// The list of applications.
 	Data *ListGroupsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
@@ -42,11 +42,11 @@ type ListGroupsResponseBody struct {
 	//
 	// 71BCC0E3-64B2-4B63-A870-AFB64EBCB58A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListGroupsResponseBody) Validate() error {
 }
 
 type ListGroupsResponseBodyData struct {
-	// The applications and their details.
+	// The list of applications and their details.
 	AppGroups []*ListGroupsResponseBodyDataAppGroups `json:"AppGroups,omitempty" xml:"AppGroups,omitempty" type:"Repeated"`
 }
 
@@ -152,13 +152,13 @@ func (s *ListGroupsResponseBodyData) Validate() error {
 }
 
 type ListGroupsResponseBodyDataAppGroups struct {
-	// The application group ID.
+	// The ID of the application group.
 	//
 	// example:
 	//
 	// 1
 	AppGroupId *int64 `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
-	// The AppKey for the application.
+	// The application key.
 	//
 	// example:
 	//
@@ -170,7 +170,7 @@ type ListGroupsResponseBodyDataAppGroups struct {
 	//
 	// DocTest
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The application version. 1: Basic version, 2: Professional version.
+	// The application version. Valid values: 1 (Basic Edition) and 2 (Professional Edition).
 	//
 	// example:
 	//
@@ -182,8 +182,17 @@ type ListGroupsResponseBodyDataAppGroups struct {
 	//
 	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnableLog   *bool   `json:"EnableLog,omitempty" xml:"EnableLog,omitempty"`
-	// The application ID.
+	// Indicates whether logging is enabled.
+	//
+	// - true: Logging is enabled.
+	//
+	// - false: Logging is disabled.
+	//
+	// example:
+	//
+	// false
+	EnableLog *bool `json:"EnableLog,omitempty" xml:"EnableLog,omitempty"`
+	// The ID of the application.
 	//
 	// example:
 	//

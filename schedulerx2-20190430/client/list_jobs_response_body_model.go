@@ -22,31 +22,31 @@ type iListJobsResponseBody interface {
 }
 
 type ListJobsResponseBody struct {
-	// The HTTP status code that is returned.
+	// The request status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the jobs.
+	// The node list information.
 	Data *ListJobsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message that is returned if an error occurs.
+	// The error message. This parameter is returned only if an error occurs.
 	//
 	// example:
 	//
 	// namespace can not find namespace: 1a72ecb1-b4cc-400a-a71b-20cdec9b****, namespaceSource:null
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 71BCC0E3-64B2-4B63-A870-AFB64EBCB58B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**: The call is successful.
+	// - **true**: The call was successful.
 	//
-	// 	- **false**: The call fails.
+	// - **false**: The call failed.
 	//
 	// example:
 	//
@@ -117,11 +117,14 @@ func (s *ListJobsResponseBody) Validate() error {
 }
 
 type ListJobsResponseBodyData struct {
-	// The jobs and their details.
-	Jobs       []*ListJobsResponseBodyDataJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
-	PageNumber *int32                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Total      *int32                          `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The node list and node details.
+	Jobs []*ListJobsResponseBodyDataJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
+	// The page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of records.
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListJobsResponseBodyData) String() string {
@@ -182,107 +185,108 @@ func (s *ListJobsResponseBodyData) Validate() error {
 }
 
 type ListJobsResponseBodyDataJobs struct {
-	// The interval at which the system retries to run the job after a job failure. Unit: seconds. Default value: 30.
+	// The retry interval on error, in seconds. Default value: 30.
 	//
 	// example:
 	//
 	// 30
 	AttemptInterval *int32 `json:"AttemptInterval,omitempty" xml:"AttemptInterval,omitempty"`
-	// The full path of the job interface class. This parameter is returned only for a Java job.
+	// The full path of the node interface class. This field is returned only when the node is of the Java type.
 	//
 	// example:
 	//
 	// com.alibaba.schedulerx.test.helloworld
 	ClassName *string `json:"ClassName,omitempty" xml:"ClassName,omitempty"`
-	// The script of the job. This parameter is returned only for a Python, Shell, or Go job.
+	// The script code content for Python, Shell, or Go node types.
 	//
 	// example:
 	//
 	// echo \\"hello\\"
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The description of the job.
+	// The node description.
 	//
 	// example:
 	//
 	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The execution mode of the job. Valid values:
+	// The node execution mode. Valid values:
 	//
-	// 	- **standalone**: The job runs in standalone mode.
+	// - **standalone**: standalone
 	//
-	// 	- **broadcast**: The job runs in broadcast mode.
+	// - **broadcast**: broadcast
 	//
-	// 	- **parallel**: The job runs in parallel computing mode.
+	// - **parallel**: parallel computing
 	//
-	// 	- **grid**: The job runs in memory grid mode.
+	// - **grid**: memory grid
 	//
-	// 	- **batch**: The job runs in grid computing mode.
+	// - **batch**: grid computing
 	//
-	// 	- **shard**: The job runs in multipart mode.
+	// - **shard**: shard
 	//
 	// example:
 	//
 	// standalone
 	ExecuteMode *string `json:"ExecuteMode,omitempty" xml:"ExecuteMode,omitempty"`
-	// The full path to which a JAR package is uploaded in Object Storage Service (OSS).
+	// The full path of the JAR package in OSS.
 	//
 	// example:
 	//
 	// https:doc***.oss-cn-hangzhou.aliyuncs.com/sc-****-D-0.0.2-SNAPSHOT.jar
 	JarUrl *string `json:"JarUrl,omitempty" xml:"JarUrl,omitempty"`
-	// The ID of the job.
+	// The node ID.
 	//
 	// example:
 	//
 	// 99341
 	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The monitoring information of the job.
+	// The node monitoring information.
 	JobMonitorInfo *ListJobsResponseBodyDataJobsJobMonitorInfo `json:"JobMonitorInfo,omitempty" xml:"JobMonitorInfo,omitempty" type:"Struct"`
-	// The type of the job.
+	// The node type.
 	//
 	// example:
 	//
 	// java
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The advanced configurations of the job. The parameters are returned only if the value of the ExecuteMode parameter is parallel, grid, or batch.
+	// The advanced configuration. This is used only for parallel computing, memory grid, and grid computing.
 	MapTaskXAttrs *ListJobsResponseBodyDataJobsMapTaskXAttrs `json:"MapTaskXAttrs,omitempty" xml:"MapTaskXAttrs,omitempty" type:"Struct"`
-	// The maximum number of retries after a job failure. This parameter is specified based on your business requirements. Default value: 0.
+	// The maximum number of retries on error. Set this based on business requirements. Default value: 0.
 	//
 	// example:
 	//
 	// 0
 	MaxAttempt *int32 `json:"MaxAttempt,omitempty" xml:"MaxAttempt,omitempty"`
-	// The maximum number of instances that can concurrently run for the job. Default value: 1. A value of 1 indicates that if the last triggered instance is running, the next instance is not triggered even if the scheduled point in time for running the instance is reached.
+	// The maximum number of concurrently running instances. Default value: 1. This means that if the previous trigger has not finished running, the next trigger will not be initiated even if the scheduled time has arrived.
 	//
 	// example:
 	//
 	// 1
 	MaxConcurrency *string `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
-	// The name of the job.
+	// The node name.
 	//
 	// example:
 	//
 	// helloworld
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The user-defined parameters. These parameters can be obtained when the job is running.
+	// The user-defined parameters that can be obtained at runtime.
 	//
 	// example:
 	//
 	// test
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// Indicates whether the job is enabled. Valid values:
+	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The node status. Valid values:
 	//
-	// 	- **1**: The job is enabled and can be triggered.
+	// - **1**: Enabled. The node can be triggered normally.
 	//
-	// 	- **0**: The job is disabled and cannot be triggered.
+	// - **0**: Disabled. The node will not be triggered.
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time configurations.
+	// The time configuration information.
 	TimeConfig *ListJobsResponseBodyDataJobsTimeConfig `json:"TimeConfig,omitempty" xml:"TimeConfig,omitempty" type:"Struct"`
-	// The extended fields.
+	// The node extension field.
 	//
 	// example:
 	//
@@ -352,6 +356,10 @@ func (s *ListJobsResponseBodyDataJobs) GetName() *string {
 
 func (s *ListJobsResponseBodyDataJobs) GetParameters() *string {
 	return s.Parameters
+}
+
+func (s *ListJobsResponseBodyDataJobs) GetStartTime() *int64 {
+	return s.StartTime
 }
 
 func (s *ListJobsResponseBodyDataJobs) GetStatus() *int32 {
@@ -436,6 +444,11 @@ func (s *ListJobsResponseBodyDataJobs) SetParameters(v string) *ListJobsResponse
 	return s
 }
 
+func (s *ListJobsResponseBodyDataJobs) SetStartTime(v int64) *ListJobsResponseBodyDataJobs {
+	s.StartTime = &v
+	return s
+}
+
 func (s *ListJobsResponseBodyDataJobs) SetStatus(v int32) *ListJobsResponseBodyDataJobs {
 	s.Status = &v
 	return s
@@ -473,7 +486,7 @@ func (s *ListJobsResponseBodyDataJobs) Validate() error {
 type ListJobsResponseBodyDataJobsJobMonitorInfo struct {
 	// The contact information.
 	ContactInfo []*ListJobsResponseBodyDataJobsJobMonitorInfoContactInfo `json:"ContactInfo,omitempty" xml:"ContactInfo,omitempty" type:"Repeated"`
-	// The configurations of the alerting feature and the alert threshold.
+	// The alert switch and threshold configuration.
 	MonitorConfig *ListJobsResponseBodyDataJobsJobMonitorInfoMonitorConfig `json:"MonitorConfig,omitempty" xml:"MonitorConfig,omitempty" type:"Struct"`
 }
 
@@ -540,7 +553,7 @@ type ListJobsResponseBodyDataJobsJobMonitorInfoContactInfo struct {
 	//
 	// userA
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// The mobile number of the user.
+	// The mobile phone number of the user.
 	//
 	// example:
 	//
@@ -597,49 +610,49 @@ func (s *ListJobsResponseBodyDataJobsJobMonitorInfoContactInfo) Validate() error
 }
 
 type ListJobsResponseBodyDataJobsJobMonitorInfoMonitorConfig struct {
-	// Indicates whether the feature of generating an alert upon a failure is enabled. Valid values:
+	// Specifies whether to enable the failure alert switch. Valid values:
 	//
-	// 	- **true**: The feature is enabled.
+	// - **true**: Enabled.
 	//
-	// 	- **false**: The feature is disabled.
+	// - **false**: Disabled.
 	//
 	// example:
 	//
 	// true
 	FailEnable *bool `json:"FailEnable,omitempty" xml:"FailEnable,omitempty"`
-	// Indicates whether the feature of generating an alert when no machine is available for running the job is enabled.
+	// Specifies whether to enable the no-available-machine alert.
 	//
 	// example:
 	//
 	// true
 	MissWorkerEnable *bool `json:"MissWorkerEnable,omitempty" xml:"MissWorkerEnable,omitempty"`
-	// The method that is used to send an alert notification. Only Short Message Service (SMS) is supported.
+	// The alert notification method. Currently, only sms is supported.
 	//
 	// example:
 	//
 	// sms
 	SendChannel *string `json:"SendChannel,omitempty" xml:"SendChannel,omitempty"`
-	// The timeout threshold. Unit: seconds. Default value: 7200.
+	// The timeout threshold, in seconds. Default value: 7200.
 	//
 	// example:
 	//
 	// 12300
 	Timeout *int64 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// Indicates whether the feature of generating an alert upon a timeout is enabled. Valid values:
+	// Specifies whether to enable the timeout alert switch. Valid values:
 	//
-	// 	- **true**: The feature is enabled.
+	// - **true**: Enabled.
 	//
-	// 	- **false**: The feature is disabled.
+	// - **false**: Disabled.
 	//
 	// example:
 	//
 	// true
 	TimeoutEnable *bool `json:"TimeoutEnable,omitempty" xml:"TimeoutEnable,omitempty"`
-	// Indicates whether the feature of stopping job triggering upon a timeout is enabled. By default, the feature is disabled.
+	// Specifies whether to enable the timeout termination switch for the current trigger. This is disabled by default. Valid values:
 	//
-	// 	- **true**: The feature is enabled.
+	// - **true**: Enabled.
 	//
-	// 	- **false**: The feature is disabled.
+	// - **false**: Disabled.
 	//
 	// example:
 	//
@@ -714,37 +727,37 @@ func (s *ListJobsResponseBodyDataJobsJobMonitorInfoMonitorConfig) Validate() err
 }
 
 type ListJobsResponseBodyDataJobsMapTaskXAttrs struct {
-	// The number of threads that are triggered by a standalone job at a time. Default value: 5.
+	// The number of threads for a single trigger on a single machine. Default value: 5.
 	//
 	// example:
 	//
 	// 5
 	ConsumerSize *int32 `json:"ConsumerSize,omitempty" xml:"ConsumerSize,omitempty"`
-	// The number of task distribution threads. Default value: 5.
+	// The number of subtask dispatch threads. Default value: 5.
 	//
 	// example:
 	//
 	// 5
 	DispatcherSize *int32 `json:"DispatcherSize,omitempty" xml:"DispatcherSize,omitempty"`
-	// The number of tasks that are pulled by a parallel job at a time. Default value: 100.
+	// The number of subtasks pulled per batch for a parallel node. Default value: 100.
 	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The maximum number of task queues that can be cached. Default value: 10000.
+	// The upper limit of the subtask queue cache. Default value: 10000.
 	//
 	// example:
 	//
 	// 10000
 	QueueSize *int32 `json:"QueueSize,omitempty" xml:"QueueSize,omitempty"`
-	// The interval at which the system retries to run the task after a task failure.
+	// The retry interval for a subtask on failure.
 	//
 	// example:
 	//
 	// 0
 	TaskAttemptInterval *int32 `json:"TaskAttemptInterval,omitempty" xml:"TaskAttemptInterval,omitempty"`
-	// The number of retries after a task failure.
+	// The number of retries for a subtask on failure.
 	//
 	// example:
 	//
@@ -819,13 +832,13 @@ func (s *ListJobsResponseBodyDataJobsMapTaskXAttrs) Validate() error {
 }
 
 type ListJobsResponseBodyDataJobsTimeConfig struct {
-	// If the TimeType parameter is set to cron, you can specify custom calendar days.
+	// The custom calendar that can be specified for the cron type.
 	//
 	// example:
 	//
-	// Business days
+	// workday
 	Calendar *string `json:"Calendar,omitempty" xml:"Calendar,omitempty"`
-	// The time offset if the TimeType parameter is set to cron. Unit: seconds.
+	// The time offset that can be specified for the cron type, in seconds.
 	//
 	// example:
 	//
@@ -833,27 +846,27 @@ type ListJobsResponseBodyDataJobsTimeConfig struct {
 	DataOffset *int32 `json:"DataOffset,omitempty" xml:"DataOffset,omitempty"`
 	// The time expression. Valid values:
 	//
-	// 	- **api**: indicates that no time expression is used to specify the time when to schedule the job.
+	// - **api**: No time expression.
 	//
-	// 	- **fix_rate**: indicates that the job is triggered at a fixed frequency. For example, a value of 30 indicates that the job is triggered every 30 seconds.
+	// - **fix_rate**: A specific fixed frequency value. For example, 30 indicates that the node is triggered every 30 seconds.
 	//
-	// 	- **cron**: indicates that a standard CRON expression is used to specify the time when to schedule the job.
+	// - **cron**: A standard cron expression.
 	//
-	// 	- **second_delay**: indicates that the job is triggered after a fixed delay. Valid values: 1 to 60. Unit: seconds.
+	// - **second_delay**: A fixed delay in seconds before each execution (1s to 60s).
 	//
 	// example:
 	//
 	// 0 0/10 	- 	- 	- ?
 	TimeExpression *string `json:"TimeExpression,omitempty" xml:"TimeExpression,omitempty"`
-	// The method that is used to specify the time when to schedule the job. Valid values:
+	// The time configuration type. Valid values:
 	//
-	// 	- **1**: cron
+	// - **1**: cron
 	//
-	// 	- **3**: fix_rate
+	// - **3**: fix_rate
 	//
-	// 	- **4**: second_delay
+	// - **4**: second_delay
 	//
-	// 	- **100**: api
+	// - **100**: api
 	//
 	// example:
 	//

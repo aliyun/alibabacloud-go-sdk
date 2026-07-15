@@ -22,21 +22,21 @@ type iExecuteWorkflowResponseBody interface {
 }
 
 type ExecuteWorkflowResponseBody struct {
-  // The HTTP status code.
+  // The return code.
   // 
   // example:
   // 
   // 200
   Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-  // If the request is successful, the ID of the workflow instance is returned.
+  // The data returned for a successful request. It contains the workflow instance ID.
   Data *ExecuteWorkflowResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-  // The error message that is returned only if the corresponding error occurs.
+  // The error message. This parameter is returned only if the request fails.
   // 
   // example:
   // 
   // Cannot find product according to your domain.
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-  // The request ID.
+  // The unique request ID.
   // 
   // example:
   // 
@@ -113,7 +113,7 @@ func (s *ExecuteWorkflowResponseBody) Validate() error {
 }
 
 type ExecuteWorkflowResponseBodyData struct {
-  // The workflow instance ID.
+  // The ID of the workflow instance.
   // 
   // example:
   // 

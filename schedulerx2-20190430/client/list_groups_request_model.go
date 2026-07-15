@@ -26,7 +26,7 @@ type ListGroupsRequest struct {
 	//
 	// k8s-test
 	AppGroupName *string `json:"AppGroupName,omitempty" xml:"AppGroupName,omitempty"`
-	// The namespace ID. You can obtain the namespace ID on the **Namespace*	- page in the SchedulerX console.
+	// The namespace. You can obtain the ID of the namespace on the **Namespace*	- page in the console.
 	//
 	// This parameter is required.
 	//
@@ -34,13 +34,13 @@ type ListGroupsRequest struct {
 	//
 	// 1a72ecb1-b4cc-400a-a71b-20cdec9b****
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The source of the namespace. This parameter is required only for a special third party.
+	// This parameter is required only for specific third-party integrations.
 	//
 	// example:
 	//
 	// schedulerx
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
-	// The region ID.
+	// The ID of the region.
 	//
 	// example:
 	//

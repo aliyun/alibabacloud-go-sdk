@@ -24,7 +24,7 @@ type iUpdateWorkflowDagRequest interface {
 }
 
 type UpdateWorkflowDagRequest struct {
-	// The directed acyclic graph (DAG) of the workflow, including the information about the nodes and the edges. Specify the value of this parameter in the JSON format.
+	// The definition of the workflow\\"s directed acyclic graph (DAG), including nodes and edges, as a JSON string.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type UpdateWorkflowDagRequest struct {
 	//
 	// {"nodes":[{"id":2300691},{"id":10518089},{"id":1758851}],"edges":[{"source":10518089,"target":1758851},{"source":10518089,"target":2300691}]}
 	DagJson *string `json:"DagJson,omitempty" xml:"DagJson,omitempty"`
-	// The application group ID. You can obtain the application group ID on the Application Management page in the SchedulerX console.
+	// The Application Group ID. You can find this ID on the **Application Management*	- page in the console.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type UpdateWorkflowDagRequest struct {
 	//
 	// testSchedulerx.defaultGroup
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+	// The Namespace ID. You can obtain the ID on the **Namespaces*	- page in the console.
 	//
 	// This parameter is required.
 	//
@@ -48,13 +48,13 @@ type UpdateWorkflowDagRequest struct {
 	//
 	// adcfc35d-e2fe-4fe9-bbaa-20e90ffc****
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The source of the namespace. This parameter is required only for a special third party.
+	// This parameter is required only for specific third-party integrations.
 	//
 	// example:
 	//
 	// schedulerx
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
-	// The region ID.
+	// The Region ID.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type UpdateWorkflowDagRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The workflow ID.
+	// The Workflow ID.
 	//
 	// This parameter is required.
 	//

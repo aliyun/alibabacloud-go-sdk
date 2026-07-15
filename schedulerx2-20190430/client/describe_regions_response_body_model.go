@@ -22,31 +22,31 @@ type iDescribeRegionsResponseBody interface {
 }
 
 type DescribeRegionsResponseBody struct {
-	// The HTTP status code.
+	// The response code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message that was returned only if the corresponding error occurred.
+	// The error message. This parameter is returned only if the request fails.
 	//
 	// example:
 	//
 	// disable failed jobs=[99341]
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The available regions.
+	// A list of available regions.
 	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 4F68ABED-AC31-4412-9297-D9A8F0401108
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request succeeded. Valid values:
 	//
-	// 	- **true**: The request was successful.
+	// - **true**: The request succeeded.
 	//
-	// 	- **false**: The request failed.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -121,19 +121,19 @@ func (s *DescribeRegionsResponseBody) Validate() error {
 }
 
 type DescribeRegionsResponseBodyRegions struct {
-	// The display name of the region, which varies based on the current language.
+	// The display name of the region. This value varies based on the language specified in the request.
 	//
 	// example:
 	//
-	// China (Hangzhou)
+	// Hangzhou
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The endpoint of the region.
+	// The service endpoint for the region.
 	//
 	// example:
 	//
 	// schedulerx.cn-hangzhou.aliyuncs.com
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//

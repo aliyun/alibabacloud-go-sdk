@@ -28,7 +28,7 @@ type iListJobsRequest interface {
 }
 
 type ListJobsRequest struct {
-	// The ID of the application. You can obtain the application ID on the **Application Management*	- page in the SchedulerX console.
+	// The application ID. You can obtain the ID on the **Application Management*	- page in the console.
 	//
 	// This parameter is required.
 	//
@@ -36,13 +36,13 @@ type ListJobsRequest struct {
 	//
 	// DocTest.Group
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the job.
+	// The node name.
 	//
 	// example:
 	//
 	// helloword
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// The ID of the namespace. You can obtain the namespace ID on the **Namespace*	- page in the SchedulerX console.
+	// The namespace. You can obtain the namespace on the **Namespace*	- page in the console.
 	//
 	// This parameter is required.
 	//
@@ -50,15 +50,17 @@ type ListJobsRequest struct {
 	//
 	// 1a72ecb1-b4cc-400a-a71b-20cdec9b****
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The source of the namespace. This parameter is required only for a special third party.
+	// Required only for special third-party users.
 	//
 	// example:
 	//
 	// schedulerx
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
-	PageNum         *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region.
+	// The page number.
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of records per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -66,11 +68,11 @@ type ListJobsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Specifies whether to enable the job. Valid values:
+	// The node status.
 	//
-	// 	- **0**: disables the job.
+	// - **0**: disabled
 	//
-	// 	- **1**: enables the job.
+	// - **1**: enabled
 	//
 	// example:
 	//
