@@ -309,6 +309,72 @@ func (client *Client) AddGatewaySecurityGroupRule(gatewayId *string, request *Ad
 
 // Summary:
 //
+// 批量添加消费者组成员
+//
+// @param request - BatchAddConsumerGroupConsumersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchAddConsumerGroupConsumersResponse
+func (client *Client) BatchAddConsumerGroupConsumersWithOptions(consumerGroupId *string, request *BatchAddConsumerGroupConsumersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *BatchAddConsumerGroupConsumersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConsumerIds) {
+		body["consumerIds"] = request.ConsumerIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchAddConsumerGroupConsumers"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/consumer-groups/" + dara.PercentEncode(dara.StringValue(consumerGroupId)) + "/consumers/batch-add"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchAddConsumerGroupConsumersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量添加消费者组成员
+//
+// @param request - BatchAddConsumerGroupConsumersRequest
+//
+// @return BatchAddConsumerGroupConsumersResponse
+func (client *Client) BatchAddConsumerGroupConsumers(consumerGroupId *string, request *BatchAddConsumerGroupConsumersRequest) (_result *BatchAddConsumerGroupConsumersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &BatchAddConsumerGroupConsumersResponse{}
+	_body, _err := client.BatchAddConsumerGroupConsumersWithOptions(consumerGroupId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Revokes consumer authorization rules in batches.
 //
 // @param request - BatchDeleteConsumerAuthorizationRuleRequest
@@ -366,6 +432,72 @@ func (client *Client) BatchDeleteConsumerAuthorizationRule(request *BatchDeleteC
 	headers := make(map[string]*string)
 	_result = &BatchDeleteConsumerAuthorizationRuleResponse{}
 	_body, _err := client.BatchDeleteConsumerAuthorizationRuleWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量移除消费者组成员
+//
+// @param request - BatchRemoveConsumerGroupConsumersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchRemoveConsumerGroupConsumersResponse
+func (client *Client) BatchRemoveConsumerGroupConsumersWithOptions(consumerGroupId *string, request *BatchRemoveConsumerGroupConsumersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *BatchRemoveConsumerGroupConsumersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConsumerIds) {
+		body["consumerIds"] = request.ConsumerIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchRemoveConsumerGroupConsumers"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/consumer-groups/" + dara.PercentEncode(dara.StringValue(consumerGroupId)) + "/consumers/batch-remove"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchRemoveConsumerGroupConsumersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量移除消费者组成员
+//
+// @param request - BatchRemoveConsumerGroupConsumersRequest
+//
+// @return BatchRemoveConsumerGroupConsumersResponse
+func (client *Client) BatchRemoveConsumerGroupConsumers(consumerGroupId *string, request *BatchRemoveConsumerGroupConsumersRequest) (_result *BatchRemoveConsumerGroupConsumersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &BatchRemoveConsumerGroupConsumersResponse{}
+	_body, _err := client.BatchRemoveConsumerGroupConsumersWithOptions(consumerGroupId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -444,6 +576,108 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 	headers := make(map[string]*string)
 	_result = &ChangeResourceGroupResponse{}
 	_body, _err := client.ChangeResourceGroupWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建AI模型卡片
+//
+// Description:
+//
+// 在指定AI网关实例的已有模型供应商下创建模型卡片。目标网关必须存在、属于当前账号且类型为AI网关，modelProvider必须引用该网关中已存在的模型供应商。
+//
+// 同一AI网关实例、同一模型供应商下的modelName必须唯一；单个网关实例最多可创建1000张模型卡片。credit当前仅支持fixed类型，费用单位为Credits/百万Token；未传时type默认为fixed，各项费用默认为0。availablePaths中的每一项必须同时包含path和type。
+//
+// @param request - CreateAiModelCardRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAiModelCardResponse
+func (client *Client) CreateAiModelCardWithOptions(request *CreateAiModelCardRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateAiModelCardResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AvailablePaths) {
+		body["availablePaths"] = request.AvailablePaths
+	}
+
+	if !dara.IsNil(request.Credit) {
+		body["credit"] = request.Credit
+	}
+
+	if !dara.IsNil(request.Features) {
+		body["features"] = request.Features
+	}
+
+	if !dara.IsNil(request.GatewayId) {
+		body["gatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.Meta) {
+		body["meta"] = request.Meta
+	}
+
+	if !dara.IsNil(request.ModelName) {
+		body["modelName"] = request.ModelName
+	}
+
+	if !dara.IsNil(request.ModelProvider) {
+		body["modelProvider"] = request.ModelProvider
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAiModelCard"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/ai-model-cards"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAiModelCardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建AI模型卡片
+//
+// Description:
+//
+// 在指定AI网关实例的已有模型供应商下创建模型卡片。目标网关必须存在、属于当前账号且类型为AI网关，modelProvider必须引用该网关中已存在的模型供应商。
+//
+// 同一AI网关实例、同一模型供应商下的modelName必须唯一；单个网关实例最多可创建1000张模型卡片。credit当前仅支持fixed类型，费用单位为Credits/百万Token；未传时type默认为fixed，各项费用默认为0。availablePaths中的每一项必须同时包含path和type。
+//
+// @param request - CreateAiModelCardRequest
+//
+// @return CreateAiModelCardResponse
+func (client *Client) CreateAiModelCard(request *CreateAiModelCardRequest) (_result *CreateAiModelCardResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateAiModelCardResponse{}
+	_body, _err := client.CreateAiModelCardWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -854,6 +1088,84 @@ func (client *Client) CreateConsumerAuthorizationRules(request *CreateConsumerAu
 	headers := make(map[string]*string)
 	_result = &CreateConsumerAuthorizationRulesResponse{}
 	_body, _err := client.CreateConsumerAuthorizationRulesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建消费者组
+//
+// @param request - CreateConsumerGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateConsumerGroupResponse
+func (client *Client) CreateConsumerGroupWithOptions(request *CreateConsumerGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateConsumerGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConsumerGroupId) {
+		body["consumerGroupId"] = request.ConsumerGroupId
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.GatewayType) {
+		body["gatewayType"] = request.GatewayType
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateConsumerGroup"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/consumer-groups"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateConsumerGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建消费者组
+//
+// @param request - CreateConsumerGroupRequest
+//
+// @return CreateConsumerGroupResponse
+func (client *Client) CreateConsumerGroup(request *CreateConsumerGroupRequest) (_result *CreateConsumerGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateConsumerGroupResponse{}
+	_body, _err := client.CreateConsumerGroupWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2276,6 +2588,126 @@ func (client *Client) CreateSource(request *CreateSourceRequest) (_result *Creat
 
 // Summary:
 //
+// 删除AI模型卡片
+//
+// @param request - DeleteAiModelCardRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAiModelCardResponse
+func (client *Client) DeleteAiModelCardWithOptions(modelCardId *string, request *DeleteAiModelCardRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteAiModelCardResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAiModelCard"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/ai-model-cards/" + dara.PercentEncode(dara.StringValue(modelCardId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAiModelCardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除AI模型卡片
+//
+// @param request - DeleteAiModelCardRequest
+//
+// @return DeleteAiModelCardResponse
+func (client *Client) DeleteAiModelCard(modelCardId *string, request *DeleteAiModelCardRequest) (_result *DeleteAiModelCardResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteAiModelCardResponse{}
+	_body, _err := client.DeleteAiModelCardWithOptions(modelCardId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除AI模型供应商
+//
+// @param request - DeleteAiModelProviderRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAiModelProviderResponse
+func (client *Client) DeleteAiModelProviderWithOptions(modelProviderId *string, request *DeleteAiModelProviderRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteAiModelProviderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAiModelProvider"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/ai-model-providers/" + dara.PercentEncode(dara.StringValue(modelProviderId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAiModelProviderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除AI模型供应商
+//
+// @param request - DeleteAiModelProviderRequest
+//
+// @return DeleteAiModelProviderResponse
+func (client *Client) DeleteAiModelProvider(modelProviderId *string, request *DeleteAiModelProviderRequest) (_result *DeleteAiModelProviderResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteAiModelProviderResponse{}
+	_body, _err := client.DeleteAiModelProviderWithOptions(modelProviderId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an API consumer.
 //
 // @param headers - map
@@ -2367,6 +2799,66 @@ func (client *Client) DeleteConsumerAuthorizationRule(consumerAuthorizationRuleI
 	headers := make(map[string]*string)
 	_result = &DeleteConsumerAuthorizationRuleResponse{}
 	_body, _err := client.DeleteConsumerAuthorizationRuleWithOptions(consumerAuthorizationRuleId, consumerId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除消费者组
+//
+// @param request - DeleteConsumerGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteConsumerGroupResponse
+func (client *Client) DeleteConsumerGroupWithOptions(consumerGroupId *string, request *DeleteConsumerGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteConsumerGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteConsumerGroup"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/consumer-groups/" + dara.PercentEncode(dara.StringValue(consumerGroupId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteConsumerGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除消费者组
+//
+// @param request - DeleteConsumerGroupRequest
+//
+// @return DeleteConsumerGroupResponse
+func (client *Client) DeleteConsumerGroup(consumerGroupId *string, request *DeleteConsumerGroupRequest) (_result *DeleteConsumerGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteConsumerGroupResponse{}
+	_body, _err := client.DeleteConsumerGroupWithOptions(consumerGroupId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3547,6 +4039,126 @@ func (client *Client) ExportHttpApi(httpApiId *string, request *ExportHttpApiReq
 
 // Summary:
 //
+// 查询AI模型卡片详情
+//
+// @param request - GetAiModelCardRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAiModelCardResponse
+func (client *Client) GetAiModelCardWithOptions(modelCardId *string, request *GetAiModelCardRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAiModelCardResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAiModelCard"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/ai-model-cards/" + dara.PercentEncode(dara.StringValue(modelCardId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAiModelCardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询AI模型卡片详情
+//
+// @param request - GetAiModelCardRequest
+//
+// @return GetAiModelCardResponse
+func (client *Client) GetAiModelCard(modelCardId *string, request *GetAiModelCardRequest) (_result *GetAiModelCardResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAiModelCardResponse{}
+	_body, _err := client.GetAiModelCardWithOptions(modelCardId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询AI模型供应商详情
+//
+// @param request - GetAiModelProviderRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAiModelProviderResponse
+func (client *Client) GetAiModelProviderWithOptions(modelProviderId *string, request *GetAiModelProviderRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAiModelProviderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAiModelProvider"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/ai-model-providers/" + dara.PercentEncode(dara.StringValue(modelProviderId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAiModelProviderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询AI模型供应商详情
+//
+// @param request - GetAiModelProviderRequest
+//
+// @return GetAiModelProviderResponse
+func (client *Client) GetAiModelProvider(modelProviderId *string, request *GetAiModelProviderRequest) (_result *GetAiModelProviderResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAiModelProviderResponse{}
+	_body, _err := client.GetAiModelProviderWithOptions(modelProviderId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves an API consumer.
 //
 // @param headers - map
@@ -3638,6 +4250,66 @@ func (client *Client) GetConsumerAuthorizationRule(consumerAuthorizationRuleId *
 	headers := make(map[string]*string)
 	_result = &GetConsumerAuthorizationRuleResponse{}
 	_body, _err := client.GetConsumerAuthorizationRuleWithOptions(consumerAuthorizationRuleId, consumerId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询消费者组
+//
+// @param request - GetConsumerGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetConsumerGroupResponse
+func (client *Client) GetConsumerGroupWithOptions(consumerGroupId *string, request *GetConsumerGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetConsumerGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetConsumerGroup"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/consumer-groups/" + dara.PercentEncode(dara.StringValue(consumerGroupId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetConsumerGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询消费者组
+//
+// @param request - GetConsumerGroupRequest
+//
+// @return GetConsumerGroupResponse
+func (client *Client) GetConsumerGroup(consumerGroupId *string, request *GetConsumerGroupRequest) (_result *GetConsumerGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetConsumerGroupResponse{}
+	_body, _err := client.GetConsumerGroupWithOptions(consumerGroupId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5056,6 +5728,162 @@ func (client *Client) InstallPlugin(request *InstallPluginRequest) (_result *Ins
 
 // Summary:
 //
+// 查询AI模型卡片列表
+//
+// @param request - ListAiModelCardsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAiModelCardsResponse
+func (client *Client) ListAiModelCardsWithOptions(request *ListAiModelCardsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListAiModelCardsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GatewayId) {
+		query["gatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAiModelCards"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/ai-model-cards"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAiModelCardsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询AI模型卡片列表
+//
+// @param request - ListAiModelCardsRequest
+//
+// @return ListAiModelCardsResponse
+func (client *Client) ListAiModelCards(request *ListAiModelCardsRequest) (_result *ListAiModelCardsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAiModelCardsResponse{}
+	_body, _err := client.ListAiModelCardsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询AI模型供应商列表
+//
+// @param request - ListAiModelProvidersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAiModelProvidersResponse
+func (client *Client) ListAiModelProvidersWithOptions(request *ListAiModelProvidersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListAiModelProvidersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GatewayId) {
+		query["gatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Provider) {
+		query["provider"] = request.Provider
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAiModelProviders"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/ai-model-providers"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAiModelProvidersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询AI模型供应商列表
+//
+// @param request - ListAiModelProvidersRequest
+//
+// @return ListAiModelProvidersResponse
+func (client *Client) ListAiModelProviders(request *ListAiModelProvidersRequest) (_result *ListAiModelProvidersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAiModelProvidersResponse{}
+	_body, _err := client.ListAiModelProvidersWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the list of consumer authorization rules.
 //
 // @param request - ListConsumerAuthorizationRulesRequest
@@ -5121,6 +5949,158 @@ func (client *Client) ListConsumerAuthorizationRules(consumerId *string, request
 	headers := make(map[string]*string)
 	_result = &ListConsumerAuthorizationRulesResponse{}
 	_body, _err := client.ListConsumerAuthorizationRulesWithOptions(consumerId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询消费者组成员列表
+//
+// @param request - ListConsumerGroupConsumersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListConsumerGroupConsumersResponse
+func (client *Client) ListConsumerGroupConsumersWithOptions(consumerGroupId *string, request *ListConsumerGroupConsumersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListConsumerGroupConsumersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.NameLike) {
+		query["nameLike"] = request.NameLike
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListConsumerGroupConsumers"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/consumer-groups/" + dara.PercentEncode(dara.StringValue(consumerGroupId)) + "/consumers"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListConsumerGroupConsumersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询消费者组成员列表
+//
+// @param request - ListConsumerGroupConsumersRequest
+//
+// @return ListConsumerGroupConsumersResponse
+func (client *Client) ListConsumerGroupConsumers(consumerGroupId *string, request *ListConsumerGroupConsumersRequest) (_result *ListConsumerGroupConsumersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListConsumerGroupConsumersResponse{}
+	_body, _err := client.ListConsumerGroupConsumersWithOptions(consumerGroupId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询消费者组列表
+//
+// @param request - ListConsumerGroupsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListConsumerGroupsResponse
+func (client *Client) ListConsumerGroupsWithOptions(request *ListConsumerGroupsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListConsumerGroupsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GatewayType) {
+		query["gatewayType"] = request.GatewayType
+	}
+
+	if !dara.IsNil(request.NameLike) {
+		query["nameLike"] = request.NameLike
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListConsumerGroups"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/consumer-groups"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListConsumerGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询消费者组列表
+//
+// @param request - ListConsumerGroupsRequest
+//
+// @return ListConsumerGroupsResponse
+func (client *Client) ListConsumerGroups(request *ListConsumerGroupsRequest) (_result *ListConsumerGroupsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListConsumerGroupsResponse{}
+	_body, _err := client.ListConsumerGroupsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8015,6 +8995,162 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
+// 更新AI模型卡片
+//
+// @param request - UpdateAiModelCardRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAiModelCardResponse
+func (client *Client) UpdateAiModelCardWithOptions(modelCardId *string, request *UpdateAiModelCardRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAiModelCardResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AvailablePaths) {
+		body["availablePaths"] = request.AvailablePaths
+	}
+
+	if !dara.IsNil(request.Credit) {
+		body["credit"] = request.Credit
+	}
+
+	if !dara.IsNil(request.Features) {
+		body["features"] = request.Features
+	}
+
+	if !dara.IsNil(request.Meta) {
+		body["meta"] = request.Meta
+	}
+
+	if !dara.IsNil(request.ModelName) {
+		body["modelName"] = request.ModelName
+	}
+
+	if !dara.IsNil(request.ModelProvider) {
+		body["modelProvider"] = request.ModelProvider
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAiModelCard"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/ai-model-cards/" + dara.PercentEncode(dara.StringValue(modelCardId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAiModelCardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新AI模型卡片
+//
+// @param request - UpdateAiModelCardRequest
+//
+// @return UpdateAiModelCardResponse
+func (client *Client) UpdateAiModelCard(modelCardId *string, request *UpdateAiModelCardRequest) (_result *UpdateAiModelCardResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateAiModelCardResponse{}
+	_body, _err := client.UpdateAiModelCardWithOptions(modelCardId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新AI模型供应商
+//
+// @param request - UpdateAiModelProviderRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAiModelProviderResponse
+func (client *Client) UpdateAiModelProviderWithOptions(modelProviderId *string, request *UpdateAiModelProviderRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAiModelProviderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DisplayName) {
+		body["displayName"] = request.DisplayName
+	}
+
+	if !dara.IsNil(request.ServiceIds) {
+		body["serviceIds"] = request.ServiceIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAiModelProvider"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/ai-model-providers/" + dara.PercentEncode(dara.StringValue(modelProviderId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAiModelProviderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新AI模型供应商
+//
+// @param request - UpdateAiModelProviderRequest
+//
+// @return UpdateAiModelProviderResponse
+func (client *Client) UpdateAiModelProvider(modelProviderId *string, request *UpdateAiModelProviderRequest) (_result *UpdateAiModelProviderResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateAiModelProviderResponse{}
+	_body, _err := client.UpdateAiModelProviderWithOptions(modelProviderId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates and mounts a policy.
 //
 // @param request - UpdateAndAttachPolicyRequest
@@ -8252,6 +9388,76 @@ func (client *Client) UpdateConsumerAuthorizationRule(consumerId *string, consum
 	headers := make(map[string]*string)
 	_result = &UpdateConsumerAuthorizationRuleResponse{}
 	_body, _err := client.UpdateConsumerAuthorizationRuleWithOptions(consumerId, consumerAuthorizationRuleId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新消费者组
+//
+// @param request - UpdateConsumerGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateConsumerGroupResponse
+func (client *Client) UpdateConsumerGroupWithOptions(consumerGroupId *string, request *UpdateConsumerGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateConsumerGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateConsumerGroup"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/consumer-groups/" + dara.PercentEncode(dara.StringValue(consumerGroupId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateConsumerGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新消费者组
+//
+// @param request - UpdateConsumerGroupRequest
+//
+// @return UpdateConsumerGroupResponse
+func (client *Client) UpdateConsumerGroup(consumerGroupId *string, request *UpdateConsumerGroupRequest) (_result *UpdateConsumerGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateConsumerGroupResponse{}
+	_body, _err := client.UpdateConsumerGroupWithOptions(consumerGroupId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
