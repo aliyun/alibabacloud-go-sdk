@@ -171,6 +171,7 @@ type DescribeApplicationLogsResponseBodyItemsLogRecords struct {
 	FileName       *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FullFilePath   *string `json:"FullFilePath,omitempty" xml:"FullFilePath,omitempty"`
 	Hostname       *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	InsName        *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
 	LogLevelId     *int64  `json:"LogLevelId,omitempty" xml:"LogLevelId,omitempty"`
 	LogLevelName   *string `json:"LogLevelName,omitempty" xml:"LogLevelName,omitempty"`
 	Method         *string `json:"Method,omitempty" xml:"Method,omitempty"`
@@ -178,6 +179,7 @@ type DescribeApplicationLogsResponseBodyItemsLogRecords struct {
 	Runtime        *string `json:"Runtime,omitempty" xml:"Runtime,omitempty"`
 	RuntimeVersion *string `json:"RuntimeVersion,omitempty" xml:"RuntimeVersion,omitempty"`
 	Time           *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	Timestamp      *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s DescribeApplicationLogsResponseBodyItemsLogRecords) String() string {
@@ -220,6 +222,10 @@ func (s *DescribeApplicationLogsResponseBodyItemsLogRecords) GetHostname() *stri
 	return s.Hostname
 }
 
+func (s *DescribeApplicationLogsResponseBodyItemsLogRecords) GetInsName() *string {
+	return s.InsName
+}
+
 func (s *DescribeApplicationLogsResponseBodyItemsLogRecords) GetLogLevelId() *int64 {
 	return s.LogLevelId
 }
@@ -246,6 +252,10 @@ func (s *DescribeApplicationLogsResponseBodyItemsLogRecords) GetRuntimeVersion()
 
 func (s *DescribeApplicationLogsResponseBodyItemsLogRecords) GetTime() *string {
 	return s.Time
+}
+
+func (s *DescribeApplicationLogsResponseBodyItemsLogRecords) GetTimestamp() *int64 {
+	return s.Timestamp
 }
 
 func (s *DescribeApplicationLogsResponseBodyItemsLogRecords) SetComponentName(v string) *DescribeApplicationLogsResponseBodyItemsLogRecords {
@@ -288,6 +298,11 @@ func (s *DescribeApplicationLogsResponseBodyItemsLogRecords) SetHostname(v strin
 	return s
 }
 
+func (s *DescribeApplicationLogsResponseBodyItemsLogRecords) SetInsName(v string) *DescribeApplicationLogsResponseBodyItemsLogRecords {
+	s.InsName = &v
+	return s
+}
+
 func (s *DescribeApplicationLogsResponseBodyItemsLogRecords) SetLogLevelId(v int64) *DescribeApplicationLogsResponseBodyItemsLogRecords {
 	s.LogLevelId = &v
 	return s
@@ -320,6 +335,11 @@ func (s *DescribeApplicationLogsResponseBodyItemsLogRecords) SetRuntimeVersion(v
 
 func (s *DescribeApplicationLogsResponseBodyItemsLogRecords) SetTime(v string) *DescribeApplicationLogsResponseBodyItemsLogRecords {
 	s.Time = &v
+	return s
+}
+
+func (s *DescribeApplicationLogsResponseBodyItemsLogRecords) SetTimestamp(v int64) *DescribeApplicationLogsResponseBodyItemsLogRecords {
+	s.Timestamp = &v
 	return s
 }
 

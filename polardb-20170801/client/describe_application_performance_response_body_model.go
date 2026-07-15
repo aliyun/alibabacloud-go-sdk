@@ -15,6 +15,8 @@ type iDescribeApplicationPerformanceResponseBody interface {
 	GetApplicationType() *string
 	SetEndTime(v string) *DescribeApplicationPerformanceResponseBody
 	GetEndTime() *string
+	SetInterval(v string) *DescribeApplicationPerformanceResponseBody
+	GetInterval() *string
 	SetPerformanceKeys(v *DescribeApplicationPerformanceResponseBodyPerformanceKeys) *DescribeApplicationPerformanceResponseBody
 	GetPerformanceKeys() *DescribeApplicationPerformanceResponseBodyPerformanceKeys
 	SetRequestId(v string) *DescribeApplicationPerformanceResponseBody
@@ -41,7 +43,8 @@ type DescribeApplicationPerformanceResponseBody struct {
 	// example:
 	//
 	// 2025-05-23T02:21:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime  *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The performance metrics.
 	PerformanceKeys *DescribeApplicationPerformanceResponseBodyPerformanceKeys `json:"PerformanceKeys,omitempty" xml:"PerformanceKeys,omitempty" type:"Struct"`
 	// The request ID.
@@ -78,6 +81,10 @@ func (s *DescribeApplicationPerformanceResponseBody) GetEndTime() *string {
 	return s.EndTime
 }
 
+func (s *DescribeApplicationPerformanceResponseBody) GetInterval() *string {
+	return s.Interval
+}
+
 func (s *DescribeApplicationPerformanceResponseBody) GetPerformanceKeys() *DescribeApplicationPerformanceResponseBodyPerformanceKeys {
 	return s.PerformanceKeys
 }
@@ -102,6 +109,11 @@ func (s *DescribeApplicationPerformanceResponseBody) SetApplicationType(v string
 
 func (s *DescribeApplicationPerformanceResponseBody) SetEndTime(v string) *DescribeApplicationPerformanceResponseBody {
 	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeApplicationPerformanceResponseBody) SetInterval(v string) *DescribeApplicationPerformanceResponseBody {
+	s.Interval = &v
 	return s
 }
 
@@ -268,6 +280,7 @@ func (s *DescribeApplicationPerformanceResponseBodyPerformanceKeysPerformanceIte
 }
 
 type DescribeApplicationPerformanceResponseBodyPerformanceKeysPerformanceItemPointsPerformanceItemValue struct {
+	Step      *int64  `json:"Step,omitempty" xml:"Step,omitempty"`
 	Timestamp *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
@@ -280,12 +293,21 @@ func (s DescribeApplicationPerformanceResponseBodyPerformanceKeysPerformanceItem
 	return s.String()
 }
 
+func (s *DescribeApplicationPerformanceResponseBodyPerformanceKeysPerformanceItemPointsPerformanceItemValue) GetStep() *int64 {
+	return s.Step
+}
+
 func (s *DescribeApplicationPerformanceResponseBodyPerformanceKeysPerformanceItemPointsPerformanceItemValue) GetTimestamp() *int64 {
 	return s.Timestamp
 }
 
 func (s *DescribeApplicationPerformanceResponseBodyPerformanceKeysPerformanceItemPointsPerformanceItemValue) GetValue() *string {
 	return s.Value
+}
+
+func (s *DescribeApplicationPerformanceResponseBodyPerformanceKeysPerformanceItemPointsPerformanceItemValue) SetStep(v int64) *DescribeApplicationPerformanceResponseBodyPerformanceKeysPerformanceItemPointsPerformanceItemValue {
+	s.Step = &v
+	return s
 }
 
 func (s *DescribeApplicationPerformanceResponseBodyPerformanceKeysPerformanceItemPointsPerformanceItemValue) SetTimestamp(v int64) *DescribeApplicationPerformanceResponseBodyPerformanceKeysPerformanceItemPointsPerformanceItemValue {

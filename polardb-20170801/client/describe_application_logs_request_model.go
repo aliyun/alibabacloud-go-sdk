@@ -48,7 +48,7 @@ type DescribeApplicationLogsRequest struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The subcomponent instance ID.
+	// The instance ID of the subcomponent.
 	//
 	// example:
 	//

@@ -10827,6 +10827,14 @@ func (client *Client) DescribeApplicationPerformanceWithContext(ctx context.Cont
 		query["ConsumerGroup"] = request.ConsumerGroup
 	}
 
+	if !dara.IsNil(request.Downsample) {
+		query["Downsample"] = request.Downsample
+	}
+
+	if !dara.IsNil(request.EndStep) {
+		query["EndStep"] = request.EndStep
+	}
+
 	if !dara.IsNil(request.EndTime) {
 		query["EndTime"] = request.EndTime
 	}
@@ -10839,8 +10847,16 @@ func (client *Client) DescribeApplicationPerformanceWithContext(ctx context.Cont
 		query["Key"] = request.Key
 	}
 
+	if !dara.IsNil(request.MaxPoints) {
+		query["MaxPoints"] = request.MaxPoints
+	}
+
 	if !dara.IsNil(request.ModelService) {
 		query["ModelService"] = request.ModelService
+	}
+
+	if !dara.IsNil(request.StartStep) {
+		query["StartStep"] = request.StartStep
 	}
 
 	if !dara.IsNil(request.StartTime) {
@@ -10958,6 +10974,82 @@ func (client *Client) DescribeApplicationServerlessConfWithContext(ctx context.C
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeApplicationServerlessConfResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries AI application sessions.
+//
+// @param request - DescribeApplicationSessionIdsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApplicationSessionIdsResponse
+func (client *Client) DescribeApplicationSessionIdsWithContext(ctx context.Context, request *DescribeApplicationSessionIdsRequest, runtime *dara.RuntimeOptions) (_result *DescribeApplicationSessionIdsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeApplicationSessionIds"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeApplicationSessionIdsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

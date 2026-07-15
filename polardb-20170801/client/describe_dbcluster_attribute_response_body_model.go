@@ -131,6 +131,8 @@ type iDescribeDBClusterAttributeResponseBody interface {
 	GetSourceRegionId() *string
 	SetStandbyHAMode(v string) *DescribeDBClusterAttributeResponseBody
 	GetStandbyHAMode() *string
+	SetStorageAutoScale(v string) *DescribeDBClusterAttributeResponseBody
+	GetStorageAutoScale() *string
 	SetStorageMax(v int64) *DescribeDBClusterAttributeResponseBody
 	GetStorageMax() *int64
 	SetStoragePayType(v string) *DescribeDBClusterAttributeResponseBody
@@ -139,6 +141,8 @@ type iDescribeDBClusterAttributeResponseBody interface {
 	GetStorageSpace() *int64
 	SetStorageType(v string) *DescribeDBClusterAttributeResponseBody
 	GetStorageType() *string
+	SetStorageUpperBound(v int32) *DescribeDBClusterAttributeResponseBody
+	GetStorageUpperBound() *int32
 	SetStorageUsed(v int64) *DescribeDBClusterAttributeResponseBody
 	GetStorageUsed() *int64
 	SetStrictConsistency(v string) *DescribeDBClusterAttributeResponseBody
@@ -158,7 +162,7 @@ type iDescribeDBClusterAttributeResponseBody interface {
 }
 
 type DescribeDBClusterAttributeResponseBody struct {
-	// The start time of the free AI trial.
+	// The start time of the free AI feature.
 	//
 	// example:
 	//
@@ -188,9 +192,9 @@ type DescribeDBClusterAttributeResponseBody struct {
 	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
 	// The minor version update method. Valid values:
 	//
-	// - Auto: automatic update.
+	// - Auto: Automatic update.
 	//
-	// - Manual: manual update.
+	// - Manual: Manual update.
 	//
 	// example:
 	//
@@ -211,9 +215,9 @@ type DescribeDBClusterAttributeResponseBody struct {
 	Branch     *DescribeDBClusterAttributeResponseBodyBranch `json:"Branch,omitempty" xml:"Branch,omitempty" type:"Struct"`
 	// Indicates whether I/O performance burst is enabled for the ESSD AutoPL cloud disk. Valid values:
 	//
-	// - **true**: enabled.
+	// - **true**: Enabled.
 	//
-	// - **false**: disabled.
+	// - **false**: Disabled.
 	//
 	// example:
 	//
@@ -225,17 +229,17 @@ type DescribeDBClusterAttributeResponseBody struct {
 	//
 	// 	- **Basic**: Single Node Edition
 	//
-	// 	- **Archive**: PolarDB X-Engine Edition
+	// 	- **Archive**: X-Engine Edition
 	//
 	// 	- **NormalMultimaster**: Multi-master Cluster Edition
 	//
-	// 	- **SENormal**: PolarDB for MySQL Standard Edition
+	// 	- **SENormal**: Standard Edition
 	//
-	// > 	- PolarDB for PostgreSQL (PostgreSQL 11) does not support Single Node Edition.
+	// > 	- PolarDB for PostgreSQL 11 does not support Single Node Edition.
 	//
-	// >	- PolarDB for MySQL 8.0, PolarDB for MySQL 5.7, and PolarDB for PostgreSQL (PostgreSQL 14) support PolarDB for MySQL Standard Edition.
+	// >	- PolarDB for MySQL 8.0, PolarDB for MySQL 5.7, and PolarDB for PostgreSQL 14 support Standard Edition.
 	//
-	// >	- PolarDB for MySQL 8.0 supports PolarDB X-Engine Edition and Multi-master Cluster Edition.
+	// >	- PolarDB for MySQL 8.0 supports X-Engine Edition and Multi-master Cluster Edition.
 	//
 	// example:
 	//
@@ -249,9 +253,9 @@ type DescribeDBClusterAttributeResponseBody struct {
 	ColumnTable *string `json:"ColumnTable,omitempty" xml:"ColumnTable,omitempty"`
 	// Indicates whether storage compression is enabled. Valid values:
 	//
-	// - ON: enabled
+	// - ON: Enabled.
 	//
-	// - OFF: disabled
+	// - OFF: Disabled.
 	//
 	// example:
 	//
@@ -297,7 +301,7 @@ type DescribeDBClusterAttributeResponseBody struct {
 	//
 	// Running
 	DBClusterStatus *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
-	// The details of nodes.
+	// The node information.
 	DBNodes []*DescribeDBClusterAttributeResponseBodyDBNodes `json:"DBNodes,omitempty" xml:"DBNodes,omitempty" type:"Repeated"`
 	// The database engine type.
 	//
@@ -311,7 +315,7 @@ type DescribeDBClusterAttributeResponseBody struct {
 	//
 	// 8.0
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	// The status of the current minor engine version. Valid values:
+	// The status of the current minor database version. Valid values:
 	//
 	// 	- **Stable**: The current version is stable.
 	//
@@ -321,7 +325,7 @@ type DescribeDBClusterAttributeResponseBody struct {
 	//
 	// 	- **Beta**: The current version is a beta version.
 	//
-	// > 	- For information about how to upgrade the minor engine version, see [Version upgrade](https://help.aliyun.com/document_detail/158572.html).
+	// > 	- For information about how to upgrade the minor database version, see [Version upgrade](https://help.aliyun.com/document_detail/158572.html).
 	//
 	// > 	- This parameter is returned only when the database engine type (**DBType**) is **MySQL**.
 	//
@@ -377,7 +381,7 @@ type DescribeDBClusterAttributeResponseBody struct {
 	//
 	// false
 	Expired *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// Indicates whether resources are replenished for the new primary database after a cross-zone failover. Valid values:
+	// Indicates whether resources are replenished for the new primary node after a cross-zone failover. Valid values:
 	//
 	// - **true**: Resources are replenished.
 	//
@@ -389,9 +393,9 @@ type DescribeDBClusterAttributeResponseBody struct {
 	HasCompleteStandbyRes *bool `json:"HasCompleteStandbyRes,omitempty" xml:"HasCompleteStandbyRes,omitempty"`
 	// Indicates whether the Hot Standby Cluster (and standby compute nodes) is enabled. Valid values:
 	//
-	// - **StandbyClusterON**: The Hot Standby Cluster and standby compute nodes are enabled.
+	// - **StandbyClusterON**: The Hot Standby Cluster or both the Hot Standby Cluster and standby compute nodes are enabled.
 	//
-	// - **StandbyClusterOFF**: The Hot Standby Cluster and standby compute nodes are disabled.
+	// - **StandbyClusterOFF**: The Hot Standby Cluster or both the Hot Standby Cluster and standby compute nodes are disabled.
 	//
 	// example:
 	//
@@ -399,9 +403,9 @@ type DescribeDBClusterAttributeResponseBody struct {
 	HotStandbyCluster *string `json:"HotStandbyCluster,omitempty" xml:"HotStandbyCluster,omitempty"`
 	// The automatic IMCI-based query acceleration feature. Valid values:
 	//
-	// - `ON`: enabled.
+	// - `ON`: Enabled.
 	//
-	// - `OFF`: disabled.
+	// - `OFF`: Disabled.
 	//
 	// example:
 	//
@@ -409,9 +413,9 @@ type DescribeDBClusterAttributeResponseBody struct {
 	ImciAutoIndex *string `json:"ImciAutoIndex,omitempty" xml:"ImciAutoIndex,omitempty"`
 	// The failover with hot replica feature. Valid values:
 	//
-	// - `true`: enabled.
+	// - `true`: Enabled.
 	//
-	// - `false`: disabled.
+	// - `false`: Disabled.
 	//
 	// example:
 	//
@@ -451,17 +455,17 @@ type DescribeDBClusterAttributeResponseBody struct {
 	IsProxyLatestVersion *bool `json:"IsProxyLatestVersion,omitempty" xml:"IsProxyLatestVersion,omitempty"`
 	// The lock mode. Valid values:
 	//
-	// - **Unlock**: not locked.
+	// - **Unlock**: Not locked.
 	//
-	// - **ManualLock**: manually locked.
+	// - **ManualLock**: Manually locked.
 	//
-	// - **LockByExpiration**: automatically locked due to cluster expiration.
+	// - **LockByExpiration**: Automatically locked due to cluster expiration.
 	//
 	// example:
 	//
 	// Unlock
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// The maintenance window of the cluster, in the `HH:mmZ-HH:mmZ` format (UTC). For example, `16:00Z-17:00Z` indicates that routine maintenance can be performed from 00:00 to 01:00 (UTC+08:00).
+	// The maintenance window of the cluster. The time is in the `HH:mmZ-HH:mmZ` format (UTC). For example, `16:00Z-17:00Z` indicates that routine maintenance can be performed from 00:00 to 01:00 (UTC+08:00).
 	//
 	// example:
 	//
@@ -469,9 +473,9 @@ type DescribeDBClusterAttributeResponseBody struct {
 	MaintainTime *string `json:"MaintainTime,omitempty" xml:"MaintainTime,omitempty"`
 	// The Orca feature. Valid values:
 	//
-	// - on: enabled.
+	// - on: Enabled.
 	//
-	// - off: disabled.
+	// - off: Disabled.
 	//
 	// example:
 	//
@@ -507,7 +511,7 @@ type DescribeDBClusterAttributeResponseBody struct {
 	//
 	// - AgileServerless: agile serverless cluster.
 	//
-	// - SteadyServerless: steady serverless, which is a cluster with defined specifications (subscription or pay-as-you-go billing).
+	// - SteadyServerless: steady serverless, which is a cluster with defined specifications (billing method is subscription or pay-as-you-go).
 	//
 	// example:
 	//
@@ -521,33 +525,33 @@ type DescribeDBClusterAttributeResponseBody struct {
 	ProxyStandardCpuCores *string `json:"ProxyStandardCpuCores,omitempty" xml:"ProxyStandardCpuCores,omitempty"`
 	// The status of the database proxy. Valid values:
 	//
-	// - **Creating**: being created.
+	// - **Creating**: Being created.
 	//
-	// - **Running**: running.
+	// - **Running**: Running.
 	//
-	// - **Deleting**: being released.
+	// - **Deleting**: Being released.
 	//
-	// - **Rebooting**: being restarted.
+	// - **Rebooting**: Being restarted.
 	//
-	// - **DBNodeCreating**: adding a node.
+	// - **DBNodeCreating**: Increase node in progress.
 	//
-	// - **DBNodeDeleting**: deleting a node.
+	// - **DBNodeDeleting**: Deleting a node.
 	//
-	// - **ClassChanging**: changing node specifications.
+	// - **ClassChanging**: Changing node specifications.
 	//
-	// - **NetAddressCreating**: creating network connectivity.
+	// - **NetAddressCreating**: Creating network connectivity.
 	//
-	// - **NetAddressDeleting**: deleting network connectivity.
+	// - **NetAddressDeleting**: Deleting network connectivity.
 	//
-	// - **NetAddressModifying**: modifying network connectivity.
+	// - **NetAddressModifying**: Modifying network connectivity.
 	//
-	// - **Deleted**: released.
+	// - **Deleted**: Released.
 	//
 	// example:
 	//
 	// Running
 	ProxyStatus *string `json:"ProxyStatus,omitempty" xml:"ProxyStatus,omitempty"`
-	// The type of the database proxy. Valid values:
+	// The database proxy type. Valid values:
 	//
 	// - **Exclusive**: Dedicated Enterprise Edition
 	//
@@ -575,7 +579,7 @@ type DescribeDBClusterAttributeResponseBody struct {
 	//
 	// rg-***************
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// 	- If RestoreType is **RestoreByTime*	- or **RestoreByTimeOss**, this value indicates the point in time to which the cluster is restored.
+	// 	- If RestoreType is **RestoreByTime*	- or **RestoreByTimeOss**, this value indicates the point in time to which the cluster was restored.
 	//
 	// 	- If RestoreType is **RestoreByBackupSet*	- or **RestoreByBackupSetOss**, this value indicates the backup set ID used for the restoration.
 	//
@@ -585,17 +589,17 @@ type DescribeDBClusterAttributeResponseBody struct {
 	//
 	// 2179639137
 	RestoreDataPoint *string `json:"RestoreDataPoint,omitempty" xml:"RestoreDataPoint,omitempty"`
-	// The restoration method of the cluster. Valid values:
+	// The cluster restoration method. Valid values:
 	//
-	// 	- **RestoreByTime**: point-in-time restore based on a level-1 backup.
+	// 	- **RestoreByTime**: Restored from a point in time based on a level-1 backup.
 	//
-	// 	- **RestoreByBackupSet**: restore from a level-1 backup set.
+	// 	- **RestoreByBackupSet**: Restored from a backup set based on a level-1 backup.
 	//
-	// 	- **RestoreByTimeOss**: point-in-time restore based on a level-2 backup.
+	// 	- **RestoreByTimeOss**: Restored from a point in time based on a level-2 backup.
 	//
-	// 	- **RestoreByBackupSetOss**: restore from a level-2 backup set.
+	// 	- **RestoreByBackupSetOss**: Restored from a backup set based on a level-2 backup.
 	//
-	// 	- **CloneFromSourceCluster**: clone from the source cluster.
+	// 	- **CloneFromSourceCluster**: Cloned from the source cluster.
 	//
 	// <note>This parameter is supported only for clusters restored from a backup set or point in time after June 1, 2024.</note>
 	//
@@ -674,14 +678,15 @@ type DescribeDBClusterAttributeResponseBody struct {
 	// example:
 	//
 	// OFF
-	StandbyHAMode *string `json:"StandbyHAMode,omitempty" xml:"StandbyHAMode,omitempty"`
+	StandbyHAMode    *string `json:"StandbyHAMode,omitempty" xml:"StandbyHAMode,omitempty"`
+	StorageAutoScale *string `json:"StorageAutoScale,omitempty" xml:"StorageAutoScale,omitempty"`
 	// The maximum storage capacity for the current cluster specifications, in bytes.
 	//
 	// example:
 	//
 	// 10995116277760
 	StorageMax *int64 `json:"StorageMax,omitempty" xml:"StorageMax,omitempty"`
-	// The billing method for storage. Valid values:
+	// The storage billing type. Valid values:
 	//
 	// - **Postpaid**: pay-by-capacity (pay-as-you-go).
 	//
@@ -702,18 +707,19 @@ type DescribeDBClusterAttributeResponseBody struct {
 	// example:
 	//
 	// HighPerformance
-	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	StorageType       *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	StorageUpperBound *int32  `json:"StorageUpperBound,omitempty" xml:"StorageUpperBound,omitempty"`
 	// The storage usage, in bytes.
 	//
 	// example:
 	//
 	// 3012558848
 	StorageUsed *int64 `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
-	// Indicates whether multi-zone strong data consistency is enabled for the cluster. Valid values:
+	// Indicates whether multi-zone data strong consistency is enabled for the cluster. Valid values:
 	//
-	// - **ON**: Multi-zone strong data consistency is enabled. This applies to PolarDB for MySQL Standard Edition with three-zone deployment.
+	// - **ON**: Multi-zone data strong consistency is enabled. This applies to Standard Edition clusters deployed across three zones.
 	//
-	// - **OFF**: Multi-zone strong data consistency is not enabled.
+	// - **OFF**: Multi-zone data strong consistency is not enabled.
 	//
 	// example:
 	//
@@ -731,13 +737,13 @@ type DescribeDBClusterAttributeResponseBody struct {
 	//
 	// Exclusive
 	SubCategory *string `json:"SubCategory,omitempty" xml:"SubCategory,omitempty"`
-	// Indicates whether failover with hot replica is supported with IMCI compatibility.
+	// Indicates whether the failover with hot replica feature that is compatible with IMCI is supported.
 	//
 	// example:
 	//
 	// ON
 	SupportInstantSwitchWithImci *string `json:"SupportInstantSwitchWithImci,omitempty" xml:"SupportInstantSwitchWithImci,omitempty"`
-	// The details of tags.
+	// The tag information.
 	Tags []*DescribeDBClusterAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The VPC ID.
 	//
@@ -1011,6 +1017,10 @@ func (s *DescribeDBClusterAttributeResponseBody) GetStandbyHAMode() *string {
 	return s.StandbyHAMode
 }
 
+func (s *DescribeDBClusterAttributeResponseBody) GetStorageAutoScale() *string {
+	return s.StorageAutoScale
+}
+
 func (s *DescribeDBClusterAttributeResponseBody) GetStorageMax() *int64 {
 	return s.StorageMax
 }
@@ -1025,6 +1035,10 @@ func (s *DescribeDBClusterAttributeResponseBody) GetStorageSpace() *int64 {
 
 func (s *DescribeDBClusterAttributeResponseBody) GetStorageType() *string {
 	return s.StorageType
+}
+
+func (s *DescribeDBClusterAttributeResponseBody) GetStorageUpperBound() *int32 {
+	return s.StorageUpperBound
 }
 
 func (s *DescribeDBClusterAttributeResponseBody) GetStorageUsed() *int64 {
@@ -1364,6 +1378,11 @@ func (s *DescribeDBClusterAttributeResponseBody) SetStandbyHAMode(v string) *Des
 	return s
 }
 
+func (s *DescribeDBClusterAttributeResponseBody) SetStorageAutoScale(v string) *DescribeDBClusterAttributeResponseBody {
+	s.StorageAutoScale = &v
+	return s
+}
+
 func (s *DescribeDBClusterAttributeResponseBody) SetStorageMax(v int64) *DescribeDBClusterAttributeResponseBody {
 	s.StorageMax = &v
 	return s
@@ -1381,6 +1400,11 @@ func (s *DescribeDBClusterAttributeResponseBody) SetStorageSpace(v int64) *Descr
 
 func (s *DescribeDBClusterAttributeResponseBody) SetStorageType(v string) *DescribeDBClusterAttributeResponseBody {
 	s.StorageType = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBody) SetStorageUpperBound(v int32) *DescribeDBClusterAttributeResponseBody {
+	s.StorageUpperBound = &v
 	return s
 }
 
@@ -1625,7 +1649,7 @@ type DescribeDBClusterAttributeResponseBodyDBNodes struct {
 	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
 	// The role of the node. Valid values:
 	//
-	// - **Writer**: read/write node.
+	// - **Writer**: primary node.
 	//
 	// - **Reader**: read-only node.
 	//
@@ -1635,31 +1659,31 @@ type DescribeDBClusterAttributeResponseBodyDBNodes struct {
 	DBNodeRole *string `json:"DBNodeRole,omitempty" xml:"DBNodeRole,omitempty"`
 	// The node status. Valid values:
 	//
-	// 	- **Creating**: being created.
+	// 	- **Creating**: Being created.
 	//
-	// 	- **Running**: running.
+	// 	- **Running**: Running.
 	//
-	// 	- **Deleting**: being deleted.
+	// 	- **Deleting**: Being deleted.
 	//
-	// 	- **Rebooting**: being restarted.
+	// 	- **Rebooting**: Being restarted.
 	//
-	// 	- **DBNodeCreating**: adding a node.
+	// 	- **DBNodeCreating**: Increase node in progress.
 	//
-	// 	- **DBNodeDeleting**: deleting a node.
+	// 	- **DBNodeDeleting**: Deleting a node.
 	//
-	// 	- **ClassChanging**: changing node specifications.
+	// 	- **ClassChanging**: Changing node specifications.
 	//
-	// 	- **NetAddressCreating**: creating network connectivity.
+	// 	- **NetAddressCreating**: Creating network connectivity.
 	//
-	// 	- **NetAddressDeleting**: deleting network connectivity.
+	// 	- **NetAddressDeleting**: Deleting network connectivity.
 	//
-	// 	- **NetAddressModifying**: modifying network connectivity.
+	// 	- **NetAddressModifying**: Modifying network connectivity.
 	//
-	// 	- **MinorVersionUpgrading**: performing a minor engine version upgrade.
+	// 	- **MinorVersionUpgrading**: Upgrade of the minor version in progress.
 	//
-	// 	- **Maintaining**: instance under maintenance.
+	// 	- **Maintaining**: Instance under maintenance.
 	//
-	// 	- **Switching**: being switched.
+	// 	- **Switching**: Switching over.
 	//
 	// example:
 	//
@@ -1675,9 +1699,9 @@ type DescribeDBClusterAttributeResponseBodyDBNodes struct {
 	FailoverPriority *int32 `json:"FailoverPriority,omitempty" xml:"FailoverPriority,omitempty"`
 	// Indicates whether hot standby is enabled. Valid values:
 	//
-	// - **ON**: enabled.
+	// - **ON**: Enabled.
 	//
-	// - **OFF**: disabled.
+	// - **OFF**: Disabled.
 	//
 	// example:
 	//
@@ -1685,9 +1709,9 @@ type DescribeDBClusterAttributeResponseBodyDBNodes struct {
 	HotReplicaMode *string `json:"HotReplicaMode,omitempty" xml:"HotReplicaMode,omitempty"`
 	// Indicates whether In-Memory Column Index (IMCI) is enabled. Valid values:
 	//
-	// - **ON**: enabled.
+	// - **ON**: Enabled.
 	//
-	// - **OFF**: disabled.
+	// - **OFF**: Disabled.
 	//
 	// example:
 	//
@@ -1717,7 +1741,7 @@ type DescribeDBClusterAttributeResponseBodyDBNodes struct {
 	//
 	// 8192
 	MemorySize *string `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
-	// The name of the hot replica compute node that corresponds to the node in the Hot Standby Cluster and compute architecture.
+	// The name of the hot replica that corresponds to this node in the hot standby storage and compute architecture.
 	//
 	// example:
 	//
@@ -1737,14 +1761,17 @@ type DescribeDBClusterAttributeResponseBodyDBNodes struct {
 	MultiMasterPrimaryNode *string `json:"MultiMasterPrimaryNode,omitempty" xml:"MultiMasterPrimaryNode,omitempty"`
 	// The Orca feature. Valid values:
 	//
-	// - on: enabled.
+	// - on: Enabled.
 	//
-	// - off: disabled.
+	// - off: Disabled.
 	//
 	// example:
 	//
 	// off
-	Orca *string `json:"Orca,omitempty" xml:"Orca,omitempty"`
+	Orca                    *string `json:"Orca,omitempty" xml:"Orca,omitempty"`
+	RemoteMemoryMax         *int32  `json:"RemoteMemoryMax,omitempty" xml:"RemoteMemoryMax,omitempty"`
+	RemoteMemoryMin         *int32  `json:"RemoteMemoryMin,omitempty" xml:"RemoteMemoryMin,omitempty"`
+	RemoteMemoryRecommended *int32  `json:"RemoteMemoryRecommended,omitempty" xml:"RemoteMemoryRecommended,omitempty"`
 	// The remote memory size. Unit: MB.
 	//
 	// example:
@@ -1753,9 +1780,9 @@ type DescribeDBClusterAttributeResponseBodyDBNodes struct {
 	RemoteMemorySize *string `json:"RemoteMemorySize,omitempty" xml:"RemoteMemorySize,omitempty"`
 	// Indicates whether the global consistency (high-performance mode) feature is enabled for the node. Valid values:
 	//
-	// - **ON**: The feature is enabled.
+	// - **ON**: Enabled.
 	//
-	// - **OFF**: The feature is disabled.
+	// - **OFF**: Disabled.
 	//
 	// This parameter is required.
 	//
@@ -1775,7 +1802,7 @@ type DescribeDBClusterAttributeResponseBodyDBNodes struct {
 	//
 	// - AgileServerless: agile serverless node.
 	//
-	// - SteadyServerless: steady serverless node, which is a node with defined specifications that has the serverless capability enabled.
+	// - SteadyServerless: steady serverless node, which is a node in a cluster with defined specifications that has serverless capabilities enabled.
 	//
 	// > This parameter is supported only for serverless clusters or clusters with defined specifications that have the serverless feature enabled. For more information, see [Serverless](https://help.aliyun.com/document_detail/452274.html).
 	//
@@ -1783,7 +1810,7 @@ type DescribeDBClusterAttributeResponseBodyDBNodes struct {
 	//
 	// SteadyServerless
 	ServerlessType *string `json:"ServerlessType,omitempty" xml:"ServerlessType,omitempty"`
-	// Indicates whether the node is in the primary zone or the secondary zone. This parameter is mainly used for resource-equivalent deployments.
+	// Indicates whether the node is in the primary zone or secondary zone. This parameter is mainly used for resource-equivalent deployments.
 	//
 	// Valid values:
 	//
@@ -1895,6 +1922,18 @@ func (s *DescribeDBClusterAttributeResponseBodyDBNodes) GetMultiMasterPrimaryNod
 
 func (s *DescribeDBClusterAttributeResponseBodyDBNodes) GetOrca() *string {
 	return s.Orca
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyDBNodes) GetRemoteMemoryMax() *int32 {
+	return s.RemoteMemoryMax
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyDBNodes) GetRemoteMemoryMin() *int32 {
+	return s.RemoteMemoryMin
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyDBNodes) GetRemoteMemoryRecommended() *int32 {
+	return s.RemoteMemoryRecommended
 }
 
 func (s *DescribeDBClusterAttributeResponseBodyDBNodes) GetRemoteMemorySize() *string {
@@ -2022,6 +2061,21 @@ func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetMultiMasterPrimaryNod
 
 func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetOrca(v string) *DescribeDBClusterAttributeResponseBodyDBNodes {
 	s.Orca = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetRemoteMemoryMax(v int32) *DescribeDBClusterAttributeResponseBodyDBNodes {
+	s.RemoteMemoryMax = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetRemoteMemoryMin(v int32) *DescribeDBClusterAttributeResponseBodyDBNodes {
+	s.RemoteMemoryMin = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetRemoteMemoryRecommended(v int32) *DescribeDBClusterAttributeResponseBodyDBNodes {
+	s.RemoteMemoryRecommended = &v
 	return s
 }
 
