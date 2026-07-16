@@ -17,6 +17,8 @@ type iListIncidentsRequest interface {
 	GetIncidentName() *string
 	SetIncidentStatus(v int32) *ListIncidentsRequest
 	GetIncidentStatus() *int32
+	SetIncidentStatusList(v []*string) *ListIncidentsRequest
+	GetIncidentStatusList() []*string
 	SetIncidentTags(v string) *ListIncidentsRequest
 	GetIncidentTags() *string
 	SetIncidentUuids(v []*string) *ListIncidentsRequest
@@ -60,41 +62,45 @@ type ListIncidentsRequest struct {
 	//
 	// sas_71e24437d2797ce8fc59692905a4****
 	AlertUuid *string `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
-	// The end time as a timestamp in milliseconds (ms).
+	// The end time as a UNIX timestamp in milliseconds (ms).
 	//
 	// example:
 	//
 	// 1749090526055
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the incident.
+	// The event name.
 	//
 	// example:
 	//
 	// ECS unusual log in
 	IncidentName *string `json:"IncidentName,omitempty" xml:"IncidentName,omitempty"`
-	// The status of the incident. Valid values:
+	// The event status. Valid values:
 	//
-	// - 0: unhandled.
+	// - 0: Unhandled.
 	//
-	// - 1: handling.
+	// - 1: Handling.
 	//
-	// - 5: handling failed.
+	// - 5: Handling failed.
 	//
-	// - 10: handled.
+	// - 10: Handled.
 	//
 	// example:
 	//
 	// 0
 	IncidentStatus *int32 `json:"IncidentStatus,omitempty" xml:"IncidentStatus,omitempty"`
-	// The tags of the incident.
+	// example:
+	//
+	// [0,1,5]
+	IncidentStatusList []*string `json:"IncidentStatusList,omitempty" xml:"IncidentStatusList,omitempty" type:"Repeated"`
+	// The event tags.
 	//
 	// example:
 	//
 	// [{\\"data_source\\":[\\"sas\\"]}]
 	IncidentTags *string `json:"IncidentTags,omitempty" xml:"IncidentTags,omitempty"`
-	// The list of incident UUIDs, separated by commas (,).
+	// The list of event UUIDs, separated by commas (,).
 	IncidentUuids []*string `json:"IncidentUuids,omitempty" xml:"IncidentUuids,omitempty" type:"Repeated"`
-	// The language of the response. Valid values:
+	// The language type of the response messages. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
@@ -104,13 +110,13 @@ type ListIncidentsRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of entries to return in this request.
+	// The maximum number of entries to return.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next query. Leave this parameter empty for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
+	// The pagination token for the next query. Leave this parameter empty for the first query or if no more results exist. If a next page exists, set this parameter to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//
@@ -118,25 +124,25 @@ type ListIncidentsRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The sort direction. Valid values:
 	//
-	// - **desc*	- (default): descending order.
+	// - **desc*	- (default): Descending order.
 	//
-	// - **asc**: ascending order.
+	// - **asc**: Ascending order.
 	//
 	// example:
 	//
 	// desc
 	OrderDirection *string `json:"OrderDirection,omitempty" xml:"OrderDirection,omitempty"`
-	// The field name used to sort the list. Valid values:
+	// The name of the field used to sort the list.
 	//
-	// - GmtModified: sorts by incident update time (default).
+	// - GmtModified: Event update time (default).
 	//
-	// - ThreatScore: sorts by threat score.
+	// - ThreatScore: Threat score.
 	//
 	// example:
 	//
 	// GmtModified
 	OrderFieldName *string `json:"OrderFieldName,omitempty" xml:"OrderFieldName,omitempty"`
-	// The UID of the account that owns the incident.
+	// The UID of the account responsible for the event.
 	Owners []*string `json:"Owners,omitempty" xml:"Owners,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -154,23 +160,23 @@ type ListIncidentsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+	// The region where the threat analysis data management center is located. Select the management center based on the region of your assets. Valid values:
 	//
-	// - cn-hangzhou: Your assets reside in the Chinese mainland.
+	// - cn-hangzhou: Your assets are located in the Chinese mainland.
 	//
-	// - ap-southeast-1: Your assets reside outside China.
+	// - ap-southeast-1: Your assets are located outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the asset associated with the incident.
+	// The ID of the asset associated with the event.
 	//
 	// example:
 	//
 	// 6c740667-80b2-476d-8924-2e706feb****
 	RelateAssetId *string `json:"RelateAssetId,omitempty" xml:"RelateAssetId,omitempty"`
-	// The ID of the entity associated with the incident.
+	// The ID of the entity associated with the event.
 	//
 	// example:
 	//
@@ -184,15 +190,15 @@ type ListIncidentsRequest struct {
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 	// The view type. Valid values:
 	//
-	// - 0: the view of the current Alibaba Cloud account.
+	// - 0: The view of the current Alibaba Cloud account.
 	//
-	// - 1: the view of all accounts in the enterprise.
+	// - 1: The view of all accounts in the enterprise.
 	//
 	// example:
 	//
 	// 1
 	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// The start time as a timestamp in milliseconds (ms).
+	// The start time as a UNIX timestamp in milliseconds (ms).
 	//
 	// example:
 	//
@@ -200,15 +206,19 @@ type ListIncidentsRequest struct {
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The threat level. Valid values:
 	//
-	// - 5: critical.
+	// - 5: Critical.
 	//
-	// - 4: high.
+	// - 4: High.
 	//
-	// - 3: medium.
+	// - 3: Medium.
 	//
-	// - 2: low.
+	// - 2: Low.
 	//
-	// - 1: informational.
+	// - 1: Informational.
+	//
+	// example:
+	//
+	// 5
 	ThreatLevel []*string `json:"ThreatLevel,omitempty" xml:"ThreatLevel,omitempty" type:"Repeated"`
 }
 
@@ -234,6 +244,10 @@ func (s *ListIncidentsRequest) GetIncidentName() *string {
 
 func (s *ListIncidentsRequest) GetIncidentStatus() *int32 {
 	return s.IncidentStatus
+}
+
+func (s *ListIncidentsRequest) GetIncidentStatusList() []*string {
+	return s.IncidentStatusList
 }
 
 func (s *ListIncidentsRequest) GetIncidentTags() *string {
@@ -321,6 +335,11 @@ func (s *ListIncidentsRequest) SetIncidentName(v string) *ListIncidentsRequest {
 
 func (s *ListIncidentsRequest) SetIncidentStatus(v int32) *ListIncidentsRequest {
 	s.IncidentStatus = &v
+	return s
+}
+
+func (s *ListIncidentsRequest) SetIncidentStatusList(v []*string) *ListIncidentsRequest {
+	s.IncidentStatusList = v
 	return s
 }
 

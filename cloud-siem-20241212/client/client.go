@@ -2178,6 +2178,92 @@ func (client *Client) DeleteNormalizationRuleVersion(request *DeleteNormalizatio
 
 // Summary:
 //
+// Deletes a normalization schema.
+//
+// Description:
+//
+// The input parameter JsonConfig is a complex JSON configuration. We provide a utility class to help with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+//
+// @param request - DeleteNormalizationSchemaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteNormalizationSchemaResponse
+func (client *Client) DeleteNormalizationSchemaWithOptions(request *DeleteNormalizationSchemaRequest, runtime *dara.RuntimeOptions) (_result *DeleteNormalizationSchemaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		body["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.NormalizationSchemaId) {
+		body["NormalizationSchemaId"] = request.NormalizationSchemaId
+	}
+
+	if !dara.IsNil(request.NormalizationSchemaType) {
+		body["NormalizationSchemaType"] = request.NormalizationSchemaType
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RoleFor) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteNormalizationSchema"),
+		Version:     dara.String("2024-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteNormalizationSchemaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a normalization schema.
+//
+// Description:
+//
+// The input parameter JsonConfig is a complex JSON configuration. We provide a utility class to help with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+//
+// @param request - DeleteNormalizationSchemaRequest
+//
+// @return DeleteNormalizationSchemaResponse
+func (client *Client) DeleteNormalizationSchema(request *DeleteNormalizationSchemaRequest) (_result *DeleteNormalizationSchemaResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteNormalizationSchemaResponse{}
+	_body, _err := client.DeleteNormalizationSchemaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a product.
 //
 // Description:
@@ -5131,7 +5217,7 @@ func (client *Client) ListDetectionRules(request *ListDetectionRulesRequest) (_r
 //
 // Notifications are subject to frequency and time restrictions.
 //
-// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time window.
+// Each user receives a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time window.
 //
 // @param tmpReq - ListIncidentsRequest
 //
@@ -5171,6 +5257,10 @@ func (client *Client) ListIncidentsWithOptions(tmpReq *ListIncidentsRequest, run
 
 	if !dara.IsNil(request.IncidentStatus) {
 		body["IncidentStatus"] = request.IncidentStatus
+	}
+
+	if !dara.IsNil(request.IncidentStatusList) {
+		body["IncidentStatusList"] = request.IncidentStatusList
 	}
 
 	if !dara.IsNil(request.IncidentTags) {
@@ -5269,7 +5359,7 @@ func (client *Client) ListIncidentsWithOptions(tmpReq *ListIncidentsRequest, run
 //
 // Notifications are subject to frequency and time restrictions.
 //
-// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time window.
+// Each user receives a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time window.
 //
 // @param request - ListIncidentsRequest
 //
@@ -7686,6 +7776,112 @@ func (client *Client) UpdateDataBatchIngestion(request *UpdateDataBatchIngestion
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateDataBatchIngestionResponse{}
 	_body, _err := client.UpdateDataBatchIngestionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a collector.
+//
+// Description:
+//
+// Notifications are subject to frequency and time restrictions.
+//
+// Each user can receive a maximum of two notifications per day between 08:00 and 20:00 (UTC+8). No notifications are sent outside this time range.
+//
+// @param request - UpdateDataConnectorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDataConnectorResponse
+func (client *Client) UpdateDataConnectorWithOptions(request *UpdateDataConnectorRequest, runtime *dara.RuntimeOptions) (_result *UpdateDataConnectorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AuthConfigId) {
+		body["AuthConfigId"] = request.AuthConfigId
+	}
+
+	if !dara.IsNil(request.AuthConfigProduct) {
+		body["AuthConfigProduct"] = request.AuthConfigProduct
+	}
+
+	if !dara.IsNil(request.AuthConfigVendor) {
+		body["AuthConfigVendor"] = request.AuthConfigVendor
+	}
+
+	if !dara.IsNil(request.DataConnectorConfig) {
+		body["DataConnectorConfig"] = request.DataConnectorConfig
+	}
+
+	if !dara.IsNil(request.DataConnectorId) {
+		body["DataConnectorId"] = request.DataConnectorId
+	}
+
+	if !dara.IsNil(request.DataConnectorStatus) {
+		body["DataConnectorStatus"] = request.DataConnectorStatus
+	}
+
+	if !dara.IsNil(request.Lang) {
+		body["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RoleFor) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDataConnector"),
+		Version:     dara.String("2024-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDataConnectorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a collector.
+//
+// Description:
+//
+// Notifications are subject to frequency and time restrictions.
+//
+// Each user can receive a maximum of two notifications per day between 08:00 and 20:00 (UTC+8). No notifications are sent outside this time range.
+//
+// @param request - UpdateDataConnectorRequest
+//
+// @return UpdateDataConnectorResponse
+func (client *Client) UpdateDataConnector(request *UpdateDataConnectorRequest) (_result *UpdateDataConnectorResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateDataConnectorResponse{}
+	_body, _err := client.UpdateDataConnectorWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

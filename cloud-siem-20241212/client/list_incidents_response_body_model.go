@@ -26,15 +26,15 @@ type iListIncidentsResponseBody interface {
 }
 
 type ListIncidentsResponseBody struct {
-	// The list of incidents.
+	// The list of events.
 	Incidents []*ListIncidentsResponseBodyIncidents `json:"Incidents,omitempty" xml:"Incidents,omitempty" type:"Repeated"`
-	// The maximum number of entries to return in this request.
+	// The maximum number of entries to return.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next query. Leave this parameter empty for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
+	// The pagination token for the next query. Leave this parameter empty for the first query or if no more results exist. If a next page exists, set this parameter to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//
@@ -151,69 +151,73 @@ func (s *ListIncidentsResponseBody) Validate() error {
 }
 
 type ListIncidentsResponseBodyIncidents struct {
+	AlertInfos   *string `json:"AlertInfos,omitempty" xml:"AlertInfos,omitempty"`
+	AttckTactics *string `json:"AttckTactics,omitempty" xml:"AttckTactics,omitempty"`
 	// The creation time.
 	//
 	// example:
 	//
 	// 1603248483000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the detection rule.
+	// The detection rule ID.
 	//
 	// example:
 	//
 	// dr-qo5ww6ux0uc28*****
-	DetectionRuleId *string `json:"DetectionRuleId,omitempty" xml:"DetectionRuleId,omitempty"`
-	// The name of the incident.
+	DetectionRuleId     *string `json:"DetectionRuleId,omitempty" xml:"DetectionRuleId,omitempty"`
+	EntityInfos         *string `json:"EntityInfos,omitempty" xml:"EntityInfos,omitempty"`
+	IncidentDescription *string `json:"IncidentDescription,omitempty" xml:"IncidentDescription,omitempty"`
+	// The event name.
 	//
 	// example:
 	//
 	// ECS unusual log in
 	IncidentName *string `json:"IncidentName,omitempty" xml:"IncidentName,omitempty"`
-	// The remarks of the incident.
+	// The event remark.
 	//
 	// example:
 	//
 	// remark
 	IncidentRemark *string `json:"IncidentRemark,omitempty" xml:"IncidentRemark,omitempty"`
-	// The status of the incident. Valid values:
+	// The event status. Valid values:
 	//
-	// - 0: unhandled.
+	// - 0: Unhandled.
 	//
-	// - 1: handling.
+	// - 1: Handling.
 	//
-	// - 5: handling failed.
+	// - 5: Handling failed.
 	//
-	// - 10: handled.
+	// - 10: Handled.
 	//
 	// example:
 	//
 	// 0
 	IncidentStatus *int32 `json:"IncidentStatus,omitempty" xml:"IncidentStatus,omitempty"`
-	// The tags of the incident.
+	// The event tags.
 	//
 	// example:
 	//
 	// ["sys:data_source:siem","sys:trigger_type:auto"]
 	IncidentTags *string `json:"IncidentTags,omitempty" xml:"IncidentTags,omitempty"`
-	// The UUID of the incident.
+	// The event UUID.
 	//
 	// example:
 	//
 	// dbb1d7211c9285c862aa89385098****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	// The UID of the account that owns the incident.
+	// The UID of the account responsible for the event.
 	//
 	// example:
 	//
 	// 1234567890xxxxxx
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The number of alerts associated with the incident.
+	// The number of alerts associated with the event.
 	//
 	// example:
 	//
 	// 3
 	RelateAlertCount *int32 `json:"RelateAlertCount,omitempty" xml:"RelateAlertCount,omitempty"`
-	// The number of assets associated with the incident.
+	// The number of assets associated with the event.
 	//
 	// example:
 	//
@@ -227,15 +231,15 @@ type ListIncidentsResponseBodyIncidents struct {
 	ResponseTime *int64 `json:"ResponseTime,omitempty" xml:"ResponseTime,omitempty"`
 	// The threat level. Valid values:
 	//
-	// - 5: critical.
+	// - 5: Critical.
 	//
-	// - 4: high.
+	// - 4: High.
 	//
-	// - 3: medium.
+	// - 3: Medium.
 	//
-	// - 2: low.
+	// - 2: Low.
 	//
-	// - 1: informational.
+	// - 1: Informational.
 	//
 	// example:
 	//
@@ -257,12 +261,28 @@ func (s ListIncidentsResponseBodyIncidents) GoString() string {
 	return s.String()
 }
 
+func (s *ListIncidentsResponseBodyIncidents) GetAlertInfos() *string {
+	return s.AlertInfos
+}
+
+func (s *ListIncidentsResponseBodyIncidents) GetAttckTactics() *string {
+	return s.AttckTactics
+}
+
 func (s *ListIncidentsResponseBodyIncidents) GetCreateTime() *int64 {
 	return s.CreateTime
 }
 
 func (s *ListIncidentsResponseBodyIncidents) GetDetectionRuleId() *string {
 	return s.DetectionRuleId
+}
+
+func (s *ListIncidentsResponseBodyIncidents) GetEntityInfos() *string {
+	return s.EntityInfos
+}
+
+func (s *ListIncidentsResponseBodyIncidents) GetIncidentDescription() *string {
+	return s.IncidentDescription
 }
 
 func (s *ListIncidentsResponseBodyIncidents) GetIncidentName() *string {
@@ -309,6 +329,16 @@ func (s *ListIncidentsResponseBodyIncidents) GetUpdateTime() *int64 {
 	return s.UpdateTime
 }
 
+func (s *ListIncidentsResponseBodyIncidents) SetAlertInfos(v string) *ListIncidentsResponseBodyIncidents {
+	s.AlertInfos = &v
+	return s
+}
+
+func (s *ListIncidentsResponseBodyIncidents) SetAttckTactics(v string) *ListIncidentsResponseBodyIncidents {
+	s.AttckTactics = &v
+	return s
+}
+
 func (s *ListIncidentsResponseBodyIncidents) SetCreateTime(v int64) *ListIncidentsResponseBodyIncidents {
 	s.CreateTime = &v
 	return s
@@ -316,6 +346,16 @@ func (s *ListIncidentsResponseBodyIncidents) SetCreateTime(v int64) *ListInciden
 
 func (s *ListIncidentsResponseBodyIncidents) SetDetectionRuleId(v string) *ListIncidentsResponseBodyIncidents {
 	s.DetectionRuleId = &v
+	return s
+}
+
+func (s *ListIncidentsResponseBodyIncidents) SetEntityInfos(v string) *ListIncidentsResponseBodyIncidents {
+	s.EntityInfos = &v
+	return s
+}
+
+func (s *ListIncidentsResponseBodyIncidents) SetIncidentDescription(v string) *ListIncidentsResponseBodyIncidents {
+	s.IncidentDescription = &v
 	return s
 }
 
