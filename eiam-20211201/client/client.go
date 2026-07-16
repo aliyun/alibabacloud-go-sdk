@@ -14254,7 +14254,7 @@ func (client *Client) ListApplicationTokens(request *ListApplicationTokensReques
 
 // Summary:
 //
-// Performs a paged query to retrieve information about one or more EIAM applications with paging.
+// Queries information about one or more EIAM applications by using paged query. Paging is supported.
 //
 // @param request - ListApplicationsRequest
 //
@@ -14283,6 +14283,10 @@ func (client *Client) ListApplicationsWithOptions(request *ListApplicationsReque
 
 	if !dara.IsNil(request.ApplicationName) {
 		query["ApplicationName"] = request.ApplicationName
+	}
+
+	if !dara.IsNil(request.ApplicationTemplateId) {
+		query["ApplicationTemplateId"] = request.ApplicationTemplateId
 	}
 
 	if !dara.IsNil(request.AuthorizationType) {
@@ -14354,7 +14358,7 @@ func (client *Client) ListApplicationsWithOptions(request *ListApplicationsReque
 
 // Summary:
 //
-// Performs a paged query to retrieve information about one or more EIAM applications with paging.
+// Queries information about one or more EIAM applications by using paged query. Paging is supported.
 //
 // @param request - ListApplicationsRequest
 //

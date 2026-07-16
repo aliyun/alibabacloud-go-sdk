@@ -129,7 +129,7 @@ type ListApplicationsResponseBodyApplications struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// The time when the application was created, in UNIX timestamp format. Unit: milliseconds.
+	// The application creation time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -203,7 +203,7 @@ type ListApplicationsResponseBodyApplications struct {
 	//
 	// true
 	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
-	// The single sign-on (SSO) logon protocol. Valid values:
+	// The single sign-on protocol. Valid values:
 	//
 	// - saml2: SAML 2.0 protocol.
 	//

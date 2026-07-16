@@ -17,6 +17,8 @@ type iListApplicationsRequest interface {
 	GetApplicationIds() []*string
 	SetApplicationName(v string) *ListApplicationsRequest
 	GetApplicationName() *string
+	SetApplicationTemplateId(v string) *ListApplicationsRequest
+	GetApplicationTemplateId() *string
 	SetAuthorizationType(v string) *ListApplicationsRequest
 	GetAuthorizationType() *string
 	SetCustomFields(v []*ListApplicationsRequestCustomFields) *ListApplicationsRequest
@@ -65,7 +67,8 @@ type ListApplicationsRequest struct {
 	// example:
 	//
 	// Ram Account SSO
-	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	ApplicationName       *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	ApplicationTemplateId *string `json:"ApplicationTemplateId,omitempty" xml:"ApplicationTemplateId,omitempty"`
 	// The application access authorization type. Valid values:
 	//
 	// - authorize_required: Explicit authorization is required for access.
@@ -154,6 +157,10 @@ func (s *ListApplicationsRequest) GetApplicationName() *string {
 	return s.ApplicationName
 }
 
+func (s *ListApplicationsRequest) GetApplicationTemplateId() *string {
+	return s.ApplicationTemplateId
+}
+
 func (s *ListApplicationsRequest) GetAuthorizationType() *string {
 	return s.AuthorizationType
 }
@@ -215,6 +222,11 @@ func (s *ListApplicationsRequest) SetApplicationIds(v []*string) *ListApplicatio
 
 func (s *ListApplicationsRequest) SetApplicationName(v string) *ListApplicationsRequest {
 	s.ApplicationName = &v
+	return s
+}
+
+func (s *ListApplicationsRequest) SetApplicationTemplateId(v string) *ListApplicationsRequest {
+	s.ApplicationTemplateId = &v
 	return s
 }
 
