@@ -22,10 +22,22 @@ type iEstimatedPriceQueryV2ResponseBody interface {
 }
 
 type EstimatedPriceQueryV2ResponseBody struct {
+  // example:
+  // 
+  // 0
   Code *int32 `json:"code,omitempty" xml:"code,omitempty"`
   Module []*EstimatedPriceQueryV2ResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
+  // example:
+  // 
+  // A5009956-1077-52FB-B520-EA8C7E91D722
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+  // example:
+  // 
+  // true
   Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+  // example:
+  // 
+  // 210bcc3a16583004579056128d33d7
   TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
@@ -96,8 +108,14 @@ func (s *EstimatedPriceQueryV2ResponseBody) Validate() error {
 }
 
 type EstimatedPriceQueryV2ResponseBodyModule struct {
+  // example:
+  // 
+  // flight
   BizType *string `json:"biz_type,omitempty" xml:"biz_type,omitempty"`
   PriceMap map[string]*ModulePriceMapValue `json:"price_map,omitempty" xml:"price_map,omitempty"`
+  // example:
+  // 
+  // 经济舱
   Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 

@@ -16,7 +16,13 @@ type iModulePriceMapValue interface {
 }
 
 type ModulePriceMapValue struct {
-	Price     *int64  `json:"price,omitempty" xml:"price,omitempty"`
+	// example:
+	//
+	// 10000
+	Price *int64 `json:"price,omitempty" xml:"price,omitempty"`
+	// example:
+	//
+	// MU1234
 	ServiceNo *string `json:"service_no,omitempty" xml:"service_no,omitempty"`
 }
 

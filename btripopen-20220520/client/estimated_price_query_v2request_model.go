@@ -25,15 +25,38 @@ type iEstimatedPriceQueryV2Request interface {
 
 type EstimatedPriceQueryV2Request struct {
   // This parameter is required.
+  // 
+  // example:
+  // 
+  // flight
   BizType *string `json:"biz_type,omitempty" xml:"biz_type,omitempty"`
   // This parameter is required.
+  // 
+  // example:
+  // 
+  // 2000-01-01
   DepartDate *string `json:"depart_date,omitempty" xml:"depart_date,omitempty"`
   // This parameter is required.
+  // 
+  // example:
+  // 
+  // 杭州
   FromCity *string `json:"from_city,omitempty" xml:"from_city,omitempty"`
   // This parameter is required.
+  // 
+  // example:
+  // 
+  // 2000-01-01
   LeaveDate *string `json:"leave_date,omitempty" xml:"leave_date,omitempty"`
   // This parameter is required.
+  // 
+  // example:
+  // 
+  // 北京
   ToCity *string `json:"to_city,omitempty" xml:"to_city,omitempty"`
+  // example:
+  // 
+  // Fei123
   UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 

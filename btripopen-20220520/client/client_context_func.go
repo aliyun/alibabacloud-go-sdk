@@ -2512,7 +2512,15 @@ func (client *Client) CarOrderQueryWithContext(ctx context.Context, request *Car
 
 // Summary:
 //
-// 查询企业用车场景
+// Queries enterprise car service scenario templates.
+//
+// Description:
+//
+// Queries enterprise car service scenario templates.
+//
+// 1. To use this operation, enable business management permissions in your application. For the permission application process, see [API permission application process](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435).
+//
+// 2. To use this operation, include the enterprise access credential (x-acs-btrip-corp-token) in the request header. For information about how to obtain the enterprise access credential, see [Enterprise access credential](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985).
 //
 // @param headers - CarSceneQueryHeaders
 //
@@ -4488,6 +4496,16 @@ func (client *Client) EstimatedPriceQueryWithContext(ctx context.Context, reques
 // Summary:
 //
 // 预估价格查询v2.0
+//
+// Description:
+//
+// 使用该接口可以查询预估价格。
+//
+// 增值接口需特殊审批，提交权限前请先和商旅客户运营沟通确认。
+//
+// 使用该接口需要在应用中开通增值服务数据权限，具体的数据权限申请流程请查看接口权限申请流程接口权限申请流程。
+//
+// 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看企业访问凭证企业访问凭证。
 //
 // @param request - EstimatedPriceQueryV2Request
 //
@@ -11887,6 +11905,104 @@ func (client *Client) IntlFlightReShopConsultWithContext(ctx context.Context, re
 
 // Summary:
 //
+// 国际机票改签生单
+//
+// @param tmpReq - IntlFlightReShopCreateRequest
+//
+// @param headers - IntlFlightReShopCreateHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return IntlFlightReShopCreateResponse
+func (client *Client) IntlFlightReShopCreateWithContext(ctx context.Context, tmpReq *IntlFlightReShopCreateRequest, headers *IntlFlightReShopCreateHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightReShopCreateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &IntlFlightReShopCreateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SelectedPassengers) {
+		request.SelectedPassengersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SelectedPassengers, dara.String("selected_passengers"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AsyncApplyKey) {
+		body["async_apply_key"] = request.AsyncApplyKey
+	}
+
+	if !dara.IsNil(request.AsyncApplyMode) {
+		body["async_apply_mode"] = request.AsyncApplyMode
+	}
+
+	if !dara.IsNil(request.OrderId) {
+		body["order_id"] = request.OrderId
+	}
+
+	if !dara.IsNil(request.OtaItemId) {
+		body["ota_item_id"] = request.OtaItemId
+	}
+
+	if !dara.IsNil(request.OutOrderId) {
+		body["out_order_id"] = request.OutOrderId
+	}
+
+	if !dara.IsNil(request.OutReShopApplyId) {
+		body["out_re_shop_apply_id"] = request.OutReShopApplyId
+	}
+
+	if !dara.IsNil(request.PassengerJourneyGroupKey) {
+		body["passenger_journey_group_key"] = request.PassengerJourneyGroupKey
+	}
+
+	if !dara.IsNil(request.ReShopReasonCode) {
+		body["re_shop_reason_code"] = request.ReShopReasonCode
+	}
+
+	if !dara.IsNil(request.SelectedPassengersShrink) {
+		body["selected_passengers"] = request.SelectedPassengersShrink
+	}
+
+	if !dara.IsNil(request.TotalReShopFee) {
+		body["total_re_shop_fee"] = request.TotalReShopFee
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.XAcsBtripCorpToken) {
+		realHeaders["x-acs-btrip-corp-token"] = dara.String(dara.ToString(dara.StringValue(headers.XAcsBtripCorpToken)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("IntlFlightReShopCreate"),
+		Version:     dara.String("2022-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/intl-flight/v1/flights/action/reshop/create"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &IntlFlightReShopCreateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 国际机票改签详情
 //
 // @param request - IntlFlightReShopDetailRequest
@@ -11945,6 +12061,194 @@ func (client *Client) IntlFlightReShopDetailWithContext(ctx context.Context, req
 		BodyType:    dara.String("json"),
 	}
 	_result = &IntlFlightReShopDetailResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 国际机票改签航班列表查询
+//
+// @param tmpReq - IntlFlightReShopListSearchRequest
+//
+// @param headers - IntlFlightReShopListSearchHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return IntlFlightReShopListSearchResponse
+func (client *Client) IntlFlightReShopListSearchWithContext(ctx context.Context, tmpReq *IntlFlightReShopListSearchRequest, headers *IntlFlightReShopListSearchHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightReShopListSearchResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &IntlFlightReShopListSearchShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SearchJourneys) {
+		request.SearchJourneysShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SearchJourneys, dara.String("search_journeys"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SelectedPassengers) {
+		request.SelectedPassengersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SelectedPassengers, dara.String("selected_passengers"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OrderId) {
+		query["order_id"] = request.OrderId
+	}
+
+	if !dara.IsNil(request.OutOrderId) {
+		query["out_order_id"] = request.OutOrderId
+	}
+
+	if !dara.IsNil(request.OutWheelSearch) {
+		query["out_wheel_search"] = request.OutWheelSearch
+	}
+
+	if !dara.IsNil(request.PassengerJourneyGroupKey) {
+		query["passenger_journey_group_key"] = request.PassengerJourneyGroupKey
+	}
+
+	if !dara.IsNil(request.ReShopReasonCode) {
+		query["re_shop_reason_code"] = request.ReShopReasonCode
+	}
+
+	if !dara.IsNil(request.SearchJourneysShrink) {
+		query["search_journeys"] = request.SearchJourneysShrink
+	}
+
+	if !dara.IsNil(request.SelectedPassengersShrink) {
+		query["selected_passengers"] = request.SelectedPassengersShrink
+	}
+
+	if !dara.IsNil(request.Token) {
+		query["token"] = request.Token
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.XAcsBtripCorpToken) {
+		realHeaders["x-acs-btrip-corp-token"] = dara.String(dara.ToString(dara.StringValue(headers.XAcsBtripCorpToken)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("IntlFlightReShopListSearch"),
+		Version:     dara.String("2022-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/intl-flight/v1/flights/action/reshop/listSearch"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &IntlFlightReShopListSearchResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 国际机票改签航班报价
+//
+// @param tmpReq - IntlFlightReShopOtaSearchRequest
+//
+// @param headers - IntlFlightReShopOtaSearchHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return IntlFlightReShopOtaSearchResponse
+func (client *Client) IntlFlightReShopOtaSearchWithContext(ctx context.Context, tmpReq *IntlFlightReShopOtaSearchRequest, headers *IntlFlightReShopOtaSearchHeaders, runtime *dara.RuntimeOptions) (_result *IntlFlightReShopOtaSearchResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &IntlFlightReShopOtaSearchShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SearchJourneys) {
+		request.SearchJourneysShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SearchJourneys, dara.String("search_journeys"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SelectedPassengers) {
+		request.SelectedPassengersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SelectedPassengers, dara.String("selected_passengers"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OrderId) {
+		query["order_id"] = request.OrderId
+	}
+
+	if !dara.IsNil(request.OutOrderId) {
+		query["out_order_id"] = request.OutOrderId
+	}
+
+	if !dara.IsNil(request.OutWheelSearch) {
+		query["out_wheel_search"] = request.OutWheelSearch
+	}
+
+	if !dara.IsNil(request.PassengerJourneyGroupKey) {
+		query["passenger_journey_group_key"] = request.PassengerJourneyGroupKey
+	}
+
+	if !dara.IsNil(request.ReShopReasonCode) {
+		query["re_shop_reason_code"] = request.ReShopReasonCode
+	}
+
+	if !dara.IsNil(request.SearchJourneysShrink) {
+		query["search_journeys"] = request.SearchJourneysShrink
+	}
+
+	if !dara.IsNil(request.SelectedPassengersShrink) {
+		query["selected_passengers"] = request.SelectedPassengersShrink
+	}
+
+	if !dara.IsNil(request.Token) {
+		query["token"] = request.Token
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.XAcsBtripCorpToken) {
+		realHeaders["x-acs-btrip-corp-token"] = dara.String(dara.ToString(dara.StringValue(headers.XAcsBtripCorpToken)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("IntlFlightReShopOtaSearch"),
+		Version:     dara.String("2022-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/intl-flight/v1/flights/action/reshop/otaSerach"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &IntlFlightReShopOtaSearchResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

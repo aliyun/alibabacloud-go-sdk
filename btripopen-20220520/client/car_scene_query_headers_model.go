@@ -16,8 +16,13 @@ type iCarSceneQueryHeaders interface {
 }
 
 type CarSceneQueryHeaders struct {
-	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The header parameter obtained from the "Enterprise access credential" operation (added in the header). In HTTP mode, you can use socorptoken=value or dtbcorptoken=value in the URL as an alternative.
+	//
+	// example:
+	//
+	// feth00jqwis
+	XAcsBtripCorpToken *string `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
 }
 
 func (s CarSceneQueryHeaders) String() string {
