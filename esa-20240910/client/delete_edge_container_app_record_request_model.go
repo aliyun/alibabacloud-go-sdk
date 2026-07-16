@@ -34,7 +34,7 @@ type DeleteEdgeContainerAppRecordRequest struct {
 	//
 	// a.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	// The website ID.
+	// The site ID.
 	//
 	// example:
 	//

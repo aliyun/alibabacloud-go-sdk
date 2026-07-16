@@ -1,0 +1,46 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iGetCacheReserveRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetSiteId(v int64) *GetCacheReserveRequest
+	GetSiteId() *int64
+}
+
+type GetCacheReserveRequest struct {
+	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s GetCacheReserveRequest) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetCacheReserveRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCacheReserveRequest) GetSiteId() *int64 {
+	return s.SiteId
+}
+
+func (s *GetCacheReserveRequest) SetSiteId(v int64) *GetCacheReserveRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *GetCacheReserveRequest) Validate() error {
+	return dara.Validate(s)
+}

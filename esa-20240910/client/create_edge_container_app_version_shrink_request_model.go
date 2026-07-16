@@ -20,7 +20,7 @@ type iCreateEdgeContainerAppVersionShrinkRequest interface {
 }
 
 type CreateEdgeContainerAppVersionShrinkRequest struct {
-	// The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+	// The application ID. You can call the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation to obtain the application ID.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type CreateEdgeContainerAppVersionShrinkRequest struct {
 	//
 	// app-88068867578379****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The container group to be deployed for this version, which contains information about images.<br> The image data contains the image address, startup command, parameters, environment variables, and probe rules. You can specify one or more images. The parameter value is a JSON string.
+	// The container group to deploy for this version, including specific image information. The image information consists of the image address, startup commands, parameters, environment variables, and probe rules. Multiple images are supported. This parameter is a JSON array.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ type CreateEdgeContainerAppVersionShrinkRequest struct {
 	//
 	// ]
 	ContainersShrink *string `json:"Containers,omitempty" xml:"Containers,omitempty"`
-	// The version name, which must be 6 to 128 characters in length.
+	// The version name. The name must be **6 to 128*	- characters in length.
 	//
 	// This parameter is required.
 	//
@@ -78,7 +78,7 @@ type CreateEdgeContainerAppVersionShrinkRequest struct {
 	//
 	// verson1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The description of the version.
+	// The remarks.
 	//
 	// example:
 	//

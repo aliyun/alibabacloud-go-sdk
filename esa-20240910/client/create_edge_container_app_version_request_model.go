@@ -20,7 +20,7 @@ type iCreateEdgeContainerAppVersionRequest interface {
 }
 
 type CreateEdgeContainerAppVersionRequest struct {
-	// The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+	// The application ID. You can call the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation to obtain the application ID.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type CreateEdgeContainerAppVersionRequest struct {
 	//
 	// app-88068867578379****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The container group to be deployed for this version, which contains information about images.<br> The image data contains the image address, startup command, parameters, environment variables, and probe rules. You can specify one or more images. The parameter value is a JSON string.
+	// The container group to deploy for this version, including specific image information. The image information consists of the image address, startup commands, parameters, environment variables, and probe rules. Multiple images are supported. This parameter is a JSON array.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ type CreateEdgeContainerAppVersionRequest struct {
 	//
 	// ]
 	Containers []*CreateEdgeContainerAppVersionRequestContainers `json:"Containers,omitempty" xml:"Containers,omitempty" type:"Repeated"`
-	// The version name, which must be 6 to 128 characters in length.
+	// The version name. The name must be **6 to 128*	- characters in length.
 	//
 	// This parameter is required.
 	//
@@ -78,7 +78,7 @@ type CreateEdgeContainerAppVersionRequest struct {
 	//
 	// verson1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The description of the version.
+	// The remarks.
 	//
 	// example:
 	//
@@ -144,27 +144,27 @@ func (s *CreateEdgeContainerAppVersionRequest) Validate() error {
 }
 
 type CreateEdgeContainerAppVersionRequestContainers struct {
-	// The information about the Container Registry image.
+	// The ACR image information.
 	ACRImageInfo *CreateEdgeContainerAppVersionRequestContainersACRImageInfo `json:"ACRImageInfo,omitempty" xml:"ACRImageInfo,omitempty" type:"Struct"`
-	// The arguments that are passed to the container startup command. Separate the parameters with spaces.
+	// The startup parameters. Separate multiple parameters with spaces.
 	//
 	// example:
 	//
 	// -a
 	Args *string `json:"Args,omitempty" xml:"Args,omitempty"`
-	// The command that is used to start the container. Separate the arguments with spaces.
+	// The startup command. Separate multiple commands with spaces.
 	//
 	// example:
 	//
 	// nginx
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	// The environment variables. Separate the environment variables with commas (,).
+	// The environment variables, in the format of key1=val1,key2=val2.
 	//
 	// example:
 	//
 	// VITE_APP_TITLE=My App
 	EnvVariables *string `json:"EnvVariables,omitempty" xml:"EnvVariables,omitempty"`
-	// The address of the image.
+	// The image address.
 	//
 	// This parameter is required.
 	//
@@ -172,7 +172,7 @@ type CreateEdgeContainerAppVersionRequestContainers struct {
 	//
 	// registry-vpc.cn-shenzhen.aliyuncs.com/lihe****h/ea****ts_serv****am:3.**
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// Specifies whether the image is a Container Registry image.
+	// Specifies whether the image is an Alibaba Cloud Container Registry (ACR) image.
 	//
 	// This parameter is required.
 	//
@@ -180,7 +180,7 @@ type CreateEdgeContainerAppVersionRequestContainers struct {
 	//
 	// false
 	IsACRImage *bool `json:"IsACRImage,omitempty" xml:"IsACRImage,omitempty"`
-	// The name of the container. The name must be unique in the same container group.
+	// The container name. The name must be unique within the same container group.
 	//
 	// This parameter is required.
 	//
@@ -188,19 +188,19 @@ type CreateEdgeContainerAppVersionRequestContainers struct {
 	//
 	// lxg-demo-er
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The command that is run before the container is started. Separate the arguments with spaces.
+	// The command to run before the container starts. Separate multiple commands with spaces. This command runs before the service starts and is typically used for initialization operations.
 	//
 	// example:
 	//
 	// sh poststart.sh "echo hello world"
 	PostStart *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
-	// The command that is run before the container is stopped. Separate the arguments with spaces.
+	// The command to run before the container stops. Separate multiple commands with spaces. This command runs before the service exits and is typically used for cleanup operations.
 	//
 	// example:
 	//
 	// sh prestop.sh "echo hello world"
 	PreStop *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
-	// The content of the container health probe.
+	// The container health probe content.
 	//
 	// This parameter is required.
 	//
@@ -208,13 +208,13 @@ type CreateEdgeContainerAppVersionRequestContainers struct {
 	//
 	// For details, see the definition of readiness probes in Kubernetes.
 	ProbeContent *CreateEdgeContainerAppVersionRequestContainersProbeContent `json:"ProbeContent,omitempty" xml:"ProbeContent,omitempty" type:"Struct"`
-	// The type of the probe. Valid values:
+	// The probe type. Valid values:
 	//
-	// - exec: the command type.
+	// - **exec**: command-based.
 	//
-	// - tcpSocket: the TCP probe type.
+	// - **tcpSocket**: TCP-based.
 	//
-	// - httpGet: the HTTP access type.
+	// - **httpGet**: HTTP-based.
 	//
 	// This parameter is required.
 	//
@@ -222,7 +222,7 @@ type CreateEdgeContainerAppVersionRequestContainers struct {
 	//
 	// exec
 	ProbeType *string `json:"ProbeType,omitempty" xml:"ProbeType,omitempty"`
-	// The compute specification of the container. Valid values: 1C2G, 2C4G, 2C8G, 4C8G, 4C16G, 8C16G, and 8C32G.
+	// The container specifications. This parameter specifies the computing specifications. Valid values: 1C2G, 2C4G, 2C8G, 4C8G, 4C16G, 8C16G, and 8C32G.
 	//
 	// This parameter is required.
 	//
@@ -380,55 +380,55 @@ func (s *CreateEdgeContainerAppVersionRequestContainers) Validate() error {
 }
 
 type CreateEdgeContainerAppVersionRequestContainersACRImageInfo struct {
-	// The domain name of the Container Registry image.
+	// The ACR image domain name.
 	//
 	// example:
 	//
 	// 1500.***.net
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The ID of the Container Registry instance.
+	// The ACR instance ID.
 	//
 	// example:
 	//
 	// xcdn-9axbo****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Specifies whether the image is an enterprise-level Container Registry image.
+	// Specifies whether the image is an enterprise-level image.
 	//
 	// example:
 	//
 	// false
 	IsEnterpriseRegistry *bool `json:"IsEnterpriseRegistry,omitempty" xml:"IsEnterpriseRegistry,omitempty"`
-	// The regions in which the Container Registry instance resides.
+	// The list of regions for the ACR instance.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the image repository.
+	// The repository ID of the image.
 	//
 	// example:
 	//
 	// crr-h1ghghu60ct****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	// The name of the image repository.
+	// The image repository name.
 	//
 	// example:
 	//
 	// test_71
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The namespace to which the image repository belongs.
+	// The namespace of the image repository.
 	//
 	// example:
 	//
 	// safeline
 	RepoNamespace *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
-	// The tag of the Container Registry image.
+	// The ACR image tag.
 	//
 	// example:
 	//
 	// 3.40.2
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The URL of the Container Registry image tag.
+	// The ACR image tag URL.
 	TagUrl *string `json:"TagUrl,omitempty" xml:"TagUrl,omitempty"`
 }
 
@@ -526,67 +526,67 @@ func (s *CreateEdgeContainerAppVersionRequestContainersACRImageInfo) Validate() 
 }
 
 type CreateEdgeContainerAppVersionRequestContainersProbeContent struct {
-	// The command of the exec type probe.
+	// The probe command for the exec probe type.
 	//
 	// example:
 	//
 	// echo ok
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	// The number of consecutive failed health checks required for a container to be considered as unhealthy.
+	// The number of consecutive failed health checks required.
 	//
 	// example:
 	//
 	// 3
 	FailureThreshold *int32 `json:"FailureThreshold,omitempty" xml:"FailureThreshold,omitempty"`
-	// The domain name that is used for health checks.
+	// The domain name for the health check.
 	//
 	// example:
 	//
 	// www.rewrite.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The request headers that are included in the container health check request.
+	// The HTTP request headers.
 	//
 	// example:
 	//
 	// [{\\"Content-Type\\":\\"application/json\\"}]
 	HttpHeaders *string `json:"HttpHeaders,omitempty" xml:"HttpHeaders,omitempty"`
-	// The latency for container probe initialization.
+	// The initial delay before the container probe starts, in seconds.
 	//
 	// example:
 	//
 	// 1
 	InitialDelaySeconds *int32 `json:"InitialDelaySeconds,omitempty" xml:"InitialDelaySeconds,omitempty"`
-	// The health check path.
+	// The path for the container health check.
 	//
 	// example:
 	//
 	// /
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The interval between container health checks.
+	// The interval between container health checks, in seconds.
 	//
 	// example:
 	//
 	// 1
 	PeriodSeconds *int32 `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
-	// The health check port.
+	// The port for the container health check.
 	//
 	// example:
 	//
 	// 9991
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The protocol that the container health check request uses.
+	// The request protocol for the health check.
 	//
 	// example:
 	//
 	// http
 	Scheme *string `json:"Scheme,omitempty" xml:"Scheme,omitempty"`
-	// The number of consecutive successful health checks required for a container to be considered as healthy.
+	// The number of consecutive successful health checks required.
 	//
 	// example:
 	//
 	// 1
 	SuccessThreshold *int32 `json:"SuccessThreshold,omitempty" xml:"SuccessThreshold,omitempty"`
-	// The timeout period of the container health check.
+	// The timeout period for the container health check, in seconds.
 	//
 	// example:
 	//

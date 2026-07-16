@@ -16,7 +16,7 @@ type iCreateEdgeContainerAppResponseBody interface {
 }
 
 type CreateEdgeContainerAppResponseBody struct {
-	// The ID of the application that is created.
+	// The ID of the created application.
 	//
 	// example:
 	//
