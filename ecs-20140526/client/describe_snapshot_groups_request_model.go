@@ -46,15 +46,15 @@ type DescribeSnapshotGroupsRequest struct {
 	//
 	// hide
 	AdditionalAttributes []*string `json:"AdditionalAttributes,omitempty" xml:"AdditionalAttributes,omitempty" type:"Repeated"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// i-j6ca469urv8ei629****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum number of entries per page.
+	// The maximum number of entries per page in a paging query.
 	//
-	// Valid values: 1 to 100.
+	// Maximum value: 100.
 	//
 	// Default value: 10.
 	//
@@ -68,7 +68,7 @@ type DescribeSnapshotGroupsRequest struct {
 	//
 	// testName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The token that determines the start point of the next query. Set the value to the NextToken value that is returned from the last call.
+	// The pagination token. Set this parameter to the NextToken value returned in the previous API call.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type DescribeSnapshotGroupsRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the snapshot-consistent group. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -92,25 +92,25 @@ type DescribeSnapshotGroupsRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of snapshot-consistent group N. Valid values of N: 1 to 10.
+	// The ID of the snapshot-consistent group. Valid values of N: 1 to 10.
 	//
 	// example:
 	//
 	// ssg-j6ciyh3k52qp7ovm****
 	SnapshotGroupId []*string `json:"SnapshotGroupId,omitempty" xml:"SnapshotGroupId,omitempty" type:"Repeated"`
-	// The state of snapshot-consistent group N. Valid values of the second N: 1, 2, and 3. Valid values:
+	// The status of the snapshot-consistent group. Valid values of N: 1 to 3. Valid values:
 	//
 	// - progressing: The snapshot-consistent group is being created.
 	//
 	// - accomplished: The snapshot-consistent group is created.
 	//
-	// - failed: The snapshot-consistent group fails to be created.
+	// - failed: The snapshot-consistent group failed to be created.
 	//
 	// example:
 	//
 	// accomplished
 	Status []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
-	// The tags of the snapshot-consistent group.
+	// The tag key-value pairs of the snapshot-consistent group.
 	Tag []*DescribeSnapshotGroupsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -262,13 +262,13 @@ func (s *DescribeSnapshotGroupsRequest) Validate() error {
 }
 
 type DescribeSnapshotGroupsRequestTag struct {
-	// The key of tag N of the snapshot-consistent group. Valid values of N: 1 to 20.
+	// The tag key of the snapshot-consistent group. Valid values of N: 1 to 20.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N of the snapshot-consistent group. Valid values of N: 1 to 20.
+	// The tag value of the snapshot-consistent group. Valid values of N: 1 to 20.
 	//
 	// example:
 	//

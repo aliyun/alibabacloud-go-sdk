@@ -195,6 +195,7 @@ type DescribeImagesResponseBodyImagesImage struct {
 	Status                  *string                                                  `json:"Status,omitempty" xml:"Status,omitempty"`
 	SupplierName            *string                                                  `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
 	Tags                    *DescribeImagesResponseBodyImagesImageTags               `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	Usable                  *bool                                                    `json:"Usable,omitempty" xml:"Usable,omitempty"`
 	Usage                   *string                                                  `json:"Usage,omitempty" xml:"Usage,omitempty"`
 }
 
@@ -332,6 +333,10 @@ func (s *DescribeImagesResponseBodyImagesImage) GetSupplierName() *string {
 
 func (s *DescribeImagesResponseBodyImagesImage) GetTags() *DescribeImagesResponseBodyImagesImageTags {
 	return s.Tags
+}
+
+func (s *DescribeImagesResponseBodyImagesImage) GetUsable() *bool {
+	return s.Usable
 }
 
 func (s *DescribeImagesResponseBodyImagesImage) GetUsage() *string {
@@ -495,6 +500,11 @@ func (s *DescribeImagesResponseBodyImagesImage) SetSupplierName(v string) *Descr
 
 func (s *DescribeImagesResponseBodyImagesImage) SetTags(v *DescribeImagesResponseBodyImagesImageTags) *DescribeImagesResponseBodyImagesImage {
 	s.Tags = v
+	return s
+}
+
+func (s *DescribeImagesResponseBodyImagesImage) SetUsable(v bool) *DescribeImagesResponseBodyImagesImage {
+	s.Usable = &v
 	return s
 }
 

@@ -19,7 +19,7 @@ type iDescribeDiskDefaultKMSKeyIdRequest interface {
 
 type DescribeDiskDefaultKMSKeyIdRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/2679950.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//

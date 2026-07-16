@@ -16,7 +16,7 @@ type iDescribeDiskDefaultKMSKeyIdResponseBody interface {
 }
 
 type DescribeDiskDefaultKMSKeyIdResponseBody struct {
-	// The ID of the KMS key.
+	// The KMS key ID.
 	//
 	// example:
 	//

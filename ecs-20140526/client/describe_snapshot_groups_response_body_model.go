@@ -18,15 +18,15 @@ type iDescribeSnapshotGroupsResponseBody interface {
 }
 
 type DescribeSnapshotGroupsResponseBody struct {
-	// The token used to start the next query.
+	// The pagination token for the next query.
 	//
-	// > If the return value is empty, no more data exists.
+	// > If this parameter is empty, no more results are available.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

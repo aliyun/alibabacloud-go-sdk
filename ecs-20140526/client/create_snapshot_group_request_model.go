@@ -44,31 +44,31 @@ type iCreateSnapshotGroupRequest interface {
 }
 
 type CreateSnapshotGroupRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The description of the snapshot-consistent group. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	// The description. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// This is description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The IDs of the cloud disks for which you want to create a snapshot-consistent group. You can specify the IDs of cloud disks that are attached to multiple instances within the same zone. Valid values of N: 1 to 16. A snapshot-consistent group can contain snapshots of up to 16 cloud disks whose total disk size does not exceed 32 TiB.
+	// The ID of a disk for which you want to create a snapshot-consistent group. You can specify disk IDs across instances within the same zone. Valid values of N: 1 to 16. A snapshot-consistent group can contain up to 16 disks with a total capacity of up to 32 TiB.
 	//
-	// Take note of the following:
+	// Take note of the following items:
 	//
-	// - You cannot specify both the DiskId.N and `ExcludeDiskId.N` parameters in the same request.
+	// - This parameter cannot be specified together with `ExcludeDiskId.N`.
 	//
-	// - If you specify `InstanceId`, you can specify the IDs of cloud disks that are attached only to the specified instance. You cannot specify the IDs of cloud disks that are attached to multiple instances.
+	// - If you specify `InstanceId`, this parameter can only be set to disks attached to the specified instance and no longer supports specifying disk IDs across multiple instances.
 	DiskId []*string `json:"DiskId,omitempty" xml:"DiskId,omitempty" type:"Repeated"`
-	// The IDs of the cloud disks for which you do not want to create snapshots. After you specify the IDs of cloud disks, the snapshot-consistent group that you create does not contain the snapshots of the specified cloud disks. Valid values of N: 1 to 16.
+	// The ID of a disk in the instance for which you do not want to create a snapshot. After you specify this parameter, the snapshot-consistent group does not contain the snapshot of the specified disk. Valid values of N: 1 to 16.
 	//
-	// This parameter is empty by default, which indicates that snapshots are created for all disks of the instance.
+	// Default value: null, which indicates that snapshots are created for all disks in the instance.
 	//
-	// > This parameter cannot be set at the same time as the `DiskId.N`.
+	// > This parameter cannot be specified together with `DiskId.N`.
 	//
 	// example:
 	//
@@ -80,33 +80,33 @@ type CreateSnapshotGroupRequest struct {
 	//
 	// i-j6ca469urv8ei629****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Specifies whether to enable the instant access feature. Valid values:
+	// Specifies whether to enable snapshot instant access. Valid values:
 	//
-	// - true
+	// - true: enables snapshot instant access.
 	//
-	// - false
+	// - false: disables snapshot instant access.
 	//
 	// Default value: false.
 	//
-	// > This parameter is no longer used. By default, new standard snapshots of ESSDs are upgraded to instant access snapshots free of charge without the need for additional configurations. For more information, see [Use the instant access feature](https://help.aliyun.com/document_detail/193667.html).
+	// >This parameter is deprecated. Standard snapshots of enterprise SSDs are upgraded to [instant access by default](https://help.aliyun.com/document_detail/193667.html). No additional configuration or fees are required.
 	//
 	// example:
 	//
 	// false
 	InstantAccess *bool `json:"InstantAccess,omitempty" xml:"InstantAccess,omitempty"`
-	// The number of days for which the instant access feature is available. Unit: days. Valid values: 1 to 65535.
+	// The number of days for which the snapshot instant access feature remains active. Unit: days. Valid values: 1 to 65535.
 	//
-	// This parameter takes effect only when `InstantAccess` is set to true. The instant access feature is automatically disabled when the specified duration ends.
+	// This parameter takes effect only when `InstantAccess=true`. The snapshot instant access feature is automatically shutdown when the specified duration expires.
 	//
-	// This parameter is left empty by default, which indicates that the instant access feature is automatically disabled when the instant access snapshots are released.
+	// Default value: null, which indicates that the instant access duration is the same as the snapshot release period.
 	//
-	// > This parameter is no longer used. By default, new standard snapshots of ESSDs are upgraded to instant access snapshots free of charge without the need for additional configurations. For more information, see [Use the instant access feature](https://help.aliyun.com/document_detail/193667.html).
+	// >This parameter is deprecated. Standard snapshots of enterprise SSDs are upgraded to [instant access by default](https://help.aliyun.com/document_detail/193667.html). No additional configuration or fees are required.
 	//
 	// example:
 	//
 	// 1
 	InstantAccessRetentionDays *int32 `json:"InstantAccessRetentionDays,omitempty" xml:"InstantAccessRetentionDays,omitempty"`
-	// The name of the snapshot-consistent group. The name must be 2 to 128 characters in length. The name can contain letters, digits, periods (.), underscores (_), hyphens (-), and colons (:). It must start with a letter and cannot start with `http://` or `https://`.
+	// The name of the snapshot-consistent group. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. The name can contain digits, periods (.), underscores (_), hyphens (-), and colons (:).
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type CreateSnapshotGroupRequest struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent list of regions.
+	// The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -130,13 +130,13 @@ type CreateSnapshotGroupRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// > This parameter is unavailable for public use.
+	// >This parameter is not publicly available.
 	//
 	// example:
 	//
 	// null
 	StorageLocationArn *string `json:"StorageLocationArn,omitempty" xml:"StorageLocationArn,omitempty"`
-	// The list of tags.
+	// The tags.
 	Tag []*CreateSnapshotGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -306,13 +306,13 @@ func (s *CreateSnapshotGroupRequest) Validate() error {
 }
 
 type CreateSnapshotGroupRequestTag struct {
-	// The key of tag N of the snapshot-consistent group. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The tag key of the snapshot-consistent group. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N of the snapshot-consistent group. Valid values of N: 1 to 20. The tag value can be an empty string. It can be up to 128 characters in length and cannot start with `acs:`. It cannot contain `http://` or `https://`.
+	// The tag value of the snapshot-consistent group. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`. The tag value cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
