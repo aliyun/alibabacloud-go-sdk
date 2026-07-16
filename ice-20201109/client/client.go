@@ -25720,6 +25720,96 @@ func (client *Client) SubmitCopyrightJob(request *SubmitCopyrightJobRequest) (_r
 
 // Summary:
 //
+// Submits a CosyVoice voice cloning training task.
+//
+// Description:
+//
+// - During training, you can call the [GetCustomizedVoiceJob](https://help.aliyun.com/document_detail/2384473.html) operation to check whether the current task is complete and to obtain the training status.
+//
+// - This is an [asynchronous operation](https://help.aliyun.com/document_detail/3027141.html). After you submit the task, a task ID is returned. The task is not yet complete at this point and enters a background queue for asynchronous execution. The final result is sent through a callback notification. You can also call the [GetCustomizedVoiceJob](https://help.aliyun.com/document_detail/2384473.html) operation to query the task status.
+//
+// @param request - SubmitCosyVoiceCustomizedVoiceJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitCosyVoiceCustomizedVoiceJobResponse
+func (client *Client) SubmitCosyVoiceCustomizedVoiceJobWithOptions(request *SubmitCosyVoiceCustomizedVoiceJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitCosyVoiceCustomizedVoiceJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Audios) {
+		query["Audios"] = request.Audios
+	}
+
+	if !dara.IsNil(request.DemoAudioMediaURL) {
+		query["DemoAudioMediaURL"] = request.DemoAudioMediaURL
+	}
+
+	if !dara.IsNil(request.Gender) {
+		query["Gender"] = request.Gender
+	}
+
+	if !dara.IsNil(request.Model) {
+		query["Model"] = request.Model
+	}
+
+	if !dara.IsNil(request.VoiceName) {
+		query["VoiceName"] = request.VoiceName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitCosyVoiceCustomizedVoiceJob"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitCosyVoiceCustomizedVoiceJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits a CosyVoice voice cloning training task.
+//
+// Description:
+//
+// - During training, you can call the [GetCustomizedVoiceJob](https://help.aliyun.com/document_detail/2384473.html) operation to check whether the current task is complete and to obtain the training status.
+//
+// - This is an [asynchronous operation](https://help.aliyun.com/document_detail/3027141.html). After you submit the task, a task ID is returned. The task is not yet complete at this point and enters a background queue for asynchronous execution. The final result is sent through a callback notification. You can also call the [GetCustomizedVoiceJob](https://help.aliyun.com/document_detail/2384473.html) operation to query the task status.
+//
+// @param request - SubmitCosyVoiceCustomizedVoiceJobRequest
+//
+// @return SubmitCosyVoiceCustomizedVoiceJobResponse
+func (client *Client) SubmitCosyVoiceCustomizedVoiceJob(request *SubmitCosyVoiceCustomizedVoiceJobRequest) (_result *SubmitCosyVoiceCustomizedVoiceJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SubmitCosyVoiceCustomizedVoiceJobResponse{}
+	_body, _err := client.SubmitCosyVoiceCustomizedVoiceJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Submits a basic voice cloning job.
 //
 // Description:
