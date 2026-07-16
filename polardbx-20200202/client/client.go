@@ -2095,6 +2095,10 @@ func (client *Client) CreatePolardbxSupabaseInstanceWithOptions(request *CreateP
 		query["DbPassword"] = request.DbPassword
 	}
 
+	if !dara.IsNil(request.NodeSpec) {
+		query["NodeSpec"] = request.NodeSpec
+	}
+
 	if !dara.IsNil(request.PayType) {
 		query["PayType"] = request.PayType
 	}
@@ -2377,6 +2381,84 @@ func (client *Client) CreateSQLEvaluateTask(request *CreateSQLEvaluateTaskReques
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateSQLEvaluateTaskResponse{}
 	_body, _err := client.CreateSQLEvaluateTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a service account.
+//
+// Description:
+//
+// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html).
+//
+// @param request - CreateServiceAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateServiceAccountResponse
+func (client *Client) CreateServiceAccountWithOptions(request *CreateServiceAccountRequest, runtime *dara.RuntimeOptions) (_result *CreateServiceAccountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ServiceAccountType) {
+		query["ServiceAccountType"] = request.ServiceAccountType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateServiceAccount"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateServiceAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a service account.
+//
+// Description:
+//
+// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html).
+//
+// @param request - CreateServiceAccountRequest
+//
+// @return CreateServiceAccountResponse
+func (client *Client) CreateServiceAccount(request *CreateServiceAccountRequest) (_result *CreateServiceAccountResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateServiceAccountResponse{}
+	_body, _err := client.CreateServiceAccountWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3419,6 +3501,84 @@ func (client *Client) DeletePolardbxSupabaseInstance(request *DeletePolardbxSupa
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeletePolardbxSupabaseInstanceResponse{}
 	_body, _err := client.DeletePolardbxSupabaseInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a service account.
+//
+// Description:
+//
+// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html).
+//
+// @param request - DeleteServiceAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteServiceAccountResponse
+func (client *Client) DeleteServiceAccountWithOptions(request *DeleteServiceAccountRequest, runtime *dara.RuntimeOptions) (_result *DeleteServiceAccountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ServiceAccountType) {
+		query["ServiceAccountType"] = request.ServiceAccountType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteServiceAccount"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteServiceAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a service account.
+//
+// Description:
+//
+// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html).
+//
+// @param request - DeleteServiceAccountRequest
+//
+// @return DeleteServiceAccountResponse
+func (client *Client) DeleteServiceAccount(request *DeleteServiceAccountRequest) (_result *DeleteServiceAccountResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteServiceAccountResponse{}
+	_body, _err := client.DeleteServiceAccountWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7293,6 +7453,80 @@ func (client *Client) DescribeSecurityIps(request *DescribeSecurityIpsRequest) (
 
 // Summary:
 //
+// Queries the status of a service account.
+//
+// Description:
+//
+// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html).
+//
+// @param request - DescribeServiceAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeServiceAccountResponse
+func (client *Client) DescribeServiceAccountWithOptions(request *DescribeServiceAccountRequest, runtime *dara.RuntimeOptions) (_result *DescribeServiceAccountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeServiceAccount"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeServiceAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the status of a service account.
+//
+// Description:
+//
+// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html).
+//
+// @param request - DescribeServiceAccountRequest
+//
+// @return DescribeServiceAccountResponse
+func (client *Client) DescribeServiceAccount(request *DescribeServiceAccountRequest) (_result *DescribeServiceAccountResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeServiceAccountResponse{}
+	_body, _err := client.DescribeServiceAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the storage usage details of an instance, including the total capacity, used space, remaining space, and other information.
 //
 // @param request - DescribeShowStorageInfoRequest
@@ -8712,6 +8946,88 @@ func (client *Client) EnableSqlAudit(request *EnableSqlAuditRequest) (_result *E
 	runtime := &dara.RuntimeOptions{}
 	_result = &EnableSqlAuditResponse{}
 	_body, _err := client.EnableSqlAuditWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Executes a metadata query.
+//
+// Description:
+//
+// Deletes a custom endpoint of a specified database instance and disables access through the domain name.
+//
+// @param request - ExecuteMetaQueryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteMetaQueryResponse
+func (client *Client) ExecuteMetaQueryWithOptions(request *ExecuteMetaQueryRequest, runtime *dara.RuntimeOptions) (_result *ExecuteMetaQueryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Sql) {
+		query["Sql"] = request.Sql
+	}
+
+	if !dara.IsNil(request.StorageInstId) {
+		query["StorageInstId"] = request.StorageInstId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ExecuteMetaQuery"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ExecuteMetaQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Executes a metadata query.
+//
+// Description:
+//
+// Deletes a custom endpoint of a specified database instance and disables access through the domain name.
+//
+// @param request - ExecuteMetaQueryRequest
+//
+// @return ExecuteMetaQueryResponse
+func (client *Client) ExecuteMetaQuery(request *ExecuteMetaQueryRequest) (_result *ExecuteMetaQueryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ExecuteMetaQueryResponse{}
+	_body, _err := client.ExecuteMetaQueryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

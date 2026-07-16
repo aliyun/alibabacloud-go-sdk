@@ -19,6 +19,8 @@ type iCreatePolardbxSupabaseInstanceRequest interface {
 	GetDbInstanceDescription() *string
 	SetDbPassword(v string) *CreatePolardbxSupabaseInstanceRequest
 	GetDbPassword() *string
+	SetNodeSpec(v string) *CreatePolardbxSupabaseInstanceRequest
+	GetNodeSpec() *string
 	SetPayType(v string) *CreatePolardbxSupabaseInstanceRequest
 	GetPayType() *string
 	SetPeriod(v string) *CreatePolardbxSupabaseInstanceRequest
@@ -74,6 +76,12 @@ type CreatePolardbxSupabaseInstanceRequest struct {
 	//
 	// dTyMQem0o3HOAFh!
 	DbPassword *string `json:"DbPassword,omitempty" xml:"DbPassword,omitempty"`
+	// The node specifications.
+	//
+	// example:
+	//
+	// polarx.supabase.x2.small
+	NodeSpec *string `json:"NodeSpec,omitempty" xml:"NodeSpec,omitempty"`
 	// The billing type. Valid values:
 	//
 	// - PREPAY: subscription.
@@ -178,6 +186,10 @@ func (s *CreatePolardbxSupabaseInstanceRequest) GetDbPassword() *string {
 	return s.DbPassword
 }
 
+func (s *CreatePolardbxSupabaseInstanceRequest) GetNodeSpec() *string {
+	return s.NodeSpec
+}
+
 func (s *CreatePolardbxSupabaseInstanceRequest) GetPayType() *string {
 	return s.PayType
 }
@@ -236,6 +248,11 @@ func (s *CreatePolardbxSupabaseInstanceRequest) SetDbInstanceDescription(v strin
 
 func (s *CreatePolardbxSupabaseInstanceRequest) SetDbPassword(v string) *CreatePolardbxSupabaseInstanceRequest {
 	s.DbPassword = &v
+	return s
+}
+
+func (s *CreatePolardbxSupabaseInstanceRequest) SetNodeSpec(v string) *CreatePolardbxSupabaseInstanceRequest {
+	s.NodeSpec = &v
 	return s
 }
 

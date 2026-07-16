@@ -104,7 +104,7 @@ type CreatePolardbxSupabaseInstanceResponseBodyAccessDeniedDetail struct {
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The encoded diagnostic information.
+	// The encoded diagnostic message.
 	//
 	// example:
 	//
