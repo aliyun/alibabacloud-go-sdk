@@ -34,7 +34,7 @@ type iCreateHighlightTaskShrinkRequest interface {
 }
 
 type CreateHighlightTaskShrinkRequest struct {
-	// The China authorization configuration. **Leave this parameter empty unless you have specific requirements.**.
+	// The China authorization configuration. **Leave this parameter empty unless you have specific requirements.**
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	// The editing configuration.
 	EditShrink *string `json:"Edit,omitempty" xml:"Edit,omitempty"`
@@ -82,7 +82,7 @@ type CreateHighlightTaskShrinkRequest struct {
 	//
 	// - Concat: video composition.
 	//
-	// - Compose: one-click video creation.
+	// - Compose: one-click video production.
 	//
 	// This parameter is required.
 	//
@@ -90,7 +90,7 @@ type CreateHighlightTaskShrinkRequest struct {
 	//
 	// Retrieval
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The custom user data, which is returned in asynchronous message notifications.
+	// The custom information, which is returned in asynchronous message notifications.
 	//
 	// example:
 	//

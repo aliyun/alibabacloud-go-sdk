@@ -34,7 +34,7 @@ type iCreateHighlightTaskRequest interface {
 }
 
 type CreateHighlightTaskRequest struct {
-	// The China authorization configuration. **Leave this parameter empty unless you have specific requirements.**.
+	// The China authorization configuration. **Leave this parameter empty unless you have specific requirements.**
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	// The editing configuration.
 	Edit *CreateHighlightTaskRequestEdit `json:"Edit,omitempty" xml:"Edit,omitempty" type:"Struct"`
@@ -82,7 +82,7 @@ type CreateHighlightTaskRequest struct {
 	//
 	// - Concat: video composition.
 	//
-	// - Compose: one-click video creation.
+	// - Compose: one-click video production.
 	//
 	// This parameter is required.
 	//
@@ -90,7 +90,7 @@ type CreateHighlightTaskRequest struct {
 	//
 	// Retrieval
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The custom user data, which is returned in asynchronous message notifications.
+	// The custom information, which is returned in asynchronous message notifications.
 	//
 	// example:
 	//
@@ -256,9 +256,9 @@ type CreateHighlightTaskRequestEdit struct {
 	//
 	// Closed
 	BackgroundMusicMode *string `json:"BackgroundMusicMode,omitempty" xml:"BackgroundMusicMode,omitempty"`
-	// The background music tracks. This parameter takes effect when BackgroundMusicMode is set to Random or Sequential.
+	// The background music list. This parameter takes effect only when BackgroundMusicMode is set to Random or Sequential.
 	//
-	// **The maximum number is 1.**.
+	// **The maximum number is 1.**
 	BackgroundMusics []*CreateHighlightTaskRequestEditBackgroundMusics `json:"BackgroundMusics,omitempty" xml:"BackgroundMusics,omitempty" type:"Repeated"`
 	// The editing mode. Valid values:
 	//
@@ -286,7 +286,7 @@ type CreateHighlightTaskRequestEdit struct {
 	TransitionMode *string `json:"TransitionMode,omitempty" xml:"TransitionMode,omitempty"`
 	// The transition effects.
 	//
-	// This parameter takes effect when TransitionMode is set to Random or Sequential.
+	// This parameter takes effect only when TransitionMode is set to Random or Sequential.
 	//
 	// A maximum of 10 transitions are supported.
 	Transitions []*CreateHighlightTaskRequestEditTransitions `json:"Transitions,omitempty" xml:"Transitions,omitempty" type:"Repeated"`
@@ -304,7 +304,7 @@ type CreateHighlightTaskRequestEdit struct {
 	//
 	// Closed
 	VfxEffectMode *string `json:"VfxEffectMode,omitempty" xml:"VfxEffectMode,omitempty"`
-	// The visual effects. This parameter takes effect when VfxEffectMode is set to Random or Sequential.
+	// The visual effects. This parameter takes effect only when VfxEffectMode is set to Random or Sequential.
 	//
 	// A maximum of 10 effects are supported.
 	VfxEffects []*CreateHighlightTaskRequestEditVfxEffects `json:"VfxEffects,omitempty" xml:"VfxEffects,omitempty" type:"Repeated"`
@@ -460,7 +460,7 @@ func (s *CreateHighlightTaskRequestEditBackgroundMusics) Validate() error {
 }
 
 type CreateHighlightTaskRequestEditTransitions struct {
-	// The transition duration. Unit: seconds. If the transition duration is greater than the clip duration minus 1, the transition effect on that clip does not take effect.
+	// The transition duration. Unit: seconds. If the transition duration is greater than the segment duration minus 1, the transition effect on that segment does not take effect.
 	//
 	// Valid values: [0, 5].
 	//
@@ -478,7 +478,7 @@ type CreateHighlightTaskRequestEditTransitions struct {
 	Transition *string `json:"Transition,omitempty" xml:"Transition,omitempty"`
 	// The transition weight. Valid values: [1, 100]. Default value: 50.
 	//
-	// This parameter takes effect when TransitionMode is set to Random.
+	// This parameter takes effect only when TransitionMode is set to Random.
 	//
 	// example:
 	//
@@ -536,7 +536,7 @@ type CreateHighlightTaskRequestEditVfxEffects struct {
 	VfxEffect *string `json:"VfxEffect,omitempty" xml:"VfxEffect,omitempty"`
 	// The effect weight. Valid values: [1, 100]. Default value: 50.
 	//
-	// This parameter takes effect when VfxEffectMode is set to Random.
+	// This parameter takes effect only when VfxEffectMode is set to Random.
 	//
 	// example:
 	//
@@ -577,13 +577,13 @@ func (s *CreateHighlightTaskRequestEditVfxEffects) Validate() error {
 type CreateHighlightTaskRequestHighlight struct {
 	// The highlight content. Valid values:
 	//
-	// - Pets
+	// - 宠物
 	//
-	// - People
+	// - 人物
 	//
-	// - Sports
+	// - 运动
 	//
-	// - Meetings
+	// - 会议
 	//
 	// The value cannot exceed 100 characters.
 	//
@@ -623,9 +623,9 @@ type CreateHighlightTaskRequestOutput struct {
 	Audio *TargetAudio `json:"Audio,omitempty" xml:"Audio,omitempty"`
 	// The media container type. This parameter is required when Type is set to Concat or Compose. Valid values:
 	//
-	// - Audio and video containers: mp4, mkv, mov, asf, avi, mxf, ts, flv
+	// - Audio and video containers: mp4, mkv, mov, asf, avi, mxf, ts, flv.
 	//
-	// 	Notice: Container and URI must be specified together..
+	// 	Notice: Container and URI must be specified together.
 	//
 	// example:
 	//
@@ -641,7 +641,7 @@ type CreateHighlightTaskRequestOutput struct {
 	Segment *CreateHighlightTaskRequestOutputSegment `json:"Segment,omitempty" xml:"Segment,omitempty" type:"Struct"`
 	// The playback speed of the media. Valid values: [0.5, 1.0]. Default value: 1.0.
 	//
-	// > This value is the ratio of the default playback speed of the transcoded media file to that of the source media file. This is not speed-adjusted transcoding.
+	// > This value is the ratio of the playback speed of the transcoded media file to the default playback speed of the source media file. This is not speed-adjusted transcoding.
 	//
 	// example:
 	//
@@ -752,7 +752,7 @@ func (s *CreateHighlightTaskRequestOutput) Validate() error {
 }
 
 type CreateHighlightTaskRequestOutputSegment struct {
-	// The segment duration. Unit: seconds.
+	// The segment length. Unit: seconds.
 	//
 	// example:
 	//
@@ -762,7 +762,7 @@ type CreateHighlightTaskRequestOutputSegment struct {
 	//
 	// - hls
 	//
-	// - dash.
+	// - dash
 	//
 	// example:
 	//
@@ -816,7 +816,7 @@ func (s *CreateHighlightTaskRequestOutputSegment) Validate() error {
 }
 
 type CreateHighlightTaskRequestSources struct {
-	// The duration of the media clip. Unit: seconds. Default value: 0, which indicates the end of the video.
+	// The duration of the media segment. Unit: seconds. Default value: 0, which indicates the end of the video.
 	//
 	// This parameter takes effect only when Type is set to Concat.
 	//
@@ -824,7 +824,7 @@ type CreateHighlightTaskRequestSources struct {
 	//
 	// 0
 	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The start time of the media resource. Valid values: [0, video duration].
+	// The start time of the media resource. Valid values: [0, video duration]. Unit: seconds.
 	//
 	// This parameter takes effect only when Type is set to Concat.
 	//

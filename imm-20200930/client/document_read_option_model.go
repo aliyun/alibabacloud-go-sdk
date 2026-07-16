@@ -20,13 +20,13 @@ type iDocumentReadOption interface {
 }
 
 type DocumentReadOption struct {
-	// Configuration for extracting keywords from the document.
+	// The document intensive reading keyword extraction options.
 	Keyword *DocumentReadKeywordOption `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// Configuration for the text-to-speech (TTS) narrator.
+	// The document intensive reading guide options.
 	Narrator *DocumentReadNarratorOption `json:"Narrator,omitempty" xml:"Narrator,omitempty"`
-	// Configuration for the question-answering (Q\\&A) feature, which answers questions based on the document\\"s content.
+	// The document intensive reading question guide options.
 	Question *DocumentReadQuestionOption `json:"Question,omitempty" xml:"Question,omitempty"`
-	// Configuration for generating a document summary.
+	// The document intensive reading summary options.
 	Summary *DocumentReadSummaryOption `json:"Summary,omitempty" xml:"Summary,omitempty"`
 }
 

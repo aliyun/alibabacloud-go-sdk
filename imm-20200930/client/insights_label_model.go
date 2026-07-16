@@ -16,8 +16,18 @@ type iInsightsLabel interface {
 }
 
 type InsightsLabel struct {
+	// The label description.
+	//
+	// example:
+	//
+	// 有人摔倒
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The label name.
+	//
+	// example:
+	//
+	// 摔倒
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s InsightsLabel) String() string {

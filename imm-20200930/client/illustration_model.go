@@ -38,7 +38,7 @@ type Illustration struct {
 	ImagePath *string `json:"ImagePath,omitempty" xml:"ImagePath,omitempty"`
 	// The normalized coordinate of the image on the page.
 	NormalizedBox []*float32 `json:"NormalizedBox,omitempty" xml:"NormalizedBox,omitempty" type:"Repeated"`
-	// The page number on which the image is located.
+	// The page number where the image is located.
 	//
 	// example:
 	//

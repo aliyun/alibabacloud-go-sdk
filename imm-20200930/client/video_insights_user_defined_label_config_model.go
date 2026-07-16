@@ -18,9 +18,20 @@ type iVideoInsightsUserDefinedLabelConfig interface {
 }
 
 type VideoInsightsUserDefinedLabelConfig struct {
-	Enable *bool            `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Specifies whether to enable custom labels.
+	//
+	// example:
+	//
+	// false
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The list of custom labels.
 	Labels []*InsightsLabel `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	Mode   *string          `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The custom label matching mode. The SDK passes this as an optional string.
+	//
+	// example:
+	//
+	// Enhanced
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 }
 
 func (s VideoInsightsUserDefinedLabelConfig) String() string {

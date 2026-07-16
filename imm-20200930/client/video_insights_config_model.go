@@ -19,8 +19,10 @@ type iVideoInsightsConfig interface {
 
 type VideoInsightsConfig struct {
 	// The video synopsis configuration.
-	Caption     *VideoInsightsCaptionConfig     `json:"Caption,omitempty" xml:"Caption,omitempty"`
-	Label       *VideoInsightsLabelConfig       `json:"Label,omitempty" xml:"Label,omitempty"`
+	Caption *VideoInsightsCaptionConfig `json:"Caption,omitempty" xml:"Caption,omitempty"`
+	// The label configuration.
+	Label *VideoInsightsLabelConfig `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The video multi-stream configuration.
 	MultiStream *VideoInsightsMultiStreamConfig `json:"MultiStream,omitempty" xml:"MultiStream,omitempty"`
 }
 

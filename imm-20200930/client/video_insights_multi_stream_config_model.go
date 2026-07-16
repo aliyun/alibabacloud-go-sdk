@@ -14,6 +14,11 @@ type iVideoInsightsMultiStreamConfig interface {
 }
 
 type VideoInsightsMultiStreamConfig struct {
+	// Specifies whether video multi-stream is supported.
+	//
+	// example:
+	//
+	// false
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 }
 

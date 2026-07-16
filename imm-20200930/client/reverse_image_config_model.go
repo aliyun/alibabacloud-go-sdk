@@ -16,7 +16,9 @@ type iReverseImageConfig interface {
 }
 
 type ReverseImageConfig struct {
+	// The image-to-image search configuration.
 	Image *ImageReverseImageConfig `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The image-to-video search configuration.
 	Video *VideoReverseImageConfig `json:"Video,omitempty" xml:"Video,omitempty"`
 }
 

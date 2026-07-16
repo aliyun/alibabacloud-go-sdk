@@ -16,7 +16,13 @@ type iVideoInsightsHighlightLabelConfig interface {
 }
 
 type VideoInsightsHighlightLabelConfig struct {
-	Enable *bool            `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Specifies whether highlight labels are supported.
+	//
+	// example:
+	//
+	// false
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The list of labels.
 	Labels []*InsightsLabel `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 }
 

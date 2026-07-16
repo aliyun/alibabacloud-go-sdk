@@ -14,6 +14,7 @@ type iVideoReverseImageConfig interface {
 }
 
 type VideoReverseImageConfig struct {
+	// Specifies whether to enable the feature.
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 }
 

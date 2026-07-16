@@ -14,6 +14,7 @@ type iImageInsightsConfig interface {
 }
 
 type ImageInsightsConfig struct {
+	// The image content recognition Caption configuration.
 	Caption *ImageInsightsCaptionConfig `json:"Caption,omitempty" xml:"Caption,omitempty"`
 }
 

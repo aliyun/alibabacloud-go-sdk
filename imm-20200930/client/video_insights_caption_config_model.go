@@ -18,9 +18,16 @@ type iVideoInsightsCaptionConfig interface {
 }
 
 type VideoInsightsCaptionConfig struct {
-	Enable          *bool                  `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Specifies whether to enable video captioning.
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The person reference configuration.
 	PersonReference *PersonReferenceConfig `json:"PersonReference,omitempty" xml:"PersonReference,omitempty"`
-	Prompt          *string                `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// The custom prompt for video captioning.
+	//
+	// example:
+	//
+	// 请用一句话描述这个视频
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
 }
 
 func (s VideoInsightsCaptionConfig) String() string {

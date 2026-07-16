@@ -14,6 +14,11 @@ type iVideoInsightsSystemLabelConfig interface {
 }
 
 type VideoInsightsSystemLabelConfig struct {
+	// Specifies whether system labels are supported.
+	//
+	// example:
+	//
+	// false
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 }
 

@@ -16,7 +16,17 @@ type iWorkflowParameter interface {
 }
 
 type WorkflowParameter struct {
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The invalid parameter.
+	//
+	// example:
+	//
+	// name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The invalid parameter.
+	//
+	// example:
+	//
+	// value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

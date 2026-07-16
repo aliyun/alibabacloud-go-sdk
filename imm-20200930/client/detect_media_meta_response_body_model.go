@@ -60,9 +60,9 @@ type iDetectMediaMetaResponseBody interface {
 }
 
 type DetectMediaMetaResponseBody struct {
-	// The addresses.
+	// The geolocation detection results of the video.
 	//
-	// This parameter is returned only when address information is detected.
+	// This parameter has a value only when the video contains geolocation information.
 	Addresses []*Address `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
 	// The album.
 	//
@@ -82,9 +82,9 @@ type DetectMediaMetaResponseBody struct {
 	//
 	// unable
 	Artist *string `json:"Artist,omitempty" xml:"Artist,omitempty"`
-	// The audio streams.
+	// The array of audio streams.
 	AudioStreams []*AudioStream `json:"AudioStreams,omitempty" xml:"AudioStreams,omitempty" type:"Repeated"`
-	// The bitrate. Unit: bit/s.
+	// The bitrate of the media file, in bit/s.
 	//
 	// example:
 	//
@@ -96,31 +96,33 @@ type DetectMediaMetaResponseBody struct {
 	//
 	// unable
 	Composer *string `json:"Composer,omitempty" xml:"Composer,omitempty"`
-	// The total duration of the video. Unit: seconds.
+	// The total duration of the video, in seconds.
 	//
 	// example:
 	//
 	// 15.263000
 	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The full format name.
+	// The full name of the format.
 	//
 	// example:
 	//
 	// QuickTime / MOV
 	FormatLongName *string `json:"FormatLongName,omitempty" xml:"FormatLongName,omitempty"`
-	// The abbreviated format name.
+	// The format name.
 	//
 	// example:
 	//
 	// mov,mp4,m4a,3gp,3g2,mj2
 	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	// The language of the content. For more information, see the ISO 639-2 Alpha-3 codes for the representation of names of languages.
+	// The language used in the video. The value follows the ISO 639-2 standard.
 	//
 	// example:
 	//
 	// eng
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The coordinate pair of the central point. The coordinate pair consists of latitude and longitude values. This parameter value must be in the "latitude,longitude" format. Valid values of the latitude: [-90,+90]. Valid values of the longitude: [-180,+180].
+	// The central geographic coordinate point, which is a latitude and longitude value.
+	//
+	// The format is latitude,longitude, with latitude first and longitude second. The latitude range is [-90,+90] and the longitude range is [-180,+180]. Example: 35.8,-45.91.
 	//
 	// example:
 	//
@@ -132,7 +134,7 @@ type DetectMediaMetaResponseBody struct {
 	//
 	// unable
 	Performer *string `json:"Performer,omitempty" xml:"Performer,omitempty"`
-	// The time of recording. For more information about the time formats, see the RFC3339 Nano standard.
+	// The time when the video was recorded. The value follows the RFC 3339 Nano standard.
 	//
 	// example:
 	//
@@ -150,13 +152,13 @@ type DetectMediaMetaResponseBody struct {
 	//
 	// 2213B1A9-EB3D-4666-84E0-24980BC*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The size of the media object. Unit: bytes.
+	// The size of the media file, in bytes.
 	//
 	// example:
 	//
 	// 25115517
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The initial playback time.
+	// The start playback time of the media, in seconds.
 	//
 	// example:
 	//
@@ -168,23 +170,23 @@ type DetectMediaMetaResponseBody struct {
 	//
 	// 2
 	StreamCount *int64 `json:"StreamCount,omitempty" xml:"StreamCount,omitempty"`
-	// The subtitle streams.
+	// The array of subtitle streams.
 	Subtitles []*SubtitleStream `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
-	// The title of the media object.
+	// The title of the media file.
 	//
 	// example:
 	//
 	// test
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The video height in pixels.
+	// The height of the video frame in the media file, in pixels.
 	//
 	// example:
 	//
 	// 1920
 	VideoHeight *int64 `json:"VideoHeight,omitempty" xml:"VideoHeight,omitempty"`
-	// The video streams.
+	// The array of video streams.
 	VideoStreams []*VideoStream `json:"VideoStreams,omitempty" xml:"VideoStreams,omitempty" type:"Repeated"`
-	// The video width in pixels.
+	// The width of the video frame in the media file, in pixels.
 	//
 	// example:
 	//

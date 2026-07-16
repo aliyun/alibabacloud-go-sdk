@@ -36,7 +36,7 @@ type iCreateCompressPointCloudTaskRequest interface {
 }
 
 type CreateCompressPointCloudTaskRequest struct {
-	// The name of the compression algorithm. Valid values:
+	// The compression algorithm. Valid values:
 	//
 	// - octree: octree
 	//
@@ -48,33 +48,35 @@ type CreateCompressPointCloudTaskRequest struct {
 	//
 	// octree
 	CompressMethod *string `json:"CompressMethod,omitempty" xml:"CompressMethod,omitempty"`
-	// **If you do not have special requirements, leave this parameter empty.**
+	// **Leave this parameter empty unless you have special requirements.**
 	//
-	// The chained authorization configuration. This parameter is not required. For more information, see [Use chained authorization to access other entity resources](https://help.aliyun.com/document_detail/465340.html).
+	// The China authorization configuration. This parameter is optional. For more information, see [Use chained authorization to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	// The parameters for K-d tree compression.
+	// The K-d tree compression parameters.
 	KdtreeOption *KdtreeOption `json:"KdtreeOption,omitempty" xml:"KdtreeOption,omitempty"`
-	// The notification configuration. For more information, click Notification. For the format of asynchronous notification messages, see [Asynchronous notification message format](https://help.aliyun.com/document_detail/2743997.html).
+	// The message notification configuration. For more information, click Notification. For information about the format of asynchronous notification messages, see [Asynchronous notification message format](https://help.aliyun.com/document_detail/2743997.html).
 	//
-	// > Intelligent Media Management API callbacks do not support specifying a webhook address. Use MNS instead.
+	// > Intelligent Media Management does not support specifying a callback URL for API call callbacks. Use Message Service (MNS) instead.
+	//
+	// >
 	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	// The parameters for Octree compression.
+	// The octree compression parameters.
 	OctreeOption *OctreeOption `json:"OctreeOption,omitempty" xml:"OctreeOption,omitempty"`
-	// The PCD property fields to compress and the compression order. After compression, the data is decompressed in this order.
+	// The PCD attribute fields that participate in compression and the compression order. After compression, data is decompressed in this order.
 	//
-	// - If you use Octree compression from the Point Cloud Library (PCL), only ["xyz"] is supported.
+	// - If you use PCL library octree compression, ["xyz"] is supported.
 	//
-	// - If you use K-d tree compression from the Draco library, ["xyz"] or ["xyz", "intensity"] is supported.
+	// - If you use Draco library K-d tree compression, ["xyz"] or ["xyz", "intensity"] is supported.
 	//
 	// This parameter is required.
 	PointCloudFields []*string `json:"PointCloudFields,omitempty" xml:"PointCloudFields,omitempty" type:"Repeated"`
-	// The format of the point cloud file. Only the PCD format is supported. The default value is pcd.
+	// The point cloud file format. Only PCD format is supported. Default value: pcd.
 	//
 	// example:
 	//
 	// pcd
 	PointCloudFileFormat *string `json:"PointCloudFileFormat,omitempty" xml:"PointCloudFileFormat,omitempty"`
-	// The project name. For more information, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
+	// The project name. For information about how to obtain the project name, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
 	//
 	// This parameter is required.
 	//
@@ -84,7 +86,7 @@ type CreateCompressPointCloudTaskRequest struct {
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// The OSS URI of the point cloud file.
 	//
-	// The URI must be in the format oss\\://${Bucket}/${Object}. ${Bucket} is the name of the OSS bucket in the same region as the project. ${Object} is the full path of the file, including the file name extension.
+	// The OSS URI follows the format oss://${Bucket}/${Object}, where `${Bucket}` is the name of an OSS bucket in the same region as the current project, and `${Object}` is the full path of the file including the file name extension.
 	//
 	// This parameter is required.
 	//
@@ -92,15 +94,15 @@ type CreateCompressPointCloudTaskRequest struct {
 	//
 	// oss://test/src/test.pcd
 	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	// Custom tags to search for and filter asynchronous tasks.
+	// The custom tags that are used to search for and filter asynchronous tasks.
 	//
 	// example:
 	//
 	// {"LabelKey": "Value"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The OSS URI of the output file after compression.
+	// The OSS URI of the compressed output file.
 	//
-	// The URI must be in the format oss\\://${Bucket}/${Object}. ${Bucket} is the name of the OSS bucket in the same region as the project. ${Object} is the full path of the file, including the file name extension.
+	// The OSS URI follows the format oss://${Bucket}/${Object}, where `${Bucket}` is the name of an OSS bucket in the same region as the current project, and `${Object}` is the full path of the file including the file name extension.
 	//
 	// This parameter is required.
 	//
@@ -108,7 +110,7 @@ type CreateCompressPointCloudTaskRequest struct {
 	//
 	// oss://test/tgt
 	TargetURI *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
-	// Custom information that is returned in the asynchronous notification message. You can use this information to associate notification messages in your system. The maximum length is 2048 bytes.
+	// The custom information, which is returned in asynchronous message notifications to help you associate message notifications within your system. Maximum length: 2,048 bytes.
 	//
 	// example:
 	//

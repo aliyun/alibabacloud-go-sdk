@@ -16,7 +16,13 @@ type iImageInsightsCaptionConfig interface {
 }
 
 type ImageInsightsCaptionConfig struct {
-	Enable *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Specifies whether to enable this feature.
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The prompt.
+	//
+	// example:
+	//
+	// Provide a concise title for this monitoring section, capturing the core subject and key event. Keep the title within 10 characters.
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
 }
 

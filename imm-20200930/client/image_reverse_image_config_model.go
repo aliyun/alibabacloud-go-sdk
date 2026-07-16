@@ -14,6 +14,7 @@ type iImageReverseImageConfig interface {
 }
 
 type ImageReverseImageConfig struct {
+	// Specifies whether to enable the feature.
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 }
 

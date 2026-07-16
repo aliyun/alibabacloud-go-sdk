@@ -28,21 +28,53 @@ type iGetVideoAnalysisOption interface {
 }
 
 type GetVideoAnalysisOption struct {
-	// Specifies whether to generate a chapter summary for each segment of the video.
+	// Specifies whether to retrieve the chapter-based summary of the video.
+	//
+	// example:
+	//
+	// false
 	ChapterSummary *bool `json:"ChapterSummary,omitempty" xml:"ChapterSummary,omitempty"`
-	// Specifies whether to extract relevant keywords from the video.
+	// Specifies whether to retrieve keywords.
+	//
+	// example:
+	//
+	// false
 	Keyword *bool `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// Specifies whether to generate a presentation (PPT) file based on the video analysis.
+	// Specifies whether to retrieve the PPT from the video. Default value: false.
+	//
+	// example:
+	//
+	// false
 	PPT *bool `json:"PPT,omitempty" xml:"PPT,omitempty"`
-	// Specifies whether to generate potential questions about the video.
+	// Specifies whether to retrieve the generated questions and corresponding answers.
+	//
+	// example:
+	//
+	// false
 	Question *bool `json:"Question,omitempty" xml:"Question,omitempty"`
-	// Specifies whether to generate a concise video summary.
+	// Specifies whether to retrieve the full-text summary.
+	//
+	// example:
+	//
+	// false
 	Summary *bool `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	// Specifies whether to transcribe the spoken audio in the video to text.
+	// Specifies whether to retrieve the dialogue in the video. Default value: false.
+	//
+	// example:
+	//
+	// false
 	Transcript *bool `json:"Transcript,omitempty" xml:"Transcript,omitempty"`
-	// Specifies whether to generate a chapter-based summary from the video transcript.
+	// Specifies whether to retrieve the segmented summary generated from the dialogue in the video. Default value: false.
+	//
+	// example:
+	//
+	// false
 	TranscriptChapterSummary *bool `json:"TranscriptChapterSummary,omitempty" xml:"TranscriptChapterSummary,omitempty"`
-	// Specifies whether to generate a summary of the video transcript.
+	// Specifies whether to retrieve the summary generated from the dialogue in the video. Default value: false.
+	//
+	// example:
+	//
+	// false
 	TranscriptSummary *bool `json:"TranscriptSummary,omitempty" xml:"TranscriptSummary,omitempty"`
 }
 

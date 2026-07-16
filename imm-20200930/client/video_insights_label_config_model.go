@@ -18,8 +18,11 @@ type iVideoInsightsLabelConfig interface {
 }
 
 type VideoInsightsLabelConfig struct {
-	Highlight   *VideoInsightsHighlightLabelConfig   `json:"Highlight,omitempty" xml:"Highlight,omitempty"`
-	System      *VideoInsightsSystemLabelConfig      `json:"System,omitempty" xml:"System,omitempty"`
+	// The highlight label configuration.
+	Highlight *VideoInsightsHighlightLabelConfig `json:"Highlight,omitempty" xml:"Highlight,omitempty"`
+	// The system label configuration.
+	System *VideoInsightsSystemLabelConfig `json:"System,omitempty" xml:"System,omitempty"`
+	// The custom label configuration.
 	UserDefined *VideoInsightsUserDefinedLabelConfig `json:"UserDefined,omitempty" xml:"UserDefined,omitempty"`
 }
 

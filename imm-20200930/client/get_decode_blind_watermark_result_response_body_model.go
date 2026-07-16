@@ -36,7 +36,7 @@ type iGetDecodeBlindWatermarkResultResponseBody interface {
 }
 
 type GetDecodeBlindWatermarkResultResponseBody struct {
-	// The error code of the task.
+	// The task error code.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type GetDecodeBlindWatermarkResultResponseBody struct {
 	//
 	// example:
 	//
-	// Copyright Alibaba Cloud
+	// 阿里云版权所有
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The end time of the task.
+	// The time when the task ended. The time is in the ISO 8601 UTC timestamp format with millisecond precision.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type GetDecodeBlindWatermarkResultResponseBody struct {
 	//
 	// 2C2-1I0EG57VR37J4rQ8oKG6C9*****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The error message of the task.
+	// The task error message.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type GetDecodeBlindWatermarkResultResponseBody struct {
 	//
 	// 93126E40-0296-4129-95E3-AFAC709372E5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start time of the task.
+	// The time when the task started. The time is in the ISO 8601 UTC timestamp format with millisecond precision.
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type GetDecodeBlindWatermarkResultResponseBody struct {
 	//
 	// DecodeBlindWatermark
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The user data of the task.
+	// The custom information.
 	//
 	// example:
 	//
