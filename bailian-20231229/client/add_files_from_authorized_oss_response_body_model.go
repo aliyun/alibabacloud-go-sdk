@@ -24,21 +24,21 @@ type iAddFilesFromAuthorizedOssResponseBody interface {
 }
 
 type AddFilesFromAuthorizedOssResponseBody struct {
-	// Error status code.
+	// The error code.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Business data field returned by the operation.
+	// The data field returned by the operation.
 	Data *AddFilesFromAuthorizedOssResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Error information.
+	// The error message.
 	//
 	// example:
 	//
 	// Cant find out category for category_id param.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -50,11 +50,11 @@ type AddFilesFromAuthorizedOssResponseBody struct {
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Whether the operation call succeeded. Possible values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - true: Success.
+	// - true: Successful.
 	//
-	// - false: Failure.
+	// - false: Failed.
 	//
 	// example:
 	//
@@ -169,31 +169,31 @@ func (s *AddFilesFromAuthorizedOssResponseBodyData) Validate() error {
 }
 
 type AddFilesFromAuthorizedOssResponseBodyDataAddFileResultList struct {
-	// The file ID. Please keep this value safe, as it will be used for all subsequent API operations related to this file.
+	// The file ID. Keep this value safe because it is required for all subsequent API operations related to this file.
 	//
 	// example:
 	//
 	// file_809f469a59ac449586ec692576xxxxx_102248XXX
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// Error information returned when file import fails.
+	// The error message returned when the file import fails.
 	//
 	// example:
 	//
 	// size too large
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// The key name (Key) of the imported file in the OSS Bucket.
+	// The key of the imported file in the OSS bucket.
 	//
 	// example:
 	//
 	// root/path/this_is_temp_xxxx.pdf
 	OssKey *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
-	// File import status. Possible values:
+	// The file import status. Valid values:
 	//
-	// - SUCCESS: Import (application data) completed.
+	// - SUCCESS: The import to application data is complete.
 	//
-	// - FAILED: Import (application data) failed.
+	// - FAILED: The import to application data failed.
 	//
-	// > Only files with the SUCCESS status can be used to create or update knowledge bases.
+	// > Only files with a SUCCESS status can be used to create or update a knowledge base.
 	//
 	// >
 	//

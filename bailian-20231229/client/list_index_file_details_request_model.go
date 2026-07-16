@@ -24,33 +24,37 @@ type iListIndexFileDetailsRequest interface {
 }
 
 type ListIndexFileDetailsRequest struct {
-	// The name of the documents to return. If you do not specify this parameter, the results are not filtered by name.
+	// Filters the returned file details list by file name. Default value: empty, which means no filtering by file name.
 	//
 	// example:
 	//
 	// 翻译平台运维文档
 	DocumentName *string `json:"DocumentName,omitempty" xml:"DocumentName,omitempty"`
-	// The import status of the documents to return. Valid values:
+	// Filters the returned file list by file import status. Valid values:
 	//
-	// - INSERT_ERROR: The document failed to be imported.
+	// - INSERT_ERROR: Failed to import to the index.
 	//
-	// - RUNNING: The document is being imported.
+	// - RUNNING: Index building in progress.
 	//
-	// - DELETED: The document has been deleted.
+	// - DELETED: Deleted.
 	//
-	// - FINISH: The document was imported successfully.
+	// - FINISH: Index building succeeded.
 	//
-	// If you do not specify this parameter, the results are not filtered by import status.
+	// - PARSE_FAILED: Parsing failed.
+	//
+	// - DOC_PARSING: Parsing in progress.
+	//
+	// Default value: empty, which means no filtering by file import status.
 	//
 	// example:
 	//
 	// FINISH
 	DocumentStatus *string `json:"DocumentStatus,omitempty" xml:"DocumentStatus,omitempty"`
-	// Specifies whether to perform a fuzzy search based on the document name. This parameter is used with the `DocumentName` parameter. Valid values:
+	// Specifies whether to enable fuzzy matching for file names. This parameter is used together with the `DocumentName` parameter. Valid values:
 	//
-	// - true: Performs a fuzzy search based on the document name.
+	// - true: Performs fuzzy matching on the returned file list based on the file name.
 	//
-	// - false: Performs an exact match based on the document name.
+	// - false: Performs exact matching on the returned file list based on the file name.
 	//
 	// Default value: false.
 	//
@@ -58,19 +62,19 @@ type ListIndexFileDetailsRequest struct {
 	//
 	// false
 	EnableNameLike *string `json:"EnableNameLike,omitempty" xml:"EnableNameLike,omitempty"`
-	// The ID of the knowledge base. This is the value of the `Data.Id` parameter returned by the **CreateIndex*	- operation.
+	// The knowledge base ID, which is the `Data.Id` returned by the **CreateIndex*	- operation.
 	//
 	// example:
 	//
 	// 79c0alxxxx
 	IndexId *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
-	// The number of the page to return. The value starts from 1. Default value: 1.
+	// The page number to query. Minimum value: 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of documents to return on each page. Maximum value: 10.
+	// The number of files to display per page for paging. Maximum value: 10.
 	//
 	// example:
 	//

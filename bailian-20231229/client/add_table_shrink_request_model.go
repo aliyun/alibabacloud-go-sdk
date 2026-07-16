@@ -32,7 +32,12 @@ type AddTableShrinkRequest struct {
 	//
 	// This parameter is required.
 	TableColumnsShrink *string `json:"TableColumns,omitempty" xml:"TableColumns,omitempty"`
-	TableDesc          *string `json:"TableDesc,omitempty" xml:"TableDesc,omitempty"`
+	// The table description.
+	//
+	// example:
+	//
+	// table description
+	TableDesc *string `json:"TableDesc,omitempty" xml:"TableDesc,omitempty"`
 	// The table name.
 	//
 	// This parameter is required.

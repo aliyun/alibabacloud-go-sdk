@@ -40,7 +40,7 @@ type ListFileShrinkRequest struct {
 	//
 	// cate_cdd11b1b79a74e8bbd675c356a91ee35xxxxxxxx
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// The list of file IDs to query. A maximum of 20 files can be queried per request.
+	// The list of file IDs to query. A maximum of 20 files can be queried at a time.
 	FileIdsShrink *string `json:"FileIds,omitempty" xml:"FileIds,omitempty"`
 	// The file name (without extension). Only exact match is supported. Fuzzy search is not supported.
 	//
@@ -52,7 +52,7 @@ type ListFileShrinkRequest struct {
 	//
 	// Default value:
 	//
-	// If the value is not set or is less than 1, the default value is 20. If the value is greater than 200, the default value is 200.
+	// If no value is set or the value is less than 1, the default value is 20. If the value is set to greater than 200, the default value is 200.
 	//
 	// example:
 	//

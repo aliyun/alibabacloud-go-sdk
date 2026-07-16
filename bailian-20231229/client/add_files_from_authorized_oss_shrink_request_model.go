@@ -26,7 +26,7 @@ type iAddFilesFromAuthorizedOssShrinkRequest interface {
 }
 
 type AddFilesFromAuthorizedOssShrinkRequest struct {
-	// Specifies the target category for file import. This is the `CategoryId` returned by the AddCategory operation. You can also obtain the category ID from the <props="china">[Application Data](https://bailian.console.aliyun.com/?tab=app#/data-center) - Files tab<props="intl">[Application Data](https://modelstudio.console.alibabacloud.com/?tab=app#/data-center) - Files tab by clicking the ID icon next to the category name. You can also pass in default, which uses the system-created "Default Category".
+	// The ID of the category to which the files are imported. This is the `CategoryId` returned by the AddCategory operation. You can also obtain the category ID by clicking the ID icon next to the category name on the <props="china">[Application Data](https://bailian.console.aliyun.com/?tab=app#/data-center) - Files tab<props="intl">[Application Data](https://modelstudio.console.alibabacloud.com/?tab=app#/data-center) - Files tab. You can pass in `default` to use the system-created default category.
 	//
 	// This parameter is required.
 	//
@@ -34,13 +34,13 @@ type AddFilesFromAuthorizedOssShrinkRequest struct {
 	//
 	// cate_cdd11b1b79a74e8bbd675c356a91ee35xxxxxxxx
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// Category type. Optional. The default value is UNSTRUCTURED. Valid values:
+	// The category type. Optional. Default value: UNSTRUCTURED. Valid values:
 	//
-	// - UNSTRUCTURED: Category used for building knowledge base scenarios.
+	// - UNSTRUCTURED: category for building knowledge base scenarios.
 	//
 	// <props="china">
 	//
-	// > This operation does not support importing SESSION_FILE used for agent application [session interaction](https://help.aliyun.com/zh/model-studio/user-guide/file-interaction). Please use the **AddFile*	- operation to upload SESSION_FILE from local.
+	// > This operation does not support importing SESSION_FILE for agent application [conversation interaction](https://www.alibabacloud.com/help/en/model-studio/user-guide/file-interaction). Use the **AddFile*	- operation to upload SESSION_FILE from a local source.
 	//
 	// This parameter is required.
 	//
@@ -48,15 +48,15 @@ type AddFilesFromAuthorizedOssShrinkRequest struct {
 	//
 	// UNSTRUCTURED
 	CategoryType *string `json:"CategoryType,omitempty" xml:"CategoryType,omitempty"`
-	// The list of files to import. Up to 10 files can be uploaded at a time.
+	// The list of files to import. A maximum of 10 files can be uploaded at a time.
 	//
-	// > Up to 10 files can be uploaded at a time.
+	// > A maximum of 10 files can be uploaded at a time.
 	//
 	// >
 	//
 	// This parameter is required.
 	FileDetailsShrink *string `json:"FileDetails,omitempty" xml:"FileDetails,omitempty"`
-	// The OSS Bucket name. For details, see [Buckets](https://help.aliyun.com/document_detail/177682.html).
+	// The name of the OSS bucket. For more information, see [Buckets](https://help.aliyun.com/document_detail/177682.html).
 	//
 	// This parameter is required.
 	//
@@ -64,7 +64,7 @@ type AddFilesFromAuthorizedOssShrinkRequest struct {
 	//
 	// bucketNamexxxxx
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
-	// The region ID of the OSS Bucket. For how to obtain it, see [OSS regions and endpoints](https://help.aliyun.com/document_detail/31837.html).
+	// The region ID of the OSS bucket. For more information, see [OSS regions and endpoints](https://help.aliyun.com/document_detail/31837.html).
 	//
 	// This parameter is required.
 	//
@@ -72,13 +72,13 @@ type AddFilesFromAuthorizedOssShrinkRequest struct {
 	//
 	// cn-beijing
 	OssRegionId *string `json:"OssRegionId,omitempty" xml:"OssRegionId,omitempty"`
-	// Whether to overwrite the same file in the category by OssKey. The default value is false, meaning no overwrite.
+	// Specifies whether to overwrite files with the same OssKey in the category. Default value: false, which means files are not overwritten.
 	//
 	// example:
 	//
 	// false
 	OverWriteFileByOssKey *bool `json:"OverWriteFileByOssKey,omitempty" xml:"OverWriteFileByOssKey,omitempty"`
-	// The list of tags associated with the file. The default is empty, meaning the file is not associated with any tags. Up to 10 tags can be passed in.
+	// The list of tags associated with the file. Default value: empty, which means the file is not associated with any tags. A maximum of 10 tags can be specified.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 

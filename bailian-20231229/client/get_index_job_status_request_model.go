@@ -36,7 +36,7 @@ type GetIndexJobStatusRequest struct {
 	//
 	// 20230718xxxx-146c93bf
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The **SubmitIndexJob*	- and **SubmitIndexAddDocumentsJob*	- operations support batch file import. This operation returns the overall knowledge base job status `Status` and the import status of each file `Document.Status`. If there are many files, use the `PageNumber` parameter for paging. Minimum value: 1. Default value: 1.
+	// Both the **SubmitIndexJob*	- and **SubmitIndexAddDocumentsJob*	- operations support batch file import. This operation returns the overall status of the knowledge base job (`Status`) and the import status of each file (`Document.Status`). If there are many files, use the `PageNumber` parameter for paged query. Minimum value: 1. Default value: 1.
 	//
 	// example:
 	//

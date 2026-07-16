@@ -262,7 +262,12 @@ type ListFileResponseBodyDataFileList struct {
 	// example:
 	//
 	// docx
-	FileType          *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// The reason for parsing failure.
+	//
+	// example:
+	//
+	// Error Message
 	ParseErrorMessage *string `json:"ParseErrorMessage,omitempty" xml:"ParseErrorMessage,omitempty"`
 	// The document parser. Valid values:
 	//
@@ -280,7 +285,7 @@ type ListFileResponseBodyDataFileList struct {
 	SizeInBytes *int64 `json:"SizeInBytes,omitempty" xml:"SizeInBytes,omitempty"`
 	// The file parsing status. Valid values:
 	//
-	// - INIT: Initialization state, waiting to be scheduled.
+	// - INIT: Initialization state. Waiting to be scheduled.
 	//
 	// - PARSING: Parsing in progress.
 	//

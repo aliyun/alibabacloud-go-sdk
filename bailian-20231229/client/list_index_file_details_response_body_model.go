@@ -24,13 +24,13 @@ type iListIndexFileDetailsResponseBody interface {
 }
 
 type ListIndexFileDetailsResponseBody struct {
-	// The error code.
+	// The error status code.
 	//
 	// example:
 	//
 	// InvalidParameter
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The data field returned by the operation.
 	Data *ListIndexFileDetailsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -38,23 +38,23 @@ type ListIndexFileDetailsResponseBody struct {
 	//
 	// Required parameter(%s) missing or invalid, please check the request parameters.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 35A267BF-xxxx-54DB-8394-AA3B0742D833
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The HTTP status code.
+	// The status code returned by the operation.
 	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: Successful.
 	//
-	// - false: The request failed.
+	// - false: Failed.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *ListIndexFileDetailsResponseBody) Validate() error {
 }
 
 type ListIndexFileDetailsResponseBodyData struct {
-	// A list of documents in the knowledge base. The documents are sorted by import time in descending order. This order is the same as the order in the console.
+	// The list of files in the knowledge base, sorted by file import time in descending order (consistent with the console).
 	Documents []*ListIndexFileDetailsResponseBodyDataDocuments `json:"Documents,omitempty" xml:"Documents,omitempty" type:"Repeated"`
 	// The knowledge base ID.
 	//
@@ -148,13 +148,13 @@ type ListIndexFileDetailsResponseBodyData struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page.
+	// The returned number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries.
+	// The total number of returned results.
 	//
 	// example:
 	//
@@ -229,67 +229,67 @@ func (s *ListIndexFileDetailsResponseBodyData) Validate() error {
 }
 
 type ListIndexFileDetailsResponseBodyDataDocuments struct {
-	// The custom chunking method.
+	// The custom chunking mode.
 	//
 	// example:
 	//
 	// DashSplitter
 	ChunkMode *string `json:"ChunkMode,omitempty" xml:"ChunkMode,omitempty"`
-	// The length of a chunk, in characters.
+	// The segment length, which is the number of characters in each text chunk.
 	//
 	// example:
 	//
 	// 600
 	ChunkSize *string `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
-	// The error code that is returned if the document fails to be imported.
+	// The error status code for file import.
 	//
 	// example:
 	//
 	// 110002
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The format of the document. Valid values: pdf, docx, doc, txt, md, pptx, ppt, png, jpg, jpeg, bmp, gif, and EXCEL.
+	// The file format type. Valid values: pdf, docx, doc, txt, md, pptx, ppt, png, jpg, jpeg, bmp, gif, and EXCEL.
 	//
 	// example:
 	//
 	// pdf
 	DocumentType *string `json:"DocumentType,omitempty" xml:"DocumentType,omitempty"`
-	// Indicates whether the table headers of Excel files in an unstructured knowledge base are concatenated.
+	// Indicates whether Excel file headers support concatenation.
 	//
 	// example:
 	//
 	// true
 	EnableHeaders *string `json:"EnableHeaders,omitempty" xml:"EnableHeaders,omitempty"`
-	// The time when the document was imported. This value is a Unix timestamp.
+	// The time when the file was imported to the knowledge base, in UNIX timestamp format.
 	//
 	// example:
 	//
 	// 1744856423000
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The document ID.
+	// The file ID.
 	//
 	// example:
 	//
 	// doc_c134aa2073204a5d936d870bf960f56axxxxxxxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The error message that is returned if the document fails to be imported.
+	// The error message for file import.
 	//
 	// example:
 	//
 	// check fileUrlKey[file_path] / fileNameKey[null] / fileExtensionKey[file_extension] is invalid
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The name of the document.
+	// The file name.
 	//
 	// example:
 	//
 	// 翻译平台运维文档
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The overlap length of chunks.
+	// The overlap length between segments.
 	//
 	// example:
 	//
 	// 100
 	OverlapSize *string `json:"OverlapSize,omitempty" xml:"OverlapSize,omitempty"`
-	// The size of the document, in bytes.
+	// The file size, in bytes.
 	//
 	// example:
 	//
@@ -301,15 +301,15 @@ type ListIndexFileDetailsResponseBodyDataDocuments struct {
 	//
 	// cate_21a407a3372c4ba7aedc649709143f0cxxxxxxxx
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	// The import status of the document. Valid values:
+	// The file import status. Valid values:
 	//
-	// - INSERT_ERROR: The document failed to be imported.
+	// - INSERT_ERROR: File import failed.
 	//
-	// - RUNNING: The document is being imported.
+	// - RUNNING: File import in progress.
 	//
-	// - DELETED: The document has been deleted.
+	// - DELETED: File deleted.
 	//
-	// - FINISH: The document was imported successfully.
+	// - FINISH: File import succeeded.
 	//
 	// example:
 	//

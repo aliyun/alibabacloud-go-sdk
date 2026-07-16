@@ -30,7 +30,7 @@ type AddFileResponseBody struct {
 	//
 	// DataCenter.FileTooLarge
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned for the request.
+	// The data field returned by the operation.
 	Data *AddFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -44,17 +44,17 @@ type AddFileResponseBody struct {
 	//
 	// 778C0B3B-xxxx-5FC1-A947-36EDD13606AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status code of the request.
+	// The status code returned by the operation.
 	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the API call was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - `true`: The call was successful.
+	// - true: The call was successful.
 	//
-	// - `false`: The call failed.
+	// - false: The call failed.
 	//
 	// example:
 	//
@@ -134,15 +134,15 @@ func (s *AddFileResponseBody) Validate() error {
 }
 
 type AddFileResponseBodyData struct {
-	// The ID of the file. Save this ID for use in subsequent API calls involving this file.
+	// The file ID. Keep this value safe because it is used in all subsequent API operations related to this file.
 	//
 	// example:
 	//
 	// file_9a65732555b54d5ea10796ca5742ba22_xxxxxxxx
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The parser that was used for the file. A possible value is:
+	// The parser type used to parse the file. Valid values:
 	//
-	// - `DASHSCOPE_DOCMIND`: Alibaba Cloud Document Intelligence
+	// - DASHSCOPE_DOCMIND: Alibaba Cloud intelligent document parsing.
 	//
 	// example:
 	//

@@ -32,7 +32,12 @@ type AddTableRequest struct {
 	//
 	// This parameter is required.
 	TableColumns []*AddTableRequestTableColumns `json:"TableColumns,omitempty" xml:"TableColumns,omitempty" type:"Repeated"`
-	TableDesc    *string                        `json:"TableDesc,omitempty" xml:"TableDesc,omitempty"`
+	// The table description.
+	//
+	// example:
+	//
+	// table description
+	TableDesc *string `json:"TableDesc,omitempty" xml:"TableDesc,omitempty"`
 	// The table name.
 	//
 	// This parameter is required.

@@ -24,7 +24,7 @@ type iGetIndexJobStatusResponseBody interface {
 }
 
 type GetIndexJobStatusResponseBody struct {
-	// The error code.
+	// The error status code.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type GetIndexJobStatusResponseBody struct {
 	//
 	// 17204B98-xxxx-4F9A-8464-2446A84821CA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The HTTP status code returned by the operation.
+	// The status code returned by the operation.
 	//
 	// example:
 	//
@@ -52,9 +52,9 @@ type GetIndexJobStatusResponseBody struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true: The operation was successful.
+	// - true: Successful.
 	//
-	// - false: The operation failed.
+	// - false: Failed.
 	//
 	// example:
 	//
@@ -144,13 +144,13 @@ type GetIndexJobStatusResponseBodyData struct {
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The current status of the knowledge base job. Valid values:
 	//
-	// - COMPLETED: The job succeeded.
+	// - COMPLETED: Execution succeeded.
 	//
-	// - FAILED: The job failed.
+	// - FAILED: Execution failed.
 	//
-	// - RUNNING: The job is running.
+	// - RUNNING: Execution in progress.
 	//
-	// - PENDING: The job is pending execution.
+	// - PENDING: Waiting for execution.
 	//
 	// example:
 	//
@@ -207,7 +207,7 @@ func (s *GetIndexJobStatusResponseBodyData) Validate() error {
 }
 
 type GetIndexJobStatusResponseBodyDataDocuments struct {
-	// The error code.
+	// The error status code.
 	//
 	// example:
 	//
@@ -234,13 +234,17 @@ type GetIndexJobStatusResponseBodyDataDocuments struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The file import status. Valid values:
 	//
-	// - INSERT_ERROR: The file import failed.
+	// - INSERT_ERROR: Failed to import into the index.
 	//
-	// - RUNNING: The file is being imported.
+	// - RUNNING: Index building in progress.
 	//
-	// - DELETED: The file has been deleted.
+	// - DELETED: Deleted.
 	//
-	// - FINISH: The file was imported.
+	// - FINISH: Index building succeeded.
+	//
+	// - PARSE_FAILED: Parsing failed.
+	//
+	// - DOC_PARSING: Parsing in progress.
 	//
 	// example:
 	//

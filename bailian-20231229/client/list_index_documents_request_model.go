@@ -24,7 +24,7 @@ type iListIndexDocumentsRequest interface {
 }
 
 type ListIndexDocumentsRequest struct {
-	// Filters the returned file list by file name (without the file extension). Default value: empty, which means the results are not filtered by file name.
+	// Filters the returned file list by file name (without the file extension). Default value: empty, which means no filtering by file name.
 	//
 	// example:
 	//
@@ -32,15 +32,19 @@ type ListIndexDocumentsRequest struct {
 	DocumentName *string `json:"DocumentName,omitempty" xml:"DocumentName,omitempty"`
 	// Filters the returned file list by file import status. Valid values:
 	//
-	// - INSERT_ERROR: The file failed to be imported.
+	// - INSERT_ERROR: failed to import to the index.
 	//
-	// - RUNNING: The file is being imported.
+	// - RUNNING: index building in progress.
 	//
-	// - DELETED: The file has been deleted.
+	// - DELETED: deleted.
 	//
-	// - FINISH: The file was imported.
+	// - FINISH: index building succeeded.
 	//
-	// Default value: empty, which means the results are not filtered by file import status.
+	// - PARSE_FAILED: parsing failed.
+	//
+	// - DOC_PARSING: parsing in progress.
+	//
+	// Default value: empty, which means no filtering by file import status.
 	//
 	// example:
 	//
@@ -48,9 +52,9 @@ type ListIndexDocumentsRequest struct {
 	DocumentStatus *string `json:"DocumentStatus,omitempty" xml:"DocumentStatus,omitempty"`
 	// Specifies whether to enable fuzzy matching for file names. This parameter is used together with the `DocumentName` parameter. Valid values:
 	//
-	// - true: Fuzzy matching is used to filter the returned file list by file name.
+	// - true: Performs fuzzy matching on the returned file list based on the file name.
 	//
-	// - false: Exact matching is used to filter the returned file list by file name.
+	// - false: Performs exact matching on the returned file list based on the file name.
 	//
 	// Default value: false.
 	//
@@ -72,7 +76,7 @@ type ListIndexDocumentsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of files to display per page in a paging query. No maximum limit.
+	// The number of files to display per page in a paged query. No maximum limit.
 	//
 	// Default value: 10.
 	//
