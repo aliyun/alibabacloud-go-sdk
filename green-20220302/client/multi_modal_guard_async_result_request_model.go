@@ -16,13 +16,13 @@ type iMultiModalGuardAsyncResultRequest interface {
 }
 
 type MultiModalGuardAsyncResultRequest struct {
-	// The moderation service to run.
+	// The moderation service type.
 	//
 	// example:
 	//
 	// audio_security_check
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
-	// The parameters for the moderation service, provided as a JSON string.
+	// The parameters required by the moderation service. The value is a JSON string.
 	//
 	// example:
 	//
