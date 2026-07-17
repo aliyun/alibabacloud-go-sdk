@@ -13606,11 +13606,11 @@ func (client *Client) DescribeApikeyAttribute(request *DescribeApikeyAttributeRe
 
 // Summary:
 //
-// Retrieves the details of a specific application in a PolarDB instance.
+// Retrieves the detailed information of a specified PolarDB application.
 //
 // Description:
 //
-// Retrieves all information about a specific PolarDB application, such as component details and endpoints.
+// This API is used to query all related information of a specific PolarDB application, including but not limited to component details and endpoints.
 //
 // @param request - DescribeApplicationAttributeRequest
 //
@@ -13654,11 +13654,11 @@ func (client *Client) DescribeApplicationAttributeWithOptions(request *DescribeA
 
 // Summary:
 //
-// Retrieves the details of a specific application in a PolarDB instance.
+// Retrieves the detailed information of a specified PolarDB application.
 //
 // Description:
 //
-// Retrieves all information about a specific PolarDB application, such as component details and endpoints.
+// This API is used to query all related information of a specific PolarDB application, including but not limited to component details and endpoints.
 //
 // @param request - DescribeApplicationAttributeRequest
 //
@@ -36239,6 +36239,72 @@ func (client *Client) RestartDBNodeZonal(request *RestartDBNodeZonalRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &RestartDBNodeZonalResponse{}
 	_body, _err := client.RestartDBNodeZonalWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Restarts a PolarClaw gateway.
+//
+// @param request - RestartPolarClawGatewayRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestartPolarClawGatewayResponse
+func (client *Client) RestartPolarClawGatewayWithOptions(request *RestartPolarClawGatewayRequest, runtime *dara.RuntimeOptions) (_result *RestartPolarClawGatewayResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.Mode) {
+		query["Mode"] = request.Mode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RestartPolarClawGateway"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RestartPolarClawGatewayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Restarts a PolarClaw gateway.
+//
+// @param request - RestartPolarClawGatewayRequest
+//
+// @return RestartPolarClawGatewayResponse
+func (client *Client) RestartPolarClawGateway(request *RestartPolarClawGatewayRequest) (_result *RestartPolarClawGatewayResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RestartPolarClawGatewayResponse{}
+	_body, _err := client.RestartPolarClawGatewayWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

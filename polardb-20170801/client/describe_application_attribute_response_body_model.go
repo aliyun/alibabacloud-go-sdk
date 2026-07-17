@@ -94,17 +94,16 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// supabase
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
-	// The CPU architecture. The value is:
+	// The CPU architecture. Valid values:
 	//
 	// - `x86`
 	//
 	// example:
 	//
 	// x86
-	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	// Indicates whether SNAT can be disabled.
-	CanDisableSnat *bool `json:"CanDisableSnat,omitempty" xml:"CanDisableSnat,omitempty"`
-	// The child components.
+	Architecture   *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	CanDisableSnat *bool   `json:"CanDisableSnat,omitempty" xml:"CanDisableSnat,omitempty"`
+	// The list of subcomponents.
 	Components []*DescribeApplicationAttributeResponseBodyComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
 	// The creation time.
 	//
@@ -112,23 +111,23 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// 2025-03-25T09:37:10Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The ID of the PolarDB instance that the application depends on.
+	// The instance ID of the PolarDB instance on which the application depends.
 	//
 	// example:
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The application description.
+	// The description of the application.
 	//
 	// example:
 	//
 	// myapp
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The application endpoints.
+	// The list of endpoints of the application.
 	Endpoints []*DescribeApplicationAttributeResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
 	// The expiration time.
 	//
-	// This parameter is not returned for Postpaid instances.
+	// This value is empty when the billing method is Postpaid.
 	//
 	// example:
 	//
@@ -140,7 +139,7 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// false
 	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// Indicates whether the application is the latest version.
+	// Indicates whether the current version is the latest version.
 	//
 	// example:
 	//
@@ -154,27 +153,27 @@ type DescribeApplicationAttributeResponseBody struct {
 	LatestVersion *string `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
 	// The lock mode. Valid values:
 	//
-	// - Unlock: The application is not locked.
+	// - Unlock: Not locked.
 	//
-	// - Lock: The application is locked.
+	// - Lock: Locked.
 	//
 	// example:
 	//
 	// Unlock
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// The maintenance end time.
+	// The end time of the maintenance window.
 	//
 	// example:
 	//
 	// 19:00Z
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	// The maintenance start time.
+	// The start time of the maintenance window.
 	//
 	// example:
 	//
 	// 18:00Z
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	// The attributes of the Mem0 application.
+	// The Mem0 application attributes.
 	MemApplicationAttribute *DescribeApplicationAttributeResponseBodyMemApplicationAttribute `json:"MemApplicationAttribute,omitempty" xml:"MemApplicationAttribute,omitempty" type:"Struct"`
 	// The minor version number.
 	//
@@ -182,8 +181,6 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// v2026.3.13-1#20260320
 	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
-	// The ID of the NAT Gateway.
-	//
 	// example:
 	//
 	// pc-xxx
@@ -194,9 +191,9 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The attributes of the PolarClaw SaaS application.
+	// The PolarClaw SaaS application attributes.
 	PolarClawSaaSApplicationAttribute *DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute `json:"PolarClawSaaSApplicationAttribute,omitempty" xml:"PolarClawSaaSApplicationAttribute,omitempty" type:"Struct"`
-	// The ID of the PolarFS Cold Storage or PolarFS High-performance instance.
+	// The instance ID of PolarFS cold storage or high-performance edition.
 	//
 	// example:
 	//
@@ -214,61 +211,59 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// 3E5CD764-FCCA-5C9C-838E-20E0DE84B2AF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The application-level security groups.
+	// The list of security groups at the application level.
 	SecurityGroups []*DescribeApplicationAttributeResponseBodySecurityGroups `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty" type:"Repeated"`
-	// The application-level whitelists.
+	// The list of whitelists at the application level.
 	SecurityIPArrays []*DescribeApplicationAttributeResponseBodySecurityIPArrays `json:"SecurityIPArrays,omitempty" xml:"SecurityIPArrays,omitempty" type:"Repeated"`
-	// The Serverless type. Valid values:
+	// The serverless type. Valid values:
 	//
-	// - 2: Agile
+	// - 2: agile.
 	//
-	// - 3: Stable
+	// - 3: steady.
 	//
 	// example:
 	//
 	// 2
 	ServerlessType *string `json:"ServerlessType,omitempty" xml:"ServerlessType,omitempty"`
-	// The SNAT status.
-	//
 	// example:
 	//
 	// off
 	SnatStatus *string `json:"SnatStatus,omitempty" xml:"SnatStatus,omitempty"`
 	// The application status. Valid values:
 	//
-	// - Creating: The application is being created.
+	// - Creating: Being created.
 	//
-	// - Activated: The application is running.
+	// - Activated: Running.
 	//
-	// - Maintaining: The application is being maintained.
+	// - Maintaining: Under maintenance.
 	//
-	// - ClassChanging: The application configuration is being changed.
+	// - ClassChanging: Changing specifications.
 	//
-	// - Transing: The application is being migrated.
+	// - Transing: Being migrated.
 	//
-	// - MinorVersionUpgrading: The minor version of the application is being upgraded.
+	// - MinorVersionUpgrading: Minor version being upgraded.
 	//
-	// - NetCreating: The endpoint is being created.
+	// - NetCreating: Endpoint being created.
 	//
-	// - NetDeleting: The endpoint is being deleted.
+	// - NetDeleting: Endpoint being deleted.
 	//
-	// - NetModifying: The endpoint is being modified.
+	// - NetModifying: Endpoint being modified.
 	//
-	// - Restarting: The application is restarting.
+	// - Restarting: Being restarted.
 	//
-	// - Locking: The application is being locked.
+	// - Locking: Being locked.
 	//
-	// - Locked: The application is locked.
+	// - Locked: Locked.
 	//
-	// - Unlocking: The application is being unlocked.
+	// - Unlocking: Being unlocked.
 	//
-	// - Deleting: The application is being deleted.
+	// - Deleting: Being deleted.
 	//
 	// example:
 	//
 	// Activated
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The details of the storage resources.
+	// The storage resource information.
 	Storages []*DescribeApplicationAttributeResponseBodyStorages `json:"Storages,omitempty" xml:"Storages,omitempty" type:"Repeated"`
 	// Indicates whether an upgrade is available.
 	//
@@ -276,13 +271,13 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// false
 	UpgradeAvailable *string `json:"UpgradeAvailable,omitempty" xml:"UpgradeAvailable,omitempty"`
-	// The VPC ID.
+	// VPC ID
 	//
 	// example:
 	//
 	// vpc-*******************
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The VSwitch ID.
+	// VSwitch ID
 	//
 	// example:
 	//
@@ -685,63 +680,63 @@ func (s *DescribeApplicationAttributeResponseBody) Validate() error {
 }
 
 type DescribeApplicationAttributeResponseBodyComponents struct {
-	// The class of the child component.
+	// The specification of the application subcomponent.
 	//
 	// example:
 	//
 	// polar.app.g2.medium
 	ComponentClass *string `json:"ComponentClass,omitempty" xml:"ComponentClass,omitempty"`
-	// The description of the child component\\"s class.
+	// The specification description of the application subcomponent.
 	//
 	// example:
 	//
 	// 2C4GB
 	ComponentClassDescription *string `json:"ComponentClassDescription,omitempty" xml:"ComponentClassDescription,omitempty"`
-	// The child component ID.
+	// The subcomponent ID.
 	//
 	// example:
 	//
 	// pac-*******************
 	ComponentId *string `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
-	// The maximum number of replicas for the child component.
+	// The maximum number of replicas of the application subcomponent.
 	//
 	// example:
 	//
 	// 1
 	ComponentMaxReplica *int64 `json:"ComponentMaxReplica,omitempty" xml:"ComponentMaxReplica,omitempty"`
-	// The number of replicas of the child component.
+	// The number of replicas of the application subcomponent.
 	//
 	// example:
 	//
 	// 1
 	ComponentReplica *int64 `json:"ComponentReplica,omitempty" xml:"ComponentReplica,omitempty"`
-	// The group name of the child component replicas.
+	// The group name of the application subcomponent replicas.
 	//
 	// example:
 	//
 	// default
 	ComponentReplicaGroupName *string `json:"ComponentReplicaGroupName,omitempty" xml:"ComponentReplicaGroupName,omitempty"`
-	// The type of the child component.
+	// The type of the application subcomponent.
 	//
 	// example:
 	//
 	// gateway
 	ComponentType *string `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
-	// The component-level security groups.
+	// The list of security groups at the subcomponent level.
 	//
-	// This parameter is not returned if the component-level security groups are the same as the application-level security groups.
+	// If the security groups at the subcomponent level are the same as those at the application level, this response element is omitted.
 	SecurityGroups []*DescribeApplicationAttributeResponseBodyComponentsSecurityGroups `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty" type:"Repeated"`
-	// The component-level whitelists.
+	// The list of whitelists at the subcomponent level.
 	//
-	// This parameter is not returned if the component-level whitelists are the same as the application-level whitelists.
+	// If the whitelists at the subcomponent level are the same as those at the application level, this response element is omitted.
 	SecurityIPArrays []*DescribeApplicationAttributeResponseBodyComponentsSecurityIPArrays `json:"SecurityIPArrays,omitempty" xml:"SecurityIPArrays,omitempty" type:"Repeated"`
-	// The component status. The valid values are the same as those for the application status.
+	// The component status. Valid values are the same as the application status.
 	//
 	// example:
 	//
 	// Activated
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The topology of the child component.
+	// The topology information of the application subcomponent.
 	Topology *DescribeApplicationAttributeResponseBodyComponentsTopology `json:"Topology,omitempty" xml:"Topology,omitempty" type:"Struct"`
 }
 
@@ -880,7 +875,7 @@ func (s *DescribeApplicationAttributeResponseBodyComponents) Validate() error {
 }
 
 type DescribeApplicationAttributeResponseBodyComponentsSecurityGroups struct {
-	// The network type. The value is:
+	// The network type. Valid values:
 	//
 	// - vpc
 	//
@@ -894,13 +889,13 @@ type DescribeApplicationAttributeResponseBodyComponentsSecurityGroups struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The security group ID.
+	// The ID of the security group.
 	//
 	// example:
 	//
 	// sg-*******************
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The security group name.
+	// The name of the security group.
 	//
 	// example:
 	//
@@ -957,7 +952,7 @@ func (s *DescribeApplicationAttributeResponseBodyComponentsSecurityGroups) Valid
 }
 
 type DescribeApplicationAttributeResponseBodyComponentsSecurityIPArrays struct {
-	// The name of the IP address group. The default value is `default`.
+	// The name of the IP address group. Default value: `default`.
 	//
 	// example:
 	//
@@ -969,19 +964,19 @@ type DescribeApplicationAttributeResponseBodyComponentsSecurityIPArrays struct {
 	//
 	// mytag
 	SecurityIPArrayTag *string `json:"SecurityIPArrayTag,omitempty" xml:"SecurityIPArrayTag,omitempty"`
-	// The whitelisted IP addresses, separated by commas.
+	// The IP addresses in the whitelist, separated by commas (,).
 	//
 	// example:
 	//
 	// 127.0.0.1
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	// The network type of the whitelisted IP addresses. The default value is `mix`.
+	// The network type of the whitelisted IP addresses. Default value: `mix`.
 	//
 	// example:
 	//
 	// mix
 	SecurityIPNetType *string `json:"SecurityIPNetType,omitempty" xml:"SecurityIPNetType,omitempty"`
-	// The IP address type.
+	// The type of the IP address.
 	//
 	// example:
 	//
@@ -1047,15 +1042,15 @@ func (s *DescribeApplicationAttributeResponseBodyComponentsSecurityIPArrays) Val
 }
 
 type DescribeApplicationAttributeResponseBodyComponentsTopology struct {
-	// The IDs or component types of the child nodes for this child component.
+	// The list of child node IDs or child node component types in the topology of the current application subcomponent.
 	Children []*string `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
-	// The topology layer of the child component.
+	// The topology layer of the current application subcomponent.
 	//
 	// example:
 	//
 	// 0
 	Layer *string `json:"Layer,omitempty" xml:"Layer,omitempty"`
-	// The IDs or component types of the parent nodes for this child component.
+	// The list of parent node IDs or parent node component types in the topology of the current application subcomponent.
 	Parents []*string `json:"Parents,omitempty" xml:"Parents,omitempty" type:"Repeated"`
 }
 
@@ -1099,12 +1094,13 @@ func (s *DescribeApplicationAttributeResponseBodyComponentsTopology) Validate() 
 }
 
 type DescribeApplicationAttributeResponseBodyEndpoints struct {
-	// The endpoint description.
+	// The description of the endpoint.
 	//
 	// example:
 	//
 	// myendpoint
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The endpoint ID.
 	//
 	// example:
@@ -1119,9 +1115,9 @@ type DescribeApplicationAttributeResponseBodyEndpoints struct {
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
 	// The endpoint type. Valid values:
 	//
-	// - Private: a VPC endpoint
+	// - Private: VPC endpoint.
 	//
-	// - Public: a public endpoint
+	// - Public: public endpoint.
 	//
 	// example:
 	//
@@ -1153,6 +1149,10 @@ func (s *DescribeApplicationAttributeResponseBodyEndpoints) GetDescription() *st
 	return s.Description
 }
 
+func (s *DescribeApplicationAttributeResponseBodyEndpoints) GetDomain() *string {
+	return s.Domain
+}
+
 func (s *DescribeApplicationAttributeResponseBodyEndpoints) GetEndpointId() *string {
 	return s.EndpointId
 }
@@ -1175,6 +1175,11 @@ func (s *DescribeApplicationAttributeResponseBodyEndpoints) GetPortDescription()
 
 func (s *DescribeApplicationAttributeResponseBodyEndpoints) SetDescription(v string) *DescribeApplicationAttributeResponseBodyEndpoints {
 	s.Description = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBodyEndpoints) SetDomain(v string) *DescribeApplicationAttributeResponseBodyEndpoints {
+	s.Domain = &v
 	return s
 }
 
@@ -1214,31 +1219,29 @@ type DescribeApplicationAttributeResponseBodyMemApplicationAttribute struct {
 	//
 	// test-database-name
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	// The name of the embedder model.
+	// The embedder model name.
 	//
 	// example:
 	//
 	// text-embedding-v4
 	EmbedderModelName *string `json:"EmbedderModelName,omitempty" xml:"EmbedderModelName,omitempty"`
-	// The name of the graph LLM model.
-	//
 	// example:
 	//
 	// qwen3-max
 	GraphLlmModelName *string `json:"GraphLlmModelName,omitempty" xml:"GraphLlmModelName,omitempty"`
-	// The name of the LLM model.
+	// The LLM model name.
 	//
 	// example:
 	//
 	// qwen3-max
 	LlmModelName *string `json:"LlmModelName,omitempty" xml:"LlmModelName,omitempty"`
-	// The project name. It corresponds to the database schema where project data is stored.
+	// The project name, which corresponds to the schema that stores project data in the database.
 	//
 	// example:
 	//
 	// test-project-name
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The name of the reranker model.
+	// The reranker model name.
 	//
 	// example:
 	//
@@ -1333,9 +1336,8 @@ type DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute s
 	// example:
 	//
 	// http://8.xxx.xxx.xxx.xxx/xxx
-	AuthCallbackURL *string `json:"AuthCallbackURL,omitempty" xml:"AuthCallbackURL,omitempty"`
-	// The enabled authentication providers.
-	AuthProviders []*string `json:"AuthProviders,omitempty" xml:"AuthProviders,omitempty" type:"Repeated"`
+	AuthCallbackURL *string   `json:"AuthCallbackURL,omitempty" xml:"AuthCallbackURL,omitempty"`
+	AuthProviders   []*string `json:"AuthProviders,omitempty" xml:"AuthProviders,omitempty" type:"Repeated"`
 	// The Supabase cluster ID.
 	//
 	// example:
@@ -1384,7 +1386,7 @@ func (s *DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribu
 }
 
 type DescribeApplicationAttributeResponseBodySecurityGroups struct {
-	// The network type. The value is:
+	// The network type. Valid values:
 	//
 	// - vpc
 	//
@@ -1398,13 +1400,13 @@ type DescribeApplicationAttributeResponseBodySecurityGroups struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The security group ID.
+	// The ID of the security group.
 	//
 	// example:
 	//
 	// sg-**************
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The security group name.
+	// The name of the security group.
 	//
 	// example:
 	//
@@ -1461,7 +1463,7 @@ func (s *DescribeApplicationAttributeResponseBodySecurityGroups) Validate() erro
 }
 
 type DescribeApplicationAttributeResponseBodySecurityIPArrays struct {
-	// The name of the IP address group. The default value is `default`.
+	// The name of the IP address group. Default value: `default`.
 	//
 	// example:
 	//
@@ -1473,19 +1475,19 @@ type DescribeApplicationAttributeResponseBodySecurityIPArrays struct {
 	//
 	// mytag
 	SecurityIPArrayTag *string `json:"SecurityIPArrayTag,omitempty" xml:"SecurityIPArrayTag,omitempty"`
-	// The whitelisted IP addresses, separated by commas.
+	// The IP addresses in the whitelist, separated by commas (,).
 	//
 	// example:
 	//
 	// 127.0.0.1
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	// The network type of the whitelisted IP addresses. The default value is `mix`.
+	// The network type of the whitelisted IP addresses. Default value: `mix`.
 	//
 	// example:
 	//
 	// mix
 	SecurityIPNetType *string `json:"SecurityIPNetType,omitempty" xml:"SecurityIPNetType,omitempty"`
-	// The IP address type.
+	// The type of the IP address.
 	//
 	// example:
 	//
@@ -1563,7 +1565,7 @@ type DescribeApplicationAttributeResponseBodyStorages struct {
 	//
 	// pa-**************
 	StorageInstanceId *string `json:"StorageInstanceId,omitempty" xml:"StorageInstanceId,omitempty"`
-	// The storage performance level.
+	// The storage performance level (PL).
 	//
 	// example:
 	//
