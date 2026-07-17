@@ -4119,6 +4119,84 @@ func (client *Client) DescribeAtiAgentRegisterInfo(request *DescribeAtiAgentRegi
 
 // Summary:
 //
+// 为sdk查询agent信息功能
+//
+// @param request - DescribeAtiAgentRegisterInfoMarketRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAtiAgentRegisterInfoMarketResponse
+func (client *Client) DescribeAtiAgentRegisterInfoMarketWithOptions(request *DescribeAtiAgentRegisterInfoMarketRequest, runtime *dara.RuntimeOptions) (_result *DescribeAtiAgentRegisterInfoMarketResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentHost) {
+		query["AgentHost"] = request.AgentHost
+	}
+
+	if !dara.IsNil(request.AgentVersion) {
+		query["AgentVersion"] = request.AgentVersion
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAtiAgentRegisterInfoMarket"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAtiAgentRegisterInfoMarketResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 为sdk查询agent信息功能
+//
+// @param request - DescribeAtiAgentRegisterInfoMarketRequest
+//
+// @return DescribeAtiAgentRegisterInfoMarketResponse
+func (client *Client) DescribeAtiAgentRegisterInfoMarket(request *DescribeAtiAgentRegisterInfoMarketRequest) (_result *DescribeAtiAgentRegisterInfoMarketResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeAtiAgentRegisterInfoMarketResponse{}
+	_body, _err := client.DescribeAtiAgentRegisterInfoMarketWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries alert settings.
 //
 // @param request - DescribeAtiAlertSettingsRequest
