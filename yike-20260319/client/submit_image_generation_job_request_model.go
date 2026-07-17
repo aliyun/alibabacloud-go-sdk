@@ -44,13 +44,13 @@ type SubmitImageGenerationJobRequest struct {
 	//
 	// ****3e761e9d11edba640c42a1b7****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The task input. This is a JSON string that contains the following fields:
+	// The task input, in JSON string format. The following fields are included:
 	//
-	// - Prompt: String. Required. The prompt.
+	// - Prompt: String. Required. The prompt text.
 	//
-	// - Medias: the media list. Required when the task type is `image_to_image`. A maximum of 9 items are supported.
+	// - Medias: a list of media items. Required when the task type is `image_to_image`. A maximum of 9 items are supported.
 	//
-	// > The Media struct contains: Type, the media type, String, valid value: image. URL, the media download URL, String.
+	// > The Media structure contains: Type, the media type, String, valid value: image; URL, the media download URL, String.
 	//
 	// >
 	//
@@ -58,7 +58,7 @@ type SubmitImageGenerationJobRequest struct {
 	//
 	// {\\"Bucket\\":\\"dbj-app-prod\\",\\"Location\\":\\"oss-cn-hangzhou\\",\\"Object\\":\\"classpal/1767838045280pzmgnvwe.mp4\\"}
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	// The task feature parameters. This is a JSON string. No configuration is required at this time.
+	// The task function parameters, in JSON string format. No configuration is required at this time.
 	//
 	// example:
 	//
@@ -66,9 +66,9 @@ type SubmitImageGenerationJobRequest struct {
 	JobParameters *string `json:"JobParameters,omitempty" xml:"JobParameters,omitempty"`
 	// The type of the generation task. Valid values:
 	//
-	// - text_to_image: text-to-image.
+	// - text_to_image: text-to-image generation.
 	//
-	// - image_to_image: image-to-image.
+	// - image_to_image: image-to-image generation.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type SubmitImageGenerationJobRequest struct {
 	//
 	// general
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	// The user business data in JSON format.
+	// The user business data, in JSON format.
 	//
 	// example:
 	//

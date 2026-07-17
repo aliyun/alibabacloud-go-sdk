@@ -38,7 +38,7 @@ type GetYikeAIAppJobResponseBody struct {
 	//
 	// app-****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The input parameters for the AI application run. The value is a string obtained after JSON serialize.
+	// The input parameters for the AI application execution, a string after JSON serialization.
 	//
 	// example:
 	//
@@ -84,15 +84,15 @@ type GetYikeAIAppJobResponseBody struct {
 	Result *GetYikeAIAppJobResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// The task status. Valid values:
 	//
-	// - Created: The task is created.
+	// - Created: The task is just created.
 	//
 	// - Queuing: The task is queuing.
 	//
 	// - Executing: The task is being executed.
 	//
-	// - Finished: The task is finished.
+	// - Finished: The task execution is complete.
 	//
-	// - Failed: The task failed.
+	// - Failed: The task execution failed.
 	//
 	// example:
 	//

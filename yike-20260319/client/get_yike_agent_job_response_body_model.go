@@ -32,7 +32,7 @@ type iGetYikeAgentJobResponseBody interface {
 }
 
 type GetYikeAgentJobResponseBody struct {
-	// The time when the task started. The time is in the yyyy-mm-ddTHH:mm:ssZ format (UTC).
+	// The time when the task started, in the yyyy-mm-ddTHH:mm:ssZ format (UTC).
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type GetYikeAgentJobResponseBody struct {
 	//
 	// WorkflowTaskFailed
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The time when the task ended. The time is in the yyyy-mm-ddTHH:mm:ssZ format (UTC).
+	// The time when the task ended, in the yyyy-mm-ddTHH:mm:ssZ format (UTC).
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type GetYikeAgentJobResponseBody struct {
 	//
 	// ab4802364a2e49208c99efab82df****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The input parameters of the task. The value is a JSON string.
+	// The input parameters of the task, in JSON string format.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type GetYikeAgentJobResponseBody struct {
 	//
 	// - Succeeded
 	//
-	// - Failed.
+	// - Failed
 	//
 	// example:
 	//

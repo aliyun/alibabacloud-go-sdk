@@ -22,7 +22,7 @@ type UpdateYikeProductionMemberAuthRequest struct {
 	//
 	// - Manage: manageable
 	//
-	// - Edit: editable.
+	// - Edit: editable
 	//
 	// This parameter is required.
 	//

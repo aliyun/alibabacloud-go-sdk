@@ -72,7 +72,7 @@ type BatchGetYikeAIAppJobResponseBodyJobList struct {
 	//
 	// 9e09955d662a
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The input parameters for running the AI application. The value is a JSON-serialized string.
+	// The input parameters for running the AI application. The value is a JSON serialize string.
 	//
 	// example:
 	//
@@ -118,7 +118,7 @@ type BatchGetYikeAIAppJobResponseBodyJobList struct {
 	//
 	// - Executing: The task is being executed.
 	//
-	// - Finished: The task is finished.
+	// - Finished: The task is completed.
 	//
 	// - Failed: The task failed.
 	//

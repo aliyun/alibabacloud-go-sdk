@@ -38,7 +38,9 @@ type CreateYikeUserRequest struct {
 	//
 	// ***
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The associated projects. Multiple project IDs are supported, separated by commas.
+	// The associated projects. Multiple projects are supported, separated by commas.
+	//
+	// >
 	//
 	// > - A single user can be added to multiple projects.
 	//
@@ -50,9 +52,9 @@ type CreateYikeUserRequest struct {
 	ProductionIds *string `json:"ProductionIds,omitempty" xml:"ProductionIds,omitempty"`
 	// The username prefix of the sub-account. Rules:
 	//
-	// - The prefix can be up to 50 characters in length and must be unique within the workspace.
+	// - Maximum 50 characters. Must be unique within the workspace.
 	//
-	// - The system automatically generates the login name in the following format: {UserNamePrefix}.{Workspace Code}@{Alibaba Cloud UID}.yikeai.
+	// - The system automatically generates the user logon name in the following format: {UserNamePrefix}.{Workspace Code}@{Alibaba Cloud UID}.yikeai.
 	//
 	// This parameter is required.
 	//

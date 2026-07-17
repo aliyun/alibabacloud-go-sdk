@@ -74,7 +74,7 @@ type GetVideoGenerationJobResponseBodyVideoGenerationJob struct {
 	//
 	// 5
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The error message. This parameter is returned when the task is in the Failed state.
+	// The error message. This parameter is returned only when the task is in the Failed state.
 	//
 	// example:
 	//
@@ -116,9 +116,9 @@ type GetVideoGenerationJobResponseBodyVideoGenerationJob struct {
 	//
 	// 1
 	N *int32 `json:"N,omitempty" xml:"N,omitempty"`
-	// The output result in JsonString format. The following fields are included:
+	// The generation result. The value is a JSON string that contains the following fields:
 	//
-	// Medias: a list of media information (Media objects). The Media object contains the following fields:
+	// Medias: a list of Media objects. Each Media object contains the following fields:
 	//
 	// MediaId: String. The media asset ID.
 	//

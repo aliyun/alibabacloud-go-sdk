@@ -20,7 +20,7 @@ type iCreateYikeAssetUploadResponseBody interface {
 }
 
 type CreateYikeAssetUploadResponseBody struct {
-	// The OSS URL of the file, without authentication.
+	// The OSS URL of the file (without authentication).
 	//
 	// example:
 	//

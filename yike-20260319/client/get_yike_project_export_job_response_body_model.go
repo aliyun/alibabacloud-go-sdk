@@ -204,7 +204,7 @@ type GetYikeProjectExportJobResponseBodyProjectExportJobExportResult struct {
 	//
 	// http://....MP3?Expires=
 	AudioUrl *string `json:"AudioUrl,omitempty" xml:"AudioUrl,omitempty"`
-	// The download URL of the PR project file (not supported).
+	// The download URL of the PR project file (not supported currently).
 	//
 	// example:
 	//
@@ -212,7 +212,7 @@ type GetYikeProjectExportJobResponseBodyProjectExportJobExportResult struct {
 	ProjectUrl *string `json:"ProjectUrl,omitempty" xml:"ProjectUrl,omitempty"`
 	// The subtitle list.
 	SrtList []*GetYikeProjectExportJobResponseBodyProjectExportJobExportResultSrtList `json:"SrtList,omitempty" xml:"SrtList,omitempty" type:"Repeated"`
-	// The editing timeline (not supported).
+	// The editing timeline (not supported currently).
 	//
 	// example:
 	//
@@ -284,7 +284,7 @@ type GetYikeProjectExportJobResponseBodyProjectExportJobExportResultSrtList stru
 	//
 	// http://xxx?Expires=
 	SrtUrl *string `json:"SrtUrl,omitempty" xml:"SrtUrl,omitempty"`
-	// The type enumeration. Currently, only VoiceOver is supported.
+	// The type enumeration. Currently only VoiceOver is supported.
 	//
 	// example:
 	//

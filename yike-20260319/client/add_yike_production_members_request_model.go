@@ -24,7 +24,7 @@ type AddYikeProductionMembersRequest struct {
 	//
 	// pd_061716***
 	ProductionId *string `json:"ProductionId,omitempty" xml:"ProductionId,omitempty"`
-	// The IDs of the RAM users.
+	// The RAM user IDs.
 	//
 	// This parameter is required.
 	//

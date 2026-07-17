@@ -14,7 +14,7 @@ type iGetYikeUserCreditRequest interface {
 }
 
 type GetYikeUserCreditRequest struct {
-	// The user ID of the sub-account.
+	// The sub-account user ID.
 	//
 	// This parameter is required.
 	//

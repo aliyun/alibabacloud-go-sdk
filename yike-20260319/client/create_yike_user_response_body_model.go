@@ -62,7 +62,7 @@ func (s *CreateYikeUserResponseBody) Validate() error {
 }
 
 type CreateYikeUserResponseBodyUserInfo struct {
-	// The nickname of the user.
+	// The user nickname.
 	//
 	// example:
 	//

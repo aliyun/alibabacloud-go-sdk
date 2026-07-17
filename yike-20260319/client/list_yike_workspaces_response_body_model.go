@@ -24,13 +24,13 @@ type ListYikeWorkspacesResponseBody struct {
 	//
 	// 4E84BE44-58A7-****-****-FBEBEA16EF94
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of workspaces
+	// The total number of workspaces.
 	//
 	// example:
 	//
 	// 54
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// Workspace list
+	// The list of workspaces.
 	WorkspaceList []*ListYikeWorkspacesResponseBodyWorkspaceList `json:"WorkspaceList,omitempty" xml:"WorkspaceList,omitempty" type:"Repeated"`
 }
 
@@ -83,43 +83,43 @@ func (s *ListYikeWorkspacesResponseBody) Validate() error {
 }
 
 type ListYikeWorkspacesResponseBodyWorkspaceList struct {
-	// Workspace code
+	// The workspace code.
 	//
 	// example:
 	//
 	// ABCD12
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2026-04-29T10:22:44Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Default project ID
+	// The default project ID.
 	//
 	// example:
 	//
 	// pd_1234***
 	DefaultProductionId *string `json:"DefaultProductionId,omitempty" xml:"DefaultProductionId,omitempty"`
-	// Workspace status
+	// The workspace status.
 	//
 	// example:
 	//
 	// Online
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Title
+	// The title.
 	//
 	// example:
 	//
 	// workspace title
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// Number of users in the workspace
+	// The number of users in the workspace.
 	//
 	// example:
 	//
 	// 1
 	UserCount *string `json:"UserCount,omitempty" xml:"UserCount,omitempty"`
-	// Workspace ID.
+	// The workspace ID.
 	//
 	// example:
 	//

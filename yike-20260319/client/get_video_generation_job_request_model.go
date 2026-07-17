@@ -9,19 +9,11 @@ type iGetVideoGenerationJobRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetClientToken(v string) *GetVideoGenerationJobRequest
-	GetClientToken() *string
 	SetJobId(v string) *GetVideoGenerationJobRequest
 	GetJobId() *string
 }
 
 type GetVideoGenerationJobRequest struct {
-	// The idempotency token.
-	//
-	// example:
-	//
-	// xxxx
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The task ID.
 	//
 	// example:
@@ -38,17 +30,8 @@ func (s GetVideoGenerationJobRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetVideoGenerationJobRequest) GetClientToken() *string {
-	return s.ClientToken
-}
-
 func (s *GetVideoGenerationJobRequest) GetJobId() *string {
 	return s.JobId
-}
-
-func (s *GetVideoGenerationJobRequest) SetClientToken(v string) *GetVideoGenerationJobRequest {
-	s.ClientToken = &v
-	return s
 }
 
 func (s *GetVideoGenerationJobRequest) SetJobId(v string) *GetVideoGenerationJobRequest {

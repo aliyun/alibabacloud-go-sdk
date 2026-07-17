@@ -84,7 +84,7 @@ type SubmitYikeStoryboardJobRequest struct {
 	KeepOriginDialogue *bool `json:"KeepOriginDialogue,omitempty" xml:"KeepOriginDialogue,omitempty"`
 	// The model parameters in JSON format.
 	//
-	// "AudioEnable": false disables audio.
+	//  "AudioEnable": false disables audio.
 	//
 	// example:
 	//
@@ -116,21 +116,21 @@ type SubmitYikeStoryboardJobRequest struct {
 	//
 	// - sys_GravellySoulful: gravelly soulful male
 	//
-	// - sys_ClassicYoungMan: classic narrator male
+	// - sys_ClassicYoungMan: classic narration male
 	//
-	// - sys_WiseYoungMan: wise narrator male
+	// - sys_WiseYoungMan: wise narration male
 	//
-	// - sys_ClassicYoungWoman: classic narrator female
+	// - sys_ClassicYoungWoman: classic narration female
 	//
-	// - sys_IntellectualYoungWoman: intellectual narrator female
+	// - sys_IntellectualYoungWoman: intellectual narration female
 	//
-	// - sys_GentleYoungMan: gentle narrator male
+	// - sys_GentleYoungMan: gentle narration male
 	//
 	// - sys_thoughtfulBoy: thoughtful boy
 	//
 	// - sys_RichBassMale: rich bass male
 	//
-	// - sys_ClassicMiddleAgedWoman: classic middle-aged narrator female
+	// - sys_ClassicMiddleAgedWoman: classic middle-aged narration female
 	//
 	// example:
 	//

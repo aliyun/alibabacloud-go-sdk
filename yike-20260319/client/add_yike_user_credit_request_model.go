@@ -24,7 +24,7 @@ type AddYikeUserCreditRequest struct {
 	//
 	// 50
 	Credit *int32 `json:"Credit,omitempty" xml:"Credit,omitempty"`
-	// The ID of the sub-account user.
+	// The sub-account user ID.
 	//
 	// This parameter is required.
 	//

@@ -16,7 +16,7 @@ type iSetYikeUserRoleRequest interface {
 }
 
 type SetYikeUserRoleRequest struct {
-	// The role of the user. Valid values:
+	// The user role. Valid values:
 	//
 	// - SuperAdmin: super administrator.
 	//
@@ -28,7 +28,7 @@ type SetYikeUserRoleRequest struct {
 	//
 	// Admin
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	// The ID of the sub-account user.
+	// The ID of the RAM user.
 	//
 	// example:
 	//

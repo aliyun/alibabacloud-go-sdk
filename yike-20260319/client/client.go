@@ -26,7 +26,8 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	}
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
-		"cn-shanghai": dara.String("yike.cn-shanghai.aliyuncs.com"),
+		"cn-shanghai":    dara.String("yike.cn-shanghai.aliyuncs.com"),
+		"ap-southeast-1": dara.String("yike.ap-southeast-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -61,7 +62,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Adds a member to a Yike project.
+// Adds members to a Yike project.
 //
 // @param request - AddYikeProductionMembersRequest
 //
@@ -109,7 +110,7 @@ func (client *Client) AddYikeProductionMembersWithOptions(request *AddYikeProduc
 
 // Summary:
 //
-// Adds a member to a Yike project.
+// Adds members to a Yike project.
 //
 // @param request - AddYikeProductionMembersRequest
 //
@@ -255,7 +256,7 @@ func (client *Client) BatchGetYikeAIAppJob(request *BatchGetYikeAIAppJobRequest)
 
 // Summary:
 //
-// Retrieves information about multiple media assets in a batch.
+// Retrieves media asset information in batches.
 //
 // @param request - BatchGetYikeAssetMediaInfosRequest
 //
@@ -299,7 +300,7 @@ func (client *Client) BatchGetYikeAssetMediaInfosWithOptions(request *BatchGetYi
 
 // Summary:
 //
-// Retrieves information about multiple media assets in a batch.
+// Retrieves media asset information in batches.
 //
 // @param request - BatchGetYikeAssetMediaInfosRequest
 //
@@ -383,6 +384,82 @@ func (client *Client) CreateYikeAssetUpload(request *CreateYikeAssetUploadReques
 
 // Summary:
 //
+// 创建一刻云剪辑工程
+//
+// @param request - CreateYikeEditingProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateYikeEditingProjectResponse
+func (client *Client) CreateYikeEditingProjectWithOptions(request *CreateYikeEditingProjectRequest, runtime *dara.RuntimeOptions) (_result *CreateYikeEditingProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CoverURL) {
+		query["CoverURL"] = request.CoverURL
+	}
+
+	if !dara.IsNil(request.MaterialMaps) {
+		query["MaterialMaps"] = request.MaterialMaps
+	}
+
+	if !dara.IsNil(request.Title) {
+		query["Title"] = request.Title
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Timeline) {
+		body["Timeline"] = request.Timeline
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateYikeEditingProject"),
+		Version:     dara.String("2026-03-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateYikeEditingProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建一刻云剪辑工程
+//
+// @param request - CreateYikeEditingProjectRequest
+//
+// @return CreateYikeEditingProjectResponse
+func (client *Client) CreateYikeEditingProject(request *CreateYikeEditingProjectRequest) (_result *CreateYikeEditingProjectResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateYikeEditingProjectResponse{}
+	_body, _err := client.CreateYikeEditingProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a project.
 //
 // @param request - CreateYikeProductionRequest
@@ -449,7 +526,7 @@ func (client *Client) CreateYikeProduction(request *CreateYikeProductionRequest)
 
 // Summary:
 //
-// Creates a sub-account user in WonderClip.
+// Creates a sub-user.
 //
 // @param request - CreateYikeUserRequest
 //
@@ -509,7 +586,7 @@ func (client *Client) CreateYikeUserWithOptions(request *CreateYikeUserRequest, 
 
 // Summary:
 //
-// Creates a sub-account user in WonderClip.
+// Creates a sub-user.
 //
 // @param request - CreateYikeUserRequest
 //
@@ -665,7 +742,7 @@ func (client *Client) DeleteYikeAssetMediaInfos(request *DeleteYikeAssetMediaInf
 //
 // ## Request description
 //
-// This API generates a video narrated by a virtual human based on the provided text content and other parameters such as digital human information and common scenario type. You must specify key configuration items including the text type (original script or narration script), output dimensions, and resolution. You can also choose whether to add subtitles or specify the output language. Additionally, you can pass custom parameters through the `UserData` field, which are returned as-is in the callback.
+// This API is used to generate a video narrated by a virtual human based on the provided text content and other parameters such as digital human information and common scenario type. You must specify key configuration items including the text type (original script or narration script), output dimensions, and resolution. You can also choose whether to add subtitles or specify the output language. In addition, you can pass custom parameters through the `UserData` field, which are returned as-is in the callback.
 //
 // @param request - GetImageGenerationJobRequest
 //
@@ -715,7 +792,7 @@ func (client *Client) GetImageGenerationJobWithOptions(request *GetImageGenerati
 //
 // ## Request description
 //
-// This API generates a video narrated by a virtual human based on the provided text content and other parameters such as digital human information and common scenario type. You must specify key configuration items including the text type (original script or narration script), output dimensions, and resolution. You can also choose whether to add subtitles or specify the output language. Additionally, you can pass custom parameters through the `UserData` field, which are returned as-is in the callback.
+// This API is used to generate a video narrated by a virtual human based on the provided text content and other parameters such as digital human information and common scenario type. You must specify key configuration items including the text type (original script or narration script), output dimensions, and resolution. You can also choose whether to add subtitles or specify the output language. In addition, you can pass custom parameters through the `UserData` field, which are returned as-is in the callback.
 //
 // @param request - GetImageGenerationJobRequest
 //
@@ -733,7 +810,7 @@ func (client *Client) GetImageGenerationJob(request *GetImageGenerationJobReques
 
 // Summary:
 //
-// Queries an AI video generation task.
+// Queries a video generation task.
 //
 // @param request - GetVideoGenerationJobRequest
 //
@@ -748,10 +825,6 @@ func (client *Client) GetVideoGenerationJobWithOptions(request *GetVideoGenerati
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.ClientToken) {
-		query["ClientToken"] = request.ClientToken
-	}
-
 	if !dara.IsNil(request.JobId) {
 		query["JobId"] = request.JobId
 	}
@@ -781,7 +854,7 @@ func (client *Client) GetVideoGenerationJobWithOptions(request *GetVideoGenerati
 
 // Summary:
 //
-// Queries an AI video generation task.
+// Queries a video generation task.
 //
 // @param request - GetVideoGenerationJobRequest
 //
@@ -799,7 +872,7 @@ func (client *Client) GetVideoGenerationJob(request *GetVideoGenerationJobReques
 
 // Summary:
 //
-// Retrieves the details of an AI application task.
+// Retrieves an AI application task from China International Communications Group (YIKE) AI.
 //
 // @param request - GetYikeAIAppJobRequest
 //
@@ -843,7 +916,7 @@ func (client *Client) GetYikeAIAppJobWithOptions(request *GetYikeAIAppJobRequest
 
 // Summary:
 //
-// Retrieves the details of an AI application task.
+// Retrieves an AI application task from China International Communications Group (YIKE) AI.
 //
 // @param request - GetYikeAIAppJobRequest
 //
@@ -861,7 +934,62 @@ func (client *Client) GetYikeAIAppJob(request *GetYikeAIAppJobRequest) (_result 
 
 // Summary:
 //
-// Queries an agent task.
+// Retrieves the membership plan and credit information for a Yike primary account.
+//
+// @param request - GetYikeAccountCreditRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetYikeAccountCreditResponse
+func (client *Client) GetYikeAccountCreditWithOptions(request *GetYikeAccountCreditRequest, runtime *dara.RuntimeOptions) (_result *GetYikeAccountCreditResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetYikeAccountCredit"),
+		Version:     dara.String("2026-03-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetYikeAccountCreditResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the membership plan and credit information for a Yike primary account.
+//
+// @param request - GetYikeAccountCreditRequest
+//
+// @return GetYikeAccountCreditResponse
+func (client *Client) GetYikeAccountCredit(request *GetYikeAccountCreditRequest) (_result *GetYikeAccountCreditResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetYikeAccountCreditResponse{}
+	_body, _err := client.GetYikeAccountCreditWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries an intelligent agent task.
 //
 // @param request - GetYikeAgentJobRequest
 //
@@ -905,7 +1033,7 @@ func (client *Client) GetYikeAgentJobWithOptions(request *GetYikeAgentJobRequest
 
 // Summary:
 //
-// Queries an agent task.
+// Queries an intelligent agent task.
 //
 // @param request - GetYikeAgentJobRequest
 //
@@ -1171,7 +1299,7 @@ func (client *Client) GetYikeStoryboardJob(request *GetYikeStoryboardJobRequest)
 
 // Summary:
 //
-// Retrieves information about a WonderClip sub-account.
+// Retrieves the information of a Yike RAM user.
 //
 // @param request - GetYikeUserRequest
 //
@@ -1215,7 +1343,7 @@ func (client *Client) GetYikeUserWithOptions(request *GetYikeUserRequest, runtim
 
 // Summary:
 //
-// Retrieves information about a WonderClip sub-account.
+// Retrieves the information of a Yike RAM user.
 //
 // @param request - GetYikeUserRequest
 //
@@ -1233,7 +1361,7 @@ func (client *Client) GetYikeUser(request *GetYikeUserRequest) (_result *GetYike
 
 // Summary:
 //
-// Queries the credit balance of a WonderClip user.
+// Queries the credits of a Yike user.
 //
 // @param request - GetYikeUserCreditRequest
 //
@@ -1277,7 +1405,7 @@ func (client *Client) GetYikeUserCreditWithOptions(request *GetYikeUserCreditReq
 
 // Summary:
 //
-// Queries the credit balance of a WonderClip user.
+// Queries the credits of a Yike user.
 //
 // @param request - GetYikeUserCreditRequest
 //
@@ -1295,7 +1423,7 @@ func (client *Client) GetYikeUserCredit(request *GetYikeUserCreditRequest) (_res
 
 // Summary:
 //
-// Queries an intelligent video generation task for a narration-only video without a digital human.
+// Queries the status of an intelligent video generation task for narration-only videos (without digital humans).
 //
 // @param request - GetYikeVoiceNarratorJobRequest
 //
@@ -1339,7 +1467,7 @@ func (client *Client) GetYikeVoiceNarratorJobWithOptions(request *GetYikeVoiceNa
 
 // Summary:
 //
-// Queries an intelligent video generation task for a narration-only video without a digital human.
+// Queries the status of an intelligent video generation task for narration-only videos (without digital humans).
 //
 // @param request - GetYikeVoiceNarratorJobRequest
 //
@@ -1427,7 +1555,7 @@ func (client *Client) ListYikeAssetFolders(request *ListYikeAssetFoldersRequest)
 
 // Summary:
 //
-// Retrieves a list of Yike projects.
+// Retrieves the list of Yike projects.
 //
 // @param request - ListYikeProductionsRequest
 //
@@ -1487,7 +1615,7 @@ func (client *Client) ListYikeProductionsWithOptions(request *ListYikeProduction
 
 // Summary:
 //
-// Retrieves a list of Yike projects.
+// Retrieves the list of Yike projects.
 //
 // @param request - ListYikeProductionsRequest
 //
@@ -1505,7 +1633,7 @@ func (client *Client) ListYikeProductions(request *ListYikeProductionsRequest) (
 
 // Summary:
 //
-// # Get Yike Workspace List
+// Retrieves the list of Yike workspaces.
 //
 // @param request - ListYikeWorkspacesRequest
 //
@@ -1553,7 +1681,7 @@ func (client *Client) ListYikeWorkspacesWithOptions(request *ListYikeWorkspacesR
 
 // Summary:
 //
-// # Get Yike Workspace List
+// Retrieves the list of Yike workspaces.
 //
 // @param request - ListYikeWorkspacesRequest
 //
@@ -1637,7 +1765,7 @@ func (client *Client) PrecheckYikeAIAppJob(request *PrecheckYikeAIAppJobRequest)
 
 // Summary:
 //
-// Registers a Yike media asset.
+// Registers a media asset.
 //
 // @param request - RegisterYikeAssetMediaInfoRequest
 //
@@ -1693,7 +1821,7 @@ func (client *Client) RegisterYikeAssetMediaInfoWithOptions(request *RegisterYik
 
 // Summary:
 //
-// Registers a Yike media asset.
+// Registers a media asset.
 //
 // @param request - RegisterYikeAssetMediaInfoRequest
 //
@@ -1839,7 +1967,7 @@ func (client *Client) SetYikeCallbackConfig(request *SetYikeCallbackConfigReques
 
 // Summary:
 //
-// Sets the user role.
+// Sets the role of a user.
 //
 // @param request - SetYikeUserRoleRequest
 //
@@ -1887,7 +2015,7 @@ func (client *Client) SetYikeUserRoleWithOptions(request *SetYikeUserRoleRequest
 
 // Summary:
 //
-// Sets the user role.
+// Sets the role of a user.
 //
 // @param request - SetYikeUserRoleRequest
 //
@@ -1905,7 +2033,7 @@ func (client *Client) SetYikeUserRole(request *SetYikeUserRoleRequest) (_result 
 
 // Summary:
 //
-// Reclaims credits from a user.
+// Deducts user credits.
 //
 // @param request - SubYikeUserCreditRequest
 //
@@ -1953,7 +2081,7 @@ func (client *Client) SubYikeUserCreditWithOptions(request *SubYikeUserCreditReq
 
 // Summary:
 //
-// Reclaims credits from a user.
+// Deducts user credits.
 //
 // @param request - SubYikeUserCreditRequest
 //
@@ -1975,9 +2103,9 @@ func (client *Client) SubYikeUserCredit(request *SubYikeUserCreditRequest) (_res
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// This API operation generates a video in which a virtual human delivers a spoken narration based on the provided text content and other parameters such as digital human information and common scenarios type. You must specify key configuration items including the text type (original script or narration script), output dimensions, and resolution. You can also choose whether to add subtitles or specify the output language. In addition, you can pass custom parameters through the UserData field, which are returned as-is in the callback.
+// This API is used to generate a video narrated by a virtual human based on the provided text content and other parameters (such as digital human information and application scenario type). You must specify key configuration items such as the text type (original script or narration script), output dimensions, and resolution. You can also choose whether to add subtitles or specify the output language. In addition, you can pass custom parameters through the `UserData` field, which are returned as-is in the callback.
 //
 // @param request - SubmitImageGenerationJobRequest
 //
@@ -2061,9 +2189,9 @@ func (client *Client) SubmitImageGenerationJobWithOptions(request *SubmitImageGe
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// This API operation generates a video in which a virtual human delivers a spoken narration based on the provided text content and other parameters such as digital human information and common scenarios type. You must specify key configuration items including the text type (original script or narration script), output dimensions, and resolution. You can also choose whether to add subtitles or specify the output language. In addition, you can pass custom parameters through the UserData field, which are returned as-is in the callback.
+// This API is used to generate a video narrated by a virtual human based on the provided text content and other parameters (such as digital human information and application scenario type). You must specify key configuration items such as the text type (original script or narration script), output dimensions, and resolution. You can also choose whether to add subtitles or specify the output language. In addition, you can pass custom parameters through the `UserData` field, which are returned as-is in the callback.
 //
 // @param request - SubmitImageGenerationJobRequest
 //
@@ -2087,7 +2215,7 @@ func (client *Client) SubmitImageGenerationJob(request *SubmitImageGenerationJob
 //
 // ## Request description
 //
-// This API operation generates a video featuring a virtual human narration based on the provided text content and other parameters such as digital human information and common scenarios type. You must specify key configuration items including the text type (original script or narration script), output dimensions, and resolution. You can also choose whether to add subtitles or specify the output language. In addition, you can pass custom parameters through the `UserData` field, which are returned as-is in the callback.
+// This API generates a video featuring a virtual human speaking based on the provided text content and other parameters (such as digital human information and common scenarios type). You must specify the text type (original script or spoken script), output dimensions, resolution, and other key configuration items. You can also choose whether to add subtitles or specify the output language. Additionally, you can pass custom parameters through the `UserData` field, which are returned as-is in the callback.
 //
 // @param request - SubmitVideoGenerationJobRequest
 //
@@ -2177,7 +2305,7 @@ func (client *Client) SubmitVideoGenerationJobWithOptions(request *SubmitVideoGe
 //
 // ## Request description
 //
-// This API operation generates a video featuring a virtual human narration based on the provided text content and other parameters such as digital human information and common scenarios type. You must specify key configuration items including the text type (original script or narration script), output dimensions, and resolution. You can also choose whether to add subtitles or specify the output language. In addition, you can pass custom parameters through the `UserData` field, which are returned as-is in the callback.
+// This API generates a video featuring a virtual human speaking based on the provided text content and other parameters (such as digital human information and common scenarios type). You must specify the text type (original script or spoken script), output dimensions, resolution, and other key configuration items. You can also choose whether to add subtitles or specify the output language. Additionally, you can pass custom parameters through the `UserData` field, which are returned as-is in the callback.
 //
 // @param request - SubmitVideoGenerationJobRequest
 //
@@ -2821,7 +2949,7 @@ func (client *Client) UpdateYikeProduction(request *UpdateYikeProductionRequest)
 
 // Summary:
 //
-// Modifies the permissions of a Yike project member.
+// Modifies the permissions of a China Short Video (Yike) project member.
 //
 // @param request - UpdateYikeProductionMemberAuthRequest
 //
@@ -2873,7 +3001,7 @@ func (client *Client) UpdateYikeProductionMemberAuthWithOptions(request *UpdateY
 
 // Summary:
 //
-// Modifies the permissions of a Yike project member.
+// Modifies the permissions of a China Short Video (Yike) project member.
 //
 // @param request - UpdateYikeProductionMemberAuthRequest
 //

@@ -14,7 +14,7 @@ type iGetYikeUserRequest interface {
 }
 
 type GetYikeUserRequest struct {
-	// The username of the WonderClip sub-account.
+	// The username of the RAM user.
 	//
 	// example:
 	//

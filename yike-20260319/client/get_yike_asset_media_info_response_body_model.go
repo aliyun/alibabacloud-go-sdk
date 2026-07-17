@@ -354,13 +354,13 @@ func (s *GetYikeAssetMediaInfoResponseBodyMediaInfoBizData) Validate() error {
 }
 
 type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoList struct {
-	// The audio stream information. A media asset may contain multiple audio streams.
+	// The audio stream information. A media asset may have multiple audio streams.
 	AudioStreamInfoList []*GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList `json:"AudioStreamInfoList,omitempty" xml:"AudioStreamInfoList,omitempty" type:"Repeated"`
 	// The basic file information, including duration and size.
 	FileBasicInfo *GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
-	// The subtitle stream information. A media asset may contain multiple subtitle streams.
+	// The subtitle stream information. A media asset may have multiple subtitle streams.
 	SubtitleStreamInfoList []*GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList `json:"SubtitleStreamInfoList,omitempty" xml:"SubtitleStreamInfoList,omitempty" type:"Repeated"`
-	// The video stream information. A media asset may contain multiple video streams.
+	// The video stream information. A media asset may have multiple video streams.
 	VideoStreamInfoList []*GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList `json:"VideoStreamInfoList,omitempty" xml:"VideoStreamInfoList,omitempty" type:"Repeated"`
 }
 
@@ -445,7 +445,7 @@ func (s *GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoList) Validate() erro
 }
 
 type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList struct {
-	// The bitrate.
+	// The bitrate of the file.
 	//
 	// example:
 	//
@@ -457,7 +457,7 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList s
 	//
 	// stereo
 	ChannelLayout *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
-	// The number of channels.
+	// The number of audio channels.
 	//
 	// example:
 	//
@@ -493,7 +493,7 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList s
 	//
 	// 1/44100
 	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	// The duration.
+	// The duration of the file.
 	//
 	// example:
 	//
@@ -511,7 +511,7 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList s
 	//
 	// 1
 	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	// The language.
+	// The language of the audio stream.
 	//
 	// example:
 	//
@@ -730,7 +730,7 @@ func (s *GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoLi
 }
 
 type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo struct {
-	// The bitrate.
+	// The bitrate of the file.
 	//
 	// example:
 	//
@@ -742,7 +742,7 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo struct 
 	//
 	// 2020-12-26T04:11:08Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The duration.
+	// The duration of the file.
 	//
 	// example:
 	//
@@ -754,7 +754,7 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo struct 
 	//
 	// example.mp4
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The file size, in bytes.
+	// The file size in bytes.
 	//
 	// example:
 	//
@@ -778,13 +778,13 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo struct 
 	//
 	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4?Expires=<ExpireTime>&OSSAccessKeyId=<OSSAccessKeyId>&Signature=<Signature>&security-token=<SecurityToken>
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// The container format.
+	// The container format of the file.
 	//
 	// example:
 	//
 	// mp4
 	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	// The height.
+	// The height of the file.
 	//
 	// example:
 	//
@@ -802,7 +802,7 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo struct 
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The width.
+	// The width of the file.
 	//
 	// example:
 	//
@@ -970,7 +970,7 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoLis
 	//
 	// 29.97
 	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	// The duration.
+	// The duration of the file.
 	//
 	// example:
 	//
@@ -982,7 +982,7 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoLis
 	//
 	// 1
 	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	// The language.
+	// The language of the audio stream.
 	//
 	// example:
 	//
@@ -1111,7 +1111,7 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList s
 	//
 	// 24.0
 	AvgFPS *string `json:"AvgFPS,omitempty" xml:"AvgFPS,omitempty"`
-	// The bitrate.
+	// The bitrate of the file.
 	//
 	// example:
 	//
@@ -1153,7 +1153,7 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList s
 	//
 	// 0:1
 	Dar *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
-	// The duration.
+	// The duration of the file.
 	//
 	// example:
 	//
@@ -1171,7 +1171,7 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList s
 	//
 	// 2
 	HasBFrames *string `json:"HasBFrames,omitempty" xml:"HasBFrames,omitempty"`
-	// The height.
+	// The height of the file.
 	//
 	// example:
 	//
@@ -1183,7 +1183,7 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList s
 	//
 	// 0
 	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	// The language.
+	// The language of the audio stream.
 	//
 	// example:
 	//
@@ -1237,7 +1237,7 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList s
 	//
 	// 1/12288
 	Timebase *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
-	// The width.
+	// The width of the file.
 	//
 	// example:
 	//
@@ -1489,13 +1489,13 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoMediaBasicInfo struct {
 	//
 	// cateName
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
-	// The category.
+	// The category of the media asset.
 	//
 	// example:
 	//
 	// category
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The cover URL.
+	// The URL of the cover image.
 	//
 	// example:
 	//
@@ -1513,7 +1513,7 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoMediaBasicInfo struct {
 	//
 	// 2020-12-26T04:11:08Z
 	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
-	// The content description.
+	// The description of the media asset content.
 	//
 	// example:
 	//
@@ -1531,7 +1531,7 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoMediaBasicInfo struct {
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The tags.
+	// The tags of the media asset.
 	//
 	// example:
 	//
@@ -1549,31 +1549,31 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoMediaBasicInfo struct {
 	//
 	// 2020-12-26T04:11:08Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The custom ID. Only lowercase letters, uppercase letters, digits, hyphens, and underscores are supported. The value must be 6 to 64 characters in length and is unique for each user.
+	// The custom ID. Only lowercase letters, uppercase letters, digits, hyphens, and underscores are supported. The value must be 6 to 64 characters in length and is unique within the user scope.
 	//
 	// example:
 	//
 	// 123-1234
 	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
-	// The snapshots.
+	// The snapshots of the media asset.
 	//
 	// example:
 	//
 	// []
 	Snapshots *string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty"`
-	// The source.
+	// The source of the media asset.
 	//
 	// example:
 	//
 	// oss
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The sprite images.
+	// The sprite images of the media asset.
 	//
 	// example:
 	//
 	// [{"bucket":"example-bucket","count":"32","iceJobId":"******83ec44d58b2069def2e******","location":"oss-cn-shanghai","snapshotRegular":"example/example-{Count}.jpg","spriteRegular":"example/example-{TileCount}.jpg","templateId":"******e438b14ff39293eaec25******","tileCount":"1"}]
 	SpriteImages *string `json:"SpriteImages,omitempty" xml:"SpriteImages,omitempty"`
-	// The resource status.
+	// The status of the resource.
 	//
 	// example:
 	//
@@ -1591,7 +1591,7 @@ type GetYikeAssetMediaInfoResponseBodyMediaInfoMediaBasicInfo struct {
 	//
 	// ThumbURLWebp
 	ThumbURLWebp *string `json:"ThumbURLWebp,omitempty" xml:"ThumbURLWebp,omitempty"`
-	// The title.
+	// The title of the media asset.
 	//
 	// example:
 	//

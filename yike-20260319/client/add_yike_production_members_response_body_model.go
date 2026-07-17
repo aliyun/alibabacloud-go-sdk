@@ -22,7 +22,7 @@ type AddYikeProductionMembersResponseBody struct {
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the member is added.
+	// Indicates whether the members were added successfully.
 	//
 	// example:
 	//

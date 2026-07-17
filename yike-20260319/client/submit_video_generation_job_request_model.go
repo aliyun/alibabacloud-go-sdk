@@ -52,19 +52,19 @@ type SubmitVideoGenerationJobRequest struct {
 	//
 	// 5
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The task input, in JSON string format. The following fields are included:
+	// The task input in JSON string format. The following fields are included:
 	//
 	// - Prompt: String. Required. The prompt.
 	//
-	// - Medias: the media list.
+	// - Medias: The media list.
 	//
-	//   - When JobType is set to image_to_video, this field is required. Only 1 Media item is needed.
+	//   - When JobType is image_to_video, this field is required. Only 1 Media item is needed.
 	//
-	//   - When JobType is set to first_last_frame, this field is required. Only 2 Media items are needed.
+	//   - When JobType is first_last_frame, this field is required. Only 2 Media items are needed.
 	//
-	//   - When JobType is set to reference_to_video, this field is required. A maximum of 9 Media items are supported.
+	//   - When JobType is reference_to_video, this field is required. A maximum of 9 Media items are supported.
 	//
-	// > The Media struct contains: Type, the media type, String, valid values are `image`/`video`/`audio`; URL, the media download URL, String.
+	// > The Media structure contains: Type, the media type (String). Valid values: `image`, `video`, or `audio`. URL, the media download URL (String).
 	//
 	// >
 	//
@@ -72,7 +72,7 @@ type SubmitVideoGenerationJobRequest struct {
 	//
 	// {"Prompt":"图1在篮球场上，用图2来了个灌篮","Medias":[{"Type":"image","Url":"https://xxx/xxx.jpg"},{"Type":"image","Url":"https://xxx/xxx.jpg"}]}
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	// The task feature parameters. No configuration is required at this time.
+	// The task function parameters. No configuration is required at this time.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type SubmitVideoGenerationJobRequest struct {
 	//
 	// - first_last_frame: first and last frame to video
 	//
-	// - reference_to_video: reference-to-video
+	// - reference_to_video: reference to video
 	//
 	// example:
 	//

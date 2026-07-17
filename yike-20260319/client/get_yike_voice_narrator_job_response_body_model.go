@@ -26,7 +26,7 @@ type iGetYikeVoiceNarratorJobResponseBody interface {
 }
 
 type GetYikeVoiceNarratorJobResponseBody struct {
-	// The error code. This parameter is returned only when JobStatus is Failed.
+	// The error code. This parameter is returned only when JobStatus is `Failed`.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type GetYikeVoiceNarratorJobResponseBody struct {
 	//
 	// {\\"TextType\\":2,\\"TextContent\\":\\"Today, Beijing held a press conference to announce plans to further optimize the city\\"s transportation network, including adding three new subway lines within the next three years....\\",\\"AspectRatio\\":\\"16:9\\", \\"Resolution\\":\\"720P\\", \\"OutputLanguages\\":[\\"CN\\",\\"YUE\\"]"}
 	JobParams *string `json:"JobParams,omitempty" xml:"JobParams,omitempty"`
-	// The task results. This parameter is valid only when JobStatus is Succeeded.
+	// The task results. This parameter is valid only when JobStatus is `Succeeded`.
 	JobResult []*GetYikeVoiceNarratorJobResponseBodyJobResult `json:"JobResult,omitempty" xml:"JobResult,omitempty" type:"Repeated"`
 	// The task status. Valid values:
 	//
@@ -52,7 +52,7 @@ type GetYikeVoiceNarratorJobResponseBody struct {
 	//
 	// - Succeeded
 	//
-	// - Failed.
+	// - Failed
 	//
 	// example:
 	//

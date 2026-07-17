@@ -24,7 +24,7 @@ type GetYikeUserCreditResponseBody struct {
 	//
 	// 10417.0
 	CreditTotal *string `json:"CreditTotal,omitempty" xml:"CreditTotal,omitempty"`
-	// The remaining available credits.
+	// The current remaining available credits.
 	//
 	// example:
 	//
