@@ -26,7 +26,7 @@ type iGetLindormInstanceEngineListRequest interface {
 }
 
 type GetLindormInstanceEngineListRequest struct {
-	// Instance ID, which can be obtained by calling the [GetLindormInstanceList](https://help.aliyun.com/document_detail/426069.html) interface.
+	// The ID of the instance. To obtain the instance ID, call the [GetLindormInstanceList](https://help.aliyun.com/document_detail/426069.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type GetLindormInstanceEngineListRequest struct {
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//

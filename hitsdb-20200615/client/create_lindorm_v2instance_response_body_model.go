@@ -20,15 +20,26 @@ type iCreateLindormV2InstanceResponseBody interface {
 }
 
 type CreateLindormV2InstanceResponseBody struct {
+	// The detailed reason why the access was denied.
+	//
 	// example:
 	//
 	// {"AuthAction":"xxx","AuthPrincipalDisplayName":"222","AuthPrincipalOwnerId":"111","AuthPrincipalType":"SubUser",,"NoPermissionType":"ImplicitDeny","PolicyType":"AccountLevelIdentityBasedPolicy","EncodedDiagnosticMessage":"xxxxxx"}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// ld-bp1mq0tdzbx1m****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 211110656240000
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1556DCB0-043A-4444-8BD9-CF4A68E7EE64

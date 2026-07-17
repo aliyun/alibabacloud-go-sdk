@@ -28,14 +28,24 @@ type iUpdateLindormInstanceAttributeRequest interface {
 }
 
 type UpdateLindormInstanceAttributeRequest struct {
+	// Specifies whether to enable deletion protection. Valid values:
+	//
+	// - **true**: Enabled.
+	//
+	// - **false**: Disabled.
+	//
 	// example:
 	//
 	// true
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	// The name of the instance.
+	//
 	// example:
 	//
 	// lindorm-test
 	InstanceAlias *string `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:

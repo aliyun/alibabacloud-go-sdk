@@ -16,7 +16,7 @@ type iDescribeRegionsResponseBody interface {
 }
 
 type DescribeRegionsResponseBody struct {
-	// The regions supported by Lindorm.
+	// The list of regions.
 	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -67,12 +67,16 @@ func (s *DescribeRegionsResponseBody) Validate() error {
 
 type DescribeRegionsResponseBodyRegions struct {
 	// The name of the region.
-	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The endpoint for the region.
 	//
 	// example:
 	//
-	// hitsdb.aliyuncs.com
+	// China (Hangzhou)
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The endpoint of the region.
+	//
+	// example:
+	//
+	// hitsdb.cn-hangzhou.aliyuncs.com
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
 	// The ID of the region.
 	//

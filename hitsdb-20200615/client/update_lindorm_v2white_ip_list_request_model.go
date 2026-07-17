@@ -28,6 +28,8 @@ type iUpdateLindormV2WhiteIpListRequest interface {
 }
 
 type UpdateLindormV2WhiteIpListRequest struct {
+	// The ID of the instance. You can call the GetLindormV2InstanceList operation to obtain the instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -36,6 +38,8 @@ type UpdateLindormV2WhiteIpListRequest struct {
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the instance is located. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation to obtain this ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -43,6 +47,8 @@ type UpdateLindormV2WhiteIpListRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The list of IP whitelist groups.
+	//
 	// This parameter is required.
 	WhiteIpGroupList []*UpdateLindormV2WhiteIpListRequestWhiteIpGroupList `json:"WhiteIpGroupList,omitempty" xml:"WhiteIpGroupList,omitempty" type:"Repeated"`
 }
@@ -141,12 +147,18 @@ func (s *UpdateLindormV2WhiteIpListRequest) Validate() error {
 }
 
 type UpdateLindormV2WhiteIpListRequestWhiteIpGroupList struct {
+	// The name of the IP whitelist group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// user001
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The IP addresses to add to the IP whitelist.
+	//
+	// > The value 127.0.0.1 denies access from all IP addresses. For example, 192.168.0.0/24 allows all IP addresses in that range to access the Lindorm instance. Use a comma (,) to separate multiple IP addresses or CIDR blocks.
+	//
 	// This parameter is required.
 	//
 	// example:

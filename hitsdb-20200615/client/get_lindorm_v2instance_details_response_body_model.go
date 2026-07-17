@@ -90,140 +90,296 @@ type iGetLindormV2InstanceDetailsResponseBody interface {
 }
 
 type GetLindormV2InstanceDetailsResponseBody struct {
+	// The 16-digit AliUid of the Alibaba Cloud account.
+	//
 	// example:
 	//
 	// 164901546557****
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// For a multi-zone instance, this is the ID of the virtual switch in the arbiter zone. The vSwitch must be in the zone specified by ArbiterZoneId.
+	//
 	// example:
 	//
 	// vsw-uf6664pqjawb87k36****
 	ArbiterVSwitchId *string `json:"ArbiterVSwitchId,omitempty" xml:"ArbiterVSwitchId,omitempty"`
+	// For a multi-zone instance, this is the ID of the arbiter zone.
+	//
 	// example:
 	//
 	// cn-shanghai-g
 	ArbiterZoneId *string `json:"ArbiterZoneId,omitempty" xml:"ArbiterZoneId,omitempty"`
+	// Indicates whether auto-renewal is enabled. Valid values:
+	//
+	// - **true**: enabled.
+	//
+	// - **false**: disabled.
+	//
+	// > This parameter is returned only for subscription instances.
+	//
 	// example:
 	//
 	// true
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The cloud storage capacity in GB.
+	//
 	// example:
 	//
 	// 480
 	CloudStorageSize *int64 `json:"CloudStorageSize,omitempty" xml:"CloudStorageSize,omitempty"`
+	// The capacity of the storage-optimized cloud storage.
+	//
 	// example:
 	//
 	// 800
 	ColdStorage *int32 `json:"ColdStorage,omitempty" xml:"ColdStorage,omitempty"`
+	// The number of milliseconds between the instance creation time and 00:00:00 on January 1, 1970.
+	//
 	// example:
 	//
 	// 1627290664000
 	CreateMilliseconds *int64 `json:"CreateMilliseconds,omitempty" xml:"CreateMilliseconds,omitempty"`
+	// Indicates whether deletion protection is enabled. Valid values:
+	//
+	// - **true**: enabled.
+	//
+	// - **false**: disabled.
+	//
 	// example:
 	//
 	// false
 	DeletionProtection *string `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	// The storage class. Valid values:
+	//
+	// - **StandardStorage**: Standard cloud storage.
+	//
+	// - **PerformanceStorage**: Performance cloud storage.
+	//
 	// example:
 	//
 	// PerformanceStorage
 	DiskCategory *string `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
+	// The disk space threshold.
+	//
 	// example:
 	//
 	// 80%
 	DiskThreshold *string `json:"DiskThreshold,omitempty" xml:"DiskThreshold,omitempty"`
+	// The disk space usage.
+	//
 	// example:
 	//
 	// 0.0%
 	DiskUsage *string `json:"DiskUsage,omitempty" xml:"DiskUsage,omitempty"`
+	// Indicates whether the compute engine is enabled for the instance. Valid values:
+	//
+	// - **true**: enabled.
+	//
+	// - **false**: disabled.
+	//
 	// example:
 	//
 	// true
-	EnableCompute  *bool                                                `json:"EnableCompute,omitempty" xml:"EnableCompute,omitempty"`
-	EnableFs       *string                                              `json:"EnableFs,omitempty" xml:"EnableFs,omitempty"`
-	EnableStoreTDE *string                                              `json:"EnableStoreTDE,omitempty" xml:"EnableStoreTDE,omitempty"`
-	EngineList     []*GetLindormV2InstanceDetailsResponseBodyEngineList `json:"EngineList,omitempty" xml:"EngineList,omitempty" type:"Repeated"`
+	EnableCompute *bool `json:"EnableCompute,omitempty" xml:"EnableCompute,omitempty"`
+	// Indicates whether the file engine is enabled.
+	//
+	// example:
+	//
+	// false
+	EnableFs *string `json:"EnableFs,omitempty" xml:"EnableFs,omitempty"`
+	// Indicates whether transparent data encryption (TDE) is enabled for storage.
+	//
+	// example:
+	//
+	// false
+	EnableStoreTDE *string `json:"EnableStoreTDE,omitempty" xml:"EnableStoreTDE,omitempty"`
+	// The list of engine information.
+	EngineList []*GetLindormV2InstanceDetailsResponseBodyEngineList `json:"EngineList,omitempty" xml:"EngineList,omitempty" type:"Repeated"`
+	// The number of milliseconds between the instance expiration time and 00:00:00 on January 1, 1970.
+	//
 	// example:
 	//
 	// 1629993600000
 	ExpiredMilliseconds *int64 `json:"ExpiredMilliseconds,omitempty" xml:"ExpiredMilliseconds,omitempty"`
+	// The default initial password.
+	//
 	// example:
 	//
 	// *****
 	InitialRootPassword *string `json:"InitialRootPassword,omitempty" xml:"InitialRootPassword,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// lindorm-test
 	InstanceAlias *string `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the instance.
+	//
+	// example:
+	//
+	// ld-bp1mq0tdzbx1m****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance status. Valid values:
+	//
+	// - **CREATING**: The instance is being created.
+	//
+	// - **ACTIVATION**: The instance is running.
+	//
+	// - **COLD_EXPANDING**: The storage-optimized cloud storage is being scaled out.
+	//
+	// - **MINOR_VERSION_TRANSING**: The minor version is being upgraded.
+	//
+	// - **RESIZING**: The nodes are being scaled out.
+	//
+	// - **SHRINKING**: The nodes are being scaled in.
+	//
+	// - **CLASS_CHANGING**: The instance specifications are being upgraded or downgraded.
+	//
+	// - **SSL_SWITCHING**: The SSL certificate is being changed.
+	//
+	// - **CDC_OPENING**: The data subscription feature is being enabled.
+	//
+	// - **TRANSFER**: Data is being migrated.
+	//
+	// - **DATABASE_TRANSFER**: Data is being migrated to the database.
+	//
+	// - **GUARD_CREATING**: A disaster recovery instance is being created.
+	//
+	// - **BACKUP_RECOVERING**: Data is being restored from a backup.
+	//
+	// - **DATABASE_IMPORTING**: Data is being imported.
+	//
+	// - **NET_MODIFYING**: The network is being modified.
+	//
+	// - **NET_SWITCHING**: The network is being switched between the private network and the public network.
+	//
+	// - **NET_CREATING**: A network connection is being created.
+	//
+	// - **NET_DELETING**: A network connection is being deleted.
+	//
+	// - **DELETING**: The instance is being deleted.
+	//
+	// - **RESTARTING**: The instance is being restarted.
+	//
+	// - **LOCKED**: The instance has expired and is locked.
+	//
 	// example:
 	//
 	// ACTIVATION
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	// The instance type. Valid value:
+	//
+	// - basic: Production.
+	//
 	// example:
 	//
 	// basic
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The end time of the maintenance window.
+	//
 	// example:
 	//
 	// 20:00Z
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	// The start time of the maintenance window.
+	//
 	// example:
 	//
 	// 00:00Z
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	// The network type of the instance.
+	//
 	// example:
 	//
 	// VPC
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// The billing method of the instance. Valid values:
+	//
+	// - **PREPAY**: subscription.
+	//
+	// - **POSTPAY**: pay-as-you-go.
+	//
 	// example:
 	//
 	// POSTPAY
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// For a multi-zone instance, this is the ID of the virtual switch in the primary zone. The vSwitch must be in the zone specified by PrimaryZoneId.
+	//
 	// example:
 	//
 	// vsw-uf6fdqa7c0pipnqzq****
 	PrimaryVSwitchId *string `json:"PrimaryVSwitchId,omitempty" xml:"PrimaryVSwitchId,omitempty"`
+	// For a multi-zone instance, this is the ID of the primary zone.
+	//
 	// example:
 	//
 	// cn-shanghai-e
 	PrimaryZoneId *string `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1556DCB0-043A-4444-8BD9-CF4A68E7EE64
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-aek2i6weeb4nfii
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The instance type. Valid values:
+	//
+	// - **lindorm_v2**: Lindorm V2 single-zone instance.
+	//
+	// - **lindorm_v2_multizone**: Lindorm V2 Multi-zone Deployment (Basic) instance.
+	//
+	// - **lindorm_v2_multizone_ha**: Lindorm V2 multi-zone High-availability Edition instance.
+	//
 	// example:
 	//
 	// lindorm_v2
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// For a multi-zone instance, this is the ID of the virtual switch in the secondary zone. The vSwitch must be in the zone specified by StandbyZoneId.
+	//
 	// example:
 	//
 	// vsw-2zec0kcn08cgdtr6****
 	StandbyVSwitchId *string `json:"StandbyVSwitchId,omitempty" xml:"StandbyVSwitchId,omitempty"`
+	// For a multi-zone instance, this is the ID of the secondary zone.
+	//
 	// example:
 	//
 	// cn-shanghai-f
-	StandbyZoneId *string                                              `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
-	StorageUsage  *GetLindormV2InstanceDetailsResponseBodyStorageUsage `json:"StorageUsage,omitempty" xml:"StorageUsage,omitempty" type:"Struct"`
+	StandbyZoneId *string `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
+	// The instance storage usage.
+	StorageUsage *GetLindormV2InstanceDetailsResponseBodyStorageUsage `json:"StorageUsage,omitempty" xml:"StorageUsage,omitempty" type:"Struct"`
+	// The ID of the virtual private cloud (VPC) where the instance resides.
+	//
 	// example:
 	//
 	// vpc-bp1xxxxxxxxxxxxxxxxxx
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the virtual switch.
+	//
 	// example:
 	//
 	// vsw-bp1xxxxxxxxxxxxxxxxxx
-	VswitchId   *string                                               `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	// The instance access whitelist.
 	WhiteIpList []*GetLindormV2InstanceDetailsResponseBodyWhiteIpList `json:"WhiteIpList,omitempty" xml:"WhiteIpList,omitempty" type:"Repeated"`
+	// The deployment details of the engine in the zone.
+	//
 	// example:
 	//
 	// ZoneEngineInfoMap
 	ZoneEngineInfoMap map[string]interface{} `json:"ZoneEngineInfoMap,omitempty" xml:"ZoneEngineInfoMap,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-h
@@ -617,20 +773,46 @@ func (s *GetLindormV2InstanceDetailsResponseBody) Validate() error {
 }
 
 type GetLindormV2InstanceDetailsResponseBodyEngineList struct {
+	// A list of engine endpoints.
 	ConnectAddressList []*GetLindormV2InstanceDetailsResponseBodyEngineListConnectAddressList `json:"ConnectAddressList,omitempty" xml:"ConnectAddressList,omitempty" type:"Repeated"`
+	// The engine type. Valid values:
+	//
+	// - **TABLE**: LindormTable.
+	//
+	// - **TSDB**: LindormTSDB.
+	//
+	// - **LSEARCH**: Search engine.
+	//
+	// - **LTS**: LTS engine.
+	//
+	// - **LVECTOR**: Vector engine.
+	//
+	// - **LCOLUMN**: Column store.
+	//
 	// example:
 	//
 	// TABLE
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// Indicates whether the engine is the latest version. Valid values:
+	//
+	// - **true**: The engine is the latest version.
+	//
+	// - **false**: The engine is not the latest version.
+	//
 	// example:
 	//
 	// false
 	IsLastVersion *bool `json:"IsLastVersion,omitempty" xml:"IsLastVersion,omitempty"`
+	// The latest version number for the engine type.
+	//
 	// example:
 	//
 	// 2.2.19.2
-	LatestVersion *string                                                       `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
-	NodeGroup     []*GetLindormV2InstanceDetailsResponseBodyEngineListNodeGroup `json:"NodeGroup,omitempty" xml:"NodeGroup,omitempty" type:"Repeated"`
+	LatestVersion *string `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
+	// A list of engine node groups.
+	NodeGroup []*GetLindormV2InstanceDetailsResponseBodyEngineListNodeGroup `json:"NodeGroup,omitempty" xml:"NodeGroup,omitempty" type:"Repeated"`
+	// The version number of the engine type.
+	//
 	// example:
 	//
 	// 2.2.3
@@ -722,14 +904,24 @@ func (s *GetLindormV2InstanceDetailsResponseBodyEngineList) Validate() error {
 }
 
 type GetLindormV2InstanceDetailsResponseBodyEngineListConnectAddressList struct {
+	// The endpoint.
+	//
 	// example:
 	//
 	// ld-mxj9asg***-proxy-lindorm-vpc.lindorm.aliyuncs.com:33060
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The port number of the database endpoint.
+	//
 	// example:
 	//
 	// 33060
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The endpoint type.
+	//
+	// - INTRANET: VPC private endpoint.
+	//
+	// - INTERNET: Public endpoint.
+	//
 	// example:
 	//
 	// INTRANET
@@ -776,46 +968,142 @@ func (s *GetLindormV2InstanceDetailsResponseBodyEngineListConnectAddressList) Va
 }
 
 type GetLindormV2InstanceDetailsResponseBodyEngineListNodeGroup struct {
+	// Deprecated.
+	//
 	// example:
 	//
 	// caculated
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The number of vCPUs for the node.
+	//
 	// example:
 	//
 	// 32
 	CpuCoreCount *int32 `json:"CpuCoreCount,omitempty" xml:"CpuCoreCount,omitempty"`
+	// Indicates whether a local disk is attached to the node.
+	//
 	// example:
 	//
 	// false
 	EnableAttachLocalDisk *bool `json:"EnableAttachLocalDisk,omitempty" xml:"EnableAttachLocalDisk,omitempty"`
+	// The capacity of the local disk in GB.
+	//
 	// example:
 	//
 	// 100
 	LocalDiskCapacity *int64 `json:"LocalDiskCapacity,omitempty" xml:"LocalDiskCapacity,omitempty"`
+	// The type of the local cloud disk.
+	//
+	// - cloud_essd: performance cloud disk
+	//
+	// - cloud_efficiency: standard cloud disk
+	//
 	// example:
 	//
 	// cloud_essd
 	LocalDiskCategory *string `json:"LocalDiskCategory,omitempty" xml:"LocalDiskCategory,omitempty"`
+	// The memory size of the node in GiB.
+	//
 	// example:
 	//
 	// 64
 	MemorySizeGiB *int32 `json:"MemorySizeGiB,omitempty" xml:"MemorySizeGiB,omitempty"`
+	// The node specifications.
+	//
+	// If you select Performance cloud storage or Standard cloud storage, this parameter can be set to one of the following values:
+	//
+	// - lindorm.c.2xlarge: 8 vCPUs, 16 GB memory.
+	//
+	// - lindorm.g.2xlarge: 8 vCPUs, 32 GB memory.
+	//
+	// - lindorm.c.4xlarge: 16 vCPUs, 32 GB memory.
+	//
+	// - lindorm.g.4xlarge: 16 vCPUs, 64 GB memory.
+	//
+	// - lindorm.c.8xlarge: 32 vCPUs, 64 GB memory.
+	//
+	// - lindorm.g.8xlarge: 32 vCPUs, 128 GB memory.
+	//
+	// - lindorm.r.2xlarge: 8 vCPUs, 64 GB memory.
+	//
+	// - lindorm.r.4xlarge: 16 vCPUs, 128 GB memory.
+	//
+	// - lindorm.r.8xlarge: 32 vCPUs, 256 GB memory.
+	//
+	// If you select Local SSD, this parameter can be set to one of the following values:
+	//
+	// - lindorm.i4.xlarge: 4 vCPUs, 32 GB memory (I4).
+	//
+	// - lindorm.i4.2xlarge: 8 vCPUs, 64 GB memory (I4).
+	//
+	// - lindorm.i4.4xlarge: 16 vCPUs, 128 GB memory (I4).
+	//
+	// - lindorm.i4.8xlarge: 32 vCPUs, 256 GB memory (I4).
+	//
+	// - lindorm.i3.xlarge: 4 vCPUs, 32 GB memory (I3).
+	//
+	// - lindorm.i3.2xlarge: 8 vCPUs, 64 GB memory (I3).
+	//
+	// - lindorm.i3.4xlarge: 16 vCPUs, 128 GB memory (I3).
+	//
+	// - lindorm.i3.8xlarge: 32 vCPUs, 256 GB memory (I3).
+	//
+	// - lindorm.i2.xlarge: 4 vCPUs, 32 GB memory (I2).
+	//
+	// - lindorm.i2.2xlarge: 8 vCPUs, 64 GB memory (I2).
+	//
+	// - lindorm.i2.4xlarge: 16 vCPUs, 128 GB memory (I2).
+	//
+	// - lindorm.i2.8xlarge: 32 vCPUs, 256 GB memory (I2).
+	//
+	// If you select Big Data, this parameter can be set to one of the following values:
+	//
+	// - lindorm.sd3c.3xlarge: 14 vCPUs, 56 GB memory (D3C PRO).
+	//
+	// - lindorm.sd3c.7xlarge: 28 vCPUs, 112 GB memory (D3C PRO).
+	//
+	// - lindorm.sd3c.14xlarge: 56 vCPUs, 224 GB memory (D3C PRO).
+	//
+	// - lindorm.d2c.6xlarge: 24 vCPUs, 88 GB memory (D2C).
+	//
+	// - lindorm.d2c.12xlarge: 48 vCPUs, 176 GB memory (D2C).
+	//
+	// - lindorm.d2c.24xlarge: 96 vCPUs, 352 GB memory (D2C).
+	//
+	// - lindorm.d2s.5xlarge: 20 vCPUs, 88 GB memory (D2S).
+	//
+	// - lindorm.d2s.10xlarge: 40 vCPUs, 176 GB memory (D2S).
+	//
+	// - lindorm.d1.2xlarge: 8 vCPUs, 32 GB memory (D1NE).
+	//
+	// - lindorm.d1.4xlarge: 16 vCPUs, 64 GB memory (D1NE).
+	//
+	// - lindorm.d1.6xlarge: 24 vCPUs, 96 GB memory (D1NE).
+	//
 	// example:
 	//
 	// lindorm.g.2xlarge
 	NodeSpec *string `json:"NodeSpec,omitempty" xml:"NodeSpec,omitempty"`
+	// The number of nodes.
+	//
 	// example:
 	//
 	// 10
 	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	// The name of the node group. **Required**. This must be the same as the name used during creation.
+	//
 	// example:
 	//
 	// job_debug
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+	// The unique ID that corresponds to the delivery group ID.
+	//
 	// example:
 	//
 	// ecs.c6.large
 	SpecId *string `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
+	// The node status.
+	//
 	// example:
 	//
 	// ACTIVATION
@@ -934,7 +1222,10 @@ func (s *GetLindormV2InstanceDetailsResponseBodyEngineListNodeGroup) Validate() 
 }
 
 type GetLindormV2InstanceDetailsResponseBodyStorageUsage struct {
+	// The instance storage usage.
 	CapacityByDiskCategory []map[string]interface{} `json:"CapacityByDiskCategory,omitempty" xml:"CapacityByDiskCategory,omitempty" type:"Repeated"`
+	// The storage usage of each engine.
+	//
 	// example:
 	//
 	// 16
@@ -972,10 +1263,14 @@ func (s *GetLindormV2InstanceDetailsResponseBodyStorageUsage) Validate() error {
 }
 
 type GetLindormV2InstanceDetailsResponseBodyWhiteIpList struct {
+	// The group name. The name can contain only letters, digits, and underscores (_).
+	//
 	// example:
 	//
 	// swhy
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The IP addresses in the whitelist.
+	//
 	// example:
 	//
 	// [\\"10.2.0.0/18\\", \\"10.0.0.0/24\\", \\"119.23.188.139/32\\"]

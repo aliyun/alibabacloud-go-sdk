@@ -32,7 +32,7 @@ type iTagResourcesRequest interface {
 type TagResourcesRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region in which the instances you want to associate tags with are located. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation to query the region ID.
+	// The region ID of the instance. Call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//
@@ -40,13 +40,13 @@ type TagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The list of resource IDs.
+	// A list of resource IDs.
 	//
 	// This parameter is required.
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The resource type. Set the value to **INSTANCE**.
+	// The type of the resource. Set the value to **INSTANCE**.
 	//
 	// This parameter is required.
 	//
@@ -55,7 +55,7 @@ type TagResourcesRequest struct {
 	// INSTANCE
 	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The tags that you want to associate with the resource.
+	// A list of tags.
 	//
 	// This parameter is required.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -164,9 +164,9 @@ func (s *TagResourcesRequest) Validate() error {
 }
 
 type TagResourcesRequestTag struct {
-	// The key of the tag that you want to associate with the resource.
+	// The tag key.
 	//
-	// > You can specify the keys of multiple tags. For example, you can specify the key of the first tag in the first key-value pair contained in the value of this parameter and specify the key of the second tag in the second key-value pair.
+	// > You can specify the keys for multiple tags. For example, the Key in the first pair is the key for the first tag, and the Key in the second pair is the key for the second tag.
 	//
 	// This parameter is required.
 	//
@@ -174,9 +174,9 @@ type TagResourcesRequestTag struct {
 	//
 	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag that you want to associate with the resource.
+	// The tag value.
 	//
-	// > You can specify the values of multiple tags. For example, you can specify the value of the first tag in the first key-value pair contained in the value of this parameter and specify the value of the second tag in the second key-value pair.
+	// > You can specify the values for multiple tags. For example, the Value in the first pair is the value for the first tag, and the Value in the second pair is the value for the second tag.
 	//
 	// example:
 	//

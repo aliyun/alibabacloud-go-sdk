@@ -20,18 +20,26 @@ type iUpdateLindormV2InstanceResponseBody interface {
 }
 
 type UpdateLindormV2InstanceResponseBody struct {
+	// The details of the access denied error.
+	//
 	// example:
 	//
 	// {"AuthAction":"xxx","AuthPrincipalDisplayName":"222","AuthPrincipalOwnerId":"111","AuthPrincipalType":"SubUser",,"NoPermissionType":"ImplicitDeny","PolicyType":"AccountLevelIdentityBasedPolicy","EncodedDiagnosticMessage":"xxxxxx"}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// ld-bp1478w1603****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 240136741090345
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1556DCB0-043A-4444-8BD9-CF4A68E7EE64

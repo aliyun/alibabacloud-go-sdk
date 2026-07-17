@@ -20,25 +20,25 @@ type iCreateLindormInstanceResponseBody interface {
 }
 
 type CreateLindormInstanceResponseBody struct {
-	// The detailed reason why the access was denied.
+	// Details about the access denial.
 	//
 	// example:
 	//
 	// {"AuthAction":"xxx","AuthPrincipalDisplayName":"222","AuthPrincipalOwnerId":"111","AuthPrincipalType":"SubUser",,"NoPermissionType":"ImplicitDeny","PolicyType":"AccountLevelIdentityBasedPolicy","EncodedDiagnosticMessage":"xxxxxx"}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The ID of the Lindorm instance that is created.
+	// The ID of the created instance.
 	//
 	// example:
 	//
 	// ld-bp1o3y0yme2i2****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//
 	// 111111111111111
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

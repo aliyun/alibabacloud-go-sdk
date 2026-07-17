@@ -16,13 +16,13 @@ type iUpgradeLindormInstanceResponseBody interface {
 }
 
 type UpgradeLindormInstanceResponseBody struct {
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//
 	// 111111111111111
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

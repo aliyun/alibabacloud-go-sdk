@@ -24,15 +24,15 @@ type iDescribeRegionsRequest interface {
 }
 
 type DescribeRegionsRequest struct {
-	// The display language of the regions in the returned results. Valid values:
+	// The language to use for the region name (LocalName) in the response. Valid values:
 	//
-	// 	- **zh-CN*	- (default): Chinese.
+	// - **zh-CN**: Chinese. This is the default value.
 	//
-	// 	- **en-US**: English.
+	// - **en-US**: English.
 	//
 	// example:
 	//
-	// zh-CN
+	// en-US
 	AcceptLanguage       *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

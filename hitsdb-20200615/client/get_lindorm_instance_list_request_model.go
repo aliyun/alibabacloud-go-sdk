@@ -40,31 +40,31 @@ type iGetLindormInstanceListRequest interface {
 type GetLindormInstanceListRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return.
+	// The page number to return.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of instances to return on each page.
+	// The number of entries to return on each page for a paged query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The keyword contained in the names of Lindorm instances you want to query. Fuzzy queries based on the keyword is supported.
+	// A keyword for a fuzzy search on instance names.
 	//
 	// example:
 	//
 	// test
 	QueryStr *string `json:"QueryStr,omitempty" xml:"QueryStr,omitempty"`
-	// The ID of the region in which the instances that you want to query is located. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation to query the most recent region list.
+	// The ID of the region where the instance is located. Call [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) to obtain the region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the instance belongs.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -73,39 +73,39 @@ type GetLindormInstanceListRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The series of instances that you want to query. Valid values:
+	// The type of the instance. Valid values:
 	//
-	// 	- **lindorm**: The instance is a single-zone Lindorm instance.
+	// - **lindorm**: a single-zone Lindorm instance.
 	//
-	// 	- **lindorm_multizone**: The instance is a multi-zone Lindorm instance.
+	// - **lindorm_multizone**: a multi-zone Lindorm instance.
 	//
-	// 	- **serverless_lindorm**: The instance is a Lindorm Serverless instance.
+	// - **serverless_lindorm**: a Lindorm Serverless instance.
 	//
-	// 	- **lindorm_standalone**: The instance is a single-node Lindorm instance.
+	// - **lindorm_standalone**: a Lindorm standalone instance.
 	//
-	// 	- **lts**: The instance is an LTS instance.
+	// - **lts**: the Lindorm Tunnel Service (LTS) type.
 	//
 	// example:
 	//
 	// lindorm
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	// The engine supported by the instances that you want to query. The engines are indicated by different numbers:
+	// The type of the engine supported by the instance that you want to query. Valid values:
 	//
-	// 	- **1**: LindormSearch.
+	// - **1**: search engine.
 	//
-	// 	- **2**: LindormTSDB
+	// - **2**: LindormTSDB.
 	//
-	// 	- **4**: LindormTable
+	// - **4**: LindormTable.
 	//
-	// 	- **8**: LindormDFS
+	// - **8**: file engine.
 	//
-	// >  The value of this parameter is the sum of all numbers that indicate the engines supported by the instance. For example, if you set the value of this parameter to 15, which is the sum of 1, 2, 4, and 8, this operation queries instances that support all four engines. If you set the value of this parameter to 6, which is the sum of 2 and 4, this operation queries instances that support LindormTSDB and LindormTable.
+	// > For example, a value of 15 (8 + 4 + 2 + 1) indicates that the instance supports the file engine, LindormTable, LindormTSDB, and the search engine. A value of 6 (4 + 2) indicates that the instance supports LindormTSDB and LindormTable.
 	//
 	// example:
 	//
 	// 15
 	SupportEngine *int32 `json:"SupportEngine,omitempty" xml:"SupportEngine,omitempty"`
-	// The list of tags associated with the specified instances.
+	// A list of tags. You can specify up to 20 tags.
 	Tag []*GetLindormInstanceListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -248,17 +248,17 @@ func (s *GetLindormInstanceListRequest) Validate() error {
 }
 
 type GetLindormInstanceListRequestTag struct {
-	// The key of tag N of the instances you want to query. You can specify 1 to 20 tag keys.
+	// The key of the tag.
 	//
-	// > You can specify the keys of multiple tags. For example, you can specify the key of the first tag in the first key-value pair contained in the value of this parameter and specify the key of the second tag in the second key-value pair.
+	// > You can pass in keys for multiple tags. For example, the Key in the first pair represents the key for the first tag. The Key in the second pair represents the key for the second tag.
 	//
 	// example:
 	//
 	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N of the instances you want to query. You can specify 1 to 20 tag values.
+	// The value of the tag.
 	//
-	// > You can specify the values of multiple tags. For example, you can specify the value of the first tag in the first key-value pair contained in the value of this parameter and specify the value of the second tag in the second key-value pair.
+	// > You can provide values for multiple tags. For example, the Value in the first pair is the value for the first tag. The Value in the second pair is the value for the second tag.
 	//
 	// example:
 	//

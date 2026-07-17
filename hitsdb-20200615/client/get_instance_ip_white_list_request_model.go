@@ -24,13 +24,13 @@ type iGetInstanceIpWhiteListRequest interface {
 }
 
 type GetInstanceIpWhiteListRequest struct {
-	// The ID of the instance whose whitelists you want to query. You can call the [GetLindormInstanceList](https://help.aliyun.com/document_detail/426068.html) operation to obtain the instance ID.
+	// The ID of the instance. To obtain the ID, call the [GetLindormInstanceList](https://help.aliyun.com/document_detail/426068.html) operation.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ld-bp1z3506imz2f****
+	// ld-bp1z3506imz2g****
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

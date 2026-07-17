@@ -16,10 +16,14 @@ type iUpdateLindormV2WhiteIpListResponseBody interface {
 }
 
 type UpdateLindormV2WhiteIpListResponseBody struct {
+	// Details about a failed permission check.
+	//
 	// example:
 	//
 	// {"AuthAction":"xxx","AuthPrincipalDisplayName":"222","AuthPrincipalOwnerId":"111","AuthPrincipalType":"SubUser",,"NoPermissionType":"ImplicitDeny","PolicyType":"AccountLevelIdentityBasedPolicy","EncodedDiagnosticMessage":"xxxxxx"}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0A7153E4-8354-497E-87E5-5D0EBEF5AEB1

@@ -24,6 +24,8 @@ type iGetLindormV2StorageUsageRequest interface {
 }
 
 type GetLindormV2StorageUsageRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

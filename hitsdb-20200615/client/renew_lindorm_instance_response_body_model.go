@@ -32,7 +32,7 @@ type RenewLindormInstanceResponseBody struct {
 	//
 	// ld-bp1z3506imz2f****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the order. You can obtain the order ID on the Orders page of the Expenses and Costs console.
+	// The ID of the order. You can find the order ID in the Order Management section of Expenses and Costs.
 	//
 	// example:
 	//

@@ -24,11 +24,13 @@ type iGetLindormV2InstanceDetailsRequest interface {
 }
 
 type GetLindormV2InstanceDetailsRequest struct {
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ts-xxxxxxxxxxxxxxxxx
+	// ld-bp1mq0tdzbx1m****
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

@@ -30,11 +30,11 @@ type iRenewLindormInstanceRequest interface {
 }
 
 type RenewLindormInstanceRequest struct {
-	// The subscription duration of the instance. The valid values of this parameter depend on the value of the PricingCycle parameter.
+	// The subscription duration. Valid values:
 	//
-	// 	- If PricingCycle is set to **Month**, set this parameter to an integer that ranges from **1*	- to **9**.
+	// - If you set PricingCycle to **Month**, the valid values for this parameter are **1*	- to **9**.
 	//
-	// 	- If PricingCycle is set to **Year**, set this parameter to an integer that ranges from **1*	- to **3**.
+	// - If you set PricingCycle to **Year**, the valid values for this parameter are **1*	- to **3**.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type RenewLindormInstanceRequest struct {
 	//
 	// 1
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The ID of the instance that you want to renew. You can call the [GetLindormInstanceList](https://help.aliyun.com/document_detail/426069.html) operation to obtain the instance ID.
+	// The ID of the instance. Call the [GetLindormInstanceList](https://help.aliyun.com/document_detail/426069.html) operation to obtain the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -52,11 +52,11 @@ type RenewLindormInstanceRequest struct {
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The period based on which you are charged for the instance. Valid values:
+	// The billing cycle for the instance renewal. Valid values:
 	//
-	// 	- **Month**: You are charged for the instance based on months.
+	// - **Month**: The instance is renewed by month.
 	//
-	// 	- **Year**: You are charged for the instance based on years.
+	// - **Year**: The instance is renewed by year.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +64,7 @@ type RenewLindormInstanceRequest struct {
 	//
 	// Month
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	// The ID of the region in which the instance that you want to renew is located. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation to query the region ID.
+	// The ID of the region where the instance is located. Call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//

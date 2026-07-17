@@ -26,6 +26,8 @@ type iGetInstanceSummaryRequest interface {
 type GetInstanceSummaryRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shanghai

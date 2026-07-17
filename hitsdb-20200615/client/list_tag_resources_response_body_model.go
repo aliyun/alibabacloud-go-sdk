@@ -18,15 +18,15 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
-	// The token used to start the next query.
+	// The token that is used to start the next query.
 	//
-	// > If not all results are returned in the first query, this parameter is returned. You can pass in the returned value of this parameter for the next query.
+	// > If not all results are returned in a query, the response includes this parameter. You can use the value of this parameter to start the next query.
 	//
 	// example:
 	//
 	// 212db86****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -85,25 +85,25 @@ func (s *ListTagResourcesResponseBody) Validate() error {
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	// The ID of the resource, which is the ID of the instance.
+	// The resource ID, which is the instance ID.
 	//
 	// example:
 	//
 	// ld-bp17j28j2y7pm****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resources. The returned value is fixed to **ALIYUN::HITSDB::INSTANCE**.
+	// The resource type. The value is fixed to **ALIYUN::HITSDB::INSTANCE**.
 	//
 	// example:
 	//
 	// ALIYUN::HITSDB::INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The key of the tag associated with the instance.
+	// The key of the tag.
 	//
 	// example:
 	//
 	// test
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of the tag associated with the instance.
+	// The value of the tag.
 	//
 	// example:
 	//

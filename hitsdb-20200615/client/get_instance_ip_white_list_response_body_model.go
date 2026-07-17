@@ -22,23 +22,23 @@ type iGetInstanceIpWhiteListResponseBody interface {
 }
 
 type GetInstanceIpWhiteListResponseBody struct {
-	// The details about the access denial.
+	// The details about why the access was denied.
 	//
 	// example:
 	//
 	// {"AuthAction":"xxx","AuthPrincipalDisplayName":"222","AuthPrincipalOwnerId":"111","AuthPrincipalType":"SubUser",,"NoPermissionType":"ImplicitDeny","PolicyType":"AccountLevelIdentityBasedPolicy","EncodedDiagnosticMessage":"xxxxxx"}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The details about the IP address whitelists.
+	// A list of whitelist groups.
 	GroupList []*GetInstanceIpWhiteListResponseBodyGroupList `json:"GroupList,omitempty" xml:"GroupList,omitempty" type:"Repeated"`
-	// The ID of the Lindorm instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// ld-bp1z3506imz2f****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The list of IP addresses in the whitelist of the instance.
+	// A list of IP addresses in the whitelist.
 	IpList []*string `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -113,13 +113,13 @@ func (s *GetInstanceIpWhiteListResponseBody) Validate() error {
 }
 
 type GetInstanceIpWhiteListResponseBodyGroupList struct {
-	// The name of the IP address whitelist.
+	// The name of the whitelist group.
 	//
 	// example:
 	//
 	// test
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The IP addresses in the whitelist.
+	// The IP address whitelist.
 	//
 	// example:
 	//

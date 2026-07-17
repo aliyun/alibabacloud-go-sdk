@@ -20,21 +20,21 @@ type iGetLindormInstanceEngineListResponseBody interface {
 }
 
 type GetLindormInstanceEngineListResponseBody struct {
-	// The details about the access denial.
+	// The detailed reason why the access was denied.
 	//
 	// example:
 	//
 	// {"AuthAction":"xxx","AuthPrincipalDisplayName":"222","AuthPrincipalOwnerId":"111","AuthPrincipalType":"SubUser",,"NoPermissionType":"ImplicitDeny","PolicyType":"AccountLevelIdentityBasedPolicy","EncodedDiagnosticMessage":"xxxxxx"}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The list of engines that can run on the specified instance.
+	// The list of engine types.
 	EngineList []*GetLindormInstanceEngineListResponseBodyEngineList `json:"EngineList,omitempty" xml:"EngineList,omitempty" type:"Repeated"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// ld-bp1nq34mv3smk****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -100,21 +100,21 @@ func (s *GetLindormInstanceEngineListResponseBody) Validate() error {
 }
 
 type GetLindormInstanceEngineListResponseBodyEngineList struct {
-	// The type of engine that can run on the instance. Valid values:
+	// The engine type. Valid values:
 	//
-	// 	- **lindorm**: LindormTable.
+	// - **lindorm**: LindormTable.
 	//
-	// 	- **tsdb**: LindormTSDB.
+	// - **tsdb**: LindormTSDB.
 	//
-	// 	- **solr**: LindormSearch.
+	// - **solr**: Search engine.
 	//
-	// 	- **store**: LindormDFS.
+	// - **store**: File engine.
 	//
 	// example:
 	//
 	// lindorm
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	// The list of connection information about the engine.
+	// The list of database connection information for the engine.
 	NetInfoList []*GetLindormInstanceEngineListResponseBodyEngineListNetInfoList `json:"NetInfoList,omitempty" xml:"NetInfoList,omitempty" type:"Repeated"`
 }
 
@@ -158,43 +158,43 @@ func (s *GetLindormInstanceEngineListResponseBodyEngineList) Validate() error {
 }
 
 type GetLindormInstanceEngineListResponseBodyEngineListNetInfoList struct {
-	// The method by which the connection information can be used to access LindormTable. Valid values:
+	// The connection method for LindormTable. Valid values:
 	//
-	// 	- **0**: The default value. This value can be ignored.
+	// - **0**: This is the default value and can be ignored.
 	//
-	// 	- **1**: The connection information can be used to access LindormTable by using ApsaraDB for HBase API for Java.
+	// - **1**: Use the HBase Java API to access LindormTable.
 	//
-	// 	- **2**: The connection information can be used to access LindormTable by using ApsaraDB for HBase API for a non-Java language.
+	// - **2**: Use a non-Java HBase API to access LindormTable.
 	//
-	// 	- **3**: The connection information can be used to access LindormTable by using the LindormTable endpoint for CQL.
+	// - **3**: Use CQL to access LindormTable.
 	//
-	// 	- **4**: The connection information can be used to access LindormTable by using the LindormTable endpoint for SQL.
+	// - **4**: Use the LindormTable SQL endpoint.
 	//
-	// 	- **5**: The connection information can be used to access Lindorm by using the LindormTable endpoint for Amazon S3.
+	// - **5**: Use the S3-compatible endpoint for LindormTable.
 	//
-	// 	- **6**: The connection information can be used to access Lindorm by using the LindormTable endpoint for MySQL.
+	// - **6**: Use the MySQL-compatible endpoint for LindormTable.
 	//
 	// example:
 	//
 	// 1
 	AccessType *int32 `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
-	// The endpoint that is used to connect to the engine.
+	// The database endpoint.
 	//
 	// example:
 	//
 	// ld-bp1nq34mv3smk****-proxy-lindorm.lindorm.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The network type of the endpoint. Valid values:
+	// The network type of the database endpoint. Valid values:
 	//
-	// 	- **0**: Internet
+	// - **0**: Internet.
 	//
-	// 	- **2**: virtual private cloud (VPC)
+	// - **2**: Virtual private cloud (VPC).
 	//
 	// example:
 	//
 	// 2
 	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	// The port number used to connect to the engine.
+	// The port number of the database endpoint.
 	//
 	// example:
 	//

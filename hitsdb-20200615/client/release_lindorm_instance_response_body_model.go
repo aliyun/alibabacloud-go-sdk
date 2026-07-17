@@ -14,7 +14,7 @@ type iReleaseLindormInstanceResponseBody interface {
 }
 
 type ReleaseLindormInstanceResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

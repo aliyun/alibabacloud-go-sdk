@@ -25,6 +25,30 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"us-west-1":             dara.String("hitsdb.us-west-1.aliyuncs.com"),
+		"us-east-1":             dara.String("hitsdb.us-east-1.aliyuncs.com"),
+		"eu-west-1":             dara.String("hitsdb.eu-west-1.aliyuncs.com"),
+		"eu-central-1":          dara.String("hitsdb.eu-central-1.aliyuncs.com"),
+		"cn-zhangjiakou":        dara.String("hitsdb.cn-zhangjiakou.aliyuncs.com"),
+		"cn-wulanchabu":         dara.String("hitsdb.cn-wulanchabu.aliyuncs.com"),
+		"cn-shenzhen-finance-1": dara.String("hitsdb.cn-shenzhen-finance-1.aliyuncs.com"),
+		"cn-shenzhen":           dara.String("hitsdb.cn-shenzhen.aliyuncs.com"),
+		"cn-shanghai-finance-1": dara.String("hitsdb.cn-shanghai-finance-1.aliyuncs.com"),
+		"cn-shanghai":           dara.String("hitsdb.cn-shanghai.aliyuncs.com"),
+		"cn-qingdao":            dara.String("hitsdb.cn-qingdao.aliyuncs.com"),
+		"cn-north-2-gov-1":      dara.String("hitsdb.cn-north-2-gov-1.aliyuncs.com"),
+		"cn-huhehaote":          dara.String("hitsdb.cn-huhehaote.aliyuncs.com"),
+		"cn-hongkong":           dara.String("hitsdb.cn-hongkong.aliyuncs.com"),
+		"cn-hangzhou-finance":   dara.String("hitsdb.cn-hangzhou-finance.aliyuncs.com"),
+		"cn-hangzhou":           dara.String("hitsdb.cn-hangzhou.aliyuncs.com"),
+		"cn-chengdu":            dara.String("hitsdb.cn-chengdu.aliyuncs.com"),
+		"cn-beijing":            dara.String("hitsdb.cn-beijing.aliyuncs.com"),
+		"ap-southeast-5":        dara.String("hitsdb.ap-southeast-5.aliyuncs.com"),
+		"ap-southeast-3":        dara.String("hitsdb.ap-southeast-3.aliyuncs.com"),
+		"ap-southeast-1":        dara.String("hitsdb.ap-southeast-1.aliyuncs.com"),
+		"ap-northeast-1":        dara.String("hitsdb.ap-northeast-1.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +82,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Changes a resource group to another.
+// Moves a resource to a different resource group.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -110,7 +134,7 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 
 // Summary:
 //
-// Changes a resource group to another.
+// Moves a resource to a different resource group.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -798,11 +822,15 @@ func (client *Client) CreateLdpsComputeGroup(request *CreateLdpsComputeGroupRequ
 
 // Summary:
 //
-// Creates a Lindorm instance.
+// Create a Lindorm instance.
 //
 // Description:
 //
-// You must select at least one engine when you create a Lindorm instance. For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine types](https://help.aliyun.com/document_detail/181971.html) and [Select storage types](https://help.aliyun.com/document_detail/174643.html).
+// To create an instance, you must specify at least one data engine. For example, to create a wide table engine, you must specify both the **LindormNum*	- (node count) and **LindormSpec*	- (node specification) parameters. For details on data engines and storage specifications, see [How to select a data engine](https://help.aliyun.com/document_detail/174643.html) and [How to select a storage specification](https://help.aliyun.com/document_detail/181971.html).
+//
+//	Notice:
+//
+// If you do not specify any data engine parameters when you create an instance, the API call fails.
 //
 // @param request - CreateLindormInstanceRequest
 //
@@ -1026,11 +1054,15 @@ func (client *Client) CreateLindormInstanceWithOptions(request *CreateLindormIns
 
 // Summary:
 //
-// Creates a Lindorm instance.
+// Create a Lindorm instance.
 //
 // Description:
 //
-// You must select at least one engine when you create a Lindorm instance. For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine types](https://help.aliyun.com/document_detail/181971.html) and [Select storage types](https://help.aliyun.com/document_detail/174643.html).
+// To create an instance, you must specify at least one data engine. For example, to create a wide table engine, you must specify both the **LindormNum*	- (node count) and **LindormSpec*	- (node specification) parameters. For details on data engines and storage specifications, see [How to select a data engine](https://help.aliyun.com/document_detail/174643.html) and [How to select a storage specification](https://help.aliyun.com/document_detail/181971.html).
+//
+//	Notice:
+//
+// If you do not specify any data engine parameters when you create an instance, the API call fails.
 //
 // @param request - CreateLindormInstanceRequest
 //
@@ -1048,7 +1080,15 @@ func (client *Client) CreateLindormInstance(request *CreateLindormInstanceReques
 
 // Summary:
 //
-// 创建Lindorm实例
+// Creates a Lindorm V2 instance.
+//
+// Description:
+//
+// You must specify at least one DPI engine when you create an instance. For more information about DPI engines and storage specifications, see [How to select a DPI engine](https://help.aliyun.com/document_detail/174643.html) and [How to select storage specifications](https://help.aliyun.com/document_detail/181971.html).
+//
+//	Notice:
+//
+// If you do not specify a DPI engine parameter when you create an instance, the API call fails.
 //
 // @param request - CreateLindormV2InstanceRequest
 //
@@ -1208,7 +1248,15 @@ func (client *Client) CreateLindormV2InstanceWithOptions(request *CreateLindormV
 
 // Summary:
 //
-// 创建Lindorm实例
+// Creates a Lindorm V2 instance.
+//
+// Description:
+//
+// You must specify at least one DPI engine when you create an instance. For more information about DPI engines and storage specifications, see [How to select a DPI engine](https://help.aliyun.com/document_detail/174643.html) and [How to select storage specifications](https://help.aliyun.com/document_detail/181971.html).
+//
+//	Notice:
+//
+// If you do not specify a DPI engine parameter when you create an instance, the API call fails.
 //
 // @param request - CreateLindormV2InstanceRequest
 //
@@ -1632,7 +1680,7 @@ func (client *Client) DeployLdpsSemiManagedComponent(request *DeployLdpsSemiMana
 
 // Summary:
 //
-// Obtains the regions supported by Lindorm.
+// Queries all regions where Lindorm is available.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -1696,7 +1744,7 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 
 // Summary:
 //
-// Obtains the regions supported by Lindorm.
+// Queries all regions where Lindorm is available.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -1950,6 +1998,190 @@ func (client *Client) GetClientSourceIp(request *GetClientSourceIpRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取计算引擎作业详情
+//
+// @param request - GetComputeEngineJobDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetComputeEngineJobDetailResponse
+func (client *Client) GetComputeEngineJobDetailWithOptions(request *GetComputeEngineJobDetailRequest, runtime *dara.RuntimeOptions) (_result *GetComputeEngineJobDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetComputeEngineJobDetail"),
+		Version:     dara.String("2020-06-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetComputeEngineJobDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取计算引擎作业详情
+//
+// @param request - GetComputeEngineJobDetailRequest
+//
+// @return GetComputeEngineJobDetailResponse
+func (client *Client) GetComputeEngineJobDetail(request *GetComputeEngineJobDetailRequest) (_result *GetComputeEngineJobDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetComputeEngineJobDetailResponse{}
+	_body, _err := client.GetComputeEngineJobDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取计算引擎作业日志
+//
+// @param request - GetComputeEngineJobLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetComputeEngineJobLogResponse
+func (client *Client) GetComputeEngineJobLogWithOptions(request *GetComputeEngineJobLogRequest, runtime *dara.RuntimeOptions) (_result *GetComputeEngineJobLogResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetComputeEngineJobLog"),
+		Version:     dara.String("2020-06-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetComputeEngineJobLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取计算引擎作业日志
+//
+// @param request - GetComputeEngineJobLogRequest
+//
+// @return GetComputeEngineJobLogResponse
+func (client *Client) GetComputeEngineJobLog(request *GetComputeEngineJobLogRequest) (_result *GetComputeEngineJobLogResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetComputeEngineJobLogResponse{}
+	_body, _err := client.GetComputeEngineJobLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - GetEngineDefaultAuthRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2030,7 +2262,7 @@ func (client *Client) GetEngineDefaultAuth(request *GetEngineDefaultAuthRequest)
 
 // Summary:
 //
-// Queries the whitelists configured for a Lindorm instance.
+// Retrieves the access whitelist for a Lindorm instance.
 //
 // @param request - GetInstanceIpWhiteListRequest
 //
@@ -2094,7 +2326,7 @@ func (client *Client) GetInstanceIpWhiteListWithOptions(request *GetInstanceIpWh
 
 // Summary:
 //
-// Queries the whitelists configured for a Lindorm instance.
+// Retrieves the access whitelist for a Lindorm instance.
 //
 // @param request - GetInstanceIpWhiteListRequest
 //
@@ -2184,6 +2416,10 @@ func (client *Client) GetInstanceSecurityGroups(request *GetInstanceSecurityGrou
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves a summary of Lindorm instances in your account.
+//
 // @param request - GetInstanceSummaryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2244,6 +2480,10 @@ func (client *Client) GetInstanceSummaryWithOptions(request *GetInstanceSummaryR
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves a summary of Lindorm instances in your account.
+//
 // @param request - GetInstanceSummaryRequest
 //
 // @return GetInstanceSummaryResponse
@@ -2604,11 +2844,11 @@ func (client *Client) GetLindormEngineConfig(request *GetLindormEngineConfigRequ
 
 // Summary:
 //
-// Queries the details of each storage type in a Lindorm instance.
+// Retrieves the storage details for each storage medium in a specified Lindorm instance.
 //
 // Description:
 //
-// If the version of the underlying storage engine in a Lindorm cluster is 4.1.9 or later, the storage usage values returned for the LStorageUsageList parameter prevail.
+// For Lindorm clusters with a storage version of 4.1.9 or later, storage usage details are available in the list returned by `LStorageUsageList`.
 //
 // @param request - GetLindormFsUsedDetailRequest
 //
@@ -2676,11 +2916,11 @@ func (client *Client) GetLindormFsUsedDetailWithOptions(request *GetLindormFsUse
 
 // Summary:
 //
-// Queries the details of each storage type in a Lindorm instance.
+// Retrieves the storage details for each storage medium in a specified Lindorm instance.
 //
 // Description:
 //
-// If the version of the underlying storage engine in a Lindorm cluster is 4.1.9 or later, the storage usage values returned for the LStorageUsageList parameter prevail.
+// For Lindorm clusters with a storage version of 4.1.9 or later, storage usage details are available in the list returned by `LStorageUsageList`.
 //
 // @param request - GetLindormFsUsedDetailRequest
 //
@@ -2698,7 +2938,7 @@ func (client *Client) GetLindormFsUsedDetail(request *GetLindormFsUsedDetailRequ
 
 // Summary:
 //
-// Obtains the detailed information about a Lindorm instance, including the instance type, billing method, and VPC.
+// Retrieves detailed information about a Lindorm instance, including its instance type, billing method, and VPC.
 //
 // @param request - GetLindormInstanceRequest
 //
@@ -2762,7 +3002,7 @@ func (client *Client) GetLindormInstanceWithOptions(request *GetLindormInstanceR
 
 // Summary:
 //
-// Obtains the detailed information about a Lindorm instance, including the instance type, billing method, and VPC.
+// Retrieves detailed information about a Lindorm instance, including its instance type, billing method, and VPC.
 //
 // @param request - GetLindormInstanceRequest
 //
@@ -2780,7 +3020,7 @@ func (client *Client) GetLindormInstance(request *GetLindormInstanceRequest) (_r
 
 // Summary:
 //
-// Obtains the engine types supported by the specified Lindorm instance.
+// Queries the engine types that a Lindorm instance supports.
 //
 // @param request - GetLindormInstanceEngineListRequest
 //
@@ -2848,7 +3088,7 @@ func (client *Client) GetLindormInstanceEngineListWithOptions(request *GetLindor
 
 // Summary:
 //
-// Obtains the engine types supported by the specified Lindorm instance.
+// Queries the engine types that a Lindorm instance supports.
 //
 // @param request - GetLindormInstanceEngineListRequest
 //
@@ -2866,7 +3106,7 @@ func (client *Client) GetLindormInstanceEngineList(request *GetLindormInstanceEn
 
 // Summary:
 //
-// Queries the instances that meet the specified conditions.
+// Queries a list of Lindorm instances.
 //
 // @param request - GetLindormInstanceListRequest
 //
@@ -2958,7 +3198,7 @@ func (client *Client) GetLindormInstanceListWithOptions(request *GetLindormInsta
 
 // Summary:
 //
-// Queries the instances that meet the specified conditions.
+// Queries a list of Lindorm instances.
 //
 // @param request - GetLindormInstanceListRequest
 //
@@ -3058,7 +3298,11 @@ func (client *Client) GetLindormV2Instance(request *GetLindormV2InstanceRequest)
 
 // Summary:
 //
-// 查询新架构实例详情
+// Queries the details of an instance that uses the new architecture.
+//
+// Description:
+//
+// For Lindorm clusters with an underlying storage version of 4.1.9 or later, refer to the values in the list returned by LStorageUsageList for storage usage details.
 //
 // @param request - GetLindormV2InstanceDetailsRequest
 //
@@ -3122,7 +3366,11 @@ func (client *Client) GetLindormV2InstanceDetailsWithOptions(request *GetLindorm
 
 // Summary:
 //
-// 查询新架构实例详情
+// Queries the details of an instance that uses the new architecture.
+//
+// Description:
+//
+// For Lindorm clusters with an underlying storage version of 4.1.9 or later, refer to the values in the list returned by LStorageUsageList for storage usage details.
 //
 // @param request - GetLindormV2InstanceDetailsRequest
 //
@@ -3380,6 +3628,10 @@ func (client *Client) GetLindormV2InstanceSecurityGroups(request *GetLindormV2In
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the storage details for each storage medium of a specific Lindorm instance that uses the new architecture.
+//
 // @param request - GetLindormV2StorageUsageRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3440,6 +3692,10 @@ func (client *Client) GetLindormV2StorageUsageWithOptions(request *GetLindormV2S
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the storage details for each storage medium of a specific Lindorm instance that uses the new architecture.
+//
 // @param request - GetLindormV2StorageUsageRequest
 //
 // @return GetLindormV2StorageUsageResponse
@@ -3808,6 +4064,124 @@ func (client *Client) ListAutoScalingRules(request *ListAutoScalingRulesRequest)
 
 // Summary:
 //
+// 查询计算引擎作业列表
+//
+// @param request - ListComputeEngineJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListComputeEngineJobResponse
+func (client *Client) ListComputeEngineJobWithOptions(request *ListComputeEngineJobRequest, runtime *dara.RuntimeOptions) (_result *ListComputeEngineJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ComputeGroup) {
+		query["ComputeGroup"] = request.ComputeGroup
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.JobName) {
+		query["JobName"] = request.JobName
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.State) {
+		query["State"] = request.State
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListComputeEngineJob"),
+		Version:     dara.String("2020-06-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListComputeEngineJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询计算引擎作业列表
+//
+// @param request - ListComputeEngineJobRequest
+//
+// @return ListComputeEngineJobResponse
+func (client *Client) ListComputeEngineJob(request *ListComputeEngineJobRequest) (_result *ListComputeEngineJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListComputeEngineJobResponse{}
+	_body, _err := client.ListComputeEngineJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取计算引擎资源组列表
 //
 // @param request - ListLdpsComputeGroupsRequest
@@ -3894,7 +4268,7 @@ func (client *Client) ListLdpsComputeGroups(request *ListLdpsComputeGroupsReques
 
 // Summary:
 //
-// Queries the tags associated with the specified Lindorm instance.
+// Get Lindorm instance-to-tag bindings.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -3974,7 +4348,7 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 
 // Summary:
 //
-// Queries the tags associated with the specified Lindorm instance.
+// Get Lindorm instance-to-tag bindings.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -4380,13 +4754,15 @@ func (client *Client) ModifyAutoScalingRule(request *ModifyAutoScalingRuleReques
 
 // Summary:
 //
-// Changes the billing method of the specified Lindorm instance.
+// Changes the billing method of a Lindorm instance.
 //
 // Description:
 //
-// You can call this operation to change the billing method of an instance to subscription or pay-as-you-go.
+// Switches the billing method of an instance between subscription and pay-as-you-go.
 //
-// Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/en/pricing-calculator?spm=a2c63.p38356.0.0.2b024c2adcHeXL&_p_lc=1#/commodity/hitsdb_lindormpre_public_intl) of Lindorm. Published on only international site (alibabacloud.com).
+// Before you call this operation, make sure that you understand the billing methods and <props="china">[pricing](https://www.aliyun.com/price/product?spm=openapi-amp.newDocPublishment.0.0.6345281fu63xJ3#/hitsdb/detail/hitsdb_lindormpre_public_cn)
+//
+// <props="intl">[pricing](https://www.alibabacloud.com/zh/pricing-calculator?_p_lc=1\\&spm=a2796.7960336.3034855210.1.7396b91aC5VjZ7#/commodity/vm_intl) of Lindorm.
 //
 // @param request - ModifyInstancePayTypeRequest
 //
@@ -4462,13 +4838,15 @@ func (client *Client) ModifyInstancePayTypeWithOptions(request *ModifyInstancePa
 
 // Summary:
 //
-// Changes the billing method of the specified Lindorm instance.
+// Changes the billing method of a Lindorm instance.
 //
 // Description:
 //
-// You can call this operation to change the billing method of an instance to subscription or pay-as-you-go.
+// Switches the billing method of an instance between subscription and pay-as-you-go.
 //
-// Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/en/pricing-calculator?spm=a2c63.p38356.0.0.2b024c2adcHeXL&_p_lc=1#/commodity/hitsdb_lindormpre_public_intl) of Lindorm. Published on only international site (alibabacloud.com).
+// Before you call this operation, make sure that you understand the billing methods and <props="china">[pricing](https://www.aliyun.com/price/product?spm=openapi-amp.newDocPublishment.0.0.6345281fu63xJ3#/hitsdb/detail/hitsdb_lindormpre_public_cn)
+//
+// <props="intl">[pricing](https://www.alibabacloud.com/zh/pricing-calculator?_p_lc=1\\&spm=a2796.7960336.3034855210.1.7396b91aC5VjZ7#/commodity/vm_intl) of Lindorm.
 //
 // @param request - ModifyInstancePayTypeRequest
 //
@@ -5124,7 +5502,7 @@ func (client *Client) ReleaseLindormInstance(request *ReleaseLindormInstanceRequ
 
 // Summary:
 //
-// 释放实例
+// Releases a Lindorm instance.
 //
 // @param request - ReleaseLindormV2InstanceRequest
 //
@@ -5192,7 +5570,7 @@ func (client *Client) ReleaseLindormV2InstanceWithOptions(request *ReleaseLindor
 
 // Summary:
 //
-// 释放实例
+// Releases a Lindorm instance.
 //
 // @param request - ReleaseLindormV2InstanceRequest
 //
@@ -5214,7 +5592,7 @@ func (client *Client) ReleaseLindormV2Instance(request *ReleaseLindormV2Instance
 //
 // Description:
 //
-// You can call this operation to renew a subscription Lindorm instance for 1 to 9 months or 1 to 3 years.
+// You can renew a subscription instance for a specific duration. The renewal period can be specified in months (1 to 9) or years (1 to 3).
 //
 // Before you call this operation, make sure that you fully understand the billing methods and pricing of Lindorm.
 //
@@ -5296,7 +5674,7 @@ func (client *Client) RenewLindormInstanceWithOptions(request *RenewLindormInsta
 //
 // Description:
 //
-// You can call this operation to renew a subscription Lindorm instance for 1 to 9 months or 1 to 3 years.
+// You can renew a subscription instance for a specific duration. The renewal period can be specified in months (1 to 9) or years (1 to 3).
 //
 // Before you call this operation, make sure that you fully understand the billing methods and pricing of Lindorm.
 //
@@ -5484,17 +5862,17 @@ func (client *Client) SetDefaultOlapComputeGroup(request *SetDefaultOlapComputeG
 
 // Summary:
 //
-// Enables or disables the MySQL compatibility feature for a Lindorm instance.
+// Enables or disables the Lindorm protocol that is compatible with MySQL.
 //
 // Description:
 //
-// Prerequisites
+// Before you call this operation, make sure that the following requirements are met:
 //
-//   - The LindormTable version of your instance is 2.6.0 or later.
+// - The version of LindormTable for the instance is 2.6.0 or later.
 //
-//   - The LindormTable of your instance supports LindormSQL V3. The value of the EnableLsqlVersionV3 parameter in the response of the GetLindormInstance operation is true for Lindorm instances purchased after Oct 24, 2023, which indicates that LindormSQL is supported by these instances by default. If you want to enable LindormSQL for instances purchased before Oct 24, 2023, contact the on-duty technical support.
+// - LindormTable supports Lindorm SQL (LSQL) V3. You can check whether LSQL V3 is supported by calling the GetLindormInstance operation. If the EnableLsqlVersionV3 parameter in the response is true, LSQL V3 is supported. For instances that are purchased after October 24, 2023, this feature is enabled by default. For existing instances, contact Alibaba Cloud support for an evaluation before enabling this feature.
 //
-// You can enable the MySQL compatibility feature for a Lindorm instance only when the instance meets the preceding requirements.
+// You can enable the MySQL protocol only if the two preceding conditions are met.
 //
 // @param request - SwitchLSQLV3MySQLServiceRequest
 //
@@ -5562,17 +5940,17 @@ func (client *Client) SwitchLSQLV3MySQLServiceWithOptions(request *SwitchLSQLV3M
 
 // Summary:
 //
-// Enables or disables the MySQL compatibility feature for a Lindorm instance.
+// Enables or disables the Lindorm protocol that is compatible with MySQL.
 //
 // Description:
 //
-// Prerequisites
+// Before you call this operation, make sure that the following requirements are met:
 //
-//   - The LindormTable version of your instance is 2.6.0 or later.
+// - The version of LindormTable for the instance is 2.6.0 or later.
 //
-//   - The LindormTable of your instance supports LindormSQL V3. The value of the EnableLsqlVersionV3 parameter in the response of the GetLindormInstance operation is true for Lindorm instances purchased after Oct 24, 2023, which indicates that LindormSQL is supported by these instances by default. If you want to enable LindormSQL for instances purchased before Oct 24, 2023, contact the on-duty technical support.
+// - LindormTable supports Lindorm SQL (LSQL) V3. You can check whether LSQL V3 is supported by calling the GetLindormInstance operation. If the EnableLsqlVersionV3 parameter in the response is true, LSQL V3 is supported. For instances that are purchased after October 24, 2023, this feature is enabled by default. For existing instances, contact Alibaba Cloud support for an evaluation before enabling this feature.
 //
-// You can enable the MySQL compatibility feature for a Lindorm instance only when the instance meets the preceding requirements.
+// You can enable the MySQL protocol only if the two preceding conditions are met.
 //
 // @param request - SwitchLSQLV3MySQLServiceRequest
 //
@@ -5590,7 +5968,7 @@ func (client *Client) SwitchLSQLV3MySQLService(request *SwitchLSQLV3MySQLService
 
 // Summary:
 //
-// Adds tags to one or more Lindorm instances.
+// Attaches tags to one or more Lindorm instances.
 //
 // @param request - TagResourcesRequest
 //
@@ -5666,7 +6044,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 
 // Summary:
 //
-// Adds tags to one or more Lindorm instances.
+// Attaches tags to one or more Lindorm instances.
 //
 // @param request - TagResourcesRequest
 //
@@ -5684,11 +6062,11 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// Removes tags from a Lindorm instance.
+// Detaches tags from Lindorm instances.
 //
 // Description:
 //
-// If a tag is not added to any Lindorm instance, it is deleted.
+// If a tag is not attached to any Lindorm instance, the tag is deleted.
 //
 // @param request - UntagResourcesRequest
 //
@@ -5764,11 +6142,11 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 
 // Summary:
 //
-// Removes tags from a Lindorm instance.
+// Detaches tags from Lindorm instances.
 //
 // Description:
 //
-// If a tag is not added to any Lindorm instance, it is deleted.
+// If a tag is not attached to any Lindorm instance, the tag is deleted.
 //
 // @param request - UntagResourcesRequest
 //
@@ -5786,7 +6164,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// Configures an IP address whitelist for a Lindorm instance.
+// Sets the access whitelist for a Lindorm instance.
 //
 // @param request - UpdateInstanceIpWhiteListRequest
 //
@@ -5862,7 +6240,7 @@ func (client *Client) UpdateInstanceIpWhiteListWithOptions(request *UpdateInstan
 
 // Summary:
 //
-// Configures an IP address whitelist for a Lindorm instance.
+// Sets the access whitelist for a Lindorm instance.
 //
 // @param request - UpdateInstanceIpWhiteListRequest
 //
@@ -6044,7 +6422,15 @@ func (client *Client) UpdateLdpsComputeGroup(request *UpdateLdpsComputeGroupRequ
 
 // Summary:
 //
-// 更新实例名称或删除保护
+// Updates the name or deletion protection settings of an instance.
+//
+// Description:
+//
+// You must select at least one data engine when you create an instance. For example, to create a LindormTable engine, you must specify both the **LindormNum*	- (number of LindormTable nodes) and **LindormSpec*	- (node specifications for LindormTable) parameters. For more information, see [How to select a data engine](https://help.aliyun.com/document_detail/174643.html) and [How to select storage specifications](https://help.aliyun.com/document_detail/181971.html).
+//
+//	Notice:
+//
+// If you do not specify data engine parameters when you create an instance, the API call fails.
 //
 // @param request - UpdateLindormInstanceAttributeRequest
 //
@@ -6116,7 +6502,15 @@ func (client *Client) UpdateLindormInstanceAttributeWithOptions(request *UpdateL
 
 // Summary:
 //
-// 更新实例名称或删除保护
+// Updates the name or deletion protection settings of an instance.
+//
+// Description:
+//
+// You must select at least one data engine when you create an instance. For example, to create a LindormTable engine, you must specify both the **LindormNum*	- (number of LindormTable nodes) and **LindormSpec*	- (node specifications for LindormTable) parameters. For more information, see [How to select a data engine](https://help.aliyun.com/document_detail/174643.html) and [How to select storage specifications](https://help.aliyun.com/document_detail/181971.html).
+//
+//	Notice:
+//
+// If you do not specify data engine parameters when you create an instance, the API call fails.
 //
 // @param request - UpdateLindormInstanceAttributeRequest
 //
@@ -6134,7 +6528,7 @@ func (client *Client) UpdateLindormInstanceAttribute(request *UpdateLindormInsta
 
 // Summary:
 //
-// 更新LindormV2Instance
+// Updates a Lindorm instance.
 //
 // @param request - UpdateLindormV2InstanceRequest
 //
@@ -6222,7 +6616,7 @@ func (client *Client) UpdateLindormV2InstanceWithOptions(request *UpdateLindormV
 
 // Summary:
 //
-// 更新LindormV2Instance
+// Updates a Lindorm instance.
 //
 // @param request - UpdateLindormV2InstanceRequest
 //
@@ -6326,7 +6720,7 @@ func (client *Client) UpdateLindormV2InstanceParameter(request *UpdateLindormV2I
 
 // Summary:
 //
-// 修改Lindorm新版实例白名单分组列表
+// Modifies the IP whitelists for a LindormV2 instance.
 //
 // @param request - UpdateLindormV2WhiteIpListRequest
 //
@@ -6398,7 +6792,7 @@ func (client *Client) UpdateLindormV2WhiteIpListWithOptions(request *UpdateLindo
 
 // Summary:
 //
-// 修改Lindorm新版实例白名单分组列表
+// Modifies the IP whitelists for a LindormV2 instance.
 //
 // @param request - UpdateLindormV2WhiteIpListRequest
 //
@@ -6416,11 +6810,11 @@ func (client *Client) UpdateLindormV2WhiteIpList(request *UpdateLindormV2WhiteIp
 
 // Summary:
 //
-// Upgrades, scales up, or enable cold storage for a Lindorm instance.
+// Enable cold storage for a Lindorm instance, change the node specification or the number of nodes, and adjust the storage space.
 //
 // Description:
 //
-// For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine typpes](https://help.aliyun.com/document_detail/181971.html) and [Select storage types](https://help.aliyun.com/document_detail/174643.html).
+// For information about how to select the data engine and storage type for a Lindorm instance, see [Select a data engine](https://help.aliyun.com/document_detail/174643.html) and [Select a storage type](https://help.aliyun.com/document_detail/181971.html).
 //
 // @param request - UpgradeLindormInstanceRequest
 //
@@ -6568,11 +6962,11 @@ func (client *Client) UpgradeLindormInstanceWithOptions(request *UpgradeLindormI
 
 // Summary:
 //
-// Upgrades, scales up, or enable cold storage for a Lindorm instance.
+// Enable cold storage for a Lindorm instance, change the node specification or the number of nodes, and adjust the storage space.
 //
 // Description:
 //
-// For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine typpes](https://help.aliyun.com/document_detail/181971.html) and [Select storage types](https://help.aliyun.com/document_detail/174643.html).
+// For information about how to select the data engine and storage type for a Lindorm instance, see [Select a data engine](https://help.aliyun.com/document_detail/174643.html) and [Select a storage type](https://help.aliyun.com/document_detail/181971.html).
 //
 // @param request - UpgradeLindormInstanceRequest
 //

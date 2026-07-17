@@ -22,11 +22,18 @@ type iGetLindormV2StorageUsageResponseBody interface {
 }
 
 type GetLindormV2StorageUsageResponseBody struct {
+	// The detailed reason why the access was denied.
+	//
 	// example:
 	//
 	// {"AuthAction":"xxx","AuthPrincipalDisplayName":"222","AuthPrincipalOwnerId":"111","AuthPrincipalType":"SubUser",,"NoPermissionType":"ImplicitDeny","PolicyType":"AccountLevelIdentityBasedPolicy","EncodedDiagnosticMessage":"xxxxxx"}
-	AccessDeniedDetail     *string                  `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The capacity information for each storage medium.
 	CapacityByDiskCategory []map[string]interface{} `json:"CapacityByDiskCategory,omitempty" xml:"CapacityByDiskCategory,omitempty" type:"Repeated"`
+	// The capacity information for the multi-zone instance.
+	//
+	// {"ZoneId":{"CapacityByDiskCategory":{...},"UsageByDiskCategory":{...}}}
+	//
 	// example:
 	//
 	// {
@@ -87,10 +94,13 @@ type GetLindormV2StorageUsageResponseBody struct {
 	//
 	//   }
 	InstanceStorageZoneMap map[string]interface{} `json:"InstanceStorageZoneMap,omitempty" xml:"InstanceStorageZoneMap,omitempty"`
+	// The ID of the request. Alibaba Cloud generates this unique ID for each request. Use this ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// BDDB1954-002B-4249-B2DF-2CDDA0259668
-	RequestId           *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The usage information for each storage medium.
 	UsageByDiskCategory []map[string]interface{} `json:"UsageByDiskCategory,omitempty" xml:"UsageByDiskCategory,omitempty" type:"Repeated"`
 }
 
