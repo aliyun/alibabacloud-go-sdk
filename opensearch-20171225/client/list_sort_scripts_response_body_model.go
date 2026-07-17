@@ -16,13 +16,13 @@ type iListSortScriptsResponseBody interface {
 }
 
 type ListSortScriptsResponseBody struct {
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//
 	// ABCDEFGH
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The scripts.
+	// The list of scripts.
 	Result []*ListSortScriptsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
@@ -78,7 +78,7 @@ type ListSortScriptsResponseBodyResult struct {
 	//
 	// 2020-04-02 21:21:14
 	ModifyTime *string `json:"modifyTime,omitempty" xml:"modifyTime,omitempty"`
-	// The sort phase to which the script applies.
+	// The applicable scope of the script.
 	//
 	// example:
 	//
@@ -90,17 +90,17 @@ type ListSortScriptsResponseBodyResult struct {
 	//
 	// test
 	ScriptName *string `json:"scriptName,omitempty" xml:"scriptName,omitempty"`
-	// The status of the script. Valid values:
+	// The status of the script:
 	//
-	// 	- configurable: The script is created, but no script files are uploaded.
+	// - configurable: The script is created, but no file has been uploaded.
 	//
-	// 	- not compiled: The script is not compiled.
+	// - not compiled: The script has not been compiled.
 	//
-	// 	- compile failed: The compilation of the script failed.
+	// - compile failed: The script failed to be compiled.
 	//
-	// 	- compile successful: The script is compiled.
+	// - compile successful: The script is compiled.
 	//
-	// 	- released: The script is published.
+	// - released: The script is published.
 	//
 	// example:
 	//

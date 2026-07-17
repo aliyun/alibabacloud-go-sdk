@@ -26,25 +26,25 @@ type iGetFunctionResourceResponseBody interface {
 }
 
 type GetFunctionResourceResponseBody struct {
-	// The error code returned. If no error occurs, this value is empty.
+	// The returned error code. This is empty if no error occurred.
 	//
 	// example:
 	//
 	// Resource.NotExist
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpCode *int64 `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	// The time consumed for the API request. Unit: milliseconds.
+	// The time consumed by the API request. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 123
 	Latency *float64 `json:"Latency,omitempty" xml:"Latency,omitempty"`
-	// The error message returned.
+	// The returned error message.
 	//
 	// example:
 	//
@@ -56,13 +56,13 @@ type GetFunctionResourceResponseBody struct {
 	//
 	// E215C843-0795-5293-AC9A-14FE0723E890
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned results.
+	// The returned result.
 	Result *GetFunctionResourceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// The HTTP status code. Valid values:
+	// The status code.
 	//
-	// 	- OK
+	// - OK: The request was successful.
 	//
-	// 	- FAIL
+	// - FAIL: The request failed.
 	//
 	// example:
 	//
@@ -157,7 +157,7 @@ type GetFunctionResourceResponseBodyResult struct {
 	//
 	// 1234
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The resource data. The data structure varies with the resource type.
+	// The resource data. The structure of the data varies based on the resourceType.
 	Data *GetFunctionResourceResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The description of the resource.
 	//
@@ -165,27 +165,27 @@ type GetFunctionResourceResponseBodyResult struct {
 	//
 	// ""
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the feature.
+	// The feature name.
 	//
 	// example:
 	//
 	// rank
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
-	// The time when the resource was modified. Unit: milliseconds.
+	// The time when the resource was last modified. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1234
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The algorithm instances that are referenced.
+	// The list of referenced algorithm instance names.
 	ReferencedInstances []*string `json:"ReferencedInstances,omitempty" xml:"ReferencedInstances,omitempty" type:"Repeated"`
-	// The name of the resource.
+	// The resource name.
 	//
 	// example:
 	//
 	// fg_json
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// The type of the resource.
+	// The resource type.
 	//
 	// example:
 	//
@@ -283,13 +283,13 @@ func (s *GetFunctionResourceResponseBodyResult) Validate() error {
 }
 
 type GetFunctionResourceResponseBodyResultData struct {
-	// The content of the file that corresponds to a resource of the raw_file type.
+	// The content of the file for a resource of the raw_file type.
 	//
 	// example:
 	//
 	// abc
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The feature generators that correspond to resources of the feature_generator type.
+	// The list of feature generators for a resource of the feature_generator type.
 	Generators []*GetFunctionResourceResponseBodyResultDataGenerators `json:"Generators,omitempty" xml:"Generators,omitempty" type:"Repeated"`
 }
 
@@ -394,7 +394,7 @@ func (s *GetFunctionResourceResponseBodyResultDataGenerators) Validate() error {
 }
 
 type GetFunctionResourceResponseBodyResultDataGeneratorsInput struct {
-	// The input features.
+	// The list of input features.
 	Features []*GetFunctionResourceResponseBodyResultDataGeneratorsInputFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
 }
 
@@ -429,13 +429,13 @@ func (s *GetFunctionResourceResponseBodyResultDataGeneratorsInput) Validate() er
 }
 
 type GetFunctionResourceResponseBodyResultDataGeneratorsInputFeatures struct {
-	// The name of the feature.
+	// The feature name.
 	//
 	// example:
 	//
 	// system_item_id
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the feature.
+	// The feature type.
 	//
 	// example:
 	//

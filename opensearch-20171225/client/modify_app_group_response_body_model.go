@@ -22,7 +22,7 @@ type ModifyAppGroupResponseBody struct {
 	//
 	// D77D0DAF-790D-F5F5-A9C0-133738165014
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Response parameters
+	// The returned data.
 	//
 	// example:
 	//
@@ -68,9 +68,9 @@ func (s *ModifyAppGroupResponseBody) Validate() error {
 type ModifyAppGroupResponseBodyResult struct {
 	// The billing method. Valid values:
 	//
-	// 	- POSTPAY: pay-as-you-go.
+	// - POSTPAY: pay-as-you-go.
 	//
-	// 	- PREPAY: subscription.
+	// - PREPAY: subscription.
 	//
 	// example:
 	//
@@ -78,25 +78,25 @@ type ModifyAppGroupResponseBodyResult struct {
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
 	// The billable item. Valid values:
 	//
-	// 	- 1: computing resources.
+	// - 1: computing resources.
 	//
-	// 	- 2: QPS.
+	// - 2: QPS.
 	//
 	// example:
 	//
 	// 1
 	ChargingWay *int32 `json:"chargingWay,omitempty" xml:"chargingWay,omitempty"`
-	// The code of the commodity.
+	// The commodity code.
 	//
 	// example:
 	//
 	// opensearch
 	CommodityCode *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
-	// The timestamp when the application was created.
+	// The UNIX timestamp when the application was created.
 	//
 	// example:
 	//
-	// 1590139524
+	// 159013954
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
 	// The ID of the current online version.
 	//
@@ -110,13 +110,13 @@ type ModifyAppGroupResponseBodyResult struct {
 	//
 	// 1
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The type of the industry. Valid values:
+	// The industry. Valid values:
 	//
-	// 	- GENERAL: general.
+	// - GENERAL: general.
 	//
-	// 	- ECOMMERCE: e-commerce.
+	// - ECOMMERCE: e-commerce.
 	//
-	// 	- IT_CONTENT: IT content.
+	// - IT_CONTENT: IT content.
 	//
 	// example:
 	//
@@ -128,17 +128,17 @@ type ModifyAppGroupResponseBodyResult struct {
 	//
 	// ha3
 	EngineType *string `json:"engineType,omitempty" xml:"engineType,omitempty"`
-	// The time when the application expired.
+	// The expiration time.
 	//
 	// example:
 	//
 	// 1
 	ExpireOn *string `json:"expireOn,omitempty" xml:"expireOn,omitempty"`
-	// The approval status of the quotas. Valid values:
+	// The approval status of the quota. Valid values:
 	//
-	// 	- 0: normal.
+	// - 0: normal.
 	//
-	// 	- 1: being approved.
+	// - 1: being approved.
 	//
 	// example:
 	//
@@ -156,13 +156,13 @@ type ModifyAppGroupResponseBodyResult struct {
 	//
 	// 10030288
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The lock status. Valid values:
+	// The lock mode of the instance. Valid values:
 	//
-	// 	- Unlock: The instance is unlocked.
+	// - Unlock: The instance is not locked.
 	//
-	// 	- LockByExpiration: The instance is automatically locked after it expires.
+	// - LockByExpiration: The instance is automatically locked after it expires.
 	//
-	// 	- ManualLock: The instance is manually locked.
+	// - ManualLock: The instance is manually locked.
 	//
 	// example:
 	//
@@ -174,23 +174,23 @@ type ModifyAppGroupResponseBodyResult struct {
 	//
 	// lsh_test_1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Indicates whether the order is complete. Valid values:
+	// Indicates whether the application is created. Valid values:
 	//
-	// 	- 0: The order is in progress.
+	// - 0: The application is being created.
 	//
-	// 	- 1: The order is complete.
+	// - 1: The application is created.
 	//
 	// example:
 	//
 	// 1
 	Produced *int32 `json:"produced,omitempty" xml:"produced,omitempty"`
-	// The name of the A/B test group.
+	// The name of the A/B test project.
 	//
 	// example:
 	//
 	// 1
 	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
-	// The information about the quotas of the application.
+	// The quota information of the application.
 	//
 	// example:
 	//
@@ -202,23 +202,23 @@ type ModifyAppGroupResponseBodyResult struct {
 	//
 	// rg-acfmoiyerh6nzly
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The state of the application. Valid values:
+	// The status of the application. Valid values:
 	//
-	// 	- producing: being produced.
+	// - producing: The application is being created.
 	//
-	// 	- review_pending: being approved.
+	// - review_pending: The application is under review.
 	//
-	// 	- config_pending: to be configured.
+	// - config_pending: The application requires configuration.
 	//
-	// 	- normal: normal.
+	// - normal: The application is running.
 	//
-	// 	- frozen: frozen.
+	// - frozen: The application is frozen.
 	//
 	// example:
 	//
 	// normal
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The timestamp when the current online version was published.
+	// The UNIX timestamp when the current online version was published.
 	//
 	// example:
 	//
@@ -226,17 +226,17 @@ type ModifyAppGroupResponseBodyResult struct {
 	SwitchedTime *int32 `json:"switchedTime,omitempty" xml:"switchedTime,omitempty"`
 	// The type of the application. Valid values:
 	//
-	// 	- standard: a standard edition application.
+	// - standard: a Standard Edition application.
 	//
-	// 	- advance: an advanced edition application of an old version. New versions are not supported for this edition.
+	// - advance: an Advanced Edition application of an old version. New applications do not support this type.
 	//
-	// 	- enhanced: an advanced edition application of a new version.
+	// - enhanced: an Enhanced Edition application.
 	//
 	// example:
 	//
 	// enhanced
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The timestamp when the application was last modified.
+	// The UNIX timestamp when the application was last modified.
 	//
 	// example:
 	//
@@ -460,13 +460,13 @@ func (s *ModifyAppGroupResponseBodyResult) Validate() error {
 }
 
 type ModifyAppGroupResponseBodyResultQuota struct {
-	// The computing resources. Unit: logical computing unit (LCU).
+	// The computing resources in logical compute units (LCUs).
 	//
 	// example:
 	//
 	// 20
 	ComputeResource *int32 `json:"computeResource,omitempty" xml:"computeResource,omitempty"`
-	// The storage capacity. Unit: GB.
+	// The storage capacity in GB.
 	//
 	// example:
 	//
@@ -474,19 +474,19 @@ type ModifyAppGroupResponseBodyResultQuota struct {
 	DocSize *int32 `json:"docSize,omitempty" xml:"docSize,omitempty"`
 	// The specifications. Valid values:
 	//
-	// 	- opensearch.share.junior: basic.
+	// - opensearch.share.junior: Basic
 	//
-	// 	- opensearch.share.common: shared general-purpose.
+	// - opensearch.share.common: Shared General-purpose
 	//
-	// 	- opensearch.share.compute: shared computing.
+	// - opensearch.share.compute: Shared Compute-optimized
 	//
-	// 	- opensearch.share.storage: shared storage.
+	// - opensearch.share.storage: Shared Storage-optimized
 	//
-	// 	- opensearch.private.common: exclusive general-purpose.
+	// - opensearch.private.common: Exclusive General-purpose
 	//
-	// 	- opensearch.private.compute: exclusive computing.
+	// - opensearch.private.compute: Exclusive Compute-optimized
 	//
-	// 	- opensearch.private.storage: exclusive storage.
+	// - opensearch.private.storage: Exclusive Storage-optimized
 	//
 	// example:
 	//

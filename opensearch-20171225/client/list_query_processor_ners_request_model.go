@@ -14,9 +14,9 @@ type iListQueryProcessorNersRequest interface {
 }
 
 type ListQueryProcessorNersRequest struct {
-	// The type of the industry.
+	// The industry type.
 	//
-	// 	- ECOMMERCE
+	// - ECOMMERCE: The e-commerce industry.
 	//
 	// example:
 	//

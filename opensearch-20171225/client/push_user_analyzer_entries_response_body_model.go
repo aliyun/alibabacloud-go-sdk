@@ -26,7 +26,7 @@ type PushUserAnalyzerEntriesResponseBody struct {
 	//
 	// example:
 	//
-	// {}
+	// []
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 

@@ -68,7 +68,7 @@ type DescribeFirstRankResponseBodyResult struct {
 	//
 	// false
 	Active *bool `json:"active,omitempty" xml:"active,omitempty"`
-	// Description
+	// The description of the expression.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type DescribeFirstRankResponseBodyResult struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The information about the expression.
 	Meta []*DescribeFirstRankResponseBodyResultMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Repeated"`
-	// Parameter
+	// The name of the expression.
 	//
 	// example:
 	//
@@ -148,7 +148,7 @@ type DescribeFirstRankResponseBodyResultMeta struct {
 	//
 	// ar_edit_time
 	Arg *string `json:"arg,omitempty" xml:"arg,omitempty"`
-	// The attribute, feature function, or field to be searched for.
+	// The attribute, scoring feature, or search field.
 	//
 	// example:
 	//

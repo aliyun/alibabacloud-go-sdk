@@ -16,13 +16,13 @@ type iGetScriptFileNamesResponseBody interface {
 }
 
 type GetScriptFileNamesResponseBody struct {
-	// The ID of the request.
+	// The unique identifier of the request.
 	//
 	// example:
 	//
 	// ABCDEFGH
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The files of the script.
+	// The list of scripts.
 	Result []*GetScriptFileNamesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
@@ -66,7 +66,7 @@ func (s *GetScriptFileNamesResponseBody) Validate() error {
 }
 
 type GetScriptFileNamesResponseBodyResult struct {
-	// The time when the script file was created.
+	// The time when the script was created.
 	//
 	// example:
 	//
@@ -78,13 +78,13 @@ type GetScriptFileNamesResponseBodyResult struct {
 	//
 	// my_cava_script.cava
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
-	// The time when the script file was last modified.
+	// The time when the script was last modified.
 	//
 	// example:
 	//
 	// 2020-04-02 21:21:14
 	ModifyTime *string `json:"modifyTime,omitempty" xml:"modifyTime,omitempty"`
-	// The path name of the script file.
+	// The path of the script.
 	//
 	// example:
 	//

@@ -24,13 +24,13 @@ type ListQuotaReviewTasksResponseBody struct {
 	//
 	// "3351A21F-705B-508C-9450-DA65A681547F"
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The information about the tickets. For more information, see [QuotaReviewTask](https://help.aliyun.com/document_detail/173609.html).
+	// The information about the approval tickets. For more information, see [QuotaReviewTask](https://help.aliyun.com/document_detail/173609.html).
 	//
 	// example:
 	//
 	// []
 	Result []*ListQuotaReviewTasksResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -105,25 +105,25 @@ type ListQuotaReviewTasksResponseBodyResult struct {
 	//
 	// "standard"
 	AppGroupType *string `json:"appGroupType,omitempty" xml:"appGroupType,omitempty"`
-	// Indicates whether the ticket is approved.
+	// Indicates whether the task is approved.
 	//
 	// example:
 	//
 	// true
 	Approved *bool `json:"approved,omitempty" xml:"approved,omitempty"`
-	// Indicates whether the application is available.
+	// Indicates whether the resource is active.
 	//
 	// example:
 	//
 	// true
 	Available *bool `json:"available,omitempty" xml:"available,omitempty"`
-	// The time when the ticket was created.
+	// The time when the task was created.
 	//
 	// example:
 	//
 	// "2020-04-08T08:29:45+0000"
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// The time when the ticket was last updated.
+	// The time of the last modification.
 	//
 	// example:
 	//
@@ -141,31 +141,31 @@ type ListQuotaReviewTasksResponseBodyResult struct {
 	//
 	// null
 	Memo *string `json:"memo,omitempty" xml:"memo,omitempty"`
-	// The computing resource quota that is applied for.
+	// The target computing resource.
 	//
 	// example:
 	//
 	// 6000
 	NewComputeResource *int32 `json:"newComputeResource,omitempty" xml:"newComputeResource,omitempty"`
-	// The storage capacity quota that is applied for.
+	// The target storage capacity.
 	//
 	// example:
 	//
 	// 1100
 	NewSocSize *int32 `json:"newSocSize,omitempty" xml:"newSocSize,omitempty"`
-	// The application specifications that are applied for.
+	// The new application specifications.
 	//
 	// example:
 	//
 	// "opensearch.private.common"
 	NewSpec *string `json:"newSpec,omitempty" xml:"newSpec,omitempty"`
-	// The original quota of computing resources.
+	// The original computing resource.
 	//
 	// example:
 	//
 	// 500
 	OldComputeResource *int32 `json:"oldComputeResource,omitempty" xml:"oldComputeResource,omitempty"`
-	// The original quota of storage capacity.
+	// The original storage capacity.
 	//
 	// example:
 	//
@@ -177,7 +177,7 @@ type ListQuotaReviewTasksResponseBodyResult struct {
 	//
 	// "opensearch.private.common"
 	OldSpec *string `json:"oldSpec,omitempty" xml:"oldSpec,omitempty"`
-	// Indicates whether the ticket is pending.
+	// Indicates whether the task is pending.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type ModifyQueryProcessorResponseBody struct {
 	//
 	// D77D0DAF-790D-F5F5-A9C0-133738165014
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The information about the query analysis rule.
+	// The information about the rule.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ func (s *ModifyQueryProcessorResponseBody) Validate() error {
 }
 
 type ModifyQueryProcessorResponseBodyResult struct {
-	// Indicates whether the query analysis rule is a default rule.
+	// Indicates whether the rule is a default rule.
 	//
 	// example:
 	//
@@ -78,25 +78,25 @@ type ModifyQueryProcessorResponseBodyResult struct {
 	//
 	// 0
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
-	// The type of the industry to which the query analysis rule is applied. Valid values:
+	// The industry to which the query analysis rule applies. Valid values:
 	//
-	// 	- GENERAL
+	// - GENERAL: General
 	//
-	// 	- ECOMMERCE
+	// - ECOMMERCE: E-commerce
 	//
-	// 	- IT_CONTENT
+	// - IT_CONTENT: IT content
 	//
 	// example:
 	//
 	// GENERAL
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// The indexes to which the query analysis rule is applied.
+	// The indexes to which the query analysis rule applies.
 	//
 	// example:
 	//
 	// ["default"]
 	Indexes []*string `json:"indexes,omitempty" xml:"indexes,omitempty" type:"Repeated"`
-	// The name of the query analysis rule.
+	// The name of the rule.
 	//
 	// example:
 	//

@@ -16,11 +16,14 @@ type iCreateAppGroupCredentialsResponseBody interface {
 }
 
 type CreateAppGroupCredentialsResponseBody struct {
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 1-2-3-4
-	RequestId *string                                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    *CreateAppGroupCredentialsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The details of the operation result.
+	Result *CreateAppGroupCredentialsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
 func (s CreateAppGroupCredentialsResponseBody) String() string {
@@ -59,15 +62,22 @@ func (s *CreateAppGroupCredentialsResponseBody) Validate() error {
 }
 
 type CreateAppGroupCredentialsResponseBodyResult struct {
+	// The ID of the application group.
+	//
 	// example:
 	//
 	// app_group_123
 	AppGroupId *int64 `json:"appGroupId,omitempty" xml:"appGroupId,omitempty"`
-	Enabled    *bool  `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// Indicates whether the credential is enabled.
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The generated credential token.
+	//
 	// example:
 	//
 	// generated_token_string
 	Token *string `json:"token,omitempty" xml:"token,omitempty"`
+	// The credential type.
+	//
 	// example:
 	//
 	// api-token

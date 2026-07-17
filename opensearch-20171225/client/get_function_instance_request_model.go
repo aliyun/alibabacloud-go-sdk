@@ -16,11 +16,11 @@ type iGetFunctionInstanceRequest interface {
 type GetFunctionInstanceRequest struct {
 	// Specifies the richness of returned information. Valid values:
 	//
-	// 	- simple: displays only the basic information.
+	// - simple: displays only the basic information.
 	//
-	// 	- normal: displays information such as createParameters and cron. This is the default value.
+	// - normal: displays information such as createParameters and cron. This is the default value.
 	//
-	// 	- detail: returns the details of the training task.
+	// - detail: returns the details of the training task.
 	//
 	// example:
 	//

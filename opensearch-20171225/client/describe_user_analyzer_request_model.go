@@ -14,9 +14,9 @@ type iDescribeUserAnalyzerRequest interface {
 }
 
 type DescribeUserAnalyzerRequest struct {
-	// The Associated information,output properties based on hierarchy.
+	// Specifies related information to return. The properties are returned based on the specified level.
 	//
-	// 	- **all**: Outputs associated app information
+	// - all: Returns information about the associated application.
 	//
 	// example:
 	//

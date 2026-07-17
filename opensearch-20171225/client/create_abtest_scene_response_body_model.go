@@ -22,7 +22,7 @@ type CreateABTestSceneResponseBody struct {
 	//
 	// D77D0DAF-790D-F5F5-A9C0-133738165014
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The returned data.
+	// The result of the request.
 	Result *CreateABTestSceneResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -62,41 +62,41 @@ func (s *CreateABTestSceneResponseBody) Validate() error {
 }
 
 type CreateABTestSceneResponseBodyResult struct {
-	// The time when the test scenario was created.
+	// The time when the scene was created.
 	//
 	// example:
 	//
 	// 0
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
-	// The ID of the test group.
+	// The ID of the group.
 	//
 	// example:
 	//
 	// 20405
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The name of the A/B test group.
+	// The name of the group.
 	//
 	// example:
 	//
 	// kevintest_2020-5-7_15:21:48
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The status. Valid values:
+	// The status of the scene. Valid values:
 	//
-	// 	- 0: not in effect
+	// - 0: disabled
 	//
-	// 	- 1: in effect
+	// - 1: enabled
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// The time when the test scenario was last updated.
+	// The time when the scene was last updated.
 	//
 	// example:
 	//
 	// 1589012351
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
-	// The ID of the test scenario
+	// The IDs of the scenes.
 	Values []*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
 }
 

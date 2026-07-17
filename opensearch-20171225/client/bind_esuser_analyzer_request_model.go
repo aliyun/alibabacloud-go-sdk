@@ -14,7 +14,7 @@ type iBindESUserAnalyzerRequest interface {
 }
 
 type BindESUserAnalyzerRequest struct {
-	// The request parameters.
+	// The request body.
 	//
 	// example:
 	//

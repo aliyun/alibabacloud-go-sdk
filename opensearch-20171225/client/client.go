@@ -25,6 +25,19 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"us-east-1":      dara.String("opensearch.us-east-1.aliyuncs.com"),
+		"eu-central-1":   dara.String("opensearch.eu-central-1.aliyuncs.com"),
+		"cn-zhangjiakou": dara.String("opensearch.cn-zhangjiakou.aliyuncs.com"),
+		"cn-shenzhen":    dara.String("opensearch.cn-shenzhen.aliyuncs.com"),
+		"cn-shanghai":    dara.String("opensearch.cn-shanghai.aliyuncs.com"),
+		"cn-qingdao":     dara.String("opensearch.cn-qingdao.aliyuncs.com"),
+		"cn-hongkong":    dara.String("opensearch.cn-hongkong.aliyuncs.com"),
+		"cn-hangzhou":    dara.String("opensearch.cn-hangzhou.aliyuncs.com"),
+		"cn-beijing":     dara.String("opensearch.cn-beijing.aliyuncs.com"),
+		"ap-southeast-5": dara.String("opensearch.ap-southeast-5.aliyuncs.com"),
+		"ap-southeast-1": dara.String("opensearch.ap-southeast-1.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -119,7 +132,7 @@ func (client *Client) BindESUserAnalyzer(appGroupIdentity *string, esInstanceId 
 
 // Summary:
 //
-// Binds an Elasticsearch instance.
+// Binds an Elasticsearch instance as a dependency.
 //
 // @param request - BindEsInstanceRequest
 //
@@ -166,7 +179,7 @@ func (client *Client) BindEsInstanceWithOptions(appGroupIdentity *string, reques
 
 // Summary:
 //
-// Binds an Elasticsearch instance.
+// Binds an Elasticsearch instance as a dependency.
 //
 // @param request - BindEsInstanceRequest
 //
@@ -302,7 +315,7 @@ func (client *Client) CreateABTestExperiment(appGroupIdentity *string, sceneId *
 
 // Summary:
 //
-// Creates a test group.
+// Creates an experiment group.
 //
 // @param request - CreateABTestGroupRequest
 //
@@ -350,7 +363,7 @@ func (client *Client) CreateABTestGroupWithOptions(appGroupIdentity *string, sce
 
 // Summary:
 //
-// Creates a test group.
+// Creates an experiment group.
 //
 // @param request - CreateABTestGroupRequest
 //
@@ -369,7 +382,7 @@ func (client *Client) CreateABTestGroup(appGroupIdentity *string, sceneId *strin
 
 // Summary:
 //
-// Creates an scenario.
+// Creates an experiment scenario.
 //
 // @param request - CreateABTestSceneRequest
 //
@@ -417,7 +430,7 @@ func (client *Client) CreateABTestSceneWithOptions(appGroupIdentity *string, req
 
 // Summary:
 //
-// Creates an scenario.
+// Creates an experiment scenario.
 //
 // @param request - CreateABTestSceneRequest
 //
@@ -436,17 +449,17 @@ func (client *Client) CreateABTestScene(appGroupIdentity *string, request *Creat
 
 // Summary:
 //
-// Creates a version for an OpenSearch application.
+// Creates a new version of an OpenSearch application.
 //
 // Description:
 //
-//	  When you create a standard application, a new version of the application is created if the specified application name already exists.
+// - If a Standard Edition application with the same name already exists, a new version is created.
 //
-//		- When you create a version of an existing application, you must specify the autoSwitch and realtimeShared parameters.
+// - The autoSwitch and realtimeShared parameters are required to create a new version.
 //
-//		- When you create a version of an existing application, the value of the quota parameter is the same as that of the quota parameter in the previous version of the application.
+// - The quota for the new version is automatically inherited from the previous version.
 //
-//		- When you create a version of an existing application, the modification of the value of the quota parameter does not take effect.
+// - You cannot modify the quota when you create the new version.
 //
 // @param request - CreateAppRequest
 //
@@ -563,17 +576,17 @@ func (client *Client) CreateAppWithOptions(appGroupIdentity *string, request *Cr
 
 // Summary:
 //
-// Creates a version for an OpenSearch application.
+// Creates a new version of an OpenSearch application.
 //
 // Description:
 //
-//	  When you create a standard application, a new version of the application is created if the specified application name already exists.
+// - If a Standard Edition application with the same name already exists, a new version is created.
 //
-//		- When you create a version of an existing application, you must specify the autoSwitch and realtimeShared parameters.
+// - The autoSwitch and realtimeShared parameters are required to create a new version.
 //
-//		- When you create a version of an existing application, the value of the quota parameter is the same as that of the quota parameter in the previous version of the application.
+// - The quota for the new version is automatically inherited from the previous version.
 //
-//		- When you create a version of an existing application, the modification of the value of the quota parameter does not take effect.
+// - You cannot modify the quota when you create the new version.
 //
 // @param request - CreateAppRequest
 //
@@ -676,6 +689,10 @@ func (client *Client) CreateAppGroup(request *CreateAppGroupRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates access credentials for a specified application group. This operation supports a dry run to preview the results.
+//
 // @param request - CreateAppGroupCredentialsRequest
 //
 // @param headers - map
@@ -725,6 +742,10 @@ func (client *Client) CreateAppGroupCredentialsWithOptions(appGroupIdentity *str
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates access credentials for a specified application group. This operation supports a dry run to preview the results.
+//
 // @param request - CreateAppGroupCredentialsRequest
 //
 // @return CreateAppGroupCredentialsResponse
@@ -742,7 +763,103 @@ func (client *Client) CreateAppGroupCredentials(appGroupIdentity *string, reques
 
 // Summary:
 //
-// Creates a rough sort expression for a version of an OpenSearch application. If you set dryRun to true, this operation checks the specified rough sort expression. By default, the value of dryRun is false if you do not set this parameter.
+// 创建弹性计划
+//
+// @param request - CreateElasticPlanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateElasticPlanResponse
+func (client *Client) CreateElasticPlanWithOptions(appGroupIdentity *string, request *CreateElasticPlanRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateElasticPlanResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DryRun) {
+		query["dryRun"] = request.DryRun
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CustomDates) {
+		body["customDates"] = request.CustomDates
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ElasticLcu) {
+		body["elasticLcu"] = request.ElasticLcu
+	}
+
+	if !dara.IsNil(request.EndHour) {
+		body["endHour"] = request.EndHour
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ScheduleType) {
+		body["scheduleType"] = request.ScheduleType
+	}
+
+	if !dara.IsNil(request.StartHour) {
+		body["startHour"] = request.StartHour
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateElasticPlan"),
+		Version:     dara.String("2017-12-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v4/openapi/app-groups/" + dara.PercentEncode(dara.StringValue(appGroupIdentity)) + "/elastic-plans"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateElasticPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建弹性计划
+//
+// @param request - CreateElasticPlanRequest
+//
+// @return CreateElasticPlanResponse
+func (client *Client) CreateElasticPlan(appGroupIdentity *string, request *CreateElasticPlanRequest) (_result *CreateElasticPlanResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateElasticPlanResponse{}
+	_body, _err := client.CreateElasticPlanWithOptions(appGroupIdentity, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a rough sort expression for a version of an OpenSearch application. If you set `dryRun` to true, this operation validates the specified rough sort expression. By default, the value of `dryRun` is `false`.
 //
 // @param request - CreateFirstRankRequest
 //
@@ -790,7 +907,7 @@ func (client *Client) CreateFirstRankWithOptions(appGroupIdentity *string, appId
 
 // Summary:
 //
-// Creates a rough sort expression for a version of an OpenSearch application. If you set dryRun to true, this operation checks the specified rough sort expression. By default, the value of dryRun is false if you do not set this parameter.
+// Creates a rough sort expression for a version of an OpenSearch application. If you set `dryRun` to true, this operation validates the specified rough sort expression. By default, the value of `dryRun` is `false`.
 //
 // @param request - CreateFirstRankRequest
 //
@@ -907,7 +1024,7 @@ func (client *Client) CreateFunctionInstance(appGroupIdentity *string, functionN
 
 // Summary:
 //
-// Creates an algorithm resource for a specific feature.
+// Creates an algorithm resource for a specified feature.
 //
 // @param request - CreateFunctionResourceRequest
 //
@@ -966,7 +1083,7 @@ func (client *Client) CreateFunctionResourceWithOptions(appGroupIdentity *string
 
 // Summary:
 //
-// Creates an algorithm resource for a specific feature.
+// Creates an algorithm resource for a specified feature.
 //
 // @param request - CreateFunctionResourceRequest
 //
@@ -985,7 +1102,7 @@ func (client *Client) CreateFunctionResource(appGroupIdentity *string, functionN
 
 // Summary:
 //
-// Starts a training task for an algorithm instance.
+// Starts a training task.
 //
 // @param headers - map
 //
@@ -1018,7 +1135,7 @@ func (client *Client) CreateFunctionTaskWithOptions(appGroupIdentity *string, fu
 
 // Summary:
 //
-// Starts a training task for an algorithm instance.
+// Starts a training task.
 //
 // @return CreateFunctionTaskResponse
 func (client *Client) CreateFunctionTask(appGroupIdentity *string, functionName *string, instanceName *string) (_result *CreateFunctionTaskResponse, _err error) {
@@ -1035,7 +1152,7 @@ func (client *Client) CreateFunctionTask(appGroupIdentity *string, functionName 
 
 // Summary:
 //
-// Create an intervention dictionary.
+// Creates an intervention dictionary.
 //
 // @param request - CreateInterventionDictionaryRequest
 //
@@ -1096,7 +1213,7 @@ func (client *Client) CreateInterventionDictionaryWithOptions(request *CreateInt
 
 // Summary:
 //
-// Create an intervention dictionary.
+// Creates an intervention dictionary.
 //
 // @param request - CreateInterventionDictionaryRequest
 //
@@ -1243,7 +1360,7 @@ func (client *Client) CreateScheduledTask(appGroupIdentity *string, request *Cre
 
 // Summary:
 //
-// Creates a query policy.
+// Creates a search strategy.
 //
 // @param request - CreateSearchStrategyRequest
 //
@@ -1285,7 +1402,7 @@ func (client *Client) CreateSearchStrategyWithOptions(appGroupIdentity *string, 
 
 // Summary:
 //
-// Creates a query policy.
+// Creates a search strategy.
 //
 // @param request - CreateSearchStrategyRequest
 //
@@ -1304,7 +1421,7 @@ func (client *Client) CreateSearchStrategy(appGroupIdentity *string, appId *stri
 
 // Summary:
 //
-// Creates a fine sort expression for a version of an OpenSearch application. If you set dryRun to true, this operation checks the specified fine sort expression. The default value of dryRun is false if you do not set this parameter.
+// Creates a fine sort expression for a version of an OpenSearch application. If you set the dryRun parameter to true, this operation validates the specified fine sort expression. The default value of this parameter is false.
 //
 // @param request - CreateSecondRankRequest
 //
@@ -1352,7 +1469,7 @@ func (client *Client) CreateSecondRankWithOptions(appGroupIdentity *string, appI
 
 // Summary:
 //
-// Creates a fine sort expression for a version of an OpenSearch application. If you set dryRun to true, this operation checks the specified fine sort expression. The default value of dryRun is false if you do not set this parameter.
+// Creates a fine sort expression for a version of an OpenSearch application. If you set the dryRun parameter to true, this operation validates the specified fine sort expression. The default value of this parameter is false.
 //
 // @param request - CreateSecondRankRequest
 //
@@ -1449,7 +1566,7 @@ func (client *Client) CreateSortScript(appGroupIdentity *string, appVersionId *s
 
 // Summary:
 //
-// Create a custom analyzer.
+// Creates a custom analyzer.
 //
 // @param request - CreateUserAnalyzerRequest
 //
@@ -1518,7 +1635,7 @@ func (client *Client) CreateUserAnalyzerWithOptions(request *CreateUserAnalyzerR
 
 // Summary:
 //
-// Create a custom analyzer.
+// Creates a custom analyzer.
 //
 // @param request - CreateUserAnalyzerRequest
 //
@@ -1537,7 +1654,7 @@ func (client *Client) CreateUserAnalyzer(request *CreateUserAnalyzerRequest) (_r
 
 // Summary:
 //
-// Deletes a test.
+// Deletes an experiment.
 //
 // @param headers - map
 //
@@ -1570,7 +1687,7 @@ func (client *Client) DeleteABTestExperimentWithOptions(appGroupIdentity *string
 
 // Summary:
 //
-// Deletes a test.
+// Deletes an experiment.
 //
 // @return DeleteABTestExperimentResponse
 func (client *Client) DeleteABTestExperiment(appGroupIdentity *string, sceneId *string, groupId *string, experimentId *string) (_result *DeleteABTestExperimentResponse, _err error) {
@@ -1587,7 +1704,7 @@ func (client *Client) DeleteABTestExperiment(appGroupIdentity *string, sceneId *
 
 // Summary:
 //
-// 删除实验组
+// Deletes an A/B test group.
 //
 // @param headers - map
 //
@@ -1620,7 +1737,7 @@ func (client *Client) DeleteABTestGroupWithOptions(appGroupIdentity *string, sce
 
 // Summary:
 //
-// 删除实验组
+// Deletes an A/B test group.
 //
 // @return DeleteABTestGroupResponse
 func (client *Client) DeleteABTestGroup(appGroupIdentity *string, sceneId *string, groupId *string) (_result *DeleteABTestGroupResponse, _err error) {
@@ -1687,7 +1804,7 @@ func (client *Client) DeleteABTestScene(appGroupIdentity *string, sceneId *strin
 
 // Summary:
 //
-// Deletes an algorithm instance. Before you delete an instance, make sure that it is not in use to prevent service interruptions.
+// Deletes an algorithm instance. Before you delete an instance, ensure that it is not in use to prevent service interruptions.
 //
 // @param headers - map
 //
@@ -1720,7 +1837,7 @@ func (client *Client) DeleteFunctionInstanceWithOptions(appGroupIdentity *string
 
 // Summary:
 //
-// Deletes an algorithm instance. Before you delete an instance, make sure that it is not in use to prevent service interruptions.
+// Deletes an algorithm instance. Before you delete an instance, ensure that it is not in use to prevent service interruptions.
 //
 // @return DeleteFunctionInstanceResponse
 func (client *Client) DeleteFunctionInstance(appGroupIdentity *string, functionName *string, instanceName *string) (_result *DeleteFunctionInstanceResponse, _err error) {
@@ -1737,7 +1854,7 @@ func (client *Client) DeleteFunctionInstance(appGroupIdentity *string, functionN
 
 // Summary:
 //
-// Deletes an algorithm resource.
+// Deletes a specified algorithm resource.
 //
 // @param headers - map
 //
@@ -1770,7 +1887,7 @@ func (client *Client) DeleteFunctionResourceWithOptions(appGroupIdentity *string
 
 // Summary:
 //
-// Deletes an algorithm resource.
+// Deletes a specified algorithm resource.
 //
 // @return DeleteFunctionResourceResponse
 func (client *Client) DeleteFunctionResource(appGroupIdentity *string, functionName *string, resourceName *string) (_result *DeleteFunctionResourceResponse, _err error) {
@@ -1787,7 +1904,7 @@ func (client *Client) DeleteFunctionResource(appGroupIdentity *string, functionN
 
 // Summary:
 //
-// Deletes a training task. The training task in progress cannot be deleted.
+// Deletes a training record. A training record that is in progress cannot be deleted.
 //
 // @param headers - map
 //
@@ -1820,7 +1937,7 @@ func (client *Client) DeleteFunctionTaskWithOptions(appGroupIdentity *string, fu
 
 // Summary:
 //
-// Deletes a training task. The training task in progress cannot be deleted.
+// Deletes a training record. A training record that is in progress cannot be deleted.
 //
 // @return DeleteFunctionTaskResponse
 func (client *Client) DeleteFunctionTask(appGroupIdentity *string, functionName *string, instanceName *string, generation *string) (_result *DeleteFunctionTaskResponse, _err error) {
@@ -1837,7 +1954,7 @@ func (client *Client) DeleteFunctionTask(appGroupIdentity *string, functionName 
 
 // Summary:
 //
-// 删除排序脚本
+// Deletes a sort script.
 //
 // @param headers - map
 //
@@ -1870,7 +1987,7 @@ func (client *Client) DeleteSortScriptWithOptions(appGroupIdentity *string, scri
 
 // Summary:
 //
-// 删除排序脚本
+// Deletes a sort script.
 //
 // @return DeleteSortScriptResponse
 func (client *Client) DeleteSortScript(appGroupIdentity *string, scriptName *string, appVersionId *string) (_result *DeleteSortScriptResponse, _err error) {
@@ -1937,7 +2054,7 @@ func (client *Client) DeleteSortScriptFile(appGroupIdentity *string, appVersionI
 
 // Summary:
 //
-// 获取实验详情
+// Retrieves the details of an experiment.
 //
 // @param headers - map
 //
@@ -1970,7 +2087,7 @@ func (client *Client) DescribeABTestExperimentWithOptions(appGroupIdentity *stri
 
 // Summary:
 //
-// 获取实验详情
+// Retrieves the details of an experiment.
 //
 // @return DescribeABTestExperimentResponse
 func (client *Client) DescribeABTestExperiment(appGroupIdentity *string, sceneId *string, groupId *string, experimentId *string) (_result *DescribeABTestExperimentResponse, _err error) {
@@ -1987,7 +2104,7 @@ func (client *Client) DescribeABTestExperiment(appGroupIdentity *string, sceneId
 
 // Summary:
 //
-// Queries the details of a test group.
+// Retrieves the details of an A/B test group.
 //
 // @param headers - map
 //
@@ -2020,7 +2137,7 @@ func (client *Client) DescribeABTestGroupWithOptions(appGroupIdentity *string, s
 
 // Summary:
 //
-// Queries the details of a test group.
+// Retrieves the details of an A/B test group.
 //
 // @return DescribeABTestGroupResponse
 func (client *Client) DescribeABTestGroup(appGroupIdentity *string, sceneId *string, groupId *string) (_result *DescribeABTestGroupResponse, _err error) {
@@ -2037,7 +2154,7 @@ func (client *Client) DescribeABTestGroup(appGroupIdentity *string, sceneId *str
 
 // Summary:
 //
-// Queries the information about an A/B test scenario.
+// Query an A/B test scenario.
 //
 // @param headers - map
 //
@@ -2070,7 +2187,7 @@ func (client *Client) DescribeABTestSceneWithOptions(appGroupIdentity *string, s
 
 // Summary:
 //
-// Queries the information about an A/B test scenario.
+// Query an A/B test scenario.
 //
 // @return DescribeABTestSceneResponse
 func (client *Client) DescribeABTestScene(appGroupIdentity *string, sceneId *string) (_result *DescribeABTestSceneResponse, _err error) {
@@ -2137,7 +2254,7 @@ func (client *Client) DescribeApp(appGroupIdentity *string, appId *string) (_res
 
 // Summary:
 //
-// Queries the details of an OpenSearch application.
+// Query an OpenSearch application.
 //
 // @param headers - map
 //
@@ -2170,7 +2287,7 @@ func (client *Client) DescribeAppGroupWithOptions(appGroupIdentity *string, head
 
 // Summary:
 //
-// Queries the details of an OpenSearch application.
+// Query an OpenSearch application.
 //
 // @return DescribeAppGroupResponse
 func (client *Client) DescribeAppGroup(appGroupIdentity *string) (_result *DescribeAppGroupResponse, _err error) {
@@ -2237,17 +2354,17 @@ func (client *Client) DescribeAppStatistics(appGroupIdentity *string, appId *str
 
 // Summary:
 //
-// Queries the version list of an OpenSearch application.
+// Queries the versions of an OpenSearch application.
 //
 // Description:
 //
-//	  When you create a standard application, a new version of the application is created if the specified application name already exists.
+// - If a Standard Edition application with the same name exists, a new version is created.
 //
-//		- When you create a version of an existing application, you must specify the autoSwitch and realtimeShared parameters.
+// - When you create a new version, the autoSwitch and realtimeShared parameters are required.
 //
-//		- When you create a version of an existing application, the value of the quota parameter is the same as that of the quota parameter in the previous version of the application.
+// - When you create a new version, the quota is inherited from the previous version.
 //
-//		- When you create a version of an existing application, the modification of the value of the quota parameter does not take effect.
+// - When you create a new version, modifications to the quota do not take effect.
 //
 // @param headers - map
 //
@@ -2280,17 +2397,17 @@ func (client *Client) DescribeAppsWithOptions(appGroupIdentity *string, headers 
 
 // Summary:
 //
-// Queries the version list of an OpenSearch application.
+// Queries the versions of an OpenSearch application.
 //
 // Description:
 //
-//	  When you create a standard application, a new version of the application is created if the specified application name already exists.
+// - If a Standard Edition application with the same name exists, a new version is created.
 //
-//		- When you create a version of an existing application, you must specify the autoSwitch and realtimeShared parameters.
+// - When you create a new version, the autoSwitch and realtimeShared parameters are required.
 //
-//		- When you create a version of an existing application, the value of the quota parameter is the same as that of the quota parameter in the previous version of the application.
+// - When you create a new version, the quota is inherited from the previous version.
 //
-//		- When you create a version of an existing application, the modification of the value of the quota parameter does not take effect.
+// - When you create a new version, modifications to the quota do not take effect.
 //
 // @return DescribeAppsResponse
 func (client *Client) DescribeApps(appGroupIdentity *string) (_result *DescribeAppsResponse, _err error) {
@@ -2307,7 +2424,7 @@ func (client *Client) DescribeApps(appGroupIdentity *string) (_result *DescribeA
 
 // Summary:
 //
-// Queries the details of a data collection task of an application.
+// Retrieves the details of a data collection for a specified application.
 //
 // @param headers - map
 //
@@ -2340,7 +2457,7 @@ func (client *Client) DescribeDataCollctionWithOptions(appGroupIdentity *string,
 
 // Summary:
 //
-// Queries the details of a data collection task of an application.
+// Retrieves the details of a data collection for a specified application.
 //
 // @return DescribeDataCollctionResponse
 func (client *Client) DescribeDataCollction(appGroupIdentity *string, dataCollectionIdentity *string) (_result *DescribeDataCollctionResponse, _err error) {
@@ -2357,7 +2474,93 @@ func (client *Client) DescribeDataCollction(appGroupIdentity *string, dataCollec
 
 // Summary:
 //
-// Queries a rough sort expression that is configured for an OpenSearch application version.
+// 获取弹性计划详情
+//
+// Description:
+//
+// - 若已存在同名标准版应用，则创建新版本；
+//
+// - 在新建版本情况下，autoSwitch 和 realtimeShared 也是必填的；
+//
+// - 在新建版本情况下，quota 是自动从上一个版本继承的；
+//
+// - 在新建版本情况下，修改 quota 是无效的。
+//
+// @param request - DescribeElasticPlanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeElasticPlanResponse
+func (client *Client) DescribeElasticPlanWithOptions(appGroupIdentity *string, planId *string, request *DescribeElasticPlanRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeElasticPlanResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DryRun) {
+		query["dryRun"] = request.DryRun
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeElasticPlan"),
+		Version:     dara.String("2017-12-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v4/openapi/app-groups/" + dara.PercentEncode(dara.StringValue(appGroupIdentity)) + "/elastic-plans/" + dara.PercentEncode(dara.StringValue(planId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeElasticPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取弹性计划详情
+//
+// Description:
+//
+// - 若已存在同名标准版应用，则创建新版本；
+//
+// - 在新建版本情况下，autoSwitch 和 realtimeShared 也是必填的；
+//
+// - 在新建版本情况下，quota 是自动从上一个版本继承的；
+//
+// - 在新建版本情况下，修改 quota 是无效的。
+//
+// @param request - DescribeElasticPlanRequest
+//
+// @return DescribeElasticPlanResponse
+func (client *Client) DescribeElasticPlan(appGroupIdentity *string, planId *string, request *DescribeElasticPlanRequest) (_result *DescribeElasticPlanResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeElasticPlanResponse{}
+	_body, _err := client.DescribeElasticPlanWithOptions(appGroupIdentity, planId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the rough sort expression configured for an OpenSearch application version.
 //
 // @param headers - map
 //
@@ -2390,7 +2593,7 @@ func (client *Client) DescribeFirstRankWithOptions(appGroupIdentity *string, app
 
 // Summary:
 //
-// Queries a rough sort expression that is configured for an OpenSearch application version.
+// Queries the rough sort expression configured for an OpenSearch application version.
 //
 // @return DescribeFirstRankResponse
 func (client *Client) DescribeFirstRank(appGroupIdentity *string, appId *string, name *string) (_result *DescribeFirstRankResponse, _err error) {
@@ -2407,7 +2610,7 @@ func (client *Client) DescribeFirstRank(appGroupIdentity *string, appId *string,
 
 // Summary:
 //
-// Queries the details of an intervention dictionary.
+// Retrieves the details of an intervention dictionary.
 //
 // @param headers - map
 //
@@ -2440,7 +2643,7 @@ func (client *Client) DescribeInterventionDictionaryWithOptions(name *string, he
 
 // Summary:
 //
-// Queries the details of an intervention dictionary.
+// Retrieves the details of an intervention dictionary.
 //
 // @return DescribeInterventionDictionaryResponse
 func (client *Client) DescribeInterventionDictionary(name *string) (_result *DescribeInterventionDictionaryResponse, _err error) {
@@ -2457,7 +2660,7 @@ func (client *Client) DescribeInterventionDictionary(name *string) (_result *Des
 
 // Summary:
 //
-// Queries the query analysis rule for a version of an OpenSearch application.
+// Describes a query analysis rule for a version of an OpenSearch application.
 //
 // @param headers - map
 //
@@ -2490,7 +2693,7 @@ func (client *Client) DescribeQueryProcessorWithOptions(appGroupIdentity *string
 
 // Summary:
 //
-// Queries the query analysis rule for a version of an OpenSearch application.
+// Describes a query analysis rule for a version of an OpenSearch application.
 //
 // @return DescribeQueryProcessorResponse
 func (client *Client) DescribeQueryProcessor(appGroupIdentity *string, appId *string, name *string) (_result *DescribeQueryProcessorResponse, _err error) {
@@ -2507,7 +2710,7 @@ func (client *Client) DescribeQueryProcessor(appGroupIdentity *string, appId *st
 
 // Summary:
 //
-// Queries the endpoints of all regions that support OpenSearch.
+// Retrieves the endpoints for all regions.
 //
 // @param headers - map
 //
@@ -2540,7 +2743,7 @@ func (client *Client) DescribeRegionsWithOptions(headers map[string]*string, run
 
 // Summary:
 //
-// Queries the endpoints of all regions that support OpenSearch.
+// Retrieves the endpoints for all regions.
 //
 // @return DescribeRegionsResponse
 func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err error) {
@@ -2557,7 +2760,7 @@ func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err 
 
 // Summary:
 //
-// 查看应用定时任务详情
+// Query a scheduled task for an OpenSearch application.
 //
 // @param headers - map
 //
@@ -2590,7 +2793,7 @@ func (client *Client) DescribeScheduledTaskWithOptions(appGroupIdentity *string,
 
 // Summary:
 //
-// 查看应用定时任务详情
+// Query a scheduled task for an OpenSearch application.
 //
 // @return DescribeScheduledTaskResponse
 func (client *Client) DescribeScheduledTask(appGroupIdentity *string, taskId *string) (_result *DescribeScheduledTaskResponse, _err error) {
@@ -2607,7 +2810,7 @@ func (client *Client) DescribeScheduledTask(appGroupIdentity *string, taskId *st
 
 // Summary:
 //
-// Queries a fine sort expression that is configured for a version of an OpenSearch application.
+// Queries the fine sort expression for a version of an OpenSearch application.
 //
 // @param headers - map
 //
@@ -2640,7 +2843,7 @@ func (client *Client) DescribeSecondRankWithOptions(appGroupIdentity *string, ap
 
 // Summary:
 //
-// Queries a fine sort expression that is configured for a version of an OpenSearch application.
+// Queries the fine sort expression for a version of an OpenSearch application.
 //
 // @return DescribeSecondRankResponse
 func (client *Client) DescribeSecondRank(appGroupIdentity *string, appId *string, name *string) (_result *DescribeSecondRankResponse, _err error) {
@@ -2657,7 +2860,7 @@ func (client *Client) DescribeSecondRank(appGroupIdentity *string, appId *string
 
 // Summary:
 //
-// 获取优化大师慢查询开通状态
+// Queries the status of the slow query feature.
 //
 // @param headers - map
 //
@@ -2690,7 +2893,7 @@ func (client *Client) DescribeSlowQueryStatusWithOptions(appGroupIdentity *strin
 
 // Summary:
 //
-// 获取优化大师慢查询开通状态
+// Queries the status of the slow query feature.
 //
 // @return DescribeSlowQueryStatusResponse
 func (client *Client) DescribeSlowQueryStatus(appGroupIdentity *string) (_result *DescribeSlowQueryStatusResponse, _err error) {
@@ -2707,7 +2910,7 @@ func (client *Client) DescribeSlowQueryStatus(appGroupIdentity *string) (_result
 
 // Summary:
 //
-// 获取自定义分析器详情
+// Retrieves the details of a custom analyzer.
 //
 // @param request - DescribeUserAnalyzerRequest
 //
@@ -2754,7 +2957,7 @@ func (client *Client) DescribeUserAnalyzerWithOptions(name *string, request *Des
 
 // Summary:
 //
-// 获取自定义分析器详情
+// Retrieves the details of a custom analyzer.
 //
 // @param request - DescribeUserAnalyzerRequest
 //
@@ -2773,7 +2976,7 @@ func (client *Client) DescribeUserAnalyzer(name *string, request *DescribeUserAn
 
 // Summary:
 //
-// 禁用优化大师慢查询服务
+// Disables the slow query service for Search Diagnoser.
 //
 // @param headers - map
 //
@@ -2806,7 +3009,7 @@ func (client *Client) DisableSlowQueryWithOptions(appGroupIdentity *string, head
 
 // Summary:
 //
-// 禁用优化大师慢查询服务
+// Disables the slow query service for Search Diagnoser.
 //
 // @return DisableSlowQueryResponse
 func (client *Client) DisableSlowQuery(appGroupIdentity *string) (_result *DisableSlowQueryResponse, _err error) {
@@ -2823,7 +3026,7 @@ func (client *Client) DisableSlowQuery(appGroupIdentity *string) (_result *Disab
 
 // Summary:
 //
-// Enables slow query optimization of Optimization Master.
+// Enables the slow query service for the optimizer.
 //
 // @param headers - map
 //
@@ -2856,7 +3059,7 @@ func (client *Client) EnableSlowQueryWithOptions(appGroupIdentity *string, heade
 
 // Summary:
 //
-// Enables slow query optimization of Optimization Master.
+// Enables the slow query service for the optimizer.
 //
 // @return EnableSlowQueryResponse
 func (client *Client) EnableSlowQuery(appGroupIdentity *string) (_result *EnableSlowQueryResponse, _err error) {
@@ -2940,7 +3143,7 @@ func (client *Client) GenerateMergedTable(request *GenerateMergedTableRequest) (
 
 // Summary:
 //
-// Queries the type of an industry.
+// Retrieves the industry type.
 //
 // @param request - GetDomainRequest
 //
@@ -2987,7 +3190,7 @@ func (client *Client) GetDomainWithOptions(domainName *string, request *GetDomai
 
 // Summary:
 //
-// Queries the type of an industry.
+// Retrieves the industry type.
 //
 // @param request - GetDomainRequest
 //
@@ -3006,7 +3209,7 @@ func (client *Client) GetDomain(domainName *string, request *GetDomainRequest) (
 
 // Summary:
 //
-// Queries the version information about the current feature when you create an instance.
+// Retrieves the version information of the feature that is used to create an instance.
 //
 // @param request - GetFunctionCurrentVersionRequest
 //
@@ -3065,7 +3268,7 @@ func (client *Client) GetFunctionCurrentVersionWithOptions(functionName *string,
 
 // Summary:
 //
-// Queries the version information about the current feature when you create an instance.
+// Retrieves the version information of the feature that is used to create an instance.
 //
 // @param request - GetFunctionCurrentVersionRequest
 //
@@ -3084,7 +3287,7 @@ func (client *Client) GetFunctionCurrentVersion(functionName *string, request *G
 
 // Summary:
 //
-// Queries the algorithm instance that an application uses by default.
+// Queries the default algorithm instance for an application.
 //
 // @param headers - map
 //
@@ -3117,7 +3320,7 @@ func (client *Client) GetFunctionDefaultInstanceWithOptions(appGroupIdentity *st
 
 // Summary:
 //
-// Queries the algorithm instance that an application uses by default.
+// Queries the default algorithm instance for an application.
 //
 // @return GetFunctionDefaultInstanceResponse
 func (client *Client) GetFunctionDefaultInstance(appGroupIdentity *string, functionName *string) (_result *GetFunctionDefaultInstanceResponse, _err error) {
@@ -3134,7 +3337,7 @@ func (client *Client) GetFunctionDefaultInstance(appGroupIdentity *string, funct
 
 // Summary:
 //
-// Queries the details of an algorithm instance by instance name.
+// Query an algorithm instance by instance name.
 //
 // @param request - GetFunctionInstanceRequest
 //
@@ -3181,7 +3384,7 @@ func (client *Client) GetFunctionInstanceWithOptions(appGroupIdentity *string, f
 
 // Summary:
 //
-// Queries the details of an algorithm instance by instance name.
+// Query an algorithm instance by instance name.
 //
 // @param request - GetFunctionInstanceRequest
 //
@@ -3200,7 +3403,7 @@ func (client *Client) GetFunctionInstance(appGroupIdentity *string, functionName
 
 // Summary:
 //
-// Queries an algorithm resource.
+// Retrieves the specified algorithm resource.
 //
 // @param request - GetFunctionResourceRequest
 //
@@ -3247,7 +3450,7 @@ func (client *Client) GetFunctionResourceWithOptions(appGroupIdentity *string, f
 
 // Summary:
 //
-// Queries an algorithm resource.
+// Retrieves the specified algorithm resource.
 //
 // @param request - GetFunctionResourceRequest
 //
@@ -3316,7 +3519,7 @@ func (client *Client) GetFunctionTask(appGroupIdentity *string, functionName *st
 
 // Summary:
 //
-// Queries version information by version ID.
+// Queries the information about a function version.
 //
 // @param headers - map
 //
@@ -3349,7 +3552,7 @@ func (client *Client) GetFunctionVersionWithOptions(functionName *string, versio
 
 // Summary:
 //
-// Queries version information by version ID.
+// Queries the information about a function version.
 //
 // @return GetFunctionVersionResponse
 func (client *Client) GetFunctionVersion(functionName *string, versionId *string) (_result *GetFunctionVersionResponse, _err error) {
@@ -3364,6 +3567,10 @@ func (client *Client) GetFunctionVersion(functionName *string, versionId *string
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the names of all files in a specified script for a specific application version.
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3393,6 +3600,10 @@ func (client *Client) GetScriptFileNamesWithOptions(appGroupIdentity *string, ap
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the names of all files in a specified script for a specific application version.
+//
 // @return GetScriptFileNamesResponse
 func (client *Client) GetScriptFileNames(appGroupIdentity *string, appVersionId *string, scriptName *string) (_result *GetScriptFileNamesResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
@@ -3408,7 +3619,7 @@ func (client *Client) GetScriptFileNames(appGroupIdentity *string, appVersionId 
 
 // Summary:
 //
-// Queries the details of a query policy.
+// Retrieves the details of a query policy.
 //
 // @param headers - map
 //
@@ -3441,7 +3652,7 @@ func (client *Client) GetSearchStrategyWithOptions(appGroupIdentity *string, app
 
 // Summary:
 //
-// Queries the details of a query policy.
+// Retrieves the details of a query policy.
 //
 // @return GetSearchStrategyResponse
 func (client *Client) GetSearchStrategy(appGroupIdentity *string, appId *string, strategyName *string) (_result *GetSearchStrategyResponse, _err error) {
@@ -3458,7 +3669,7 @@ func (client *Client) GetSearchStrategy(appGroupIdentity *string, appId *string,
 
 // Summary:
 //
-// Queries the details of a sort script.
+// Retrieves the details of a sort script.
 //
 // @param headers - map
 //
@@ -3491,7 +3702,7 @@ func (client *Client) GetSortScriptWithOptions(appGroupIdentity *string, scriptN
 
 // Summary:
 //
-// Queries the details of a sort script.
+// Retrieves the details of a sort script.
 //
 // @return GetSortScriptResponse
 func (client *Client) GetSortScript(appGroupIdentity *string, scriptName *string, appVersionId *string) (_result *GetSortScriptResponse, _err error) {
@@ -3508,7 +3719,7 @@ func (client *Client) GetSortScript(appGroupIdentity *string, scriptName *string
 
 // Summary:
 //
-// Queries the content of a sort script.
+// Retrieves the content of a sort script.
 //
 // @param headers - map
 //
@@ -3541,7 +3752,7 @@ func (client *Client) GetSortScriptFileWithOptions(appGroupIdentity *string, scr
 
 // Summary:
 //
-// Queries the content of a sort script.
+// Retrieves the content of a sort script.
 //
 // @return GetSortScriptFileResponse
 func (client *Client) GetSortScriptFile(appGroupIdentity *string, scriptName *string, appVersionId *string, fileName *string) (_result *GetSortScriptFileResponse, _err error) {
@@ -3608,7 +3819,7 @@ func (client *Client) ListABTestExperiments(appGroupIdentity *string, sceneId *s
 
 // Summary:
 //
-// Queries whitelists.
+// Lists whitelists.
 //
 // @param headers - map
 //
@@ -3641,7 +3852,7 @@ func (client *Client) ListABTestFixedFlowDividersWithOptions(appGroupIdentity *s
 
 // Summary:
 //
-// Queries whitelists.
+// Lists whitelists.
 //
 // @return ListABTestFixedFlowDividersResponse
 func (client *Client) ListABTestFixedFlowDividers(appGroupIdentity *string, sceneId *string, groupId *string, experimentId *string) (_result *ListABTestFixedFlowDividersResponse, _err error) {
@@ -3658,7 +3869,7 @@ func (client *Client) ListABTestFixedFlowDividers(appGroupIdentity *string, scen
 
 // Summary:
 //
-// 获取实验组清单
+// Retrieves a list of test groups.
 //
 // @param headers - map
 //
@@ -3691,7 +3902,7 @@ func (client *Client) ListABTestGroupsWithOptions(appGroupIdentity *string, scen
 
 // Summary:
 //
-// 获取实验组清单
+// Retrieves a list of test groups.
 //
 // @return ListABTestGroupsResponse
 func (client *Client) ListABTestGroups(appGroupIdentity *string, sceneId *string) (_result *ListABTestGroupsResponse, _err error) {
@@ -3762,11 +3973,11 @@ func (client *Client) ListABTestScenes(appGroupIdentity *string) (_result *ListA
 //
 // Description:
 //
-//	  This operation allows you to query applications by application name, instance ID, and application type.
+// - Filters applications by name, instance ID, and type.
 //
-//		- This operation allows you to sort the applications based on their creation time.
+// - Sorts applications by their creation time.
 //
-//		- This operation supports the parameters for paging.
+// - Supports paging.
 //
 // @param tmpReq - ListAppGroupsRequest
 //
@@ -3851,11 +4062,11 @@ func (client *Client) ListAppGroupsWithOptions(tmpReq *ListAppGroupsRequest, hea
 //
 // Description:
 //
-//	  This operation allows you to query applications by application name, instance ID, and application type.
+// - Filters applications by name, instance ID, and type.
 //
-//		- This operation allows you to sort the applications based on their creation time.
+// - Sorts applications by their creation time.
 //
-//		- This operation supports the parameters for paging.
+// - Supports paging.
 //
 // @param request - ListAppGroupsRequest
 //
@@ -3874,7 +4085,7 @@ func (client *Client) ListAppGroups(request *ListAppGroupsRequest) (_result *Lis
 
 // Summary:
 //
-// Queries the data collection tasks of an OpenSearch application.
+// Lists the data collections for an OpenSearch application.
 //
 // @param request - ListDataCollectionsRequest
 //
@@ -3925,7 +4136,7 @@ func (client *Client) ListDataCollectionsWithOptions(appGroupIdentity *string, r
 
 // Summary:
 //
-// Queries the data collection tasks of an OpenSearch application.
+// Lists the data collections for an OpenSearch application.
 //
 // @param request - ListDataCollectionsRequest
 //
@@ -3944,7 +4155,7 @@ func (client *Client) ListDataCollections(appGroupIdentity *string, request *Lis
 
 // Summary:
 //
-// Queries all fields in a table of a data source. This operation is for internal use only.
+// This internal API retrieves all fields from a specified data table.
 //
 // @param request - ListDataSourceTableFieldsRequest
 //
@@ -3995,7 +4206,7 @@ func (client *Client) ListDataSourceTableFieldsWithOptions(dataSourceType *strin
 
 // Summary:
 //
-// Queries all fields in a table of a data source. This operation is for internal use only.
+// This internal API retrieves all fields from a specified data table.
 //
 // @param request - ListDataSourceTableFieldsRequest
 //
@@ -4014,7 +4225,7 @@ func (client *Client) ListDataSourceTableFields(dataSourceType *string, request 
 
 // Summary:
 //
-// Obtains all data from a specified data source.
+// Retrieves all data from a specified data source.
 //
 // @param request - ListDataSourceTablesRequest
 //
@@ -4061,7 +4272,7 @@ func (client *Client) ListDataSourceTablesWithOptions(dataSourceType *string, re
 
 // Summary:
 //
-// Obtains all data from a specified data source.
+// Retrieves all data from a specified data source.
 //
 // @param request - ListDataSourceTablesRequest
 //
@@ -4071,6 +4282,92 @@ func (client *Client) ListDataSourceTables(dataSourceType *string, request *List
 	headers := make(map[string]*string)
 	_result = &ListDataSourceTablesResponse{}
 	_body, _err := client.ListDataSourceTablesWithOptions(dataSourceType, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取弹性计划列表
+//
+// @param request - ListElasticPlansRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListElasticPlansResponse
+func (client *Client) ListElasticPlansWithOptions(appGroupIdentity *string, request *ListElasticPlansRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListElasticPlansResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Enabled) {
+		query["enabled"] = request.Enabled
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListElasticPlans"),
+		Version:     dara.String("2017-12-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v4/openapi/app-groups/" + dara.PercentEncode(dara.StringValue(appGroupIdentity)) + "/elastic-plans"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListElasticPlansResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取弹性计划列表
+//
+// @param request - ListElasticPlansRequest
+//
+// @return ListElasticPlansResponse
+func (client *Client) ListElasticPlans(appGroupIdentity *string, request *ListElasticPlansRequest) (_result *ListElasticPlansResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListElasticPlansResponse{}
+	_body, _err := client.ListElasticPlansWithOptions(appGroupIdentity, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4130,7 +4427,7 @@ func (client *Client) ListFirstRanks(appGroupIdentity *string, appId *string) (_
 
 // Summary:
 //
-// Queries all algorithm instances of a user, which meet specified conditions.
+// Lists all instances that match the specified conditions.
 //
 // @param request - ListFunctionInstancesRequest
 //
@@ -4197,7 +4494,7 @@ func (client *Client) ListFunctionInstancesWithOptions(appGroupIdentity *string,
 
 // Summary:
 //
-// Queries all algorithm instances of a user, which meet specified conditions.
+// Lists all instances that match the specified conditions.
 //
 // @param request - ListFunctionInstancesRequest
 //
@@ -4216,7 +4513,7 @@ func (client *Client) ListFunctionInstances(appGroupIdentity *string, functionNa
 
 // Summary:
 //
-// Queries algorithm resources.
+// Lists the algorithm resources.
 //
 // @param request - ListFunctionResourcesRequest
 //
@@ -4275,7 +4572,7 @@ func (client *Client) ListFunctionResourcesWithOptions(appGroupIdentity *string,
 
 // Summary:
 //
-// Queries algorithm resources.
+// Lists the algorithm resources.
 //
 // @param request - ListFunctionResourcesRequest
 //
@@ -4294,7 +4591,7 @@ func (client *Client) ListFunctionResources(appGroupIdentity *string, functionNa
 
 // Summary:
 //
-// Queries the training tasks. The returned results are sorted by start time in descending order.
+// Queries the training tasks. The results are sorted in descending order by start time.
 //
 // @param request - ListFunctionTasksRequest
 //
@@ -4357,7 +4654,7 @@ func (client *Client) ListFunctionTasksWithOptions(appGroupIdentity *string, fun
 
 // Summary:
 //
-// Queries the training tasks. The returned results are sorted by start time in descending order.
+// Queries the training tasks. The results are sorted in descending order by start time.
 //
 // @param request - ListFunctionTasksRequest
 //
@@ -4376,7 +4673,7 @@ func (client *Client) ListFunctionTasks(appGroupIdentity *string, functionName *
 
 // Summary:
 //
-// 获取用户的干预词典列表
+// Retrieves a list of intervention dictionaries.
 //
 // @param request - ListInterventionDictionariesRequest
 //
@@ -4431,7 +4728,7 @@ func (client *Client) ListInterventionDictionariesWithOptions(request *ListInter
 
 // Summary:
 //
-// 获取用户的干预词典列表
+// Retrieves a list of intervention dictionaries.
 //
 // @param request - ListInterventionDictionariesRequest
 //
@@ -4524,7 +4821,7 @@ func (client *Client) ListInterventionDictionaryEntries(name *string, request *L
 
 // Summary:
 //
-// 获取实体识别结果
+// Retrieves the Named Entity Recognition (NER) results.
 //
 // @param request - ListInterventionDictionaryNerResultsRequest
 //
@@ -4571,7 +4868,7 @@ func (client *Client) ListInterventionDictionaryNerResultsWithOptions(name *stri
 
 // Summary:
 //
-// 获取实体识别结果
+// Retrieves the Named Entity Recognition (NER) results.
 //
 // @param request - ListInterventionDictionaryNerResultsRequest
 //
@@ -4590,7 +4887,7 @@ func (client *Client) ListInterventionDictionaryNerResults(name *string, request
 
 // Summary:
 //
-// Queries the resources that are associated with an intervention dictionary. If the intervention dictionary is referenced by query analysis rules, this operation returns all applications that use the intervention dictionary and the information about the query analysis rules.
+// Queries the list of resources associated with an intervention dictionary. If a query processor (QP) references the dictionary, the operation returns all associated applications and information about the QP.
 //
 // @param headers - map
 //
@@ -4623,7 +4920,7 @@ func (client *Client) ListInterventionDictionaryRelatedEntitiesWithOptions(name 
 
 // Summary:
 //
-// Queries the resources that are associated with an intervention dictionary. If the intervention dictionary is referenced by query analysis rules, this operation returns all applications that use the intervention dictionary and the information about the query analysis rules.
+// Queries the list of resources associated with an intervention dictionary. If a query processor (QP) references the dictionary, the operation returns all associated applications and information about the QP.
 //
 // @return ListInterventionDictionaryRelatedEntitiesResponse
 func (client *Client) ListInterventionDictionaryRelatedEntities(name *string) (_result *ListInterventionDictionaryRelatedEntitiesResponse, _err error) {
@@ -4640,7 +4937,7 @@ func (client *Client) ListInterventionDictionaryRelatedEntities(name *string) (_
 
 // Summary:
 //
-// 查看当前的处理流
+// Lists the current proceedings.
 //
 // @param request - ListProceedingsRequest
 //
@@ -4687,7 +4984,7 @@ func (client *Client) ListProceedingsWithOptions(appGroupIdentity *string, reque
 
 // Summary:
 //
-// 查看当前的处理流
+// Lists the current proceedings.
 //
 // @param request - ListProceedingsRequest
 //
@@ -4706,7 +5003,7 @@ func (client *Client) ListProceedings(appGroupIdentity *string, request *ListPro
 
 // Summary:
 //
-// Queries the results of a query analysis test. This API operation is available only to existing applications of OpenSearch Open Source Compatible Edition.
+// Tests the results of query analysis. This operation can be called only for existing applications of the Open Source-compatible Edition.
 //
 // @param request - ListQueryProcessorAnalyzerResultsRequest
 //
@@ -4753,7 +5050,7 @@ func (client *Client) ListQueryProcessorAnalyzerResultsWithOptions(appGroupIdent
 
 // Summary:
 //
-// Queries the results of a query analysis test. This API operation is available only to existing applications of OpenSearch Open Source Compatible Edition.
+// Tests the results of query analysis. This operation can be called only for existing applications of the Open Source-compatible Edition.
 //
 // @param request - ListQueryProcessorAnalyzerResultsRequest
 //
@@ -4772,7 +5069,7 @@ func (client *Client) ListQueryProcessorAnalyzerResults(appGroupIdentity *string
 
 // Summary:
 //
-// Queries the recommended priority settings of entity types for named entity recognition (NER).
+// Queries the recommended priority settings for entity types in Named Entity Recognition (NER).
 //
 // @param request - ListQueryProcessorNersRequest
 //
@@ -4819,7 +5116,7 @@ func (client *Client) ListQueryProcessorNersWithOptions(request *ListQueryProces
 
 // Summary:
 //
-// Queries the recommended priority settings of entity types for named entity recognition (NER).
+// Queries the recommended priority settings for entity types in Named Entity Recognition (NER).
 //
 // @param request - ListQueryProcessorNersRequest
 //
@@ -4838,7 +5135,7 @@ func (client *Client) ListQueryProcessorNers(request *ListQueryProcessorNersRequ
 
 // Summary:
 //
-// Queries a list of query analysis rules that are configured for a version of an OpenSearch application.
+// Queries a list of query analysis rules configured for a specific version of an OpenSearch application.
 //
 // @param request - ListQueryProcessorsRequest
 //
@@ -4885,7 +5182,7 @@ func (client *Client) ListQueryProcessorsWithOptions(appGroupIdentity *string, a
 
 // Summary:
 //
-// Queries a list of query analysis rules that are configured for a version of an OpenSearch application.
+// Queries a list of query analysis rules configured for a specific version of an OpenSearch application.
 //
 // @param request - ListQueryProcessorsRequest
 //
@@ -4904,7 +5201,7 @@ func (client *Client) ListQueryProcessors(appGroupIdentity *string, appId *strin
 
 // Summary:
 //
-// Queries tickets that are submitted to apply for quotas for an OpenSearch application.
+// Lists the quota approval tickets for a specified OpenSearch application.
 //
 // @param request - ListQuotaReviewTasksRequest
 //
@@ -4955,7 +5252,7 @@ func (client *Client) ListQuotaReviewTasksWithOptions(appGroupIdentity *string, 
 
 // Summary:
 //
-// Queries tickets that are submitted to apply for quotas for an OpenSearch application.
+// Lists the quota approval tickets for a specified OpenSearch application.
 //
 // @param request - ListQuotaReviewTasksRequest
 //
@@ -4974,7 +5271,7 @@ func (client *Client) ListQuotaReviewTasks(appGroupIdentity *string, request *Li
 
 // Summary:
 //
-// Queries a list of scheduled tasks of an OpenSearch application.
+// Queries a list of scheduled tasks for an OpenSearch application.
 //
 // @param request - ListScheduledTasksRequest
 //
@@ -5029,7 +5326,7 @@ func (client *Client) ListScheduledTasksWithOptions(appGroupIdentity *string, re
 
 // Summary:
 //
-// Queries a list of scheduled tasks of an OpenSearch application.
+// Queries a list of scheduled tasks for an OpenSearch application.
 //
 // @param request - ListScheduledTasksRequest
 //
@@ -5048,7 +5345,7 @@ func (client *Client) ListScheduledTasks(appGroupIdentity *string, request *List
 
 // Summary:
 //
-// Queries the details of query policies.
+// Retrieves the details of query policies.
 //
 // @param headers - map
 //
@@ -5081,7 +5378,7 @@ func (client *Client) ListSearchStrategiesWithOptions(appGroupIdentity *string, 
 
 // Summary:
 //
-// Queries the details of query policies.
+// Retrieves the details of query policies.
 //
 // @return ListSearchStrategiesResponse
 func (client *Client) ListSearchStrategies(appGroupIdentity *string, appId *string) (_result *ListSearchStrategiesResponse, _err error) {
@@ -5098,7 +5395,7 @@ func (client *Client) ListSearchStrategies(appGroupIdentity *string, appId *stri
 
 // Summary:
 //
-// Queries the fine sort expressions that are configured for a version of an OpenSearch application.
+// Lists the fine sort expressions for a specific version of an OpenSearch application.
 //
 // @param headers - map
 //
@@ -5131,7 +5428,7 @@ func (client *Client) ListSecondRanksWithOptions(appGroupIdentity *string, appId
 
 // Summary:
 //
-// Queries the fine sort expressions that are configured for a version of an OpenSearch application.
+// Lists the fine sort expressions for a specific version of an OpenSearch application.
 //
 // @return ListSecondRanksResponse
 func (client *Client) ListSecondRanks(appGroupIdentity *string, appId *string) (_result *ListSecondRanksResponse, _err error) {
@@ -5148,7 +5445,7 @@ func (client *Client) ListSecondRanks(appGroupIdentity *string, appId *string) (
 
 // Summary:
 //
-// Queries the suggestions that are provided by Optimization Master for slow queries.
+// Lists the optimization suggestions for slow queries from Search Diagnosis.
 //
 // @param headers - map
 //
@@ -5181,7 +5478,7 @@ func (client *Client) ListSlowQueryCategoriesWithOptions(appGroupIdentity *strin
 
 // Summary:
 //
-// Queries the suggestions that are provided by Optimization Master for slow queries.
+// Lists the optimization suggestions for slow queries from Search Diagnosis.
 //
 // @return ListSlowQueryCategoriesResponse
 func (client *Client) ListSlowQueryCategories(appGroupIdentity *string) (_result *ListSlowQueryCategoriesResponse, _err error) {
@@ -5198,7 +5495,7 @@ func (client *Client) ListSlowQueryCategories(appGroupIdentity *string) (_result
 
 // Summary:
 //
-// 列出优化大师慢查询Query清单
+// Lists the slow queries from the Query Optimizer.
 //
 // @param headers - map
 //
@@ -5231,7 +5528,7 @@ func (client *Client) ListSlowQueryQueriesWithOptions(appGroupIdentity *string, 
 
 // Summary:
 //
-// 列出优化大师慢查询Query清单
+// Lists the slow queries from the Query Optimizer.
 //
 // @return ListSlowQueryQueriesResponse
 func (client *Client) ListSlowQueryQueries(appGroupIdentity *string, categoryIndex *string) (_result *ListSlowQueryQueriesResponse, _err error) {
@@ -5248,7 +5545,7 @@ func (client *Client) ListSlowQueryQueries(appGroupIdentity *string, categoryInd
 
 // Summary:
 //
-// Queries a list of sort expressions that are configured for a version of an OpenSearch application.
+// Lists the sort expressions that are configured for a version of an OpenSearch application.
 //
 // @param headers - map
 //
@@ -5281,7 +5578,7 @@ func (client *Client) ListSortExpressionsWithOptions(appGroupIdentity *string, a
 
 // Summary:
 //
-// Queries a list of sort expressions that are configured for a version of an OpenSearch application.
+// Lists the sort expressions that are configured for a version of an OpenSearch application.
 //
 // @return ListSortExpressionsResponse
 func (client *Client) ListSortExpressions(appGroupIdentity *string, appId *string) (_result *ListSortExpressionsResponse, _err error) {
@@ -5298,7 +5595,7 @@ func (client *Client) ListSortExpressions(appGroupIdentity *string, appId *strin
 
 // Summary:
 //
-// Queries all sort scripts of an application version.
+// Lists all sort scripts for a specified application version.
 //
 // @param headers - map
 //
@@ -5331,7 +5628,7 @@ func (client *Client) ListSortScriptsWithOptions(appGroupIdentity *string, appVe
 
 // Summary:
 //
-// Queries all sort scripts of an application version.
+// Lists all sort scripts for a specified application version.
 //
 // @return ListSortScriptsResponse
 func (client *Client) ListSortScripts(appGroupIdentity *string, appVersionId *string) (_result *ListSortScriptsResponse, _err error) {
@@ -5442,7 +5739,7 @@ func (client *Client) ListStatisticLogs(appGroupIdentity *string, moduleName *st
 
 // Summary:
 //
-// Queries statistical reports, such as application reports, drop-down suggestion reports, hotword shading reports, A/B test reports, and data quality reports.
+// Queries statistical reports, such as application, drop-down suggestion, top search hint, A/B test, and data quality reports.
 //
 // @param request - ListStatisticReportRequest
 //
@@ -5509,7 +5806,7 @@ func (client *Client) ListStatisticReportWithOptions(appGroupIdentity *string, m
 
 // Summary:
 //
-// Queries statistical reports, such as application reports, drop-down suggestion reports, hotword shading reports, A/B test reports, and data quality reports.
+// Queries statistical reports, such as application, drop-down suggestion, top search hint, A/B test, and data quality reports.
 //
 // @param request - ListStatisticReportRequest
 //
@@ -5528,7 +5825,7 @@ func (client *Client) ListStatisticReport(appGroupIdentity *string, moduleName *
 
 // Summary:
 //
-// Queries tagged resources.
+// Queries the tags of specified resources.
 //
 // @param tmpReq - ListTagResourcesRequest
 //
@@ -5597,7 +5894,7 @@ func (client *Client) ListTagResourcesWithOptions(tmpReq *ListTagResourcesReques
 
 // Summary:
 //
-// Queries tagged resources.
+// Queries the tags of specified resources.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -5690,7 +5987,7 @@ func (client *Client) ListUserAnalyzerEntries(name *string, request *ListUserAna
 
 // Summary:
 //
-// Queries the custom analyzers that belong to the current account.
+// Retrieves a list of custom analyzers for your account.
 //
 // @param request - ListUserAnalyzersRequest
 //
@@ -5741,7 +6038,7 @@ func (client *Client) ListUserAnalyzersWithOptions(request *ListUserAnalyzersReq
 
 // Summary:
 //
-// Queries the custom analyzers that belong to the current account.
+// Retrieves a list of custom analyzers for your account.
 //
 // @param request - ListUserAnalyzersRequest
 //
@@ -5760,7 +6057,7 @@ func (client *Client) ListUserAnalyzers(request *ListUserAnalyzersRequest) (_res
 
 // Summary:
 //
-// Modifies the properties of an OpenSearch application or sets the online version of an OpenSearch application.
+// Modifies the properties of an OpenSearch application or sets its online version.
 //
 // @param request - ModifyAppGroupRequest
 //
@@ -5825,7 +6122,7 @@ func (client *Client) ModifyAppGroupWithOptions(appGroupIdentity *string, reques
 
 // Summary:
 //
-// Modifies the properties of an OpenSearch application or sets the online version of an OpenSearch application.
+// Modifies the properties of an OpenSearch application or sets its online version.
 //
 // @param request - ModifyAppGroupRequest
 //
@@ -5844,7 +6141,7 @@ func (client *Client) ModifyAppGroup(appGroupIdentity *string, request *ModifyAp
 
 // Summary:
 //
-// Modifies the quotas of an OpenSearch application.
+// Modifies the quota of an OpenSearch application.
 //
 // @param request - ModifyAppGroupQuotaRequest
 //
@@ -5896,7 +6193,7 @@ func (client *Client) ModifyAppGroupQuotaWithOptions(appGroupIdentity *string, r
 
 // Summary:
 //
-// Modifies the quotas of an OpenSearch application.
+// Modifies the quota of an OpenSearch application.
 //
 // @param request - ModifyAppGroupQuotaRequest
 //
@@ -5915,7 +6212,103 @@ func (client *Client) ModifyAppGroupQuota(appGroupIdentity *string, request *Mod
 
 // Summary:
 //
-// Modifies a rough sort expression for an OpenSearch application. If you set dryRun to true, this operation checks the rough sort expression after the expression is modified. If you do not specify this parameter, false is used by default.
+// 更新弹性计划
+//
+// @param request - ModifyElasticPlanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyElasticPlanResponse
+func (client *Client) ModifyElasticPlanWithOptions(appGroupIdentity *string, planId *string, request *ModifyElasticPlanRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifyElasticPlanResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DryRun) {
+		query["dryRun"] = request.DryRun
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CustomDates) {
+		body["customDates"] = request.CustomDates
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ElasticLcu) {
+		body["elasticLcu"] = request.ElasticLcu
+	}
+
+	if !dara.IsNil(request.Enabled) {
+		body["enabled"] = request.Enabled
+	}
+
+	if !dara.IsNil(request.EndHour) {
+		body["endHour"] = request.EndHour
+	}
+
+	if !dara.IsNil(request.ScheduleType) {
+		body["scheduleType"] = request.ScheduleType
+	}
+
+	if !dara.IsNil(request.StartHour) {
+		body["startHour"] = request.StartHour
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyElasticPlan"),
+		Version:     dara.String("2017-12-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v4/openapi/app-groups/" + dara.PercentEncode(dara.StringValue(appGroupIdentity)) + "/elastic-plans/" + dara.PercentEncode(dara.StringValue(planId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyElasticPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新弹性计划
+//
+// @param request - ModifyElasticPlanRequest
+//
+// @return ModifyElasticPlanResponse
+func (client *Client) ModifyElasticPlan(appGroupIdentity *string, planId *string, request *ModifyElasticPlanRequest) (_result *ModifyElasticPlanResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModifyElasticPlanResponse{}
+	_body, _err := client.ModifyElasticPlanWithOptions(appGroupIdentity, planId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the rough sort expression for an OpenSearch application version. If you set the dryRun parameter to true, this operation validates the modified rough sort expression. The default value of this parameter is false.
 //
 // @param request - ModifyFirstRankRequest
 //
@@ -5963,7 +6356,7 @@ func (client *Client) ModifyFirstRankWithOptions(appGroupIdentity *string, appId
 
 // Summary:
 //
-// Modifies a rough sort expression for an OpenSearch application. If you set dryRun to true, this operation checks the rough sort expression after the expression is modified. If you do not specify this parameter, false is used by default.
+// Modifies the rough sort expression for an OpenSearch application version. If you set the dryRun parameter to true, this operation validates the modified rough sort expression. The default value of this parameter is false.
 //
 // @param request - ModifyFirstRankRequest
 //
@@ -5982,7 +6375,7 @@ func (client *Client) ModifyFirstRank(appGroupIdentity *string, appId *string, n
 
 // Summary:
 //
-// Modifies a query analysis rule for a specific application version. If you set dryRun to true, this operation checks the specified query analysis rule. By default, the value of dryRun is false if you do not specify this parameter.
+// Modifies a query analysis rule for a specific application version. If you set the dryRun parameter to true, this operation checks the specified query analysis rule. If you do not specify the dryRun parameter, the default value is false.
 //
 // @param request - ModifyQueryProcessorRequest
 //
@@ -6030,7 +6423,7 @@ func (client *Client) ModifyQueryProcessorWithOptions(appGroupIdentity *string, 
 
 // Summary:
 //
-// Modifies a query analysis rule for a specific application version. If you set dryRun to true, this operation checks the specified query analysis rule. By default, the value of dryRun is false if you do not specify this parameter.
+// Modifies a query analysis rule for a specific application version. If you set the dryRun parameter to true, this operation checks the specified query analysis rule. If you do not specify the dryRun parameter, the default value is false.
 //
 // @param request - ModifyQueryProcessorRequest
 //
@@ -6110,7 +6503,7 @@ func (client *Client) ModifyScheduledTask(appGroupIdentity *string, taskId *stri
 
 // Summary:
 //
-// Modifies a fine sort expression that is configured for a specific OpenSearch application version. If you set dryRun to true, the specified fine sort expression is checked after the expression is modified. By default, the value of dryRun is false if you do not specify this parameter.
+// Modifies a fine sort expression for an OpenSearch application version. If you set `dryRun` to `true`, the modified fine sort expression is validated. The `dryRun` parameter is `false` by default.
 //
 // @param request - ModifySecondRankRequest
 //
@@ -6158,7 +6551,7 @@ func (client *Client) ModifySecondRankWithOptions(appGroupIdentity *string, appI
 
 // Summary:
 //
-// Modifies a fine sort expression that is configured for a specific OpenSearch application version. If you set dryRun to true, the specified fine sort expression is checked after the expression is modified. By default, the value of dryRun is false if you do not specify this parameter.
+// Modifies a fine sort expression for an OpenSearch application version. If you set `dryRun` to `true`, the modified fine sort expression is validated. The `dryRun` parameter is `false` by default.
 //
 // @param request - ModifySecondRankRequest
 //
@@ -6177,7 +6570,7 @@ func (client *Client) ModifySecondRank(appGroupIdentity *string, appId *string, 
 
 // Summary:
 //
-// Accepts the changes in intervention entries.
+// Applies changes to intervention dictionary entries.
 //
 // @param request - PushInterventionDictionaryEntriesRequest
 //
@@ -6225,7 +6618,7 @@ func (client *Client) PushInterventionDictionaryEntriesWithOptions(name *string,
 
 // Summary:
 //
-// Accepts the changes in intervention entries.
+// Applies changes to intervention dictionary entries.
 //
 // @param request - PushInterventionDictionaryEntriesRequest
 //
@@ -6244,7 +6637,7 @@ func (client *Client) PushInterventionDictionaryEntries(name *string, request *P
 
 // Summary:
 //
-// Accepts the changes in the entries of a custom analyzer.
+// Applies changes to the entries of a custom analyzer.
 //
 // @param request - PushUserAnalyzerEntriesRequest
 //
@@ -6297,7 +6690,7 @@ func (client *Client) PushUserAnalyzerEntriesWithOptions(name *string, request *
 
 // Summary:
 //
-// Accepts the changes in the entries of a custom analyzer.
+// Applies changes to the entries of a custom analyzer.
 //
 // @param request - PushUserAnalyzerEntriesRequest
 //
@@ -6316,7 +6709,7 @@ func (client *Client) PushUserAnalyzerEntries(name *string, request *PushUserAna
 
 // Summary:
 //
-// 发布排序脚本
+// Releases a sort script.
 //
 // @param headers - map
 //
@@ -6349,7 +6742,7 @@ func (client *Client) ReleaseSortScriptWithOptions(appGroupIdentity *string, scr
 
 // Summary:
 //
-// 发布排序脚本
+// Releases a sort script.
 //
 // @return ReleaseSortScriptResponse
 func (client *Client) ReleaseSortScript(appGroupIdentity *string, scriptName *string, appVersionId *string) (_result *ReleaseSortScriptResponse, _err error) {
@@ -6420,7 +6813,7 @@ func (client *Client) RemoveApp(appGroupIdentity *string, appId *string) (_resul
 //
 // Description:
 //
-// You can delete only pay-as-you-go applications. You cannot delete subscription applications.
+// You can only delete pay-as-you-go applications. Subscription applications cannot be deleted.
 //
 // @param headers - map
 //
@@ -6457,7 +6850,7 @@ func (client *Client) RemoveAppGroupWithOptions(appGroupIdentity *string, header
 //
 // Description:
 //
-// You can delete only pay-as-you-go applications. You cannot delete subscription applications.
+// You can only delete pay-as-you-go applications. Subscription applications cannot be deleted.
 //
 // @return RemoveAppGroupResponse
 func (client *Client) RemoveAppGroup(appGroupIdentity *string) (_result *RemoveAppGroupResponse, _err error) {
@@ -6524,7 +6917,67 @@ func (client *Client) RemoveDataCollection(appGroupIdentity *string, dataCollect
 
 // Summary:
 //
-// Deletes a rough sort expression for a version of an OpenSearch application.
+// 获取弹性计划详情
+//
+// @param request - RemoveElasticPlanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveElasticPlanResponse
+func (client *Client) RemoveElasticPlanWithOptions(appGroupIdentity *string, planId *string, request *RemoveElasticPlanRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RemoveElasticPlanResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RemoveElasticPlan"),
+		Version:     dara.String("2017-12-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v4/openapi/app-groups/" + dara.PercentEncode(dara.StringValue(appGroupIdentity)) + "/elastic-plans/" + dara.PercentEncode(dara.StringValue(planId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RemoveElasticPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取弹性计划详情
+//
+// @param request - RemoveElasticPlanRequest
+//
+// @return RemoveElasticPlanResponse
+func (client *Client) RemoveElasticPlan(appGroupIdentity *string, planId *string, request *RemoveElasticPlanRequest) (_result *RemoveElasticPlanResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RemoveElasticPlanResponse{}
+	_body, _err := client.RemoveElasticPlanWithOptions(appGroupIdentity, planId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes the rough sort configuration of an OpenSearch application version.
 //
 // @param headers - map
 //
@@ -6557,7 +7010,7 @@ func (client *Client) RemoveFirstRankWithOptions(appGroupIdentity *string, appId
 
 // Summary:
 //
-// Deletes a rough sort expression for a version of an OpenSearch application.
+// Deletes the rough sort configuration of an OpenSearch application version.
 //
 // @return RemoveFirstRankResponse
 func (client *Client) RemoveFirstRank(appGroupIdentity *string, appId *string, name *string) (_result *RemoveFirstRankResponse, _err error) {
@@ -6624,7 +7077,7 @@ func (client *Client) RemoveInterventionDictionary(name *string) (_result *Remov
 
 // Summary:
 //
-// Deletes a query analysis rule for an OpenSearch application version.
+// Removes a query analysis rule from an OpenSearch application version.
 //
 // @param headers - map
 //
@@ -6657,7 +7110,7 @@ func (client *Client) RemoveQueryProcessorWithOptions(appGroupIdentity *string, 
 
 // Summary:
 //
-// Deletes a query analysis rule for an OpenSearch application version.
+// Removes a query analysis rule from an OpenSearch application version.
 //
 // @return RemoveQueryProcessorResponse
 func (client *Client) RemoveQueryProcessor(appGroupIdentity *string, appId *string, name *string) (_result *RemoveQueryProcessorResponse, _err error) {
@@ -6674,7 +7127,7 @@ func (client *Client) RemoveQueryProcessor(appGroupIdentity *string, appId *stri
 
 // Summary:
 //
-// Deletes a scheduled task of an OpenSearch application.
+// Deletes a scheduled task from an OpenSearch application.
 //
 // @param headers - map
 //
@@ -6707,7 +7160,7 @@ func (client *Client) RemoveScheduledTaskWithOptions(appGroupIdentity *string, t
 
 // Summary:
 //
-// Deletes a scheduled task of an OpenSearch application.
+// Deletes a scheduled task from an OpenSearch application.
 //
 // @return RemoveScheduledTaskResponse
 func (client *Client) RemoveScheduledTask(appGroupIdentity *string, taskId *string) (_result *RemoveScheduledTaskResponse, _err error) {
@@ -6724,7 +7177,7 @@ func (client *Client) RemoveScheduledTask(appGroupIdentity *string, taskId *stri
 
 // Summary:
 //
-// Deletes a query policy.
+// Deletes a search strategy.
 //
 // @param headers - map
 //
@@ -6757,7 +7210,7 @@ func (client *Client) RemoveSearchStrategyWithOptions(appGroupIdentity *string, 
 
 // Summary:
 //
-// Deletes a query policy.
+// Deletes a search strategy.
 //
 // @return RemoveSearchStrategyResponse
 func (client *Client) RemoveSearchStrategy(appGroupIdentity *string, appId *string, strategyName *string) (_result *RemoveSearchStrategyResponse, _err error) {
@@ -6874,7 +7327,7 @@ func (client *Client) RemoveUserAnalyzer(name *string) (_result *RemoveUserAnaly
 
 // Summary:
 //
-// Renews an application. This operation is not available now. You must renew an application in the OpenSearch console.
+// Renews an application. This API operation is unavailable. To renew an application, use the OpenSearch console.
 //
 // @param request - RenewAppGroupRequest
 //
@@ -6922,7 +7375,7 @@ func (client *Client) RenewAppGroupWithOptions(appGroupIdentity *string, request
 
 // Summary:
 //
-// Renews an application. This operation is not available now. You must renew an application in the OpenSearch console.
+// Renews an application. This API operation is unavailable. To renew an application, use the OpenSearch console.
 //
 // @param request - RenewAppGroupRequest
 //
@@ -7061,7 +7514,7 @@ func (client *Client) SaveSortScriptFile(appGroupIdentity *string, scriptName *s
 
 // Summary:
 //
-// 立即进行慢查询分析
+// Starts a slow query analysis task.
 //
 // @param headers - map
 //
@@ -7094,7 +7547,7 @@ func (client *Client) StartSlowQueryAnalyzerWithOptions(appGroupIdentity *string
 
 // Summary:
 //
-// 立即进行慢查询分析
+// Starts a slow query analysis task.
 //
 // @return StartSlowQueryAnalyzerResponse
 func (client *Client) StartSlowQueryAnalyzer(appGroupIdentity *string) (_result *StartSlowQueryAnalyzerResponse, _err error) {
@@ -7185,11 +7638,11 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// Unbinds a custom analyzer from an Elasticsearch instance.
+// Detaches a custom analyzer from an Elasticsearch instance.
 //
 // Description:
 //
-// You can call this operation to unbind a custom analyzer from an Elasticsearch instance.
+// Use this operation to detach a custom analyzer from an Elasticsearch instance.
 //
 // @param request - UnbindESUserAnalyzerRequest
 //
@@ -7231,11 +7684,11 @@ func (client *Client) UnbindESUserAnalyzerWithOptions(appGroupIdentity *string, 
 
 // Summary:
 //
-// Unbinds a custom analyzer from an Elasticsearch instance.
+// Detaches a custom analyzer from an Elasticsearch instance.
 //
 // Description:
 //
-// You can call this operation to unbind a custom analyzer from an Elasticsearch instance.
+// Use this operation to detach a custom analyzer from an Elasticsearch instance.
 //
 // @param request - UnbindESUserAnalyzerRequest
 //
@@ -7304,7 +7757,7 @@ func (client *Client) UnbindEsInstance(appGroupIdentity *string) (_result *Unbin
 
 // Summary:
 //
-// Remove tags from resources.
+// Removes tags from resources.
 //
 // @param tmpReq - UntagResourcesRequest
 //
@@ -7373,7 +7826,7 @@ func (client *Client) UntagResourcesWithOptions(tmpReq *UntagResourcesRequest, h
 
 // Summary:
 //
-// Remove tags from resources.
+// Removes tags from resources.
 //
 // @param request - UntagResourcesRequest
 //
@@ -7392,7 +7845,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// Modifies the parameters of an A/B test.
+// Updates the parameters of an A/B test experiment.
 //
 // @param request - UpdateABTestExperimentRequest
 //
@@ -7440,7 +7893,7 @@ func (client *Client) UpdateABTestExperimentWithOptions(appGroupIdentity *string
 
 // Summary:
 //
-// Modifies the parameters of an A/B test.
+// Updates the parameters of an A/B test experiment.
 //
 // @param request - UpdateABTestExperimentRequest
 //
@@ -7459,7 +7912,7 @@ func (client *Client) UpdateABTestExperiment(appGroupIdentity *string, sceneId *
 
 // Summary:
 //
-// Modifies whitelists.
+// Updates the whitelist data.
 //
 // @param request - UpdateABTestFixedFlowDividersRequest
 //
@@ -7501,7 +7954,7 @@ func (client *Client) UpdateABTestFixedFlowDividersWithOptions(appGroupIdentity 
 
 // Summary:
 //
-// Modifies whitelists.
+// Updates the whitelist data.
 //
 // @param request - UpdateABTestFixedFlowDividersRequest
 //
@@ -7587,7 +8040,7 @@ func (client *Client) UpdateABTestGroup(appGroupIdentity *string, sceneId *strin
 
 // Summary:
 //
-// Modifies an A/B test scenario.
+// Modifies an experiment scenario.
 //
 // @param request - UpdateABTestSceneRequest
 //
@@ -7635,7 +8088,7 @@ func (client *Client) UpdateABTestSceneWithOptions(appGroupIdentity *string, sce
 
 // Summary:
 //
-// Modifies an A/B test scenario.
+// Modifies an experiment scenario.
 //
 // @param request - UpdateABTestSceneRequest
 //
@@ -7654,7 +8107,7 @@ func (client *Client) UpdateABTestScene(appGroupIdentity *string, sceneId *strin
 
 // Summary:
 //
-// 应用删除保护
+// Updates the delete protection status for an application group.
 //
 // @param request - UpdateAppGroupDeleteProtectionRequest
 //
@@ -7701,7 +8154,7 @@ func (client *Client) UpdateAppGroupDeleteProtectionWithOptions(appGroupIdentity
 
 // Summary:
 //
-// 应用删除保护
+// Updates the delete protection status for an application group.
 //
 // @param request - UpdateAppGroupDeleteProtectionRequest
 //
@@ -7720,7 +8173,7 @@ func (client *Client) UpdateAppGroupDeleteProtection(appGroupIdentity *string, r
 
 // Summary:
 //
-// Updates fetch fields. A dry run is supported.
+// This operation supports dry runs.
 //
 // @param request - UpdateFetchFieldsRequest
 //
@@ -7768,7 +8221,7 @@ func (client *Client) UpdateFetchFieldsWithOptions(appGroupIdentity *string, app
 
 // Summary:
 //
-// Updates fetch fields. A dry run is supported.
+// This operation supports dry runs.
 //
 // @param request - UpdateFetchFieldsRequest
 //
@@ -7787,7 +8240,7 @@ func (client *Client) UpdateFetchFields(appGroupIdentity *string, appId *string,
 
 // Summary:
 //
-// Sets the default algorithm instance used by the specified application. The new algorithm instance automatically overwrites the most recently set default instance. If no instance is set, the default instance is canceled.
+// Sets the default algorithm instance for the specified application. The new algorithm instance automatically overwrites the previously set default instance. If no instance is specified, the default instance is canceled.
 //
 // @param request - UpdateFunctionDefaultInstanceRequest
 //
@@ -7834,7 +8287,7 @@ func (client *Client) UpdateFunctionDefaultInstanceWithOptions(appGroupIdentity 
 
 // Summary:
 //
-// Sets the default algorithm instance used by the specified application. The new algorithm instance automatically overwrites the most recently set default instance. If no instance is set, the default instance is canceled.
+// Sets the default algorithm instance for the specified application. The new algorithm instance automatically overwrites the previously set default instance. If no instance is specified, the default instance is canceled.
 //
 // @param request - UpdateFunctionDefaultInstanceRequest
 //
@@ -7853,7 +8306,7 @@ func (client *Client) UpdateFunctionDefaultInstance(appGroupIdentity *string, fu
 
 // Summary:
 //
-// Updates an algorithm instance.
+// Updates the configuration of a function instance.
 //
 // @param request - UpdateFunctionInstanceRequest
 //
@@ -7912,7 +8365,7 @@ func (client *Client) UpdateFunctionInstanceWithOptions(appGroupIdentity *string
 
 // Summary:
 //
-// Updates an algorithm instance.
+// Updates the configuration of a function instance.
 //
 // @param request - UpdateFunctionInstanceRequest
 //
@@ -7935,7 +8388,7 @@ func (client *Client) UpdateFunctionInstance(appGroupIdentity *string, functionN
 //
 // Description:
 //
-// You can call this operation to update the information about resources by resource name. You can modify only the values of data and description.
+// Updates the information of a resource specified by its name. You can modify only the data and description of the resource.
 //
 // @param request - UpdateFunctionResourceRequest
 //
@@ -7990,7 +8443,7 @@ func (client *Client) UpdateFunctionResourceWithOptions(appGroupIdentity *string
 //
 // Description:
 //
-// You can call this operation to update the information about resources by resource name. You can modify only the values of data and description.
+// Updates the information of a resource specified by its name. You can modify only the data and description of the resource.
 //
 // @param request - UpdateFunctionResourceRequest
 //
@@ -8009,7 +8462,7 @@ func (client *Client) UpdateFunctionResource(appGroupIdentity *string, functionN
 
 // Summary:
 //
-// Modifies a query policy.
+// This operation supports dry runs.
 //
 // @param request - UpdateSearchStrategyRequest
 //
@@ -8051,7 +8504,7 @@ func (client *Client) UpdateSearchStrategyWithOptions(appGroupIdentity *string, 
 
 // Summary:
 //
-// Modifies a query policy.
+// This operation supports dry runs.
 //
 // @param request - UpdateSearchStrategyRequest
 //
@@ -8074,7 +8527,7 @@ func (client *Client) UpdateSearchStrategy(appGroupIdentity *string, appId *stri
 //
 // Description:
 //
-// You can call this operation to modify the description of a sort script.
+// Modifies the description of a sort script.
 //
 // @param request - UpdateSortScriptRequest
 //
@@ -8125,7 +8578,7 @@ func (client *Client) UpdateSortScriptWithOptions(appGroupIdentity *string, appV
 //
 // Description:
 //
-// You can call this operation to modify the description of a sort script.
+// Modifies the description of a sort script.
 //
 // @param request - UpdateSortScriptRequest
 //
@@ -8144,7 +8597,7 @@ func (client *Client) UpdateSortScript(appGroupIdentity *string, appVersionId *s
 
 // Summary:
 //
-// Updates summaries. A dry run is supported.
+// This operation supports dry runs.
 //
 // @param request - UpdateSummariesRequest
 //
@@ -8192,7 +8645,7 @@ func (client *Client) UpdateSummariesWithOptions(appGroupIdentity *string, appId
 
 // Summary:
 //
-// Updates summaries. A dry run is supported.
+// This operation supports dry runs.
 //
 // @param request - UpdateSummariesRequest
 //
@@ -8211,7 +8664,7 @@ func (client *Client) UpdateSummaries(appGroupIdentity *string, appId *string, r
 
 // Summary:
 //
-// Verifies data sources.
+// Validates data sources.
 //
 // @param request - ValidateDataSourcesRequest
 //
@@ -8253,7 +8706,7 @@ func (client *Client) ValidateDataSourcesWithOptions(request *ValidateDataSource
 
 // Summary:
 //
-// Verifies data sources.
+// Validates data sources.
 //
 // @param request - ValidateDataSourcesRequest
 //

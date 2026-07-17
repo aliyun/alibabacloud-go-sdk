@@ -90,11 +90,11 @@ type DescribeAppResponseBodyResult struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The industry type. Valid values:
 	//
-	// 	- GENERAL
+	// - GENERAL
 	//
-	// 	- ECOMMERCE
+	// - ECOMMERCE
 	//
-	// 	- IT_CONTENT
+	// - IT_CONTENT
 	//
 	// example:
 	//
@@ -118,7 +118,35 @@ type DescribeAppResponseBodyResult struct {
 	//
 	// example:
 	//
-	// [ { "table": "table1", "fields": [ { "name": "field1", "interpretation": "Title" }, { "name": "field2", "interpretation": "Number" } ] } ]
+	// [
+	//
+	//     {
+	//
+	//         "table": "table1",
+	//
+	//         "fields": [
+	//
+	//             {
+	//
+	//                 "name": "field1",
+	//
+	//                 "interpretation": " title"
+	//
+	//             },
+	//
+	//             {
+	//
+	//                 "name": "field2",
+	//
+	//                 "interpretation": " ID"
+	//
+	//             }
+	//
+	//         ]
+	//
+	//     }
+	//
+	// ]
 	Interpretations map[string]interface{} `json:"interpretations,omitempty" xml:"interpretations,omitempty"`
 	// Indices whether the version is an online version.
 	//
@@ -133,6 +161,36 @@ type DescribeAppResponseBodyResult struct {
 	// 100
 	ProgressPercent *int32 `json:"progressPercent,omitempty" xml:"progressPercent,omitempty"`
 	// The prompt configurations.
+	//
+	// example:
+	//
+	// {
+	//
+	//         "parameters" : [
+	//
+	//           {
+	//
+	//             "name" : "docs",
+	//
+	//             "value" : "The concatenation method for doc content. For example, the current qwen format: \\"<article>\\n${doc}\\n</article>\\n"
+	//
+	//           }
+	//
+	//         ],
+	//
+	//         "messages":[
+	//
+	//           {
+	//
+	//             "role" : "role_name. Whether this should be limited to system, user, or assistant, or allow custom values",
+	//
+	//             "content" : "User-defined prompt content. Use ${parameter_key} to indicate dynamically replaced content. See the rules below for details"
+	//
+	//           }
+	//
+	//         ]
+	//
+	//       }
 	Prompts []map[string]interface{} `json:"prompts,omitempty" xml:"prompts,omitempty" type:"Repeated"`
 	// The query intent understanding configurations.
 	QueryProcessors []*DescribeAppResponseBodyResultQueryProcessors `json:"queryProcessors,omitempty" xml:"queryProcessors,omitempty" type:"Repeated"`
@@ -141,7 +199,8 @@ type DescribeAppResponseBodyResult struct {
 	// example:
 	//
 	// {}
-	Quota *DescribeAppResponseBodyResultQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
+	Quota          *DescribeAppResponseBodyResultQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
+	RealtimeShared *bool                               `json:"realtimeShared,omitempty" xml:"realtimeShared,omitempty"`
 	// The schema of the application.
 	//
 	// example:
@@ -154,19 +213,19 @@ type DescribeAppResponseBodyResult struct {
 	SecondRanks []*DescribeAppResponseBodyResultSecondRanks `json:"secondRanks,omitempty" xml:"secondRanks,omitempty" type:"Repeated"`
 	// The status of the version. Valid values:
 	//
-	// 	- ok: The version is normal.
+	// - ok: The version is normal.
 	//
-	// 	- stopped: The version is suspended.
+	// - stopped: The version is suspended.
 	//
-	// 	- frozen: The version is frozen.
+	// - frozen: The version is frozen.
 	//
-	// 	- initializing: The version is being initialized.
+	// - initializing: The version is being initialized.
 	//
-	// 	- unavailable: The version is invalid.
+	// - unavailable: The version is invalid.
 	//
-	// 	- data_waiting: Data is to be initialized.
+	// - data_waiting: Data is to be initialized.
 	//
-	// 	- data_preparing: Data is being initialized.
+	// - data_preparing: Data is being initialized.
 	//
 	// example:
 	//
@@ -176,11 +235,11 @@ type DescribeAppResponseBodyResult struct {
 	Summaries []*DescribeAppResponseBodyResultSummaries `json:"summaries,omitempty" xml:"summaries,omitempty" type:"Repeated"`
 	// The edition type. Valid values:
 	//
-	// 	- standard: a standard edition application.
+	// - standard: a standard edition application.
 	//
-	// 	- advance: an advanced edition application of an old version. New versions are not supported for this edition.
+	// - advance: an advanced edition application of an old version. New versions are not supported for this edition.
 	//
-	// 	- enhanced: an advanced edition application of a new version.
+	// - enhanced: an advanced edition application of a new version.
 	//
 	// example:
 	//
@@ -254,6 +313,10 @@ func (s *DescribeAppResponseBodyResult) GetQueryProcessors() []*DescribeAppRespo
 
 func (s *DescribeAppResponseBodyResult) GetQuota() *DescribeAppResponseBodyResultQuota {
 	return s.Quota
+}
+
+func (s *DescribeAppResponseBodyResult) GetRealtimeShared() *bool {
+	return s.RealtimeShared
 }
 
 func (s *DescribeAppResponseBodyResult) GetSchema() *DescribeAppResponseBodyResultSchema {
@@ -352,6 +415,11 @@ func (s *DescribeAppResponseBodyResult) SetQueryProcessors(v []*DescribeAppRespo
 
 func (s *DescribeAppResponseBodyResult) SetQuota(v *DescribeAppResponseBodyResultQuota) *DescribeAppResponseBodyResult {
 	s.Quota = v
+	return s
+}
+
+func (s *DescribeAppResponseBodyResult) SetRealtimeShared(v bool) *DescribeAppResponseBodyResult {
+	s.RealtimeShared = &v
 	return s
 }
 
@@ -543,27 +611,27 @@ type DescribeAppResponseBodyResultDataSources struct {
 	//
 	// name:
 	//
-	// 	- JsonKeyValueExtractor
+	// - JsonKeyValueExtractor
 	//
-	// 	- MultiValueSpliter
+	// - MultiValueSpliter
 	//
-	// 	- KeyValueExtractor
+	// - KeyValueExtractor
 	//
-	// 	- StringCatenateExtractor
+	// - StringCatenateExtractor
 	//
-	// 	- HTMLTagRemover
+	// - HTMLTagRemover
 	//
 	// parameters:
 	//
-	// 	- JsonKeyValueExtractor
+	// - JsonKeyValueExtractor
 	//
-	// 	- MultiValueSpliter
+	// - MultiValueSpliter
 	//
-	// 	- KeyValueExtractor
+	// - KeyValueExtractor
 	//
-	// 	- StringCatenateExtractor
+	// - StringCatenateExtractor
 	//
-	// 	- HTMLTagRemover
+	// - HTMLTagRemover
 	//
 	// example:
 	//
@@ -593,13 +661,13 @@ type DescribeAppResponseBodyResultDataSources struct {
 	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// 	- rds
+	// - rds
 	//
-	// 	- odps
+	// - odps
 	//
-	// 	- opensearch
+	// - opensearch
 	//
-	// 	- polardb
+	// - polardb
 	//
 	// example:
 	//
@@ -818,13 +886,13 @@ type DescribeAppResponseBodyResultFirstRanks struct {
 	//
 	// example:
 	//
-	// abc
+	// Description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The information about the expression. The information can be of the array or string type.
 	//
 	// example:
 	//
-	// String :"random()*100+now()";
+	// String :"random()*100+now()"；
 	//
 	// Array: [
 	//
@@ -928,11 +996,11 @@ type DescribeAppResponseBodyResultQueryProcessors struct {
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
 	// The industry type. Valid values:
 	//
-	// 	- GENERAL
+	// - GENERAL
 	//
-	// 	- ECOMMERCE
+	// - ECOMMERCE
 	//
-	// 	- IT_CONTENT
+	// - IT_CONTENT
 	//
 	// example:
 	//
@@ -1037,19 +1105,19 @@ type DescribeAppResponseBodyResultQuota struct {
 	Qps *int32 `json:"qps,omitempty" xml:"qps,omitempty"`
 	// The specifications. Valid values:
 	//
-	// 	- opensearch.share.junior: basic
+	// - opensearch.share.junior: basic
 	//
-	// 	- opensearch.share.common: shared general-purpose
+	// - opensearch.share.common: shared general-purpose
 	//
-	// 	- opensearch.share.compute: shared computing
+	// - opensearch.share.compute: shared computing
 	//
-	// 	- opensearch.share.storage: shared storage
+	// - opensearch.share.storage: shared storage
 	//
-	// 	- opensearch.private.common: exclusive general-purpose
+	// - opensearch.private.common: exclusive general-purpose
 	//
-	// 	- opensearch.private.compute: exclusive computing
+	// - opensearch.private.compute: exclusive computing
 	//
-	// 	- opensearch.private.storage: exclusive storage
+	// - opensearch.private.storage: exclusive storage
 	//
 	// example:
 	//
@@ -1306,9 +1374,9 @@ func (s *DescribeAppResponseBodyResultSchema) Validate() error {
 type DescribeAppResponseBodyResultSchemaIndexSortConfig struct {
 	// The sort method. Valid values:
 	//
-	// 	- ASC
+	// - ASC
 	//
-	// 	- DESC
+	// - DESC
 	//
 	// example:
 	//
@@ -1645,9 +1713,9 @@ func (s *DescribeAppResponseBodyResultSchemas) Validate() error {
 type DescribeAppResponseBodyResultSchemasIndexSortConfig struct {
 	// The sort method. Valid values:
 	//
-	// 	- ASC
+	// - ASC
 	//
-	// 	- DESC
+	// - DESC
 	//
 	// example:
 	//
@@ -1794,7 +1862,7 @@ type DescribeAppResponseBodyResultSecondRanks struct {
 	//
 	// example:
 	//
-	// Description
+	// 描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The fine sort expression. You can define an expression that contains fields, feature functions, and mathematical functions to implement complex sort logic.
 	//

@@ -16,13 +16,13 @@ type iDescribeUserAnalyzerResponseBody interface {
 }
 
 type DescribeUserAnalyzerResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// FFAEF396-10EF-53C7-1F51-518853880729
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The details of the custom analyzer.
+	// The details of the custom analyzer. For more information, see [UserAnalyzer](https://help.aliyun.com/document_detail/178934.html).
 	//
 	// example:
 	//

@@ -18,17 +18,17 @@ type iListDataCollectionsResponseBody interface {
 }
 
 type ListDataCollectionsResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 959D8782-B130-95EB-86CC-1F6ED447981F
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The details of the data collection task.
+	// The data collection information.
 	//
 	// For more information, see [DataCollection](https://help.aliyun.com/document_detail/173605.html).
 	Result []*ListDataCollectionsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -85,81 +85,81 @@ func (s *ListDataCollectionsResponseBody) Validate() error {
 }
 
 type ListDataCollectionsResponseBodyResult struct {
-	// The time when the task was created.
+	// The time when the data collection was created.
 	//
 	// example:
 	//
 	// 1581065837
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
-	// The type of data collected. Valid values:
+	// The type of data collection.
 	//
-	// 	- behavior: behavioral data.
+	// - behavior: User behavior data.
 	//
-	// 	- item_info: project information.
+	// - item_info: Item information.
 	//
-	// 	- industry_specific: industry-specific data.
+	// - industry_specific: Industry-specific attributes.
 	//
 	// example:
 	//
 	// BEHAVIOR
 	DataCollectionType *string `json:"dataCollectionType,omitempty" xml:"dataCollectionType,omitempty"`
-	// The data collection ID.
+	// The ID of the data collection.
 	//
 	// example:
 	//
 	// 286
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The industry name. Valid values:
+	// The name of the industry.
 	//
-	// 	- general
+	// - general: General.
 	//
-	// 	- ecommerce
+	// - ecommerce: E-commerce.
 	//
 	// example:
 	//
 	// GENERAL
 	IndustryName *string `json:"industryName,omitempty" xml:"industryName,omitempty"`
-	// The name of the data collection task.
+	// The name of the data collection.
 	//
 	// example:
 	//
 	// os_function_test_v1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The status of the data collection feature. Valid values:
+	// The status.
 	//
-	// 	- 0: The feature is disabled.
+	// - 0: Disabled.
 	//
-	// 	- 1: The feature is being enabled.
+	// - 1: Enabling.
 	//
-	// 	- 2: The feature is enabled.
+	// - 2: Enabled.
 	//
-	// 	- 3: The feature failed to be enabled.
+	// - 3: Failed.
 	//
 	// example:
 	//
 	// 2
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// The sundial ID.
+	// The ID of the sundial.
 	//
 	// example:
 	//
 	// 1755
 	SundialId *string `json:"sundialId,omitempty" xml:"sundialId,omitempty"`
-	// The type of the source from which data was collected. Valid values:
+	// The type of the data collection client.
 	//
-	// 	- server
+	// - server
 	//
-	// 	- web
+	// - web
 	//
-	// 	- app
+	// - app
 	//
-	// Only server is supported.
+	// Note: Only server is supported.
 	//
 	// example:
 	//
 	// server
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The time when the data collection task was updated.
+	// The time when the data collection was last updated.
 	//
 	// example:
 	//

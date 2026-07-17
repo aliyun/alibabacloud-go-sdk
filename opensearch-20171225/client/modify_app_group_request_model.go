@@ -28,23 +28,23 @@ type ModifyAppGroupRequest struct {
 	//
 	// 1223232
 	CurrentVersion *string `json:"currentVersion,omitempty" xml:"currentVersion,omitempty"`
-	// The description of the application.
+	// The description of the application group.
 	//
 	// example:
 	//
-	// "test"
+	// " instance description"
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The type of the industry. Valid values:
+	// The industry. Valid values:
 	//
-	// 	- general: general.
+	// - general: general.
 	//
-	// 	- ecommerce: e-commerce.
+	// - ecommerce: e-commerce.
 	//
-	// 	- education: education.
+	// - education: education.
 	//
-	// 	- esports: electronic sports.
+	// - esports: gaming.
 	//
-	// 	- community: content community.
+	// - community: content community.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type ModifyAppGroupRequest struct {
 	//
 	// rg-****
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// Specifies whether to verify the application before modification. Valid values: true and false.
+	// Specifies whether to perform a dry run. Valid values: true and false.
 	//
 	// example:
 	//

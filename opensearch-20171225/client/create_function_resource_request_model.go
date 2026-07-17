@@ -20,7 +20,7 @@ type iCreateFunctionResourceRequest interface {
 }
 
 type CreateFunctionResourceRequest struct {
-	// The resource data. The data structure varies with the resource type.
+	// The resource data. Its structure depends on the \\`ResourceType\\` value.
 	Data *CreateFunctionResourceRequestData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The description of the resource.
 	//
@@ -34,25 +34,7 @@ type CreateFunctionResourceRequest struct {
 	//
 	// fg_jsoon
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// The resource type.
-	//
-	// Valid values:
-	//
-	// 	- feature_generator
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- raw_file
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The type of the resource.
 	//
 	// example:
 	//
@@ -114,13 +96,13 @@ func (s *CreateFunctionResourceRequest) Validate() error {
 }
 
 type CreateFunctionResourceRequestData struct {
-	// The content of the file that corresponds to a resource of the raw_file type.
+	// The file content. Use this for \\`raw_file\\` resources.
 	//
 	// example:
 	//
 	// "abc"
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The feature generators that correspond to resources of the feature_generator type.
+	// A list of feature generators. Use this for \\`feature_generator\\` resources.
 	Generators []*CreateFunctionResourceRequestDataGenerators `json:"Generators,omitempty" xml:"Generators,omitempty" type:"Repeated"`
 }
 
@@ -165,56 +147,6 @@ func (s *CreateFunctionResourceRequestData) Validate() error {
 
 type CreateFunctionResourceRequestDataGenerators struct {
 	// The type of the feature generator.
-	//
-	// Valid values:
-	//
-	// 	- lookup
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- sequence
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- overlap
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- raw
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- combo
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- id
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// example:
 	//
@@ -275,7 +207,7 @@ func (s *CreateFunctionResourceRequestDataGenerators) Validate() error {
 }
 
 type CreateFunctionResourceRequestDataGeneratorsInput struct {
-	// The input features.
+	// The list of input features.
 	Features []*CreateFunctionResourceRequestDataGeneratorsInputFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
 }
 
@@ -317,24 +249,6 @@ type CreateFunctionResourceRequestDataGeneratorsInputFeatures struct {
 	// system_item_id
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type of the feature.
-	//
-	// Valid values:
-	//
-	// 	- item
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- user
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// example:
 	//

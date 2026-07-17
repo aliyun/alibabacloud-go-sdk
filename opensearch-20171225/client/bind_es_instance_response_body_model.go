@@ -22,11 +22,11 @@ type BindEsInstanceResponseBody struct {
 	//
 	// F5099063-6B86-F398-D843-905F9EFB683A
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The result
+	// The result.
 	//
 	// example:
 	//
-	// []
+	// {}
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 

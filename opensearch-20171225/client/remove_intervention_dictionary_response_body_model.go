@@ -22,7 +22,7 @@ type RemoveInterventionDictionaryResponseBody struct {
 	//
 	// 06BBD41A-5F72-34E4-2DAF-E43B0526051D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The information about the intervention dictionary.
+	// The details of the intervention dictionary.
 	Result *RemoveInterventionDictionaryResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -74,31 +74,31 @@ type RemoveInterventionDictionaryResponseBodyResult struct {
 	//
 	// 1539158313
 	Created *string `json:"created,omitempty" xml:"created,omitempty"`
-	// Parameter
+	// The name of the dictionary.
 	//
 	// example:
 	//
 	// tongyici
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Type
+	// The type of the dictionary. Valid values:
 	//
-	// 	- stopword: an intervention dictionary for stop word filtering.
+	// - stopword: An intervention dictionary for stop words.
 	//
-	// 	- synonym: an intervention dictionary for synonym configuration.
+	// - synonym: An intervention dictionary for synonyms.
 	//
-	// 	- correction: an intervention dictionary for spelling correction.
+	// - correction: An intervention dictionary for spelling correction.
 	//
-	// 	- category_prediction: an intervention dictionary for category prediction.
+	// - category_prediction: An intervention dictionary for category prediction.
 	//
-	// 	- ner: an intervention dictionary for named entity recognition.
+	// - ner: An intervention dictionary for Named Entity Recognition (NER).
 	//
-	// 	- term_weighting: an intervention dictionary for term weight analysis.
+	// - term_weighting: An intervention dictionary for term weights.
 	//
 	// example:
 	//
 	// synonym
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The time when the the intervention dictionary was modified.
+	// The time when the intervention dictionary was updated.
 	//
 	// example:
 	//

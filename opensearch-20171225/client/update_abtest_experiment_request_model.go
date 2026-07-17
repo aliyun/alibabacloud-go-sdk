@@ -18,11 +18,11 @@ type iUpdateABTestExperimentRequest interface {
 type UpdateABTestExperimentRequest struct {
 	// The request body. For more information, see [ABTestExperiment](https://help.aliyun.com/document_detail/173617.html).
 	Body *ABTestExperiment `json:"body,omitempty" xml:"body,omitempty"`
-	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- true: performs only a dry run. No endpoint is created. The system checks whether your AccessKey is valid, whether Resource Access Management (RAM) users are authorized, and whether the required parameters are set.
+	// - true: Performs a dry run. The system checks if your AccessKey is valid, if the Resource Access Management (RAM) user is authorized, and if all required parameters are specified. The request is not sent.
 	//
-	// 	- false (default): creates an endpoint immediately.
+	// - false (default): Sends the request to update the experiment.
 	//
 	// example:
 	//

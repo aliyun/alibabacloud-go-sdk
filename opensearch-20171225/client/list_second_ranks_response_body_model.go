@@ -24,7 +24,7 @@ type ListSecondRanksResponseBody struct {
 	//
 	// 0A6EB64B-B4C8-CF02-810F-E660812972FF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The information about the fine sort expression.
+	// A list of fine-sort expressions.
 	//
 	// For more information, see [SecondRank](https://help.aliyun.com/document_detail/170008.html).
 	Result []*ListSecondRanksResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
@@ -85,7 +85,7 @@ func (s *ListSecondRanksResponseBody) Validate() error {
 }
 
 type ListSecondRanksResponseBodyResult struct {
-	// Indicates whether the expression is the default one.
+	// Indicates whether the expression is active.
 	//
 	// example:
 	//
@@ -97,45 +97,45 @@ type ListSecondRanksResponseBodyResult struct {
 	//
 	// 0
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
-	// Description
+	// The description of the expression.
 	//
 	// example:
 	//
 	// ""
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The expression ID. This parameter is displayed only in the response.
+	// The ID of the expression. This parameter is displayed only in the response.
 	//
 	// example:
 	//
 	// 890473
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// Indicates whether the expression is the default one. This parameter is displayed only in the response. Valid values:
+	// Indicates whether the expression is the default one. This parameter is displayed only in the response.
 	//
-	// 	- true: the expression is the default one.
+	// - true: The expression is the default one.
 	//
-	// 	- false: the expression is not the default one.
+	// - false: The expression is not the default one.
 	//
 	// example:
 	//
 	// false
 	IsDefault *string `json:"isDefault,omitempty" xml:"isDefault,omitempty"`
-	// Indicates whether the expression is a system expression. This parameter is displayed only in the response. Valid values:
+	// Indicates whether the expression is a system expression. This parameter is displayed only in the response.
 	//
-	// 	- true: The expression is a system expression.
+	// - true: The expression is a system expression.
 	//
-	// 	- false:The expression is not a system expression
+	// - false: The expression is not a system expression.
 	//
 	// example:
 	//
 	// true
 	IsSys *string `json:"isSys,omitempty" xml:"isSys,omitempty"`
-	// The content of the fine sort expression. You can define an expression that consists of fields, feature functions, and mathematical functions to implement complex sort logic.
+	// The content of the fine-sort expression. You can define an expression that consists of fields, feature functions, and mathematical functions to implement complex sort logic.
 	//
 	// example:
 	//
 	// random()+now()
 	Meta *string `json:"meta,omitempty" xml:"meta,omitempty"`
-	// Parameter
+	// The name of the expression.
 	//
 	// example:
 	//

@@ -21,19 +21,19 @@ type iCreateSortScriptRequest interface {
 
 type CreateSortScriptRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The sort phase to which the script applies.
+	// The applicable scope of the script.
 	//
 	// example:
 	//
 	// second_rank
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// The script name.
+	// The name of the script.
 	//
 	// example:
 	//
 	// rank_cava_20230606_v7
 	ScriptName *string `json:"scriptName,omitempty" xml:"scriptName,omitempty"`
-	// The script type. Set the value to cava_script.
+	// The type of the script. Only cava_script is supported.
 	//
 	// example:
 	//

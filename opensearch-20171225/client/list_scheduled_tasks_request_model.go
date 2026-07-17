@@ -30,15 +30,15 @@ type ListScheduledTasksRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The scheduled task type. Valid values:
+	// The type of the scheduled task. Valid values:
 	//
-	// 	- wipe: data cleaning.
+	// - wipe: data cleaning
 	//
-	// 	- fork: reindexing.
+	// - fork: reindexing
 	//
-	// 	- check-status: application status check.
+	// - check-status: application status check
 	//
-	// 	- index: reindexing.
+	// - index: reindexing
 	//
 	// example:
 	//

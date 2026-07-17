@@ -84,39 +84,39 @@ type ModifySecondRankResponseBodyResult struct {
 	//
 	// "11"
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The expression ID. This parameter is displayed only in the response.
+	// The ID of the expression. This parameter is returned only in the response.
 	//
 	// example:
 	//
 	// 890473
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// Indicates whether the expression is the default one. This parameter is displayed only in the response. Valid values:
+	// Indicates whether the expression is the default expression. This parameter is returned only in the response.
 	//
-	// 	- true: the expression is the default one.
+	// - true: The expression is the default expression.
 	//
-	// 	- false: the expression is not the default one.
+	// - false: The expression is not the default expression.
 	//
 	// example:
 	//
 	// true
 	IsDefault *string `json:"isDefault,omitempty" xml:"isDefault,omitempty"`
-	// Indicates whether the expression is a system expression. This parameter is displayed only in the response. Valid values:
+	// Indicates whether the expression is a system expression. This parameter is returned only in the response.
 	//
-	// 	- true: The expression is a system expression.
+	// - true: The expression is a system expression.
 	//
-	// 	- false:The expression is not a system expression
+	// - false: The expression is not a system expression.
 	//
 	// example:
 	//
 	// false
 	IsSys *string `json:"isSys,omitempty" xml:"isSys,omitempty"`
-	// The content of the fine sort expression. You can define an expression that consists of fields, feature functions, and mathematical functions to implement complex sort logic.
+	// The fine sort expression. You can create an expression that contains fields, scoring features, and mathematical functions to implement complex sorting logic.
 	//
 	// example:
 	//
 	// cate_id > 0 and cate_id < 1000
 	Meta *string `json:"meta,omitempty" xml:"meta,omitempty"`
-	// The expression name.
+	// The name of the expression.
 	//
 	// example:
 	//

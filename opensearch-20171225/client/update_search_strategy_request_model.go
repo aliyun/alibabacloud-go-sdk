@@ -14,7 +14,7 @@ type iUpdateSearchStrategyRequest interface {
 }
 
 type UpdateSearchStrategyRequest struct {
-	// The request body.
+	// The search policy. For more information, see [SearchStrategy](https://help.aliyun.com/document_detail/2400242.html).
 	Body *SearchStrategy `json:"body,omitempty" xml:"body,omitempty"`
 }
 

@@ -16,13 +16,13 @@ type iCreateInterventionDictionaryResponseBody interface {
 }
 
 type CreateInterventionDictionaryResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 80326EFE-485F-46E7-B291-5A1DD08D2198
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The returned results.
+	// The details of the intervention dictionary.
 	Result *CreateInterventionDictionaryResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -68,13 +68,13 @@ type CreateInterventionDictionaryResponseBodyResult struct {
 	//
 	// dianshang
 	Analyzer *string `json:"analyzer,omitempty" xml:"analyzer,omitempty"`
-	// The time when the test scenario was created.
+	// The time when the dictionary was created.
 	//
 	// example:
 	//
 	// 1591086323
 	Created *string `json:"created,omitempty" xml:"created,omitempty"`
-	// The name of the test group.
+	// The name of the dictionary.
 	//
 	// example:
 	//
@@ -82,17 +82,29 @@ type CreateInterventionDictionaryResponseBodyResult struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The type of the intervention dictionary. Valid values:
 	//
-	// 	- stopword: an intervention dictionary for stop word filtering
+	// - stopword: an intervention dictionary for stop word filtering.
 	//
-	// 	- synonym: an intervention dictionary for synonym configuration
+	// - synonym: an intervention dictionary for synonym configuration.
 	//
-	// 	- correction: an intervention dictionary for spelling correction
+	// - correction: an intervention dictionary for spelling correction.
 	//
-	// 	- category_prediction: an intervention dictionary for category prediction
+	// - category_prediction: an intervention dictionary for category prediction.
 	//
-	// 	- ner: an intervention dictionary for named entity recognition (NER)
+	// - ner: an intervention dictionary for Named Entity Recognition (NER).
 	//
-	// 	- term_weighting: an intervention dictionary for term weight analysis
+	// - term_weighting: an intervention dictionary for term weight analysis.
+	//
+	// - suggest_allowlist: a drop-down suggestion whitelist.
+	//
+	// - suggest_denylist: a drop-down suggestion blacklist.
+	//
+	// - hot_allowlist: a top search whitelist.
+	//
+	// - hot_denylist: a top search blacklist.
+	//
+	// - hint_allowlist: a hint whitelist.
+	//
+	// - hint_denylist: a hint blacklist.
 	//
 	// example:
 	//

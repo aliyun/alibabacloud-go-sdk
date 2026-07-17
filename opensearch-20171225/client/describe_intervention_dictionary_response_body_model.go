@@ -22,7 +22,7 @@ type DescribeInterventionDictionaryResponseBody struct {
 	//
 	// D7CCF454-472A-030E-F254-604520B028AA
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The details about the intervention dictionary.
+	// The details of the intervention dictionary.
 	Result *DescribeInterventionDictionaryResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -68,37 +68,37 @@ type DescribeInterventionDictionaryResponseBodyResult struct {
 	//
 	// -
 	Analyzer *string `json:"analyzer,omitempty" xml:"analyzer,omitempty"`
-	// The time when the the intervention dictionary was created.
+	// The time when the intervention dictionary was created.
 	//
 	// example:
 	//
 	// 1536233287
 	Created *string `json:"created,omitempty" xml:"created,omitempty"`
-	// The name of the the intervention dictionary.
+	// The name of the intervention dictionary.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Type
+	// The type of the intervention dictionary.
 	//
-	// 	- stopword: an intervention dictionary for stop word filtering.
+	// - stopword: an intervention dictionary for stop word filtering.
 	//
-	// 	- synonym: an intervention dictionary for synonym configuration.
+	// - synonym: an intervention dictionary for synonym configuration.
 	//
-	// 	- correction: an intervention dictionary for spelling correction.
+	// - correction: an intervention dictionary for spelling correction.
 	//
-	// 	- category_prediction: an intervention dictionary for category prediction.
+	// - category_prediction: an intervention dictionary for category prediction.
 	//
-	// 	- ner: an intervention dictionary for named entity recognition.
+	// - ner: an intervention dictionary for Named Entity Recognition (NER).
 	//
-	// 	- term_weighting: an intervention dictionary for term weight analysis.
+	// - term_weighting: an intervention dictionary for term weight analysis.
 	//
 	// example:
 	//
 	// category_prediction
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The time when the the intervention dictionary was modified.
+	// The time when the intervention dictionary was updated.
 	//
 	// example:
 	//

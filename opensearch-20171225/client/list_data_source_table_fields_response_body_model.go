@@ -16,13 +16,13 @@ type iListDataSourceTableFieldsResponseBody interface {
 }
 
 type ListDataSourceTableFieldsResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 0A6EB64B-B4C8-CF02-810F-E660812972FF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The returned result.
+	// The collection of fields from the data table.
 	//
 	// example:
 	//

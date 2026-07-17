@@ -16,7 +16,7 @@ type iGetSortScriptFileResponseBody interface {
 }
 
 type GetSortScriptFileResponseBody struct {
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//
@@ -62,19 +62,19 @@ func (s *GetSortScriptFileResponseBody) Validate() error {
 }
 
 type GetSortScriptFileResponseBodyResult struct {
-	// The script content that is encoded in the Base64 format.
+	// The content of the script, Base64-encoded.
 	//
 	// example:
 	//
 	// YWJjZGVmZw==
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// The time when the script was created.
+	// The time when the script file was created.
 	//
 	// example:
 	//
 	// 2020-04-02 20:21:14
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The time when the script was last modified.
+	// The time when the script file was last modified.
 	//
 	// example:
 	//

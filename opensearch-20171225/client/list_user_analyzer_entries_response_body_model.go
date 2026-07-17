@@ -22,11 +22,31 @@ type ListUserAnalyzerEntriesResponseBody struct {
 	//
 	// 516A02B7-2167-8D92-12D0-B639A2A0F3C5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The entries of the custom analyzer. For more information, see [UserAnalyzerEntry](https://www.alibabacloud.com/help/en/open-search/industry-algorithm-edition/useranalyzerentry).
+	// The entries of the custom analyzer. For more information, see UserAnalyzerEntry.
 	//
 	// example:
 	//
-	// []
+	// [
+	//
+	// {
+	//
+	// 	"cmd": "add",
+	//
+	// 	"key": "kevintest",
+	//
+	// 	"value": "kevin test",
+	//
+	// 	"created": 1536690285,
+	//
+	// 	"updated": 1537348987,
+	//
+	// 	"status": "ACTIVE",
+	//
+	// 	"splitEnabled": true
+	//
+	// }
+	//
+	// ]
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 

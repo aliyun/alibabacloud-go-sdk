@@ -18,7 +18,23 @@ type ModifyScheduledTaskRequest struct {
 	//
 	// example:
 	//
-	// The request parameters.
+	// {
+	//
+	//   "cron": "0 0 	- 	- 1,2,3,4,5,6,7",
+	//
+	//   "enabled": true,
+	//
+	//   "filter": {
+	//
+	//     "field": "cat_id",
+	//
+	//     "days": 30,
+	//
+	//     "unit": "s"
+	//
+	//   }
+	//
+	// }
 	Body interface{} `json:"body,omitempty" xml:"body,omitempty"`
 }
 

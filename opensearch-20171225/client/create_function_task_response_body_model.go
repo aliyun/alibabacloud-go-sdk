@@ -54,7 +54,7 @@ type CreateFunctionTaskResponseBody struct {
 	//
 	// 1638157990724
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the request.
+	// The request status.
 	//
 	// example:
 	//

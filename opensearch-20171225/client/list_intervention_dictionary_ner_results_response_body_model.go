@@ -16,15 +16,15 @@ type iListInterventionDictionaryNerResultsResponseBody interface {
 }
 
 type ListInterventionDictionaryNerResultsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 8F780CA8-D4D4-2FFE-B8AC-42040822C554
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The NER result.
+	// The NER results.
 	//
-	// For more information, see [InterventionDictionaryEntry](https://help.aliyun.com/document_detail/173606.html).
+	// For more information, see [Named Entity Recognition (NER)](https://help.aliyun.com/document_detail/173606.html).
 	Result []*ListInterventionDictionaryNerResultsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
@@ -68,101 +68,101 @@ func (s *ListInterventionDictionaryNerResultsResponseBody) Validate() error {
 }
 
 type ListInterventionDictionaryNerResultsResponseBodyResult struct {
-	// The sequence number.
+	// The ordinal number.
 	//
 	// example:
 	//
 	// 1
 	Order *int32 `json:"order,omitempty" xml:"order,omitempty"`
-	// The internal name of the identified entity type. Valid values:
+	// The tag of the detected entity.
 	//
-	// 	- brand
+	// - brand: Brand
 	//
-	// 	- category
+	// - category: Category
 	//
-	// 	- material
+	// - material: Material
 	//
-	// 	- element
+	// - element: Element
 	//
-	// 	- style
+	// - style: Style
 	//
-	// 	- color
+	// - color: Color
 	//
-	// 	- function
+	// - function: Function
 	//
-	// 	- scenario
+	// - scenario: Scenario
 	//
-	// 	- people
+	// - people: People
 	//
-	// 	- season
+	// - season: Season
 	//
-	// 	- model
+	// - model: Model
 	//
-	// 	- region
+	// - region: Region
 	//
-	// 	- name
+	// - name: Name
 	//
-	// 	- adjective
+	// - adjective: Adjective
 	//
-	// 	- category-modifier
+	// - category-modifier: Category modifier
 	//
-	// 	- size
+	// - size: Size
 	//
-	// 	- quality
+	// - quality: Quality
 	//
-	// 	- suit
+	// - suit: Suit
 	//
-	// 	- new-release
+	// - new-release: New release
 	//
-	// 	- series
+	// - series: Series
 	//
-	// 	- marketing
+	// - marketing: Marketing
 	//
-	// 	- entertainment
+	// - entertainment: Entertainment
 	//
-	// 	- organization
+	// - organization: Organization
 	//
-	// 	- movie
+	// - movie: Movie
 	//
-	// 	- game
+	// - game: Game
 	//
-	// 	- number
+	// - number: Number
 	//
-	// 	- unit
+	// - unit: Unit
 	//
-	// 	- common
+	// - common: Common word
 	//
-	// 	- new-word
+	// - new-word: New word
 	//
-	// 	- proper-noun
+	// - proper-noun: Proper noun
 	//
-	// 	- symbol
+	// - symbol: Symbol
 	//
-	// 	- prefix
+	// - prefix: Prefix
 	//
-	// 	- suffix
+	// - suffix: Suffix
 	//
-	// 	- gift
+	// - gift: Gift
 	//
-	// 	- negative
+	// - negative: Negative
 	//
-	// 	- agent
+	// - agent: Agent
 	//
 	// example:
 	//
 	// category
 	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
-	// The description of the internal name of the identified entity type.
+	// The label of the tag.
 	//
 	// example:
 	//
-	// category
+	// 品类
 	TagLabel *string `json:"tagLabel,omitempty" xml:"tagLabel,omitempty"`
-	// The entity.
+	// The detected entity.
 	//
 	// example:
 	//
-	// eaa73f35-007a-4be7-88c7-37dca4a04ab7
+	// milk
 	Token *string `json:"token,omitempty" xml:"token,omitempty"`
 }
 

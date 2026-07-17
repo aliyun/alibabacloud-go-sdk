@@ -40,13 +40,13 @@ type ListFunctionTasksResponseBody struct {
 	//
 	// 200
 	HttpCode *int64 `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	// The time consumed for the request, in milliseconds.
+	// The time consumed by the request, in milliseconds.
 	//
 	// example:
 	//
 	// 123
 	Latency *int64 `json:"Latency,omitempty" xml:"Latency,omitempty"`
-	// The error message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -172,13 +172,13 @@ func (s *ListFunctionTasksResponseBody) Validate() error {
 }
 
 type ListFunctionTasksResponseBodyResult struct {
-	// The timestamp that indicates the end time. Unit: milliseconds. 0 indicates that the task has not ended.
+	// The time when the task ended. This is a UNIX timestamp in milliseconds. A value of 0 indicates that the task has not ended.
 	//
 	// example:
 	//
 	// 100010
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The value is a JSON string. It includes model evaluation information and training error information.
+	// A JSON string that contains information such as model evaluation results and training errors.
 	//
 	// example:
 	//
@@ -190,13 +190,13 @@ type ListFunctionTasksResponseBodyResult struct {
 	//
 	// ctr
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
-	// The number of iterations.
+	// The iteration number.
 	//
 	// example:
 	//
 	// 2
 	Generation *string `json:"Generation,omitempty" xml:"Generation,omitempty"`
-	// The progress. 90 indicates 90%.
+	// The progress of the task. For example, a value of 90 indicates that the task is 90% complete.
 	//
 	// example:
 	//
@@ -208,19 +208,19 @@ type ListFunctionTasksResponseBodyResult struct {
 	//
 	// trigger__2021-03-05T12:18:41
 	RunId *string `json:"RunId,omitempty" xml:"RunId,omitempty"`
-	// The timestamp that indicates the start time. Unit: milliseconds.
+	// The time when the task started. This is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 100010
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the task. Valid values:
+	// The status of the task.
 	//
-	// 	- success
+	// - success
 	//
-	// 	- failed
+	// - failed
 	//
-	// 	- running
+	// - running
 	//
 	// example:
 	//

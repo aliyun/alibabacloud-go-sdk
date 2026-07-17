@@ -54,7 +54,7 @@ type UpdateFunctionDefaultInstanceResponseBody struct {
 	//
 	// A4D487A9-A456-5AA5-A9C6-B7BF2889CF74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the request.
+	// The request status.
 	//
 	// example:
 	//

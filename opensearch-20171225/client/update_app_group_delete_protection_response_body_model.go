@@ -16,13 +16,14 @@ type iUpdateAppGroupDeleteProtectionResponseBody interface {
 }
 
 type UpdateAppGroupDeleteProtectionResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 80326EFE-485F-46E7-B291-5A1DD08D2198
-	RequestId *string                                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    *UpdateAppGroupDeleteProtectionResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The result.
+	Result *UpdateAppGroupDeleteProtectionResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
 func (s UpdateAppGroupDeleteProtectionResponseBody) String() string {
@@ -61,6 +62,8 @@ func (s *UpdateAppGroupDeleteProtectionResponseBody) Validate() error {
 }
 
 type UpdateAppGroupDeleteProtectionResponseBodyResult struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// ops-cn-m7r1ywo2h1b

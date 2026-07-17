@@ -16,13 +16,13 @@ type iDisableSlowQueryResponseBody interface {
 }
 
 type DisableSlowQueryResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 728E89C6-8673-D39B-39A1-5BA2B56D448F
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The return result.
+	// The returned data.
 	//
 	// example:
 	//

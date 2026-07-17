@@ -22,7 +22,7 @@ type RemoveSecondRankResponseBody struct {
 	//
 	// 0A6EB64B-B4C8-CF02-810F-E660812972FF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The returned results.
+	// —
 	//
 	// example:
 	//

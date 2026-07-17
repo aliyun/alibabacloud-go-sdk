@@ -51,7 +51,7 @@ func (client *Client) BindESUserAnalyzerWithContext(ctx context.Context, appGrou
 
 // Summary:
 //
-// Binds an Elasticsearch instance.
+// Binds an Elasticsearch instance as a dependency.
 //
 // @param request - BindEsInstanceRequest
 //
@@ -179,7 +179,7 @@ func (client *Client) CreateABTestExperimentWithContext(ctx context.Context, app
 
 // Summary:
 //
-// Creates a test group.
+// Creates an experiment group.
 //
 // @param request - CreateABTestGroupRequest
 //
@@ -227,7 +227,7 @@ func (client *Client) CreateABTestGroupWithContext(ctx context.Context, appGroup
 
 // Summary:
 //
-// Creates an scenario.
+// Creates an experiment scenario.
 //
 // @param request - CreateABTestSceneRequest
 //
@@ -275,17 +275,17 @@ func (client *Client) CreateABTestSceneWithContext(ctx context.Context, appGroup
 
 // Summary:
 //
-// Creates a version for an OpenSearch application.
+// Creates a new version of an OpenSearch application.
 //
 // Description:
 //
-//	  When you create a standard application, a new version of the application is created if the specified application name already exists.
+// - If a Standard Edition application with the same name already exists, a new version is created.
 //
-//		- When you create a version of an existing application, you must specify the autoSwitch and realtimeShared parameters.
+// - The autoSwitch and realtimeShared parameters are required to create a new version.
 //
-//		- When you create a version of an existing application, the value of the quota parameter is the same as that of the quota parameter in the previous version of the application.
+// - The quota for the new version is automatically inherited from the previous version.
 //
-//		- When you create a version of an existing application, the modification of the value of the quota parameter does not take effect.
+// - You cannot modify the quota when you create the new version.
 //
 // @param request - CreateAppRequest
 //
@@ -467,6 +467,10 @@ func (client *Client) CreateAppGroupWithContext(ctx context.Context, request *Cr
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates access credentials for a specified application group. This operation supports a dry run to preview the results.
+//
 // @param request - CreateAppGroupCredentialsRequest
 //
 // @param headers - map
@@ -518,7 +522,84 @@ func (client *Client) CreateAppGroupCredentialsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Creates a rough sort expression for a version of an OpenSearch application. If you set dryRun to true, this operation checks the specified rough sort expression. By default, the value of dryRun is false if you do not set this parameter.
+// 创建弹性计划
+//
+// @param request - CreateElasticPlanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateElasticPlanResponse
+func (client *Client) CreateElasticPlanWithContext(ctx context.Context, appGroupIdentity *string, request *CreateElasticPlanRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateElasticPlanResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DryRun) {
+		query["dryRun"] = request.DryRun
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CustomDates) {
+		body["customDates"] = request.CustomDates
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ElasticLcu) {
+		body["elasticLcu"] = request.ElasticLcu
+	}
+
+	if !dara.IsNil(request.EndHour) {
+		body["endHour"] = request.EndHour
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ScheduleType) {
+		body["scheduleType"] = request.ScheduleType
+	}
+
+	if !dara.IsNil(request.StartHour) {
+		body["startHour"] = request.StartHour
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateElasticPlan"),
+		Version:     dara.String("2017-12-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v4/openapi/app-groups/" + dara.PercentEncode(dara.StringValue(appGroupIdentity)) + "/elastic-plans"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateElasticPlanResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a rough sort expression for a version of an OpenSearch application. If you set `dryRun` to true, this operation validates the specified rough sort expression. By default, the value of `dryRun` is `false`.
 //
 // @param request - CreateFirstRankRequest
 //
@@ -641,7 +722,7 @@ func (client *Client) CreateFunctionInstanceWithContext(ctx context.Context, app
 
 // Summary:
 //
-// Creates an algorithm resource for a specific feature.
+// Creates an algorithm resource for a specified feature.
 //
 // @param request - CreateFunctionResourceRequest
 //
@@ -700,7 +781,7 @@ func (client *Client) CreateFunctionResourceWithContext(ctx context.Context, app
 
 // Summary:
 //
-// Starts a training task for an algorithm instance.
+// Starts a training task.
 //
 // @param headers - map
 //
@@ -733,7 +814,7 @@ func (client *Client) CreateFunctionTaskWithContext(ctx context.Context, appGrou
 
 // Summary:
 //
-// Create an intervention dictionary.
+// Creates an intervention dictionary.
 //
 // @param request - CreateInterventionDictionaryRequest
 //
@@ -884,7 +965,7 @@ func (client *Client) CreateScheduledTaskWithContext(ctx context.Context, appGro
 
 // Summary:
 //
-// Creates a query policy.
+// Creates a search strategy.
 //
 // @param request - CreateSearchStrategyRequest
 //
@@ -926,7 +1007,7 @@ func (client *Client) CreateSearchStrategyWithContext(ctx context.Context, appGr
 
 // Summary:
 //
-// Creates a fine sort expression for a version of an OpenSearch application. If you set dryRun to true, this operation checks the specified fine sort expression. The default value of dryRun is false if you do not set this parameter.
+// Creates a fine sort expression for a version of an OpenSearch application. If you set the dryRun parameter to true, this operation validates the specified fine sort expression. The default value of this parameter is false.
 //
 // @param request - CreateSecondRankRequest
 //
@@ -1033,7 +1114,7 @@ func (client *Client) CreateSortScriptWithContext(ctx context.Context, appGroupI
 
 // Summary:
 //
-// Create a custom analyzer.
+// Creates a custom analyzer.
 //
 // @param request - CreateUserAnalyzerRequest
 //
@@ -1102,7 +1183,7 @@ func (client *Client) CreateUserAnalyzerWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Deletes a test.
+// Deletes an experiment.
 //
 // @param headers - map
 //
@@ -1135,7 +1216,7 @@ func (client *Client) DeleteABTestExperimentWithContext(ctx context.Context, app
 
 // Summary:
 //
-// 删除实验组
+// Deletes an A/B test group.
 //
 // @param headers - map
 //
@@ -1201,7 +1282,7 @@ func (client *Client) DeleteABTestSceneWithContext(ctx context.Context, appGroup
 
 // Summary:
 //
-// Deletes an algorithm instance. Before you delete an instance, make sure that it is not in use to prevent service interruptions.
+// Deletes an algorithm instance. Before you delete an instance, ensure that it is not in use to prevent service interruptions.
 //
 // @param headers - map
 //
@@ -1234,7 +1315,7 @@ func (client *Client) DeleteFunctionInstanceWithContext(ctx context.Context, app
 
 // Summary:
 //
-// Deletes an algorithm resource.
+// Deletes a specified algorithm resource.
 //
 // @param headers - map
 //
@@ -1267,7 +1348,7 @@ func (client *Client) DeleteFunctionResourceWithContext(ctx context.Context, app
 
 // Summary:
 //
-// Deletes a training task. The training task in progress cannot be deleted.
+// Deletes a training record. A training record that is in progress cannot be deleted.
 //
 // @param headers - map
 //
@@ -1300,7 +1381,7 @@ func (client *Client) DeleteFunctionTaskWithContext(ctx context.Context, appGrou
 
 // Summary:
 //
-// 删除排序脚本
+// Deletes a sort script.
 //
 // @param headers - map
 //
@@ -1366,7 +1447,7 @@ func (client *Client) DeleteSortScriptFileWithContext(ctx context.Context, appGr
 
 // Summary:
 //
-// 获取实验详情
+// Retrieves the details of an experiment.
 //
 // @param headers - map
 //
@@ -1399,7 +1480,7 @@ func (client *Client) DescribeABTestExperimentWithContext(ctx context.Context, a
 
 // Summary:
 //
-// Queries the details of a test group.
+// Retrieves the details of an A/B test group.
 //
 // @param headers - map
 //
@@ -1432,7 +1513,7 @@ func (client *Client) DescribeABTestGroupWithContext(ctx context.Context, appGro
 
 // Summary:
 //
-// Queries the information about an A/B test scenario.
+// Query an A/B test scenario.
 //
 // @param headers - map
 //
@@ -1498,7 +1579,7 @@ func (client *Client) DescribeAppWithContext(ctx context.Context, appGroupIdenti
 
 // Summary:
 //
-// Queries the details of an OpenSearch application.
+// Query an OpenSearch application.
 //
 // @param headers - map
 //
@@ -1564,17 +1645,17 @@ func (client *Client) DescribeAppStatisticsWithContext(ctx context.Context, appG
 
 // Summary:
 //
-// Queries the version list of an OpenSearch application.
+// Queries the versions of an OpenSearch application.
 //
 // Description:
 //
-//	  When you create a standard application, a new version of the application is created if the specified application name already exists.
+// - If a Standard Edition application with the same name exists, a new version is created.
 //
-//		- When you create a version of an existing application, you must specify the autoSwitch and realtimeShared parameters.
+// - When you create a new version, the autoSwitch and realtimeShared parameters are required.
 //
-//		- When you create a version of an existing application, the value of the quota parameter is the same as that of the quota parameter in the previous version of the application.
+// - When you create a new version, the quota is inherited from the previous version.
 //
-//		- When you create a version of an existing application, the modification of the value of the quota parameter does not take effect.
+// - When you create a new version, modifications to the quota do not take effect.
 //
 // @param headers - map
 //
@@ -1607,7 +1688,7 @@ func (client *Client) DescribeAppsWithContext(ctx context.Context, appGroupIdent
 
 // Summary:
 //
-// Queries the details of a data collection task of an application.
+// Retrieves the details of a data collection for a specified application.
 //
 // @param headers - map
 //
@@ -1640,7 +1721,64 @@ func (client *Client) DescribeDataCollctionWithContext(ctx context.Context, appG
 
 // Summary:
 //
-// Queries a rough sort expression that is configured for an OpenSearch application version.
+// 获取弹性计划详情
+//
+// Description:
+//
+// - 若已存在同名标准版应用，则创建新版本；
+//
+// - 在新建版本情况下，autoSwitch 和 realtimeShared 也是必填的；
+//
+// - 在新建版本情况下，quota 是自动从上一个版本继承的；
+//
+// - 在新建版本情况下，修改 quota 是无效的。
+//
+// @param request - DescribeElasticPlanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeElasticPlanResponse
+func (client *Client) DescribeElasticPlanWithContext(ctx context.Context, appGroupIdentity *string, planId *string, request *DescribeElasticPlanRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeElasticPlanResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DryRun) {
+		query["dryRun"] = request.DryRun
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeElasticPlan"),
+		Version:     dara.String("2017-12-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v4/openapi/app-groups/" + dara.PercentEncode(dara.StringValue(appGroupIdentity)) + "/elastic-plans/" + dara.PercentEncode(dara.StringValue(planId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeElasticPlanResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the rough sort expression configured for an OpenSearch application version.
 //
 // @param headers - map
 //
@@ -1673,7 +1811,7 @@ func (client *Client) DescribeFirstRankWithContext(ctx context.Context, appGroup
 
 // Summary:
 //
-// Queries the details of an intervention dictionary.
+// Retrieves the details of an intervention dictionary.
 //
 // @param headers - map
 //
@@ -1706,7 +1844,7 @@ func (client *Client) DescribeInterventionDictionaryWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the query analysis rule for a version of an OpenSearch application.
+// Describes a query analysis rule for a version of an OpenSearch application.
 //
 // @param headers - map
 //
@@ -1739,7 +1877,7 @@ func (client *Client) DescribeQueryProcessorWithContext(ctx context.Context, app
 
 // Summary:
 //
-// Queries the endpoints of all regions that support OpenSearch.
+// Retrieves the endpoints for all regions.
 //
 // @param headers - map
 //
@@ -1772,7 +1910,7 @@ func (client *Client) DescribeRegionsWithContext(ctx context.Context, headers ma
 
 // Summary:
 //
-// 查看应用定时任务详情
+// Query a scheduled task for an OpenSearch application.
 //
 // @param headers - map
 //
@@ -1805,7 +1943,7 @@ func (client *Client) DescribeScheduledTaskWithContext(ctx context.Context, appG
 
 // Summary:
 //
-// Queries a fine sort expression that is configured for a version of an OpenSearch application.
+// Queries the fine sort expression for a version of an OpenSearch application.
 //
 // @param headers - map
 //
@@ -1838,7 +1976,7 @@ func (client *Client) DescribeSecondRankWithContext(ctx context.Context, appGrou
 
 // Summary:
 //
-// 获取优化大师慢查询开通状态
+// Queries the status of the slow query feature.
 //
 // @param headers - map
 //
@@ -1871,7 +2009,7 @@ func (client *Client) DescribeSlowQueryStatusWithContext(ctx context.Context, ap
 
 // Summary:
 //
-// 获取自定义分析器详情
+// Retrieves the details of a custom analyzer.
 //
 // @param request - DescribeUserAnalyzerRequest
 //
@@ -1918,7 +2056,7 @@ func (client *Client) DescribeUserAnalyzerWithContext(ctx context.Context, name 
 
 // Summary:
 //
-// 禁用优化大师慢查询服务
+// Disables the slow query service for Search Diagnoser.
 //
 // @param headers - map
 //
@@ -1951,7 +2089,7 @@ func (client *Client) DisableSlowQueryWithContext(ctx context.Context, appGroupI
 
 // Summary:
 //
-// Enables slow query optimization of Optimization Master.
+// Enables the slow query service for the optimizer.
 //
 // @param headers - map
 //
@@ -2032,7 +2170,7 @@ func (client *Client) GenerateMergedTableWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the type of an industry.
+// Retrieves the industry type.
 //
 // @param request - GetDomainRequest
 //
@@ -2079,7 +2217,7 @@ func (client *Client) GetDomainWithContext(ctx context.Context, domainName *stri
 
 // Summary:
 //
-// Queries the version information about the current feature when you create an instance.
+// Retrieves the version information of the feature that is used to create an instance.
 //
 // @param request - GetFunctionCurrentVersionRequest
 //
@@ -2138,7 +2276,7 @@ func (client *Client) GetFunctionCurrentVersionWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the algorithm instance that an application uses by default.
+// Queries the default algorithm instance for an application.
 //
 // @param headers - map
 //
@@ -2171,7 +2309,7 @@ func (client *Client) GetFunctionDefaultInstanceWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the details of an algorithm instance by instance name.
+// Query an algorithm instance by instance name.
 //
 // @param request - GetFunctionInstanceRequest
 //
@@ -2218,7 +2356,7 @@ func (client *Client) GetFunctionInstanceWithContext(ctx context.Context, appGro
 
 // Summary:
 //
-// Queries an algorithm resource.
+// Retrieves the specified algorithm resource.
 //
 // @param request - GetFunctionResourceRequest
 //
@@ -2298,7 +2436,7 @@ func (client *Client) GetFunctionTaskWithContext(ctx context.Context, appGroupId
 
 // Summary:
 //
-// Queries version information by version ID.
+// Queries the information about a function version.
 //
 // @param headers - map
 //
@@ -2329,6 +2467,10 @@ func (client *Client) GetFunctionVersionWithContext(ctx context.Context, functio
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the names of all files in a specified script for a specific application version.
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2360,7 +2502,7 @@ func (client *Client) GetScriptFileNamesWithContext(ctx context.Context, appGrou
 
 // Summary:
 //
-// Queries the details of a query policy.
+// Retrieves the details of a query policy.
 //
 // @param headers - map
 //
@@ -2393,7 +2535,7 @@ func (client *Client) GetSearchStrategyWithContext(ctx context.Context, appGroup
 
 // Summary:
 //
-// Queries the details of a sort script.
+// Retrieves the details of a sort script.
 //
 // @param headers - map
 //
@@ -2426,7 +2568,7 @@ func (client *Client) GetSortScriptWithContext(ctx context.Context, appGroupIden
 
 // Summary:
 //
-// Queries the content of a sort script.
+// Retrieves the content of a sort script.
 //
 // @param headers - map
 //
@@ -2492,7 +2634,7 @@ func (client *Client) ListABTestExperimentsWithContext(ctx context.Context, appG
 
 // Summary:
 //
-// Queries whitelists.
+// Lists whitelists.
 //
 // @param headers - map
 //
@@ -2525,7 +2667,7 @@ func (client *Client) ListABTestFixedFlowDividersWithContext(ctx context.Context
 
 // Summary:
 //
-// 获取实验组清单
+// Retrieves a list of test groups.
 //
 // @param headers - map
 //
@@ -2595,11 +2737,11 @@ func (client *Client) ListABTestScenesWithContext(ctx context.Context, appGroupI
 //
 // Description:
 //
-//	  This operation allows you to query applications by application name, instance ID, and application type.
+// - Filters applications by name, instance ID, and type.
 //
-//		- This operation allows you to sort the applications based on their creation time.
+// - Sorts applications by their creation time.
 //
-//		- This operation supports the parameters for paging.
+// - Supports paging.
 //
 // @param tmpReq - ListAppGroupsRequest
 //
@@ -2680,7 +2822,7 @@ func (client *Client) ListAppGroupsWithContext(ctx context.Context, tmpReq *List
 
 // Summary:
 //
-// Queries the data collection tasks of an OpenSearch application.
+// Lists the data collections for an OpenSearch application.
 //
 // @param request - ListDataCollectionsRequest
 //
@@ -2731,7 +2873,7 @@ func (client *Client) ListDataCollectionsWithContext(ctx context.Context, appGro
 
 // Summary:
 //
-// Queries all fields in a table of a data source. This operation is for internal use only.
+// This internal API retrieves all fields from a specified data table.
 //
 // @param request - ListDataSourceTableFieldsRequest
 //
@@ -2782,7 +2924,7 @@ func (client *Client) ListDataSourceTableFieldsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Obtains all data from a specified data source.
+// Retrieves all data from a specified data source.
 //
 // @param request - ListDataSourceTablesRequest
 //
@@ -2829,6 +2971,73 @@ func (client *Client) ListDataSourceTablesWithContext(ctx context.Context, dataS
 
 // Summary:
 //
+// 获取弹性计划列表
+//
+// @param request - ListElasticPlansRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListElasticPlansResponse
+func (client *Client) ListElasticPlansWithContext(ctx context.Context, appGroupIdentity *string, request *ListElasticPlansRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListElasticPlansResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Enabled) {
+		query["enabled"] = request.Enabled
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListElasticPlans"),
+		Version:     dara.String("2017-12-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v4/openapi/app-groups/" + dara.PercentEncode(dara.StringValue(appGroupIdentity)) + "/elastic-plans"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListElasticPlansResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the rough sort expressions that are configured for a version of an OpenSearch application.
 //
 // @param headers - map
@@ -2862,7 +3071,7 @@ func (client *Client) ListFirstRanksWithContext(ctx context.Context, appGroupIde
 
 // Summary:
 //
-// Queries all algorithm instances of a user, which meet specified conditions.
+// Lists all instances that match the specified conditions.
 //
 // @param request - ListFunctionInstancesRequest
 //
@@ -2929,7 +3138,7 @@ func (client *Client) ListFunctionInstancesWithContext(ctx context.Context, appG
 
 // Summary:
 //
-// Queries algorithm resources.
+// Lists the algorithm resources.
 //
 // @param request - ListFunctionResourcesRequest
 //
@@ -2988,7 +3197,7 @@ func (client *Client) ListFunctionResourcesWithContext(ctx context.Context, appG
 
 // Summary:
 //
-// Queries the training tasks. The returned results are sorted by start time in descending order.
+// Queries the training tasks. The results are sorted in descending order by start time.
 //
 // @param request - ListFunctionTasksRequest
 //
@@ -3051,7 +3260,7 @@ func (client *Client) ListFunctionTasksWithContext(ctx context.Context, appGroup
 
 // Summary:
 //
-// 获取用户的干预词典列表
+// Retrieves a list of intervention dictionaries.
 //
 // @param request - ListInterventionDictionariesRequest
 //
@@ -3161,7 +3370,7 @@ func (client *Client) ListInterventionDictionaryEntriesWithContext(ctx context.C
 
 // Summary:
 //
-// 获取实体识别结果
+// Retrieves the Named Entity Recognition (NER) results.
 //
 // @param request - ListInterventionDictionaryNerResultsRequest
 //
@@ -3208,7 +3417,7 @@ func (client *Client) ListInterventionDictionaryNerResultsWithContext(ctx contex
 
 // Summary:
 //
-// Queries the resources that are associated with an intervention dictionary. If the intervention dictionary is referenced by query analysis rules, this operation returns all applications that use the intervention dictionary and the information about the query analysis rules.
+// Queries the list of resources associated with an intervention dictionary. If a query processor (QP) references the dictionary, the operation returns all associated applications and information about the QP.
 //
 // @param headers - map
 //
@@ -3241,7 +3450,7 @@ func (client *Client) ListInterventionDictionaryRelatedEntitiesWithContext(ctx c
 
 // Summary:
 //
-// 查看当前的处理流
+// Lists the current proceedings.
 //
 // @param request - ListProceedingsRequest
 //
@@ -3288,7 +3497,7 @@ func (client *Client) ListProceedingsWithContext(ctx context.Context, appGroupId
 
 // Summary:
 //
-// Queries the results of a query analysis test. This API operation is available only to existing applications of OpenSearch Open Source Compatible Edition.
+// Tests the results of query analysis. This operation can be called only for existing applications of the Open Source-compatible Edition.
 //
 // @param request - ListQueryProcessorAnalyzerResultsRequest
 //
@@ -3335,7 +3544,7 @@ func (client *Client) ListQueryProcessorAnalyzerResultsWithContext(ctx context.C
 
 // Summary:
 //
-// Queries the recommended priority settings of entity types for named entity recognition (NER).
+// Queries the recommended priority settings for entity types in Named Entity Recognition (NER).
 //
 // @param request - ListQueryProcessorNersRequest
 //
@@ -3382,7 +3591,7 @@ func (client *Client) ListQueryProcessorNersWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries a list of query analysis rules that are configured for a version of an OpenSearch application.
+// Queries a list of query analysis rules configured for a specific version of an OpenSearch application.
 //
 // @param request - ListQueryProcessorsRequest
 //
@@ -3429,7 +3638,7 @@ func (client *Client) ListQueryProcessorsWithContext(ctx context.Context, appGro
 
 // Summary:
 //
-// Queries tickets that are submitted to apply for quotas for an OpenSearch application.
+// Lists the quota approval tickets for a specified OpenSearch application.
 //
 // @param request - ListQuotaReviewTasksRequest
 //
@@ -3480,7 +3689,7 @@ func (client *Client) ListQuotaReviewTasksWithContext(ctx context.Context, appGr
 
 // Summary:
 //
-// Queries a list of scheduled tasks of an OpenSearch application.
+// Queries a list of scheduled tasks for an OpenSearch application.
 //
 // @param request - ListScheduledTasksRequest
 //
@@ -3535,7 +3744,7 @@ func (client *Client) ListScheduledTasksWithContext(ctx context.Context, appGrou
 
 // Summary:
 //
-// Queries the details of query policies.
+// Retrieves the details of query policies.
 //
 // @param headers - map
 //
@@ -3568,7 +3777,7 @@ func (client *Client) ListSearchStrategiesWithContext(ctx context.Context, appGr
 
 // Summary:
 //
-// Queries the fine sort expressions that are configured for a version of an OpenSearch application.
+// Lists the fine sort expressions for a specific version of an OpenSearch application.
 //
 // @param headers - map
 //
@@ -3601,7 +3810,7 @@ func (client *Client) ListSecondRanksWithContext(ctx context.Context, appGroupId
 
 // Summary:
 //
-// Queries the suggestions that are provided by Optimization Master for slow queries.
+// Lists the optimization suggestions for slow queries from Search Diagnosis.
 //
 // @param headers - map
 //
@@ -3634,7 +3843,7 @@ func (client *Client) ListSlowQueryCategoriesWithContext(ctx context.Context, ap
 
 // Summary:
 //
-// 列出优化大师慢查询Query清单
+// Lists the slow queries from the Query Optimizer.
 //
 // @param headers - map
 //
@@ -3667,7 +3876,7 @@ func (client *Client) ListSlowQueryQueriesWithContext(ctx context.Context, appGr
 
 // Summary:
 //
-// Queries a list of sort expressions that are configured for a version of an OpenSearch application.
+// Lists the sort expressions that are configured for a version of an OpenSearch application.
 //
 // @param headers - map
 //
@@ -3700,7 +3909,7 @@ func (client *Client) ListSortExpressionsWithContext(ctx context.Context, appGro
 
 // Summary:
 //
-// Queries all sort scripts of an application version.
+// Lists all sort scripts for a specified application version.
 //
 // @param headers - map
 //
@@ -3808,7 +4017,7 @@ func (client *Client) ListStatisticLogsWithContext(ctx context.Context, appGroup
 
 // Summary:
 //
-// Queries statistical reports, such as application reports, drop-down suggestion reports, hotword shading reports, A/B test reports, and data quality reports.
+// Queries statistical reports, such as application, drop-down suggestion, top search hint, A/B test, and data quality reports.
 //
 // @param request - ListStatisticReportRequest
 //
@@ -3875,7 +4084,7 @@ func (client *Client) ListStatisticReportWithContext(ctx context.Context, appGro
 
 // Summary:
 //
-// Queries tagged resources.
+// Queries the tags of specified resources.
 //
 // @param tmpReq - ListTagResourcesRequest
 //
@@ -3999,7 +4208,7 @@ func (client *Client) ListUserAnalyzerEntriesWithContext(ctx context.Context, na
 
 // Summary:
 //
-// Queries the custom analyzers that belong to the current account.
+// Retrieves a list of custom analyzers for your account.
 //
 // @param request - ListUserAnalyzersRequest
 //
@@ -4050,7 +4259,7 @@ func (client *Client) ListUserAnalyzersWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Modifies the properties of an OpenSearch application or sets the online version of an OpenSearch application.
+// Modifies the properties of an OpenSearch application or sets its online version.
 //
 // @param request - ModifyAppGroupRequest
 //
@@ -4115,7 +4324,7 @@ func (client *Client) ModifyAppGroupWithContext(ctx context.Context, appGroupIde
 
 // Summary:
 //
-// Modifies the quotas of an OpenSearch application.
+// Modifies the quota of an OpenSearch application.
 //
 // @param request - ModifyAppGroupQuotaRequest
 //
@@ -4167,7 +4376,84 @@ func (client *Client) ModifyAppGroupQuotaWithContext(ctx context.Context, appGro
 
 // Summary:
 //
-// Modifies a rough sort expression for an OpenSearch application. If you set dryRun to true, this operation checks the rough sort expression after the expression is modified. If you do not specify this parameter, false is used by default.
+// 更新弹性计划
+//
+// @param request - ModifyElasticPlanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyElasticPlanResponse
+func (client *Client) ModifyElasticPlanWithContext(ctx context.Context, appGroupIdentity *string, planId *string, request *ModifyElasticPlanRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifyElasticPlanResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DryRun) {
+		query["dryRun"] = request.DryRun
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CustomDates) {
+		body["customDates"] = request.CustomDates
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ElasticLcu) {
+		body["elasticLcu"] = request.ElasticLcu
+	}
+
+	if !dara.IsNil(request.Enabled) {
+		body["enabled"] = request.Enabled
+	}
+
+	if !dara.IsNil(request.EndHour) {
+		body["endHour"] = request.EndHour
+	}
+
+	if !dara.IsNil(request.ScheduleType) {
+		body["scheduleType"] = request.ScheduleType
+	}
+
+	if !dara.IsNil(request.StartHour) {
+		body["startHour"] = request.StartHour
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyElasticPlan"),
+		Version:     dara.String("2017-12-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v4/openapi/app-groups/" + dara.PercentEncode(dara.StringValue(appGroupIdentity)) + "/elastic-plans/" + dara.PercentEncode(dara.StringValue(planId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyElasticPlanResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the rough sort expression for an OpenSearch application version. If you set the dryRun parameter to true, this operation validates the modified rough sort expression. The default value of this parameter is false.
 //
 // @param request - ModifyFirstRankRequest
 //
@@ -4215,7 +4501,7 @@ func (client *Client) ModifyFirstRankWithContext(ctx context.Context, appGroupId
 
 // Summary:
 //
-// Modifies a query analysis rule for a specific application version. If you set dryRun to true, this operation checks the specified query analysis rule. By default, the value of dryRun is false if you do not specify this parameter.
+// Modifies a query analysis rule for a specific application version. If you set the dryRun parameter to true, this operation checks the specified query analysis rule. If you do not specify the dryRun parameter, the default value is false.
 //
 // @param request - ModifyQueryProcessorRequest
 //
@@ -4305,7 +4591,7 @@ func (client *Client) ModifyScheduledTaskWithContext(ctx context.Context, appGro
 
 // Summary:
 //
-// Modifies a fine sort expression that is configured for a specific OpenSearch application version. If you set dryRun to true, the specified fine sort expression is checked after the expression is modified. By default, the value of dryRun is false if you do not specify this parameter.
+// Modifies a fine sort expression for an OpenSearch application version. If you set `dryRun` to `true`, the modified fine sort expression is validated. The `dryRun` parameter is `false` by default.
 //
 // @param request - ModifySecondRankRequest
 //
@@ -4353,7 +4639,7 @@ func (client *Client) ModifySecondRankWithContext(ctx context.Context, appGroupI
 
 // Summary:
 //
-// Accepts the changes in intervention entries.
+// Applies changes to intervention dictionary entries.
 //
 // @param request - PushInterventionDictionaryEntriesRequest
 //
@@ -4401,7 +4687,7 @@ func (client *Client) PushInterventionDictionaryEntriesWithContext(ctx context.C
 
 // Summary:
 //
-// Accepts the changes in the entries of a custom analyzer.
+// Applies changes to the entries of a custom analyzer.
 //
 // @param request - PushUserAnalyzerEntriesRequest
 //
@@ -4454,7 +4740,7 @@ func (client *Client) PushUserAnalyzerEntriesWithContext(ctx context.Context, na
 
 // Summary:
 //
-// 发布排序脚本
+// Releases a sort script.
 //
 // @param headers - map
 //
@@ -4524,7 +4810,7 @@ func (client *Client) RemoveAppWithContext(ctx context.Context, appGroupIdentity
 //
 // Description:
 //
-// You can delete only pay-as-you-go applications. You cannot delete subscription applications.
+// You can only delete pay-as-you-go applications. Subscription applications cannot be deleted.
 //
 // @param headers - map
 //
@@ -4590,7 +4876,48 @@ func (client *Client) RemoveDataCollectionWithContext(ctx context.Context, appGr
 
 // Summary:
 //
-// Deletes a rough sort expression for a version of an OpenSearch application.
+// 获取弹性计划详情
+//
+// @param request - RemoveElasticPlanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveElasticPlanResponse
+func (client *Client) RemoveElasticPlanWithContext(ctx context.Context, appGroupIdentity *string, planId *string, request *RemoveElasticPlanRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RemoveElasticPlanResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RemoveElasticPlan"),
+		Version:     dara.String("2017-12-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v4/openapi/app-groups/" + dara.PercentEncode(dara.StringValue(appGroupIdentity)) + "/elastic-plans/" + dara.PercentEncode(dara.StringValue(planId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RemoveElasticPlanResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes the rough sort configuration of an OpenSearch application version.
 //
 // @param headers - map
 //
@@ -4656,7 +4983,7 @@ func (client *Client) RemoveInterventionDictionaryWithContext(ctx context.Contex
 
 // Summary:
 //
-// Deletes a query analysis rule for an OpenSearch application version.
+// Removes a query analysis rule from an OpenSearch application version.
 //
 // @param headers - map
 //
@@ -4689,7 +5016,7 @@ func (client *Client) RemoveQueryProcessorWithContext(ctx context.Context, appGr
 
 // Summary:
 //
-// Deletes a scheduled task of an OpenSearch application.
+// Deletes a scheduled task from an OpenSearch application.
 //
 // @param headers - map
 //
@@ -4722,7 +5049,7 @@ func (client *Client) RemoveScheduledTaskWithContext(ctx context.Context, appGro
 
 // Summary:
 //
-// Deletes a query policy.
+// Deletes a search strategy.
 //
 // @param headers - map
 //
@@ -4821,7 +5148,7 @@ func (client *Client) RemoveUserAnalyzerWithContext(ctx context.Context, name *s
 
 // Summary:
 //
-// Renews an application. This operation is not available now. You must renew an application in the OpenSearch console.
+// Renews an application. This API operation is unavailable. To renew an application, use the OpenSearch console.
 //
 // @param request - RenewAppGroupRequest
 //
@@ -4953,7 +5280,7 @@ func (client *Client) SaveSortScriptFileWithContext(ctx context.Context, appGrou
 
 // Summary:
 //
-// 立即进行慢查询分析
+// Starts a slow query analysis task.
 //
 // @param headers - map
 //
@@ -5041,11 +5368,11 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// Unbinds a custom analyzer from an Elasticsearch instance.
+// Detaches a custom analyzer from an Elasticsearch instance.
 //
 // Description:
 //
-// You can call this operation to unbind a custom analyzer from an Elasticsearch instance.
+// Use this operation to detach a custom analyzer from an Elasticsearch instance.
 //
 // @param request - UnbindESUserAnalyzerRequest
 //
@@ -5120,7 +5447,7 @@ func (client *Client) UnbindEsInstanceWithContext(ctx context.Context, appGroupI
 
 // Summary:
 //
-// Remove tags from resources.
+// Removes tags from resources.
 //
 // @param tmpReq - UntagResourcesRequest
 //
@@ -5189,7 +5516,7 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, tmpReq *Unt
 
 // Summary:
 //
-// Modifies the parameters of an A/B test.
+// Updates the parameters of an A/B test experiment.
 //
 // @param request - UpdateABTestExperimentRequest
 //
@@ -5237,7 +5564,7 @@ func (client *Client) UpdateABTestExperimentWithContext(ctx context.Context, app
 
 // Summary:
 //
-// Modifies whitelists.
+// Updates the whitelist data.
 //
 // @param request - UpdateABTestFixedFlowDividersRequest
 //
@@ -5327,7 +5654,7 @@ func (client *Client) UpdateABTestGroupWithContext(ctx context.Context, appGroup
 
 // Summary:
 //
-// Modifies an A/B test scenario.
+// Modifies an experiment scenario.
 //
 // @param request - UpdateABTestSceneRequest
 //
@@ -5375,7 +5702,7 @@ func (client *Client) UpdateABTestSceneWithContext(ctx context.Context, appGroup
 
 // Summary:
 //
-// 应用删除保护
+// Updates the delete protection status for an application group.
 //
 // @param request - UpdateAppGroupDeleteProtectionRequest
 //
@@ -5422,7 +5749,7 @@ func (client *Client) UpdateAppGroupDeleteProtectionWithContext(ctx context.Cont
 
 // Summary:
 //
-// Updates fetch fields. A dry run is supported.
+// This operation supports dry runs.
 //
 // @param request - UpdateFetchFieldsRequest
 //
@@ -5470,7 +5797,7 @@ func (client *Client) UpdateFetchFieldsWithContext(ctx context.Context, appGroup
 
 // Summary:
 //
-// Sets the default algorithm instance used by the specified application. The new algorithm instance automatically overwrites the most recently set default instance. If no instance is set, the default instance is canceled.
+// Sets the default algorithm instance for the specified application. The new algorithm instance automatically overwrites the previously set default instance. If no instance is specified, the default instance is canceled.
 //
 // @param request - UpdateFunctionDefaultInstanceRequest
 //
@@ -5517,7 +5844,7 @@ func (client *Client) UpdateFunctionDefaultInstanceWithContext(ctx context.Conte
 
 // Summary:
 //
-// Updates an algorithm instance.
+// Updates the configuration of a function instance.
 //
 // @param request - UpdateFunctionInstanceRequest
 //
@@ -5580,7 +5907,7 @@ func (client *Client) UpdateFunctionInstanceWithContext(ctx context.Context, app
 //
 // Description:
 //
-// You can call this operation to update the information about resources by resource name. You can modify only the values of data and description.
+// Updates the information of a resource specified by its name. You can modify only the data and description of the resource.
 //
 // @param request - UpdateFunctionResourceRequest
 //
@@ -5631,7 +5958,7 @@ func (client *Client) UpdateFunctionResourceWithContext(ctx context.Context, app
 
 // Summary:
 //
-// Modifies a query policy.
+// This operation supports dry runs.
 //
 // @param request - UpdateSearchStrategyRequest
 //
@@ -5677,7 +6004,7 @@ func (client *Client) UpdateSearchStrategyWithContext(ctx context.Context, appGr
 //
 // Description:
 //
-// You can call this operation to modify the description of a sort script.
+// Modifies the description of a sort script.
 //
 // @param request - UpdateSortScriptRequest
 //
@@ -5724,7 +6051,7 @@ func (client *Client) UpdateSortScriptWithContext(ctx context.Context, appGroupI
 
 // Summary:
 //
-// Updates summaries. A dry run is supported.
+// This operation supports dry runs.
 //
 // @param request - UpdateSummariesRequest
 //
@@ -5772,7 +6099,7 @@ func (client *Client) UpdateSummariesWithContext(ctx context.Context, appGroupId
 
 // Summary:
 //
-// Verifies data sources.
+// Validates data sources.
 //
 // @param request - ValidateDataSourcesRequest
 //

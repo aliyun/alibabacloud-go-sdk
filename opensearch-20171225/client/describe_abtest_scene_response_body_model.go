@@ -74,17 +74,17 @@ type DescribeABTestSceneResponseBodyResult struct {
 	//
 	// 20614
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The name of the test scenario.
+	// The alias of the test scenario.
 	//
 	// example:
 	//
-	// test
+	// "test"
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The status of the test scenario. Valid values:
 	//
-	// 	- 0: The test is stopped.
+	// - 0: The test is stopped.
 	//
-	// 	- 1: The test is started.
+	// - 1: The test is running.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type DescribeABTestSceneResponseBodyResult struct {
 	//
 	// 1596527691
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
-	// The indicators of the test scenarios.
+	// The identifiers of the test scenario.
 	Values []*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
 }
 

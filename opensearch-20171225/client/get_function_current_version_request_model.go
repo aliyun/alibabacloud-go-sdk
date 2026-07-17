@@ -20,13 +20,13 @@ type iGetFunctionCurrentVersionRequest interface {
 }
 
 type GetFunctionCurrentVersionRequest struct {
-	// The category. By default, this parameter is left empty.
+	// The category. The default value is empty.
 	//
 	// example:
 	//
 	// general
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// The industry. By default, this parameter is left empty, which indicates General-purpose Edition.
+	// The industry. The default value is empty, which indicates the General-purpose Edition.
 	//
 	// example:
 	//
@@ -34,31 +34,31 @@ type GetFunctionCurrentVersionRequest struct {
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
 	// The type of the feature. Valid values:
 	//
-	// 	- PAAS. This is the default value.
+	// - PAAS (default)
 	//
-	// 	- SAAS.
+	// - SAAS
 	//
 	// example:
 	//
 	// PAAS
 	FunctionType *string `json:"functionType,omitempty" xml:"functionType,omitempty"`
-	// The type of the model. The following features correspond to different model types:
+	// The model type. Different features correspond to different model types:
 	//
-	// 	- CTR model: tf_checkpoint
+	// - CTR model: tf_checkpoint
 	//
-	// 	- Popularity model: pop
+	// - Popularity model: pop
 	//
-	// 	- Category model: offline_inference
+	// - Category model: offline_inference
 	//
-	// 	- Hotword model: offline_inference
+	// - Hotword model: offline_inference
 	//
-	// 	- Shading model: offline_inference
+	// - Hint model: offline_inference
 	//
-	// 	- Drop-down suggestion model: offline_inference
+	// - Drop-down suggestion model: offline_inference
 	//
-	// 	- Word segmentation model: text
+	// - Word segmentation model: text
 	//
-	// 	- Word weight model: tf_checkpoint
+	// - Term weighting model: tf_checkpoint
 	//
 	// This parameter is required.
 	//

@@ -22,7 +22,7 @@ type ListSortExpressionsResponseBody struct {
 	//
 	// D77D0DAF-790D-F5F5-A9C0-133738165014
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The information about the rough sort or fine sort expressions that are returned.
+	// The information about the rough sort or fine sort expressions.
 	//
 	// For more information, see [FirstRank](https://help.aliyun.com/document_detail/170007.html) and [SecondRank](https://help.aliyun.com/document_detail/170008.html).
 	Result []*ListSortExpressionsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`

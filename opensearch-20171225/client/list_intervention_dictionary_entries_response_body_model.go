@@ -87,9 +87,9 @@ func (s *ListInterventionDictionaryEntriesResponseBody) Validate() error {
 type ListInterventionDictionaryEntriesResponseBodyResult struct {
 	// The command. Valid values:
 	//
-	// 	- add
+	// - add
 	//
-	// 	- delete
+	// - delete
 	//
 	// example:
 	//
@@ -109,7 +109,7 @@ type ListInterventionDictionaryEntriesResponseBodyResult struct {
 	Relevance map[string]interface{} `json:"relevance,omitempty" xml:"relevance,omitempty"`
 	// The status of the intervention entry. Valid value:
 	//
-	// 	- ACTIVE: The intervention entry takes effect.
+	// - ACTIVE: The intervention entry takes effect.
 	//
 	// example:
 	//
@@ -224,77 +224,77 @@ type ListInterventionDictionaryEntriesResponseBodyResultTokens struct {
 	Order *int32 `json:"order,omitempty" xml:"order,omitempty"`
 	// The internal name of the identified entity type. Valid values:
 	//
-	// 	- brand
+	// - brand
 	//
-	// 	- category
+	// - category
 	//
-	// 	- material
+	// - material
 	//
-	// 	- element
+	// - element
 	//
-	// 	- style
+	// - style
 	//
-	// 	- color
+	// - color
 	//
-	// 	- function
+	// - function
 	//
-	// 	- scenario
+	// - scenario
 	//
-	// 	- people
+	// - people
 	//
-	// 	- season
+	// - season
 	//
-	// 	- model
+	// - model
 	//
-	// 	- region
+	// - region
 	//
-	// 	- name
+	// - name
 	//
-	// 	- adjective
+	// - adjective
 	//
-	// 	- category-modifier
+	// - category-modifier
 	//
-	// 	- size
+	// - size
 	//
-	// 	- quality
+	// - quality
 	//
-	// 	- suit
+	// - suit
 	//
-	// 	- new-release
+	// - new-release
 	//
-	// 	- series
+	// - series
 	//
-	// 	- marketing
+	// - marketing
 	//
-	// 	- entertainment
+	// - entertainment
 	//
-	// 	- organization
+	// - organization
 	//
-	// 	- movie
+	// - movie
 	//
-	// 	- game
+	// - game
 	//
-	// 	- number
+	// - number
 	//
-	// 	- unit
+	// - unit
 	//
-	// 	- common
+	// - common
 	//
-	// 	- new-word
+	// - new-word
 	//
-	// 	- proper-noun
+	// - proper-noun
 	//
-	// 	- symbol
+	// - symbol
 	//
-	// 	- prefix
+	// - prefix
 	//
-	// 	- suffix
+	// - suffix
 	//
-	// 	- gift
+	// - gift
 	//
-	// 	- negative
+	// - negative
 	//
-	// 	- agent
+	// - agent
 	//
 	// example:
 	//
@@ -304,13 +304,13 @@ type ListInterventionDictionaryEntriesResponseBodyResultTokens struct {
 	//
 	// example:
 	//
-	// category
+	// 品类
 	TagLabel *string `json:"tagLabel,omitempty" xml:"tagLabel,omitempty"`
 	// The entity.
 	//
 	// example:
 	//
-	// category
+	// 本
 	Token *string `json:"token,omitempty" xml:"token,omitempty"`
 }
 

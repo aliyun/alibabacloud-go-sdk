@@ -20,13 +20,13 @@ type iListTagResourcesShrinkRequest interface {
 }
 
 type ListTagResourcesShrinkRequest struct {
-	// The token that is used to retrieve the next page.
+	// The token to start the next query.
 	//
 	// example:
 	//
 	// 60
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The resource IDs. You can specify a maximum number of 50 resource IDs.
+	// The resource IDs. You can specify a maximum of 50 resource IDs.
 	ResourceIdShrink *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
 	// The resource type.
 	//
@@ -36,7 +36,7 @@ type ListTagResourcesShrinkRequest struct {
 	//
 	// BIGDATA
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// The tags. You can specify a maximum number of 20 tags.
+	// The tags to query. The list can contain a maximum of 20 tags.
 	TagShrink *string `json:"tag,omitempty" xml:"tag,omitempty"`
 }
 

@@ -16,7 +16,7 @@ type iModifyQueryProcessorRequest interface {
 }
 
 type ModifyQueryProcessorRequest struct {
-	// The request parameters.
+	// The request body.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type ModifyQueryProcessorRequest struct {
 	//
 	// }
 	Body interface{} `json:"body,omitempty" xml:"body,omitempty"`
-	// Specifies whether the request is a dry run.
+	// Specifies whether to perform a dry run.
 	//
 	// example:
 	//

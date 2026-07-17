@@ -74,7 +74,7 @@ type ListQueryProcessorNersResponseBodyResult struct {
 	//
 	// brand
 	Label *string `json:"label,omitempty" xml:"label,omitempty"`
-	// The priority of an entity type among entity types that have the same priority level. A smaller value indicates a higher priority. Default value: 0.
+	// The sort order within the same priority level. A smaller value indicates a higher priority. The default value is 0.
 	//
 	// example:
 	//
@@ -82,11 +82,11 @@ type ListQueryProcessorNersResponseBodyResult struct {
 	Order *int32 `json:"order,omitempty" xml:"order,omitempty"`
 	// The priority level of the entity type. Valid values:
 	//
-	// 	- HIGH
+	// - HIGH
 	//
-	// 	- MIDDLE
+	// - MIDDLE
 	//
-	// 	- LOW
+	// - LOW
 	//
 	// example:
 	//

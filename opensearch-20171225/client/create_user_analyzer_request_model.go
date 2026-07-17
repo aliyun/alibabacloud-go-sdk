@@ -24,25 +24,25 @@ type iCreateUserAnalyzerRequest interface {
 }
 
 type CreateUserAnalyzerRequest struct {
-	// The basic analyzer.
+	// The name of the basic analyzer.
 	//
 	// example:
 	//
-	// chn_standard
+	// Chinese - general analysis
 	Business *string `json:"business,omitempty" xml:"business,omitempty"`
-	// The application ID of the custom analyzer.
+	// The application ID for the custom model-based analyzer.
 	//
 	// example:
 	//
 	// 110123123
 	BusinessAppGroupId *string `json:"businessAppGroupId,omitempty" xml:"businessAppGroupId,omitempty"`
-	// The basic analyzer type. Valid values: AUTO, MODEL, SYSTEM, and USER.
+	// The type of the basic analyzer. Valid values: AUTO, MODEL, SYSTEM, and USER.
 	//
 	// example:
 	//
 	// AUTO
 	BusinessType *string `json:"businessType,omitempty" xml:"businessType,omitempty"`
-	// The analyzer name.
+	// The name of the analyzer.
 	//
 	// example:
 	//
@@ -54,13 +54,11 @@ type CreateUserAnalyzerRequest struct {
 	//
 	// HA3
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// Specifies whether to perform only a dry run, without performing the actual request. Default value: false.
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// Valid values:
+	// - true: sends a check request without creating the analyzer. The system checks the AccessKey, RAM user authorization, and required parameters.
 	//
-	// 	- **true**
-	//
-	// 	- **false**
+	// - false (default): sends a regular request to create the analyzer.
 	//
 	// example:
 	//

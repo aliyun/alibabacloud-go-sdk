@@ -22,7 +22,7 @@ type ModifyFirstRankResponseBody struct {
 	//
 	// 0A6EB64B-B4C8-CF02-810F-E660812972FF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The information about the rough sort expression.
+	// Details about the rough sort expression.
 	Result *ModifyFirstRankResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -68,15 +68,15 @@ type ModifyFirstRankResponseBodyResult struct {
 	//
 	// true
 	Active *bool `json:"active,omitempty" xml:"active,omitempty"`
-	// The description of the rough sort expression.
+	// The description.
 	//
 	// example:
 	//
 	// 1
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The information about the expression.
+	// Details about the expression.
 	Meta []*ModifyFirstRankResponseBodyResultMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Repeated"`
-	// The name of the expression.
+	// The name of the resource.
 	//
 	// example:
 	//
@@ -142,13 +142,13 @@ func (s *ModifyFirstRankResponseBodyResult) Validate() error {
 }
 
 type ModifyFirstRankResponseBodyResultMeta struct {
-	// The parameters that are used by a function in the expression.
+	// The parameters for a function in the expression.
 	//
 	// example:
 	//
 	// “1 ”
 	Arg *string `json:"arg,omitempty" xml:"arg,omitempty"`
-	// The attribute, feature function, or field to be searched for.
+	// The attribute, feature function, or search field.
 	//
 	// example:
 	//

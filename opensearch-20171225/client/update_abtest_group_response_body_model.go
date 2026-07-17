@@ -74,7 +74,7 @@ type UpdateABTestGroupResponseBodyResult struct {
 	//
 	// 13466
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The alias of the test group.
+	// The name of the test group.
 	//
 	// example:
 	//
@@ -82,9 +82,9 @@ type UpdateABTestGroupResponseBodyResult struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The status of the test group. Valid values:
 	//
-	// 	- 0: not in effect
+	// - 0: inactive
 	//
-	// 	- 1: in effect
+	// - 1: active
 	//
 	// example:
 	//

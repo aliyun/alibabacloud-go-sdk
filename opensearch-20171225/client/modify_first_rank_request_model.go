@@ -18,7 +18,7 @@ type iModifyFirstRankRequest interface {
 type ModifyFirstRankRequest struct {
 	// The request body.
 	Body *FirstRank `json:"body,omitempty" xml:"body,omitempty"`
-	// Specifies whether the request is a dry run.
+	// Specifies whether to perform a dry run.
 	//
 	// example:
 	//

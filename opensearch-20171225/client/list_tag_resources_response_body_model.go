@@ -18,19 +18,19 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
-	// The token that is used to retrieve the next page.
+	// The token to start the next query.
 	//
 	// example:
 	//
 	// 20
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// D77D0DAF-790D-F5F5-A9C0-133738165014
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The resources.
+	// The list of resources.
 	Result []*ListTagResourcesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
@@ -83,7 +83,7 @@ func (s *ListTagResourcesResponseBody) Validate() error {
 }
 
 type ListTagResourcesResponseBodyResult struct {
-	// The ID of the resource.
+	// The resource ID.
 	//
 	// example:
 	//
@@ -95,13 +95,13 @@ type ListTagResourcesResponseBodyResult struct {
 	//
 	// hostGroup
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// GENIE_FUNCTION
 	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

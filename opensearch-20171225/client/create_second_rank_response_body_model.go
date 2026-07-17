@@ -22,7 +22,7 @@ type CreateSecondRankResponseBody struct {
 	//
 	// ABCDEFGH
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the fine sort expression.
+	// The information about the fine-sort expression.
 	//
 	// example:
 	//

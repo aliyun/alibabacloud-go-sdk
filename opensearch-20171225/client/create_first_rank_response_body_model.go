@@ -139,7 +139,9 @@ type CreateFirstRankResponseBodyResultMeta struct {
 	//
 	// static_bm25()
 	Attribute *string `json:"attribute,omitempty" xml:"attribute,omitempty"`
-	// The weight. Valid values: [-100000,100000]. The value cannot be 0.
+	// The weight.
+	//
+	// Valid values: [-100000, 100000]. The value cannot be 0.
 	//
 	// example:
 	//

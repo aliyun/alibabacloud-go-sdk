@@ -66,21 +66,21 @@ func (s *DescribeAppsResponseBody) Validate() error {
 }
 
 type DescribeAppsResponseBodyResult struct {
-	// Indicates whether the version is automatically switched to an online version.
+	// Indicates whether automatic switchover is enabled.
 	//
 	// example:
 	//
 	// true
 	AutoSwitch *bool `json:"autoSwitch,omitempty" xml:"autoSwitch,omitempty"`
-	// The capability opening configurations.
+	// The cluster settings.
 	Cluster *DescribeAppsResponseBodyResultCluster `json:"cluster,omitempty" xml:"cluster,omitempty" type:"Struct"`
-	// The cluster name.
+	// The name of the cluster.
 	//
 	// example:
 	//
 	// vpc_sh_domain_1
 	ClusterName *string `json:"clusterName,omitempty" xml:"clusterName,omitempty"`
-	// The configurations of data sources.
+	// The data source settings.
 	DataSources []*DescribeAppsResponseBodyResultDataSources `json:"dataSources,omitempty" xml:"dataSources,omitempty" type:"Repeated"`
 	// The description.
 	//
@@ -88,25 +88,25 @@ type DescribeAppsResponseBodyResult struct {
 	//
 	// ""
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The type of the industry. Valid values:
+	// The industry. Valid values:
 	//
-	// 	- GENERAL
+	// - GENERAL
 	//
-	// 	- ECOMMERCE
+	// - ECOMMERCE
 	//
-	// 	- IT_CONTENT
+	// - IT_CONTENT
 	Domain *DescribeAppsResponseBodyResultDomain `json:"domain,omitempty" xml:"domain,omitempty" type:"Struct"`
 	// The default display fields.
 	FetchFields []*string `json:"fetchFields,omitempty" xml:"fetchFields,omitempty" type:"Repeated"`
-	// The configurations of rough sort.
+	// The coarse-grained sorting settings.
 	FirstRanks []*DescribeAppsResponseBodyResultFirstRanks `json:"firstRanks,omitempty" xml:"firstRanks,omitempty" type:"Repeated"`
-	// The group ID.
+	// The ID of the application.
 	//
 	// example:
 	//
 	// 100302881
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The field model.
+	// The Large Language Model (LLM) settings for fields.
 	Interpretations map[string]interface{} `json:"interpretations,omitempty" xml:"interpretations,omitempty"`
 	// Indicates whether the version is an online version.
 	//
@@ -114,53 +114,54 @@ type DescribeAppsResponseBodyResult struct {
 	//
 	// 12333
 	IsCurrent *bool `json:"isCurrent,omitempty" xml:"isCurrent,omitempty"`
-	// The progress of data import, in percentage. For example, a value of 83 indicates 83%.
+	// The progress of data import in percentage. For example, a value of 83 indicates 83%.
 	//
 	// example:
 	//
 	// 100
 	ProgressPercent *int32 `json:"progressPercent,omitempty" xml:"progressPercent,omitempty"`
-	// The prompt configurations.
+	// The prompt settings.
 	Prompts []map[string]interface{} `json:"prompts,omitempty" xml:"prompts,omitempty" type:"Repeated"`
-	// The query intent understanding configurations.
+	// The query analysis settings.
 	QueryProcessors []*DescribeAppsResponseBodyResultQueryProcessors `json:"queryProcessors,omitempty" xml:"queryProcessors,omitempty" type:"Repeated"`
 	// The quota information.
-	Quota *DescribeAppsResponseBodyResultQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
+	Quota          *DescribeAppsResponseBodyResultQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
+	RealtimeShared *bool                                `json:"realtimeShared,omitempty" xml:"realtimeShared,omitempty"`
 	// The application schema.
 	Schema *DescribeAppsResponseBodyResultSchema `json:"schema,omitempty" xml:"schema,omitempty" type:"Struct"`
-	// The single-table schema.
+	// The schema of a non-partitioned table.
 	Schemas []*DescribeAppsResponseBodyResultSchemas `json:"schemas,omitempty" xml:"schemas,omitempty" type:"Repeated"`
-	// The configurations of fine sort.
+	// The fine-grained sorting settings.
 	SecondRanks []*DescribeAppsResponseBodyResultSecondRanks `json:"secondRanks,omitempty" xml:"secondRanks,omitempty" type:"Repeated"`
 	// The status of the version. Valid values:
 	//
-	// 	- ok: The version is normal.
+	// - ok: The version is normal.
 	//
-	// 	- stopped: The version is suspended.
+	// - stopped: The version is paused.
 	//
-	// 	- frozen: The version is frozen.
+	// - frozen: The version is frozen.
 	//
-	// 	- initializing: The version is being initialized.
+	// - initializing: The version is being initialized.
 	//
-	// 	- unavailable: The version is invalid.
+	// - unavailable: The version is invalid.
 	//
-	// 	- data_waiting: Data is to be initialized.
+	// - data_waiting: Data is pending initialization.
 	//
-	// 	- data_preparing: Data is being initialized.
+	// - data_preparing: Data is being initialized.
 	//
 	// example:
 	//
 	// normal
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The search result summary configurations.
+	// The search result summary settings.
 	Summaries []*DescribeAppsResponseBodyResultSummaries `json:"summaries,omitempty" xml:"summaries,omitempty" type:"Repeated"`
 	// The type of the application. Valid values:
 	//
-	// 	- standard: a standard edition application.
+	// - standard: a Standard Edition application.
 	//
-	// 	- advance: an advanced edition application of an old version. New versions are not supported for this edition.
+	// - advance: an Advanced Edition application of an old version. This edition is not supported for new applications.
 	//
-	// 	- enhanced: an advanced edition application of a new version.
+	// - enhanced: a new version of Advanced Edition.
 	//
 	// example:
 	//
@@ -234,6 +235,10 @@ func (s *DescribeAppsResponseBodyResult) GetQueryProcessors() []*DescribeAppsRes
 
 func (s *DescribeAppsResponseBodyResult) GetQuota() *DescribeAppsResponseBodyResultQuota {
 	return s.Quota
+}
+
+func (s *DescribeAppsResponseBodyResult) GetRealtimeShared() *bool {
+	return s.RealtimeShared
 }
 
 func (s *DescribeAppsResponseBodyResult) GetSchema() *DescribeAppsResponseBodyResultSchema {
@@ -332,6 +337,11 @@ func (s *DescribeAppsResponseBodyResult) SetQueryProcessors(v []*DescribeAppsRes
 
 func (s *DescribeAppsResponseBodyResult) SetQuota(v *DescribeAppsResponseBodyResultQuota) *DescribeAppsResponseBodyResult {
 	s.Quota = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyResult) SetRealtimeShared(v bool) *DescribeAppsResponseBodyResult {
+	s.RealtimeShared = &v
 	return s
 }
 
@@ -450,7 +460,7 @@ type DescribeAppsResponseBodyResultCluster struct {
 	//
 	// 1024
 	MaxQueryClauseLength *int32 `json:"maxQueryClauseLength,omitempty" xml:"maxQueryClauseLength,omitempty"`
-	// The timeout period. Unit: milliseconds.
+	// The timeout period for the cluster. Unit: ms.
 	//
 	// example:
 	//
@@ -489,7 +499,7 @@ func (s *DescribeAppsResponseBodyResultCluster) Validate() error {
 }
 
 type DescribeAppsResponseBodyResultDataSources struct {
-	// The information about field mappings.
+	// The field mappings.
 	Fields []map[string]interface{} `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
 	// The primary key.
 	//
@@ -497,33 +507,33 @@ type DescribeAppsResponseBodyResultDataSources struct {
 	//
 	// id
 	KeyField *string `json:"keyField,omitempty" xml:"keyField,omitempty"`
-	// The information about the data source.
+	// The data source parameters.
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
-	// The plug-ins that are used for data processing.
+	// The data processing plug-ins for fields.
 	//
-	// name:
+	// Plug-in name (name)
 	//
-	// 	- JsonKeyValueExtractor
+	// - JsonKeyValueExtractor
 	//
-	// 	- MultiValueSpliter
+	// - MultiValueSpliter
 	//
-	// 	- KeyValueExtractor
+	// - KeyValueExtractor
 	//
-	// 	- StringCatenateExtractor
+	// - StringCatenateExtractor
 	//
-	// 	- HTMLTagRemover
+	// - HTMLTagRemover
 	//
-	// parameters:
+	// Plug-in parameters (parameters):
 	//
-	// 	- JsonKeyValueExtractor
+	// - JsonKeyValueExtractor
 	//
-	// 	- MultiValueSpliter
+	// - MultiValueSpliter
 	//
-	// 	- KeyValueExtractor
+	// - KeyValueExtractor
 	//
-	// 	- StringCatenateExtractor
+	// - StringCatenateExtractor
 	//
-	// 	- HTMLTagRemover
+	// - HTMLTagRemover
 	Plugins map[string]interface{} `json:"plugins,omitempty" xml:"plugins,omitempty"`
 	// The name of the wide table.
 	//
@@ -539,13 +549,13 @@ type DescribeAppsResponseBodyResultDataSources struct {
 	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// 	- rds
+	// - rds
 	//
-	// 	- odps
+	// - odps
 	//
-	// 	- opensearch
+	// - opensearch
 	//
-	// 	- polardb
+	// - polardb
 	//
 	// example:
 	//
@@ -629,15 +639,15 @@ func (s *DescribeAppsResponseBodyResultDataSources) Validate() error {
 }
 
 type DescribeAppsResponseBodyResultDomain struct {
-	// The type of the edition. Valid values: standard, advance, and enhanced. A value of standard indicates a standard edition. A value of advance indicates an advanced edition which is of an old version. New version is not supported for this edition. A value of enhanced indicates an advanced edition which is of a new version.
+	// The edition of the application. Valid values: standard (Standard Edition), advance (the legacy Premium Edition, which is not available for new applications), and enhanced (the new Premium Edition).
 	//
 	// example:
 	//
 	// -
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// The search results.
+	// The search features.
 	Functions *DescribeAppsResponseBodyResultDomainFunctions `json:"functions,omitempty" xml:"functions,omitempty" type:"Struct"`
-	// The name (in English).
+	// The name in English.
 	//
 	// example:
 	//
@@ -690,11 +700,11 @@ func (s *DescribeAppsResponseBodyResultDomain) Validate() error {
 }
 
 type DescribeAppsResponseBodyResultDomainFunctions struct {
-	// Structure 1.
+	// Structure 1
 	Algo []*string `json:"algo,omitempty" xml:"algo,omitempty" type:"Repeated"`
-	// Information 1.
+	// The query processing features.
 	Qp []*string `json:"qp,omitempty" xml:"qp,omitempty" type:"Repeated"`
-	// Feature 1.
+	// The service features.
 	Service []*string `json:"service,omitempty" xml:"service,omitempty" type:"Repeated"`
 }
 
@@ -738,7 +748,7 @@ func (s *DescribeAppsResponseBodyResultDomainFunctions) Validate() error {
 }
 
 type DescribeAppsResponseBodyResultFirstRanks struct {
-	// Indicates whether the expression is the default one.
+	// Indicates whether this is the default expression.
 	//
 	// example:
 	//
@@ -750,11 +760,11 @@ type DescribeAppsResponseBodyResultFirstRanks struct {
 	//
 	// Description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The information about the expression. The information is displayed in the array or string format.
+	// The expression, which can be an array or a string.
 	//
 	// example:
 	//
-	// String :"random()*100+now()";
+	// String :"random()*100+now()"；
 	//
 	// Array: [
 	//
@@ -770,15 +780,15 @@ type DescribeAppsResponseBodyResultFirstRanks struct {
 	//
 	//   ]
 	Meta interface{} `json:"meta,omitempty" xml:"meta,omitempty"`
-	// The name of the rough sort expression.
+	// The name of the coarse-grained sorting expression.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The expression type. Valid values:
+	// The expression type. Valid values: STRUCT: a structured expression. STRING (default): a custom formula.
 	//
-	// STRUCT: The content of the expression is a structure. STRING (default): a custom formula.
+	// STRUCT: The content of the expression is a structure. STRING (default): You can configure a custom formula.
 	//
 	// example:
 	//
@@ -844,7 +854,7 @@ func (s *DescribeAppsResponseBodyResultFirstRanks) Validate() error {
 }
 
 type DescribeAppsResponseBodyResultQueryProcessors struct {
-	// Indicates whether the rule is the default one.
+	// Indicates whether this is the default rule.
 	//
 	// example:
 	//
@@ -856,13 +866,13 @@ type DescribeAppsResponseBodyResultQueryProcessors struct {
 	//
 	// ""
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// The type of the industry. Valid values:
+	// The industry. Valid values:
 	//
-	// 	- GENERAL
+	// - GENERAL
 	//
-	// 	- ECOMMERCE
+	// - ECOMMERCE
 	//
-	// 	- IT_CONTENT
+	// - IT_CONTENT
 	//
 	// example:
 	//
@@ -870,7 +880,7 @@ type DescribeAppsResponseBodyResultQueryProcessors struct {
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
 	// The indexes.
 	Indexes []*string `json:"indexes,omitempty" xml:"indexes,omitempty" type:"Repeated"`
-	// The rule name.
+	// The name of the query analysis rule.
 	//
 	// example:
 	//
@@ -947,7 +957,7 @@ func (s *DescribeAppsResponseBodyResultQueryProcessors) Validate() error {
 }
 
 type DescribeAppsResponseBodyResultQuota struct {
-	// The computing resources. Unit: logical computing unit (LCU).
+	// The computing resources. Unit: logical compute unit (LCU).
 	//
 	// example:
 	//
@@ -959,7 +969,7 @@ type DescribeAppsResponseBodyResultQuota struct {
 	//
 	// 1
 	DocSize *int32 `json:"docSize,omitempty" xml:"docSize,omitempty"`
-	// The number of search requests per second. You are charged based on the number of search requests per second in the earlier billing model.
+	// The number of queries per second (QPS). This parameter is used in an earlier billing model.
 	//
 	// example:
 	//
@@ -967,19 +977,19 @@ type DescribeAppsResponseBodyResultQuota struct {
 	Qps *int32 `json:"qps,omitempty" xml:"qps,omitempty"`
 	// The specifications. Valid values:
 	//
-	// 	- opensearch.share.junior: basic
+	// - opensearch.share.junior: Basic
 	//
-	// 	- opensearch.share.common: shared general-purpose
+	// - opensearch.share.common: Shared general-purpose
 	//
-	// 	- opensearch.share.compute: shared computing
+	// - opensearch.share.compute: Shared compute-optimized
 	//
-	// 	- opensearch.share.storage: shared storage
+	// - opensearch.share.storage: Shared storage-optimized
 	//
-	// 	- opensearch.private.common: exclusive general-purpose
+	// - opensearch.private.common: Dedicated general-purpose
 	//
-	// 	- opensearch.private.compute: exclusive computing
+	// - opensearch.private.compute: Dedicated compute-optimized
 	//
-	// 	- opensearch.private.storage: exclusive storage
+	// - opensearch.private.storage: Dedicated storage-optimized
 	//
 	// example:
 	//
@@ -1036,7 +1046,7 @@ func (s *DescribeAppsResponseBodyResultQuota) Validate() error {
 }
 
 type DescribeAppsResponseBodyResultSchema struct {
-	// The sort configurations.
+	// The index sorting settings.
 	IndexSortConfig []*DescribeAppsResponseBodyResultSchemaIndexSortConfig `json:"indexSortConfig,omitempty" xml:"indexSortConfig,omitempty" type:"Repeated"`
 	// The index schema.
 	Indexes *DescribeAppsResponseBodyResultSchemaIndexes `json:"indexes,omitempty" xml:"indexes,omitempty" type:"Struct"`
@@ -1052,9 +1062,9 @@ type DescribeAppsResponseBodyResultSchema struct {
 	//
 	// field1
 	RouteField *string `json:"routeField,omitempty" xml:"routeField,omitempty"`
-	// The hot values of the level-1 routing field.
+	// The hot data values of the level-1 routing field.
 	RouteFieldValues []*string `json:"routeFieldValues,omitempty" xml:"routeFieldValues,omitempty" type:"Repeated"`
-	// The level-2 routing field. This parameter is returned if the routeFieldValues parameter is returned. By default, the wide-table primary key field is used as the level-2 routing field.
+	// The level-2 routing field. This parameter takes effect only if the routeFieldValues parameter is configured. By default, the primary key of the wide table is used as the level-2 routing field.
 	//
 	// example:
 	//
@@ -1062,7 +1072,7 @@ type DescribeAppsResponseBodyResultSchema struct {
 	SecondRouteField *string `json:"secondRouteField,omitempty" xml:"secondRouteField,omitempty"`
 	// The table schema.
 	Tables map[string]interface{} `json:"tables,omitempty" xml:"tables,omitempty"`
-	// The document clearing configurations.
+	// The document time-to-live (TTL) settings.
 	TtlField *DescribeAppsResponseBodyResultSchemaTtlField `json:"ttlField,omitempty" xml:"ttlField,omitempty" type:"Struct"`
 }
 
@@ -1170,11 +1180,11 @@ func (s *DescribeAppsResponseBodyResultSchema) Validate() error {
 }
 
 type DescribeAppsResponseBodyResultSchemaIndexSortConfig struct {
-	// The sort method. Valid values:
+	// The sort order. Valid values:
 	//
-	// 	- ASC
+	// - ASC
 	//
-	// 	- DESC
+	// - DESC
 	//
 	// example:
 	//
@@ -1256,13 +1266,13 @@ func (s *DescribeAppsResponseBodyResultSchemaIndexes) Validate() error {
 }
 
 type DescribeAppsResponseBodyResultSchemaTtlField struct {
-	// The document clearing field.
+	// The document TTL field.
 	//
 	// example:
 	//
 	// text1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The TTL. Unit: milliseconds.
+	// The time to live (TTL). Unit: milliseconds.
 	//
 	// example:
 	//
@@ -1301,7 +1311,7 @@ func (s *DescribeAppsResponseBodyResultSchemaTtlField) Validate() error {
 }
 
 type DescribeAppsResponseBodyResultSchemas struct {
-	// The sort configurations.
+	// The index sorting settings.
 	IndexSortConfig []*DescribeAppsResponseBodyResultSchemasIndexSortConfig `json:"indexSortConfig,omitempty" xml:"indexSortConfig,omitempty" type:"Repeated"`
 	// The index schema.
 	Indexes *DescribeAppsResponseBodyResultSchemasIndexes `json:"indexes,omitempty" xml:"indexes,omitempty" type:"Struct"`
@@ -1317,9 +1327,9 @@ type DescribeAppsResponseBodyResultSchemas struct {
 	//
 	// field1
 	RouteField *string `json:"routeField,omitempty" xml:"routeField,omitempty"`
-	// The hot values of the level-1 routing field.
+	// The hot data values of the level-1 routing field.
 	RouteFieldValues []*string `json:"routeFieldValues,omitempty" xml:"routeFieldValues,omitempty" type:"Repeated"`
-	// The level-2 routing field. This parameter is returned if the routeFieldValues parameter is returned. By default, the wide-table primary key field is used as the level-2 routing field.
+	// The level-2 routing field. This parameter takes effect only if the routeFieldValues parameter is configured. By default, the primary key of the wide table is used as the level-2 routing field.
 	//
 	// example:
 	//
@@ -1327,7 +1337,7 @@ type DescribeAppsResponseBodyResultSchemas struct {
 	SecondRouteField *string `json:"secondRouteField,omitempty" xml:"secondRouteField,omitempty"`
 	// The table schema.
 	Tables map[string]interface{} `json:"tables,omitempty" xml:"tables,omitempty"`
-	// The document clearing configurations.
+	// The document TTL settings.
 	TtlField *DescribeAppsResponseBodyResultSchemasTtlField `json:"ttlField,omitempty" xml:"ttlField,omitempty" type:"Struct"`
 }
 
@@ -1435,11 +1445,11 @@ func (s *DescribeAppsResponseBodyResultSchemas) Validate() error {
 }
 
 type DescribeAppsResponseBodyResultSchemasIndexSortConfig struct {
-	// The sort method. Valid values:
+	// The sort order. Valid values:
 	//
-	// 	- ASC
+	// - ASC
 	//
-	// 	- DESC
+	// - DESC
 	//
 	// example:
 	//
@@ -1521,13 +1531,13 @@ func (s *DescribeAppsResponseBodyResultSchemasIndexes) Validate() error {
 }
 
 type DescribeAppsResponseBodyResultSchemasTtlField struct {
-	// The document time field.
+	// The document TTL field.
 	//
 	// example:
 	//
 	// fIeld1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The TTL. Unit: milliseconds.
+	// The time to live (TTL). Unit: milliseconds.
 	//
 	// example:
 	//
@@ -1566,7 +1576,7 @@ func (s *DescribeAppsResponseBodyResultSchemasTtlField) Validate() error {
 }
 
 type DescribeAppsResponseBodyResultSecondRanks struct {
-	// Indicates whether the expression is the default one.
+	// Indicates whether this is the default expression.
 	//
 	// example:
 	//
@@ -1576,15 +1586,15 @@ type DescribeAppsResponseBodyResultSecondRanks struct {
 	//
 	// example:
 	//
-	// Description
+	// 描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The fine sort expression. You can define an expression that consists of fields, feature functions, and mathematical functions to implement complex sort logic.
+	// The fine-grained sorting expression. You can define an expression that consists of fields, feature functions, and mathematical functions to implement complex sorting logic.
 	//
 	// example:
 	//
 	// "cate_id > 0 and cate_id < 1000"
 	Meta interface{} `json:"meta,omitempty" xml:"meta,omitempty"`
-	// The name of the fine sort expression.
+	// The name of the fine-grained sorting expression.
 	//
 	// example:
 	//
@@ -1641,9 +1651,9 @@ func (s *DescribeAppsResponseBodyResultSecondRanks) Validate() error {
 }
 
 type DescribeAppsResponseBodyResultSummaries struct {
-	// The summary configurations.
+	// The summary settings.
 	Meta []*DescribeAppsResponseBodyResultSummariesMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Repeated"`
-	// The group name.
+	// The name of the summary group.
 	//
 	// example:
 	//
@@ -1691,7 +1701,7 @@ func (s *DescribeAppsResponseBodyResultSummaries) Validate() error {
 }
 
 type DescribeAppsResponseBodyResultSummariesMeta struct {
-	// The element that is used for highlighting.
+	// The HTML tag for highlighting.
 	//
 	// example:
 	//

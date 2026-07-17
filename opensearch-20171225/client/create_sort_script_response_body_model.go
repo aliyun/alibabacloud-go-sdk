@@ -16,13 +16,13 @@ type iCreateSortScriptResponseBody interface {
 }
 
 type CreateSortScriptResponseBody struct {
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//
 	// ABCDEFGH
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The response parameters.
+	// The returned result.
 	Result *CreateSortScriptResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -62,19 +62,19 @@ func (s *CreateSortScriptResponseBody) Validate() error {
 }
 
 type CreateSortScriptResponseBodyResult struct {
-	// The sort phase to which the script applies.
+	// The applicable scope of the script.
 	//
 	// example:
 	//
 	// second_rank
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// The script name.
+	// The name of the script.
 	//
 	// example:
 	//
 	// rank_cava_20230606_v7
 	ScriptName *string `json:"scriptName,omitempty" xml:"scriptName,omitempty"`
-	// The script type.
+	// The type of the script.
 	//
 	// example:
 	//

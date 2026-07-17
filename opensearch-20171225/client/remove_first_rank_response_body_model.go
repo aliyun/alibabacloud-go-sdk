@@ -22,7 +22,7 @@ type RemoveFirstRankResponseBody struct {
 	//
 	// E676FAB6-A0AC-64D9-F9D7-D0D33C930CFF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The information about the rough sort expression.
+	// The details of the rough sort expression.
 	Result *RemoveFirstRankResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -62,21 +62,21 @@ func (s *RemoveFirstRankResponseBody) Validate() error {
 }
 
 type RemoveFirstRankResponseBodyResult struct {
-	// Specifies whether to set the fine sort expression as the default sort expression.
+	// Indicates whether this is the default expression.
 	//
 	// example:
 	//
 	// true
 	Active *bool `json:"active,omitempty" xml:"active,omitempty"`
-	// Description
+	// The description.
 	//
 	// example:
 	//
 	// ""
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The information about the expression.
+	// The details of the expression.
 	Meta []*RemoveFirstRankResponseBodyResultMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Repeated"`
-	// Parameter
+	// The name of the resource.
 	//
 	// example:
 	//
@@ -142,13 +142,13 @@ func (s *RemoveFirstRankResponseBodyResult) Validate() error {
 }
 
 type RemoveFirstRankResponseBodyResultMeta struct {
-	// The parameters that are used by a function in the expression. For more information, see Rough sort functions.[](~~170007~~)
+	// The parameters of the function in the expression. For more information, see [Rough sort](https://help.aliyun.com/document_detail/170007.html).
 	//
 	// example:
 	//
 	// ""
 	Arg *string `json:"arg,omitempty" xml:"arg,omitempty"`
-	// The attribute, which refers to the scoring feature or search field, For more information about supported feature functions, see Rough sort functions.[](~~170007~~)
+	// The attribute. This can be a scoring feature or a search field. For information about available scoring features, see [Rough sort](https://help.aliyun.com/document_detail/170007.html).
 	//
 	// example:
 	//

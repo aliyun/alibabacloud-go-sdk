@@ -48,57 +48,57 @@ type iCreateAppRequest interface {
 }
 
 type CreateAppRequest struct {
-	// Specifies whether to automatically switch the created version to an online version. Valid values:
+	// Specifies whether to automatically set the new version as the online version after it is created.
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
 	// false
 	AutoSwitch *bool `json:"autoSwitch,omitempty" xml:"autoSwitch,omitempty"`
-	// The capability opening configurations.
+	// The feature configurations.
 	Cluster     *CreateAppRequestCluster `json:"cluster,omitempty" xml:"cluster,omitempty" type:"Struct"`
 	ConfigItems []map[string]interface{} `json:"configItems,omitempty" xml:"configItems,omitempty" type:"Repeated"`
-	// The configurations of data sources.
+	// The data source configurations.
 	DataSources []*CreateAppRequestDataSources `json:"dataSources,omitempty" xml:"dataSources,omitempty" type:"Repeated"`
-	// The version description.
+	// The description of the version.
 	//
 	// example:
 	//
-	// "Version description"
+	// "version description"
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The industry model module.
+	// The industry model.
 	Domain *CreateAppRequestDomain `json:"domain,omitempty" xml:"domain,omitempty" type:"Struct"`
 	// The default display fields.
 	FetchFields []*string `json:"fetchFields,omitempty" xml:"fetchFields,omitempty" type:"Repeated"`
-	// The configurations of rough sort.
+	// The rough sort configurations.
 	FirstRanks      []*CreateAppRequestFirstRanks `json:"firstRanks,omitempty" xml:"firstRanks,omitempty" type:"Repeated"`
 	Interpretations []map[string]interface{}      `json:"interpretations,omitempty" xml:"interpretations,omitempty" type:"Repeated"`
-	// The zone identifier. Valid values:
+	// The network type. Valid values:
 	//
-	// 	- vpc
+	// - vpc
 	//
-	// 	- oxs
+	// - oxs
 	//
 	// example:
 	//
 	// vpc
 	NetworkType *string                  `json:"networkType,omitempty" xml:"networkType,omitempty"`
 	Prompts     []map[string]interface{} `json:"prompts,omitempty" xml:"prompts,omitempty" type:"Repeated"`
-	// The query intent understanding configurations.
+	// The intention recognition configurations.
 	QueryProcessors []*CreateAppRequestQueryProcessors `json:"queryProcessors,omitempty" xml:"queryProcessors,omitempty" type:"Repeated"`
 	RealtimeShared  *bool                              `json:"realtimeShared,omitempty" xml:"realtimeShared,omitempty"`
-	// The single-table schema.
+	// The schema of the single-table application.
 	Schema *CreateAppRequestSchema `json:"schema,omitempty" xml:"schema,omitempty" type:"Struct"`
-	// The multi-table schema.
+	// The schema of the multi-table application.
 	Schemas []*CreateAppRequestSchemas `json:"schemas,omitempty" xml:"schemas,omitempty" type:"Repeated"`
-	// The configurations of fine sort.
+	// The fine sort configurations.
 	SecondRanks []*CreateAppRequestSecondRanks `json:"secondRanks,omitempty" xml:"secondRanks,omitempty" type:"Repeated"`
-	// The summary configurations of search results.
+	// The search result summary settings.
 	Summaries []*CreateAppRequestSummaries `json:"summaries,omitempty" xml:"summaries,omitempty" type:"Repeated"`
-	// Specifies whether to perform a dry run. This parameter is only used to check whether the data source is valid. Valid values: true and false.
+	// Specifies whether to perform a dry run. A dry run checks the validity of the data source but does not create the application. Valid values: true and false.
 	//
 	// example:
 	//
@@ -359,7 +359,7 @@ type CreateAppRequestCluster struct {
 	//
 	// 1024
 	MaxQueryClauseLength *int32 `json:"maxQueryClauseLength,omitempty" xml:"maxQueryClauseLength,omitempty"`
-	// The timeout period. Unit: milliseconds.
+	// The timeout period for the cluster, in milliseconds.
 	//
 	// example:
 	//
@@ -491,31 +491,31 @@ type CreateAppRequestDataSources struct {
 	//
 	// }
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
-	// The plug-ins that are used for data processing.
+	// The data processing plugins for fields.
 	//
-	// name:
+	// Plugin name (name):
 	//
-	// 	- JsonKeyValueExtractor
+	// - JsonKeyValueExtractor
 	//
-	// 	- MultiValueSpliter
+	// - MultiValueSpliter
 	//
-	// 	- KeyValueExtractor
+	// - KeyValueExtractor
 	//
-	// 	- StringCatenateExtractor
+	// - StringCatenateExtractor
 	//
-	// 	- HTMLTagRemover
+	// - HTMLTagRemover
 	//
-	// parameters:
+	// Plugin parameters (parameters):
 	//
-	// 	- JsonKeyValueExtractor
+	// - JsonKeyValueExtractor
 	//
-	// 	- MultiValueSpliter
+	// - MultiValueSpliter
 	//
-	// 	- KeyValueExtractor
+	// - KeyValueExtractor
 	//
-	// 	- StringCatenateExtractor
+	// - StringCatenateExtractor
 	//
-	// 	- HTMLTagRemover
+	// - HTMLTagRemover
 	//
 	// example:
 	//
@@ -537,21 +537,21 @@ type CreateAppRequestDataSources struct {
 	//
 	// table_name
 	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
-	// The name of the table in the application.
+	// The name of the application table.
 	//
 	// example:
 	//
 	// main
 	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
-	// The type of the data source. Valid values:
+	// The type of the data source.
 	//
-	// 	- rds
+	// - rds
 	//
-	// 	- odps
+	// - odps
 	//
-	// 	- opensearch
+	// - opensearch
 	//
-	// 	- polardb
+	// - polardb
 	//
 	// example:
 	//
@@ -641,19 +641,19 @@ type CreateAppRequestDomain struct {
 	//
 	// general
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// The selected feature category. Valid values:
+	// The selected features.
 	//
-	// 	- qp: query analysis
+	// - qp: query analysis
 	//
-	// 	- algo: sort policy
+	// - algo: sort policy
 	//
-	// 	- service: service
+	// - service: ancillary service
 	//
 	// example:
 	//
 	// {"qp":["spellcheck"],"algo":["pop"],"service":["suggest"]}
 	Functions map[string]interface{} `json:"functions,omitempty" xml:"functions,omitempty"`
-	// The industry type.
+	// The industry.
 	//
 	// example:
 	//
@@ -713,11 +713,11 @@ type CreateAppRequestFirstRanks struct {
 	//
 	// Description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The information about the expression. The information can be of the array or string type.
+	// The details of the expression. The value can be an array or a string.
 	//
 	// example:
 	//
-	// String :"random()*100+now()";
+	// String :"random()*100+now()"；
 	//
 	// Array: [
 	//
@@ -739,11 +739,11 @@ type CreateAppRequestFirstRanks struct {
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The expression type. Valid values:
+	// The type of the expression.
 	//
-	// 	- STRUCT: The content of the expression is a structure.
+	// - STRUCT: structured expression.
 	//
-	// 	- STRING (default): You can configure a custom formula.
+	// - STRING: custom formula. This is the default value.
 	//
 	// example:
 	//
@@ -821,19 +821,19 @@ type CreateAppRequestQueryProcessors struct {
 	//
 	// ""
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// The industry type. Valid values:
+	// The industry. Valid values:
 	//
-	// 	- GENERAL
+	// - GENERAL: general
 	//
-	// 	- ECOMMERCE
+	// - ECOMMERCE: e-commerce
 	//
-	// 	- IT_CONTENT
+	// - IT_CONTENT: IT content
 	//
 	// example:
 	//
 	// ECOMMERCE
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// The index range.
+	// The indexes of the application.
 	Indexes []*string `json:"indexes,omitempty" xml:"indexes,omitempty" type:"Repeated"`
 	// The rule name.
 	//
@@ -841,7 +841,7 @@ type CreateAppRequestQueryProcessors struct {
 	//
 	// name
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The features.
+	// The features that are included.
 	Processors []map[string]interface{} `json:"processors,omitempty" xml:"processors,omitempty" type:"Repeated"`
 }
 
@@ -912,7 +912,7 @@ func (s *CreateAppRequestQueryProcessors) Validate() error {
 }
 
 type CreateAppRequestSchema struct {
-	// The sort configurations.
+	// The inverted index configurations.
 	IndexSortConfig []*CreateAppRequestSchemaIndexSortConfig `json:"indexSortConfig,omitempty" xml:"indexSortConfig,omitempty" type:"Repeated"`
 	// The index schema.
 	Indexes *CreateAppRequestSchemaIndexes `json:"indexes,omitempty" xml:"indexes,omitempty" type:"Struct"`
@@ -928,9 +928,9 @@ type CreateAppRequestSchema struct {
 	//
 	// field1
 	RouteField *string `json:"routeField,omitempty" xml:"routeField,omitempty"`
-	// The hot values of the level-1 routing field. After you configure this parameter, level-2 routing is enabled.
+	// The list of hotspot values for the level-1 routing field. After you configure this parameter, level-2 routing is enabled.
 	RouteFieldValues []*string `json:"routeFieldValues,omitempty" xml:"routeFieldValues,omitempty" type:"Repeated"`
-	// The name of the level-2 routing field. This parameter takes effect only when the `routeFieldValues` parameter is configured. By default, the wide-table primary key field is used as the level-2 routing field.
+	// The name of the level-2 routing field. This parameter takes effect only when `routeFieldValues` is configured. By default, the primary key of the wide table is used.
 	//
 	// example:
 	//
@@ -1002,7 +1002,7 @@ type CreateAppRequestSchema struct {
 	//
 	// }
 	Tables map[string]interface{} `json:"tables,omitempty" xml:"tables,omitempty"`
-	// The document clearing configurations.
+	// The document expiration configuration.
 	TtlField *CreateAppRequestSchemaTtlField `json:"ttlField,omitempty" xml:"ttlField,omitempty" type:"Struct"`
 }
 
@@ -1110,7 +1110,7 @@ func (s *CreateAppRequestSchema) Validate() error {
 }
 
 type CreateAppRequestSchemaIndexSortConfig struct {
-	// The sort method.
+	// The sort order.
 	//
 	// example:
 	//
@@ -1204,13 +1204,13 @@ func (s *CreateAppRequestSchemaIndexes) Validate() error {
 }
 
 type CreateAppRequestSchemaTtlField struct {
-	// The name of the document time field.
+	// The document time field.
 	//
 	// example:
 	//
 	// text1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The TTL. Unit: milliseconds.
+	// The time to live (TTL), in milliseconds.
 	//
 	// example:
 	//
@@ -1249,7 +1249,7 @@ func (s *CreateAppRequestSchemaTtlField) Validate() error {
 }
 
 type CreateAppRequestSchemas struct {
-	// The sort configurations.
+	// The inverted index configurations.
 	IndexSortConfig []*CreateAppRequestSchemasIndexSortConfig `json:"indexSortConfig,omitempty" xml:"indexSortConfig,omitempty" type:"Repeated"`
 	// The index schema.
 	Indexes *CreateAppRequestSchemasIndexes `json:"indexes,omitempty" xml:"indexes,omitempty" type:"Struct"`
@@ -1265,9 +1265,9 @@ type CreateAppRequestSchemas struct {
 	//
 	// field1
 	RouteField *string `json:"routeField,omitempty" xml:"routeField,omitempty"`
-	// The hot values of the level-1 routing field. After you configure this parameter, level-2 routing is enabled.
+	// The list of hotspot values for the level-1 routing field. After you configure this parameter, level-2 routing is enabled.
 	RouteFieldValues []*string `json:"routeFieldValues,omitempty" xml:"routeFieldValues,omitempty" type:"Repeated"`
-	// The name of the level-2 routing field. This parameter takes effect only when the routeFieldValues parameter is configured. By default, the wide-table primary key field is used as the level-2 routing field.
+	// The name of the level-2 routing field. This parameter takes effect only when routeFieldValues is configured. By default, the primary key of the wide table is used.
 	//
 	// example:
 	//
@@ -1339,7 +1339,7 @@ type CreateAppRequestSchemas struct {
 	//
 	// }
 	Tables map[string]interface{} `json:"tables,omitempty" xml:"tables,omitempty"`
-	// The document clearing configurations.
+	// The document expiration configuration.
 	TtlField *CreateAppRequestSchemasTtlField `json:"ttlField,omitempty" xml:"ttlField,omitempty" type:"Struct"`
 }
 
@@ -1447,11 +1447,11 @@ func (s *CreateAppRequestSchemas) Validate() error {
 }
 
 type CreateAppRequestSchemasIndexSortConfig struct {
-	// The sort method.
+	// The sort order.
 	//
-	// 	- ASC
+	// - ASC
 	//
-	// 	- DESC
+	// - DESC
 	//
 	// example:
 	//
@@ -1543,13 +1543,13 @@ func (s *CreateAppRequestSchemasIndexes) Validate() error {
 }
 
 type CreateAppRequestSchemasTtlField struct {
-	// The name of the document time field.
+	// The document time field.
 	//
 	// example:
 	//
 	// text1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The TTL. Unit: milliseconds.
+	// The time to live (TTL), in milliseconds.
 	//
 	// example:
 	//
@@ -1598,9 +1598,9 @@ type CreateAppRequestSecondRanks struct {
 	//
 	// example:
 	//
-	// Description
+	// 描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The fine sort expression. You can define an expression that contains fields, feature functions, and mathematical functions to implement complex sort logic.
+	// The fine sort expression. You can write an expression that contains fields, feature functions, and mathematical functions to implement complex sort logic.
 	//
 	// example:
 	//
@@ -1663,7 +1663,7 @@ func (s *CreateAppRequestSecondRanks) Validate() error {
 }
 
 type CreateAppRequestSummaries struct {
-	// The collection of summary configurations.
+	// The summary configurations.
 	Meta []*CreateAppRequestSummariesMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Repeated"`
 	// The group name.
 	//
@@ -1713,13 +1713,13 @@ func (s *CreateAppRequestSummaries) Validate() error {
 }
 
 type CreateAppRequestSummariesMeta struct {
-	// The element that is used for highlighting.
+	// The HTML tag for highlight.
 	//
 	// example:
 	//
 	// em
 	Element *string `json:"element,omitempty" xml:"element,omitempty"`
-	// The connector that is used to connect segments.
+	// The string used to connect snippets.
 	//
 	// example:
 	//
@@ -1731,13 +1731,13 @@ type CreateAppRequestSummariesMeta struct {
 	//
 	// field1
 	Field *string `json:"field,omitempty" xml:"field,omitempty"`
-	// The length of the segment. Valid values: 1 to 300.
+	// The length of the snippet. The value must be in the range of [1, 300].
 	//
 	// example:
 	//
 	// 50
 	Len *int32 `json:"len,omitempty" xml:"len,omitempty"`
-	// The number of segments. Valid values: 1 to 5.
+	// The number of snippets. The value must be in the range of [1, 5].
 	//
 	// example:
 	//

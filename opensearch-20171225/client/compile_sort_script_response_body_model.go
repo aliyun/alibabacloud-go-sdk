@@ -14,7 +14,7 @@ type iCompileSortScriptResponseBody interface {
 }
 
 type CompileSortScriptResponseBody struct {
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//

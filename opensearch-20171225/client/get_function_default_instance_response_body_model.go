@@ -54,7 +54,7 @@ type GetFunctionDefaultInstanceResponseBody struct {
 	//
 	// sh-bp1oi31w1jn4ctdyv
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The default running time.
+	// The default runtime.
 	//
 	// example:
 	//
@@ -72,13 +72,13 @@ type GetFunctionDefaultInstanceResponseBody struct {
 	//
 	// 062BA91F-A568-5779-8A5B-9E62C9BB3DC1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the request.
+	// The result.
 	//
 	// example:
 	//
 	// {\\"Pagination\\": {\\"TotalCount\\": 0, \\"PageNumber\\": 1, \\"PageSize\\": 10}, \\"AntConsortiums\\": []}
 	Result *GetFunctionDefaultInstanceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// The status of the request.
+	// The request status.
 	//
 	// example:
 	//

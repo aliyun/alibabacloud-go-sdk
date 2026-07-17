@@ -22,7 +22,9 @@ type UpdateABTestSceneResponseBody struct {
 	//
 	// D77D0DAF-790D-F5F5-A9C0-133738165014
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The details of the test scenario. For more information, see [ABTestScene](https://help.aliyun.com/document_detail/173618.html).
+	// The details of the A/B test scenario.
+	//
+	// For more information, see [ABTestScene](https://help.aliyun.com/document_detail/173618.html).
 	//
 	// example:
 	//
@@ -66,35 +68,35 @@ func (s *UpdateABTestSceneResponseBody) Validate() error {
 }
 
 type UpdateABTestSceneResponseBodyResult struct {
-	// The time when the test scenario was created.
+	// The time when the scenario was created.
 	//
 	// example:
 	//
 	// 1596527691
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
-	// The ID of the test scenario.
+	// The ID of the scenario.
 	//
 	// example:
 	//
 	// 20614
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The name of the test scenario.
+	// The alias of the scenario.
 	//
 	// example:
 	//
 	// kevintest22
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The status of the test. Valid values:
+	// The status of the test.
 	//
-	// 	- true: The test is started.
+	// - true: The test is started.
 	//
-	// 	- false: The test is stopped.
+	// - false: The test is stopped.
 	//
 	// example:
 	//
 	// true
 	Online *bool `json:"online,omitempty" xml:"online,omitempty"`
-	// The parameters of the A/B test.
+	// The parameters of the experiment.
 	//
 	// example:
 	//
@@ -106,7 +108,7 @@ type UpdateABTestSceneResponseBodyResult struct {
 	//
 	// 111
 	Traffic *int32 `json:"traffic,omitempty" xml:"traffic,omitempty"`
-	// The time when the test scenario was last modified.
+	// The time when the scenario was last modified.
 	//
 	// example:
 	//

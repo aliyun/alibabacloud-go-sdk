@@ -22,7 +22,7 @@ type CreateAppGroupResponseBody struct {
 	//
 	// 766CF6DB-CA02-3E12-7CBA-6AC21FC978FD
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// None
+	// This parameter is left empty.
 	Result *CreateAppGroupResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -64,19 +64,19 @@ func (s *CreateAppGroupResponseBody) Validate() error {
 type CreateAppGroupResponseBodyResult struct {
 	// The billing method. Valid values:
 	//
-	// 	- POSTPAY: pay-as-you-go.
+	// - POSTPAY: pay-as-you-go
 	//
-	// 	- PREPAY: subscription.
+	// - PREPAY: subscription
 	//
 	// example:
 	//
 	// POSTPAY
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
-	// The type of billing. Valid values:
+	// The billing type. Valid values:
 	//
-	// 	- 1: computing resources.
+	// - 1: computing resources
 	//
-	// 	- 2: queries per second (QPS).
+	// - 2: queries per second (QPS)
 	//
 	// example:
 	//
@@ -106,13 +106,13 @@ type CreateAppGroupResponseBodyResult struct {
 	//
 	// -
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The type of the industry. Valid values:
+	// The industry type. Valid values:
 	//
-	// 	- GENERAL
+	// - GENERAL
 	//
-	// 	- ECOMMERCE
+	// - ECOMMERCE
 	//
-	// 	- IT_CONTENT
+	// - IT_CONTENT
 	//
 	// example:
 	//
@@ -130,11 +130,11 @@ type CreateAppGroupResponseBodyResult struct {
 	//
 	// -
 	ExpireOn *string `json:"expireOn,omitempty" xml:"expireOn,omitempty"`
-	// The approval state of the quotas. Valid values:
+	// The approval status of the quota. Valid values:
 	//
-	// 	- 0: The application is in service.
+	// - 0: The application is running as normal.
 	//
-	// 	- 1: The quotas are being reviewed.
+	// - 1: The quota change is under review.
 	//
 	// example:
 	//
@@ -146,7 +146,7 @@ type CreateAppGroupResponseBodyResult struct {
 	//
 	// 100302881
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
@@ -154,11 +154,11 @@ type CreateAppGroupResponseBodyResult struct {
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	// The lock state. Valid values:
 	//
-	// 	- Unlock: The instance is unlocked.
+	// - Unlock: The instance is unlocked.
 	//
-	// 	- LockByExpiration: The instance is automatically locked after it expires.
+	// - LockByExpiration: The instance is automatically locked after it expires.
 	//
-	// 	- ManualLock: The instance is manually locked.
+	// - ManualLock: The instance is manually locked.
 	//
 	// example:
 	//
@@ -172,33 +172,33 @@ type CreateAppGroupResponseBodyResult struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// Indicates whether the application is created. Valid values:
 	//
-	// 	- 0: The application is being created.
+	// - 0: The application is being created.
 	//
-	// 	- 1: The application is created.
+	// - 1: The application is created.
 	//
 	// example:
 	//
 	// 1
 	Produced *int32 `json:"produced,omitempty" xml:"produced,omitempty"`
-	// The name of the A/B test group.
+	// The name of the A/B test project.
 	//
 	// example:
 	//
 	// -
 	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
-	// The information about the quotas of the application.
+	// The quota information for the application.
 	Quota *CreateAppGroupResponseBodyResultQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
-	// The status of the application. Valid values:
+	// The application status. Valid values:
 	//
-	// 	- producing: The application is being created.
+	// - producing: The application is being created.
 	//
-	// 	- review_pending: The application is being reviewed.
+	// - review_pending: The application is under review.
 	//
-	// 	- config_pending: The application is to be configured.
+	// - config_pending: The application is pending configuration.
 	//
-	// 	- normal: The application is in service.
+	// - normal: The application is running as normal.
 	//
-	// 	- frozen: The application is frozen.
+	// - frozen: The application is frozen.
 	//
 	// example:
 	//
@@ -210,13 +210,13 @@ type CreateAppGroupResponseBodyResult struct {
 	//
 	// 1590486386
 	SwitchedTime *int32 `json:"switchedTime,omitempty" xml:"switchedTime,omitempty"`
-	// The type of the application. Valid values:
+	// The application type. Valid values:
 	//
-	// 	- standard: a standard edition application.
+	// - standard: Standard Edition
 	//
-	// 	- advance: an advanced edition which is of an old version. New version is not supported for this edition.
+	// - advance: an old version of Premium Edition. You cannot create new applications of this type.
 	//
-	// 	- enhanced: an advanced edition application of a new version.
+	// - enhanced: a new version of Premium Edition
 	//
 	// example:
 	//
@@ -437,7 +437,7 @@ func (s *CreateAppGroupResponseBodyResult) Validate() error {
 }
 
 type CreateAppGroupResponseBodyResultQuota struct {
-	// The computing resources. Unit: logical computing units (LCUs).
+	// The computing resources. Unit: LCU.
 	//
 	// example:
 	//
@@ -451,19 +451,19 @@ type CreateAppGroupResponseBodyResultQuota struct {
 	DocSize *int32 `json:"docSize,omitempty" xml:"docSize,omitempty"`
 	// The specifications. Valid values:
 	//
-	// 	- opensearch.share.junior: basic.
+	// - opensearch.share.junior: basic
 	//
-	// 	- opensearch.share.common: shared general-purpose.
+	// - opensearch.share.common: shared general-purpose
 	//
-	// 	- opensearch.share.compute: shared computing.
+	// - opensearch.share.compute: shared compute-optimized
 	//
-	// 	- opensearch.share.storage: shared storage.
+	// - opensearch.share.storage: shared storage-optimized
 	//
-	// 	- opensearch.private.common: exclusive general-purpose.
+	// - opensearch.private.common: exclusive general-purpose
 	//
-	// 	- opensearch.private.compute: exclusive computing.
+	// - opensearch.private.compute: exclusive compute-optimized
 	//
-	// 	- opensearch.private.storage: exclusive storage.
+	// - opensearch.private.storage: exclusive storage-optimized
 	//
 	// example:
 	//

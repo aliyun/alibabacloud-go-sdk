@@ -16,13 +16,13 @@ type iDescribeSlowQueryStatusResponseBody interface {
 }
 
 type DescribeSlowQueryStatusResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 5C1C1C45-C64A-AD30-565F-140871D57E5E
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The return result.
+	// The result.
 	Result *DescribeSlowQueryStatusResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -62,29 +62,29 @@ func (s *DescribeSlowQueryStatusResponseBody) Validate() error {
 }
 
 type DescribeSlowQueryStatusResponseBodyResult struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// 100298370
 	AppGroupId *string `json:"appGroupId,omitempty" xml:"appGroupId,omitempty"`
-	// The network type of the slow query optimization service. Valid values:
+	// The region.
 	//
-	// 	- outer: the Internet
+	// - outer: Public network
 	//
-	// 	- internal: the internal network
+	// - internal: Internal network
 	//
 	// example:
 	//
 	// internal
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The status of the slow query optimization service. Valid values:
+	// The activation status.
 	//
-	// 	- enabled
+	// - enabled: Enabled
 	//
-	// 	- disabled
+	// - disabled: Disabled
 	//
-	// 	- n/a
+	// - n/a: Unknown
 	//
 	// example:
 	//

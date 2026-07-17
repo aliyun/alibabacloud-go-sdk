@@ -30,7 +30,7 @@ type iListStatisticLogsRequest interface {
 type ListStatisticLogsRequest struct {
 	// The fields to query. Format: columns=wordsTopPv.
 	//
-	// For more information, see [Metrics in statistical reports](https://help.aliyun.com/document_detail/187665.html).
+	// For more information, see [Metrics for query analysis](https://help.aliyun.com/document_detail/187665.html).
 	//
 	// example:
 	//
@@ -42,13 +42,13 @@ type ListStatisticLogsRequest struct {
 	//
 	// true
 	Distinct *bool `json:"distinct,omitempty" xml:"distinct,omitempty"`
-	// The page number. Default value: 1.
+	// The page number. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page. Default value: 10.
+	// The number of entries to return on each page. The default value is 10.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ type ListStatisticLogsRequest struct {
 	//
 	// "-id"
 	SortBy *string `json:"sortBy,omitempty" xml:"sortBy,omitempty"`
-	// The beginning of the time range to query. The default value is the timestamp of 00:00:00 on the current day.
+	// The start of the time range to query. The value must be a UNIX timestamp. The default value is the UNIX timestamp for 00:00:00 on the current day.
 	//
 	// example:
 	//
 	// 1582214400
 	StartTime *int32 `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The end of the time range to query. The default value is the timestamp of 24:00:00 on the current day.
+	// The end of the time range to query. The value must be a UNIX timestamp. The default value is the UNIX timestamp for 24:00:00 on the current day.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iModifyAppGroupQuotaResponseBody interface {
 }
 
 type ModifyAppGroupQuotaResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,21 +62,21 @@ func (s *ModifyAppGroupQuotaResponseBody) Validate() error {
 }
 
 type ModifyAppGroupQuotaResponseBodyResult struct {
-	// The billing method. Valid values:
+	// The billing method.
 	//
-	// 	- POSTPAY: pay-as-you-go.
+	// - POSTPAY: pay-as-you-go
 	//
-	// 	- PREPAY: subscription.
+	// - PREPAY: subscription
 	//
 	// example:
 	//
 	// POSTPAY
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
-	// The billable item. Valid values:
+	// The billing model.
 	//
-	// 	- 1: computing resources.
+	// - 1: by compute resources
 	//
-	// 	- 2: queries per second (QPS).
+	// - 2: by queries per second (QPS)
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type ModifyAppGroupQuotaResponseBodyResult struct {
 	//
 	// 1590139542
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
-	// The ID of the current online version.
+	// The current online version.
 	//
 	// example:
 	//
@@ -108,77 +108,73 @@ type ModifyAppGroupQuotaResponseBodyResult struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The engine type.
 	//
-	// Valid values:
-	//
-	// 	- ha3: ha3.
-	//
 	// example:
 	//
 	// ha3
 	EngineType *string `json:"engineType,omitempty" xml:"engineType,omitempty"`
-	// The time when the application expired.
+	// The expiration time.
 	//
 	// example:
 	//
 	// 1
 	ExpireOn *string `json:"expireOn,omitempty" xml:"expireOn,omitempty"`
-	// The approval state of the quotas. Valid values:
+	// Indicates whether a quota is pending for approval.
 	//
-	// 	- 0: The application is in service.
+	// - 0: No quota is pending for approval.
 	//
-	// 	- 1: The quotas are being reviewed.
+	// - 1: A quota is pending for approval.
 	//
 	// example:
 	//
 	// 0
 	HasPendingQuotaReviewTask *int32 `json:"hasPendingQuotaReviewTask,omitempty" xml:"hasPendingQuotaReviewTask,omitempty"`
-	// The application ID.
+	// The ID of the application.
 	//
 	// example:
 	//
 	// 100302881
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The instance ID.
+	// The ID of the instance.
 	//
 	// example:
 	//
 	// 1
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The lock state. Valid values:
+	// The lock status.
 	//
-	// 	- Unlock: The instance is unlocked.
+	// - Unlock: The application is not locked.
 	//
-	// 	- LockByExpiration: The instance is automatically locked after it expires.
+	// - LockByExpiration: The application is automatically locked upon expiration.
 	//
-	// 	- ManualLock: The instance is manually locked.
+	// - ManualLock: The application is manually locked.
 	//
 	// example:
 	//
 	// Unlock
 	LockMode *string `json:"lockMode,omitempty" xml:"lockMode,omitempty"`
-	// The name of the application
+	// The name of the application.
 	//
 	// example:
 	//
 	// lsh_test_1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Indicates whether the application is created. Valid values:
+	// Indicates whether the application is provisioned.
 	//
-	// 	- 0: The application is being created.
+	// - 0: The application is being provisioned.
 	//
-	// 	- 1: The application is created.
+	// - 1: The application is provisioned.
 	//
 	// example:
 	//
 	// 1
 	Produced *int32 `json:"produced,omitempty" xml:"produced,omitempty"`
-	// The name of the A/B test group.
+	// The name of the A/B test project.
 	//
 	// example:
 	//
 	// 1000
 	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
-	// The information about the quotas of the application.
+	// The quota information of the application.
 	Quota *ModifyAppGroupQuotaResponseBodyResultQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
 	// The ID of the resource group to which the instance belongs.
 	//
@@ -186,41 +182,41 @@ type ModifyAppGroupQuotaResponseBodyResult struct {
 	//
 	// rg-acfmoiyerh6nzly
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The state of the application. Valid values:
+	// The status of the application.
 	//
-	// 	- producing: The application is being created.
+	// - producing: The application is being provisioned.
 	//
-	// 	- review_pending: The application is being reviewed.
+	// - review_pending: The application is pending for review.
 	//
-	// 	- config_pending: The application is to be configured.
+	// - config_pending: The application is pending for configuration.
 	//
-	// 	- normal: The application is in service.
+	// - normal: The application is running as normal.
 	//
-	// 	- frozen: The application is frozen.
+	// - frozen: The application is frozen.
 	//
 	// example:
 	//
 	// normal
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The timestamp when the current online version was published.
+	// The timestamp when the online version was switched.
 	//
 	// example:
 	//
 	// 1590486386
 	SwitchedTime *int32 `json:"switchedTime,omitempty" xml:"switchedTime,omitempty"`
-	// The type of the application. Valid values:
+	// The type of the application.
 	//
-	// 	- standard: a standard edition application.
+	// - standard: Standard Edition
 	//
-	// 	- advance: an advanced edition application of an old version. New versions are not supported for this edition.
+	// - advance: an earlier version of Premium Edition. This type is not supported for new applications.
 	//
-	// 	- enhanced: an advanced edition application of a new version.
+	// - enhanced: a new version of Premium Edition.
 	//
 	// example:
 	//
 	// enhanced
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The timestamp when the application was last modified.
+	// The timestamp when the application was last updated.
 	//
 	// example:
 	//
@@ -435,33 +431,33 @@ func (s *ModifyAppGroupQuotaResponseBodyResult) Validate() error {
 }
 
 type ModifyAppGroupQuotaResponseBodyResultQuota struct {
-	// The computing resources. Unit: logical computing unit (LCU).
+	// The compute resources in LCU.
 	//
 	// example:
 	//
 	// 20
 	ComputeResource *int32 `json:"computeResource,omitempty" xml:"computeResource,omitempty"`
-	// The storage capacity. Unit: GB.
+	// The storage capacity in GB.
 	//
 	// example:
 	//
 	// 1
 	DocSize *int32 `json:"docSize,omitempty" xml:"docSize,omitempty"`
-	// The specifications. Valid values:
+	// The specifications.
 	//
-	// 	- opensearch.share.junior: basic.
+	// - opensearch.share.junior: Entry-level
 	//
-	// 	- opensearch.share.common: shared general-purpose.
+	// - opensearch.share.common: Shared General-purpose
 	//
-	// 	- opensearch.share.compute: shared computing.
+	// - opensearch.share.compute: Shared Compute-optimized
 	//
-	// 	- opensearch.share.storage: shared storage.
+	// - opensearch.share.storage: Shared Storage-optimized
 	//
-	// 	- opensearch.private.common: exclusive general-purpose.
+	// - opensearch.private.common: Dedicated General-purpose
 	//
-	// 	- opensearch.private.compute: exclusive computing.
+	// - opensearch.private.compute: Dedicated Compute-optimized
 	//
-	// 	- opensearch.private.storage: exclusive storage.
+	// - opensearch.private.storage: Dedicated Storage-optimized
 	//
 	// example:
 	//

@@ -16,9 +16,9 @@ type iModifySecondRankRequest interface {
 }
 
 type ModifySecondRankRequest struct {
-	// The request parameters.
+	// The request body, which contains the fine sort information.
 	Body *SecondRank `json:"body,omitempty" xml:"body,omitempty"`
-	// Specifies whether the request is a dry run.
+	// Specifies whether to perform a dry run.
 	//
 	// example:
 	//

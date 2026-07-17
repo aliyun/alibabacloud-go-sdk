@@ -24,31 +24,31 @@ type iUpdateFunctionResourceResponseBody interface {
 }
 
 type UpdateFunctionResourceResponseBody struct {
-	// The error code. If no error occurs, this parameter is left empty.
+	// The error code. This parameter is empty if the request is successful.
 	//
 	// example:
 	//
 	// InvalidRequest
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpCode *int64 `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	// The time consumed for the request. Unit: milliseconds.
+	// The request latency. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 123
 	Latency *float64 `json:"Latency,omitempty" xml:"Latency,omitempty"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// Invalid request.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

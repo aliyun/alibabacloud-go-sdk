@@ -14,6 +14,8 @@ type iUpdateAppGroupDeleteProtectionRequest interface {
 }
 
 type UpdateAppGroupDeleteProtectionRequest struct {
+	// The request body.
+	//
 	// example:
 	//
 	// {

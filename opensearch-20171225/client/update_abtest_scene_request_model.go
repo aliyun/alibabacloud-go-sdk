@@ -16,9 +16,9 @@ type iUpdateABTestSceneRequest interface {
 }
 
 type UpdateABTestSceneRequest struct {
-	// The request body.
+	// The A/B test scenario.
 	Body *ABTestScene `json:"body,omitempty" xml:"body,omitempty"`
-	// Specifies whether to perform a dry run. This parameter is only used to check whether the data source is valid. Valid values: true and false.
+	// Specifies whether to perform a dry run. This parameter is used only to check whether the data source is valid. Valid values: true and false.
 	//
 	// example:
 	//

@@ -19,15 +19,20 @@ type iModifyAppGroupQuotaRequest interface {
 
 type ModifyAppGroupQuotaRequest struct {
 	// The request body.
-	Body        *Quota  `json:"body,omitempty" xml:"body,omitempty"`
+	Body *Quota `json:"body,omitempty" xml:"body,omitempty"`
+	// A client token that is used to ensure the idempotence of the request. The client generates this value to make sure that it is unique among different requests. The value can be up to 64 ASCII characters in length.
+	//
+	// example:
+	//
+	// 74db41d8cd3c784209093aa76afbe89e
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// Specifies whether to check the validity of input parameters. Default value: false.
+	// Specifies whether to perform a dry run. Default value: false.
 	//
 	// Valid values:
 	//
-	// 	- **true**: checks only the validity of input parameters.
+	// - **true**: Validates the request parameters without creating the attribution configuration.
 	//
-	// 	- **false**: checks the validity of input parameters and creates an attribution configuration.
+	// - **false**: Validates the request parameters and creates the attribution configuration.
 	//
 	// example:
 	//

@@ -80,11 +80,11 @@ type CreateABTestExperimentResponseBodyResult struct {
 	//
 	// test3
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Indicates whether the experiment is in effect. Valid values:
+	// The status of the experiment.
 	//
-	// 	- true
+	// - true: The experiment is in effect.
 	//
-	// 	- false
+	// - false: The experiment is not in effect.
 	//
 	// example:
 	//

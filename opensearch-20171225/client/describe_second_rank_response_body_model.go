@@ -22,7 +22,7 @@ type DescribeSecondRankResponseBody struct {
 	//
 	// 0A6EB64B-B4C8-CF02-810F-E660812972FF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The information about the fine sort expression.
+	// The details of the second-rank expression.
 	Result *DescribeSecondRankResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -62,7 +62,7 @@ func (s *DescribeSecondRankResponseBody) Validate() error {
 }
 
 type DescribeSecondRankResponseBodyResult struct {
-	// Specifies whether to set the fine sort expression as the default sort expression.
+	// Indicates whether the expression is active.
 	//
 	// example:
 	//
@@ -74,45 +74,45 @@ type DescribeSecondRankResponseBodyResult struct {
 	//
 	// 1587052801
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
-	// Description
+	// The description.
 	//
 	// example:
 	//
 	// -
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The ID of the expression. This parameter appears only in the response.
+	// The ID of the expression. This parameter is returned only in the response.
 	//
 	// example:
 	//
 	// 89047
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// Indicates whether the expression is the default one. This parameter appears only in the response. Valid values:
+	// Indicates whether the expression is the default one. This parameter is returned only in the response.
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
 	// true
 	IsDefault *string `json:"isDefault,omitempty" xml:"isDefault,omitempty"`
-	// Indicates whether the expression is a system expression. This parameter appears only in the response. Valid values:
+	// Indicates whether the expression is a system expression. This parameter is returned only in the response.
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
 	// false
 	IsSys *string `json:"isSys,omitempty" xml:"isSys,omitempty"`
-	// The content of the fine sort expression. You can define an expression that consists of fields, feature functions, and mathematical functions to implement complex sort logic.
+	// The second-rank expression. You can write an expression that contains fields, feature functions, and mathematical functions to implement complex sort logic.
 	//
 	// example:
 	//
 	// random()+now()
 	Meta *string `json:"meta,omitempty" xml:"meta,omitempty"`
-	// The name.
+	// The name of the expression.
 	//
 	// example:
 	//

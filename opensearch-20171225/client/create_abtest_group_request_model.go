@@ -18,13 +18,13 @@ type iCreateABTestGroupRequest interface {
 type CreateABTestGroupRequest struct {
 	// The request body. For more information, see [ABTestGroup](https://help.aliyun.com/document_detail/178935.html).
 	Body *ABTestGroup `json:"body,omitempty" xml:"body,omitempty"`
-	// Specifies whether to check the validity of input parameters. Default value: false.
+	// Specifies whether to check the validity of the input parameters. The default value is false.
 	//
 	// Valid values:
 	//
-	// 	- **true**: checks only the validity of input parameters.
+	// - **true**: checks only the validity of the input parameters.
 	//
-	// 	- **false**: checks the validity of input parameters and creates an attribution configuration.
+	// - **false**: checks the validity of the input parameters and creates an attribution configuration.
 	//
 	// example:
 	//

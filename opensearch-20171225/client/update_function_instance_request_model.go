@@ -20,13 +20,13 @@ type iUpdateFunctionInstanceRequest interface {
 }
 
 type UpdateFunctionInstanceRequest struct {
-	// The parameters that are used to create the instance.
+	// The list of creation parameters.
 	//
 	// example:
 	//
 	// {             "name": "title_field",             "value": "title"         }
 	CreateParameters []*UpdateFunctionInstanceRequestCreateParameters `json:"createParameters,omitempty" xml:"createParameters,omitempty" type:"Repeated"`
-	// The cron expression used to schedule periodic training, in the format of (Minutes Hours DayofMonth Month DayofWeek). The default value is empty, which indicates that no periodic training is performed. DayofWeek 0 indicates Sunday.
+	// The schedule for periodic training. The value must be a cron expression in the format of Minutes Hours DayofMonth Month DayofWeek. If you leave this parameter empty, periodic training is disabled by default. For DayofWeek, 0 indicates Sunday.
 	//
 	// example:
 	//
@@ -36,9 +36,9 @@ type UpdateFunctionInstanceRequest struct {
 	//
 	// example:
 	//
-	// test instance
+	// Test instance
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The parameters that are used.
+	// The list of usage parameters.
 	UsageParameters []*UpdateFunctionInstanceRequestUsageParameters `json:"usageParameters,omitempty" xml:"usageParameters,omitempty" type:"Repeated"`
 }
 

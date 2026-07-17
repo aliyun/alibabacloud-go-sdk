@@ -26,9 +26,9 @@ type iCreateAppGroupRequest interface {
 type CreateAppGroupRequest struct {
 	// The billing method. Valid values:
 	//
-	// 	- POSTPAY: pay-as-you-go
+	// - POSTPAY: pay-as-you-go
 	//
-	// 	- PREPAY: subscription
+	// - PREPAY: subscription
 	//
 	// example:
 	//
@@ -50,11 +50,11 @@ type CreateAppGroupRequest struct {
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The tags.
 	Tags []*CreateAppGroupRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The type of the application. Valid values:
+	// The application type. Valid values:
 	//
-	// 	- standard
+	// - standard: Standard Edition
 	//
-	// 	- enhanced
+	// - enhanced: Premium Edition
 	//
 	// example:
 	//
@@ -157,19 +157,19 @@ type CreateAppGroupRequestQuota struct {
 	DocSize *int32 `json:"docSize,omitempty" xml:"docSize,omitempty"`
 	// The specifications. Valid values:
 	//
-	// 	- opensearch.share.junior: basic
+	// - opensearch.share.junior: basic
 	//
-	// 	- opensearch.share.common: shared general-purpose
+	// - opensearch.share.common: shared general-purpose
 	//
-	// 	- opensearch.share.compute: shared computing
+	// - opensearch.share.compute: shared compute-optimized
 	//
-	// 	- opensearch.share.storage: shared storage
+	// - opensearch.share.storage: shared storage-optimized
 	//
-	// 	- opensearch.private.common: exclusive general-purpose
+	// - opensearch.private.common: exclusive general-purpose
 	//
-	// 	- opensearch.private.compute: exclusive computing
+	// - opensearch.private.compute: exclusive compute-optimized
 	//
-	// 	- opensearch.private.storage: exclusive storage
+	// - opensearch.private.storage: exclusive storage-optimized
 	//
 	// example:
 	//

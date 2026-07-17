@@ -64,9 +64,9 @@ func (s *DescribeAppGroupResponseBody) Validate() error {
 type DescribeAppGroupResponseBodyResult struct {
 	// The billing method. Valid values:
 	//
-	// 	- POSTPAY: pay-as-you-go.
+	// - POSTPAY: pay-as-you-go.
 	//
-	// 	- PREPAY: subscription.
+	// - PREPAY: subscription.
 	//
 	// example:
 	//
@@ -74,9 +74,9 @@ type DescribeAppGroupResponseBodyResult struct {
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
 	// The billable item. Valid values:
 	//
-	// 	- 1: computing resources.
+	// - 1: computing resources.
 	//
-	// 	- 2: queries per second (QPS).
+	// - 2: queries per second (QPS).
 	//
 	// example:
 	//
@@ -111,7 +111,8 @@ type DescribeAppGroupResponseBodyResult struct {
 	// example:
 	//
 	// ecommerce
-	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	Domain     *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	ElasticLcu *int32  `json:"elasticLcu,omitempty" xml:"elasticLcu,omitempty"`
 	// The engine type.
 	//
 	// example:
@@ -132,9 +133,9 @@ type DescribeAppGroupResponseBodyResult struct {
 	FirstRankAlgoDeploymentId *int32 `json:"firstRankAlgoDeploymentId,omitempty" xml:"firstRankAlgoDeploymentId,omitempty"`
 	// The approval state of the quotas. Valid values:
 	//
-	// 	- 0: The application is in service.
+	// - 0: The application is in service.
 	//
-	// 	- 1: The quotas are being reviewed.
+	// - 1: The quotas are being reviewed.
 	//
 	// example:
 	//
@@ -154,11 +155,11 @@ type DescribeAppGroupResponseBodyResult struct {
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	// The lock state. Valid values:
 	//
-	// 	- Unlock: The instance is unlocked.
+	// - Unlock: The instance is unlocked.
 	//
-	// 	- LockByExpiration: The instance is automatically locked after it expires.
+	// - LockByExpiration: The instance is automatically locked after it expires.
 	//
-	// 	- ManualLock: The instance is manually locked.
+	// - ManualLock: The instance is manually locked.
 	//
 	// example:
 	//
@@ -190,9 +191,9 @@ type DescribeAppGroupResponseBodyResult struct {
 	ProcessingOrderId *string `json:"processingOrderId,omitempty" xml:"processingOrderId,omitempty"`
 	// Indicates whether the application is created. Valid values:
 	//
-	// 	- 0: The application is being created.
+	// - 0: The application is being created.
 	//
-	// 	- 1: The application is created.
+	// - 1: The application is created.
 	//
 	// example:
 	//
@@ -220,15 +221,15 @@ type DescribeAppGroupResponseBodyResult struct {
 	SecondRankAlgoDeploymentId *int32 `json:"secondRankAlgoDeploymentId,omitempty" xml:"secondRankAlgoDeploymentId,omitempty"`
 	// The state of the application. Valid values:
 	//
-	// 	- producing: The application is being created.
+	// - producing: The application is being created.
 	//
-	// 	- review_pending: The application is being reviewed.
+	// - review_pending: The application is being reviewed.
 	//
-	// 	- config_pending: The application is to be configured.
+	// - config_pending: The application is to be configured.
 	//
-	// 	- normal: The application is in service.
+	// - normal: The application is in service.
 	//
-	// 	- frozen: The application is frozen.
+	// - frozen: The application is frozen.
 	//
 	// example:
 	//
@@ -244,9 +245,9 @@ type DescribeAppGroupResponseBodyResult struct {
 	Tags []*DescribeAppGroupResponseBodyResultTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The type of the application. Valid values:
 	//
-	// 	- standard: a High-performance Search Edition application.
+	// - standard: a High-performance Search Edition application.
 	//
-	// 	- enhanced: an Industry Algorithm Edition application.
+	// - enhanced: an Industry Algorithm Edition application.
 	//
 	// example:
 	//
@@ -294,6 +295,10 @@ func (s *DescribeAppGroupResponseBodyResult) GetDescription() *string {
 
 func (s *DescribeAppGroupResponseBodyResult) GetDomain() *string {
 	return s.Domain
+}
+
+func (s *DescribeAppGroupResponseBodyResult) GetElasticLcu() *int32 {
+	return s.ElasticLcu
 }
 
 func (s *DescribeAppGroupResponseBodyResult) GetEngineType() *string {
@@ -412,6 +417,11 @@ func (s *DescribeAppGroupResponseBodyResult) SetDescription(v string) *DescribeA
 
 func (s *DescribeAppGroupResponseBodyResult) SetDomain(v string) *DescribeAppGroupResponseBodyResult {
 	s.Domain = &v
+	return s
+}
+
+func (s *DescribeAppGroupResponseBodyResult) SetElasticLcu(v int32) *DescribeAppGroupResponseBodyResult {
+	s.ElasticLcu = &v
 	return s
 }
 
@@ -553,19 +563,19 @@ type DescribeAppGroupResponseBodyResultQuota struct {
 	DocSize *int32 `json:"docSize,omitempty" xml:"docSize,omitempty"`
 	// The specifications. Valid values:
 	//
-	// 	- opensearch.share.junior: basic.
+	// - opensearch.share.junior: basic.
 	//
-	// 	- opensearch.share.common: shared general-purpose.
+	// - opensearch.share.common: shared general-purpose.
 	//
-	// 	- opensearch.share.compute: shared computing.
+	// - opensearch.share.compute: shared computing.
 	//
-	// 	- opensearch.share.storage: shared storage.
+	// - opensearch.share.storage: shared storage.
 	//
-	// 	- opensearch.private.common: exclusive general-purpose.
+	// - opensearch.private.common: exclusive general-purpose.
 	//
-	// 	- opensearch.private.compute: exclusive computing.
+	// - opensearch.private.compute: exclusive computing.
 	//
-	// 	- opensearch.private.storage: exclusive storage.
+	// - opensearch.private.storage: exclusive storage.
 	//
 	// example:
 	//

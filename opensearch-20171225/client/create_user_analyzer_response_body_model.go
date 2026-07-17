@@ -16,13 +16,13 @@ type iCreateUserAnalyzerResponseBody interface {
 }
 
 type CreateUserAnalyzerResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 98724351-D6B2-5D8A-B089-7FFD1821A7E9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The custom analyzer.
+	// The returned result.
 	//
 	// example:
 	//

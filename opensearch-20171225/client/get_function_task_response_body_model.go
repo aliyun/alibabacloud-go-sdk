@@ -58,7 +58,7 @@ type GetFunctionTaskResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The result of the request.
 	Result *GetFunctionTaskResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// The status of the request.
+	// The request status.
 	//
 	// example:
 	//
@@ -191,11 +191,11 @@ type GetFunctionTaskResponseBodyResult struct {
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the task. Valid values:
 	//
-	// 	- success
+	// - success
 	//
-	// 	- failed
+	// - failed
 	//
-	// 	- running
+	// - running
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iValidateDataSourcesRequest interface {
 }
 
 type ValidateDataSourcesRequest struct {
-	// The request parameter. For more information, see [DataSource](https://help.aliyun.com/document_detail/170005.html).
+	// The request parameters. For more information, see [DataSource](https://help.aliyun.com/document_detail/170005.html).
 	Body *DataSource `json:"body,omitempty" xml:"body,omitempty"`
 }
 

@@ -24,11 +24,11 @@ type ListUserAnalyzersResponseBody struct {
 	//
 	// 0A6EB64B-B4C8-CF02-810F-E660812972FF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The custom analyzer.
+	// The list of custom analyzers.
 	//
 	// For more information, see [UserAnalyzer](https://help.aliyun.com/document_detail/178934.html).
 	Result []*ListUserAnalyzersResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
-	// The total number.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -85,7 +85,7 @@ func (s *ListUserAnalyzersResponseBody) Validate() error {
 }
 
 type ListUserAnalyzersResponseBodyResult struct {
-	// Indicates whether the application is available.
+	// Indicates whether the analyzer is available.
 	//
 	// example:
 	//
@@ -93,41 +93,41 @@ type ListUserAnalyzersResponseBodyResult struct {
 	Available *bool `json:"available,omitempty" xml:"available,omitempty"`
 	// The basic analyzer. Valid values:
 	//
-	// 	- chn_standard: [a common analyzer in Chinese](https://help.aliyun.com/document_detail/179424.html)
+	// - chn_standard: [A general-purpose analyzer for Chinese](https://help.aliyun.com/document_detail/179424.html).
 	//
-	// 	- chn_scene_name: an analyzer for person names in Chinese
+	// - chn_scene_name: An analyzer for Chinese person names.
 	//
-	// 	- chn_ecommerce: [an analyzer for E-commerce in Chinese](https://help.aliyun.com/document_detail/179424.html)
+	// - chn_ecommerce: [An analyzer for e-commerce in Chinese](https://help.aliyun.com/document_detail/179424.html).
 	//
-	// 	- chn_it_content: [an analyzer for IT content in Chinese](https://help.aliyun.com/document_detail/179424.html)
+	// - chn_it_content: [An analyzer for IT content in Chinese](https://help.aliyun.com/document_detail/179424.html).
 	//
-	// 	- en_min: a small-granularity analyzer in English
+	// - en_min: A fine-grained analyzer for English.
 	//
-	// 	- th_standard: a common analyzer in Thai
+	// - th_standard: A general-purpose analyzer for Thai.
 	//
-	// 	- th_ecommerce: an analyzer for E-commerce in Thai
+	// - th_ecommerce: An analyzer for e-commerce in Thai.
 	//
-	// 	- vn_standard: a common analyzer in Vietnamese
+	// - vn_standard: A general-purpose analyzer for Vietnamese.
 	//
-	// 	- chn_community_it: an analyzer for IT community content in Chinese
+	// - chn_community_it: An analyzer for IT community content in Chinese.
 	//
-	// 	- chn_ecommerce_general: a common analyzer for the E-commerce industry in Chinese
+	// - chn_ecommerce_general: A general-purpose analyzer for the e-commerce industry in Chinese.
 	//
-	// 	- chn_esports_general: a common analyzer for the gaming industry in Chinese
+	// - chn_esports_general: A general-purpose analyzer for the gaming industry in Chinese.
 	//
-	// 	- chn_edu_question: an analyzer for question search of the education industry in Chinese
+	// - chn_edu_question: An analyzer for question-answering search in the education industry in Chinese.
 	//
 	// example:
 	//
 	// chn_standard
 	Business *string `json:"business,omitempty" xml:"business,omitempty"`
-	// The timestamp when the application was created.
+	// The timestamp when the analyzer was created.
 	//
 	// example:
 	//
 	// 1588054131
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
-	// The dictionaries that are used by the custom analyzer.
+	// The dictionaries that the custom analyzer uses.
 	//
 	// For more information, see [UserDict](https://help.aliyun.com/document_detail/178933.html).
 	Dicts []*ListUserAnalyzersResponseBodyResultDicts `json:"dicts,omitempty" xml:"dicts,omitempty" type:"Repeated"`
@@ -143,7 +143,7 @@ type ListUserAnalyzersResponseBodyResult struct {
 	//
 	// kevin_test2
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The timestamp when the application was last updated.
+	// The timestamp when the analyzer was last updated.
 	//
 	// example:
 	//
@@ -236,25 +236,25 @@ func (s *ListUserAnalyzersResponseBodyResult) Validate() error {
 }
 
 type ListUserAnalyzersResponseBodyResultDicts struct {
-	// Indicates whether the application is available.
+	// Indicates whether the dictionary is available.
 	//
 	// example:
 	//
 	// false
 	Available *bool `json:"available,omitempty" xml:"available,omitempty"`
-	// The timestamp when the application was created.
+	// The timestamp when the dictionary was created.
 	//
 	// example:
 	//
 	// 1588054131
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
-	// The number of intervention entries.
+	// The number of entries.
 	//
 	// example:
 	//
 	// -1
 	EntriesCount *int32 `json:"entriesCount,omitempty" xml:"entriesCount,omitempty"`
-	// The maximum number of intervention entries that can be created in the dictionary.
+	// The maximum number of entries in the dictionary.
 	//
 	// example:
 	//
@@ -266,15 +266,15 @@ type ListUserAnalyzersResponseBodyResultDicts struct {
 	//
 	// 123
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The type. Valid value:
+	// The type of the dictionary. Valid value:
 	//
-	// 	- segment
+	// - segment: A dictionary for word segmentation.
 	//
 	// example:
 	//
 	// segment
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The timestamp when the application was last updated.
+	// The timestamp when the dictionary was last updated.
 	//
 	// example:
 	//

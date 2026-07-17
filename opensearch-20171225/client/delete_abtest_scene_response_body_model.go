@@ -20,13 +20,13 @@ type DeleteABTestSceneResponseBody struct {
 	//
 	// example:
 	//
-	// ABCDEFGH
+	// 5C1C1C45-C64A-AD30-565F-140871D57E5E
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The returned results.
 	//
 	// example:
 	//
-	// {}
+	// []
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 

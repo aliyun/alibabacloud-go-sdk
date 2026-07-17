@@ -24,9 +24,9 @@ type ListStatisticLogsResponseBody struct {
 	//
 	// F76ACE3D-E510-EE2C-B7B1-39B3136A61EE
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The returned result. For more information, see
+	// The returned data. For more information, see:
 	//
-	// 	- [Parameters of hotwords rankings](https://help.aliyun.com/document_detail/421248.html).
+	// - [Hotword rankings](https://help.aliyun.com/document_detail/421248.html)
 	//
 	// example:
 	//

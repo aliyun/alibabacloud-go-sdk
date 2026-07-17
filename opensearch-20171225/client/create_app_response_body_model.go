@@ -22,7 +22,7 @@ type CreateAppResponseBody struct {
 	//
 	// ABCDEFG
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The response parameters.
+	// The response data.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ func (s *CreateAppResponseBody) Validate() error {
 }
 
 type CreateAppResponseBodyResult struct {
-	// The capability opening configurations.
+	// The feature configurations.
 	Cluster *CreateAppResponseBodyResultCluster `json:"cluster,omitempty" xml:"cluster,omitempty" type:"Struct"`
 	// Deprecated
 	//
@@ -78,19 +78,19 @@ type CreateAppResponseBodyResult struct {
 	ClusterName *string                  `json:"clusterName,omitempty" xml:"clusterName,omitempty"`
 	ConfigItems []map[string]interface{} `json:"configItems,omitempty" xml:"configItems,omitempty" type:"Repeated"`
 	Created     *int64                   `json:"created,omitempty" xml:"created,omitempty"`
-	// The configurations of the data sources.
+	// The data source configurations.
 	DataSources []*CreateAppResponseBodyResultDataSources `json:"dataSources,omitempty" xml:"dataSources,omitempty" type:"Repeated"`
-	// The description of the application.
+	// The application description.
 	//
 	// example:
 	//
 	// My application
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The industry model module.
+	// The industry model.
 	Domain *CreateAppResponseBodyResultDomain `json:"domain,omitempty" xml:"domain,omitempty" type:"Struct"`
 	// The default display fields.
 	FetchFields []*string `json:"fetchFields,omitempty" xml:"fetchFields,omitempty" type:"Repeated"`
-	// The configurations of rough sort.
+	// The rough sort configurations.
 	FirstRanks []*CreateAppResponseBodyResultFirstRanks `json:"firstRanks,omitempty" xml:"firstRanks,omitempty" type:"Repeated"`
 	// The application ID.
 	//
@@ -98,64 +98,100 @@ type CreateAppResponseBodyResult struct {
 	//
 	// 12888
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The descriptions of the LLM table fields.
+	// The descriptions of the large language model (LLM) table fields.
 	//
 	// example:
 	//
-	// { "name": "longyu_llm_1", "schemas": [], "interpretations": [ { "table": "table1", "fields": [ { "name": "field1", "interpretation": "Title" }, { "name": "field2", "interpretation": "Number" } ] } ] }
+	// {
+	//
+	//     "name": "longyu_llm_1",
+	//
+	//     "schemas": [],
+	//
+	//     "interpretations": [
+	//
+	//         {
+	//
+	//             "table": "table1",
+	//
+	//             "fields": [
+	//
+	//                 {
+	//
+	//                     "name": "field1",
+	//
+	//                     "interpretation": " title"
+	//
+	//                 },
+	//
+	//                 {
+	//
+	//                     "name": "field2",
+	//
+	//                     "interpretation": " ID"
+	//
+	//                 }
+	//
+	//             ]
+	//
+	//         }
+	//
+	//     ]
+	//
+	// }
 	Interpretations []map[string]interface{} `json:"interpretations,omitempty" xml:"interpretations,omitempty" type:"Repeated"`
-	// Indicates whether the version is an online version.
+	// Indicates whether the version is the online version.
 	//
 	// example:
 	//
 	// 12333
 	IsCurrent *bool `json:"isCurrent,omitempty" xml:"isCurrent,omitempty"`
-	// The percentage for the data import progress.
+	// The data import progress, in percentage.
 	//
 	// example:
 	//
 	// 100
 	ProgressPercent *int32 `json:"progressPercent,omitempty" xml:"progressPercent,omitempty"`
-	// The prompt configurations
+	// The prompt configurations.
 	Prompts []map[string]interface{} `json:"prompts,omitempty" xml:"prompts,omitempty" type:"Repeated"`
-	// The query intent understanding configurations.
+	// The intention recognition configurations.
 	QueryProcessors []*CreateAppResponseBodyResultQueryProcessors `json:"queryProcessors,omitempty" xml:"queryProcessors,omitempty" type:"Repeated"`
-	// The quota.
+	// The quota of the version.
 	Quota *CreateAppResponseBodyResultQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
-	// The single-table schema.
+	// The schema of the single-table application.
 	Schema *CreateAppResponseBodyResultSchema `json:"schema,omitempty" xml:"schema,omitempty" type:"Struct"`
-	// The multi-table schema.
+	// The schema of the multi-table application.
 	Schemas []*CreateAppResponseBodyResultSchemas `json:"schemas,omitempty" xml:"schemas,omitempty" type:"Repeated"`
-	// The configurations of fine sort.
+	// The fine sort configurations.
 	SecondRanks []*CreateAppResponseBodyResultSecondRanks `json:"secondRanks,omitempty" xml:"secondRanks,omitempty" type:"Repeated"`
-	// The status of the application. Valid values:
+	// The application status.
 	//
-	// 	- OK
+	// - OK
 	//
-	// 	- STOPPED
+	// - STOPPED: The application is paused.
 	//
-	// 	- FROZEN
+	// - FROZEN: The application is frozen.
 	//
-	// 	- INITIALIZING
+	// - INITIALIZING: The version is being initialized.
 	//
-	// 	- UNAVAILABLE
+	// - UNAVAILABLE: The version is invalid.
 	//
-	// 	- DATA_WAITING
+	// - DATA_WAITING: The system is waiting for data initialization.
 	//
-	// 	- DATA_PREPARING
+	// - DATA_PREPARING: Data is being initialized.
 	//
 	// example:
 	//
 	// OK
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The summary configurations of search results.
+	// The search result summary settings.
 	Summaries  []*CreateAppResponseBodyResultSummaries `json:"summaries,omitempty" xml:"summaries,omitempty" type:"Repeated"`
 	SwitchTime *int64                                  `json:"switchTime,omitempty" xml:"switchTime,omitempty"`
-	// The type of the application. Valid values:
+	// The application type.
 	//
-	// 	- standard
+	// - standard: Standard Edition
 	//
-	// 	- enhanced
+	// - enhanced: Premium Edition
 	//
 	// example:
 	//
@@ -476,7 +512,7 @@ type CreateAppResponseBodyResultCluster struct {
 	//
 	// 1024
 	MaxQueryClauseLength *int32 `json:"maxQueryClauseLength,omitempty" xml:"maxQueryClauseLength,omitempty"`
-	// The timeout period. Unit: milliseconds.
+	// The timeout period for the cluster, in milliseconds.
 	//
 	// example:
 	//
@@ -602,31 +638,31 @@ type CreateAppResponseBodyResultDataSources struct {
 	//
 	// }
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
-	// The plug-ins that are used for data processing.
+	// The data processing plugins for fields.
 	//
-	// name:
+	// Plugin name (name):
 	//
-	// 	- JsonKeyValueExtractor
+	// - JsonKeyValueExtractor
 	//
-	// 	- MultiValueSpliter
+	// - MultiValueSpliter
 	//
-	// 	- KeyValueExtractor
+	// - KeyValueExtractor
 	//
-	// 	- StringCatenateExtractor
+	// - StringCatenateExtractor
 	//
-	// 	- HTMLTagRemover
+	// - HTMLTagRemover
 	//
-	// parameters:
+	// Plugin parameters (parameters):
 	//
-	// 	- JsonKeyValueExtractor
+	// - JsonKeyValueExtractor
 	//
-	// 	- MultiValueSpliter
+	// - MultiValueSpliter
 	//
-	// 	- KeyValueExtractor
+	// - KeyValueExtractor
 	//
-	// 	- StringCatenateExtractor
+	// - StringCatenateExtractor
 	//
-	// 	- HTMLTagRemover
+	// - HTMLTagRemover
 	//
 	// example:
 	//
@@ -648,21 +684,21 @@ type CreateAppResponseBodyResultDataSources struct {
 	//
 	// table_name
 	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
-	// The name of the table in the application.
+	// The name of the application table.
 	//
 	// example:
 	//
 	// main
 	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
-	// The type of the data source. Valid values:
+	// The type of the data source.
 	//
-	// 	- rds
+	// - rds
 	//
-	// 	- odps
+	// - odps
 	//
-	// 	- opensearch
+	// - opensearch
 	//
-	// 	- polardb
+	// - polardb
 	//
 	// example:
 	//
@@ -754,13 +790,13 @@ type CreateAppResponseBodyResultDomain struct {
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
 	// The selected features.
 	Functions *CreateAppResponseBodyResultDomainFunctions `json:"functions,omitempty" xml:"functions,omitempty" type:"Struct"`
-	// The industry type. Valid values:
+	// The industry. Valid values:
 	//
-	// 	- GENERAL
+	// - GENERAL
 	//
-	// 	- ECOMMERCE
+	// - ECOMMERCE
 	//
-	// 	- IT_CONTENT
+	// - IT_CONTENT
 	//
 	// example:
 	//
@@ -813,11 +849,11 @@ func (s *CreateAppResponseBodyResultDomain) Validate() error {
 }
 
 type CreateAppResponseBodyResultDomainFunctions struct {
-	// The features of the sort policy category.
+	// The sort policy features.
 	Algo []*string `json:"algo,omitempty" xml:"algo,omitempty" type:"Repeated"`
-	// The features of the query analysis category.
+	// The query analysis features.
 	Qp []*string `json:"qp,omitempty" xml:"qp,omitempty" type:"Repeated"`
-	// The features of the service category.
+	// The ancillary service features.
 	Service []*string `json:"service,omitempty" xml:"service,omitempty" type:"Repeated"`
 }
 
@@ -861,7 +897,7 @@ func (s *CreateAppResponseBodyResultDomainFunctions) Validate() error {
 }
 
 type CreateAppResponseBodyResultFirstRanks struct {
-	// Indicates whether the expression is the default one.
+	// Specifies whether the expression is the default one.
 	//
 	// example:
 	//
@@ -871,13 +907,13 @@ type CreateAppResponseBodyResultFirstRanks struct {
 	//
 	// example:
 	//
-	// Description
+	// 描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The information about the expression. The information can be of the array or string type.
+	// The details of the expression. The value can be an array or a string.
 	//
 	// example:
 	//
-	// String :"random()*100+now()";
+	// String :"random()*100+now()"；
 	//
 	// Array: [
 	//
@@ -899,9 +935,9 @@ type CreateAppResponseBodyResultFirstRanks struct {
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The expression type. Valid values:
+	// The type of the expression. Valid values: \\`STRUCT\\`: a structured expression. \\`STRING\\`: a custom formula. Default value: \\`STRING\\`.
 	//
-	// STRUCT: The content of the expression is a structure. STRING (default): You can configure a custom formula.
+	// STRUCT: The content of the expression is a structure. STRING (default): custom formula.
 	//
 	// example:
 	//
@@ -967,7 +1003,7 @@ func (s *CreateAppResponseBodyResultFirstRanks) Validate() error {
 }
 
 type CreateAppResponseBodyResultQueryProcessors struct {
-	// Indicates whether the rule is the default one.
+	// Specifies whether the rule is the default one.
 	//
 	// example:
 	//
@@ -979,19 +1015,19 @@ type CreateAppResponseBodyResultQueryProcessors struct {
 	//
 	// ""
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// The industry type. Valid values:
+	// The industry. Valid values:
 	//
-	// 	- GENERAL
+	// - GENERAL: general
 	//
-	// 	- ECOMMERCE
+	// - ECOMMERCE: e-commerce
 	//
-	// 	- IT_CONTENT
+	// - IT_CONTENT: IT content
 	//
 	// example:
 	//
 	// GENERAL
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// The index range.
+	// The indexes of the application.
 	Indexes []*string `json:"indexes,omitempty" xml:"indexes,omitempty" type:"Repeated"`
 	// The rule name.
 	//
@@ -999,7 +1035,7 @@ type CreateAppResponseBodyResultQueryProcessors struct {
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The features.
+	// The features that are included.
 	Processors []map[string]interface{} `json:"processors,omitempty" xml:"processors,omitempty" type:"Repeated"`
 }
 
@@ -1070,7 +1106,7 @@ func (s *CreateAppResponseBodyResultQueryProcessors) Validate() error {
 }
 
 type CreateAppResponseBodyResultQuota struct {
-	// The computing resources.
+	// The compute resources.
 	//
 	// example:
 	//
@@ -1082,27 +1118,27 @@ type CreateAppResponseBodyResultQuota struct {
 	//
 	// 1
 	DocSize *int32 `json:"docSize,omitempty" xml:"docSize,omitempty"`
-	// The search request.
+	// The queries per second (QPS).
 	//
 	// example:
 	//
 	// 5
 	Qps *int32 `json:"qps,omitempty" xml:"qps,omitempty"`
-	// The specifications. Valid values:
+	// The instance specifications. Valid values:
 	//
-	// 	- opensearch.share.junior: basic
+	// - opensearch.share.junior: Starter Edition
 	//
-	// 	- opensearch.share.common: shared general-purpose
+	// - opensearch.share.common: Shared General-purpose
 	//
-	// 	- opensearch.share.compute: shared computing
+	// - opensearch.share.compute: Shared Compute-optimized
 	//
-	// 	- opensearch.share.storage: shared storage
+	// - opensearch.share.storage: Shared Storage-optimized
 	//
-	// 	- opensearch.private.common: exclusive general-purpose
+	// - opensearch.private.common: Exclusive General-purpose
 	//
-	// 	- opensearch.private.compute: exclusive computing
+	// - opensearch.private.compute: Exclusive Compute-optimized
 	//
-	// 	- opensearch.private.storage: exclusive storage
+	// - opensearch.private.storage: Exclusive Storage-optimized
 	//
 	// example:
 	//
@@ -1198,7 +1234,7 @@ func (s *CreateAppResponseBodyResultQuota) Validate() error {
 }
 
 type CreateAppResponseBodyResultSchema struct {
-	// The sort configurations.
+	// The inverted index configurations.
 	IndexSortConfig []*CreateAppResponseBodyResultSchemaIndexSortConfig `json:"indexSortConfig,omitempty" xml:"indexSortConfig,omitempty" type:"Repeated"`
 	// The index schema.
 	Indexes *CreateAppResponseBodyResultSchemaIndexes `json:"indexes,omitempty" xml:"indexes,omitempty" type:"Struct"`
@@ -1214,9 +1250,9 @@ type CreateAppResponseBodyResultSchema struct {
 	//
 	// field1
 	RouteField *string `json:"routeField,omitempty" xml:"routeField,omitempty"`
-	// The name of the level-2 routing field. This parameter takes effect only when the routeFieldValues parameter is configured. By default, the wide-table primary key field is used as the level-2 routing field.
+	// The name of the level-2 routing field. This parameter takes effect only when routeFieldValues is configured. By default, the primary key of the wide table is used.
 	RouteFieldValues []*string `json:"routeFieldValues,omitempty" xml:"routeFieldValues,omitempty" type:"Repeated"`
-	// The name of the level-2 routing field. This parameter takes effect only when the routeFieldValues parameter is configured. By default, the wide-table primary key field is used as the level-2 routing field.
+	// The name of the level-2 routing field. This parameter takes effect only when routeFieldValues is configured. By default, the primary key of the wide table is used.
 	//
 	// example:
 	//
@@ -1288,7 +1324,7 @@ type CreateAppResponseBodyResultSchema struct {
 	//
 	// }
 	Tables map[string]interface{} `json:"tables,omitempty" xml:"tables,omitempty"`
-	// The document clearing configurations.
+	// The document expiration configuration.
 	TtlField *CreateAppResponseBodyResultSchemaTtlField `json:"ttlField,omitempty" xml:"ttlField,omitempty" type:"Struct"`
 }
 
@@ -1396,11 +1432,11 @@ func (s *CreateAppResponseBodyResultSchema) Validate() error {
 }
 
 type CreateAppResponseBodyResultSchemaIndexSortConfig struct {
-	// The sort method. Valid values:
+	// The sort order.
 	//
-	// 	- ASC
+	// - ASC
 	//
-	// 	- DESC
+	// - DESC
 	//
 	// example:
 	//
@@ -1492,13 +1528,13 @@ func (s *CreateAppResponseBodyResultSchemaIndexes) Validate() error {
 }
 
 type CreateAppResponseBodyResultSchemaTtlField struct {
-	// The name of the document time field.
+	// The document time field.
 	//
 	// example:
 	//
 	// text1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The TTL. Unit: milliseconds.
+	// The time to live (TTL), in milliseconds.
 	//
 	// example:
 	//
@@ -1537,7 +1573,7 @@ func (s *CreateAppResponseBodyResultSchemaTtlField) Validate() error {
 }
 
 type CreateAppResponseBodyResultSchemas struct {
-	// The sort configurations.
+	// The inverted index configuration.
 	IndexSortConfig []*CreateAppResponseBodyResultSchemasIndexSortConfig `json:"indexSortConfig,omitempty" xml:"indexSortConfig,omitempty" type:"Repeated"`
 	// The index schema.
 	Indexes *CreateAppResponseBodyResultSchemasIndexes `json:"indexes,omitempty" xml:"indexes,omitempty" type:"Struct"`
@@ -1553,9 +1589,9 @@ type CreateAppResponseBodyResultSchemas struct {
 	//
 	// field1
 	RouteField *string `json:"routeField,omitempty" xml:"routeField,omitempty"`
-	// The hot values of the level-1 routing field. After you configure this parameter, level-2 routing is enabled.
+	// The list of hotspot values for the level-1 routing field. After you configure this parameter, level-2 routing is enabled.
 	RouteFieldValues []*string `json:"routeFieldValues,omitempty" xml:"routeFieldValues,omitempty" type:"Repeated"`
-	// The name of the level-2 routing field. This parameter takes effect only when the routeFieldValues parameter is configured. By default, the wide-table primary key field is used as the level-2 routing field.
+	// The name of the level-2 routing field. This parameter takes effect only when routeFieldValues is configured. By default, the primary key of the wide table is used.
 	//
 	// example:
 	//
@@ -1627,7 +1663,7 @@ type CreateAppResponseBodyResultSchemas struct {
 	//
 	// }
 	Tables map[string]interface{} `json:"tables,omitempty" xml:"tables,omitempty"`
-	// The document clearing configurations.
+	// The document expiration configuration.
 	TtlField *CreateAppResponseBodyResultSchemasTtlField `json:"ttlField,omitempty" xml:"ttlField,omitempty" type:"Struct"`
 }
 
@@ -1735,11 +1771,11 @@ func (s *CreateAppResponseBodyResultSchemas) Validate() error {
 }
 
 type CreateAppResponseBodyResultSchemasIndexSortConfig struct {
-	// The sort method. Valid values:
+	// The sort order.
 	//
-	// 	- ASC
+	// - ASC
 	//
-	// 	- DESC
+	// - DESC
 	//
 	// example:
 	//
@@ -1831,13 +1867,13 @@ func (s *CreateAppResponseBodyResultSchemasIndexes) Validate() error {
 }
 
 type CreateAppResponseBodyResultSchemasTtlField struct {
-	// The name of the document time field.
+	// The document time field.
 	//
 	// example:
 	//
 	// fIeld1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The TTL. Unit: milliseconds.
+	// The time to live (TTL), in milliseconds.
 	//
 	// example:
 	//
@@ -1876,7 +1912,7 @@ func (s *CreateAppResponseBodyResultSchemasTtlField) Validate() error {
 }
 
 type CreateAppResponseBodyResultSecondRanks struct {
-	// Indicates whether the expression is the default one.
+	// Specifies whether the expression is the default one.
 	//
 	// example:
 	//
@@ -1888,7 +1924,7 @@ type CreateAppResponseBodyResultSecondRanks struct {
 	//
 	// default
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The fine sort expression. You can define an expression that contains fields, feature functions, and mathematical functions to implement complex sort logic.
+	// The fine sort expression. You can write an expression that contains fields, feature functions, and mathematical functions to implement complex sort logic.
 	//
 	// example:
 	//
@@ -1951,7 +1987,7 @@ func (s *CreateAppResponseBodyResultSecondRanks) Validate() error {
 }
 
 type CreateAppResponseBodyResultSummaries struct {
-	// The collection of summary configurations.
+	// The summary configurations.
 	Meta []*CreateAppResponseBodyResultSummariesMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Repeated"`
 	// The group name.
 	//
@@ -2001,13 +2037,13 @@ func (s *CreateAppResponseBodyResultSummaries) Validate() error {
 }
 
 type CreateAppResponseBodyResultSummariesMeta struct {
-	// The element that is used for highlighting.
+	// The HTML tag for highlight.
 	//
 	// example:
 	//
 	// em
 	Element *string `json:"element,omitempty" xml:"element,omitempty"`
-	// The connector that is used to connect segments.
+	// The string used to connect snippets.
 	//
 	// example:
 	//
@@ -2019,13 +2055,13 @@ type CreateAppResponseBodyResultSummariesMeta struct {
 	//
 	// field1
 	Field *string `json:"field,omitempty" xml:"field,omitempty"`
-	// The length of the segment. Valid values: 1 to 300.
+	// The length of the snippet. The value must be in the range of [1, 300].
 	//
 	// example:
 	//
 	// 50
 	Len *int32 `json:"len,omitempty" xml:"len,omitempty"`
-	// The number of segments. Valid values: 1 to 5.
+	// The number of snippets. The value must be in the range of [1, 5].
 	//
 	// example:
 	//

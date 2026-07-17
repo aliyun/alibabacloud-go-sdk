@@ -16,13 +16,13 @@ type iDescribeABTestGroupResponseBody interface {
 }
 
 type DescribeABTestGroupResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// D77D0DAF-790D-F5F5-A9C0-133738165014
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The details of the test group.
+	// The A/B test group.
 	Result *DescribeABTestGroupResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -62,35 +62,35 @@ func (s *DescribeABTestGroupResponseBody) Validate() error {
 }
 
 type DescribeABTestGroupResponseBodyResult struct {
-	// The time when the test group was created.
+	// The time when the group was created.
 	//
 	// example:
 	//
 	// 1588839490
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
-	// The ID of the test group.
+	// The ID of the group.
 	//
 	// example:
 	//
 	// 13466
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The alias of the test group.
+	// The alias of the group.
 	//
 	// example:
 	//
 	// Group_2020-5-7_15:23:3
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The status of the test group. Valid values:
+	// The status of the group.
 	//
-	// 	- 0: not in effect
+	// - 0: Inactive
 	//
-	// 	- 1: in effect
+	// - 1: Active
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// The time when the test group was last updated.
+	// The time when the group was last modified.
 	//
 	// example:
 	//

@@ -36,37 +36,37 @@ type ListFunctionInstancesRequest struct {
 	//
 	// tf_checkpoint
 	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
-	// The richness of the returned information. Valid values:
+	// The level of detail for the returned information. Valid values:
 	//
-	// 	- normal: displays information such as createParameters and cron. This is the default value.
+	// - normal: Displays information such as createParameters and cron. This is the default value.
 	//
-	// 	- simple: displays only the basic information.
+	// - simple: Displays only basic information.
 	//
-	// 	- detail: returns the details of the training task.
+	// - detail: Returns the details of the training task.
 	//
 	// example:
 	//
 	// normal
 	Output *string `json:"output,omitempty" xml:"output,omitempty"`
-	// The number of the page to return. Default value: 1.
+	// The page number. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: 10.
+	// The number of entries per page. The default value is 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// How the instance is created. Valid values:
+	// The source of the instance. Valid values:
 	//
-	// 	- builtin: The instance is created by system.
+	// - builtin: The instance is created by the system.
 	//
-	// 	- user: The instance is created by user. This is the default value.
+	// - user: The instance is created by the user. This is the default value.
 	//
-	// 	- all: all instances
+	// - all: All instances.
 	//
 	// example:
 	//

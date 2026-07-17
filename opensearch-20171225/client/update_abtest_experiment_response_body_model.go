@@ -16,13 +16,13 @@ type iUpdateABTestExperimentResponseBody interface {
 }
 
 type UpdateABTestExperimentResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// D77D0DAF-790D-F5F5-A9C0-133738165014
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The details of the test.
+	// The details of the experiment.
 	Result *UpdateABTestExperimentResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -62,47 +62,47 @@ func (s *UpdateABTestExperimentResponseBody) Validate() error {
 }
 
 type UpdateABTestExperimentResponseBodyResult struct {
-	// The time when the test was created.
+	// The time when the experiment was created.
 	//
 	// example:
 	//
 	// 1588842080
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
-	// The test ID.
+	// The ID of the experiment.
 	//
 	// example:
 	//
 	// 12888
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The alias of the test.
+	// The name of the experiment.
 	//
 	// example:
 	//
 	// test1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Indicates whether the test is in effect. Valid values:
+	// The status of the experiment.
 	//
-	// 	- true
+	// - true: The experiment is online.
 	//
-	// 	- false
+	// - false: The experiment is offline.
 	//
 	// example:
 	//
 	// true
 	Online *bool `json:"online,omitempty" xml:"online,omitempty"`
-	// The test parameters.
+	// The parameters of the experiment.
 	//
 	// example:
 	//
 	// {}
 	Params map[string]interface{} `json:"params,omitempty" xml:"params,omitempty"`
-	// The percentage of traffic that is routed to the test. Valid values: [0,100]
+	// The percentage of traffic allocated to the experiment. Valid values: 0 to 100.
 	//
 	// example:
 	//
 	// 30
 	Traffic *int32 `json:"traffic,omitempty" xml:"traffic,omitempty"`
-	// The time when the test was last modified.
+	// The time when the experiment was last modified.
 	//
 	// example:
 	//

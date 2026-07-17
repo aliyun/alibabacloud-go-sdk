@@ -16,11 +16,14 @@ type iCreateAppGroupCredentialsRequest interface {
 }
 
 type CreateAppGroupCredentialsRequest struct {
+	// The credential type, such as \\`api-key\\`, \\`account\\`, \\`invoke-key\\`, or \\`api-token\\`. To create an API key, set this parameter to \\`api-token\\`.
+	//
 	// example:
 	//
 	// api-token
-	Type   *string `json:"type,omitempty" xml:"type,omitempty"`
-	DryRun *bool   `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// Specifies whether to perform a dry run. In a dry run, the system checks the request parameters but does not execute the operation.
+	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
 func (s CreateAppGroupCredentialsRequest) String() string {

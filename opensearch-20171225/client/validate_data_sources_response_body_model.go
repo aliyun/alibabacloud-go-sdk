@@ -22,7 +22,7 @@ type ValidateDataSourcesResponseBody struct {
 	//
 	// 8FA2B338-AFDC-46B4-A132-B5487820C2BF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The result returned.
+	// The request results.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ func (s *ValidateDataSourcesResponseBody) Validate() error {
 }
 
 type ValidateDataSourcesResponseBodyResult struct {
-	// The code returned for the request.
+	// The status code.
 	//
 	// example:
 	//
@@ -82,11 +82,11 @@ type ValidateDataSourcesResponseBodyResult struct {
 	//
 	// {}
 	DataSource *ValidateDataSourcesResponseBodyResultDataSource `json:"dataSource,omitempty" xml:"dataSource,omitempty" type:"Struct"`
-	// The status of the execution.
+	// The response message.
 	//
 	// example:
 	//
-	// successful
+	// Validate succeeded
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 }
 
@@ -135,19 +135,19 @@ func (s *ValidateDataSourcesResponseBodyResult) Validate() error {
 }
 
 type ValidateDataSourcesResponseBodyResultDataSource struct {
-	// The parameters of the data source.
+	// The parameter body.
 	//
 	// example:
 	//
 	// {}
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
-	// The name of the table.
+	// The table name.
 	//
 	// example:
 	//
 	// user_activity_decision
 	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
-	// The type of the data source.
+	// The data source type.
 	//
 	// example:
 	//

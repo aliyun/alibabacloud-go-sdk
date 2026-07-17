@@ -66,13 +66,13 @@ func (s *PushUserAnalyzerEntriesRequest) Validate() error {
 }
 
 type PushUserAnalyzerEntriesRequestEntries struct {
-	// The operation to be performed on the entries.
+	// The operation to perform on the entries.
 	//
 	// Valid values:
 	//
-	// 	- add
+	// - add
 	//
-	// 	- delete
+	// - delete
 	//
 	// example:
 	//
@@ -84,9 +84,9 @@ type PushUserAnalyzerEntriesRequestEntries struct {
 	//
 	// "testvalue"
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// Specifies whether to further analyze the terms that are generated after the search query is analyzed.
+	// Specifies whether to enable fine-grained splitting.
 	//
-	// Default value: true.
+	// Default: true
 	//
 	// example:
 	//

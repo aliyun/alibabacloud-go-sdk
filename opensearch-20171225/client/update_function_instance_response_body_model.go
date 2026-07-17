@@ -36,7 +36,7 @@ type UpdateFunctionInstanceResponseBody struct {
 	//
 	// 200
 	HttpCode *int64 `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	// The time consumed for the request, in milliseconds.
+	// The time consumed by the request. Unit: milliseconds (ms).
 	//
 	// example:
 	//
@@ -54,11 +54,19 @@ type UpdateFunctionInstanceResponseBody struct {
 	//
 	// "3A809095-C554-5CF5-8FCE-BE19D4673790"
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the request. Valid values:
+	// The request status.
 	//
-	// 	- OK: The request was successful.
+	// - ```
 	//
-	// 	- FAIL: The request failed.
+	//   OK: The request is successful.
+	//
+	//   ```
+	//
+	// - ```
+	//
+	//   FAIL: The request failed.
+	//
+	//   ```
 	//
 	// example:
 	//

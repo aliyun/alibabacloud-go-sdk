@@ -18,23 +18,23 @@ type iListUserAnalyzerEntriesRequest interface {
 }
 
 type ListUserAnalyzerEntriesRequest struct {
-	// The page number. Default value: 1.
+	// The page number. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page. Default value: 10.
+	// The number of entries to return on each page. The default value is 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The key to be used to query entries.
+	// The entry key.
 	//
 	// example:
 	//
-	// kevintest
+	// "kevintest"
 	Word *string `json:"word,omitempty" xml:"word,omitempty"`
 }
 

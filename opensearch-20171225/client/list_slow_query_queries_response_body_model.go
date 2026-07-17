@@ -16,13 +16,13 @@ type iListSlowQueryQueriesResponseBody interface {
 }
 
 type ListSlowQueryQueriesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// EB250CA0-ACFD-C5DE-17CD-01445BFE8AE5
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The return result.
+	// The result of the request.
 	Result *ListSlowQueryQueriesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -62,13 +62,13 @@ func (s *ListSlowQueryQueriesResponseBody) Validate() error {
 }
 
 type ListSlowQueryQueriesResponseBodyResult struct {
-	// The content of the optimization suggestion for the query.
+	// The information about the optimization suggestion.
 	//
 	// example:
 	//
 	// no data
 	AppQuery *string `json:"appQuery,omitempty" xml:"appQuery,omitempty"`
-	// The end of the time range that was queried.
+	// The end timestamp.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type ListSlowQueryQueriesResponseBodyResult struct {
 	//
 	// 0
 	Index *int32 `json:"index,omitempty" xml:"index,omitempty"`
-	// The beginning of the time range that was queried.
+	// The start timestamp.
 	//
 	// example:
 	//

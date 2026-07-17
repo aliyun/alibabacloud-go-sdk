@@ -14,13 +14,13 @@ type iListInterventionDictionaryNerResultsRequest interface {
 }
 
 type ListInterventionDictionaryNerResultsRequest struct {
-	// Query keywords.
+	// The keyword to search for.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// "hello world"
+	// soy milk
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
 }
 

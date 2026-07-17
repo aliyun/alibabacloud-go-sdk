@@ -24,7 +24,7 @@ type ListAppGroupsResponseBody struct {
 	//
 	// 0A6EB64B-B4C8-CF02-810F-E660812972FF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The information about the application.
+	// The applications.
 	//
 	// For more information, see [AppGroup](https://help.aliyun.com/document_detail/170000.html).
 	//
@@ -91,19 +91,19 @@ func (s *ListAppGroupsResponseBody) Validate() error {
 type ListAppGroupsResponseBodyResult struct {
 	// The billing method. Valid values:
 	//
-	// 	- POSTPAY: pay-as-you-go.
+	// - POSTPAY: pay-as-you-go.
 	//
-	// 	- PREPAY: subscription.
+	// - PREPAY: subscription.
 	//
 	// example:
 	//
 	// POSTPAY
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
-	// The billable item. Valid values:
+	// The billing method. Valid values:
 	//
-	// 	- 1: computing resources.
+	// - 1: computing resources
 	//
-	// 	- 2: queries per second (QPS).
+	// - 2: queries per second (QPS)
 	//
 	// example:
 	//
@@ -115,7 +115,7 @@ type ListAppGroupsResponseBodyResult struct {
 	//
 	// opensearch
 	CommodityCode *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
-	// The timestamp when the application was created.
+	// The timestamp that indicates when the application was created.
 	//
 	// example:
 	//
@@ -133,7 +133,7 @@ type ListAppGroupsResponseBodyResult struct {
 	//
 	// "xxx"
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The industry of the application.
+	// The domain of the application group.
 	//
 	// example:
 	//
@@ -145,17 +145,17 @@ type ListAppGroupsResponseBodyResult struct {
 	//
 	// ha3
 	EngineType *string `json:"engineType,omitempty" xml:"engineType,omitempty"`
-	// The time when the application expired.
+	// The time when the application expires.
 	//
 	// example:
 	//
 	// "xxx"
 	ExpireOn *string `json:"expireOn,omitempty" xml:"expireOn,omitempty"`
-	// The approval state of the quotas. Valid values:
+	// The quota approval status. Valid values:
 	//
-	// 	- 0: The application is in service.
+	// - 0: Normal
 	//
-	// 	- 1: The quotas are being reviewed.
+	// - 1: Pending approval
 	//
 	// example:
 	//
@@ -173,13 +173,13 @@ type ListAppGroupsResponseBodyResult struct {
 	//
 	// "xxx"
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The lock state. Valid values:
+	// The lock status. Valid values:
 	//
-	// 	- Unlock: The instance is unlocked.
+	// - Unlock: The instance is not locked.
 	//
-	// 	- LockByExpiration: The instance is automatically locked after it expires.
+	// - LockByExpiration: The instance is automatically locked after it expires.
 	//
-	// 	- ManualLock: The instance is manually locked.
+	// - ManualLock: The instance is manually locked.
 	//
 	// example:
 	//
@@ -199,61 +199,63 @@ type ListAppGroupsResponseBodyResult struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// Indicates whether the application is created. Valid values:
 	//
-	// 	- 0: The application is being created.
+	// - 0: The application is being created.
 	//
-	// 	- 1: The application is created.
+	// - 1: The application is created.
 	//
 	// example:
 	//
 	// 1
 	Produced *int32 `json:"produced,omitempty" xml:"produced,omitempty"`
-	// The name of the A/B test group.
+	// The name of the A/B test project.
 	//
 	// example:
 	//
 	// "xxx"
 	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
-	// The information about the quotas of the application. For more information, see [Quota](https://help.aliyun.com/document_detail/170001.html).
+	// The quota information of the application.
+	//
+	// For more information, see [Quota](https://help.aliyun.com/document_detail/170001.html).
 	//
 	// example:
 	//
 	// {}
 	Quota *ListAppGroupsResponseBodyResultQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
-	// The state of the application. Valid values:
+	// The status of the application. Valid values:
 	//
-	// 	- producing: The application is being created.
+	// - producing: The application is being created.
 	//
-	// 	- review_pending: The application is being reviewed.
+	// - review_pending: The application is pending approval.
 	//
-	// 	- config_pending: The application is to be configured.
+	// - config_pending: The application is pending configuration.
 	//
-	// 	- normal: The application is in service.
+	// - normal: The application is running as normal.
 	//
-	// 	- frozen: The application is frozen.
+	// - frozen: The application is frozen.
 	//
 	// example:
 	//
 	// normal
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The timestamp when the current online version was published.
+	// The timestamp that indicates when the current online version was published.
 	//
 	// example:
 	//
 	// 0
 	SwitchedTime *int32 `json:"switchedTime,omitempty" xml:"switchedTime,omitempty"`
-	// The application tags.
+	// The tags of the application.
 	Tags []*ListAppGroupsResponseBodyResultTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The type of the application. Valid values:
 	//
-	// 	- standard: a High-performance Search Edition application.
+	// - standard: a Standard Edition application.
 	//
-	// 	- enhanced: an Industry Algorithm Edition application.
+	// - enhanced: a Premium Edition application.
 	//
 	// example:
 	//
 	// enhanced
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The timestamp when the application was last updated.
+	// The timestamp that indicates when the application was last updated.
 	//
 	// example:
 	//
@@ -495,13 +497,13 @@ func (s *ListAppGroupsResponseBodyResult) Validate() error {
 }
 
 type ListAppGroupsResponseBodyResultQuota struct {
-	// The computing resources. Unit: logical computing unit (LCU).
+	// The computing resources in logical compute units (LCUs).
 	//
 	// example:
 	//
 	// 20
 	ComputeResource *int32 `json:"computeResource,omitempty" xml:"computeResource,omitempty"`
-	// The storage capacity. Unit: GB.
+	// The storage capacity in GB.
 	//
 	// example:
 	//
@@ -509,19 +511,19 @@ type ListAppGroupsResponseBodyResultQuota struct {
 	DocSize *int32 `json:"docSize,omitempty" xml:"docSize,omitempty"`
 	// The specifications. Valid values:
 	//
-	// 	- opensearch.share.junior: basic.
+	// - opensearch.share.junior: Basic
 	//
-	// 	- opensearch.share.common: shared general-purpose.
+	// - opensearch.share.common: Shared General-purpose
 	//
-	// 	- opensearch.share.compute: shared computing.
+	// - opensearch.share.compute: Shared Compute-optimized
 	//
-	// 	- opensearch.share.storage: shared storage.
+	// - opensearch.share.storage: Shared Storage-optimized
 	//
-	// 	- opensearch.private.common: exclusive general-purpose.
+	// - opensearch.private.common: Exclusive General-purpose
 	//
-	// 	- opensearch.private.compute: exclusive computing.
+	// - opensearch.private.compute: Exclusive Compute-optimized
 	//
-	// 	- opensearch.private.storage: exclusive storage.
+	// - opensearch.private.storage: Exclusive Storage-optimized
 	//
 	// example:
 	//

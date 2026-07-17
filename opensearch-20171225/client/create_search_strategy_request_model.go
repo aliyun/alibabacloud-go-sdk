@@ -14,7 +14,7 @@ type iCreateSearchStrategyRequest interface {
 }
 
 type CreateSearchStrategyRequest struct {
-	// The query policy.
+	// The search strategy.
 	Body *SearchStrategy `json:"body,omitempty" xml:"body,omitempty"`
 }
 

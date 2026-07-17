@@ -18,13 +18,13 @@ type iPushInterventionDictionaryEntriesRequest interface {
 type PushInterventionDictionaryEntriesRequest struct {
 	// The request body.
 	Body []map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
-	// Specifies whether to check the validity of input parameters. Default value: false.
+	// Specifies whether to validate the request parameters without creating the attribution configuration. The default value is false.
 	//
 	// Valid values:
 	//
-	// 	- **true**: checks only the validity of input parameters.
+	// - **true**: Validates the request parameters only.
 	//
-	// 	- **false**: checks the validity of input parameters and creates an attribution configuration.
+	// - **false**: Validates the request parameters and creates the attribution configuration.
 	//
 	// example:
 	//

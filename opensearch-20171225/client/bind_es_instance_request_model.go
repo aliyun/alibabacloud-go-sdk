@@ -14,7 +14,7 @@ type iBindEsInstanceRequest interface {
 }
 
 type BindEsInstanceRequest struct {
-	// The body of the request.
+	// The request body.
 	//
 	// example:
 	//

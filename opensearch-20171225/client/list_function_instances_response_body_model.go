@@ -28,7 +28,7 @@ type iListFunctionInstancesResponseBody interface {
 }
 
 type ListFunctionInstancesResponseBody struct {
-	// The error code. If no error occurs, the parameter is left empty.
+	// The error code. This parameter is empty if the request is successful.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type ListFunctionInstancesResponseBody struct {
 	//
 	// 200
 	HttpCode *int64 `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	// The time consumed for the request, in milliseconds.
+	// The request latency, in milliseconds.
 	//
 	// example:
 	//
 	// 123
 	Latency *int64 `json:"Latency,omitempty" xml:"Latency,omitempty"`
-	// The error message. If no error occurs, the parameter is left empty.
+	// The error message. This parameter is empty if the request is successful.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type ListFunctionInstancesResponseBody struct {
 	//
 	// A4D487A9-A456-5AA5-A9C6-B7BF2889CF74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the instances.
+	// The list of instances.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type ListFunctionInstancesResponseBody struct {
 	//
 	// "OK"
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -172,13 +172,13 @@ func (s *ListFunctionInstancesResponseBody) Validate() error {
 }
 
 type ListFunctionInstancesResponseBodyResult struct {
-	// The information about the instance.
+	// The ownership information of the instance.
 	//
 	// example:
 	//
 	// {}
 	Belongs *ListFunctionInstancesResponseBodyResultBelongs `json:"Belongs,omitempty" xml:"Belongs,omitempty" type:"Struct"`
-	// The parameters of the instance.
+	// The list of parameters for the instance.
 	//
 	// example:
 	//
@@ -190,11 +190,11 @@ type ListFunctionInstancesResponseBodyResult struct {
 	//
 	// 1234
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The cron expression used to schedule training, in the format of (Minutes Hours DayofMonth Month DayofWeek). If the value is empty, it indicates that no periodic training is performed.
+	// The training schedule. This is a cron expression in the format of Minutes Hours DayofMonth Month DayofWeek. If this parameter is empty, periodic training is not performed.
 	//
 	// example:
 	//
-	// 0 3 ? \\	- 0,1,3,5 (at 3 a.m. on Sunday, Monday, Wednesday, and Friday)
+	// 0 3 ? 	- 0,1,3,5 (周日，周一，周三，周五凌晨3点)
 	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
 	// The description.
 	//
@@ -202,7 +202,7 @@ type ListFunctionInstancesResponseBodyResult struct {
 	//
 	// " "
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The extended information, which is a JSON string. It includes model evaluation information and error information.
+	// The extended information. This is a JSON string that contains information such as model evaluation results and error messages.
 	//
 	// example:
 	//
@@ -232,29 +232,29 @@ type ListFunctionInstancesResponseBodyResult struct {
 	//
 	// "tf_checkpoint"
 	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
-	// How the instance is created. Valid values:
+	// The source of the instance. Valid values:
 	//
-	// 	- user: The instance is created by user.
+	// - user: The instance is created by the user.
 	//
-	// 	- builtin: The instance is created by system.
+	// - builtin: The instance is created by the system.
 	//
 	// example:
 	//
 	// "user"
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The state of the instance. Valid values:
+	// The status of the instance. Valid values:
 	//
-	// 1.  unavailable: No model is available. Models must be trained before you can use them.
+	// 1. unavailable: No model is available. You must train a model before you can use the instance.
 	//
-	// 2.  available: Models can be used.
+	// 2. available: The instance is available.
 	//
 	// example:
 	//
 	// available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The parameters that are used.
+	// The list of parameters in use.
 	UsageParameters []*ListFunctionInstancesResponseBodyResultUsageParameters `json:"UsageParameters,omitempty" xml:"UsageParameters,omitempty" type:"Repeated"`
-	// The ID of the version.
+	// The version ID.
 	//
 	// example:
 	//
@@ -436,7 +436,7 @@ type ListFunctionInstancesResponseBodyResultBelongs struct {
 	//
 	// "ecommerce"
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The abbreviation of the language that applies.
+	// The language code.
 	//
 	// example:
 	//

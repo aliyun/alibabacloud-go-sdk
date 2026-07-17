@@ -24,41 +24,41 @@ type iCreateFunctionResourceResponseBody interface {
 }
 
 type CreateFunctionResourceResponseBody struct {
-	// The error code. If no error occurs, this parameter is left empty.
+	// The error code. This is empty if the request succeeds.
 	//
 	// example:
 	//
 	// ""
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpCode *int64 `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	// The time consumed for the request. Unit: milliseconds.
+	// The request processing time in milliseconds.
 	//
 	// example:
 	//
 	// 123
 	Latency *float64 `json:"Latency,omitempty" xml:"Latency,omitempty"`
-	// The error message returned.
+	// The returned message.
 	//
 	// example:
 	//
 	// ""
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// A4D487A9-A456-5AA5-A9C6-B7BF2889CF74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status code. Valid values:
+	// The status of the request.
 	//
-	// 	- OK
+	// - OK: The request was successful.
 	//
-	// 	- FAIL
+	// - FAIL: The request failed.
 	//
 	// example:
 	//

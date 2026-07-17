@@ -14,7 +14,7 @@ type iUnbindESUserAnalyzerRequest interface {
 }
 
 type UnbindESUserAnalyzerRequest struct {
-	// The request parameters.
+	// The request body.
 	//
 	// example:
 	//

@@ -24,13 +24,13 @@ type iListStatisticReportRequest interface {
 }
 
 type ListStatisticReportRequest struct {
-	// The fields to query. Set this parameter in the format of columns="pv,uv,ipv". For more information, see [Metrics of statistical reports](https://help.aliyun.com/document_detail/187665.html).
+	// The fields to query. Specify the fields in the columns="pv,uv,ipv" format. For more information, see [Metrics of statistical reports](https://help.aliyun.com/document_detail/187665.html).
 	//
 	// example:
 	//
 	// pv,uv
 	Columns *string `json:"columns,omitempty" xml:"columns,omitempty"`
-	// The end timestamp of the query. By default, the end time is the current time. Unit: seconds.
+	// The end timestamp, in seconds. The default value is the current timestamp.
 	//
 	// example:
 	//
@@ -44,27 +44,27 @@ type ListStatisticReportRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page. Default value: 10.
+	// The number of entries to return on each page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The query conditions. Set this parameter in the format of k1:v1,k2:v2. Valid values:
+	// The query conditions, in the k1:v1,k2:v2 format. Valid values:
 	//
-	// 	- experimentSerialNumber: the globally unique sequence number of the test
+	// - experimentSerialNumber: the globally unique serial number of the experiment.
 	//
-	// 	- sceneTag: the tag of the test scenario
+	// - sceneTag: the tag of the scenario.
 	//
-	// 	- bizType: the type of the business
+	// - bizType: the business identity.
 	//
-	// 	- modelId: the ID of the algorithm model
+	// - modelId: the ID of the algorithm model.
 	//
 	// example:
 	//
 	// bizType:test,sceneTag:myTag
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// The start timestamp of the query. Unit: seconds.
+	// The start timestamp, in seconds.
 	//
 	// example:
 	//

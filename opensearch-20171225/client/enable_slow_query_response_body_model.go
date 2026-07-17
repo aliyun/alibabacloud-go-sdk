@@ -22,7 +22,7 @@ type EnableSlowQueryResponseBody struct {
   // 
   // 728E89C6-8673-D39B-39A1-5BA2B56D448F
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-  // The returned data.
+  // The returned result.
   // 
   // example:
   // 

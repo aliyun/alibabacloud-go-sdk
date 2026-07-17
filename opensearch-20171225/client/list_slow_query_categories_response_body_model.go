@@ -16,13 +16,13 @@ type iListSlowQueryCategoriesResponseBody interface {
 }
 
 type ListSlowQueryCategoriesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 4406F40B-A0A2-9D5D-531F-3B6936567584
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The data returned.
+	// The returned data.
 	Result *ListSlowQueryCategoriesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -62,29 +62,29 @@ func (s *ListSlowQueryCategoriesResponseBody) Validate() error {
 }
 
 type ListSlowQueryCategoriesResponseBodyResult struct {
-	// The status of the analysis. Valid values:
+	// The analysis status.
 	//
-	// 	- PENDING: preparing
+	// - PENDING: The analysis is being prepared.
 	//
-	// 	- SUCCESS: succeeded
+	// - SUCCESS: The analysis is successful.
 	//
-	// 	- RUNNING: running
+	// - RUNNING: The analysis is in progress.
 	//
-	// 	- FAILED: failed
+	// - FAILED: The analysis failed.
 	//
-	// 	- N/A: unknown
+	// - N/A: The analysis status is unknown.
 	//
 	// example:
 	//
 	// "PENDING"
 	AnalyzeStatus *string `json:"analyzeStatus,omitempty" xml:"analyzeStatus,omitempty"`
-	// The timestamp that indicates the end of the time range to query.
+	// The end timestamp.
 	//
 	// example:
 	//
 	// 1589990340
 	End *int32 `json:"end,omitempty" xml:"end,omitempty"`
-	// The timestamp that indicates the beginning of the time range to query.
+	// The start timestamp.
 	//
 	// example:
 	//

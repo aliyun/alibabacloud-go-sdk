@@ -16,13 +16,13 @@ type iListDataCollectionsRequest interface {
 }
 
 type ListDataCollectionsRequest struct {
-	// The page number. Default value: 1.
+	// The page number. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page. Default value: 10.
+	// The number of entries to return on each page. The default value is 10.
 	//
 	// example:
 	//

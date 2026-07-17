@@ -16,15 +16,15 @@ type iCreateABTestSceneRequest interface {
 }
 
 type CreateABTestSceneRequest struct {
-	// The ABTest scenario. For more information, see [ABTestScene](https://help.aliyun.com/document_detail/173618.html)
+	// The A/B test scene. For more information, see [ABTestScene](https://help.aliyun.com/document_detail/173618.html).
 	Body *ABTestScene `json:"body,omitempty" xml:"body,omitempty"`
-	// Specifies whether to check the validity of input parameters. Default value: false.
+	// Specifies whether to validate only the request parameters. The default value is false.
 	//
-	// Valid values:
+	// Values:
 	//
-	// 	- **true**: checks only the validity of input parameters.
+	// - **true**: Validates only the request parameters.
 	//
-	// 	- **false**: checks the validity of input parameters and creates an attribution configuration.
+	// - **false**: Validates the request parameters and creates the attribution configuration.
 	//
 	// example:
 	//

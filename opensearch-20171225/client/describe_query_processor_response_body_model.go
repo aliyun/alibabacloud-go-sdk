@@ -62,25 +62,25 @@ func (s *DescribeQueryProcessorResponseBody) Validate() error {
 }
 
 type DescribeQueryProcessorResponseBodyResult struct {
-	// Indicates whether the query analysis rule is the default one.
+	// Indicates whether the rule is the default rule.
 	//
 	// example:
 	//
 	// true
 	Active *bool `json:"active,omitempty" xml:"active,omitempty"`
-	// The time when the query analysis rule was created.
+	// The time when the rule was created.
 	//
 	// example:
 	//
 	// 1587398402
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
-	// The type of the industry. Valid values:
+	// The industry type.
 	//
-	// 	- GENERAL
+	// - GENERAL: General
 	//
-	// 	- ECOMMERCE
+	// - ECOMMERCE: E-commerce
 	//
-	// 	- IT_CONTENT
+	// - IT_CONTENT: IT content
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type DescribeQueryProcessorResponseBodyResult struct {
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
 	// The indexes to which the query analysis rule applies.
 	Indexes []*string `json:"indexes,omitempty" xml:"indexes,omitempty" type:"Repeated"`
-	// The name of the query analysis rule.
+	// The name of the rule.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type DescribeQueryProcessorResponseBodyResult struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The features that are used in the query analysis rule.
 	Processors []map[string]interface{} `json:"processors,omitempty" xml:"processors,omitempty" type:"Repeated"`
-	// The time when the query analysis rule was last updated.
+	// The time when the rule was last updated.
 	//
 	// example:
 	//

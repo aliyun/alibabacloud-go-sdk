@@ -18,7 +18,7 @@ type iTagResourcesRequest interface {
 }
 
 type TagResourcesRequest struct {
-	// The resource IDs. You can specify a maximum number of 50 resource IDs.
+	// The IDs of the resources. You can specify up to 50 resource IDs.
 	//
 	// This parameter is required.
 	ResourceId []*string `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
@@ -30,7 +30,7 @@ type TagResourcesRequest struct {
 	//
 	// ProductVersion
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// The tags. You can specify a maximum number of 20 tags.
+	// The tags to add to the resources. You can add up to 20 tags.
 	//
 	// This parameter is required.
 	Tag []*TagResourcesRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
@@ -85,13 +85,13 @@ func (s *TagResourcesRequest) Validate() error {
 }
 
 type TagResourcesRequestTag struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// cloud_manage
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

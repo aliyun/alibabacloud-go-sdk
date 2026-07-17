@@ -16,7 +16,7 @@ type iUpdateFunctionResourceRequest interface {
 }
 
 type UpdateFunctionResourceRequest struct {
-	// The resource data. The data structure varies with the resource type.
+	// The data of the resource. The structure of this parameter varies based on the value of resourceType.
 	Data *UpdateFunctionResourceRequestData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The description of the resource.
 	//
@@ -62,13 +62,13 @@ func (s *UpdateFunctionResourceRequest) Validate() error {
 }
 
 type UpdateFunctionResourceRequestData struct {
-	// The content of the file that corresponds to a resource of the raw_file type.
+	// The content of the file. This parameter is used for resources of the raw_file type.
 	//
 	// example:
 	//
 	// abc
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The feature generators that correspond to resources of the feature_generator type.
+	// The list of feature generators. This parameter is used for resources of the feature_generator type.
 	Generators []*UpdateFunctionResourceRequestDataGenerators `json:"Generators,omitempty" xml:"Generators,omitempty" type:"Repeated"`
 }
 
@@ -173,7 +173,7 @@ func (s *UpdateFunctionResourceRequestDataGenerators) Validate() error {
 }
 
 type UpdateFunctionResourceRequestDataGeneratorsInput struct {
-	// The input features.
+	// A list of input features.
 	Features []*UpdateFunctionResourceRequestDataGeneratorsInputFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
 }
 

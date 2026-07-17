@@ -16,13 +16,13 @@ type iDescribeABTestExperimentResponseBody interface {
 }
 
 type DescribeABTestExperimentResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// D77D0DAF-790D-F5F5-A9C0-133738165014
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The details of the test.
+	// The details of the experiment.
 	Result *DescribeABTestExperimentResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -62,43 +62,43 @@ func (s *DescribeABTestExperimentResponseBody) Validate() error {
 }
 
 type DescribeABTestExperimentResponseBodyResult struct {
-	// The time when the test was created.
+	// The time when the experiment was created.
 	//
 	// example:
 	//
 	// 1588842080
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
-	// The ID of the test.
+	// The experiment ID.
 	//
 	// example:
 	//
 	// 12888
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The name of the test.
+	// The alias of the experiment.
 	//
 	// example:
 	//
 	// test1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The status of the test. Valid values:
+	// The status of the experiment.
 	//
-	// 	- true: in effect
+	// - true: The experiment is online.
 	//
-	// 	- false: not in effect
+	// - false: The experiment is offline.
 	//
 	// example:
 	//
 	// true
 	Online *bool `json:"online,omitempty" xml:"online,omitempty"`
-	// The parameters of the test.
+	// The experiment parameters.
 	Params *DescribeABTestExperimentResponseBodyResultParams `json:"params,omitempty" xml:"params,omitempty" type:"Struct"`
-	// The percentage of traffic that is routed to the test.
+	// The percentage of traffic for the experiment bucketing.
 	//
 	// example:
 	//
 	// 30
 	Traffic *int32 `json:"traffic,omitempty" xml:"traffic,omitempty"`
-	// The time when the test was last modified.
+	// The time when the experiment was last modified.
 	//
 	// example:
 	//
@@ -187,7 +187,7 @@ func (s *DescribeABTestExperimentResponseBodyResult) Validate() error {
 }
 
 type DescribeABTestExperimentResponseBodyResultParams struct {
-	// The name of the rough sort policy.
+	// The name of the coarse-grained ranking policy.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type ListQueryProcessorAnalyzerResultsResponseBody struct {
 	//
 	// 98724351-D6B2-5D8A-B089-7FFD1821A7E9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The data returned.
+	// The result of the request.
 	//
 	// example:
 	//

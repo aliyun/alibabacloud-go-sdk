@@ -42,11 +42,11 @@ type CreateFunctionInstanceRequest struct {
 	//
 	// example:
 	//
-	// test instance
+	// Test instance
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The feature type.
 	//
-	// 	- Default value: PAAS. Training is required before you can use the feature.
+	// - Default value: PAAS. Training is required before you can use the feature.
 	//
 	// example:
 	//
@@ -62,27 +62,27 @@ type CreateFunctionInstanceRequest struct {
 	InstanceName *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
 	// The model type. The value varies based on the model.
 	//
-	// 	- Click-through rate (CTR) model: tf_checkpoint
+	// - Click-through rate (CTR) model: tf_checkpoint
 	//
-	// 	- Popularity model: pop
+	// - Popularity model: pop
 	//
-	// 	- Category model: offline_inference
+	// - Category model: offline_inference
 	//
-	// 	- Hotword model: offline_inference
+	// - Hotword model: offline_inference
 	//
-	// 	- Hint model: offline_inference
+	// - Hint model: offline_inference
 	//
-	// 	- Hotword model for real-time top searches: near_realtime
+	// - Hotword model for real-time top searches: near_realtime
 	//
-	// 	- Personalized hint model: near_realtime
+	// - Personalized hint model: near_realtime
 	//
-	// 	- Drop-down suggestion model: offline_inference
+	// - Drop-down suggestion model: offline_inference
 	//
-	// 	- Tokenization model: text
+	// - Tokenization model: text
 	//
-	// 	- Term weight model: tf_checkpoint
+	// - Term weight model: tf_checkpoint
 	//
-	// 	- Synonym model: offline_inference
+	// - Synonym model: offline_inference
 	//
 	// This parameter is required.
 	//

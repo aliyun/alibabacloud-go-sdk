@@ -14,11 +14,11 @@ type iUntagResourcesResponseBody interface {
 }
 
 type UntagResourcesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
-	// 1-A-0-B
+	// 1-B-2-V
 	TequestId *string `json:"tequestId,omitempty" xml:"tequestId,omitempty"`
 }
 

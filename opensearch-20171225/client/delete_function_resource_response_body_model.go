@@ -24,19 +24,19 @@ type iDeleteFunctionResourceResponseBody interface {
 }
 
 type DeleteFunctionResourceResponseBody struct {
-	// The error code returned. If no error occurs, this value is empty.
+	// The error code. This parameter is empty if no error occurred.
 	//
 	// example:
 	//
 	// ""
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpCode *int64 `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	// The time consumed for the request. Unit: milliseconds.
+	// The request latency. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -54,11 +54,11 @@ type DeleteFunctionResourceResponseBody struct {
 	//
 	// A4D487A9-A456-5AA5-A9C6-B7BF2889CF74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status code. Valid values:
+	// The status of the request.
 	//
-	// 	- OK
+	// - OK: The request is successful.
 	//
-	// 	- FAIL
+	// - FAIL: The request failed.
 	//
 	// example:
 	//

@@ -20,13 +20,13 @@ type iListTagResourcesRequest interface {
 }
 
 type ListTagResourcesRequest struct {
-	// The token that is used to retrieve the next page.
+	// The token to start the next query.
 	//
 	// example:
 	//
 	// 60
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The resource IDs. You can specify a maximum number of 50 resource IDs.
+	// The resource IDs. You can specify a maximum of 50 resource IDs.
 	ResourceId []*string `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
 	// The resource type.
 	//
@@ -36,7 +36,7 @@ type ListTagResourcesRequest struct {
 	//
 	// BIGDATA
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// The tags. You can specify a maximum number of 20 tags.
+	// The tags to query. The list can contain a maximum of 20 tags.
 	Tag []*ListTagResourcesRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
 }
 
@@ -98,13 +98,13 @@ func (s *ListTagResourcesRequest) Validate() error {
 }
 
 type ListTagResourcesRequestTag struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// bm
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iListProceedingsRequest interface {
 }
 
 type ListProceedingsRequest struct {
-	// Specifies whether the filtering is complete.
+	// Specifies whether to return only completed proceedings.
 	//
 	// example:
 	//

@@ -22,13 +22,13 @@ type iListFunctionTasksRequest interface {
 }
 
 type ListFunctionTasksRequest struct {
-	// The end time is less than the specified time. Specify the time in the UNIX timestamp format. Unit: milliseconds.
+	// Returns tasks that ended before the specified time. The time is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1582646399
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The number of the page to return. Default value: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type ListFunctionTasksRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The start time is greater than the specified time. Specify the time in the UNIX timestamp format. Unit: milliseconds.
+	// Returns tasks that started after the specified time. The time is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -48,11 +48,11 @@ type ListFunctionTasksRequest struct {
 	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
 	// The status of the task. Valid values:
 	//
-	// 	- success
+	// - success
 	//
-	// 	- failed
+	// - failed
 	//
-	// 	- running
+	// - running
 	//
 	// example:
 	//

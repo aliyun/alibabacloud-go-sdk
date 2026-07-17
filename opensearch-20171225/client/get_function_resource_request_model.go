@@ -16,14 +16,6 @@ type iGetFunctionResourceRequest interface {
 type GetFunctionResourceRequest struct {
 	// The output level.
 	//
-	// Valid values:
-	//
-	// 	- simple
-	//
-	// 	- normal
-	//
-	// 	- detail
-	//
 	// example:
 	//
 	// detail

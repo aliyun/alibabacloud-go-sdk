@@ -22,14 +22,6 @@ type iListFunctionResourcesRequest interface {
 type ListFunctionResourcesRequest struct {
 	// The output level.
 	//
-	// Valid values:
-	//
-	// 	- simple
-	//
-	// 	- normal
-	//
-	// 	- detail
-	//
 	// example:
 	//
 	// detail
@@ -40,31 +32,13 @@ type ListFunctionResourcesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The type of the resource.
-	//
-	// Valid values:
-	//
-	// 	- feature_generator
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- raw_file
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The resource type.
 	//
 	// example:
 	//

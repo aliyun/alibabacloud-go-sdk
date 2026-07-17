@@ -165,7 +165,7 @@ type GetFunctionInstanceResponseBodyResult struct {
 	//
 	// example:
 	//
-	// 0 3 ? \\	- 0,1,3,5 (at 3 a.m. on Sunday, Monday, Wednesday, and Friday)
+	// 0 3 ? 	- 0,1,3,5 (at 3 a.m. on Sunday, Monday, Wednesday, and Friday)
 	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
 	// The description of the instance.
 	//
@@ -205,9 +205,9 @@ type GetFunctionInstanceResponseBodyResult struct {
 	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
 	// How the instance is created. Valid values:
 	//
-	// 	- user: The instance is created by user.
+	// - user: The instance is created by user.
 	//
-	// 	- builtin: The instance is created by the system.
+	// - builtin: The instance is created by the system.
 	//
 	// example:
 	//
@@ -215,9 +215,9 @@ type GetFunctionInstanceResponseBodyResult struct {
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The status of the instance. Valid values:
 	//
-	// 1.  unavailable: No model is available. Models must be trained before you can use them.
+	// 1. unavailable: No model is available. Models must be trained before you can use them.
 	//
-	// 2.  available: Models can be used.
+	// 2. available: Models can be used.
 	//
 	// example:
 	//
@@ -518,15 +518,15 @@ func (s *GetFunctionInstanceResponseBodyResultCreateParameters) Validate() error
 type GetFunctionInstanceResponseBodyResultTask struct {
 	// The status of the task. Valid values:
 	//
-	// 	- success: succeeded
+	// - success: succeeded
 	//
-	// 	- failed: failed
+	// - failed: failed
 	//
-	// 	- untrained: to be trained
+	// - untrained: to be trained
 	//
-	// 	- pending: being scheduled
+	// - pending: being scheduled
 	//
-	// 	- running: being trained
+	// - running: being trained
 	//
 	// example:
 	//

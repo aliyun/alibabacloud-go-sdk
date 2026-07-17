@@ -22,7 +22,7 @@ type ListQueryProcessorsResponseBody struct {
 	//
 	// 0A6EB64B-B4C8-CF02-810F-E660812972FF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The information about the query analysis rule.
+	// The information about the query analysis rules.
 	//
 	// For more information, see [QueryProcessor](https://help.aliyun.com/document_detail/170014.html).
 	Result []*ListQueryProcessorsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
@@ -80,13 +80,13 @@ type ListQueryProcessorsResponseBodyResult struct {
 	//
 	// 1587398402
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
-	// The type of the industry to which the query analysis rule is applied. Valid values:
+	// The industry to which the query analysis rule applies. Valid values:
 	//
-	// 	- GENERAL
+	// - GENERAL: General
 	//
-	// 	- ECOMMERCE
+	// - ECOMMERCE: E-commerce
 	//
-	// 	- IT_CONTENT
+	// - IT_CONTENT: IT content
 	//
 	// example:
 	//

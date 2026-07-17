@@ -22,7 +22,7 @@ type RemoveAppResponseBody struct {
 	//
 	// 33477D76-C380-2D84-A4AD-043F52876CB1
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The return result.
+	// —
 	Result []*int32 `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 

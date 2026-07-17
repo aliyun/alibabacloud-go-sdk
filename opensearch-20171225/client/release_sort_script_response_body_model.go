@@ -16,7 +16,7 @@ type iReleaseSortScriptResponseBody interface {
 }
 
 type ReleaseSortScriptResponseBody struct {
-	// The ID of the request.
+	// The unique ID of the request.
 	//
 	// example:
 	//

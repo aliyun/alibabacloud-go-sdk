@@ -22,7 +22,7 @@ type DescribeRegionsResponseBody struct {
 	//
 	// 3B7E42BD-1D63-2F6B-C8E0-41BACEA76EEB
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The results returned.
+	// The result.
 	Result []*DescribeRegionsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
@@ -82,7 +82,7 @@ type DescribeRegionsResponseBodyResult struct {
 	//
 	// example:
 	//
-	// China (Hangzhou)
+	// 华东1（杭州）
 	LocalName *string `json:"localName,omitempty" xml:"localName,omitempty"`
 	// The region ID.
 	//

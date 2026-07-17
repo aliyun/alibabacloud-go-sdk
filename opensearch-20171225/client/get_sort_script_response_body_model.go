@@ -16,7 +16,7 @@ type iGetSortScriptResponseBody interface {
 }
 
 type GetSortScriptResponseBody struct {
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//
@@ -75,7 +75,7 @@ type GetSortScriptResponseBodyResult struct {
 	//
 	// 2020-04-02 21:21:14
 	ModifyTime *string `json:"modifyTime,omitempty" xml:"modifyTime,omitempty"`
-	// The sort phase to which the script applies.
+	// The applicable scope of the script.
 	//
 	// example:
 	//
@@ -87,7 +87,7 @@ type GetSortScriptResponseBodyResult struct {
 	//
 	// rank_cava_20230606_v7
 	ScriptName *string `json:"scriptName,omitempty" xml:"scriptName,omitempty"`
-	// The status of the script. For more information, see the description of the status response parameter in the ListSortScripts topic.
+	// The status of the script. For more information, see the list of script statuses.
 	//
 	// example:
 	//

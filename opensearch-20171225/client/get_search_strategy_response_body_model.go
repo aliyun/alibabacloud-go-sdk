@@ -14,7 +14,7 @@ type iGetSearchStrategyResponseBody interface {
 }
 
 type GetSearchStrategyResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

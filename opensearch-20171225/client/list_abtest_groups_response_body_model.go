@@ -16,7 +16,7 @@ type iListABTestGroupsResponseBody interface {
 }
 
 type ListABTestGroupsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -88,9 +88,9 @@ type ListABTestGroupsResponseBodyResult struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The status of the test group. Valid values:
 	//
-	// 	- 0: not in effect
+	// - 0: Not in effect
 	//
-	// 	- 1: in effect
+	// - 1: In effect
 	//
 	// example:
 	//

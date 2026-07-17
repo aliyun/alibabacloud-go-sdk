@@ -38,7 +38,7 @@ type GetFunctionCurrentVersionResponseBody struct {
 	//
 	// 200
 	HttpCode *int64 `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	// The time consumed for the request, in milliseconds.
+	// The request latency in milliseconds (ms).
 	//
 	// example:
 	//
@@ -50,13 +50,17 @@ type GetFunctionCurrentVersionResponseBody struct {
 	//
 	// version not exist.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 1638157479281
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the request.
+	// The returned result.
+	//
+	// example:
+	//
+	// {         "versionName": "v1",         "versionId": 101,         "functionName": "ctr",         "modelType": "tf_checkpoint",         "functionType": "PAAS",         "versionConfig": {             "createParameters": [                 {                     "name": "params1",                     "required": "true",                     "formItemProps": "{\\"required\\": true, \\"pattern?\\": \\"/^[a-zA-Z][a-zA-Z0-9_]{0,29}$/\\"}",                     "componentProps": "{\\"component\\": \\"Input\\", \\"attributes\\": {\\"defaultValue\\": \\"value1\\"}}"                 }             ],             "depends": [                 {                     "dependency": "依赖项",                     "condition": "条件",                     "description": ""                 }             ],             "usageParameters": []         }     }
 	Result *GetFunctionCurrentVersionResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// The status of the request.
 	//
@@ -155,29 +159,33 @@ type GetFunctionCurrentVersionResponseBodyResult struct {
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
 	// The type of the feature. Valid values:
 	//
-	// 	- PAAS
+	// - PAAS
 	//
-	// 	- SAAS
+	// - SAAS
 	//
 	// example:
 	//
 	// PAAS
 	FunctionType *string `json:"FunctionType,omitempty" xml:"FunctionType,omitempty"`
-	// The type of the model.
+	// The model type.
 	//
 	// example:
 	//
 	// tf_checkpoint
 	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
-	// The configuration information about the instance.
+	// The configuration.
+	//
+	// example:
+	//
+	// {             "createParameters": [                 {                     "name": "params1",                     "required": "true",                     "formItemProps": "{\\"required\\": true, \\"pattern?\\": \\"/^[a-zA-Z][a-zA-Z0-9_]{0,29}$/\\"}",                     "componentProps": "{\\"component\\": \\"Input\\", \\"attributes\\": {\\"defaultValue\\": \\"value1\\"}}"                 }             ],             "depends": [                 {                     "dependency": "依赖项",                     "condition": "条件",                     "description": ""                 }             ],             "usageParameters": []         }
 	VersionConfig *GetFunctionCurrentVersionResponseBodyResultVersionConfig `json:"VersionConfig,omitempty" xml:"VersionConfig,omitempty" type:"Struct"`
-	// The ID of the version.
+	// The version ID.
 	//
 	// example:
 	//
 	// 101
 	VersionId *int64 `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-	// The name of the version.
+	// The version name.
 	//
 	// example:
 	//
@@ -257,15 +265,19 @@ func (s *GetFunctionCurrentVersionResponseBodyResult) Validate() error {
 }
 
 type GetFunctionCurrentVersionResponseBodyResultVersionConfig struct {
-	// The parameters that are used to create the instance.
+	// The parameters used to create an instance.
 	//
 	// example:
 	//
 	// [                 {                     "name": "params1",                     "required": "true",                     "formItemProps": "{\\"required\\": true, \\"pattern?\\": \\"/^[a-zA-Z][a-zA-Z0-9_]{0,29}$/\\"}",                     "componentProps": "{\\"component\\": \\"Input\\", \\"attributes\\": {\\"defaultValue\\": \\"value1\\"}}"                 }             ]
 	CreateParameters []*GetFunctionCurrentVersionResponseBodyResultVersionConfigCreateParameters `json:"CreateParameters,omitempty" xml:"CreateParameters,omitempty" type:"Repeated"`
-	// The dependencies of the instance.
+	// A list of instance dependencies.
+	//
+	// example:
+	//
+	// [                 {                     "dependency": "依赖项",                     "condition": "条件",                     "description": ""                 }             ]
 	Depends []*GetFunctionCurrentVersionResponseBodyResultVersionConfigDepends `json:"Depends,omitempty" xml:"Depends,omitempty" type:"Repeated"`
-	// The parameters that are used to use the instance online.
+	// The parameters for using the instance online.
 	//
 	// example:
 	//
@@ -346,7 +358,7 @@ type GetFunctionCurrentVersionResponseBodyResultVersionConfigCreateParameters st
 	//
 	// params1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether the parameter is required.
+	// Specifies whether the parameter is required.
 	//
 	// example:
 	//
@@ -451,7 +463,7 @@ type GetFunctionCurrentVersionResponseBodyResultVersionConfigUsageParameters str
 	//
 	// ""
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether the parameter is required.
+	// Specifies whether the parameter is required.
 	//
 	// example:
 	//

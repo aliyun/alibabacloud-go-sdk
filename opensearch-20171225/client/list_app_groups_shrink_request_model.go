@@ -28,13 +28,13 @@ type iListAppGroupsShrinkRequest interface {
 }
 
 type ListAppGroupsShrinkRequest struct {
-	// The ID of the instance. Exact match is used.
+	// The ID of the instance. An exact match is performed.
 	//
 	// example:
 	//
 	// ops-cn-xxxx
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ListAppGroupsShrinkRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page. Default value: 10.
+	// The number of entries to return on each page. Default value: 10.
 	//
 	// example:
 	//
@@ -58,11 +58,11 @@ type ListAppGroupsShrinkRequest struct {
 	//
 	// "110123123"
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The method based on which applications are sorted. Valid values:
+	// The sort order. Valid values:
 	//
-	// 	- 0: sorts applications in descending order by creation time.
+	// - 0: Sorts applications by creation time in descending order.
 	//
-	// 	- 1: sorts applications in descending order by modification time.
+	// - 1: Sorts applications by modification time in descending order.
 	//
 	// Default value: 0.
 	//
@@ -70,13 +70,13 @@ type ListAppGroupsShrinkRequest struct {
 	//
 	// 0
 	SortBy *int32 `json:"sortBy,omitempty" xml:"sortBy,omitempty"`
-	// The tags.
+	// A list of tags.
 	TagsShrink *string `json:"tags,omitempty" xml:"tags,omitempty"`
 	// The type of the application. Valid values:
 	//
-	// 	- standard: a High-performance Search Edition application.
+	// - standard: a Standard Edition application.
 	//
-	// 	- enhanced: an Industry Algorithm Edition application.
+	// - enhanced: a Premium Edition application.
 	//
 	// example:
 	//

@@ -34,7 +34,7 @@ type ListInterventionDictionaryEntriesRequest struct {
 	//
 	// example:
 	//
-	// test
+	// Test
 	Word *string `json:"word,omitempty" xml:"word,omitempty"`
 }
 
