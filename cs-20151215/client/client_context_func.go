@@ -673,23 +673,23 @@ func (client *Client) CreateAutoscalingConfigWithContext(ctx context.Context, Cl
 
 // Summary:
 //
-// You can create ACK clusters through OpenAPI, including ACK managed clusters, ACK Serverless clusters, ACK Edge clusters, and registered clusters. When creating a cluster, you will configure the cluster information, cluster components, and ACK-related cloud resources.
+// Creates an ACK cluster, including ACK managed clusters, ACK Serverless clusters, ACK Edge clusters, and registered clusters. When creating a cluster, you configure cluster information, cluster components, and ACK-related cloud resources.
 //
 // Description:
 //
-// ### Generate OpenAPI request parameters through the console
+// ### Generate OpenAPI request parameters from the console
 //
-// When calling the CreateCluster API to create a cluster, if the API call fails due to incorrect request parameter combinations, you can generate the required request parameter combinations through the console. Follow these steps:
+// When you call the CreateCluster operation to create a cluster, if the API call fails due to incorrect request parameter combinations, you can generate the required request parameter combinations from the console. Perform the following steps:
 //
-// 1. Log in to the [Container Service management console](https://csnew.console.aliyun.com) and choose **Clusters*	- in the left navigation pane.
+// 1. Log on to the [Container Service console](https://csnew.console.aliyun.com) and choose **Cluster List*	- in the left-side navigation pane.
 //
-// 1. On the **Clusters*	- page, click **Cluster Template**.
+// 1. On the **Cluster List*	- page, click **Cluster Template**.
 //
-// 1. In the dialog box, select the cluster type to create, click Create, and then configure the cluster information on the cluster configuration page.
+// 1. In the dialog box, select the cluster type that you want to create, click Create, and then configure the cluster information on the cluster configuration page.
 //
-// 1. After the configuration is complete, on the **Confirm Configuration*	- page, click **Equivalent Code*	- in the upper-right corner. The dialog box will display the parameter combinations required for creating the cluster, which you can copy and use.
+// 1. After the configuration is complete, on the **Confirm Configuration*	- page, click **Equivalent Code*	- in the upper-right corner. The dialog box displays the parameter combinations required to create the cluster, which you can copy and use.
 //
-//	Notice: Starting from July 4, 2026, some request parameters will no longer take effect. For change details and alternative parameter descriptions, see [Announcement on OpenAPI parameter changes and API deprecation for ACK cluster management](https://help.aliyun.com/document_detail/2932733.html).</notice>
+//	Notice: Starting from July 4, 2026, some request parameters will no longer take effect. For details about the changes and override parameter descriptions, see [Notice on changes to OpenAPI parameters and offline of OpenAPIs for ACK cluster management](https://help.aliyun.com/document_detail/2932733.html).</notice>
 //
 // @param request - CreateClusterRequest
 //
@@ -1250,7 +1250,7 @@ func (client *Client) CreateClusterInspectConfigWithContext(ctx context.Context,
 
 // Summary:
 //
-// Creates a node pool for a cluster. A node pool is a logical collection of nodes that share the same attributes, allowing unified management and operations such as node upgrades and elastic scaling. You can further use the automated O&M capabilities of node pools, including automatic OS CVE vulnerability patching, automatic faulty node recovery, and automatic kubelet and containerd version upgrades, to reduce O&M costs.
+// Creates a node pool for a cluster. A node pool is a logical collection of nodes that share the same attributes, allowing unified management and O&M operations such as node upgrades and elastic scaling. You can further leverage the automated O&M capabilities of node pools, including automatic OS CVE vulnerability patching, automatic faulty node recovery, and automatic kubelet and containerd version upgrades, to reduce O&M costs.
 //
 // @param request - CreateClusterNodePoolRequest
 //
@@ -2579,7 +2579,7 @@ func (client *Client) DescribeClusterAttachScriptsWithContext(ctx context.Contex
 
 // Summary:
 //
-// You can call the DescribeClusterDetail API to query the detailed information of a specified cluster by cluster ID.
+// Queries the details of a specified cluster by cluster ID.
 //
 // @param headers - map
 //
@@ -2741,19 +2741,19 @@ func (client *Client) DescribeClusterNodePoolDetailWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries all node pools in a cluster.
+// Queries the list of all node pools in a cluster.
 //
 // Description:
 //
 // - When removing nodes, perform standardized operations through this API or the [Container Service console](https://cs.console.aliyun.com). Do not manually remove nodes by using `kubectl delete node`.
 //
-// - Do not directly release nodes, remove instances, or allow nodes to be passively released due to subscription instance expiration in the ECS or ESS console (or through related APIs). In these cases, nodes are directly stopped and automatically removed from the Container Service console.
+// - Do not directly release nodes, remove instances, or allow nodes to be passively released due to subscription instance expires in the ECS or ESS console (or through related APIs). In these cases, nodes are directly stopped and automatically removed from the Container Service console.
 //
 // - If the node pool has a desired node count configured, the node pool automatically scales out other instances based on the corresponding configuration to maintain the node count at the desired number.
 //
 // - Removing nodes involves Pod migration, which may affect your services. Perform this operation during off-peak hours. Unexpected risks may occur during the operation. Back up relevant data in advance.
 //
-// - When removing nodes, ACK executes a drain operation. Ensure that other nodes in the cluster have sufficient resources to avoid application Pods that cannot be scheduled.
+// - When removing nodes, ACK executes a drain operation. Ensure that other nodes in the cluster have sufficient resources to avoid application Pods that cannot be scheduling.
 //
 // - Check the node affinity rules and scheduling policies of Pods on the nodes to be removed to ensure that Pods are not left unschedulable after node removal.
 //
@@ -5559,11 +5559,11 @@ func (client *Client) ModifyAutoRepairPolicyWithContext(ctx context.Context, clu
 
 // Summary:
 //
-// You can call the ModifyCluster operation to modify the configuration of an ACK cluster.
+// Modifies the configuration of an ACK cluster.
 //
 // Description:
 //
-// <notice>Starting from July 04, 2026, the request parameters instance_deletion_protection, ingress_loadbalancer_id, and access_control_list will no longer take effect. For details about the changes, see [Announcement on Changes to ACK Cluster Management OpenAPI Parameters and OpenAPI Deprecation](https://help.aliyun.com/document_detail/2932733.html).</notice>
+// <notice>Starting July 4, 2026, the request parameters instance_deletion_protection, ingress_loadbalancer_id, and access_control_list will no longer take effect. For more information about the changes, see [Announcement on changes to OpenAPI request and response parameters and OpenAPI deprecation for ACK cluster management](https://help.aliyun.com/document_detail/2932733.html).</notice>
 //
 // @param request - ModifyClusterRequest
 //
@@ -5594,6 +5594,10 @@ func (client *Client) ModifyClusterWithContext(ctx context.Context, ClusterId *s
 
 	if !dara.IsNil(request.ApiServerEipId) {
 		body["api_server_eip_id"] = request.ApiServerEipId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		body["client_token"] = request.ClientToken
 	}
 
 	if !dara.IsNil(request.ClusterName) {

@@ -18,19 +18,19 @@ type iModifyClusterResponseBody interface {
 }
 
 type ModifyClusterResponseBody struct {
-	// Cluster ID.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// cb95aa626a47740afbf6aa09****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 687C5BAA-D103-4993-884B-C35E4314****
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
-	// Task ID.
+	// The task ID.
 	//
 	// example:
 	//
