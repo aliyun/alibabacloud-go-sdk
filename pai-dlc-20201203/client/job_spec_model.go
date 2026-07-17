@@ -71,7 +71,7 @@ type JobSpec struct {
 	// ecs.c6.large
 	EcsSpec          *string            `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
 	ElasticSpotSpecs []*ElasticSpotSpec `json:"ElasticSpotSpecs,omitempty" xml:"ElasticSpotSpecs,omitempty" type:"Repeated"`
-	// The additional pod configuration.
+	// The extra pod configuration.
 	ExtraPodSpec              *ExtraPodSpec              `json:"ExtraPodSpec,omitempty" xml:"ExtraPodSpec,omitempty"`
 	HyperNodeSchedulingConfig *HyperNodeSchedulingConfig `json:"HyperNodeSchedulingConfig,omitempty" xml:"HyperNodeSchedulingConfig,omitempty"`
 	// The runtime image address for this type of worker. Call [ListImages](https://help.aliyun.com/document_detail/449118.html) to obtain images provided by the PAI platform. You can also specify a third-party public image.

@@ -144,7 +144,7 @@ type GetJobResponseBody struct {
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The elastic job parameters.
 	ElasticSpec *JobElasticSpec `json:"ElasticSpec,omitempty" xml:"ElasticSpec,omitempty"`
-	// Indicates whether the debugger job is enabled.
+	// Indicates whether the debugger is enabled for the job.
 	//
 	// example:
 	//
@@ -152,7 +152,7 @@ type GetJobResponseBody struct {
 	EnabledDebugger *bool `json:"EnabledDebugger,omitempty" xml:"EnabledDebugger,omitempty"`
 	// The environment variable configuration.
 	Envs map[string]*string `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	// The time when the job was created (UTC).
+	// The job creation time (UTC).
 	//
 	// example:
 	//
@@ -164,7 +164,7 @@ type GetJobResponseBody struct {
 	//
 	// 2021-01-12T15:36:08Z
 	GmtFailedTime *string `json:"GmtFailedTime,omitempty" xml:"GmtFailedTime,omitempty"`
-	// The time when the job finished (UTC).
+	// The job finish time (UTC).
 	//
 	// example:
 	//
@@ -1131,7 +1131,7 @@ type GetJobResponseBodyPods struct {
 	//
 	// Normal
 	SubStatus *string `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
-	// The node type, which corresponds to a JobSpec in the JobSpecs parameter of the CreateJob API.
+	// The node type, which corresponds to a JobSpec in the JobSpecs parameter of CreateJob.
 	//
 	// example:
 	//
@@ -1507,7 +1507,7 @@ func (s *GetJobResponseBodyPodsHistoryPods) Validate() error {
 }
 
 type GetJobResponseBodyRestartRecord struct {
-	// The error message list.
+	// The list of fault information.
 	DetailErrorInfoList []*GetJobResponseBodyRestartRecordDetailErrorInfoList `json:"DetailErrorInfoList,omitempty" xml:"DetailErrorInfoList,omitempty" type:"Repeated"`
 	// The job restart count.
 	JobRestartCount *int64 `json:"JobRestartCount,omitempty" xml:"JobRestartCount,omitempty"`
@@ -1519,7 +1519,7 @@ type GetJobResponseBodyRestartRecord struct {
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The restart duration, in seconds.
 	RestartDurationInSec *int64 `json:"RestartDurationInSec,omitempty" xml:"RestartDurationInSec,omitempty"`
-	// The reason for the restart failure.
+	// The restart failure reason.
 	RestartFailReason *string `json:"RestartFailReason,omitempty" xml:"RestartFailReason,omitempty"`
 	RestartLevelType  *string `json:"RestartLevelType,omitempty" xml:"RestartLevelType,omitempty"`
 	// The restart status.
@@ -1640,7 +1640,7 @@ func (s *GetJobResponseBodyRestartRecord) Validate() error {
 }
 
 type GetJobResponseBodyRestartRecordDetailErrorInfoList struct {
-	// The job blacklist.
+	// The job-level blacklist.
 	AddJobLevelBlacklist *bool `json:"AddJobLevelBlacklist,omitempty" xml:"AddJobLevelBlacklist,omitempty"`
 	// The node blacklist.
 	AddNodeToBlacklist *bool `json:"AddNodeToBlacklist,omitempty" xml:"AddNodeToBlacklist,omitempty"`
@@ -1648,7 +1648,7 @@ type GetJobResponseBodyRestartRecordDetailErrorInfoList struct {
 	DetailErrorMsg *string `json:"DetailErrorMsg,omitempty" xml:"DetailErrorMsg,omitempty"`
 	// The error code.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message.
+	// The fault message.
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
 	// The error source.
 	ErrorSource *string `json:"ErrorSource,omitempty" xml:"ErrorSource,omitempty"`

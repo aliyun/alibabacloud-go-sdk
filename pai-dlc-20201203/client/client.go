@@ -487,6 +487,96 @@ func (client *Client) CreateRayHistoryServer(request *CreateRayHistoryServerRequ
 
 // Summary:
 //
+// 创建信号
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该API用于向指定作业的一个或多个Pod发送特定信号。
+//
+// - 发送信号后，API立即返回一个`SignalId`，实际的信号投递由后台worker处理。
+//
+// - 信号的状态可以通过`GetSignal`或`ListSignals`接口查询。
+//
+// @param request - CreateSignalRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSignalResponse
+func (client *Client) CreateSignalWithOptions(JobId *string, request *CreateSignalRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateSignalResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Signal) {
+		body["Signal"] = request.Signal
+	}
+
+	if !dara.IsNil(request.Target) {
+		body["Target"] = request.Target
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateSignal"),
+		Version:     dara.String("2020-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/jobs/" + dara.PercentEncode(dara.StringValue(JobId)) + "/signals"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateSignalResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建信号
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该API用于向指定作业的一个或多个Pod发送特定信号。
+//
+// - 发送信号后，API立即返回一个`SignalId`，实际的信号投递由后台worker处理。
+//
+// - 信号的状态可以通过`GetSignal`或`ListSignals`接口查询。
+//
+// @param request - CreateSignalRequest
+//
+// @return CreateSignalResponse
+func (client *Client) CreateSignal(JobId *string, request *CreateSignalRequest) (_result *CreateSignalResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateSignalResponse{}
+	_body, _err := client.CreateSignalWithOptions(JobId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a TensorBoard by using a job or specifying a data source configuration.
 //
 // @param request - CreateTensorboardRequest
@@ -1753,6 +1843,84 @@ func (client *Client) GetRayHistoryServer(RayHistoryServerId *string, request *G
 
 // Summary:
 //
+// 获取信号
+//
+// Description:
+//
+// ## 请求说明
+//
+// 通过此 API，用户可以获取到指定 `JobId` 和 `SignalId` 对应的信号详情，包括信号的状态、发送范围等信息。请注意，返回的结果中不再包含每个 Pod 的原始结果结构，而是通过 `Status`, `Reason`, 和 `Message` 字段来表达信号处理的整体情况。
+//
+// @param request - GetSignalRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSignalResponse
+func (client *Client) GetSignalWithOptions(JobId *string, SignalId *string, request *GetSignalRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSignalResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Token) {
+		query["Token"] = request.Token
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSignal"),
+		Version:     dara.String("2020-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/jobs/" + dara.PercentEncode(dara.StringValue(JobId)) + "/signals/" + dara.PercentEncode(dara.StringValue(SignalId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSignalResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取信号
+//
+// Description:
+//
+// ## 请求说明
+//
+// 通过此 API，用户可以获取到指定 `JobId` 和 `SignalId` 对应的信号详情，包括信号的状态、发送范围等信息。请注意，返回的结果中不再包含每个 Pod 的原始结果结构，而是通过 `Status`, `Reason`, 和 `Message` 字段来表达信号处理的整体情况。
+//
+// @param request - GetSignalRequest
+//
+// @return GetSignalResponse
+func (client *Client) GetSignal(JobId *string, SignalId *string, request *GetSignalRequest) (_result *GetSignalResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetSignalResponse{}
+	_body, _err := client.GetSignalWithOptions(JobId, SignalId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the details of a Tensorboard instance.
 //
 // @param request - GetTensorboardRequest
@@ -2632,6 +2800,104 @@ func (client *Client) ListRayHistoryServers(request *ListRayHistoryServersReques
 	headers := make(map[string]*string)
 	_result = &ListRayHistoryServersResponse{}
 	_body, _err := client.ListRayHistoryServersWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取信号列表
+//
+// Description:
+//
+// ## 请求说明
+//
+// 通过此 API 可以获取特定作业下的所有信号记录详情，包括信号 ID、状态、创建时间等信息。支持通过查询参数进一步筛选或排序结果。
+//
+// @param request - ListSignalsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSignalsResponse
+func (client *Client) ListSignalsWithOptions(JobId *string, request *ListSignalsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSignalsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.Token) {
+		query["Token"] = request.Token
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSignals"),
+		Version:     dara.String("2020-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/jobs/" + dara.PercentEncode(dara.StringValue(JobId)) + "/signals"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSignalsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取信号列表
+//
+// Description:
+//
+// ## 请求说明
+//
+// 通过此 API 可以获取特定作业下的所有信号记录详情，包括信号 ID、状态、创建时间等信息。支持通过查询参数进一步筛选或排序结果。
+//
+// @param request - ListSignalsRequest
+//
+// @return ListSignalsResponse
+func (client *Client) ListSignals(JobId *string, request *ListSignalsRequest) (_result *ListSignalsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListSignalsResponse{}
+	_body, _err := client.ListSignalsWithOptions(JobId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
