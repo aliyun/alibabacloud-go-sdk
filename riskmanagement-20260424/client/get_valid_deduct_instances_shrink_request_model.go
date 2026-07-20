@@ -16,6 +16,9 @@ type iGetValidDeductInstancesShrinkRequest interface {
 }
 
 type GetValidDeductInstancesShrinkRequest struct {
+	// example:
+	//
+	// cn-fuzhou
 	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SdkRequestShrink *string `json:"SdkRequest,omitempty" xml:"SdkRequest,omitempty"`
 }

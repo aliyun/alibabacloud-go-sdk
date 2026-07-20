@@ -16,6 +16,9 @@ type iGetCanTrySasRequest interface {
 }
 
 type GetCanTrySasRequest struct {
+	// example:
+	//
+	// cn-guangzhou
 	RegionId   *string                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SdkRequest *GetCanTrySasRequestSdkRequest `json:"SdkRequest,omitempty" xml:"SdkRequest,omitempty" type:"Struct"`
 }
@@ -56,8 +59,14 @@ func (s *GetCanTrySasRequest) Validate() error {
 }
 
 type GetCanTrySasRequestSdkRequest struct {
-	FromEcs *bool   `json:"FromEcs,omitempty" xml:"FromEcs,omitempty"`
-	Lang    *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// true
+	FromEcs *bool `json:"FromEcs,omitempty" xml:"FromEcs,omitempty"`
+	// example:
+	//
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s GetCanTrySasRequestSdkRequest) String() string {

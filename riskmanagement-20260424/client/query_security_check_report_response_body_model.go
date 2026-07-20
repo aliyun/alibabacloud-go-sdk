@@ -22,11 +22,23 @@ type iQuerySecurityCheckReportResponseBody interface {
 }
 
 type QuerySecurityCheckReportResponseBody struct {
-	Code      *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *QuerySecurityCheckReportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *QuerySecurityCheckReportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 2FBDD713-00A5-5C98-B661-3FD31A349B6E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QuerySecurityCheckReportResponseBody) String() string {
@@ -92,13 +104,34 @@ func (s *QuerySecurityCheckReportResponseBody) Validate() error {
 }
 
 type QuerySecurityCheckReportResponseBodyData struct {
-	CloudSecurityGuide *int32  `json:"CloudSecurityGuide,omitempty" xml:"CloudSecurityGuide,omitempty"`
-	ConfigCheckNumber  *int32  `json:"ConfigCheckNumber,omitempty" xml:"ConfigCheckNumber,omitempty"`
-	ContactCheckNumber *int32  `json:"ContactCheckNumber,omitempty" xml:"ContactCheckNumber,omitempty"`
-	RiskEventNumber    *int32  `json:"RiskEventNumber,omitempty" xml:"RiskEventNumber,omitempty"`
-	SasCheckNumber     *int32  `json:"SasCheckNumber,omitempty" xml:"SasCheckNumber,omitempty"`
-	SecurityStatus     *int32  `json:"SecurityStatus,omitempty" xml:"SecurityStatus,omitempty"`
-	SuggestionText     *string `json:"SuggestionText,omitempty" xml:"SuggestionText,omitempty"`
+	// example:
+	//
+	// 1
+	CloudSecurityGuide *int32 `json:"CloudSecurityGuide,omitempty" xml:"CloudSecurityGuide,omitempty"`
+	// example:
+	//
+	// 3
+	ConfigCheckNumber *int32 `json:"ConfigCheckNumber,omitempty" xml:"ConfigCheckNumber,omitempty"`
+	// example:
+	//
+	// 3
+	ContactCheckNumber *int32 `json:"ContactCheckNumber,omitempty" xml:"ContactCheckNumber,omitempty"`
+	// example:
+	//
+	// 3
+	RiskEventNumber *int32 `json:"RiskEventNumber,omitempty" xml:"RiskEventNumber,omitempty"`
+	// example:
+	//
+	// 1
+	SasCheckNumber *int32 `json:"SasCheckNumber,omitempty" xml:"SasCheckNumber,omitempty"`
+	// example:
+	//
+	// 1
+	SecurityStatus *int32 `json:"SecurityStatus,omitempty" xml:"SecurityStatus,omitempty"`
+	// example:
+	//
+	// exist risk event。
+	SuggestionText *string `json:"SuggestionText,omitempty" xml:"SuggestionText,omitempty"`
 }
 
 func (s QuerySecurityCheckReportResponseBodyData) String() string {

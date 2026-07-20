@@ -22,11 +22,23 @@ type iBindAuthToMachineResponseBody interface {
 }
 
 type BindAuthToMachineResponseBody struct {
-	Code      *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *BindAuthToMachineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *BindAuthToMachineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// BEE90F8C-EDC2-5394-953B-D07A121612B5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s BindAuthToMachineResponseBody) String() string {
@@ -122,12 +134,30 @@ func (s *BindAuthToMachineResponseBodyData) Validate() error {
 }
 
 type BindAuthToMachineResponseBodyDataBody struct {
-	BindCount             *int32  `json:"BindCount,omitempty" xml:"BindCount,omitempty"`
-	InsufficientCoreCount *int32  `json:"InsufficientCoreCount,omitempty" xml:"InsufficientCoreCount,omitempty"`
-	InsufficientEcsCount  *int32  `json:"InsufficientEcsCount,omitempty" xml:"InsufficientEcsCount,omitempty"`
-	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResultCode            *int32  `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	UnBindCount           *int32  `json:"UnBindCount,omitempty" xml:"UnBindCount,omitempty"`
+	// example:
+	//
+	// 5
+	BindCount *int32 `json:"BindCount,omitempty" xml:"BindCount,omitempty"`
+	// example:
+	//
+	// 2
+	InsufficientCoreCount *int32 `json:"InsufficientCoreCount,omitempty" xml:"InsufficientCoreCount,omitempty"`
+	// example:
+	//
+	// 1
+	InsufficientEcsCount *int32 `json:"InsufficientEcsCount,omitempty" xml:"InsufficientEcsCount,omitempty"`
+	// example:
+	//
+	// F799C1E4-D4C6-5964-A6D1-4BA9CCF105F2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2
+	ResultCode *int32 `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// example:
+	//
+	// 4
+	UnBindCount *int32 `json:"UnBindCount,omitempty" xml:"UnBindCount,omitempty"`
 }
 
 func (s BindAuthToMachineResponseBodyDataBody) String() string {

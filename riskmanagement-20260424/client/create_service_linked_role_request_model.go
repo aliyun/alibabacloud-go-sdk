@@ -16,6 +16,9 @@ type iCreateServiceLinkedRoleRequest interface {
 }
 
 type CreateServiceLinkedRoleRequest struct {
+	// example:
+	//
+	// cn-hangzhou
 	RegionId   *string                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SdkRequest *CreateServiceLinkedRoleRequestSdkRequest `json:"SdkRequest,omitempty" xml:"SdkRequest,omitempty" type:"Struct"`
 }
@@ -56,6 +59,9 @@ func (s *CreateServiceLinkedRoleRequest) Validate() error {
 }
 
 type CreateServiceLinkedRoleRequestSdkRequest struct {
+	// example:
+	//
+	// AliyunServiceRoleForWebsiteBuildPublish
 	ServiceLinkedRole *string `json:"ServiceLinkedRole,omitempty" xml:"ServiceLinkedRole,omitempty"`
 }
 

@@ -14,6 +14,9 @@ type iStartDisposalToolServiceRequest interface {
 }
 
 type StartDisposalToolServiceRequest struct {
+	// example:
+	//
+	// DisposalTool
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
 }
 

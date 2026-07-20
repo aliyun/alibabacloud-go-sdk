@@ -18,9 +18,18 @@ type iCreateVirusScanOnceTaskRequest interface {
 }
 
 type CreateVirusScanOnceTaskRequest struct {
+	// example:
+	//
+	// rm-0iw73ro05vcwn6ntq
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Ip         *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 12.3*.22.11
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// example:
+	//
+	// cn-zhangjiakou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateVirusScanOnceTaskRequest) String() string {

@@ -22,11 +22,23 @@ type iCreateSasTrialResponseBody interface {
 }
 
 type CreateSasTrialResponseBody struct {
-	Code      *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *CreateSasTrialResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *CreateSasTrialResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 6B57D35D-9DAC-5393-AE39-07697E37C2E7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateSasTrialResponseBody) String() string {
@@ -122,6 +134,9 @@ func (s *CreateSasTrialResponseBodyData) Validate() error {
 }
 
 type CreateSasTrialResponseBodyDataBody struct {
+	// example:
+	//
+	// F7C74264-DF12-56D5-869B-C4B11DD88BA2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

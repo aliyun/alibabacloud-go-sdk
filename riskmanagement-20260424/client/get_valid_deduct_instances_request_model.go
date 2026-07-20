@@ -16,6 +16,9 @@ type iGetValidDeductInstancesRequest interface {
 }
 
 type GetValidDeductInstancesRequest struct {
+	// example:
+	//
+	// cn-fuzhou
 	RegionId   *string                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SdkRequest *GetValidDeductInstancesRequestSdkRequest `json:"SdkRequest,omitempty" xml:"SdkRequest,omitempty" type:"Struct"`
 }
@@ -56,9 +59,18 @@ func (s *GetValidDeductInstancesRequest) Validate() error {
 }
 
 type GetValidDeductInstancesRequestSdkRequest struct {
+	// example:
+	//
+	// sas_cspm_dp_cn-***80001
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Modules    *string `json:"Modules,omitempty" xml:"Modules,omitempty"`
-	Status     *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// sas_vul_dp_cn
+	Modules *string `json:"Modules,omitempty" xml:"Modules,omitempty"`
+	// example:
+	//
+	// Available
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetValidDeductInstancesRequestSdkRequest) String() string {

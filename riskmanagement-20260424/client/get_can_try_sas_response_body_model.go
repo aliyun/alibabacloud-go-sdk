@@ -22,11 +22,23 @@ type iGetCanTrySasResponseBody interface {
 }
 
 type GetCanTrySasResponseBody struct {
-	Code      *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetCanTrySasResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetCanTrySasResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 6B48613E-86DE-5411-BDBE-429C80B45F3F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetCanTrySasResponseBody) String() string {
@@ -122,8 +134,11 @@ func (s *GetCanTrySasResponseBodyData) Validate() error {
 }
 
 type GetCanTrySasResponseBodyDataBody struct {
-	Data      *GetCanTrySasResponseBodyDataBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *GetCanTrySasResponseBodyDataBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0EBD97B8-65AD-52C8-94D5-A0F81E7D70D0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetCanTrySasResponseBodyDataBody) String() string {
@@ -162,9 +177,15 @@ func (s *GetCanTrySasResponseBodyDataBody) Validate() error {
 }
 
 type GetCanTrySasResponseBodyDataBodyData struct {
+	// example:
+	//
+	// 1
 	CanTry         *int32   `json:"CanTry,omitempty" xml:"CanTry,omitempty"`
 	CanTryVersions []*int32 `json:"CanTryVersions,omitempty" xml:"CanTryVersions,omitempty" type:"Repeated"`
-	TryType        *int32   `json:"TryType,omitempty" xml:"TryType,omitempty"`
+	// example:
+	//
+	// 1
+	TryType *int32 `json:"TryType,omitempty" xml:"TryType,omitempty"`
 }
 
 func (s GetCanTrySasResponseBodyDataBodyData) String() string {

@@ -22,11 +22,23 @@ type iCreateServiceLinkedRoleResponseBody interface {
 }
 
 type CreateServiceLinkedRoleResponseBody struct {
-	Code      *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *CreateServiceLinkedRoleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *CreateServiceLinkedRoleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1B4C9A14-94E6-5EEB-BF39-7DACCE9AC0D6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateServiceLinkedRoleResponseBody) String() string {
@@ -122,6 +134,9 @@ func (s *CreateServiceLinkedRoleResponseBodyData) Validate() error {
 }
 
 type CreateServiceLinkedRoleResponseBodyDataBody struct {
+	// example:
+	//
+	// E00516EB-A56A-5381-ACFE-E618DBC3D0EA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

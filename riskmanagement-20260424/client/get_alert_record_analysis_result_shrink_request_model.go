@@ -22,11 +22,23 @@ type iGetAlertRecordAnalysisResultShrinkRequest interface {
 }
 
 type GetAlertRecordAnalysisResultShrinkRequest struct {
-	AlarmUniqueInfo     *string `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
-	AliyunLang          *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	// example:
+	//
+	// 9b57f0fcf98181df8d8487d1cc91cb8d
+	AlarmUniqueInfo *string `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
+	// example:
+	//
+	// zh
+	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	// example:
+	//
+	// fc312aa0c32ba8a6147db6221fb1c1ee
 	UniqueInfo          *string `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
 	UniqueTagListShrink *string `json:"UniqueTagList,omitempty" xml:"UniqueTagList,omitempty"`
-	Uuid                *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// example:
+	//
+	// ebde6d4e3e4aba728962eec43a69196e9J7tt7H47Pc
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s GetAlertRecordAnalysisResultShrinkRequest) String() string {

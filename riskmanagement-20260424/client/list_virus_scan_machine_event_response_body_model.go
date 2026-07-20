@@ -22,11 +22,23 @@ type iListVirusScanMachineEventResponseBody interface {
 }
 
 type ListVirusScanMachineEventResponseBody struct {
-	Code      *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ListVirusScanMachineEventResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ListVirusScanMachineEventResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// successful‌
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// F0AD8096-E7A2-573D-ACF0-7CE9050CDE38
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListVirusScanMachineEventResponseBody) String() string {
@@ -92,6 +104,9 @@ func (s *ListVirusScanMachineEventResponseBody) Validate() error {
 }
 
 type ListVirusScanMachineEventResponseBodyData struct {
+	// example:
+	//
+	// 1E222AB5-5C2B-50AD-8A96-E704AF80F2A0
 	RequestId                    *string                                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	VirusScanLatestTaskStatistic *ListVirusScanMachineEventResponseBodyDataVirusScanLatestTaskStatistic `json:"VirusScanLatestTaskStatistic,omitempty" xml:"VirusScanLatestTaskStatistic,omitempty" type:"Struct"`
 	VirusScanMachineEventList    *ListVirusScanMachineEventResponseBodyDataVirusScanMachineEventList    `json:"VirusScanMachineEventList,omitempty" xml:"VirusScanMachineEventList,omitempty" type:"Struct"`
@@ -147,20 +162,59 @@ func (s *ListVirusScanMachineEventResponseBodyData) Validate() error {
 }
 
 type ListVirusScanMachineEventResponseBodyDataVirusScanLatestTaskStatistic struct {
-	CompleteMachine   *int32    `json:"CompleteMachine,omitempty" xml:"CompleteMachine,omitempty"`
-	MachineName       *string   `json:"MachineName,omitempty" xml:"MachineName,omitempty"`
-	Progress          *string   `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	RiskLevel         *string   `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	SafeMachine       *int32    `json:"SafeMachine,omitempty" xml:"SafeMachine,omitempty"`
-	ScanMachine       *int32    `json:"ScanMachine,omitempty" xml:"ScanMachine,omitempty"`
-	ScanPath          []*string `json:"ScanPath,omitempty" xml:"ScanPath,omitempty" type:"Repeated"`
-	ScanTime          *int64    `json:"ScanTime,omitempty" xml:"ScanTime,omitempty"`
-	ScanType          *string   `json:"ScanType,omitempty" xml:"ScanType,omitempty"`
-	Status            *int32    `json:"Status,omitempty" xml:"Status,omitempty"`
-	SuspiciousCount   *int32    `json:"SuspiciousCount,omitempty" xml:"SuspiciousCount,omitempty"`
-	SuspiciousMachine *int32    `json:"SuspiciousMachine,omitempty" xml:"SuspiciousMachine,omitempty"`
-	TaskId            *string   `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	UnCompleteMachine *int32    `json:"UnCompleteMachine,omitempty" xml:"UnCompleteMachine,omitempty"`
+	// example:
+	//
+	// 2
+	CompleteMachine *int32 `json:"CompleteMachine,omitempty" xml:"CompleteMachine,omitempty"`
+	// example:
+	//
+	// testMahine1
+	MachineName *string `json:"MachineName,omitempty" xml:"MachineName,omitempty"`
+	// example:
+	//
+	// 92
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// example:
+	//
+	// medium
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// example:
+	//
+	// 1
+	SafeMachine *int32 `json:"SafeMachine,omitempty" xml:"SafeMachine,omitempty"`
+	// example:
+	//
+	// 1
+	ScanMachine *int32    `json:"ScanMachine,omitempty" xml:"ScanMachine,omitempty"`
+	ScanPath    []*string `json:"ScanPath,omitempty" xml:"ScanPath,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1681145862000
+	ScanTime *int64 `json:"ScanTime,omitempty" xml:"ScanTime,omitempty"`
+	// example:
+	//
+	// system
+	ScanType *string `json:"ScanType,omitempty" xml:"ScanType,omitempty"`
+	// example:
+	//
+	// 0
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 0
+	SuspiciousCount *int32 `json:"SuspiciousCount,omitempty" xml:"SuspiciousCount,omitempty"`
+	// example:
+	//
+	// 1
+	SuspiciousMachine *int32 `json:"SuspiciousMachine,omitempty" xml:"SuspiciousMachine,omitempty"`
+	// example:
+	//
+	// t-0mqu9dhpi365dp5iyf
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 1
+	UnCompleteMachine *int32 `json:"UnCompleteMachine,omitempty" xml:"UnCompleteMachine,omitempty"`
 }
 
 func (s ListVirusScanMachineEventResponseBodyDataVirusScanLatestTaskStatistic) String() string {
@@ -351,14 +405,35 @@ func (s *ListVirusScanMachineEventResponseBodyDataVirusScanMachineEventList) Val
 }
 
 type ListVirusScanMachineEventResponseBodyDataVirusScanMachineEventListData struct {
-	Details       []*ListVirusScanMachineEventResponseBodyDataVirusScanMachineEventListDataDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
-	EventId       *int64                                                                           `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	EventName     *string                                                                          `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	InstanceName  *string                                                                          `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InternetIp    *string                                                                          `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	IntranetIp    *string                                                                          `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	LastTimeStamp *int64                                                                           `json:"LastTimeStamp,omitempty" xml:"LastTimeStamp,omitempty"`
-	Level         *string                                                                          `json:"Level,omitempty" xml:"Level,omitempty"`
+	Details []*ListVirusScanMachineEventResponseBodyDataVirusScanMachineEventListDataDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 123-2CcoavZnCXrJKqk2KQKxp9WGwup
+	EventId *int64 `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// 恶意脚本代码执行
+	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	// example:
+	//
+	// i-wz92q7m5hsbgfhdss***
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// 47.57.*1.65
+	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	// example:
+	//
+	// 47.57.*1.65
+	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	// example:
+	//
+	// 1682046733628
+	LastTimeStamp *int64 `json:"LastTimeStamp,omitempty" xml:"LastTimeStamp,omitempty"`
+	// example:
+	//
+	// remind
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 }
 
 func (s ListVirusScanMachineEventResponseBodyDataVirusScanMachineEventListData) String() string {
@@ -455,9 +530,21 @@ func (s *ListVirusScanMachineEventResponseBodyDataVirusScanMachineEventListData)
 }
 
 type ListVirusScanMachineEventResponseBodyDataVirusScanMachineEventListDataDetails struct {
-	InfoType     *string `json:"InfoType,omitempty" xml:"InfoType,omitempty"`
-	NameDisplay  *string `json:"NameDisplay,omitempty" xml:"NameDisplay,omitempty"`
-	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// download_url
+	InfoType *string `json:"InfoType,omitempty" xml:"InfoType,omitempty"`
+	// example:
+	//
+	// Trojan Path
+	NameDisplay *string `json:"NameDisplay,omitempty" xml:"NameDisplay,omitempty"`
+	// example:
+	//
+	// text
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// getopt
 	ValueDisplay *string `json:"ValueDisplay,omitempty" xml:"ValueDisplay,omitempty"`
 }
 
@@ -510,9 +597,18 @@ func (s *ListVirusScanMachineEventResponseBodyDataVirusScanMachineEventListDataD
 }
 
 type ListVirusScanMachineEventResponseBodyDataVirusScanMachineEventListPageInfo struct {
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 0
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListVirusScanMachineEventResponseBodyDataVirusScanMachineEventListPageInfo) String() string {

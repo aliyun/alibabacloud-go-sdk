@@ -16,6 +16,9 @@ type iDescribeServiceLinkedRoleStatusRequest interface {
 }
 
 type DescribeServiceLinkedRoleStatusRequest struct {
+	// example:
+	//
+	// cn-hangzhou
 	RegionId   *string                                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SdkRequest *DescribeServiceLinkedRoleStatusRequestSdkRequest `json:"SdkRequest,omitempty" xml:"SdkRequest,omitempty" type:"Struct"`
 }
@@ -56,6 +59,9 @@ func (s *DescribeServiceLinkedRoleStatusRequest) Validate() error {
 }
 
 type DescribeServiceLinkedRoleStatusRequestSdkRequest struct {
+	// example:
+	//
+	// AliyunServiceRoleForSas
 	ServiceLinkedRole *string `json:"ServiceLinkedRole,omitempty" xml:"ServiceLinkedRole,omitempty"`
 }
 

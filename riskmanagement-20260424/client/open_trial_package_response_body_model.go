@@ -22,11 +22,23 @@ type iOpenTrialPackageResponseBody interface {
 }
 
 type OpenTrialPackageResponseBody struct {
-	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *OpenTrialPackageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *OpenTrialPackageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 855FCC89-0B13-5FC0-AAD2-120878081C1C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s OpenTrialPackageResponseBody) String() string {
@@ -92,6 +104,9 @@ func (s *OpenTrialPackageResponseBody) Validate() error {
 }
 
 type OpenTrialPackageResponseBodyData struct {
+	// example:
+	//
+	// 5F4B631D-0358-5B7B-8B84-FB924138ED91
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

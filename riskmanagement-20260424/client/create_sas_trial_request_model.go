@@ -16,6 +16,9 @@ type iCreateSasTrialRequest interface {
 }
 
 type CreateSasTrialRequest struct {
+	// example:
+	//
+	// cn-shenzhen
 	RegionId   *string                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SdkRequest *CreateSasTrialRequestSdkRequest `json:"SdkRequest,omitempty" xml:"SdkRequest,omitempty" type:"Struct"`
 }
@@ -56,11 +59,23 @@ func (s *CreateSasTrialRequest) Validate() error {
 }
 
 type CreateSasTrialRequestSdkRequest struct {
-	FromEcs     *bool                                       `json:"FromEcs,omitempty" xml:"FromEcs,omitempty"`
+	// example:
+	//
+	// true
+	FromEcs *bool `json:"FromEcs,omitempty" xml:"FromEcs,omitempty"`
+	// example:
+	//
+	// en
 	Lang        *string                                     `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	RequestForm *CreateSasTrialRequestSdkRequestRequestForm `json:"RequestForm,omitempty" xml:"RequestForm,omitempty" type:"Struct"`
-	TryType     *int32                                      `json:"TryType,omitempty" xml:"TryType,omitempty"`
-	TryVersion  *int32                                      `json:"TryVersion,omitempty" xml:"TryVersion,omitempty"`
+	// example:
+	//
+	// 1
+	TryType *int32 `json:"TryType,omitempty" xml:"TryType,omitempty"`
+	// example:
+	//
+	// 3
+	TryVersion *int32 `json:"TryVersion,omitempty" xml:"TryVersion,omitempty"`
 }
 
 func (s CreateSasTrialRequestSdkRequest) String() string {
@@ -126,6 +141,9 @@ func (s *CreateSasTrialRequestSdkRequest) Validate() error {
 }
 
 type CreateSasTrialRequestSdkRequestRequestForm struct {
+	// example:
+	//
+	// for poc
 	TryReason *string `json:"TryReason,omitempty" xml:"TryReason,omitempty"`
 }
 

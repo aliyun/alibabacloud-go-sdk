@@ -22,11 +22,23 @@ type iDescribeCloudCenterInstancesResponseBody interface {
 }
 
 type DescribeCloudCenterInstancesResponseBody struct {
-	Code      *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeCloudCenterInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *DescribeCloudCenterInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1B4C9A14-94E6-5EEB-BF39-7DACCE9AC0D6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeCloudCenterInstancesResponseBody) String() string {
@@ -124,8 +136,14 @@ func (s *DescribeCloudCenterInstancesResponseBodyData) Validate() error {
 type DescribeCloudCenterInstancesResponseBodyDataBody struct {
 	Instances []*DescribeCloudCenterInstancesResponseBodyDataBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 	PageInfo  *DescribeCloudCenterInstancesResponseBodyDataBodyPageInfo    `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	RequestId *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 20EBDE7B-AA36-5D60-9DCA-151C48EDB9F8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeCloudCenterInstancesResponseBodyDataBody) String() string {
@@ -191,66 +209,328 @@ func (s *DescribeCloudCenterInstancesResponseBodyDataBody) Validate() error {
 }
 
 type DescribeCloudCenterInstancesResponseBodyDataBodyInstances struct {
-	AlarmStatus         *string `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
-	AppId               *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName             *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	AssetType           *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
-	AssetTypeName       *string `json:"AssetTypeName,omitempty" xml:"AssetTypeName,omitempty"`
-	AuthModifyTime      *int64  `json:"AuthModifyTime,omitempty" xml:"AuthModifyTime,omitempty"`
-	AuthVersion         *int32  `json:"AuthVersion,omitempty" xml:"AuthVersion,omitempty"`
-	AuthVersionName     *string `json:"AuthVersionName,omitempty" xml:"AuthVersionName,omitempty"`
-	Bind                *bool   `json:"Bind,omitempty" xml:"Bind,omitempty"`
+	// example:
+	//
+	// NO
+	AlarmStatus *string `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
+	// example:
+	//
+	// FC2U0JVHWS49S2OT
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// guokent
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// 1
+	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
+	// example:
+	//
+	// xxxxxx
+	AssetTypeName *string `json:"AssetTypeName,omitempty" xml:"AssetTypeName,omitempty"`
+	// example:
+	//
+	// 1627974044000
+	AuthModifyTime *int64 `json:"AuthModifyTime,omitempty" xml:"AuthModifyTime,omitempty"`
+	// example:
+	//
+	// 5
+	AuthVersion *int32 `json:"AuthVersion,omitempty" xml:"AuthVersion,omitempty"`
+	// example:
+	//
+	// 免费版
+	AuthVersionName *string `json:"AuthVersionName,omitempty" xml:"AuthVersionName,omitempty"`
+	// example:
+	//
+	// true
+	Bind *bool `json:"Bind,omitempty" xml:"Bind,omitempty"`
+	// example:
+	//
+	// none
 	BindFileProtectType *string `json:"BindFileProtectType,omitempty" xml:"BindFileProtectType,omitempty"`
-	ClientStatus        *string `json:"ClientStatus,omitempty" xml:"ClientStatus,omitempty"`
-	ClientSubStatus     *string `json:"ClientSubStatus,omitempty" xml:"ClientSubStatus,omitempty"`
-	ClusterId           *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterName         *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	Cores               *int32  `json:"Cores,omitempty" xml:"Cores,omitempty"`
-	CpuInfo             *string `json:"CpuInfo,omitempty" xml:"CpuInfo,omitempty"`
-	CreatedTime         *int64  `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	ExposedStatus       *int32  `json:"ExposedStatus,omitempty" xml:"ExposedStatus,omitempty"`
-	Flag                *int32  `json:"Flag,omitempty" xml:"Flag,omitempty"`
-	FlagName            *string `json:"FlagName,omitempty" xml:"FlagName,omitempty"`
-	GroupId             *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupTrace          *string `json:"GroupTrace,omitempty" xml:"GroupTrace,omitempty"`
-	HasContainer        *string `json:"HasContainer,omitempty" xml:"HasContainer,omitempty"`
-	HcStatus            *string `json:"HcStatus,omitempty" xml:"HcStatus,omitempty"`
-	HealthCheckCount    *int32  `json:"HealthCheckCount,omitempty" xml:"HealthCheckCount,omitempty"`
-	Importance          *int32  `json:"Importance,omitempty" xml:"Importance,omitempty"`
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName        *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InternetIp          *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	IntranetIp          *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	Ip                  *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	IpListString        *string `json:"IpListString,omitempty" xml:"IpListString,omitempty"`
-	Kernel              *string `json:"Kernel,omitempty" xml:"Kernel,omitempty"`
-	LastLoginTimestamp  *int64  `json:"LastLoginTimestamp,omitempty" xml:"LastLoginTimestamp,omitempty"`
-	MacListString       *string `json:"MacListString,omitempty" xml:"MacListString,omitempty"`
-	Mem                 *string `json:"Mem,omitempty" xml:"Mem,omitempty"`
-	Namespace           *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	Os                  *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	OsName              *string `json:"OsName,omitempty" xml:"OsName,omitempty"`
-	PodCount            *int32  `json:"PodCount,omitempty" xml:"PodCount,omitempty"`
-	PostPaidFlag        *int32  `json:"PostPaidFlag,omitempty" xml:"PostPaidFlag,omitempty"`
-	Region              *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RegionName          *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	RiskCount           *string `json:"RiskCount,omitempty" xml:"RiskCount,omitempty"`
-	RiskStatus          *string `json:"RiskStatus,omitempty" xml:"RiskStatus,omitempty"`
-	SafeEventCount      *string `json:"SafeEventCount,omitempty" xml:"SafeEventCount,omitempty"`
-	ServiceId           *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tag                 *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	TagId               *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
-	TagResources        *string `json:"TagResources,omitempty" xml:"TagResources,omitempty"`
-	Uuid                *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	Vendor              *int32  `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
-	VendorName          *string `json:"VendorName,omitempty" xml:"VendorName,omitempty"`
-	VendorUid           *string `json:"VendorUid,omitempty" xml:"VendorUid,omitempty"`
-	VendorUserName      *string `json:"VendorUserName,omitempty" xml:"VendorUserName,omitempty"`
-	VpcInstanceId       *string `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
-	VulCount            *int32  `json:"VulCount,omitempty" xml:"VulCount,omitempty"`
-	VulStatus           *string `json:"VulStatus,omitempty" xml:"VulStatus,omitempty"`
+	// example:
+	//
+	// online
+	ClientStatus *string `json:"ClientStatus,omitempty" xml:"ClientStatus,omitempty"`
+	// example:
+	//
+	// online
+	ClientSubStatus *string `json:"ClientSubStatus,omitempty" xml:"ClientSubStatus,omitempty"`
+	// example:
+	//
+	// cb703cb0ba6bd40d4a6d8de5bff050fb9
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// auto-cn-heyuan
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// example:
+	//
+	// 9
+	Cores *int32 `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	// example:
+	//
+	// Intel(R) Xeon(R) Platinum 8269CY CPU @ 2.50GHz
+	CpuInfo *string `json:"CpuInfo,omitempty" xml:"CpuInfo,omitempty"`
+	// example:
+	//
+	// 1607365213000
+	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// example:
+	//
+	// 0
+	ExposedStatus *int32 `json:"ExposedStatus,omitempty" xml:"ExposedStatus,omitempty"`
+	// example:
+	//
+	// 0,1,2
+	Flag *int32 `json:"Flag,omitempty" xml:"Flag,omitempty"`
+	// example:
+	//
+	// ALIYUN
+	FlagName *string `json:"FlagName,omitempty" xml:"FlagName,omitempty"`
+	// example:
+	//
+	// 86d30f8b0e124aadb7ef3197f9dbd1f5
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// example:
+	//
+	// default
+	GroupTrace *string `json:"GroupTrace,omitempty" xml:"GroupTrace,omitempty"`
+	// example:
+	//
+	// YES
+	HasContainer *string `json:"HasContainer,omitempty" xml:"HasContainer,omitempty"`
+	// example:
+	//
+	// YES
+	HcStatus *string `json:"HcStatus,omitempty" xml:"HcStatus,omitempty"`
+	// example:
+	//
+	// 1
+	HealthCheckCount *int32 `json:"HealthCheckCount,omitempty" xml:"HealthCheckCount,omitempty"`
+	// example:
+	//
+	// 2
+	Importance *int32 `json:"Importance,omitempty" xml:"Importance,omitempty"`
+	// example:
+	//
+	// ls-cn-tl32rf**008
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// ra-supabase-22u1iv3hr**5v9
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// 47.1**.52.125
+	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	// example:
+	//
+	// 172.16.1**.245
+	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	// example:
+	//
+	// 114.55.*4.*6
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// example:
+	//
+	// 172.31.XX.XX,172.171.XX.XX
+	IpListString *string `json:"IpListString,omitempty" xml:"IpListString,omitempty"`
+	// example:
+	//
+	// 3.10.0-1127.19.1.el7.x86_64
+	Kernel *string `json:"Kernel,omitempty" xml:"Kernel,omitempty"`
+	// example:
+	//
+	// 1637592907000
+	LastLoginTimestamp *int64 `json:"LastLoginTimestamp,omitempty" xml:"LastLoginTimestamp,omitempty"`
+	// example:
+	//
+	// 00:13:3e:31:13:39,02:12:67:b8:**:**
+	MacListString *string `json:"MacListString,omitempty" xml:"MacListString,omitempty"`
+	// example:
+	//
+	// 1024
+	Mem *string `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	// example:
+	//
+	// slsshpcorlsmetrics
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// linux
+	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	// example:
+	//
+	// AliOS7U2-x86-64
+	OsName *string `json:"OsName,omitempty" xml:"OsName,omitempty"`
+	// example:
+	//
+	// 8
+	PodCount *int32 `json:"PodCount,omitempty" xml:"PodCount,omitempty"`
+	// example:
+	//
+	// 1
+	PostPaidFlag *int32 `json:"PostPaidFlag,omitempty" xml:"PostPaidFlag,omitempty"`
+	// example:
+	//
+	// cn-hangzhouxxxx
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// cn-zhangjiakou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//       "account": 0,
+	//
+	//       "appNum": 0,
+	//
+	//       "asapVulCount": 0,
+	//
+	//       "baselineHigh": 0,
+	//
+	//       "baselineLow": 0,
+	//
+	//       "baselineMedium": 0,
+	//
+	//       "baselineNum": 0,
+	//
+	//       "cmsNum": 0,
+	//
+	//       "containerAsap": 0,
+	//
+	//       "containerLater": 0,
+	//
+	//       "containerNntf": 0,
+	//
+	//       "containerRemind": 0,
+	//
+	//       "containerSerious": 0,
+	//
+	//       "containerSuspicious": 0,
+	//
+	//       "cveNum": 0,
+	//
+	//       "emgNum": 0,
+	//
+	//       "health": 0,
+	//
+	//       "imageBaselineHigh": 0,
+	//
+	//       "imageBaselineLow": 0,
+	//
+	//       "imageBaselineMedium": 0,
+	//
+	//       "imageBaselineNum": 0,
+	//
+	//       "imageMaliciousFileRemind": 0,
+	//
+	//       "imageMaliciousFileSerious": 0,
+	//
+	//       "imageMaliciousFileSuspicious": 0,
+	//
+	//       "imageVulAsap": 0,
+	//
+	//       "imageVulLater": 0,
+	//
+	//       "imageVulNntf": 0,
+	//
+	//       "laterVulCount": 0,
+	//
+	//       "newSuspicious": 0,
+	//
+	//       "nntfVulCount": 0,
+	//
+	//       "remindNum": 0,
+	//
+	//       "scaNum": 0,
+	//
+	//       "seriousNum": 0,
+	//
+	//       "suspNum": 0,
+	//
+	//       "suspicious": 0,
+	//
+	//       "sysNum": 0,
+	//
+	//       "trojan": 0,
+	//
+	//       "uuid": "inet-37316411-37fe-4b72-b245-346a2721****",
+	//
+	//       "vul": 0,
+	//
+	//       "weakPWNum": 0
+	//
+	// }
+	RiskCount *string `json:"RiskCount,omitempty" xml:"RiskCount,omitempty"`
+	// example:
+	//
+	// NO
+	RiskStatus *string `json:"RiskStatus,omitempty" xml:"RiskStatus,omitempty"`
+	// example:
+	//
+	// 5
+	SafeEventCount *string `json:"SafeEventCount,omitempty" xml:"SafeEventCount,omitempty"`
+	// example:
+	//
+	// dsw-76jlywunsif09bp15p
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// pre_20250714_idpt_adjust
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// example:
+	//
+	// d8586ab8be4549e3815995858d277763
+	TagId *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	// example:
+	//
+	// app:test,type:lingjun
+	TagResources *string `json:"TagResources,omitempty" xml:"TagResources,omitempty"`
+	// example:
+	//
+	// 1f0459ee-ed49-6484-8958-4f10f61e6362
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// example:
+	//
+	// 0
+	Vendor *int32 `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	// example:
+	//
+	// IDC
+	VendorName *string `json:"VendorName,omitempty" xml:"VendorName,omitempty"`
+	// example:
+	//
+	// 123
+	VendorUid *string `json:"VendorUid,omitempty" xml:"VendorUid,omitempty"`
+	// example:
+	//
+	// VendorUserName
+	VendorUserName *string `json:"VendorUserName,omitempty" xml:"VendorUserName,omitempty"`
+	// example:
+	//
+	// vpc-2zek7v0z4r6lbp02xckei
+	VpcInstanceId *string `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
+	// example:
+	//
+	// 2
+	VulCount *int32 `json:"VulCount,omitempty" xml:"VulCount,omitempty"`
+	// example:
+	//
+	// YES
+	VulStatus *string `json:"VulStatus,omitempty" xml:"VulStatus,omitempty"`
 }
 
 func (s DescribeCloudCenterInstancesResponseBodyDataBodyInstances) String() string {
@@ -806,11 +1086,26 @@ func (s *DescribeCloudCenterInstancesResponseBodyDataBodyInstances) Validate() e
 }
 
 type DescribeCloudCenterInstancesResponseBodyDataBodyPageInfo struct {
-	Count       *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 7
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// m1NGAAAAAABzLzIwMjQwMg==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 0
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeCloudCenterInstancesResponseBodyDataBodyPageInfo) String() string {

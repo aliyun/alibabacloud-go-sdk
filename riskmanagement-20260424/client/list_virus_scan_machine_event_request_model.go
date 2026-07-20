@@ -24,12 +24,30 @@ type iListVirusScanMachineEventRequest interface {
 }
 
 type ListVirusScanMachineEventRequest struct {
-	CurrentPage   *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Lang          *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 28486737
 	OperateTaskId *string `json:"OperateTaskId,omitempty" xml:"OperateTaskId,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Uuid          *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// hdm_5349d5323c649e91a41784e9e1733e1e
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s ListVirusScanMachineEventRequest) String() string {

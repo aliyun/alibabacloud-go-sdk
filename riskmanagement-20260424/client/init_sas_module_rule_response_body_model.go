@@ -22,11 +22,23 @@ type iInitSasModuleRuleResponseBody interface {
 }
 
 type InitSasModuleRuleResponseBody struct {
-	Code      *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *InitSasModuleRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *InitSasModuleRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 2E130B0F-9E69-52FA-84FC-187FE1BA9489
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s InitSasModuleRuleResponseBody) String() string {
@@ -92,6 +104,9 @@ func (s *InitSasModuleRuleResponseBody) Validate() error {
 }
 
 type InitSasModuleRuleResponseBodyData struct {
+	// example:
+	//
+	// 14492571-0707-5130-85B4-4DDABB6BDF76
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

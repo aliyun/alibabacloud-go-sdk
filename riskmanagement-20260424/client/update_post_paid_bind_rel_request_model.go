@@ -16,6 +16,9 @@ type iUpdatePostPaidBindRelRequest interface {
 }
 
 type UpdatePostPaidBindRelRequest struct {
+	// example:
+	//
+	// cn-huhehaote
 	RegionId   *string                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SdkRequest *UpdatePostPaidBindRelRequestSdkRequest `json:"SdkRequest,omitempty" xml:"SdkRequest,omitempty" type:"Struct"`
 }
@@ -56,10 +59,19 @@ func (s *UpdatePostPaidBindRelRequest) Validate() error {
 }
 
 type UpdatePostPaidBindRelRequestSdkRequest struct {
-	AutoBind          *int32                                              `json:"AutoBind,omitempty" xml:"AutoBind,omitempty"`
-	AutoBindVersion   *int32                                              `json:"AutoBindVersion,omitempty" xml:"AutoBindVersion,omitempty"`
-	BindAction        []*UpdatePostPaidBindRelRequestSdkRequestBindAction `json:"BindAction,omitempty" xml:"BindAction,omitempty" type:"Repeated"`
-	UpdateIfNecessary *bool                                               `json:"UpdateIfNecessary,omitempty" xml:"UpdateIfNecessary,omitempty"`
+	// example:
+	//
+	// 1
+	AutoBind *int32 `json:"AutoBind,omitempty" xml:"AutoBind,omitempty"`
+	// example:
+	//
+	// 3
+	AutoBindVersion *int32                                              `json:"AutoBindVersion,omitempty" xml:"AutoBindVersion,omitempty"`
+	BindAction      []*UpdatePostPaidBindRelRequestSdkRequestBindAction `json:"BindAction,omitempty" xml:"BindAction,omitempty" type:"Repeated"`
+	// example:
+	//
+	// false
+	UpdateIfNecessary *bool `json:"UpdateIfNecessary,omitempty" xml:"UpdateIfNecessary,omitempty"`
 }
 
 func (s UpdatePostPaidBindRelRequestSdkRequest) String() string {
@@ -120,9 +132,15 @@ func (s *UpdatePostPaidBindRelRequestSdkRequest) Validate() error {
 }
 
 type UpdatePostPaidBindRelRequestSdkRequestBindAction struct {
+	// example:
+	//
+	// true
 	BindAll  *bool     `json:"BindAll,omitempty" xml:"BindAll,omitempty"`
 	UuidList []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
-	Version  *string   `json:"Version,omitempty" xml:"Version,omitempty"`
+	// example:
+	//
+	// 1
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s UpdatePostPaidBindRelRequestSdkRequestBindAction) String() string {

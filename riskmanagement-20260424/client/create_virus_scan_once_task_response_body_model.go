@@ -22,11 +22,23 @@ type iCreateVirusScanOnceTaskResponseBody interface {
 }
 
 type CreateVirusScanOnceTaskResponseBody struct {
-	Code      *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *CreateVirusScanOnceTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *CreateVirusScanOnceTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// successful‌
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 739705BB-B0EF-554B-B3A8-383F4F93E067
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateVirusScanOnceTaskResponseBody) String() string {
@@ -92,12 +104,30 @@ func (s *CreateVirusScanOnceTaskResponseBody) Validate() error {
 }
 
 type CreateVirusScanOnceTaskResponseBodyData struct {
+	// example:
+	//
+	// VIRUS_SCAN_CYCLE_CONFIG
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	Platform     *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SelectionKey *int32  `json:"SelectionKey,omitempty" xml:"SelectionKey,omitempty"`
-	TargetType   *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	Uuid         *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// example:
+	//
+	// windows
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// example:
+	//
+	// 1D345A09-5ABD-593C-9C26-5C2B28632CD6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 87af4d19-38fc-408d-9549-2bf7b6c2a4b9
+	SelectionKey *int32 `json:"SelectionKey,omitempty" xml:"SelectionKey,omitempty"`
+	// example:
+	//
+	// all_instance
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// example:
+	//
+	// 9ef1a02e1de695cb7f9fea2c6c145853eklEsP2JP0Z
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s CreateVirusScanOnceTaskResponseBodyData) String() string {

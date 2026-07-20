@@ -22,11 +22,23 @@ type iGetDisposalToolStatusResponseBody interface {
 }
 
 type GetDisposalToolStatusResponseBody struct {
-	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetDisposalToolStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetDisposalToolStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// successful‌
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 6D462855-7835-5F91-835E-A62E44EC01CC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetDisposalToolStatusResponseBody) String() string {
@@ -92,6 +104,9 @@ func (s *GetDisposalToolStatusResponseBody) Validate() error {
 }
 
 type GetDisposalToolStatusResponseBodyData struct {
+	// example:
+	//
+	// true
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 

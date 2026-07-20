@@ -16,6 +16,9 @@ type iGetCanTrySasShrinkRequest interface {
 }
 
 type GetCanTrySasShrinkRequest struct {
+	// example:
+	//
+	// cn-guangzhou
 	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SdkRequestShrink *string `json:"SdkRequest,omitempty" xml:"SdkRequest,omitempty"`
 }

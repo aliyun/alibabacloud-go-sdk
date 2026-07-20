@@ -16,6 +16,9 @@ type iDescribeCloudCenterInstancesRequest interface {
 }
 
 type DescribeCloudCenterInstancesRequest struct {
+	// example:
+	//
+	// cn-beijing
 	RegionId   *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SdkRequest *DescribeCloudCenterInstancesRequestSdkRequest `json:"SdkRequest,omitempty" xml:"SdkRequest,omitempty" type:"Struct"`
 }
@@ -56,18 +59,54 @@ func (s *DescribeCloudCenterInstancesRequest) Validate() error {
 }
 
 type DescribeCloudCenterInstancesRequestSdkRequest struct {
-	Criteria                   *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
-	CurrentPage                *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Flags                      *string `json:"Flags,omitempty" xml:"Flags,omitempty"`
-	Importance                 *int32  `json:"Importance,omitempty" xml:"Importance,omitempty"`
-	Lang                       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	LogicalExp                 *string `json:"LogicalExp,omitempty" xml:"LogicalExp,omitempty"`
-	MachineTypes               *string `json:"MachineTypes,omitempty" xml:"MachineTypes,omitempty"`
-	NextToken                  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	NoGroupTrace               *bool   `json:"NoGroupTrace,omitempty" xml:"NoGroupTrace,omitempty"`
-	PageSize                   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// {\\"contactIds\\":[\\"job-658854766790086656\\",\\"job-658854801112113152\\"]}
+	Criteria *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// 0,10,13
+	Flags *string `json:"Flags,omitempty" xml:"Flags,omitempty"`
+	// example:
+	//
+	// 2
+	Importance *int32 `json:"Importance,omitempty" xml:"Importance,omitempty"`
+	// example:
+	//
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// AND
+	LogicalExp *string `json:"LogicalExp,omitempty" xml:"LogicalExp,omitempty"`
+	// example:
+	//
+	// ecs
+	MachineTypes *string `json:"MachineTypes,omitempty" xml:"MachineTypes,omitempty"`
+	// example:
+	//
+	// AAAAAZak7VOTMl2OSt/xmc4J6gbg4Z5eXuWnrvKgOsGARL76TVbKERXHXKNFurqjtfDdRw==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// true
+	NoGroupTrace *bool `json:"NoGroupTrace,omitempty" xml:"NoGroupTrace,omitempty"`
+	// example:
+	//
+	// 99
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1587359978118481
 	ResourceDirectoryAccountId *string `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	UseNextToken               *bool   `json:"UseNextToken,omitempty" xml:"UseNextToken,omitempty"`
+	// example:
+	//
+	// true
+	UseNextToken *bool `json:"UseNextToken,omitempty" xml:"UseNextToken,omitempty"`
 }
 
 func (s DescribeCloudCenterInstancesRequestSdkRequest) String() string {

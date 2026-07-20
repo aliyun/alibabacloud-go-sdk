@@ -16,8 +16,14 @@ type iOpenTrialPackageRequest interface {
 }
 
 type OpenTrialPackageRequest struct {
-	AutoCloseSwitch *int32  `json:"AutoCloseSwitch,omitempty" xml:"AutoCloseSwitch,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 0
+	AutoCloseSwitch *int32 `json:"AutoCloseSwitch,omitempty" xml:"AutoCloseSwitch,omitempty"`
+	// example:
+	//
+	// cn-guangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s OpenTrialPackageRequest) String() string {

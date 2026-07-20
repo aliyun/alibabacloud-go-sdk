@@ -22,11 +22,23 @@ type iGetAliYunSafeCenterResultResponseBody interface {
 }
 
 type GetAliYunSafeCenterResultResponseBody struct {
-	Code      *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetAliYunSafeCenterResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetAliYunSafeCenterResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 3C107939-59BD-5EB9-B250-39559C830A85
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetAliYunSafeCenterResultResponseBody) String() string {
@@ -92,13 +104,31 @@ func (s *GetAliYunSafeCenterResultResponseBody) Validate() error {
 }
 
 type GetAliYunSafeCenterResultResponseBodyData struct {
-	AgentStatus        *bool    `json:"AgentStatus,omitempty" xml:"AgentStatus,omitempty"`
-	EcsInstanceStatus  *bool    `json:"EcsInstanceStatus,omitempty" xml:"EcsInstanceStatus,omitempty"`
-	InstanceIds        []*int64 `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	RequestId          *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SwasInstanceStatus *bool    `json:"SwasInstanceStatus,omitempty" xml:"SwasInstanceStatus,omitempty"`
-	TaskId             *int64   `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskStatus         *bool    `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// example:
+	//
+	// true
+	AgentStatus *bool `json:"AgentStatus,omitempty" xml:"AgentStatus,omitempty"`
+	// example:
+	//
+	// true
+	EcsInstanceStatus *bool    `json:"EcsInstanceStatus,omitempty" xml:"EcsInstanceStatus,omitempty"`
+	InstanceIds       []*int64 `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 8169D779-3391-541F-936B-11F4EC09AD0D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	SwasInstanceStatus *bool `json:"SwasInstanceStatus,omitempty" xml:"SwasInstanceStatus,omitempty"`
+	// example:
+	//
+	// 12313123
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// true
+	TaskStatus *bool `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 }
 
 func (s GetAliYunSafeCenterResultResponseBodyData) String() string {

@@ -16,6 +16,9 @@ type iDescribeCloudCenterInstancesShrinkRequest interface {
 }
 
 type DescribeCloudCenterInstancesShrinkRequest struct {
+	// example:
+	//
+	// cn-beijing
 	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SdkRequestShrink *string `json:"SdkRequest,omitempty" xml:"SdkRequest,omitempty"`
 }

@@ -22,11 +22,23 @@ type iDescribeSuspEventsResponseBody interface {
 }
 
 type DescribeSuspEventsResponseBody struct {
-	Code      *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeSuspEventsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *DescribeSuspEventsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 67BD8435-6624-5484-A75D-170231B51615
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeSuspEventsResponseBody) String() string {
@@ -122,12 +134,27 @@ func (s *DescribeSuspEventsResponseBodyData) Validate() error {
 }
 
 type DescribeSuspEventsResponseBodyDataBody struct {
-	Count       *int32                                              `json:"Count,omitempty" xml:"Count,omitempty"`
-	CurrentPage *int32                                              `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SuspEvents  []*DescribeSuspEventsResponseBodyDataBodySuspEvents `json:"SuspEvents,omitempty" xml:"SuspEvents,omitempty" type:"Repeated"`
-	TotalCount  *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// 1
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// AD2345D1-A498-58AF-97C0-88940AF87CB7
+	RequestId  *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuspEvents []*DescribeSuspEventsResponseBodyDataBodySuspEvents `json:"SuspEvents,omitempty" xml:"SuspEvents,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 72
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeSuspEventsResponseBodyDataBody) String() string {
@@ -206,63 +233,222 @@ func (s *DescribeSuspEventsResponseBodyDataBody) Validate() error {
 }
 
 type DescribeSuspEventsResponseBodyDataBodySuspEvents struct {
-	Advanced              *bool                                                          `json:"Advanced,omitempty" xml:"Advanced,omitempty"`
-	AlarmEventName        *string                                                        `json:"AlarmEventName,omitempty" xml:"AlarmEventName,omitempty"`
-	AlarmEventNameDisplay *string                                                        `json:"AlarmEventNameDisplay,omitempty" xml:"AlarmEventNameDisplay,omitempty"`
-	AlarmEventType        *string                                                        `json:"AlarmEventType,omitempty" xml:"AlarmEventType,omitempty"`
-	AlarmEventTypeDisplay *string                                                        `json:"AlarmEventTypeDisplay,omitempty" xml:"AlarmEventTypeDisplay,omitempty"`
-	AlarmUniqueInfo       *string                                                        `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
-	AppName               *string                                                        `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	AutoBreaking          *bool                                                          `json:"AutoBreaking,omitempty" xml:"AutoBreaking,omitempty"`
-	CanBeDealOnLine       *bool                                                          `json:"CanBeDealOnLine,omitempty" xml:"CanBeDealOnLine,omitempty"`
-	CanCancelFault        *bool                                                          `json:"CanCancelFault,omitempty" xml:"CanCancelFault,omitempty"`
-	ClusterId             *string                                                        `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ContainHwMode         *bool                                                          `json:"ContainHwMode,omitempty" xml:"ContainHwMode,omitempty"`
-	ContainerId           *string                                                        `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
-	ContainerImageId      *string                                                        `json:"ContainerImageId,omitempty" xml:"ContainerImageId,omitempty"`
-	ContainerImageName    *string                                                        `json:"ContainerImageName,omitempty" xml:"ContainerImageName,omitempty"`
-	DataSource            *string                                                        `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
-	Desc                  *string                                                        `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	Details               []*DescribeSuspEventsResponseBodyDataBodySuspEventsDetails     `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
-	DetectSource          *string                                                        `json:"DetectSource,omitempty" xml:"DetectSource,omitempty"`
-	DisplaySandboxResult  *bool                                                          `json:"DisplaySandboxResult,omitempty" xml:"DisplaySandboxResult,omitempty"`
-	EventNotes            []*DescribeSuspEventsResponseBodyDataBodySuspEventsEventNotes  `json:"EventNotes,omitempty" xml:"EventNotes,omitempty" type:"Repeated"`
-	EventStatus           *int32                                                         `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
-	EventSubType          *string                                                        `json:"EventSubType,omitempty" xml:"EventSubType,omitempty"`
-	HasTraceInfo          *bool                                                          `json:"HasTraceInfo,omitempty" xml:"HasTraceInfo,omitempty"`
-	Id                    *int64                                                         `json:"Id,omitempty" xml:"Id,omitempty"`
-	ImageUuid             *string                                                        `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
-	InstanceId            *string                                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName          *string                                                        `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InternetIp            *string                                                        `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	IntranetIp            *string                                                        `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	K8sClusterId          *string                                                        `json:"K8sClusterId,omitempty" xml:"K8sClusterId,omitempty"`
-	K8sClusterName        *string                                                        `json:"K8sClusterName,omitempty" xml:"K8sClusterName,omitempty"`
-	K8sNamespace          *string                                                        `json:"K8sNamespace,omitempty" xml:"K8sNamespace,omitempty"`
-	K8sNodeId             *string                                                        `json:"K8sNodeId,omitempty" xml:"K8sNodeId,omitempty"`
-	K8sNodeName           *string                                                        `json:"K8sNodeName,omitempty" xml:"K8sNodeName,omitempty"`
-	K8sPodName            *string                                                        `json:"K8sPodName,omitempty" xml:"K8sPodName,omitempty"`
-	LargeModel            *bool                                                          `json:"LargeModel,omitempty" xml:"LargeModel,omitempty"`
-	LastTime              *string                                                        `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
-	LastTimeStamp         *int64                                                         `json:"LastTimeStamp,omitempty" xml:"LastTimeStamp,omitempty"`
-	Level                 *string                                                        `json:"Level,omitempty" xml:"Level,omitempty"`
-	MaliciousRuleStatus   *string                                                        `json:"MaliciousRuleStatus,omitempty" xml:"MaliciousRuleStatus,omitempty"`
-	MarkList              []*string                                                      `json:"MarkList,omitempty" xml:"MarkList,omitempty" type:"Repeated"`
-	MarkMisRules          *string                                                        `json:"MarkMisRules,omitempty" xml:"MarkMisRules,omitempty"`
-	Name                  *string                                                        `json:"Name,omitempty" xml:"Name,omitempty"`
-	OccurrenceTime        *string                                                        `json:"OccurrenceTime,omitempty" xml:"OccurrenceTime,omitempty"`
-	OccurrenceTimeStamp   *int64                                                         `json:"OccurrenceTimeStamp,omitempty" xml:"OccurrenceTimeStamp,omitempty"`
-	OperateErrorCode      *string                                                        `json:"OperateErrorCode,omitempty" xml:"OperateErrorCode,omitempty"`
-	OperateMsg            *string                                                        `json:"OperateMsg,omitempty" xml:"OperateMsg,omitempty"`
-	OperateTime           *int64                                                         `json:"OperateTime,omitempty" xml:"OperateTime,omitempty"`
-	SaleVersion           *string                                                        `json:"SaleVersion,omitempty" xml:"SaleVersion,omitempty"`
-	SecurityEventIds      *string                                                        `json:"SecurityEventIds,omitempty" xml:"SecurityEventIds,omitempty"`
-	SourceAliUid          *int64                                                         `json:"SourceAliUid,omitempty" xml:"SourceAliUid,omitempty"`
-	Stages                *string                                                        `json:"Stages,omitempty" xml:"Stages,omitempty"`
-	SupportOperateCode    *string                                                        `json:"SupportOperateCode,omitempty" xml:"SupportOperateCode,omitempty"`
-	TacticItems           []*DescribeSuspEventsResponseBodyDataBodySuspEventsTacticItems `json:"TacticItems,omitempty" xml:"TacticItems,omitempty" type:"Repeated"`
-	UniqueInfo            *string                                                        `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
-	Uuid                  *string                                                        `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// example:
+	//
+	// true
+	Advanced *bool `json:"Advanced,omitempty" xml:"Advanced,omitempty"`
+	// example:
+	//
+	// 反弹shell_拦截
+	AlarmEventName *string `json:"AlarmEventName,omitempty" xml:"AlarmEventName,omitempty"`
+	// example:
+	//
+	// Login with unusual location
+	AlarmEventNameDisplay *string `json:"AlarmEventNameDisplay,omitempty" xml:"AlarmEventNameDisplay,omitempty"`
+	// example:
+	//
+	// Unusual Logon
+	AlarmEventType *string `json:"AlarmEventType,omitempty" xml:"AlarmEventType,omitempty"`
+	// example:
+	//
+	// Unusual Logon
+	AlarmEventTypeDisplay *string `json:"AlarmEventTypeDisplay,omitempty" xml:"AlarmEventTypeDisplay,omitempty"`
+	// example:
+	//
+	// 8df914418f****
+	AlarmUniqueInfo *string `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
+	// example:
+	//
+	// dfield-cloud-service-prod
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// true
+	AutoBreaking *bool `json:"AutoBreaking,omitempty" xml:"AutoBreaking,omitempty"`
+	// example:
+	//
+	// true
+	CanBeDealOnLine *bool `json:"CanBeDealOnLine,omitempty" xml:"CanBeDealOnLine,omitempty"`
+	// example:
+	//
+	// true
+	CanCancelFault *bool `json:"CanCancelFault,omitempty" xml:"CanCancelFault,omitempty"`
+	// example:
+	//
+	// c8c87dae64c9947269091f36cfa9adc87
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// false
+	ContainHwMode *bool `json:"ContainHwMode,omitempty" xml:"ContainHwMode,omitempty"`
+	// example:
+	//
+	// 95878ef8779fae3dd82126812edd910402fc550a72f9bce87e56a4435d018384
+	ContainerId *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
+	// example:
+	//
+	// sha256:2e5a3b0ae5f452b3cb458789a9a7542ef40035a84318469a8528c5e444db1****
+	ContainerImageId *string `json:"ContainerImageId,omitempty" xml:"ContainerImageId,omitempty"`
+	// example:
+	//
+	// centos7_apache:v1.0.1
+	ContainerImageName *string `json:"ContainerImageName,omitempty" xml:"ContainerImageName,omitempty"`
+	// example:
+	//
+	// URL
+	DataSource *string `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
+	// example:
+	//
+	// webshell
+	Desc    *string                                                    `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	Details []*DescribeSuspEventsResponseBodyDataBodySuspEventsDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
+	// example:
+	//
+	// -
+	DetectSource *string `json:"DetectSource,omitempty" xml:"DetectSource,omitempty"`
+	// example:
+	//
+	// true
+	DisplaySandboxResult *bool                                                         `json:"DisplaySandboxResult,omitempty" xml:"DisplaySandboxResult,omitempty"`
+	EventNotes           []*DescribeSuspEventsResponseBodyDataBodySuspEventsEventNotes `json:"EventNotes,omitempty" xml:"EventNotes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	EventStatus *int32 `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
+	// example:
+	//
+	// login_common_location
+	EventSubType *string `json:"EventSubType,omitempty" xml:"EventSubType,omitempty"`
+	// example:
+	//
+	// true
+	HasTraceInfo *bool `json:"HasTraceInfo,omitempty" xml:"HasTraceInfo,omitempty"`
+	// example:
+	//
+	// 3178
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// ccdab289-9765-47ef-af50-ba6be09aacd6
+	ImageUuid *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
+	// example:
+	//
+	// i-9dp6dwsxdl9z5u1e2f****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// nginx
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// 8.137.3*.6
+	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	// example:
+	//
+	// 10.36.*6.149
+	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	// example:
+	//
+	// ce3c41ed427794a7bb3d9da4554fc8039
+	K8sClusterId *string `json:"K8sClusterId,omitempty" xml:"K8sClusterId,omitempty"`
+	// example:
+	//
+	// testName
+	K8sClusterName *string `json:"K8sClusterName,omitempty" xml:"K8sClusterName,omitempty"`
+	// example:
+	//
+	// default
+	K8sNamespace *string `json:"K8sNamespace,omitempty" xml:"K8sNamespace,omitempty"`
+	// example:
+	//
+	// i-bp14a1ay8e0aa9t0****
+	K8sNodeId *string `json:"K8sNodeId,omitempty" xml:"K8sNodeId,omitempty"`
+	// example:
+	//
+	// N/A
+	K8sNodeName *string `json:"K8sNodeName,omitempty" xml:"K8sNodeName,omitempty"`
+	// example:
+	//
+	// myapp-pod
+	K8sPodName *string `json:"K8sPodName,omitempty" xml:"K8sPodName,omitempty"`
+	// example:
+	//
+	// true
+	LargeModel *bool `json:"LargeModel,omitempty" xml:"LargeModel,omitempty"`
+	// example:
+	//
+	// 2018-09-26 01:51:01
+	LastTime *string `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	// example:
+	//
+	// 1631699497000
+	LastTimeStamp *int64 `json:"LastTimeStamp,omitempty" xml:"LastTimeStamp,omitempty"`
+	// example:
+	//
+	// remind
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// example:
+	//
+	// open
+	MaliciousRuleStatus *string   `json:"MaliciousRuleStatus,omitempty" xml:"MaliciousRuleStatus,omitempty"`
+	MarkList            []*string `json:"MarkList,omitempty" xml:"MarkList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// <strong>1.</strong>&nbsp&nbsppath&nbsp&nbspcontain&nbsp&nbsp232&nbsp&nbsp
+	MarkMisRules *string `json:"MarkMisRules,omitempty" xml:"MarkMisRules,omitempty"`
+	// example:
+	//
+	// Unusual Logon-Login with unusual location
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 2018-09-26 01:51:01
+	OccurrenceTime *string `json:"OccurrenceTime,omitempty" xml:"OccurrenceTime,omitempty"`
+	// example:
+	//
+	// 1631699497000
+	OccurrenceTimeStamp *int64 `json:"OccurrenceTimeStamp,omitempty" xml:"OccurrenceTimeStamp,omitempty"`
+	// example:
+	//
+	// kill_and_quara.Success
+	OperateErrorCode *string `json:"OperateErrorCode,omitempty" xml:"OperateErrorCode,omitempty"`
+	// example:
+	//
+	// success
+	OperateMsg *string `json:"OperateMsg,omitempty" xml:"OperateMsg,omitempty"`
+	// example:
+	//
+	// 1631699497000
+	OperateTime *int64 `json:"OperateTime,omitempty" xml:"OperateTime,omitempty"`
+	// example:
+	//
+	// 1
+	SaleVersion *string `json:"SaleVersion,omitempty" xml:"SaleVersion,omitempty"`
+	// example:
+	//
+	// 628978308
+	SecurityEventIds *string `json:"SecurityEventIds,omitempty" xml:"SecurityEventIds,omitempty"`
+	// example:
+	//
+	// 124075**67406
+	SourceAliUid *int64 `json:"SourceAliUid,omitempty" xml:"SourceAliUid,omitempty"`
+	// example:
+	//
+	// "["authority_maintenance"]"
+	Stages *string `json:"Stages,omitempty" xml:"Stages,omitempty"`
+	// example:
+	//
+	// AI.false_positive
+	SupportOperateCode *string                                                        `json:"SupportOperateCode,omitempty" xml:"SupportOperateCode,omitempty"`
+	TacticItems        []*DescribeSuspEventsResponseBodyDataBodySuspEventsTacticItems `json:"TacticItems,omitempty" xml:"TacticItems,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1dfbdf56c5343b63c4854d08ec20e067
+	UniqueInfo *string `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
+	// example:
+	//
+	// 9A75F21D3993C0A2B094A4AB132890B2
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s DescribeSuspEventsResponseBodyDataBodySuspEvents) String() string {
@@ -818,9 +1004,21 @@ func (s *DescribeSuspEventsResponseBodyDataBodySuspEvents) Validate() error {
 }
 
 type DescribeSuspEventsResponseBodyDataBodySuspEventsDetails struct {
-	NameDisplay  *string `json:"NameDisplay,omitempty" xml:"NameDisplay,omitempty"`
-	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Value        *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// login with unusual location
+	NameDisplay *string `json:"NameDisplay,omitempty" xml:"NameDisplay,omitempty"`
+	// example:
+	//
+	// text
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// /etc/crontab
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// /etc/crontab
 	ValueDisplay *string `json:"ValueDisplay,omitempty" xml:"ValueDisplay,omitempty"`
 }
 
@@ -873,8 +1071,17 @@ func (s *DescribeSuspEventsResponseBodyDataBodySuspEventsDetails) Validate() err
 }
 
 type DescribeSuspEventsResponseBodyDataBodySuspEventsEventNotes struct {
-	Note     *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	NoteId   *int64  `json:"NoteId,omitempty" xml:"NoteId,omitempty"`
+	// example:
+	//
+	// test
+	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	// example:
+	//
+	// 2859481
+	NoteId *int64 `json:"NoteId,omitempty" xml:"NoteId,omitempty"`
+	// example:
+	//
+	// 2018-09-26 01:51:01
 	NoteTime *string `json:"NoteTime,omitempty" xml:"NoteTime,omitempty"`
 }
 
@@ -918,8 +1125,14 @@ func (s *DescribeSuspEventsResponseBodyDataBodySuspEventsEventNotes) Validate() 
 }
 
 type DescribeSuspEventsResponseBodyDataBodySuspEventsTacticItems struct {
+	// example:
+	//
+	// Malicious scripts-Malicious script code execution
 	TacticDisplayName *string `json:"TacticDisplayName,omitempty" xml:"TacticDisplayName,omitempty"`
-	TacticId          *string `json:"TacticId,omitempty" xml:"TacticId,omitempty"`
+	// example:
+	//
+	// TA0042
+	TacticId *string `json:"TacticId,omitempty" xml:"TacticId,omitempty"`
 }
 
 func (s DescribeSuspEventsResponseBodyDataBodySuspEventsTacticItems) String() string {

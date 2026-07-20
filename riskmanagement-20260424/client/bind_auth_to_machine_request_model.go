@@ -16,6 +16,9 @@ type iBindAuthToMachineRequest interface {
 }
 
 type BindAuthToMachineRequest struct {
+	// example:
+	//
+	// cn-shenzhen
 	RegionId   *string                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SdkRequest *BindAuthToMachineRequestSdkRequest `json:"SdkRequest,omitempty" xml:"SdkRequest,omitempty" type:"Struct"`
 }
@@ -56,14 +59,38 @@ func (s *BindAuthToMachineRequest) Validate() error {
 }
 
 type BindAuthToMachineRequestSdkRequest struct {
-	AuthVersion    *int32    `json:"AuthVersion,omitempty" xml:"AuthVersion,omitempty"`
-	AutoBind       *int32    `json:"AutoBind,omitempty" xml:"AutoBind,omitempty"`
-	Bind           []*string `json:"Bind,omitempty" xml:"Bind,omitempty" type:"Repeated"`
-	BindAll        *bool     `json:"BindAll,omitempty" xml:"BindAll,omitempty"`
-	Criteria       *string   `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
-	IsPreBind      *int32    `json:"IsPreBind,omitempty" xml:"IsPreBind,omitempty"`
-	LogicalExp     *string   `json:"LogicalExp,omitempty" xml:"LogicalExp,omitempty"`
-	NtmVersion     *int64    `json:"NtmVersion,omitempty" xml:"NtmVersion,omitempty"`
+	// example:
+	//
+	// 3
+	AuthVersion *int32 `json:"AuthVersion,omitempty" xml:"AuthVersion,omitempty"`
+	// example:
+	//
+	// 1
+	AutoBind *int32    `json:"AutoBind,omitempty" xml:"AutoBind,omitempty"`
+	Bind     []*string `json:"Bind,omitempty" xml:"Bind,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	BindAll *bool `json:"BindAll,omitempty" xml:"BindAll,omitempty"`
+	// example:
+	//
+	// [{\\"name\\":\\"clientStatus\\",\\"value\\":\\"online\\"},{\\"name\\":\\"authVersion\\",\\"value\\":\\"1\\"}]
+	Criteria *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
+	// example:
+	//
+	// 1
+	IsPreBind *int32 `json:"IsPreBind,omitempty" xml:"IsPreBind,omitempty"`
+	// example:
+	//
+	// AND
+	LogicalExp *string `json:"LogicalExp,omitempty" xml:"LogicalExp,omitempty"`
+	// example:
+	//
+	// level2
+	NtmVersion *int64 `json:"NtmVersion,omitempty" xml:"NtmVersion,omitempty"`
+	// example:
+	//
+	// 263076506250432
 	PreBindOrderId *int64    `json:"PreBindOrderId,omitempty" xml:"PreBindOrderId,omitempty"`
 	UnBind         []*string `json:"UnBind,omitempty" xml:"UnBind,omitempty" type:"Repeated"`
 }

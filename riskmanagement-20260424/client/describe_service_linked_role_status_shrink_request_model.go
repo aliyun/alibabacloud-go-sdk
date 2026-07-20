@@ -16,6 +16,9 @@ type iDescribeServiceLinkedRoleStatusShrinkRequest interface {
 }
 
 type DescribeServiceLinkedRoleStatusShrinkRequest struct {
+	// example:
+	//
+	// cn-hangzhou
 	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SdkRequestShrink *string `json:"SdkRequest,omitempty" xml:"SdkRequest,omitempty"`
 }

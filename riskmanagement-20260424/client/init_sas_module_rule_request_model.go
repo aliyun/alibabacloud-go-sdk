@@ -20,10 +20,19 @@ type iInitSasModuleRuleRequest interface {
 }
 
 type InitSasModuleRuleRequest struct {
+	// example:
+	//
+	// 0
 	AutoBind  *int32                               `json:"AutoBind,omitempty" xml:"AutoBind,omitempty"`
 	Instances []*InitSasModuleRuleRequestInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	IsTrial   *bool                                `json:"IsTrial,omitempty" xml:"IsTrial,omitempty"`
-	RegionId  *string                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// false
+	IsTrial *bool `json:"IsTrial,omitempty" xml:"IsTrial,omitempty"`
+	// example:
+	//
+	// cn-guangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s InitSasModuleRuleRequest) String() string {
@@ -84,10 +93,22 @@ func (s *InitSasModuleRuleRequest) Validate() error {
 }
 
 type InitSasModuleRuleRequestInstances struct {
-	Cores      *string `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	// example:
+	//
+	// 4
+	Cores *string `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	// example:
+	//
+	// i-gw85zjrhsg2sgex7ovfx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Uuid       *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 168d374e-f449-4d0b-9556-14f233fa7171
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s InitSasModuleRuleRequestInstances) String() string {

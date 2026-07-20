@@ -22,11 +22,23 @@ type iGetValidDeductInstancesResponseBody interface {
 }
 
 type GetValidDeductInstancesResponseBody struct {
-	Code      *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetValidDeductInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetValidDeductInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 2FBDD713-00A5-5C98-B661-3FD31A349B6E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetValidDeductInstancesResponseBody) String() string {
@@ -122,8 +134,11 @@ func (s *GetValidDeductInstancesResponseBodyData) Validate() error {
 }
 
 type GetValidDeductInstancesResponseBodyDataBody struct {
-	Data      *GetValidDeductInstancesResponseBodyDataBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *GetValidDeductInstancesResponseBodyDataBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// A6FB9AC3-4431-538F-BA8A-2A13AEA208A4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetValidDeductInstancesResponseBodyDataBody) String() string {
@@ -162,6 +177,9 @@ func (s *GetValidDeductInstancesResponseBodyDataBody) Validate() error {
 }
 
 type GetValidDeductInstancesResponseBodyDataBodyData struct {
+	// example:
+	//
+	// true
 	CanTry            *bool                                                               `json:"CanTry,omitempty" xml:"CanTry,omitempty"`
 	DeductPackageList []*GetValidDeductInstancesResponseBodyDataBodyDataDeductPackageList `json:"DeductPackageList,omitempty" xml:"DeductPackageList,omitempty" type:"Repeated"`
 }
@@ -206,14 +224,38 @@ func (s *GetValidDeductInstancesResponseBodyDataBodyData) Validate() error {
 }
 
 type GetValidDeductInstancesResponseBodyDataBodyDataDeductPackageList struct {
-	CurrentPeriodUsed *int64   `json:"CurrentPeriodUsed,omitempty" xml:"CurrentPeriodUsed,omitempty"`
-	EndTime           *int64   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	InitCapacity      *float64 `json:"InitCapacity,omitempty" xml:"InitCapacity,omitempty"`
-	InstanceId        *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Module            *string  `json:"Module,omitempty" xml:"Module,omitempty"`
-	PeriodCapacity    *float64 `json:"PeriodCapacity,omitempty" xml:"PeriodCapacity,omitempty"`
-	StartTime         *int64   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status            *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 10
+	CurrentPeriodUsed *int64 `json:"CurrentPeriodUsed,omitempty" xml:"CurrentPeriodUsed,omitempty"`
+	// example:
+	//
+	// 1737734400000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 1000
+	InitCapacity *float64 `json:"InitCapacity,omitempty" xml:"InitCapacity,omitempty"`
+	// example:
+	//
+	// apigateway-hz-96f6659a1490
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// POST_HOST
+	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	// example:
+	//
+	// 1
+	PeriodCapacity *float64 `json:"PeriodCapacity,omitempty" xml:"PeriodCapacity,omitempty"`
+	// example:
+	//
+	// 1737734400000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// CREATE_FAILED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetValidDeductInstancesResponseBodyDataBodyDataDeductPackageList) String() string {

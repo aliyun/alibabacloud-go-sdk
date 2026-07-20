@@ -40,9 +40,16 @@ type GetAliYunSafeCenterResultRequest struct {
 	HandleSecurityEventsRequest                 *GetAliYunSafeCenterResultRequestHandleSecurityEventsRequest                 `json:"HandleSecurityEventsRequest,omitempty" xml:"HandleSecurityEventsRequest,omitempty" type:"Struct"`
 	HandleSimilarSecurityEventsRequest          *GetAliYunSafeCenterResultRequestHandleSimilarSecurityEventsRequest          `json:"HandleSimilarSecurityEventsRequest,omitempty" xml:"HandleSimilarSecurityEventsRequest,omitempty" type:"Struct"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// ListInstanceStatus
 	InterfaceCode        *string                                               `json:"InterfaceCode,omitempty" xml:"InterfaceCode,omitempty"`
 	ListInstancesRequest *GetAliYunSafeCenterResultRequestListInstancesRequest `json:"ListInstancesRequest,omitempty" xml:"ListInstancesRequest,omitempty" type:"Struct"`
-	RegionId             *string                                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-guangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetAliYunSafeCenterResultRequest) String() string {
@@ -188,8 +195,17 @@ func (s *GetAliYunSafeCenterResultRequest) Validate() error {
 }
 
 type GetAliYunSafeCenterResultRequestCreateSimilarSecurityEventsQueryTaskRequest struct {
-	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SecurityEventId          *int64  `json:"SecurityEventId,omitempty" xml:"SecurityEventId,omitempty"`
+	// example:
+	//
+	// cn-zhangjiakou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 629755508
+	SecurityEventId *int64 `json:"SecurityEventId,omitempty" xml:"SecurityEventId,omitempty"`
+	// example:
+	//
+	// default
 	SimilarEventScenarioCode *string `json:"SimilarEventScenarioCode,omitempty" xml:"SimilarEventScenarioCode,omitempty"`
 }
 
@@ -234,7 +250,10 @@ func (s *GetAliYunSafeCenterResultRequestCreateSimilarSecurityEventsQueryTaskReq
 
 type GetAliYunSafeCenterResultRequestDescribeInstancesFullStatusRequest struct {
 	InstanceId []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
-	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetAliYunSafeCenterResultRequestDescribeInstancesFullStatusRequest) String() string {
@@ -268,9 +287,15 @@ func (s *GetAliYunSafeCenterResultRequestDescribeInstancesFullStatusRequest) Val
 }
 
 type GetAliYunSafeCenterResultRequestDescribeSecurityEventOperationStatusRequest struct {
+	// example:
+	//
+	// cn-zhangjiakou
 	RegionId         *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SecurityEventIds []*string `json:"SecurityEventIds,omitempty" xml:"SecurityEventIds,omitempty" type:"Repeated"`
-	TaskId           *int64    `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 0BC3B4E600002A9F000048BCDCE7E710
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s GetAliYunSafeCenterResultRequestDescribeSecurityEventOperationStatusRequest) String() string {
@@ -313,8 +338,14 @@ func (s *GetAliYunSafeCenterResultRequestDescribeSecurityEventOperationStatusReq
 }
 
 type GetAliYunSafeCenterResultRequestDescribeSimilarSecurityEventsRequest struct {
+	// example:
+	//
+	// cn-zhangjiakou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TaskId   *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 1689135
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s GetAliYunSafeCenterResultRequestDescribeSimilarSecurityEventsRequest) String() string {
@@ -348,8 +379,14 @@ func (s *GetAliYunSafeCenterResultRequestDescribeSimilarSecurityEventsRequest) V
 }
 
 type GetAliYunSafeCenterResultRequestGetAssetDetailByUuidRequest struct {
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Uuid     *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// example:
+	//
+	// 9A75F21D3993C0A2B094A4AB132890B2
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s GetAliYunSafeCenterResultRequestGetAssetDetailByUuidRequest) String() string {
@@ -383,16 +420,49 @@ func (s *GetAliYunSafeCenterResultRequestGetAssetDetailByUuidRequest) Validate()
 }
 
 type GetAliYunSafeCenterResultRequestHandleSecurityEventsRequest struct {
-	AlertType        *string   `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	FileMd5          *string   `json:"FileMd5,omitempty" xml:"FileMd5,omitempty"`
-	FilePath         *string   `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	InstanceId       *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Ip               *string   `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	MarkBatch        *string   `json:"MarkBatch,omitempty" xml:"MarkBatch,omitempty"`
-	MarkMissParam    *string   `json:"MarkMissParam,omitempty" xml:"MarkMissParam,omitempty"`
-	OperationCode    *string   `json:"OperationCode,omitempty" xml:"OperationCode,omitempty"`
-	OperationParams  *string   `json:"OperationParams,omitempty" xml:"OperationParams,omitempty"`
-	RegionId         *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// default
+	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	// example:
+	//
+	// fbbb90731fbb6df57c933173182d01a5
+	FileMd5 *string `json:"FileMd5,omitempty" xml:"FileMd5,omitempty"`
+	// example:
+	//
+	// flyfish-lfp-wy.release
+	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// example:
+	//
+	// api-shared-vpc-002
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 123.56.127.180
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// example:
+	//
+	// true
+	MarkBatch *string `json:"MarkBatch,omitempty" xml:"MarkBatch,omitempty"`
+	// example:
+	//
+	// [{"uuid":"part","field":"gmtModified","operate":"contains","fieldValue":"asd"},{"uuid":"part","field":"loginUser","operate":"contains","fieldValue":"vff"}]
+	MarkMissParam *string `json:"MarkMissParam,omitempty" xml:"MarkMissParam,omitempty"`
+	// example:
+	//
+	// block_ip
+	OperationCode *string `json:"OperationCode,omitempty" xml:"OperationCode,omitempty"`
+	// example:
+	//
+	// {\\"expireTime\\":1719588943551,\\"subOperation\\":\\"killAndQuaraFileByMd5andPath\\"}
+	OperationParams *string `json:"OperationParams,omitempty" xml:"OperationParams,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 11
 	Remark           *string   `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	SecurityEventIds []*string `json:"SecurityEventIds,omitempty" xml:"SecurityEventIds,omitempty" type:"Repeated"`
 }
@@ -518,14 +588,38 @@ func (s *GetAliYunSafeCenterResultRequestHandleSecurityEventsRequest) Validate()
 }
 
 type GetAliYunSafeCenterResultRequestHandleSimilarSecurityEventsRequest struct {
-	AlertType       *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Ip              *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	OperationCode   *string `json:"OperationCode,omitempty" xml:"OperationCode,omitempty"`
+	// example:
+	//
+	// default
+	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	// example:
+	//
+	// cfw_elasticity_public_cn-g4t3nkh3i00b
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 203.10*.44.71
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// example:
+	//
+	// offline_handled
+	OperationCode *string `json:"OperationCode,omitempty" xml:"OperationCode,omitempty"`
+	// example:
+	//
+	// {\\"expireTime\\":1767687685917}
 	OperationParams *string `json:"OperationParams,omitempty" xml:"OperationParams,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	TaskId          *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 220.2*3.155.93
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// 12221
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s GetAliYunSafeCenterResultRequestHandleSimilarSecurityEventsRequest) String() string {
@@ -613,8 +707,14 @@ func (s *GetAliYunSafeCenterResultRequestHandleSimilarSecurityEventsRequest) Val
 }
 
 type GetAliYunSafeCenterResultRequestListInstancesRequest struct {
+	// example:
+	//
+	// ["2ad1ae67295445f598017499dc****", "2ad1ae67295445f598017123dc****"]
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-wulanchabu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetAliYunSafeCenterResultRequestListInstancesRequest) String() string {

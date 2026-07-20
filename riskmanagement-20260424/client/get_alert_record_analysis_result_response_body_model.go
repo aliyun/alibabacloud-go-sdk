@@ -22,11 +22,23 @@ type iGetAlertRecordAnalysisResultResponseBody interface {
 }
 
 type GetAlertRecordAnalysisResultResponseBody struct {
-	Code      *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetAlertRecordAnalysisResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetAlertRecordAnalysisResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// successful‌
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 99D93ED4-D462-5FC5-8518-9BC1C49C7B6C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetAlertRecordAnalysisResultResponseBody) String() string {
@@ -92,6 +104,9 @@ func (s *GetAlertRecordAnalysisResultResponseBody) Validate() error {
 }
 
 type GetAlertRecordAnalysisResultResponseBodyData struct {
+	// example:
+	//
+	// -
 	AnalysisCode  *string                                                      `json:"AnalysisCode,omitempty" xml:"AnalysisCode,omitempty"`
 	UniqueTagList []*GetAlertRecordAnalysisResultResponseBodyDataUniqueTagList `json:"UniqueTagList,omitempty" xml:"UniqueTagList,omitempty" type:"Repeated"`
 }
@@ -136,16 +151,46 @@ func (s *GetAlertRecordAnalysisResultResponseBodyData) Validate() error {
 }
 
 type GetAlertRecordAnalysisResultResponseBodyDataUniqueTagList struct {
-	AlarmUniqueInfo   *string `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
-	AliUid            *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	AnalysisCode      *string `json:"AnalysisCode,omitempty" xml:"AnalysisCode,omitempty"`
-	AnalysisResult    *string `json:"AnalysisResult,omitempty" xml:"AnalysisResult,omitempty"`
-	ChooseLike        *bool   `json:"ChooseLike,omitempty" xml:"ChooseLike,omitempty"`
-	Ip                *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// example:
+	//
+	// 179deb12f25baac9b1e2909c419bcb1f
+	AlarmUniqueInfo *string `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
+	// example:
+	//
+	// 1248751055158884
+	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// example:
+	//
+	// test_code
+	AnalysisCode *string `json:"AnalysisCode,omitempty" xml:"AnalysisCode,omitempty"`
+	// example:
+	//
+	// exception_alert
+	AnalysisResult *string `json:"AnalysisResult,omitempty" xml:"AnalysisResult,omitempty"`
+	// example:
+	//
+	// true
+	ChooseLike *bool `json:"ChooseLike,omitempty" xml:"ChooseLike,omitempty"`
+	// example:
+	//
+	// 110.22.*8.111
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// example:
+	//
+	// i-adadasd-a**
 	MachineInstanceId *string `json:"MachineInstanceId,omitempty" xml:"MachineInstanceId,omitempty"`
-	Type              *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UniqueInfo        *string `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
-	Uuid              *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// example:
+	//
+	// auto_breaking
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 390317ce81d28bbbd83c05a90b39cd6c
+	UniqueInfo *string `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
+	// example:
+	//
+	// bb3051ca-c0dd-4da2-91be-ea5c80926132
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s GetAlertRecordAnalysisResultResponseBodyDataUniqueTagList) String() string {

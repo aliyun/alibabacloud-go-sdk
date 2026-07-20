@@ -16,6 +16,9 @@ type iDescribeSuspEventsRequest interface {
 }
 
 type DescribeSuspEventsRequest struct {
+	// example:
+	//
+	// cn-guangzhou
 	RegionId   *string                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SdkRequest *DescribeSuspEventsRequestSdkRequest `json:"SdkRequest,omitempty" xml:"SdkRequest,omitempty" type:"Struct"`
 }
@@ -56,42 +59,138 @@ func (s *DescribeSuspEventsRequest) Validate() error {
 }
 
 type DescribeSuspEventsRequestSdkRequest struct {
-	AlarmUniqueInfo            *string   `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
-	AssetsTypeList             []*string `json:"AssetsTypeList,omitempty" xml:"AssetsTypeList,omitempty" type:"Repeated"`
-	ClusterId                  *string   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ContainerFieldName         *string   `json:"ContainerFieldName,omitempty" xml:"ContainerFieldName,omitempty"`
-	ContainerFieldValue        *string   `json:"ContainerFieldValue,omitempty" xml:"ContainerFieldValue,omitempty"`
-	CurrentPage                *string   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Dealed                     *string   `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
-	DetectSource               *string   `json:"DetectSource,omitempty" xml:"DetectSource,omitempty"`
-	EventNames                 *string   `json:"EventNames,omitempty" xml:"EventNames,omitempty"`
-	From                       *string   `json:"From,omitempty" xml:"From,omitempty"`
-	GroupId                    *int64    `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Id                         *int64    `json:"Id,omitempty" xml:"Id,omitempty"`
-	Lang                       *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Levels                     *string   `json:"Levels,omitempty" xml:"Levels,omitempty"`
-	MultiAccountActionType     *int32    `json:"MultiAccountActionType,omitempty" xml:"MultiAccountActionType,omitempty"`
-	Name                       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	OperateErrorCodeList       []*string `json:"OperateErrorCodeList,omitempty" xml:"OperateErrorCodeList,omitempty" type:"Repeated"`
-	OperateTimeEnd             *string   `json:"OperateTimeEnd,omitempty" xml:"OperateTimeEnd,omitempty"`
-	OperateTimeStart           *string   `json:"OperateTimeStart,omitempty" xml:"OperateTimeStart,omitempty"`
-	PageSize                   *string   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ParentEventTypes           *string   `json:"ParentEventTypes,omitempty" xml:"ParentEventTypes,omitempty"`
-	Remark                     *string   `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	ResourceDirectoryAccountId *int64    `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	SortColumn                 *string   `json:"SortColumn,omitempty" xml:"SortColumn,omitempty"`
-	SortType                   *string   `json:"SortType,omitempty" xml:"SortType,omitempty"`
-	Source                     *string   `json:"Source,omitempty" xml:"Source,omitempty"`
-	SourceAliUids              []*int64  `json:"SourceAliUids,omitempty" xml:"SourceAliUids,omitempty" type:"Repeated"`
-	SourceIp                   *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	StrictMode                 *string   `json:"StrictMode,omitempty" xml:"StrictMode,omitempty"`
-	SupportOperateCodeList     []*string `json:"SupportOperateCodeList,omitempty" xml:"SupportOperateCodeList,omitempty" type:"Repeated"`
-	TacticId                   *string   `json:"TacticId,omitempty" xml:"TacticId,omitempty"`
-	TargetType                 *string   `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	TimeEnd                    *string   `json:"TimeEnd,omitempty" xml:"TimeEnd,omitempty"`
-	TimeStart                  *string   `json:"TimeStart,omitempty" xml:"TimeStart,omitempty"`
-	UniqueInfo                 *string   `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
-	Uuids                      *string   `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
+	// example:
+	//
+	// 6838133766c37077d0515b0b557e6510
+	AlarmUniqueInfo *string   `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
+	AssetsTypeList  []*string `json:"AssetsTypeList,omitempty" xml:"AssetsTypeList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xxljob-02f023138826b
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// instanceId
+	ContainerFieldName *string `json:"ContainerFieldName,omitempty" xml:"ContainerFieldName,omitempty"`
+	// example:
+	//
+	// ca9b91db58356b41af2932e8048310ab7daa415701fa62d823cf4f0406d5ce02
+	ContainerFieldValue *string `json:"ContainerFieldValue,omitempty" xml:"ContainerFieldValue,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// Y
+	Dealed *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
+	// example:
+	//
+	// -
+	DetectSource *string `json:"DetectSource,omitempty" xml:"DetectSource,omitempty"`
+	// example:
+	//
+	// WEBSHELL
+	EventNames *string `json:"EventNames,omitempty" xml:"EventNames,omitempty"`
+	// example:
+	//
+	// sas
+	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	// example:
+	//
+	// 18768
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// example:
+	//
+	// 3165
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// serious
+	Levels *string `json:"Levels,omitempty" xml:"Levels,omitempty"`
+	// example:
+	//
+	// 0
+	MultiAccountActionType *int32 `json:"MultiAccountActionType,omitempty" xml:"MultiAccountActionType,omitempty"`
+	// example:
+	//
+	// ecs-xxx
+	Name                 *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	OperateErrorCodeList []*string `json:"OperateErrorCodeList,omitempty" xml:"OperateErrorCodeList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2022-07-06 13:50:38
+	OperateTimeEnd *string `json:"OperateTimeEnd,omitempty" xml:"OperateTimeEnd,omitempty"`
+	// example:
+	//
+	// 2022-07-06 13:50:38
+	OperateTimeStart *string `json:"OperateTimeStart,omitempty" xml:"OperateTimeStart,omitempty"`
+	// example:
+	//
+	// 1
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 恶意脚本
+	ParentEventTypes *string `json:"ParentEventTypes,omitempty" xml:"ParentEventTypes,omitempty"`
+	// example:
+	//
+	// 192.168.XX.XX
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// 5815612291408486
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	// example:
+	//
+	// lastTime
+	SortColumn *string `json:"SortColumn,omitempty" xml:"SortColumn,omitempty"`
+	// example:
+	//
+	// asc
+	SortType *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
+	// example:
+	//
+	// default
+	Source        *string  `json:"Source,omitempty" xml:"Source,omitempty"`
+	SourceAliUids []*int64 `json:"SourceAliUids,omitempty" xml:"SourceAliUids,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2409:8a55:3827:cb50:5ad9:d5ff:fe87:f48c
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// N
+	StrictMode             *string   `json:"StrictMode,omitempty" xml:"StrictMode,omitempty"`
+	SupportOperateCodeList []*string `json:"SupportOperateCodeList,omitempty" xml:"SupportOperateCodeList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// TA0003
+	TacticId *string `json:"TacticId,omitempty" xml:"TacticId,omitempty"`
+	// example:
+	//
+	// containerId
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// example:
+	//
+	// 2022-07-06 13:50:38
+	TimeEnd *string `json:"TimeEnd,omitempty" xml:"TimeEnd,omitempty"`
+	// example:
+	//
+	// 2022-07-06 13:50:38
+	TimeStart *string `json:"TimeStart,omitempty" xml:"TimeStart,omitempty"`
+	// example:
+	//
+	// f82680d9fdcb74a520fa385b7e9105b7
+	UniqueInfo *string `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
+	// example:
+	//
+	// inet-eae09bb8-32b1-413b-a8ff-23932e043209
+	Uuids *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
 }
 
 func (s DescribeSuspEventsRequestSdkRequest) String() string {

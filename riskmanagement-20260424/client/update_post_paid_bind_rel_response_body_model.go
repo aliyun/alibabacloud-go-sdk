@@ -22,11 +22,23 @@ type iUpdatePostPaidBindRelResponseBody interface {
 }
 
 type UpdatePostPaidBindRelResponseBody struct {
-	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *UpdatePostPaidBindRelResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *UpdatePostPaidBindRelResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// operation success.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 6E20BFD0-AA91-594F-B5A7-32CED4777DA0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdatePostPaidBindRelResponseBody) String() string {
@@ -122,9 +134,18 @@ func (s *UpdatePostPaidBindRelResponseBodyData) Validate() error {
 }
 
 type UpdatePostPaidBindRelResponseBodyDataBody struct {
-	BindCount  *int64  `json:"BindCount,omitempty" xml:"BindCount,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResultCode *int32  `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// example:
+	//
+	// 1
+	BindCount *int64 `json:"BindCount,omitempty" xml:"BindCount,omitempty"`
+	// example:
+	//
+	// 62A7DCE2-7D9C-511B-919E-0F46A9D19AE6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// OK
+	ResultCode *int32 `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
 }
 
 func (s UpdatePostPaidBindRelResponseBodyDataBody) String() string {

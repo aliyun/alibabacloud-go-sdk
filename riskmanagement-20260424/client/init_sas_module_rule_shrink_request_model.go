@@ -20,10 +20,19 @@ type iInitSasModuleRuleShrinkRequest interface {
 }
 
 type InitSasModuleRuleShrinkRequest struct {
+	// example:
+	//
+	// 0
 	AutoBind        *int32  `json:"AutoBind,omitempty" xml:"AutoBind,omitempty"`
 	InstancesShrink *string `json:"Instances,omitempty" xml:"Instances,omitempty"`
-	IsTrial         *bool   `json:"IsTrial,omitempty" xml:"IsTrial,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// false
+	IsTrial *bool `json:"IsTrial,omitempty" xml:"IsTrial,omitempty"`
+	// example:
+	//
+	// cn-guangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s InitSasModuleRuleShrinkRequest) String() string {

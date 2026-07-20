@@ -40,9 +40,16 @@ type GetAliYunSafeCenterResultShrinkRequest struct {
 	HandleSecurityEventsRequestShrink                 *string `json:"HandleSecurityEventsRequest,omitempty" xml:"HandleSecurityEventsRequest,omitempty"`
 	HandleSimilarSecurityEventsRequestShrink          *string `json:"HandleSimilarSecurityEventsRequest,omitempty" xml:"HandleSimilarSecurityEventsRequest,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// ListInstanceStatus
 	InterfaceCode              *string `json:"InterfaceCode,omitempty" xml:"InterfaceCode,omitempty"`
 	ListInstancesRequestShrink *string `json:"ListInstancesRequest,omitempty" xml:"ListInstancesRequest,omitempty"`
-	RegionId                   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-guangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetAliYunSafeCenterResultShrinkRequest) String() string {

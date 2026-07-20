@@ -22,11 +22,23 @@ type iGetAlertRecordAnalysisResultRequest interface {
 }
 
 type GetAlertRecordAnalysisResultRequest struct {
-	AlarmUniqueInfo *string                                             `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
-	AliyunLang      *string                                             `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
-	UniqueInfo      *string                                             `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
-	UniqueTagList   []*GetAlertRecordAnalysisResultRequestUniqueTagList `json:"UniqueTagList,omitempty" xml:"UniqueTagList,omitempty" type:"Repeated"`
-	Uuid            *string                                             `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// example:
+	//
+	// 9b57f0fcf98181df8d8487d1cc91cb8d
+	AlarmUniqueInfo *string `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
+	// example:
+	//
+	// zh
+	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	// example:
+	//
+	// fc312aa0c32ba8a6147db6221fb1c1ee
+	UniqueInfo    *string                                             `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
+	UniqueTagList []*GetAlertRecordAnalysisResultRequestUniqueTagList `json:"UniqueTagList,omitempty" xml:"UniqueTagList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ebde6d4e3e4aba728962eec43a69196e9J7tt7H47Pc
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s GetAlertRecordAnalysisResultRequest) String() string {
@@ -96,14 +108,38 @@ func (s *GetAlertRecordAnalysisResultRequest) Validate() error {
 }
 
 type GetAlertRecordAnalysisResultRequestUniqueTagList struct {
-	AlarmUniqueInfo   *string `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
-	ChooseLike        *bool   `json:"ChooseLike,omitempty" xml:"ChooseLike,omitempty"`
-	Ip                *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// example:
+	//
+	// 10a19b654e73ff079ede61ce3f4465e0
+	AlarmUniqueInfo *string `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
+	// example:
+	//
+	// false
+	ChooseLike *bool `json:"ChooseLike,omitempty" xml:"ChooseLike,omitempty"`
+	// example:
+	//
+	// pc-bp19up785757dz800
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// example:
+	//
+	// i-rj9c7d4bli38***tuym
 	MachineInstanceId *string `json:"MachineInstanceId,omitempty" xml:"MachineInstanceId,omitempty"`
-	QueryTime         *string `json:"QueryTime,omitempty" xml:"QueryTime,omitempty"`
-	Type              *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UniqueInfo        *string `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
-	Uuid              *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// example:
+	//
+	// 2025-06-27 00:00:00
+	QueryTime *string `json:"QueryTime,omitempty" xml:"QueryTime,omitempty"`
+	// example:
+	//
+	// BusinessLicense
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// fc312aa0c32ba8a6147db6221fb1c1ee
+	UniqueInfo *string `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
+	// example:
+	//
+	// 3309e55fcb1ed8d4bc6af098e62e0353RNabnQSO1bx
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s GetAlertRecordAnalysisResultRequestUniqueTagList) String() string {

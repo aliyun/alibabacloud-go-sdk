@@ -22,11 +22,23 @@ type iDescribeServiceLinkedRoleStatusResponseBody interface {
 }
 
 type DescribeServiceLinkedRoleStatusResponseBody struct {
-	Code      *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeServiceLinkedRoleStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *DescribeServiceLinkedRoleStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EF972A16-95FB-5EF2-9CED-208A74DEF040
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeServiceLinkedRoleStatusResponseBody) String() string {
@@ -122,6 +134,9 @@ func (s *DescribeServiceLinkedRoleStatusResponseBodyData) Validate() error {
 }
 
 type DescribeServiceLinkedRoleStatusResponseBodyDataBody struct {
+	// example:
+	//
+	// 7F14E3C8-A6AA-5D3C-B7E0-ABA2AC171EFC
 	RequestId  *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RoleStatus *DescribeServiceLinkedRoleStatusResponseBodyDataBodyRoleStatus `json:"RoleStatus,omitempty" xml:"RoleStatus,omitempty" type:"Struct"`
 }
@@ -162,6 +177,9 @@ func (s *DescribeServiceLinkedRoleStatusResponseBodyDataBody) Validate() error {
 }
 
 type DescribeServiceLinkedRoleStatusResponseBodyDataBodyRoleStatus struct {
+	// example:
+	//
+	// true
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
