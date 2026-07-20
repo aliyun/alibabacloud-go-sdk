@@ -36,44 +36,66 @@ type iGetSignalResponseBody interface {
 }
 
 type GetSignalResponseBody struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2026-03-18T10:02:04+08:00
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 2026-03-18T10:02:04+08:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The job ID.
+	//
 	// example:
 	//
 	// oper***********
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The status description, which contains a summary for each pod (number of successful deliveries, names of failed or pending pods, etc.).
+	//
 	// example:
 	//
 	// signal delivered to 1 pods
-	Message  *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The list of pod names.
 	PodNames []*string `json:"PodNames,omitempty" xml:"PodNames,omitempty" type:"Repeated"`
+	// The status reason code, such as `Completed`, `SignalFailed`, or `StoppedByJobEnded`.
+	//
 	// example:
 	//
 	// Completed
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-xxxxxxx
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Roles     []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of role objects.
+	Roles []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	// The delivery scope.
+	//
 	// example:
 	//
 	// pods
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The signal.
+	//
 	// example:
 	//
 	// SIGUSR1
 	Signal *string `json:"Signal,omitempty" xml:"Signal,omitempty"`
+	// The signal ID.
+	//
 	// example:
 	//
 	// dlc***********
 	SignalId *string `json:"SignalId,omitempty" xml:"SignalId,omitempty"`
+	// The signal status.
+	//
 	// example:
 	//
 	// Succeeded

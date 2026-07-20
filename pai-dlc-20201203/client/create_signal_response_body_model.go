@@ -22,22 +22,32 @@ type iCreateSignalResponseBody interface {
 }
 
 type CreateSignalResponseBody struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// dlc********
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 019F6385-7481-57A7-BEC9-***********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The signal code.
+	//
 	// example:
 	//
 	// SIGUSR1
 	Signal *string `json:"Signal,omitempty" xml:"Signal,omitempty"`
+	// The signal ID.
+	//
 	// example:
 	//
 	// oper************
 	SignalId *string `json:"SignalId,omitempty" xml:"SignalId,omitempty"`
+	// The signal status.
+	//
 	// example:
 	//
 	// Succeeded

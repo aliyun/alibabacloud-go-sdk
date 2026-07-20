@@ -16,10 +16,13 @@ type iCreateSignalRequest interface {
 }
 
 type CreateSignalRequest struct {
+	// The signal code.
+	//
 	// example:
 	//
 	// SIGUSR1
-	Signal *string       `json:"Signal,omitempty" xml:"Signal,omitempty"`
+	Signal *string `json:"Signal,omitempty" xml:"Signal,omitempty"`
+	// The signal delivery scope.
 	Target *SignalTarget `json:"Target,omitempty" xml:"Target,omitempty"`
 }
 

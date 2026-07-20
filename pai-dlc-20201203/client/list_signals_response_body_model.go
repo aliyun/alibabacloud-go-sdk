@@ -24,23 +24,34 @@ type iListSignalsResponseBody interface {
 }
 
 type ListSignalsResponseBody struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// dlc-...
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-xxxxxxx
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Signals   []*ListSignalsResponseBodySignals `json:"Signals,omitempty" xml:"Signals,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of signal records for the job. Each element has the same structure as the response of GetSignal.
+	Signals []*ListSignalsResponseBodySignals `json:"Signals,omitempty" xml:"Signals,omitempty" type:"Repeated"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 3
@@ -123,36 +134,54 @@ func (s *ListSignalsResponseBody) Validate() error {
 }
 
 type ListSignalsResponseBodySignals struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2025-12-30T14:07:38+08:00
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 2025-12-30T14:07:38+08:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The message returned with the result.
+	//
 	// example:
 	//
 	// signal delivered to 1 pods
-	Message  *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The list of pod names.
 	PodNames []*string `json:"PodNames,omitempty" xml:"PodNames,omitempty" type:"Repeated"`
+	// The reason.
+	//
 	// example:
 	//
 	// Completed
-	Reason *string   `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	Roles  []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The list of role types.
+	Roles []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	// The delivery scope.
+	//
 	// example:
 	//
 	// pods
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The signal code.
+	//
 	// example:
 	//
 	// SIGUSR1
 	Signal *string `json:"Signal,omitempty" xml:"Signal,omitempty"`
+	// The signal ID.
+	//
 	// example:
 	//
 	// oper*********
 	SignalId *string `json:"SignalId,omitempty" xml:"SignalId,omitempty"`
+	// The signal status.
+	//
 	// example:
 	//
 	// Stopped

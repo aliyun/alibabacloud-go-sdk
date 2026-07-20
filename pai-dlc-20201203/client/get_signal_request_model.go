@@ -14,6 +14,8 @@ type iGetSignalRequest interface {
 }
 
 type GetSignalRequest struct {
+	// The temporary token used for authentication.
+	//
 	// example:
 	//
 	// eyXXXX-XXXX.XXXXX
