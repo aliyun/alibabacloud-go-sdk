@@ -16,8 +16,14 @@ type iMCPSSESessionAffinityConfig interface {
 }
 
 type MCPSSESessionAffinityConfig struct {
-	SessionConcurrencyPerInstance *int64  `json:"sessionConcurrencyPerInstance,omitempty" xml:"sessionConcurrencyPerInstance,omitempty"`
-	SseEndpointPath               *string `json:"sseEndpointPath,omitempty" xml:"sseEndpointPath,omitempty"`
+	// example:
+	//
+	// 20
+	SessionConcurrencyPerInstance *int64 `json:"sessionConcurrencyPerInstance,omitempty" xml:"sessionConcurrencyPerInstance,omitempty"`
+	// example:
+	//
+	// /sse
+	SseEndpointPath *string `json:"sseEndpointPath,omitempty" xml:"sseEndpointPath,omitempty"`
 }
 
 func (s MCPSSESessionAffinityConfig) String() string {

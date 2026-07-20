@@ -9,6 +9,8 @@ type iCreateSessionInput interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAllowInternetAccess(v bool) *CreateSessionInput
+	GetAllowInternetAccess() *bool
 	SetDisableSessionIdReuse(v bool) *CreateSessionInput
 	GetDisableSessionIdReuse() *bool
 	SetEnableAutoPause(v bool) *CreateSessionInput
@@ -19,6 +21,8 @@ type iCreateSessionInput interface {
 	GetJuiceFsConfig() *JuiceFsConfig
 	SetNasConfig(v *NASConfig) *CreateSessionInput
 	GetNasConfig() *NASConfig
+	SetNetwork(v *CreateSessionNetworkConfig) *CreateSessionInput
+	GetNetwork() *CreateSessionNetworkConfig
 	SetOssMountConfig(v *OSSMountConfig) *CreateSessionInput
 	GetOssMountConfig() *OSSMountConfig
 	SetPolarFsConfig(v *PolarFsConfig) *CreateSessionInput
@@ -32,7 +36,8 @@ type iCreateSessionInput interface {
 }
 
 type CreateSessionInput struct {
-	// Specifies whether to disable session ID reuse. Default value: False, which indicates that after a session with a specific SessionID expires, you can send requests with the same SessionID, and the system treats it as a new session bound to a new instance. If this parameter is set to True, the SessionID cannot be reused after the session expires.
+	AllowInternetAccess *bool `json:"allowInternetAccess,omitempty" xml:"allowInternetAccess,omitempty"`
+	// Default value: False. This indicates that after a session with a specific SessionID expires, you can send requests with the same SessionID. The system treats it as a new session and binds it to a new instance. If set to True, the SessionID cannot be reused after the session expires.
 	//
 	// example:
 	//
@@ -42,18 +47,19 @@ type CreateSessionInput struct {
 	EnableAutoResume      *bool          `json:"enableAutoResume,omitempty" xml:"enableAutoResume,omitempty"`
 	JuiceFsConfig         *JuiceFsConfig `json:"juiceFsConfig,omitempty" xml:"juiceFsConfig,omitempty"`
 	// The NAS configuration. After this parameter is configured, instances associated with the session can access the specified NAS resources.
-	NasConfig *NASConfig `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
-	// The OSS configuration. After this parameter is configured, instances associated with the session can access the specified OSS resources.
+	NasConfig *NASConfig                  `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	Network   *CreateSessionNetworkConfig `json:"network,omitempty" xml:"network,omitempty"`
+	// The OSS mount configuration. After this parameter is configured, instances associated with the session can access the specified OSS resources.
 	OssMountConfig *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
 	// The PolarFs configuration. After this parameter is configured, instances associated with the session can access the specified PolarFs resources.
 	PolarFsConfig *PolarFsConfig `json:"polarFsConfig,omitempty" xml:"polarFsConfig,omitempty"`
-	// The custom session ID. If this parameter is not specified, the server generates a session ID. If specified, the value is used as the session ID. This parameter applies only to the HEADER_FIELD affinity mode. Format: the length is limited to [0,64]. The first character must be from **a-zA-Z0-9_**, and subsequent characters can be from **a-zA-Z0-9_-**.
+	// The custom session ID. If not specified, the server generates one. If specified, this value is used as the session ID. This parameter applies only to the HEADER_FIELD affinity mode. Format: the length is limited to [0,64]. The first character must be from **a-zA-Z0-9_**. Subsequent characters can be from **a-zA-Z0-9_-**.
 	//
 	// example:
 	//
 	// custom-test-session-id
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// The session idle timeout period.
+	// The session idle timeout.
 	//
 	// example:
 	//
@@ -73,6 +79,10 @@ func (s CreateSessionInput) String() string {
 
 func (s CreateSessionInput) GoString() string {
 	return s.String()
+}
+
+func (s *CreateSessionInput) GetAllowInternetAccess() *bool {
+	return s.AllowInternetAccess
 }
 
 func (s *CreateSessionInput) GetDisableSessionIdReuse() *bool {
@@ -95,6 +105,10 @@ func (s *CreateSessionInput) GetNasConfig() *NASConfig {
 	return s.NasConfig
 }
 
+func (s *CreateSessionInput) GetNetwork() *CreateSessionNetworkConfig {
+	return s.Network
+}
+
 func (s *CreateSessionInput) GetOssMountConfig() *OSSMountConfig {
 	return s.OssMountConfig
 }
@@ -113,6 +127,11 @@ func (s *CreateSessionInput) GetSessionIdleTimeoutInSeconds() *int64 {
 
 func (s *CreateSessionInput) GetSessionTTLInSeconds() *int64 {
 	return s.SessionTTLInSeconds
+}
+
+func (s *CreateSessionInput) SetAllowInternetAccess(v bool) *CreateSessionInput {
+	s.AllowInternetAccess = &v
+	return s
 }
 
 func (s *CreateSessionInput) SetDisableSessionIdReuse(v bool) *CreateSessionInput {
@@ -137,6 +156,11 @@ func (s *CreateSessionInput) SetJuiceFsConfig(v *JuiceFsConfig) *CreateSessionIn
 
 func (s *CreateSessionInput) SetNasConfig(v *NASConfig) *CreateSessionInput {
 	s.NasConfig = v
+	return s
+}
+
+func (s *CreateSessionInput) SetNetwork(v *CreateSessionNetworkConfig) *CreateSessionInput {
+	s.Network = v
 	return s
 }
 
@@ -173,6 +197,11 @@ func (s *CreateSessionInput) Validate() error {
 	}
 	if s.NasConfig != nil {
 		if err := s.NasConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Network != nil {
+		if err := s.Network.Validate(); err != nil {
 			return err
 		}
 	}

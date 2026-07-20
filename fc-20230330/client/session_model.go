@@ -9,6 +9,8 @@ type iSession interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAllowInternetAccess(v bool) *Session
+	GetAllowInternetAccess() *bool
 	SetContainerId(v string) *Session
 	GetContainerId() *string
 	SetCreatedTime(v string) *Session
@@ -27,6 +29,8 @@ type iSession interface {
 	GetLastModifiedTime() *string
 	SetNasConfig(v *NASConfig) *Session
 	GetNasConfig() *NASConfig
+	SetNetwork(v *CreateSessionNetworkConfig) *Session
+	GetNetwork() *CreateSessionNetworkConfig
 	SetOssMountConfig(v *OSSMountConfig) *Session
 	GetOssMountConfig() *OSSMountConfig
 	SetPolarFsConfig(v *PolarFsConfig) *Session
@@ -43,10 +47,13 @@ type iSession interface {
 	GetSessionStatus() *string
 	SetSessionTTLInSeconds(v int64) *Session
 	GetSessionTTLInSeconds() *int64
+	SetTrafficAccessToken(v string) *Session
+	GetTrafficAccessToken() *string
 }
 
 type Session struct {
-	// The instance ID of the function instance associated with the session.
+	AllowInternetAccess *bool `json:"allowInternetAccess,omitempty" xml:"allowInternetAccess,omitempty"`
+	// The instance ID of the function associated with the session.
 	//
 	// example:
 	//
@@ -58,7 +65,13 @@ type Session struct {
 	//
 	// 2025-04-01T08:15:27Z
 	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// Specifies whether to disable session ID reuse. Default value: False, which indicates that after the session expires, you can use the same session ID to initiate requests. The system treats the request as a new session and binds it to a new instance. If you set this parameter to True, the session ID cannot be reused after the session expires.
+	// Specifies whether to disable session ID reuse after the session expires. Valid values:
+	//
+	// - False: After the session expires, you can use the same session ID to initiate requests. The system treats it as a new session and binds it to a new instance.
+	//
+	// - True: After the session expires, the session ID cannot be reused.
+	//
+	// Default value: False.
 	//
 	// example:
 	//
@@ -80,10 +93,11 @@ type Session struct {
 	// 2025-04-01T18:15:27Z
 	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
 	// The NAS configuration. After configuration, the instance associated with the session can access the specified NAS resource.
-	NasConfig      *NASConfig      `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
-	OssMountConfig *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
-	PolarFsConfig  *PolarFsConfig  `json:"polarFsConfig,omitempty" xml:"polarFsConfig,omitempty"`
-	// The qualifier passed in when the customer created the session. If not specified, the default value is LATEST.
+	NasConfig      *NASConfig                  `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	Network        *CreateSessionNetworkConfig `json:"network,omitempty" xml:"network,omitempty"`
+	OssMountConfig *OSSMountConfig             `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
+	PolarFsConfig  *PolarFsConfig              `json:"polarFsConfig,omitempty" xml:"polarFsConfig,omitempty"`
+	// The qualifier passed when the customer created the session. If not specified, the default value is LATEST.
 	//
 	// example:
 	//
@@ -101,7 +115,7 @@ type Session struct {
 	//
 	// 81f70ae156904eb9b7d43e12f511fe58
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// The idle timeout period of the session.
+	// The session idle timeout.
 	//
 	// example:
 	//
@@ -117,12 +131,13 @@ type Session struct {
 	//
 	// Active
 	SessionStatus *string `json:"sessionStatus,omitempty" xml:"sessionStatus,omitempty"`
-	// The maximum lifetime of the session.
+	// The maximum session lifetime.
 	//
 	// example:
 	//
 	// 21600
-	SessionTTLInSeconds *int64 `json:"sessionTTLInSeconds,omitempty" xml:"sessionTTLInSeconds,omitempty"`
+	SessionTTLInSeconds *int64  `json:"sessionTTLInSeconds,omitempty" xml:"sessionTTLInSeconds,omitempty"`
+	TrafficAccessToken  *string `json:"trafficAccessToken,omitempty" xml:"trafficAccessToken,omitempty"`
 }
 
 func (s Session) String() string {
@@ -131,6 +146,10 @@ func (s Session) String() string {
 
 func (s Session) GoString() string {
 	return s.String()
+}
+
+func (s *Session) GetAllowInternetAccess() *bool {
+	return s.AllowInternetAccess
 }
 
 func (s *Session) GetContainerId() *string {
@@ -169,6 +188,10 @@ func (s *Session) GetNasConfig() *NASConfig {
 	return s.NasConfig
 }
 
+func (s *Session) GetNetwork() *CreateSessionNetworkConfig {
+	return s.Network
+}
+
 func (s *Session) GetOssMountConfig() *OSSMountConfig {
 	return s.OssMountConfig
 }
@@ -199,6 +222,15 @@ func (s *Session) GetSessionStatus() *string {
 
 func (s *Session) GetSessionTTLInSeconds() *int64 {
 	return s.SessionTTLInSeconds
+}
+
+func (s *Session) GetTrafficAccessToken() *string {
+	return s.TrafficAccessToken
+}
+
+func (s *Session) SetAllowInternetAccess(v bool) *Session {
+	s.AllowInternetAccess = &v
+	return s
 }
 
 func (s *Session) SetContainerId(v string) *Session {
@@ -246,6 +278,11 @@ func (s *Session) SetNasConfig(v *NASConfig) *Session {
 	return s
 }
 
+func (s *Session) SetNetwork(v *CreateSessionNetworkConfig) *Session {
+	s.Network = v
+	return s
+}
+
 func (s *Session) SetOssMountConfig(v *OSSMountConfig) *Session {
 	s.OssMountConfig = v
 	return s
@@ -286,6 +323,11 @@ func (s *Session) SetSessionTTLInSeconds(v int64) *Session {
 	return s
 }
 
+func (s *Session) SetTrafficAccessToken(v string) *Session {
+	s.TrafficAccessToken = &v
+	return s
+}
+
 func (s *Session) Validate() error {
 	if s.JuiceFsConfig != nil {
 		if err := s.JuiceFsConfig.Validate(); err != nil {
@@ -294,6 +336,11 @@ func (s *Session) Validate() error {
 	}
 	if s.NasConfig != nil {
 		if err := s.NasConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Network != nil {
+		if err := s.Network.Validate(); err != nil {
 			return err
 		}
 	}

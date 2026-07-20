@@ -38,7 +38,7 @@ type CustomContainerConfig struct {
 	//
 	// example:
 	//
-	// default
+	// Default
 	AccelerationType *string `json:"accelerationType,omitempty" xml:"accelerationType,omitempty"`
 	// The ID of the image repository for the Container Registry Enterprise Edition. You must specify this parameter if you use an image of Container Registry Enterprise Edition.
 	//

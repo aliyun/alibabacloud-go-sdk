@@ -9,6 +9,8 @@ type iUpdateSessionInput interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAllowInternetAccess(v bool) *UpdateSessionInput
+	GetAllowInternetAccess() *bool
 	SetDisableSessionIdReuse(v bool) *UpdateSessionInput
 	GetDisableSessionIdReuse() *bool
 	SetEnableAutoPause(v bool) *UpdateSessionInput
@@ -19,6 +21,8 @@ type iUpdateSessionInput interface {
 	GetJuiceFsConfig() *JuiceFsConfig
 	SetNasConfig(v *NASConfig) *UpdateSessionInput
 	GetNasConfig() *NASConfig
+	SetNetwork(v *UpdateSessionNetworkConfig) *UpdateSessionInput
+	GetNetwork() *UpdateSessionNetworkConfig
 	SetOssMountConfig(v *OSSMountConfig) *UpdateSessionInput
 	GetOssMountConfig() *OSSMountConfig
 	SetPolarFsConfig(v *PolarFsConfig) *UpdateSessionInput
@@ -30,25 +34,21 @@ type iUpdateSessionInput interface {
 }
 
 type UpdateSessionInput struct {
-	// Specifies whether to disable session ID reuse after the session expires. Valid values:
-	//
-	// - False: After the session associated with a SessionID expires, you can use the same SessionID to initiate requests. The system treats this as a new session and binds it to a new instance.
-	//
-	// - True: After the session associated with a SessionID expires, the SessionID cannot be reused.
-	//
-	// Default value: False.
+	AllowInternetAccess *bool `json:"allowInternetAccess,omitempty" xml:"allowInternetAccess,omitempty"`
+	// Specifies whether to disable session ID reuse after the session expires. Default value: False, which indicates that after a session expires, you can use the same session ID to initiate requests. The system treats the request as a new session and binds it to a new instance. If you set this parameter to True, the session ID cannot be reused after the session expires.
 	//
 	// example:
 	//
 	// false
-	DisableSessionIdReuse *bool           `json:"disableSessionIdReuse,omitempty" xml:"disableSessionIdReuse,omitempty"`
-	EnableAutoPause       *bool           `json:"enableAutoPause,omitempty" xml:"enableAutoPause,omitempty"`
-	EnableAutoResume      *bool           `json:"enableAutoResume,omitempty" xml:"enableAutoResume,omitempty"`
-	JuiceFsConfig         *JuiceFsConfig  `json:"juiceFsConfig,omitempty" xml:"juiceFsConfig,omitempty"`
-	NasConfig             *NASConfig      `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
-	OssMountConfig        *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
-	PolarFsConfig         *PolarFsConfig  `json:"polarFsConfig,omitempty" xml:"polarFsConfig,omitempty"`
-	// The session idle timeout period.
+	DisableSessionIdReuse *bool                       `json:"disableSessionIdReuse,omitempty" xml:"disableSessionIdReuse,omitempty"`
+	EnableAutoPause       *bool                       `json:"enableAutoPause,omitempty" xml:"enableAutoPause,omitempty"`
+	EnableAutoResume      *bool                       `json:"enableAutoResume,omitempty" xml:"enableAutoResume,omitempty"`
+	JuiceFsConfig         *JuiceFsConfig              `json:"juiceFsConfig,omitempty" xml:"juiceFsConfig,omitempty"`
+	NasConfig             *NASConfig                  `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	Network               *UpdateSessionNetworkConfig `json:"network,omitempty" xml:"network,omitempty"`
+	OssMountConfig        *OSSMountConfig             `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
+	PolarFsConfig         *PolarFsConfig              `json:"polarFsConfig,omitempty" xml:"polarFsConfig,omitempty"`
+	// The session idle timeout.
 	//
 	// example:
 	//
@@ -68,6 +68,10 @@ func (s UpdateSessionInput) String() string {
 
 func (s UpdateSessionInput) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateSessionInput) GetAllowInternetAccess() *bool {
+	return s.AllowInternetAccess
 }
 
 func (s *UpdateSessionInput) GetDisableSessionIdReuse() *bool {
@@ -90,6 +94,10 @@ func (s *UpdateSessionInput) GetNasConfig() *NASConfig {
 	return s.NasConfig
 }
 
+func (s *UpdateSessionInput) GetNetwork() *UpdateSessionNetworkConfig {
+	return s.Network
+}
+
 func (s *UpdateSessionInput) GetOssMountConfig() *OSSMountConfig {
 	return s.OssMountConfig
 }
@@ -104,6 +112,11 @@ func (s *UpdateSessionInput) GetSessionIdleTimeoutInSeconds() *int64 {
 
 func (s *UpdateSessionInput) GetSessionTTLInSeconds() *int64 {
 	return s.SessionTTLInSeconds
+}
+
+func (s *UpdateSessionInput) SetAllowInternetAccess(v bool) *UpdateSessionInput {
+	s.AllowInternetAccess = &v
+	return s
 }
 
 func (s *UpdateSessionInput) SetDisableSessionIdReuse(v bool) *UpdateSessionInput {
@@ -128,6 +141,11 @@ func (s *UpdateSessionInput) SetJuiceFsConfig(v *JuiceFsConfig) *UpdateSessionIn
 
 func (s *UpdateSessionInput) SetNasConfig(v *NASConfig) *UpdateSessionInput {
 	s.NasConfig = v
+	return s
+}
+
+func (s *UpdateSessionInput) SetNetwork(v *UpdateSessionNetworkConfig) *UpdateSessionInput {
+	s.Network = v
 	return s
 }
 
@@ -159,6 +177,11 @@ func (s *UpdateSessionInput) Validate() error {
 	}
 	if s.NasConfig != nil {
 		if err := s.NasConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Network != nil {
+		if err := s.Network.Validate(); err != nil {
 			return err
 		}
 	}
