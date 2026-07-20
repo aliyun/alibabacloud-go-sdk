@@ -267,9 +267,9 @@ func (client *Client) GetCustomerOrderListWithContext(ctx context.Context, tmpRe
 //
 // Description:
 //
-// Make sure that the current caller identity is a T1 distribution partner.
+// Ensure that the current caller identity is a T1 distribution partner.
 //
-// <notice>Available only for international sites.</notice>.
+// <notice>Available only for international site.</notice>.
 //
 // @param request - GetIntlCommissionDetailFileListRequest
 //

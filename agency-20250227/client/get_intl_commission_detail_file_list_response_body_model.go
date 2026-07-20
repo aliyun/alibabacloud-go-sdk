@@ -34,7 +34,7 @@ type GetIntlCommissionDetailFileListResponseBody struct {
 	//
 	// example:
 	//
-	// 成功
+	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// RequestId
 	//
@@ -42,7 +42,7 @@ type GetIntlCommissionDetailFileListResponseBody struct {
 	//
 	// 2103a30617045934095083027d88c5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the operation was successful.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *GetIntlCommissionDetailFileListResponseBody) Validate() error {
 }
 
 type GetIntlCommissionDetailFileListResponseBodyData struct {
-	// The billing month.
+	// The bill month.
 	//
 	// example:
 	//
@@ -178,25 +178,17 @@ func (s *GetIntlCommissionDetailFileListResponseBodyData) Validate() error {
 }
 
 type GetIntlCommissionDetailFileListResponseBodyDataFileList struct {
-	// The push status of the OSS file. Valid values:
-	//
-	// - 初始化状态: initialization status
-	//
-	// - 处理中: processing
-	//
-	// - 处理成功: processing succeeded
-	//
-	// - 处理失败: processing failed.
+	// The OSS file push status. Valid values: init, processing, succeeded, or failed.
 	//
 	// example:
 	//
-	// 处理中
+	// PROCESSING
 	BucketSyncStatus *string `json:"BucketSyncStatus,omitempty" xml:"BucketSyncStatus,omitempty"`
 	// The commission policy name.
 	//
 	// example:
 	//
-	// 参考【APS佣金查询下载功能】的政策名称
+	// 202606_FY27_TEST
 	CommissionPolicyName *string `json:"CommissionPolicyName,omitempty" xml:"CommissionPolicyName,omitempty"`
 	// The file name.
 	//

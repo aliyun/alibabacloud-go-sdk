@@ -26,7 +26,7 @@ type iGetIntlCommissionDetailFileListRequest interface {
 }
 
 type GetIntlCommissionDetailFileListRequest struct {
-	// The billing month.
+	// The bill month.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type GetIntlCommissionDetailFileListRequest struct {
 	//
 	// yourAccessKeySecret
 	OssAccessKeySecret *string `json:"OssAccessKeySecret,omitempty" xml:"OssAccessKeySecret,omitempty"`
-	// The name of the OSS bucket.
+	// The OSS bucket.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type GetIntlCommissionDetailFileListRequest struct {
 	//
 	// yourBucketName
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
-	// The endpoint of the region where the Object Storage Service (OSS) bucket for the file sharing resides.
+	// The endpoint of the region where the Object Storage Service (OSS) bucket for file sharing resides.
 	//
 	// This parameter is required.
 	//
