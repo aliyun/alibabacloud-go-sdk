@@ -1,3 +1,6 @@
+2026-07-20 Version: v3.0.1
+- Generated golang 2026-04-28 for Aidge.
+
 2026-07-15 Version: v3.0.0
 - Support API ImageRemovalPro.
 - Delete API ImageTranslationPlus.
