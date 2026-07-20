@@ -46,23 +46,74 @@ type iTable interface {
 }
 
 type Table struct {
-	CreatedAt              *int64                `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	CreatedBy              *string               `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	IcebergTableMetadata   *IcebergTableMetadata `json:"icebergTableMetadata,omitempty" xml:"icebergTableMetadata,omitempty"`
-	Id                     *string               `json:"id,omitempty" xml:"id,omitempty"`
-	IsExternal             *bool                 `json:"isExternal,omitempty" xml:"isExternal,omitempty"`
-	Name                   *string               `json:"name,omitempty" xml:"name,omitempty"`
-	Owner                  *string               `json:"owner,omitempty" xml:"owner,omitempty"`
-	Path                   *string               `json:"path,omitempty" xml:"path,omitempty"`
-	Schema                 *Schema               `json:"schema,omitempty" xml:"schema,omitempty"`
-	SchemaId               *int64                `json:"schemaId,omitempty" xml:"schemaId,omitempty"`
-	Status                 *string               `json:"status,omitempty" xml:"status,omitempty"`
-	StorageAction          *string               `json:"storageAction,omitempty" xml:"storageAction,omitempty"`
-	StorageActionTimestamp *int64                `json:"storageActionTimestamp,omitempty" xml:"storageActionTimestamp,omitempty"`
-	StorageClass           *string               `json:"storageClass,omitempty" xml:"storageClass,omitempty"`
-	Type                   *string               `json:"type,omitempty" xml:"type,omitempty"`
-	UpdatedAt              *int64                `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	UpdatedBy              *string               `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
+	// The time when the table was created.
+	//
+	// example:
+	//
+	// 1741266704867
+	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The creator of the table.
+	//
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	CreatedBy            *string               `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	IcebergTableMetadata *IcebergTableMetadata `json:"icebergTableMetadata,omitempty" xml:"icebergTableMetadata,omitempty"`
+	// The UUID of the table.
+	//
+	// example:
+	//
+	// 1
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// Indicates whether the table is an external table.
+	//
+	// example:
+	//
+	// true
+	IsExternal *bool `json:"isExternal,omitempty" xml:"isExternal,omitempty"`
+	// The name of the table.
+	//
+	// example:
+	//
+	// table_test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The owner of the table.
+	//
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	// The path of the table.
+	//
+	// example:
+	//
+	// oss://clg-paimon-xxx/db-xxx/tbl-xxxx
+	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// The table schema information.
+	Schema *Schema `json:"schema,omitempty" xml:"schema,omitempty"`
+	// The ID of the table schema.
+	//
+	// example:
+	//
+	// 1
+	SchemaId               *int64  `json:"schemaId,omitempty" xml:"schemaId,omitempty"`
+	Status                 *string `json:"status,omitempty" xml:"status,omitempty"`
+	StorageAction          *string `json:"storageAction,omitempty" xml:"storageAction,omitempty"`
+	StorageActionTimestamp *int64  `json:"storageActionTimestamp,omitempty" xml:"storageActionTimestamp,omitempty"`
+	StorageClass           *string `json:"storageClass,omitempty" xml:"storageClass,omitempty"`
+	Type                   *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The time when the table was last updated.
+	//
+	// example:
+	//
+	// 1741266704867
+	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// The user who last updated the table.
+	//
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	UpdatedBy *string `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
 }
 
 func (s Table) String() string {

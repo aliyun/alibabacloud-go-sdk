@@ -16,7 +16,13 @@ type iAlterShareResourcesRequest interface {
 }
 
 type AlterShareResourcesRequest struct {
-	CatalogId         *string          `json:"catalogId,omitempty" xml:"catalogId,omitempty"`
+	// The ID of the catalog.
+	//
+	// example:
+	//
+	// clg-paimon-xxxx
+	CatalogId *string `json:"catalogId,omitempty" xml:"catalogId,omitempty"`
+	// The shared resources.
 	ShareResourceList []*ShareResource `json:"shareResourceList,omitempty" xml:"shareResourceList,omitempty" type:"Repeated"`
 }
 

@@ -18,9 +18,24 @@ type iBatchGrantPermissionsResponseBody interface {
 }
 
 type BatchGrantPermissionsResponseBody struct {
-	ErrorMessage       *string              `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The error message. This parameter is not empty when success is false, indicating a business error. This parameter is empty when success is true.
+	//
+	// example:
+	//
+	// 空
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The list of permissions that failed to be granted.
 	FailurePermissions []*FailurePermission `json:"failurePermissions,omitempty" xml:"failurePermissions,omitempty" type:"Repeated"`
-	Success            *bool                `json:"success,omitempty" xml:"success,omitempty"`
+	// Indicates whether the API call was successful. Valid values:
+	//
+	// - true: The API call was successful.
+	//
+	// - false: The API call failed.
+	//
+	// example:
+	//
+	// True
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s BatchGrantPermissionsResponseBody) String() string {

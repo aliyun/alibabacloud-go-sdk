@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 更新数据目录
+// Updates a catalog.
 //
 // @param request - AlterCatalogRequest
 //
@@ -60,7 +60,7 @@ func (client *Client) AlterCatalogWithContext(ctx context.Context, catalog *stri
 
 // Summary:
 //
-// 更新数据库
+// Updates a database.
 //
 // @param request - AlterDatabaseRequest
 //
@@ -111,7 +111,7 @@ func (client *Client) AlterDatabaseWithContext(ctx context.Context, catalogId *s
 
 // Summary:
 //
-// 更新接收者
+// Updates a sink.
 //
 // @param request - AlterReceiverRequest
 //
@@ -162,7 +162,7 @@ func (client *Client) AlterReceiverWithContext(ctx context.Context, receiver *st
 
 // Summary:
 //
-// 更新共享
+// Updates a share.
 //
 // @param request - AlterShareRequest
 //
@@ -217,7 +217,7 @@ func (client *Client) AlterShareWithContext(ctx context.Context, share *string, 
 
 // Summary:
 //
-// 更新共享中的接收者
+// Updates the receivers of a share.
 //
 // @param request - AlterShareReceiversRequest
 //
@@ -268,7 +268,7 @@ func (client *Client) AlterShareReceiversWithContext(ctx context.Context, share 
 
 // Summary:
 //
-// 更改共享资源
+// Modifies shared resources.
 //
 // @param request - AlterShareResourcesRequest
 //
@@ -319,7 +319,7 @@ func (client *Client) AlterShareResourcesWithContext(ctx context.Context, share 
 
 // Summary:
 //
-// 更改Table
+// Updates a table.
 //
 // @param request - AlterTableRequest
 //
@@ -366,7 +366,7 @@ func (client *Client) AlterTableWithContext(ctx context.Context, catalogId *stri
 
 // Summary:
 //
-// 更改Table Schema
+// Changes the table schema.
 //
 // @param request - AlterTableSchemaRequest
 //
@@ -413,7 +413,7 @@ func (client *Client) AlterTableSchemaWithContext(ctx context.Context, catalogId
 
 // Summary:
 //
-// 批量授权
+// Grants permissions in batches.
 //
 // @param request - BatchGrantPermissionsRequest
 //
@@ -460,7 +460,7 @@ func (client *Client) BatchGrantPermissionsWithContext(ctx context.Context, cata
 
 // Summary:
 //
-// 批量取消授权
+// Revokes permissions in batches.
 //
 // @param request - BatchRevokePermissionsRequest
 //
@@ -507,7 +507,7 @@ func (client *Client) BatchRevokePermissionsWithContext(ctx context.Context, cat
 
 // Summary:
 //
-// 创建数据目录
+// Creates a catalog.
 //
 // @param request - CreateCatalogRequest
 //
@@ -570,7 +570,7 @@ func (client *Client) CreateCatalogWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// 创建数据库
+// Creates a database.
 //
 // @param request - CreateDatabaseRequest
 //
@@ -621,7 +621,7 @@ func (client *Client) CreateDatabaseWithContext(ctx context.Context, catalogId *
 
 // Summary:
 //
-// 创建接收者
+// Creates a receiver.
 //
 // @param request - CreateReceiverRequest
 //
@@ -676,7 +676,7 @@ func (client *Client) CreateReceiverWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// 创建角色
+// Creates a DLF role.
 //
 // @param request - CreateRoleRequest
 //
@@ -731,7 +731,7 @@ func (client *Client) CreateRoleWithContext(ctx context.Context, request *Create
 
 // Summary:
 //
-// 创建共享
+// Creates a share.
 //
 // @param request - CreateShareRequest
 //
@@ -786,7 +786,7 @@ func (client *Client) CreateShareWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
-// 创建表
+// Creates a table.
 //
 // @param request - CreateTableRequest
 //
@@ -837,7 +837,7 @@ func (client *Client) CreateTableWithContext(ctx context.Context, catalogId *str
 
 // Summary:
 //
-// 删除角色
+// Deletes a DLF role.
 //
 // @param request - DeleteRoleRequest
 //
@@ -884,7 +884,7 @@ func (client *Client) DeleteRoleWithContext(ctx context.Context, request *Delete
 
 // Summary:
 //
-// 查询 DLF 开通地域
+// Retrieves the regions where DLF is activated.
 //
 // @param headers - map
 //
@@ -917,7 +917,7 @@ func (client *Client) DescribeRegionsWithContext(ctx context.Context, headers ma
 
 // Summary:
 //
-// 删除数据湖Catalog
+// Deletes a data lake data catalog. The following conditions must be met, otherwise the deletion will fail: all tables and user-created databases under the catalog have been deleted; the databases and tables have been deleted for at least 24 hours.
 //
 // @param headers - map
 //
@@ -950,7 +950,7 @@ func (client *Client) DropCatalogWithContext(ctx context.Context, catalog *strin
 
 // Summary:
 //
-// 删除数据库
+// Drops a database.
 //
 // @param headers - map
 //
@@ -983,7 +983,7 @@ func (client *Client) DropDatabaseWithContext(ctx context.Context, catalogId *st
 
 // Summary:
 //
-// 删除接收者
+// Removes a receiver.
 //
 // @param headers - map
 //
@@ -1016,7 +1016,7 @@ func (client *Client) DropReceiverWithContext(ctx context.Context, receiver *str
 
 // Summary:
 //
-// 删除共享
+// Deletes a share.
 //
 // @param headers - map
 //
@@ -1049,7 +1049,7 @@ func (client *Client) DropShareWithContext(ctx context.Context, share *string, h
 
 // Summary:
 //
-// 删除表
+// Drops a table.
 //
 // @param headers - map
 //
@@ -1082,7 +1082,7 @@ func (client *Client) DropTableWithContext(ctx context.Context, catalogId *strin
 
 // Summary:
 //
-// 查看数据湖Catalog
+// Retrieves the details of a catalog.
 //
 // @param headers - map
 //
@@ -1115,7 +1115,7 @@ func (client *Client) GetCatalogWithContext(ctx context.Context, catalog *string
 
 // Summary:
 //
-// 查看数据湖Catalog
+// Retrieves the details of a catalog.
 //
 // @param headers - map
 //
@@ -1148,7 +1148,7 @@ func (client *Client) GetCatalogByIdWithContext(ctx context.Context, id *string,
 
 // Summary:
 //
-// 获取为 Catalog 配置 BYOK SSE-KMS 所需的 DLF 授权信息(data-access 角色 ARN 与 KMS Key Policy 片段)
+// Retrieves the DLF authorization information required to configure BYOK SSE-KMS for a catalog, including the data-access role ARN and the KMS Key Policy snippet.
 //
 // @param request - GetCatalogKmsGrantsRequest
 //
@@ -1189,7 +1189,7 @@ func (client *Client) GetCatalogKmsGrantsWithContext(ctx context.Context, catalo
 
 // Summary:
 //
-// 查看表
+// Retrieves the storage overview of a data catalog.
 //
 // @param request - GetCatalogSummaryRequest
 //
@@ -1236,7 +1236,7 @@ func (client *Client) GetCatalogSummaryWithContext(ctx context.Context, catalogI
 
 // Summary:
 //
-// 查看表
+// Retrieves the storage overview trend for a catalog.
 //
 // @param request - GetCatalogSummaryTrendRequest
 //
@@ -1287,7 +1287,7 @@ func (client *Client) GetCatalogSummaryTrendWithContext(ctx context.Context, cat
 
 // Summary:
 //
-// 获取数据湖Catalog的临时访问凭证
+// Obtains a temporary access credential (token) for a catalog.
 //
 // @param headers - map
 //
@@ -1320,7 +1320,7 @@ func (client *Client) GetCatalogTokenWithContext(ctx context.Context, catalog *s
 
 // Summary:
 //
-// 查看数据库
+// Retrieves the details of a specific database in a data lake.
 //
 // @param headers - map
 //
@@ -1353,7 +1353,7 @@ func (client *Client) GetDatabaseWithContext(ctx context.Context, catalogId *str
 
 // Summary:
 //
-// 查看表
+// You can view an inventory overview.
 //
 // @param request - GetDatabaseSummaryRequest
 //
@@ -1400,7 +1400,7 @@ func (client *Client) GetDatabaseSummaryWithContext(ctx context.Context, catalog
 
 // Summary:
 //
-// 查看iceberg数据库
+// Retrieves information about an Iceberg namespace.
 //
 // @param headers - map
 //
@@ -1433,7 +1433,7 @@ func (client *Client) GetIcebergNamespaceWithContext(ctx context.Context, catalo
 
 // Summary:
 //
-// 查看表
+// Retrieves the details of a table.
 //
 // @param headers - map
 //
@@ -1466,7 +1466,7 @@ func (client *Client) GetIcebergTableWithContext(ctx context.Context, catalogId 
 
 // Summary:
 //
-// 获取查询
+// Retrieves a query.
 //
 // @param request - GetQueryRequest
 //
@@ -1507,7 +1507,7 @@ func (client *Client) GetQueryWithContext(ctx context.Context, queryId *string, 
 
 // Summary:
 //
-// 获取接收者
+// Retrieves a receiver.
 //
 // @param headers - map
 //
@@ -1540,7 +1540,7 @@ func (client *Client) GetReceiverWithContext(ctx context.Context, receiver *stri
 
 // Summary:
 //
-// 查询 DLF 当前地域开通状态
+// Queries the DLF activation status of in a region.
 //
 // @param headers - map
 //
@@ -1573,7 +1573,7 @@ func (client *Client) GetRegionStatusWithContext(ctx context.Context, headers ma
 
 // Summary:
 //
-// 获取角色
+// Retrieves a role.
 //
 // @param request - GetRoleRequest
 //
@@ -1620,7 +1620,7 @@ func (client *Client) GetRoleWithContext(ctx context.Context, request *GetRoleRe
 
 // Summary:
 //
-// 获取共享
+// Retrieves the details of a share.
 //
 // @param headers - map
 //
@@ -1653,7 +1653,7 @@ func (client *Client) GetShareWithContext(ctx context.Context, share *string, he
 
 // Summary:
 //
-// 查看表
+// Retrieves the details of a table in a data lake.
 //
 // @param headers - map
 //
@@ -1686,7 +1686,7 @@ func (client *Client) GetTableWithContext(ctx context.Context, catalogId *string
 
 // Summary:
 //
-// 查看表Compaction详情
+// Retrieves the compaction details of a table.
 //
 // @param headers - map
 //
@@ -1719,7 +1719,7 @@ func (client *Client) GetTableCompactionWithContext(ctx context.Context, catalog
 
 // Summary:
 //
-// 查看表快照
+// Queries a table snapshot.
 //
 // @param headers - map
 //
@@ -1752,7 +1752,7 @@ func (client *Client) GetTableSnapshotWithContext(ctx context.Context, catalogId
 
 // Summary:
 //
-// 查看表
+// Retrieves the storage summary for a table.
 //
 // @param request - GetTableSummaryRequest
 //
@@ -1799,7 +1799,7 @@ func (client *Client) GetTableSummaryWithContext(ctx context.Context, catalogId 
 
 // Summary:
 //
-// 获取数据湖表的临时访问凭证
+// Obtains a temporary access credential for a data lake table.
 //
 // @param request - GetTableTokenRequest
 //
@@ -1846,7 +1846,7 @@ func (client *Client) GetTableTokenWithContext(ctx context.Context, catalogId *s
 
 // Summary:
 //
-// 获取用户
+// Retrieves a user.
 //
 // @param request - GetUserRequest
 //
@@ -1893,7 +1893,7 @@ func (client *Client) GetUserWithContext(ctx context.Context, request *GetUserRe
 
 // Summary:
 //
-// 获取可信 VPC 配置
+// Obtain the VPC configuration.
 //
 // @param headers - map
 //
@@ -1926,7 +1926,7 @@ func (client *Client) GetVpcConfigWithContext(ctx context.Context, headers map[s
 
 // Summary:
 //
-// 批量授予角色权限给用户
+// Grants a role to one or more users.
 //
 // @param request - GrantRoleToUsersRequest
 //
@@ -1977,7 +1977,7 @@ func (client *Client) GrantRoleToUsersWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 查看数据目录列表
+// Lists catalogs.
 //
 // @param request - ListCatalogsRequest
 //
@@ -2032,7 +2032,7 @@ func (client *Client) ListCatalogsWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// 查看数据库列表
+// Lists databases in a data lake with paged query support.
 //
 // @param request - ListDatabaseDetailsRequest
 //
@@ -2091,7 +2091,7 @@ func (client *Client) ListDatabaseDetailsWithContext(ctx context.Context, catalo
 
 // Summary:
 //
-// 查看数据库列表
+// Retrieves databases.
 //
 // @param request - ListDatabasesRequest
 //
@@ -2146,7 +2146,7 @@ func (client *Client) ListDatabasesWithContext(ctx context.Context, catalogId *s
 
 // Summary:
 //
-// 查看函数列表
+// Lists functions.
 //
 // @param request - ListFunctionsRequest
 //
@@ -2201,7 +2201,7 @@ func (client *Client) ListFunctionsWithContext(ctx context.Context, catalogId *s
 
 // Summary:
 //
-// 查看iceberg数据库列表
+// Lists Iceberg namespaces.
 //
 // @param request - ListIcebergNamespaceDetailsRequest
 //
@@ -2256,7 +2256,7 @@ func (client *Client) ListIcebergNamespaceDetailsWithContext(ctx context.Context
 
 // Summary:
 //
-// 查看iceberg表快照列表
+// Lists the snapshots of an Iceberg table.
 //
 // @param request - ListIcebergSnapshotsRequest
 //
@@ -2307,7 +2307,7 @@ func (client *Client) ListIcebergSnapshotsWithContext(ctx context.Context, catal
 
 // Summary:
 //
-// 查看iceberg表详情列表
+// Lists the details of Iceberg tables.
 //
 // @param request - ListIcebergTableDetailsRequest
 //
@@ -2362,7 +2362,7 @@ func (client *Client) ListIcebergTableDetailsWithContext(ctx context.Context, ca
 
 // Summary:
 //
-// 查看表
+// Retrieves storage overview for partitions.
 //
 // @param request - ListPartitionSummariesRequest
 //
@@ -2417,7 +2417,7 @@ func (client *Client) ListPartitionSummariesWithContext(ctx context.Context, cat
 
 // Summary:
 //
-// listPartitions
+// Lists partitions.
 //
 // @param request - ListPartitionsRequest
 //
@@ -2472,7 +2472,7 @@ func (client *Client) ListPartitionsWithContext(ctx context.Context, catalogId *
 
 // Summary:
 //
-// listPartitionsByNames
+// Retrieves a list of partitions by their names.
 //
 // @param request - ListPartitionsByNamesRequest
 //
@@ -2519,7 +2519,7 @@ func (client *Client) ListPartitionsByNamesWithContext(ctx context.Context, cata
 
 // Summary:
 //
-// 获取指定资源或指定Principal的权限信息
+// Retrieves the permission information of a specified resource or a specified principal.
 //
 // @param request - ListPermissionsRequest
 //
@@ -2594,7 +2594,7 @@ func (client *Client) ListPermissionsWithContext(ctx context.Context, catalogId 
 
 // Summary:
 //
-// 获取提供的共享列表
+// Retrieves shares.
 //
 // @param request - ListProvidedSharesRequest
 //
@@ -2645,7 +2645,7 @@ func (client *Client) ListProvidedSharesWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 获取接收的共享列表
+// Retrieves received shares.
 //
 // @param request - ListReceivedSharesRequest
 //
@@ -2696,7 +2696,7 @@ func (client *Client) ListReceivedSharesWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 获取接收者列表
+// Queries a list of receivers.
 //
 // @param request - ListReceiversRequest
 //
@@ -2751,7 +2751,7 @@ func (client *Client) ListReceiversWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// 获取角色用户列表
+// Retrieves the users for a role.
 //
 // @param request - ListRoleUsersRequest
 //
@@ -2806,7 +2806,7 @@ func (client *Client) ListRoleUsersWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// 获取角色列表
+// Retrieves roles.
 //
 // @param request - ListRolesRequest
 //
@@ -2861,7 +2861,7 @@ func (client *Client) ListRolesWithContext(ctx context.Context, request *ListRol
 
 // Summary:
 //
-// 获取共享中的接收者列表
+// Gets the receivers of a share.
 //
 // @param request - ListShareReceiversRequest
 //
@@ -2912,7 +2912,7 @@ func (client *Client) ListShareReceiversWithContext(ctx context.Context, share *
 
 // Summary:
 //
-// 获取共享资源列表
+// Retrieves shared resources.
 //
 // @param request - ListShareResourcesRequest
 //
@@ -2963,7 +2963,7 @@ func (client *Client) ListShareResourcesWithContext(ctx context.Context, share *
 
 // Summary:
 //
-// 查看表快照列表
+// Returns a list of table snapshots.
 //
 // @param request - ListSnapshotsRequest
 //
@@ -3014,7 +3014,7 @@ func (client *Client) ListSnapshotsWithContext(ctx context.Context, catalogId *s
 
 // Summary:
 //
-// 查看表详情列表
+// Queries the details of tables.
 //
 // @param request - ListTableDetailsRequest
 //
@@ -3077,7 +3077,7 @@ func (client *Client) ListTableDetailsWithContext(ctx context.Context, catalogId
 
 // Summary:
 //
-// 查看表详情列表
+// Retrieves a list of tables.
 //
 // @param request - ListTablesRequest
 //
@@ -3132,7 +3132,7 @@ func (client *Client) ListTablesWithContext(ctx context.Context, catalogId *stri
 
 // Summary:
 //
-// 获取用户角色列表
+// Retrieves the roles assigned to a user.
 //
 // @param request - ListUserRolesRequest
 //
@@ -3187,7 +3187,7 @@ func (client *Client) ListUserRolesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// 获取用户列表
+// Retrieves a list of users.
 //
 // @param request - ListUsersRequest
 //
@@ -3246,7 +3246,7 @@ func (client *Client) ListUsersWithContext(ctx context.Context, request *ListUse
 
 // Summary:
 //
-// 查看视图详情列表
+// Lists the details of one or more views.
 //
 // @param request - ListViewDetailsRequest
 //
@@ -3301,7 +3301,7 @@ func (client *Client) ListViewDetailsWithContext(ctx context.Context, catalogId 
 
 // Summary:
 //
-// 查看视图详情列表
+// Returns the names of views.
 //
 // @param request - ListViewsRequest
 //
@@ -3356,7 +3356,7 @@ func (client *Client) ListViewsWithContext(ctx context.Context, catalogId *strin
 
 // Summary:
 //
-// 刷新用户同步
+// Syncs users.
 //
 // @param headers - map
 //
@@ -3389,7 +3389,7 @@ func (client *Client) RefreshUserSyncWithContext(ctx context.Context, headers ma
 
 // Summary:
 //
-// 批量取消授予角色权限给用户
+// Revokes a role from one or more users.
 //
 // @param request - RevokeRoleFromUsersRequest
 //
@@ -3440,7 +3440,7 @@ func (client *Client) RevokeRoleFromUsersWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 回滚表
+// Rolls back a table.
 //
 // @param request - RollbackTableRequest
 //
@@ -3487,7 +3487,7 @@ func (client *Client) RollbackTableWithContext(ctx context.Context, catalogId *s
 
 // Summary:
 //
-// 提交查询
+// Submits a query.
 //
 // @param request - SubmitQueryRequest
 //
@@ -3550,7 +3550,7 @@ func (client *Client) SubmitQueryWithContext(ctx context.Context, request *Submi
 
 // Summary:
 //
-// 订阅当前地域的 DLF
+// Subscribes to DLF in the current region.
 //
 // @param headers - map
 //
@@ -3583,7 +3583,7 @@ func (client *Client) SubscribeWithContext(ctx context.Context, headers map[stri
 
 // Summary:
 //
-// 更新角色
+// Updates a DLF role.
 //
 // @param request - UpdateRoleRequest
 //
@@ -3638,7 +3638,7 @@ func (client *Client) UpdateRoleWithContext(ctx context.Context, request *Update
 
 // Summary:
 //
-// 更新角色用户
+// Updates the users for a role.
 //
 // @param request - UpdateRoleUsersRequest
 //
@@ -3689,7 +3689,7 @@ func (client *Client) UpdateRoleUsersWithContext(ctx context.Context, request *U
 
 // Summary:
 //
-// 校验 Catalog 的 BYOK SSE-KMS 配置:用下发的临时凭证对存储桶做一次 SSE-KMS 写探针并校验
+// Validates the BYOK SSE-KMS configuration of a catalog by performing an SSE-KMS write probe on the bucket using the issued temporary credentials and verifying the result.
 //
 // @param request - VerifyCatalogKmsRequest
 //

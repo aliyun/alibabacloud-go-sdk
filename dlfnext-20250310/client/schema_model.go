@@ -22,11 +22,20 @@ type iSchema interface {
 }
 
 type Schema struct {
-	Comment       *string            `json:"comment,omitempty" xml:"comment,omitempty"`
-	Fields        []*DataField       `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
-	Options       map[string]*string `json:"options,omitempty" xml:"options,omitempty"`
-	PartitionKeys []*string          `json:"partitionKeys,omitempty" xml:"partitionKeys,omitempty" type:"Repeated"`
-	PrimaryKeys   []*string          `json:"primaryKeys,omitempty" xml:"primaryKeys,omitempty" type:"Repeated"`
+	// The comment for the table.
+	//
+	// example:
+	//
+	// description
+	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	// A list of table column definitions.
+	Fields []*DataField `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	// A list of table configuration options.
+	Options map[string]*string `json:"options,omitempty" xml:"options,omitempty"`
+	// A list of partition column names.
+	PartitionKeys []*string `json:"partitionKeys,omitempty" xml:"partitionKeys,omitempty" type:"Repeated"`
+	// A list of primary key column names.
+	PrimaryKeys []*string `json:"primaryKeys,omitempty" xml:"primaryKeys,omitempty" type:"Repeated"`
 }
 
 func (s Schema) String() string {

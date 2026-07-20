@@ -16,8 +16,14 @@ type iListPermissionsResponseBody interface {
 }
 
 type ListPermissionsResponseBody struct {
-	NextPageToken *string       `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
-	Permissions   []*Permission `json:"permissions,omitempty" xml:"permissions,omitempty" type:"Repeated"`
+	// The pagination token used to retrieve the next page of data. If null is returned, the current page is the last page of results.
+	//
+	// example:
+	//
+	// E8ABEB1C3DB893D16576269017992F57
+	NextPageToken *string `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
+	// The permission list.
+	Permissions []*Permission `json:"permissions,omitempty" xml:"permissions,omitempty" type:"Repeated"`
 }
 
 func (s ListPermissionsResponseBody) String() string {

@@ -18,9 +18,24 @@ type iListCatalogsRequest interface {
 }
 
 type ListCatalogsRequest struct {
+	// The pattern of the catalog name.
+	//
+	// example:
+	//
+	// mi
 	CatalogNamePattern *string `json:"catalogNamePattern,omitempty" xml:"catalogNamePattern,omitempty"`
-	MaxResults         *int32  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	PageToken          *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
+	// The maximum number of records to return in a single request.
+	//
+	// example:
+	//
+	// 1000
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The token to retrieve the next page of results. If the response does not include this token, pass an empty string ("").
+	//
+	// example:
+	//
+	// ""
+	PageToken *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
 }
 
 func (s ListCatalogsRequest) String() string {

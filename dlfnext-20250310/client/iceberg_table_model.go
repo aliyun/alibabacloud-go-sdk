@@ -32,16 +32,62 @@ type iIcebergTable interface {
 }
 
 type IcebergTable struct {
-	CreatedAt            *int64                `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	CreatedBy            *string               `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// The table creation time.
+	//
+	// example:
+	//
+	// 1747120676378
+	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The table creator.
+	//
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// The metadata of the table.
 	IcebergTableMetadata *IcebergTableMetadata `json:"icebergTableMetadata,omitempty" xml:"icebergTableMetadata,omitempty"`
-	Id                   *string               `json:"id,omitempty" xml:"id,omitempty"`
-	Name                 *string               `json:"name,omitempty" xml:"name,omitempty"`
-	Owner                *string               `json:"owner,omitempty" xml:"owner,omitempty"`
-	Path                 *string               `json:"path,omitempty" xml:"path,omitempty"`
-	UpdatedAt            *int64                `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	UpdatedBy            *string               `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
-	Version              *int64                `json:"version,omitempty" xml:"version,omitempty"`
+	// The table UUID.
+	//
+	// example:
+	//
+	// tbl-xxxx
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The table name.
+	//
+	// example:
+	//
+	// table1
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The owner of the table.
+	//
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	// The table URI.
+	//
+	// example:
+	//
+	// oss://clg-iceberg-xxxx/ns-xxxx/table-xxxx
+	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// The time when the table was last updated.
+	//
+	// example:
+	//
+	// 1744970111419
+	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// The user who last updated the table.
+	//
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	UpdatedBy *string `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
+	// The version of the table.
+	//
+	// example:
+	//
+	// 0
+	Version *int64 `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s IcebergTable) String() string {

@@ -24,17 +24,17 @@ type iCatalogSummaryTrend interface {
 }
 
 type CatalogSummaryTrend struct {
-	// API visit count trends
+	// The trend of total metadata requests.
 	ApiVisitCount []*DateSummary `json:"apiVisitCount,omitempty" xml:"apiVisitCount,omitempty" type:"Repeated"`
-	// file access count trends
+	// The trend of file access count.
 	FileAccessCount []*DateSummary `json:"fileAccessCount,omitempty" xml:"fileAccessCount,omitempty" type:"Repeated"`
-	// Table count trends
+	// The data access traffic trend.
 	Throughput []*DateSummary `json:"throughput,omitempty" xml:"throughput,omitempty" type:"Repeated"`
-	// Historical total file count
+	// The trend of total file count.
 	TotalFileCount []*DateSummary `json:"totalFileCount,omitempty" xml:"totalFileCount,omitempty" type:"Repeated"`
-	// Database count trends
+	// The trend of total storage capacity.
 	TotalFileSizeInBytes []*DateSummary `json:"totalFileSizeInBytes,omitempty" xml:"totalFileSizeInBytes,omitempty" type:"Repeated"`
-	// Latest snapshot file count
+	// The trend of total metadata object count.
 	TotalMetaCount []*DateSummary `json:"totalMetaCount,omitempty" xml:"totalMetaCount,omitempty" type:"Repeated"`
 }
 

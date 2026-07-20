@@ -18,9 +18,24 @@ type iMove interface {
 }
 
 type Move struct {
-	FieldName          *string `json:"fieldName,omitempty" xml:"fieldName,omitempty"`
+	// The name of the column.
+	//
+	// example:
+	//
+	// other_col_test
+	FieldName *string `json:"fieldName,omitempty" xml:"fieldName,omitempty"`
+	// The name of the reference column.
+	//
+	// example:
+	//
+	// col_test
 	ReferenceFieldName *string `json:"referenceFieldName,omitempty" xml:"referenceFieldName,omitempty"`
-	Type               *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The move type.
+	//
+	// example:
+	//
+	// FIRST
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s Move) String() string {

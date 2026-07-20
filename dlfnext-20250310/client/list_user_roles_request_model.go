@@ -18,8 +18,23 @@ type iListUserRolesRequest interface {
 }
 
 type ListUserRolesRequest struct {
-	MaxResults    *int32  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	PageToken     *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token used to retrieve the next page of data. If the response does not provide this token, pass an empty string ("").
+	//
+	// example:
+	//
+	// ""
+	PageToken *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
+	// The resource descriptor for the user.
+	//
+	// example:
+	//
+	// acs:ram::[accountId]:user/user_name
 	UserPrincipal *string `json:"userPrincipal,omitempty" xml:"userPrincipal,omitempty"`
 }
 

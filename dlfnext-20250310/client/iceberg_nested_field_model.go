@@ -22,11 +22,36 @@ type iIcebergNestedField interface {
 }
 
 type IcebergNestedField struct {
-	Doc      *string `json:"doc,omitempty" xml:"doc,omitempty"`
-	Id       *int64  `json:"id,omitempty" xml:"id,omitempty"`
-	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
-	Optional *bool   `json:"optional,omitempty" xml:"optional,omitempty"`
-	Type     *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The comment for the field.
+	//
+	// example:
+	//
+	// desc1
+	Doc *string `json:"doc,omitempty" xml:"doc,omitempty"`
+	// The field ID.
+	//
+	// example:
+	//
+	// 1
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The field name.
+	//
+	// example:
+	//
+	// col1
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Indicates whether the field is optional.
+	//
+	// example:
+	//
+	// true
+	Optional *bool `json:"optional,omitempty" xml:"optional,omitempty"`
+	// The field type.
+	//
+	// example:
+	//
+	// string
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s IcebergNestedField) String() string {

@@ -16,8 +16,14 @@ type iListShareReceiversResponseBody interface {
 }
 
 type ListShareReceiversResponseBody struct {
-	NextPageToken *string     `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
-	Receivers     []*Receiver `json:"receivers,omitempty" xml:"receivers,omitempty" type:"Repeated"`
+	// The token to retrieve the next page of results. If this parameter is null, it indicates that this is the last page of results.
+	//
+	// example:
+	//
+	// “”
+	NextPageToken *string `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
+	// The receivers.
+	Receivers []*Receiver `json:"receivers,omitempty" xml:"receivers,omitempty" type:"Repeated"`
 }
 
 func (s ListShareReceiversResponseBody) String() string {

@@ -30,14 +30,59 @@ type iUser interface {
 }
 
 type User struct {
-	CreatedAt     *int64  `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	CreatedBy     *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	DisplayName   *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	Type          *string `json:"type,omitempty" xml:"type,omitempty"`
-	UpdatedAt     *int64  `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	UpdatedBy     *string `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
-	UserId        *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	UserName      *string `json:"userName,omitempty" xml:"userName,omitempty"`
+	// The creation time. The value is a UNIX timestamp in milliseconds.
+	//
+	// example:
+	//
+	// 1744970111419
+	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The name of the creator.
+	//
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// The display name of the user.
+	//
+	// example:
+	//
+	// user_display_name
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The type of the user.
+	//
+	// example:
+	//
+	// RAM_USER
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The time of the last update. The value is a UNIX timestamp in milliseconds.
+	//
+	// example:
+	//
+	// 1744970111419
+	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// The name of the updater.
+	//
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	UpdatedBy *string `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
+	// The ID of the user.
+	//
+	// example:
+	//
+	// 222748924538****
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// The username.
+	//
+	// example:
+	//
+	// user_name
+	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
+	// The resource descriptor of the user.
+	//
+	// example:
+	//
+	// acs:ram::[accountId]:user/user_name
 	UserPrincipal *string `json:"userPrincipal,omitempty" xml:"userPrincipal,omitempty"`
 }
 

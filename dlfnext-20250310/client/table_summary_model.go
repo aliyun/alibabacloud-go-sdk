@@ -64,39 +64,123 @@ type iTableSummary interface {
 }
 
 type TableSummary struct {
-	// Latest snapshot storage size
+	// The timestamp, in milliseconds, indicating when the table was created.
+	//
+	// example:
+	//
+	// 1744970111419
 	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// Database name
-	DatabaseName           *string `json:"databaseName,omitempty" xml:"databaseName,omitempty"`
-	GeneratedDate          *string `json:"generatedDate,omitempty" xml:"generatedDate,omitempty"`
-	LastAccessTime         *int64  `json:"lastAccessTime,omitempty" xml:"lastAccessTime,omitempty"`
-	LastRequester          *string `json:"lastRequester,omitempty" xml:"lastRequester,omitempty"`
-	ObjTypeArchiveSize     *int64  `json:"objTypeArchiveSize,omitempty" xml:"objTypeArchiveSize,omitempty"`
-	ObjTypeColdArchiveSize *int64  `json:"objTypeColdArchiveSize,omitempty" xml:"objTypeColdArchiveSize,omitempty"`
-	ObjTypeIaSize          *int64  `json:"objTypeIaSize,omitempty" xml:"objTypeIaSize,omitempty"`
-	ObjTypeStandardSize    *int64  `json:"objTypeStandardSize,omitempty" xml:"objTypeStandardSize,omitempty"`
-	// Creation timestamp in milliseconds
-	PartitionCount         *int64             `json:"partitionCount,omitempty" xml:"partitionCount,omitempty"`
-	Path                   *string            `json:"path,omitempty" xml:"path,omitempty"`
+	// The name of the database.
+	//
+	// example:
+	//
+	// default
+	DatabaseName *string `json:"databaseName,omitempty" xml:"databaseName,omitempty"`
+	// The generation date of the storage summary.
+	//
+	// example:
+	//
+	// 2025-06-01
+	GeneratedDate *string `json:"generatedDate,omitempty" xml:"generatedDate,omitempty"`
+	// The timestamp, in milliseconds, indicating when the table data was last accessed.
+	//
+	// example:
+	//
+	// 1744970111419
+	LastAccessTime *int64  `json:"lastAccessTime,omitempty" xml:"lastAccessTime,omitempty"`
+	LastRequester  *string `json:"lastRequester,omitempty" xml:"lastRequester,omitempty"`
+	// The total size of data files in the Archive storage class, in bytes.
+	//
+	// example:
+	//
+	// 10240
+	ObjTypeArchiveSize *int64 `json:"objTypeArchiveSize,omitempty" xml:"objTypeArchiveSize,omitempty"`
+	// The total size of data files in the Cold Archive storage class, in bytes.
+	//
+	// example:
+	//
+	// 10240
+	ObjTypeColdArchiveSize *int64 `json:"objTypeColdArchiveSize,omitempty" xml:"objTypeColdArchiveSize,omitempty"`
+	// The total size of data files in the Infrequent Access storage class, in bytes.
+	//
+	// example:
+	//
+	// 10240
+	ObjTypeIaSize *int64 `json:"objTypeIaSize,omitempty" xml:"objTypeIaSize,omitempty"`
+	// The total size of data files in the Standard storage class, in bytes.
+	//
+	// example:
+	//
+	// 10240
+	ObjTypeStandardSize *int64 `json:"objTypeStandardSize,omitempty" xml:"objTypeStandardSize,omitempty"`
+	// The total number of partitions in the table.
+	//
+	// example:
+	//
+	// 10
+	PartitionCount *int64 `json:"partitionCount,omitempty" xml:"partitionCount,omitempty"`
+	// The storage location of the table.
+	//
+	// example:
+	//
+	// oss://clg-xxxx/db-xxxx/tbl-xxxx
+	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// The storage action parameters.
 	StorageActionParams    map[string]*string `json:"storageActionParams,omitempty" xml:"storageActionParams,omitempty"`
 	StorageActionTimestamp *int64             `json:"storageActionTimestamp,omitempty" xml:"storageActionTimestamp,omitempty"`
-	StorageClass           *string            `json:"storageClass,omitempty" xml:"storageClass,omitempty"`
-	// Table name
-	TableName             *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
-	TopRequester          *string `json:"topRequester,omitempty" xml:"topRequester,omitempty"`
-	TotalFileAccessNum    *int64  `json:"totalFileAccessNum,omitempty" xml:"totalFileAccessNum,omitempty"`
-	TotalFileAccessNum30d *int64  `json:"totalFileAccessNum30d,omitempty" xml:"totalFileAccessNum30d,omitempty"`
-	TotalFileAccessNum7d  *int64  `json:"totalFileAccessNum7d,omitempty" xml:"totalFileAccessNum7d,omitempty"`
-	// 30-day access count
-	TotalFileCount       *int64 `json:"totalFileCount,omitempty" xml:"totalFileCount,omitempty"`
+	// The storage class.
+	StorageClass *string `json:"storageClass,omitempty" xml:"storageClass,omitempty"`
+	// The name of the table.
+	//
+	// example:
+	//
+	// table1
+	TableName    *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
+	TopRequester *string `json:"topRequester,omitempty" xml:"topRequester,omitempty"`
+	// Total file access count.
+	TotalFileAccessNum *int64 `json:"totalFileAccessNum,omitempty" xml:"totalFileAccessNum,omitempty"`
+	// Total file access count over the last 30 days.
+	TotalFileAccessNum30d *int64 `json:"totalFileAccessNum30d,omitempty" xml:"totalFileAccessNum30d,omitempty"`
+	// Total file access count over the last 7 days.
+	TotalFileAccessNum7d *int64 `json:"totalFileAccessNum7d,omitempty" xml:"totalFileAccessNum7d,omitempty"`
+	// The total number of files in the table.
+	//
+	// example:
+	//
+	// 100
+	TotalFileCount *int64 `json:"totalFileCount,omitempty" xml:"totalFileCount,omitempty"`
+	// The total storage capacity of the table, in bytes.
+	//
+	// example:
+	//
+	// 1024
 	TotalFileSizeInBytes *int64 `json:"totalFileSizeInBytes,omitempty" xml:"totalFileSizeInBytes,omitempty"`
-	TotalMetaFileCount   *int64 `json:"totalMetaFileCount,omitempty" xml:"totalMetaFileCount,omitempty"`
+	// The total number of metadata files.
+	//
+	// example:
+	//
+	// 10
+	TotalMetaFileCount *int64 `json:"totalMetaFileCount,omitempty" xml:"totalMetaFileCount,omitempty"`
+	// The total size of metadata files, in bytes.
+	//
+	// example:
+	//
+	// 10240
 	TotalMetaSizeInBytes *int64 `json:"totalMetaSizeInBytes,omitempty" xml:"totalMetaSizeInBytes,omitempty"`
-	// Creation timestamp in milliseconds
+	// The number of Standard or Infrequent Access partitions unaccessed in the last 180 days.
+	//
+	// example:
+	//
+	// 0
 	UnaccessedStdIaPartitionCount180d *int64 `json:"unaccessedStdIaPartitionCount180d,omitempty" xml:"unaccessedStdIaPartitionCount180d,omitempty"`
-	// Creation timestamp in milliseconds
+	// The number of Standard partitions unaccessed in the last 30 days.
+	//
+	// example:
+	//
+	// 1
 	UnaccessedStdPartitionCount30d *int64 `json:"unaccessedStdPartitionCount30d,omitempty" xml:"unaccessedStdPartitionCount30d,omitempty"`
-	UpdatedAt                      *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// The update time.
+	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
 }
 
 func (s TableSummary) String() string {

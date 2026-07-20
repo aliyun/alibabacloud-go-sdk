@@ -16,8 +16,14 @@ type iListReceivedSharesResponseBody interface {
 }
 
 type ListReceivedSharesResponseBody struct {
-	NextPageToken *string          `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
-	Shares        []*ReceivedShare `json:"shares,omitempty" xml:"shares,omitempty" type:"Repeated"`
+	// The token to retrieve the next page of results. If this parameter is null, all results have been returned.
+	//
+	// example:
+	//
+	// ""
+	NextPageToken *string `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
+	// The received shares.
+	Shares []*ReceivedShare `json:"shares,omitempty" xml:"shares,omitempty" type:"Repeated"`
 }
 
 func (s ListReceivedSharesResponseBody) String() string {

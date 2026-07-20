@@ -18,8 +18,11 @@ type iAlterCatalogResponseBody interface {
 }
 
 type AlterCatalogResponseBody struct {
+	// The unchanged items.
 	Missing []*string `json:"missing,omitempty" xml:"missing,omitempty" type:"Repeated"`
+	// The deleted items.
 	Removed []*string `json:"removed,omitempty" xml:"removed,omitempty" type:"Repeated"`
+	// The updated items.
 	Updated []*string `json:"updated,omitempty" xml:"updated,omitempty" type:"Repeated"`
 }
 

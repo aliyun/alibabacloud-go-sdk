@@ -14,6 +14,7 @@ type iBatchRevokePermissionsRequest interface {
 }
 
 type BatchRevokePermissionsRequest struct {
+	// The list of permissions to be revoked.
 	Permissions []*Permission `json:"permissions,omitempty" xml:"permissions,omitempty" type:"Repeated"`
 }
 

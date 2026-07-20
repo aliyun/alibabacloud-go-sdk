@@ -16,8 +16,14 @@ type iListDatabasesResponseBody interface {
 }
 
 type ListDatabasesResponseBody struct {
-	Databases     []*string `json:"databases,omitempty" xml:"databases,omitempty" type:"Repeated"`
-	NextPageToken *string   `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
+	// The databases.
+	Databases []*string `json:"databases,omitempty" xml:"databases,omitempty" type:"Repeated"`
+	// The token for the next page of results. A null value indicates that this is the last page.
+	//
+	// example:
+	//
+	// E8ABEB1C3DB893D16576269017992F57
+	NextPageToken *string `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
 }
 
 func (s ListDatabasesResponseBody) String() string {

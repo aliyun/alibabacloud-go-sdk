@@ -18,8 +18,23 @@ type iListViewsRequest interface {
 }
 
 type ListViewsRequest struct {
-	MaxResults      *int32  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	PageToken       *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
+	// The maximum number of records to return.
+	//
+	// example:
+	//
+	// 1000
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The token to retrieve the next page of results. If the response does not include this token, pass an empty string ("").
+	//
+	// example:
+	//
+	// ""
+	PageToken *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
+	// The pattern used to filter view names.
+	//
+	// example:
+	//
+	// view%
 	ViewNamePattern *string `json:"viewNamePattern,omitempty" xml:"viewNamePattern,omitempty"`
 }
 

@@ -34,17 +34,58 @@ type iDatabase interface {
 }
 
 type Database struct {
-	CreatedAt  *int64             `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	CreatedBy  *string            `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	Id         *string            `json:"id,omitempty" xml:"id,omitempty"`
-	Location   *string            `json:"location,omitempty" xml:"location,omitempty"`
-	Name       *string            `json:"name,omitempty" xml:"name,omitempty"`
-	Options    map[string]*string `json:"options,omitempty" xml:"options,omitempty"`
-	Owner      *string            `json:"owner,omitempty" xml:"owner,omitempty"`
-	Status     *string            `json:"status,omitempty" xml:"status,omitempty"`
-	TableCount *int64             `json:"tableCount,omitempty" xml:"tableCount,omitempty"`
-	UpdatedAt  *int64             `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	UpdatedBy  *string            `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 1744970111419
+	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The creator.
+	//
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// The UUID of the database.
+	//
+	// example:
+	//
+	// 1
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The storage path of the database.
+	//
+	// example:
+	//
+	// oss://clg-paimon-xxx/db-xxx
+	Location *string `json:"location,omitempty" xml:"location,omitempty"`
+	// The name of the database.
+	//
+	// example:
+	//
+	// test_database
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The extension options.
+	Options map[string]*string `json:"options,omitempty" xml:"options,omitempty"`
+	// The owner of the database.
+	//
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	Owner      *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	Status     *string `json:"status,omitempty" xml:"status,omitempty"`
+	TableCount *int64  `json:"tableCount,omitempty" xml:"tableCount,omitempty"`
+	// The update time.
+	//
+	// example:
+	//
+	// 1744970111419
+	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// The updater.
+	//
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	UpdatedBy *string `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
 }
 
 func (s Database) String() string {

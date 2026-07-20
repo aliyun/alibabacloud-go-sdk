@@ -14,6 +14,7 @@ type iAlterTableRequest interface {
 }
 
 type AlterTableRequest struct {
+	// The changes made to the table.
 	Changes []*FullSchemaChange `json:"changes,omitempty" xml:"changes,omitempty" type:"Repeated"`
 }
 

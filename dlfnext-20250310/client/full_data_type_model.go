@@ -22,11 +22,20 @@ type iFullDataType interface {
 }
 
 type FullDataType struct {
+	// The data type.
 	Element *FullDataType `json:"element,omitempty" xml:"element,omitempty"`
-	Fields  []*DataField  `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
-	Key     *FullDataType `json:"key,omitempty" xml:"key,omitempty"`
-	Type    *string       `json:"type,omitempty" xml:"type,omitempty"`
-	Value   *FullDataType `json:"value,omitempty" xml:"value,omitempty"`
+	// The list of field definitions. This parameter is required when `type` is `ROW`.
+	Fields []*DataField `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	// The data type of the key. This parameter is required when `type` is `MAP`.
+	Key *FullDataType `json:"key,omitempty" xml:"key,omitempty"`
+	// The data type. This parameter is required when `type` is `ARRAY` or `MULTISET`.
+	//
+	// example:
+	//
+	// STRING
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The data type of the value. This parameter is required when `type` is `MAP`.
+	Value *FullDataType `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s FullDataType) String() string {

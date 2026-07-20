@@ -18,9 +18,26 @@ type iBatchRevokePermissionsResponseBody interface {
 }
 
 type BatchRevokePermissionsResponseBody struct {
-	ErrorMessage       *string              `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// - If success is false, a business error message is returned.
+	//
+	// - If success is true, an empty value is returned.
+	//
+	// example:
+	//
+	// 空
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The results of permissions that failed to be revoked in batches.
 	FailurePermissions []*FailurePermission `json:"failurePermissions,omitempty" xml:"failurePermissions,omitempty" type:"Repeated"`
-	Success            *bool                `json:"success,omitempty" xml:"success,omitempty"`
+	// Indicates whether the API call is successful. Valid values:
+	//
+	// - true: The API call is successful.
+	//
+	// - false: The API call failed.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s BatchRevokePermissionsResponseBody) String() string {

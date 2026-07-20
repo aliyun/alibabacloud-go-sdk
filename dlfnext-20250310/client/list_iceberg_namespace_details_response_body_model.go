@@ -16,8 +16,14 @@ type iListIcebergNamespaceDetailsResponseBody interface {
 }
 
 type ListIcebergNamespaceDetailsResponseBody struct {
+	// The namespaces.
 	NamespaceDetails []*Namespace `json:"namespaceDetails,omitempty" xml:"namespaceDetails,omitempty" type:"Repeated"`
-	NextPageToken    *string      `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
+	// The token for the next page of results. If this parameter is not returned, all results have been retrieved.
+	//
+	// example:
+	//
+	// ""
+	NextPageToken *string `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
 }
 
 func (s ListIcebergNamespaceDetailsResponseBody) String() string {

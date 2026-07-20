@@ -24,20 +24,52 @@ type iTableCompaction interface {
 }
 
 type TableCompaction struct {
-	CatalogId *string  `json:"catalogId,omitempty" xml:"catalogId,omitempty"`
-	CuUsage   *float64 `json:"cuUsage,omitempty" xml:"cuUsage,omitempty"`
+	// The catalog ID.
+	//
+	// example:
+	//
+	// clg-paimon-xxx
+	CatalogId *string `json:"catalogId,omitempty" xml:"catalogId,omitempty"`
+	// The total CU usage.
+	//
+	// example:
+	//
+	// 1
+	CuUsage *float64 `json:"cuUsage,omitempty" xml:"cuUsage,omitempty"`
 	// Deprecated
+	//
+	// The time when the last file was compacted.
 	//
 	// if can be null:
 	// true
-	LastCompactedFileTime   *int64 `json:"lastCompactedFileTime,omitempty" xml:"lastCompactedFileTime,omitempty"`
+	//
+	// example:
+	//
+	// 1759111660075
+	LastCompactedFileTime *int64 `json:"lastCompactedFileTime,omitempty" xml:"lastCompactedFileTime,omitempty"`
+	// The earliest creation time of uncompacted files.
+	//
+	// example:
+	//
+	// 1760321763633
 	LatencyFileEarliestTime *int64 `json:"latencyFileEarliestTime,omitempty" xml:"latencyFileEarliestTime,omitempty"`
 	// Deprecated
 	//
+	// The number of Level 0 files.
+	//
 	// if can be null:
 	// true
+	//
+	// example:
+	//
+	// 1
 	MaxLevel0FileCount *string `json:"maxLevel0FileCount,omitempty" xml:"maxLevel0FileCount,omitempty"`
-	TableId            *string `json:"tableId,omitempty" xml:"tableId,omitempty"`
+	// The table ID.
+	//
+	// example:
+	//
+	// tbl-xxx
+	TableId *string `json:"tableId,omitempty" xml:"tableId,omitempty"`
 }
 
 func (s TableCompaction) String() string {

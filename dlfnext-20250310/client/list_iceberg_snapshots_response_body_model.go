@@ -16,8 +16,14 @@ type iListIcebergSnapshotsResponseBody interface {
 }
 
 type ListIcebergSnapshotsResponseBody struct {
-	NextPageToken *string            `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
-	Snapshots     []*IcebergSnapshot `json:"snapshots,omitempty" xml:"snapshots,omitempty" type:"Repeated"`
+	// The pagination token for the next page of results. If this parameter is null, all results have been returned.
+	//
+	// example:
+	//
+	// E8ABEB1C3DB893D16576269017992F57
+	NextPageToken *string `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
+	// The list of snapshots.
+	Snapshots []*IcebergSnapshot `json:"snapshots,omitempty" xml:"snapshots,omitempty" type:"Repeated"`
 }
 
 func (s ListIcebergSnapshotsResponseBody) String() string {

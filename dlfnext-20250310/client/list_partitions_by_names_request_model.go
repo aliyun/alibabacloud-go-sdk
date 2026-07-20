@@ -14,6 +14,7 @@ type iListPartitionsByNamesRequest interface {
 }
 
 type ListPartitionsByNamesRequest struct {
+	// The list of partition specifications.
 	Specs []map[string]*string `json:"specs,omitempty" xml:"specs,omitempty" type:"Repeated"`
 }
 

@@ -14,6 +14,11 @@ type iSubmitQueryResponseBody interface {
 }
 
 type SubmitQueryResponseBody struct {
+	// The query ID, which is used for subsequent polling of results.
+	//
+	// example:
+	//
+	// d7b21d1ec4f441e79d5ba917c3283200
 	QueryId *string `json:"queryId,omitempty" xml:"queryId,omitempty"`
 }
 

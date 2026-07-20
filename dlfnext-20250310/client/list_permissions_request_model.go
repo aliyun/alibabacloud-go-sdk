@@ -28,15 +28,56 @@ type iListPermissionsRequest interface {
 }
 
 type ListPermissionsRequest struct {
-	Database   *string `json:"database,omitempty" xml:"database,omitempty"`
-	Function   *string `json:"function,omitempty" xml:"function,omitempty"`
-	MaxResults *int32  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	PageToken  *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
-	Principal  *string `json:"principal,omitempty" xml:"principal,omitempty"`
+	// The database name.
+	//
+	// example:
+	//
+	// database_name
+	Database *string `json:"database,omitempty" xml:"database,omitempty"`
+	// The function name.
+	//
+	// example:
+	//
+	// function_name
+	Function *string `json:"function,omitempty" xml:"function,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 1000
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token used to retrieve the next page of data. If the response does not include this token, pass an empty string ("") or an empty character (\\"\\").
+	//
+	// example:
+	//
+	// ""
+	PageToken *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
+	// The user resource descriptor.
+	//
+	// example:
+	//
+	// acs:ram::[accountId]:user/user_name
+	Principal *string `json:"principal,omitempty" xml:"principal,omitempty"`
+	// The permission resource type.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// CATALOG
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	Table        *string `json:"table,omitempty" xml:"table,omitempty"`
-	View         *string `json:"view,omitempty" xml:"view,omitempty"`
+	// The data table name.
+	//
+	// example:
+	//
+	// table_name
+	Table *string `json:"table,omitempty" xml:"table,omitempty"`
+	// The view name.
+	//
+	// example:
+	//
+	// view_name
+	View *string `json:"view,omitempty" xml:"view,omitempty"`
 }
 
 func (s ListPermissionsRequest) String() string {

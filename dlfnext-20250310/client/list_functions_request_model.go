@@ -18,9 +18,24 @@ type iListFunctionsRequest interface {
 }
 
 type ListFunctionsRequest struct {
+	// A pattern to filter function names.
+	//
+	// example:
+	//
+	// function%
 	FunctionNamePattern *string `json:"functionNamePattern,omitempty" xml:"functionNamePattern,omitempty"`
-	MaxResults          *int32  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	PageToken           *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
+	// The maximum number of records to return in the response.
+	//
+	// example:
+	//
+	// 1000
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// A pagination token. Use this token to retrieve the next page of results. Pass an empty string ("") if this parameter is not returned in the response.
+	//
+	// example:
+	//
+	// ""
+	PageToken *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
 }
 
 func (s ListFunctionsRequest) String() string {

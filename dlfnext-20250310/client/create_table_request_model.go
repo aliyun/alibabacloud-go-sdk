@@ -16,8 +16,10 @@ type iCreateTableRequest interface {
 }
 
 type CreateTableRequest struct {
+	// The table identifier.
 	Identifier *Identifier `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	Schema     *Schema     `json:"schema,omitempty" xml:"schema,omitempty"`
+	// The table schema.
+	Schema *Schema `json:"schema,omitempty" xml:"schema,omitempty"`
 }
 
 func (s CreateTableRequest) String() string {

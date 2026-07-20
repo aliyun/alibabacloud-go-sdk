@@ -16,8 +16,14 @@ type iListPartitionsResponseBody interface {
 }
 
 type ListPartitionsResponseBody struct {
-	NextPageToken *string      `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
-	Partitions    []*Partition `json:"partitions,omitempty" xml:"partitions,omitempty" type:"Repeated"`
+	// The pagination token that is used to retrieve the next page of results.
+	//
+	// example:
+	//
+	// E8ABEB1C3DB893D16576269017992F57
+	NextPageToken *string `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
+	// The partitions.
+	Partitions []*Partition `json:"partitions,omitempty" xml:"partitions,omitempty" type:"Repeated"`
 }
 
 func (s ListPartitionsResponseBody) String() string {

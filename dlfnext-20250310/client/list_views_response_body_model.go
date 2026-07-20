@@ -16,8 +16,14 @@ type iListViewsResponseBody interface {
 }
 
 type ListViewsResponseBody struct {
-	NextPageToken *string   `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
-	Views         []*string `json:"views,omitempty" xml:"views,omitempty" type:"Repeated"`
+	// The token to retrieve the next page of results. A null value indicates that this is the last page.
+	//
+	// example:
+	//
+	// E8ABEB1C3DB893D16576269017992F57
+	NextPageToken *string `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
+	// A list of view names.
+	Views []*string `json:"views,omitempty" xml:"views,omitempty" type:"Repeated"`
 }
 
 func (s ListViewsResponseBody) String() string {

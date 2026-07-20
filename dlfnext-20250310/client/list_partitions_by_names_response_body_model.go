@@ -14,6 +14,7 @@ type iListPartitionsByNamesResponseBody interface {
 }
 
 type ListPartitionsByNamesResponseBody struct {
+	// The partitions.
 	Partitions []*Partition `json:"partitions,omitempty" xml:"partitions,omitempty" type:"Repeated"`
 }
 

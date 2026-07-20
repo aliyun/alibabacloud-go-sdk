@@ -22,11 +22,36 @@ type iSubmitQueryRequest interface {
 }
 
 type SubmitQueryRequest struct {
-	DefaultCatalog  *string `json:"defaultCatalog,omitempty" xml:"defaultCatalog,omitempty"`
+	// The default catalog.
+	//
+	// example:
+	//
+	// test_catalog
+	DefaultCatalog *string `json:"defaultCatalog,omitempty" xml:"defaultCatalog,omitempty"`
+	// The default database.
+	//
+	// example:
+	//
+	// test_db
 	DefaultDatabase *string `json:"defaultDatabase,omitempty" xml:"defaultDatabase,omitempty"`
-	Limit           *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
-	Sql             *string `json:"sql,omitempty" xml:"sql,omitempty"`
-	Tier            *string `json:"tier,omitempty" xml:"tier,omitempty"`
+	// The limit on the number of returned results.
+	//
+	// example:
+	//
+	// 1000
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
+	// The SQL text. Multiple statements separated by semicolons are supported and executed sequentially within the same session.
+	//
+	// example:
+	//
+	// select 	- from table_name;
+	Sql *string `json:"sql,omitempty" xml:"sql,omitempty"`
+	// The execution specifications. Default value: standard.
+	//
+	// example:
+	//
+	// standard
+	Tier *string `json:"tier,omitempty" xml:"tier,omitempty"`
 }
 
 func (s SubmitQueryRequest) String() string {

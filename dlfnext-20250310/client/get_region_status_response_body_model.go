@@ -16,8 +16,18 @@ type iGetRegionStatusResponseBody interface {
 }
 
 type GetRegionStatusResponseBody struct {
-	ServiceRoleExists *bool   `json:"serviceRoleExists,omitempty" xml:"serviceRoleExists,omitempty"`
-	Status            *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Indicates whether DLF\\"s service-linked role has been created.
+	//
+	// example:
+	//
+	// true
+	ServiceRoleExists *bool `json:"serviceRoleExists,omitempty" xml:"serviceRoleExists,omitempty"`
+	// The status.
+	//
+	// example:
+	//
+	// READY
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s GetRegionStatusResponseBody) String() string {

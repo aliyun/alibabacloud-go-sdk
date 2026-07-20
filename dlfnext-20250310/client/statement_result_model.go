@@ -30,15 +30,56 @@ type iStatementResult interface {
 }
 
 type StatementResult struct {
-	DownloadUrl   *string                  `json:"downloadUrl,omitempty" xml:"downloadUrl,omitempty"`
-	Error         *string                  `json:"error,omitempty" xml:"error,omitempty"`
-	ErrorCode     *string                  `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	ExecutionTime *int64                   `json:"executionTime,omitempty" xml:"executionTime,omitempty"`
-	Index         *int32                   `json:"index,omitempty" xml:"index,omitempty"`
-	RowCount      *int32                   `json:"rowCount,omitempty" xml:"rowCount,omitempty"`
-	Schema        []*StatementResultSchema `json:"schema,omitempty" xml:"schema,omitempty" type:"Repeated"`
-	Sql           *string                  `json:"sql,omitempty" xml:"sql,omitempty"`
-	Status        *string                  `json:"status,omitempty" xml:"status,omitempty"`
+	// The presigned URL of the Arrow IPC file. This parameter is returned when a result set exists. The URL is valid for 1 hour and contains full data. The value is null for an empty result set (rowCount == 0).
+	//
+	// example:
+	//
+	// https://xxx.oss-cn-hangzhou.aliyuncs.com/xxxx
+	DownloadUrl *string `json:"downloadUrl,omitempty" xml:"downloadUrl,omitempty"`
+	// The error message. This parameter is returned only when the status is FAILED.
+	//
+	// example:
+	//
+	// SQL_ERROR
+	Error *string `json:"error,omitempty" xml:"error,omitempty"`
+	// The error code. This parameter is returned only when the status is FAILED.
+	//
+	// example:
+	//
+	// This feature is not implemented: xxx
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// The execution duration of the statement, in milliseconds.
+	//
+	// example:
+	//
+	// 100
+	ExecutionTime *int64 `json:"executionTime,omitempty" xml:"executionTime,omitempty"`
+	// The statement sequence number (0-based).
+	//
+	// example:
+	//
+	// 0
+	Index *int32 `json:"index,omitempty" xml:"index,omitempty"`
+	// The total number of rows in the result. The value is 0 for statements that do not return a result set.
+	//
+	// example:
+	//
+	// 1000
+	RowCount *int32 `json:"rowCount,omitempty" xml:"rowCount,omitempty"`
+	// The result column information. This parameter is returned when a result set exists.
+	Schema []*StatementResultSchema `json:"schema,omitempty" xml:"schema,omitempty" type:"Repeated"`
+	// The SQL text of the statement.
+	//
+	// example:
+	//
+	// select 	- from table_name;
+	Sql *string `json:"sql,omitempty" xml:"sql,omitempty"`
+	// The status of the statement. Valid values: COMPLETED and FAILED.
+	//
+	// example:
+	//
+	// COMPLETED
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s StatementResult) String() string {
@@ -144,7 +185,17 @@ func (s *StatementResult) Validate() error {
 }
 
 type StatementResultSchema struct {
+	// The column name.
+	//
+	// example:
+	//
+	// name
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The data type.
+	//
+	// example:
+	//
+	// string
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 

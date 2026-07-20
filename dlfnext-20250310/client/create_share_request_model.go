@@ -18,9 +18,25 @@ type iCreateShareRequest interface {
 }
 
 type CreateShareRequest struct {
-	Comment     *string `json:"comment,omitempty" xml:"comment,omitempty"`
-	EnableWrite *bool   `json:"enableWrite,omitempty" xml:"enableWrite,omitempty"`
+	// The comment for the share.
+	//
+	// example:
+	//
+	// demo
+	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	// Specifies whether to enable write permissions for the share.
+	//
+	// example:
+	//
+	// false
+	EnableWrite *bool `json:"enableWrite,omitempty" xml:"enableWrite,omitempty"`
+	// The share name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// share_name
 	ShareName *string `json:"shareName,omitempty" xml:"shareName,omitempty"`
 }
 

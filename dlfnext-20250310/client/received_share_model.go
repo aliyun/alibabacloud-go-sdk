@@ -34,17 +34,67 @@ type iReceivedShare interface {
 }
 
 type ReceivedShare struct {
-	CatalogName      *string `json:"catalogName,omitempty" xml:"catalogName,omitempty"`
-	Comment          *string `json:"comment,omitempty" xml:"comment,omitempty"`
-	CreatedAt        *int64  `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	CreatedBy        *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	EnableWrite      *bool   `json:"enableWrite,omitempty" xml:"enableWrite,omitempty"`
-	Owner            *string `json:"owner,omitempty" xml:"owner,omitempty"`
-	ProviderTenantId *int64  `json:"providerTenantId,omitempty" xml:"providerTenantId,omitempty"`
-	ShareId          *string `json:"shareId,omitempty" xml:"shareId,omitempty"`
-	ShareName        *string `json:"shareName,omitempty" xml:"shareName,omitempty"`
-	UpdatedAt        *int64  `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	UpdatedBy        *string `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
+	// The catalog name.
+	//
+	// example:
+	//
+	// catalog_name
+	CatalogName *string `json:"catalogName,omitempty" xml:"catalogName,omitempty"`
+	// The comment of the share.
+	//
+	// example:
+	//
+	// demo
+	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 1744970111419
+	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The creator of the share.
+	//
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	CreatedBy   *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	EnableWrite *bool   `json:"enableWrite,omitempty" xml:"enableWrite,omitempty"`
+	// The share owner.
+	//
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	// The provider\\"s account ID.
+	//
+	// example:
+	//
+	// 1111
+	ProviderTenantId *int64 `json:"providerTenantId,omitempty" xml:"providerTenantId,omitempty"`
+	// The share ID.
+	//
+	// example:
+	//
+	// 1111
+	ShareId *string `json:"shareId,omitempty" xml:"shareId,omitempty"`
+	// The share name.
+	//
+	// example:
+	//
+	// share_name
+	ShareName *string `json:"shareName,omitempty" xml:"shareName,omitempty"`
+	// The update time.
+	//
+	// example:
+	//
+	// 1744970111419
+	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// The user who last updated the share.
+	//
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	UpdatedBy *string `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
 }
 
 func (s ReceivedShare) String() string {

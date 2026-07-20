@@ -18,9 +18,20 @@ type iFieldRef interface {
 }
 
 type FieldRef struct {
-	Index *int32        `json:"index,omitempty" xml:"index,omitempty"`
-	Name  *string       `json:"name,omitempty" xml:"name,omitempty"`
-	Type  *FullDataType `json:"type,omitempty" xml:"type,omitempty"`
+	// Text sequence
+	//
+	// example:
+	//
+	// 1
+	Index *int32 `json:"index,omitempty" xml:"index,omitempty"`
+	// Table name
+	//
+	// example:
+	//
+	// name
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// File type
+	Type *FullDataType `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s FieldRef) String() string {

@@ -20,10 +20,29 @@ type iListDatabaseDetailsRequest interface {
 }
 
 type ListDatabaseDetailsRequest struct {
+	// The SQL-style right fuzzy match pattern for database names. The percent sign (%) wildcard is supported.
+	//
+	// example:
+	//
+	// database%
 	DatabaseNamePattern *string `json:"databaseNamePattern,omitempty" xml:"databaseNamePattern,omitempty"`
-	MaxResults          *int32  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	PageToken           *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
-	Status              *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The page size.
+	//
+	// Default value: 1000.
+	//
+	// Maximum value: 1000.
+	//
+	// example:
+	//
+	// 1000
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token used to retrieve the next page of results. If the response does not include this token, pass an empty string ("") or an empty character (\\"\\").
+	//
+	// example:
+	//
+	// ""
+	PageToken *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
+	Status    *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ListDatabaseDetailsRequest) String() string {

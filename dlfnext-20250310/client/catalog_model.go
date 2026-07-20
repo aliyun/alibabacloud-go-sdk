@@ -36,18 +36,90 @@ type iCatalog interface {
 }
 
 type Catalog struct {
-	CreatedAt *int64             `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	CreatedBy *string            `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	Id        *string            `json:"id,omitempty" xml:"id,omitempty"`
-	IsShared  *bool              `json:"isShared,omitempty" xml:"isShared,omitempty"`
-	Name      *string            `json:"name,omitempty" xml:"name,omitempty"`
-	Options   map[string]*string `json:"options,omitempty" xml:"options,omitempty"`
-	Owner     *string            `json:"owner,omitempty" xml:"owner,omitempty"`
-	ShareId   *string            `json:"shareId,omitempty" xml:"shareId,omitempty"`
-	Status    *string            `json:"status,omitempty" xml:"status,omitempty"`
-	Type      *string            `json:"type,omitempty" xml:"type,omitempty"`
-	UpdatedAt *int64             `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	UpdatedBy *string            `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
+	// The time when the catalog was created.
+	//
+	// example:
+	//
+	// 1744970111419
+	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The user who created the catalog.
+	//
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// The ID of the catalog.
+	//
+	// example:
+	//
+	// clg-paimon-xxxx
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// Whether the data catalog is shared.
+	//
+	// example:
+	//
+	// false
+	IsShared *bool `json:"isShared,omitempty" xml:"isShared,omitempty"`
+	// The name of the catalog.
+	//
+	// example:
+	//
+	// test_catalog
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The extension options.
+	Options map[string]*string `json:"options,omitempty" xml:"options,omitempty"`
+	// The catalog owner.
+	//
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	// Share ID.
+	//
+	// example:
+	//
+	// share-xxxx
+	ShareId *string `json:"shareId,omitempty" xml:"shareId,omitempty"`
+	// The status of the catalog.
+	//
+	// example:
+	//
+	// NEW
+	//
+	// INITIALIZING
+	//
+	// INITIALIZE_FAILED
+	//
+	// RUNNING
+	//
+	// TERMINATED
+	//
+	// DELETING
+	//
+	// DELETE_FAILED
+	//
+	// DELETED
+	//
+	// STORAGE_RESTRICTED
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Type.
+	//
+	// example:
+	//
+	// PAIMON
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The time when the catalog was last modified.
+	//
+	// example:
+	//
+	// 1744970111419
+	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// The user who last modified the catalog.
+	//
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	UpdatedBy *string `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
 }
 
 func (s Catalog) String() string {

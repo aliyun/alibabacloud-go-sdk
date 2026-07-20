@@ -16,7 +16,13 @@ type iUpdateRoleUsersRequest interface {
 }
 
 type UpdateRoleUsersRequest struct {
-	RolePrincipal  *string   `json:"rolePrincipal,omitempty" xml:"rolePrincipal,omitempty"`
+	// The resource descriptor of the DLF role.
+	//
+	// example:
+	//
+	// acs:dlf::[accountId]:role/role_name
+	RolePrincipal *string `json:"rolePrincipal,omitempty" xml:"rolePrincipal,omitempty"`
+	// The resource descriptors of the users.
 	UserPrincipals []*string `json:"userPrincipals,omitempty" xml:"userPrincipals,omitempty" type:"Repeated"`
 }
 

@@ -16,8 +16,14 @@ type iGetTableTokenResponseBody interface {
 }
 
 type GetTableTokenResponseBody struct {
-	ExpiresAtMillis *int64             `json:"expiresAtMillis,omitempty" xml:"expiresAtMillis,omitempty"`
-	Token           map[string]*string `json:"token,omitempty" xml:"token,omitempty"`
+	// The expiration time of the temporary access credential.
+	//
+	// example:
+	//
+	// 1749160909000
+	ExpiresAtMillis *int64 `json:"expiresAtMillis,omitempty" xml:"expiresAtMillis,omitempty"`
+	// The temporary access credential for the catalog hosting the table.
+	Token map[string]*string `json:"token,omitempty" xml:"token,omitempty"`
 }
 
 func (s GetTableTokenResponseBody) String() string {

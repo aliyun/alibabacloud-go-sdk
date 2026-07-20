@@ -26,13 +26,44 @@ type iGetQueryResponseBody interface {
 }
 
 type GetQueryResponseBody struct {
-	CompletedAt *int64             `json:"completedAt,omitempty" xml:"completedAt,omitempty"`
-	CreatedAt   *int64             `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	QueryId     *string            `json:"queryId,omitempty" xml:"queryId,omitempty"`
-	Results     []*StatementResult `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
-	Sql         *string            `json:"sql,omitempty" xml:"sql,omitempty"`
-	Status      *string            `json:"status,omitempty" xml:"status,omitempty"`
-	Tier        *string            `json:"tier,omitempty" xml:"tier,omitempty"`
+	// The completion time of the task.
+	//
+	// example:
+	//
+	// 1744970111419
+	CompletedAt *int64 `json:"completedAt,omitempty" xml:"completedAt,omitempty"`
+	// The creation time of the task.
+	//
+	// example:
+	//
+	// 1744970111419
+	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The query ID, used for subsequent polling of results.
+	//
+	// example:
+	//
+	// d7b21d1ec4f441e79d5ba917c3283200
+	QueryId *string `json:"queryId,omitempty" xml:"queryId,omitempty"`
+	// The result list.
+	Results []*StatementResult `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	// The SQL text. Multiple statements separated by semicolons are supported and executed sequentially within the same session.
+	//
+	// example:
+	//
+	// select 	- from table_name;
+	Sql *string `json:"sql,omitempty" xml:"sql,omitempty"`
+	// The task running status.
+	//
+	// example:
+	//
+	// COMPLETED
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The execution specifications. Default value: standard.
+	//
+	// example:
+	//
+	// standard
+	Tier *string `json:"tier,omitempty" xml:"tier,omitempty"`
 }
 
 func (s GetQueryResponseBody) String() string {

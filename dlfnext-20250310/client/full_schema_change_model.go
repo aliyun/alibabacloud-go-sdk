@@ -36,25 +36,61 @@ type iFullSchemaChange interface {
 }
 
 type FullSchemaChange struct {
+	// The type of change.
+	//
+	// example:
+	//
+	// setOption
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// required in UpdateComment/AddColumn
-	Comment  *string       `json:"comment,omitempty" xml:"comment,omitempty"`
+	// The description. This parameter is required when `action` is `UpdateComment` or `AddColumn`.
+	//
+	// example:
+	//
+	// col_comment
+	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	// The column type. This parameter is required when `action` is `AddColumn`.
 	DataType *FullDataType `json:"dataType,omitempty" xml:"dataType,omitempty"`
-	// required in AddColumn/RenameColumn/DropColumn/UpdateColumnComment/UpdateColumnType/UpdateColumnNullability
+	// The table column names. This parameter is required when `action` is `AddColumn`, `RenameColumn`, `DropColumn`, `UpdateColumnComment`, `UpdateColumnType`, or `UpdateColumnNullability`.
 	FieldNames []*string `json:"fieldNames,omitempty" xml:"fieldNames,omitempty" type:"Repeated"`
-	// required in UpdateColumnType
+	// Specifies whether the column is nullable. This parameter is required when the `action` is `UpdateColumnType`.
+	//
+	// example:
+	//
+	// true
 	KeepNullability *bool `json:"keepNullability,omitempty" xml:"keepNullability,omitempty"`
-	// required in SetOption/RemoveOption
-	Key  *string `json:"key,omitempty" xml:"key,omitempty"`
-	Move *Move   `json:"move,omitempty" xml:"move,omitempty"`
-	// required in UpdateColumnComment
-	NewComment  *string       `json:"newComment,omitempty" xml:"newComment,omitempty"`
+	// The key for the configuration. This parameter is required when `action` is `SetOption` or `RemoveOption`.
+	//
+	// example:
+	//
+	// \\"true\\"
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The column to move. This parameter is required when `action` is `AddColumn` or `UpdateColumnPosition`.
+	Move *Move `json:"move,omitempty" xml:"move,omitempty"`
+	// The new description for the column. This parameter is required when `action` is `UpdateColumnComment`.
+	//
+	// example:
+	//
+	// col_comment_test
+	NewComment *string `json:"newComment,omitempty" xml:"newComment,omitempty"`
+	// The new column type. This parameter is required when `action` is `UpdateColumnType`.
 	NewDataType *FullDataType `json:"newDataType,omitempty" xml:"newDataType,omitempty"`
-	// required in RenameColumn
+	// The new name of the column. This parameter is required when `action` is `RenameColumn`.
+	//
+	// example:
+	//
+	// new_col_test
 	NewName *string `json:"newName,omitempty" xml:"newName,omitempty"`
-	// required in UpdateColumnNullability
+	// Specifies whether the new column is nullable. This parameter is required when `action` is `UpdateColumnType`.
+	//
+	// example:
+	//
+	// true
 	NewNullability *bool `json:"newNullability,omitempty" xml:"newNullability,omitempty"`
-	// required in SetOption
+	// The value of the configuration. This parameter is required when `action` is `SetOption`.
+	//
+	// example:
+	//
+	// \\"manifest.delete-file-drop-stats\\"
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

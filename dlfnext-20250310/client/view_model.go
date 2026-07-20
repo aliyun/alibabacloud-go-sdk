@@ -28,14 +28,50 @@ type iView interface {
 }
 
 type View struct {
-	CreatedAt *int64      `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	CreatedBy *string     `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	Id        *string     `json:"id,omitempty" xml:"id,omitempty"`
-	Name      *string     `json:"name,omitempty" xml:"name,omitempty"`
-	Owner     *string     `json:"owner,omitempty" xml:"owner,omitempty"`
-	Schema    *ViewSchema `json:"schema,omitempty" xml:"schema,omitempty"`
-	UpdatedAt *int64      `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	UpdatedBy *string     `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 1744970111419
+	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The creator.
+	//
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// The UUID of the view.
+	//
+	// example:
+	//
+	// 1
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The name of the view.
+	//
+	// example:
+	//
+	// view_test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The owner of the view.
+	//
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	// The view schema.
+	Schema *ViewSchema `json:"schema,omitempty" xml:"schema,omitempty"`
+	// The time of the last update.
+	//
+	// example:
+	//
+	// 1744970111419
+	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// The user who last updated the view.
+	//
+	// example:
+	//
+	// acs:ram::[accountId]:root
+	UpdatedBy *string `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
 }
 
 func (s View) String() string {

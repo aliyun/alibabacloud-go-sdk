@@ -16,7 +16,17 @@ type iAlterReceiverRequest interface {
 }
 
 type AlterReceiverRequest struct {
-	Comment      *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	// The comment.
+	//
+	// example:
+	//
+	// Customer A
+	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	// The name of the sink.
+	//
+	// example:
+	//
+	// receiver_name
 	ReceiverName *string `json:"receiverName,omitempty" xml:"receiverName,omitempty"`
 }
 
