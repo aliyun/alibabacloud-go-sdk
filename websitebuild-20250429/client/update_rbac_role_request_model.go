@@ -18,16 +18,22 @@ type iUpdateRbacRoleRequest interface {
 }
 
 type UpdateRbacRoleRequest struct {
+	// The application instance ID.
+	//
 	// example:
 	//
 	// WD20250814102215000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The role data.
+	//
 	// example:
 	//
 	// {"name":"customer","label":"xx1
 	//
 	// ","is_default":true,"is_system":false}
 	RoleData *string `json:"RoleData,omitempty" xml:"RoleData,omitempty"`
+	// The role ID.
+	//
 	// example:
 	//
 	// agent@ly-online

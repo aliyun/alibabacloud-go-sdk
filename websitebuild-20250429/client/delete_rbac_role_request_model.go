@@ -16,10 +16,14 @@ type iDeleteRbacRoleRequest interface {
 }
 
 type DeleteRbacRoleRequest struct {
+	// The business ID of the application instance.
+	//
 	// example:
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The role ID.
+	//
 	// example:
 	//
 	// 75b2f16f-35a5-4e90-949f-295ea14a4dc8

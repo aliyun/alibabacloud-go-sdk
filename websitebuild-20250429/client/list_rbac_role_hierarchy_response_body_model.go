@@ -38,48 +38,80 @@ type iListRbacRoleHierarchyResponseBody interface {
 }
 
 type ListRbacRoleHierarchyResponseBody struct {
+	// The access denied details.
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Indicates whether a retry is allowed. Valid values:
+	//
+	// - false: No retry is allowed.
+	//
+	// - true: A retry is allowed.
+	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// The application name.
+	//
 	// example:
 	//
 	// spring-cloud-b
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic error message, which is used to replace the `%s` variable in the **ErrMessage*	- response parameter.
+	//
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the value of the request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// SYSTEM_ERROR
-	DynamicMessage *string       `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs      []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The error parameters.
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// The number of entries per query.
+	//
+	// Valid values: 10 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 10
-	MaxResults *int32                                   `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Module     *ListRbacRoleHierarchyResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The response object.
+	Module *ListRbacRoleHierarchyResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	// The token for the next query. This parameter is empty if no more results exist.
+	//
 	// example:
 	//
 	// 0l45bkwM022Dt+rOvPi/oQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
+	// The exception message.
+	//
 	// example:
 	//
 	// 系统异常
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// Indicates whether the request is synchronously processed.
+	//
 	// example:
 	//
 	// True
@@ -221,32 +253,48 @@ func (s *ListRbacRoleHierarchyResponseBody) Validate() error {
 }
 
 type ListRbacRoleHierarchyResponseBodyModule struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
-	CurrentPageNum *int32                                         `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
-	Data           []*ListRbacRoleHierarchyResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Next           *ListRbacRoleHierarchyResponseBodyModuleNext   `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
+	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
+	// The request results.
+	Data []*ListRbacRoleHierarchyResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The decision weight.
+	Next *ListRbacRoleHierarchyResponseBodyModuleNext `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
+	// Indicates whether a next page exists.
+	//
 	// example:
 	//
 	// False
 	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Indicates whether a previous page exists.
+	//
 	// example:
 	//
 	// False
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
+	// The server processes up to 1,000 most recent records beyond the pagination limit. If the results exceed 1,000 records, **ResultLimit*	- is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
+	//
 	// example:
 	//
 	// False
 	ResultLimit *bool `json:"ResultLimit,omitempty" xml:"ResultLimit,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 1
 	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 1
@@ -361,10 +409,14 @@ func (s *ListRbacRoleHierarchyResponseBodyModule) Validate() error {
 }
 
 type ListRbacRoleHierarchyResponseBodyModuleData struct {
+	// The child role ID.
+	//
 	// example:
 	//
 	// fc94cc51-310f-4485-adb2-ed8c706aff3b
 	ChildRoleId *string `json:"ChildRoleId,omitempty" xml:"ChildRoleId,omitempty"`
+	// The parent role ID.
+	//
 	// example:
 	//
 	// 71e07711-9a17-49f4-9f83-387a60ee5b64
@@ -402,10 +454,14 @@ func (s *ListRbacRoleHierarchyResponseBodyModuleData) Validate() error {
 }
 
 type ListRbacRoleHierarchyResponseBodyModuleNext struct {
+	// The child role ID.
+	//
 	// example:
 	//
 	// fc94cc51-310f-4485-adb2-ed8c706aff3b
 	ChildRoleId *string `json:"ChildRoleId,omitempty" xml:"ChildRoleId,omitempty"`
+	// The parent role ID.
+	//
 	// example:
 	//
 	// 71e07711-9a17-49f4-9f83-387a60ee5b64

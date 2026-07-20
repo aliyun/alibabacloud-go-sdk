@@ -38,48 +38,76 @@ type iListRbacOrgTreeResponseBody interface {
 }
 
 type ListRbacOrgTreeResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Indicates whether a retry is allowed.
+	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// The application name. The application with this name is queried.
+	//
 	// example:
 	//
 	// or
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic error message, which is used to replace the `%s` variable in the **ErrMessage*	- parameter.
+	//
+	// > For example, if **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the **DtsJobId*	- request parameter is invalid.
+	//
 	// example:
 	//
 	// SYSTEM_ERROR
-	DynamicMessage *string       `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs      []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The error parameters.
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// The maximum number of entries per query.
+	//
+	// Valid values: 10 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 10
-	MaxResults *int32                             `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Module     *ListRbacOrgTreeResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The task object.
+	Module *ListRbacOrgTreeResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	// The token for the next query. This parameter is empty if no more results exist.
+	//
 	// example:
 	//
 	// AAAAARbaCuN6hiD08qrLdwJ9Fh3BFw8paIJ7ylB6A7Qn9JjM
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
+	// The exception message.
+	//
 	// example:
 	//
 	// 系统异常
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// A reserved parameter.
+	//
 	// example:
 	//
 	// True
@@ -221,32 +249,48 @@ func (s *ListRbacOrgTreeResponseBody) Validate() error {
 }
 
 type ListRbacOrgTreeResponseBodyModule struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 12
-	CurrentPageNum *int32                                   `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
-	Data           []*ListRbacOrgTreeResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Next           *ListRbacOrgTreeResponseBodyModuleNext   `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
+	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
+	// The request results.
+	Data []*ListRbacOrgTreeResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The next feature ID.
+	Next *ListRbacOrgTreeResponseBodyModuleNext `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
+	// Indicates whether a next page exists.
+	//
 	// example:
 	//
 	// False
 	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Indicates whether a previous page exists.
+	//
 	// example:
 	//
 	// False
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
+	// Indicates whether the server processes a maximum of 1,000 most recent records beyond the pagination limit. If the results exceed 1,000 entries, **ResultLimit*	- is **true**, and you must narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
+	//
 	// example:
 	//
 	// False
 	ResultLimit *bool `json:"ResultLimit,omitempty" xml:"ResultLimit,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 1
 	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 1
@@ -361,22 +405,31 @@ func (s *ListRbacOrgTreeResponseBodyModule) Validate() error {
 }
 
 type ListRbacOrgTreeResponseBodyModuleData struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2026-05-08T02:28:26Z
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The directory level.
+	//
 	// example:
 	//
 	// FirstChildDepth
 	Depth *int32 `json:"Depth,omitempty" xml:"Depth,omitempty"`
+	// The primary key.
+	//
 	// example:
 	//
 	// 9953352
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The file name.
+	//
 	// example:
 	//
 	// 文件名
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The script path.
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
@@ -438,22 +491,32 @@ func (s *ListRbacOrgTreeResponseBodyModuleData) Validate() error {
 }
 
 type ListRbacOrgTreeResponseBodyModuleNext struct {
+	// The creation date.
+	//
 	// example:
 	//
 	// 2025-12-15T02:29:22Z
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The category level. The root category is 1.
+	//
 	// example:
 	//
 	// 2
 	Depth *int32 `json:"Depth,omitempty" xml:"Depth,omitempty"`
+	// The primary key.
+	//
 	// example:
 	//
 	// 1000039405002
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The scenario name.
+	//
 	// example:
 	//
 	// docs
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The request path of the API.
+	//
 	// example:
 	//
 	// /h6sRMdP&LTdQz/44ImvD/JtjSeUza/wVcp1i/dsxnl0FlL0/bvL/d+0~V6Fi5+R/P8ebktwGxe/l&AqBD_/Y+TstdpTo06U_Q/4i4:EDPGo/7.fIVgd.//AOJtXP5/X

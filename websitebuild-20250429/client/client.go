@@ -156,6 +156,72 @@ func (client *Client) AllocateSupabaseForAdmin(request *AllocateSupabaseForAdmin
 
 // Summary:
 //
+// 授予用户角色
+//
+// @param request - AssignRbacUserRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AssignRbacUserRoleResponse
+func (client *Client) AssignRbacUserRoleWithOptions(request *AssignRbacUserRoleRequest, runtime *dara.RuntimeOptions) (_result *AssignRbacUserRoleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.UserRoleData) {
+		query["UserRoleData"] = request.UserRoleData
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AssignRbacUserRole"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AssignRbacUserRoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 授予用户角色
+//
+// @param request - AssignRbacUserRoleRequest
+//
+// @return AssignRbacUserRoleResponse
+func (client *Client) AssignRbacUserRole(request *AssignRbacUserRoleRequest) (_result *AssignRbacUserRoleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AssignRbacUserRoleResponse{}
+	_body, _err := client.AssignRbacUserRoleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Grants proxy-based O&M permissions for an application instance.
 //
 // @param request - AuthorizeAppProxyOpsRequest
@@ -1944,11 +2010,143 @@ func (client *Client) CreateMaterialDirectory(request *CreateMaterialDirectoryRe
 
 // Summary:
 //
-// 创建RBAC角色
+// 创建组织单元
+//
+// @param request - CreateRbacOrgUnitRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRbacOrgUnitResponse
+func (client *Client) CreateRbacOrgUnitWithOptions(request *CreateRbacOrgUnitRequest, runtime *dara.RuntimeOptions) (_result *CreateRbacOrgUnitResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.OrgUnitData) {
+		query["OrgUnitData"] = request.OrgUnitData
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateRbacOrgUnit"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateRbacOrgUnitResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建组织单元
+//
+// @param request - CreateRbacOrgUnitRequest
+//
+// @return CreateRbacOrgUnitResponse
+func (client *Client) CreateRbacOrgUnit(request *CreateRbacOrgUnitRequest) (_result *CreateRbacOrgUnitResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateRbacOrgUnitResponse{}
+	_body, _err := client.CreateRbacOrgUnitWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建RBAC权限
+//
+// @param request - CreateRbacPermissionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRbacPermissionResponse
+func (client *Client) CreateRbacPermissionWithOptions(request *CreateRbacPermissionRequest, runtime *dara.RuntimeOptions) (_result *CreateRbacPermissionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.PermissionData) {
+		query["PermissionData"] = request.PermissionData
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateRbacPermission"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateRbacPermissionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建RBAC权限
+//
+// @param request - CreateRbacPermissionRequest
+//
+// @return CreateRbacPermissionResponse
+func (client *Client) CreateRbacPermission(request *CreateRbacPermissionRequest) (_result *CreateRbacPermissionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateRbacPermissionResponse{}
+	_body, _err := client.CreateRbacPermissionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an RBAC role.
 //
 // Description:
 //
-// 万小智2.0AI对话
+// Wanxiaozhi 2.0 AI conversation.
 //
 // @param request - CreateRbacRoleRequest
 //
@@ -1996,11 +2194,11 @@ func (client *Client) CreateRbacRoleWithOptions(request *CreateRbacRoleRequest, 
 
 // Summary:
 //
-// 创建RBAC角色
+// Creates an RBAC role.
 //
 // Description:
 //
-// 万小智2.0AI对话
+// Wanxiaozhi 2.0 AI conversation.
 //
 // @param request - CreateRbacRoleRequest
 //
@@ -2580,11 +2778,143 @@ func (client *Client) DeleteMaterialTask(request *DeleteMaterialTaskRequest) (_r
 
 // Summary:
 //
-// 删除RBAC角色
+// 删除组织单元
+//
+// @param request - DeleteRbacOrgUnitRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRbacOrgUnitResponse
+func (client *Client) DeleteRbacOrgUnitWithOptions(request *DeleteRbacOrgUnitRequest, runtime *dara.RuntimeOptions) (_result *DeleteRbacOrgUnitResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.OrgUnitId) {
+		query["OrgUnitId"] = request.OrgUnitId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteRbacOrgUnit"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteRbacOrgUnitResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除组织单元
+//
+// @param request - DeleteRbacOrgUnitRequest
+//
+// @return DeleteRbacOrgUnitResponse
+func (client *Client) DeleteRbacOrgUnit(request *DeleteRbacOrgUnitRequest) (_result *DeleteRbacOrgUnitResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteRbacOrgUnitResponse{}
+	_body, _err := client.DeleteRbacOrgUnitWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除RBAC权限
+//
+// @param request - DeleteRbacPermissionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRbacPermissionResponse
+func (client *Client) DeleteRbacPermissionWithOptions(request *DeleteRbacPermissionRequest, runtime *dara.RuntimeOptions) (_result *DeleteRbacPermissionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.PermissionId) {
+		query["PermissionId"] = request.PermissionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteRbacPermission"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteRbacPermissionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除RBAC权限
+//
+// @param request - DeleteRbacPermissionRequest
+//
+// @return DeleteRbacPermissionResponse
+func (client *Client) DeleteRbacPermission(request *DeleteRbacPermissionRequest) (_result *DeleteRbacPermissionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteRbacPermissionResponse{}
+	_body, _err := client.DeleteRbacPermissionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an RBAC role.
 //
 // Description:
 //
-// 查询应用实例信息
+// Queries application instance information.
 //
 // @param request - DeleteRbacRoleRequest
 //
@@ -2632,11 +2962,11 @@ func (client *Client) DeleteRbacRoleWithOptions(request *DeleteRbacRoleRequest, 
 
 // Summary:
 //
-// 删除RBAC角色
+// Deletes an RBAC role.
 //
 // Description:
 //
-// 查询应用实例信息
+// Queries application instance information.
 //
 // @param request - DeleteRbacRoleRequest
 //
@@ -2952,11 +3282,11 @@ func (client *Client) ExportMaterialFile(request *ExportMaterialFileRequest) (_r
 
 // Summary:
 //
-// 导出RBAC配置
+// Exports the RBAC configuration.
 //
 // Description:
 //
-// 查询资源对应的supabase实例配置信息
+// Queries the Supabase instance configuration information corresponding to a resource.
 //
 // @param request - ExportRbacConfigRequest
 //
@@ -3000,11 +3330,11 @@ func (client *Client) ExportRbacConfigWithOptions(request *ExportRbacConfigReque
 
 // Summary:
 //
-// 导出RBAC配置
+// Exports the RBAC configuration.
 //
 // Description:
 //
-// 查询资源对应的supabase实例配置信息
+// Queries the Supabase instance configuration information corresponding to a resource.
 //
 // @param request - ExportRbacConfigRequest
 //
@@ -7420,11 +7750,11 @@ func (client *Client) ListPromotionOfferRecordsForPartner(request *ListPromotion
 
 // Summary:
 //
-// 查询RBAC组织树
+// Queries the RBAC organization tree.
 //
 // Description:
 //
-// 获取生码插件配置信息
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - ListRbacOrgTreeRequest
 //
@@ -7492,11 +7822,11 @@ func (client *Client) ListRbacOrgTreeWithOptions(request *ListRbacOrgTreeRequest
 
 // Summary:
 //
-// 查询RBAC组织树
+// Queries the RBAC organization tree.
 //
 // Description:
 //
-// 获取生码插件配置信息
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - ListRbacOrgTreeRequest
 //
@@ -7514,11 +7844,11 @@ func (client *Client) ListRbacOrgTree(request *ListRbacOrgTreeRequest) (_result 
 
 // Summary:
 //
-// 查询RBAC权限列表
+// Queries the RBAC permission list.
 //
 // Description:
 //
-// 万小智2.0创建AI会话接口
+// Creates an AI conversation session through WanXiaoZhi 2.0.
 //
 // @param request - ListRbacPermissionsRequest
 //
@@ -7586,11 +7916,11 @@ func (client *Client) ListRbacPermissionsWithOptions(request *ListRbacPermission
 
 // Summary:
 //
-// 查询RBAC权限列表
+// Queries the RBAC permission list.
 //
 // Description:
 //
-// 万小智2.0创建AI会话接口
+// Creates an AI conversation session through WanXiaoZhi 2.0.
 //
 // @param request - ListRbacPermissionsRequest
 //
@@ -7608,11 +7938,11 @@ func (client *Client) ListRbacPermissions(request *ListRbacPermissionsRequest) (
 
 // Summary:
 //
-// 查询RBAC角色层级
+// Queries the RBAC role hierarchy.
 //
 // Description:
 //
-// 查询应用实例信息
+// Queries application instance information.
 //
 // @param request - ListRbacRoleHierarchyRequest
 //
@@ -7680,11 +8010,11 @@ func (client *Client) ListRbacRoleHierarchyWithOptions(request *ListRbacRoleHier
 
 // Summary:
 //
-// 查询RBAC角色层级
+// Queries the RBAC role hierarchy.
 //
 // Description:
 //
-// 查询应用实例信息
+// Queries application instance information.
 //
 // @param request - ListRbacRoleHierarchyRequest
 //
@@ -7702,11 +8032,11 @@ func (client *Client) ListRbacRoleHierarchy(request *ListRbacRoleHierarchyReques
 
 // Summary:
 //
-// 查询RBAC角色列表
+// Queries the list of RBAC roles.
 //
 // Description:
 //
-// 查询应用实例信息
+// Queries application instance information.
 //
 // @param request - ListRbacRolesRequest
 //
@@ -7774,11 +8104,11 @@ func (client *Client) ListRbacRolesWithOptions(request *ListRbacRolesRequest, ru
 
 // Summary:
 //
-// 查询RBAC角色列表
+// Queries the list of RBAC roles.
 //
 // Description:
 //
-// 查询应用实例信息
+// Queries application instance information.
 //
 // @param request - ListRbacRolesRequest
 //
@@ -9745,6 +10075,236 @@ func (client *Client) QueryMaterialTaskList(request *QueryMaterialTaskListReques
 
 // Summary:
 //
+// 查询单个RBAC角色
+//
+// @param request - QueryRbacRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryRbacRoleResponse
+func (client *Client) QueryRbacRoleWithOptions(request *QueryRbacRoleRequest, runtime *dara.RuntimeOptions) (_result *QueryRbacRoleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.RoleId) {
+		query["RoleId"] = request.RoleId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryRbacRole"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryRbacRoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询单个RBAC角色
+//
+// @param request - QueryRbacRoleRequest
+//
+// @return QueryRbacRoleResponse
+func (client *Client) QueryRbacRole(request *QueryRbacRoleRequest) (_result *QueryRbacRoleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryRbacRoleResponse{}
+	_body, _err := client.QueryRbacRoleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询角色权限列表
+//
+// @param request - QueryRbacRolePermissionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryRbacRolePermissionsResponse
+func (client *Client) QueryRbacRolePermissionsWithOptions(request *QueryRbacRolePermissionsRequest, runtime *dara.RuntimeOptions) (_result *QueryRbacRolePermissionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.OrderColumn) {
+		query["OrderColumn"] = request.OrderColumn
+	}
+
+	if !dara.IsNil(request.OrderType) {
+		query["OrderType"] = request.OrderType
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RoleId) {
+		query["RoleId"] = request.RoleId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryRbacRolePermissions"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryRbacRolePermissionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询角色权限列表
+//
+// @param request - QueryRbacRolePermissionsRequest
+//
+// @return QueryRbacRolePermissionsResponse
+func (client *Client) QueryRbacRolePermissions(request *QueryRbacRolePermissionsRequest) (_result *QueryRbacRolePermissionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryRbacRolePermissionsResponse{}
+	_body, _err := client.QueryRbacRolePermissionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询用户角色绑定
+//
+// @param request - QueryRbacUserRolesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryRbacUserRolesResponse
+func (client *Client) QueryRbacUserRolesWithOptions(request *QueryRbacUserRolesRequest, runtime *dara.RuntimeOptions) (_result *QueryRbacUserRolesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationUserId) {
+		query["ApplicationUserId"] = request.ApplicationUserId
+	}
+
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.OrderColumn) {
+		query["OrderColumn"] = request.OrderColumn
+	}
+
+	if !dara.IsNil(request.OrderType) {
+		query["OrderType"] = request.OrderType
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryRbacUserRoles"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryRbacUserRolesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询用户角色绑定
+//
+// @param request - QueryRbacUserRolesRequest
+//
+// @return QueryRbacUserRolesResponse
+func (client *Client) QueryRbacUserRoles(request *QueryRbacUserRolesRequest) (_result *QueryRbacUserRolesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryRbacUserRolesResponse{}
+	_body, _err := client.QueryRbacUserRolesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the auth configuration of a Supabase instance associated with a resource.
 //
 // Description:
@@ -10272,11 +10832,11 @@ func (client *Client) RefundAppInstanceForPartner(request *RefundAppInstanceForP
 
 // Summary:
 //
-// 移除RBAC角色层级
+// Removes an RBAC role hierarchy.
 //
 // Description:
 //
-// 查询应用实例信息
+// Queries application instance information.
 //
 // @param request - RemoveRbacRoleHierarchyRequest
 //
@@ -10328,11 +10888,11 @@ func (client *Client) RemoveRbacRoleHierarchyWithOptions(request *RemoveRbacRole
 
 // Summary:
 //
-// 移除RBAC角色层级
+// Removes an RBAC role hierarchy.
 //
 // Description:
 //
-// 查询应用实例信息
+// Queries application instance information.
 //
 // @param request - RemoveRbacRoleHierarchyRequest
 //
@@ -10493,6 +11053,72 @@ func (client *Client) RenewAppSandbox(request *RenewAppSandboxRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &RenewAppSandboxResponse{}
 	_body, _err := client.RenewAppSandboxWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 撤销用户角色
+//
+// @param request - RevokeRbacUserRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeRbacUserRoleResponse
+func (client *Client) RevokeRbacUserRoleWithOptions(request *RevokeRbacUserRoleRequest, runtime *dara.RuntimeOptions) (_result *RevokeRbacUserRoleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.UserRoleData) {
+		query["UserRoleData"] = request.UserRoleData
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RevokeRbacUserRole"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RevokeRbacUserRoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 撤销用户角色
+//
+// @param request - RevokeRbacUserRoleRequest
+//
+// @return RevokeRbacUserRoleResponse
+func (client *Client) RevokeRbacUserRole(request *RevokeRbacUserRoleRequest) (_result *RevokeRbacUserRoleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RevokeRbacUserRoleResponse{}
+	_body, _err := client.RevokeRbacUserRoleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11014,11 +11640,11 @@ func (client *Client) SetAppDomainCertificate(request *SetAppDomainCertificateRe
 
 // Summary:
 //
-// 设置RBAC角色层级
+// Sets the RBAC role hierarchy.
 //
 // Description:
 //
-// 获取生码插件配置信息
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - SetRbacRoleHierarchyRequest
 //
@@ -11070,11 +11696,11 @@ func (client *Client) SetRbacRoleHierarchyWithOptions(request *SetRbacRoleHierar
 
 // Summary:
 //
-// 设置RBAC角色层级
+// Sets the RBAC role hierarchy.
 //
 // Description:
 //
-// 获取生码插件配置信息
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - SetRbacRoleHierarchyRequest
 //
@@ -12148,11 +12774,81 @@ func (client *Client) UpdateMiniAppBinding(request *UpdateMiniAppBindingRequest)
 
 // Summary:
 //
-// 更新RBAC角色
+// 更新组织单元
+//
+// @param request - UpdateRbacOrgUnitRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRbacOrgUnitResponse
+func (client *Client) UpdateRbacOrgUnitWithOptions(request *UpdateRbacOrgUnitRequest, runtime *dara.RuntimeOptions) (_result *UpdateRbacOrgUnitResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.OrgUnitData) {
+		query["OrgUnitData"] = request.OrgUnitData
+	}
+
+	if !dara.IsNil(request.OrgUnitId) {
+		query["OrgUnitId"] = request.OrgUnitId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateRbacOrgUnit"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateRbacOrgUnitResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新组织单元
+//
+// @param request - UpdateRbacOrgUnitRequest
+//
+// @return UpdateRbacOrgUnitResponse
+func (client *Client) UpdateRbacOrgUnit(request *UpdateRbacOrgUnitRequest) (_result *UpdateRbacOrgUnitResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateRbacOrgUnitResponse{}
+	_body, _err := client.UpdateRbacOrgUnitWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates an RBAC role.
 //
 // Description:
 //
-// 获取生码插件配置信息
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - UpdateRbacRoleRequest
 //
@@ -12204,11 +12900,11 @@ func (client *Client) UpdateRbacRoleWithOptions(request *UpdateRbacRoleRequest, 
 
 // Summary:
 //
-// 更新RBAC角色
+// Updates an RBAC role.
 //
 // Description:
 //
-// 获取生码插件配置信息
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - UpdateRbacRoleRequest
 //

@@ -38,48 +38,74 @@ type iListRbacPermissionsResponseBody interface {
 }
 
 type ListRbacPermissionsResponseBody struct {
+	// The detailed reason why access was denied.
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Indicates whether retry is allowed.
+	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// The application name.
+	//
 	// example:
 	//
 	// spring-cloud-b
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic message.
+	//
 	// example:
 	//
 	// SYSTEM_ERROR
-	DynamicMessage *string       `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs      []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The error parameters returned.
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// The number of entries per query.
+	//
+	// Valid values: 10 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 10
-	MaxResults *int32                                 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Module     *ListRbacPermissionsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The response object.
+	Module *ListRbacPermissionsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	// The token for the next query. This parameter is empty if no more results exist.
+	//
 	// example:
 	//
 	// AAAAARbaCuN6hiD08qrLdwJ9Fh3BFw8paIJ7ylB6A7Qn9JjM
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// SYSTEM.EROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
+	// The exception message.
+	//
 	// example:
 	//
 	// 系统异常
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// The reserved parameter.
+	//
 	// example:
 	//
 	// True
@@ -221,32 +247,48 @@ func (s *ListRbacPermissionsResponseBody) Validate() error {
 }
 
 type ListRbacPermissionsResponseBodyModule struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
-	CurrentPageNum *int32                                       `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
-	Data           []*ListRbacPermissionsResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Next           *ListRbacPermissionsResponseBodyModuleNext   `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
+	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
+	// The query results.
+	Data []*ListRbacPermissionsResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The next feature ID.
+	Next *ListRbacPermissionsResponseBodyModuleNext `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
+	// Indicates whether a next page exists.
+	//
 	// example:
 	//
 	// False
 	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Indicates whether a previous page exists.
+	//
 	// example:
 	//
 	// False
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
+	// Apart from pagination limits, the server processes up to 1000 recent records for the current query. If the results exceed 1000 entries, **ResultLimit*	- is **true**. Narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
+	//
 	// example:
 	//
 	// False
 	ResultLimit *bool `json:"ResultLimit,omitempty" xml:"ResultLimit,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 1
 	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 1
@@ -361,18 +403,26 @@ func (s *ListRbacPermissionsResponseBodyModule) Validate() error {
 }
 
 type ListRbacPermissionsResponseBodyModuleData struct {
+	// The operation that you want to perform. Set the value to **GetDISyncInstanceInfo**.
+	//
 	// example:
 	//
 	// monitor
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The scenario description.
+	//
 	// example:
 	//
 	// lshm-mysql-coypt
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The scenario ID.
+	//
 	// example:
 	//
 	// 9953352
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The allocated log storage space. Unit: GB.
+	//
 	// example:
 	//
 	// sjapi-h5.aihuishou.com-waf
@@ -428,18 +478,30 @@ func (s *ListRbacPermissionsResponseBodyModuleData) Validate() error {
 }
 
 type ListRbacPermissionsResponseBodyModuleNext struct {
+	// The operation that you want to perform. Set the value to **GetRemind**.
+	//
 	// example:
 	//
 	// accept
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The scenario description.
+	//
 	// example:
 	//
 	// lx_supabase_test_02
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The scenario ID.
+	//
 	// example:
 	//
 	// 1000039405002
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The resource metadata declaration.
+	//
+	// **Note**: The metadata is constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).resources. A valid resource declaration must include the full-path metadata declaration from level 0 to the validLeaf level.
+	//
+	// Appendix: [ResourceSchema documentation on the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
+	//
 	// example:
 	//
 	// buy

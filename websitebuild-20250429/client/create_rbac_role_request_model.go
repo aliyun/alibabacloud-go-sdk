@@ -16,10 +16,14 @@ type iCreateRbacRoleRequest interface {
 }
 
 type CreateRbacRoleRequest struct {
+	// The business ID of the customer.
+	//
 	// example:
 	//
 	// WS20250731233102000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The role data.
+	//
 	// example:
 	//
 	// {"name":"customer","label":"xx

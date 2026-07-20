@@ -14,6 +14,8 @@ type iExportRbacConfigRequest interface {
 }
 
 type ExportRbacConfigRequest struct {
+  // The business ID.
+  // 
   // example:
   // 
   // WS20250814102215000001

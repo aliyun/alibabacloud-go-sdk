@@ -18,14 +18,20 @@ type iSetRbacRoleHierarchyRequest interface {
 }
 
 type SetRbacRoleHierarchyRequest struct {
+	// The business ID.
+	//
 	// example:
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The child role ID.
+	//
 	// example:
 	//
 	// fc94cc51-310f-4485-adb2-ed8c706aff3b
 	ChildRoleId *string `json:"ChildRoleId,omitempty" xml:"ChildRoleId,omitempty"`
+	// The parent role ID.
+	//
 	// example:
 	//
 	// 71e07711-9a17-49f4-9f83-387a60ee5b64
