@@ -117,6 +117,298 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 创建客户小记
+//
+// @param request - CustomerNoteCreateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CustomerNoteCreateResponse
+func (client *Client) CustomerNoteCreateWithOptions(request *CustomerNoteCreateRequest, runtime *dara.RuntimeOptions) (_result *CustomerNoteCreateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ContactInformation) {
+		body["ContactInformation"] = request.ContactInformation
+	}
+
+	if !dara.IsNil(request.ContactName) {
+		body["ContactName"] = request.ContactName
+	}
+
+	if !dara.IsNil(request.CustomerName) {
+		body["CustomerName"] = request.CustomerName
+	}
+
+	if !dara.IsNil(request.CustomerUid) {
+		body["CustomerUid"] = request.CustomerUid
+	}
+
+	if !dara.IsNil(request.NoteContent) {
+		body["NoteContent"] = request.NoteContent
+	}
+
+	if !dara.IsNil(request.TouchDate) {
+		body["TouchDate"] = request.TouchDate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CustomerNoteCreate"),
+		Version:     dara.String("2025-02-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CustomerNoteCreateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建客户小记
+//
+// @param request - CustomerNoteCreateRequest
+//
+// @return CustomerNoteCreateResponse
+func (client *Client) CustomerNoteCreate(request *CustomerNoteCreateRequest) (_result *CustomerNoteCreateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CustomerNoteCreateResponse{}
+	_body, _err := client.CustomerNoteCreateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 编辑客户小记
+//
+// @param request - CustomerNoteEditRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CustomerNoteEditResponse
+func (client *Client) CustomerNoteEditWithOptions(request *CustomerNoteEditRequest, runtime *dara.RuntimeOptions) (_result *CustomerNoteEditResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ContactInformation) {
+		body["ContactInformation"] = request.ContactInformation
+	}
+
+	if !dara.IsNil(request.ContactName) {
+		body["ContactName"] = request.ContactName
+	}
+
+	if !dara.IsNil(request.NoteContent) {
+		body["NoteContent"] = request.NoteContent
+	}
+
+	if !dara.IsNil(request.NoteId) {
+		body["NoteId"] = request.NoteId
+	}
+
+	if !dara.IsNil(request.TouchDate) {
+		body["TouchDate"] = request.TouchDate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CustomerNoteEdit"),
+		Version:     dara.String("2025-02-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CustomerNoteEditResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 编辑客户小记
+//
+// @param request - CustomerNoteEditRequest
+//
+// @return CustomerNoteEditResponse
+func (client *Client) CustomerNoteEdit(request *CustomerNoteEditRequest) (_result *CustomerNoteEditResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CustomerNoteEditResponse{}
+	_body, _err := client.CustomerNoteEditWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询客户小记列表
+//
+// @param request - CustomerNoteListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CustomerNoteListResponse
+func (client *Client) CustomerNoteListWithOptions(request *CustomerNoteListRequest, runtime *dara.RuntimeOptions) (_result *CustomerNoteListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CustomerUid) {
+		body["CustomerUid"] = request.CustomerUid
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		body["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CustomerNoteList"),
+		Version:     dara.String("2025-02-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CustomerNoteListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询客户小记列表
+//
+// @param request - CustomerNoteListRequest
+//
+// @return CustomerNoteListResponse
+func (client *Client) CustomerNoteList(request *CustomerNoteListRequest) (_result *CustomerNoteListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CustomerNoteListResponse{}
+	_body, _err := client.CustomerNoteListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询客户小记详情
+//
+// @param request - CustomerNoteListDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CustomerNoteListDetailResponse
+func (client *Client) CustomerNoteListDetailWithOptions(request *CustomerNoteListDetailRequest, runtime *dara.RuntimeOptions) (_result *CustomerNoteListDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.NoteId) {
+		body["NoteId"] = request.NoteId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CustomerNoteListDetail"),
+		Version:     dara.String("2025-02-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CustomerNoteListDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询客户小记详情
+//
+// @param request - CustomerNoteListDetailRequest
+//
+// @return CustomerNoteListDetailResponse
+func (client *Client) CustomerNoteListDetail(request *CustomerNoteListDetailRequest) (_result *CustomerNoteListDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CustomerNoteListDetailResponse{}
+	_body, _err := client.CustomerNoteListDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries exported bill files.
 //
 // @param request - GetBillDetailFileListRequest
