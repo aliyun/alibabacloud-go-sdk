@@ -18,23 +18,8 @@ type iListPartitionsRequest interface {
 }
 
 type ListPartitionsRequest struct {
-	// The maximum number of records to return in a single request.
-	//
-	// example:
-	//
-	// 1000
-	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token used to retrieve the next page of results. If the response does not include this token, pass an empty string ("").
-	//
-	// example:
-	//
-	// ""
-	PageToken *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
-	// The partition name pattern.
-	//
-	// example:
-	//
-	// partition
+	MaxResults           *int64  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	PageToken            *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
 	PartitionNamePattern *string `json:"partitionNamePattern,omitempty" xml:"partitionNamePattern,omitempty"`
 }
 

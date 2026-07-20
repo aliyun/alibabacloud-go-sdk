@@ -44,70 +44,29 @@ type iPartitionSummary interface {
 }
 
 type PartitionSummary struct {
-	// The creation timestamp for the partition.
-	//
-	// example:
-	//
-	// 1744970111419
+	// Partition creation timestamp in milliseconds
 	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The name of the database.
-	//
-	// example:
-	//
-	// default
+	// Database name
 	DatabaseName *string `json:"databaseName,omitempty" xml:"databaseName,omitempty"`
-	// The last access timestamp for the partition\\"s data.
-	//
-	// example:
-	//
-	// 1744970111419
-	LastAccessTime *int64 `json:"lastAccessTime,omitempty" xml:"lastAccessTime,omitempty"`
-	// The last requester.
-	LastRequester *string `json:"lastRequester,omitempty" xml:"lastRequester,omitempty"`
-	// The name of the partition.
-	//
-	// example:
-	//
-	// hh=18
-	PartitionName *string `json:"partitionName,omitempty" xml:"partitionName,omitempty"`
-	// The storage action parameters.
-	StorageActionParams map[string]*string `json:"storageActionParams,omitempty" xml:"storageActionParams,omitempty"`
-	// The storage action timestamp.
-	StorageActionTimestamp *int64 `json:"storageActionTimestamp,omitempty" xml:"storageActionTimestamp,omitempty"`
-	// The storage class.
-	StorageClass *string `json:"storageClass,omitempty" xml:"storageClass,omitempty"`
-	// The name of the table.
-	//
-	// example:
-	//
-	// table1
-	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
-	// The top requester.
-	TopRequester *string `json:"topRequester,omitempty" xml:"topRequester,omitempty"`
-	// Total file access count.
-	TotalFileAccessNum *int64 `json:"totalFileAccessNum,omitempty" xml:"totalFileAccessNum,omitempty"`
-	// Total file access count over the last 30 days.
-	TotalFileAccessNum30d *int64 `json:"totalFileAccessNum30d,omitempty" xml:"totalFileAccessNum30d,omitempty"`
-	// Total file access count over the last 7 days.
-	TotalFileAccessNum7d *int64 `json:"totalFileAccessNum7d,omitempty" xml:"totalFileAccessNum7d,omitempty"`
-	// The total number of files in the partition.
-	//
-	// example:
-	//
-	// 2
+	// Total files in partition
+	LastAccessTime *int64  `json:"lastAccessTime,omitempty" xml:"lastAccessTime,omitempty"`
+	LastRequester  *string `json:"lastRequester,omitempty" xml:"lastRequester,omitempty"`
+	// Partition identifier
+	PartitionName          *string            `json:"partitionName,omitempty" xml:"partitionName,omitempty"`
+	StorageActionParams    map[string]*string `json:"storageActionParams,omitempty" xml:"storageActionParams,omitempty"`
+	StorageActionTimestamp *int64             `json:"storageActionTimestamp,omitempty" xml:"storageActionTimestamp,omitempty"`
+	StorageClass           *string            `json:"storageClass,omitempty" xml:"storageClass,omitempty"`
+	// Table name
+	TableName             *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
+	TopRequester          *string `json:"topRequester,omitempty" xml:"topRequester,omitempty"`
+	TotalFileAccessNum    *int64  `json:"totalFileAccessNum,omitempty" xml:"totalFileAccessNum,omitempty"`
+	TotalFileAccessNum30d *int64  `json:"totalFileAccessNum30d,omitempty" xml:"totalFileAccessNum30d,omitempty"`
+	TotalFileAccessNum7d  *int64  `json:"totalFileAccessNum7d,omitempty" xml:"totalFileAccessNum7d,omitempty"`
+	// 24h access count
 	TotalFileCount *int64 `json:"totalFileCount,omitempty" xml:"totalFileCount,omitempty"`
-	// The total size, in bytes, of all files in the partition.
-	//
-	// example:
-	//
-	// 2048
+	// Last data access timestamp in milliseconds
 	TotalFileSizeInBytes *int64 `json:"totalFileSizeInBytes,omitempty" xml:"totalFileSizeInBytes,omitempty"`
-	// The last update timestamp for the partition.
-	//
-	// example:
-	//
-	// 1744970111419
-	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	UpdatedAt            *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
 }
 
 func (s PartitionSummary) String() string {

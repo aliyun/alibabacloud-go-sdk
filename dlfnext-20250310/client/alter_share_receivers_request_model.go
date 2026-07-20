@@ -16,9 +16,7 @@ type iAlterShareReceiversRequest interface {
 }
 
 type AlterShareReceiversRequest struct {
-	// The receivers to add.
-	AddedReceivers []*string `json:"addedReceivers,omitempty" xml:"addedReceivers,omitempty" type:"Repeated"`
-	// The receivers to remove.
+	AddedReceivers   []*string `json:"addedReceivers,omitempty" xml:"addedReceivers,omitempty" type:"Repeated"`
 	RemovedReceivers []*string `json:"removedReceivers,omitempty" xml:"removedReceivers,omitempty" type:"Repeated"`
 }
 

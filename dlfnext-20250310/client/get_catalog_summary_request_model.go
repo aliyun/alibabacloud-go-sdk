@@ -14,11 +14,6 @@ type iGetCatalogSummaryRequest interface {
 }
 
 type GetCatalogSummaryRequest struct {
-	// The date of the storage overview.
-	//
-	// example:
-	//
-	// 2025-09-18
 	Date *string `json:"date,omitempty" xml:"date,omitempty"`
 }
 

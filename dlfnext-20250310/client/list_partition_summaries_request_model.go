@@ -18,23 +18,8 @@ type iListPartitionSummariesRequest interface {
 }
 
 type ListPartitionSummariesRequest struct {
-	// The number of entries to return on each page.
-	//
-	// example:
-	//
-	// 100
-	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token for the next page of results. If the response does not include this token, pass an empty string ("").
-	//
-	// example:
-	//
-	// ""
-	PageToken *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
-	// The partition name pattern.
-	//
-	// example:
-	//
-	// hh=10
+	MaxResults           *int32  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	PageToken            *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
 	PartitionNamePattern *string `json:"partitionNamePattern,omitempty" xml:"partitionNamePattern,omitempty"`
 }
 

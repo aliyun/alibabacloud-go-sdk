@@ -16,13 +16,7 @@ type iCreateDatabaseRequest interface {
 }
 
 type CreateDatabaseRequest struct {
-	// The name of the database.
-	//
-	// example:
-	//
-	// database_name
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The configuration options.
+	Name    *string            `json:"name,omitempty" xml:"name,omitempty"`
 	Options map[string]*string `json:"options,omitempty" xml:"options,omitempty"`
 }
 

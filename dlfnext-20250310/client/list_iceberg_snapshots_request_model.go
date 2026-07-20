@@ -16,18 +16,8 @@ type iListIcebergSnapshotsRequest interface {
 }
 
 type ListIcebergSnapshotsRequest struct {
-	// The maximum number of records to return in a single request.
-	//
-	// example:
-	//
-	// 1000
-	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token used to retrieve the next page of results. If the response does not return this token, pass an empty string ("").
-	//
-	// example:
-	//
-	// ""
-	PageToken *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
+	MaxResults *int32  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	PageToken  *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
 }
 
 func (s ListIcebergSnapshotsRequest) String() string {

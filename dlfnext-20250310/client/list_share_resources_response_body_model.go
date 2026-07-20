@@ -18,19 +18,8 @@ type iListShareResourcesResponseBody interface {
 }
 
 type ListShareResourcesResponseBody struct {
-	// The ID of the catalog.
-	//
-	// example:
-	//
-	// clg-paimon-xxxx
-	CatalogId *string `json:"catalogId,omitempty" xml:"catalogId,omitempty"`
-	// The token used to page through results. A null value indicates that this is the last page.
-	//
-	// example:
-	//
-	// ""
-	NextPageToken *string `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
-	// The shared resources.
+	CatalogId      *string          `json:"catalogId,omitempty" xml:"catalogId,omitempty"`
+	NextPageToken  *string          `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
 	ShareResources []*ShareResource `json:"shareResources,omitempty" xml:"shareResources,omitempty" type:"Repeated"`
 }
 

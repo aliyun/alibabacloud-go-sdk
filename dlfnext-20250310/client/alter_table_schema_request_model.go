@@ -14,7 +14,6 @@ type iAlterTableSchemaRequest interface {
 }
 
 type AlterTableSchemaRequest struct {
-	// The table schema.
 	Schema *Schema `json:"schema,omitempty" xml:"schema,omitempty"`
 }
 

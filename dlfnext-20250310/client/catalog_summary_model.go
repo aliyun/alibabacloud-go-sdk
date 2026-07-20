@@ -42,68 +42,22 @@ type iCatalogSummary interface {
 }
 
 type CatalogSummary struct {
-	// The total number of metadata requests in the current month.
-	//
-	// example:
-	//
-	// 1000
-	ApiVisitCountMonthly *int64 `json:"apiVisitCountMonthly,omitempty" xml:"apiVisitCountMonthly,omitempty"`
-	// The month-over-month data on the total number of databases.
-	DatabaseCount *MoMValues `json:"databaseCount,omitempty" xml:"databaseCount,omitempty"`
-	// The total number of file requests for the current month.
-	//
-	// example:
-	//
-	// 10000
-	FileAccessCountMonthly *int64 `json:"fileAccessCountMonthly,omitempty" xml:"fileAccessCountMonthly,omitempty"`
-	// The date when the storage overview data was updated.
-	//
-	// example:
-	//
-	// 2025-01-01
-	GeneratedDate *string `json:"generatedDate,omitempty" xml:"generatedDate,omitempty"`
-	// The storage usage for Archive data files.
-	//
-	// example:
-	//
-	// 10240
-	ObjTypeArchiveSize *int64 `json:"objTypeArchiveSize,omitempty" xml:"objTypeArchiveSize,omitempty"`
-	// The storage usage for Cold Archive data files.
-	//
-	// example:
-	//
-	// 10240
-	ObjTypeColdArchiveSize *int64 `json:"objTypeColdArchiveSize,omitempty" xml:"objTypeColdArchiveSize,omitempty"`
-	// The storage usage for Infrequent Access (IA) data files.
-	//
-	// example:
-	//
-	// 10240
-	ObjTypeIaSize *int64 `json:"objTypeIaSize,omitempty" xml:"objTypeIaSize,omitempty"`
-	// The storage usage for Standard data files.
-	//
-	// example:
-	//
-	// 10240
-	ObjTypeStandardSize *int64 `json:"objTypeStandardSize,omitempty" xml:"objTypeStandardSize,omitempty"`
-	// The month-over-month data on the total number of partitions.
-	PartitionCount *MoMValues `json:"partitionCount,omitempty" xml:"partitionCount,omitempty"`
-	// The month-over-month data on the total number of tables.
-	TableCount *MoMValues `json:"tableCount,omitempty" xml:"tableCount,omitempty"`
-	// The data access traffic for the current month, in bytes.
-	//
-	// example:
-	//
-	// 1024
-	ThroughputMonthly *int64 `json:"throughputMonthly,omitempty" xml:"throughputMonthly,omitempty"`
-	// The month-over-month data on the total number of files.
-	TotalFileCount *MoMValues `json:"totalFileCount,omitempty" xml:"totalFileCount,omitempty"`
-	// The change in storage capacity from the previous period, in bytes.
-	TotalFileSizeInBytes *MoMValues `json:"totalFileSizeInBytes,omitempty" xml:"totalFileSizeInBytes,omitempty"`
-	// The month-over-month data for the total number of metadata files.
-	TotalMetaFileCount *MoMValues `json:"totalMetaFileCount,omitempty" xml:"totalMetaFileCount,omitempty"`
-	// The month-over-month data for the storage usage of metadata files, in bytes.
-	TotalMetaSizeInBytes *MoMValues `json:"totalMetaSizeInBytes,omitempty" xml:"totalMetaSizeInBytes,omitempty"`
+	ApiVisitCountMonthly   *int64     `json:"apiVisitCountMonthly,omitempty" xml:"apiVisitCountMonthly,omitempty"`
+	DatabaseCount          *MoMValues `json:"databaseCount,omitempty" xml:"databaseCount,omitempty"`
+	FileAccessCountMonthly *int64     `json:"fileAccessCountMonthly,omitempty" xml:"fileAccessCountMonthly,omitempty"`
+	// Update date of the statistics
+	GeneratedDate          *string    `json:"generatedDate,omitempty" xml:"generatedDate,omitempty"`
+	ObjTypeArchiveSize     *int64     `json:"objTypeArchiveSize,omitempty" xml:"objTypeArchiveSize,omitempty"`
+	ObjTypeColdArchiveSize *int64     `json:"objTypeColdArchiveSize,omitempty" xml:"objTypeColdArchiveSize,omitempty"`
+	ObjTypeIaSize          *int64     `json:"objTypeIaSize,omitempty" xml:"objTypeIaSize,omitempty"`
+	ObjTypeStandardSize    *int64     `json:"objTypeStandardSize,omitempty" xml:"objTypeStandardSize,omitempty"`
+	PartitionCount         *MoMValues `json:"partitionCount,omitempty" xml:"partitionCount,omitempty"`
+	TableCount             *MoMValues `json:"tableCount,omitempty" xml:"tableCount,omitempty"`
+	ThroughputMonthly      *int64     `json:"throughputMonthly,omitempty" xml:"throughputMonthly,omitempty"`
+	TotalFileCount         *MoMValues `json:"totalFileCount,omitempty" xml:"totalFileCount,omitempty"`
+	TotalFileSizeInBytes   *MoMValues `json:"totalFileSizeInBytes,omitempty" xml:"totalFileSizeInBytes,omitempty"`
+	TotalMetaFileCount     *MoMValues `json:"totalMetaFileCount,omitempty" xml:"totalMetaFileCount,omitempty"`
+	TotalMetaSizeInBytes   *MoMValues `json:"totalMetaSizeInBytes,omitempty" xml:"totalMetaSizeInBytes,omitempty"`
 }
 
 func (s CatalogSummary) String() string {

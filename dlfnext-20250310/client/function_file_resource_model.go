@@ -16,18 +16,8 @@ type iFunctionFileResource interface {
 }
 
 type FunctionFileResource struct {
-	// Resource type
-	//
-	// example:
-	//
-	// JAR
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// Resource path
-	//
-	// example:
-	//
-	// oss://tmp/SimpleUdf.jar
-	Uri *string `json:"uri,omitempty" xml:"uri,omitempty"`
+	Uri          *string `json:"uri,omitempty" xml:"uri,omitempty"`
 }
 
 func (s FunctionFileResource) String() string {

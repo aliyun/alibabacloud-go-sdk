@@ -18,23 +18,8 @@ type iListReceiversRequest interface {
 }
 
 type ListReceiversRequest struct {
-	// The maximum number of records to return.
-	//
-	// example:
-	//
-	// 1000
-	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token to retrieve the next page of results. If the response does not include this token, pass an empty string ("").
-	//
-	// example:
-	//
-	// ""
-	PageToken *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
-	// The name of the receiver.
-	//
-	// example:
-	//
-	// receiver_name
+	MaxResults   *int32  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	PageToken    *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
 	ReceiverName *string `json:"receiverName,omitempty" xml:"receiverName,omitempty"`
 }
 

@@ -16,14 +16,8 @@ type iListProvidedSharesResponseBody interface {
 }
 
 type ListProvidedSharesResponseBody struct {
-	// The token to retrieve the next page of results. A null value indicates that this is the last page.
-	//
-	// example:
-	//
-	// ""
-	NextPageToken *string `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
-	// The shares.
-	Shares []*Share `json:"shares,omitempty" xml:"shares,omitempty" type:"Repeated"`
+	NextPageToken *string  `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
+	Shares        []*Share `json:"shares,omitempty" xml:"shares,omitempty" type:"Repeated"`
 }
 
 func (s ListProvidedSharesResponseBody) String() string {

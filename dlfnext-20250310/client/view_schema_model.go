@@ -22,24 +22,11 @@ type iViewSchema interface {
 }
 
 type ViewSchema struct {
-	// The comment.
-	//
-	// example:
-	//
-	// comment
-	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
-	// Queries for different engines.
+	Comment  *string            `json:"comment,omitempty" xml:"comment,omitempty"`
 	Dialects map[string]*string `json:"dialects,omitempty" xml:"dialects,omitempty"`
-	// The list of field definitions for the view.
-	Fields []*DataField `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
-	// The configuration parameters for the view.
-	Options map[string]*string `json:"options,omitempty" xml:"options,omitempty"`
-	// The default query for the view.
-	//
-	// example:
-	//
-	// select id from t1;
-	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	Fields   []*DataField       `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	Options  map[string]*string `json:"options,omitempty" xml:"options,omitempty"`
+	Query    *string            `json:"query,omitempty" xml:"query,omitempty"`
 }
 
 func (s ViewSchema) String() string {

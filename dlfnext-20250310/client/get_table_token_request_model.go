@@ -14,11 +14,6 @@ type iGetTableTokenRequest interface {
 }
 
 type GetTableTokenRequest struct {
-	// Specifies whether the access is from a VPC.
-	//
-	// example:
-	//
-	// true
 	IsInternal *bool `json:"isInternal,omitempty" xml:"isInternal,omitempty"`
 }
 

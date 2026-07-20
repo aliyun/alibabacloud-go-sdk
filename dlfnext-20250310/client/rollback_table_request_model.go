@@ -14,7 +14,6 @@ type iRollbackTableRequest interface {
 }
 
 type RollbackTableRequest struct {
-	// The details of the instance.
 	Instant *FullInstant `json:"instant,omitempty" xml:"instant,omitempty"`
 }
 

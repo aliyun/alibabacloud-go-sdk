@@ -16,14 +16,8 @@ type iListPermissionsResponseBody interface {
 }
 
 type ListPermissionsResponseBody struct {
-	// The token to retrieve the next page of results. If this parameter is null, all results have been returned.
-	//
-	// example:
-	//
-	// E8ABEB1C3DB893D16576269017992F57
-	NextPageToken *string `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
-	// The permissions.
-	Permissions []*Permission `json:"permissions,omitempty" xml:"permissions,omitempty" type:"Repeated"`
+	NextPageToken *string       `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
+	Permissions   []*Permission `json:"permissions,omitempty" xml:"permissions,omitempty" type:"Repeated"`
 }
 
 func (s ListPermissionsResponseBody) String() string {

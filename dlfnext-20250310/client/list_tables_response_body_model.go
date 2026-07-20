@@ -16,14 +16,8 @@ type iListTablesResponseBody interface {
 }
 
 type ListTablesResponseBody struct {
-	// The token to retrieve the next page of results. If this parameter is null, all results have been returned.
-	//
-	// example:
-	//
-	// E8ABEB1C3DB893D16576269017992F57
-	NextPageToken *string `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
-	// A list of tables.
-	Tables []*string `json:"tables,omitempty" xml:"tables,omitempty" type:"Repeated"`
+	NextPageToken *string   `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
+	Tables        []*string `json:"tables,omitempty" xml:"tables,omitempty" type:"Repeated"`
 }
 
 func (s ListTablesResponseBody) String() string {

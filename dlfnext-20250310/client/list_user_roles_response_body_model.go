@@ -16,14 +16,8 @@ type iListUserRolesResponseBody interface {
 }
 
 type ListUserRolesResponseBody struct {
-	// The pagination token used to retrieve the next page of data. If null is returned, the current page is the last page.
-	//
-	// example:
-	//
-	// E8ABEB1C3DB893D16576269017992F57
 	NextPageToken *string `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
-	// The roles.
-	Roles []*Role `json:"roles,omitempty" xml:"roles,omitempty" type:"Repeated"`
+	Roles         []*Role `json:"roles,omitempty" xml:"roles,omitempty" type:"Repeated"`
 }
 
 func (s ListUserRolesResponseBody) String() string {

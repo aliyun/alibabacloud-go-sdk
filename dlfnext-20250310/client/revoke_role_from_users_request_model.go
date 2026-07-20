@@ -16,13 +16,7 @@ type iRevokeRoleFromUsersRequest interface {
 }
 
 type RevokeRoleFromUsersRequest struct {
-	// The resource descriptor for the DLF role.
-	//
-	// example:
-	//
-	// acs:dlf::[accountId]:role/role_name
-	RolePrincipal *string `json:"rolePrincipal,omitempty" xml:"rolePrincipal,omitempty"`
-	// The resource descriptors for the users.
+	RolePrincipal  *string   `json:"rolePrincipal,omitempty" xml:"rolePrincipal,omitempty"`
 	UserPrincipals []*string `json:"userPrincipals,omitempty" xml:"userPrincipals,omitempty" type:"Repeated"`
 }
 

@@ -16,13 +16,7 @@ type iGrantRoleToUsersRequest interface {
 }
 
 type GrantRoleToUsersRequest struct {
-	// The resource descriptor for a role.
-	//
-	// example:
-	//
-	// acs:dlf::[accountId]:role/role_name
-	RolePrincipal *string `json:"rolePrincipal,omitempty" xml:"rolePrincipal,omitempty"`
-	// The resource descriptors for users.
+	RolePrincipal  *string   `json:"rolePrincipal,omitempty" xml:"rolePrincipal,omitempty"`
 	UserPrincipals []*string `json:"userPrincipals,omitempty" xml:"userPrincipals,omitempty" type:"Repeated"`
 }
 

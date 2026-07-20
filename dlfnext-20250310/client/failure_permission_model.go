@@ -18,20 +18,9 @@ type iFailurePermission interface {
 }
 
 type FailurePermission struct {
-	// The error code.
-	//
-	// example:
-	//
-	// 空
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// The error message.
-	//
-	// example:
-	//
-	// 空
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// The permission information.
-	Permission *Permission `json:"permission,omitempty" xml:"permission,omitempty"`
+	ErrorCode    *string     `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string     `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	Permission   *Permission `json:"permission,omitempty" xml:"permission,omitempty"`
 }
 
 func (s FailurePermission) String() string {

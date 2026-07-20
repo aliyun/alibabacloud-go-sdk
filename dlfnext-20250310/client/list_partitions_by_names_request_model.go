@@ -14,7 +14,6 @@ type iListPartitionsByNamesRequest interface {
 }
 
 type ListPartitionsByNamesRequest struct {
-	// 分区规格列表。
 	Specs []map[string]*string `json:"specs,omitempty" xml:"specs,omitempty" type:"Repeated"`
 }
 

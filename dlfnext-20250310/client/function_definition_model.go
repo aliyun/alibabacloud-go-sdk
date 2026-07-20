@@ -24,15 +24,15 @@ type iFunctionDefinition interface {
 }
 
 type FunctionDefinition struct {
-	// Required in FileFunctionDefinition.
+	// required in FileFunctionDefinition
 	ClassName *string `json:"className,omitempty" xml:"className,omitempty"`
-	// Required in SQLFunctionDefinition and LambdaFunctionDefinition.
+	// required in SQLFunctionDefinition/LambdaFunctionDefinition
 	Definition *string `json:"definition,omitempty" xml:"definition,omitempty"`
-	// Required in FileFunctionDefinition.
+	// required in FileFunctionDefinition
 	FileResources []*FunctionFileResource `json:"fileResources,omitempty" xml:"fileResources,omitempty" type:"Repeated"`
-	// Required in FileFunctionDefinition.
+	// required in FileFunctionDefinition
 	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	// Required in LambdaFunctionDefinition and FileFunctionDefinition.
+	// required in LambdaFunctionDefinition/FileFunctionDefinition
 	Language *string `json:"language,omitempty" xml:"language,omitempty"`
 	Type     *string `json:"type,omitempty" xml:"type,omitempty"`
 }

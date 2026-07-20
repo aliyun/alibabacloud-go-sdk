@@ -14,7 +14,6 @@ type iListPartitionsByNamesResponseBody interface {
 }
 
 type ListPartitionsByNamesResponseBody struct {
-	// 分区。
 	Partitions []*Partition `json:"partitions,omitempty" xml:"partitions,omitempty" type:"Repeated"`
 }
 

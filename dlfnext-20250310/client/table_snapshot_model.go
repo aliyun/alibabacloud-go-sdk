@@ -26,20 +26,13 @@ type iTableSnapshot interface {
 }
 
 type TableSnapshot struct {
-	// The total number of files in the snapshot.
-	FileCount *int64 `json:"fileCount,omitempty" xml:"fileCount,omitempty"`
-	// The total size of all files in the snapshot, in bytes.
-	FileSizeInBytes *int64 `json:"fileSizeInBytes,omitempty" xml:"fileSizeInBytes,omitempty"`
-	// The creation time of the most recent file in the snapshot, as a Unix timestamp in milliseconds.
-	LastFileCreationTime *int64 `json:"lastFileCreationTime,omitempty" xml:"lastFileCreationTime,omitempty"`
-	// The total number of partitions in the table.
-	PartitionCount *int64 `json:"partitionCount,omitempty" xml:"partitionCount,omitempty"`
-	// The total number of records in the snapshot.
-	RecordCount *int64 `json:"recordCount,omitempty" xml:"recordCount,omitempty"`
-	// Contains detailed information about the snapshot.
-	Snapshot *Snapshot `json:"snapshot,omitempty" xml:"snapshot,omitempty"`
-	// The total number of buckets in the table.
-	TotalBuckets *int32 `json:"totalBuckets,omitempty" xml:"totalBuckets,omitempty"`
+	FileCount            *int64    `json:"fileCount,omitempty" xml:"fileCount,omitempty"`
+	FileSizeInBytes      *int64    `json:"fileSizeInBytes,omitempty" xml:"fileSizeInBytes,omitempty"`
+	LastFileCreationTime *int64    `json:"lastFileCreationTime,omitempty" xml:"lastFileCreationTime,omitempty"`
+	PartitionCount       *int64    `json:"partitionCount,omitempty" xml:"partitionCount,omitempty"`
+	RecordCount          *int64    `json:"recordCount,omitempty" xml:"recordCount,omitempty"`
+	Snapshot             *Snapshot `json:"snapshot,omitempty" xml:"snapshot,omitempty"`
+	TotalBuckets         *int32    `json:"totalBuckets,omitempty" xml:"totalBuckets,omitempty"`
 }
 
 func (s TableSnapshot) String() string {

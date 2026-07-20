@@ -22,15 +22,11 @@ type iIcebergTableMetadata interface {
 }
 
 type IcebergTableMetadata struct {
-	// The latest snapshot of the Iceberg table.
-	CurrentSnapshot *IcebergSnapshot `json:"currentSnapshot,omitempty" xml:"currentSnapshot,omitempty"`
-	// The fields.
-	Fields             []*IcebergNestedField `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
-	IdentifierFieldIds []*int32              `json:"identifierFieldIds,omitempty" xml:"identifierFieldIds,omitempty" type:"Repeated"`
-	// The partition fields.
-	PartitionFields []*IcebergPartitionField `json:"partitionFields,omitempty" xml:"partitionFields,omitempty" type:"Repeated"`
-	// The properties.
-	Properties map[string]*string `json:"properties,omitempty" xml:"properties,omitempty"`
+	CurrentSnapshot    *IcebergSnapshot         `json:"currentSnapshot,omitempty" xml:"currentSnapshot,omitempty"`
+	Fields             []*IcebergNestedField    `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	IdentifierFieldIds []*int32                 `json:"identifierFieldIds,omitempty" xml:"identifierFieldIds,omitempty" type:"Repeated"`
+	PartitionFields    []*IcebergPartitionField `json:"partitionFields,omitempty" xml:"partitionFields,omitempty" type:"Repeated"`
+	Properties         map[string]*string       `json:"properties,omitempty" xml:"properties,omitempty"`
 }
 
 func (s IcebergTableMetadata) String() string {

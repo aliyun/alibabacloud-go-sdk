@@ -18,23 +18,11 @@ type iMoMValues interface {
 }
 
 type MoMValues struct {
-	// The current value.
-	//
-	// example:
-	//
-	// 1000
+	// total
 	CurrentValue *int64 `json:"currentValue,omitempty" xml:"currentValue,omitempty"`
-	// The value of the previous day.
-	//
-	// example:
-	//
-	// 800
+	// daily addition
 	LastDayValue *int64 `json:"lastDayValue,omitempty" xml:"lastDayValue,omitempty"`
-	// The value of the previous month.
-	//
-	// example:
-	//
-	// 100
+	// monthly addition
 	LastMonthValue *int64 `json:"lastMonthValue,omitempty" xml:"lastMonthValue,omitempty"`
 }
 

@@ -29,6 +29,8 @@ type iTable interface {
 	GetSchema() *Schema
 	SetSchemaId(v int64) *Table
 	GetSchemaId() *int64
+	SetStatus(v string) *Table
+	GetStatus() *string
 	SetStorageAction(v string) *Table
 	GetStorageAction() *string
 	SetStorageActionTimestamp(v int64) *Table
@@ -44,76 +46,23 @@ type iTable interface {
 }
 
 type Table struct {
-	// The time when the table was created.
-	//
-	// example:
-	//
-	// 1741266704867
-	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The user who created the table.
-	//
-	// example:
-	//
-	// acs:ram::[accountId]:root
-	CreatedBy            *string               `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	IcebergTableMetadata *IcebergTableMetadata `json:"icebergTableMetadata,omitempty" xml:"icebergTableMetadata,omitempty"`
-	// The UUID of the table.
-	//
-	// example:
-	//
-	// 1
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// Indicates whether the table is an external table.
-	//
-	// example:
-	//
-	// true
-	IsExternal *bool `json:"isExternal,omitempty" xml:"isExternal,omitempty"`
-	// The name of the table.
-	//
-	// example:
-	//
-	// table_test
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The owner of the table.
-	//
-	// example:
-	//
-	// acs:ram::[accountId]:root
-	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
-	// The table URI.
-	//
-	// example:
-	//
-	// oss://clg-paimon-xxx/db-xxx/tbl-xxxx
-	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// The table schema.
-	Schema *Schema `json:"schema,omitempty" xml:"schema,omitempty"`
-	// The ID of the schema.
-	//
-	// example:
-	//
-	// 1
-	SchemaId *int64 `json:"schemaId,omitempty" xml:"schemaId,omitempty"`
-	// The storage action.
-	StorageAction *string `json:"storageAction,omitempty" xml:"storageAction,omitempty"`
-	// The timestamp of the storage action.
-	StorageActionTimestamp *int64 `json:"storageActionTimestamp,omitempty" xml:"storageActionTimestamp,omitempty"`
-	// The storage class of the table.
-	StorageClass *string `json:"storageClass,omitempty" xml:"storageClass,omitempty"`
-	Type         *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The time when the table was last updated.
-	//
-	// example:
-	//
-	// 1741266704867
-	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	// The user who last updated the table.
-	//
-	// example:
-	//
-	// acs:ram::[accountId]:root
-	UpdatedBy *string `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
+	CreatedAt              *int64                `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	CreatedBy              *string               `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	IcebergTableMetadata   *IcebergTableMetadata `json:"icebergTableMetadata,omitempty" xml:"icebergTableMetadata,omitempty"`
+	Id                     *string               `json:"id,omitempty" xml:"id,omitempty"`
+	IsExternal             *bool                 `json:"isExternal,omitempty" xml:"isExternal,omitempty"`
+	Name                   *string               `json:"name,omitempty" xml:"name,omitempty"`
+	Owner                  *string               `json:"owner,omitempty" xml:"owner,omitempty"`
+	Path                   *string               `json:"path,omitempty" xml:"path,omitempty"`
+	Schema                 *Schema               `json:"schema,omitempty" xml:"schema,omitempty"`
+	SchemaId               *int64                `json:"schemaId,omitempty" xml:"schemaId,omitempty"`
+	Status                 *string               `json:"status,omitempty" xml:"status,omitempty"`
+	StorageAction          *string               `json:"storageAction,omitempty" xml:"storageAction,omitempty"`
+	StorageActionTimestamp *int64                `json:"storageActionTimestamp,omitempty" xml:"storageActionTimestamp,omitempty"`
+	StorageClass           *string               `json:"storageClass,omitempty" xml:"storageClass,omitempty"`
+	Type                   *string               `json:"type,omitempty" xml:"type,omitempty"`
+	UpdatedAt              *int64                `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	UpdatedBy              *string               `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
 }
 
 func (s Table) String() string {
@@ -162,6 +111,10 @@ func (s *Table) GetSchema() *Schema {
 
 func (s *Table) GetSchemaId() *int64 {
 	return s.SchemaId
+}
+
+func (s *Table) GetStatus() *string {
+	return s.Status
 }
 
 func (s *Table) GetStorageAction() *string {
@@ -235,6 +188,11 @@ func (s *Table) SetSchema(v *Schema) *Table {
 
 func (s *Table) SetSchemaId(v int64) *Table {
 	s.SchemaId = &v
+	return s
+}
+
+func (s *Table) SetStatus(v string) *Table {
+	s.Status = &v
 	return s
 }
 

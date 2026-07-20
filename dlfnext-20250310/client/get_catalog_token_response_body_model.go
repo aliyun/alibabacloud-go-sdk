@@ -16,14 +16,8 @@ type iGetCatalogTokenResponseBody interface {
 }
 
 type GetCatalogTokenResponseBody struct {
-	// The token expiration time.
-	//
-	// example:
-	//
-	// 1749160909000
-	ExpiresAtMillis *int64 `json:"expiresAtMillis,omitempty" xml:"expiresAtMillis,omitempty"`
-	// The token for the catalog.
-	Token map[string]*string `json:"token,omitempty" xml:"token,omitempty"`
+	ExpiresAtMillis *int64             `json:"expiresAtMillis,omitempty" xml:"expiresAtMillis,omitempty"`
+	Token           map[string]*string `json:"token,omitempty" xml:"token,omitempty"`
 }
 
 func (s GetCatalogTokenResponseBody) String() string {

@@ -16,14 +16,8 @@ type iListSnapshotsResponseBody interface {
 }
 
 type ListSnapshotsResponseBody struct {
-	// The token used to retrieve the next page of results. If this parameter is not returned, all results have been returned.
-	//
-	// example:
-	//
-	// E8ABEB1C3DB893D16576269017992F57
-	NextPageToken *string `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
-	// A list of snapshots.
-	Snapshots []*Snapshot `json:"snapshots,omitempty" xml:"snapshots,omitempty" type:"Repeated"`
+	NextPageToken *string     `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
+	Snapshots     []*Snapshot `json:"snapshots,omitempty" xml:"snapshots,omitempty" type:"Repeated"`
 }
 
 func (s ListSnapshotsResponseBody) String() string {

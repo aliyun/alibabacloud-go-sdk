@@ -26,48 +26,13 @@ type iReceiver interface {
 }
 
 type Receiver struct {
-	// The comment.
-	//
-	// example:
-	//
-	// comment
-	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
-	// The time when the receiver was created.
-	//
-	// example:
-	//
-	// 1744970111419
-	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The creator.
-	//
-	// example:
-	//
-	// acs:ram::[accountId]:root
-	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	// The name of the receiver.
-	//
-	// example:
-	//
-	// receiver_name
-	ReceiverName *string `json:"receiverName,omitempty" xml:"receiverName,omitempty"`
-	// The receiver\\"s account ID.
-	//
-	// example:
-	//
-	// 1111
-	ReceiverTenantId *int64 `json:"receiverTenantId,omitempty" xml:"receiverTenantId,omitempty"`
-	// The time when the receiver was last updated.
-	//
-	// example:
-	//
-	// 1744970111419
-	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	// The user who last updated the receiver.
-	//
-	// example:
-	//
-	// acs:ram::[accountId]:root
-	UpdatedBy *string `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
+	Comment          *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	CreatedAt        *int64  `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	CreatedBy        *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	ReceiverName     *string `json:"receiverName,omitempty" xml:"receiverName,omitempty"`
+	ReceiverTenantId *int64  `json:"receiverTenantId,omitempty" xml:"receiverTenantId,omitempty"`
+	UpdatedAt        *int64  `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	UpdatedBy        *string `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
 }
 
 func (s Receiver) String() string {

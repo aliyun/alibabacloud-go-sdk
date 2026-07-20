@@ -16,14 +16,8 @@ type iListFunctionsResponseBody interface {
 }
 
 type ListFunctionsResponseBody struct {
-	// The function definitions.
-	Functions []*string `json:"functions,omitempty" xml:"functions,omitempty" type:"Repeated"`
-	// A pagination token. Use this token to retrieve the next page of results. If this parameter is null, all results have been returned.
-	//
-	// example:
-	//
-	// E8ABEB1C3DB893D16576269017992F57
-	NextPageToken *string `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
+	Functions     []*string `json:"functions,omitempty" xml:"functions,omitempty" type:"Repeated"`
+	NextPageToken *string   `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
 }
 
 func (s ListFunctionsResponseBody) String() string {

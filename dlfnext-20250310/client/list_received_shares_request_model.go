@@ -16,18 +16,8 @@ type iListReceivedSharesRequest interface {
 }
 
 type ListReceivedSharesRequest struct {
-	// The maximum number of records to return for this request.
-	//
-	// example:
-	//
-	// 1000
-	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token to retrieve the next page of results. If the response does not include this token, pass an empty string ("").
-	//
-	// example:
-	//
-	// ""
-	PageToken *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
+	MaxResults *int32  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	PageToken  *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
 }
 
 func (s ListReceivedSharesRequest) String() string {

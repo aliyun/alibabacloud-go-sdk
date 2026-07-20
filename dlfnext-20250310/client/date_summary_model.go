@@ -16,17 +16,8 @@ type iDateSummary interface {
 }
 
 type DateSummary struct {
-	// The date.
-	//
-	// example:
-	//
-	// 2025-06-01
 	Date *string `json:"date,omitempty" xml:"date,omitempty"`
-	// The value.
-	//
-	// example:
-	//
-	// 100
+	// Metric value at corresponding date
 	Value *int64 `json:"value,omitempty" xml:"value,omitempty"`
 }
 

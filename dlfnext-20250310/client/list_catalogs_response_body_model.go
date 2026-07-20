@@ -18,15 +18,8 @@ type iListCatalogsResponseBody interface {
 }
 
 type ListCatalogsResponseBody struct {
-	// A list of catalogs.
-	Catalogs []*Catalog `json:"catalogs,omitempty" xml:"catalogs,omitempty" type:"Repeated"`
-	// The token to retrieve the next page of results. If this parameter is null, all results have been returned.
-	//
-	// example:
-	//
-	// E8ABEB1C3DB893D16576269017992F57
-	NextPageToken *string `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
-	// A list of subscription computing resources.
+	Catalogs       []*Catalog        `json:"catalogs,omitempty" xml:"catalogs,omitempty" type:"Repeated"`
+	NextPageToken  *string           `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
 	PrepayResource []*PrepayResource `json:"prepayResource,omitempty" xml:"prepayResource,omitempty" type:"Repeated"`
 }
 

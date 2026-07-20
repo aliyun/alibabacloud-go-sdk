@@ -34,28 +34,17 @@ type iTableCompactionHistory interface {
 }
 
 type TableCompactionHistory struct {
-	// The number of files after compaction.
-	AfterFilesCount *int64 `json:"afterFilesCount,omitempty" xml:"afterFilesCount,omitempty"`
-	// The total size of files after compaction.
-	AfterFilesSize *int64 `json:"afterFilesSize,omitempty" xml:"afterFilesSize,omitempty"`
-	// The number of files before compaction.
-	BeforeFilesCount *int64 `json:"beforeFilesCount,omitempty" xml:"beforeFilesCount,omitempty"`
-	// The creation time of the last file before compaction.
-	BeforeFilesLastCreationTime *int64 `json:"beforeFilesLastCreationTime,omitempty" xml:"beforeFilesLastCreationTime,omitempty"`
-	// The total size of files before compaction.
-	BeforeFilesSize *int64 `json:"beforeFilesSize,omitempty" xml:"beforeFilesSize,omitempty"`
-	// The catalog ID.
-	CatalogId *string `json:"catalogId,omitempty" xml:"catalogId,omitempty"`
-	// The compaction commit time.
-	CommitTime *int64 `json:"commitTime,omitempty" xml:"commitTime,omitempty"`
-	// The snapshot ID.
-	SnapshotId *int64 `json:"snapshotId,omitempty" xml:"snapshotId,omitempty"`
-	// The table ID.
-	TableId *string `json:"tableId,omitempty" xml:"tableId,omitempty"`
-	// The time when the record was last updated.
-	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	// The user who updated the record.
-	UpdatedBy *string `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
+	AfterFilesCount             *int64  `json:"afterFilesCount,omitempty" xml:"afterFilesCount,omitempty"`
+	AfterFilesSize              *int64  `json:"afterFilesSize,omitempty" xml:"afterFilesSize,omitempty"`
+	BeforeFilesCount            *int64  `json:"beforeFilesCount,omitempty" xml:"beforeFilesCount,omitempty"`
+	BeforeFilesLastCreationTime *int64  `json:"beforeFilesLastCreationTime,omitempty" xml:"beforeFilesLastCreationTime,omitempty"`
+	BeforeFilesSize             *int64  `json:"beforeFilesSize,omitempty" xml:"beforeFilesSize,omitempty"`
+	CatalogId                   *string `json:"catalogId,omitempty" xml:"catalogId,omitempty"`
+	CommitTime                  *int64  `json:"commitTime,omitempty" xml:"commitTime,omitempty"`
+	SnapshotId                  *int64  `json:"snapshotId,omitempty" xml:"snapshotId,omitempty"`
+	TableId                     *string `json:"tableId,omitempty" xml:"tableId,omitempty"`
+	UpdatedAt                   *int64  `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	UpdatedBy                   *string `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
 }
 
 func (s TableCompactionHistory) String() string {

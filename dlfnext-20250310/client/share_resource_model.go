@@ -26,48 +26,13 @@ type iShareResource interface {
 }
 
 type ShareResource struct {
-	// The time when the resource was created.
-	//
-	// example:
-	//
-	// 1744970111419
-	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The user who created the resource.
-	//
-	// example:
-	//
-	// acs:ram::[accountId]:root
-	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	// The database name.
-	//
-	// example:
-	//
-	// database_name
+	CreatedAt    *int64  `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	CreatedBy    *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
 	DatabaseName *string `json:"databaseName,omitempty" xml:"databaseName,omitempty"`
-	// The shared resource type.
-	//
-	// example:
-	//
-	// TABLE
-	ShareType *string `json:"shareType,omitempty" xml:"shareType,omitempty"`
-	// The table name.
-	//
-	// example:
-	//
-	// table_name
-	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
-	// The time when the resource was last updated.
-	//
-	// example:
-	//
-	// 1744970111419
-	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	// The user who last updated the resource.
-	//
-	// example:
-	//
-	// acs:ram::[accountId]:root
-	UpdatedBy *string `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
+	ShareType    *string `json:"shareType,omitempty" xml:"shareType,omitempty"`
+	TableName    *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
+	UpdatedAt    *int64  `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	UpdatedBy    *string `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
 }
 
 func (s ShareResource) String() string {

@@ -14,7 +14,6 @@ type iDescribeRegionsResponseBody interface {
 }
 
 type DescribeRegionsResponseBody struct {
-	// The regions.
 	Regions []*DescribeRegionsResponseBodyRegions `json:"regions,omitempty" xml:"regions,omitempty" type:"Repeated"`
 }
 
@@ -49,29 +48,13 @@ func (s *DescribeRegionsResponseBody) Validate() error {
 }
 
 type DescribeRegionsResponseBodyRegions struct {
-	// The description.
-	//
-	// example:
-	//
-	// 华东 1
+	// The region description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-hangzhou
+	// The region name
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The display name.
-	//
-	// example:
-	//
-	// 华东1（杭州）
+	// The region show name
 	ShowName *string `json:"showName,omitempty" xml:"showName,omitempty"`
-	// The type.
-	//
-	// example:
-	//
-	// region
+	// The region type
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 

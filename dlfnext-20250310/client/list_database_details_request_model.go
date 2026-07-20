@@ -15,31 +15,15 @@ type iListDatabaseDetailsRequest interface {
 	GetMaxResults() *int32
 	SetPageToken(v string) *ListDatabaseDetailsRequest
 	GetPageToken() *string
+	SetStatus(v string) *ListDatabaseDetailsRequest
+	GetStatus() *string
 }
 
 type ListDatabaseDetailsRequest struct {
-	// The database name pattern for fuzzy matching. Supports the percent sign (%).
-	//
-	// example:
-	//
-	// database%
 	DatabaseNamePattern *string `json:"databaseNamePattern,omitempty" xml:"databaseNamePattern,omitempty"`
-	// The number of entries to return on each page.
-	//
-	// Default value: 1000.
-	//
-	// Maximum value: 1000.
-	//
-	// example:
-	//
-	// 1000
-	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token to retrieve the next page of results. If the response does not include this token, pass an empty string ("").
-	//
-	// example:
-	//
-	// ""
-	PageToken *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
+	MaxResults          *int32  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	PageToken           *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
+	Status              *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ListDatabaseDetailsRequest) String() string {
@@ -62,6 +46,10 @@ func (s *ListDatabaseDetailsRequest) GetPageToken() *string {
 	return s.PageToken
 }
 
+func (s *ListDatabaseDetailsRequest) GetStatus() *string {
+	return s.Status
+}
+
 func (s *ListDatabaseDetailsRequest) SetDatabaseNamePattern(v string) *ListDatabaseDetailsRequest {
 	s.DatabaseNamePattern = &v
 	return s
@@ -74,6 +62,11 @@ func (s *ListDatabaseDetailsRequest) SetMaxResults(v int32) *ListDatabaseDetails
 
 func (s *ListDatabaseDetailsRequest) SetPageToken(v string) *ListDatabaseDetailsRequest {
 	s.PageToken = &v
+	return s
+}
+
+func (s *ListDatabaseDetailsRequest) SetStatus(v string) *ListDatabaseDetailsRequest {
+	s.Status = &v
 	return s
 }
 

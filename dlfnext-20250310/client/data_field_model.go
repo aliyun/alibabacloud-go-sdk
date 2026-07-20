@@ -20,26 +20,10 @@ type iDataField interface {
 }
 
 type DataField struct {
-	// The column description.
-	//
-	// example:
-	//
-	// description
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The column ID.
-	//
-	// example:
-	//
-	// 1
-	Id *int32 `json:"id,omitempty" xml:"id,omitempty"`
-	// The column name.
-	//
-	// example:
-	//
-	// order_id
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The column type.
-	Type *FullDataType `json:"type,omitempty" xml:"type,omitempty"`
+	Description *string       `json:"description,omitempty" xml:"description,omitempty"`
+	Id          *int32        `json:"id,omitempty" xml:"id,omitempty"`
+	Name        *string       `json:"name,omitempty" xml:"name,omitempty"`
+	Type        *FullDataType `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s DataField) String() string {

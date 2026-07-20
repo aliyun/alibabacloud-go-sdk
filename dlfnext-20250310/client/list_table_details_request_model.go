@@ -13,6 +13,8 @@ type iListTableDetailsRequest interface {
 	GetMaxResults() *int32
 	SetPageToken(v string) *ListTableDetailsRequest
 	GetPageToken() *string
+	SetStatus(v string) *ListTableDetailsRequest
+	GetStatus() *string
 	SetTableNamePattern(v string) *ListTableDetailsRequest
 	GetTableNamePattern() *string
 	SetType(v string) *ListTableDetailsRequest
@@ -20,30 +22,11 @@ type iListTableDetailsRequest interface {
 }
 
 type ListTableDetailsRequest struct {
-	// The maximum number of records to return in a single request.
-	//
-	// example:
-	//
-	// 1000
-	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token to retrieve the next page of results. Pass the token that was returned by the previous request. For the first request, pass an empty string ("").
-	//
-	// example:
-	//
-	// ""
-	PageToken *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
-	// The pattern used to filter table names.
-	//
-	// example:
-	//
-	// table%
+	MaxResults       *int32  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	PageToken        *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
+	Status           *string `json:"status,omitempty" xml:"status,omitempty"`
 	TableNamePattern *string `json:"tableNamePattern,omitempty" xml:"tableNamePattern,omitempty"`
-	// The type.
-	//
-	// example:
-	//
-	// table
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Type             *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s ListTableDetailsRequest) String() string {
@@ -62,6 +45,10 @@ func (s *ListTableDetailsRequest) GetPageToken() *string {
 	return s.PageToken
 }
 
+func (s *ListTableDetailsRequest) GetStatus() *string {
+	return s.Status
+}
+
 func (s *ListTableDetailsRequest) GetTableNamePattern() *string {
 	return s.TableNamePattern
 }
@@ -77,6 +64,11 @@ func (s *ListTableDetailsRequest) SetMaxResults(v int32) *ListTableDetailsReques
 
 func (s *ListTableDetailsRequest) SetPageToken(v string) *ListTableDetailsRequest {
 	s.PageToken = &v
+	return s
+}
+
+func (s *ListTableDetailsRequest) SetStatus(v string) *ListTableDetailsRequest {
+	s.Status = &v
 	return s
 }
 

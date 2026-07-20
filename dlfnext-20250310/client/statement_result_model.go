@@ -30,24 +30,15 @@ type iStatementResult interface {
 }
 
 type StatementResult struct {
-	// A temporary URL to download the result set, provided only when the result set is too large to return directly.
-	DownloadUrl *string `json:"downloadUrl,omitempty" xml:"downloadUrl,omitempty"`
-	// The error message, present only if the execution fails.
-	Error *string `json:"error,omitempty" xml:"error,omitempty"`
-	// The error code, present only if the execution fails.
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// The statement\\"s total execution time, in milliseconds.
-	ExecutionTime *int64 `json:"executionTime,omitempty" xml:"executionTime,omitempty"`
-	// The zero-based index of the SQL statement in a batch execution.
-	Index *int32 `json:"index,omitempty" xml:"index,omitempty"`
-	// The number of rows affected or returned by the statement.
-	RowCount *int32 `json:"rowCount,omitempty" xml:"rowCount,omitempty"`
-	// An array of objects describing the result set\\"s schema. Each object defines a column.
-	Schema []*StatementResultSchema `json:"schema,omitempty" xml:"schema,omitempty" type:"Repeated"`
-	// The original SQL statement.
-	Sql *string `json:"sql,omitempty" xml:"sql,omitempty"`
-	// The statement\\"s execution status. Possible values are `RUNNING`, `FINISHED`, `CANCELED`, or `FAILED`.
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	DownloadUrl   *string                  `json:"downloadUrl,omitempty" xml:"downloadUrl,omitempty"`
+	Error         *string                  `json:"error,omitempty" xml:"error,omitempty"`
+	ErrorCode     *string                  `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ExecutionTime *int64                   `json:"executionTime,omitempty" xml:"executionTime,omitempty"`
+	Index         *int32                   `json:"index,omitempty" xml:"index,omitempty"`
+	RowCount      *int32                   `json:"rowCount,omitempty" xml:"rowCount,omitempty"`
+	Schema        []*StatementResultSchema `json:"schema,omitempty" xml:"schema,omitempty" type:"Repeated"`
+	Sql           *string                  `json:"sql,omitempty" xml:"sql,omitempty"`
+	Status        *string                  `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s StatementResult) String() string {
@@ -153,9 +144,7 @@ func (s *StatementResult) Validate() error {
 }
 
 type StatementResultSchema struct {
-	// The name of the column.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The data type of the column.
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 

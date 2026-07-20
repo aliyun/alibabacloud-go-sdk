@@ -16,10 +16,8 @@ type iAlterCatalogRequest interface {
 }
 
 type AlterCatalogRequest struct {
-	// The items to delete.
-	Removals []*string `json:"removals,omitempty" xml:"removals,omitempty" type:"Repeated"`
-	// The items to update.
-	Updates map[string]*string `json:"updates,omitempty" xml:"updates,omitempty"`
+	Removals []*string          `json:"removals,omitempty" xml:"removals,omitempty" type:"Repeated"`
+	Updates  map[string]*string `json:"updates,omitempty" xml:"updates,omitempty"`
 }
 
 func (s AlterCatalogRequest) String() string {

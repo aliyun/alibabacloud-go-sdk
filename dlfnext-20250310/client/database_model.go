@@ -23,6 +23,8 @@ type iDatabase interface {
 	GetOptions() map[string]*string
 	SetOwner(v string) *Database
 	GetOwner() *string
+	SetStatus(v string) *Database
+	GetStatus() *string
 	SetTableCount(v int64) *Database
 	GetTableCount() *int64
 	SetUpdatedAt(v int64) *Database
@@ -32,58 +34,17 @@ type iDatabase interface {
 }
 
 type Database struct {
-	// The database creation time.
-	//
-	// example:
-	//
-	// 1744970111419
-	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The database creator.
-	//
-	// example:
-	//
-	// acs:ram::[accountId]:root
-	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	// The database UUID.
-	//
-	// example:
-	//
-	// 1
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The database URI.
-	//
-	// example:
-	//
-	// oss://clg-paimon-xxx/db-xxx
-	Location *string `json:"location,omitempty" xml:"location,omitempty"`
-	// The database name.
-	//
-	// example:
-	//
-	// test_database
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The extension options.
-	Options map[string]*string `json:"options,omitempty" xml:"options,omitempty"`
-	// The owner.
-	//
-	// example:
-	//
-	// acs:ram::[accountId]:root
-	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
-	// The number of tables in the database.
-	TableCount *int64 `json:"tableCount,omitempty" xml:"tableCount,omitempty"`
-	// The time when the database was last updated.
-	//
-	// example:
-	//
-	// 1744970111419
-	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	// The user who last updated the database.
-	//
-	// example:
-	//
-	// acs:ram::[accountId]:root
-	UpdatedBy *string `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
+	CreatedAt  *int64             `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	CreatedBy  *string            `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	Id         *string            `json:"id,omitempty" xml:"id,omitempty"`
+	Location   *string            `json:"location,omitempty" xml:"location,omitempty"`
+	Name       *string            `json:"name,omitempty" xml:"name,omitempty"`
+	Options    map[string]*string `json:"options,omitempty" xml:"options,omitempty"`
+	Owner      *string            `json:"owner,omitempty" xml:"owner,omitempty"`
+	Status     *string            `json:"status,omitempty" xml:"status,omitempty"`
+	TableCount *int64             `json:"tableCount,omitempty" xml:"tableCount,omitempty"`
+	UpdatedAt  *int64             `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	UpdatedBy  *string            `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
 }
 
 func (s Database) String() string {
@@ -120,6 +81,10 @@ func (s *Database) GetOptions() map[string]*string {
 
 func (s *Database) GetOwner() *string {
 	return s.Owner
+}
+
+func (s *Database) GetStatus() *string {
+	return s.Status
 }
 
 func (s *Database) GetTableCount() *int64 {
@@ -166,6 +131,11 @@ func (s *Database) SetOptions(v map[string]*string) *Database {
 
 func (s *Database) SetOwner(v string) *Database {
 	s.Owner = &v
+	return s
+}
+
+func (s *Database) SetStatus(v string) *Database {
+	s.Status = &v
 	return s
 }
 

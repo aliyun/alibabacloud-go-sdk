@@ -11,6 +11,8 @@ type iPermission interface {
 	GoString() string
 	SetAccess(v string) *Permission
 	GetAccess() *string
+	SetColumnMasking(v map[string]*ColumnMask) *Permission
+	GetColumnMasking() map[string]*ColumnMask
 	SetColumns(v *PermissionColumns) *Permission
 	GetColumns() *PermissionColumns
 	SetDatabase(v string) *Permission
@@ -32,41 +34,17 @@ type iPermission interface {
 }
 
 type Permission struct {
-	// The access type.
-	//
-	// example:
-	//
-	// DROP
-	Access  *string            `json:"access,omitempty" xml:"access,omitempty"`
-	Columns *PermissionColumns `json:"columns,omitempty" xml:"columns,omitempty" type:"Struct"`
-	// The name of the database.
-	//
-	// example:
-	//
-	// database_name
-	Database   *string `json:"database,omitempty" xml:"database,omitempty"`
-	ExpireTime *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
-	Function   *string `json:"function,omitempty" xml:"function,omitempty"`
-	// The user resource descriptor.
-	//
-	// example:
-	//
-	// acs:ram::[accountId]:user/user_name
-	Principal *string `json:"principal,omitempty" xml:"principal,omitempty"`
-	// The resource type of the permission.
-	//
-	// example:
-	//
-	// CATALOG
-	ResourceType *string    `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	RowFilter    *RowFilter `json:"rowFilter,omitempty" xml:"rowFilter,omitempty"`
-	// The name of the data table.
-	//
-	// example:
-	//
-	// table_name
-	Table *string `json:"table,omitempty" xml:"table,omitempty"`
-	View  *string `json:"view,omitempty" xml:"view,omitempty"`
+	Access        *string                `json:"access,omitempty" xml:"access,omitempty"`
+	ColumnMasking map[string]*ColumnMask `json:"columnMasking,omitempty" xml:"columnMasking,omitempty"`
+	Columns       *PermissionColumns     `json:"columns,omitempty" xml:"columns,omitempty" type:"Struct"`
+	Database      *string                `json:"database,omitempty" xml:"database,omitempty"`
+	ExpireTime    *string                `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	Function      *string                `json:"function,omitempty" xml:"function,omitempty"`
+	Principal     *string                `json:"principal,omitempty" xml:"principal,omitempty"`
+	ResourceType  *string                `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	RowFilter     *RowFilter             `json:"rowFilter,omitempty" xml:"rowFilter,omitempty"`
+	Table         *string                `json:"table,omitempty" xml:"table,omitempty"`
+	View          *string                `json:"view,omitempty" xml:"view,omitempty"`
 }
 
 func (s Permission) String() string {
@@ -79,6 +57,10 @@ func (s Permission) GoString() string {
 
 func (s *Permission) GetAccess() *string {
 	return s.Access
+}
+
+func (s *Permission) GetColumnMasking() map[string]*ColumnMask {
+	return s.ColumnMasking
 }
 
 func (s *Permission) GetColumns() *PermissionColumns {
@@ -119,6 +101,11 @@ func (s *Permission) GetView() *string {
 
 func (s *Permission) SetAccess(v string) *Permission {
 	s.Access = &v
+	return s
+}
+
+func (s *Permission) SetColumnMasking(v map[string]*ColumnMask) *Permission {
+	s.ColumnMasking = v
 	return s
 }
 

@@ -18,23 +18,8 @@ type iListRoleUsersRequest interface {
 }
 
 type ListRoleUsersRequest struct {
-	// The number of entries per page.
-	//
-	// example:
-	//
-	// 10
-	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token to retrieve the next page of results. If the response does not return a token, pass an empty string ("").
-	//
-	// example:
-	//
-	// ""
-	PageToken *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
-	// The resource descriptor for the DLF role.
-	//
-	// example:
-	//
-	// acs:dlf::[accountId]:role/role_name
+	MaxResults    *int32  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	PageToken     *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
 	RolePrincipal *string `json:"rolePrincipal,omitempty" xml:"rolePrincipal,omitempty"`
 }
 

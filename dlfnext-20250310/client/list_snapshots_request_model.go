@@ -16,18 +16,8 @@ type iListSnapshotsRequest interface {
 }
 
 type ListSnapshotsRequest struct {
-	// The maximum number of records to return on a single page.
-	//
-	// example:
-	//
-	// 1000
-	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token that is used to retrieve the next page of results. If the response does not provide this token, pass an empty string ("").
-	//
-	// example:
-	//
-	// ""
-	PageToken *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
+	MaxResults *int32  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	PageToken  *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
 }
 
 func (s ListSnapshotsRequest) String() string {

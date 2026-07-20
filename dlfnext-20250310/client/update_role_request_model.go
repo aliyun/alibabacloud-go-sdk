@@ -18,23 +18,8 @@ type iUpdateRoleRequest interface {
 }
 
 type UpdateRoleRequest struct {
-	// The description of the role.
-	//
-	// example:
-	//
-	// role_description
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The display name of the role.
-	//
-	// example:
-	//
-	// role_display_name
-	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The resource descriptor of the role.
-	//
-	// example:
-	//
-	// acs:dlf::[accountId]:role/role_name
+	Description   *string `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName   *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	RolePrincipal *string `json:"rolePrincipal,omitempty" xml:"rolePrincipal,omitempty"`
 }
 

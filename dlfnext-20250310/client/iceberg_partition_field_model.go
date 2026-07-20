@@ -20,29 +20,9 @@ type iIcebergPartitionField interface {
 }
 
 type IcebergPartitionField struct {
-	// The partition ID.
-	//
-	// example:
-	//
-	// 1
-	FieldId *int64 `json:"fieldId,omitempty" xml:"fieldId,omitempty"`
-	// The partition name.
-	//
-	// example:
-	//
-	// ts_day
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The source ID.
-	//
-	// example:
-	//
-	// 0
-	SourceId *int64 `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// The transformation rule.
-	//
-	// example:
-	//
-	// day
+	FieldId   *int64  `json:"fieldId,omitempty" xml:"fieldId,omitempty"`
+	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
+	SourceId  *int64  `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
 	Transform *string `json:"transform,omitempty" xml:"transform,omitempty"`
 }
 
