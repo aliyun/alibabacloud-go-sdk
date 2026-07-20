@@ -26,17 +26,17 @@ type iDescribeSiteTimeSeriesDataResponseBody interface {
 }
 
 type DescribeSiteTimeSeriesDataResponseBody struct {
-	// Returned data.
+	// The returned data.
 	Data []*DescribeSiteTimeSeriesDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The end time for fetching the data.
+	// The end time of the returned data.
 	//
-	// The date format follows ISO8601 notation and uses UTC+0, formatted as yyyy-MM-ddTHH:mm:ssZ.
+	// The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC+0.
 	//
 	// example:
 	//
 	// 2023-04-09T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The granularity of the data, in seconds.
+	// The data granularity. Unit: seconds.
 	//
 	// example:
 	//
@@ -48,21 +48,21 @@ type DescribeSiteTimeSeriesDataResponseBody struct {
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The sampling rate, in %.
+	// The sampling rate. Unit: %.
 	//
 	// example:
 	//
 	// 100
 	SamplingRate *float32 `json:"SamplingRate,omitempty" xml:"SamplingRate,omitempty"`
-	// The start time for fetching the data.
+	// The start time for the data query.
 	//
-	// The date format follows ISO8601 notation and uses UTC+0, formatted as yyyy-MM-ddTHH:mm:ssZ.
+	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
 	//
 	// example:
 	//
 	// 2023-04-08T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// Aggregated query data.
+	// The summarized data.
 	SummarizedData []*DescribeSiteTimeSeriesDataResponseBodySummarizedData `json:"SummarizedData,omitempty" xml:"SummarizedData,omitempty" type:"Repeated"`
 }
 
@@ -160,21 +160,21 @@ func (s *DescribeSiteTimeSeriesDataResponseBody) Validate() error {
 }
 
 type DescribeSiteTimeSeriesDataResponseBodyData struct {
-	// Returned data.
+	// The returned data.
 	DetailData []*DescribeSiteTimeSeriesDataResponseBodyDataDetailData `json:"DetailData,omitempty" xml:"DetailData,omitempty" type:"Repeated"`
-	// Query dimension.
+	// The query dimension.
 	//
 	// example:
 	//
 	// ALL
 	DimensionName *string `json:"DimensionName,omitempty" xml:"DimensionName,omitempty"`
-	// Query dimension value.
+	// The dimension value.
 	//
 	// example:
 	//
 	// ALL
 	DimensionValue *string `json:"DimensionValue,omitempty" xml:"DimensionValue,omitempty"`
-	// Query metric value.
+	// The metric name.
 	//
 	// example:
 	//
@@ -240,13 +240,15 @@ func (s *DescribeSiteTimeSeriesDataResponseBodyData) Validate() error {
 }
 
 type DescribeSiteTimeSeriesDataResponseBodyDataDetailData struct {
-	// Start timestamp of the time slice.
+	// The start time of the time slice.
+	//
+	// The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC+0.
 	//
 	// example:
 	//
 	// 2023-04-08T16:00:00Z
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// Value.
+	// The value.
 	//
 	// example:
 	//
@@ -285,25 +287,25 @@ func (s *DescribeSiteTimeSeriesDataResponseBodyDataDetailData) Validate() error 
 }
 
 type DescribeSiteTimeSeriesDataResponseBodySummarizedData struct {
-	// The aggregation method used.
+	// The aggregation method.
 	//
 	// example:
 	//
 	// sum
 	AggMethod *string `json:"AggMethod,omitempty" xml:"AggMethod,omitempty"`
-	// The dimension of the aggregated data being queried.
+	// The summarized dimension name.
 	//
 	// example:
 	//
 	// ALL
 	DimensionName *string `json:"DimensionName,omitempty" xml:"DimensionName,omitempty"`
-	// The value of the aggregated dimension being queried.
+	// The summarized dimension value.
 	//
 	// example:
 	//
 	// ALL
 	DimensionValue *string `json:"DimensionValue,omitempty" xml:"DimensionValue,omitempty"`
-	// The value of the aggregated metric being queried.
+	// The summarized metric name.
 	//
 	// example:
 	//

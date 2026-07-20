@@ -32,29 +32,31 @@ type iPublishEdgeContainerAppVersionShrinkRequest interface {
 type PublishEdgeContainerAppVersionShrinkRequest struct {
 	// The application ID.
 	//
+	// > 1) Obtain the AppId by calling CreateEdgeContainerApp. 2) Obtain the VersionId by calling CreateEdgeContainerAppVersion (which requires the AppId). 3) The complete call chain is CreateEdgeContainerApp → CreateEdgeContainerAppVersion → PublishEdgeContainerAppVersion.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// app-88068867578379****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// Specifies whether to fully release the version. This parameter takes effect only when PublishType is set to region.
+	// Specifies whether to perform a full release. This parameter takes effect only when PublishType is set to region.
 	//
 	// example:
 	//
 	// true
 	FullRelease *bool `json:"FullRelease,omitempty" xml:"FullRelease,omitempty"`
-	// The release percentage. Valid values: 1 to 100. Default value: 100.
+	// The publishing percentage. Valid values: **1 to 100**. Default value: **100**.
 	//
 	// example:
 	//
 	// 100
 	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
-	// The environment to which you want to release the version. Valid values:
+	// The publishing environment. Valid values:
 	//
-	// - prod: the production environment.
+	// - **prod**: production environment.
 	//
-	// - staging: the staging environment.
+	// - **staging**: staging environment.
 	//
 	// This parameter is required.
 	//
@@ -62,27 +64,27 @@ type PublishEdgeContainerAppVersionShrinkRequest struct {
 	//
 	// prod
 	PublishEnv *string `json:"PublishEnv,omitempty" xml:"PublishEnv,omitempty"`
-	// Specifies how the version is released. Valid values:
+	// The publishing type. Valid values:
 	//
-	// - percentage: releases the version by percentage.
+	// - **percentage**: Publish by percentage.
 	//
-	// - region: releases the version by region.
+	// - **region**: Publish by region.
 	//
-	// If you do not specify this parameter, the version is released by percentage by default.
+	// If this parameter is not specified, percentage-based publishing is used by default.
 	//
 	// example:
 	//
 	// percentage
 	PublishType *string `json:"PublishType,omitempty" xml:"PublishType,omitempty"`
-	// The regions to which the version is released.
+	// The list of publishing regions.
 	RegionsShrink *string `json:"Regions,omitempty" xml:"Regions,omitempty"`
-	// The remarks. This parameter is empty by default.
+	// The remarks. Default value: empty.
 	//
 	// example:
 	//
 	// test publish app
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
-	// The time when the application version starts to be released. If you do not specify this parameter, the current time is used by default.
+	// The time when the publishing starts. If this parameter is not specified, the current time is used by default.
 	//
 	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//

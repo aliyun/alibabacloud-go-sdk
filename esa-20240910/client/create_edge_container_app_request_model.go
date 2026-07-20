@@ -40,7 +40,7 @@ type iCreateEdgeContainerAppRequest interface {
 }
 
 type CreateEdgeContainerAppRequest struct {
-	// The number of consecutive failed health checks required before a healthy application is considered unhealthy.
+	// The number of consecutive failed health checks required. If an application is healthy, it is considered unhealthy after the specified number of consecutive failed probes.
 	//
 	// - Valid values: **1 to 10**.
 	//
@@ -80,9 +80,9 @@ type CreateEdgeContainerAppRequest struct {
 	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
 	// The health check method for HTTP-type listeners. Valid values:
 	//
-	// - **HEAD*	- (default): requests only the header of the page.
+	// - **HEAD*	- (default): Requests only the headers of the page.
 	//
-	// - **GET**: requests the specified page information and returns the entity body.
+	// - **GET**: Requests the specified page information and returns the entity body.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type CreateEdgeContainerAppRequest struct {
 	//
 	// 80
 	HealthCheckPort *int32 `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
-	// The number of consecutive successful health checks required before an unhealthy application is considered healthy.
+	// The number of consecutive successful health checks required. If an application is unhealthy, it is considered healthy again after the specified number of consecutive successful probes.
 	//
 	// - Valid values: **1 to 10**.
 	//
@@ -108,7 +108,7 @@ type CreateEdgeContainerAppRequest struct {
 	//
 	// 2
 	HealthCheckSuccTimes *int32 `json:"HealthCheckSuccTimes,omitempty" xml:"HealthCheckSuccTimes,omitempty"`
-	// The amount of time to wait for a response from the health check. If the backend ECS instance does not respond within the specified time, the health check is considered failed.
+	// The amount of time to wait for a response from the health check. If the backend ECS instance does not respond correctly within the specified time, the health check is considered failed.
 	//
 	// - Valid values: **1*	- to **100**.
 	//
@@ -134,7 +134,7 @@ type CreateEdgeContainerAppRequest struct {
 	HealthCheckType *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
 	// The URI used for health checks.
 	//
-	// - Length limit: **1*	- to **80*	- characters.
+	// - The length is limited to **1*	- to **80*	- characters.
 	//
 	// - Default value: **"/"**.
 	//
@@ -143,6 +143,8 @@ type CreateEdgeContainerAppRequest struct {
 	// /health_check
 	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
 	// The application name. The name must start with a lowercase letter and can contain lowercase letters, digits, and hyphens (-). The name must be 6 to 128 characters in length.
+	//
+	// 	Notice: Activate the EdgeContainer service in the console before calling this operation. Calls from accounts that have not activated the service will return a service activation error.</notice>
 	//
 	// This parameter is required.
 	//
@@ -156,7 +158,7 @@ type CreateEdgeContainerAppRequest struct {
 	//
 	// test app
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
-	// The service port number. Valid values: 1 to 65535.
+	// The server port number. Only 80 and 443 are accepted.
 	//
 	// This parameter is required.
 	//

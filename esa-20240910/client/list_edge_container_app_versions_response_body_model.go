@@ -22,13 +22,13 @@ type iListEdgeContainerAppVersionsResponseBody interface {
 }
 
 type ListEdgeContainerAppVersionsResponseBody struct {
-	// The page number.
+	// The page number of the returned data.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ListEdgeContainerAppVersionsResponseBody struct {
 	//
 	// 20
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The versions.
+	// The version list.
 	Versions []*ListEdgeContainerAppVersionsResponseBodyVersions `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
 }
 
@@ -117,21 +117,21 @@ func (s *ListEdgeContainerAppVersionsResponseBody) Validate() error {
 }
 
 type ListEdgeContainerAppVersionsResponseBodyVersions struct {
-	// The application ID.
+	// The application ID to which the version belongs.
 	//
 	// example:
 	//
 	// app-88068867578379****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The containers in the version.
+	// The array of containers included in this version.
 	Containers []*ListEdgeContainerAppVersionsResponseBodyVersionsContainers `json:"Containers,omitempty" xml:"Containers,omitempty" type:"Repeated"`
-	// The time when the version was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	// The version creation time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2022-11-10T02:53:16Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the version was last released. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	// The last publish time of this version. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -143,7 +143,7 @@ type ListEdgeContainerAppVersionsResponseBodyVersions struct {
 	//
 	// version01
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The time when the version was released. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	// The current publish time of the version. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -157,17 +157,17 @@ type ListEdgeContainerAppVersionsResponseBodyVersions struct {
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
 	// The status of the current version. Valid values:
 	//
-	// 	- **created**
+	// - **created**: Created.
 	//
-	// 	- **failed**
+	// - **failed**: Failed.
 	//
-	// 	- **creating**
+	// - **creating**: Creating.
 	//
 	// example:
 	//
 	// created
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the version was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	// The last modification time of the version. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -293,25 +293,25 @@ func (s *ListEdgeContainerAppVersionsResponseBodyVersions) Validate() error {
 }
 
 type ListEdgeContainerAppVersionsResponseBodyVersionsContainers struct {
-	// The arguments that are passed to the container startup command.
+	// The container startup arguments.
 	//
 	// example:
 	//
 	// -c a=1
 	Args *string `json:"Args,omitempty" xml:"Args,omitempty"`
-	// The command that is used to start the container.
+	// The container startup command.
 	//
 	// example:
 	//
 	// openresty -g \\"daemon off;\\"
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	// The environment variables of the container.
+	// The container environment variables.
 	//
 	// example:
 	//
 	// ENV=prod
 	EnvVariables *string `json:"EnvVariables,omitempty" xml:"EnvVariables,omitempty"`
-	// The address of the container image.
+	// The container image address.
 	//
 	// example:
 	//
@@ -323,29 +323,27 @@ type ListEdgeContainerAppVersionsResponseBodyVersionsContainers struct {
 	//
 	// container1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The command that is run before the container is started. Format: `{"exec":{"command":["cat","/etc/group"\\]}}`.
-	//
-	// If you want to cancel this configuration, set the parameter value to `""` or `{}`. If you do not specify this parameter, this configuration is ignored.
+	// The command executed after the container starts.
 	//
 	// example:
 	//
 	// sh poststart.sh "echo hello world"
 	PostStart *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
-	// The command that is run before the container is stopped.
+	// The command executed before the container stops.
 	//
 	// example:
 	//
 	// sh prestop.sh "echo hello world"
 	PreStop *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
-	// The container probe content.
+	// The container probe configuration object.
 	ProbeContent *ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent `json:"ProbeContent,omitempty" xml:"ProbeContent,omitempty" type:"Struct"`
-	// The probe type of the container.
+	// The container probe type.
 	//
 	// example:
 	//
 	// httpGet
 	ProbeType *string `json:"ProbeType,omitempty" xml:"ProbeType,omitempty"`
-	// The compute specification of the container.
+	// The container specifications.
 	//
 	// example:
 	//
@@ -461,67 +459,67 @@ func (s *ListEdgeContainerAppVersionsResponseBodyVersionsContainers) Validate() 
 }
 
 type ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent struct {
-	// The probe command.
+	// The command executed by the probe.
 	//
 	// example:
 	//
 	// openresty -g  "daemon off;
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	// The number of consecutive failed health checks required for a container to be considered as unhealthy.
+	// The number of consecutive failed health checks for the container.
 	//
 	// example:
 	//
 	// 3
 	FailureThreshold *int32 `json:"FailureThreshold,omitempty" xml:"FailureThreshold,omitempty"`
-	// The domain name that is used for health checks.
+	// The domain name for the container health check.
 	//
 	// example:
 	//
 	// test.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The request headers that are included in the container health check request.
+	// The request headers carried in the container health check.
 	//
 	// example:
 	//
 	// {\\"Content-Type\\":\\"application/json\\"}
 	HttpHeaders *string `json:"HttpHeaders,omitempty" xml:"HttpHeaders,omitempty"`
-	// The latency for container probe initialization.
+	// The initial delay time of the container probe. Unit: seconds. For example, 5 indicates that this parameter is set to five seconds.
 	//
 	// example:
 	//
 	// 10
 	InitialDelaySeconds *int32 `json:"InitialDelaySeconds,omitempty" xml:"InitialDelaySeconds,omitempty"`
-	// The path of the container health check.
+	// The path for the container health check.
 	//
 	// example:
 	//
 	// /health_check
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The interval between container health checks.
+	// The interval of the container health check. Unit: seconds. For example, 5 indicates that this parameter is set to five seconds.
 	//
 	// example:
 	//
 	// 5
 	PeriodSeconds *int32 `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
-	// The port of the container health check.
+	// The port for the container health check.
 	//
 	// example:
 	//
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The protocol that the container health check request uses.
+	// The request protocol for the container health check.
 	//
 	// example:
 	//
 	// http
 	Scheme *string `json:"Scheme,omitempty" xml:"Scheme,omitempty"`
-	// The number of consecutive successful health checks required for a container to be considered as healthy.
+	// The number of consecutive successful health checks required for the container.
 	//
 	// example:
 	//
 	// 1
 	SuccessThreshold *int32 `json:"SuccessThreshold,omitempty" xml:"SuccessThreshold,omitempty"`
-	// The timeout period of the container health check.
+	// The timeout period of the container health check. Unit: seconds. For example, 5 indicates that this parameter is set to five seconds.
 	//
 	// example:
 	//

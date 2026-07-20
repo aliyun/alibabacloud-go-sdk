@@ -24,35 +24,35 @@ type iListEdgeContainerAppsRequest interface {
 }
 
 type ListEdgeContainerAppsRequest struct {
-	// The sorting field. This parameter is left empty by default. Valid values:
+	// The field used for sorting. If this parameter is not specified, no sorting is applied. Valid values:
 	//
-	// 	- Name: the version name.
+	// - **Name**: the version name.
 	//
-	// 	- CreateTime: the time when the version was created.
+	// - **CreateTime**: the version creation time.
 	//
-	// 	- UpdateTime: the time when the version was last modified.
+	// - **ModifyTime**: the version modification time.
 	//
 	// example:
 	//
 	// CreateTime
 	OrderKey *string `json:"OrderKey,omitempty" xml:"OrderKey,omitempty"`
-	// The order in which you want to sort the query results. This parameter is left empty by default. Valid values:
+	// The sort order. If this parameter is not specified, no sorting is applied. Valid values:
 	//
-	// 	- ASC: in ascending order.
+	// - **Asc**: ascending order.
 	//
-	// 	- DESC: in descending order.
+	// - **Desc**: descending order.
 	//
 	// example:
 	//
 	// Asc
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The page number. Default value: **1**. Valid values: 1 to 65535.
+	// The page number. Default value: **1**. Valid values: **1 to 65535**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **20**. Valid values: 1 to 500.
+	// The number of entries per page. Default value: **20**. Valid values: **1 to 500**.
 	//
 	// example:
 	//
@@ -64,11 +64,11 @@ type ListEdgeContainerAppsRequest struct {
 	//
 	// ver-1005682639679266816
 	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
-	// The search criterion based on which you want to perform fuzzy search. Valid values:
+	// The type of fuzzy match. Valid values:
 	//
-	// 	- Appid: the application ID.
+	// - **AppId**: the application ID.
 	//
-	// 	- Name: the application name.
+	// - **Name**: the application name.
 	//
 	// example:
 	//

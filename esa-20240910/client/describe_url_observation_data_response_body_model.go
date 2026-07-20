@@ -20,9 +20,9 @@ type iDescribeUrlObservationDataResponseBody interface {
 }
 
 type DescribeUrlObservationDataResponseBody struct {
-	// The end of the time range during which data was queried.
+	// The end time for the data query.
 	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The time must be in UTC.
+	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
@@ -34,13 +34,13 @@ type DescribeUrlObservationDataResponseBody struct {
 	//
 	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The create time. The time is in the yyyy-MM-ddTHH:mm:ssZ format.
+	// The start time. The time is in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2022-11-06T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The objects that are returned.
+	// The returned data.
 	UrlDetailData []*DescribeUrlObservationDataResponseBodyUrlDetailData `json:"UrlDetailData,omitempty" xml:"UrlDetailData,omitempty" type:"Repeated"`
 }
 
@@ -102,49 +102,49 @@ func (s *DescribeUrlObservationDataResponseBody) Validate() error {
 }
 
 type DescribeUrlObservationDataResponseBodyUrlDetailData struct {
-	// Measures the maximum layout mutation score for every unexpected layout change that occurs throughout the life of the page.
+	// The metric that measures the largest burst of layout shift scores for every unexpected layout shift that occurs throughout the entire lifecycle of a page.
 	//
 	// example:
 	//
 	// 0.5
 	CLS *float32 `json:"CLS,omitempty" xml:"CLS,omitempty"`
-	// The platform of the device.
+	// The device platform.
 	//
 	// example:
 	//
 	// PC
 	ClientPlatform *string `json:"ClientPlatform,omitempty" xml:"ClientPlatform,omitempty"`
-	// The country or region to which the IP address belongs.
+	// The country.
 	//
 	// example:
 	//
 	// CN
 	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	// Measures the time between when the page is loaded and when any part of the page\\"s content is rendered on the screen. Unit: ms.
+	// The time from when the page starts loading to when any part of the page content is rendered on the screen. Unit: ms.
 	//
 	// example:
 	//
 	// 123
 	FCP *float32 `json:"FCP,omitempty" xml:"FCP,omitempty"`
-	// Measures the time between when the user first interacts with the page and when the browser is actually able to start processing an event handler in response to that interaction. Unit: ms.
+	// The time from when a user first interacts with a page to when the browser is actually able to begin processing event handlers in response to that interaction. Unit: ms.
 	//
 	// example:
 	//
 	// 123
 	FID *float32 `json:"FID,omitempty" xml:"FID,omitempty"`
-	// Measures the responsiveness of the page, or how long it takes for the page to respond to user input visibly. Unit: ms.
+	// The responsiveness of a page, specifically how long it takes for the page to visibly respond to user input. Unit: ms.
 	//
 	// example:
 	//
 	// 123
 	INP *float32 `json:"INP,omitempty" xml:"INP,omitempty"`
-	// Reports the rendering time of the largest image or text block visible in the viewport. Unit: ms.
+	// The render time of the largest image or text block visible within the viewport. Unit: ms.
 	//
 	// example:
 	//
 	// 123
 	LCP *float32 `json:"LCP,omitempty" xml:"LCP,omitempty"`
-	// This metric measures the time between when a resource initiates a request and when the first byte of the response starts to arrive. Unit: ms.
+	// The time from when a resource request is initiated to when the first byte of the response begins to arrive. Unit: ms.
 	//
 	// example:
 	//

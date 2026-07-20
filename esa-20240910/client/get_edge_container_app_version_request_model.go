@@ -16,7 +16,7 @@ type iGetEdgeContainerAppVersionRequest interface {
 }
 
 type GetEdgeContainerAppVersionRequest struct {
-	// The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+	// The application ID. You can call the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation to obtain the application ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetEdgeContainerAppVersionRequest struct {
 	//
 	// app-88068867578379****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The version ID, which can be obtained by calling the [ListEdgeContainerAppVersions](~~ListEdgeContainerAppVersions~~) operation.
+	// The version ID. You can call the [ListEdgeContainerAppVersions](~~ListEdgeContainerAppVersions~~) operation to obtain the version ID.
 	//
 	// This parameter is required.
 	//

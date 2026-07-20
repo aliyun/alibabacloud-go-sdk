@@ -34,7 +34,9 @@ type CreateEdgeContainerAppRecordRequest struct {
 	//
 	// a.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	// The website ID.
+	// The site ID.
+	//
+	// 	Notice: Although this parameter is marked as optional in the schema, it is required when you call this operation. If you do not specify this parameter, an InternalError(400) error is returned. Call the ListSites operation to obtain a valid SiteId.</notice>
 	//
 	// example:
 	//

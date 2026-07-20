@@ -36,17 +36,17 @@ type ListCacheReserveInstancesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: **1 to 500**. The default value is **500**.
+	// The number of entries per page. Valid values: **1*	- to **500**. Default value: **500**.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The field to sort the results by. Valid values:
+	// The sort field. Valid values:
 	//
-	// - **ExpireTime**: Expiration time.
+	// - **ExpireTime**: sorts by expiration time.
 	//
-	// - **CreateTime**: Creation time.
+	// - **CreateTime**: sorts by creation time.
 	//
 	// example:
 	//
@@ -54,23 +54,23 @@ type ListCacheReserveInstancesRequest struct {
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	// The sort order. Valid values:
 	//
-	// - **asc**: Ascending order.
+	// - **asc**: ascending order.
 	//
-	// - **desc**: Descending order.
+	// - **desc**: descending order.
 	//
 	// example:
 	//
 	// desc
 	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
-	// The status of the cache reserve instance. Valid values:
+	// The instance status of the cache reserve instance. Valid values:
 	//
-	// - **online**: The instance is running normally.
+	// - **online**: Normal service status.
 	//
-	// - **offline**: The instance has expired and is unavailable but remains within the grace period.
+	// - **offline**: The instance expires but has not exceeded the retention period and is unavailable.
 	//
-	// - **disable**: The instance is disabled.
+	// - **disable**: The instance has been released.
 	//
-	// - **overdue**: The instance is suspended due to an overdue payment.
+	// - **overdue**: The instance is stopped due to an overdue payment.
 	//
 	// if can be null:
 	// false

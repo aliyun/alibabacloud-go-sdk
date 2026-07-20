@@ -1767,9 +1767,9 @@ func (client *Client) CreateCustomScenePolicyWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Creates an application for edge containers. You can deploy and publish application versions to containerize edge services.
+// Creates an edge container application. You can deploy and release the application by version to containerize edge services.
 //
-// Note: You must activate the EdgeContainer service in the console before calling this operation. Calls from accounts that have not activated the service will return a service activation error.
+// Note: Activate the EdgeContainer service in the console before calling this operation. Calls from accounts that have not activated the service will return a service activation error.
 //
 // @param request - CreateEdgeContainerAppRequest
 //
@@ -1921,7 +1921,7 @@ func (client *Client) CreateEdgeContainerAppImageSecretWithContext(ctx context.C
 
 // Summary:
 //
-// Associates a domain name with a containerized application. This way, requests destined for the associated domain name are forwarded to the application.
+// Creates an associated domain name for an edge container application. When a user sends a request from a client to access the associated domain name, the request is forwarded to the edge application deployed by the user.
 //
 // @param request - CreateEdgeContainerAppRecordRequest
 //
@@ -1973,7 +1973,7 @@ func (client *Client) CreateEdgeContainerAppRecordWithContext(ctx context.Contex
 
 // Summary:
 //
-// Creates an edge container application version. You can iteratively publish applications by version.
+// Creates an edge container application version. You can iteratively release applications by version.
 //
 // Note:
 //
@@ -5665,11 +5665,11 @@ func (client *Client) DeleteEdgeContainerAppImageSecretWithContext(ctx context.C
 //
 // Deletes an associated domain name from an edge container application. After deletion, the edge container service can no longer be accessed through this domain name.
 //
-// Note: 1) Call CreateEdgeContainerApp first to create an edge container application and record the returned AppId.
+// Note: 1) You must first call CreateEdgeContainerApp to create an edge container application and record the returned AppId.
 //
-// 2) Call CreateEdgeContainerAppRecord first to bindomain name record (RecordName) to the application.
+// 2) You must first call CreateEdgeContainerAppRecord to bind a domain name record (RecordName) to the application.
 //
-// 3) Provide a complete three-step call example: create → bindomain → delete.
+// 3) A complete three-step call example of create, bind, and delete is provided.
 //
 // @param request - DeleteEdgeContainerAppRecordRequest
 //
@@ -9083,25 +9083,25 @@ func (client *Client) DescribeSiteLogsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Query traffic analysis time series data
+// Queries network traffic analysis timing data at the account dimension or site dimension.
 //
 // Description:
 //
-// - If you do not specify `StartTime` and `EndTime`, the API returns data for the past 24 hours; if you specify `StartTime` and `EndTime`, the API returns data for the specified time period.
+// - If you do not specify StartTime and EndTime, this operation returns data from the past 24 hours. If you specify StartTime and EndTime, this operation returns data for the specified time range.
 //
-// - The API returns different time granularities based on the span between `StartTime` and `EndTime`.
+// - The time granularity of returned data varies based on the time span between StartTime and EndTime.
 //
-//   - For a span of 3 hours or less, it returns 1-minute granularity data.
+//   - Less than or equal to 3 hours: returns data at 1-minute granularity.
 //
-//   - For a span greater than 3 hours but no more than 12 hours, it returns 5-minute granularity data.
+//   - Greater than 3 hours and less than or equal to 12 hours: returns data at 5-minute granularity.
 //
-//   - For a span greater than 12 hours but no more than 1 day, it returns 15-minute granularity data.
+//   - Greater than 12 hours and less than or equal to 1 day: returns data at 15-minute granularity.
 //
-//   - For a span greater than 1 day but no more than 10 days, it returns hourly granularity data.
+//   - Greater than 1 day and less than or equal to 10 days: returns data at 1-hour granularity.
 //
-//   - For a span greater than 10 days but no more than 31 days, it returns daily granularity data.
+//   - Greater than 10 days and less than or equal to 31 days: returns data at 1-day granularity.
 //
-// - Due to the high number of accesses during the query period, the data analysis may be sampled.
+// - Due to the large number of access requests during the query time range, data analytics results may involve sampling.
 //
 // @param tmpReq - DescribeSiteTimeSeriesDataRequest
 //
@@ -9455,7 +9455,11 @@ func (client *Client) DescribeTraceDiagnoseReportWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the page monitoring data.
+// Queries web page observation quality data.
+//
+// Description:
+//
+// If you do not specify StartTime and EndTime, this operation returns data from the past 24 hours. If you specify StartTime and EndTime, this operation returns data for the specified time range.
 //
 // @param request - DescribeUrlObservationDataRequest
 //
@@ -10677,7 +10681,7 @@ func (client *Client) GetEdgeContainerWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the information about a containerized application, including basic application configurations and health check configurations.
+// Retrieves application information for an edge container, including basic application configurations and health check settings.
 //
 // @param request - GetEdgeContainerAppRequest
 //
@@ -10893,7 +10897,11 @@ func (client *Client) GetEdgeContainerAppResourceStatusWithContext(ctx context.C
 
 // Summary:
 //
-// Queries the status information about a containerized application, including the deployment, release, and rollback of the application.
+// Retrieves the application status information of an edge container, including deployment, publishing, and rollback details.
+//
+// Description:
+//
+// You must first activate the edge container service by calling OpenEdgeContainer, and then confirm that an available application exists by calling ListEdgeContainerApps or create an application by calling CreateEdgeContainerApp.
 //
 // @param request - GetEdgeContainerAppStatusRequest
 //
@@ -10941,7 +10949,7 @@ func (client *Client) GetEdgeContainerAppStatusWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the information about a version of a containerized application. You can select an application version to release based on the version information.
+// Retrieves the version information of an edge container application. You can use the version information to select a specific version for publishing.
 //
 // @param request - GetEdgeContainerAppVersionRequest
 //
@@ -13579,6 +13587,54 @@ func (client *Client) GetUserLogDeliveryQuotaWithContext(ctx context.Context, re
 
 // Summary:
 //
+// Queries the maximum value of a numeric quota across all plans under a user account.
+//
+// Description:
+//
+// This operation allows you to query the real-time log delivery quota for different business types in your Alibaba Cloud account. You must provide your Alibaba Cloud user ID (aliUid) and the business type (BusinessType). The system returns the remaining quota for the specified business type, helping you understand the current quota usage.
+//
+// @param request - GetUserMaxPlanQuotaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserMaxPlanQuotaResponse
+func (client *Client) GetUserMaxPlanQuotaWithContext(ctx context.Context, request *GetUserMaxPlanQuotaRequest, runtime *dara.RuntimeOptions) (_result *GetUserMaxPlanQuotaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.QuotaName) {
+		query["QuotaName"] = request.QuotaName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetUserMaxPlanQuota"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetUserMaxPlanQuotaResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of a WAF ruleset for a specified instance.
 //
 // Description:
@@ -14001,7 +14057,71 @@ func (client *Client) ListAsyncTasksWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// Queries the cache reserve instances for your account.
+// Queries the list of Bot security instances.
+//
+// @param request - ListBotInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListBotInstancesResponse
+func (client *Client) ListBotInstancesWithContext(ctx context.Context, request *ListBotInstancesRequest, runtime *dara.RuntimeOptions) (_result *ListBotInstancesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !dara.IsNil(request.SortOrder) {
+		query["SortOrder"] = request.SortOrder
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListBotInstances"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListBotInstancesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of cache reserve instances for the current user.
 //
 // @param request - ListCacheReserveInstancesRequest
 //
@@ -14745,7 +14865,7 @@ func (client *Client) ListEdgeContainerAppRecordsWithContext(ctx context.Context
 
 // Summary:
 //
-// Lists versions of all containerized applications.
+// Retrieves the version list of an edge container application, including information about all successfully created applications.
 //
 // @param request - ListEdgeContainerAppVersionsRequest
 //
@@ -14785,7 +14905,7 @@ func (client *Client) ListEdgeContainerAppVersionsWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries all containerized applications in your Alibaba Cloud account.
+// Retrieves a list of edge container applications, including all edge applications created under the current account.
 //
 // @param request - ListEdgeContainerAppsRequest
 //
@@ -15323,6 +15443,56 @@ func (client *Client) ListInstanceQuotasWithUsageWithContext(ctx context.Context
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListInstanceQuotasWithUsageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the quota information of multiple instances.
+//
+// @param request - ListInstancesQuotaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstancesQuotaResponse
+func (client *Client) ListInstancesQuotaWithContext(ctx context.Context, request *ListInstancesQuotaRequest, runtime *dara.RuntimeOptions) (_result *ListInstancesQuotaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.QuotaName) {
+		query["QuotaName"] = request.QuotaName
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceIds) {
+		body["InstanceIds"] = request.InstanceIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListInstancesQuota"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListInstancesQuotaResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -16000,6 +16170,46 @@ func (client *Client) ListPostpaidSitePlansWithContext(ctx context.Context, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPostpaidSitePlansResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the minimum plan edition required for a site plan quota to take effect, that is, the minimum plan edition to which the quota must be upgraded for use.
+//
+// @param request - ListQuotasMinEffectPlanRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListQuotasMinEffectPlanResponse
+func (client *Client) ListQuotasMinEffectPlanWithContext(ctx context.Context, request *ListQuotasMinEffectPlanRequest, runtime *dara.RuntimeOptions) (_result *ListQuotasMinEffectPlanResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListQuotasMinEffectPlan"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListQuotasMinEffectPlanResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -17750,6 +17960,112 @@ func (client *Client) ListWaitingRoomsWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// Modifies the feature configurations of a plan instance.
+//
+// @param tmpReq - ModifyInstanceFeaturesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyInstanceFeaturesResponse
+func (client *Client) ModifyInstanceFeaturesWithContext(ctx context.Context, tmpReq *ModifyInstanceFeaturesRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceFeaturesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ModifyInstanceFeaturesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SiteFeatures) {
+		request.SiteFeaturesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SiteFeatures, dara.String("SiteFeatures"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.SiteFeaturesShrink) {
+		query["SiteFeatures"] = request.SiteFeaturesShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyInstanceFeatures"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyInstanceFeaturesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Disables plan-related configurations with one click when changing the plan for a site.
+//
+// @param request - ModifySiteFeaturesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifySiteFeaturesResponse
+func (client *Client) ModifySiteFeaturesWithContext(ctx context.Context, request *ModifySiteFeaturesRequest, runtime *dara.RuntimeOptions) (_result *ModifySiteFeaturesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.NewInstanceId) {
+		query["NewInstanceId"] = request.NewInstanceId
+	}
+
+	if !dara.IsNil(request.SiteFeatures) {
+		query["SiteFeatures"] = request.SiteFeatures
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifySiteFeatures"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifySiteFeaturesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Activates the edge container service.
 //
 // @param request - OpenEdgeContainerRequest
@@ -17900,7 +18216,11 @@ func (client *Client) PreloadCachesWithContext(ctx context.Context, tmpReq *Prel
 
 // Summary:
 //
-// Releases a specific version of a containerized application.
+// Publishes a specified version of an edge container application, allowing users to iterate application versions through this operation.
+//
+// Description:
+//
+// Prerequisites: 1) Activate the edge container service (by calling the OpenEdgeContainer operation or using the console). 2) Create an application (by calling CreateEdgeContainerApp to obtain the AppId). 3) Create an application version (by calling CreateEdgeContainerAppVersion to obtain the VersionId).
 //
 // @param tmpReq - PublishEdgeContainerAppVersionRequest
 //
@@ -22532,6 +22852,104 @@ func (client *Client) UpdateRewriteUrlRuleWithContext(ctx context.Context, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateRewriteUrlRuleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the build configuration of an EdgeRoutine (ER).
+//
+// @param tmpReq - UpdateRoutineBuildConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRoutineBuildConfigurationResponse
+func (client *Client) UpdateRoutineBuildConfigurationWithContext(ctx context.Context, tmpReq *UpdateRoutineBuildConfigurationRequest, runtime *dara.RuntimeOptions) (_result *UpdateRoutineBuildConfigurationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateRoutineBuildConfigurationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.EnvironmentVariables) {
+		request.EnvironmentVariablesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EnvironmentVariables, dara.String("EnvironmentVariables"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AssetsDirectory) {
+		query["AssetsDirectory"] = request.AssetsDirectory
+	}
+
+	if !dara.IsNil(request.BuildBranches) {
+		query["BuildBranches"] = request.BuildBranches
+	}
+
+	if !dara.IsNil(request.BuildCommand) {
+		query["BuildCommand"] = request.BuildCommand
+	}
+
+	if !dara.IsNil(request.EnvironmentVariablesShrink) {
+		query["EnvironmentVariables"] = request.EnvironmentVariablesShrink
+	}
+
+	if !dara.IsNil(request.GitAccountId) {
+		query["GitAccountId"] = request.GitAccountId
+	}
+
+	if !dara.IsNil(request.InstallCommand) {
+		query["InstallCommand"] = request.InstallCommand
+	}
+
+	if !dara.IsNil(request.IsPrivate) {
+		query["IsPrivate"] = request.IsPrivate
+	}
+
+	if !dara.IsNil(request.NodeVersion) {
+		query["NodeVersion"] = request.NodeVersion
+	}
+
+	if !dara.IsNil(request.ProductionBranch) {
+		query["ProductionBranch"] = request.ProductionBranch
+	}
+
+	if !dara.IsNil(request.Repository) {
+		query["Repository"] = request.Repository
+	}
+
+	if !dara.IsNil(request.RootDirectory) {
+		query["RootDirectory"] = request.RootDirectory
+	}
+
+	if !dara.IsNil(request.RoutineEntry) {
+		query["RoutineEntry"] = request.RoutineEntry
+	}
+
+	if !dara.IsNil(request.RoutineName) {
+		query["RoutineName"] = request.RoutineName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateRoutineBuildConfiguration"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateRoutineBuildConfigurationResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

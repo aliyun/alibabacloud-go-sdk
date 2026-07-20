@@ -22,13 +22,15 @@ type iCreateEdgeContainerAppVersionRequest interface {
 type CreateEdgeContainerAppVersionRequest struct {
 	// The application ID. You can call the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation to obtain the application ID.
 	//
+	// 	Notice: 1) Your account must have an ESA plan with the Edge Container feature enabled. 2) Call CreateEdgeContainerApp first to create an application and obtain the AppId. 3) Complete call chain example: CreateEdgeContainerApp → ListEdgeContainerApps → CreateEdgeContainerAppVersion.</notice>
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// app-88068867578379****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The container group to deploy for this version, including specific image information. The image information consists of the image address, startup commands, parameters, environment variables, and probe rules. Multiple images are supported. This parameter is a JSON array.
+	// The container group to be deployed for this version, including specific image information. The image information consists of the image address, startup command, parameters, environment variables, and probe rules. Multiple images are supported in a JSON array structure.
 	//
 	// This parameter is required.
 	//
@@ -158,7 +160,7 @@ type CreateEdgeContainerAppVersionRequestContainers struct {
 	//
 	// nginx
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	// The environment variables, in the format of key1=val1,key2=val2.
+	// The environment variables. Format: key1=val1,key2=val2.
 	//
 	// example:
 	//
@@ -188,13 +190,13 @@ type CreateEdgeContainerAppVersionRequestContainers struct {
 	//
 	// lxg-demo-er
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The command to run before the container starts. Separate multiple commands with spaces. This command runs before the service starts and is typically used for initialization operations.
+	// The command to execute before the container starts. Separate multiple commands with spaces. This command is executed before the service starts and is typically used for initialization operations.
 	//
 	// example:
 	//
 	// sh poststart.sh "echo hello world"
 	PostStart *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
-	// The command to run before the container stops. Separate multiple commands with spaces. This command runs before the service exits and is typically used for cleanup operations.
+	// The command to execute before the container stops. Separate multiple commands with spaces. This command is executed before the service exits and is typically used for cleanup operations.
 	//
 	// example:
 	//
@@ -206,11 +208,11 @@ type CreateEdgeContainerAppVersionRequestContainers struct {
 	//
 	// example:
 	//
-	// For details, see the definition of readiness probes in Kubernetes.
+	// 具体字段可参照k8s官方就绪探针的定义。
 	ProbeContent *CreateEdgeContainerAppVersionRequestContainersProbeContent `json:"ProbeContent,omitempty" xml:"ProbeContent,omitempty" type:"Struct"`
 	// The probe type. Valid values:
 	//
-	// - **exec**: command-based.
+	// - **exec**: Command-based.
 	//
 	// - **tcpSocket**: TCP-based.
 	//
@@ -222,7 +224,7 @@ type CreateEdgeContainerAppVersionRequestContainers struct {
 	//
 	// exec
 	ProbeType *string `json:"ProbeType,omitempty" xml:"ProbeType,omitempty"`
-	// The container specifications. This parameter specifies the computing specifications. Valid values: 1C2G, 2C4G, 2C8G, 4C8G, 4C16G, 8C16G, and 8C32G.
+	// The container specifications. Specifies the computing power specifications. Valid values: 1C2G, 2C4G, 2C8G, 4C8G, 4C16G, 8C16G, and 8C32G.
 	//
 	// This parameter is required.
 	//
@@ -398,7 +400,7 @@ type CreateEdgeContainerAppVersionRequestContainersACRImageInfo struct {
 	//
 	// false
 	IsEnterpriseRegistry *bool `json:"IsEnterpriseRegistry,omitempty" xml:"IsEnterpriseRegistry,omitempty"`
-	// The list of regions for the ACR instance.
+	// The region list of the ACR instance.
 	//
 	// example:
 	//
@@ -526,7 +528,7 @@ func (s *CreateEdgeContainerAppVersionRequestContainersACRImageInfo) Validate() 
 }
 
 type CreateEdgeContainerAppVersionRequestContainersProbeContent struct {
-	// The probe command for the exec probe type.
+	// The probe command for exec-type probes.
 	//
 	// example:
 	//
@@ -550,7 +552,7 @@ type CreateEdgeContainerAppVersionRequestContainersProbeContent struct {
 	//
 	// [{\\"Content-Type\\":\\"application/json\\"}]
 	HttpHeaders *string `json:"HttpHeaders,omitempty" xml:"HttpHeaders,omitempty"`
-	// The initial delay before the container probe starts, in seconds.
+	// The initial delay time for the container probe, in seconds. For example, 5 indicates that the initial delay is set to 5 seconds.
 	//
 	// example:
 	//
@@ -562,7 +564,7 @@ type CreateEdgeContainerAppVersionRequestContainersProbeContent struct {
 	//
 	// /
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The interval between container health checks, in seconds.
+	// The interval between container health checks, in seconds. For example, 5 indicates that the health check interval is set to 5 seconds.
 	//
 	// example:
 	//
@@ -586,7 +588,7 @@ type CreateEdgeContainerAppVersionRequestContainersProbeContent struct {
 	//
 	// 1
 	SuccessThreshold *int32 `json:"SuccessThreshold,omitempty" xml:"SuccessThreshold,omitempty"`
-	// The timeout period for the container health check, in seconds.
+	// The timeout period for the container health check, in seconds. For example, 5 indicates that the timeout is set to 5 seconds.
 	//
 	// example:
 	//

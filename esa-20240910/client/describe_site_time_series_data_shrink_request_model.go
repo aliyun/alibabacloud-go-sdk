@@ -22,9 +22,9 @@ type iDescribeSiteTimeSeriesDataShrinkRequest interface {
 }
 
 type DescribeSiteTimeSeriesDataShrinkRequest struct {
-	// The end time for obtaining data.
+	// The end time for the data query.
 	//
-	// The date format follows ISO8601 notation and uses UTC+0 time, in the format yyyy-MM-ddTHH:mm:ssZ.
+	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
 	//
 	// > The end time must be later than the start time.
 	//
@@ -32,29 +32,29 @@ type DescribeSiteTimeSeriesDataShrinkRequest struct {
 	//
 	// 2023-04-09T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Query metrics.
+	// The query metrics.
 	//
 	// This parameter is required.
 	FieldsShrink *string `json:"Fields,omitempty" xml:"Fields,omitempty"`
-	// The time granularity for querying data, in seconds.
+	// The time granularity for the query data, in seconds.
 	//
-	// Depending on the maximum time span of a single query, this parameter supports values of 60 (1 minute), 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For details, see the **Supported Query Time Granularities**.
+	// Based on the maximum time span of a single query, this parameter supports the values 60 (1 minute), 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see the **Supported time granularity*	- section above.
 	//
 	// example:
 	//
 	// 300
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// Site ID. Obtain the site ID by calling the [ListSites](~~ListSites~~) interface.
+	// The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
 	//
-	// If this parameter is empty, user-level data will be queried.
+	// If this parameter is left empty, account-level data is queried.
 	//
 	// example:
 	//
 	// 1150376036*****
 	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The start time for obtaining data.
+	// The start time for the data query.
 	//
-	// The date format follows ISO8601 notation and uses UTC+0 time, in the format yyyy-MM-ddTHH:mm:ssZ.
+	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
 	//
 	// example:
 	//

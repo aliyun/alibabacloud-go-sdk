@@ -22,7 +22,7 @@ type GetEdgeContainerAppVersionResponseBody struct {
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the version.
+	// The version information.
 	Version *GetEdgeContainerAppVersionResponseBodyVersion `json:"Version,omitempty" xml:"Version,omitempty" type:"Struct"`
 }
 
@@ -68,15 +68,15 @@ type GetEdgeContainerAppVersionResponseBodyVersion struct {
 	//
 	// app-88068867578379****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The container images deployed for this version.
+	// The list of images to be deployed for this version.
 	Containers []*GetEdgeContainerAppVersionResponseBodyVersionContainers `json:"Containers,omitempty" xml:"Containers,omitempty" type:"Repeated"`
-	// The time when the version was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The creation time of the version. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2022-07-01T09:32:33Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the version was last released. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	// The last publish time of the version. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type GetEdgeContainerAppVersionResponseBodyVersion struct {
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The time when the version was released. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	// The publish time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -102,17 +102,17 @@ type GetEdgeContainerAppVersionResponseBodyVersion struct {
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
 	// The status of the current version. Valid values:
 	//
-	// - created: The version is created.
+	// - **created**: Created.
 	//
-	// - failed: The version failed to be created.
+	// - **failed**: Creation failed.
 	//
-	// - creating: The version is being created.
+	// - **creating**: Being created.
 	//
 	// example:
 	//
 	// created
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the version was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	// The last modification time of the version. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -238,15 +238,15 @@ func (s *GetEdgeContainerAppVersionResponseBodyVersion) Validate() error {
 }
 
 type GetEdgeContainerAppVersionResponseBodyVersionContainers struct {
-	// The information about the Container Registry image.
+	// The ACR image information.
 	ACRImageInfo *GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo `json:"ACRImageInfo,omitempty" xml:"ACRImageInfo,omitempty" type:"Struct"`
-	// The arguments that are passed to the container startup command.
+	// The startup arguments.
 	//
 	// example:
 	//
 	// -c /path/config.toml
 	Args *string `json:"Args,omitempty" xml:"Args,omitempty"`
-	// The command that is used to start the container.
+	// The container startup command.
 	//
 	// example:
 	//
@@ -264,7 +264,7 @@ type GetEdgeContainerAppVersionResponseBodyVersionContainers struct {
 	//
 	// nginx:1.14.0
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// Indicates whether the image is a Container Registry image.
+	// Indicates whether the image is an ACR image.
 	//
 	// example:
 	//
@@ -276,13 +276,13 @@ type GetEdgeContainerAppVersionResponseBodyVersionContainers struct {
 	//
 	// version01
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The command that is run before the container is started. Format: `{"exec":{"command":["cat","/etc/group"\\]}}`. If you want to cancel this configuration, set the parameter value to `""` or `{}`. If you do not specify this parameter, this configuration is ignored.
+	// The command to execute after the container starts.
 	//
 	// example:
 	//
 	// sh poststart.sh "echo hello world"
 	PostStart *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
-	// The command that is run before the container is stopped.
+	// The command to execute before the container stops.
 	//
 	// example:
 	//
@@ -296,13 +296,13 @@ type GetEdgeContainerAppVersionResponseBodyVersionContainers struct {
 	//
 	// httpGet
 	ProbeType *string `json:"ProbeType,omitempty" xml:"ProbeType,omitempty"`
-	// The compute specification.
+	// The specifications.
 	//
 	// example:
 	//
 	// 1C2G
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The storage capacity of the container. Valid values: 0.5G, 10G, 20G, and 30G.
+	// The container storage specifications.
 	//
 	// example:
 	//
@@ -450,13 +450,13 @@ func (s *GetEdgeContainerAppVersionResponseBodyVersionContainers) Validate() err
 }
 
 type GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo struct {
-	// The domain name of the Container Registry image.
+	// The ACR image domain name.
 	//
 	// example:
 	//
 	// *.mooc.seewo.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The ID of the Container Registry instance.
+	// The ACR site instance ID.
 	//
 	// example:
 	//
@@ -474,7 +474,7 @@ type GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo struct 
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the image repository.
+	// The image repository ID.
 	//
 	// example:
 	//
@@ -486,7 +486,7 @@ type GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo struct 
 	//
 	// test_1
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The namespace to which the image repository belongs.
+	// The namespace of the image repository.
 	//
 	// example:
 	//
@@ -498,7 +498,7 @@ type GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo struct 
 	//
 	// test-healthy-100-soa-1710987653
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The URL of the Container Registry image tag.
+	// The ACR image tag URL.
 	//
 	// example:
 	//
@@ -600,67 +600,67 @@ func (s *GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo) Va
 }
 
 type GetEdgeContainerAppVersionResponseBodyVersionContainersProbeContent struct {
-	// The probe command.
+	// The probe execution command.
 	//
 	// example:
 	//
 	// sh test.sh
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	// The number of consecutive failed health checks required for a container to be considered as unhealthy.
+	// The number of consecutive failed health checks for the container.
 	//
 	// example:
 	//
 	// 3
 	FailureThreshold *int32 `json:"FailureThreshold,omitempty" xml:"FailureThreshold,omitempty"`
-	// The domain name that is used for health checks.
+	// The domain name for the health check.
 	//
 	// example:
 	//
 	// test.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The request headers that are included in the container health check request.
+	// The HTTP request headers.
 	//
 	// example:
 	//
 	// [{\\"Content-Type\\":\\"application/json
 	HttpHeaders *string `json:"HttpHeaders,omitempty" xml:"HttpHeaders,omitempty"`
-	// The latency for container probe initialization.
+	// The initial delay time for the container probe. Unit: seconds. For example, 5 indicates an initial delay of 5 seconds.
 	//
 	// example:
 	//
 	// 20
 	InitialDelaySeconds *int32 `json:"InitialDelaySeconds,omitempty" xml:"InitialDelaySeconds,omitempty"`
-	// The path of the container health check.
+	// The path for the container health check.
 	//
 	// example:
 	//
 	// /health_check
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The interval between container health checks.
+	// The interval for the container health check. Unit: seconds. For example, 5 indicates a health check interval of 5 seconds.
 	//
 	// example:
 	//
 	// 5
 	PeriodSeconds *int32 `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
-	// The port of the container health check. Valid values: **1*	- to **65535**.
+	// The port used by the backend server. Valid values: **1*	- to **65535**.
 	//
 	// example:
 	//
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The protocol that the container health check request uses.
+	// The request protocol for the health check.
 	//
 	// example:
 	//
 	// http
 	Scheme *string `json:"Scheme,omitempty" xml:"Scheme,omitempty"`
-	// The number of consecutive successful health checks required for a container to be considered as healthy.
+	// The number of consecutive successful health checks.
 	//
 	// example:
 	//
 	// 1
 	SuccessThreshold *int32 `json:"SuccessThreshold,omitempty" xml:"SuccessThreshold,omitempty"`
-	// The timeout period of the container health check.
+	// The timeout period for the container health check. Unit: seconds. For example, 5 indicates a timeout of 5 seconds.
 	//
 	// example:
 	//

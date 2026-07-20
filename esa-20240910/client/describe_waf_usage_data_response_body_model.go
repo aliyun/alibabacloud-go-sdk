@@ -126,6 +126,8 @@ type DescribeWafUsageDataResponseBodyUsageData struct {
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
 	// The beginning of the time interval.
 	//
+	// The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC+0.
+	//
 	// example:
 	//
 	// 2022-08-10T00:00:00Z

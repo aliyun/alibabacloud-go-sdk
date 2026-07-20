@@ -34,7 +34,7 @@ type DeleteEdgeContainerAppRecordRequest struct {
 	//
 	// a.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	// The site ID.
+	// The site ID. This parameter is required. If it is not specified, the service returns InternalError(400). Call ListSites to obtain a valid SiteId before calling this operation.
 	//
 	// example:
 	//

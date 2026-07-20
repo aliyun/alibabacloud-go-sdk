@@ -22,15 +22,15 @@ type iListEdgeContainerAppsResponseBody interface {
 }
 
 type ListEdgeContainerAppsResponseBody struct {
-	// The queried applications.
+	// The list of applications.
 	Apps []*ListEdgeContainerAppsResponseBodyApps `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
-	// The page number. Default value: **1**. Valid values: 1 to 65535.
+	// The page number. Default value: **1**. Valid values: **1 to 65535**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: 1 to 500.
+	// The number of entries per page. Valid values: **1 to 500**.
 	//
 	// example:
 	//
@@ -123,29 +123,29 @@ type ListEdgeContainerAppsResponseBodyApps struct {
 	//
 	// app-88068867578379****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The time when the version was created.
+	// The creation time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2022-12-01T16:16:27.418298794+08:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The domain name associated with the application.
+	// The domain name bound to the application.
 	//
 	// example:
 	//
 	// test.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The type of the gateway. Valid values:
+	// The gateway type. Valid values:
 	//
-	// 	- l7: Layer 7 gateway.
+	// - **l7**: Layer 7 gateway.
 	//
-	// 	- l4: Layer 4 gateway.
+	// - **l4**: Layer 4 gateway.
 	//
 	// example:
 	//
 	// l7
 	GatewayType *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
-	// The information about health checks.
+	// The health check information.
 	HealthCheck *ListEdgeContainerAppsResponseBodyAppsHealthCheck `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty" type:"Struct"`
 	// The application name.
 	//
@@ -153,7 +153,7 @@ type ListEdgeContainerAppsResponseBodyApps struct {
 	//
 	// app-test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The progress of the application creation task in percentage.
+	// The creation progress percentage.
 	//
 	// example:
 	//
@@ -171,7 +171,7 @@ type ListEdgeContainerAppsResponseBodyApps struct {
 	//
 	// test app
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
-	// The server port. Valid values: 1 to 65535.
+	// The server port number. Valid values: **1 to 65535**.
 	//
 	// example:
 	//
@@ -179,29 +179,29 @@ type ListEdgeContainerAppsResponseBodyApps struct {
 	ServicePort *int32 `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
 	// The status of the application. Valid values:
 	//
-	// 	- creating: The application is being created.
+	// - **creating**: being created.
 	//
-	// 	- failed: The application failed to be created.
+	// - **failed**: creation failed.
 	//
-	// 	- created: The application is created.
+	// - **created**: created.
 	//
 	// example:
 	//
 	// created
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The backend port, which is also the service port of the application. Valid values: 1 to 65535.
+	// The backend port, which is also the service port of the application. Valid values: **1 to 65535**.
 	//
 	// example:
 	//
 	// 80
 	TargetPort *int32 `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
-	// The time when the application was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	// The last modification time of the application. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2023-11-15T12:11:02Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The number of versions of the application.
+	// The number of application versions.
 	//
 	// example:
 	//
@@ -353,19 +353,19 @@ func (s *ListEdgeContainerAppsResponseBodyApps) Validate() error {
 }
 
 type ListEdgeContainerAppsResponseBodyAppsHealthCheck struct {
-	// The number of consecutive failed health checks for an application to be considered unhealthy.
+	// The number of consecutive failed health checks required.
 	//
 	// example:
 	//
 	// 5
 	FailTimes *int32 `json:"FailTimes,omitempty" xml:"FailTimes,omitempty"`
-	// The domain name that is used for health checks.
+	// The domain name used for the health check.
 	//
 	// example:
 	//
 	// test.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The range of health check status codes that indicate successful health checks.
+	// The range of HTTP status codes that indicate a successful health check.
 	//
 	// example:
 	//
@@ -377,41 +377,41 @@ type ListEdgeContainerAppsResponseBodyAppsHealthCheck struct {
 	//
 	// 5
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The HTTP method used for health checks.
+	// The method used for the health check.
 	//
 	// example:
 	//
 	// GET
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// The health check port.
+	// The Health Check Port used for the health check.
 	//
 	// example:
 	//
 	// 8080
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The number of consecutive successful health checks for an application to be considered healthy.
+	// The number of consecutive successful health checks required.
 	//
 	// example:
 	//
 	// 1
 	SuccTimes *int32 `json:"SuccTimes,omitempty" xml:"SuccTimes,omitempty"`
-	// The timeout period of health checks. Unit: seconds.
+	// The timeout period of the health check. Unit: seconds.
 	//
 	// example:
 	//
 	// 60
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// The type of health checks. Valid values:
+	// The health check type. Valid values:
 	//
-	// 	- l7
+	// - **l7**: Layer 7 health check.
 	//
-	// 	- l4
+	// - **l4**: Layer 4 health check.
 	//
 	// example:
 	//
 	// l7
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The health check URL.
+	// The URI path used for the health check.
 	//
 	// example:
 	//

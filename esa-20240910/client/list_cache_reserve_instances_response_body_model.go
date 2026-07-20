@@ -24,15 +24,15 @@ type iListCacheReserveInstancesResponseBody interface {
 }
 
 type ListCacheReserveInstancesResponseBody struct {
-	// A list of cache reserve instances.
+	// The list of cache reserve instances.
 	InstanceInfo []*ListCacheReserveInstancesResponseBodyInstanceInfo `json:"InstanceInfo,omitempty" xml:"InstanceInfo,omitempty" type:"Repeated"`
-	// The page number of the returned data.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page. Default value: **500**. Valid values: **1*	- to **500**.
 	//
 	// example:
 	//
@@ -134,32 +134,41 @@ func (s *ListCacheReserveInstancesResponseBody) Validate() error {
 }
 
 type ListCacheReserveInstancesResponseBodyInstanceInfo struct {
-	// The cache reserve capacity, in GB.
+	// The capacity of the cache reserve instance. Unit: GB.
 	//
 	// example:
 	//
 	// 512000
 	CacheReserveCapacity *int64 `json:"CacheReserveCapacity,omitempty" xml:"CacheReserveCapacity,omitempty"`
-	// The region where the cache reserve instance is used.
+	// The region where the cache reserve instance is deployed.
 	//
 	// example:
 	//
 	// HK
 	CacheReserveRegion *string `json:"CacheReserveRegion,omitempty" xml:"CacheReserveRegion,omitempty"`
-	ChargeType         *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The time when the instance was created.
+	// The billing type. Valid values:
+	//
+	// - PREPAY: subscription.
+	//
+	// - POSTPAY: pay-as-you-go.
+	//
+	// example:
+	//
+	// PREPAY
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The creation time of the instance.
 	//
 	// example:
 	//
 	// 2024-04-12T05:41:51Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The purchase duration of the instance, in months.
+	// The subscription duration of the instance. Unit: months.
 	//
 	// example:
 	//
 	// 3
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The expiration time of the instance.
+	// The time when the instance expires.
 	//
 	// example:
 	//
@@ -171,15 +180,15 @@ type ListCacheReserveInstancesResponseBodyInstanceInfo struct {
 	//
 	// sp-xcdn-96wblslz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The status of the instance. Valid values:
+	// The instance status. Valid values:
 	//
 	// - **online**: The instance is running normally.
 	//
-	// - **offline**: The instance has expired and is unavailable but remains within the grace period.
+	// - **offline**: The instance has expired but has not exceeded the retention period and is unavailable.
 	//
-	// - **disable**: The instance is disabled.
+	// - **disable**: The instance has been released.
 	//
-	// - **overdue**: The instance is suspended due to an overdue payment.
+	// - **overdue**: The instance is stopped due to an overdue payment.
 	//
 	// example:
 	//
