@@ -2191,6 +2191,102 @@ func (client *Client) TextTranslateWithContext(ctx context.Context, tmpReq *Text
 
 // Summary:
 //
+// 视频翻译
+//
+// Description:
+//
+// ## 1. 产品简介
+//
+// 视频翻译 API 支持将视频画面中的嵌字（字幕、卖点文字等）翻译为目标语言，并擦除原文。适用于电商视频多语言分发、国际社交媒体营销、全球品牌广告投放等场景。
+//
+// API 采用异步调用模式：提交翻译任务后获取 `task_id`，通过查询接口轮询任务状态直至完成后获取结果。
+//
+// ## 2. 适用场景
+//
+//   - **跨境电商视频本地化**：将商品介绍视频中的卖点文字翻译为目标市场语言，助力海外平台推广。
+//
+//   - **国际社交媒体营销**：针对 TikTok、Instagram、YouTube 等平台，将视频画面文字内容一键本地化，提升海外用户理解度与转化率。
+//
+//   - **全球品牌广告投放**：根据投放地区语言自动生成对应版本视频，减少人工制作成本。
+//
+//   - **培训与产品说明**：将培训课程或产品演示视频中的画面文字翻译为多语言版本，方便全球团队使用。
+//
+// ## 3. 功能介绍
+//
+// | 能力 | 标识码 | 说明 |
+//
+// | --- | --- | --- |
+//
+// | 画面翻译 | `visual` | 翻译视频画面中的嵌字（字幕、卖点文字等），并擦除原文 |
+//
+// ## 4. 开发指南
+//
+// ### 4.1 提交翻译任务
+//
+// #### 请求
+//
+// `POST /api/v1/video/translation`
+//
+// @param tmpReq - VideoTranslationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VideoTranslationResponse
+func (client *Client) VideoTranslationWithContext(ctx context.Context, tmpReq *VideoTranslationRequest, runtime *dara.RuntimeOptions) (_result *VideoTranslationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &VideoTranslationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Capabilities) {
+		request.CapabilitiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Capabilities, dara.String("Capabilities"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CapabilitiesShrink) {
+		body["Capabilities"] = request.CapabilitiesShrink
+	}
+
+	if !dara.IsNil(request.SourceLanguage) {
+		body["SourceLanguage"] = request.SourceLanguage
+	}
+
+	if !dara.IsNil(request.TargetLanguage) {
+		body["TargetLanguage"] = request.TargetLanguage
+	}
+
+	if !dara.IsNil(request.VideoUrl) {
+		body["VideoUrl"] = request.VideoUrl
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("VideoTranslation"),
+		Version:     dara.String("2026-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &VideoTranslationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Provides a one-stop AI-powered image processing service for e-commerce sellers. Orchestrates seven atomic capabilities — element detection, intelligent matting, intelligent removal, Image Translation Pro, image expansion, intelligent cropping, and HD upscaling — into an image processing workflow. Upload an image once, select the desired capabilities, and complete multiple image optimizations sequentially in a single call to produce product images that meet listing platform requirements. (Asynchronous).
 //
 // Description:
