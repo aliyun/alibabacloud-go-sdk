@@ -15,6 +15,10 @@ type iFlightCancelOrderRequest interface {
 
 type FlightCancelOrderRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// dis123
 	DisOrderId *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
 }
 

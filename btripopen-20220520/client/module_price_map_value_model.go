@@ -16,10 +16,14 @@ type iModulePriceMapValue interface {
 }
 
 type ModulePriceMapValue struct {
+	// The price, in cents.
+	//
 	// example:
 	//
 	// 10000
 	Price *int64 `json:"price,omitempty" xml:"price,omitempty"`
+	// The service number, such as a flight number or train number.
+	//
 	// example:
 	//
 	// MU1234

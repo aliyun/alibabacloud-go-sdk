@@ -24,13 +24,33 @@ type iProjectModifyRequest interface {
 }
 
 type ProjectModifyRequest struct {
-	Code       *string `json:"code,omitempty" xml:"code,omitempty"`
-	HasManager *bool   `json:"has_manager,omitempty" xml:"has_manager,omitempty"`
+	// example:
+	//
+	// pro_code
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// false
+	HasManager *bool `json:"has_manager,omitempty" xml:"has_manager,omitempty"`
 	// This parameter is required.
-	ProjectName           *string `json:"project_name,omitempty" xml:"project_name,omitempty"`
+	//
+	// example:
+	//
+	// 商旅出差项目
+	ProjectName *string `json:"project_name,omitempty" xml:"project_name,omitempty"`
+	// example:
+	//
+	// 234
 	ThirdPartCostCenterId *string `json:"third_part_cost_center_id,omitempty" xml:"third_part_cost_center_id,omitempty"`
 	// This parameter is required.
-	ThirdPartId        *string `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
+	//
+	// example:
+	//
+	// 340049
+	ThirdPartId *string `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
+	// example:
+	//
+	// 123
 	ThirdPartInvoiceId *string `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
 }
 

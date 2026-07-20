@@ -22,11 +22,36 @@ type iAddEmployeeResponseBody interface {
 }
 
 type AddEmployeeResponseBody struct {
-	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The status code.
+	//
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// 成功
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The unique identifier of the request.
+	//
+	// example:
+	//
+	// C61ECFF6-****-****-****-D77369043A5F
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// Indicates whether the operation was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The global trace identifier of the request, which is typically used for troubleshooting.
+	//
+	// example:
+	//
+	// 21041ce********056433edbb2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s AddEmployeeResponseBody) String() string {

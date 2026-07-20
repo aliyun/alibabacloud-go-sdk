@@ -40,20 +40,47 @@ type iChannelCorpCreateRequest interface {
 type ChannelCorpCreateRequest struct {
 	AdministratorEmail *string `json:"administrator_email,omitempty" xml:"administrator_email,omitempty"`
 	// This parameter is required.
-	AdministratorName  *string `json:"administrator_name,omitempty" xml:"administrator_name,omitempty"`
+	//
+	// example:
+	//
+	// 张三
+	AdministratorName *string `json:"administrator_name,omitempty" xml:"administrator_name,omitempty"`
+	// example:
+	//
+	// 18378889782
 	AdministratorPhone *string `json:"administrator_phone,omitempty" xml:"administrator_phone,omitempty"`
 	BaseCurrency       *string `json:"base_currency,omitempty" xml:"base_currency,omitempty"`
 	BtripRegion        *string `json:"btrip_region,omitempty" xml:"btrip_region,omitempty"`
-	City               *string `json:"city,omitempty" xml:"city,omitempty"`
+	// example:
+	//
+	// 杭州市
+	City *string `json:"city,omitempty" xml:"city,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 阿里巴巴有限公司
 	CorpName    *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
 	CorpNameEn  *string `json:"corp_name_en,omitempty" xml:"corp_name_en,omitempty"`
 	ExtendField *string `json:"extend_field,omitempty" xml:"extend_field,omitempty"`
-	Province    *string `json:"province,omitempty" xml:"province,omitempty"`
-	Scope       *int32  `json:"scope,omitempty" xml:"scope,omitempty"`
+	// example:
+	//
+	// 浙江省
+	Province *string `json:"province,omitempty" xml:"province,omitempty"`
+	// example:
+	//
+	// 1
+	Scope *int32 `json:"scope,omitempty" xml:"scope,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 00001
 	ThirdCorpId *string `json:"third_corp_id,omitempty" xml:"third_corp_id,omitempty"`
-	UserId      *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// example:
+	//
+	// user_1234
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s ChannelCorpCreateRequest) String() string {

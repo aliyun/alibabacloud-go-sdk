@@ -19,9 +19,17 @@ type iApplyExternalNodeStatusUpdateRequest interface {
 
 type ApplyExternalNodeStatusUpdateRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
 	NodeId           *string                                                 `json:"node_id,omitempty" xml:"node_id,omitempty"`
 	OperationRecords []*ApplyExternalNodeStatusUpdateRequestOperationRecords `json:"operation_records,omitempty" xml:"operation_records,omitempty" type:"Repeated"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// PROCESS_AGREE
 	ProcessActionResult *string `json:"process_action_result,omitempty" xml:"process_action_result,omitempty"`
 }
 
@@ -74,11 +82,26 @@ func (s *ApplyExternalNodeStatusUpdateRequest) Validate() error {
 }
 
 type ApplyExternalNodeStatusUpdateRequestOperationRecords struct {
-	Comment      *string `json:"comment,omitempty" xml:"comment,omitempty"`
-	OperateTime  *string `json:"operate_time,omitempty" xml:"operate_time,omitempty"`
+	// example:
+	//
+	// 评论啊
+	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	// example:
+	//
+	// 2023-05-28 11:33:28
+	OperateTime *string `json:"operate_time,omitempty" xml:"operate_time,omitempty"`
+	// example:
+	//
+	// 张三
 	OperatorName *string `json:"operator_name,omitempty" xml:"operator_name,omitempty"`
-	Result       *string `json:"result,omitempty" xml:"result,omitempty"`
-	Type         *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// AGREE
+	Result *string `json:"result,omitempty" xml:"result,omitempty"`
+	// example:
+	//
+	// PROCESS_APPROVE
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s ApplyExternalNodeStatusUpdateRequestOperationRecords) String() string {

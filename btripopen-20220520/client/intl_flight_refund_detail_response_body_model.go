@@ -206,6 +206,9 @@ func (s *IntlFlightRefundDetailResponseBodyModule) Validate() error {
 }
 
 type IntlFlightRefundDetailResponseBodyModulePassengeRefundFeeDetailList struct {
+	// example:
+	//
+	// 100001
 	PassengerId     *int64                                                                              `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
 	RefundFeeDetail *IntlFlightRefundDetailResponseBodyModulePassengeRefundFeeDetailListRefundFeeDetail `json:"refund_fee_detail,omitempty" xml:"refund_fee_detail,omitempty" type:"Struct"`
 	TicketList      []*IntlFlightRefundDetailResponseBodyModulePassengeRefundFeeDetailListTicketList    `json:"ticket_list,omitempty" xml:"ticket_list,omitempty" type:"Repeated"`
@@ -265,20 +268,59 @@ func (s *IntlFlightRefundDetailResponseBodyModulePassengeRefundFeeDetailList) Va
 }
 
 type IntlFlightRefundDetailResponseBodyModulePassengeRefundFeeDetailListRefundFeeDetail struct {
-	AlreadyUsedTotalAmount         *int64                                                                                                         `json:"already_used_total_amount,omitempty" xml:"already_used_total_amount,omitempty"`
-	NonRefundableReShopHandlingFee *int64                                                                                                         `json:"non_refundable_re_shop_handling_fee,omitempty" xml:"non_refundable_re_shop_handling_fee,omitempty"`
-	NonRefundableReShopUpgradeFee  *int64                                                                                                         `json:"non_refundable_re_shop_upgrade_fee,omitempty" xml:"non_refundable_re_shop_upgrade_fee,omitempty"`
-	NonRefundableTaxDiffFee        *int64                                                                                                         `json:"non_refundable_tax_diff_fee,omitempty" xml:"non_refundable_tax_diff_fee,omitempty"`
-	ReShopRefundAmount             *int64                                                                                                         `json:"re_shop_refund_amount,omitempty" xml:"re_shop_refund_amount,omitempty"`
-	ReShopServiceRefundAmount      *int64                                                                                                         `json:"re_shop_service_refund_amount,omitempty" xml:"re_shop_service_refund_amount,omitempty"`
-	ReShopUpgradeRefundAmount      *int64                                                                                                         `json:"re_shop_upgrade_refund_amount,omitempty" xml:"re_shop_upgrade_refund_amount,omitempty"`
-	RefundReShopFeeDetailList      []*IntlFlightRefundDetailResponseBodyModulePassengeRefundFeeDetailListRefundFeeDetailRefundReShopFeeDetailList `json:"refund_re_shop_fee_detail_list,omitempty" xml:"refund_re_shop_fee_detail_list,omitempty" type:"Repeated"`
-	RefundTaxDiffAmount            *int64                                                                                                         `json:"refund_tax_diff_amount,omitempty" xml:"refund_tax_diff_amount,omitempty"`
-	RefundTaxFee                   *int64                                                                                                         `json:"refund_tax_fee,omitempty" xml:"refund_tax_fee,omitempty"`
-	RefundTicketFee                *int64                                                                                                         `json:"refund_ticket_fee,omitempty" xml:"refund_ticket_fee,omitempty"`
-	TaxRefundAmount                *int64                                                                                                         `json:"tax_refund_amount,omitempty" xml:"tax_refund_amount,omitempty"`
-	TicketRefundAmount             *int64                                                                                                         `json:"ticket_refund_amount,omitempty" xml:"ticket_refund_amount,omitempty"`
-	TotalRefundAmount              *int64                                                                                                         `json:"total_refund_amount,omitempty" xml:"total_refund_amount,omitempty"`
+	// example:
+	//
+	// 12400
+	AlreadyUsedTotalAmount *int64 `json:"already_used_total_amount,omitempty" xml:"already_used_total_amount,omitempty"`
+	// example:
+	//
+	// 21000
+	NonRefundableReShopHandlingFee *int64 `json:"non_refundable_re_shop_handling_fee,omitempty" xml:"non_refundable_re_shop_handling_fee,omitempty"`
+	// example:
+	//
+	// 0
+	NonRefundableReShopUpgradeFee *int64 `json:"non_refundable_re_shop_upgrade_fee,omitempty" xml:"non_refundable_re_shop_upgrade_fee,omitempty"`
+	// example:
+	//
+	// 0
+	NonRefundableTaxDiffFee *int64 `json:"non_refundable_tax_diff_fee,omitempty" xml:"non_refundable_tax_diff_fee,omitempty"`
+	// example:
+	//
+	// 14000
+	ReShopRefundAmount *int64 `json:"re_shop_refund_amount,omitempty" xml:"re_shop_refund_amount,omitempty"`
+	// example:
+	//
+	// 14000
+	ReShopServiceRefundAmount *int64 `json:"re_shop_service_refund_amount,omitempty" xml:"re_shop_service_refund_amount,omitempty"`
+	// example:
+	//
+	// 0
+	ReShopUpgradeRefundAmount *int64                                                                                                         `json:"re_shop_upgrade_refund_amount,omitempty" xml:"re_shop_upgrade_refund_amount,omitempty"`
+	RefundReShopFeeDetailList []*IntlFlightRefundDetailResponseBodyModulePassengeRefundFeeDetailListRefundFeeDetailRefundReShopFeeDetailList `json:"refund_re_shop_fee_detail_list,omitempty" xml:"refund_re_shop_fee_detail_list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
+	RefundTaxDiffAmount *int64 `json:"refund_tax_diff_amount,omitempty" xml:"refund_tax_diff_amount,omitempty"`
+	// example:
+	//
+	// 45000
+	RefundTaxFee *int64 `json:"refund_tax_fee,omitempty" xml:"refund_tax_fee,omitempty"`
+	// example:
+	//
+	// 2000
+	RefundTicketFee *int64 `json:"refund_ticket_fee,omitempty" xml:"refund_ticket_fee,omitempty"`
+	// example:
+	//
+	// 0
+	TaxRefundAmount *int64 `json:"tax_refund_amount,omitempty" xml:"tax_refund_amount,omitempty"`
+	// example:
+	//
+	// 1000
+	TicketRefundAmount *int64 `json:"ticket_refund_amount,omitempty" xml:"ticket_refund_amount,omitempty"`
+	// example:
+	//
+	// 1000
+	TotalRefundAmount *int64 `json:"total_refund_amount,omitempty" xml:"total_refund_amount,omitempty"`
 }
 
 func (s IntlFlightRefundDetailResponseBodyModulePassengeRefundFeeDetailListRefundFeeDetail) String() string {
@@ -429,14 +471,38 @@ func (s *IntlFlightRefundDetailResponseBodyModulePassengeRefundFeeDetailListRefu
 }
 
 type IntlFlightRefundDetailResponseBodyModulePassengeRefundFeeDetailListRefundFeeDetailRefundReShopFeeDetailList struct {
-	NonRefundableReShopHandlingFee *int64  `json:"non_refundable_re_shop_handling_fee,omitempty" xml:"non_refundable_re_shop_handling_fee,omitempty"`
-	NonRefundableReShopUpgradeFee  *int64  `json:"non_refundable_re_shop_upgrade_fee,omitempty" xml:"non_refundable_re_shop_upgrade_fee,omitempty"`
-	NonRefundableTaxDiffFee        *int64  `json:"non_refundable_tax_diff_fee,omitempty" xml:"non_refundable_tax_diff_fee,omitempty"`
-	ReShopApplyId                  *string `json:"re_shop_apply_id,omitempty" xml:"re_shop_apply_id,omitempty"`
-	ReShopRefundAmount             *int64  `json:"re_shop_refund_amount,omitempty" xml:"re_shop_refund_amount,omitempty"`
-	ReShopServiceRefundAmount      *int64  `json:"re_shop_service_refund_amount,omitempty" xml:"re_shop_service_refund_amount,omitempty"`
-	ReShopUpgradeRefundAmount      *int64  `json:"re_shop_upgrade_refund_amount,omitempty" xml:"re_shop_upgrade_refund_amount,omitempty"`
-	RefundTaxDiffAmount            *int64  `json:"refund_tax_diff_amount,omitempty" xml:"refund_tax_diff_amount,omitempty"`
+	// example:
+	//
+	// 21000
+	NonRefundableReShopHandlingFee *int64 `json:"non_refundable_re_shop_handling_fee,omitempty" xml:"non_refundable_re_shop_handling_fee,omitempty"`
+	// example:
+	//
+	// 0
+	NonRefundableReShopUpgradeFee *int64 `json:"non_refundable_re_shop_upgrade_fee,omitempty" xml:"non_refundable_re_shop_upgrade_fee,omitempty"`
+	// example:
+	//
+	// 0
+	NonRefundableTaxDiffFee *int64 `json:"non_refundable_tax_diff_fee,omitempty" xml:"non_refundable_tax_diff_fee,omitempty"`
+	// example:
+	//
+	// 10002340021
+	ReShopApplyId *string `json:"re_shop_apply_id,omitempty" xml:"re_shop_apply_id,omitempty"`
+	// example:
+	//
+	// 14000
+	ReShopRefundAmount *int64 `json:"re_shop_refund_amount,omitempty" xml:"re_shop_refund_amount,omitempty"`
+	// example:
+	//
+	// 14000
+	ReShopServiceRefundAmount *int64 `json:"re_shop_service_refund_amount,omitempty" xml:"re_shop_service_refund_amount,omitempty"`
+	// example:
+	//
+	// 0
+	ReShopUpgradeRefundAmount *int64 `json:"re_shop_upgrade_refund_amount,omitempty" xml:"re_shop_upgrade_refund_amount,omitempty"`
+	// example:
+	//
+	// 0
+	RefundTaxDiffAmount *int64 `json:"refund_tax_diff_amount,omitempty" xml:"refund_tax_diff_amount,omitempty"`
 }
 
 func (s IntlFlightRefundDetailResponseBodyModulePassengeRefundFeeDetailListRefundFeeDetailRefundReShopFeeDetailList) String() string {
@@ -525,7 +591,10 @@ func (s *IntlFlightRefundDetailResponseBodyModulePassengeRefundFeeDetailListRefu
 
 type IntlFlightRefundDetailResponseBodyModulePassengeRefundFeeDetailListTicketList struct {
 	SegmentKeyList []*string `json:"segment_key_list,omitempty" xml:"segment_key_list,omitempty" type:"Repeated"`
-	TicketNo       *string   `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
+	// example:
+	//
+	// 784-3553845201
+	TicketNo *string `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
 }
 
 func (s IntlFlightRefundDetailResponseBodyModulePassengeRefundFeeDetailListTicketList) String() string {
@@ -559,16 +628,46 @@ func (s *IntlFlightRefundDetailResponseBodyModulePassengeRefundFeeDetailListTick
 }
 
 type IntlFlightRefundDetailResponseBodyModulePassengerList struct {
-	Birthday        *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
-	FullName        *string `json:"full_name,omitempty" xml:"full_name,omitempty"`
-	Gender          *int32  `json:"gender,omitempty" xml:"gender,omitempty"`
-	JobNo           *string `json:"job_no,omitempty" xml:"job_no,omitempty"`
-	Nationality     *string `json:"nationality,omitempty" xml:"nationality,omitempty"`
+	// example:
+	//
+	// 1996-09-13
+	Birthday *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	// example:
+	//
+	// ZHANG/SAN
+	FullName *string `json:"full_name,omitempty" xml:"full_name,omitempty"`
+	// example:
+	//
+	// 1
+	Gender *int32 `json:"gender,omitempty" xml:"gender,omitempty"`
+	// example:
+	//
+	// 1001101
+	JobNo *string `json:"job_no,omitempty" xml:"job_no,omitempty"`
+	// example:
+	//
+	// 中国大陆
+	Nationality *string `json:"nationality,omitempty" xml:"nationality,omitempty"`
+	// example:
+	//
+	// CN
 	NationalityCode *string `json:"nationality_code,omitempty" xml:"nationality_code,omitempty"`
-	PassengerId     *int64  `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
-	Type            *int32  `json:"type,omitempty" xml:"type,omitempty"`
-	UserId          *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserType        *int32  `json:"user_type,omitempty" xml:"user_type,omitempty"`
+	// example:
+	//
+	// 8432002
+	PassengerId *int64 `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
+	// example:
+	//
+	// 0
+	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// btrip8432002
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// example:
+	//
+	// 0
+	UserType *int32 `json:"user_type,omitempty" xml:"user_type,omitempty"`
 }
 
 func (s IntlFlightRefundDetailResponseBodyModulePassengerList) String() string {
@@ -674,18 +773,54 @@ func (s *IntlFlightRefundDetailResponseBodyModulePassengerList) Validate() error
 }
 
 type IntlFlightRefundDetailResponseBodyModuleRefundOrderInfo struct {
-	ApplyTime             *string `json:"apply_time,omitempty" xml:"apply_time,omitempty"`
-	CloseReason           *string `json:"close_reason,omitempty" xml:"close_reason,omitempty"`
-	HandingAmount         *int64  `json:"handing_amount,omitempty" xml:"handing_amount,omitempty"`
-	OutRefundApplyId      *string `json:"out_refund_apply_id,omitempty" xml:"out_refund_apply_id,omitempty"`
-	ReasonCode            *string `json:"reason_code,omitempty" xml:"reason_code,omitempty"`
-	ReasonDesc            *string `json:"reason_desc,omitempty" xml:"reason_desc,omitempty"`
-	RefundAmount          *int64  `json:"refund_amount,omitempty" xml:"refund_amount,omitempty"`
-	RefundApplyId         *string `json:"refund_apply_id,omitempty" xml:"refund_apply_id,omitempty"`
-	RelationRefundApplyId *int64  `json:"relation_refund_apply_id,omitempty" xml:"relation_refund_apply_id,omitempty"`
-	Status                *int32  `json:"status,omitempty" xml:"status,omitempty"`
-	SuccessTime           *string `json:"success_time,omitempty" xml:"success_time,omitempty"`
-	Voluntary             *bool   `json:"voluntary,omitempty" xml:"voluntary,omitempty"`
+	// example:
+	//
+	// 2025-06-16 19:20:00
+	ApplyTime *string `json:"apply_time,omitempty" xml:"apply_time,omitempty"`
+	// example:
+	//
+	// 该航司暂不支持病退，旅客因病退票均按照自愿退票规定办理，请提交自愿退票
+	CloseReason *string `json:"close_reason,omitempty" xml:"close_reason,omitempty"`
+	// example:
+	//
+	// 4000
+	HandingAmount *int64 `json:"handing_amount,omitempty" xml:"handing_amount,omitempty"`
+	// example:
+	//
+	// 2025011317110900006
+	OutRefundApplyId *string `json:"out_refund_apply_id,omitempty" xml:"out_refund_apply_id,omitempty"`
+	// example:
+	//
+	// 0
+	ReasonCode *string `json:"reason_code,omitempty" xml:"reason_code,omitempty"`
+	// example:
+	//
+	// 因个人原因取消行程计划（退票费由个人承担）
+	ReasonDesc *string `json:"reason_desc,omitempty" xml:"reason_desc,omitempty"`
+	// example:
+	//
+	// 10200
+	RefundAmount *int64 `json:"refund_amount,omitempty" xml:"refund_amount,omitempty"`
+	// example:
+	//
+	// 1000000003437017
+	RefundApplyId *string `json:"refund_apply_id,omitempty" xml:"refund_apply_id,omitempty"`
+	// example:
+	//
+	// 1000000003437020
+	RelationRefundApplyId *int64 `json:"relation_refund_apply_id,omitempty" xml:"relation_refund_apply_id,omitempty"`
+	// example:
+	//
+	// 9
+	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 2025-06-16 20:20:00
+	SuccessTime *string `json:"success_time,omitempty" xml:"success_time,omitempty"`
+	// example:
+	//
+	// true
+	Voluntary *bool `json:"voluntary,omitempty" xml:"voluntary,omitempty"`
 }
 
 func (s IntlFlightRefundDetailResponseBodyModuleRefundOrderInfo) String() string {
@@ -809,34 +944,97 @@ func (s *IntlFlightRefundDetailResponseBodyModuleRefundOrderInfo) Validate() err
 }
 
 type IntlFlightRefundDetailResponseBodyModuleSegmentList struct {
-	AirlineInfo        *IntlFlightRefundDetailResponseBodyModuleSegmentListAirlineInfo          `json:"airline_info,omitempty" xml:"airline_info,omitempty" type:"Struct"`
-	ArrAirportInfo     *IntlFlightRefundDetailResponseBodyModuleSegmentListArrAirportInfo       `json:"arr_airport_info,omitempty" xml:"arr_airport_info,omitempty" type:"Struct"`
-	ArrCityCode        *string                                                                  `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
-	ArrCityName        *string                                                                  `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
-	ArrTime            *string                                                                  `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
-	DepAirportInfo     *IntlFlightRefundDetailResponseBodyModuleSegmentListDepAirportInfo       `json:"dep_airport_info,omitempty" xml:"dep_airport_info,omitempty" type:"Struct"`
-	DepCityCode        *string                                                                  `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
-	DepCityName        *string                                                                  `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
-	DepTime            *string                                                                  `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
-	Duration           *int32                                                                   `json:"duration,omitempty" xml:"duration,omitempty"`
-	FlightNo           *string                                                                  `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
-	FlightShareInfo    *IntlFlightRefundDetailResponseBodyModuleSegmentListFlightShareInfo      `json:"flight_share_info,omitempty" xml:"flight_share_info,omitempty" type:"Struct"`
+	AirlineInfo    *IntlFlightRefundDetailResponseBodyModuleSegmentListAirlineInfo    `json:"airline_info,omitempty" xml:"airline_info,omitempty" type:"Struct"`
+	ArrAirportInfo *IntlFlightRefundDetailResponseBodyModuleSegmentListArrAirportInfo `json:"arr_airport_info,omitempty" xml:"arr_airport_info,omitempty" type:"Struct"`
+	// example:
+	//
+	// HKG
+	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	// example:
+	//
+	// 香港
+	ArrCityName *string `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
+	// example:
+	//
+	// 2023-08-13 09:25
+	ArrTime        *string                                                            `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	DepAirportInfo *IntlFlightRefundDetailResponseBodyModuleSegmentListDepAirportInfo `json:"dep_airport_info,omitempty" xml:"dep_airport_info,omitempty" type:"Struct"`
+	// example:
+	//
+	// 370100
+	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	// example:
+	//
+	// 北京
+	DepCityName *string `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
+	// example:
+	//
+	// 2023-08-13 07:25
+	DepTime *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	// example:
+	//
+	// 120
+	Duration *int32 `json:"duration,omitempty" xml:"duration,omitempty"`
+	// example:
+	//
+	// NS8210
+	FlightNo        *string                                                             `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	FlightShareInfo *IntlFlightRefundDetailResponseBodyModuleSegmentListFlightShareInfo `json:"flight_share_info,omitempty" xml:"flight_share_info,omitempty" type:"Struct"`
+	// example:
+	//
+	// 中型机
 	FlightSize         *string                                                                  `json:"flight_size,omitempty" xml:"flight_size,omitempty"`
 	FlightStopInfoList []*IntlFlightRefundDetailResponseBodyModuleSegmentListFlightStopInfoList `json:"flight_stop_info_list,omitempty" xml:"flight_stop_info_list,omitempty" type:"Repeated"`
-	FlightType         *string                                                                  `json:"flight_type,omitempty" xml:"flight_type,omitempty"`
-	JourneyIndex       *int32                                                                   `json:"journey_index,omitempty" xml:"journey_index,omitempty"`
-	LuggageDirectInfo  *IntlFlightRefundDetailResponseBodyModuleSegmentListLuggageDirectInfo    `json:"luggage_direct_info,omitempty" xml:"luggage_direct_info,omitempty" type:"Struct"`
-	Manufacturer       *string                                                                  `json:"manufacturer,omitempty" xml:"manufacturer,omitempty"`
-	MealDesc           *string                                                                  `json:"meal_desc,omitempty" xml:"meal_desc,omitempty"`
-	OneMore            *int32                                                                   `json:"one_more,omitempty" xml:"one_more,omitempty"`
-	OneMoreShow        *string                                                                  `json:"one_more_show,omitempty" xml:"one_more_show,omitempty"`
-	SegmentIndex       *int32                                                                   `json:"segment_index,omitempty" xml:"segment_index,omitempty"`
-	SegmentKey         *string                                                                  `json:"segment_key,omitempty" xml:"segment_key,omitempty"`
-	SegmentVisaRemark  *IntlFlightRefundDetailResponseBodyModuleSegmentListSegmentVisaRemark    `json:"segment_visa_remark,omitempty" xml:"segment_visa_remark,omitempty" type:"Struct"`
-	Share              *bool                                                                    `json:"share,omitempty" xml:"share,omitempty"`
-	ShortFlightSize    *string                                                                  `json:"short_flight_size,omitempty" xml:"short_flight_size,omitempty"`
-	Stop               *bool                                                                    `json:"stop,omitempty" xml:"stop,omitempty"`
-	TotalTime          *string                                                                  `json:"total_time,omitempty" xml:"total_time,omitempty"`
+	// example:
+	//
+	// 787
+	FlightType *string `json:"flight_type,omitempty" xml:"flight_type,omitempty"`
+	// example:
+	//
+	// 0
+	JourneyIndex      *int32                                                                `json:"journey_index,omitempty" xml:"journey_index,omitempty"`
+	LuggageDirectInfo *IntlFlightRefundDetailResponseBodyModuleSegmentListLuggageDirectInfo `json:"luggage_direct_info,omitempty" xml:"luggage_direct_info,omitempty" type:"Struct"`
+	// example:
+	//
+	// 波音
+	Manufacturer *string `json:"manufacturer,omitempty" xml:"manufacturer,omitempty"`
+	// example:
+	//
+	// 小食
+	MealDesc *string `json:"meal_desc,omitempty" xml:"meal_desc,omitempty"`
+	// example:
+	//
+	// 1
+	OneMore *int32 `json:"one_more,omitempty" xml:"one_more,omitempty"`
+	// example:
+	//
+	// +1天
+	OneMoreShow *string `json:"one_more_show,omitempty" xml:"one_more_show,omitempty"`
+	// example:
+	//
+	// 0
+	SegmentIndex *int32 `json:"segment_index,omitempty" xml:"segment_index,omitempty"`
+	// example:
+	//
+	// CZ5009PKXHKG0616
+	SegmentKey        *string                                                               `json:"segment_key,omitempty" xml:"segment_key,omitempty"`
+	SegmentVisaRemark *IntlFlightRefundDetailResponseBodyModuleSegmentListSegmentVisaRemark `json:"segment_visa_remark,omitempty" xml:"segment_visa_remark,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	Share *bool `json:"share,omitempty" xml:"share,omitempty"`
+	// example:
+	//
+	// 中
+	ShortFlightSize *string `json:"short_flight_size,omitempty" xml:"short_flight_size,omitempty"`
+	// example:
+	//
+	// true
+	Stop *bool `json:"stop,omitempty" xml:"stop,omitempty"`
+	// example:
+	//
+	// 2小时
+	TotalTime *string `json:"total_time,omitempty" xml:"total_time,omitempty"`
 }
 
 func (s IntlFlightRefundDetailResponseBodyModuleSegmentList) String() string {
@@ -1143,9 +1341,18 @@ func (s *IntlFlightRefundDetailResponseBodyModuleSegmentList) Validate() error {
 }
 
 type IntlFlightRefundDetailResponseBodyModuleSegmentListAirlineInfo struct {
+	// example:
+	//
+	// MU
 	AirlineCode *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
+	// example:
+	//
+	// 中国东方航空
 	AirlineName *string `json:"airline_name,omitempty" xml:"airline_name,omitempty"`
-	ShortName   *string `json:"short_name,omitempty" xml:"short_name,omitempty"`
+	// example:
+	//
+	// 东航
+	ShortName *string `json:"short_name,omitempty" xml:"short_name,omitempty"`
 }
 
 func (s IntlFlightRefundDetailResponseBodyModuleSegmentListAirlineInfo) String() string {
@@ -1188,10 +1395,22 @@ func (s *IntlFlightRefundDetailResponseBodyModuleSegmentListAirlineInfo) Validat
 }
 
 type IntlFlightRefundDetailResponseBodyModuleSegmentListArrAirportInfo struct {
-	AirportCode      *string `json:"airport_code,omitempty" xml:"airport_code,omitempty"`
-	AirportName      *string `json:"airport_name,omitempty" xml:"airport_name,omitempty"`
+	// example:
+	//
+	// HKG
+	AirportCode *string `json:"airport_code,omitempty" xml:"airport_code,omitempty"`
+	// example:
+	//
+	// 香港国际机场
+	AirportName *string `json:"airport_name,omitempty" xml:"airport_name,omitempty"`
+	// example:
+	//
+	// 香港
 	AirportShortName *string `json:"airport_short_name,omitempty" xml:"airport_short_name,omitempty"`
-	Terminal         *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
+	// example:
+	//
+	// T3
+	Terminal *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
 }
 
 func (s IntlFlightRefundDetailResponseBodyModuleSegmentListArrAirportInfo) String() string {
@@ -1243,10 +1462,22 @@ func (s *IntlFlightRefundDetailResponseBodyModuleSegmentListArrAirportInfo) Vali
 }
 
 type IntlFlightRefundDetailResponseBodyModuleSegmentListDepAirportInfo struct {
-	AirportCode      *string `json:"airport_code,omitempty" xml:"airport_code,omitempty"`
-	AirportName      *string `json:"airport_name,omitempty" xml:"airport_name,omitempty"`
+	// example:
+	//
+	// PEK
+	AirportCode *string `json:"airport_code,omitempty" xml:"airport_code,omitempty"`
+	// example:
+	//
+	// 首都国际机场
+	AirportName *string `json:"airport_name,omitempty" xml:"airport_name,omitempty"`
+	// example:
+	//
+	// 首都
 	AirportShortName *string `json:"airport_short_name,omitempty" xml:"airport_short_name,omitempty"`
-	Terminal         *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
+	// example:
+	//
+	// T1
+	Terminal *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
 }
 
 func (s IntlFlightRefundDetailResponseBodyModuleSegmentListDepAirportInfo) String() string {
@@ -1299,7 +1530,10 @@ func (s *IntlFlightRefundDetailResponseBodyModuleSegmentListDepAirportInfo) Vali
 
 type IntlFlightRefundDetailResponseBodyModuleSegmentListFlightShareInfo struct {
 	OperatingAirlineInfo *IntlFlightRefundDetailResponseBodyModuleSegmentListFlightShareInfoOperatingAirlineInfo `json:"operating_airline_info,omitempty" xml:"operating_airline_info,omitempty" type:"Struct"`
-	OperatingFlightNo    *string                                                                                 `json:"operating_flight_no,omitempty" xml:"operating_flight_no,omitempty"`
+	// example:
+	//
+	// CA0001
+	OperatingFlightNo *string `json:"operating_flight_no,omitempty" xml:"operating_flight_no,omitempty"`
 }
 
 func (s IntlFlightRefundDetailResponseBodyModuleSegmentListFlightShareInfo) String() string {
@@ -1338,9 +1572,18 @@ func (s *IntlFlightRefundDetailResponseBodyModuleSegmentListFlightShareInfo) Val
 }
 
 type IntlFlightRefundDetailResponseBodyModuleSegmentListFlightShareInfoOperatingAirlineInfo struct {
+	// example:
+	//
+	// CA
 	AirlineCode *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
+	// example:
+	//
+	// 中国国航
 	AirlineName *string `json:"airline_name,omitempty" xml:"airline_name,omitempty"`
-	ShortName   *string `json:"short_name,omitempty" xml:"short_name,omitempty"`
+	// example:
+	//
+	// 国航
+	ShortName *string `json:"short_name,omitempty" xml:"short_name,omitempty"`
 }
 
 func (s IntlFlightRefundDetailResponseBodyModuleSegmentListFlightShareInfoOperatingAirlineInfo) String() string {
@@ -1383,15 +1626,42 @@ func (s *IntlFlightRefundDetailResponseBodyModuleSegmentListFlightShareInfoOpera
 }
 
 type IntlFlightRefundDetailResponseBodyModuleSegmentListFlightStopInfoList struct {
-	StopAirport     *string `json:"stop_airport,omitempty" xml:"stop_airport,omitempty"`
+	// example:
+	//
+	// HGH
+	StopAirport *string `json:"stop_airport,omitempty" xml:"stop_airport,omitempty"`
+	// example:
+	//
+	// 萧山国际机场
 	StopAirportName *string `json:"stop_airport_name,omitempty" xml:"stop_airport_name,omitempty"`
-	StopArrTerm     *string `json:"stop_arr_term,omitempty" xml:"stop_arr_term,omitempty"`
-	StopArrTime     *string `json:"stop_arr_time,omitempty" xml:"stop_arr_time,omitempty"`
-	StopCityCode    *string `json:"stop_city_code,omitempty" xml:"stop_city_code,omitempty"`
-	StopCityName    *string `json:"stop_city_name,omitempty" xml:"stop_city_name,omitempty"`
-	StopDepTerm     *string `json:"stop_dep_term,omitempty" xml:"stop_dep_term,omitempty"`
-	StopDepTime     *string `json:"stop_dep_time,omitempty" xml:"stop_dep_time,omitempty"`
-	StopTime        *string `json:"stop_time,omitempty" xml:"stop_time,omitempty"`
+	// example:
+	//
+	// T1
+	StopArrTerm *string `json:"stop_arr_term,omitempty" xml:"stop_arr_term,omitempty"`
+	// example:
+	//
+	// 2023-08-13 07:25
+	StopArrTime *string `json:"stop_arr_time,omitempty" xml:"stop_arr_time,omitempty"`
+	// example:
+	//
+	// HGH
+	StopCityCode *string `json:"stop_city_code,omitempty" xml:"stop_city_code,omitempty"`
+	// example:
+	//
+	// 杭州
+	StopCityName *string `json:"stop_city_name,omitempty" xml:"stop_city_name,omitempty"`
+	// example:
+	//
+	// T1
+	StopDepTerm *string `json:"stop_dep_term,omitempty" xml:"stop_dep_term,omitempty"`
+	// example:
+	//
+	// 2023-08-13 07:45
+	StopDepTime *string `json:"stop_dep_time,omitempty" xml:"stop_dep_time,omitempty"`
+	// example:
+	//
+	// 20
+	StopTime *string `json:"stop_time,omitempty" xml:"stop_time,omitempty"`
 }
 
 func (s IntlFlightRefundDetailResponseBodyModuleSegmentListFlightStopInfoList) String() string {
@@ -1488,7 +1758,13 @@ func (s *IntlFlightRefundDetailResponseBodyModuleSegmentListFlightStopInfoList) 
 }
 
 type IntlFlightRefundDetailResponseBodyModuleSegmentListLuggageDirectInfo struct {
-	DepCityLuggageDirect  *int32 `json:"dep_city_luggage_direct,omitempty" xml:"dep_city_luggage_direct,omitempty"`
+	// example:
+	//
+	// 1
+	DepCityLuggageDirect *int32 `json:"dep_city_luggage_direct,omitempty" xml:"dep_city_luggage_direct,omitempty"`
+	// example:
+	//
+	// 1
 	StopCityLuggageDirect *int32 `json:"stop_city_luggage_direct,omitempty" xml:"stop_city_luggage_direct,omitempty"`
 }
 
@@ -1523,7 +1799,13 @@ func (s *IntlFlightRefundDetailResponseBodyModuleSegmentListLuggageDirectInfo) V
 }
 
 type IntlFlightRefundDetailResponseBodyModuleSegmentListSegmentVisaRemark struct {
-	DepCityVisaRemark   *string   `json:"dep_city_visa_remark,omitempty" xml:"dep_city_visa_remark,omitempty"`
+	// example:
+	//
+	// 首尔--签证提示:中国大陆籍旅客需持有护照及中转国签证，请确认证件无误后再购票。
+	DepCityVisaRemark *string `json:"dep_city_visa_remark,omitempty" xml:"dep_city_visa_remark,omitempty"`
+	// example:
+	//
+	// 1
 	DepCityVisaType     *int32    `json:"dep_city_visa_type,omitempty" xml:"dep_city_visa_type,omitempty"`
 	StopCityVisaRemarks []*string `json:"stop_city_visa_remarks,omitempty" xml:"stop_city_visa_remarks,omitempty" type:"Repeated"`
 	StopCityVisaTypes   []*int32  `json:"stop_city_visa_types,omitempty" xml:"stop_city_visa_types,omitempty" type:"Repeated"`

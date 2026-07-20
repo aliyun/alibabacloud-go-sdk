@@ -27,15 +27,40 @@ type iApplyApproveRequest interface {
 
 type ApplyApproveRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// sdfg
 	ApplyId *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	Note    *string `json:"note,omitempty" xml:"note,omitempty"`
+	// example:
+	//
+	// 同意
+	Note *string `json:"note,omitempty" xml:"note,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2022-07-12 16:12:53
 	OperateTime *string `json:"operate_time,omitempty" xml:"operate_time,omitempty"`
 	// This parameter is required.
-	Status    *int32  `json:"status,omitempty" xml:"status,omitempty"`
+	//
+	// example:
+	//
+	// 1
+	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// btrip123
 	SubCorpId *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
 	// This parameter is required.
-	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	//
+	// example:
+	//
+	// thirdpart12138
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// example:
+	//
+	// 张三
 	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 

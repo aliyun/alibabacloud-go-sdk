@@ -153,6 +153,9 @@ func (s *IntlFlightRefundConsultResponseBodyModule) Validate() error {
 }
 
 type IntlFlightRefundConsultResponseBodyModulePassengerJourneyGroupInfoList struct {
+	// example:
+	//
+	// edcac4f4c79d40ccb141ddb6da567e65
 	PassengerJourneyGroupKey       *string                                                                                                 `json:"passenger_journey_group_key,omitempty" xml:"passenger_journey_group_key,omitempty"`
 	PassengerList                  []*IntlFlightRefundConsultResponseBodyModulePassengerJourneyGroupInfoListPassengerList                  `json:"passenger_list,omitempty" xml:"passenger_list,omitempty" type:"Repeated"`
 	PassengerSegmentStatusInfoList []*IntlFlightRefundConsultResponseBodyModulePassengerJourneyGroupInfoListPassengerSegmentStatusInfoList `json:"passenger_segment_status_info_list,omitempty" xml:"passenger_segment_status_info_list,omitempty" type:"Repeated"`
@@ -254,8 +257,14 @@ func (s *IntlFlightRefundConsultResponseBodyModulePassengerJourneyGroupInfoList)
 }
 
 type IntlFlightRefundConsultResponseBodyModulePassengerJourneyGroupInfoListPassengerList struct {
-	FullName    *string `json:"full_name,omitempty" xml:"full_name,omitempty"`
-	PassengerId *int64  `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
+	// example:
+	//
+	// ZHANG/SAN
+	FullName *string `json:"full_name,omitempty" xml:"full_name,omitempty"`
+	// example:
+	//
+	// 1000001
+	PassengerId *int64 `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
 }
 
 func (s IntlFlightRefundConsultResponseBodyModulePassengerJourneyGroupInfoListPassengerList) String() string {
@@ -289,10 +298,25 @@ func (s *IntlFlightRefundConsultResponseBodyModulePassengerJourneyGroupInfoListP
 }
 
 type IntlFlightRefundConsultResponseBodyModulePassengerJourneyGroupInfoListPassengerSegmentStatusInfoList struct {
-	CanRefund          *bool   `json:"can_refund,omitempty" xml:"can_refund,omitempty"`
-	PassengerId        *int64  `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
-	SegmentKey         *string `json:"segment_key,omitempty" xml:"segment_key,omitempty"`
-	UnRefundReason     *string `json:"un_refund_reason,omitempty" xml:"un_refund_reason,omitempty"`
+	// example:
+	//
+	// true
+	CanRefund *bool `json:"can_refund,omitempty" xml:"can_refund,omitempty"`
+	// example:
+	//
+	// 1000001
+	PassengerId *int64 `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
+	// example:
+	//
+	// CZ5009PKXHKG0616
+	SegmentKey *string `json:"segment_key,omitempty" xml:"segment_key,omitempty"`
+	// example:
+	//
+	// 客票已使用，不可退票
+	UnRefundReason *string `json:"un_refund_reason,omitempty" xml:"un_refund_reason,omitempty"`
+	// example:
+	//
+	// 3
 	UnRefundReasonCode *string `json:"un_refund_reason_code,omitempty" xml:"un_refund_reason_code,omitempty"`
 }
 
@@ -354,9 +378,18 @@ func (s *IntlFlightRefundConsultResponseBodyModulePassengerJourneyGroupInfoListP
 }
 
 type IntlFlightRefundConsultResponseBodyModulePassengerJourneyGroupInfoListRefundReasonInfoList struct {
+	// example:
+	//
+	// 0
 	ReasonCode *string `json:"reason_code,omitempty" xml:"reason_code,omitempty"`
+	// example:
+	//
+	// 因个人原因取消行程计划（退票费由个人承担）
 	ReasonDesc *string `json:"reason_desc,omitempty" xml:"reason_desc,omitempty"`
-	Voluntary  *bool   `json:"voluntary,omitempty" xml:"voluntary,omitempty"`
+	// example:
+	//
+	// true
+	Voluntary *bool `json:"voluntary,omitempty" xml:"voluntary,omitempty"`
 }
 
 func (s IntlFlightRefundConsultResponseBodyModulePassengerJourneyGroupInfoListRefundReasonInfoList) String() string {
@@ -399,13 +432,34 @@ func (s *IntlFlightRefundConsultResponseBodyModulePassengerJourneyGroupInfoListR
 }
 
 type IntlFlightRefundConsultResponseBodyModulePassengerJourneyGroupInfoListSegmentList struct {
-	ArrCityCode  *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
-	DepCityCode  *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
-	DepTime      *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
-	FlightNo     *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
-	JourneyIndex *int32  `json:"journey_index,omitempty" xml:"journey_index,omitempty"`
-	SegmentIndex *int32  `json:"segment_index,omitempty" xml:"segment_index,omitempty"`
-	SegmentKey   *string `json:"segment_key,omitempty" xml:"segment_key,omitempty"`
+	// example:
+	//
+	// HKG
+	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	// example:
+	//
+	// BJS
+	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	// example:
+	//
+	// 2025-06-16 19:20
+	DepTime *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	// example:
+	//
+	// CZ5009
+	FlightNo *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	// example:
+	//
+	// 0
+	JourneyIndex *int32 `json:"journey_index,omitempty" xml:"journey_index,omitempty"`
+	// example:
+	//
+	// 0
+	SegmentIndex *int32 `json:"segment_index,omitempty" xml:"segment_index,omitempty"`
+	// example:
+	//
+	// CZ5009PKXHKG0616
+	SegmentKey *string `json:"segment_key,omitempty" xml:"segment_key,omitempty"`
 }
 
 func (s IntlFlightRefundConsultResponseBodyModulePassengerJourneyGroupInfoListSegmentList) String() string {

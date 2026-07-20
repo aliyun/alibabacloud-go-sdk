@@ -16,9 +16,17 @@ type iAddInvoiceEntityRequest interface {
 }
 
 type AddInvoiceEntityRequest struct {
+	// The list of entities.
+	//
 	// This parameter is required.
 	Entities []*AddInvoiceEntityRequestEntities `json:"entities,omitempty" xml:"entities,omitempty" type:"Repeated"`
+	// The third-party invoice ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 4854821
 	ThirdPartId *string `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
 }
 
@@ -62,11 +70,37 @@ func (s *AddInvoiceEntityRequest) Validate() error {
 }
 
 type AddInvoiceEntityRequestEntities struct {
+	// The entity ID, which can be an employee ID, department ID, role ID, or third-party department ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345
 	EntityId *string `json:"entity_id,omitempty" xml:"entity_id,omitempty"`
+	// The entity name, which can be an employee name, department name, role name, or third-party department name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 张三
 	EntityName *string `json:"entity_name,omitempty" xml:"entity_name,omitempty"`
+	// The entity type. Valid values:
+	//
+	// - 1: employee
+	//
+	// - 2: department
+	//
+	// - 3: role
+	//
+	// - 4: third-party department
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	EntityType *string `json:"entity_type,omitempty" xml:"entity_type,omitempty"`
 }
 

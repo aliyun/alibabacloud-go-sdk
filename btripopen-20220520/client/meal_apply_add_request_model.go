@@ -39,23 +39,59 @@ type iMealApplyAddRequest interface {
 
 type MealApplyAddRequest struct {
 	// This parameter is required.
-	ApplyUser    *MealApplyAddRequestApplyUser `json:"apply_user,omitempty" xml:"apply_user,omitempty" type:"Struct"`
-	CostCenterId *int64                        `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
-	ExtendField  *string                       `json:"extend_field,omitempty" xml:"extend_field,omitempty"`
-	InvoiceId    *int64                        `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
+	ApplyUser *MealApplyAddRequestApplyUser `json:"apply_user,omitempty" xml:"apply_user,omitempty" type:"Struct"`
+	// example:
+	//
+	// 23
+	CostCenterId *int64 `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	// example:
+	//
+	// {"extend_key":"extend_value"}
+	ExtendField *string `json:"extend_field,omitempty" xml:"extend_field,omitempty"`
+	// example:
+	//
+	// 123
+	InvoiceId *int64 `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
 	// This parameter is required.
 	ItineraryList []*MealApplyAddRequestItineraryList `json:"itinerary_list,omitempty" xml:"itinerary_list,omitempty" type:"Repeated"`
-	MealAmount    *int64                              `json:"meal_amount,omitempty" xml:"meal_amount,omitempty"`
+	// example:
+	//
+	// 1
+	MealAmount *int64 `json:"meal_amount,omitempty" xml:"meal_amount,omitempty"`
 	// This parameter is required.
-	MealCause    *string `json:"meal_cause,omitempty" xml:"meal_cause,omitempty"`
-	ProjectCode  *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	//
+	// example:
+	//
+	// 测试
+	MealCause *string `json:"meal_cause,omitempty" xml:"meal_cause,omitempty"`
+	// example:
+	//
+	// project123
+	ProjectCode *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	// example:
+	//
+	// 项目1
 	ProjectTitle *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
 	// This parameter is required.
-	ThirdPartApplyId      *string `json:"third_part_apply_id,omitempty" xml:"third_part_apply_id,omitempty"`
+	//
+	// example:
+	//
+	// 1234
+	ThirdPartApplyId *string `json:"third_part_apply_id,omitempty" xml:"third_part_apply_id,omitempty"`
+	// example:
+	//
+	// 1200F00010
 	ThirdPartCostCenterId *string `json:"third_part_cost_center_id,omitempty" xml:"third_part_cost_center_id,omitempty"`
-	ThirdPartInvoiceId    *string `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
+	// example:
+	//
+	// GA15131
+	ThirdPartInvoiceId *string `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
 }
 
 func (s MealApplyAddRequest) String() string {
@@ -203,6 +239,10 @@ func (s *MealApplyAddRequest) Validate() error {
 
 type MealApplyAddRequestApplyUser struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// userId1
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
@@ -231,9 +271,20 @@ type MealApplyAddRequestItineraryList struct {
 	// This parameter is required.
 	Cities []*MealApplyAddRequestItineraryListCities `json:"cities,omitempty" xml:"cities,omitempty" type:"Repeated"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2025-02-05 00:00:00
 	EndDate *string `json:"end_date,omitempty" xml:"end_date,omitempty"`
 	// This parameter is required.
-	StartDate            *string `json:"start_date,omitempty" xml:"start_date,omitempty"`
+	//
+	// example:
+	//
+	// 2025-02-05 00:00:00
+	StartDate *string `json:"start_date,omitempty" xml:"start_date,omitempty"`
+	// example:
+	//
+	// 2134
 	ThirdpartItineraryId *string `json:"thirdpart_itinerary_id,omitempty" xml:"thirdpart_itinerary_id,omitempty"`
 }
 
@@ -295,7 +346,13 @@ func (s *MealApplyAddRequestItineraryList) Validate() error {
 }
 
 type MealApplyAddRequestItineraryListCities struct {
+	// example:
+	//
+	// 330702
 	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	// example:
+	//
+	// 杭州
 	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
 }
 

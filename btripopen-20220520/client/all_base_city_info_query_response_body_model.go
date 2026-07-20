@@ -24,12 +24,29 @@ type iAllBaseCityInfoQueryResponseBody interface {
 }
 
 type AllBaseCityInfoQueryResponseBody struct {
-	Code      *string                                 `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                                 `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *AllBaseCityInfoQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                                   `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                                 `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// success
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// demo
+	Message *string                                 `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *AllBaseCityInfoQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// C61ECFF6-606B-5F66-B81D-D77369043A5F
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	//
+	// example:
+	//
+	// 210f079e16603757182131635d866a
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s AllBaseCityInfoQueryResponseBody) String() string {

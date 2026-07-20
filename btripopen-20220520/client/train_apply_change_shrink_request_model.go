@@ -26,16 +26,37 @@ type iTrainApplyChangeShrinkRequest interface {
 }
 
 type TrainApplyChangeShrinkRequest struct {
+	// example:
+	//
+	// 0
 	AcceptNoSeat *string `json:"accept_no_seat,omitempty" xml:"accept_no_seat,omitempty"`
 	// This parameter is required.
 	ChangeTrainInfoSShrink *string `json:"change_train_info_s,omitempty" xml:"change_train_info_s,omitempty"`
-	ForceMatch             *string `json:"force_match,omitempty" xml:"force_match,omitempty"`
-	IsPayNow               *bool   `json:"is_pay_now,omitempty" xml:"is_pay_now,omitempty"`
+	// example:
+	//
+	// 0
+	ForceMatch *string `json:"force_match,omitempty" xml:"force_match,omitempty"`
+	// example:
+	//
+	// false
+	IsPayNow *bool `json:"is_pay_now,omitempty" xml:"is_pay_now,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1017028198411054446
 	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345
 	OutChangeApplyId *string `json:"out_change_apply_id,omitempty" xml:"out_change_apply_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
 	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
 }
 

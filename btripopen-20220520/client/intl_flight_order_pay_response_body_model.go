@@ -34,7 +34,10 @@ type IntlFlightOrderPayResponseBody struct {
 	Message   *string                               `json:"message,omitempty" xml:"message,omitempty"`
 	Module    *IntlFlightOrderPayResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
 	RequestId *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                                 `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 	// example:
 	//
 	// 210bc4b116835992457938931db4de
@@ -113,8 +116,14 @@ func (s *IntlFlightOrderPayResponseBody) Validate() error {
 }
 
 type IntlFlightOrderPayResponseBodyModule struct {
+	// example:
+	//
+	// 100000
 	ActualPayPrice *int64 `json:"actual_pay_price,omitempty" xml:"actual_pay_price,omitempty"`
-	PayStatus      *int32 `json:"pay_status,omitempty" xml:"pay_status,omitempty"`
+	// example:
+	//
+	// 0
+	PayStatus *int32 `json:"pay_status,omitempty" xml:"pay_status,omitempty"`
 }
 
 func (s IntlFlightOrderPayResponseBodyModule) String() string {

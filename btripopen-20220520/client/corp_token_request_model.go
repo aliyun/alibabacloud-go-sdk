@@ -18,10 +18,21 @@ type iCorpTokenRequest interface {
 }
 
 type CorpTokenRequest struct {
+	// example:
+	//
+	// Z2FyYmE1YTZjMDAwTixJU1M5LnZlLXtMO3FKbiYqJSM
 	AppSecret *string `json:"app_secret,omitempty" xml:"app_secret,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// open324dfsdafsgcxvxv
 	CorpId *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
 	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
 }
 

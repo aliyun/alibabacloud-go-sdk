@@ -28,18 +28,54 @@ type iIntlFlightReShopOtaSearchRequest interface {
 }
 
 type IntlFlightReShopOtaSearchRequest struct {
+	// The business travel order ID. This parameter is required.
+	//
 	// This parameter is required.
-	OrderId        *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	OutOrderId     *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
-	OutWheelSearch *bool   `json:"out_wheel_search,omitempty" xml:"out_wheel_search,omitempty"`
+	//
+	// example:
+	//
+	// 1017089206331988332
+	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// The external order ID.
+	//
+	// example:
+	//
+	// JP2024071800000002
+	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	// Specifies whether to enable external polling. When enabled, the external frontend controls polling, which reduces the response time (RT) of a single search. Default value: false.
+	//
+	// example:
+	//
+	// true
+	OutWheelSearch *bool `json:"out_wheel_search,omitempty" xml:"out_wheel_search,omitempty"`
+	// The rebooking group key returned by the consultation operation.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// edcac4f4c79d40ccb141ddb6da567e65
 	PassengerJourneyGroupKey *string `json:"passenger_journey_group_key,omitempty" xml:"passenger_journey_group_key,omitempty"`
-	ReShopReasonCode         *string `json:"re_shop_reason_code,omitempty" xml:"re_shop_reason_code,omitempty"`
+	// The rebooking reason code.
+	//
+	// example:
+	//
+	// 0
+	ReShopReasonCode *string `json:"re_shop_reason_code,omitempty" xml:"re_shop_reason_code,omitempty"`
+	// The search journeys. Only pass the journeys to be rebooked.
+	//
 	// This parameter is required.
 	SearchJourneys []*IntlFlightReShopOtaSearchRequestSearchJourneys `json:"search_journeys,omitempty" xml:"search_journeys,omitempty" type:"Repeated"`
+	// The list of selected passengers for rebooking.
+	//
 	// This parameter is required.
 	SelectedPassengers []*IntlFlightReShopOtaSearchRequestSelectedPassengers `json:"selected_passengers,omitempty" xml:"selected_passengers,omitempty" type:"Repeated"`
-	Token              *string                                               `json:"token,omitempty" xml:"token,omitempty"`
+	// The query record token used for external polling.
+	//
+	// example:
+	//
+	// 9960b412-cc05-4d10-b570-93372d816807
+	Token *string `json:"token,omitempty" xml:"token,omitempty"`
 }
 
 func (s IntlFlightReShopOtaSearchRequest) String() string {
@@ -145,9 +181,25 @@ func (s *IntlFlightReShopOtaSearchRequest) Validate() error {
 }
 
 type IntlFlightReShopOtaSearchRequestSearchJourneys struct {
-	ArrCityCode     *string                                                          `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
-	DepCityCode     *string                                                          `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
-	DepDate         *string                                                          `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	// The three-letter code of the arrival city.
+	//
+	// example:
+	//
+	// MEL
+	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	// The three-letter code of the departure city.
+	//
+	// example:
+	//
+	// HKG
+	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	// The departure date. Format: yyyy-MM-dd.
+	//
+	// example:
+	//
+	// 2025-12-28
+	DepDate *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	// The selected flight information for rebooking.
 	SelectedFlights []*IntlFlightReShopOtaSearchRequestSearchJourneysSelectedFlights `json:"selected_flights,omitempty" xml:"selected_flights,omitempty" type:"Repeated"`
 }
 
@@ -209,9 +261,29 @@ func (s *IntlFlightReShopOtaSearchRequestSearchJourneys) Validate() error {
 }
 
 type IntlFlightReShopOtaSearchRequestSearchJourneysSelectedFlights struct {
-	ArrCityCode    *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
-	DepCityCode    *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
-	FlightTime     *string `json:"flight_time,omitempty" xml:"flight_time,omitempty"`
+	// The three-letter code of the arrival city.
+	//
+	// example:
+	//
+	// MEL
+	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	// The three-letter code of the departure city.
+	//
+	// example:
+	//
+	// HKG
+	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	// The departure time. Format: yyyy-MM-dd HH:mm.
+	//
+	// example:
+	//
+	// 2025-12-28 12:00
+	FlightTime *string `json:"flight_time,omitempty" xml:"flight_time,omitempty"`
+	// The marketing flight number.
+	//
+	// example:
+	//
+	// HO3925
 	MarketFlightNo *string `json:"market_flight_no,omitempty" xml:"market_flight_no,omitempty"`
 }
 
@@ -264,8 +336,18 @@ func (s *IntlFlightReShopOtaSearchRequestSearchJourneysSelectedFlights) Validate
 }
 
 type IntlFlightReShopOtaSearchRequestSelectedPassengers struct {
-	FullName    *string `json:"full_name,omitempty" xml:"full_name,omitempty"`
-	PassengerId *int64  `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
+	// The full name of the passenger.
+	//
+	// example:
+	//
+	// ZHANG/SAN
+	FullName *string `json:"full_name,omitempty" xml:"full_name,omitempty"`
+	// The passenger ID.
+	//
+	// example:
+	//
+	// 1000001
+	PassengerId *int64 `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
 }
 
 func (s IntlFlightReShopOtaSearchRequestSelectedPassengers) String() string {

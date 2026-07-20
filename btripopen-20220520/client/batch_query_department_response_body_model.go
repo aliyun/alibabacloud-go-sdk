@@ -26,13 +26,31 @@ type iBatchQueryDepartmentResponseBody interface {
 }
 
 type BatchQueryDepartmentResponseBody struct {
-	Code           *string                                 `json:"code,omitempty" xml:"code,omitempty"`
-	HttpStatusCode *int32                                  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	Message        *string                                 `json:"message,omitempty" xml:"message,omitempty"`
-	Module         *BatchQueryDepartmentResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId      *string                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success        *bool                                   `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId        *string                                 `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// 成功
+	Message *string                                 `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *BatchQueryDepartmentResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// B72B39C8-****-****-****-D53F11F6ADFE
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 210f079e16603757182131635d866a
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s BatchQueryDepartmentResponseBody) String() string {
@@ -116,10 +134,19 @@ func (s *BatchQueryDepartmentResponseBody) Validate() error {
 }
 
 type BatchQueryDepartmentResponseBodyModule struct {
-	HasMore         *bool                                          `json:"has_more,omitempty" xml:"has_more,omitempty"`
-	Items           []*BatchQueryDepartmentResponseBodyModuleItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	NextCursorToken *string                                        `json:"next_cursor_token,omitempty" xml:"next_cursor_token,omitempty"`
-	Total           *int64                                         `json:"total,omitempty" xml:"total,omitempty"`
+	// example:
+	//
+	// true
+	HasMore *bool                                          `json:"has_more,omitempty" xml:"has_more,omitempty"`
+	Items   []*BatchQueryDepartmentResponseBodyModuleItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// NjE1OTgwOTY
+	NextCursorToken *string `json:"next_cursor_token,omitempty" xml:"next_cursor_token,omitempty"`
+	// example:
+	//
+	// 0
+	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s BatchQueryDepartmentResponseBodyModule) String() string {
@@ -180,9 +207,15 @@ func (s *BatchQueryDepartmentResponseBodyModule) Validate() error {
 }
 
 type BatchQueryDepartmentResponseBodyModuleItems struct {
+	// example:
+	//
+	// 电磁继电器装配SL10线
 	DeptName              *string   `json:"dept_name,omitempty" xml:"dept_name,omitempty"`
 	ManagerEmployeeIdList []*string `json:"manager_employee_id_list,omitempty" xml:"manager_employee_id_list,omitempty" type:"Repeated"`
-	OutDeptId             *string   `json:"out_dept_id,omitempty" xml:"out_dept_id,omitempty"`
+	// example:
+	//
+	// 1335
+	OutDeptId *string `json:"out_dept_id,omitempty" xml:"out_dept_id,omitempty"`
 }
 
 func (s BatchQueryDepartmentResponseBodyModuleItems) String() string {

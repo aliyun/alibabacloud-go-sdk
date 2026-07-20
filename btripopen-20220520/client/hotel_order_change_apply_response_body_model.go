@@ -24,12 +24,28 @@ type iHotelOrderChangeApplyResponseBody interface {
 }
 
 type HotelOrderChangeApplyResponseBody struct {
-	Code      *string                                  `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                                  `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *HotelOrderChangeApplyResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                                  `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// 0
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 成功
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// module
+	Module *HotelOrderChangeApplyResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// 6E9ABA14-5135-58FB-9DFC-C751B5855605
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 215045ec17018285034106091e8ba9
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s HotelOrderChangeApplyResponseBody) String() string {
@@ -104,6 +120,9 @@ func (s *HotelOrderChangeApplyResponseBody) Validate() error {
 }
 
 type HotelOrderChangeApplyResponseBodyModule struct {
+	// example:
+	//
+	// 123445443444
 	ChangeOrderId *string `json:"change_order_id,omitempty" xml:"change_order_id,omitempty"`
 }
 

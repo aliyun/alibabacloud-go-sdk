@@ -20,10 +20,20 @@ type iInvoiceRuleSaveRequest interface {
 }
 
 type InvoiceRuleSaveRequest struct {
+	// example:
+	//
+	// true
 	AllEmploye *bool                             `json:"all_employe,omitempty" xml:"all_employe,omitempty"`
 	Entities   []*InvoiceRuleSaveRequestEntities `json:"entities,omitempty" xml:"entities,omitempty" type:"Repeated"`
-	Scope      *int32                            `json:"scope,omitempty" xml:"scope,omitempty"`
+	// example:
+	//
+	// 1
+	Scope *int32 `json:"scope,omitempty" xml:"scope,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// i123
 	ThirdPartId *string `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
 }
 
@@ -85,9 +95,18 @@ func (s *InvoiceRuleSaveRequest) Validate() error {
 }
 
 type InvoiceRuleSaveRequestEntities struct {
-	Id   *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 123
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 张三
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	Type *int32  `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// 1
+	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s InvoiceRuleSaveRequestEntities) String() string {

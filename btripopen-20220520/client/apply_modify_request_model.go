@@ -88,48 +88,146 @@ type iApplyModifyRequest interface {
 }
 
 type ApplyModifyRequest struct {
-	Budget                   *int64                                      `json:"budget,omitempty" xml:"budget,omitempty"`
-	BudgetMerge              *int32                                      `json:"budget_merge,omitempty" xml:"budget_merge,omitempty"`
-	CarRule                  *ApplyModifyRequestCarRule                  `json:"car_rule,omitempty" xml:"car_rule,omitempty" type:"Struct"`
-	CorpName                 *string                                     `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
-	DefaultStandard          *ApplyModifyRequestDefaultStandard          `json:"default_standard,omitempty" xml:"default_standard,omitempty" type:"Struct"`
-	DepartId                 *string                                     `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
-	DepartName               *string                                     `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	// example:
+	//
+	// 4000
+	Budget *int64 `json:"budget,omitempty" xml:"budget,omitempty"`
+	// example:
+	//
+	// 1
+	BudgetMerge *int32                     `json:"budget_merge,omitempty" xml:"budget_merge,omitempty"`
+	CarRule     *ApplyModifyRequestCarRule `json:"car_rule,omitempty" xml:"car_rule,omitempty" type:"Struct"`
+	// example:
+	//
+	// 阿里巴巴
+	CorpName        *string                            `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	DefaultStandard *ApplyModifyRequestDefaultStandard `json:"default_standard,omitempty" xml:"default_standard,omitempty" type:"Struct"`
+	// example:
+	//
+	// 001
+	DepartId *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	// example:
+	//
+	// 采购部
+	DepartName *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	// 可将补充描述传入此字段，账单中将会体现此字段的值。可以用于企业的统计和对账
+	//
+	// example:
+	//
+	// {"cost_center":"成本中心"}
 	ExtendField              *string                                     `json:"extend_field,omitempty" xml:"extend_field,omitempty"`
 	ExternalTravelerList     []*ApplyModifyRequestExternalTravelerList   `json:"external_traveler_list,omitempty" xml:"external_traveler_list,omitempty" type:"Repeated"`
 	ExternalTravelerStandard *ApplyModifyRequestExternalTravelerStandard `json:"external_traveler_standard,omitempty" xml:"external_traveler_standard,omitempty" type:"Struct"`
-	FlightBudget             *int64                                      `json:"flight_budget,omitempty" xml:"flight_budget,omitempty"`
-	HotelBudget              *int64                                      `json:"hotel_budget,omitempty" xml:"hotel_budget,omitempty"`
-	HotelShare               *ApplyModifyRequestHotelShare               `json:"hotel_share,omitempty" xml:"hotel_share,omitempty" type:"Struct"`
-	IntlFlightBudget         *int64                                      `json:"intl_flight_budget,omitempty" xml:"intl_flight_budget,omitempty"`
-	IntlHotelBudget          *int64                                      `json:"intl_hotel_budget,omitempty" xml:"intl_hotel_budget,omitempty"`
-	ItineraryList            []*ApplyModifyRequestItineraryList          `json:"itinerary_list,omitempty" xml:"itinerary_list,omitempty" type:"Repeated"`
-	ItineraryRule            *int32                                      `json:"itinerary_rule,omitempty" xml:"itinerary_rule,omitempty"`
-	ItinerarySetList         []*ApplyModifyRequestItinerarySetList       `json:"itinerary_set_list,omitempty" xml:"itinerary_set_list,omitempty" type:"Repeated"`
-	LimitTraveler            *int32                                      `json:"limit_traveler,omitempty" xml:"limit_traveler,omitempty"`
-	MealBudget               *int64                                      `json:"meal_budget,omitempty" xml:"meal_budget,omitempty"`
-	PaymentDepartmentId      *string                                     `json:"payment_department_id,omitempty" xml:"payment_department_id,omitempty"`
-	PaymentDepartmentName    *string                                     `json:"payment_department_name,omitempty" xml:"payment_department_name,omitempty"`
-	Status                   *int32                                      `json:"status,omitempty" xml:"status,omitempty"`
-	SubCorpId                *string                                     `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
+	// example:
+	//
+	// 1000
+	FlightBudget *int64 `json:"flight_budget,omitempty" xml:"flight_budget,omitempty"`
+	// example:
+	//
+	// 1000
+	HotelBudget *int64                        `json:"hotel_budget,omitempty" xml:"hotel_budget,omitempty"`
+	HotelShare  *ApplyModifyRequestHotelShare `json:"hotel_share,omitempty" xml:"hotel_share,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1000
+	IntlFlightBudget *int64 `json:"intl_flight_budget,omitempty" xml:"intl_flight_budget,omitempty"`
+	// example:
+	//
+	// 1000
+	IntlHotelBudget *int64 `json:"intl_hotel_budget,omitempty" xml:"intl_hotel_budget,omitempty"`
+	// example:
+	//
+	// 0
+	ItineraryList []*ApplyModifyRequestItineraryList `json:"itinerary_list,omitempty" xml:"itinerary_list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
+	ItineraryRule    *int32                                `json:"itinerary_rule,omitempty" xml:"itinerary_rule,omitempty"`
+	ItinerarySetList []*ApplyModifyRequestItinerarySetList `json:"itinerary_set_list,omitempty" xml:"itinerary_set_list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
+	LimitTraveler *int32 `json:"limit_traveler,omitempty" xml:"limit_traveler,omitempty"`
+	// example:
+	//
+	// 1000
+	MealBudget *int64 `json:"meal_budget,omitempty" xml:"meal_budget,omitempty"`
+	// example:
+	//
+	// 141125
+	PaymentDepartmentId *string `json:"payment_department_id,omitempty" xml:"payment_department_id,omitempty"`
+	// example:
+	//
+	// 产品部
+	PaymentDepartmentName *string `json:"payment_department_name,omitempty" xml:"payment_department_name,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	// 子企业Id
+	//
+	// example:
+	//
+	// btrip123
+	SubCorpId *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
 	// This parameter is required.
-	ThirdpartApplyId    *string                               `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
-	ThirdpartBusinessId *string                               `json:"thirdpart_business_id,omitempty" xml:"thirdpart_business_id,omitempty"`
-	ThirdpartDepartId   *string                               `json:"thirdpart_depart_id,omitempty" xml:"thirdpart_depart_id,omitempty"`
-	TogetherBookRule    *int32                                `json:"together_book_rule,omitempty" xml:"together_book_rule,omitempty"`
-	TrainBudget         *int64                                `json:"train_budget,omitempty" xml:"train_budget,omitempty"`
-	TravelerList        []*ApplyModifyRequestTravelerList     `json:"traveler_list,omitempty" xml:"traveler_list,omitempty" type:"Repeated"`
-	TravelerStandard    []*ApplyModifyRequestTravelerStandard `json:"traveler_standard,omitempty" xml:"traveler_standard,omitempty" type:"Repeated"`
+	//
+	// example:
+	//
+	// 0001A1100000007EX08O
+	ThirdpartApplyId *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
+	// example:
+	//
+	// 202201413141
+	ThirdpartBusinessId *string `json:"thirdpart_business_id,omitempty" xml:"thirdpart_business_id,omitempty"`
+	// example:
+	//
+	// 三方部门id
+	ThirdpartDepartId *string `json:"thirdpart_depart_id,omitempty" xml:"thirdpart_depart_id,omitempty"`
+	// example:
+	//
+	// 1
+	TogetherBookRule *int32 `json:"together_book_rule,omitempty" xml:"together_book_rule,omitempty"`
+	// example:
+	//
+	// 1000
+	TrainBudget      *int64                                `json:"train_budget,omitempty" xml:"train_budget,omitempty"`
+	TravelerList     []*ApplyModifyRequestTravelerList     `json:"traveler_list,omitempty" xml:"traveler_list,omitempty" type:"Repeated"`
+	TravelerStandard []*ApplyModifyRequestTravelerStandard `json:"traveler_standard,omitempty" xml:"traveler_standard,omitempty" type:"Repeated"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 访问客户
 	TripCause *string `json:"trip_cause,omitempty" xml:"trip_cause,omitempty"`
-	TripDay   *int32  `json:"trip_day,omitempty" xml:"trip_day,omitempty"`
+	// example:
+	//
+	// 1
+	TripDay *int32 `json:"trip_day,omitempty" xml:"trip_day,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 访问客户
 	TripTitle *string `json:"trip_title,omitempty" xml:"trip_title,omitempty"`
-	UnionNo   *string `json:"union_no,omitempty" xml:"union_no,omitempty"`
+	// example:
+	//
+	// union51415
+	UnionNo *string `json:"union_no,omitempty" xml:"union_no,omitempty"`
 	// This parameter is required.
-	UserId        *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserName      *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
-	VehicleBudget *int64  `json:"vehicle_budget,omitempty" xml:"vehicle_budget,omitempty"`
+	//
+	// example:
+	//
+	// thirdpart12138
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// example:
+	//
+	// 张三
+	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	// example:
+	//
+	// 1000
+	VehicleBudget *int64 `json:"vehicle_budget,omitempty" xml:"vehicle_budget,omitempty"`
 }
 
 func (s ApplyModifyRequest) String() string {
@@ -552,7 +650,13 @@ func (s *ApplyModifyRequest) Validate() error {
 }
 
 type ApplyModifyRequestCarRule struct {
-	ScenarioTemplateId   *string `json:"scenario_template_id,omitempty" xml:"scenario_template_id,omitempty"`
+	// example:
+	//
+	// 1234567
+	ScenarioTemplateId *string `json:"scenario_template_id,omitempty" xml:"scenario_template_id,omitempty"`
+	// example:
+	//
+	// 测试场景模板
 	ScenarioTemplateName *string `json:"scenario_template_name,omitempty" xml:"scenario_template_name,omitempty"`
 }
 
@@ -587,21 +691,60 @@ func (s *ApplyModifyRequestCarRule) Validate() error {
 }
 
 type ApplyModifyRequestDefaultStandard struct {
-	BusinessDiscount          *int32                                             `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
-	EconomyDiscount           *int32                                             `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
-	FirstDiscount             *int32                                             `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
-	FlightCabins              *string                                            `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
-	FlightIntlRuleCode        *int64                                             `json:"flight_intl_rule_code,omitempty" xml:"flight_intl_rule_code,omitempty"`
-	FlightRuleCode            *int64                                             `json:"flight_rule_code,omitempty" xml:"flight_rule_code,omitempty"`
-	HotelCitys                []*ApplyModifyRequestDefaultStandardHotelCitys     `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
-	HotelIntlCitys            []*ApplyModifyRequestDefaultStandardHotelIntlCitys `json:"hotel_intl_citys,omitempty" xml:"hotel_intl_citys,omitempty" type:"Repeated"`
-	HotelIntlRuleCode         *int64                                             `json:"hotel_intl_rule_code,omitempty" xml:"hotel_intl_rule_code,omitempty"`
-	HotelRuleCode             *int64                                             `json:"hotel_rule_code,omitempty" xml:"hotel_rule_code,omitempty"`
-	InternationalFlightCabins *string                                            `json:"international_flight_cabins,omitempty" xml:"international_flight_cabins,omitempty"`
-	PremiumEconomyDiscount    *int32                                             `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
-	ReserveType               *int32                                             `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
-	TrainRuleCode             *int64                                             `json:"train_rule_code,omitempty" xml:"train_rule_code,omitempty"`
-	TrainSeats                *string                                            `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
+	// example:
+	//
+	// 3
+	BusinessDiscount *int32 `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
+	// example:
+	//
+	// 2
+	EconomyDiscount *int32 `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
+	// example:
+	//
+	// 9
+	FirstDiscount *int32 `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
+	// example:
+	//
+	// Y
+	FlightCabins *string `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
+	// example:
+	//
+	// 10032
+	FlightIntlRuleCode *int64 `json:"flight_intl_rule_code,omitempty" xml:"flight_intl_rule_code,omitempty"`
+	// example:
+	//
+	// 10032
+	FlightRuleCode *int64                                             `json:"flight_rule_code,omitempty" xml:"flight_rule_code,omitempty"`
+	HotelCitys     []*ApplyModifyRequestDefaultStandardHotelCitys     `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
+	HotelIntlCitys []*ApplyModifyRequestDefaultStandardHotelIntlCitys `json:"hotel_intl_citys,omitempty" xml:"hotel_intl_citys,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10032
+	HotelIntlRuleCode *int64 `json:"hotel_intl_rule_code,omitempty" xml:"hotel_intl_rule_code,omitempty"`
+	// example:
+	//
+	// 10032
+	HotelRuleCode *int64 `json:"hotel_rule_code,omitempty" xml:"hotel_rule_code,omitempty"`
+	// example:
+	//
+	// F
+	InternationalFlightCabins *string `json:"international_flight_cabins,omitempty" xml:"international_flight_cabins,omitempty"`
+	// example:
+	//
+	// 2
+	PremiumEconomyDiscount *int32 `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
+	// example:
+	//
+	// 1
+	ReserveType *int32 `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
+	// example:
+	//
+	// 10032
+	TrainRuleCode *int64 `json:"train_rule_code,omitempty" xml:"train_rule_code,omitempty"`
+	// example:
+	//
+	// 1000
+	TrainSeats *string `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
 }
 
 func (s ApplyModifyRequestDefaultStandard) String() string {
@@ -770,9 +913,18 @@ func (s *ApplyModifyRequestDefaultStandard) Validate() error {
 }
 
 type ApplyModifyRequestDefaultStandardHotelCitys struct {
+	// example:
+	//
+	// 500100
 	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	// example:
+	//
+	// 杭州
 	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
-	Fee      *int64  `json:"fee,omitempty" xml:"fee,omitempty"`
+	// example:
+	//
+	// 10000
+	Fee *int64 `json:"fee,omitempty" xml:"fee,omitempty"`
 }
 
 func (s ApplyModifyRequestDefaultStandardHotelCitys) String() string {
@@ -815,9 +967,18 @@ func (s *ApplyModifyRequestDefaultStandardHotelCitys) Validate() error {
 }
 
 type ApplyModifyRequestDefaultStandardHotelIntlCitys struct {
+	// example:
+	//
+	// 510100
 	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	// example:
+	//
+	// 城市名称
 	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
-	Fee      *int64  `json:"fee,omitempty" xml:"fee,omitempty"`
+	// example:
+	//
+	// 10000
+	Fee *int64 `json:"fee,omitempty" xml:"fee,omitempty"`
 }
 
 func (s ApplyModifyRequestDefaultStandardHotelIntlCitys) String() string {
@@ -860,19 +1021,58 @@ func (s *ApplyModifyRequestDefaultStandardHotelIntlCitys) Validate() error {
 }
 
 type ApplyModifyRequestExternalTravelerList struct {
-	Attribute             *string `json:"attribute,omitempty" xml:"attribute,omitempty"`
-	CostCenterId          *int64  `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
-	ExternalUserId        *string `json:"external_user_id,omitempty" xml:"external_user_id,omitempty"`
-	InvoiceId             *int64  `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
-	PaymentDepartmentId   *string `json:"payment_department_id,omitempty" xml:"payment_department_id,omitempty"`
+	// example:
+	//
+	// “{"name":"张三"}”
+	Attribute *string `json:"attribute,omitempty" xml:"attribute,omitempty"`
+	// example:
+	//
+	// 144224
+	CostCenterId *int64 `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	// example:
+	//
+	// 371164
+	ExternalUserId *string `json:"external_user_id,omitempty" xml:"external_user_id,omitempty"`
+	// example:
+	//
+	// 11411
+	InvoiceId *int64 `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
+	// example:
+	//
+	// 11422
+	PaymentDepartmentId *string `json:"payment_department_id,omitempty" xml:"payment_department_id,omitempty"`
+	// example:
+	//
+	// “一级事业部”
 	PaymentDepartmentName *string `json:"payment_department_name,omitempty" xml:"payment_department_name,omitempty"`
-	ProjectCode           *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectTitle          *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
-	ThirdPartInvoiceId    *string `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
+	// example:
+	//
+	// acs
+	ProjectCode *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	// example:
+	//
+	// “成本项目”
+	ProjectTitle *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	// example:
+	//
+	// 91140100688069283J
+	ThirdPartInvoiceId *string `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
+	// example:
+	//
+	// HD4451224
 	ThirdpartCostCenterId *string `json:"thirdpart_cost_center_id,omitempty" xml:"thirdpart_cost_center_id,omitempty"`
-	ThirdpartDepartId     *string `json:"thirdpart_depart_id,omitempty" xml:"thirdpart_depart_id,omitempty"`
-	UserName              *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
-	UserNameEn            *string `json:"user_name_en,omitempty" xml:"user_name_en,omitempty"`
+	// example:
+	//
+	// 6281
+	ThirdpartDepartId *string `json:"thirdpart_depart_id,omitempty" xml:"thirdpart_depart_id,omitempty"`
+	// example:
+	//
+	// 王武
+	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	// example:
+	//
+	// wu/wang
+	UserNameEn *string `json:"user_name_en,omitempty" xml:"user_name_en,omitempty"`
 }
 
 func (s ApplyModifyRequestExternalTravelerList) String() string {
@@ -1005,21 +1205,62 @@ func (s *ApplyModifyRequestExternalTravelerList) Validate() error {
 }
 
 type ApplyModifyRequestExternalTravelerStandard struct {
-	BusinessDiscount          *int32                                                      `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
-	EconomyDiscount           *int32                                                      `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
-	FirstDiscount             *int32                                                      `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
-	FlightCabins              *string                                                     `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
-	FlightIntlRuleCode        *int64                                                      `json:"flight_intl_rule_code,omitempty" xml:"flight_intl_rule_code,omitempty"`
-	FlightRuleCode            *int64                                                      `json:"flight_rule_code,omitempty" xml:"flight_rule_code,omitempty"`
-	HotelCitys                []*ApplyModifyRequestExternalTravelerStandardHotelCitys     `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
-	HotelIntlCitys            []*ApplyModifyRequestExternalTravelerStandardHotelIntlCitys `json:"hotel_intl_citys,omitempty" xml:"hotel_intl_citys,omitempty" type:"Repeated"`
-	HotelIntlRuleCode         *int64                                                      `json:"hotel_intl_rule_code,omitempty" xml:"hotel_intl_rule_code,omitempty"`
-	HotelRuleCode             *int64                                                      `json:"hotel_rule_code,omitempty" xml:"hotel_rule_code,omitempty"`
-	InternationalFlightCabins *string                                                     `json:"international_flight_cabins,omitempty" xml:"international_flight_cabins,omitempty"`
-	PremiumEconomyDiscount    *int32                                                      `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
-	ReserveType               *int32                                                      `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
-	TrainRuleCode             *int64                                                      `json:"train_rule_code,omitempty" xml:"train_rule_code,omitempty"`
-	TrainSeats                *string                                                     `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
+	// example:
+	//
+	// 1
+	BusinessDiscount *int32 `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
+	// example:
+	//
+	// 1
+	EconomyDiscount *int32 `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
+	// example:
+	//
+	// 1
+	FirstDiscount *int32 `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
+	// example:
+	//
+	// Y
+	FlightCabins *string `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
+	// example:
+	//
+	// 10032
+	FlightIntlRuleCode *int64 `json:"flight_intl_rule_code,omitempty" xml:"flight_intl_rule_code,omitempty"`
+	// example:
+	//
+	// 10032
+	FlightRuleCode *int64                                                      `json:"flight_rule_code,omitempty" xml:"flight_rule_code,omitempty"`
+	HotelCitys     []*ApplyModifyRequestExternalTravelerStandardHotelCitys     `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
+	HotelIntlCitys []*ApplyModifyRequestExternalTravelerStandardHotelIntlCitys `json:"hotel_intl_citys,omitempty" xml:"hotel_intl_citys,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10032
+	HotelIntlRuleCode *int64 `json:"hotel_intl_rule_code,omitempty" xml:"hotel_intl_rule_code,omitempty"`
+	// example:
+	//
+	// 10032
+	HotelRuleCode *int64 `json:"hotel_rule_code,omitempty" xml:"hotel_rule_code,omitempty"`
+	// example:
+	//
+	// F
+	InternationalFlightCabins *string `json:"international_flight_cabins,omitempty" xml:"international_flight_cabins,omitempty"`
+	// 超级经济舱折扣。1到10的整数
+	//
+	// example:
+	//
+	// 1
+	PremiumEconomyDiscount *int32 `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
+	// example:
+	//
+	// 0
+	ReserveType *int32 `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
+	// example:
+	//
+	// 10032
+	TrainRuleCode *int64 `json:"train_rule_code,omitempty" xml:"train_rule_code,omitempty"`
+	// example:
+	//
+	// 1
+	TrainSeats *string `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
 }
 
 func (s ApplyModifyRequestExternalTravelerStandard) String() string {
@@ -1188,9 +1429,18 @@ func (s *ApplyModifyRequestExternalTravelerStandard) Validate() error {
 }
 
 type ApplyModifyRequestExternalTravelerStandardHotelCitys struct {
+	// example:
+	//
+	// 0
 	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	// example:
+	//
+	// 北京
 	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
-	Fee      *int64  `json:"fee,omitempty" xml:"fee,omitempty"`
+	// example:
+	//
+	// 1001
+	Fee *int64 `json:"fee,omitempty" xml:"fee,omitempty"`
 }
 
 func (s ApplyModifyRequestExternalTravelerStandardHotelCitys) String() string {
@@ -1233,9 +1483,18 @@ func (s *ApplyModifyRequestExternalTravelerStandardHotelCitys) Validate() error 
 }
 
 type ApplyModifyRequestExternalTravelerStandardHotelIntlCitys struct {
+	// example:
+	//
+	// 330100
 	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	// example:
+	//
+	// 杭州
 	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
-	Fee      *int64  `json:"fee,omitempty" xml:"fee,omitempty"`
+	// example:
+	//
+	// 1009
+	Fee *int64 `json:"fee,omitempty" xml:"fee,omitempty"`
 }
 
 func (s ApplyModifyRequestExternalTravelerStandardHotelIntlCitys) String() string {
@@ -1278,8 +1537,14 @@ func (s *ApplyModifyRequestExternalTravelerStandardHotelIntlCitys) Validate() er
 }
 
 type ApplyModifyRequestHotelShare struct {
+	// example:
+	//
+	// 70
 	Param *string `json:"param,omitempty" xml:"param,omitempty"`
-	Type  *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// 1
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s ApplyModifyRequestHotelShare) String() string {
@@ -1314,31 +1579,92 @@ func (s *ApplyModifyRequestHotelShare) Validate() error {
 
 type ApplyModifyRequestItineraryList struct {
 	// This parameter is required.
-	ArrCity     *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	//
+	// example:
+	//
+	// 杭州
+	ArrCity *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	// example:
+	//
+	// HGH
 	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
 	// This parameter is required.
-	ArrDate      *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
-	Attribute    *string `json:"attribute,omitempty" xml:"attribute,omitempty"`
-	CostCenterId *int64  `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	//
+	// example:
+	//
+	// 2022-07-12 00:00:00
+	ArrDate *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
+	// example:
+	//
+	// “{"name":"张三"}”
+	Attribute *string `json:"attribute,omitempty" xml:"attribute,omitempty"`
+	// example:
+	//
+	// 2021413
+	CostCenterId *int64 `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
 	// This parameter is required.
-	DepCity     *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	//
+	// example:
+	//
+	// 北京
+	DepCity *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	// example:
+	//
+	// BJS
 	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
 	// This parameter is required.
-	DepDate   *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
-	InvoiceId *int64  `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
+	//
+	// example:
+	//
+	// 2022-07-12 00:00:00
+	DepDate *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	// example:
+	//
+	// 614141
+	InvoiceId *int64 `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
 	// This parameter is required.
-	ItineraryId               *string                                                 `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
-	ItineraryTravelStandard   *ApplyModifyRequestItineraryListItineraryTravelStandard `json:"itinerary_travel_standard,omitempty" xml:"itinerary_travel_standard,omitempty" type:"Struct"`
-	NeedHotel                 *bool                                                   `json:"need_hotel,omitempty" xml:"need_hotel,omitempty"`
-	NeedTraffic               *bool                                                   `json:"need_traffic,omitempty" xml:"need_traffic,omitempty"`
-	ProjectCode               *string                                                 `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectTitle              *string                                                 `json:"project_title,omitempty" xml:"project_title,omitempty"`
-	ProvinceTravelCityAdcodes []*string                                               `json:"province_travel_city_adcodes,omitempty" xml:"province_travel_city_adcodes,omitempty" type:"Repeated"`
-	ThirdPartInvoiceId        *string                                                 `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
-	ThirdpartCostCenterId     *string                                                 `json:"thirdpart_cost_center_id,omitempty" xml:"thirdpart_cost_center_id,omitempty"`
+	//
+	// example:
+	//
+	// 2000131
+	ItineraryId             *string                                                 `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
+	ItineraryTravelStandard *ApplyModifyRequestItineraryListItineraryTravelStandard `json:"itinerary_travel_standard,omitempty" xml:"itinerary_travel_standard,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	NeedHotel *bool `json:"need_hotel,omitempty" xml:"need_hotel,omitempty"`
+	// example:
+	//
+	// true
+	NeedTraffic *bool `json:"need_traffic,omitempty" xml:"need_traffic,omitempty"`
+	// example:
+	//
+	// projectone
+	ProjectCode *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	// example:
+	//
+	// 项目1
+	ProjectTitle              *string   `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	ProvinceTravelCityAdcodes []*string `json:"province_travel_city_adcodes,omitempty" xml:"province_travel_city_adcodes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ZG14131
+	ThirdPartInvoiceId *string `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
+	// example:
+	//
+	// thirdpart5151
+	ThirdpartCostCenterId *string `json:"thirdpart_cost_center_id,omitempty" xml:"thirdpart_cost_center_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
 	TrafficType *int32 `json:"traffic_type,omitempty" xml:"traffic_type,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
 	TripWay *int32 `json:"trip_way,omitempty" xml:"trip_way,omitempty"`
 }
 
@@ -1540,6 +1866,9 @@ func (s *ApplyModifyRequestItineraryList) Validate() error {
 }
 
 type ApplyModifyRequestItineraryListItineraryTravelStandard struct {
+	// example:
+	//
+	// 2
 	HotelAvailableNightsPerDay *int32 `json:"hotel_available_nights_per_day,omitempty" xml:"hotel_available_nights_per_day,omitempty"`
 }
 
@@ -1568,24 +1897,57 @@ type ApplyModifyRequestItinerarySetList struct {
 	// example:
 	//
 	// 2017-01-01 00:00:00
-	ArrDate      *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
-	Attribute    *string `json:"attribute,omitempty" xml:"attribute,omitempty"`
-	CityCodeSet  *string `json:"city_code_set,omitempty" xml:"city_code_set,omitempty"`
-	CitySet      *string `json:"city_set,omitempty" xml:"city_set,omitempty"`
-	CostCenterId *int64  `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	ArrDate *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
+	// example:
+	//
+	// “{"name":"张三"}”
+	Attribute *string `json:"attribute,omitempty" xml:"attribute,omitempty"`
+	// example:
+	//
+	// BJS,SHA
+	CityCodeSet *string `json:"city_code_set,omitempty" xml:"city_code_set,omitempty"`
+	// example:
+	//
+	// 北京，上海
+	CitySet *string `json:"city_set,omitempty" xml:"city_set,omitempty"`
+	// example:
+	//
+	// 123455
+	CostCenterId *int64 `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
 	// example:
 	//
 	// 2017-01-01 00:00:00
-	DepDate                   *string                                                    `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
-	InvoiceId                 *int64                                                     `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
-	ItineraryId               *string                                                    `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
-	ItineraryTravelStandard   *ApplyModifyRequestItinerarySetListItineraryTravelStandard `json:"itinerary_travel_standard,omitempty" xml:"itinerary_travel_standard,omitempty" type:"Struct"`
-	ProjectCode               *string                                                    `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectTitle              *string                                                    `json:"project_title,omitempty" xml:"project_title,omitempty"`
-	ProvinceTravelCityAdcodes []*string                                                  `json:"province_travel_city_adcodes,omitempty" xml:"province_travel_city_adcodes,omitempty" type:"Repeated"`
-	ThirdPartInvoiceId        *string                                                    `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
-	ThirdpartCostCenterId     *string                                                    `json:"thirdpart_cost_center_id,omitempty" xml:"thirdpart_cost_center_id,omitempty"`
-	TrafficType               *int32                                                     `json:"traffic_type,omitempty" xml:"traffic_type,omitempty"`
+	DepDate *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	// example:
+	//
+	// 12344
+	InvoiceId *int64 `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
+	// example:
+	//
+	// 20220722001
+	ItineraryId             *string                                                    `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
+	ItineraryTravelStandard *ApplyModifyRequestItinerarySetListItineraryTravelStandard `json:"itinerary_travel_standard,omitempty" xml:"itinerary_travel_standard,omitempty" type:"Struct"`
+	// example:
+	//
+	// projecttow
+	ProjectCode *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	// example:
+	//
+	// 项目1
+	ProjectTitle              *string   `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	ProvinceTravelCityAdcodes []*string `json:"province_travel_city_adcodes,omitempty" xml:"province_travel_city_adcodes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// thridpart12138
+	ThirdPartInvoiceId *string `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
+	// example:
+	//
+	// thridpart12138
+	ThirdpartCostCenterId *string `json:"thirdpart_cost_center_id,omitempty" xml:"thirdpart_cost_center_id,omitempty"`
+	// example:
+	//
+	// 0
+	TrafficType *int32 `json:"traffic_type,omitempty" xml:"traffic_type,omitempty"`
 }
 
 func (s ApplyModifyRequestItinerarySetList) String() string {
@@ -1741,6 +2103,9 @@ func (s *ApplyModifyRequestItinerarySetList) Validate() error {
 }
 
 type ApplyModifyRequestItinerarySetListItineraryTravelStandard struct {
+	// example:
+	//
+	// 2
 	HotelAvailableNightsPerDay *int32 `json:"hotel_available_nights_per_day,omitempty" xml:"hotel_available_nights_per_day,omitempty"`
 }
 
@@ -1766,18 +2131,54 @@ func (s *ApplyModifyRequestItinerarySetListItineraryTravelStandard) Validate() e
 }
 
 type ApplyModifyRequestTravelerList struct {
-	Attribute             *string `json:"attribute,omitempty" xml:"attribute,omitempty"`
-	CostCenterId          *int64  `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
-	InvoiceId             *int64  `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
-	PaymentDepartmentId   *string `json:"payment_department_id,omitempty" xml:"payment_department_id,omitempty"`
+	// example:
+	//
+	// “{"name":"张三"}”
+	Attribute *string `json:"attribute,omitempty" xml:"attribute,omitempty"`
+	// example:
+	//
+	// 12211
+	CostCenterId *int64 `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	// example:
+	//
+	// 11412
+	InvoiceId *int64 `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
+	// example:
+	//
+	// 11633
+	PaymentDepartmentId *string `json:"payment_department_id,omitempty" xml:"payment_department_id,omitempty"`
+	// example:
+	//
+	// “一级事业部”
 	PaymentDepartmentName *string `json:"payment_department_name,omitempty" xml:"payment_department_name,omitempty"`
-	ProjectCode           *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectTitle          *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
-	ThirdPartInvoiceId    *string `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
+	// example:
+	//
+	// acs
+	ProjectCode *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	// example:
+	//
+	// “成本项目”
+	ProjectTitle *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	// example:
+	//
+	// 517492
+	ThirdPartInvoiceId *string `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
+	// example:
+	//
+	// HD424333
 	ThirdpartCostCenterId *string `json:"thirdpart_cost_center_id,omitempty" xml:"thirdpart_cost_center_id,omitempty"`
-	ThirdpartDepartId     *string `json:"thirdpart_depart_id,omitempty" xml:"thirdpart_depart_id,omitempty"`
-	UserId                *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserName              *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	// example:
+	//
+	// 1001A11000000000O7YC
+	ThirdpartDepartId *string `json:"thirdpart_depart_id,omitempty" xml:"thirdpart_depart_id,omitempty"`
+	// example:
+	//
+	// GS641312
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// example:
+	//
+	// 李四
+	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
 func (s ApplyModifyRequestTravelerList) String() string {
@@ -1901,24 +2302,68 @@ func (s *ApplyModifyRequestTravelerList) Validate() error {
 }
 
 type ApplyModifyRequestTravelerStandard struct {
-	BusinessDiscount          *int32                                              `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
-	CarCitySet                []*ApplyModifyRequestTravelerStandardCarCitySet     `json:"car_city_set,omitempty" xml:"car_city_set,omitempty" type:"Repeated"`
-	CarStandard               *ApplyModifyRequestTravelerStandardCarStandard      `json:"car_standard,omitempty" xml:"car_standard,omitempty" type:"Struct"`
-	EconomyDiscount           *int32                                              `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
-	FirstDiscount             *int32                                              `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
-	FlightCabins              *string                                             `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
-	FlightIntlRuleCode        *int64                                              `json:"flight_intl_rule_code,omitempty" xml:"flight_intl_rule_code,omitempty"`
-	FlightRuleCode            *int64                                              `json:"flight_rule_code,omitempty" xml:"flight_rule_code,omitempty"`
-	HotelCitys                []*ApplyModifyRequestTravelerStandardHotelCitys     `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
-	HotelIntlCitys            []*ApplyModifyRequestTravelerStandardHotelIntlCitys `json:"hotel_intl_citys,omitempty" xml:"hotel_intl_citys,omitempty" type:"Repeated"`
-	HotelIntlRuleCode         *int64                                              `json:"hotel_intl_rule_code,omitempty" xml:"hotel_intl_rule_code,omitempty"`
-	HotelRuleCode             *int64                                              `json:"hotel_rule_code,omitempty" xml:"hotel_rule_code,omitempty"`
-	InternationalFlightCabins *string                                             `json:"international_flight_cabins,omitempty" xml:"international_flight_cabins,omitempty"`
-	PremiumEconomyDiscount    *int32                                              `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
-	ReserveType               *int32                                              `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
-	TrainRuleCode             *int64                                              `json:"train_rule_code,omitempty" xml:"train_rule_code,omitempty"`
-	TrainSeats                *string                                             `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
-	UserId                    *string                                             `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// example:
+	//
+	// 1
+	BusinessDiscount *int32                                          `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
+	CarCitySet       []*ApplyModifyRequestTravelerStandardCarCitySet `json:"car_city_set,omitempty" xml:"car_city_set,omitempty" type:"Repeated"`
+	CarStandard      *ApplyModifyRequestTravelerStandardCarStandard  `json:"car_standard,omitempty" xml:"car_standard,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	EconomyDiscount *int32 `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
+	// example:
+	//
+	// 1
+	FirstDiscount *int32 `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
+	// example:
+	//
+	// Y
+	FlightCabins *string `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
+	// example:
+	//
+	// 10032
+	FlightIntlRuleCode *int64 `json:"flight_intl_rule_code,omitempty" xml:"flight_intl_rule_code,omitempty"`
+	// example:
+	//
+	// 10032
+	FlightRuleCode *int64                                              `json:"flight_rule_code,omitempty" xml:"flight_rule_code,omitempty"`
+	HotelCitys     []*ApplyModifyRequestTravelerStandardHotelCitys     `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
+	HotelIntlCitys []*ApplyModifyRequestTravelerStandardHotelIntlCitys `json:"hotel_intl_citys,omitempty" xml:"hotel_intl_citys,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10032
+	HotelIntlRuleCode *int64 `json:"hotel_intl_rule_code,omitempty" xml:"hotel_intl_rule_code,omitempty"`
+	// example:
+	//
+	// 10032
+	HotelRuleCode *int64 `json:"hotel_rule_code,omitempty" xml:"hotel_rule_code,omitempty"`
+	// example:
+	//
+	// F
+	InternationalFlightCabins *string `json:"international_flight_cabins,omitempty" xml:"international_flight_cabins,omitempty"`
+	// 超级经济舱折扣。1到10的整数
+	//
+	// example:
+	//
+	// 1
+	PremiumEconomyDiscount *int32 `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
+	// example:
+	//
+	// 0
+	ReserveType *int32 `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
+	// example:
+	//
+	// 10032
+	TrainRuleCode *int64 `json:"train_rule_code,omitempty" xml:"train_rule_code,omitempty"`
+	// example:
+	//
+	// 1
+	TrainSeats *string `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
+	// example:
+	//
+	// thirdpart12138
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s ApplyModifyRequestTravelerStandard) String() string {
@@ -2129,8 +2574,16 @@ func (s *ApplyModifyRequestTravelerStandard) Validate() error {
 
 type ApplyModifyRequestTravelerStandardCarCitySet struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 110100，330100
 	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 北京，杭州
 	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
 }
 
@@ -2880,9 +3333,18 @@ func (s *ApplyModifyRequestTravelerStandardCarStandardModifyDestinationInfo) Val
 }
 
 type ApplyModifyRequestTravelerStandardHotelCitys struct {
+	// example:
+	//
+	// 0
 	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	// example:
+	//
+	// 北京
 	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
-	Fee      *int64  `json:"fee,omitempty" xml:"fee,omitempty"`
+	// example:
+	//
+	// 1014
+	Fee *int64 `json:"fee,omitempty" xml:"fee,omitempty"`
 }
 
 func (s ApplyModifyRequestTravelerStandardHotelCitys) String() string {
@@ -2925,9 +3387,18 @@ func (s *ApplyModifyRequestTravelerStandardHotelCitys) Validate() error {
 }
 
 type ApplyModifyRequestTravelerStandardHotelIntlCitys struct {
+	// example:
+	//
+	// 110100
 	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	// example:
+	//
+	// 杭州
 	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
-	Fee      *int64  `json:"fee,omitempty" xml:"fee,omitempty"`
+	// example:
+	//
+	// 1009
+	Fee *int64 `json:"fee,omitempty" xml:"fee,omitempty"`
 }
 
 func (s ApplyModifyRequestTravelerStandardHotelIntlCitys) String() string {

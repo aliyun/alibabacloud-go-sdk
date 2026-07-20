@@ -60,31 +60,155 @@ type iAddEmployeeRequest interface {
 }
 
 type AddEmployeeRequest struct {
-	AccountEmail       *string                               `json:"account_email,omitempty" xml:"account_email,omitempty"`
-	AccountPhone       *string                               `json:"account_phone,omitempty" xml:"account_phone,omitempty"`
-	Attribute          *string                               `json:"attribute,omitempty" xml:"attribute,omitempty"`
-	Avatar             *string                               `json:"avatar,omitempty" xml:"avatar,omitempty"`
-	BaseCityCodeList   []*string                             `json:"base_city_code_list,omitempty" xml:"base_city_code_list,omitempty" type:"Repeated"`
-	BaseLocationList   []*AddEmployeeRequestBaseLocationList `json:"base_location_list,omitempty" xml:"base_location_list,omitempty" type:"Repeated"`
-	Birthday           *string                               `json:"birthday,omitempty" xml:"birthday,omitempty"`
-	CertList           []*AddEmployeeRequestCertList         `json:"cert_list,omitempty" xml:"cert_list,omitempty" type:"Repeated"`
-	CustomRoleCodeList []*string                             `json:"custom_role_code_list,omitempty" xml:"custom_role_code_list,omitempty" type:"Repeated"`
-	Email              *string                               `json:"email,omitempty" xml:"email,omitempty"`
-	Gender             *string                               `json:"gender,omitempty" xml:"gender,omitempty"`
-	IsAdmin            *bool                                 `json:"is_admin,omitempty" xml:"is_admin,omitempty"`
-	IsBoss             *bool                                 `json:"is_boss,omitempty" xml:"is_boss,omitempty"`
-	IsDeptLeader       *bool                                 `json:"is_dept_leader,omitempty" xml:"is_dept_leader,omitempty"`
-	JobNo              *string                               `json:"job_no,omitempty" xml:"job_no,omitempty"`
-	ManagerUserId      *string                               `json:"manager_user_id,omitempty" xml:"manager_user_id,omitempty"`
-	OutDeptIdList      []*string                             `json:"out_dept_id_list,omitempty" xml:"out_dept_id_list,omitempty" type:"Repeated"`
-	Phone              *string                               `json:"phone,omitempty" xml:"phone,omitempty"`
-	PositionLevel      *string                               `json:"position_level,omitempty" xml:"position_level,omitempty"`
-	RealName           *string                               `json:"real_name,omitempty" xml:"real_name,omitempty"`
-	RealNameEn         *string                               `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
-	UnionId            *string                               `json:"union_id,omitempty" xml:"union_id,omitempty"`
+	// The account email address. This parameter can be specified when the enterprise activation method is email activation.
+	//
+	// example:
+	//
+	// j*********@example.com
+	AccountEmail *string `json:"account_email,omitempty" xml:"account_email,omitempty"`
+	// The account phone number. For enterprises with international phone numbers enabled, specify international numbers, Hong Kong (China), Macao (China), and Taiwan (China) numbers in the format +xx-xxxxxx.
+	//
+	// example:
+	//
+	// +86-18812345678
+	AccountPhone *string `json:"account_phone,omitempty" xml:"account_phone,omitempty"`
+	// The custom extension field for the employee, which supports key-value pairs.
+	//
+	// - Format: JSON string.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "sio": "123",
+	//
+	//     "location": "22222",
+	//
+	//     "isForeigner": "Y"
+	//
+	// }
+	Attribute *string `json:"attribute,omitempty" xml:"attribute,omitempty"`
+	// The avatar of the employee. Specify the URL of the image.
+	//
+	// example:
+	//
+	// https://example.com/example.jpg
+	Avatar *string `json:"avatar,omitempty" xml:"avatar,omitempty"`
+	// The 6-digit administrative code of the work location.
+	//
+	// - A maximum of two different administrative codes can be specified.
+	BaseCityCodeList []*string `json:"base_city_code_list,omitempty" xml:"base_city_code_list,omitempty" type:"Repeated"`
+	// The base location information of the employee.
+	BaseLocationList []*AddEmployeeRequestBaseLocationList `json:"base_location_list,omitempty" xml:"base_location_list,omitempty" type:"Repeated"`
+	// The birthday of the employee.
+	//
+	// - Format: yy-MM-dd.
+	//
+	// example:
+	//
+	// 2000-01-01
+	Birthday *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	// The certificate information of the employee.
+	CertList []*AddEmployeeRequestCertList `json:"cert_list,omitempty" xml:"cert_list,omitempty" type:"Repeated"`
+	// The collection of role IDs associated with the employee. The number of roles associated with a single employee must be less than or equal to 200. Otherwise, the employee synchronization fails.
+	CustomRoleCodeList []*string `json:"custom_role_code_list,omitempty" xml:"custom_role_code_list,omitempty" type:"Repeated"`
+	// The email address of the employee.
+	//
+	// example:
+	//
+	// j*********@example.com
+	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// The gender of the employee.
+	//
+	// example:
+	//
+	// F
+	Gender *string `json:"gender,omitempty" xml:"gender,omitempty"`
+	// Specifies whether the employee is an Alibaba Business Travel enterprise administrator.
+	//
+	// example:
+	//
+	// false
+	IsAdmin *bool `json:"is_admin,omitempty" xml:"is_admin,omitempty"`
+	// Specifies whether the employee is the boss.
+	//
+	// example:
+	//
+	// false
+	IsBoss *bool `json:"is_boss,omitempty" xml:"is_boss,omitempty"`
+	// Specifies whether the employee is a department manager.
+	//
+	// example:
+	//
+	// false
+	IsDeptLeader *bool `json:"is_dept_leader,omitempty" xml:"is_dept_leader,omitempty"`
+	// The employee number, which serves as a unique identifier for the employee along with `user_id`. Ensure that the value is unique.
+	//
+	// example:
+	//
+	// job_1234
+	JobNo *string `json:"job_no,omitempty" xml:"job_no,omitempty"`
+	// The ID of the direct manager of the employee.
+	//
+	// example:
+	//
+	// user_001
+	ManagerUserId *string `json:"manager_user_id,omitempty" xml:"manager_user_id,omitempty"`
+	// The list of departments to which the employee belongs.
+	OutDeptIdList []*string `json:"out_dept_id_list,omitempty" xml:"out_dept_id_list,omitempty" type:"Repeated"`
+	// The mobile phone number of the employee.
+	//
+	// - This field is commonly used for booking business travel services across various categories. **In this case, it is required.**
+	//
+	// - If your enterprise is a government agency or other special enterprise, call 400-800-5890 to contact an Alibaba Business Travel customer service representative.
+	//
+	// example:
+	//
+	// 131****8888
+	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	// The position level of the employee, which is commonly used to match different travel standards.
+	//
+	// example:
+	//
+	// 高级
+	PositionLevel *string `json:"position_level,omitempty" xml:"position_level,omitempty"`
+	// The name of the employee.
+	//
+	// example:
+	//
+	// 张三
+	RealName *string `json:"real_name,omitempty" xml:"real_name,omitempty"`
+	// The English name of the employee. Follow these format requirements:
+	//
+	// - Separate the last name and first name with "/", for example: LastName/FirstName.
+	//
+	// - Do not include spaces between the last name and first name.
+	//
+	// example:
+	//
+	// John/Wilson
+	RealNameEn *string `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
+	// The unique identifier of the same employee across multiple enterprises (parent and subsidiary enterprises).
+	//
+	// example:
+	//
+	// union_0123
+	UnionId *string `json:"union_id,omitempty" xml:"union_id,omitempty"`
+	// The employee ID, which is the unique identifier of the employee within the enterprise. Ensure that this value is unique.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// user_1234
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// The nickname of the employee.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 弓长
 	UserNick *string `json:"user_nick,omitempty" xml:"user_nick,omitempty"`
 }
 
@@ -335,7 +459,9 @@ func (s *AddEmployeeRequest) Validate() error {
 }
 
 type AddEmployeeRequestBaseLocationList struct {
-	Code  *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The 6-digit administrative division code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The administrative division level: province or city.
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
 }
 
@@ -370,16 +496,74 @@ func (s *AddEmployeeRequestBaseLocationList) Validate() error {
 }
 
 type AddEmployeeRequestCertList struct {
-	Birthday        *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	// The birthday of the employee.
+	//
+	// - Format: yy-MM-dd.
+	//
+	// example:
+	//
+	// 2000-01-01
+	Birthday *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	// The expiration date of the certificate.
+	//
+	// - Format: `yy-MM-dd`.
+	//
+	// example:
+	//
+	// 2050-01-01
 	CertExpiredTime *string `json:"cert_expired_time,omitempty" xml:"cert_expired_time,omitempty"`
-	CertNation      *string `json:"cert_nation,omitempty" xml:"cert_nation,omitempty"`
-	CertNo          *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
-	CertType        *int32  `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
-	Gender          *string `json:"gender,omitempty" xml:"gender,omitempty"`
-	Nationality     *string `json:"nationality,omitempty" xml:"nationality,omitempty"`
-	Phone           *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	RealName        *string `json:"real_name,omitempty" xml:"real_name,omitempty"`
-	RealNameEn      *string `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
+	// The two-letter country/region code (Country Code) of the certificate issuing country/region.
+	//
+	// example:
+	//
+	// CN
+	CertNation *string `json:"cert_nation,omitempty" xml:"cert_nation,omitempty"`
+	// The certificate number.
+	//
+	// example:
+	//
+	// 110101********1234
+	CertNo *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	// The certificate type.
+	//
+	// example:
+	//
+	// 0
+	CertType *int32 `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
+	// The gender of the employee, which must be consistent with the certificate information.
+	//
+	// example:
+	//
+	// F
+	Gender *string `json:"gender,omitempty" xml:"gender,omitempty"`
+	// The two-letter country/region code (Country Code) of the employee.
+	//
+	// example:
+	//
+	// CN
+	Nationality *string `json:"nationality,omitempty" xml:"nationality,omitempty"`
+	// The mobile phone number of the employee.
+	//
+	// example:
+	//
+	// 131****8888
+	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	// The name of the employee, which must be consistent with the certificate information.
+	//
+	// example:
+	//
+	// 张三
+	RealName *string `json:"real_name,omitempty" xml:"real_name,omitempty"`
+	// The English name of the employee. Follow these format requirements:
+	//
+	// - Separate the last name and first name with "/", for example: LastName/FirstName.
+	//
+	// - Do not include spaces between the last name and first name.
+	//
+	// example:
+	//
+	// John/Wilson
+	RealNameEn *string `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
 }
 
 func (s AddEmployeeRequestCertList) String() string {

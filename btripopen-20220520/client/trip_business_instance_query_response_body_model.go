@@ -24,12 +24,30 @@ type iTripBusinessInstanceQueryResponseBody interface {
 }
 
 type TripBusinessInstanceQueryResponseBody struct {
-	Code      *string                                      `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                                      `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *TripBusinessInstanceQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                                        `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                                      `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 成功
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// module。
+	Module *TripBusinessInstanceQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// C61ECFF6-606B-5F66-B81D-D77369043A5F
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	//
+	// example:
+	//
+	// 210bc44416869853114684533da3c2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s TripBusinessInstanceQueryResponseBody) String() string {
@@ -106,10 +124,22 @@ func (s *TripBusinessInstanceQueryResponseBody) Validate() error {
 type TripBusinessInstanceQueryResponseBodyModule struct {
 	BusinessData     *string `json:"business_data,omitempty" xml:"business_data,omitempty"`
 	BusinessFormData *string `json:"business_form_data,omitempty" xml:"business_form_data,omitempty"`
-	Creator          *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	GmtCreate        *int64  `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
-	GmtModified      *int64  `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty"`
-	Status           *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 张三
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// example:
+	//
+	// 1525104000
+	GmtCreate *int64 `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	// example:
+	//
+	// 1525104000
+	GmtModified *int64 `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty"`
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s TripBusinessInstanceQueryResponseBodyModule) String() string {

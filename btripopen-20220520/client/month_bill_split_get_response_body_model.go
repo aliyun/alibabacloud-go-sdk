@@ -24,12 +24,27 @@ type iMonthBillSplitGetResponseBody interface {
 }
 
 type MonthBillSplitGetResponseBody struct {
-	Code      *string                                `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                                `json:"message,omitempty" xml:"message,omitempty"`
-	Module    []*MonthBillSplitGetResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
-	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                                `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 成功
+	Message *string                                `json:"message,omitempty" xml:"message,omitempty"`
+	Module  []*MonthBillSplitGetResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 407543AF-****-****-****-9D1AB7218B27
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 21041ce********056433edbb2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s MonthBillSplitGetResponseBody) String() string {
@@ -108,10 +123,22 @@ func (s *MonthBillSplitGetResponseBody) Validate() error {
 }
 
 type MonthBillSplitGetResponseBodyModule struct {
+	// example:
+	//
+	// invoice_third_part_id123
 	BillSplitKey *string `json:"bill_split_key,omitempty" xml:"bill_split_key,omitempty"`
-	EndDate      *string `json:"end_date,omitempty" xml:"end_date,omitempty"`
-	StartDate    *string `json:"start_date,omitempty" xml:"start_date,omitempty"`
-	Url          *string `json:"url,omitempty" xml:"url,omitempty"`
+	// example:
+	//
+	// 2023-12-31
+	EndDate *string `json:"end_date,omitempty" xml:"end_date,omitempty"`
+	// example:
+	//
+	// 2023-12-01
+	StartDate *string `json:"start_date,omitempty" xml:"start_date,omitempty"`
+	// example:
+	//
+	// https://alibtrip-oss.oss-cn-hangzhou.aliyuncs.com/********
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
 }
 
 func (s MonthBillSplitGetResponseBodyModule) String() string {

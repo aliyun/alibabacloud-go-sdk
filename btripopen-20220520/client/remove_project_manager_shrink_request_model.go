@@ -21,9 +21,18 @@ type iRemoveProjectManagerShrinkRequest interface {
 
 type RemoveProjectManagerShrinkRequest struct {
 	OrgEntitiesShrink *string `json:"org_entities,omitempty" xml:"org_entities,omitempty"`
-	OutProjectId      *string `json:"out_project_id,omitempty" xml:"out_project_id,omitempty"`
-	ProjectId         *int64  `json:"project_id,omitempty" xml:"project_id,omitempty"`
-	RemoveAll         *bool   `json:"remove_all,omitempty" xml:"remove_all,omitempty"`
+	// example:
+	//
+	// projectabc
+	OutProjectId *string `json:"out_project_id,omitempty" xml:"out_project_id,omitempty"`
+	// example:
+	//
+	// 123
+	ProjectId *int64 `json:"project_id,omitempty" xml:"project_id,omitempty"`
+	// example:
+	//
+	// false
+	RemoveAll *bool `json:"remove_all,omitempty" xml:"remove_all,omitempty"`
 }
 
 func (s RemoveProjectManagerShrinkRequest) String() string {

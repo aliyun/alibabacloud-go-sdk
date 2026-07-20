@@ -32,18 +32,44 @@ type iGroupUserSaveShrinkRequest interface {
 }
 
 type GroupUserSaveShrinkRequest struct {
-	BaseCityCode   *string `json:"base_city_code,omitempty" xml:"base_city_code,omitempty"`
+	// example:
+	//
+	// 123456,654321
+	BaseCityCode *string `json:"base_city_code,omitempty" xml:"base_city_code,omitempty"`
+	// example:
+	//
+	// 1999-03-12
 	Birthday       *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
 	CertListShrink *string `json:"cert_list,omitempty" xml:"cert_list,omitempty"`
-	Gender         *string `json:"gender,omitempty" xml:"gender,omitempty"`
-	JobNo          *string `json:"job_no,omitempty" xml:"job_no,omitempty"`
-	Phone          *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	RealNameEn     *string `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
+	// example:
+	//
+	// M
+	Gender *string `json:"gender,omitempty" xml:"gender,omitempty"`
+	// example:
+	//
+	// 1001
+	JobNo *string `json:"job_no,omitempty" xml:"job_no,omitempty"`
+	// example:
+	//
+	// 18000000000
+	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	// example:
+	//
+	// ce/shi
+	RealNameEn *string `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
 	// This parameter is required.
 	SubCorpIdListShrink *string `json:"sub_corp_id_list,omitempty" xml:"sub_corp_id_list,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 测试
 	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 

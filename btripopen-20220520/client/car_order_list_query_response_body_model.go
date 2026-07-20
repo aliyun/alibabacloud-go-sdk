@@ -26,13 +26,28 @@ type iCarOrderListQueryResponseBody interface {
 }
 
 type CarOrderListQueryResponseBody struct {
-	Code      *string                                `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                                `json:"message,omitempty" xml:"message,omitempty"`
-	Module    []*CarOrderListQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
-	PageInfo  *CarOrderListQueryResponseBodyPageInfo `json:"page_info,omitempty" xml:"page_info,omitempty" type:"Struct"`
-	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                                `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 成功
+	Message  *string                                `json:"message,omitempty" xml:"message,omitempty"`
+	Module   []*CarOrderListQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
+	PageInfo *CarOrderListQueryResponseBodyPageInfo `json:"page_info,omitempty" xml:"page_info,omitempty" type:"Struct"`
+	// example:
+	//
+	// B72B39C8-32DE-558D-AD1C-D53F11F6ADFE
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 21041ce316577904808056433edbb2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s CarOrderListQueryResponseBody) String() string {
@@ -125,62 +140,221 @@ func (s *CarOrderListQueryResponseBody) Validate() error {
 }
 
 type CarOrderListQueryResponseBodyModule struct {
-	ApplyId              *int64                                                  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	ApplyShowId          *string                                                 `json:"apply_show_id,omitempty" xml:"apply_show_id,omitempty"`
-	BtripTitle           *string                                                 `json:"btrip_title,omitempty" xml:"btrip_title,omitempty"`
-	BusinessCategory     *string                                                 `json:"business_category,omitempty" xml:"business_category,omitempty"`
-	CancelTime           *string                                                 `json:"cancel_time,omitempty" xml:"cancel_time,omitempty"`
-	CarInfo              *string                                                 `json:"car_info,omitempty" xml:"car_info,omitempty"`
-	CarLevel             *int32                                                  `json:"car_level,omitempty" xml:"car_level,omitempty"`
-	CorpId               *string                                                 `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
-	CorpName             *string                                                 `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
-	CostCenterId         *int64                                                  `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
-	CostCenterName       *string                                                 `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
-	CostCenterNumber     *string                                                 `json:"cost_center_number,omitempty" xml:"cost_center_number,omitempty"`
-	DeptId               *int64                                                  `json:"dept_id,omitempty" xml:"dept_id,omitempty"`
-	DeptName             *string                                                 `json:"dept_name,omitempty" xml:"dept_name,omitempty"`
-	DriverConfirmTime    *string                                                 `json:"driver_confirm_time,omitempty" xml:"driver_confirm_time,omitempty"`
-	EstimatePrice        *float64                                                `json:"estimate_price,omitempty" xml:"estimate_price,omitempty"`
-	FromAddress          *string                                                 `json:"from_address,omitempty" xml:"from_address,omitempty"`
-	FromCityAdCode       *string                                                 `json:"from_city_ad_code,omitempty" xml:"from_city_ad_code,omitempty"`
-	FromCityName         *string                                                 `json:"from_city_name,omitempty" xml:"from_city_name,omitempty"`
-	GmtCreate            *string                                                 `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
-	GmtModified          *string                                                 `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty"`
-	Id                   *int64                                                  `json:"id,omitempty" xml:"id,omitempty"`
-	InvoiceId            *int64                                                  `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
-	InvoiceTitle         *string                                                 `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
-	IsSpecial            *bool                                                   `json:"is_special,omitempty" xml:"is_special,omitempty"`
-	Memo                 *string                                                 `json:"memo,omitempty" xml:"memo,omitempty"`
-	OrderId              *string                                                 `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	OrderStatus          *int32                                                  `json:"order_status,omitempty" xml:"order_status,omitempty"`
-	PassengerName        *string                                                 `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
-	PayTime              *string                                                 `json:"pay_time,omitempty" xml:"pay_time,omitempty"`
-	PriceInfoList        []*CarOrderListQueryResponseBodyModulePriceInfoList     `json:"price_info_list,omitempty" xml:"price_info_list,omitempty" type:"Repeated"`
-	ProjectCode          *string                                                 `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectId            *int64                                                  `json:"project_id,omitempty" xml:"project_id,omitempty"`
-	ProjectTitle         *string                                                 `json:"project_title,omitempty" xml:"project_title,omitempty"`
-	Provider             *int32                                                  `json:"provider,omitempty" xml:"provider,omitempty"`
-	PublishTime          *string                                                 `json:"publish_time,omitempty" xml:"publish_time,omitempty"`
-	RealFromAddress      *string                                                 `json:"real_from_address,omitempty" xml:"real_from_address,omitempty"`
-	RealFromCityAdCode   *string                                                 `json:"real_from_city_ad_code,omitempty" xml:"real_from_city_ad_code,omitempty"`
-	RealFromCityName     *string                                                 `json:"real_from_city_name,omitempty" xml:"real_from_city_name,omitempty"`
-	RealToAddress        *string                                                 `json:"real_to_address,omitempty" xml:"real_to_address,omitempty"`
-	RealToCityAdCode     *string                                                 `json:"real_to_city_ad_code,omitempty" xml:"real_to_city_ad_code,omitempty"`
-	RealToCityName       *string                                                 `json:"real_to_city_name,omitempty" xml:"real_to_city_name,omitempty"`
-	ServiceType          *int32                                                  `json:"service_type,omitempty" xml:"service_type,omitempty"`
-	SpecialTypes         []*string                                               `json:"special_types,omitempty" xml:"special_types,omitempty" type:"Repeated"`
-	TakenTime            *string                                                 `json:"taken_time,omitempty" xml:"taken_time,omitempty"`
-	ThirdpartApplyId     *string                                                 `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
-	ThirdpartBusinessId  *string                                                 `json:"thirdpart_business_id,omitempty" xml:"thirdpart_business_id,omitempty"`
-	ThirdpartItineraryId *string                                                 `json:"thirdpart_itinerary_id,omitempty" xml:"thirdpart_itinerary_id,omitempty"`
-	ToAddress            *string                                                 `json:"to_address,omitempty" xml:"to_address,omitempty"`
-	ToCityAdCode         *string                                                 `json:"to_city_ad_code,omitempty" xml:"to_city_ad_code,omitempty"`
-	ToCityName           *string                                                 `json:"to_city_name,omitempty" xml:"to_city_name,omitempty"`
-	TravelDistance       *float64                                                `json:"travel_distance,omitempty" xml:"travel_distance,omitempty"`
-	UserAffiliateList    []*CarOrderListQueryResponseBodyModuleUserAffiliateList `json:"user_affiliate_list,omitempty" xml:"user_affiliate_list,omitempty" type:"Repeated"`
-	UserConfirm          *int32                                                  `json:"user_confirm,omitempty" xml:"user_confirm,omitempty"`
-	UserId               *string                                                 `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserName             *string                                                 `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	// example:
+	//
+	// 117429516
+	ApplyId *int64 `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	// example:
+	//
+	// 201802031353000525653
+	ApplyShowId *string `json:"apply_show_id,omitempty" xml:"apply_show_id,omitempty"`
+	// example:
+	//
+	// 出差
+	BtripTitle *string `json:"btrip_title,omitempty" xml:"btrip_title,omitempty"`
+	// example:
+	//
+	// TRAVEL
+	BusinessCategory *string `json:"business_category,omitempty" xml:"business_category,omitempty"`
+	// example:
+	//
+	// 2022-07-04T16:13Z
+	CancelTime *string `json:"cancel_time,omitempty" xml:"cancel_time,omitempty"`
+	// example:
+	//
+	// 白色本田
+	CarInfo *string `json:"car_info,omitempty" xml:"car_info,omitempty"`
+	// example:
+	//
+	// 601
+	CarLevel *int32 `json:"car_level,omitempty" xml:"car_level,omitempty"`
+	// example:
+	//
+	// 企业id
+	CorpId *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	// example:
+	//
+	// 测试公司
+	CorpName *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	// example:
+	//
+	// 11376
+	CostCenterId *int64 `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	// example:
+	//
+	// 测试成本中心
+	CostCenterName *string `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
+	// example:
+	//
+	// CT-134JHK
+	CostCenterNumber *string `json:"cost_center_number,omitempty" xml:"cost_center_number,omitempty"`
+	// example:
+	//
+	// 部门ID
+	DeptId *int64 `json:"dept_id,omitempty" xml:"dept_id,omitempty"`
+	// example:
+	//
+	// 部门名称
+	DeptName *string `json:"dept_name,omitempty" xml:"dept_name,omitempty"`
+	// example:
+	//
+	// 2022-07-04T16:13Z
+	DriverConfirmTime *string `json:"driver_confirm_time,omitempty" xml:"driver_confirm_time,omitempty"`
+	// example:
+	//
+	// 100
+	EstimatePrice *float64 `json:"estimate_price,omitempty" xml:"estimate_price,omitempty"`
+	// example:
+	//
+	// 阿里巴巴西溪园区
+	FromAddress *string `json:"from_address,omitempty" xml:"from_address,omitempty"`
+	// example:
+	//
+	// 330100
+	FromCityAdCode *string `json:"from_city_ad_code,omitempty" xml:"from_city_ad_code,omitempty"`
+	// example:
+	//
+	// 北京
+	FromCityName *string `json:"from_city_name,omitempty" xml:"from_city_name,omitempty"`
+	// example:
+	//
+	// 2022-07-04T16:13Z
+	GmtCreate *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	// example:
+	//
+	// 2022-07-04T16:13Z
+	GmtModified *string `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty"`
+	// example:
+	//
+	// 3615085
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 11876
+	InvoiceId *int64 `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
+	// example:
+	//
+	// 阿里巴巴-飞猪
+	InvoiceTitle *string `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
+	// example:
+	//
+	// true
+	IsSpecial *bool `json:"is_special,omitempty" xml:"is_special,omitempty"`
+	// example:
+	//
+	// 加班
+	Memo *string `json:"memo,omitempty" xml:"memo,omitempty"`
+	// example:
+	//
+	// 1012051200419312345
+	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// example:
+	//
+	// 订单状态
+	OrderStatus *int32 `json:"order_status,omitempty" xml:"order_status,omitempty"`
+	// example:
+	//
+	// 乘客姓名
+	PassengerName *string `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
+	// example:
+	//
+	// 2022-07-04T16:13Z
+	PayTime       *string                                             `json:"pay_time,omitempty" xml:"pay_time,omitempty"`
+	PriceInfoList []*CarOrderListQueryResponseBodyModulePriceInfoList `json:"price_info_list,omitempty" xml:"price_info_list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// P- JI87KK
+	ProjectCode *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	// example:
+	//
+	// 11546
+	ProjectId *int64 `json:"project_id,omitempty" xml:"project_id,omitempty"`
+	// example:
+	//
+	// 北京项目
+	ProjectTitle *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	// example:
+	//
+	// 2
+	Provider *int32 `json:"provider,omitempty" xml:"provider,omitempty"`
+	// example:
+	//
+	// 2022-07-04T16:13Z
+	PublishTime *string `json:"publish_time,omitempty" xml:"publish_time,omitempty"`
+	// example:
+	//
+	// 高新文教区东部软件园创新大厦(马塍路)
+	RealFromAddress *string `json:"real_from_address,omitempty" xml:"real_from_address,omitempty"`
+	// example:
+	//
+	// 330100
+	RealFromCityAdCode *string `json:"real_from_city_ad_code,omitempty" xml:"real_from_city_ad_code,omitempty"`
+	// example:
+	//
+	// 北京
+	RealFromCityName *string `json:"real_from_city_name,omitempty" xml:"real_from_city_name,omitempty"`
+	// example:
+	//
+	// 联创街
+	RealToAddress *string `json:"real_to_address,omitempty" xml:"real_to_address,omitempty"`
+	// example:
+	//
+	// 330100
+	RealToCityAdCode *string `json:"real_to_city_ad_code,omitempty" xml:"real_to_city_ad_code,omitempty"`
+	// example:
+	//
+	// 上海
+	RealToCityName *string `json:"real_to_city_name,omitempty" xml:"real_to_city_name,omitempty"`
+	// example:
+	//
+	// 3
+	ServiceType  *int32    `json:"service_type,omitempty" xml:"service_type,omitempty"`
+	SpecialTypes []*string `json:"special_types,omitempty" xml:"special_types,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2022-07-04T16:13Z
+	TakenTime *string `json:"taken_time,omitempty" xml:"taken_time,omitempty"`
+	// example:
+	//
+	// CS-OIPK34H
+	ThirdpartApplyId *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
+	// example:
+	//
+	// 00021230711000001Test-2
+	ThirdpartBusinessId *string `json:"thirdpart_business_id,omitempty" xml:"thirdpart_business_id,omitempty"`
+	// example:
+	//
+	// CS-112JKDF
+	ThirdpartItineraryId *string `json:"thirdpart_itinerary_id,omitempty" xml:"thirdpart_itinerary_id,omitempty"`
+	// example:
+	//
+	// 乐佳国际
+	ToAddress *string `json:"to_address,omitempty" xml:"to_address,omitempty"`
+	// example:
+	//
+	// 330100
+	ToCityAdCode *string `json:"to_city_ad_code,omitempty" xml:"to_city_ad_code,omitempty"`
+	// example:
+	//
+	// 上海
+	ToCityName *string `json:"to_city_name,omitempty" xml:"to_city_name,omitempty"`
+	// example:
+	//
+	// 1.2
+	TravelDistance    *float64                                                `json:"travel_distance,omitempty" xml:"travel_distance,omitempty"`
+	UserAffiliateList []*CarOrderListQueryResponseBodyModuleUserAffiliateList `json:"user_affiliate_list,omitempty" xml:"user_affiliate_list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	UserConfirm *int32 `json:"user_confirm,omitempty" xml:"user_confirm,omitempty"`
+	// example:
+	//
+	// 预定人用户ID
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// example:
+	//
+	// 预定人姓名
+	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
 func (s CarOrderListQueryResponseBodyModule) String() string {
@@ -718,15 +892,42 @@ func (s *CarOrderListQueryResponseBodyModule) Validate() error {
 }
 
 type CarOrderListQueryResponseBodyModulePriceInfoList struct {
-	CategoryCode  *int32   `json:"category_code,omitempty" xml:"category_code,omitempty"`
-	CategoryType  *int32   `json:"category_type,omitempty" xml:"category_type,omitempty"`
-	GmtCreate     *string  `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
-	PassengerName *string  `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
-	PayType       *int32   `json:"pay_type,omitempty" xml:"pay_type,omitempty"`
-	PersonPrice   *float64 `json:"person_price,omitempty" xml:"person_price,omitempty"`
-	Price         *float64 `json:"price,omitempty" xml:"price,omitempty"`
-	TradeId       *string  `json:"trade_id,omitempty" xml:"trade_id,omitempty"`
-	Type          *int32   `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// 1
+	CategoryCode *int32 `json:"category_code,omitempty" xml:"category_code,omitempty"`
+	// example:
+	//
+	// 1
+	CategoryType *int32 `json:"category_type,omitempty" xml:"category_type,omitempty"`
+	// example:
+	//
+	// 2022-07-04T16:13Z
+	GmtCreate *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	// example:
+	//
+	// 张三,李四
+	PassengerName *string `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
+	// example:
+	//
+	// 1
+	PayType *int32 `json:"pay_type,omitempty" xml:"pay_type,omitempty"`
+	// example:
+	//
+	// 100
+	PersonPrice *float64 `json:"person_price,omitempty" xml:"person_price,omitempty"`
+	// example:
+	//
+	// 100
+	Price *float64 `json:"price,omitempty" xml:"price,omitempty"`
+	// example:
+	//
+	// 8908076767
+	TradeId *string `json:"trade_id,omitempty" xml:"trade_id,omitempty"`
+	// example:
+	//
+	// 1
+	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s CarOrderListQueryResponseBodyModulePriceInfoList) String() string {
@@ -823,7 +1024,13 @@ func (s *CarOrderListQueryResponseBodyModulePriceInfoList) Validate() error {
 }
 
 type CarOrderListQueryResponseBodyModuleUserAffiliateList struct {
-	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// example:
+	//
+	// 11342
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// example:
+	//
+	// 张三
 	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
@@ -858,8 +1065,17 @@ func (s *CarOrderListQueryResponseBodyModuleUserAffiliateList) Validate() error 
 }
 
 type CarOrderListQueryResponseBodyPageInfo struct {
-	Page        *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	PageSize    *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// example:
+	//
+	// 1
+	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// example:
+	//
+	// 1000
 	TotalNumber *int32 `json:"total_number,omitempty" xml:"total_number,omitempty"`
 }
 

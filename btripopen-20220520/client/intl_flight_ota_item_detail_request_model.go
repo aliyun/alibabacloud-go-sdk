@@ -22,10 +22,25 @@ type iIntlFlightOtaItemDetailRequest interface {
 }
 
 type IntlFlightOtaItemDetailRequest struct {
-	BtripUserId  *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
-	BuyerName    *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
-	IsvName      *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
-	Language     *string `json:"language,omitempty" xml:"language,omitempty"`
+	// example:
+	//
+	// 10001
+	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	// example:
+	//
+	// 张三
+	BuyerName *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
+	// example:
+	//
+	// open12igetbis4o07v10B1TlOWcM00
+	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	// example:
+	//
+	// chinese
+	Language *string `json:"language,omitempty" xml:"language,omitempty"`
+	// example:
+	//
+	// JIANHANG
 	SupplierCode *string `json:"supplier_code,omitempty" xml:"supplier_code,omitempty"`
 }
 

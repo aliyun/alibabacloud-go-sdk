@@ -27,16 +27,42 @@ type iHotelOrderPayRequest interface {
 
 type HotelOrderPayRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1002202194207077022
 	BtripOrderId *int64 `json:"btrip_order_id,omitempty" xml:"btrip_order_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 23918781
 	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
 	CompanyPayFee *int64 `json:"company_pay_fee,omitempty" xml:"company_pay_fee,omitempty"`
 	// This parameter is required.
-	PersonPayFee    *int64  `json:"person_pay_fee,omitempty" xml:"person_pay_fee,omitempty"`
+	//
+	// example:
+	//
+	// 100
+	PersonPayFee *int64 `json:"person_pay_fee,omitempty" xml:"person_pay_fee,omitempty"`
+	// example:
+	//
+	// demo
 	ThirdPayAccount *string `json:"third_pay_account,omitempty" xml:"third_pay_account,omitempty"`
-	ThirdTradeNo    *string `json:"third_trade_no,omitempty" xml:"third_trade_no,omitempty"`
+	// example:
+	//
+	// demo
+	ThirdTradeNo *string `json:"third_trade_no,omitempty" xml:"third_trade_no,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
 	TotalPrice *int64 `json:"total_price,omitempty" xml:"total_price,omitempty"`
 }
 

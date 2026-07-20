@@ -24,36 +24,48 @@ type iEstimatedPriceQueryV2Request interface {
 }
 
 type EstimatedPriceQueryV2Request struct {
+  // The category.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // flight
   BizType *string `json:"biz_type,omitempty" xml:"biz_type,omitempty"`
+  // The departure date.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // 2000-01-01
   DepartDate *string `json:"depart_date,omitempty" xml:"depart_date,omitempty"`
+  // The departure or check-in city.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // 杭州
   FromCity *string `json:"from_city,omitempty" xml:"from_city,omitempty"`
+  // The arrival date.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // 2000-01-01
   LeaveDate *string `json:"leave_date,omitempty" xml:"leave_date,omitempty"`
+  // The arrival or check-out city.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // 北京
   ToCity *string `json:"to_city,omitempty" xml:"to_city,omitempty"`
+  // The user ID. This parameter is required for the hotel category.
+  // 
   // example:
   // 
   // Fei123

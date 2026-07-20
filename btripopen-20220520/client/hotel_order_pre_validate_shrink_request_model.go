@@ -43,30 +43,76 @@ type iHotelOrderPreValidateShrinkRequest interface {
 
 type HotelOrderPreValidateShrinkRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 23141
 	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2022-05-15
 	CheckIn *string `json:"check_in,omitempty" xml:"check_in,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2022-05-15
 	CheckOut *string `json:"check_out,omitempty" xml:"check_out,omitempty"`
 	// This parameter is required.
 	DailyListShrink *string `json:"daily_list,omitempty" xml:"daily_list,omitempty"`
 	// This parameter is required.
-	ItemId                 *int64  `json:"item_id,omitempty" xml:"item_id,omitempty"`
+	//
+	// example:
+	//
+	// 612673015638
+	ItemId *int64 `json:"item_id,omitempty" xml:"item_id,omitempty"`
+	// example:
+	//
+	// 1
 	NumberOfAdultsPerRoom  *int32  `json:"number_of_adults_per_room,omitempty" xml:"number_of_adults_per_room,omitempty"`
 	OccupantInfoListShrink *string `json:"occupant_info_list,omitempty" xml:"occupant_info_list,omitempty"`
 	RateKey                *string `json:"rate_key,omitempty" xml:"rate_key,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 239872781
 	RatePlanId *int64 `json:"rate_plan_id,omitempty" xml:"rate_plan_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 71652158
 	RoomId *int64 `json:"room_id,omitempty" xml:"room_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	RoomNum *int32 `json:"room_num,omitempty" xml:"room_num,omitempty"`
-	RpType  *int32 `json:"rp_type,omitempty" xml:"rp_type,omitempty"`
+	// example:
+	//
+	// 0
+	RpType *int32 `json:"rp_type,omitempty" xml:"rp_type,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1000
 	SearchRoomPrice *int64 `json:"search_room_price,omitempty" xml:"search_room_price,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2088441675613762
 	SellerId *int64 `json:"seller_id,omitempty" xml:"seller_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 52302073
 	Shid *int64 `json:"shid,omitempty" xml:"shid,omitempty"`
 }
 

@@ -15,6 +15,10 @@ type iQueryEmployeeDetailRequest interface {
 
 type QueryEmployeeDetailRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// abc12138
 	OutEmployeeId *string `json:"out_employee_id,omitempty" xml:"out_employee_id,omitempty"`
 }
 

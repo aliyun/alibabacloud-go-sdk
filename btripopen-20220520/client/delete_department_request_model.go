@@ -15,6 +15,10 @@ type iDeleteDepartmentRequest interface {
 
 type DeleteDepartmentRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// dept123
 	OutDeptId *string `json:"out_dept_id,omitempty" xml:"out_dept_id,omitempty"`
 }
 

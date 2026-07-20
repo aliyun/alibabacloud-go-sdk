@@ -16,8 +16,14 @@ type iModuleItemListFlightRuleInfosValue interface {
 }
 
 type ModuleItemListFlightRuleInfosValue struct {
+	// example:
+	//
+	// 退改规则简述
 	RefundChangeRuleDesc *string `json:"refund_change_rule_desc,omitempty" xml:"refund_change_rule_desc,omitempty"`
-	BaggageDesc          *string `json:"baggage_desc,omitempty" xml:"baggage_desc,omitempty"`
+	// example:
+	//
+	// 行李额规则简述
+	BaggageDesc *string `json:"baggage_desc,omitempty" xml:"baggage_desc,omitempty"`
 }
 
 func (s ModuleItemListFlightRuleInfosValue) String() string {

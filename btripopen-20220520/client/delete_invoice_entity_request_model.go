@@ -18,9 +18,21 @@ type iDeleteInvoiceEntityRequest interface {
 }
 
 type DeleteInvoiceEntityRequest struct {
-	DelAll   *bool                                 `json:"del_all,omitempty" xml:"del_all,omitempty"`
+	// Specifies whether to delete all applicable personnel. If del_all is set to true, all entities under the invoice header are deleted, and the entity list parameter is not validated.
+	//
+	// example:
+	//
+	// false
+	DelAll *bool `json:"del_all,omitempty" xml:"del_all,omitempty"`
+	// The entity list. This parameter is required when del_all is set to false or null.
 	Entities []*DeleteInvoiceEntityRequestEntities `json:"entities,omitempty" xml:"entities,omitempty" type:"Repeated"`
+	// The third-party invoice ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 340049
 	ThirdPartId *string `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
 }
 
@@ -73,7 +85,25 @@ func (s *DeleteInvoiceEntityRequest) Validate() error {
 }
 
 type DeleteInvoiceEntityRequestEntities struct {
-	EntityId   *string `json:"entity_id,omitempty" xml:"entity_id,omitempty"`
+	// The entity ID, which can be a personnel ID, department ID, role ID, or third-party department ID.
+	//
+	// example:
+	//
+	// 12345
+	EntityId *string `json:"entity_id,omitempty" xml:"entity_id,omitempty"`
+	// The entity type. Valid values:
+	//
+	// - 1: employee
+	//
+	// - 2: department
+	//
+	// - 3: role
+	//
+	// - 4: third-party department
+	//
+	// example:
+	//
+	// 1
 	EntityType *string `json:"entity_type,omitempty" xml:"entity_type,omitempty"`
 }
 

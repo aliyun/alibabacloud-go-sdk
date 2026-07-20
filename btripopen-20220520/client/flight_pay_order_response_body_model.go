@@ -24,12 +24,27 @@ type iFlightPayOrderResponseBody interface {
 }
 
 type FlightPayOrderResponseBody struct {
-	Code      *string                           `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                           `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *FlightPayOrderResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                             `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                           `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 成功
+	Message *string                           `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *FlightPayOrderResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// C61ECFF6-606B-5F66-B81D-D77369043A5F
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 210e842b16611337974412836dae27
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s FlightPayOrderResponseBody) String() string {
@@ -104,10 +119,22 @@ func (s *FlightPayOrderResponseBody) Validate() error {
 }
 
 type FlightPayOrderResponseBodyModule struct {
-	ActualPayPrice *int64  `json:"actual_pay_price,omitempty" xml:"actual_pay_price,omitempty"`
-	AlipayTradeNo  *string `json:"alipay_trade_no,omitempty" xml:"alipay_trade_no,omitempty"`
-	LastPayTime    *string `json:"last_pay_time,omitempty" xml:"last_pay_time,omitempty"`
-	PayStatus      *int32  `json:"pay_status,omitempty" xml:"pay_status,omitempty"`
+	// example:
+	//
+	// 1000
+	ActualPayPrice *int64 `json:"actual_pay_price,omitempty" xml:"actual_pay_price,omitempty"`
+	// example:
+	//
+	// 12989127316726531726
+	AlipayTradeNo *string `json:"alipay_trade_no,omitempty" xml:"alipay_trade_no,omitempty"`
+	// example:
+	//
+	// 0000-00-00 00:00:00
+	LastPayTime *string `json:"last_pay_time,omitempty" xml:"last_pay_time,omitempty"`
+	// example:
+	//
+	// 0
+	PayStatus *int32 `json:"pay_status,omitempty" xml:"pay_status,omitempty"`
 }
 
 func (s FlightPayOrderResponseBodyModule) String() string {

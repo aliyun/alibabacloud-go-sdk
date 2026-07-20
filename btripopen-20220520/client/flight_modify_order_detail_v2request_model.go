@@ -24,12 +24,30 @@ type iFlightModifyOrderDetailV2Request interface {
 }
 
 type FlightModifyOrderDetailV2Request struct {
-	IsvName             *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
-	ModifyApplyId       *string `json:"modify_apply_id,omitempty" xml:"modify_apply_id,omitempty"`
-	NeedQueryServiceFee *bool   `json:"need_query_service_fee,omitempty" xml:"need_query_service_fee,omitempty"`
-	OrderId             *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	OutModifyApplyId    *string `json:"out_modify_apply_id,omitempty" xml:"out_modify_apply_id,omitempty"`
-	OutOrderId          *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	// example:
+	//
+	// name
+	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	// example:
+	//
+	// 1019195786853020
+	ModifyApplyId *string `json:"modify_apply_id,omitempty" xml:"modify_apply_id,omitempty"`
+	// example:
+	//
+	// false
+	NeedQueryServiceFee *bool `json:"need_query_service_fee,omitempty" xml:"need_query_service_fee,omitempty"`
+	// example:
+	//
+	// 1017002195370467200
+	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// example:
+	//
+	// 1019195786855678
+	OutModifyApplyId *string `json:"out_modify_apply_id,omitempty" xml:"out_modify_apply_id,omitempty"`
+	// example:
+	//
+	// 1017002195371212121
+	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
 }
 
 func (s FlightModifyOrderDetailV2Request) String() string {

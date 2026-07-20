@@ -16,8 +16,16 @@ type iAddEmployeesToCustomRoleRequest interface {
 }
 
 type AddEmployeesToCustomRoleRequest struct {
+	// The ID of the custom enterprise role.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345
 	RoleId *string `json:"role_id,omitempty" xml:"role_id,omitempty"`
+	// The list of member IDs. The maximum number of members per request is 500.
+	//
 	// This parameter is required.
 	//
 	// if can be null:

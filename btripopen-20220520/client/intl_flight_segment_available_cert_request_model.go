@@ -20,9 +20,21 @@ type iIntlFlightSegmentAvailableCertRequest interface {
 }
 
 type IntlFlightSegmentAvailableCertRequest struct {
-	IsvName  *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	// example:
+	//
+	// ZJTD
+	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	// example:
+	//
+	// chinese
 	Language *string `json:"language,omitempty" xml:"language,omitempty"`
-	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// example:
+	//
+	// 21341234
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// example:
+	//
+	// 张三
 	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 

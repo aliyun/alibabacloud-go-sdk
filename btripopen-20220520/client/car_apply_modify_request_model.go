@@ -22,13 +22,31 @@ type iCarApplyModifyRequest interface {
 }
 
 type CarApplyModifyRequest struct {
+	// example:
+	//
+	// 2022-07-12 16:12:53
 	OperateTime *string `json:"operate_time,omitempty" xml:"operate_time,omitempty"`
-	Remark      *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	// example:
+	//
+	// 同意
+	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// IRGS1413
 	ThirdPartApplyId *string `json:"third_part_apply_id,omitempty" xml:"third_part_apply_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// open62141
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 

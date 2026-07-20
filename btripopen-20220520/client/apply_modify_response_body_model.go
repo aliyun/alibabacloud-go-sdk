@@ -24,12 +24,28 @@ type iApplyModifyResponseBody interface {
 }
 
 type ApplyModifyResponseBody struct {
-	Code      *string                        `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                        `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *ApplyModifyResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                          `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                        `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 成功
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// module。
+	Module *ApplyModifyResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// C61ECFF6-606B-5F66-B81D-D77369043A5F
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 21041ce316577904808056433edbb2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s ApplyModifyResponseBody) String() string {
@@ -104,8 +120,17 @@ func (s *ApplyModifyResponseBody) Validate() error {
 }
 
 type ApplyModifyResponseBodyModule struct {
-	ApplyId             *int64  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	ThirdpartApplyId    *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
+	// example:
+	//
+	// 118526587
+	ApplyId *int64 `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	// example:
+	//
+	// thirdpart12132
+	ThirdpartApplyId *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
+	// example:
+	//
+	// 20220702001
 	ThirdpartBusinessId *string `json:"thirdpart_business_id,omitempty" xml:"thirdpart_business_id,omitempty"`
 }
 

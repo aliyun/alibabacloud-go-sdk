@@ -24,12 +24,38 @@ type iTravelStandardListQueryResponseBody interface {
 }
 
 type TravelStandardListQueryResponseBody struct {
-	Code      *int32                                     `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                                    `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *TravelStandardListQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                                      `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                                    `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// The response code.
+	//
+	// example:
+	//
+	// 0
+	Code *int32 `json:"code,omitempty" xml:"code,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// 系统异常
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The response data. Returned by the server. An empty value is returned if no results are found or an exception occurs.
+	Module *TravelStandardListQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 05F9C201-1B53-5905-94AB-0D7444D8466A
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	//
+	// example:
+	//
+	// 21041aa317070996148671005d0a0b
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s TravelStandardListQueryResponseBody) String() string {
@@ -104,8 +130,14 @@ func (s *TravelStandardListQueryResponseBody) Validate() error {
 }
 
 type TravelStandardListQueryResponseBodyModule struct {
-	Items     []*TravelStandardListQueryResponseBodyModuleItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	TotalSize *int32                                            `json:"total_size,omitempty" xml:"total_size,omitempty"`
+	// The list of travel standards.
+	Items []*TravelStandardListQueryResponseBodyModuleItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The total number of travel standards.
+	//
+	// example:
+	//
+	// 30
+	TotalSize *int32 `json:"total_size,omitempty" xml:"total_size,omitempty"`
 }
 
 func (s TravelStandardListQueryResponseBodyModule) String() string {
@@ -148,9 +180,16 @@ func (s *TravelStandardListQueryResponseBodyModule) Validate() error {
 }
 
 type TravelStandardListQueryResponseBodyModuleItems struct {
-	MainReserveRule *TravelStandardListQueryResponseBodyModuleItemsMainReserveRule   `json:"main_reserve_rule,omitempty" xml:"main_reserve_rule,omitempty" type:"Struct"`
+	// The primary travel standard information.
+	MainReserveRule *TravelStandardListQueryResponseBodyModuleItemsMainReserveRule `json:"main_reserve_rule,omitempty" xml:"main_reserve_rule,omitempty" type:"Struct"`
+	// The description of the travel standard.
 	ReserveRuleDesc []*TravelStandardListQueryResponseBodyModuleItemsReserveRuleDesc `json:"reserve_rule_desc,omitempty" xml:"reserve_rule_desc,omitempty" type:"Repeated"`
-	Scope           *int32                                                           `json:"scope,omitempty" xml:"scope,omitempty"`
+	// The applicable personnel scope of the travel standard.
+	//
+	// example:
+	//
+	// 1
+	Scope *int32 `json:"scope,omitempty" xml:"scope,omitempty"`
 }
 
 func (s TravelStandardListQueryResponseBodyModuleItems) String() string {
@@ -207,11 +246,32 @@ func (s *TravelStandardListQueryResponseBodyModuleItems) Validate() error {
 }
 
 type TravelStandardListQueryResponseBodyModuleItemsMainReserveRule struct {
+	// The list of enabled service categories.
 	OpenServiceTypeList []*string `json:"open_service_type_list,omitempty" xml:"open_service_type_list,omitempty" type:"Repeated"`
-	RuleCode            *int64    `json:"rule_code,omitempty" xml:"rule_code,omitempty"`
-	RuleDesc            *string   `json:"rule_desc,omitempty" xml:"rule_desc,omitempty"`
-	RuleId              *int64    `json:"rule_id,omitempty" xml:"rule_id,omitempty"`
-	RuleName            *string   `json:"rule_name,omitempty" xml:"rule_name,omitempty"`
+	// The personnel rule code.
+	//
+	// example:
+	//
+	// 2006516571
+	RuleCode *int64 `json:"rule_code,omitempty" xml:"rule_code,omitempty"`
+	// The description of the travel standard.
+	//
+	// example:
+	//
+	// 普通员工规则的描述
+	RuleDesc *string `json:"rule_desc,omitempty" xml:"rule_desc,omitempty"`
+	// The ID of the primary travel standard.
+	//
+	// example:
+	//
+	// 6516571
+	RuleId *int64 `json:"rule_id,omitempty" xml:"rule_id,omitempty"`
+	// The name of the travel standard.
+	//
+	// example:
+	//
+	// 普通员工规则
+	RuleName *string `json:"rule_name,omitempty" xml:"rule_name,omitempty"`
 }
 
 func (s TravelStandardListQueryResponseBodyModuleItemsMainReserveRule) String() string {
@@ -272,9 +332,20 @@ func (s *TravelStandardListQueryResponseBodyModuleItemsMainReserveRule) Validate
 }
 
 type TravelStandardListQueryResponseBodyModuleItemsReserveRuleDesc struct {
+	// The description of the travel standard.
 	DataList []*TravelStandardListQueryResponseBodyModuleItemsReserveRuleDescDataList `json:"data_list,omitempty" xml:"data_list,omitempty" type:"Repeated"`
-	Title    *string                                                                  `json:"title,omitempty" xml:"title,omitempty"`
-	Type     *string                                                                  `json:"type,omitempty" xml:"type,omitempty"`
+	// The title of the travel standard detail.
+	//
+	// example:
+	//
+	// 普通员工规则
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// The category of the travel standard detail.
+	//
+	// example:
+	//
+	// flight
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s TravelStandardListQueryResponseBodyModuleItemsReserveRuleDesc) String() string {
@@ -326,7 +397,17 @@ func (s *TravelStandardListQueryResponseBodyModuleItemsReserveRuleDesc) Validate
 }
 
 type TravelStandardListQueryResponseBodyModuleItemsReserveRuleDescDataList struct {
-	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The travel standard description item.
+	//
+	// example:
+	//
+	// 舱等
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The value of the travel standard description item.
+	//
+	// example:
+	//
+	// 经济舱,超级经济舱,公务舱,头等舱
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

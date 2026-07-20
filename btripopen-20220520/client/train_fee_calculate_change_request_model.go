@@ -21,8 +21,16 @@ type TrainFeeCalculateChangeRequest struct {
 	// This parameter is required.
 	ChangeTrainDetails []*TrainFeeCalculateChangeRequestChangeTrainDetails `json:"change_train_details,omitempty" xml:"change_train_details,omitempty" type:"Repeated"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345
 	DistributeOrderId *string `json:"distribute_order_id,omitempty" xml:"distribute_order_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2627694109810885616
 	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
 }
 
@@ -76,20 +84,48 @@ func (s *TrainFeeCalculateChangeRequest) Validate() error {
 
 type TrainFeeCalculateChangeRequestChangeTrainDetails struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// BDC
 	ArrStationCode *string `json:"arr_station_code,omitempty" xml:"arr_station_code,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// BTC
 	DepStationCode *string `json:"dep_station_code,omitempty" xml:"dep_station_code,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2024-05-06 15:19:01
 	DepTime *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2024-05-06 15:19:01
 	OriginalDepTime *string `json:"original_dep_time,omitempty" xml:"original_dep_time,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// K234
 	OriginalTrainNo *string `json:"original_train_no,omitempty" xml:"original_train_no,omitempty"`
 	// This parameter is required.
 	PassengerInfo *TrainFeeCalculateChangeRequestChangeTrainDetailsPassengerInfo `json:"passenger_info,omitempty" xml:"passenger_info,omitempty" type:"Struct"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 14
 	SeatType *string `json:"seat_type,omitempty" xml:"seat_type,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// K2345
 	TrainNo *string `json:"train_no,omitempty" xml:"train_no,omitempty"`
 }
 
@@ -184,10 +220,22 @@ func (s *TrainFeeCalculateChangeRequestChangeTrainDetails) Validate() error {
 
 type TrainFeeCalculateChangeRequestChangeTrainDetailsPassengerInfo struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 949c9f34f677a0e5d249dfc94f5e62cc7
 	PassengerCertNo *string `json:"passenger_cert_no,omitempty" xml:"passenger_cert_no,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 170d9ac6f8807f9ec603c688f45f78a41
 	PassengerCertType *string `json:"passenger_cert_type,omitempty" xml:"passenger_cert_type,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 291487e553c5abde3b611aae283e2526f0d733ab55094aadc0b5ba587222a233c
 	PassengerName *string `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
 }
 

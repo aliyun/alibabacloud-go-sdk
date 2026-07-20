@@ -20,10 +20,22 @@ type iUserQueryRequest interface {
 }
 
 type UserQueryRequest struct {
+	// example:
+	//
+	// 2021-06-02 00:00:00
 	ModifiedTimeGreaterOrEqualThan *string `json:"modified_time_greater_or_equal_than,omitempty" xml:"modified_time_greater_or_equal_than,omitempty"`
-	PageSize                       *int32  `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	PageToken                      *string `json:"page_token,omitempty" xml:"page_token,omitempty"`
-	ThirdPartJobNo                 *string `json:"third_part_job_no,omitempty" xml:"third_part_job_no,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// example:
+	//
+	// 9YN+jxa7PcxbNUTISeKjEw==
+	PageToken *string `json:"page_token,omitempty" xml:"page_token,omitempty"`
+	// example:
+	//
+	// 12345
+	ThirdPartJobNo *string `json:"third_part_job_no,omitempty" xml:"third_part_job_no,omitempty"`
 }
 
 func (s UserQueryRequest) String() string {

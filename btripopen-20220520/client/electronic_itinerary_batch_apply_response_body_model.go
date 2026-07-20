@@ -24,11 +24,30 @@ type iElectronicItineraryBatchApplyResponseBody interface {
 }
 
 type ElectronicItineraryBatchApplyResponseBody struct {
+  // example:
+  // 
+  // 200
   Code *int32 `json:"code,omitempty" xml:"code,omitempty"`
+  // example:
+  // 
+  // 成功
   Message *string `json:"message,omitempty" xml:"message,omitempty"`
   Module *ElectronicItineraryBatchApplyResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+  // requestId
+  // 
+  // example:
+  // 
+  // A5009956-1077-52FB-B520-EA8C7E91D722
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+  // example:
+  // 
+  // true
   Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+  // traceId
+  // 
+  // example:
+  // 
+  // 21041ce316577904808056433edbb2
   TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
@@ -105,6 +124,9 @@ func (s *ElectronicItineraryBatchApplyResponseBody) Validate() error {
 
 type ElectronicItineraryBatchApplyResponseBodyModule struct {
   ApplyFailedTicketList []*ElectronicItineraryBatchApplyResponseBodyModuleApplyFailedTicketList `json:"apply_failed_ticket_list,omitempty" xml:"apply_failed_ticket_list,omitempty" type:"Repeated"`
+  // example:
+  // 
+  // 0c7b5944608953479a9a4d40c1eec618
   BatchNo *string `json:"batch_no,omitempty" xml:"batch_no,omitempty"`
 }
 
@@ -148,8 +170,17 @@ func (s *ElectronicItineraryBatchApplyResponseBodyModule) Validate() error {
 }
 
 type ElectronicItineraryBatchApplyResponseBodyModuleApplyFailedTicketList struct {
+  // example:
+  // 
+  // 5001
   FailedCode *int32 `json:"failed_code,omitempty" xml:"failed_code,omitempty"`
+  // example:
+  // 
+  // 票号不存在
   FailedReason *string `json:"failed_reason,omitempty" xml:"failed_reason,omitempty"`
+  // example:
+  // 
+  // 018-6605785754
   TicketNo *string `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
 }
 

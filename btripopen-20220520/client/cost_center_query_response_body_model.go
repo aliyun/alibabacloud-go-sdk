@@ -26,13 +26,31 @@ type iCostCenterQueryResponseBody interface {
 }
 
 type CostCenterQueryResponseBody struct {
-	Code      *string                              `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                              `json:"message,omitempty" xml:"message,omitempty"`
-	Module    []*CostCenterQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
-	MorePage  *bool                                `json:"more_page,omitempty" xml:"more_page,omitempty"`
-	RequestId *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                                `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                              `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 成功
+	Message *string                              `json:"message,omitempty" xml:"message,omitempty"`
+	Module  []*CostCenterQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	MorePage *bool `json:"more_page,omitempty" xml:"more_page,omitempty"`
+	// example:
+	//
+	// 407543AF-2BD9-5890-BD92-9D1AB7218B27
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 21041ce316577904808056433edbb2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s CostCenterQueryResponseBody) String() string {
@@ -120,16 +138,43 @@ func (s *CostCenterQueryResponseBody) Validate() error {
 }
 
 type CostCenterQueryResponseBodyModule struct {
-	AlipayNo    *string                                       `json:"alipay_no,omitempty" xml:"alipay_no,omitempty"`
-	CorpId      *string                                       `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
-	Disable     *int64                                        `json:"disable,omitempty" xml:"disable,omitempty"`
-	EntityDOS   []*CostCenterQueryResponseBodyModuleEntityDOS `json:"entity_d_o_s,omitempty" xml:"entity_d_o_s,omitempty" type:"Repeated"`
-	Id          *int64                                        `json:"id,omitempty" xml:"id,omitempty"`
-	Number      *string                                       `json:"number,omitempty" xml:"number,omitempty"`
-	RuleCode    *int64                                        `json:"rule_code,omitempty" xml:"rule_code,omitempty"`
-	Scope       *int64                                        `json:"scope,omitempty" xml:"scope,omitempty"`
-	ThirdpartId *string                                       `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
-	Title       *string                                       `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// a@alipay.com
+	AlipayNo *string `json:"alipay_no,omitempty" xml:"alipay_no,omitempty"`
+	// example:
+	//
+	// ding12345678
+	CorpId *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	// example:
+	//
+	// 0
+	Disable   *int64                                        `json:"disable,omitempty" xml:"disable,omitempty"`
+	EntityDOS []*CostCenterQueryResponseBodyModuleEntityDOS `json:"entity_d_o_s,omitempty" xml:"entity_d_o_s,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 7232
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 123456
+	Number *string `json:"number,omitempty" xml:"number,omitempty"`
+	// example:
+	//
+	// 500578154
+	RuleCode *int64 `json:"rule_code,omitempty" xml:"rule_code,omitempty"`
+	// example:
+	//
+	// 1
+	Scope *int64 `json:"scope,omitempty" xml:"scope,omitempty"`
+	// example:
+	//
+	// 1
+	ThirdpartId *string `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
+	// example:
+	//
+	// 运营商
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s CostCenterQueryResponseBodyModule) String() string {
@@ -244,11 +289,26 @@ func (s *CostCenterQueryResponseBodyModule) Validate() error {
 }
 
 type CostCenterQueryResponseBodyModuleEntityDOS struct {
-	CorpId     *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
-	EntityId   *string `json:"entity_id,omitempty" xml:"entity_id,omitempty"`
+	// example:
+	//
+	// ding1234567
+	CorpId *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	// example:
+	//
+	// 12345
+	EntityId *string `json:"entity_id,omitempty" xml:"entity_id,omitempty"`
+	// example:
+	//
+	// 1
 	EntityType *string `json:"entity_type,omitempty" xml:"entity_type,omitempty"`
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
-	UserNum    *int32  `json:"user_num,omitempty" xml:"user_num,omitempty"`
+	// example:
+	//
+	// default_bus
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 10
+	UserNum *int32 `json:"user_num,omitempty" xml:"user_num,omitempty"`
 }
 
 func (s CostCenterQueryResponseBodyModuleEntityDOS) String() string {

@@ -17,8 +17,15 @@ type iFlightOrderQueryRequest interface {
 
 type FlightOrderQueryRequest struct {
 	// This parameter is required.
-	OrderId *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	UserId  *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	//
+	// example:
+	//
+	// 246584390
+	OrderId *int64 `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// example:
+	//
+	// 第三方用户id
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s FlightOrderQueryRequest) String() string {

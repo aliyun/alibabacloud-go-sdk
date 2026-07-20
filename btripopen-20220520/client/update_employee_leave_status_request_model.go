@@ -17,8 +17,16 @@ type iUpdateEmployeeLeaveStatusRequest interface {
 
 type UpdateEmployeeLeaveStatusRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// true
 	IsLeave *bool `json:"is_leave,omitempty" xml:"is_leave,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// user123
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 

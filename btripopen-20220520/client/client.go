@@ -58,7 +58,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 换取accessToken接口
+// This operation has been discontinued (existing enterprise users are not affected).
+//
+// Description:
+//
+// Starting now, when calling enterprise data, you only need to pass in:
+//
+//   - [corpToken](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985): Applicable for regular enterprises to obtain travel data within their own enterprise.
+//
+//   - [groupCorpToken](https://openapi.alibtrip.com/doc/toDocDetail?docId=4210653): Applicable for group enterprises to obtain data of the parent enterprise or subsidiary enterprises.
 //
 // @param request - AccessTokenRequest
 //
@@ -105,7 +113,15 @@ func (client *Client) AccessTokenWithOptions(request *AccessTokenRequest, header
 
 // Summary:
 //
-// 换取accessToken接口
+// This operation has been discontinued (existing enterprise users are not affected).
+//
+// Description:
+//
+// Starting now, when calling enterprise data, you only need to pass in:
+//
+//   - [corpToken](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985): Applicable for regular enterprises to obtain travel data within their own enterprise.
+//
+//   - [groupCorpToken](https://openapi.alibtrip.com/doc/toDocDetail?docId=4210653): Applicable for group enterprises to obtain data of the parent enterprise or subsidiary enterprises.
 //
 // @param request - AccessTokenRequest
 //
@@ -125,6 +141,14 @@ func (client *Client) AccessToken(request *AccessTokenRequest) (_result *AccessT
 // Summary:
 //
 // 创建企业部门
+//
+// Description:
+//
+// - 调用本接口前，请完成**组织人员同步**相关应用权限的申请。若无，请参见：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435) 完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key`作为必填参数拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 接口频率限制（QPS）：800 次/分钟、40 次/秒。
 //
 // @param tmpReq - AddDepartmentRequest
 //
@@ -200,6 +224,14 @@ func (client *Client) AddDepartmentWithOptions(tmpReq *AddDepartmentRequest, hea
 //
 // 创建企业部门
 //
+// Description:
+//
+// - 调用本接口前，请完成**组织人员同步**相关应用权限的申请。若无，请参见：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435) 完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key`作为必填参数拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 接口频率限制（QPS）：800 次/分钟、40 次/秒。
+//
 // @param request - AddDepartmentRequest
 //
 // @return AddDepartmentResponse
@@ -217,7 +249,15 @@ func (client *Client) AddDepartment(request *AddDepartmentRequest) (_result *Add
 
 // Summary:
 //
-// 添加员工
+// Synchronizes employee information to Alibaba Business Travel. This operation is applicable to scenarios such as employee onboarding and cross-system employee data transfer.
+//
+// Description:
+//
+// - Before invoking this operation, apply for the **Organization Personnel Synchronization*	- application permission. If you do not have the permission, refer to [Obtain application permissions](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435) to complete the required steps.
+//
+// - When you invoke this operation over HTTP, include `app_key` as a **required parameter*	- in the request URL. For information about how to obtain the `app_key`, refer to [Application basic information - Application credentials](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763).
+//
+// - Frequency limit: 800 calls per minute, 40 calls per second.
 //
 // @param tmpReq - AddEmployeeRequest
 //
@@ -387,7 +427,15 @@ func (client *Client) AddEmployeeWithOptions(tmpReq *AddEmployeeRequest, headers
 
 // Summary:
 //
-// 添加员工
+// Synchronizes employee information to Alibaba Business Travel. This operation is applicable to scenarios such as employee onboarding and cross-system employee data transfer.
+//
+// Description:
+//
+// - Before invoking this operation, apply for the **Organization Personnel Synchronization*	- application permission. If you do not have the permission, refer to [Obtain application permissions](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435) to complete the required steps.
+//
+// - When you invoke this operation over HTTP, include `app_key` as a **required parameter*	- in the request URL. For information about how to obtain the `app_key`, refer to [Application basic information - Application credentials](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763).
+//
+// - Frequency limit: 800 calls per minute, 40 calls per second.
 //
 // @param request - AddEmployeeRequest
 //
@@ -406,7 +454,13 @@ func (client *Client) AddEmployee(request *AddEmployeeRequest) (_result *AddEmpl
 
 // Summary:
 //
-// 批量新增企业自定义角色下人员
+// Adds members in bulk to a custom enterprise role.
+//
+// Description:
+//
+// - Before calling this operation, complete the application for permissions related to organization member synchronization. If you have not done so, refer to: [API permission application flow](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435) to complete the related operations.
+//
+// - When calling this operation over HTTP, include `app_key` as a required parameter in the request URL. For information about how to obtain `app_key`, refer to: [Application basic information - Application credentials](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763).
 //
 // @param tmpReq - AddEmployeesToCustomRoleRequest
 //
@@ -472,7 +526,13 @@ func (client *Client) AddEmployeesToCustomRoleWithOptions(tmpReq *AddEmployeesTo
 
 // Summary:
 //
-// 批量新增企业自定义角色下人员
+// Adds members in bulk to a custom enterprise role.
+//
+// Description:
+//
+// - Before calling this operation, complete the application for permissions related to organization member synchronization. If you have not done so, refer to: [API permission application flow](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435) to complete the related operations.
+//
+// - When calling this operation over HTTP, include `app_key` as a required parameter in the request URL. For information about how to obtain `app_key`, refer to: [Application basic information - Application credentials](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763).
 //
 // @param request - AddEmployeesToCustomRoleRequest
 //
@@ -491,7 +551,15 @@ func (client *Client) AddEmployeesToCustomRole(request *AddEmployeesToCustomRole
 
 // Summary:
 //
-// 新增发票抬头适用人员
+// Adds applicable personnel to an invoice header.
+//
+// Description:
+//
+// Adds applicable personnel information to an invoice header.
+//
+// - To use this operation, enable the cost attribution configuration permission in your application. For more information about how to apply for data permissions, see [API permission application process](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435).
+//
+// - To use this operation, include the enterprise access credential (x-acs-btrip-so-corp-token) in the request header. For more information about how to obtain the enterprise access credential, see [Enterprise access credential](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985).
 //
 // @param tmpReq - AddInvoiceEntityRequest
 //
@@ -557,7 +625,15 @@ func (client *Client) AddInvoiceEntityWithOptions(tmpReq *AddInvoiceEntityReques
 
 // Summary:
 //
-// 新增发票抬头适用人员
+// Adds applicable personnel to an invoice header.
+//
+// Description:
+//
+// Adds applicable personnel information to an invoice header.
+//
+// - To use this operation, enable the cost attribution configuration permission in your application. For more information about how to apply for data permissions, see [API permission application process](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435).
+//
+// - To use this operation, include the enterprise access credential (x-acs-btrip-so-corp-token) in the request header. For more information about how to obtain the enterprise access credential, see [Enterprise access credential](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985).
 //
 // @param request - AddInvoiceEntityRequest
 //
@@ -576,7 +652,13 @@ func (client *Client) AddInvoiceEntity(request *AddInvoiceEntityRequest) (_resul
 
 // Summary:
 //
-// 新增项目负责人
+// Adds project managers.
+//
+// Description:
+//
+// Before you invoke this operation, apply for the application permissions related to **Cost Attribution**. If you do not have the permissions, refer to [Obtain application permissions](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435) to complete the required steps.
+//
+//   - When you invoke this operation over HTTP, include `app_key` as a required parameter in the request URL. For information about how to obtain the `app_key`, refer to [Application basic information - Application credentials](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763).
 //
 // @param tmpReq - AddProjectManagerRequest
 //
@@ -646,7 +728,13 @@ func (client *Client) AddProjectManagerWithOptions(tmpReq *AddProjectManagerRequ
 
 // Summary:
 //
-// 新增项目负责人
+// Adds project managers.
+//
+// Description:
+//
+// Before you invoke this operation, apply for the application permissions related to **Cost Attribution**. If you do not have the permissions, refer to [Obtain application permissions](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435) to complete the required steps.
+//
+//   - When you invoke this operation over HTTP, include `app_key` as a required parameter in the request URL. For information about how to obtain the `app_key`, refer to [Application basic information - Application credentials](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763).
 //
 // @param request - AddProjectManagerRequest
 //
@@ -665,7 +753,13 @@ func (client *Client) AddProjectManager(request *AddProjectManagerRequest) (_res
 
 // Summary:
 //
-// 商旅功能页跳转
+// Redirects to a business travel feature page.
+//
+// Description:
+//
+// - Before invoking this operation, apply for the permissions required for **business travel feature page redirection**. If you have not obtained the permissions, refer to [Obtain application permissions](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435) to complete the required steps.
+//
+// - When you invoke this operation over HTTP, include `app_key` as a **required parameter*	- in the request URL. For information about how to obtain the `app_key`, refer to [Application basic information - Application credentials](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763).
 //
 // @param request - AddressGetRequest
 //
@@ -793,7 +887,13 @@ func (client *Client) AddressGetWithOptions(request *AddressGetRequest, headers 
 
 // Summary:
 //
-// 商旅功能页跳转
+// Redirects to a business travel feature page.
+//
+// Description:
+//
+// - Before invoking this operation, apply for the permissions required for **business travel feature page redirection**. If you have not obtained the permissions, refer to [Obtain application permissions](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435) to complete the required steps.
+//
+// - When you invoke this operation over HTTP, include `app_key` as a **required parameter*	- in the request URL. For information about how to obtain the `app_key`, refer to [Application basic information - Application credentials](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763).
 //
 // @param request - AddressGetRequest
 //
@@ -813,6 +913,14 @@ func (client *Client) AddressGet(request *AddressGetRequest) (_result *AddressGe
 // Summary:
 //
 // 查询机场数据
+//
+// Description:
+//
+// 使用该接口可以查询机场数据。
+//
+// 1.  使用该接口需要在应用中开通基础数据集权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - AirportSearchRequest
 //
@@ -874,6 +982,14 @@ func (client *Client) AirportSearchWithOptions(request *AirportSearchRequest, he
 //
 // 查询机场数据
 //
+// Description:
+//
+// 使用该接口可以查询机场数据。
+//
+// 1.  使用该接口需要在应用中开通基础数据集权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - AirportSearchRequest
 //
 // @return AirportSearchResponse
@@ -892,6 +1008,14 @@ func (client *Client) AirportSearch(request *AirportSearchRequest) (_result *Air
 // Summary:
 //
 // 全量查询商旅城市行政区划编码信息
+//
+// Description:
+//
+// 使用该接口可以全量查询商旅城市行政区划编码信息。
+//
+// - 使用该接口需要在应用中开通基础数据集权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// - 使用该接口需要在请求头中放入应用访问凭证数据信息（x-acs-btrip-access-token），应用访问凭证数据获取接口请查看[应用访问凭证](https://open.alibtrip.com/#/document/server/accesstoken-application-access-credential?handbookId=development-support)
 //
 // @param headers - AllBaseCityInfoQueryHeaders
 //
@@ -935,6 +1059,14 @@ func (client *Client) AllBaseCityInfoQueryWithOptions(headers *AllBaseCityInfoQu
 //
 // 全量查询商旅城市行政区划编码信息
 //
+// Description:
+//
+// 使用该接口可以全量查询商旅城市行政区划编码信息。
+//
+// - 使用该接口需要在应用中开通基础数据集权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// - 使用该接口需要在请求头中放入应用访问凭证数据信息（x-acs-btrip-access-token），应用访问凭证数据获取接口请查看[应用访问凭证](https://open.alibtrip.com/#/document/server/accesstoken-application-access-credential?handbookId=development-support)
+//
 // @return AllBaseCityInfoQueryResponse
 func (client *Client) AllBaseCityInfoQuery() (_result *AllBaseCityInfoQueryResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
@@ -951,6 +1083,12 @@ func (client *Client) AllBaseCityInfoQuery() (_result *AllBaseCityInfoQueryRespo
 // Summary:
 //
 // 新建出差审批单
+//
+// Description:
+//
+// - 调用本接口前，请完成**出差审批单**相关应用权限的申请。若无，请参见：[接口应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param tmpReq - ApplyAddRequest
 //
@@ -1202,6 +1340,12 @@ func (client *Client) ApplyAddWithOptions(tmpReq *ApplyAddRequest, headers *Appl
 //
 // 新建出差审批单
 //
+// Description:
+//
+// - 调用本接口前，请完成**出差审批单**相关应用权限的申请。若无，请参见：[接口应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - ApplyAddRequest
 //
 // @return ApplyAddResponse
@@ -1220,6 +1364,14 @@ func (client *Client) ApplyAdd(request *ApplyAddRequest) (_result *ApplyAddRespo
 // Summary:
 //
 // 更新出差审批单（状态）
+//
+// Description:
+//
+// 使用该接口可以修改指定企业下的审批单。
+//
+// 1.  使用该接口需要在应用中开通商旅修改审批单状态权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - ApplyApproveRequest
 //
@@ -1301,6 +1453,14 @@ func (client *Client) ApplyApproveWithOptions(request *ApplyApproveRequest, head
 //
 // 更新出差审批单（状态）
 //
+// Description:
+//
+// 使用该接口可以修改指定企业下的审批单。
+//
+// 1.  使用该接口需要在应用中开通商旅修改审批单状态权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - ApplyApproveRequest
 //
 // @return ApplyApproveResponse
@@ -1319,6 +1479,14 @@ func (client *Client) ApplyApprove(request *ApplyApproveRequest) (_result *Apply
 // Summary:
 //
 // 外部审批节点状态同步
+//
+// Description:
+//
+// 使用该接口可以同步外部审批节点状态
+//
+// - 使用该接口需要在应用中开通商旅报销权限，具体的数据权限申请流程请查看[接口权限申请流程](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support)
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://open.alibtrip.com/#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)
 //
 // @param tmpReq - ApplyExternalNodeStatusUpdateRequest
 //
@@ -1390,6 +1558,14 @@ func (client *Client) ApplyExternalNodeStatusUpdateWithOptions(tmpReq *ApplyExte
 //
 // 外部审批节点状态同步
 //
+// Description:
+//
+// 使用该接口可以同步外部审批节点状态
+//
+// - 使用该接口需要在应用中开通商旅报销权限，具体的数据权限申请流程请查看[接口权限申请流程](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support)
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://open.alibtrip.com/#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)
+//
 // @param request - ApplyExternalNodeStatusUpdateRequest
 //
 // @return ApplyExternalNodeStatusUpdateResponse
@@ -1408,6 +1584,16 @@ func (client *Client) ApplyExternalNodeStatusUpdate(request *ApplyExternalNodeSt
 // Summary:
 //
 // 申请发票
+//
+// Description:
+//
+// 使用该接口可以按账期维度申请发票。
+//
+// 1. 增值接口需特殊审批，提交权限前请先和商旅客户运营沟通确认。
+//
+// 2. 使用该接口需要在应用中开通增值服务数据权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// 3. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param tmpReq - ApplyInvoiceTaskRequest
 //
@@ -1475,6 +1661,16 @@ func (client *Client) ApplyInvoiceTaskWithOptions(tmpReq *ApplyInvoiceTaskReques
 //
 // 申请发票
 //
+// Description:
+//
+// 使用该接口可以按账期维度申请发票。
+//
+// 1. 增值接口需特殊审批，提交权限前请先和商旅客户运营沟通确认。
+//
+// 2. 使用该接口需要在应用中开通增值服务数据权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// 3. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - ApplyInvoiceTaskRequest
 //
 // @return ApplyInvoiceTaskResponse
@@ -1493,6 +1689,14 @@ func (client *Client) ApplyInvoiceTask(request *ApplyInvoiceTaskRequest) (_resul
 // Summary:
 //
 // 查询出差审批单列表
+//
+// Description:
+//
+// 使用该接口可以获取出差审批单列表数据。
+//
+// 1.  使用该接口需要在应用中开通出差审批单权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - ApplyListQueryRequest
 //
@@ -1594,6 +1798,14 @@ func (client *Client) ApplyListQueryWithOptions(request *ApplyListQueryRequest, 
 //
 // 查询出差审批单列表
 //
+// Description:
+//
+// 使用该接口可以获取出差审批单列表数据。
+//
+// 1.  使用该接口需要在应用中开通出差审批单权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - ApplyListQueryRequest
 //
 // @return ApplyListQueryResponse
@@ -1612,6 +1824,14 @@ func (client *Client) ApplyListQuery(request *ApplyListQueryRequest) (_result *A
 // Summary:
 //
 // 更新出差审批单
+//
+// Description:
+//
+// 使用该接口可以修改指定企业下的审批单。
+//
+// 1.  使用该接口需要在应用中开通商旅修改审批单权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param tmpReq - ApplyModifyRequest
 //
@@ -1855,6 +2075,14 @@ func (client *Client) ApplyModifyWithOptions(tmpReq *ApplyModifyRequest, headers
 //
 // 更新出差审批单
 //
+// Description:
+//
+// 使用该接口可以修改指定企业下的审批单。
+//
+// 1.  使用该接口需要在应用中开通商旅修改审批单权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - ApplyModifyRequest
 //
 // @return ApplyModifyResponse
@@ -1873,6 +2101,14 @@ func (client *Client) ApplyModify(request *ApplyModifyRequest) (_result *ApplyMo
 // Summary:
 //
 // 查询出差审批单详情
+//
+// Description:
+//
+// 使用该接口可以查询出差审批单详情信息。
+//
+// 1.  使用该接口需要在应用中开通出差审批单权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - ApplyQueryRequest
 //
@@ -1946,6 +2182,14 @@ func (client *Client) ApplyQueryWithOptions(request *ApplyQueryRequest, headers 
 //
 // 查询出差审批单详情
 //
+// Description:
+//
+// 使用该接口可以查询出差审批单详情信息。
+//
+// 1.  使用该接口需要在应用中开通出差审批单权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - ApplyQueryRequest
 //
 // @return ApplyQueryResponse
@@ -1964,6 +2208,14 @@ func (client *Client) ApplyQuery(request *ApplyQueryRequest) (_result *ApplyQuer
 // Summary:
 //
 // 执行审批任务
+//
+// Description:
+//
+// 使用该接口可以同意\\拒绝审批任务。
+//
+// 1. 使用该接口需要在应用中开通商旅通用审批权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - ApplyTripTaskExecuteRequest
 //
@@ -2041,6 +2293,14 @@ func (client *Client) ApplyTripTaskExecuteWithOptions(request *ApplyTripTaskExec
 //
 // 执行审批任务
 //
+// Description:
+//
+// 使用该接口可以同意\\拒绝审批任务。
+//
+// 1. 使用该接口需要在应用中开通商旅通用审批权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - ApplyTripTaskExecuteRequest
 //
 // @return ApplyTripTaskExecuteResponse
@@ -2059,6 +2319,12 @@ func (client *Client) ApplyTripTaskExecute(request *ApplyTripTaskExecuteRequest)
 // Summary:
 //
 // 搜索国内/国际（港澳台）城市基础行政区划数据
+//
+// Description:
+//
+// - 调用本接口前，请完成**基础数据集**相关应用权限的申请。若无，请参见：获取[应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 使用该接口需要在请求头中放入应用访问凭证数据信息（x-acs-btrip-access-token），应用访问凭证数据获取接口请查看[应用访问凭证](https://open.alibtrip.com/#/document/server/accesstoken-application-access-credential?handbookId=development-support)。
 //
 // @param request - BaseCityInfoSearchRequest
 //
@@ -2120,6 +2386,12 @@ func (client *Client) BaseCityInfoSearchWithOptions(request *BaseCityInfoSearchR
 //
 // 搜索国内/国际（港澳台）城市基础行政区划数据
 //
+// Description:
+//
+// - 调用本接口前，请完成**基础数据集**相关应用权限的申请。若无，请参见：获取[应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 使用该接口需要在请求头中放入应用访问凭证数据信息（x-acs-btrip-access-token），应用访问凭证数据获取接口请查看[应用访问凭证](https://open.alibtrip.com/#/document/server/accesstoken-application-access-credential?handbookId=development-support)。
+//
 // @param request - BaseCityInfoSearchRequest
 //
 // @return BaseCityInfoSearchResponse
@@ -2138,6 +2410,12 @@ func (client *Client) BaseCityInfoSearch(request *BaseCityInfoSearchRequest) (_r
 // Summary:
 //
 // 批量/单个查询部门
+//
+// Description:
+//
+// - 调用本接口前，请完成**组织人员同步**相关应用权限的申请。若无，请参考[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTTP 方式调用本接口时，需要将 `app_key` 作为**必填参数**拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
 //
 // @param request - BatchQueryDepartmentRequest
 //
@@ -2206,6 +2484,12 @@ func (client *Client) BatchQueryDepartmentWithOptions(request *BatchQueryDepartm
 // Summary:
 //
 // 批量/单个查询部门
+//
+// Description:
+//
+// - 调用本接口前，请完成**组织人员同步**相关应用权限的申请。若无，请参考[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTTP 方式调用本接口时，需要将 `app_key` 作为**必填参数**拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
 //
 // @param request - BatchQueryDepartmentRequest
 //
@@ -2323,6 +2607,14 @@ func (client *Client) BatchSubmitPreBill(request *BatchSubmitPreBillRequest) (_r
 //
 // 商旅账单内容修改
 //
+// Description:
+//
+// - 调用本接口前，请完成**商旅账单数据**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将`app_key`作为必填参数拼接在请求地址中。`app_key`的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 通过本接口对账单字段进行调整后，需调用 [MonthBillConfirm](https://openapi.alibtrip.com/doc/toDocDetail?docId=4060179) 接口进行调整确认。
+//
 // @param request - BtripBillInfoAdjustRequest
 //
 // @param headers - BtripBillInfoAdjustHeaders
@@ -2398,6 +2690,14 @@ func (client *Client) BtripBillInfoAdjustWithOptions(request *BtripBillInfoAdjus
 // Summary:
 //
 // 商旅账单内容修改
+//
+// Description:
+//
+// - 调用本接口前，请完成**商旅账单数据**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将`app_key`作为必填参数拼接在请求地址中。`app_key`的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 通过本接口对账单字段进行调整后，需调用 [MonthBillConfirm](https://openapi.alibtrip.com/doc/toDocDetail?docId=4060179) 接口进行调整确认。
 //
 // @param request - BtripBillInfoAdjustRequest
 //
@@ -2587,6 +2887,14 @@ func (client *Client) CarApplyAdd(request *CarApplyAddRequest) (_result *CarAppl
 //
 // 更新市内用车审批单
 //
+// Description:
+//
+// 使用该接口可以修改指定企业下的市内用车审批单。
+//
+// 1.  使用该接口需要在应用中开通商旅修改市内用车审批权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - CarApplyModifyRequest
 //
 // @param headers - CarApplyModifyHeaders
@@ -2659,6 +2967,14 @@ func (client *Client) CarApplyModifyWithOptions(request *CarApplyModifyRequest, 
 //
 // 更新市内用车审批单
 //
+// Description:
+//
+// 使用该接口可以修改指定企业下的市内用车审批单。
+//
+// 1.  使用该接口需要在应用中开通商旅修改市内用车审批权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - CarApplyModifyRequest
 //
 // @return CarApplyModifyResponse
@@ -2677,6 +2993,14 @@ func (client *Client) CarApplyModify(request *CarApplyModifyRequest) (_result *C
 // Summary:
 //
 // 查询市内用车审批单
+//
+// Description:
+//
+// 使用该接口可以获取查询市内用车申请单。
+//
+// 1.  使用该接口需要在应用中开通市内用车审批单权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - CarApplyQueryRequest
 //
@@ -2754,6 +3078,14 @@ func (client *Client) CarApplyQueryWithOptions(request *CarApplyQueryRequest, he
 //
 // 查询市内用车审批单
 //
+// Description:
+//
+// 使用该接口可以获取查询市内用车申请单。
+//
+// 1.  使用该接口需要在应用中开通市内用车审批单权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - CarApplyQueryRequest
 //
 // @return CarApplyQueryResponse
@@ -2772,6 +3104,16 @@ func (client *Client) CarApplyQuery(request *CarApplyQueryRequest) (_result *Car
 // Summary:
 //
 // 查询用车记账数据
+//
+// Description:
+//
+// - 调用本接口前，请完成**商旅账单数据**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将`app_key`作为必填参数拼接在请求地址中。`app_key`的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 查询时，记账数据起止时间的间隔规则为：1 小时 ≤记账截止时间 - 记账起始时间 ≤ 24 小时。
+//
+// - 为保证数据准确性，阿里商旅记账数据的更新时机为当前时间 + 1 小时。
 //
 // @param request - CarBillSettlementQueryRequest
 //
@@ -2869,6 +3211,16 @@ func (client *Client) CarBillSettlementQueryWithOptions(request *CarBillSettleme
 //
 // 查询用车记账数据
 //
+// Description:
+//
+// - 调用本接口前，请完成**商旅账单数据**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将`app_key`作为必填参数拼接在请求地址中。`app_key`的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 查询时，记账数据起止时间的间隔规则为：1 小时 ≤记账截止时间 - 记账起始时间 ≤ 24 小时。
+//
+// - 为保证数据准确性，阿里商旅记账数据的更新时机为当前时间 + 1 小时。
+//
 // @param request - CarBillSettlementQueryRequest
 //
 // @return CarBillSettlementQueryResponse
@@ -2887,6 +3239,14 @@ func (client *Client) CarBillSettlementQuery(request *CarBillSettlementQueryRequ
 // Summary:
 //
 // 查询用车订单列表
+//
+// Description:
+//
+// 使用该接口可以查询指定企业的用车订单列表。
+//
+// 1.  使用该接口需要在应用中开通商旅订单数据权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - CarOrderListQueryRequest
 //
@@ -2984,6 +3344,14 @@ func (client *Client) CarOrderListQueryWithOptions(request *CarOrderListQueryReq
 //
 // 查询用车订单列表
 //
+// Description:
+//
+// 使用该接口可以查询指定企业的用车订单列表。
+//
+// 1.  使用该接口需要在应用中开通商旅订单数据权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - CarOrderListQueryRequest
 //
 // @return CarOrderListQueryResponse
@@ -3002,6 +3370,14 @@ func (client *Client) CarOrderListQuery(request *CarOrderListQueryRequest) (_res
 // Summary:
 //
 // 用车订单查询
+//
+// Description:
+//
+// 使用该接口可以查询指定企业的用车订单详情。
+//
+// 1.  使用该接口需要在应用中开通商旅订单数据权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - CarOrderQueryRequest
 //
@@ -3062,6 +3438,14 @@ func (client *Client) CarOrderQueryWithOptions(request *CarOrderQueryRequest, he
 // Summary:
 //
 // 用车订单查询
+//
+// Description:
+//
+// 使用该接口可以查询指定企业的用车订单详情。
+//
+// 1.  使用该接口需要在应用中开通商旅订单数据权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - CarOrderQueryRequest
 //
@@ -3156,6 +3540,18 @@ func (client *Client) CarSceneQuery() (_result *CarSceneQueryResponse, _err erro
 // Summary:
 //
 // 渠道商创建企业
+//
+// Description:
+//
+// - 调用本接口前，请完成阿里商旅渠道伙伴身份认证。若无，请[点击此处](https://xapork.aliwork.com/o/Channel)前往认证。
+//
+// - 调用本接口前，请完成**企业账户**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435) 完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key` 作为必填参数拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 企业注册成功后,会向管理员发送激活短信，激活成功后即可登录阿里商旅使用相关功能。
+//
+// - 渠道伙伴每日新增对接企业数量上限为 20。
 //
 // @param request - ChannelCorpCreateRequest
 //
@@ -3261,6 +3657,18 @@ func (client *Client) ChannelCorpCreateWithOptions(request *ChannelCorpCreateReq
 //
 // 渠道商创建企业
 //
+// Description:
+//
+// - 调用本接口前，请完成阿里商旅渠道伙伴身份认证。若无，请[点击此处](https://xapork.aliwork.com/o/Channel)前往认证。
+//
+// - 调用本接口前，请完成**企业账户**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435) 完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key` 作为必填参数拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 企业注册成功后,会向管理员发送激活短信，激活成功后即可登录阿里商旅使用相关功能。
+//
+// - 渠道伙伴每日新增对接企业数量上限为 20。
+//
 // @param request - ChannelCorpCreateRequest
 //
 // @return ChannelCorpCreateResponse
@@ -3279,6 +3687,14 @@ func (client *Client) ChannelCorpCreate(request *ChannelCorpCreateRequest) (_res
 // Summary:
 //
 // 查询行政区划（市，区）基础数据
+//
+// Description:
+//
+// 使用该接口可以查询行政区划（市，区）基础数据。
+//
+// 1.  使用该接口需要在应用中开通基础数据集权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - CitySearchRequest
 //
@@ -3336,6 +3752,14 @@ func (client *Client) CitySearchWithOptions(request *CitySearchRequest, headers 
 //
 // 查询行政区划（市，区）基础数据
 //
+// Description:
+//
+// 使用该接口可以查询行政区划（市，区）基础数据。
+//
+// 1.  使用该接口需要在应用中开通基础数据集权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - CitySearchRequest
 //
 // @return CitySearchResponse
@@ -3354,6 +3778,14 @@ func (client *Client) CitySearch(request *CitySearchRequest) (_result *CitySearc
 // Summary:
 //
 // 查询退改审批信息
+//
+// Description:
+//
+// 使用该接口可以获取查询退改审批信息。
+//
+// 1.  使用该接口需要在应用中开通退改审批权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - CommonApplyQueryRequest
 //
@@ -3423,6 +3855,14 @@ func (client *Client) CommonApplyQueryWithOptions(request *CommonApplyQueryReque
 //
 // 查询退改审批信息
 //
+// Description:
+//
+// 使用该接口可以获取查询退改审批信息。
+//
+// 1.  使用该接口需要在应用中开通退改审批权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - CommonApplyQueryRequest
 //
 // @return CommonApplyQueryResponse
@@ -3441,6 +3881,14 @@ func (client *Client) CommonApplyQuery(request *CommonApplyQueryRequest) (_resul
 // Summary:
 //
 // 退改审批结果同步
+//
+// Description:
+//
+// 使用该接口可以获取退改审批结果同步。
+//
+// 1.  使用该接口需要在应用中开通退改审批权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - CommonApplySyncRequest
 //
@@ -3517,6 +3965,14 @@ func (client *Client) CommonApplySyncWithOptions(request *CommonApplySyncRequest
 // Summary:
 //
 // 退改审批结果同步
+//
+// Description:
+//
+// 使用该接口可以获取退改审批结果同步。
+//
+// 1.  使用该接口需要在应用中开通退改审批权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - CommonApplySyncRequest
 //
@@ -3611,6 +4067,12 @@ func (client *Client) ConfirmPreBill(request *ConfirmPreBillRequest) (_result *C
 // Summary:
 //
 // 查询服务商机票记账数据
+//
+// Description:
+//
+// - 调用本接口前，请完成**商旅账单数据**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将`app_key`作为必填参数拼接在请求地址中。`app_key`的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
 //
 // @param request - CooperatorFlightBillSettlementQueryRequest
 //
@@ -3712,6 +4174,12 @@ func (client *Client) CooperatorFlightBillSettlementQueryWithOptions(request *Co
 //
 // 查询服务商机票记账数据
 //
+// Description:
+//
+// - 调用本接口前，请完成**商旅账单数据**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将`app_key`作为必填参数拼接在请求地址中。`app_key`的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
 // @param request - CooperatorFlightBillSettlementQueryRequest
 //
 // @return CooperatorFlightBillSettlementQueryResponse
@@ -3730,6 +4198,12 @@ func (client *Client) CooperatorFlightBillSettlementQuery(request *CooperatorFli
 // Summary:
 //
 // 查询服务商酒店记账数据
+//
+// Description:
+//
+// - 调用本接口前，请完成**商旅账单数据**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将`app_key`作为必填参数拼接在请求地址中。`app_key`的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
 //
 // @param request - CooperatorHotelBillSettlementQueryRequest
 //
@@ -3831,6 +4305,12 @@ func (client *Client) CooperatorHotelBillSettlementQueryWithOptions(request *Coo
 //
 // 查询服务商酒店记账数据
 //
+// Description:
+//
+// - 调用本接口前，请完成**商旅账单数据**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将`app_key`作为必填参数拼接在请求地址中。`app_key`的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
 // @param request - CooperatorHotelBillSettlementQueryRequest
 //
 // @return CooperatorHotelBillSettlementQueryResponse
@@ -3849,6 +4329,12 @@ func (client *Client) CooperatorHotelBillSettlementQuery(request *CooperatorHote
 // Summary:
 //
 // 酒店订单事件推送
+//
+// Description:
+//
+// 调用方：服务商
+//
+// 实现方：中洲平台
 //
 // @param request - CooperatorHotelEventPushRequest
 //
@@ -3930,6 +4416,12 @@ func (client *Client) CooperatorHotelEventPushWithOptions(request *CooperatorHot
 //
 // 酒店订单事件推送
 //
+// Description:
+//
+// 调用方：服务商
+//
+// 实现方：中洲平台
+//
 // @param request - CooperatorHotelEventPushRequest
 //
 // @return CooperatorHotelEventPushResponse
@@ -3948,6 +4440,12 @@ func (client *Client) CooperatorHotelEventPush(request *CooperatorHotelEventPush
 // Summary:
 //
 // 个人支付结果推送
+//
+// Description:
+//
+// 调用方：服务商<p>
+//
+// 实现方：中洲平台
 //
 // @param request - CooperatorSyncPayStatusRequest
 //
@@ -4021,6 +4519,12 @@ func (client *Client) CooperatorSyncPayStatusWithOptions(request *CooperatorSync
 //
 // 个人支付结果推送
 //
+// Description:
+//
+// 调用方：服务商<p>
+//
+// 实现方：中洲平台
+//
 // @param request - CooperatorSyncPayStatusRequest
 //
 // @return CooperatorSyncPayStatusResponse
@@ -4090,6 +4594,20 @@ func (client *Client) CorpAuthLinkInfoQuery() (_result *CorpAuthLinkInfoQueryRes
 //
 // 换取CorpToken接口
 //
+// Description:
+//
+// - 请求方法：GET
+//
+// - 请求地址：https://btripopen.alibtrip.com/api/btrip-open-auth/v1/corp-token/action/take
+//
+// - 建议您通过**中控服务统一处理**或**单位时间单一刷新**亦或通过**单机 Job 任务**的方式进行凭证获取，详细说明请参见：[凭证获取指南](https://openapi.alibtrip.com/doc/toDocDetail?docId=3917854)。
+//
+// - token 的有效时长可以从 `expire` 字段中获取，初始值为 2 小时（7200000ms）。为防止 token 失效，建议刷新间隔控制为：**5 分钟 ≤ 间隔 ≤ 2 小时**。在此间隔内刷新，上一次请求获取的 token 仍然有效。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key` 及 `app_secret` 作为**必填参数**传入。二者的获取方式请参见：[应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 原请求参数中的 `x-acs-btrip-access-token` 参数现**已作废**，请使用 `app_secret`。
+//
 // @param request - CorpTokenRequest
 //
 // @param headers - CorpTokenHeaders
@@ -4154,6 +4672,20 @@ func (client *Client) CorpTokenWithOptions(request *CorpTokenRequest, headers *C
 //
 // 换取CorpToken接口
 //
+// Description:
+//
+// - 请求方法：GET
+//
+// - 请求地址：https://btripopen.alibtrip.com/api/btrip-open-auth/v1/corp-token/action/take
+//
+// - 建议您通过**中控服务统一处理**或**单位时间单一刷新**亦或通过**单机 Job 任务**的方式进行凭证获取，详细说明请参见：[凭证获取指南](https://openapi.alibtrip.com/doc/toDocDetail?docId=3917854)。
+//
+// - token 的有效时长可以从 `expire` 字段中获取，初始值为 2 小时（7200000ms）。为防止 token 失效，建议刷新间隔控制为：**5 分钟 ≤ 间隔 ≤ 2 小时**。在此间隔内刷新，上一次请求获取的 token 仍然有效。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key` 及 `app_secret` 作为**必填参数**传入。二者的获取方式请参见：[应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 原请求参数中的 `x-acs-btrip-access-token` 参数现**已作废**，请使用 `app_secret`。
+//
 // @param request - CorpTokenRequest
 //
 // @return CorpTokenResponse
@@ -4172,6 +4704,14 @@ func (client *Client) CorpToken(request *CorpTokenRequest) (_result *CorpTokenRe
 // Summary:
 //
 // 删除成本中心
+//
+// Description:
+//
+// 使用该接口可以删除指定企业的成本中心。
+//
+// 1.  使用该接口需要在应用中开通费用归属配置权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - CostCenterDeleteRequest
 //
@@ -4229,6 +4769,14 @@ func (client *Client) CostCenterDeleteWithOptions(request *CostCenterDeleteReque
 //
 // 删除成本中心
 //
+// Description:
+//
+// 使用该接口可以删除指定企业的成本中心。
+//
+// 1.  使用该接口需要在应用中开通费用归属配置权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - CostCenterDeleteRequest
 //
 // @return CostCenterDeleteResponse
@@ -4247,6 +4795,14 @@ func (client *Client) CostCenterDelete(request *CostCenterDeleteRequest) (_resul
 // Summary:
 //
 // 修改成本中心
+//
+// Description:
+//
+// 使用该接口可以修改指定企业的成本中心。
+//
+// 1.  使用该接口需要在应用中开通费用归属配置权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - CostCenterModifyRequest
 //
@@ -4324,6 +4880,14 @@ func (client *Client) CostCenterModifyWithOptions(request *CostCenterModifyReque
 //
 // 修改成本中心
 //
+// Description:
+//
+// 使用该接口可以修改指定企业的成本中心。
+//
+// 1.  使用该接口需要在应用中开通费用归属配置权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - CostCenterModifyRequest
 //
 // @return CostCenterModifyResponse
@@ -4342,6 +4906,14 @@ func (client *Client) CostCenterModify(request *CostCenterModifyRequest) (_resul
 // Summary:
 //
 // 查看成本中心
+//
+// Description:
+//
+// 使用该接口可以查询指定企业的成本中心。
+//
+// 1.  使用该接口需要在应用中开通费用归属配置权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - CostCenterQueryRequest
 //
@@ -4415,6 +4987,14 @@ func (client *Client) CostCenterQueryWithOptions(request *CostCenterQueryRequest
 //
 // 查看成本中心
 //
+// Description:
+//
+// 使用该接口可以查询指定企业的成本中心。
+//
+// 1.  使用该接口需要在应用中开通费用归属配置权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - CostCenterQueryRequest
 //
 // @return CostCenterQueryResponse
@@ -4433,6 +5013,12 @@ func (client *Client) CostCenterQuery(request *CostCenterQueryRequest) (_result 
 // Summary:
 //
 // 保存成本中心
+//
+// Description:
+//
+// 调用本接口前，请完成**费用归属**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435) 完成相关操作。
+//
+//   - 通过 HTTP 方式调用本接口时，需要将`app_key`作为必填参数拼接在请求地址中。`app_key`的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
 //
 // @param request - CostCenterSaveRequest
 //
@@ -4510,6 +5096,12 @@ func (client *Client) CostCenterSaveWithOptions(request *CostCenterSaveRequest, 
 //
 // 保存成本中心
 //
+// Description:
+//
+// 调用本接口前，请完成**费用归属**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435) 完成相关操作。
+//
+//   - 通过 HTTP 方式调用本接口时，需要将`app_key`作为必填参数拼接在请求地址中。`app_key`的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
 // @param request - CostCenterSaveRequest
 //
 // @return CostCenterSaveResponse
@@ -4528,6 +5120,14 @@ func (client *Client) CostCenterSave(request *CostCenterSaveRequest) (_result *C
 // Summary:
 //
 // 创建企业自定义角色
+//
+// Description:
+//
+// - 调用本接口前，请完成**组织人员同步**相关应用权限的申请。若无，请参考：[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)  完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key` 作为**必填参数**拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 完成角色创建后，需要通过[创建企业员工](https://openapi.alibtrip.com/doc/toDocDetail?docId=5020396)接口或[修改企业员工信息](https://openapi.alibtrip.com/doc/toDocDetail?docId=5018703)接口中的`custom_role_code_list`字段进行员工与角色的绑定。
 //
 // @param request - CreateCustomRoleRequest
 //
@@ -4589,6 +5189,14 @@ func (client *Client) CreateCustomRoleWithOptions(request *CreateCustomRoleReque
 //
 // 创建企业自定义角色
 //
+// Description:
+//
+// - 调用本接口前，请完成**组织人员同步**相关应用权限的申请。若无，请参考：[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)  完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key` 作为**必填参数**拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 完成角色创建后，需要通过[创建企业员工](https://openapi.alibtrip.com/doc/toDocDetail?docId=5020396)接口或[修改企业员工信息](https://openapi.alibtrip.com/doc/toDocDetail?docId=5018703)接口中的`custom_role_code_list`字段进行员工与角色的绑定。
+//
 // @param request - CreateCustomRoleRequest
 //
 // @return CreateCustomRoleResponse
@@ -4607,6 +5215,14 @@ func (client *Client) CreateCustomRole(request *CreateCustomRoleRequest) (_resul
 // Summary:
 //
 // 创建子企业
+//
+// Description:
+//
+// - 在调用本接口之前，请先完成**主子账户**功能的开启。若无，请参考：[账户管理](https://www.yuque.com/alibtrip/ql4yyy/fp8el1)完成相关操作。
+//
+// - 在调用本接口前，请先完成**组织人员同步**相关应用权限申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key` 作为**必填参数**拼接在请求地址中。`app_key` 获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
 //
 // @param request - CreateSubCorpRequest
 //
@@ -4672,6 +5288,14 @@ func (client *Client) CreateSubCorpWithOptions(request *CreateSubCorpRequest, he
 //
 // 创建子企业
 //
+// Description:
+//
+// - 在调用本接口之前，请先完成**主子账户**功能的开启。若无，请参考：[账户管理](https://www.yuque.com/alibtrip/ql4yyy/fp8el1)完成相关操作。
+//
+// - 在调用本接口前，请先完成**组织人员同步**相关应用权限申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key` 作为**必填参数**拼接在请求地址中。`app_key` 获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
 // @param request - CreateSubCorpRequest
 //
 // @return CreateSubCorpResponse
@@ -4690,6 +5314,12 @@ func (client *Client) CreateSubCorp(request *CreateSubCorpRequest) (_result *Cre
 // Summary:
 //
 // 删除企业自定义角色
+//
+// Description:
+//
+// - 调用本接口前，请完成组织人员同步相关应用权限的申请。若无，请参考：[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)  完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key` 作为必填参数拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
 //
 // @param request - DeleteCustomRoleRequest
 //
@@ -4747,6 +5377,12 @@ func (client *Client) DeleteCustomRoleWithOptions(request *DeleteCustomRoleReque
 //
 // 删除企业自定义角色
 //
+// Description:
+//
+// - 调用本接口前，请完成组织人员同步相关应用权限的申请。若无，请参考：[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)  完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key` 作为必填参数拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
 // @param request - DeleteCustomRoleRequest
 //
 // @return DeleteCustomRoleResponse
@@ -4765,6 +5401,14 @@ func (client *Client) DeleteCustomRole(request *DeleteCustomRoleRequest) (_resul
 // Summary:
 //
 // 删除企业部门
+//
+// Description:
+//
+// - 调用本接口前，请完成**组织人员同步**相关应用权限的申请。若无，请参见：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435) 完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key`作为必填参数拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 接口频率限制（QPS）：800 次/分钟、40 次/秒。
 //
 // @param request - DeleteDepartmentRequest
 //
@@ -4822,6 +5466,14 @@ func (client *Client) DeleteDepartmentWithOptions(request *DeleteDepartmentReque
 //
 // 删除企业部门
 //
+// Description:
+//
+// - 调用本接口前，请完成**组织人员同步**相关应用权限的申请。若无，请参见：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435) 完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key`作为必填参数拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 接口频率限制（QPS）：800 次/分钟、40 次/秒。
+//
 // @param request - DeleteDepartmentRequest
 //
 // @return DeleteDepartmentResponse
@@ -4840,6 +5492,12 @@ func (client *Client) DeleteDepartment(request *DeleteDepartmentRequest) (_resul
 // Summary:
 //
 // 批量删除企业自定义角色下人员
+//
+// Description:
+//
+// - 调用本接口前，请完成组织人员同步相关应用权限的申请。若无，请参考：[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)  完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key` 作为必填参数拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
 //
 // @param tmpReq - DeleteEmployeesFromCustomRoleRequest
 //
@@ -4907,6 +5565,12 @@ func (client *Client) DeleteEmployeesFromCustomRoleWithOptions(tmpReq *DeleteEmp
 //
 // 批量删除企业自定义角色下人员
 //
+// Description:
+//
+// - 调用本接口前，请完成组织人员同步相关应用权限的申请。若无，请参考：[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)  完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key` 作为必填参数拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
 // @param request - DeleteEmployeesFromCustomRoleRequest
 //
 // @return DeleteEmployeesFromCustomRoleResponse
@@ -4924,7 +5588,15 @@ func (client *Client) DeleteEmployeesFromCustomRole(request *DeleteEmployeesFrom
 
 // Summary:
 //
-// 删除发票抬头适用人员
+// Deletes applicable personnel from an invoice header.
+//
+// Description:
+//
+// Deletes applicable personnel information from an invoice header.
+//
+// - To use this operation, enable the cost attribution configuration permission in your application. For details about the data permission application process, see [API permission application process](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435).
+//
+// - To use this operation, include the enterprise access credential (x-acs-btrip-so-corp-token) in the request header. For details about how to obtain the enterprise access credential, see [Enterprise access credential](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985).
 //
 // @param tmpReq - DeleteInvoiceEntityRequest
 //
@@ -4994,7 +5666,15 @@ func (client *Client) DeleteInvoiceEntityWithOptions(tmpReq *DeleteInvoiceEntity
 
 // Summary:
 //
-// 删除发票抬头适用人员
+// Deletes applicable personnel from an invoice header.
+//
+// Description:
+//
+// Deletes applicable personnel information from an invoice header.
+//
+// - To use this operation, enable the cost attribution configuration permission in your application. For details about the data permission application process, see [API permission application process](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435).
+//
+// - To use this operation, include the enterprise access credential (x-acs-btrip-so-corp-token) in the request header. For details about how to obtain the enterprise access credential, see [Enterprise access credential](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985).
 //
 // @param request - DeleteInvoiceEntityRequest
 //
@@ -5014,6 +5694,12 @@ func (client *Client) DeleteInvoiceEntity(request *DeleteInvoiceEntityRequest) (
 // Summary:
 //
 // 同步外部平台部门信息至商旅内部
+//
+// Description:
+//
+// - 调用本接口前，请完成**组织人员同步**相关应用权限的申请。若无，请参见：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435) 完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key`作为必填参数拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
 //
 // @param tmpReq - DepartmentSaveRequest
 //
@@ -5077,6 +5763,12 @@ func (client *Client) DepartmentSaveWithOptions(tmpReq *DepartmentSaveRequest, h
 //
 // 同步外部平台部门信息至商旅内部
 //
+// Description:
+//
+// - 调用本接口前，请完成**组织人员同步**相关应用权限的申请。若无，请参见：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435) 完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key`作为必填参数拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
 // @param request - DepartmentSaveRequest
 //
 // @return DepartmentSaveResponse
@@ -5095,6 +5787,16 @@ func (client *Client) DepartmentSave(request *DepartmentSaveRequest) (_result *D
 // Summary:
 //
 // 批量申请电子行程单
+//
+// Description:
+//
+// 使用该接口可以批量申请开票。
+//
+// 1. 增值接口需特殊审批，提交权限前请先和商旅客户运营沟通确认。
+//
+// 2. 使用该接口需要在应用中开通增值服务数据权限，具体的数据权限申请流程请查看接口权限申请流程接口权限申请流程。
+//
+// 3. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看企业访问凭证。
 //
 // @param tmpReq - ElectronicItineraryBatchApplyRequest
 //
@@ -5162,6 +5864,16 @@ func (client *Client) ElectronicItineraryBatchApplyWithOptions(tmpReq *Electroni
 //
 // 批量申请电子行程单
 //
+// Description:
+//
+// 使用该接口可以批量申请开票。
+//
+// 1. 增值接口需特殊审批，提交权限前请先和商旅客户运营沟通确认。
+//
+// 2. 使用该接口需要在应用中开通增值服务数据权限，具体的数据权限申请流程请查看接口权限申请流程接口权限申请流程。
+//
+// 3. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看企业访问凭证。
+//
 // @param request - ElectronicItineraryBatchApplyRequest
 //
 // @return ElectronicItineraryBatchApplyResponse
@@ -5180,6 +5892,16 @@ func (client *Client) ElectronicItineraryBatchApply(request *ElectronicItinerary
 // Summary:
 //
 // 获取电子行程单申请结果
+//
+// Description:
+//
+// 使用该接口可以根据批次号查询电子行程单开具结果。
+//
+// 1. 增值接口需特殊审批，提交权限前请先和商旅客户运营沟通确认。
+//
+// 2. 使用该接口需要在应用中开通增值服务数据权限，具体的数据权限申请流程请查看接口权限申请流程接口权限申请流程。
+//
+// 3. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看企业访问凭证。
 //
 // @param request - ElectronicItineraryGetApplyResultRequest
 //
@@ -5237,6 +5959,16 @@ func (client *Client) ElectronicItineraryGetApplyResultWithOptions(request *Elec
 //
 // 获取电子行程单申请结果
 //
+// Description:
+//
+// 使用该接口可以根据批次号查询电子行程单开具结果。
+//
+// 1. 增值接口需特殊审批，提交权限前请先和商旅客户运营沟通确认。
+//
+// 2. 使用该接口需要在应用中开通增值服务数据权限，具体的数据权限申请流程请查看接口权限申请流程接口权限申请流程。
+//
+// 3. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看企业访问凭证。
+//
 // @param request - ElectronicItineraryGetApplyResultRequest
 //
 // @return ElectronicItineraryGetApplyResultResponse
@@ -5255,6 +5987,14 @@ func (client *Client) ElectronicItineraryGetApplyResult(request *ElectronicItine
 // Summary:
 //
 // 增加成本中心人员信息
+//
+// Description:
+//
+// 使用该接口可以增加成本中心的人员信息。
+//
+// 1.  使用该接口需要在应用中开通费用归属配置权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param tmpReq - EntityAddRequest
 //
@@ -5322,6 +6062,14 @@ func (client *Client) EntityAddWithOptions(tmpReq *EntityAddRequest, headers *En
 //
 // 增加成本中心人员信息
 //
+// Description:
+//
+// 使用该接口可以增加成本中心的人员信息。
+//
+// 1.  使用该接口需要在应用中开通费用归属配置权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - EntityAddRequest
 //
 // @return EntityAddResponse
@@ -5340,6 +6088,14 @@ func (client *Client) EntityAdd(request *EntityAddRequest) (_result *EntityAddRe
 // Summary:
 //
 // 删除成本中心人员信息
+//
+// Description:
+//
+// 使用该接口可以删除对应成本中心的人员信息。
+//
+// 1.  使用该接口需要在应用中开通费用归属配置权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param tmpReq - EntityDeleteRequest
 //
@@ -5413,6 +6169,14 @@ func (client *Client) EntityDeleteWithOptions(tmpReq *EntityDeleteRequest, heade
 //
 // 删除成本中心人员信息
 //
+// Description:
+//
+// 使用该接口可以删除对应成本中心的人员信息。
+//
+// 1.  使用该接口需要在应用中开通费用归属配置权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - EntityDeleteRequest
 //
 // @return EntityDeleteResponse
@@ -5431,6 +6195,16 @@ func (client *Client) EntityDelete(request *EntityDeleteRequest) (_result *Entit
 // Summary:
 //
 // 设置成本中心人员信息
+//
+// Description:
+//
+// 该接口已废弃，请使用[新增成本中心可用范围](/#/document/server/EntityAdd?handbookId=development-support)和[删除成本中心可用范围](/#/document/server/EntityDelete?handbookId=development-support)
+//
+// 使用该接口可以更新对应成本中心的人员信息。
+//
+// 1.  使用该接口需要在应用中开通费用归属配置权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param tmpReq - EntitySetRequest
 //
@@ -5498,6 +6272,16 @@ func (client *Client) EntitySetWithOptions(tmpReq *EntitySetRequest, headers *En
 //
 // 设置成本中心人员信息
 //
+// Description:
+//
+// 该接口已废弃，请使用[新增成本中心可用范围](/#/document/server/EntityAdd?handbookId=development-support)和[删除成本中心可用范围](/#/document/server/EntityDelete?handbookId=development-support)
+//
+// 使用该接口可以更新对应成本中心的人员信息。
+//
+// 1.  使用该接口需要在应用中开通费用归属配置权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - EntitySetRequest
 //
 // @return EntitySetResponse
@@ -5516,6 +6300,16 @@ func (client *Client) EntitySet(request *EntitySetRequest) (_result *EntitySetRe
 // Summary:
 //
 // 预估价格查询
+//
+// Description:
+//
+// 使用该接口可以查询预估价格。
+//
+// - 增值接口需特殊审批，提交权限前请先和商旅客户运营沟通确认。
+//
+// - 使用该接口需要在应用中开通增值服务数据权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param request - EstimatedPriceQueryRequest
 //
@@ -5601,6 +6395,16 @@ func (client *Client) EstimatedPriceQueryWithOptions(request *EstimatedPriceQuer
 //
 // 预估价格查询
 //
+// Description:
+//
+// 使用该接口可以查询预估价格。
+//
+// - 增值接口需特殊审批，提交权限前请先和商旅客户运营沟通确认。
+//
+// - 使用该接口需要在应用中开通增值服务数据权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - EstimatedPriceQueryRequest
 //
 // @return EstimatedPriceQueryResponse
@@ -5618,17 +6422,17 @@ func (client *Client) EstimatedPriceQuery(request *EstimatedPriceQueryRequest) (
 
 // Summary:
 //
-// 预估价格查询v2.0
+// Queries estimated prices (version 2.0).
 //
 // Description:
 //
-// 使用该接口可以查询预估价格。
+// Queries estimated prices.
 //
-// 增值接口需特殊审批，提交权限前请先和商旅客户运营沟通确认。
+// This is a value-added operation that requires special approval. Contact the business travel customer operations team before submitting a permission request.
 //
-// 使用该接口需要在应用中开通增值服务数据权限，具体的数据权限申请流程请查看接口权限申请流程接口权限申请流程。
+// To use this operation, enable the value-added service data permission in your application. For more information about the data permission application process, see the API permission application process.
 //
-// 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看企业访问凭证企业访问凭证。
+// To use this operation, include the enterprise call credential (x-acs-btrip-so-corp-token) in the request header. For more information about how to obtain the enterprise call credential, see Enterprise Access Credential.
 //
 // @param request - EstimatedPriceQueryV2Request
 //
@@ -5704,17 +6508,17 @@ func (client *Client) EstimatedPriceQueryV2WithOptions(request *EstimatedPriceQu
 
 // Summary:
 //
-// 预估价格查询v2.0
+// Queries estimated prices (version 2.0).
 //
 // Description:
 //
-// 使用该接口可以查询预估价格。
+// Queries estimated prices.
 //
-// 增值接口需特殊审批，提交权限前请先和商旅客户运营沟通确认。
+// This is a value-added operation that requires special approval. Contact the business travel customer operations team before submitting a permission request.
 //
-// 使用该接口需要在应用中开通增值服务数据权限，具体的数据权限申请流程请查看接口权限申请流程接口权限申请流程。
+// To use this operation, enable the value-added service data permission in your application. For more information about the data permission application process, see the API permission application process.
 //
-// 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看企业访问凭证企业访问凭证。
+// To use this operation, include the enterprise call credential (x-acs-btrip-so-corp-token) in the request header. For more information about how to obtain the enterprise call credential, see Enterprise Access Credential.
 //
 // @param request - EstimatedPriceQueryV2Request
 //
@@ -5734,6 +6538,12 @@ func (client *Client) EstimatedPriceQueryV2(request *EstimatedPriceQueryV2Reques
 // Summary:
 //
 // 超标审批结果同步
+//
+// Description:
+//
+// 调用本接口前，完成**超标审批**权限的申请，若无，请参见：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435) 完成相关操作。
+//
+//   - 通过 HTTP 形式调用本接口时，需要将 `app_key` 作为必填参数拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
 //
 // @param request - ExceedApplySyncRequest
 //
@@ -5811,6 +6621,12 @@ func (client *Client) ExceedApplySyncWithOptions(request *ExceedApplySyncRequest
 //
 // 超标审批结果同步
 //
+// Description:
+//
+// 调用本接口前，完成**超标审批**权限的申请，若无，请参见：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435) 完成相关操作。
+//
+//   - 通过 HTTP 形式调用本接口时，需要将 `app_key` 作为必填参数拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
 // @param request - ExceedApplySyncRequest
 //
 // @return ExceedApplySyncResponse
@@ -5829,6 +6645,12 @@ func (client *Client) ExceedApplySync(request *ExceedApplySyncRequest) (_result 
 // Summary:
 //
 // 添加外部出行人与证件信息
+//
+// Description:
+//
+// - 调用本接口前，请完成**组织人员同步**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435) 完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key` 作为必填参数拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
 //
 // @param tmpReq - ExternalUserAddRequest
 //
@@ -5920,6 +6742,12 @@ func (client *Client) ExternalUserAddWithOptions(tmpReq *ExternalUserAddRequest,
 //
 // 添加外部出行人与证件信息
 //
+// Description:
+//
+// - 调用本接口前，请完成**组织人员同步**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435) 完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key` 作为必填参数拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
 // @param request - ExternalUserAddRequest
 //
 // @return ExternalUserAddResponse
@@ -5938,6 +6766,12 @@ func (client *Client) ExternalUserAdd(request *ExternalUserAddRequest) (_result 
 // Summary:
 //
 // 删除外部出行人
+//
+// Description:
+//
+// - 调用本接口前，请完成**组织人员同步**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435) 完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key` 作为必填参数拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
 //
 // @param headers - ExternalUserDeleteHeaders
 //
@@ -5981,6 +6815,12 @@ func (client *Client) ExternalUserDeleteWithOptions(externalUserId *string, head
 //
 // 删除外部出行人
 //
+// Description:
+//
+// - 调用本接口前，请完成**组织人员同步**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435) 完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key` 作为必填参数拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
 // @return ExternalUserDeleteResponse
 func (client *Client) ExternalUserDelete(externalUserId *string) (_result *ExternalUserDeleteResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
@@ -5997,6 +6837,12 @@ func (client *Client) ExternalUserDelete(externalUserId *string) (_result *Exter
 // Summary:
 //
 // 查询外部出行人
+//
+// Description:
+//
+// - 调用本接口前，请完成**组织人员同步**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435) 完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key` 作为必填参数拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
 //
 // @param headers - ExternalUserQueryHeaders
 //
@@ -6040,6 +6886,12 @@ func (client *Client) ExternalUserQueryWithOptions(externalUserId *string, heade
 //
 // 查询外部出行人
 //
+// Description:
+//
+// - 调用本接口前，请完成**组织人员同步**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435) 完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key` 作为必填参数拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
 // @return ExternalUserQueryResponse
 func (client *Client) ExternalUserQuery(externalUserId *string) (_result *ExternalUserQueryResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
@@ -6056,6 +6908,12 @@ func (client *Client) ExternalUserQuery(externalUserId *string) (_result *Extern
 // Summary:
 //
 // 修改外部出行人与证件信息
+//
+// Description:
+//
+// - 调用本接口前，请完成**组织人员同步**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435) 完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key` 作为必填参数拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
 //
 // @param tmpReq - ExternalUserUpdateRequest
 //
@@ -6139,6 +6997,12 @@ func (client *Client) ExternalUserUpdateWithOptions(externalUserId *string, tmpR
 //
 // 修改外部出行人与证件信息
 //
+// Description:
+//
+// - 调用本接口前，请完成**组织人员同步**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435) 完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key` 作为必填参数拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
 // @param request - ExternalUserUpdateRequest
 //
 // @return ExternalUserUpdateResponse
@@ -6157,6 +7021,16 @@ func (client *Client) ExternalUserUpdate(externalUserId *string, request *Extern
 // Summary:
 //
 // 查询机票记账数据
+//
+// Description:
+//
+// - 调用本接口前，需要在应用中开通**商旅账单数据**权限。权限获取流程请参见：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 通过 HTTTP 方式调用本接口时，需要将 `app_key` 作为**必填参数**拼接在请求地址中。app_key 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 查询时，记账数据的起止时间间隔规则为：1小时 ≤记账截止时间 - 记账起始时间 ≤ 24小时。
+//
+// - 记账数据的更新时机为当前时间 + 1小时。
 //
 // @param request - FlightBillSettlementQueryRequest
 //
@@ -6254,6 +7128,16 @@ func (client *Client) FlightBillSettlementQueryWithOptions(request *FlightBillSe
 //
 // 查询机票记账数据
 //
+// Description:
+//
+// - 调用本接口前，需要在应用中开通**商旅账单数据**权限。权限获取流程请参见：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 通过 HTTTP 方式调用本接口时，需要将 `app_key` 作为**必填参数**拼接在请求地址中。app_key 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 查询时，记账数据的起止时间间隔规则为：1小时 ≤记账截止时间 - 记账起始时间 ≤ 24小时。
+//
+// - 记账数据的更新时机为当前时间 + 1小时。
+//
 // @param request - FlightBillSettlementQueryRequest
 //
 // @return FlightBillSettlementQueryResponse
@@ -6272,6 +7156,14 @@ func (client *Client) FlightBillSettlementQuery(request *FlightBillSettlementQue
 // Summary:
 //
 // 航班订单取消
+//
+// Description:
+//
+// 使用该接口可以航班订单取消。
+//
+// - 使用该接口需要在应用中开通机票服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param request - FlightCancelOrderRequest
 //
@@ -6329,6 +7221,14 @@ func (client *Client) FlightCancelOrderWithOptions(request *FlightCancelOrderReq
 //
 // 航班订单取消
 //
+// Description:
+//
+// 使用该接口可以航班订单取消。
+//
+// - 使用该接口需要在应用中开通机票服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - FlightCancelOrderRequest
 //
 // @return FlightCancelOrderResponse
@@ -6347,6 +7247,14 @@ func (client *Client) FlightCancelOrder(request *FlightCancelOrderRequest) (_res
 // Summary:
 //
 // 机票订单取消
+//
+// Description:
+//
+// 使用该接口可以“机票订单取消”。
+//
+// 1. 使用该接口需要在应用中开通“接口名称”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - FlightCancelOrderV2Request
 //
@@ -6412,6 +7320,14 @@ func (client *Client) FlightCancelOrderV2WithOptions(request *FlightCancelOrderV
 //
 // 机票订单取消
 //
+// Description:
+//
+// 使用该接口可以“机票订单取消”。
+//
+// 1. 使用该接口需要在应用中开通“接口名称”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - FlightCancelOrderV2Request
 //
 // @return FlightCancelOrderV2Response
@@ -6430,6 +7346,14 @@ func (client *Client) FlightCancelOrderV2(request *FlightCancelOrderV2Request) (
 // Summary:
 //
 // 航班订单创建
+//
+// Description:
+//
+// 使用该接口可以航班订单创建。
+//
+// - 使用该接口需要在应用中开通机票服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param tmpReq - FlightCreateOrderRequest
 //
@@ -6573,6 +7497,14 @@ func (client *Client) FlightCreateOrderWithOptions(tmpReq *FlightCreateOrderRequ
 //
 // 航班订单创建
 //
+// Description:
+//
+// 使用该接口可以航班订单创建。
+//
+// - 使用该接口需要在应用中开通机票服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - FlightCreateOrderRequest
 //
 // @return FlightCreateOrderResponse
@@ -6591,6 +7523,14 @@ func (client *Client) FlightCreateOrder(request *FlightCreateOrderRequest) (_res
 // Summary:
 //
 // 机票订单创建
+//
+// Description:
+//
+// 使用该接口可以“机票订单创建”。
+//
+// 1. 使用该接口需要在应用中开通“接口名称”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param tmpReq - FlightCreateOrderV2Request
 //
@@ -6694,6 +7634,14 @@ func (client *Client) FlightCreateOrderV2WithOptions(tmpReq *FlightCreateOrderV2
 //
 // 机票订单创建
 //
+// Description:
+//
+// 使用该接口可以“机票订单创建”。
+//
+// 1. 使用该接口需要在应用中开通“接口名称”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - FlightCreateOrderV2Request
 //
 // @return FlightCreateOrderV2Response
@@ -6712,6 +7660,14 @@ func (client *Client) FlightCreateOrderV2(request *FlightCreateOrderV2Request) (
 // Summary:
 //
 // 查询飞机超标审批详情
+//
+// Description:
+//
+// 使用该接口可以获取查询机票超标审批单列表。
+//
+// 1.  使用该接口需要在应用中开通超标审批权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - FlightExceedApplyQueryRequest
 //
@@ -6773,6 +7729,14 @@ func (client *Client) FlightExceedApplyQueryWithOptions(request *FlightExceedApp
 //
 // 查询飞机超标审批详情
 //
+// Description:
+//
+// 使用该接口可以获取查询机票超标审批单列表。
+//
+// 1.  使用该接口需要在应用中开通超标审批权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - FlightExceedApplyQueryRequest
 //
 // @return FlightExceedApplyQueryResponse
@@ -6791,6 +7755,16 @@ func (client *Client) FlightExceedApplyQuery(request *FlightExceedApplyQueryRequ
 // Summary:
 //
 // 查询机票行程单扫描件
+//
+// Description:
+//
+// 使用该接口可以查询机票行程单明细数据。
+//
+// 1. 增值接口需特殊审批，提交权限前请先和商旅客户运营沟通确认。
+//
+// 2. 使用该接口需要在应用中开通增值服务数据权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// 3. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param request - FlightItineraryScanQueryRequest
 //
@@ -6876,6 +7850,16 @@ func (client *Client) FlightItineraryScanQueryWithOptions(request *FlightItinera
 //
 // 查询机票行程单扫描件
 //
+// Description:
+//
+// 使用该接口可以查询机票行程单明细数据。
+//
+// 1. 增值接口需特殊审批，提交权限前请先和商旅客户运营沟通确认。
+//
+// 2. 使用该接口需要在应用中开通增值服务数据权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// 3. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - FlightItineraryScanQueryRequest
 //
 // @return FlightItineraryScanQueryResponse
@@ -6894,6 +7878,14 @@ func (client *Client) FlightItineraryScanQuery(request *FlightItineraryScanQuery
 // Summary:
 //
 // 航班列表搜索
+//
+// Description:
+//
+// 使用该接口可以进行航班列表搜索。
+//
+// - 使用该接口需要在应用中开通机票航班权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param request - FlightListingSearchRequest
 //
@@ -6967,6 +7959,14 @@ func (client *Client) FlightListingSearchWithOptions(request *FlightListingSearc
 //
 // 航班列表搜索
 //
+// Description:
+//
+// 使用该接口可以进行航班列表搜索。
+//
+// - 使用该接口需要在应用中开通机票航班权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - FlightListingSearchRequest
 //
 // @return FlightListingSearchResponse
@@ -6985,6 +7985,14 @@ func (client *Client) FlightListingSearch(request *FlightListingSearchRequest) (
 // Summary:
 //
 // 航班列表搜索
+//
+// Description:
+//
+// 使用该接口可以进行“航班列表搜索”。
+//
+// - 使用该接口需要在应用中开通“机票服务”权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3769985)。
 //
 // @param tmpReq - FlightListingSearchV2Request
 //
@@ -7092,6 +8100,14 @@ func (client *Client) FlightListingSearchV2WithOptions(tmpReq *FlightListingSear
 //
 // 航班列表搜索
 //
+// Description:
+//
+// 使用该接口可以进行“航班列表搜索”。
+//
+// - 使用该接口需要在应用中开通“机票服务”权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3769985)。
+//
 // @param request - FlightListingSearchV2Request
 //
 // @return FlightListingSearchV2Response
@@ -7110,6 +8126,14 @@ func (client *Client) FlightListingSearchV2(request *FlightListingSearchV2Reques
 // Summary:
 //
 // 机票改签申请
+//
+// Description:
+//
+// 使用该接口可以“机票改签申请”。
+//
+// 1. 使用该接口需要在应用中开通“接口名称”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param tmpReq - FlightModifyApplyV2Request
 //
@@ -7213,6 +8237,14 @@ func (client *Client) FlightModifyApplyV2WithOptions(tmpReq *FlightModifyApplyV2
 //
 // 机票改签申请
 //
+// Description:
+//
+// 使用该接口可以“机票改签申请”。
+//
+// 1. 使用该接口需要在应用中开通“接口名称”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - FlightModifyApplyV2Request
 //
 // @return FlightModifyApplyV2Response
@@ -7231,6 +8263,14 @@ func (client *Client) FlightModifyApplyV2(request *FlightModifyApplyV2Request) (
 // Summary:
 //
 // 机票改签取消
+//
+// Description:
+//
+// 使用该接口可以“机票改签取消”。
+//
+// 1. 使用该接口需要在应用中开通“接口名称”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - FlightModifyCancelV2Request
 //
@@ -7304,6 +8344,14 @@ func (client *Client) FlightModifyCancelV2WithOptions(request *FlightModifyCance
 //
 // 机票改签取消
 //
+// Description:
+//
+// 使用该接口可以“机票改签取消”。
+//
+// 1. 使用该接口需要在应用中开通“接口名称”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - FlightModifyCancelV2Request
 //
 // @return FlightModifyCancelV2Response
@@ -7322,6 +8370,14 @@ func (client *Client) FlightModifyCancelV2(request *FlightModifyCancelV2Request)
 // Summary:
 //
 // 机票改签列表搜索
+//
+// Description:
+//
+// 使用该接口可以“机票改签列表搜索”。
+//
+// 1. 使用该接口需要在应用中开通“机票服务”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param tmpReq - FlightModifyListingSearchV2Request
 //
@@ -7441,6 +8497,14 @@ func (client *Client) FlightModifyListingSearchV2WithOptions(tmpReq *FlightModif
 //
 // 机票改签列表搜索
 //
+// Description:
+//
+// 使用该接口可以“机票改签列表搜索”。
+//
+// 1. 使用该接口需要在应用中开通“机票服务”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - FlightModifyListingSearchV2Request
 //
 // @return FlightModifyListingSearchV2Response
@@ -7459,6 +8523,14 @@ func (client *Client) FlightModifyListingSearchV2(request *FlightModifyListingSe
 // Summary:
 //
 // 机票改签详情
+//
+// Description:
+//
+// 使用该接口可以查询“机票改签详情”。
+//
+// 1. 使用该接口需要在应用中开通“机票服务”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - FlightModifyOrderDetailV2Request
 //
@@ -7536,6 +8608,14 @@ func (client *Client) FlightModifyOrderDetailV2WithOptions(request *FlightModify
 //
 // 机票改签详情
 //
+// Description:
+//
+// 使用该接口可以查询“机票改签详情”。
+//
+// 1. 使用该接口需要在应用中开通“机票服务”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - FlightModifyOrderDetailV2Request
 //
 // @return FlightModifyOrderDetailV2Response
@@ -7554,6 +8634,14 @@ func (client *Client) FlightModifyOrderDetailV2(request *FlightModifyOrderDetail
 // Summary:
 //
 // 机票改签报价搜索
+//
+// Description:
+//
+// 使用该接口可以“机票改签报价搜索”。
+//
+// 1. 使用该接口需要在应用中开通“机票服务”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param tmpReq - FlightModifyOtaSearchV2Request
 //
@@ -7661,6 +8749,14 @@ func (client *Client) FlightModifyOtaSearchV2WithOptions(tmpReq *FlightModifyOta
 //
 // 机票改签报价搜索
 //
+// Description:
+//
+// 使用该接口可以“机票改签报价搜索”。
+//
+// 1. 使用该接口需要在应用中开通“机票服务”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - FlightModifyOtaSearchV2Request
 //
 // @return FlightModifyOtaSearchV2Response
@@ -7679,6 +8775,14 @@ func (client *Client) FlightModifyOtaSearchV2(request *FlightModifyOtaSearchV2Re
 // Summary:
 //
 // 机票改签支付
+//
+// Description:
+//
+// 使用该接口可以“机票改签支付”。
+//
+// 1. 使用该接口需要在应用中开通“接口名称”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param tmpReq - FlightModifyPayV2Request
 //
@@ -7766,6 +8870,14 @@ func (client *Client) FlightModifyPayV2WithOptions(tmpReq *FlightModifyPayV2Requ
 //
 // 机票改签支付
 //
+// Description:
+//
+// 使用该接口可以“机票改签支付”。
+//
+// 1. 使用该接口需要在应用中开通“接口名称”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - FlightModifyPayV2Request
 //
 // @return FlightModifyPayV2Response
@@ -7784,6 +8896,14 @@ func (client *Client) FlightModifyPayV2(request *FlightModifyPayV2Request) (_res
 // Summary:
 //
 // 航班订单明细信息
+//
+// Description:
+//
+// 使用该接口可以查询航班订单明细信息。
+//
+// - 使用该接口需要在应用中开通机票服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param request - FlightOrderDetailInfoRequest
 //
@@ -7841,6 +8961,14 @@ func (client *Client) FlightOrderDetailInfoWithOptions(request *FlightOrderDetai
 //
 // 航班订单明细信息
 //
+// Description:
+//
+// 使用该接口可以查询航班订单明细信息。
+//
+// - 使用该接口需要在应用中开通机票服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - FlightOrderDetailInfoRequest
 //
 // @return FlightOrderDetailInfoResponse
@@ -7859,6 +8987,14 @@ func (client *Client) FlightOrderDetailInfo(request *FlightOrderDetailInfoReques
 // Summary:
 //
 // 机票订单详情
+//
+// Description:
+//
+// 使用该接口可以“机票订单详情”。
+//
+// 1. 使用该接口需要在应用中开通“接口名称”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - FlightOrderDetailV2Request
 //
@@ -7924,6 +9060,14 @@ func (client *Client) FlightOrderDetailV2WithOptions(request *FlightOrderDetailV
 //
 // 机票订单详情
 //
+// Description:
+//
+// 使用该接口可以“机票订单详情”。
+//
+// 1. 使用该接口需要在应用中开通“接口名称”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - FlightOrderDetailV2Request
 //
 // @return FlightOrderDetailV2Response
@@ -7942,6 +9086,14 @@ func (client *Client) FlightOrderDetailV2(request *FlightOrderDetailV2Request) (
 // Summary:
 //
 // 国内查询机票订单列表
+//
+// Description:
+//
+// 使用该接口可以查询指定企业的机票订单列表。
+//
+// 1. 使用该接口需要在应用中开通商旅订单数据权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - FlightOrderListQueryRequest
 //
@@ -8039,6 +9191,14 @@ func (client *Client) FlightOrderListQueryWithOptions(request *FlightOrderListQu
 //
 // 国内查询机票订单列表
 //
+// Description:
+//
+// 使用该接口可以查询指定企业的机票订单列表。
+//
+// 1. 使用该接口需要在应用中开通商旅订单数据权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - FlightOrderListQueryRequest
 //
 // @return FlightOrderListQueryResponse
@@ -8057,6 +9217,14 @@ func (client *Client) FlightOrderListQuery(request *FlightOrderListQueryRequest)
 // Summary:
 //
 // 国内机票订单列表查询
+//
+// Description:
+//
+// 使用该接口可以查询指定企业的机票订单列表，（支持单程、中转、往返航班）。
+//
+// 1. 使用该接口需要在应用中开通商旅开放平台订单&客票权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// 1. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问地址](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param tmpReq - FlightOrderListQueryV2Request
 //
@@ -8176,6 +9344,14 @@ func (client *Client) FlightOrderListQueryV2WithOptions(tmpReq *FlightOrderListQ
 //
 // 国内机票订单列表查询
 //
+// Description:
+//
+// 使用该接口可以查询指定企业的机票订单列表，（支持单程、中转、往返航班）。
+//
+// 1. 使用该接口需要在应用中开通商旅开放平台订单&客票权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// 1. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问地址](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - FlightOrderListQueryV2Request
 //
 // @return FlightOrderListQueryV2Response
@@ -8194,6 +9370,14 @@ func (client *Client) FlightOrderListQueryV2(request *FlightOrderListQueryV2Requ
 // Summary:
 //
 // 国内查询机票订单详情（含票信息）
+//
+// Description:
+//
+// 使用该接口可以查询指定企业的机票订单详情。
+//
+// 1. 使用该接口需要在应用中开通商旅订单数据权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - FlightOrderQueryRequest
 //
@@ -8255,6 +9439,14 @@ func (client *Client) FlightOrderQueryWithOptions(request *FlightOrderQueryReque
 //
 // 国内查询机票订单详情（含票信息）
 //
+// Description:
+//
+// 使用该接口可以查询指定企业的机票订单详情。
+//
+// 1. 使用该接口需要在应用中开通商旅订单数据权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - FlightOrderQueryRequest
 //
 // @return FlightOrderQueryResponse
@@ -8273,6 +9465,14 @@ func (client *Client) FlightOrderQuery(request *FlightOrderQueryRequest) (_resul
 // Summary:
 //
 // 查询退改规则行李额
+//
+// Description:
+//
+// 使用该接口可以“查询退改规则行李额”。
+//
+// 1. 使用该接口需要在应用中开通“机票服务”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - FlightOtaItemDetailRequest
 //
@@ -8342,6 +9542,14 @@ func (client *Client) FlightOtaItemDetailWithOptions(request *FlightOtaItemDetai
 //
 // 查询退改规则行李额
 //
+// Description:
+//
+// 使用该接口可以“查询退改规则行李额”。
+//
+// 1. 使用该接口需要在应用中开通“机票服务”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - FlightOtaItemDetailRequest
 //
 // @return FlightOtaItemDetailResponse
@@ -8360,6 +9568,14 @@ func (client *Client) FlightOtaItemDetail(request *FlightOtaItemDetailRequest) (
 // Summary:
 //
 // 航班最低价搜索
+//
+// Description:
+//
+// 使用该接口可以进行航班最低价搜索。
+//
+// - 使用该接口需要在应用中开通机票航班权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param request - FlightOtaSearchRequest
 //
@@ -8441,6 +9657,14 @@ func (client *Client) FlightOtaSearchWithOptions(request *FlightOtaSearchRequest
 //
 // 航班最低价搜索
 //
+// Description:
+//
+// 使用该接口可以进行航班最低价搜索。
+//
+// - 使用该接口需要在应用中开通机票航班权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - FlightOtaSearchRequest
 //
 // @return FlightOtaSearchResponse
@@ -8459,6 +9683,14 @@ func (client *Client) FlightOtaSearch(request *FlightOtaSearchRequest) (_result 
 // Summary:
 //
 // 单航班报价搜索
+//
+// Description:
+//
+// 使用该接口可以“单航班报价搜索”。
+//
+// 1. 使用该接口需要在应用中开通“机票服务”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param tmpReq - FlightOtaSearchV2Request
 //
@@ -8550,6 +9782,14 @@ func (client *Client) FlightOtaSearchV2WithOptions(tmpReq *FlightOtaSearchV2Requ
 //
 // 单航班报价搜索
 //
+// Description:
+//
+// 使用该接口可以“单航班报价搜索”。
+//
+// 1. 使用该接口需要在应用中开通“机票服务”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - FlightOtaSearchV2Request
 //
 // @return FlightOtaSearchV2Response
@@ -8568,6 +9808,14 @@ func (client *Client) FlightOtaSearchV2(request *FlightOtaSearchV2Request) (_res
 // Summary:
 //
 // 航班订单支付
+//
+// Description:
+//
+// 使用该接口可以航班订单支付。
+//
+// - 使用该接口需要在应用中开通机票服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param tmpReq - FlightPayOrderRequest
 //
@@ -8647,6 +9895,14 @@ func (client *Client) FlightPayOrderWithOptions(tmpReq *FlightPayOrderRequest, h
 //
 // 航班订单支付
 //
+// Description:
+//
+// 使用该接口可以航班订单支付。
+//
+// - 使用该接口需要在应用中开通机票服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - FlightPayOrderRequest
 //
 // @return FlightPayOrderResponse
@@ -8665,6 +9921,14 @@ func (client *Client) FlightPayOrder(request *FlightPayOrderRequest) (_result *F
 // Summary:
 //
 // 机票订单支付
+//
+// Description:
+//
+// 使用该接口可以“机票订单支付”。
+//
+// 1. 使用该接口需要在应用中开通“接口名称”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - FlightPayOrderV2Request
 //
@@ -8738,6 +10002,14 @@ func (client *Client) FlightPayOrderV2WithOptions(request *FlightPayOrderV2Reque
 //
 // 机票订单支付
 //
+// Description:
+//
+// 使用该接口可以“机票订单支付”。
+//
+// 1. 使用该接口需要在应用中开通“接口名称”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - FlightPayOrderV2Request
 //
 // @return FlightPayOrderV2Response
@@ -8756,6 +10028,14 @@ func (client *Client) FlightPayOrderV2(request *FlightPayOrderV2Request) (_resul
 // Summary:
 //
 // 航班退票申请
+//
+// Description:
+//
+// 使用该接口可以查询商旅机票退票申请
+//
+// 1. 使用该接口需要在应用中开通“接口名称”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param tmpReq - FlightRefundApplyRequest
 //
@@ -8879,6 +10159,14 @@ func (client *Client) FlightRefundApplyWithOptions(tmpReq *FlightRefundApplyRequ
 //
 // 航班退票申请
 //
+// Description:
+//
+// 使用该接口可以查询商旅机票退票申请
+//
+// 1. 使用该接口需要在应用中开通“接口名称”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - FlightRefundApplyRequest
 //
 // @return FlightRefundApplyResponse
@@ -8897,6 +10185,14 @@ func (client *Client) FlightRefundApply(request *FlightRefundApplyRequest) (_res
 // Summary:
 //
 // 机票退票申请
+//
+// Description:
+//
+// 使用该接口可以“机票退票申请”。
+//
+// 1. 使用该接口需要在应用中开通“接口名称”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param tmpReq - FlightRefundApplyV2Request
 //
@@ -9008,6 +10304,14 @@ func (client *Client) FlightRefundApplyV2WithOptions(tmpReq *FlightRefundApplyV2
 //
 // 机票退票申请
 //
+// Description:
+//
+// 使用该接口可以“机票退票申请”。
+//
+// 1. 使用该接口需要在应用中开通“接口名称”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - FlightRefundApplyV2Request
 //
 // @return FlightRefundApplyV2Response
@@ -9026,6 +10330,14 @@ func (client *Client) FlightRefundApplyV2(request *FlightRefundApplyV2Request) (
 // Summary:
 //
 // 航班退票详情
+//
+// Description:
+//
+// 使用该接口可以查询航班退票详情。
+//
+// - 使用该接口需要在应用中开通机票服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param request - FlightRefundDetailRequest
 //
@@ -9087,6 +10399,14 @@ func (client *Client) FlightRefundDetailWithOptions(request *FlightRefundDetailR
 //
 // 航班退票详情
 //
+// Description:
+//
+// 使用该接口可以查询航班退票详情。
+//
+// - 使用该接口需要在应用中开通机票服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - FlightRefundDetailRequest
 //
 // @return FlightRefundDetailResponse
@@ -9105,6 +10425,14 @@ func (client *Client) FlightRefundDetail(request *FlightRefundDetailRequest) (_r
 // Summary:
 //
 // 机票退票详情
+//
+// Description:
+//
+// 使用该接口可以查询“机票退票详情”。
+//
+// 1. 使用该接口需要在应用中开通“机票服务”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - FlightRefundDetailV2Request
 //
@@ -9178,6 +10506,14 @@ func (client *Client) FlightRefundDetailV2WithOptions(request *FlightRefundDetai
 //
 // 机票退票详情
 //
+// Description:
+//
+// 使用该接口可以查询“机票退票详情”。
+//
+// 1. 使用该接口需要在应用中开通“机票服务”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - FlightRefundDetailV2Request
 //
 // @return FlightRefundDetailV2Response
@@ -9196,6 +10532,14 @@ func (client *Client) FlightRefundDetailV2(request *FlightRefundDetailV2Request)
 // Summary:
 //
 // 机票退票预计算
+//
+// Description:
+//
+// 使用该接口可以机票退票预计算。
+//
+// - 使用该接口需要在应用中开通机票服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param tmpReq - FlightRefundPreCalRequest
 //
@@ -9267,6 +10611,14 @@ func (client *Client) FlightRefundPreCalWithOptions(tmpReq *FlightRefundPreCalRe
 //
 // 机票退票预计算
 //
+// Description:
+//
+// 使用该接口可以机票退票预计算。
+//
+// - 使用该接口需要在应用中开通机票服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - FlightRefundPreCalRequest
 //
 // @return FlightRefundPreCalResponse
@@ -9285,6 +10637,14 @@ func (client *Client) FlightRefundPreCal(request *FlightRefundPreCalRequest) (_r
 // Summary:
 //
 // 机票退票费用预计算
+//
+// Description:
+//
+// 使用该接口可以“机票退票费用预计算”。
+//
+// 1. 使用该接口需要在应用中开通“接口名称”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param tmpReq - FlightRefundPreCalV2Request
 //
@@ -9376,6 +10736,14 @@ func (client *Client) FlightRefundPreCalV2WithOptions(tmpReq *FlightRefundPreCal
 //
 // 机票退票费用预计算
 //
+// Description:
+//
+// 使用该接口可以“机票退票费用预计算”。
+//
+// 1. 使用该接口需要在应用中开通“接口名称”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - FlightRefundPreCalV2Request
 //
 // @return FlightRefundPreCalV2Response
@@ -9394,6 +10762,14 @@ func (client *Client) FlightRefundPreCalV2(request *FlightRefundPreCalV2Request)
 // Summary:
 //
 // 航班列表搜索
+//
+// Description:
+//
+// 使用该接口可以航班列表搜索。
+//
+// - 使用该接口需要在应用中开通机票航班权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param request - FlightSearchListRequest
 //
@@ -9503,6 +10879,14 @@ func (client *Client) FlightSearchListWithOptions(request *FlightSearchListReque
 //
 // 航班列表搜索
 //
+// Description:
+//
+// 使用该接口可以航班列表搜索。
+//
+// - 使用该接口需要在应用中开通机票航班权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - FlightSearchListRequest
 //
 // @return FlightSearchListResponse
@@ -9521,6 +10905,16 @@ func (client *Client) FlightSearchList(request *FlightSearchListRequest) (_resul
 // Summary:
 //
 // 查询福豆记账数据
+//
+// Description:
+//
+// - 调用本接口前，需要在应用中开通**商旅账单数据**权限。权限获取流程请参见：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 通过 HTTTP 方式调用本接口时，需要将 `app_key` 作为**必填参数**拼接在请求地址中。app_key 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 查询时，记账数据的起止时间间隔规则为：1小时 ≤记账截止时间 - 记账起始时间 ≤ 24小时。
+//
+// - 记账数据的更新时机为当前时间 + 1小时。
 //
 // @param request - FuPointBillSettlementQueryRequest
 //
@@ -9622,6 +11016,16 @@ func (client *Client) FuPointBillSettlementQueryWithOptions(request *FuPointBill
 //
 // 查询福豆记账数据
 //
+// Description:
+//
+// - 调用本接口前，需要在应用中开通**商旅账单数据**权限。权限获取流程请参见：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 通过 HTTTP 方式调用本接口时，需要将 `app_key` 作为**必填参数**拼接在请求地址中。app_key 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 查询时，记账数据的起止时间间隔规则为：1小时 ≤记账截止时间 - 记账起始时间 ≤ 24小时。
+//
+// - 记账数据的更新时机为当前时间 + 1小时。
+//
 // @param request - FuPointBillSettlementQueryRequest
 //
 // @return FuPointBillSettlementQueryResponse
@@ -9640,6 +11044,16 @@ func (client *Client) FuPointBillSettlementQuery(request *FuPointBillSettlementQ
 // Summary:
 //
 // 换取GroupCorpToken接口
+//
+// Description:
+//
+// - 建议您通过**中控服务统一处理**或**单位时间单一刷新**亦或通过**单机 Job 任务**的方式进行凭证获取，详细说明请参见：[凭证获取指南](https://openapi.alibtrip.com/doc/toDocDetail?docId=3917854)。
+//
+// - token 的有效时长可以从 `expire` 字段中获取，初始值为 2 小时（7200000ms）。为防止 token 失效，建议刷新间隔控制为：**5 分钟 ≤ 间隔 ≤ 2 小时**。在此间隔内刷新，上一次请求获取的 token 仍然有效。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key` 及 `app_secret` 作为**必填参数**传入。二者的获取方式请参见：[应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 原请求参数中的 `x-acs-btrip-access-token` 参数现**已作废**，请使用 `app_secret`。
 //
 // @param request - GroupCorpTokenRequest
 //
@@ -9705,6 +11119,16 @@ func (client *Client) GroupCorpTokenWithOptions(request *GroupCorpTokenRequest, 
 //
 // 换取GroupCorpToken接口
 //
+// Description:
+//
+// - 建议您通过**中控服务统一处理**或**单位时间单一刷新**亦或通过**单机 Job 任务**的方式进行凭证获取，详细说明请参见：[凭证获取指南](https://openapi.alibtrip.com/doc/toDocDetail?docId=3917854)。
+//
+// - token 的有效时长可以从 `expire` 字段中获取，初始值为 2 小时（7200000ms）。为防止 token 失效，建议刷新间隔控制为：**5 分钟 ≤ 间隔 ≤ 2 小时**。在此间隔内刷新，上一次请求获取的 token 仍然有效。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key` 及 `app_secret` 作为**必填参数**传入。二者的获取方式请参见：[应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 原请求参数中的 `x-acs-btrip-access-token` 参数现**已作废**，请使用 `app_secret`。
+//
 // @param request - GroupCorpTokenRequest
 //
 // @return GroupCorpTokenResponse
@@ -9723,6 +11147,12 @@ func (client *Client) GroupCorpToken(request *GroupCorpTokenRequest) (_result *G
 // Summary:
 //
 // 集团部门同步
+//
+// Description:
+//
+// - 调用本接口前，请先完成部门人员同步相关应用权限申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key` 作为必填参数拼接在请求地址中。`app_key` 获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
 //
 // @param tmpReq - GroupDepartSaveRequest
 //
@@ -9810,6 +11240,12 @@ func (client *Client) GroupDepartSaveWithOptions(tmpReq *GroupDepartSaveRequest,
 //
 // 集团部门同步
 //
+// Description:
+//
+// - 调用本接口前，请先完成部门人员同步相关应用权限申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key` 作为必填参数拼接在请求地址中。`app_key` 获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
 // @param request - GroupDepartSaveRequest
 //
 // @return GroupDepartSaveResponse
@@ -9828,6 +11264,14 @@ func (client *Client) GroupDepartSave(request *GroupDepartSaveRequest) (_result 
 // Summary:
 //
 // 集团人员同步
+//
+// Description:
+//
+// 使用该接口可以往商旅中多个集团子企业同步人员。
+//
+// 1.  使用该接口需要在应用中开组织人员同步权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param tmpReq - GroupUserSaveRequest
 //
@@ -9931,6 +11375,14 @@ func (client *Client) GroupUserSaveWithOptions(tmpReq *GroupUserSaveRequest, hea
 //
 // 集团人员同步
 //
+// Description:
+//
+// 使用该接口可以往商旅中多个集团子企业同步人员。
+//
+// 1.  使用该接口需要在应用中开组织人员同步权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - GroupUserSaveRequest
 //
 // @return GroupUserSaveResponse
@@ -9949,6 +11401,14 @@ func (client *Client) GroupUserSave(request *GroupUserSaveRequest) (_result *Gro
 // Summary:
 //
 // 酒店起价
+//
+// Description:
+//
+// 使用该接口可以进行酒店起价拉取。
+//
+// - 使用该接口需要在应用中开通酒店服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param tmpReq - HotelAskingPriceRequest
 //
@@ -10056,6 +11516,14 @@ func (client *Client) HotelAskingPriceWithOptions(tmpReq *HotelAskingPriceReques
 //
 // 酒店起价
 //
+// Description:
+//
+// 使用该接口可以进行酒店起价拉取。
+//
+// - 使用该接口需要在应用中开通酒店服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - HotelAskingPriceRequest
 //
 // @return HotelAskingPriceResponse
@@ -10074,6 +11542,16 @@ func (client *Client) HotelAskingPrice(request *HotelAskingPriceRequest) (_resul
 // Summary:
 //
 // 查询酒店记账数据
+//
+// Description:
+//
+// - 调用本接口前，请完成**商旅账单数据**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将`app_key`作为必填参数拼接在请求地址中。`app_key`的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 查询时，记账数据起止时间的间隔规则为：1 小时 ≤记账截止时间 - 记账起始时间 ≤ 24 小时。
+//
+// - 为保证数据准确性，阿里商旅记账数据的更新时机为当前时间 + 1 小时。
 //
 // @param request - HotelBillSettlementQueryRequest
 //
@@ -10171,6 +11649,16 @@ func (client *Client) HotelBillSettlementQueryWithOptions(request *HotelBillSett
 //
 // 查询酒店记账数据
 //
+// Description:
+//
+// - 调用本接口前，请完成**商旅账单数据**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将`app_key`作为必填参数拼接在请求地址中。`app_key`的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 查询时，记账数据起止时间的间隔规则为：1 小时 ≤记账截止时间 - 记账起始时间 ≤ 24 小时。
+//
+// - 为保证数据准确性，阿里商旅记账数据的更新时机为当前时间 + 1 小时。
+//
 // @param request - HotelBillSettlementQueryRequest
 //
 // @return HotelBillSettlementQueryResponse
@@ -10189,6 +11677,14 @@ func (client *Client) HotelBillSettlementQuery(request *HotelBillSettlementQuery
 // Summary:
 //
 // 酒店城市列表
+//
+// Description:
+//
+// 使用该接口可以查询酒店城市列表
+//
+// - 使用该接口需要在应用中开通酒店服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param request - HotelCityCodeListRequest
 //
@@ -10246,6 +11742,14 @@ func (client *Client) HotelCityCodeListWithOptions(request *HotelCityCodeListReq
 //
 // 酒店城市列表
 //
+// Description:
+//
+// 使用该接口可以查询酒店城市列表
+//
+// - 使用该接口需要在应用中开通酒店服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - HotelCityCodeListRequest
 //
 // @return HotelCityCodeListResponse
@@ -10264,6 +11768,14 @@ func (client *Client) HotelCityCodeList(request *HotelCityCodeListRequest) (_res
 // Summary:
 //
 // 查询酒店超标审批详情
+//
+// Description:
+//
+// 使用该接口可以查询指定企业的酒店超标审批详情。
+//
+// - 使用该接口需要在应用中开通超标审批数据权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - HotelExceedApplyQueryRequest
 //
@@ -10325,6 +11837,14 @@ func (client *Client) HotelExceedApplyQueryWithOptions(request *HotelExceedApply
 //
 // 查询酒店超标审批详情
 //
+// Description:
+//
+// 使用该接口可以查询指定企业的酒店超标审批详情。
+//
+// - 使用该接口需要在应用中开通超标审批数据权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - HotelExceedApplyQueryRequest
 //
 // @return HotelExceedApplyQueryResponse
@@ -10343,6 +11863,14 @@ func (client *Client) HotelExceedApplyQuery(request *HotelExceedApplyQueryReques
 // Summary:
 //
 // 酒店详情页报价接口(直连)
+//
+// Description:
+//
+// 使用该接口可以查询酒店实时报价接口
+//
+// - 使用该接口需要在应用中开通酒店服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param request - HotelGoodsQueryRequest
 //
@@ -10444,6 +11972,14 @@ func (client *Client) HotelGoodsQueryWithOptions(request *HotelGoodsQueryRequest
 //
 // 酒店详情页报价接口(直连)
 //
+// Description:
+//
+// 使用该接口可以查询酒店实时报价接口
+//
+// - 使用该接口需要在应用中开通酒店服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - HotelGoodsQueryRequest
 //
 // @return HotelGoodsQueryResponse
@@ -10462,6 +11998,14 @@ func (client *Client) HotelGoodsQuery(request *HotelGoodsQueryRequest) (_result 
 // Summary:
 //
 // 获取酒店清单
+//
+// Description:
+//
+// 使用该接口可以查询酒店Id列表
+//
+// - 使用该接口需要在应用中开通酒店服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param request - HotelIndexInfoRequest
 //
@@ -10535,6 +12079,14 @@ func (client *Client) HotelIndexInfoWithOptions(request *HotelIndexInfoRequest, 
 //
 // 获取酒店清单
 //
+// Description:
+//
+// 使用该接口可以查询酒店Id列表
+//
+// - 使用该接口需要在应用中开通酒店服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - HotelIndexInfoRequest
 //
 // @return HotelIndexInfoResponse
@@ -10553,6 +12105,14 @@ func (client *Client) HotelIndexInfo(request *HotelIndexInfoRequest) (_result *H
 // Summary:
 //
 // 酒店订单取消
+//
+// Description:
+//
+// 使用该接口可以酒店订单取消
+//
+// - 使用该接口需要在应用中开通酒店服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param request - HotelOrderCancelRequest
 //
@@ -10614,6 +12174,14 @@ func (client *Client) HotelOrderCancelWithOptions(request *HotelOrderCancelReque
 //
 // 酒店订单取消
 //
+// Description:
+//
+// 使用该接口可以酒店订单取消
+//
+// - 使用该接口需要在应用中开通酒店服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - HotelOrderCancelRequest
 //
 // @return HotelOrderCancelResponse
@@ -10632,6 +12200,14 @@ func (client *Client) HotelOrderCancel(request *HotelOrderCancelRequest) (_resul
 // Summary:
 //
 // 酒店订单修改申请
+//
+// Description:
+//
+// 使用该接口可以酒店订单创建
+//
+// - 使用该接口需要在应用中开通酒店服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param tmpReq - HotelOrderChangeApplyRequest
 //
@@ -10711,6 +12287,14 @@ func (client *Client) HotelOrderChangeApplyWithOptions(tmpReq *HotelOrderChangeA
 //
 // 酒店订单修改申请
 //
+// Description:
+//
+// 使用该接口可以酒店订单创建
+//
+// - 使用该接口需要在应用中开通酒店服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - HotelOrderChangeApplyRequest
 //
 // @return HotelOrderChangeApplyResponse
@@ -10729,6 +12313,14 @@ func (client *Client) HotelOrderChangeApply(request *HotelOrderChangeApplyReques
 // Summary:
 //
 // 酒店订单修改详情
+//
+// Description:
+//
+// 使用该接口可以酒店订单创建
+//
+// - 使用该接口需要在应用中开通酒店服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param request - HotelOrderChangeDetailRequest
 //
@@ -10798,6 +12390,14 @@ func (client *Client) HotelOrderChangeDetailWithOptions(request *HotelOrderChang
 //
 // 酒店订单修改详情
 //
+// Description:
+//
+// 使用该接口可以酒店订单创建
+//
+// - 使用该接口需要在应用中开通酒店服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - HotelOrderChangeDetailRequest
 //
 // @return HotelOrderChangeDetailResponse
@@ -10816,6 +12416,14 @@ func (client *Client) HotelOrderChangeDetail(request *HotelOrderChangeDetailRequ
 // Summary:
 //
 // 酒店订单创建
+//
+// Description:
+//
+// 使用该接口可以酒店订单创建
+//
+// - 使用该接口需要在应用中开通酒店服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param tmpReq - HotelOrderCreateRequest
 //
@@ -10991,6 +12599,14 @@ func (client *Client) HotelOrderCreateWithOptions(tmpReq *HotelOrderCreateReques
 //
 // 酒店订单创建
 //
+// Description:
+//
+// 使用该接口可以酒店订单创建
+//
+// - 使用该接口需要在应用中开通酒店服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - HotelOrderCreateRequest
 //
 // @return HotelOrderCreateResponse
@@ -11009,6 +12625,14 @@ func (client *Client) HotelOrderCreate(request *HotelOrderCreateRequest) (_resul
 // Summary:
 //
 // 酒店订单明细信息
+//
+// Description:
+//
+// 使用该接口可以酒店订单详情
+//
+// - 使用该接口需要在应用中开通酒店服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param request - HotelOrderDetailInfoRequest
 //
@@ -11070,6 +12694,14 @@ func (client *Client) HotelOrderDetailInfoWithOptions(request *HotelOrderDetailI
 //
 // 酒店订单明细信息
 //
+// Description:
+//
+// 使用该接口可以酒店订单详情
+//
+// - 使用该接口需要在应用中开通酒店服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - HotelOrderDetailInfoRequest
 //
 // @return HotelOrderDetailInfoResponse
@@ -11088,6 +12720,14 @@ func (client *Client) HotelOrderDetailInfo(request *HotelOrderDetailInfoRequest)
 // Summary:
 //
 // 自营酒店订单查询
+//
+// Description:
+//
+// 使用该接口可以查询指定企业的自营酒店订单详情。
+//
+// 1. 使用该接口需要在应用中开通阿里商旅自营-订单&客票数据权限，具体的数据权限申请流程请查看[接口权限申请流程](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support)
+//
+// 2. 使用该接口需要在请求参数中放入企业调用凭证数据信息（corp_token），企业调用凭证数据获取接口请查看[企业访问凭证](https://open.alibtrip.com/#/document/server/corptoken-enterpris)
 //
 // @param headers - HotelOrderInfoQueryHeaders
 //
@@ -11131,6 +12771,14 @@ func (client *Client) HotelOrderInfoQueryWithOptions(orderId *string, headers *H
 //
 // 自营酒店订单查询
 //
+// Description:
+//
+// 使用该接口可以查询指定企业的自营酒店订单详情。
+//
+// 1. 使用该接口需要在应用中开通阿里商旅自营-订单&客票数据权限，具体的数据权限申请流程请查看[接口权限申请流程](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support)
+//
+// 2. 使用该接口需要在请求参数中放入企业调用凭证数据信息（corp_token），企业调用凭证数据获取接口请查看[企业访问凭证](https://open.alibtrip.com/#/document/server/corptoken-enterpris)
+//
 // @return HotelOrderInfoQueryResponse
 func (client *Client) HotelOrderInfoQuery(orderId *string) (_result *HotelOrderInfoQueryResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
@@ -11147,6 +12795,14 @@ func (client *Client) HotelOrderInfoQuery(orderId *string) (_result *HotelOrderI
 // Summary:
 //
 // 查询酒店订单列表
+//
+// Description:
+//
+// 使用该接口可以查询指定企业的酒店订单列表。
+//
+// 1. 使用该接口需要在应用中开通商旅订单数据权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - HotelOrderListQueryRequest
 //
@@ -11248,6 +12904,14 @@ func (client *Client) HotelOrderListQueryWithOptions(request *HotelOrderListQuer
 //
 // 查询酒店订单列表
 //
+// Description:
+//
+// 使用该接口可以查询指定企业的酒店订单列表。
+//
+// 1. 使用该接口需要在应用中开通商旅订单数据权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - HotelOrderListQueryRequest
 //
 // @return HotelOrderListQueryResponse
@@ -11266,6 +12930,14 @@ func (client *Client) HotelOrderListQuery(request *HotelOrderListQueryRequest) (
 // Summary:
 //
 // 酒店订单支付
+//
+// Description:
+//
+// 使用该接口可以酒店订单支付
+//
+// - 使用该接口需要在应用中开通酒店服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param request - HotelOrderPayRequest
 //
@@ -11347,6 +13019,14 @@ func (client *Client) HotelOrderPayWithOptions(request *HotelOrderPayRequest, he
 //
 // 酒店订单支付
 //
+// Description:
+//
+// 使用该接口可以酒店订单支付
+//
+// - 使用该接口需要在应用中开通酒店服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - HotelOrderPayRequest
 //
 // @return HotelOrderPayResponse
@@ -11365,6 +13045,14 @@ func (client *Client) HotelOrderPay(request *HotelOrderPayRequest) (_result *Hot
 // Summary:
 //
 // 酒店下单前校验
+//
+// Description:
+//
+// 使用该接口是酒店下单前校验
+//
+// - 使用该接口需要在应用中开通酒店服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param tmpReq - HotelOrderPreValidateRequest
 //
@@ -11488,6 +13176,14 @@ func (client *Client) HotelOrderPreValidateWithOptions(tmpReq *HotelOrderPreVali
 //
 // 酒店下单前校验
 //
+// Description:
+//
+// 使用该接口是酒店下单前校验
+//
+// - 使用该接口需要在应用中开通酒店服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - HotelOrderPreValidateRequest
 //
 // @return HotelOrderPreValidateResponse
@@ -11506,6 +13202,14 @@ func (client *Client) HotelOrderPreValidate(request *HotelOrderPreValidateReques
 // Summary:
 //
 // 酒店订单查询
+//
+// Description:
+//
+// 使用该接口可以查询指定企业的酒店订单详情。
+//
+// 1. 使用该接口需要在应用中开通商旅订单数据权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - HotelOrderQueryRequest
 //
@@ -11563,6 +13267,14 @@ func (client *Client) HotelOrderQueryWithOptions(request *HotelOrderQueryRequest
 //
 // 酒店订单查询
 //
+// Description:
+//
+// 使用该接口可以查询指定企业的酒店订单详情。
+//
+// 1. 使用该接口需要在应用中开通商旅订单数据权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - HotelOrderQueryRequest
 //
 // @return HotelOrderQueryResponse
@@ -11581,6 +13293,14 @@ func (client *Client) HotelOrderQuery(request *HotelOrderQueryRequest) (_result 
 // Summary:
 //
 // 酒店拉动态拉取价格接口(落地)
+//
+// Description:
+//
+// 使用该接口可以“拉取存储酒店价格数据”。
+//
+// 1. 使用该接口需要在应用中开通“酒店服务”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param tmpReq - HotelPricePullRequest
 //
@@ -11664,6 +13384,14 @@ func (client *Client) HotelPricePullWithOptions(tmpReq *HotelPricePullRequest, h
 //
 // 酒店拉动态拉取价格接口(落地)
 //
+// Description:
+//
+// 使用该接口可以“拉取存储酒店价格数据”。
+//
+// 1. 使用该接口需要在应用中开通“酒店服务”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - HotelPricePullRequest
 //
 // @return HotelPricePullResponse
@@ -11682,6 +13410,14 @@ func (client *Client) HotelPricePull(request *HotelPricePullRequest) (_result *H
 // Summary:
 //
 // 获取酒店静态房型详情
+//
+// Description:
+//
+// 使用该接口可以查询酒店静态房型信息
+//
+// - 使用该接口需要在应用中开通酒店服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param tmpReq - HotelRoomInfoRequest
 //
@@ -11745,6 +13481,14 @@ func (client *Client) HotelRoomInfoWithOptions(tmpReq *HotelRoomInfoRequest, hea
 //
 // 获取酒店静态房型详情
 //
+// Description:
+//
+// 使用该接口可以查询酒店静态房型信息
+//
+// - 使用该接口需要在应用中开通酒店服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - HotelRoomInfoRequest
 //
 // @return HotelRoomInfoResponse
@@ -11763,6 +13507,14 @@ func (client *Client) HotelRoomInfo(request *HotelRoomInfoRequest) (_result *Hot
 // Summary:
 //
 // 酒店列表搜索接口(直连)
+//
+// Description:
+//
+// 使用该接口可以进行酒店列表搜索。
+//
+// - 使用该接口需要在应用中开通酒店服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param tmpReq - HotelSearchRequest
 //
@@ -11918,6 +13670,14 @@ func (client *Client) HotelSearchWithOptions(tmpReq *HotelSearchRequest, headers
 //
 // 酒店列表搜索接口(直连)
 //
+// Description:
+//
+// 使用该接口可以进行酒店列表搜索。
+//
+// - 使用该接口需要在应用中开通酒店服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - HotelSearchRequest
 //
 // @return HotelSearchResponse
@@ -11936,6 +13696,14 @@ func (client *Client) HotelSearch(request *HotelSearchRequest) (_result *HotelSe
 // Summary:
 //
 // 查询酒店静态详情
+//
+// Description:
+//
+// 使用该接口可以查询酒店静态信息
+//
+// - 使用该接口需要在应用中开通酒店服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param tmpReq - HotelStaticInfoRequest
 //
@@ -11999,6 +13767,14 @@ func (client *Client) HotelStaticInfoWithOptions(tmpReq *HotelStaticInfoRequest,
 //
 // 查询酒店静态详情
 //
+// Description:
+//
+// 使用该接口可以查询酒店静态信息
+//
+// - 使用该接口需要在应用中开通酒店服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - HotelStaticInfoRequest
 //
 // @return HotelStaticInfoResponse
@@ -12017,6 +13793,14 @@ func (client *Client) HotelStaticInfo(request *HotelStaticInfoRequest) (_result 
 // Summary:
 //
 // 酒店关键词搜索
+//
+// Description:
+//
+// 使用该接口可以进行酒店关键词搜索
+//
+// - 使用该接口需要在应用中开通酒店服务权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param request - HotelSuggestV2Request
 //
@@ -12094,6 +13878,14 @@ func (client *Client) HotelSuggestV2WithOptions(request *HotelSuggestV2Request, 
 //
 // 酒店关键词搜索
 //
+// Description:
+//
+// 使用该接口可以进行酒店关键词搜索
+//
+// - 使用该接口需要在应用中开通酒店服务权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - HotelSuggestV2Request
 //
 // @return HotelSuggestV2Response
@@ -12111,7 +13903,15 @@ func (client *Client) HotelSuggestV2(request *HotelSuggestV2Request) (_result *H
 
 // Summary:
 //
-// 国际机票订单详情
+// # International Flight Order Details
+//
+// Description:
+//
+// 使用该接口可以查询指定企业的机票订单详情。
+//
+// 1. 使用该接口需要在应用中开通商旅开放平台订单&客票权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - IFlightOrderDetailQueryRequest
 //
@@ -12167,7 +13967,15 @@ func (client *Client) IFlightOrderDetailQueryWithOptions(request *IFlightOrderDe
 
 // Summary:
 //
-// 国际机票订单详情
+// # International Flight Order Details
+//
+// Description:
+//
+// 使用该接口可以查询指定企业的机票订单详情。
+//
+// 1. 使用该接口需要在应用中开通商旅开放平台订单&客票权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - IFlightOrderDetailQueryRequest
 //
@@ -12187,6 +13995,14 @@ func (client *Client) IFlightOrderDetailQuery(request *IFlightOrderDetailQueryRe
 // Summary:
 //
 // 国际机票订单列表
+//
+// Description:
+//
+// 使用该接口可以查询指定企业的国际机票订单列表。
+//
+// 1. 使用该接口需要在应用中开通商旅开放平台订单&客票权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param tmpReq - IFlightOrderListQueryRequest
 //
@@ -12290,6 +14106,14 @@ func (client *Client) IFlightOrderListQueryWithOptions(tmpReq *IFlightOrderListQ
 //
 // 国际机票订单列表
 //
+// Description:
+//
+// 使用该接口可以查询指定企业的国际机票订单列表。
+//
+// 1. 使用该接口需要在应用中开通商旅开放平台订单&客票权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - IFlightOrderListQueryRequest
 //
 // @return IFlightOrderListQueryResponse
@@ -12308,6 +14132,16 @@ func (client *Client) IFlightOrderListQuery(request *IFlightOrderListQueryReques
 // Summary:
 //
 // 查询国际/中国港澳台用车记账数据
+//
+// Description:
+//
+// - 调用本接口前，请完成**商旅账单数据**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将`app_key`作为必填参数拼接在请求地址中。`app_key`的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 查询时，记账数据起止时间的间隔规则为：1 小时 ≤记账截止时间 - 记账起始时间 ≤ 24 小时。
+//
+// - 为保证数据准确性，阿里商旅记账数据的更新时机为当前时间 + 1 小时。
 //
 // @param request - IeCarBillSettlementQueryRequest
 //
@@ -12405,6 +14239,16 @@ func (client *Client) IeCarBillSettlementQueryWithOptions(request *IeCarBillSett
 //
 // 查询国际/中国港澳台用车记账数据
 //
+// Description:
+//
+// - 调用本接口前，请完成**商旅账单数据**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将`app_key`作为必填参数拼接在请求地址中。`app_key`的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 查询时，记账数据起止时间的间隔规则为：1 小时 ≤记账截止时间 - 记账起始时间 ≤ 24 小时。
+//
+// - 为保证数据准确性，阿里商旅记账数据的更新时机为当前时间 + 1 小时。
+//
 // @param request - IeCarBillSettlementQueryRequest
 //
 // @return IeCarBillSettlementQueryResponse
@@ -12423,6 +14267,16 @@ func (client *Client) IeCarBillSettlementQuery(request *IeCarBillSettlementQuery
 // Summary:
 //
 // 查询国际机票记账数据
+//
+// Description:
+//
+// - 调用本接口前，需要在应用中开通商旅账单数据权限。权限获取流程请参见：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 通过 HTTTP 方式调用本接口时，需要将 `app_key` 作为必填参数拼接在请求地址中。AppKey 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 查询时，记账数据的起止时间间隔规则为：1 小时 ≤记账截止时间 - 记账起始时间 ≤ 24 小时。
+//
+// - 为保证数据准确性，阿里商旅记账数据的更新时机为当前时间 + 1 小时。
 //
 // @param request - IeFlightBillSettlementQueryRequest
 //
@@ -12520,6 +14374,16 @@ func (client *Client) IeFlightBillSettlementQueryWithOptions(request *IeFlightBi
 //
 // 查询国际机票记账数据
 //
+// Description:
+//
+// - 调用本接口前，需要在应用中开通商旅账单数据权限。权限获取流程请参见：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 通过 HTTTP 方式调用本接口时，需要将 `app_key` 作为必填参数拼接在请求地址中。AppKey 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 查询时，记账数据的起止时间间隔规则为：1 小时 ≤记账截止时间 - 记账起始时间 ≤ 24 小时。
+//
+// - 为保证数据准确性，阿里商旅记账数据的更新时机为当前时间 + 1 小时。
+//
 // @param request - IeFlightBillSettlementQueryRequest
 //
 // @return IeFlightBillSettlementQueryResponse
@@ -12538,6 +14402,16 @@ func (client *Client) IeFlightBillSettlementQuery(request *IeFlightBillSettlemen
 // Summary:
 //
 // 查询国际/中国港澳台酒店记账数据
+//
+// Description:
+//
+// - 调用本接口前，请完成**商旅账单数据**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将`app_key`作为必填参数拼接在请求地址中。`app_key`的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 查询时，记账数据的起止时间间隔规则为：1 小时 ≤记账截止时间 - 记账起始时间 ≤ 24 小时。
+//
+// - 为保证数据准确性，阿里商旅记账数据的更新时机为当前时间 + 1 小时。
 //
 // @param request - IeHotelBillSettlementQueryRequest
 //
@@ -12639,6 +14513,16 @@ func (client *Client) IeHotelBillSettlementQueryWithOptions(request *IeHotelBill
 //
 // 查询国际/中国港澳台酒店记账数据
 //
+// Description:
+//
+// - 调用本接口前，请完成**商旅账单数据**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将`app_key`作为必填参数拼接在请求地址中。`app_key`的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 查询时，记账数据的起止时间间隔规则为：1 小时 ≤记账截止时间 - 记账起始时间 ≤ 24 小时。
+//
+// - 为保证数据准确性，阿里商旅记账数据的更新时机为当前时间 + 1 小时。
+//
 // @param request - IeHotelBillSettlementQueryRequest
 //
 // @return IeHotelBillSettlementQueryResponse
@@ -12657,6 +14541,16 @@ func (client *Client) IeHotelBillSettlementQuery(request *IeHotelBillSettlementQ
 // Summary:
 //
 // 查询保险电子发票
+//
+// Description:
+//
+// 使用该接口可以查询保险电子发票明细数据
+//
+// - 增值接口需特殊审批，提交权限前请先和商旅客户运营沟通确认。
+//
+// - 使用该接口需要在应用中开通增值服务数据权限，具体的数据权限申请流程请查看[接口权限申请流程](https://open.alibtrip.com/#/document/server/interface-permission-application-process-1?handbookId=development-support)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://open.alibtrip.com/#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)。
 //
 // @param request - InsInvoiceScanQueryRequest
 //
@@ -12730,6 +14624,16 @@ func (client *Client) InsInvoiceScanQueryWithOptions(request *InsInvoiceScanQuer
 //
 // 查询保险电子发票
 //
+// Description:
+//
+// 使用该接口可以查询保险电子发票明细数据
+//
+// - 增值接口需特殊审批，提交权限前请先和商旅客户运营沟通确认。
+//
+// - 使用该接口需要在应用中开通增值服务数据权限，具体的数据权限申请流程请查看[接口权限申请流程](https://open.alibtrip.com/#/document/server/interface-permission-application-process-1?handbookId=development-support)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://open.alibtrip.com/#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)。
+//
 // @param request - InsInvoiceScanQueryRequest
 //
 // @return InsInvoiceScanQueryResponse
@@ -12748,6 +14652,14 @@ func (client *Client) InsInvoiceScanQuery(request *InsInvoiceScanQueryRequest) (
 // Summary:
 //
 // 保险订单申请
+//
+// Description:
+//
+// 使用该接口可以“接口功能描述”。
+//
+// 1. 使用该接口需要在应用中开通“机票服务”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - InsureOrderApplyRequest
 //
@@ -12829,6 +14741,14 @@ func (client *Client) InsureOrderApplyWithOptions(request *InsureOrderApplyReque
 //
 // 保险订单申请
 //
+// Description:
+//
+// 使用该接口可以“接口功能描述”。
+//
+// 1. 使用该接口需要在应用中开通“机票服务”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - InsureOrderApplyRequest
 //
 // @return InsureOrderApplyResponse
@@ -12847,6 +14767,14 @@ func (client *Client) InsureOrderApply(request *InsureOrderApplyRequest) (_resul
 // Summary:
 //
 // 保险订单取消
+//
+// Description:
+//
+// 使用该接口可以“接口功能描述”。
+//
+// 1. 使用该接口需要在应用中开通“机票服务”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - InsureOrderCancelRequest
 //
@@ -12916,6 +14844,14 @@ func (client *Client) InsureOrderCancelWithOptions(insOrderId *string, request *
 //
 // 保险订单取消
 //
+// Description:
+//
+// 使用该接口可以“接口功能描述”。
+//
+// 1. 使用该接口需要在应用中开通“机票服务”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - InsureOrderCancelRequest
 //
 // @return InsureOrderCancelResponse
@@ -12934,6 +14870,14 @@ func (client *Client) InsureOrderCancel(insOrderId *string, request *InsureOrder
 // Summary:
 //
 // 保险订单创建
+//
+// Description:
+//
+// 使用该接口可以“接口功能描述”。
+//
+// 1. 使用该接口需要在应用中开通“机票服务”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param tmpReq - InsureOrderCreateRequest
 //
@@ -13033,6 +14977,14 @@ func (client *Client) InsureOrderCreateWithOptions(tmpReq *InsureOrderCreateRequ
 //
 // 保险订单创建
 //
+// Description:
+//
+// 使用该接口可以“接口功能描述”。
+//
+// 1. 使用该接口需要在应用中开通“机票服务”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - InsureOrderCreateRequest
 //
 // @return InsureOrderCreateResponse
@@ -13051,6 +15003,14 @@ func (client *Client) InsureOrderCreate(request *InsureOrderCreateRequest) (_res
 // Summary:
 //
 // 保险订单查询
+//
+// Description:
+//
+// 使用该接口可以“接口功能描述”。
+//
+// 1. 使用该接口需要在应用中开通“机票服务”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - InsureOrderDetailRequest
 //
@@ -13124,6 +15084,14 @@ func (client *Client) InsureOrderDetailWithOptions(request *InsureOrderDetailReq
 //
 // 保险订单查询
 //
+// Description:
+//
+// 使用该接口可以“接口功能描述”。
+//
+// 1. 使用该接口需要在应用中开通“机票服务”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - InsureOrderDetailRequest
 //
 // @return InsureOrderDetailResponse
@@ -13142,6 +15110,14 @@ func (client *Client) InsureOrderDetail(request *InsureOrderDetailRequest) (_res
 // Summary:
 //
 // 保险订单支付
+//
+// Description:
+//
+// 使用该接口可以“接口功能描述”。
+//
+// 1. 使用该接口需要在应用中开通“机票服务”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - InsureOrderPayRequest
 //
@@ -13223,6 +15199,14 @@ func (client *Client) InsureOrderPayWithOptions(insOrderId *string, request *Ins
 //
 // 保险订单支付
 //
+// Description:
+//
+// 使用该接口可以“接口功能描述”。
+//
+// 1. 使用该接口需要在应用中开通“机票服务”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - InsureOrderPayRequest
 //
 // @return InsureOrderPayResponse
@@ -13241,6 +15225,14 @@ func (client *Client) InsureOrderPay(insOrderId *string, request *InsureOrderPay
 // Summary:
 //
 // 保险订单退保
+//
+// Description:
+//
+// 使用该接口可以“接口功能描述”。
+//
+// 1. 使用该接口需要在应用中开通“机票服务”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param tmpReq - InsureOrderRefundRequest
 //
@@ -13332,6 +15324,14 @@ func (client *Client) InsureOrderRefundWithOptions(insOrderId *string, tmpReq *I
 //
 // 保险订单退保
 //
+// Description:
+//
+// 使用该接口可以“接口功能描述”。
+//
+// 1. 使用该接口需要在应用中开通“机票服务”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - InsureOrderRefundRequest
 //
 // @return InsureOrderRefundResponse
@@ -13350,6 +15350,14 @@ func (client *Client) InsureOrderRefund(insOrderId *string, request *InsureOrder
 // Summary:
 //
 // 查询保单详情链接
+//
+// Description:
+//
+// 使用该接口可以“接口功能描述”。
+//
+// 1. 使用该接口需要在应用中开通“机票服务”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param headers - InsureOrderUrlDetailHeaders
 //
@@ -13393,6 +15401,14 @@ func (client *Client) InsureOrderUrlDetailWithOptions(insOrderId *string, header
 //
 // 查询保单详情链接
 //
+// Description:
+//
+// 使用该接口可以“接口功能描述”。
+//
+// 1. 使用该接口需要在应用中开通“机票服务”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @return InsureOrderUrlDetailResponse
 func (client *Client) InsureOrderUrlDetail(insOrderId *string) (_result *InsureOrderUrlDetailResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
@@ -13409,6 +15425,14 @@ func (client *Client) InsureOrderUrlDetail(insOrderId *string) (_result *InsureO
 // Summary:
 //
 // 退保详情查询
+//
+// Description:
+//
+// 使用该接口可以“接口功能描述”。
+//
+// 1. 使用该接口需要在应用中开通“机票服务”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - InsureRefundDetailRequest
 //
@@ -13490,6 +15514,14 @@ func (client *Client) InsureRefundDetailWithOptions(request *InsureRefundDetailR
 //
 // 退保详情查询
 //
+// Description:
+//
+// 使用该接口可以“接口功能描述”。
+//
+// 1. 使用该接口需要在应用中开通“机票服务”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - InsureRefundDetailRequest
 //
 // @return InsureRefundDetailResponse
@@ -13508,6 +15540,14 @@ func (client *Client) InsureRefundDetail(request *InsureRefundDetailRequest) (_r
 // Summary:
 //
 // 国际机票创建订单
+//
+// Description:
+//
+// 使用该接口可以创建国际机票订单。
+//
+// 1.  使用该接口需要在应用中开通国际机票权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param tmpReq - IntlFlightCreateOrderRequest
 //
@@ -13623,6 +15663,14 @@ func (client *Client) IntlFlightCreateOrderWithOptions(tmpReq *IntlFlightCreateO
 //
 // 国际机票创建订单
 //
+// Description:
+//
+// 使用该接口可以创建国际机票订单。
+//
+// 1.  使用该接口需要在应用中开通国际机票权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - IntlFlightCreateOrderRequest
 //
 // @return IntlFlightCreateOrderResponse
@@ -13641,6 +15689,14 @@ func (client *Client) IntlFlightCreateOrder(request *IntlFlightCreateOrderReques
 // Summary:
 //
 // 国际机票验舱验价
+//
+// Description:
+//
+// 使用该接口可以对“国际机票航班报价进行验舱验价”。
+//
+// 1. 使用该接口需要在应用中开通“国际机票”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param tmpReq - IntlFlightInventoryPriceCheckRequest
 //
@@ -13724,6 +15780,14 @@ func (client *Client) IntlFlightInventoryPriceCheckWithOptions(tmpReq *IntlFligh
 //
 // 国际机票验舱验价
 //
+// Description:
+//
+// 使用该接口可以对“国际机票航班报价进行验舱验价”。
+//
+// 1. 使用该接口需要在应用中开通“国际机票”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - IntlFlightInventoryPriceCheckRequest
 //
 // @return IntlFlightInventoryPriceCheckResponse
@@ -13742,6 +15806,14 @@ func (client *Client) IntlFlightInventoryPriceCheck(request *IntlFlightInventory
 // Summary:
 //
 // 国际机票航班搜索
+//
+// Description:
+//
+// 使用该接口可以进行航班列表搜索。
+//
+// - 使用该接口需要在应用中开通国际机票航班权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3769985)。
 //
 // @param tmpReq - IntlFlightListingSearchRequest
 //
@@ -13849,6 +15921,14 @@ func (client *Client) IntlFlightListingSearchWithOptions(tmpReq *IntlFlightListi
 //
 // 国际机票航班搜索
 //
+// Description:
+//
+// 使用该接口可以进行航班列表搜索。
+//
+// - 使用该接口需要在应用中开通国际机票航班权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3769985)。
+//
 // @param request - IntlFlightListingSearchRequest
 //
 // @return IntlFlightListingSearchResponse
@@ -13867,6 +15947,14 @@ func (client *Client) IntlFlightListingSearch(request *IntlFlightListingSearchRe
 // Summary:
 //
 // 国际机票订单取消
+//
+// Description:
+//
+// 使用该接口可以对国际机票订单进行取消操作。
+//
+// 1. 使用该接口需要在应用中开通“国际机票”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - IntlFlightOrderCancelRequest
 //
@@ -13940,6 +16028,14 @@ func (client *Client) IntlFlightOrderCancelWithOptions(request *IntlFlightOrderC
 //
 // 国际机票订单取消
 //
+// Description:
+//
+// 使用该接口可以对国际机票订单进行取消操作。
+//
+// 1. 使用该接口需要在应用中开通“国际机票”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - IntlFlightOrderCancelRequest
 //
 // @return IntlFlightOrderCancelResponse
@@ -13958,6 +16054,14 @@ func (client *Client) IntlFlightOrderCancel(request *IntlFlightOrderCancelReques
 // Summary:
 //
 // 国际机票订单详情
+//
+// Description:
+//
+// 使用该接口可以查询国际机票订单详情。
+//
+// 1. 使用该接口需要在应用中开通“国际机票”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - IntlFlightOrderDetailRequest
 //
@@ -14031,6 +16135,14 @@ func (client *Client) IntlFlightOrderDetailWithOptions(request *IntlFlightOrderD
 //
 // 国际机票订单详情
 //
+// Description:
+//
+// 使用该接口可以查询国际机票订单详情。
+//
+// 1. 使用该接口需要在应用中开通“国际机票”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - IntlFlightOrderDetailRequest
 //
 // @return IntlFlightOrderDetailResponse
@@ -14049,6 +16161,14 @@ func (client *Client) IntlFlightOrderDetail(request *IntlFlightOrderDetailReques
 // Summary:
 //
 // 国际机票订单支付
+//
+// Description:
+//
+// 使用该接口可以对国际机票订单进行支付。
+//
+// 1. 使用该接口需要在应用中开通“国际机票”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - IntlFlightOrderPayRequest
 //
@@ -14126,6 +16246,14 @@ func (client *Client) IntlFlightOrderPayWithOptions(request *IntlFlightOrderPayR
 //
 // 国际机票订单支付
 //
+// Description:
+//
+// 使用该接口可以对国际机票订单进行支付。
+//
+// 1. 使用该接口需要在应用中开通“国际机票”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - IntlFlightOrderPayRequest
 //
 // @return IntlFlightOrderPayResponse
@@ -14144,6 +16272,14 @@ func (client *Client) IntlFlightOrderPay(request *IntlFlightOrderPayRequest) (_r
 // Summary:
 //
 // 国际机票订单支付前校验
+//
+// Description:
+//
+// 使用该接口可以对国际机票订单进行支付前校验，校验通过才可支付。
+//
+// 1. 使用该接口需要在应用中开通“国际机票”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - IntlFlightOrderPayCheckRequest
 //
@@ -14217,6 +16353,14 @@ func (client *Client) IntlFlightOrderPayCheckWithOptions(request *IntlFlightOrde
 //
 // 国际机票订单支付前校验
 //
+// Description:
+//
+// 使用该接口可以对国际机票订单进行支付前校验，校验通过才可支付。
+//
+// 1. 使用该接口需要在应用中开通“国际机票”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - IntlFlightOrderPayCheckRequest
 //
 // @return IntlFlightOrderPayCheckResponse
@@ -14235,6 +16379,14 @@ func (client *Client) IntlFlightOrderPayCheck(request *IntlFlightOrderPayCheckRe
 // Summary:
 //
 // 国际机票报价商品详情
+//
+// Description:
+//
+// 使用该接口可以进行航班列表搜索。
+//
+// - 使用该接口需要在应用中开通国际机票航班权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3769985)。
 //
 // @param request - IntlFlightOtaItemDetailRequest
 //
@@ -14308,6 +16460,14 @@ func (client *Client) IntlFlightOtaItemDetailWithOptions(otaItemId *string, requ
 //
 // 国际机票报价商品详情
 //
+// Description:
+//
+// 使用该接口可以进行航班列表搜索。
+//
+// - 使用该接口需要在应用中开通国际机票航班权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3769985)。
+//
 // @param request - IntlFlightOtaItemDetailRequest
 //
 // @return IntlFlightOtaItemDetailResponse
@@ -14326,6 +16486,14 @@ func (client *Client) IntlFlightOtaItemDetail(otaItemId *string, request *IntlFl
 // Summary:
 //
 // 国际机票航班报价查询
+//
+// Description:
+//
+// 使用该接口可以进行航班报价搜索。
+//
+// - 使用该接口需要在应用中开通国际机票航班权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3769985)。
 //
 // @param tmpReq - IntlFlightOtaSearchRequest
 //
@@ -14416,6 +16584,14 @@ func (client *Client) IntlFlightOtaSearchWithOptions(tmpReq *IntlFlightOtaSearch
 // Summary:
 //
 // 国际机票航班报价查询
+//
+// Description:
+//
+// 使用该接口可以进行航班报价搜索。
+//
+// - 使用该接口需要在应用中开通国际机票航班权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3769985)。
 //
 // @param request - IntlFlightOtaSearchRequest
 //
@@ -14557,6 +16733,14 @@ func (client *Client) IntlFlightReShopApply(request *IntlFlightReShopApplyReques
 //
 // 国际机票改签取消
 //
+// Description:
+//
+// 使用该接口可以进行国际机票改签取消。
+//
+// - 使用该接口需要在应用中开通国际机票改签权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3769985)。
+//
 // @param request - IntlFlightReShopCancelRequest
 //
 // @param headers - IntlFlightReShopCancelHeaders
@@ -14625,6 +16809,14 @@ func (client *Client) IntlFlightReShopCancelWithOptions(request *IntlFlightReSho
 //
 // 国际机票改签取消
 //
+// Description:
+//
+// 使用该接口可以进行国际机票改签取消。
+//
+// - 使用该接口需要在应用中开通国际机票改签权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3769985)。
+//
 // @param request - IntlFlightReShopCancelRequest
 //
 // @return IntlFlightReShopCancelResponse
@@ -14643,6 +16835,14 @@ func (client *Client) IntlFlightReShopCancel(request *IntlFlightReShopCancelRequ
 // Summary:
 //
 // 国际机票改签咨询
+//
+// Description:
+//
+// 使用该接口可以进行国际机票改签咨询。
+//
+// - 使用该接口需要在应用中开通国际机票改签权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3769985)。
 //
 // @param request - IntlFlightReShopConsultRequest
 //
@@ -14704,6 +16904,14 @@ func (client *Client) IntlFlightReShopConsultWithOptions(request *IntlFlightReSh
 //
 // 国际机票改签咨询
 //
+// Description:
+//
+// 使用该接口可以进行国际机票改签咨询。
+//
+// - 使用该接口需要在应用中开通国际机票改签权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3769985)。
+//
 // @param request - IntlFlightReShopConsultRequest
 //
 // @return IntlFlightReShopConsultResponse
@@ -14721,7 +16929,7 @@ func (client *Client) IntlFlightReShopConsult(request *IntlFlightReShopConsultRe
 
 // Summary:
 //
-// 国际机票改签生单
+// Creates a rebooking order for an international flight ticket.
 //
 // @param tmpReq - IntlFlightReShopCreateRequest
 //
@@ -14819,7 +17027,7 @@ func (client *Client) IntlFlightReShopCreateWithOptions(tmpReq *IntlFlightReShop
 
 // Summary:
 //
-// 国际机票改签生单
+// Creates a rebooking order for an international flight ticket.
 //
 // @param request - IntlFlightReShopCreateRequest
 //
@@ -14839,6 +17047,14 @@ func (client *Client) IntlFlightReShopCreate(request *IntlFlightReShopCreateRequ
 // Summary:
 //
 // 国际机票改签详情
+//
+// Description:
+//
+// 使用该接口可以进行国际机票改签详情查询。
+//
+// - 使用该接口需要在应用中开通国际机票改签权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3769985)。
 //
 // @param request - IntlFlightReShopDetailRequest
 //
@@ -14908,6 +17124,14 @@ func (client *Client) IntlFlightReShopDetailWithOptions(request *IntlFlightReSho
 //
 // 国际机票改签详情
 //
+// Description:
+//
+// 使用该接口可以进行国际机票改签详情查询。
+//
+// - 使用该接口需要在应用中开通国际机票改签权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3769985)。
+//
 // @param request - IntlFlightReShopDetailRequest
 //
 // @return IntlFlightReShopDetailResponse
@@ -14925,7 +17149,7 @@ func (client *Client) IntlFlightReShopDetail(request *IntlFlightReShopDetailRequ
 
 // Summary:
 //
-// 国际机票改签航班列表查询
+// Queries the list of available flights for rebooking international flight tickets.
 //
 // @param tmpReq - IntlFlightReShopListSearchRequest
 //
@@ -15019,7 +17243,7 @@ func (client *Client) IntlFlightReShopListSearchWithOptions(tmpReq *IntlFlightRe
 
 // Summary:
 //
-// 国际机票改签航班列表查询
+// Queries the list of available flights for rebooking international flight tickets.
 //
 // @param request - IntlFlightReShopListSearchRequest
 //
@@ -15038,7 +17262,7 @@ func (client *Client) IntlFlightReShopListSearch(request *IntlFlightReShopListSe
 
 // Summary:
 //
-// 国际机票改签航班报价
+// Queries flight rebooking quotes for international air tickets.
 //
 // @param tmpReq - IntlFlightReShopOtaSearchRequest
 //
@@ -15132,7 +17356,7 @@ func (client *Client) IntlFlightReShopOtaSearchWithOptions(tmpReq *IntlFlightReS
 
 // Summary:
 //
-// 国际机票改签航班报价
+// Queries flight rebooking quotes for international air tickets.
 //
 // @param request - IntlFlightReShopOtaSearchRequest
 //
@@ -15152,6 +17376,22 @@ func (client *Client) IntlFlightReShopOtaSearch(request *IntlFlightReShopOtaSear
 // Summary:
 //
 // 国际机票改签支付
+//
+// Description:
+//
+// 使用该接口可以进行国际机票改签支付。
+//
+//		Notice:
+//
+//	 国际机票意向单零元改签特殊说明：
+//
+// 1. 如果改签单是待支付状态，即使改签金额是零元也需要调用支付，表示同意该改签方案并进行出票；
+//
+// 2. 若我们的小二已经电联过用户，同意了改签方案，则会直接进入出票流程，不会有待支付状态，这种情况下无需则手动调用支付；
+//
+// - 使用该接口需要在应用中开通国际机票改签权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3769985)。
 //
 // @param request - IntlFlightReShopPayRequest
 //
@@ -15221,6 +17461,22 @@ func (client *Client) IntlFlightReShopPayWithOptions(request *IntlFlightReShopPa
 //
 // 国际机票改签支付
 //
+// Description:
+//
+// 使用该接口可以进行国际机票改签支付。
+//
+//		Notice:
+//
+//	 国际机票意向单零元改签特殊说明：
+//
+// 1. 如果改签单是待支付状态，即使改签金额是零元也需要调用支付，表示同意该改签方案并进行出票；
+//
+// 2. 若我们的小二已经电联过用户，同意了改签方案，则会直接进入出票流程，不会有待支付状态，这种情况下无需则手动调用支付；
+//
+// - 使用该接口需要在应用中开通国际机票改签权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3769985)。
+//
 // @param request - IntlFlightReShopPayRequest
 //
 // @return IntlFlightReShopPayResponse
@@ -15239,6 +17495,14 @@ func (client *Client) IntlFlightReShopPay(request *IntlFlightReShopPayRequest) (
 // Summary:
 //
 // 国际机票退票申请
+//
+// Description:
+//
+// 使用该接口可以进行国际机票退票咨询。
+//
+// - 使用该接口需要在应用中开通国际机票退票权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3769985)。
 //
 // @param tmpReq - IntlFlightRefundApplyRequest
 //
@@ -15330,6 +17594,14 @@ func (client *Client) IntlFlightRefundApplyWithOptions(tmpReq *IntlFlightRefundA
 //
 // 国际机票退票申请
 //
+// Description:
+//
+// 使用该接口可以进行国际机票退票咨询。
+//
+// - 使用该接口需要在应用中开通国际机票退票权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3769985)。
+//
 // @param request - IntlFlightRefundApplyRequest
 //
 // @return IntlFlightRefundApplyResponse
@@ -15348,6 +17620,14 @@ func (client *Client) IntlFlightRefundApply(request *IntlFlightRefundApplyReques
 // Summary:
 //
 // 国际机票退票咨询
+//
+// Description:
+//
+// 使用该接口可以进行国际机票退票咨询。
+//
+// - 使用该接口需要在应用中开通国际机票退票权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3769985)。
 //
 // @param request - IntlFlightRefundConsultRequest
 //
@@ -15409,6 +17689,14 @@ func (client *Client) IntlFlightRefundConsultWithOptions(request *IntlFlightRefu
 //
 // 国际机票退票咨询
 //
+// Description:
+//
+// 使用该接口可以进行国际机票退票咨询。
+//
+// - 使用该接口需要在应用中开通国际机票退票权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3769985)。
+//
 // @param request - IntlFlightRefundConsultRequest
 //
 // @return IntlFlightRefundConsultResponse
@@ -15427,6 +17715,14 @@ func (client *Client) IntlFlightRefundConsult(request *IntlFlightRefundConsultRe
 // Summary:
 //
 // 国际机票退票详情
+//
+// Description:
+//
+// 使用该接口可以进行国际机票退票咨询。
+//
+// - 使用该接口需要在应用中开通国际机票退票权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3769985)。
 //
 // @param request - IntlFlightRefundDetailRequest
 //
@@ -15496,6 +17792,14 @@ func (client *Client) IntlFlightRefundDetailWithOptions(request *IntlFlightRefun
 //
 // 国际机票退票详情
 //
+// Description:
+//
+// 使用该接口可以进行国际机票退票咨询。
+//
+// - 使用该接口需要在应用中开通国际机票退票权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.697d281fR0YqNt&docId=3769985)。
+//
 // @param request - IntlFlightRefundDetailRequest
 //
 // @return IntlFlightRefundDetailResponse
@@ -15514,6 +17818,14 @@ func (client *Client) IntlFlightRefundDetail(request *IntlFlightRefundDetailRequ
 // Summary:
 //
 // 国际机票航班可用证件查询
+//
+// Description:
+//
+// 使用该接口可以“查询国际机票航班可用证件”。
+//
+// 1. 使用该接口需要在应用中开通“国际机票”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - IntlFlightSegmentAvailableCertRequest
 //
@@ -15583,6 +17895,14 @@ func (client *Client) IntlFlightSegmentAvailableCertWithOptions(otaItemId *strin
 //
 // 国际机票航班可用证件查询
 //
+// Description:
+//
+// 使用该接口可以“查询国际机票航班可用证件”。
+//
+// 1. 使用该接口需要在应用中开通“国际机票”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - IntlFlightSegmentAvailableCertRequest
 //
 // @return IntlFlightSegmentAvailableCertResponse
@@ -15601,6 +17921,14 @@ func (client *Client) IntlFlightSegmentAvailableCert(otaItemId *string, request 
 // Summary:
 //
 // 新增发票配置
+//
+// Description:
+//
+// 使用该接口可以新增指定企业的发票抬头。
+//
+// 1.  使用该接口需要在应用中开通费用归属配置权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - InvoiceAddRequest
 //
@@ -15694,6 +18022,14 @@ func (client *Client) InvoiceAddWithOptions(request *InvoiceAddRequest, headers 
 //
 // 新增发票配置
 //
+// Description:
+//
+// 使用该接口可以新增指定企业的发票抬头。
+//
+// 1.  使用该接口需要在应用中开通费用归属配置权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - InvoiceAddRequest
 //
 // @return InvoiceAddResponse
@@ -15712,6 +18048,14 @@ func (client *Client) InvoiceAdd(request *InvoiceAddRequest) (_result *InvoiceAd
 // Summary:
 //
 // 删除发票抬头
+//
+// Description:
+//
+// 使用该接口可以删除指定企业的发票抬头。
+//
+// 1.  使用该接口需要在应用中开通费用归属配置权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - InvoiceDeleteRequest
 //
@@ -15769,6 +18113,14 @@ func (client *Client) InvoiceDeleteWithOptions(request *InvoiceDeleteRequest, he
 //
 // 删除发票抬头
 //
+// Description:
+//
+// 使用该接口可以删除指定企业的发票抬头。
+//
+// 1.  使用该接口需要在应用中开通费用归属配置权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - InvoiceDeleteRequest
 //
 // @return InvoiceDeleteResponse
@@ -15787,6 +18139,14 @@ func (client *Client) InvoiceDelete(request *InvoiceDeleteRequest) (_result *Inv
 // Summary:
 //
 // 修改发票配置
+//
+// Description:
+//
+// 使用该接口可以修改指定企业的发票抬头。
+//
+// 1.  使用该接口需要在应用中开通费用归属配置权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - InvoiceModifyRequest
 //
@@ -15880,6 +18240,14 @@ func (client *Client) InvoiceModifyWithOptions(request *InvoiceModifyRequest, he
 //
 // 修改发票配置
 //
+// Description:
+//
+// 使用该接口可以修改指定企业的发票抬头。
+//
+// 1.  使用该接口需要在应用中开通费用归属配置权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - InvoiceModifyRequest
 //
 // @return InvoiceModifyResponse
@@ -15898,6 +18266,14 @@ func (client *Client) InvoiceModify(request *InvoiceModifyRequest) (_result *Inv
 // Summary:
 //
 // 新增发票抬头可用员工
+//
+// Description:
+//
+// 使用该接口可以增加发票抬头可用员工
+//
+// - 使用该接口需要在应用中开通费用归属配置权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param tmpReq - InvoiceRuleAddRequest
 //
@@ -15965,6 +18341,14 @@ func (client *Client) InvoiceRuleAddWithOptions(tmpReq *InvoiceRuleAddRequest, h
 //
 // 新增发票抬头可用员工
 //
+// Description:
+//
+// 使用该接口可以增加发票抬头可用员工
+//
+// - 使用该接口需要在应用中开通费用归属配置权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - InvoiceRuleAddRequest
 //
 // @return InvoiceRuleAddResponse
@@ -15983,6 +18367,14 @@ func (client *Client) InvoiceRuleAdd(request *InvoiceRuleAddRequest) (_result *I
 // Summary:
 //
 // 删除发票抬头可用员工
+//
+// Description:
+//
+// 使用该接口可以删除发票抬头可用员工
+//
+// - 使用该接口需要在应用中开通费用归属配置权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param tmpReq - InvoiceRuleDeleteRequest
 //
@@ -16054,6 +18446,14 @@ func (client *Client) InvoiceRuleDeleteWithOptions(tmpReq *InvoiceRuleDeleteRequ
 //
 // 删除发票抬头可用员工
 //
+// Description:
+//
+// 使用该接口可以删除发票抬头可用员工
+//
+// - 使用该接口需要在应用中开通费用归属配置权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - InvoiceRuleDeleteRequest
 //
 // @return InvoiceRuleDeleteResponse
@@ -16072,6 +18472,16 @@ func (client *Client) InvoiceRuleDelete(request *InvoiceRuleDeleteRequest) (_res
 // Summary:
 //
 // 保存发票规则
+//
+// Description:
+//
+// 该接口已废弃，请使用[新增发票抬头可用范围](/#/document/server/invoiceruleadd-new-invoice-header-available-employee?handbookId=development-support)和[删除发票抬头可用范围](/#/document/server/invoiceruledelete-delete-invoice-header-available-employees?handbookId=development-support)
+//
+// 使用该接口可以配置指定企业的发票抬头可用员工。
+//
+// 1.  使用该接口需要在应用中开通费用归属配置权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param tmpReq - InvoiceRuleSaveRequest
 //
@@ -16147,6 +18557,16 @@ func (client *Client) InvoiceRuleSaveWithOptions(tmpReq *InvoiceRuleSaveRequest,
 //
 // 保存发票规则
 //
+// Description:
+//
+// 该接口已废弃，请使用[新增发票抬头可用范围](/#/document/server/invoiceruleadd-new-invoice-header-available-employee?handbookId=development-support)和[删除发票抬头可用范围](/#/document/server/invoiceruledelete-delete-invoice-header-available-employees?handbookId=development-support)
+//
+// 使用该接口可以配置指定企业的发票抬头可用员工。
+//
+// 1.  使用该接口需要在应用中开通费用归属配置权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - InvoiceRuleSaveRequest
 //
 // @return InvoiceRuleSaveResponse
@@ -16165,6 +18585,14 @@ func (client *Client) InvoiceRuleSave(request *InvoiceRuleSaveRequest) (_result 
 // Summary:
 //
 // 搜索用户可用发票抬头
+//
+// Description:
+//
+// 使用该接口可以查询指定企业的发票抬头。
+//
+// 1.  使用该接口需要在应用中开通费用归属配置权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - InvoiceSearchRequest
 //
@@ -16230,6 +18658,14 @@ func (client *Client) InvoiceSearchWithOptions(request *InvoiceSearchRequest, he
 //
 // 搜索用户可用发票抬头
 //
+// Description:
+//
+// 使用该接口可以查询指定企业的发票抬头。
+//
+// 1.  使用该接口需要在应用中开通费用归属配置权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - InvoiceSearchRequest
 //
 // @return InvoiceSearchResponse
@@ -16248,6 +18684,14 @@ func (client *Client) InvoiceSearch(request *InvoiceSearchRequest) (_result *Inv
 // Summary:
 //
 // 员工特殊角色修改
+//
+// Description:
+//
+// - 阿里商旅支持的特殊权限说明，请参见：[员工角色管理](https://www.yuque.com/alibtrip/ql4yyy/ywfpki)。
+//
+// - 调用本接口前，请完成组织人员同步相关应用权限的申请。若无，请参考：[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)  完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key` 作为必填参数拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
 //
 // @param tmpReq - IsvRuleSaveRequest
 //
@@ -16331,6 +18775,14 @@ func (client *Client) IsvRuleSaveWithOptions(tmpReq *IsvRuleSaveRequest, headers
 //
 // 员工特殊角色修改
 //
+// Description:
+//
+// - 阿里商旅支持的特殊权限说明，请参见：[员工角色管理](https://www.yuque.com/alibtrip/ql4yyy/ywfpki)。
+//
+// - 调用本接口前，请完成组织人员同步相关应用权限的申请。若无，请参考：[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)  完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key` 作为必填参数拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
 // @param request - IsvRuleSaveRequest
 //
 // @return IsvRuleSaveResponse
@@ -16349,6 +18801,12 @@ func (client *Client) IsvRuleSave(request *IsvRuleSaveRequest) (_result *IsvRule
 // Summary:
 //
 // 用户同步
+//
+// Description:
+//
+// - 调用本接口前，请完成**组织人员同步**相关应用权限的申请。若无，请参考[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTTP 方式调用本接口时，需要将 `app_key` 作为**必填参数**拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
 //
 // @param tmpReq - IsvUserSaveRequest
 //
@@ -16412,6 +18870,12 @@ func (client *Client) IsvUserSaveWithOptions(tmpReq *IsvUserSaveRequest, headers
 //
 // 用户同步
 //
+// Description:
+//
+// - 调用本接口前，请完成**组织人员同步**相关应用权限的申请。若无，请参考[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTTP 方式调用本接口时，需要将 `app_key` 作为**必填参数**拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
 // @param request - IsvUserSaveRequest
 //
 // @return IsvUserSaveResponse
@@ -16430,6 +18894,12 @@ func (client *Client) IsvUserSave(request *IsvUserSaveRequest) (_result *IsvUser
 // Summary:
 //
 // 新增用餐申请单
+//
+// Description:
+//
+// - 调用本接口前，请完成**用餐审批单**相关应用权限的申请。若无，请参见：[接口应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param tmpReq - MealApplyAddRequest
 //
@@ -16545,6 +19015,12 @@ func (client *Client) MealApplyAddWithOptions(tmpReq *MealApplyAddRequest, heade
 //
 // 新增用餐申请单
 //
+// Description:
+//
+// - 调用本接口前，请完成**用餐审批单**相关应用权限的申请。若无，请参见：[接口应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - MealApplyAddRequest
 //
 // @return MealApplyAddResponse
@@ -16563,6 +19039,12 @@ func (client *Client) MealApplyAdd(request *MealApplyAddRequest) (_result *MealA
 // Summary:
 //
 // 更新用餐申请单状态
+//
+// Description:
+//
+// - 调用本接口前，请完成**用餐审批单**相关应用权限的申请。若无，请参见：[接口应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param request - MealApplyApproveRequest
 //
@@ -16636,6 +19118,12 @@ func (client *Client) MealApplyApproveWithOptions(request *MealApplyApproveReque
 //
 // 更新用餐申请单状态
 //
+// Description:
+//
+// - 调用本接口前，请完成**用餐审批单**相关应用权限的申请。若无，请参见：[接口应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - MealApplyApproveRequest
 //
 // @return MealApplyApproveResponse
@@ -16654,6 +19142,12 @@ func (client *Client) MealApplyApprove(request *MealApplyApproveRequest) (_resul
 // Summary:
 //
 // 修改用餐审批单
+//
+// Description:
+//
+// - 调用本接口前，请完成**用餐审批单**相关应用权限的申请。若无，请参见：[接口应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param tmpReq - MealApplyModifyRequest
 //
@@ -16769,6 +19263,12 @@ func (client *Client) MealApplyModifyWithOptions(tmpReq *MealApplyModifyRequest,
 //
 // 修改用餐审批单
 //
+// Description:
+//
+// - 调用本接口前，请完成**用餐审批单**相关应用权限的申请。若无，请参见：[接口应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - MealApplyModifyRequest
 //
 // @return MealApplyModifyResponse
@@ -16787,6 +19287,12 @@ func (client *Client) MealApplyModify(request *MealApplyModifyRequest) (_result 
 // Summary:
 //
 // 查询用餐申请单
+//
+// Description:
+//
+// - 调用本接口前，请完成**用餐审批单**相关应用权限的申请。若无，请参见：[接口应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param request - MealApplyQueryRequest
 //
@@ -16844,6 +19350,12 @@ func (client *Client) MealApplyQueryWithOptions(request *MealApplyQueryRequest, 
 //
 // 查询用餐申请单
 //
+// Description:
+//
+// - 调用本接口前，请完成**用餐审批单**相关应用权限的申请。若无，请参见：[接口应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - MealApplyQueryRequest
 //
 // @return MealApplyQueryResponse
@@ -16862,6 +19374,16 @@ func (client *Client) MealApplyQuery(request *MealApplyQueryRequest) (_result *M
 // Summary:
 //
 // 查询因公用餐记账数据
+//
+// Description:
+//
+// - 调用本接口前，请完成**商旅账单数据**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将`app_key`作为必填参数拼接在请求地址中。`app_key`的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 查询时，记账数据起止时间的间隔规则为：1 小时 ≤记账截止时间 - 记账起始时间 ≤ 24 小时。
+//
+// - 为保证数据准确性，阿里商旅记账数据的更新时机为当前时间 + 1 小时。
 //
 // @param request - MealBillSettlementQueryRequest
 //
@@ -16959,6 +19481,16 @@ func (client *Client) MealBillSettlementQueryWithOptions(request *MealBillSettle
 //
 // 查询因公用餐记账数据
 //
+// Description:
+//
+// - 调用本接口前，请完成**商旅账单数据**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将`app_key`作为必填参数拼接在请求地址中。`app_key`的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 查询时，记账数据起止时间的间隔规则为：1 小时 ≤记账截止时间 - 记账起始时间 ≤ 24 小时。
+//
+// - 为保证数据准确性，阿里商旅记账数据的更新时机为当前时间 + 1 小时。
+//
 // @param request - MealBillSettlementQueryRequest
 //
 // @return MealBillSettlementQueryResponse
@@ -16977,6 +19509,14 @@ func (client *Client) MealBillSettlementQuery(request *MealBillSettlementQueryRe
 // Summary:
 //
 // 获取用餐订单详情
+//
+// Description:
+//
+// 使用该接口可以查询用餐订单详情
+//
+// 1. 使用该接口需要在应用中开通“订单&客票”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - MealOrderDetailQueryRequest
 //
@@ -17034,6 +19574,14 @@ func (client *Client) MealOrderDetailQueryWithOptions(orderId *string, request *
 //
 // 获取用餐订单详情
 //
+// Description:
+//
+// 使用该接口可以查询用餐订单详情
+//
+// 1. 使用该接口需要在应用中开通“订单&客票”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - MealOrderDetailQueryRequest
 //
 // @return MealOrderDetailQueryResponse
@@ -17052,6 +19600,14 @@ func (client *Client) MealOrderDetailQuery(orderId *string, request *MealOrderDe
 // Summary:
 //
 // 获取用餐订单列表
+//
+// Description:
+//
+// 使用该接口可以查询订单列表
+//
+// - 使用该接口需要在应用中开通“订单&客票”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - MealOrderListQueryRequest
 //
@@ -17109,6 +19665,14 @@ func (client *Client) MealOrderListQueryWithOptions(request *MealOrderListQueryR
 //
 // 获取用餐订单列表
 //
+// Description:
+//
+// 使用该接口可以查询订单列表
+//
+// - 使用该接口需要在应用中开通“订单&客票”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - MealOrderListQueryRequest
 //
 // @return MealOrderListQueryResponse
@@ -17127,6 +19691,16 @@ func (client *Client) MealOrderListQuery(request *MealOrderListQueryRequest) (_r
 // Summary:
 //
 // 月账单确认
+//
+// Description:
+//
+// - 调用本接口前，请完成**商旅账单数据**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将`app_key`作为必填参数拼接在请求地址中。`app_key`的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 通常为 [BtripBillInfoAdjust](https://openapi.alibtrip.com/doc/toDocDetail?docId=4060203) 字段调整接口的后续步骤。
+//
+// - **调用本接口后，无法再对该账单进行修改。**
 //
 // @param request - MonthBillConfirmRequest
 //
@@ -17188,6 +19762,16 @@ func (client *Client) MonthBillConfirmWithOptions(request *MonthBillConfirmReque
 //
 // 月账单确认
 //
+// Description:
+//
+// - 调用本接口前，请完成**商旅账单数据**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将`app_key`作为必填参数拼接在请求地址中。`app_key`的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 通常为 [BtripBillInfoAdjust](https://openapi.alibtrip.com/doc/toDocDetail?docId=4060203) 字段调整接口的后续步骤。
+//
+// - **调用本接口后，无法再对该账单进行修改。**
+//
 // @param request - MonthBillConfirmRequest
 //
 // @return MonthBillConfirmResponse
@@ -17206,6 +19790,12 @@ func (client *Client) MonthBillConfirm(request *MonthBillConfirmRequest) (_resul
 // Summary:
 //
 // 查询企业月账单
+//
+// Description:
+//
+// - 调用本接口前，请完成**商旅账单数据**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将`app_key`作为必填参数拼接在请求地址中。`app_key`的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
 //
 // @param request - MonthBillGetRequest
 //
@@ -17267,6 +19857,12 @@ func (client *Client) MonthBillGetWithOptions(request *MonthBillGetRequest, head
 //
 // 查询企业月账单
 //
+// Description:
+//
+// - 调用本接口前，请完成**商旅账单数据**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将`app_key`作为必填参数拼接在请求地址中。`app_key`的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
 // @param request - MonthBillGetRequest
 //
 // @return MonthBillGetResponse
@@ -17285,6 +19881,14 @@ func (client *Client) MonthBillGet(request *MonthBillGetRequest) (_result *Month
 // Summary:
 //
 // 查询拆分版企业月账单
+//
+// Description:
+//
+// - 调用本接口前，请完成商旅账单数据相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.5f19281fYqtdBn&docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将app_key作为必填参数拼接在请求地址中。app_key的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.5f19281fYQj6Uy&docId=4667763)。
+//
+// - 请联系您的客户经理进行接口权限的开通。
 //
 // @param tmpReq - MonthBillSplitGetRequest
 //
@@ -17360,6 +19964,14 @@ func (client *Client) MonthBillSplitGetWithOptions(tmpReq *MonthBillSplitGetRequ
 //
 // 查询拆分版企业月账单
 //
+// Description:
+//
+// - 调用本接口前，请完成商旅账单数据相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.5f19281fYqtdBn&docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将app_key作为必填参数拼接在请求地址中。app_key的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?spm=openapi-amp.newDocPublishment.0.0.5f19281fYQj6Uy&docId=4667763)。
+//
+// - 请联系您的客户经理进行接口权限的开通。
+//
 // @param request - MonthBillSplitGetRequest
 //
 // @return MonthBillSplitGetResponse
@@ -17378,6 +19990,12 @@ func (client *Client) MonthBillSplitGet(request *MonthBillSplitGetRequest) (_res
 // Summary:
 //
 // 查询企业预出账月账单
+//
+// Description:
+//
+// - 调用本接口前，请完成**商旅账单数据**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将`app_key`作为必填参数拼接在请求地址中。`app_key`的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
 //
 // @param request - MonthPreBillGetRequest
 //
@@ -17439,6 +20057,12 @@ func (client *Client) MonthPreBillGetWithOptions(request *MonthPreBillGetRequest
 //
 // 查询企业预出账月账单
 //
+// Description:
+//
+// - 调用本接口前，请完成**商旅账单数据**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将`app_key`作为必填参数拼接在请求地址中。`app_key`的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
 // @param request - MonthPreBillGetRequest
 //
 // @return MonthPreBillGetResponse
@@ -17457,6 +20081,12 @@ func (client *Client) MonthPreBillGet(request *MonthPreBillGetRequest) (_result 
 // Summary:
 //
 // 查询订单退款明细
+//
+// Description:
+//
+// 调用方：服务商
+//
+// 实现方：中洲平台
 //
 // @param request - OrderRefundDetailQueryRequest
 //
@@ -17518,6 +20148,12 @@ func (client *Client) OrderRefundDetailQueryWithOptions(request *OrderRefundDeta
 //
 // 查询订单退款明细
 //
+// Description:
+//
+// 调用方：服务商
+//
+// 实现方：中洲平台
+//
 // @param request - OrderRefundDetailQueryRequest
 //
 // @return OrderRefundDetailQueryResponse
@@ -17536,6 +20172,12 @@ func (client *Client) OrderRefundDetailQuery(request *OrderRefundDetailQueryRequ
 // Summary:
 //
 // 添加项目
+//
+// Description:
+//
+// - 调用本接口前，请完成**费用归属**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将`app_key`作为必填参数拼接在请求地址中。`app_key`的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
 //
 // @param request - ProjectAddRequest
 //
@@ -17613,6 +20255,12 @@ func (client *Client) ProjectAddWithOptions(request *ProjectAddRequest, headers 
 //
 // 添加项目
 //
+// Description:
+//
+// - 调用本接口前，请完成**费用归属**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将`app_key`作为必填参数拼接在请求地址中。`app_key`的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
 // @param request - ProjectAddRequest
 //
 // @return ProjectAddResponse
@@ -17631,6 +20279,12 @@ func (client *Client) ProjectAdd(request *ProjectAddRequest) (_result *ProjectAd
 // Summary:
 //
 // 删除项目
+//
+// Description:
+//
+// - 调用本接口前，请完成**费用归属**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将`app_key`作为必填参数拼接在请求地址中。`app_key`的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
 //
 // @param request - ProjectDeleteRequest
 //
@@ -17688,6 +20342,12 @@ func (client *Client) ProjectDeleteWithOptions(request *ProjectDeleteRequest, he
 //
 // 删除项目
 //
+// Description:
+//
+// - 调用本接口前，请完成**费用归属**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将`app_key`作为必填参数拼接在请求地址中。`app_key`的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
 // @param request - ProjectDeleteRequest
 //
 // @return ProjectDeleteResponse
@@ -17706,6 +20366,12 @@ func (client *Client) ProjectDelete(request *ProjectDeleteRequest) (_result *Pro
 // Summary:
 //
 // 变更项目
+//
+// Description:
+//
+// - 调用本接口前，请完成**费用归属**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将`app_key`作为必填参数拼接在请求地址中。`app_key`的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
 //
 // @param request - ProjectModifyRequest
 //
@@ -17783,6 +20449,12 @@ func (client *Client) ProjectModifyWithOptions(request *ProjectModifyRequest, he
 //
 // 变更项目
 //
+// Description:
+//
+// - 调用本接口前，请完成**费用归属**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将`app_key`作为必填参数拼接在请求地址中。`app_key`的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
 // @param request - ProjectModifyRequest
 //
 // @return ProjectModifyResponse
@@ -17801,6 +20473,14 @@ func (client *Client) ProjectModify(request *ProjectModifyRequest) (_result *Pro
 // Summary:
 //
 // 查询赔付信息
+//
+// Description:
+//
+// 使用该接口可以获取查询赔付信息列表。
+//
+// 1.  使用该接口需要在应用中开通“订单&客票”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - QueryCompenInfosForOpRequest
 //
@@ -17866,6 +20546,14 @@ func (client *Client) QueryCompenInfosForOpWithOptions(request *QueryCompenInfos
 //
 // 查询赔付信息
 //
+// Description:
+//
+// 使用该接口可以获取查询赔付信息列表。
+//
+// 1.  使用该接口需要在应用中开通“订单&客票”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - QueryCompenInfosForOpRequest
 //
 // @return QueryCompenInfosForOpResponse
@@ -17884,6 +20572,16 @@ func (client *Client) QueryCompenInfosForOp(request *QueryCompenInfosForOpReques
 // Summary:
 //
 // 查询企业信息详情
+//
+// Description:
+//
+// - 调用本接口前，请完成企业账户相关应用权限的申请。若无，请参考：[获取应用权限](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support)。完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 app_key 作为必填参数拼接在请求地址中。app_key 的获取方式请参见：[应用基础信息-应用凭证](https://open.alibtrip.com/#/document/server/application-of-basic-information?handbookId=development-support)。
+//
+// - 入参中 target_corp_id 以及 target_third_corp_id 在使用时，仅需二选一传入；都传入时将以 target_corp_id 为准；
+//
+// - 若传入了 target_third_corp_id，则 account_id 必填。
 //
 // @param request - QueryCorpDetailInfoRequest
 //
@@ -17949,6 +20647,16 @@ func (client *Client) QueryCorpDetailInfoWithOptions(request *QueryCorpDetailInf
 //
 // 查询企业信息详情
 //
+// Description:
+//
+// - 调用本接口前，请完成企业账户相关应用权限的申请。若无，请参考：[获取应用权限](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support)。完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 app_key 作为必填参数拼接在请求地址中。app_key 的获取方式请参见：[应用基础信息-应用凭证](https://open.alibtrip.com/#/document/server/application-of-basic-information?handbookId=development-support)。
+//
+// - 入参中 target_corp_id 以及 target_third_corp_id 在使用时，仅需二选一传入；都传入时将以 target_corp_id 为准；
+//
+// - 若传入了 target_third_corp_id，则 account_id 必填。
+//
 // @param request - QueryCorpDetailInfoRequest
 //
 // @return QueryCorpDetailInfoResponse
@@ -17967,6 +20675,12 @@ func (client *Client) QueryCorpDetailInfo(request *QueryCorpDetailInfoRequest) (
 // Summary:
 //
 // 获取单个员工信息
+//
+// Description:
+//
+// - 调用本接口前，请完成**组织人员同步**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435) 完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key` 作为必填参数拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
 //
 // @param request - QueryEmployeeDetailRequest
 //
@@ -18024,6 +20738,12 @@ func (client *Client) QueryEmployeeDetailWithOptions(request *QueryEmployeeDetai
 //
 // 获取单个员工信息
 //
+// Description:
+//
+// - 调用本接口前，请完成**组织人员同步**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435) 完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key` 作为必填参数拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
 // @param request - QueryEmployeeDetailRequest
 //
 // @return QueryEmployeeDetailResponse
@@ -18042,6 +20762,14 @@ func (client *Client) QueryEmployeeDetail(request *QueryEmployeeDetailRequest) (
 // Summary:
 //
 // 查询子企业列表
+//
+// Description:
+//
+// - 在调用本接口之前，请先完成**主子账户**功能的开启。若无，请参考：[账户管理](https://www.yuque.com/alibtrip/ql4yyy/fp8el1)完成相关操作。
+//
+// - 在调用本接口前，请先完成**组织人员同步**相关应用权限申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key` 作为**必填参数**拼接在请求地址中。`app_key` 获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
 //
 // @param request - QueryGroupCorpListRequest
 //
@@ -18099,6 +20827,14 @@ func (client *Client) QueryGroupCorpListWithOptions(request *QueryGroupCorpListR
 //
 // 查询子企业列表
 //
+// Description:
+//
+// - 在调用本接口之前，请先完成**主子账户**功能的开启。若无，请参考：[账户管理](https://www.yuque.com/alibtrip/ql4yyy/fp8el1)完成相关操作。
+//
+// - 在调用本接口前，请先完成**组织人员同步**相关应用权限申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key` 作为**必填参数**拼接在请求地址中。`app_key` 获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
 // @param request - QueryGroupCorpListRequest
 //
 // @return QueryGroupCorpListResponse
@@ -18117,6 +20853,14 @@ func (client *Client) QueryGroupCorpList(request *QueryGroupCorpListRequest) (_r
 // Summary:
 //
 // 报销单查询
+//
+// Description:
+//
+// 使用该接口可以“查询报销审批单信息”。
+//
+// 1. 使用该接口需要在应用中开通“查询报销审批单详情”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - QueryReimbursementOrderRequest
 //
@@ -18178,6 +20922,14 @@ func (client *Client) QueryReimbursementOrderWithOptions(request *QueryReimburse
 //
 // 报销单查询
 //
+// Description:
+//
+// 使用该接口可以“查询报销审批单信息”。
+//
+// 1. 使用该接口需要在应用中开通“查询报销审批单详情”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - QueryReimbursementOrderRequest
 //
 // @return QueryReimbursementOrderResponse
@@ -18196,6 +20948,12 @@ func (client *Client) QueryReimbursementOrder(request *QueryReimbursementOrderRe
 // Summary:
 //
 // 删除项目负责人
+//
+// Description:
+//
+// 调用本接口前，请完成**费用归属**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435) 完成相关操作。
+//
+//   - 通过 HTTP 方式调用本接口时，需要将`app_key`作为必填参数拼接在请求地址中。`app_key`的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
 //
 // @param tmpReq - RemoveProjectManagerRequest
 //
@@ -18271,6 +21029,12 @@ func (client *Client) RemoveProjectManagerWithOptions(tmpReq *RemoveProjectManag
 //
 // 删除项目负责人
 //
+// Description:
+//
+// 调用本接口前，请完成**费用归属**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435) 完成相关操作。
+//
+//   - 通过 HTTP 方式调用本接口时，需要将`app_key`作为必填参数拼接在请求地址中。`app_key`的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
 // @param request - RemoveProjectManagerRequest
 //
 // @return RemoveProjectManagerResponse
@@ -18289,6 +21053,16 @@ func (client *Client) RemoveProjectManager(request *RemoveProjectManagerRequest)
 // Summary:
 //
 // 单个人员同步
+//
+// Description:
+//
+// 使用该接口可以往商旅对应的部门中进行单条人员信息的同步。
+//
+// 使用该接口需要在应用中开通组织人员同步权限，具体的数据权限申请流程请查看接口权限申请流程
+//
+// 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看企业访问凭证
+//
+// 如有涉及到收费的 API，请在第一句加上粗体的“请确保在使用该接口前，已充分了解XXX产品的收费方式和价格。”其中价格是个超链，链接为：https://www.aliyun.com/price/product#/ecs/detail
 //
 // @param tmpReq - SyncSingleUserRequest
 //
@@ -18392,6 +21166,16 @@ func (client *Client) SyncSingleUserWithOptions(tmpReq *SyncSingleUserRequest, h
 //
 // 单个人员同步
 //
+// Description:
+//
+// 使用该接口可以往商旅对应的部门中进行单条人员信息的同步。
+//
+// 使用该接口需要在应用中开通组织人员同步权限，具体的数据权限申请流程请查看接口权限申请流程
+//
+// 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看企业访问凭证
+//
+// 如有涉及到收费的 API，请在第一句加上粗体的“请确保在使用该接口前，已充分了解XXX产品的收费方式和价格。”其中价格是个超链，链接为：https://www.aliyun.com/price/product#/ecs/detail
+//
 // @param request - SyncSingleUserRequest
 //
 // @return SyncSingleUserResponse
@@ -18410,6 +21194,14 @@ func (client *Client) SyncSingleUser(request *SyncSingleUserRequest) (_result *S
 // Summary:
 //
 // 同步三方用户映射关系
+//
+// Description:
+//
+// - **适用场景**：当企业人员数据是由 A 系统推送至阿里商旅，同时又希望在 B 系统中实现阿里商旅单点跳转等人员信息关联映射需求时，可通过本接口进行实现人员数据的同步映射。
+//
+// - 调用本接口前，请完成**组织人员同步**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key` 作为**必填参数**拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
 //
 // @param request - SyncThirdUserMappingRequest
 //
@@ -18479,6 +21271,14 @@ func (client *Client) SyncThirdUserMappingWithOptions(request *SyncThirdUserMapp
 //
 // 同步三方用户映射关系
 //
+// Description:
+//
+// - **适用场景**：当企业人员数据是由 A 系统推送至阿里商旅，同时又希望在 B 系统中实现阿里商旅单点跳转等人员信息关联映射需求时，可通过本接口进行实现人员数据的同步映射。
+//
+// - 调用本接口前，请完成**组织人员同步**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key` 作为**必填参数**拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
 // @param request - SyncThirdUserMappingRequest
 //
 // @return SyncThirdUserMappingResponse
@@ -18497,6 +21297,14 @@ func (client *Client) SyncThirdUserMapping(request *SyncThirdUserMappingRequest)
 // Summary:
 //
 // 查询淘宝账号信息
+//
+// Description:
+//
+// 使用该接口可以“查询淘宝账号信息”。
+//
+// 1. 使用该接口需要在应用中开通“用户账户”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param headers - TBAccountInfoQueryHeaders
 //
@@ -18540,6 +21348,14 @@ func (client *Client) TBAccountInfoQueryWithOptions(userId *string, headers *TBA
 //
 // 查询淘宝账号信息
 //
+// Description:
+//
+// 使用该接口可以“查询淘宝账号信息”。
+//
+// 1. 使用该接口需要在应用中开通“用户账户”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @return TBAccountInfoQueryResponse
 func (client *Client) TBAccountInfoQuery(userId *string) (_result *TBAccountInfoQueryResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
@@ -18556,6 +21372,14 @@ func (client *Client) TBAccountInfoQuery(userId *string) (_result *TBAccountInfo
 // Summary:
 //
 // 解绑淘宝账号
+//
+// Description:
+//
+// 使用该接口可以“淘宝账号解绑”。
+//
+// 1. 使用该接口需要在应用中开通“用户账户”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param headers - TBAccountUnbindHeaders
 //
@@ -18599,6 +21423,14 @@ func (client *Client) TBAccountUnbindWithOptions(userId *string, headers *TBAcco
 //
 // 解绑淘宝账号
 //
+// Description:
+//
+// 使用该接口可以“淘宝账号解绑”。
+//
+// 1. 使用该接口需要在应用中开通“用户账户”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @return TBAccountUnbindResponse
 func (client *Client) TBAccountUnbind(userId *string) (_result *TBAccountUnbindResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
@@ -18615,6 +21447,14 @@ func (client *Client) TBAccountUnbind(userId *string) (_result *TBAccountUnbindR
 // Summary:
 //
 // 机票改签申请
+//
+// Description:
+//
+// 使用该接口可以机票改签申请。
+//
+// - 使用该接口需要在应用中开通机票服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param tmpReq - TicketChangingApplyRequest
 //
@@ -18706,6 +21546,14 @@ func (client *Client) TicketChangingApplyWithOptions(tmpReq *TicketChangingApply
 //
 // 机票改签申请
 //
+// Description:
+//
+// 使用该接口可以机票改签申请。
+//
+// - 使用该接口需要在应用中开通机票服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - TicketChangingApplyRequest
 //
 // @return TicketChangingApplyResponse
@@ -18724,6 +21572,14 @@ func (client *Client) TicketChangingApply(request *TicketChangingApplyRequest) (
 // Summary:
 //
 // 机票改签取消
+//
+// Description:
+//
+// 使用该接口可以机票改签取消。
+//
+// - 使用该接口需要在应用中开通机票服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param request - TicketChangingCancelRequest
 //
@@ -18785,6 +21641,14 @@ func (client *Client) TicketChangingCancelWithOptions(request *TicketChangingCan
 //
 // 机票改签取消
 //
+// Description:
+//
+// 使用该接口可以机票改签取消。
+//
+// - 使用该接口需要在应用中开通机票服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - TicketChangingCancelRequest
 //
 // @return TicketChangingCancelResponse
@@ -18803,6 +21667,14 @@ func (client *Client) TicketChangingCancel(request *TicketChangingCancelRequest)
 // Summary:
 //
 // 机票改签详情
+//
+// Description:
+//
+// 使用该接口可以查询商旅机票改签单详情
+//
+// 1. 使用该接口需要在应用中开通“接口名称”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param request - TicketChangingDetailRequest
 //
@@ -18864,6 +21736,14 @@ func (client *Client) TicketChangingDetailWithOptions(request *TicketChangingDet
 //
 // 机票改签详情
 //
+// Description:
+//
+// 使用该接口可以查询商旅机票改签单详情
+//
+// 1. 使用该接口需要在应用中开通“接口名称”权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - TicketChangingDetailRequest
 //
 // @return TicketChangingDetailResponse
@@ -18882,6 +21762,14 @@ func (client *Client) TicketChangingDetail(request *TicketChangingDetailRequest)
 // Summary:
 //
 // 机票改签询价
+//
+// Description:
+//
+// 使用该接口可以机票改签询价。
+//
+// - 使用该接口需要在应用中开通机票服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param request - TicketChangingEnquiryRequest
 //
@@ -18963,6 +21851,14 @@ func (client *Client) TicketChangingEnquiryWithOptions(request *TicketChangingEn
 //
 // 机票改签询价
 //
+// Description:
+//
+// 使用该接口可以机票改签询价。
+//
+// - 使用该接口需要在应用中开通机票服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - TicketChangingEnquiryRequest
 //
 // @return TicketChangingEnquiryResponse
@@ -18981,6 +21877,14 @@ func (client *Client) TicketChangingEnquiry(request *TicketChangingEnquiryReques
 // Summary:
 //
 // 机票改签可改签航班列表
+//
+// Description:
+//
+// 使用该接口可以机票改签可改签航班列表。
+//
+// - 使用该接口需要在应用中开通机票航班权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param tmpReq - TicketChangingFlightListRequest
 //
@@ -19064,6 +21968,14 @@ func (client *Client) TicketChangingFlightListWithOptions(tmpReq *TicketChanging
 //
 // 机票改签可改签航班列表
 //
+// Description:
+//
+// 使用该接口可以机票改签可改签航班列表。
+//
+// - 使用该接口需要在应用中开通机票航班权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - TicketChangingFlightListRequest
 //
 // @return TicketChangingFlightListResponse
@@ -19082,6 +21994,14 @@ func (client *Client) TicketChangingFlightList(request *TicketChangingFlightList
 // Summary:
 //
 // 机票改签航班支付
+//
+// Description:
+//
+// 使用该接口可以机票改签航班支付。
+//
+// - 使用该接口需要在应用中开通机票服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param tmpReq - TicketChangingPayRequest
 //
@@ -19165,6 +22085,14 @@ func (client *Client) TicketChangingPayWithOptions(tmpReq *TicketChangingPayRequ
 //
 // 机票改签航班支付
 //
+// Description:
+//
+// 使用该接口可以机票改签航班支付。
+//
+// - 使用该接口需要在应用中开通机票服务权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看企业访问凭证[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - TicketChangingPayRequest
 //
 // @return TicketChangingPayResponse
@@ -19183,6 +22111,12 @@ func (client *Client) TicketChangingPay(request *TicketChangingPayRequest) (_res
 // Summary:
 //
 // 火车票改签申请
+//
+// Description:
+//
+// 使用该接口可以查询火车票改签申请
+//
+// 使用该接口需要在应用中开通“火车票服务”权限，具体的数据权限申请流程请查看接口[权限申请流程](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support )使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请[查看企业访问凭证](https://open.alibtrip.com/#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)
 //
 // @param tmpReq - TrainApplyChangeRequest
 //
@@ -19272,6 +22206,12 @@ func (client *Client) TrainApplyChangeWithOptions(tmpReq *TrainApplyChangeReques
 //
 // 火车票改签申请
 //
+// Description:
+//
+// 使用该接口可以查询火车票改签申请
+//
+// 使用该接口需要在应用中开通“火车票服务”权限，具体的数据权限申请流程请查看接口[权限申请流程](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support )使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请[查看企业访问凭证](https://open.alibtrip.com/#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)
+//
 // @param request - TrainApplyChangeRequest
 //
 // @return TrainApplyChangeResponse
@@ -19290,6 +22230,12 @@ func (client *Client) TrainApplyChange(request *TrainApplyChangeRequest) (_resul
 // Summary:
 //
 // 火车票退票申请
+//
+// Description:
+//
+// 使用该接口可以查询火车票申请退票
+//
+// 使用该接口需要在应用中开通“火车票服务”权限，具体的数据权限申请流程请查看接口[权限申请流程](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support )使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请[查看企业访问凭证](https://open.alibtrip.com/#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)
 //
 // @param tmpReq - TrainApplyRefundRequest
 //
@@ -19365,6 +22311,12 @@ func (client *Client) TrainApplyRefundWithOptions(tmpReq *TrainApplyRefundReques
 //
 // 火车票退票申请
 //
+// Description:
+//
+// 使用该接口可以查询火车票申请退票
+//
+// 使用该接口需要在应用中开通“火车票服务”权限，具体的数据权限申请流程请查看接口[权限申请流程](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support )使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请[查看企业访问凭证](https://open.alibtrip.com/#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)
+//
 // @param request - TrainApplyRefundRequest
 //
 // @return TrainApplyRefundResponse
@@ -19383,6 +22335,16 @@ func (client *Client) TrainApplyRefund(request *TrainApplyRefundRequest) (_resul
 // Summary:
 //
 // 查询火车票记账数据
+//
+// Description:
+//
+// - 调用本接口前，请完成**商旅账单数据**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将`app_key`作为必填参数拼接在请求地址中。`app_key`的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 查询时，记账数据起止时间的间隔规则为：1 小时 ≤记账截止时间 - 记账起始时间 ≤ 24 小时。
+//
+// - 为保证数据准确性，阿里商旅记账数据的更新时机为当前时间 + 1 小时。
 //
 // @param request - TrainBillSettlementQueryRequest
 //
@@ -19480,6 +22442,16 @@ func (client *Client) TrainBillSettlementQueryWithOptions(request *TrainBillSett
 //
 // 查询火车票记账数据
 //
+// Description:
+//
+// - 调用本接口前，请完成**商旅账单数据**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将`app_key`作为必填参数拼接在请求地址中。`app_key`的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 查询时，记账数据起止时间的间隔规则为：1 小时 ≤记账截止时间 - 记账起始时间 ≤ 24 小时。
+//
+// - 为保证数据准确性，阿里商旅记账数据的更新时机为当前时间 + 1 小时。
+//
 // @param request - TrainBillSettlementQueryRequest
 //
 // @return TrainBillSettlementQueryResponse
@@ -19498,6 +22470,14 @@ func (client *Client) TrainBillSettlementQuery(request *TrainBillSettlementQuery
 // Summary:
 //
 // 查询火车超标审批详情
+//
+// Description:
+//
+// 使用该接口可以获取指定企业的火车超标审批详情。
+//
+// - 使用该接口需要在应用中开通超标审批数据权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - TrainExceedApplyQueryRequest
 //
@@ -19559,6 +22539,14 @@ func (client *Client) TrainExceedApplyQueryWithOptions(request *TrainExceedApply
 //
 // 查询火车超标审批详情
 //
+// Description:
+//
+// 使用该接口可以获取指定企业的火车超标审批详情。
+//
+// - 使用该接口需要在应用中开通超标审批数据权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - TrainExceedApplyQueryRequest
 //
 // @return TrainExceedApplyQueryResponse
@@ -19577,6 +22565,12 @@ func (client *Client) TrainExceedApplyQuery(request *TrainExceedApplyQueryReques
 // Summary:
 //
 // 火车票改签费用预估
+//
+// Description:
+//
+// 使用该接口可以查询火车票改签费用预估
+//
+// 使用该接口需要在应用中开通“火车票服务”权限，具体的数据权限申请流程请查看接口[权限申请流程](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support )使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请[查看企业访问凭证](https://open.alibtrip.com/#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)
 //
 // @param tmpReq - TrainFeeCalculateChangeRequest
 //
@@ -19648,6 +22642,12 @@ func (client *Client) TrainFeeCalculateChangeWithOptions(tmpReq *TrainFeeCalcula
 //
 // 火车票改签费用预估
 //
+// Description:
+//
+// 使用该接口可以查询火车票改签费用预估
+//
+// 使用该接口需要在应用中开通“火车票服务”权限，具体的数据权限申请流程请查看接口[权限申请流程](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support )使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请[查看企业访问凭证](https://open.alibtrip.com/#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)
+//
 // @param request - TrainFeeCalculateChangeRequest
 //
 // @return TrainFeeCalculateChangeResponse
@@ -19666,6 +22666,12 @@ func (client *Client) TrainFeeCalculateChange(request *TrainFeeCalculateChangeRe
 // Summary:
 //
 // 火车票退票费用预估
+//
+// Description:
+//
+// 使用该接口可以查询火车票退票费用预估
+//
+// 使用该接口需要在应用中开通“火车票服务”权限，具体的数据权限申请流程请查看接口[权限申请流程](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support )使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请[查看企业访问凭证](https://open.alibtrip.com/#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)
 //
 // @param tmpReq - TrainFeeCalculateRefundRequest
 //
@@ -19737,6 +22743,12 @@ func (client *Client) TrainFeeCalculateRefundWithOptions(tmpReq *TrainFeeCalcula
 //
 // 火车票退票费用预估
 //
+// Description:
+//
+// 使用该接口可以查询火车票退票费用预估
+//
+// 使用该接口需要在应用中开通“火车票服务”权限，具体的数据权限申请流程请查看接口[权限申请流程](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support )使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请[查看企业访问凭证](https://open.alibtrip.com/#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)
+//
 // @param request - TrainFeeCalculateRefundRequest
 //
 // @return TrainFeeCalculateRefundResponse
@@ -19755,6 +22767,12 @@ func (client *Client) TrainFeeCalculateRefund(request *TrainFeeCalculateRefundRe
 // Summary:
 //
 // 火车票车次详情查询
+//
+// Description:
+//
+// 使用该接口可以查询车次详情
+//
+// 使用该接口需要在应用中开通“火车票服务”权限，具体的数据权限申请流程请查看接口[权限申请流程](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support )使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请[查看企业访问凭证](https://open.alibtrip.com/#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)
 //
 // @param request - TrainNoInfoSearchRequest
 //
@@ -19840,6 +22858,12 @@ func (client *Client) TrainNoInfoSearchWithOptions(request *TrainNoInfoSearchReq
 //
 // 火车票车次详情查询
 //
+// Description:
+//
+// 使用该接口可以查询车次详情
+//
+// 使用该接口需要在应用中开通“火车票服务”权限，具体的数据权限申请流程请查看接口[权限申请流程](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support )使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请[查看企业访问凭证](https://open.alibtrip.com/#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)
+//
 // @param request - TrainNoInfoSearchRequest
 //
 // @return TrainNoInfoSearchResponse
@@ -19858,6 +22882,12 @@ func (client *Client) TrainNoInfoSearch(request *TrainNoInfoSearchRequest) (_res
 // Summary:
 //
 // 火车票车次列表查询
+//
+// Description:
+//
+// 使用该接口可以查询车次列表
+//
+// 使用该接口需要在应用中开通“火车票服务”权限，具体的数据权限申请流程请查看接口[权限申请流程](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support )使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请[查看企业访问凭证](https://open.alibtrip.com/#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)
 //
 // @param tmpReq - TrainNoListSearchRequest
 //
@@ -19937,6 +22967,12 @@ func (client *Client) TrainNoListSearchWithOptions(tmpReq *TrainNoListSearchRequ
 //
 // 火车票车次列表查询
 //
+// Description:
+//
+// 使用该接口可以查询车次列表
+//
+// 使用该接口需要在应用中开通“火车票服务”权限，具体的数据权限申请流程请查看接口[权限申请流程](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support )使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请[查看企业访问凭证](https://open.alibtrip.com/#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)
+//
 // @param request - TrainNoListSearchRequest
 //
 // @return TrainNoListSearchResponse
@@ -19955,6 +22991,12 @@ func (client *Client) TrainNoListSearch(request *TrainNoListSearchRequest) (_res
 // Summary:
 //
 // 火车票订单取消
+//
+// Description:
+//
+// - 使用该接口需要在应用中开通“阿里商旅分销-火车票服务”接口权限，权限申请流程可参见：[获取应用权限](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support )。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息`x-acs-btrip-corp-token`，企业调用凭证数据获取方式，请参见：[企业访问凭证](https://open.alibtrip.com/#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)。
 //
 // @param request - TrainOrderCancelRequest
 //
@@ -20024,6 +23066,12 @@ func (client *Client) TrainOrderCancelWithOptions(request *TrainOrderCancelReque
 //
 // 火车票订单取消
 //
+// Description:
+//
+// - 使用该接口需要在应用中开通“阿里商旅分销-火车票服务”接口权限，权限申请流程可参见：[获取应用权限](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support )。
+//
+// - 使用该接口需要在请求头中放入企业调用凭证数据信息`x-acs-btrip-corp-token`，企业调用凭证数据获取方式，请参见：[企业访问凭证](https://open.alibtrip.com/#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)。
+//
 // @param request - TrainOrderCancelRequest
 //
 // @return TrainOrderCancelResponse
@@ -20042,6 +23090,12 @@ func (client *Client) TrainOrderCancel(request *TrainOrderCancelRequest) (_resul
 // Summary:
 //
 // 火车票改签确认
+//
+// Description:
+//
+// 使用该接口可以查询火车票改签确认
+//
+// 使用该接口需要在应用中开通“火车票服务”权限，具体的数据权限申请流程请查看接口[权限申请流程](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support )使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请[查看企业访问凭证](https://open.alibtrip.com/#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)
 //
 // @param request - TrainOrderChangeConfirmRequest
 //
@@ -20115,6 +23169,12 @@ func (client *Client) TrainOrderChangeConfirmWithOptions(request *TrainOrderChan
 //
 // 火车票改签确认
 //
+// Description:
+//
+// 使用该接口可以查询火车票改签确认
+//
+// 使用该接口需要在应用中开通“火车票服务”权限，具体的数据权限申请流程请查看接口[权限申请流程](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support )使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请[查看企业访问凭证](https://open.alibtrip.com/#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)
+//
 // @param request - TrainOrderChangeConfirmRequest
 //
 // @return TrainOrderChangeConfirmResponse
@@ -20133,6 +23193,12 @@ func (client *Client) TrainOrderChangeConfirm(request *TrainOrderChangeConfirmRe
 // Summary:
 //
 // 火车票正向预订
+//
+// Description:
+//
+// 使用该接口可以查询火车票创单
+//
+// 使用该接口需要在应用中开通“火车票服务”权限，具体的数据权限申请流程请查看接口[权限申请流程](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support )使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请[查看企业访问凭证](https://open.alibtrip.com/#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)
 //
 // @param tmpReq - TrainOrderCreateRequest
 //
@@ -20244,6 +23310,12 @@ func (client *Client) TrainOrderCreateWithOptions(tmpReq *TrainOrderCreateReques
 //
 // 火车票正向预订
 //
+// Description:
+//
+// 使用该接口可以查询火车票创单
+//
+// 使用该接口需要在应用中开通“火车票服务”权限，具体的数据权限申请流程请查看接口[权限申请流程](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support )使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请[查看企业访问凭证](https://open.alibtrip.com/#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)
+//
 // @param request - TrainOrderCreateRequest
 //
 // @return TrainOrderCreateResponse
@@ -20262,6 +23334,12 @@ func (client *Client) TrainOrderCreate(request *TrainOrderCreateRequest) (_resul
 // Summary:
 //
 // 火车票订单详情
+//
+// Description:
+//
+// 使用该接口可以查询火车票订单详情
+//
+// 使用该接口需要在应用中开通“火车票服务”权限，具体的数据权限申请流程请查看接口[权限申请流程](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support )使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请[查看企业访问凭证](https://open.alibtrip.com/#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)
 //
 // @param request - TrainOrderDetailQueryRequest
 //
@@ -20323,6 +23401,12 @@ func (client *Client) TrainOrderDetailQueryWithOptions(request *TrainOrderDetail
 //
 // 火车票订单详情
 //
+// Description:
+//
+// 使用该接口可以查询火车票订单详情
+//
+// 使用该接口需要在应用中开通“火车票服务”权限，具体的数据权限申请流程请查看接口[权限申请流程](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support )使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请[查看企业访问凭证](https://open.alibtrip.com/#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)
+//
 // @param request - TrainOrderDetailQueryRequest
 //
 // @return TrainOrderDetailQueryResponse
@@ -20341,6 +23425,14 @@ func (client *Client) TrainOrderDetailQuery(request *TrainOrderDetailQueryReques
 // Summary:
 //
 // 查询火车票订单列表
+//
+// Description:
+//
+// 使用该接口可以查询指定企业的火车票订单列表。
+//
+// 1. 使用该接口需要在应用中开通商旅订单数据权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - TrainOrderListQueryRequest
 //
@@ -20438,6 +23530,14 @@ func (client *Client) TrainOrderListQueryWithOptions(request *TrainOrderListQuer
 //
 // 查询火车票订单列表
 //
+// Description:
+//
+// 使用该接口可以查询指定企业的火车票订单列表。
+//
+// 1. 使用该接口需要在应用中开通商旅订单数据权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - TrainOrderListQueryRequest
 //
 // @return TrainOrderListQueryResponse
@@ -20456,6 +23556,12 @@ func (client *Client) TrainOrderListQuery(request *TrainOrderListQueryRequest) (
 // Summary:
 //
 // 火车票订单支付
+//
+// Description:
+//
+// 使用该接口可以查询火车票正向订单支付
+//
+// 使用该接口需要在应用中开通“火车票服务”权限，具体的数据权限申请流程请查看接口[权限申请流程](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support )使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请[查看企业访问凭证](https://open.alibtrip.com/#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)
 //
 // @param request - TrainOrderPayRequest
 //
@@ -20521,6 +23627,12 @@ func (client *Client) TrainOrderPayWithOptions(request *TrainOrderPayRequest, he
 //
 // 火车票订单支付
 //
+// Description:
+//
+// 使用该接口可以查询火车票正向订单支付
+//
+// 使用该接口需要在应用中开通“火车票服务”权限，具体的数据权限申请流程请查看接口[权限申请流程](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support )使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请[查看企业访问凭证](https://open.alibtrip.com/#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)
+//
 // @param request - TrainOrderPayRequest
 //
 // @return TrainOrderPayResponse
@@ -20539,6 +23651,14 @@ func (client *Client) TrainOrderPay(request *TrainOrderPayRequest) (_result *Tra
 // Summary:
 //
 // 查询火车票订单详情（含票信息）
+//
+// Description:
+//
+// 使用该接口可以查询指定企业的火车票订单详情。
+//
+// 1. 使用该接口需要在应用中开通商旅订单数据权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - TrainOrderQueryRequest
 //
@@ -20600,6 +23720,14 @@ func (client *Client) TrainOrderQueryWithOptions(request *TrainOrderQueryRequest
 //
 // 查询火车票订单详情（含票信息）
 //
+// Description:
+//
+// 使用该接口可以查询指定企业的火车票订单详情。
+//
+// 1. 使用该接口需要在应用中开通商旅订单数据权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - TrainOrderQueryRequest
 //
 // @return TrainOrderQueryResponse
@@ -20618,6 +23746,14 @@ func (client *Client) TrainOrderQuery(request *TrainOrderQueryRequest) (_result 
 // Summary:
 //
 // 火车票订单查询V2
+//
+// Description:
+//
+// 使用该接口可以查询指定企业的火车票订单详情。
+//
+// 1. 使用该接口需要在应用中开通商旅订单数据权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - TrainOrderQueryV2Request
 //
@@ -20679,6 +23815,14 @@ func (client *Client) TrainOrderQueryV2WithOptions(request *TrainOrderQueryV2Req
 //
 // 火车票订单查询V2
 //
+// Description:
+//
+// 使用该接口可以查询指定企业的火车票订单详情。
+//
+// 1. 使用该接口需要在应用中开通商旅订单数据权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - TrainOrderQueryV2Request
 //
 // @return TrainOrderQueryV2Response
@@ -20697,6 +23841,14 @@ func (client *Client) TrainOrderQueryV2(request *TrainOrderQueryV2Request) (_res
 // Summary:
 //
 // 查询火车站数据
+//
+// Description:
+//
+// 使用该接口可以查询火车站数据。
+//
+// 1.  使用该接口需要在应用中开通基础数据集权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - TrainStationSearchRequest
 //
@@ -20754,6 +23906,14 @@ func (client *Client) TrainStationSearchWithOptions(request *TrainStationSearchR
 //
 // 查询火车站数据
 //
+// Description:
+//
+// 使用该接口可以查询火车站数据。
+//
+// 1.  使用该接口需要在应用中开通基础数据集权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - TrainStationSearchRequest
 //
 // @return TrainStationSearchResponse
@@ -20772,6 +23932,12 @@ func (client *Client) TrainStationSearch(request *TrainStationSearchRequest) (_r
 // Summary:
 //
 // 火车票经停站查询
+//
+// Description:
+//
+// 使用该接口可以查询车次停靠站
+//
+// 使用该接口需要在应用中开通“火车票服务”权限，具体的数据权限申请流程请查看接口[权限申请流程](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support )使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请[查看企业访问凭证](https://open.alibtrip.com/#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)
 //
 // @param request - TrainStopoverSearchRequest
 //
@@ -20841,6 +24007,12 @@ func (client *Client) TrainStopoverSearchWithOptions(request *TrainStopoverSearc
 //
 // 火车票经停站查询
 //
+// Description:
+//
+// 使用该接口可以查询车次停靠站
+//
+// 使用该接口需要在应用中开通“火车票服务”权限，具体的数据权限申请流程请查看接口[权限申请流程](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support )使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请[查看企业访问凭证](https://open.alibtrip.com/#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)
+//
 // @param request - TrainStopoverSearchRequest
 //
 // @return TrainStopoverSearchResponse
@@ -20859,6 +24031,16 @@ func (client *Client) TrainStopoverSearch(request *TrainStopoverSearchRequest) (
 // Summary:
 //
 // 查询火车票凭证扫描件
+//
+// Description:
+//
+// 使用该接口可以查询火车票凭证明细数据。
+//
+// 1. 增值接口需特殊审批，提交权限前请先和商旅客户运营沟通确认。
+//
+// 2. 使用该接口需要在应用中开通增值服务数据权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// 3. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param request - TrainTicketScanQueryRequest
 //
@@ -20952,6 +24134,16 @@ func (client *Client) TrainTicketScanQueryWithOptions(request *TrainTicketScanQu
 //
 // 查询火车票凭证扫描件
 //
+// Description:
+//
+// 使用该接口可以查询火车票凭证明细数据。
+//
+// 1. 增值接口需特殊审批，提交权限前请先和商旅客户运营沟通确认。
+//
+// 2. 使用该接口需要在应用中开通增值服务数据权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// 3. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - TrainTicketScanQueryRequest
 //
 // @return TrainTicketScanQueryResponse
@@ -20969,7 +24161,15 @@ func (client *Client) TrainTicketScanQuery(request *TrainTicketScanQueryRequest)
 
 // Summary:
 //
-// 查询差标列表
+// Queries the list of enterprise travel standards (including categories such as domestic flights, international flights, train tickets, and hotels).
+//
+// Description:
+//
+// Queries the list of travel standards configured for an enterprise.
+//
+// - To use this operation, enable the travel standard permission in your application. For more information about how to apply for data permissions, see [API Permission Application Process](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435).
+//
+// - To use this operation, include the application access credential (x-acs-btrip-corp-token) in the request header. For more information about how to obtain the application access credential, see [Application Access Credential](https://open.alibtrip.com/#/document/server/corptoken-enterprise-access-credential?handbookId=development-support).
 //
 // @param request - TravelStandardListQueryRequest
 //
@@ -21000,6 +24200,10 @@ func (client *Client) TravelStandardListQueryWithOptions(request *TravelStandard
 
 	if !dara.IsNil(request.RuleName) {
 		query["rule_name"] = request.RuleName
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["user_id"] = request.UserId
 	}
 
 	realHeaders := make(map[string]*string)
@@ -21037,7 +24241,15 @@ func (client *Client) TravelStandardListQueryWithOptions(request *TravelStandard
 
 // Summary:
 //
-// 查询差标列表
+// Queries the list of enterprise travel standards (including categories such as domestic flights, international flights, train tickets, and hotels).
+//
+// Description:
+//
+// Queries the list of travel standards configured for an enterprise.
+//
+// - To use this operation, enable the travel standard permission in your application. For more information about how to apply for data permissions, see [API Permission Application Process](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435).
+//
+// - To use this operation, include the application access credential (x-acs-btrip-corp-token) in the request header. For more information about how to obtain the application access credential, see [Application Access Credential](https://open.alibtrip.com/#/document/server/corptoken-enterprise-access-credential?handbookId=development-support).
 //
 // @param request - TravelStandardListQueryRequest
 //
@@ -21056,7 +24268,15 @@ func (client *Client) TravelStandardListQuery(request *TravelStandardListQueryRe
 
 // Summary:
 //
-// 查询差标详情
+// Queries the details of enterprise travel rules, including categories such as flights, international flights, train tickets, and hotels.
+//
+// Description:
+//
+// Queries the details of travel standards configured for an enterprise.
+//
+// - To use this operation, enable the travel standard permission in your application. For more information about how to apply for data permissions, see [API permission application process](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435).
+//
+// - To use this operation, include the application access credential (x-acs-btrip-corp-token) in the request header. For more information about how to obtain the application access credential, see [Application access credential](https://open.alibtrip.com/#/document/server/corptoken-enterprise-access-credential?handbookId=development-support).
 //
 // @param tmpReq - TravelStandardQueryRequest
 //
@@ -21126,7 +24346,15 @@ func (client *Client) TravelStandardQueryWithOptions(tmpReq *TravelStandardQuery
 
 // Summary:
 //
-// 查询差标详情
+// Queries the details of enterprise travel rules, including categories such as flights, international flights, train tickets, and hotels.
+//
+// Description:
+//
+// Queries the details of travel standards configured for an enterprise.
+//
+// - To use this operation, enable the travel standard permission in your application. For more information about how to apply for data permissions, see [API permission application process](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435).
+//
+// - To use this operation, include the application access credential (x-acs-btrip-corp-token) in the request header. For more information about how to obtain the application access credential, see [Application access credential](https://open.alibtrip.com/#/document/server/corptoken-enterprise-access-credential?handbookId=development-support).
 //
 // @param request - TravelStandardQueryRequest
 //
@@ -21146,6 +24374,14 @@ func (client *Client) TravelStandardQuery(request *TravelStandardQueryRequest) (
 // Summary:
 //
 // 新增差旅标准关联人员实体
+//
+// Description:
+//
+// 使用该接口可以查询企业配置的差旅标准列表。
+//
+// - 使用该接口需要在应用中开通差旅标准权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support)
+//
+// - 使用该接口需要在请求头中放入应用访问凭证数据信息（x-acs-btrip-corp-token），应用访问凭证数据获取接口请查看[应用访问凭证](https://open.alibtrip.com/?spm=openapi-amp.newDocPublishment.0.0.68ab281fSv8QIA#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)
 //
 // @param tmpReq - TravelStandardRelateAddRequest
 //
@@ -21217,6 +24453,14 @@ func (client *Client) TravelStandardRelateAddWithOptions(tmpReq *TravelStandardR
 //
 // 新增差旅标准关联人员实体
 //
+// Description:
+//
+// 使用该接口可以查询企业配置的差旅标准列表。
+//
+// - 使用该接口需要在应用中开通差旅标准权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support)
+//
+// - 使用该接口需要在请求头中放入应用访问凭证数据信息（x-acs-btrip-corp-token），应用访问凭证数据获取接口请查看[应用访问凭证](https://open.alibtrip.com/?spm=openapi-amp.newDocPublishment.0.0.68ab281fSv8QIA#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)
+//
 // @param request - TravelStandardRelateAddRequest
 //
 // @return TravelStandardRelateAddResponse
@@ -21235,6 +24479,14 @@ func (client *Client) TravelStandardRelateAdd(request *TravelStandardRelateAddRe
 // Summary:
 //
 // 删除差旅标准关联人员实体
+//
+// Description:
+//
+// 使用该接口可以查询企业配置的差旅标准列表。
+//
+// - 使用该接口需要在应用中开通差旅标准权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support)
+//
+// - 使用该接口需要在请求头中放入应用访问凭证数据信息（x-acs-btrip-corp-token），应用访问凭证数据获取接口请查看[应用访问凭证](https://open.alibtrip.com/?spm=openapi-amp.newDocPublishment.0.0.68ab281fSv8QIA#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)
 //
 // @param tmpReq - TravelStandardRelateDeleteRequest
 //
@@ -21306,6 +24558,14 @@ func (client *Client) TravelStandardRelateDeleteWithOptions(tmpReq *TravelStanda
 //
 // 删除差旅标准关联人员实体
 //
+// Description:
+//
+// 使用该接口可以查询企业配置的差旅标准列表。
+//
+// - 使用该接口需要在应用中开通差旅标准权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support)
+//
+// - 使用该接口需要在请求头中放入应用访问凭证数据信息（x-acs-btrip-corp-token），应用访问凭证数据获取接口请查看[应用访问凭证](https://open.alibtrip.com/?spm=openapi-amp.newDocPublishment.0.0.68ab281fSv8QIA#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)
+//
 // @param request - TravelStandardRelateDeleteRequest
 //
 // @return TravelStandardRelateDeleteResponse
@@ -21324,6 +24584,14 @@ func (client *Client) TravelStandardRelateDelete(request *TravelStandardRelateDe
 // Summary:
 //
 // 查询差旅标准关联人员实体
+//
+// Description:
+//
+// 使用该接口可以查询企业配置的差旅标准列表。
+//
+// - 使用该接口需要在应用中开通差旅标准权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support)
+//
+// - 使用该接口需要在请求头中放入应用访问凭证数据信息（x-acs-btrip-corp-token），应用访问凭证数据获取接口请查看[应用访问凭证](https://open.alibtrip.com/?spm=openapi-amp.newDocPublishment.0.0.68ab281fSv8QIA#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)
 //
 // @param request - TravelStandardRelateQueryRequest
 //
@@ -21385,6 +24653,14 @@ func (client *Client) TravelStandardRelateQueryWithOptions(request *TravelStanda
 //
 // 查询差旅标准关联人员实体
 //
+// Description:
+//
+// 使用该接口可以查询企业配置的差旅标准列表。
+//
+// - 使用该接口需要在应用中开通差旅标准权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support)
+//
+// - 使用该接口需要在请求头中放入应用访问凭证数据信息（x-acs-btrip-corp-token），应用访问凭证数据获取接口请查看[应用访问凭证](https://open.alibtrip.com/?spm=openapi-amp.newDocPublishment.0.0.68ab281fSv8QIA#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)
+//
 // @param request - TravelStandardRelateQueryRequest
 //
 // @return TravelStandardRelateQueryResponse
@@ -21403,6 +24679,14 @@ func (client *Client) TravelStandardRelateQuery(request *TravelStandardRelateQue
 // Summary:
 //
 // 更新差旅标准绑定员工类型
+//
+// Description:
+//
+// 使用该接口可以查询企业配置的差旅标准列表。
+//
+// - 使用该接口需要在应用中开通差旅标准权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support)
+//
+// - 使用该接口需要在请求头中放入应用访问凭证数据信息（x-acs-btrip-corp-token），应用访问凭证数据获取接口请查看[应用访问凭证](https://open.alibtrip.com/?spm=openapi-amp.newDocPublishment.0.0.68ab281fSv8QIA#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)
 //
 // @param request - TravelStandardScopeSaveRequest
 //
@@ -21468,6 +24752,14 @@ func (client *Client) TravelStandardScopeSaveWithOptions(request *TravelStandard
 //
 // 更新差旅标准绑定员工类型
 //
+// Description:
+//
+// 使用该接口可以查询企业配置的差旅标准列表。
+//
+// - 使用该接口需要在应用中开通差旅标准权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support)
+//
+// - 使用该接口需要在请求头中放入应用访问凭证数据信息（x-acs-btrip-corp-token），应用访问凭证数据获取接口请查看[应用访问凭证](https://open.alibtrip.com/?spm=openapi-amp.newDocPublishment.0.0.68ab281fSv8QIA#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)
+//
 // @param request - TravelStandardScopeSaveRequest
 //
 // @return TravelStandardScopeSaveResponse
@@ -21486,6 +24778,14 @@ func (client *Client) TravelStandardScopeSave(request *TravelStandardScopeSaveRe
 // Summary:
 //
 // 查询业务流程
+//
+// Description:
+//
+// 使用该接口可以查询审批实例信息
+//
+// 1. 使用该接口需要在应用中开通用审批权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - TripBusinessInstanceQueryRequest
 //
@@ -21555,6 +24855,14 @@ func (client *Client) TripBusinessInstanceQueryWithOptions(request *TripBusiness
 //
 // 查询业务流程
 //
+// Description:
+//
+// 使用该接口可以查询审批实例信息
+//
+// 1. 使用该接口需要在应用中开通用审批权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - TripBusinessInstanceQueryRequest
 //
 // @return TripBusinessInstanceQueryResponse
@@ -21573,6 +24881,14 @@ func (client *Client) TripBusinessInstanceQuery(request *TripBusinessInstanceQue
 // Summary:
 //
 // 查询抄送信息
+//
+// Description:
+//
+// 使用该接口可以查询抄送详情信息
+//
+// 1. 使用该接口需要在应用中开通用审批权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
 //
 // @param request - TripCCInfoQueryRequest
 //
@@ -21638,6 +24954,14 @@ func (client *Client) TripCCInfoQueryWithOptions(request *TripCCInfoQueryRequest
 //
 // 查询抄送信息
 //
+// Description:
+//
+// 使用该接口可以查询抄送详情信息
+//
+// 1. 使用该接口需要在应用中开通用审批权限，具体的数据权限申请流程请查看[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)
+//
+// 2. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-so-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)
+//
 // @param request - TripCCInfoQueryRequest
 //
 // @return TripCCInfoQueryResponse
@@ -21656,6 +24980,14 @@ func (client *Client) TripCCInfoQuery(request *TripCCInfoQueryRequest) (_result 
 // Summary:
 //
 // 查询审批任务列表
+//
+// Description:
+//
+// 使用该接口可以查询审批任务
+//
+// 1. 使用该接口需要在应用中开通用审批权限，具体的数据权限申请流程请查看接口[权限申请流程](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support)
+//
+// 1. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://open.alibtrip.com/#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)
 //
 // @param request - TripTaskQueryRequest
 //
@@ -21725,6 +25057,14 @@ func (client *Client) TripTaskQueryWithOptions(request *TripTaskQueryRequest, he
 //
 // 查询审批任务列表
 //
+// Description:
+//
+// 使用该接口可以查询审批任务
+//
+// 1. 使用该接口需要在应用中开通用审批权限，具体的数据权限申请流程请查看接口[权限申请流程](https://open.alibtrip.com/#/document/server/interface-permissions?handbookId=development-support)
+//
+// 1. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://open.alibtrip.com/#/document/server/corptoken-enterprise-access-credential?handbookId=development-support)
+//
 // @param request - TripTaskQueryRequest
 //
 // @return TripTaskQueryResponse
@@ -21743,6 +25083,12 @@ func (client *Client) TripTaskQuery(request *TripTaskQueryRequest) (_result *Tri
 // Summary:
 //
 // 更新企业自定义角色
+//
+// Description:
+//
+// - 调用本接口前，请完成组织人员同步相关应用权限的申请。若无，请参考：[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)  完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key` 作为必填参数拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
 //
 // @param request - UpdateCustomRoleRequest
 //
@@ -21804,6 +25150,12 @@ func (client *Client) UpdateCustomRoleWithOptions(request *UpdateCustomRoleReque
 //
 // 更新企业自定义角色
 //
+// Description:
+//
+// - 调用本接口前，请完成组织人员同步相关应用权限的申请。若无，请参考：[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)  完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key` 作为必填参数拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
 // @param request - UpdateCustomRoleRequest
 //
 // @return UpdateCustomRoleResponse
@@ -21822,6 +25174,14 @@ func (client *Client) UpdateCustomRole(request *UpdateCustomRoleRequest) (_resul
 // Summary:
 //
 // 修改企业部门
+//
+// Description:
+//
+// - 调用本接口前，请完成**组织人员同步**相关应用权限的申请。若无，请参见：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435) 完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key`作为必填参数拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 接口频率限制（QPS）：800 次/分钟、40 次/秒。
 //
 // @param tmpReq - UpdateDepartmentRequest
 //
@@ -21897,6 +25257,14 @@ func (client *Client) UpdateDepartmentWithOptions(tmpReq *UpdateDepartmentReques
 //
 // 修改企业部门
 //
+// Description:
+//
+// - 调用本接口前，请完成**组织人员同步**相关应用权限的申请。若无，请参见：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435) 完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key`作为必填参数拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 接口频率限制（QPS）：800 次/分钟、40 次/秒。
+//
 // @param request - UpdateDepartmentRequest
 //
 // @return UpdateDepartmentResponse
@@ -21915,6 +25283,14 @@ func (client *Client) UpdateDepartment(request *UpdateDepartmentRequest) (_resul
 // Summary:
 //
 // 更新员工信息
+//
+// Description:
+//
+// - 调用本接口前，请完成**组织人员同步**相关应用权限的申请。若无，请参考[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTTP 方式调用本接口时，需要将 `app_key` 作为**必填参数**拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 接口频率限制（QPS）：800 次/分钟、40 次/秒。
 //
 // @param tmpReq - UpdateEmployeeRequest
 //
@@ -22082,6 +25458,14 @@ func (client *Client) UpdateEmployeeWithOptions(tmpReq *UpdateEmployeeRequest, h
 //
 // 更新员工信息
 //
+// Description:
+//
+// - 调用本接口前，请完成**组织人员同步**相关应用权限的申请。若无，请参考[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTTP 方式调用本接口时，需要将 `app_key` 作为**必填参数**拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 接口频率限制（QPS）：800 次/分钟、40 次/秒。
+//
 // @param request - UpdateEmployeeRequest
 //
 // @return UpdateEmployeeResponse
@@ -22100,6 +25484,14 @@ func (client *Client) UpdateEmployee(request *UpdateEmployeeRequest) (_result *U
 // Summary:
 //
 // 更新员工在职状态
+//
+// Description:
+//
+// - 调用本接口前，请完成**组织人员同步**相关应用权限的申请。若无，请参考[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTTP 方式调用本接口时，需要将 `app_key` 作为**必填参数**拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 接口频率限制（QPS）：800 次/分钟、40 次/秒。
 //
 // @param request - UpdateEmployeeLeaveStatusRequest
 //
@@ -22161,6 +25553,14 @@ func (client *Client) UpdateEmployeeLeaveStatusWithOptions(request *UpdateEmploy
 //
 // 更新员工在职状态
 //
+// Description:
+//
+// - 调用本接口前，请完成**组织人员同步**相关应用权限的申请。若无，请参考[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)完成相关操作。
+//
+// - 通过 HTTTP 方式调用本接口时，需要将 `app_key` 作为**必填参数**拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
+//
+// - 接口频率限制（QPS）：800 次/分钟、40 次/秒。
+//
 // @param request - UpdateEmployeeLeaveStatusRequest
 //
 // @return UpdateEmployeeLeaveStatusResponse
@@ -22179,6 +25579,12 @@ func (client *Client) UpdateEmployeeLeaveStatus(request *UpdateEmployeeLeaveStat
 // Summary:
 //
 // 人员查询
+//
+// Description:
+//
+// - 调用本接口前，请完成**组织人员同步**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435) 完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key` 作为必填参数拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
 //
 // @param request - UserQueryRequest
 //
@@ -22247,6 +25653,12 @@ func (client *Client) UserQueryWithOptions(request *UserQueryRequest, headers *U
 // Summary:
 //
 // 人员查询
+//
+// Description:
+//
+// - 调用本接口前，请完成**组织人员同步**相关应用权限的申请。若无，请参考：[获取应用权限](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435) 完成相关操作。
+//
+// - 通过 HTTP 方式调用本接口时，需要将 `app_key` 作为必填参数拼接在请求地址中。`app_key` 的获取方式请参见：[应用基础信息-应用凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=4667763)。
 //
 // @param request - UserQueryRequest
 //
@@ -22497,6 +25909,16 @@ func (client *Client) VatInvoiceScanQuery(request *VatInvoiceScanQueryRequest) (
 //
 // 查询账期待申请的发票数据
 //
+// Description:
+//
+// 使用该接口可以查询账期待开票数据。
+//
+// 1. 增值接口需特殊审批，提交权限前请先和商旅客户运营沟通确认。
+//
+// 2. 使用该接口需要在应用中开通增值服务数据权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// 3. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
+//
 // @param request - WaitApplyInvoiceTaskDetailQueryRequest
 //
 // @param headers - WaitApplyInvoiceTaskDetailQueryHeaders
@@ -22552,6 +25974,16 @@ func (client *Client) WaitApplyInvoiceTaskDetailQueryWithOptions(request *WaitAp
 // Summary:
 //
 // 查询账期待申请的发票数据
+//
+// Description:
+//
+// 使用该接口可以查询账期待开票数据。
+//
+// 1. 增值接口需特殊审批，提交权限前请先和商旅客户运营沟通确认。
+//
+// 2. 使用该接口需要在应用中开通增值服务数据权限，具体的数据权限申请流程请查看接口权限申请流程[接口权限申请流程](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435)。
+//
+// 3. 使用该接口需要在请求头中放入企业调用凭证数据信息（x-acs-btrip-corp-token），企业调用凭证数据获取接口请查看[企业访问凭证](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985)。
 //
 // @param request - WaitApplyInvoiceTaskDetailQueryRequest
 //

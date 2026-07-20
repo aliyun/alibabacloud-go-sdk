@@ -16,8 +16,17 @@ type iAddressGetHeaders interface {
 }
 
 type AddressGetHeaders struct {
-	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The enterprise access token.
+	//
+	// - This is a **required*	- header parameter for HTTP calls. For information about how to obtain it, refer to [Enterprise access token](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985).
+	//
+	// - You can use `corp_token=value` in the URL as an alternative.
+	//
+	// example:
+	//
+	// feth****wls
+	XAcsBtripSoCorpToken *string `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
 }
 
 func (s AddressGetHeaders) String() string {

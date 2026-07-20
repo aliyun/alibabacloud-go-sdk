@@ -119,8 +119,14 @@ func (s *IntlFlightRefundApplyResponseBody) Validate() error {
 }
 
 type IntlFlightRefundApplyResponseBodyModule struct {
+	// example:
+	//
+	// 2025011317110900006
 	OutRefundApplyId *string `json:"out_refund_apply_id,omitempty" xml:"out_refund_apply_id,omitempty"`
-	RefundApplyId    *string `json:"refund_apply_id,omitempty" xml:"refund_apply_id,omitempty"`
+	// example:
+	//
+	// 1000000005186043
+	RefundApplyId *string `json:"refund_apply_id,omitempty" xml:"refund_apply_id,omitempty"`
 }
 
 func (s IntlFlightRefundApplyResponseBodyModule) String() string {

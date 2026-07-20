@@ -22,11 +22,27 @@ type iHotelIndexInfoRequest interface {
 }
 
 type HotelIndexInfoRequest struct {
-	CityCode    *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
-	HotelStatus *int32  `json:"hotel_status,omitempty" xml:"hotel_status,omitempty"`
-	Internation *bool   `json:"internation,omitempty" xml:"internation,omitempty"`
+	// example:
+	//
+	// 330000
+	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	// example:
+	//
+	// 0
+	HotelStatus *int32 `json:"hotel_status,omitempty" xml:"hotel_status,omitempty"`
+	// example:
+	//
+	// true/false
+	Internation *bool `json:"internation,omitempty" xml:"internation,omitempty"`
 	// This parameter is required.
-	PageSize  *int32  `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// example:
+	//
+	// 1038882
 	PageToken *string `json:"page_token,omitempty" xml:"page_token,omitempty"`
 }
 

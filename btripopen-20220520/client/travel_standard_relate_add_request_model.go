@@ -18,9 +18,16 @@ type iTravelStandardRelateAddRequest interface {
 }
 
 type TravelStandardRelateAddRequest struct {
-	AddList   []*TravelStandardRelateAddRequestAddList `json:"add_list,omitempty" xml:"add_list,omitempty" type:"Repeated"`
-	FromGroup *bool                                    `json:"from_group,omitempty" xml:"from_group,omitempty"`
+	AddList []*TravelStandardRelateAddRequestAddList `json:"add_list,omitempty" xml:"add_list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// false
+	FromGroup *bool `json:"from_group,omitempty" xml:"from_group,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 6516571
 	RuleId *int64 `json:"rule_id,omitempty" xml:"rule_id,omitempty"`
 }
 
@@ -74,8 +81,16 @@ func (s *TravelStandardRelateAddRequest) Validate() error {
 
 type TravelStandardRelateAddRequestAddList struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 667104628
 	EntityId *string `json:"entity_id,omitempty" xml:"entity_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
 	EntityType *string `json:"entity_type,omitempty" xml:"entity_type,omitempty"`
 }
 

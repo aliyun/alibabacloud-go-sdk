@@ -15,6 +15,10 @@ type iIFlightOrderDetailQueryRequest interface {
 
 type IFlightOrderDetailQueryRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1017035199702438072
 	OrderId *int64 `json:"order_id,omitempty" xml:"order_id,omitempty"`
 }
 

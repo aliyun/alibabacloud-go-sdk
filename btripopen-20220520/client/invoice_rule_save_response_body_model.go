@@ -24,12 +24,27 @@ type iInvoiceRuleSaveResponseBody interface {
 }
 
 type InvoiceRuleSaveResponseBody struct {
-	Code      *string                            `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                            `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *InvoiceRuleSaveResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                              `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                            `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 成功
+	Message *string                            `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *InvoiceRuleSaveResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// C61ECFF6-606B-5F66-B81D-D77369043A5F
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 8465F68D-BC97-5C0F-9161-3E65919D9135
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s InvoiceRuleSaveResponseBody) String() string {
@@ -104,7 +119,13 @@ func (s *InvoiceRuleSaveResponseBody) Validate() error {
 }
 
 type InvoiceRuleSaveResponseBodyModule struct {
-	AddNum    *int32 `json:"add_num,omitempty" xml:"add_num,omitempty"`
+	// example:
+	//
+	// 1
+	AddNum *int32 `json:"add_num,omitempty" xml:"add_num,omitempty"`
+	// example:
+	//
+	// 1
 	RemoveNum *int32 `json:"remove_num,omitempty" xml:"remove_num,omitempty"`
 }
 

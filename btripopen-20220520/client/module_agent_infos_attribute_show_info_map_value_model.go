@@ -18,8 +18,17 @@ type iModuleAgentInfosAttributeShowInfoMapValue interface {
 }
 
 type ModuleAgentInfosAttributeShowInfoMapValue struct {
+	// example:
+	//
+	// FIRST_BAGGAGE
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 行李1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 行李详情
 	Text *string `json:"text,omitempty" xml:"text,omitempty"`
 }
 

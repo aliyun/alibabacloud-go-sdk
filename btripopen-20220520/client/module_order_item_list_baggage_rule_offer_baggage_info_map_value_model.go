@@ -68,34 +68,118 @@ type iModuleOrderItemListBaggageRuleOfferBaggageInfoMapValue interface {
 }
 
 type ModuleOrderItemListBaggageRuleOfferBaggageInfoMapValue struct {
-	StartCityCode               *string `json:"start_city_code,omitempty" xml:"start_city_code,omitempty"`
-	EndCityCode                 *string `json:"end_city_code,omitempty" xml:"end_city_code,omitempty"`
-	CarryFreePc                 *int32  `json:"carry_free_pc,omitempty" xml:"carry_free_pc,omitempty"`
-	CarryBagWeight              *int32  `json:"carry_bag_weight,omitempty" xml:"carry_bag_weight,omitempty"`
-	CarryBagSize                *string `json:"carry_bag_size,omitempty" xml:"carry_bag_size,omitempty"`
-	IsAllCarryBagWeight         *bool   `json:"is_all_carry_bag_weight,omitempty" xml:"is_all_carry_bag_weight,omitempty"`
-	TotalPcs                    *int64  `json:"total_pcs,omitempty" xml:"total_pcs,omitempty"`
-	TotalWeight                 *int64  `json:"total_weight,omitempty" xml:"total_weight,omitempty"`
-	CarryUnknown                *bool   `json:"carry_unknown,omitempty" xml:"carry_unknown,omitempty"`
-	CarryLength                 *int32  `json:"carry_length,omitempty" xml:"carry_length,omitempty"`
-	CarryWidth                  *int32  `json:"carry_width,omitempty" xml:"carry_width,omitempty"`
-	CarryHeight                 *int32  `json:"carry_height,omitempty" xml:"carry_height,omitempty"`
-	CarrySumOfLengthWidthHeight *int32  `json:"carry_sum_of_length_width_height,omitempty" xml:"carry_sum_of_length_width_height,omitempty"`
-	FreePcs                     *int64  `json:"free_pcs,omitempty" xml:"free_pcs,omitempty"`
-	BaggageWeight               *int64  `json:"baggage_weight,omitempty" xml:"baggage_weight,omitempty"`
-	BaggageUnit                 *string `json:"baggage_unit,omitempty" xml:"baggage_unit,omitempty"`
-	BaggageSize                 *string `json:"baggage_size,omitempty" xml:"baggage_size,omitempty"`
-	AllWeight                   *bool   `json:"all_weight,omitempty" xml:"all_weight,omitempty"`
-	Length                      *int32  `json:"length,omitempty" xml:"length,omitempty"`
-	Width                       *int32  `json:"width,omitempty" xml:"width,omitempty"`
-	Height                      *int32  `json:"height,omitempty" xml:"height,omitempty"`
-	SumOfLengthWidthHeight      *int32  `json:"sum_of_length_width_height,omitempty" xml:"sum_of_length_width_height,omitempty"`
-	Unknown                     *bool   `json:"unknown,omitempty" xml:"unknown,omitempty"`
-	CnDesc                      *string `json:"cn_desc,omitempty" xml:"cn_desc,omitempty"`
-	EnDesc                      *string `json:"en_desc,omitempty" xml:"en_desc,omitempty"`
-	Attribute                   *string `json:"attribute,omitempty" xml:"attribute,omitempty"`
-	BaggagePrice                *int32  `json:"baggage_price,omitempty" xml:"baggage_price,omitempty"`
-	CarryOnBaggageTips          *string `json:"carry_on_baggage_tips,omitempty" xml:"carry_on_baggage_tips,omitempty"`
+	// example:
+	//
+	// NNG
+	StartCityCode *string `json:"start_city_code,omitempty" xml:"start_city_code,omitempty"`
+	// example:
+	//
+	// SHA
+	EndCityCode *string `json:"end_city_code,omitempty" xml:"end_city_code,omitempty"`
+	// example:
+	//
+	// 1
+	CarryFreePc *int32 `json:"carry_free_pc,omitempty" xml:"carry_free_pc,omitempty"`
+	// example:
+	//
+	// 20
+	CarryBagWeight *int32 `json:"carry_bag_weight,omitempty" xml:"carry_bag_weight,omitempty"`
+	// example:
+	//
+	// 20*40*55CM、三边之和不超过115CM
+	CarryBagSize *string `json:"carry_bag_size,omitempty" xml:"carry_bag_size,omitempty"`
+	// example:
+	//
+	// true
+	IsAllCarryBagWeight *bool `json:"is_all_carry_bag_weight,omitempty" xml:"is_all_carry_bag_weight,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPcs *int64 `json:"total_pcs,omitempty" xml:"total_pcs,omitempty"`
+	// example:
+	//
+	// 20
+	TotalWeight *int64 `json:"total_weight,omitempty" xml:"total_weight,omitempty"`
+	// example:
+	//
+	// true
+	CarryUnknown *bool `json:"carry_unknown,omitempty" xml:"carry_unknown,omitempty"`
+	// example:
+	//
+	// 20
+	CarryLength *int32 `json:"carry_length,omitempty" xml:"carry_length,omitempty"`
+	// example:
+	//
+	// 30
+	CarryWidth *int32 `json:"carry_width,omitempty" xml:"carry_width,omitempty"`
+	// example:
+	//
+	// 55
+	CarryHeight *int32 `json:"carry_height,omitempty" xml:"carry_height,omitempty"`
+	// example:
+	//
+	// 115
+	CarrySumOfLengthWidthHeight *int32 `json:"carry_sum_of_length_width_height,omitempty" xml:"carry_sum_of_length_width_height,omitempty"`
+	// example:
+	//
+	// 1
+	FreePcs *int64 `json:"free_pcs,omitempty" xml:"free_pcs,omitempty"`
+	// example:
+	//
+	// 20
+	BaggageWeight *int64 `json:"baggage_weight,omitempty" xml:"baggage_weight,omitempty"`
+	// example:
+	//
+	// KG
+	BaggageUnit *string `json:"baggage_unit,omitempty" xml:"baggage_unit,omitempty"`
+	// example:
+	//
+	// 长宽高之和≤158CM
+	BaggageSize *string `json:"baggage_size,omitempty" xml:"baggage_size,omitempty"`
+	// example:
+	//
+	// true
+	AllWeight *bool `json:"all_weight,omitempty" xml:"all_weight,omitempty"`
+	// example:
+	//
+	// 30
+	Length *int32 `json:"length,omitempty" xml:"length,omitempty"`
+	// example:
+	//
+	// 20
+	Width *int32 `json:"width,omitempty" xml:"width,omitempty"`
+	// example:
+	//
+	// 55
+	Height *int32 `json:"height,omitempty" xml:"height,omitempty"`
+	// example:
+	//
+	// 115
+	SumOfLengthWidthHeight *int32 `json:"sum_of_length_width_height,omitempty" xml:"sum_of_length_width_height,omitempty"`
+	// example:
+	//
+	// false
+	Unknown *bool `json:"unknown,omitempty" xml:"unknown,omitempty"`
+	// example:
+	//
+	// -
+	CnDesc *string `json:"cn_desc,omitempty" xml:"cn_desc,omitempty"`
+	// example:
+	//
+	// -
+	EnDesc *string `json:"en_desc,omitempty" xml:"en_desc,omitempty"`
+	// example:
+	//
+	// {}
+	Attribute *string `json:"attribute,omitempty" xml:"attribute,omitempty"`
+	// example:
+	//
+	// 20
+	BaggagePrice *int32 `json:"baggage_price,omitempty" xml:"baggage_price,omitempty"`
+	// example:
+	//
+	// -
+	CarryOnBaggageTips *string `json:"carry_on_baggage_tips,omitempty" xml:"carry_on_baggage_tips,omitempty"`
 }
 
 func (s ModuleOrderItemListBaggageRuleOfferBaggageInfoMapValue) String() string {

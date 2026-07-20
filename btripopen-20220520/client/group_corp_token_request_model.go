@@ -19,10 +19,22 @@ type iGroupCorpTokenRequest interface {
 
 type GroupCorpTokenRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// ZzljczY5dnFjNDAwVlNofiwoWX5ZWCxlcjVTKnVoZS0
 	AppSecret *string `json:"app_secret,omitempty" xml:"app_secret,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// open12g9sfbmm5i07v10wDzRSK9w00
 	CorpId *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// btripuyxmbg3cs286734u_mow6q
 	SubCorpId *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
 }
 

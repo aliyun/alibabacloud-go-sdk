@@ -24,12 +24,27 @@ type iMonthPreBillGetResponseBody interface {
 }
 
 type MonthPreBillGetResponseBody struct {
-	Code      *string                              `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                              `json:"message,omitempty" xml:"message,omitempty"`
-	Module    []*MonthPreBillGetResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
-	RequestId *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                                `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                              `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 成功
+	Message *string                              `json:"message,omitempty" xml:"message,omitempty"`
+	Module  []*MonthPreBillGetResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 3D082D37-160A-53BE-9CF1-7AB8E100045B
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 3b52151317702574069534727d0099
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s MonthPreBillGetResponseBody) String() string {
@@ -108,10 +123,19 @@ func (s *MonthPreBillGetResponseBody) Validate() error {
 }
 
 type MonthPreBillGetResponseBodyModule struct {
+	// example:
+	//
+	// 2020-04-30
 	EndDate                *string                                                  `json:"end_date,omitempty" xml:"end_date,omitempty"`
 	MonthAccountBillDetail *MonthPreBillGetResponseBodyModuleMonthAccountBillDetail `json:"monthAccountBillDetail,omitempty" xml:"monthAccountBillDetail,omitempty" type:"Struct"`
-	StartDate              *string                                                  `json:"start_date,omitempty" xml:"start_date,omitempty"`
-	Url                    *string                                                  `json:"url,omitempty" xml:"url,omitempty"`
+	// example:
+	//
+	// 2020-04-01
+	StartDate *string `json:"start_date,omitempty" xml:"start_date,omitempty"`
+	// example:
+	//
+	// https://cdn.ewt360.com/resources/tiku_h5/uploads/2026/5/3/6fc104f3-561e-4960-b962-a112db1e9d00.jpg
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
 }
 
 func (s MonthPreBillGetResponseBodyModule) String() string {
@@ -168,19 +192,58 @@ func (s *MonthPreBillGetResponseBodyModule) Validate() error {
 }
 
 type MonthPreBillGetResponseBodyModuleMonthAccountBillDetail struct {
-	BillConfirmed  *int32   `json:"billConfirmed,omitempty" xml:"billConfirmed,omitempty"`
-	CarAmount      *float64 `json:"carAmount,omitempty" xml:"carAmount,omitempty"`
-	DamageAmount   *float64 `json:"damageAmount,omitempty" xml:"damageAmount,omitempty"`
-	FlightAmount   *float64 `json:"flightAmount,omitempty" xml:"flightAmount,omitempty"`
-	FuPoint        *float64 `json:"fuPoint,omitempty" xml:"fuPoint,omitempty"`
-	HotelAmount    *float64 `json:"hotelAmount,omitempty" xml:"hotelAmount,omitempty"`
+	// example:
+	//
+	// 1
+	BillConfirmed *int32 `json:"billConfirmed,omitempty" xml:"billConfirmed,omitempty"`
+	// example:
+	//
+	// 56.70
+	CarAmount *float64 `json:"carAmount,omitempty" xml:"carAmount,omitempty"`
+	// example:
+	//
+	// 0
+	DamageAmount *float64 `json:"damageAmount,omitempty" xml:"damageAmount,omitempty"`
+	// example:
+	//
+	// 1234.00
+	FlightAmount *float64 `json:"flightAmount,omitempty" xml:"flightAmount,omitempty"`
+	// example:
+	//
+	// 1.50
+	FuPoint *float64 `json:"fuPoint,omitempty" xml:"fuPoint,omitempty"`
+	// example:
+	//
+	// 500.00
+	HotelAmount *float64 `json:"hotelAmount,omitempty" xml:"hotelAmount,omitempty"`
+	// example:
+	//
+	// 3456.00
 	IeFlightAmount *float64 `json:"ieFlightAmount,omitempty" xml:"ieFlightAmount,omitempty"`
-	IeHotelAmount  *float64 `json:"ieHotelAmount,omitempty" xml:"ieHotelAmount,omitempty"`
-	MailBillDate   *int64   `json:"mailBillDate,omitempty" xml:"mailBillDate,omitempty"`
-	MealAmount     *float64 `json:"mealAmount,omitempty" xml:"mealAmount,omitempty"`
-	ServiceAmount  *float64 `json:"serviceAmount,omitempty" xml:"serviceAmount,omitempty"`
-	TrainAmount    *float64 `json:"trainAmount,omitempty" xml:"trainAmount,omitempty"`
-	VasAmount      *float64 `json:"vasAmount,omitempty" xml:"vasAmount,omitempty"`
+	// example:
+	//
+	// 3000.00
+	IeHotelAmount *float64 `json:"ieHotelAmount,omitempty" xml:"ieHotelAmount,omitempty"`
+	// example:
+	//
+	// 20200601
+	MailBillDate *int64 `json:"mailBillDate,omitempty" xml:"mailBillDate,omitempty"`
+	// example:
+	//
+	// 22.40
+	MealAmount *float64 `json:"mealAmount,omitempty" xml:"mealAmount,omitempty"`
+	// example:
+	//
+	// 45.00
+	ServiceAmount *float64 `json:"serviceAmount,omitempty" xml:"serviceAmount,omitempty"`
+	// example:
+	//
+	// 648.00
+	TrainAmount *float64 `json:"trainAmount,omitempty" xml:"trainAmount,omitempty"`
+	// example:
+	//
+	// 19.22
+	VasAmount *float64 `json:"vasAmount,omitempty" xml:"vasAmount,omitempty"`
 }
 
 func (s MonthPreBillGetResponseBodyModuleMonthAccountBillDetail) String() string {

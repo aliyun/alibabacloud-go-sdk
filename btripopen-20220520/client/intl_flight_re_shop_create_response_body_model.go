@@ -24,23 +24,34 @@ type iIntlFlightReShopCreateResponseBody interface {
 }
 
 type IntlFlightReShopCreateResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// 成功
-	Message *string                                   `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *IntlFlightReShopCreateResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The response data.
+	Module *IntlFlightReShopCreateResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 407543AF-2BD9-5890-BD92-9D1AB7218B27
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The global trace ID of the request, typically used for troubleshooting.
+	//
 	// example:
 	//
 	// 210bc4b116835992457938931db4de
@@ -119,11 +130,32 @@ func (s *IntlFlightReShopCreateResponseBody) Validate() error {
 }
 
 type IntlFlightReShopCreateResponseBodyModule struct {
-	AsyncApplyKey     *string `json:"async_apply_key,omitempty" xml:"async_apply_key,omitempty"`
-	NeedRetry         *bool   `json:"need_retry,omitempty" xml:"need_retry,omitempty"`
-	NextRetryInterval *int64  `json:"next_retry_interval,omitempty" xml:"next_retry_interval,omitempty"`
-	OutReShopApplyId  *string `json:"out_re_shop_apply_id,omitempty" xml:"out_re_shop_apply_id,omitempty"`
-	ReShopApplyId     *string `json:"re_shop_apply_id,omitempty" xml:"re_shop_apply_id,omitempty"`
+	// The asynchronous application key, used in the asynchronous commit pattern.
+	//
+	// example:
+	//
+	// asyncKey_2390u230slgw023
+	AsyncApplyKey *string `json:"async_apply_key,omitempty" xml:"async_apply_key,omitempty"`
+	// Indicates whether a retry is required. This parameter is used in the asynchronous commit pattern.
+	NeedRetry *bool `json:"need_retry,omitempty" xml:"need_retry,omitempty"`
+	// The retry time interval, in milliseconds.
+	//
+	// example:
+	//
+	// 1000
+	NextRetryInterval *int64 `json:"next_retry_interval,omitempty" xml:"next_retry_interval,omitempty"`
+	// The external rebooking application ID.
+	//
+	// example:
+	//
+	// JPM20241024354
+	OutReShopApplyId *string `json:"out_re_shop_apply_id,omitempty" xml:"out_re_shop_apply_id,omitempty"`
+	// The business travel rebooking application ID.
+	//
+	// example:
+	//
+	// 1017035199374643191
+	ReShopApplyId *string `json:"re_shop_apply_id,omitempty" xml:"re_shop_apply_id,omitempty"`
 }
 
 func (s IntlFlightReShopCreateResponseBodyModule) String() string {

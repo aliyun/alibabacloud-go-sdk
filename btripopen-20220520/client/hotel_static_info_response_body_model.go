@@ -24,12 +24,28 @@ type iHotelStaticInfoResponseBody interface {
 }
 
 type HotelStaticInfoResponseBody struct {
-	Code      *string                            `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                            `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *HotelStaticInfoResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                              `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                            `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// operation success.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// module
+	Module *HotelStaticInfoResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// C61ECFF6-606B-5F66-B81D-D77369043A5F
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 21041ce316577904808056433edbb2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s HotelStaticInfoResponseBody) String() string {
@@ -138,40 +154,127 @@ func (s *HotelStaticInfoResponseBodyModule) Validate() error {
 }
 
 type HotelStaticInfoResponseBodyModuleHotelStaticInfos struct {
-	BlockRoomTypeInformation map[string]*string                                             `json:"block_room_type_information,omitempty" xml:"block_room_type_information,omitempty"`
-	Brand                    *string                                                        `json:"brand,omitempty" xml:"brand,omitempty"`
-	BrandName                *string                                                        `json:"brand_name,omitempty" xml:"brand_name,omitempty"`
-	CityCode                 *string                                                        `json:"city_code,omitempty" xml:"city_code,omitempty"`
-	CityName                 *string                                                        `json:"city_name,omitempty" xml:"city_name,omitempty"`
-	Country                  *string                                                        `json:"country,omitempty" xml:"country,omitempty"`
-	CountryCode              *string                                                        `json:"country_code,omitempty" xml:"country_code,omitempty"`
-	Description              *string                                                        `json:"description,omitempty" xml:"description,omitempty"`
-	District                 *string                                                        `json:"district,omitempty" xml:"district,omitempty"`
-	DistrictName             *string                                                        `json:"district_name,omitempty" xml:"district_name,omitempty"`
-	ExpandInfo               *HotelStaticInfoResponseBodyModuleHotelStaticInfosExpandInfo   `json:"expand_info,omitempty" xml:"expand_info,omitempty" type:"Struct"`
-	HotelAddress             *string                                                        `json:"hotel_address,omitempty" xml:"hotel_address,omitempty"`
-	HotelEnAddress           *string                                                        `json:"hotel_en_address,omitempty" xml:"hotel_en_address,omitempty"`
-	HotelEnName              *string                                                        `json:"hotel_en_name,omitempty" xml:"hotel_en_name,omitempty"`
-	HotelId                  *string                                                        `json:"hotel_id,omitempty" xml:"hotel_id,omitempty"`
-	HotelName                *string                                                        `json:"hotel_name,omitempty" xml:"hotel_name,omitempty"`
-	HotelOpenTime            *string                                                        `json:"hotel_open_time,omitempty" xml:"hotel_open_time,omitempty"`
-	HotelPhones              *string                                                        `json:"hotel_phones,omitempty" xml:"hotel_phones,omitempty"`
-	HotelPolicies            *string                                                        `json:"hotel_policies,omitempty" xml:"hotel_policies,omitempty"`
-	Hotelfax                 *string                                                        `json:"hotelfax,omitempty" xml:"hotelfax,omitempty"`
-	Hotelpics                *string                                                        `json:"hotelpics,omitempty" xml:"hotelpics,omitempty"`
-	Imageinfos               []*HotelStaticInfoResponseBodyModuleHotelStaticInfosImageinfos `json:"imageinfos,omitempty" xml:"imageinfos,omitempty" type:"Repeated"`
-	InvoiceProviderMethod    *string                                                        `json:"invoice_provider_method,omitempty" xml:"invoice_provider_method,omitempty"`
-	InvoiceTypes             []*int32                                                       `json:"invoice_types,omitempty" xml:"invoice_types,omitempty" type:"Repeated"`
-	Location                 *string                                                        `json:"location,omitempty" xml:"location,omitempty"`
-	Province                 *string                                                        `json:"province,omitempty" xml:"province,omitempty"`
-	ProvinceName             *string                                                        `json:"province_name,omitempty" xml:"province_name,omitempty"`
-	RatingAverage            *string                                                        `json:"rating_average,omitempty" xml:"rating_average,omitempty"`
-	RoomInfos                []*HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfos  `json:"room_infos,omitempty" xml:"room_infos,omitempty" type:"Repeated"`
-	Star                     *string                                                        `json:"star,omitempty" xml:"star,omitempty"`
-	StarRate                 *string                                                        `json:"star_rate,omitempty" xml:"star_rate,omitempty"`
-	Status                   *string                                                        `json:"status,omitempty" xml:"status,omitempty"`
-	Themes                   *string                                                        `json:"themes,omitempty" xml:"themes,omitempty"`
-	VisaReminding            *bool                                                          `json:"visa_reminding,omitempty" xml:"visa_reminding,omitempty"`
+	BlockRoomTypeInformation map[string]*string `json:"block_room_type_information,omitempty" xml:"block_room_type_information,omitempty"`
+	// example:
+	//
+	// 19039
+	Brand *string `json:"brand,omitempty" xml:"brand,omitempty"`
+	// example:
+	//
+	// 万豪
+	BrandName *string `json:"brand_name,omitempty" xml:"brand_name,omitempty"`
+	// example:
+	//
+	// 330100
+	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	// example:
+	//
+	// 杭州市
+	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+	// example:
+	//
+	// CN
+	Country *string `json:"country,omitempty" xml:"country,omitempty"`
+	// example:
+	//
+	// CN
+	CountryCode *string `json:"country_code,omitempty" xml:"country_code,omitempty"`
+	// example:
+	//
+	// 未来酒店
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// 330183
+	District *string `json:"district,omitempty" xml:"district,omitempty"`
+	// example:
+	//
+	// 富阳
+	DistrictName *string                                                      `json:"district_name,omitempty" xml:"district_name,omitempty"`
+	ExpandInfo   *HotelStaticInfoResponseBodyModuleHotelStaticInfosExpandInfo `json:"expand_info,omitempty" xml:"expand_info,omitempty" type:"Struct"`
+	// example:
+	//
+	// 文一西路998号海创大厦5号楼
+	HotelAddress *string `json:"hotel_address,omitempty" xml:"hotel_address,omitempty"`
+	// example:
+	//
+	// Building 5, Haichuang Building, 998 Wenyi West Road
+	HotelEnAddress *string `json:"hotel_en_address,omitempty" xml:"hotel_en_address,omitempty"`
+	// example:
+	//
+	// Business travel hotel
+	HotelEnName *string `json:"hotel_en_name,omitempty" xml:"hotel_en_name,omitempty"`
+	// example:
+	//
+	// 55335212
+	HotelId *string `json:"hotel_id,omitempty" xml:"hotel_id,omitempty"`
+	// example:
+	//
+	// 商旅酒店测试
+	HotelName *string `json:"hotel_name,omitempty" xml:"hotel_name,omitempty"`
+	// example:
+	//
+	// 2020
+	HotelOpenTime *string `json:"hotel_open_time,omitempty" xml:"hotel_open_time,omitempty"`
+	// example:
+	//
+	// 0086#0571#28350117
+	HotelPhones *string `json:"hotel_phones,omitempty" xml:"hotel_phones,omitempty"`
+	// example:
+	//
+	// demo
+	HotelPolicies *string `json:"hotel_policies,omitempty" xml:"hotel_policies,omitempty"`
+	// example:
+	//
+	// 0086#0571#28350117
+	Hotelfax *string `json:"hotelfax,omitempty" xml:"hotelfax,omitempty"`
+	// example:
+	//
+	// //img.alicdn.com/imgextra/i4/6000000006401/O1CN01lF6MGK1x9hzQFGg9r_!!6000000006401-0-hotel.jpg
+	Hotelpics  *string                                                        `json:"hotelpics,omitempty" xml:"hotelpics,omitempty"`
+	Imageinfos []*HotelStaticInfoResponseBodyModuleHotelStaticInfosImageinfos `json:"imageinfos,omitempty" xml:"imageinfos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	InvoiceProviderMethod *string  `json:"invoice_provider_method,omitempty" xml:"invoice_provider_method,omitempty"`
+	InvoiceTypes          []*int32 `json:"invoice_types,omitempty" xml:"invoice_types,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 119.844005,30.054384
+	Location *string `json:"location,omitempty" xml:"location,omitempty"`
+	// example:
+	//
+	// 330000
+	Province *string `json:"province,omitempty" xml:"province,omitempty"`
+	// example:
+	//
+	// 浙江
+	ProvinceName *string `json:"province_name,omitempty" xml:"province_name,omitempty"`
+	// example:
+	//
+	// 2
+	RatingAverage *string                                                       `json:"rating_average,omitempty" xml:"rating_average,omitempty"`
+	RoomInfos     []*HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfos `json:"room_infos,omitempty" xml:"room_infos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
+	Star *string `json:"star,omitempty" xml:"star,omitempty"`
+	// example:
+	//
+	// 2
+	StarRate *string `json:"star_rate,omitempty" xml:"star_rate,omitempty"`
+	// example:
+	//
+	// 1
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// demo
+	Themes *string `json:"themes,omitempty" xml:"themes,omitempty"`
+	// example:
+	//
+	// demo
+	VisaReminding *bool `json:"visa_reminding,omitempty" xml:"visa_reminding,omitempty"`
 }
 
 func (s HotelStaticInfoResponseBodyModuleHotelStaticInfos) String() string {
@@ -516,17 +619,41 @@ func (s *HotelStaticInfoResponseBodyModuleHotelStaticInfos) Validate() error {
 }
 
 type HotelStaticInfoResponseBodyModuleHotelStaticInfosExpandInfo struct {
-	CheckIn         *string   `json:"check_in,omitempty" xml:"check_in,omitempty"`
-	CheckOut        *string   `json:"check_out,omitempty" xml:"check_out,omitempty"`
-	DecorateTime    *string   `json:"decorate_time,omitempty" xml:"decorate_time,omitempty"`
+	// example:
+	//
+	// 17:00
+	CheckIn *string `json:"check_in,omitempty" xml:"check_in,omitempty"`
+	// example:
+	//
+	// 12:00
+	CheckOut *string `json:"check_out,omitempty" xml:"check_out,omitempty"`
+	// example:
+	//
+	// 2020
+	DecorateTime *string `json:"decorate_time,omitempty" xml:"decorate_time,omitempty"`
+	// example:
+	//
+	// 4-6层
 	Floors          *string   `json:"floors,omitempty" xml:"floors,omitempty"`
 	HotelFacilities []*string `json:"hotel_facilities,omitempty" xml:"hotel_facilities,omitempty" type:"Repeated"`
-	HotelType       *int32    `json:"hotel_type,omitempty" xml:"hotel_type,omitempty"`
-	OpeningTime     *string   `json:"opening_time,omitempty" xml:"opening_time,omitempty"`
-	RoomFacilities  []*string `json:"room_facilities,omitempty" xml:"room_facilities,omitempty" type:"Repeated"`
-	Rooms           *int32    `json:"rooms,omitempty" xml:"rooms,omitempty"`
-	Service         []*string `json:"service,omitempty" xml:"service,omitempty" type:"Repeated"`
-	ThemeTag        *string   `json:"theme_tag,omitempty" xml:"theme_tag,omitempty"`
+	// example:
+	//
+	// 0
+	HotelType *int32 `json:"hotel_type,omitempty" xml:"hotel_type,omitempty"`
+	// example:
+	//
+	// 2020
+	OpeningTime    *string   `json:"opening_time,omitempty" xml:"opening_time,omitempty"`
+	RoomFacilities []*string `json:"room_facilities,omitempty" xml:"room_facilities,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	Rooms   *int32    `json:"rooms,omitempty" xml:"rooms,omitempty"`
+	Service []*string `json:"service,omitempty" xml:"service,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	ThemeTag *string `json:"theme_tag,omitempty" xml:"theme_tag,omitempty"`
 }
 
 func (s HotelStaticInfoResponseBodyModuleHotelStaticInfosExpandInfo) String() string {
@@ -641,9 +768,18 @@ func (s *HotelStaticInfoResponseBodyModuleHotelStaticInfosExpandInfo) Validate()
 }
 
 type HotelStaticInfoResponseBodyModuleHotelStaticInfosImageinfos struct {
+	// example:
+	//
+	// demo（暂无）
 	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
-	Tag  *int32  `json:"tag,omitempty" xml:"tag,omitempty"`
-	Url  *string `json:"url,omitempty" xml:"url,omitempty"`
+	// example:
+	//
+	// demo（暂无）
+	Tag *int32 `json:"tag,omitempty" xml:"tag,omitempty"`
+	// example:
+	//
+	// https://img.alicdn.com/imgextra/i3/6000000000003/O1CN01xkZQR41BtPxK1PQCb_!!6000000000003-0-hotel.jpg
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
 }
 
 func (s HotelStaticInfoResponseBodyModuleHotelStaticInfosImageinfos) String() string {
@@ -688,23 +824,68 @@ func (s *HotelStaticInfoResponseBodyModuleHotelStaticInfosImageinfos) Validate()
 type HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfos struct {
 	BedInfoGroupList []*HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfoGroupList `json:"bed_info_group_list,omitempty" xml:"bed_info_group_list,omitempty" type:"Repeated"`
 	BedInfos         []*HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfos         `json:"bed_infos,omitempty" xml:"bed_infos,omitempty" type:"Repeated"`
-	ExtraBed         *int32                                                                        `json:"extra_bed,omitempty" xml:"extra_bed,omitempty"`
-	ExtraBedDesc     *string                                                                       `json:"extra_bed_desc,omitempty" xml:"extra_bed_desc,omitempty"`
-	Floor            *string                                                                       `json:"floor,omitempty" xml:"floor,omitempty"`
-	InternetWay      *string                                                                       `json:"internet_way,omitempty" xml:"internet_way,omitempty"`
-	MaxOccupancy     *int32                                                                        `json:"max_occupancy,omitempty" xml:"max_occupancy,omitempty"`
-	RoomFacilities   *string                                                                       `json:"room_facilities,omitempty" xml:"room_facilities,omitempty"`
-	RoomFacilityList []*string                                                                     `json:"room_facility_list,omitempty" xml:"room_facility_list,omitempty" type:"Repeated"`
-	RoomId           *string                                                                       `json:"room_id,omitempty" xml:"room_id,omitempty"`
-	RoomImage        *string                                                                       `json:"room_image,omitempty" xml:"room_image,omitempty"`
-	RoomImages       []*string                                                                     `json:"room_images,omitempty" xml:"room_images,omitempty" type:"Repeated"`
-	RoomName         *string                                                                       `json:"room_name,omitempty" xml:"room_name,omitempty"`
-	RoomType         *int32                                                                        `json:"room_type,omitempty" xml:"room_type,omitempty"`
-	Roomarea         *string                                                                       `json:"roomarea,omitempty" xml:"roomarea,omitempty"`
-	Rooms            *int32                                                                        `json:"rooms,omitempty" xml:"rooms,omitempty"`
-	Window           *string                                                                       `json:"window,omitempty" xml:"window,omitempty"`
-	WindowBad        *string                                                                       `json:"window_bad,omitempty" xml:"window_bad,omitempty"`
-	WindowView       *string                                                                       `json:"window_view,omitempty" xml:"window_view,omitempty"`
+	// example:
+	//
+	// 1
+	ExtraBed *int32 `json:"extra_bed,omitempty" xml:"extra_bed,omitempty"`
+	// example:
+	//
+	// demo
+	ExtraBedDesc *string `json:"extra_bed_desc,omitempty" xml:"extra_bed_desc,omitempty"`
+	// example:
+	//
+	// 1,2,3,4,5,6
+	Floor *string `json:"floor,omitempty" xml:"floor,omitempty"`
+	// example:
+	//
+	// 0
+	InternetWay *string `json:"internet_way,omitempty" xml:"internet_way,omitempty"`
+	// example:
+	//
+	// 1
+	MaxOccupancy *int32 `json:"max_occupancy,omitempty" xml:"max_occupancy,omitempty"`
+	// example:
+	//
+	// 免费wifi
+	RoomFacilities   *string   `json:"room_facilities,omitempty" xml:"room_facilities,omitempty"`
+	RoomFacilityList []*string `json:"room_facility_list,omitempty" xml:"room_facility_list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 71652158
+	RoomId *string `json:"room_id,omitempty" xml:"room_id,omitempty"`
+	// example:
+	//
+	// //img.alicdn.com/imgextra/i3/6000000000003/O1CN01xkZQR41BtPxK1PQCb_!!6000000000003-0-hotel.jpg
+	RoomImage  *string   `json:"room_image,omitempty" xml:"room_image,omitempty"`
+	RoomImages []*string `json:"room_images,omitempty" xml:"room_images,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 公寓房
+	RoomName *string `json:"room_name,omitempty" xml:"room_name,omitempty"`
+	// example:
+	//
+	// demo（暂无）
+	RoomType *int32 `json:"room_type,omitempty" xml:"room_type,omitempty"`
+	// example:
+	//
+	// 35平
+	Roomarea *string `json:"roomarea,omitempty" xml:"roomarea,omitempty"`
+	// example:
+	//
+	// 1
+	Rooms *int32 `json:"rooms,omitempty" xml:"rooms,omitempty"`
+	// example:
+	//
+	// 0
+	Window *string `json:"window,omitempty" xml:"window,omitempty"`
+	// example:
+	//
+	// demo（暂无）
+	WindowBad *string `json:"window_bad,omitempty" xml:"window_bad,omitempty"`
+	// example:
+	//
+	// demo（暂无）
+	WindowView *string `json:"window_view,omitempty" xml:"window_view,omitempty"`
 }
 
 func (s HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfos) String() string {
@@ -943,12 +1124,30 @@ func (s *HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfoGroupL
 }
 
 type HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfoGroupListBedInfos struct {
+	// example:
+	//
+	// 1张大床(1.8M)
 	BedDesc *string `json:"bed_desc,omitempty" xml:"bed_desc,omitempty"`
-	BedNum  *int32  `json:"bed_num,omitempty" xml:"bed_num,omitempty"`
+	// example:
+	//
+	// 1
+	BedNum *int32 `json:"bed_num,omitempty" xml:"bed_num,omitempty"`
+	// example:
+	//
+	// 1.8m
 	BedSize *string `json:"bed_size,omitempty" xml:"bed_size,omitempty"`
+	// example:
+	//
+	// 0
 	BedType *string `json:"bed_type,omitempty" xml:"bed_type,omitempty"`
-	Length  *string `json:"length,omitempty" xml:"length,omitempty"`
-	Width   *string `json:"width,omitempty" xml:"width,omitempty"`
+	// example:
+	//
+	// 1280
+	Length *string `json:"length,omitempty" xml:"length,omitempty"`
+	// example:
+	//
+	// 1280
+	Width *string `json:"width,omitempty" xml:"width,omitempty"`
 }
 
 func (s HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfoGroupListBedInfos) String() string {
@@ -1018,12 +1217,30 @@ func (s *HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfoGroupL
 }
 
 type HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfos struct {
+	// example:
+	//
+	// 1张大床(1.8M)
 	BedDesc *string `json:"bed_desc,omitempty" xml:"bed_desc,omitempty"`
-	BedNum  *int32  `json:"bed_num,omitempty" xml:"bed_num,omitempty"`
+	// example:
+	//
+	// 1
+	BedNum *int32 `json:"bed_num,omitempty" xml:"bed_num,omitempty"`
+	// example:
+	//
+	// 1.8m
 	BedSize *string `json:"bed_size,omitempty" xml:"bed_size,omitempty"`
+	// example:
+	//
+	// 0
 	BedType *string `json:"bed_type,omitempty" xml:"bed_type,omitempty"`
-	Length  *string `json:"length,omitempty" xml:"length,omitempty"`
-	Width   *string `json:"width,omitempty" xml:"width,omitempty"`
+	// example:
+	//
+	// 1280
+	Length *string `json:"length,omitempty" xml:"length,omitempty"`
+	// example:
+	//
+	// 1280
+	Width *string `json:"width,omitempty" xml:"width,omitempty"`
 }
 
 func (s HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfos) String() string {

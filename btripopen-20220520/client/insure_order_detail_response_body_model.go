@@ -24,12 +24,27 @@ type iInsureOrderDetailResponseBody interface {
 }
 
 type InsureOrderDetailResponseBody struct {
-	Code      *string                              `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                              `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *InsureOrderDetailResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                                `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                              `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 成功
+	Message *string                              `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *InsureOrderDetailResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// 4498BDAB-2AAF-5B6F-942A-3C1C935345C9
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 21041ce316577904808056433edbb2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s InsureOrderDetailResponseBody) String() string {
@@ -104,10 +119,16 @@ func (s *InsureOrderDetailResponseBody) Validate() error {
 }
 
 type InsureOrderDetailResponseBodyModule struct {
-	Applicant             *InsureOrderDetailResponseBodyModuleApplicant               `json:"applicant,omitempty" xml:"applicant,omitempty" type:"Struct"`
+	Applicant *InsureOrderDetailResponseBodyModuleApplicant `json:"applicant,omitempty" xml:"applicant,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1021000196440356901
 	InsOrderId            *string                                                     `json:"ins_order_id,omitempty" xml:"ins_order_id,omitempty"`
 	InsureOrderDetailList []*InsureOrderDetailResponseBodyModuleInsureOrderDetailList `json:"insure_order_detail_list,omitempty" xml:"insure_order_detail_list,omitempty" type:"Repeated"`
-	Status                *string                                                     `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// CLOSED
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s InsureOrderDetailResponseBodyModule) String() string {
@@ -173,10 +194,22 @@ func (s *InsureOrderDetailResponseBodyModule) Validate() error {
 }
 
 type InsureOrderDetailResponseBodyModuleApplicant struct {
+	// example:
+	//
+	// 张三
 	CertName *string `json:"cert_name,omitempty" xml:"cert_name,omitempty"`
-	CertNo   *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	// example:
+	//
+	// 3300000000000
+	CertNo *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	// example:
+	//
+	// 100
 	CertType *string `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
-	Phone    *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	// example:
+	//
+	// 13000000000
+	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
 }
 
 func (s InsureOrderDetailResponseBodyModuleApplicant) String() string {
@@ -228,18 +261,48 @@ func (s *InsureOrderDetailResponseBodyModuleApplicant) Validate() error {
 }
 
 type InsureOrderDetailResponseBodyModuleInsureOrderDetailList struct {
-	EffectiveEndTime   *string                                                                `json:"effective_end_time,omitempty" xml:"effective_end_time,omitempty"`
+	// example:
+	//
+	// 2023-10-12 10:00:00
+	EffectiveEndTime *string `json:"effective_end_time,omitempty" xml:"effective_end_time,omitempty"`
+	// example:
+	//
+	// 2023-10-11 10:00:00
 	EffectiveStartTime *string                                                                `json:"effective_start_time,omitempty" xml:"effective_start_time,omitempty"`
 	InsureSegment      *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsureSegment `json:"insure_segment,omitempty" xml:"insure_segment,omitempty" type:"Struct"`
-	InsureTime         *string                                                                `json:"insure_time,omitempty" xml:"insure_time,omitempty"`
-	Insured            *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsured       `json:"insured,omitempty" xml:"insured,omitempty" type:"Struct"`
-	OutSubInsOrderId   *string                                                                `json:"out_sub_ins_order_id,omitempty" xml:"out_sub_ins_order_id,omitempty"`
-	PolicyNo           *string                                                                `json:"policy_no,omitempty" xml:"policy_no,omitempty"`
-	Price              *int64                                                                 `json:"price,omitempty" xml:"price,omitempty"`
-	ProductName        *string                                                                `json:"product_name,omitempty" xml:"product_name,omitempty"`
-	ProductNo          *string                                                                `json:"product_no,omitempty" xml:"product_no,omitempty"`
-	Status             *string                                                                `json:"status,omitempty" xml:"status,omitempty"`
-	SubInsOrderId      *string                                                                `json:"sub_ins_order_id,omitempty" xml:"sub_ins_order_id,omitempty"`
+	// example:
+	//
+	// 2023-10-11 11:30:00
+	InsureTime *string                                                          `json:"insure_time,omitempty" xml:"insure_time,omitempty"`
+	Insured    *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsured `json:"insured,omitempty" xml:"insured,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1021000196440356922
+	OutSubInsOrderId *string `json:"out_sub_ins_order_id,omitempty" xml:"out_sub_ins_order_id,omitempty"`
+	// example:
+	//
+	// 22222222222
+	PolicyNo *string `json:"policy_no,omitempty" xml:"policy_no,omitempty"`
+	// example:
+	//
+	// 30
+	Price *int64 `json:"price,omitempty" xml:"price,omitempty"`
+	// example:
+	//
+	// 国内航空意外险
+	ProductName *string `json:"product_name,omitempty" xml:"product_name,omitempty"`
+	// example:
+	//
+	// 008801.accident.flight.104000
+	ProductNo *string `json:"product_no,omitempty" xml:"product_no,omitempty"`
+	// example:
+	//
+	// CLOSED
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 1021000196440356901
+	SubInsOrderId *string `json:"sub_ins_order_id,omitempty" xml:"sub_ins_order_id,omitempty"`
 }
 
 func (s InsureOrderDetailResponseBodyModuleInsureOrderDetailList) String() string {
@@ -373,15 +436,42 @@ func (s *InsureOrderDetailResponseBodyModuleInsureOrderDetailList) Validate() er
 }
 
 type InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsureSegment struct {
+	// example:
+	//
+	// TYN
 	ArrAirportCode *string `json:"arr_airport_code,omitempty" xml:"arr_airport_code,omitempty"`
-	ArrCity        *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
-	ArrCityCode    *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
-	ArrTime        *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	// example:
+	//
+	// HYN
+	ArrCity *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	// example:
+	//
+	// SYX
+	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	// example:
+	//
+	// 2023-10-11 11:30:00
+	ArrTime *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	// example:
+	//
+	// TYN
 	DepAirportCode *string `json:"dep_airport_code,omitempty" xml:"dep_airport_code,omitempty"`
-	DepCity        *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
-	DepCityCode    *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
-	DepTime        *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
-	FlightNo       *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	// example:
+	//
+	// CTU
+	DepCity *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	// example:
+	//
+	// LXA
+	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	// example:
+	//
+	// 2023-10-11 11:30:00
+	DepTime *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	// example:
+	//
+	// CZ3501
+	FlightNo *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
 }
 
 func (s InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsureSegment) String() string {
@@ -478,13 +568,34 @@ func (s *InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsureSegment) 
 }
 
 type InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsured struct {
-	Birthday    *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	// example:
+	//
+	// 1983-11-25
+	Birthday *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	// example:
+	//
+	// 100001
 	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
-	CertName    *string `json:"cert_name,omitempty" xml:"cert_name,omitempty"`
-	CertNo      *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
-	CertType    *string `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
-	Gender      *string `json:"gender,omitempty" xml:"gender,omitempty"`
-	Phone       *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	// example:
+	//
+	// 张三
+	CertName *string `json:"cert_name,omitempty" xml:"cert_name,omitempty"`
+	// example:
+	//
+	// 30000000000
+	CertNo *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	// example:
+	//
+	// 100
+	CertType *string `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
+	// example:
+	//
+	// F
+	Gender *string `json:"gender,omitempty" xml:"gender,omitempty"`
+	// example:
+	//
+	// 130000000
+	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
 }
 
 func (s InsureOrderDetailResponseBodyModuleInsureOrderDetailListInsured) String() string {

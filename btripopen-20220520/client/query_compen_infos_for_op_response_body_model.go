@@ -24,12 +24,27 @@ type iQueryCompenInfosForOpResponseBody interface {
 }
 
 type QueryCompenInfosForOpResponseBody struct {
-	Code      *string                                    `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                                    `json:"message,omitempty" xml:"message,omitempty"`
-	Module    []*QueryCompenInfosForOpResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
-	RequestId *string                                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                                      `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                                    `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 成功
+	Message *string                                    `json:"message,omitempty" xml:"message,omitempty"`
+	Module  []*QueryCompenInfosForOpResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 407543AF-2BD9-5890-BD92-9D1AB7218B27
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 210f079e16603757182131635d866a
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s QueryCompenInfosForOpResponseBody) String() string {
@@ -108,14 +123,38 @@ func (s *QueryCompenInfosForOpResponseBody) Validate() error {
 }
 
 type QueryCompenInfosForOpResponseBodyModule struct {
-	Amount           *int64  `json:"amount,omitempty" xml:"amount,omitempty"`
-	Category         *int32  `json:"category,omitempty" xml:"category,omitempty"`
-	CompenId         *string `json:"compen_id,omitempty" xml:"compen_id,omitempty"`
+	// example:
+	//
+	// 500
+	Amount *int64 `json:"amount,omitempty" xml:"amount,omitempty"`
+	// example:
+	//
+	// 1
+	Category *int32 `json:"category,omitempty" xml:"category,omitempty"`
+	// example:
+	//
+	// 82508250249123456
+	CompenId *string `json:"compen_id,omitempty" xml:"compen_id,omitempty"`
+	// example:
+	//
+	// 1
 	CompensationType *string `json:"compensation_type,omitempty" xml:"compensation_type,omitempty"`
-	OrderId          *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	SettleTime       *string `json:"settle_time,omitempty" xml:"settle_time,omitempty"`
-	SettleType       *int32  `json:"settle_type,omitempty" xml:"settle_type,omitempty"`
-	TicketNo         *string `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
+	// example:
+	//
+	// 1002086203277812345
+	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// example:
+	//
+	// 2025-09-22 20:13:58
+	SettleTime *string `json:"settle_time,omitempty" xml:"settle_time,omitempty"`
+	// example:
+	//
+	// 8
+	SettleType *int32 `json:"settle_type,omitempty" xml:"settle_type,omitempty"`
+	// example:
+	//
+	// 999-12345678
+	TicketNo *string `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
 }
 
 func (s QueryCompenInfosForOpResponseBodyModule) String() string {

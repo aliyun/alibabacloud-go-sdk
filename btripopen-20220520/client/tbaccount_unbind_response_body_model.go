@@ -24,12 +24,30 @@ type iTBAccountUnbindResponseBody interface {
 }
 
 type TBAccountUnbindResponseBody struct {
-	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *bool   `json:"module,omitempty" xml:"module,omitempty"`
+	// example:
+	//
+	// 0
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 成功
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// true
+	Module *bool `json:"module,omitempty" xml:"module,omitempty"`
+	// example:
+	//
+	// 456456575656757
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 21041ce316577904808056433edbb2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s TBAccountUnbindResponseBody) String() string {

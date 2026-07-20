@@ -25,12 +25,31 @@ type iBtripBillInfoAdjustRequest interface {
 
 type BtripBillInfoAdjustRequest struct {
 	// This parameter is required.
-	PrimaryId             *int64  `json:"primary_id,omitempty" xml:"primary_id,omitempty"`
+	//
+	// example:
+	//
+	// 123456
+	PrimaryId *int64 `json:"primary_id,omitempty" xml:"primary_id,omitempty"`
+	// example:
+	//
+	// GA15131
 	ThirdPartCostCenterId *string `json:"third_part_cost_center_id,omitempty" xml:"third_part_cost_center_id,omitempty"`
+	// example:
+	//
+	// GA15131
 	ThirdPartDepartmentId *string `json:"third_part_department_id,omitempty" xml:"third_part_department_id,omitempty"`
-	ThirdPartInvoiceId    *string `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
-	ThirdPartProjectId    *string `json:"third_part_project_id,omitempty" xml:"third_part_project_id,omitempty"`
-	UserId                *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// example:
+	//
+	// GA15131
+	ThirdPartInvoiceId *string `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
+	// example:
+	//
+	// GA15131
+	ThirdPartProjectId *string `json:"third_part_project_id,omitempty" xml:"third_part_project_id,omitempty"`
+	// example:
+	//
+	// 123
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s BtripBillInfoAdjustRequest) String() string {

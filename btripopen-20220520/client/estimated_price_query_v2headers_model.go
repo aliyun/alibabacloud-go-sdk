@@ -17,6 +17,8 @@ type iEstimatedPriceQueryV2Headers interface {
 
 type EstimatedPriceQueryV2Headers struct {
   CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+  // A header parameter obtained from the Enterprise Access Credential operation (added in the header). In HTTP mode, you can use so_corp_token=value or dtb_corp_token=value in the URL as an alternative.
+  // 
   // example:
   // 
   // feth00jqwls

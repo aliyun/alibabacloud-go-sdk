@@ -26,13 +26,31 @@ type iRemoveProjectManagerResponseBody interface {
 }
 
 type RemoveProjectManagerResponseBody struct {
-	Code           *string                                 `json:"code,omitempty" xml:"code,omitempty"`
-	HttpStatusCode *int32                                  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	Message        *string                                 `json:"message,omitempty" xml:"message,omitempty"`
-	Module         *RemoveProjectManagerResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId      *string                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success        *bool                                   `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId        *string                                 `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string                                 `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *RemoveProjectManagerResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// C61ECFF6-606B-5F66-B81D-D77369043A5F
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 21041ce316577904808056433edbb2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s RemoveProjectManagerResponseBody) String() string {
@@ -116,9 +134,18 @@ func (s *RemoveProjectManagerResponseBody) Validate() error {
 }
 
 type RemoveProjectManagerResponseBodyModule struct {
-	AddNum    *int32 `json:"add_num,omitempty" xml:"add_num,omitempty"`
+	// example:
+	//
+	// 1
+	AddNum *int32 `json:"add_num,omitempty" xml:"add_num,omitempty"`
+	// example:
+	//
+	// 1
 	RemoveNum *int32 `json:"remove_num,omitempty" xml:"remove_num,omitempty"`
-	RuleCode  *int64 `json:"rule_code,omitempty" xml:"rule_code,omitempty"`
+	// example:
+	//
+	// 500578154
+	RuleCode *int64 `json:"rule_code,omitempty" xml:"rule_code,omitempty"`
 }
 
 func (s RemoveProjectManagerResponseBodyModule) String() string {

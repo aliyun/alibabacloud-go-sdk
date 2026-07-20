@@ -24,12 +24,27 @@ type iHotelIndexInfoResponseBody interface {
 }
 
 type HotelIndexInfoResponseBody struct {
-	Code      *string                           `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                           `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *HotelIndexInfoResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                             `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                           `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// operation success.
+	Message *string                           `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *HotelIndexInfoResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// 407543AF-2BD9-5890-BD92-9D1AB7218B27
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 21041ce316577904808056433edbb2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s HotelIndexInfoResponseBody) String() string {
@@ -104,9 +119,15 @@ func (s *HotelIndexInfoResponseBody) Validate() error {
 }
 
 type HotelIndexInfoResponseBodyModule struct {
-	Items     []*HotelIndexInfoResponseBodyModuleItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	PageSize  *int32                                   `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	PageToken *string                                  `json:"page_token,omitempty" xml:"page_token,omitempty"`
+	Items []*HotelIndexInfoResponseBodyModuleItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// example:
+	//
+	// 182873
+	PageToken *string `json:"page_token,omitempty" xml:"page_token,omitempty"`
 }
 
 func (s HotelIndexInfoResponseBodyModule) String() string {
@@ -158,7 +179,13 @@ func (s *HotelIndexInfoResponseBodyModule) Validate() error {
 }
 
 type HotelIndexInfoResponseBodyModuleItems struct {
-	HotelId     *string `json:"hotel_id,omitempty" xml:"hotel_id,omitempty"`
+	// example:
+	//
+	// 182873
+	HotelId *string `json:"hotel_id,omitempty" xml:"hotel_id,omitempty"`
+	// example:
+	//
+	// 0
 	HotelStatus *string `json:"hotel_status,omitempty" xml:"hotel_status,omitempty"`
 }
 

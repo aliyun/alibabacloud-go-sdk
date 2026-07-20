@@ -40,23 +40,69 @@ type iFlightSearchListRequest interface {
 }
 
 type FlightSearchListRequest struct {
+	// example:
+	//
+	// CA
 	AirlineCode *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// HGH
 	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	// example:
+	//
+	// BJS
 	ArrCityName *string `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
-	ArrDate     *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
-	CabinClass  *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	// example:
+	//
+	// 2000-00-00 00:00:00
+	ArrDate *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
+	// example:
+	//
+	// Y
+	CabinClass *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// HGH
 	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	// example:
+	//
+	// HGH
 	DepCityName *string `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
 	// This parameter is required.
-	DepDate             *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
-	FlightNo            *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
-	NeedMultiClassPrice *bool   `json:"need_multi_class_price,omitempty" xml:"need_multi_class_price,omitempty"`
-	TransferCityCode    *string `json:"transfer_city_code,omitempty" xml:"transfer_city_code,omitempty"`
-	TransferFlightNo    *string `json:"transfer_flight_no,omitempty" xml:"transfer_flight_no,omitempty"`
-	TransferLeaveDate   *string `json:"transfer_leave_date,omitempty" xml:"transfer_leave_date,omitempty"`
+	//
+	// example:
+	//
+	// 2000-00-00 00:00:00
+	DepDate *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	// example:
+	//
+	// CA2323
+	FlightNo *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	// example:
+	//
+	// false
+	NeedMultiClassPrice *bool `json:"need_multi_class_price,omitempty" xml:"need_multi_class_price,omitempty"`
+	// example:
+	//
+	// HGH
+	TransferCityCode *string `json:"transfer_city_code,omitempty" xml:"transfer_city_code,omitempty"`
+	// example:
+	//
+	// CA2323
+	TransferFlightNo *string `json:"transfer_flight_no,omitempty" xml:"transfer_flight_no,omitempty"`
+	// example:
+	//
+	// BJS
+	TransferLeaveDate *string `json:"transfer_leave_date,omitempty" xml:"transfer_leave_date,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
 	TripType *string `json:"trip_type,omitempty" xml:"trip_type,omitempty"`
 }
 

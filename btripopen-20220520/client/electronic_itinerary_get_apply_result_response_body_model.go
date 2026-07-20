@@ -24,11 +24,30 @@ type iElectronicItineraryGetApplyResultResponseBody interface {
 }
 
 type ElectronicItineraryGetApplyResultResponseBody struct {
+  // example:
+  // 
+  // 200
   Code *int32 `json:"code,omitempty" xml:"code,omitempty"`
+  // example:
+  // 
+  // 成功
   Message *string `json:"message,omitempty" xml:"message,omitempty"`
   Module *ElectronicItineraryGetApplyResultResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+  // requestId
+  // 
+  // example:
+  // 
+  // B72B39C8-32DE-558D-AD1C-D53F11F6ADFE
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+  // example:
+  // 
+  // true
   Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+  // traceId
+  // 
+  // example:
+  // 
+  // 21041ce316577904808056433edbb2
   TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
@@ -105,6 +124,9 @@ func (s *ElectronicItineraryGetApplyResultResponseBody) Validate() error {
 
 type ElectronicItineraryGetApplyResultResponseBodyModule struct {
   ApplyTicketList []*ElectronicItineraryGetApplyResultResponseBodyModuleApplyTicketList `json:"apply_ticket_list,omitempty" xml:"apply_ticket_list,omitempty" type:"Repeated"`
+  // example:
+  // 
+  // 0c7b5944618943479a9a4d40c1eec618
   BatchApplyNo *string `json:"batch_apply_no,omitempty" xml:"batch_apply_no,omitempty"`
 }
 
@@ -148,10 +170,33 @@ func (s *ElectronicItineraryGetApplyResultResponseBodyModule) Validate() error {
 }
 
 type ElectronicItineraryGetApplyResultResponseBodyModuleApplyTicketList struct {
+  // example:
+  // 
+  // 5001
   FailedCode *int32 `json:"failed_code,omitempty" xml:"failed_code,omitempty"`
+  // example:
+  // 
+  // 开票失败后透出具体原因
   FailedReason *string `json:"failed_reason,omitempty" xml:"failed_reason,omitempty"`
+  // example:
+  // 
+  // 行程单状态
+  // 
+  // 1- 待开票
+  // 
+  // 2- 开票中
+  // 
+  // 3- 开票成功
+  // 
+  // 4- 开票失败
   ItineraryStatus *int32 `json:"itinerary_status,omitempty" xml:"itinerary_status,omitempty"`
+  // example:
+  // 
+  // 实际购方信息与申请不一致，该发票商旅不支持换开，请联系航司进行换开
   Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
+  // example:
+  // 
+  // 781-6605285563
   TicketNo *string `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
 }
 

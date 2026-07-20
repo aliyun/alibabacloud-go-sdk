@@ -24,12 +24,30 @@ type iTrainNoListSearchResponseBody interface {
 }
 
 type TrainNoListSearchResponseBody struct {
-	Code      *string                              `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                              `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *TrainNoListSearchResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                                `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                              `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 成功
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// module
+	Module *TrainNoListSearchResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// 210bc81a17090871660176894d008c
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	//
+	// example:
+	//
+	// 21041ce316577904808056433edbb2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s TrainNoListSearchResponseBody) String() string {
@@ -157,23 +175,71 @@ func (s *TrainNoListSearchResponseBodyModule) Validate() error {
 }
 
 type TrainNoListSearchResponseBodyModuleTrainStationSearchVOS struct {
-	ArrDayTag      *string                                                              `json:"arr_day_tag,omitempty" xml:"arr_day_tag,omitempty"`
-	ArrStationCode *string                                                              `json:"arr_station_code,omitempty" xml:"arr_station_code,omitempty"`
-	ArrStationName *string                                                              `json:"arr_station_name,omitempty" xml:"arr_station_name,omitempty"`
-	ArrTime        *string                                                              `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
-	CostTime       *string                                                              `json:"cost_time,omitempty" xml:"cost_time,omitempty"`
-	DepStationCode *string                                                              `json:"dep_station_code,omitempty" xml:"dep_station_code,omitempty"`
-	DepStationName *string                                                              `json:"dep_station_name,omitempty" xml:"dep_station_name,omitempty"`
-	DepTime        *string                                                              `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
-	IsEndStation   *int32                                                               `json:"is_end_station,omitempty" xml:"is_end_station,omitempty"`
-	IsStartStation *int32                                                               `json:"is_start_station,omitempty" xml:"is_start_station,omitempty"`
-	Price          *string                                                              `json:"price,omitempty" xml:"price,omitempty"`
-	SaleFlag       *string                                                              `json:"sale_flag,omitempty" xml:"sale_flag,omitempty"`
-	SaleFlagMsg    *string                                                              `json:"sale_flag_msg,omitempty" xml:"sale_flag_msg,omitempty"`
-	SeagmentIndex  *string                                                              `json:"seagment_index,omitempty" xml:"seagment_index,omitempty"`
-	SeatInfos      []*TrainNoListSearchResponseBodyModuleTrainStationSearchVOSSeatInfos `json:"seat_infos,omitempty" xml:"seat_infos,omitempty" type:"Repeated"`
-	TrainNo        *string                                                              `json:"train_no,omitempty" xml:"train_no,omitempty"`
-	TrainType      *string                                                              `json:"train_type,omitempty" xml:"train_type,omitempty"`
+	// example:
+	//
+	// 0
+	ArrDayTag *string `json:"arr_day_tag,omitempty" xml:"arr_day_tag,omitempty"`
+	// example:
+	//
+	// BDC
+	ArrStationCode *string `json:"arr_station_code,omitempty" xml:"arr_station_code,omitempty"`
+	// example:
+	//
+	// 包头东
+	ArrStationName *string `json:"arr_station_name,omitempty" xml:"arr_station_name,omitempty"`
+	// example:
+	//
+	// 2024-05-07 14:46:06
+	ArrTime *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	// example:
+	//
+	// 30
+	CostTime *string `json:"cost_time,omitempty" xml:"cost_time,omitempty"`
+	// example:
+	//
+	// BTC
+	DepStationCode *string `json:"dep_station_code,omitempty" xml:"dep_station_code,omitempty"`
+	// example:
+	//
+	// 包头
+	DepStationName *string `json:"dep_station_name,omitempty" xml:"dep_station_name,omitempty"`
+	// example:
+	//
+	// 2024-05-06 14:46:06
+	DepTime *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	// example:
+	//
+	// 1
+	IsEndStation *int32 `json:"is_end_station,omitempty" xml:"is_end_station,omitempty"`
+	// example:
+	//
+	// 1
+	IsStartStation *int32 `json:"is_start_station,omitempty" xml:"is_start_station,omitempty"`
+	// example:
+	//
+	// 54000
+	Price *string `json:"price,omitempty" xml:"price,omitempty"`
+	// example:
+	//
+	// 1
+	SaleFlag *string `json:"sale_flag,omitempty" xml:"sale_flag,omitempty"`
+	// example:
+	//
+	// 没有原因
+	SaleFlagMsg *string `json:"sale_flag_msg,omitempty" xml:"sale_flag_msg,omitempty"`
+	// example:
+	//
+	// 0
+	SeagmentIndex *string                                                              `json:"seagment_index,omitempty" xml:"seagment_index,omitempty"`
+	SeatInfos     []*TrainNoListSearchResponseBodyModuleTrainStationSearchVOSSeatInfos `json:"seat_infos,omitempty" xml:"seat_infos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// D2345
+	TrainNo *string `json:"train_no,omitempty" xml:"train_no,omitempty"`
+	// example:
+	//
+	// 1
+	TrainType *string `json:"train_type,omitempty" xml:"train_type,omitempty"`
 }
 
 func (s TrainNoListSearchResponseBodyModuleTrainStationSearchVOS) String() string {
@@ -351,10 +417,22 @@ func (s *TrainNoListSearchResponseBodyModuleTrainStationSearchVOS) Validate() er
 }
 
 type TrainNoListSearchResponseBodyModuleTrainStationSearchVOSSeatInfos struct {
-	Price    *int64  `json:"price,omitempty" xml:"price,omitempty"`
+	// example:
+	//
+	// 40900
+	Price *int64 `json:"price,omitempty" xml:"price,omitempty"`
+	// example:
+	//
+	// 二等座
 	SeatName *string `json:"seat_name,omitempty" xml:"seat_name,omitempty"`
+	// example:
+	//
+	// 14
 	SeatType *string `json:"seat_type,omitempty" xml:"seat_type,omitempty"`
-	Stock    *string `json:"stock,omitempty" xml:"stock,omitempty"`
+	// example:
+	//
+	// 有
+	Stock *string `json:"stock,omitempty" xml:"stock,omitempty"`
 }
 
 func (s TrainNoListSearchResponseBodyModuleTrainStationSearchVOSSeatInfos) String() string {
@@ -406,12 +484,27 @@ func (s *TrainNoListSearchResponseBodyModuleTrainStationSearchVOSSeatInfos) Vali
 }
 
 type TrainNoListSearchResponseBodyModuleTrainTransferStationSearchVOs struct {
-	ArrStation         *string                                                                               `json:"arr_station,omitempty" xml:"arr_station,omitempty"`
-	DepStation         *string                                                                               `json:"dep_station,omitempty" xml:"dep_station,omitempty"`
-	LineKey            *string                                                                               `json:"line_key,omitempty" xml:"line_key,omitempty"`
+	// example:
+	//
+	// 重庆西
+	ArrStation *string `json:"arr_station,omitempty" xml:"arr_station,omitempty"`
+	// example:
+	//
+	// 巫山站
+	DepStation *string `json:"dep_station,omitempty" xml:"dep_station,omitempty"`
+	// example:
+	//
+	// 中转唯一标识
+	LineKey *string `json:"line_key,omitempty" xml:"line_key,omitempty"`
+	// example:
+	//
+	// 万州北
 	MiddleStation      *string                                                                               `json:"middle_station,omitempty" xml:"middle_station,omitempty"`
 	TransferDetailList []*TrainNoListSearchResponseBodyModuleTrainTransferStationSearchVOsTransferDetailList `json:"transfer_detail_list,omitempty" xml:"transfer_detail_list,omitempty" type:"Repeated"`
-	TransferType       *string                                                                               `json:"transfer_type,omitempty" xml:"transfer_type,omitempty"`
+	// example:
+	//
+	// 1
+	TransferType *string `json:"transfer_type,omitempty" xml:"transfer_type,omitempty"`
 }
 
 func (s TrainNoListSearchResponseBodyModuleTrainTransferStationSearchVOs) String() string {
@@ -490,23 +583,71 @@ func (s *TrainNoListSearchResponseBodyModuleTrainTransferStationSearchVOs) Valid
 }
 
 type TrainNoListSearchResponseBodyModuleTrainTransferStationSearchVOsTransferDetailList struct {
-	ArrDayTag      *string                                                                                        `json:"arr_day_tag,omitempty" xml:"arr_day_tag,omitempty"`
-	ArrStationCode *string                                                                                        `json:"arr_station_code,omitempty" xml:"arr_station_code,omitempty"`
-	ArrStationName *string                                                                                        `json:"arr_station_name,omitempty" xml:"arr_station_name,omitempty"`
-	ArrTime        *string                                                                                        `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
-	CostTime       *string                                                                                        `json:"cost_time,omitempty" xml:"cost_time,omitempty"`
-	DepStationCode *string                                                                                        `json:"dep_station_code,omitempty" xml:"dep_station_code,omitempty"`
-	DepStationName *string                                                                                        `json:"dep_station_name,omitempty" xml:"dep_station_name,omitempty"`
-	DepTime        *string                                                                                        `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
-	IsEndStation   *int32                                                                                         `json:"is_end_station,omitempty" xml:"is_end_station,omitempty"`
-	IsStartStation *int32                                                                                         `json:"is_start_station,omitempty" xml:"is_start_station,omitempty"`
-	Price          *string                                                                                        `json:"price,omitempty" xml:"price,omitempty"`
-	SaleFlag       *string                                                                                        `json:"sale_flag,omitempty" xml:"sale_flag,omitempty"`
-	SaleFlagMsg    *string                                                                                        `json:"sale_flag_msg,omitempty" xml:"sale_flag_msg,omitempty"`
-	SeatInfos      []*TrainNoListSearchResponseBodyModuleTrainTransferStationSearchVOsTransferDetailListSeatInfos `json:"seat_infos,omitempty" xml:"seat_infos,omitempty" type:"Repeated"`
-	SegmentIndex   *string                                                                                        `json:"segment_index,omitempty" xml:"segment_index,omitempty"`
-	TrainNo        *string                                                                                        `json:"train_no,omitempty" xml:"train_no,omitempty"`
-	TrainType      *string                                                                                        `json:"train_type,omitempty" xml:"train_type,omitempty"`
+	// example:
+	//
+	// 1
+	ArrDayTag *string `json:"arr_day_tag,omitempty" xml:"arr_day_tag,omitempty"`
+	// example:
+	//
+	// 123344
+	ArrStationCode *string `json:"arr_station_code,omitempty" xml:"arr_station_code,omitempty"`
+	// example:
+	//
+	// 巫山站
+	ArrStationName *string `json:"arr_station_name,omitempty" xml:"arr_station_name,omitempty"`
+	// example:
+	//
+	// 2024-05-07 14:46:06
+	ArrTime *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	// example:
+	//
+	// 234567
+	CostTime *string `json:"cost_time,omitempty" xml:"cost_time,omitempty"`
+	// example:
+	//
+	// 12334
+	DepStationCode *string `json:"dep_station_code,omitempty" xml:"dep_station_code,omitempty"`
+	// example:
+	//
+	// 重庆西
+	DepStationName *string `json:"dep_station_name,omitempty" xml:"dep_station_name,omitempty"`
+	// example:
+	//
+	// 2024-05-06 14:46:06
+	DepTime *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	// example:
+	//
+	// 1
+	IsEndStation *int32 `json:"is_end_station,omitempty" xml:"is_end_station,omitempty"`
+	// example:
+	//
+	// 0
+	IsStartStation *int32 `json:"is_start_station,omitempty" xml:"is_start_station,omitempty"`
+	// example:
+	//
+	// 105000
+	Price *string `json:"price,omitempty" xml:"price,omitempty"`
+	// example:
+	//
+	// 1
+	SaleFlag *string `json:"sale_flag,omitempty" xml:"sale_flag,omitempty"`
+	// example:
+	//
+	// 没有原因
+	SaleFlagMsg *string                                                                                        `json:"sale_flag_msg,omitempty" xml:"sale_flag_msg,omitempty"`
+	SeatInfos   []*TrainNoListSearchResponseBodyModuleTrainTransferStationSearchVOsTransferDetailListSeatInfos `json:"seat_infos,omitempty" xml:"seat_infos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
+	SegmentIndex *string `json:"segment_index,omitempty" xml:"segment_index,omitempty"`
+	// example:
+	//
+	// K2345
+	TrainNo *string `json:"train_no,omitempty" xml:"train_no,omitempty"`
+	// example:
+	//
+	// 1
+	TrainType *string `json:"train_type,omitempty" xml:"train_type,omitempty"`
 }
 
 func (s TrainNoListSearchResponseBodyModuleTrainTransferStationSearchVOsTransferDetailList) String() string {
@@ -684,10 +825,22 @@ func (s *TrainNoListSearchResponseBodyModuleTrainTransferStationSearchVOsTransfe
 }
 
 type TrainNoListSearchResponseBodyModuleTrainTransferStationSearchVOsTransferDetailListSeatInfos struct {
-	Price    *int64  `json:"price,omitempty" xml:"price,omitempty"`
+	// example:
+	//
+	// 40900
+	Price *int64 `json:"price,omitempty" xml:"price,omitempty"`
+	// example:
+	//
+	// 二等座
 	SeatName *string `json:"seat_name,omitempty" xml:"seat_name,omitempty"`
+	// example:
+	//
+	// 14
 	SeatType *string `json:"seat_type,omitempty" xml:"seat_type,omitempty"`
-	Stock    *string `json:"stock,omitempty" xml:"stock,omitempty"`
+	// example:
+	//
+	// 33
+	Stock *string `json:"stock,omitempty" xml:"stock,omitempty"`
 }
 
 func (s TrainNoListSearchResponseBodyModuleTrainTransferStationSearchVOsTransferDetailListSeatInfos) String() string {

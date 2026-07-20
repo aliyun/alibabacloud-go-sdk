@@ -24,12 +24,38 @@ type iAddInvoiceEntityResponseBody interface {
 }
 
 type AddInvoiceEntityResponseBody struct {
-	Code      *string                             `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                             `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *AddInvoiceEntityResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                               `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                             `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// The result code.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The remarks on the result, such as a description of the result.
+	//
+	// example:
+	//
+	// 成功
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The return value from the server. This parameter is empty if no result is returned or an exception occurs.
+	Module *AddInvoiceEntityResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// The unique request ID.
+	//
+	// example:
+	//
+	// A5009956-1077-52FB-B520-EA8C7E91D722
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful. This parameter is set by the server. The value is false when an exception occurs or when the result is null.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	//
+	// example:
+	//
+	// 210f079e16603757182131635d866a
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s AddInvoiceEntityResponseBody) String() string {
@@ -104,7 +130,17 @@ func (s *AddInvoiceEntityResponseBody) Validate() error {
 }
 
 type AddInvoiceEntityResponseBodyModule struct {
-	AddNum          *int32 `json:"add_num,omitempty" xml:"add_num,omitempty"`
+	// The number of added personnel, departments, or roles.
+	//
+	// example:
+	//
+	// 1
+	AddNum *int32 `json:"add_num,omitempty" xml:"add_num,omitempty"`
+	// The number of entities under the invoice header.
+	//
+	// example:
+	//
+	// 2
 	SelectedUserNum *int32 `json:"selected_user_num,omitempty" xml:"selected_user_num,omitempty"`
 }
 

@@ -24,12 +24,27 @@ type iTripCCInfoQueryResponseBody interface {
 }
 
 type TripCCInfoQueryResponseBody struct {
-	Code      *string                              `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                              `json:"message,omitempty" xml:"message,omitempty"`
-	Module    []*TripCCInfoQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
-	RequestId *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                                `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                              `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 成功
+	Message *string                              `json:"message,omitempty" xml:"message,omitempty"`
+	Module  []*TripCCInfoQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
+	// example:
+	//
+	// A5009956-1077-52FB-B520-EA8C7E91D722
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 21041ce316577904808056433edbb2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s TripCCInfoQueryResponseBody) String() string {
@@ -108,8 +123,14 @@ func (s *TripCCInfoQueryResponseBody) Validate() error {
 }
 
 type TripCCInfoQueryResponseBodyModule struct {
-	Notifier        *string `json:"notifier,omitempty" xml:"notifier,omitempty"`
-	NotifyStartTime *int64  `json:"notify_start_time,omitempty" xml:"notify_start_time,omitempty"`
+	// example:
+	//
+	// user_12138
+	Notifier *string `json:"notifier,omitempty" xml:"notifier,omitempty"`
+	// example:
+	//
+	// 1525104000
+	NotifyStartTime *int64 `json:"notify_start_time,omitempty" xml:"notify_start_time,omitempty"`
 }
 
 func (s TripCCInfoQueryResponseBodyModule) String() string {

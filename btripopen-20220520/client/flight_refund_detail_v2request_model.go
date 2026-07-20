@@ -22,11 +22,26 @@ type iFlightRefundDetailV2Request interface {
 }
 
 type FlightRefundDetailV2Request struct {
-	IsvName          *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
-	OrderId          *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	OutOrderId       *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	// example:
+	//
+	// name
+	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	// example:
+	//
+	// 1002039195025156784
+	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// example:
+	//
+	// 1017002195371212121
+	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	// example:
+	//
+	// 1002039195025156800
 	OutRefundApplyId *string `json:"out_refund_apply_id,omitempty" xml:"out_refund_apply_id,omitempty"`
-	RefundApplyId    *string `json:"refund_apply_id,omitempty" xml:"refund_apply_id,omitempty"`
+	// example:
+	//
+	// 1002039195025156700
+	RefundApplyId *string `json:"refund_apply_id,omitempty" xml:"refund_apply_id,omitempty"`
 }
 
 func (s FlightRefundDetailV2Request) String() string {

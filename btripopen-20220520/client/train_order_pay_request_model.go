@@ -19,10 +19,22 @@ type iTrainOrderPayRequest interface {
 
 type TrainOrderPayRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1379598062646
 	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
 	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
 	PayAmount *int64 `json:"pay_amount,omitempty" xml:"pay_amount,omitempty"`
 }
 

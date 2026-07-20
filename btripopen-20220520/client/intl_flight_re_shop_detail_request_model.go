@@ -21,10 +21,24 @@ type iIntlFlightReShopDetailRequest interface {
 
 type IntlFlightReShopDetailRequest struct {
 	// This parameter is required.
-	OrderId          *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	OutOrderId       *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	//
+	// example:
+	//
+	// 1017035200254689390
+	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// example:
+	//
+	// F11494210548838170624
+	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	// example:
+	//
+	// M132492719472
 	OutReShopApplyId *string `json:"out_re_shop_apply_id,omitempty" xml:"out_re_shop_apply_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 10002612002
 	ReShopApplyId *string `json:"re_shop_apply_id,omitempty" xml:"re_shop_apply_id,omitempty"`
 }
 

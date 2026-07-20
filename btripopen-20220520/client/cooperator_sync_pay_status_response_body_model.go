@@ -20,10 +20,22 @@ type iCooperatorSyncPayStatusResponseBody interface {
 }
 
 type CooperatorSyncPayStatusResponseBody struct {
-	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// System.Error
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 系统错误
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// C61ECFF6-606B-5F66-B81D-D77369043A5F
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// false
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s CooperatorSyncPayStatusResponseBody) String() string {

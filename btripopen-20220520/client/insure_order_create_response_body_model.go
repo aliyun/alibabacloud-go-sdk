@@ -24,12 +24,27 @@ type iInsureOrderCreateResponseBody interface {
 }
 
 type InsureOrderCreateResponseBody struct {
-	Code      *string                              `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                              `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *InsureOrderCreateResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                                `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                              `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 成功
+	Message *string                              `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *InsureOrderCreateResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// C6055EA5-C566-511D-9FC4-5E4D45182711
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 210f079916782711059363565d6be1
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s InsureOrderCreateResponseBody) String() string {
@@ -104,10 +119,19 @@ func (s *InsureOrderCreateResponseBody) Validate() error {
 }
 
 type InsureOrderCreateResponseBodyModule struct {
+	// example:
+	//
+	// 1
 	Copies                *int32                                                      `json:"copies,omitempty" xml:"copies,omitempty"`
 	InsureOrderDetailList []*InsureOrderCreateResponseBodyModuleInsureOrderDetailList `json:"insure_order_detail_list,omitempty" xml:"insure_order_detail_list,omitempty" type:"Repeated"`
-	InsureOrderId         *string                                                     `json:"insure_order_id,omitempty" xml:"insure_order_id,omitempty"`
-	Premium               *int64                                                      `json:"premium,omitempty" xml:"premium,omitempty"`
+	// example:
+	//
+	// 1021000196500370001
+	InsureOrderId *string `json:"insure_order_id,omitempty" xml:"insure_order_id,omitempty"`
+	// example:
+	//
+	// 3000
+	Premium *int64 `json:"premium,omitempty" xml:"premium,omitempty"`
 }
 
 func (s InsureOrderCreateResponseBodyModule) String() string {
@@ -168,10 +192,22 @@ func (s *InsureOrderCreateResponseBodyModule) Validate() error {
 }
 
 type InsureOrderCreateResponseBodyModuleInsureOrderDetailList struct {
+	// example:
+	//
+	// 1992939412431231
 	OutSubInsOrderId *string `json:"out_sub_ins_order_id,omitempty" xml:"out_sub_ins_order_id,omitempty"`
-	PolicyNo         *string `json:"policy_no,omitempty" xml:"policy_no,omitempty"`
-	Status           *string `json:"status,omitempty" xml:"status,omitempty"`
-	SubInsOrderId    *string `json:"sub_ins_order_id,omitempty" xml:"sub_ins_order_id,omitempty"`
+	// example:
+	//
+	// 121234444
+	PolicyNo *string `json:"policy_no,omitempty" xml:"policy_no,omitempty"`
+	// example:
+	//
+	// INIT
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 1022196500378001
+	SubInsOrderId *string `json:"sub_ins_order_id,omitempty" xml:"sub_ins_order_id,omitempty"`
 }
 
 func (s InsureOrderCreateResponseBodyModuleInsureOrderDetailList) String() string {

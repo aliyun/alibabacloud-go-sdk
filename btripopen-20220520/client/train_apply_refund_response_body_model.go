@@ -24,12 +24,32 @@ type iTrainApplyRefundResponseBody interface {
 }
 
 type TrainApplyRefundResponseBody struct {
-	Code      *string                             `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                             `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *TrainApplyRefundResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                               `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                             `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 成功
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// module
+	Module *TrainApplyRefundResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// requestId
+	//
+	// example:
+	//
+	// A5009956-1077-52FB-B520-EA8C7E91D722
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	//
+	// example:
+	//
+	// 21041ce316577904808056433edbb2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s TrainApplyRefundResponseBody) String() string {
@@ -104,7 +124,13 @@ func (s *TrainApplyRefundResponseBody) Validate() error {
 }
 
 type TrainApplyRefundResponseBodyModule struct {
-	OrderId    *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// example:
+	//
+	// 116019444
+	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// example:
+	//
+	// 1017002195370467200
 	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
 }
 

@@ -24,23 +24,34 @@ type iIntlFlightReShopListSearchResponseBody interface {
 }
 
 type IntlFlightReShopListSearchResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// 成功
-	Message *string                                       `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *IntlFlightReShopListSearchResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The response data.
+	Module *IntlFlightReShopListSearchResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 407543AF-2BD9-5890-BD92-9D1AB7218B27
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The global trace ID of the request, typically used for troubleshooting.
+	//
 	// example:
 	//
 	// 210bc4b116835992457938931db4de
@@ -119,15 +130,22 @@ func (s *IntlFlightReShopListSearchResponseBody) Validate() error {
 }
 
 type IntlFlightReShopListSearchResponseBodyModule struct {
+	// Indicates whether polling needs to continue.
+	//
 	// example:
 	//
 	// false
 	NeedContinue *bool `json:"need_continue,omitempty" xml:"need_continue,omitempty"`
+	// The wait time before the next search request, in milliseconds.
+	//
 	// example:
 	//
 	// 2000
-	NextReqWaitTime *int32                                                        `json:"next_req_wait_time,omitempty" xml:"next_req_wait_time,omitempty"`
-	ReShopItemList  []*IntlFlightReShopListSearchResponseBodyModuleReShopItemList `json:"re_shop_item_list,omitempty" xml:"re_shop_item_list,omitempty" type:"Repeated"`
+	NextReqWaitTime *int32 `json:"next_req_wait_time,omitempty" xml:"next_req_wait_time,omitempty"`
+	// The flight list.
+	ReShopItemList []*IntlFlightReShopListSearchResponseBodyModuleReShopItemList `json:"re_shop_item_list,omitempty" xml:"re_shop_item_list,omitempty" type:"Repeated"`
+	// The query record token for external polling.
+	//
 	// example:
 	//
 	// 284e692fffdf71e8a49aebbe0657a625
@@ -192,7 +210,9 @@ func (s *IntlFlightReShopListSearchResponseBodyModule) Validate() error {
 }
 
 type IntlFlightReShopListSearchResponseBodyModuleReShopItemList struct {
-	BestPriceItem      *IntlFlightReShopListSearchResponseBodyModuleReShopItemListBestPriceItem        `json:"best_price_item,omitempty" xml:"best_price_item,omitempty" type:"Struct"`
+	// The lowest price item.
+	BestPriceItem *IntlFlightReShopListSearchResponseBodyModuleReShopItemListBestPriceItem `json:"best_price_item,omitempty" xml:"best_price_item,omitempty" type:"Struct"`
+	// The flight journey information.
 	FlightJourneyInfos []*IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInfos `json:"flight_journey_infos,omitempty" xml:"flight_journey_infos,omitempty" type:"Repeated"`
 }
 
@@ -241,16 +261,22 @@ func (s *IntlFlightReShopListSearchResponseBodyModuleReShopItemList) Validate() 
 }
 
 type IntlFlightReShopListSearchResponseBodyModuleReShopItemListBestPriceItem struct {
+	// The item ID.
+	//
 	// example:
 	//
 	// b83e3d6ebb8b44dfb94c763abc66c966_2
 	ItemId *string `json:"item_id,omitempty" xml:"item_id,omitempty"`
+	// The item type. Valid values: normal: standard item. combination: combined special offer.
+	//
 	// example:
 	//
 	// normal
-	ItemType        *string                                                                            `json:"item_type,omitempty" xml:"item_type,omitempty"`
-	ShoppingItemMap map[string]*ModuleReShopItemListBestPriceItemShoppingItemMapValue                  `json:"shopping_item_map,omitempty" xml:"shopping_item_map,omitempty"`
-	SubItems        []*IntlFlightReShopListSearchResponseBodyModuleReShopItemListBestPriceItemSubItems `json:"sub_items,omitempty" xml:"sub_items,omitempty" type:"Repeated"`
+	ItemType *string `json:"item_type,omitempty" xml:"item_type,omitempty"`
+	// The pricing information mapped by passenger type.
+	ShoppingItemMap map[string]*ModuleReShopItemListBestPriceItemShoppingItemMapValue `json:"shopping_item_map,omitempty" xml:"shopping_item_map,omitempty"`
+	// The sub-items. Combined products may have multiple sub-items.
+	SubItems []*IntlFlightReShopListSearchResponseBodyModuleReShopItemListBestPriceItemSubItems `json:"sub_items,omitempty" xml:"sub_items,omitempty" type:"Repeated"`
 }
 
 func (s IntlFlightReShopListSearchResponseBodyModuleReShopItemListBestPriceItem) String() string {
@@ -311,13 +337,20 @@ func (s *IntlFlightReShopListSearchResponseBodyModuleReShopItemListBestPriceItem
 }
 
 type IntlFlightReShopListSearchResponseBodyModuleReShopItemListBestPriceItemSubItems struct {
+	// The discount value.
+	//
 	// example:
 	//
 	// 5.1
-	DiscountNum         *float64                                                                                              `json:"discount_num,omitempty" xml:"discount_num,omitempty"`
-	SegmentKeys         []*string                                                                                             `json:"segment_keys,omitempty" xml:"segment_keys,omitempty" type:"Repeated"`
+	DiscountNum *float64 `json:"discount_num,omitempty" xml:"discount_num,omitempty"`
+	// The list of segment keys contained in the sub-item.
+	SegmentKeys []*string `json:"segment_keys,omitempty" xml:"segment_keys,omitempty" type:"Repeated"`
+	// The list of segment position information contained in the sub-item.
 	SegmentPositionList []*IntlFlightReShopListSearchResponseBodyModuleReShopItemListBestPriceItemSubItemsSegmentPositionList `json:"segment_position_list,omitempty" xml:"segment_position_list,omitempty" type:"Repeated"`
-	ShoppingItemMap     map[string]*ModuleReShopItemListBestPriceItemSubItemsShoppingItemMapValue                             `json:"shopping_item_map,omitempty" xml:"shopping_item_map,omitempty"`
+	// Key: ADT (adult), CHD (child), or INFANT (infant).
+	ShoppingItemMap map[string]*ModuleReShopItemListBestPriceItemSubItemsShoppingItemMapValue `json:"shopping_item_map,omitempty" xml:"shopping_item_map,omitempty"`
+	// The unique item ID.
+	//
 	// example:
 	//
 	// 07df0bd9-f803-4a50-8449-f4bd675d9939
@@ -391,10 +424,14 @@ func (s *IntlFlightReShopListSearchResponseBodyModuleReShopItemListBestPriceItem
 }
 
 type IntlFlightReShopListSearchResponseBodyModuleReShopItemListBestPriceItemSubItemsSegmentPositionList struct {
+	// The journey ordinal number (starting from 0).
+	//
 	// example:
 	//
 	// 0
 	JourneyIndex *int32 `json:"journey_index,omitempty" xml:"journey_index,omitempty"`
+	// The segment ordinal number (starting from 0 within the same journey).
+	//
 	// example:
 	//
 	// 0
@@ -432,39 +469,58 @@ func (s *IntlFlightReShopListSearchResponseBodyModuleReShopItemListBestPriceItem
 }
 
 type IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInfos struct {
+	// The three-letter code of the arrival city.
+	//
 	// example:
 	//
 	// HGH
 	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	// The name of the arrival city.
+	//
 	// example:
 	//
 	// 杭州
 	ArrCityName *string `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
+	// The arrival time. Format: yyyy-MM-dd HH:mm.
+	//
 	// example:
 	//
 	// 2023-08-13 09:25
 	ArrTime *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	// The three-letter code of the departure city.
+	//
 	// example:
 	//
 	// BJS
 	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	// The name of the departure city.
+	//
 	// example:
 	//
 	// 北京
 	DepCityName *string `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
+	// The departure time. Format: yyyy-MM-dd HH:mm.
+	//
 	// example:
 	//
 	// 2023-08-13 07:25
 	DepTime *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	// The total duration, in minutes.
+	//
 	// example:
 	//
 	// 120
-	Duration           *int32                                                                                            `json:"duration,omitempty" xml:"duration,omitempty"`
+	Duration *int32 `json:"duration,omitempty" xml:"duration,omitempty"`
+	// The flight segment information.
 	FlightSegmentInfos []*IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInfosFlightSegmentInfos `json:"flight_segment_infos,omitempty" xml:"flight_segment_infos,omitempty" type:"Repeated"`
+	// The journey index, starting from 0.
+	//
 	// example:
 	//
 	// 0
 	JourneyIndex *int32 `json:"journey_index,omitempty" xml:"journey_index,omitempty"`
+	// The transfer duration.
+	//
 	// example:
 	//
 	// 0
@@ -583,115 +639,180 @@ func (s *IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourney
 }
 
 type IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInfosFlightSegmentInfos struct {
-	AirlineInfo    *IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInfosFlightSegmentInfosAirlineInfo    `json:"airline_info,omitempty" xml:"airline_info,omitempty" type:"Struct"`
+	// The marketing airline information.
+	AirlineInfo *IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInfosFlightSegmentInfosAirlineInfo `json:"airline_info,omitempty" xml:"airline_info,omitempty" type:"Struct"`
+	// The arrival airport information.
 	ArrAirportInfo *IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInfosFlightSegmentInfosArrAirportInfo `json:"arr_airport_info,omitempty" xml:"arr_airport_info,omitempty" type:"Struct"`
+	// The three-letter code of the arrival city.
+	//
 	// example:
 	//
 	// HGH
 	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	// The name of the arrival city.
+	//
 	// example:
 	//
 	// 杭州
 	ArrCityName *string `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
+	// The arrival time. Format: yyyy-MM-dd HH:mm.
+	//
 	// example:
 	//
 	// 2023-08-13 09:25
 	ArrTime *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	// The arrival time with time zone.
+	//
 	// example:
 	//
 	// 2022-06-06T12:56:34Z
-	ArrTimeUTC     *string                                                                                                       `json:"arr_time_u_t_c,omitempty" xml:"arr_time_u_t_c,omitempty"`
+	ArrTimeUTC *string `json:"arr_time_u_t_c,omitempty" xml:"arr_time_u_t_c,omitempty"`
+	// The departure airport information.
 	DepAirportInfo *IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInfosFlightSegmentInfosDepAirportInfo `json:"dep_airport_info,omitempty" xml:"dep_airport_info,omitempty" type:"Struct"`
+	// The three-letter code of the departure city.
+	//
 	// example:
 	//
 	// BJS
 	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	// The name of the departure city.
+	//
 	// example:
 	//
 	// 北京
 	DepCityName *string `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
+	// The departure time. Format: yyyy-MM-dd HH:mm.
+	//
 	// example:
 	//
 	// 2023-08-13 07:25
 	DepTime *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	// The departure time with time zone.
+	//
 	// example:
 	//
 	// 2022-06-06T12:56:34Z
 	DepTimeUTC *string `json:"dep_time_u_t_c,omitempty" xml:"dep_time_u_t_c,omitempty"`
+	// The total duration of the flight segment in minutes.
+	//
 	// example:
 	//
 	// 320
 	Duration *int32 `json:"duration,omitempty" xml:"duration,omitempty"`
+	// The flight number.
+	//
 	// example:
 	//
 	// CA2013
-	FlightNo        *string                                                                                                        `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	FlightNo *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	// The codeshare flight information.
 	FlightShareInfo *IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInfosFlightSegmentInfosFlightShareInfo `json:"flight_share_info,omitempty" xml:"flight_share_info,omitempty" type:"Struct"`
+	// The aircraft type name.
+	//
 	// example:
 	//
 	// 中型机
-	FlightSize         *string                                                                                                             `json:"flight_size,omitempty" xml:"flight_size,omitempty"`
+	FlightSize *string `json:"flight_size,omitempty" xml:"flight_size,omitempty"`
+	// The flight stopover list.
 	FlightStopInfoList []*IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInfosFlightSegmentInfosFlightStopInfoList `json:"flight_stop_info_list,omitempty" xml:"flight_stop_info_list,omitempty" type:"Repeated"`
+	// The aircraft type code.
+	//
 	// example:
 	//
 	// 320
 	FlightType *string `json:"flight_type,omitempty" xml:"flight_type,omitempty"`
+	// The journey index.
+	//
 	// example:
 	//
 	// 0
-	JourneyIndex      *int32                                                                                                           `json:"journey_index,omitempty" xml:"journey_index,omitempty"`
+	JourneyIndex *int32 `json:"journey_index,omitempty" xml:"journey_index,omitempty"`
+	// Indicates whether luggage is through-checked for the current segment.
 	LuggageDirectInfo *IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInfosFlightSegmentInfosLuggageDirectInfo `json:"luggage_direct_info,omitempty" xml:"luggage_direct_info,omitempty" type:"Struct"`
+	// The manufacturer.
+	//
 	// example:
 	//
 	// 空客
 	Manufacturer *string `json:"manufacturer,omitempty" xml:"manufacturer,omitempty"`
+	// Indicates whether a meal is provided. Valid values:
+	//
+	// - 0: no meal.
+	//
+	// - 1: meal provided.
+	//
 	// example:
 	//
 	// 1
 	Meal *int32 `json:"meal,omitempty" xml:"meal,omitempty"`
+	// The meal description.
+	//
 	// example:
 	//
 	// 小食
 	MealDesc *string `json:"meal_desc,omitempty" xml:"meal_desc,omitempty"`
+	// The flight mileage.
+	//
 	// example:
 	//
 	// 12
 	Miles *int32 `json:"miles,omitempty" xml:"miles,omitempty"`
+	// The on-time rate information.
+	//
 	// example:
 	//
 	// 90%
 	OnTimeRate *string `json:"on_time_rate,omitempty" xml:"on_time_rate,omitempty"`
+	// The number of extra days. For example, 1 indicates that the flight crosses 1 day.
+	//
 	// example:
 	//
 	// 0
 	OneMore *int32 `json:"one_more,omitempty" xml:"one_more,omitempty"`
+	// The cross-day display text.
+	//
 	// example:
 	//
 	// +1天
-	OneMoreShow *string                                                                                                  `json:"one_more_show,omitempty" xml:"one_more_show,omitempty"`
-	OtherInfo   *IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInfosFlightSegmentInfosOtherInfo `json:"other_info,omitempty" xml:"other_info,omitempty" type:"Struct"`
+	OneMoreShow *string `json:"one_more_show,omitempty" xml:"one_more_show,omitempty"`
+	// The other information about the flight segment.
+	OtherInfo *IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInfosFlightSegmentInfosOtherInfo `json:"other_info,omitempty" xml:"other_info,omitempty" type:"Struct"`
+	// The segment index, starting from 0 within the same journey.
+	//
 	// example:
 	//
 	// 0
 	SegmentIndex *int32 `json:"segment_index,omitempty" xml:"segment_index,omitempty"`
+	// The unique key of the segment.
+	//
 	// example:
 	//
 	// KN6728HGHPKX0725
-	SegmentKey        *string                                                                                                          `json:"segment_key,omitempty" xml:"segment_key,omitempty"`
+	SegmentKey *string `json:"segment_key,omitempty" xml:"segment_key,omitempty"`
+	// The transit visa information for the current segment.
 	SegmentVisaRemark *IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInfosFlightSegmentInfosSegmentVisaRemark `json:"segment_visa_remark,omitempty" xml:"segment_visa_remark,omitempty" type:"Struct"`
+	// Indicates whether the flight is a codeshare flight.
+	//
 	// example:
 	//
 	// true
 	Share *bool `json:"share,omitempty" xml:"share,omitempty"`
+	// The short name of the aircraft type.
+	//
 	// example:
 	//
 	// 中
 	ShortFlightSize *string `json:"short_flight_size,omitempty" xml:"short_flight_size,omitempty"`
+	// Indicates whether the flight has a stopover.
+	//
 	// example:
 	//
 	// true
-	Stop                 *bool                                                                                                               `json:"stop,omitempty" xml:"stop,omitempty"`
+	Stop *bool `json:"stop,omitempty" xml:"stop,omitempty"`
+	// The ticketing airline information.
 	TicketingAirlineInfo *IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInfosFlightSegmentInfosTicketingAirlineInfo `json:"ticketing_airline_info,omitempty" xml:"ticketing_airline_info,omitempty" type:"Struct"`
+	// The total duration of the flight segment.
+	//
 	// example:
 	//
 	// 5小时20分
@@ -1075,22 +1196,32 @@ func (s *IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourney
 }
 
 type IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInfosFlightSegmentInfosAirlineInfo struct {
+	// The airline code.
+	//
 	// example:
 	//
 	// CA
 	AirlineCode *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
+	// The airline name.
+	//
 	// example:
 	//
 	// 中国国航
 	AirlineName *string `json:"airline_name,omitempty" xml:"airline_name,omitempty"`
+	// Indicates whether the airline is a low-cost airline.
+	//
 	// example:
 	//
 	// false
 	CheapAirline *bool `json:"cheap_airline,omitempty" xml:"cheap_airline,omitempty"`
+	// The URL of the airline icon.
+	//
 	// example:
 	//
 	// https://
 	IconUrl *string `json:"icon_url,omitempty" xml:"icon_url,omitempty"`
+	// The short name of the airline.
+	//
 	// example:
 	//
 	// 国航
@@ -1155,18 +1286,26 @@ func (s *IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourney
 }
 
 type IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInfosFlightSegmentInfosArrAirportInfo struct {
+	// The airport code.
+	//
 	// example:
 	//
 	// HGH
 	AirportCode *string `json:"airport_code,omitempty" xml:"airport_code,omitempty"`
+	// The airport name.
+	//
 	// example:
 	//
 	// 萧山国际机场
 	AirportName *string `json:"airport_name,omitempty" xml:"airport_name,omitempty"`
+	// The short name of the airport.
+	//
 	// example:
 	//
 	// 萧山
 	AirportShortName *string `json:"airport_short_name,omitempty" xml:"airport_short_name,omitempty"`
+	// The terminal.
+	//
 	// example:
 	//
 	// T3
@@ -1222,18 +1361,26 @@ func (s *IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourney
 }
 
 type IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInfosFlightSegmentInfosDepAirportInfo struct {
+	// The airport code.
+	//
 	// example:
 	//
 	// PKX
 	AirportCode *string `json:"airport_code,omitempty" xml:"airport_code,omitempty"`
+	// The airport name.
+	//
 	// example:
 	//
 	// 大兴国际机场
 	AirportName *string `json:"airport_name,omitempty" xml:"airport_name,omitempty"`
+	// The short name of the airport.
+	//
 	// example:
 	//
 	// 大兴
 	AirportShortName *string `json:"airport_short_name,omitempty" xml:"airport_short_name,omitempty"`
+	// The terminal.
+	//
 	// example:
 	//
 	// T3
@@ -1289,7 +1436,10 @@ func (s *IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourney
 }
 
 type IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInfosFlightSegmentInfosFlightShareInfo struct {
+	// The operating airline information.
 	OperatingAirlineInfo *IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo `json:"operating_airline_info,omitempty" xml:"operating_airline_info,omitempty" type:"Struct"`
+	// The operating carrier flight number. This field has a value only for codeshare flights.
+	//
 	// example:
 	//
 	// CX601
@@ -1332,22 +1482,32 @@ func (s *IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourney
 }
 
 type IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo struct {
+	// The airline code.
+	//
 	// example:
 	//
 	// CA
 	AirlineCode *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
+	// The airline name.
+	//
 	// example:
 	//
 	// 中国国航
 	AirlineName *string `json:"airline_name,omitempty" xml:"airline_name,omitempty"`
+	// Indicates whether the airline is a low-cost airline.
+	//
 	// example:
 	//
 	// false
 	CheapAirline *bool `json:"cheap_airline,omitempty" xml:"cheap_airline,omitempty"`
+	// The URL of the airline icon.
+	//
 	// example:
 	//
 	// https://
 	IconUrl *string `json:"icon_url,omitempty" xml:"icon_url,omitempty"`
+	// The short name of the airline.
+	//
 	// example:
 	//
 	// 国航
@@ -1412,39 +1572,58 @@ func (s *IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourney
 }
 
 type IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInfosFlightSegmentInfosFlightStopInfoList struct {
+	// The stopover airport.
+	//
 	// example:
 	//
 	// HGH
-	StopAirport           *string                                                                                                                                `json:"stop_airport,omitempty" xml:"stop_airport,omitempty"`
+	StopAirport *string `json:"stop_airport,omitempty" xml:"stop_airport,omitempty"`
+	// The county information of the stopover airport.
 	StopAirportCountyInfo *IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInfosFlightSegmentInfosFlightStopInfoListStopAirportCountyInfo `json:"stop_airport_county_info,omitempty" xml:"stop_airport_county_info,omitempty" type:"Struct"`
+	// The name of the stopover airport.
+	//
 	// example:
 	//
 	// 萧山国际机场
 	StopAirportName *string `json:"stop_airport_name,omitempty" xml:"stop_airport_name,omitempty"`
+	// The arrival terminal at the stopover.
+	//
 	// example:
 	//
 	// T1
 	StopArrTerm *string `json:"stop_arr_term,omitempty" xml:"stop_arr_term,omitempty"`
+	// The arrival time at the stopover. Format: yyyy-MM-dd HH:mm.
+	//
 	// example:
 	//
 	// 2023-08-13 07:25
 	StopArrTime *string `json:"stop_arr_time,omitempty" xml:"stop_arr_time,omitempty"`
+	// The three-letter code of the stopover city.
+	//
 	// example:
 	//
 	// BJS
 	StopCityCode *string `json:"stop_city_code,omitempty" xml:"stop_city_code,omitempty"`
+	// The name of the stopover city.
+	//
 	// example:
 	//
 	// 北京
 	StopCityName *string `json:"stop_city_name,omitempty" xml:"stop_city_name,omitempty"`
+	// The departure terminal at the stopover.
+	//
 	// example:
 	//
 	// T1
 	StopDepTerm *string `json:"stop_dep_term,omitempty" xml:"stop_dep_term,omitempty"`
+	// The departure time from the stopover. Format: yyyy-MM-dd HH:mm.
+	//
 	// example:
 	//
 	// 2023-08-13 09:25
 	StopDepTime *string `json:"stop_dep_time,omitempty" xml:"stop_dep_time,omitempty"`
+	// The stopover duration, in minutes.
+	//
 	// example:
 	//
 	// 60
@@ -1559,42 +1738,68 @@ func (s *IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourney
 }
 
 type IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInfosFlightSegmentInfosFlightStopInfoListStopAirportCountyInfo struct {
+	// The administrative division code.
+	//
 	// example:
 	//
 	// 330182
 	Adcode *string `json:"adcode,omitempty" xml:"adcode,omitempty"`
+	// The airport city code.
+	//
 	// example:
 	//
 	// HGH
 	AirportCityCode *string `json:"airport_city_code,omitempty" xml:"airport_city_code,omitempty"`
+	// The city name of the airport.
+	//
+	// [_single.resp.200.props.module.re_shop_item_list.items.flight_journey_infos.items.flight_segment_infos.items.flight_stop_info
+	//
 	// example:
 	//
 	// 杭州
 	AirportCityName *string `json:"airport_city_name,omitempty" xml:"airport_city_name,omitempty"`
+	// The airport code.
+	//
 	// example:
 	//
 	// HGH
 	AirportCode *string `json:"airport_code,omitempty" xml:"airport_code,omitempty"`
+	// The airport name.
+	//
 	// example:
 	//
 	// 萧山国际机场
 	AirportName *string `json:"airport_name,omitempty" xml:"airport_name,omitempty"`
+	// The parent city name of the airport.
+	//
 	// example:
 	//
 	// 杭州
 	AirportParentCityName *string `json:"airport_parent_city_name,omitempty" xml:"airport_parent_city_name,omitempty"`
+	// The administrative division code of the county-level city where the airport is located.
+	//
+	// 	Notice: This value is null if the airport is not at the county level.</notice>
+	//
 	// example:
 	//
 	// 杭州
 	CountyCityAdcode *string `json:"county_city_adcode,omitempty" xml:"county_city_adcode,omitempty"`
+	// The name of the county-level city where the airport is located.
+	//
+	// 	Notice: This value is null if the airport is not at the county level.</notice>
+	//
 	// example:
 	//
 	// 330182
 	CountyCityName *string `json:"county_city_name,omitempty" xml:"county_city_name,omitempty"`
+	// The administrative division code of the prefecture-level city where the airport is located.
+	//
 	// example:
 	//
 	// 330182
 	PrefectureCityAdcode *string `json:"prefecture_city_adcode,omitempty" xml:"prefecture_city_adcode,omitempty"`
+	// The name of the prefecture-level city where the airport is located.
+	//
 	// example:
 	//
 	// 杭州
@@ -1704,10 +1909,26 @@ func (s *IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourney
 }
 
 type IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInfosFlightSegmentInfosLuggageDirectInfo struct {
+	// The luggage through-check status for the departure city. Valid values:
+	//
+	// - 0: re-check required.
+	//
+	// - 1: through-checked.
+	//
+	// - null: unknown.
+	//
 	// example:
 	//
 	// 1
 	DepCityLuggageDirect *int32 `json:"dep_city_luggage_direct,omitempty" xml:"dep_city_luggage_direct,omitempty"`
+	// The luggage through-check status for the departure city. Valid values:
+	//
+	// - 0: re-check required.
+	//
+	// - 1: through-checked.
+	//
+	// - null: unknown.
+	//
 	// example:
 	//
 	// 1
@@ -1745,26 +1966,38 @@ func (s *IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourney
 }
 
 type IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInfosFlightSegmentInfosOtherInfo struct {
+	// The aircraft age.
+	//
 	// example:
 	//
 	// 2.5年
 	AircraftAge *string `json:"aircraft_age,omitempty" xml:"aircraft_age,omitempty"`
+	// The average delay time.
+	//
 	// example:
 	//
 	// 平均延误58分钟
 	AvgDelayTime *string `json:"avg_delay_time,omitempty" xml:"avg_delay_time,omitempty"`
+	// The flight cancellation rate.
+	//
 	// example:
 	//
 	// 10%
 	FlightCancelRate *string `json:"flight_cancel_rate,omitempty" xml:"flight_cancel_rate,omitempty"`
+	// The jet bridge rate.
+	//
 	// example:
 	//
 	// 10%
 	JetBridgeRate *string `json:"jet_bridge_rate,omitempty" xml:"jet_bridge_rate,omitempty"`
+	// The on-time rate information.
+	//
 	// example:
 	//
 	// 到达准点率90%
 	OnTimeRate *string `json:"on_time_rate,omitempty" xml:"on_time_rate,omitempty"`
+	// Indicates whether Wi-Fi is available.
+	//
 	// example:
 	//
 	// true
@@ -1838,16 +2071,26 @@ func (s *IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourney
 }
 
 type IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInfosFlightSegmentInfosSegmentVisaRemark struct {
+	// The transit visa information for the departure city.
+	//
 	// example:
 	//
 	// 前往菲律宾的旅客，请确保持有往返纸质行程单以及纸质签证办理登记手续，否则可能会被当地政府拒绝入境
 	DepCityVisaRemark *string `json:"dep_city_visa_remark,omitempty" xml:"dep_city_visa_remark,omitempty"`
+	// The transit visa type for the departure city. Valid values:
+	//
+	// - 0: no transit visa required.
+	//
+	// - 1: transit visa required.
+	//
 	// example:
 	//
 	// 0
-	DepCityVisaType     *int32    `json:"dep_city_visa_type,omitempty" xml:"dep_city_visa_type,omitempty"`
+	DepCityVisaType *int32 `json:"dep_city_visa_type,omitempty" xml:"dep_city_visa_type,omitempty"`
+	// The transit visa information for stopover cities, one entry per stopover city.
 	StopCityVisaRemarks []*string `json:"stop_city_visa_remarks,omitempty" xml:"stop_city_visa_remarks,omitempty" type:"Repeated"`
-	StopCityVisaTypes   []*int32  `json:"stop_city_visa_types,omitempty" xml:"stop_city_visa_types,omitempty" type:"Repeated"`
+	// The transit visa types for stopover cities, one entry per stopover city.
+	StopCityVisaTypes []*int32 `json:"stop_city_visa_types,omitempty" xml:"stop_city_visa_types,omitempty" type:"Repeated"`
 }
 
 func (s IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInfosFlightSegmentInfosSegmentVisaRemark) String() string {
@@ -1899,22 +2142,32 @@ func (s *IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourney
 }
 
 type IntlFlightReShopListSearchResponseBodyModuleReShopItemListFlightJourneyInfosFlightSegmentInfosTicketingAirlineInfo struct {
+	// The airline code.
+	//
 	// example:
 	//
 	// CA
 	AirlineCode *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
+	// The airline name.
+	//
 	// example:
 	//
 	// 中国国航
 	AirlineName *string `json:"airline_name,omitempty" xml:"airline_name,omitempty"`
+	// Indicates whether the airline is a low-cost airline.
+	//
 	// example:
 	//
 	// false
 	CheapAirline *bool `json:"cheap_airline,omitempty" xml:"cheap_airline,omitempty"`
+	// The URL of the airline icon.
+	//
 	// example:
 	//
 	// https://
 	IconUrl *string `json:"icon_url,omitempty" xml:"icon_url,omitempty"`
+	// The short name of the airline.
+	//
 	// example:
 	//
 	// 国航

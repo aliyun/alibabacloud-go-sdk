@@ -18,9 +18,21 @@ type iDeleteInvoiceEntityShrinkRequest interface {
 }
 
 type DeleteInvoiceEntityShrinkRequest struct {
-	DelAll         *bool   `json:"del_all,omitempty" xml:"del_all,omitempty"`
+	// Specifies whether to delete all applicable personnel. If del_all is set to true, all entities under the invoice header are deleted, and the entity list parameter is not validated.
+	//
+	// example:
+	//
+	// false
+	DelAll *bool `json:"del_all,omitempty" xml:"del_all,omitempty"`
+	// The entity list. This parameter is required when del_all is set to false or null.
 	EntitiesShrink *string `json:"entities,omitempty" xml:"entities,omitempty"`
+	// The third-party invoice ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 340049
 	ThirdPartId *string `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
 }
 

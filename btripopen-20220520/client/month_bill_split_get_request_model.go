@@ -20,10 +20,20 @@ type iMonthBillSplitGetRequest interface {
 }
 
 type MonthBillSplitGetRequest struct {
-	BillBatch        *string   `json:"bill_batch,omitempty" xml:"bill_batch,omitempty"`
+	// example:
+	//
+	// 20240101
+	BillBatch *string `json:"bill_batch,omitempty" xml:"bill_batch,omitempty"`
+	// example:
+	//
+	// 202401
 	BillMonth        *string   `json:"bill_month,omitempty" xml:"bill_month,omitempty"`
 	BillSplitKeyList []*string `json:"bill_split_key_list,omitempty" xml:"bill_split_key_list,omitempty" type:"Repeated"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// by_invoice_third_part_id
 	BillSplitMode *string `json:"bill_split_mode,omitempty" xml:"bill_split_mode,omitempty"`
 }
 

@@ -34,17 +34,47 @@ type iModuleFlightItemListItemListSubItemsShoppingItemMapValueCabinQuantityValue
 }
 
 type ModuleFlightItemListItemListSubItemsShoppingItemMapValueCabinQuantityValue struct {
-	Cabin             *string   `json:"cabin,omitempty" xml:"cabin,omitempty"`
-	CabinClass        *string   `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
-	CabinClassName    *string   `json:"cabin_class_name,omitempty" xml:"cabin_class_name,omitempty"`
-	CabinClassMemo    *string   `json:"cabin_class_memo,omitempty" xml:"cabin_class_memo,omitempty"`
-	Specification     *string   `json:"specification,omitempty" xml:"specification,omitempty"`
-	Quantity          *string   `json:"quantity,omitempty" xml:"quantity,omitempty"`
-	LinkCabins        []*string `json:"link_cabins,omitempty" xml:"link_cabins,omitempty" type:"Repeated"`
-	ReshopChangeCabin *bool     `json:"reshop_change_cabin,omitempty" xml:"reshop_change_cabin,omitempty"`
-	ChildCabinType    *int32    `json:"child_cabin_type,omitempty" xml:"child_cabin_type,omitempty"`
-	InfantBasicCabin  *string   `json:"infant_basic_cabin,omitempty" xml:"infant_basic_cabin,omitempty"`
-	InnerCabinClass   *int32    `json:"inner_cabin_class,omitempty" xml:"inner_cabin_class,omitempty"`
+	// example:
+	//
+	// R
+	Cabin *string `json:"cabin,omitempty" xml:"cabin,omitempty"`
+	// example:
+	//
+	// Y
+	CabinClass *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	// example:
+	//
+	// 经济舱
+	CabinClassName *string `json:"cabin_class_name,omitempty" xml:"cabin_class_name,omitempty"`
+	// example:
+	//
+	// 舱位等级描述
+	CabinClassMemo *string `json:"cabin_class_memo,omitempty" xml:"cabin_class_memo,omitempty"`
+	// example:
+	//
+	// 国内特殊说明
+	Specification *string `json:"specification,omitempty" xml:"specification,omitempty"`
+	// example:
+	//
+	// A
+	Quantity   *string   `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	LinkCabins []*string `json:"link_cabins,omitempty" xml:"link_cabins,omitempty" type:"Repeated"`
+	// example:
+	//
+	// false
+	ReshopChangeCabin *bool `json:"reshop_change_cabin,omitempty" xml:"reshop_change_cabin,omitempty"`
+	// example:
+	//
+	// 儿童舱位类型
+	ChildCabinType *int32 `json:"child_cabin_type,omitempty" xml:"child_cabin_type,omitempty"`
+	// example:
+	//
+	// 婴儿基准舱位
+	InfantBasicCabin *string `json:"infant_basic_cabin,omitempty" xml:"infant_basic_cabin,omitempty"`
+	// example:
+	//
+	// 2
+	InnerCabinClass *int32 `json:"inner_cabin_class,omitempty" xml:"inner_cabin_class,omitempty"`
 }
 
 func (s ModuleFlightItemListItemListSubItemsShoppingItemMapValueCabinQuantityValue) String() string {

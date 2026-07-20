@@ -26,13 +26,28 @@ type iInsureOrderRefundShrinkRequest interface {
 }
 
 type InsureOrderRefundShrinkRequest struct {
-	BtripUserId          *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
-	BuyerName            *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
-	IsvName              *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	// example:
+	//
+	// 1000001
+	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	// example:
+	//
+	// 测试乘机人
+	BuyerName *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
+	// example:
+	//
+	// PostalSavingsBank
+	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	// example:
+	//
+	// 1021000196440356908
 	OutApplyId           *string `json:"out_apply_id,omitempty" xml:"out_apply_id,omitempty"`
 	PolicyNoListShrink   *string `json:"policy_no_list,omitempty" xml:"policy_no_list,omitempty"`
 	SubInsOrderIdsShrink *string `json:"sub_ins_order_ids,omitempty" xml:"sub_ins_order_ids,omitempty"`
-	SupplierCode         *string `json:"supplier_code,omitempty" xml:"supplier_code,omitempty"`
+	// example:
+	//
+	// fliggy
+	SupplierCode *string `json:"supplier_code,omitempty" xml:"supplier_code,omitempty"`
 }
 
 func (s InsureOrderRefundShrinkRequest) String() string {

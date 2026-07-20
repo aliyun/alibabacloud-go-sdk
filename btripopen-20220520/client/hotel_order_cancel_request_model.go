@@ -16,8 +16,14 @@ type iHotelOrderCancelRequest interface {
 }
 
 type HotelOrderCancelRequest struct {
+	// example:
+	//
+	// 1002202194207077022
 	BtripOrderId *string `json:"btrip_order_id,omitempty" xml:"btrip_order_id,omitempty"`
-	DisOrderId   *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
+	// example:
+	//
+	// dis123
+	DisOrderId *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
 }
 
 func (s HotelOrderCancelRequest) String() string {

@@ -24,14 +24,32 @@ type iTicketChangingPayRequest interface {
 }
 
 type TicketChangingPayRequest struct {
+	// example:
+	//
+	// 100
 	CorpPayPrice *int64 `json:"corp_pay_price,omitempty" xml:"corp_pay_price,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// dis123
 	DisOrderId *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
 	// This parameter is required.
-	DisSubOrderId    *string            `json:"dis_sub_order_id,omitempty" xml:"dis_sub_order_id,omitempty"`
-	Extra            map[string]*string `json:"extra,omitempty" xml:"extra,omitempty"`
-	PersonalPayPrice *int64             `json:"personal_pay_price,omitempty" xml:"personal_pay_price,omitempty"`
+	//
+	// example:
+	//
+	// refun123
+	DisSubOrderId *string            `json:"dis_sub_order_id,omitempty" xml:"dis_sub_order_id,omitempty"`
+	Extra         map[string]*string `json:"extra,omitempty" xml:"extra,omitempty"`
+	// example:
+	//
+	// 100
+	PersonalPayPrice *int64 `json:"personal_pay_price,omitempty" xml:"personal_pay_price,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
 	TotalPayPrice *int64 `json:"total_pay_price,omitempty" xml:"total_pay_price,omitempty"`
 }
 

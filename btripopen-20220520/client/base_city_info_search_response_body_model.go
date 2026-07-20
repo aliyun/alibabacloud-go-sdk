@@ -24,12 +24,29 @@ type iBaseCityInfoSearchResponseBody interface {
 }
 
 type BaseCityInfoSearchResponseBody struct {
-	Code      *string                                 `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                                 `json:"message,omitempty" xml:"message,omitempty"`
-	Module    []*BaseCityInfoSearchResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
-	RequestId *string                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                                   `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                                 `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// 0
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 参数异常
+	Message *string                                 `json:"message,omitempty" xml:"message,omitempty"`
+	Module  []*BaseCityInfoSearchResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
+	// example:
+	//
+	// C61ECFF6-606B-5F66-B81D-D77369043A5F
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	//
+	// example:
+	//
+	// 210f079e16603757182131635d866a
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s BaseCityInfoSearchResponseBody) String() string {
@@ -108,10 +125,22 @@ func (s *BaseCityInfoSearchResponseBody) Validate() error {
 }
 
 type BaseCityInfoSearchResponseBodyModule struct {
-	Code     *string `json:"code,omitempty" xml:"code,omitempty"`
-	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 330100
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 杭州
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 中国，浙江省，杭州
 	NameTree *string `json:"nameTree,omitempty" xml:"nameTree,omitempty"`
-	Region   *string `json:"region,omitempty" xml:"region,omitempty"`
+	// example:
+	//
+	// 0
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
 }
 
 func (s BaseCityInfoSearchResponseBodyModule) String() string {

@@ -50,26 +50,135 @@ type iAddressGetRequest interface {
 }
 
 type AddressGetRequest struct {
+	// The redirect page type. For illustrations of each page, refer to [How to implement SSO redirection - Appendix](https://openapi.alibtrip.com/doc/toDocDetail?docId=4746411).
+	//
 	// This parameter is required.
-	ActionType        *int32  `json:"action_type,omitempty" xml:"action_type,omitempty"`
-	ArrCityCode       *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
-	ArrCityName       *string `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
-	CarScenesCode     *string `json:"car_scenes_code,omitempty" xml:"car_scenes_code,omitempty"`
-	DepCityCode       *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
-	DepCityName       *string `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
-	DepDate           *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
-	ItineraryId       *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
-	MiddlePage        *int32  `json:"middle_page,omitempty" xml:"middle_page,omitempty"`
-	OrderId           *string `json:"order_Id,omitempty" xml:"order_Id,omitempty"`
-	Phone             *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	//
+	// example:
+	//
+	// 2
+	ActionType *int32 `json:"action_type,omitempty" xml:"action_type,omitempty"`
+	// The three-letter code of the arrival city.
+	//
+	// example:
+	//
+	// BJS
+	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	// The arrival city name.
+	//
+	// example:
+	//
+	// 北京
+	ArrCityName *string `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
+	// The car service scenario.
+	//
+	// example:
+	//
+	// TRAVEL
+	CarScenesCode *string `json:"car_scenes_code,omitempty" xml:"car_scenes_code,omitempty"`
+	// The three-letter code of the departure city.
+	//
+	// example:
+	//
+	// HGH
+	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	// The departure city name.
+	//
+	// example:
+	//
+	// 杭州
+	DepCityName *string `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
+	// The departure date.
+	//
+	// example:
+	//
+	// 2023-02-26
+	DepDate *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	// The itinerary ID.
+	//
+	// - When the redirect page is the business travel booking page (`action_type = 1`), you can optionally pass this parameter to quickly redirect to the booking page of the category associated with the itinerary.
+	//
+	// - The itinerary ID must have been submitted to the Alibaba Business Travel system through the [Create a business trip approval](https://openapi.alibtrip.com/doc/toDocDetail?docId=4929938) operation.
+	//
+	// example:
+	//
+	// 460e********5d78
+	ItineraryId *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
+	// Specifies whether to skip the booking intermediate page.
+	//
+	// 1. Set this parameter to 2 to skip the booking intermediate page. When skipping the intermediate page, the **itinerary_id*	- parameter is required. If this parameter is empty or set to a value other than 2, the intermediate page is not skipped.
+	//
+	// 2. This parameter is available when the redirect page is the **H5 booking page*	- (`action_type = 1`) and the category is **flight*	- (`type = 1`) or **train*	- (`type = 2`).
+	//
+	// example:
+	//
+	// 1
+	MiddlePage *int32 `json:"middle_page,omitempty" xml:"middle_page,omitempty"`
+	// The order ID. This parameter is required when the redirect page type is the specified order details page on either platform (`action_type = 11 or 12`).
+	//
+	// example:
+	//
+	// 1002************464
+	OrderId *string `json:"order_Id,omitempty" xml:"order_Id,omitempty"`
+	// The contact phone number, typically used for car service scenarios.
+	//
+	// example:
+	//
+	// 131****8888
+	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	// Session parameters. The format must be a JSON string where both keys and values are strings.
+	//
+	// Example: "{\\"returnURL\\":\\"https://open.alibtrip.com/\\"}"
 	SessionParameters *string `json:"session_parameters,omitempty" xml:"session_parameters,omitempty"`
-	SubCorpId         *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
+	// The sub-enterprise ID. Pass this parameter to redirect to the business page of the specified sub-enterprise.
+	//
+	// - **View permissions**: Only enterprise administrators have view permissions.
+	//
+	// - **Path to obtain**: Enterprise management console > Parent-child account management > Account management > Sub-account management > Company ID.
+	//
+	// example:
+	//
+	// btrip01******00
+	SubCorpId *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
+	// The redirect URL after Taobao account binding.
+	//
+	// example:
+	//
+	// https://example.com
 	TaobaoCallbackUrl *string `json:"taobao_callback_url,omitempty" xml:"taobao_callback_url,omitempty"`
-	ThirdpartApplyId  *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
-	TravelerId        *string `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
-	Type              *int32  `json:"type,omitempty" xml:"type,omitempty"`
-	UseBookingProxy   *int32  `json:"use_booking_proxy,omitempty" xml:"use_booking_proxy,omitempty"`
+	// The third-party approval ID.
+	//
+	// example:
+	//
+	// TP00097732
+	ThirdpartApplyId *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
+	// The ID of the actual traveler (the person being booked for).
+	//
+	// example:
+	//
+	// user_1234
+	TravelerId *string `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
+	// The business type. This parameter is required when the redirect page is the **booking page*	- (`action_type = 1`) or the **order view page*	- (`action_type = 2`).
+	//
+	// example:
+	//
+	// 1
+	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
+	// Specifies whether to use proxy booking mode.
+	//
+	// - The proxy booking page is accessible only when this parameter is set to 1.
+	//
+	// example:
+	//
+	// 1
+	UseBookingProxy *int32 `json:"use_booking_proxy,omitempty" xml:"use_booking_proxy,omitempty"`
+	// The employee ID. The employee must be registered in the business travel system before you pass this parameter. Otherwise, the call fails.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// user_1234
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 

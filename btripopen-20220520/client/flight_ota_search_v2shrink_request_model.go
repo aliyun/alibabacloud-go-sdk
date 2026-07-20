@@ -27,15 +27,33 @@ type iFlightOtaSearchV2ShrinkRequest interface {
 
 type FlightOtaSearchV2ShrinkRequest struct {
 	CabinTypeListShrink *string `json:"cabin_type_list,omitempty" xml:"cabin_type_list,omitempty"`
-	DirectOnly          *bool   `json:"direct_only,omitempty" xml:"direct_only,omitempty"`
+	// example:
+	//
+	// true
+	DirectOnly *bool `json:"direct_only,omitempty" xml:"direct_only,omitempty"`
 	// This parameter is required.
-	IsvName         *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
-	NeedShareFlight *bool   `json:"need_share_flight,omitempty" xml:"need_share_flight,omitempty"`
+	//
+	// example:
+	//
+	// cheshi
+	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	// example:
+	//
+	// true
+	NeedShareFlight *bool `json:"need_share_flight,omitempty" xml:"need_share_flight,omitempty"`
 	// This parameter is required.
 	SearchJourneysShrink *string `json:"search_journeys,omitempty" xml:"search_journeys,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
 	SearchMode *int32 `json:"search_mode,omitempty" xml:"search_mode,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	TripType *int32 `json:"trip_type,omitempty" xml:"trip_type,omitempty"`
 }
 

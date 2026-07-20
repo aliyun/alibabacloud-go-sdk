@@ -22,11 +22,26 @@ type iInsInvoiceScanQueryRequest interface {
 }
 
 type InsInvoiceScanQueryRequest struct {
-	BillDate         *string `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
-	BillId           *int64  `json:"bill_id,omitempty" xml:"bill_id,omitempty"`
-	InvoiceSubTaskId *int64  `json:"invoice_sub_task_id,omitempty" xml:"invoice_sub_task_id,omitempty"`
-	PageNo           *int32  `json:"page_no,omitempty" xml:"page_no,omitempty"`
-	PageSize         *int32  `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// example:
+	//
+	// 2022-12-01
+	BillDate *string `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
+	// example:
+	//
+	// 123
+	BillId *int64 `json:"bill_id,omitempty" xml:"bill_id,omitempty"`
+	// example:
+	//
+	// 456
+	InvoiceSubTaskId *int64 `json:"invoice_sub_task_id,omitempty" xml:"invoice_sub_task_id,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"page_no,omitempty" xml:"page_no,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
 }
 
 func (s InsInvoiceScanQueryRequest) String() string {

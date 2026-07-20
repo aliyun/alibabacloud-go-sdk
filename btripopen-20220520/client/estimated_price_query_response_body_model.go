@@ -24,11 +24,28 @@ type iEstimatedPriceQueryResponseBody interface {
 }
 
 type EstimatedPriceQueryResponseBody struct {
+  // example:
+  // 
+  // 0
   Code *int32 `json:"code,omitempty" xml:"code,omitempty"`
+  // example:
+  // 
+  // demo
   Message *string `json:"message,omitempty" xml:"message,omitempty"`
   Module *EstimatedPriceQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+  // example:
+  // 
+  // A5009956-1077-52FB-B520-EA8C7E91D722
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+  // example:
+  // 
+  // true
   Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+  // traceId
+  // 
+  // example:
+  // 
+  // 21041ce316577904808056433edbb2
   TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
@@ -105,6 +122,11 @@ func (s *EstimatedPriceQueryResponseBody) Validate() error {
 
 type EstimatedPriceQueryResponseBodyModule struct {
   HotelFeeDetail []*EstimatedPriceQueryResponseBodyModuleHotelFeeDetail `json:"hotel_fee_detail,omitempty" xml:"hotel_fee_detail,omitempty" type:"Repeated"`
+  // 酒店费用总额，单位为元
+  // 
+  // example:
+  // 
+  // 500
   TotalHotelFee *int64 `json:"total_hotel_fee,omitempty" xml:"total_hotel_fee,omitempty"`
   TrafficFee *EstimatedPriceQueryResponseBodyModuleTrafficFee `json:"traffic_fee,omitempty" xml:"traffic_fee,omitempty" type:"Struct"`
 }
@@ -163,10 +185,25 @@ func (s *EstimatedPriceQueryResponseBodyModule) Validate() error {
 }
 
 type EstimatedPriceQueryResponseBodyModuleHotelFeeDetail struct {
+  // example:
+  // 
+  // 杭州
   City *string `json:"city,omitempty" xml:"city,omitempty"`
+  // example:
+  // 
+  // 6
   Criterion *int64 `json:"criterion,omitempty" xml:"criterion,omitempty"`
+  // example:
+  // 
+  // 1245
   ItineraryId *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
+  // example:
+  // 
+  // 6
   Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
+  // example:
+  // 
+  // 1
   TripDays *int32 `json:"trip_days,omitempty" xml:"trip_days,omitempty"`
 }
 
@@ -229,9 +266,21 @@ func (s *EstimatedPriceQueryResponseBodyModuleHotelFeeDetail) Validate() error {
 
 type EstimatedPriceQueryResponseBodyModuleTrafficFee struct {
   BtripRoutes []*EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes `json:"btrip_routes,omitempty" xml:"btrip_routes,omitempty" type:"Repeated"`
+  // example:
+  // 
+  // demo
   ErrMsg *string `json:"err_msg,omitempty" xml:"err_msg,omitempty"`
+  // example:
+  // 
+  // 265000
   MaxFee *int64 `json:"max_fee,omitempty" xml:"max_fee,omitempty"`
+  // example:
+  // 
+  // 30100
   MinFee *int64 `json:"min_fee,omitempty" xml:"min_fee,omitempty"`
+  // example:
+  // 
+  // true
   Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -302,14 +351,35 @@ func (s *EstimatedPriceQueryResponseBodyModuleTrafficFee) Validate() error {
 }
 
 type EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes struct {
+  // example:
+  // 
+  // 北京
   ArrCity *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+  // example:
+  // 
+  // 1670528800000
   ArrDate *int64 `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
   Cheapest *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesCheapest `json:"cheapest,omitempty" xml:"cheapest,omitempty" type:"Struct"`
+  // example:
+  // 
+  // 杭州
   DepCity *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+  // example:
+  // 
+  // 1670528700000
   DepDate *int64 `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+  // example:
+  // 
+  // demo
   ErrMsg *string `json:"err_msg,omitempty" xml:"err_msg,omitempty"`
+  // example:
+  // 
+  // 1245
   ItineraryId *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
   MostExpensive *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesMostExpensive `json:"most_expensive,omitempty" xml:"most_expensive,omitempty" type:"Struct"`
+  // example:
+  // 
+  // true
   Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -417,10 +487,25 @@ func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes) Validate() 
 }
 
 type EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesCheapest struct {
+  // example:
+  // 
+  // 00:40
   ArrTime *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+  // example:
+  // 
+  // 22:20
   DepTime *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+  // example:
+  // 
+  // 30100
   Fee *int64 `json:"fee,omitempty" xml:"fee,omitempty"`
+  // example:
+  // 
+  // 硬座
   SeatGrade *string `json:"seat_grade,omitempty" xml:"seat_grade,omitempty"`
+  // example:
+  // 
+  // MU9668
   VehicleNo *string `json:"vehicle_no,omitempty" xml:"vehicle_no,omitempty"`
 }
 
@@ -482,10 +567,25 @@ func (s *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesCheapest) Val
 }
 
 type EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesMostExpensive struct {
+  // example:
+  // 
+  // 19:20
   ArrTime *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+  // example:
+  // 
+  // 17:00
   DepTime *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+  // example:
+  // 
+  // 265000
   Fee *int64 `json:"fee,omitempty" xml:"fee,omitempty"`
+  // example:
+  // 
+  // 商务座
   SeatGrade *string `json:"seat_grade,omitempty" xml:"seat_grade,omitempty"`
+  // example:
+  // 
+  // CA1721
   VehicleNo *string `json:"vehicle_no,omitempty" xml:"vehicle_no,omitempty"`
 }
 

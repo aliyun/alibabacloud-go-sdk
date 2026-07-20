@@ -24,12 +24,27 @@ type iFlightExceedApplyQueryResponseBody interface {
 }
 
 type FlightExceedApplyQueryResponseBody struct {
-	Code      *string                                   `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                                   `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *FlightExceedApplyQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                                     `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                                   `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 成功
+	Message *string                                   `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *FlightExceedApplyQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// B72B39C8-32DE-558D-AD1C-D53F11F6ADFE
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 21041ce316577904808056433edbb2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s FlightExceedApplyQueryResponseBody) String() string {
@@ -104,21 +119,57 @@ func (s *FlightExceedApplyQueryResponseBody) Validate() error {
 }
 
 type FlightExceedApplyQueryResponseBodyModule struct {
+	// example:
+	//
+	// 1231
 	ApplyId                  *int64                                                              `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 	ApplyIntentionInfoDo     *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDo       `json:"apply_intention_info_do,omitempty" xml:"apply_intention_info_do,omitempty" type:"Struct"`
 	ApplyIntentionInfoDoList []*FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList `json:"apply_intention_info_do_list,omitempty" xml:"apply_intention_info_do_list,omitempty" type:"Repeated"`
 	ApplyRecommendFlights    *FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights      `json:"apply_recommend_flights,omitempty" xml:"apply_recommend_flights,omitempty" type:"Struct"`
-	BtripCause               *string                                                             `json:"btrip_cause,omitempty" xml:"btrip_cause,omitempty"`
-	CorpId                   *string                                                             `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
-	ExceedReason             *string                                                             `json:"exceed_reason,omitempty" xml:"exceed_reason,omitempty"`
-	ExceedType               *int32                                                              `json:"exceed_type,omitempty" xml:"exceed_type,omitempty"`
-	OriginStandard           *string                                                             `json:"origin_standard,omitempty" xml:"origin_standard,omitempty"`
-	Status                   *int32                                                              `json:"status,omitempty" xml:"status,omitempty"`
-	SubmitTime               *string                                                             `json:"submit_time,omitempty" xml:"submit_time,omitempty"`
-	ThirdpartApplyId         *string                                                             `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
-	ThirdpartCorpId          *string                                                             `json:"thirdpart_corp_id,omitempty" xml:"thirdpart_corp_id,omitempty"`
-	UserId                   *string                                                             `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserName                 *string                                                             `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	// example:
+	//
+	// 出差
+	BtripCause *string `json:"btrip_cause,omitempty" xml:"btrip_cause,omitempty"`
+	// example:
+	//
+	// 123
+	CorpId *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	// example:
+	//
+	// 原因
+	ExceedReason *string `json:"exceed_reason,omitempty" xml:"exceed_reason,omitempty"`
+	// example:
+	//
+	// 1
+	ExceedType *int32 `json:"exceed_type,omitempty" xml:"exceed_type,omitempty"`
+	// example:
+	//
+	// 经济舱（2折及以下）
+	OriginStandard *string `json:"origin_standard,omitempty" xml:"origin_standard,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 2022-01-12T16:47Z
+	SubmitTime *string `json:"submit_time,omitempty" xml:"submit_time,omitempty"`
+	// example:
+	//
+	// 0001A1100000007EX08O
+	ThirdpartApplyId *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
+	// example:
+	//
+	// test_corp
+	ThirdpartCorpId *string `json:"thirdpart_corp_id,omitempty" xml:"thirdpart_corp_id,omitempty"`
+	// example:
+	//
+	// user1
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// example:
+	//
+	// 张三
+	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
 func (s FlightExceedApplyQueryResponseBodyModule) String() string {
@@ -288,21 +339,66 @@ func (s *FlightExceedApplyQueryResponseBodyModule) Validate() error {
 }
 
 type FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDo struct {
+	// example:
+	//
+	// 萧山国际机场
 	ArrAirportName *string `json:"arr_airport_name,omitempty" xml:"arr_airport_name,omitempty"`
-	ArrCity        *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
-	ArrCityName    *string `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
-	ArrTime        *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
-	Cabin          *string `json:"cabin,omitempty" xml:"cabin,omitempty"`
-	CabinClass     *int32  `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
-	CabinClassStr  *string `json:"cabin_class_str,omitempty" xml:"cabin_class_str,omitempty"`
+	// example:
+	//
+	// SHA
+	ArrCity *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	// example:
+	//
+	// 北京
+	ArrCityName *string `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
+	// example:
+	//
+	// 2022-01-12T16:47Z
+	ArrTime *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	// example:
+	//
+	// F
+	Cabin *string `json:"cabin,omitempty" xml:"cabin,omitempty"`
+	// example:
+	//
+	// 1
+	CabinClass *int32 `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	// example:
+	//
+	// 经济舱
+	CabinClassStr *string `json:"cabin_class_str,omitempty" xml:"cabin_class_str,omitempty"`
+	// example:
+	//
+	// 萧山国际机场
 	DepAirportName *string `json:"dep_airport_name,omitempty" xml:"dep_airport_name,omitempty"`
-	DepCity        *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
-	DepCityName    *string `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
-	DepTime        *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
-	Discount       *string `json:"discount,omitempty" xml:"discount,omitempty"`
-	FlightNo       *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
-	Price          *int64  `json:"price,omitempty" xml:"price,omitempty"`
-	Type           *int32  `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// SHA
+	DepCity *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	// example:
+	//
+	// 杭州
+	DepCityName *string `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
+	// example:
+	//
+	// 2022-01-12T16:47Z
+	DepTime *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	// example:
+	//
+	// 4
+	Discount *string `json:"discount,omitempty" xml:"discount,omitempty"`
+	// example:
+	//
+	// MU2759
+	FlightNo *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	// example:
+	//
+	// 300
+	Price *int64 `json:"price,omitempty" xml:"price,omitempty"`
+	// example:
+	//
+	// 1
+	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDo) String() string {
@@ -453,21 +549,66 @@ func (s *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDo) Validate(
 }
 
 type FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList struct {
+	// example:
+	//
+	// 萧山国际机场
 	ArrAirportName *string `json:"arr_airport_name,omitempty" xml:"arr_airport_name,omitempty"`
-	ArrCity        *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
-	ArrCityName    *string `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
-	ArrTime        *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
-	Cabin          *string `json:"cabin,omitempty" xml:"cabin,omitempty"`
-	CabinClass     *int32  `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
-	CabinClassStr  *string `json:"cabin_class_str,omitempty" xml:"cabin_class_str,omitempty"`
+	// example:
+	//
+	// JJN
+	ArrCity *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	// example:
+	//
+	// 杭州
+	ArrCityName *string `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
+	// example:
+	//
+	// 2024-05-13 09:12:22
+	ArrTime *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	// example:
+	//
+	// F
+	Cabin *string `json:"cabin,omitempty" xml:"cabin,omitempty"`
+	// example:
+	//
+	// YS
+	CabinClass *int32 `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	// example:
+	//
+	// 经济舱
+	CabinClassStr *string `json:"cabin_class_str,omitempty" xml:"cabin_class_str,omitempty"`
+	// example:
+	//
+	// 萧山国际机场
 	DepAirportName *string `json:"dep_airport_name,omitempty" xml:"dep_airport_name,omitempty"`
-	DepCity        *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
-	DepCityName    *string `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
-	DepTime        *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
-	Discount       *string `json:"discount,omitempty" xml:"discount,omitempty"`
-	FlightNo       *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
-	Price          *int64  `json:"price,omitempty" xml:"price,omitempty"`
-	Type           *int32  `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// BJS
+	DepCity *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	// example:
+	//
+	// 北京
+	DepCityName *string `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
+	// example:
+	//
+	// 2024-05-12 09:12:22
+	DepTime *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	// example:
+	//
+	// 4折
+	Discount *string `json:"discount,omitempty" xml:"discount,omitempty"`
+	// example:
+	//
+	// CA1371
+	FlightNo *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	// example:
+	//
+	// 61000
+	Price *int64 `json:"price,omitempty" xml:"price,omitempty"`
+	// example:
+	//
+	// 2
+	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList) String() string {
@@ -618,18 +759,57 @@ func (s *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList) Valid
 }
 
 type FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights struct {
-	ArrAirportName      *string `json:"arr_airport_name,omitempty" xml:"arr_airport_name,omitempty"`
-	ArrCityName         *string `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
-	ArrTime             *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
-	Cabin               *string `json:"cabin,omitempty" xml:"cabin,omitempty"`
-	CabinClass          *int32  `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
-	CabinClassStr       *string `json:"cabin_class_str,omitempty" xml:"cabin_class_str,omitempty"`
-	DepAirportName      *string `json:"dep_airport_name,omitempty" xml:"dep_airport_name,omitempty"`
-	DepCityName         *string `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
-	DepTime             *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
-	Discount            *string `json:"discount,omitempty" xml:"discount,omitempty"`
-	FlightNo            *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
-	Price               *int64  `json:"price,omitempty" xml:"price,omitempty"`
+	// example:
+	//
+	// 萧山国际机场
+	ArrAirportName *string `json:"arr_airport_name,omitempty" xml:"arr_airport_name,omitempty"`
+	// example:
+	//
+	// 上海
+	ArrCityName *string `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
+	// example:
+	//
+	// 2022-01-12T16:47Z
+	ArrTime *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	// example:
+	//
+	// F
+	Cabin *string `json:"cabin,omitempty" xml:"cabin,omitempty"`
+	// example:
+	//
+	// 1
+	CabinClass *int32 `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	// example:
+	//
+	// 头等舱
+	CabinClassStr *string `json:"cabin_class_str,omitempty" xml:"cabin_class_str,omitempty"`
+	// example:
+	//
+	// 萧山国际机场
+	DepAirportName *string `json:"dep_airport_name,omitempty" xml:"dep_airport_name,omitempty"`
+	// example:
+	//
+	// 北京
+	DepCityName *string `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
+	// example:
+	//
+	// 2022-01-12T16:47Z
+	DepTime *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	// example:
+	//
+	// 4折
+	Discount *string `json:"discount,omitempty" xml:"discount,omitempty"`
+	// example:
+	//
+	// MU6390
+	FlightNo *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	// example:
+	//
+	// 300
+	Price *int64 `json:"price,omitempty" xml:"price,omitempty"`
+	// example:
+	//
+	// 萧山国际机场
 	TransferAirportName *string `json:"transfer_airport_name,omitempty" xml:"transfer_airport_name,omitempty"`
 }
 

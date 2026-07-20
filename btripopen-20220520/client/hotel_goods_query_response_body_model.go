@@ -24,12 +24,27 @@ type iHotelGoodsQueryResponseBody interface {
 }
 
 type HotelGoodsQueryResponseBody struct {
-	Code      *string                            `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                            `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *HotelGoodsQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                              `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                            `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// None
+	Message *string                            `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *HotelGoodsQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// A5009956-1077-52FB-B520-EA8C7E91D722
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 210e847f16611516748613869de4f6
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s HotelGoodsQueryResponseBody) String() string {
@@ -104,20 +119,47 @@ func (s *HotelGoodsQueryResponseBody) Validate() error {
 }
 
 type HotelGoodsQueryResponseBodyModule struct {
-	Address              *string                                   `json:"address,omitempty" xml:"address,omitempty"`
-	BookingInstructions  map[string]*string                        `json:"booking_instructions,omitempty" xml:"booking_instructions,omitempty"`
-	CanForeigner         *bool                                     `json:"can_foreigner,omitempty" xml:"can_foreigner,omitempty"`
-	CheckIn              *string                                   `json:"check_in,omitempty" xml:"check_in,omitempty"`
-	CheckOut             *string                                   `json:"check_out,omitempty" xml:"check_out,omitempty"`
-	Descriptions         []*string                                 `json:"descriptions,omitempty" xml:"descriptions,omitempty" type:"Repeated"`
-	DinamicBannerPicUrls []*string                                 `json:"dinamic_banner_pic_urls,omitempty" xml:"dinamic_banner_pic_urls,omitempty" type:"Repeated"`
-	EarlyArrivalTime     *string                                   `json:"early_arrival_time,omitempty" xml:"early_arrival_time,omitempty"`
-	HotelGroupDesc       *string                                   `json:"hotel_group_desc,omitempty" xml:"hotel_group_desc,omitempty"`
-	HotelId              *int64                                    `json:"hotel_id,omitempty" xml:"hotel_id,omitempty"`
-	HotelName            *string                                   `json:"hotel_name,omitempty" xml:"hotel_name,omitempty"`
-	LateArrivalTime      *string                                   `json:"late_arrival_time,omitempty" xml:"late_arrival_time,omitempty"`
-	Rooms                []*HotelGoodsQueryResponseBodyModuleRooms `json:"rooms,omitempty" xml:"rooms,omitempty" type:"Repeated"`
-	SearchId             *string                                   `json:"search_id,omitempty" xml:"search_id,omitempty"`
+	// example:
+	//
+	// 贵州省贵阳市贵阳国家高新技术产业开发区沙文园区科学城智谷13-2栋三、四层
+	Address             *string            `json:"address,omitempty" xml:"address,omitempty"`
+	BookingInstructions map[string]*string `json:"booking_instructions,omitempty" xml:"booking_instructions,omitempty"`
+	// example:
+	//
+	// true
+	CanForeigner *bool `json:"can_foreigner,omitempty" xml:"can_foreigner,omitempty"`
+	// example:
+	//
+	// 2022-05-15
+	CheckIn *string `json:"check_in,omitempty" xml:"check_in,omitempty"`
+	// example:
+	//
+	// 2022-05-15
+	CheckOut             *string   `json:"check_out,omitempty" xml:"check_out,omitempty"`
+	Descriptions         []*string `json:"descriptions,omitempty" xml:"descriptions,omitempty" type:"Repeated"`
+	DinamicBannerPicUrls []*string `json:"dinamic_banner_pic_urls,omitempty" xml:"dinamic_banner_pic_urls,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 17:00
+	EarlyArrivalTime *string `json:"early_arrival_time,omitempty" xml:"early_arrival_time,omitempty"`
+	HotelGroupDesc   *string `json:"hotel_group_desc,omitempty" xml:"hotel_group_desc,omitempty"`
+	// example:
+	//
+	// 29382
+	HotelId *int64 `json:"hotel_id,omitempty" xml:"hotel_id,omitempty"`
+	// example:
+	//
+	// 未来酒店
+	HotelName *string `json:"hotel_name,omitempty" xml:"hotel_name,omitempty"`
+	// example:
+	//
+	// 12:00
+	LateArrivalTime *string                                   `json:"late_arrival_time,omitempty" xml:"late_arrival_time,omitempty"`
+	Rooms           []*HotelGoodsQueryResponseBodyModuleRooms `json:"rooms,omitempty" xml:"rooms,omitempty" type:"Repeated"`
+	// example:
+	//
+	// demo
+	SearchId *string `json:"search_id,omitempty" xml:"search_id,omitempty"`
 }
 
 func (s HotelGoodsQueryResponseBodyModule) String() string {
@@ -268,22 +310,61 @@ func (s *HotelGoodsQueryResponseBodyModule) Validate() error {
 }
 
 type HotelGoodsQueryResponseBodyModuleRooms struct {
-	Area           *string                                              `json:"area,omitempty" xml:"area,omitempty"`
-	BedTypeString  *string                                              `json:"bed_type_string,omitempty" xml:"bed_type_string,omitempty"`
-	ExtraBed       *bool                                                `json:"extra_bed,omitempty" xml:"extra_bed,omitempty"`
-	Facility       *string                                              `json:"facility,omitempty" xml:"facility,omitempty"`
-	Floor          *string                                              `json:"floor,omitempty" xml:"floor,omitempty"`
-	MaxOccupancy   *int32                                               `json:"max_occupancy,omitempty" xml:"max_occupancy,omitempty"`
-	Name           *string                                              `json:"name,omitempty" xml:"name,omitempty"`
-	NetworkService *string                                              `json:"network_service,omitempty" xml:"network_service,omitempty"`
-	Pics           *string                                              `json:"pics,omitempty" xml:"pics,omitempty"`
-	Rates          []*HotelGoodsQueryResponseBodyModuleRoomsRates       `json:"rates,omitempty" xml:"rates,omitempty" type:"Repeated"`
-	RoomDasc       *string                                              `json:"room_dasc,omitempty" xml:"room_dasc,omitempty"`
-	RoomFacility   []*string                                            `json:"room_facility,omitempty" xml:"room_facility,omitempty" type:"Repeated"`
-	RoomService    []*HotelGoodsQueryResponseBodyModuleRoomsRoomService `json:"room_service,omitempty" xml:"room_service,omitempty" type:"Repeated"`
-	Srid           *int64                                               `json:"srid,omitempty" xml:"srid,omitempty"`
-	Status         *int32                                               `json:"status,omitempty" xml:"status,omitempty"`
-	WindowType     *string                                              `json:"window_type,omitempty" xml:"window_type,omitempty"`
+	// example:
+	//
+	// 27
+	Area *string `json:"area,omitempty" xml:"area,omitempty"`
+	// example:
+	//
+	// 2张1.2米单人床
+	BedTypeString *string `json:"bed_type_string,omitempty" xml:"bed_type_string,omitempty"`
+	// example:
+	//
+	// true
+	ExtraBed *bool `json:"extra_bed,omitempty" xml:"extra_bed,omitempty"`
+	// example:
+	//
+	// [{\\"facilityList\\":[{\\"fee\\":false,\\"logoUrl\\":\\"https://gw.alicdn.com/imgextra/i4/O1CN017s2RbJ1JFaKKSdv1c_!!6000000000999-2-tps-96-96.png\\",\\"name\\":\\"瓶装水\\",\\"yesNo\\":true}}]
+	Facility *string `json:"facility,omitempty" xml:"facility,omitempty"`
+	// example:
+	//
+	// 1,2,3,4,5,6
+	Floor *string `json:"floor,omitempty" xml:"floor,omitempty"`
+	// example:
+	//
+	// 1
+	MaxOccupancy *int32 `json:"max_occupancy,omitempty" xml:"max_occupancy,omitempty"`
+	// example:
+	//
+	// 高级双床房
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 0
+	NetworkService *string `json:"network_service,omitempty" xml:"network_service,omitempty"`
+	// example:
+	//
+	// https://img.alicdn.com/imgextra/i4/6000000007171/O1CN01NHHdOw22qMoYHweI9_!!6000000007171-0-hotel.jpg
+	Pics  *string                                        `json:"pics,omitempty" xml:"pics,omitempty"`
+	Rates []*HotelGoodsQueryResponseBodyModuleRoomsRates `json:"rates,omitempty" xml:"rates,omitempty" type:"Repeated"`
+	// example:
+	//
+	// demo
+	RoomDasc     *string                                              `json:"room_dasc,omitempty" xml:"room_dasc,omitempty"`
+	RoomFacility []*string                                            `json:"room_facility,omitempty" xml:"room_facility,omitempty" type:"Repeated"`
+	RoomService  []*HotelGoodsQueryResponseBodyModuleRoomsRoomService `json:"room_service,omitempty" xml:"room_service,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100929
+	Srid *int64 `json:"srid,omitempty" xml:"srid,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 有窗
+	WindowType *string `json:"window_type,omitempty" xml:"window_type,omitempty"`
 }
 
 func (s HotelGoodsQueryResponseBodyModuleRooms) String() string {
@@ -461,55 +542,169 @@ func (s *HotelGoodsQueryResponseBodyModuleRooms) Validate() error {
 }
 
 type HotelGoodsQueryResponseBodyModuleRoomsRates struct {
-	BedDesc                        *string                                                               `json:"bed_desc,omitempty" xml:"bed_desc,omitempty"`
-	BedType                        *string                                                               `json:"bed_type,omitempty" xml:"bed_type,omitempty"`
-	Breakfast                      *string                                                               `json:"breakfast,omitempty" xml:"breakfast,omitempty"`
-	BtripCancelRule                *HotelGoodsQueryResponseBodyModuleRoomsRatesBtripCancelRule           `json:"btrip_cancel_rule,omitempty" xml:"btrip_cancel_rule,omitempty" type:"Struct"`
-	BtripHotelCancelDesc           []*HotelGoodsQueryResponseBodyModuleRoomsRatesBtripHotelCancelDesc    `json:"btrip_hotel_cancel_desc,omitempty" xml:"btrip_hotel_cancel_desc,omitempty" type:"Repeated"`
-	CanSmoking                     *bool                                                                 `json:"can_smoking,omitempty" xml:"can_smoking,omitempty"`
-	CancelPolicyDesc               *string                                                               `json:"cancel_policy_desc,omitempty" xml:"cancel_policy_desc,omitempty"`
-	CancelPolicyType               *int32                                                                `json:"cancel_policy_type,omitempty" xml:"cancel_policy_type,omitempty"`
-	CompanyAassist                 *string                                                               `json:"company_aassist,omitempty" xml:"company_aassist,omitempty"`
-	CompanyAssistType              *string                                                               `json:"company_assist_type,omitempty" xml:"company_assist_type,omitempty"`
-	ConfirmType                    *int32                                                                `json:"confirm_type,omitempty" xml:"confirm_type,omitempty"`
-	CurrencyCode                   *string                                                               `json:"currency_code,omitempty" xml:"currency_code,omitempty"`
-	DailyPriceFormatYuan           *string                                                               `json:"daily_price_format_yuan,omitempty" xml:"daily_price_format_yuan,omitempty"`
-	DailyPriceView                 *string                                                               `json:"daily_price_view,omitempty" xml:"daily_price_view,omitempty"`
-	DiscountDesc                   *HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDesc              `json:"discount_desc,omitempty" xml:"discount_desc,omitempty" type:"Struct"`
-	EndTimeDaily                   *string                                                               `json:"end_time_daily,omitempty" xml:"end_time_daily,omitempty"`
-	HotelDetailRatePriceDTO        []*HotelGoodsQueryResponseBodyModuleRoomsRatesHotelDetailRatePriceDTO `json:"hotel_detail_rate_price_d_t_o,omitempty" xml:"hotel_detail_rate_price_d_t_o,omitempty" type:"Repeated"`
-	HotelMemberBenefit             map[string]*string                                                    `json:"hotel_member_benefit,omitempty" xml:"hotel_member_benefit,omitempty"`
-	HotelOnsitePriceDetail         *HotelGoodsQueryResponseBodyModuleRoomsRatesHotelOnsitePriceDetail    `json:"hotel_onsite_price_detail,omitempty" xml:"hotel_onsite_price_detail,omitempty" type:"Struct"`
-	InstantConfirm                 *bool                                                                 `json:"instant_confirm,omitempty" xml:"instant_confirm,omitempty"`
-	InventoryDesc                  *string                                                               `json:"inventory_desc,omitempty" xml:"inventory_desc,omitempty"`
-	InventoryPrice                 *string                                                               `json:"inventory_price,omitempty" xml:"inventory_price,omitempty"`
-	IsBusinessPay4Goods            *bool                                                                 `json:"is_business_pay4_goods,omitempty" xml:"is_business_pay4_goods,omitempty"`
-	IsGuarantee                    *int32                                                                `json:"is_guarantee,omitempty" xml:"is_guarantee,omitempty"`
-	IsNeedEmail                    *bool                                                                 `json:"is_need_email,omitempty" xml:"is_need_email,omitempty"`
-	ItemId                         *int64                                                                `json:"item_id,omitempty" xml:"item_id,omitempty"`
-	LastCancelTime                 *string                                                               `json:"last_cancel_time,omitempty" xml:"last_cancel_time,omitempty"`
-	MaxOccupancy                   *int32                                                                `json:"max_occupancy,omitempty" xml:"max_occupancy,omitempty"`
-	MinAdvHours                    *int32                                                                `json:"min_adv_hours,omitempty" xml:"min_adv_hours,omitempty"`
-	MinDays                        *int32                                                                `json:"min_days,omitempty" xml:"min_days,omitempty"`
-	NeedCertificate                *bool                                                                 `json:"need_certificate,omitempty" xml:"need_certificate,omitempty"`
-	Nod                            *int32                                                                `json:"nod,omitempty" xml:"nod,omitempty"`
-	Nop                            *int32                                                                `json:"nop,omitempty" xml:"nop,omitempty"`
-	OrderShipTime                  *int32                                                                `json:"order_ship_time,omitempty" xml:"order_ship_time,omitempty"`
-	PaymentType                    *int32                                                                `json:"payment_type,omitempty" xml:"payment_type,omitempty"`
-	PriceType                      *int32                                                                `json:"price_type,omitempty" xml:"price_type,omitempty"`
-	PromotionInfo                  *string                                                               `json:"promotion_info,omitempty" xml:"promotion_info,omitempty"`
-	RateId                         *int64                                                                `json:"rate_id,omitempty" xml:"rate_id,omitempty"`
-	RateKey                        *string                                                               `json:"rate_key,omitempty" xml:"rate_key,omitempty"`
-	RatePlanName                   *string                                                               `json:"rate_plan_name,omitempty" xml:"rate_plan_name,omitempty"`
-	RpId                           *int64                                                                `json:"rp_id,omitempty" xml:"rp_id,omitempty"`
-	SellerId                       *int64                                                                `json:"seller_id,omitempty" xml:"seller_id,omitempty"`
-	StartTimeDaily                 *string                                                               `json:"start_time_daily,omitempty" xml:"start_time_daily,omitempty"`
-	Status                         *int32                                                                `json:"status,omitempty" xml:"status,omitempty"`
-	SupplierCode                   *string                                                               `json:"supplier_code,omitempty" xml:"supplier_code,omitempty"`
-	SupplierName                   *string                                                               `json:"supplier_name,omitempty" xml:"supplier_name,omitempty"`
-	SupportSpecialInvoice          *bool                                                                 `json:"support_special_invoice,omitempty" xml:"support_special_invoice,omitempty"`
-	TaxFeeDesc                     *string                                                               `json:"tax_fee_desc,omitempty" xml:"tax_fee_desc,omitempty"`
-	UnroundingDailyPriceFormatYuan *string                                                               `json:"unrounding_daily_price_format_yuan,omitempty" xml:"unrounding_daily_price_format_yuan,omitempty"`
+	// example:
+	//
+	// 2张单人床(1.2M)
+	BedDesc *string `json:"bed_desc,omitempty" xml:"bed_desc,omitempty"`
+	// example:
+	//
+	// 2张1.2米单人床
+	BedType *string `json:"bed_type,omitempty" xml:"bed_type,omitempty"`
+	// example:
+	//
+	// 双早
+	Breakfast            *string                                                            `json:"breakfast,omitempty" xml:"breakfast,omitempty"`
+	BtripCancelRule      *HotelGoodsQueryResponseBodyModuleRoomsRatesBtripCancelRule        `json:"btrip_cancel_rule,omitempty" xml:"btrip_cancel_rule,omitempty" type:"Struct"`
+	BtripHotelCancelDesc []*HotelGoodsQueryResponseBodyModuleRoomsRatesBtripHotelCancelDesc `json:"btrip_hotel_cancel_desc,omitempty" xml:"btrip_hotel_cancel_desc,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	CanSmoking *bool `json:"can_smoking,omitempty" xml:"can_smoking,omitempty"`
+	// example:
+	//
+	// 2023年3月25日18点00分前可免费取消
+	CancelPolicyDesc *string `json:"cancel_policy_desc,omitempty" xml:"cancel_policy_desc,omitempty"`
+	// example:
+	//
+	// 1
+	CancelPolicyType *int32 `json:"cancel_policy_type,omitempty" xml:"cancel_policy_type,omitempty"`
+	// example:
+	//
+	// 0
+	CompanyAassist    *string `json:"company_aassist,omitempty" xml:"company_aassist,omitempty"`
+	CompanyAssistType *string `json:"company_assist_type,omitempty" xml:"company_assist_type,omitempty"`
+	// example:
+	//
+	// 0
+	ConfirmType *int32 `json:"confirm_type,omitempty" xml:"confirm_type,omitempty"`
+	// example:
+	//
+	// cny
+	CurrencyCode *string `json:"currency_code,omitempty" xml:"currency_code,omitempty"`
+	// example:
+	//
+	// demo
+	DailyPriceFormatYuan *string `json:"daily_price_format_yuan,omitempty" xml:"daily_price_format_yuan,omitempty"`
+	// example:
+	//
+	// 400
+	DailyPriceView *string                                                  `json:"daily_price_view,omitempty" xml:"daily_price_view,omitempty"`
+	DiscountDesc   *HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDesc `json:"discount_desc,omitempty" xml:"discount_desc,omitempty" type:"Struct"`
+	// example:
+	//
+	// demo
+	EndTimeDaily            *string                                                               `json:"end_time_daily,omitempty" xml:"end_time_daily,omitempty"`
+	HotelDetailRatePriceDTO []*HotelGoodsQueryResponseBodyModuleRoomsRatesHotelDetailRatePriceDTO `json:"hotel_detail_rate_price_d_t_o,omitempty" xml:"hotel_detail_rate_price_d_t_o,omitempty" type:"Repeated"`
+	HotelMemberBenefit      map[string]*string                                                    `json:"hotel_member_benefit,omitempty" xml:"hotel_member_benefit,omitempty"`
+	HotelOnsitePriceDetail  *HotelGoodsQueryResponseBodyModuleRoomsRatesHotelOnsitePriceDetail    `json:"hotel_onsite_price_detail,omitempty" xml:"hotel_onsite_price_detail,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	InstantConfirm *bool   `json:"instant_confirm,omitempty" xml:"instant_confirm,omitempty"`
+	InventoryDesc  *string `json:"inventory_desc,omitempty" xml:"inventory_desc,omitempty"`
+	// example:
+	//
+	// 100
+	InventoryPrice *string `json:"inventory_price,omitempty" xml:"inventory_price,omitempty"`
+	// example:
+	//
+	// true
+	IsBusinessPay4Goods *bool `json:"is_business_pay4_goods,omitempty" xml:"is_business_pay4_goods,omitempty"`
+	// example:
+	//
+	// 1（暂无·）
+	IsGuarantee *int32 `json:"is_guarantee,omitempty" xml:"is_guarantee,omitempty"`
+	// example:
+	//
+	// true
+	IsNeedEmail *bool `json:"is_need_email,omitempty" xml:"is_need_email,omitempty"`
+	// example:
+	//
+	// 612673015638
+	ItemId *int64 `json:"item_id,omitempty" xml:"item_id,omitempty"`
+	// example:
+	//
+	// demo
+	LastCancelTime *string `json:"last_cancel_time,omitempty" xml:"last_cancel_time,omitempty"`
+	// example:
+	//
+	// 2
+	MaxOccupancy *int32 `json:"max_occupancy,omitempty" xml:"max_occupancy,omitempty"`
+	// example:
+	//
+	// 2
+	MinAdvHours *int32 `json:"min_adv_hours,omitempty" xml:"min_adv_hours,omitempty"`
+	// example:
+	//
+	// 3
+	MinDays         *int32 `json:"min_days,omitempty" xml:"min_days,omitempty"`
+	NeedCertificate *bool  `json:"need_certificate,omitempty" xml:"need_certificate,omitempty"`
+	// example:
+	//
+	// 1
+	Nod *int32 `json:"nod,omitempty" xml:"nod,omitempty"`
+	// example:
+	//
+	// 2
+	Nop *int32 `json:"nop,omitempty" xml:"nop,omitempty"`
+	// example:
+	//
+	// 0
+	OrderShipTime *int32 `json:"order_ship_time,omitempty" xml:"order_ship_time,omitempty"`
+	// example:
+	//
+	// 1
+	PaymentType *int32 `json:"payment_type,omitempty" xml:"payment_type,omitempty"`
+	// example:
+	//
+	// 0
+	PriceType *int32 `json:"price_type,omitempty" xml:"price_type,omitempty"`
+	// example:
+	//
+	// demo
+	PromotionInfo *string `json:"promotion_info,omitempty" xml:"promotion_info,omitempty"`
+	// example:
+	//
+	// 4509447432148
+	RateId  *int64  `json:"rate_id,omitempty" xml:"rate_id,omitempty"`
+	RateKey *string `json:"rate_key,omitempty" xml:"rate_key,omitempty"`
+	// example:
+	//
+	// 高级双床房
+	RatePlanName *string `json:"rate_plan_name,omitempty" xml:"rate_plan_name,omitempty"`
+	// example:
+	//
+	// 4509447432148
+	RpId *int64 `json:"rp_id,omitempty" xml:"rp_id,omitempty"`
+	// example:
+	//
+	// 4011822148
+	SellerId *int64 `json:"seller_id,omitempty" xml:"seller_id,omitempty"`
+	// example:
+	//
+	// demo
+	StartTimeDaily *string `json:"start_time_daily,omitempty" xml:"start_time_daily,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 2321
+	SupplierCode *string `json:"supplier_code,omitempty" xml:"supplier_code,omitempty"`
+	// example:
+	//
+	// demo
+	SupplierName *string `json:"supplier_name,omitempty" xml:"supplier_name,omitempty"`
+	// example:
+	//
+	// true
+	SupportSpecialInvoice *bool   `json:"support_special_invoice,omitempty" xml:"support_special_invoice,omitempty"`
+	TaxFeeDesc            *string `json:"tax_fee_desc,omitempty" xml:"tax_fee_desc,omitempty"`
+	// example:
+	//
+	// 40000
+	UnroundingDailyPriceFormatYuan *string `json:"unrounding_daily_price_format_yuan,omitempty" xml:"unrounding_daily_price_format_yuan,omitempty"`
 }
 
 func (s HotelGoodsQueryResponseBodyModuleRoomsRates) String() string {
@@ -1000,8 +1195,14 @@ func (s *HotelGoodsQueryResponseBodyModuleRoomsRates) Validate() error {
 
 type HotelGoodsQueryResponseBodyModuleRoomsRatesBtripCancelRule struct {
 	BtripHotelCancelPolicyDTO *HotelGoodsQueryResponseBodyModuleRoomsRatesBtripCancelRuleBtripHotelCancelPolicyDTO `json:"btrip_hotel_cancel_policy_d_t_o,omitempty" xml:"btrip_hotel_cancel_policy_d_t_o,omitempty" type:"Struct"`
-	CancelPolicyTitle         *string                                                                              `json:"cancel_policy_title,omitempty" xml:"cancel_policy_title,omitempty"`
-	CheckIn                   *string                                                                              `json:"check_in,omitempty" xml:"check_in,omitempty"`
+	// example:
+	//
+	// 不可取消
+	CancelPolicyTitle *string `json:"cancel_policy_title,omitempty" xml:"cancel_policy_title,omitempty"`
+	// example:
+	//
+	// 2023-02-27
+	CheckIn *string `json:"check_in,omitempty" xml:"check_in,omitempty"`
 }
 
 func (s HotelGoodsQueryResponseBodyModuleRoomsRatesBtripCancelRule) String() string {
@@ -1050,7 +1251,10 @@ func (s *HotelGoodsQueryResponseBodyModuleRoomsRatesBtripCancelRule) Validate() 
 
 type HotelGoodsQueryResponseBodyModuleRoomsRatesBtripCancelRuleBtripHotelCancelPolicyDTO struct {
 	BtripHotelCancelPolicyInfoDTOList []*HotelGoodsQueryResponseBodyModuleRoomsRatesBtripCancelRuleBtripHotelCancelPolicyDTOBtripHotelCancelPolicyInfoDTOList `json:"btrip_hotel_cancel_policy_info_d_t_o_list,omitempty" xml:"btrip_hotel_cancel_policy_info_d_t_o_list,omitempty" type:"Repeated"`
-	CancelPolicyType                  *int32                                                                                                                  `json:"cancel_policy_type,omitempty" xml:"cancel_policy_type,omitempty"`
+	// example:
+	//
+	// 1
+	CancelPolicyType *int32 `json:"cancel_policy_type,omitempty" xml:"cancel_policy_type,omitempty"`
 }
 
 func (s HotelGoodsQueryResponseBodyModuleRoomsRatesBtripCancelRuleBtripHotelCancelPolicyDTO) String() string {
@@ -1093,7 +1297,13 @@ func (s *HotelGoodsQueryResponseBodyModuleRoomsRatesBtripCancelRuleBtripHotelCan
 }
 
 type HotelGoodsQueryResponseBodyModuleRoomsRatesBtripCancelRuleBtripHotelCancelPolicyDTOBtripHotelCancelPolicyInfoDTOList struct {
-	Hour  *int64 `json:"hour,omitempty" xml:"hour,omitempty"`
+	// example:
+	//
+	// 1
+	Hour *int64 `json:"hour,omitempty" xml:"hour,omitempty"`
+	// example:
+	//
+	// 20
 	Value *int64 `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -1128,7 +1338,13 @@ func (s *HotelGoodsQueryResponseBodyModuleRoomsRatesBtripCancelRuleBtripHotelCan
 }
 
 type HotelGoodsQueryResponseBodyModuleRoomsRatesBtripHotelCancelDesc struct {
-	Desc  *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	// example:
+	//
+	// 2023年3月25日18:00前可免费取消订单。
+	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	// example:
+	//
+	// 2023年3月25日18点00分前可免费取消
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
@@ -1163,11 +1379,23 @@ func (s *HotelGoodsQueryResponseBodyModuleRoomsRatesBtripHotelCancelDesc) Valida
 }
 
 type HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDesc struct {
-	CashReduceTotal *string                                                                  `json:"cash_reduce_total,omitempty" xml:"cash_reduce_total,omitempty"`
-	DinamicLabel    *string                                                                  `json:"dinamic_label,omitempty" xml:"dinamic_label,omitempty"`
-	DiscountDetail  []*HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDescDiscountDetail `json:"discount_detail,omitempty" xml:"discount_detail,omitempty" type:"Repeated"`
-	SubTitle        *string                                                                  `json:"sub_title,omitempty" xml:"sub_title,omitempty"`
-	Title           *string                                                                  `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// 100
+	CashReduceTotal *string `json:"cash_reduce_total,omitempty" xml:"cash_reduce_total,omitempty"`
+	// example:
+	//
+	// F3会员价
+	DinamicLabel   *string                                                                  `json:"dinamic_label,omitempty" xml:"dinamic_label,omitempty"`
+	DiscountDetail []*HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDescDiscountDetail `json:"discount_detail,omitempty" xml:"discount_detail,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 最终优惠以下单页为准
+	SubTitle *string `json:"sub_title,omitempty" xml:"sub_title,omitempty"`
+	// example:
+	//
+	// 每晚优惠说明
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDesc) String() string {
@@ -1238,7 +1466,10 @@ func (s *HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDesc) Validate() err
 
 type HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDescDiscountDetail struct {
 	LabelName []*string `json:"label_name,omitempty" xml:"label_name,omitempty" type:"Repeated"`
-	MoneyDesc *string   `json:"money_desc,omitempty" xml:"money_desc,omitempty"`
+	// example:
+	//
+	// -¥3
+	MoneyDesc *string `json:"money_desc,omitempty" xml:"money_desc,omitempty"`
 }
 
 func (s HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDescDiscountDetail) String() string {
@@ -1272,14 +1503,38 @@ func (s *HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDescDiscountDetail) 
 }
 
 type HotelGoodsQueryResponseBodyModuleRoomsRatesHotelDetailRatePriceDTO struct {
-	BeforeDiscountPrice        *int64  `json:"before_discount_price,omitempty" xml:"before_discount_price,omitempty"`
-	Breakfast                  *string `json:"breakfast,omitempty" xml:"breakfast,omitempty"`
-	DiscountPrice              *int64  `json:"discount_price,omitempty" xml:"discount_price,omitempty"`
-	LastDiscountsPrice         *int64  `json:"last_discounts_price,omitempty" xml:"last_discounts_price,omitempty"`
-	LastDiscountsRoundingPrice *int64  `json:"last_discounts_rounding_price,omitempty" xml:"last_discounts_rounding_price,omitempty"`
-	LastNum                    *int32  `json:"last_num,omitempty" xml:"last_num,omitempty"`
-	RateStartTime              *string `json:"rate_start_time,omitempty" xml:"rate_start_time,omitempty"`
-	Status                     *int32  `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 100
+	BeforeDiscountPrice *int64 `json:"before_discount_price,omitempty" xml:"before_discount_price,omitempty"`
+	// example:
+	//
+	// demo
+	Breakfast *string `json:"breakfast,omitempty" xml:"breakfast,omitempty"`
+	// example:
+	//
+	// 1000
+	DiscountPrice *int64 `json:"discount_price,omitempty" xml:"discount_price,omitempty"`
+	// example:
+	//
+	// 100
+	LastDiscountsPrice *int64 `json:"last_discounts_price,omitempty" xml:"last_discounts_price,omitempty"`
+	// example:
+	//
+	// 100
+	LastDiscountsRoundingPrice *int64 `json:"last_discounts_rounding_price,omitempty" xml:"last_discounts_rounding_price,omitempty"`
+	// example:
+	//
+	// 1
+	LastNum *int32 `json:"last_num,omitempty" xml:"last_num,omitempty"`
+	// example:
+	//
+	// 2023-03-25
+	RateStartTime *string `json:"rate_start_time,omitempty" xml:"rate_start_time,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s HotelGoodsQueryResponseBodyModuleRoomsRatesHotelDetailRatePriceDTO) String() string {
@@ -1416,10 +1671,22 @@ func (s *HotelGoodsQueryResponseBodyModuleRoomsRatesHotelOnsitePriceDetail) Vali
 }
 
 type HotelGoodsQueryResponseBodyModuleRoomsRatesHotelOnsitePriceDetailAvgOnsitePrice struct {
-	Currency         *string `json:"currency,omitempty" xml:"currency,omitempty"`
-	ForeignCurrency  *string `json:"foreign_currency,omitempty" xml:"foreign_currency,omitempty"`
-	ForeignPriceCent *int64  `json:"foreign_price_cent,omitempty" xml:"foreign_price_cent,omitempty"`
-	PriceCent        *int64  `json:"price_cent,omitempty" xml:"price_cent,omitempty"`
+	// example:
+	//
+	// CNY
+	Currency *string `json:"currency,omitempty" xml:"currency,omitempty"`
+	// example:
+	//
+	// USD
+	ForeignCurrency *string `json:"foreign_currency,omitempty" xml:"foreign_currency,omitempty"`
+	// example:
+	//
+	// 3
+	ForeignPriceCent *int64 `json:"foreign_price_cent,omitempty" xml:"foreign_price_cent,omitempty"`
+	// example:
+	//
+	// 24
+	PriceCent *int64 `json:"price_cent,omitempty" xml:"price_cent,omitempty"`
 }
 
 func (s HotelGoodsQueryResponseBodyModuleRoomsRatesHotelOnsitePriceDetailAvgOnsitePrice) String() string {
@@ -1471,11 +1738,26 @@ func (s *HotelGoodsQueryResponseBodyModuleRoomsRatesHotelOnsitePriceDetailAvgOns
 }
 
 type HotelGoodsQueryResponseBodyModuleRoomsRatesHotelOnsitePriceDetailDailyOnsitePrice struct {
-	Currency         *string `json:"currency,omitempty" xml:"currency,omitempty"`
-	Day              *string `json:"day,omitempty" xml:"day,omitempty"`
-	ForeignCurrency  *string `json:"foreign_currency,omitempty" xml:"foreign_currency,omitempty"`
-	ForeignPriceCent *int64  `json:"foreign_price_cent,omitempty" xml:"foreign_price_cent,omitempty"`
-	PriceCent        *int64  `json:"price_cent,omitempty" xml:"price_cent,omitempty"`
+	// example:
+	//
+	// CNY
+	Currency *string `json:"currency,omitempty" xml:"currency,omitempty"`
+	// example:
+	//
+	// 2026-04-22
+	Day *string `json:"day,omitempty" xml:"day,omitempty"`
+	// example:
+	//
+	// USD
+	ForeignCurrency *string `json:"foreign_currency,omitempty" xml:"foreign_currency,omitempty"`
+	// example:
+	//
+	// 3
+	ForeignPriceCent *int64 `json:"foreign_price_cent,omitempty" xml:"foreign_price_cent,omitempty"`
+	// example:
+	//
+	// 24
+	PriceCent *int64 `json:"price_cent,omitempty" xml:"price_cent,omitempty"`
 }
 
 func (s HotelGoodsQueryResponseBodyModuleRoomsRatesHotelOnsitePriceDetailDailyOnsitePrice) String() string {
@@ -1536,10 +1818,22 @@ func (s *HotelGoodsQueryResponseBodyModuleRoomsRatesHotelOnsitePriceDetailDailyO
 }
 
 type HotelGoodsQueryResponseBodyModuleRoomsRoomService struct {
-	Color               *string `json:"color,omitempty" xml:"color,omitempty"`
-	Desc                *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	// example:
+	//
+	// #000000
+	Color *string `json:"color,omitempty" xml:"color,omitempty"`
+	// example:
+	//
+	// <span>免费</span>有线上网 <span>免费</span>wifi
+	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	// example:
+	//
+	// #4AA900
 	HighlightColorColor *string `json:"highlight_color_color,omitempty" xml:"highlight_color_color,omitempty"`
-	Title               *string `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// 网络
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s HotelGoodsQueryResponseBodyModuleRoomsRoomService) String() string {

@@ -20,10 +20,20 @@ type iInvoiceRuleSaveShrinkRequest interface {
 }
 
 type InvoiceRuleSaveShrinkRequest struct {
+	// example:
+	//
+	// true
 	AllEmploye     *bool   `json:"all_employe,omitempty" xml:"all_employe,omitempty"`
 	EntitiesShrink *string `json:"entities,omitempty" xml:"entities,omitempty"`
-	Scope          *int32  `json:"scope,omitempty" xml:"scope,omitempty"`
+	// example:
+	//
+	// 1
+	Scope *int32 `json:"scope,omitempty" xml:"scope,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// i123
 	ThirdPartId *string `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
 }
 

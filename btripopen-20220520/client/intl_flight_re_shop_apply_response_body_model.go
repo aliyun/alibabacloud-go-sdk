@@ -31,9 +31,12 @@ type IntlFlightReShopApplyResponseBody struct {
 	// example:
 	//
 	// 成功
-	Message   *string                                  `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *IntlFlightReShopApplyResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Message *string                                  `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *IntlFlightReShopApplyResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// 88BA5020-561C-51F5-8E73-6659729913F0
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// example:
 	//
 	// true
@@ -116,9 +119,18 @@ func (s *IntlFlightReShopApplyResponseBody) Validate() error {
 }
 
 type IntlFlightReShopApplyResponseBodyModule struct {
-	AsyncApplyKey    *string `json:"async_apply_key,omitempty" xml:"async_apply_key,omitempty"`
+	// example:
+	//
+	// asyncKey_2390u230slgw023
+	AsyncApplyKey *string `json:"async_apply_key,omitempty" xml:"async_apply_key,omitempty"`
+	// example:
+	//
+	// JPM20241024354
 	OutReShopApplyId *string `json:"out_re_shop_apply_id,omitempty" xml:"out_re_shop_apply_id,omitempty"`
-	ReShopApplyId    *string `json:"re_shop_apply_id,omitempty" xml:"re_shop_apply_id,omitempty"`
+	// example:
+	//
+	// 1009035199432
+	ReShopApplyId *string `json:"re_shop_apply_id,omitempty" xml:"re_shop_apply_id,omitempty"`
 }
 
 func (s IntlFlightReShopApplyResponseBodyModule) String() string {

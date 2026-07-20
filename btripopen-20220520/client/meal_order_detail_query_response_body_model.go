@@ -24,12 +24,29 @@ type iMealOrderDetailQueryResponseBody interface {
 }
 
 type MealOrderDetailQueryResponseBody struct {
-	Code      *string                                 `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                                 `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *MealOrderDetailQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                                   `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                                 `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// 0
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// None
+	Message *string                                 `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *MealOrderDetailQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// 9BCDD5DE-E6CB-5C25-93B9-9BE178A0AA56
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	//
+	// example:
+	//
+	// 210f079e16603757182131635d866a
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s MealOrderDetailQueryResponseBody) String() string {
@@ -104,28 +121,94 @@ func (s *MealOrderDetailQueryResponseBody) Validate() error {
 }
 
 type MealOrderDetailQueryResponseBodyModule struct {
-	ApplyId            *int64  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	CorpCodeOrderId    *string `json:"corp_code_order_id,omitempty" xml:"corp_code_order_id,omitempty"`
-	CorpId             *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
-	CorpPayAmount      *int64  `json:"corp_pay_amount,omitempty" xml:"corp_pay_amount,omitempty"`
-	CorpRefundAmount   *int64  `json:"corp_refund_amount,omitempty" xml:"corp_refund_amount,omitempty"`
-	MealReason         *string `json:"meal_reason,omitempty" xml:"meal_reason,omitempty"`
-	MerchantName       *string `json:"merchant_name,omitempty" xml:"merchant_name,omitempty"`
-	OrderId            *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	OrderStatus        *int32  `json:"order_status,omitempty" xml:"order_status,omitempty"`
-	OrderSubStatus     *int32  `json:"order_sub_status,omitempty" xml:"order_sub_status,omitempty"`
-	OrderType          *string `json:"order_type,omitempty" xml:"order_type,omitempty"`
-	PayAmount          *int64  `json:"pay_amount,omitempty" xml:"pay_amount,omitempty"`
-	PayType            *int32  `json:"pay_type,omitempty" xml:"pay_type,omitempty"`
-	PersonPayAmount    *int64  `json:"person_pay_amount,omitempty" xml:"person_pay_amount,omitempty"`
-	PersonRefundAmount *int64  `json:"person_refund_amount,omitempty" xml:"person_refund_amount,omitempty"`
-	ReceiptImageUrls   *string `json:"receipt_image_urls,omitempty" xml:"receipt_image_urls,omitempty"`
-	RefundAmount       *int64  `json:"refund_amount,omitempty" xml:"refund_amount,omitempty"`
-	SceneName          *string `json:"scene_name,omitempty" xml:"scene_name,omitempty"`
-	SettleTime         *string `json:"settle_time,omitempty" xml:"settle_time,omitempty"`
-	ThirdPartApplyId   *string `json:"third_part_apply_id,omitempty" xml:"third_part_apply_id,omitempty"`
-	UserAlipayId       *string `json:"user_alipay_id,omitempty" xml:"user_alipay_id,omitempty"`
-	UserId             *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// example:
+	//
+	// 118526587
+	ApplyId *int64 `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	// example:
+	//
+	// 2024032522001423601409393178
+	CorpCodeOrderId *string `json:"corp_code_order_id,omitempty" xml:"corp_code_order_id,omitempty"`
+	// example:
+	//
+	// dingaa15ca45cba9ee744a5
+	CorpId *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	// example:
+	//
+	// 100
+	CorpPayAmount *int64 `json:"corp_pay_amount,omitempty" xml:"corp_pay_amount,omitempty"`
+	// example:
+	//
+	// 100
+	CorpRefundAmount *int64 `json:"corp_refund_amount,omitempty" xml:"corp_refund_amount,omitempty"`
+	// example:
+	//
+	// 团建用餐
+	MealReason *string `json:"meal_reason,omitempty" xml:"meal_reason,omitempty"`
+	// example:
+	//
+	// 商旅火锅店（杭州店）
+	MerchantName *string `json:"merchant_name,omitempty" xml:"merchant_name,omitempty"`
+	// example:
+	//
+	// 1034088398073015303
+	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// example:
+	//
+	// 1
+	OrderStatus *int32 `json:"order_status,omitempty" xml:"order_status,omitempty"`
+	// example:
+	//
+	// 1
+	OrderSubStatus *int32 `json:"order_sub_status,omitempty" xml:"order_sub_status,omitempty"`
+	// example:
+	//
+	// 到店餐饮
+	OrderType *string `json:"order_type,omitempty" xml:"order_type,omitempty"`
+	// example:
+	//
+	// 100
+	PayAmount *int64 `json:"pay_amount,omitempty" xml:"pay_amount,omitempty"`
+	// example:
+	//
+	// 1
+	PayType *int32 `json:"pay_type,omitempty" xml:"pay_type,omitempty"`
+	// example:
+	//
+	// 100
+	PersonPayAmount *int64 `json:"person_pay_amount,omitempty" xml:"person_pay_amount,omitempty"`
+	// example:
+	//
+	// 100
+	PersonRefundAmount *int64 `json:"person_refund_amount,omitempty" xml:"person_refund_amount,omitempty"`
+	// example:
+	//
+	// http://url1,http://url1
+	ReceiptImageUrls *string `json:"receipt_image_urls,omitempty" xml:"receipt_image_urls,omitempty"`
+	// example:
+	//
+	// 100
+	RefundAmount *int64 `json:"refund_amount,omitempty" xml:"refund_amount,omitempty"`
+	// example:
+	//
+	// 差旅用餐
+	SceneName *string `json:"scene_name,omitempty" xml:"scene_name,omitempty"`
+	// example:
+	//
+	// 1711702782
+	SettleTime *string `json:"settle_time,omitempty" xml:"settle_time,omitempty"`
+	// example:
+	//
+	// 2024073128454753
+	ThirdPartApplyId *string `json:"third_part_apply_id,omitempty" xml:"third_part_apply_id,omitempty"`
+	// example:
+	//
+	// 17509140000
+	UserAlipayId *string `json:"user_alipay_id,omitempty" xml:"user_alipay_id,omitempty"`
+	// example:
+	//
+	// 014134681304653773
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s MealOrderDetailQueryResponseBodyModule) String() string {

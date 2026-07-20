@@ -24,12 +24,31 @@ type iGroupCorpTokenResponseBody interface {
 }
 
 type GroupCorpTokenResponseBody struct {
-	Code      *string                           `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                           `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *GroupCorpTokenResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *string                           `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                           `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 成功
+	Message *string                           `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *GroupCorpTokenResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// requestId
+	//
+	// example:
+	//
+	// A5009956-1077-52FB-B520-EA8C7E91D722
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	//
+	// example:
+	//
+	// 210f079e16603757182131635d866a
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s GroupCorpTokenResponseBody) String() string {
@@ -104,9 +123,18 @@ func (s *GroupCorpTokenResponseBody) Validate() error {
 }
 
 type GroupCorpTokenResponseBodyModule struct {
-	Expire *int64  `json:"expire,omitempty" xml:"expire,omitempty"`
-	Start  *int64  `json:"start,omitempty" xml:"start,omitempty"`
-	Token  *string `json:"token,omitempty" xml:"token,omitempty"`
+	// example:
+	//
+	// 70000
+	Expire *int64 `json:"expire,omitempty" xml:"expire,omitempty"`
+	// example:
+	//
+	// 1652410740914
+	Start *int64 `json:"start,omitempty" xml:"start,omitempty"`
+	// example:
+	//
+	// *0*37j76df
+	Token *string `json:"token,omitempty" xml:"token,omitempty"`
 }
 
 func (s GroupCorpTokenResponseBodyModule) String() string {

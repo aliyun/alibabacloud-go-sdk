@@ -18,9 +18,12 @@ type iModuleReShopItemListSubItemsShoppingItemMapValue interface {
 }
 
 type ModuleReShopItemListSubItemsShoppingItemMapValue struct {
+	// The remaining cabin inventory for each segment.
 	CabinQuantityList []*ModuleReShopItemListSubItemsShoppingItemMapValueCabinQuantityList `json:"cabin_quantity_list,omitempty" xml:"cabin_quantity_list,omitempty" type:"Repeated"`
-	SearchPrice       *ModuleReShopItemListSubItemsShoppingItemMapValueSearchPrice         `json:"search_price,omitempty" xml:"search_price,omitempty" type:"Struct"`
-	SegmentPriceList  []*ModuleReShopItemListSubItemsShoppingItemMapValueSegmentPriceList  `json:"segment_price_list,omitempty" xml:"segment_price_list,omitempty" type:"Repeated"`
+	// The rebooking search price.
+	SearchPrice *ModuleReShopItemListSubItemsShoppingItemMapValueSearchPrice `json:"search_price,omitempty" xml:"search_price,omitempty" type:"Struct"`
+	// The price for each segment. This field may not have a value because airline bundled products may not have prices broken down by segment.
+	SegmentPriceList []*ModuleReShopItemListSubItemsShoppingItemMapValueSegmentPriceList `json:"segment_price_list,omitempty" xml:"segment_price_list,omitempty" type:"Repeated"`
 }
 
 func (s ModuleReShopItemListSubItemsShoppingItemMapValue) String() string {
@@ -86,8 +89,10 @@ func (s *ModuleReShopItemListSubItemsShoppingItemMapValue) Validate() error {
 }
 
 type ModuleReShopItemListSubItemsShoppingItemMapValueCabinQuantityList struct {
+	// The segment position information, indicating which journey and which segment within the overall itinerary.
 	SegmentPosition *ModuleReShopItemListSubItemsShoppingItemMapValueCabinQuantityListSegmentPosition `json:"segment_position,omitempty" xml:"segment_position,omitempty" type:"Struct"`
-	CabinInfo       *ModuleReShopItemListSubItemsShoppingItemMapValueCabinQuantityListCabinInfo       `json:"cabin_info,omitempty" xml:"cabin_info,omitempty" type:"Struct"`
+	// The detailed cabin information.
+	CabinInfo *ModuleReShopItemListSubItemsShoppingItemMapValueCabinQuantityListCabinInfo `json:"cabin_info,omitempty" xml:"cabin_info,omitempty" type:"Struct"`
 }
 
 func (s ModuleReShopItemListSubItemsShoppingItemMapValueCabinQuantityList) String() string {
@@ -131,7 +136,17 @@ func (s *ModuleReShopItemListSubItemsShoppingItemMapValueCabinQuantityList) Vali
 }
 
 type ModuleReShopItemListSubItemsShoppingItemMapValueCabinQuantityListSegmentPosition struct {
+	// The journey ordinal number, starting from 0.
+	//
+	// example:
+	//
+	// 0
 	JourneyIndex *int32 `json:"journey_index,omitempty" xml:"journey_index,omitempty"`
+	// The segment ordinal number, starting from 0 within the same journey.
+	//
+	// example:
+	//
+	// 0
 	SegmentIndex *int32 `json:"segment_index,omitempty" xml:"segment_index,omitempty"`
 }
 
@@ -166,12 +181,50 @@ func (s *ModuleReShopItemListSubItemsShoppingItemMapValueCabinQuantityListSegmen
 }
 
 type ModuleReShopItemListSubItemsShoppingItemMapValueCabinQuantityListCabinInfo struct {
-	Cabin          *string `json:"cabin,omitempty" xml:"cabin,omitempty"`
-	CabinClass     *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	// The cabin code.
+	//
+	// example:
+	//
+	// Y
+	Cabin *string `json:"cabin,omitempty" xml:"cabin,omitempty"`
+	// The cabin class. Valid values:
+	//
+	// - F: First class.
+	//
+	// - C: Business class.
+	//
+	// - Y: Economy class.
+	//
+	// - P: Premium economy class.
+	//
+	// example:
+	//
+	// Y
+	CabinClass *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	// The cabin class name.
+	//
+	// example:
+	//
+	// 经济舱
 	CabinClassName *string `json:"cabin_class_name,omitempty" xml:"cabin_class_name,omitempty"`
-	Quantity       *string `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	// The number of remaining seats in the cabin. Valid values: 0-9 (0 to 9 seats remaining) or A (more than 9 seats).
+	//
+	// example:
+	//
+	// 8
+	Quantity *string `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	// The cabin class description.
+	//
+	// example:
+	//
+	// 经济舱
 	CabinClassMemo *string `json:"cabin_class_memo,omitempty" xml:"cabin_class_memo,omitempty"`
-	Specification  *string `json:"specification,omitempty" xml:"specification,omitempty"`
+	// The domestic special notes.
+	//
+	// example:
+	//
+	// 经济舱
+	Specification *string `json:"specification,omitempty" xml:"specification,omitempty"`
 }
 
 func (s ModuleReShopItemListSubItemsShoppingItemMapValueCabinQuantityListCabinInfo) String() string {
@@ -241,12 +294,42 @@ func (s *ModuleReShopItemListSubItemsShoppingItemMapValueCabinQuantityListCabinI
 }
 
 type ModuleReShopItemListSubItemsShoppingItemMapValueSearchPrice struct {
-	TotalAmount    *int64  `json:"total_amount,omitempty" xml:"total_amount,omitempty"`
-	HandlingAmount *int64  `json:"handling_amount,omitempty" xml:"handling_amount,omitempty"`
-	UpgradeAmount  *int64  `json:"upgrade_amount,omitempty" xml:"upgrade_amount,omitempty"`
-	TaxDiffAmount  *int64  `json:"tax_diff_amount,omitempty" xml:"tax_diff_amount,omitempty"`
-	HasPrice       *bool   `json:"has_price,omitempty" xml:"has_price,omitempty"`
-	NonPriceText   *string `json:"non_price_text,omitempty" xml:"non_price_text,omitempty"`
+	// The total amount, in cents.
+	//
+	// example:
+	//
+	// 1000
+	TotalAmount *int64 `json:"total_amount,omitempty" xml:"total_amount,omitempty"`
+	// The service fee amount in cents.
+	//
+	// example:
+	//
+	// 100
+	HandlingAmount *int64 `json:"handling_amount,omitempty" xml:"handling_amount,omitempty"`
+	// The upgrade fee amount, in cents.
+	//
+	// example:
+	//
+	// 1000
+	UpgradeAmount *int64 `json:"upgrade_amount,omitempty" xml:"upgrade_amount,omitempty"`
+	// The tax difference amount, in cents.
+	//
+	// example:
+	//
+	// 100
+	TaxDiffAmount *int64 `json:"tax_diff_amount,omitempty" xml:"tax_diff_amount,omitempty"`
+	// Indicates whether a direct quote is available. Default value: true.
+	//
+	// example:
+	//
+	// true
+	HasPrice *bool `json:"has_price,omitempty" xml:"has_price,omitempty"`
+	// The text prompt displayed when no direct quote is available.
+	//
+	// example:
+	//
+	// 待服务商确认
+	NonPriceText *string `json:"non_price_text,omitempty" xml:"non_price_text,omitempty"`
 }
 
 func (s ModuleReShopItemListSubItemsShoppingItemMapValueSearchPrice) String() string {
@@ -316,8 +399,10 @@ func (s *ModuleReShopItemListSubItemsShoppingItemMapValueSearchPrice) Validate()
 }
 
 type ModuleReShopItemListSubItemsShoppingItemMapValueSegmentPriceList struct {
+	// The segment position information, indicating which journey and which segment within the overall itinerary.
 	SegmentPosition *ModuleReShopItemListSubItemsShoppingItemMapValueSegmentPriceListSegmentPosition `json:"segment_position,omitempty" xml:"segment_position,omitempty" type:"Struct"`
-	SearchPrice     *ModuleReShopItemListSubItemsShoppingItemMapValueSegmentPriceListSearchPrice     `json:"search_price,omitempty" xml:"search_price,omitempty" type:"Struct"`
+	// The rebooking quote.
+	SearchPrice *ModuleReShopItemListSubItemsShoppingItemMapValueSegmentPriceListSearchPrice `json:"search_price,omitempty" xml:"search_price,omitempty" type:"Struct"`
 }
 
 func (s ModuleReShopItemListSubItemsShoppingItemMapValueSegmentPriceList) String() string {
@@ -361,7 +446,17 @@ func (s *ModuleReShopItemListSubItemsShoppingItemMapValueSegmentPriceList) Valid
 }
 
 type ModuleReShopItemListSubItemsShoppingItemMapValueSegmentPriceListSegmentPosition struct {
+	// The journey ordinal number, starting from 0.
+	//
+	// example:
+	//
+	// 0
 	JourneyIndex *int32 `json:"journey_index,omitempty" xml:"journey_index,omitempty"`
+	// The segment ordinal number, starting from 0 within the same journey.
+	//
+	// example:
+	//
+	// 0
 	SegmentIndex *int32 `json:"segment_index,omitempty" xml:"segment_index,omitempty"`
 }
 
@@ -396,12 +491,42 @@ func (s *ModuleReShopItemListSubItemsShoppingItemMapValueSegmentPriceListSegment
 }
 
 type ModuleReShopItemListSubItemsShoppingItemMapValueSegmentPriceListSearchPrice struct {
-	TotalAmount    *int64  `json:"total_amount,omitempty" xml:"total_amount,omitempty"`
-	HandlingAmount *int64  `json:"handling_amount,omitempty" xml:"handling_amount,omitempty"`
-	UpgradeAmount  *int64  `json:"upgrade_amount,omitempty" xml:"upgrade_amount,omitempty"`
-	TaxDiffAmount  *int64  `json:"tax_diff_amount,omitempty" xml:"tax_diff_amount,omitempty"`
-	HasPrice       *bool   `json:"has_price,omitempty" xml:"has_price,omitempty"`
-	NonPriceText   *string `json:"non_price_text,omitempty" xml:"non_price_text,omitempty"`
+	// The total amount in cents.
+	//
+	// example:
+	//
+	// 1000
+	TotalAmount *int64 `json:"total_amount,omitempty" xml:"total_amount,omitempty"`
+	// The service fee amount in cents.
+	//
+	// example:
+	//
+	// 1000
+	HandlingAmount *int64 `json:"handling_amount,omitempty" xml:"handling_amount,omitempty"`
+	// The upgrade fee amount in cents.
+	//
+	// example:
+	//
+	// 1000
+	UpgradeAmount *int64 `json:"upgrade_amount,omitempty" xml:"upgrade_amount,omitempty"`
+	// The tax difference amount in cents.
+	//
+	// example:
+	//
+	// 1000
+	TaxDiffAmount *int64 `json:"tax_diff_amount,omitempty" xml:"tax_diff_amount,omitempty"`
+	// Indicates whether a direct quote is available. Default value: true.
+	//
+	// example:
+	//
+	// 1000
+	HasPrice *bool `json:"has_price,omitempty" xml:"has_price,omitempty"`
+	// The text prompt displayed when no direct quote is available.
+	//
+	// example:
+	//
+	// 待服务商确认
+	NonPriceText *string `json:"non_price_text,omitempty" xml:"non_price_text,omitempty"`
 }
 
 func (s ModuleReShopItemListSubItemsShoppingItemMapValueSegmentPriceListSearchPrice) String() string {

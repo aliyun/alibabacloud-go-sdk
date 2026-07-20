@@ -18,8 +18,17 @@ type iQueryCorpDetailInfoRequest interface {
 }
 
 type QueryCorpDetailInfoRequest struct {
-	AccountId         *string `json:"account_id,omitempty" xml:"account_id,omitempty"`
-	TargetCorpId      *string `json:"target_corp_id,omitempty" xml:"target_corp_id,omitempty"`
+	// example:
+	//
+	// 2210********668
+	AccountId *string `json:"account_id,omitempty" xml:"account_id,omitempty"`
+	// example:
+	//
+	// btripxxxxxx
+	TargetCorpId *string `json:"target_corp_id,omitempty" xml:"target_corp_id,omitempty"`
+	// example:
+	//
+	// alibabaxxxxxxx
 	TargetThirdCorpId *string `json:"target_third_corp_id,omitempty" xml:"target_third_corp_id,omitempty"`
 }
 

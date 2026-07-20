@@ -30,15 +30,30 @@ type iFlightModifyOtaSearchV2ShrinkRequest interface {
 }
 
 type FlightModifyOtaSearchV2ShrinkRequest struct {
-	CabinClassShrink                *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
-	DepDateShrink                   *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
-	IsvName                         *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
-	OrderId                         *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	CabinClassShrink *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	DepDateShrink    *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	// example:
+	//
+	// name
+	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	// example:
+	//
+	// 1017002195370467200
+	OrderId *int64 `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// example:
+	//
+	// 1017002195370467200
 	OutOrderId                      *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
 	PassengerSegmentRelationsShrink *string `json:"passenger_segment_relations,omitempty" xml:"passenger_segment_relations,omitempty"`
 	SelectedSegmentsShrink          *string `json:"selected_segments,omitempty" xml:"selected_segments,omitempty"`
-	SessionId                       *string `json:"session_id,omitempty" xml:"session_id,omitempty"`
-	Voluntary                       *bool   `json:"voluntary,omitempty" xml:"voluntary,omitempty"`
+	// example:
+	//
+	// 590f17eca9374f20ac7e8ed8a7db2f35
+	SessionId *string `json:"session_id,omitempty" xml:"session_id,omitempty"`
+	// example:
+	//
+	// true
+	Voluntary *bool `json:"voluntary,omitempty" xml:"voluntary,omitempty"`
 }
 
 func (s FlightModifyOtaSearchV2ShrinkRequest) String() string {

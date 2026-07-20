@@ -48,13 +48,35 @@ func (s *DepartmentSaveRequest) Validate() error {
 }
 
 type DepartmentSaveRequestDepartList struct {
+	// example:
+	//
+	// 10
 	DepartId *int64 `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
 	// This parameter is required.
-	DepartName     *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
-	DepartPid      *int64  `json:"depart_pid,omitempty" xml:"depart_pid,omitempty"`
-	ManagerIds     *string `json:"manager_ids,omitempty" xml:"manager_ids,omitempty"`
-	Status         *int32  `json:"status,omitempty" xml:"status,omitempty"`
-	ThirdDepartId  *string `json:"third_depart_id,omitempty" xml:"third_depart_id,omitempty"`
+	//
+	// example:
+	//
+	// 产品研发部
+	DepartName *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	// example:
+	//
+	// 10
+	DepartPid *int64 `json:"depart_pid,omitempty" xml:"depart_pid,omitempty"`
+	// example:
+	//
+	// 001|002|003
+	ManagerIds *string `json:"manager_ids,omitempty" xml:"manager_ids,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// testdepartid001
+	ThirdDepartId *string `json:"third_depart_id,omitempty" xml:"third_depart_id,omitempty"`
+	// example:
+	//
+	// testdepartpid001
 	ThirdDepartPid *string `json:"third_depart_pid,omitempty" xml:"third_depart_pid,omitempty"`
 }
 

@@ -16,7 +16,13 @@ type iFlightExceedApplyQueryRequest interface {
 }
 
 type FlightExceedApplyQueryRequest struct {
-	ApplyId            *int64  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	// example:
+	//
+	// 175634
+	ApplyId *int64 `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	// example:
+	//
+	// 2024060710160003300008684
 	BusinessInstanceId *string `json:"business_instance_id,omitempty" xml:"business_instance_id,omitempty"`
 }
 

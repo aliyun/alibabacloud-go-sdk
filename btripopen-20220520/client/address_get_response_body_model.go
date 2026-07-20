@@ -24,12 +24,38 @@ type iAddressGetResponseBody interface {
 }
 
 type AddressGetResponseBody struct {
-	Code      *string                       `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                       `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *AddressGetResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                         `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                       `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// The status code.
+	//
+	// example:
+	//
+	// 0
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// 成功
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The response data.
+	Module *AddressGetResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// The unique identifier of this request.
+	//
+	// example:
+	//
+	// 407543AF-****-****-****-9D1AB7218B27
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the call is successful. Use this parameter to determine the result of the call.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The global trace identifier of the request, typically used for troubleshooting.
+	//
+	// example:
+	//
+	// 210bcc3a********d33d7
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s AddressGetResponseBody) String() string {
@@ -104,6 +130,11 @@ func (s *AddressGetResponseBody) Validate() error {
 }
 
 type AddressGetResponseBodyModule struct {
+	// The redirect URL.
+	//
+	// example:
+	//
+	// https://trip-hisv.taobao.com/ding/trustLogin.htm?********aff8-2c2e58da659b
 	Url *string `json:"url,omitempty" xml:"url,omitempty"`
 }
 

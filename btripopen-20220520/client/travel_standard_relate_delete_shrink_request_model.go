@@ -18,9 +18,16 @@ type iTravelStandardRelateDeleteShrinkRequest interface {
 }
 
 type TravelStandardRelateDeleteShrinkRequest struct {
+	// example:
+	//
+	// false
 	FromGroup        *bool   `json:"from_group,omitempty" xml:"from_group,omitempty"`
 	RemoveListShrink *string `json:"remove_list,omitempty" xml:"remove_list,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 6523763
 	RuleId *int64 `json:"rule_id,omitempty" xml:"rule_id,omitempty"`
 }
 

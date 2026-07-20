@@ -24,12 +24,29 @@ type iTicketChangingFlightListShrinkRequest interface {
 }
 
 type TicketChangingFlightListShrinkRequest struct {
+	// example:
+	//
+	// BJS
 	ArrCity *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	// example:
+	//
+	// HGH
 	DepCity *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2000-00-00 00:00:00
 	DepDate *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
 	// This parameter is required.
-	DisOrderId             *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
+	//
+	// example:
+	//
+	// dis123
+	DisOrderId *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
+	// example:
+	//
+	// 0
 	IsVoluntary            *int32  `json:"is_voluntary,omitempty" xml:"is_voluntary,omitempty"`
 	TravelerInfoListShrink *string `json:"traveler_info_list,omitempty" xml:"traveler_info_list,omitempty"`
 }

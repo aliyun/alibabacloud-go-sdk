@@ -24,12 +24,27 @@ type iFlightRefundDetailResponseBody interface {
 }
 
 type FlightRefundDetailResponseBody struct {
-	Code      *string                               `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                               `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *FlightRefundDetailResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                                 `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                               `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 成功
+	Message *string                               `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *FlightRefundDetailResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// 407543AF-2BD9-5890-BD92-9D1AB7218B27
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 21041ce316577904808056433edbb2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s FlightRefundDetailResponseBody) String() string {
@@ -104,16 +119,43 @@ func (s *FlightRefundDetailResponseBody) Validate() error {
 }
 
 type FlightRefundDetailResponseBodyModule struct {
-	BtripOrderId    *int64                                               `json:"btrip_order_id,omitempty" xml:"btrip_order_id,omitempty"`
-	BtripSubOrderId *int64                                               `json:"btrip_sub_order_id,omitempty" xml:"btrip_sub_order_id,omitempty"`
-	DisOrderId      *string                                              `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
-	DisSubOrderId   *string                                              `json:"dis_sub_order_id,omitempty" xml:"dis_sub_order_id,omitempty"`
-	IsVoluntary     *int32                                               `json:"is_voluntary,omitempty" xml:"is_voluntary,omitempty"`
-	Reason          *string                                              `json:"reason,omitempty" xml:"reason,omitempty"`
-	RefundFee       *int64                                               `json:"refund_fee,omitempty" xml:"refund_fee,omitempty"`
-	RefundFeeList   []*FlightRefundDetailResponseBodyModuleRefundFeeList `json:"refund_fee_list,omitempty" xml:"refund_fee_list,omitempty" type:"Repeated"`
-	RefundPrice     *int64                                               `json:"refund_price,omitempty" xml:"refund_price,omitempty"`
-	Status          *string                                              `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 123
+	BtripOrderId *int64 `json:"btrip_order_id,omitempty" xml:"btrip_order_id,omitempty"`
+	// example:
+	//
+	// 123
+	BtripSubOrderId *int64 `json:"btrip_sub_order_id,omitempty" xml:"btrip_sub_order_id,omitempty"`
+	// example:
+	//
+	// dis1234
+	DisOrderId *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
+	// example:
+	//
+	// refun123
+	DisSubOrderId *string `json:"dis_sub_order_id,omitempty" xml:"dis_sub_order_id,omitempty"`
+	// example:
+	//
+	// 1
+	IsVoluntary *int32 `json:"is_voluntary,omitempty" xml:"is_voluntary,omitempty"`
+	// example:
+	//
+	// 自愿申请
+	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
+	// example:
+	//
+	// 100
+	RefundFee     *int64                                               `json:"refund_fee,omitempty" xml:"refund_fee,omitempty"`
+	RefundFeeList []*FlightRefundDetailResponseBodyModuleRefundFeeList `json:"refund_fee_list,omitempty" xml:"refund_fee_list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100
+	RefundPrice *int64 `json:"refund_price,omitempty" xml:"refund_price,omitempty"`
+	// example:
+	//
+	// 0
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s FlightRefundDetailResponseBodyModule) String() string {
@@ -228,10 +270,22 @@ func (s *FlightRefundDetailResponseBodyModule) Validate() error {
 }
 
 type FlightRefundDetailResponseBodyModuleRefundFeeList struct {
+	// example:
+	//
+	// 293982882881999
 	AlipayTradeNo *string `json:"alipay_trade_no,omitempty" xml:"alipay_trade_no,omitempty"`
-	RefundFee     *int64  `json:"refund_fee,omitempty" xml:"refund_fee,omitempty"`
-	RefundPrice   *int64  `json:"refund_price,omitempty" xml:"refund_price,omitempty"`
-	Status        *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 100
+	RefundFee *int64 `json:"refund_fee,omitempty" xml:"refund_fee,omitempty"`
+	// example:
+	//
+	// 100
+	RefundPrice *int64 `json:"refund_price,omitempty" xml:"refund_price,omitempty"`
+	// example:
+	//
+	// 0枚举取外层状态
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s FlightRefundDetailResponseBodyModuleRefundFeeList) String() string {

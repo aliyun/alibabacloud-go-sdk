@@ -20,11 +20,24 @@ type iCommonApplyQueryRequest interface {
 }
 
 type CommonApplyQueryRequest struct {
+	// example:
+	//
+	// 1003366164
 	ApplyId *int64 `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 	// This parameter is required.
-	BizCategory        *int32  `json:"biz_category,omitempty" xml:"biz_category,omitempty"`
+	//
+	// example:
+	//
+	// 3
+	BizCategory *int32 `json:"biz_category,omitempty" xml:"biz_category,omitempty"`
+	// example:
+	//
+	// 2024060510000003300006205
 	BusinessInstanceId *string `json:"business_instance_id,omitempty" xml:"business_instance_id,omitempty"`
-	UserId             *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// example:
+	//
+	// 第三方用户id
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s CommonApplyQueryRequest) String() string {

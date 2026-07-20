@@ -36,18 +36,42 @@ type iFlightModifyListingSearchV2Request interface {
 }
 
 type FlightModifyListingSearchV2Request struct {
-	CabinClass                    []*int32                                                       `json:"cabin_class,omitempty" xml:"cabin_class,omitempty" type:"Repeated"`
-	DepDate                       []*string                                                      `json:"dep_date,omitempty" xml:"dep_date,omitempty" type:"Repeated"`
-	InterfaceCallerIsSupportRetry *bool                                                          `json:"interface_caller_is_support_retry,omitempty" xml:"interface_caller_is_support_retry,omitempty"`
-	IsvName                       *string                                                        `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
-	OrderId                       *int64                                                         `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	OutOrderId                    *string                                                        `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
-	PassengerSegmentRelations     []*FlightModifyListingSearchV2RequestPassengerSegmentRelations `json:"passenger_segment_relations,omitempty" xml:"passenger_segment_relations,omitempty" type:"Repeated"`
-	SearchMode                    *int32                                                         `json:"search_mode,omitempty" xml:"search_mode,omitempty"`
-	SearchRetryToken              *string                                                        `json:"search_retry_token,omitempty" xml:"search_retry_token,omitempty"`
-	SelectedSegments              []*FlightModifyListingSearchV2RequestSelectedSegments          `json:"selected_segments,omitempty" xml:"selected_segments,omitempty" type:"Repeated"`
-	SessionId                     *string                                                        `json:"session_id,omitempty" xml:"session_id,omitempty"`
-	Voluntary                     *bool                                                          `json:"voluntary,omitempty" xml:"voluntary,omitempty"`
+	CabinClass []*int32  `json:"cabin_class,omitempty" xml:"cabin_class,omitempty" type:"Repeated"`
+	DepDate    []*string `json:"dep_date,omitempty" xml:"dep_date,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	InterfaceCallerIsSupportRetry *bool `json:"interface_caller_is_support_retry,omitempty" xml:"interface_caller_is_support_retry,omitempty"`
+	// example:
+	//
+	// name
+	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	// example:
+	//
+	// 1017002195370467138
+	OrderId *int64 `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// example:
+	//
+	// 1017002195370467137
+	OutOrderId                *string                                                        `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	PassengerSegmentRelations []*FlightModifyListingSearchV2RequestPassengerSegmentRelations `json:"passenger_segment_relations,omitempty" xml:"passenger_segment_relations,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2
+	SearchMode *int32 `json:"search_mode,omitempty" xml:"search_mode,omitempty"`
+	// example:
+	//
+	// a2c230080358295f99e03aa4e3ccf1bd
+	SearchRetryToken *string                                               `json:"search_retry_token,omitempty" xml:"search_retry_token,omitempty"`
+	SelectedSegments []*FlightModifyListingSearchV2RequestSelectedSegments `json:"selected_segments,omitempty" xml:"selected_segments,omitempty" type:"Repeated"`
+	// example:
+	//
+	// a2ffebfe733742aab5c491d960ba3d59
+	SessionId *string `json:"session_id,omitempty" xml:"session_id,omitempty"`
+	// example:
+	//
+	// true
+	Voluntary *bool `json:"voluntary,omitempty" xml:"voluntary,omitempty"`
 }
 
 func (s FlightModifyListingSearchV2Request) String() string {
@@ -189,6 +213,9 @@ func (s *FlightModifyListingSearchV2Request) Validate() error {
 }
 
 type FlightModifyListingSearchV2RequestPassengerSegmentRelations struct {
+	// example:
+	//
+	// 3243028
 	PassengerId   *string   `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
 	SegmentIdList []*string `json:"segment_id_list,omitempty" xml:"segment_id_list,omitempty" type:"Repeated"`
 }
@@ -224,13 +251,34 @@ func (s *FlightModifyListingSearchV2RequestPassengerSegmentRelations) Validate()
 }
 
 type FlightModifyListingSearchV2RequestSelectedSegments struct {
-	ArrCityCode       *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
-	DepCityCode       *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
-	DepDateTime       *string `json:"dep_date_time,omitempty" xml:"dep_date_time,omitempty"`
-	JourneySeq        *int32  `json:"journey_seq,omitempty" xml:"journey_seq,omitempty"`
+	// example:
+	//
+	// XIL
+	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	// example:
+	//
+	// BJS
+	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	// example:
+	//
+	// 2023-09-17 18:15:00
+	DepDateTime *string `json:"dep_date_time,omitempty" xml:"dep_date_time,omitempty"`
+	// example:
+	//
+	// 0
+	JourneySeq *int32 `json:"journey_seq,omitempty" xml:"journey_seq,omitempty"`
+	// example:
+	//
+	// CA8625
 	MarketingFlightNo *string `json:"marketing_flight_no,omitempty" xml:"marketing_flight_no,omitempty"`
+	// example:
+	//
+	// MU8625
 	OperatingFlightNo *string `json:"operating_flight_no,omitempty" xml:"operating_flight_no,omitempty"`
-	SegmentSeq        *int32  `json:"segment_seq,omitempty" xml:"segment_seq,omitempty"`
+	// example:
+	//
+	// 0
+	SegmentSeq *int32 `json:"segment_seq,omitempty" xml:"segment_seq,omitempty"`
 }
 
 func (s FlightModifyListingSearchV2RequestSelectedSegments) String() string {

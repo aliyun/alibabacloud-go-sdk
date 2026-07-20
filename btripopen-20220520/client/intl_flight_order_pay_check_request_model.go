@@ -30,9 +30,19 @@ type IntlFlightOrderPayCheckRequest struct {
 	//
 	// ZHANG/SAN
 	BuyerName *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
-	IsvName   *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	// example:
+	//
+	// TRAVEL
+	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
 	// This parameter is required.
-	OrderId    *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	//
+	// example:
+	//
+	// 1002094194679957528
+	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// example:
+	//
+	// F11374007131319304192
 	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
 }
 

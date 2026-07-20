@@ -18,10 +18,24 @@ type iTravelStandardQueryShrinkRequest interface {
 }
 
 type TravelStandardQueryShrinkRequest struct {
+	// Specifies whether to use the group travel standard.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// false
 	FromGroup *bool `json:"from_group,omitempty" xml:"from_group,omitempty"`
+	// The personnel rule code.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2006523763
 	RuleCode *int64 `json:"rule_code,omitempty" xml:"rule_code,omitempty"`
+	// The service categories to query.
+	//
 	// This parameter is required.
 	ServiceTypeListShrink *string `json:"service_type_list,omitempty" xml:"service_type_list,omitempty"`
 }

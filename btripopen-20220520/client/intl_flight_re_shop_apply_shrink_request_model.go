@@ -32,21 +32,48 @@ type iIntlFlightReShopApplyShrinkRequest interface {
 }
 
 type IntlFlightReShopApplyShrinkRequest struct {
-	AsyncApplyKey  *string `json:"async_apply_key,omitempty" xml:"async_apply_key,omitempty"`
-	AsyncApplyMode *bool   `json:"async_apply_mode,omitempty" xml:"async_apply_mode,omitempty"`
+	// example:
+	//
+	// asyncKey_2390u230slgw023
+	AsyncApplyKey *string `json:"async_apply_key,omitempty" xml:"async_apply_key,omitempty"`
+	// example:
+	//
+	// true
+	AsyncApplyMode *bool `json:"async_apply_mode,omitempty" xml:"async_apply_mode,omitempty"`
 	// This parameter is required.
-	OrderId          *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	OutOrderId       *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	//
+	// example:
+	//
+	// 1017035199907040165
+	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// example:
+	//
+	// D1736316966048SC4877
+	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	// example:
+	//
+	// JPM20241024354
 	OutReShopApplyId *string `json:"out_re_shop_apply_id,omitempty" xml:"out_re_shop_apply_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// edcac4f4c79d40ccb141ddb6da567e65
 	PassengerJourneyGroupKey *string `json:"passenger_journey_group_key,omitempty" xml:"passenger_journey_group_key,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
 	ReShopReasonCode *string `json:"re_shop_reason_code,omitempty" xml:"re_shop_reason_code,omitempty"`
 	// This parameter is required.
 	SelectedJourneysShrink *string `json:"selected_journeys,omitempty" xml:"selected_journeys,omitempty"`
 	// This parameter is required.
 	SelectedPassengersShrink *string `json:"selected_passengers,omitempty" xml:"selected_passengers,omitempty"`
-	UserIntentionMemo        *string `json:"user_intention_memo,omitempty" xml:"user_intention_memo,omitempty"`
+	// example:
+	//
+	// 少中转优先,落地当地时间为白天优先
+	UserIntentionMemo *string `json:"user_intention_memo,omitempty" xml:"user_intention_memo,omitempty"`
 }
 
 func (s IntlFlightReShopApplyShrinkRequest) String() string {

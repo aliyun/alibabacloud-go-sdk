@@ -18,9 +18,16 @@ type iInvoiceRuleDeleteRequest interface {
 }
 
 type InvoiceRuleDeleteRequest struct {
+	// example:
+	//
+	// false
 	DelAll   *bool                               `json:"del_all,omitempty" xml:"del_all,omitempty"`
 	Entities []*InvoiceRuleDeleteRequestEntities `json:"entities,omitempty" xml:"entities,omitempty" type:"Repeated"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 340049
 	ThirdPartId *string `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
 }
 
@@ -73,7 +80,13 @@ func (s *InvoiceRuleDeleteRequest) Validate() error {
 }
 
 type InvoiceRuleDeleteRequestEntities struct {
-	EntityId   *string `json:"entity_id,omitempty" xml:"entity_id,omitempty"`
+	// example:
+	//
+	// 12345
+	EntityId *string `json:"entity_id,omitempty" xml:"entity_id,omitempty"`
+	// example:
+	//
+	// 1
 	EntityType *string `json:"entity_type,omitempty" xml:"entity_type,omitempty"`
 }
 

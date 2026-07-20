@@ -21,12 +21,28 @@ type iSyncThirdUserMappingRequest interface {
 
 type SyncThirdUserMappingRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// weCom
 	ThirdChannelType *string `json:"third_channel_type,omitempty" xml:"third_channel_type,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
 	ThirdUserId *string `json:"third_user_id,omitempty" xml:"third_user_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 

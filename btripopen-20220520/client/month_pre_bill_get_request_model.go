@@ -16,7 +16,13 @@ type iMonthPreBillGetRequest interface {
 }
 
 type MonthPreBillGetRequest struct {
+	// example:
+	//
+	// 20251201
 	BillBatch *string `json:"bill_batch,omitempty" xml:"bill_batch,omitempty"`
+	// example:
+	//
+	// 202207
 	BillMonth *string `json:"bill_month,omitempty" xml:"bill_month,omitempty"`
 }
 

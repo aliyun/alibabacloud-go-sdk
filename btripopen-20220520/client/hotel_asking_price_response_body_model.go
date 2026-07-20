@@ -24,12 +24,27 @@ type iHotelAskingPriceResponseBody interface {
 }
 
 type HotelAskingPriceResponseBody struct {
-	Code      *string                             `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                             `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *HotelAskingPriceResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                               `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                             `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// None
+	Message *string                             `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *HotelAskingPriceResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// C61ECFF6-606B-5F66-B81D-D77369043A5F
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 210bcc3a16583004579056128d33d7
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s HotelAskingPriceResponseBody) String() string {
@@ -138,12 +153,33 @@ func (s *HotelAskingPriceResponseBodyModule) Validate() error {
 }
 
 type HotelAskingPriceResponseBodyModuleHotelAskingPriceDetails struct {
-	CityCode         *string  `json:"city_code,omitempty" xml:"city_code,omitempty"`
-	HotelAddress     *string  `json:"hotel_address,omitempty" xml:"hotel_address,omitempty"`
-	HotelCode        *string  `json:"hotel_code,omitempty" xml:"hotel_code,omitempty"`
-	HotelName        *string  `json:"hotel_name,omitempty" xml:"hotel_name,omitempty"`
-	IsProtocol       *bool    `json:"is_protocol,omitempty" xml:"is_protocol,omitempty"`
-	MinPrice         *float64 `json:"min_price,omitempty" xml:"min_price,omitempty"`
+	// example:
+	//
+	// 652302
+	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	// example:
+	//
+	// 文一西路998号海创大厦5号楼
+	HotelAddress *string `json:"hotel_address,omitempty" xml:"hotel_address,omitempty"`
+	// example:
+	//
+	// 55335212
+	HotelCode *string `json:"hotel_code,omitempty" xml:"hotel_code,omitempty"`
+	// example:
+	//
+	// 商旅酒店
+	HotelName *string `json:"hotel_name,omitempty" xml:"hotel_name,omitempty"`
+	// example:
+	//
+	// true
+	IsProtocol *bool `json:"is_protocol,omitempty" xml:"is_protocol,omitempty"`
+	// example:
+	//
+	// 100
+	MinPrice *float64 `json:"min_price,omitempty" xml:"min_price,omitempty"`
+	// example:
+	//
+	// 100
 	OriginalMinPrice *float64 `json:"original_min_price,omitempty" xml:"original_min_price,omitempty"`
 }
 

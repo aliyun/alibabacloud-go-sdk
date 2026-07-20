@@ -34,20 +34,50 @@ type iFlightListingSearchV2Request interface {
 }
 
 type FlightListingSearchV2Request struct {
+	// example:
+	//
+	// CA
 	AirlineCode   *string  `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
 	CabinTypeList []*int32 `json:"cabin_type_list,omitempty" xml:"cabin_type_list,omitempty" type:"Repeated"`
-	DirectOnly    *bool    `json:"direct_only,omitempty" xml:"direct_only,omitempty"`
+	// example:
+	//
+	// true
+	DirectOnly *bool `json:"direct_only,omitempty" xml:"direct_only,omitempty"`
 	// This parameter is required.
-	IsvName             *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
-	NeedMultiClassPrice *bool   `json:"need_multi_class_price,omitempty" xml:"need_multi_class_price,omitempty"`
-	NeedQueryServiceFee *bool   `json:"need_query_service_fee,omitempty" xml:"need_query_service_fee,omitempty"`
-	NeedShareFlight     *bool   `json:"need_share_flight,omitempty" xml:"need_share_flight,omitempty"`
-	NeedYCBestPrice     *bool   `json:"need_y_c_best_price,omitempty" xml:"need_y_c_best_price,omitempty"`
+	//
+	// example:
+	//
+	// cheshi
+	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	// example:
+	//
+	// false
+	NeedMultiClassPrice *bool `json:"need_multi_class_price,omitempty" xml:"need_multi_class_price,omitempty"`
+	// example:
+	//
+	// true
+	NeedQueryServiceFee *bool `json:"need_query_service_fee,omitempty" xml:"need_query_service_fee,omitempty"`
+	// example:
+	//
+	// true
+	NeedShareFlight *bool `json:"need_share_flight,omitempty" xml:"need_share_flight,omitempty"`
+	// example:
+	//
+	// false
+	NeedYCBestPrice *bool `json:"need_y_c_best_price,omitempty" xml:"need_y_c_best_price,omitempty"`
 	// This parameter is required.
 	SearchJourneys []*FlightListingSearchV2RequestSearchJourneys `json:"search_journeys,omitempty" xml:"search_journeys,omitempty" type:"Repeated"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
 	SearchMode *int32 `json:"search_mode,omitempty" xml:"search_mode,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	TripType *int32 `json:"trip_type,omitempty" xml:"trip_type,omitempty"`
 }
 
@@ -173,10 +203,22 @@ func (s *FlightListingSearchV2Request) Validate() error {
 
 type FlightListingSearchV2RequestSearchJourneys struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// HGH
 	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// BJS
 	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-09-01
 	DepDate         *string                                                      `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
 	SelectedFlights []*FlightListingSearchV2RequestSearchJourneysSelectedFlights `json:"selected_flights,omitempty" xml:"selected_flights,omitempty" type:"Repeated"`
 }
@@ -239,12 +281,33 @@ func (s *FlightListingSearchV2RequestSearchJourneys) Validate() error {
 }
 
 type FlightListingSearchV2RequestSearchJourneysSelectedFlights struct {
-	ArrAirportCode  *string `json:"arr_airport_code,omitempty" xml:"arr_airport_code,omitempty"`
-	ArrCityCode     *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
-	DepAirportCode  *string `json:"dep_airport_code,omitempty" xml:"dep_airport_code,omitempty"`
-	DepCityCode     *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
-	FlightTime      *string `json:"flight_time,omitempty" xml:"flight_time,omitempty"`
-	MarketFlightNo  *string `json:"market_flight_no,omitempty" xml:"market_flight_no,omitempty"`
+	// example:
+	//
+	// HGH
+	ArrAirportCode *string `json:"arr_airport_code,omitempty" xml:"arr_airport_code,omitempty"`
+	// example:
+	//
+	// HGH
+	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	// example:
+	//
+	// PKX
+	DepAirportCode *string `json:"dep_airport_code,omitempty" xml:"dep_airport_code,omitempty"`
+	// example:
+	//
+	// BJS
+	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	// example:
+	//
+	// 2023-09-01 07:10:00
+	FlightTime *string `json:"flight_time,omitempty" xml:"flight_time,omitempty"`
+	// example:
+	//
+	// HO3925
+	MarketFlightNo *string `json:"market_flight_no,omitempty" xml:"market_flight_no,omitempty"`
+	// example:
+	//
+	// CX601
 	OperateFlightNo *string `json:"operate_flight_no,omitempty" xml:"operate_flight_no,omitempty"`
 }
 

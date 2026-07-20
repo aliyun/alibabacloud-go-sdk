@@ -21,9 +21,22 @@ type iInsureOrderCancelRequest interface {
 
 type InsureOrderCancelRequest struct {
 	// This parameter is required.
-	BtripUserId  *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
-	BuyerName    *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
-	IsvName      *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	//
+	// example:
+	//
+	// 2000310301
+	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	// example:
+	//
+	// 张三
+	BuyerName *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
+	// example:
+	//
+	// open12igetbis4o07v10B1TlOWcM00
+	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	// example:
+	//
+	// fliggy
 	SupplierCode *string `json:"supplier_code,omitempty" xml:"supplier_code,omitempty"`
 }
 

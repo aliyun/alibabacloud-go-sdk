@@ -17,8 +17,16 @@ type iCreateCustomRoleRequest interface {
 
 type CreateCustomRoleRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 123abc
 	RoleId *string `json:"role_id,omitempty" xml:"role_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 华东地区日常出差
 	RoleName *string `json:"role_name,omitempty" xml:"role_name,omitempty"`
 }
 

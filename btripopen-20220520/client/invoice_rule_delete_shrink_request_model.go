@@ -18,9 +18,16 @@ type iInvoiceRuleDeleteShrinkRequest interface {
 }
 
 type InvoiceRuleDeleteShrinkRequest struct {
+	// example:
+	//
+	// false
 	DelAll         *bool   `json:"del_all,omitempty" xml:"del_all,omitempty"`
 	EntitiesShrink *string `json:"entities,omitempty" xml:"entities,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 340049
 	ThirdPartId *string `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
 }
 

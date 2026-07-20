@@ -18,9 +18,20 @@ type iAddProjectManagerRequest interface {
 }
 
 type AddProjectManagerRequest struct {
-	OrgEntities  []*AddProjectManagerRequestOrgEntities `json:"org_entities,omitempty" xml:"org_entities,omitempty" type:"Repeated"`
-	OutProjectId *string                                `json:"out_project_id,omitempty" xml:"out_project_id,omitempty"`
-	ProjectId    *int64                                 `json:"project_id,omitempty" xml:"project_id,omitempty"`
+	// The list of manager group entities. Currently, entityType only supports "1" (employee). The maximum number is 10.
+	OrgEntities []*AddProjectManagerRequestOrgEntities `json:"org_entities,omitempty" xml:"org_entities,omitempty" type:"Repeated"`
+	// The third-party project ID. You must specify at least one of project_id and out_project_id.
+	//
+	// example:
+	//
+	// projectabc
+	OutProjectId *string `json:"out_project_id,omitempty" xml:"out_project_id,omitempty"`
+	// The internal project ID. You must specify at least one of project_id and out_project_id.
+	//
+	// example:
+	//
+	// 123
+	ProjectId *int64 `json:"project_id,omitempty" xml:"project_id,omitempty"`
 }
 
 func (s AddProjectManagerRequest) String() string {
@@ -72,7 +83,17 @@ func (s *AddProjectManagerRequest) Validate() error {
 }
 
 type AddProjectManagerRequestOrgEntities struct {
-	EntityId   *string `json:"entity_id,omitempty" xml:"entity_id,omitempty"`
+	// The employee ID.
+	//
+	// example:
+	//
+	// user123
+	EntityId *string `json:"entity_id,omitempty" xml:"entity_id,omitempty"`
+	// Required. Currently only supports "1" (employee).
+	//
+	// example:
+	//
+	// 1
 	EntityType *string `json:"entity_type,omitempty" xml:"entity_type,omitempty"`
 }
 

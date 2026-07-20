@@ -17,6 +17,9 @@ type iEntityDeleteHeaders interface {
 
 type EntityDeleteHeaders struct {
   CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+  // example:
+  // 
+  // feth00jqwls
   XAcsBtripSoCorpToken *string `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
 }
 

@@ -24,12 +24,29 @@ type iInvoiceSearchResponseBody interface {
 }
 
 type InvoiceSearchResponseBody struct {
-	Code      *string                            `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                            `json:"message,omitempty" xml:"message,omitempty"`
-	Module    []*InvoiceSearchResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
-	RequestId *string                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                              `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                            `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 成功
+	Message *string                            `json:"message,omitempty" xml:"message,omitempty"`
+	Module  []*InvoiceSearchResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 407543AF-2BD9-5890-BD92-9D1AB7218B27
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	//
+	// example:
+	//
+	// EB68C364-F9A0-5046-910A-2DD92C277E71
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s InvoiceSearchResponseBody) String() string {
@@ -108,9 +125,20 @@ func (s *InvoiceSearchResponseBody) Validate() error {
 }
 
 type InvoiceSearchResponseBodyModule struct {
-	Id                 *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	// ID
+	//
+	// example:
+	//
+	// 1478652
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 405009
 	ThirdPartInvoiceId *string `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
-	Title              *string `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// 测试抬头
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s InvoiceSearchResponseBodyModule) String() string {

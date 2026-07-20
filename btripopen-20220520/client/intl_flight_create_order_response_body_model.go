@@ -31,11 +31,20 @@ type IntlFlightCreateOrderResponseBody struct {
 	// example:
 	//
 	// 成功
-	Message   *string                                  `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *IntlFlightCreateOrderResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                                  `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Message *string                                  `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *IntlFlightCreateOrderResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// C61ECFF6-606B-5F66-B81D-D77369043A5F
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 2103ad1116826479016562032da98c
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s IntlFlightCreateOrderResponseBody) String() string {
@@ -110,13 +119,34 @@ func (s *IntlFlightCreateOrderResponseBody) Validate() error {
 }
 
 type IntlFlightCreateOrderResponseBodyModule struct {
+	// example:
+	//
+	// deb6372db8194f1c94c23bc4fadc508d
 	AsyncCreateOrderKey *string `json:"async_create_order_key,omitempty" xml:"async_create_order_key,omitempty"`
-	OrderId             *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	OutOrderId          *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
-	PayLatestTime       *string `json:"pay_latest_time,omitempty" xml:"pay_latest_time,omitempty"`
-	PayStatus           *int32  `json:"pay_status,omitempty" xml:"pay_status,omitempty"`
-	Status              *int32  `json:"status,omitempty" xml:"status,omitempty"`
-	TotalPrice          *int64  `json:"total_price,omitempty" xml:"total_price,omitempty"`
+	// example:
+	//
+	// 1003038197806523003
+	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// example:
+	//
+	// F11378244642107293696
+	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	// example:
+	//
+	// 2025-01-01 10:10:19
+	PayLatestTime *string `json:"pay_latest_time,omitempty" xml:"pay_latest_time,omitempty"`
+	// example:
+	//
+	// 0
+	PayStatus *int32 `json:"pay_status,omitempty" xml:"pay_status,omitempty"`
+	// example:
+	//
+	// -1
+	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 22300
+	TotalPrice *int64 `json:"total_price,omitempty" xml:"total_price,omitempty"`
 }
 
 func (s IntlFlightCreateOrderResponseBodyModule) String() string {

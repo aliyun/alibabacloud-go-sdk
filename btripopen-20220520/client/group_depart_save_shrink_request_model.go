@@ -27,15 +27,36 @@ type iGroupDepartSaveShrinkRequest interface {
 
 type GroupDepartSaveShrinkRequest struct {
 	// This parameter is required.
-	DeptName   *string `json:"dept_name,omitempty" xml:"dept_name,omitempty"`
+	//
+	// example:
+	//
+	// 测试部门
+	DeptName *string `json:"dept_name,omitempty" xml:"dept_name,omitempty"`
+	// example:
+	//
+	// 001|002|003
 	ManagerIds *string `json:"manager_ids,omitempty" xml:"manager_ids,omitempty"`
 	// This parameter is required.
-	OuterDeptId  *string `json:"outer_dept_id,omitempty" xml:"outer_dept_id,omitempty"`
+	//
+	// example:
+	//
+	// 001
+	OuterDeptId *string `json:"outer_dept_id,omitempty" xml:"outer_dept_id,omitempty"`
+	// example:
+	//
+	// 002
 	OuterDeptPid *string `json:"outer_dept_pid,omitempty" xml:"outer_dept_pid,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
 	Status              *int32  `json:"status,omitempty" xml:"status,omitempty"`
 	SubCorpIdListShrink *string `json:"sub_corp_id_list,omitempty" xml:"sub_corp_id_list,omitempty"`
-	SyncGroup           *bool   `json:"sync_group,omitempty" xml:"sync_group,omitempty"`
+	// example:
+	//
+	// -
+	SyncGroup *bool `json:"sync_group,omitempty" xml:"sync_group,omitempty"`
 }
 
 func (s GroupDepartSaveShrinkRequest) String() string {

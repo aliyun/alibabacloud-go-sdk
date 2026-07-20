@@ -31,10 +31,19 @@ type IntlFlightReShopConsultResponseBody struct {
 	// example:
 	//
 	// 成功
-	Message   *string                                    `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *IntlFlightReShopConsultResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                                      `json:"success,omitempty" xml:"success,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// true
+	Module *IntlFlightReShopConsultResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// A5009956-1077-52FB-B520-EA8C7E91D722
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 	// example:
 	//
 	// 210bc4b116835992457938931db4de
@@ -147,6 +156,9 @@ func (s *IntlFlightReShopConsultResponseBodyModule) Validate() error {
 }
 
 type IntlFlightReShopConsultResponseBodyModulePassengerJourneyGroupInfoList struct {
+	// example:
+	//
+	// edcac4f4c79d40ccb141ddb6da567e65
 	PassengerJourneyGroupKey       *string                                                                                                 `json:"passenger_journey_group_key,omitempty" xml:"passenger_journey_group_key,omitempty"`
 	PassengerList                  []*IntlFlightReShopConsultResponseBodyModulePassengerJourneyGroupInfoListPassengerList                  `json:"passenger_list,omitempty" xml:"passenger_list,omitempty" type:"Repeated"`
 	PassengerSegmentStatusInfoList []*IntlFlightReShopConsultResponseBodyModulePassengerJourneyGroupInfoListPassengerSegmentStatusInfoList `json:"passenger_segment_status_info_list,omitempty" xml:"passenger_segment_status_info_list,omitempty" type:"Repeated"`
@@ -248,8 +260,14 @@ func (s *IntlFlightReShopConsultResponseBodyModulePassengerJourneyGroupInfoList)
 }
 
 type IntlFlightReShopConsultResponseBodyModulePassengerJourneyGroupInfoListPassengerList struct {
-	FullName    *string `json:"full_name,omitempty" xml:"full_name,omitempty"`
-	PassengerId *int64  `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
+	// example:
+	//
+	// ZHANG/SAN
+	FullName *string `json:"full_name,omitempty" xml:"full_name,omitempty"`
+	// example:
+	//
+	// 1000001
+	PassengerId *int64 `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
 }
 
 func (s IntlFlightReShopConsultResponseBodyModulePassengerJourneyGroupInfoListPassengerList) String() string {
@@ -283,10 +301,25 @@ func (s *IntlFlightReShopConsultResponseBodyModulePassengerJourneyGroupInfoListP
 }
 
 type IntlFlightReShopConsultResponseBodyModulePassengerJourneyGroupInfoListPassengerSegmentStatusInfoList struct {
-	CanReShop          *bool   `json:"can_re_shop,omitempty" xml:"can_re_shop,omitempty"`
-	PassengerId        *int64  `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
-	SegmentKey         *string `json:"segment_key,omitempty" xml:"segment_key,omitempty"`
-	UnReShopReason     *string `json:"un_re_shop_reason,omitempty" xml:"un_re_shop_reason,omitempty"`
+	// example:
+	//
+	// false
+	CanReShop *bool `json:"can_re_shop,omitempty" xml:"can_re_shop,omitempty"`
+	// example:
+	//
+	// 1000001
+	PassengerId *int64 `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
+	// example:
+	//
+	// CZ5009PKXHKG0616
+	SegmentKey *string `json:"segment_key,omitempty" xml:"segment_key,omitempty"`
+	// example:
+	//
+	// 客票已使用，不可改签
+	UnReShopReason *string `json:"un_re_shop_reason,omitempty" xml:"un_re_shop_reason,omitempty"`
+	// example:
+	//
+	// 3
 	UnReShopReasonCode *string `json:"un_re_shop_reason_code,omitempty" xml:"un_re_shop_reason_code,omitempty"`
 }
 
@@ -348,9 +381,18 @@ func (s *IntlFlightReShopConsultResponseBodyModulePassengerJourneyGroupInfoListP
 }
 
 type IntlFlightReShopConsultResponseBodyModulePassengerJourneyGroupInfoListReShopReasonInfoList struct {
+	// example:
+	//
+	// 0
 	ReasonCode *string `json:"reason_code,omitempty" xml:"reason_code,omitempty"`
+	// example:
+	//
+	// 因乘客自身原因需变更航班
 	ReasonDesc *string `json:"reason_desc,omitempty" xml:"reason_desc,omitempty"`
-	Voluntary  *bool   `json:"voluntary,omitempty" xml:"voluntary,omitempty"`
+	// example:
+	//
+	// true
+	Voluntary *bool `json:"voluntary,omitempty" xml:"voluntary,omitempty"`
 }
 
 func (s IntlFlightReShopConsultResponseBodyModulePassengerJourneyGroupInfoListReShopReasonInfoList) String() string {
@@ -393,13 +435,34 @@ func (s *IntlFlightReShopConsultResponseBodyModulePassengerJourneyGroupInfoListR
 }
 
 type IntlFlightReShopConsultResponseBodyModulePassengerJourneyGroupInfoListSegmentList struct {
-	ArrCityCode  *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
-	DepCityCode  *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
-	DepTime      *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
-	FlightNo     *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
-	JourneyIndex *int32  `json:"journey_index,omitempty" xml:"journey_index,omitempty"`
-	SegmentIndex *int32  `json:"segment_index,omitempty" xml:"segment_index,omitempty"`
-	SegmentKey   *string `json:"segment_key,omitempty" xml:"segment_key,omitempty"`
+	// example:
+	//
+	// HKG
+	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	// example:
+	//
+	// BJS
+	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	// example:
+	//
+	// 2025-06-16 19:20
+	DepTime *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	// example:
+	//
+	// CZ5009
+	FlightNo *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	// example:
+	//
+	// 0
+	JourneyIndex *int32 `json:"journey_index,omitempty" xml:"journey_index,omitempty"`
+	// example:
+	//
+	// 0
+	SegmentIndex *int32 `json:"segment_index,omitempty" xml:"segment_index,omitempty"`
+	// example:
+	//
+	// CZ5009PKXHKG0616
+	SegmentKey *string `json:"segment_key,omitempty" xml:"segment_key,omitempty"`
 }
 
 func (s IntlFlightReShopConsultResponseBodyModulePassengerJourneyGroupInfoListSegmentList) String() string {

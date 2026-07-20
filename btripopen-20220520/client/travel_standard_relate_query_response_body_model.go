@@ -24,12 +24,29 @@ type iTravelStandardRelateQueryResponseBody interface {
 }
 
 type TravelStandardRelateQueryResponseBody struct {
-	Message    *string                                      `json:"message,omitempty" xml:"message,omitempty"`
-	Module     *TravelStandardRelateQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId  *string                                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	ResultCode *int32                                       `json:"resultCode,omitempty" xml:"resultCode,omitempty"`
-	Success    *bool                                        `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId    *string                                      `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// 系统异常
+	Message *string                                      `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *TravelStandardRelateQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// 407543AF-2BD9-5890-BD92-9D1AB7218B27
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0
+	ResultCode *int32 `json:"resultCode,omitempty" xml:"resultCode,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	//
+	// example:
+	//
+	// 210bcc3a16583004579056128d33d7
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s TravelStandardRelateQueryResponseBody) String() string {
@@ -105,7 +122,10 @@ func (s *TravelStandardRelateQueryResponseBody) Validate() error {
 
 type TravelStandardRelateQueryResponseBodyModule struct {
 	ReserveBindEntityList []*TravelStandardRelateQueryResponseBodyModuleReserveBindEntityList `json:"reserve_bind_entity_list,omitempty" xml:"reserve_bind_entity_list,omitempty" type:"Repeated"`
-	Total                 *int32                                                              `json:"total,omitempty" xml:"total,omitempty"`
+	// example:
+	//
+	// 10
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s TravelStandardRelateQueryResponseBodyModule) String() string {
@@ -148,8 +168,17 @@ func (s *TravelStandardRelateQueryResponseBodyModule) Validate() error {
 }
 
 type TravelStandardRelateQueryResponseBodyModuleReserveBindEntityList struct {
-	EntityId   *string `json:"entity_id,omitempty" xml:"entity_id,omitempty"`
+	// example:
+	//
+	// 667104628
+	EntityId *string `json:"entity_id,omitempty" xml:"entity_id,omitempty"`
+	// example:
+	//
+	// 主管
 	EntityName *string `json:"entity_name,omitempty" xml:"entity_name,omitempty"`
+	// example:
+	//
+	// 3
 	EntityType *string `json:"entity_type,omitempty" xml:"entity_type,omitempty"`
 }
 

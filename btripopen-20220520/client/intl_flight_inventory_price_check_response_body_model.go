@@ -31,11 +31,20 @@ type IntlFlightInventoryPriceCheckResponseBody struct {
 	// example:
 	//
 	// 成功
-	Message   *string                                          `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *IntlFlightInventoryPriceCheckResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                                          `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                                            `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                                          `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Message *string                                          `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *IntlFlightInventoryPriceCheckResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// 92359A00-85D8-16C4-AED0-249618DEEC17
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 2103ad1516839612078738332dea5c
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s IntlFlightInventoryPriceCheckResponseBody) String() string {
@@ -110,10 +119,19 @@ func (s *IntlFlightInventoryPriceCheckResponseBody) Validate() error {
 }
 
 type IntlFlightInventoryPriceCheckResponseBodyModule struct {
-	CheckSuccess                  *bool                                                                           `json:"check_success,omitempty" xml:"check_success,omitempty"`
+	// example:
+	//
+	// true
+	CheckSuccess *bool `json:"check_success,omitempty" xml:"check_success,omitempty"`
+	// example:
+	//
+	// 0
 	FailType                      *int32                                                                          `json:"fail_type,omitempty" xml:"fail_type,omitempty"`
 	PassengerChangedPriceInfoList []*IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoList `json:"passenger_changed_price_info_list,omitempty" xml:"passenger_changed_price_info_list,omitempty" type:"Repeated"`
-	RenderKey                     *string                                                                         `json:"render_key,omitempty" xml:"render_key,omitempty"`
+	// example:
+	//
+	// fcoid_deb6372db8194f1c94c23bc4fadc508d
+	RenderKey *string `json:"render_key,omitempty" xml:"render_key,omitempty"`
 }
 
 func (s IntlFlightInventoryPriceCheckResponseBodyModule) String() string {
@@ -174,10 +192,16 @@ func (s *IntlFlightInventoryPriceCheckResponseBodyModule) Validate() error {
 }
 
 type IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoList struct {
+	// example:
+	//
+	// false
 	Changed       *bool                                                                                      `json:"changed,omitempty" xml:"changed,omitempty"`
 	ChangedPrice  *IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoListChangedPrice  `json:"changed_price,omitempty" xml:"changed_price,omitempty" type:"Struct"`
 	OriginalPrice *IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoListOriginalPrice `json:"original_price,omitempty" xml:"original_price,omitempty" type:"Struct"`
-	PassengerType *int32                                                                                     `json:"passenger_type,omitempty" xml:"passenger_type,omitempty"`
+	// example:
+	//
+	// 0
+	PassengerType *int32 `json:"passenger_type,omitempty" xml:"passenger_type,omitempty"`
 }
 
 func (s IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoList) String() string {
@@ -239,7 +263,13 @@ func (s *IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInf
 }
 
 type IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoListChangedPrice struct {
-	TaxPrice    *int64 `json:"tax_price,omitempty" xml:"tax_price,omitempty"`
+	// example:
+	//
+	// 12000
+	TaxPrice *int64 `json:"tax_price,omitempty" xml:"tax_price,omitempty"`
+	// example:
+	//
+	// 90000
 	TicketPrice *int64 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
 }
 
@@ -274,7 +304,13 @@ func (s *IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInf
 }
 
 type IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoListOriginalPrice struct {
-	TaxPrice    *int64 `json:"tax_price,omitempty" xml:"tax_price,omitempty"`
+	// example:
+	//
+	// 12000
+	TaxPrice *int64 `json:"tax_price,omitempty" xml:"tax_price,omitempty"`
+	// example:
+	//
+	// 80000
 	TicketPrice *int64 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
 }
 

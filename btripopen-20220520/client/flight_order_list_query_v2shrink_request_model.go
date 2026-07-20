@@ -34,17 +34,35 @@ type iFlightOrderListQueryV2ShrinkRequest interface {
 }
 
 type FlightOrderListQueryV2ShrinkRequest struct {
-	ApproveIdShrink          *string `json:"approve_id,omitempty" xml:"approve_id,omitempty"`
-	BookerIdShrink           *string `json:"booker_id,omitempty" xml:"booker_id,omitempty"`
-	DepartIdShrink           *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
-	EndDate                  *string `json:"end_date,omitempty" xml:"end_date,omitempty"`
-	PageSize                 *int32  `json:"page_Size,omitempty" xml:"page_Size,omitempty"`
-	ScrollId                 *string `json:"scroll_id,omitempty" xml:"scroll_id,omitempty"`
+	ApproveIdShrink *string `json:"approve_id,omitempty" xml:"approve_id,omitempty"`
+	BookerIdShrink  *string `json:"booker_id,omitempty" xml:"booker_id,omitempty"`
+	DepartIdShrink  *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	// example:
+	//
+	// 2022-07-01 00:00:00
+	EndDate *string `json:"end_date,omitempty" xml:"end_date,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"page_Size,omitempty" xml:"page_Size,omitempty"`
+	// example:
+	//
+	// CAESBgoEIgIIABgAIhkKFwMSAAAAMUw4ZGViODFlYmM3MYzM4
+	ScrollId *string `json:"scroll_id,omitempty" xml:"scroll_id,omitempty"`
+	// example:
+	//
+	// 2022-07-01 00:00:00
 	StartDate                *string `json:"start_date,omitempty" xml:"start_date,omitempty"`
 	SupplierShrink           *string `json:"supplier,omitempty" xml:"supplier,omitempty"`
 	ThirdpartApproveIdShrink *string `json:"thirdpart_approve_id,omitempty" xml:"thirdpart_approve_id,omitempty"`
-	UpdateEndDate            *string `json:"update_end_date,omitempty" xml:"update_end_date,omitempty"`
-	UpdateStartDate          *string `json:"update_start_date,omitempty" xml:"update_start_date,omitempty"`
+	// example:
+	//
+	// 2022-07-01 00:00:00
+	UpdateEndDate *string `json:"update_end_date,omitempty" xml:"update_end_date,omitempty"`
+	// example:
+	//
+	// 2022-07-01 00:00:00
+	UpdateStartDate *string `json:"update_start_date,omitempty" xml:"update_start_date,omitempty"`
 }
 
 func (s FlightOrderListQueryV2ShrinkRequest) String() string {

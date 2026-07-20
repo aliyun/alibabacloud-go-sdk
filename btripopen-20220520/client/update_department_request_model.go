@@ -21,10 +21,21 @@ type iUpdateDepartmentRequest interface {
 
 type UpdateDepartmentRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 系统研发部
 	DeptName              *string   `json:"dept_name,omitempty" xml:"dept_name,omitempty"`
 	ManagerEmployeeIdList []*string `json:"manager_employee_id_list,omitempty" xml:"manager_employee_id_list,omitempty" type:"Repeated"`
 	// This parameter is required.
-	OutDeptId  *string `json:"out_dept_id,omitempty" xml:"out_dept_id,omitempty"`
+	//
+	// example:
+	//
+	// dept123
+	OutDeptId *string `json:"out_dept_id,omitempty" xml:"out_dept_id,omitempty"`
+	// example:
+	//
+	// dept456
 	OutDeptPid *string `json:"out_dept_pid,omitempty" xml:"out_dept_pid,omitempty"`
 }
 

@@ -19,8 +19,16 @@ type iTrainFeeCalculateRefundShrinkRequest interface {
 
 type TrainFeeCalculateRefundShrinkRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345
 	DistributeOrderId *string `json:"distribute_order_id,omitempty" xml:"distribute_order_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1002145190081005400
 	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
 	// This parameter is required.
 	RefundTrainInfosShrink *string `json:"refund_train_infos,omitempty" xml:"refund_train_infos,omitempty"`

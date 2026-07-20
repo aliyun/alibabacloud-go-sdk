@@ -15,6 +15,10 @@ type iCostCenterDeleteRequest interface {
 
 type CostCenterDeleteRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 340049
 	ThirdpartId *string `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
 }
 

@@ -20,10 +20,22 @@ type iBatchQueryDepartmentRequest interface {
 }
 
 type BatchQueryDepartmentRequest struct {
+	// example:
+	//
+	// 2021-06-02 00:00:00
 	ModifiedTimeGreaterOrEqualThan *string `json:"modified_time_greater_or_equal_than,omitempty" xml:"modified_time_greater_or_equal_than,omitempty"`
-	OutDeptId                      *string `json:"out_dept_id,omitempty" xml:"out_dept_id,omitempty"`
-	PageSize                       *int32  `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	PageToken                      *string `json:"page_token,omitempty" xml:"page_token,omitempty"`
+	// example:
+	//
+	// 129
+	OutDeptId *string `json:"out_dept_id,omitempty" xml:"out_dept_id,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// example:
+	//
+	// 9YN+jxa7PcxbNUTISeKjEw==
+	PageToken *string `json:"page_token,omitempty" xml:"page_token,omitempty"`
 }
 
 func (s BatchQueryDepartmentRequest) String() string {

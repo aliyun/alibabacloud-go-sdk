@@ -48,24 +48,154 @@ type iModuleReShopItemListSubItemsRefundChangeRuleOfferPenaltyInfoMapValue inter
 }
 
 type ModuleReShopItemListSubItemsRefundChangeRuleOfferPenaltyInfoMapValue struct {
-	Struct                *bool              `json:"struct,omitempty" xml:"struct,omitempty"`
-	CancelFeeInd          *bool              `json:"cancel_fee_ind,omitempty" xml:"cancel_fee_ind,omitempty"`
-	ChangeFeeInd          *bool              `json:"change_fee_ind,omitempty" xml:"change_fee_ind,omitempty"`
-	UpgradeFeeInd         *bool              `json:"upgrade_fee_ind,omitempty" xml:"upgrade_fee_ind,omitempty"`
-	ReissueInd            *bool              `json:"reissue_ind,omitempty" xml:"reissue_ind,omitempty"`
-	PenaltyTypeCode       *int32             `json:"penalty_type_code,omitempty" xml:"penalty_type_code,omitempty"`
-	PenaltyApplyRangeCode *int32             `json:"penalty_apply_range_code,omitempty" xml:"penalty_apply_range_code,omitempty"`
-	PenaltyChargeTypeCode *int32             `json:"penalty_charge_type_code,omitempty" xml:"penalty_charge_type_code,omitempty"`
-	Fee                   *float64           `json:"fee,omitempty" xml:"fee,omitempty"`
-	Currency              *string            `json:"currency,omitempty" xml:"currency,omitempty"`
-	PenaltyPercent        *float64           `json:"penalty_percent,omitempty" xml:"penalty_percent,omitempty"`
-	StartTime             *int32             `json:"start_time,omitempty" xml:"start_time,omitempty"`
-	EndTime               *int32             `json:"end_time,omitempty" xml:"end_time,omitempty"`
-	TimeUnitCode          *int32             `json:"time_unit_code,omitempty" xml:"time_unit_code,omitempty"`
-	Title                 *string            `json:"title,omitempty" xml:"title,omitempty"`
-	DepTime               *string            `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
-	SegmentNumber         *string            `json:"segment_number,omitempty" xml:"segment_number,omitempty"`
-	DescInfos             map[string]*string `json:"desc_infos,omitempty" xml:"desc_infos,omitempty"`
+	// Indicates whether the rule is applicable.
+	//
+	// example:
+	//
+	// true
+	Struct *bool `json:"struct,omitempty" xml:"struct,omitempty"`
+	// Indicates whether refund is supported.
+	//
+	// example:
+	//
+	// false
+	CancelFeeInd *bool `json:"cancel_fee_ind,omitempty" xml:"cancel_fee_ind,omitempty"`
+	// Indicates whether date change is supported.
+	//
+	// example:
+	//
+	// false
+	ChangeFeeInd *bool `json:"change_fee_ind,omitempty" xml:"change_fee_ind,omitempty"`
+	// Indicates whether upgrade is supported.
+	//
+	// example:
+	//
+	// false
+	UpgradeFeeInd *bool `json:"upgrade_fee_ind,omitempty" xml:"upgrade_fee_ind,omitempty"`
+	// Indicates whether reissue is supported.
+	//
+	// example:
+	//
+	// false
+	ReissueInd *bool `json:"reissue_ind,omitempty" xml:"reissue_ind,omitempty"`
+	// The rule type. Valid values:
+	//
+	// - 0: Refund fee.
+	//
+	// - 1: Change fee.
+	//
+	// - 2: No-show penalty.
+	//
+	// - 3: Other.
+	//
+	// - 4: Upgrade fee.
+	//
+	// - 5: Endorsement.
+	//
+	// - 6: Deduction for used segments.
+	//
+	// - 100: Tax refund.
+	//
+	// example:
+	//
+	// 1
+	PenaltyTypeCode *int32 `json:"penalty_type_code,omitempty" xml:"penalty_type_code,omitempty"`
+	// The applicability scope of the rule. Valid values:
+	//
+	//
+	//
+	// - 1: All unused.
+	//
+	// - 2: Partially unused.
+	//
+	// - 3: Outbound.
+	//
+	// - 4: Inbound.
+	//
+	// example:
+	//
+	// 1
+	PenaltyApplyRangeCode *int32 `json:"penalty_apply_range_code,omitempty" xml:"penalty_apply_range_code,omitempty"`
+	// The charge method of the rule. Valid values:
+	//
+	// - 0: Charged per whole trip.
+	//
+	// - 1: Charged per direction.
+	//
+	// - 2: Charged per segment.
+	//
+	// example:
+	//
+	// 0
+	PenaltyChargeTypeCode *int32 `json:"penalty_charge_type_code,omitempty" xml:"penalty_charge_type_code,omitempty"`
+	// The fee amount.
+	//
+	// example:
+	//
+	// 10
+	Fee *float64 `json:"fee,omitempty" xml:"fee,omitempty"`
+	// The currency of the fee.
+	//
+	// example:
+	//
+	// CNY
+	Currency *string `json:"currency,omitempty" xml:"currency,omitempty"`
+	// The fee percentage.
+	//
+	// example:
+	//
+	// 10
+	PenaltyPercent *float64 `json:"penalty_percent,omitempty" xml:"penalty_percent,omitempty"`
+	// The start time of the rule time range.
+	//
+	// example:
+	//
+	// -720
+	StartTime *int32 `json:"start_time,omitempty" xml:"start_time,omitempty"`
+	// The end time of the rule time range.
+	//
+	// example:
+	//
+	// -168
+	EndTime *int32 `json:"end_time,omitempty" xml:"end_time,omitempty"`
+	// The time unit. Valid values:
+	//
+	// - 0: Hours.
+	//
+	// - 1: Days.
+	//
+	// example:
+	//
+	// 1
+	TimeUnitCode *int32 `json:"time_unit_code,omitempty" xml:"time_unit_code,omitempty"`
+	// The rule title.
+	//
+	// example:
+	//
+	// 退票费用
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// 起飞时间
+	//
+	// example:
+	//
+	// 2025-10-01 01:00:00
+	DepTime *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	// 航段序号，
+	//
+	// - OUTBOUND_FIRST("去程第一段")
+	//
+	// - OUTBOUND_SECOND("去程第二段")
+	//
+	// - INBOUND_FIRST("回程第一段")
+	//
+	// - INBOUND_SECOND("回程第二段")
+	//
+	// example:
+	//
+	// OUTBOUND_FIRST
+	SegmentNumber *string `json:"segment_number,omitempty" xml:"segment_number,omitempty"`
+	// 各类非结构化补充说明
+	DescInfos map[string]*string `json:"desc_infos,omitempty" xml:"desc_infos,omitempty"`
 }
 
 func (s ModuleReShopItemListSubItemsRefundChangeRuleOfferPenaltyInfoMapValue) String() string {

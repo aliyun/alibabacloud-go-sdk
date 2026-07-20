@@ -17,8 +17,16 @@ type iOrderRefundDetailQueryRequest interface {
 
 type OrderRefundDetailQueryRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// ZLJD12241231000002
 	CooperatorOrderId *string `json:"cooperator_order_id,omitempty" xml:"cooperator_order_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1012000000000000
 	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
 }
 

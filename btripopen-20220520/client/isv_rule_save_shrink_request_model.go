@@ -24,14 +24,32 @@ type iIsvRuleSaveShrinkRequest interface {
 }
 
 type IsvRuleSaveShrinkRequest struct {
+	// example:
+	//
+	// false
 	ApplyNeed *bool `json:"apply_need,omitempty" xml:"apply_need,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// authorizedPerson
 	BookType           *string `json:"book_type,omitempty" xml:"book_type,omitempty"`
 	BookuserListShrink *string `json:"bookuser_list,omitempty" xml:"bookuser_list,omitempty"`
-	RuleNeed           *bool   `json:"rule_need,omitempty" xml:"rule_need,omitempty"`
+	// example:
+	//
+	// false
+	RuleNeed *bool `json:"rule_need,omitempty" xml:"rule_need,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 

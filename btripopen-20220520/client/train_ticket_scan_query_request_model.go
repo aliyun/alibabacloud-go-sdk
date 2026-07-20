@@ -32,16 +32,46 @@ type iTrainTicketScanQueryRequest interface {
 }
 
 type TrainTicketScanQueryRequest struct {
-	BillDate         *string `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
-	BillId           *int64  `json:"bill_id,omitempty" xml:"bill_id,omitempty"`
-	InvoiceDateEnd   *string `json:"invoice_date_end,omitempty" xml:"invoice_date_end,omitempty"`
+	// example:
+	//
+	// 2022-12-01
+	BillDate *string `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
+	// example:
+	//
+	// 123
+	BillId *int64 `json:"bill_id,omitempty" xml:"bill_id,omitempty"`
+	// example:
+	//
+	// 2025-11-05 00:00:00
+	InvoiceDateEnd *string `json:"invoice_date_end,omitempty" xml:"invoice_date_end,omitempty"`
+	// example:
+	//
+	// 2025-11-01 00:00:00
 	InvoiceDateStart *string `json:"invoice_date_start,omitempty" xml:"invoice_date_start,omitempty"`
-	InvoiceSubTaskId *int64  `json:"invoice_sub_task_id,omitempty" xml:"invoice_sub_task_id,omitempty"`
-	OrderId          *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	PageNo           *int32  `json:"page_no,omitempty" xml:"page_no,omitempty"`
-	PageSize         *int32  `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	SerialNumber     *string `json:"serial_number,omitempty" xml:"serial_number,omitempty"`
-	TicketNo         *string `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
+	// example:
+	//
+	// 456
+	InvoiceSubTaskId *int64 `json:"invoice_sub_task_id,omitempty" xml:"invoice_sub_task_id,omitempty"`
+	// example:
+	//
+	// 1002145190081005400
+	OrderId *int64 `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"page_no,omitempty" xml:"page_no,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// example:
+	//
+	// 32270201111333E012345
+	SerialNumber *string `json:"serial_number,omitempty" xml:"serial_number,omitempty"`
+	// example:
+	//
+	// D166E012345
+	TicketNo *string `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
 }
 
 func (s TrainTicketScanQueryRequest) String() string {

@@ -119,6 +119,9 @@ func (s *IntlFlightReShopCancelResponseBody) Validate() error {
 }
 
 type IntlFlightReShopCancelResponseBodyModule struct {
+	// example:
+	//
+	// 2023-08-10 17:45:32
 	CancelTime *string `json:"cancel_time,omitempty" xml:"cancel_time,omitempty"`
 }
 

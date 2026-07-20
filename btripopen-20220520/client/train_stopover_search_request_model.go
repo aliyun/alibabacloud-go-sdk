@@ -21,12 +21,28 @@ type iTrainStopoverSearchRequest interface {
 
 type TrainStopoverSearchRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 重庆西
 	ArrStation *string `json:"arr_station,omitempty" xml:"arr_station,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 巫山站
 	DepStation *string `json:"dep_station,omitempty" xml:"dep_station,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2024-05-08
 	TrainDate *string `json:"train_date,omitempty" xml:"train_date,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// k2345
 	TrainNo *string `json:"train_no,omitempty" xml:"train_no,omitempty"`
 }
 

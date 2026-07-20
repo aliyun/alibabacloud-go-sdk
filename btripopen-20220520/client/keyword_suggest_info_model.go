@@ -36,41 +36,73 @@ type iKeywordSuggestInfo interface {
 }
 
 type KeywordSuggestInfo struct {
-	Address              *string             `json:"address,omitempty" xml:"address,omitempty"`
+	// The address.
+	//
+	// example:
+	//
+	// 杭州湖墅南路XX号
+	Address *string `json:"address,omitempty" xml:"address,omitempty"`
+	// The business area.
 	BusinessAreaWithCity *KeywordSuggestInfo `json:"business_area_with_city,omitempty" xml:"business_area_with_city,omitempty"`
+	// The city code.
+	//
 	// example:
 	//
 	// 300100
 	CityCode *int32 `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	// The city name.
+	//
 	// example:
 	//
 	// 杭州
 	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+	// The display name.
+	//
 	// example:
 	//
-	// 杭州东站
+	// 杭州JW万豪酒店
 	DisplayName *string `json:"display_name,omitempty" xml:"display_name,omitempty"`
+	// The hotel ID.
+	//
 	// example:
 	//
 	// 53853318
 	HotelId *string `json:"hotel_id,omitempty" xml:"hotel_id,omitempty"`
-	Icon    *string `json:"icon,omitempty" xml:"icon,omitempty"`
+	// The icon.
+	//
+	// example:
+	//
+	// https://gw.alicdn.com/imgextra/i3/O1CN01qKg25r1rKLOKxT3vB_!!6000000005612-2-tps-32-32.png
+	Icon *string `json:"icon,omitempty" xml:"icon,omitempty"`
+	// The rating.
+	//
 	// example:
 	//
 	// 4.8分
 	Point *string `json:"point,omitempty" xml:"point,omitempty"`
+	// The hotel starting price, in CNY.
+	//
 	// example:
 	//
 	// 524
 	Price *string `json:"price,omitempty" xml:"price,omitempty"`
+	// The region.
+	//
 	// example:
 	//
 	// 0
 	Region *int32 `json:"region,omitempty" xml:"region,omitempty"`
-	Type   *int32 `json:"type,omitempty" xml:"type,omitempty"`
+	// The type.
+	//
 	// example:
 	//
-	// 景点
+	// 10
+	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
+	// The type description.
+	//
+	// example:
+	//
+	// 酒店
 	TypeDesc *string `json:"type_desc,omitempty" xml:"type_desc,omitempty"`
 }
 

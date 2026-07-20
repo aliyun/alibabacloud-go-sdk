@@ -26,13 +26,31 @@ type iIeFlightBillSettlementQueryResponseBody interface {
 }
 
 type IeFlightBillSettlementQueryResponseBody struct {
-	Code      *string                                        `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                                        `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *IeFlightBillSettlementQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	MorePage  *bool                                          `json:"more_page,omitempty" xml:"more_page,omitempty"`
-	RequestId *string                                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                                          `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                                        `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 成功
+	Message *string                                        `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *IeFlightBillSettlementQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	MorePage *bool `json:"more_page,omitempty" xml:"more_page,omitempty"`
+	// example:
+	//
+	// C61ECFF6-606B-5F66-B81D-D77369043A5F
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 210e842b16611337974412836dae27
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s IeFlightBillSettlementQueryResponseBody) String() string {
@@ -116,13 +134,31 @@ func (s *IeFlightBillSettlementQueryResponseBody) Validate() error {
 }
 
 type IeFlightBillSettlementQueryResponseBodyModule struct {
-	Category    *int32                                                   `json:"category,omitempty" xml:"category,omitempty"`
-	CorpId      *string                                                  `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
-	DataList    []*IeFlightBillSettlementQueryResponseBodyModuleDataList `json:"data_list,omitempty" xml:"data_list,omitempty" type:"Repeated"`
-	PeriodEnd   *string                                                  `json:"period_end,omitempty" xml:"period_end,omitempty"`
-	PeriodStart *string                                                  `json:"period_start,omitempty" xml:"period_start,omitempty"`
-	ScrollId    *string                                                  `json:"scroll_id,omitempty" xml:"scroll_id,omitempty"`
-	TotalNum    *int64                                                   `json:"total_num,omitempty" xml:"total_num,omitempty"`
+	// example:
+	//
+	// 11
+	Category *int32 `json:"category,omitempty" xml:"category,omitempty"`
+	// example:
+	//
+	// corp1
+	CorpId   *string                                                  `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	DataList []*IeFlightBillSettlementQueryResponseBodyModuleDataList `json:"data_list,omitempty" xml:"data_list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2021-10-14
+	PeriodEnd *string `json:"period_end,omitempty" xml:"period_end,omitempty"`
+	// example:
+	//
+	// 2021-10-13
+	PeriodStart *string `json:"period_start,omitempty" xml:"period_start,omitempty"`
+	// example:
+	//
+	// 1qwe
+	ScrollId *string `json:"scroll_id,omitempty" xml:"scroll_id,omitempty"`
+	// example:
+	//
+	// 1402
+	TotalNum *int64 `json:"total_num,omitempty" xml:"total_num,omitempty"`
 }
 
 func (s IeFlightBillSettlementQueryResponseBodyModule) String() string {
@@ -210,127 +246,494 @@ func (s *IeFlightBillSettlementQueryResponseBodyModule) Validate() error {
 }
 
 type IeFlightBillSettlementQueryResponseBodyModuleDataList struct {
-	AdjustTime             *string  `json:"adjust_time,omitempty" xml:"adjust_time,omitempty"`
-	AdvanceDay             *int32   `json:"advance_day,omitempty" xml:"advance_day,omitempty"`
-	AirlineCorpCode        *string  `json:"airline_corp_code,omitempty" xml:"airline_corp_code,omitempty"`
-	AirlineCorpName        *string  `json:"airline_corp_name,omitempty" xml:"airline_corp_name,omitempty"`
-	AlipayTradeNo          *string  `json:"alipay_trade_no,omitempty" xml:"alipay_trade_no,omitempty"`
-	ApplyArrCityCode       *string  `json:"apply_arr_city_code,omitempty" xml:"apply_arr_city_code,omitempty"`
-	ApplyArrCityName       *string  `json:"apply_arr_city_name,omitempty" xml:"apply_arr_city_name,omitempty"`
-	ApplyDepCityCode       *string  `json:"apply_dep_city_code,omitempty" xml:"apply_dep_city_code,omitempty"`
-	ApplyDepCityName       *string  `json:"apply_dep_city_name,omitempty" xml:"apply_dep_city_name,omitempty"`
-	ApplyExtendField       *string  `json:"apply_extend_field,omitempty" xml:"apply_extend_field,omitempty"`
-	ApplyId                *string  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	ApproverEmail          *string  `json:"approver_email,omitempty" xml:"approver_email,omitempty"`
-	ApproverId             *string  `json:"approver_id,omitempty" xml:"approver_id,omitempty"`
-	ApproverName           *string  `json:"approver_name,omitempty" xml:"approver_name,omitempty"`
-	ArrAirportCode         *string  `json:"arr_airport_code,omitempty" xml:"arr_airport_code,omitempty"`
-	ArrCity                *string  `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
-	ArrCityCode            *string  `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
-	ArrCountry             *string  `json:"arr_country,omitempty" xml:"arr_country,omitempty"`
-	ArrCountryCode         *string  `json:"arr_country_code,omitempty" xml:"arr_country_code,omitempty"`
-	ArrDate                *string  `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
-	ArrStation             *string  `json:"arr_station,omitempty" xml:"arr_station,omitempty"`
-	ArrTime                *string  `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
-	BaseLocation           *string  `json:"base_location,omitempty" xml:"base_location,omitempty"`
-	BillRecordTime         *string  `json:"bill_record_time,omitempty" xml:"bill_record_time,omitempty"`
-	BookMode               *string  `json:"book_mode,omitempty" xml:"book_mode,omitempty"`
-	BookTime               *string  `json:"book_time,omitempty" xml:"book_time,omitempty"`
-	BookerId               *string  `json:"booker_id,omitempty" xml:"booker_id,omitempty"`
-	BookerJobNo            *string  `json:"booker_job_no,omitempty" xml:"booker_job_no,omitempty"`
-	BookerName             *string  `json:"booker_name,omitempty" xml:"booker_name,omitempty"`
-	BtripCouponFee         *float64 `json:"btrip_coupon_fee,omitempty" xml:"btrip_coupon_fee,omitempty"`
-	BusinessTripResult     *string  `json:"business_trip_result,omitempty" xml:"business_trip_result,omitempty"`
-	Cabin                  *string  `json:"cabin,omitempty" xml:"cabin,omitempty"`
-	CabinClass             *string  `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
-	CapitalDirection       *string  `json:"capital_direction,omitempty" xml:"capital_direction,omitempty"`
-	CascadeDepartment      *string  `json:"cascade_department,omitempty" xml:"cascade_department,omitempty"`
-	CategoryDesc           *string  `json:"category_desc,omitempty" xml:"category_desc,omitempty"`
-	ChangeFee              *float64 `json:"change_fee,omitempty" xml:"change_fee,omitempty"`
-	ChangeResult           *string  `json:"change_result,omitempty" xml:"change_result,omitempty"`
-	CorpPayOrderFee        *float64 `json:"corp_pay_order_fee,omitempty" xml:"corp_pay_order_fee,omitempty"`
-	CostCenter             *string  `json:"cost_center,omitempty" xml:"cost_center,omitempty"`
-	CostCenterNumber       *string  `json:"cost_center_number,omitempty" xml:"cost_center_number,omitempty"`
-	CostDepartment         *string  `json:"cost_department,omitempty" xml:"cost_department,omitempty"`
-	Coupon                 *float64 `json:"coupon,omitempty" xml:"coupon,omitempty"`
-	CustomContent          *string  `json:"custom_content,omitempty" xml:"custom_content,omitempty"`
-	DeductibleTax          *float64 `json:"deductible_tax,omitempty" xml:"deductible_tax,omitempty"`
-	DepAirportCode         *string  `json:"dep_airport_code,omitempty" xml:"dep_airport_code,omitempty"`
-	DepCityCode            *string  `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
-	DepCountry             *string  `json:"dep_country,omitempty" xml:"dep_country,omitempty"`
-	DepCountryCode         *string  `json:"dep_country_code,omitempty" xml:"dep_country_code,omitempty"`
-	Department             *string  `json:"department,omitempty" xml:"department,omitempty"`
-	DepartmentId           *string  `json:"department_id,omitempty" xml:"department_id,omitempty"`
-	DeptCity               *string  `json:"dept_city,omitempty" xml:"dept_city,omitempty"`
-	DeptDate               *string  `json:"dept_date,omitempty" xml:"dept_date,omitempty"`
-	DeptStation            *string  `json:"dept_station,omitempty" xml:"dept_station,omitempty"`
-	DeptTime               *string  `json:"dept_time,omitempty" xml:"dept_time,omitempty"`
-	Discount               *string  `json:"discount,omitempty" xml:"discount,omitempty"`
-	ExceedReason           *string  `json:"exceed_reason,omitempty" xml:"exceed_reason,omitempty"`
-	FeeType                *string  `json:"fee_type,omitempty" xml:"fee_type,omitempty"`
-	FeeTypeDesc            *string  `json:"fee_type_desc,omitempty" xml:"fee_type_desc,omitempty"`
-	FlightNo               *string  `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
-	ForeignersTag          *string  `json:"foreigners_tag,omitempty" xml:"foreigners_tag,omitempty"`
-	Index                  *string  `json:"index,omitempty" xml:"index,omitempty"`
-	InsOrderId             *string  `json:"ins_order_id,omitempty" xml:"ins_order_id,omitempty"`
-	InsuranceFee           *float64 `json:"insurance_fee,omitempty" xml:"insurance_fee,omitempty"`
-	InsuranceNumber        *string  `json:"insurance_number,omitempty" xml:"insurance_number,omitempty"`
-	InsuranceProductName   *string  `json:"insurance_product_name,omitempty" xml:"insurance_product_name,omitempty"`
-	InvoiceTitle           *string  `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
-	Location               *string  `json:"location,omitempty" xml:"location,omitempty"`
-	MappingCompanyCode     *string  `json:"mapping_company_code,omitempty" xml:"mapping_company_code,omitempty"`
-	MostDifferenceDeptTime *string  `json:"most_difference_dept_time,omitempty" xml:"most_difference_dept_time,omitempty"`
-	MostDifferenceDiscount *string  `json:"most_difference_discount,omitempty" xml:"most_difference_discount,omitempty"`
-	MostDifferenceFlightNo *string  `json:"most_difference_flight_no,omitempty" xml:"most_difference_flight_no,omitempty"`
-	MostDifferencePrice    *float64 `json:"most_difference_price,omitempty" xml:"most_difference_price,omitempty"`
-	MostDifferenceReason   *string  `json:"most_difference_reason,omitempty" xml:"most_difference_reason,omitempty"`
-	MostPrice              *float64 `json:"most_price,omitempty" xml:"most_price,omitempty"`
-	NegotiationCouponFee   *float64 `json:"negotiation_coupon_fee,omitempty" xml:"negotiation_coupon_fee,omitempty"`
-	OrderId                *string  `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	OrderStatusDesc        *string  `json:"order_status_desc,omitempty" xml:"order_status_desc,omitempty"`
-	OverApplyId            *string  `json:"over_apply_id,omitempty" xml:"over_apply_id,omitempty"`
-	PaymentDepartmentId    *string  `json:"payment_department_id,omitempty" xml:"payment_department_id,omitempty"`
-	PaymentDepartmentName  *string  `json:"payment_department_name,omitempty" xml:"payment_department_name,omitempty"`
-	Position               *string  `json:"position,omitempty" xml:"position,omitempty"`
-	PositionLevel          *string  `json:"position_level,omitempty" xml:"position_level,omitempty"`
-	PrimaryId              *int64   `json:"primary_id,omitempty" xml:"primary_id,omitempty"`
-	ProcessorOaCode        *string  `json:"processor_oa_code,omitempty" xml:"processor_oa_code,omitempty"`
-	ProjectCode            *string  `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectName            *string  `json:"project_name,omitempty" xml:"project_name,omitempty"`
-	RefundChangeCost       *float64 `json:"refund_change_cost,omitempty" xml:"refund_change_cost,omitempty"`
-	RefundFee              *float64 `json:"refund_fee,omitempty" xml:"refund_fee,omitempty"`
-	RefundResult           *string  `json:"refund_result,omitempty" xml:"refund_result,omitempty"`
-	Remark                 *string  `json:"remark,omitempty" xml:"remark,omitempty"`
-	RepeatRefund           *string  `json:"repeat_refund,omitempty" xml:"repeat_refund,omitempty"`
-	SealPrice              *float64 `json:"seal_price,omitempty" xml:"seal_price,omitempty"`
-	SegmentList            *string  `json:"segment_list,omitempty" xml:"segment_list,omitempty"`
-	SegmentType            *string  `json:"segment_type,omitempty" xml:"segment_type,omitempty"`
-	ServiceFee             *float64 `json:"service_fee,omitempty" xml:"service_fee,omitempty"`
-	SettleTypeDesc         *string  `json:"settle_type_desc,omitempty" xml:"settle_type_desc,omitempty"`
-	SettlementFee          *float64 `json:"settlement_fee,omitempty" xml:"settlement_fee,omitempty"`
-	SettlementGrantFee     *float64 `json:"settlement_grant_fee,omitempty" xml:"settlement_grant_fee,omitempty"`
-	SettlementTime         *string  `json:"settlement_time,omitempty" xml:"settlement_time,omitempty"`
-	SettlementType         *string  `json:"settlement_type,omitempty" xml:"settlement_type,omitempty"`
-	Sio                    *string  `json:"sio,omitempty" xml:"sio,omitempty"`
-	Status                 *int32   `json:"status,omitempty" xml:"status,omitempty"`
-	StatusDesc             *string  `json:"status_desc,omitempty" xml:"status_desc,omitempty"`
-	SubOrderId             *string  `json:"sub_order_id,omitempty" xml:"sub_order_id,omitempty"`
-	TaxFee                 *float64 `json:"tax_fee,omitempty" xml:"tax_fee,omitempty"`
-	TaxRate                *string  `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
-	ThirdItineraryId       *string  `json:"third_itinerary_id,omitempty" xml:"third_itinerary_id,omitempty"`
-	TicketId               *string  `json:"ticket_id,omitempty" xml:"ticket_id,omitempty"`
-	Trade                  *string  `json:"trade,omitempty" xml:"trade,omitempty"`
-	TradeActionDesc        *string  `json:"trade_action_desc,omitempty" xml:"trade_action_desc,omitempty"`
-	TravelerEmail          *string  `json:"traveler_email,omitempty" xml:"traveler_email,omitempty"`
-	TravelerId             *string  `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
-	TravelerJobNo          *string  `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
-	TravelerMemberType     *string  `json:"traveler_member_type,omitempty" xml:"traveler_member_type,omitempty"`
-	TravelerMemberTypeName *string  `json:"traveler_member_type_name,omitempty" xml:"traveler_member_type_name,omitempty"`
-	TravelerName           *string  `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
-	TripType               *int32   `json:"trip_type,omitempty" xml:"trip_type,omitempty"`
-	VoucherType            *int32   `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
-	VoucherTypeDesc        *string  `json:"voucher_type_desc,omitempty" xml:"voucher_type_desc,omitempty"`
-	VoyageName             *string  `json:"voyage_name,omitempty" xml:"voyage_name,omitempty"`
+	// example:
+	//
+	// 2025-01-01 00:00:00
+	AdjustTime *string `json:"adjust_time,omitempty" xml:"adjust_time,omitempty"`
+	// example:
+	//
+	// 1
+	AdvanceDay *int32 `json:"advance_day,omitempty" xml:"advance_day,omitempty"`
+	// example:
+	//
+	// MU
+	AirlineCorpCode *string `json:"airline_corp_code,omitempty" xml:"airline_corp_code,omitempty"`
+	// example:
+	//
+	// 中国国航
+	AirlineCorpName *string `json:"airline_corp_name,omitempty" xml:"airline_corp_name,omitempty"`
+	// example:
+	//
+	// 2021123432260
+	AlipayTradeNo *string `json:"alipay_trade_no,omitempty" xml:"alipay_trade_no,omitempty"`
+	// example:
+	//
+	// MDG
+	ApplyArrCityCode *string `json:"apply_arr_city_code,omitempty" xml:"apply_arr_city_code,omitempty"`
+	// example:
+	//
+	// 牡丹江
+	ApplyArrCityName *string `json:"apply_arr_city_name,omitempty" xml:"apply_arr_city_name,omitempty"`
+	// example:
+	//
+	// HRB
+	ApplyDepCityCode *string `json:"apply_dep_city_code,omitempty" xml:"apply_dep_city_code,omitempty"`
+	// example:
+	//
+	// 哈尔滨
+	ApplyDepCityName *string `json:"apply_dep_city_name,omitempty" xml:"apply_dep_city_name,omitempty"`
+	// 审批扩展自定义字段
+	//
+	// example:
+	//
+	// {"memo":"备注"}
+	ApplyExtendField *string `json:"apply_extend_field,omitempty" xml:"apply_extend_field,omitempty"`
+	// example:
+	//
+	// 103189557
+	ApplyId *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	// example:
+	//
+	// abc@123.com
+	ApproverEmail *string `json:"approver_email,omitempty" xml:"approver_email,omitempty"`
+	// example:
+	//
+	// 11
+	ApproverId *string `json:"approver_id,omitempty" xml:"approver_id,omitempty"`
+	// example:
+	//
+	// zhangsan
+	ApproverName *string `json:"approver_name,omitempty" xml:"approver_name,omitempty"`
+	// example:
+	//
+	// CAN
+	ArrAirportCode *string `json:"arr_airport_code,omitempty" xml:"arr_airport_code,omitempty"`
+	// example:
+	//
+	// 巴黎
+	ArrCity *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	// example:
+	//
+	// 330100
+	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	// example:
+	//
+	// 中国
+	ArrCountry *string `json:"arr_country,omitempty" xml:"arr_country,omitempty"`
+	// example:
+	//
+	// CN
+	ArrCountryCode *string `json:"arr_country_code,omitempty" xml:"arr_country_code,omitempty"`
+	// example:
+	//
+	// 2021-10-02
+	ArrDate *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
+	// example:
+	//
+	// Paris Charles de Gaulle Airport
+	ArrStation *string `json:"arr_station,omitempty" xml:"arr_station,omitempty"`
+	// example:
+	//
+	// 13:30:00
+	ArrTime *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	// example:
+	//
+	// 杭州
+	BaseLocation *string `json:"base_location,omitempty" xml:"base_location,omitempty"`
+	// example:
+	//
+	// 2020-12-23T20:18Z
+	BillRecordTime *string `json:"bill_record_time,omitempty" xml:"bill_record_time,omitempty"`
+	// example:
+	//
+	// 线上（自助预订）；
+	BookMode *string `json:"book_mode,omitempty" xml:"book_mode,omitempty"`
+	// example:
+	//
+	// 2021-10-01 00:17:05
+	BookTime *string `json:"book_time,omitempty" xml:"book_time,omitempty"`
+	// example:
+	//
+	// al_xinuan.zsy
+	BookerId *string `json:"booker_id,omitempty" xml:"booker_id,omitempty"`
+	// example:
+	//
+	// 70022164
+	BookerJobNo *string `json:"booker_job_no,omitempty" xml:"booker_job_no,omitempty"`
+	// example:
+	//
+	// 张三
+	BookerName *string `json:"booker_name,omitempty" xml:"booker_name,omitempty"`
+	// example:
+	//
+	// 23.9
+	BtripCouponFee *float64 `json:"btrip_coupon_fee,omitempty" xml:"btrip_coupon_fee,omitempty"`
+	// example:
+	//
+	// 因公司要求，需要到XX同XX公司谈业务
+	BusinessTripResult *string `json:"business_trip_result,omitempty" xml:"business_trip_result,omitempty"`
+	// example:
+	//
+	// R
+	Cabin *string `json:"cabin,omitempty" xml:"cabin,omitempty"`
+	// example:
+	//
+	// 经济舱
+	CabinClass *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	// example:
+	//
+	// 1
+	CapitalDirection *string `json:"capital_direction,omitempty" xml:"capital_direction,omitempty"`
+	// example:
+	//
+	// 商旅事业群-运营部-华北营运大区
+	CascadeDepartment *string `json:"cascade_department,omitempty" xml:"cascade_department,omitempty"`
+	// example:
+	//
+	// 国际城市以及中国香港、中国澳门、中国台湾机票
+	CategoryDesc *string `json:"category_desc,omitempty" xml:"category_desc,omitempty"`
+	// example:
+	//
+	// 23.0
+	ChangeFee *float64 `json:"change_fee,omitempty" xml:"change_fee,omitempty"`
+	// example:
+	//
+	// 原航班时间与预计不符
+	ChangeResult *string `json:"change_result,omitempty" xml:"change_result,omitempty"`
+	// example:
+	//
+	// 460
+	CorpPayOrderFee *float64 `json:"corp_pay_order_fee,omitempty" xml:"corp_pay_order_fee,omitempty"`
+	// example:
+	//
+	// 运营部成本中心
+	CostCenter *string `json:"cost_center,omitempty" xml:"cost_center,omitempty"`
+	// example:
+	//
+	// 8b7f3cd-24324-097
+	CostCenterNumber *string `json:"cost_center_number,omitempty" xml:"cost_center_number,omitempty"`
+	// example:
+	//
+	// code1
+	CostDepartment *string `json:"cost_department,omitempty" xml:"cost_department,omitempty"`
+	// example:
+	//
+	// 1
+	Coupon *float64 `json:"coupon,omitempty" xml:"coupon,omitempty"`
+	// example:
+	//
+	// "{\\"key1\\":\\"value1\\",\\"key2\\":\\"value2\\",\\"key3\\":\\"value3\\"}"
+	CustomContent *string `json:"custom_content,omitempty" xml:"custom_content,omitempty"`
+	// example:
+	//
+	// 1.2
+	DeductibleTax *float64 `json:"deductible_tax,omitempty" xml:"deductible_tax,omitempty"`
+	// example:
+	//
+	// KHN
+	DepAirportCode *string `json:"dep_airport_code,omitempty" xml:"dep_airport_code,omitempty"`
+	// example:
+	//
+	// 110100
+	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	// example:
+	//
+	// 美国
+	DepCountry *string `json:"dep_country,omitempty" xml:"dep_country,omitempty"`
+	// example:
+	//
+	// US
+	DepCountryCode *string `json:"dep_country_code,omitempty" xml:"dep_country_code,omitempty"`
+	// example:
+	//
+	// 华北运营大区
+	Department *string `json:"department,omitempty" xml:"department,omitempty"`
+	// example:
+	//
+	// 2345866
+	DepartmentId *string `json:"department_id,omitempty" xml:"department_id,omitempty"`
+	// example:
+	//
+	// 北京
+	DeptCity *string `json:"dept_city,omitempty" xml:"dept_city,omitempty"`
+	// example:
+	//
+	// 2021-10-02
+	DeptDate *string `json:"dept_date,omitempty" xml:"dept_date,omitempty"`
+	// example:
+	//
+	// 北京首都国际机场
+	DeptStation *string `json:"dept_station,omitempty" xml:"dept_station,omitempty"`
+	// example:
+	//
+	// 12:00:00
+	DeptTime *string `json:"dept_time,omitempty" xml:"dept_time,omitempty"`
+	// example:
+	//
+	// 51%
+	Discount *string `json:"discount,omitempty" xml:"discount,omitempty"`
+	// example:
+	//
+	// 无低价机票，故超标购买
+	ExceedReason *string `json:"exceed_reason,omitempty" xml:"exceed_reason,omitempty"`
+	// example:
+	//
+	// 20101
+	FeeType *string `json:"fee_type,omitempty" xml:"fee_type,omitempty"`
+	// example:
+	//
+	// 赔付
+	FeeTypeDesc *string `json:"fee_type_desc,omitempty" xml:"fee_type_desc,omitempty"`
+	// example:
+	//
+	// MU9684
+	FlightNo *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	// example:
+	//
+	// Y
+	ForeignersTag *string `json:"foreigners_tag,omitempty" xml:"foreigners_tag,omitempty"`
+	// example:
+	//
+	// 4564547
+	Index *string `json:"index,omitempty" xml:"index,omitempty"`
+	// example:
+	//
+	// 343458349722002
+	InsOrderId *string `json:"ins_order_id,omitempty" xml:"ins_order_id,omitempty"`
+	// example:
+	//
+	// 23.9
+	InsuranceFee *float64 `json:"insurance_fee,omitempty" xml:"insurance_fee,omitempty"`
+	// example:
+	//
+	// 15548214852
+	InsuranceNumber *string `json:"insurance_number,omitempty" xml:"insurance_number,omitempty"`
+	// example:
+	//
+	// 旅游意外险
+	InsuranceProductName *string `json:"insurance_product_name,omitempty" xml:"insurance_product_name,omitempty"`
+	// example:
+	//
+	// 飞小猪有限公司。
+	InvoiceTitle *string `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
+	// example:
+	//
+	// 116.385449,39.997733
+	Location *string `json:"location,omitempty" xml:"location,omitempty"`
+	// example:
+	//
+	// q1
+	MappingCompanyCode *string `json:"mapping_company_code,omitempty" xml:"mapping_company_code,omitempty"`
+	// example:
+	//
+	// 2021-10-01 00:17:13
+	MostDifferenceDeptTime *string `json:"most_difference_dept_time,omitempty" xml:"most_difference_dept_time,omitempty"`
+	// example:
+	//
+	// 23%
+	MostDifferenceDiscount *string `json:"most_difference_discount,omitempty" xml:"most_difference_discount,omitempty"`
+	// example:
+	//
+	// MU9684
+	MostDifferenceFlightNo *string `json:"most_difference_flight_no,omitempty" xml:"most_difference_flight_no,omitempty"`
+	// example:
+	//
+	// 23.9
+	MostDifferencePrice *float64 `json:"most_difference_price,omitempty" xml:"most_difference_price,omitempty"`
+	// example:
+	//
+	// 原因为：xxx
+	MostDifferenceReason *string `json:"most_difference_reason,omitempty" xml:"most_difference_reason,omitempty"`
+	// example:
+	//
+	// 23.9
+	MostPrice *float64 `json:"most_price,omitempty" xml:"most_price,omitempty"`
+	// example:
+	//
+	// 23.9
+	NegotiationCouponFee *float64 `json:"negotiation_coupon_fee,omitempty" xml:"negotiation_coupon_fee,omitempty"`
+	// example:
+	//
+	// 234223423423
+	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// example:
+	//
+	// null
+	OrderStatusDesc *string `json:"order_status_desc,omitempty" xml:"order_status_desc,omitempty"`
+	// example:
+	//
+	// 234324324423
+	OverApplyId *string `json:"over_apply_id,omitempty" xml:"over_apply_id,omitempty"`
+	// example:
+	//
+	// depart_1234
+	PaymentDepartmentId *string `json:"payment_department_id,omitempty" xml:"payment_department_id,omitempty"`
+	// example:
+	//
+	// 运营部
+	PaymentDepartmentName *string `json:"payment_department_name,omitempty" xml:"payment_department_name,omitempty"`
+	// example:
+	//
+	// 开发
+	Position *string `json:"position,omitempty" xml:"position,omitempty"`
+	// example:
+	//
+	// 初级
+	PositionLevel *string `json:"position_level,omitempty" xml:"position_level,omitempty"`
+	// example:
+	//
+	// 4564547
+	PrimaryId *int64 `json:"primary_id,omitempty" xml:"primary_id,omitempty"`
+	// example:
+	//
+	// www123
+	ProcessorOaCode *string `json:"processor_oa_code,omitempty" xml:"processor_oa_code,omitempty"`
+	// example:
+	//
+	// 23423432423
+	ProjectCode *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	// example:
+	//
+	// 运营生产项目
+	ProjectName *string `json:"project_name,omitempty" xml:"project_name,omitempty"`
+	// example:
+	//
+	// 23.9
+	RefundChangeCost *float64 `json:"refund_change_cost,omitempty" xml:"refund_change_cost,omitempty"`
+	// example:
+	//
+	// 23.9
+	RefundFee *float64 `json:"refund_fee,omitempty" xml:"refund_fee,omitempty"`
+	// example:
+	//
+	// 因公退票,因工作原因取消计划
+	RefundResult *string `json:"refund_result,omitempty" xml:"refund_result,omitempty"`
+	// example:
+	//
+	// 线下改签
+	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	// example:
+	//
+	// 是
+	RepeatRefund *string `json:"repeat_refund,omitempty" xml:"repeat_refund,omitempty"`
+	// example:
+	//
+	// 410
+	SealPrice *float64 `json:"seal_price,omitempty" xml:"seal_price,omitempty"`
+	// example:
+	//
+	// [{"voyage": "PKX-CAN", "arrCity": "广州", "arrDate": "2025-03-20", "arrTime": "14:45:00", "depCity": "北京", "depDate": "2025-03-20", "depTime": "11:30:00", "flightNo": "CZ3112", "cabinClass": "经济舱", "voyageName": "北京-广州", "arrCityCode": "BJS", "depCityCode": "CAN", "airlineCompany": "南方航空", "arrAirportCode": "CAN", "arrAirportName": "白云国际机场", "cabinClassCode": "K", "depAirportCode": "PKX", "depAirportName": "大兴国际机场", "airlineCompanyCode": "CZ"}, {"voyage": "CAN-BKK", "arrCity": "曼谷", "arrDate": "2025-03-20", "arrTime": "19:20:00", "depCity": "广州", "depDate": "2025-03-20", "depTime": "17:20:00", "flightNo": "CZ8019", "cabinClass": "经济舱", "voyageName": "广州-曼谷", "arrCityCode": "CAN", "depCityCode": "BKK", "airlineCompany": "南方航空", "arrAirportCode": "BKK", "arrAirportName": "素万那普国际机场", "cabinClassCode": "K", "depAirportCode": "CAN", "depAirportName": "白云国际机场", "airlineCompanyCode": "CZ"}]
+	SegmentList *string `json:"segment_list,omitempty" xml:"segment_list,omitempty"`
+	// example:
+	//
+	// 洲际
+	SegmentType *string `json:"segment_type,omitempty" xml:"segment_type,omitempty"`
+	// example:
+	//
+	// 23.9
+	ServiceFee *float64 `json:"service_fee,omitempty" xml:"service_fee,omitempty"`
+	// example:
+	//
+	// 企业月结
+	SettleTypeDesc *string `json:"settle_type_desc,omitempty" xml:"settle_type_desc,omitempty"`
+	// example:
+	//
+	// 350
+	SettlementFee *float64 `json:"settlement_fee,omitempty" xml:"settlement_fee,omitempty"`
+	// example:
+	//
+	// 6.11
+	SettlementGrantFee *float64 `json:"settlement_grant_fee,omitempty" xml:"settlement_grant_fee,omitempty"`
+	// example:
+	//
+	// 2021-10-08 23:39:01
+	SettlementTime *string `json:"settlement_time,omitempty" xml:"settlement_time,omitempty"`
+	// example:
+	//
+	// 4
+	SettlementType *string `json:"settlement_type,omitempty" xml:"settlement_type,omitempty"`
+	// example:
+	//
+	// sio
+	Sio *string `json:"sio,omitempty" xml:"sio,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 入账成功
+	StatusDesc *string `json:"status_desc,omitempty" xml:"status_desc,omitempty"`
+	// example:
+	//
+	// 123123232
+	SubOrderId *string `json:"sub_order_id,omitempty" xml:"sub_order_id,omitempty"`
+	// example:
+	//
+	// 125.6
+	TaxFee *float64 `json:"tax_fee,omitempty" xml:"tax_fee,omitempty"`
+	// 税率
+	//
+	// example:
+	//
+	// 6%
+	TaxRate *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	// example:
+	//
+	// AB0-****-****-****1011
+	ThirdItineraryId *string `json:"third_itinerary_id,omitempty" xml:"third_itinerary_id,omitempty"`
+	// example:
+	//
+	// 781-6586234234324
+	TicketId *string `json:"ticket_id,omitempty" xml:"ticket_id,omitempty"`
+	// example:
+	//
+	// CAN-KUL-BKK
+	Trade *string `json:"trade,omitempty" xml:"trade,omitempty"`
+	// example:
+	//
+	// 支出
+	TradeActionDesc *string `json:"trade_action_desc,omitempty" xml:"trade_action_desc,omitempty"`
+	// example:
+	//
+	// abc@123.com
+	TravelerEmail *string `json:"traveler_email,omitempty" xml:"traveler_email,omitempty"`
+	// example:
+	//
+	// 54463464
+	TravelerId *string `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
+	// example:
+	//
+	// 326246
+	TravelerJobNo *string `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
+	// example:
+	//
+	// 内部员工
+	TravelerMemberType *string `json:"traveler_member_type,omitempty" xml:"traveler_member_type,omitempty"`
+	// example:
+	//
+	// 内部员工
+	TravelerMemberTypeName *string `json:"traveler_member_type_name,omitempty" xml:"traveler_member_type_name,omitempty"`
+	// example:
+	//
+	// 李四
+	TravelerName *string `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
+	// example:
+	//
+	// 0
+	TripType *int32 `json:"trip_type,omitempty" xml:"trip_type,omitempty"`
+	// example:
+	//
+	// 11
+	VoucherType *int32 `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
+	// example:
+	//
+	// 增值税发票
+	VoucherTypeDesc *string `json:"voucher_type_desc,omitempty" xml:"voucher_type_desc,omitempty"`
+	// example:
+	//
+	// 北京-杭州-上海
+	VoyageName *string `json:"voyage_name,omitempty" xml:"voyage_name,omitempty"`
 }
 
 func (s IeFlightBillSettlementQueryResponseBodyModuleDataList) String() string {

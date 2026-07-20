@@ -32,19 +32,46 @@ type iFlightCreateOrderV2Request interface {
 }
 
 type FlightCreateOrderV2Request struct {
-	AsyncCreateOrderKey  *string `json:"async_create_order_key,omitempty" xml:"async_create_order_key,omitempty"`
-	AsyncCreateOrderMode *bool   `json:"async_create_order_mode,omitempty" xml:"async_create_order_mode,omitempty"`
-	BtripUserId          *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
-	BuyerName            *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
+	// example:
+	//
+	// 异步下单key
+	AsyncCreateOrderKey *string `json:"async_create_order_key,omitempty" xml:"async_create_order_key,omitempty"`
+	// example:
+	//
+	// false
+	AsyncCreateOrderMode *bool `json:"async_create_order_mode,omitempty" xml:"async_create_order_mode,omitempty"`
+	// example:
+	//
+	// ali_00001
+	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	// example:
+	//
+	// 云妹
+	BuyerName *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
 	// This parameter is required.
 	ContactInfo *FlightCreateOrderV2RequestContactInfo `json:"contact_info,omitempty" xml:"contact_info,omitempty" type:"Struct"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cheshiapi
 	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 7fb731deeb4510b86c17e8c8c25740_11
 	OtaItemId *string `json:"ota_item_id,omitempty" xml:"ota_item_id,omitempty"`
 	// This parameter is required.
-	OutOrderId     *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
-	TotalPriceCent *int64  `json:"total_price_cent,omitempty" xml:"total_price_cent,omitempty"`
+	//
+	// example:
+	//
+	// 外部订单号
+	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	// example:
+	//
+	// 1000
+	TotalPriceCent *int64 `json:"total_price_cent,omitempty" xml:"total_price_cent,omitempty"`
 	// This parameter is required.
 	Travelers []*FlightCreateOrderV2RequestTravelers `json:"travelers,omitempty" xml:"travelers,omitempty" type:"Repeated"`
 }
@@ -166,10 +193,22 @@ func (s *FlightCreateOrderV2Request) Validate() error {
 }
 
 type FlightCreateOrderV2RequestContactInfo struct {
-	ContactEmail       *string `json:"contact_email,omitempty" xml:"contact_email,omitempty"`
-	ContactName        *string `json:"contact_name,omitempty" xml:"contact_name,omitempty"`
-	ContactPhone       *string `json:"contact_phone,omitempty" xml:"contact_phone,omitempty"`
-	SendMsgToPassenger *bool   `json:"send_msg_to_passenger,omitempty" xml:"send_msg_to_passenger,omitempty"`
+	// example:
+	//
+	// btrip@example.com
+	ContactEmail *string `json:"contact_email,omitempty" xml:"contact_email,omitempty"`
+	// example:
+	//
+	// 云妹
+	ContactName *string `json:"contact_name,omitempty" xml:"contact_name,omitempty"`
+	// example:
+	//
+	// 131****8888
+	ContactPhone *string `json:"contact_phone,omitempty" xml:"contact_phone,omitempty"`
+	// example:
+	//
+	// true
+	SendMsgToPassenger *bool `json:"send_msg_to_passenger,omitempty" xml:"send_msg_to_passenger,omitempty"`
 }
 
 func (s FlightCreateOrderV2RequestContactInfo) String() string {
@@ -222,34 +261,105 @@ func (s *FlightCreateOrderV2RequestContactInfo) Validate() error {
 
 type FlightCreateOrderV2RequestTravelers struct {
 	// This parameter is required.
-	Birthday   *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	//
+	// example:
+	//
+	// 1991-01-22
+	Birthday *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	// example:
+	//
+	// CN
 	CertNation *string `json:"cert_nation,omitempty" xml:"cert_nation,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 110101********1234
 	CertNo *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
 	// This parameter is required.
-	CertType         *int32  `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
-	CertValidDate    *string `json:"cert_valid_date,omitempty" xml:"cert_valid_date,omitempty"`
-	CostCenterName   *string `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
+	//
+	// example:
+	//
+	// 0
+	CertType *int32 `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
+	// example:
+	//
+	// 2099-03-12
+	CertValidDate *string `json:"cert_valid_date,omitempty" xml:"cert_valid_date,omitempty"`
+	// example:
+	//
+	// 华北成本中心
+	CostCenterName *string `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
+	// example:
+	//
+	// cost_00001
 	CostCenterNumber *string `json:"cost_center_number,omitempty" xml:"cost_center_number,omitempty"`
-	DeptId           *string `json:"dept_id,omitempty" xml:"dept_id,omitempty"`
-	DeptName         *string `json:"dept_name,omitempty" xml:"dept_name,omitempty"`
+	// example:
+	//
+	// dept_00001
+	DeptId *string `json:"dept_id,omitempty" xml:"dept_id,omitempty"`
+	// example:
+	//
+	// 产品部
+	DeptName *string `json:"dept_name,omitempty" xml:"dept_name,omitempty"`
 	// This parameter is required.
-	Gender          *int32  `json:"gender,omitempty" xml:"gender,omitempty"`
-	InvoiceTitle    *string `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
-	Nationality     *string `json:"nationality,omitempty" xml:"nationality,omitempty"`
+	//
+	// example:
+	//
+	// 0
+	Gender *int32 `json:"gender,omitempty" xml:"gender,omitempty"`
+	// example:
+	//
+	// 杭州大河发展有限公司
+	InvoiceTitle *string `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
+	// example:
+	//
+	// 中国
+	Nationality *string `json:"nationality,omitempty" xml:"nationality,omitempty"`
+	// example:
+	//
+	// CN
 	NationalityCode *string `json:"nationality_code,omitempty" xml:"nationality_code,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 销售部测试
 	PassengerName *string `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
 	PassengerType *int32 `json:"passenger_type,omitempty" xml:"passenger_type,omitempty"`
 	// This parameter is required.
-	Phone        *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	ProjectCode  *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	//
+	// example:
+	//
+	// 131****8888
+	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	// example:
+	//
+	// pro_0001
+	ProjectCode *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	// example:
+	//
+	// 华北项目一
 	ProjectTitle *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
-	TaxNumber    *string `json:"tax_number,omitempty" xml:"tax_number,omitempty"`
+	// example:
+	//
+	// R19235929348590
+	TaxNumber *string `json:"tax_number,omitempty" xml:"tax_number,omitempty"`
 	// This parameter is required.
-	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserType *int32  `json:"user_type,omitempty" xml:"user_type,omitempty"`
+	//
+	// example:
+	//
+	// 18155711459129970552412
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// example:
+	//
+	// 0
+	UserType *int32 `json:"user_type,omitempty" xml:"user_type,omitempty"`
 }
 
 func (s FlightCreateOrderV2RequestTravelers) String() string {

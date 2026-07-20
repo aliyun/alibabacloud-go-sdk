@@ -22,19 +22,28 @@ type iEstimatedPriceQueryV2ResponseBody interface {
 }
 
 type EstimatedPriceQueryV2ResponseBody struct {
+  // The status code.
+  // 
   // example:
   // 
   // 0
   Code *int32 `json:"code,omitempty" xml:"code,omitempty"`
+  // The response data.
   Module []*EstimatedPriceQueryV2ResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
+  // The unique identifier of the request.
+  // 
   // example:
   // 
   // A5009956-1077-52FB-B520-EA8C7E91D722
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+  // Indicates whether the request was successful.
+  // 
   // example:
   // 
   // true
   Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+  // traceId
+  // 
   // example:
   // 
   // 210bcc3a16583004579056128d33d7
@@ -108,11 +117,16 @@ func (s *EstimatedPriceQueryV2ResponseBody) Validate() error {
 }
 
 type EstimatedPriceQueryV2ResponseBodyModule struct {
+  // The category, such as flight, hotel, or train.
+  // 
   // example:
   // 
   // flight
   BizType *string `json:"biz_type,omitempty" xml:"biz_type,omitempty"`
+  // The price map. Key: min and max.
   PriceMap map[string]*ModulePriceMapValue `json:"price_map,omitempty" xml:"price_map,omitempty"`
+  // The type, such as economy class, business class, first class, G/D train, other, or travel standard.
+  // 
   // example:
   // 
   // 经济舱

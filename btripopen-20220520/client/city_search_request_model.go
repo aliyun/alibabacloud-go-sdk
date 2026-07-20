@@ -15,6 +15,10 @@ type iCitySearchRequest interface {
 
 type CitySearchRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 杭州
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
 }
 

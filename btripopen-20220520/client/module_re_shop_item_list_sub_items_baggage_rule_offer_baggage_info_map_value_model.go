@@ -70,35 +70,190 @@ type iModuleReShopItemListSubItemsBaggageRuleOfferBaggageInfoMapValue interface 
 }
 
 type ModuleReShopItemListSubItemsBaggageRuleOfferBaggageInfoMapValue struct {
-	StartCityCode               *string `json:"start_city_code,omitempty" xml:"start_city_code,omitempty"`
-	EndCityCode                 *string `json:"end_city_code,omitempty" xml:"end_city_code,omitempty"`
-	CarryFreePc                 *int32  `json:"carry_free_pc,omitempty" xml:"carry_free_pc,omitempty"`
-	CarryBagWeight              *int32  `json:"carry_bag_weight,omitempty" xml:"carry_bag_weight,omitempty"`
-	CarryOnWeightUnit           *string `json:"carry_on_weight_unit,omitempty" xml:"carry_on_weight_unit,omitempty"`
-	CarryBagSize                *string `json:"carry_bag_size,omitempty" xml:"carry_bag_size,omitempty"`
-	IsAllCarryBagWeight         *bool   `json:"is_all_carry_bag_weight,omitempty" xml:"is_all_carry_bag_weight,omitempty"`
-	TotalPcs                    *int64  `json:"total_pcs,omitempty" xml:"total_pcs,omitempty"`
-	TotalWeight                 *int64  `json:"total_weight,omitempty" xml:"total_weight,omitempty"`
-	CarryUnknown                *bool   `json:"carry_unknown,omitempty" xml:"carry_unknown,omitempty"`
-	CarryLength                 *int32  `json:"carry_length,omitempty" xml:"carry_length,omitempty"`
-	CarryWidth                  *int32  `json:"carry_width,omitempty" xml:"carry_width,omitempty"`
-	CarryHeight                 *int32  `json:"carry_height,omitempty" xml:"carry_height,omitempty"`
-	CarrySumOfLengthWidthHeight *int32  `json:"carry_sum_of_length_width_height,omitempty" xml:"carry_sum_of_length_width_height,omitempty"`
-	FreePcs                     *int64  `json:"free_pcs,omitempty" xml:"free_pcs,omitempty"`
-	BaggageWeight               *int64  `json:"baggage_weight,omitempty" xml:"baggage_weight,omitempty"`
-	BaggageUnit                 *string `json:"baggage_unit,omitempty" xml:"baggage_unit,omitempty"`
-	BaggageSize                 *string `json:"baggage_size,omitempty" xml:"baggage_size,omitempty"`
-	AllWeight                   *bool   `json:"all_weight,omitempty" xml:"all_weight,omitempty"`
-	Length                      *int32  `json:"length,omitempty" xml:"length,omitempty"`
-	Width                       *int32  `json:"width,omitempty" xml:"width,omitempty"`
-	Height                      *int32  `json:"height,omitempty" xml:"height,omitempty"`
-	SumOfLengthWidthHeight      *int32  `json:"sum_of_length_width_height,omitempty" xml:"sum_of_length_width_height,omitempty"`
-	Unknown                     *bool   `json:"unknown,omitempty" xml:"unknown,omitempty"`
-	CnDesc                      *string `json:"cn_desc,omitempty" xml:"cn_desc,omitempty"`
-	EnDesc                      *string `json:"en_desc,omitempty" xml:"en_desc,omitempty"`
-	Attribute                   *string `json:"attribute,omitempty" xml:"attribute,omitempty"`
-	BaggagePrice                *int32  `json:"baggage_price,omitempty" xml:"baggage_price,omitempty"`
-	CarryOnBaggageTips          *string `json:"carry_on_baggage_tips,omitempty" xml:"carry_on_baggage_tips,omitempty"`
+	// The departure city code.
+	//
+	// example:
+	//
+	// BJS
+	StartCityCode *string `json:"start_city_code,omitempty" xml:"start_city_code,omitempty"`
+	// The arrival city code.
+	//
+	// example:
+	//
+	// HGH
+	EndCityCode *string `json:"end_city_code,omitempty" xml:"end_city_code,omitempty"`
+	// The number of carry-on baggage pieces.
+	//
+	// example:
+	//
+	// 1
+	CarryFreePc *int32 `json:"carry_free_pc,omitempty" xml:"carry_free_pc,omitempty"`
+	// The carry-on baggage weight.
+	//
+	// example:
+	//
+	// 20
+	CarryBagWeight *int32 `json:"carry_bag_weight,omitempty" xml:"carry_bag_weight,omitempty"`
+	// The weight unit of carry-on baggage.
+	//
+	// example:
+	//
+	// KG
+	CarryOnWeightUnit *string `json:"carry_on_weight_unit,omitempty" xml:"carry_on_weight_unit,omitempty"`
+	// The carry-on baggage size.
+	//
+	// example:
+	//
+	// 20*40*55CM、三边之和不超过115CM
+	CarryBagSize *string `json:"carry_bag_size,omitempty" xml:"carry_bag_size,omitempty"`
+	// Indicates whether the carry-on baggage weight represents the total weight.
+	//
+	// example:
+	//
+	// false
+	IsAllCarryBagWeight *bool `json:"is_all_carry_bag_weight,omitempty" xml:"is_all_carry_bag_weight,omitempty"`
+	// The total number of carry-on and checked baggage pieces. This field is for domestic flights only.
+	//
+	// example:
+	//
+	// 1
+	TotalPcs *int64 `json:"total_pcs,omitempty" xml:"total_pcs,omitempty"`
+	// The total weight of carry-on and checked baggage. This field is for domestic flights only.
+	//
+	// example:
+	//
+	// 20
+	TotalWeight *int64 `json:"total_weight,omitempty" xml:"total_weight,omitempty"`
+	// The unknown flag for carry-on baggage.
+	//
+	// example:
+	//
+	// false
+	CarryUnknown *bool `json:"carry_unknown,omitempty" xml:"carry_unknown,omitempty"`
+	// The length of carry-on baggage.
+	//
+	// example:
+	//
+	// 20
+	CarryLength *int32 `json:"carry_length,omitempty" xml:"carry_length,omitempty"`
+	// The width of carry-on baggage.
+	//
+	// example:
+	//
+	// 40
+	CarryWidth *int32 `json:"carry_width,omitempty" xml:"carry_width,omitempty"`
+	// The height of carry-on baggage.
+	//
+	// example:
+	//
+	// 55
+	CarryHeight *int32 `json:"carry_height,omitempty" xml:"carry_height,omitempty"`
+	// The sum of length, width, and height of carry-on baggage.
+	//
+	// example:
+	//
+	// 115
+	CarrySumOfLengthWidthHeight *int32 `json:"carry_sum_of_length_width_height,omitempty" xml:"carry_sum_of_length_width_height,omitempty"`
+	// The number of checked baggage pieces.
+	//
+	// example:
+	//
+	// 1
+	FreePcs *int64 `json:"free_pcs,omitempty" xml:"free_pcs,omitempty"`
+	// The maximum weight of checked baggage, in pounds or kilograms.
+	//
+	// example:
+	//
+	// 20
+	BaggageWeight *int64 `json:"baggage_weight,omitempty" xml:"baggage_weight,omitempty"`
+	// The weight unit of checked baggage.
+	//
+	// example:
+	//
+	// KG
+	BaggageUnit *string `json:"baggage_unit,omitempty" xml:"baggage_unit,omitempty"`
+	// The checked baggage size.
+	//
+	// example:
+	//
+	// 长宽高之和≤158CM
+	BaggageSize *string `json:"baggage_size,omitempty" xml:"baggage_size,omitempty"`
+	// Indicates whether the checked baggage weight represents the total weight of all pieces.
+	//
+	// example:
+	//
+	// true
+	AllWeight *bool `json:"all_weight,omitempty" xml:"all_weight,omitempty"`
+	// The length of checked baggage.
+	//
+	// example:
+	//
+	// 20
+	Length *int32 `json:"length,omitempty" xml:"length,omitempty"`
+	// The width of checked baggage.
+	//
+	// example:
+	//
+	// 40
+	Width *int32 `json:"width,omitempty" xml:"width,omitempty"`
+	// The height of checked baggage.
+	//
+	// example:
+	//
+	// 55
+	Height *int32 `json:"height,omitempty" xml:"height,omitempty"`
+	// The sum of length, width, and height of checked baggage.
+	//
+	// example:
+	//
+	// 115
+	SumOfLengthWidthHeight *int32 `json:"sum_of_length_width_height,omitempty" xml:"sum_of_length_width_height,omitempty"`
+	// The unknown baggage flag.
+	//
+	// example:
+	//
+	// false
+	Unknown *bool `json:"unknown,omitempty" xml:"unknown,omitempty"`
+	// The Chinese description of the baggage allowance.
+	//
+	// example:
+	//
+	// 行李额中文描述
+	CnDesc *string `json:"cn_desc,omitempty" xml:"cn_desc,omitempty"`
+	// The English description of the baggage allowance.
+	//
+	// example:
+	//
+	// 行李额英文描述
+	EnDesc *string `json:"en_desc,omitempty" xml:"en_desc,omitempty"`
+	// The extended attributes in JSON format. For domestic flights, this field stores multiple text fields with the following field names:
+	//
+	// - label: label
+	//
+	// - excessInstruction: excess baggage instructions
+	//
+	// - babyCar: baby stroller instructions
+	//
+	// - phoneText: SMS text
+	//
+	// - defaultRule: fallback rule
+	//
+	// example:
+	//
+	// {"defaultRule":""}
+	Attribute *string `json:"attribute,omitempty" xml:"attribute,omitempty"`
+	// The baggage price.
+	//
+	// example:
+	//
+	// 20
+	BaggagePrice *int32 `json:"baggage_price,omitempty" xml:"baggage_price,omitempty"`
+	// The carry-on baggage tips.
+	//
+	// example:
+	//
+	// 随身行李提示信息
+	CarryOnBaggageTips *string `json:"carry_on_baggage_tips,omitempty" xml:"carry_on_baggage_tips,omitempty"`
 }
 
 func (s ModuleReShopItemListSubItemsBaggageRuleOfferBaggageInfoMapValue) String() string {

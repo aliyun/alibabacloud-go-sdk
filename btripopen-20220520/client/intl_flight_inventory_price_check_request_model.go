@@ -33,10 +33,20 @@ type IntlFlightInventoryPriceCheckRequest struct {
 	// example:
 	//
 	// ZHANG/SAN
-	BuyerName  *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
-	IsvName    *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
-	OrderPrice *int64  `json:"order_price,omitempty" xml:"order_price,omitempty"`
+	BuyerName *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
+	// example:
+	//
+	// ZJTD
+	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	// example:
+	//
+	// 102000
+	OrderPrice *int64 `json:"order_price,omitempty" xml:"order_price,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 22111acaf9ea47c09ed0db6abc45be2d_0
 	OtaItemId *string `json:"ota_item_id,omitempty" xml:"ota_item_id,omitempty"`
 	// This parameter is required.
 	PassengerList []*IntlFlightInventoryPriceCheckRequestPassengerList `json:"passenger_list,omitempty" xml:"passenger_list,omitempty" type:"Repeated"`
@@ -122,7 +132,7 @@ type IntlFlightInventoryPriceCheckRequestPassengerList struct {
 	//
 	// example:
 	//
-	// 1998-12-28
+	// 2020-01-01
 	Birthday *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
 	// This parameter is required.
 	CertInfo *IntlFlightInventoryPriceCheckRequestPassengerListCertInfo `json:"cert_info,omitempty" xml:"cert_info,omitempty" type:"Struct"`
@@ -130,7 +140,7 @@ type IntlFlightInventoryPriceCheckRequestPassengerList struct {
 	//
 	// example:
 	//
-	// ZHANG/SAN
+	// BRIDGE/KING
 	FullName *string `json:"full_name,omitempty" xml:"full_name,omitempty"`
 	// This parameter is required.
 	//
@@ -147,25 +157,28 @@ type IntlFlightInventoryPriceCheckRequestPassengerList struct {
 	// example:
 	//
 	// 中国大陆
-	Nationality     *string `json:"nationality,omitempty" xml:"nationality,omitempty"`
+	Nationality *string `json:"nationality,omitempty" xml:"nationality,omitempty"`
+	// example:
+	//
+	// CN
 	NationalityCode *string `json:"nationality_code,omitempty" xml:"nationality_code,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 13100008888
+	// 18012341234
 	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 0
+	// 1
 	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 12292812036903456
+	// 10001
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 	// example:
 	//
@@ -291,13 +304,24 @@ func (s *IntlFlightInventoryPriceCheckRequestPassengerList) Validate() error {
 
 type IntlFlightInventoryPriceCheckRequestPassengerListCertInfo struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// H123456
 	CertNo *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
 	// This parameter is required.
-	CertType      *int32  `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
+	//
+	// example:
+	//
+	// 1
+	CertType *int32 `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
+	// example:
+	//
+	// 2033-01-09
 	CertValidDate *string `json:"cert_valid_date,omitempty" xml:"cert_valid_date,omitempty"`
 	// example:
 	//
-	// 中国大陆
+	// CN
 	IssuePlace *string `json:"issue_place,omitempty" xml:"issue_place,omitempty"`
 }
 

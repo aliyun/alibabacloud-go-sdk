@@ -24,12 +24,31 @@ type iFlightItineraryScanQueryResponseBody interface {
 }
 
 type FlightItineraryScanQueryResponseBody struct {
-	Code      *string                                     `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                                     `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *FlightItineraryScanQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                                     `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                                       `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                                     `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 成功
+	Message *string                                     `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *FlightItineraryScanQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// requestId
+	//
+	// example:
+	//
+	// A5009956-1077-52FB-B520-EA8C7E91D722
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	//
+	// example:
+	//
+	// 21041ce316577904808056433edbb2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s FlightItineraryScanQueryResponseBody) String() string {
@@ -104,11 +123,23 @@ func (s *FlightItineraryScanQueryResponseBody) Validate() error {
 }
 
 type FlightItineraryScanQueryResponseBodyModule struct {
-	Items     []*FlightItineraryScanQueryResponseBodyModuleItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	PageNo    *int32                                             `json:"page_no,omitempty" xml:"page_no,omitempty"`
-	PageSize  *int32                                             `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	TotalPage *int32                                             `json:"total_page,omitempty" xml:"total_page,omitempty"`
-	TotalSize *int32                                             `json:"total_size,omitempty" xml:"total_size,omitempty"`
+	Items []*FlightItineraryScanQueryResponseBodyModuleItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"page_no,omitempty" xml:"page_no,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// example:
+	//
+	// 2
+	TotalPage *int32 `json:"total_page,omitempty" xml:"total_page,omitempty"`
+	// example:
+	//
+	// 30
+	TotalSize *int32 `json:"total_size,omitempty" xml:"total_size,omitempty"`
 }
 
 func (s FlightItineraryScanQueryResponseBodyModule) String() string {
@@ -178,40 +209,152 @@ func (s *FlightItineraryScanQueryResponseBodyModule) Validate() error {
 }
 
 type FlightItineraryScanQueryResponseBodyModuleItems struct {
-	AgentCode      *string                                                   `json:"agent_code,omitempty" xml:"agent_code,omitempty"`
-	ApplyId        *string                                                   `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	BillDate       *string                                                   `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
-	BlueOrRed      *int32                                                    `json:"blue_or_red,omitempty" xml:"blue_or_red,omitempty"`
-	Build          *string                                                   `json:"build,omitempty" xml:"build,omitempty"`
-	CostCenter     *string                                                   `json:"cost_center,omitempty" xml:"cost_center,omitempty"`
-	Department     *string                                                   `json:"department,omitempty" xml:"department,omitempty"`
-	Flights        []*FlightItineraryScanQueryResponseBodyModuleItemsFlights `json:"flights,omitempty" xml:"flights,omitempty" type:"Repeated"`
-	FuelSurcharge  *string                                                   `json:"fuel_surcharge,omitempty" xml:"fuel_surcharge,omitempty"`
-	Id             *string                                                   `json:"id,omitempty" xml:"id,omitempty"`
-	Insurance      *string                                                   `json:"insurance,omitempty" xml:"insurance,omitempty"`
-	InvoiceTitle   *string                                                   `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
-	InvoiceType    *int32                                                    `json:"invoice_type,omitempty" xml:"invoice_type,omitempty"`
-	IssueCompany   *string                                                   `json:"issue_company,omitempty" xml:"issue_company,omitempty"`
-	IssueDate      *string                                                   `json:"issue_date,omitempty" xml:"issue_date,omitempty"`
-	ItineraryNum   *string                                                   `json:"itinerary_num,omitempty" xml:"itinerary_num,omitempty"`
-	OfdOssUrl      *string                                                   `json:"ofd_oss_url,omitempty" xml:"ofd_oss_url,omitempty"`
-	OrderId        *int64                                                    `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	OssUrl         *string                                                   `json:"oss_url,omitempty" xml:"oss_url,omitempty"`
-	OtherTaxes     *string                                                   `json:"other_taxes,omitempty" xml:"other_taxes,omitempty"`
-	PassengerName  *string                                                   `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
-	PdfOssUrl      *string                                                   `json:"pdf_oss_url,omitempty" xml:"pdf_oss_url,omitempty"`
-	Project        *string                                                   `json:"project,omitempty" xml:"project,omitempty"`
-	PromptMessage  *string                                                   `json:"prompt_message,omitempty" xml:"prompt_message,omitempty"`
-	PurchaserName  *string                                                   `json:"purchaser_name,omitempty" xml:"purchaser_name,omitempty"`
-	PurchaserTaxNo *string                                                   `json:"purchaser_tax_no,omitempty" xml:"purchaser_tax_no,omitempty"`
-	PurchaserType  *int32                                                    `json:"purchaser_type,omitempty" xml:"purchaser_type,omitempty"`
-	TaxAmount      *string                                                   `json:"tax_amount,omitempty" xml:"tax_amount,omitempty"`
-	TaxRate        *string                                                   `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
-	TicketNo       *string                                                   `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
-	TicketPrice    *string                                                   `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
-	TotalPrice     *string                                                   `json:"total_price,omitempty" xml:"total_price,omitempty"`
-	ValidationCode *string                                                   `json:"validation_code,omitempty" xml:"validation_code,omitempty"`
-	XmlOssUrl      *string                                                   `json:"xml_oss_url,omitempty" xml:"xml_oss_url,omitempty"`
+	// 销售单位代号
+	//
+	// example:
+	//
+	// SIA25608336893
+	AgentCode *string `json:"agent_code,omitempty" xml:"agent_code,omitempty"`
+	// example:
+	//
+	// BH-507119434047594496
+	ApplyId *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	// example:
+	//
+	// 2022-12-01
+	BillDate *string `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
+	// example:
+	//
+	// 1
+	BlueOrRed *int32 `json:"blue_or_red,omitempty" xml:"blue_or_red,omitempty"`
+	// example:
+	//
+	// 50
+	Build *string `json:"build,omitempty" xml:"build,omitempty"`
+	// example:
+	//
+	// 测试成本中心
+	CostCenter *string `json:"cost_center,omitempty" xml:"cost_center,omitempty"`
+	// example:
+	//
+	// 测试公司-测试部门
+	Department *string `json:"department,omitempty" xml:"department,omitempty"`
+	// 机票行程明细
+	Flights []*FlightItineraryScanQueryResponseBodyModuleItemsFlights `json:"flights,omitempty" xml:"flights,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 120
+	FuelSurcharge *string `json:"fuel_surcharge,omitempty" xml:"fuel_surcharge,omitempty"`
+	// UK
+	//
+	// example:
+	//
+	// 30
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 0
+	Insurance *string `json:"insurance,omitempty" xml:"insurance,omitempty"`
+	// example:
+	//
+	// 测试发票抬头
+	InvoiceTitle *string `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
+	// example:
+	//
+	// 1
+	InvoiceType *int32 `json:"invoice_type,omitempty" xml:"invoice_type,omitempty"`
+	// 填开单位
+	//
+	// example:
+	//
+	// 有限公司
+	IssueCompany *string `json:"issue_company,omitempty" xml:"issue_company,omitempty"`
+	// 填开日期
+	//
+	// example:
+	//
+	// 2019-02-28
+	IssueDate *string `json:"issue_date,omitempty" xml:"issue_date,omitempty"`
+	// example:
+	//
+	// 6666666666
+	ItineraryNum *string `json:"itinerary_num,omitempty" xml:"itinerary_num,omitempty"`
+	// example:
+	//
+	// https://www.testurl.com
+	OfdOssUrl *string `json:"ofd_oss_url,omitempty" xml:"ofd_oss_url,omitempty"`
+	// example:
+	//
+	// 4801105714092
+	OrderId *int64 `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// example:
+	//
+	// https://www.testurl.com
+	OssUrl *string `json:"oss_url,omitempty" xml:"oss_url,omitempty"`
+	// example:
+	//
+	// 0
+	OtherTaxes *string `json:"other_taxes,omitempty" xml:"other_taxes,omitempty"`
+	// example:
+	//
+	// 张三
+	PassengerName *string `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
+	// example:
+	//
+	// https://www.testurl.com
+	PdfOssUrl *string `json:"pdf_oss_url,omitempty" xml:"pdf_oss_url,omitempty"`
+	// example:
+	//
+	// 测试项目
+	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	// 提示信息
+	//
+	// example:
+	//
+	// 西安始发国际在T3国内在13
+	PromptMessage *string `json:"prompt_message,omitempty" xml:"prompt_message,omitempty"`
+	// example:
+	//
+	// 测试购方名称
+	PurchaserName *string `json:"purchaser_name,omitempty" xml:"purchaser_name,omitempty"`
+	// example:
+	//
+	// 91441111111111111S
+	PurchaserTaxNo *string `json:"purchaser_tax_no,omitempty" xml:"purchaser_tax_no,omitempty"`
+	// example:
+	//
+	// 1
+	PurchaserType *int32 `json:"purchaser_type,omitempty" xml:"purchaser_type,omitempty"`
+	// example:
+	//
+	// 108.17
+	TaxAmount *string `json:"tax_amount,omitempty" xml:"tax_amount,omitempty"`
+	// example:
+	//
+	// 9%
+	TaxRate *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	// example:
+	//
+	// 784-1111111111
+	TicketNo *string `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
+	// example:
+	//
+	// 1190
+	TicketPrice *string `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	// example:
+	//
+	// 1360
+	TotalPrice *string `json:"total_price,omitempty" xml:"total_price,omitempty"`
+	// 验证码
+	//
+	// example:
+	//
+	// 9817
+	ValidationCode *string `json:"validation_code,omitempty" xml:"validation_code,omitempty"`
+	// example:
+	//
+	// https://www.testurl.com
+	XmlOssUrl *string `json:"xml_oss_url,omitempty" xml:"xml_oss_url,omitempty"`
 }
 
 func (s FlightItineraryScanQueryResponseBodyModuleItems) String() string {
@@ -542,18 +685,78 @@ func (s *FlightItineraryScanQueryResponseBodyModuleItems) Validate() error {
 }
 
 type FlightItineraryScanQueryResponseBodyModuleItemsFlights struct {
-	ArrivalStation       *string `json:"arrival_station,omitempty" xml:"arrival_station,omitempty"`
-	CabinClass           *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
-	Carrier              *string `json:"carrier,omitempty" xml:"carrier,omitempty"`
-	DepartureStation     *string `json:"departure_station,omitempty" xml:"departure_station,omitempty"`
-	FlightDate           *string `json:"flight_date,omitempty" xml:"flight_date,omitempty"`
-	FlightNumber         *string `json:"flight_number,omitempty" xml:"flight_number,omitempty"`
-	FlightTime           *string `json:"flight_time,omitempty" xml:"flight_time,omitempty"`
+	// 航班至
+	//
+	// example:
+	//
+	// 西安咸阳
+	ArrivalStation *string `json:"arrival_station,omitempty" xml:"arrival_station,omitempty"`
+	// 座位等级
+	//
+	// example:
+	//
+	// M
+	CabinClass *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	// 承运人
+	//
+	// example:
+	//
+	// 东航
+	Carrier *string `json:"carrier,omitempty" xml:"carrier,omitempty"`
+	// 航班从
+	//
+	// example:
+	//
+	// 长春
+	DepartureStation *string `json:"departure_station,omitempty" xml:"departure_station,omitempty"`
+	// 日期
+	//
+	// example:
+	//
+	// 2018-11-18
+	FlightDate *string `json:"flight_date,omitempty" xml:"flight_date,omitempty"`
+	// 航班号
+	//
+	// example:
+	//
+	// MU2271
+	FlightNumber *string `json:"flight_number,omitempty" xml:"flight_number,omitempty"`
+	// 时间
+	//
+	// example:
+	//
+	// 18:25
+	FlightTime *string `json:"flight_time,omitempty" xml:"flight_time,omitempty"`
+	// 免费行李
+	//
+	// example:
+	//
+	// 20K
 	FreeBaggageAllowance *string `json:"free_baggage_allowance,omitempty" xml:"free_baggage_allowance,omitempty"`
-	Index                *string `json:"index,omitempty" xml:"index,omitempty"`
-	SeatClass            *string `json:"seat_class,omitempty" xml:"seat_class,omitempty"`
-	ValidFromDate        *string `json:"valid_from_date,omitempty" xml:"valid_from_date,omitempty"`
-	ValidToDate          *string `json:"valid_to_date,omitempty" xml:"valid_to_date,omitempty"`
+	// 行号
+	//
+	// example:
+	//
+	// 1
+	Index *string `json:"index,omitempty" xml:"index,omitempty"`
+	// 客票级别
+	//
+	// example:
+	//
+	// M
+	SeatClass *string `json:"seat_class,omitempty" xml:"seat_class,omitempty"`
+	// 客票生效日期
+	//
+	// example:
+	//
+	// 2023-01-01
+	ValidFromDate *string `json:"valid_from_date,omitempty" xml:"valid_from_date,omitempty"`
+	// 有效截止日期
+	//
+	// example:
+	//
+	// 2023-01-01
+	ValidToDate *string `json:"valid_to_date,omitempty" xml:"valid_to_date,omitempty"`
 }
 
 func (s FlightItineraryScanQueryResponseBodyModuleItemsFlights) String() string {

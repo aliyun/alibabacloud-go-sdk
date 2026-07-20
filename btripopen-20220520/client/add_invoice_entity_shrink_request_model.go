@@ -16,9 +16,17 @@ type iAddInvoiceEntityShrinkRequest interface {
 }
 
 type AddInvoiceEntityShrinkRequest struct {
+	// The list of entities.
+	//
 	// This parameter is required.
 	EntitiesShrink *string `json:"entities,omitempty" xml:"entities,omitempty"`
+	// The third-party invoice ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 4854821
 	ThirdPartId *string `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
 }
 

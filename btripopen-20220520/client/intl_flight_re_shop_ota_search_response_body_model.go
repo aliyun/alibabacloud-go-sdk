@@ -24,23 +24,34 @@ type iIntlFlightReShopOtaSearchResponseBody interface {
 }
 
 type IntlFlightReShopOtaSearchResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// 成功
-	Message *string                                      `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *IntlFlightReShopOtaSearchResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The data.
+	Module *IntlFlightReShopOtaSearchResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 407543AF-2BD9-5890-BD92-9D1AB7218B27
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The global trace ID of the request, typically used for troubleshooting.
+	//
 	// example:
 	//
 	// 210bc4b116835992457938931db4de
@@ -119,11 +130,28 @@ func (s *IntlFlightReShopOtaSearchResponseBody) Validate() error {
 }
 
 type IntlFlightReShopOtaSearchResponseBodyModule struct {
+	// The flight journey information.
 	FlightJourneyInfos []*IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfos `json:"flight_journey_infos,omitempty" xml:"flight_journey_infos,omitempty" type:"Repeated"`
-	NeedContinue       *bool                                                            `json:"need_continue,omitempty" xml:"need_continue,omitempty"`
-	NextReqWaitTime    *int32                                                           `json:"next_req_wait_time,omitempty" xml:"next_req_wait_time,omitempty"`
-	ReShopItemList     []*IntlFlightReShopOtaSearchResponseBodyModuleReShopItemList     `json:"re_shop_item_list,omitempty" xml:"re_shop_item_list,omitempty" type:"Repeated"`
-	Token              *string                                                          `json:"token,omitempty" xml:"token,omitempty"`
+	// 是否需要继续轮询
+	//
+	// example:
+	//
+	// false
+	NeedContinue *bool `json:"need_continue,omitempty" xml:"need_continue,omitempty"`
+	// 下次搜索等待时间，单位毫秒
+	//
+	// example:
+	//
+	// 2000
+	NextReqWaitTime *int32 `json:"next_req_wait_time,omitempty" xml:"next_req_wait_time,omitempty"`
+	// The list of quoted items.
+	ReShopItemList []*IntlFlightReShopOtaSearchResponseBodyModuleReShopItemList `json:"re_shop_item_list,omitempty" xml:"re_shop_item_list,omitempty" type:"Repeated"`
+	// The query record token used for external polling.
+	//
+	// example:
+	//
+	// 0305b8203a7767626f911d97a91a9473
+	Token *string `json:"token,omitempty" xml:"token,omitempty"`
 }
 
 func (s IntlFlightReShopOtaSearchResponseBodyModule) String() string {
@@ -202,16 +230,62 @@ func (s *IntlFlightReShopOtaSearchResponseBodyModule) Validate() error {
 }
 
 type IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfos struct {
-	ArrCityCode        *string                                                                            `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
-	ArrCityName        *string                                                                            `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
-	ArrTime            *string                                                                            `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
-	DepCityCode        *string                                                                            `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
-	DepCityName        *string                                                                            `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
-	DepTime            *string                                                                            `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
-	Duration           *int32                                                                             `json:"duration,omitempty" xml:"duration,omitempty"`
+	// The three-letter code of the arrival city.
+	//
+	// example:
+	//
+	// HGH
+	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	// The name of the arrival city.
+	//
+	// example:
+	//
+	// 杭州
+	ArrCityName *string `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
+	// The arrival time. Format: yyyy-MM-dd HH:mm.
+	//
+	// example:
+	//
+	// 2025-12-28 15:25
+	ArrTime *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	// The three-letter code of the departure city.
+	//
+	// example:
+	//
+	// BJS
+	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	// The name of the departure city.
+	//
+	// example:
+	//
+	// 北京
+	DepCityName *string `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
+	// The departure time. Format: yyyy-MM-dd HH:mm.
+	//
+	// example:
+	//
+	// 2025-12-28 12:25
+	DepTime *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	// The total duration in minutes.
+	//
+	// example:
+	//
+	// 180
+	Duration *int32 `json:"duration,omitempty" xml:"duration,omitempty"`
+	// The flight segment information.
 	FlightSegmentInfos []*IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfos `json:"flight_segment_infos,omitempty" xml:"flight_segment_infos,omitempty" type:"Repeated"`
-	JourneyIndex       *int32                                                                             `json:"journey_index,omitempty" xml:"journey_index,omitempty"`
-	TransferTime       *int32                                                                             `json:"transfer_time,omitempty" xml:"transfer_time,omitempty"`
+	// The journey index, starting from 0.
+	//
+	// example:
+	//
+	// 0
+	JourneyIndex *int32 `json:"journey_index,omitempty" xml:"journey_index,omitempty"`
+	// The transfer duration.
+	//
+	// example:
+	//
+	// 0
+	TransferTime *int32 `json:"transfer_time,omitempty" xml:"transfer_time,omitempty"`
 }
 
 func (s IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfos) String() string {
@@ -326,41 +400,180 @@ func (s *IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfos) Validate
 }
 
 type IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfos struct {
-	AirlineInfo          *IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosAirlineInfo          `json:"airline_info,omitempty" xml:"airline_info,omitempty" type:"Struct"`
-	ArrAirportInfo       *IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosArrAirportInfo       `json:"arr_airport_info,omitempty" xml:"arr_airport_info,omitempty" type:"Struct"`
-	ArrCityCode          *string                                                                                              `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
-	ArrCityName          *string                                                                                              `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
-	ArrTime              *string                                                                                              `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
-	ArrTimeUTC           *string                                                                                              `json:"arr_time_u_t_c,omitempty" xml:"arr_time_u_t_c,omitempty"`
-	DepAirportInfo       *IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosDepAirportInfo       `json:"dep_airport_info,omitempty" xml:"dep_airport_info,omitempty" type:"Struct"`
-	DepCityCode          *string                                                                                              `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
-	DepCityName          *string                                                                                              `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
-	DepTime              *string                                                                                              `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
-	DepTimeUTC           *string                                                                                              `json:"dep_time_u_t_c,omitempty" xml:"dep_time_u_t_c,omitempty"`
-	Duration             *int32                                                                                               `json:"duration,omitempty" xml:"duration,omitempty"`
-	FlightNo             *string                                                                                              `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
-	FlightShareInfo      *IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightShareInfo      `json:"flight_share_info,omitempty" xml:"flight_share_info,omitempty" type:"Struct"`
-	FlightSize           *string                                                                                              `json:"flight_size,omitempty" xml:"flight_size,omitempty"`
-	FlightStopInfoList   []*IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightStopInfoList `json:"flight_stop_info_list,omitempty" xml:"flight_stop_info_list,omitempty" type:"Repeated"`
-	FlightType           *string                                                                                              `json:"flight_type,omitempty" xml:"flight_type,omitempty"`
-	JourneyIndex         *int32                                                                                               `json:"journey_index,omitempty" xml:"journey_index,omitempty"`
-	LuggageDirectInfo    *IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosLuggageDirectInfo    `json:"luggage_direct_info,omitempty" xml:"luggage_direct_info,omitempty" type:"Struct"`
-	Manufacturer         *string                                                                                              `json:"manufacturer,omitempty" xml:"manufacturer,omitempty"`
-	Meal                 *int32                                                                                               `json:"meal,omitempty" xml:"meal,omitempty"`
-	MealDesc             *string                                                                                              `json:"meal_desc,omitempty" xml:"meal_desc,omitempty"`
-	Miles                *int32                                                                                               `json:"miles,omitempty" xml:"miles,omitempty"`
-	OnTimeRate           *string                                                                                              `json:"on_time_rate,omitempty" xml:"on_time_rate,omitempty"`
-	OneMore              *int32                                                                                               `json:"one_more,omitempty" xml:"one_more,omitempty"`
-	OneMoreShow          *string                                                                                              `json:"one_more_show,omitempty" xml:"one_more_show,omitempty"`
-	OtherInfo            *IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosOtherInfo            `json:"other_info,omitempty" xml:"other_info,omitempty" type:"Struct"`
-	SegmentIndex         *int32                                                                                               `json:"segment_index,omitempty" xml:"segment_index,omitempty"`
-	SegmentKey           *string                                                                                              `json:"segment_key,omitempty" xml:"segment_key,omitempty"`
-	SegmentVisaRemark    *IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosSegmentVisaRemark    `json:"segment_visa_remark,omitempty" xml:"segment_visa_remark,omitempty" type:"Struct"`
-	Share                *bool                                                                                                `json:"share,omitempty" xml:"share,omitempty"`
-	ShortFlightSize      *string                                                                                              `json:"short_flight_size,omitempty" xml:"short_flight_size,omitempty"`
-	Stop                 *bool                                                                                                `json:"stop,omitempty" xml:"stop,omitempty"`
+	// The marketing airline information.
+	AirlineInfo *IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosAirlineInfo `json:"airline_info,omitempty" xml:"airline_info,omitempty" type:"Struct"`
+	// The arrival airport information.
+	ArrAirportInfo *IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosArrAirportInfo `json:"arr_airport_info,omitempty" xml:"arr_airport_info,omitempty" type:"Struct"`
+	// The three-letter code of the arrival city.
+	//
+	// example:
+	//
+	// HGH
+	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	// The name of the arrival city.
+	//
+	// example:
+	//
+	// 杭州
+	ArrCityName *string `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
+	// The arrival time. Format: yyyy-MM-dd HH:mm.
+	//
+	// example:
+	//
+	// 2025-12-28 15:25
+	ArrTime *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	// The arrival time with time zone. Format: 2022-06-06T12:56:34Z.
+	//
+	// example:
+	//
+	// 2025-12-28T15:25:34Z
+	ArrTimeUTC *string `json:"arr_time_u_t_c,omitempty" xml:"arr_time_u_t_c,omitempty"`
+	// The departure airport information.
+	DepAirportInfo *IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosDepAirportInfo `json:"dep_airport_info,omitempty" xml:"dep_airport_info,omitempty" type:"Struct"`
+	// The three-letter code of the departure city.
+	//
+	// example:
+	//
+	// BJS
+	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	// The name of the departure city.
+	//
+	// example:
+	//
+	// 北京
+	DepCityName *string `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
+	// The departure time. Format: yyyy-MM-dd HH:mm.
+	//
+	// example:
+	//
+	// 2025-12-28 12:25
+	DepTime *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	// The departure time with time zone. Format: 2022-06-06T12:56:34Z.
+	//
+	// example:
+	//
+	// 2025-12-28T12:25:34Z
+	DepTimeUTC *string `json:"dep_time_u_t_c,omitempty" xml:"dep_time_u_t_c,omitempty"`
+	// The total duration of the segment in minutes.
+	//
+	// example:
+	//
+	// 140
+	Duration *int32 `json:"duration,omitempty" xml:"duration,omitempty"`
+	// The flight number.
+	//
+	// example:
+	//
+	// MU5131
+	FlightNo *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	// The codeshare flight information.
+	FlightShareInfo *IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightShareInfo `json:"flight_share_info,omitempty" xml:"flight_share_info,omitempty" type:"Struct"`
+	// The aircraft type name.
+	//
+	// example:
+	//
+	// 中型机
+	FlightSize *string `json:"flight_size,omitempty" xml:"flight_size,omitempty"`
+	// The list of flight stopovers.
+	FlightStopInfoList []*IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightStopInfoList `json:"flight_stop_info_list,omitempty" xml:"flight_stop_info_list,omitempty" type:"Repeated"`
+	// The aircraft type code.
+	//
+	// example:
+	//
+	// 320
+	FlightType *string `json:"flight_type,omitempty" xml:"flight_type,omitempty"`
+	// The journey index.
+	//
+	// example:
+	//
+	// 0
+	JourneyIndex *int32 `json:"journey_index,omitempty" xml:"journey_index,omitempty"`
+	// Indicates whether luggage is through-checked for the current segment.
+	LuggageDirectInfo *IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosLuggageDirectInfo `json:"luggage_direct_info,omitempty" xml:"luggage_direct_info,omitempty" type:"Struct"`
+	// The manufacturer.
+	//
+	// example:
+	//
+	// 空客
+	Manufacturer *string `json:"manufacturer,omitempty" xml:"manufacturer,omitempty"`
+	// The meal availability. Valid values: 0 (no meal) and 1 (meal provided).
+	//
+	// example:
+	//
+	// 1
+	Meal *int32 `json:"meal,omitempty" xml:"meal,omitempty"`
+	// The meal description.
+	//
+	// example:
+	//
+	// 小食
+	MealDesc *string `json:"meal_desc,omitempty" xml:"meal_desc,omitempty"`
+	// The flight mileage.
+	//
+	// example:
+	//
+	// 1200
+	Miles *int32 `json:"miles,omitempty" xml:"miles,omitempty"`
+	// The on-time rate information, such as "arrival on-time rate 90%".
+	//
+	// example:
+	//
+	// 80%
+	OnTimeRate *string `json:"on_time_rate,omitempty" xml:"on_time_rate,omitempty"`
+	// The number of extra days. For example, 1 indicates the flight crosses 1 day.
+	//
+	// example:
+	//
+	// 0
+	OneMore *int32 `json:"one_more,omitempty" xml:"one_more,omitempty"`
+	// The cross-day display text.
+	//
+	// example:
+	//
+	// +1天
+	OneMoreShow *string `json:"one_more_show,omitempty" xml:"one_more_show,omitempty"`
+	// The other information about the flight segment.
+	OtherInfo *IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosOtherInfo `json:"other_info,omitempty" xml:"other_info,omitempty" type:"Struct"`
+	// The segment index, starting from 0 within the same journey.
+	//
+	// example:
+	//
+	// 0
+	SegmentIndex *int32 `json:"segment_index,omitempty" xml:"segment_index,omitempty"`
+	// The unique key of the segment. Format: flight number + departure airport + arrival airport + departure date (MMdd).
+	//
+	// example:
+	//
+	// KN6728HGHPKX0725
+	SegmentKey *string `json:"segment_key,omitempty" xml:"segment_key,omitempty"`
+	// The transit visa information for the current segment.
+	SegmentVisaRemark *IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosSegmentVisaRemark `json:"segment_visa_remark,omitempty" xml:"segment_visa_remark,omitempty" type:"Struct"`
+	// Indicates whether the flight is a codeshare flight.
+	//
+	// example:
+	//
+	// false
+	Share *bool `json:"share,omitempty" xml:"share,omitempty"`
+	// The short name of the aircraft type.
+	//
+	// example:
+	//
+	// 中
+	ShortFlightSize *string `json:"short_flight_size,omitempty" xml:"short_flight_size,omitempty"`
+	// Indicates whether the flight has a stopover.
+	//
+	// example:
+	//
+	// false
+	Stop *bool `json:"stop,omitempty" xml:"stop,omitempty"`
+	// The ticketing airline information.
 	TicketingAirlineInfo *IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosTicketingAirlineInfo `json:"ticketing_airline_info,omitempty" xml:"ticketing_airline_info,omitempty" type:"Struct"`
-	TotalTime            *string                                                                                              `json:"total_time,omitempty" xml:"total_time,omitempty"`
+	// The total duration of the segment.
+	//
+	// example:
+	//
+	// 2小时20分
+	TotalTime *string `json:"total_time,omitempty" xml:"total_time,omitempty"`
 }
 
 func (s IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfos) String() string {
@@ -740,11 +953,36 @@ func (s *IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegm
 }
 
 type IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosAirlineInfo struct {
-	AirlineCode  *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
-	AirlineName  *string `json:"airline_name,omitempty" xml:"airline_name,omitempty"`
-	CheapAirline *bool   `json:"cheap_airline,omitempty" xml:"cheap_airline,omitempty"`
-	IconUrl      *string `json:"icon_url,omitempty" xml:"icon_url,omitempty"`
-	ShortName    *string `json:"short_name,omitempty" xml:"short_name,omitempty"`
+	// The airline code.
+	//
+	// example:
+	//
+	// MU
+	AirlineCode *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
+	// The airline name.
+	//
+	// example:
+	//
+	// 中国东方航空
+	AirlineName *string `json:"airline_name,omitempty" xml:"airline_name,omitempty"`
+	// Indicates whether the airline is a low-cost airline.
+	//
+	// example:
+	//
+	// false
+	CheapAirline *bool `json:"cheap_airline,omitempty" xml:"cheap_airline,omitempty"`
+	// The URL of the airline icon.
+	//
+	// example:
+	//
+	// https://
+	IconUrl *string `json:"icon_url,omitempty" xml:"icon_url,omitempty"`
+	// The short name of the airline.
+	//
+	// example:
+	//
+	// 东方航空
+	ShortName *string `json:"short_name,omitempty" xml:"short_name,omitempty"`
 }
 
 func (s IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosAirlineInfo) String() string {
@@ -805,10 +1043,30 @@ func (s *IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegm
 }
 
 type IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosArrAirportInfo struct {
-	AirportCode      *string `json:"airport_code,omitempty" xml:"airport_code,omitempty"`
-	AirportName      *string `json:"airport_name,omitempty" xml:"airport_name,omitempty"`
+	// The airport code.
+	//
+	// example:
+	//
+	// HGH
+	AirportCode *string `json:"airport_code,omitempty" xml:"airport_code,omitempty"`
+	// The airport name.
+	//
+	// example:
+	//
+	// 萧山国际机场
+	AirportName *string `json:"airport_name,omitempty" xml:"airport_name,omitempty"`
+	// The short name of the airport.
+	//
+	// example:
+	//
+	// 萧山
 	AirportShortName *string `json:"airport_short_name,omitempty" xml:"airport_short_name,omitempty"`
-	Terminal         *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
+	// The terminal.
+	//
+	// example:
+	//
+	// T3
+	Terminal *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
 }
 
 func (s IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosArrAirportInfo) String() string {
@@ -860,10 +1118,30 @@ func (s *IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegm
 }
 
 type IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosDepAirportInfo struct {
-	AirportCode      *string `json:"airport_code,omitempty" xml:"airport_code,omitempty"`
-	AirportName      *string `json:"airport_name,omitempty" xml:"airport_name,omitempty"`
+	// The airport code.
+	//
+	// example:
+	//
+	// PKX
+	AirportCode *string `json:"airport_code,omitempty" xml:"airport_code,omitempty"`
+	// The airport name.
+	//
+	// example:
+	//
+	// 大兴国际机场
+	AirportName *string `json:"airport_name,omitempty" xml:"airport_name,omitempty"`
+	// The short name of the airport.
+	//
+	// example:
+	//
+	// 大兴
 	AirportShortName *string `json:"airport_short_name,omitempty" xml:"airport_short_name,omitempty"`
-	Terminal         *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
+	// The terminal.
+	//
+	// example:
+	//
+	// T3
+	Terminal *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
 }
 
 func (s IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosDepAirportInfo) String() string {
@@ -915,8 +1193,14 @@ func (s *IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegm
 }
 
 type IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightShareInfo struct {
+	// The operating airline information.
 	OperatingAirlineInfo *IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo `json:"operating_airline_info,omitempty" xml:"operating_airline_info,omitempty" type:"Struct"`
-	OperatingFlightNo    *string                                                                                                             `json:"operating_flight_no,omitempty" xml:"operating_flight_no,omitempty"`
+	// The operating flight number. This field has a value only for codeshare flights.
+	//
+	// example:
+	//
+	// CA601
+	OperatingFlightNo *string `json:"operating_flight_no,omitempty" xml:"operating_flight_no,omitempty"`
 }
 
 func (s IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightShareInfo) String() string {
@@ -955,11 +1239,36 @@ func (s *IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegm
 }
 
 type IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo struct {
-	AirlineCode  *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
-	AirlineName  *string `json:"airline_name,omitempty" xml:"airline_name,omitempty"`
-	CheapAirline *bool   `json:"cheap_airline,omitempty" xml:"cheap_airline,omitempty"`
-	IconUrl      *string `json:"icon_url,omitempty" xml:"icon_url,omitempty"`
-	ShortName    *string `json:"short_name,omitempty" xml:"short_name,omitempty"`
+	// The airline code.
+	//
+	// example:
+	//
+	// CA
+	AirlineCode *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
+	// The airline name.
+	//
+	// example:
+	//
+	// 中国国际航空
+	AirlineName *string `json:"airline_name,omitempty" xml:"airline_name,omitempty"`
+	// Indicates whether the airline is a low-cost airline.
+	//
+	// example:
+	//
+	// false
+	CheapAirline *bool `json:"cheap_airline,omitempty" xml:"cheap_airline,omitempty"`
+	// The URL of the airline icon.
+	//
+	// example:
+	//
+	// https://
+	IconUrl *string `json:"icon_url,omitempty" xml:"icon_url,omitempty"`
+	// The short name of the airline.
+	//
+	// example:
+	//
+	// 国航
+	ShortName *string `json:"short_name,omitempty" xml:"short_name,omitempty"`
 }
 
 func (s IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo) String() string {
@@ -1020,16 +1329,62 @@ func (s *IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegm
 }
 
 type IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightStopInfoList struct {
-	StopAirport           *string                                                                                                                 `json:"stop_airport,omitempty" xml:"stop_airport,omitempty"`
+	// The stopover airport.
+	//
+	// example:
+	//
+	// 大兴机场
+	StopAirport *string `json:"stop_airport,omitempty" xml:"stop_airport,omitempty"`
+	// The county information of the stopover airport.
 	StopAirportCountyInfo *IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightStopInfoListStopAirportCountyInfo `json:"stop_airport_county_info,omitempty" xml:"stop_airport_county_info,omitempty" type:"Struct"`
-	StopAirportName       *string                                                                                                                 `json:"stop_airport_name,omitempty" xml:"stop_airport_name,omitempty"`
-	StopArrTerm           *string                                                                                                                 `json:"stop_arr_term,omitempty" xml:"stop_arr_term,omitempty"`
-	StopArrTime           *string                                                                                                                 `json:"stop_arr_time,omitempty" xml:"stop_arr_time,omitempty"`
-	StopCityCode          *string                                                                                                                 `json:"stop_city_code,omitempty" xml:"stop_city_code,omitempty"`
-	StopCityName          *string                                                                                                                 `json:"stop_city_name,omitempty" xml:"stop_city_name,omitempty"`
-	StopDepTerm           *string                                                                                                                 `json:"stop_dep_term,omitempty" xml:"stop_dep_term,omitempty"`
-	StopDepTime           *string                                                                                                                 `json:"stop_dep_time,omitempty" xml:"stop_dep_time,omitempty"`
-	StopTime              *string                                                                                                                 `json:"stop_time,omitempty" xml:"stop_time,omitempty"`
+	// The name of the stopover airport.
+	//
+	// example:
+	//
+	// PKX
+	StopAirportName *string `json:"stop_airport_name,omitempty" xml:"stop_airport_name,omitempty"`
+	// The arrival terminal at the stopover.
+	//
+	// example:
+	//
+	// T1
+	StopArrTerm *string `json:"stop_arr_term,omitempty" xml:"stop_arr_term,omitempty"`
+	// The arrival time at the stopover. Format: yyyy-MM-dd HH:mm.
+	//
+	// example:
+	//
+	// 2025-10-01 02:00
+	StopArrTime *string `json:"stop_arr_time,omitempty" xml:"stop_arr_time,omitempty"`
+	// The three-letter code of the stopover city.
+	//
+	// example:
+	//
+	// BJS
+	StopCityCode *string `json:"stop_city_code,omitempty" xml:"stop_city_code,omitempty"`
+	// The name of the stopover city.
+	//
+	// example:
+	//
+	// 北京
+	StopCityName *string `json:"stop_city_name,omitempty" xml:"stop_city_name,omitempty"`
+	// The departure terminal at the stopover.
+	//
+	// example:
+	//
+	// T1
+	StopDepTerm *string `json:"stop_dep_term,omitempty" xml:"stop_dep_term,omitempty"`
+	// The departure time from the stopover. Format: yyyy-MM-dd HH:mm.
+	//
+	// example:
+	//
+	// 2025-10-01 03:00
+	StopDepTime *string `json:"stop_dep_time,omitempty" xml:"stop_dep_time,omitempty"`
+	// The stopover duration in minutes.
+	//
+	// example:
+	//
+	// 60
+	StopTime *string `json:"stop_time,omitempty" xml:"stop_time,omitempty"`
 }
 
 func (s IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightStopInfoList) String() string {
@@ -1140,16 +1495,70 @@ func (s *IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegm
 }
 
 type IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightStopInfoListStopAirportCountyInfo struct {
-	Adcode                *string `json:"adcode,omitempty" xml:"adcode,omitempty"`
-	AirportCityCode       *string `json:"airport_city_code,omitempty" xml:"airport_city_code,omitempty"`
-	AirportCityName       *string `json:"airport_city_name,omitempty" xml:"airport_city_name,omitempty"`
-	AirportCode           *string `json:"airport_code,omitempty" xml:"airport_code,omitempty"`
-	AirportName           *string `json:"airport_name,omitempty" xml:"airport_name,omitempty"`
+	// The administrative division code.
+	//
+	// example:
+	//
+	// 110000
+	Adcode *string `json:"adcode,omitempty" xml:"adcode,omitempty"`
+	// The airport city code.
+	//
+	// example:
+	//
+	// BJS
+	AirportCityCode *string `json:"airport_city_code,omitempty" xml:"airport_city_code,omitempty"`
+	// The city name of the airport.
+	//
+	// example:
+	//
+	// 北京
+	AirportCityName *string `json:"airport_city_name,omitempty" xml:"airport_city_name,omitempty"`
+	// The airport code.
+	//
+	// example:
+	//
+	// PKX
+	AirportCode *string `json:"airport_code,omitempty" xml:"airport_code,omitempty"`
+	// The airport name.
+	//
+	// example:
+	//
+	// 大兴机场
+	AirportName *string `json:"airport_name,omitempty" xml:"airport_name,omitempty"`
+	// The parent city name of the airport.
+	//
+	// example:
+	//
+	// 北京
 	AirportParentCityName *string `json:"airport_parent_city_name,omitempty" xml:"airport_parent_city_name,omitempty"`
-	CountyCityAdcode      *string `json:"county_city_adcode,omitempty" xml:"county_city_adcode,omitempty"`
-	CountyCityName        *string `json:"county_city_name,omitempty" xml:"county_city_name,omitempty"`
-	PrefectureCityAdcode  *string `json:"prefecture_city_adcode,omitempty" xml:"prefecture_city_adcode,omitempty"`
-	PrefectureCityName    *string `json:"prefecture_city_name,omitempty" xml:"prefecture_city_name,omitempty"`
+	// The administrative division code of the county-level city where the airport is located.
+	//
+	// 	Notice: This value is null if the airport is not at the county level.
+	//
+	// example:
+	//
+	// 110000
+	CountyCityAdcode *string `json:"county_city_adcode,omitempty" xml:"county_city_adcode,omitempty"`
+	// The name of the county-level city where the airport is located.
+	//
+	// 	Notice: This value is null if the airport is not at the county level.
+	//
+	// example:
+	//
+	// 北京
+	CountyCityName *string `json:"county_city_name,omitempty" xml:"county_city_name,omitempty"`
+	// The administrative division code of the prefecture-level city where the airport is located.
+	//
+	// example:
+	//
+	// 110000
+	PrefectureCityAdcode *string `json:"prefecture_city_adcode,omitempty" xml:"prefecture_city_adcode,omitempty"`
+	// The name of the prefecture-level city where the airport is located.
+	//
+	// example:
+	//
+	// 北京
+	PrefectureCityName *string `json:"prefecture_city_name,omitempty" xml:"prefecture_city_name,omitempty"`
 }
 
 func (s IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosFlightStopInfoListStopAirportCountyInfo) String() string {
@@ -1255,7 +1664,29 @@ func (s *IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegm
 }
 
 type IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosLuggageDirectInfo struct {
-	DepCityLuggageDirect  *int32 `json:"dep_city_luggage_direct,omitempty" xml:"dep_city_luggage_direct,omitempty"`
+	// The baggage transfer type for the departure city. Valid values:
+	//
+	// - 0: Re-check baggage.
+	//
+	// - 1: Through check.
+	//
+	// - null: Unknown.
+	//
+	// example:
+	//
+	// 1
+	DepCityLuggageDirect *int32 `json:"dep_city_luggage_direct,omitempty" xml:"dep_city_luggage_direct,omitempty"`
+	// The baggage transfer type for the departure city. Valid values:
+	//
+	// - 0: Re-check baggage.
+	//
+	// - 1: Through check.
+	//
+	// - null: Unknown.
+	//
+	// example:
+	//
+	// 0
 	StopCityLuggageDirect *int32 `json:"stop_city_luggage_direct,omitempty" xml:"stop_city_luggage_direct,omitempty"`
 }
 
@@ -1290,12 +1721,42 @@ func (s *IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegm
 }
 
 type IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosOtherInfo struct {
-	AircraftAge      *string `json:"aircraft_age,omitempty" xml:"aircraft_age,omitempty"`
-	AvgDelayTime     *string `json:"avg_delay_time,omitempty" xml:"avg_delay_time,omitempty"`
+	// The aircraft age.
+	//
+	// example:
+	//
+	// 2.5年
+	AircraftAge *string `json:"aircraft_age,omitempty" xml:"aircraft_age,omitempty"`
+	// The average delay duration.
+	//
+	// example:
+	//
+	// 平均延误58分钟
+	AvgDelayTime *string `json:"avg_delay_time,omitempty" xml:"avg_delay_time,omitempty"`
+	// The flight cancellation rate.
+	//
+	// example:
+	//
+	// 20%
 	FlightCancelRate *string `json:"flight_cancel_rate,omitempty" xml:"flight_cancel_rate,omitempty"`
-	JetBridgeRate    *string `json:"jet_bridge_rate,omitempty" xml:"jet_bridge_rate,omitempty"`
-	OnTimeRate       *string `json:"on_time_rate,omitempty" xml:"on_time_rate,omitempty"`
-	Wifi             *bool   `json:"wifi,omitempty" xml:"wifi,omitempty"`
+	// The jet bridge rate.
+	//
+	// example:
+	//
+	// 10%
+	JetBridgeRate *string `json:"jet_bridge_rate,omitempty" xml:"jet_bridge_rate,omitempty"`
+	// The on-time rate information.
+	//
+	// example:
+	//
+	// 90%
+	OnTimeRate *string `json:"on_time_rate,omitempty" xml:"on_time_rate,omitempty"`
+	// Indicates whether Wi-Fi is available.
+	//
+	// example:
+	//
+	// true
+	Wifi *bool `json:"wifi,omitempty" xml:"wifi,omitempty"`
 }
 
 func (s IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosOtherInfo) String() string {
@@ -1365,10 +1826,26 @@ func (s *IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegm
 }
 
 type IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosSegmentVisaRemark struct {
-	DepCityVisaRemark   *string   `json:"dep_city_visa_remark,omitempty" xml:"dep_city_visa_remark,omitempty"`
-	DepCityVisaType     *int32    `json:"dep_city_visa_type,omitempty" xml:"dep_city_visa_type,omitempty"`
+	// The transit visa information for the departure city.
+	//
+	// example:
+	//
+	// 前往菲律宾的旅客，请确保持有往返纸质行程单以及纸质签证办理登记手续，否则可能会被当地政府拒绝入境
+	DepCityVisaRemark *string `json:"dep_city_visa_remark,omitempty" xml:"dep_city_visa_remark,omitempty"`
+	// The transit visa type for the departure city. Valid values:
+	//
+	// - 0: No transit visa required.
+	//
+	// - 1: Transit visa required.
+	//
+	// example:
+	//
+	// 1
+	DepCityVisaType *int32 `json:"dep_city_visa_type,omitempty" xml:"dep_city_visa_type,omitempty"`
+	// The transit visa information for stopover cities. Each stopover city corresponds to one entry.
 	StopCityVisaRemarks []*string `json:"stop_city_visa_remarks,omitempty" xml:"stop_city_visa_remarks,omitempty" type:"Repeated"`
-	StopCityVisaTypes   []*int32  `json:"stop_city_visa_types,omitempty" xml:"stop_city_visa_types,omitempty" type:"Repeated"`
+	// The transit visa types for stopover cities. Each stopover city corresponds to one entry.
+	StopCityVisaTypes []*int32 `json:"stop_city_visa_types,omitempty" xml:"stop_city_visa_types,omitempty" type:"Repeated"`
 }
 
 func (s IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosSegmentVisaRemark) String() string {
@@ -1420,11 +1897,36 @@ func (s *IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegm
 }
 
 type IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosTicketingAirlineInfo struct {
-	AirlineCode  *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
-	AirlineName  *string `json:"airline_name,omitempty" xml:"airline_name,omitempty"`
-	CheapAirline *bool   `json:"cheap_airline,omitempty" xml:"cheap_airline,omitempty"`
-	IconUrl      *string `json:"icon_url,omitempty" xml:"icon_url,omitempty"`
-	ShortName    *string `json:"short_name,omitempty" xml:"short_name,omitempty"`
+	// The airline code.
+	//
+	// example:
+	//
+	// CA
+	AirlineCode *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
+	// The airline name.
+	//
+	// example:
+	//
+	// 中国国际航空
+	AirlineName *string `json:"airline_name,omitempty" xml:"airline_name,omitempty"`
+	// Indicates whether the airline is a low-cost airline.
+	//
+	// example:
+	//
+	// false
+	CheapAirline *bool `json:"cheap_airline,omitempty" xml:"cheap_airline,omitempty"`
+	// The URL of the airline icon.
+	//
+	// example:
+	//
+	// https://
+	IconUrl *string `json:"icon_url,omitempty" xml:"icon_url,omitempty"`
+	// The short name of the airline.
+	//
+	// example:
+	//
+	// 国航
+	ShortName *string `json:"short_name,omitempty" xml:"short_name,omitempty"`
 }
 
 func (s IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegmentInfosTicketingAirlineInfo) String() string {
@@ -1485,10 +1987,26 @@ func (s *IntlFlightReShopOtaSearchResponseBodyModuleFlightJourneyInfosFlightSegm
 }
 
 type IntlFlightReShopOtaSearchResponseBodyModuleReShopItemList struct {
-	ItemId          *string                                                              `json:"item_id,omitempty" xml:"item_id,omitempty"`
-	ItemType        *string                                                              `json:"item_type,omitempty" xml:"item_type,omitempty"`
-	ShoppingItemMap map[string]*ModuleReShopItemListShoppingItemMapValue                 `json:"shopping_item_map,omitempty" xml:"shopping_item_map,omitempty"`
-	SubItems        []*IntlFlightReShopOtaSearchResponseBodyModuleReShopItemListSubItems `json:"sub_items,omitempty" xml:"sub_items,omitempty" type:"Repeated"`
+	// The item ID.
+	//
+	// example:
+	//
+	// 2b99a126923d4d13be53cd80a32ef0e3_0
+	ItemId *string `json:"item_id,omitempty" xml:"item_id,omitempty"`
+	// 商品类型。
+	//
+	// - normal-普通商品
+	//
+	// - combination-组合特价
+	//
+	// example:
+	//
+	// normal
+	ItemType *string `json:"item_type,omitempty" xml:"item_type,omitempty"`
+	// The pricing information mapped by passenger type.
+	ShoppingItemMap map[string]*ModuleReShopItemListShoppingItemMapValue `json:"shopping_item_map,omitempty" xml:"shopping_item_map,omitempty"`
+	// The sub-items. Combined products may have multiple sub-items.
+	SubItems []*IntlFlightReShopOtaSearchResponseBodyModuleReShopItemListSubItems `json:"sub_items,omitempty" xml:"sub_items,omitempty" type:"Repeated"`
 }
 
 func (s IntlFlightReShopOtaSearchResponseBodyModuleReShopItemList) String() string {
@@ -1549,13 +2067,28 @@ func (s *IntlFlightReShopOtaSearchResponseBodyModuleReShopItemList) Validate() e
 }
 
 type IntlFlightReShopOtaSearchResponseBodyModuleReShopItemListSubItems struct {
-	BaggageRule         *IntlFlightReShopOtaSearchResponseBodyModuleReShopItemListSubItemsBaggageRule           `json:"baggage_rule,omitempty" xml:"baggage_rule,omitempty" type:"Struct"`
-	DiscountNum         *float64                                                                                `json:"discount_num,omitempty" xml:"discount_num,omitempty"`
-	RefundChangeRule    *IntlFlightReShopOtaSearchResponseBodyModuleReShopItemListSubItemsRefundChangeRule      `json:"refund_change_rule,omitempty" xml:"refund_change_rule,omitempty" type:"Struct"`
-	SegmentKeys         []*string                                                                               `json:"segment_keys,omitempty" xml:"segment_keys,omitempty" type:"Repeated"`
+	// The baggage allowance information of the sub-item.
+	BaggageRule *IntlFlightReShopOtaSearchResponseBodyModuleReShopItemListSubItemsBaggageRule `json:"baggage_rule,omitempty" xml:"baggage_rule,omitempty" type:"Struct"`
+	// The discount value.
+	//
+	// example:
+	//
+	// 5.1
+	DiscountNum *float64 `json:"discount_num,omitempty" xml:"discount_num,omitempty"`
+	// The refund and change information of the sub-item.
+	RefundChangeRule *IntlFlightReShopOtaSearchResponseBodyModuleReShopItemListSubItemsRefundChangeRule `json:"refund_change_rule,omitempty" xml:"refund_change_rule,omitempty" type:"Struct"`
+	// The list of segment keys included in the sub-item.
+	SegmentKeys []*string `json:"segment_keys,omitempty" xml:"segment_keys,omitempty" type:"Repeated"`
+	// The list of segment position information included in the sub-item.
 	SegmentPositionList []*IntlFlightReShopOtaSearchResponseBodyModuleReShopItemListSubItemsSegmentPositionList `json:"segment_position_list,omitempty" xml:"segment_position_list,omitempty" type:"Repeated"`
-	ShoppingItemMap     map[string]*ModuleReShopItemListSubItemsShoppingItemMapValue                            `json:"shopping_item_map,omitempty" xml:"shopping_item_map,omitempty"`
-	UniqKey             *string                                                                                 `json:"uniq_key,omitempty" xml:"uniq_key,omitempty"`
+	// The pricing information mapped by passenger type. Key: ADT (adult), CHD (child), or INFANT (infant).
+	ShoppingItemMap map[string]*ModuleReShopItemListSubItemsShoppingItemMapValue `json:"shopping_item_map,omitempty" xml:"shopping_item_map,omitempty"`
+	// The unique item ID.
+	//
+	// example:
+	//
+	// 07df0bd9-f803-4a50-8449-f4bd675d9939
+	UniqKey *string `json:"uniq_key,omitempty" xml:"uniq_key,omitempty"`
 }
 
 func (s IntlFlightReShopOtaSearchResponseBodyModuleReShopItemListSubItems) String() string {
@@ -1653,11 +2186,32 @@ func (s *IntlFlightReShopOtaSearchResponseBodyModuleReShopItemListSubItems) Vali
 }
 
 type IntlFlightReShopOtaSearchResponseBodyModuleReShopItemListSubItemsBaggageRule struct {
-	BaggageDescShowColor *string                                                                       `json:"baggage_desc_show_color,omitempty" xml:"baggage_desc_show_color,omitempty"`
-	BaggageDigest        *string                                                                       `json:"baggage_digest,omitempty" xml:"baggage_digest,omitempty"`
-	BaggageRuleDesc      *string                                                                       `json:"baggage_rule_desc,omitempty" xml:"baggage_rule_desc,omitempty"`
-	OfferBaggageInfoMap  map[string][]*ModuleReShopItemListSubItemsBaggageRuleOfferBaggageInfoMapValue `json:"offer_baggage_info_map,omitempty" xml:"offer_baggage_info_map,omitempty"`
-	StructuredBaggage    *bool                                                                         `json:"structured_baggage,omitempty" xml:"structured_baggage,omitempty"`
+	// The display color of the baggage allowance description.
+	//
+	// example:
+	//
+	// 行李额描述展示颜色
+	BaggageDescShowColor *string `json:"baggage_desc_show_color,omitempty" xml:"baggage_desc_show_color,omitempty"`
+	// The baggage summary.
+	//
+	// example:
+	//
+	// 无托运行李
+	BaggageDigest *string `json:"baggage_digest,omitempty" xml:"baggage_digest,omitempty"`
+	// The baggage rule description.
+	//
+	// example:
+	//
+	// 以航司规定为准
+	BaggageRuleDesc *string `json:"baggage_rule_desc,omitempty" xml:"baggage_rule_desc,omitempty"`
+	// The baggage information mapped by passenger type. Key: ADT/CHD/INF. Value: baggage information.
+	OfferBaggageInfoMap map[string][]*ModuleReShopItemListSubItemsBaggageRuleOfferBaggageInfoMapValue `json:"offer_baggage_info_map,omitempty" xml:"offer_baggage_info_map,omitempty"`
+	// Indicates whether the baggage data is structured.
+	//
+	// example:
+	//
+	// false
+	StructuredBaggage *bool `json:"structured_baggage,omitempty" xml:"structured_baggage,omitempty"`
 }
 
 func (s IntlFlightReShopOtaSearchResponseBodyModuleReShopItemListSubItemsBaggageRule) String() string {
@@ -1718,16 +2272,64 @@ func (s *IntlFlightReShopOtaSearchResponseBodyModuleReShopItemListSubItemsBaggag
 }
 
 type IntlFlightReShopOtaSearchResponseBodyModuleReShopItemListSubItemsRefundChangeRule struct {
-	CancelFeeInd         *bool                                                                              `json:"cancel_fee_ind,omitempty" xml:"cancel_fee_ind,omitempty"`
-	ChangeFeeInd         *bool                                                                              `json:"change_fee_ind,omitempty" xml:"change_fee_ind,omitempty"`
-	ChangeRuleDesc       *string                                                                            `json:"change_rule_desc,omitempty" xml:"change_rule_desc,omitempty"`
-	ChangeRuleShowColor  *string                                                                            `json:"change_rule_show_color,omitempty" xml:"change_rule_show_color,omitempty"`
-	OfferPenaltyInfoMap  map[string][]*ModuleReShopItemListSubItemsRefundChangeRuleOfferPenaltyInfoMapValue `json:"offer_penalty_info_map,omitempty" xml:"offer_penalty_info_map,omitempty"`
-	RefundChangeDigest   *string                                                                            `json:"refund_change_digest,omitempty" xml:"refund_change_digest,omitempty"`
-	RefundChangeRuleDesc *string                                                                            `json:"refund_change_rule_desc,omitempty" xml:"refund_change_rule_desc,omitempty"`
-	RefundRuleDesc       *string                                                                            `json:"refund_rule_desc,omitempty" xml:"refund_rule_desc,omitempty"`
-	RefundRuleShowColor  *string                                                                            `json:"refund_rule_show_color,omitempty" xml:"refund_rule_show_color,omitempty"`
-	StructuredRefund     *bool                                                                              `json:"structured_refund,omitempty" xml:"structured_refund,omitempty"`
+	// Indicates whether refund is supported.
+	//
+	// example:
+	//
+	// true
+	CancelFeeInd *bool `json:"cancel_fee_ind,omitempty" xml:"cancel_fee_ind,omitempty"`
+	// Indicates whether date change is supported.
+	//
+	// example:
+	//
+	// true
+	ChangeFeeInd *bool `json:"change_fee_ind,omitempty" xml:"change_fee_ind,omitempty"`
+	// 改签规则简述
+	//
+	// example:
+	//
+	// 改签规则简述
+	ChangeRuleDesc *string `json:"change_rule_desc,omitempty" xml:"change_rule_desc,omitempty"`
+	// 改签规则展示颜色
+	//
+	// example:
+	//
+	// 改签规则展示颜色
+	ChangeRuleShowColor *string `json:"change_rule_show_color,omitempty" xml:"change_rule_show_color,omitempty"`
+	// The refund and change rules mapped by passenger type. Key: ADT/CHD/INF. Value: refund/change rule.
+	OfferPenaltyInfoMap map[string][]*ModuleReShopItemListSubItemsRefundChangeRuleOfferPenaltyInfoMapValue `json:"offer_penalty_info_map,omitempty" xml:"offer_penalty_info_map,omitempty"`
+	// The refund and change summary.
+	//
+	// example:
+	//
+	// 退改¥395起
+	RefundChangeDigest *string `json:"refund_change_digest,omitempty" xml:"refund_change_digest,omitempty"`
+	// The refund and change rule description.
+	//
+	// [_single.
+	//
+	// example:
+	//
+	// 以航司规定为准
+	RefundChangeRuleDesc *string `json:"refund_change_rule_desc,omitempty" xml:"refund_change_rule_desc,omitempty"`
+	// 退票规则简述
+	//
+	// example:
+	//
+	// 退票规则简述
+	RefundRuleDesc *string `json:"refund_rule_desc,omitempty" xml:"refund_rule_desc,omitempty"`
+	// 退票规则展示颜色
+	//
+	// example:
+	//
+	// 退票规则展示颜色
+	RefundRuleShowColor *string `json:"refund_rule_show_color,omitempty" xml:"refund_rule_show_color,omitempty"`
+	// Indicates whether structured refund and change rule data is available.
+	//
+	// example:
+	//
+	// false
+	StructuredRefund *bool `json:"structured_refund,omitempty" xml:"structured_refund,omitempty"`
 }
 
 func (s IntlFlightReShopOtaSearchResponseBodyModuleReShopItemListSubItemsRefundChangeRule) String() string {
@@ -1833,7 +2435,17 @@ func (s *IntlFlightReShopOtaSearchResponseBodyModuleReShopItemListSubItemsRefund
 }
 
 type IntlFlightReShopOtaSearchResponseBodyModuleReShopItemListSubItemsSegmentPositionList struct {
+	// The journey ordinal number, starting from 0.
+	//
+	// example:
+	//
+	// 0
 	JourneyIndex *int32 `json:"journey_index,omitempty" xml:"journey_index,omitempty"`
+	// The segment ordinal number, starting from 0 within the same journey.
+	//
+	// example:
+	//
+	// 0
 	SegmentIndex *int32 `json:"segment_index,omitempty" xml:"segment_index,omitempty"`
 }
 

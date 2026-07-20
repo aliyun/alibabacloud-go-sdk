@@ -17,11 +17,19 @@ type iBaseCityInfoSearchRequest interface {
 
 type BaseCityInfoSearchRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 杭州
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
 	// This parameter is required.
 	//
 	// if can be null:
 	// false
+	//
+	// example:
+	//
+	// 0
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
 }
 

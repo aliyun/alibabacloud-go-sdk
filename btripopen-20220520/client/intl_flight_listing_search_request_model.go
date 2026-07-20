@@ -34,22 +34,54 @@ type iIntlFlightListingSearchRequest interface {
 }
 
 type IntlFlightListingSearchRequest struct {
+	// example:
+	//
+	// 10001
 	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
-	BuyerName   *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
+	// example:
+	//
+	// ZHANGSAN
+	BuyerName *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
 	CabinType *int32 `json:"cabin_type,omitempty" xml:"cabin_type,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// TEST
 	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
 	// This parameter is required.
-	OutWheelSearch *bool   `json:"out_wheel_search,omitempty" xml:"out_wheel_search,omitempty"`
-	QueryRecordId  *string `json:"query_record_id,omitempty" xml:"query_record_id,omitempty"`
+	//
+	// example:
+	//
+	// false
+	OutWheelSearch *bool `json:"out_wheel_search,omitempty" xml:"out_wheel_search,omitempty"`
+	// example:
+	//
+	// 60b412-cc05-4d10-b570-
+	QueryRecordId *string `json:"query_record_id,omitempty" xml:"query_record_id,omitempty"`
 	// This parameter is required.
 	SearchJourneys []*IntlFlightListingSearchRequestSearchJourneys `json:"search_journeys,omitempty" xml:"search_journeys,omitempty" type:"Repeated"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
 	SearchMode          *int32                                               `json:"search_mode,omitempty" xml:"search_mode,omitempty"`
 	SearchPassengerList []*IntlFlightListingSearchRequestSearchPassengerList `json:"search_passenger_list,omitempty" xml:"search_passenger_list,omitempty" type:"Repeated"`
-	Token               *string                                              `json:"token,omitempty" xml:"token,omitempty"`
+	// example:
+	//
+	// 9960b412-cc05-4d10-b570-93372d816807
+	Token *string `json:"token,omitempty" xml:"token,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	TripType *int32 `json:"trip_type,omitempty" xml:"trip_type,omitempty"`
 }
 
@@ -184,10 +216,22 @@ func (s *IntlFlightListingSearchRequest) Validate() error {
 
 type IntlFlightListingSearchRequestSearchJourneys struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// MEL
 	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// HKG
 	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-12-28
 	DepDate         *string                                                        `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
 	SelectedFlights []*IntlFlightListingSearchRequestSearchJourneysSelectedFlights `json:"selected_flights,omitempty" xml:"selected_flights,omitempty" type:"Repeated"`
 }
@@ -250,16 +294,41 @@ func (s *IntlFlightListingSearchRequestSearchJourneys) Validate() error {
 }
 
 type IntlFlightListingSearchRequestSearchJourneysSelectedFlights struct {
+	// example:
+	//
+	// HNY
 	ArrAirportCode *string `json:"arr_airport_code,omitempty" xml:"arr_airport_code,omitempty"`
 	// This parameter is required.
-	ArrCityCode    *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	//
+	// example:
+	//
+	// MEL
+	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	// example:
+	//
+	// SZX
 	DepAirportCode *string `json:"dep_airport_code,omitempty" xml:"dep_airport_code,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// HKG
 	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-12-28 12:00:00
 	FlightTime *string `json:"flight_time,omitempty" xml:"flight_time,omitempty"`
 	// This parameter is required.
-	MarketFlightNo  *string `json:"market_flight_no,omitempty" xml:"market_flight_no,omitempty"`
+	//
+	// example:
+	//
+	// KA5809
+	MarketFlightNo *string `json:"market_flight_no,omitempty" xml:"market_flight_no,omitempty"`
+	// example:
+	//
+	// CX601
 	OperateFlightNo *string `json:"operate_flight_no,omitempty" xml:"operate_flight_no,omitempty"`
 }
 
@@ -340,12 +409,28 @@ func (s *IntlFlightListingSearchRequestSearchJourneysSelectedFlights) Validate()
 
 type IntlFlightListingSearchRequestSearchPassengerList struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 10012301201
 	CertNo *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
 	CertType *int32 `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// ZHANGSAN
 	FullName *string `json:"full_name,omitempty" xml:"full_name,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
 	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
 }
 

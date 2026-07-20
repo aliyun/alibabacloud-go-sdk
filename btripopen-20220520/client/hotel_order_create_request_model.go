@@ -66,46 +66,125 @@ type iHotelOrderCreateRequest interface {
 type HotelOrderCreateRequest struct {
 	ArrivalTime *string `json:"arrival_time,omitempty" xml:"arrival_time,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 123122
 	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2020-10-20
 	CheckIn *string `json:"check_in,omitempty" xml:"check_in,omitempty"`
 	// This parameter is required.
-	CheckOut      *string `json:"check_out,omitempty" xml:"check_out,omitempty"`
+	//
+	// example:
+	//
+	// 2020-10-20
+	CheckOut *string `json:"check_out,omitempty" xml:"check_out,omitempty"`
+	// example:
+	//
+	// demo
 	ContractEmail *string `json:"contract_email,omitempty" xml:"contract_email,omitempty"`
-	ContractName  *string `json:"contract_name,omitempty" xml:"contract_name,omitempty"`
+	// example:
+	//
+	// 张三
+	ContractName *string `json:"contract_name,omitempty" xml:"contract_name,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 19281772123
 	ContractPhone *string `json:"contract_phone,omitempty" xml:"contract_phone,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
 	CorpPayPrice *int64 `json:"corp_pay_price,omitempty" xml:"corp_pay_price,omitempty"`
 	// This parameter is required.
-	DisOrderId  *string                             `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
+	//
+	// example:
+	//
+	// dis123
+	DisOrderId *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
+	// example:
+	//
+	// （特定企业需要传递）
+	//
+	// 1.企业支付金额：DisCorpPayPrice
+	//
+	// 2.个人支付金额：
+	//
+	// DisPersonPayPrice
 	Extra       *string                             `json:"extra,omitempty" xml:"extra,omitempty"`
 	InvoiceInfo *HotelOrderCreateRequestInvoiceInfo `json:"invoice_info,omitempty" xml:"invoice_info,omitempty" type:"Struct"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 671570615157
 	ItemId *int64 `json:"item_id,omitempty" xml:"item_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// fb5e1abf33924b6c912bd6d80deec0eb-1
 	ItineraryNo *string                            `json:"itinerary_no,omitempty" xml:"itinerary_no,omitempty"`
 	LeaveTime   *string                            `json:"leave_time,omitempty" xml:"leave_time,omitempty"`
 	MemberInfo  *HotelOrderCreateRequestMemberInfo `json:"member_info,omitempty" xml:"member_info,omitempty" type:"Struct"`
 	// This parameter is required.
 	OccupantInfoList []*HotelOrderCreateRequestOccupantInfoList `json:"occupant_info_list,omitempty" xml:"occupant_info_list,omitempty" type:"Repeated"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1000
 	PersonPayPrice *int64                                `json:"person_pay_price,omitempty" xml:"person_pay_price,omitempty"`
 	PromotionInfo  *HotelOrderCreateRequestPromotionInfo `json:"promotion_info,omitempty" xml:"promotion_info,omitempty" type:"Struct"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1399417428510
 	RatePlanId *int64 `json:"rate_plan_id,omitempty" xml:"rate_plan_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 187211
 	RoomId *int64 `json:"room_id,omitempty" xml:"room_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	RoomNum *int32 `json:"room_num,omitempty" xml:"room_num,omitempty"`
 	RpType  *int32 `json:"rp_type,omitempty" xml:"rp_type,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2088441675613762
 	SellerId *int64 `json:"seller_id,omitempty" xml:"seller_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2198781
 	Shid *int64 `json:"shid,omitempty" xml:"shid,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
 	TotalOrderPrice *int64 `json:"total_order_price,omitempty" xml:"total_order_price,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// nonUltron_1673575241156_d91ea8ad16735752359161037bf6cf_c54d3768312a4b249b719f126377bf82
 	ValidateResKey *string `json:"validate_res_key,omitempty" xml:"validate_res_key,omitempty"`
 }
 
@@ -380,23 +459,74 @@ func (s *HotelOrderCreateRequest) Validate() error {
 }
 
 type HotelOrderCreateRequestInvoiceInfo struct {
-	BuyerAdd         *string `json:"buyer_add,omitempty" xml:"buyer_add,omitempty"`
-	BuyerBankAcc     *string `json:"buyer_bank_acc,omitempty" xml:"buyer_bank_acc,omitempty"`
-	BuyerBankAdd     *string `json:"buyer_bank_add,omitempty" xml:"buyer_bank_add,omitempty"`
-	BuyerPhone       *string `json:"buyer_phone,omitempty" xml:"buyer_phone,omitempty"`
-	BuyerTaxNum      *string `json:"buyer_tax_num,omitempty" xml:"buyer_tax_num,omitempty"`
-	DeliveryAddress  *string `json:"delivery_address,omitempty" xml:"delivery_address,omitempty"`
-	DeliveryArea     *string `json:"delivery_area,omitempty" xml:"delivery_area,omitempty"`
-	DeliveryCity     *string `json:"delivery_city,omitempty" xml:"delivery_city,omitempty"`
+	// example:
+	//
+	// demo
+	BuyerAdd *string `json:"buyer_add,omitempty" xml:"buyer_add,omitempty"`
+	// example:
+	//
+	// demo
+	BuyerBankAcc *string `json:"buyer_bank_acc,omitempty" xml:"buyer_bank_acc,omitempty"`
+	// example:
+	//
+	// demo
+	BuyerBankAdd *string `json:"buyer_bank_add,omitempty" xml:"buyer_bank_add,omitempty"`
+	// example:
+	//
+	// 0571-82321777
+	BuyerPhone *string `json:"buyer_phone,omitempty" xml:"buyer_phone,omitempty"`
+	// example:
+	//
+	// 1
+	BuyerTaxNum *string `json:"buyer_tax_num,omitempty" xml:"buyer_tax_num,omitempty"`
+	// example:
+	//
+	// ***小区
+	DeliveryAddress *string `json:"delivery_address,omitempty" xml:"delivery_address,omitempty"`
+	// example:
+	//
+	// 拱墅
+	DeliveryArea *string `json:"delivery_area,omitempty" xml:"delivery_area,omitempty"`
+	// example:
+	//
+	// 杭州
+	DeliveryCity *string `json:"delivery_city,omitempty" xml:"delivery_city,omitempty"`
+	// example:
+	//
+	// 浙江
 	DeliveryProvince *string `json:"delivery_province,omitempty" xml:"delivery_province,omitempty"`
-	DeliveryStreet   *string `json:"delivery_street,omitempty" xml:"delivery_street,omitempty"`
-	Email            *string `json:"email,omitempty" xml:"email,omitempty"`
-	InvoiceMaterial  *int32  `json:"invoice_material,omitempty" xml:"invoice_material,omitempty"`
-	InvoiceTitle     *string `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
-	InvoiceType      *int32  `json:"invoice_type,omitempty" xml:"invoice_type,omitempty"`
-	ReceiverName     *string `json:"receiver_name,omitempty" xml:"receiver_name,omitempty"`
-	ReceiverPhone    *string `json:"receiver_phone,omitempty" xml:"receiver_phone,omitempty"`
-	Remark           *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	// example:
+	//
+	// ***街道
+	DeliveryStreet *string `json:"delivery_street,omitempty" xml:"delivery_street,omitempty"`
+	// example:
+	//
+	// demo
+	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// example:
+	//
+	// 1
+	InvoiceMaterial *int32 `json:"invoice_material,omitempty" xml:"invoice_material,omitempty"`
+	// example:
+	//
+	// demo
+	InvoiceTitle *string `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
+	// example:
+	//
+	// 1
+	InvoiceType *int32 `json:"invoice_type,omitempty" xml:"invoice_type,omitempty"`
+	// example:
+	//
+	// 张三
+	ReceiverName *string `json:"receiver_name,omitempty" xml:"receiver_name,omitempty"`
+	// example:
+	//
+	// 0571-82321777
+	ReceiverPhone *string `json:"receiver_phone,omitempty" xml:"receiver_phone,omitempty"`
+	// example:
+	//
+	// demo
+	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
 }
 
 func (s HotelOrderCreateRequestInvoiceInfo) String() string {
@@ -600,25 +730,69 @@ func (s *HotelOrderCreateRequestMemberInfo) Validate() error {
 }
 
 type HotelOrderCreateRequestOccupantInfoList struct {
-	CardNo          *string                                                `json:"card_no,omitempty" xml:"card_no,omitempty"`
+	// example:
+	//
+	// 124231213
+	CardNo *string `json:"card_no,omitempty" xml:"card_no,omitempty"`
+	// example:
+	//
+	// 1
 	CardType        *int32                                                 `json:"card_type,omitempty" xml:"card_type,omitempty"`
 	CascadeDeptName *string                                                `json:"cascade_dept_name,omitempty" xml:"cascade_dept_name,omitempty"`
 	CostCenterInfo  *HotelOrderCreateRequestOccupantInfoListCostCenterInfo `json:"cost_center_info,omitempty" xml:"cost_center_info,omitempty" type:"Struct"`
-	CustomerType    *int32                                                 `json:"customer_type,omitempty" xml:"customer_type,omitempty"`
-	DepartmentId    *string                                                `json:"department_id,omitempty" xml:"department_id,omitempty"`
-	DepartmentName  *string                                                `json:"department_name,omitempty" xml:"department_name,omitempty"`
-	Email           *string                                                `json:"email,omitempty" xml:"email,omitempty"`
-	EmployeeType    *int32                                                 `json:"employee_type,omitempty" xml:"employee_type,omitempty"`
-	FirstName       *string                                                `json:"first_name,omitempty" xml:"first_name,omitempty"`
-	IsBooker        *bool                                                  `json:"is_booker,omitempty" xml:"is_booker,omitempty"`
-	LastName        *string                                                `json:"last_name,omitempty" xml:"last_name,omitempty"`
+	// example:
+	//
+	// 1
+	CustomerType *int32 `json:"customer_type,omitempty" xml:"customer_type,omitempty"`
+	// example:
+	//
+	// 123112
+	DepartmentId *string `json:"department_id,omitempty" xml:"department_id,omitempty"`
+	// example:
+	//
+	// 财务部
+	DepartmentName *string `json:"department_name,omitempty" xml:"department_name,omitempty"`
+	// example:
+	//
+	// demo
+	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// example:
+	//
+	// 1
+	EmployeeType *int32 `json:"employee_type,omitempty" xml:"employee_type,omitempty"`
+	// example:
+	//
+	// san
+	FirstName *string `json:"first_name,omitempty" xml:"first_name,omitempty"`
+	IsBooker  *bool   `json:"is_booker,omitempty" xml:"is_booker,omitempty"`
+	// example:
+	//
+	// zhang
+	LastName *string `json:"last_name,omitempty" xml:"last_name,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 张三
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// This parameter is required.
-	Phone    *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	RoomNo   *int32  `json:"room_no,omitempty" xml:"room_no,omitempty"`
-	StaffNo  *string `json:"staff_no,omitempty" xml:"staff_no,omitempty"`
-	UserType *int32  `json:"user_type,omitempty" xml:"user_type,omitempty"`
+	//
+	// example:
+	//
+	// 18277123451
+	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	// example:
+	//
+	// 1
+	RoomNo *int32 `json:"room_no,omitempty" xml:"room_no,omitempty"`
+	// example:
+	//
+	// 87817182
+	StaffNo *string `json:"staff_no,omitempty" xml:"staff_no,omitempty"`
+	// example:
+	//
+	// 1
+	UserType *int32 `json:"user_type,omitempty" xml:"user_type,omitempty"`
 }
 
 func (s HotelOrderCreateRequestOccupantInfoList) String() string {
@@ -878,7 +1052,10 @@ func (s *HotelOrderCreateRequestOccupantInfoListCostCenterInfo) Validate() error
 
 type HotelOrderCreateRequestPromotionInfo struct {
 	PromotionDetailInfoList []*HotelOrderCreateRequestPromotionInfoPromotionDetailInfoList `json:"promotion_detail_info_list,omitempty" xml:"promotion_detail_info_list,omitempty" type:"Repeated"`
-	PromotionTotalPrice     *int64                                                         `json:"promotion_total_price,omitempty" xml:"promotion_total_price,omitempty"`
+	// example:
+	//
+	// 100
+	PromotionTotalPrice *int64 `json:"promotion_total_price,omitempty" xml:"promotion_total_price,omitempty"`
 }
 
 func (s HotelOrderCreateRequestPromotionInfo) String() string {
@@ -921,13 +1098,34 @@ func (s *HotelOrderCreateRequestPromotionInfo) Validate() error {
 }
 
 type HotelOrderCreateRequestPromotionInfoPromotionDetailInfoList struct {
-	CheckStatus    *bool   `json:"check_status,omitempty" xml:"check_status,omitempty"`
-	NeedCheck      *bool   `json:"need_check,omitempty" xml:"need_check,omitempty"`
-	PromotionCode  *string `json:"promotion_code,omitempty" xml:"promotion_code,omitempty"`
-	PromotionId    *string `json:"promotion_id,omitempty" xml:"promotion_id,omitempty"`
-	PromotionName  *string `json:"promotion_name,omitempty" xml:"promotion_name,omitempty"`
-	PromotionPrice *int64  `json:"promotion_price,omitempty" xml:"promotion_price,omitempty"`
-	PromotionType  *string `json:"promotion_type,omitempty" xml:"promotion_type,omitempty"`
+	// example:
+	//
+	// true
+	CheckStatus *bool `json:"check_status,omitempty" xml:"check_status,omitempty"`
+	// example:
+	//
+	// true
+	NeedCheck *bool `json:"need_check,omitempty" xml:"need_check,omitempty"`
+	// example:
+	//
+	// tripBybtCrossPromotion-%
+	PromotionCode *string `json:"promotion_code,omitempty" xml:"promotion_code,omitempty"`
+	// example:
+	//
+	// 23778127
+	PromotionId *string `json:"promotion_id,omitempty" xml:"promotion_id,omitempty"`
+	// example:
+	//
+	// 商旅优惠
+	PromotionName *string `json:"promotion_name,omitempty" xml:"promotion_name,omitempty"`
+	// example:
+	//
+	// 100
+	PromotionPrice *int64 `json:"promotion_price,omitempty" xml:"promotion_price,omitempty"`
+	// example:
+	//
+	// 1
+	PromotionType *string `json:"promotion_type,omitempty" xml:"promotion_type,omitempty"`
 }
 
 func (s HotelOrderCreateRequestPromotionInfoPromotionDetailInfoList) String() string {

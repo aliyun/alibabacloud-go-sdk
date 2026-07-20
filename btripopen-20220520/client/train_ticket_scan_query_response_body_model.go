@@ -24,12 +24,31 @@ type iTrainTicketScanQueryResponseBody interface {
 }
 
 type TrainTicketScanQueryResponseBody struct {
-	Code      *string                                 `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                                 `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *TrainTicketScanQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                                   `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                                 `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 成功
+	Message *string                                 `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *TrainTicketScanQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// requestId
+	//
+	// example:
+	//
+	// C61ECFF6-606B-5F66-B81D-D77369043A5F
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	//
+	// example:
+	//
+	// 21041ce316577904808056433edbb2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s TrainTicketScanQueryResponseBody) String() string {
@@ -104,11 +123,23 @@ func (s *TrainTicketScanQueryResponseBody) Validate() error {
 }
 
 type TrainTicketScanQueryResponseBodyModule struct {
-	Items     []*TrainTicketScanQueryResponseBodyModuleItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	PageNo    *int32                                         `json:"page_no,omitempty" xml:"page_no,omitempty"`
-	PageSize  *int32                                         `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	TotalPage *int32                                         `json:"total_page,omitempty" xml:"total_page,omitempty"`
-	TotalSize *int32                                         `json:"total_size,omitempty" xml:"total_size,omitempty"`
+	Items []*TrainTicketScanQueryResponseBodyModuleItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"page_no,omitempty" xml:"page_no,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// example:
+	//
+	// 2
+	TotalPage *int32 `json:"total_page,omitempty" xml:"total_page,omitempty"`
+	// example:
+	//
+	// 30
+	TotalSize *int32 `json:"total_size,omitempty" xml:"total_size,omitempty"`
 }
 
 func (s TrainTicketScanQueryResponseBodyModule) String() string {
@@ -178,39 +209,142 @@ func (s *TrainTicketScanQueryResponseBodyModule) Validate() error {
 }
 
 type TrainTicketScanQueryResponseBodyModuleItems struct {
-	ApplyId            *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	ArrStation         *string `json:"arr_station,omitempty" xml:"arr_station,omitempty"`
-	BillDate           *string `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
-	CoachName          *string `json:"coach_name,omitempty" xml:"coach_name,omitempty"`
-	CostCenter         *string `json:"cost_center,omitempty" xml:"cost_center,omitempty"`
-	DepStation         *string `json:"dep_station,omitempty" xml:"dep_station,omitempty"`
-	DepTime            *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
-	Department         *string `json:"department,omitempty" xml:"department,omitempty"`
+	// example:
+	//
+	// sdasdas123324
+	ApplyId *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	// example:
+	//
+	// 杭州东
+	ArrStation *string `json:"arr_station,omitempty" xml:"arr_station,omitempty"`
+	// example:
+	//
+	// 2022-12-01
+	BillDate *string `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
+	// example:
+	//
+	// 04车
+	CoachName *string `json:"coach_name,omitempty" xml:"coach_name,omitempty"`
+	// example:
+	//
+	// 测试成本中心
+	CostCenter *string `json:"cost_center,omitempty" xml:"cost_center,omitempty"`
+	// example:
+	//
+	// 上海虹桥
+	DepStation *string `json:"dep_station,omitempty" xml:"dep_station,omitempty"`
+	// example:
+	//
+	// 2023-01-12 10:00:00
+	DepTime *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	// example:
+	//
+	// 测试公司-测试部门
+	Department *string `json:"department,omitempty" xml:"department,omitempty"`
+	// example:
+	//
+	// 7647889000001X1
 	ElectronicTicketNo *string `json:"electronic_ticket_no,omitempty" xml:"electronic_ticket_no,omitempty"`
-	FeeTypeShowCode    *int32  `json:"fee_type_show_code,omitempty" xml:"fee_type_show_code,omitempty"`
-	HasChanged         *bool   `json:"has_changed,omitempty" xml:"has_changed,omitempty"`
-	Id                 *string `json:"id,omitempty" xml:"id,omitempty"`
-	InvoiceDate        *string `json:"invoice_date,omitempty" xml:"invoice_date,omitempty"`
-	InvoiceMaterial    *int32  `json:"invoice_material,omitempty" xml:"invoice_material,omitempty"`
-	InvoiceTitle       *string `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
-	OfdUrl             *string `json:"ofd_url,omitempty" xml:"ofd_url,omitempty"`
-	OrderId            *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	OriginTicketNo     *string `json:"origin_ticket_no,omitempty" xml:"origin_ticket_no,omitempty"`
-	OssUrl             *string `json:"oss_url,omitempty" xml:"oss_url,omitempty"`
-	Passenger          *string `json:"passenger,omitempty" xml:"passenger,omitempty"`
-	PdfUrl             *string `json:"pdf_url,omitempty" xml:"pdf_url,omitempty"`
-	Price              *string `json:"price,omitempty" xml:"price,omitempty"`
-	Project            *string `json:"project,omitempty" xml:"project,omitempty"`
-	PurchaserName      *string `json:"purchaser_name,omitempty" xml:"purchaser_name,omitempty"`
-	PurchaserTaxNo     *string `json:"purchaser_tax_no,omitempty" xml:"purchaser_tax_no,omitempty"`
-	Seat               *string `json:"seat,omitempty" xml:"seat,omitempty"`
-	SeatNo             *string `json:"seat_no,omitempty" xml:"seat_no,omitempty"`
-	SerialNumber       *string `json:"serial_number,omitempty" xml:"serial_number,omitempty"`
-	TaxAmount          *string `json:"tax_amount,omitempty" xml:"tax_amount,omitempty"`
-	TaxRate            *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
-	TicketNo           *string `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
-	TrainNo            *string `json:"train_no,omitempty" xml:"train_no,omitempty"`
-	XmlUrl             *string `json:"xml_url,omitempty" xml:"xml_url,omitempty"`
+	// example:
+	//
+	// 1
+	FeeTypeShowCode *int32 `json:"fee_type_show_code,omitempty" xml:"fee_type_show_code,omitempty"`
+	// example:
+	//
+	// true
+	HasChanged *bool `json:"has_changed,omitempty" xml:"has_changed,omitempty"`
+	// example:
+	//
+	// 71
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 2025-04-07 00:00:00
+	InvoiceDate *string `json:"invoice_date,omitempty" xml:"invoice_date,omitempty"`
+	// example:
+	//
+	// 1
+	InvoiceMaterial *int32 `json:"invoice_material,omitempty" xml:"invoice_material,omitempty"`
+	// example:
+	//
+	// 测试发票抬头
+	InvoiceTitle *string `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
+	// example:
+	//
+	// https://www.testurl.com
+	OfdUrl *string `json:"ofd_url,omitempty" xml:"ofd_url,omitempty"`
+	// example:
+	//
+	// 3137168772101111000
+	OrderId *int64 `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// example:
+	//
+	// 112435451313
+	OriginTicketNo *string `json:"origin_ticket_no,omitempty" xml:"origin_ticket_no,omitempty"`
+	// example:
+	//
+	// https://www.testurl.com
+	OssUrl *string `json:"oss_url,omitempty" xml:"oss_url,omitempty"`
+	// example:
+	//
+	// 张三
+	Passenger *string `json:"passenger,omitempty" xml:"passenger,omitempty"`
+	// example:
+	//
+	// https://www.testurl.com
+	PdfUrl *string `json:"pdf_url,omitempty" xml:"pdf_url,omitempty"`
+	// example:
+	//
+	// 100
+	Price *string `json:"price,omitempty" xml:"price,omitempty"`
+	// example:
+	//
+	// 测试项目名称
+	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	// example:
+	//
+	// 测试购方抬头
+	PurchaserName *string `json:"purchaser_name,omitempty" xml:"purchaser_name,omitempty"`
+	// example:
+	//
+	// 91441111111111111S
+	PurchaserTaxNo *string `json:"purchaser_tax_no,omitempty" xml:"purchaser_tax_no,omitempty"`
+	// example:
+	//
+	// 二等座
+	Seat *string `json:"seat,omitempty" xml:"seat,omitempty"`
+	// example:
+	//
+	// 10C号
+	SeatNo *string `json:"seat_no,omitempty" xml:"seat_no,omitempty"`
+	// example:
+	//
+	// 30671211200127U123456
+	SerialNumber *string `json:"serial_number,omitempty" xml:"serial_number,omitempty"`
+	// example:
+	//
+	// 8.26
+	TaxAmount *string `json:"tax_amount,omitempty" xml:"tax_amount,omitempty"`
+	// example:
+	//
+	// 9%
+	TaxRate *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	// 取票号
+	//
+	// example:
+	//
+	// 784-1111111111
+	TicketNo *string `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
+	// 车次
+	//
+	// example:
+	//
+	// G99
+	TrainNo *string `json:"train_no,omitempty" xml:"train_no,omitempty"`
+	// example:
+	//
+	// https://www.testurl.com
+	XmlUrl *string `json:"xml_url,omitempty" xml:"xml_url,omitempty"`
 }
 
 func (s TrainTicketScanQueryResponseBodyModuleItems) String() string {

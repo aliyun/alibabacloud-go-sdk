@@ -17,7 +17,14 @@ type iIntlFlightReShopConsultRequest interface {
 
 type IntlFlightReShopConsultRequest struct {
 	// This parameter is required.
-	OrderId    *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	//
+	// example:
+	//
+	// 1003038202430742196
+	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// example:
+	//
+	// JP2024072600000006
 	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
 }
 

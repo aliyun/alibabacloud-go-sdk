@@ -32,21 +32,76 @@ type iIntlFlightReShopCreateRequest interface {
 }
 
 type IntlFlightReShopCreateRequest struct {
-	AsyncApplyKey  *string `json:"async_apply_key,omitempty" xml:"async_apply_key,omitempty"`
-	AsyncApplyMode *bool   `json:"async_apply_mode,omitempty" xml:"async_apply_mode,omitempty"`
+	// The key for the asynchronous application.
+	//
+	// example:
+	//
+	// asyncKey_2390u230slgw023
+	AsyncApplyKey *string `json:"async_apply_key,omitempty" xml:"async_apply_key,omitempty"`
+	// Specifies whether to use the asynchronous commit pattern. If asynchronous commit is used, only a key is returned before the application result is available.
+	//
+	// example:
+	//
+	// true
+	AsyncApplyMode *bool `json:"async_apply_mode,omitempty" xml:"async_apply_mode,omitempty"`
+	// The business travel order ID. This parameter is required.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1017035199702438072
 	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// The ID of the rebooking product.
+	//
 	// This parameter is required.
-	OtaItemId        *string `json:"ota_item_id,omitempty" xml:"ota_item_id,omitempty"`
-	OutOrderId       *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	//
+	// example:
+	//
+	// d01eb358456b4ba38eb4d8f1499186da_0
+	OtaItemId *string `json:"ota_item_id,omitempty" xml:"ota_item_id,omitempty"`
+	// The external order ID.
+	//
+	// example:
+	//
+	// 3881646464813400064
+	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	// The external rebooking application ID.
+	//
+	// example:
+	//
+	// JPM20241024354
 	OutReShopApplyId *string `json:"out_re_shop_apply_id,omitempty" xml:"out_re_shop_apply_id,omitempty"`
+	// The rebooking group key returned by the inquiry operation.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// edcac4f4c79d40ccb141ddb6da567e65
 	PassengerJourneyGroupKey *string `json:"passenger_journey_group_key,omitempty" xml:"passenger_journey_group_key,omitempty"`
+	// The rebooking reason code.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
 	ReShopReasonCode *string `json:"re_shop_reason_code,omitempty" xml:"re_shop_reason_code,omitempty"`
+	// The list of passengers selected for rebooking.
+	//
 	// This parameter is required.
 	SelectedPassengers []*IntlFlightReShopCreateRequestSelectedPassengers `json:"selected_passengers,omitempty" xml:"selected_passengers,omitempty" type:"Repeated"`
-	TotalReShopFee     *int64                                             `json:"total_re_shop_fee,omitempty" xml:"total_re_shop_fee,omitempty"`
+	// The total rebooking fee (excluding the service fee), in cents.
+	//
+	//      	- Total rebooking fee = cabin upgrade fee + handling fee + tax difference (applicable to international flights).
+	//
+	//      	- Pass in this parameter when fees are incurred to verify whether the price has changed.
+	//
+	// example:
+	//
+	// 1400
+	TotalReShopFee *int64 `json:"total_re_shop_fee,omitempty" xml:"total_re_shop_fee,omitempty"`
 }
 
 func (s IntlFlightReShopCreateRequest) String() string {
@@ -161,8 +216,18 @@ func (s *IntlFlightReShopCreateRequest) Validate() error {
 }
 
 type IntlFlightReShopCreateRequestSelectedPassengers struct {
-	FullName    *string `json:"full_name,omitempty" xml:"full_name,omitempty"`
-	PassengerId *int64  `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
+	// The full name of the passenger.
+	//
+	// example:
+	//
+	// ZHANG/SAN
+	FullName *string `json:"full_name,omitempty" xml:"full_name,omitempty"`
+	// The ID of the passenger.
+	//
+	// example:
+	//
+	// 1000001
+	PassengerId *int64 `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
 }
 
 func (s IntlFlightReShopCreateRequestSelectedPassengers) String() string {

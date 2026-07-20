@@ -34,20 +34,50 @@ type iFlightListingSearchV2ShrinkRequest interface {
 }
 
 type FlightListingSearchV2ShrinkRequest struct {
+	// example:
+	//
+	// CA
 	AirlineCode         *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
 	CabinTypeListShrink *string `json:"cabin_type_list,omitempty" xml:"cabin_type_list,omitempty"`
-	DirectOnly          *bool   `json:"direct_only,omitempty" xml:"direct_only,omitempty"`
+	// example:
+	//
+	// true
+	DirectOnly *bool `json:"direct_only,omitempty" xml:"direct_only,omitempty"`
 	// This parameter is required.
-	IsvName             *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
-	NeedMultiClassPrice *bool   `json:"need_multi_class_price,omitempty" xml:"need_multi_class_price,omitempty"`
-	NeedQueryServiceFee *bool   `json:"need_query_service_fee,omitempty" xml:"need_query_service_fee,omitempty"`
-	NeedShareFlight     *bool   `json:"need_share_flight,omitempty" xml:"need_share_flight,omitempty"`
-	NeedYCBestPrice     *bool   `json:"need_y_c_best_price,omitempty" xml:"need_y_c_best_price,omitempty"`
+	//
+	// example:
+	//
+	// cheshi
+	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	// example:
+	//
+	// false
+	NeedMultiClassPrice *bool `json:"need_multi_class_price,omitempty" xml:"need_multi_class_price,omitempty"`
+	// example:
+	//
+	// true
+	NeedQueryServiceFee *bool `json:"need_query_service_fee,omitempty" xml:"need_query_service_fee,omitempty"`
+	// example:
+	//
+	// true
+	NeedShareFlight *bool `json:"need_share_flight,omitempty" xml:"need_share_flight,omitempty"`
+	// example:
+	//
+	// false
+	NeedYCBestPrice *bool `json:"need_y_c_best_price,omitempty" xml:"need_y_c_best_price,omitempty"`
 	// This parameter is required.
 	SearchJourneysShrink *string `json:"search_journeys,omitempty" xml:"search_journeys,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
 	SearchMode *int32 `json:"search_mode,omitempty" xml:"search_mode,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	TripType *int32 `json:"trip_type,omitempty" xml:"trip_type,omitempty"`
 }
 

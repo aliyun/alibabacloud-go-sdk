@@ -34,17 +34,49 @@ type iFlightModifyApplyV2Request interface {
 }
 
 type FlightModifyApplyV2Request struct {
-	CacheKey                  *string                                                `json:"cache_key,omitempty" xml:"cache_key,omitempty"`
-	ContactPhone              *string                                                `json:"contact_phone,omitempty" xml:"contact_phone,omitempty"`
-	IsvName                   *string                                                `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
-	ItemId                    *string                                                `json:"item_id,omitempty" xml:"item_id,omitempty"`
-	OrderId                   *int64                                                 `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	OutOrderId                *string                                                `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	// example:
+	//
+	// 72e961f8-930b-43c1-a4ca-18a6f28349c6distributionModifyCacheInfo
+	CacheKey *string `json:"cache_key,omitempty" xml:"cache_key,omitempty"`
+	// example:
+	//
+	// 17816963077
+	ContactPhone *string `json:"contact_phone,omitempty" xml:"contact_phone,omitempty"`
+	// example:
+	//
+	// name
+	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	// example:
+	//
+	// fa2fb23a859a4e78b5ddb87a6a23094b_0
+	ItemId *string `json:"item_id,omitempty" xml:"item_id,omitempty"`
+	// example:
+	//
+	// 1017002195370467138
+	OrderId *int64 `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// example:
+	//
+	// 1017002195370467137
+	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	// example:
+	//
+	// 1019195786853020
 	OutSubOrderId             *string                                                `json:"out_sub_order_id,omitempty" xml:"out_sub_order_id,omitempty"`
 	PassengerSegmentRelations []*FlightModifyApplyV2RequestPassengerSegmentRelations `json:"passenger_segment_relations,omitempty" xml:"passenger_segment_relations,omitempty" type:"Repeated"`
-	Reason                    *string                                                `json:"reason,omitempty" xml:"reason,omitempty"`
-	SessionId                 *string                                                `json:"session_id,omitempty" xml:"session_id,omitempty"`
-	Voluntary                 *bool                                                  `json:"voluntary,omitempty" xml:"voluntary,omitempty"`
+	// example:
+	//
+	// 测试原因
+	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
+	// sessionId
+	//
+	// example:
+	//
+	// a2ffebfe733742aab5c491d960ba3d59
+	SessionId *string `json:"session_id,omitempty" xml:"session_id,omitempty"`
+	// example:
+	//
+	// true
+	Voluntary *bool `json:"voluntary,omitempty" xml:"voluntary,omitempty"`
 }
 
 func (s FlightModifyApplyV2Request) String() string {
@@ -168,6 +200,9 @@ func (s *FlightModifyApplyV2Request) Validate() error {
 }
 
 type FlightModifyApplyV2RequestPassengerSegmentRelations struct {
+	// example:
+	//
+	// 3243028
 	PassengerId   *string   `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
 	SegmentIdList []*string `json:"segment_id_list,omitempty" xml:"segment_id_list,omitempty" type:"Repeated"`
 }

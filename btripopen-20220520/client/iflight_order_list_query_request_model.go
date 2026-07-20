@@ -28,12 +28,24 @@ type iIFlightOrderListQueryRequest interface {
 }
 
 type IFlightOrderListQueryRequest struct {
-	ApplyIdList          []*string `json:"apply_id_list,omitempty" xml:"apply_id_list,omitempty" type:"Repeated"`
-	BookTypeList         []*int32  `json:"book_type_list,omitempty" xml:"book_type_list,omitempty" type:"Repeated"`
-	BookerId             []*string `json:"booker_id,omitempty" xml:"booker_id,omitempty" type:"Repeated"`
-	EndDate              *string   `json:"end_date,omitempty" xml:"end_date,omitempty"`
-	PageSize             *int32    `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	ScrollId             *string   `json:"scroll_id,omitempty" xml:"scroll_id,omitempty"`
+	ApplyIdList  []*string `json:"apply_id_list,omitempty" xml:"apply_id_list,omitempty" type:"Repeated"`
+	BookTypeList []*int32  `json:"book_type_list,omitempty" xml:"book_type_list,omitempty" type:"Repeated"`
+	BookerId     []*string `json:"booker_id,omitempty" xml:"booker_id,omitempty" type:"Repeated"`
+	// example:
+	//
+	// yyyy-MM-dd HH:mm:ss
+	EndDate *string `json:"end_date,omitempty" xml:"end_date,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// example:
+	//
+	// CAESBgoEIgIIABgAIhkKFwMSAAAAMUw4ZGViODFlYmM3MYzM4
+	ScrollId *string `json:"scroll_id,omitempty" xml:"scroll_id,omitempty"`
+	// example:
+	//
+	// yyyy-MM-dd HH:mm:ss
 	StartDate            *string   `json:"start_date,omitempty" xml:"start_date,omitempty"`
 	ThirdPartApplyIdList []*string `json:"third_part_apply_id_list,omitempty" xml:"third_part_apply_id_list,omitempty" type:"Repeated"`
 }

@@ -24,12 +24,30 @@ type iTrainOrderCreateResponseBody interface {
 }
 
 type TrainOrderCreateResponseBody struct {
-	Code      *string                             `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                             `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *TrainOrderCreateResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                               `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                             `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 成功
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// module
+	Module *TrainOrderCreateResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// 407543AF-2BD9-5890-BD92-9D1AB7218B27
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	//
+	// example:
+	//
+	// 21041ce316577904808056433edbb2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s TrainOrderCreateResponseBody) String() string {
@@ -104,10 +122,22 @@ func (s *TrainOrderCreateResponseBody) Validate() error {
 }
 
 type TrainOrderCreateResponseBodyModule struct {
-	OrderId    *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// example:
+	//
+	// 1017002195798359369
+	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// example:
+	//
+	// 1233333
 	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
-	PayStatus  *string `json:"pay_status,omitempty" xml:"pay_status,omitempty"`
-	ServiceFee *int64  `json:"service_fee,omitempty" xml:"service_fee,omitempty"`
+	// example:
+	//
+	// 9
+	PayStatus *string `json:"pay_status,omitempty" xml:"pay_status,omitempty"`
+	// example:
+	//
+	// 5
+	ServiceFee *int64 `json:"service_fee,omitempty" xml:"service_fee,omitempty"`
 }
 
 func (s TrainOrderCreateResponseBodyModule) String() string {

@@ -36,20 +36,55 @@ type iFuPointBillSettlementQueryRequest interface {
 }
 
 type FuPointBillSettlementQueryRequest struct {
-	ApplyId             *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	BillBatch           *string `json:"bill_batch,omitempty" xml:"bill_batch,omitempty"`
-	BillRecordTimeEnd   *string `json:"bill_record_time_end,omitempty" xml:"bill_record_time_end,omitempty"`
+	ApplyId *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	// example:
+	//
+	// 20240101
+	BillBatch *string `json:"bill_batch,omitempty" xml:"bill_batch,omitempty"`
+	// example:
+	//
+	// 2025-01-02
+	BillRecordTimeEnd *string `json:"bill_record_time_end,omitempty" xml:"bill_record_time_end,omitempty"`
+	// example:
+	//
+	// 2025-01-01
 	BillRecordTimeStart *string `json:"bill_record_time_start,omitempty" xml:"bill_record_time_start,omitempty"`
-	CooperatorId        *string `json:"cooperator_id,omitempty" xml:"cooperator_id,omitempty"`
-	OrderId             *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// example:
+	//
+	// cooperator_alibtrip
+	CooperatorId *string `json:"cooperator_id,omitempty" xml:"cooperator_id,omitempty"`
+	// example:
+	//
+	// 12345
+	OrderId *int64 `json:"order_id,omitempty" xml:"order_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"page_no,omitempty" xml:"page_no,omitempty"`
 	// This parameter is required.
-	PageSize    *int32  `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	PeriodEnd   *string `json:"period_end,omitempty" xml:"period_end,omitempty"`
+	//
+	// example:
+	//
+	// 100
+	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// example:
+	//
+	// 2021-10-02
+	PeriodEnd *string `json:"period_end,omitempty" xml:"period_end,omitempty"`
+	// example:
+	//
+	// 2021-10-01
 	PeriodStart *string `json:"period_start,omitempty" xml:"period_start,omitempty"`
-	ScrollId    *string `json:"scroll_id,omitempty" xml:"scroll_id,omitempty"`
-	ScrollMod   *bool   `json:"scroll_mod,omitempty" xml:"scroll_mod,omitempty"`
+	// example:
+	//
+	// 1qwe
+	ScrollId *string `json:"scroll_id,omitempty" xml:"scroll_id,omitempty"`
+	// example:
+	//
+	// true
+	ScrollMod *bool `json:"scroll_mod,omitempty" xml:"scroll_mod,omitempty"`
 }
 
 func (s FuPointBillSettlementQueryRequest) String() string {

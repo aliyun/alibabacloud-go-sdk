@@ -24,12 +24,29 @@ type iUserQueryResponseBody interface {
 }
 
 type UserQueryResponseBody struct {
-	Code      *string                      `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                      `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *UserQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                        `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                      `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 成功
+	Message *string                      `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *UserQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// C61ECFF6-606B-5F66-B81D-D77369043A5F
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	//
+	// example:
+	//
+	// 2f624a6316366024344424669e3279
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s UserQueryResponseBody) String() string {
@@ -104,10 +121,19 @@ func (s *UserQueryResponseBody) Validate() error {
 }
 
 type UserQueryResponseBodyModule struct {
-	HasMore   *bool                               `json:"has_more,omitempty" xml:"has_more,omitempty"`
-	Items     []*UserQueryResponseBodyModuleItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	PageToken *string                             `json:"page_token,omitempty" xml:"page_token,omitempty"`
-	Total     *int64                              `json:"total,omitempty" xml:"total,omitempty"`
+	// example:
+	//
+	// true
+	HasMore *bool                               `json:"has_more,omitempty" xml:"has_more,omitempty"`
+	Items   []*UserQueryResponseBodyModuleItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 9YN+jxa7PcxbNUTISeKjEw==
+	PageToken *string `json:"page_token,omitempty" xml:"page_token,omitempty"`
+	// example:
+	//
+	// 0
+	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s UserQueryResponseBodyModule) String() string {
@@ -168,10 +194,22 @@ func (s *UserQueryResponseBodyModule) Validate() error {
 }
 
 type UserQueryResponseBodyModuleItems struct {
-	EmployeeNick        *string `json:"employee_nick,omitempty" xml:"employee_nick,omitempty"`
-	LeaveStatus         *int32  `json:"leave_status,omitempty" xml:"leave_status,omitempty"`
+	// example:
+	//
+	// 张三
+	EmployeeNick *string `json:"employee_nick,omitempty" xml:"employee_nick,omitempty"`
+	// example:
+	//
+	// 0
+	LeaveStatus *int32 `json:"leave_status,omitempty" xml:"leave_status,omitempty"`
+	// example:
+	//
+	// 123
 	ThirdPartEmployeeId *string `json:"third_part_employee_id,omitempty" xml:"third_part_employee_id,omitempty"`
-	ThirdPartJobNo      *string `json:"third_part_job_no,omitempty" xml:"third_part_job_no,omitempty"`
+	// example:
+	//
+	// 001
+	ThirdPartJobNo *string `json:"third_part_job_no,omitempty" xml:"third_part_job_no,omitempty"`
 }
 
 func (s UserQueryResponseBodyModuleItems) String() string {

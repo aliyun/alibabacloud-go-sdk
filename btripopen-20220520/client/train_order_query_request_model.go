@@ -17,8 +17,15 @@ type iTrainOrderQueryRequest interface {
 
 type TrainOrderQueryRequest struct {
 	// This parameter is required.
-	OrderId *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	UserId  *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	//
+	// example:
+	//
+	// 2627694109810885616
+	OrderId *int64 `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// example:
+	//
+	// 用户ID
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s TrainOrderQueryRequest) String() string {

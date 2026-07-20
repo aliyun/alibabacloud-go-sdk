@@ -24,12 +24,27 @@ type iTrainOrderQueryResponseBody interface {
 }
 
 type TrainOrderQueryResponseBody struct {
-	Code      *string                            `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                            `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *TrainOrderQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                              `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                            `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 成功
+	Message *string                            `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *TrainOrderQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// 407543AF-2BD9-5890-BD92-9D1AB7218B27
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 21041ce316577904808056433edbb2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s TrainOrderQueryResponseBody) String() string {
@@ -259,25 +274,82 @@ func (s *TrainOrderQueryResponseBodyModule) Validate() error {
 }
 
 type TrainOrderQueryResponseBodyModuleChangeTicketInfoList struct {
-	ChangeCoachNo       *string  `json:"change_coach_no,omitempty" xml:"change_coach_no,omitempty"`
-	ChangeGapFee        *float64 `json:"change_gap_fee,omitempty" xml:"change_gap_fee,omitempty"`
-	ChangeHandlingFee   *float64 `json:"change_handling_fee,omitempty" xml:"change_handling_fee,omitempty"`
-	ChangeSeatNo        *string  `json:"change_seat_no,omitempty" xml:"change_seat_no,omitempty"`
-	ChangeSeatTypeName  *string  `json:"change_seat_type_name,omitempty" xml:"change_seat_type_name,omitempty"`
-	ChangeServiceFee    *float64 `json:"change_service_fee,omitempty" xml:"change_service_fee,omitempty"`
-	ChangeTrainNo       *string  `json:"change_train_no,omitempty" xml:"change_train_no,omitempty"`
-	ChangeTrainTypeName *string  `json:"change_train_type_name,omitempty" xml:"change_train_type_name,omitempty"`
-	CheckInTime         *string  `json:"check_in_time,omitempty" xml:"check_in_time,omitempty"`
-	CheckOutTime        *string  `json:"check_out_time,omitempty" xml:"check_out_time,omitempty"`
-	EndTime             *string  `json:"end_time,omitempty" xml:"end_time,omitempty"`
-	FromStationName     *string  `json:"from_station_name,omitempty" xml:"from_station_name,omitempty"`
-	GmtCreate           *string  `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
-	GmtModify           *string  `json:"gmt_modify,omitempty" xml:"gmt_modify,omitempty"`
-	OriginTicketNo      *string  `json:"origin_ticket_no,omitempty" xml:"origin_ticket_no,omitempty"`
-	OutTicketStatus     *string  `json:"out_ticket_status,omitempty" xml:"out_ticket_status,omitempty"`
-	StartTime           *string  `json:"start_time,omitempty" xml:"start_time,omitempty"`
-	TicketNo            *string  `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
-	ToStationName       *string  `json:"to_station_name,omitempty" xml:"to_station_name,omitempty"`
+	// example:
+	//
+	// 03
+	ChangeCoachNo *string `json:"change_coach_no,omitempty" xml:"change_coach_no,omitempty"`
+	// example:
+	//
+	// 100
+	ChangeGapFee *float64 `json:"change_gap_fee,omitempty" xml:"change_gap_fee,omitempty"`
+	// example:
+	//
+	// 100
+	ChangeHandlingFee *float64 `json:"change_handling_fee,omitempty" xml:"change_handling_fee,omitempty"`
+	// example:
+	//
+	// 004C
+	ChangeSeatNo *string `json:"change_seat_no,omitempty" xml:"change_seat_no,omitempty"`
+	// example:
+	//
+	// 二等座
+	ChangeSeatTypeName *string `json:"change_seat_type_name,omitempty" xml:"change_seat_type_name,omitempty"`
+	// example:
+	//
+	// 100
+	ChangeServiceFee *float64 `json:"change_service_fee,omitempty" xml:"change_service_fee,omitempty"`
+	// example:
+	//
+	// D103
+	ChangeTrainNo *string `json:"change_train_no,omitempty" xml:"change_train_no,omitempty"`
+	// example:
+	//
+	// 高铁
+	ChangeTrainTypeName *string `json:"change_train_type_name,omitempty" xml:"change_train_type_name,omitempty"`
+	// example:
+	//
+	// 2022-05-15T22:27Z
+	CheckInTime *string `json:"check_in_time,omitempty" xml:"check_in_time,omitempty"`
+	// example:
+	//
+	// 2022-05-15T22:27Z
+	CheckOutTime *string `json:"check_out_time,omitempty" xml:"check_out_time,omitempty"`
+	// example:
+	//
+	// 2022-05-15T22:27Z
+	EndTime *string `json:"end_time,omitempty" xml:"end_time,omitempty"`
+	// example:
+	//
+	// 北京
+	FromStationName *string `json:"from_station_name,omitempty" xml:"from_station_name,omitempty"`
+	// example:
+	//
+	// 2022-05-15T22:27Z
+	GmtCreate *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	// example:
+	//
+	// 2022-05-15T22:27Z
+	GmtModify *string `json:"gmt_modify,omitempty" xml:"gmt_modify,omitempty"`
+	// example:
+	//
+	// CS987JKDF
+	OriginTicketNo *string `json:"origin_ticket_no,omitempty" xml:"origin_ticket_no,omitempty"`
+	// example:
+	//
+	// m
+	OutTicketStatus *string `json:"out_ticket_status,omitempty" xml:"out_ticket_status,omitempty"`
+	// example:
+	//
+	// 2022-05-15T22:27Z
+	StartTime *string `json:"start_time,omitempty" xml:"start_time,omitempty"`
+	// example:
+	//
+	// CS987JKDF
+	TicketNo *string `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
+	// example:
+	//
+	// 上海
+	ToStationName *string `json:"to_station_name,omitempty" xml:"to_station_name,omitempty"`
 }
 
 func (s TrainOrderQueryResponseBodyModuleChangeTicketInfoList) String() string {
@@ -464,7 +536,13 @@ func (s *TrainOrderQueryResponseBodyModuleChangeTicketInfoList) Validate() error
 }
 
 type TrainOrderQueryResponseBodyModuleInvoiceInfo struct {
-	Id    *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 11754
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 测试发票抬头
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
@@ -499,25 +577,86 @@ func (s *TrainOrderQueryResponseBodyModuleInvoiceInfo) Validate() error {
 }
 
 type TrainOrderQueryResponseBodyModuleOrderBaseInfo struct {
-	ApplyId                *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	BtripTitle             *string `json:"btrip_title,omitempty" xml:"btrip_title,omitempty"`
-	ContactName            *string `json:"contact_name,omitempty" xml:"contact_name,omitempty"`
-	CorpId                 *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
-	CorpName               *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
-	DepartId               *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
-	DepartName             *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
-	ExceedApplyId          *string `json:"exceed_apply_id,omitempty" xml:"exceed_apply_id,omitempty"`
+	// example:
+	//
+	// 11657
+	ApplyId *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	// example:
+	//
+	// 出差
+	BtripTitle *string `json:"btrip_title,omitempty" xml:"btrip_title,omitempty"`
+	// example:
+	//
+	// 张三
+	ContactName *string `json:"contact_name,omitempty" xml:"contact_name,omitempty"`
+	// example:
+	//
+	// 企业id
+	CorpId *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	// example:
+	//
+	// 企业名称
+	CorpName *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	// example:
+	//
+	// 部门id
+	DepartId *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	// example:
+	//
+	// 部门名称
+	DepartName *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	// 火车票超标审批id
+	//
+	// example:
+	//
+	// 1422113021033961000
+	ExceedApplyId *string `json:"exceed_apply_id,omitempty" xml:"exceed_apply_id,omitempty"`
+	// 火车票超标审批三方id
+	//
+	// example:
+	//
+	// 2022113021030003600001715
 	ExceedThirdPartApplyId *string `json:"exceed_third_part_apply_id,omitempty" xml:"exceed_third_part_apply_id,omitempty"`
-	GmtCreate              *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
-	GmtModify              *string `json:"gmt_modify,omitempty" xml:"gmt_modify,omitempty"`
-	ItineraryId            *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
-	OrderId                *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	OrderStatus            *int32  `json:"order_status,omitempty" xml:"order_status,omitempty"`
-	ThirdpartApplyId       *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
-	ThirdpartCorpId        *string `json:"thirdpart_corp_id,omitempty" xml:"thirdpart_corp_id,omitempty"`
-	ThirdpartItineraryId   *string `json:"thirdpart_itinerary_id,omitempty" xml:"thirdpart_itinerary_id,omitempty"`
-	TripType               *int32  `json:"trip_type,omitempty" xml:"trip_type,omitempty"`
-	UserId                 *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// example:
+	//
+	// 2022-05-15T22:27Z
+	GmtCreate *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	// example:
+	//
+	// 2022-05-15T22:27Z
+	GmtModify *string `json:"gmt_modify,omitempty" xml:"gmt_modify,omitempty"`
+	// example:
+	//
+	// kaxasevesguikxn123kixnghid
+	ItineraryId *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
+	// example:
+	//
+	// 2627694109810885616
+	OrderId *int64 `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// example:
+	//
+	// 4
+	OrderStatus *int32 `json:"order_status,omitempty" xml:"order_status,omitempty"`
+	// example:
+	//
+	// CS-EDES9898
+	ThirdpartApplyId *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
+	// example:
+	//
+	// 第三方企业id
+	ThirdpartCorpId *string `json:"thirdpart_corp_id,omitempty" xml:"thirdpart_corp_id,omitempty"`
+	// example:
+	//
+	// kaxasevesguikxn123kixnghid
+	ThirdpartItineraryId *string `json:"thirdpart_itinerary_id,omitempty" xml:"thirdpart_itinerary_id,omitempty"`
+	// example:
+	//
+	// 0
+	TripType *int32 `json:"trip_type,omitempty" xml:"trip_type,omitempty"`
+	// example:
+	//
+	// 用户id
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s TrainOrderQueryResponseBodyModuleOrderBaseInfo) String() string {
@@ -704,16 +843,46 @@ func (s *TrainOrderQueryResponseBodyModuleOrderBaseInfo) Validate() error {
 }
 
 type TrainOrderQueryResponseBodyModulePassengerInfoList struct {
-	CostCenterId       *int64  `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
-	CostCenterName     *string `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
-	CostCenterNumber   *string `json:"cost_center_number,omitempty" xml:"cost_center_number,omitempty"`
-	ProjectCode        *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectId          *int64  `json:"project_id,omitempty" xml:"project_id,omitempty"`
-	ProjectTitle       *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	// example:
+	//
+	// 11564
+	CostCenterId *int64 `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	// example:
+	//
+	// 测试成本中心
+	CostCenterName *string `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
+	// example:
+	//
+	// 01
+	CostCenterNumber *string `json:"cost_center_number,omitempty" xml:"cost_center_number,omitempty"`
+	// example:
+	//
+	// CSP-01
+	ProjectCode *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	// example:
+	//
+	// 22562
+	ProjectId *int64 `json:"project_id,omitempty" xml:"project_id,omitempty"`
+	// example:
+	//
+	// 测试项目
+	ProjectTitle *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	// example:
+	//
+	// CS-22562
 	ThirdpartProjectId *string `json:"thirdpart_project_id,omitempty" xml:"thirdpart_project_id,omitempty"`
-	UserId             *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserName           *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
-	UserType           *int32  `json:"user_type,omitempty" xml:"user_type,omitempty"`
+	// example:
+	//
+	// 用户id
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// example:
+	//
+	// 张三
+	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	// example:
+	//
+	// 0
+	UserType *int32 `json:"user_type,omitempty" xml:"user_type,omitempty"`
 }
 
 func (s TrainOrderQueryResponseBodyModulePassengerInfoList) String() string {
@@ -819,13 +988,34 @@ func (s *TrainOrderQueryResponseBodyModulePassengerInfoList) Validate() error {
 }
 
 type TrainOrderQueryResponseBodyModulePriceInfoList struct {
-	CategoryCode  *int32   `json:"category_code,omitempty" xml:"category_code,omitempty"`
-	GmtCreate     *string  `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
-	PassengerName *string  `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
-	PayType       *int32   `json:"pay_type,omitempty" xml:"pay_type,omitempty"`
-	Price         *float64 `json:"price,omitempty" xml:"price,omitempty"`
-	TradeId       *string  `json:"trade_id,omitempty" xml:"trade_id,omitempty"`
-	Type          *int32   `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// 1
+	CategoryCode *int32 `json:"category_code,omitempty" xml:"category_code,omitempty"`
+	// example:
+	//
+	// 2022-05-15T22:27Z
+	GmtCreate *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	// example:
+	//
+	// 张三/李四
+	PassengerName *string `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
+	// example:
+	//
+	// 1
+	PayType *int32 `json:"pay_type,omitempty" xml:"pay_type,omitempty"`
+	// example:
+	//
+	// 0
+	Price *float64 `json:"price,omitempty" xml:"price,omitempty"`
+	// example:
+	//
+	// 12312312001
+	TradeId *string `json:"trade_id,omitempty" xml:"trade_id,omitempty"`
+	// example:
+	//
+	// 1
+	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s TrainOrderQueryResponseBodyModulePriceInfoList) String() string {
@@ -904,11 +1094,26 @@ func (s *TrainOrderQueryResponseBodyModulePriceInfoList) Validate() error {
 }
 
 type TrainOrderQueryResponseBodyModuleRefundTicketInfoList struct {
-	GmtCreate        *string  `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
-	GmtModify        *string  `json:"gmt_modify,omitempty" xml:"gmt_modify,omitempty"`
-	RefundFee        *float64 `json:"refund_fee,omitempty" xml:"refund_fee,omitempty"`
+	// example:
+	//
+	// 2022-05-15T22:27Z
+	GmtCreate *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	// example:
+	//
+	// 2022-05-15T22:27Z
+	GmtModify *string `json:"gmt_modify,omitempty" xml:"gmt_modify,omitempty"`
+	// example:
+	//
+	// 10
+	RefundFee *float64 `json:"refund_fee,omitempty" xml:"refund_fee,omitempty"`
+	// example:
+	//
+	// 10
 	RefundServiceFee *float64 `json:"refund_service_fee,omitempty" xml:"refund_service_fee,omitempty"`
-	TicketNo         *string  `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
+	// example:
+	//
+	// CS987JKDF
+	TicketNo *string `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
 }
 
 func (s TrainOrderQueryResponseBodyModuleRefundTicketInfoList) String() string {
@@ -969,24 +1174,78 @@ func (s *TrainOrderQueryResponseBodyModuleRefundTicketInfoList) Validate() error
 }
 
 type TrainOrderQueryResponseBodyModuleTicketInfoList struct {
-	Changed         *bool    `json:"changed,omitempty" xml:"changed,omitempty"`
-	CheckInTime     *string  `json:"check_in_time,omitempty" xml:"check_in_time,omitempty"`
-	CheckOutTime    *string  `json:"check_out_time,omitempty" xml:"check_out_time,omitempty"`
-	CoachNo         *string  `json:"coach_no,omitempty" xml:"coach_no,omitempty"`
-	EndTime         *string  `json:"end_time,omitempty" xml:"end_time,omitempty"`
-	GmtCreate       *string  `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
-	GmtModify       *string  `json:"gmt_modify,omitempty" xml:"gmt_modify,omitempty"`
-	OutTicketStatus *string  `json:"out_ticket_status,omitempty" xml:"out_ticket_status,omitempty"`
-	PayType         *int32   `json:"pay_type,omitempty" xml:"pay_type,omitempty"`
-	SeatNo          *string  `json:"seat_no,omitempty" xml:"seat_no,omitempty"`
-	SeatTypeName    *string  `json:"seat_type_name,omitempty" xml:"seat_type_name,omitempty"`
-	ServiceFee      *float64 `json:"service_fee,omitempty" xml:"service_fee,omitempty"`
-	StartTime       *string  `json:"start_time,omitempty" xml:"start_time,omitempty"`
-	TicketNo        *string  `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
-	TicketPrice     *float64 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
-	TicketStatus    *int32   `json:"ticket_status,omitempty" xml:"ticket_status,omitempty"`
-	TrainTypeName   *string  `json:"train_type_name,omitempty" xml:"train_type_name,omitempty"`
-	UserId          *string  `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// example:
+	//
+	// false
+	Changed *bool `json:"changed,omitempty" xml:"changed,omitempty"`
+	// example:
+	//
+	// 2022-05-15T22:27Z
+	CheckInTime *string `json:"check_in_time,omitempty" xml:"check_in_time,omitempty"`
+	// example:
+	//
+	// 2022-05-15T22:27Z
+	CheckOutTime *string `json:"check_out_time,omitempty" xml:"check_out_time,omitempty"`
+	// example:
+	//
+	// 01
+	CoachNo *string `json:"coach_no,omitempty" xml:"coach_no,omitempty"`
+	// example:
+	//
+	// 2022-05-15T22:27Z
+	EndTime *string `json:"end_time,omitempty" xml:"end_time,omitempty"`
+	// example:
+	//
+	// 2022-05-15T22:27Z
+	GmtCreate *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	// example:
+	//
+	// 2022-05-15T22:27Z
+	GmtModify *string `json:"gmt_modify,omitempty" xml:"gmt_modify,omitempty"`
+	// example:
+	//
+	// m
+	OutTicketStatus *string `json:"out_ticket_status,omitempty" xml:"out_ticket_status,omitempty"`
+	// example:
+	//
+	// 1
+	PayType *int32 `json:"pay_type,omitempty" xml:"pay_type,omitempty"`
+	// example:
+	//
+	// A001
+	SeatNo *string `json:"seat_no,omitempty" xml:"seat_no,omitempty"`
+	// example:
+	//
+	// 硬座
+	SeatTypeName *string `json:"seat_type_name,omitempty" xml:"seat_type_name,omitempty"`
+	// example:
+	//
+	// 10
+	ServiceFee *float64 `json:"service_fee,omitempty" xml:"service_fee,omitempty"`
+	// example:
+	//
+	// 2022-05-15T22:27Z
+	StartTime *string `json:"start_time,omitempty" xml:"start_time,omitempty"`
+	// example:
+	//
+	// CS987JKDF
+	TicketNo *string `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
+	// example:
+	//
+	// 100
+	TicketPrice *float64 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	// example:
+	//
+	// 1
+	TicketStatus *int32 `json:"ticket_status,omitempty" xml:"ticket_status,omitempty"`
+	// example:
+	//
+	// 普快
+	TrainTypeName *string `json:"train_type_name,omitempty" xml:"train_type_name,omitempty"`
+	// example:
+	//
+	// 用户id
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s TrainOrderQueryResponseBodyModuleTicketInfoList) String() string {
@@ -1164,14 +1423,38 @@ func (s *TrainOrderQueryResponseBodyModuleTicketInfoList) Validate() error {
 }
 
 type TrainOrderQueryResponseBodyModuleTrainInfo struct {
-	ArrTime         *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
-	DepTime         *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
-	FromCityAdCode  *string `json:"from_city_ad_code,omitempty" xml:"from_city_ad_code,omitempty"`
+	// example:
+	//
+	// 2022-05-15T22:27Z
+	ArrTime *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	// example:
+	//
+	// 2022-05-15T22:27Z
+	DepTime *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	// example:
+	//
+	// 330100
+	FromCityAdCode *string `json:"from_city_ad_code,omitempty" xml:"from_city_ad_code,omitempty"`
+	// example:
+	//
+	// 北京西站
 	FromStationName *string `json:"from_station_name,omitempty" xml:"from_station_name,omitempty"`
-	RunTime         *int64  `json:"run_time,omitempty" xml:"run_time,omitempty"`
-	ToCityAdCode    *string `json:"to_city_ad_code,omitempty" xml:"to_city_ad_code,omitempty"`
-	ToStationName   *string `json:"to_station_name,omitempty" xml:"to_station_name,omitempty"`
-	TrainNo         *string `json:"train_no,omitempty" xml:"train_no,omitempty"`
+	// example:
+	//
+	// 100
+	RunTime *int64 `json:"run_time,omitempty" xml:"run_time,omitempty"`
+	// example:
+	//
+	// 330100
+	ToCityAdCode *string `json:"to_city_ad_code,omitempty" xml:"to_city_ad_code,omitempty"`
+	// example:
+	//
+	// 杭州东站
+	ToStationName *string `json:"to_station_name,omitempty" xml:"to_station_name,omitempty"`
+	// example:
+	//
+	// CS-150
+	TrainNo *string `json:"train_no,omitempty" xml:"train_no,omitempty"`
 }
 
 func (s TrainOrderQueryResponseBodyModuleTrainInfo) String() string {

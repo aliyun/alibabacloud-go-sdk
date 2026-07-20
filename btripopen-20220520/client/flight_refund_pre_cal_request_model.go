@@ -19,7 +19,14 @@ type iFlightRefundPreCalRequest interface {
 
 type FlightRefundPreCalRequest struct {
 	// This parameter is required.
-	DisOrderId  *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
+	//
+	// example:
+	//
+	// dis123
+	DisOrderId *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
+	// example:
+	//
+	// 1
 	IsVoluntary *string `json:"is_voluntary,omitempty" xml:"is_voluntary,omitempty"`
 	// This parameter is required.
 	PassengerSegmentInfoList []*FlightRefundPreCalRequestPassengerSegmentInfoList `json:"passenger_segment_info_list,omitempty" xml:"passenger_segment_info_list,omitempty" type:"Repeated"`
@@ -75,10 +82,22 @@ func (s *FlightRefundPreCalRequest) Validate() error {
 
 type FlightRefundPreCalRequestPassengerSegmentInfoList struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// CA1982
 	FlightNo *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 张三
 	PassengerName *string `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 23112
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 

@@ -26,13 +26,40 @@ type iAccessTokenResponseBody interface {
 }
 
 type AccessTokenResponseBody struct {
-	Code      *string                        `json:"code,omitempty" xml:"code,omitempty"`
-	Data      *AccessTokenResponseBodyData   `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	Message   *string                        `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *AccessTokenResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                          `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                        `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// The status code.
+	//
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data. **Deprecated. Use the*	- `module` **field instead**.
+	Data *AccessTokenResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The response message.
+	//
+	// example:
+	//
+	// 成功
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The response data.
+	Module *AccessTokenResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// The unique identifier of this request.
+	//
+	// example:
+	//
+	// 407543AF-****-****-****-9D1AB7218B27
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The global trace identifier of the request, typically used for troubleshooting.
+	//
+	// example:
+	//
+	// 21041ce********056433edbb2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s AccessTokenResponseBody) String() string {
@@ -121,8 +148,18 @@ func (s *AccessTokenResponseBody) Validate() error {
 }
 
 type AccessTokenResponseBodyData struct {
-	Expire *int64  `json:"expire,omitempty" xml:"expire,omitempty"`
-	Token  *string `json:"token,omitempty" xml:"token,omitempty"`
+	// **Deprecated. Use the*	- `module` **field instead**.
+	//
+	// example:
+	//
+	// -
+	Expire *int64 `json:"expire,omitempty" xml:"expire,omitempty"`
+	// **Deprecated. Use the*	- `module` **field instead**.
+	//
+	// example:
+	//
+	// -
+	Token *string `json:"token,omitempty" xml:"token,omitempty"`
 }
 
 func (s AccessTokenResponseBodyData) String() string {
@@ -156,9 +193,24 @@ func (s *AccessTokenResponseBodyData) Validate() error {
 }
 
 type AccessTokenResponseBodyModule struct {
-	Expire *int64  `json:"expire,omitempty" xml:"expire,omitempty"`
-	Start  *int64  `json:"start,omitempty" xml:"start,omitempty"`
-	Token  *string `json:"token,omitempty" xml:"token,omitempty"`
+	// The validity duration of the token. The initial value is 2 hours (7200000 ms). To prevent token expiration, set the refresh interval to: **5 minutes ≤ interval ≤ 2 hours**. If you refresh within this interval, the token obtained from the previous request remains valid.
+	//
+	// example:
+	//
+	// 7200000
+	Expire *int64 `json:"expire,omitempty" xml:"expire,omitempty"`
+	// The time when the token takes effect.
+	//
+	// example:
+	//
+	// 1652410740914
+	Start *int64 `json:"start,omitempty" xml:"start,omitempty"`
+	// The application access token.
+	//
+	// example:
+	//
+	// 37***df
+	Token *string `json:"token,omitempty" xml:"token,omitempty"`
 }
 
 func (s AccessTokenResponseBodyModule) String() string {

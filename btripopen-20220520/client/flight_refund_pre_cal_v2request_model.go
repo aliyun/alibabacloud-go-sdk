@@ -26,13 +26,28 @@ type iFlightRefundPreCalV2Request interface {
 }
 
 type FlightRefundPreCalV2Request struct {
-	IsvName                   *string                                                 `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
-	OrderId                   *string                                                 `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// example:
+	//
+	// cheshiapi
+	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	// example:
+	//
+	// 3454043907950204159
+	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// example:
+	//
+	// 1017002195370467137
 	OutOrderId                *string                                                 `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
 	PassengerSegmentRelations []*FlightRefundPreCalV2RequestPassengerSegmentRelations `json:"passenger_segment_relations,omitempty" xml:"passenger_segment_relations,omitempty" type:"Repeated"`
-	PreCalType                *int32                                                  `json:"pre_cal_type,omitempty" xml:"pre_cal_type,omitempty"`
-	TicketNos                 []*string                                               `json:"ticket_nos,omitempty" xml:"ticket_nos,omitempty" type:"Repeated"`
-	Voluntary                 *bool                                                   `json:"voluntary,omitempty" xml:"voluntary,omitempty"`
+	// example:
+	//
+	// 2
+	PreCalType *int32    `json:"pre_cal_type,omitempty" xml:"pre_cal_type,omitempty"`
+	TicketNos  []*string `json:"ticket_nos,omitempty" xml:"ticket_nos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	Voluntary *bool `json:"voluntary,omitempty" xml:"voluntary,omitempty"`
 }
 
 func (s FlightRefundPreCalV2Request) String() string {
@@ -120,6 +135,9 @@ func (s *FlightRefundPreCalV2Request) Validate() error {
 }
 
 type FlightRefundPreCalV2RequestPassengerSegmentRelations struct {
+	// example:
+	//
+	// 3243028
 	PassengerId   *string   `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
 	SegmentIdList []*string `json:"segment_id_list,omitempty" xml:"segment_id_list,omitempty" type:"Repeated"`
 }

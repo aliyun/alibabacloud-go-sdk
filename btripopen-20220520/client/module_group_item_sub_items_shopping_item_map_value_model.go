@@ -44,9 +44,18 @@ func (s *ModuleGroupItemSubItemsShoppingItemMapValue) Validate() error {
 }
 
 type ModuleGroupItemSubItemsShoppingItemMapValueSearchPrice struct {
+	// example:
+	//
+	// 120000
 	TicketPrice *int32 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
-	SellPrice   *int32 `json:"sell_price,omitempty" xml:"sell_price,omitempty"`
-	Tax         *int32 `json:"tax,omitempty" xml:"tax,omitempty"`
+	// example:
+	//
+	// 120000
+	SellPrice *int32 `json:"sell_price,omitempty" xml:"sell_price,omitempty"`
+	// example:
+	//
+	// 6000
+	Tax *int32 `json:"tax,omitempty" xml:"tax,omitempty"`
 }
 
 func (s ModuleGroupItemSubItemsShoppingItemMapValueSearchPrice) String() string {

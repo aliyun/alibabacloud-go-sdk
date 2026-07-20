@@ -24,12 +24,27 @@ type iTBAccountInfoQueryResponseBody interface {
 }
 
 type TBAccountInfoQueryResponseBody struct {
-	Code      *string                               `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                               `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *TBAccountInfoQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                                 `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                               `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// 0
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 成功
+	Message *string                               `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *TBAccountInfoQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// 456456575656757
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 210f07f316603757445272547d959f
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s TBAccountInfoQueryResponseBody) String() string {
@@ -104,8 +119,14 @@ func (s *TBAccountInfoQueryResponseBody) Validate() error {
 }
 
 type TBAccountInfoQueryResponseBodyModule struct {
+	// example:
+	//
+	// 下****天
 	TbAccount *string `json:"tb_account,omitempty" xml:"tb_account,omitempty"`
-	TbBond    *bool   `json:"tb_bond,omitempty" xml:"tb_bond,omitempty"`
+	// example:
+	//
+	// true
+	TbBond *bool `json:"tb_bond,omitempty" xml:"tb_bond,omitempty"`
 }
 
 func (s TBAccountInfoQueryResponseBodyModule) String() string {

@@ -27,14 +27,37 @@ type iInsureOrderPayRequest interface {
 
 type InsureOrderPayRequest struct {
 	// This parameter is required.
-	BtripUserId   *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
-	BuyerName     *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
-	IsvName       *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
-	OutOrderId    *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	//
+	// example:
+	//
+	// 100000001
+	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	// example:
+	//
+	// 测试乘机人
+	BuyerName *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
+	// example:
+	//
+	// PostalSavingsBank
+	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	// example:
+	//
+	// 202310101026030
+	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	// example:
+	//
+	// 1020030003332000
 	OutSubOrderId *string `json:"out_sub_order_id,omitempty" xml:"out_sub_order_id,omitempty"`
 	// This parameter is required.
-	PaymentAmount *int64  `json:"payment_amount,omitempty" xml:"payment_amount,omitempty"`
-	SupplierCode  *string `json:"supplier_code,omitempty" xml:"supplier_code,omitempty"`
+	//
+	// example:
+	//
+	// 3000
+	PaymentAmount *int64 `json:"payment_amount,omitempty" xml:"payment_amount,omitempty"`
+	// example:
+	//
+	// fliggy
+	SupplierCode *string `json:"supplier_code,omitempty" xml:"supplier_code,omitempty"`
 }
 
 func (s InsureOrderPayRequest) String() string {

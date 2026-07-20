@@ -15,6 +15,10 @@ type iElectronicItineraryGetApplyResultRequest interface {
 
 type ElectronicItineraryGetApplyResultRequest struct {
   // This parameter is required.
+  // 
+  // example:
+  // 
+  // 0c7d5944608943479a9a4d40c1eec618
   BatchApplyNo *string `json:"batch_apply_no,omitempty" xml:"batch_apply_no,omitempty"`
 }
 

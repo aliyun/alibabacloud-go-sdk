@@ -36,18 +36,42 @@ type iFlightModifyListingSearchV2ShrinkRequest interface {
 }
 
 type FlightModifyListingSearchV2ShrinkRequest struct {
-	CabinClassShrink                *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
-	DepDateShrink                   *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
-	InterfaceCallerIsSupportRetry   *bool   `json:"interface_caller_is_support_retry,omitempty" xml:"interface_caller_is_support_retry,omitempty"`
-	IsvName                         *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
-	OrderId                         *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	CabinClassShrink *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	DepDateShrink    *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	// example:
+	//
+	// true
+	InterfaceCallerIsSupportRetry *bool `json:"interface_caller_is_support_retry,omitempty" xml:"interface_caller_is_support_retry,omitempty"`
+	// example:
+	//
+	// name
+	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	// example:
+	//
+	// 1017002195370467138
+	OrderId *int64 `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// example:
+	//
+	// 1017002195370467137
 	OutOrderId                      *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
 	PassengerSegmentRelationsShrink *string `json:"passenger_segment_relations,omitempty" xml:"passenger_segment_relations,omitempty"`
-	SearchMode                      *int32  `json:"search_mode,omitempty" xml:"search_mode,omitempty"`
-	SearchRetryToken                *string `json:"search_retry_token,omitempty" xml:"search_retry_token,omitempty"`
-	SelectedSegmentsShrink          *string `json:"selected_segments,omitempty" xml:"selected_segments,omitempty"`
-	SessionId                       *string `json:"session_id,omitempty" xml:"session_id,omitempty"`
-	Voluntary                       *bool   `json:"voluntary,omitempty" xml:"voluntary,omitempty"`
+	// example:
+	//
+	// 2
+	SearchMode *int32 `json:"search_mode,omitempty" xml:"search_mode,omitempty"`
+	// example:
+	//
+	// a2c230080358295f99e03aa4e3ccf1bd
+	SearchRetryToken       *string `json:"search_retry_token,omitempty" xml:"search_retry_token,omitempty"`
+	SelectedSegmentsShrink *string `json:"selected_segments,omitempty" xml:"selected_segments,omitempty"`
+	// example:
+	//
+	// a2ffebfe733742aab5c491d960ba3d59
+	SessionId *string `json:"session_id,omitempty" xml:"session_id,omitempty"`
+	// example:
+	//
+	// true
+	Voluntary *bool `json:"voluntary,omitempty" xml:"voluntary,omitempty"`
 }
 
 func (s FlightModifyListingSearchV2ShrinkRequest) String() string {

@@ -24,12 +24,32 @@ type iFlightCreateOrderV2ResponseBody interface {
 }
 
 type FlightCreateOrderV2ResponseBody struct {
-	Code      *string                                `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                                `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *FlightCreateOrderV2ResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                                `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 成功
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// module
+	Module *FlightCreateOrderV2ResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// requestId
+	//
+	// example:
+	//
+	// 210bc60a16916593445203790d2a16
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	//
+	// example:
+	//
+	// 2103ad0716827336456723986d4bda
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s FlightCreateOrderV2ResponseBody) String() string {
@@ -104,12 +124,30 @@ func (s *FlightCreateOrderV2ResponseBody) Validate() error {
 }
 
 type FlightCreateOrderV2ResponseBodyModule struct {
+	// example:
+	//
+	// 异步下单key
 	AsyncCreateOrderKey *string `json:"async_create_order_key,omitempty" xml:"async_create_order_key,omitempty"`
-	LatestPayTime       *string `json:"latest_pay_time,omitempty" xml:"latest_pay_time,omitempty"`
-	OrderId             *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	OutOrderId          *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
-	Status              *int32  `json:"status,omitempty" xml:"status,omitempty"`
-	TotalPrice          *int64  `json:"total_price,omitempty" xml:"total_price,omitempty"`
+	// example:
+	//
+	// 2023-08-10 17:42:32
+	LatestPayTime *string `json:"latest_pay_time,omitempty" xml:"latest_pay_time,omitempty"`
+	// example:
+	//
+	// 1017002195798359369
+	OrderId *int64 `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// example:
+	//
+	// cheshiapi002kwl
+	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	// example:
+	//
+	// 32
+	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 51000
+	TotalPrice *int64 `json:"total_price,omitempty" xml:"total_price,omitempty"`
 }
 
 func (s FlightCreateOrderV2ResponseBodyModule) String() string {

@@ -24,12 +24,32 @@ type iFlightOtaItemDetailResponseBody interface {
 }
 
 type FlightOtaItemDetailResponseBody struct {
-	Code      *string                                `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                                `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *FlightOtaItemDetailResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                                `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 成功
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// module
+	Module *FlightOtaItemDetailResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// requestId
+	//
+	// example:
+	//
+	// 92359A00-85D8-16C4-AED0-249618DEEC17
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	//
+	// example:
+	//
+	// 210bc60a16916374201706365d2a16
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s FlightOtaItemDetailResponseBody) String() string {
@@ -104,12 +124,18 @@ func (s *FlightOtaItemDetailResponseBody) Validate() error {
 }
 
 type FlightOtaItemDetailResponseBodyModule struct {
-	BaggageRule   []*FlightOtaItemDetailResponseBodyModuleBaggageRule `json:"baggage_rule,omitempty" xml:"baggage_rule,omitempty" type:"Repeated"`
-	ChangeRule    []*FlightOtaItemDetailResponseBodyModuleChangeRule  `json:"change_rule,omitempty" xml:"change_rule,omitempty" type:"Repeated"`
-	RefundRule    []*FlightOtaItemDetailResponseBodyModuleRefundRule  `json:"refund_rule,omitempty" xml:"refund_rule,omitempty" type:"Repeated"`
-	SellPrice     *int32                                              `json:"sell_price,omitempty" xml:"sell_price,omitempty"`
-	SellPriceList []*int32                                            `json:"sell_price_list,omitempty" xml:"sell_price_list,omitempty" type:"Repeated"`
-	TripType      *int32                                              `json:"trip_type,omitempty" xml:"trip_type,omitempty"`
+	BaggageRule []*FlightOtaItemDetailResponseBodyModuleBaggageRule `json:"baggage_rule,omitempty" xml:"baggage_rule,omitempty" type:"Repeated"`
+	ChangeRule  []*FlightOtaItemDetailResponseBodyModuleChangeRule  `json:"change_rule,omitempty" xml:"change_rule,omitempty" type:"Repeated"`
+	RefundRule  []*FlightOtaItemDetailResponseBodyModuleRefundRule  `json:"refund_rule,omitempty" xml:"refund_rule,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1830
+	SellPrice     *int32   `json:"sell_price,omitempty" xml:"sell_price,omitempty"`
+	SellPriceList []*int32 `json:"sell_price_list,omitempty" xml:"sell_price_list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	TripType *int32 `json:"trip_type,omitempty" xml:"trip_type,omitempty"`
 }
 
 func (s FlightOtaItemDetailResponseBodyModule) String() string {
@@ -207,11 +233,23 @@ func (s *FlightOtaItemDetailResponseBodyModule) Validate() error {
 
 type FlightOtaItemDetailResponseBodyModuleBaggageRule struct {
 	BaggageSubItems []*FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItems `json:"baggage_sub_items,omitempty" xml:"baggage_sub_items,omitempty" type:"Repeated"`
-	Index           *int32                                                             `json:"index,omitempty" xml:"index,omitempty"`
-	TableHead       *string                                                            `json:"table_head,omitempty" xml:"table_head,omitempty"`
-	Tips            *FlightOtaItemDetailResponseBodyModuleBaggageRuleTips              `json:"tips,omitempty" xml:"tips,omitempty" type:"Struct"`
-	Title           *string                                                            `json:"title,omitempty" xml:"title,omitempty"`
-	Type            *int32                                                             `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// 0
+	Index *int32 `json:"index,omitempty" xml:"index,omitempty"`
+	// example:
+	//
+	// tableHead
+	TableHead *string                                               `json:"table_head,omitempty" xml:"table_head,omitempty"`
+	Tips      *FlightOtaItemDetailResponseBodyModuleBaggageRuleTips `json:"tips,omitempty" xml:"tips,omitempty" type:"Struct"`
+	// example:
+	//
+	// 行李规定
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// 2
+	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s FlightOtaItemDetailResponseBodyModuleBaggageRule) String() string {
@@ -297,9 +335,18 @@ func (s *FlightOtaItemDetailResponseBodyModuleBaggageRule) Validate() error {
 type FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItems struct {
 	BaggageSubContentVisualizes []*FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizes `json:"baggage_sub_content_visualizes,omitempty" xml:"baggage_sub_content_visualizes,omitempty" type:"Repeated"`
 	ExtraContentVisualizes      []interface{}                                                                                 `json:"extra_content_visualizes,omitempty" xml:"extra_content_visualizes,omitempty" type:"Repeated"`
-	IsStruct                    *bool                                                                                         `json:"is_struct,omitempty" xml:"is_struct,omitempty"`
-	Ptc                         *string                                                                                       `json:"ptc,omitempty" xml:"ptc,omitempty"`
-	Title                       *string                                                                                       `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// false
+	IsStruct *bool `json:"is_struct,omitempty" xml:"is_struct,omitempty"`
+	// example:
+	//
+	// ADT
+	Ptc *string `json:"ptc,omitempty" xml:"ptc,omitempty"`
+	// example:
+	//
+	// 成人行李
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItems) String() string {
@@ -369,12 +416,22 @@ func (s *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItems) Valida
 }
 
 type FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizes struct {
-	BaggageDesc           []*string                                                                                              `json:"baggage_desc,omitempty" xml:"baggage_desc,omitempty" type:"Repeated"`
+	// baggage_desc
+	BaggageDesc []*string `json:"baggage_desc,omitempty" xml:"baggage_desc,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
 	BaggageSubContentType *int32                                                                                                 `json:"baggage_sub_content_type,omitempty" xml:"baggage_sub_content_type,omitempty"`
 	Description           *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizesDescription `json:"description,omitempty" xml:"description,omitempty" type:"Struct"`
 	ImageDO               *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizesImageDO     `json:"image_d_o,omitempty" xml:"image_d_o,omitempty" type:"Struct"`
-	IsHighlight           *bool                                                                                                  `json:"is_highlight,omitempty" xml:"is_highlight,omitempty"`
-	SubTitle              *string                                                                                                `json:"sub_title,omitempty" xml:"sub_title,omitempty"`
+	// example:
+	//
+	// false
+	IsHighlight *bool `json:"is_highlight,omitempty" xml:"is_highlight,omitempty"`
+	// example:
+	//
+	// 免费手提行李
+	SubTitle *string `json:"sub_title,omitempty" xml:"sub_title,omitempty"`
 }
 
 func (s FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizes) String() string {
@@ -454,9 +511,21 @@ func (s *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageS
 }
 
 type FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizesDescription struct {
-	Desc  *string `json:"desc,omitempty" xml:"desc,omitempty"`
-	Icon  *string `json:"icon,omitempty" xml:"icon,omitempty"`
+	// example:
+	//
+	// 您可以随身携带上飞机客舱内的行李物品，由旅客自行负责保管。具体尺寸、重量、类型等以各航空公司规定为准。
+	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	// example:
+	//
+	// https://gw.alicdn.com/imgextra/i4/O1CN01UynXG31pjsEtA3tMF_!!6000000005397-2-tps-36-36.png
+	Icon *string `json:"icon,omitempty" xml:"icon,omitempty"`
+	// example:
+	//
+	// https://gw.alicdn.com/imgextra/i1/O1CN01qe7wL21gJ0SmEXXL7_!!6000000004120-2-tps-1206-768.png
 	Image *string `json:"image,omitempty" xml:"image,omitempty"`
+	// example:
+	//
+	// 手提行李说明
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
@@ -509,9 +578,21 @@ func (s *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageS
 }
 
 type FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubContentVisualizesImageDO struct {
-	Image    *string `json:"image,omitempty" xml:"image,omitempty"`
-	Largest  *string `json:"largest,omitempty" xml:"largest,omitempty"`
-	Middle   *string `json:"middle,omitempty" xml:"middle,omitempty"`
+	// example:
+	//
+	// https://gw.alicdn.com/imgextra/i3/O1CN01kLt3m923XsUs6WVif_!!6000000007266-2-tps-280-300.png
+	Image *string `json:"image,omitempty" xml:"image,omitempty"`
+	// example:
+	//
+	// 55
+	Largest *string `json:"largest,omitempty" xml:"largest,omitempty"`
+	// example:
+	//
+	// 40
+	Middle *string `json:"middle,omitempty" xml:"middle,omitempty"`
+	// example:
+	//
+	// 20
 	Smallest *string `json:"smallest,omitempty" xml:"smallest,omitempty"`
 }
 
@@ -564,8 +645,17 @@ func (s *FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageS
 }
 
 type FlightOtaItemDetailResponseBodyModuleBaggageRuleTips struct {
-	Logo      *string `json:"logo,omitempty" xml:"logo,omitempty"`
-	TipsDesc  *string `json:"tips_desc,omitempty" xml:"tips_desc,omitempty"`
+	// example:
+	//
+	// https://gw.alicdn.com/imgextra/i1/O1CN019zl3WZ22fNLxzx2cR_!!6000000007147-2-tps-125-45.png
+	Logo *string `json:"logo,omitempty" xml:"logo,omitempty"`
+	// example:
+	//
+	// 各个尺寸的行李箱有多大？
+	TipsDesc *string `json:"tips_desc,omitempty" xml:"tips_desc,omitempty"`
+	// example:
+	//
+	// https://gw.alicdn.com/imgextra/i3/O1CN01rJxjw61f3bXNHAmlk_!!6000000003951-2-tps-1050-675.png
 	TipsImage *string `json:"tips_image,omitempty" xml:"tips_image,omitempty"`
 }
 
@@ -609,16 +699,38 @@ func (s *FlightOtaItemDetailResponseBodyModuleBaggageRuleTips) Validate() error 
 }
 
 type FlightOtaItemDetailResponseBodyModuleChangeRule struct {
-	ExtraContents  []*FlightOtaItemDetailResponseBodyModuleChangeRuleExtraContents  `json:"extra_contents,omitempty" xml:"extra_contents,omitempty" type:"Repeated"`
-	FlightNo       *string                                                          `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
-	FreeBaggage    *int32                                                           `json:"free_baggage,omitempty" xml:"free_baggage,omitempty"`
-	Index          *int32                                                           `json:"index,omitempty" xml:"index,omitempty"`
+	ExtraContents []*FlightOtaItemDetailResponseBodyModuleChangeRuleExtraContents `json:"extra_contents,omitempty" xml:"extra_contents,omitempty" type:"Repeated"`
+	// example:
+	//
+	// HO3925
+	FlightNo *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	// example:
+	//
+	// 0
+	FreeBaggage *int32 `json:"free_baggage,omitempty" xml:"free_baggage,omitempty"`
+	// example:
+	//
+	// 0
+	Index *int32 `json:"index,omitempty" xml:"index,omitempty"`
+	// example:
+	//
+	// 0
 	Level          *int32                                                           `json:"level,omitempty" xml:"level,omitempty"`
 	RefundSubItems []*FlightOtaItemDetailResponseBodyModuleChangeRuleRefundSubItems `json:"refund_sub_items,omitempty" xml:"refund_sub_items,omitempty" type:"Repeated"`
-	SubTableHead   []*string                                                        `json:"sub_table_head,omitempty" xml:"sub_table_head,omitempty" type:"Repeated"`
-	TableHead      *string                                                          `json:"table_head,omitempty" xml:"table_head,omitempty"`
-	Title          *string                                                          `json:"title,omitempty" xml:"title,omitempty"`
-	Type           *int32                                                           `json:"type,omitempty" xml:"type,omitempty"`
+	// subTableHead
+	SubTableHead []*string `json:"sub_table_head,omitempty" xml:"sub_table_head,omitempty" type:"Repeated"`
+	// example:
+	//
+	// tableHead
+	TableHead *string `json:"table_head,omitempty" xml:"table_head,omitempty"`
+	// example:
+	//
+	// 同舱改期规则
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// 1
+	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s FlightOtaItemDetailResponseBodyModuleChangeRule) String() string {
@@ -742,8 +854,14 @@ func (s *FlightOtaItemDetailResponseBodyModuleChangeRule) Validate() error {
 }
 
 type FlightOtaItemDetailResponseBodyModuleChangeRuleExtraContents struct {
+	// example:
+	//
+	// 变更航班或舱位如有差价须补足。客票有效期一年；退票不晚于有效期，截止后一个月之内办理；特殊折扣机票退改签按其相应规定执行。
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	Title   *string `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// 特殊说明
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s FlightOtaItemDetailResponseBodyModuleChangeRuleExtraContents) String() string {
@@ -777,10 +895,19 @@ func (s *FlightOtaItemDetailResponseBodyModuleChangeRuleExtraContents) Validate(
 }
 
 type FlightOtaItemDetailResponseBodyModuleChangeRuleRefundSubItems struct {
-	IsStruct          *bool                                                                             `json:"is_struct,omitempty" xml:"is_struct,omitempty"`
+	// example:
+	//
+	// false
+	IsStruct *bool `json:"is_struct,omitempty" xml:"is_struct,omitempty"`
+	// example:
+	//
+	// ADT
 	Ptc               *string                                                                           `json:"ptc,omitempty" xml:"ptc,omitempty"`
 	RefundSubContents []*FlightOtaItemDetailResponseBodyModuleChangeRuleRefundSubItemsRefundSubContents `json:"refund_sub_contents,omitempty" xml:"refund_sub_contents,omitempty" type:"Repeated"`
-	Title             *string                                                                           `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// 成人
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s FlightOtaItemDetailResponseBodyModuleChangeRuleRefundSubItems) String() string {
@@ -841,9 +968,18 @@ func (s *FlightOtaItemDetailResponseBodyModuleChangeRuleRefundSubItems) Validate
 }
 
 type FlightOtaItemDetailResponseBodyModuleChangeRuleRefundSubItemsRefundSubContents struct {
-	FeeDesc  *string `json:"fee_desc,omitempty" xml:"fee_desc,omitempty"`
+	// example:
+	//
+	// ￥732/人
+	FeeDesc *string `json:"fee_desc,omitempty" xml:"fee_desc,omitempty"`
+	// example:
+	//
+	// 9月1日 04:00 后
 	FeeRange *string `json:"fee_range,omitempty" xml:"fee_range,omitempty"`
-	Style    *int32  `json:"style,omitempty" xml:"style,omitempty"`
+	// example:
+	//
+	// 1
+	Style *int32 `json:"style,omitempty" xml:"style,omitempty"`
 }
 
 func (s FlightOtaItemDetailResponseBodyModuleChangeRuleRefundSubItemsRefundSubContents) String() string {
@@ -886,16 +1022,38 @@ func (s *FlightOtaItemDetailResponseBodyModuleChangeRuleRefundSubItemsRefundSubC
 }
 
 type FlightOtaItemDetailResponseBodyModuleRefundRule struct {
-	ExtraContents  []*FlightOtaItemDetailResponseBodyModuleRefundRuleExtraContents  `json:"extra_contents,omitempty" xml:"extra_contents,omitempty" type:"Repeated"`
-	FlightNo       *string                                                          `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
-	FreeBaggage    *int32                                                           `json:"free_baggage,omitempty" xml:"free_baggage,omitempty"`
-	Index          *int32                                                           `json:"index,omitempty" xml:"index,omitempty"`
+	ExtraContents []*FlightOtaItemDetailResponseBodyModuleRefundRuleExtraContents `json:"extra_contents,omitempty" xml:"extra_contents,omitempty" type:"Repeated"`
+	// example:
+	//
+	// HO3925
+	FlightNo *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	// example:
+	//
+	// 0
+	FreeBaggage *int32 `json:"free_baggage,omitempty" xml:"free_baggage,omitempty"`
+	// example:
+	//
+	// 0
+	Index *int32 `json:"index,omitempty" xml:"index,omitempty"`
+	// example:
+	//
+	// 0
 	Level          *int32                                                           `json:"level,omitempty" xml:"level,omitempty"`
 	RefundSubItems []*FlightOtaItemDetailResponseBodyModuleRefundRuleRefundSubItems `json:"refund_sub_items,omitempty" xml:"refund_sub_items,omitempty" type:"Repeated"`
-	SubTableHead   []*string                                                        `json:"sub_table_head,omitempty" xml:"sub_table_head,omitempty" type:"Repeated"`
-	TableHead      *string                                                          `json:"table_head,omitempty" xml:"table_head,omitempty"`
-	Title          *string                                                          `json:"title,omitempty" xml:"title,omitempty"`
-	Type           *int32                                                           `json:"type,omitempty" xml:"type,omitempty"`
+	// subTableHead
+	SubTableHead []*string `json:"sub_table_head,omitempty" xml:"sub_table_head,omitempty" type:"Repeated"`
+	// example:
+	//
+	// tableHead
+	TableHead *string `json:"table_head,omitempty" xml:"table_head,omitempty"`
+	// example:
+	//
+	// 退票收费规则
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// 0
+	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s FlightOtaItemDetailResponseBodyModuleRefundRule) String() string {
@@ -1019,8 +1177,14 @@ func (s *FlightOtaItemDetailResponseBodyModuleRefundRule) Validate() error {
 }
 
 type FlightOtaItemDetailResponseBodyModuleRefundRuleExtraContents struct {
+	// example:
+	//
+	// 变更航班或舱位如有差价须补足。客票有效期一年；退票不晚于有效期，截止后一个月之内办理；特殊折扣机票退改签按其相应规定执行。
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	Title   *string `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// 特殊说明
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s FlightOtaItemDetailResponseBodyModuleRefundRuleExtraContents) String() string {
@@ -1054,10 +1218,19 @@ func (s *FlightOtaItemDetailResponseBodyModuleRefundRuleExtraContents) Validate(
 }
 
 type FlightOtaItemDetailResponseBodyModuleRefundRuleRefundSubItems struct {
-	IsStruct          *bool                                                                             `json:"is_struct,omitempty" xml:"is_struct,omitempty"`
+	// example:
+	//
+	// false
+	IsStruct *bool `json:"is_struct,omitempty" xml:"is_struct,omitempty"`
+	// example:
+	//
+	// ADT
 	Ptc               *string                                                                           `json:"ptc,omitempty" xml:"ptc,omitempty"`
 	RefundSubContents []*FlightOtaItemDetailResponseBodyModuleRefundRuleRefundSubItemsRefundSubContents `json:"refund_sub_contents,omitempty" xml:"refund_sub_contents,omitempty" type:"Repeated"`
-	Title             *string                                                                           `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// 成人
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s FlightOtaItemDetailResponseBodyModuleRefundRuleRefundSubItems) String() string {
@@ -1118,9 +1291,18 @@ func (s *FlightOtaItemDetailResponseBodyModuleRefundRuleRefundSubItems) Validate
 }
 
 type FlightOtaItemDetailResponseBodyModuleRefundRuleRefundSubItemsRefundSubContents struct {
-	FeeDesc  *string `json:"fee_desc,omitempty" xml:"fee_desc,omitempty"`
+	// example:
+	//
+	// ￥915/人
+	FeeDesc *string `json:"fee_desc,omitempty" xml:"fee_desc,omitempty"`
+	// example:
+	//
+	// 9月1日 04:00 后
 	FeeRange *string `json:"fee_range,omitempty" xml:"fee_range,omitempty"`
-	Style    *int32  `json:"style,omitempty" xml:"style,omitempty"`
+	// example:
+	//
+	// 1
+	Style *int32 `json:"style,omitempty" xml:"style,omitempty"`
 }
 
 func (s FlightOtaItemDetailResponseBodyModuleRefundRuleRefundSubItemsRefundSubContents) String() string {

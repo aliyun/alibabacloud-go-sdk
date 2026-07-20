@@ -17,6 +17,10 @@ type iApplyInvoiceTaskShrinkRequest interface {
 
 type ApplyInvoiceTaskShrinkRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2022-12-01
 	BillDate *string `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
 	// This parameter is required.
 	InvoiceTaskListShrink *string `json:"invoice_task_list,omitempty" xml:"invoice_task_list,omitempty"`

@@ -26,13 +26,48 @@ type iAddProjectManagerResponseBody interface {
 }
 
 type AddProjectManagerResponseBody struct {
-	Code           *string                              `json:"code,omitempty" xml:"code,omitempty"`
-	HttpStatusCode *int32                               `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	Message        *string                              `json:"message,omitempty" xml:"message,omitempty"`
-	Module         *AddProjectManagerResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId      *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success        *bool                                `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId        *string                              `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// The error code.
+	//
+	// example:
+	//
+	// 0
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The response data.
+	Module *AddProjectManagerResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// requestId
+	//
+	// example:
+	//
+	// B72B39C8-****-****-****-D53F11F6ADFE
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	//
+	// example:
+	//
+	// 210f079e16603757182131635d866a
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s AddProjectManagerResponseBody) String() string {
@@ -116,9 +151,24 @@ func (s *AddProjectManagerResponseBody) Validate() error {
 }
 
 type AddProjectManagerResponseBodyModule struct {
-	AddNum    *int32 `json:"add_num,omitempty" xml:"add_num,omitempty"`
+	// The number of managers added in this operation (always 0 for the remove process).
+	//
+	// example:
+	//
+	// 1
+	AddNum *int32 `json:"add_num,omitempty" xml:"add_num,omitempty"`
+	// The number of managers removed in this operation (always 0 for the add process).
+	//
+	// example:
+	//
+	// 1
 	RemoveNum *int32 `json:"remove_num,omitempty" xml:"remove_num,omitempty"`
-	RuleCode  *int64 `json:"rule_code,omitempty" xml:"rule_code,omitempty"`
+	// The parsed btrip_rule.rule_code (501 + projectId), which helps callers with troubleshooting and reconciliation.
+	//
+	// example:
+	//
+	// 500578154
+	RuleCode *int64 `json:"rule_code,omitempty" xml:"rule_code,omitempty"`
 }
 
 func (s AddProjectManagerResponseBodyModule) String() string {

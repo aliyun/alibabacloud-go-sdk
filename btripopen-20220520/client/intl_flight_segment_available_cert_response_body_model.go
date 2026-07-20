@@ -24,12 +24,27 @@ type iIntlFlightSegmentAvailableCertResponseBody interface {
 }
 
 type IntlFlightSegmentAvailableCertResponseBody struct {
-	Module     *IntlFlightSegmentAvailableCertResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId  *string                                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	ResultCode *string                                           `json:"result_code,omitempty" xml:"result_code,omitempty"`
-	ResultMsg  *string                                           `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
-	Success    *bool                                             `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId    *string                                           `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Module *IntlFlightSegmentAvailableCertResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// 210bc81a17090871660176894d008c
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	// example:
+	//
+	// 成功
+	ResultMsg *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 213e1ea516895592036143147e5864
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s IntlFlightSegmentAvailableCertResponseBody) String() string {
@@ -178,7 +193,13 @@ func (s *IntlFlightSegmentAvailableCertResponseBodyModuleSegmentAvailableCertLis
 }
 
 type IntlFlightSegmentAvailableCertResponseBodyModuleSegmentAvailableCertListSegmentPosition struct {
+	// example:
+	//
+	// 0
 	JourneyIndex *int32 `json:"journey_index,omitempty" xml:"journey_index,omitempty"`
+	// example:
+	//
+	// 0
 	SegmentIndex *int32 `json:"segment_index,omitempty" xml:"segment_index,omitempty"`
 }
 

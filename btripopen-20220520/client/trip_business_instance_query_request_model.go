@@ -20,10 +20,22 @@ type iTripBusinessInstanceQueryRequest interface {
 }
 
 type TripBusinessInstanceQueryRequest struct {
+	// example:
+	//
+	// 12345
 	BusinessInstanceId *string `json:"business_instance_id,omitempty" xml:"business_instance_id,omitempty"`
-	ThirdBusinessId    *string `json:"third_business_id,omitempty" xml:"third_business_id,omitempty"`
-	UserId             *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserName           *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	// example:
+	//
+	// 12345
+	ThirdBusinessId *string `json:"third_business_id,omitempty" xml:"third_business_id,omitempty"`
+	// example:
+	//
+	// thirdpart12138
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// example:
+	//
+	// 张三
+	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
 func (s TripBusinessInstanceQueryRequest) String() string {

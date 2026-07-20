@@ -14,7 +14,13 @@ type iAccessTokenRequest interface {
 }
 
 type AccessTokenRequest struct {
+	// The API secret of the application. For information about how to obtain the secret, see [Application credentials](/#/document/server/application-of-basic-information?handbookId=development-support).
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// ggZADk********eDxdaD
 	AppSecret *string `json:"app_secret,omitempty" xml:"app_secret,omitempty"`
 }
 

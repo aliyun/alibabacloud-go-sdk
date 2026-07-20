@@ -24,12 +24,30 @@ type iCarApplyQueryRequest interface {
 }
 
 type CarApplyQueryRequest struct {
-	CreatedEndAt     *string `json:"created_end_at,omitempty" xml:"created_end_at,omitempty"`
-	CreatedStartAt   *string `json:"created_start_at,omitempty" xml:"created_start_at,omitempty"`
-	PageNumber       *int32  `json:"page_number,omitempty" xml:"page_number,omitempty"`
-	PageSize         *int32  `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// example:
+	//
+	// 2021-03-18 20:26:56
+	CreatedEndAt *string `json:"created_end_at,omitempty" xml:"created_end_at,omitempty"`
+	// example:
+	//
+	// 2021-03-18 20:26:56
+	CreatedStartAt *string `json:"created_start_at,omitempty" xml:"created_start_at,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"page_number,omitempty" xml:"page_number,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// example:
+	//
+	// apply1
 	ThirdPartApplyId *string `json:"third_part_apply_id,omitempty" xml:"third_part_apply_id,omitempty"`
-	UserId           *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// example:
+	//
+	// userid
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s CarApplyQueryRequest) String() string {

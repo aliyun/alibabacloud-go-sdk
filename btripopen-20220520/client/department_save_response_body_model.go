@@ -24,12 +24,32 @@ type iDepartmentSaveResponseBody interface {
 }
 
 type DepartmentSaveResponseBody struct {
-	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *string `json:"module,omitempty" xml:"module,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 成功
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// -
+	Module *string `json:"module,omitempty" xml:"module,omitempty"`
+	// example:
+	//
+	// 407543AF-2BD9-5890-BD92-9D1AB7218B27
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	//
+	// example:
+	//
+	// 210e847516614936690356047dde07
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s DepartmentSaveResponseBody) String() string {

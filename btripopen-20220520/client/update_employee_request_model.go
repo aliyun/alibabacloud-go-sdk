@@ -58,29 +58,81 @@ type iUpdateEmployeeRequest interface {
 }
 
 type UpdateEmployeeRequest struct {
-	AccountEmail       *string                                  `json:"account_email,omitempty" xml:"account_email,omitempty"`
-	AccountPhone       *string                                  `json:"account_phone,omitempty" xml:"account_phone,omitempty"`
-	Attribute          *string                                  `json:"attribute,omitempty" xml:"attribute,omitempty"`
-	Avatar             *string                                  `json:"avatar,omitempty" xml:"avatar,omitempty"`
-	BaseCityCodeList   []*string                                `json:"base_city_code_list,omitempty" xml:"base_city_code_list,omitempty" type:"Repeated"`
-	BaseLocationList   []*UpdateEmployeeRequestBaseLocationList `json:"base_location_list,omitempty" xml:"base_location_list,omitempty" type:"Repeated"`
-	Birthday           *string                                  `json:"birthday,omitempty" xml:"birthday,omitempty"`
-	CertList           []*UpdateEmployeeRequestCertList         `json:"cert_list,omitempty" xml:"cert_list,omitempty" type:"Repeated"`
-	CustomRoleCodeList []*string                                `json:"custom_role_code_list,omitempty" xml:"custom_role_code_list,omitempty" type:"Repeated"`
-	Email              *string                                  `json:"email,omitempty" xml:"email,omitempty"`
-	Gender             *string                                  `json:"gender,omitempty" xml:"gender,omitempty"`
-	IsAdmin            *bool                                    `json:"is_admin,omitempty" xml:"is_admin,omitempty"`
-	IsBoss             *bool                                    `json:"is_boss,omitempty" xml:"is_boss,omitempty"`
-	IsDeptLeader       *bool                                    `json:"is_dept_leader,omitempty" xml:"is_dept_leader,omitempty"`
-	JobNo              *string                                  `json:"job_no,omitempty" xml:"job_no,omitempty"`
-	ManagerUserId      *string                                  `json:"manager_user_id,omitempty" xml:"manager_user_id,omitempty"`
-	OutDeptIdList      []*string                                `json:"out_dept_id_list,omitempty" xml:"out_dept_id_list,omitempty" type:"Repeated"`
-	Phone              *string                                  `json:"phone,omitempty" xml:"phone,omitempty"`
-	PositionLevel      *string                                  `json:"position_level,omitempty" xml:"position_level,omitempty"`
-	RealName           *string                                  `json:"real_name,omitempty" xml:"real_name,omitempty"`
-	RealNameEn         *string                                  `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
+	// example:
+	//
+	// j*********@example.com
+	AccountEmail *string `json:"account_email,omitempty" xml:"account_email,omitempty"`
+	// example:
+	//
+	// +86-18812345678
+	AccountPhone *string `json:"account_phone,omitempty" xml:"account_phone,omitempty"`
+	Attribute    *string `json:"attribute,omitempty" xml:"attribute,omitempty"`
+	// example:
+	//
+	// https://static-legacy.dingtalk.com/media/lADPF8XMoxJeUkbNA2LNA5s_923_866.jpg
+	Avatar           *string                                  `json:"avatar,omitempty" xml:"avatar,omitempty"`
+	BaseCityCodeList []*string                                `json:"base_city_code_list,omitempty" xml:"base_city_code_list,omitempty" type:"Repeated"`
+	BaseLocationList []*UpdateEmployeeRequestBaseLocationList `json:"base_location_list,omitempty" xml:"base_location_list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2000-01-02
+	Birthday           *string                          `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	CertList           []*UpdateEmployeeRequestCertList `json:"cert_list,omitempty" xml:"cert_list,omitempty" type:"Repeated"`
+	CustomRoleCodeList []*string                        `json:"custom_role_code_list,omitempty" xml:"custom_role_code_list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 123@163.com
+	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// example:
+	//
+	// F
+	Gender *string `json:"gender,omitempty" xml:"gender,omitempty"`
+	// example:
+	//
+	// false
+	IsAdmin *bool `json:"is_admin,omitempty" xml:"is_admin,omitempty"`
+	// example:
+	//
+	// false
+	IsBoss *bool `json:"is_boss,omitempty" xml:"is_boss,omitempty"`
+	// example:
+	//
+	// false
+	IsDeptLeader *bool `json:"is_dept_leader,omitempty" xml:"is_dept_leader,omitempty"`
+	// example:
+	//
+	// 1001
+	JobNo *string `json:"job_no,omitempty" xml:"job_no,omitempty"`
+	// example:
+	//
+	// user456
+	ManagerUserId *string   `json:"manager_user_id,omitempty" xml:"manager_user_id,omitempty"`
+	OutDeptIdList []*string `json:"out_dept_id_list,omitempty" xml:"out_dept_id_list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 13111111111
+	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	// example:
+	//
+	// M4
+	PositionLevel *string `json:"position_level,omitempty" xml:"position_level,omitempty"`
+	// example:
+	//
+	// 张三
+	RealName *string `json:"real_name,omitempty" xml:"real_name,omitempty"`
+	// example:
+	//
+	// John/Wilson
+	RealNameEn *string `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
 	// This parameter is required.
-	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	//
+	// example:
+	//
+	// user123
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// example:
+	//
+	// 小明
 	UserNick *string `json:"user_nick,omitempty" xml:"user_nick,omitempty"`
 }
 
@@ -357,16 +409,46 @@ func (s *UpdateEmployeeRequestBaseLocationList) Validate() error {
 }
 
 type UpdateEmployeeRequestCertList struct {
-	Birthday        *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	// example:
+	//
+	// 2000-01-02
+	Birthday *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	// example:
+	//
+	// 2099-03-12
 	CertExpiredTime *string `json:"cert_expired_time,omitempty" xml:"cert_expired_time,omitempty"`
-	CertNation      *string `json:"cert_nation,omitempty" xml:"cert_nation,omitempty"`
-	CertNo          *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
-	CertType        *int32  `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
-	Gender          *string `json:"gender,omitempty" xml:"gender,omitempty"`
-	Nationality     *string `json:"nationality,omitempty" xml:"nationality,omitempty"`
-	Phone           *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	RealName        *string `json:"real_name,omitempty" xml:"real_name,omitempty"`
-	RealNameEn      *string `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
+	// example:
+	//
+	// CN
+	CertNation *string `json:"cert_nation,omitempty" xml:"cert_nation,omitempty"`
+	// example:
+	//
+	// 123
+	CertNo *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	// example:
+	//
+	// 0
+	CertType *int32 `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
+	// example:
+	//
+	// F
+	Gender *string `json:"gender,omitempty" xml:"gender,omitempty"`
+	// example:
+	//
+	// CN
+	Nationality *string `json:"nationality,omitempty" xml:"nationality,omitempty"`
+	// example:
+	//
+	// 13111111111
+	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	// example:
+	//
+	// 张三
+	RealName *string `json:"real_name,omitempty" xml:"real_name,omitempty"`
+	// example:
+	//
+	// John/Wilson
+	RealNameEn *string `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
 }
 
 func (s UpdateEmployeeRequestCertList) String() string {

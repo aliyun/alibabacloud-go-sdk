@@ -24,12 +24,28 @@ type iHotelOrderCancelResponseBody interface {
 }
 
 type HotelOrderCancelResponseBody struct {
-	Code      *string                             `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                             `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *HotelOrderCancelResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                               `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                             `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// 0
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// noPermission
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// module。
+	Module *HotelOrderCancelResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// C61ECFF6-606B-5F66-B81D-D77369043A5F
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 21041ce316577904808056433edbb2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s HotelOrderCancelResponseBody) String() string {
@@ -104,10 +120,22 @@ func (s *HotelOrderCancelResponseBody) Validate() error {
 }
 
 type HotelOrderCancelResponseBodyModule struct {
-	CancelSuccess *bool   `json:"cancel_success,omitempty" xml:"cancel_success,omitempty"`
-	Code          *string `json:"code,omitempty" xml:"code,omitempty"`
-	Desc          *string `json:"desc,omitempty" xml:"desc,omitempty"`
-	ForfeitFee    *int64  `json:"forfeit_fee,omitempty" xml:"forfeit_fee,omitempty"`
+	// example:
+	//
+	// true
+	CancelSuccess *bool `json:"cancel_success,omitempty" xml:"cancel_success,omitempty"`
+	// example:
+	//
+	// 0
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 订单申请取消中退款申请已提交，商家确认中
+	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	// example:
+	//
+	// 100
+	ForfeitFee *int64 `json:"forfeit_fee,omitempty" xml:"forfeit_fee,omitempty"`
 }
 
 func (s HotelOrderCancelResponseBodyModule) String() string {

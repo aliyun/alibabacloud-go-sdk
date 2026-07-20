@@ -15,6 +15,10 @@ type iHotelOrderQueryRequest interface {
 
 type HotelOrderQueryRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1002145190081005400
 	OrderId *int64 `json:"order_id,omitempty" xml:"order_id,omitempty"`
 }
 

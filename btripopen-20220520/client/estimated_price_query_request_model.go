@@ -29,6 +29,10 @@ type iEstimatedPriceQueryRequest interface {
 
 type EstimatedPriceQueryRequest struct {
   // This parameter is required.
+  // 
+  // example:
+  // 
+  // 北京
   ArrCity *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
   // This parameter is required.
   // 
@@ -37,17 +41,36 @@ type EstimatedPriceQueryRequest struct {
   // flight
   Category *string `json:"category,omitempty" xml:"category,omitempty"`
   // This parameter is required.
+  // 
+  // example:
+  // 
+  // 杭州
   DepCity *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
   // This parameter is required.
+  // 
+  // example:
+  // 
+  // 1670601600000
   EndTime *int64 `json:"end_time,omitempty" xml:"end_time,omitempty"`
   // example:
   // 
   // 1245
   ItineraryId *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
   // This parameter is required.
+  // 
+  // example:
+  // 
+  // 1670428800000
   StartTime *int64 `json:"start_time,omitempty" xml:"start_time,omitempty"`
+  // example:
+  // 
+  // btrip123
   SubCorpId *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
   // This parameter is required.
+  // 
+  // example:
+  // 
+  // 12345678910
   UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 

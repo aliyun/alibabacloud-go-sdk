@@ -40,20 +40,62 @@ type iModuleGroupItemSubItemsBaggageRuleBaggageInfoMapValue interface {
 }
 
 type ModuleGroupItemSubItemsBaggageRuleBaggageInfoMapValue struct {
-	CarryFreepc         *int32  `json:"carry_freepc,omitempty" xml:"carry_freepc,omitempty"`
-	CarryBagWeight      *int32  `json:"carry_bag_weight,omitempty" xml:"carry_bag_weight,omitempty"`
-	CarryBagSize        *string `json:"carry_bag_size,omitempty" xml:"carry_bag_size,omitempty"`
-	IsAllCarryBagWeight *bool   `json:"is_all_carry_bag_weight,omitempty" xml:"is_all_carry_bag_weight,omitempty"`
-	Airline             *string `json:"airline,omitempty" xml:"airline,omitempty"`
-	StartAirport        *string `json:"start_airport,omitempty" xml:"start_airport,omitempty"`
-	EndAirport          *string `json:"end_airport,omitempty" xml:"end_airport,omitempty"`
-	StartCityCode       *string `json:"start_city_code,omitempty" xml:"start_city_code,omitempty"`
-	EndCityCode         *string `json:"end_city_code,omitempty" xml:"end_city_code,omitempty"`
-	FreePcs             *int64  `json:"free_pcs,omitempty" xml:"free_pcs,omitempty"`
-	BaggageWeight       *int64  `json:"baggage_weight,omitempty" xml:"baggage_weight,omitempty"`
-	BaggageUnit         *string `json:"baggage_unit,omitempty" xml:"baggage_unit,omitempty"`
-	BaggageSize         *string `json:"baggage_size,omitempty" xml:"baggage_size,omitempty"`
-	AllWeight           *bool   `json:"all_weight,omitempty" xml:"all_weight,omitempty"`
+	// example:
+	//
+	// 1
+	CarryFreepc *int32 `json:"carry_freepc,omitempty" xml:"carry_freepc,omitempty"`
+	// example:
+	//
+	// 10
+	CarryBagWeight *int32 `json:"carry_bag_weight,omitempty" xml:"carry_bag_weight,omitempty"`
+	// example:
+	//
+	// 20*20
+	CarryBagSize *string `json:"carry_bag_size,omitempty" xml:"carry_bag_size,omitempty"`
+	// example:
+	//
+	// false
+	IsAllCarryBagWeight *bool `json:"is_all_carry_bag_weight,omitempty" xml:"is_all_carry_bag_weight,omitempty"`
+	// example:
+	//
+	// CA
+	Airline *string `json:"airline,omitempty" xml:"airline,omitempty"`
+	// example:
+	//
+	// BJS
+	StartAirport *string `json:"start_airport,omitempty" xml:"start_airport,omitempty"`
+	// example:
+	//
+	// HGH
+	EndAirport *string `json:"end_airport,omitempty" xml:"end_airport,omitempty"`
+	// example:
+	//
+	// BJS
+	StartCityCode *string `json:"start_city_code,omitempty" xml:"start_city_code,omitempty"`
+	// example:
+	//
+	// HGH
+	EndCityCode *string `json:"end_city_code,omitempty" xml:"end_city_code,omitempty"`
+	// example:
+	//
+	// 1
+	FreePcs *int64 `json:"free_pcs,omitempty" xml:"free_pcs,omitempty"`
+	// example:
+	//
+	// 30
+	BaggageWeight *int64 `json:"baggage_weight,omitempty" xml:"baggage_weight,omitempty"`
+	// example:
+	//
+	// KG
+	BaggageUnit *string `json:"baggage_unit,omitempty" xml:"baggage_unit,omitempty"`
+	// example:
+	//
+	// 40*50
+	BaggageSize *string `json:"baggage_size,omitempty" xml:"baggage_size,omitempty"`
+	// example:
+	//
+	// false
+	AllWeight *bool `json:"all_weight,omitempty" xml:"all_weight,omitempty"`
 }
 
 func (s ModuleGroupItemSubItemsBaggageRuleBaggageInfoMapValue) String() string {

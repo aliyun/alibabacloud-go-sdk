@@ -16,8 +16,15 @@ type iTravelStandardRelateQueryRequest interface {
 }
 
 type TravelStandardRelateQueryRequest struct {
+	// example:
+	//
+	// false
 	FromGroup *bool `json:"from_group,omitempty" xml:"from_group,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 6516571
 	RuleId *int64 `json:"rule_id,omitempty" xml:"rule_id,omitempty"`
 }
 

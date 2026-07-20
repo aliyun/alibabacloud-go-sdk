@@ -27,12 +27,30 @@ type iCarApplyQueryResponseBody interface {
 
 type CarApplyQueryResponseBody struct {
 	ApplyList []*CarApplyQueryResponseBodyApplyList `json:"apply_list,omitempty" xml:"apply_list,omitempty" type:"Repeated"`
-	Code      *string                               `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                               `json:"message,omitempty" xml:"message,omitempty"`
-	RequestId *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                                 `json:"success,omitempty" xml:"success,omitempty"`
-	Total     *int32                                `json:"total,omitempty" xml:"total,omitempty"`
-	TraceId   *string                               `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// 0
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 成功
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 407543AF-2BD9-5890-BD92-9D1AB7218B27
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 6
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
+	// example:
+	//
+	// 210bcc3a16583004579056128d33d7
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s CarApplyQueryResponseBody) String() string {
@@ -120,23 +138,59 @@ func (s *CarApplyQueryResponseBody) Validate() error {
 }
 
 type CarApplyQueryResponseBodyApplyList struct {
-	ApproverList        []*CarApplyQueryResponseBodyApplyListApproverList     `json:"approver_list,omitempty" xml:"approver_list,omitempty" type:"Repeated"`
-	BusinessType        *string                                               `json:"business_type,omitempty" xml:"business_type,omitempty"`
-	DepartId            *string                                               `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
-	DepartName          *string                                               `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
-	GmtCreate           *string                                               `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
-	GmtModified         *string                                               `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty"`
-	ItineraryList       []*CarApplyQueryResponseBodyApplyListItineraryList    `json:"itinerary_list,omitempty" xml:"itinerary_list,omitempty" type:"Repeated"`
-	OrderId             *int64                                                `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	RelatedThirdApplyId *string                                               `json:"related_third_apply_id,omitempty" xml:"related_third_apply_id,omitempty"`
-	Status              *int32                                                `json:"status,omitempty" xml:"status,omitempty"`
-	StatusDesc          *string                                               `json:"status_desc,omitempty" xml:"status_desc,omitempty"`
-	ThirdpartId         *string                                               `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
-	TravelerStandard    []*CarApplyQueryResponseBodyApplyListTravelerStandard `json:"traveler_standard,omitempty" xml:"traveler_standard,omitempty" type:"Repeated"`
-	TripCause           *string                                               `json:"trip_cause,omitempty" xml:"trip_cause,omitempty"`
-	TripTitle           *string                                               `json:"trip_title,omitempty" xml:"trip_title,omitempty"`
-	UserId              *string                                               `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserName            *string                                               `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	ApproverList []*CarApplyQueryResponseBodyApplyListApproverList `json:"approver_list,omitempty" xml:"approver_list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// AFTER
+	BusinessType *string `json:"business_type,omitempty" xml:"business_type,omitempty"`
+	// example:
+	//
+	// depart1
+	DepartId *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	// example:
+	//
+	// 部门1
+	DepartName *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	// example:
+	//
+	// 2021-03-18T20:26Z
+	GmtCreate *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	// example:
+	//
+	// 2021-03-18T20:26Z
+	GmtModified         *string                                            `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty"`
+	ItineraryList       []*CarApplyQueryResponseBodyApplyListItineraryList `json:"itinerary_list,omitempty" xml:"itinerary_list,omitempty" type:"Repeated"`
+	OrderId             *int64                                             `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	RelatedThirdApplyId *string                                            `json:"related_third_apply_id,omitempty" xml:"related_third_apply_id,omitempty"`
+	// example:
+	//
+	// 2
+	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 同意
+	StatusDesc *string `json:"status_desc,omitempty" xml:"status_desc,omitempty"`
+	// example:
+	//
+	// 1
+	ThirdpartId      *string                                               `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
+	TravelerStandard []*CarApplyQueryResponseBodyApplyListTravelerStandard `json:"traveler_standard,omitempty" xml:"traveler_standard,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 杭州出差
+	TripCause *string `json:"trip_cause,omitempty" xml:"trip_cause,omitempty"`
+	// example:
+	//
+	// 杭州出差
+	TripTitle *string `json:"trip_title,omitempty" xml:"trip_title,omitempty"`
+	// example:
+	//
+	// user1
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// example:
+	//
+	// 张三
+	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
 func (s CarApplyQueryResponseBodyApplyList) String() string {
@@ -332,13 +386,34 @@ func (s *CarApplyQueryResponseBodyApplyList) Validate() error {
 }
 
 type CarApplyQueryResponseBodyApplyListApproverList struct {
-	Note        *string `json:"note,omitempty" xml:"note,omitempty"`
+	// example:
+	//
+	// 同意
+	Note *string `json:"note,omitempty" xml:"note,omitempty"`
+	// example:
+	//
+	// 2021-03-18T20:26Z
 	OperateTime *string `json:"operate_time,omitempty" xml:"operate_time,omitempty"`
-	Order       *int32  `json:"order,omitempty" xml:"order,omitempty"`
-	Status      *int32  `json:"status,omitempty" xml:"status,omitempty"`
-	StatusDesc  *string `json:"status_desc,omitempty" xml:"status_desc,omitempty"`
-	UserId      *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserName    *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	// example:
+	//
+	// 1
+	Order *int32 `json:"order,omitempty" xml:"order,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 同意
+	StatusDesc *string `json:"status_desc,omitempty" xml:"status_desc,omitempty"`
+	// example:
+	//
+	// user1
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// example:
+	//
+	// 张三
+	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
 func (s CarApplyQueryResponseBodyApplyListApproverList) String() string {
@@ -417,20 +492,62 @@ func (s *CarApplyQueryResponseBodyApplyListApproverList) Validate() error {
 }
 
 type CarApplyQueryResponseBodyApplyListItineraryList struct {
-	ArrCity        *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
-	ArrCityCode    *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
-	ArrDate        *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
-	CostCenterId   *int64  `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	// example:
+	//
+	// 北京
+	ArrCity *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	// example:
+	//
+	// HGH
+	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	// example:
+	//
+	// 2021-03-18T20:26Z
+	ArrDate *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
+	// example:
+	//
+	// 1
+	CostCenterId *int64 `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	// example:
+	//
+	// 成本中心1
 	CostCenterName *string `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
-	DepCity        *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
-	DepCityCode    *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
-	DepDate        *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
-	InvoiceId      *int64  `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
-	InvoiceName    *string `json:"invoice_name,omitempty" xml:"invoice_name,omitempty"`
-	ItineraryId    *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
-	ProjectCode    *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectTitle   *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
-	TrafficType    *int32  `json:"traffic_type,omitempty" xml:"traffic_type,omitempty"`
+	// example:
+	//
+	// 杭州
+	DepCity *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	// example:
+	//
+	// HGH
+	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	// example:
+	//
+	// 2021-03-18T20:26Z
+	DepDate *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	// example:
+	//
+	// 1
+	InvoiceId *int64 `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
+	// example:
+	//
+	// 发票抬头1
+	InvoiceName *string `json:"invoice_name,omitempty" xml:"invoice_name,omitempty"`
+	// example:
+	//
+	// 1
+	ItineraryId *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
+	// example:
+	//
+	// xm1
+	ProjectCode *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	// example:
+	//
+	// 项目1
+	ProjectTitle *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	// example:
+	//
+	// 4
+	TrafficType *int32 `json:"traffic_type,omitempty" xml:"traffic_type,omitempty"`
 }
 
 func (s CarApplyQueryResponseBodyApplyListItineraryList) String() string {
@@ -573,7 +690,10 @@ func (s *CarApplyQueryResponseBodyApplyListItineraryList) Validate() error {
 
 type CarApplyQueryResponseBodyApplyListTravelerStandard struct {
 	CarCitySet []*CarApplyQueryResponseBodyApplyListTravelerStandardCarCitySet `json:"car_city_set,omitempty" xml:"car_city_set,omitempty" type:"Repeated"`
-	UserId     *string                                                         `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// example:
+	//
+	// userid
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s CarApplyQueryResponseBodyApplyListTravelerStandard) String() string {
@@ -616,7 +736,13 @@ func (s *CarApplyQueryResponseBodyApplyListTravelerStandard) Validate() error {
 }
 
 type CarApplyQueryResponseBodyApplyListTravelerStandardCarCitySet struct {
+	// example:
+	//
+	// 110100,330100
 	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	// example:
+	//
+	// 北京，杭州
 	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
 }
 

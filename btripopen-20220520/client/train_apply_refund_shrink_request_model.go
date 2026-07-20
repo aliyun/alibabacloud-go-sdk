@@ -21,10 +21,22 @@ type iTrainApplyRefundShrinkRequest interface {
 
 type TrainApplyRefundShrinkRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1002145190081005400
 	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
 	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456778
 	OutRefundId *string `json:"out_refund_id,omitempty" xml:"out_refund_id,omitempty"`
 	// This parameter is required.
 	RefundTrainInfosShrink *string `json:"refund_train_infos,omitempty" xml:"refund_train_infos,omitempty"`

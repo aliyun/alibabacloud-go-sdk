@@ -25,14 +25,36 @@ type iApplyTripTaskExecuteRequest interface {
 
 type ApplyTripTaskExecuteRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// open
 	ActionFrom *string `json:"action_from,omitempty" xml:"action_from,omitempty"`
-	Comment    *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	// example:
+	//
+	// 这是一条评论
+	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// agree
 	TaskAction *string `json:"task_action,omitempty" xml:"task_action,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345
 	TaskId *int64 `json:"task_id,omitempty" xml:"task_id,omitempty"`
 	// This parameter is required.
-	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	//
+	// example:
+	//
+	// thirdpart12138
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// example:
+	//
+	// 张三
 	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 

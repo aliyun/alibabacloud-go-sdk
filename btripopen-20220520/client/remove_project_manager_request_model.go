@@ -20,10 +20,19 @@ type iRemoveProjectManagerRequest interface {
 }
 
 type RemoveProjectManagerRequest struct {
-	OrgEntities  []*RemoveProjectManagerRequestOrgEntities `json:"org_entities,omitempty" xml:"org_entities,omitempty" type:"Repeated"`
-	OutProjectId *string                                   `json:"out_project_id,omitempty" xml:"out_project_id,omitempty"`
-	ProjectId    *int64                                    `json:"project_id,omitempty" xml:"project_id,omitempty"`
-	RemoveAll    *bool                                     `json:"remove_all,omitempty" xml:"remove_all,omitempty"`
+	OrgEntities []*RemoveProjectManagerRequestOrgEntities `json:"org_entities,omitempty" xml:"org_entities,omitempty" type:"Repeated"`
+	// example:
+	//
+	// projectabc
+	OutProjectId *string `json:"out_project_id,omitempty" xml:"out_project_id,omitempty"`
+	// example:
+	//
+	// 123
+	ProjectId *int64 `json:"project_id,omitempty" xml:"project_id,omitempty"`
+	// example:
+	//
+	// false
+	RemoveAll *bool `json:"remove_all,omitempty" xml:"remove_all,omitempty"`
 }
 
 func (s RemoveProjectManagerRequest) String() string {
@@ -84,7 +93,13 @@ func (s *RemoveProjectManagerRequest) Validate() error {
 }
 
 type RemoveProjectManagerRequestOrgEntities struct {
-	EntityId   *string `json:"entity_id,omitempty" xml:"entity_id,omitempty"`
+	// example:
+	//
+	// user1
+	EntityId *string `json:"entity_id,omitempty" xml:"entity_id,omitempty"`
+	// example:
+	//
+	// 1
 	EntityType *string `json:"entity_type,omitempty" xml:"entity_type,omitempty"`
 }
 

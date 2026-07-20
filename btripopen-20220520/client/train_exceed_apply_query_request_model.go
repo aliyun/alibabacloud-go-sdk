@@ -16,7 +16,13 @@ type iTrainExceedApplyQueryRequest interface {
 }
 
 type TrainExceedApplyQueryRequest struct {
-	ApplyId            *int64  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	// example:
+	//
+	// 349720
+	ApplyId *int64 `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	// example:
+	//
+	// 2024060510040000300008398
 	BusinessInstanceId *string `json:"business_instance_id,omitempty" xml:"business_instance_id,omitempty"`
 }
 

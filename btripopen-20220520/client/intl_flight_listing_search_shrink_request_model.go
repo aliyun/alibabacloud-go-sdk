@@ -34,22 +34,54 @@ type iIntlFlightListingSearchShrinkRequest interface {
 }
 
 type IntlFlightListingSearchShrinkRequest struct {
+	// example:
+	//
+	// 10001
 	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
-	BuyerName   *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
+	// example:
+	//
+	// ZHANGSAN
+	BuyerName *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
 	CabinType *int32 `json:"cabin_type,omitempty" xml:"cabin_type,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// TEST
 	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
 	// This parameter is required.
-	OutWheelSearch *bool   `json:"out_wheel_search,omitempty" xml:"out_wheel_search,omitempty"`
-	QueryRecordId  *string `json:"query_record_id,omitempty" xml:"query_record_id,omitempty"`
+	//
+	// example:
+	//
+	// false
+	OutWheelSearch *bool `json:"out_wheel_search,omitempty" xml:"out_wheel_search,omitempty"`
+	// example:
+	//
+	// 60b412-cc05-4d10-b570-
+	QueryRecordId *string `json:"query_record_id,omitempty" xml:"query_record_id,omitempty"`
 	// This parameter is required.
 	SearchJourneysShrink *string `json:"search_journeys,omitempty" xml:"search_journeys,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
 	SearchMode                *int32  `json:"search_mode,omitempty" xml:"search_mode,omitempty"`
 	SearchPassengerListShrink *string `json:"search_passenger_list,omitempty" xml:"search_passenger_list,omitempty"`
-	Token                     *string `json:"token,omitempty" xml:"token,omitempty"`
+	// example:
+	//
+	// 9960b412-cc05-4d10-b570-93372d816807
+	Token *string `json:"token,omitempty" xml:"token,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	TripType *int32 `json:"trip_type,omitempty" xml:"trip_type,omitempty"`
 }
 

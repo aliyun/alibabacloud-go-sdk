@@ -32,19 +32,46 @@ type iFlightCreateOrderV2ShrinkRequest interface {
 }
 
 type FlightCreateOrderV2ShrinkRequest struct {
-	AsyncCreateOrderKey  *string `json:"async_create_order_key,omitempty" xml:"async_create_order_key,omitempty"`
-	AsyncCreateOrderMode *bool   `json:"async_create_order_mode,omitempty" xml:"async_create_order_mode,omitempty"`
-	BtripUserId          *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
-	BuyerName            *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
+	// example:
+	//
+	// 异步下单key
+	AsyncCreateOrderKey *string `json:"async_create_order_key,omitempty" xml:"async_create_order_key,omitempty"`
+	// example:
+	//
+	// false
+	AsyncCreateOrderMode *bool `json:"async_create_order_mode,omitempty" xml:"async_create_order_mode,omitempty"`
+	// example:
+	//
+	// ali_00001
+	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	// example:
+	//
+	// 云妹
+	BuyerName *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
 	// This parameter is required.
 	ContactInfoShrink *string `json:"contact_info,omitempty" xml:"contact_info,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cheshiapi
 	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 7fb731deeb4510b86c17e8c8c25740_11
 	OtaItemId *string `json:"ota_item_id,omitempty" xml:"ota_item_id,omitempty"`
 	// This parameter is required.
-	OutOrderId     *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
-	TotalPriceCent *int64  `json:"total_price_cent,omitempty" xml:"total_price_cent,omitempty"`
+	//
+	// example:
+	//
+	// 外部订单号
+	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	// example:
+	//
+	// 1000
+	TotalPriceCent *int64 `json:"total_price_cent,omitempty" xml:"total_price_cent,omitempty"`
 	// This parameter is required.
 	TravelersShrink *string `json:"travelers,omitempty" xml:"travelers,omitempty"`
 }

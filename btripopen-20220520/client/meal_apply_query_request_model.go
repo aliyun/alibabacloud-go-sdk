@@ -15,6 +15,10 @@ type iMealApplyQueryRequest interface {
 
 type MealApplyQueryRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
 	ThirdPartApplyId *string `json:"third_part_apply_id,omitempty" xml:"third_part_apply_id,omitempty"`
 }
 

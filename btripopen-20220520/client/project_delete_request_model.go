@@ -15,6 +15,10 @@ type iProjectDeleteRequest interface {
 
 type ProjectDeleteRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345
 	ThirdPartId *string `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
 }
 

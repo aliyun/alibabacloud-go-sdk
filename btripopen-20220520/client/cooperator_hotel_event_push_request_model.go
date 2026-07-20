@@ -26,16 +26,41 @@ type iCooperatorHotelEventPushRequest interface {
 }
 
 type CooperatorHotelEventPushRequest struct {
-	ChangeOrderStatus     *int32  `json:"change_order_status,omitempty" xml:"change_order_status,omitempty"`
+	// example:
+	//
+	// 11
+	ChangeOrderStatus *int32 `json:"change_order_status,omitempty" xml:"change_order_status,omitempty"`
+	// example:
+	//
+	// 交易成功
 	ChangeOrderStatusDesc *string `json:"change_order_status_desc,omitempty" xml:"change_order_status_desc,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// coop_123456
 	CooperatorOrderId *string `json:"cooperator_order_id,omitempty" xml:"cooperator_order_id,omitempty"`
 	// This parameter is required.
-	Event     *string `json:"event,omitempty" xml:"event,omitempty"`
+	//
+	// example:
+	//
+	// USER_LEAVE
+	Event *string `json:"event,omitempty" xml:"event,omitempty"`
+	// example:
+	//
+	// 用户离店
 	EventDesc *string `json:"event_desc,omitempty" xml:"event_desc,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 204-09-01 10:55:20
 	EventTime *string `json:"event_time,omitempty" xml:"event_time,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
 	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
 }
 

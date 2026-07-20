@@ -66,46 +66,125 @@ type iHotelOrderCreateShrinkRequest interface {
 type HotelOrderCreateShrinkRequest struct {
 	ArrivalTime *string `json:"arrival_time,omitempty" xml:"arrival_time,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 123122
 	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2020-10-20
 	CheckIn *string `json:"check_in,omitempty" xml:"check_in,omitempty"`
 	// This parameter is required.
-	CheckOut      *string `json:"check_out,omitempty" xml:"check_out,omitempty"`
+	//
+	// example:
+	//
+	// 2020-10-20
+	CheckOut *string `json:"check_out,omitempty" xml:"check_out,omitempty"`
+	// example:
+	//
+	// demo
 	ContractEmail *string `json:"contract_email,omitempty" xml:"contract_email,omitempty"`
-	ContractName  *string `json:"contract_name,omitempty" xml:"contract_name,omitempty"`
+	// example:
+	//
+	// 张三
+	ContractName *string `json:"contract_name,omitempty" xml:"contract_name,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 19281772123
 	ContractPhone *string `json:"contract_phone,omitempty" xml:"contract_phone,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
 	CorpPayPrice *int64 `json:"corp_pay_price,omitempty" xml:"corp_pay_price,omitempty"`
 	// This parameter is required.
-	DisOrderId        *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
+	//
+	// example:
+	//
+	// dis123
+	DisOrderId *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
+	// example:
+	//
+	// （特定企业需要传递）
+	//
+	// 1.企业支付金额：DisCorpPayPrice
+	//
+	// 2.个人支付金额：
+	//
+	// DisPersonPayPrice
 	Extra             *string `json:"extra,omitempty" xml:"extra,omitempty"`
 	InvoiceInfoShrink *string `json:"invoice_info,omitempty" xml:"invoice_info,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 671570615157
 	ItemId *int64 `json:"item_id,omitempty" xml:"item_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// fb5e1abf33924b6c912bd6d80deec0eb-1
 	ItineraryNo      *string `json:"itinerary_no,omitempty" xml:"itinerary_no,omitempty"`
 	LeaveTime        *string `json:"leave_time,omitempty" xml:"leave_time,omitempty"`
 	MemberInfoShrink *string `json:"member_info,omitempty" xml:"member_info,omitempty"`
 	// This parameter is required.
 	OccupantInfoListShrink *string `json:"occupant_info_list,omitempty" xml:"occupant_info_list,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1000
 	PersonPayPrice      *int64  `json:"person_pay_price,omitempty" xml:"person_pay_price,omitempty"`
 	PromotionInfoShrink *string `json:"promotion_info,omitempty" xml:"promotion_info,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1399417428510
 	RatePlanId *int64 `json:"rate_plan_id,omitempty" xml:"rate_plan_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 187211
 	RoomId *int64 `json:"room_id,omitempty" xml:"room_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	RoomNum *int32 `json:"room_num,omitempty" xml:"room_num,omitempty"`
 	RpType  *int32 `json:"rp_type,omitempty" xml:"rp_type,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2088441675613762
 	SellerId *int64 `json:"seller_id,omitempty" xml:"seller_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2198781
 	Shid *int64 `json:"shid,omitempty" xml:"shid,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
 	TotalOrderPrice *int64 `json:"total_order_price,omitempty" xml:"total_order_price,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// nonUltron_1673575241156_d91ea8ad16735752359161037bf6cf_c54d3768312a4b249b719f126377bf82
 	ValidateResKey *string `json:"validate_res_key,omitempty" xml:"validate_res_key,omitempty"`
 }
 

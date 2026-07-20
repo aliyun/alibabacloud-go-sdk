@@ -17,6 +17,10 @@ type iDeleteEmployeesFromCustomRoleShrinkRequest interface {
 
 type DeleteEmployeesFromCustomRoleShrinkRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345
 	RoleId *string `json:"role_id,omitempty" xml:"role_id,omitempty"`
 	// This parameter is required.
 	UserIdListShrink *string `json:"user_id_list,omitempty" xml:"user_id_list,omitempty"`

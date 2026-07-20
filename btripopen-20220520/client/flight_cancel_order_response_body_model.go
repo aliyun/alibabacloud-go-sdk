@@ -24,12 +24,27 @@ type iFlightCancelOrderResponseBody interface {
 }
 
 type FlightCancelOrderResponseBody struct {
-	Code      *string                              `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                              `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *FlightCancelOrderResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                                `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                              `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 成功
+	Message *string                              `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *FlightCancelOrderResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// A5009956-1077-52FB-B520-EA8C7E91D722
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 21041ce316577904808056433edbb2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s FlightCancelOrderResponseBody) String() string {
@@ -104,9 +119,21 @@ func (s *FlightCancelOrderResponseBody) Validate() error {
 }
 
 type FlightCancelOrderResponseBodyModule struct {
-	CancelTime  *string `json:"cancel_time,omitempty" xml:"cancel_time,omitempty"`
-	FailCode    *string `json:"fail_code,omitempty" xml:"fail_code,omitempty"`
-	FailReason  *string `json:"fail_reason,omitempty" xml:"fail_reason,omitempty"`
+	// example:
+	//
+	// 2022-07-04T16:13Z
+	CancelTime *string `json:"cancel_time,omitempty" xml:"cancel_time,omitempty"`
+	// example:
+	//
+	// 无·
+	FailCode *string `json:"fail_code,omitempty" xml:"fail_code,omitempty"`
+	// example:
+	//
+	// 无
+	FailReason *string `json:"fail_reason,omitempty" xml:"fail_reason,omitempty"`
+	// example:
+	//
+	// 0
 	OrderStatus *string `json:"order_status,omitempty" xml:"order_status,omitempty"`
 }
 

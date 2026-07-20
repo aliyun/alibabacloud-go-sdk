@@ -14,6 +14,9 @@ type iHotelCityCodeListRequest interface {
 }
 
 type HotelCityCodeListRequest struct {
+	// example:
+	//
+	// 1
 	CountryCode *string `json:"country_code,omitempty" xml:"country_code,omitempty"`
 }
 

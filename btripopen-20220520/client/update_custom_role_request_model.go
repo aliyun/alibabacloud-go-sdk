@@ -17,8 +17,16 @@ type iUpdateCustomRoleRequest interface {
 
 type UpdateCustomRoleRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345
 	RoleId *string `json:"role_id,omitempty" xml:"role_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// XX角色
 	RoleName *string `json:"role_name,omitempty" xml:"role_name,omitempty"`
 }
 

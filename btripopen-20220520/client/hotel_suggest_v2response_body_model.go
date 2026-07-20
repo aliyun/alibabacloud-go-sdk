@@ -24,12 +24,27 @@ type iHotelSuggestV2ResponseBody interface {
 }
 
 type HotelSuggestV2ResponseBody struct {
-	Code      *string                           `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                           `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *HotelSuggestV2ResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                             `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                           `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// None
+	Message *string                           `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *HotelSuggestV2ResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// C61ECFF6-606B-5F66-B81D-D77369043A5F
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 21041ce316577904808056433edbb2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s HotelSuggestV2ResponseBody) String() string {
@@ -107,7 +122,10 @@ type HotelSuggestV2ResponseBodyModule struct {
 	GuessSuggestInfos   []*HotelSuggestV2ResponseBodyModuleGuessSuggestInfos   `json:"guess_suggest_infos,omitempty" xml:"guess_suggest_infos,omitempty" type:"Repeated"`
 	KeywordSuggestInfos []*HotelSuggestV2ResponseBodyModuleKeywordSuggestInfos `json:"keyword_suggest_infos,omitempty" xml:"keyword_suggest_infos,omitempty" type:"Repeated"`
 	PopularSuggestInfos []*HotelSuggestV2ResponseBodyModulePopularSuggestInfos `json:"popular_suggest_infos,omitempty" xml:"popular_suggest_infos,omitempty" type:"Repeated"`
-	Tips                *string                                                `json:"tips,omitempty" xml:"tips,omitempty"`
+	// example:
+	//
+	// 以下是当前城市和周边的查询结果 (酒店起价为参考)
+	Tips *string `json:"tips,omitempty" xml:"tips,omitempty"`
 }
 
 func (s HotelSuggestV2ResponseBodyModule) String() string {
@@ -186,17 +204,50 @@ func (s *HotelSuggestV2ResponseBodyModule) Validate() error {
 }
 
 type HotelSuggestV2ResponseBodyModuleGuessSuggestInfos struct {
-	Address     *string `json:"address,omitempty" xml:"address,omitempty"`
-	CityCode    *int32  `json:"city_code,omitempty" xml:"city_code,omitempty"`
-	CityName    *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+	// example:
+	//
+	// 杭州湖墅南路XX号
+	Address *string `json:"address,omitempty" xml:"address,omitempty"`
+	// example:
+	//
+	// 300100
+	CityCode *int32 `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	// example:
+	//
+	// 杭州
+	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+	// example:
+	//
+	// 杭州JW万豪酒店
 	DisplayName *string `json:"display_name,omitempty" xml:"display_name,omitempty"`
-	HotelId     *string `json:"hotel_id,omitempty" xml:"hotel_id,omitempty"`
-	Icon        *string `json:"icon,omitempty" xml:"icon,omitempty"`
-	Point       *string `json:"point,omitempty" xml:"point,omitempty"`
-	Price       *string `json:"price,omitempty" xml:"price,omitempty"`
-	Region      *int32  `json:"region,omitempty" xml:"region,omitempty"`
-	Type        *int32  `json:"type,omitempty" xml:"type,omitempty"`
-	TypeDesc    *string `json:"type_desc,omitempty" xml:"type_desc,omitempty"`
+	// example:
+	//
+	// 53853318
+	HotelId *string `json:"hotel_id,omitempty" xml:"hotel_id,omitempty"`
+	// example:
+	//
+	// https://gw.alicdn.com/imgextra/i3/O1CN01qKg25r1rKLOKxT3vB_!!6000000005612-2-tps-32-32.png
+	Icon *string `json:"icon,omitempty" xml:"icon,omitempty"`
+	// example:
+	//
+	// 4.8分
+	Point *string `json:"point,omitempty" xml:"point,omitempty"`
+	// example:
+	//
+	// 524
+	Price *string `json:"price,omitempty" xml:"price,omitempty"`
+	// example:
+	//
+	// 0
+	Region *int32 `json:"region,omitempty" xml:"region,omitempty"`
+	// example:
+	//
+	// 10
+	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// 酒店
+	TypeDesc *string `json:"type_desc,omitempty" xml:"type_desc,omitempty"`
 }
 
 func (s HotelSuggestV2ResponseBodyModuleGuessSuggestInfos) String() string {
@@ -311,18 +362,51 @@ func (s *HotelSuggestV2ResponseBodyModuleGuessSuggestInfos) Validate() error {
 }
 
 type HotelSuggestV2ResponseBodyModuleKeywordSuggestInfos struct {
+	// example:
+	//
+	// 杭州湖墅南路XX号
 	Address              *string                                                                    `json:"address,omitempty" xml:"address,omitempty"`
 	BusinessAreaWithCity []*HotelSuggestV2ResponseBodyModuleKeywordSuggestInfosBusinessAreaWithCity `json:"business_area_with_city,omitempty" xml:"business_area_with_city,omitempty" type:"Repeated"`
-	CityCode             *int32                                                                     `json:"city_code,omitempty" xml:"city_code,omitempty"`
-	CityName             *string                                                                    `json:"city_name,omitempty" xml:"city_name,omitempty"`
-	DisplayName          *string                                                                    `json:"display_name,omitempty" xml:"display_name,omitempty"`
-	HotelId              *string                                                                    `json:"hotel_id,omitempty" xml:"hotel_id,omitempty"`
-	Icon                 *string                                                                    `json:"icon,omitempty" xml:"icon,omitempty"`
-	Point                *string                                                                    `json:"point,omitempty" xml:"point,omitempty"`
-	Price                *string                                                                    `json:"price,omitempty" xml:"price,omitempty"`
-	Region               *int32                                                                     `json:"region,omitempty" xml:"region,omitempty"`
-	Type                 *int32                                                                     `json:"type,omitempty" xml:"type,omitempty"`
-	TypeDesc             *string                                                                    `json:"type_desc,omitempty" xml:"type_desc,omitempty"`
+	// example:
+	//
+	// 300100
+	CityCode *int32 `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	// example:
+	//
+	// 杭州
+	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+	// example:
+	//
+	// 杭州JW万豪酒店
+	DisplayName *string `json:"display_name,omitempty" xml:"display_name,omitempty"`
+	// example:
+	//
+	// 53853318
+	HotelId *string `json:"hotel_id,omitempty" xml:"hotel_id,omitempty"`
+	// example:
+	//
+	// https://gw.alicdn.com/imgextra/i3/O1CN01qKg25r1rKLOKxT3vB_!!6000000005612-2-tps-32-32.png
+	Icon *string `json:"icon,omitempty" xml:"icon,omitempty"`
+	// example:
+	//
+	// 4.8分
+	Point *string `json:"point,omitempty" xml:"point,omitempty"`
+	// example:
+	//
+	// 524
+	Price *string `json:"price,omitempty" xml:"price,omitempty"`
+	// example:
+	//
+	// 0
+	Region *int32 `json:"region,omitempty" xml:"region,omitempty"`
+	// example:
+	//
+	// 10
+	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// 酒店
+	TypeDesc *string `json:"type_desc,omitempty" xml:"type_desc,omitempty"`
 }
 
 func (s HotelSuggestV2ResponseBodyModuleKeywordSuggestInfos) String() string {
@@ -455,17 +539,50 @@ func (s *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfos) Validate() error {
 }
 
 type HotelSuggestV2ResponseBodyModuleKeywordSuggestInfosBusinessAreaWithCity struct {
-	Address     *string `json:"address,omitempty" xml:"address,omitempty"`
-	CityCode    *int32  `json:"city_code,omitempty" xml:"city_code,omitempty"`
-	CityName    *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+	// example:
+	//
+	// 成都市高新区天府大道北段1700号1栋2单元18层1801号
+	Address *string `json:"address,omitempty" xml:"address,omitempty"`
+	// example:
+	//
+	// 300100
+	CityCode *int32 `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	// example:
+	//
+	// 杭州
+	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+	// example:
+	//
+	// 阿里巴巴/未来科技城
 	DisplayName *string `json:"display_name,omitempty" xml:"display_name,omitempty"`
-	HotelId     *string `json:"hotel_id,omitempty" xml:"hotel_id,omitempty"`
-	Icon        *string `json:"icon,omitempty" xml:"icon,omitempty"`
-	Point       *string `json:"point,omitempty" xml:"point,omitempty"`
-	Price       *string `json:"price,omitempty" xml:"price,omitempty"`
-	Region      *int32  `json:"region,omitempty" xml:"region,omitempty"`
-	Type        *int32  `json:"type,omitempty" xml:"type,omitempty"`
-	TypeDesc    *string `json:"type_desc,omitempty" xml:"type_desc,omitempty"`
+	// example:
+	//
+	// 57140953
+	HotelId *string `json:"hotel_id,omitempty" xml:"hotel_id,omitempty"`
+	// example:
+	//
+	// https://gw.alicdn.com/imgextra/i3/O1CN01qKg25r1rKLOKxT3vB_!!6000000005612-2-tps-32-32.png
+	Icon *string `json:"icon,omitempty" xml:"icon,omitempty"`
+	// example:
+	//
+	// 4.8分
+	Point *string `json:"point,omitempty" xml:"point,omitempty"`
+	// example:
+	//
+	// 524
+	Price *string `json:"price,omitempty" xml:"price,omitempty"`
+	// example:
+	//
+	// 0
+	Region *int32 `json:"region,omitempty" xml:"region,omitempty"`
+	// example:
+	//
+	// 5
+	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// 商圈
+	TypeDesc *string `json:"type_desc,omitempty" xml:"type_desc,omitempty"`
 }
 
 func (s HotelSuggestV2ResponseBodyModuleKeywordSuggestInfosBusinessAreaWithCity) String() string {
@@ -580,9 +697,15 @@ func (s *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfosBusinessAreaWithCity
 }
 
 type HotelSuggestV2ResponseBodyModulePopularSuggestInfos struct {
+	// example:
+	//
+	// https://gw.alicdn.com/imgextra/i1/O1CN01x0q19E1QZSqLHVVNh_!!6000000001990-2-tps-54-54.png
 	Icon         *string                                                            `json:"icon,omitempty" xml:"icon,omitempty"`
 	PopularInfos []*HotelSuggestV2ResponseBodyModulePopularSuggestInfosPopularInfos `json:"popular_infos,omitempty" xml:"popular_infos,omitempty" type:"Repeated"`
-	Title        *string                                                            `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// 热门搜索
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s HotelSuggestV2ResponseBodyModulePopularSuggestInfos) String() string {
@@ -634,6 +757,9 @@ func (s *HotelSuggestV2ResponseBodyModulePopularSuggestInfos) Validate() error {
 }
 
 type HotelSuggestV2ResponseBodyModulePopularSuggestInfosPopularInfos struct {
+	// example:
+	//
+	// 杭州东站
 	DisplayName *string `json:"display_name,omitempty" xml:"display_name,omitempty"`
 }
 

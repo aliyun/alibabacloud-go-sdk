@@ -26,16 +26,37 @@ type iTrainApplyChangeRequest interface {
 }
 
 type TrainApplyChangeRequest struct {
+	// example:
+	//
+	// 0
 	AcceptNoSeat *string `json:"accept_no_seat,omitempty" xml:"accept_no_seat,omitempty"`
 	// This parameter is required.
 	ChangeTrainInfoS []*TrainApplyChangeRequestChangeTrainInfoS `json:"change_train_info_s,omitempty" xml:"change_train_info_s,omitempty" type:"Repeated"`
-	ForceMatch       *string                                    `json:"force_match,omitempty" xml:"force_match,omitempty"`
-	IsPayNow         *bool                                      `json:"is_pay_now,omitempty" xml:"is_pay_now,omitempty"`
+	// example:
+	//
+	// 0
+	ForceMatch *string `json:"force_match,omitempty" xml:"force_match,omitempty"`
+	// example:
+	//
+	// false
+	IsPayNow *bool `json:"is_pay_now,omitempty" xml:"is_pay_now,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1017028198411054446
 	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345
 	OutChangeApplyId *string `json:"out_change_apply_id,omitempty" xml:"out_change_apply_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
 	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
 }
 
@@ -125,20 +146,50 @@ func (s *TrainApplyChangeRequest) Validate() error {
 
 type TrainApplyChangeRequestChangeTrainInfoS struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// BTC
 	ArrStationCode *string `json:"arr_station_code,omitempty" xml:"arr_station_code,omitempty"`
 	// This parameter is required.
 	ChangeTicketInfoS []*TrainApplyChangeRequestChangeTrainInfoSChangeTicketInfoS `json:"change_ticket_info_s,omitempty" xml:"change_ticket_info_s,omitempty" type:"Repeated"`
-	ChooseBedS        *string                                                     `json:"choose_bed_s,omitempty" xml:"choose_bed_s,omitempty"`
-	ChooseSeatS       *string                                                     `json:"choose_seat_s,omitempty" xml:"choose_seat_s,omitempty"`
+	// example:
+	//
+	// null
+	ChooseBedS *string `json:"choose_bed_s,omitempty" xml:"choose_bed_s,omitempty"`
+	// example:
+	//
+	// 1T
+	ChooseSeatS *string `json:"choose_seat_s,omitempty" xml:"choose_seat_s,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// BDC
 	DepStationCode *string `json:"dep_station_code,omitempty" xml:"dep_station_code,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2024-05-06 15:19:01
 	DepTime *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2024-05-06 15:19:01
 	OriginalDepTime *string `json:"original_dep_time,omitempty" xml:"original_dep_time,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// K234
 	OriginalTrainNo *string `json:"original_train_no,omitempty" xml:"original_train_no,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// K2345
 	TrainNo *string `json:"train_no,omitempty" xml:"train_no,omitempty"`
 }
 
@@ -248,10 +299,22 @@ type TrainApplyChangeRequestChangeTrainInfoSChangeTicketInfoS struct {
 	// This parameter is required.
 	PassengerInfo *TrainApplyChangeRequestChangeTrainInfoSChangeTicketInfoSPassengerInfo `json:"passenger_info,omitempty" xml:"passenger_info,omitempty" type:"Struct"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 14
 	SeatType *string `json:"seat_type,omitempty" xml:"seat_type,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
 	TicketPrice *string `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
 	TicketType *string `json:"ticket_type,omitempty" xml:"ticket_type,omitempty"`
 }
 
@@ -310,12 +373,28 @@ func (s *TrainApplyChangeRequestChangeTrainInfoSChangeTicketInfoS) Validate() er
 
 type TrainApplyChangeRequestChangeTrainInfoSChangeTicketInfoSPassengerInfo struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 291487e553c5abde3b611aae283e2526f0d733ab55094aadc0b5ba587222a233c
 	PassengerCertNo *string `json:"passenger_cert_no,omitempty" xml:"passenger_cert_no,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 170d9ac6f8807f9ec603c688f45f78a41
 	PassengerCertType *string `json:"passenger_cert_type,omitempty" xml:"passenger_cert_type,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
 	PassengerId *string `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 949c9f34f677a0e5d249dfc94f5e62cc7
 	PassengerName *string `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
 }
 

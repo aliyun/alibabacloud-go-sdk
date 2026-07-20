@@ -29,16 +29,43 @@ type iTrainNoInfoSearchRequest interface {
 
 type TrainNoInfoSearchRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 包头东
 	ArrLocation *string `json:"arr_location,omitempty" xml:"arr_location,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-08-15
 	DepDate *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
 	// This parameter is required.
-	DepLocation   *string `json:"dep_location,omitempty" xml:"dep_location,omitempty"`
-	LineKey       *string `json:"line_key,omitempty" xml:"line_key,omitempty"`
-	MiddleDate    *string `json:"middle_date,omitempty" xml:"middle_date,omitempty"`
+	//
+	// example:
+	//
+	// 包头
+	DepLocation *string `json:"dep_location,omitempty" xml:"dep_location,omitempty"`
+	// example:
+	//
+	// qwwweqswxxa
+	LineKey *string `json:"line_key,omitempty" xml:"line_key,omitempty"`
+	// example:
+	//
+	// 2023-08-15
+	MiddleDate *string `json:"middle_date,omitempty" xml:"middle_date,omitempty"`
+	// example:
+	//
+	// 兰州西
 	MiddleStation *string `json:"middle_station,omitempty" xml:"middle_station,omitempty"`
-	OrderId       *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	TrainNo       *string `json:"train_no,omitempty" xml:"train_no,omitempty"`
+	// example:
+	//
+	// 12342123212
+	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// example:
+	//
+	// K2345
+	TrainNo *string `json:"train_no,omitempty" xml:"train_no,omitempty"`
 }
 
 func (s TrainNoInfoSearchRequest) String() string {
