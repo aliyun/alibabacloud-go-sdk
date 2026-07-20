@@ -14,7 +14,7 @@ type iRefundInstanceResponseBody interface {
 }
 
 type RefundInstanceResponseBody struct {
-	// The unique ID generated for the request. Use this ID to troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique ID for each API request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//

@@ -38,13 +38,13 @@ type ListInstancesRequest struct {
 	Brand *string `json:"Brand,omitempty" xml:"Brand,omitempty"`
 	// The status of the certificate. Valid values:
 	//
-	// - **issued**: issued.
+	// - **issued**: Issued.
 	//
-	// - **revoked**: revoked.
+	// - **revoked**: Revoked.
 	//
-	// - **willExpire**: about to expire.
+	// - **willExpire**: About to expire.
 	//
-	// - **expired**: expired.
+	// - **expired**: Expired.
 	//
 	// example:
 	//
@@ -62,7 +62,11 @@ type ListInstancesRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The instance type. Valid values: BUY (official certificate) and TEST (test certificate).
+	// The instance type. Valid values:
+	//
+	// - BUY: official certificate.
+	//
+	// - TEST: test certificate.
 	//
 	// example:
 	//

@@ -26,23 +26,23 @@ type ListAssetCountRequest struct {
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The expiration date of the certificate.
+	// The certificate expiration date, in seconds. The value is a UNIX timestamp.
 	//
 	// example:
 	//
-	// 2020-07-13
+	// 1767807000000
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The number of entries to return on each page. Default value: 50.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 1
 	ShowSize *int64 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
-	// The date of certificate issuance.
+	// The certificate issuance date, in seconds. The value is a UNIX timestamp.
 	//
 	// example:
 	//
-	// 2018-07-13
+	// 1767202200000
 	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 

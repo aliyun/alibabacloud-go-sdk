@@ -24,33 +24,33 @@ type iListContactResponseBody interface {
 }
 
 type ListContactResponseBody struct {
-	// The contacts.
+	// The contact list.
 	ContactList []*ListContactResponseBodyContactList `json:"ContactList,omitempty" xml:"ContactList,omitempty" type:"Repeated"`
-	// The page number. Default value: **1**.
+	// The current page number in a paged query. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The keyword used in the fuzzy search.
+	// The fuzzy match keyword.
 	//
 	// example:
 	//
 	// 186
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 31C66C7B-671A-4297-9187-2C4477247A74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of certificates per page. Default value: **20**.
+	// The number of certificates displayed per page in a paged query. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	ShowSize *int32 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of search results.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *ListContactResponseBody) Validate() error {
 }
 
 type ListContactResponseBodyContactList struct {
-	// The ID of the contact.
+	// The contact ID.
 	//
 	// example:
 	//
@@ -146,31 +146,31 @@ type ListContactResponseBodyContactList struct {
 	//
 	// username@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// Indicates whether the email address passed the verification.
+	// Indicates whether the email address is verified.
 	//
 	// example:
 	//
 	// 1
 	EmailStatus *int32 `json:"EmailStatus,omitempty" xml:"EmailStatus,omitempty"`
-	// The phone number.
+	// The mobile phone number.
 	//
 	// example:
 	//
 	// 139****8888
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	// Indicates whether the phone number was verified.
+	// Indicates whether the mobile phone number is verified.
 	//
 	// example:
 	//
 	// 1
 	MobileStatus *int32 `json:"MobileStatus,omitempty" xml:"MobileStatus,omitempty"`
-	// The name of the contact.
+	// The contact name.
 	//
 	// example:
 	//
 	// John
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The webhook URL of the chatbot.
+	// The webhook URL.
 	//
 	// example:
 	//

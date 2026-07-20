@@ -18,19 +18,19 @@ type iListContactRequest interface {
 }
 
 type ListContactRequest struct {
-	// The page number. Default value: 1.
+	// The current page number for paged queries. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The keyword used in the query. For example, you can specify a keyword in names, email addresses, and mobile phone numbers.
+	// The search keyword, such as a keyword in the name, email address, or phone number.
 	//
 	// example:
 	//
 	// 186
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The number of entries to return on each page. Default value: 20.
+	// The number of contacts to display per page in a paged query.
 	//
 	// example:
 	//

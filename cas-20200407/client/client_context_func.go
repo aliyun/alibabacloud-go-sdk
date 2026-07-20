@@ -65,7 +65,7 @@ func (client *Client) AddCloudAccessWithContext(ctx context.Context, request *Ad
 
 // Summary:
 //
-// Submits a certificate application for a Certificate Management Service instance.
+// Applies for a certificate.
 //
 // @param request - ApplyCertificateRequest
 //
@@ -275,7 +275,7 @@ func (client *Client) CancelOrderRequestWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Cancels a pending certificate application that has not been issued.
+// Revokes a certificate application.
 //
 // @param request - CancelPendingCertificateRequest
 //
@@ -549,6 +549,154 @@ func (client *Client) CreateCertificateWithCsrRequestWithContext(ctx context.Con
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateCertificateWithCsrRequestResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a company.
+//
+// @param request - CreateCompanyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCompanyResponse
+func (client *Client) CreateCompanyWithContext(ctx context.Context, request *CreateCompanyRequest, runtime *dara.RuntimeOptions) (_result *CreateCompanyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.City) {
+		query["City"] = request.City
+	}
+
+	if !dara.IsNil(request.CompanyAddress) {
+		query["CompanyAddress"] = request.CompanyAddress
+	}
+
+	if !dara.IsNil(request.CompanyCode) {
+		query["CompanyCode"] = request.CompanyCode
+	}
+
+	if !dara.IsNil(request.CompanyEmail) {
+		query["CompanyEmail"] = request.CompanyEmail
+	}
+
+	if !dara.IsNil(request.CompanyName) {
+		query["CompanyName"] = request.CompanyName
+	}
+
+	if !dara.IsNil(request.CompanyPhone) {
+		query["CompanyPhone"] = request.CompanyPhone
+	}
+
+	if !dara.IsNil(request.CompanyType) {
+		query["CompanyType"] = request.CompanyType
+	}
+
+	if !dara.IsNil(request.CountryCode) {
+		query["CountryCode"] = request.CountryCode
+	}
+
+	if !dara.IsNil(request.Department) {
+		query["Department"] = request.Department
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.PostCode) {
+		query["PostCode"] = request.PostCode
+	}
+
+	if !dara.IsNil(request.Province) {
+		query["Province"] = request.Province
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCompany"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateCompanyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a certificate application contact.
+//
+// @param request - CreateContactRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateContactResponse
+func (client *Client) CreateContactWithContext(ctx context.Context, request *CreateContactRequest, runtime *dara.RuntimeOptions) (_result *CreateContactResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.Idcard) {
+		query["Idcard"] = request.Idcard
+	}
+
+	if !dara.IsNil(request.Mobile) {
+		query["Mobile"] = request.Mobile
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Webhooks) {
+		query["Webhooks"] = request.Webhooks
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateContact"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateContactResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1029,6 +1177,94 @@ func (client *Client) DeleteCloudAccessWithContext(ctx context.Context, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteCloudAccessResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a company.
+//
+// @param request - DeleteCompanyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCompanyResponse
+func (client *Client) DeleteCompanyWithContext(ctx context.Context, request *DeleteCompanyRequest, runtime *dara.RuntimeOptions) (_result *DeleteCompanyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CompanyId) {
+		query["CompanyId"] = request.CompanyId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteCompany"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteCompanyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a contact.
+//
+// @param request - DeleteContactRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteContactResponse
+func (client *Client) DeleteContactWithContext(ctx context.Context, request *DeleteContactRequest, runtime *dara.RuntimeOptions) (_result *DeleteContactResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ContactId) {
+		query["ContactId"] = request.ContactId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteContact"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteContactResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1757,6 +1993,94 @@ func (client *Client) GetCertificateDetailWithContext(ctx context.Context, reque
 
 // Summary:
 //
+// Retrieves the details of a company.
+//
+// @param request - GetCompanyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCompanyResponse
+func (client *Client) GetCompanyWithContext(ctx context.Context, request *GetCompanyRequest, runtime *dara.RuntimeOptions) (_result *GetCompanyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CompanyId) {
+		query["CompanyId"] = request.CompanyId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCompany"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCompanyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a contact.
+//
+// @param request - GetContactRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetContactResponse
+func (client *Client) GetContactWithContext(ctx context.Context, request *GetContactRequest, runtime *dara.RuntimeOptions) (_result *GetContactResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ContactId) {
+		query["ContactId"] = request.ContactId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetContact"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetContactResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the content of a certificate signing request (CSR).
 //
 // @param request - GetCsrDetailRequest
@@ -2003,11 +2327,11 @@ func (client *Client) GetTaskAttributeWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Retrieves certificate details, including the basic information, certificate body, and private key. You can also use this operation to download the certificate content and private key.
+// Retrieves the details of a certificate, including basic information and public/private key content. You can use this operation to download the certificate content and private key.
 //
 // Description:
 //
-// The queries per second (QPS) limit for each user is 100. If you exceed this limit, the system throttles your API calls, which may affect your business. We recommend that you call this operation within this limit.
+// The China single-user queries per second (QPS) limit for this operation is 100. If this limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - GetUserCertificateDetailRequest
 //
@@ -2055,15 +2379,15 @@ func (client *Client) GetUserCertificateDetailWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the certificate deployment statistics by cloud service type.
+// Queries the resource statistics list of cloud services.
 //
 // Description:
 //
-// Queries the number of created Certificate Authority (CA) certificates, including root and subordinate CA certificates.
+// Queries the number of CA certificates (including root CA certificates and subordinate CA certificates) that you have created.
 //
 // ## QPS limit
 //
-// Each user can make up to 10 queries per second (QPS). If you exceed this limit, the system applies rate limiting to your API calls. This may affect your business. Make API calls at a reasonable rate.
+// The China single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this operation as needed.
 //
 // @param request - ListAssetCountRequest
 //
@@ -2461,7 +2785,63 @@ func (client *Client) ListCloudResourcesWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Queries the contacts that receive certificate deployment notifications.
+// Retrieves a list of companies.
+//
+// @param request - ListCompaniesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCompaniesResponse
+func (client *Client) ListCompaniesWithContext(ctx context.Context, request *ListCompaniesRequest, runtime *dara.RuntimeOptions) (_result *ListCompaniesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CompanyId) {
+		query["CompanyId"] = request.CompanyId
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.ShowSize) {
+		query["ShowSize"] = request.ShowSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCompanies"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCompaniesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a list of contacts.
 //
 // @param request - ListContactRequest
 //
@@ -2569,7 +2949,7 @@ func (client *Client) ListCsrWithContext(ctx context.Context, request *ListCsrRe
 
 // Summary:
 //
-// Queries the certificate deployment tasks that are created in your account.
+// Retrieves a list of deployment tasks after you create a deployment task.
 //
 // @param request - ListDeploymentJobRequest
 //
@@ -2789,15 +3169,15 @@ func (client *Client) ListInstancesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Queries the SSL certificates and certificate orders in your account.
+// Queries the list of user certificates or orders.
 //
 // Description:
 //
-// This operation queries a list of your certificates or orders. Set OrderType to CERT or UPLOAD to query certificates. Set OrderType to CPACK or BUY to query orders.
+// This operation is used to query the list of user certificates or orders. If OrderType is set to CERT or UPLOAD, the certificate list is queried. If OrderType is set to CPACK or BUY, the order list is queried.
 //
 // ## QPS limit
 //
-// The queries per second (QPS) limit for a single user is 10 calls per second. If you exceed this limit, API calls are throttled, which may affect your business. Plan your calls accordingly.
+// The single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - ListUserCertificateOrderRequest
 //
@@ -3051,7 +3431,7 @@ func (client *Client) MoveResourceGroupWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Refunds a Certificate Management Service instance if the refund is requested within seven days of purchase.
+// Refunds an instance within 7 days.
 //
 // @param request - RefundInstanceRequest
 //
@@ -3321,7 +3701,163 @@ func (client *Client) SignWithContext(ctx context.Context, request *SignRequest,
 
 // Summary:
 //
-// Updates the private key associated with a certificate signing request (CSR).
+// Updates company information.
+//
+// @param request - UpdateCompanyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCompanyResponse
+func (client *Client) UpdateCompanyWithContext(ctx context.Context, request *UpdateCompanyRequest, runtime *dara.RuntimeOptions) (_result *UpdateCompanyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.City) {
+		query["City"] = request.City
+	}
+
+	if !dara.IsNil(request.CompanyAddress) {
+		query["CompanyAddress"] = request.CompanyAddress
+	}
+
+	if !dara.IsNil(request.CompanyCode) {
+		query["CompanyCode"] = request.CompanyCode
+	}
+
+	if !dara.IsNil(request.CompanyEmail) {
+		query["CompanyEmail"] = request.CompanyEmail
+	}
+
+	if !dara.IsNil(request.CompanyId) {
+		query["CompanyId"] = request.CompanyId
+	}
+
+	if !dara.IsNil(request.CompanyName) {
+		query["CompanyName"] = request.CompanyName
+	}
+
+	if !dara.IsNil(request.CompanyPhone) {
+		query["CompanyPhone"] = request.CompanyPhone
+	}
+
+	if !dara.IsNil(request.CompanyType) {
+		query["CompanyType"] = request.CompanyType
+	}
+
+	if !dara.IsNil(request.CountryCode) {
+		query["CountryCode"] = request.CountryCode
+	}
+
+	if !dara.IsNil(request.Department) {
+		query["Department"] = request.Department
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.PostCode) {
+		query["PostCode"] = request.PostCode
+	}
+
+	if !dara.IsNil(request.Province) {
+		query["Province"] = request.Province
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateCompany"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateCompanyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a contact.
+//
+// @param request - UpdateContactRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateContactResponse
+func (client *Client) UpdateContactWithContext(ctx context.Context, request *UpdateContactRequest, runtime *dara.RuntimeOptions) (_result *UpdateContactResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ContactId) {
+		query["ContactId"] = request.ContactId
+	}
+
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.Idcard) {
+		query["Idcard"] = request.Idcard
+	}
+
+	if !dara.IsNil(request.Mobile) {
+		query["Mobile"] = request.Mobile
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Webhooks) {
+		query["Webhooks"] = request.Webhooks
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateContact"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateContactResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Uploads the private key corresponding to a CSR if the private key was not provided when the local CSR was uploaded.
 //
 // @param request - UpdateCsrRequest
 //

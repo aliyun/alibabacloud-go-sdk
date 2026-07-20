@@ -22,15 +22,15 @@ type iListDeploymentJobResponseBody interface {
 }
 
 type ListDeploymentJobResponseBody struct {
-	// The page number. Default value: 1.
+	// The current page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The data returned for the request.
+	// The data returned by the API.
 	Data []*ListDeploymentJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique identifier for each request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -117,53 +117,53 @@ func (s *ListDeploymentJobResponseBody) Validate() error {
 }
 
 type ListDeploymentJobResponseBodyData struct {
-	// The domain names bound to the certificate of the deployment task.
+	// The domain names included in the certificate of the deployment task.
 	//
 	// example:
 	//
 	// aliyundoc1.com,aliyundoc2.com,aliyundoc3.com
 	CertDomain *string `json:"CertDomain,omitempty" xml:"CertDomain,omitempty"`
-	// The type of the certificate. Valid values:
+	// The certificate type. Valid values:
 	//
 	// - **upload**: uploaded certificate
 	//
 	// - **buy**: purchased certificate
 	//
-	// - **free**: free certificate, available only on the China site (aliyun.com)
+	// - **free**: personal test certificate (supported only on the China site)
 	//
 	// example:
 	//
 	// upload
 	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
-	// Indicates whether the deployment task is deleted. Valid values:
+	// The deletion flag. This parameter has no practical significance. Valid values:
 	//
-	// - **0**: not deleted
+	// - **0**: not deleted.
 	//
-	// - **1**: deleted
+	// - **1**: deleted.
 	//
 	// example:
 	//
 	// 1
 	Del *int32 `json:"Del,omitempty" xml:"Del,omitempty"`
-	// The end time of the deployment task.
+	// The end time of the deployment task execution, in UNIX timestamp format (seconds).
 	//
 	// example:
 	//
 	// 1606482979000
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time when the deployment task was created.
+	// The time when the deployment task was created, in UNIX timestamp format (seconds).
 	//
 	// example:
 	//
 	// 1624343180000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the deployment task was last modified.
+	// The time when the deployment task was last modified, in UNIX timestamp format (seconds).
 	//
 	// example:
 	//
 	// 1606482979000
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the deployment task. You can use the ID to query the details and status of the deployment task.
+	// The deployment task ID. You can use this ID to query the deployment task details and status.
 	//
 	// example:
 	//
@@ -175,11 +175,11 @@ type ListDeploymentJobResponseBodyData struct {
 	//
 	// cas-job-user-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the deployment task.
+	// The task type. Valid values:
 	//
 	// - **cloud**: multi-cloud deployment task.
 	//
-	// - **user**: cloud service deployment task. This type of task does not support ECS instances.
+	// - **user**: cloud service deployment task (excluding ECS instances).
 	//
 	// example:
 	//
@@ -191,53 +191,53 @@ type ListDeploymentJobResponseBodyData struct {
 	//
 	// job-test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The cloud service included in the resources of the deployment task.
+	// The cloud services included in the deployment task resources.
 	//
 	// example:
 	//
 	// NLB
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	// Indicates whether the rollback worker is included. For example, if a cloud service involved in a deployment task has been rolled back, **1*	- is returned. Valid values:
+	// Indicates whether the task contains a rollback worker. For example, if a cloud service in the task has been rolled back, the value **1*	- is returned. Valid values:
 	//
-	// - **0**: The rollback worker is not included.
+	// - **0**: does not contain a rollback worker.
 	//
-	// - **1**: The rollback worker is included.
+	// - **1**: contains a rollback worker.
 	//
 	// example:
 	//
 	// 1
 	Rollback *int32 `json:"Rollback,omitempty" xml:"Rollback,omitempty"`
-	// The time when the deployment task was scheduled.
+	// The scheduled time of the task, in UNIX timestamp format (seconds).
 	//
 	// example:
 	//
 	// 1606482979000
 	ScheduleTime *string `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
-	// The start time of the deployment task.
+	// The start time of the deployment task execution, in UNIX timestamp format (seconds).
 	//
 	// example:
 	//
 	// 1606482979000
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the deployment task. Valid values:
+	// The deployment task status. Valid values:
 	//
-	// - **pending**
+	// - **pending**: pending execution.
 	//
-	// - **editing**
+	// - **editing**: being edited.
 	//
-	// - **scheduling**
+	// - **scheduling**: being scheduled.
 	//
-	// - **processing**
+	// - **processing**: being deployed.
 	//
-	// - **error**
+	// - **error**: deployment failed.
 	//
-	// - **success**
+	// - **success**: deployment succeeded.
 	//
 	// example:
 	//
 	// scheduling
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the user.
+	// The user account ID (UID).
 	//
 	// example:
 	//

@@ -88,7 +88,7 @@ type iGetInstanceDetailResponseBody interface {
 }
 
 type GetInstanceDetailResponseBody struct {
-	// Specifies whether automatic managed renewal is enabled. Valid values:
+	// Indicates whether automatic managed renewal is enabled. Valid values:
 	//
 	// - enable: Enabled.
 	//
@@ -134,14 +134,14 @@ type GetInstanceDetailResponseBody struct {
 	//
 	// 123
 	CertificateName *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
-	// The end time of the latest certificate. The value is a UNIX timestamp. This field is empty if no certificate has been issued.
+	// The end time of the latest certificate, in timestamp format. This value is empty if no certificate has been issued.
 	//
 	// example:
 	//
 	// 1801324800000
 	CertificateNotAfter  *int64 `json:"CertificateNotAfter,omitempty" xml:"CertificateNotAfter,omitempty"`
 	CertificateNotBefore *int64 `json:"CertificateNotBefore,omitempty" xml:"CertificateNotBefore,omitempty"`
-	// The revocation time of the latest certificate. The value is a UNIX timestamp.
+	// The revocation time of the latest certificate, in timestamp format.
 	//
 	// example:
 	//
@@ -219,7 +219,7 @@ type GetInstanceDetailResponseBody struct {
 	//
 	// online
 	GenerateCsrMethod *string `json:"GenerateCsrMethod,omitempty" xml:"GenerateCsrMethod,omitempty"`
-	// The expiration time of the instance. The value is a UNIX timestamp. If no certificate has been issued, this field is empty.
+	// The expiration time of the instance, in timestamp format. This value is empty if no certificate has been issued.
 	//
 	// example:
 	//
@@ -231,7 +231,7 @@ type GetInstanceDetailResponseBody struct {
 	//
 	// cas_dv-cn-123
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The start time of the instance. The value is a UNIX timestamp. If no certificate has been issued, this field is empty.
+	// The start time of the instance, in timestamp format. This value is empty if no certificate has been issued.
 	//
 	// example:
 	//
@@ -257,19 +257,19 @@ type GetInstanceDetailResponseBody struct {
 	//
 	// - **ECC_256**
 	//
-	// - **SM2**.
+	// - **SM2**
 	//
 	// example:
 	//
 	// RSA_2048
 	KeyAlgorithm *string `json:"KeyAlgorithm,omitempty" xml:"KeyAlgorithm,omitempty"`
-	// The end time of the instance purchase. The value is a UNIX timestamp. You can use this value to determine the purchase duration of the instance.
+	// The end time of the instance purchase, in timestamp format. This value is used to determine the purchase duration of the instance.
 	//
 	// example:
 	//
 	// 1801324800000
 	OrderEndTime *int64 `json:"OrderEndTime,omitempty" xml:"OrderEndTime,omitempty"`
-	// The start time of the instance purchase. The value is a UNIX timestamp. You can use this value to determine the refund time limit.
+	// The start time of the instance purchase, in timestamp format. This value is used to determine the refund time limit.
 	//
 	// example:
 	//
@@ -333,7 +333,7 @@ type GetInstanceDetailResponseBody struct {
 	//
 	// - payed: the instance upgrade has been paid.
 	//
-	// - issued: the latest certificate has been issued after the instance upgrade.
+	// - issued: the latest certificate has been issued for the upgraded instance.
 	//
 	// example:
 	//
@@ -761,7 +761,7 @@ type GetInstanceDetailResponseBodyDingGroupList struct {
 	//
 	// remote
 	DingGroupType *string `json:"DingGroupType,omitempty" xml:"DingGroupType,omitempty"`
-	// The link to join the expert service DingTalk group.
+	// The URL for joining the expert service DingTalk group.
 	//
 	// example:
 	//
@@ -818,7 +818,7 @@ func (s *GetInstanceDetailResponseBodyDingGroupList) Validate() error {
 }
 
 type GetInstanceDetailResponseBodyDomainValidationList struct {
-	// The CNAME record value for verification-free authorization. This field may be empty.
+	// The CNAME record value for verification-free authorization. This value may be empty.
 	//
 	// example:
 	//
@@ -854,7 +854,7 @@ type GetInstanceDetailResponseBodyDomainValidationList struct {
 	//
 	// TXT
 	ValidationType *string `json:"ValidationType,omitempty" xml:"ValidationType,omitempty"`
-	// The host record value for validation.
+	// The validation host record value.
 	//
 	// example:
 	//
