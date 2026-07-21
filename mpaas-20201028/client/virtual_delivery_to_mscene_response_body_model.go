@@ -9,6 +9,8 @@ type iVirtualDeliveryToMsceneResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccessDeniedDetail(v string) *VirtualDeliveryToMsceneResponseBody
+	GetAccessDeniedDetail() *string
 	SetMpaasUserGamecenterPaymentVirtualdeliveryResponse(v *VirtualDeliveryToMsceneResponseBodyMpaasUserGamecenterPaymentVirtualdeliveryResponse) *VirtualDeliveryToMsceneResponseBody
 	GetMpaasUserGamecenterPaymentVirtualdeliveryResponse() *VirtualDeliveryToMsceneResponseBodyMpaasUserGamecenterPaymentVirtualdeliveryResponse
 	SetRequestId(v string) *VirtualDeliveryToMsceneResponseBody
@@ -22,6 +24,7 @@ type iVirtualDeliveryToMsceneResponseBody interface {
 }
 
 type VirtualDeliveryToMsceneResponseBody struct {
+	AccessDeniedDetail                                *string                                                                               `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	MpaasUserGamecenterPaymentVirtualdeliveryResponse *VirtualDeliveryToMsceneResponseBodyMpaasUserGamecenterPaymentVirtualdeliveryResponse `json:"MpaasUserGamecenterPaymentVirtualdeliveryResponse,omitempty" xml:"MpaasUserGamecenterPaymentVirtualdeliveryResponse,omitempty" type:"Struct"`
 	RequestId                                         *string                                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultCode                                        *string                                                                               `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
@@ -35,6 +38,10 @@ func (s VirtualDeliveryToMsceneResponseBody) String() string {
 
 func (s VirtualDeliveryToMsceneResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *VirtualDeliveryToMsceneResponseBody) GetAccessDeniedDetail() *string {
+	return s.AccessDeniedDetail
 }
 
 func (s *VirtualDeliveryToMsceneResponseBody) GetMpaasUserGamecenterPaymentVirtualdeliveryResponse() *VirtualDeliveryToMsceneResponseBodyMpaasUserGamecenterPaymentVirtualdeliveryResponse {
@@ -55,6 +62,11 @@ func (s *VirtualDeliveryToMsceneResponseBody) GetResultMsg() *string {
 
 func (s *VirtualDeliveryToMsceneResponseBody) GetSuccess() *bool {
 	return s.Success
+}
+
+func (s *VirtualDeliveryToMsceneResponseBody) SetAccessDeniedDetail(v string) *VirtualDeliveryToMsceneResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *VirtualDeliveryToMsceneResponseBody) SetMpaasUserGamecenterPaymentVirtualdeliveryResponse(v *VirtualDeliveryToMsceneResponseBodyMpaasUserGamecenterPaymentVirtualdeliveryResponse) *VirtualDeliveryToMsceneResponseBody {

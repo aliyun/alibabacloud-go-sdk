@@ -9,6 +9,8 @@ type iSaveOrderRelationInfoToMsenceResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccessDeniedDetail(v string) *SaveOrderRelationInfoToMsenceResponseBody
+	GetAccessDeniedDetail() *string
 	SetMpaasSaveOrderRelationResponse(v *SaveOrderRelationInfoToMsenceResponseBodyMpaasSaveOrderRelationResponse) *SaveOrderRelationInfoToMsenceResponseBody
 	GetMpaasSaveOrderRelationResponse() *SaveOrderRelationInfoToMsenceResponseBodyMpaasSaveOrderRelationResponse
 	SetRequestId(v string) *SaveOrderRelationInfoToMsenceResponseBody
@@ -22,6 +24,7 @@ type iSaveOrderRelationInfoToMsenceResponseBody interface {
 }
 
 type SaveOrderRelationInfoToMsenceResponseBody struct {
+	AccessDeniedDetail             *string                                                                  `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	MpaasSaveOrderRelationResponse *SaveOrderRelationInfoToMsenceResponseBodyMpaasSaveOrderRelationResponse `json:"MpaasSaveOrderRelationResponse,omitempty" xml:"MpaasSaveOrderRelationResponse,omitempty" type:"Struct"`
 	RequestId                      *string                                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultCode                     *string                                                                  `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
@@ -35,6 +38,10 @@ func (s SaveOrderRelationInfoToMsenceResponseBody) String() string {
 
 func (s SaveOrderRelationInfoToMsenceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *SaveOrderRelationInfoToMsenceResponseBody) GetAccessDeniedDetail() *string {
+	return s.AccessDeniedDetail
 }
 
 func (s *SaveOrderRelationInfoToMsenceResponseBody) GetMpaasSaveOrderRelationResponse() *SaveOrderRelationInfoToMsenceResponseBodyMpaasSaveOrderRelationResponse {
@@ -55,6 +62,11 @@ func (s *SaveOrderRelationInfoToMsenceResponseBody) GetResultMsg() *string {
 
 func (s *SaveOrderRelationInfoToMsenceResponseBody) GetSuccess() *bool {
 	return s.Success
+}
+
+func (s *SaveOrderRelationInfoToMsenceResponseBody) SetAccessDeniedDetail(v string) *SaveOrderRelationInfoToMsenceResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *SaveOrderRelationInfoToMsenceResponseBody) SetMpaasSaveOrderRelationResponse(v *SaveOrderRelationInfoToMsenceResponseBodyMpaasSaveOrderRelationResponse) *SaveOrderRelationInfoToMsenceResponseBody {

@@ -9,6 +9,8 @@ type iCheckUserAuthToMsceneResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccessDeniedDetail(v string) *CheckUserAuthToMsceneResponseBody
+	GetAccessDeniedDetail() *string
 	SetMpaasUserAuthCheckResponse(v *CheckUserAuthToMsceneResponseBodyMpaasUserAuthCheckResponse) *CheckUserAuthToMsceneResponseBody
 	GetMpaasUserAuthCheckResponse() *CheckUserAuthToMsceneResponseBodyMpaasUserAuthCheckResponse
 	SetRequestId(v string) *CheckUserAuthToMsceneResponseBody
@@ -22,6 +24,7 @@ type iCheckUserAuthToMsceneResponseBody interface {
 }
 
 type CheckUserAuthToMsceneResponseBody struct {
+	AccessDeniedDetail         *string                                                      `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	MpaasUserAuthCheckResponse *CheckUserAuthToMsceneResponseBodyMpaasUserAuthCheckResponse `json:"MpaasUserAuthCheckResponse,omitempty" xml:"MpaasUserAuthCheckResponse,omitempty" type:"Struct"`
 	RequestId                  *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultCode                 *string                                                      `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
@@ -35,6 +38,10 @@ func (s CheckUserAuthToMsceneResponseBody) String() string {
 
 func (s CheckUserAuthToMsceneResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CheckUserAuthToMsceneResponseBody) GetAccessDeniedDetail() *string {
+	return s.AccessDeniedDetail
 }
 
 func (s *CheckUserAuthToMsceneResponseBody) GetMpaasUserAuthCheckResponse() *CheckUserAuthToMsceneResponseBodyMpaasUserAuthCheckResponse {
@@ -55,6 +62,11 @@ func (s *CheckUserAuthToMsceneResponseBody) GetResultMsg() *string {
 
 func (s *CheckUserAuthToMsceneResponseBody) GetSuccess() *bool {
 	return s.Success
+}
+
+func (s *CheckUserAuthToMsceneResponseBody) SetAccessDeniedDetail(v string) *CheckUserAuthToMsceneResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *CheckUserAuthToMsceneResponseBody) SetMpaasUserAuthCheckResponse(v *CheckUserAuthToMsceneResponseBodyMpaasUserAuthCheckResponse) *CheckUserAuthToMsceneResponseBody {

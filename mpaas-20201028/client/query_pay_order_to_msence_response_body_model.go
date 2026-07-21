@@ -9,6 +9,8 @@ type iQueryPayOrderToMsenceResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccessDeniedDetail(v string) *QueryPayOrderToMsenceResponseBody
+	GetAccessDeniedDetail() *string
 	SetMpaasUserGamecenterPaymentQuerystatusResponse(v *QueryPayOrderToMsenceResponseBodyMpaasUserGamecenterPaymentQuerystatusResponse) *QueryPayOrderToMsenceResponseBody
 	GetMpaasUserGamecenterPaymentQuerystatusResponse() *QueryPayOrderToMsenceResponseBodyMpaasUserGamecenterPaymentQuerystatusResponse
 	SetRequestId(v string) *QueryPayOrderToMsenceResponseBody
@@ -22,6 +24,7 @@ type iQueryPayOrderToMsenceResponseBody interface {
 }
 
 type QueryPayOrderToMsenceResponseBody struct {
+	AccessDeniedDetail                            *string                                                                         `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	MpaasUserGamecenterPaymentQuerystatusResponse *QueryPayOrderToMsenceResponseBodyMpaasUserGamecenterPaymentQuerystatusResponse `json:"MpaasUserGamecenterPaymentQuerystatusResponse,omitempty" xml:"MpaasUserGamecenterPaymentQuerystatusResponse,omitempty" type:"Struct"`
 	RequestId                                     *string                                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultCode                                    *string                                                                         `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
@@ -35,6 +38,10 @@ func (s QueryPayOrderToMsenceResponseBody) String() string {
 
 func (s QueryPayOrderToMsenceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *QueryPayOrderToMsenceResponseBody) GetAccessDeniedDetail() *string {
+	return s.AccessDeniedDetail
 }
 
 func (s *QueryPayOrderToMsenceResponseBody) GetMpaasUserGamecenterPaymentQuerystatusResponse() *QueryPayOrderToMsenceResponseBodyMpaasUserGamecenterPaymentQuerystatusResponse {
@@ -55,6 +62,11 @@ func (s *QueryPayOrderToMsenceResponseBody) GetResultMsg() *string {
 
 func (s *QueryPayOrderToMsenceResponseBody) GetSuccess() *bool {
 	return s.Success
+}
+
+func (s *QueryPayOrderToMsenceResponseBody) SetAccessDeniedDetail(v string) *QueryPayOrderToMsenceResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *QueryPayOrderToMsenceResponseBody) SetMpaasUserGamecenterPaymentQuerystatusResponse(v *QueryPayOrderToMsenceResponseBodyMpaasUserGamecenterPaymentQuerystatusResponse) *QueryPayOrderToMsenceResponseBody {
