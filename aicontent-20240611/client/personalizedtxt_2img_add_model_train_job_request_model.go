@@ -20,20 +20,28 @@ type iPersonalizedtxt2imgAddModelTrainJobRequest interface {
 }
 
 type Personalizedtxt2imgAddModelTrainJobRequest struct {
+	// A list of one or more image URLs for training. For example: ["url_1", "url_2", ...]
+	//
 	// This parameter is required.
 	ImageUrl []*string `json:"imageUrl,omitempty" xml:"imageUrl,omitempty" type:"Repeated"`
+	// The name of the model training job.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 熊猫图片生成
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// A single word that defines the object type in the training images, such as "girl", "person", "man", "boy", or "dog".
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dog
 	ObjectType *string `json:"objectType,omitempty" xml:"objectType,omitempty"`
+	// The number of training steps for the model training job.
+	//
 	// example:
 	//
 	// 800

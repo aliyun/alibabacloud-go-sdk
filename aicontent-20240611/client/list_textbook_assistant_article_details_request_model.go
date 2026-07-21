@@ -16,7 +16,10 @@ type iListTextbookAssistantArticleDetailsRequest interface {
 }
 
 type ListTextbookAssistantArticleDetailsRequest struct {
+	// A list of article IDs to retrieve.
 	ArticleIdList []*string `json:"articleIdList,omitempty" xml:"articleIdList,omitempty" type:"Repeated"`
+	// The authorization token obtained from the "Get Authorization Token for the English Textbook-Style AI Teacher" API.
+	//
 	// This parameter is required.
 	//
 	// example:

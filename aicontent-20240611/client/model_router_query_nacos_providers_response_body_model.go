@@ -24,26 +24,38 @@ type iModelRouterQueryNacosProvidersResponseBody interface {
 }
 
 type ModelRouterQueryNacosProvidersResponseBody struct {
+	// The data object.
+	//
 	// example:
 	//
 	// []
 	Data []*ModelRouterQueryNacosProvidersResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The error message code.
+	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// 未知错误
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -126,10 +138,26 @@ func (s *ModelRouterQueryNacosProvidersResponseBody) Validate() error {
 }
 
 type ModelRouterQueryNacosProvidersResponseBodyData struct {
-	BaseUrl *string                                                 `json:"baseUrl,omitempty" xml:"baseUrl,omitempty"`
-	Models  []*ModelRouterQueryNacosProvidersResponseBodyDataModels `json:"models,omitempty" xml:"models,omitempty" type:"Repeated"`
-	Name    *string                                                 `json:"name,omitempty" xml:"name,omitempty"`
-	Symbol  *string                                                 `json:"symbol,omitempty" xml:"symbol,omitempty"`
+	// The base URL.
+	//
+	// example:
+	//
+	// https://dashscope.aliyuncs.com
+	BaseUrl *string `json:"baseUrl,omitempty" xml:"baseUrl,omitempty"`
+	// The list of models.
+	Models []*ModelRouterQueryNacosProvidersResponseBodyDataModels `json:"models,omitempty" xml:"models,omitempty" type:"Repeated"`
+	// The provider name.
+	//
+	// example:
+	//
+	// 通义千问
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The provider identifier.
+	//
+	// example:
+	//
+	// qwen
+	Symbol *string `json:"symbol,omitempty" xml:"symbol,omitempty"`
 }
 
 func (s ModelRouterQueryNacosProvidersResponseBodyData) String() string {
@@ -191,12 +219,27 @@ func (s *ModelRouterQueryNacosProvidersResponseBodyData) Validate() error {
 
 type ModelRouterQueryNacosProvidersResponseBodyDataModels struct {
 	Extensions *ModelRouterQueryNacosProvidersResponseBodyDataModelsExtensions `json:"extensions,omitempty" xml:"extensions,omitempty" type:"Struct"`
-	Identifier *string                                                         `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// The model identifier.
+	//
+	// example:
+	//
+	// ca90f359956e94367470c38676
+	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
 	// example:
 	//
 	// text
-	InOut       *string `json:"inOut,omitempty" xml:"inOut,omitempty"`
-	InputToken  *string `json:"inputToken,omitempty" xml:"inputToken,omitempty"`
+	InOut *string `json:"inOut,omitempty" xml:"inOut,omitempty"`
+	// The input token limit.
+	//
+	// example:
+	//
+	// 32K
+	InputToken *string `json:"inputToken,omitempty" xml:"inputToken,omitempty"`
+	// The output token limit.
+	//
+	// example:
+	//
+	// 8K
 	OutputToken *string `json:"outputToken,omitempty" xml:"outputToken,omitempty"`
 	// example:
 	//

@@ -26,27 +26,40 @@ type iExecuteAITeacherExpansionDialogueTranslateRequest interface {
 }
 
 type ExecuteAITeacherExpansionDialogueTranslateRequest struct {
+  // The background context for the dialogue.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // In this dialogue, you will be playing the role of Lily, a young girl. I will be Jane, Lily\\"s mother. We are in the kitchen, where I am preparing dinner. I am asking you about your food preferences, specifically if you like meat, fish, and milk. You like meat and milk, but you don\\"t like fish because of its smell. I explain to you the nutritional benefits of these foods and suggest alternatives for the ones you don\\"t like. Finally, I invite you to start eating.
   Background *string `json:"background,omitempty" xml:"background,omitempty"`
+  // An array of dialogue tasks.
+  // 
   // This parameter is required.
   DialogueTasks []*ExecuteAITeacherExpansionDialogueTranslateRequestDialogueTasks `json:"dialogueTasks,omitempty" xml:"dialogueTasks,omitempty" type:"Repeated"`
+  // An array of dialogue records.
   Records []*ExecuteAITeacherExpansionDialogueTranslateRequestRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
+  // Role information for the participants.
+  // 
   // This parameter is required.
   RoleInfo *ExecuteAITeacherExpansionDialogueTranslateRequestRoleInfo `json:"roleInfo,omitempty" xml:"roleInfo,omitempty" type:"Struct"`
+  // The opening sentence of the dialogue.
+  // 
   // example:
   // 
   // Hello Lily, could you please come to the kitchen for a moment?
   StartSentence *string `json:"startSentence,omitempty" xml:"startSentence,omitempty"`
+  // The topic of the conversation.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // talk about food.
   Topic *string `json:"topic,omitempty" xml:"topic,omitempty"`
+  // The user ID.
+  // 
   // This parameter is required.
   // 
   // example:
@@ -154,22 +167,30 @@ func (s *ExecuteAITeacherExpansionDialogueTranslateRequest) Validate() error {
 }
 
 type ExecuteAITeacherExpansionDialogueTranslateRequestDialogueTasks struct {
+  // The dialogue content from the assistant.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // Why might some people think dog walking is a great job?
   Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
+  // The translation of the assistant content.
+  // 
   // example:
   // 
   // 为什么有些人认为遛狗是份好差事?
   AssistantTranslate *string `json:"assistantTranslate,omitempty" xml:"assistantTranslate,omitempty"`
+  // The sequence number.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // 1
   Order *int32 `json:"order,omitempty" xml:"order,omitempty"`
+  // The dialogue content from the user.
+  // 
   // This parameter is required.
   // 
   // example:
@@ -227,31 +248,41 @@ func (s *ExecuteAITeacherExpansionDialogueTranslateRequestDialogueTasks) Validat
 }
 
 type ExecuteAITeacherExpansionDialogueTranslateRequestRecords struct {
+  // The dialogue content.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // Ask Mark if he has thought about what his dream job might be.
   Content *string `json:"content,omitempty" xml:"content,omitempty"`
+  // Controls the conversation flow based on whether the user\\"s response is off-topic. This value is determined by previous turns. If a user provides more than two consecutive off-topic responses, the system sets this parameter to `true` to switch tasks.
+  // 
   // example:
   // 
   // 跑题：true, 不跑题：false
   IsOffTopicControl *bool `json:"isOffTopicControl,omitempty" xml:"isOffTopicControl,omitempty"`
+  // Indicates whether the message is on-topic.
+  // 
   // example:
   // 
   // 扣题：true, 不扣题：false
   IsOnTopic *bool `json:"isOnTopic,omitempty" xml:"isOnTopic,omitempty"`
+  // The sequence number.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // 1
   Order *int32 `json:"order,omitempty" xml:"order,omitempty"`
+  // The role of the message author. Valid values are `assistant` for the AI and `user` for the user.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
-  // 老师：assistant；学生：user
+  // AI：assistant；用户：user
   Role *string `json:"role,omitempty" xml:"role,omitempty"`
 }
 
@@ -313,12 +344,16 @@ func (s *ExecuteAITeacherExpansionDialogueTranslateRequestRecords) Validate() er
 }
 
 type ExecuteAITeacherExpansionDialogueTranslateRequestRoleInfo struct {
+  // The assistant name.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // Jane, a caring mother
   Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
+  // The user name.
+  // 
   // This parameter is required.
   // 
   // example:

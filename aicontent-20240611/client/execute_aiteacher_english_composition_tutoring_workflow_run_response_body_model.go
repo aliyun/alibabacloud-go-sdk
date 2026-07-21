@@ -18,14 +18,20 @@ type iExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponseBody interfac
 }
 
 type ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponseBody struct {
+  // The content of the event.
+  // 
   // example:
   // 
   // hi
   Content *string `json:"content,omitempty" xml:"content,omitempty"`
+  // The event type.
+  // 
   // example:
   // 
   // message
   Event *string `json:"event,omitempty" xml:"event,omitempty"`
+  // The unique ID of the request.
+  // 
   // example:
   // 
   // xxxx-xxxx-xxxx-xxxxxxxx

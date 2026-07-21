@@ -30,42 +30,60 @@ type iModelRouterQueryUsageBreakdownRequest interface {
 }
 
 type ModelRouterQueryUsageBreakdownRequest struct {
+	// Optional. Filters results by API Key ID. This parameter is linked to the department and requires clientId to be specified first.
+	//
 	// example:
 	//
 	// 100
 	ApiKeyId *int64 `json:"apiKeyId,omitempty" xml:"apiKeyId,omitempty"`
+	// Optional. Filters results by department ID.
+	//
 	// example:
 	//
 	// 1
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	// The query end time, in UNIX timestamp (seconds).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1700086400
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The aggregation granularity. Valid values: hourly and daily.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// hourly
 	Granularity *string `json:"granularity,omitempty" xml:"granularity,omitempty"`
+	// The maximum number of results to return.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token.
+	//
 	// example:
 	//
 	// xxxx-xxx-xxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// The number of entries per page. Default value: 20. Maximum value: 500.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The query start time, in UNIX timestamp (seconds).
+	//
 	// This parameter is required.
 	//
 	// example:

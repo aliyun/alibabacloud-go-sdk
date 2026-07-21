@@ -14,6 +14,7 @@ type iCountOralEvaluationStatisticsConcurrentRequest interface {
 }
 
 type CountOralEvaluationStatisticsConcurrentRequest struct {
+	// The request body.
 	Body *OralEvaluationStatisticsConcurrentCountRequest `json:"body,omitempty" xml:"body,omitempty"`
 }
 

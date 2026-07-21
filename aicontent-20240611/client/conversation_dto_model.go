@@ -28,37 +28,54 @@ type iConversationDTO interface {
 }
 
 type ConversationDTO struct {
+	// A JSON-formatted string that represents the complete state of the conversation.
+	//
 	// example:
 	//
 	// {}
 	ChatData *string `json:"chatData,omitempty" xml:"chatData,omitempty"`
+	// The status of the conversation, where 0 means enabled and any non-zero value means disabled.
+	//
 	// example:
 	//
 	// 0
 	DeleteTag *int32 `json:"deleteTag,omitempty" xml:"deleteTag,omitempty"`
+	// The creation time of the conversation, in ISO 8601 format.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// The modification time of the conversation, in ISO 8601 format.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// ID
+	// The ID of the conversation.
 	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The total number of messages in the conversation.
+	//
 	// example:
 	//
 	// 10
 	MessageCount *int32 `json:"messageCount,omitempty" xml:"messageCount,omitempty"`
+	// A JSON-formatted string that contains an array of model IDs.
+	//
 	// example:
 	//
 	// [1,2,3]
 	ModelIds *string `json:"modelIds,omitempty" xml:"modelIds,omitempty"`
-	Title    *string `json:"title,omitempty" xml:"title,omitempty"`
+	// The title of the conversation.
+	//
+	// example:
+	//
+	// 我的对话
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s ConversationDTO) String() string {

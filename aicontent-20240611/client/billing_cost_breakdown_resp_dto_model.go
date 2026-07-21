@@ -28,22 +28,32 @@ type BillingCostBreakdownRespDTO struct {
 	//
 	// []
 	Columns []*MetricDefRespDTO `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
+	// Aggregation granularity: hourly or daily
+	//
 	// example:
 	//
 	// hourly
 	Granularity *string `json:"granularity,omitempty" xml:"granularity,omitempty"`
+	// Current page number
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// Number of entries per page
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// List of billing details data
+	//
 	// example:
 	//
 	// []
 	Rows []*BillingCostBreakdownRowDTO `json:"rows,omitempty" xml:"rows,omitempty" type:"Repeated"`
+	// Total number of entries
+	//
 	// example:
 	//
 	// 100

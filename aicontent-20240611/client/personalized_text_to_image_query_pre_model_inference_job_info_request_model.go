@@ -14,6 +14,8 @@ type iPersonalizedTextToImageQueryPreModelInferenceJobInfoRequest interface {
 }
 
 type PersonalizedTextToImageQueryPreModelInferenceJobInfoRequest struct {
+	// The inference job ID.
+	//
 	// This parameter is required.
 	//
 	// example:

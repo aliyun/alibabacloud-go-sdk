@@ -28,6 +28,8 @@ type iExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest interface {
 }
 
 type ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest struct {
+  // The essay outline.
+  // 
   // example:
   // 
   // Title: The Importance of Reading
@@ -38,40 +40,58 @@ type ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest struct {
   // 
   // III. Conclusion
   EssayOutline *string `json:"essayOutline,omitempty" xml:"essayOutline,omitempty"`
+  // The essay requirements.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // No less than 100 words
   EssayRequirements *string `json:"essayRequirements,omitempty" xml:"essayRequirements,omitempty"`
+  // The essay topic.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // Discuss what to eat
   EssayTopic *string `json:"essayTopic,omitempty" xml:"essayTopic,omitempty"`
+  // The essay type. Valid values:
+  // 
+  // `outline`: an outline
+  // 
+  // essay: essay
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // essay
   EssayType *string `json:"essayType,omitempty" xml:"essayType,omitempty"`
+  // The required word count.
+  // 
   // example:
   // 
   // 100
   EssayWordCount *int64 `json:"essayWordCount,omitempty" xml:"essayWordCount,omitempty"`
+  // The student\\"s grade level.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // 3
   Grade *int64 `json:"grade,omitempty" xml:"grade,omitempty"`
+  // The response mode. For example, set this value to `streaming` to receive server-sent events.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // streaming
   ResponseMode *string `json:"responseMode,omitempty" xml:"responseMode,omitempty"`
+  // The user ID.
+  // 
   // This parameter is required.
   // 
   // example:

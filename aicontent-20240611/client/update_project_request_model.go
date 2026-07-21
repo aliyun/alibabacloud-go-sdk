@@ -16,10 +16,14 @@ type iUpdateProjectRequest interface {
 }
 
 type UpdateProjectRequest struct {
+	// The ID of the project.
+	//
 	// example:
 	//
 	// 123
 	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	// The new name of the project.
+	//
 	// example:
 	//
 	// MyProject

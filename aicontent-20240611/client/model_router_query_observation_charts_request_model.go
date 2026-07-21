@@ -24,26 +24,38 @@ type iModelRouterQueryObservationChartsRequest interface {
 }
 
 type ModelRouterQueryObservationChartsRequest struct {
+	// The API key ID to use as a filter.
+	//
 	// example:
 	//
 	// 1
 	ApiKeyId *int64 `json:"apiKeyId,omitempty" xml:"apiKeyId,omitempty"`
+	// The client ID to use as a filter.
+	//
 	// example:
 	//
 	// 1
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	// The end time of the custom time range, in ISO 8601 UTC format. If specified, `startTime` must also be provided.
+	//
 	// example:
 	//
 	// 2024-01-02T00:00:00Z
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The model ID to use as a filter.
+	//
 	// example:
 	//
 	// 1
 	ModelId *int64 `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// The start time of the custom time range, in ISO 8601 UTC format. If specified, `endTime` must also be provided.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The time range for the query. Valid values are `1h`, `6h`, `24h`, `7d`, and `30d`. This parameter is mutually exclusive with `startTime` and `endTime`.
+	//
 	// example:
 	//
 	// 24h

@@ -20,16 +20,22 @@ type iCostQueryTrendDTO interface {
 }
 
 type CostQueryTrendDTO struct {
+	// The default metric.
+	//
 	// example:
 	//
 	// total_amount
 	DefaultMetric *string `json:"defaultMetric,omitempty" xml:"defaultMetric,omitempty"`
+	// The granularity of the data. Valid values are `hourly` and `daily`.
+	//
 	// example:
 	//
 	// hourly
-	Granularity *string             `json:"granularity,omitempty" xml:"granularity,omitempty"`
-	Metrics     []*MetricDefRespDTO `json:"metrics,omitempty" xml:"metrics,omitempty" type:"Repeated"`
-	Points      []*TrendPointDTO    `json:"points,omitempty" xml:"points,omitempty" type:"Repeated"`
+	Granularity *string `json:"granularity,omitempty" xml:"granularity,omitempty"`
+	// A list of metric definitions.
+	Metrics []*MetricDefRespDTO `json:"metrics,omitempty" xml:"metrics,omitempty" type:"Repeated"`
+	// A list of data points for the trend.
+	Points []*TrendPointDTO `json:"points,omitempty" xml:"points,omitempty" type:"Repeated"`
 }
 
 func (s CostQueryTrendDTO) String() string {

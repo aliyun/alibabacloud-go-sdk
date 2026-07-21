@@ -36,54 +36,74 @@ type iModelRouterCreateModelRequest interface {
 }
 
 type ModelRouterCreateModelRequest struct {
-	// API Key
+	// The API key.
 	//
 	// example:
 	//
 	// sk-xxxx
 	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
-	// Base URL
+	// The base URL.
 	//
 	// example:
 	//
 	// https://dashscope.aliyuncs.com
 	BaseUrl *string `json:"baseUrl,omitempty" xml:"baseUrl,omitempty"`
+	// The model description.
+	//
 	// example:
 	//
 	// 通义千问大模型
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The model\\"s extended configuration parameters, provided as a JSON string.
+	//
 	// example:
 	//
 	// {}
 	Extensions *string `json:"extensions,omitempty" xml:"extensions,omitempty"`
+	// The supported input and output data types for the model.
+	//
 	// example:
 	//
 	// text
 	InOut *string `json:"inOut,omitempty" xml:"inOut,omitempty"`
+	// The maximum input length.
+	//
 	// example:
 	//
 	// 32K
 	MaxInputLength *string `json:"maxInputLength,omitempty" xml:"maxInputLength,omitempty"`
+	// The maximum output length.
+	//
 	// example:
 	//
 	// 8K
 	MaxOutputLength *string `json:"maxOutputLength,omitempty" xml:"maxOutputLength,omitempty"`
+	// The model ID.
+	//
 	// example:
 	//
 	// qwen-turbo
 	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// The model type.
+	//
 	// example:
 	//
 	// Chat
 	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
+	// The model name.
+	//
 	// example:
 	//
 	// 通义千问
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The vendor symbol.
+	//
 	// example:
 	//
 	// alibaba
 	Symbol *string `json:"symbol,omitempty" xml:"symbol,omitempty"`
+	// Tags for the model. Separate multiple tags with commas.
+	//
 	// example:
 	//
 	// TXT_GEN,DEEP_THINK

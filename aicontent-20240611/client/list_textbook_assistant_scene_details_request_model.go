@@ -16,10 +16,13 @@ type iListTextbookAssistantSceneDetailsRequest interface {
 }
 
 type ListTextbookAssistantSceneDetailsRequest struct {
+	// The API authorization token. You can obtain the token by calling the operation that generates the token for the English Textbook-style AI Teacher feature.
+	//
 	// example:
 	//
 	// tc_e6dc70c890866f4028ca685b6fa29874
-	AuthToken   *string   `json:"authToken,omitempty" xml:"authToken,omitempty"`
+	AuthToken *string `json:"authToken,omitempty" xml:"authToken,omitempty"`
+	// A list of scene IDs.
 	SceneIdList []*string `json:"sceneIdList,omitempty" xml:"sceneIdList,omitempty" type:"Repeated"`
 }
 

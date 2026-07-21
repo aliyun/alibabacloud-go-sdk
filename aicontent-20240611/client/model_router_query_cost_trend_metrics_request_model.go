@@ -32,34 +32,46 @@ type ModelRouterQueryCostTrendMetricsRequest struct {
 	//
 	// 100
 	ApiKeyId *int64 `json:"apiKeyId,omitempty" xml:"apiKeyId,omitempty"`
+	// Filters the results by department ID.
+	//
 	// example:
 	//
 	// 1
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	// The end time of the query, specified as a Unix timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1700086400
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The granularity of the data. Valid values: `hourly` and `daily`. Default: `hourly`.
+	//
 	// example:
 	//
 	// hourly
 	Granularity *string `json:"granularity,omitempty" xml:"granularity,omitempty"`
+	// The maximum number of results to return per page.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The model types to query, separated by commas.
+	//
 	// example:
 	//
 	// LLM,VL
 	ModelTypes *string `json:"modelTypes,omitempty" xml:"modelTypes,omitempty"`
-	// nextToken
+	// The pagination token from a previous response to retrieve the next page of results. If this parameter is omitted, the first page of results is returned.
 	//
 	// example:
 	//
 	// xxxx-xxx-xxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The start time of the query, specified as a Unix timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:

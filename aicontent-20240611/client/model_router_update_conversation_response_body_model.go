@@ -24,26 +24,38 @@ type iModelRouterUpdateConversationResponseBody interface {
 }
 
 type ModelRouterUpdateConversationResponseBody struct {
+	// The returned data object.
+	//
 	// example:
 	//
 	// []
 	Data *ConversationDTO `json:"data,omitempty" xml:"data,omitempty"`
+	// The error code returned if the request fails.
+	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// A detailed message that explains the error.
+	//
 	// example:
 	//
 	// 未知错误
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// The HTTP status code of the response.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The unique request ID.
+	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

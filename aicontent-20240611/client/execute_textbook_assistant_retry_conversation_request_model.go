@@ -20,24 +20,32 @@ type iExecuteTextbookAssistantRetryConversationRequest interface {
 }
 
 type ExecuteTextbookAssistantRetryConversationRequest struct {
+  // The AI assistant\\"s message ID.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // 6788e0b4b54c5268c1b78638
   Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
+  // The authorization token. You can obtain this token from the API that provides authorization for the textbook AI assistant feature.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // tc_e6dc70c890866f4028ca685b6fa29874
   AuthToken *string `json:"authToken,omitempty" xml:"authToken,omitempty"`
+  // The conversation ID.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // 6788e0b475a4631ffc626722
   ChatId *string `json:"chatId,omitempty" xml:"chatId,omitempty"`
+  // Specifies the scenario. Valid values: `SYNC` for synchronized practice and `EXPAND` for expansion practice.
+  // 
   // This parameter is required.
   // 
   // example:

@@ -14,6 +14,7 @@ type iCountOralEvaluationStatisticsErrorRequest interface {
 }
 
 type CountOralEvaluationStatisticsErrorRequest struct {
+	// The request body for retrieving error statistics for the oral evaluation service.
 	Body *OralEvaluationStatisticsErrorCountRequest `json:"body,omitempty" xml:"body,omitempty"`
 }
 

@@ -24,22 +24,34 @@ type iListTextbookAssistantGradeVolumesResponseBody interface {
 }
 
 type ListTextbookAssistantGradeVolumesResponseBody struct {
+	// The response data.
 	Data []*ListTextbookAssistantGradeVolumesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The error code.
+	//
 	// example:
 	//
 	// 0
-	ErrCode    *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// 未知错误
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// F3B1AAF2-3041-5AA7-A352-BD5F998FA465
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -122,7 +134,10 @@ func (s *ListTextbookAssistantGradeVolumesResponseBody) Validate() error {
 }
 
 type ListTextbookAssistantGradeVolumesResponseBodyData struct {
+	// The grade and volume information.
 	GradeVolumes []*ListTextbookAssistantGradeVolumesResponseBodyDataGradeVolumes `json:"gradeVolumes,omitempty" xml:"gradeVolumes,omitempty" type:"Repeated"`
+	// The version of the textbook.
+	//
 	// example:
 	//
 	// 人教版
@@ -169,10 +184,14 @@ func (s *ListTextbookAssistantGradeVolumesResponseBodyData) Validate() error {
 }
 
 type ListTextbookAssistantGradeVolumesResponseBodyDataGradeVolumes struct {
+	// The grade level. Valid values: 1 to 9.
+	//
 	// example:
 	//
 	// 3
 	Grade *string `json:"grade,omitempty" xml:"grade,omitempty"`
+	// The volume. Valid values: `0` (single volume), `1` (Volume 1), and `2` (Volume 2).
+	//
 	// example:
 	//
 	// 1

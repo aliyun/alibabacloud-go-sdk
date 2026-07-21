@@ -30,19 +30,28 @@ type OralEvaluationStatisticsErrorCountRequest struct {
 	//
 	// a0007g7
 	ApplicationAccessId *string `json:"applicationAccessId,omitempty" xml:"applicationAccessId,omitempty"`
+	// End time
+	//
 	// example:
 	//
 	// 2024-08-22 06:24:53
-	EndTime   *string   `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// List of error codes
 	ErrorCode []*string `json:"errorCode,omitempty" xml:"errorCode,omitempty" type:"Repeated"`
+	// Query granularity (Hour, Day, Month)
+	//
 	// example:
 	//
 	// DAY
 	Granularity *string `json:"granularity,omitempty" xml:"granularity,omitempty"`
+	// Project ID
+	//
 	// example:
 	//
 	// 123
 	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	// Start time
+	//
 	// example:
 	//
 	// 2024-09-27 09:32:00

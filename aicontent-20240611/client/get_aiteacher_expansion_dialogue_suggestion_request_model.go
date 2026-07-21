@@ -28,32 +28,48 @@ type iGetAITeacherExpansionDialogueSuggestionRequest interface {
 }
 
 type GetAITeacherExpansionDialogueSuggestionRequest struct {
+	// The background of the conversation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// In a career counseling session, we are going to discuss our dream jobs and the responsibilities associated with them. Alex, who dreams of becoming a professional travel blogger, will share the tasks and skills required for this role, while Jamie, aspiring to be a wildlife photographer, will outline the responsibilities and challenges of capturing nature\\"s moments. Both will explore how their interests align with the practical aspects of their chosen careers, discussing the potential for travel, creativity, and the impact of their work on society and the environment.
 	Background *string `json:"background,omitempty" xml:"background,omitempty"`
+	// An array of objects that define the dialogue tasks.
+	//
 	// This parameter is required.
 	DialogueTasks []*GetAITeacherExpansionDialogueSuggestionRequestDialogueTasks `json:"dialogueTasks,omitempty" xml:"dialogueTasks,omitempty" type:"Repeated"`
+	// The language code, specified as a BCP 47 language tag. Valid values:
+	//
 	// example:
 	//
 	// en-gb
 	LanguageCode *string `json:"languageCode,omitempty" xml:"languageCode,omitempty"`
+	// An array of dialogue records.
+	//
 	// This parameter is required.
 	Records []*GetAITeacherExpansionDialogueSuggestionRequestRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
+	// Contains information about the roles in the conversation.
+	//
 	// This parameter is required.
 	RoleInfo *GetAITeacherExpansionDialogueSuggestionRequestRoleInfo `json:"roleInfo,omitempty" xml:"roleInfo,omitempty" type:"Struct"`
+	// The opening sentence of the conversation.
+	//
 	// example:
 	//
 	// Hello Lily, could you please come to the kitchen for a moment?
 	StartSentence *string `json:"startSentence,omitempty" xml:"startSentence,omitempty"`
+	// The main topic of the conversation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Let\\"s talk about traffic rules.
 	Topic *string `json:"topic,omitempty" xml:"topic,omitempty"`
+	// A unique identifier for the end user, used for monitoring and abuse detection.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -170,22 +186,30 @@ func (s *GetAITeacherExpansionDialogueSuggestionRequest) Validate() error {
 }
 
 type GetAITeacherExpansionDialogueSuggestionRequestDialogueTasks struct {
+	// The content of the assistant\\"s dialogue.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Why might some people think dog walking is a great job?
 	Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
+	// The translated content of the assistant\\"s dialogue.
+	//
 	// example:
 	//
 	// 为什么有些人认为遛狗是份好差事?
 	AssistantTranslate *string `json:"assistantTranslate,omitempty" xml:"assistantTranslate,omitempty"`
+	// The sequence number of the task.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Order *int32 `json:"order,omitempty" xml:"order,omitempty"`
+	// The content of the user\\"s dialogue.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -243,31 +267,41 @@ func (s *GetAITeacherExpansionDialogueSuggestionRequestDialogueTasks) Validate()
 }
 
 type GetAITeacherExpansionDialogueSuggestionRequestRecords struct {
+	// The content of the dialogue message.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Ask Mark if he has thought about what his dream job might be.
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// Indicates if the user\\"s response has gone off-topic. This parameter controls the conversation flow based on dialogue history. The system sets this parameter to `true` to switch tasks if the user goes off-topic more than twice.
+	//
 	// example:
 	//
 	// 跑题：true, 不跑题：false
 	IsOffTopicControl *bool `json:"isOffTopicControl,omitempty" xml:"isOffTopicControl,omitempty"`
+	// Indicates if the response is on topic.
+	//
 	// example:
 	//
 	// 扣题：true, 不扣题：false
 	IsOnTopic *bool `json:"isOnTopic,omitempty" xml:"isOnTopic,omitempty"`
+	// The sequence number of the message in the conversation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Order *int32 `json:"order,omitempty" xml:"order,omitempty"`
+	// The role of the message author. Valid values:
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 老师：assistant；学生：user
+	// AI：assistant；用户：user
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
 }
 
@@ -329,12 +363,16 @@ func (s *GetAITeacherExpansionDialogueSuggestionRequestRecords) Validate() error
 }
 
 type GetAITeacherExpansionDialogueSuggestionRequestRoleInfo struct {
+	// The name of the AI assistant.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Alex
 	Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
+	// The name of the user.
+	//
 	// This parameter is required.
 	//
 	// example:

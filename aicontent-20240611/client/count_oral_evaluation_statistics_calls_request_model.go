@@ -14,6 +14,7 @@ type iCountOralEvaluationStatisticsCallsRequest interface {
 }
 
 type CountOralEvaluationStatisticsCallsRequest struct {
+	// The request body.
 	Body *OralEvaluationStatisticsCallsCountRequest `json:"body,omitempty" xml:"body,omitempty"`
 }
 

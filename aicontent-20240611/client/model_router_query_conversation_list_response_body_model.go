@@ -24,26 +24,38 @@ type iModelRouterQueryConversationListResponseBody interface {
 }
 
 type ModelRouterQueryConversationListResponseBody struct {
+	// The response data.
+	//
 	// example:
 	//
 	// []
 	Data *ModelRouterQueryConversationListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The error code returned if the request fails.
+	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message returned if the request fails.
+	//
 	// example:
 	//
 	// 未知错误
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request succeeded. A value of `true` indicates success.
+	//
 	// example:
 	//
 	// true
@@ -122,23 +134,37 @@ func (s *ModelRouterQueryConversationListResponseBody) Validate() error {
 }
 
 type ModelRouterQueryConversationListResponseBodyData struct {
-	List      []*ConversationDTO `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
-	MaxResult *string            `json:"maxResult,omitempty" xml:"maxResult,omitempty"`
+	// A list of conversation objects.
+	List []*ConversationDTO `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	// The number of entries per page. Default value: 20.
+	//
+	// example:
+	//
+	// 10
+	MaxResult *string `json:"maxResult,omitempty" xml:"maxResult,omitempty"`
+	// The token to retrieve the next page of results. If this parameter is empty, all results have been returned.
+	//
 	// example:
 	//
 	// None
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// The number of conversations on the current page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The total number of conversations.
+	//
 	// example:
 	//
-	// 0
+	// 100
 	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 

@@ -20,14 +20,22 @@ type iGetAITeacherSyncDialogueSuggestionRequest interface {
 }
 
 type GetAITeacherSyncDialogueSuggestionRequest struct {
+	// A list of dialogue tasks.
+	//
 	// This parameter is required.
 	DialogueTasks []*GetAITeacherSyncDialogueSuggestionRequestDialogueTasks `json:"dialogueTasks,omitempty" xml:"dialogueTasks,omitempty" type:"Repeated"`
+	// The language code.
+	//
 	// example:
 	//
 	// en-gb
 	LanguageCode *string `json:"languageCode,omitempty" xml:"languageCode,omitempty"`
+	// A list of dialogue records.
+	//
 	// This parameter is required.
 	Records []*GetAITeacherSyncDialogueSuggestionRequestRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
+	// The unique identifier for the end-user.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -103,22 +111,30 @@ func (s *GetAITeacherSyncDialogueSuggestionRequest) Validate() error {
 }
 
 type GetAITeacherSyncDialogueSuggestionRequestDialogueTasks struct {
+	// The assistant\\"s message content.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Why might some people think dog walking is a great job?
 	Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
+	// The translation of the assistant\\"s message.
+	//
 	// example:
 	//
 	// 为什么有些人认为遛狗是份好差事?
 	AssistantTranslate *string `json:"assistantTranslate,omitempty" xml:"assistantTranslate,omitempty"`
+	// The sequence number of the dialogue task.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Order *int32 `json:"order,omitempty" xml:"order,omitempty"`
+	// The user\\"s message content.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -176,31 +192,41 @@ func (s *GetAITeacherSyncDialogueSuggestionRequestDialogueTasks) Validate() erro
 }
 
 type GetAITeacherSyncDialogueSuggestionRequestRecords struct {
+	// The message content.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Ask Mark if he has thought about what his dream job might be.
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// A control flag that indicates if a student\\"s response is off-topic. The value is based on the previous turn. If the conversation goes off-topic more than twice, the system sets this value to `true` to force a task switch.
+	//
 	// example:
 	//
 	// 跑题：true, 不跑题：false
 	IsOffTopicControl *bool `json:"isOffTopicControl,omitempty" xml:"isOffTopicControl,omitempty"`
+	// Specifies if the message is on topic. `true` indicates the message is on topic; `false` indicates it is off topic.
+	//
 	// example:
 	//
 	// 扣题：true, 不扣题：false
 	IsOnTopic *bool `json:"isOnTopic,omitempty" xml:"isOnTopic,omitempty"`
+	// The sequence number of the message in the conversation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Order *int32 `json:"order,omitempty" xml:"order,omitempty"`
+	// The role of the message author. Valid values: `assistant` (for AI-generated messages) and `user` (for user-provided messages).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 老师：assistant；学生：user
+	// AI：assistant；用户：user
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
 }
 

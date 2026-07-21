@@ -24,26 +24,38 @@ type iModelRouterDeleteApiKeyResponseBody interface {
 }
 
 type ModelRouterDeleteApiKeyResponseBody struct {
+	// Whether the deletion was successful.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// The error code returned if the request fails.
+	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message returned if the request fails.
+	//
 	// example:
 	//
 	// 未知错误
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Whether the request was successful.
+	//
 	// example:
 	//
 	// true

@@ -24,22 +24,34 @@ type iListTextbookAssistantBooksResponseBody interface {
 }
 
 type ListTextbookAssistantBooksResponseBody struct {
+	// The data object in the response.
 	Data *ListTextbookAssistantBooksResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// B_USER_NOT_FOUND_EXCEPTION
-	ErrCode    *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// 用户不存在
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// B695B377-7029-5805-9DE2-1AAE06C1BF6B
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Whether the request succeeded.
+	//
 	// example:
 	//
 	// true
@@ -118,7 +130,9 @@ func (s *ListTextbookAssistantBooksResponseBody) Validate() error {
 }
 
 type ListTextbookAssistantBooksResponseBodyData struct {
-	BookList       []*ListTextbookAssistantBooksResponseBodyDataBookList     `json:"bookList,omitempty" xml:"bookList,omitempty" type:"Repeated"`
+	// A list of book objects.
+	BookList []*ListTextbookAssistantBooksResponseBodyDataBookList `json:"bookList,omitempty" xml:"bookList,omitempty" type:"Repeated"`
+	// The pagination data.
 	PaginationData *ListTextbookAssistantBooksResponseBodyDataPaginationData `json:"paginationData,omitempty" xml:"paginationData,omitempty" type:"Struct"`
 }
 
@@ -167,38 +181,74 @@ func (s *ListTextbookAssistantBooksResponseBodyData) Validate() error {
 }
 
 type ListTextbookAssistantBooksResponseBodyDataBookList struct {
+	// The author.
+	//
+	// example:
+	//
+	// 吴欣
 	Author *string `json:"author,omitempty" xml:"author,omitempty"`
+	// The book ID.
+	//
 	// example:
 	//
 	// 231698
-	BookId   *string `json:"bookId,omitempty" xml:"bookId,omitempty"`
+	BookId *string `json:"bookId,omitempty" xml:"bookId,omitempty"`
+	// The book name.
+	//
+	// example:
+	//
+	// K12英语-人教版PEP三起-三年级上册
 	BookName *string `json:"bookName,omitempty" xml:"bookName,omitempty"`
+	// The cover image.
+	//
 	// example:
 	//
 	// null
 	CoverImage *string `json:"coverImage,omitempty" xml:"coverImage,omitempty"`
+	// The edition.
+	//
 	// example:
 	//
 	// 2024-7（1）
 	Edition *string `json:"edition,omitempty" xml:"edition,omitempty"`
+	// The grade. Valid values are strings from `"1"` to `"9"`.
+	//
 	// example:
 	//
 	// 3
 	Grade *string `json:"grade,omitempty" xml:"grade,omitempty"`
+	// The impression.
+	//
 	// example:
 	//
 	// 2024-7（1）
 	Impression *string `json:"impression,omitempty" xml:"impression,omitempty"`
+	// The International Standard Book Number (ISBN).
+	//
 	// example:
 	//
 	// 9787107382505
-	Isbn      *string `json:"isbn,omitempty" xml:"isbn,omitempty"`
+	Isbn *string `json:"isbn,omitempty" xml:"isbn,omitempty"`
+	// The publisher.
+	//
+	// example:
+	//
+	// 人民教育出版社
 	Publisher *string `json:"publisher,omitempty" xml:"publisher,omitempty"`
+	// The subject.
+	//
 	// example:
 	//
 	// ENGLISH
 	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
+	// The textbook version.
+	//
+	// example:
+	//
+	// 人教版
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// The volume. Valid values: `"0"` (all-in-one), `"1"` (first semester), and `"2"` (second semester).
+	//
 	// example:
 	//
 	// 0
@@ -326,14 +376,20 @@ func (s *ListTextbookAssistantBooksResponseBodyDataBookList) Validate() error {
 }
 
 type ListTextbookAssistantBooksResponseBodyDataPaginationData struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
+	// The maximum number of items per page.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The total number of items.
+	//
 	// example:
 	//
 	// 200

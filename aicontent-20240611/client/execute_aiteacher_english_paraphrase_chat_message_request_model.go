@@ -28,42 +28,58 @@ type iExecuteAITeacherEnglishParaphraseChatMessageRequest interface {
 }
 
 type ExecuteAITeacherEnglishParaphraseChatMessageRequest struct {
+  // The unique ID for the chat session.
+  // 
   // example:
   // 
   // 6788e0b475a4631ffc626722
   ChatId *string `json:"chatId,omitempty" xml:"chatId,omitempty"`
+  // The user\\"s chat message.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // How much is this?
   Content *string `json:"content,omitempty" xml:"content,omitempty"`
+  // The grade level.
+  // 
   // example:
   // 
   // 3
   Grade *int64 `json:"grade,omitempty" xml:"grade,omitempty"`
+  // A unique identifier for the question.
+  // 
   // example:
   // 
   // xxxxxxxxx
   QuestionId *string `json:"questionId,omitempty" xml:"questionId,omitempty"`
+  // The user\\"s question.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // How to inquire about the price
   QuestionInfo *string `json:"questionInfo,omitempty" xml:"questionInfo,omitempty"`
+  // The response mode. Set this to `streaming` to receive the response as a stream of events.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // sreaming
   ResponseMode *string `json:"responseMode,omitempty" xml:"responseMode,omitempty"`
+  // The user\\"s answer to the question.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // How much is this?
   UserAnswer *string `json:"userAnswer,omitempty" xml:"userAnswer,omitempty"`
+  // The user ID.
+  // 
   // This parameter is required.
   // 
   // example:

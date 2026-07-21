@@ -26,31 +26,43 @@ type iClientBalanceDTO interface {
 }
 
 type ClientBalanceDTO struct {
+	// The current balance.
+	//
 	// example:
 	//
 	// 100.00
 	Balance *float64 `json:"balance,omitempty" xml:"balance,omitempty"`
+	// The balance type. Valid values are `amount` or `tokens`.
+	//
 	// example:
 	//
 	// amount
 	BalanceType *string `json:"balanceType,omitempty" xml:"balanceType,omitempty"`
+	// The ID of the client.
+	//
 	// example:
 	//
 	// 1
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	// Indicates whether balance-based rate limiting is enabled.
+	//
 	// example:
 	//
 	// true
 	EnableBalance *bool `json:"enableBalance,omitempty" xml:"enableBalance,omitempty"`
+	// The creation timestamp.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// The last modification timestamp.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// ID
+	// The unique ID of the balance record.
 	//
 	// example:
 	//

@@ -28,33 +28,46 @@ type iModelRouterGetClientBalanceLogsResponseBody interface {
 }
 
 type ModelRouterGetClientBalanceLogsResponseBody struct {
+	// The returned data.
 	Data *ModelRouterGetClientBalanceLogsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The error code returned on failure.
+	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message returned on failure.
+	//
 	// example:
 	//
 	// 未知错误
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The maximum number of entries returned.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// nextToken
+	// The pagination token for the next page of results. An empty value indicates that no more results are available.
 	//
 	// example:
 	//
 	// None
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -151,15 +164,22 @@ func (s *ModelRouterGetClientBalanceLogsResponseBody) Validate() error {
 }
 
 type ModelRouterGetClientBalanceLogsResponseBodyData struct {
+	// A list of balance change log entries.
 	List []*ClientBalanceLogDTO `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The total number of matching entries.
+	//
 	// example:
 	//
 	// 100

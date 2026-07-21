@@ -24,26 +24,38 @@ type iPersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBody interface
 }
 
 type PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBody struct {
+	// The response data object.
+	//
 	// example:
 	//
 	// []
 	Data *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// 未知错误
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -122,32 +134,44 @@ func (s *PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBody) Valid
 }
 
 type PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBodyData struct {
+	// The creation time of the inference job.
+	//
 	// example:
 	//
 	// 2023-12-25T12:00:00
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The inference job ID.
+	//
 	// example:
 	//
 	// 3220
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The job status.
+	//
 	// example:
 	//
 	// FINISHED
 	JobStatus *string `json:"jobStatus,omitempty" xml:"jobStatus,omitempty"`
+	// The job progress.
+	//
 	// example:
 	//
 	// 0.5
 	JobTrainProgress *float64 `json:"jobTrainProgress,omitempty" xml:"jobTrainProgress,omitempty"`
+	// The model ID.
+	//
 	// example:
 	//
 	// modelId-xxxx-xxxx-xxxx
 	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
-	// promptId
+	// The ID of the prompt used for the job.
 	//
 	// example:
 	//
 	// promptId-xxxx-xxxx-xxxx
 	PromptId *string `json:"promptId,omitempty" xml:"promptId,omitempty"`
+	// A list of resource IDs for the generated images.
+	//
 	// example:
 	//
 	// 0000.png

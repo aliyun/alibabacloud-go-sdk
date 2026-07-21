@@ -26,14 +26,20 @@ type iModelRouterUpdateClientRequest interface {
 }
 
 type ModelRouterUpdateClientRequest struct {
+	// The company address.
+	//
 	// example:
 	//
 	// 杭州市
 	Address *string `json:"address,omitempty" xml:"address,omitempty"`
+	// A comma-separated list of model IDs that the client can use. If this parameter is left empty, the client can use all models.
+	//
 	// example:
 	//
 	// 1,2,3
 	AllowedModels *string `json:"allowedModels,omitempty" xml:"allowedModels,omitempty"`
+	// The contact information.
+	//
 	// example:
 	//
 	// 13800138000
@@ -42,14 +48,20 @@ type ModelRouterUpdateClientRequest struct {
 	//
 	// 1.0
 	Discount *float64 `json:"discount,omitempty" xml:"discount,omitempty"`
+	// The client name.
+	//
 	// example:
 	//
 	// 我的客户
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// A remark about the client.
+	//
 	// example:
 	//
 	// 备注
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	// The client\\"s status.
+	//
 	// example:
 	//
 	// 1

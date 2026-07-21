@@ -32,42 +32,62 @@ type iModelRouterQueryClientListRequest interface {
 }
 
 type ModelRouterQueryClientListRequest struct {
+	// The field to group the results by.
+	//
 	// example:
 	//
 	// resourceId
 	GroupBy *string `json:"groupBy,omitempty" xml:"groupBy,omitempty"`
+	// The search keyword.
+	//
 	// example:
 	//
 	// test
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	// The maximum number of results to return.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// Specifies whether to return the total count of entries.
+	//
 	// example:
 	//
 	// true
 	NeedTotalCount *bool `json:"needTotalCount,omitempty" xml:"needTotalCount,omitempty"`
+	// The token for the next page of results. Set this to the nextToken value from the previous response. Omit for the first page.
+	//
 	// example:
 	//
 	// 1
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The field to sort the results by.
+	//
 	// example:
 	//
 	// resourceId
 	OrderBy *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
+	// The sort direction.
+	//
 	// example:
 	//
 	// DESC
 	OrderDirection *string `json:"orderDirection,omitempty" xml:"orderDirection,omitempty"`
+	// The page number of the results to return. The first page is 1.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// The number of entries to return per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Filters the results by status.
+	//
 	// example:
 	//
 	// 1

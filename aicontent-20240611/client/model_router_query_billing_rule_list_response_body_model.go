@@ -28,15 +28,22 @@ type iModelRouterQueryBillingRuleListResponseBody interface {
 }
 
 type ModelRouterQueryBillingRuleListResponseBody struct {
+	// Response data
 	Data *ModelRouterQueryBillingRuleListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Error code
+	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// 未知错误
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
@@ -53,10 +60,14 @@ type ModelRouterQueryBillingRuleListResponseBody struct {
 	//
 	// xxxx-xxx-xxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true
@@ -153,15 +164,22 @@ func (s *ModelRouterQueryBillingRuleListResponseBody) Validate() error {
 }
 
 type ModelRouterQueryBillingRuleListResponseBodyData struct {
+	// List of billing rules
 	List []*ModelRouterQueryBillingRuleListResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	// Current page number
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// Number of items per page
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Total number of records
+	//
 	// example:
 	//
 	// 5
@@ -226,58 +244,86 @@ func (s *ModelRouterQueryBillingRuleListResponseBodyData) Validate() error {
 }
 
 type ModelRouterQueryBillingRuleListResponseBodyDataList struct {
+	// Billing type
+	//
 	// example:
 	//
 	// token_tiered
 	BillingType *string `json:"billingType,omitempty" xml:"billingType,omitempty"`
+	// Delete marker
+	//
 	// example:
 	//
 	// 0
 	DeleteTag *int32 `json:"deleteTag,omitempty" xml:"deleteTag,omitempty"`
+	// Effective time
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
 	EffectiveTime *string `json:"effectiveTime,omitempty" xml:"effectiveTime,omitempty"`
+	// Expiration time
+	//
 	// example:
 	//
 	// 2025-01-01T00:00:00Z
 	ExpireTime *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	// Creation time
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// Modification time
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// Rule ID
+	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// Model identifier
+	//
 	// example:
 	//
 	// qwen-plus
 	ModelCode *string `json:"modelCode,omitempty" xml:"modelCode,omitempty"`
+	// Model ID
+	//
 	// example:
 	//
 	// 1
 	ModelId *int64 `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// Model name
+	//
 	// example:
 	//
 	// 通义千问Plus
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	// Model type
+	//
 	// example:
 	//
 	// chat
 	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
+	// Billing configuration
+	//
 	// example:
 	//
 	// {}
 	PricingConfig interface{} `json:"pricingConfig,omitempty" xml:"pricingConfig,omitempty"`
+	// Vendor identifier
+	//
 	// example:
 	//
 	// alibaba
 	Symbol *string `json:"symbol,omitempty" xml:"symbol,omitempty"`
+	// Version number
+	//
 	// example:
 	//
 	// 1

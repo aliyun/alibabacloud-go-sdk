@@ -16,12 +16,16 @@ type iExecuteAITeacherGrammarCheckRequest interface {
 }
 
 type ExecuteAITeacherGrammarCheckRequest struct {
+  // The sentence to check.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // i is good
   Content *string `json:"content,omitempty" xml:"content,omitempty"`
+  // The user ID.
+  // 
   // This parameter is required.
   // 
   // example:

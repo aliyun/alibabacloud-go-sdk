@@ -18,18 +18,24 @@ type iListTextbookAssistantBookDirectoriesRequest interface {
 }
 
 type ListTextbookAssistantBookDirectoriesRequest struct {
+	// The API authorization token. You can obtain this token from the authorization API for the AI English teacher feature.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// tc_e6dc70c890866f4028ca685b6fa29874
 	AuthToken *string `json:"authToken,omitempty" xml:"authToken,omitempty"`
+	// The book ID. You can obtain this ID from the API for retrieving English textbooks.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 231698
 	BookId *string `json:"bookId,omitempty" xml:"bookId,omitempty"`
+	// The exercise scenario.
+	//
 	// This parameter is required.
 	//
 	// example:

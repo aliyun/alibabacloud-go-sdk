@@ -14,6 +14,8 @@ type iPersonalizedtxt2imgQueryModelTrainStatusRequest interface {
 }
 
 type Personalizedtxt2imgQueryModelTrainStatusRequest struct {
+	// The model ID.
+	//
 	// This parameter is required.
 	//
 	// example:

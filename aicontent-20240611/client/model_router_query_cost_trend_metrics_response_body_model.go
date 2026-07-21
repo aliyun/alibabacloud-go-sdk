@@ -28,36 +28,50 @@ type iModelRouterQueryCostTrendMetricsResponseBody interface {
 }
 
 type ModelRouterQueryCostTrendMetricsResponseBody struct {
+	// The data object containing the cost trend metrics.
+	//
 	// example:
 	//
 	// []
 	Data *CostQueryTrendDTO `json:"data,omitempty" xml:"data,omitempty"`
+	// The error code returned when the request fails.
+	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message returned when the request fails.
+	//
 	// example:
 	//
 	// 未知错误
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The maximum number of results returned per page.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// nextToken
+	// A token to retrieve the next page of results. If no token is returned, all results have been retrieved.
 	//
 	// example:
 	//
 	// xxxx-xxx-xxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The unique request ID. If you encounter a problem, provide this ID to technical support for troubleshooting.
+	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful. A value of `true` indicates success, and `false` indicates failure.
+	//
 	// example:
 	//
 	// true

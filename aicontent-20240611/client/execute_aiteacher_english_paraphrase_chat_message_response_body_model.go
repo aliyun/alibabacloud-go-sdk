@@ -18,14 +18,20 @@ type iExecuteAITeacherEnglishParaphraseChatMessageResponseBody interface {
 }
 
 type ExecuteAITeacherEnglishParaphraseChatMessageResponseBody struct {
+  // The content associated with the event.
+  // 
   // example:
   // 
   // how
   Content *string `json:"content,omitempty" xml:"content,omitempty"`
+  // The event type.
+  // 
   // example:
   // 
   // message
   Event *string `json:"event,omitempty" xml:"event,omitempty"`
+  // The request ID. This ID is returned with every response and is useful for troubleshooting.
+  // 
   // example:
   // 
   // xxxx-xxxx-xxxx-xxxxxxxx

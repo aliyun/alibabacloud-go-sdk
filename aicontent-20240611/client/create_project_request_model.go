@@ -16,10 +16,14 @@ type iCreateProjectRequest interface {
 }
 
 type CreateProjectRequest struct {
+	// Project name
+	//
 	// example:
 	//
 	// MyProject
 	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
+	// Project type
+	//
 	// example:
 	//
 	// online_oral_evaluation_post_paid_call_count

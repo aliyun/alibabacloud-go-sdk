@@ -26,29 +26,46 @@ type iListTextbookAssistantBooksRequest interface {
 }
 
 type ListTextbookAssistantBooksRequest struct {
+	// The authorization token for the API call. You can obtain this token by calling the authorization API for the AI textbook assistant feature.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// tc_197bf5bb81889cc79eb51ae9b8c0cea3
 	AuthToken *string `json:"authToken,omitempty" xml:"authToken,omitempty"`
+	// The book ID.
+	//
 	// example:
 	//
 	// 231698
 	BookId *string `json:"bookId,omitempty" xml:"bookId,omitempty"`
+	// The grade level. The value is a string from "1" to "9".
+	//
 	// example:
 	//
 	// 1
 	Grade *string `json:"grade,omitempty" xml:"grade,omitempty"`
+	// The maximum number of results to return per page. The value cannot exceed 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *string `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
-	Page    *string `json:"page,omitempty" xml:"page,omitempty"`
+	Page *string `json:"page,omitempty" xml:"page,omitempty"`
+	// The textbook version.
+	//
+	// example:
+	//
+	// 人教版
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// The volume. Valid values: 0 (all-in-one volume), 1 (first volume), and 2 (second volume).
+	//
 	// example:
 	//
 	// 1

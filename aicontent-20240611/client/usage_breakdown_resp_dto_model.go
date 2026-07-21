@@ -22,22 +22,32 @@ type iUsageBreakdownRespDTO interface {
 }
 
 type UsageBreakdownRespDTO struct {
+	// Aggregation granularity: hourly or daily
+	//
 	// example:
 	//
 	// hourly
 	Granularity *string `json:"granularity,omitempty" xml:"granularity,omitempty"`
+	// Current page number
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// Number of entries per page
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// List of detailed data entries
+	//
 	// example:
 	//
 	// []
 	Rows []*UsageBreakdownRowDTO `json:"rows,omitempty" xml:"rows,omitempty" type:"Repeated"`
+	// Total number of entries
+	//
 	// example:
 	//
 	// 100

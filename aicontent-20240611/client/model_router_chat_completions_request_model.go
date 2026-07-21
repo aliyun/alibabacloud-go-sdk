@@ -14,6 +14,8 @@ type iModelRouterChatCompletionsRequest interface {
 }
 
 type ModelRouterChatCompletionsRequest struct {
+	// The request body, which must be a JSON object.
+	//
 	// example:
 	//
 	// {

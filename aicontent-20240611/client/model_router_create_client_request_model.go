@@ -26,14 +26,20 @@ type iModelRouterCreateClientRequest interface {
 }
 
 type ModelRouterCreateClientRequest struct {
+	// The company address.
+	//
 	// example:
 	//
 	// 杭州市
 	Address *string `json:"address,omitempty" xml:"address,omitempty"`
+	// A comma-separated list of model IDs that the client can use. If this parameter is empty, the client can use all available models.
+	//
 	// example:
 	//
 	// 1,2,3
 	AllowedModels *string `json:"allowedModels,omitempty" xml:"allowedModels,omitempty"`
+	// The contact information.
+	//
 	// example:
 	//
 	// 13800138000
@@ -42,6 +48,8 @@ type ModelRouterCreateClientRequest struct {
 	//
 	// 1.0
 	Discount *float64 `json:"discount,omitempty" xml:"discount,omitempty"`
+	// The client name.
+	//
 	// example:
 	//
 	// 我的客户
@@ -50,6 +58,8 @@ type ModelRouterCreateClientRequest struct {
 	//
 	// 1
 	ParentId *int64 `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	// Additional remarks.
+	//
 	// example:
 	//
 	// 备注

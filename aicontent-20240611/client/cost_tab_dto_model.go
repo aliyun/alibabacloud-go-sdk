@@ -18,11 +18,19 @@ type iCostTabDTO interface {
 }
 
 type CostTabDTO struct {
+	// Tab UUID
+	//
 	// example:
 	//
 	// all
-	Key        *string   `json:"key,omitempty" xml:"key,omitempty"`
-	Label      *string   `json:"label,omitempty" xml:"label,omitempty"`
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// Tab display name
+	//
+	// example:
+	//
+	// 全部
+	Label *string `json:"label,omitempty" xml:"label,omitempty"`
+	// List of associated model types
 	ModelTypes []*string `json:"modelTypes,omitempty" xml:"modelTypes,omitempty" type:"Repeated"`
 }
 

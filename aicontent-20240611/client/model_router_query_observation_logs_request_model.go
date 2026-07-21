@@ -40,58 +40,86 @@ type iModelRouterQueryObservationLogsRequest interface {
 }
 
 type ModelRouterQueryObservationLogsRequest struct {
+	// Filters the results by API key ID.
+	//
 	// example:
 	//
 	// 1
 	ApiKeyId *int64 `json:"apiKeyId,omitempty" xml:"apiKeyId,omitempty"`
+	// Filters the results by client ID.
+	//
 	// example:
 	//
 	// 1
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	// The end time for a custom time range.
+	//
 	// example:
 	//
 	// 2024-01-02T00:00:00Z
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The grouping field.
+	//
 	// example:
 	//
 	// resourceId
 	GroupBy *string `json:"groupBy,omitempty" xml:"groupBy,omitempty"`
+	// The maximum number of results to return.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// Filters the results by model ID.
+	//
 	// example:
 	//
 	// 1
 	ModelId *int64 `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// Specifies whether to return the total count of results.
+	//
 	// example:
 	//
 	// true
 	NeedTotalCount *bool `json:"needTotalCount,omitempty" xml:"needTotalCount,omitempty"`
+	// The pagination token from a previous response to retrieve the next page of results.
+	//
 	// example:
 	//
 	// 1
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The sort field.
+	//
 	// example:
 	//
 	// resourceId
 	OrderBy *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
+	// The sort direction.
+	//
 	// example:
 	//
 	// DESC
 	OrderDirection *string `json:"orderDirection,omitempty" xml:"orderDirection,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// The number of results to return per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The start time for a custom time range.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The time range for the query. Valid values are `1h`, `6h`, `24h`, `7d`, and `30d`.
+	//
 	// example:
 	//
 	// 24h

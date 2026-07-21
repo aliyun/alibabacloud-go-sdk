@@ -24,23 +24,34 @@ type iModelRouterUpdateBillingRuleResponseBody interface {
 }
 
 type ModelRouterUpdateBillingRuleResponseBody struct {
+	// The returned data.
 	Data *ModelRouterUpdateBillingRuleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// 未知错误
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
@@ -119,58 +130,86 @@ func (s *ModelRouterUpdateBillingRuleResponseBody) Validate() error {
 }
 
 type ModelRouterUpdateBillingRuleResponseBodyData struct {
+	// The billing type.
+	//
 	// example:
 	//
 	// token_tiered
 	BillingType *string `json:"billingType,omitempty" xml:"billingType,omitempty"`
+	// The deletion tag.
+	//
 	// example:
 	//
 	// 0
 	DeleteTag *int32 `json:"deleteTag,omitempty" xml:"deleteTag,omitempty"`
+	// The time when the rule takes effect.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
 	EffectiveTime *string `json:"effectiveTime,omitempty" xml:"effectiveTime,omitempty"`
+	// The expiration time.
+	//
 	// example:
 	//
 	// 2025-01-01T00:00:00Z
 	ExpireTime *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The model ID.
+	//
 	// example:
 	//
 	// qwen-plus
 	ModelCode *string `json:"modelCode,omitempty" xml:"modelCode,omitempty"`
+	// The model ID.
+	//
 	// example:
 	//
 	// 1
 	ModelId *int64 `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// The model name.
+	//
 	// example:
 	//
 	// 通义千问Plus
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	// The model type.
+	//
 	// example:
 	//
 	// chat
 	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
+	// The billing configuration.
+	//
 	// example:
 	//
 	// {}
 	PricingConfig interface{} `json:"pricingConfig,omitempty" xml:"pricingConfig,omitempty"`
+	// The vendor ID.
+	//
 	// example:
 	//
 	// alibaba
 	Symbol *string `json:"symbol,omitempty" xml:"symbol,omitempty"`
+	// The version number.
+	//
 	// example:
 	//
 	// 1

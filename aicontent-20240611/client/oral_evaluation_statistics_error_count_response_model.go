@@ -16,7 +16,10 @@ type iOralEvaluationStatisticsErrorCountResponse interface {
 }
 
 type OralEvaluationStatisticsErrorCountResponse struct {
+	// Contains the statistical data aggregated by project.
 	ProjectData *OralEvaluationStatisticsErrorCountResponseProjectData `json:"ProjectData,omitempty" xml:"ProjectData,omitempty" type:"Struct"`
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -61,7 +64,10 @@ func (s *OralEvaluationStatisticsErrorCountResponse) Validate() error {
 }
 
 type OralEvaluationStatisticsErrorCountResponseProjectData struct {
+	// A list of statistical data objects for the application.
 	ApplicationData []*OralEvaluationStatisticsErrorCountResponseProjectDataApplicationData `json:"ApplicationData,omitempty" xml:"ApplicationData,omitempty" type:"Repeated"`
+	// The internal ID of the application.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -110,8 +116,9 @@ func (s *OralEvaluationStatisticsErrorCountResponseProjectData) Validate() error
 }
 
 type OralEvaluationStatisticsErrorCountResponseProjectDataApplicationData struct {
+	// A list of datasets.
 	Data []*OralEvaluationStatisticsErrorCountResponseProjectDataApplicationDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// appId,appkey
+	// The App ID or App Key.
 	//
 	// This parameter is required.
 	//
@@ -161,11 +168,16 @@ func (s *OralEvaluationStatisticsErrorCountResponseProjectDataApplicationData) V
 }
 
 type OralEvaluationStatisticsErrorCountResponseProjectDataApplicationDataData struct {
+	// A list of statistical items.
 	Data []*OralEvaluationStatisticsErrorCountResponseProjectDataApplicationDataDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error code.
+	//
 	// example:
 	//
 	// 51000
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// start the core unsuccessfull.
@@ -221,12 +233,16 @@ func (s *OralEvaluationStatisticsErrorCountResponseProjectDataApplicationDataDat
 }
 
 type OralEvaluationStatisticsErrorCountResponseProjectDataApplicationDataDataData struct {
+	// The count for the statistical item.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 230
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// The name of the statistical item, which defines the display granularity.
+	//
 	// This parameter is required.
 	//
 	// example:

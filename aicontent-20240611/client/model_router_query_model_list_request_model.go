@@ -34,14 +34,20 @@ type iModelRouterQueryModelListRequest interface {
 }
 
 type ModelRouterQueryModelListRequest struct {
+	// The field to use for grouping the results.
+	//
 	// example:
 	//
 	// resourceId
 	GroupBy *string `json:"groupBy,omitempty" xml:"groupBy,omitempty"`
+	// The keyword for a fuzzy search on model information.
+	//
 	// example:
 	//
 	// test
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	// The maximum number of results to return.
+	//
 	// example:
 	//
 	// 10
@@ -50,30 +56,44 @@ type ModelRouterQueryModelListRequest struct {
 	//
 	// Chat
 	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
+	// Specifies whether to include the total count of matching models in the response.
+	//
 	// example:
 	//
 	// true
 	NeedTotalCount *bool `json:"needTotalCount,omitempty" xml:"needTotalCount,omitempty"`
+	// The pagination token for retrieving the next page of results. If this parameter is not specified, the first page is retrieved. To retrieve a subsequent page, set this to the `nextToken` value from the previous response.
+	//
 	// example:
 	//
 	// 1
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The field to use for sorting the results.
+	//
 	// example:
 	//
 	// resourceId
 	OrderBy *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
+	// The sort order. Valid values include `ASC` for ascending order and `DESC` for descending order.
+	//
 	// example:
 	//
 	// DESC
 	OrderDirection *string `json:"orderDirection,omitempty" xml:"orderDirection,omitempty"`
+	// The page number to retrieve. Pages are numbered starting from 1.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// The number of models to return per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The model status to use as a filter.
+	//
 	// example:
 	//
 	// 1

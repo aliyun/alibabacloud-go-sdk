@@ -14,6 +14,8 @@ type iPersonalizedtxt2imgQueryInferenceJobInfoRequest interface {
 }
 
 type Personalizedtxt2imgQueryInferenceJobInfoRequest struct {
+	// The ID of the inference job.
+	//
 	// This parameter is required.
 	//
 	// example:

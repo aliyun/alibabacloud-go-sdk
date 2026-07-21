@@ -24,26 +24,38 @@ type iAliyunConsoleOpenApiQueryAliyunConsoleServcieListResponseBody interface {
 }
 
 type AliyunConsoleOpenApiQueryAliyunConsoleServcieListResponseBody struct {
+	// The data returned.
+	//
 	// example:
 	//
 	// []
 	Data []*AliyunConsoleOpenApiQueryAliyunConsoleServcieListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The error code returned if the request fails.
+	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message returned if the request fails.
+	//
 	// example:
 	//
 	// 未知错误
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -126,18 +138,26 @@ func (s *AliyunConsoleOpenApiQueryAliyunConsoleServcieListResponseBody) Validate
 }
 
 type AliyunConsoleOpenApiQueryAliyunConsoleServcieListResponseBodyData struct {
+	// The free trial concurrency.
+	//
 	// example:
 	//
 	// 10
 	FreeConcurrencyCount *int32 `json:"FreeConcurrencyCount,omitempty" xml:"FreeConcurrencyCount,omitempty"`
+	// The free trial calls.
+	//
 	// example:
 	//
 	// 100
 	FreeCount *int32 `json:"FreeCount,omitempty" xml:"FreeCount,omitempty"`
+	// The service code.
+	//
 	// example:
 	//
 	// online_ai_algorithm_personalized_text_to_image_call_count
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// The service name.
+	//
 	// example:
 	//
 	// AI算法模型-个性化文生图-在线按量调用

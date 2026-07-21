@@ -34,46 +34,68 @@ type iModelRouterQueryApiKeyListRequest interface {
 }
 
 type ModelRouterQueryApiKeyListRequest struct {
+	// Filters the results by the specified client ID.
+	//
 	// example:
 	//
 	// 1
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	// The grouping field.
+	//
 	// example:
 	//
 	// resourceId
 	GroupBy *string `json:"groupBy,omitempty" xml:"groupBy,omitempty"`
+	// The search keyword.
+	//
 	// example:
 	//
 	// test
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	// The maximum number of results to return.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// Specifies whether to return the total count of results.
+	//
 	// example:
 	//
 	// true
 	NeedTotalCount *bool `json:"needTotalCount,omitempty" xml:"needTotalCount,omitempty"`
+	// The token for retrieving the next page of results. An empty value indicates that all results have been returned.
+	//
 	// example:
 	//
 	// 1
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The sort field.
+	//
 	// example:
 	//
 	// resourceId
 	OrderBy *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
+	// The sort order.
+	//
 	// example:
 	//
 	// DESC
 	OrderDirection *string `json:"orderDirection,omitempty" xml:"orderDirection,omitempty"`
+	// The page number to retrieve.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// The number of results per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Filters the results by the specified status.
+	//
 	// example:
 	//
 	// 1

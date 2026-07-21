@@ -16,10 +16,14 @@ type iTrendPointDTO interface {
 }
 
 type TrendPointDTO struct {
+	// UNIX timestamp (Unix seconds)
+	//
 	// example:
 	//
 	// 1700000000
 	Timestamp *int64 `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	// Metric value mapping, where the key is the metric name and the value is the numeric value
+	//
 	// example:
 	//
 	// "{\\"total_calls\\":0,\\"video_duration\\":0,\\"total_amount\\":0,\\"model_count\\":0,\\"image_count\\":0}"

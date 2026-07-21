@@ -28,31 +28,48 @@ type iAITeacherExpansionPracticeTaskGenerateRequest interface {
 }
 
 type AITeacherExpansionPracticeTaskGenerateRequest struct {
+	// The grade.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 13
-	Grade        *string   `json:"grade,omitempty" xml:"grade,omitempty"`
+	Grade *string `json:"grade,omitempty" xml:"grade,omitempty"`
+	// A list of key sentences from the `textContent` to focus on during task generation.
 	KeySentences []*string `json:"keySentences,omitempty" xml:"keySentences,omitempty" type:"Repeated"`
-	KeyWords     []*string `json:"keyWords,omitempty" xml:"keyWords,omitempty" type:"Repeated"`
+	// A list of keywords from the `textContent` to focus on during task generation.
+	KeyWords []*string `json:"keyWords,omitempty" xml:"keyWords,omitempty" type:"Repeated"`
+	// The learning object to guide task generation.
+	//
 	// example:
 	//
 	// Understanding unique professions such as dog walkers, hotel test sleepers, and food tasters, including their job responsibilities and the benefits or challenges associated with each role.
 	LearningObject *string `json:"learningObject,omitempty" xml:"learningObject,omitempty"`
+	// The reference article used to generate questions.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Dog walker Dog walking, as a profession, originated in the US. Some may think that it\\"s a perfect job, because dog walkers won\\"t be imprisoned in an office. But it\\"s actually manual labour. At their busiest, dog walkers may have more than ten dogs to take care of in a day. Hotel test sleeper A hotel test sleeper, as the name suggests, has to write expert reviews about the facilities, locations, prices, dining and other services of hotels, in order to provide evaluations and guides for travelers. Hotel test sleepers don\\"t need to punch in for work and they get about ten thousand yuan as income every month. What a comfortable job! Food taster In ancient times, a food taster was a person who tasted foods (or drinks) to be served to someone else, to confirm that it was safe to eat. But now, those working as food tasters just get to taste various new foods and drinks aimed at specific regions across the world. They then give their opinions on these products to the companies and suggest improvements.
 	TextContent *string `json:"textContent,omitempty" xml:"textContent,omitempty"`
-	Textbook    *string `json:"textbook,omitempty" xml:"textbook,omitempty"`
+	// The name of the textbook.
+	//
+	// example:
+	//
+	// 英语（基础模块）修订版
+	Textbook *string `json:"textbook,omitempty" xml:"textbook,omitempty"`
+	// The conversation topic.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// talk about your dream job.
 	Topic *string `json:"topic,omitempty" xml:"topic,omitempty"`
+	// The user ID.
+	//
 	// This parameter is required.
 	//
 	// example:

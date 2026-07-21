@@ -24,26 +24,38 @@ type iQueryApplicationAccessIdResponseBody interface {
 }
 
 type QueryApplicationAccessIdResponseBody struct {
+	// The data object.
+	//
 	// example:
 	//
 	// []
 	Data *QueryApplicationAccessIdResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// 未知错误
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -122,10 +134,14 @@ func (s *QueryApplicationAccessIdResponseBody) Validate() error {
 }
 
 type QueryApplicationAccessIdResponseBodyData struct {
+	// The application access ID (appkey).
+	//
 	// example:
 	//
 	// 1234567890
 	ApplicationAccessId *string `json:"applicationAccessId,omitempty" xml:"applicationAccessId,omitempty"`
+	// The application access secret. This parameter is returned only for requests from the Alibaba Cloud console.
+	//
 	// example:
 	//
 	// MyAppSecret

@@ -20,16 +20,30 @@ type iMetricDefRespDTO interface {
 }
 
 type MetricDefRespDTO struct {
+	// Metric key name
+	//
 	// example:
 	//
 	// total_calls
-	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// Metric display name
+	//
+	// example:
+	//
+	// 调用次数
 	Label *string `json:"label,omitempty" xml:"label,omitempty"`
+	// Is sortable
+	//
 	// example:
 	//
 	// true
-	Sortable *bool   `json:"sortable,omitempty" xml:"sortable,omitempty"`
-	Unit     *string `json:"unit,omitempty" xml:"unit,omitempty"`
+	Sortable *bool `json:"sortable,omitempty" xml:"sortable,omitempty"`
+	// Metric unit
+	//
+	// example:
+	//
+	// 次
+	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
 }
 
 func (s MetricDefRespDTO) String() string {

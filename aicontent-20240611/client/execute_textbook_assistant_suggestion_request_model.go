@@ -20,24 +20,32 @@ type iExecuteTextbookAssistantSuggestionRequest interface {
 }
 
 type ExecuteTextbookAssistantSuggestionRequest struct {
+  // The unique identifier for the AI teacher\\"s message.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // 6788e0b4b54c5268c1b78638
   Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
+  // The authorization token for the API call. To obtain this token, call the operation that generates authorization tokens for the AI teacher feature.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // tc_e6dc70c890866f4028ca685b6fa29874
   AuthToken *string `json:"authToken,omitempty" xml:"authToken,omitempty"`
+  // The unique identifier for the current chat.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // 6788e0b4b54c5268c1b78638
   ChatId *string `json:"chatId,omitempty" xml:"chatId,omitempty"`
+  // The practice scenario. Valid values are `SYNC` for synchronous practice and `EXPAND` for extended practice.
+  // 
   // This parameter is required.
   // 
   // example:

@@ -16,6 +16,8 @@ type iGetTextbookAssistantTokenRequest interface {
 }
 
 type GetTextbookAssistantTokenRequest struct {
+	// The device ID.
+	//
 	// This parameter is required.
 	//
 	// if can be null:
@@ -25,6 +27,8 @@ type GetTextbookAssistantTokenRequest struct {
 	//
 	// 700d4d9411efbe6e0
 	DeviceId *string `json:"deviceId,omitempty" xml:"deviceId,omitempty"`
+	// The device model.
+	//
 	// This parameter is required.
 	//
 	// example:

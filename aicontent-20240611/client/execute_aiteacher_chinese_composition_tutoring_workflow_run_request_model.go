@@ -28,33 +28,70 @@ type iExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest interface {
 }
 
 type ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest struct {
+  // The essay outline.
+  // 
+  // example:
+  // 
+  // 题目： 春天的色彩
+  // 
+  // 开头： 开门见山，点明主题。
+  // 
+  // 中间： 分段描写春天的不同色彩。
+  // 
+  // 结尾： 总结全文，抒发情感。
   EssayOutline *string `json:"essayOutline,omitempty" xml:"essayOutline,omitempty"`
+  // The essay requirements.
+  // 
   // This parameter is required.
+  // 
+  // example:
+  // 
+  // 生动形象，字数不得少于100字
   EssayRequirements *string `json:"essayRequirements,omitempty" xml:"essayRequirements,omitempty"`
+  // The essay topic.
+  // 
   // This parameter is required.
+  // 
+  // example:
+  // 
+  // 春天的景色
   EssayTopic *string `json:"essayTopic,omitempty" xml:"essayTopic,omitempty"`
+  // The essay type.
+  // 
+  // outline: An outline.
+  // 
+  // essay: A full essay.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // essay
   EssayType *string `json:"essayType,omitempty" xml:"essayType,omitempty"`
+  // The target word count.
+  // 
   // example:
   // 
   // 100
   EssayWordCount *int64 `json:"essayWordCount,omitempty" xml:"essayWordCount,omitempty"`
+  // The student\\"s grade level.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // 3
   Grade *int64 `json:"grade,omitempty" xml:"grade,omitempty"`
+  // The response mode.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // streaming
   ResponseMode *string `json:"responseMode,omitempty" xml:"responseMode,omitempty"`
+  // The user ID.
+  // 
   // This parameter is required.
   // 
   // example:

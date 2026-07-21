@@ -40,28 +40,50 @@ type UsageBreakdownRowDTO struct {
 	//
 	// 默认密钥
 	ApiKeyName *string `json:"apiKeyName,omitempty" xml:"apiKeyName,omitempty"`
+	// Department ID; 0 indicates no associated department
+	//
 	// example:
 	//
 	// 0
-	ClientId   *int64  `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	// Department name
+	//
+	// example:
+	//
+	// 研发部
 	ClientName *string `json:"clientName,omitempty" xml:"clientName,omitempty"`
+	// Array of usage metrics, containing only entries with non-zero values
+	//
 	// example:
 	//
 	// [{"key": "total_calls", "value": 100}]
 	Metrics []*MetricKVPairDTO `json:"metrics,omitempty" xml:"metrics,omitempty" type:"Repeated"`
+	// Model identifier
+	//
 	// example:
 	//
 	// qwen-plus
 	ModelCode *string `json:"modelCode,omitempty" xml:"modelCode,omitempty"`
+	// Model ID
+	//
 	// example:
 	//
 	// 1
-	ModelId   *int64  `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	ModelId *int64 `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// Model name
+	//
+	// example:
+	//
+	// 通义千问-Plus
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	// Statistics scope
+	//
 	// example:
 	//
 	// llm
 	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
+	// Statistics time point, Unix timestamp (seconds)
+	//
 	// example:
 	//
 	// 1700000000

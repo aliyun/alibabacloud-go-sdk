@@ -16,8 +16,12 @@ type iOralEvaluationStatisticsCallsCountResponse interface {
 }
 
 type OralEvaluationStatisticsCallsCountResponse struct {
+	// The project statistics.
+	//
 	// This parameter is required.
 	ProjectData *OralEvaluationStatisticsCallsCountResponseProjectData `json:"projectData,omitempty" xml:"projectData,omitempty" type:"Struct"`
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,7 +66,10 @@ func (s *OralEvaluationStatisticsCallsCountResponse) Validate() error {
 }
 
 type OralEvaluationStatisticsCallsCountResponseProjectData struct {
+	// A list of application data objects.
 	ApplicationData []*OralEvaluationStatisticsCallsCountResponseProjectDataApplicationData `json:"ApplicationData,omitempty" xml:"ApplicationData,omitempty" type:"Repeated"`
+	// The internal application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -111,8 +118,9 @@ func (s *OralEvaluationStatisticsCallsCountResponseProjectData) Validate() error
 }
 
 type OralEvaluationStatisticsCallsCountResponseProjectDataApplicationData struct {
+	// A list of data objects.
 	Data []*OralEvaluationStatisticsCallsCountResponseProjectDataApplicationDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// appkey
+	// The appkey.
 	//
 	// This parameter is required.
 	//
@@ -162,12 +170,16 @@ func (s *OralEvaluationStatisticsCallsCountResponseProjectDataApplicationData) V
 }
 
 type OralEvaluationStatisticsCallsCountResponseProjectDataApplicationDataData struct {
+	// The corresponding count.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// The name of the statistic.
+	//
 	// This parameter is required.
 	//
 	// example:

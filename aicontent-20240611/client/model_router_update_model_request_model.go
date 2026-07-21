@@ -34,50 +34,68 @@ type iModelRouterUpdateModelRequest interface {
 }
 
 type ModelRouterUpdateModelRequest struct {
-	// API Key
+	// The API key.
 	//
 	// example:
 	//
 	// sk-xxxx
 	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
-	// Base URL
+	// The base URL.
 	//
 	// example:
 	//
 	// https://dashscope.aliyuncs.com
 	BaseUrl *string `json:"baseUrl,omitempty" xml:"baseUrl,omitempty"`
+	// The model description.
+	//
 	// example:
 	//
 	// 通义千问大模型
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The maximum input length.
+	//
 	// example:
 	//
 	// 8192
 	MaxInputLength *string `json:"maxInputLength,omitempty" xml:"maxInputLength,omitempty"`
+	// The maximum output length.
+	//
 	// example:
 	//
 	// 2048
 	MaxOutputLength *string `json:"maxOutputLength,omitempty" xml:"maxOutputLength,omitempty"`
+	// The model ID.
+	//
 	// example:
 	//
 	// qwen-turbo
 	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// The model type.
+	//
 	// example:
 	//
 	// Chat
 	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
+	// The model name.
+	//
 	// example:
 	//
 	// 通义千问
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The model status.
+	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	// The provider symbol.
+	//
 	// example:
 	//
 	// alibaba
 	Symbol *string `json:"symbol,omitempty" xml:"symbol,omitempty"`
+	// Comma-separated tags.
+	//
 	// example:
 	//
 	// chat,NLP

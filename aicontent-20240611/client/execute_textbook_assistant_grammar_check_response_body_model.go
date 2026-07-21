@@ -24,25 +24,34 @@ type iExecuteTextbookAssistantGrammarCheckResponseBody interface {
 }
 
 type ExecuteTextbookAssistantGrammarCheckResponseBody struct {
+  // The data object.
   Data *ExecuteTextbookAssistantGrammarCheckResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+  // The error code.
+  // 
   // example:
   // 
   // 0
   ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+  // The error message.
+  // 
   // example:
   // 
   // null
   ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+  // The HTTP status code.
+  // 
   // example:
   // 
   // 200
   HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-  // Id of the request
+  // The request ID.
   // 
   // example:
   // 
   // 0bc1e96d17091734639835114e12c8
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+  // Indicates whether the request was successful.
+  // 
   // example:
   // 
   // true
@@ -121,6 +130,7 @@ func (s *ExecuteTextbookAssistantGrammarCheckResponseBody) Validate() error {
 }
 
 type ExecuteTextbookAssistantGrammarCheckResponseBodyData struct {
+  // The result data.
   Result *ExecuteTextbookAssistantGrammarCheckResponseBodyDataResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -151,11 +161,20 @@ func (s *ExecuteTextbookAssistantGrammarCheckResponseBodyData) Validate() error 
 }
 
 type ExecuteTextbookAssistantGrammarCheckResponseBodyDataResult struct {
+  // The error analysis.
+  // 
+  // example:
+  // 
+  // 主语 \\"I\\" 后应跟动词 \\"am\\" 而不是 \\"are\\"。
   Analysis *string `json:"analysis,omitempty" xml:"analysis,omitempty"`
+  // The corrected sentence.
+  // 
   // example:
   // 
   // I am you.
   Correction *string `json:"correction,omitempty" xml:"correction,omitempty"`
+  // The grammar check result. Valid values: `Has_Error` (an error was found), `No_Error` (no errors were found), and `Invalid_Sentence` (the sentence could not be parsed).
+  // 
   // example:
   // 
   // Has_Error

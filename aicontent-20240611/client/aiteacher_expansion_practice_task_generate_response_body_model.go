@@ -24,20 +24,34 @@ type iAITeacherExpansionPracticeTaskGenerateResponseBody interface {
 }
 
 type AITeacherExpansionPracticeTaskGenerateResponseBody struct {
+	// The data object.
 	Data *AITeacherExpansionPracticeTaskGenerateResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// UNKNOWN_ERROR
-	ErrCode    *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// 未知错误
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates if the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -116,16 +130,24 @@ func (s *AITeacherExpansionPracticeTaskGenerateResponseBody) Validate() error {
 }
 
 type AITeacherExpansionPracticeTaskGenerateResponseBodyData struct {
+	// The background of the conversation.
+	//
 	// example:
 	//
 	// In a career counseling session, we are going to discuss our dream jobs and the responsibilities associated with them. Alex, who dreams of becoming a professional travel blogger, will share the tasks and skills required for this role, while Jamie, aspiring to be a wildlife photographer, will outline the responsibilities and challenges of capturing nature\\"s moments. Both will explore how their interests align with the practical aspects of their chosen careers, discussing the potential for travel, creativity, and the impact of their work on society and the environment.
-	BackgroundDescription *string                                                        `json:"backgroundDescription,omitempty" xml:"backgroundDescription,omitempty"`
-	RoleSet               *AITeacherExpansionPracticeTaskGenerateResponseBodyDataRoleSet `json:"roleSet,omitempty" xml:"roleSet,omitempty" type:"Struct"`
+	BackgroundDescription *string `json:"backgroundDescription,omitempty" xml:"backgroundDescription,omitempty"`
+	// The role settings.
+	RoleSet *AITeacherExpansionPracticeTaskGenerateResponseBodyDataRoleSet `json:"roleSet,omitempty" xml:"roleSet,omitempty" type:"Struct"`
+	// The opening sentence of the conversation.
+	//
 	// example:
 	//
 	// Hey Jamie, do you know what a travel blogger does?
-	StartSentence *string                                                              `json:"startSentence,omitempty" xml:"startSentence,omitempty"`
-	TaskContent   []*AITeacherExpansionPracticeTaskGenerateResponseBodyDataTaskContent `json:"taskContent,omitempty" xml:"taskContent,omitempty" type:"Repeated"`
+	StartSentence *string `json:"startSentence,omitempty" xml:"startSentence,omitempty"`
+	// A list of Q\\&A pairs.
+	TaskContent []*AITeacherExpansionPracticeTaskGenerateResponseBodyDataTaskContent `json:"taskContent,omitempty" xml:"taskContent,omitempty" type:"Repeated"`
+	// The task type.
+	//
 	// example:
 	//
 	// textbook_dialogue
@@ -204,10 +226,14 @@ func (s *AITeacherExpansionPracticeTaskGenerateResponseBodyData) Validate() erro
 }
 
 type AITeacherExpansionPracticeTaskGenerateResponseBodyDataRoleSet struct {
+	// The name of the AI teacher.
+	//
 	// example:
 	//
 	// Alex
 	Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
+	// The name of the student.
+	//
 	// example:
 	//
 	// Jamie
@@ -245,10 +271,14 @@ func (s *AITeacherExpansionPracticeTaskGenerateResponseBodyDataRoleSet) Validate
 }
 
 type AITeacherExpansionPracticeTaskGenerateResponseBodyDataTaskContent struct {
+	// The AI teacher\\"s question.
+	//
 	// example:
 	//
 	// Why might some people think dog walking is a great job?
 	Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
+	// The student\\"s answer.
+	//
 	// example:
 	//
 	// They think it\\"s great because they won\\"t be stuck in an office.

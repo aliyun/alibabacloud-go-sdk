@@ -52,26 +52,39 @@ type iModelDTO interface {
 }
 
 type ModelDTO struct {
+	// A masked preview of the API key.
+	//
 	// example:
 	//
 	// sk-xxx****xxx
 	ApiKeyPreview *string `json:"apiKeyPreview,omitempty" xml:"apiKeyPreview,omitempty"`
-	// Base URL
+	// The base URL for API requests.
 	//
 	// example:
 	//
 	// https://dashscope.aliyuncs.com
 	BaseUrl *string `json:"baseUrl,omitempty" xml:"baseUrl,omitempty"`
+	// Indicates the model\\"s status. A value of 0 means enabled, and a non-zero value means disabled.
+	//
 	// example:
 	//
 	// 0
-	DeleteTag   *int32  `json:"deleteTag,omitempty" xml:"deleteTag,omitempty"`
+	DeleteTag *int32 `json:"deleteTag,omitempty" xml:"deleteTag,omitempty"`
+	// The model description.
+	//
+	// example:
+	//
+	// 通义千问大模型
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	Extensions  *string `json:"extensions,omitempty" xml:"extensions,omitempty"`
+	// The time when the model was created, in ISO 8601 format.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// The time when the model was last updated, in ISO 8601 format.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
@@ -80,43 +93,69 @@ type ModelDTO struct {
 	//
 	// false
 	HasBillingRule *bool `json:"hasBillingRule,omitempty" xml:"hasBillingRule,omitempty"`
-	// ID
+	// The unique ID of the model.
 	//
 	// example:
 	//
 	// 1
 	Id    *int64  `json:"id,omitempty" xml:"id,omitempty"`
 	InOut *string `json:"inOut,omitempty" xml:"inOut,omitempty"`
+	// Indicates whether the model is custom.
+	//
 	// example:
 	//
 	// false
 	IsCustom *bool `json:"isCustom,omitempty" xml:"isCustom,omitempty"`
+	// The maximum input length.
+	//
 	// example:
 	//
 	// 8192
 	MaxInputLength *string `json:"maxInputLength,omitempty" xml:"maxInputLength,omitempty"`
+	// The maximum output length.
+	//
 	// example:
 	//
 	// 2048
 	MaxOutputLength *string `json:"maxOutputLength,omitempty" xml:"maxOutputLength,omitempty"`
+	// The model code.
+	//
 	// example:
 	//
 	// qwen-turbo
 	ModelCode *string `json:"modelCode,omitempty" xml:"modelCode,omitempty"`
+	// The model type.
+	//
 	// example:
 	//
 	// Chat
 	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
-	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The model name.
+	//
+	// example:
+	//
+	// 通义千问
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The vendor symbol.
+	//
 	// example:
 	//
 	// alibaba
-	Symbol   *string `json:"symbol,omitempty" xml:"symbol,omitempty"`
+	Symbol *string `json:"symbol,omitempty" xml:"symbol,omitempty"`
+	// The display names for the tags, separated by commas.
+	//
+	// example:
+	//
+	// 对话,自然语言处理
 	TagNames *string `json:"tagNames,omitempty" xml:"tagNames,omitempty"`
+	// A comma-separated list of model tags.
+	//
 	// example:
 	//
 	// chat,NLP
 	Tags *string `json:"tags,omitempty" xml:"tags,omitempty"`
+	// The version number.
+	//
 	// example:
 	//
 	// 0

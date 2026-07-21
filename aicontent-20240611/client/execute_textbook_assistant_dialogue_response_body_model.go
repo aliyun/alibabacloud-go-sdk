@@ -24,12 +24,37 @@ type iExecuteTextbookAssistantDialogueResponseBody interface {
 }
 
 type ExecuteTextbookAssistantDialogueResponseBody struct {
+  // The returned data.
   Data *ExecuteTextbookAssistantDialogueResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+  // The error code.
+  // 
+  // example:
+  // 
+  // null
   ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+  // The error message.
+  // 
+  // example:
+  // 
+  // null
   ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+  // The HTTP status code.
+  // 
+  // example:
+  // 
+  // 200
   HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-  // Id of the request
+  // The request ID.
+  // 
+  // example:
+  // 
+  // DBFA232A-1176-50E6-95AE-50F7A62A28AD
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+  // Indicates whether the request was successful.
+  // 
+  // example:
+  // 
+  // true
   Success *string `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -105,9 +130,25 @@ func (s *ExecuteTextbookAssistantDialogueResponseBody) Validate() error {
 }
 
 type ExecuteTextbookAssistantDialogueResponseBodyData struct {
+  // The ID of the Textbook Assistant\\"s message.
+  // 
+  // example:
+  // 
+  // 6788f4935bdfc807f077a984
   Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
+  // The chat ID for this turn.
+  // 
+  // example:
+  // 
+  // 6788e0b475a4631ffc626722
   ChatId *string `json:"chatId,omitempty" xml:"chatId,omitempty"`
+  // The returned data.
   Result *ExecuteTextbookAssistantDialogueResponseBodyDataResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+  // The ID of the user\\"s reply.
+  // 
+  // example:
+  // 
+  // 6788f4905bdfc807f077a982
   User *string `json:"user,omitempty" xml:"user,omitempty"`
 }
 
@@ -165,9 +206,29 @@ func (s *ExecuteTextbookAssistantDialogueResponseBodyData) Validate() error {
 }
 
 type ExecuteTextbookAssistantDialogueResponseBodyDataResult struct {
+  // The Textbook Assistant\\"s reply in Chinese.
+  // 
+  // example:
+  // 
+  // 让我们再看一遍课文。迈克说: “我是迈克·布莱克。”你能试着像迈克那样说吗？
   ChineseResult *string `json:"chineseResult,omitempty" xml:"chineseResult,omitempty"`
+  // The Textbook Assistant\\"s reply in English.
+  // 
+  // example:
+  // 
+  // Let\\"s look at the text again. Mike says, \\"I\\"m Mike Black.\\" Can you try saying it like Mike?
   EnglishResult *string `json:"englishResult,omitempty" xml:"englishResult,omitempty"`
+  // Indicates whether the dialogue is finished.
+  // 
+  // example:
+  // 
+  // true
   IsFinish *bool `json:"isFinish,omitempty" xml:"isFinish,omitempty"`
+  // Indicates whether the task is completed.
+  // 
+  // example:
+  // 
+  // true
   IsTaskCompleted *bool `json:"isTaskCompleted,omitempty" xml:"isTaskCompleted,omitempty"`
 }
 

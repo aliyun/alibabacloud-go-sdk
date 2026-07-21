@@ -24,26 +24,38 @@ type iExecuteAITeacherExpansionDialogueResponseBody interface {
 }
 
 type ExecuteAITeacherExpansionDialogueResponseBody struct {
+  // The response data.
+  // 
   // example:
   // 
   // []
   Data *ExecuteAITeacherExpansionDialogueResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+  // The error code returned if the request fails.
+  // 
   // example:
   // 
   // UNKNOWN_ERROR
   ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+  // The error message returned if the request fails.
+  // 
   // example:
   // 
   // 未知错误
   ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+  // The HTTP status code.
+  // 
   // example:
   // 
   // 200
   HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+  // A unique identifier for the request.
+  // 
   // example:
   // 
   // xxxx-xxxx-xxxx-xxxxxxxx
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+  // Indicates whether the request was successful.
+  // 
   // example:
   // 
   // true
@@ -122,26 +134,38 @@ func (s *ExecuteAITeacherExpansionDialogueResponseBody) Validate() error {
 }
 
 type ExecuteAITeacherExpansionDialogueResponseBodyData struct {
+  // The AI teacher\\"s response in Chinese.
+  // 
   // example:
   // 
   // 1
   ChineseResult *string `json:"chineseResult,omitempty" xml:"chineseResult,omitempty"`
+  // The AI teacher\\"s response in English.
+  // 
   // example:
   // 
   // 1
   EnglishResult *string `json:"englishResult,omitempty" xml:"englishResult,omitempty"`
+  // Indicates whether the dialogue is finished.
+  // 
   // example:
   // 
   // true
   IsFinish *bool `json:"isFinish,omitempty" xml:"isFinish,omitempty"`
+  // Indicates whether the response is off-topic.
+  // 
   // example:
   // 
   // true
   IsOffTopicControl *bool `json:"isOffTopicControl,omitempty" xml:"isOffTopicControl,omitempty"`
+  // Indicates whether the response is on-topic.
+  // 
   // example:
   // 
   // true
   IsOnTopic *bool `json:"isOnTopic,omitempty" xml:"isOnTopic,omitempty"`
+  // The index of the current question.
+  // 
   // example:
   // 
   // 2

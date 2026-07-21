@@ -24,26 +24,38 @@ type iGetAITeacherExpansionDialogueSuggestionResponseBody interface {
 }
 
 type GetAITeacherExpansionDialogueSuggestionResponseBody struct {
+	// A container for the returned data.
+	//
 	// example:
 	//
 	// []
 	Data *GetAITeacherExpansionDialogueSuggestionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// 未知错误
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -122,10 +134,14 @@ func (s *GetAITeacherExpansionDialogueSuggestionResponseBody) Validate() error {
 }
 
 type GetAITeacherExpansionDialogueSuggestionResponseBodyData struct {
+	// The Chinese translation of the suggested response.
+	//
 	// example:
 	//
 	// 谢谢莉莉.你喜欢吃肉吗，莉莉？
 	ChineseResult *string `json:"chineseResult,omitempty" xml:"chineseResult,omitempty"`
+	// The suggested response in English.
+	//
 	// example:
 	//
 	// Thanks, Lily. Do you like meat, Lily?

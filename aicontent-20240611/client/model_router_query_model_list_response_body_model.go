@@ -26,32 +26,44 @@ type iModelRouterQueryModelListResponseBody interface {
 }
 
 type ModelRouterQueryModelListResponseBody struct {
+	// Contains the paginated list of models and pagination metadata.
+	//
 	// example:
 	//
 	// []
 	Data *ModelRouterQueryModelListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The error code. Returned only when the request fails.
+	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message. Returned only when the request fails.
+	//
 	// example:
 	//
 	// 未知错误
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// maxResults
+	// The maximum number of results per page.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The unique identifier for the request.
+	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -139,23 +151,34 @@ func (s *ModelRouterQueryModelListResponseBody) Validate() error {
 }
 
 type ModelRouterQueryModelListResponseBodyData struct {
+	// An array of model objects.
 	List []*ModelDTO `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	// The maximum number of results per page.
+	//
 	// example:
 	//
 	// None
 	MaxResults *string `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token used to retrieve the next page of results. An empty value indicates that no more results are available.
+	//
 	// example:
 	//
 	// None
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// The number of models per page.
+	//
 	// example:
 	//
 	// 1
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The total number of models that meet the filter criteria.
+	//
 	// example:
 	//
 	// 5

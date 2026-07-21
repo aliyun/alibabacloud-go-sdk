@@ -28,18 +28,26 @@ type OralEvaluationStatisticsCallsCountRequest struct {
 	//
 	// a0007g7
 	ApplicationAccessId *string `json:"applicationAccessId,omitempty" xml:"applicationAccessId,omitempty"`
+	// End Time
+	//
 	// example:
 	//
 	// 2024-10-15 07:40:01
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// Query granularity (hour, Day, month)
+	//
 	// example:
 	//
 	// DAY
 	Granularity *string `json:"granularity,omitempty" xml:"granularity,omitempty"`
+	// project ID
+	//
 	// example:
 	//
 	// 123
 	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	// Start Time
+	//
 	// example:
 	//
 	// 2024-10-14 07:40:01

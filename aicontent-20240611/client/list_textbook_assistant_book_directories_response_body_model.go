@@ -24,22 +24,34 @@ type iListTextbookAssistantBookDirectoriesResponseBody interface {
 }
 
 type ListTextbookAssistantBookDirectoriesResponseBody struct {
+	// The data object.
 	Data *ListTextbookAssistantBookDirectoriesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// B_USER_NOT_FOUND_EXCEPTION
-	ErrCode    *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// 用户不存在
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 0A5E9849-A2F0-551D-A7D8-1A8118557BAB
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true
@@ -118,8 +130,10 @@ func (s *ListTextbookAssistantBookDirectoriesResponseBody) Validate() error {
 }
 
 type ListTextbookAssistantBookDirectoriesResponseBodyData struct {
+	// The directory tree.
 	DirectoryTree []*ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTree `json:"directoryTree,omitempty" xml:"directoryTree,omitempty" type:"Repeated"`
-	EditionInfo   *ListTextbookAssistantBookDirectoriesResponseBodyDataEditionInfo     `json:"editionInfo,omitempty" xml:"editionInfo,omitempty" type:"Struct"`
+	// The edition details.
+	EditionInfo *ListTextbookAssistantBookDirectoriesResponseBodyDataEditionInfo `json:"editionInfo,omitempty" xml:"editionInfo,omitempty" type:"Struct"`
 }
 
 func (s ListTextbookAssistantBookDirectoriesResponseBodyData) String() string {
@@ -167,16 +181,22 @@ func (s *ListTextbookAssistantBookDirectoriesResponseBodyData) Validate() error 
 }
 
 type ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTree struct {
+	// The directory ID.
+	//
 	// example:
 	//
 	// 05758807ed8e11eebe6e0c42a106bb02
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
+	// The directory name.
+	//
 	// example:
 	//
 	// 2 Jobs
-	DirectoryName *string                                                                   `json:"directoryName,omitempty" xml:"directoryName,omitempty"`
-	Topic         []*ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeTopic `json:"topic,omitempty" xml:"topic,omitempty" type:"Repeated"`
-	Unit          []*ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnit  `json:"unit,omitempty" xml:"unit,omitempty" type:"Repeated"`
+	DirectoryName *string `json:"directoryName,omitempty" xml:"directoryName,omitempty"`
+	// The topic.
+	Topic []*ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeTopic `json:"topic,omitempty" xml:"topic,omitempty" type:"Repeated"`
+	// The unit.
+	Unit []*ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnit `json:"unit,omitempty" xml:"unit,omitempty" type:"Repeated"`
 }
 
 func (s ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTree) String() string {
@@ -246,10 +266,17 @@ func (s *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTree) Vali
 }
 
 type ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeTopic struct {
+	// The label ID.
+	//
 	// example:
 	//
 	// 1323
-	LabelId   *string `json:"labelId,omitempty" xml:"labelId,omitempty"`
+	LabelId *string `json:"labelId,omitempty" xml:"labelId,omitempty"`
+	// The label name.
+	//
+	// example:
+	//
+	// 身边事物环境
 	LabelName *string `json:"labelName,omitempty" xml:"labelName,omitempty"`
 }
 
@@ -284,10 +311,22 @@ func (s *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeTopic)
 }
 
 type ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnit struct {
-	DirectoryId   *string                                                                         `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	DirectoryName *string                                                                         `json:"directoryName,omitempty" xml:"directoryName,omitempty"`
-	Section       []*ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSection `json:"section,omitempty" xml:"section,omitempty" type:"Repeated"`
-	Topic         []*ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitTopic   `json:"topic,omitempty" xml:"topic,omitempty" type:"Repeated"`
+	// The directory ID.
+	//
+	// example:
+	//
+	// 05758807ed8e11eebe6e0c42a106bb02
+	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
+	// The directory name.
+	//
+	// example:
+	//
+	// unit 2
+	DirectoryName *string `json:"directoryName,omitempty" xml:"directoryName,omitempty"`
+	// The section.
+	Section []*ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSection `json:"section,omitempty" xml:"section,omitempty" type:"Repeated"`
+	// The topic.
+	Topic []*ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitTopic `json:"topic,omitempty" xml:"topic,omitempty" type:"Repeated"`
 }
 
 func (s ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnit) String() string {
@@ -357,10 +396,26 @@ func (s *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnit) 
 }
 
 type ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSection struct {
-	Children      interface{}                                                                          `json:"children,omitempty" xml:"children,omitempty"`
-	DirectoryId   *string                                                                              `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	DirectoryName *string                                                                              `json:"directoryName,omitempty" xml:"directoryName,omitempty"`
-	Topic         []*ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSectionTopic `json:"topic,omitempty" xml:"topic,omitempty" type:"Repeated"`
+	// Child nodes for backward compatibility. This property is optional.
+	//
+	// example:
+	//
+	// 可能存在的子元素，兼容数据使用，不一定存在
+	Children interface{} `json:"children,omitempty" xml:"children,omitempty"`
+	// The directory ID.
+	//
+	// example:
+	//
+	// 05758807ed8e11eebe6e0c42a106bb02
+	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
+	// The directory name.
+	//
+	// example:
+	//
+	// section 2
+	DirectoryName *string `json:"directoryName,omitempty" xml:"directoryName,omitempty"`
+	// The topic.
+	Topic []*ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSectionTopic `json:"topic,omitempty" xml:"topic,omitempty" type:"Repeated"`
 }
 
 func (s ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSection) String() string {
@@ -421,7 +476,17 @@ func (s *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSe
 }
 
 type ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSectionTopic struct {
-	LabelId   *string `json:"labelId,omitempty" xml:"labelId,omitempty"`
+	// The label ID.
+	//
+	// example:
+	//
+	// 1329
+	LabelId *string `json:"labelId,omitempty" xml:"labelId,omitempty"`
+	// The label name.
+	//
+	// example:
+	//
+	// 自我介绍
 	LabelName *string `json:"labelName,omitempty" xml:"labelName,omitempty"`
 }
 
@@ -456,7 +521,17 @@ func (s *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSe
 }
 
 type ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitTopic struct {
-	LabelId   *string `json:"labelId,omitempty" xml:"labelId,omitempty"`
+	// The label ID.
+	//
+	// example:
+	//
+	// 1326
+	LabelId *string `json:"labelId,omitempty" xml:"labelId,omitempty"`
+	// The label name.
+	//
+	// example:
+	//
+	// 自我介绍
 	LabelName *string `json:"labelName,omitempty" xml:"labelName,omitempty"`
 }
 
@@ -491,35 +566,59 @@ func (s *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitTo
 }
 
 type ListTextbookAssistantBookDirectoriesResponseBodyDataEditionInfo struct {
+	// The book ID.
+	//
 	// example:
 	//
 	// 55857
 	BookId *string `json:"bookId,omitempty" xml:"bookId,omitempty"`
+	// The book volume. `0` indicates a single-volume edition, `1` indicates Volume 1, and `2` indicates Volume 2.
+	//
 	// example:
 	//
 	// 1
 	BookVolume *string `json:"bookVolume,omitempty" xml:"bookVolume,omitempty"`
+	// The edition.
+	//
 	// example:
 	//
 	// 2010-1(2)
 	Edition *string `json:"edition,omitempty" xml:"edition,omitempty"`
+	// The grade. Valid values: 1–9.
+	//
 	// example:
 	//
 	// 3
 	Grade *string `json:"grade,omitempty" xml:"grade,omitempty"`
+	// The impression.
+	//
 	// example:
 	//
 	// 2019-1(10)
 	Impression *string `json:"impression,omitempty" xml:"impression,omitempty"`
+	// The International Standard Book Number (ISBN).
+	//
 	// example:
 	//
 	// 9787544413695
-	Isbn      *string `json:"isbn,omitempty" xml:"isbn,omitempty"`
+	Isbn *string `json:"isbn,omitempty" xml:"isbn,omitempty"`
+	// The publisher.
+	//
+	// example:
+	//
+	// 人民教育出版社
 	Publisher *string `json:"publisher,omitempty" xml:"publisher,omitempty"`
+	// The subject.
+	//
 	// example:
 	//
 	// ENGLISH
 	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
+	// The version.
+	//
+	// example:
+	//
+	// 人教版
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 

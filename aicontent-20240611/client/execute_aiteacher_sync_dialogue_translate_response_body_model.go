@@ -24,26 +24,38 @@ type iExecuteAITeacherSyncDialogueTranslateResponseBody interface {
 }
 
 type ExecuteAITeacherSyncDialogueTranslateResponseBody struct {
+  // The data object.
+  // 
   // example:
   // 
   // []
   Data *ExecuteAITeacherSyncDialogueTranslateResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+  // The error code.
+  // 
   // example:
   // 
   // UNKNOWN_ERROR
   ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+  // The error message.
+  // 
   // example:
   // 
   // 未知错误
   ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+  // The HTTP status code.
+  // 
   // example:
   // 
   // 200
   HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+  // The request ID.
+  // 
   // example:
   // 
   // xxxx-xxxx-xxxx-xxxxxxxx
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+  // Indicates whether the request was successful.
+  // 
   // example:
   // 
   // true
@@ -122,6 +134,8 @@ func (s *ExecuteAITeacherSyncDialogueTranslateResponseBody) Validate() error {
 }
 
 type ExecuteAITeacherSyncDialogueTranslateResponseBodyData struct {
+  // The translation result.
+  // 
   // example:
   // 
   // 太好了，谢谢你过来，莉莉。你喜欢吃肉吗？

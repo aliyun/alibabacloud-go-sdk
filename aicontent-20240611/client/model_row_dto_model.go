@@ -20,15 +20,26 @@ type iModelRowDTO interface {
 }
 
 type ModelRowDTO struct {
+	// Model identity
+	//
 	// example:
 	//
 	// qwen-plus
 	ModelCode *string `json:"modelCode,omitempty" xml:"modelCode,omitempty"`
+	// Model ID
+	//
 	// example:
 	//
 	// 1
-	ModelId   *int64  `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	ModelId *int64 `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// Model name
+	//
+	// example:
+	//
+	// 通义千问-Plus
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	// Metric value mapping, where the key is the metric name and the value is the numeric value
+	//
 	// example:
 	//
 	// "{\\"total_calls\\":21,\\"video_duration\\":210,\\"total_amount\\":126,\\"image_count\\":0}"

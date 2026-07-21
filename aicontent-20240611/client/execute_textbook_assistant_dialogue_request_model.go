@@ -20,13 +20,37 @@ type iExecuteTextbookAssistantDialogueRequest interface {
 }
 
 type ExecuteTextbookAssistantDialogueRequest struct {
+  // The authorization token required to call the API. To get this token, use the Textbook Assistant authorization API.
+  // 
   // This parameter is required.
+  // 
+  // example:
+  // 
+  // 6788e0b475a4631ffc626722
   AuthToken *string `json:"authToken,omitempty" xml:"authToken,omitempty"`
+  // The chat ID for this turn.
+  // 
   // This parameter is required.
+  // 
+  // example:
+  // 
+  // 6788e0b475a4631ffc626722
   ChatId *string `json:"chatId,omitempty" xml:"chatId,omitempty"`
+  // The scenario. Valid values: SYNC for synchronous practice and EXPAND for extended practice.
+  // 
   // This parameter is required.
+  // 
+  // example:
+  // 
+  // SYNC
   Scenario *string `json:"scenario,omitempty" xml:"scenario,omitempty"`
+  // The user\\"s message content.
+  // 
   // This parameter is required.
+  // 
+  // example:
+  // 
+  // Hello
   UserMessage *string `json:"userMessage,omitempty" xml:"userMessage,omitempty"`
 }
 

@@ -38,46 +38,66 @@ type ModelRouterQueryBillingCostBreakdownRequest struct {
 	//
 	// 100
 	ApiKeyId *int64 `json:"apiKeyId,omitempty" xml:"apiKeyId,omitempty"`
+	// The ID of the client to query. If not specified, data for all clients is returned.
+	//
 	// example:
 	//
 	// 5
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	// The end time for the query, specified as a Unix timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1700086400
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The granularity for data aggregation. Valid values: `hourly` and `daily`.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// hourly
 	Granularity *string `json:"granularity,omitempty" xml:"granularity,omitempty"`
+	// The maximum number of results to return. This parameter is used for pagination along with `nextToken` and is mutually exclusive with `page` and `pageSize`.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The ID of the model to query. If not specified, data for all models is returned.
+	//
 	// example:
 	//
 	// 12
 	ModelId *int64 `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// The types of the models to query, separated by commas. For example: `Chat,Embedding`. If not specified, data for all model types is returned.
+	//
 	// example:
 	//
 	// Chat
 	ModelTypes *string `json:"modelTypes,omitempty" xml:"modelTypes,omitempty"`
+	// The pagination token that is used to retrieve the next page of results.
+	//
 	// example:
 	//
 	// xxxx-xxx-xxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The page number. Default: 1.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// The number of entries per page. Default: 20. Maximum: 500.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The start time for the query, specified as a Unix timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:

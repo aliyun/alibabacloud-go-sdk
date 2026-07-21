@@ -24,25 +24,34 @@ type iExecuteTextbookAssistantRefineByContextResponseBody interface {
 }
 
 type ExecuteTextbookAssistantRefineByContextResponseBody struct {
+  // The returned data object.
   Data *ExecuteTextbookAssistantRefineByContextResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+  // The error code returned when the request fails.
+  // 
   // example:
   // 
   // 0
   ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+  // The error message returned when the request fails.
+  // 
   // example:
   // 
   // null
   ErrMessage *int32 `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+  // The HTTP status code.
+  // 
   // example:
   // 
   // 200
   HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-  // Id of the request
+  // The unique request ID.
   // 
   // example:
   // 
   // 6F73C114-A76E-51AD-99E3-BC7B941B69E0
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+  // A value of `true` indicates that the request succeeded.
+  // 
   // example:
   // 
   // true
@@ -121,6 +130,7 @@ func (s *ExecuteTextbookAssistantRefineByContextResponseBody) Validate() error {
 }
 
 type ExecuteTextbookAssistantRefineByContextResponseBodyData struct {
+  // The result data.
   Result *ExecuteTextbookAssistantRefineByContextResponseBodyDataResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -151,6 +161,8 @@ func (s *ExecuteTextbookAssistantRefineByContextResponseBodyData) Validate() err
 }
 
 type ExecuteTextbookAssistantRefineByContextResponseBodyDataResult struct {
+  // The refined sentence.
+  // 
   // example:
   // 
   // Good evening! From the book, how does Mike Black introduce himself?

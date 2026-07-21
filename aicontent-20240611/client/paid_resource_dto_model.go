@@ -32,36 +32,62 @@ type iPaidResourceDTO interface {
 }
 
 type PaidResourceDTO struct {
+	// The time the resource becomes effective.
+	//
 	// example:
 	//
 	// 2025-09-01 00:00:00
 	EffectiveTime *string `json:"effectiveTime,omitempty" xml:"effectiveTime,omitempty"`
+	// The time the resource expires.
+	//
 	// example:
 	//
 	// 2025-09-10 00:00:00
 	ExpireTime *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// airec-cn-fou41hse8001
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The total quantity.
+	//
 	// example:
 	//
 	// 10000
 	Quantity *int32 `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	// The remaining quantity.
+	//
 	// example:
 	//
 	// 1000
 	RemainQuantity *int32 `json:"remainQuantity,omitempty" xml:"remainQuantity,omitempty"`
+	// The code of the resource type.
+	//
 	// example:
 	//
 	// AI_ORAL
 	ResourceCatalogCode *string `json:"resourceCatalogCode,omitempty" xml:"resourceCatalogCode,omitempty"`
+	// The name of the resource type.
+	//
+	// example:
+	//
+	// 口语评测
 	ResourceCatalogName *string `json:"resourceCatalogName,omitempty" xml:"resourceCatalogName,omitempty"`
+	// The code of the resource package.
+	//
 	// example:
 	//
 	// PRE_PAID_RECOURSE_PACKAGE
 	ResourcePackageCode *string `json:"resourcePackageCode,omitempty" xml:"resourcePackageCode,omitempty"`
+	// The name of the resource package.
+	//
+	// example:
+	//
+	// 智能批改-资源包
 	ResourcePackageName *string `json:"resourcePackageName,omitempty" xml:"resourcePackageName,omitempty"`
+	// The status of the resource.
+	//
 	// example:
 	//
 	// ACTIVE

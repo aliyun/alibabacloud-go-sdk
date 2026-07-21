@@ -16,10 +16,14 @@ type iListTextbookAssistantGradeVolumesRequest interface {
 }
 
 type ListTextbookAssistantGradeVolumesRequest struct {
+	// The authorization token. Obtain this token by calling the API that authorizes the Textbook Assistant feature.
+	//
 	// example:
 	//
 	// tc_197bf5bb81889cc79eb51ae9b8c0cea3
 	AuthToken *string `json:"authToken,omitempty" xml:"authToken,omitempty"`
+	// The scenario. Valid values: `SYNC` (synchronized practice) and `EXPAND` (extended practice).
+	//
 	// This parameter is required.
 	//
 	// example:

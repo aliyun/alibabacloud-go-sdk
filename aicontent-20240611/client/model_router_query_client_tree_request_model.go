@@ -16,13 +16,13 @@ type iModelRouterQueryClientTreeRequest interface {
 }
 
 type ModelRouterQueryClientTreeRequest struct {
-	// maxResults
+	// The maximum number of items to return per page.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// nextToken
+	// The token to retrieve the next page of results.
 	//
 	// example:
 	//

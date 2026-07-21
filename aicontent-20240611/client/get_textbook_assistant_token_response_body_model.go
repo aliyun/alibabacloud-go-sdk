@@ -24,22 +24,38 @@ type iGetTextbookAssistantTokenResponseBody interface {
 }
 
 type GetTextbookAssistantTokenResponseBody struct {
+	// The data object.
 	Data *GetTextbookAssistantTokenResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// 0
-	ErrCode    *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// 未知错误
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 0A5E9849-A2F0-551D-A7D8-1A8118557BAB
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the API call succeeded.
+	//
+	// - **true**: The API call succeeded.
+	//
+	// - **false**: The API call failed.
+	//
 	// example:
 	//
 	// true
@@ -118,10 +134,14 @@ func (s *GetTextbookAssistantTokenResponseBody) Validate() error {
 }
 
 type GetTextbookAssistantTokenResponseBodyData struct {
+	// The authorization token. Use this token to make API calls to the English textbook-style AI teacher service.
+	//
 	// example:
 	//
 	// tc_197bf5bb81889cc79eb51ae9b8c0cea3
 	AuthToken *string `json:"authToken,omitempty" xml:"authToken,omitempty"`
+	// The expiration time of the authorization token, in seconds.
+	//
 	// example:
 	//
 	// 5400

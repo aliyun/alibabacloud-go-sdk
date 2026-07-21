@@ -28,25 +28,42 @@ type iCostModelDetailRespDTO interface {
 }
 
 type CostModelDetailRespDTO struct {
+	// List of column definitions
 	Columns []*MetricDefRespDTO `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
+	// Current granularity: daily/hourly
+	//
 	// example:
 	//
 	// hourly
 	Granularity *string `json:"granularity,omitempty" xml:"granularity,omitempty"`
+	// Model ID
+	//
 	// example:
 	//
 	// 1
-	ModelId   *int64  `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	ModelId *int64 `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// Model name
+	//
+	// example:
+	//
+	// 通义千问-Plus
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	// Current page
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// Number of entries per page
+	//
 	// example:
 	//
 	// 20
-	PageSize *int32                   `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Rows     []*CostModelDetailRowDTO `json:"rows,omitempty" xml:"rows,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// List of data rows
+	Rows []*CostModelDetailRowDTO `json:"rows,omitempty" xml:"rows,omitempty" type:"Repeated"`
+	// Total number of entries
+	//
 	// example:
 	//
 	// 100

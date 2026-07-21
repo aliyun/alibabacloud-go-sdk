@@ -20,16 +20,22 @@ type iCostQueryModelsDTO interface {
 }
 
 type CostQueryModelsDTO struct {
+	// List of column definitions
 	Columns []*MetricDefRespDTO `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
+	// Field Name of ID
+	//
 	// example:
 	//
 	// model_id
 	IdField *string `json:"idField,omitempty" xml:"idField,omitempty"`
+	// Field Name of Name
+	//
 	// example:
 	//
 	// model_name
-	NameField *string        `json:"nameField,omitempty" xml:"nameField,omitempty"`
-	Rows      []*ModelRowDTO `json:"rows,omitempty" xml:"rows,omitempty" type:"Repeated"`
+	NameField *string `json:"nameField,omitempty" xml:"nameField,omitempty"`
+	// List of model data rows
+	Rows []*ModelRowDTO `json:"rows,omitempty" xml:"rows,omitempty" type:"Repeated"`
 }
 
 func (s CostQueryModelsDTO) String() string {

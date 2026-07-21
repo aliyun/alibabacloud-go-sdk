@@ -28,34 +28,50 @@ type iModelRouterQueryNacosProvidersRequest interface {
 }
 
 type ModelRouterQueryNacosProvidersRequest struct {
+	// The field by which to group the results.
+	//
 	// example:
 	//
 	// resourceId
 	GroupBy *string `json:"groupBy,omitempty" xml:"groupBy,omitempty"`
+	// The maximum number of results to return.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// Specifies whether to return the total count.
+	//
 	// example:
 	//
 	// true
 	NeedTotalCount *bool `json:"needTotalCount,omitempty" xml:"needTotalCount,omitempty"`
+	// The pagination token for the next page.
+	//
 	// example:
 	//
 	// 1
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The field by which to sort the results.
+	//
 	// example:
 	//
 	// resourceId
 	OrderBy *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
+	// The sort direction.
+	//
 	// example:
 	//
 	// DESC
 	OrderDirection *string `json:"orderDirection,omitempty" xml:"orderDirection,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10

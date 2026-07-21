@@ -16,10 +16,14 @@ type iPersonalizedTextToImageQueryImageAssetRequest interface {
 }
 
 type PersonalizedTextToImageQueryImageAssetRequest struct {
+	// The image encoding format. For example, specify `base64` to receive the image data as a Base64-encoded string.
+	//
 	// example:
 	//
 	// base64
 	EncodeFormat *string `json:"encodeFormat,omitempty" xml:"encodeFormat,omitempty"`
+	// The image ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -14,6 +14,8 @@ type iQueryProjectRequest interface {
 }
 
 type QueryProjectRequest struct {
+	// The ID of the project.
+	//
 	// example:
 	//
 	// 123

@@ -28,34 +28,53 @@ type iClientBalanceLogDTO interface {
 }
 
 type ClientBalanceLogDTO struct {
+	// The new balance.
+	//
 	// example:
 	//
 	// 100.00
 	BalanceAfter *float64 `json:"balanceAfter,omitempty" xml:"balanceAfter,omitempty"`
+	// The previous balance.
+	//
 	// example:
 	//
 	// 90.00
 	BalanceBefore *float64 `json:"balanceBefore,omitempty" xml:"balanceBefore,omitempty"`
+	// The change amount. A positive value represents a recharge, and a negative value represents a deduction.
+	//
 	// example:
 	//
 	// 10.00
 	ChangeAmount *float64 `json:"changeAmount,omitempty" xml:"changeAmount,omitempty"`
+	// The type of change. Possible values are `auto_deduct`, `deduct`, or `recharge`.
+	//
 	// example:
 	//
 	// recharge
 	ChangeType *string `json:"changeType,omitempty" xml:"changeType,omitempty"`
+	// The client ID.
+	//
 	// example:
 	//
 	// 1
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	// The creation time in ISO 8601 UTC format.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// The unique record ID.
+	//
 	// example:
 	//
 	// 1
-	Id     *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// Notes about the balance change.
+	//
+	// example:
+	//
+	// 充值
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
 }
 

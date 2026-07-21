@@ -18,11 +18,20 @@ type iExecuteAITeacherChineseCompositionTutoringWorkflowRunResponseBody interfac
 }
 
 type ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponseBody struct {
+  // The content associated with the event.
+  // 
+  // example:
+  // 
+  // 春天里常见的景
   Content *string `json:"content,omitempty" xml:"content,omitempty"`
+  // The event type.
+  // 
   // example:
   // 
   // message
   Event *string `json:"event,omitempty" xml:"event,omitempty"`
+  // The unique ID for the request. This ID is useful for troubleshooting.
+  // 
   // example:
   // 
   // xxxx-xxxx-xxxx-xxxxxxxx

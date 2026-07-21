@@ -20,24 +20,32 @@ type iExecuteTextbookAssistantGrammarCheckRequest interface {
 }
 
 type ExecuteTextbookAssistantGrammarCheckRequest struct {
+  // The authorization token for the API call. Obtain this token by calling the "Authorization token for the Textbook-style AI English Teacher" API.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // tc_e6dc70c890866f4028ca685b6fa29874
   AuthToken *string `json:"authToken,omitempty" xml:"authToken,omitempty"`
+  // The ID of the current conversation.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // 6788e0b475a4631ffc626722
   ChatId *string `json:"chatId,omitempty" xml:"chatId,omitempty"`
+  // The use case. Valid values: `SYNC` for synchronous practice and `EXPAND` for expansion practice.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // SYNC
   Scenario *string `json:"scenario,omitempty" xml:"scenario,omitempty"`
+  // The message ID of the user\\"s reply.
+  // 
   // This parameter is required.
   // 
   // example:

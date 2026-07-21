@@ -16,10 +16,14 @@ type iCostModelDetailRowDTO interface {
 }
 
 type CostModelDetailRowDTO struct {
+	// UNIX timestamp (Unix seconds)
+	//
 	// example:
 	//
 	// 1700000000
 	Timestamp *int64 `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	// Metric value mapping, where the key is the metric name and the value is numeric
+	//
 	// example:
 	//
 	// "{\\"total_calls\\":3,\\"video_duration\\":0,\\"total_amount\\":0.6,\\"image_count\\":3,\\"timestamp\\":1776787200}"

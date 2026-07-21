@@ -24,25 +24,34 @@ type iExecuteTextbookAssistantTranslateResponseBody interface {
 }
 
 type ExecuteTextbookAssistantTranslateResponseBody struct {
+  // The data returned by the API.
   Data *ExecuteTextbookAssistantTranslateResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+  // The error code.
+  // 
   // example:
   // 
   // 0
   ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+  // The error message.
+  // 
   // example:
   // 
   // ""
   ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+  // The HTTP status code.
+  // 
   // example:
   // 
   // 200
   HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-  // Id of the request
+  // The request ID.
   // 
   // example:
   // 
   // 9EB79C1E-36C2-5777-BED6-C23A98DF0637
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+  // Indicates whether the request was successful.
+  // 
   // example:
   // 
   // true
@@ -121,6 +130,7 @@ func (s *ExecuteTextbookAssistantTranslateResponseBody) Validate() error {
 }
 
 type ExecuteTextbookAssistantTranslateResponseBodyData struct {
+  // The result object.
   Result *ExecuteTextbookAssistantTranslateResponseBodyDataResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -151,6 +161,11 @@ func (s *ExecuteTextbookAssistantTranslateResponseBodyData) Validate() error {
 }
 
 type ExecuteTextbookAssistantTranslateResponseBodyDataResult struct {
+  // The translated text.
+  // 
+  // example:
+  // 
+  // 根据文章，迈克·布莱克是如何介绍自己的？
   Result *string `json:"result,omitempty" xml:"result,omitempty"`
 }
 

@@ -24,22 +24,42 @@ type iListTextbookAssistantArticlesResponseBody interface {
 }
 
 type ListTextbookAssistantArticlesResponseBody struct {
+	// The returned data.
 	Data []*ListTextbookAssistantArticlesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The error code.
+	//
+	// - A value of 0 indicates success.
+	//
+	// - A value greater than 0 indicates a specific error.
+	//
 	// example:
 	//
 	// 0
-	ErrCode    *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// 未知错误
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 70412360-4272-571A-827D-84C2C07C450F
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the API call succeeded.
+	//
+	// - **true**: The call succeeded.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -122,6 +142,8 @@ func (s *ListTextbookAssistantArticlesResponseBody) Validate() error {
 }
 
 type ListTextbookAssistantArticlesResponseBodyData struct {
+	// The article ID.
+	//
 	// example:
 	//
 	// 0c05700d4d9411efbe6e0c42a106bb02

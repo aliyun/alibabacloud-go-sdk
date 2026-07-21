@@ -24,23 +24,34 @@ type iModelRouterSaveFlowConfigResponseBody interface {
 }
 
 type ModelRouterSaveFlowConfigResponseBody struct {
+	// The data returned.
 	Data *ModelRouterSaveFlowConfigResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The error code returned if the request fails.
+	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message returned if the request fails.
+	//
 	// example:
 	//
 	// 未知错误
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -119,30 +130,44 @@ func (s *ModelRouterSaveFlowConfigResponseBody) Validate() error {
 }
 
 type ModelRouterSaveFlowConfigResponseBodyData struct {
+	// The creation time of the configuration.
+	//
 	// example:
 	//
 	// 2026-04-27T18:28:57.987356+08:00
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// The last modification time of the configuration.
+	//
 	// example:
 	//
 	// 2026-04-27T18:28:57.987356+08:00
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// The ID of the flow control configuration.
+	//
 	// example:
 	//
 	// 6
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The model ID.
+	//
 	// example:
 	//
 	// 607
 	ModelId *int32 `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// The configured RPM.
+	//
 	// example:
 	//
 	// 100
 	Rpm *int32 `json:"rpm,omitempty" xml:"rpm,omitempty"`
+	// Indicates whether smooth flow control is enabled.
+	//
 	// example:
 	//
 	// true
 	SmoothFlowEnabled *bool `json:"smoothFlowEnabled,omitempty" xml:"smoothFlowEnabled,omitempty"`
+	// The configured TPM.
+	//
 	// example:
 	//
 	// 10000

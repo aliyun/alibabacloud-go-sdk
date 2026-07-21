@@ -24,25 +24,34 @@ type iExecuteTextbookAssistantSuggestionResponseBody interface {
 }
 
 type ExecuteTextbookAssistantSuggestionResponseBody struct {
+  // The returned data object.
   Data *ExecuteTextbookAssistantSuggestionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+  // The error code.
+  // 
   // example:
   // 
   // 0
   ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+  // The error message.
+  // 
   // example:
   // 
   // null
   ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+  // The HTTP status code.
+  // 
   // example:
   // 
   // 200
   HttpstatusCode *int32 `json:"httpstatusCode,omitempty" xml:"httpstatusCode,omitempty"`
-  // Id of the request
+  // The request ID.
   // 
   // example:
   // 
   // 0D7D382F-9475-572E-BE83-DDFBF5C5EB24
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+  // Indicates whether the request was successful.
+  // 
   // example:
   // 
   // true
@@ -121,6 +130,7 @@ func (s *ExecuteTextbookAssistantSuggestionResponseBody) Validate() error {
 }
 
 type ExecuteTextbookAssistantSuggestionResponseBodyData struct {
+  // The result data.
   Result *ExecuteTextbookAssistantSuggestionResponseBodyDataResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -151,7 +161,14 @@ func (s *ExecuteTextbookAssistantSuggestionResponseBodyData) Validate() error {
 }
 
 type ExecuteTextbookAssistantSuggestionResponseBodyDataResult struct {
+  // The response from the AI teacher in Chinese.
+  // 
+  // example:
+  // 
+  // 根据文章，迈克·布莱克是如何介绍自己的？
   ChineseResult *string `json:"chineseResult,omitempty" xml:"chineseResult,omitempty"`
+  // The response from the AI teacher in English.
+  // 
   // example:
   // 
   // Good evening! From the book, how does Mike Black introduce himself?

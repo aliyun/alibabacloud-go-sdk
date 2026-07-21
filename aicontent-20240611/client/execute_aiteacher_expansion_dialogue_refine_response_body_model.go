@@ -24,26 +24,38 @@ type iExecuteAITeacherExpansionDialogueRefineResponseBody interface {
 }
 
 type ExecuteAITeacherExpansionDialogueRefineResponseBody struct {
+  // The object that contains the refinement result.
+  // 
   // example:
   // 
   // []
   Data *ExecuteAITeacherExpansionDialogueRefineResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+  // The error code. Returned only when the request fails.
+  // 
   // example:
   // 
   // UNKNOWN_ERROR
   ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+  // The error message. Returned only when the request fails.
+  // 
   // example:
   // 
   // 未知错误
   ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+  // The HTTP status code.
+  // 
   // example:
   // 
   // 200
   HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+  // The request ID.
+  // 
   // example:
   // 
   // xxxx-xxxx-xxxx-xxxxxxxx
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+  // Indicates whether the request was successful.
+  // 
   // example:
   // 
   // true
@@ -122,6 +134,8 @@ func (s *ExecuteAITeacherExpansionDialogueRefineResponseBody) Validate() error {
 }
 
 type ExecuteAITeacherExpansionDialogueRefineResponseBodyData struct {
+  // The refinement result.
+  // 
   // example:
   // 
   // Yes, I\\"ll be right there.

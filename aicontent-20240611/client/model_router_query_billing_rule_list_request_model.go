@@ -30,6 +30,8 @@ type iModelRouterQueryBillingRuleListRequest interface {
 }
 
 type ModelRouterQueryBillingRuleListRequest struct {
+	// Return only currently effective rules.
+	//
 	// example:
 	//
 	// true
@@ -40,14 +42,20 @@ type ModelRouterQueryBillingRuleListRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// Filter by model identifier.
+	//
 	// example:
 	//
 	// qwen-plus
 	ModelCode *string `json:"modelCode,omitempty" xml:"modelCode,omitempty"`
+	// Filter by model ID (required).
+	//
 	// example:
 	//
 	// 1
 	ModelId *int32 `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// Filter by model type.
+	//
 	// example:
 	//
 	// chat
@@ -58,14 +66,20 @@ type ModelRouterQueryBillingRuleListRequest struct {
 	//
 	// xxxx-xxx-xxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// Page number. Default is 1.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// Page number (takes precedence).
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// Number of items per page. Default is 20.
+	//
 	// example:
 	//
 	// 20

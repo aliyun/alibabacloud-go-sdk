@@ -20,24 +20,32 @@ type iExecuteTextbookAssistantSseDialogueRequest interface {
 }
 
 type ExecuteTextbookAssistantSseDialogueRequest struct {
+  // The authorization token for the API call. Obtain this token from the authorization API for the AI teacher feature.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // tc_e6dc70c890866f4028ca685b6fa29874
   AuthToken *string `json:"authToken,omitempty" xml:"authToken,omitempty"`
+  // The ID of the current conversation.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // 67e374acb54c526c95c4fbd4
   ChatId *string `json:"chatId,omitempty" xml:"chatId,omitempty"`
+  // The scenario. Set the value to SYNC for Synchronous Practice or EXPAND for Expansion Practice.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // EXPAND
   Scenario *string `json:"scenario,omitempty" xml:"scenario,omitempty"`
+  // The content of the user\\"s message.
+  // 
   // This parameter is required.
   // 
   // example:

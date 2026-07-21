@@ -24,25 +24,34 @@ type iExecuteTextbookAssistantDifficultyResponseBody interface {
 }
 
 type ExecuteTextbookAssistantDifficultyResponseBody struct {
+  // The data returned on a successful request.
   Data *ExecuteTextbookAssistantDifficultyResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+  // The error code.
+  // 
   // example:
   // 
   // null
   ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+  // The error message.
+  // 
   // example:
   // 
   // null
   ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+  // The HTTP status code.
+  // 
   // example:
   // 
   // 200
   HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-  // Id of the request
+  // The unique ID of the request.
   // 
   // example:
   // 
   // 0D7D382F-9475-572E-BE83-DDFBF5C5EB24
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+  // Indicates whether the request was successful.
+  // 
   // example:
   // 
   // true
@@ -121,6 +130,7 @@ func (s *ExecuteTextbookAssistantDifficultyResponseBody) Validate() error {
 }
 
 type ExecuteTextbookAssistantDifficultyResponseBodyData struct {
+  // A container for the result data.
   Result *ExecuteTextbookAssistantDifficultyResponseBodyDataResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -151,6 +161,8 @@ func (s *ExecuteTextbookAssistantDifficultyResponseBodyData) Validate() error {
 }
 
 type ExecuteTextbookAssistantDifficultyResponseBodyDataResult struct {
+  // The dialogue content after the difficulty adjustment.
+  // 
   // example:
   // 
   // Let\\"s look at the text again. Mike says, \\"I\\"m Mike Black.\\" Can you try saying it like Mike?

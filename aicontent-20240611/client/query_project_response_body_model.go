@@ -24,26 +24,38 @@ type iQueryProjectResponseBody interface {
 }
 
 type QueryProjectResponseBody struct {
+	// The returned data, which contains the details of the project.
+	//
 	// example:
 	//
 	// []
 	Data *QueryProjectResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// 未知错误
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates if the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -122,20 +134,30 @@ func (s *QueryProjectResponseBody) Validate() error {
 }
 
 type QueryProjectResponseBodyData struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2024-11-01T13:40:53Z
-	CreateTime  *string                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The list of applications in the project.
 	ProjectApps []*QueryProjectResponseBodyDataProjectApps `json:"ProjectApps,omitempty" xml:"ProjectApps,omitempty" type:"Repeated"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 67055
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// MyProject
-	ProjectName *string                                   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	ProjectSDK  []*QueryProjectResponseBodyDataProjectSDK `json:"ProjectSDK,omitempty" xml:"ProjectSDK,omitempty" type:"Repeated"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The list of SDKs associated with the project.
+	ProjectSDK []*QueryProjectResponseBodyDataProjectSDK `json:"ProjectSDK,omitempty" xml:"ProjectSDK,omitempty" type:"Repeated"`
+	// The project type.
+	//
 	// example:
 	//
 	// WebApplication
@@ -227,11 +249,16 @@ func (s *QueryProjectResponseBodyData) Validate() error {
 }
 
 type QueryProjectResponseBodyDataProjectApps struct {
+	// The application access credentials.
 	ApplicationAccessIds []*QueryProjectResponseBodyDataProjectAppsApplicationAccessIds `json:"ApplicationAccessIds,omitempty" xml:"ApplicationAccessIds,omitempty" type:"Repeated"`
+	// The application ID.
+	//
 	// example:
 	//
 	// 2144
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 159
@@ -287,10 +314,14 @@ func (s *QueryProjectResponseBodyDataProjectApps) Validate() error {
 }
 
 type QueryProjectResponseBodyDataProjectAppsApplicationAccessIds struct {
+	// The application ID, also known as the AppKey.
+	//
 	// example:
 	//
 	// 1234567890
 	ApplicationAccessId *string `json:"applicationAccessId,omitempty" xml:"applicationAccessId,omitempty"`
+	// The application secret. This parameter is returned only for requests from the console.
+	//
 	// example:
 	//
 	// MyAppSecret
@@ -328,31 +359,50 @@ func (s *QueryProjectResponseBodyDataProjectAppsApplicationAccessIds) Validate()
 }
 
 type QueryProjectResponseBodyDataProjectSDK struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2024-11-01T13:40:53Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The demo URL.
+	//
 	// example:
 	//
 	// http://demo.com/demo
-	DemoUrl    *string `json:"DemoUrl,omitempty" xml:"DemoUrl,omitempty"`
+	DemoUrl *string `json:"DemoUrl,omitempty" xml:"DemoUrl,omitempty"`
+	// The deployment mode. Valid values: `client` or `server`.
+	//
+	// example:
+	//
+	// 服务端
 	DeployMode *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
+	// The development language. For example: JAVA.
+	//
 	// example:
 	//
 	// JAVA
 	DevelopLanguage *string `json:"DevelopLanguage,omitempty" xml:"DevelopLanguage,omitempty"`
+	// The document URL.
+	//
 	// example:
 	//
 	// http://demo.com/doc
 	DocUrl *string `json:"DocUrl,omitempty" xml:"DocUrl,omitempty"`
+	// The SDK name.
+	//
 	// example:
 	//
 	// JSSDK
 	SdkName *string `json:"SdkName,omitempty" xml:"SdkName,omitempty"`
+	// The SDK URL.
+	//
 	// example:
 	//
 	// http://demo.com/sdk.zip
 	SdkUrl *string `json:"SdkUrl,omitempty" xml:"SdkUrl,omitempty"`
+	// The SDK version.
+	//
 	// example:
 	//
 	// 5.1.0

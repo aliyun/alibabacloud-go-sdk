@@ -20,12 +20,26 @@ type iMetricValueDTO interface {
 }
 
 type MetricValueDTO struct {
+	// Metric key name
+	//
 	// example:
 	//
 	// total_calls
-	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// Metric display name
+	//
+	// example:
+	//
+	// 调用次数
 	Label *string `json:"label,omitempty" xml:"label,omitempty"`
-	Unit  *string `json:"unit,omitempty" xml:"unit,omitempty"`
+	// Metric unit
+	//
+	// example:
+	//
+	// 次
+	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
+	// Metric value
+	//
 	// example:
 	//
 	// 100

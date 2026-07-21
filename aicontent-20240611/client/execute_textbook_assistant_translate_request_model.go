@@ -20,24 +20,32 @@ type iExecuteTextbookAssistantTranslateRequest interface {
 }
 
 type ExecuteTextbookAssistantTranslateRequest struct {
+  // The ID of the assistant\\"s message.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // 6788e0b4b54c5268c1b78638
   Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
+  // The authorization token. Obtain this token by calling the authorization operation for the AI Textbook Assistant feature.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // tc_e6dc70c890866f4028ca685b6fa29874
   AuthToken *string `json:"authToken,omitempty" xml:"authToken,omitempty"`
+  // The conversation ID.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // 6788e0b475a4631ffc626722
   ChatId *string `json:"chatId,omitempty" xml:"chatId,omitempty"`
+  // The practice scenario. Valid values: SYNC for synchronous practice and EXPAND for extended practice.
+  // 
   // This parameter is required.
   // 
   // example:

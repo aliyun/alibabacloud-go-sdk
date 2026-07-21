@@ -24,26 +24,38 @@ type iModelRouterQueryObservationMetricsResponseBody interface {
 }
 
 type ModelRouterQueryObservationMetricsResponseBody struct {
+	// An object that contains the results and pagination information.
+	//
 	// example:
 	//
 	// []
 	Data *ModelMetricsDTO `json:"data,omitempty" xml:"data,omitempty"`
+	// The error code returned on failure.
+	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message returned on failure.
+	//
 	// example:
 	//
 	// 未知错误
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The unique request ID.
+	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

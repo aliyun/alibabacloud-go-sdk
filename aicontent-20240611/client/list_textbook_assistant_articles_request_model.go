@@ -16,12 +16,16 @@ type iListTextbookAssistantArticlesRequest interface {
 }
 
 type ListTextbookAssistantArticlesRequest struct {
+	// The authorization token. Obtain this token from the API to send Service Window messages.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// tc_a893b8492c4be046cbc906c566aeb8c9
 	AuthToken *string `json:"authToken,omitempty" xml:"authToken,omitempty"`
+	// The directory ID. Obtain this ID by calling the API to retrieve textbook directories.
+	//
 	// This parameter is required.
 	//
 	// example:

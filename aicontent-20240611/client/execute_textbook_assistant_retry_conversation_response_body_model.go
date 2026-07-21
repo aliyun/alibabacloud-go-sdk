@@ -24,25 +24,34 @@ type iExecuteTextbookAssistantRetryConversationResponseBody interface {
 }
 
 type ExecuteTextbookAssistantRetryConversationResponseBody struct {
+  // The returned data.
   Data *ExecuteTextbookAssistantRetryConversationResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+  // The error code.
+  // 
   // example:
   // 
   // 0
   ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+  // The error message.
+  // 
   // example:
   // 
   // null
   ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+  // The HTTP status code.
+  // 
   // example:
   // 
   // 200
   HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-  // Id of the request
+  // The request ID.
   // 
   // example:
   // 
   // 2F2ABF4B-A4F6-5EC7-B287-7EF5B156F1ED
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+  // Indicates whether the request was successful.
+  // 
   // example:
   // 
   // true
@@ -121,15 +130,22 @@ func (s *ExecuteTextbookAssistantRetryConversationResponseBody) Validate() error
 }
 
 type ExecuteTextbookAssistantRetryConversationResponseBodyData struct {
+  // The ID of the AI assistant\\"s reply.
+  // 
   // example:
   // 
   // 6788e0b4b54c5268c1b78638
   Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
+  // The conversation ID.
+  // 
   // example:
   // 
   // 6788e0b475a4631ffc626722
   ChatId *string `json:"chatId,omitempty" xml:"chatId,omitempty"`
+  // Contains the result data.
   Result *ExecuteTextbookAssistantRetryConversationResponseBodyDataResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+  // The ID of the user\\"s reply.
+  // 
   // example:
   // 
   // 6788e0b45bdfc807f077a5a1
@@ -190,7 +206,14 @@ func (s *ExecuteTextbookAssistantRetryConversationResponseBodyData) Validate() e
 }
 
 type ExecuteTextbookAssistantRetryConversationResponseBodyDataResult struct {
+  // The Chinese translation of the AI assistant\\"s reply.
+  // 
+  // example:
+  // 
+  // 根据文章，迈克·布莱克是如何介绍自己的？
   ChineseResult *string `json:"chineseResult,omitempty" xml:"chineseResult,omitempty"`
+  // The AI assistant\\"s reply in English.
+  // 
   // example:
   // 
   // Good evening! From the book, how does Mike Black introduce himself?

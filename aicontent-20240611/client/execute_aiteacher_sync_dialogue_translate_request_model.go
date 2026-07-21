@@ -18,9 +18,14 @@ type iExecuteAITeacherSyncDialogueTranslateRequest interface {
 }
 
 type ExecuteAITeacherSyncDialogueTranslateRequest struct {
+  // An array of dialogue task objects.
+  // 
   // This parameter is required.
   DialogueTasks []*ExecuteAITeacherSyncDialogueTranslateRequestDialogueTasks `json:"dialogueTasks,omitempty" xml:"dialogueTasks,omitempty" type:"Repeated"`
+  // An array of dialogue record objects.
   Records []*ExecuteAITeacherSyncDialogueTranslateRequestRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
+  // The user ID.
+  // 
   // This parameter is required.
   // 
   // example:
@@ -87,22 +92,30 @@ func (s *ExecuteAITeacherSyncDialogueTranslateRequest) Validate() error {
 }
 
 type ExecuteAITeacherSyncDialogueTranslateRequestDialogueTasks struct {
+  // The content of the assistant\\"s message.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // Why might some people think dog walking is a great job?
   Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
+  // The translated content of the assistant\\"s message.
+  // 
   // example:
   // 
   // 为什么有些人认为遛狗是份好差事?
   AssistantTranslate *string `json:"assistantTranslate,omitempty" xml:"assistantTranslate,omitempty"`
+  // The sequence number of the task.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // 1
   Order *int32 `json:"order,omitempty" xml:"order,omitempty"`
+  // The content of the user\\"s message.
+  // 
   // This parameter is required.
   // 
   // example:
@@ -160,31 +173,41 @@ func (s *ExecuteAITeacherSyncDialogueTranslateRequestDialogueTasks) Validate() e
 }
 
 type ExecuteAITeacherSyncDialogueTranslateRequestRecords struct {
+  // The content of the message.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // Ask Mark if he has thought about what his dream job might be.
   Content *string `json:"content,omitempty" xml:"content,omitempty"`
+  // Indicates whether the message is off-topic. This parameter is used for flow control.
+  // 
   // example:
   // 
   // 跑题：true, 不跑题：false
   IsOffTopicControl *bool `json:"isOffTopicControl,omitempty" xml:"isOffTopicControl,omitempty"`
+  // Indicates whether the message is on-topic.
+  // 
   // example:
   // 
   // 扣题：true, 不扣题：false
   IsOnTopic *bool `json:"isOnTopic,omitempty" xml:"isOnTopic,omitempty"`
+  // The sequence number of the message.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // 1
   Order *int32 `json:"order,omitempty" xml:"order,omitempty"`
+  // The message author\\"s role.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
-  // 老师：assistant；学生：user
+  // AI：assistant；用户：user
   Role *string `json:"role,omitempty" xml:"role,omitempty"`
 }
 

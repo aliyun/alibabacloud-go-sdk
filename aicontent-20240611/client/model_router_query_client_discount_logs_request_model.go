@@ -16,11 +16,13 @@ type iModelRouterQueryClientDiscountLogsRequest interface {
 }
 
 type ModelRouterQueryClientDiscountLogsRequest struct {
+	// The maximum number of results to return per page.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// nextToken
+	// The token to retrieve the next page of results. Omit this parameter to get the first page.
 	//
 	// example:
 	//

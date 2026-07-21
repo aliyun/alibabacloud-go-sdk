@@ -24,26 +24,38 @@ type iCreateAccessWarrantRequest interface {
 }
 
 type CreateAccessWarrantRequest struct {
+	// The merchant\\"s application ID.
+	//
 	// example:
 	//
 	// a123
 	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
+	// The signature for the request parameters.
+	//
 	// example:
 	//
 	// e32fac43df0b0b0be32fac43df0b0b0b
 	RequestSign *string `json:"requestSign,omitempty" xml:"requestSign,omitempty"`
+	// The 10-digit request timestamp in seconds.
+	//
 	// example:
 	//
 	// 1701000000
 	Timestamp *string `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	// The public IP address of the client device.
+	//
 	// example:
 	//
 	// 110.25.23.12
 	UserClientIp *string `json:"userClientIp,omitempty" xml:"userClientIp,omitempty"`
+	// The merchant\\"s user ID.
+	//
 	// example:
 	//
 	// sn123
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// The duration, in seconds, for which the access warrant is valid.
+	//
 	// example:
 	//
 	// 7200

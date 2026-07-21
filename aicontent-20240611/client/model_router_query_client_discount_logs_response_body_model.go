@@ -28,35 +28,46 @@ type iModelRouterQueryClientDiscountLogsResponseBody interface {
 }
 
 type ModelRouterQueryClientDiscountLogsResponseBody struct {
+	// The list of discount modification logs.
 	Data []*ModelRouterQueryClientDiscountLogsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The error code.
+	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// 未知错误
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// maxResults
+	// The maximum number of results returned on the current page.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// nextToken
+	// The token to use in a subsequent request to retrieve the next page of results. If this parameter is not returned, all results have been retrieved.
 	//
 	// example:
 	//
 	// xxxx-xxx-xxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates if the request succeeded.
+	//
 	// example:
 	//
 	// true
@@ -157,38 +168,59 @@ func (s *ModelRouterQueryClientDiscountLogsResponseBody) Validate() error {
 }
 
 type ModelRouterQueryClientDiscountLogsResponseBodyData struct {
+	// The client ID.
+	//
 	// example:
 	//
 	// 1
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	// A flag that indicates whether the record is deleted. A value of 0 means the record is active.
+	//
 	// example:
 	//
 	// 0
 	DeleteTag *int64 `json:"deleteTag,omitempty" xml:"deleteTag,omitempty"`
+	// The discount.
+	//
 	// example:
 	//
 	// 0.5
 	Discount *float32 `json:"discount,omitempty" xml:"discount,omitempty"`
+	// The time when the discount took effect.
+	//
 	// example:
 	//
 	// 2025-09-01 00:00:00
 	EffectiveTime *string `json:"effectiveTime,omitempty" xml:"effectiveTime,omitempty"`
+	// The time when the discount expires.
+	//
 	// example:
 	//
 	// 2025-09-10 00:00:00
 	ExpireTime *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	// The time when the record was created.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// The time when the record was last modified.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// The record ID.
+	//
 	// example:
 	//
 	// 1
-	Id     *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The remark.
+	//
+	// example:
+	//
+	// 备注
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
 }
 

@@ -24,20 +24,34 @@ type iAITeacherSyncPracticeTaskGenerateResponseBody interface {
 }
 
 type AITeacherSyncPracticeTaskGenerateResponseBody struct {
+	// The data object that contains the generated content.
 	Data *AITeacherSyncPracticeTaskGenerateResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The error code returned if the request fails.
+	//
 	// example:
 	//
 	// UNKNOWN_ERROR
-	ErrCode    *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message returned if the request fails.
+	//
+	// example:
+	//
+	// 未知错误
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The unique request ID, used for troubleshooting.
+	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -116,7 +130,10 @@ func (s *AITeacherSyncPracticeTaskGenerateResponseBody) Validate() error {
 }
 
 type AITeacherSyncPracticeTaskGenerateResponseBodyData struct {
+	// An array of Q\\&A pairs representing the dialogue task.
 	TaskContent []*AITeacherSyncPracticeTaskGenerateResponseBodyDataTaskContent `json:"taskContent,omitempty" xml:"taskContent,omitempty" type:"Repeated"`
+	// The task type.
+	//
 	// example:
 	//
 	// textbook_question_answering
@@ -163,10 +180,14 @@ func (s *AITeacherSyncPracticeTaskGenerateResponseBodyData) Validate() error {
 }
 
 type AITeacherSyncPracticeTaskGenerateResponseBodyDataTaskContent struct {
+	// The AI assistant\\"s question.
+	//
 	// example:
 	//
 	// Why might some people think dog walking is a great job?
 	Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
+	// The expected user answer to the assistant\\"s question.
+	//
 	// example:
 	//
 	// They think it\\"s great because they won\\"t be stuck in an office.

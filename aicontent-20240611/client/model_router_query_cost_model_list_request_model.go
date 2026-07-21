@@ -34,38 +34,52 @@ type ModelRouterQueryCostModelListRequest struct {
 	//
 	// 100
 	ApiKeyId *int64 `json:"apiKeyId,omitempty" xml:"apiKeyId,omitempty"`
+	// The department ID to filter the results.
+	//
 	// example:
 	//
 	// 1
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	// The query\\"s end time, specified as a UNIX timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1700086400
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The time granularity for data aggregation. Valid values: `hourly` and `daily`. Default value: `hourly`.
+	//
 	// example:
 	//
 	// hourly
 	Granularity *string `json:"granularity,omitempty" xml:"granularity,omitempty"`
+	// The maximum number of results per page.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The model types to query. Separate multiple types with a comma.
+	//
 	// example:
 	//
 	// LLM,VL
 	ModelTypes *string `json:"modelTypes,omitempty" xml:"modelTypes,omitempty"`
-	// nextToken
+	// A token from a previous response used to retrieve the next page of results.
 	//
 	// example:
 	//
 	// xxxx-xxx-xxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// A keyword for a fuzzy search on the model name or model code.
+	//
 	// example:
 	//
 	// qwen
 	Search *string `json:"search,omitempty" xml:"search,omitempty"`
+	// The query\\"s start time, specified as a UNIX timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:

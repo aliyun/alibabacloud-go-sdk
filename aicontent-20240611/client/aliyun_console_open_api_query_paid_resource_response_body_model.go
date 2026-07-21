@@ -36,18 +36,26 @@ type iAliyunConsoleOpenApiQueryPaidResourceResponseBody interface {
 }
 
 type AliyunConsoleOpenApiQueryPaidResourceResponseBody struct {
+	// Data object
+	//
 	// example:
 	//
 	// []
 	Data []*PaidResourceDTO `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// Error message encoding
+	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// error message
+	//
 	// example:
 	//
 	// 未知错误
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
@@ -64,14 +72,20 @@ type AliyunConsoleOpenApiQueryPaidResourceResponseBody struct {
 	//
 	// xxxx-xxx-xxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// Page index
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// Number of items per page
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
@@ -82,10 +96,14 @@ type AliyunConsoleOpenApiQueryPaidResourceResponseBody struct {
 	//
 	// 10
 	Skip *int32 `json:"skip,omitempty" xml:"skip,omitempty"`
+	// Indicates whether the request succeeded
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// Total quantity
+	//
 	// example:
 	//
 	// 100

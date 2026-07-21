@@ -24,26 +24,41 @@ type iAliyunConsoleServiceInfoDTO interface {
 }
 
 type AliyunConsoleServiceInfoDTO struct {
+	// The URL to activate the service.
+	//
 	// example:
 	//
 	// https://www.aliyun.com/product/ai-algorithm
 	BuyUrl *string `json:"buyUrl,omitempty" xml:"buyUrl,omitempty"`
+	// The URL of the service documentation.
+	//
 	// example:
 	//
 	// https://www.aliyun.com/product/ai-algorithm
 	DocumentUrl *string `json:"documentUrl,omitempty" xml:"documentUrl,omitempty"`
+	// The maximum number of concurrent requests allowed for the free trial.
+	//
 	// example:
 	//
 	// 10
 	FreeConcurrencyCount *int32 `json:"freeConcurrencyCount,omitempty" xml:"freeConcurrencyCount,omitempty"`
+	// The number of free API calls available.
+	//
 	// example:
 	//
 	// 100
 	FreeCount *int32 `json:"freeCount,omitempty" xml:"freeCount,omitempty"`
+	// The unique code for the service.
+	//
 	// example:
 	//
 	// online_ai_algorithm_personalized_text_to_image_call_count
 	ServiceCode *string `json:"serviceCode,omitempty" xml:"serviceCode,omitempty"`
+	// The display name of the service.
+	//
+	// example:
+	//
+	// AI算法模型-个性化文生图-在线按量调用
 	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 }
 

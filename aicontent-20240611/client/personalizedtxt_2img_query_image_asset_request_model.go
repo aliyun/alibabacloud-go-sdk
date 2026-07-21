@@ -20,22 +20,30 @@ type iPersonalizedtxt2imgQueryImageAssetRequest interface {
 }
 
 type Personalizedtxt2imgQueryImageAssetRequest struct {
+	// The encoding format of the image. If this parameter is set to `base64`, the image is returned as a Base64-encoded string. If this parameter is omitted, the raw binary data of the image is returned.
+	//
 	// example:
 	//
 	// base64
 	EncodeFormat *string `json:"encodeFormat,omitempty" xml:"encodeFormat,omitempty"`
+	// The ID of the image.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0000.png
 	ImageId *string `json:"imageId,omitempty" xml:"imageId,omitempty"`
+	// The ID of the model.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// girl-xxxx-xxxx-xxxx-xxxx
 	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// The ID of the prompt.
+	//
 	// This parameter is required.
 	//
 	// example:

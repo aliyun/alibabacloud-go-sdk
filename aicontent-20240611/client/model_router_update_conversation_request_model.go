@@ -20,18 +20,26 @@ type iModelRouterUpdateConversationRequest interface {
 }
 
 type ModelRouterUpdateConversationRequest struct {
+	// A JSON string that contains the message history for each model in the conversation.
+	//
 	// example:
 	//
 	// {"messages":[{"role":"user","content":"你好"}]}
 	ChatData *string `json:"chatData,omitempty" xml:"chatData,omitempty"`
+	// The number of messages in the conversation.
+	//
 	// example:
 	//
 	// 10
 	MessageCount *int32 `json:"messageCount,omitempty" xml:"messageCount,omitempty"`
+	// A JSON-formatted string that represents an array of model IDs.
+	//
 	// example:
 	//
 	// [1,2,3]
 	ModelIds *string `json:"modelIds,omitempty" xml:"modelIds,omitempty"`
+	// The new conversation title.
+	//
 	// example:
 	//
 	// 我的对话

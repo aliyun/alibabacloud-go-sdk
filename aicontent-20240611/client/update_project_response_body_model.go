@@ -24,26 +24,38 @@ type iUpdateProjectResponseBody interface {
 }
 
 type UpdateProjectResponseBody struct {
+	// The data object.
+	//
 	// example:
 	//
 	// []
 	Data *UpdateProjectResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// UNKNOWN_ERROR
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// 未知错误
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -122,20 +134,30 @@ func (s *UpdateProjectResponseBody) Validate() error {
 }
 
 type UpdateProjectResponseBodyData struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2024-12-10T02:07:16Z
-	CreateTime  *string                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The list of project applications.
 	ProjectApps []*UpdateProjectResponseBodyDataProjectApps `json:"ProjectApps,omitempty" xml:"ProjectApps,omitempty" type:"Repeated"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 56160
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// MyProject
-	ProjectName *string                                    `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	ProjectSDK  []*UpdateProjectResponseBodyDataProjectSDK `json:"ProjectSDK,omitempty" xml:"ProjectSDK,omitempty" type:"Repeated"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The project SDK.
+	ProjectSDK []*UpdateProjectResponseBodyDataProjectSDK `json:"ProjectSDK,omitempty" xml:"ProjectSDK,omitempty" type:"Repeated"`
+	// The project type.
+	//
 	// example:
 	//
 	// WebApplication
@@ -227,11 +249,16 @@ func (s *UpdateProjectResponseBodyData) Validate() error {
 }
 
 type UpdateProjectResponseBodyDataProjectApps struct {
+	// The application access credentials.
 	ApplicationAccessIds []*UpdateProjectResponseBodyDataProjectAppsApplicationAccessIds `json:"ApplicationAccessIds,omitempty" xml:"ApplicationAccessIds,omitempty" type:"Repeated"`
+	// The internal ID of the application.
+	//
 	// example:
 	//
 	// 4498
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 1889
@@ -287,10 +314,14 @@ func (s *UpdateProjectResponseBodyDataProjectApps) Validate() error {
 }
 
 type UpdateProjectResponseBodyDataProjectAppsApplicationAccessIds struct {
+	// The application identifier, also known as the AppKey.
+	//
 	// example:
 	//
 	// 1234567890
 	ApplicationAccessId *string `json:"applicationAccessId,omitempty" xml:"applicationAccessId,omitempty"`
+	// The application secret. This is returned only for requests from the console.
+	//
 	// example:
 	//
 	// MyAppSecret
@@ -328,28 +359,50 @@ func (s *UpdateProjectResponseBodyDataProjectAppsApplicationAccessIds) Validate(
 }
 
 type UpdateProjectResponseBodyDataProjectSDK struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2024-11-01T13:40:53Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The demo URL.
+	//
 	// example:
 	//
 	// http://demo.com/demo
-	DemoUrl    *string `json:"DemoUrl,omitempty" xml:"DemoUrl,omitempty"`
+	DemoUrl *string `json:"DemoUrl,omitempty" xml:"DemoUrl,omitempty"`
+	// The deployment mode. Valid values: client-side or server-side.
+	//
+	// example:
+	//
+	// 服务端
 	DeployMode *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
+	// The development language.
+	//
 	// example:
 	//
 	// PHP
 	DevelopLanguage *string `json:"DevelopLanguage,omitempty" xml:"DevelopLanguage,omitempty"`
+	// The documentation URL.
+	//
 	// example:
 	//
 	// http://demo.com/doc
-	DocUrl  *string `json:"DocUrl,omitempty" xml:"DocUrl,omitempty"`
+	DocUrl *string `json:"DocUrl,omitempty" xml:"DocUrl,omitempty"`
+	// The SDK name.
+	//
+	// example:
+	//
+	// PHP服务端SDK
 	SdkName *string `json:"SdkName,omitempty" xml:"SdkName,omitempty"`
+	// The SDK URL.
+	//
 	// example:
 	//
 	// http://demo.com/sdk.zip
 	SdkUrl *string `json:"SdkUrl,omitempty" xml:"SdkUrl,omitempty"`
+	// The SDK version.
+	//
 	// example:
 	//
 	// 4.13.0

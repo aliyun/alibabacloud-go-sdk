@@ -10,7 +10,7 @@ import (
 
 // Summary:
 //
-// 拓展练问答对生成
+// Generate Q&A pairs to expand data.
 //
 // @param request - AITeacherExpansionPracticeTaskGenerateRequest
 //
@@ -85,7 +85,7 @@ func (client *Client) AITeacherExpansionPracticeTaskGenerateWithContext(ctx cont
 
 // Summary:
 //
-// 同步基础练问答对生成
+// Synchronous basic practice is primarily for dialogue tasks with a ground truth. Although this mode allows some deviation from the ground truth, the AI strictly requires users to follow it.
 //
 // @param request - AITeacherSyncPracticeTaskGenerateRequest
 //
@@ -160,7 +160,7 @@ func (client *Client) AITeacherSyncPracticeTaskGenerateWithContext(ctx context.C
 
 // Summary:
 //
-// 阿里云控制台/列出阿里云控制台上可使用的服务列表
+// Lists the services available on the Alibaba Cloud Console.
 //
 // @param headers - map
 //
@@ -193,7 +193,7 @@ func (client *Client) AliyunConsoleOpenApiQueryAliyunConsoleServcieListWithConte
 
 // Summary:
 //
-// 阿里云控制台/列出阿里云控制台上可使用的服务列表
+// Lists the services available in the Alibaba Cloud console.
 //
 // @param headers - map
 //
@@ -226,7 +226,7 @@ func (client *Client) AliyunConsoleOpenApiQueryAliyunConsoleServiceListWithConte
 
 // Summary:
 //
-// 阿里云控制台/列出购买过的资源列表
+// Alibaba Cloud Management Console / List purchased resources
 //
 // @param request - AliyunConsoleOpenApiQueryPaidResourceRequest
 //
@@ -305,7 +305,7 @@ func (client *Client) AliyunConsoleOpenApiQueryPaidResourceWithContext(ctx conte
 
 // Summary:
 //
-// 智能批改/口语评测/统计/调用量
+// Intelligent Correction / Oral Evaluation / Statistics / call volume
 //
 // @param request - CountOralEvaluationStatisticsCallsRequest
 //
@@ -347,7 +347,7 @@ func (client *Client) CountOralEvaluationStatisticsCallsWithContext(ctx context.
 
 // Summary:
 //
-// 智能批改/口语评测/统计/并发数
+// Intelligent grading / oral evaluation / statistics / concurrency
 //
 // @param request - CountOralEvaluationStatisticsConcurrentRequest
 //
@@ -389,7 +389,7 @@ func (client *Client) CountOralEvaluationStatisticsConcurrentWithContext(ctx con
 
 // Summary:
 //
-// 智能批改/口语评测/统计/调用错误
+// Retrieves statistics about API call errors for the oral evaluation service.
 //
 // @param request - CountOralEvaluationStatisticsErrorRequest
 //
@@ -431,7 +431,7 @@ func (client *Client) CountOralEvaluationStatisticsErrorWithContext(ctx context.
 
 // Summary:
 //
-// 阿里云控制台/授权凭证创建
+// Creates an access warrant.
 //
 // @param request - CreateAccessWarrantRequest
 //
@@ -498,7 +498,7 @@ func (client *Client) CreateAccessWarrantWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 阿里云控制台/创建项目
+// Alibaba Cloud console > Create Project
 //
 // @param request - CreateProjectRequest
 //
@@ -549,7 +549,7 @@ func (client *Client) CreateProjectWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// 中文作文辅导
+// Executes a workflow for Chinese composition tutoring.
 //
 // @param request - ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest
 //
@@ -566,7 +566,7 @@ func (client *Client) ExecuteAITeacherChineseCompositionTutoringWorkflowRunWithS
 
 // Summary:
 //
-// 中文作文辅导
+// Executes a workflow for Chinese composition tutoring.
 //
 // @param request - ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest
 //
@@ -641,7 +641,7 @@ func (client *Client) ExecuteAITeacherChineseCompositionTutoringWorkflowRunWithC
 
 // Summary:
 //
-// 英语作文辅导
+// # English Composition Tutoring
 //
 // @param request - ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest
 //
@@ -658,7 +658,7 @@ func (client *Client) ExecuteAITeacherEnglishCompositionTutoringWorkflowRunWithS
 
 // Summary:
 //
-// 英语作文辅导
+// # English Composition Tutoring
 //
 // @param request - ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest
 //
@@ -733,7 +733,7 @@ func (client *Client) ExecuteAITeacherEnglishCompositionTutoringWorkflowRunWithC
 
 // Summary:
 //
-// 英文释义
+// Answers English-related questions.
 //
 // @param request - ExecuteAITeacherEnglishParaphraseChatMessageRequest
 //
@@ -750,7 +750,7 @@ func (client *Client) ExecuteAITeacherEnglishParaphraseChatMessageWithSSECtx(ctx
 
 // Summary:
 //
-// 英文释义
+// Answers English-related questions.
 //
 // @param request - ExecuteAITeacherEnglishParaphraseChatMessageRequest
 //
@@ -825,7 +825,7 @@ func (client *Client) ExecuteAITeacherEnglishParaphraseChatMessageWithContext(ct
 
 // Summary:
 //
-// 进行拓展练对话
+// Expansion dialogues are for open-ended conversations. In these conversations, the AI poses open-ended questions, but the user must stay on topic. If a user\\"s response is off-topic, the AI steers the conversation back on topic. If the user gives two consecutive off-topic responses, the AI moves on to the next topic.
 //
 // @param request - ExecuteAITeacherExpansionDialogueRequest
 //
@@ -900,7 +900,7 @@ func (client *Client) ExecuteAITeacherExpansionDialogueWithContext(ctx context.C
 
 // Summary:
 //
-// 拓展练根据上下文进行润色
+// Uses context to polish the expanded text.
 //
 // @param request - ExecuteAITeacherExpansionDialogueRefineRequest
 //
@@ -975,7 +975,7 @@ func (client *Client) ExecuteAITeacherExpansionDialogueRefineWithContext(ctx con
 
 // Summary:
 //
-// 拓展练语境翻译
+// Further Contextual Translation Practice.
 //
 // @param request - ExecuteAITeacherExpansionDialogueTranslateRequest
 //
@@ -1046,7 +1046,7 @@ func (client *Client) ExecuteAITeacherExpansionDialogueTranslateWithContext(ctx 
 
 // Summary:
 //
-// 语法检测
+// Performs a grammar check.
 //
 // @param request - ExecuteAITeacherGrammarCheckRequest
 //
@@ -1097,7 +1097,7 @@ func (client *Client) ExecuteAITeacherGrammarCheckWithContext(ctx context.Contex
 
 // Summary:
 //
-// 进行同步练对话
+// Practice synchronous dialogue.
 //
 // @param request - ExecuteAITeacherSyncDialogueRequest
 //
@@ -1156,7 +1156,7 @@ func (client *Client) ExecuteAITeacherSyncDialogueWithContext(ctx context.Contex
 
 // Summary:
 //
-// 同步练语境翻译
+// You can practice contextual translation in real-time.
 //
 // @param request - ExecuteAITeacherSyncDialogueTranslateRequest
 //
@@ -1211,7 +1211,7 @@ func (client *Client) ExecuteAITeacherSyncDialogueTranslateWithContext(ctx conte
 
 // Summary:
 //
-// 进行AI对话
+// Executes a dialogue turn with the Textbook Assistant.
 //
 // @param request - ExecuteTextbookAssistantDialogueRequest
 //
@@ -1270,7 +1270,7 @@ func (client *Client) ExecuteTextbookAssistantDialogueWithContext(ctx context.Co
 
 // Summary:
 //
-// 调整难度
+// Adjusts the difficulty of the textbook assistant\\"s dialogue.
 //
 // @param request - ExecuteTextbookAssistantDifficultyRequest
 //
@@ -1333,7 +1333,7 @@ func (client *Client) ExecuteTextbookAssistantDifficultyWithContext(ctx context.
 
 // Summary:
 //
-// 语法检测
+// Performs a grammar check.
 //
 // @param request - ExecuteTextbookAssistantGrammarCheckRequest
 //
@@ -1392,7 +1392,7 @@ func (client *Client) ExecuteTextbookAssistantGrammarCheckWithContext(ctx contex
 
 // Summary:
 //
-// 句子润色
+// Refines a sentence based on the conversational context.
 //
 // @param request - ExecuteTextbookAssistantRefineByContextRequest
 //
@@ -1451,7 +1451,7 @@ func (client *Client) ExecuteTextbookAssistantRefineByContextWithContext(ctx con
 
 // Summary:
 //
-// 对话重试
+// This operation retries a conversation.
 //
 // @param request - ExecuteTextbookAssistantRetryConversationRequest
 //
@@ -1510,7 +1510,7 @@ func (client *Client) ExecuteTextbookAssistantRetryConversationWithContext(ctx c
 
 // Summary:
 //
-// 进行对话-流式输出
+// Starts a conversation and returns a streaming output.
 //
 // @param request - ExecuteTextbookAssistantSseDialogueRequest
 //
@@ -1527,7 +1527,7 @@ func (client *Client) ExecuteTextbookAssistantSseDialogueWithSSECtx(ctx context.
 
 // Summary:
 //
-// 进行对话-流式输出
+// Starts a conversation and returns a streaming output.
 //
 // @param request - ExecuteTextbookAssistantSseDialogueRequest
 //
@@ -1586,7 +1586,7 @@ func (client *Client) ExecuteTextbookAssistantSseDialogueWithContext(ctx context
 
 // Summary:
 //
-// 开启自由对话
+// Starts a conversation with the AI teacher. The teacher then sends the initial message.
 //
 // @param request - ExecuteTextbookAssistantStartConversationRequest
 //
@@ -1641,7 +1641,7 @@ func (client *Client) ExecuteTextbookAssistantStartConversationWithContext(ctx c
 
 // Summary:
 //
-// 获取鉴权参数
+// Generates a suggested response from the textbook-based AI teacher.
 //
 // @param request - ExecuteTextbookAssistantSuggestionRequest
 //
@@ -1700,7 +1700,7 @@ func (client *Client) ExecuteTextbookAssistantSuggestionWithContext(ctx context.
 
 // Summary:
 //
-// 翻译消息内容
+// Translates the content of a message.
 //
 // @param request - ExecuteTextbookAssistantTranslateRequest
 //
@@ -1759,7 +1759,7 @@ func (client *Client) ExecuteTextbookAssistantTranslateWithContext(ctx context.C
 
 // Summary:
 //
-// 拓展练小助手
+// # Supplemental Practice Assistant
 //
 // @param request - GetAITeacherExpansionDialogueSuggestionRequest
 //
@@ -1834,7 +1834,7 @@ func (client *Client) GetAITeacherExpansionDialogueSuggestionWithContext(ctx con
 
 // Summary:
 //
-// 同步练小助手
+// # Sync Practice Assistant
 //
 // @param request - GetAITeacherSyncDialogueSuggestionRequest
 //
@@ -1893,7 +1893,7 @@ func (client *Client) GetAITeacherSyncDialogueSuggestionWithContext(ctx context.
 
 // Summary:
 //
-// 获取请求鉴权参数
+// Obtains an authorization token to make API calls.
 //
 // @param request - GetTextbookAssistantTokenRequest
 //
@@ -1944,7 +1944,7 @@ func (client *Client) GetTextbookAssistantTokenWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 批量获取文章详情
+// # Batch get article details
 //
 // @param request - ListTextbookAssistantArticleDetailsRequest
 //
@@ -1995,7 +1995,7 @@ func (client *Client) ListTextbookAssistantArticleDetailsWithContext(ctx context
 
 // Summary:
 //
-// 获取文章列表
+// Returns a list of articles.
 //
 // @param request - ListTextbookAssistantArticlesRequest
 //
@@ -2046,7 +2046,7 @@ func (client *Client) ListTextbookAssistantArticlesWithContext(ctx context.Conte
 
 // Summary:
 //
-// 获取书本下的目录信息
+// Gets the table of contents of a book.
 //
 // @param request - ListTextbookAssistantBookDirectoriesRequest
 //
@@ -2101,7 +2101,7 @@ func (client *Client) ListTextbookAssistantBookDirectoriesWithContext(ctx contex
 
 // Summary:
 //
-// 获取包含年级下的书本列表
+// Retrieves a list of books for a specified grade.
 //
 // @param request - ListTextbookAssistantBooksRequest
 //
@@ -2172,7 +2172,7 @@ func (client *Client) ListTextbookAssistantBooksWithContext(ctx context.Context,
 
 // Summary:
 //
-// 获取有资源的年级信息
+// Retrieves the available grades and volumes for the Textbook Assistant.
 //
 // @param request - ListTextbookAssistantGradeVolumesRequest
 //
@@ -2223,7 +2223,7 @@ func (client *Client) ListTextbookAssistantGradeVolumesWithContext(ctx context.C
 
 // Summary:
 //
-// 获取文章内容详情
+// # Get Article Details
 //
 // @param request - ListTextbookAssistantSceneDetailsRequest
 //
@@ -2274,7 +2274,7 @@ func (client *Client) ListTextbookAssistantSceneDetailsWithContext(ctx context.C
 
 // Summary:
 //
-// 计费管理/获取成本监控Tab配置
+// Retrieves the tab configuration for usage monitoring.
 //
 // @param request - ModelRouterBillingCostTabsRequest
 //
@@ -2325,7 +2325,7 @@ func (client *Client) ModelRouterBillingCostTabsWithContext(ctx context.Context,
 
 // Summary:
 //
-// 聊天/聊天接口
+// Generates a chat completion.
 //
 // @param request - ModelRouterChatCompletionsRequest
 //
@@ -2342,7 +2342,7 @@ func (client *Client) ModelRouterChatCompletionsWithSSECtx(ctx context.Context, 
 
 // Summary:
 //
-// 聊天/聊天接口
+// Generates a chat completion.
 //
 // @param request - ModelRouterChatCompletionsRequest
 //
@@ -2384,7 +2384,7 @@ func (client *Client) ModelRouterChatCompletionsWithContext(ctx context.Context,
 
 // Summary:
 //
-// 客户管理/启用部门余额限流
+// Configures balance throttling for a department.
 //
 // @param request - ModelRouterConfigureClientBalanceRequest
 //
@@ -2439,7 +2439,7 @@ func (client *Client) ModelRouterConfigureClientBalanceWithContext(ctx context.C
 
 // Summary:
 //
-// API密钥管理/复制API密钥
+// Copies an API key.
 //
 // @param headers - map
 //
@@ -2472,7 +2472,7 @@ func (client *Client) ModelRouterCopyApiKeyWithContext(ctx context.Context, id *
 
 // Summary:
 //
-// API密钥管理/创建API密钥
+// API key management / Create an API key
 //
 // @param request - ModelRouterCreateApiKeyRequest
 //
@@ -2519,7 +2519,11 @@ func (client *Client) ModelRouterCreateApiKeyWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 客户管理/创建余额交易
+// Creates a balance transaction for customer management.
+//
+// Description:
+//
+// This operation is deprecated. Do not use it.
 //
 // @param request - ModelRouterCreateBalanceTransactionRequest
 //
@@ -2538,6 +2542,14 @@ func (client *Client) ModelRouterCreateBalanceTransactionWithContext(ctx context
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Amount) {
 		body["amount"] = request.Amount
+	}
+
+	if !dara.IsNil(request.BalanceType) {
+		body["balanceType"] = request.BalanceType
+	}
+
+	if !dara.IsNil(request.IdempotencyKey) {
+		body["idempotencyKey"] = request.IdempotencyKey
 	}
 
 	if !dara.IsNil(request.Remark) {
@@ -2574,7 +2586,7 @@ func (client *Client) ModelRouterCreateBalanceTransactionWithContext(ctx context
 
 // Summary:
 //
-// 计费管理/创建计费规则
+// Billing Management/Create Billing Rule
 //
 // @param request - ModelRouterCreateBillingRuleRequest
 //
@@ -2641,7 +2653,7 @@ func (client *Client) ModelRouterCreateBillingRuleWithContext(ctx context.Contex
 
 // Summary:
 //
-// 客户管理/创建客户
+// Client management / Create client
 //
 // @param request - ModelRouterCreateClientRequest
 //
@@ -2712,7 +2724,7 @@ func (client *Client) ModelRouterCreateClientWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 对话管理/新建对话
+// Conversation management / Create conversation
 //
 // @param request - ModelRouterCreateConversationRequest
 //
@@ -2767,7 +2779,7 @@ func (client *Client) ModelRouterCreateConversationWithContext(ctx context.Conte
 
 // Summary:
 //
-// 模型管理/创建模型
+// Creates a model.
 //
 // @param request - ModelRouterCreateModelRequest
 //
@@ -2858,7 +2870,70 @@ func (client *Client) ModelRouterCreateModelWithContext(ctx context.Context, req
 
 // Summary:
 //
-// API密钥管理/删除API密钥
+// 客户管理/创建周期充值订阅
+//
+// Description:
+//
+// 该接口已弃用，请勿使用
+//
+// @param request - ModelRouterCreateSubscriptionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterCreateSubscriptionResponse
+func (client *Client) ModelRouterCreateSubscriptionWithContext(ctx context.Context, id *string, request *ModelRouterCreateSubscriptionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterCreateSubscriptionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BalanceType) {
+		body["balanceType"] = request.BalanceType
+	}
+
+	if !dara.IsNil(request.EffectiveTime) {
+		body["effectiveTime"] = request.EffectiveTime
+	}
+
+	if !dara.IsNil(request.IdempotencyKey) {
+		body["idempotencyKey"] = request.IdempotencyKey
+	}
+
+	if !dara.IsNil(request.SubscriptionAmount) {
+		body["subscriptionAmount"] = request.SubscriptionAmount
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterCreateSubscription"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/clients/" + dara.PercentEncode(dara.StringValue(id)) + "/balance/subscription"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterCreateSubscriptionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// API Key Management / Delete API Key
 //
 // @param headers - map
 //
@@ -2891,7 +2966,7 @@ func (client *Client) ModelRouterDeleteApiKeyWithContext(ctx context.Context, id
 
 // Summary:
 //
-// 客户管理/删除客户
+// Deletes a client.
 //
 // @param headers - map
 //
@@ -2924,7 +2999,7 @@ func (client *Client) ModelRouterDeleteClientWithContext(ctx context.Context, id
 
 // Summary:
 //
-// 对话管理/删除对话
+// Conversation management/Delete conversation
 //
 // @param headers - map
 //
@@ -2957,7 +3032,7 @@ func (client *Client) ModelRouterDeleteConversationWithContext(ctx context.Conte
 
 // Summary:
 //
-// 模型管理/删除模型
+// Model Management / Delete Model
 //
 // @param headers - map
 //
@@ -2990,7 +3065,7 @@ func (client *Client) ModelRouterDeleteModelWithContext(ctx context.Context, id 
 
 // Summary:
 //
-// 客户管理/获取部门余额
+// Client Management/Get department balance
 //
 // @param request - ModelRouterGetClientBalanceRequest
 //
@@ -3031,7 +3106,7 @@ func (client *Client) ModelRouterGetClientBalanceWithContext(ctx context.Context
 
 // Summary:
 //
-// 客户管理/获取部门余额变更日志
+// Gets the balance change log for a specified department.
 //
 // @param request - ModelRouterGetClientBalanceLogsRequest
 //
@@ -3094,7 +3169,70 @@ func (client *Client) ModelRouterGetClientBalanceLogsWithContext(ctx context.Con
 
 // Summary:
 //
-// API密钥管理/获取API密钥详情
+// 客户管理/查询周期充值订阅列表
+//
+// Description:
+//
+// 该接口已弃用，请勿使用
+//
+// @param request - ModelRouterListSubscriptionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterListSubscriptionsResponse
+func (client *Client) ModelRouterListSubscriptionsWithContext(ctx context.Context, id *string, request *ModelRouterListSubscriptionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterListSubscriptionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BalanceType) {
+		query["balanceType"] = request.BalanceType
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterListSubscriptions"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/clients/" + dara.PercentEncode(dara.StringValue(id)) + "/balance/subscription"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterListSubscriptionsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of a specific API key.
 //
 // @param headers - map
 //
@@ -3127,7 +3265,7 @@ func (client *Client) ModelRouterQueryApiKeyWithContext(ctx context.Context, id 
 
 // Summary:
 //
-// API密钥管理/获取API密钥列表
+// Retrieves a list of API keys.
 //
 // @param request - ModelRouterQueryApiKeyListRequest
 //
@@ -3214,7 +3352,7 @@ func (client *Client) ModelRouterQueryApiKeyListWithContext(ctx context.Context,
 
 // Summary:
 //
-// 计费管理/批量查询计费明细
+// Billing > Query billing cost breakdown
 //
 // @param request - ModelRouterQueryBillingCostBreakdownRequest
 //
@@ -3301,7 +3439,7 @@ func (client *Client) ModelRouterQueryBillingCostBreakdownWithContext(ctx contex
 
 // Summary:
 //
-// 计费管理/查询计费规则列表
+// Billing management / Query billing rule list
 //
 // @param request - ModelRouterQueryBillingRuleListRequest
 //
@@ -3380,7 +3518,7 @@ func (client *Client) ModelRouterQueryBillingRuleListWithContext(ctx context.Con
 
 // Summary:
 //
-// 客户管理/获取部门折扣修改历史
+// Retrieves the discount modification history for a client.
 //
 // @param request - ModelRouterQueryClientDiscountLogsRequest
 //
@@ -3431,7 +3569,7 @@ func (client *Client) ModelRouterQueryClientDiscountLogsWithContext(ctx context.
 
 // Summary:
 //
-// 客户管理/获取客户列表
+// Retrieves a list of clients.
 //
 // @param request - ModelRouterQueryClientListRequest
 //
@@ -3514,7 +3652,7 @@ func (client *Client) ModelRouterQueryClientListWithContext(ctx context.Context,
 
 // Summary:
 //
-// 客户管理/获取客户树
+// Returns a hierarchical tree of customers.
 //
 // @param request - ModelRouterQueryClientTreeRequest
 //
@@ -3565,7 +3703,7 @@ func (client *Client) ModelRouterQueryClientTreeWithContext(ctx context.Context,
 
 // Summary:
 //
-// 对话管理/获取对话详情
+// Retrieves the details of a conversation.
 //
 // @param headers - map
 //
@@ -3598,7 +3736,7 @@ func (client *Client) ModelRouterQueryConversationWithContext(ctx context.Contex
 
 // Summary:
 //
-// 对话管理/获取对话列表
+// Conversation management/Conversation list
 //
 // @param request - ModelRouterQueryConversationListRequest
 //
@@ -3681,7 +3819,7 @@ func (client *Client) ModelRouterQueryConversationListWithContext(ctx context.Co
 
 // Summary:
 //
-// 计费管理/获取模型明细
+// billing management / Model details
 //
 // @param request - ModelRouterQueryCostModelDetailRequest
 //
@@ -3764,7 +3902,7 @@ func (client *Client) ModelRouterQueryCostModelDetailWithContext(ctx context.Con
 
 // Summary:
 //
-// 计费管理/获取调用模型列表
+// billing management / Retrieves a list of invoked models
 //
 // @param request - ModelRouterQueryCostModelListRequest
 //
@@ -3843,7 +3981,7 @@ func (client *Client) ModelRouterQueryCostModelListWithContext(ctx context.Conte
 
 // Summary:
 //
-// 计费管理/获取成本概览指标
+// billing management / Get cost overview metrics
 //
 // @param request - ModelRouterQueryCostOverviewMetricsRequest
 //
@@ -3918,7 +4056,7 @@ func (client *Client) ModelRouterQueryCostOverviewMetricsWithContext(ctx context
 
 // Summary:
 //
-// 计费管理/获取费用趋势
+// billing management / Cost trends
 //
 // @param request - ModelRouterQueryCostTrendMetricsRequest
 //
@@ -3993,7 +4131,7 @@ func (client *Client) ModelRouterQueryCostTrendMetricsWithContext(ctx context.Co
 
 // Summary:
 //
-// 模型管理/获取模型详情
+// Retrieves details for a specific model.
 //
 // @param headers - map
 //
@@ -4026,7 +4164,7 @@ func (client *Client) ModelRouterQueryModelWithContext(ctx context.Context, id *
 
 // Summary:
 //
-// 模型管理/获取模型列表
+// Model management/Get model list
 //
 // @param request - ModelRouterQueryModelListRequest
 //
@@ -4113,7 +4251,11 @@ func (client *Client) ModelRouterQueryModelListWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Nacos配置/获取Nacos服务提供者列表
+// Configures Nacos or retrieves the list of Nacos service providers.
+//
+// Description:
+//
+// This operation is deprecated. Do not use it.
 //
 // @param request - ModelRouterQueryNacosProvidersRequest
 //
@@ -4188,7 +4330,7 @@ func (client *Client) ModelRouterQueryNacosProvidersWithContext(ctx context.Cont
 
 // Summary:
 //
-// Nacos配置/获取Nacos标签列表
+// Retrieves a list of tags from Nacos.
 //
 // @param request - ModelRouterQueryNacosTagsRequest
 //
@@ -4267,7 +4409,7 @@ func (client *Client) ModelRouterQueryNacosTagsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 模型观测/获取观测图表数据
+// Retrieves chart data for model observation.
 //
 // @param request - ModelRouterQueryObservationChartsRequest
 //
@@ -4334,7 +4476,7 @@ func (client *Client) ModelRouterQueryObservationChartsWithContext(ctx context.C
 
 // Summary:
 //
-// 模型观测/获取观测日志列表
+// Model Observation / Observation Logs
 //
 // @param request - ModelRouterQueryObservationLogsRequest
 //
@@ -4433,7 +4575,7 @@ func (client *Client) ModelRouterQueryObservationLogsWithContext(ctx context.Con
 
 // Summary:
 //
-// 模型观测/获取观测指标数据
+// Model Observation > Get Observation Metric Data
 //
 // @param request - ModelRouterQueryObservationMetricsRequest
 //
@@ -4532,7 +4674,7 @@ func (client *Client) ModelRouterQueryObservationMetricsWithContext(ctx context.
 
 // Summary:
 //
-// 用量管理/批量查询用量明细
+// Queries usage details in batches for usage management.
 //
 // @param request - ModelRouterQueryUsageBreakdownRequest
 //
@@ -4611,7 +4753,7 @@ func (client *Client) ModelRouterQueryUsageBreakdownWithContext(ctx context.Cont
 
 // Summary:
 //
-// 流控管理/写入流控配置
+// Flow control management / Save flow control configuration
 //
 // @param request - ModelRouterSaveFlowConfigRequest
 //
@@ -4670,7 +4812,54 @@ func (client *Client) ModelRouterSaveFlowConfigWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 计费管理/更新计费规则
+// 客户管理/停止周期充值订阅
+//
+// @param request - ModelRouterStopSubscriptionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterStopSubscriptionResponse
+func (client *Client) ModelRouterStopSubscriptionWithContext(ctx context.Context, id *string, request *ModelRouterStopSubscriptionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterStopSubscriptionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BalanceType) {
+		body["balanceType"] = request.BalanceType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterStopSubscription"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/clients/" + dara.PercentEncode(dara.StringValue(id)) + "/balance/subscription/stop"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterStopSubscriptionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Billing management/Update billing rules
 //
 // @param request - ModelRouterUpdateBillingRuleRequest
 //
@@ -4737,7 +4926,7 @@ func (client *Client) ModelRouterUpdateBillingRuleWithContext(ctx context.Contex
 
 // Summary:
 //
-// 客户管理/更新客户
+// Updates a specified client\\"s information.
 //
 // @param request - ModelRouterUpdateClientRequest
 //
@@ -4808,7 +4997,7 @@ func (client *Client) ModelRouterUpdateClientWithContext(ctx context.Context, id
 
 // Summary:
 //
-// 对话管理/更新对话
+// Conversation management / Update conversation
 //
 // @param request - ModelRouterUpdateConversationRequest
 //
@@ -4867,7 +5056,7 @@ func (client *Client) ModelRouterUpdateConversationWithContext(ctx context.Conte
 
 // Summary:
 //
-// 模型管理/更新模型
+// Model Management / Update Model
 //
 // @param request - ModelRouterUpdateModelRequest
 //
@@ -4954,7 +5143,7 @@ func (client *Client) ModelRouterUpdateModelWithContext(ctx context.Context, id 
 
 // Summary:
 //
-// 个性化文生图/基于一个预训练模型创建图片推理任务
+// Personalized text-to-image: Create image inference tasks using a pre-trained model.
 //
 // @param request - PersonalizedTextToImageAddInferenceJobRequest
 //
@@ -5021,7 +5210,7 @@ func (client *Client) PersonalizedTextToImageAddInferenceJobWithContext(ctx cont
 
 // Summary:
 //
-// 个性化文生图/通过唯一的图片编号获取图片内容
+// Retrieves the content of an image from the personalized text-to-image service using its unique image ID.
 //
 // @param request - PersonalizedTextToImageQueryImageAssetRequest
 //
@@ -5072,7 +5261,7 @@ func (client *Client) PersonalizedTextToImageQueryImageAssetWithContext(ctx cont
 
 // Summary:
 //
-// 个性化文生图/查询预制模型推理任务的状态
+// Queries the status of a personalized text-to-image inference job.
 //
 // @param request - PersonalizedTextToImageQueryPreModelInferenceJobInfoRequest
 //
@@ -5119,7 +5308,7 @@ func (client *Client) PersonalizedTextToImageQueryPreModelInferenceJobInfoWithCo
 
 // Summary:
 //
-// 个性化文生图/基于一个模型创建图片推理任务
+// Creates an inference job to generate images based on a personalized text-to-image model.
 //
 // @param request - Personalizedtxt2imgAddInferenceJobRequest
 //
@@ -5178,7 +5367,7 @@ func (client *Client) Personalizedtxt2imgAddInferenceJobWithContext(ctx context.
 
 // Summary:
 //
-// 个性化文生图/创建一个模型训练任务
+// Personalized text-to-image: Create a model training task.
 //
 // @param request - Personalizedtxt2imgAddModelTrainJobRequest
 //
@@ -5237,7 +5426,7 @@ func (client *Client) Personalizedtxt2imgAddModelTrainJobWithContext(ctx context
 
 // Summary:
 //
-// 个性化文生图/图片二进制内容获取
+// Retrieves the binary data of an image generated by the personalized text-to-image service.
 //
 // @param request - Personalizedtxt2imgQueryImageAssetRequest
 //
@@ -5296,7 +5485,7 @@ func (client *Client) Personalizedtxt2imgQueryImageAssetWithContext(ctx context.
 
 // Summary:
 //
-// 个性化文生图/查询模型推理任务的状态和结果信息
+// Retrieves the status and results of a Personalizedtxt2img inference job.
 //
 // @param request - Personalizedtxt2imgQueryInferenceJobInfoRequest
 //
@@ -5343,7 +5532,7 @@ func (client *Client) Personalizedtxt2imgQueryInferenceJobInfoWithContext(ctx co
 
 // Summary:
 //
-// 个性化文生图/查询模型训练任务列表
+// Your personalized model training tasks: image generation and query models.
 //
 // @param headers - map
 //
@@ -5376,7 +5565,7 @@ func (client *Client) Personalizedtxt2imgQueryModelTrainJobListWithContext(ctx c
 
 // Summary:
 //
-// 个性化文生图/模型训练状态查询
+// Queries the training status of a personalized text-to-image model.
 //
 // @param request - Personalizedtxt2imgQueryModelTrainStatusRequest
 //
@@ -5423,7 +5612,7 @@ func (client *Client) Personalizedtxt2imgQueryModelTrainStatusWithContext(ctx co
 
 // Summary:
 //
-// 阿里云控制台/获取应用访问识别码(appkey)信息
+// Queries information about an application access ID (appkey).
 //
 // @param request - QueryApplicationAccessIdRequest
 //
@@ -5470,7 +5659,7 @@ func (client *Client) QueryApplicationAccessIdWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 阿里云控制台/获取项目列表
+// Alibaba Cloud console / Project list
 //
 // @param request - QueryProjectRequest
 //
@@ -5517,7 +5706,7 @@ func (client *Client) QueryProjectWithContext(ctx context.Context, request *Quer
 
 // Summary:
 //
-// 阿里云控制台/获取项目列表
+// Alibaba Cloud console / Project List
 //
 // @param headers - map
 //
@@ -5550,7 +5739,7 @@ func (client *Client) QueryProjectListWithContext(ctx context.Context, headers m
 
 // Summary:
 //
-// 阿里云控制台/已经购买过的服务项目
+// Alibaba Cloud Console / Purchased Services
 //
 // @param headers - map
 //
@@ -5583,7 +5772,7 @@ func (client *Client) QueryPurchasedServiceWithContext(ctx context.Context, head
 
 // Summary:
 //
-// 阿里云控制台/更新项目信息
+// Alibaba Cloud Console / Update project information
 //
 // @param request - UpdateProjectRequest
 //

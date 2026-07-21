@@ -20,20 +20,28 @@ type iModelRouterSaveFlowConfigRequest interface {
 }
 
 type ModelRouterSaveFlowConfigRequest struct {
+	// The model ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 607
 	ModelId *int32 `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// The maximum number of requests per minute (RPM).
+	//
 	// example:
 	//
 	// 100
 	Rpm *int32 `json:"rpm,omitempty" xml:"rpm,omitempty"`
+	// Specifies whether to enable smooth flow control.
+	//
 	// example:
 	//
 	// true
 	SmoothFlowEnabled *bool `json:"smoothFlowEnabled,omitempty" xml:"smoothFlowEnabled,omitempty"`
+	// The maximum number of tokens per minute (TPM).
+	//
 	// example:
 	//
 	// 10000

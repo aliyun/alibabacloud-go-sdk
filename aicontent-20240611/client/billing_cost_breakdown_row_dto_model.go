@@ -48,36 +48,60 @@ type BillingCostBreakdownRowDTO struct {
 	//
 	// 默认密钥
 	ApiKeyName *string `json:"apiKeyName,omitempty" xml:"apiKeyName,omitempty"`
+	// Billing type; currently fixed as total_amount
+	//
 	// example:
 	//
 	// total_amount
 	BillingType *string `json:"billingType,omitempty" xml:"billingType,omitempty"`
+	// Department ID; 0 indicates no associated department
+	//
 	// example:
 	//
 	// 0
-	ClientId   *int64  `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	// Department name
+	//
+	// example:
+	//
+	// 研发部
 	ClientName *string `json:"clientName,omitempty" xml:"clientName,omitempty"`
 	// example:
 	//
 	// {"billing_version": "v1"}
 	DimValues *string `json:"dimValues,omitempty" xml:"dimValues,omitempty"`
+	// Model identifier
+	//
 	// example:
 	//
 	// qwen-plus
 	ModelCode *string `json:"modelCode,omitempty" xml:"modelCode,omitempty"`
+	// Model ID
+	//
 	// example:
 	//
 	// 1
-	ModelId   *int64  `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	ModelId *int64 `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// Model name
+	//
+	// example:
+	//
+	// 通义千问-Plus
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	// Statistics category
+	//
 	// example:
 	//
 	// llm
 	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
+	// Payable amount, rounded to 8 decimal places
+	//
 	// example:
 	//
 	// 0.00012800
 	PayableAmount *float32 `json:"payableAmount,omitempty" xml:"payableAmount,omitempty"`
+	// Statistics time point, Unix timestamp (seconds)
+	//
 	// example:
 	//
 	// 1700000000
