@@ -9,6 +9,8 @@ type iPushQueryDeviceStateResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccessDeniedDetail(v string) *PushQueryDeviceStateResponseBody
+	GetAccessDeniedDetail() *string
 	SetCode(v string) *PushQueryDeviceStateResponseBody
 	GetCode() *string
 	SetData(v *PushQueryDeviceStateResponseBodyData) *PushQueryDeviceStateResponseBody
@@ -22,11 +24,12 @@ type iPushQueryDeviceStateResponseBody interface {
 }
 
 type PushQueryDeviceStateResponseBody struct {
-	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *PushQueryDeviceStateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	AccessDeniedDetail *string                               `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data               *PushQueryDeviceStateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message            *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId          *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success            *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PushQueryDeviceStateResponseBody) String() string {
@@ -35,6 +38,10 @@ func (s PushQueryDeviceStateResponseBody) String() string {
 
 func (s PushQueryDeviceStateResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *PushQueryDeviceStateResponseBody) GetAccessDeniedDetail() *string {
+	return s.AccessDeniedDetail
 }
 
 func (s *PushQueryDeviceStateResponseBody) GetCode() *string {
@@ -55,6 +62,11 @@ func (s *PushQueryDeviceStateResponseBody) GetRequestId() *string {
 
 func (s *PushQueryDeviceStateResponseBody) GetSuccess() *bool {
 	return s.Success
+}
+
+func (s *PushQueryDeviceStateResponseBody) SetAccessDeniedDetail(v string) *PushQueryDeviceStateResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *PushQueryDeviceStateResponseBody) SetCode(v string) *PushQueryDeviceStateResponseBody {

@@ -9,6 +9,8 @@ type iListTemplatePageResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccessDeniedDetail(v string) *ListTemplatePageResponseBody
+	GetAccessDeniedDetail() *string
 	SetCode(v string) *ListTemplatePageResponseBody
 	GetCode() *string
 	SetCurrentPage(v int32) *ListTemplatePageResponseBody
@@ -28,14 +30,15 @@ type iListTemplatePageResponseBody interface {
 }
 
 type ListTemplatePageResponseBody struct {
-	Code        *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	CurrentPage *int32                              `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Data        []*ListTemplatePageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Msg         *string                             `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	PageSize    *int32                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success     *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalSize   *int32                              `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	AccessDeniedDetail *string                             `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	CurrentPage        *int32                              `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Data               []*ListTemplatePageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Msg                *string                             `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	PageSize           *int32                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId          *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success            *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalSize          *int32                              `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
 func (s ListTemplatePageResponseBody) String() string {
@@ -44,6 +47,10 @@ func (s ListTemplatePageResponseBody) String() string {
 
 func (s ListTemplatePageResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListTemplatePageResponseBody) GetAccessDeniedDetail() *string {
+	return s.AccessDeniedDetail
 }
 
 func (s *ListTemplatePageResponseBody) GetCode() *string {
@@ -76,6 +83,11 @@ func (s *ListTemplatePageResponseBody) GetSuccess() *bool {
 
 func (s *ListTemplatePageResponseBody) GetTotalSize() *int32 {
 	return s.TotalSize
+}
+
+func (s *ListTemplatePageResponseBody) SetAccessDeniedDetail(v string) *ListTemplatePageResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *ListTemplatePageResponseBody) SetCode(v string) *ListTemplatePageResponseBody {

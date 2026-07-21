@@ -9,6 +9,8 @@ type iGetTemplateResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccessDeniedDetail(v string) *GetTemplateResponseBody
+	GetAccessDeniedDetail() *string
 	SetCode(v string) *GetTemplateResponseBody
 	GetCode() *string
 	SetData(v *GetTemplateResponseBodyData) *GetTemplateResponseBody
@@ -22,11 +24,12 @@ type iGetTemplateResponseBody interface {
 }
 
 type GetTemplateResponseBody struct {
-	Code      *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Msg       *string                      `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	AccessDeniedDetail *string                      `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data               *GetTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Msg                *string                      `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	RequestId          *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success            *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetTemplateResponseBody) String() string {
@@ -35,6 +38,10 @@ func (s GetTemplateResponseBody) String() string {
 
 func (s GetTemplateResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetTemplateResponseBody) GetAccessDeniedDetail() *string {
+	return s.AccessDeniedDetail
 }
 
 func (s *GetTemplateResponseBody) GetCode() *string {
@@ -55,6 +62,11 @@ func (s *GetTemplateResponseBody) GetRequestId() *string {
 
 func (s *GetTemplateResponseBody) GetSuccess() *bool {
 	return s.Success
+}
+
+func (s *GetTemplateResponseBody) SetAccessDeniedDetail(v string) *GetTemplateResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *GetTemplateResponseBody) SetCode(v string) *GetTemplateResponseBody {

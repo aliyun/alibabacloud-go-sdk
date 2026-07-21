@@ -9,6 +9,8 @@ type iListAnalysisCoreIndexResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccessDeniedDetail(v string) *ListAnalysisCoreIndexResponseBody
+	GetAccessDeniedDetail() *string
 	SetRequestId(v string) *ListAnalysisCoreIndexResponseBody
 	GetRequestId() *string
 	SetResultCode(v string) *ListAnalysisCoreIndexResponseBody
@@ -22,11 +24,12 @@ type iListAnalysisCoreIndexResponseBody interface {
 }
 
 type ListAnalysisCoreIndexResponseBody struct {
-	RequestId     *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResultCode    *string                                         `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	ResultContent *ListAnalysisCoreIndexResponseBodyResultContent `json:"ResultContent,omitempty" xml:"ResultContent,omitempty" type:"Struct"`
-	ResultMessage *string                                         `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
-	Success       *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	AccessDeniedDetail *string                                         `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	RequestId          *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultCode         *string                                         `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	ResultContent      *ListAnalysisCoreIndexResponseBodyResultContent `json:"ResultContent,omitempty" xml:"ResultContent,omitempty" type:"Struct"`
+	ResultMessage      *string                                         `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	Success            *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListAnalysisCoreIndexResponseBody) String() string {
@@ -35,6 +38,10 @@ func (s ListAnalysisCoreIndexResponseBody) String() string {
 
 func (s ListAnalysisCoreIndexResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListAnalysisCoreIndexResponseBody) GetAccessDeniedDetail() *string {
+	return s.AccessDeniedDetail
 }
 
 func (s *ListAnalysisCoreIndexResponseBody) GetRequestId() *string {
@@ -55,6 +62,11 @@ func (s *ListAnalysisCoreIndexResponseBody) GetResultMessage() *string {
 
 func (s *ListAnalysisCoreIndexResponseBody) GetSuccess() *bool {
 	return s.Success
+}
+
+func (s *ListAnalysisCoreIndexResponseBody) SetAccessDeniedDetail(v string) *ListAnalysisCoreIndexResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *ListAnalysisCoreIndexResponseBody) SetRequestId(v string) *ListAnalysisCoreIndexResponseBody {

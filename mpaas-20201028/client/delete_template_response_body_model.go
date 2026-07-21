@@ -9,6 +9,8 @@ type iDeleteTemplateResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccessDeniedDetail(v string) *DeleteTemplateResponseBody
+	GetAccessDeniedDetail() *string
 	SetCode(v string) *DeleteTemplateResponseBody
 	GetCode() *string
 	SetMsg(v string) *DeleteTemplateResponseBody
@@ -20,10 +22,11 @@ type iDeleteTemplateResponseBody interface {
 }
 
 type DeleteTemplateResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Msg       *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Msg                *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success            *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteTemplateResponseBody) String() string {
@@ -32,6 +35,10 @@ func (s DeleteTemplateResponseBody) String() string {
 
 func (s DeleteTemplateResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteTemplateResponseBody) GetAccessDeniedDetail() *string {
+	return s.AccessDeniedDetail
 }
 
 func (s *DeleteTemplateResponseBody) GetCode() *string {
@@ -48,6 +55,11 @@ func (s *DeleteTemplateResponseBody) GetRequestId() *string {
 
 func (s *DeleteTemplateResponseBody) GetSuccess() *bool {
 	return s.Success
+}
+
+func (s *DeleteTemplateResponseBody) SetAccessDeniedDetail(v string) *DeleteTemplateResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *DeleteTemplateResponseBody) SetCode(v string) *DeleteTemplateResponseBody {

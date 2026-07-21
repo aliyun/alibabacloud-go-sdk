@@ -9,6 +9,8 @@ type iPushReportResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccessDeniedDetail(v string) *PushReportResponseBody
+	GetAccessDeniedDetail() *string
 	SetPushResult(v *PushReportResponseBodyPushResult) *PushReportResponseBody
 	GetPushResult() *PushReportResponseBodyPushResult
 	SetRequestId(v string) *PushReportResponseBody
@@ -20,10 +22,11 @@ type iPushReportResponseBody interface {
 }
 
 type PushReportResponseBody struct {
-	PushResult    *PushReportResponseBodyPushResult `json:"PushResult,omitempty" xml:"PushResult,omitempty" type:"Struct"`
-	RequestId     *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResultCode    *string                           `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	ResultMessage *string                           `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	AccessDeniedDetail *string                           `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	PushResult         *PushReportResponseBodyPushResult `json:"PushResult,omitempty" xml:"PushResult,omitempty" type:"Struct"`
+	RequestId          *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultCode         *string                           `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	ResultMessage      *string                           `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
 }
 
 func (s PushReportResponseBody) String() string {
@@ -32,6 +35,10 @@ func (s PushReportResponseBody) String() string {
 
 func (s PushReportResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *PushReportResponseBody) GetAccessDeniedDetail() *string {
+	return s.AccessDeniedDetail
 }
 
 func (s *PushReportResponseBody) GetPushResult() *PushReportResponseBodyPushResult {
@@ -48,6 +55,11 @@ func (s *PushReportResponseBody) GetResultCode() *string {
 
 func (s *PushReportResponseBody) GetResultMessage() *string {
 	return s.ResultMessage
+}
+
+func (s *PushReportResponseBody) SetAccessDeniedDetail(v string) *PushReportResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *PushReportResponseBody) SetPushResult(v *PushReportResponseBodyPushResult) *PushReportResponseBody {

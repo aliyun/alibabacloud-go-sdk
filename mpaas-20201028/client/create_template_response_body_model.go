@@ -9,6 +9,8 @@ type iCreateTemplateResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccessDeniedDetail(v string) *CreateTemplateResponseBody
+	GetAccessDeniedDetail() *string
 	SetCode(v string) *CreateTemplateResponseBody
 	GetCode() *string
 	SetData(v string) *CreateTemplateResponseBody
@@ -22,11 +24,12 @@ type iCreateTemplateResponseBody interface {
 }
 
 type CreateTemplateResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Msg       *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data               *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Msg                *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success            *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateTemplateResponseBody) String() string {
@@ -35,6 +38,10 @@ func (s CreateTemplateResponseBody) String() string {
 
 func (s CreateTemplateResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateTemplateResponseBody) GetAccessDeniedDetail() *string {
+	return s.AccessDeniedDetail
 }
 
 func (s *CreateTemplateResponseBody) GetCode() *string {
@@ -55,6 +62,11 @@ func (s *CreateTemplateResponseBody) GetRequestId() *string {
 
 func (s *CreateTemplateResponseBody) GetSuccess() *bool {
 	return s.Success
+}
+
+func (s *CreateTemplateResponseBody) SetAccessDeniedDetail(v string) *CreateTemplateResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *CreateTemplateResponseBody) SetCode(v string) *CreateTemplateResponseBody {

@@ -9,6 +9,8 @@ type iQueryPushAnalysisCoreIndexResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccessDeniedDetail(v string) *QueryPushAnalysisCoreIndexResponseBody
+	GetAccessDeniedDetail() *string
 	SetRequestId(v string) *QueryPushAnalysisCoreIndexResponseBody
 	GetRequestId() *string
 	SetResultCode(v string) *QueryPushAnalysisCoreIndexResponseBody
@@ -20,10 +22,11 @@ type iQueryPushAnalysisCoreIndexResponseBody interface {
 }
 
 type QueryPushAnalysisCoreIndexResponseBody struct {
-	RequestId     *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResultCode    *string                                              `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	ResultContent *QueryPushAnalysisCoreIndexResponseBodyResultContent `json:"ResultContent,omitempty" xml:"ResultContent,omitempty" type:"Struct"`
-	ResultMessage *string                                              `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	AccessDeniedDetail *string                                              `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	RequestId          *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultCode         *string                                              `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	ResultContent      *QueryPushAnalysisCoreIndexResponseBodyResultContent `json:"ResultContent,omitempty" xml:"ResultContent,omitempty" type:"Struct"`
+	ResultMessage      *string                                              `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
 }
 
 func (s QueryPushAnalysisCoreIndexResponseBody) String() string {
@@ -32,6 +35,10 @@ func (s QueryPushAnalysisCoreIndexResponseBody) String() string {
 
 func (s QueryPushAnalysisCoreIndexResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *QueryPushAnalysisCoreIndexResponseBody) GetAccessDeniedDetail() *string {
+	return s.AccessDeniedDetail
 }
 
 func (s *QueryPushAnalysisCoreIndexResponseBody) GetRequestId() *string {
@@ -48,6 +55,11 @@ func (s *QueryPushAnalysisCoreIndexResponseBody) GetResultContent() *QueryPushAn
 
 func (s *QueryPushAnalysisCoreIndexResponseBody) GetResultMessage() *string {
 	return s.ResultMessage
+}
+
+func (s *QueryPushAnalysisCoreIndexResponseBody) SetAccessDeniedDetail(v string) *QueryPushAnalysisCoreIndexResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *QueryPushAnalysisCoreIndexResponseBody) SetRequestId(v string) *QueryPushAnalysisCoreIndexResponseBody {
