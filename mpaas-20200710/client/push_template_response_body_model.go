@@ -9,6 +9,8 @@ type iPushTemplateResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccessDeniedDetail(v string) *PushTemplateResponseBody
+	GetAccessDeniedDetail() *string
 	SetPushResult(v *PushTemplateResponseBodyPushResult) *PushTemplateResponseBody
 	GetPushResult() *PushTemplateResponseBodyPushResult
 	SetRequestId(v string) *PushTemplateResponseBody
@@ -20,10 +22,11 @@ type iPushTemplateResponseBody interface {
 }
 
 type PushTemplateResponseBody struct {
-	PushResult    *PushTemplateResponseBodyPushResult `json:"PushResult,omitempty" xml:"PushResult,omitempty" type:"Struct"`
-	RequestId     *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResultCode    *string                             `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	ResultMessage *string                             `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	AccessDeniedDetail *string                             `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	PushResult         *PushTemplateResponseBodyPushResult `json:"PushResult,omitempty" xml:"PushResult,omitempty" type:"Struct"`
+	RequestId          *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultCode         *string                             `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	ResultMessage      *string                             `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
 }
 
 func (s PushTemplateResponseBody) String() string {
@@ -32,6 +35,10 @@ func (s PushTemplateResponseBody) String() string {
 
 func (s PushTemplateResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *PushTemplateResponseBody) GetAccessDeniedDetail() *string {
+	return s.AccessDeniedDetail
 }
 
 func (s *PushTemplateResponseBody) GetPushResult() *PushTemplateResponseBodyPushResult {
@@ -48,6 +55,11 @@ func (s *PushTemplateResponseBody) GetResultCode() *string {
 
 func (s *PushTemplateResponseBody) GetResultMessage() *string {
 	return s.ResultMessage
+}
+
+func (s *PushTemplateResponseBody) SetAccessDeniedDetail(v string) *PushTemplateResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *PushTemplateResponseBody) SetPushResult(v *PushTemplateResponseBodyPushResult) *PushTemplateResponseBody {

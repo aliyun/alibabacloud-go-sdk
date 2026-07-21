@@ -9,6 +9,8 @@ type iRevokePushTaskResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccessDeniedDetail(v string) *RevokePushTaskResponseBody
+	GetAccessDeniedDetail() *string
 	SetPushResult(v *RevokePushTaskResponseBodyPushResult) *RevokePushTaskResponseBody
 	GetPushResult() *RevokePushTaskResponseBodyPushResult
 	SetRequestId(v string) *RevokePushTaskResponseBody
@@ -20,10 +22,11 @@ type iRevokePushTaskResponseBody interface {
 }
 
 type RevokePushTaskResponseBody struct {
-	PushResult    *RevokePushTaskResponseBodyPushResult `json:"PushResult,omitempty" xml:"PushResult,omitempty" type:"Struct"`
-	RequestId     *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResultCode    *string                               `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	ResultMessage *string                               `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	AccessDeniedDetail *string                               `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	PushResult         *RevokePushTaskResponseBodyPushResult `json:"PushResult,omitempty" xml:"PushResult,omitempty" type:"Struct"`
+	RequestId          *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultCode         *string                               `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	ResultMessage      *string                               `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
 }
 
 func (s RevokePushTaskResponseBody) String() string {
@@ -32,6 +35,10 @@ func (s RevokePushTaskResponseBody) String() string {
 
 func (s RevokePushTaskResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *RevokePushTaskResponseBody) GetAccessDeniedDetail() *string {
+	return s.AccessDeniedDetail
 }
 
 func (s *RevokePushTaskResponseBody) GetPushResult() *RevokePushTaskResponseBodyPushResult {
@@ -48,6 +55,11 @@ func (s *RevokePushTaskResponseBody) GetResultCode() *string {
 
 func (s *RevokePushTaskResponseBody) GetResultMessage() *string {
 	return s.ResultMessage
+}
+
+func (s *RevokePushTaskResponseBody) SetAccessDeniedDetail(v string) *RevokePushTaskResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *RevokePushTaskResponseBody) SetPushResult(v *RevokePushTaskResponseBodyPushResult) *RevokePushTaskResponseBody {

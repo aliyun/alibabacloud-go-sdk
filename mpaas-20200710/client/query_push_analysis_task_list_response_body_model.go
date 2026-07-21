@@ -9,6 +9,8 @@ type iQueryPushAnalysisTaskListResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccessDeniedDetail(v string) *QueryPushAnalysisTaskListResponseBody
+	GetAccessDeniedDetail() *string
 	SetRequestId(v string) *QueryPushAnalysisTaskListResponseBody
 	GetRequestId() *string
 	SetResultCode(v string) *QueryPushAnalysisTaskListResponseBody
@@ -20,10 +22,11 @@ type iQueryPushAnalysisTaskListResponseBody interface {
 }
 
 type QueryPushAnalysisTaskListResponseBody struct {
-	RequestId     *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResultCode    *string                                             `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	ResultContent *QueryPushAnalysisTaskListResponseBodyResultContent `json:"ResultContent,omitempty" xml:"ResultContent,omitempty" type:"Struct"`
-	ResultMessage *string                                             `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	AccessDeniedDetail *string                                             `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	RequestId          *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultCode         *string                                             `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	ResultContent      *QueryPushAnalysisTaskListResponseBodyResultContent `json:"ResultContent,omitempty" xml:"ResultContent,omitempty" type:"Struct"`
+	ResultMessage      *string                                             `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
 }
 
 func (s QueryPushAnalysisTaskListResponseBody) String() string {
@@ -32,6 +35,10 @@ func (s QueryPushAnalysisTaskListResponseBody) String() string {
 
 func (s QueryPushAnalysisTaskListResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *QueryPushAnalysisTaskListResponseBody) GetAccessDeniedDetail() *string {
+	return s.AccessDeniedDetail
 }
 
 func (s *QueryPushAnalysisTaskListResponseBody) GetRequestId() *string {
@@ -48,6 +55,11 @@ func (s *QueryPushAnalysisTaskListResponseBody) GetResultContent() *QueryPushAna
 
 func (s *QueryPushAnalysisTaskListResponseBody) GetResultMessage() *string {
 	return s.ResultMessage
+}
+
+func (s *QueryPushAnalysisTaskListResponseBody) SetAccessDeniedDetail(v string) *QueryPushAnalysisTaskListResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *QueryPushAnalysisTaskListResponseBody) SetRequestId(v string) *QueryPushAnalysisTaskListResponseBody {

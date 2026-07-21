@@ -9,6 +9,8 @@ type iPushBroadcastResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccessDeniedDetail(v string) *PushBroadcastResponseBody
+	GetAccessDeniedDetail() *string
 	SetPushResult(v *PushBroadcastResponseBodyPushResult) *PushBroadcastResponseBody
 	GetPushResult() *PushBroadcastResponseBodyPushResult
 	SetRequestId(v string) *PushBroadcastResponseBody
@@ -20,10 +22,11 @@ type iPushBroadcastResponseBody interface {
 }
 
 type PushBroadcastResponseBody struct {
-	PushResult    *PushBroadcastResponseBodyPushResult `json:"PushResult,omitempty" xml:"PushResult,omitempty" type:"Struct"`
-	RequestId     *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResultCode    *string                              `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	ResultMessage *string                              `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	AccessDeniedDetail *string                              `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	PushResult         *PushBroadcastResponseBodyPushResult `json:"PushResult,omitempty" xml:"PushResult,omitempty" type:"Struct"`
+	RequestId          *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultCode         *string                              `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	ResultMessage      *string                              `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
 }
 
 func (s PushBroadcastResponseBody) String() string {
@@ -32,6 +35,10 @@ func (s PushBroadcastResponseBody) String() string {
 
 func (s PushBroadcastResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *PushBroadcastResponseBody) GetAccessDeniedDetail() *string {
+	return s.AccessDeniedDetail
 }
 
 func (s *PushBroadcastResponseBody) GetPushResult() *PushBroadcastResponseBodyPushResult {
@@ -48,6 +55,11 @@ func (s *PushBroadcastResponseBody) GetResultCode() *string {
 
 func (s *PushBroadcastResponseBody) GetResultMessage() *string {
 	return s.ResultMessage
+}
+
+func (s *PushBroadcastResponseBody) SetAccessDeniedDetail(v string) *PushBroadcastResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *PushBroadcastResponseBody) SetPushResult(v *PushBroadcastResponseBodyPushResult) *PushBroadcastResponseBody {

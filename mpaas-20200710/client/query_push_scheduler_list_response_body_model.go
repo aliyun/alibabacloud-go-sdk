@@ -9,6 +9,8 @@ type iQueryPushSchedulerListResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccessDeniedDetail(v string) *QueryPushSchedulerListResponseBody
+	GetAccessDeniedDetail() *string
 	SetRequestId(v string) *QueryPushSchedulerListResponseBody
 	GetRequestId() *string
 	SetResultCode(v string) *QueryPushSchedulerListResponseBody
@@ -20,10 +22,11 @@ type iQueryPushSchedulerListResponseBody interface {
 }
 
 type QueryPushSchedulerListResponseBody struct {
-	RequestId     *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResultCode    *string                                          `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	ResultContent *QueryPushSchedulerListResponseBodyResultContent `json:"ResultContent,omitempty" xml:"ResultContent,omitempty" type:"Struct"`
-	ResultMessage *string                                          `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	AccessDeniedDetail *string                                          `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	RequestId          *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultCode         *string                                          `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	ResultContent      *QueryPushSchedulerListResponseBodyResultContent `json:"ResultContent,omitempty" xml:"ResultContent,omitempty" type:"Struct"`
+	ResultMessage      *string                                          `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
 }
 
 func (s QueryPushSchedulerListResponseBody) String() string {
@@ -32,6 +35,10 @@ func (s QueryPushSchedulerListResponseBody) String() string {
 
 func (s QueryPushSchedulerListResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *QueryPushSchedulerListResponseBody) GetAccessDeniedDetail() *string {
+	return s.AccessDeniedDetail
 }
 
 func (s *QueryPushSchedulerListResponseBody) GetRequestId() *string {
@@ -48,6 +55,11 @@ func (s *QueryPushSchedulerListResponseBody) GetResultContent() *QueryPushSchedu
 
 func (s *QueryPushSchedulerListResponseBody) GetResultMessage() *string {
 	return s.ResultMessage
+}
+
+func (s *QueryPushSchedulerListResponseBody) SetAccessDeniedDetail(v string) *QueryPushSchedulerListResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *QueryPushSchedulerListResponseBody) SetRequestId(v string) *QueryPushSchedulerListResponseBody {

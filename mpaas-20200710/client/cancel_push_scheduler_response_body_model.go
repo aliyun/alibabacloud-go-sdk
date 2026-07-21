@@ -9,6 +9,8 @@ type iCancelPushSchedulerResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccessDeniedDetail(v string) *CancelPushSchedulerResponseBody
+	GetAccessDeniedDetail() *string
 	SetRequestId(v string) *CancelPushSchedulerResponseBody
 	GetRequestId() *string
 	SetResultCode(v string) *CancelPushSchedulerResponseBody
@@ -20,10 +22,11 @@ type iCancelPushSchedulerResponseBody interface {
 }
 
 type CancelPushSchedulerResponseBody struct {
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResultCode    *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	ResultContent *string `json:"ResultContent,omitempty" xml:"ResultContent,omitempty"`
-	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultCode         *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	ResultContent      *string `json:"ResultContent,omitempty" xml:"ResultContent,omitempty"`
+	ResultMessage      *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
 }
 
 func (s CancelPushSchedulerResponseBody) String() string {
@@ -32,6 +35,10 @@ func (s CancelPushSchedulerResponseBody) String() string {
 
 func (s CancelPushSchedulerResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CancelPushSchedulerResponseBody) GetAccessDeniedDetail() *string {
+	return s.AccessDeniedDetail
 }
 
 func (s *CancelPushSchedulerResponseBody) GetRequestId() *string {
@@ -48,6 +55,11 @@ func (s *CancelPushSchedulerResponseBody) GetResultContent() *string {
 
 func (s *CancelPushSchedulerResponseBody) GetResultMessage() *string {
 	return s.ResultMessage
+}
+
+func (s *CancelPushSchedulerResponseBody) SetAccessDeniedDetail(v string) *CancelPushSchedulerResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *CancelPushSchedulerResponseBody) SetRequestId(v string) *CancelPushSchedulerResponseBody {
