@@ -18,7 +18,7 @@ type iApproveFotaUpdateRequest interface {
 }
 
 type ApproveFotaUpdateRequest struct {
-	// Mirror version.
+	// The image version. You can call [DescribeImages](https://help.aliyun.com/document_detail/188895.html) to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type ApproveFotaUpdateRequest struct {
 	//
 	// 0.0.1-D-20220513.143129
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// The ID of the cloud computer.
+	// The cloud computer ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type ApproveFotaUpdateRequest struct {
 	//
 	// ecd-138dsptkrt00u****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by Elastic Desktop Service.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//

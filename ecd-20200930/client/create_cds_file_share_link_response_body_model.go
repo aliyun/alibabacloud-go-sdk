@@ -22,7 +22,7 @@ type iCreateCdsFileShareLinkResponseBody interface {
 }
 
 type CreateCdsFileShareLinkResponseBody struct {
-	// The operation result. The value success indicates that the operation is successful. If the operation failed, an error message is returned.
+	// The execution result. A value of `success` indicates success. Otherwise, an error message is returned.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type CreateCdsFileShareLinkResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data information.
 	Data *CdsFileShareLinkModel `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error message that is returned. This parameter is not returned if the value of Code is success.
+	// The error message. This parameter is not returned when Code is `success`.
 	//
 	// example:
 	//
@@ -42,25 +42,11 @@ type CreateCdsFileShareLinkResponseBody struct {
 	//
 	// 51592A88-0F2C-55E6-AD2C-2AD9C10D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the operation is successful. Valid values:
 	//
-	// Valid values:
+	// - true: The operation is successful.
 	//
-	// - true
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	// - false
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
+	// - false: The operation failed.
 	//
 	// example:
 	//

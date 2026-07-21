@@ -235,6 +235,11 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	ExternalDrive             *string `json:"ExternalDrive,omitempty" xml:"ExternalDrive,omitempty"`
 	FileMigrate               *string `json:"FileMigrate,omitempty" xml:"FileMigrate,omitempty"`
 	FileTransferAddress       *string `json:"FileTransferAddress,omitempty" xml:"FileTransferAddress,omitempty"`
+	FileTransferInSize        *string `json:"FileTransferInSize,omitempty" xml:"FileTransferInSize,omitempty"`
+	FileTransferInUnit        *string `json:"FileTransferInUnit,omitempty" xml:"FileTransferInUnit,omitempty"`
+	FileTransferOutSize       *string `json:"FileTransferOutSize,omitempty" xml:"FileTransferOutSize,omitempty"`
+	FileTransferOutUnit       *string `json:"FileTransferOutUnit,omitempty" xml:"FileTransferOutUnit,omitempty"`
+	FileTransferSizeLimit     *string `json:"FileTransferSizeLimit,omitempty" xml:"FileTransferSizeLimit,omitempty"`
 	FileTransferSpeed         *string `json:"FileTransferSpeed,omitempty" xml:"FileTransferSpeed,omitempty"`
 	FileTransferSpeedLocation *string `json:"FileTransferSpeedLocation,omitempty" xml:"FileTransferSpeedLocation,omitempty"`
 	// Indicates whether the image quality policy is enabled for GPU-accelerated cloud desktops. Enable this policy when high performance and user experience are required, such as in professional design scenarios.
@@ -875,6 +880,26 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetFileTransf
 	return s.FileTransferAddress
 }
 
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetFileTransferInSize() *string {
+	return s.FileTransferInSize
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetFileTransferInUnit() *string {
+	return s.FileTransferInUnit
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetFileTransferOutSize() *string {
+	return s.FileTransferOutSize
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetFileTransferOutUnit() *string {
+	return s.FileTransferOutUnit
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetFileTransferSizeLimit() *string {
+	return s.FileTransferSizeLimit
+}
+
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GetFileTransferSpeed() *string {
 	return s.FileTransferSpeed
 }
@@ -1484,6 +1509,31 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetFileMigrat
 
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetFileTransferAddress(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
 	s.FileTransferAddress = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetFileTransferInSize(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.FileTransferInSize = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetFileTransferInUnit(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.FileTransferInUnit = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetFileTransferOutSize(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.FileTransferOutSize = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetFileTransferOutUnit(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.FileTransferOutUnit = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetFileTransferSizeLimit(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.FileTransferSizeLimit = &v
 	return s
 }
 

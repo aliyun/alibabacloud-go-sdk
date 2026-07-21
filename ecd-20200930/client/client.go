@@ -84,11 +84,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Unlocks a convenience office network that is automatically locked due to a long idle period of time.
+// Unlocks an office network that was automatically locked after being idle for a period of time.
 //
 // Description:
 //
-// If you do not create any cloud computer in a convenience office network within 15 days, the office network is automatically locked and virtual private cloud (VPC) resources are released. If you want to resume the office network, you can call this operation to unlock the office network.
+// For office networks based on convenience accounts, if no cloud computers are created within 15 consecutive calendar days, the office network is automatically locked and VPC-related resources are released. To use the office network again, call this operation to unlock it.
 //
 // @param request - ActivateOfficeSiteRequest
 //
@@ -136,11 +136,11 @@ func (client *Client) ActivateOfficeSiteWithOptions(request *ActivateOfficeSiteR
 
 // Summary:
 //
-// Unlocks a convenience office network that is automatically locked due to a long idle period of time.
+// Unlocks an office network that was automatically locked after being idle for a period of time.
 //
 // Description:
 //
-// If you do not create any cloud computer in a convenience office network within 15 days, the office network is automatically locked and virtual private cloud (VPC) resources are released. If you want to resume the office network, you can call this operation to unlock the office network.
+// For office networks based on convenience accounts, if no cloud computers are created within 15 consecutive calendar days, the office network is automatically locked and VPC-related resources are released. To use the office network again, call this operation to unlock it.
 //
 // @param request - ActivateOfficeSiteRequest
 //
@@ -314,11 +314,11 @@ func (client *Client) AddDevices(request *AddDevicesRequest) (_result *AddDevice
 
 // Summary:
 //
-// Adds a shared folder to the network disk.
+// Creates a shared folder in a cloud disk.
 //
 // Description:
 //
-// You can call this operation to share a specific folder with other users. You can also configure the folder permissions.
+// You can share a specified folder with other users and set access permissions for the folder.
 //
 // @param tmpReq - AddFilePermissionRequest
 //
@@ -388,11 +388,11 @@ func (client *Client) AddFilePermissionWithOptions(tmpReq *AddFilePermissionRequ
 
 // Summary:
 //
-// Adds a shared folder to the network disk.
+// Creates a shared folder in a cloud disk.
 //
 // Description:
 //
-// You can call this operation to share a specific folder with other users. You can also configure the folder permissions.
+// You can share a specified folder with other users and set access permissions for the folder.
 //
 // @param request - AddFilePermissionRequest
 //
@@ -742,7 +742,7 @@ func (client *Client) ApplyAutoSnapshotPolicy(request *ApplyAutoSnapshotPolicyRe
 
 // Summary:
 //
-// Applies for the coordinate permissions.
+// Requests permissions for stream coordination operations.
 //
 // @param request - ApplyCoordinatePrivilegeRequest
 //
@@ -802,7 +802,7 @@ func (client *Client) ApplyCoordinatePrivilegeWithOptions(request *ApplyCoordina
 
 // Summary:
 //
-// Applies for the coordinate permissions.
+// Requests permissions for stream coordination operations.
 //
 // @param request - ApplyCoordinatePrivilegeRequest
 //
@@ -820,7 +820,7 @@ func (client *Client) ApplyCoordinatePrivilege(request *ApplyCoordinatePrivilege
 
 // Summary:
 //
-// Applies for coordination monitoring. This operation is mainly used in administrator assistance scenarios and education scenarios.
+// Sends a remote assistance request from an administrator to an end user. This operation is mainly used in administrator assistance scenarios and education scenarios.
 //
 // @param request - ApplyCoordinationForMonitoringRequest
 //
@@ -884,7 +884,7 @@ func (client *Client) ApplyCoordinationForMonitoringWithOptions(request *ApplyCo
 
 // Summary:
 //
-// Applies for coordination monitoring. This operation is mainly used in administrator assistance scenarios and education scenarios.
+// Sends a remote assistance request from an administrator to an end user. This operation is mainly used in administrator assistance scenarios and education scenarios.
 //
 // @param request - ApplyCoordinationForMonitoringRequest
 //
@@ -902,11 +902,11 @@ func (client *Client) ApplyCoordinationForMonitoring(request *ApplyCoordinationF
 
 // Summary:
 //
-// Allows you to upgrade images.
+// Allows an image upgrade.
 //
 // Description:
 //
-// The cloud computers for which you want to allow image updates must be in the Running state.
+// The cloud computer must be in the Running state.
 //
 // @param request - ApproveFotaUpdateRequest
 //
@@ -958,11 +958,11 @@ func (client *Client) ApproveFotaUpdateWithOptions(request *ApproveFotaUpdateReq
 
 // Summary:
 //
-// Allows you to upgrade images.
+// Allows an image upgrade.
 //
 // Description:
 //
-// The cloud computers for which you want to allow image updates must be in the Running state.
+// The cloud computer must be in the Running state.
 //
 // @param request - ApproveFotaUpdateRequest
 //
@@ -1058,7 +1058,7 @@ func (client *Client) AssociateIpAddress(request *AssociateIpAddressRequest) (_r
 
 // Summary:
 //
-// Binds a premium bandwidth plan to an office network. A premium bandwidth plan is used together with only one office network.
+// Associates a premium Internet bandwidth plan with an office network. A premium Internet bandwidth plan has a one-to-one bindingrelationship with an office network.
 //
 // @param request - AssociateNetworkPackageRequest
 //
@@ -1110,7 +1110,7 @@ func (client *Client) AssociateNetworkPackageWithOptions(request *AssociateNetwo
 
 // Summary:
 //
-// Binds a premium bandwidth plan to an office network. A premium bandwidth plan is used together with only one office network.
+// Associates a premium Internet bandwidth plan with an office network. A premium Internet bandwidth plan has a one-to-one bindingrelationship with an office network.
 //
 // @param request - AssociateNetworkPackageRequest
 //
@@ -1382,15 +1382,15 @@ func (client *Client) AttachEndUser(request *AttachEndUserRequest) (_result *Att
 
 // Summary:
 //
-// Assigns multiple cloud computers to users in a batch.
+// Assigns users to multiple cloud computers in a batch.
 //
 // Description:
 //
-// - The target cloud computers must be in the Running state.
+// - The cloud computers must be in the Running state.
 //
-// - This is an asynchronous API. To check the assignment status, call [](t2167745.xdita#)and refer to the `ManagementFlags` parameter. A value of `ASSIGNING` means it is in progress; otherwise, it is complete.
+// - This operation immediately returns a result. To check whether the assignment is successful, call [DescribeDesktops](https://help.aliyun.com/document_detail/436815.html) and check the `ManagementFlags` response parameter: `ASSIGNING` indicates that the assignment is in progress, and other values indicate that the assignment is complete.
 //
-// - Recommended polling interval: 2–5 seconds (max duration: 50s). The process usually takes 1–5 seconds.
+// - Check whether the assignment is complete every 2 to 5 seconds, for a maximum of 50 seconds. In most cases, the assignment is completed within 1 to 5 seconds.
 //
 // @param request - BatchModifyEntitlementRequest
 //
@@ -1458,15 +1458,15 @@ func (client *Client) BatchModifyEntitlementWithOptions(request *BatchModifyEnti
 
 // Summary:
 //
-// Assigns multiple cloud computers to users in a batch.
+// Assigns users to multiple cloud computers in a batch.
 //
 // Description:
 //
-// - The target cloud computers must be in the Running state.
+// - The cloud computers must be in the Running state.
 //
-// - This is an asynchronous API. To check the assignment status, call [](t2167745.xdita#)and refer to the `ManagementFlags` parameter. A value of `ASSIGNING` means it is in progress; otherwise, it is complete.
+// - This operation immediately returns a result. To check whether the assignment is successful, call [DescribeDesktops](https://help.aliyun.com/document_detail/436815.html) and check the `ManagementFlags` response parameter: `ASSIGNING` indicates that the assignment is in progress, and other values indicate that the assignment is complete.
 //
-// - Recommended polling interval: 2–5 seconds (max duration: 50s). The process usually takes 1–5 seconds.
+// - Check whether the assignment is complete every 2 to 5 seconds, for a maximum of 50 seconds. In most cases, the assignment is completed within 1 to 5 seconds.
 //
 // @param request - BatchModifyEntitlementRequest
 //
@@ -1624,7 +1624,7 @@ func (client *Client) CancelAutoSnapshotPolicy(request *CancelAutoSnapshotPolicy
 
 // Summary:
 //
-// Cancels a file sharing task.
+// Cancels file sharing.
 //
 // @param request - CancelCdsFileShareLinkRequest
 //
@@ -1672,7 +1672,7 @@ func (client *Client) CancelCdsFileShareLinkWithOptions(request *CancelCdsFileSh
 
 // Summary:
 //
-// Cancels a file sharing task.
+// Cancels file sharing.
 //
 // @param request - CancelCdsFileShareLinkRequest
 //
@@ -1690,7 +1690,7 @@ func (client *Client) CancelCdsFileShareLink(request *CancelCdsFileShareLinkRequ
 
 // Summary:
 //
-// Cancels a remote assistance request to the end user.
+// Cancels a remote assistance request initiated to an end user.
 //
 // @param request - CancelCoordinationForMonitoringRequest
 //
@@ -1746,7 +1746,7 @@ func (client *Client) CancelCoordinationForMonitoringWithOptions(request *Cancel
 
 // Summary:
 //
-// Cancels a remote assistance request to the end user.
+// Cancels a remote assistance request initiated to an end user.
 //
 // @param request - CancelCoordinationForMonitoringRequest
 //
@@ -1764,7 +1764,7 @@ func (client *Client) CancelCoordinationForMonitoring(request *CancelCoordinatio
 
 // Summary:
 //
-// Cancels the operation of copying an image to another region.
+// Cancels an ongoing image copy operation to another region.
 //
 // @param request - CancelCopyImageRequest
 //
@@ -1812,7 +1812,7 @@ func (client *Client) CancelCopyImageWithOptions(request *CancelCopyImageRequest
 
 // Summary:
 //
-// Cancels the operation of copying an image to another region.
+// Cancels an ongoing image copy operation to another region.
 //
 // @param request - CancelCopyImageRequest
 //
@@ -1830,7 +1830,7 @@ func (client *Client) CancelCopyImage(request *CancelCopyImageRequest) (_result 
 
 // Summary:
 //
-// Clones a policy based on an existing global policy.
+// Clones a policy based on an existing region-independent policy.
 //
 // @param request - CloneCenterPolicyRequest
 //
@@ -1890,7 +1890,7 @@ func (client *Client) CloneCenterPolicyWithOptions(request *CloneCenterPolicyReq
 
 // Summary:
 //
-// Clones a policy based on an existing global policy.
+// Clones a policy based on an existing region-independent policy.
 //
 // @param request - CloneCenterPolicyRequest
 //
@@ -1908,7 +1908,7 @@ func (client *Client) CloneCenterPolicy(request *CloneCenterPolicyRequest) (_res
 
 // Summary:
 //
-// Clones an existing policy to quickly create a policy.
+// Clones a cloud computer policy to quickly create a custom cloud computer policy.
 //
 // @param request - ClonePolicyGroupRequest
 //
@@ -1960,7 +1960,7 @@ func (client *Client) ClonePolicyGroupWithOptions(request *ClonePolicyGroupReque
 
 // Summary:
 //
-// Clones an existing policy to quickly create a policy.
+// Clones a cloud computer policy to quickly create a custom cloud computer policy.
 //
 // @param request - ClonePolicyGroupRequest
 //
@@ -2060,7 +2060,7 @@ func (client *Client) CompleteCdsFile(request *CompleteCdsFileRequest) (_result 
 
 // Summary:
 //
-// Configures a conditional forwarder and trust relationship for a high-definition experience (HDX)-based office network (formerly workspace). You can call the operation to configure a trust relationship for an enterprise Active Directory (AD) office network.
+// Configures a trust relationship for an AD office network. For office networks (formerly workspaces) that use the HDX protocol, you must configure conditional forwarders and trust relationships before the networks can function properly.
 //
 // @param request - ConfigADConnectorTrustRequest
 //
@@ -2116,7 +2116,7 @@ func (client *Client) ConfigADConnectorTrustWithOptions(request *ConfigADConnect
 
 // Summary:
 //
-// Configures a conditional forwarder and trust relationship for a high-definition experience (HDX)-based office network (formerly workspace). You can call the operation to configure a trust relationship for an enterprise Active Directory (AD) office network.
+// Configures a trust relationship for an AD office network. For office networks (formerly workspaces) that use the HDX protocol, you must configure conditional forwarders and trust relationships before the networks can function properly.
 //
 // @param request - ConfigADConnectorTrustRequest
 //
@@ -2134,7 +2134,7 @@ func (client *Client) ConfigADConnectorTrust(request *ConfigADConnectorTrustRequ
 
 // Summary:
 //
-// Specify an organizational unit (OU) and administrator for the Active Directory (AD) office network (formerly known as workspace).
+// Specifies the organizational unit (OU) and administrator for an AD office network (formerly workspace).
 //
 // @param request - ConfigADConnectorUserRequest
 //
@@ -2194,7 +2194,7 @@ func (client *Client) ConfigADConnectorUserWithOptions(request *ConfigADConnecto
 
 // Summary:
 //
-// Specify an organizational unit (OU) and administrator for the Active Directory (AD) office network (formerly known as workspace).
+// Specifies the organizational unit (OU) and administrator for an AD office network (formerly workspace).
 //
 // @param request - ConfigADConnectorUserRequest
 //
@@ -2212,7 +2212,7 @@ func (client *Client) ConfigADConnectorUser(request *ConfigADConnectorUserReques
 
 // Summary:
 //
-// Create a copy of a file or folder in the cloud drive.
+// Creates a copy of a file or folder in a cloud drive.
 //
 // @param request - CopyCdsFileRequest
 //
@@ -2288,7 +2288,7 @@ func (client *Client) CopyCdsFileWithOptions(request *CopyCdsFileRequest, runtim
 
 // Summary:
 //
-// Create a copy of a file or folder in the cloud drive.
+// Creates a copy of a file or folder in a cloud drive.
 //
 // @param request - CopyCdsFileRequest
 //
@@ -2306,7 +2306,7 @@ func (client *Client) CopyCdsFile(request *CopyCdsFileRequest) (_result *CopyCds
 
 // Summary:
 //
-// Copy an image to another region. If you want to share an image across regions, you can call this operation to copy the image to the destination region and then share the image.
+// Copies an image to another region. To share an image across regions, call this operation to copy the image to the destination region first, and then share it.
 //
 // @param request - CopyImageRequest
 //
@@ -2366,7 +2366,7 @@ func (client *Client) CopyImageWithOptions(request *CopyImageRequest, runtime *d
 
 // Summary:
 //
-// Copy an image to another region. If you want to share an image across regions, you can call this operation to copy the image to the destination region and then share the image.
+// Copies an image to another region. To share an image across regions, call this operation to copy the image to the destination region first, and then share it.
 //
 // @param request - CopyImageRequest
 //
@@ -3154,7 +3154,7 @@ func (client *Client) CreateCdsFile(request *CreateCdsFileRequest) (_result *Cre
 
 // Summary:
 //
-// Create a file share.
+// Creates a file share.
 //
 // @param request - CreateCdsFileShareLinkRequest
 //
@@ -3250,7 +3250,7 @@ func (client *Client) CreateCdsFileShareLinkWithOptions(request *CreateCdsFileSh
 
 // Summary:
 //
-// Create a file share.
+// Creates a file share.
 //
 // @param request - CreateCdsFileShareLinkRequest
 //
@@ -3268,7 +3268,7 @@ func (client *Client) CreateCdsFileShareLink(request *CreateCdsFileShareLinkRequ
 
 // Summary:
 //
-// You can create a region-independent cloud desktop policy.
+// Creates a region-independent Cloud Desktop policy.
 //
 // @param request - CreateCenterPolicyRequest
 //
@@ -3449,6 +3449,26 @@ func (client *Client) CreateCenterPolicyWithOptions(request *CreateCenterPolicyR
 
 	if !dara.IsNil(request.FileTransferAddress) {
 		query["FileTransferAddress"] = request.FileTransferAddress
+	}
+
+	if !dara.IsNil(request.FileTransferInSize) {
+		query["FileTransferInSize"] = request.FileTransferInSize
+	}
+
+	if !dara.IsNil(request.FileTransferInUnit) {
+		query["FileTransferInUnit"] = request.FileTransferInUnit
+	}
+
+	if !dara.IsNil(request.FileTransferOutSize) {
+		query["FileTransferOutSize"] = request.FileTransferOutSize
+	}
+
+	if !dara.IsNil(request.FileTransferOutUnit) {
+		query["FileTransferOutUnit"] = request.FileTransferOutUnit
+	}
+
+	if !dara.IsNil(request.FileTransferSizeLimit) {
+		query["FileTransferSizeLimit"] = request.FileTransferSizeLimit
 	}
 
 	if !dara.IsNil(request.FileTransferSpeed) {
@@ -3840,7 +3860,7 @@ func (client *Client) CreateCenterPolicyWithOptions(request *CreateCenterPolicyR
 
 // Summary:
 //
-// You can create a region-independent cloud desktop policy.
+// Creates a region-independent Cloud Desktop policy.
 //
 // @param request - CreateCenterPolicyRequest
 //
@@ -5262,7 +5282,7 @@ func (client *Client) CreateDesktops(request *CreateDesktopsRequest) (_result *C
 
 // Summary:
 //
-// Enables disk encryption and creates the required service-linked role in your Resource Access Management (RAM) user account for the Enterprise Drive.
+// Enables the disk encryption feature and adds the service-linked role (SLR) for enterprise cloud drive encryption under the RAM user.
 //
 // @param request - CreateDiskEncryptionServiceRequest
 //
@@ -5306,7 +5326,7 @@ func (client *Client) CreateDiskEncryptionServiceWithOptions(request *CreateDisk
 
 // Summary:
 //
-// Enables disk encryption and creates the required service-linked role in your Resource Access Management (RAM) user account for the Enterprise Drive.
+// Enables the disk encryption feature and adds the service-linked role (SLR) for enterprise cloud drive encryption under the RAM user.
 //
 // @param request - CreateDiskEncryptionServiceRequest
 //
@@ -7423,7 +7443,7 @@ func (client *Client) DeleteBundles(request *DeleteBundlesRequest) (_result *Del
 
 // Summary:
 //
-// Delete files or folders from the network disk.
+// Deletes a file or folder from a cloud drive.
 //
 // @param request - DeleteCdsFileRequest
 //
@@ -7483,7 +7503,7 @@ func (client *Client) DeleteCdsFileWithOptions(request *DeleteCdsFileRequest, ru
 
 // Summary:
 //
-// Delete files or folders from the network disk.
+// Deletes a file or folder from a cloud drive.
 //
 // @param request - DeleteCdsFileRequest
 //
@@ -7501,7 +7521,7 @@ func (client *Client) DeleteCdsFile(request *DeleteCdsFileRequest) (_result *Del
 
 // Summary:
 //
-// Deletes a global policy.
+// Deletes a non-region-specific policy.
 //
 // @param request - DeleteCenterPolicyRequest
 //
@@ -7557,7 +7577,7 @@ func (client *Client) DeleteCenterPolicyWithOptions(request *DeleteCenterPolicyR
 
 // Summary:
 //
-// Deletes a global policy.
+// Deletes a non-region-specific policy.
 //
 // @param request - DeleteCenterPolicyRequest
 //
@@ -9933,7 +9953,7 @@ func (client *Client) DescribeCenterPolicyList(request *DescribeCenterPolicyList
 
 // Summary:
 //
-// Query end-user operation logs for events such as starting and stopping a WUYING Workspace, and disconnecting from sessions.
+// Queries the operation logs of end users, including events such as cloud computer startup, shutdown, and session disconnection.
 //
 // @param request - DescribeClientEventsRequest
 //
@@ -9970,6 +9990,10 @@ func (client *Client) DescribeClientEventsWithOptions(request *DescribeClientEve
 
 	if !dara.IsNil(request.EndUserId) {
 		query["EndUserId"] = request.EndUserId
+	}
+
+	if !dara.IsNil(request.EndUserIds) {
+		query["EndUserIds"] = request.EndUserIds
 	}
 
 	if !dara.IsNil(request.EventType) {
@@ -10037,7 +10061,7 @@ func (client *Client) DescribeClientEventsWithOptions(request *DescribeClientEve
 
 // Summary:
 //
-// Query end-user operation logs for events such as starting and stopping a WUYING Workspace, and disconnecting from sessions.
+// Queries the operation logs of end users, including events such as cloud computer startup, shutdown, and session disconnection.
 //
 // @param request - DescribeClientEventsRequest
 //
@@ -10333,7 +10357,7 @@ func (client *Client) DescribeCloudDriveGroups(request *DescribeCloudDriveGroups
 
 // Summary:
 //
-// Query the permission settings details of the enterprise cloud drive.
+// Queries the permission settings of an enterprise cloud drive.
 //
 // @param request - DescribeCloudDrivePermissionsRequest
 //
@@ -10381,7 +10405,7 @@ func (client *Client) DescribeCloudDrivePermissionsWithOptions(request *Describe
 
 // Summary:
 //
-// Query the permission settings details of the enterprise cloud drive.
+// Queries the permission settings of an enterprise cloud drive.
 //
 // @param request - DescribeCloudDrivePermissionsRequest
 //
@@ -10963,11 +10987,11 @@ func (client *Client) DescribeDesktopInfo(request *DescribeDesktopInfoRequest) (
 
 // Summary:
 //
-// Lists cloud computers and their metadata from all regions.
+// Queries the list and metadata of cloud desktops across all regions.
 //
 // Description:
 //
-// This operation is centralized, available only in the China (Shanghai) and Singapore regions.
+// This is a centralized API that only supports queries from the Shanghai and Singapore sites.
 //
 // @param request - DescribeDesktopMetadataRequest
 //
@@ -11018,6 +11042,10 @@ func (client *Client) DescribeDesktopMetadataWithOptions(request *DescribeDeskto
 		query["MaxResults"] = request.MaxResults
 	}
 
+	if !dara.IsNil(request.NetworkInterfaceIp) {
+		query["NetworkInterfaceIp"] = request.NetworkInterfaceIp
+	}
+
 	if !dara.IsNil(request.NextToken) {
 		query["NextToken"] = request.NextToken
 	}
@@ -11063,11 +11091,11 @@ func (client *Client) DescribeDesktopMetadataWithOptions(request *DescribeDeskto
 
 // Summary:
 //
-// Lists cloud computers and their metadata from all regions.
+// Queries the list and metadata of cloud desktops across all regions.
 //
 // Description:
 //
-// This operation is centralized, available only in the China (Shanghai) and Singapore regions.
+// This is a centralized API that only supports queries from the Shanghai and Singapore sites.
 //
 // @param request - DescribeDesktopMetadataRequest
 //
@@ -11315,11 +11343,11 @@ func (client *Client) DescribeDesktopOversoldUserGroup(request *DescribeDesktopO
 
 // Summary:
 //
-// Queries the detailed session information for cloud computers.
+// Queries the detailed session information of a cloud computer.
 //
 // Description:
 //
-// You can retrieve data only from the last 30 days.
+// Only data within the last 30 days can be queried.
 //
 // @param request - DescribeDesktopSessionsRequest
 //
@@ -11356,6 +11384,10 @@ func (client *Client) DescribeDesktopSessionsWithOptions(request *DescribeDeskto
 
 	if !dara.IsNil(request.EndUserIdFilter) {
 		query["EndUserIdFilter"] = request.EndUserIdFilter
+	}
+
+	if !dara.IsNil(request.EndUserIds) {
+		query["EndUserIds"] = request.EndUserIds
 	}
 
 	if !dara.IsNil(request.FillHardwareInfo) {
@@ -11423,11 +11455,11 @@ func (client *Client) DescribeDesktopSessionsWithOptions(request *DescribeDeskto
 
 // Summary:
 //
-// Queries the detailed session information for cloud computers.
+// Queries the detailed session information of a cloud computer.
 //
 // Description:
 //
-// You can retrieve data only from the last 30 days.
+// Only data within the last 30 days can be queried.
 //
 // @param request - DescribeDesktopSessionsRequest
 //
@@ -11591,7 +11623,7 @@ func (client *Client) DescribeDesktopTypes(request *DescribeDesktopTypesRequest)
 
 // Summary:
 //
-// Query the details of your cloud computers.
+// Queries the details of cloud computers.
 //
 // @param request - DescribeDesktopsRequest
 //
@@ -11783,7 +11815,7 @@ func (client *Client) DescribeDesktopsWithOptions(request *DescribeDesktopsReque
 
 // Summary:
 //
-// Query the details of your cloud computers.
+// Queries the details of cloud computers.
 //
 // @param request - DescribeDesktopsRequest
 //
@@ -12493,7 +12525,7 @@ func (client *Client) DescribeFotaPendingDesktops(request *DescribeFotaPendingDe
 
 // Summary:
 //
-// Queries a list of update tasks.
+// Retrieves the list of image upgrade tasks.
 //
 // @param request - DescribeFotaTasksRequest
 //
@@ -12561,7 +12593,7 @@ func (client *Client) DescribeFotaTasksWithOptions(request *DescribeFotaTasksReq
 
 // Summary:
 //
-// Queries a list of update tasks.
+// Retrieves the list of image upgrade tasks.
 //
 // @param request - DescribeFotaTasksRequest
 //
@@ -12579,17 +12611,17 @@ func (client *Client) DescribeFotaTasks(request *DescribeFotaTasksRequest) (_res
 
 // Summary:
 //
-// Queries basic information and usage duration for all recent Cloud Desktops.
+// Queries the basic information of all recent cloud desktops and their usage duration records.
 //
 // Description:
 //
-// - Select China (Shanghai) for the Alibaba Cloud China site and Singapore for the Alibaba Cloud International site.
+// - China site users should select Shanghai as the region. International site users should select Singapore.
 //
-// - By default, this operation returns both active and deleted Cloud Desktops.
+// - By default, both deleted and non-deleted cloud desktops are queried.
 //
-// - You can query only Cloud Desktops deleted within the last three months.
+// - Deleted cloud desktops can only be queried if they were deleted within the last three months.
 //
-// - You cannot use the sort condition with other query conditions.
+// - Sort conditions cannot be used together with other conditions.
 //
 // @param request - DescribeGlobalDesktopRecordsRequest
 //
@@ -12676,6 +12708,10 @@ func (client *Client) DescribeGlobalDesktopRecordsWithOptions(request *DescribeG
 		query["SubPayType"] = request.SubPayType
 	}
 
+	if !dara.IsNil(request.UserNames) {
+		query["UserNames"] = request.UserNames
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12701,17 +12737,17 @@ func (client *Client) DescribeGlobalDesktopRecordsWithOptions(request *DescribeG
 
 // Summary:
 //
-// Queries basic information and usage duration for all recent Cloud Desktops.
+// Queries the basic information of all recent cloud desktops and their usage duration records.
 //
 // Description:
 //
-// - Select China (Shanghai) for the Alibaba Cloud China site and Singapore for the Alibaba Cloud International site.
+// - China site users should select Shanghai as the region. International site users should select Singapore.
 //
-// - By default, this operation returns both active and deleted Cloud Desktops.
+// - By default, both deleted and non-deleted cloud desktops are queried.
 //
-// - You can query only Cloud Desktops deleted within the last three months.
+// - Deleted cloud desktops can only be queried if they were deleted within the last three months.
 //
-// - You cannot use the sort condition with other query conditions.
+// - Sort conditions cannot be used together with other conditions.
 //
 // @param request - DescribeGlobalDesktopRecordsRequest
 //
@@ -13273,13 +13309,13 @@ func (client *Client) DescribeImages(request *DescribeImagesRequest) (_result *D
 
 // Summary:
 //
-// Used to query the execution list and status of Cloud Assistant scripts.
+// Queries the execution list and status of Cloud Assistant scripts.
 //
 // Description:
 //
-// - After you execute a command, it does not necessarily mean that the command was successfully executed or produced the expected effect. You must check the actual execution result based on the return value from the API, and the actual output result prevails.
+// - After you run a command, the command is not guaranteed to succeed or produce the expected results. Check the actual execution results based on the response of this operation.
 //
-// - You can query execution information from the past two weeks, with a maximum retention limit of 100,000 records.
+// - You can query execution information from the last two weeks. A maximum of 100,000 execution records are retained.
 //
 // @param request - DescribeInvocationsRequest
 //
@@ -13367,13 +13403,13 @@ func (client *Client) DescribeInvocationsWithOptions(request *DescribeInvocation
 
 // Summary:
 //
-// Used to query the execution list and status of Cloud Assistant scripts.
+// Queries the execution list and status of Cloud Assistant scripts.
 //
 // Description:
 //
-// - After you execute a command, it does not necessarily mean that the command was successfully executed or produced the expected effect. You must check the actual execution result based on the return value from the API, and the actual output result prevails.
+// - After you run a command, the command is not guaranteed to succeed or produce the expected results. Check the actual execution results based on the response of this operation.
 //
-// - You can query execution information from the past two weeks, with a maximum retention limit of 100,000 records.
+// - You can query execution information from the last two weeks. A maximum of 100,000 execution records are retained.
 //
 // @param request - DescribeInvocationsRequest
 //
@@ -13531,7 +13567,7 @@ func (client *Client) DescribeKmsKeys(request *DescribeKmsKeysRequest) (_result 
 
 // Summary:
 //
-// Query the Upgrade/Downgrade price for monthly subscription cloud desktops with unlimited duration or Internet premium bandwidth.
+// Queries the price for changing the specifications of a monthly-subscribed unlimited-duration cloud computer or premium Internet bandwidth.
 //
 // @param request - DescribeModificationPriceRequest
 //
@@ -13619,7 +13655,7 @@ func (client *Client) DescribeModificationPriceWithOptions(request *DescribeModi
 
 // Summary:
 //
-// Query the Upgrade/Downgrade price for monthly subscription cloud desktops with unlimited duration or Internet premium bandwidth.
+// Queries the price for changing the specifications of a monthly-subscribed unlimited-duration cloud computer or premium Internet bandwidth.
 //
 // @param request - DescribeModificationPriceRequest
 //
@@ -14791,7 +14827,7 @@ func (client *Client) DescribeRecordings(request *DescribeRecordingsRequest) (_r
 
 // Summary:
 //
-// Query the refund amount for monthly subscription WUYING Workspaces.
+// Queries the unsubscription price of cloud computers purchased on a monthly basis.
 //
 // @param request - DescribeRefundPriceRequest
 //
@@ -14847,7 +14883,7 @@ func (client *Client) DescribeRefundPriceWithOptions(request *DescribeRefundPric
 
 // Summary:
 //
-// Query the refund amount for monthly subscription WUYING Workspaces.
+// Queries the unsubscription price of cloud computers purchased on a monthly basis.
 //
 // @param request - DescribeRefundPriceRequest
 //
@@ -15415,7 +15451,7 @@ func (client *Client) DescribeSessionStatistic(request *DescribeSessionStatistic
 
 // Summary:
 //
-// Queries the snapshots and their details for a cloud desktop.
+// Queries the snapshot list and snapshot details of a cloud computer.
 //
 // @param request - DescribeSnapshotsRequest
 //
@@ -15440,6 +15476,10 @@ func (client *Client) DescribeSnapshotsWithOptions(request *DescribeSnapshotsReq
 
 	if !dara.IsNil(request.DesktopName) {
 		query["DesktopName"] = request.DesktopName
+	}
+
+	if !dara.IsNil(request.DesktopScenario) {
+		query["DesktopScenario"] = request.DesktopScenario
 	}
 
 	if !dara.IsNil(request.EndTime) {
@@ -15507,7 +15547,7 @@ func (client *Client) DescribeSnapshotsWithOptions(request *DescribeSnapshotsReq
 
 // Summary:
 //
-// Queries the snapshots and their details for a cloud desktop.
+// Queries the snapshot list and snapshot details of a cloud computer.
 //
 // @param request - DescribeSnapshotsRequest
 //
@@ -16789,7 +16829,7 @@ func (client *Client) DissociateIpAddress(request *DissociateIpAddressRequest) (
 
 // Summary:
 //
-// Unbinds a premium bandwidth plan from an office network.
+// Disassociates a premium Internet bandwidth plan from the office network to which it was previously bound.
 //
 // @param request - DissociateNetworkPackageRequest
 //
@@ -16837,7 +16877,7 @@ func (client *Client) DissociateNetworkPackageWithOptions(request *DissociateNet
 
 // Summary:
 //
-// Unbinds a premium bandwidth plan from an office network.
+// Disassociates a premium Internet bandwidth plan from the office network to which it was previously bound.
 //
 // @param request - DissociateNetworkPackageRequest
 //
@@ -16855,7 +16895,7 @@ func (client *Client) DissociateNetworkPackage(request *DissociateNetworkPackage
 
 // Summary:
 //
-// Obtains the download link of the target file.
+// Retrieves the download URL of a specified file.
 //
 // @param request - DownloadCdsFileRequest
 //
@@ -16915,7 +16955,7 @@ func (client *Client) DownloadCdsFileWithOptions(request *DownloadCdsFileRequest
 
 // Summary:
 //
-// Obtains the download link of the target file.
+// Retrieves the download URL of a specified file.
 //
 // @param request - DownloadCdsFileRequest
 //
@@ -17039,7 +17079,7 @@ func (client *Client) ExportClientEvents(request *ExportClientEventsRequest) (_r
 
 // Summary:
 //
-// Exports cloud computer shares and saves the list as an XLSX file. Each entry includes the ID and name of the cloud computer share, the ID and name of the office network, the cloud computer share template, and the name of the security policy.
+// Exports the list of shared cloud desktops and saves it as an XLSX file. Each shared cloud desktop record includes the shared cloud desktop ID and name, office network ID and name, shared cloud desktop template, and security policy name.
 //
 // @param request - ExportDesktopGroupInfoRequest
 //
@@ -17127,7 +17167,7 @@ func (client *Client) ExportDesktopGroupInfoWithOptions(request *ExportDesktopGr
 
 // Summary:
 //
-// Exports cloud computer shares and saves the list as an XLSX file. Each entry includes the ID and name of the cloud computer share, the ID and name of the office network, the cloud computer share template, and the name of the security policy.
+// Exports the list of shared cloud desktops and saves it as an XLSX file. Each shared cloud desktop record includes the shared cloud desktop ID and name, office network ID and name, shared cloud desktop template, and security policy name.
 //
 // @param request - ExportDesktopGroupInfoRequest
 //
@@ -17145,41 +17185,41 @@ func (client *Client) ExportDesktopGroupInfo(request *ExportDesktopGroupInfoRequ
 
 // Summary:
 //
-// Exports a cloud computer list as a CSV file.
+// Exports the cloud desktop list as a CSV file.
 //
 // Description:
 //
-// The cloud computer list exported by calling this operation is saved as a CSV file. Each entry of data of a cloud computer includes the following fields:
+// The cloud desktop list exported by calling this operation is saved as a CSV file. Each cloud desktop record includes the following fields:
 //
-//   - Cloud computer ID and name
+// - Cloud desktop ID/Cloud desktop name
 //
-//   - Office network ID and name
+// - Office network ID/Office network name
 //
-//   - The instance type, OS and protocol of the cloud computer
+// - Specifications/System/Protocol
 //
-//   - System disk and data disk of the cloud computer
+// - System cloud disk/Data cloud disk
 //
-//   - The status
+// - Status
 //
-//   - Purchase method
+// - Billing method
 //
-//   - The time when the cloud computer expires
+// - Expiration time
 //
-//   - Remaining duration and total duration
+// - Remaining duration/Total duration
 //
-//   - Number of assigned users and number of current users
+// - Number of assigned users/Current user
 //
-//   - Office network type
+// - Office network type
 //
-//   - The time when the cloud computer was created
+// - Creation time
 //
-//   - Tags
+// - Tags
 //
-//   - Encryption status
+// - Encrypted or not
 //
-//   - IP
+// - IP
 //
-//   - The hostname
+// - Hostname
 //
 // @param request - ExportDesktopListInfoRequest
 //
@@ -17279,41 +17319,41 @@ func (client *Client) ExportDesktopListInfoWithOptions(request *ExportDesktopLis
 
 // Summary:
 //
-// Exports a cloud computer list as a CSV file.
+// Exports the cloud desktop list as a CSV file.
 //
 // Description:
 //
-// The cloud computer list exported by calling this operation is saved as a CSV file. Each entry of data of a cloud computer includes the following fields:
+// The cloud desktop list exported by calling this operation is saved as a CSV file. Each cloud desktop record includes the following fields:
 //
-//   - Cloud computer ID and name
+// - Cloud desktop ID/Cloud desktop name
 //
-//   - Office network ID and name
+// - Office network ID/Office network name
 //
-//   - The instance type, OS and protocol of the cloud computer
+// - Specifications/System/Protocol
 //
-//   - System disk and data disk of the cloud computer
+// - System cloud disk/Data cloud disk
 //
-//   - The status
+// - Status
 //
-//   - Purchase method
+// - Billing method
 //
-//   - The time when the cloud computer expires
+// - Expiration time
 //
-//   - Remaining duration and total duration
+// - Remaining duration/Total duration
 //
-//   - Number of assigned users and number of current users
+// - Number of assigned users/Current user
 //
-//   - Office network type
+// - Office network type
 //
-//   - The time when the cloud computer was created
+// - Creation time
 //
-//   - Tags
+// - Tags
 //
-//   - Encryption status
+// - Encrypted or not
 //
-//   - IP
+// - IP
 //
-//   - The hostname
+// - Hostname
 //
 // @param request - ExportDesktopListInfoRequest
 //
@@ -17331,7 +17371,7 @@ func (client *Client) ExportDesktopListInfo(request *ExportDesktopListInfoReques
 
 // Summary:
 //
-// When you call the CopyCdsFile operation to copy a folder, the operation returns AsyncTaskId. Call this operation specifying the obtained AsyncTaskId, and you can query the information about the asynchronous task.
+// Retrieves the details of a folder copy asynchronous node based on the AsyncTaskId parameter returned by the CopyCdsFile operation.
 //
 // @param request - GetAsyncTaskRequest
 //
@@ -17379,7 +17419,7 @@ func (client *Client) GetAsyncTaskWithOptions(request *GetAsyncTaskRequest, runt
 
 // Summary:
 //
-// When you call the CopyCdsFile operation to copy a folder, the operation returns AsyncTaskId. Call this operation specifying the obtained AsyncTaskId, and you can query the information about the asynchronous task.
+// Retrieves the details of a folder copy asynchronous node based on the AsyncTaskId parameter returned by the CopyCdsFile operation.
 //
 // @param request - GetAsyncTaskRequest
 //
@@ -19603,7 +19643,7 @@ func (client *Client) ModifyCdsFileShareLink(request *ModifyCdsFileShareLinkRequ
 
 // Summary:
 //
-// Modifies a configuration that does not have a region-specific policy.
+// Modifies the configuration of a region-free policy.
 //
 // @param request - ModifyCenterPolicyRequest
 //
@@ -19784,6 +19824,26 @@ func (client *Client) ModifyCenterPolicyWithOptions(request *ModifyCenterPolicyR
 
 	if !dara.IsNil(request.FileTransferAddress) {
 		query["FileTransferAddress"] = request.FileTransferAddress
+	}
+
+	if !dara.IsNil(request.FileTransferInSize) {
+		query["FileTransferInSize"] = request.FileTransferInSize
+	}
+
+	if !dara.IsNil(request.FileTransferInUnit) {
+		query["FileTransferInUnit"] = request.FileTransferInUnit
+	}
+
+	if !dara.IsNil(request.FileTransferOutSize) {
+		query["FileTransferOutSize"] = request.FileTransferOutSize
+	}
+
+	if !dara.IsNil(request.FileTransferOutUnit) {
+		query["FileTransferOutUnit"] = request.FileTransferOutUnit
+	}
+
+	if !dara.IsNil(request.FileTransferSizeLimit) {
+		query["FileTransferSizeLimit"] = request.FileTransferSizeLimit
 	}
 
 	if !dara.IsNil(request.FileTransferSpeed) {
@@ -20183,7 +20243,7 @@ func (client *Client) ModifyCenterPolicyWithOptions(request *ModifyCenterPolicyR
 
 // Summary:
 //
-// Modifies a configuration that does not have a region-specific policy.
+// Modifies the configuration of a region-free policy.
 //
 // @param request - ModifyCenterPolicyRequest
 //
@@ -23714,7 +23774,7 @@ func (client *Client) ModifyUserToDesktopGroup(request *ModifyUserToDesktopGroup
 
 // Summary:
 //
-// Move files or folders.
+// Moves a file or folder in a cloud disk to a new location.
 //
 // @param request - MoveCdsFileRequest
 //
@@ -23782,7 +23842,7 @@ func (client *Client) MoveCdsFileWithOptions(request *MoveCdsFileRequest, runtim
 
 // Summary:
 //
-// Move files or folders.
+// Moves a file or folder in a cloud disk to a new location.
 //
 // @param request - MoveCdsFileRequest
 //
@@ -25342,7 +25402,7 @@ func (client *Client) ResetSnapshot(request *ResetSnapshotRequest) (_result *Res
 
 // Summary:
 //
-// Revokes the coordinate permissions.
+// Cancels the permission for stream coordination operations.
 //
 // @param request - RevokeCoordinatePrivilegeRequest
 //
@@ -25402,7 +25462,7 @@ func (client *Client) RevokeCoordinatePrivilegeWithOptions(request *RevokeCoordi
 
 // Summary:
 //
-// Revokes the coordinate permissions.
+// Cancels the permission for stream coordination operations.
 //
 // @param request - RevokeCoordinatePrivilegeRequest
 //
@@ -26974,11 +27034,11 @@ func (client *Client) UpdateFotaTask(request *UpdateFotaTaskRequest) (_result *U
 
 // Summary:
 //
-// Uploads your custom Windows image.
+// Uploads a custom Windows image.
 //
 // Description:
 //
-// >  You can upload only Windows images.
+// > Only Windows operating system images can be uploaded.
 //
 // @param request - UploadImageRequest
 //
@@ -26993,6 +27053,10 @@ func (client *Client) UploadImageWithOptions(request *UploadImageRequest, runtim
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BootMode) {
+		query["BootMode"] = request.BootMode
+	}
+
 	if !dara.IsNil(request.DataDiskSize) {
 		query["DataDiskSize"] = request.DataDiskSize
 	}
@@ -27066,11 +27130,11 @@ func (client *Client) UploadImageWithOptions(request *UploadImageRequest, runtim
 
 // Summary:
 //
-// Uploads your custom Windows image.
+// Uploads a custom Windows image.
 //
 // Description:
 //
-// >  You can upload only Windows images.
+// > Only Windows operating system images can be uploaded.
 //
 // @param request - UploadImageRequest
 //

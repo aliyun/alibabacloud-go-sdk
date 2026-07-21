@@ -20,7 +20,7 @@ type iDownloadCdsFileResponseBody interface {
 }
 
 type DownloadCdsFileResponseBody struct {
-	// The download URL of the file.
+	// The URL for downloading the file.
 	DownloadFileModel *DownloadCdsFileResponseBodyDownloadFileModel `json:"DownloadFileModel,omitempty" xml:"DownloadFileModel,omitempty" type:"Struct"`
 	// The response message.
 	//
@@ -96,11 +96,11 @@ func (s *DownloadCdsFileResponseBody) Validate() error {
 }
 
 type DownloadCdsFileResponseBodyDownloadFileModel struct {
-	// This parameter is deprecated.
+	// Deprecated.
 	//
 	// example:
 	//
-	// 无
+	// None.
 	DownloadType *string `json:"DownloadType,omitempty" xml:"DownloadType,omitempty"`
 	// The download URL.
 	//
@@ -108,13 +108,13 @@ type DownloadCdsFileResponseBodyDownloadFileModel struct {
 	//
 	// https://pds-****-bj-169380****.oss-cn-beijing.aliyuncs.com/A0SK****?di=****&dr=1030&f=667d****&response-content-disposition=attachment%3B%20
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	// This parameter is deprecated.
+	// Deprecated.
 	//
 	// example:
 	//
-	// 无
+	// None.
 	ExpirationSecond *string `json:"ExpirationSecond,omitempty" xml:"ExpirationSecond,omitempty"`
-	// The validity period of the download URL.
+	// The expiration time of the file download URL.
 	//
 	// example:
 	//
@@ -126,17 +126,17 @@ type DownloadCdsFileResponseBodyDownloadFileModel struct {
 	//
 	// 667d5a322ebf7409e91c485d808fb3bd8a73****
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The size of the file. Unit: bytes.
+	// The file size, in bytes.
 	//
 	// example:
 	//
 	// 1594642
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// This parameter is deprecated.
+	// Deprecated.
 	//
 	// example:
 	//
-	// 无
+	// None.
 	StreamUrl *string `json:"StreamUrl,omitempty" xml:"StreamUrl,omitempty"`
 }
 

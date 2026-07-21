@@ -18,15 +18,15 @@ type iDescribeInvocationsResponseBody interface {
 }
 
 type DescribeInvocationsResponseBody struct {
-	// The command execution records.
+	// The array of script execution records.
 	Invocations []*DescribeInvocationsResponseBodyInvocations `json:"Invocations,omitempty" xml:"Invocations,omitempty" type:"Repeated"`
-	// The query token that is returned from this call.
+	// The pagination token returned in this call.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6nmB7qrRFJ8vmttjxPL****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -83,79 +83,80 @@ func (s *DescribeInvocationsResponseBody) Validate() error {
 }
 
 type DescribeInvocationsResponseBodyInvocations struct {
-	// The Base64-encoded command content.
+	// The script content, transmitted in Base64 encoding.
 	//
 	// example:
 	//
 	// cnBtIC1xYSB8IGdyZXAgdnNm****
 	CommandContent *string `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
-	// The type of the command.
+	// The script type.
 	//
 	// example:
 	//
 	// RunPowerShellScript
 	CommandType *string `json:"CommandType,omitempty" xml:"CommandType,omitempty"`
-	// The time when the execution task is created.
+	// The creation time of the task.
 	//
 	// example:
 	//
 	// 2020-12-19T09:15:46Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The ID of the end user.
+	CreationTime    *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	DesktopScenario *string `json:"DesktopScenario,omitempty" xml:"DesktopScenario,omitempty"`
+	// The end user ID.
 	//
 	// example:
 	//
 	// User1
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The overall execution status of the command. The value of this parameter depends on the execution status of the command on all the involved cloud computers. Valid values:
+	// The overall execution status of the script. The overall execution status depends on the combined execution status of all cloud desktops in this call. Valid values:
 	//
-	// 	- Pending: The command is being verified or sent. If the execution status is Pending on at least one cloud computer, the overall status is considered Pending.
+	// - Pending: The system is validating or sending the command. If the script execution status on at least one cloud desktop is Pending, the overall execution status is Pending.
 	//
-	// 	- Running: The command is being executed on cloud computers. If the execution status is Running on at least one cloud computer, the overall status is considered Running.
+	// - Running: The command is running on the cloud desktop. If the script execution status on at least one cloud desktop is Running, the overall execution status is Running.
 	//
-	// 	- Success: If the execution status is Success on at least one cloud computer and either Success or Stopped on all other cloud computers, the overall status is considered Success.
+	// - Success: The script execution status on each cloud desktop is Stopped or Success, and the script execution status on at least one cloud desktop is Success. The overall execution status is Success.
 	//
-	// 	- Failed: If the execution status is Stopped or Failed on all cloud computers, the overall status is considered Failed. If any execution status on cloud computers matches one of the following values, Failed is returned.
+	// - Failed: The script execution status on each cloud desktop is Stopped or Failed. The overall execution status is Failed. The return value is Failed when one or more of the following statuses occur on a cloud desktop:
 	//
-	//     	- Invalid: The command is invalid.
+	//     - Command validation failed (Invalid).
 	//
-	//     	- Aborted: The command failed to be sent.
+	//     - Command delivery failed (Aborted).
 	//
-	//     	- Failed: The command is executed, but the exit code is not 0.
+	//     - Command execution completed but the exit code is non-zero (Failed).
 	//
-	//     	- Timeout: The command execution timed out.
+	//     - Command execution timed out (Timeout).
 	//
-	//     	- Error: An error occurred when the command is being executed.
+	//     - Command execution encountered an exception (Error).
 	//
-	// 	- Stopping: The command execution is being stopped. If the execution status is Stopping on at least one cloud computer, the overall status is considered Stopping.
+	// - Stopping: The task is being stopped. If the script execution status on at least one instance is Stopping, the overall execution status is Stopping.
 	//
-	// 	- Stopped: The command execution stops. If the execution status is Stopped on at least one cloud computer, the overall status is considered Stopped. If any execution status on cloud computers matches one of the following values, Stopped is returned.
+	// - Stopped: The task has been stopped. If the script execution status on all instances is Stopped, the overall execution status is Stopped. The return value is Stopped when the script execution status on an instance is one of the following:
 	//
-	//     	- Cancelled: The command execution is canceled.
+	//     - Task cancelled (Cancelled).
 	//
-	//     	- Terminated: The command execution is terminated.
+	//     - Task terminated (Terminated).
 	//
-	// 	- PartialFailed: The command execution succeeded on some cloud computers but failed on others. If the execution status on any cloud computer is Success, Failed, or Stopped, the overall status is considered PartialFailed.
+	// - PartialFailed: Some instances succeeded and some instances failed. If the script execution status on each instance is Success, Failed, or Stopped, the overall execution status is PartialFailed.
 	//
 	// example:
 	//
 	// Pending
 	InvocationStatus *string `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
-	// The total number of cloud computers on which the command is executed.
+	// The total number of cloud desktops on which the script was run.
 	//
 	// example:
 	//
 	// 1
 	InvokeDesktopCount *int32 `json:"InvokeDesktopCount,omitempty" xml:"InvokeDesktopCount,omitempty"`
-	// The total number of cloud computers on which the command execution succeeds.
+	// The total number of cloud desktops on which the script was run successfully.
 	//
 	// example:
 	//
 	// 1
 	InvokeDesktopSucceedCount *int32 `json:"InvokeDesktopSucceedCount,omitempty" xml:"InvokeDesktopSucceedCount,omitempty"`
-	// The cloud computers on which the command is executed.
+	// The list of target cloud desktops for execution.
 	InvokeDesktops []*DescribeInvocationsResponseBodyInvocationsInvokeDesktops `json:"InvokeDesktops,omitempty" xml:"InvokeDesktops,omitempty" type:"Repeated"`
-	// The ID of the execution.
+	// The execution ID.
 	//
 	// example:
 	//
@@ -181,6 +182,10 @@ func (s *DescribeInvocationsResponseBodyInvocations) GetCommandType() *string {
 
 func (s *DescribeInvocationsResponseBodyInvocations) GetCreationTime() *string {
 	return s.CreationTime
+}
+
+func (s *DescribeInvocationsResponseBodyInvocations) GetDesktopScenario() *string {
+	return s.DesktopScenario
 }
 
 func (s *DescribeInvocationsResponseBodyInvocations) GetEndUserId() *string {
@@ -219,6 +224,11 @@ func (s *DescribeInvocationsResponseBodyInvocations) SetCommandType(v string) *D
 
 func (s *DescribeInvocationsResponseBodyInvocations) SetCreationTime(v string) *DescribeInvocationsResponseBodyInvocations {
 	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocations) SetDesktopScenario(v string) *DescribeInvocationsResponseBodyInvocations {
+	s.DesktopScenario = &v
 	return s
 }
 
@@ -266,145 +276,146 @@ func (s *DescribeInvocationsResponseBodyInvocations) Validate() error {
 }
 
 type DescribeInvocationsResponseBodyInvocationsInvokeDesktops struct {
-	// The time when the command execution was performed.
+	// The creation time of the script process.
 	//
 	// example:
 	//
 	// 2020-12-20T06:15:54Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The cloud computer ID.
+	// The cloud desktop ID.
 	//
 	// example:
 	//
 	// ecd-7w78ozhjcwa3u****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The cloud computer name.
+	// The cloud desktop name.
 	//
 	// example:
 	//
 	// demo1234
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// The size of the text that is truncated and discarded when the Output value exceeds 24 KB in size.
+	// The length of the truncated and discarded text after the text length in the Output field exceeds 24 KB.
 	//
 	// example:
 	//
 	// 0
 	Dropped *int32 `json:"Dropped,omitempty" xml:"Dropped,omitempty"`
-	// The code explaining why the command failed to be sent or executed. Valid values:
+	// The error code for the command delivery failure or execution failure. Valid values:
 	//
-	// 	- Null: The command is executed successfully.
+	// - Empty: The command ran normally.
 	//
-	// 	- InstanceNotExists: The specified cloud computer does not exist or is released.
+	// - InstanceNotExists: The specified cloud desktop does not exist or has been released.
 	//
-	// 	- InstanceReleased: The cloud computer is released during the execution.
+	// - InstanceReleased: The cloud desktop was released during task execution.
 	//
-	// 	- InstanceNotRunning: The cloud computer is not running during the execution.
+	// - InstanceNotRunning: The cloud desktop was not running when the task was created.
 	//
-	// 	- CommandNotApplicable: The command cannot be executed on the specified cloud computer.
+	// - CommandNotApplicable: The command is not applicable to the specified cloud desktop.
 	//
-	// 	- ClientNotRunning: The Cloud Assistant agent is not running.
+	// - ClientNotRunning: The Cloud Assistant client is not running.
 	//
-	// 	- ClientNotResponse: The Cloud Assistant agent does not respond.
+	// - ClientNotResponse: The Cloud Assistant client is not responding.
 	//
-	// 	- ClientIsUpgrading: The Cloud Assistant agent is being updated.
+	// - ClientIsUpgrading: The Cloud Assistant client is being upgraded.
 	//
-	// 	- ClientNeedUpgrade: The Cloud Assistant agent needs to be updated.
+	// - ClientNeedUpgrade: The Cloud Assistant client needs to be upgraded.
 	//
-	// 	- DeliveryTimeout: The command sending times out.
+	// - DeliveryTimeout: Command delivery timed out.
 	//
-	// 	- ExecutionTimeout: The command execution times out.
+	// - ExecutionTimeout: Command execution timed out.
 	//
-	// 	- ExecutionException: An exception occurs when the command is being executed.
+	// - ExecutionException: An exception occurred during command execution.
 	//
-	// 	- ExecutionInterrupted: The command execution is interrupted.
+	// - ExecutionInterrupted: Command execution was interrupted.
 	//
-	// 	- ExitCodeNonzero: The command execution completes, but the exit code is not 0.
+	// - ExitCodeNonzero: Command execution completed with a non-zero exit code.
 	//
 	// example:
 	//
 	// InstanceNotExists
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The message explaining why the command failed to be sent or executed. Valid values:
+	// The detailed information about the command delivery failure or execution failure. Valid values:
 	//
-	// 	- Null: The command is executed successfully.
+	// - Empty: The command ran normally.
 	//
-	// 	- the specified instance does not exists: The specified cloud computer does not exist or is released.
+	// - the specified instance does not exists: The specified cloud desktop does not exist or has been released.
 	//
-	// 	- the instance has released when create task: The cloud computer is released during the execution.
+	// - the instance has released when create task: The cloud desktop was released during task execution.
 	//
-	// 	- the instance is not running when create task: The cloud computer is not running during the execution.
+	// - the instance is not running when create task: The cloud desktop was not running when the task was created.
 	//
-	// 	- the command is not applicable: The command cannot be executed on the specified cloud computer.
+	// - the command is not applicable: The command is not applicable to the specified cloud desktop.
 	//
-	// 	- the aliyun service is not running on the instance: The Cloud Assistant agent is not running.
+	// - the aliyun service is not running on the instance: The Cloud Assistant client is not running.
 	//
-	// 	- the aliyun service in the instance does not response: The Cloud Assistant agent does not respond.
+	// - the aliyun service in the instance does not response: The Cloud Assistant client is not responding.
 	//
-	// 	- the aliyun service in the instance is upgrading now: The Cloud Assistant agent is being updated.
+	// - the aliyun service in the instance is upgrading now: The Cloud Assistant client is being upgraded.
 	//
-	// 	- the aliyun service in the instance need upgrade: The Cloud Assistant agent needs to be updated.
+	// - the aliyun service in the instance need upgrade: The Cloud Assistant client needs to be upgraded.
 	//
-	// 	- the command delivery has been timeout: The command sending times out.
+	// - the command delivery has been timeout: Command delivery timed out.
 	//
-	// 	- the command execution has been timeout: The command execution times out.
+	// - the command execution has been timeout: Command execution timed out.
 	//
-	// 	- the command execution got an exception: An exception occurs when the command is being executed.
+	// - the command execution got an exception: An exception occurred during command execution.
 	//
-	// 	- the command execution has been interrupted: The command execution is interrupted.
+	// - the command execution has been interrupted: Command execution was interrupted.
 	//
-	// 	- the command execution exit code is not zero: The command execution completes, but the exit code is not 0.
+	// - the command execution exit code is not zero: Command execution completed with a non-zero exit code.
 	//
 	// example:
 	//
 	// The specified instance does not exist.
 	ErrorInfo *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
-	// The exit code of the execution.
+	// The exit code of the script process.
 	//
 	// example:
 	//
 	// 0
 	ExitCode *int64 `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
-	// The time when the command execution ended.
+	// The end time of the script process.
 	//
 	// example:
 	//
 	// 2020-12-20T06:15:56Z
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The execution progress of the command on a single cloud computer.
+	// The script execution status on a single cloud desktop.
 	//
 	// example:
 	//
 	// Success
 	InvocationStatus *string `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
-	// The command output.
+	JvsAgentId       *string `json:"JvsAgentId,omitempty" xml:"JvsAgentId,omitempty"`
+	// The output of the script process.
 	//
-	// 	- When the `IncludeOutput` parameter is set to false, the output is not returned.
+	// - If the request parameter `IncludeOutput` is set to false, Output is not returned.
 	//
-	// 	- When the `ContentEncoding` parameter is set to Base64, the output is returned as a Base64-encoded string.
+	// - If the request parameter `ContentEncoding` is set to Base64, Output is the Base64-encoded output.
 	//
 	// example:
 	//
 	// OutPutTestmsg
 	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// The number of times the command has been executed on the cloud computer.
+	// The number of times the command was run on the cloud desktop.
 	//
 	// example:
 	//
 	// 0
 	Repeats *int32 `json:"Repeats,omitempty" xml:"Repeats,omitempty"`
-	// The start time of the command execution.
+	// The time when the script process started running on the cloud desktop.
 	//
 	// example:
 	//
 	// 2020-12-20T06:15:55Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The stop time of the command execution (StopInvocatio).
+	// The time when execution was stopped, if StopInvocation was called.
 	//
 	// example:
 	//
 	// 2020-12-25T09:15:47Z
 	StopTime *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
-	// The time when the execution status was updated.
+	// The update time of the task status.
 	//
 	// example:
 	//
@@ -454,6 +465,10 @@ func (s *DescribeInvocationsResponseBodyInvocationsInvokeDesktops) GetFinishTime
 
 func (s *DescribeInvocationsResponseBodyInvocationsInvokeDesktops) GetInvocationStatus() *string {
 	return s.InvocationStatus
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvokeDesktops) GetJvsAgentId() *string {
+	return s.JvsAgentId
 }
 
 func (s *DescribeInvocationsResponseBodyInvocationsInvokeDesktops) GetOutput() *string {
@@ -518,6 +533,11 @@ func (s *DescribeInvocationsResponseBodyInvocationsInvokeDesktops) SetFinishTime
 
 func (s *DescribeInvocationsResponseBodyInvocationsInvokeDesktops) SetInvocationStatus(v string) *DescribeInvocationsResponseBodyInvocationsInvokeDesktops {
 	s.InvocationStatus = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvokeDesktops) SetJvsAgentId(v string) *DescribeInvocationsResponseBodyInvocationsInvokeDesktops {
+	s.JvsAgentId = &v
 	return s
 }
 

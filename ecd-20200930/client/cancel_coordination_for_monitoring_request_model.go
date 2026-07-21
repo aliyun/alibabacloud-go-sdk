@@ -20,17 +20,17 @@ type iCancelCoordinationForMonitoringRequest interface {
 }
 
 type CancelCoordinationForMonitoringRequest struct {
-	// The IDs of stream collaboration tasks.
+	// The list of coordination flow IDs.
 	//
 	// This parameter is required.
 	CoIds []*string `json:"CoIds,omitempty" xml:"CoIds,omitempty" type:"Repeated"`
-	// The ID of the end user that initiates stream collaboration. If the initiator is the administrator, skip this parameter.
+	// The ID of the end user who initiated the coordination flow. This parameter is not required if the request is initiated by an administrator.
 	//
 	// example:
 	//
 	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/436773.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
@@ -38,11 +38,7 @@ type CancelCoordinationForMonitoringRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The type of the user.
-	//
-	// Valid value:
-	//
-	// 	- TENANT_ADMIN: administrator.
+	// The user type.
 	//
 	// example:
 	//

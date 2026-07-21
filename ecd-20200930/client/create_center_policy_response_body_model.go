@@ -16,13 +16,13 @@ type iCreateCenterPolicyResponseBody interface {
 }
 
 type CreateCenterPolicyResponseBody struct {
-	// Cloud desktop policy ID.
+	// The Cloud Desktop policy ID.
 	//
 	// example:
 	//
 	// pg-gx2x1dhsmthe9****
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

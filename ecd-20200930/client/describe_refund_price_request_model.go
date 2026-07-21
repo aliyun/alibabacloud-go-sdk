@@ -20,17 +20,17 @@ type iDescribeRefundPriceRequest interface {
 }
 
 type DescribeRefundPriceRequest struct {
-	// A list of cloud desktop IDs. You can specify one or more IDs. The number of IDs (N) must be between 1 and 20.
+	// The list of cloud computer IDs. You can specify one or more IDs. Valid values of N: 1 to 20.
 	//
 	// This parameter is required.
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
-	// Refund type.
+	// The unsubscription type.
 	//
 	// example:
 	//
 	// RemainRefund
 	RefundType *string `json:"RefundType,omitempty" xml:"RefundType,omitempty"`
-	// Region ID. Call [DescribeRegions](~~DescribeRegions~~) to get a list of regions supported by WUYING Workspace.
+	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//

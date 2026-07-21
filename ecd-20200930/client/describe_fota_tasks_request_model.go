@@ -26,41 +26,35 @@ type iDescribeFotaTasksRequest interface {
 }
 
 type DescribeFotaTasksRequest struct {
-	// >  This parameter is not publicly available.
+	// > This parameter is not publicly available.
 	//
 	// example:
 	//
 	// windows
 	FotaStatus *string `json:"FotaStatus,omitempty" xml:"FotaStatus,omitempty"`
-	// The language of the image version to update.
-	//
-	// Valid values:
-	//
-	// 	- en: English.
-	//
-	// 	- zh: Simplified Chinese.
+	// The language type of the upgrade version description.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page for a paged query.
 	//
-	// 	- Valid values: 1 to 100
+	// - Maximum value: 100.
 	//
-	// 	- Default value: 20
+	// - Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. If the NextToken parameter is empty, no next page exists.
+	// The pagination token for the next query. An empty value indicates that no more results exist.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by Elastic Desktop Service.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
@@ -68,15 +62,9 @@ type DescribeFotaTasksRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IDs of the image update tasks.
+	// The list of image upgrade tasks.
 	TaskUid []*string `json:"TaskUid,omitempty" xml:"TaskUid,omitempty" type:"Repeated"`
-	// Specifies whether to automatically push the image update task.
-	//
-	// Valid values:
-	//
-	// 	- Running: automatically pushes the image update task.
-	//
-	// 	- Pending: does not automatically push the image update task.
+	// Specifies whether the image upgrade task is automatically pushed.
 	//
 	// example:
 	//

@@ -15,6 +15,8 @@ type iDescribeSnapshotsRequest interface {
 	GetDesktopId() *string
 	SetDesktopName(v string) *DescribeSnapshotsRequest
 	GetDesktopName() *string
+	SetDesktopScenario(v string) *DescribeSnapshotsRequest
+	GetDesktopScenario() *string
 	SetEndTime(v string) *DescribeSnapshotsRequest
 	GetEndTime() *string
 	SetMaxResults(v int32) *DescribeSnapshotsRequest
@@ -44,25 +46,26 @@ type DescribeSnapshotsRequest struct {
 	//
 	// Administrator
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The ID of the cloud desktop.
+	// The cloud computer ID.
 	//
 	// example:
 	//
 	// ecd-gx2x1dhsmucyy****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The name of the cloud desktop.
+	// The cloud computer name.
 	//
 	// example:
 	//
 	// testName
-	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// The end time to query for snapshots. The time follows the [ISO 8601](t10049.xdita#) standard and is in UTC. The format is `yyyy-mm-ddthh:mm:ssz`.
+	DesktopName     *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
+	DesktopScenario *string `json:"DesktopScenario,omitempty" xml:"DesktopScenario,omitempty"`
+	// The end of the time range during which the snapshot was created. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2020-11-31T06:32:31Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page for paging.
 	//
 	// - Maximum value: 100.
 	//
@@ -72,7 +75,7 @@ type DescribeSnapshotsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next page of results. This is the NextToken value from the previous API call.
+	// The pagination token. Set this parameter to the NextToken value returned in the previous API call.
 	//
 	// example:
 	//
@@ -84,7 +87,7 @@ type DescribeSnapshotsRequest struct {
 	//
 	// Windows
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	// The ID of the region. Call [](t2167755.xdita#)to get a list of regions that support Elastic Desktop Service (EDS).
+	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
@@ -98,7 +101,7 @@ type DescribeSnapshotsRequest struct {
 	//
 	// s-2ze81owrnv9pity4****
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	// The display name of the snapshot. The name must be 2 to 127 characters long. It must start with a letter. It can contain digits, underscores (_), and hyphens (-). The name cannot start with `auto` to avoid naming conflicts with automatic snapshots.
+	// The display name of the snapshot. The name must be 2 to 127 characters in length and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter or Chinese character. The name cannot start with `auto` to avoid conflicts with automatic snapshot names.
 	//
 	// example:
 	//
@@ -110,7 +113,7 @@ type DescribeSnapshotsRequest struct {
 	//
 	// user
 	SnapshotType *string `json:"SnapshotType,omitempty" xml:"SnapshotType,omitempty"`
-	// The disk from which to create the snapshot.
+	// The type of the cloud disk for which to create the snapshot.
 	//
 	// > The value is case-insensitive.
 	//
@@ -118,7 +121,7 @@ type DescribeSnapshotsRequest struct {
 	//
 	// system
 	SourceDiskType *string `json:"SourceDiskType,omitempty" xml:"SourceDiskType,omitempty"`
-	// The start time to query for snapshots. The time follows the [ISO 8601](t10049.xdita#) standard and is in UTC. The format is `yyyy-mm-ddthh:mm:ssz`.
+	// The beginning of the time range during which the snapshot was created. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time must be in UTC.
 	//
 	// example:
 	//
@@ -144,6 +147,10 @@ func (s *DescribeSnapshotsRequest) GetDesktopId() *string {
 
 func (s *DescribeSnapshotsRequest) GetDesktopName() *string {
 	return s.DesktopName
+}
+
+func (s *DescribeSnapshotsRequest) GetDesktopScenario() *string {
+	return s.DesktopScenario
 }
 
 func (s *DescribeSnapshotsRequest) GetEndTime() *string {
@@ -198,6 +205,11 @@ func (s *DescribeSnapshotsRequest) SetDesktopId(v string) *DescribeSnapshotsRequ
 
 func (s *DescribeSnapshotsRequest) SetDesktopName(v string) *DescribeSnapshotsRequest {
 	s.DesktopName = &v
+	return s
+}
+
+func (s *DescribeSnapshotsRequest) SetDesktopScenario(v string) *DescribeSnapshotsRequest {
+	s.DesktopScenario = &v
 	return s
 }
 

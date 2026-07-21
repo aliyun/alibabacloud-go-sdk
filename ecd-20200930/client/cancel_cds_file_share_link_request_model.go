@@ -16,7 +16,7 @@ type iCancelCdsFileShareLinkRequest interface {
 }
 
 type CancelCdsFileShareLinkRequest struct {
-	// The ID of the cloud disk.
+	// The enterprise drive ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type CancelCdsFileShareLinkRequest struct {
 	//
 	// cn-hangzhou+cds-352282****
 	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
-	// The ID of the file sharing task.
+	// The share ID.
 	//
 	// This parameter is required.
 	//

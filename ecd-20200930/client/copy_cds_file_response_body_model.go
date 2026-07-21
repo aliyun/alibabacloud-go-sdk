@@ -22,15 +22,15 @@ type iCopyCdsFileResponseBody interface {
 }
 
 type CopyCdsFileResponseBody struct {
-	// The operation result. The value success indicates that the operation is successful. If the operation failed, an error message is returned.
+	// The execution result. A value of `success` indicates success. Otherwise, an error message is returned.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details about the file copying.
+	// The result of copying the file.
 	CopyCdsFileModel *CopyCdsFileResponseBodyCopyCdsFileModel `json:"CopyCdsFileModel,omitempty" xml:"CopyCdsFileModel,omitempty" type:"Struct"`
-	// The error message that is returned. This parameter is not returned if the value of Code is success.
+	// The error message. This parameter is not returned if Code is `success`.
 	//
 	// example:
 	//
@@ -42,25 +42,7 @@ type CopyCdsFileResponseBody struct {
 	//
 	// 93AD30C1-16B8-5C54-AD23-A51FF53F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
-	//
-	// Valid values:
-	//
-	// - true
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	// - false
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//
@@ -131,13 +113,13 @@ func (s *CopyCdsFileResponseBody) Validate() error {
 }
 
 type CopyCdsFileResponseBodyCopyCdsFileModel struct {
-	// The ID of the asynchronous task. This parameter is not returned if you copy a file. This parameter is returned if you copy a folder in the backend in an asynchronous manner. You can call the GetAsyncTask operation to obtain the ID and details of an asynchronous task.
+	// The asynchronous task ID. This field is not returned when a file is copied. When a folder is copied, the copy operation is performed asynchronously in the background, so this field is returned. You can call [GetAsyncTask](https://help.aliyun.com/document_detail/2357404.html) and pass in this asynchronous task ID to obtain the task details.
 	//
 	// example:
 	//
 	// 4221bf6e6ab43a255edc4463bffa6f5f5d31****
 	AsyncTaskId *string `json:"AsyncTaskId,omitempty" xml:"AsyncTaskId,omitempty"`
-	// The ID of the copied file or folder.
+	// The ID of the new file or folder after the copy operation.
 	//
 	// example:
 	//

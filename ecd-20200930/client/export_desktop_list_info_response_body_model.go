@@ -16,13 +16,13 @@ type iExportDesktopListInfoResponseBody interface {
 }
 
 type ExportDesktopListInfoResponseBody struct {
-  // The ID of the request.
+  // The request ID.
   // 
   // example:
   // 
   // 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // The URL of the exported file of the cloud computer list.
+  // The download URL of the exported cloud desktop list file.
   // 
   // example:
   // 

@@ -24,19 +24,13 @@ type iCloneCenterPolicyRequest interface {
 type CloneCenterPolicyRequest struct {
 	// The business type.
 	//
-	// Valid values:
-	//
-	// - 1: public cloud
-	//
-	// - 8: commercial edition.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	BusinessType *int32 `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// The name of the cloud computer policy that you want to clone.
+	// The policy name.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +38,7 @@ type CloneCenterPolicyRequest struct {
 	//
 	// testPolicyGroupName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the cloud computer policy that you want to clone.
+	// The ID of the target cloud computer policy to clone.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +46,7 @@ type CloneCenterPolicyRequest struct {
 	//
 	// pg-gx2x1dhsmthe9****
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	// The region ID. Set the value to cn-shanghai.
+	// The region ID. This feature is region-independent. Set this parameter to cn-shanghai.
 	//
 	// This parameter is required.
 	//
@@ -61,12 +55,6 @@ type CloneCenterPolicyRequest struct {
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource type.
-	//
-	// Valid values:
-	//
-	// - app: cloud applications.
-	//
-	// - desktop: cloud computers.
 	//
 	// This parameter is required.
 	//

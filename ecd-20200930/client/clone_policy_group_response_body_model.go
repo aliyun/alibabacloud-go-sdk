@@ -22,7 +22,7 @@ type ClonePolicyGroupResponseBody struct {
 	//
 	// pg-7jcaznnx6go6n****
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

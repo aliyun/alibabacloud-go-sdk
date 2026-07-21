@@ -22,45 +22,27 @@ type iMoveCdsFileResponseBody interface {
 }
 
 type MoveCdsFileResponseBody struct {
-	// The result of the modification. A value of success indicates that the modification is successful. If the modification failed, an error message is returned.
+	// The execution result. The value `success` indicates that the operation is successful. Otherwise, an error message is returned.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message that is returned. This parameter is not returned if the value of Code is success.
+	// The error message. This parameter is not returned if Code is `success`.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The response object when you move a file.
+	// The result of the move file operation.
 	MoveCdsFileModel *MoveCdsFileResponseBodyMoveCdsFileModel `json:"MoveCdsFileModel,omitempty" xml:"MoveCdsFileModel,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
-	//
-	// Valid values:
-	//
-	// 	- <!-- -->
-	//
-	//     true
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- <!-- -->
-	//
-	//     false
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//
@@ -131,37 +113,19 @@ func (s *MoveCdsFileResponseBody) Validate() error {
 }
 
 type MoveCdsFileResponseBodyMoveCdsFileModel struct {
-	// The ID of the asynchronous task. This parameter is not returned if you copy files. This parameter is returned if you copy folders in the backend in an asynchronous manner. You can call the GetAsyncTask operation to obtain the ID and details of an asynchronous task.
+	// The asynchronous task ID. This field is not returned when a file is copied. When a folder is copied, the copy operation is performed asynchronously in the background, so this field is returned. You can call [GetAsyncTask](https://help.aliyun.com/document_detail/2357404.html) and pass in this asynchronous task ID to obtain the task details.
 	//
 	// example:
 	//
 	// fe307518-825a-4c8b-a69c-958f0e8a****
 	AsyncTaskId *string `json:"AsyncTaskId,omitempty" xml:"AsyncTaskId,omitempty"`
-	// Indicates whether the file exists.
-	//
-	// Valid values:
-	//
-	// 	- <!-- -->
-	//
-	//     true
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- <!-- -->
-	//
-	//     false
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// Indicates whether the file already exists.
 	//
 	// example:
 	//
 	// false
 	Exist *bool `json:"Exist,omitempty" xml:"Exist,omitempty"`
-	// The ID of the file.
+	// The file ID.
 	//
 	// example:
 	//

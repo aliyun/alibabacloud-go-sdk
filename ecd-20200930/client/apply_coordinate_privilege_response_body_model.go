@@ -14,7 +14,7 @@ type iApplyCoordinatePrivilegeResponseBody interface {
 }
 
 type ApplyCoordinatePrivilegeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

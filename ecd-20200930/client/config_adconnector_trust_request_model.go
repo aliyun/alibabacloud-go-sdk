@@ -20,7 +20,7 @@ type iConfigADConnectorTrustRequest interface {
 }
 
 type ConfigADConnectorTrustRequest struct {
-	// The ID of the enterprise AD office network.
+	// The ID of the AD office network.
 	//
 	// This parameter is required.
 	//
@@ -28,19 +28,13 @@ type ConfigADConnectorTrustRequest struct {
 	//
 	// cn-hangzhou+dir-778418****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// Specifies whether to configure a trust password for the Remote Desktop Services (RDS) License Domain of the enterprise AD office network.
-	//
-	// Valid values:
-	//
-	// 	- true: configures a trust password for the RDS License Domain of the AD office network.
-	//
-	// 	- false: configures a trust password for a regular enterprise AD office network.
+	// Specifies whether to configure the trust password for the RDS License Domain of the AD office network.
 	//
 	// example:
 	//
 	// true
 	RdsLicenseDomain *bool `json:"RdsLicenseDomain,omitempty" xml:"RdsLicenseDomain,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +42,7 @@ type ConfigADConnectorTrustRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The trust password. You can specify the password when you configure a trust relationship between the AD domain and the ecd.acs domain.
+	// The trust password. This password is the one that you specified when you configured the trust relationship (that is, established a trust relationship with ecd.acs) in the AD domain.
 	//
 	// This parameter is required.
 	//

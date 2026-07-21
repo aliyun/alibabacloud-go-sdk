@@ -30,31 +30,13 @@ type iCopyCdsFileRequest interface {
 }
 
 type CopyCdsFileRequest struct {
-	// Specifies whether to automatically rename the file if a file that has the same name exists in the folder to which you want to copy the file. Default value: false.
-	//
-	// Valid values:
-	//
-	// - true
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	// - false
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
+	// Specifies whether to automatically rename the file when a file with the same name exists in the destination folder.
 	//
 	// example:
 	//
 	// true
 	AutoRename *bool `json:"AutoRename,omitempty" xml:"AutoRename,omitempty"`
-	// The ID of the cloud disk.
+	// The enterprise cloud drive ID.
 	//
 	// This parameter is required.
 	//
@@ -62,13 +44,13 @@ type CopyCdsFileRequest struct {
 	//
 	// cn-hangzhou+cds-352282****
 	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
-	// The user ID that you want to use to access the cloud disk.
+	// The ID of the user who is logged on to the cloud drive.
 	//
 	// example:
 	//
 	// user01
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The file ID. You can call the CreateCdsFile operation to query the file ID.
+	// The file ID. You can call [ListCdsFiles](https://help.aliyun.com/document_detail/2247622.html) to query the ID of the file.
 	//
 	// This parameter is required.
 	//
@@ -76,27 +58,27 @@ type CopyCdsFileRequest struct {
 	//
 	// 640985a0ca2f71f489d2497682ca0bf468de****
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// 目标复制文件所在的个人空间 ID（即 UserId，您可以在 DescribeCloudDriveUsers 接口返回的报文中获取。）或者目标复制文件所在的团队空间 ID（即 GroupId，您可以在 DescribeCloudDriveGroups 接口返回的报文中获取。）
+	// The ID of the personal drive (which can be obtained from the `UserId` response parameter of the [DescribeCloudDriveUsers](https://help.aliyun.com/document_detail/2357237.html) operation) or the team space ID (which can be obtained from the `GroupId` response parameter of the [DescribeCloudDriveGroups](https://help.aliyun.com/document_detail/609896.html) operation) at the copy destination.
 	//
-	// > FileReceiverId 和 FileReceiverType 都为空时，默认复制到文件所在的个人空间。
+	// > If both `FileReceiverId` and `FileReceiverType` are empty, the file is copied to the personal drive where the file currently resides by default.
 	//
 	// example:
 	//
 	// user02
 	FileReceiverId *string `json:"FileReceiverId,omitempty" xml:"FileReceiverId,omitempty"`
-	// 文件所属的空间类型。
+	// The type of space to which the file belongs.
 	//
 	// example:
 	//
 	// user
 	FileReceiverType *string `json:"FileReceiverType,omitempty" xml:"FileReceiverType,omitempty"`
-	// The team Space ID.
+	// The team space ID.
 	//
 	// example:
 	//
 	// cg-hs3i1w39o68ma****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the parent folder of the folder to which you want to copy the file. If you want to copy the file to the root directory, set this parameter to root.
+	// The ID of the parent folder at the copy destination. You can call [ListCdsFiles](https://help.aliyun.com/document_detail/2247622.html) to query the ID of the folder. Set this parameter to `root` if you want to copy the file to the root directory.
 	//
 	// This parameter is required.
 	//
@@ -104,7 +86,7 @@ type CopyCdsFileRequest struct {
 	//
 	// root
 	ParentFolderId *string `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//

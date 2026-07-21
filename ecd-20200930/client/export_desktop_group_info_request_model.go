@@ -36,69 +36,63 @@ type iExportDesktopGroupInfoRequest interface {
 }
 
 type ExportDesktopGroupInfoRequest struct {
-  // The billing method of the cloud computer share.
-  // 
-  // Valid values:
-  // 
-  // - PostPaid: pay-as-you-go.
-  // 
-  // - PrePaid: subscription.
+  // The billing method of the shared cloud desktops.
   // 
   // example:
   // 
   // PrePaid
   ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-  // The IDs of the cloud computer shares.
+  // The list of shared cloud desktop IDs.
   DesktopGroupId []*string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty" type:"Repeated"`
-  // The name of the cloud computer share.
+  // The name of the shared cloud desktop.
   // 
   // example:
   // 
   // CloudComputerPool01
   DesktopGroupName *string `json:"DesktopGroupName,omitempty" xml:"DesktopGroupName,omitempty"`
-  // The IDs of the users to be authorized.
+  // The list of authorized user IDs for the shared cloud desktops.
   EndUserId []*string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
-  // The expiration date of the subscription cloud computer share.
+  // The expiration time of the subscription shared cloud desktops.
   // 
   // example:
   // 
   // 2022-12-31T15:59Z
   ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-  // The language of the response.
+  // The language type.
   // 
   // example:
   // 
   // zh-CN
   LangType *string `json:"LangType,omitempty" xml:"LangType,omitempty"`
-  // The number of entries to return on each page.
+  // The number of entries per page for a paged query.    
   // 
-  // Maximum value: 100.
+  // - Maximum value: 100.
   // 
-  // Default value: 10.
+  // - Default value: 10.
   // 
   // example:
   // 
   // 10
   MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-  // The token that determines the start point of the next query. If this parameter is left empty, all results are returned.
+  // The pagination token for the next query. An empty value indicates that no more results exist.
   // 
   // example:
   // 
   // caeba0bbb2be03f84eb48b699f0a4883
   NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-  // The ID of the office network.
+  // The ID of the office network to which the shared cloud desktops belong.
   // 
   // example:
   // 
   // cn-hangzhou+dir-467671****
   OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-  // The ID of the security policy.
+  // The ID of the policy associated with the shared cloud desktops.
   // 
   // example:
   // 
   // pg-53iyi2aar0nd6****
   PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-  // The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by Elastic Desktop Service.
+  // The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by WUYING Workspace.
   // 
   // This parameter is required.
   // 
@@ -106,7 +100,7 @@ type ExportDesktopGroupInfoRequest struct {
   // 
   // cn-hangzhou
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-  // The tags. You can specify up to 20 tags.
+  // The list of tags. A maximum of 20 tags can be specified.
   Tag []*ExportDesktopGroupInfoRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -240,13 +234,13 @@ func (s *ExportDesktopGroupInfoRequest) Validate() error {
 }
 
 type ExportDesktopGroupInfoRequestTag struct {
-  // The tag key. You cannot specify an empty string as a tag key. A tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
+  // The tag key. This parameter cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
   // 
   // example:
   // 
   // TestKey
   Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-  // The tag value. You can specify an empty string as a tag key. A tag value can be up to 128 characters in length and cannot start with `acs:`. The tag value cannot contain `http://` or `https://`.
+  // The tag value. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`. It cannot contain `http://` or `https://`.
   // 
   // example:
   // 

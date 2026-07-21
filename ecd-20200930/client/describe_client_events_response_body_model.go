@@ -15,12 +15,14 @@ type iDescribeClientEventsResponseBody interface {
 	GetNextToken() *string
 	SetRequestId(v string) *DescribeClientEventsResponseBody
 	GetRequestId() *string
+	SetTotalCount(v int32) *DescribeClientEventsResponseBody
+	GetTotalCount() *int32
 }
 
 type DescribeClientEventsResponseBody struct {
-	// The list of user events.
+	// The user events.
 	Events []*DescribeClientEventsResponseBodyEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
-	// The pagination token. If this parameter is empty, all results have been returned.
+	// The pagination token for the next query. If NextToken is empty, no more results exist.
 	//
 	// example:
 	//
@@ -31,7 +33,8 @@ type DescribeClientEventsResponseBody struct {
 	// example:
 	//
 	// 28A40F12-F340-442B-A35F-46EF6A03227B
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeClientEventsResponseBody) String() string {
@@ -54,6 +57,10 @@ func (s *DescribeClientEventsResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *DescribeClientEventsResponseBody) GetTotalCount() *int32 {
+	return s.TotalCount
+}
+
 func (s *DescribeClientEventsResponseBody) SetEvents(v []*DescribeClientEventsResponseBodyEvents) *DescribeClientEventsResponseBody {
 	s.Events = v
 	return s
@@ -66,6 +73,11 @@ func (s *DescribeClientEventsResponseBody) SetNextToken(v string) *DescribeClien
 
 func (s *DescribeClientEventsResponseBody) SetRequestId(v string) *DescribeClientEventsResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeClientEventsResponseBody) SetTotalCount(v int32) *DescribeClientEventsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -83,31 +95,31 @@ func (s *DescribeClientEventsResponseBody) Validate() error {
 }
 
 type DescribeClientEventsResponseBodyEvents struct {
-	// The ID of the Alibaba Cloud account associated with the event.
+	// The Alibaba Cloud account associated with the event.
 	//
 	// example:
 	//
 	// 112259558861****
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The number of bytes received.
+	// The number of bytes received. Unit: bytes.
 	//
 	// example:
 	//
 	// 8665
 	BytesReceived *string `json:"BytesReceived,omitempty" xml:"BytesReceived,omitempty"`
-	// The number of bytes sent.
+	// The number of bytes sent. Unit: bytes.
 	//
 	// example:
 	//
 	// 2345
 	BytesSend *string `json:"BytesSend,omitempty" xml:"BytesSend,omitempty"`
-	// The IP address of the client.
+	// The client IP address.
 	//
 	// example:
 	//
 	// 100.68.*.*
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	// The operating system of the client.
+	// The client operating system.
 	//
 	// example:
 	//
@@ -119,43 +131,43 @@ type DescribeClientEventsResponseBodyEvents struct {
 	//
 	// 1.0.4 202012021700
 	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
-	// The description of the event.
+	// The description.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the desktop group.
+	// The cloud computer pool ID.
 	//
 	// example:
 	//
 	// dg-kadkdfaf****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// The name of the desktop group.
+	// The cloud computer pool name.
 	//
 	// example:
 	//
 	// testName
 	DesktopGroupName *string `json:"DesktopGroupName,omitempty" xml:"DesktopGroupName,omitempty"`
-	// The ID of the cloud desktop.
+	// The cloud computer ID.
 	//
 	// example:
 	//
 	// ecd-8fupvkhg0aayu****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The IP address of the cloud desktop.
+	// The IP address of the cloud computer.
 	//
 	// example:
 	//
 	// 10.10.XX.XX
 	DesktopIp *string `json:"DesktopIp,omitempty" xml:"DesktopIp,omitempty"`
-	// The name of the cloud desktop.
+	// The name of the cloud computer.
 	//
 	// example:
 	//
 	// test
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// The ID of the cloud desktop\\"s directory.
+	// The directory ID to which the cloud computer belongs.
 	//
 	// example:
 	//
@@ -167,7 +179,7 @@ type DescribeClientEventsResponseBodyEvents struct {
 	//
 	// RAM
 	DirectoryType *string `json:"DirectoryType,omitempty" xml:"DirectoryType,omitempty"`
-	// The ID of the end user. The value can be the ID of a RAM user or the username of an AD user.
+	// The logon user information, which is a Resource Access Management (RAM) user ID or AD username.
 	//
 	// example:
 	//
@@ -179,7 +191,7 @@ type DescribeClientEventsResponseBodyEvents struct {
 	//
 	// 5651188b-3070-d1cc-5311-75753d59****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The time the event occurred.
+	// The time when the event occurred.
 	//
 	// example:
 	//
@@ -191,19 +203,19 @@ type DescribeClientEventsResponseBodyEvents struct {
 	//
 	// DESKTOP_DISCONNECT
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The ID of the cloud desktop\\"s office site.
+	// The ID of the office network to which the cloud computer belongs.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-bh77qa8nmjot4****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The name of the office site.
+	// The name of the office network.
 	//
 	// example:
 	//
 	// test
 	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
-	// The type of account system for the office site.
+	// The account system type of the office network.
 	//
 	// example:
 	//
@@ -215,11 +227,11 @@ type DescribeClientEventsResponseBodyEvents struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The status of the event. This parameter is returned for `DESKTOP_DISCONNECT` and `GET_CONNECTION_TICKET` events. Valid values:
+	// The status of the event action. This field typically appears in `DESKTOP_DISCONNECT` and `GET_CONNECTION_TICKET` events. Valid values:
 	//
-	// - `200`: Success.
+	// - 200: success.
 	//
-	// - An error message, such as `FailedToGetConnectionTicket`.
+	// - A failure message is returned, such as FailedToGetConnectionTicket.
 	//
 	// example:
 	//

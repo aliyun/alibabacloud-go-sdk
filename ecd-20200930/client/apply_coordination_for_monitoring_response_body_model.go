@@ -16,7 +16,7 @@ type iApplyCoordinationForMonitoringResponseBody interface {
 }
 
 type ApplyCoordinationForMonitoringResponseBody struct {
-	// The list of stream collaboration models.
+	// The list of coordination flow data.
 	CoordinateFlowModels []*ApplyCoordinationForMonitoringResponseBodyCoordinateFlowModels `json:"CoordinateFlowModels,omitempty" xml:"CoordinateFlowModels,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,61 +66,51 @@ func (s *ApplyCoordinationForMonitoringResponseBody) Validate() error {
 }
 
 type ApplyCoordinationForMonitoringResponseBodyCoordinateFlowModels struct {
-	// The ID of the stream collaboration.
+	// The coordination flow ID.
 	//
 	// example:
 	//
 	// co-0sot77uale3****
 	CoId *string `json:"CoId,omitempty" xml:"CoId,omitempty"`
-	// The current status of the collaboration task.
+	// The current coordination status.
 	//
-	// Valid values:
+	// [_single.resp.200.props.CoordinateFlowModels.items.CoordinateStatus.enum.COORDINATING  ]coordinating
 	//
-	// - COORDINATING: The collaboration task is being executed.
+	// [_single.resp.200.props.CoordinateFlowModels.items.CoordinateStatus.enum.TERMINATING  ] terminating
 	//
-	// - TERMINATING: The collaboration task is being terminated.
+	// [_single.resp.200.props.CoordinateFlowModels.items.CoordinateStatus.enum.TERMINATED ]terminated
 	//
-	// - TERMINATED: The collaboration task is terminated.
-	//
-	// - PENDING: The collaboration task is pending to be executed.
+	// [_single.resp.200.props.CoordinateFlowModels.items.CoordinateStatus.enum.PENDING ]pending acceptance
 	//
 	// example:
 	//
 	// PENDING
 	CoordinateStatus *string `json:"CoordinateStatus,omitempty" xml:"CoordinateStatus,omitempty"`
-	// The ticket that is used to establish the Adaptive Streaming Protocol (ASP)-based connection.
+	// The ticket used by ASP to establish a connection.
 	//
 	// example:
 	//
 	// 1VDQ0VTUw0KW0Rlc2t0b3BdDQpHV1Rva2VuPTAwTzgwL3liS25zUEVGdkF6eU1Pc1ExeHZWdmk4VEE3NFJvU1V1d0dPYm1BNkNJWklDMHVNQklWcjU2NS80S0ZQekQ4aGFTR0ZHelZqMTFGbkRpWWgvUFF1Zm1xSXNGdFRFNFRWMExJNit3TkU0L2RMb04wNXBBSE5Tc3M4dWFXY3lwWE****
 	CoordinateTicket *string `json:"CoordinateTicket,omitempty" xml:"CoordinateTicket,omitempty"`
-	// The type of the initiator.
-	//
-	// Valid values:
-	//
-	// - ADMIN_INITIATE_FORCE: The administrator forcibly initiates the collaboration request.
-	//
-	// - ADMIN_INITIATE: The administrator initiates the collaboration request.
-	//
-	// - COORDINATOR_INITIATE_FORCE: The coordinator forcibly initiates the collaboration request.
+	// The initiator type.
 	//
 	// example:
 	//
 	// COORDINATOR_INITIATE_FORCE
 	InitiatorType *string `json:"InitiatorType,omitempty" xml:"InitiatorType,omitempty"`
-	// The ID of the Alibaba Cloud account of the end user.
+	// The Alibaba Cloud account ID of the user on the user side.
 	//
 	// example:
 	//
 	// alice
 	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
-	// The ID of the cloud desktop.
+	// The cloud computer ID.
 	//
 	// example:
 	//
 	// ecd-96vi03f9emqnl****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The name of the cloud desktop.
+	// The cloud computer name.
 	//
 	// example:
 	//

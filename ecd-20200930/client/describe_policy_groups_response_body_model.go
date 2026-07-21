@@ -272,6 +272,11 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	// null
 	FileTransfer              *string `json:"FileTransfer,omitempty" xml:"FileTransfer,omitempty"`
 	FileTransferAddress       *string `json:"FileTransferAddress,omitempty" xml:"FileTransferAddress,omitempty"`
+	FileTransferInSize        *int32  `json:"FileTransferInSize,omitempty" xml:"FileTransferInSize,omitempty"`
+	FileTransferInUnit        *string `json:"FileTransferInUnit,omitempty" xml:"FileTransferInUnit,omitempty"`
+	FileTransferOutSize       *int32  `json:"FileTransferOutSize,omitempty" xml:"FileTransferOutSize,omitempty"`
+	FileTransferOutUnit       *string `json:"FileTransferOutUnit,omitempty" xml:"FileTransferOutUnit,omitempty"`
+	FileTransferSizeLimit     *string `json:"FileTransferSizeLimit,omitempty" xml:"FileTransferSizeLimit,omitempty"`
 	FileTransferSpeed         *string `json:"FileTransferSpeed,omitempty" xml:"FileTransferSpeed,omitempty"`
 	FileTransferSpeedLocation *string `json:"FileTransferSpeedLocation,omitempty" xml:"FileTransferSpeedLocation,omitempty"`
 	// Whether to enable the image quality policy for graphics-specification cloud computers. Enable this policy if you have high requirements for cloud computer performance and user experience, such as in professional design scenarios.
@@ -919,6 +924,26 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetFileTransferAd
 	return s.FileTransferAddress
 }
 
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetFileTransferInSize() *int32 {
+	return s.FileTransferInSize
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetFileTransferInUnit() *string {
+	return s.FileTransferInUnit
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetFileTransferOutSize() *int32 {
+	return s.FileTransferOutSize
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetFileTransferOutUnit() *string {
+	return s.FileTransferOutUnit
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetFileTransferSizeLimit() *string {
+	return s.FileTransferSizeLimit
+}
+
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetFileTransferSpeed() *string {
 	return s.FileTransferSpeed
 }
@@ -1532,6 +1557,31 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetFileTransfer(v
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetFileTransferAddress(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.FileTransferAddress = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetFileTransferInSize(v int32) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.FileTransferInSize = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetFileTransferInUnit(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.FileTransferInUnit = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetFileTransferOutSize(v int32) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.FileTransferOutSize = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetFileTransferOutUnit(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.FileTransferOutUnit = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetFileTransferSizeLimit(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.FileTransferSizeLimit = &v
 	return s
 }
 

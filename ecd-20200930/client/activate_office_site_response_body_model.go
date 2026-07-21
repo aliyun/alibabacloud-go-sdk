@@ -14,7 +14,7 @@ type iActivateOfficeSiteResponseBody interface {
 }
 
 type ActivateOfficeSiteResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

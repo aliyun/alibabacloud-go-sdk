@@ -18,7 +18,7 @@ type iClonePolicyGroupRequest interface {
 }
 
 type ClonePolicyGroupRequest struct {
-	// The name of the cloud computer policy that you want to create.
+	// The name of the new cloud computer policy.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type ClonePolicyGroupRequest struct {
 	//
 	// testPolicyGroupName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the destination cloud computer policy that you want to clone.
+	// The ID of the cloud computer policy that you want to clone.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type ClonePolicyGroupRequest struct {
 	//
 	// pg-gx2x1dhsmthe9****
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions supported by Elastic Desktop Service (EDS).
+	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//

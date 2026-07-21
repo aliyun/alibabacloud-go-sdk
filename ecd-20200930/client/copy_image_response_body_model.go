@@ -16,13 +16,13 @@ type iCopyImageResponseBody interface {
 }
 
 type CopyImageResponseBody struct {
-	// The ID of the image that is being copied.
+	// The image ID in the destination region.
 	//
 	// example:
 	//
 	// m-2g65ljy3ynrdq****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

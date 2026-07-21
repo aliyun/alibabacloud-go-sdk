@@ -16,9 +16,9 @@ type iDescribeCloudDrivePermissionsResponseBody interface {
 }
 
 type DescribeCloudDrivePermissionsResponseBody struct {
-	// List of enterprise cloud drive permission information.
+	// The list of permission settings for the enterprise cloud drive.
 	CloudDrivePermissionModels []*DescribeCloudDrivePermissionsResponseBodyCloudDrivePermissionModels `json:"CloudDrivePermissionModels,omitempty" xml:"CloudDrivePermissionModels,omitempty" type:"Repeated"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,9 +66,15 @@ func (s *DescribeCloudDrivePermissionsResponseBody) Validate() error {
 }
 
 type DescribeCloudDrivePermissionsResponseBodyCloudDrivePermissionModels struct {
-	// List of end user IDs.
+	// The list of end user IDs.
 	EndUsers []*string `json:"EndUsers,omitempty" xml:"EndUsers,omitempty" type:"Repeated"`
-	// File transfer permission between the enterprise cloud drive and on-premises devices for the user.
+	// The file transfer permission between the enterprise cloud drive and the on-premises device for the user. Valid values:
+	//
+	// - CDS_CREATE_DOWNLOAD: has both upload and download permissions.
+	//
+	// - CDS_DOWNLOAD: has only download permission.
+	//
+	// - CDS_CREATE: has only upload permission.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iDissociateNetworkPackageResponseBody interface {
 }
 
 type DissociateNetworkPackageResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -45,27 +45,28 @@ type iDescribeGlobalDesktopRecordsRequest interface {
 	GetStartTime() *string
 	SetSubPayType(v string) *DescribeGlobalDesktopRecordsRequest
 	GetSubPayType() *string
+	SetUserNames(v []*string) *DescribeGlobalDesktopRecordsRequest
+	GetUserNames() []*string
 }
 
 type DescribeGlobalDesktopRecordsRequest struct {
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
-	// The IDs of the cloud desktops. You can specify up to 100 IDs.
+	// The cloud desktop IDs. You can specify 1 to 100 IDs.
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
-	// The name of the cloud desktop.
+	// The cloud desktop name.
 	//
 	// example:
 	//
 	// DemoComputer
-	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// The ID of the resource group.
+	DesktopName       *string   `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
 	DesktopStatusList []*string `json:"DesktopStatusList,omitempty" xml:"DesktopStatusList,omitempty" type:"Repeated"`
-	// The desktop type. You can call the [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) operation to query the IDs of the supported desktop types.
+	// The cloud desktop type. You can call [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) to query the supported cloud desktop type IDs.
 	//
 	// example:
 	//
 	// eds.enterprise_office.2c4g
 	DesktopType *string `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
-	// The end time of the query. The time must be in UTC and in the `YYYY-MM-DDThh:mm:ssZ` format. The interval between the start and end times cannot exceed 30 days.
+	// The end time. The maximum interval between the start time and end time is 30 days. Supported format:
 	//
 	// - Format: YYYY-MM-DDThh:mm:ssZ.
 	//
@@ -73,38 +74,30 @@ type DescribeGlobalDesktopRecordsRequest struct {
 	//
 	// 2022-08-31T06:56:45Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the end user.
-	//
-	// - Asc: ascending order
-	//
-	// - Desc: descending order
+	// The end user ID.
 	//
 	// example:
 	//
 	// TestUser
 	EndUserId                *string   `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	ExcludeDesktopStatusList []*string `json:"ExcludeDesktopStatusList,omitempty" xml:"ExcludeDesktopStatusList,omitempty" type:"Repeated"`
-	// The ID of the office site.
-	//
-	// - China (Shanghai)
-	//
-	// - Singapore
+	// The office network ID.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-363353****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The field by which to sort the results. If you do not specify this parameter, the results are sorted by creation time in descending order. Valid value:
+	// The sort field. If not specified, results are sorted by creation time in descending order. Valid values:
 	//
-	// - `uptime`: Sorts the results by cloud desktop uptime.
+	// - uptime: sorts by cloud desktop uptime.
 	//
 	// example:
 	//
 	// uptime
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The page number to return.<br>Default value: 1.<br>
+	// The page number for a paged query.
 	//
-	// - Format: YYYY-MM-DDThh:mm:ssZ.
+	// Default value: 1.
 	//
 	// example:
 	//
@@ -116,7 +109,7 @@ type DescribeGlobalDesktopRecordsRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region.
+	// The region ID. Valid values:
 	//
 	// - Shanghai
 	//
@@ -128,33 +121,33 @@ type DescribeGlobalDesktopRecordsRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-3mtuc28rx95lx****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The query scope. This parameter is empty by default. Valid value:
+	// The query scope. This parameter is empty by default. Valid values:
 	//
-	// - `ADVANCED`: Queries statistical records, such as connection duration.
-	//
-	// - postPaid: Pay-as-you-go.
-	//
-	// - monthPackage: monthly time-based package.
+	// - ADVANCED: queries statistical records such as connection duration.
 	//
 	// example:
 	//
 	// ADVANCED
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The sort order. The default is `Asc`. Valid values:
+	// The sort order. Default value: ascending order. Valid values:
 	//
-	// - `Asc`: ascending order
+	// - Asc: ascending order.
+	//
+	// - Desc: descending order.
 	//
 	// example:
 	//
 	// Asc
 	SortType *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
-	// The start time of the query. The time must be in UTC and in the `YYYY-MM-DDThh:mm:ssZ` format.
+	// The start time. Supported format:
+	//
+	// - Format: YYYY-MM-DDThh:mm:ssZ.
 	//
 	// example:
 	//
@@ -162,10 +155,17 @@ type DescribeGlobalDesktopRecordsRequest struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The billing method of the cloud desktop. Valid values:
 	//
+	// - prePaid: monthly subscription with unlimited usage duration.
+	//
+	// - postPaid: pay-as-you-go.
+	//
+	// - monthPackage: monthly duration package.
+	//
 	// example:
 	//
 	// monthPackage
-	SubPayType *string `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
+	SubPayType *string   `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
+	UserNames  []*string `json:"UserNames,omitempty" xml:"UserNames,omitempty" type:"Repeated"`
 }
 
 func (s DescribeGlobalDesktopRecordsRequest) String() string {
@@ -246,6 +246,10 @@ func (s *DescribeGlobalDesktopRecordsRequest) GetStartTime() *string {
 
 func (s *DescribeGlobalDesktopRecordsRequest) GetSubPayType() *string {
 	return s.SubPayType
+}
+
+func (s *DescribeGlobalDesktopRecordsRequest) GetUserNames() []*string {
+	return s.UserNames
 }
 
 func (s *DescribeGlobalDesktopRecordsRequest) SetBusinessChannel(v string) *DescribeGlobalDesktopRecordsRequest {
@@ -335,6 +339,11 @@ func (s *DescribeGlobalDesktopRecordsRequest) SetStartTime(v string) *DescribeGl
 
 func (s *DescribeGlobalDesktopRecordsRequest) SetSubPayType(v string) *DescribeGlobalDesktopRecordsRequest {
 	s.SubPayType = &v
+	return s
+}
+
+func (s *DescribeGlobalDesktopRecordsRequest) SetUserNames(v []*string) *DescribeGlobalDesktopRecordsRequest {
+	s.UserNames = v
 	return s
 }
 

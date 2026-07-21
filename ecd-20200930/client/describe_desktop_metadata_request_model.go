@@ -27,6 +27,8 @@ type iDescribeDesktopMetadataRequest interface {
 	GetKeyword() *string
 	SetMaxResults(v int32) *DescribeDesktopMetadataRequest
 	GetMaxResults() *int32
+	SetNetworkInterfaceIp(v string) *DescribeDesktopMetadataRequest
+	GetNetworkInterfaceIp() *string
 	SetNextToken(v string) *DescribeDesktopMetadataRequest
 	GetNextToken() *string
 	SetOfficeSiteId(v string) *DescribeDesktopMetadataRequest
@@ -40,21 +42,23 @@ type iDescribeDesktopMetadataRequest interface {
 }
 
 type DescribeDesktopMetadataRequest struct {
-	// The creation time of the cloud computer. The time must be in the `yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\"` format and in UTC.
+	// The time when the cloud desktop was created. The time is in UTC format:
+	//
+	// `yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\"`.
 	//
 	// example:
 	//
 	// 2025-01-01T12:00:00Z
 	CreationTimeStart *string `json:"CreationTimeStart,omitempty" xml:"CreationTimeStart,omitempty"`
-	// A list of cloud computer IDs.
+	// The list of cloud desktop IDs.
 	DesktopIds []*string `json:"DesktopIds,omitempty" xml:"DesktopIds,omitempty" type:"Repeated"`
-	// The ID of the end user.
+	// The end user ID.
 	//
 	// example:
 	//
 	// test-user
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The ID of the cloud computer share.
+	// The shared cloud desktop ID.
 	//
 	// example:
 	//
@@ -66,43 +70,46 @@ type DescribeDesktopMetadataRequest struct {
 	//
 	// ASW-2F-SRV-YXYZ-4.SHPTG
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The ID of the image.
+	// The image ID.
 	//
 	// example:
 	//
 	// m-gx2x1dhsmusr2****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// Specifies whether to include cloud computers in cloud computer shares in the response.
+	// Specifies whether the response includes cloud desktops in shared cloud desktop groups.
 	//
 	// example:
 	//
 	// false
 	IncludeDesktopGroup *bool `json:"IncludeDesktopGroup,omitempty" xml:"IncludeDesktopGroup,omitempty"`
-	// > This parameter is not yet available.
+	// >This parameter is not yet available.
 	//
 	// example:
 	//
 	// ecd
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The maximum number of entries to return per page. Maximum: 100. Default: 10.
+	// The number of entries per page for a paged query. Maximum value: 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token returned from the previous call to retrieve the next page of results.
+	MaxResults         *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NetworkInterfaceIp *string `json:"NetworkInterfaceIp,omitempty" xml:"NetworkInterfaceIp,omitempty"`
+	// The token for the next query. An empty value indicates that there are no more results.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the office network.
+	// The workspace ID.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-778418****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The start of the time range to query for operations. The time must be in the `yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\"` format and in UTC.
+	// The start time of the operation performed on the cloud desktop. The time is in UTC format:
+	//
+	// `yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\"`.
 	//
 	// example:
 	//
@@ -164,6 +171,10 @@ func (s *DescribeDesktopMetadataRequest) GetKeyword() *string {
 
 func (s *DescribeDesktopMetadataRequest) GetMaxResults() *int32 {
 	return s.MaxResults
+}
+
+func (s *DescribeDesktopMetadataRequest) GetNetworkInterfaceIp() *string {
+	return s.NetworkInterfaceIp
 }
 
 func (s *DescribeDesktopMetadataRequest) GetNextToken() *string {
@@ -228,6 +239,11 @@ func (s *DescribeDesktopMetadataRequest) SetKeyword(v string) *DescribeDesktopMe
 
 func (s *DescribeDesktopMetadataRequest) SetMaxResults(v int32) *DescribeDesktopMetadataRequest {
 	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeDesktopMetadataRequest) SetNetworkInterfaceIp(v string) *DescribeDesktopMetadataRequest {
+	s.NetworkInterfaceIp = &v
 	return s
 }
 

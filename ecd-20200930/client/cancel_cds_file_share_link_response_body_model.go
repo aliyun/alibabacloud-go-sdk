@@ -22,7 +22,7 @@ type iCancelCdsFileShareLinkResponseBody interface {
 }
 
 type CancelCdsFileShareLinkResponseBody struct {
-	// The operation result. The value success indicates that the operation is successful. If the operation failed, an error message is returned.
+	// The execution result. A value of `success` indicates success. Otherwise, an error message is returned.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type CancelCdsFileShareLinkResponseBody struct {
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error message that is returned if the request failed. This parameter is not returned if the value of Code is `success`.
+	// The error message. This parameter is not returned when Code is `success`.
 	//
 	// example:
 	//
@@ -46,25 +46,7 @@ type CancelCdsFileShareLinkResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
-	//
-	// Valid values:
-	//
-	// - true
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	// - false
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//

@@ -64,7 +64,7 @@ func (s *DescribeModificationPriceResponseBody) Validate() error {
 type DescribeModificationPriceResponseBodyPriceInfo struct {
 	// The price information.
 	Price *DescribeModificationPriceResponseBodyPriceInfoPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
-	// The promotion rules.
+	// The promotion rule information.
 	Rules []*DescribeModificationPriceResponseBodyPriceInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -113,19 +113,21 @@ func (s *DescribeModificationPriceResponseBodyPriceInfo) Validate() error {
 }
 
 type DescribeModificationPriceResponseBodyPriceInfoPrice struct {
-	// <props="china">The unit of currency (CNY).<props="intl">The unit of currency (USD).
+	// <props="china">The currency unit (CNY).
+	//
+	// <props="intl">The currency unit (USD).
 	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The discounted amount.
+	// The discount amount.
 	//
 	// example:
 	//
 	// 15.8
 	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
-	// The orders.
+	// The order information.
 	OrderLines map[string]*string `json:"OrderLines,omitempty" xml:"OrderLines,omitempty"`
 	// The original price.
 	//
@@ -133,9 +135,9 @@ type DescribeModificationPriceResponseBodyPriceInfoPrice struct {
 	//
 	// 79.0
 	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	// The promotion activities.
+	// The list of promotion information.
 	Promotions []*DescribeModificationPriceResponseBodyPriceInfoPricePromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
-	// The actual price. The actual price is the original price minus the discount.
+	// The actual payment price. The value is the original price minus the discount amount.
 	//
 	// example:
 	//
@@ -219,7 +221,7 @@ func (s *DescribeModificationPriceResponseBodyPriceInfoPrice) Validate() error {
 }
 
 type DescribeModificationPriceResponseBodyPriceInfoPricePromotions struct {
-	// The description of the promotion rule.
+	// The promotion rule description.
 	//
 	// example:
 	//
@@ -229,21 +231,21 @@ type DescribeModificationPriceResponseBodyPriceInfoPricePromotions struct {
 	//
 	// example:
 	//
-	// 新品上市，立享优惠
+	// New product launch with exclusive discounts.
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
-	// The ID of the promotion activity.
+	// The promotion ID.
 	//
 	// example:
 	//
 	// promo_option
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	// The name of the promotion activity.
+	// The promotion name.
 	//
 	// example:
 	//
 	// Featured deals
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
-	// Indicates whether an item is selected.
+	// Indicates whether the promotion is selected.
 	//
 	// example:
 	//
@@ -313,7 +315,7 @@ type DescribeModificationPriceResponseBodyPriceInfoRules struct {
 	//
 	// example:
 	//
-	// 买满1年，立享官网价格8.5折优惠。
+	// Get 15% off the list price for a one-year purchase.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The rule ID.
 	//

@@ -16,7 +16,7 @@ type iBatchModifyEntitlementResponseBody interface {
 }
 
 type BatchModifyEntitlementResponseBody struct {
-	// The results.
+	// The collection of assignment results.
 	Entitlements *BatchModifyEntitlementResponseBodyEntitlements `json:"Entitlements,omitempty" xml:"Entitlements,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -64,19 +64,7 @@ func (s *BatchModifyEntitlementResponseBody) Validate() error {
 type BatchModifyEntitlementResponseBodyEntitlements struct {
 	// The assignment results.
 	AssignModels []*BatchModifyEntitlementResponseBodyEntitlementsAssignModels `json:"AssignModels,omitempty" xml:"AssignModels,omitempty" type:"Repeated"`
-	// The result.
-	//
-	// Valid values:
-	//
-	// - FAILED
-	//
-	// - NOT_STARTED
-	//
-	// - STARTED
-	//
-	// - PROCESSING
-	//
-	// - FINISHED
+	// The overall assignment result.
 	//
 	// example:
 	//
@@ -145,21 +133,9 @@ type BatchModifyEntitlementResponseBodyEntitlementsAssignModels struct {
 	//
 	// ecd-e94kzikmpljjx99pl
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The authorized user IDs for the cloud computer.
+	// The user IDs (usernames) authorized for the cloud computer.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
-	// The assign result for each cloud computer.
-	//
-	// Valid values:
-	//
-	// - FAILED
-	//
-	// - NOT_STARTED
-	//
-	// - STARTED
-	//
-	// - PROCESSING
-	//
-	// - FINISHED
+	// The assignment result of a single cloud computer.
 	//
 	// example:
 	//

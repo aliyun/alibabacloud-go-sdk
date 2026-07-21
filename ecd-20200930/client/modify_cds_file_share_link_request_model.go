@@ -138,13 +138,13 @@ type ModifyCdsFileShareLinkRequest struct {
 	//
 	// example:
 	//
-	// 10
+	// 0
 	DownloadCount *int64 `json:"DownloadCount,omitempty" xml:"DownloadCount,omitempty"`
 	// The limit on the number of times that the shared files can be downloaded. The value of this parameter must be equal to or greater than 0. The value 0 specifies that no limit is imposed on the number of times that the shared files can be downloaded.
 	//
 	// example:
 	//
-	// 10
+	// 0
 	DownloadLimit *int64 `json:"DownloadLimit,omitempty" xml:"DownloadLimit,omitempty"`
 	// The time when the file sharing link expires. The value of this parameter follows the RFC 3339 standard. Example: "2020-06-28T11:33:00.000+08:00". If this parameter is set to "", the file sharing link never expires.
 	//
@@ -156,7 +156,7 @@ type ModifyCdsFileShareLinkRequest struct {
 	//
 	// example:
 	//
-	// 10
+	// 0
 	PreviewCount *int64 `json:"PreviewCount,omitempty" xml:"PreviewCount,omitempty"`
 	// The limit on the number of times that the shared files can be previewed. The value of this parameter must be equal to or greater than 0. The value 0 specifies that no limit is imposed on the number of times that the shared files can be downloaded.
 	//
@@ -168,13 +168,13 @@ type ModifyCdsFileShareLinkRequest struct {
 	//
 	// example:
 	//
-	// 10
+	// 0
 	ReportCount *int64 `json:"ReportCount,omitempty" xml:"ReportCount,omitempty"`
 	// The number of times that the shared files are dumped. The value of this parameter must be equal to or greater than 0.
 	//
 	// example:
 	//
-	// 10
+	// 0
 	SaveCount *int64 `json:"SaveCount,omitempty" xml:"SaveCount,omitempty"`
 	// The limit on the number of times that the shared files can be dumped. The value of this parameter must be equal to or greater than 0. The value 0 specifies that no limit is imposed on the number of times that the shared files can be downloaded.
 	//
@@ -232,7 +232,7 @@ type ModifyCdsFileShareLinkRequest struct {
 	//
 	// example:
 	//
-	// 10
+	// 0
 	VideoPreviewCount *int64 `json:"VideoPreviewCount,omitempty" xml:"VideoPreviewCount,omitempty"`
 }
 

@@ -25,21 +25,25 @@ type iCreateEcdReportTaskRequest interface {
 
 type CreateEcdReportTaskRequest struct {
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
-	// The filter conditions for filtering query results. The logical relationship between each filter condition is "and" (&). Each filter condition contains FilterKey and FilterValues, which indicate the key and value for the filter condition.
+	// The list of filter conditions for query results. The filter condition objects have a logical AND (&) relationship.
+	//
+	// Each filter condition contains FilterKey and FilterValues, which represent the filter condition name and specific values.
 	FilterList []*CreateEcdReportTaskRequestFilterList `json:"FilterList,omitempty" xml:"FilterList,omitempty" type:"Repeated"`
-	// The language of the report. An enumerated type.
+	// The report language type. This is an enumerated value.
 	//
 	// example:
 	//
 	// zh-CN
 	LangType *string `json:"LangType,omitempty" xml:"LangType,omitempty"`
-	// The name of the report file.
+	// The report file name.
 	//
 	// example:
 	//
 	// Test report name
 	ReportFileName *string `json:"ReportFileName,omitempty" xml:"ReportFileName,omitempty"`
-	// The sub-type of the report export task.
+	// The report task subtype.
+	//
+	// [_single.params.SubType.enum.  DESKTOP]Cloud computer
 	//
 	// This parameter is required.
 	//
@@ -47,11 +51,7 @@ type CreateEcdReportTaskRequest struct {
 	//
 	// DESKTOP
 	SubType *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
-	// The type of the report task.
-	//
-	// Valid value:
-	//
-	// - RESOURCE_REPORT
+	// The report task type.
 	//
 	// This parameter is required.
 	//
@@ -137,47 +137,49 @@ func (s *CreateEcdReportTaskRequest) Validate() error {
 }
 
 type CreateEcdReportTaskRequestFilterList struct {
-	// The key of the filter condition for filtering query results. When SubType is set to:
+	// The report query filter condition. The valid values vary based on the SubType value:
 	//
-	// 1. DESKTOP (indicating a cloud computer report), the following filter conditions are available:
+	// 1. Cloud computer report
 	//
-	// - KeyWord: cloud computer keyword (supports automatic recognition)
+	// - KeyWord: automatic keyword recognition for cloud computers.
 	//
-	// - RegionId: region ID
+	// - RegionId: the region ID.
 	//
-	// - DesktopId: cloud computer ID
+	// - DesktopId: the cloud computer ID.
 	//
-	// - DesktopName: cloud computer name (supports fuzzy matching)
+	// - DesktopName: the cloud computer name (fuzzy match).
 	//
-	// - OfficeSiteId: office network ID
+	// - OfficeSiteId: the office network ID.
 	//
-	// - OfficeSiteName: office network name (supports fuzzy matching)
+	// - OfficeSiteName: the office network name (fuzzy match).
 	//
-	// - Status: cloud computer status
+	// - Status: the cloud computer status.
 	//
-	// - DesktopType: desktop type
+	// - DesktopType: the desktop specifications.
 	//
-	// - DesktopIP: cloud computer IP address
+	// - DesktopIP: the cloud computer IP address.
 	//
-	// - SubPayType: billing method
+	// - SubPayType: the billing method.
 	//
-	// - EndUserId: user name (supports fuzzy matching)
+	// - EndUserId: the username (fuzzy match).
 	//
-	// - ExpireTime: expiration date and time, in the yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\" format
+	// - ExpireTime: the expiration time in the yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\" format.
 	//
-	// - IncludeAssignedUser: indicates whether the cloud computer is assigned to users or not
+	// - IncludeAssignedUser: specifies whether users are assigned.
 	//
-	// - ResourceGroupId: resource group ID
+	// - ResourceGroupId: the resource group ID.
 	//
-	// - PolicyId: policy ID
+	// - PolicyId: the policy ID.
 	//
-	// - Tag:{Tag Key value}: cloud computer tag (To filter data using multiple tags, specify multiple filter condition objects.)
+	// - Tag:{Tag Key}: the cloud computer tag. To query by multiple tags, pass in multiple Filter objects.
 	//
 	// example:
 	//
 	// Tag:TestKey
 	FilterKey *string `json:"FilterKey,omitempty" xml:"FilterKey,omitempty"`
-	// The value of the filter condition. Only the first value of the FilterValues parameter is used, if FilterKey is set to one of the following values:
+	// The values of the filter condition.
+	//
+	// When FilterKey is set to one of the following values, only the first value in FilterValues is used:
 	//
 	// - KeyWord
 	//

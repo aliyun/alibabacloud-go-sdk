@@ -21,6 +21,8 @@ type iDescribeDesktopSessionsRequest interface {
 	GetEndUserId() *string
 	SetEndUserIdFilter(v string) *DescribeDesktopSessionsRequest
 	GetEndUserIdFilter() *string
+	SetEndUserIds(v []*string) *DescribeDesktopSessionsRequest
+	GetEndUserIds() []*string
 	SetFillHardwareInfo(v bool) *DescribeDesktopSessionsRequest
 	GetFillHardwareInfo() *bool
 	SetLanguage(v string) *DescribeDesktopSessionsRequest
@@ -50,9 +52,9 @@ type DescribeDesktopSessionsRequest struct {
 	//
 	// true
 	CheckOsSession *bool `json:"CheckOsSession,omitempty" xml:"CheckOsSession,omitempty"`
-	// The ID of the cloud computer. You can specify 1 to 100 IDs.
+	// The cloud computer IDs. You can specify 1 to 100 IDs.
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
-	// The name of the cloud computer.
+	// The cloud computer name.
 	//
 	// example:
 	//
@@ -64,45 +66,46 @@ type DescribeDesktopSessionsRequest struct {
 	//
 	// 2023-02-13T02:51:43Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the end user.
+	// The end user ID.
 	//
 	// example:
 	//
 	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The ID of the end user. This parameter is the same as the `EndUserId` parameter. Specify only one of them.
+	// The end user ID. This parameter is the same as EndUserId. You only need to specify one of them.
 	//
 	// example:
 	//
 	// alice
-	EndUserIdFilter *string `json:"EndUserIdFilter,omitempty" xml:"EndUserIdFilter,omitempty"`
-	// Specifies whether to return information about the terminal.
+	EndUserIdFilter *string   `json:"EndUserIdFilter,omitempty" xml:"EndUserIdFilter,omitempty"`
+	EndUserIds      []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
+	// Specifies whether to include terminal information in the response.
 	FillHardwareInfo *bool `json:"FillHardwareInfo,omitempty" xml:"FillHardwareInfo,omitempty"`
-	// The language of the returned information.
+	// The language type of the response.
 	//
 	// example:
 	//
 	// zh-CN
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The ID of the cloud computer.
+	// The office network ID.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-363353****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The page number for a paged query.
+	// The page number of the current page in a paged query.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of entries to return on each page for a paged query.
+	// The maximum number of rows per page in a paged query.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region. Call [](t2167755.xdita#)to obtain a list of regions that Elastic Desktop Service (EDS) supports.
+	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
@@ -111,7 +114,7 @@ type DescribeDesktopSessionsRequest struct {
 	// cn-hangzhou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The connection status of the session.
+	// The session connection status.
 	//
 	// example:
 	//
@@ -123,7 +126,7 @@ type DescribeDesktopSessionsRequest struct {
 	//
 	// 2023-01-28T02:31:43Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The billing method of the cloud computer.
+	// The purchase method of the cloud computer.
 	//
 	// example:
 	//
@@ -161,6 +164,10 @@ func (s *DescribeDesktopSessionsRequest) GetEndUserId() *string {
 
 func (s *DescribeDesktopSessionsRequest) GetEndUserIdFilter() *string {
 	return s.EndUserIdFilter
+}
+
+func (s *DescribeDesktopSessionsRequest) GetEndUserIds() []*string {
+	return s.EndUserIds
 }
 
 func (s *DescribeDesktopSessionsRequest) GetFillHardwareInfo() *bool {
@@ -230,6 +237,11 @@ func (s *DescribeDesktopSessionsRequest) SetEndUserId(v string) *DescribeDesktop
 
 func (s *DescribeDesktopSessionsRequest) SetEndUserIdFilter(v string) *DescribeDesktopSessionsRequest {
 	s.EndUserIdFilter = &v
+	return s
+}
+
+func (s *DescribeDesktopSessionsRequest) SetEndUserIds(v []*string) *DescribeDesktopSessionsRequest {
+	s.EndUserIds = v
 	return s
 }
 

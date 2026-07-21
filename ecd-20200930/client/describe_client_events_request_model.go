@@ -21,6 +21,8 @@ type iDescribeClientEventsRequest interface {
 	GetEndTime() *string
 	SetEndUserId(v string) *DescribeClientEventsRequest
 	GetEndUserId() *string
+	SetEndUserIds(v []*string) *DescribeClientEventsRequest
+	GetEndUserIds() []*string
 	SetEventType(v string) *DescribeClientEventsRequest
 	GetEventType() *string
 	SetEventTypes(v []*string) *DescribeClientEventsRequest
@@ -44,69 +46,66 @@ type iDescribeClientEventsRequest interface {
 }
 
 type DescribeClientEventsRequest struct {
-	// The ID of the cloud desktop. If you omit this parameter, the operation returns events for all cloud desktops in the region.
+	// The cloud computer ID. If you do not specify this parameter, all cloud computers in the region are queried.
 	//
 	// example:
 	//
 	// ecd-8fupvkhg0aayu****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The IP address of the cloud desktop. If you omit this parameter, the operation returns events for all cloud desktops in the region.
+	// The IP address of the cloud computer. If you do not specify this parameter, events of all cloud computers in the region are queried.
 	//
 	// example:
 	//
 	// 10.10.*.*
 	DesktopIp *string `json:"DesktopIp,omitempty" xml:"DesktopIp,omitempty"`
-	// The name of the cloud desktop.
+	// The name of the cloud computer.
 	//
 	// example:
 	//
 	// test
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// > This parameter is not in use.
+	// > This parameter is not publicly available.
 	//
 	// example:
 	//
 	// To be hidden.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The end of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.<br>
-	//
-	// If you omit this parameter, the operation uses the current time.<br>
+	// The end time. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC+0. If you do not specify this parameter, the current time is used.
 	//
 	// example:
 	//
 	// 2020-11-31T06:32:31Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the end user, which can be a RAM user ID or an AD username. If you omit this parameter, the operation returns events for all users in the region.
+	// The logon user information, which is a Resource Access Management (RAM) user ID or AD username. If you do not specify this parameter, events of all users in the region are queried.
 	//
 	// example:
 	//
 	// 28961708130834****
-	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The event type to query. If EventTypes is specified, this parameter is ignored. If you omit both this parameter and EventTypes, the operation returns all events.
+	EndUserId  *string   `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
+	// The event type to query. If EventTypes is not empty, the EventTypes combination is used as the query filter condition. If both EventTypes and EventType are empty, all events are queried.
 	//
 	// example:
 	//
 	// DESKTOP_DISCONNECT
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// An array of event types to query. The operation returns events that match any of the specified types.
+	// The combination of event types to query. You can specify multiple event types. The query results include events of all specified types.
 	EventTypes       []*string `json:"EventTypes,omitempty" xml:"EventTypes,omitempty" type:"Repeated"`
 	FillHardwareInfo *bool     `json:"FillHardwareInfo,omitempty" xml:"FillHardwareInfo,omitempty"`
 	Language         *string   `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The maximum number of entries to return on each page.<br>
-	//
-	// Default value: 100.<br>
+	// The number of entries per page for a paged query. Default value: 100.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. Set this parameter to the NextToken value returned in the previous response to retrieve the next page of results.
+	// The pagination token. Set this parameter to the value of NextToken returned in the previous API call.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6nmB7qrRFJ8vmttjxPL****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the office network to which the cloud desktop belongs. If you omit this parameter, the operation returns events for users in all office networks in the region.
+	// The ID of the office network to which the cloud computer belongs. If you do not specify this parameter, user events in all office networks in the region are queried.
 	//
 	// example:
 	//
@@ -118,7 +117,7 @@ type DescribeClientEventsRequest struct {
 	//
 	// test
 	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
-	// The ID of the region. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions supported by Elastic Desktop Service.
+	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
@@ -126,9 +125,7 @@ type DescribeClientEventsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The start of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.<br>
-	//
-	// If you omit this parameter, the query returns events that occurred before the time specified by `EndTime`.<br>
+	// The start time. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC+0. If you do not specify this parameter, events are queried backward from the time specified by `EndTime`.
 	//
 	// example:
 	//
@@ -166,6 +163,10 @@ func (s *DescribeClientEventsRequest) GetEndTime() *string {
 
 func (s *DescribeClientEventsRequest) GetEndUserId() *string {
 	return s.EndUserId
+}
+
+func (s *DescribeClientEventsRequest) GetEndUserIds() []*string {
+	return s.EndUserIds
 }
 
 func (s *DescribeClientEventsRequest) GetEventType() *string {
@@ -235,6 +236,11 @@ func (s *DescribeClientEventsRequest) SetEndTime(v string) *DescribeClientEvents
 
 func (s *DescribeClientEventsRequest) SetEndUserId(v string) *DescribeClientEventsRequest {
 	s.EndUserId = &v
+	return s
+}
+
+func (s *DescribeClientEventsRequest) SetEndUserIds(v []*string) *DescribeClientEventsRequest {
+	s.EndUserIds = v
 	return s
 }
 

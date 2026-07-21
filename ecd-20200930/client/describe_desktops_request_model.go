@@ -88,182 +88,183 @@ type iDescribeDesktopsRequest interface {
 }
 
 type DescribeDesktopsRequest struct {
-	// The region ID. Call [](t2167755.xdita#)to list regions that support Elastic Desktop Service (EDS).
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
-	// The expiration time for subscription desktops.
+	// The billing method of the cloud computer.
 	//
 	// example:
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The operating system type.
+	// The cloud computer pool ID. If `DesktopId` is specified, `DesktopGroupId` is ignored. If `DesktopId` is empty, the system retrieves the `DesktopId` of all cloud computers in the cloud computer pool specified by `DesktopGroupId`.
 	//
 	// example:
 	//
 	// dg-2i8qxpv6t1a03****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// The list of authorized users for the desktop. You can specify 1 to 100 users.
-	//
-	// > Only one user can connect to and use the desktop at a time.
+	// The cloud computer IDs. You can specify 1 to 100 IDs.
 	//
 	// example:
 	//
 	// ecd-gx2x1dhsmucyy****
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
-	// The directory ID. This is the same as the office site ID.
+	// The cloud computer name.
 	//
 	// example:
 	//
 	// DemoComputer01
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// The number of entries to return on each page in a paged query.
-	//
-	// - Maximum value: 100.
-	//
-	// - Default value: 10
+	// The cloud computer status.
 	//
 	// example:
 	//
 	// Running
 	DesktopStatus *string `json:"DesktopStatus,omitempty" xml:"DesktopStatus,omitempty"`
-	// The elastic GPU pool ID.
+	// The list of cloud computer statuses.
 	DesktopStatusList []*string `json:"DesktopStatusList,omitempty" xml:"DesktopStatusList,omitempty" type:"Repeated"`
-	// The list of image IDs.
+	// The cloud computer specifications. You can call [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) to query the specification IDs supported by cloud computers.
 	//
 	// example:
 	//
 	// eds.general.2c8g
 	DesktopType *string `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
-	// The office site ID.
+	// The directory ID, which is the same as the office network ID.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-363353****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The list of authorized users to exclude from the desktop. You can specify 1 to 100 users.
+	// The list of authorized users of the cloud computer. You can specify 1 to 100 users.
+	//
+	// > Only one user can connect to and use the cloud computer at a time.
 	//
 	// example:
 	//
 	// alice
 	EndUserId []*string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
-	// Whether to exclude pooled desktops (desktops in a desktop pool).
+	// The list of authorized users to exclude. You can specify 1 to 100 users.
 	//
 	// example:
 	//
 	// andy
 	ExcludedEndUserId []*string `json:"ExcludedEndUserId,omitempty" xml:"ExcludedEndUserId,omitempty" type:"Repeated"`
-	// The protocol type.
+	// The expiration time of the subscription cloud computer.
 	//
 	// example:
 	//
 	// 2022-12-31T15:59:59Z
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The page number of the current page in a paged query.
+	// Specifies whether to query enterprise resource group information.
 	//
 	// example:
 	//
 	// true
 	FillResourceGroup *bool `json:"FillResourceGroup,omitempty" xml:"FillResourceGroup,omitempty"`
-	// The management flag.
+	// Specifies whether to exclude pooled cloud computers (cloud computers in a cloud computer pool).
 	//
 	// example:
 	//
 	// false
 	FilterDesktopGroup *bool `json:"FilterDesktopGroup,omitempty" xml:"FilterDesktopGroup,omitempty"`
-	// The public network bandwidth throttling rule ID.
+	// The elastic GPU pool ID.
 	//
 	// example:
 	//
 	// gp-0bm2iz1v6m6nx****
 	GpuInstanceGroupId *string `json:"GpuInstanceGroupId,omitempty" xml:"GpuInstanceGroupId,omitempty"`
-	// The cloud computer status.
+	// The cloud computer pool ID.
 	//
 	// example:
 	//
 	// dg-boyczi8enfyc5****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The list of desktop statuses.
+	// The image IDs.
 	ImageId                   []*string `json:"ImageId,omitempty" xml:"ImageId,omitempty" type:"Repeated"`
 	IncludeAutoSnapshotPolicy *bool     `json:"IncludeAutoSnapshotPolicy,omitempty" xml:"IncludeAutoSnapshotPolicy,omitempty"`
-	// Whether to query image version information for the desktop.
+	// The management flag.
 	//
 	// example:
 	//
 	// NoFlag
 	ManagementFlag *string `json:"ManagementFlag,omitempty" xml:"ManagementFlag,omitempty"`
-	// The token that starts the next query. An empty NextToken means no more results.
+	// The maximum number of entries per page for a paged query.
+	//
+	// - Maximum value: 100.
+	//
+	// - Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Specifies whether there are multiple resources.
+	//
 	// example:
 	//
 	// false
 	MultiResource *bool `json:"MultiResource,omitempty" xml:"MultiResource,omitempty"`
-	// The user name.
+	// The pagination token for the next query. If this parameter is empty, no more results exist.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The name of the office network.
+	// The office network ID.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-363353****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The desktop policy ID.
+	// The office network name.
 	//
 	// example:
 	//
 	// default
 	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
-	// The desktop pool ID. If you specify `DesktopId`, this parameter is ignored. If `DesktopId` is empty, the system uses `DesktopGroupId` to retrieve all desktop IDs in the pool.
+	// Specifies whether to query only pooled cloud computers (cloud computers in a cloud computer pool).
 	//
 	// example:
 	//
 	// true
 	OnlyDesktopGroup *bool `json:"OnlyDesktopGroup,omitempty" xml:"OnlyDesktopGroup,omitempty"`
-	// The desktop instance type. Call [](t2167746.xdita#)to list supported instance types.
+	// The operating system type.
 	OsTypes []*string `json:"OsTypes,omitempty" xml:"OsTypes,omitempty" type:"Repeated"`
-	// The maximum number of entries to return on each page in a paged query.
+	// The page number of the current page for a paged query.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Whether multiple resources exist.
+	// The maximum number of entries per page for a paged query.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The billing method for the desktop.
+	// The cloud computer policy ID.
 	//
 	// example:
 	//
 	// system-all-enabled-policy
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	// The desktop IDs. You can specify 1 to 100 IDs.
+	// The protocol type.
 	//
 	// example:
 	//
 	// ASP
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	// The purchase method for the desktop.
+	// The Internet bandwidth throttling rule ID.
 	//
 	// example:
 	//
 	// qos-5605u0gelk200****
 	QosRuleId *string `json:"QosRuleId,omitempty" xml:"QosRuleId,omitempty"`
-	// The list of tags. Each tag is a key-value pair used to label resources. Use tags to group and manage desktops, making them easier to search and operate on in bulk. For more information, see [](t2042630.xdita#).
+	// Specifies whether to query cloud computer image version information.
 	//
 	// example:
 	//
 	// false
 	QueryFotaUpdate *bool `json:"QueryFotaUpdate,omitempty" xml:"QueryFotaUpdate,omitempty"`
-	// The cloud computer pool ID.
+	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
@@ -271,27 +272,27 @@ type DescribeDesktopsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Whether to query enterprise resource group information.
+	// The enterprise resource group ID.
 	//
 	// example:
 	//
 	// rg-4hsvzbbmqdzu3s****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Whether to query only pooled desktops (desktops in a desktop pool).
+	// The snapshot policy ID.
 	//
 	// example:
 	//
 	// sp-hb12mclyne09xw***
 	SnapshotPolicyId *string `json:"SnapshotPolicyId,omitempty" xml:"SnapshotPolicyId,omitempty"`
-	// The enterprise resource group ID.
+	// The purchase method of the cloud computer.
 	//
 	// example:
 	//
 	// monthPackage
 	SubPayType *string `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
-	// The snapshot policy ID.
+	// The tags. A tag consists of a key-value pair and is used to mark resources. You can use tags to group and manage cloud computers for easy searching and batch operations. For more information, see [Use tags to manage cloud computers](https://help.aliyun.com/document_detail/203781.html).
 	Tag []*DescribeDesktopsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The desktop name.
+	// The username.
 	//
 	// example:
 	//
@@ -663,13 +664,13 @@ func (s *DescribeDesktopsRequest) Validate() error {
 }
 
 type DescribeDesktopsRequestTag struct {
-	// The tag key. If you specify `Tag`, then `Key` is required. The key can be up to 128 characters long. It cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`. It cannot consist only of whitespace.
+	// The tag key. If you specify `Tag`, `Key` is required. The tag key cannot exceed 128 characters in length, cannot start with `aliyun` or `acs:`, cannot contain `http://` or `https://`, and cannot consist of only spaces.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. The value can be up to 128 characters long. It cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag value. The tag value cannot exceed 128 characters in length, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iCloneCenterPolicyResponseBody interface {
 }
 
 type CloneCenterPolicyResponseBody struct {
-	// The ID of the duplicated cloud computer policy.
+	// The ID of the cloned cloud computer policy.
 	//
 	// example:
 	//

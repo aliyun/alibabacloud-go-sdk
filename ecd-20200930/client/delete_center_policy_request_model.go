@@ -22,23 +22,17 @@ type iDeleteCenterPolicyRequest interface {
 type DeleteCenterPolicyRequest struct {
 	// The business type.
 	//
-	// Valid values:
-	//
-	// - 1: public cloud.
-	//
-	// - 8: commercial edition.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	BusinessType *int32 `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// The policy IDs.
+	// The list of policy group IDs.
 	//
 	// This parameter is required.
 	PolicyGroupIds []*string `json:"PolicyGroupIds,omitempty" xml:"PolicyGroupIds,omitempty" type:"Repeated"`
-	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Wuying Cloud Computer.
 	//
 	// This parameter is required.
 	//
@@ -47,12 +41,6 @@ type DeleteCenterPolicyRequest struct {
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource type.
-	//
-	// Valid values:
-	//
-	// - app: cloud applications.
-	//
-	// - desktop: cloud computers.
 	//
 	// This parameter is required.
 	//

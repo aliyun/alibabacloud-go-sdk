@@ -24,9 +24,9 @@ type DescribeGlobalDesktopRecordsResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of sessions.
+	// The session details.
 	Sessions []*DescribeGlobalDesktopRecordsResponseBodySessions `json:"Sessions,omitempty" xml:"Sessions,omitempty" type:"Repeated"`
-	// The total number of entries.
+	// The total number of query results.
 	//
 	// example:
 	//
@@ -94,26 +94,27 @@ type DescribeGlobalDesktopRecordsResponseBodySessions struct {
 	// example:
 	//
 	// 2
-	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The ID of the desktop group.
+	Cpu          *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The shared cloud desktop ID.
 	//
 	// example:
 	//
 	// dg-iaqu3bi2xtie****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// The name of the desktop group.
+	// The shared cloud desktop name.
 	//
 	// example:
 	//
 	// DemoCCGroup
 	DesktopGroupName *string `json:"DesktopGroupName,omitempty" xml:"DesktopGroupName,omitempty"`
-	// The ID of the cloud desktop.
+	// The cloud desktop ID.
 	//
 	// example:
 	//
 	// ecd-g6t1ukbaea****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The name of the cloud desktop.
+	// The cloud desktop name.
 	//
 	// example:
 	//
@@ -125,13 +126,13 @@ type DescribeGlobalDesktopRecordsResponseBodySessions struct {
 	//
 	// Running
 	DesktopStatus *string `json:"DesktopStatus,omitempty" xml:"DesktopStatus,omitempty"`
-	// The ID of the end user.
+	// The end user ID.
 	//
 	// example:
 	//
 	// TestUser
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// A list of assigned end user IDs.
+	// The list of assigned end user IDs.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
 	// The GPU memory size.
 	//
@@ -139,31 +140,31 @@ type DescribeGlobalDesktopRecordsResponseBodySessions struct {
 	//
 	// 8GiB
 	GpuSpec *string `json:"GpuSpec,omitempty" xml:"GpuSpec,omitempty"`
-	// The duration of the last connection, in seconds.
+	// The duration of the most recent connection to the cloud desktop. Unit: seconds.
 	//
 	// example:
 	//
 	// 120
 	LatestConnectionTime *int64 `json:"LatestConnectionTime,omitempty" xml:"LatestConnectionTime,omitempty"`
-	// The memory size of the cloud desktop, in MiB.
+	// The memory of the cloud desktop. Unit: MiB.
 	//
 	// example:
 	//
 	// 4096
 	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The ID of the office site.
+	// The office network ID.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-8904****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The name of the office site.
+	// The office network name.
 	//
 	// example:
 	//
 	// TestOfficeSite
 	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
-	// The office site type.
+	// The office network type.
 	//
 	// example:
 	//
@@ -171,15 +172,15 @@ type DescribeGlobalDesktopRecordsResponseBodySessions struct {
 	OfficeSiteType *string `json:"OfficeSiteType,omitempty" xml:"OfficeSiteType,omitempty"`
 	// The operating system type. Valid values:
 	//
-	// - `Windows`
+	// - Windows
 	//
-	// - `Linux`
+	// - Linux
 	//
 	// example:
 	//
 	// Linux
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	// The operating system version.
+	// The specific operating system version.
 	//
 	// example:
 	//
@@ -187,29 +188,29 @@ type DescribeGlobalDesktopRecordsResponseBodySessions struct {
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
 	// The protocol type. Valid values:
 	//
-	// - `HDX`
+	// - HDX
 	//
-	// - `ASP`
+	// - ASP
 	//
 	// example:
 	//
 	// ASP
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// A list of resource groups.
+	// The enterprise resource group name.
 	ResourceGroups []*DescribeGlobalDesktopRecordsResponseBodySessionsResourceGroups `json:"ResourceGroups,omitempty" xml:"ResourceGroups,omitempty" type:"Repeated"`
-	// The idle duration of the session, in minutes.
+	// The session idle duration. Unit: minutes.
 	//
 	// example:
 	//
 	// 120
 	SessionIdleTime *int64 `json:"SessionIdleTime,omitempty" xml:"SessionIdleTime,omitempty"`
-	// A list of sessions.
+	// The session details.
 	Sessions []*DescribeGlobalDesktopRecordsResponseBodySessionsSessions `json:"Sessions,omitempty" xml:"Sessions,omitempty" type:"Repeated"`
 	// The time when the cloud desktop status changed.
 	//
@@ -217,25 +218,25 @@ type DescribeGlobalDesktopRecordsResponseBodySessions struct {
 	//
 	// 1760583xxxx
 	StatusChangeTime *int64 `json:"StatusChangeTime,omitempty" xml:"StatusChangeTime,omitempty"`
-	// The billing method for the cloud desktop. Valid values:
+	// The billing method of the cloud desktop. Valid values:
 	//
-	// - `prePaid`: Subscription.
+	// - prePaid: monthly subscription with unlimited usage duration.
 	//
-	// - `postPaid`: Pay-as-you-go.
+	// - postPaid: pay-as-you-go.
 	//
-	// - `monthPackage`: Monthly usage package.
+	// - monthPackage: monthly duration package.
 	//
 	// example:
 	//
 	// monthPackage
 	SubPayType *string `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
-	// The total connection duration, in seconds.
+	// The total connection duration. Unit: seconds.
 	//
 	// example:
 	//
 	// 240
 	TotalConnectionTime *int64 `json:"TotalConnectionTime,omitempty" xml:"TotalConnectionTime,omitempty"`
-	// The cloud desktop uptime, in seconds.
+	// The cloud desktop uptime. Unit: seconds.
 	//
 	// example:
 	//
@@ -257,6 +258,10 @@ func (s *DescribeGlobalDesktopRecordsResponseBodySessions) GetConnectionStatus()
 
 func (s *DescribeGlobalDesktopRecordsResponseBodySessions) GetCpu() *int32 {
 	return s.Cpu
+}
+
+func (s *DescribeGlobalDesktopRecordsResponseBodySessions) GetCreationTime() *string {
+	return s.CreationTime
 }
 
 func (s *DescribeGlobalDesktopRecordsResponseBodySessions) GetDesktopGroupId() *string {
@@ -362,6 +367,11 @@ func (s *DescribeGlobalDesktopRecordsResponseBodySessions) SetConnectionStatus(v
 
 func (s *DescribeGlobalDesktopRecordsResponseBodySessions) SetCpu(v int32) *DescribeGlobalDesktopRecordsResponseBodySessions {
 	s.Cpu = &v
+	return s
+}
+
+func (s *DescribeGlobalDesktopRecordsResponseBodySessions) SetCreationTime(v string) *DescribeGlobalDesktopRecordsResponseBodySessions {
+	s.CreationTime = &v
 	return s
 }
 
@@ -508,13 +518,13 @@ func (s *DescribeGlobalDesktopRecordsResponseBodySessions) Validate() error {
 }
 
 type DescribeGlobalDesktopRecordsResponseBodySessionsResourceGroups struct {
-	// The ID of the resource group.
+	// The enterprise resource group ID.
 	//
 	// example:
 	//
 	// rg-f3s3dgt8dtb0vlqc8
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The name of the resource group.
+	// The resource group name.
 	//
 	// example:
 	//
@@ -553,13 +563,13 @@ func (s *DescribeGlobalDesktopRecordsResponseBodySessionsResourceGroups) Validat
 }
 
 type DescribeGlobalDesktopRecordsResponseBodySessionsSessions struct {
-	// The ID of the end user.
+	// The end user ID.
 	//
 	// example:
 	//
 	// TestUser
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The time the session was created.
+	// The time when the session was created.
 	//
 	// example:
 	//
