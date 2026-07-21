@@ -2714,6 +2714,10 @@ func (client *Client) UpdateContextStoreWithContext(ctx context.Context, agentSp
 		body["description"] = request.Description
 	}
 
+	if !dara.IsNil(request.Status) {
+		body["status"] = request.Status
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),

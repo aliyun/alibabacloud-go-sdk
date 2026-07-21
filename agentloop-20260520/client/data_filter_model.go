@@ -17,6 +17,8 @@ type iDataFilter interface {
 	GetQuery() *string
 	SetSamplingRate(v int32) *DataFilter
 	GetSamplingRate() *int32
+	SetServiceNames(v []*string) *DataFilter
+	GetServiceNames() []*string
 }
 
 type DataFilter struct {
@@ -43,7 +45,8 @@ type DataFilter struct {
 	// example:
 	//
 	// 100
-	SamplingRate *int32 `json:"samplingRate,omitempty" xml:"samplingRate,omitempty"`
+	SamplingRate *int32    `json:"samplingRate,omitempty" xml:"samplingRate,omitempty"`
+	ServiceNames []*string `json:"serviceNames,omitempty" xml:"serviceNames,omitempty" type:"Repeated"`
 }
 
 func (s DataFilter) String() string {
@@ -70,6 +73,10 @@ func (s *DataFilter) GetSamplingRate() *int32 {
 	return s.SamplingRate
 }
 
+func (s *DataFilter) GetServiceNames() []*string {
+	return s.ServiceNames
+}
+
 func (s *DataFilter) SetMaxRecords(v int32) *DataFilter {
 	s.MaxRecords = &v
 	return s
@@ -87,6 +94,11 @@ func (s *DataFilter) SetQuery(v string) *DataFilter {
 
 func (s *DataFilter) SetSamplingRate(v int32) *DataFilter {
 	s.SamplingRate = &v
+	return s
+}
+
+func (s *DataFilter) SetServiceNames(v []*string) *DataFilter {
+	s.ServiceNames = v
 	return s
 }
 

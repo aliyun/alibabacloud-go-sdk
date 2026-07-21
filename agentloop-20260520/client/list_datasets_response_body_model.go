@@ -30,9 +30,9 @@ type ListDatasetsResponseBody struct {
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token for the next page of results.
+	// The token for the next page of results.
 	//
-	// If the total number of results exceeds the maxResults limit, the results are truncated. You can use this token to query the next page of results.
+	// If the total number of results exceeds the maxResults limit, the data is truncated. You can use nextToken to query the next page of data.
 	//
 	// example:
 	//
@@ -119,13 +119,13 @@ func (s *ListDatasetsResponseBody) Validate() error {
 }
 
 type ListDatasetsResponseBodyDatasets struct {
-	// The name of the agent space.
+	// The agent space name.
 	//
 	// example:
 	//
 	// sop-agent
 	AgentSpace *string `json:"agentSpace,omitempty" xml:"agentSpace,omitempty"`
-	// The time when the dataset was created.
+	// The creation time.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -133,25 +133,26 @@ type ListDatasetsResponseBodyDatasets struct {
 	//
 	// 2026-01-19T02:11:02Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The name of the dataset.
+	// The dataset name.
 	//
 	// example:
 	//
 	// product_faq_dataset
 	DatasetName *string `json:"datasetName,omitempty" xml:"datasetName,omitempty"`
-	// The description of the dataset.
+	// The dataset description.
 	//
 	// example:
 	//
 	// Product FAQ dataset for semantic search
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	IsFavorite  *bool   `json:"isFavorite,omitempty" xml:"isFavorite,omitempty"`
 	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The time when the dataset was last updated.
+	// The update time.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -185,6 +186,10 @@ func (s *ListDatasetsResponseBodyDatasets) GetDescription() *string {
 	return s.Description
 }
 
+func (s *ListDatasetsResponseBodyDatasets) GetIsFavorite() *bool {
+	return s.IsFavorite
+}
+
 func (s *ListDatasetsResponseBodyDatasets) GetRegionId() *string {
 	return s.RegionId
 }
@@ -210,6 +215,11 @@ func (s *ListDatasetsResponseBodyDatasets) SetDatasetName(v string) *ListDataset
 
 func (s *ListDatasetsResponseBodyDatasets) SetDescription(v string) *ListDatasetsResponseBodyDatasets {
 	s.Description = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyDatasets) SetIsFavorite(v bool) *ListDatasetsResponseBodyDatasets {
+	s.IsFavorite = &v
 	return s
 }
 

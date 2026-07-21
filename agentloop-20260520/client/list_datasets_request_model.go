@@ -18,7 +18,7 @@ type iListDatasetsRequest interface {
 }
 
 type ListDatasetsRequest struct {
-	// The name of the dataset.
+	// The dataset name.
 	//
 	// example:
 	//

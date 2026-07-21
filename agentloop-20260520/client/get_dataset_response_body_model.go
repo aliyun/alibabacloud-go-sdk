@@ -17,6 +17,8 @@ type iGetDatasetResponseBody interface {
 	GetDatasetName() *string
 	SetDescription(v string) *GetDatasetResponseBody
 	GetDescription() *string
+	SetIsFavorite(v bool) *GetDatasetResponseBody
+	GetIsFavorite() *bool
 	SetRegionId(v string) *GetDatasetResponseBody
 	GetRegionId() *string
 	SetRequestId(v string) *GetDatasetResponseBody
@@ -54,6 +56,7 @@ type GetDatasetResponseBody struct {
 	//
 	// Product FAQ dataset for semantic search
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	IsFavorite  *bool   `json:"isFavorite,omitempty" xml:"isFavorite,omitempty"`
 	// The region ID.
 	//
 	// example:
@@ -102,6 +105,10 @@ func (s *GetDatasetResponseBody) GetDescription() *string {
 	return s.Description
 }
 
+func (s *GetDatasetResponseBody) GetIsFavorite() *bool {
+	return s.IsFavorite
+}
+
 func (s *GetDatasetResponseBody) GetRegionId() *string {
 	return s.RegionId
 }
@@ -135,6 +142,11 @@ func (s *GetDatasetResponseBody) SetDatasetName(v string) *GetDatasetResponseBod
 
 func (s *GetDatasetResponseBody) SetDescription(v string) *GetDatasetResponseBody {
 	s.Description = &v
+	return s
+}
+
+func (s *GetDatasetResponseBody) SetIsFavorite(v bool) *GetDatasetResponseBody {
+	s.IsFavorite = &v
 	return s
 }
 
