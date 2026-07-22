@@ -21,16 +21,24 @@ type iImageTranslationStandardRequest interface {
 	GetTargetLanguage() *string
 	SetTranslatingBrandInTheProduct(v bool) *ImageTranslationStandardRequest
 	GetTranslatingBrandInTheProduct() *bool
+	SetUseImageEditor(v bool) *ImageTranslationStandardRequest
+	GetUseImageEditor() *bool
 }
 
 type ImageTranslationStandardRequest struct {
-	// The ID of the intervention glossary. This parameter is optional. Create the glossary in the console and provide its ID. If the glossary ID is empty, the translation results are not modified.
+	// The intervention glossary ID. Optional. You must create the glossary separately in the console and provide its ID. If the provided glossary ID is empty, the translation results will not be modified.
 	//
 	// example:
 	//
 	// glossary_1
 	Glossary *string `json:"Glossary,omitempty" xml:"Glossary,omitempty"`
-	// The URL of the original image. This parameter is required. Image requirements: the width and height cannot exceed 4000 × 4000 pixels, the file size cannot exceed 10 MB, and the supported formats are png, jpeg, jpg, bmp, and webp.
+	// - Image URL: Must be publicly accessible.
+	//
+	// - Format: png, jpeg, jpg, bmp, webp
+	//
+	// - Pixels: Width and height must not exceed 4000
+	//
+	// - File size: Original file ≤ 10 MB
 	//
 	// This parameter is required.
 	//
@@ -38,13 +46,13 @@ type ImageTranslationStandardRequest struct {
 	//
 	// https://images-na.ssl-images-amazon.com/images/I/41bKsNBDcwL.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// Specifies whether to translate text on the product subject in the image. This parameter is optional. Default value: false. This helps protect information by preventing translation of embedded information such as product names.
+	// Specifies whether to translate text on the image subject. Optional. Default value: false. This helps protect information and avoids translating embedded information such as product names.
 	//
 	// example:
 	//
 	// false
 	IncludingProductArea *bool `json:"IncludingProductArea,omitempty" xml:"IncludingProductArea,omitempty"`
-	// The source language code. This parameter is required. For supported language directions, see the supported language directions list.
+	// The source language code. Required. For supported language directions, see the supported language direction list.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +60,7 @@ type ImageTranslationStandardRequest struct {
 	//
 	// en
 	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
-	// The target language code. This parameter is required. For supported language directions, see the supported language directions list.
+	// The target language code. Required. For supported language directions, see the supported language direction list.
 	//
 	// This parameter is required.
 	//
@@ -60,12 +68,18 @@ type ImageTranslationStandardRequest struct {
 	//
 	// ko
 	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
-	// Specifies whether to translate brand names on the image. This parameter is optional. Default value: false. This helps protect brand name information from being translated.
+	// Specifies whether to translate brand names on the image. Optional. Default value: false. This helps protect brand name information from being translated.
 	//
 	// example:
 	//
 	// false
 	TranslatingBrandInTheProduct *bool `json:"TranslatingBrandInTheProduct,omitempty" xml:"TranslatingBrandInTheProduct,omitempty"`
+	// Specifies whether to return layer information such as text position, font, and color. When set to true, layer information is returned for secondary editing through an image editor. Default value: false.
+	//
+	// example:
+	//
+	// false
+	UseImageEditor *bool `json:"UseImageEditor,omitempty" xml:"UseImageEditor,omitempty"`
 }
 
 func (s ImageTranslationStandardRequest) String() string {
@@ -100,6 +114,10 @@ func (s *ImageTranslationStandardRequest) GetTranslatingBrandInTheProduct() *boo
 	return s.TranslatingBrandInTheProduct
 }
 
+func (s *ImageTranslationStandardRequest) GetUseImageEditor() *bool {
+	return s.UseImageEditor
+}
+
 func (s *ImageTranslationStandardRequest) SetGlossary(v string) *ImageTranslationStandardRequest {
 	s.Glossary = &v
 	return s
@@ -127,6 +145,11 @@ func (s *ImageTranslationStandardRequest) SetTargetLanguage(v string) *ImageTran
 
 func (s *ImageTranslationStandardRequest) SetTranslatingBrandInTheProduct(v bool) *ImageTranslationStandardRequest {
 	s.TranslatingBrandInTheProduct = &v
+	return s
+}
+
+func (s *ImageTranslationStandardRequest) SetUseImageEditor(v bool) *ImageTranslationStandardRequest {
+	s.UseImageEditor = &v
 	return s
 }
 

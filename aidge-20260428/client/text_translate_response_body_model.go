@@ -22,7 +22,7 @@ type iTextTranslateResponseBody interface {
 }
 
 type TextTranslateResponseBody struct {
-	// The response code. Returns "success" for successful calls.
+	// The response code. Returns "success" for normal calls.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type TextTranslateResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The translation result data, including the translation list and usage information.
 	Data *TextTranslateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. Returns "Success" for successful calls. Returns specific error information for exceptions, such as "The parameters contain sensitive information. Try other input."
+	// The error message. Returns "Success" for normal calls. Returns specific error information for exceptions, such as "The parameters contain sensitive information. Try other input."
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ func (s *TextTranslateResponseBodyData) Validate() error {
 }
 
 type TextTranslateResponseBodyDataTranslations struct {
-	// The number of characters in the source text.
+	// The source text character count.
 	//
 	// example:
 	//
@@ -179,7 +179,7 @@ type TextTranslateResponseBodyDataTranslations struct {
 	//
 	// example:
 	//
-	// 你好世界
+	// Hello World.
 	TranslatedText *string `json:"TranslatedText,omitempty" xml:"TranslatedText,omitempty"`
 }
 
