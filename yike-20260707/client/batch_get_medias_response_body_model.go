@@ -1118,6 +1118,8 @@ func (s *BatchGetMediasResponseBodyMediaInfosFileInfoListVideoStreamInfoList) Va
 }
 
 type BatchGetMediasResponseBodyMediaInfosMediaBasicInfo struct {
+	CategoryId   *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
 	// example:
 	//
 	// https://dtlive-bj.oss-cn-beijing.aliyuncs.com/cover/01e1271d-ff4f-4689-9c20-e1df81486859_open_live_cover.jpg
@@ -1184,6 +1186,14 @@ func (s BatchGetMediasResponseBodyMediaInfosMediaBasicInfo) GoString() string {
 	return s.String()
 }
 
+func (s *BatchGetMediasResponseBodyMediaInfosMediaBasicInfo) GetCategoryId() *int64 {
+	return s.CategoryId
+}
+
+func (s *BatchGetMediasResponseBodyMediaInfosMediaBasicInfo) GetCategoryName() *string {
+	return s.CategoryName
+}
+
 func (s *BatchGetMediasResponseBodyMediaInfosMediaBasicInfo) GetCoverURL() *string {
 	return s.CoverURL
 }
@@ -1238,6 +1248,16 @@ func (s *BatchGetMediasResponseBodyMediaInfosMediaBasicInfo) GetTitle() *string 
 
 func (s *BatchGetMediasResponseBodyMediaInfosMediaBasicInfo) GetUserData() *string {
 	return s.UserData
+}
+
+func (s *BatchGetMediasResponseBodyMediaInfosMediaBasicInfo) SetCategoryId(v int64) *BatchGetMediasResponseBodyMediaInfosMediaBasicInfo {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *BatchGetMediasResponseBodyMediaInfosMediaBasicInfo) SetCategoryName(v string) *BatchGetMediasResponseBodyMediaInfosMediaBasicInfo {
+	s.CategoryName = &v
+	return s
 }
 
 func (s *BatchGetMediasResponseBodyMediaInfosMediaBasicInfo) SetCoverURL(v string) *BatchGetMediasResponseBodyMediaInfosMediaBasicInfo {

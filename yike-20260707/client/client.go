@@ -140,6 +140,150 @@ func (client *Client) BatchGetMedias(request *BatchGetMediasRequest) (_result *B
 
 // Summary:
 //
+// 创建分类
+//
+// Description:
+//
+// 分类最多支持三级分类，每级分类最多支持创建 100 个子分类。
+//
+// @param request - CreateAssetCategoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAssetCategoryResponse
+func (client *Client) CreateAssetCategoryWithOptions(request *CreateAssetCategoryRequest, runtime *dara.RuntimeOptions) (_result *CreateAssetCategoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CategoryName) {
+		query["CategoryName"] = request.CategoryName
+	}
+
+	if !dara.IsNil(request.ParentId) {
+		query["ParentId"] = request.ParentId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAssetCategory"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAssetCategoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建分类
+//
+// Description:
+//
+// 分类最多支持三级分类，每级分类最多支持创建 100 个子分类。
+//
+// @param request - CreateAssetCategoryRequest
+//
+// @return CreateAssetCategoryResponse
+func (client *Client) CreateAssetCategory(request *CreateAssetCategoryRequest) (_result *CreateAssetCategoryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateAssetCategoryResponse{}
+	_body, _err := client.CreateAssetCategoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除分类
+//
+// Description:
+//
+// 此接口会同时删除其子分类（包括二级分类和三级分类），请慎重操作。
+//
+// @param request - DeleteAssetCategoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAssetCategoryResponse
+func (client *Client) DeleteAssetCategoryWithOptions(request *DeleteAssetCategoryRequest, runtime *dara.RuntimeOptions) (_result *DeleteAssetCategoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CategoryId) {
+		query["CategoryId"] = request.CategoryId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAssetCategory"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAssetCategoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除分类
+//
+// Description:
+//
+// 此接口会同时删除其子分类（包括二级分类和三级分类），请慎重操作。
+//
+// @param request - DeleteAssetCategoryRequest
+//
+// @return DeleteAssetCategoryResponse
+func (client *Client) DeleteAssetCategory(request *DeleteAssetCategoryRequest) (_result *DeleteAssetCategoryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteAssetCategoryResponse{}
+	_body, _err := client.DeleteAssetCategoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除媒资信息
 //
 // @param request - DeleteMediasRequest
@@ -201,6 +345,68 @@ func (client *Client) DeleteMedias(request *DeleteMediasRequest) (_result *Delet
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteMediasResponse{}
 	_body, _err := client.DeleteMediasWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询分类
+//
+// @param request - GetAssetCategoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAssetCategoryResponse
+func (client *Client) GetAssetCategoryWithOptions(request *GetAssetCategoryRequest, runtime *dara.RuntimeOptions) (_result *GetAssetCategoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CategoryId) {
+		query["CategoryId"] = request.CategoryId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAssetCategory"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAssetCategoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询分类
+//
+// @param request - GetAssetCategoryRequest
+//
+// @return GetAssetCategoryResponse
+func (client *Client) GetAssetCategory(request *GetAssetCategoryRequest) (_result *GetAssetCategoryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAssetCategoryResponse{}
+	_body, _err := client.GetAssetCategoryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -503,6 +709,10 @@ func (client *Client) ImportMediaWithOptions(request *ImportMediaRequest, runtim
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CategoryId) {
+		query["CategoryId"] = request.CategoryId
+	}
+
 	if !dara.IsNil(request.CoverURL) {
 		query["CoverURL"] = request.CoverURL
 	}
@@ -591,6 +801,162 @@ func (client *Client) ImportMedia(request *ImportMediaRequest) (_result *ImportM
 	runtime := &dara.RuntimeOptions{}
 	_result = &ImportMediaResponse{}
 	_body, _err := client.ImportMediaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出分类
+//
+// @param request - ListAssetCategoriesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAssetCategoriesResponse
+func (client *Client) ListAssetCategoriesWithOptions(request *ListAssetCategoriesRequest, runtime *dara.RuntimeOptions) (_result *ListAssetCategoriesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAssetCategories"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAssetCategoriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出分类
+//
+// @param request - ListAssetCategoriesRequest
+//
+// @return ListAssetCategoriesResponse
+func (client *Client) ListAssetCategories(request *ListAssetCategoriesRequest) (_result *ListAssetCategoriesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAssetCategoriesResponse{}
+	_body, _err := client.ListAssetCategoriesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 搜索媒资
+//
+// @param request - SearchMediaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchMediaResponse
+func (client *Client) SearchMediaWithOptions(request *SearchMediaRequest, runtime *dara.RuntimeOptions) (_result *SearchMediaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CategoryId) {
+		query["CategoryId"] = request.CategoryId
+	}
+
+	if !dara.IsNil(request.EntityId) {
+		query["EntityId"] = request.EntityId
+	}
+
+	if !dara.IsNil(request.Match) {
+		query["Match"] = request.Match
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ScrollToken) {
+		query["ScrollToken"] = request.ScrollToken
+	}
+
+	if !dara.IsNil(request.SearchLibName) {
+		query["SearchLibName"] = request.SearchLibName
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		query["SortBy"] = request.SortBy
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SearchMedia"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SearchMediaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 搜索媒资
+//
+// @param request - SearchMediaRequest
+//
+// @return SearchMediaResponse
+func (client *Client) SearchMedia(request *SearchMediaRequest) (_result *SearchMediaResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SearchMediaResponse{}
+	_body, _err := client.SearchMediaWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -866,6 +1232,80 @@ func (client *Client) SubmitVideoGenerationJob(request *SubmitVideoGenerationJob
 
 // Summary:
 //
+// 更新媒资分类
+//
+// Description:
+//
+// 创建媒资分类后，可调用本接口通过分类 ID 来定位并更新媒资分类的名称。
+//
+// @param request - UpdateAssetCategoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAssetCategoryResponse
+func (client *Client) UpdateAssetCategoryWithOptions(request *UpdateAssetCategoryRequest, runtime *dara.RuntimeOptions) (_result *UpdateAssetCategoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CategoryId) {
+		query["CategoryId"] = request.CategoryId
+	}
+
+	if !dara.IsNil(request.CategoryName) {
+		query["CategoryName"] = request.CategoryName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAssetCategory"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAssetCategoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新媒资分类
+//
+// Description:
+//
+// 创建媒资分类后，可调用本接口通过分类 ID 来定位并更新媒资分类的名称。
+//
+// @param request - UpdateAssetCategoryRequest
+//
+// @return UpdateAssetCategoryResponse
+func (client *Client) UpdateAssetCategory(request *UpdateAssetCategoryRequest) (_result *UpdateAssetCategoryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateAssetCategoryResponse{}
+	_body, _err := client.UpdateAssetCategoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # UpdateMedia
 //
 // Description:
@@ -889,6 +1329,10 @@ func (client *Client) UpdateMediaWithOptions(request *UpdateMediaRequest, runtim
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppendTags) {
 		query["AppendTags"] = request.AppendTags
+	}
+
+	if !dara.IsNil(request.CategoryId) {
+		query["CategoryId"] = request.CategoryId
 	}
 
 	if !dara.IsNil(request.CoverURL) {

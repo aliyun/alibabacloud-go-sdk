@@ -73,7 +73,7 @@ type GetImageGenerationJobResponseBodyImageGenerationJob struct {
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
 	// example:
 	//
-	// fdc7f121056249c2b64e04bba27bcc8c
+	// ag_68ca759b4903b255*******
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// example:
 	//

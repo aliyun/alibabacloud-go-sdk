@@ -1132,6 +1132,8 @@ type GetMediaResponseBodyMediaInfoMediaBasicInfo struct {
 	//
 	// general
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	CategoryId   *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
 	// example:
 	//
 	// https://dtlive-vip.oss-cn-shanghai.aliyuncs.com/cover/4e88a055-75fc-4ff5-8b8a-f32224917514_open_live_cover.jpg
@@ -1210,6 +1212,14 @@ func (s *GetMediaResponseBodyMediaInfoMediaBasicInfo) GetBusinessType() *string 
 	return s.BusinessType
 }
 
+func (s *GetMediaResponseBodyMediaInfoMediaBasicInfo) GetCategoryId() *int64 {
+	return s.CategoryId
+}
+
+func (s *GetMediaResponseBodyMediaInfoMediaBasicInfo) GetCategoryName() *string {
+	return s.CategoryName
+}
+
 func (s *GetMediaResponseBodyMediaInfoMediaBasicInfo) GetCoverURL() *string {
 	return s.CoverURL
 }
@@ -1276,6 +1286,16 @@ func (s *GetMediaResponseBodyMediaInfoMediaBasicInfo) GetUserData() *string {
 
 func (s *GetMediaResponseBodyMediaInfoMediaBasicInfo) SetBusinessType(v string) *GetMediaResponseBodyMediaInfoMediaBasicInfo {
 	s.BusinessType = &v
+	return s
+}
+
+func (s *GetMediaResponseBodyMediaInfoMediaBasicInfo) SetCategoryId(v int64) *GetMediaResponseBodyMediaInfoMediaBasicInfo {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *GetMediaResponseBodyMediaInfoMediaBasicInfo) SetCategoryName(v string) *GetMediaResponseBodyMediaInfoMediaBasicInfo {
+	s.CategoryName = &v
 	return s
 }
 

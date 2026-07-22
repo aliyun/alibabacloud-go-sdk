@@ -11,6 +11,8 @@ type iUpdateMediaRequest interface {
 	GoString() string
 	SetAppendTags(v bool) *UpdateMediaRequest
 	GetAppendTags() *bool
+	SetCategoryId(v int64) *UpdateMediaRequest
+	GetCategoryId() *int64
 	SetCoverURL(v string) *UpdateMediaRequest
 	GetCoverURL() *string
 	SetDescription(v string) *UpdateMediaRequest
@@ -30,7 +32,8 @@ type iUpdateMediaRequest interface {
 }
 
 type UpdateMediaRequest struct {
-	AppendTags *bool `json:"AppendTags,omitempty" xml:"AppendTags,omitempty"`
+	AppendTags *bool  `json:"AppendTags,omitempty" xml:"AppendTags,omitempty"`
+	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	// example:
 	//
 	// https://bullet-time-20240910.oss-cn-shanghai.aliyuncs.com/ice-generated/a97255309a7c71f093d3e7f6d75a6302/snapshots/normal/2a4030b1950443048f3e3f81489d57eb-00001.jpg
@@ -77,6 +80,10 @@ func (s *UpdateMediaRequest) GetAppendTags() *bool {
 	return s.AppendTags
 }
 
+func (s *UpdateMediaRequest) GetCategoryId() *int64 {
+	return s.CategoryId
+}
+
 func (s *UpdateMediaRequest) GetCoverURL() *string {
 	return s.CoverURL
 }
@@ -111,6 +118,11 @@ func (s *UpdateMediaRequest) GetUserData() *string {
 
 func (s *UpdateMediaRequest) SetAppendTags(v bool) *UpdateMediaRequest {
 	s.AppendTags = &v
+	return s
+}
+
+func (s *UpdateMediaRequest) SetCategoryId(v int64) *UpdateMediaRequest {
+	s.CategoryId = &v
 	return s
 }
 

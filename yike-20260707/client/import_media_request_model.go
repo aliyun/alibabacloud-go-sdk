@@ -9,6 +9,8 @@ type iImportMediaRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCategoryId(v int64) *ImportMediaRequest
+	GetCategoryId() *int64
 	SetCoverURL(v string) *ImportMediaRequest
 	GetCoverURL() *string
 	SetDescription(v string) *ImportMediaRequest
@@ -36,6 +38,7 @@ type iImportMediaRequest interface {
 }
 
 type ImportMediaRequest struct {
+	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	// example:
 	//
 	// https://outin-55c9ab3fb1b911ee817b00163e32b0a3.oss-cn-shanghai.aliyuncs.com/60425a2758a971f181385017f0e90102/covers/ice-generated/d4aee2d6c6f84769ac89f18c667699c6-cover.png
@@ -94,6 +97,10 @@ func (s ImportMediaRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ImportMediaRequest) GetCategoryId() *int64 {
+	return s.CategoryId
+}
+
 func (s *ImportMediaRequest) GetCoverURL() *string {
 	return s.CoverURL
 }
@@ -140,6 +147,11 @@ func (s *ImportMediaRequest) GetTitle() *string {
 
 func (s *ImportMediaRequest) GetUserData() *string {
 	return s.UserData
+}
+
+func (s *ImportMediaRequest) SetCategoryId(v int64) *ImportMediaRequest {
+	s.CategoryId = &v
+	return s
 }
 
 func (s *ImportMediaRequest) SetCoverURL(v string) *ImportMediaRequest {

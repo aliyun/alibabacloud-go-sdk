@@ -18,7 +18,7 @@ type iSubmitVideoGenerationJobResponseBody interface {
 type SubmitVideoGenerationJobResponseBody struct {
 	// example:
 	//
-	// ****3e761e9d11edba640c42a1b7****
+	// ag_3e761e9d1140c42a1b7****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// example:
 	//

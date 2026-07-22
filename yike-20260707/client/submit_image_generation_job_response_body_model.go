@@ -18,7 +18,7 @@ type iSubmitImageGenerationJobResponseBody interface {
 type SubmitImageGenerationJobResponseBody struct {
 	// example:
 	//
-	// ******3B0E1A586AAC29742247******
+	// ag_68ca759b4903b255*******
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// example:
 	//

@@ -16,7 +16,7 @@ type iGetImageGenerationJobRequest interface {
 type GetImageGenerationJobRequest struct {
 	// example:
 	//
-	// 68ca759e798b40b4903b255*******
+	// ag_68ca759b4903b255*******
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
