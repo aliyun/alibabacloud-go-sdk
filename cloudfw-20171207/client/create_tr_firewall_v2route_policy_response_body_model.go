@@ -16,13 +16,13 @@ type iCreateTrFirewallV2RoutePolicyResponseBody interface {
 }
 
 type CreateTrFirewallV2RoutePolicyResponseBody struct {
-	// The request ID of the returned result.
+	// The request ID.
 	//
 	// example:
 	//
 	// C91D68BA-A0BE-51BF-A0F1-1CB5C57FE58D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The firewall routing policy ID.
+	// The ID of the firewall routing policy.
 	//
 	// example:
 	//

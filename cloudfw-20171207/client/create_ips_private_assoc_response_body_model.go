@@ -14,7 +14,7 @@ type iCreateIpsPrivateAssocResponseBody interface {
 }
 
 type CreateIpsPrivateAssocResponseBody struct {
-	// The ID of the request.
+	// The request ID of the response.
 	//
 	// example:
 	//

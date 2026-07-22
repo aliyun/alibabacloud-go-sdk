@@ -18,7 +18,7 @@ type iDescribeOutgoingDestinationCategoryResponseBody interface {
 }
 
 type DescribeOutgoingDestinationCategoryResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type DescribeOutgoingDestinationCategoryResponseBody struct {
 	//
 	// 10
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The list of outbound connection categories.
+	// The list of outbound connections categorizations.
 	TypeList []*DescribeOutgoingDestinationCategoryResponseBodyTypeList `json:"TypeList,omitempty" xml:"TypeList,omitempty" type:"Repeated"`
 }
 
@@ -83,9 +83,9 @@ func (s *DescribeOutgoingDestinationCategoryResponseBody) Validate() error {
 }
 
 type DescribeOutgoingDestinationCategoryResponseBodyTypeList struct {
-	// The list of outbound connection categories.
+	// The list of outbound connections categorizations.
 	CategoryList []*DescribeOutgoingDestinationCategoryResponseBodyTypeListCategoryList `json:"CategoryList,omitempty" xml:"CategoryList,omitempty" type:"Repeated"`
-	// The description of the fixed category.
+	// The fixed category description.
 	//
 	// example:
 	//
@@ -97,7 +97,7 @@ type DescribeOutgoingDestinationCategoryResponseBodyTypeList struct {
 	//
 	// All
 	TypeId *string `json:"TypeId,omitempty" xml:"TypeId,omitempty"`
-	// The name of the fixed category.
+	// The fixed category name.
 	//
 	// example:
 	//
@@ -163,25 +163,25 @@ func (s *DescribeOutgoingDestinationCategoryResponseBodyTypeList) Validate() err
 }
 
 type DescribeOutgoingDestinationCategoryResponseBodyTypeListCategoryList struct {
-	// The description of the outbound connection category.
+	// The outbound connections categorization description.
 	//
 	// example:
 	//
 	// AliYun
 	CategoryDescribe *string `json:"CategoryDescribe,omitempty" xml:"CategoryDescribe,omitempty"`
-	// The ID of the outbound connection category.
+	// The outbound connections categorization ID.
 	//
 	// example:
 	//
 	// 123
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// The name of the outbound connection category.
+	// The outbound connections categorization name.
 	//
 	// example:
 	//
 	// AliYun
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	// The classification ID of the outbound connection category.
+	// The outbound connections categorization level ID.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iUpdatePostpayUserVpcStatusResponseBody interface {
 }
 
 type UpdatePostpayUserVpcStatusResponseBody struct {
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iAddDnsFirewallPolicyResponseBody interface {
 }
 
 type AddDnsFirewallPolicyResponseBody struct {
-	// The ID of the access control list.
+	// The unique ID of the access control policy.
 	//
 	// example:
 	//

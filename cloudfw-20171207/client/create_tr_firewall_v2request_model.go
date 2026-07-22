@@ -42,7 +42,7 @@ type iCreateTrFirewallV2Request interface {
 }
 
 type CreateTrFirewallV2Request struct {
-	// The ID of the Cloud Enterprise Network (CEN) instance.
+	// The CEN instance ID. This parameter is required when you invoke this operation.
 	//
 	// example:
 	//
@@ -54,13 +54,13 @@ type CreateTrFirewallV2Request struct {
 	//
 	// vpc-firewall-description
 	FirewallDescription *string `json:"FirewallDescription,omitempty" xml:"FirewallDescription,omitempty"`
-	// The name of the firewall.
+	// The name of the Cloud Firewall instance.
 	//
 	// example:
 	//
 	// vpc-firewall-test
 	FirewallName *string `json:"FirewallName,omitempty" xml:"FirewallName,omitempty"`
-	// The CIDR block of the vSwitch in the firewall VPC that hosts the firewall\\"s elastic network interface (ENI). This parameter applies only in automatic mode.
+	// The subnet CIDR block used to store the firewall ENI in the firewall VPC in automatic mode.
 	//
 	// example:
 	//
@@ -72,19 +72,19 @@ type CreateTrFirewallV2Request struct {
 	//
 	// 10.0.0.0/16
 	FirewallVpcCidr *string `json:"FirewallVpcCidr,omitempty" xml:"FirewallVpcCidr,omitempty"`
-	// The ID of the VPC where the firewall ENI is created. This parameter applies only in manual mode.
+	// The ID of the VPC in which the firewall ENI is created in manual mode.
 	//
 	// example:
 	//
 	// vpc-wz9r5qvryn0lg3atb****
 	FirewallVpcId *string `json:"FirewallVpcId,omitempty" xml:"FirewallVpcId,omitempty"`
-	// The ID of the vSwitch where the firewall ENI is created. This parameter applies only in manual mode.
+	// The ID of the vSwitch in which the firewall ENI is created in manual mode.
 	//
 	// example:
 	//
 	// vsw-uf6ydz3vqj77mr5l6****
 	FirewallVswitchId *string `json:"FirewallVswitchId,omitempty" xml:"FirewallVswitchId,omitempty"`
-	// The language of the response message. Valid values:
+	// The language of the content within the response. Valid values:
 	//
 	// - **zh*	- (default): Chinese
 	//
@@ -94,7 +94,7 @@ type CreateTrFirewallV2Request struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The region ID of the transit router instance.
+	// The region ID of the transit router instance. This parameter is required in actual calls.
 	//
 	// example:
 	//
@@ -102,39 +102,41 @@ type CreateTrFirewallV2Request struct {
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
 	// The routing mode. Valid values:
 	//
-	// - **managed**: automatic mode
+	// - **managed**: automatic mode.
 	//
-	// - **manual**: manual mode
+	// - **manual**: manual mode.
+	//
+	// > This parameter is required in actual calls. If RouteMode is set to managed (automatic), FirewallVpcCidr, FirewallSubnetCidr, TrAttachmentSlaveCidr, and TrAttachmentMasterCidr are required. If RouteMode is set to manual, FirewallVpcId, FirewallVswitchId, TrAttachmentSlaveZone, and TrAttachmentMasterZone are required. Required parameters vary by mode.
 	//
 	// example:
 	//
 	// managed
 	RouteMode *string `json:"RouteMode,omitempty" xml:"RouteMode,omitempty"`
-	// The CIDR block of the primary vSwitch used to connect to the transit router. This parameter applies only in automatic mode.
+	// The primary subnet CIDR block used to connect to the transit router in the firewall VPC in automatic mode.
 	//
 	// example:
 	//
 	// 10.0.3.0/24
 	TrAttachmentMasterCidr *string `json:"TrAttachmentMasterCidr,omitempty" xml:"TrAttachmentMasterCidr,omitempty"`
-	// The primary zone for the vSwitch.
+	// The primary zone of the vSwitch.
 	//
 	// example:
 	//
 	// cn-chengdu-a
 	TrAttachmentMasterZone *string `json:"TrAttachmentMasterZone,omitempty" xml:"TrAttachmentMasterZone,omitempty"`
-	// The CIDR block of the secondary vSwitch used to connect to the transit router. This parameter applies only in automatic mode.
+	// The secondary subnet CIDR block used to connect to the transit router in the firewall VPC in automatic mode.
 	//
 	// example:
 	//
 	// 10.0.0.16/28
 	TrAttachmentSlaveCidr *string `json:"TrAttachmentSlaveCidr,omitempty" xml:"TrAttachmentSlaveCidr,omitempty"`
-	// The secondary zone for the vSwitch.
+	// The secondary zone of the vSwitch.
 	//
 	// example:
 	//
 	// cn-chengdu-b
 	TrAttachmentSlaveZone *string `json:"TrAttachmentSlaveZone,omitempty" xml:"TrAttachmentSlaveZone,omitempty"`
-	// The ID of the transit router instance.
+	// The transit router instance ID. This parameter is required when you invoke this operation.
 	//
 	// example:
 	//

@@ -46,7 +46,7 @@ type DescribeVpcFirewallTrafficAssetListRequest struct {
 	//
 	// www.****.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The end time. The value is a Unix timestamp that is accurate to the second.
+	// The end time. This value is a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//
@@ -60,13 +60,13 @@ type DescribeVpcFirewallTrafficAssetListRequest struct {
 	//
 	// 47.92.x.x
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
-	// Specifies whether to count only the traffic that is used to access AI services.
+	// Specifies whether to collect only the traffic that accesses AI services. This parameter is required. Set this parameter to "true". Otherwise, a parameter error is returned.
 	//
 	// example:
 	//
 	// true
 	IsAITraffic *string `json:"IsAITraffic,omitempty" xml:"IsAITraffic,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language of the response. Valid values:
 	//
 	// - **zh*	- (default): Chinese
 	//
@@ -76,33 +76,31 @@ type DescribeVpcFirewallTrafficAssetListRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The field to sort by.
+	// The sort field. Valid values:
+	//
+	// - TotalBytes: sorts by total traffic.
+	//
+	// - SessionCount: sorts by session count.
 	//
 	// Default value: TotalBytes.
-	//
-	// Valid values:
-	//
-	// TotalBytes: Sorts by total traffic.
-	//
-	// SessionCount: Sorts by the number of sessions.
 	//
 	// example:
 	//
 	// SessionCount
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The sort order. Valid values: \\`asc\\`, \\`desc\\`.
+	// The sort order. Valid values: asc, desc.
 	//
 	// example:
 	//
 	// desc
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// The start time. The value is a Unix timestamp that is accurate to the second.
+	// The start time. This value is a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//
@@ -110,7 +108,7 @@ type DescribeVpcFirewallTrafficAssetListRequest struct {
 	//
 	// 1656664560
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The VPC where the asset resides.
+	// The ID of the VPC where the asset resides.
 	//
 	// example:
 	//

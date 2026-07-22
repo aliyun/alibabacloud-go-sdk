@@ -22,35 +22,31 @@ type iDescribeControlPolicyDomainResolveRequest interface {
 }
 
 type DescribeControlPolicyDomainResolveRequest struct {
-	// The domain name.
+	// The domain name. This parameter is required.
 	//
 	// example:
 	//
 	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The Cloud Firewall type.
+	// The type of the cloud firewall.
 	//
 	// example:
 	//
 	// internet
 	FirewallType *string `json:"FirewallType,omitempty" xml:"FirewallType,omitempty"`
-	// The supported IP address version.
+	// The supported IP address version. This parameter is required.
 	//
 	// example:
 	//
 	// 4
 	IpVersion *int32 `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The language type. Valid values:
-	//
-	// - **en**: English
-	//
-	// - **zh**: Chinese.
+	// The language type.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The region ID.
+	// The region ID. This parameter is required.
 	//
 	// example:
 	//

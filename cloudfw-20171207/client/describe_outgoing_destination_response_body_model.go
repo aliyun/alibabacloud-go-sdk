@@ -18,9 +18,9 @@ type iDescribeOutgoingDestinationResponseBody interface {
 }
 
 type DescribeOutgoingDestinationResponseBody struct {
-	// The information about the destination addresses.
+	// The destination address information.
 	DstList []*DescribeOutgoingDestinationResponseBodyDstList `json:"DstList,omitempty" xml:"DstList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *DescribeOutgoingDestinationResponseBody) Validate() error {
 }
 
 type DescribeOutgoingDestinationResponseBodyDstList struct {
-	// The recommended Access Control List (ACL) details.
+	// The recommended ACL content.
 	//
 	// example:
 	//
@@ -95,7 +95,7 @@ type DescribeOutgoingDestinationResponseBodyDstList struct {
 	//
 	// Normal
 	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	// The business to which the domain name belongs.
+	// The domain name business.
 	//
 	// example:
 	//
@@ -107,7 +107,7 @@ type DescribeOutgoingDestinationResponseBodyDstList struct {
 	//
 	// AliYun
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// The category name of the service.
+	// The category name of the product.
 	//
 	// example:
 	//
@@ -149,7 +149,7 @@ type DescribeOutgoingDestinationResponseBodyDstList struct {
 	//
 	// 0.0
 	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
-	// Indicates whether the destination is manually marked as normal.
+	// Indicates whether the entry is manually marked as normal by the user.
 	//
 	// example:
 	//
@@ -167,7 +167,7 @@ type DescribeOutgoingDestinationResponseBodyDstList struct {
 	//
 	// 10
 	SessionCount *int64 `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
-	// The list of tags.
+	// The tag list.
 	TagList []*DescribeOutgoingDestinationResponseBodyDstListTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
 }
 

@@ -168,7 +168,7 @@ func (s *DescribePostpayBillResponseBody) Validate() error {
 }
 
 type DescribePostpayBillResponseBodyBillList struct {
-	// The end time, expressed as a UNIX timestamp in seconds. The value is on the hour or on the day.
+	// The end time, expressed as a second-level UNIX timestamp. The value is on the hour or on the day.
 	//
 	// example:
 	//
@@ -186,15 +186,15 @@ type DescribePostpayBillResponseBodyBillList struct {
 	//
 	// 10
 	InternetTraffic *float32 `json:"InternetTraffic,omitempty" xml:"InternetTraffic,omitempty"`
-	// Indicates whether a deduction is applied. A value of 0 indicates that no deduction is applied. Any value greater than 0 indicates that a deduction is applied. If a deduction is applied, the bill is not generated.
+	// Indicates whether the bill is deducted. A value of 0 indicates that the bill is not deducted. Any value greater than 0 indicates that the bill is deducted. If the bill is deducted, it is not charged.
 	//
-	// > This field is meaningful only when you query data at the hourly level.
+	// > This field is meaningful only when you query hourly data.
 	//
 	// example:
 	//
 	// 0
 	IsDerated *int32 `json:"IsDerated,omitempty" xml:"IsDerated,omitempty"`
-	// The log service usage duration, in TB × hours.
+	// The log service usage duration, in T × h.
 	//
 	// example:
 	//
@@ -212,7 +212,7 @@ type DescribePostpayBillResponseBodyBillList struct {
 	//
 	// 2
 	NatTraffic *float32 `json:"NatTraffic,omitempty" xml:"NatTraffic,omitempty"`
-	// The sensitive data leak detection usage duration, in hours.
+	// The data leak detection usage duration, in hours.
 	//
 	// example:
 	//
@@ -224,7 +224,7 @@ type DescribePostpayBillResponseBodyBillList struct {
 	//
 	// 1
 	SdlTraffic *float32 `json:"SdlTraffic,omitempty" xml:"SdlTraffic,omitempty"`
-	// The start time, expressed as a UNIX timestamp in seconds. The value is on the hour or on the day.
+	// The start time, expressed as a second-level UNIX timestamp. The value is on the hour or on the day.
 	//
 	// example:
 	//

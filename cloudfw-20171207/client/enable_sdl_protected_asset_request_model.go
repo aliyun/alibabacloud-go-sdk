@@ -16,7 +16,7 @@ type iEnableSdlProtectedAssetRequest interface {
 }
 
 type EnableSdlProtectedAssetRequest struct {
-  // The list of IP assets.
+  // The list of IP assets. At least one IP address is required to enable protection.
   IpList []*string `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
   // The language of the request and response. Valid values:
   // 

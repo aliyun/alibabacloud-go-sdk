@@ -22,13 +22,17 @@ type iDescribeVpcFirewallManualVSwitchListRequest interface {
 }
 
 type DescribeVpcFirewallManualVSwitchListRequest struct {
-	// The language of request and response messages.
+	// The language of the request and response. Valid values:
+	//
+	// - **zh**: Chinese
+	//
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The UID of the member account.
+	// The UID of the member accounts.
 	//
 	// example:
 	//
@@ -44,7 +48,7 @@ type DescribeVpcFirewallManualVSwitchListRequest struct {
 	//
 	// cn-qingdao
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The ID of the VPC instance.
+	// The VPC-connected instance ID.
 	//
 	// This parameter is required.
 	//

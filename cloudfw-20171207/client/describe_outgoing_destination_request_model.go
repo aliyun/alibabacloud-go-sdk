@@ -66,7 +66,7 @@ type DescribeOutgoingDestinationRequest struct {
 	//
 	// AliYun
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// The number of the page to return.
+	// The current page number.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type DescribeOutgoingDestinationRequest struct {
 	//
 	// 47.100.111XXX
 	DstIP *string `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
-	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The end time of the query. The value is a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//
@@ -86,25 +86,25 @@ type DescribeOutgoingDestinationRequest struct {
 	//
 	// 1749089441
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Specifies whether to count only the traffic to AI services. The default value is false.
+	// Specifies whether to collect statistics only on traffic that accesses AI services. Default value: false.
 	//
 	// example:
 	//
 	// true
 	IsAITraffic *string `json:"IsAITraffic,omitempty" xml:"IsAITraffic,omitempty"`
-	// The language of the response message.
+	// The language type of the received message.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The sorting order.
+	// The sort order.
 	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The number of the page to return.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -128,25 +128,27 @@ type DescribeOutgoingDestinationRequest struct {
 	//
 	// 47.96.74.XXX
 	PublicIP *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
-	// The security policy for the outbound connection.
+	// The security policy for Outbound Domain of outbound connections.
 	//
 	// example:
 	//
 	// pass
 	SecuritySuggest *string `json:"SecuritySuggest,omitempty" xml:"SecuritySuggest,omitempty"`
-	// The field to use for sorting.
+	// The field by which to sort the results.
 	//
 	// example:
 	//
 	// InBytes
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// The source IP address of the visitor.
+	// Deprecated
+	//
+	// The IP address of the access source. (This field is deprecated.)
 	//
 	// example:
 	//
 	// 106.3.198.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The start of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The start time of the query. The value is a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//

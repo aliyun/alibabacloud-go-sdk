@@ -13,6 +13,8 @@ type iDescribeTrafficLogResponseBody interface {
 	GetDataList() []*DescribeTrafficLogResponseBodyDataList
 	SetPageInfo(v *DescribeTrafficLogResponseBodyPageInfo) *DescribeTrafficLogResponseBody
 	GetPageInfo() *DescribeTrafficLogResponseBodyPageInfo
+	SetQueryId(v string) *DescribeTrafficLogResponseBody
+	GetQueryId() *string
 	SetRequestId(v string) *DescribeTrafficLogResponseBody
 	GetRequestId() *string
 }
@@ -22,6 +24,12 @@ type DescribeTrafficLogResponseBody struct {
 	DataList []*DescribeTrafficLogResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
 	// The pagination information.
 	PageInfo *DescribeTrafficLogResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The query ID. If the query is too large, a query ID is returned first. Use this query ID to retrieve results in subsequent requests.
+	//
+	// example:
+	//
+	// 398542bf-e001-47a3-aee2-b132b588e3c8
+	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -46,6 +54,10 @@ func (s *DescribeTrafficLogResponseBody) GetPageInfo() *DescribeTrafficLogRespon
 	return s.PageInfo
 }
 
+func (s *DescribeTrafficLogResponseBody) GetQueryId() *string {
+	return s.QueryId
+}
+
 func (s *DescribeTrafficLogResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
@@ -57,6 +69,11 @@ func (s *DescribeTrafficLogResponseBody) SetDataList(v []*DescribeTrafficLogResp
 
 func (s *DescribeTrafficLogResponseBody) SetPageInfo(v *DescribeTrafficLogResponseBodyPageInfo) *DescribeTrafficLogResponseBody {
 	s.PageInfo = v
+	return s
+}
+
+func (s *DescribeTrafficLogResponseBody) SetQueryId(v string) *DescribeTrafficLogResponseBody {
+	s.QueryId = &v
 	return s
 }
 
@@ -84,7 +101,7 @@ func (s *DescribeTrafficLogResponseBody) Validate() error {
 }
 
 type DescribeTrafficLogResponseBodyDataList struct {
-	// The policy ID of the ACL pre-match. If this parameter is not specified, all policies are included.
+	// The policy ID of the ACL pre-match. If this parameter is empty, all policies are included.
 	//
 	// example:
 	//
@@ -98,11 +115,11 @@ type DescribeTrafficLogResponseBodyDataList struct {
 	AclPreRuleName *string `json:"AclPreRuleName,omitempty" xml:"AclPreRuleName,omitempty"`
 	// The ACL pre-match status. Valid values:
 	//
-	// **app_unknown**: application not identified
+	// **app_unknown**: application not identified.
 	//
-	// **domain_unknown**: domain name not identified
+	// **domain_unknown**: domain name not identified.
 	//
-	// **normal**: normal
+	// **normal**: normal.
 	//
 	// example:
 	//
@@ -110,21 +127,21 @@ type DescribeTrafficLogResponseBodyDataList struct {
 	AclPreState *string `json:"AclPreState,omitempty" xml:"AclPreState,omitempty"`
 	// The application identification status. Valid values:
 	//
-	// **none**: initial state
+	// **none**: initial state.
 	//
-	// **policy_discard**: connection establishment failed because the connection was blocked by a user ACL or threat intelligence rule
+	// **policy_discard**: connection establishment failed because the connection was blocked by a user ACL or threat intelligence rule.
 	//
-	// **tcp_not_establish**: TCP connection establishment failed
+	// **tcp_not_establish**: TCP connection establishment failed.
 	//
-	// **no_payload**: connection established, but DPI has analyzed 0 payloads
+	// **no_payload**: connection established, but DPI has analyzed 0 payloads.
 	//
-	// **analysing**: identification in progress
+	// **analysing**: identification in progress.
 	//
-	// **unknown_loose**: loose mode, identification failed, continuing identification
+	// **unknown_loose**: loose mode. Identification failed. Identification continues.
 	//
-	// **unknown_strict**: strict mode, identification failed
+	// **unknown_strict**: strict mode. Identification failed.
 	//
-	// **success**: identification succeeded
+	// **success**: identification succeeded.
 	//
 	// example:
 	//
@@ -194,7 +211,7 @@ type DescribeTrafficLogResponseBodyDataList struct {
 	//
 	// aliyun.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The URL of the flow log.
+	// The URL in the flow log.
 	//
 	// example:
 	//
@@ -220,13 +237,13 @@ type DescribeTrafficLogResponseBodyDataList struct {
 	//
 	// 1751423363
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Other extended data.
+	// The additional extended data.
 	//
 	// example:
 	//
 	// None
 	Ext *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
-	// The inbound traffic.
+	// The inbound traffic in bytes.
 	//
 	// example:
 	//
@@ -268,7 +285,7 @@ type DescribeTrafficLogResponseBodyDataList struct {
 	//
 	// 14151892****7022
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The outbound traffic.
+	// The outbound traffic in bytes.
 	//
 	// example:
 	//
@@ -324,27 +341,27 @@ type DescribeTrafficLogResponseBodyDataList struct {
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The final result of the traffic. Valid values:
 	//
-	// - **0**: Allow.
+	// - **0**: allowed.
 	//
-	// - **1**: Alert.
+	// - **1**: alerted.
 	//
-	// - **2**: Drop.
+	// - **2**: dropped.
 	//
 	// example:
 	//
 	// 0
 	RuleResult *int32 `json:"RuleResult,omitempty" xml:"RuleResult,omitempty"`
-	// The source of the matched detection rule. Valid values:
+	// The source of the hit detection rule. Valid values:
 	//
-	// - **0**: None.
+	// - **0**: none.
 	//
-	// - **1**: Basic protection.
+	// - **1**: basic protection.
 	//
-	// - **2**: Virtual patches.
+	// - **2**: Virtual Patches.
 	//
-	// - **3**: Access control.
+	// - **3**: access control.
 	//
-	// - **4**: Threat intelligence.
+	// - **4**: threat intelligence.
 	//
 	// example:
 	//
@@ -889,7 +906,7 @@ type DescribeTrafficLogResponseBodyDataListDstVpc struct {
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The VPC-connected instance ID.
+	// The VPC instance ID.
 	//
 	// example:
 	//

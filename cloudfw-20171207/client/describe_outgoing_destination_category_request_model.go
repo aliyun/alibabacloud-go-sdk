@@ -26,19 +26,23 @@ type iDescribeOutgoingDestinationCategoryRequest interface {
 }
 
 type DescribeOutgoingDestinationCategoryRequest struct {
-	// The category ID.
+	// The category ID. Valid values are predefined destination category enumerations (25+ in total), such as TrustedDomain (trusted websites), AliPay (Alipay products), and CDN (CDN services). For the complete list of enumeration values and their semantics, refer to the product documentation.
 	//
 	// example:
 	//
 	// All
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// The destination type.
+	// The destination type. This parameter is required. If this parameter is not specified, ErrorDstType is returned. Valid values:
+	//
+	// - Domain: domain name.
+	//
+	// - DstIP: IP address.
 	//
 	// example:
 	//
 	// domain
 	DstType *string `json:"DstType,omitempty" xml:"DstType,omitempty"`
-	// The end time of the query. This is a UNIX timestamp. Unit: seconds.
+	// The end time of the query. Specify the value as a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//
@@ -46,19 +50,21 @@ type DescribeOutgoingDestinationCategoryRequest struct {
 	//
 	// 1750818370
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The language of the response message.
+	// The language type of the response message.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source IP address of the visitor.
+	// Deprecated
+	//
+	// The source IP address of the request.
 	//
 	// example:
 	//
 	// 59.82.45.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The start time of the query. This is a UNIX timestamp. Unit: seconds.
+	// The start time of the query. Specify the value as a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//

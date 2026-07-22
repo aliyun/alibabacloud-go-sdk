@@ -70,7 +70,7 @@ type DescribeAccessInstanceTaskResponseBody struct {
 	//
 	// running
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// The steps of the task.
+	// The task steps.
 	TaskSteps []*DescribeAccessInstanceTaskResponseBodyTaskSteps `json:"TaskSteps,omitempty" xml:"TaskSteps,omitempty" type:"Repeated"`
 }
 
@@ -168,19 +168,19 @@ func (s *DescribeAccessInstanceTaskResponseBody) Validate() error {
 }
 
 type DescribeAccessInstanceTaskResponseBodyTaskSteps struct {
-	// The name of the step.
+	// The step name.
 	//
 	// example:
 	//
 	// Obtain ACK cluster information
 	StepName *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
-	// The progress of the step.
+	// The step progress.
 	//
 	// example:
 	//
 	// 100%
 	StepProgress *string `json:"StepProgress,omitempty" xml:"StepProgress,omitempty"`
-	// The status of the step.
+	// The step status.
 	//
 	// example:
 	//

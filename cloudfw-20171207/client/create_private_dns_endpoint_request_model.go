@@ -48,7 +48,7 @@ type CreatePrivateDnsEndpointRequest struct {
 	//
 	// test
 	AccessInstanceName *string `json:"AccessInstanceName,omitempty" xml:"AccessInstanceName,omitempty"`
-	// The type of cloud firewall. Valid values:
+	// The type of the cloud firewall. Valid values:
 	//
 	// - **internet**
 	//
@@ -68,7 +68,7 @@ type CreatePrivateDnsEndpointRequest struct {
 	//
 	// UDP
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	// The UID of the Alibaba Cloud member account.
+	// The UID of the Alibaba Cloud member account. This parameter is required when you use Cloud Firewall to manage member accounts.
 	//
 	// example:
 	//
@@ -80,13 +80,13 @@ type CreatePrivateDnsEndpointRequest struct {
 	//
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The primary DNS.
+	// The primary DNS server.
 	//
 	// example:
 	//
 	// 1.1.1.1
 	PrimaryDns *string `json:"PrimaryDns,omitempty" xml:"PrimaryDns,omitempty"`
-	// The ID of the primary vSwitch.
+	// The ID of the primary vSwitch. The zone of PrimaryVSwitchId and StandbyVSwitchId must be a zone that supports private DNS. Otherwise, an error is returned. The region must also be in the supported list.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type CreatePrivateDnsEndpointRequest struct {
 	//
 	// 10.1.1.1
 	PrimaryVSwitchIp *string `json:"PrimaryVSwitchIp,omitempty" xml:"PrimaryVSwitchIp,omitempty"`
-	// The type of private DNS. Valid values:
+	// The private DNS type. When PrivateDnsType is set to Custom, Port and IpProtocol are required. When PrivateDnsType is set to PrivateZone, the backend automatically sets the port to 53 and uses the default protocol. Valid values:
 	//
 	// - **PrivateZone**
 	//
@@ -118,25 +118,25 @@ type CreatePrivateDnsEndpointRequest struct {
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The standby DNS.
+	// The secondary DNS server.
 	//
 	// example:
 	//
 	// 1.1.1.2
 	StandbyDns *string `json:"StandbyDns,omitempty" xml:"StandbyDns,omitempty"`
-	// The ID of the standby vSwitch.
+	// The ID of the secondary vSwitch. The zone of PrimaryVSwitchId and StandbyVSwitchId must be a zone that supports private DNS. Otherwise, error code -200534 is returned. The region must also be in the supported list.
 	//
 	// example:
 	//
 	// vsw-8vb6jk75wfcwn******
 	StandbyVSwitchId *string `json:"StandbyVSwitchId,omitempty" xml:"StandbyVSwitchId,omitempty"`
-	// The IP address of the standby vSwitch.
+	// The IP address of the secondary vSwitch.
 	//
 	// example:
 	//
 	// 10.2.2.2
 	StandbyVSwitchIp *string `json:"StandbyVSwitchIp,omitempty" xml:"StandbyVSwitchIp,omitempty"`
-	// The VPC instance ID.
+	// The instance ID of the VPC-connected instance.
 	//
 	// This parameter is required.
 	//

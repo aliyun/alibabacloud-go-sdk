@@ -20,13 +20,13 @@ type iDescribeFirewallTaskRequest interface {
 }
 
 type DescribeFirewallTaskRequest struct {
-	// The ID of the VPC instance.
+	// The VPC-connected instance ID. You must specify at least one of TaskId and ChildInstanceId. If neither is specified, the API returns ErrorParameters(400).
 	//
 	// example:
 	//
 	// vfw-tr-cd6000c588214403****
 	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
-	// The language of the response. Valid values:
+	// The language type. Valid values:
 	//
 	// - **zh*	- (default): Chinese
 	//
@@ -36,7 +36,7 @@ type DescribeFirewallTaskRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The task ID.
+	// The task ID. You must specify at least one of TaskId and ChildInstanceId. If neither is specified, the API returns ErrorParameters(400).
 	//
 	// example:
 	//
@@ -44,9 +44,9 @@ type DescribeFirewallTaskRequest struct {
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The type of the task. Valid values:
 	//
-	// - **NAT**: NAT border task
+	// - **NAT**: NAT firewall task
 	//
-	// - **VPC**: VPC border task
+	// - **VPC**: VPC firewall task
 	//
 	// example:
 	//

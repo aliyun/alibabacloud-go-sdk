@@ -20,7 +20,7 @@ type iDescribeAssetRiskListResponseBody interface {
 type DescribeAssetRiskListResponseBody struct {
 	// The details of the assets.
 	AssetList []*DescribeAssetRiskListResponseBodyAssetList `json:"AssetList,omitempty" xml:"AssetList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -89,13 +89,13 @@ type DescribeAssetRiskListResponseBodyAssetList struct {
 	//
 	// 39.108.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The IP version of the asset that is protected by Cloud Firewall.
+	// The IP version of the asset protected by Cloud Firewall.
 	//
 	// Valid values:
 	//
-	// - **4**: IPv4 address
+	// - **4**: IPv4
 	//
-	// - **6**: IPv6 address
+	// - **6**: IPv6
 	//
 	// example:
 	//

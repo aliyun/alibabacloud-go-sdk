@@ -18,7 +18,7 @@ type iDescribeVpcFirewallManualVSwitchListResponseBody interface {
 }
 
 type DescribeVpcFirewallManualVSwitchListResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type DescribeVpcFirewallManualVSwitchListResponseBody struct {
 	//
 	// 3
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The list of vSwitches.
+	// The vSwitch list.
 	VSwitchList []*DescribeVpcFirewallManualVSwitchListResponseBodyVSwitchList `json:"VSwitchList,omitempty" xml:"VSwitchList,omitempty" type:"Repeated"`
 }
 
@@ -85,7 +85,7 @@ func (s *DescribeVpcFirewallManualVSwitchListResponseBody) Validate() error {
 type DescribeVpcFirewallManualVSwitchListResponseBodyVSwitchList struct {
 	// The UID of the Alibaba Cloud account.
 	//
-	// > The root account of the Cloud Firewall member account.
+	// > The primary account of the Cloud Firewall member accounts.
 	//
 	// example:
 	//
@@ -103,7 +103,7 @@ type DescribeVpcFirewallManualVSwitchListResponseBodyVSwitchList struct {
 	//
 	// 10.0.31.0/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The ID of the owner.
+	// The owner user ID.
 	//
 	// example:
 	//
@@ -115,7 +115,7 @@ type DescribeVpcFirewallManualVSwitchListResponseBodyVSwitchList struct {
 	//
 	// cn-beijing
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The ID of the associated route table.
+	// The ID of the associate a prefix list with a route table.
 	//
 	// example:
 	//
@@ -127,7 +127,7 @@ type DescribeVpcFirewallManualVSwitchListResponseBodyVSwitchList struct {
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the vSwitch.
+	// The vSwitch ID.
 	//
 	// example:
 	//
@@ -139,7 +139,7 @@ type DescribeVpcFirewallManualVSwitchListResponseBodyVSwitchList struct {
 	//
 	// vsw-test
 	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
-	// The ID of the VPC instance.
+	// The VPC-connected instance ID.
 	//
 	// example:
 	//

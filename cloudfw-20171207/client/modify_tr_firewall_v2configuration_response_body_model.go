@@ -14,7 +14,7 @@ type iModifyTrFirewallV2ConfigurationResponseBody interface {
 }
 
 type ModifyTrFirewallV2ConfigurationResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

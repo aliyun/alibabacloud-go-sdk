@@ -18,7 +18,7 @@ type iDescribePrepayBillTotalResponseBody interface {
 }
 
 type DescribePrepayBillTotalResponseBody struct {
-	// The bill list, aggregated by day.
+	// The bill list, with each entry representing a day.
 	BillList []*DescribePrepayBillTotalResponseBodyBillList `json:"BillList,omitempty" xml:"BillList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -107,13 +107,13 @@ type DescribePrepayBillTotalResponseBodyBillList struct {
 	//
 	// 200
 	DefaultBandwidth *int64 `json:"DefaultBandwidth,omitempty" xml:"DefaultBandwidth,omitempty"`
-	// The elastic bandwidth. Unit: Mbit/s.
+	// The elastic bandwidth value. Unit: Mbit/s.
 	//
 	// example:
 	//
 	// 200
 	ElasticBandwidth *int64 `json:"ElasticBandwidth,omitempty" xml:"ElasticBandwidth,omitempty"`
-	// The end time of the day. The value is a UNIX timestamp in seconds.
+	// The end time of the day. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//
@@ -131,7 +131,7 @@ type DescribePrepayBillTotalResponseBodyBillList struct {
 	//
 	// 10
 	InternetTrafficBandwidth *float32 `json:"InternetTrafficBandwidth,omitempty" xml:"InternetTrafficBandwidth,omitempty"`
-	// The monthly free traffic quota for sensitive data detection. Unit: GB.
+	// The monthly free traffic for sensitive data detection. Unit: GB.
 	//
 	// example:
 	//
@@ -143,13 +143,13 @@ type DescribePrepayBillTotalResponseBodyBillList struct {
 	//
 	// 10
 	NatTrafficBandwidth *float32 `json:"NatTrafficBandwidth,omitempty" xml:"NatTrafficBandwidth,omitempty"`
-	// The timestamp when the maximum combined bandwidth (Internet + VPC + NAT) occurred on that day.
+	// The timestamp when the maximum bandwidth (Internet + VPC + NAT) of the day occurred.
 	//
 	// example:
 	//
 	// 1761588300
 	OverflowTime *int64 `json:"OverflowTime,omitempty" xml:"OverflowTime,omitempty"`
-	// The start time of the day. The value is a UNIX timestamp in seconds.
+	// The start time of the day. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//

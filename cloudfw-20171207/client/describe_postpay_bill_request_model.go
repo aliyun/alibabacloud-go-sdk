@@ -30,7 +30,7 @@ type DescribePostpayBillRequest struct {
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end time of the query, expressed as a UNIX timestamp in seconds.
+	// The end time of the bill query, expressed as a second-level UNIX timestamp. The value must be later than StartTime.
 	//
 	// This parameter is required.
 	//
@@ -38,11 +38,11 @@ type DescribePostpayBillRequest struct {
 	//
 	// 1646063922
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time interval for querying data. This is an enumeration value. Valid values:
+	// Specifies the time interval for querying data. This is an enumeration value. This parameter is required. If this parameter is not specified, ERR_PARAMS_INVALID is returned. Valid values:
 	//
-	// - 3600: queries data at the hourly level.
+	// - 3600: queries hourly data.
 	//
-	// - 86400: queries data at the daily level.
+	// - 86400: queries daily data.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type DescribePostpayBillRequest struct {
 	//
 	// Default value: zh.
 	//
-	// Valid values: en.
+	// Valid value: en.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type DescribePostpayBillRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The start time of the query, expressed as a UNIX timestamp in seconds.
+	// The start time of the bill query, expressed as a second-level UNIX timestamp.
 	//
 	// This parameter is required.
 	//

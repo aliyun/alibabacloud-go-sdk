@@ -28,7 +28,7 @@ type DeleteVpcFirewallConfigureRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The UID of one of the member accounts of the current Alibaba Cloud account.
+	// The UID of a member account of the current Alibaba Cloud account.
 	//
 	// example:
 	//

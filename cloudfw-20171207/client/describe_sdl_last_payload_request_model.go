@@ -24,13 +24,13 @@ type iDescribeSdlLastPayloadRequest interface {
 }
 
 type DescribeSdlLastPayloadRequest struct {
-	// The destination IP address.
+	// The destination IP address. This is an optional parameter used to filter by destination IP address.
 	//
 	// example:
 	//
 	// 47.100.102.XXX
 	DstIp *string `json:"DstIp,omitempty" xml:"DstIp,omitempty"`
-	// The end of the time range to query. Specify the value as a UNIX timestamp in seconds.
+	// The end time of the query (UNIX timestamp in seconds). This parameter is required. If this parameter is not specified, the API returns an error.
 	//
 	// example:
 	//
@@ -46,19 +46,19 @@ type DescribeSdlLastPayloadRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The type of sensitive credential.
+	// The type of sensitive credential. This parameter is required. If this parameter is not specified, the API returns an error.
 	//
 	// example:
 	//
 	// id_card
 	SensitiveCategory *string `json:"SensitiveCategory,omitempty" xml:"SensitiveCategory,omitempty"`
-	// The source IP address.
+	// The source IP address. This is an optional parameter used to filter by source IP address.
 	//
 	// example:
 	//
 	// 121.40.84.XXX
 	SrcIp *string `json:"SrcIp,omitempty" xml:"SrcIp,omitempty"`
-	// The beginning of the time range to query. Specify the value as a UNIX timestamp in seconds.
+	// The start time of the query (UNIX timestamp in seconds). This parameter is required. If this parameter is not specified, the API returns an error.
 	//
 	// example:
 	//

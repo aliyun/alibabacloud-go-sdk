@@ -38,9 +38,9 @@ type iCreateSecurityProxyRequest interface {
 type CreateSecurityProxyRequest struct {
 	// The security protection switch. Valid values:
 	//
-	// - **open**: enabled
+	// - **open**: Enabled.
 	//
-	// - **close**: disabled.
+	// - **close**: Disabled.
 	//
 	// example:
 	//
@@ -52,11 +52,11 @@ type CreateSecurityProxyRequest struct {
 	//
 	// cn-beijing-b
 	FwVswitchZoneId *string `json:"FwVswitchZoneId,omitempty" xml:"FwVswitchZoneId,omitempty"`
-	// The language of the content within the response. Valid values:
+	// The language of the response. Valid values:
 	//
 	// - **zh*	- (default): Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
@@ -112,9 +112,11 @@ type CreateSecurityProxyRequest struct {
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// Specifies whether to use the automatic vSwitch mode. Valid values:
 	//
-	// - **true**: automatic mode
+	// - **true**: Automatic mode.
 	//
-	// - **false**: manual mode.
+	// - **false**: Manual mode.
+	//
+	// > The default value of VswitchAuto is true. If VswitchAuto is set to true, VswitchCidr is required and must be a valid CIDR block. If VswitchAuto is set to false, VswitchId is required.
 	//
 	// example:
 	//

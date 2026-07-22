@@ -61,6 +61,8 @@ type iDescribeTrafficLogRequest interface {
 	GetNatGatewayId() *string
 	SetPageSize(v string) *DescribeTrafficLogRequest
 	GetPageSize() *string
+	SetQueryId(v string) *DescribeTrafficLogRequest
+	GetQueryId() *string
 	SetRuleId(v string) *DescribeTrafficLogRequest
 	GetRuleId() *string
 	SetRuleResult(v string) *DescribeTrafficLogRequest
@@ -130,7 +132,7 @@ type DescribeTrafficLogRequest struct {
 	//
 	// 1
 	AttackType *string `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
-	// The page number of the query.
+	// The page number.
 	//
 	// example:
 	//
@@ -148,7 +150,7 @@ type DescribeTrafficLogRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The URL of the flow log.
+	// The URL in the flow log.
 	//
 	// example:
 	//
@@ -216,7 +218,7 @@ type DescribeTrafficLogRequest struct {
 	//
 	// telecom
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// The language type of the received message. Valid values:
+	// The language of the response message. Valid values:
 	//
 	// - **zh*	- (default): Chinese
 	//
@@ -232,7 +234,7 @@ type DescribeTrafficLogRequest struct {
 	//
 	// Hangzhou
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The UID of the member accounts.
+	// The UID of one of the member accounts.
 	//
 	// example:
 	//
@@ -256,6 +258,12 @@ type DescribeTrafficLogRequest struct {
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The query ID. If the query is too large, a query ID is returned. Use this query ID to retrieve results in subsequent requests.
+	//
+	// example:
+	//
+	// d158c8ed-bc57-40fd-86d3-468169d4cfe2
+	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
 	// The rule ID.
 	//
 	// example:
@@ -324,7 +332,7 @@ type DescribeTrafficLogRequest struct {
 	//
 	// cn-beijing
 	SrcVpcRegionNo *string `json:"SrcVpcRegionNo,omitempty" xml:"SrcVpcRegionNo,omitempty"`
-	// The start time. Specify a UNIX timestamp in seconds. Only data within the last 7 days can be queried. A single query should not exceed one day.
+	// The start time. Specify a UNIX timestamp in seconds. Only data within the last 7 days can be queried. We recommend that a single query span no more than one day.
 	//
 	// This parameter is required.
 	//
@@ -462,6 +470,10 @@ func (s *DescribeTrafficLogRequest) GetNatGatewayId() *string {
 
 func (s *DescribeTrafficLogRequest) GetPageSize() *string {
 	return s.PageSize
+}
+
+func (s *DescribeTrafficLogRequest) GetQueryId() *string {
+	return s.QueryId
 }
 
 func (s *DescribeTrafficLogRequest) GetRuleId() *string {
@@ -651,6 +663,11 @@ func (s *DescribeTrafficLogRequest) SetNatGatewayId(v string) *DescribeTrafficLo
 
 func (s *DescribeTrafficLogRequest) SetPageSize(v string) *DescribeTrafficLogRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeTrafficLogRequest) SetQueryId(v string) *DescribeTrafficLogRequest {
+	s.QueryId = &v
 	return s
 }
 

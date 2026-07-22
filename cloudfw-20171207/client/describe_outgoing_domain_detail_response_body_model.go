@@ -138,7 +138,7 @@ type DescribeOutgoingDomainDetailResponseBodyAssetList struct {
 	//
 	// ngw-bp1utx6wj4x9qu9tl****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The NAT gateway name.
+	// The name of the NAT gateway.
 	//
 	// example:
 	//
@@ -180,7 +180,7 @@ type DescribeOutgoingDomainDetailResponseBodyAssetList struct {
 	//
 	// test
 	ResourceInstanceName *string `json:"ResourceInstanceName,omitempty" xml:"ResourceInstanceName,omitempty"`
-	// The type of the public IP address of the asset.
+	// The public IP address type of the asset.
 	//
 	// example:
 	//
@@ -212,7 +212,7 @@ type DescribeOutgoingDomainDetailResponseBodyAssetList struct {
 	//
 	// 321120825843
 	TotalBytes *string `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
-	// The VPC instance ID.
+	// The instance ID of the VPC-connected instance.
 	//
 	// example:
 	//
@@ -437,15 +437,7 @@ type DescribeOutgoingDomainDetailResponseBodyAssetListTagList struct {
 	//
 	// 3
 	ClassId *string `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
-	// The risk level. Valid values:
-	//
-	// - **0**: no risk.
-	//
-	// - **1**: low risk.
-	//
-	// - **2**: medium risk.
-	//
-	// - **3**: high risk.
+	// The risk level.
 	//
 	// example:
 	//

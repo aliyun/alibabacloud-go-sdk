@@ -18,9 +18,9 @@ type iDescribeVpcFirewallTrafficAssetListResponseBody interface {
 }
 
 type DescribeVpcFirewallTrafficAssetListResponseBody struct {
-	// The returned data.
+	// The data list.
 	DataList []*DescribeVpcFirewallTrafficAssetListResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -89,7 +89,7 @@ type DescribeVpcFirewallTrafficAssetListResponseBodyDataList struct {
 	//
 	// a.com
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
-	// The number of intrusion prevention system (IPS) hits.
+	// The number of IPS hits.
 	//
 	// example:
 	//
@@ -101,13 +101,13 @@ type DescribeVpcFirewallTrafficAssetListResponseBodyDataList struct {
 	//
 	// 12
 	SessionCount *int64 `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
-	// The total traffic in bytes.
+	// The total traffic. Unit: bytes.
 	//
 	// example:
 	//
 	// 253023143
 	TotalBytes *int64 `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
-	// The VPC where the asset resides.
+	// The ID of the VPC where the asset resides.
 	//
 	// example:
 	//

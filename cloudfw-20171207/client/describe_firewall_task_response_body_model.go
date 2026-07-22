@@ -36,37 +36,37 @@ type DescribeFirewallTaskResponseBody struct {
 	//
 	// false
 	IsFound *bool `json:"IsFound,omitempty" xml:"IsFound,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 7D5483BF-2262-586D-8706-BDDB8B42****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The timestamp when the task was completed.
+	// The time when the task was completed.
 	//
 	// example:
 	//
 	// 17151381075
 	TaskFinishTimestamp *string `json:"TaskFinishTimestamp,omitempty" xml:"TaskFinishTimestamp,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//
 	// 189997648
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The name of the task.
+	// The task name.
 	//
 	// example:
 	//
 	// egressgw
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The timestamp when the task started.
+	// The time when the task was created.
 	//
 	// example:
 	//
 	// 17151361285
 	TaskStartTimestamp *string `json:"TaskStartTimestamp,omitempty" xml:"TaskStartTimestamp,omitempty"`
-	// The status of the task. Valid values:
+	// The task status. Valid values:
 	//
 	// - **init**
 	//
@@ -82,9 +82,9 @@ type DescribeFirewallTaskResponseBody struct {
 	//
 	// init
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// The steps of the task.
+	// The task steps.
 	TaskSteps []*DescribeFirewallTaskResponseBodyTaskSteps `json:"TaskSteps,omitempty" xml:"TaskSteps,omitempty" type:"Repeated"`
-	// The waiting time in minutes.
+	// The waiting time, in minutes.
 	//
 	// example:
 	//
@@ -195,13 +195,13 @@ func (s *DescribeFirewallTaskResponseBody) Validate() error {
 }
 
 type DescribeFirewallTaskResponseBodyTaskSteps struct {
-	// The information about the task step.
+	// The task information.
 	//
 	// example:
 	//
 	// abcd
 	StepInfo *string `json:"StepInfo,omitempty" xml:"StepInfo,omitempty"`
-	// Creating the Cloud Firewall.
+	// The name of the Cloud Firewall security step.
 	//
 	// example:
 	//
@@ -215,7 +215,7 @@ type DescribeFirewallTaskResponseBodyTaskSteps struct {
 	StepProgress *string `json:"StepProgress,omitempty" xml:"StepProgress,omitempty"`
 	// The status of the task step. Valid values:
 	//
-	// - **init**
+	// - **init*	-
 	//
 	// - **running**
 	//

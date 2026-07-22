@@ -46,13 +46,13 @@ type iDescribeVpcFirewallAccessDetailRequest interface {
 }
 
 type DescribeVpcFirewallAccessDetailRequest struct {
-	// The IP address of the local asset.
+	// The IP address of the local asset. You must specify at least one of AssetIP and Port. If both are left empty, the API returns a 400 error.
 	//
 	// example:
 	//
 	// 192.0.XX.XX
 	AssetIP *string `json:"AssetIP,omitempty" xml:"AssetIP,omitempty"`
-	// The page number.
+	// The page number in a paging query. Settings this parameter to specify the current page for paging.
 	//
 	// example:
 	//
@@ -60,17 +60,17 @@ type DescribeVpcFirewallAccessDetailRequest struct {
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The traffic direction. Valid values:
 	//
-	// - **in**: inbound
+	// - **in**: inbound.
 	//
-	// - **out**: outbound
+	// - **out**: outbound.
 	//
-	// > If you do not specify this parameter, traffic in all directions is queried.
+	// >If this parameter is not specified in Settings, traffic in all directions is queried.
 	//
 	// example:
 	//
 	// in
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The end of the time range to query. This value is a UNIX timestamp that is accurate to the second.
+	// The end time of the query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// This parameter is required.
 	//
@@ -80,15 +80,15 @@ type DescribeVpcFirewallAccessDetailRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The protocol type. Valid values:
 	//
-	// - **tcp**: TCP
+	// - **tcp**: TCP protocol.
 	//
-	// - **udp**: UDP
+	// - **udp**: UDP protocol.
 	//
 	// example:
 	//
 	// tcp
 	IPProtocol *string `json:"IPProtocol,omitempty" xml:"IPProtocol,omitempty"`
-	// The language of the response. Valid values:
+	// The language type. Valid values:
 	//
 	// - **zh*	- (default): Chinese
 	//
@@ -100,21 +100,21 @@ type DescribeVpcFirewallAccessDetailRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The sort order. Valid values:
 	//
-	// - **asc**: ascending
+	// - **asc**: ascending order.
 	//
-	// - **desc*	- (default): descending
+	// -  **desc*	- (default): descending order.
 	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page in a paging query.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The IP address of the peer asset.
+	// The source IP address of the peer.
 	//
 	// example:
 	//
@@ -132,27 +132,27 @@ type DescribeVpcFirewallAccessDetailRequest struct {
 	//
 	// ecs22
 	PeerAssetInstanceName *string `json:"PeerAssetInstanceName,omitempty" xml:"PeerAssetInstanceName,omitempty"`
-	// The ID of the peer VPC.
+	// The instance ID of the peer VPC.
 	//
 	// example:
 	//
 	// vpc-90rq0anm6t8vbwbo****
 	PeerVpcId *string `json:"PeerVpcId,omitempty" xml:"PeerVpcId,omitempty"`
-	// The port number.
+	// The port number. You must specify at least one of AssetIP and Port. If both are left empty, the API returns a 400 error.
 	//
 	// example:
 	//
 	// 80
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The risk level.
+	// The risk assessment level.
 	//
 	// example:
 	//
 	// 3
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The sorting criterion. Valid values are:
+	// The sort field. Valid values:
 	//
-	// - **InBytes**
+	//  - **InBytes**
 	//
 	// - **OutBytes**
 	//
@@ -168,7 +168,7 @@ type DescribeVpcFirewallAccessDetailRequest struct {
 	//
 	// InBytes
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// The start of the time range to query. This value is a UNIX timestamp that is accurate to the second.
+	// The start time of the query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// This parameter is required.
 	//
@@ -176,7 +176,7 @@ type DescribeVpcFirewallAccessDetailRequest struct {
 	//
 	// 1655778046
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The ID of the VPC.
+	// The VPC-connected instance ID.
 	//
 	// This parameter is required.
 	//

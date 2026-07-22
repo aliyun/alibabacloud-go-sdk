@@ -106,7 +106,7 @@ type CreateVpcFirewallControlPolicyRequest struct {
 	//
 	// - **SSL**
 	//
-	// - **ANY**: all application types.
+	// - **ANY**: all application types
 	//
 	// example:
 	//
@@ -122,33 +122,33 @@ type CreateVpcFirewallControlPolicyRequest struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The destination port of traffic in the virtual private cloud (VPC) firewall access control policy.
+	// The destination port in the virtual private cloud (VPC) firewall access control policy for traffic access.
 	//
-	// > Set this parameter when **DestPortType*	- is set to `port`.
+	// > When **DestPortType*	- is set to `port`, configure this parameter. When Proto is set to TCP/UDP/ICMP, either DestPort (with DestPortType=port) or DestPortGroup (with DestPortType=group) is conditionally required. Otherwise, ErrorParametersDestPort(400) is returned.
 	//
 	// example:
 	//
 	// 80
 	DestPort *string `json:"DestPort,omitempty" xml:"DestPort,omitempty"`
-	// The name of the destination port address book of traffic in the virtual private cloud (VPC) firewall access control policy.
+	// The name of the destination port address book for traffic access in the virtual private cloud (VPC) firewall access control policy.
 	//
-	// > Set this parameter when **DestPortType*	- is set to `group`.
+	// > When **DestPortType*	- is set to `group`, configure this parameter.
 	//
 	// example:
 	//
 	// my_port_group
 	DestPortGroup *string `json:"DestPortGroup,omitempty" xml:"DestPortGroup,omitempty"`
-	// The type of the destination port of traffic in the virtual private cloud (VPC) firewall access control policy. Valid values:
+	// The type of the destination port for traffic access in the virtual private cloud (VPC) firewall access control policy. Valid values:
 	//
 	// - **port**: port
 	//
-	// - **group**: port address book.
+	// - **group**: port address book
 	//
 	// example:
 	//
 	// port
 	DestPortType *string `json:"DestPortType,omitempty" xml:"DestPortType,omitempty"`
-	// The destination address of traffic in the virtual private cloud (VPC) firewall access control policy. Valid values:
+	// The destination address in the virtual private cloud (VPC) firewall access control policy for traffic access. Valid values:
 	//
 	// - If **DestinationType*	- is set to `net`, the value of **Destination*	- is a destination CIDR block.
 	//
@@ -168,7 +168,7 @@ type CreateVpcFirewallControlPolicyRequest struct {
 	//
 	// - **group**: destination address book
 	//
-	// - **domain**: destination domain name.
+	// - **domain**: destination domain name
 	//
 	// This parameter is required.
 	//
@@ -178,11 +178,11 @@ type CreateVpcFirewallControlPolicyRequest struct {
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
 	// The domain name resolution method of the access control policy. Valid values:
 	//
-	// 	- **FQDN**: FQDN-based resolution
+	// 	- **FQDN**: FQDN-based
 	//
 	// 	- **DNS**: DNS-based dynamic resolution
 	//
-	// 	- **FQDN_AND_DNS**: FQDN-based and DNS-based dynamic resolution.
+	// 	- **FQDN_AND_DNS**: FQDN and DNS-based dynamic resolution
 	//
 	// example:
 	//
@@ -190,7 +190,7 @@ type CreateVpcFirewallControlPolicyRequest struct {
 	DomainResolveType *string `json:"DomainResolveType,omitempty" xml:"DomainResolveType,omitempty"`
 	// The end time of the policy validity period for the access control policy. The value is a UNIX timestamp in seconds. The value must be on the hour or on the half hour and must be at least 30 minutes later than the start time.
 	//
-	// > If RepeatType is set to Permanent, EndTime is empty. If RepeatType is set to None, Daily, Weekly, or Monthly, EndTime must be specified.
+	// > When RepeatType is set to Permanent, EndTime is empty. When RepeatType is set to None, Daily, Weekly, or Monthly, EndTime must have a value.
 	//
 	// example:
 	//
@@ -200,7 +200,7 @@ type CreateVpcFirewallControlPolicyRequest struct {
 	//
 	// - **zh*	- (default): Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
@@ -222,15 +222,15 @@ type CreateVpcFirewallControlPolicyRequest struct {
 	//
 	// 1
 	NewOrder *string `json:"NewOrder,omitempty" xml:"NewOrder,omitempty"`
-	// The security protocol type of traffic in the virtual private cloud (VPC) firewall access control policy. Valid values:
+	// The security protocol type for traffic access in the virtual private cloud (VPC) firewall access control policy. Valid values:
 	//
-	// - **ANY**: any protocol type. Set this value if the protocol type is uncertain.
+	// - **ANY**: any protocol type
 	//
 	// - **TCP**
 	//
 	// - **UDP**
 	//
-	// - **ICMP**.
+	// - **ICMP**
 	//
 	// This parameter is required.
 	//
@@ -248,27 +248,27 @@ type CreateVpcFirewallControlPolicyRequest struct {
 	//
 	// true
 	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
-	// The days of the recurrence for the policy validity period of the access control policy.
+	// The days of a week or of a month on which the access control policy takes effect.
 	//
-	// - If RepeatType is set to `Permanent`, `None`, or `Daily`, RepeatDays is an empty collection.
+	// - When RepeatType is set to `Permanent`, `None`, or `Daily`, RepeatDays is an empty collection.
 	//
 	//   Example: []
 	//
-	// - If RepeatType is set to Weekly, RepeatDays cannot be empty.
+	// - When RepeatType is set to Weekly, RepeatDays cannot be empty.
 	//
 	//   Example: [0, 6]
 	//
-	// > If RepeatType is set to Weekly, the values in RepeatDays cannot be repeated.
+	// > When RepeatType is set to Weekly, RepeatDays does not allow duplicate values.
 	//
-	// - If RepeatType is set to `Monthly`, RepeatDays cannot be empty.
+	// - When RepeatType is set to `Monthly`, RepeatDays cannot be empty.
 	//
 	//   Example: [1, 31]
 	//
-	// > If RepeatType is set to Monthly, the values in RepeatDays cannot be repeated.
+	// > When RepeatType is set to Monthly, RepeatDays does not allow duplicate values.
 	RepeatDays []*int64 `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
 	// The recurrence end time of the policy validity period for the access control policy. Example: 23:30. The value must be on the hour or on the half hour and must be at least 30 minutes later than the recurrence start time.
 	//
-	// > If RepeatType is set to Permanent or None, RepeatEndTime is empty. If RepeatType is set to Daily, Weekly, or Monthly, RepeatEndTime must be specified. The format is HH:MM (24-hour clock), such as 08:00.
+	// > When RepeatType is set to Permanent or None, RepeatEndTime is empty. When RepeatType is set to Daily, Weekly, or Monthly, RepeatEndTime must have a value. Format: HH:MM (24-hour clock). Example: 08:00.
 	//
 	// example:
 	//
@@ -276,7 +276,7 @@ type CreateVpcFirewallControlPolicyRequest struct {
 	RepeatEndTime *string `json:"RepeatEndTime,omitempty" xml:"RepeatEndTime,omitempty"`
 	// The recurrence start time of the policy validity period for the access control policy. Example: 08:00. The value must be on the hour or on the half hour and must be at least 30 minutes earlier than the recurrence end time.
 	//
-	// > If RepeatType is set to Permanent or None, RepeatStartTime is empty. If RepeatType is set to Daily, Weekly, or Monthly, RepeatStartTime must be specified. The format is HH:MM (24-hour clock), such as 08:00.
+	// > When RepeatType is set to Permanent or None, RepeatStartTime is empty. When RepeatType is set to Daily, Weekly, or Monthly, RepeatStartTime must have a value. Format: HH:MM (24-hour clock). Example: 08:00.
 	//
 	// example:
 	//
@@ -284,15 +284,15 @@ type CreateVpcFirewallControlPolicyRequest struct {
 	RepeatStartTime *string `json:"RepeatStartTime,omitempty" xml:"RepeatStartTime,omitempty"`
 	// The recurrence type of the policy validity period for the access control policy. Valid values:
 	//
-	// - **Permanent*	- (default): The policy is always valid.
+	// - **Permanent*	- (default): always
 	//
-	// - **None**: The policy is valid for a specified single time period.
+	// - **None**: one-time
 	//
-	// - **Daily**: The policy is valid on a daily basis.
+	// - **Daily**: daily
 	//
-	// - **Weekly**: The policy is valid on a weekly basis.
+	// - **Weekly**: weekly
 	//
-	// - **Monthly**: The policy is valid on a monthly basis.
+	// - **Monthly**: monthly
 	//
 	// example:
 	//
@@ -314,7 +314,7 @@ type CreateVpcFirewallControlPolicyRequest struct {
 	//
 	// - **net**: source CIDR block
 	//
-	// - **group**: source address book.
+	// - **group**: source address book
 	//
 	// This parameter is required.
 	//
@@ -324,7 +324,7 @@ type CreateVpcFirewallControlPolicyRequest struct {
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// The start time of the policy validity period for the access control policy. The value is a UNIX timestamp in seconds. The value must be on the hour or on the half hour and must be at least 30 minutes earlier than the end time.
 	//
-	// > If RepeatType is set to Permanent, StartTime is empty. If RepeatType is set to None, Daily, Weekly, or Monthly, StartTime must be specified.
+	// > When RepeatType is set to Permanent, StartTime is empty. When RepeatType is set to None, Daily, Weekly, or Monthly, StartTime must have a value.
 	//
 	// example:
 	//
@@ -332,13 +332,13 @@ type CreateVpcFirewallControlPolicyRequest struct {
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The ID of the virtual private cloud (VPC) firewall access control policy group.
 	//
-	// - If the VPC firewall protects traffic between two VPCs connected through CEN, the value of this parameter is the CEN instance ID.
+	// - If the VPC firewall protects traffic between two VPCs connected through a CEN instance, the value of this parameter is the CEN instance ID.
 	//
 	//
 	//
-	// - If the VPC firewall protects traffic between two VPCs connected through Express Connect, the value of this parameter is the VPC firewall instance ID.
+	// - If the VPC firewall protects traffic between two VPCs connected through an Express Connect circuit, the value of this parameter is the VPC firewall instance ID.
 	//
-	// > You can invoke the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) operation to obtain the ID.
+	// > You can call the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) operation to query the ID.
 	//
 	// This parameter is required.
 	//

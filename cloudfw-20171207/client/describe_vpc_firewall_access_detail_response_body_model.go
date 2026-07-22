@@ -18,9 +18,9 @@ type iDescribeVpcFirewallAccessDetailResponseBody interface {
 }
 
 type DescribeVpcFirewallAccessDetailResponseBody struct {
-	// The data entries.
+	// The data list.
 	DataList []*DescribeVpcFirewallAccessDetailResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -83,43 +83,43 @@ func (s *DescribeVpcFirewallAccessDetailResponseBody) Validate() error {
 }
 
 type DescribeVpcFirewallAccessDetailResponseBodyDataList struct {
-	// The number of received bytes.
+	// The number of bytes received. Unit: bytes.
 	//
 	// example:
 	//
 	// 17845821669.0
 	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
-	// The number of sent bytes.
+	// The number of bytes sent. Unit: bytes.
 	//
 	// example:
 	//
 	// 1123
 	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
-	// The IP address of the peer asset.
+	// The source IP address of the peer.
 	//
 	// example:
 	//
 	// 10.125.1.XX
 	PeerAssetIP *string `json:"PeerAssetIP,omitempty" xml:"PeerAssetIP,omitempty"`
-	// The instance ID of the peer asset.
+	// The instance ID of the peer.
 	//
 	// example:
 	//
 	// i-123451
 	PeerAssetInstanceId *string `json:"PeerAssetInstanceId,omitempty" xml:"PeerAssetInstanceId,omitempty"`
-	// The instance name of the peer asset.
+	// The instance name of the peer.
 	//
 	// example:
 	//
 	// test
 	PeerAssetInstanceName *string `json:"PeerAssetInstanceName,omitempty" xml:"PeerAssetInstanceName,omitempty"`
-	// The ID of the peer VPC.
+	// The instance ID of the peer VPC.
 	//
 	// example:
 	//
 	// vpc-123411
 	PeerVpcId *string `json:"PeerVpcId,omitempty" xml:"PeerVpcId,omitempty"`
-	// The ID of the region where the asset is located.
+	// The region ID of the instance.
 	//
 	// example:
 	//

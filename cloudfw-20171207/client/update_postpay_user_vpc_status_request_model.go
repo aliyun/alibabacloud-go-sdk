@@ -24,21 +24,19 @@ type UpdatePostpayUserVpcStatusRequest struct {
 	//
 	// cfw_elasticity_public_cn-************
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language of the request and response.
-	//
-	// Valid values:
+	// The language of the request and response. Valid values:
 	//
 	// - **zh*	- (default): Chinese
 	//
-	// - en: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The operation to perform. Currently, only the open operation is supported.
+	// The operation type. Currently, only the activation operation is supported. Valid values:
 	//
-	// - open: Enables the VPC border firewall.
+	// - open: activation
 	//
 	// example:
 	//

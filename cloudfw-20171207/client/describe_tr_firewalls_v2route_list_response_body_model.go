@@ -16,9 +16,9 @@ type iDescribeTrFirewallsV2RouteListResponseBody interface {
 }
 
 type DescribeTrFirewallsV2RouteListResponseBody struct {
-	// The list of route tables for the VPC firewall.
+	// The route table list of Cloud Firewall.
 	FirewallRouteDetailList []*DescribeTrFirewallsV2RouteListResponseBodyFirewallRouteDetailList `json:"FirewallRouteDetailList,omitempty" xml:"FirewallRouteDetailList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ func (s *DescribeTrFirewallsV2RouteListResponseBody) Validate() error {
 }
 
 type DescribeTrFirewallsV2RouteListResponseBodyFirewallRouteDetailList struct {
-	// The destination CIDR block of the route.
+	// The destination address of the route.
 	//
 	// example:
 	//
 	// 192.168.10.0/25
 	TrFirewallRouteDestination *string `json:"TrFirewallRouteDestination,omitempty" xml:"TrFirewallRouteDestination,omitempty"`
-	// The ID of the next hop for the route.
+	// The next hop ID of the route.
 	//
 	// example:
 	//

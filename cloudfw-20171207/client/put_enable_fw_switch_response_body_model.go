@@ -11,13 +11,21 @@ type iPutEnableFwSwitchResponseBody interface {
 	GoString() string
 	SetAbnormalResourceStatusList(v []*PutEnableFwSwitchResponseBodyAbnormalResourceStatusList) *PutEnableFwSwitchResponseBody
 	GetAbnormalResourceStatusList() []*PutEnableFwSwitchResponseBodyAbnormalResourceStatusList
+	SetDryRun(v bool) *PutEnableFwSwitchResponseBody
+	GetDryRun() *bool
 	SetRequestId(v string) *PutEnableFwSwitchResponseBody
 	GetRequestId() *string
 }
 
 type PutEnableFwSwitchResponseBody struct {
-	// Information about unsynchronized assets.
+	// The status information list of assets that are not synchronized.
 	AbnormalResourceStatusList []*PutEnableFwSwitchResponseBodyAbnormalResourceStatusList `json:"AbnormalResourceStatusList,omitempty" xml:"AbnormalResourceStatusList,omitempty" type:"Repeated"`
+	// Indicates that this is a successful dry run response. A value of true indicates that only the dry run was completed and no real changes were made. This field is not returned or is set to false for real calls.
+	//
+	// example:
+	//
+	// true
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -38,12 +46,21 @@ func (s *PutEnableFwSwitchResponseBody) GetAbnormalResourceStatusList() []*PutEn
 	return s.AbnormalResourceStatusList
 }
 
+func (s *PutEnableFwSwitchResponseBody) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *PutEnableFwSwitchResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
 func (s *PutEnableFwSwitchResponseBody) SetAbnormalResourceStatusList(v []*PutEnableFwSwitchResponseBodyAbnormalResourceStatusList) *PutEnableFwSwitchResponseBody {
 	s.AbnormalResourceStatusList = v
+	return s
+}
+
+func (s *PutEnableFwSwitchResponseBody) SetDryRun(v bool) *PutEnableFwSwitchResponseBody {
+	s.DryRun = &v
 	return s
 }
 
@@ -66,23 +83,23 @@ func (s *PutEnableFwSwitchResponseBody) Validate() error {
 }
 
 type PutEnableFwSwitchResponseBodyAbnormalResourceStatusList struct {
-	// A message that provides details about why an asset was not synchronized. Valid value:
+	// The message when the asset is not synchronized. Valid values:
 	//
-	// - `cloudfirewall do not sync this ip address`: Cloud Firewall does not synchronize the IP address of the asset.
+	// - cloudfirewall do not sync this ip address: Cloud Firewall has not synchronized this asset IP address.
 	//
 	// example:
 	//
 	// cloudfirewall do not sync this ip address
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// The IP address of the asset.
+	// The asset IP address.
 	//
 	// example:
 	//
 	// 203.0.113.0
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	// The synchronization status of the asset. Valid value:
+	// The status of the asset that is not synchronized. Valid values:
 	//
-	// - `ip_not_sync`: The asset is not synchronized.
+	// - ip_not_sync: The asset is not synchronized.
 	//
 	// example:
 	//

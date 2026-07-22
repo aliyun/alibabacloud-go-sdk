@@ -114,7 +114,7 @@ type DescribeFirewallDropTrendResponseBodyDataList struct {
 	NatDropSession *int64 `json:"NatDropSession,omitempty" xml:"NatDropSession,omitempty"`
 	// The time when the traffic occurred. The value is a UNIX timestamp in seconds.
 	//
-	// If the data at this point in time has not been processed, the values of all other fields are -1.
+	// If the data at this point in time has not been processed, the values of other fields are -1.
 	//
 	// example:
 	//

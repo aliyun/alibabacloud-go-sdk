@@ -22,7 +22,7 @@ type iDescribeFirewallTrafficTrendResponseBody interface {
 type DescribeFirewallTrafficTrendResponseBody struct {
 	// The returned data list.
 	DataList []*DescribeFirewallTrafficTrendResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	// The timestamp when the peak total traffic occurred. The value is a UNIX timestamp. Unit: seconds.
+	// The timestamp when the peak total traffic occurred. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -113,9 +113,9 @@ type DescribeFirewallTrafficTrendResponseBodyDataList struct {
 	//
 	// 100
 	NatBps *int64 `json:"NatBps,omitempty" xml:"NatBps,omitempty"`
-	// The time when the traffic occurred. The value is a UNIX timestamp. Unit: seconds.
+	// The time when the traffic occurred. The value is a UNIX timestamp in seconds.
 	//
-	// If the data at this point in time has not been processed, the values of all other fields are -1.
+	// If the data at this point in time has not been processed, the values of other fields are -1.
 	//
 	// example:
 	//

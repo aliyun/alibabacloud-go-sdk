@@ -22,19 +22,21 @@ type iDescribeTrFirewallV2RoutePolicyListRequest interface {
 }
 
 type DescribeTrFirewallV2RoutePolicyListRequest struct {
-	// The page number. Default value: 1.
+	// The page number in a paged query. Default value: 1. For more information about paging, see the corresponding parameter descriptions.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The ID of the VPC firewall instance.
+	// The instance ID of the virtual private cloud (VPC) firewall.
+	//
+	// > FirewallId is required. If this parameter is not specified, the ErrorParameters (400) error is returned. You can call DescribeTrFirewallsV2List to obtain the FirewallId. Prerequisites: CEN Enterprise Edition with a transit router and VPC mount are configured, and the FirewallId is obtained by calling DescribeTrFirewallsV2List.
 	//
 	// example:
 	//
 	// vfw-tr-d5ba592ac6c84aff****
 	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
-	// The language of the response message. Valid values:
+	// The language of the response. Valid values:
 	//
 	// - **zh*	- (default): Chinese
 	//
@@ -44,7 +46,7 @@ type DescribeTrFirewallV2RoutePolicyListRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries to return on each page. Default value: 10.
+	// The maximum number of entries per page in a paged query. Default value: 10. For more information about paging, see the corresponding parameter descriptions.
 	//
 	// example:
 	//

@@ -26,13 +26,13 @@ type iDescribeVpcFirewallPrecheckDetailRequest interface {
 }
 
 type DescribeVpcFirewallPrecheckDetailRequest struct {
-	// The ID of the CEN instance.
+	// The Cloud Enterprise Network (CEN) instance ID.
 	//
 	// example:
 	//
 	// cen-hxsqf2bv6di1a****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The language of the response. Valid values:
+	// The language type. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
@@ -42,7 +42,7 @@ type DescribeVpcFirewallPrecheckDetailRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The UID of the member account in Cloud Firewall.
+	// The UID of the Cloud Firewall member accounts.
 	//
 	// example:
 	//
@@ -50,27 +50,27 @@ type DescribeVpcFirewallPrecheckDetailRequest struct {
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
 	// The type of the network instance. Valid values:
 	//
-	// - **cen_firewall**: a firewall for a CEN instance (Basic Edition)
+	// - **cen_firewall**: CEN basic edition firewall
 	//
-	// - **cen_tr_firewall**: a firewall for a CEN instance with a transit router
+	// - **cen_tr_firewall**: CEN-TR firewall
 	//
 	// example:
 	//
 	// cen_firewall
 	NetworkInstanceType *string `json:"NetworkInstanceType,omitempty" xml:"NetworkInstanceType,omitempty"`
-	// The region ID.
+	// The region ID. This parameter is required. If it is not specified, ErrorParameters is returned.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The ID of the transit router instance.
+	// The transit router instance ID. You must specify at least one of VpcId and TransitRouterId. Specify VpcId when querying a basic edition firewall, or specify TransitRouterId when querying a transit router (TR) scenario. If neither is specified, ErrorParameters is returned.
 	//
 	// example:
 	//
 	// tr-2vcn4u2g86tm72****
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
-	// The ID of the VPC.
+	// The VPC-connected instance ID. You must specify at least one of VpcId and TransitRouterId. Specify VpcId when querying a basic edition firewall, or specify TransitRouterId when querying a forward routing (TR) scenario. If neither is specified, ErrorParameters is returned.
 	//
 	// example:
 	//

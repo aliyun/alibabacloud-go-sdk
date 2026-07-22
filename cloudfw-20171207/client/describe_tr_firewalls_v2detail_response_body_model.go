@@ -52,7 +52,7 @@ type iDescribeTrFirewallsV2DetailResponseBody interface {
 }
 
 type DescribeTrFirewallsV2DetailResponseBody struct {
-	// The ID of the Cloud Enterprise Network (CEN) instance.
+	// The instance ID of the Cloud Enterprise Network (CEN).
 	//
 	// example:
 	//
@@ -64,31 +64,31 @@ type DescribeTrFirewallsV2DetailResponseBody struct {
 	//
 	// vpc-firewall-description
 	FirewallDescription *string `json:"FirewallDescription,omitempty" xml:"FirewallDescription,omitempty"`
-	// The ID of the elastic network interface (ENI) of the firewall.
+	// The ID of the firewall ENI.
 	//
 	// example:
 	//
 	// eni-uf621u00nafypeex****
 	FirewallEniId *string `json:"FirewallEniId,omitempty" xml:"FirewallEniId,omitempty"`
-	// The ID of the VPC to which the ENI of the firewall belongs.
+	// The ID of the VPC in which the firewall ENI resides.
 	//
 	// example:
 	//
 	// vpc-2zeppcci782zeh2bk****
 	FirewallEniVpcId *string `json:"FirewallEniVpcId,omitempty" xml:"FirewallEniVpcId,omitempty"`
-	// The ID of the vSwitch to which the ENI of the firewall belongs.
+	// The ID of the vSwitch in which the firewall ENI resides.
 	//
 	// example:
 	//
 	// vsw-uf6ptq1kl1c1d9pw9****
 	FirewallEniVswitchId *string `json:"FirewallEniVswitchId,omitempty" xml:"FirewallEniVswitchId,omitempty"`
-	// The ID of the VPC firewall instance.
+	// The instance ID of the virtual private cloud (VPC) firewall.
 	//
 	// example:
 	//
 	// vfw-tr-9c7c711abdfa4d80****
 	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
-	// The name of the VPC firewall instance.
+	// The instance name of the virtual private cloud (VPC) firewall.
 	//
 	// example:
 	//
@@ -106,35 +106,36 @@ type DescribeTrFirewallsV2DetailResponseBody struct {
 	//
 	// Ready
 	FirewallStatus *string `json:"FirewallStatus,omitempty" xml:"FirewallStatus,omitempty"`
-	// The CIDR block of the vSwitch that is automatically created in the firewall VPC to host the ENI of the firewall in automatic mode.
+	// The subnet CIDR block that is used to store the firewall ENI in the firewall VPC in automatic mode.
 	//
 	// example:
 	//
 	// 10.0.1.0/24
 	FirewallSubnetCidr *string `json:"FirewallSubnetCidr,omitempty" xml:"FirewallSubnetCidr,omitempty"`
-	// The status of the VPC firewall. Valid values:
+	// The status of the virtual private cloud (VPC) firewall. Valid values:
 	//
 	// - **opened**: The firewall is enabled.
 	//
 	// - **closed**: The firewall is disabled.
 	//
-	// - **notconfigured**: The firewall is not configured.
+	// - **notconfigured**: The virtual private cloud (VPC) firewall is not configured.
 	//
-	// - **configured**: The firewall is configured.
+	// - **configured**: The virtual private cloud (VPC) firewall is configured.
 	//
-	// - **creating**: The firewall is being created.
+	// - **creating**: The virtual private cloud (VPC) firewall is being created.
 	//
-	// - **opening**: The firewall is being enabled.
+	// - **opening**: The virtual private cloud (VPC) firewall is being enabled.
 	//
-	// - **deleting**: The firewall is being deleted.
+	// - **deleting**: The virtual private cloud (VPC) firewall is being deleted.
 	//
-	// > If you do not specify this parameter, VPC firewalls in all states are queried.
+	//
+	// > If this parameter is not set, virtual private cloud (VPC) firewalls in all states are queried.
 	//
 	// example:
 	//
 	// opened
 	FirewallSwitchStatus *string `json:"FirewallSwitchStatus,omitempty" xml:"FirewallSwitchStatus,omitempty"`
-	// The CIDR block of the VPC that is automatically created for the firewall in automatic mode.
+	// The CIDR block of the firewall VPC in automatic mode.
 	//
 	// example:
 	//
@@ -146,7 +147,7 @@ type DescribeTrFirewallsV2DetailResponseBody struct {
 	//
 	// cn-shanghai
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -162,37 +163,37 @@ type DescribeTrFirewallsV2DetailResponseBody struct {
 	//
 	// managed
 	RouteMode *string `json:"RouteMode,omitempty" xml:"RouteMode,omitempty"`
-	// The ID of the transit router attachment.
+	// The attachment ID that is used to connect to the transit router in the firewall VPC in automatic mode.
 	//
 	// example:
 	//
 	// tr-attach-r1llaxxeha71jsm36v
 	TrAttachmentId *string `json:"TrAttachmentId,omitempty" xml:"TrAttachmentId,omitempty"`
-	// The primary CIDR block of the vSwitch that is automatically created in the firewall VPC to connect to the transit router in automatic mode.
+	// The primary subnet CIDR block that is used to connect to the transit router in the firewall VPC in automatic mode.
 	//
 	// example:
 	//
 	// 10.0.2.0/24
 	TrAttachmentMasterCidr *string `json:"TrAttachmentMasterCidr,omitempty" xml:"TrAttachmentMasterCidr,omitempty"`
-	// The primary zone of the vSwitch that is automatically created in the firewall VPC to connect to the transit router in automatic mode.
+	// The primary zone of the subnet that is used to connect to the transit router in the firewall VPC in automatic mode.
 	//
 	// example:
 	//
 	// cn-hangzhou-h
 	TrAttachmentMasterZone *string `json:"TrAttachmentMasterZone,omitempty" xml:"TrAttachmentMasterZone,omitempty"`
-	// The secondary CIDR block of the vSwitch that is automatically created in the firewall VPC to connect to the transit router in automatic mode.
+	// The secondary subnet CIDR block that is used to connect to the transit router in the firewall VPC in automatic mode.
 	//
 	// example:
 	//
 	// 10.0.3.0/24
 	TrAttachmentSlaveCidr *string `json:"TrAttachmentSlaveCidr,omitempty" xml:"TrAttachmentSlaveCidr,omitempty"`
-	// The secondary zone of the vSwitch that is automatically created in the firewall VPC to connect to the transit router in automatic mode.
+	// The secondary zone of the subnet that is used to connect to the transit router in the firewall VPC in automatic mode.
 	//
 	// example:
 	//
 	// cn-hangzhou-i
 	TrAttachmentSlaveZone *string `json:"TrAttachmentSlaveZone,omitempty" xml:"TrAttachmentSlaveZone,omitempty"`
-	// The ID of the transit router instance.
+	// The instance ID of the forward routing router.
 	//
 	// example:
 	//

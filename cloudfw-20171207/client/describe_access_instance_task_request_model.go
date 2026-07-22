@@ -22,19 +22,19 @@ type iDescribeAccessInstanceTaskRequest interface {
 }
 
 type DescribeAccessInstanceTaskRequest struct {
-	// The ID of the synchronization node.
+	// The synchronization node ID. You must specify at least one of TaskId and AccessInstanceId. If neither is specified, the API returns a 400 error.
 	//
 	// example:
 	//
 	// pdi-3bc2f91695ee48bd9377
 	AccessInstanceId *string `json:"AccessInstanceId,omitempty" xml:"AccessInstanceId,omitempty"`
-	// The type of the synchronization node.
+	// The synchronization node type.
 	//
 	// example:
 	//
 	// AckClusterConnector
 	AccessInstanceType *string `json:"AccessInstanceType,omitempty" xml:"AccessInstanceType,omitempty"`
-	// The language of the response messages.
+	// The language of the response message.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DescribeAccessInstanceTaskRequest struct {
 	//
 	// cn-beijing
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The task ID.
+	// The task ID. You must specify at least one of TaskId and AccessInstanceId. If neither is specified, the API returns a 400 error.
 	//
 	// example:
 	//

@@ -24,17 +24,17 @@ type iModifyIpsRulesToDefaultRequest interface {
 }
 
 type ModifyIpsRulesToDefaultRequest struct {
-	// The application that is affected by the attack.
+	// The attack application.
 	//
 	// example:
 	//
 	// PHP
 	AttackApp *string `json:"AttackApp,omitempty" xml:"AttackApp,omitempty"`
-	// The type of the Cloud Firewall. Valid values:
+	// The type of the cloud firewall. Valid values:
 	//
-	// - **VpcFirewall**: VPC firewall.
+	// - **VpcFirewall**: virtual private cloud (VPC) firewalls.
 	//
-	// - **InternetFirewall*	- (default): Internet firewall.
+	// - **InternetFirewall*	- (default): the Internet border firewall.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ModifyIpsRulesToDefaultRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The type of the rule. Valid values:
+	// The rule type. Valid values:
 	//
 	// - **basicRule**
 	//
@@ -62,7 +62,7 @@ type ModifyIpsRulesToDefaultRequest struct {
 	//
 	// customize
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	// The list of rules.
+	// The rule list. Conditional requirement: when RuleType is set to customize, you must specify at least one of this parameter or AttackApp. If you specify only RuleType without Rules or AttackApp, the API returns ErrorParameters.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type ModifyIpsRulesToDefaultRequest struct {
 	//
 	// ]
 	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
-	// The source IP address of the visitor.
+	// The source IP address of the request.
 	//
 	// example:
 	//

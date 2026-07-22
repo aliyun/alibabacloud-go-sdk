@@ -18,13 +18,13 @@ type iDescribeFirewallTrafficTrendRequest interface {
 }
 
 type DescribeFirewallTrafficTrendRequest struct {
-	// The end time of the query. The value is a UNIX timestamp. Unit: seconds.
+	// The end time of the query. The value is a UNIX timestamp in seconds. This parameter is required. If this parameter is not specified, the API returns ErrorTimeError(400). The value must be a UNIX timestamp in seconds, and EndTime must be later than StartTime.
 	//
 	// example:
 	//
 	// 1758474000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The language of the response. Valid values:
+	// The language of the response message.
 	//
 	// - **zh*	- (default): Chinese
 	//
@@ -34,7 +34,7 @@ type DescribeFirewallTrafficTrendRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The start time of the query. The value is a UNIX timestamp. Unit: seconds.
+	// The start time of the query. The value is a UNIX timestamp in seconds. This parameter is required. If this parameter is not specified, the API returns ErrorTimeError(400). The value must be a UNIX timestamp in seconds, and StartTime must be earlier than EndTime.
 	//
 	// example:
 	//

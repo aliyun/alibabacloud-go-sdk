@@ -22,13 +22,15 @@ type iDescribeTrFirewallsV2RouteListRequest interface {
 }
 
 type DescribeTrFirewallsV2RouteListRequest struct {
-	// The page number. Default value: 1.
+	// The page number in a paging query. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The instance ID of the VPC firewall for the transit router.
+	// The instance ID of the virtual private cloud (VPC) firewalls.
+	//
+	// > FirewallId is required. If it is not specified, ErrorParameters(400) is returned. TrFirewallRoutePolicyId must be used together with FirewallId. If TrFirewallRoutePolicyId is specified without FirewallId, ErrorParameters(400) is returned. If the value is invalid or does not exist, ErrorTrFirewallPolicyNotFound is returned.
 	//
 	// example:
 	//
@@ -44,7 +46,7 @@ type DescribeTrFirewallsV2RouteListRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries per page. Default value: 10.
+	// The maximum number of entries per page in a paging query. Default value: 10.
 	//
 	// example:
 	//

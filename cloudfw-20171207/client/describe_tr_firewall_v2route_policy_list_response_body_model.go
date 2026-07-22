@@ -24,7 +24,7 @@ type DescribeTrFirewallV2RoutePolicyListResponseBody struct {
 	//
 	// 95EB5F3A-67FE-5780-92BD-5ECBA772AB7E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -83,41 +83,41 @@ func (s *DescribeTrFirewallV2RoutePolicyListResponseBody) Validate() error {
 }
 
 type DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies struct {
-	// The list of destination traffic redirection instances.
+	// The list of secondary traffic redirection instances.
 	DestCandidateList []*DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesDestCandidateList `json:"DestCandidateList,omitempty" xml:"DestCandidateList,omitempty" type:"Repeated"`
-	// The description of the policy.
+	// The policy description.
 	//
 	// example:
 	//
 	// Point to multipoint
 	PolicyDescription *string `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
-	// The name of the policy.
+	// The policy name.
 	//
 	// example:
 	//
 	// Singapore Point to Multipoint
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// The status of the policy. Valid values:
+	// The policy status. Valid values:
 	//
-	// - creating: The policy is being created.
+	// - creating: being created
 	//
-	// - deleting: The policy is being deleted.
+	// - deleting: being deleted
 	//
-	// - opening: The policy is being enabled.
+	// - opening: being enabled
 	//
-	// - opened: The policy is enabled.
+	// - opened: enabled
 	//
-	// - closing: The policy is being disabled.
+	// - closing: being disabled
 	//
-	// - closed: The policy is disabled.
+	// - closed: disabled
 	//
 	// example:
 	//
 	// opened
 	PolicyStatus *string `json:"PolicyStatus,omitempty" xml:"PolicyStatus,omitempty"`
-	// The type of traffic redirection scenario for the VPC firewall. The firewall is created for a transit router that belongs to an Enterprise Edition Cloud Enterprise Network (CEN) instance. Valid values:
+	// The traffic redirection scenario type for the virtual private cloud (VPC) firewall on CEN Enterprise Edition. Valid values:
 	//
-	// - **fullmesh**: full-mesh
+	// - **fullmesh**: multi-point interconnection
 	//
 	// - **one_to_one**: point-to-point
 	//
@@ -127,7 +127,7 @@ type DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies stru
 	//
 	// fullmesh
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	// The list of source traffic redirection instances.
+	// The list of primary traffic redirection instances.
 	SrcCandidateList []*DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesSrcCandidateList `json:"SrcCandidateList,omitempty" xml:"SrcCandidateList,omitempty" type:"Repeated"`
 	// The ID of the firewall routing policy.
 	//

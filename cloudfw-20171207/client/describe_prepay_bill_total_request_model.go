@@ -24,11 +24,11 @@ type iDescribePrepayBillTotalRequest interface {
 }
 
 type DescribePrepayBillTotalRequest struct {
-	// The billing type. Valid values:
+	// The bill type of the user. This parameter is required. An error is returned if this parameter is not specified. Valid values:
 	//
-	// - elastic_traffic: elastic traffic.
+	// - elastic_traffic: elastic traffic
 	//
-	// - sdl: sensitive data leak detection traffic.
+	// - sdl: sensitive data leak detection traffic
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type DescribePrepayBillTotalRequest struct {
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end time. Specify a UNIX timestamp in seconds.
+	// The end time. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// This parameter is required.
 	//
@@ -48,13 +48,11 @@ type DescribePrepayBillTotalRequest struct {
 	//
 	// 1646063922
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The language. Valid values:
-	//
-	// - zh
-	//
-	// - en
+	// The language. Enumeration value.
 	//
 	// Default value: zh.
+	//
+	// Valid value: en.
 	//
 	// example:
 	//
@@ -66,7 +64,7 @@ type DescribePrepayBillTotalRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The start time of the query. Specify a UNIX timestamp in seconds.
+	// The start time of the query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// This parameter is required.
 	//

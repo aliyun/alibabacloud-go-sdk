@@ -24,7 +24,7 @@ type CreateDownloadTaskRequest struct {
 	//
 	// Valid values:
 	//
-	// - **zh**: (default) Chinese
+	// - **zh**: (default) Chinese.
 	//
 	// - **en**: English.
 	//
@@ -32,19 +32,19 @@ type CreateDownloadTaskRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The query conditions for the download task.
+	// The request query conditions for the download task. This parameter is required. If this parameter is not specified, the API returns error code -340408 (download task TaskData invalid).
 	//
 	// example:
 	//
 	// {\\"SearchItem\\":\\"\\",\\"UserType\\":\\"buy\\",\\"IpVersion\\":\\"4\\"}
 	TaskData *string `json:"TaskData,omitempty" xml:"TaskData,omitempty"`
-	// The task type. For valid values, call the API operation that queries file download task types.
+	// The task type. For valid values, call the operation that queries file download task types.
 	//
 	// example:
 	//
 	// InternetFirewallAsset
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The time zone for time information in the downloaded file. The value is an IANA time zone identifier. Default value: Asia/Shanghai (UTC+8).
+	// The time zone for time information in the downloaded file. Specify the value in IANA time zone identity format. Default value: Asia/Shanghai (UTC+8).
 	//
 	// example:
 	//
