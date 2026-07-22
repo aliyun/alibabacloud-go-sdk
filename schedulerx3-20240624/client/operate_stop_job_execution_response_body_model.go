@@ -20,25 +20,25 @@ type iOperateStopJobExecutionResponseBody interface {
 }
 
 type OperateStopJobExecutionResponseBody struct {
-	// The Response Code.
+	// The response code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The error message.
 	//
 	// example:
 	//
 	// Parameter check error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique ID of the request. You can use this ID to troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// E82D8B33-204D-58E1-8F56-909F6B48F3D1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. A value of **true*	- indicates success, and a value of **false*	- indicates failure.
+	// Indicates whether the call was successful. **true**: The call was successful. **false**: The call failed.
 	//
 	// example:
 	//

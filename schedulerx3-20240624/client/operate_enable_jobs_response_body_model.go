@@ -32,17 +32,17 @@ type OperateEnableJobsResponseBody struct {
 	//
 	// Parameter error: content is null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique ID generated for the request. Use this ID to troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 4CC4132F-B798-5D6E-9F06-D44B33E417E9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - `true`: The call was successful.
+	// - true: The call was successful.
 	//
-	// - `false`: The call failed.
+	// - false: The call failed.
 	//
 	// example:
 	//

@@ -9,6 +9,8 @@ type iOperateExecuteJobRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppGroupId(v int64) *OperateExecuteJobRequest
+	GetAppGroupId() *int64
 	SetAppName(v string) *OperateExecuteJobRequest
 	GetAppName() *string
 	SetClusterId(v string) *OperateExecuteJobRequest
@@ -24,6 +26,7 @@ type iOperateExecuteJobRequest interface {
 }
 
 type OperateExecuteJobRequest struct {
+	AppGroupId *int64 `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
 	// The application name.
 	//
 	// This parameter is required.
@@ -40,13 +43,13 @@ type OperateExecuteJobRequest struct {
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The custom parameters for the job instance.
+	// The instance parameters.
 	//
 	// example:
 	//
 	// name=zhangsan
 	InstanceParameters *string `json:"InstanceParameters,omitempty" xml:"InstanceParameters,omitempty"`
-	// The job ID.
+	// The node ID.
 	//
 	// This parameter is required.
 	//
@@ -54,13 +57,13 @@ type OperateExecuteJobRequest struct {
 	//
 	// 74
 	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The label used to select a specific worker.
+	// The label of the specified machine.
 	//
 	// example:
 	//
 	// gray
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The address (`workerAddr`) of a specific worker.
+	// The workerAddr of the specified machine.
 	//
 	// example:
 	//
@@ -74,6 +77,10 @@ func (s OperateExecuteJobRequest) String() string {
 
 func (s OperateExecuteJobRequest) GoString() string {
 	return s.String()
+}
+
+func (s *OperateExecuteJobRequest) GetAppGroupId() *int64 {
+	return s.AppGroupId
 }
 
 func (s *OperateExecuteJobRequest) GetAppName() *string {
@@ -98,6 +105,11 @@ func (s *OperateExecuteJobRequest) GetLabel() *string {
 
 func (s *OperateExecuteJobRequest) GetWorker() *string {
 	return s.Worker
+}
+
+func (s *OperateExecuteJobRequest) SetAppGroupId(v int64) *OperateExecuteJobRequest {
+	s.AppGroupId = &v
+	return s
 }
 
 func (s *OperateExecuteJobRequest) SetAppName(v string) *OperateExecuteJobRequest {

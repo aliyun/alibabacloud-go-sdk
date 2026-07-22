@@ -9,6 +9,8 @@ type iOperateRerunJobRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppId(v int64) *OperateRerunJobRequest
+	GetAppId() *int64
 	SetAppName(v string) *OperateRerunJobRequest
 	GetAppName() *string
 	SetClusterId(v string) *OperateRerunJobRequest
@@ -24,7 +26,8 @@ type iOperateRerunJobRequest interface {
 }
 
 type OperateRerunJobRequest struct {
-	// The name of the application.
+	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application name.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +35,7 @@ type OperateRerunJobRequest struct {
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The unique identifier of the cluster.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +43,7 @@ type OperateRerunJobRequest struct {
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The specific time of day for which to rerun the data. The format is `HH:mm:ss`.
+	// The data timestamp.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +51,7 @@ type OperateRerunJobRequest struct {
 	//
 	// 14:11:10
 	DataTime *string `json:"DataTime,omitempty" xml:"DataTime,omitempty"`
-	// The end of the time range to rerun, specified as a Unix timestamp in milliseconds.
+	// The end time.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +59,7 @@ type OperateRerunJobRequest struct {
 	//
 	// 1698458024000
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The unique identifier of the job.
+	// The node ID.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +67,7 @@ type OperateRerunJobRequest struct {
 	//
 	// 74
 	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The start of the time range to rerun, specified as a Unix timestamp in milliseconds.
+	// The start time.
 	//
 	// This parameter is required.
 	//
@@ -80,6 +83,10 @@ func (s OperateRerunJobRequest) String() string {
 
 func (s OperateRerunJobRequest) GoString() string {
 	return s.String()
+}
+
+func (s *OperateRerunJobRequest) GetAppId() *int64 {
+	return s.AppId
 }
 
 func (s *OperateRerunJobRequest) GetAppName() *string {
@@ -104,6 +111,11 @@ func (s *OperateRerunJobRequest) GetJobId() *int64 {
 
 func (s *OperateRerunJobRequest) GetStartDate() *int64 {
 	return s.StartDate
+}
+
+func (s *OperateRerunJobRequest) SetAppId(v int64) *OperateRerunJobRequest {
+	s.AppId = &v
+	return s
 }
 
 func (s *OperateRerunJobRequest) SetAppName(v string) *OperateRerunJobRequest {

@@ -76,13 +76,13 @@ type CreateJobRequest struct {
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The retry interval upon failure. Unit: seconds. Default value: 30.
+	// The retry interval. Unit: seconds. Default value: 30.
 	//
 	// example:
 	//
 	// 3
 	AttemptInterval *int32 `json:"AttemptInterval,omitempty" xml:"AttemptInterval,omitempty"`
-	// The custom calendar. This parameter is available only for the cron time type.
+	// The custom calendar. This parameter is optional for the cron time type.
 	//
 	// example:
 	//
@@ -116,7 +116,7 @@ type CreateJobRequest struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The client-side blocking strategy. Valid values:
+	// The client blocking strategy. Valid values:
 	//
 	// - 1: serial execution on a single machine
 	//
@@ -128,7 +128,7 @@ type CreateJobRequest struct {
 	//
 	// 1
 	ExecutorBlockStrategy *int32 `json:"ExecutorBlockStrategy,omitempty" xml:"ExecutorBlockStrategy,omitempty"`
-	// The JobHandler name.
+	// The jobhandler name.
 	//
 	// example:
 	//
@@ -230,7 +230,7 @@ type CreateJobRequest struct {
 	//
 	// 1
 	StartTimeType *int32 `json:"StartTimeType,omitempty" xml:"StartTimeType,omitempty"`
-	// The node status. Default value: enabled. Valid values:
+	// The node status. Default value: 1 (enabled). Valid values:
 	//
 	// - 0: disabled
 	//
@@ -242,15 +242,15 @@ type CreateJobRequest struct {
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The time expression. Set this parameter based on the selected time type.
 	//
-	// - **none**: no value required.
+	// - **none**: No value is required.
 	//
-	// - **cron**: a standard cron expression. Online verification is supported.
+	// - **cron**: Specify a standard cron expression. Online verification is supported.
 	//
-	// - **api**: no value required.
+	// - **api**: No value is required.
 	//
-	// - **fixed_rate**: a fixed frequency value in seconds. For example, 200 indicates that the node is triggered every 200 seconds.
+	// - **fixed_rate**: Specify a fixed frequency value in seconds. For example, 200 indicates that the node is triggered every 200 seconds.
 	//
-	// - **one_time**: a scheduling time in the yyyy-MM-dd HH:mm:ss format or a timestamp in milliseconds. For example, "2022-10-10 10:10:00".
+	// - **one_time**: Specify a scheduling time in the format of yyyy-MM-dd HH:mm:ss or a timestamp in milliseconds. For example, "2022-10-10 10:10:00".
 	//
 	// example:
 	//
@@ -286,7 +286,7 @@ type CreateJobRequest struct {
 	//
 	// 1
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
-	// The extended attributes. This parameter is required for K8s node types.
+	// The configuration for K8s node types. Set this parameter if the node type is K8s.
 	//
 	// Job node: {"resource":"job"}
 	//
@@ -662,11 +662,11 @@ type CreateJobRequestNoticeConfig struct {
 	// 30
 	EndEarly       *int32 `json:"EndEarly,omitempty" xml:"EndEarly,omitempty"`
 	EndEarlyEnable *bool  `json:"EndEarlyEnable,omitempty" xml:"EndEarlyEnable,omitempty"`
-	// Specifies whether to enable failure alerting. Valid values:
+	// Specifies whether to enable the failure alert. Valid values:
 	//
-	// - **true**: Failure alerting is enabled.
+	// - **true**: Enabled.
 	//
-	// - **false**: Failure alerting is disabled.
+	// - **false**: Disabled.
 	//
 	// example:
 	//
@@ -680,11 +680,11 @@ type CreateJobRequestNoticeConfig struct {
 	//
 	// 1
 	FailLimitTimes *int32 `json:"FailLimitTimes,omitempty" xml:"FailLimitTimes,omitempty"`
-	// Specifies whether to enable alerting when no workers are available. Valid values:
+	// Specifies whether to enable the no-available-machine alert. Valid values:
 	//
-	// - **true**: Alerting for no available workers is enabled.
+	// - **true**: Enabled.
 	//
-	// - **false**: Alerting for no available workers is disabled.
+	// - **false**: Disabled.
 	//
 	// example:
 	//
@@ -692,7 +692,7 @@ type CreateJobRequestNoticeConfig struct {
 	MissWorkerEnable *bool `json:"MissWorkerEnable,omitempty" xml:"MissWorkerEnable,omitempty"`
 	// The notification channel. Valid values:
 	//
-	// - sms: text message
+	// - sms: SMS
 	//
 	// - phone: phone call
 	//
@@ -706,7 +706,7 @@ type CreateJobRequestNoticeConfig struct {
 	//
 	// mail
 	SendChannel *string `json:"SendChannel,omitempty" xml:"SendChannel,omitempty"`
-	// Specifies whether to enable success notification. Valid values:
+	// Specifies whether to enable the success notification. Valid values:
 	//
 	// - true: Enabled.
 	//
@@ -722,7 +722,7 @@ type CreateJobRequestNoticeConfig struct {
 	//
 	// 30
 	Timeout *int64 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// Specifies whether to enable timeout alerting. Valid values:
+	// Specifies whether to enable the timeout alert. Valid values:
 	//
 	// - **true**: Enabled.
 	//
@@ -732,11 +732,11 @@ type CreateJobRequestNoticeConfig struct {
 	//
 	// true
 	TimeoutEnable *bool `json:"TimeoutEnable,omitempty" xml:"TimeoutEnable,omitempty"`
-	// Specifies whether to enable timeout termination. Valid values:
+	// Specifies whether to enable the timeout termination feature. Valid values:
 	//
-	// - **true**: Timeout termination is enabled.
+	// - **true**: Enabled.
 	//
-	// - **false**: Timeout termination is disabled.
+	// - **false**: Disabled.
 	//
 	// example:
 	//
@@ -847,7 +847,7 @@ func (s *CreateJobRequestNoticeConfig) Validate() error {
 }
 
 type CreateJobRequestNoticeContacts struct {
-	// The Notification Recipient type. Valid values:
+	// The object type of the notification recipient. Valid values:
 	//
 	// - 1: alert contact
 	//

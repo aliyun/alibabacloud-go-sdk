@@ -9,6 +9,8 @@ type iDeleteJobsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppGroupId(v int64) *DeleteJobsRequest
+	GetAppGroupId() *int64
 	SetAppName(v string) *DeleteJobsRequest
 	GetAppName() *string
 	SetClusterId(v string) *DeleteJobsRequest
@@ -18,6 +20,7 @@ type iDeleteJobsRequest interface {
 }
 
 type DeleteJobsRequest struct {
+	AppGroupId *int64 `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
 	// The application name.
 	//
 	// This parameter is required.
@@ -33,9 +36,8 @@ type DeleteJobsRequest struct {
 	// example:
 	//
 	// xxljob-b6ec1xxxx
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The IDs of the jobs to delete.
-	JobIds []*int64 `json:"JobIds,omitempty" xml:"JobIds,omitempty" type:"Repeated"`
+	ClusterId *string  `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	JobIds    []*int64 `json:"JobIds,omitempty" xml:"JobIds,omitempty" type:"Repeated"`
 }
 
 func (s DeleteJobsRequest) String() string {
@@ -44,6 +46,10 @@ func (s DeleteJobsRequest) String() string {
 
 func (s DeleteJobsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteJobsRequest) GetAppGroupId() *int64 {
+	return s.AppGroupId
 }
 
 func (s *DeleteJobsRequest) GetAppName() *string {
@@ -56,6 +62,11 @@ func (s *DeleteJobsRequest) GetClusterId() *string {
 
 func (s *DeleteJobsRequest) GetJobIds() []*int64 {
 	return s.JobIds
+}
+
+func (s *DeleteJobsRequest) SetAppGroupId(v int64) *DeleteJobsRequest {
+	s.AppGroupId = &v
+	return s
 }
 
 func (s *DeleteJobsRequest) SetAppName(v string) *DeleteJobsRequest {

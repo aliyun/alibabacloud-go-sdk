@@ -9,6 +9,8 @@ type iOperateStopJobExecutionRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppGroupId(v int64) *OperateStopJobExecutionRequest
+	GetAppGroupId() *int64
 	SetAppName(v string) *OperateStopJobExecutionRequest
 	GetAppName() *string
 	SetClusterId(v string) *OperateStopJobExecutionRequest
@@ -20,7 +22,8 @@ type iOperateStopJobExecutionRequest interface {
 }
 
 type OperateStopJobExecutionRequest struct {
-	// The name of the Application.
+	AppGroupId *int64 `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
+	// The application name.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +31,7 @@ type OperateStopJobExecutionRequest struct {
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The ID of the Cluster.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +39,7 @@ type OperateStopJobExecutionRequest struct {
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the Job Execution.
+	// The job execution ID.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +47,7 @@ type OperateStopJobExecutionRequest struct {
 	//
 	// 1310630367761285120
 	JobExecutionId *string `json:"JobExecutionId,omitempty" xml:"JobExecutionId,omitempty"`
-	// A list of Task IDs.
+	// The subtask IDs.
 	TaskList []*string `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Repeated"`
 }
 
@@ -54,6 +57,10 @@ func (s OperateStopJobExecutionRequest) String() string {
 
 func (s OperateStopJobExecutionRequest) GoString() string {
 	return s.String()
+}
+
+func (s *OperateStopJobExecutionRequest) GetAppGroupId() *int64 {
+	return s.AppGroupId
 }
 
 func (s *OperateStopJobExecutionRequest) GetAppName() *string {
@@ -70,6 +77,11 @@ func (s *OperateStopJobExecutionRequest) GetJobExecutionId() *string {
 
 func (s *OperateStopJobExecutionRequest) GetTaskList() []*string {
 	return s.TaskList
+}
+
+func (s *OperateStopJobExecutionRequest) SetAppGroupId(v int64) *OperateStopJobExecutionRequest {
+	s.AppGroupId = &v
+	return s
 }
 
 func (s *OperateStopJobExecutionRequest) SetAppName(v string) *OperateStopJobExecutionRequest {

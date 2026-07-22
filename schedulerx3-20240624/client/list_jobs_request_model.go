@@ -32,13 +32,13 @@ type iListJobsRequest interface {
 }
 
 type ListJobsRequest struct {
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -46,25 +46,25 @@ type ListJobsRequest struct {
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The description of the job.
+	// The job description.
 	//
 	// example:
 	//
 	// job01单机任务
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the job handler.
+	// The jobhandler name.
 	//
 	// example:
 	//
 	// jobDemoHandler
 	JobHandler *string `json:"JobHandler,omitempty" xml:"JobHandler,omitempty"`
-	// The ID of the job.
+	// The job ID.
 	//
 	// example:
 	//
 	// 10
 	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The name of the job.
+	// The job name.
 	//
 	// example:
 	//
@@ -82,13 +82,13 @@ type ListJobsRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The status of the job.
+	// The job status.
 	//
 	// example:
 	//
 	// 0
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the workflow.
+	// The workflow ID.
 	//
 	// example:
 	//

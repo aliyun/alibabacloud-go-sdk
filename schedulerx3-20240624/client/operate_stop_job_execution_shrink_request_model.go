@@ -9,6 +9,8 @@ type iOperateStopJobExecutionShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppGroupId(v int64) *OperateStopJobExecutionShrinkRequest
+	GetAppGroupId() *int64
 	SetAppName(v string) *OperateStopJobExecutionShrinkRequest
 	GetAppName() *string
 	SetClusterId(v string) *OperateStopJobExecutionShrinkRequest
@@ -20,7 +22,8 @@ type iOperateStopJobExecutionShrinkRequest interface {
 }
 
 type OperateStopJobExecutionShrinkRequest struct {
-	// The name of the Application.
+	AppGroupId *int64 `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
+	// The application name.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +31,7 @@ type OperateStopJobExecutionShrinkRequest struct {
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The ID of the Cluster.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +39,7 @@ type OperateStopJobExecutionShrinkRequest struct {
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the Job Execution.
+	// The job execution ID.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +47,7 @@ type OperateStopJobExecutionShrinkRequest struct {
 	//
 	// 1310630367761285120
 	JobExecutionId *string `json:"JobExecutionId,omitempty" xml:"JobExecutionId,omitempty"`
-	// A list of Task IDs.
+	// The subtask IDs.
 	TaskListShrink *string `json:"TaskList,omitempty" xml:"TaskList,omitempty"`
 }
 
@@ -54,6 +57,10 @@ func (s OperateStopJobExecutionShrinkRequest) String() string {
 
 func (s OperateStopJobExecutionShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *OperateStopJobExecutionShrinkRequest) GetAppGroupId() *int64 {
+	return s.AppGroupId
 }
 
 func (s *OperateStopJobExecutionShrinkRequest) GetAppName() *string {
@@ -70,6 +77,11 @@ func (s *OperateStopJobExecutionShrinkRequest) GetJobExecutionId() *string {
 
 func (s *OperateStopJobExecutionShrinkRequest) GetTaskListShrink() *string {
 	return s.TaskListShrink
+}
+
+func (s *OperateStopJobExecutionShrinkRequest) SetAppGroupId(v int64) *OperateStopJobExecutionShrinkRequest {
+	s.AppGroupId = &v
+	return s
 }
 
 func (s *OperateStopJobExecutionShrinkRequest) SetAppName(v string) *OperateStopJobExecutionShrinkRequest {

@@ -9,6 +9,8 @@ type iUpdateJobRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppGroupId(v int64) *UpdateJobRequest
+	GetAppGroupId() *int64
 	SetAppName(v string) *UpdateJobRequest
 	GetAppName() *string
 	SetAttemptInterval(v int32) *UpdateJobRequest
@@ -64,6 +66,7 @@ type iUpdateJobRequest interface {
 }
 
 type UpdateJobRequest struct {
+	AppGroupId *int64 `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
 	// The application name.
 	//
 	// This parameter is required.
@@ -142,9 +145,9 @@ type UpdateJobRequest struct {
 	//
 	// 3
 	MaxAttempt *int32 `json:"MaxAttempt,omitempty" xml:"MaxAttempt,omitempty"`
-	// The maximum number of concurrent instances of the node.
+	// The maximum number of concurrent instances for the node.
 	//
-	// >The maximum number of instances that can run at the same time for the same node. A value of 1 indicates that repeated execution is not allowed. If the concurrency limit is exceeded, the current scheduling is skipped.
+	// >The maximum number of instances that can run simultaneously for the same node. A value of 1 indicates that repeated execution is not allowed. If the concurrency limit is exceeded, the current scheduling is skipped.
 	//
 	// example:
 	//
@@ -166,7 +169,7 @@ type UpdateJobRequest struct {
 	//
 	// test
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The execution priority of the node. Valid values:
+	// The node execution priority. Valid values:
 	//
 	// - 1: low
 	//
@@ -180,7 +183,7 @@ type UpdateJobRequest struct {
 	//
 	// 10
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The routing policy. Valid values:
+	// The routing strategy. Valid values:
 	//
 	// - 1: round robin
 	//
@@ -202,7 +205,7 @@ type UpdateJobRequest struct {
 	//
 	// 1
 	RouteStrategy *int32 `json:"RouteStrategy,omitempty" xml:"RouteStrategy,omitempty"`
-	// The script for non-BEAN nodes. Use this field to configure the script.
+	// The script content for non-BEAN nodes. Use this field to configure the script.
 	//
 	// example:
 	//
@@ -230,7 +233,7 @@ type UpdateJobRequest struct {
 	//
 	// - fixed_rate: Specify a fixed frequency value in seconds. For example, 30 indicates that the node is triggered every 30 seconds.
 	//
-	// - one_time: Specify a scheduling time in the yyyy-MM-dd HH:mm:ss format or a timestamp in milliseconds. For example, "2022-10-10 10:10:00".
+	// - one_time: Specify a scheduling time in the format of yyyy-MM-dd HH:mm:ss or a timestamp in milliseconds. For example, "2022-10-10 10:10:00".
 	//
 	// example:
 	//
@@ -254,7 +257,7 @@ type UpdateJobRequest struct {
 	TimeType *int32 `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
 	// The time zone.
 	//
-	// > By default, the time zone of the SchedulerX server is used.
+	// > The default value is the time zone of the SchedulerX server.
 	//
 	// example:
 	//
@@ -278,6 +281,10 @@ func (s UpdateJobRequest) String() string {
 
 func (s UpdateJobRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateJobRequest) GetAppGroupId() *int64 {
+	return s.AppGroupId
 }
 
 func (s *UpdateJobRequest) GetAppName() *string {
@@ -382,6 +389,11 @@ func (s *UpdateJobRequest) GetWeight() *int32 {
 
 func (s *UpdateJobRequest) GetXAttrs() *string {
 	return s.XAttrs
+}
+
+func (s *UpdateJobRequest) SetAppGroupId(v int64) *UpdateJobRequest {
+	s.AppGroupId = &v
+	return s
 }
 
 func (s *UpdateJobRequest) SetAppName(v string) *UpdateJobRequest {
@@ -533,12 +545,15 @@ func (s *UpdateJobRequest) Validate() error {
 }
 
 type UpdateJobRequestNoticeConfig struct {
+	// The early termination threshold, in seconds.
+	//
 	// example:
 	//
 	// 30
-	EndEarly       *int32 `json:"EndEarly,omitempty" xml:"EndEarly,omitempty"`
-	EndEarlyEnable *bool  `json:"EndEarlyEnable,omitempty" xml:"EndEarlyEnable,omitempty"`
-	// Specifies whether to enable the failure alerting switch. Valid values:
+	EndEarly *int32 `json:"EndEarly,omitempty" xml:"EndEarly,omitempty"`
+	// Specifies whether to enable the early termination alert.
+	EndEarlyEnable *bool `json:"EndEarlyEnable,omitempty" xml:"EndEarlyEnable,omitempty"`
+	// Specifies whether to enable the failure alert. Valid values:
 	//
 	// - **true**: Enabled.
 	//
@@ -556,7 +571,7 @@ type UpdateJobRequestNoticeConfig struct {
 	//
 	// true
 	FailLimitTimes *int32 `json:"FailLimitTimes,omitempty" xml:"FailLimitTimes,omitempty"`
-	// Specifies whether to enable the no-available-machine alerting switch. Valid values:
+	// Specifies whether to enable the no-available-machine alert. Valid values:
 	//
 	// - **true**: Enabled.
 	//
@@ -568,9 +583,9 @@ type UpdateJobRequestNoticeConfig struct {
 	MissWorkerEnable *bool `json:"MissWorkerEnable,omitempty" xml:"MissWorkerEnable,omitempty"`
 	// The notification channel. Valid values:
 	//
-	//  - sms: text message
+	// - sms: text message
 	//
-	//  - phone: phone call
+	// - phone: phone call
 	//
 	// - mail: email
 	//
@@ -582,7 +597,7 @@ type UpdateJobRequestNoticeConfig struct {
 	//
 	// webhook,sms,mail,phone
 	SendChannel *string `json:"SendChannel,omitempty" xml:"SendChannel,omitempty"`
-	// Specifies whether to enable the success notification switch. Valid values:
+	// Specifies whether to enable the success notification. Valid values:
 	//
 	// - true: Enabled.
 	//
@@ -598,7 +613,7 @@ type UpdateJobRequestNoticeConfig struct {
 	//
 	// 90
 	Timeout *int64 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// Specifies whether to enable timeout alerting. Valid values:
+	// Specifies whether to enable the timeout alert. Valid values:
 	//
 	// - true: Enabled.
 	//
@@ -608,7 +623,7 @@ type UpdateJobRequestNoticeConfig struct {
 	//
 	// true
 	TimeoutEnable *bool `json:"TimeoutEnable,omitempty" xml:"TimeoutEnable,omitempty"`
-	// Specifies whether to enable the timeout termination switch for the current trigger. Valid values:
+	// Specifies whether to enable the timeout termination for the current trigger. Valid values:
 	//
 	// - **true**: Enabled.
 	//
@@ -725,7 +740,7 @@ func (s *UpdateJobRequestNoticeConfig) Validate() error {
 type UpdateJobRequestNoticeContacts struct {
 	// The contact type.
 	//
-	// >Default configurations: 1.
+	// > Default configurations: 1.
 	//
 	// example:
 	//

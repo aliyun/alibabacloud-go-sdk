@@ -9,6 +9,8 @@ type iOperateDisableJobsShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppGroupId(v int64) *OperateDisableJobsShrinkRequest
+	GetAppGroupId() *int64
 	SetAppName(v string) *OperateDisableJobsShrinkRequest
 	GetAppName() *string
 	SetClusterId(v string) *OperateDisableJobsShrinkRequest
@@ -18,6 +20,7 @@ type iOperateDisableJobsShrinkRequest interface {
 }
 
 type OperateDisableJobsShrinkRequest struct {
+	AppGroupId *int64 `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
 	// The application name.
 	//
 	// This parameter is required.
@@ -33,8 +36,7 @@ type OperateDisableJobsShrinkRequest struct {
 	// example:
 	//
 	// xxljob-b6ec1xxxx
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The IDs of the jobs to disable.
+	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	JobIdsShrink *string `json:"JobIds,omitempty" xml:"JobIds,omitempty"`
 }
 
@@ -44,6 +46,10 @@ func (s OperateDisableJobsShrinkRequest) String() string {
 
 func (s OperateDisableJobsShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *OperateDisableJobsShrinkRequest) GetAppGroupId() *int64 {
+	return s.AppGroupId
 }
 
 func (s *OperateDisableJobsShrinkRequest) GetAppName() *string {
@@ -56,6 +62,11 @@ func (s *OperateDisableJobsShrinkRequest) GetClusterId() *string {
 
 func (s *OperateDisableJobsShrinkRequest) GetJobIdsShrink() *string {
 	return s.JobIdsShrink
+}
+
+func (s *OperateDisableJobsShrinkRequest) SetAppGroupId(v int64) *OperateDisableJobsShrinkRequest {
+	s.AppGroupId = &v
+	return s
 }
 
 func (s *OperateDisableJobsShrinkRequest) SetAppName(v string) *OperateDisableJobsShrinkRequest {

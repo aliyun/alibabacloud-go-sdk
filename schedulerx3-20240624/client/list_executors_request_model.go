@@ -9,6 +9,8 @@ type iListExecutorsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppGroupId(v int64) *ListExecutorsRequest
+	GetAppGroupId() *int64
 	SetAppName(v string) *ListExecutorsRequest
 	GetAppName() *string
 	SetClusterId(v string) *ListExecutorsRequest
@@ -20,6 +22,7 @@ type iListExecutorsRequest interface {
 }
 
 type ListExecutorsRequest struct {
+	AppGroupId *int64 `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
 	// The application name.
 	//
 	// This parameter is required.
@@ -58,6 +61,10 @@ func (s ListExecutorsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListExecutorsRequest) GetAppGroupId() *int64 {
+	return s.AppGroupId
+}
+
 func (s *ListExecutorsRequest) GetAppName() *string {
 	return s.AppName
 }
@@ -72,6 +79,11 @@ func (s *ListExecutorsRequest) GetJobId() *int64 {
 
 func (s *ListExecutorsRequest) GetLabel() *string {
 	return s.Label
+}
+
+func (s *ListExecutorsRequest) SetAppGroupId(v int64) *ListExecutorsRequest {
+	s.AppGroupId = &v
+	return s
 }
 
 func (s *ListExecutorsRequest) SetAppName(v string) *ListExecutorsRequest {

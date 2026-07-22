@@ -26,23 +26,23 @@ type DeleteJobsResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message. An error message is returned if the request is unsuccessful.
+	// The error message.
 	//
 	// example:
 	//
 	// Parameter error: content is null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request. This ID is unique to each request and can be used for troubleshooting.
+	// The request ID. Alibaba Cloud generates a unique ID for each API request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 91143E1D-E235-5BE0-9364-C2EE28FFB5A6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: The call was successful.
 	//
-	// - false: The request failed.
+	// - false: The call failed.
 	//
 	// example:
 	//

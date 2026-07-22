@@ -9,6 +9,8 @@ type iUpdateJobShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppGroupId(v int64) *UpdateJobShrinkRequest
+	GetAppGroupId() *int64
 	SetAppName(v string) *UpdateJobShrinkRequest
 	GetAppName() *string
 	SetAttemptInterval(v int32) *UpdateJobShrinkRequest
@@ -64,6 +66,7 @@ type iUpdateJobShrinkRequest interface {
 }
 
 type UpdateJobShrinkRequest struct {
+	AppGroupId *int64 `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
 	// The application name.
 	//
 	// This parameter is required.
@@ -142,9 +145,9 @@ type UpdateJobShrinkRequest struct {
 	//
 	// 3
 	MaxAttempt *int32 `json:"MaxAttempt,omitempty" xml:"MaxAttempt,omitempty"`
-	// The maximum number of concurrent instances of the node.
+	// The maximum number of concurrent instances for the node.
 	//
-	// >The maximum number of instances that can run at the same time for the same node. A value of 1 indicates that repeated execution is not allowed. If the concurrency limit is exceeded, the current scheduling is skipped.
+	// >The maximum number of instances that can run simultaneously for the same node. A value of 1 indicates that repeated execution is not allowed. If the concurrency limit is exceeded, the current scheduling is skipped.
 	//
 	// example:
 	//
@@ -166,7 +169,7 @@ type UpdateJobShrinkRequest struct {
 	//
 	// test
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The execution priority of the node. Valid values:
+	// The node execution priority. Valid values:
 	//
 	// - 1: low
 	//
@@ -180,7 +183,7 @@ type UpdateJobShrinkRequest struct {
 	//
 	// 10
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The routing policy. Valid values:
+	// The routing strategy. Valid values:
 	//
 	// - 1: round robin
 	//
@@ -202,7 +205,7 @@ type UpdateJobShrinkRequest struct {
 	//
 	// 1
 	RouteStrategy *int32 `json:"RouteStrategy,omitempty" xml:"RouteStrategy,omitempty"`
-	// The script for non-BEAN nodes. Use this field to configure the script.
+	// The script content for non-BEAN nodes. Use this field to configure the script.
 	//
 	// example:
 	//
@@ -230,7 +233,7 @@ type UpdateJobShrinkRequest struct {
 	//
 	// - fixed_rate: Specify a fixed frequency value in seconds. For example, 30 indicates that the node is triggered every 30 seconds.
 	//
-	// - one_time: Specify a scheduling time in the yyyy-MM-dd HH:mm:ss format or a timestamp in milliseconds. For example, "2022-10-10 10:10:00".
+	// - one_time: Specify a scheduling time in the format of yyyy-MM-dd HH:mm:ss or a timestamp in milliseconds. For example, "2022-10-10 10:10:00".
 	//
 	// example:
 	//
@@ -254,7 +257,7 @@ type UpdateJobShrinkRequest struct {
 	TimeType *int32 `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
 	// The time zone.
 	//
-	// > By default, the time zone of the SchedulerX server is used.
+	// > The default value is the time zone of the SchedulerX server.
 	//
 	// example:
 	//
@@ -278,6 +281,10 @@ func (s UpdateJobShrinkRequest) String() string {
 
 func (s UpdateJobShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateJobShrinkRequest) GetAppGroupId() *int64 {
+	return s.AppGroupId
 }
 
 func (s *UpdateJobShrinkRequest) GetAppName() *string {
@@ -382,6 +389,11 @@ func (s *UpdateJobShrinkRequest) GetWeight() *int32 {
 
 func (s *UpdateJobShrinkRequest) GetXAttrs() *string {
 	return s.XAttrs
+}
+
+func (s *UpdateJobShrinkRequest) SetAppGroupId(v int64) *UpdateJobShrinkRequest {
+	s.AppGroupId = &v
+	return s
 }
 
 func (s *UpdateJobShrinkRequest) SetAppName(v string) *UpdateJobShrinkRequest {

@@ -11,6 +11,8 @@ type iOperateDesignateExecutorsRequest interface {
 	GoString() string
 	SetAddressList(v []*string) *OperateDesignateExecutorsRequest
 	GetAddressList() []*string
+	SetAppGroupId(v int64) *OperateDesignateExecutorsRequest
+	GetAppGroupId() *int64
 	SetAppName(v string) *OperateDesignateExecutorsRequest
 	GetAppName() *string
 	SetClusterId(v string) *OperateDesignateExecutorsRequest
@@ -24,10 +26,11 @@ type iOperateDesignateExecutorsRequest interface {
 }
 
 type OperateDesignateExecutorsRequest struct {
-	// A list of machine addresses to designate.
+	// The address list.
 	//
 	// This parameter is required.
 	AddressList []*string `json:"AddressList,omitempty" xml:"AddressList,omitempty" type:"Repeated"`
+	AppGroupId  *int64    `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
 	// The application name.
 	//
 	// This parameter is required.
@@ -44,11 +47,11 @@ type OperateDesignateExecutorsRequest struct {
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The designation type. Valid values:
+	// The type of the designated machine. Valid values:
 	//
-	// - **1**: By worker.
+	// - **1**: designated worker.
 	//
-	// - **2**: By label.
+	// - **2**: designated label.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +59,7 @@ type OperateDesignateExecutorsRequest struct {
 	//
 	// 1
 	DesignateType *int32 `json:"DesignateType,omitempty" xml:"DesignateType,omitempty"`
-	// The job ID.
+	// The task ID.
 	//
 	// This parameter is required.
 	//
@@ -84,6 +87,10 @@ func (s *OperateDesignateExecutorsRequest) GetAddressList() []*string {
 	return s.AddressList
 }
 
+func (s *OperateDesignateExecutorsRequest) GetAppGroupId() *int64 {
+	return s.AppGroupId
+}
+
 func (s *OperateDesignateExecutorsRequest) GetAppName() *string {
 	return s.AppName
 }
@@ -106,6 +113,11 @@ func (s *OperateDesignateExecutorsRequest) GetTransferable() *bool {
 
 func (s *OperateDesignateExecutorsRequest) SetAddressList(v []*string) *OperateDesignateExecutorsRequest {
 	s.AddressList = v
+	return s
+}
+
+func (s *OperateDesignateExecutorsRequest) SetAppGroupId(v int64) *OperateDesignateExecutorsRequest {
+	s.AppGroupId = &v
 	return s
 }
 

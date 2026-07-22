@@ -78,7 +78,7 @@ type ListJobExecutionsRequest struct {
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type ListJobExecutionsRequest struct {
 	//
 	// 4
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The workflow execution ID.
+	// The workflow instance ID.
 	//
 	// example:
 	//

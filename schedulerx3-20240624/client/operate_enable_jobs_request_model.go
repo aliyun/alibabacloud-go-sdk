@@ -9,6 +9,8 @@ type iOperateEnableJobsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppGroupId(v int64) *OperateEnableJobsRequest
+	GetAppGroupId() *int64
 	SetAppName(v string) *OperateEnableJobsRequest
 	GetAppName() *string
 	SetClusterId(v string) *OperateEnableJobsRequest
@@ -18,7 +20,8 @@ type iOperateEnableJobsRequest interface {
 }
 
 type OperateEnableJobsRequest struct {
-	// The name of the application.
+	AppGroupId *int64 `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
+	// The application name.
 	//
 	// This parameter is required.
 	//
@@ -26,16 +29,15 @@ type OperateEnableJobsRequest struct {
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob-b6ec1xxxx
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The IDs of the jobs to enable.
-	JobIds []*int64 `json:"JobIds,omitempty" xml:"JobIds,omitempty" type:"Repeated"`
+	ClusterId *string  `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	JobIds    []*int64 `json:"JobIds,omitempty" xml:"JobIds,omitempty" type:"Repeated"`
 }
 
 func (s OperateEnableJobsRequest) String() string {
@@ -44,6 +46,10 @@ func (s OperateEnableJobsRequest) String() string {
 
 func (s OperateEnableJobsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *OperateEnableJobsRequest) GetAppGroupId() *int64 {
+	return s.AppGroupId
 }
 
 func (s *OperateEnableJobsRequest) GetAppName() *string {
@@ -56,6 +62,11 @@ func (s *OperateEnableJobsRequest) GetClusterId() *string {
 
 func (s *OperateEnableJobsRequest) GetJobIds() []*int64 {
 	return s.JobIds
+}
+
+func (s *OperateEnableJobsRequest) SetAppGroupId(v int64) *OperateEnableJobsRequest {
+	s.AppGroupId = &v
+	return s
 }
 
 func (s *OperateEnableJobsRequest) SetAppName(v string) *OperateEnableJobsRequest {

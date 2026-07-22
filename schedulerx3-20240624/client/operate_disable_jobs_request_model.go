@@ -9,6 +9,8 @@ type iOperateDisableJobsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppGroupId(v int64) *OperateDisableJobsRequest
+	GetAppGroupId() *int64
 	SetAppName(v string) *OperateDisableJobsRequest
 	GetAppName() *string
 	SetClusterId(v string) *OperateDisableJobsRequest
@@ -18,6 +20,7 @@ type iOperateDisableJobsRequest interface {
 }
 
 type OperateDisableJobsRequest struct {
+	AppGroupId *int64 `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
 	// The application name.
 	//
 	// This parameter is required.
@@ -33,9 +36,8 @@ type OperateDisableJobsRequest struct {
 	// example:
 	//
 	// xxljob-b6ec1xxxx
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The IDs of the jobs to disable.
-	JobIds []*int64 `json:"JobIds,omitempty" xml:"JobIds,omitempty" type:"Repeated"`
+	ClusterId *string  `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	JobIds    []*int64 `json:"JobIds,omitempty" xml:"JobIds,omitempty" type:"Repeated"`
 }
 
 func (s OperateDisableJobsRequest) String() string {
@@ -44,6 +46,10 @@ func (s OperateDisableJobsRequest) String() string {
 
 func (s OperateDisableJobsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *OperateDisableJobsRequest) GetAppGroupId() *int64 {
+	return s.AppGroupId
 }
 
 func (s *OperateDisableJobsRequest) GetAppName() *string {
@@ -56,6 +62,11 @@ func (s *OperateDisableJobsRequest) GetClusterId() *string {
 
 func (s *OperateDisableJobsRequest) GetJobIds() []*int64 {
 	return s.JobIds
+}
+
+func (s *OperateDisableJobsRequest) SetAppGroupId(v int64) *OperateDisableJobsRequest {
+	s.AppGroupId = &v
+	return s
 }
 
 func (s *OperateDisableJobsRequest) SetAppName(v string) *OperateDisableJobsRequest {

@@ -3,6 +3,7 @@ package client
 
 import (
 	"context"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
@@ -1055,7 +1056,7 @@ func (client *Client) DeleteExecutorGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Deletes multiple jobs in a batch.
+// Deletes nodes in batches.
 //
 // @param tmpReq - DeleteJobsRequest
 //
@@ -1076,6 +1077,10 @@ func (client *Client) DeleteJobsWithContext(ctx context.Context, tmpReq *DeleteJ
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppGroupId) {
+		body["AppGroupId"] = request.AppGroupId
+	}
+
 	if !dara.IsNil(request.AppName) {
 		body["AppName"] = request.AppName
 	}
@@ -1491,7 +1496,7 @@ func (client *Client) GetClusterWithContext(ctx context.Context, request *GetClu
 
 // Summary:
 //
-// Retrieves the designation information for a job.
+// Retrieves the information about a specified machine.
 //
 // @param request - GetDesigateInfoRequest
 //
@@ -1645,17 +1650,17 @@ func (client *Client) GetJobExecutionWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// Gets the details of a sharding task execution.
+// Retrieves the execution details of a sharding task.
 //
 // Description:
 //
-// # Add the enhancement plugin
+// # Import the enhanced plugin
 //
-// Add the Enhancement Plugin to your `pom.xml` file to enhance the capabilities of the Executor.
+// Add the enhanced plugin to the `pom.xml` file to improve the capabilities of the Executor.
 //
-// **Note**: Place this plugin **above*	- the `xxl-job-core` dependency in your pom.xml.
+// **Note**: Make sure this plugin is placed **above*	- the `xxl-job-core` dependency in the pom file.
 //
-// **See also**: [Plugin Release Notes](https://help.aliyun.com/zh/schedulerx/schedulerx-xxljob/product-overview/plugin-version-description)
+// **For more information, refer to**: [Plugin version description](https://www.alibabacloud.com/help/en/schedulerx/schedulerx-xxljob/product-overview/plugin-version-description)
 //
 // @param request - GetJobExecutionProgressRequest
 //
@@ -2121,6 +2126,81 @@ func (client *Client) GetWorkflowExecutionDAGWithContext(ctx context.Context, re
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetWorkflowExecutionDAGResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 导入agent中的定时任务到scheduler平台（SSE），该接口禁止使用xxljob的clusterid调用，不支持XXLJOB相关集群，这个接口仅限AI任务调度集群使用。
+//
+// Description:
+//
+// 导入agent中的定时任务到scheduler平台（SSE），该接口禁止使用xxljob的clusterid调用，不支持XXLJOB相关集群，这个接口仅限AI任务调度集群使用。
+//
+// @param request - ImportAgentJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImportAgentJobsResponse
+func (client *Client) ImportAgentJobsWithSSECtx(ctx context.Context, request *ImportAgentJobsRequest, runtime *dara.RuntimeOptions, _yield chan *ImportAgentJobsResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.importAgentJobsWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, request, runtime)
+	return
+}
+
+// Summary:
+//
+// 导入agent中的定时任务到scheduler平台（SSE），该接口禁止使用xxljob的clusterid调用，不支持XXLJOB相关集群，这个接口仅限AI任务调度集群使用。
+//
+// Description:
+//
+// 导入agent中的定时任务到scheduler平台（SSE），该接口禁止使用xxljob的clusterid调用，不支持XXLJOB相关集群，这个接口仅限AI任务调度集群使用。
+//
+// @param request - ImportAgentJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImportAgentJobsResponse
+func (client *Client) ImportAgentJobsWithContext(ctx context.Context, request *ImportAgentJobsRequest, runtime *dara.RuntimeOptions) (_result *ImportAgentJobsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		body["AgentName"] = request.AgentName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.MigrateStrategy) {
+		body["MigrateStrategy"] = request.MigrateStrategy
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ImportAgentJobs"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ImportAgentJobsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2765,7 +2845,7 @@ func (client *Client) ListExecutorGroupWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Lists executors.
+// Queries the list of executors.
 //
 // @param request - ListExecutorsRequest
 //
@@ -2805,7 +2885,7 @@ func (client *Client) ListExecutorsWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Returns a list of task instances.
+// Retrieves a list of job instances.
 //
 // @param request - ListJobExecutionsRequest
 //
@@ -2949,7 +3029,7 @@ func (client *Client) ListJobScriptHistoryWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Returns a task list.
+// Retrieves a list of jobs.
 //
 // @param request - ListJobsRequest
 //
@@ -3563,7 +3643,7 @@ func (client *Client) OperateConnectDatasourceWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Designates one or more executors for a job.
+// Specifies the executor.
 //
 // @param tmpReq - OperateDesignateExecutorsRequest
 //
@@ -3586,6 +3666,10 @@ func (client *Client) OperateDesignateExecutorsWithContext(ctx context.Context, 
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AddressListShrink) {
 		body["AddressList"] = request.AddressListShrink
+	}
+
+	if !dara.IsNil(request.AppGroupId) {
+		body["AppGroupId"] = request.AppGroupId
 	}
 
 	if !dara.IsNil(request.AppName) {
@@ -3633,7 +3717,7 @@ func (client *Client) OperateDesignateExecutorsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Disables multiple jobs.
+// Disables nodes in batches.
 //
 // @param tmpReq - OperateDisableJobsRequest
 //
@@ -3654,6 +3738,10 @@ func (client *Client) OperateDisableJobsWithContext(ctx context.Context, tmpReq 
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppGroupId) {
+		body["AppGroupId"] = request.AppGroupId
+	}
+
 	if !dara.IsNil(request.AppName) {
 		body["AppName"] = request.AppName
 	}
@@ -3753,7 +3841,7 @@ func (client *Client) OperateDisableWorkflowsWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// Enables multiple jobs in a batch.
+// Starts nodes in batches.
 //
 // @param tmpReq - OperateEnableJobsRequest
 //
@@ -3774,6 +3862,10 @@ func (client *Client) OperateEnableJobsWithContext(ctx context.Context, tmpReq *
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppGroupId) {
+		body["AppGroupId"] = request.AppGroupId
+	}
+
 	if !dara.IsNil(request.AppName) {
 		body["AppName"] = request.AppName
 	}
@@ -3869,7 +3961,7 @@ func (client *Client) OperateEnableWorkflowsWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Executes a job on demand.
+// Runs a node once.
 //
 // @param request - OperateExecuteJobRequest
 //
@@ -3884,6 +3976,10 @@ func (client *Client) OperateExecuteJobWithContext(ctx context.Context, request 
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppGroupId) {
+		body["AppGroupId"] = request.AppGroupId
+	}
+
 	if !dara.IsNil(request.AppName) {
 		body["AppName"] = request.AppName
 	}
@@ -4197,7 +4293,7 @@ func (client *Client) OperateMarkSuccessWorkflowExecutionWithContext(ctx context
 
 // Summary:
 //
-// Reruns historical data for a job within a specified time range.
+// Reruns historical data for a node.
 //
 // @param request - OperateRerunJobRequest
 //
@@ -4212,6 +4308,10 @@ func (client *Client) OperateRerunJobWithContext(ctx context.Context, request *O
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
 	if !dara.IsNil(request.AppName) {
 		query["AppName"] = request.AppName
 	}
@@ -4261,7 +4361,7 @@ func (client *Client) OperateRerunJobWithContext(ctx context.Context, request *O
 
 // Summary:
 //
-// Retries a failed Job Instance.
+// Reruns a failed job instance.
 //
 // @param tmpReq - OperateRetryJobExecutionRequest
 //
@@ -4282,6 +4382,10 @@ func (client *Client) OperateRetryJobExecutionWithContext(ctx context.Context, t
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppGroupId) {
+		query["AppGroupId"] = request.AppGroupId
+	}
+
 	if !dara.IsNil(request.AppName) {
 		query["AppName"] = request.AppName
 	}
@@ -4435,7 +4539,7 @@ func (client *Client) OperateSkipJobExecutionWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Stops a running Job Execution.
+// Stops a running task instance.
 //
 // @param tmpReq - OperateStopJobExecutionRequest
 //
@@ -4456,6 +4560,10 @@ func (client *Client) OperateStopJobExecutionWithContext(ctx context.Context, tm
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppGroupId) {
+		query["AppGroupId"] = request.AppGroupId
+	}
+
 	if !dara.IsNil(request.AppName) {
 		query["AppName"] = request.AppName
 	}
@@ -5276,6 +5384,10 @@ func (client *Client) UpdateJobWithContext(ctx context.Context, tmpReq *UpdateJo
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppGroupId) {
+		body["AppGroupId"] = request.AppGroupId
+	}
+
 	if !dara.IsNil(request.AppName) {
 		body["AppName"] = request.AppName
 	}
@@ -5723,4 +5835,60 @@ func (client *Client) UpdateWorkflowDAGVersionWithContext(ctx context.Context, r
 	}
 	_err = dara.Convert(_body, &_result)
 	return _result, _err
+}
+
+func (client *Client) importAgentJobsWithSSECtx_opYieldFunc(_yield chan *ImportAgentJobsResponse, _yieldErr chan error, ctx context.Context, request *ImportAgentJobsRequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		body["AgentName"] = request.AgentName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.MigrateStrategy) {
+		body["MigrateStrategy"] = request.MigrateStrategy
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ImportAgentJobs"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
 }

@@ -20,29 +20,29 @@ type iOperateDisableJobsResponseBody interface {
 }
 
 type OperateDisableJobsResponseBody struct {
-	// The HTTP status code. A value of 200 indicates success.
+	// The response code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message. Contains error details if the request fails.
+	// The error message.
 	//
 	// example:
 	//
 	// Parameter error: content is null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// A unique ID generated for this request. If you encounter an issue, provide this ID for troubleshooting.
+	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 29ED6209-5DE6-5E1D-89B0-B7B1D823A1BF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates if the request succeeded.
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - `true`: The request was successful.
+	// - true: The call was successful.
 	//
-	// - `false`: The request failed.
+	// - false: The call failed.
 	//
 	// example:
 	//

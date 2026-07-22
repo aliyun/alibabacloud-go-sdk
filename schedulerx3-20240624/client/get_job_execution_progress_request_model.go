@@ -9,6 +9,8 @@ type iGetJobExecutionProgressRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppGroupId(v int64) *GetJobExecutionProgressRequest
+	GetAppGroupId() *int64
 	SetAppName(v string) *GetJobExecutionProgressRequest
 	GetAppName() *string
 	SetClusterId(v string) *GetJobExecutionProgressRequest
@@ -18,6 +20,7 @@ type iGetJobExecutionProgressRequest interface {
 }
 
 type GetJobExecutionProgressRequest struct {
+	AppGroupId *int64 `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
 	// The application name.
 	//
 	// This parameter is required.
@@ -34,7 +37,7 @@ type GetJobExecutionProgressRequest struct {
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The job execution ID.
+	// The task execution ID.
 	//
 	// This parameter is required.
 	//
@@ -52,6 +55,10 @@ func (s GetJobExecutionProgressRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetJobExecutionProgressRequest) GetAppGroupId() *int64 {
+	return s.AppGroupId
+}
+
 func (s *GetJobExecutionProgressRequest) GetAppName() *string {
 	return s.AppName
 }
@@ -62,6 +69,11 @@ func (s *GetJobExecutionProgressRequest) GetClusterId() *string {
 
 func (s *GetJobExecutionProgressRequest) GetJobExecutionId() *string {
 	return s.JobExecutionId
+}
+
+func (s *GetJobExecutionProgressRequest) SetAppGroupId(v int64) *GetJobExecutionProgressRequest {
+	s.AppGroupId = &v
+	return s
 }
 
 func (s *GetJobExecutionProgressRequest) SetAppName(v string) *GetJobExecutionProgressRequest {

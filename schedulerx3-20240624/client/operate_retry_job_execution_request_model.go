@@ -9,6 +9,8 @@ type iOperateRetryJobExecutionRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppGroupId(v int64) *OperateRetryJobExecutionRequest
+	GetAppGroupId() *int64
 	SetAppName(v string) *OperateRetryJobExecutionRequest
 	GetAppName() *string
 	SetClusterId(v string) *OperateRetryJobExecutionRequest
@@ -22,7 +24,8 @@ type iOperateRetryJobExecutionRequest interface {
 }
 
 type OperateRetryJobExecutionRequest struct {
-	// The Application Name.
+	AppGroupId *int64 `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
+	// The application name.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +33,7 @@ type OperateRetryJobExecutionRequest struct {
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The Cluster ID.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +41,7 @@ type OperateRetryJobExecutionRequest struct {
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The Job Execution ID.
+	// The job execution ID.
 	//
 	// This parameter is required.
 	//
@@ -46,11 +49,11 @@ type OperateRetryJobExecutionRequest struct {
 	//
 	// 1310630367761285120
 	JobExecutionId *string `json:"JobExecutionId,omitempty" xml:"JobExecutionId,omitempty"`
-	// A list of Sub-task execution IDs for a Broadcast Sharding Job.
+	// The list of subtask execution IDs (for broadcast jobs).
 	//
-	// > To retry a specific Sub-task of a Broadcast Sharding Job, set this parameter to the execution ID of that Sub-task.
+	// >To rerun a subtask of a broadcast job, set this field to the execution ID of the corresponding subtask.
 	TaskList []*string `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Repeated"`
-	// Specifies whether to trigger downstream jobs.
+	// Specifies whether to trigger downstream nodes.
 	TriggerChild *bool `json:"TriggerChild,omitempty" xml:"TriggerChild,omitempty"`
 }
 
@@ -60,6 +63,10 @@ func (s OperateRetryJobExecutionRequest) String() string {
 
 func (s OperateRetryJobExecutionRequest) GoString() string {
 	return s.String()
+}
+
+func (s *OperateRetryJobExecutionRequest) GetAppGroupId() *int64 {
+	return s.AppGroupId
 }
 
 func (s *OperateRetryJobExecutionRequest) GetAppName() *string {
@@ -80,6 +87,11 @@ func (s *OperateRetryJobExecutionRequest) GetTaskList() []*string {
 
 func (s *OperateRetryJobExecutionRequest) GetTriggerChild() *bool {
 	return s.TriggerChild
+}
+
+func (s *OperateRetryJobExecutionRequest) SetAppGroupId(v int64) *OperateRetryJobExecutionRequest {
+	s.AppGroupId = &v
+	return s
 }
 
 func (s *OperateRetryJobExecutionRequest) SetAppName(v string) *OperateRetryJobExecutionRequest {

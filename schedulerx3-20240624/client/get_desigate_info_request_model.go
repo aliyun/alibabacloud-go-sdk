@@ -9,6 +9,8 @@ type iGetDesigateInfoRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppGroupId(v int64) *GetDesigateInfoRequest
+	GetAppGroupId() *int64
 	SetAppName(v string) *GetDesigateInfoRequest
 	GetAppName() *string
 	SetClusterId(v string) *GetDesigateInfoRequest
@@ -18,6 +20,7 @@ type iGetDesigateInfoRequest interface {
 }
 
 type GetDesigateInfoRequest struct {
+	AppGroupId *int64 `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
 	// The application name.
 	//
 	// This parameter is required.
@@ -34,7 +37,7 @@ type GetDesigateInfoRequest struct {
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The job ID.
+	// The task ID.
 	//
 	// This parameter is required.
 	//
@@ -52,6 +55,10 @@ func (s GetDesigateInfoRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetDesigateInfoRequest) GetAppGroupId() *int64 {
+	return s.AppGroupId
+}
+
 func (s *GetDesigateInfoRequest) GetAppName() *string {
 	return s.AppName
 }
@@ -62,6 +69,11 @@ func (s *GetDesigateInfoRequest) GetClusterId() *string {
 
 func (s *GetDesigateInfoRequest) GetJobId() *int64 {
 	return s.JobId
+}
+
+func (s *GetDesigateInfoRequest) SetAppGroupId(v int64) *GetDesigateInfoRequest {
+	s.AppGroupId = &v
+	return s
 }
 
 func (s *GetDesigateInfoRequest) SetAppName(v string) *GetDesigateInfoRequest {

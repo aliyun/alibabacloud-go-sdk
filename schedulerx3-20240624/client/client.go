@@ -1408,7 +1408,7 @@ func (client *Client) DeleteExecutorGroup(request *DeleteExecutorGroupRequest) (
 
 // Summary:
 //
-// Deletes multiple jobs in a batch.
+// Deletes nodes in batches.
 //
 // @param tmpReq - DeleteJobsRequest
 //
@@ -1429,6 +1429,10 @@ func (client *Client) DeleteJobsWithOptions(tmpReq *DeleteJobsRequest, runtime *
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppGroupId) {
+		body["AppGroupId"] = request.AppGroupId
+	}
+
 	if !dara.IsNil(request.AppName) {
 		body["AppName"] = request.AppName
 	}
@@ -1466,7 +1470,7 @@ func (client *Client) DeleteJobsWithOptions(tmpReq *DeleteJobsRequest, runtime *
 
 // Summary:
 //
-// Deletes multiple jobs in a batch.
+// Deletes nodes in batches.
 //
 // @param request - DeleteJobsRequest
 //
@@ -1988,7 +1992,7 @@ func (client *Client) GetCluster(request *GetClusterRequest) (_result *GetCluste
 
 // Summary:
 //
-// Retrieves the designation information for a job.
+// Retrieves the information about a specified machine.
 //
 // @param request - GetDesigateInfoRequest
 //
@@ -2028,7 +2032,7 @@ func (client *Client) GetDesigateInfoWithOptions(request *GetDesigateInfoRequest
 
 // Summary:
 //
-// Retrieves the designation information for a job.
+// Retrieves the information about a specified machine.
 //
 // @param request - GetDesigateInfoRequest
 //
@@ -2206,17 +2210,17 @@ func (client *Client) GetJobExecution(request *GetJobExecutionRequest) (_result 
 
 // Summary:
 //
-// Gets the details of a sharding task execution.
+// Retrieves the execution details of a sharding task.
 //
 // Description:
 //
-// # Add the enhancement plugin
+// # Import the enhanced plugin
 //
-// Add the Enhancement Plugin to your `pom.xml` file to enhance the capabilities of the Executor.
+// Add the enhanced plugin to the `pom.xml` file to improve the capabilities of the Executor.
 //
-// **Note**: Place this plugin **above*	- the `xxl-job-core` dependency in your pom.xml.
+// **Note**: Make sure this plugin is placed **above*	- the `xxl-job-core` dependency in the pom file.
 //
-// **See also**: [Plugin Release Notes](https://help.aliyun.com/zh/schedulerx/schedulerx-xxljob/product-overview/plugin-version-description)
+// **For more information, refer to**: [Plugin version description](https://www.alibabacloud.com/help/en/schedulerx/schedulerx-xxljob/product-overview/plugin-version-description)
 //
 // @param request - GetJobExecutionProgressRequest
 //
@@ -2256,17 +2260,17 @@ func (client *Client) GetJobExecutionProgressWithOptions(request *GetJobExecutio
 
 // Summary:
 //
-// Gets the details of a sharding task execution.
+// Retrieves the execution details of a sharding task.
 //
 // Description:
 //
-// # Add the enhancement plugin
+// # Import the enhanced plugin
 //
-// Add the Enhancement Plugin to your `pom.xml` file to enhance the capabilities of the Executor.
+// Add the enhanced plugin to the `pom.xml` file to improve the capabilities of the Executor.
 //
-// **Note**: Place this plugin **above*	- the `xxl-job-core` dependency in your pom.xml.
+// **Note**: Make sure this plugin is placed **above*	- the `xxl-job-core` dependency in the pom file.
 //
-// **See also**: [Plugin Release Notes](https://help.aliyun.com/zh/schedulerx/schedulerx-xxljob/product-overview/plugin-version-description)
+// **For more information, refer to**: [Plugin version description](https://www.alibabacloud.com/help/en/schedulerx/schedulerx-xxljob/product-overview/plugin-version-description)
 //
 // @param request - GetJobExecutionProgressRequest
 //
@@ -2875,6 +2879,103 @@ func (client *Client) GetWorkflowExecutionDAG(request *GetWorkflowExecutionDAGRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetWorkflowExecutionDAGResponse{}
 	_body, _err := client.GetWorkflowExecutionDAGWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 导入agent中的定时任务到scheduler平台（SSE），该接口禁止使用xxljob的clusterid调用，不支持XXLJOB相关集群，这个接口仅限AI任务调度集群使用。
+//
+// Description:
+//
+// 导入agent中的定时任务到scheduler平台（SSE），该接口禁止使用xxljob的clusterid调用，不支持XXLJOB相关集群，这个接口仅限AI任务调度集群使用。
+//
+// @param request - ImportAgentJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImportAgentJobsResponse
+func (client *Client) ImportAgentJobsWithSSE(request *ImportAgentJobsRequest, runtime *dara.RuntimeOptions, _yield chan *ImportAgentJobsResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.importAgentJobsWithSSE_opYieldFunc(_yield, _yieldErr, request, runtime)
+	return
+}
+
+// Summary:
+//
+// 导入agent中的定时任务到scheduler平台（SSE），该接口禁止使用xxljob的clusterid调用，不支持XXLJOB相关集群，这个接口仅限AI任务调度集群使用。
+//
+// Description:
+//
+// 导入agent中的定时任务到scheduler平台（SSE），该接口禁止使用xxljob的clusterid调用，不支持XXLJOB相关集群，这个接口仅限AI任务调度集群使用。
+//
+// @param request - ImportAgentJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImportAgentJobsResponse
+func (client *Client) ImportAgentJobsWithOptions(request *ImportAgentJobsRequest, runtime *dara.RuntimeOptions) (_result *ImportAgentJobsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		body["AgentName"] = request.AgentName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.MigrateStrategy) {
+		body["MigrateStrategy"] = request.MigrateStrategy
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ImportAgentJobs"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ImportAgentJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 导入agent中的定时任务到scheduler平台（SSE），该接口禁止使用xxljob的clusterid调用，不支持XXLJOB相关集群，这个接口仅限AI任务调度集群使用。
+//
+// Description:
+//
+// 导入agent中的定时任务到scheduler平台（SSE），该接口禁止使用xxljob的clusterid调用，不支持XXLJOB相关集群，这个接口仅限AI任务调度集群使用。
+//
+// @param request - ImportAgentJobsRequest
+//
+// @return ImportAgentJobsResponse
+func (client *Client) ImportAgentJobs(request *ImportAgentJobsRequest) (_result *ImportAgentJobsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ImportAgentJobsResponse{}
+	_body, _err := client.ImportAgentJobsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3748,7 +3849,7 @@ func (client *Client) ListExecutorGroup(request *ListExecutorGroupRequest) (_res
 
 // Summary:
 //
-// Lists executors.
+// Queries the list of executors.
 //
 // @param request - ListExecutorsRequest
 //
@@ -3788,7 +3889,7 @@ func (client *Client) ListExecutorsWithOptions(request *ListExecutorsRequest, ru
 
 // Summary:
 //
-// Lists executors.
+// Queries the list of executors.
 //
 // @param request - ListExecutorsRequest
 //
@@ -3806,7 +3907,7 @@ func (client *Client) ListExecutors(request *ListExecutorsRequest) (_result *Lis
 
 // Summary:
 //
-// Returns a list of task instances.
+// Retrieves a list of job instances.
 //
 // @param request - ListJobExecutionsRequest
 //
@@ -3890,7 +3991,7 @@ func (client *Client) ListJobExecutionsWithOptions(request *ListJobExecutionsReq
 
 // Summary:
 //
-// Returns a list of task instances.
+// Retrieves a list of job instances.
 //
 // @param request - ListJobExecutionsRequest
 //
@@ -3986,7 +4087,7 @@ func (client *Client) ListJobScriptHistory(request *ListJobScriptHistoryRequest)
 
 // Summary:
 //
-// Returns a task list.
+// Retrieves a list of jobs.
 //
 // @param request - ListJobsRequest
 //
@@ -4066,7 +4167,7 @@ func (client *Client) ListJobsWithOptions(request *ListJobsRequest, runtime *dar
 
 // Summary:
 //
-// Returns a task list.
+// Retrieves a list of jobs.
 //
 // @param request - ListJobsRequest
 //
@@ -4880,7 +4981,7 @@ func (client *Client) OperateConnectDatasource(request *OperateConnectDatasource
 
 // Summary:
 //
-// Designates one or more executors for a job.
+// Specifies the executor.
 //
 // @param tmpReq - OperateDesignateExecutorsRequest
 //
@@ -4903,6 +5004,10 @@ func (client *Client) OperateDesignateExecutorsWithOptions(tmpReq *OperateDesign
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AddressListShrink) {
 		body["AddressList"] = request.AddressListShrink
+	}
+
+	if !dara.IsNil(request.AppGroupId) {
+		body["AppGroupId"] = request.AppGroupId
 	}
 
 	if !dara.IsNil(request.AppName) {
@@ -4950,7 +5055,7 @@ func (client *Client) OperateDesignateExecutorsWithOptions(tmpReq *OperateDesign
 
 // Summary:
 //
-// Designates one or more executors for a job.
+// Specifies the executor.
 //
 // @param request - OperateDesignateExecutorsRequest
 //
@@ -4968,7 +5073,7 @@ func (client *Client) OperateDesignateExecutors(request *OperateDesignateExecuto
 
 // Summary:
 //
-// Disables multiple jobs.
+// Disables nodes in batches.
 //
 // @param tmpReq - OperateDisableJobsRequest
 //
@@ -4989,6 +5094,10 @@ func (client *Client) OperateDisableJobsWithOptions(tmpReq *OperateDisableJobsRe
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppGroupId) {
+		body["AppGroupId"] = request.AppGroupId
+	}
+
 	if !dara.IsNil(request.AppName) {
 		body["AppName"] = request.AppName
 	}
@@ -5026,7 +5135,7 @@ func (client *Client) OperateDisableJobsWithOptions(tmpReq *OperateDisableJobsRe
 
 // Summary:
 //
-// Disables multiple jobs.
+// Disables nodes in batches.
 //
 // @param request - OperateDisableJobsRequest
 //
@@ -5128,7 +5237,7 @@ func (client *Client) OperateDisableWorkflows(request *OperateDisableWorkflowsRe
 
 // Summary:
 //
-// Enables multiple jobs in a batch.
+// Starts nodes in batches.
 //
 // @param tmpReq - OperateEnableJobsRequest
 //
@@ -5149,6 +5258,10 @@ func (client *Client) OperateEnableJobsWithOptions(tmpReq *OperateEnableJobsRequ
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppGroupId) {
+		body["AppGroupId"] = request.AppGroupId
+	}
+
 	if !dara.IsNil(request.AppName) {
 		body["AppName"] = request.AppName
 	}
@@ -5186,7 +5299,7 @@ func (client *Client) OperateEnableJobsWithOptions(tmpReq *OperateEnableJobsRequ
 
 // Summary:
 //
-// Enables multiple jobs in a batch.
+// Starts nodes in batches.
 //
 // @param request - OperateEnableJobsRequest
 //
@@ -5280,7 +5393,7 @@ func (client *Client) OperateEnableWorkflows(request *OperateEnableWorkflowsRequ
 
 // Summary:
 //
-// Executes a job on demand.
+// Runs a node once.
 //
 // @param request - OperateExecuteJobRequest
 //
@@ -5295,6 +5408,10 @@ func (client *Client) OperateExecuteJobWithOptions(request *OperateExecuteJobReq
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppGroupId) {
+		body["AppGroupId"] = request.AppGroupId
+	}
+
 	if !dara.IsNil(request.AppName) {
 		body["AppName"] = request.AppName
 	}
@@ -5344,7 +5461,7 @@ func (client *Client) OperateExecuteJobWithOptions(request *OperateExecuteJobReq
 
 // Summary:
 //
-// Executes a job on demand.
+// Runs a node once.
 //
 // @param request - OperateExecuteJobRequest
 //
@@ -5720,7 +5837,7 @@ func (client *Client) OperateMarkSuccessWorkflowExecution(request *OperateMarkSu
 
 // Summary:
 //
-// Reruns historical data for a job within a specified time range.
+// Reruns historical data for a node.
 //
 // @param request - OperateRerunJobRequest
 //
@@ -5735,6 +5852,10 @@ func (client *Client) OperateRerunJobWithOptions(request *OperateRerunJobRequest
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
 	if !dara.IsNil(request.AppName) {
 		query["AppName"] = request.AppName
 	}
@@ -5784,7 +5905,7 @@ func (client *Client) OperateRerunJobWithOptions(request *OperateRerunJobRequest
 
 // Summary:
 //
-// Reruns historical data for a job within a specified time range.
+// Reruns historical data for a node.
 //
 // @param request - OperateRerunJobRequest
 //
@@ -5802,7 +5923,7 @@ func (client *Client) OperateRerunJob(request *OperateRerunJobRequest) (_result 
 
 // Summary:
 //
-// Retries a failed Job Instance.
+// Reruns a failed job instance.
 //
 // @param tmpReq - OperateRetryJobExecutionRequest
 //
@@ -5823,6 +5944,10 @@ func (client *Client) OperateRetryJobExecutionWithOptions(tmpReq *OperateRetryJo
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppGroupId) {
+		query["AppGroupId"] = request.AppGroupId
+	}
+
 	if !dara.IsNil(request.AppName) {
 		query["AppName"] = request.AppName
 	}
@@ -5868,7 +5993,7 @@ func (client *Client) OperateRetryJobExecutionWithOptions(tmpReq *OperateRetryJo
 
 // Summary:
 //
-// Retries a failed Job Instance.
+// Reruns a failed job instance.
 //
 // @param request - OperateRetryJobExecutionRequest
 //
@@ -6030,7 +6155,7 @@ func (client *Client) OperateSkipJobExecution(request *OperateSkipJobExecutionRe
 
 // Summary:
 //
-// Stops a running Job Execution.
+// Stops a running task instance.
 //
 // @param tmpReq - OperateStopJobExecutionRequest
 //
@@ -6051,6 +6176,10 @@ func (client *Client) OperateStopJobExecutionWithOptions(tmpReq *OperateStopJobE
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppGroupId) {
+		query["AppGroupId"] = request.AppGroupId
+	}
+
 	if !dara.IsNil(request.AppName) {
 		query["AppName"] = request.AppName
 	}
@@ -6092,7 +6221,7 @@ func (client *Client) OperateStopJobExecutionWithOptions(tmpReq *OperateStopJobE
 
 // Summary:
 //
-// Stops a running Job Execution.
+// Stops a running task instance.
 //
 // @param request - OperateStopJobExecutionRequest
 //
@@ -7129,6 +7258,10 @@ func (client *Client) UpdateJobWithOptions(tmpReq *UpdateJobRequest, runtime *da
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppGroupId) {
+		body["AppGroupId"] = request.AppGroupId
+	}
+
 	if !dara.IsNil(request.AppName) {
 		body["AppName"] = request.AppName
 	}
@@ -7684,4 +7817,60 @@ func (client *Client) UpdateWorkflowDAGVersion(request *UpdateWorkflowDAGVersion
 	}
 	_result = _body
 	return _result, _err
+}
+
+func (client *Client) importAgentJobsWithSSE_opYieldFunc(_yield chan *ImportAgentJobsResponse, _yieldErr chan error, request *ImportAgentJobsRequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		body["AgentName"] = request.AgentName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.MigrateStrategy) {
+		body["MigrateStrategy"] = request.MigrateStrategy
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ImportAgentJobs"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
 }
