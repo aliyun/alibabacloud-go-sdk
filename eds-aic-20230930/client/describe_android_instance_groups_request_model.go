@@ -29,6 +29,10 @@ type iDescribeAndroidInstanceGroupsRequest interface {
 	GetPolicyGroupId() *string
 	SetSaleMode(v string) *DescribeAndroidInstanceGroupsRequest
 	GetSaleMode() *string
+	SetSortKey(v string) *DescribeAndroidInstanceGroupsRequest
+	GetSortKey() *string
+	SetSortType(v string) *DescribeAndroidInstanceGroupsRequest
+	GetSortType() *string
 	SetStatus(v string) *DescribeAndroidInstanceGroupsRequest
 	GetStatus() *string
 	SetTags(v []*DescribeAndroidInstanceGroupsRequestTags) *DescribeAndroidInstanceGroupsRequest
@@ -44,7 +48,7 @@ type DescribeAndroidInstanceGroupsRequest struct {
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
 	// The billing type.
 	//
-	// [_single.params.ChargeType.enum. PrePaid]Subscription.
+	// [_single.params.ChargeType.enum. PrePaid]subscription
 	//
 	// example:
 	//
@@ -71,7 +75,7 @@ type DescribeAndroidInstanceGroupsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that indicates the position from which the current read operation starts. Leave this parameter empty to read from the beginning.
+	// The pagination token that indicates the position from which to start reading. An empty value indicates reading from the beginning.
 	//
 	// example:
 	//
@@ -89,6 +93,8 @@ type DescribeAndroidInstanceGroupsRequest struct {
 	//
 	// standard
 	SaleMode *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
+	SortKey  *string `json:"SortKey,omitempty" xml:"SortKey,omitempty"`
+	SortType *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
 	// The instance group status.
 	//
 	// example:
@@ -145,6 +151,14 @@ func (s *DescribeAndroidInstanceGroupsRequest) GetPolicyGroupId() *string {
 
 func (s *DescribeAndroidInstanceGroupsRequest) GetSaleMode() *string {
 	return s.SaleMode
+}
+
+func (s *DescribeAndroidInstanceGroupsRequest) GetSortKey() *string {
+	return s.SortKey
+}
+
+func (s *DescribeAndroidInstanceGroupsRequest) GetSortType() *string {
+	return s.SortType
 }
 
 func (s *DescribeAndroidInstanceGroupsRequest) GetStatus() *string {
@@ -205,6 +219,16 @@ func (s *DescribeAndroidInstanceGroupsRequest) SetSaleMode(v string) *DescribeAn
 	return s
 }
 
+func (s *DescribeAndroidInstanceGroupsRequest) SetSortKey(v string) *DescribeAndroidInstanceGroupsRequest {
+	s.SortKey = &v
+	return s
+}
+
+func (s *DescribeAndroidInstanceGroupsRequest) SetSortType(v string) *DescribeAndroidInstanceGroupsRequest {
+	s.SortType = &v
+	return s
+}
+
 func (s *DescribeAndroidInstanceGroupsRequest) SetStatus(v string) *DescribeAndroidInstanceGroupsRequest {
 	s.Status = &v
 	return s
@@ -231,7 +255,7 @@ func (s *DescribeAndroidInstanceGroupsRequest) Validate() error {
 type DescribeAndroidInstanceGroupsRequestTags struct {
 	// The tag key. You can specify 1 to 20 tag keys.
 	//
-	// 	Notice: The tag key can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://..
+	// 	Notice: The tag key can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
 	//
 	// example:
 	//
@@ -239,7 +263,7 @@ type DescribeAndroidInstanceGroupsRequestTags struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
 	//
-	// 	Notice: The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`..
+	// 	Notice: The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

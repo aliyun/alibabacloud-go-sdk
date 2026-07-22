@@ -22,23 +22,23 @@ type iDescribeCloudPhoneNodesResponseBody interface {
 }
 
 type DescribeCloudPhoneNodesResponseBody struct {
-	// The maximum number of entries returned on each page.
+	// The maximum number of entries per page for a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token used to start the next query. Valid values:
+	// Indicates whether a next pagination token exists. Valid values:
 	//
-	// - If **NextToken*	- is empty, there are no more results.
+	// - If **NextToken*	- is empty, no next query exists.
 	//
-	// - If **NextToken*	- has a value, it indicates the token for the next query.
+	// - If **NextToken*	- has a value, the value is the token for the next query.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6kU+SQXzm0H9mu/FiSc****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The details of the Cloud Phone matrices.
+	// The details of the cloud phone matrix.
 	NodeModel []*DescribeCloudPhoneNodesResponseBodyNodeModel `json:"NodeModel,omitempty" xml:"NodeModel,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -121,13 +121,19 @@ func (s *DescribeCloudPhoneNodesResponseBody) Validate() error {
 }
 
 type DescribeCloudPhoneNodesResponseBodyNodeModel struct {
-	// The ID of the bandwidth plan.
+	// The bandwidth plan ID.
 	//
 	// example:
 	//
 	// cbwp-7xvrl7axet2qg6yia******
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// The status of the bandwidth plan: 0 indicates initializing, 1 indicates normal, and 2 indicates deleted.
+	// The status of the bandwidth plan. Valid values:
+	//
+	// - 0: initializing
+	//
+	// - 1: normal
+	//
+	// - 2: deleted
 	//
 	// example:
 	//
@@ -139,9 +145,9 @@ type DescribeCloudPhoneNodesResponseBodyNodeModel struct {
 	//
 	// cbwp_ecd
 	BandwidthPackageType *string `json:"BandwidthPackageType,omitempty" xml:"BandwidthPackageType,omitempty"`
-	// An array of tag information.
+	// The array of tag information.
 	BizTags []*DescribeCloudPhoneNodesResponseBodyNodeModelBizTags `json:"BizTags,omitempty" xml:"BizTags,omitempty" type:"Repeated"`
-	// The billing method.
+	// The billing type.
 	//
 	// example:
 	//
@@ -159,13 +165,13 @@ type DescribeCloudPhoneNodesResponseBodyNodeModel struct {
 	//
 	// 2024-11-13 02:03:14
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The expiration time of the subscription-based matrix.
+	// The expiration time of the subscription matrix.
 	//
 	// example:
 	//
 	// 2025-03-09 02:00:34
 	GmtExpired *string `json:"GmtExpired,omitempty" xml:"GmtExpired,omitempty"`
-	// The last modification time.
+	// The time when the matrix was last modified.
 	//
 	// example:
 	//
@@ -189,7 +195,7 @@ type DescribeCloudPhoneNodesResponseBodyNodeModel struct {
 	//
 	// cn-hangzhou+dir-5mwr9azebliva****
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	// The network information.
+	// The network-related information.
 	NetworkInfos []*DescribeCloudPhoneNodesResponseBodyNodeModelNetworkInfos `json:"NetworkInfos,omitempty" xml:"NetworkInfos,omitempty" type:"Repeated"`
 	// The network type of the instance.
 	//
@@ -197,25 +203,25 @@ type DescribeCloudPhoneNodesResponseBodyNodeModel struct {
 	//
 	// network_pro_ecd
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The Cloud Phone matrix ID.
+	// The cloud phone matrix ID.
 	//
 	// example:
 	//
 	// cpn-ehs0yoedq8ntm****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The name of the Cloud Phone matrix.
+	// The name of the cloud phone matrix.
 	//
 	// example:
 	//
 	// node_name
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The number of instances in the Cloud Phone matrix.
+	// The number of instances provisioned under the cloud phone matrix.
 	//
 	// example:
 	//
 	// 25
 	PhoneCount *int32 `json:"PhoneCount,omitempty" xml:"PhoneCount,omitempty"`
-	// The information about the independent phone storage.
+	// The independent device storage information.
 	PhoneDataInfo *DescribeCloudPhoneNodesResponseBodyNodeModelPhoneDataInfo `json:"PhoneDataInfo,omitempty" xml:"PhoneDataInfo,omitempty" type:"Struct"`
 	// The region ID.
 	//
@@ -235,19 +241,19 @@ type DescribeCloudPhoneNodesResponseBodyNodeModel struct {
 	//
 	// 720
 	ResolutionWidth *int32 `json:"ResolutionWidth,omitempty" xml:"ResolutionWidth,omitempty"`
-	// The instance type of the Cloud Phone matrix.
+	// The specifications of the cloud phone matrix.
 	//
 	// example:
 	//
 	// cpm.gx7.10xlarge
 	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
-	// The size of the shared phone storage. Unit: GiB.
+	// The size of the shared device storage. Unit: GiB.
 	//
 	// example:
 	//
 	// 100
 	ShareDataVolume *int32 `json:"ShareDataVolume,omitempty" xml:"ShareDataVolume,omitempty"`
-	// The status of the Cloud Phone matrix.
+	// The status of the cloud phone matrix.
 	//
 	// example:
 	//
@@ -596,7 +602,7 @@ func (s *DescribeCloudPhoneNodesResponseBodyNodeModelBizTags) Validate() error {
 }
 
 type DescribeCloudPhoneNodesResponseBodyNodeModelNetworkInfos struct {
-	// The ID of the bandwidth plan instance.
+	// The instance ID of the bandwidth plan.
 	//
 	// example:
 	//
@@ -620,7 +626,7 @@ type DescribeCloudPhoneNodesResponseBodyNodeModelNetworkInfos struct {
 	//
 	// network_pro_ecd
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The ID of the vSwitch in the virtual private cloud (VPC).
+	// The vSwitch ID in the VPC.
 	//
 	// example:
 	//
@@ -686,13 +692,13 @@ func (s *DescribeCloudPhoneNodesResponseBodyNodeModelNetworkInfos) Validate() er
 }
 
 type DescribeCloudPhoneNodesResponseBodyNodeModelPhoneDataInfo struct {
-	// The ID of the independent phone storage.
+	// The ID of the independent device storage.
 	//
 	// example:
 	//
 	// pd-dhusabisshj****
 	PhoneDataId *string `json:"PhoneDataId,omitempty" xml:"PhoneDataId,omitempty"`
-	// The size of the independent phone storage. Unit: GiB.
+	// The storage capacity of the independent device storage. Unit: GiB.
 	//
 	// example:
 	//

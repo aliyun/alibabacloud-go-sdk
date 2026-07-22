@@ -2086,6 +2086,94 @@ func (client *Client) CreatePolicyGroup(request *CreatePolicyGroupRequest) (_res
 
 // Summary:
 //
+// 创建定时任务
+//
+// @param tmpReq - CreateScheduledTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateScheduledTaskResponse
+func (client *Client) CreateScheduledTaskWithOptions(tmpReq *CreateScheduledTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateScheduledTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateScheduledTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.RunConfig) {
+		request.RunConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RunConfig, dara.String("RunConfig"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CronExpression) {
+		query["CronExpression"] = request.CronExpression
+	}
+
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !dara.IsNil(request.MaxExecutions) {
+		query["MaxExecutions"] = request.MaxExecutions
+	}
+
+	if !dara.IsNil(request.RunConfigShrink) {
+		query["RunConfig"] = request.RunConfigShrink
+	}
+
+	if !dara.IsNil(request.TaskName) {
+		query["TaskName"] = request.TaskName
+	}
+
+	if !dara.IsNil(request.UserPrompt) {
+		query["UserPrompt"] = request.UserPrompt
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateScheduledTask"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateScheduledTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建定时任务
+//
+// @param request - CreateScheduledTaskRequest
+//
+// @return CreateScheduledTaskResponse
+func (client *Client) CreateScheduledTask(request *CreateScheduledTaskRequest) (_result *CreateScheduledTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateScheduledTaskResponse{}
+	_body, _err := client.CreateScheduledTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // This asynchronous API operation generates a screenshot of a cloud phone.
 //
 // Description:
@@ -2798,6 +2886,68 @@ func (client *Client) DeletePolicyGroup(request *DeletePolicyGroupRequest) (_res
 
 // Summary:
 //
+// Deletes an agent scheduled task.
+//
+// @param request - DeleteScheduledTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteScheduledTaskResponse
+func (client *Client) DeleteScheduledTaskWithOptions(request *DeleteScheduledTaskRequest, runtime *dara.RuntimeOptions) (_result *DeleteScheduledTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ScheduledId) {
+		query["ScheduledId"] = request.ScheduledId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteScheduledTask"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteScheduledTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an agent scheduled task.
+//
+// @param request - DeleteScheduledTaskRequest
+//
+// @return DeleteScheduledTaskResponse
+func (client *Client) DeleteScheduledTask(request *DeleteScheduledTaskRequest) (_result *DeleteScheduledTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteScheduledTaskResponse{}
+	_body, _err := client.DeleteScheduledTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes system property templates.
 //
 // Description:
@@ -2930,7 +3080,7 @@ func (client *Client) DescribeAgentTask(request *DescribeAgentTaskRequest) (_res
 
 // Summary:
 //
-// Queries the details of a cloud phone instance group.
+// Queries the details of cloud phone instance groups.
 //
 // @param request - DescribeAndroidInstanceGroupsRequest
 //
@@ -2985,6 +3135,14 @@ func (client *Client) DescribeAndroidInstanceGroupsWithOptions(request *Describe
 		query["SaleMode"] = request.SaleMode
 	}
 
+	if !dara.IsNil(request.SortKey) {
+		query["SortKey"] = request.SortKey
+	}
+
+	if !dara.IsNil(request.SortType) {
+		query["SortType"] = request.SortType
+	}
+
 	if !dara.IsNil(request.Status) {
 		query["Status"] = request.Status
 	}
@@ -3018,7 +3176,7 @@ func (client *Client) DescribeAndroidInstanceGroupsWithOptions(request *Describe
 
 // Summary:
 //
-// Queries the details of a cloud phone instance group.
+// Queries the details of cloud phone instance groups.
 //
 // @param request - DescribeAndroidInstanceGroupsRequest
 //
@@ -3472,9 +3630,9 @@ func (client *Client) DescribeBuckets(request *DescribeBucketsRequest) (_result 
 
 // Summary:
 //
-// Queries the details of Cloud Phone matrices.
+// Queries the details of a cloud phone matrix.
 //
-// In the Cloud Phone service, a matrix (Cloud Phone Server) is a logical resource management unit that represents a physical server instance. This physical server can be partitioned into multiple independent Cloud Phone instances that share the underlying computing, storage, and network resources of the matrix. Creating a matrix is equivalent to provisioning a physical server on which you can create Cloud Phone instances. The number of instances that you can create varies depending on the configuration.
+// In the Wuying Cloud Phone system, a matrix (Cloud Phone Server) is a logical resource snap-in that represents a physical server instance. The physical server can be divided into multiple independently running cloud phone instances that share the underlying compute, storage, and network resources of the matrix. Creating a matrix is equivalent to obtaining a physical server on which you can create cloud phone instances. The number of cloud phone instances that can be created varies depending on the configuration.
 //
 // @param request - DescribeCloudPhoneNodesRequest
 //
@@ -3525,6 +3683,14 @@ func (client *Client) DescribeCloudPhoneNodesWithOptions(request *DescribeCloudP
 		query["ServerType"] = request.ServerType
 	}
 
+	if !dara.IsNil(request.SortKey) {
+		query["SortKey"] = request.SortKey
+	}
+
+	if !dara.IsNil(request.SortType) {
+		query["SortType"] = request.SortType
+	}
+
 	if !dara.IsNil(request.Status) {
 		query["Status"] = request.Status
 	}
@@ -3558,9 +3724,9 @@ func (client *Client) DescribeCloudPhoneNodesWithOptions(request *DescribeCloudP
 
 // Summary:
 //
-// Queries the details of Cloud Phone matrices.
+// Queries the details of a cloud phone matrix.
 //
-// In the Cloud Phone service, a matrix (Cloud Phone Server) is a logical resource management unit that represents a physical server instance. This physical server can be partitioned into multiple independent Cloud Phone instances that share the underlying computing, storage, and network resources of the matrix. Creating a matrix is equivalent to provisioning a physical server on which you can create Cloud Phone instances. The number of instances that you can create varies depending on the configuration.
+// In the Wuying Cloud Phone system, a matrix (Cloud Phone Server) is a logical resource snap-in that represents a physical server instance. The physical server can be divided into multiple independently running cloud phone instances that share the underlying compute, storage, and network resources of the matrix. Creating a matrix is equivalent to obtaining a physical server on which you can create cloud phone instances. The number of cloud phone instances that can be created varies depending on the configuration.
 //
 // @param request - DescribeCloudPhoneNodesRequest
 //
@@ -4603,6 +4769,182 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeRegionsResponse{}
 	_body, _err := client.DescribeRegionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the execution records of agent scheduled tasks.
+//
+// @param request - DescribeScheduledTaskExecutionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeScheduledTaskExecutionsResponse
+func (client *Client) DescribeScheduledTaskExecutionsWithOptions(request *DescribeScheduledTaskExecutionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeScheduledTaskExecutionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.ScheduledId) {
+		query["ScheduledId"] = request.ScheduledId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeScheduledTaskExecutions"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeScheduledTaskExecutionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the execution records of agent scheduled tasks.
+//
+// @param request - DescribeScheduledTaskExecutionsRequest
+//
+// @return DescribeScheduledTaskExecutionsResponse
+func (client *Client) DescribeScheduledTaskExecutions(request *DescribeScheduledTaskExecutionsRequest) (_result *DescribeScheduledTaskExecutionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeScheduledTaskExecutionsResponse{}
+	_body, _err := client.DescribeScheduledTaskExecutionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of scheduled tasks for an agent.
+//
+// @param request - DescribeScheduledTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeScheduledTasksResponse
+func (client *Client) DescribeScheduledTasksWithOptions(request *DescribeScheduledTasksRequest, runtime *dara.RuntimeOptions) (_result *DescribeScheduledTasksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ScheduledIds) {
+		query["ScheduledIds"] = request.ScheduledIds
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TaskName) {
+		query["TaskName"] = request.TaskName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeScheduledTasks"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeScheduledTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of scheduled tasks for an agent.
+//
+// @param request - DescribeScheduledTasksRequest
+//
+// @return DescribeScheduledTasksResponse
+func (client *Client) DescribeScheduledTasks(request *DescribeScheduledTasksRequest) (_result *DescribeScheduledTasksResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeScheduledTasksResponse{}
+	_body, _err := client.DescribeScheduledTasksWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7105,6 +7447,102 @@ func (client *Client) ModifyPolicyGroup(request *ModifyPolicyGroupRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &ModifyPolicyGroupResponse{}
 	_body, _err := client.ModifyPolicyGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies an agent scheduled task.
+//
+// @param tmpReq - ModifyScheduledTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyScheduledTaskResponse
+func (client *Client) ModifyScheduledTaskWithOptions(tmpReq *ModifyScheduledTaskRequest, runtime *dara.RuntimeOptions) (_result *ModifyScheduledTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ModifyScheduledTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.RunConfig) {
+		request.RunConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RunConfig, dara.String("RunConfig"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CronExpression) {
+		query["CronExpression"] = request.CronExpression
+	}
+
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !dara.IsNil(request.RunConfigShrink) {
+		query["RunConfig"] = request.RunConfigShrink
+	}
+
+	if !dara.IsNil(request.ScheduledId) {
+		query["ScheduledId"] = request.ScheduledId
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TaskName) {
+		query["TaskName"] = request.TaskName
+	}
+
+	if !dara.IsNil(request.TaskVersion) {
+		query["TaskVersion"] = request.TaskVersion
+	}
+
+	if !dara.IsNil(request.UserPrompt) {
+		query["UserPrompt"] = request.UserPrompt
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyScheduledTask"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyScheduledTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies an agent scheduled task.
+//
+// @param request - ModifyScheduledTaskRequest
+//
+// @return ModifyScheduledTaskResponse
+func (client *Client) ModifyScheduledTask(request *ModifyScheduledTaskRequest) (_result *ModifyScheduledTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyScheduledTaskResponse{}
+	_body, _err := client.ModifyScheduledTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

@@ -20,9 +20,9 @@ type iDescribeAndroidInstanceGroupsResponseBody interface {
 }
 
 type DescribeAndroidInstanceGroupsResponseBody struct {
-	// The details of the instance group.
+	// The details of the instance groups.
 	InstanceGroupModel []*DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel `json:"InstanceGroupModel,omitempty" xml:"InstanceGroupModel,omitempty" type:"Repeated"`
-	// The pagination token that indicates the position where the current call returns. An empty value indicates that all data has been read.
+	// The pagination token that indicates the position up to which data has been read in the current call. An empty value indicates that all data has been read.
 	//
 	// example:
 	//
@@ -112,9 +112,9 @@ type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel struct {
 	//
 	// ARM
 	ArchitectureType *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
-	// The number of active instances.
+	// The number of available instances.
 	//
-	// > An instance is considered active if its instance status is not "Deleting" or "Deleted".
+	// > Available means the instance status is not "being deleted" or "deleted".
 	//
 	// example:
 	//
@@ -152,7 +152,7 @@ type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel struct {
 	//
 	// cbwp_ecd
 	BandwidthPackageType *string `json:"BandwidthPackageType,omitempty" xml:"BandwidthPackageType,omitempty"`
-	// The public network bandwidth throttling rules for the instance group.
+	// The public network bandwidth limit rules for the instance group.
 	BindQosRules *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRules `json:"BindQosRules,omitempty" xml:"BindQosRules,omitempty" type:"Struct"`
 	Channel      *string                                                                  `json:"Channel,omitempty" xml:"Channel,omitempty"`
 	// The billing method.
@@ -261,7 +261,7 @@ type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel struct {
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	// The network type of the instance.
 	//
-	// > This field is returned only for instance groups with a standard network.
+	// > This field is returned only for instance groups with standard networking.
 	//
 	// example:
 	//
@@ -292,7 +292,7 @@ type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The rendering type of the instance group.
+	// The rendering method of the instance group.
 	//
 	// example:
 	//
@@ -734,9 +734,9 @@ func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) Validate()
 }
 
 type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRules struct {
-	// The public network bandwidth throttling rules bound to the instance.
+	// The public network bandwidth limit rule bound to the instance.
 	InstanceQosRule []*DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesInstanceQosRule `json:"InstanceQosRule,omitempty" xml:"InstanceQosRule,omitempty" type:"Repeated"`
-	// The total number of public network bandwidth throttling rules for the instance group.
+	// The total number of public network bandwidth limit rules for the instance group.
 	//
 	// example:
 	//
@@ -790,7 +790,7 @@ type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesInst
 	//
 	// acp-h3m8b5dusopp5****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the public network bandwidth throttling rule. This rule applies only to premium bandwidth.
+	// The ID of the public network bandwidth limit rule (applies only to premium bandwidth).
 	//
 	// example:
 	//
@@ -829,7 +829,7 @@ func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRules
 }
 
 type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelDisks struct {
-	// The disk size, in GB.
+	// The disk size (unit: GB).
 	//
 	// example:
 	//

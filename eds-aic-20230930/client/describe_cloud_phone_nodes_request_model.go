@@ -27,6 +27,10 @@ type iDescribeCloudPhoneNodesRequest interface {
 	GetNodeNameList() []*string
 	SetServerType(v string) *DescribeCloudPhoneNodesRequest
 	GetServerType() *string
+	SetSortKey(v string) *DescribeCloudPhoneNodesRequest
+	GetSortKey() *string
+	SetSortType(v string) *DescribeCloudPhoneNodesRequest
+	GetSortType() *string
 	SetStatus(v string) *DescribeCloudPhoneNodesRequest
 	GetStatus() *string
 	SetTags(v []*DescribeCloudPhoneNodesRequestTags) *DescribeCloudPhoneNodesRequest
@@ -34,7 +38,7 @@ type iDescribeCloudPhoneNodesRequest interface {
 }
 
 type DescribeCloudPhoneNodesRequest struct {
-	// The ID of the bandwidth plan instance.
+	// The instance ID of the bandwidth plan.
 	//
 	// example:
 	//
@@ -46,40 +50,42 @@ type DescribeCloudPhoneNodesRequest struct {
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	// The billing method. Only the subscription billing method is supported.
+	// The billing type. Only subscription is supported.
 	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The maximum number of entries to return on each page for a paged query. The maximum value is 100. The default value is 20.
+	// The maximum number of entries per page for a paged query. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query. If a query does not return all results, NextToken is not empty. Use the returned NextToken in your next query to continue.
+	// The pagination token for the next query. If the results of a query are not completely returned, the returned NextToken is not empty. You can pass the returned NextToken in the next request to continue the query.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6l5V9uONHqPtDLM2U8s****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// A list of Cloud Phone matrix IDs.
+	// The list of cloud phone matrix IDs.
 	NodeIds []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
-	// The name of the Cloud Phone matrix.
+	// The name of the cloud phone matrix.
 	//
 	// example:
 	//
 	// node_name
 	NodeName     *string   `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 	NodeNameList []*string `json:"NodeNameList,omitempty" xml:"NodeNameList,omitempty" type:"Repeated"`
-	// The instance type of the Cloud Phone matrix.
+	// The specifications of the cloud phone matrix.
 	//
 	// example:
 	//
 	// cpm.gx7.10xlarge
 	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
-	// The status of the Cloud Phone matrix.
+	SortKey    *string `json:"SortKey,omitempty" xml:"SortKey,omitempty"`
+	SortType   *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
+	// The status of the cloud phone matrix.
 	//
 	// example:
 	//
@@ -132,6 +138,14 @@ func (s *DescribeCloudPhoneNodesRequest) GetServerType() *string {
 	return s.ServerType
 }
 
+func (s *DescribeCloudPhoneNodesRequest) GetSortKey() *string {
+	return s.SortKey
+}
+
+func (s *DescribeCloudPhoneNodesRequest) GetSortType() *string {
+	return s.SortType
+}
+
 func (s *DescribeCloudPhoneNodesRequest) GetStatus() *string {
 	return s.Status
 }
@@ -182,6 +196,16 @@ func (s *DescribeCloudPhoneNodesRequest) SetNodeNameList(v []*string) *DescribeC
 
 func (s *DescribeCloudPhoneNodesRequest) SetServerType(v string) *DescribeCloudPhoneNodesRequest {
 	s.ServerType = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesRequest) SetSortKey(v string) *DescribeCloudPhoneNodesRequest {
+	s.SortKey = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesRequest) SetSortType(v string) *DescribeCloudPhoneNodesRequest {
+	s.SortType = &v
 	return s
 }
 
