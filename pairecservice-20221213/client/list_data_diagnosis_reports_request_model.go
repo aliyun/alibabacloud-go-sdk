@@ -24,32 +24,46 @@ type iListDataDiagnosisReportsRequest interface {
 }
 
 type ListDataDiagnosisReportsRequest struct {
+	// The end date.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2022-02-01
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The feature name.
+	//
 	// example:
 	//
 	// feature1
 	FeatureName *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pairec-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The retention rate report type.
+	//
+	// - Period: A report for the specified time period.
+	//
 	// example:
 	//
 	// Period
 	RemainRateType *string `json:"RemainRateType,omitempty" xml:"RemainRateType,omitempty"`
+	// The start date.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2022-01-01
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// The number of top results to return.
+	//
 	// example:
 	//
 	// 3

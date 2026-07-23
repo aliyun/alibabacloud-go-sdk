@@ -14,7 +14,7 @@ type iUpdateLayerResponseBody interface {
 }
 
 type UpdateLayerResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

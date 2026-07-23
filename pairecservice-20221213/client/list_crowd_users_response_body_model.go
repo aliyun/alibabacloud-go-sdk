@@ -18,17 +18,20 @@ type iListCrowdUsersResponseBody interface {
 }
 
 type ListCrowdUsersResponseBody struct {
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// F0AB6527-093F-5C44-B3BD-42C8C210C619
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 3
-	TotalCount *int64    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Users      []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of users.
+	Users []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
 func (s ListCrowdUsersResponseBody) String() string {

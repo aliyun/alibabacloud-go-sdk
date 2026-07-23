@@ -42,64 +42,108 @@ type iCreateExperimentGroupRequest interface {
 }
 
 type CreateExperimentGroupRequest struct {
+	// The configuration of the experiment group.
+	//
 	// example:
 	//
 	// {"RankBy": "Score"}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The ID of the crowd for crowd targeting. You can obtain this ID by calling the ListCrowds operation.
+	//
 	// example:
 	//
 	// 1
-	CrowdId         *string `json:"CrowdId,omitempty" xml:"CrowdId,omitempty"`
+	CrowdId *string `json:"CrowdId,omitempty" xml:"CrowdId,omitempty"`
+	// The crowd targeting type for the experiment group. Valid values:
+	//
+	// - `All`: All traffic
+	//
+	// - `Filter`: Traffic that matches the filter condition
+	//
+	// - `CrowdId`: Traffic from a specific crowd
+	//
+	// - `Random`: A random percentage of traffic
+	//
+	// example:
+	//
+	// All
 	CrowdTargetType *string `json:"CrowdTargetType,omitempty" xml:"CrowdTargetType,omitempty"`
+	// The ID of the debug crowd. You can obtain this ID by calling the ListCrowds operation.
+	//
 	// example:
 	//
 	// 3
 	DebugCrowdId *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
+	// The UIDs of the debug users. The value must be the UID of an Alibaba Cloud account or a RAM user. Separate multiple UIDs with a comma.
+	//
 	// example:
 	//
 	// 1124512470******,1124512471******,1124512472******
 	DebugUsers *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
+	// The description of the experiment group.
+	//
 	// example:
 	//
 	// This is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time duration for traffic distribution.
+	//
 	// example:
 	//
 	// 3
 	DistributionTimeDuration *int32 `json:"DistributionTimeDuration,omitempty" xml:"DistributionTimeDuration,omitempty"`
+	// The distribution type. Valid values: `UserId` (by user ID) and `TimeDuration` (by time duration).
+	//
 	// example:
 	//
 	// UserId
 	DistributionType *string `json:"DistributionType,omitempty" xml:"DistributionType,omitempty"`
+	// The filter condition for crowd targeting.
+	//
 	// example:
 	//
 	// gender=male
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The instance ID. You can obtain this ID by calling the ListInstances operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pairec-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the layer. You can obtain this ID by calling the ListLayers operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3
 	LayerId *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
+	// The name of the experiment group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// experiment_group_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Specifies whether to create an A/A experiment group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
-	NeedAA     *bool  `json:"NeedAA,omitempty" xml:"NeedAA,omitempty"`
+	NeedAA *bool `json:"NeedAA,omitempty" xml:"NeedAA,omitempty"`
+	// The percentage of traffic to randomly allocate to this experiment group. This parameter is used only when `CrowdTargetType` is set to `Random`. Valid values: 0 to 100.
+	//
+	// example:
+	//
+	// 20
 	RandomFlow *int64 `json:"RandomFlow,omitempty" xml:"RandomFlow,omitempty"`
+	// A comma-separated list of reserved bucket numbers.
+	//
 	// example:
 	//
 	// 1,2,3

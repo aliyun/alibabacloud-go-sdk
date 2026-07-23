@@ -46,69 +46,102 @@ type iCreateRecallManagementTableRequest interface {
 }
 
 type CreateRecallManagementTableRequest struct {
+	// Additional settings for the table.
+	//
 	// example:
 	//
 	// {"":""}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The data source.
+	//
 	// example:
 	//
 	// MaxcomputeAndApiApi
 	DataSource *string `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
+	// **The description of the table.**
+	//
 	// example:
 	//
 	// this is a test table
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Whether to enable the data size fluctuation threshold.
+	//
 	// example:
 	//
 	// true
 	EnableDataSizeFluctuationThreshold *bool `json:"EnableDataSizeFluctuationThreshold,omitempty" xml:"EnableDataSizeFluctuationThreshold,omitempty"`
+	// Whether to enable the row count fluctuation threshold.
+	//
 	// example:
 	//
 	// true
-	EnableRowCountFluctuationThreshold *bool                                       `json:"EnableRowCountFluctuationThreshold,omitempty" xml:"EnableRowCountFluctuationThreshold,omitempty"`
-	Fields                             []*CreateRecallManagementTableRequestFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	EnableRowCountFluctuationThreshold *bool `json:"EnableRowCountFluctuationThreshold,omitempty" xml:"EnableRowCountFluctuationThreshold,omitempty"`
+	// The list of fields.
+	Fields []*CreateRecallManagementTableRequestFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// **The instance ID.**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pairec-cn-test123
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The maximum data size fluctuation threshold.
+	//
 	// example:
 	//
 	// 100
 	MaxDataSizeFluctuationThreshold *int64 `json:"MaxDataSizeFluctuationThreshold,omitempty" xml:"MaxDataSizeFluctuationThreshold,omitempty"`
+	// The maximum row count fluctuation threshold.
+	//
 	// example:
 	//
 	// 100
 	MaxRowCountFluctuationThreshold *int64 `json:"MaxRowCountFluctuationThreshold,omitempty" xml:"MaxRowCountFluctuationThreshold,omitempty"`
+	// The MaxCompute project.
+	//
 	// example:
 	//
 	// test
 	MaxcomputeProjectName *string `json:"MaxcomputeProjectName,omitempty" xml:"MaxcomputeProjectName,omitempty"`
+	// **The schema in MaxCompute.**
+	//
 	// example:
 	//
 	// default
 	MaxcomputeSchema *string `json:"MaxcomputeSchema,omitempty" xml:"MaxcomputeSchema,omitempty"`
+	// The name of the table in MaxCompute.
+	//
 	// example:
 	//
 	// table-1
 	MaxcomputeTableName *string `json:"MaxcomputeTableName,omitempty" xml:"MaxcomputeTableName,omitempty"`
+	// The minimum data size fluctuation threshold.
+	//
 	// example:
 	//
 	// 10
 	MinDataSizeFluctuationThreshold *int64 `json:"MinDataSizeFluctuationThreshold,omitempty" xml:"MinDataSizeFluctuationThreshold,omitempty"`
+	// The minimum row count fluctuation threshold.
+	//
 	// example:
 	//
 	// 10
 	MinRowCountFluctuationThreshold *int64 `json:"MinRowCountFluctuationThreshold,omitempty" xml:"MinRowCountFluctuationThreshold,omitempty"`
+	// **The name of the table.**
+	//
 	// example:
 	//
 	// table-123
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The recall type of the table.
+	//
 	// example:
 	//
 	// X2I
 	RecallType *string `json:"RecallType,omitempty" xml:"RecallType,omitempty"`
+	// **The table type.**
+	//
 	// example:
 	//
 	// Recall
@@ -290,16 +323,38 @@ func (s *CreateRecallManagementTableRequest) Validate() error {
 }
 
 type CreateRecallManagementTableRequestFields struct {
+	// The attributes of the field. Valid values:
+	//
+	// - `Primary`: The primary key field.
+	//
+	// - `Item`: The item field.
+	//
+	// - `Score`: The recall score field.
+	//
+	// - `Vector`: The vector field.
+	//
+	// - `Index`: The index field.
 	Attributes []*string `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
+	// The name of the field.
+	//
 	// example:
 	//
 	// age
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The data type of the field.
+	//
+	// example:
+	//
+	// STRING(全大写)
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The vector dimension.
+	//
 	// example:
 	//
 	// 32
 	VectorDimension *int32 `json:"VectorDimension,omitempty" xml:"VectorDimension,omitempty"`
+	// The vector metric type.
+	//
 	// example:
 	//
 	// L2

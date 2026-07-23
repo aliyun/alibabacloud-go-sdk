@@ -18,11 +18,16 @@ type iListDataDiagnosesResponseBody interface {
 }
 
 type ListDataDiagnosesResponseBody struct {
+	// The list of data diagnoses.
 	DataDiagnoses []*ListDataDiagnosesResponseBodyDataDiagnoses `json:"DataDiagnoses,omitempty" xml:"DataDiagnoses,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 20
@@ -78,62 +83,102 @@ func (s *ListDataDiagnosesResponseBody) Validate() error {
 }
 
 type ListDataDiagnosesResponseBodyDataDiagnoses struct {
+	// The configuration for the data diagnosis task, in JSON format. The required fields depend on the `Type` value:<br>
+	//
 	// example:
 	//
 	// {"AnalysisField": "userid","PartitionFieldFormat": "yyyymmdd"}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The time at which the task is scheduled to run periodically. If this parameter is empty, the task runs only once.
+	//
 	// example:
 	//
 	// 08:00
 	CycleTime *string `json:"CycleTime,omitempty" xml:"CycleTime,omitempty"`
+	// The data diagnosis ID.
+	//
 	// example:
 	//
 	// 3
 	DataDiagnosisId *string `json:"DataDiagnosisId,omitempty" xml:"DataDiagnosisId,omitempty"`
+	// The time when the task was created.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time when the task was last updated.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The ID of the left data table.
+	//
 	// example:
 	//
 	// 4
 	LeftTableMetaId *string `json:"LeftTableMetaId,omitempty" xml:"LeftTableMetaId,omitempty"`
+	// The partition field of the left table.
+	//
 	// example:
 	//
 	// dt
 	LeftTablePartitionField *string `json:"LeftTablePartitionField,omitempty" xml:"LeftTablePartitionField,omitempty"`
+	// The name of the data diagnosis.
+	//
 	// example:
 	//
 	// data_diagnosis_job1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The partition field.
+	//
 	// example:
 	//
 	// dt
 	PartitionField *string `json:"PartitionField,omitempty" xml:"PartitionField,omitempty"`
+	// The ID of the right data table.
+	//
 	// example:
 	//
 	// 5
 	RightTableMetaId *string `json:"RightTableMetaId,omitempty" xml:"RightTableMetaId,omitempty"`
+	// The partition field of the right table.
+	//
 	// example:
 	//
 	// dt
 	RightTablePartitionField *string `json:"RightTablePartitionField,omitempty" xml:"RightTablePartitionField,omitempty"`
+	// The data table ID.
+	//
 	// example:
 	//
 	// 3
 	TableMetaId *string `json:"TableMetaId,omitempty" xml:"TableMetaId,omitempty"`
+	// The name of the data table.
+	//
 	// example:
 	//
 	// table_meta_1
 	TableMetaName *string `json:"TableMetaName,omitempty" xml:"TableMetaName,omitempty"`
+	// The number of top results to return.
+	//
 	// example:
 	//
 	// 10
 	TopNQuantity *int64 `json:"TopNQuantity,omitempty" xml:"TopNQuantity,omitempty"`
+	// The type of data diagnosis. Valid values:
+	//
+	// - `ChangeRate`: Change Rate Analysis.
+	//
+	// - `PreferenceStatisticsCycle`: Preference Statistics Cycle Analysis.
+	//
+	// - `JoinTables`: Join Tables Analysis.
+	//
+	// - `BaseStatistics`: Base Statistics Analysis.
+	//
+	// - `AbnormalBehavior`: Abnormal Behavior Analysis.
+	//
 	// example:
 	//
 	// ChangeRate

@@ -16,10 +16,14 @@ type iListScenesRequest interface {
 }
 
 type ListScenesRequest struct {
+	// The ID of the instance. You can obtain this ID by calling the `ListInstances` operation.
+	//
 	// example:
 	//
 	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the scene to use as a filter.
+	//
 	// example:
 	//
 	// scene1

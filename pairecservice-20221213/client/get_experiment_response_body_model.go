@@ -46,72 +46,104 @@ type iGetExperimentResponseBody interface {
 }
 
 type GetExperimentResponseBody struct {
+	// The alias of the experiment.
+	//
 	// example:
 	//
 	// L1#EG1#E1
 	AliasExperimentId *string `json:"AliasExperimentId,omitempty" xml:"AliasExperimentId,omitempty"`
+	// A comma-separated list of bucket numbers.
+	//
 	// example:
 	//
 	// 1,2,3
 	Buckets *string `json:"Buckets,omitempty" xml:"Buckets,omitempty"`
+	// The experiment configuration, in JSON format.
+	//
 	// example:
 	//
-	// {}
+	// {"RankBy": "Score"}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The debug crowd ID.
+	//
 	// example:
 	//
 	// 3
 	DebugCrowdId *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
+	// The UIDs of debug users, which can be the UIDs of an Alibaba Cloud main account or a RAM user. Separate multiple UIDs with a comma (,).
+	//
 	// example:
 	//
-	// uid1,uid2,uid3
+	// 1124512470******,1124512471******,1124512472******
 	DebugUsers *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
+	// The experiment description.
+	//
 	// example:
 	//
 	// This is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The experiment group ID.
+	//
 	// example:
 	//
 	// 3
 	ExperimentGroupId *string `json:"ExperimentGroupId,omitempty" xml:"ExperimentGroupId,omitempty"`
+	// The traffic percentage.
+	//
 	// example:
 	//
 	// 100
 	FlowPercent *int32 `json:"FlowPercent,omitempty" xml:"FlowPercent,omitempty"`
+	// The creation time, in ISO 8601 format.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The modification time, in ISO 8601 format.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The laboratory ID.
+	//
 	// example:
 	//
 	// 3
 	LaboratoryId *string `json:"LaboratoryId,omitempty" xml:"LaboratoryId,omitempty"`
+	// The layer ID.
+	//
 	// example:
 	//
 	// 3
 	LayerId *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
+	// The experiment name.
+	//
 	// example:
 	//
 	// experiment_test1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 74D958EF-3598-56FA-8296-FF1575CE43DF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The scene ID.
+	//
 	// example:
 	//
 	// 3
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// The status of the experiment. Valid values:<br>● Offline<br>● Online<br><br>
+	//
 	// example:
 	//
 	// Offline
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the experiment. Valid values:<br>● Baseline: a baseline experiment.<br>● Normal: a normal experiment.<br><br>
+	//
 	// example:
 	//
 	// Baseline

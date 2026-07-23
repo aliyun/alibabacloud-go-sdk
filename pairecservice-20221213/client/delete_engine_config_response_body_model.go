@@ -14,6 +14,8 @@ type iDeleteEngineConfigResponseBody interface {
 }
 
 type DeleteEngineConfigResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// F7AC05FF-EDE7-5C2B-B9AE-33D6DF4178BA

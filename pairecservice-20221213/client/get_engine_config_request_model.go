@@ -14,6 +14,8 @@ type iGetEngineConfigRequest interface {
 }
 
 type GetEngineConfigRequest struct {
+	// The instance ID. Call the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation to obtain this ID.
+	//
 	// example:
 	//
 	// pairec-cn-***test

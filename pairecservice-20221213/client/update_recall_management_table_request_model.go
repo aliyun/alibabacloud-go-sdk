@@ -30,37 +30,54 @@ type iUpdateRecallManagementTableRequest interface {
 }
 
 type UpdateRecallManagementTableRequest struct {
+	// Specifies whether to enable the data size fluctuation threshold.
+	//
 	// example:
 	//
 	// true
 	EnableDataSizeFluctuationThreshold *bool `json:"EnableDataSizeFluctuationThreshold,omitempty" xml:"EnableDataSizeFluctuationThreshold,omitempty"`
+	// Specifies whether to enable the row count fluctuation threshold.
+	//
 	// example:
 	//
 	// true
-	EnableRowCountFluctuationThreshold *bool                                     `json:"EnableRowCountFluctuationThreshold,omitempty" xml:"EnableRowCountFluctuationThreshold,omitempty"`
-	Fields                             *UpdateRecallManagementTableRequestFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Struct"`
+	EnableRowCountFluctuationThreshold *bool `json:"EnableRowCountFluctuationThreshold,omitempty" xml:"EnableRowCountFluctuationThreshold,omitempty"`
+	// A list of fields.
+	Fields *UpdateRecallManagementTableRequestFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Struct"`
+	// The version ID of the table.
+	//
 	// example:
 	//
 	// 20250701
 	IndexVersionId *string `json:"IndexVersionId,omitempty" xml:"IndexVersionId,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pairec-cn-test123
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The maximum value for the data size fluctuation threshold.
+	//
 	// example:
 	//
 	// 100
 	MaxDataSizeFluctuationThreshold *int32 `json:"MaxDataSizeFluctuationThreshold,omitempty" xml:"MaxDataSizeFluctuationThreshold,omitempty"`
+	// The maximum value for the row count fluctuation threshold.
+	//
 	// example:
 	//
 	// 100
 	MaxRowCountFluctuationThreshold *int32 `json:"MaxRowCountFluctuationThreshold,omitempty" xml:"MaxRowCountFluctuationThreshold,omitempty"`
+	// The minimum value for the data size fluctuation threshold.
+	//
 	// example:
 	//
 	// 10
 	MinDataSizeFluctuationThreshold *int32 `json:"MinDataSizeFluctuationThreshold,omitempty" xml:"MinDataSizeFluctuationThreshold,omitempty"`
+	// The minimum value for the row count fluctuation threshold.
+	//
 	// example:
 	//
 	// 10
@@ -166,16 +183,38 @@ func (s *UpdateRecallManagementTableRequest) Validate() error {
 }
 
 type UpdateRecallManagementTableRequestFields struct {
+	// Specifies the role of the field. Valid values:
+	//
+	// - `Primary`: The primary key field.
+	//
+	// - `Item`: The item field.
+	//
+	// - `Score`: The recall score field.
+	//
+	// - `Vector`: The vector field.
+	//
+	// - `Index`: The index field.
 	Attributes []*string `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
+	// The field name.
+	//
 	// example:
 	//
 	// age
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The data type of the field.
+	//
+	// example:
+	//
+	// STRING(全大写)
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The vector dimension.
+	//
 	// example:
 	//
 	// 32
 	VectorDimension *int32 `json:"VectorDimension,omitempty" xml:"VectorDimension,omitempty"`
+	// The vector metric type.
+	//
 	// example:
 	//
 	// L2

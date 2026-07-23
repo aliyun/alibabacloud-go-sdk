@@ -20,24 +20,32 @@ type iListFeatureConsistencyCheckJobFeatureReportsRequest interface {
 }
 
 type ListFeatureConsistencyCheckJobFeatureReportsRequest struct {
+	// The ID of the instance. To obtain the ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pairec-cn-********
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The item ID used for feature comparison.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 9010
 	LogItemId *string `json:"LogItemId,omitempty" xml:"LogItemId,omitempty"`
+	// The request ID used for feature comparison.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// F7AC05FF-EDE7-5C2B-B9AE-33D6DF4178BA
 	LogRequestId *string `json:"LogRequestId,omitempty" xml:"LogRequestId,omitempty"`
+	// The user ID used for feature comparison.
+	//
 	// This parameter is required.
 	//
 	// example:

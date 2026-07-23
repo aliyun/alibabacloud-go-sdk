@@ -16,10 +16,14 @@ type iPublishRecallManagementTableResponseBody interface {
 }
 
 type PublishRecallManagementTableResponseBody struct {
+	// The recall management job ID.
+	//
 	// example:
 	//
 	// 1
 	RecallManagementJobId *string `json:"RecallManagementJobId,omitempty" xml:"RecallManagementJobId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77

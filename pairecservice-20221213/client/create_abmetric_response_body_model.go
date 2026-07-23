@@ -16,10 +16,14 @@ type iCreateABMetricResponseBody interface {
 }
 
 type CreateABMetricResponseBody struct {
+	// The AB metric ID.
+	//
 	// example:
 	//
 	// 1
 	ABMetricId *string `json:"ABMetricId,omitempty" xml:"ABMetricId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F7AC05FF-EDE7-5C2B-B9AE-33D6DF4178BA

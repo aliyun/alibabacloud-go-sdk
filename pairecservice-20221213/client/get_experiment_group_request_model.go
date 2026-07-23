@@ -14,6 +14,8 @@ type iGetExperimentGroupRequest interface {
 }
 
 type GetExperimentGroupRequest struct {
+	// The ID of the instance. You can call the `ListInstances` operation to obtain this ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,10 +16,14 @@ type iCreateFeatureConsistencyCheckJobResponseBody interface {
 }
 
 type CreateFeatureConsistencyCheckJobResponseBody struct {
+	// The feature consistency check job ID.
+	//
 	// example:
 	//
 	// 4
 	FeatureConsistencyCheckJobId *string `json:"FeatureConsistencyCheckJobId,omitempty" xml:"FeatureConsistencyCheckJobId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7D59453C-48AA-5FC5-8848-2D373BD1A17F

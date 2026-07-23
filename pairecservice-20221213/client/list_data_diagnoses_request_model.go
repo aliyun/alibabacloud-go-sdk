@@ -20,21 +20,28 @@ type iListDataDiagnosesRequest interface {
 }
 
 type ListDataDiagnosesRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pairec-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Types    []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// A list of diagnosis types.
+	Types []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
 }
 
 func (s ListDataDiagnosesRequest) String() string {

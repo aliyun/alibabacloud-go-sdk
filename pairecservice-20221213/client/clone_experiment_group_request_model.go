@@ -18,18 +18,24 @@ type iCloneExperimentGroupRequest interface {
 }
 
 type CloneExperimentGroupRequest struct {
+	// The target environment for the experiment group. ● Daily: Daily environment ● Pre: pre-release environment ● Prod: production environment
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Daily
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// The instance ID. You can get this ID by calling the ListInstances operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The layer ID. You can get this ID by calling the ListLayers operation.
+	//
 	// This parameter is required.
 	//
 	// example:

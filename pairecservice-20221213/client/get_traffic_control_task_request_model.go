@@ -22,22 +22,38 @@ type iGetTrafficControlTaskRequest interface {
 }
 
 type GetTrafficControlTaskRequest struct {
+	// The filter for traffic control targets.
+	//
 	// example:
 	//
 	// All
 	ControlTargetFilter *string `json:"ControlTargetFilter,omitempty" xml:"ControlTargetFilter,omitempty"`
+	// The environment to which the parameter belongs. Valid values:
+	//
+	// - Daily: daily environment
+	//
+	// - Pre: staging environment
+	//
+	// - Prod: production environment.
+	//
 	// example:
 	//
 	// Daily
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// pairec-1324***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The version.
+	//
 	// example:
 	//
 	// Latest

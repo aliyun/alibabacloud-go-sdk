@@ -30,35 +30,62 @@ type iGetEngineConfigResponseBody interface {
 }
 
 type GetEngineConfigResponseBody struct {
+	// The content of the engine configuration.
+	//
 	// example:
 	//
 	// {}
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	// The description of the engine configuration.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The environment. Valid values:
+	//
+	// - Daily: The daily environment.
+	//
+	// - Pre: The pre-production environment.
+	//
+	// - Prod: The production environment.
+	//
 	// example:
 	//
 	// Pre
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// The time the engine configuration was created.
+	//
 	// example:
 	//
 	// 2024-01-03T02:28:00.000Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time the engine configuration was last modified.
+	//
 	// example:
 	//
 	// 2024-08-27T12:00:00Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The time the engine configuration was published.
+	//
 	// example:
 	//
 	// 2024-01-03 02:28:00
 	GmtReleasedTime *string `json:"GmtReleasedTime,omitempty" xml:"GmtReleasedTime,omitempty"`
+	// The engine configuration name.
+	//
 	// example:
 	//
 	// engine_config_v1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 59CE7EC6-F268-5D71-9215-32922CC50D72
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status. Valid values:
+	//
+	// - Released: Published
+	//
+	// - UnReleased: Unpublished
+	//
 	// example:
 	//
 	// Released

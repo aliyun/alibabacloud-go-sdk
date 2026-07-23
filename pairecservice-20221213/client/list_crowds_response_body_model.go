@@ -18,13 +18,16 @@ type iListCrowdsResponseBody interface {
 }
 
 type ListCrowdsResponseBody struct {
+	// The list of Crowds.
 	Crowds []*ListCrowdsResponseBodyCrowds `json:"Crowds,omitempty" xml:"Crowds,omitempty" type:"Repeated"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 9763624B-5FBB-5E3A-9193-B1ADB554CEAE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of Crowds.
+	//
 	// example:
 	//
 	// 10
@@ -80,34 +83,54 @@ func (s *ListCrowdsResponseBody) Validate() error {
 }
 
 type ListCrowdsResponseBodyCrowds struct {
+	// The Crowd ID.
+	//
 	// example:
 	//
 	// 3
 	CrowdId *string `json:"CrowdId,omitempty" xml:"CrowdId,omitempty"`
+	// The Crowd description.
+	//
 	// example:
 	//
 	// This is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the Crowd was created.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The label of the Crowd.
+	//
 	// example:
 	//
 	// os=android
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The Crowd name.
+	//
 	// example:
 	//
 	// crowd1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of users in the Crowd.
+	//
 	// example:
 	//
 	// 10
 	Quantity *string `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	// The source of the Crowd. Valid values:
+	//
+	// - `ManualInput`: The Crowd is created from a manual entry of users.
+	//
+	// - `UploadFile`: The Crowd is created from an uploaded file.
+	//
 	// example:
 	//
 	// ManualInput
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The user IDs in the Crowd, separated by commas.
+	//
 	// example:
 	//
 	// user1,user2

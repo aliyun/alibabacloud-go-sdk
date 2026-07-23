@@ -14,6 +14,8 @@ type iGetRecallManagementServiceVersionRequest interface {
 }
 
 type GetRecallManagementServiceVersionRequest struct {
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// learn-pairec-xxx

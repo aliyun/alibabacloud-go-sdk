@@ -20,15 +20,22 @@ type iCreateSceneRequest interface {
 }
 
 type CreateSceneRequest struct {
+	// The scene description.
+	//
 	// example:
 	//
 	// This is a test.
-	Description *string                    `json:"Description,omitempty" xml:"Description,omitempty"`
-	Flows       []*CreateSceneRequestFlows `json:"Flows,omitempty" xml:"Flows,omitempty" type:"Repeated"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The flows.
+	Flows []*CreateSceneRequestFlows `json:"Flows,omitempty" xml:"Flows,omitempty" type:"Repeated"`
+	// The instance ID. You can call the ListInstances operation to obtain the instance ID.
+	//
 	// example:
 	//
 	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The scene name.
+	//
 	// example:
 	//
 	// scene1
@@ -93,10 +100,14 @@ func (s *CreateSceneRequest) Validate() error {
 }
 
 type CreateSceneRequestFlows struct {
+	// The flow code.
+	//
 	// example:
 	//
 	// liuliang1
 	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// The flow name.
+	//
 	// example:
 	//
 	// 流量1

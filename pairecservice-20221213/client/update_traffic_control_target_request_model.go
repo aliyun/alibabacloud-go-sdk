@@ -40,55 +40,86 @@ type iUpdateTrafficControlTargetRequest interface {
 }
 
 type UpdateTrafficControlTargetRequest struct {
+	// The end time of the traffic control target.
+	//
 	// example:
 	//
 	// 2024-04-25
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The event for the traffic control target.
+	//
 	// example:
 	//
 	// click
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// The item condition in array format.
+	//
 	// example:
 	//
 	// [{"field":"status","option":"=","value":"1"}]
 	ItemConditionArray *string `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
+	// The item condition in expression format.
+	//
 	// example:
 	//
 	// status=1
 	ItemConditionExpress *string `json:"ItemConditionExpress,omitempty" xml:"ItemConditionExpress,omitempty"`
+	// The item condition type.
+	//
 	// example:
 	//
 	// Array
 	ItemConditionType *string `json:"ItemConditionType,omitempty" xml:"ItemConditionType,omitempty"`
+	// The traffic control target name.
+	//
 	// example:
 	//
 	// target-1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Specifies whether the control rule applies to a new product.
+	//
 	// example:
 	//
 	// false
 	NewProductRegulation *bool `json:"NewProductRegulation,omitempty" xml:"NewProductRegulation,omitempty"`
+	// The recall strategy name.
+	//
 	// example:
 	//
 	// recall-1
 	RecallName *string `json:"RecallName,omitempty" xml:"RecallName,omitempty"`
+	// The start time of the traffic control target.
+	//
 	// example:
 	//
 	// 2024-03-25
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The statistics period.
+	//
 	// example:
 	//
 	// Daily
 	StatisPeriod *string `json:"StatisPeriod,omitempty" xml:"StatisPeriod,omitempty"`
+	// The traffic control target status.
+	//
 	// example:
 	//
 	// Opened
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	ToleranceValue *int64  `json:"ToleranceValue,omitempty" xml:"ToleranceValue,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tolerance range for the traffic control target.
+	//
+	// example:
+	//
+	// 10
+	ToleranceValue *int64 `json:"ToleranceValue,omitempty" xml:"ToleranceValue,omitempty"`
+	// The traffic control target value.
+	//
 	// example:
 	//
 	// 30
 	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// This parameter is invalid.
+	//
 	// example:
 	//
 	// null

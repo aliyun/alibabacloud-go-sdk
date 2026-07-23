@@ -20,16 +20,21 @@ type iGetSceneResponseBody interface {
 }
 
 type GetSceneResponseBody struct {
+	// The scene description.
+	//
 	// example:
 	//
 	// This is a test.
-	Description *string                      `json:"Description,omitempty" xml:"Description,omitempty"`
-	Flows       []*GetSceneResponseBodyFlows `json:"Flows,omitempty" xml:"Flows,omitempty" type:"Repeated"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// A list of flows.
+	Flows []*GetSceneResponseBodyFlows `json:"Flows,omitempty" xml:"Flows,omitempty" type:"Repeated"`
+	// The scene name.
+	//
 	// example:
 	//
 	// scene1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -95,10 +100,14 @@ func (s *GetSceneResponseBody) Validate() error {
 }
 
 type GetSceneResponseBodyFlows struct {
+	// The flow code.
+	//
 	// example:
 	//
 	// liuliang1
 	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// The flow name.
+	//
 	// example:
 	//
 	// 流量1

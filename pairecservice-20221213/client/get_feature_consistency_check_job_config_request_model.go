@@ -14,6 +14,8 @@ type iGetFeatureConsistencyCheckJobConfigRequest interface {
 }
 
 type GetFeatureConsistencyCheckJobConfigRequest struct {
+	// The ID of the instance. See [ListInstances](https://help.aliyun.com/document_detail/2411819.html) for details on how to obtain it.
+	//
 	// This parameter is required.
 	//
 	// example:

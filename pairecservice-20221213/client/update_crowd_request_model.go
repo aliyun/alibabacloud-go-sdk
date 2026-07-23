@@ -18,18 +18,24 @@ type iUpdateCrowdRequest interface {
 }
 
 type UpdateCrowdRequest struct {
+	// The crowd description.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// This is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The instance ID. To obtain this ID, call the ListInstances operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pairec-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The crowd name.
+	//
 	// This parameter is required.
 	//
 	// example:

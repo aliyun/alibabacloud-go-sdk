@@ -20,15 +20,22 @@ type iListFeatureConsistencyCheckJobFeatureReportsResponseBody interface {
 }
 
 type ListFeatureConsistencyCheckJobFeatureReportsResponseBody struct {
+	// The data path.
+	//
 	// example:
 	//
 	// https://********
 	DataPath *string `json:"DataPath,omitempty" xml:"DataPath,omitempty"`
+	// The OSS path.
+	//
 	// example:
 	//
 	// oss://********
-	OssPath              *string                                                                         `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
+	OssPath *string `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
+	// The feature comparison reports.
 	ReportsOfFeatureDiff []*ListFeatureConsistencyCheckJobFeatureReportsResponseBodyReportsOfFeatureDiff `json:"ReportsOfFeatureDiff,omitempty" xml:"ReportsOfFeatureDiff,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BBD41FBF-E75C-551A-92FA-CAD654AA006F
@@ -93,26 +100,38 @@ func (s *ListFeatureConsistencyCheckJobFeatureReportsResponseBody) Validate() er
 }
 
 type ListFeatureConsistencyCheckJobFeatureReportsResponseBodyReportsOfFeatureDiff struct {
+	// The feature name.
+	//
 	// example:
 	//
 	// gender
 	FeatureName *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	// The item ID.
+	//
 	// example:
 	//
 	// 9010
 	LogItemId *string `json:"LogItemId,omitempty" xml:"LogItemId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F7AC05FF-EDE7-5C2B-B9AE-33D6DF4178BA
 	LogRequestId *string `json:"LogRequestId,omitempty" xml:"LogRequestId,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 1010
 	LogUserId *string `json:"LogUserId,omitempty" xml:"LogUserId,omitempty"`
+	// The offline value.
+	//
 	// example:
 	//
 	// male
 	OfflineValue *string `json:"OfflineValue,omitempty" xml:"OfflineValue,omitempty"`
+	// The online value.
+	//
 	// example:
 	//
 	// male

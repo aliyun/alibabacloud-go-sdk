@@ -18,13 +18,16 @@ type iListParamsResponseBody interface {
 }
 
 type ListParamsResponseBody struct {
+	// A list of parameters.
 	Params []*ListParamsResponseBodyParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// A2D07551-38DA-531E-9B22-877D1D86A579
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of parameters.
+	//
 	// example:
 	//
 	// 10
@@ -80,22 +83,38 @@ func (s *ListParamsResponseBody) Validate() error {
 }
 
 type ListParamsResponseBodyParams struct {
+	// The environment to which the parameter belongs. Valid values:
+	//
+	// - Daily: A test environment for daily use.
+	//
+	// - Prepub: A staging environment that mirrors the production environment.
+	//
+	// - Product: The production environment.
+	//
 	// example:
 	//
 	// Daily
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// The time when the parameter was last modified.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The parameter name.
+	//
 	// example:
 	//
 	// home
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parameter ID.
+	//
 	// example:
 	//
 	// 4
 	ParamId *string `json:"ParamId,omitempty" xml:"ParamId,omitempty"`
+	// The parameter value.
+	//
 	// example:
 	//
 	// house

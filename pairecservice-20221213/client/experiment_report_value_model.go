@@ -16,10 +16,13 @@ type iExperimentReportValue interface {
 }
 
 type ExperimentReportValue struct {
+  // Indicates whether the data is from the baseline experiment.
+  // 
   // example:
   // 
   // true
   Baseline *bool `json:"Baseline,omitempty" xml:"Baseline,omitempty"`
+  // The metric results.
   MetricResults map[string]map[string]interface{} `json:"MetricResults,omitempty" xml:"MetricResults,omitempty"`
 }
 

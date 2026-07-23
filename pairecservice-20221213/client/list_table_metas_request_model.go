@@ -24,30 +24,52 @@ type iListTableMetasRequest interface {
 }
 
 type ListTableMetasRequest struct {
+	// The instance ID. You can get this ID by calling the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pairec-cn-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The module of the data table. Valid values:
+	//
+	// - ABTest: A/B testing data tables
+	//
+	// - ExperimentTool: experiment tool tables
+	//
+	// - DataDiagnosis: data diagnosis tables
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ABTest
 	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	// The table name to filter on.
+	//
 	// example:
 	//
 	// test1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The type of the data table. Valid values:
+	//
+	// - MaxCompute
+	//
+	// - Hologres
+	//
 	// example:
 	//
 	// MaxCompute

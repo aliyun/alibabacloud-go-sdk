@@ -18,11 +18,16 @@ type iListABMetricGroupsResponseBody interface {
 }
 
 type ListABMetricGroupsResponseBody struct {
+	// The A/B metric groups.
 	ABMetricGroups []*ListABMetricGroupsResponseBodyABMetricGroups `json:"ABMetricGroups,omitempty" xml:"ABMetricGroups,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E15A1443-7917-5BE0-AE70-25538ECF398D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of A/B metric groups.
+	//
 	// example:
 	//
 	// 10
@@ -78,31 +83,50 @@ func (s *ListABMetricGroupsResponseBody) Validate() error {
 }
 
 type ListABMetricGroupsResponseBodyABMetricGroups struct {
+	// The A/B metric group ID.
+	//
 	// example:
 	//
 	// 1
 	ABMetricGroupId *string `json:"ABMetricGroupId,omitempty" xml:"ABMetricGroupId,omitempty"`
+	// The comma-separated IDs of the A/B metrics in the group.
+	//
 	// example:
 	//
 	// 1,2
 	ABMetricIds *string `json:"ABMetricIds,omitempty" xml:"ABMetricIds,omitempty"`
+	// The comma-separated names of the A/B metrics in the group.
+	//
 	// example:
 	//
 	// pv,uv
 	ABMetricNames *string `json:"ABMetricNames,omitempty" xml:"ABMetricNames,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the A/B metric group.
+	//
+	// example:
+	//
+	// 访问量相关指标
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The A/B metric group name.
+	//
 	// example:
 	//
 	// visits
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The owner.
+	//
 	// example:
 	//
 	// 2799614***
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// Indicates whether the A/B metric group is a real-time group.
+	//
 	// example:
 	//
 	// false
 	Realtime *bool `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
+	// The scene ID.
+	//
 	// example:
 	//
 	// 1

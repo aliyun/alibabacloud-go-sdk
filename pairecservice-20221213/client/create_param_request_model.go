@@ -24,23 +24,48 @@ type iCreateParamRequest interface {
 }
 
 type CreateParamRequest struct {
+	// The environment to which the parameter belongs. Valid values:
+	//
+	// - Daily: daily environment.
+	//
+	// - Pre: staging environment.
+	//
+	// - Prod: production environment.
+	//
 	// example:
 	//
 	// Daily
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// The instance ID. You can call the ListInstances operation to obtain the instance ID.
+	//
 	// example:
 	//
 	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The parameter name.
+	//
 	// example:
 	//
 	// home
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The scene ID. You can call the ListScenes operation to obtain the scene ID.
+	//
 	// example:
 	//
 	// 4
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The parameter type. Valid values:
+	//
+	// - Normal: common parameter.
+	//
+	// - Encryption: encrypted parameter.
+	//
+	// example:
+	//
+	// Normal
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The parameter value.
+	//
 	// example:
 	//
 	// house

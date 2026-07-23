@@ -20,24 +20,32 @@ type iCreateLayerRequest interface {
 }
 
 type CreateLayerRequest struct {
+	// The description of the layer.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// This is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the instance. Call the `ListInstances` operation to obtain this value.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the laboratory. Call the `ListLaboratories` operation to obtain this value.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3
 	LaboratoryId *string `json:"LaboratoryId,omitempty" xml:"LaboratoryId,omitempty"`
+	// The name of the layer.
+	//
 	// This parameter is required.
 	//
 	// example:

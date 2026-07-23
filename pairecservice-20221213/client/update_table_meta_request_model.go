@@ -26,36 +26,56 @@ type iUpdateTableMetaRequest interface {
 }
 
 type UpdateTableMetaRequest struct {
+	// The description of the data table.
+	//
 	// example:
 	//
 	// this is a test table
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The fields of the data table.
+	//
 	// This parameter is required.
 	Fields []*UpdateTableMetaRequestFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// The instance ID. You can call the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation to obtain the instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pairec-cn-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The module to which the data table belongs.
+	//
+	// - ABTest: a data table for A/B testing.
+	//
+	// - ExperimentTool: a data table for experiment tools.
+	//
+	// - DataDiagnosis: a data table for data diagnosis.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ABTest
 	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	// The name of the data table.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// table_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The resource ID. You can call the [ListInstanceResource](https://help.aliyun.com/document_detail/2672886.html) operation to obtain the resource ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// reso-2s416t***
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The name of the table in the database.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -149,23 +169,46 @@ func (s *UpdateTableMetaRequest) Validate() error {
 }
 
 type UpdateTableMetaRequestFields struct {
+	// The data type of the field.
+	//
+	// example:
+	//
+	// primary_key
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// Indicates whether the field is a dimension field.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// false
 	IsDimensionField *bool `json:"IsDimensionField,omitempty" xml:"IsDimensionField,omitempty"`
+	// Indicates whether the field is a partition field.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// true
 	IsPartitionField *string `json:"IsPartitionField,omitempty" xml:"IsPartitionField,omitempty"`
+	// The business meaning of the field.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 名称字段
 	Meaning *string `json:"Meaning,omitempty" xml:"Meaning,omitempty"`
+	// The field name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The data type of the field.
+	//
 	// This parameter is required.
 	//
 	// example:

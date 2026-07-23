@@ -24,28 +24,58 @@ type iListFeatureConsistencyCheckJobsRequest interface {
 }
 
 type ListFeatureConsistencyCheckJobsRequest struct {
+	// The instance ID. To obtain the instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pairec-cn-********
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The sort order. Valid values:
+	//
+	// - `ASC`: Ascending order.
+	//
+	// - `DESC`: Descending order.
+	//
 	// example:
 	//
 	// ASC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The field to sort the results by. Valid values:
+	//
+	// - `GmtCreateTime`: Sorts by creation time.
+	//
+	// - `GmtModifiedTime`: Sorts by modification time.
+	//
 	// example:
 	//
 	// GmtCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The status of the job. Valid values:
+	//
+	// - `ToRun`: Waiting to run.
+	//
+	// - `Running`: In progress.
+	//
+	// - `Success`: Successful.
+	//
+	// - `Failure`: Failed.
+	//
+	// - `Stopped`: Stopped or canceled.
+	//
 	// example:
 	//
 	// Running

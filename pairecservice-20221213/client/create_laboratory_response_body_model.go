@@ -16,11 +16,13 @@ type iCreateLaboratoryResponseBody interface {
 }
 
 type CreateLaboratoryResponseBody struct {
+	// The laboratory ID.
+	//
 	// example:
 	//
 	// 3
 	LaboratoryId *string `json:"LaboratoryId,omitempty" xml:"LaboratoryId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

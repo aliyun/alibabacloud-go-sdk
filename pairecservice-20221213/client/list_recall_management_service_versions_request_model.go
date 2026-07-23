@@ -22,22 +22,32 @@ type iListRecallManagementServiceVersionsRequest interface {
 }
 
 type ListRecallManagementServiceVersionsRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// pairec-cn-test123
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The sort order. Valid values: `ASC` for ascending order and `DESC` for descending order.
+	//
 	// example:
 	//
 	// ASC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
 	// example:
 	//
 	// 50
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The field to sort the results by. Valid values: `GmtCreateTime` for creation time and `GmtModifiedTime` for modification time.
+	//
 	// example:
 	//
 	// GmtCreateTime

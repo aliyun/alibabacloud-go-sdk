@@ -18,11 +18,16 @@ type iListABMetricsResponseBody interface {
 }
 
 type ListABMetricsResponseBody struct {
+	// The list of AB metrics.
 	ABMetrics []*ListABMetricsResponseBodyABMetrics `json:"ABMetrics,omitempty" xml:"ABMetrics,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F7AC05FF-EDE7-5C2B-B9AE-33D6DF4178BA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of AB metrics returned.
+	//
 	// example:
 	//
 	// 10
@@ -78,70 +83,126 @@ func (s *ListABMetricsResponseBody) Validate() error {
 }
 
 type ListABMetricsResponseBodyABMetrics struct {
+	// The AB metric ID.
+	//
 	// example:
 	//
 	// 1
-	ABMetricId        *string `json:"ABMetricId,omitempty" xml:"ABMetricId,omitempty"`
-	AggregationByUser *bool   `json:"AggregationByUser,omitempty" xml:"AggregationByUser,omitempty"`
+	ABMetricId *string `json:"ABMetricId,omitempty" xml:"ABMetricId,omitempty"`
+	// Indicates whether to aggregate data by user.
+	AggregationByUser *bool `json:"AggregationByUser,omitempty" xml:"AggregationByUser,omitempty"`
+	// The metric definition.
+	//
 	// example:
 	//
 	// sum(click_cnt)
 	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	// The denominator of the derived metric.
+	//
 	// example:
 	//
 	// pv
-	Denominator            *string `json:"Denominator,omitempty" xml:"Denominator,omitempty"`
-	Description            *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	IsBinomialDistribution *bool   `json:"IsBinomialDistribution,omitempty" xml:"IsBinomialDistribution,omitempty"`
+	Denominator *string `json:"Denominator,omitempty" xml:"Denominator,omitempty"`
+	// The metric description.
+	//
+	// example:
+	//
+	// pv指标
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the metric follows a binomial distribution.
+	IsBinomialDistribution *bool `json:"IsBinomialDistribution,omitempty" xml:"IsBinomialDistribution,omitempty"`
+	// The ID of the left-hand metric in the formula for the derived metric.
+	//
 	// example:
 	//
 	// 3
 	LeftMetricId *string `json:"LeftMetricId,omitempty" xml:"LeftMetricId,omitempty"`
+	// The metric name.
+	//
 	// example:
 	//
 	// pv
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NeedSignificance *bool   `json:"NeedSignificance,omitempty" xml:"NeedSignificance,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Indicates whether significance calculation is required.
+	NeedSignificance *bool `json:"NeedSignificance,omitempty" xml:"NeedSignificance,omitempty"`
+	// The numerator of the derived metric.
+	//
 	// example:
 	//
 	// click
 	Numerator *string `json:"Numerator,omitempty" xml:"Numerator,omitempty"`
+	// The operator used to calculate the derived metric. Valid values:
+	//
+	// - `Plus`: addition
+	//
+	// - `Minus`: subtraction
+	//
+	// - `Multiplication`: multiplication
+	//
+	// - `Division`: division
+	//
 	// example:
 	//
 	// Division
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// Indicates whether the metric is a real-time metric.
+	//
+	// - `true`: The metric is calculated in real time.
+	//
+	// - `false`: The metric is not calculated in real time.
+	//
 	// example:
 	//
 	// false
 	Realtime *string `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
+	// The ID of the data source for the data table to which the results are written.
+	//
 	// example:
 	//
 	// 3
 	ResultResourceId *string `json:"ResultResourceId,omitempty" xml:"ResultResourceId,omitempty"`
+	// The ID of the data table to which the results are written.
+	//
 	// example:
 	//
 	// 2
 	ResultTableMetaId *string `json:"ResultTableMetaId,omitempty" xml:"ResultTableMetaId,omitempty"`
+	// The ID of the right-hand metric in the formula for the derived metric.
+	//
 	// example:
 	//
 	// 2
 	RightMetricId *string `json:"RightMetricId,omitempty" xml:"RightMetricId,omitempty"`
+	// The scene ID.
+	//
 	// example:
 	//
 	// 1
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// The scene name.
+	//
 	// example:
 	//
 	// home_feed
 	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	// The statistical period.
+	//
 	// example:
 	//
 	// 1
 	StatisticsCycle *int32 `json:"StatisticsCycle,omitempty" xml:"StatisticsCycle,omitempty"`
+	// The data table ID.
+	//
 	// example:
 	//
 	// 1
 	TableMetaId *string `json:"TableMetaId,omitempty" xml:"TableMetaId,omitempty"`
+	// The metric type. Valid values:
+	//
+	// - `Single`: a single metric.
+	//
+	// - `Derived`: a derived metric.
+	//
 	// example:
 	//
 	// Single

@@ -16,11 +16,13 @@ type iCreateLayerResponseBody interface {
 }
 
 type CreateLayerResponseBody struct {
+	// The ID of the layer.
+	//
 	// example:
 	//
 	// 3
 	LayerId *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//

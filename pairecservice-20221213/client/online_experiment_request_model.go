@@ -14,6 +14,8 @@ type iOnlineExperimentRequest interface {
 }
 
 type OnlineExperimentRequest struct {
+	// The ID of the instance, which you can obtain by calling the ListInstances API.
+	//
 	// example:
 	//
 	// pairec-cn-abcdefg1234

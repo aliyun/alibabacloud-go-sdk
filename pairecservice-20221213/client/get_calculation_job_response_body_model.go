@@ -30,35 +30,64 @@ type iGetCalculationJobResponseBody interface {
 }
 
 type GetCalculationJobResponseBody struct {
+	// The ID of the AB metric.
+	//
 	// example:
 	//
 	// 1
 	ABMetricId *string `json:"ABMetricId,omitempty" xml:"ABMetricId,omitempty"`
+	// The name of the AB metric.
+	//
 	// example:
 	//
 	// pv
 	ABMetricName *string `json:"ABMetricName,omitempty" xml:"ABMetricName,omitempty"`
+	// The business date.
+	//
 	// example:
 	//
 	// 2021-12-15
 	BizDate *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
+	// The job configuration.
+	//
 	// example:
 	//
 	// {}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The runtime of the job.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
-	GmtRanTime *string   `json:"GmtRanTime,omitempty" xml:"GmtRanTime,omitempty"`
+	GmtRanTime *string `json:"GmtRanTime,omitempty" xml:"GmtRanTime,omitempty"`
+	// The job messages.
 	JobMessage []*string `json:"JobMessage,omitempty" xml:"JobMessage,omitempty" type:"Repeated"`
+	// The job source. Valid values:
+	//
+	// - CronOffline: An offline cron job.
+	//
+	// - DataRerun: A data rerun task.
+	//
 	// example:
 	//
 	// CronOffline
 	JobSource *string `json:"JobSource,omitempty" xml:"JobSource,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7D59453C-48AA-5FC5-8848-2D373BD1A17F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the calculation job. Valid values:
+	//
+	// - Success: The job completed successfully.
+	//
+	// - Failure: The job failed.
+	//
+	// - Initializing: The job is initializing.
+	//
+	// - Running: The job is running.
+	//
 	// example:
 	//
 	// Success

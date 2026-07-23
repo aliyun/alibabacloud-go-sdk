@@ -22,19 +22,33 @@ type iCreateEngineConfigRequest interface {
 }
 
 type CreateEngineConfigRequest struct {
+	// The content of the engine config.
+	//
 	// example:
 	//
 	// {}
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The environment. Valid values:
+	//
+	// - `Daily`: The daily environment.
+	//
+	// - `Pre`: The pre-production environment.
+	//
+	// - `Prod`: The production environment.
+	//
 	// example:
 	//
 	// Pre
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// The ID of the instance. You can obtain this ID by calling the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
+	//
 	// example:
 	//
 	// pairec-cn-***test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the engine config.
+	//
 	// example:
 	//
 	// engine_config_v1

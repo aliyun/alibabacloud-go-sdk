@@ -14,6 +14,8 @@ type iGetTrafficControlTargetRequest interface {
 }
 
 type GetTrafficControlTargetRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

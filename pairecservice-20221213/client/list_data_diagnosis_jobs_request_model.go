@@ -22,25 +22,42 @@ type iListDataDiagnosisJobsRequest interface {
 }
 
 type ListDataDiagnosisJobsRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pairec-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The task status. Valid values:
+	//
+	// - Initializing: The job is being initialized.
+	//
+	// - Running: The job is in progress.
+	//
+	// - Success: The job succeeded.
+	//
+	// - Failure: The job failed to complete.
+	//
 	// example:
 	//
 	// Initializing
-	Status *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	Types  []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// A list of data diagnosis types.
+	Types []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
 }
 
 func (s ListDataDiagnosisJobsRequest) String() string {

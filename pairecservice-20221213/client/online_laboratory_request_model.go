@@ -14,6 +14,8 @@ type iOnlineLaboratoryRequest interface {
 }
 
 type OnlineLaboratoryRequest struct {
+	// The instance ID. This ID is returned by the ListInstances API.
+	//
 	// This parameter is required.
 	//
 	// example:

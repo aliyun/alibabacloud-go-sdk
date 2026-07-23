@@ -16,10 +16,14 @@ type iGenerateTrafficControlTaskCodeRequest interface {
 }
 
 type GenerateTrafficControlTaskCodeRequest struct {
+	// The environment type. Valid values: `Daily` (daily environment), `Pre` (pre-release environment), and `Prod` (production environment).
+	//
 	// example:
 	//
 	// Daily
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

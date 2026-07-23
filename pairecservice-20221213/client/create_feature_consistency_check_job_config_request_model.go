@@ -63,6 +63,8 @@ type iCreateFeatureConsistencyCheckJobConfigRequest interface {
 	GetItemTablePartitionField() *string
 	SetItemTablePartitionFieldFormat(v string) *CreateFeatureConsistencyCheckJobConfigRequest
 	GetItemTablePartitionFieldFormat() *string
+	SetMaxcomputeSchema(v string) *CreateFeatureConsistencyCheckJobConfigRequest
+	GetMaxcomputeSchema() *string
 	SetName(v string) *CreateFeatureConsistencyCheckJobConfigRequest
 	GetName() *string
 	SetOssResourceId(v string) *CreateFeatureConsistencyCheckJobConfigRequest
@@ -104,148 +106,322 @@ type iCreateFeatureConsistencyCheckJobConfigRequest interface {
 }
 
 type CreateFeatureConsistencyCheckJobConfigRequest struct {
+	// Specifies whether to compare features.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
-	CompareFeature   *bool   `json:"CompareFeature,omitempty" xml:"CompareFeature,omitempty"`
-	DatasetId        *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	CompareFeature *bool `json:"CompareFeature,omitempty" xml:"CompareFeature,omitempty"`
+	// The dataset ID.
+	//
+	// example:
+	//
+	// s-xxx
+	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// The dataset mount path.
+	//
+	// example:
+	//
+	// mnt/xxx
 	DatasetMountPath *string `json:"DatasetMountPath,omitempty" xml:"DatasetMountPath,omitempty"`
-	DatasetName      *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	DatasetType      *string `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
-	DatasetUri       *string `json:"DatasetUri,omitempty" xml:"DatasetUri,omitempty"`
-	DefaultRoute     *string `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
+	// The dataset name.
+	//
+	// example:
+	//
+	// test
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The dataset type.
+	//
+	// example:
+	//
+	// OSS
+	DatasetType *string `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
+	// The dataset URI.
+	//
+	// example:
+	//
+	// oss-xxx
+	DatasetUri *string `json:"DatasetUri,omitempty" xml:"DatasetUri,omitempty"`
+	// The default route.
+	//
+	// example:
+	//
+	// Eth0
+	DefaultRoute *string `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
+	// The name of the PAI-EAS service. To obtain this name, see [ListServices](https://help.aliyun.com/document_detail/412109.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// service_123
 	EasServiceName *string `json:"EasServiceName,omitempty" xml:"EasServiceName,omitempty"`
+	// The path of the OSS bucket where the EasyRec package is stored.
+	//
 	// example:
 	//
 	// oss://*******
 	EasyRecPackagePath *string `json:"EasyRecPackagePath,omitempty" xml:"EasyRecPackagePath,omitempty"`
+	// The EasyRec version.
+	//
 	// example:
 	//
 	// 1.3.60
 	EasyRecVersion *string `json:"EasyRecVersion,omitempty" xml:"EasyRecVersion,omitempty"`
+	// The features to exclude from the display. Use a comma (,) to separate multiple features.
+	//
 	// example:
 	//
 	// feature1,feature2
 	FeatureDisplayExclude *string `json:"FeatureDisplayExclude,omitempty" xml:"FeatureDisplayExclude,omitempty"`
+	// The ID of the data source where the feature data is saved.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// reso-********
 	FeatureLandingResourceId *string `json:"FeatureLandingResourceId,omitempty" xml:"FeatureLandingResourceId,omitempty"`
+	// The feature priority. Use a comma (,) to separate multiple features.
+	//
 	// example:
 	//
 	// feature1,feature2,feature3
-	FeaturePriority            *string `json:"FeaturePriority,omitempty" xml:"FeaturePriority,omitempty"`
-	FeatureStoreItemId         *string `json:"FeatureStoreItemId,omitempty" xml:"FeatureStoreItemId,omitempty"`
-	FeatureStoreModelId        *string `json:"FeatureStoreModelId,omitempty" xml:"FeatureStoreModelId,omitempty"`
-	FeatureStoreProjectId      *string `json:"FeatureStoreProjectId,omitempty" xml:"FeatureStoreProjectId,omitempty"`
-	FeatureStoreProjectName    *string `json:"FeatureStoreProjectName,omitempty" xml:"FeatureStoreProjectName,omitempty"`
+	FeaturePriority *string `json:"FeaturePriority,omitempty" xml:"FeaturePriority,omitempty"`
+	// The primary key for the item side in the feature store.
+	//
+	// example:
+	//
+	// item
+	FeatureStoreItemId *string `json:"FeatureStoreItemId,omitempty" xml:"FeatureStoreItemId,omitempty"`
+	// The feature store model ID.
+	//
+	// example:
+	//
+	// 2
+	FeatureStoreModelId *string `json:"FeatureStoreModelId,omitempty" xml:"FeatureStoreModelId,omitempty"`
+	// The feature store project ID.
+	//
+	// example:
+	//
+	// prj-01
+	FeatureStoreProjectId *string `json:"FeatureStoreProjectId,omitempty" xml:"FeatureStoreProjectId,omitempty"`
+	// The feature store project name.
+	//
+	// example:
+	//
+	// project-1
+	FeatureStoreProjectName *string `json:"FeatureStoreProjectName,omitempty" xml:"FeatureStoreProjectName,omitempty"`
+	// The name of the feature view that contains the item features within sequence features.
+	//
+	// example:
+	//
+	// item-1
 	FeatureStoreSeqFeatureView *string `json:"FeatureStoreSeqFeatureView,omitempty" xml:"FeatureStoreSeqFeatureView,omitempty"`
-	FeatureStoreUserId         *string `json:"FeatureStoreUserId,omitempty" xml:"FeatureStoreUserId,omitempty"`
+	// The primary key for the user side in the feature store.
+	//
+	// example:
+	//
+	// user
+	FeatureStoreUserId *string `json:"FeatureStoreUserId,omitempty" xml:"FeatureStoreUserId,omitempty"`
+	// The `fg_jar` version.
+	//
 	// example:
 	//
 	// 1.0.0
 	FgJarVersion *string `json:"FgJarVersion,omitempty" xml:"FgJarVersion,omitempty"`
+	// The name of the `fg_json` file.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// file.json
 	FgJsonFileName *string `json:"FgJsonFileName,omitempty" xml:"FgJsonFileName,omitempty"`
+	// Specifies whether to generate a ZIP package.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	GenerateZip *bool `json:"GenerateZip,omitempty" xml:"GenerateZip,omitempty"`
+	// The instance ID. To obtain this ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pairec-cn-********
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the `item_id` field.
+	//
 	// example:
 	//
 	// item_id
 	ItemIdField *string `json:"ItemIdField,omitempty" xml:"ItemIdField,omitempty"`
+	// The name of the item table.
+	//
 	// example:
 	//
 	// item_table
 	ItemTable *string `json:"ItemTable,omitempty" xml:"ItemTable,omitempty"`
+	// The partition field of the item table.
+	//
 	// example:
 	//
 	// ds
 	ItemTablePartitionField *string `json:"ItemTablePartitionField,omitempty" xml:"ItemTablePartitionField,omitempty"`
+	// The format of the partition field in the item table. Valid values:
+	//
+	// - `yyyymmdd`
+	//
+	// - `yyyy-mm-dd`
+	//
 	// example:
 	//
 	// yyyymmdd
 	ItemTablePartitionFieldFormat *string `json:"ItemTablePartitionFieldFormat,omitempty" xml:"ItemTablePartitionFieldFormat,omitempty"`
+	// The schema of the MaxCompute project.
+	//
+	// example:
+	//
+	// default
+	MaxcomputeSchema *string `json:"MaxcomputeSchema,omitempty" xml:"MaxcomputeSchema,omitempty"`
+	// The name of the feature consistency check.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// feature_consistency_check1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The OSS data source ID.
+	//
 	// example:
 	//
 	// reso-********
-	OssResourceId       *string `json:"OssResourceId,omitempty" xml:"OssResourceId,omitempty"`
-	PredictWorkerCount  *int32  `json:"PredictWorkerCount,omitempty" xml:"PredictWorkerCount,omitempty"`
-	PredictWorkerCpu    *int32  `json:"PredictWorkerCpu,omitempty" xml:"PredictWorkerCpu,omitempty"`
-	PredictWorkerMemory *int32  `json:"PredictWorkerMemory,omitempty" xml:"PredictWorkerMemory,omitempty"`
-	ResourceConfig      *string `json:"ResourceConfig,omitempty" xml:"ResourceConfig,omitempty"`
+	OssResourceId *string `json:"OssResourceId,omitempty" xml:"OssResourceId,omitempty"`
+	// The number of prediction workers.
+	//
+	// example:
+	//
+	// 1
+	PredictWorkerCount *int32 `json:"PredictWorkerCount,omitempty" xml:"PredictWorkerCount,omitempty"`
+	// The number of CPU cores for each prediction worker.
+	//
+	// example:
+	//
+	// 4
+	PredictWorkerCpu *int32 `json:"PredictWorkerCpu,omitempty" xml:"PredictWorkerCpu,omitempty"`
+	// The memory size for each prediction worker, in megabytes (MB).
+	//
+	// example:
+	//
+	// 32000
+	PredictWorkerMemory *int32 `json:"PredictWorkerMemory,omitempty" xml:"PredictWorkerMemory,omitempty"`
+	// The resource configuration.
+	//
+	// example:
+	//
+	// {}
+	ResourceConfig *string `json:"ResourceConfig,omitempty" xml:"ResourceConfig,omitempty"`
+	// The sample rate. The value must be between 0 and 1, inclusive.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.89
 	SampleRate *float64 `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+	// The scene ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3
-	SceneId         *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// The security group ID.
+	//
+	// example:
+	//
+	// thax-xxx
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The service ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 4
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	SwitchId  *string `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
+	// The vSwitch ID.
+	//
+	// example:
+	//
+	// vswitch-xxx
+	SwitchId *string `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
+	// Specifies whether to use a feature store. Valid values:
+	//
+	// - `true`: Use a feature store. The `FeatureStoreProjectId`, `FeatureStoreProjectName`, `FeatureStoreModelId`, `FeatureStoreUserId`, and `FeatureStoreItemId` parameters are required.
+	//
+	// - `false`: Do not use a feature store. The `UserTable`, `UserIdField`, `UserTablePartitionField`, `UserTablePartitionFieldFormat`, `ItemTable`, `ItemIdField`, `ItemTablePartitionField`, and `ItemTablePartitionFieldFormat` parameters are required.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// true
 	UseFeatureStore *bool `json:"UseFeatureStore,omitempty" xml:"UseFeatureStore,omitempty"`
+	// The name of the `user_id` field.
+	//
 	// example:
 	//
 	// user_id
 	UserIdField *string `json:"UserIdField,omitempty" xml:"UserIdField,omitempty"`
+	// The name of the user table.
+	//
 	// example:
 	//
 	// user_table
 	UserTable *string `json:"UserTable,omitempty" xml:"UserTable,omitempty"`
+	// The partition field of the user table.
+	//
 	// example:
 	//
 	// ds
 	UserTablePartitionField *string `json:"UserTablePartitionField,omitempty" xml:"UserTablePartitionField,omitempty"`
+	// The format of the partition field in the user table. Valid values:
+	//
+	// - `yyyymmdd`
+	//
+	// - `yyyy-mm-dd`
+	//
 	// example:
 	//
 	// yyyymmdd
 	UserTablePartitionFieldFormat *string `json:"UserTablePartitionFieldFormat,omitempty" xml:"UserTablePartitionFieldFormat,omitempty"`
-	VpcId                         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The VPC ID.
+	//
+	// example:
+	//
+	// vpc-xxx
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The workflow name.
+	//
 	// example:
 	//
 	// work_flow_1
 	WorkflowName *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
-	WorkspaceId  *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The workspace ID.
+	//
+	// example:
+	//
+	// test
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateFeatureConsistencyCheckJobConfigRequest) String() string {
@@ -362,6 +538,10 @@ func (s *CreateFeatureConsistencyCheckJobConfigRequest) GetItemTablePartitionFie
 
 func (s *CreateFeatureConsistencyCheckJobConfigRequest) GetItemTablePartitionFieldFormat() *string {
 	return s.ItemTablePartitionFieldFormat
+}
+
+func (s *CreateFeatureConsistencyCheckJobConfigRequest) GetMaxcomputeSchema() *string {
+	return s.MaxcomputeSchema
 }
 
 func (s *CreateFeatureConsistencyCheckJobConfigRequest) GetName() *string {
@@ -572,6 +752,11 @@ func (s *CreateFeatureConsistencyCheckJobConfigRequest) SetItemTablePartitionFie
 
 func (s *CreateFeatureConsistencyCheckJobConfigRequest) SetItemTablePartitionFieldFormat(v string) *CreateFeatureConsistencyCheckJobConfigRequest {
 	s.ItemTablePartitionFieldFormat = &v
+	return s
+}
+
+func (s *CreateFeatureConsistencyCheckJobConfigRequest) SetMaxcomputeSchema(v string) *CreateFeatureConsistencyCheckJobConfigRequest {
+	s.MaxcomputeSchema = &v
 	return s
 }
 

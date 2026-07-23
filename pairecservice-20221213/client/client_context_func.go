@@ -10,7 +10,7 @@ import (
 
 // Summary:
 //
-// 应用/发布指定的推荐引擎配置
+// Applies an engine configuration.
 //
 // @param request - ApplyEngineConfigRequest
 //
@@ -57,7 +57,7 @@ func (client *Client) ApplyEngineConfigWithContext(ctx context.Context, EngineCo
 
 // Summary:
 //
-// 特征一致性检查数据回流。
+// Performs data backflow for the latest job of a specified feature consistency check job configuration.
 //
 // @param request - BackflowFeatureConsistencyCheckJobDataRequest
 //
@@ -144,7 +144,21 @@ func (client *Client) BackflowFeatureConsistencyCheckJobDataWithContext(ctx cont
 
 // Summary:
 //
-// 更改召回管理服务的版本
+// This API changes the version of a recall management service.
+//
+// Description:
+//
+// ## Request
+//
+// Use this API to change the version of a recall management service. Ensure that the provided `RecallManagementServiceId`, `InstanceId`, and target `RecallManagementServiceVersionId` are valid, and that you have the required permissions for these resources.
+//
+// - **RecallManagementServiceId**: The unique identifier of the recall management service.
+//
+// - **InstanceId**: The instance ID associated with the recall management service.
+//
+// - **RecallManagementServiceVersionId**: The target version ID to switch to.
+//
+// Note: Before changing the version, confirm that the new version is fully tested and ready for production.
 //
 // @param request - ChangeRecallManagementServiceVersionRequest
 //
@@ -195,7 +209,19 @@ func (client *Client) ChangeRecallManagementServiceVersionWithContext(ctx contex
 
 // Summary:
 //
-// 向智能体发送对话消息
+// Sends a conversation message to an agent. Supports Server-Sent Events (SSE). Creates a new session or continues a conversation in an existing session.
+//
+// Description:
+//
+// ## Operation description
+//
+// - Call this API operation to send a conversation message to an agent. Server-Sent Events (SSE) is supported.
+//
+// - If the `ConversationId` parameter is specified, the conversation continues in the context of the specified existing session. If this parameter is not specified, automatic creation of a new session is performed.
+//
+// - The `Config` field allows you to pass additional information input. The value must be in JSON format.
+//
+// - If the request succeeds, the response includes the message ID, reply content, and other information for this conversation. If a fault occurs, the corresponding error code and error message are returned.
 //
 // @param request - ChatConversationRequest
 //
@@ -212,7 +238,19 @@ func (client *Client) ChatConversationWithSSECtx(ctx context.Context, request *C
 
 // Summary:
 //
-// 向智能体发送对话消息
+// Sends a conversation message to an agent. Supports Server-Sent Events (SSE). Creates a new session or continues a conversation in an existing session.
+//
+// Description:
+//
+// ## Operation description
+//
+// - Call this API operation to send a conversation message to an agent. Server-Sent Events (SSE) is supported.
+//
+// - If the `ConversationId` parameter is specified, the conversation continues in the context of the specified existing session. If this parameter is not specified, automatic creation of a new session is performed.
+//
+// - The `Config` field allows you to pass additional information input. The value must be in JSON format.
+//
+// - If the request succeeds, the response includes the message ID, reply content, and other information for this conversation. If a fault occurs, the corresponding error code and error message are returned.
 //
 // @param request - ChatConversationRequest
 //
@@ -271,7 +309,7 @@ func (client *Client) ChatConversationWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 检测实例下配置的资源的连接状态。
+// Verifies access to resources configured for an instance.
 //
 // @param request - CheckInstanceResourcesRequest
 //
@@ -326,7 +364,13 @@ func (client *Client) CheckInstanceResourcesWithContext(ctx context.Context, Ins
 
 // Summary:
 //
-// 校验流量调控任务中的表达式
+// Validates a traffic control task expression.
+//
+// Description:
+//
+// ## Description
+//
+// This operation validates a traffic control task expression for a specific instance and table. Provide the correct `InstanceId`, `TableMetaId`, and `Expression` parameters.
 //
 // @param request - CheckTrafficControlTaskExpressionRequest
 //
@@ -381,7 +425,7 @@ func (client *Client) CheckTrafficControlTaskExpressionWithContext(ctx context.C
 
 // Summary:
 //
-// 克隆指定的推荐引擎配置
+// Clones an engine configuration.
 //
 // @param request - CloneEngineConfigRequest
 //
@@ -440,7 +484,7 @@ func (client *Client) CloneEngineConfigWithContext(ctx context.Context, EngineCo
 
 // Summary:
 //
-// 克隆实验。
+// Clones a specified experiment.
 //
 // @param request - CloneExperimentRequest
 //
@@ -487,7 +531,7 @@ func (client *Client) CloneExperimentWithContext(ctx context.Context, Experiment
 
 // Summary:
 //
-// 克隆实验组，并克隆实验组下的所有实验至新的实验组中。
+// Clones an experiment group to a specified environment.
 //
 // @param request - CloneExperimentGroupRequest
 //
@@ -542,7 +586,7 @@ func (client *Client) CloneExperimentGroupWithContext(ctx context.Context, Exper
 
 // Summary:
 //
-// 克隆特征一致性检查配置。
+// Clones a feature consistency check job configuration.
 //
 // @param request - CloneFeatureConsistencyCheckJobConfigRequest
 //
@@ -589,7 +633,7 @@ func (client *Client) CloneFeatureConsistencyCheckJobConfigWithContext(ctx conte
 
 // Summary:
 //
-// 克隆实验室。
+// Clones a specified laboratory to a designated environment. You can specify whether to clone the experiment groups within the laboratory.
 //
 // @param request - CloneLaboratoryRequest
 //
@@ -644,7 +688,15 @@ func (client *Client) CloneLaboratoryWithContext(ctx context.Context, Laboratory
 
 // Summary:
 //
-// 克隆流量调控任务
+// Clones a specified traffic control task to a new instance.
+//
+// Description:
+//
+// ## Request description
+//
+// This API clones an existing traffic control task to another specified instance. Ensure that the `InstanceId` you provide is valid and that you have the required permissions for the target instance.
+//
+// Note: The cloning process does not affect the status or configuration of the original task.
 //
 // @param request - CloneTrafficControlTaskRequest
 //
@@ -738,7 +790,7 @@ func (client *Client) CompareSampleConsistencyJobWithContext(ctx context.Context
 
 // Summary:
 //
-// 创建AB test实验指标
+// Creates an AB metric.
 //
 // @param request - CreateABMetricRequest
 //
@@ -853,7 +905,7 @@ func (client *Client) CreateABMetricWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// 创建指标组
+// Creates an A/B metric group.
 //
 // @param request - CreateABMetricGroupRequest
 //
@@ -920,7 +972,7 @@ func (client *Client) CreateABMetricGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 创建AB指标的计算任务。
+// Creates multiple calculation jobs.
 //
 // @param request - CreateCalculationJobsRequest
 //
@@ -979,7 +1031,7 @@ func (client *Client) CreateCalculationJobsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 创建人群。
+// Creates a crowd that represents a group of users.
 //
 // @param request - CreateCrowdRequest
 //
@@ -1046,7 +1098,19 @@ func (client *Client) CreateCrowdWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
-// 创建数据诊断。
+// Creates a data diagnosis task. This API supports various analysis types.
+//
+// Description:
+//
+// ## Description
+//
+// - This API creates a data diagnosis task. It supports various analysis types, including item or user change rate analysis, user preference statistics cycle analysis, two-table join analysis, basic statistical analysis, and abnormal behavior analysis.
+//
+// - The content of the `Config` parameter depends on the value of the `Type` parameter. For more information, see the example configurations in this topic.
+//
+// - To run the task on a schedule, specify the `CycleTime` parameter. If this parameter is omitted, the task runs only once.
+//
+// - The optional `TopNQuantity` parameter specifies the number of top results to return.
 //
 // @param request - CreateDataDiagnosisRequest
 //
@@ -1137,7 +1201,13 @@ func (client *Client) CreateDataDiagnosisWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 创建数据诊断（重跑）任务。
+// Creates a data diagnosis (rerun) job for a specified time period.
+//
+// Description:
+//
+// ## Description
+//
+// This operation creates a data diagnosis (rerun) job for a specific instance within a specified time frame. To ensure the job runs correctly, provide accurate values for the `DataDiagnosisId`, `InstanceId`, `StartDate`, and `EndDate` parameters.
 //
 // @param request - CreateDataDiagnosisJobsRequest
 //
@@ -1196,7 +1266,7 @@ func (client *Client) CreateDataDiagnosisJobsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 创建引擎配置
+// Creates an engine config.
 //
 // @param request - CreateEngineConfigRequest
 //
@@ -1259,7 +1329,7 @@ func (client *Client) CreateEngineConfigWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 创建实验。
+// Creates an experiment in a specified experiment group.
 //
 // @param request - CreateExperimentRequest
 //
@@ -1338,7 +1408,7 @@ func (client *Client) CreateExperimentWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 创建实验组。
+// Creates an experiment group in a specified layer. You can use experiment groups to categorize experiments and observe their overall performance.
 //
 // @param request - CreateExperimentGroupRequest
 //
@@ -1441,7 +1511,7 @@ func (client *Client) CreateExperimentGroupWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 创建特征一致性检查任务。
+// Creates a feature consistency check job.
 //
 // @param request - CreateFeatureConsistencyCheckJobRequest
 //
@@ -1500,7 +1570,7 @@ func (client *Client) CreateFeatureConsistencyCheckJobWithContext(ctx context.Co
 
 // Summary:
 //
-// 创建特征一致性检查配置。
+// Configure a feature consistency check task.
 //
 // @param request - CreateFeatureConsistencyCheckJobConfigRequest
 //
@@ -1625,6 +1695,10 @@ func (client *Client) CreateFeatureConsistencyCheckJobConfigWithContext(ctx cont
 		body["ItemTablePartitionFieldFormat"] = request.ItemTablePartitionFieldFormat
 	}
 
+	if !dara.IsNil(request.MaxcomputeSchema) {
+		body["MaxcomputeSchema"] = request.MaxcomputeSchema
+	}
+
 	if !dara.IsNil(request.Name) {
 		body["Name"] = request.Name
 	}
@@ -1727,7 +1801,7 @@ func (client *Client) CreateFeatureConsistencyCheckJobConfigWithContext(ctx cont
 
 // Summary:
 //
-// 为指定实例配置创建新的配置资源
+// Creates a configuration resource for a specified instance.
 //
 // @param request - CreateInstanceResourceRequest
 //
@@ -1786,7 +1860,7 @@ func (client *Client) CreateInstanceResourceWithContext(ctx context.Context, Ins
 
 // Summary:
 //
-// 创建实验室
+// Creates a laboratory. A laboratory isolates a segment of traffic for running experiments.
 //
 // @param request - CreateLaboratoryRequest
 //
@@ -1877,7 +1951,7 @@ func (client *Client) CreateLaboratoryWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 创建层。
+// Creates a layer in a specified laboratory for layered experiments. Layers are orthogonal to each other, allowing experiments to run independently and preventing traffic starvation.
 //
 // @param request - CreateLayerRequest
 //
@@ -1936,7 +2010,11 @@ func (client *Client) CreateLayerWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
-// 创建参数。
+// Creates an ABTest parameter for a specific scene in a specified environment.
+//
+// Description:
+//
+// ## Operation description.
 //
 // @param request - CreateParamRequest
 //
@@ -2003,7 +2081,11 @@ func (client *Client) CreateParamWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
-// 创建召回管理初始化配置。
+// Initializes a Recall Management configuration, including the instance ID, user information, and network configurations.
+//
+// Description:
+//
+// ## Request
 //
 // @param request - CreateRecallManagementConfigRequest
 //
@@ -2062,7 +2144,13 @@ func (client *Client) CreateRecallManagementConfigWithContext(ctx context.Contex
 
 // Summary:
 //
-// 创建召回管理服务
+// Creates a new recall management service.
+//
+// Description:
+//
+// ## Description
+//
+// To create a recall management service, call this API with a specified instance ID, service name, and service description. Ensure that the `InstanceId` parameter is valid.
 //
 // @param request - CreateRecallManagementServiceRequest
 //
@@ -2117,7 +2205,23 @@ func (client *Client) CreateRecallManagementServiceWithContext(ctx context.Conte
 
 // Summary:
 //
-// 创建召回管理版本
+// Creates a new recall management service version that supports configuring multiple recall strategies.
+//
+// Description:
+//
+// ## Request
+//
+// - Use this API to create a new version of a recall management service.
+//
+// - To create a new version from an existing one, specify the source recall management service version ID.
+//
+// - You can configure detailed recall rules, such as the recall name, description, priority, and recall type.
+//
+// - Configure operators such as filter, trigger, feature extraction, and join.
+//
+// - The merge configuration specifies how to merge multiple recall results and supports two merge methods: weight-based and alternating.
+//
+// - All configuration items are optional.
 //
 // @param request - CreateRecallManagementServiceVersionRequest
 //
@@ -2172,7 +2276,21 @@ func (client *Client) CreateRecallManagementServiceVersionWithContext(ctx contex
 
 // Summary:
 //
-// 创建召回管理服务版本配置
+// Creates a configuration for a specified version of the Recall Manager service, including its recall and merge settings.
+//
+// Description:
+//
+// ## Request
+//
+// - This API creates a configuration for a specific version of the Recall Management Service.
+//
+// - The `ConfigType` parameter specifies the configuration type, which can be either recall or merge.
+//
+// - Use the `RecallConfig` and `MergeConfig` parameters to provide the recall and merge configurations, respectively.
+//
+// - Required parameters must be provided in the specified data formats.
+//
+// - Optional parameter values must be consistent with your business logic.
 //
 // @param request - CreateRecallManagementServiceVersionConfigRequest
 //
@@ -2231,7 +2349,25 @@ func (client *Client) CreateRecallManagementServiceVersionConfigWithContext(ctx 
 
 // Summary:
 //
-// 创建召回管理表。
+// Creates a recall management table that supports multiple data sources and configuration options.
+//
+// Description:
+//
+// ## Request
+//
+// - The **InstanceId**, **Name**, **Description**, **Type**, and **DataSource*	- parameters are required.
+//
+// - The **RecallType*	- parameter is optional. If provided, it must be a valid enum value.
+//
+// - For each field in the **Fields*	- parameter, you must define its name, type, and attributes. You must mark at least one field as Primary.
+//
+// - If you use MaxCompute as the data source, you must specify the **MaxcomputeProjectName*	- and **MaxcomputeTableName*	- parameters. The **MaxcomputeSchema*	- parameter is optional.
+//
+// - For vector fields, the values of the **VectorDimension*	- and **VectorMetricType*	- parameters must match the actual data.
+//
+// - Use the **Config*	- field to provide additional configuration as a JSON string.
+//
+// - Use fluctuation threshold parameters, such as **EnableRowCountFluctuationThreshold**, to monitor changes in row count or table size. Enable these parameters and set appropriate thresholds as needed.
 //
 // @param request - CreateRecallManagementTableRequest
 //
@@ -2579,7 +2715,7 @@ func (client *Client) CreateSampleConsistencyJobWithContext(ctx context.Context,
 
 // Summary:
 //
-// 创建场景
+// Creates a scene for metric and experiment analysis.
 //
 // @param request - CreateSceneRequest
 //
@@ -2638,7 +2774,7 @@ func (client *Client) CreateSceneWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
-// 在指定人群下创建子人群。
+// Creates a sub-crowd for a specified crowd.
 //
 // @param request - CreateSubCrowdRequest
 //
@@ -2693,7 +2829,7 @@ func (client *Client) CreateSubCrowdWithContext(ctx context.Context, CrowdId *st
 
 // Summary:
 //
-// 创建数据表。
+// Creates a data table.
 //
 // @param request - CreateTableMetaRequest
 //
@@ -2764,7 +2900,19 @@ func (client *Client) CreateTableMetaWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// 创建流量调控目标
+// Creates a new traffic control target and sets its parameters, such as the item condition, event, and value.
+//
+// Description:
+//
+// ## Usage notes
+//
+// - The `ItemConditionType` parameter supports two formats: array format (Array) and expression format (Expression). Based on the format you select, you must provide either `ItemConditionArray` or `ItemConditionExpress`.
+//
+// - The `StatisPeriod` parameter defaults to daily. For hourly statistics, you must set this parameter explicitly.
+//
+// - The `ToleranceValue` and `NewProductRegulation` parameters are optional.
+//
+// - The `Status` parameter controls whether a new traffic control target takes effect immediately. By default, new targets are inactive.
 //
 // @param request - CreateTrafficControlTargetRequest
 //
@@ -2863,7 +3011,23 @@ func (client *Client) CreateTrafficControlTargetWithContext(ctx context.Context,
 
 // Summary:
 //
-// 创建流量调控任务
+// Creates a new traffic control task with multiple conditions and target configurations.
+//
+// Description:
+//
+// ## Request
+//
+// - Use this API to create a new traffic control task. You can define a traffic control policy for different scenarios, time ranges, and conditions for users or items.
+//
+// - The `ExecutionTime` parameter specifies the execution time mode for the task. If you select the `TimeRange` mode, you must provide both the `StartTime` and `EndTime` parameters.
+//
+// - The `TrafficControlTargets` parameter is required. For each traffic control target, you must specify its name, time range, event type, and expected value.
+//
+// - You can use the `UserConditionType` and `ItemConditionType` parameters to define conditions for the target user group and items.
+//
+// - Set the `ControlLogic` parameter to `Guaranteed` for guaranteed control or to `Approach` for approach control.
+//
+// - To configure new product regulation, use the `NewProductRegulation` field.
 //
 // @param request - CreateTrafficControlTaskRequest
 //
@@ -3083,7 +3247,7 @@ func (client *Client) DebugResourceRuleWithContext(ctx context.Context, Resource
 
 // Summary:
 //
-// 删除指定AB实验指标。
+// Deletes the specified A/B test metric.
 //
 // @param request - DeleteABMetricRequest
 //
@@ -3130,7 +3294,7 @@ func (client *Client) DeleteABMetricWithContext(ctx context.Context, ABMetricId 
 
 // Summary:
 //
-// 删除AB实验指标组。
+// Deletes an A/B test metric group.
 //
 // @param request - DeleteABMetricGroupRequest
 //
@@ -3177,7 +3341,7 @@ func (client *Client) DeleteABMetricGroupWithContext(ctx context.Context, ABMetr
 
 // Summary:
 //
-// 删除指定人群。
+// Delete the specified audience.
 //
 // @param request - DeleteCrowdRequest
 //
@@ -3224,7 +3388,13 @@ func (client *Client) DeleteCrowdWithContext(ctx context.Context, CrowdId *strin
 
 // Summary:
 //
-// 删除指定数据诊断。
+// Deletes a data diagnosis configuration using the specified DataDiagnosisId and InstanceId.
+//
+// Description:
+//
+// ## Description
+//
+// Ensure you provide the correct `DataDiagnosisId` and `InstanceId` to avoid accidental deletion.
 //
 // @param request - DeleteDataDiagnosisRequest
 //
@@ -3271,7 +3441,11 @@ func (client *Client) DeleteDataDiagnosisWithContext(ctx context.Context, DataDi
 
 // Summary:
 //
-// 删除指定推荐引擎配置。
+// Deletes a specified engine configuration.
+//
+// Description:
+//
+// Deletes a specified engine configuration.
 //
 // @param request - DeleteEngineConfigRequest
 //
@@ -3322,7 +3496,7 @@ func (client *Client) DeleteEngineConfigWithContext(ctx context.Context, EngineC
 
 // Summary:
 //
-// 删除实验。
+// Delete the specified experiment.
 //
 // @param request - DeleteExperimentRequest
 //
@@ -3369,7 +3543,7 @@ func (client *Client) DeleteExperimentWithContext(ctx context.Context, Experimen
 
 // Summary:
 //
-// 删除指定实验组。
+// Delete the specified experiment group.
 //
 // @param request - DeleteExperimentGroupRequest
 //
@@ -3416,7 +3590,7 @@ func (client *Client) DeleteExperimentGroupWithContext(ctx context.Context, Expe
 
 // Summary:
 //
-// 删除指定实例下的指定配置资源。
+// Deletes a configuration resource from an instance.
 //
 // @param request - DeleteInstanceResourceRequest
 //
@@ -3457,7 +3631,7 @@ func (client *Client) DeleteInstanceResourceWithContext(ctx context.Context, Ins
 
 // Summary:
 //
-// 删除实验室。
+// Delete the specified Lab.
 //
 // @param request - DeleteLaboratoryRequest
 //
@@ -3504,7 +3678,7 @@ func (client *Client) DeleteLaboratoryWithContext(ctx context.Context, Laborator
 
 // Summary:
 //
-// 删除层。
+// Delete the specified layer.
 //
 // @param request - DeleteLayerRequest
 //
@@ -3551,7 +3725,7 @@ func (client *Client) DeleteLayerWithContext(ctx context.Context, LayerId *strin
 
 // Summary:
 //
-// 删除指定参数。
+// Delete the specified parameter.
 //
 // @param request - DeleteParamRequest
 //
@@ -3598,7 +3772,13 @@ func (client *Client) DeleteParamWithContext(ctx context.Context, ParamId *strin
 
 // Summary:
 //
-// 删除指定召回管理服务
+// Deletes a recall management service.
+//
+// Description:
+//
+// ## Request description
+//
+// This operation deletes a recall management service based on the RecallManagementServiceId and InstanceId. Before you call this API, ensure you have the correct information for the service to be deleted.
 //
 // @param request - DeleteRecallManagementServiceRequest
 //
@@ -3645,7 +3825,13 @@ func (client *Client) DeleteRecallManagementServiceWithContext(ctx context.Conte
 
 // Summary:
 //
-// 删除指定召回管理服务版本
+// Deletes a specified version of a recall management service.
+//
+// Description:
+//
+// ## Request
+//
+// This operation deletes a specific version of a recall management service. You must provide the recall management service ID, the recall management service version ID, and the instance ID. This operation is irreversible, so back up all critical data before proceeding.
 //
 // @param request - DeleteRecallManagementServiceVersionRequest
 //
@@ -3692,7 +3878,17 @@ func (client *Client) DeleteRecallManagementServiceVersionWithContext(ctx contex
 
 // Summary:
 //
-// 删除召回管理服务版本配置
+// Deletes the specified recall management service version configuration.
+//
+// Description:
+//
+// ## Usage notes
+//
+// - Specify the recall management service ID, recall management version ID, and recall management configuration ID.
+//
+// - `InstanceId` is a required query parameter.
+//
+// - The request fails if any of the specified IDs are invalid.
 //
 // @param request - DeleteRecallManagementServiceVersionConfigRequest
 //
@@ -3739,7 +3935,17 @@ func (client *Client) DeleteRecallManagementServiceVersionConfigWithContext(ctx 
 
 // Summary:
 //
-// 删除指定召回管理表。
+// This API deletes a recall management table using the specified recall management table ID and instance ID.
+//
+// Description:
+//
+// ## Request
+//
+// - The required **path parameter*	- `RecallManagementTableId` specifies the ID of the recall management table to delete.
+//
+// - The required **query parameter*	- `InstanceId` specifies the ID of the instance.
+//
+// - A successful operation returns a `RequestId` in the response body for request tracking.
 //
 // @param request - DeleteRecallManagementTableRequest
 //
@@ -3927,7 +4133,7 @@ func (client *Client) DeleteSampleConsistencyJobWithContext(ctx context.Context,
 
 // Summary:
 //
-// 删除场景
+// Delete the specified scenario.
 //
 // @param request - DeleteSceneRequest
 //
@@ -3974,7 +4180,7 @@ func (client *Client) DeleteSceneWithContext(ctx context.Context, SceneId *strin
 
 // Summary:
 //
-// 删除指定人群下的指定子人群。
+// Deletes the specified subcrowd.
 //
 // @param request - DeleteSubCrowdRequest
 //
@@ -4021,7 +4227,7 @@ func (client *Client) DeleteSubCrowdWithContext(ctx context.Context, CrowdId *st
 
 // Summary:
 //
-// 删除数据表。
+// Deletes a data table.
 //
 // @param request - DeleteTableMetaRequest
 //
@@ -4068,7 +4274,17 @@ func (client *Client) DeleteTableMetaWithContext(ctx context.Context, TableMetaI
 
 // Summary:
 //
-// 更新流量调控目标
+// Deletes the specified traffic control target.
+//
+// Description:
+//
+// ## Request
+//
+// - **TrafficControlTargetId*	- is a required path parameter that specifies the traffic control target to delete.
+//
+// - **InstanceId*	- is a required query parameter that specifies the instance ID for this operation.
+//
+// - A successful response includes a `RequestId` field to track the request.
 //
 // @param request - DeleteTrafficControlTargetRequest
 //
@@ -4115,7 +4331,17 @@ func (client *Client) DeleteTrafficControlTargetWithContext(ctx context.Context,
 
 // Summary:
 //
-// 删除指定的流量调控任务
+// Deletes a specified traffic control task.
+//
+// Description:
+//
+// ## Description
+//
+// - This API uses `TrafficControlTaskId` and `InstanceId` to delete a traffic control task.
+//
+// - Ensure the `TrafficControlTaskId` and `InstanceId` are correct, or the operation may fail.
+//
+// - This operation is irreversible. Proceed with caution.
 //
 // @param request - DeleteTrafficControlTaskRequest
 //
@@ -4162,7 +4388,21 @@ func (client *Client) DeleteTrafficControlTaskWithContext(ctx context.Context, T
 
 // Summary:
 //
-// 部署流量调控任务的flink code
+// Deploys Flink code for a traffic control task in a specified environment.
+//
+// Description:
+//
+// ## Overview
+//
+// - This API deploys Flink code for a specific traffic control task.
+//
+// - `TrafficControlTaskId` is a path parameter and requires a valid task ID.
+//
+// - `InstanceId` and `Environment` are required request body parameters that specify the instance ID and the target deployment environment.
+//
+// - The optional `RetryDeploy` parameter specifies whether to automatically retry the deployment on failure. The default value is `false`.
+//
+// - The value for `Environment` must be one of the following: Daily, Pre, or Prod.
 //
 // @param request - DeployTrafficControlTaskCodeRequest
 //
@@ -4217,7 +4457,21 @@ func (client *Client) DeployTrafficControlTaskCodeWithContext(ctx context.Contex
 
 // Summary:
 //
-// 召回管理表导出
+// Exports a specified table from the recall engine to a MaxCompute project.
+//
+// Description:
+//
+// ## Description
+//
+// Use this API to export a specific table from the recall engine to Alibaba Cloud MaxCompute for further data processing or analysis. Ensure the provided MaxCompute project name, schema, and table name are valid and that you have the required permissions.
+//
+// ### Usage notes
+//
+// - The `Partitions` field must be a JSON object that specifies the table partitions to export.
+//
+// - The request may fail if any required parameters are missing or incorrect.
+//
+// - The export process is asynchronous and may take some time. You can use the returned job ID to track the status of the job.
 //
 // @param request - ExportRecallManagementTableRequest
 //
@@ -4284,7 +4538,7 @@ func (client *Client) ExportRecallManagementTableWithContext(ctx context.Context
 
 // Summary:
 //
-// 生成算法定制脚本
+// Generates an algorithm customization script.
 //
 // @param request - GenerateAlgorithmCustomizationScriptRequest
 //
@@ -4339,7 +4593,17 @@ func (client *Client) GenerateAlgorithmCustomizationScriptWithContext(ctx contex
 
 // Summary:
 //
-// 产生流量调控的相关代码
+// Generates Flink code for a specified traffic control task ID and instance information.
+//
+// Description:
+//
+// ## Description
+//
+// - This API generates Flink code for a specified traffic control task ID, instance ID, and environment type.
+//
+// - The `Environment` parameter accepts three values: `Daily` for the daily environment, `Pre` for the pre-release environment, and `Prod` for the production environment.
+//
+// - Check the `PreNeedConfig` field in the response. A `true` value indicates that necessary configuration information might be missing in the pre-release environment. If this occurs, add or adjust the required settings.
 //
 // @param request - GenerateTrafficControlTaskCodeRequest
 //
@@ -4437,7 +4701,7 @@ func (client *Client) GenerateTrafficControlTaskConfigWithContext(ctx context.Co
 
 // Summary:
 //
-// 获取AB Test实验指标详细信息。
+// Gets the details of an A/B metric.
 //
 // @param request - GetABMetricRequest
 //
@@ -4484,7 +4748,7 @@ func (client *Client) GetABMetricWithContext(ctx context.Context, ABMetricId *st
 
 // Summary:
 //
-// 获取AB实验指标组详细信息。
+// Retrieves the details of an A/B testing metric group.
 //
 // @param request - GetABMetricGroupRequest
 //
@@ -4531,7 +4795,7 @@ func (client *Client) GetABMetricGroupWithContext(ctx context.Context, ABMetricG
 
 // Summary:
 //
-// 获取指定计算任务详细信息。
+// Gets the details of a specified calculation job.
 //
 // @param request - GetCalculationJobRequest
 //
@@ -4578,7 +4842,19 @@ func (client *Client) GetCalculationJobWithContext(ctx context.Context, Calculat
 
 // Summary:
 //
-// 获取数据诊断详细信息。
+// Retrieves details of a data diagnosis task using its data diagnosis task ID and instance ID.
+//
+// Description:
+//
+// ## Request
+//
+// - This API retrieves the details of a specific data diagnosis task using the provided `DataDiagnosisId` (data diagnosis task configuration ID) and `InstanceId` (instance ID).
+//
+// - The `CycleTime` field specifies the time for periodic execution. If this field is empty, the task does not execute periodically.
+//
+// - The value of `Type` determines the content of the `Config` field. For details about the required configuration for each type, see the relevant documentation.
+//
+// - `GmtCreateTime` and `GmtModifiedTime` are timestamps for the record\\"s creation and modification times, respectively.
 //
 // @param request - GetDataDiagnosisRequest
 //
@@ -4625,7 +4901,7 @@ func (client *Client) GetDataDiagnosisWithContext(ctx context.Context, DataDiagn
 
 // Summary:
 //
-// 获取引擎配置详细信息。
+// Gets the details of an engine configuration.
 //
 // @param request - GetEngineConfigRequest
 //
@@ -4672,7 +4948,7 @@ func (client *Client) GetEngineConfigWithContext(ctx context.Context, EngineConf
 
 // Summary:
 //
-// 获取实验详细信息。
+// Retrieves the details of a specified experiment.
 //
 // @param request - GetExperimentRequest
 //
@@ -4719,7 +4995,7 @@ func (client *Client) GetExperimentWithContext(ctx context.Context, ExperimentId
 
 // Summary:
 //
-// 获取指定实验组详细信息。
+// Retrieves details for a specified experiment group.
 //
 // @param request - GetExperimentGroupRequest
 //
@@ -4766,7 +5042,7 @@ func (client *Client) GetExperimentGroupWithContext(ctx context.Context, Experim
 
 // Summary:
 //
-// 获取特征一致性检查任务详细信息。
+// Gets the details of a feature consistency check job.
 //
 // @param request - GetFeatureConsistencyCheckJobRequest
 //
@@ -4813,7 +5089,7 @@ func (client *Client) GetFeatureConsistencyCheckJobWithContext(ctx context.Conte
 
 // Summary:
 //
-// 获取特征一致性检测配置详情。
+// Retrieves the configuration details of a feature consistency check task.
 //
 // @param request - GetFeatureConsistencyCheckJobConfigRequest
 //
@@ -4860,7 +5136,7 @@ func (client *Client) GetFeatureConsistencyCheckJobConfigWithContext(ctx context
 
 // Summary:
 //
-// 获取指定推荐全链路深度定制开发平台实例信息。
+// Gets the details of a specified PAI-REC instance.
 //
 // @param request - GetInstanceRequest
 //
@@ -4901,7 +5177,7 @@ func (client *Client) GetInstanceWithContext(ctx context.Context, InstanceId *st
 
 // Summary:
 //
-// 获取指定实例下指定资源的详细信息。
+// Retrieves the details of a specific resource in a specified instance.
 //
 // @param request - GetInstanceResourceRequest
 //
@@ -4942,7 +5218,7 @@ func (client *Client) GetInstanceResourceWithContext(ctx context.Context, Instan
 
 // Summary:
 //
-// 获取数据源下指定表的详细信息。
+// Retrieves the schema of a specified data table within a resource.
 //
 // @param request - GetInstanceResourceTableRequest
 //
@@ -4983,7 +5259,7 @@ func (client *Client) GetInstanceResourceTableWithContext(ctx context.Context, I
 
 // Summary:
 //
-// 获取实验室详细信息。
+// Retrieves the details of a specified laboratory.
 //
 // @param request - GetLaboratoryRequest
 //
@@ -5030,7 +5306,7 @@ func (client *Client) GetLaboratoryWithContext(ctx context.Context, LaboratoryId
 
 // Summary:
 //
-// 获取层详细信息。
+// Retrieves the details of a specified layer.
 //
 // @param request - GetLayerRequest
 //
@@ -5077,7 +5353,7 @@ func (client *Client) GetLayerWithContext(ctx context.Context, LayerId *string, 
 
 // Summary:
 //
-// 获取召回管理初始化配置。
+// Retrieves the recall management configuration.
 //
 // @param request - GetRecallManagementConfigRequest
 //
@@ -5124,7 +5400,13 @@ func (client *Client) GetRecallManagementConfigWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 获取召回管理任务详情。
+// Retrieves the details of a specific recall management job, including its status and log.
+//
+// Description:
+//
+// ## Description
+//
+// Retrieves the details of a specific recall management job using its `RecallManagementJobId` and `InstanceId`. The response includes the job\\"s status (such as Init, Running, Success, or Failed), start and end times, related table information, and operation log. To make a request, specify the `RecallManagementJobId` as a path parameter and the `InstanceId` as a query parameter.
 //
 // @param request - GetRecallManagementJobRequest
 //
@@ -5171,7 +5453,11 @@ func (client *Client) GetRecallManagementJobWithContext(ctx context.Context, Rec
 
 // Summary:
 //
-// 获取指定召回管理服务详细信息
+// Retrieves the details of a specified recall management service, including its status and version.
+//
+// Description:
+//
+// ## Request
 //
 // @param request - GetRecallManagementServiceRequest
 //
@@ -5218,7 +5504,7 @@ func (client *Client) GetRecallManagementServiceWithContext(ctx context.Context,
 
 // Summary:
 //
-// 获取指定召回管理版本详细信息
+// Retrieves the version details of the recall management service.
 //
 // @param request - GetRecallManagementServiceVersionRequest
 //
@@ -5265,7 +5551,17 @@ func (client *Client) GetRecallManagementServiceVersionWithContext(ctx context.C
 
 // Summary:
 //
-// 获取召回管理服务版本配置详细信息
+// This API retrieves the configuration details of a specific recall management service version.
+//
+// Description:
+//
+// ## Request
+//
+// Retrieves the configuration details for a specific version of a Recall Management Service by specifying its service, version, and configuration IDs. Ensure the parameter values are correct. The `InstanceId` is crucial for locating the correct instance.
+//
+// - **Note**: All path parameters (`RecallManagementServiceId`, `RecallManagementServiceVersionId`, and `RecallManagementServiceVersionConfigId`) are required and must reference an existing resource.
+//
+// - **Extended configuration**: The response includes the `ExtendedConfig` field, which is used for future extensions and custom settings. Parse this field as needed.
 //
 // @param request - GetRecallManagementServiceVersionConfigRequest
 //
@@ -5312,7 +5608,19 @@ func (client *Client) GetRecallManagementServiceVersionConfigWithContext(ctx con
 
 // Summary:
 //
-// 获取指定召回管理表详细信息。
+// Retrieves the details of a specified recall management table, including its table structure and configuration.
+//
+// Description:
+//
+// ## Request
+//
+// This API retrieves details of a specific recall management table using the provided `RecallManagementTableId` and `InstanceId`. Ensure you provide the correct values for these parameters.
+//
+// - **Note**: The `CanDelete` field indicates whether the data table supports delete operations. Use this value to control delete functionality in your application.
+//
+// - The `Fields` list contains the definitions for each field in the data table, including their name, type, and properties.
+//
+// - To monitor data changes, you can configure or query the fluctuation thresholds for row count and size using the corresponding fields.
 //
 // @param request - GetRecallManagementTableRequest
 //
@@ -5453,7 +5761,7 @@ func (client *Client) GetSampleConsistencyJobWithContext(ctx context.Context, Sa
 
 // Summary:
 //
-// 获取场景详细信息
+// Retrieves the details of a specified scene.
 //
 // @param request - GetSceneRequest
 //
@@ -5500,7 +5808,7 @@ func (client *Client) GetSceneWithContext(ctx context.Context, SceneId *string, 
 
 // Summary:
 //
-// 获取服务详细信息。
+// Retrieves the details of a service.
 //
 // @param request - GetServiceRequest
 //
@@ -5547,7 +5855,7 @@ func (client *Client) GetServiceWithContext(ctx context.Context, ServiceId *stri
 
 // Summary:
 //
-// 获取指定人群下的指定子人群的详细信息。
+// Retrieves the details of a sub-crowd.
 //
 // @param request - GetSubCrowdRequest
 //
@@ -5594,7 +5902,7 @@ func (client *Client) GetSubCrowdWithContext(ctx context.Context, CrowdId *strin
 
 // Summary:
 //
-// 获取数据表详细信息。
+// Returns the details of a table.
 //
 // @param request - GetTableMetaRequest
 //
@@ -5641,7 +5949,13 @@ func (client *Client) GetTableMetaWithContext(ctx context.Context, TableMetaId *
 
 // Summary:
 //
-// 获取流量调控目标详情
+// Gets the details of a traffic throttling objective by its ID.
+//
+// Description:
+//
+// ## Request
+//
+// Retrieves the detailed configuration of a traffic control target. The configuration includes the target name, time range, and condition settings. This operation requires the `TrafficControlTargetId` and `InstanceId` parameters.
 //
 // @param request - GetTrafficControlTargetRequest
 //
@@ -5688,7 +6002,19 @@ func (client *Client) GetTrafficControlTargetWithContext(ctx context.Context, Tr
 
 // Summary:
 //
-// 获取流量调控任务详情
+// Queries the details of a traffic control task with a specified ID.
+//
+// Description:
+//
+// ## Description
+//
+// - This operation retrieves the details of a specific traffic control task, including but not limited to the task name, description, and status.
+//
+// - TrafficControlTaskId and InstanceId are required parameters that specify the task ID and instance ID to query.
+//
+// - Optional parameters such as Environment, Version, and ControlTargetFilter help refine the request to retrieve more specific task data or version information.
+//
+// - Check the returned data structure, especially the TrafficControlTargets section, which contains multiple control targets and their related properties.
 //
 // @param request - GetTrafficControlTaskRequest
 //
@@ -5751,7 +6077,21 @@ func (client *Client) GetTrafficControlTaskWithContext(ctx context.Context, Traf
 
 // Summary:
 //
-// 获取流量调控任务的流量详情
+// Retrieves traffic allocation details for a specific traffic control task.
+//
+// Description:
+//
+// ## Description
+//
+// This API retrieves the traffic details for a specific traffic control task. The request must include the `TrafficControlTaskId`, `InstanceId`, and `Environment`.
+//
+// - `TrafficControlTaskId`: The unique identifier for the traffic control task.
+//
+// - `InstanceId`: The instance ID.
+//
+// - `Environment`: The environment type, such as the production environment (Prod).
+//
+// The response includes the traffic allocation for each experiment and traffic control target. This data allows you to analyze and manage your traffic control strategies.
 //
 // @param request - GetTrafficControlTaskTrafficRequest
 //
@@ -5802,7 +6142,7 @@ func (client *Client) GetTrafficControlTaskTrafficWithContext(ctx context.Contex
 
 // Summary:
 //
-// 获取AB Test实验指标组列表。
+// Retrieves a list of A/B metric groups.
 //
 // @param request - ListABMetricGroupsRequest
 //
@@ -5873,7 +6213,7 @@ func (client *Client) ListABMetricGroupsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 获取AB Test实验指标列表。
+// Lists A/B testing metrics.
 //
 // @param request - ListABMetricsRequest
 //
@@ -5948,7 +6288,7 @@ func (client *Client) ListABMetricsWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// 获取计算任务列表。
+// Lists calculation jobs.
 //
 // @param request - ListCalculationJobsRequest
 //
@@ -6011,7 +6351,7 @@ func (client *Client) ListCalculationJobsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 获取人群下的所有用户。
+// Retrieves all users within a specified crowd, including those in its sub-crowds.
 //
 // @param request - ListCrowdUsersRequest
 //
@@ -6058,7 +6398,7 @@ func (client *Client) ListCrowdUsersWithContext(ctx context.Context, CrowdId *st
 
 // Summary:
 //
-// 获取人群列表。
+// Lists the Crowds in a specified instance.
 //
 // @param request - ListCrowdsRequest
 //
@@ -6105,7 +6445,17 @@ func (client *Client) ListCrowdsWithContext(ctx context.Context, request *ListCr
 
 // Summary:
 //
-// 获取数据诊断列表。
+// Lists the data diagnostic tasks for the specified instance.
+//
+// Description:
+//
+// ## Request
+//
+// This API retrieves a list of data diagnosis tasks. It requires the `InstanceId` parameter and accepts optional parameters—such as data diagnosis type, page number, and page size—for filtering and pagination.
+//
+// - The **Types*	- parameter accepts multiple data diagnosis types, allowing you to view reports for all selected types at once.
+//
+// - To paginate results, use the `PageNumber` and `PageSize` parameters.
 //
 // @param tmpReq - ListDataDiagnosesRequest
 //
@@ -6170,7 +6520,19 @@ func (client *Client) ListDataDiagnosesWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 获取数据诊断任务列表。
+// Queries data diagnosis jobs for a specified instance.
+//
+// Description:
+//
+// ## Description
+//
+// This API retrieves data diagnosis jobs for a specific instance. You can filter the jobs by parameters such as `InstanceId` and `Status`, and use the `PageNumber` and `PageSize` parameters to control pagination.
+//
+// - The **InstanceId*	- parameter is required and specifies the instance to query.
+//
+// - Optional parameters include **Status**, **Types**, **PageNumber**, and **PageSize**.
+//
+// - Note: If you omit filter conditions, the operation returns all matching data diagnosis jobs.
 //
 // @param tmpReq - ListDataDiagnosisJobsRequest
 //
@@ -6239,7 +6601,21 @@ func (client *Client) ListDataDiagnosisJobsWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 获取数据诊断报告。
+// Specify parameters to retrieve data diagnosis reports for a specific time range.
+//
+// Description:
+//
+// ## Request
+//
+// - This API retrieves data diagnosis reports based on parameters such as the data diagnosis ID, instance ID, and a date range.
+//
+// - The `FeatureName` parameter filters reports by a specific feature, and the `TopN` parameter limits the number of results.
+//
+// - The `RemainRateType` parameter specifies the type of retention rate report, such as a periodic report.
+//
+// - Report content includes item and user change rate analysis, periodic user preference analysis, correlation analysis, basic statistical analysis, and anomaly detection.
+//
+// - Important: All date values must use the `YYYY-MM-DD` format.
 //
 // @param request - ListDataDiagnosisReportsRequest
 //
@@ -6306,7 +6682,7 @@ func (client *Client) ListDataDiagnosisReportsWithContext(ctx context.Context, D
 
 // Summary:
 //
-// 获取引擎配置列表。
+// Retrieves a list of engine configurations.
 //
 // @param request - ListEngineConfigsRequest
 //
@@ -6377,7 +6753,7 @@ func (client *Client) ListEngineConfigsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 获取实验组列表。
+// Returns a list of experiment groups.
 //
 // @param request - ListExperimentGroupsRequest
 //
@@ -6440,7 +6816,7 @@ func (client *Client) ListExperimentGroupsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 获取实验列表。
+// Lists the experiments in the specified experiment group.
 //
 // @param request - ListExperimentsRequest
 //
@@ -6499,7 +6875,7 @@ func (client *Client) ListExperimentsWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// 获取特征一致性检查配置列表。
+// Retrieves a list of feature consistency check task configurations.
 //
 // @param request - ListFeatureConsistencyCheckJobConfigsRequest
 //
@@ -6562,7 +6938,7 @@ func (client *Client) ListFeatureConsistencyCheckJobConfigsWithContext(ctx conte
 
 // Summary:
 //
-// 获取特征一致性检查任务的特征报表/比对结果。
+// Lists feature reports for a feature consistency check job.
 //
 // @param request - ListFeatureConsistencyCheckJobFeatureReportsRequest
 //
@@ -6621,7 +6997,7 @@ func (client *Client) ListFeatureConsistencyCheckJobFeatureReportsWithContext(ct
 
 // Summary:
 //
-// 获取特征一致性检查任务分数报表/比对结果。
+// Retrieves the score difference reports for a feature consistency check job.
 //
 // @param tmpReq - ListFeatureConsistencyCheckJobScoreReportsRequest
 //
@@ -6678,7 +7054,7 @@ func (client *Client) ListFeatureConsistencyCheckJobScoreReportsWithContext(ctx 
 
 // Summary:
 //
-// 获取特征一致性检查任务列表。
+// Retrieves a list of feature consistency check jobs.
 //
 // @param request - ListFeatureConsistencyCheckJobsRequest
 //
@@ -6745,7 +7121,13 @@ func (client *Client) ListFeatureConsistencyCheckJobsWithContext(ctx context.Con
 
 // Summary:
 //
-// 获取数据资源下的Schema列表。
+// Lists all schemas for a specified resource in an instance.
+//
+// Description:
+//
+// ## Description
+//
+// To retrieve a list of all schemas for a specified resource, provide the instance ID (InstanceId) and resource ID (ResourceId). Use the optional SchemaName parameter to filter the schemas by a name prefix.
 //
 // @param request - ListInstanceResourceSchemasRequest
 //
@@ -6792,7 +7174,13 @@ func (client *Client) ListInstanceResourceSchemasWithContext(ctx context.Context
 
 // Summary:
 //
-// 获取数据源下数据表的列表。
+// Retrieves a list of data tables for a specified instance and data source.
+//
+// Description:
+//
+// ## Description
+//
+// Provide the instance ID (InstanceId) and data source ID (ResourceId) to retrieve a list of data tables from the specified data source. Use the optional `MaxcomputeSchema` parameter to filter the results by a MaxCompute schema.
 //
 // @param request - ListInstanceResourceTablesRequest
 //
@@ -6839,7 +7227,7 @@ func (client *Client) ListInstanceResourceTablesWithContext(ctx context.Context,
 
 // Summary:
 //
-// 获取实例下配置的资源列表。
+// Lists the resources configured for an instance.
 //
 // @param request - ListInstanceResourcesRequest
 //
@@ -6894,7 +7282,7 @@ func (client *Client) ListInstanceResourcesWithContext(ctx context.Context, Inst
 
 // Summary:
 //
-// 获取推荐全链路深度定制开发平台实例信息列表。
+// Gets a list of PAIRec instances.
 //
 // @param request - ListInstancesRequest
 //
@@ -6961,7 +7349,7 @@ func (client *Client) ListInstancesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// 获取实验室列表。
+// Retrieves the laboratories in a specified scene.
 //
 // @param request - ListLaboratoriesRequest
 //
@@ -7020,7 +7408,7 @@ func (client *Client) ListLaboratoriesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 获取层列表。
+// Retrieves a list of layers in a specified laboratory.
 //
 // @param request - ListLayersRequest
 //
@@ -7071,7 +7459,7 @@ func (client *Client) ListLayersWithContext(ctx context.Context, request *ListLa
 
 // Summary:
 //
-// 获取参数列表。
+// Lists parameters.
 //
 // @param request - ListParamsRequest
 //
@@ -7142,7 +7530,23 @@ func (client *Client) ListParamsWithContext(ctx context.Context, request *ListPa
 
 // Summary:
 //
-// 获取召回管理任务列表。
+// Retrieves a list of recall management tasks that match specified conditions.
+//
+// Description:
+//
+// ## Request
+//
+// - Use this API operation to retrieve a list of recall management tasks.
+//
+// - The `InstanceId` and `Type` parameters are required. All other parameters are optional.
+//
+// - Use the `Condition` parameter to set filter conditions on specific table types, such as filtering by `RecallManagementTableId`.
+//
+// - Use the `SortBy` and `Order` parameters to control the sort order of the results. The default sort order is ascending by creation time.
+//
+// - Use the `PageNumber` and `PageSize` parameters for pagination. The `PageNumber` parameter defaults to 1, and the `PageSize` parameter defaults to 10.
+//
+// - The response includes details about each recall management task, such as its basic information and status.
 //
 // @param request - ListRecallManagementJobsRequest
 //
@@ -7221,7 +7625,19 @@ func (client *Client) ListRecallManagementJobsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 获取召回管理服务下的版本列表
+// Retrieves a list of all versions for a specified Recall Management Service.
+//
+// Description:
+//
+// ## Description
+//
+// This operation queries the details of all versions for a specific Recall Management Service, including the version ID, name, effective status, creation time, and modification time. For accurate results, provide the correct `RecallManagementServiceId` and `InstanceId`.
+//
+// - Use the `PageNumber` and `PageSize` parameters for pagination. By default, the query starts from the first page and returns 50 entries per page.
+//
+// - Use the `SortBy` parameter to sort the results by creation time or modification time. By default, the results are sorted by creation time in ascending order.
+//
+// - The `Order` parameter specifies the sort order. Valid values are `ASC` for ascending order and `DESC` for descending order.
 //
 // @param request - ListRecallManagementServiceVersionsRequest
 //
@@ -7284,7 +7700,19 @@ func (client *Client) ListRecallManagementServiceVersionsWithContext(ctx context
 
 // Summary:
 //
-// 获取召回管理服务列表
+// This API returns a list of recall management services for a specified instance.
+//
+// Description:
+//
+// ## Description
+//
+// Call `ListRecallManagementServices` to retrieve a list of recall management services for a specified instance based on parameters such as `InstanceId`, `PageNumber`, and `PageSize`. You can sort the results by creation time or modification time in ascending or descending order.
+//
+// - **InstanceId*	- is required. It specifies the target instance.
+//
+// - The pagination parameters **PageNumber*	- and **PageSize*	- control the number of returned items and the page from which to start. This operation returns the first page of results by default.
+//
+// - Use the **SortBy*	- and **Order*	- parameters to customize the sort order of the list.
 //
 // @param request - ListRecallManagementServicesRequest
 //
@@ -7355,7 +7783,19 @@ func (client *Client) ListRecallManagementServicesWithContext(ctx context.Contex
 
 // Summary:
 //
-// 获取召回管理表版本列表。
+// Lists all versions of a specified RecallManagementTable.
+//
+// Description:
+//
+// ## Usage
+//
+// - To retrieve the version history of a specific RecallManagementTable, provide the `RecallManagementTableId` and `InstanceId`.
+//
+// - Use the `SortBy` parameter to sort the results by creation time or update time. By default, the results are sorted by creation time in ascending order.
+//
+// - The `PageNumber` and `PageSize` parameters enable pagination, which allows you to control the number of items to return and the page to display.
+//
+// - If the `Order` parameter is not specified, the results are sorted in ascending order by default.
 //
 // @param request - ListRecallManagementTableVersionsRequest
 //
@@ -7418,7 +7858,19 @@ func (client *Client) ListRecallManagementTableVersionsWithContext(ctx context.C
 
 // Summary:
 //
-// 获取召回管理表列表。
+// Retrieves the recall management tables for a specified instance. Pagination and sorting are supported.
+//
+// Description:
+//
+// ## Request
+//
+// - **InstanceId*	- is a required parameter specifying the instance to query.
+//
+// - The **Name*	- and **Type*	- parameters filter recall management tables by name or type.
+//
+// - The **PageNumber*	- and **PageSize*	- parameters control pagination. By default, the query returns the first 50 records.
+//
+// - You can sort results by creation time (GmtCreateTime) or modification time (GmtModifiedTime) in ascending (ASC) or descending (DESC) order.
 //
 // @param request - ListRecallManagementTablesRequest
 //
@@ -7635,7 +8087,7 @@ func (client *Client) ListSampleConsistencyJobsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 获取场景列表
+// Retrieves a list of scenes.
 //
 // @param request - ListScenesRequest
 //
@@ -7686,7 +8138,7 @@ func (client *Client) ListScenesWithContext(ctx context.Context, request *ListSc
 
 // Summary:
 //
-// 获取人群下的所有子人群。
+// Lists the subcrowds for a specified crowd.
 //
 // @param request - ListSubCrowdsRequest
 //
@@ -7733,7 +8185,7 @@ func (client *Client) ListSubCrowdsWithContext(ctx context.Context, CrowdId *str
 
 // Summary:
 //
-// 获取数据表列表。
+// Retrieves a list of data tables.
 //
 // @param request - ListTableMetasRequest
 //
@@ -7800,7 +8252,23 @@ func (client *Client) ListTableMetasWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// 获取流量调控任务流量变更的历史列表
+// Retrieves the historical traffic records for a specific traffic control target.
+//
+// Description:
+//
+// ## Usage notes
+//
+// - The `TrafficControlTargetId`, `InstanceId`, and `Environment` parameters are required.
+//
+// - You can use `StartTime` and `EndTime` to specify the time range.
+//
+// - The `Threshold` parameter is optional.
+//
+// - Use `ExperimentId` and `ExperimentGroupId` to filter data for a specific experiment or experiment group.
+//
+// - Use `ItemId` to filter traffic data for a specific item.
+//
+// - The supported environments are the Daily environment, pre-production environment (Pre), and production environment (Prod).
 //
 // @param request - ListTrafficControlTargetTrafficHistoryRequest
 //
@@ -7875,7 +8343,19 @@ func (client *Client) ListTrafficControlTargetTrafficHistoryWithContext(ctx cont
 
 // Summary:
 //
-// 获取流量调控列表
+// Lists traffic control tasks that meet specified conditions.
+//
+// Description:
+//
+// ## Request
+//
+// - This API retrieves a list of traffic control tasks.
+//
+// - Use query parameters to filter and sort the results.
+//
+// - This operation supports pagination. You can also retrieve all results in a single response.
+//
+// - Note: The `InstanceId` is a required parameter. All other parameters are optional.
 //
 // @param request - ListTrafficControlTasksRequest
 //
@@ -7970,7 +8450,7 @@ func (client *Client) ListTrafficControlTasksWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 上线实验。
+// Takes an experiment offline.
 //
 // @param request - OfflineExperimentRequest
 //
@@ -8017,7 +8497,7 @@ func (client *Client) OfflineExperimentWithContext(ctx context.Context, Experime
 
 // Summary:
 //
-// 下线实验组。
+// Takes a specified experiment group offline.
 //
 // @param request - OfflineExperimentGroupRequest
 //
@@ -8064,7 +8544,7 @@ func (client *Client) OfflineExperimentGroupWithContext(ctx context.Context, Exp
 
 // Summary:
 //
-// 下线实验室。
+// Takes the specified laboratory offline.
 //
 // @param request - OfflineLaboratoryRequest
 //
@@ -8111,7 +8591,17 @@ func (client *Client) OfflineLaboratoryWithContext(ctx context.Context, Laborato
 
 // Summary:
 //
-// 下线召回管理服务
+// Takes a specified recall management service offline.
+//
+// Description:
+//
+// ## Description
+//
+// Use this API to take a specific recall management service offline. Ensure that the provided `RecallManagementServiceId` and `InstanceId` are accurate to prevent unintended operations.
+//
+// - **Important**: Once a recall management service is taken offline, it stops processing new requests until you reactivate it.
+//
+// - Back up any required data or configurations before you perform this operation in case you need to restore the current state.
 //
 // @param request - OfflineRecallManagementServiceRequest
 //
@@ -8158,7 +8648,7 @@ func (client *Client) OfflineRecallManagementServiceWithContext(ctx context.Cont
 
 // Summary:
 //
-// 上线实验
+// Brings a specified experiment online.
 //
 // @param request - OnlineExperimentRequest
 //
@@ -8205,7 +8695,7 @@ func (client *Client) OnlineExperimentWithContext(ctx context.Context, Experimen
 
 // Summary:
 //
-// 上线实验组。
+// Brings a specified experiment group online.
 //
 // @param request - OnlineExperimentGroupRequest
 //
@@ -8252,7 +8742,7 @@ func (client *Client) OnlineExperimentGroupWithContext(ctx context.Context, Expe
 
 // Summary:
 //
-// 上线实验室。
+// Publishes a specified laboratory for experimental analysis.
 //
 // @param request - OnlineLaboratoryRequest
 //
@@ -8299,7 +8789,13 @@ func (client *Client) OnlineLaboratoryWithContext(ctx context.Context, Laborator
 
 // Summary:
 //
-// 上线召回管理服务
+// This operation brings a specified Recall Management Service online.
+//
+// Description:
+//
+// ## Request
+//
+// You can use this operation to bring a Recall Management Service online by specifying the Recall Management Service ID and the instance ID. Ensure that the `RecallManagementServiceId` and `InstanceId` are correct and that you have the required permissions.
 //
 // @param request - OnlineRecallManagementServiceRequest
 //
@@ -8346,7 +8842,13 @@ func (client *Client) OnlineRecallManagementServiceWithContext(ctx context.Conte
 
 // Summary:
 //
-// 将maxcompute的表同步到召回引擎中。
+// Synchronizes a MaxCompute table with the recall engine. This operation allows you to publish specific partitions and select a synchronization mode.
+//
+// Description:
+//
+// ## Request details
+//
+// This API synchronizes a specified MaxCompute table with the recall engine. You must provide the correct `RecallManagementTableId` in the path parameter and the instance ID in the request body. You can also specify the table partitions to publish, whether to skip the threshold check, and the synchronization mode. To publish specific partitions, provide them as key-value pairs in the `Partitions` field.
 //
 // @param request - PublishRecallManagementTableRequest
 //
@@ -8409,7 +8911,7 @@ func (client *Client) PublishRecallManagementTableWithContext(ctx context.Contex
 
 // Summary:
 //
-// 推全。
+// If an experiment is stable and performs well, you can push all traffic to it. This action retires the original experiment group and creates a new one that contains only this experiment. The new group receives 100% of the traffic.
 //
 // @param request - PushAllExperimentRequest
 //
@@ -8513,7 +9015,21 @@ func (client *Client) PushResourceRuleWithContext(ctx context.Context, ResourceR
 
 // Summary:
 //
-// # QueryDataDiagnosisStatistics
+// Retrieves statistics for a specified data diagnosis task within a time range.
+//
+// Description:
+//
+// ## Request description
+//
+// - The `DataDiagnosisId` parameter is required and specifies the data diagnosis task.
+//
+// - The `InstanceId` parameter is also required and specifies the instance.
+//
+// - The `StartDate` and `EndDate` parameters specify the start and end dates of the time range. The format is YYYY-MM-DD.
+//
+// - The `RemainRateType` parameter is optional. It specifies the retention rate report type. The default value is \\"Period\\", which indicates a periodic report.
+//
+// - The response includes the request ID (`RequestId`) and a `Statistics` object. This object contains the dates of task failures (`FailedDates`) and dates with missing task data (`NoDataDates`).
 //
 // @param request - QueryDataDiagnosisStatisticsRequest
 //
@@ -8572,7 +9088,13 @@ func (client *Client) QueryDataDiagnosisStatisticsWithContext(ctx context.Contex
 
 // Summary:
 //
-// 查询召回管理表数据
+// Retrieves records from a specified recall management table.
+//
+// Description:
+//
+// ## Request
+//
+// This API retrieves records from a specific recall management table using the provided primary keys. You must provide a valid `InstanceId` and `RecallManagementTableId`, and a non-empty `PrimaryKeys` list. If you specify `RecallManagementTableVersionId`, the API returns records from that version; otherwise, it uses the currently published version.
 //
 // @param request - QueryRecallManagementTableRecordsRequest
 //
@@ -8682,7 +9204,13 @@ func (client *Client) QuerySampleConsistencyJobDifferenceWithContext(ctx context
 
 // Summary:
 //
-// 查询流量调控目标的单品调控报表详情。
+// Retrieves the traffic control details of a target item for a given environment and date range.
+//
+// Description:
+//
+// ## Request
+//
+// Use this API to query the details of single-item control for a given traffic control target on a specified date and for a specific instance ID and environment. The details include traffic data and feature information for the top 100 items before and after the control is applied. Ensure that the `TrafficControlTargetId`, `InstanceId`, and `Environment` parameters are accurate, and that the `Date` is in YYYY-MM-DD format. Although the `Date` parameter is optional, we recommend specifying a date for meaningful results.
 //
 // @param request - QueryTrafficControlTargetItemReportDetailRequest
 //
@@ -8737,7 +9265,13 @@ func (client *Client) QueryTrafficControlTargetItemReportDetailWithContext(ctx c
 
 // Summary:
 //
-// 获取流量调控任务部署的结果。
+// Retrieves the deployment status and related information of a specified traffic control task in a specific environment.
+//
+// Description:
+//
+// ## Operation description
+//
+// You can call this operation to query the deployment result of a traffic control task specified by TrafficControlTaskId for a given instance ID and environment. Make sure that the specified InstanceId is associated with your account and that the Environment parameter value is valid (Daily for daily environment, Pre for staging environment, Prod for production environment). All request parameters are required.
 //
 // @param request - QueryTrafficControlTaskDeployResultRequest
 //
@@ -8788,7 +9322,23 @@ func (client *Client) QueryTrafficControlTaskDeployResultWithContext(ctx context
 
 // Summary:
 //
-// 查询流量调控任务单品调控报表。
+// Retrieves a detailed report on item control for a specified traffic control task.
+//
+// Description:
+//
+// ## Description
+//
+// - This API retrieves the item control results for a specific traffic control task within a given time range.
+//
+// - `TrafficControlTaskId` is the unique identifier for a traffic control task.
+//
+// - `InstanceId` specifies the instance that runs the task.
+//
+// - The `Environment` parameter specifies the task\\"s execution environment. Valid values are Daily (development environment), Pre (staging environment), and Prod (production environment).
+//
+// - `StartTime` and `EndTime` specify the start and end of the time range for the report, respectively. The format is "YYYY-MM-DD HH:MM:SS".
+//
+// - The specified start and end times must be valid and span no more than two consecutive calendar days.
 //
 // @param request - QueryTrafficControlTaskItemReportRequest
 //
@@ -8847,7 +9397,21 @@ func (client *Client) QueryTrafficControlTaskItemReportWithContext(ctx context.C
 
 // Summary:
 //
-// 发布流量调控任务
+// Releases a traffic control task for the specified instance and environment.
+//
+// Description:
+//
+// ## Request
+//
+// Use this API to release a traffic control task for a specific instance and environment (Daily, Pre, or Prod). Your request must include the `TrafficControlTaskId`, `InstanceId`, and `Environment` parameters.
+//
+// - `TrafficControlTaskId`: The unique ID of the traffic control task.
+//
+// - `InstanceId`: The ID of the target instance.
+//
+// - `Environment`: The execution environment for the traffic control task. Valid values: `Daily`, `Pre`, and `Prod`.
+//
+// The request succeeds only if all required parameters are provided correctly. A successful response includes a `RequestId`.
 //
 // @param request - ReleaseTrafficControlTaskRequest
 //
@@ -8898,7 +9462,7 @@ func (client *Client) ReleaseTrafficControlTaskWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 对指标组进行报表。
+// Retrieve a metric group\\"s report.
 //
 // @param request - ReportABMetricGroupRequest
 //
@@ -9028,7 +9592,143 @@ func (client *Client) ReportSampleConsistencyJobWithContext(ctx context.Context,
 
 // Summary:
 //
-// 拆分流量调控目标
+// Conducts conversations with users through an AI shopping guide to provide product recommendation services.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This API is used to send conversation messages to the AI shopping guide and supports Server-Sent Events (SSE).
+//
+// - `InstanceId`, `SessionId`, `SceneId`, `ServiceId`, `Environment`, `Uid`, and `Language` are required parameters. Ensure the accuracy of these values to obtain optimal responses.
+//
+// - The `InputMessage` must contain at least one text-type message that describes the user\\"s request or question.
+//
+// - Based on the provided input, the system returns corresponding recommendation results or other relevant information.
+//
+// - Check the returned `StopReason` field to understand whether the session has ended and the reason.
+//
+// @param request - ShoppingAssistantRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ShoppingAssistantResponse
+func (client *Client) ShoppingAssistantWithSSECtx(ctx context.Context, request *ShoppingAssistantRequest, headers map[string]*string, runtime *dara.RuntimeOptions, _yield chan *ShoppingAssistantResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.shoppingAssistantWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, request, headers, runtime)
+	return
+}
+
+// Summary:
+//
+// Conducts conversations with users through an AI shopping guide to provide product recommendation services.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This API is used to send conversation messages to the AI shopping guide and supports Server-Sent Events (SSE).
+//
+// - `InstanceId`, `SessionId`, `SceneId`, `ServiceId`, `Environment`, `Uid`, and `Language` are required parameters. Ensure the accuracy of these values to obtain optimal responses.
+//
+// - The `InputMessage` must contain at least one text-type message that describes the user\\"s request or question.
+//
+// - Based on the provided input, the system returns corresponding recommendation results or other relevant information.
+//
+// - Check the returned `StopReason` field to understand whether the session has ended and the reason.
+//
+// @param request - ShoppingAssistantRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ShoppingAssistantResponse
+func (client *Client) ShoppingAssistantWithContext(ctx context.Context, request *ShoppingAssistantRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ShoppingAssistantResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Config) {
+		body["Config"] = request.Config
+	}
+
+	if !dara.IsNil(request.Contents) {
+		body["Contents"] = request.Contents
+	}
+
+	if !dara.IsNil(request.ConversationId) {
+		body["ConversationId"] = request.ConversationId
+	}
+
+	if !dara.IsNil(request.Environment) {
+		body["Environment"] = request.Environment
+	}
+
+	if !dara.IsNil(request.InputMessage) {
+		body["InputMessage"] = request.InputMessage
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Language) {
+		body["Language"] = request.Language
+	}
+
+	if !dara.IsNil(request.SceneId) {
+		body["SceneId"] = request.SceneId
+	}
+
+	if !dara.IsNil(request.ServiceId) {
+		body["ServiceId"] = request.ServiceId
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.Uid) {
+		body["Uid"] = request.Uid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ShoppingAssistant"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/conversations/shopping_assistant/chat"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ShoppingAssistantResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Splits the target values for a traffic control target into time intervals.
+//
+// Description:
+//
+// Splits the target values for a traffic control target into time intervals.
 //
 // @param request - SplitTrafficControlTargetRequest
 //
@@ -9091,7 +9791,13 @@ func (client *Client) SplitTrafficControlTargetWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 开启流量调控目标
+// Starts a traffic control task for a specific traffic control target.
+//
+// Description:
+//
+// ## Request
+//
+// Call this operation to start a traffic control task by providing the `TrafficControlTargetId` and `InstanceId`.
 //
 // @param request - StartTrafficControlTargetRequest
 //
@@ -9138,7 +9844,19 @@ func (client *Client) StartTrafficControlTargetWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 开启流量调控任务
+// Starts a traffic control task with a specified ID for instances in different environments.
+//
+// Description:
+//
+// ## Request details
+//
+// - This operation starts the traffic control task identified by `TrafficControlTaskId`.
+//
+// - `InstanceId` specifies the target instance.
+//
+// - `Environment` specifies the target environment. Valid values: Daily, Pre, and Prod.
+//
+// - Ensure that all required parameters are set correctly before you call this operation. The specified `TrafficControlTaskId` must exist in the system.
 //
 // @param request - StartTrafficControlTaskRequest
 //
@@ -9236,7 +9954,70 @@ func (client *Client) StopSampleConsistencyJobWithContext(ctx context.Context, S
 
 // Summary:
 //
-// 停止流量调控目标
+// Stops a traffic control Flink task with the specified ID.
+//
+// Description:
+//
+// ## Request description
+//
+// You can call this operation to stop a specific traffic control Flink task based on the specified TrafficControlTaskId. Make sure that you have prepared the correct InstanceId and the environment to which the instance belongs (Daily for daily environment, Pre for staging environment, Prod for production environment). Include this information in the request body to ensure that the operation is correctly performed.
+//
+// @param request - StopTrafficControlFlinkTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopTrafficControlFlinkTaskResponse
+func (client *Client) StopTrafficControlFlinkTaskWithContext(ctx context.Context, TrafficControlTaskId *string, request *StopTrafficControlFlinkTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopTrafficControlFlinkTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Environment) {
+		body["Environment"] = request.Environment
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StopTrafficControlFlinkTask"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/trafficcontroltasks/" + dara.PercentEncode(dara.StringValue(TrafficControlTaskId)) + "/action/stopflink"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StopTrafficControlFlinkTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Stops a specific traffic control target.
+//
+// Description:
+//
+// ## Request
+//
+// This operation stops a traffic control task using the provided `TrafficControlTargetId` and `InstanceId`. Ensure that the parameter values are accurate to avoid stopping the wrong target or instance.
 //
 // @param request - StopTrafficControlTargetRequest
 //
@@ -9283,7 +10064,17 @@ func (client *Client) StopTrafficControlTargetWithContext(ctx context.Context, T
 
 // Summary:
 //
-// 停止流量调控任务
+// Stops a traffic control task for a specific instance and environment.
+//
+// Description:
+//
+// ## Usage notes
+//
+// - This API stops a traffic control task identified by a specific `TrafficControlTaskId`.
+//
+// - The `InstanceId` and `Environment` parameters are required to identify the target instance and its environment.
+//
+// - Ensure that you provide the correct `TrafficControlTaskId` to prevent the request from failing.
 //
 // @param request - StopTrafficControlTaskRequest
 //
@@ -9340,7 +10131,7 @@ func (client *Client) StopTrafficControlTaskWithContext(ctx context.Context, Tra
 
 // Summary:
 //
-// 同步特征一致性检测任务重放日志。
+// Syncs the replay log for a feature consistency check job.
 //
 // @param request - SyncFeatureConsistencyCheckJobReplayLogRequest
 //
@@ -9423,7 +10214,7 @@ func (client *Client) SyncFeatureConsistencyCheckJobReplayLogWithContext(ctx con
 
 // Summary:
 //
-// 取消指定特征一致性检查正在运行中的任务。
+// Terminates a feature consistency check job.
 //
 // @param request - TerminateFeatureConsistencyCheckJobRequest
 //
@@ -9470,7 +10261,23 @@ func (client *Client) TerminateFeatureConsistencyCheckJobWithContext(ctx context
 
 // Summary:
 //
-// 更新AB Test实验指标。
+// Modifies the metric configuration of an existing ABTest experiment.
+//
+// Description:
+//
+// ## Operation description
+//
+// This API operation allows you to update the attributes of a specified ABTest metric, including whether to calculate significance and the aggregation method. Make sure that you have obtained the correct `ABMetricId` before calling this operation.
+//
+// - `NeedSignificance`: Specifies whether to perform significance analysis on the current metric. Default value: `false`.
+//
+// - `AggregationByUser`: When significance calculation is enabled, specifies whether to aggregate data by user or by sample. Default value: `false` (by sample).
+//
+// - `Numerator` and `Denominator`: The specific definitions of the numerator and denominator used in significance calculation.
+//
+// - `IsBinomialDistribution`: Valid only for derived metrics. Specifies whether the metric follows a binomial distribution, which affects subsequent data processing logic.
+//
+// Note: You do not need to provide all fields at the same time. Include only the parameters whose values you want to change in the request body.
 //
 // @param request - UpdateABMetricRequest
 //
@@ -9585,7 +10392,7 @@ func (client *Client) UpdateABMetricWithContext(ctx context.Context, ABMetricId 
 
 // Summary:
 //
-// 更新AB test实验指标组。
+// Updates an A/B test metric group.
 //
 // @param request - UpdateABMetricGroupRequest
 //
@@ -9652,7 +10459,7 @@ func (client *Client) UpdateABMetricGroupWithContext(ctx context.Context, ABMetr
 
 // Summary:
 //
-// 更新指定人群。
+// Updates a crowd\\"s information, such as its name and description.
 //
 // @param request - UpdateCrowdRequest
 //
@@ -9707,7 +10514,25 @@ func (client *Client) UpdateCrowdWithContext(ctx context.Context, CrowdId *strin
 
 // Summary:
 //
-// 更新数据诊断。
+// Updates the configuration of a specified data diagnosis task.
+//
+// Description:
+//
+// ## Request
+//
+// This API updates the configuration of an existing data diagnosis task, including the instance ID, task name, task type, and specific configuration content. Provide the `DataDiagnosisId` in the request path to identify the task to update. You must also specify the `Config` parameter based on the task `Type`. For periodic runs, set the execution time in the `CycleTime` field. If a periodic run is not required, omit this field.
+//
+// ## Usage notes
+//
+// - `DataDiagnosisId` is a required path parameter that uniquely identifies a data diagnosis task.
+//
+// - The structure of the `Config` field varies depending on the value of `Type`. Refer to the examples in this document for configuration details.
+//
+// - To disable periodic runs, omit the `CycleTime` field.
+//
+// - When updating a task for two-table join analysis (`JoinTables`), provide the information for the left and right tables, including `LeftTableMetaId` and `RightTableMetaId`.
+//
+// - The `InstanceId`, `Name`, and `Type` parameters are required for all types of data diagnosis tasks.
 //
 // @param request - UpdateDataDiagnosisRequest
 //
@@ -9798,7 +10623,7 @@ func (client *Client) UpdateDataDiagnosisWithContext(ctx context.Context, DataDi
 
 // Summary:
 //
-// 更新引擎配置。
+// Updates an engine configuration.
 //
 // @param request - UpdateEngineConfigRequest
 //
@@ -9861,7 +10686,7 @@ func (client *Client) UpdateEngineConfigWithContext(ctx context.Context, EngineC
 
 // Summary:
 //
-// 更新实验。
+// Updates the properties of a specified experiment, such as its name.
 //
 // @param request - UpdateExperimentRequest
 //
@@ -9936,7 +10761,7 @@ func (client *Client) UpdateExperimentWithContext(ctx context.Context, Experimen
 
 // Summary:
 //
-// 更新指定实验组。
+// Updates information for a specified experiment group, such as its name and description.
 //
 // @param request - UpdateExperimentGroupRequest
 //
@@ -10039,7 +10864,23 @@ func (client *Client) UpdateExperimentGroupWithContext(ctx context.Context, Expe
 
 // Summary:
 //
-// 更新特征一致性检查配置信息。
+// Updates the configuration details of a feature consistency check task, such as the name.
+//
+// Description:
+//
+// ## Operation description
+//
+// This API operation allows you to update the configuration of an existing feature consistency check task. By providing new configuration parameters, you can modify multiple properties including the instance ID, name, and scene ID. Ensure that all required parameters are included in the request, and provide optional parameters as needed.
+//
+// - **FeatureConsistencyCheckJobConfigId*	- is a path parameter that specifies the feature consistency check task to update.
+//
+// - All other parameters are in the request body. Some are required (such as InstanceId and Name), and the rest are optional.
+//
+// - The SampleRate value must be a floating-point number between 0 and 1, which indicates the sampling ratio.
+//
+// - If you use FeatureStore-related features, make sure that you correctly set the IsUseFeatureStore flag and the related FeatureStore	- fields.
+//
+// - For network configuration parameters (such as VpcId and SwitchId), make sure that the values match your Alibaba Cloud environment.
 //
 // @param request - UpdateFeatureConsistencyCheckJobConfigRequest
 //
@@ -10168,6 +11009,10 @@ func (client *Client) UpdateFeatureConsistencyCheckJobConfigWithContext(ctx cont
 		body["ItemTablePartitionFieldFormat"] = request.ItemTablePartitionFieldFormat
 	}
 
+	if !dara.IsNil(request.MaxcomputeSchema) {
+		body["MaxcomputeSchema"] = request.MaxcomputeSchema
+	}
+
 	if !dara.IsNil(request.Name) {
 		body["Name"] = request.Name
 	}
@@ -10266,7 +11111,7 @@ func (client *Client) UpdateFeatureConsistencyCheckJobConfigWithContext(ctx cont
 
 // Summary:
 //
-// 更新指定实例下指定资源的信息。
+// Updates a specified resource for a specified instance.
 //
 // @param request - UpdateInstanceResourceRequest
 //
@@ -10317,7 +11162,7 @@ func (client *Client) UpdateInstanceResourceWithContext(ctx context.Context, Ins
 
 // Summary:
 //
-// 更新实验室。
+// Updates a laboratory\\"s information, such as its name.
 //
 // @param request - UpdateLaboratoryRequest
 //
@@ -10404,7 +11249,7 @@ func (client *Client) UpdateLaboratoryWithContext(ctx context.Context, Laborator
 
 // Summary:
 //
-// 更新层。
+// Updates the name and description of a specified layer.
 //
 // @param request - UpdateLayerRequest
 //
@@ -10459,7 +11304,7 @@ func (client *Client) UpdateLayerWithContext(ctx context.Context, LayerId *strin
 
 // Summary:
 //
-// 更新参数。
+// Updates information for a specified parameter, such as its value.
 //
 // @param request - UpdateParamRequest
 //
@@ -10510,7 +11355,19 @@ func (client *Client) UpdateParamWithContext(ctx context.Context, ParamId *strin
 
 // Summary:
 //
-// 更新召回管理初始化配置。
+// Updates the recall management configuration, including the instance ID, password, and network configuration.
+//
+// Description:
+//
+// ## Request
+//
+// - `InstanceId` is required. It specifies the instance to update.
+//
+// - `Password` and `NetworkConfigs` are optional.
+//
+// - Use `NetworkConfigs` to define the network by specifying the Virtual Private Cloud (VPC) ID (`VpcId`) and mapping availability zones to VSwitch IDs (`VswitchIds`).
+//
+// - Note: Ensure that sensitive information, such as the password, is transmitted securely.
 //
 // @param request - UpdateRecallManagementConfigRequest
 //
@@ -10565,7 +11422,21 @@ func (client *Client) UpdateRecallManagementConfigWithContext(ctx context.Contex
 
 // Summary:
 //
-// 更新召回管理服务信息
+// Updates the instance ID and description of a specified recall management service.
+//
+// Description:
+//
+// ## Request description
+//
+// This operation updates the instance ID and description of a specific recall management service. Make sure to specify the `InstanceId` and `Description` fields in the request body.
+//
+// - **RecallManagementServiceId**: The unique identifier of the recall management service.
+//
+// - **InstanceId**: The instance ID to associate with this recall management service.
+//
+// - **Description**: A new description for the recall management service.
+//
+// Note: You must provide all required parameters, or the update may fail.
 //
 // @param request - UpdateRecallManagementServiceRequest
 //
@@ -10616,7 +11487,13 @@ func (client *Client) UpdateRecallManagementServiceWithContext(ctx context.Conte
 
 // Summary:
 //
-// 更新召回管理服务版本配置
+// Updates the configuration of a specific Recall Management Service version.
+//
+// Description:
+//
+// ## Request
+//
+// This API updates the recall and merge configurations for a specific recall management service version. Your request must include the correct `InstanceId` and the configurations to update. Refer to the parameter descriptions for details on required parameters.
 //
 // @param request - UpdateRecallManagementServiceVersionConfigRequest
 //
@@ -10675,7 +11552,23 @@ func (client *Client) UpdateRecallManagementServiceVersionConfigWithContext(ctx 
 
 // Summary:
 //
-// 更新召回管理表。
+// Updates the configuration of a recall management table specified by its ID.
+//
+// Description:
+//
+// ## Request details
+//
+// - Updates the recall management table specified by `RecallManagementTableId`.
+//
+// - You can enable fluctuation thresholds for the row count or data size and define the specific ranges for these thresholds.
+//
+// - You can add or modify fields in the table, including their names, types, and attributes.
+//
+// - The `InstanceId` parameter is required and identifies the specific instance.
+//
+// - For vector-related fields, you can also specify the vector dimension and metric type.
+//
+// - Note: Optional parameters in the request body selectively update the target table.
 //
 // @param request - UpdateRecallManagementTableRequest
 //
@@ -10892,7 +11785,7 @@ func (client *Client) UpdateResourceRuleItemWithContext(ctx context.Context, Res
 
 // Summary:
 //
-// 更新场景
+// Updates information for a scene, such as its name and description.
 //
 // @param request - UpdateSceneRequest
 //
@@ -10951,7 +11844,7 @@ func (client *Client) UpdateSceneWithContext(ctx context.Context, SceneId *strin
 
 // Summary:
 //
-// 获取数据表详细信息。
+// Updates a data table.
 //
 // @param request - UpdateTableMetaRequest
 //
@@ -11022,7 +11915,23 @@ func (client *Client) UpdateTableMetaWithContext(ctx context.Context, TableMetaI
 
 // Summary:
 //
-// 更新流量调控目标
+// Updates the configuration of a traffic control target, including its control period, conditions, and value.
+//
+// Description:
+//
+// ## Description
+//
+// - Updates a traffic control target specified by its ID.
+//
+// - `TrafficControlTargetId` is a path parameter that specifies the ID of the traffic control target to update.
+//
+// - The `ItemConditionType` parameter specifies the format of the item condition, which can be either `Array` or `Expression`. Based on your selection, you must provide a value for either the `ItemConditionArray` or `ItemConditionExpress` parameter.
+//
+// - If `NewProductRegulation` is set to `true`, the control rule applies to a new product.
+//
+// - The `StatisPeriod` parameter specifies the statistics period. Valid values are `Daily` and `hourly`.
+//
+// - Ensure that the time interval between `StartTime` and `EndTime` is reasonable and meets your business requirements.
 //
 // @param request - UpdateTrafficControlTargetRequest
 //
@@ -11123,7 +12032,23 @@ func (client *Client) UpdateTrafficControlTargetWithContext(ctx context.Context,
 
 // Summary:
 //
-// 更新流量调控任务
+// Updates the configuration and target of a specified traffic control task.
+//
+// Description:
+//
+// ## Usage notes
+//
+// - Use this API to update an existing traffic control task.
+//
+// - When `ExecutionTime` is set to `TimeRange`, you must also provide `StartTime` and `EndTime`.
+//
+// - Each element in the `TrafficControlTargets` array is a traffic control target. Ensure each target\\"s time range, condition type, and other information are complete and valid.
+//
+// - If you set `UserConditionType` or `ItemConditionType` to `Expression`, you must specify the corresponding expression field (for example, `UserConditionExpress`).
+//
+// - `ServiceIds` and `EffectiveSceneIds` are optional parameters. If you include them, ensure the ID lists are correctly formatted.
+//
+// - Ensure you complete all required fields to avoid a failed request.
 //
 // @param request - UpdateTrafficControlTaskRequest
 //
@@ -11286,7 +12211,13 @@ func (client *Client) UpdateTrafficControlTaskWithContext(ctx context.Context, T
 
 // Summary:
 //
-// 更新流量调控任务的流量参数
+// Updates the traffic parameters for a specified traffic control task, including target traffic and actual traffic.
+//
+// Description:
+//
+// ## Request
+//
+// This API updates the traffic configuration for a specific traffic control task. The configuration includes the traffic control target ID, record time, target traffic, and overall traffic. Ensure that the provided`TrafficControlTaskId` is valid and within your permission scope. Additionally, each object in the`Traffics` array must contain the required fields.
 //
 // @param request - UpdateTrafficControlTaskTrafficRequest
 //
@@ -11430,6 +12361,95 @@ func (client *Client) chatConversationWithSSECtx_opYieldFunc(_yield chan *ChatCo
 		Version:     dara.String("2022-12-13"),
 		Protocol:    dara.String("HTTPS"),
 		Pathname:    dara.String("/api/v1/conversations/chat"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
+}
+
+func (client *Client) shoppingAssistantWithSSECtx_opYieldFunc(_yield chan *ShoppingAssistantResponse, _yieldErr chan error, ctx context.Context, request *ShoppingAssistantRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Config) {
+		body["Config"] = request.Config
+	}
+
+	if !dara.IsNil(request.Contents) {
+		body["Contents"] = request.Contents
+	}
+
+	if !dara.IsNil(request.ConversationId) {
+		body["ConversationId"] = request.ConversationId
+	}
+
+	if !dara.IsNil(request.Environment) {
+		body["Environment"] = request.Environment
+	}
+
+	if !dara.IsNil(request.InputMessage) {
+		body["InputMessage"] = request.InputMessage
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Language) {
+		body["Language"] = request.Language
+	}
+
+	if !dara.IsNil(request.SceneId) {
+		body["SceneId"] = request.SceneId
+	}
+
+	if !dara.IsNil(request.ServiceId) {
+		body["ServiceId"] = request.ServiceId
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.Uid) {
+		body["Uid"] = request.Uid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ShoppingAssistant"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/conversations/shopping_assistant/chat"),
 		Method:      dara.String("POST"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("ROA"),

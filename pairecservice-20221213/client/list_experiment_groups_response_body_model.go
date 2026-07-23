@@ -18,13 +18,16 @@ type iListExperimentGroupsResponseBody interface {
 }
 
 type ListExperimentGroupsResponseBody struct {
+	// The list of experiment groups.
 	ExperimentGroups []*ListExperimentGroupsResponseBodyExperimentGroups `json:"ExperimentGroups,omitempty" xml:"ExperimentGroups,omitempty" type:"Repeated"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 59CE7EC6-F268-5D71-9215-32922CC50D72
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 10
@@ -80,73 +83,130 @@ func (s *ListExperimentGroupsResponseBody) Validate() error {
 }
 
 type ListExperimentGroupsResponseBodyExperimentGroups struct {
+	// The configuration for the experiment group, in JSON format.
+	//
 	// example:
 	//
 	// {}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The crowd ID.
+	//
 	// example:
 	//
 	// 3
-	CrowdId         *string `json:"CrowdId,omitempty" xml:"CrowdId,omitempty"`
+	CrowdId *string `json:"CrowdId,omitempty" xml:"CrowdId,omitempty"`
+	// The traffic targeting method for the experiment group. Valid values:
+	//
+	// - `All`: All traffic.
+	//
+	// - `Filter`: Traffic that matches the filter.
+	//
+	// - `CrowdId`: Traffic from a specified crowd.
+	//
+	// - `Random`: A random percentage of traffic.
+	//
+	// example:
+	//
+	// All
 	CrowdTargetType *string `json:"CrowdTargetType,omitempty" xml:"CrowdTargetType,omitempty"`
+	// The debug crowd ID.
+	//
 	// example:
 	//
 	// 4
 	DebugCrowdId *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
+	// The IDs of debug users, separated by commas.
+	//
 	// example:
 	//
 	// 1124512470******,1124512471******,1124512472******
 	DebugUsers *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
+	// The experiment group description.
+	//
 	// example:
 	//
 	// This is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The distribution duration. This parameter is required only when `DistributionType` is `TimeDuration`.
+	//
 	// example:
 	//
 	// 5
 	DistributionTimeDuration *int32 `json:"DistributionTimeDuration,omitempty" xml:"DistributionTimeDuration,omitempty"`
+	// The traffic distribution method.<br>● `UserId`: by user ID<br>● `TimeDuration`: by time duration<br><br>
+	//
 	// example:
 	//
 	// UserId
 	DistributionType *string `json:"DistributionType,omitempty" xml:"DistributionType,omitempty"`
+	// The experiment group ID.
+	//
 	// example:
 	//
 	// 3
 	ExperimentGroupId *string `json:"ExperimentGroupId,omitempty" xml:"ExperimentGroupId,omitempty"`
+	// The filter condition.
+	//
 	// example:
 	//
 	// gender=female
-	Filter         *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// If `CrowdTargetType` is set to `Random`, this parameter returns the comma-separated IDs of buckets allocated based on the `RandomFlow` value.
+	//
+	// example:
+	//
+	// 1,2,3,4
 	HoldingBuckets *string `json:"HoldingBuckets,omitempty" xml:"HoldingBuckets,omitempty"`
+	// The laboratory ID.
+	//
 	// example:
 	//
 	// 4
 	LaboratoryId *string `json:"LaboratoryId,omitempty" xml:"LaboratoryId,omitempty"`
+	// The layer ID.
+	//
 	// example:
 	//
 	// 3
 	LayerId *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
+	// The experiment group name.
+	//
 	// example:
 	//
 	// experiment_group1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Specifies whether to enable A/B testing for the experiment group.
+	//
 	// example:
 	//
 	// true
 	NeedAA *bool `json:"NeedAA,omitempty" xml:"NeedAA,omitempty"`
+	// The owner of the experiment group.
+	//
 	// example:
 	//
 	// 1124512470******
-	Owner      *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	RandomFlow *int64  `json:"RandomFlow,omitempty" xml:"RandomFlow,omitempty"`
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// If `CrowdTargetType` is set to `Random`, this parameter specifies the percentage of traffic (an integer from 0 to 100) randomly allocated to the experiment group.
+	//
+	// example:
+	//
+	// 20
+	RandomFlow *int64 `json:"RandomFlow,omitempty" xml:"RandomFlow,omitempty"`
+	// The IDs of reserved buckets, separated by commas.
+	//
 	// example:
 	//
 	// 1,2,3,4
 	ReservedBuckets *string `json:"ReservedBuckets,omitempty" xml:"ReservedBuckets,omitempty"`
+	// The scene ID.
+	//
 	// example:
 	//
 	// 1
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// The status of the experiment group. Valid values:<br>● `Offline`: The experiment group is inactive.<br>● `Online`: The experiment group is active.<br>● `Pushed`: The experiment group is fully rolled out.<br><br><br>
+	//
 	// example:
 	//
 	// Offline

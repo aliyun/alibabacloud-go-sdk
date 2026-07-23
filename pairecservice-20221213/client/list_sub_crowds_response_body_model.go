@@ -18,13 +18,16 @@ type iListSubCrowdsResponseBody interface {
 }
 
 type ListSubCrowdsResponseBody struct {
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// C5AEB79E-FAA4-5DCE-8CD7-1CAF549ECC3E
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of subcrowds.
 	SubCrowds []*ListSubCrowdsResponseBodySubCrowds `json:"SubCrowds,omitempty" xml:"SubCrowds,omitempty" type:"Repeated"`
+	// The total number of subcrowds.
+	//
 	// example:
 	//
 	// 10
@@ -80,22 +83,32 @@ func (s *ListSubCrowdsResponseBody) Validate() error {
 }
 
 type ListSubCrowdsResponseBodySubCrowds struct {
+	// The time when the subcrowd was created.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The number of users in the subcrowd.
+	//
 	// example:
 	//
 	// 2
 	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	// The source of the subcrowd.<br>● ManualInput: Users were added manually.<br>● UploadFile: Users were added by uploading a file.<br><br>
+	//
 	// example:
 	//
 	// ManualInput
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The subcrowd ID.
+	//
 	// example:
 	//
 	// 3
 	SubCrowdId *string `json:"SubCrowdId,omitempty" xml:"SubCrowdId,omitempty"`
+	// The users in the subcrowd.
+	//
 	// example:
 	//
 	// user1,user2

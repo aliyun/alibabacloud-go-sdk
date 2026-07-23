@@ -24,32 +24,44 @@ type iCreateCrowdRequest interface {
 }
 
 type CreateCrowdRequest struct {
+	// The description of the crowd.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// This is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The instance ID. To get this ID, call the ListInstances operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The crowd label.
+	//
 	// example:
 	//
 	// os=android
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The crowd name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xx人群
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The source of the user data. Valid values: ● ManualInput: Users are provided in the Users parameter. ● UploadFile: Users are provided from an uploaded file.
+	//
 	// example:
 	//
 	// ManualInput
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The users to include in the crowd. Separate multiple users with commas (,).
+	//
 	// example:
 	//
 	// user1,user2,user3

@@ -18,18 +18,24 @@ type iCreateSubCrowdRequest interface {
 }
 
 type CreateSubCrowdRequest struct {
+	// The instance ID. You can obtain the instance ID by calling the ListInstances API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pairec-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The source of users for the sub-crowd. Valid values: ● ManualInput: manual input ● UploadFile: file upload
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ManualInput
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// A comma-separated list of users in the sub-crowd.
+	//
 	// This parameter is required.
 	//
 	// example:

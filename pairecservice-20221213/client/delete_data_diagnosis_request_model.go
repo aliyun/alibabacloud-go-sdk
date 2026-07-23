@@ -14,6 +14,8 @@ type iDeleteDataDiagnosisRequest interface {
 }
 
 type DeleteDataDiagnosisRequest struct {
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:

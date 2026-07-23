@@ -14,6 +14,8 @@ type iGetRecallManagementServiceRequest interface {
 }
 
 type GetRecallManagementServiceRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// pairec-cn-test123

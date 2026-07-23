@@ -14,6 +14,8 @@ type iOfflineExperimentGroupRequest interface {
 }
 
 type OfflineExperimentGroupRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -20,22 +20,40 @@ type iListLaboratoriesRequest interface {
 }
 
 type ListLaboratoriesRequest struct {
+	// The laboratory environment.
+	//
+	// - `Daily`: the daily environment
+	//
+	// - `Pre`: the pre-production environment
+	//
+	// - `Prod`: the production environment
+	//
 	// example:
 	//
 	// Daily
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// The ID of the instance. You can obtain this ID by calling the `ListInstances` API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pairec-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the scene. You can obtain this ID by calling the `ListScenes` API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// The laboratory status.
+	//
+	// - `Offline`: The laboratory is offline.
+	//
+	// - `Online`: The laboratory is online.
+	//
 	// example:
 	//
 	// Offline

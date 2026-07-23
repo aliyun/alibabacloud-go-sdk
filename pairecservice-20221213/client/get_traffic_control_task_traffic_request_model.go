@@ -16,10 +16,20 @@ type iGetTrafficControlTaskTrafficRequest interface {
 }
 
 type GetTrafficControlTaskTrafficRequest struct {
+	// The environment. Valid values:
+	//
+	// - `Daily`: The daily environment.
+	//
+	// - `Pre`: The staging environment.
+	//
+	// - `Prod`: The production environment.
+	//
 	// example:
 	//
 	// Pre
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// The instance ID. For more information, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
+	//
 	// example:
 	//
 	// pairec-test-xxx

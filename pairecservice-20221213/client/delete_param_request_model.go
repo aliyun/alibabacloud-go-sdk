@@ -14,6 +14,8 @@ type iDeleteParamRequest interface {
 }
 
 type DeleteParamRequest struct {
+	// Instance ID, which can be obtained by calling the ListInstances API.
+	//
 	// example:
 	//
 	// pairec-cn-abcdefg1234

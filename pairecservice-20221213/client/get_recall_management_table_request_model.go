@@ -14,6 +14,8 @@ type iGetRecallManagementTableRequest interface {
 }
 
 type GetRecallManagementTableRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

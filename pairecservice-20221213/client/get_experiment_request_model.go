@@ -14,11 +14,13 @@ type iGetExperimentRequest interface {
 }
 
 type GetExperimentRequest struct {
+	// The instance ID. You can obtain this ID by calling the ListInstances operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// pairec-test1
+	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 

@@ -18,11 +18,16 @@ type iListFeatureConsistencyCheckJobsResponseBody interface {
 }
 
 type ListFeatureConsistencyCheckJobsResponseBody struct {
+	// The list of feature consistency check jobs.
 	FeatureConsistencyCheckJobs []*ListFeatureConsistencyCheckJobsResponseBodyFeatureConsistencyCheckJobs `json:"FeatureConsistencyCheckJobs,omitempty" xml:"FeatureConsistencyCheckJobs,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A04CB8C0-E74A-5E83-BC61-64D153574EC7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of jobs.
+	//
 	// example:
 	//
 	// 10
@@ -78,31 +83,56 @@ func (s *ListFeatureConsistencyCheckJobsResponseBody) Validate() error {
 }
 
 type ListFeatureConsistencyCheckJobsResponseBodyFeatureConsistencyCheckJobs struct {
+	// The configuration of the job.
+	//
 	// example:
 	//
 	// {}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The ID of the feature consistency check configuration.
+	//
 	// example:
 	//
 	// 5
 	FeatureConsistencyCheckJobConfigId *string `json:"FeatureConsistencyCheckJobConfigId,omitempty" xml:"FeatureConsistencyCheckJobConfigId,omitempty"`
+	// The name of the feature consistency check job configuration.
+	//
 	// example:
 	//
 	// feature_consistency_check_1
 	FeatureConsistencyCheckJobConfigName *string `json:"FeatureConsistencyCheckJobConfigName,omitempty" xml:"FeatureConsistencyCheckJobConfigName,omitempty"`
+	// The ID of the feature consistency check job.
+	//
 	// example:
 	//
 	// 4
 	FeatureConsistencyCheckJobId *string `json:"FeatureConsistencyCheckJobId,omitempty" xml:"FeatureConsistencyCheckJobId,omitempty"`
+	// The end time of the job.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtEndTime *string `json:"GmtEndTime,omitempty" xml:"GmtEndTime,omitempty"`
+	// The start time of the job.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
-	GmtStartTime *string   `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
-	Logs         []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	GmtStartTime *string `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
+	// A list of log entries.
+	Logs []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	// The status of the job. Valid values:
+	//
+	// - `ToRun`: Waiting to run.
+	//
+	// - `Running`: In progress.
+	//
+	// - `Success`: Successful.
+	//
+	// - `Failure`: Failed.
+	//
+	// - `Stopped`: Stopped or canceled.
+	//
 	// example:
 	//
 	// Running

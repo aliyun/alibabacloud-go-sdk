@@ -20,24 +20,32 @@ type iQueryTrafficControlTaskItemReportRequest interface {
 }
 
 type QueryTrafficControlTaskItemReportRequest struct {
+	// The end time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2024-01-02 10:30:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The execution environment for the task. Valid values: Daily (development environment), Pre (staging environment), Prod (production environment).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Pre
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pairec_123****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The start time.
+	//
 	// This parameter is required.
 	//
 	// example:

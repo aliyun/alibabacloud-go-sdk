@@ -16,12 +16,14 @@ type iCreateSubCrowdResponseBody interface {
 }
 
 type CreateSubCrowdResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 9763624B-5FBB-5E3A-9193-B1ADB554CEAE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The sub-crowd ID.
+	//
 	// example:
 	//
 	// 3

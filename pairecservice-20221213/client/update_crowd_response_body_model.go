@@ -14,7 +14,7 @@ type iUpdateCrowdResponseBody interface {
 }
 
 type UpdateCrowdResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

@@ -22,16 +22,27 @@ type iSplitTrafficControlTargetRequest interface {
 }
 
 type SplitTrafficControlTargetRequest struct {
+	// The environment. Valid values:
+	//
+	// - `Pre`: pre-production environment.
+	//
+	// - `Prod`: production environment.
+	//
 	// example:
 	//
 	// Prod
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// The instance ID. For information about how to obtain the instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
+	//
 	// example:
 	//
 	// learn-pairec-xxx
-	InstanceId *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	SetPoints  []*int64 `json:"SetPoints,omitempty" xml:"SetPoints,omitempty" type:"Repeated"`
-	SetValues  []*int64 `json:"SetValues,omitempty" xml:"SetValues,omitempty" type:"Repeated"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is deprecated.
+	SetPoints []*int64 `json:"SetPoints,omitempty" xml:"SetPoints,omitempty" type:"Repeated"`
+	// The target values that correspond to the time intervals defined by the `TimePoints` parameter.
+	SetValues []*int64 `json:"SetValues,omitempty" xml:"SetValues,omitempty" type:"Repeated"`
+	// The time points that define the traffic-splitting intervals.
 	TimePoints []*int64 `json:"TimePoints,omitempty" xml:"TimePoints,omitempty" type:"Repeated"`
 }
 

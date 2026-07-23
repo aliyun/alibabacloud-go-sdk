@@ -20,15 +20,27 @@ type iCloneEngineConfigRequest interface {
 }
 
 type CloneEngineConfigRequest struct {
+	// The content of the engine configuration.
+	//
 	// example:
 	//
 	// {}
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The environment. Valid values:
+	//
+	// - Daily: The daily environment.
+	//
+	// - Pre: The pre-release environment.
+	//
+	// - Prod: The production environment.
+	//
 	// example:
 	//
 	// Pre
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// The instance ID. To obtain an instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
+	//
 	// example:
 	//
 	// pairec-cn-********

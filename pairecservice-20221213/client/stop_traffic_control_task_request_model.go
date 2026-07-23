@@ -18,14 +18,20 @@ type iStopTrafficControlTaskRequest interface {
 }
 
 type StopTrafficControlTaskRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The environment. Valid values: `Daily` (daily environment), `Pre` (pre-production environment), and `Prod` (production environment).
+	//
 	// example:
 	//
 	// Daily
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// pairec_123****

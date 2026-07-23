@@ -24,25 +24,34 @@ type iExportRecallManagementTableRequest interface {
 }
 
 type ExportRecallManagementTableRequest struct {
+  // The instance ID.
+  // 
   // example:
   // 
   // pairec-test1
   InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+  // The MaxCompute project name.
+  // 
   // example:
   // 
   // test
   MaxcomputeProjectName *string `json:"MaxcomputeProjectName,omitempty" xml:"MaxcomputeProjectName,omitempty"`
-  // maxcompute schema。
+  // The MaxCompute project schema.
   // 
   // example:
   // 
   // default
   MaxcomputeSchema *string `json:"MaxcomputeSchema,omitempty" xml:"MaxcomputeSchema,omitempty"`
+  // The name of the destination table in MaxCompute.
+  // 
   // example:
   // 
   // table-1
   MaxcomputeTableName *string `json:"MaxcomputeTableName,omitempty" xml:"MaxcomputeTableName,omitempty"`
+  // The table partitions to export. The value must be a JSON object where each key is a partition field and its value is the corresponding partition value.
   Partitions map[string]*string `json:"Partitions,omitempty" xml:"Partitions,omitempty"`
+  // The version ID of the recall management table. This parameter defaults to the current published version.
+  // 
   // example:
   // 
   // 20250213000000

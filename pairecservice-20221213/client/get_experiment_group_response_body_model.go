@@ -52,75 +52,140 @@ type iGetExperimentGroupResponseBody interface {
 }
 
 type GetExperimentGroupResponseBody struct {
+	// The configuration of the experiment group.
+	//
 	// example:
 	//
 	// {"RankBy": "Score"}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The ID of the crowd.
+	//
 	// example:
 	//
 	// 3
-	CrowdId         *string `json:"CrowdId,omitempty" xml:"CrowdId,omitempty"`
+	CrowdId *string `json:"CrowdId,omitempty" xml:"CrowdId,omitempty"`
+	// The method for targeting traffic to the experiment group. Valid values:
+	//
+	// - `All`: all traffic
+	//
+	// - `Filter`: traffic that matches the filter
+	//
+	// - `CrowdId`: traffic from the specified crowd
+	//
+	// - `Random`: a random percentage of traffic
+	//
+	// example:
+	//
+	// All
 	CrowdTargetType *string `json:"CrowdTargetType,omitempty" xml:"CrowdTargetType,omitempty"`
+	// The ID of the debug crowd.
+	//
 	// example:
 	//
 	// 4
 	DebugCrowdId *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
+	// The user IDs for debugging, separated by commas.
+	//
 	// example:
 	//
 	// 1124512470******,1124512471******,1124512472******
 	DebugUsers *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
+	// The description of the experiment group.
+	//
 	// example:
 	//
 	// This is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The distribution duration.
+	//
 	// example:
 	//
 	// 5
 	DistributionTimeDuration *int32 `json:"DistributionTimeDuration,omitempty" xml:"DistributionTimeDuration,omitempty"`
+	// The traffic distribution method.
+	//
+	// ● `UserId`: Distributes traffic by user ID.
+	//
+	// ● `TimeDuration`: Distributes traffic by time period.
+	//
 	// example:
 	//
 	// UserId
 	DistributionType *string `json:"DistributionType,omitempty" xml:"DistributionType,omitempty"`
+	// The filter.
+	//
 	// example:
 	//
 	// gender=female
-	Filter         *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The bucket IDs that correspond to the `RandomFlow` percentage. This parameter is returned only when `CrowdTargetType` is set to `Random`.
+	//
+	// example:
+	//
+	// 1,2,3,4
 	HoldingBuckets *string `json:"HoldingBuckets,omitempty" xml:"HoldingBuckets,omitempty"`
+	// The ID of the laboratory.
+	//
 	// example:
 	//
 	// 4
 	LaboratoryId *string `json:"LaboratoryId,omitempty" xml:"LaboratoryId,omitempty"`
+	// The ID of the layer.
+	//
 	// example:
 	//
 	// 3
 	LayerId *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
+	// The name of the experiment group.
+	//
 	// example:
 	//
 	// experiment_group1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Indicates whether an A/B test is required.
+	//
 	// example:
 	//
 	// true
 	NeedAA *bool `json:"NeedAA,omitempty" xml:"NeedAA,omitempty"`
+	// The owner of the experiment group.
+	//
 	// example:
 	//
 	// 1124512470******
-	Owner      *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	RandomFlow *int64  `json:"RandomFlow,omitempty" xml:"RandomFlow,omitempty"`
-	// Id of the request
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The percentage of traffic from 0 to 100 that is randomly allocated to this experiment group. This parameter is returned only when `CrowdTargetType` is set to `Random`.
+	//
+	// example:
+	//
+	// 20
+	RandomFlow *int64 `json:"RandomFlow,omitempty" xml:"RandomFlow,omitempty"`
+	// The request ID.
 	//
 	// example:
 	//
 	// BDB621CB-A81E-5D39-8793-39A365CBCC74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The reserved bucket IDs.
+	//
 	// example:
 	//
 	// 1,2,3,4
 	ReservedBuckets *string `json:"ReservedBuckets,omitempty" xml:"ReservedBuckets,omitempty"`
+	// The ID of the scene.
+	//
 	// example:
 	//
 	// 1
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// The status of the experiment group. Valid values:
+	//
+	// ● `Offline`: The experiment group is not launched.
+	//
+	// ● `Online`: The experiment group is launched.
+	//
+	// ● `Pushed`: The experiment group is fully launched.
+	//
 	// example:
 	//
 	// Offline

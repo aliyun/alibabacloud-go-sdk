@@ -18,14 +18,20 @@ type iGenerateAlgorithmCustomizationScriptResponseBody interface {
 }
 
 type GenerateAlgorithmCustomizationScriptResponseBody struct {
+	// The log ID.
+	//
 	// example:
 	//
 	// 4
 	LogId *string `json:"LogId,omitempty" xml:"LogId,omitempty"`
+	// The OSS address of the generated package.
+	//
 	// example:
 	//
 	// oss:xxxx
 	OssAddress *string `json:"OssAddress,omitempty" xml:"OssAddress,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6CF1E160-3F36-5E73-A170-C75504F05BBC

@@ -16,12 +16,14 @@ type iCreateSceneResponseBody interface {
 }
 
 type CreateSceneResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// FCF741D8-9C30-578E-807F-B935487DB34A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The scene ID.
+	//
 	// example:
 	//
 	// 3

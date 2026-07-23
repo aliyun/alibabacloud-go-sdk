@@ -14,7 +14,7 @@ type iUpdateExperimentResponseBody interface {
 }
 
 type UpdateExperimentResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

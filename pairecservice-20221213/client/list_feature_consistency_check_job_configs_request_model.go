@@ -22,24 +22,42 @@ type iListFeatureConsistencyCheckJobConfigsRequest interface {
 }
 
 type ListFeatureConsistencyCheckJobConfigsRequest struct {
+	// The instance ID. To obtain an instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pairec-cn-********
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The sort order.
+	//
+	// - `ASC`: Ascending order.
+	//
+	// - `DESC`: Descending order.
+	//
 	// example:
 	//
 	// ASC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. The value starts at 1. The default value is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The field to sort by.
+	//
+	// - `GmtCreateTime`: Creation time.
+	//
+	// - `GmtModifiedTime`: Modified time.
+	//
 	// example:
 	//
 	// GmtCreateTime

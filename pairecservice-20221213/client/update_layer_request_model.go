@@ -18,18 +18,24 @@ type iUpdateLayerRequest interface {
 }
 
 type UpdateLayerRequest struct {
+	// The layer description.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// This is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The instance ID. You can obtain this ID by calling the ListInstances operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pairec-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The layer name.
+	//
 	// This parameter is required.
 	//
 	// example:

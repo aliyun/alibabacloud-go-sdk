@@ -14,6 +14,8 @@ type iOnlineRecallManagementServiceRequest interface {
 }
 
 type OnlineRecallManagementServiceRequest struct {
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// pairec-cn-test123

@@ -16,10 +16,20 @@ type iQueryTrafficControlTaskDeployResultRequest interface {
 }
 
 type QueryTrafficControlTaskDeployResultRequest struct {
+	// The environment. Valid values:
+	//
+	// - Daily: daily environment.
+	//
+	// - Pre: staging environment.
+	//
+	// - Prod: production environment.
+	//
 	// example:
 	//
 	// Daily
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// pairec_123****

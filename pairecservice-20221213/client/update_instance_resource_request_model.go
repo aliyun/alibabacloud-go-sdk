@@ -16,10 +16,14 @@ type iUpdateInstanceResourceRequest interface {
 }
 
 type UpdateInstanceResourceRequest struct {
+	// The resource configuration.
+	//
 	// example:
 	//
 	// {}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The resource address.
+	//
 	// example:
 	//
 	// bucket-test-123

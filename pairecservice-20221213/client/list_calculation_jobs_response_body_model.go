@@ -18,11 +18,16 @@ type iListCalculationJobsResponseBody interface {
 }
 
 type ListCalculationJobsResponseBody struct {
+	// A list of calculation jobs.
 	CalculationJobs []*ListCalculationJobsResponseBodyCalculationJobs `json:"CalculationJobs,omitempty" xml:"CalculationJobs,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F7AC05FF-EDE7-5C2B-B9AE-33D6DF4178BA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 10
@@ -78,31 +83,58 @@ func (s *ListCalculationJobsResponseBody) Validate() error {
 }
 
 type ListCalculationJobsResponseBodyCalculationJobs struct {
+	// The name of the A/B metric.
+	//
 	// example:
 	//
 	// pv
 	ABMetricName *string `json:"ABMetricName,omitempty" xml:"ABMetricName,omitempty"`
+	// The business date.
+	//
 	// example:
 	//
 	// 2021-12-15
 	BizDate *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
+	// The calculation job ID.
+	//
 	// example:
 	//
 	// 2
 	CalculationJobId *string `json:"CalculationJobId,omitempty" xml:"CalculationJobId,omitempty"`
+	// The job configuration.
+	//
 	// example:
 	//
 	// {}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The time when the job was run.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
-	GmtRanTime *string   `json:"GmtRanTime,omitempty" xml:"GmtRanTime,omitempty"`
+	GmtRanTime *string `json:"GmtRanTime,omitempty" xml:"GmtRanTime,omitempty"`
+	// The job messages.
 	JobMessage []*string `json:"JobMessage,omitempty" xml:"JobMessage,omitempty" type:"Repeated"`
+	// The source of the job. Valid values:
+	//
+	// - CronOffline: The job is an offline scheduled task.
+	//
+	// - DataRerun: The job is a data rerun task.
+	//
 	// example:
 	//
 	// CronOffline
 	JobSource *string `json:"JobSource,omitempty" xml:"JobSource,omitempty"`
+	// The status of the job. Valid values:
+	//
+	// - Success
+	//
+	// - Failure
+	//
+	// - Initializing
+	//
+	// - Running
+	//
 	// example:
 	//
 	// Success

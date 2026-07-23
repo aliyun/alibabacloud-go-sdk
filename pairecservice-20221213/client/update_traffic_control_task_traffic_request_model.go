@@ -20,15 +20,22 @@ type iUpdateTrafficControlTaskTrafficRequest interface {
 }
 
 type UpdateTrafficControlTaskTrafficRequest struct {
+	// The environment. Valid values: `Daily` (daily environment), `Pre` (pre-release environment), and `Prod` (production environment).
+	//
 	// example:
 	//
 	// Daily
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// learn-pairec-cn-xxx
-	InstanceId *string                                           `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Traffics   []*UpdateTrafficControlTaskTrafficRequestTraffics `json:"Traffics,omitempty" xml:"Traffics,omitempty" type:"Repeated"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// A list of traffic objects to report.
+	Traffics []*UpdateTrafficControlTaskTrafficRequestTraffics `json:"Traffics,omitempty" xml:"Traffics,omitempty" type:"Repeated"`
+	// This parameter is invalid and should be ignored.
+	//
 	// example:
 	//
 	// null
@@ -93,26 +100,38 @@ func (s *UpdateTrafficControlTaskTrafficRequest) Validate() error {
 }
 
 type UpdateTrafficControlTaskTrafficRequestTraffics struct {
+	// The identifier for the traffic object. This can be an item ID, such as `item1`, an experiment ID, a global identifier (`ER_ALL`), or a value in `L1_EG1_E1` format.
+	//
 	// example:
 	//
 	// item1
 	ItemOrExperimentId *string `json:"ItemOrExperimentId,omitempty" xml:"ItemOrExperimentId,omitempty"`
+	// The timestamp from the behavior log. This indicates that the log data is current as of this timestamp.
+	//
 	// example:
 	//
 	// 2024-01-01T02:05:06.111Z
 	RecordTime *string `json:"RecordTime,omitempty" xml:"RecordTime,omitempty"`
+	// The configured target traffic for the traffic control target.
+	//
 	// example:
 	//
 	// 10.0
 	TrafficControlTargetAimTraffic *float64 `json:"TrafficControlTargetAimTraffic,omitempty" xml:"TrafficControlTargetAimTraffic,omitempty"`
+	// The traffic control target ID.
+	//
 	// example:
 	//
 	// 1
 	TrafficControlTargetId *string `json:"TrafficControlTargetId,omitempty" xml:"TrafficControlTargetId,omitempty"`
+	// The actual traffic volume observed for the traffic control target.
+	//
 	// example:
 	//
 	// 100000
 	TrafficControlTargetTraffic *int64 `json:"TrafficControlTargetTraffic,omitempty" xml:"TrafficControlTargetTraffic,omitempty"`
+	// The total traffic for the traffic control task.
+	//
 	// example:
 	//
 	// 1000000

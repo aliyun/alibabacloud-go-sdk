@@ -40,60 +40,86 @@ type iGetLaboratoryResponseBody interface {
 }
 
 type GetLaboratoryResponseBody struct {
+	// The number of buckets.
+	//
 	// example:
 	//
 	// 100
 	BucketCount *int32 `json:"BucketCount,omitempty" xml:"BucketCount,omitempty"`
+	// The bucketing method. Valid values:
+	//
 	// example:
 	//
 	// Filter
 	BucketType *string `json:"BucketType,omitempty" xml:"BucketType,omitempty"`
+	// The assigned buckets.
+	//
 	// example:
 	//
 	// 1,2,3,10-20
 	Buckets *string `json:"Buckets,omitempty" xml:"Buckets,omitempty"`
+	// The crowd ID.
+	//
 	// example:
 	//
 	// 3
 	CrowdId *string `json:"CrowdId,omitempty" xml:"CrowdId,omitempty"`
+	// The debug crowd ID.
+	//
 	// example:
 	//
 	// 3
 	DebugCrowdId *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
+	// The debug users.
+	//
 	// example:
 	//
 	// user1,user2,user3
 	DebugUsers *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
+	// The laboratory description.
+	//
 	// example:
 	//
 	// This is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The environment. Valid values:
+	//
 	// example:
 	//
 	// Daily
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// The filter.
+	//
 	// example:
 	//
 	// filter=xxx
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The laboratory name.
+	//
 	// example:
 	//
 	// laboratory1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 1C0898E5-9220-5443-B2D9-445FF0688215
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The scene ID.
+	//
 	// example:
 	//
 	// 3
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// The status of the laboratory. Valid values:
+	//
 	// example:
 	//
 	// Offline
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The laboratory type. Valid values:
+	//
 	// example:
 	//
 	// Base

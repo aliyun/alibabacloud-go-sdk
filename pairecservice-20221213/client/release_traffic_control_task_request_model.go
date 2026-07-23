@@ -16,10 +16,14 @@ type iReleaseTrafficControlTaskRequest interface {
 }
 
 type ReleaseTrafficControlTaskRequest struct {
+	// The execution environment for the traffic control task. Valid values: `Daily`, `Pre`, and `Prod`.
+	//
 	// example:
 	//
 	// Daily
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// pairec_123****

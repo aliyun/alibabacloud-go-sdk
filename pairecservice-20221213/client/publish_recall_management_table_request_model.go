@@ -22,18 +22,28 @@ type iPublishRecallManagementTableRequest interface {
 }
 
 type PublishRecallManagementTableRequest struct {
+	// **The instance ID.**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pairec-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// **The synchronization mode.*	- Valid values:
+	//
+	// - `Merge`: Adds new data and updates existing data.
+	//
 	// example:
 	//
 	// Merge
-	Mode       *string            `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	Partition  map[string]*string `json:"Partition,omitempty" xml:"Partition,omitempty"`
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The table partitions to publish.
+	Partition map[string]*string `json:"Partition,omitempty" xml:"Partition,omitempty"`
+	// The table partitions to publish.
 	Partitions map[string]*string `json:"Partitions,omitempty" xml:"Partitions,omitempty"`
+	// **Specifies whether to skip the threshold check during table synchronization.**
+	//
 	// example:
 	//
 	// false

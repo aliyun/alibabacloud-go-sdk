@@ -28,40 +28,56 @@ type iUpdateExperimentRequest interface {
 }
 
 type UpdateExperimentRequest struct {
+	// The experiment configuration, specified as a JSON string.
+	//
 	// example:
 	//
 	// {"RankBy": "Score"}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The ID of the debug crowd. To obtain this ID, call the ListCrowds operation.
+	//
 	// example:
 	//
 	// 3
 	DebugCrowdId *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
+	// The UIDs for debug users, specified as a comma-separated string. Each UID must belong to an Alibaba Cloud account or RAM user.
+	//
 	// example:
 	//
 	// 1124512470******,1124512471******,1124512472******
 	DebugUsers *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
+	// The description of the experiment.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// This is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The percentage of traffic to allocate to the experiment.
+	//
 	// example:
 	//
 	// 100
 	FlowPercent *int32 `json:"FlowPercent,omitempty" xml:"FlowPercent,omitempty"`
+	// The ID of the instance. To obtain this ID, call the ListInstances operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the experiment.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// experiment_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the experiment. Valid values: ● Baseline: A baseline experiment. ● Normal: A normal experiment.
+	//
 	// This parameter is required.
 	//
 	// example:

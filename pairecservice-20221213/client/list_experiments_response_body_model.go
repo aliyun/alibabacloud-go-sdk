@@ -18,13 +18,16 @@ type iListExperimentsResponseBody interface {
 }
 
 type ListExperimentsResponseBody struct {
+	// The list of experiments.
 	Experiments []*ListExperimentsResponseBodyExperiments `json:"Experiments,omitempty" xml:"Experiments,omitempty" type:"Repeated"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 68075085-1A7D-55C2-B51D-7AD9B02A6DD6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of experiments returned.
+	//
 	// example:
 	//
 	// 10
@@ -80,70 +83,112 @@ func (s *ListExperimentsResponseBody) Validate() error {
 }
 
 type ListExperimentsResponseBodyExperiments struct {
+	// The alias for the experiment ID.
+	//
 	// example:
 	//
 	// L1#EG1#E1
 	AliasExperimentId *string `json:"AliasExperimentId,omitempty" xml:"AliasExperimentId,omitempty"`
+	// The allocated bucket numbers.
+	//
 	// example:
 	//
 	// 1,2,3
 	Buckets *string `json:"Buckets,omitempty" xml:"Buckets,omitempty"`
+	// The configuration of the experiment.
+	//
 	// example:
 	//
 	// {}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The ID of the debug crowd.
+	//
 	// example:
 	//
 	// 3
 	DebugCrowdId *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
+	// A comma-separated list of user IDs for debugging.
+	//
 	// example:
 	//
 	// uid1,uid2,uid3
 	DebugUsers *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
+	// The description of the experiment.
+	//
 	// example:
 	//
 	// This is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the experiment group.
+	//
 	// example:
 	//
 	// 3
 	ExperimentGroupId *string `json:"ExperimentGroupId,omitempty" xml:"ExperimentGroupId,omitempty"`
+	// The ID of the experiment.
+	//
 	// example:
 	//
 	// 3
 	ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	// The percentage of flow allocated to the experiment.
+	//
 	// example:
 	//
 	// 100
 	FlowPercent *int32 `json:"FlowPercent,omitempty" xml:"FlowPercent,omitempty"`
+	// The timestamp indicating when the experiment was created.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The timestamp indicating when the experiment was last modified.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The ID of the laboratory.
+	//
 	// example:
 	//
 	// 3
 	LaboratoryId *string `json:"LaboratoryId,omitempty" xml:"LaboratoryId,omitempty"`
+	// The ID of the layer.
+	//
 	// example:
 	//
 	// 3
 	LayerId *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
+	// The name of the experiment.
+	//
 	// example:
 	//
 	// experiment_test1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the scene.
+	//
 	// example:
 	//
 	// 3
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// The status of the experiment. Valid values:
+	//
+	// - `Offline`: The experiment is inactive and does not receive flow.
+	//
+	// - `Online`: The experiment is active and can receive flow.
+	//
 	// example:
 	//
 	// Offline
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the experiment. Valid values:
+	//
+	// - `Baseline`: The control experiment.
+	//
+	// - `Normal`: A variant experiment.
+	//
 	// example:
 	//
 	// Baseline

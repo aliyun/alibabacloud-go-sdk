@@ -14,7 +14,7 @@ type iPushAllExperimentResponseBody interface {
 }
 
 type PushAllExperimentResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

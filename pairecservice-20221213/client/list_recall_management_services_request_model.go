@@ -26,30 +26,52 @@ type iListRecallManagementServicesRequest interface {
 }
 
 type ListRecallManagementServicesRequest struct {
+	// **The ID of the instance.**
+	//
 	// example:
 	//
 	// pairec-cn-test123
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is not yet available.
+	//
 	// example:
 	//
 	// ""
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// This parameter is not yet available.
+	//
 	// example:
 	//
 	// 0
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// **The sort order.*	- Valid values:
+	//
+	// - ASC: ascending order.
+	//
+	// - DESC: descending order.
+	//
 	// example:
 	//
 	// ASC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// **The number of the page to return.**
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// **The number of entries to return on each page.**
+	//
 	// example:
 	//
 	// 50
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// **The field to sort by.*	- Valid values:
+	//
+	// - GmtCreateTime: Sort by creation time.
+	//
+	// - GmtModifiedTime: Sort by modification time.
+	//
 	// example:
 	//
 	// GmtCreateTime

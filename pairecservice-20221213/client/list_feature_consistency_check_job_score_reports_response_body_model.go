@@ -20,15 +20,22 @@ type iListFeatureConsistencyCheckJobScoreReportsResponseBody interface {
 }
 
 type ListFeatureConsistencyCheckJobScoreReportsResponseBody struct {
+	// The data path.
+	//
 	// example:
 	//
 	// http://*******
 	DataPath *string `json:"DataPath,omitempty" xml:"DataPath,omitempty"`
+	// The OSS path.
+	//
 	// example:
 	//
 	// oss://********
-	OssPath            *string                                                                     `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
+	OssPath *string `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
+	// A list of score difference reports.
 	ReportsOfScoreDiff []*ListFeatureConsistencyCheckJobScoreReportsResponseBodyReportsOfScoreDiff `json:"ReportsOfScoreDiff,omitempty" xml:"ReportsOfScoreDiff,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// F0AB6527-093F-5C44-B3BD-42C8C210C619
@@ -93,22 +100,32 @@ func (s *ListFeatureConsistencyCheckJobScoreReportsResponseBody) Validate() erro
 }
 
 type ListFeatureConsistencyCheckJobScoreReportsResponseBodyReportsOfScoreDiff struct {
+	// The item ID.
+	//
 	// example:
 	//
 	// 4
 	LogItemId *string `json:"LogItemId,omitempty" xml:"LogItemId,omitempty"`
+	// The request ID recorded in the log.
+	//
 	// example:
 	//
 	// 323
 	LogRequestId *string `json:"LogRequestId,omitempty" xml:"LogRequestId,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 3
 	LogUserId *string `json:"LogUserId,omitempty" xml:"LogUserId,omitempty"`
+	// The score difference.
+	//
 	// example:
 	//
 	// 0.00000234
 	ScoreDiff *string `json:"ScoreDiff,omitempty" xml:"ScoreDiff,omitempty"`
+	// The score difference details.
+	//
 	// example:
 	//
 	// {}

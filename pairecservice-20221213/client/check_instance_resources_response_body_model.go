@@ -16,10 +16,13 @@ type iCheckInstanceResourcesResponseBody interface {
 }
 
 type CheckInstanceResourcesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 9763624B-5FBB-5E3A-9193-B1ADB554CEAE
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of resources.
 	Resources []*CheckInstanceResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 }
 
@@ -63,14 +66,56 @@ func (s *CheckInstanceResourcesResponseBody) Validate() error {
 }
 
 type CheckInstanceResourcesResponseBodyResources struct {
+	// The access status. Valid values:
+	//
+	// - Success
+	//
+	// - Failure
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The resource type. Valid values:
+	//
+	// - Hologres
+	//
+	// - EAS
+	//
+	// - BE
+	//
+	// - Rec
+	//
+	// - Platform
+	//
+	// - SLS
+	//
+	// - DataHub
+	//
+	// - Kafka
+	//
+	// - Flinkvvp
+	//
+	// - ACR
+	//
+	// - OSS
+	//
+	// - DataWorks
+	//
+	// - PAI
+	//
+	// - MaxCompute
+	//
+	// - GraphCompute
+	//
+	// - Redis
+	//
 	// example:
 	//
 	// OSS
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The resource URI.
+	//
 	// example:
 	//
 	// bucket-test-123

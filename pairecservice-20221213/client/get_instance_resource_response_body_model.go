@@ -30,38 +30,124 @@ type iGetInstanceResourceResponseBody interface {
 }
 
 type GetInstanceResourceResponseBody struct {
+	// The resource category. Valid values:
+	//
+	// - DataManagement
+	//
+	// - Engine
+	//
+	// - Monitor
+	//
 	// example:
 	//
 	// DataManagement
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The resource configuration.
+	//
 	// example:
 	//
 	// {}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2020-10-13 17:34:52
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The last modification time.
+	//
 	// example:
 	//
 	// 2020-10-13 17:34:52
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The resource group.
+	//
+	// If `Category` is `DataManagement`, the valid values are:
+	//
+	// - storage
+	//
+	// - modelpipeline
+	//
+	// - datastorage
+	//
+	// - modeltrain
+	//
+	// If `Category` is `Engine`, the valid values are:
+	//
+	// - feature
+	//
+	// - predict
+	//
+	// - recall
+	//
+	// - recengine
+	//
+	// If `Category` is `Monitor`, the valid values are:
+	//
+	// - logs
+	//
+	// - logsback
+	//
+	// - coldstart
+	//
+	// - deploy
+	//
 	// example:
 	//
 	// storage
 	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D75C43DC-3D3A-5CC8-9AAC-8C77306C433B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resource ID.
+	//
 	// example:
 	//
 	// reso-2s416t***
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource type. Valid values:
+	//
+	// - Hologres
+	//
+	// - EAS
+	//
+	// - BE
+	//
+	// - Rec
+	//
+	// - Platform
+	//
+	// - SLS
+	//
+	// - DataHub
+	//
+	// - ApsaraMQ for Kafka
+	//
+	// - Realtime Compute for Apache Flink
+	//
+	// - ACR
+	//
+	// - OSS
+	//
+	// - DataWorks
+	//
+	// - PAI
+	//
+	// - MaxCompute
+	//
+	// - Graph Compute Service
+	//
+	// - ApsaraDB for Redis
+	//
 	// example:
 	//
 	// OSS
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The resource URI.
+	//
 	// example:
 	//
 	// bucket-test-123

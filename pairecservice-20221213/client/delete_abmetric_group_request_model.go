@@ -14,6 +14,8 @@ type iDeleteABMetricGroupRequest interface {
 }
 
 type DeleteABMetricGroupRequest struct {
+	// The ID of the instance. You can obtain this value by calling the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:

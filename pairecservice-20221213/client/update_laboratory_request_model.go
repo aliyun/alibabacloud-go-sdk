@@ -34,52 +34,74 @@ type iUpdateLaboratoryRequest interface {
 }
 
 type UpdateLaboratoryRequest struct {
+	// The number of buckets.
+	//
 	// example:
 	//
 	// 24
 	BucketCount *int32 `json:"BucketCount,omitempty" xml:"BucketCount,omitempty"`
+	// The bucketing method. Valid values: ● Uid: Bucketing by UID (default). ● UidHash: Bucketing by UID hash. ● Filter: Bucketing by a filter condition.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Filter
 	BucketType *string `json:"BucketType,omitempty" xml:"BucketType,omitempty"`
+	// The assigned bucket numbers.
+	//
 	// example:
 	//
 	// 1,2,3,10-20
 	Buckets *string `json:"Buckets,omitempty" xml:"Buckets,omitempty"`
+	// The debug crowd ID.
+	//
 	// example:
 	//
 	// 3
 	DebugCrowdId *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
+	// The UIDs of debugging users. These UIDs must belong to an Alibaba Cloud main account or a sub-account. Separate multiple UIDs with a comma (,).
+	//
 	// example:
 	//
 	// 1124512470******,1124512471******,1124512472******
 	DebugUsers *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
+	// The laboratory description.
+	//
 	// example:
 	//
 	// This is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The environment. Valid values: ● Daily: The daily environment. ● Pre: The staging environment. ● Prod: The production environment.
+	//
 	// example:
 	//
 	// Daily
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// The filter condition.
+	//
 	// example:
 	//
 	// filter=xxx
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The instance ID. Call the ListInstances operation to obtain the ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pairec-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The laboratory name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// laboratory1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The laboratory type. Valid values: ● Base ● NonBase
+	//
 	// This parameter is required.
 	//
 	// example:

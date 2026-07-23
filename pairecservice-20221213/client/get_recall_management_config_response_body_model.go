@@ -18,6 +18,7 @@ type iGetRecallManagementConfigResponseBody interface {
 }
 
 type GetRecallManagementConfigResponseBody struct {
+	// The network configuration information.
 	NetworkConfigs []*GetRecallManagementConfigResponseBodyNetworkConfigs `json:"NetworkConfigs,omitempty" xml:"NetworkConfigs,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -25,6 +26,8 @@ type GetRecallManagementConfigResponseBody struct {
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// scene_test
@@ -80,26 +83,47 @@ func (s *GetRecallManagementConfigResponseBody) Validate() error {
 }
 
 type GetRecallManagementConfigResponseBodyNetworkConfigs struct {
+	// The private endpoint.
+	//
 	// example:
 	//
 	// http://xxx
 	PrivateLinkAddress *string `json:"PrivateLinkAddress,omitempty" xml:"PrivateLinkAddress,omitempty"`
+	// The public endpoint.
+	//
 	// example:
 	//
 	// ""
 	PublicEndpoint *string `json:"PublicEndpoint,omitempty" xml:"PublicEndpoint,omitempty"`
+	// The network connectivity status. Valid values:
+	//
+	// - Connecting: connecting.
+	//
+	// - Connected: connected.
+	//
+	// - ConnectionFailed: connection failed.
+	//
+	// - Updating: updating.
+	//
+	// - UpdateFailed: update failed.
+	//
 	// example:
 	//
 	// Connecting
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The public network connection token.
+	//
 	// example:
 	//
 	// ""
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// The virtual private cloud (VPC) ID.
+	//
 	// example:
 	//
 	// vpc-xxx
-	VpcId      *string            `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The zones.
 	VswitchIds map[string]*string `json:"VswitchIds,omitempty" xml:"VswitchIds,omitempty"`
 }
 

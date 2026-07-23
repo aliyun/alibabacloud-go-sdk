@@ -20,24 +20,38 @@ type iCreateFeatureConsistencyCheckJobRequest interface {
 }
 
 type CreateFeatureConsistencyCheckJobRequest struct {
+	// The environment where the job runs. Valid values:
+	//
+	// - Daily: the daily environment
+	//
+	// - Pre: the pre-production environment
+	//
+	// - Prod: the production environment
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Pre
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// The feature consistency check job configuration ID. You can call the [ListFeatureConsistencyCheckJobConfigs](https://help.aliyun.com/document_detail/2557567.html) operation to obtain this ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3
 	FeatureConsistencyCheckJobConfigId *string `json:"FeatureConsistencyCheckJobConfigId,omitempty" xml:"FeatureConsistencyCheckJobConfigId,omitempty"`
+	// The instance ID. You can obtain the instance ID on the [Instances](https://help.aliyun.com/document_detail/2411819.html) page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pairec-cn-********
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The sampling duration, in minutes.
+	//
 	// This parameter is required.
 	//
 	// example:

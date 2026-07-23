@@ -18,11 +18,16 @@ type iListDataDiagnosisJobsResponseBody interface {
 }
 
 type ListDataDiagnosisJobsResponseBody struct {
+	// The returned data diagnosis jobs.
 	DataDiagnosisJobs []*ListDataDiagnosisJobsResponseBodyDataDiagnosisJobs `json:"DataDiagnosisJobs,omitempty" xml:"DataDiagnosisJobs,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 20
@@ -78,40 +83,70 @@ func (s *ListDataDiagnosisJobsResponseBody) Validate() error {
 }
 
 type ListDataDiagnosisJobsResponseBodyDataDiagnosisJobs struct {
+	// The business date.
+	//
 	// example:
 	//
 	// 2023-05-28
 	BizDate *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
+	// The job configuration.
+	//
 	// example:
 	//
 	// {}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The data diagnosis configuration ID.
+	//
 	// example:
 	//
 	// 3
-	DataDiagnosisConfigId   *string `json:"DataDiagnosisConfigId,omitempty" xml:"DataDiagnosisConfigId,omitempty"`
+	DataDiagnosisConfigId *string `json:"DataDiagnosisConfigId,omitempty" xml:"DataDiagnosisConfigId,omitempty"`
+	// The data diagnosis configuration name.
+	//
+	// example:
+	//
+	// 异常行为分析-xxx
 	DataDiagnosisConfigName *string `json:"DataDiagnosisConfigName,omitempty" xml:"DataDiagnosisConfigName,omitempty"`
+	// The data diagnosis job ID.
+	//
 	// example:
 	//
 	// 3
 	DataDiagnosisJobId *string `json:"DataDiagnosisJobId,omitempty" xml:"DataDiagnosisJobId,omitempty"`
+	// The time when the job was created.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time when the job started.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtStartTime *string `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
+	// The job source. Valid values:
+	//
+	// - Rerun: A manual rerun.
+	//
+	// - Cycle: A periodic run.
+	//
+	// - ByInitializing: Generated during initialization.
+	//
 	// example:
 	//
 	// Cycle
-	JobSource *string   `json:"JobSource,omitempty" xml:"JobSource,omitempty"`
-	Logs      []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	JobSource *string `json:"JobSource,omitempty" xml:"JobSource,omitempty"`
+	// The log messages.
+	Logs []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	// The task status.
+	//
 	// example:
 	//
 	// Initializing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The data diagnosis type.
+	//
 	// example:
 	//
 	// ChangeRate

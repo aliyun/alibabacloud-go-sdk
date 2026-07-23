@@ -16,10 +16,14 @@ type iCloneEngineConfigResponseBody interface {
 }
 
 type CloneEngineConfigResponseBody struct {
+	// The engine configuration ID.
+	//
 	// example:
 	//
 	// 2
 	EngineConfigId *string `json:"EngineConfigId,omitempty" xml:"EngineConfigId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A04CB8C0-E74A-5E83-BC61-64D153574EC7

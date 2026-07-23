@@ -16,11 +16,13 @@ type iCreateExperimentGroupResponseBody interface {
 }
 
 type CreateExperimentGroupResponseBody struct {
+	// The ID of the experiment group.
+	//
 	// example:
 	//
 	// 3
 	ExperimentGroupId *string `json:"ExperimentGroupId,omitempty" xml:"ExperimentGroupId,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//

@@ -18,14 +18,19 @@ type iListTrafficControlTargetTrafficHistoryResponseBody interface {
 }
 
 type ListTrafficControlTargetTrafficHistoryResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total count of historical records.
+	//
 	// example:
 	//
 	// 10
-	TotalCount                         *string                                                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// A list of the traffic control history records.
 	TrafficControlTaskTrafficHistories []*ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories `json:"TrafficControlTaskTrafficHistories,omitempty" xml:"TrafficControlTaskTrafficHistories,omitempty" type:"Repeated"`
 }
 
@@ -78,26 +83,38 @@ func (s *ListTrafficControlTargetTrafficHistoryResponseBody) Validate() error {
 }
 
 type ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories struct {
+	// The ID of the experiment.
+	//
 	// example:
 	//
 	// E1
 	ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	// The ID of the item.
+	//
 	// example:
 	//
 	// 1001
 	ItemId *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	// The timestamp of the record.
+	//
 	// example:
 	//
 	// 2023-10-10 10:10:58
 	RecordTime *string `json:"RecordTime,omitempty" xml:"RecordTime,omitempty"`
+	// The intended traffic for the traffic control target.
+	//
 	// example:
 	//
 	// 30
 	TrafficControlTargetAimTraffic *float64 `json:"TrafficControlTargetAimTraffic,omitempty" xml:"TrafficControlTargetAimTraffic,omitempty"`
+	// The actual traffic of the traffic control target.
+	//
 	// example:
 	//
 	// 20
 	TrafficControlTargetTraffic *float64 `json:"TrafficControlTargetTraffic,omitempty" xml:"TrafficControlTargetTraffic,omitempty"`
+	// The overall traffic of the traffic control task.
+	//
 	// example:
 	//
 	// 60

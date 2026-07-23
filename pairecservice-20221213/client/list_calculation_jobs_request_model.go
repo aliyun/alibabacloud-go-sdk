@@ -22,26 +22,44 @@ type iListCalculationJobsRequest interface {
 }
 
 type ListCalculationJobsRequest struct {
+	// The instance ID. To obtain this ID, call the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pairec-cn-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The scene ID. To obtain this ID, call the [ListScenes](https://help.aliyun.com/document_detail/2402581.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// The status of the calculation job. Valid values:
+	//
+	// - Success
+	//
+	// - Failure
+	//
+	// - Initializing
+	//
+	// - Running
+	//
 	// example:
 	//
 	// Success

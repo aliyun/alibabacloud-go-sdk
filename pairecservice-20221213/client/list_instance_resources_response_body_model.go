@@ -18,11 +18,16 @@ type iListInstanceResourcesResponseBody interface {
 }
 
 type ListInstanceResourcesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 9763624B-5FBB-5E3A-9193-B1ADB554CEAE
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of resource objects.
 	Resources []*ListInstanceResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	// The total number of resources.
+	//
 	// example:
 	//
 	// 10
@@ -78,34 +83,118 @@ func (s *ListInstanceResourcesResponseBody) Validate() error {
 }
 
 type ListInstanceResourcesResponseBodyResources struct {
+	// The category of the resource. Valid values:
+	//
+	// - DataManagement
+	//
+	// - Engine
+	//
+	// - Monitor
+	//
 	// example:
 	//
 	// DataManagement
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The configuration of the resource.
+	//
 	// example:
 	//
 	// {}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2020-10-13 17:34:52
 	GmtCreateAt *string `json:"GmtCreateAt,omitempty" xml:"GmtCreateAt,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 2020-10-13 17:34:52
 	GmtModifiedAt *string `json:"GmtModifiedAt,omitempty" xml:"GmtModifiedAt,omitempty"`
+	// The group of the resource.
+	//
+	// If `Category` is `DataManagement`, valid values are:
+	//
+	// - storage
+	//
+	// - modelpipeline
+	//
+	// - datastorage
+	//
+	// - modeltrain
+	//
+	// If `Category` is `Engine`, valid values are:
+	//
+	// - feature
+	//
+	// - predict
+	//
+	// - recall
+	//
+	// - recengine
+	//
+	// If `Category` is `Monitor`, valid values are:
+	//
+	// - logs
+	//
+	// - logsback
+	//
+	// - coldstart
+	//
+	// - deploy
+	//
 	// example:
 	//
 	// storage
 	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// The resource ID.
+	//
 	// example:
 	//
 	// reso-2s416t***
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource.
+	//
+	// - Hologres
+	//
+	// - EAS
+	//
+	// - BE
+	//
+	// - Rec
+	//
+	// - Platform
+	//
+	// - SLS
+	//
+	// - DataHub
+	//
+	// - ApsaraMQ for Kafka
+	//
+	// - Realtime Compute for Apache Flink
+	//
+	// - ACR
+	//
+	// - OSS
+	//
+	// - DataWorks
+	//
+	// - PAI
+	//
+	// - MaxCompute
+	//
+	// - Graph Compute Service
+	//
+	// - ApsaraDB for Redis
+	//
 	// example:
 	//
 	// OSS
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The resource URI.
+	//
 	// example:
 	//
 	// bucket-test-123

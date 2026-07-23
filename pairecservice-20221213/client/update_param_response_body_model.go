@@ -14,7 +14,7 @@ type iUpdateParamResponseBody interface {
 }
 
 type UpdateParamResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

@@ -16,10 +16,14 @@ type iUpdateParamRequest interface {
 }
 
 type UpdateParamRequest struct {
+	// The instance ID. You can retrieve this ID by calling the ListInstances API.
+	//
 	// example:
 	//
 	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The parameter\\"s value.
+	//
 	// example:
 	//
 	// house

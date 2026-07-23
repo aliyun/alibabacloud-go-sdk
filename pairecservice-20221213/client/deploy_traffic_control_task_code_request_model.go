@@ -18,15 +18,20 @@ type iDeployTrafficControlTaskCodeRequest interface {
 }
 
 type DeployTrafficControlTaskCodeRequest struct {
+	// The deployment environment. Valid values: Daily (daily environment), Pre (pre-production environment), and Prod (production environment).
+	//
 	// example:
 	//
 	// Daily
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// pairec-test1
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RetryDeploy *bool   `json:"RetryDeploy,omitempty" xml:"RetryDeploy,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether to automatically retry a failed deployment.
+	RetryDeploy *bool `json:"RetryDeploy,omitempty" xml:"RetryDeploy,omitempty"`
 }
 
 func (s DeployTrafficControlTaskCodeRequest) String() string {

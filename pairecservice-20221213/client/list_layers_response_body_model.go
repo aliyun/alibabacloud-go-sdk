@@ -18,13 +18,16 @@ type iListLayersResponseBody interface {
 }
 
 type ListLayersResponseBody struct {
+	// An array of layers.
 	Layers []*ListLayersResponseBodyLayers `json:"Layers,omitempty" xml:"Layers,omitempty" type:"Repeated"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 518C64F6-DFF7-11ED-85B0-00163E14B3D1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total count of layers.
+	//
 	// example:
 	//
 	// 10
@@ -80,24 +83,44 @@ func (s *ListLayersResponseBody) Validate() error {
 }
 
 type ListLayersResponseBodyLayers struct {
+	// The layer description.
+	//
 	// example:
 	//
 	// This is a test.
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the layer was created.
+	//
+	// example:
+	//
+	// 2024-05-30T02:02:28.000Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The laboratory ID.
+	//
 	// example:
 	//
 	// 3
 	LaboratoryId *string `json:"LaboratoryId,omitempty" xml:"LaboratoryId,omitempty"`
+	// The layer ID.
+	//
 	// example:
 	//
 	// 3
 	LayerId *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
+	// The layer name.
+	//
 	// example:
 	//
 	// layer1
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ResidualFlow *int64  `json:"ResidualFlow,omitempty" xml:"ResidualFlow,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The remaining traffic for the layer.
+	//
+	// example:
+	//
+	// 10
+	ResidualFlow *int64 `json:"ResidualFlow,omitempty" xml:"ResidualFlow,omitempty"`
+	// The scene ID.
+	//
 	// example:
 	//
 	// 3

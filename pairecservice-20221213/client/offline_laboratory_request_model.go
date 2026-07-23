@@ -14,6 +14,8 @@ type iOfflineLaboratoryRequest interface {
 }
 
 type OfflineLaboratoryRequest struct {
+	// The instance ID. Call the `ListInstances` operation to obtain this ID.
+	//
 	// This parameter is required.
 	//
 	// example:

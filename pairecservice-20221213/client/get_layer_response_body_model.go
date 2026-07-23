@@ -26,26 +26,44 @@ type iGetLayerResponseBody interface {
 }
 
 type GetLayerResponseBody struct {
+	// The description of the layer.
+	//
 	// example:
 	//
 	// This is a test.
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the experiment layer was created.
+	//
+	// example:
+	//
+	// 2022-10-13 17:34:52.0
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The ID of the laboratory.
+	//
 	// example:
 	//
 	// 3
 	LaboratoryId *string `json:"LaboratoryId,omitempty" xml:"LaboratoryId,omitempty"`
+	// The name of the layer.
+	//
 	// example:
 	//
 	// layer1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// EE97D06A-2AA0-5AD9-B6CF-8A267924D691
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResidualFlow *int64  `json:"ResidualFlow,omitempty" xml:"ResidualFlow,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The residual traffic in the experiment layer.
+	//
+	// example:
+	//
+	// 10
+	ResidualFlow *int64 `json:"ResidualFlow,omitempty" xml:"ResidualFlow,omitempty"`
+	// The ID of the scene.
+	//
 	// example:
 	//
 	// 4

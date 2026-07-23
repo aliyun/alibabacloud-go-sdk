@@ -18,13 +18,16 @@ type iListInstanceResourceTablesResponseBody interface {
 }
 
 type ListInstanceResourceTablesResponseBody struct {
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 01D22D08-BA20-5F35-8302-99115F288220
-	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tables    []*ListInstanceResourceTablesResponseBodyTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of data tables.
+	Tables []*ListInstanceResourceTablesResponseBodyTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	// The total count of data tables.
+	//
 	// example:
 	//
 	// 30
@@ -80,6 +83,8 @@ func (s *ListInstanceResourceTablesResponseBody) Validate() error {
 }
 
 type ListInstanceResourceTablesResponseBodyTables struct {
+	// The table name.
+	//
 	// example:
 	//
 	// table-1

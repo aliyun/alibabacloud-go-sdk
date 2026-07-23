@@ -18,11 +18,16 @@ type iListRecallManagementTableVersionsResponseBody interface {
 }
 
 type ListRecallManagementTableVersionsResponseBody struct {
+	// The list of RecallManagementTable versions.
 	RecallManagementTableVersions []*ListRecallManagementTableVersionsResponseBodyRecallManagementTableVersions `json:"RecallManagementTableVersions,omitempty" xml:"RecallManagementTableVersions,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total count.
+	//
 	// example:
 	//
 	// 10
@@ -78,34 +83,54 @@ func (s *ListRecallManagementTableVersionsResponseBody) Validate() error {
 }
 
 type ListRecallManagementTableVersionsResponseBodyRecallManagementTableVersions struct {
+	// The data version.
+	//
 	// example:
 	//
 	// ds=20250701
 	DataVersion *string `json:"DataVersion,omitempty" xml:"DataVersion,omitempty"`
+	// The effective time.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
+	// The sync end time.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132
 	PublishEndTime *string `json:"PublishEndTime,omitempty" xml:"PublishEndTime,omitempty"`
+	// The sync start time.
+	//
 	// example:
 	//
 	// 2021-12-15T22:24:33.132
 	PublishStartTime *string `json:"PublishStartTime,omitempty" xml:"PublishStartTime,omitempty"`
+	// The ID of the RecallManagementTable version.
+	//
 	// example:
 	//
 	// 202507010000
 	RecallManagementTableVersionId *string `json:"RecallManagementTableVersionId,omitempty" xml:"RecallManagementTableVersionId,omitempty"`
+	// The source table data size.
+	//
 	// example:
 	//
 	// 1000
 	SourceTableDataSize *int64 `json:"SourceTableDataSize,omitempty" xml:"SourceTableDataSize,omitempty"`
+	// The source table row count.
+	//
 	// example:
 	//
 	// 100
 	SourceTableRowCount *int64 `json:"SourceTableRowCount,omitempty" xml:"SourceTableRowCount,omitempty"`
+	// The status of the version. Valid values:
+	//
+	// - Online: The version is online.
+	//
+	// - Offline: The version is offline.
+	//
 	// example:
 	//
 	// Online

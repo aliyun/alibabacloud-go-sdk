@@ -16,10 +16,13 @@ type iGetTrafficControlTaskTrafficResponseBody interface {
 }
 
 type GetTrafficControlTaskTrafficResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 6CF1E160-3F36-5E73-A170-C75504F05BBC
-	RequestId                     *string                                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details of the reported traffic data.
 	TrafficControlTaskTrafficInfo *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfo `json:"TrafficControlTaskTrafficInfo,omitempty" xml:"TrafficControlTaskTrafficInfo,omitempty" type:"Struct"`
 }
 
@@ -59,8 +62,10 @@ func (s *GetTrafficControlTaskTrafficResponseBody) Validate() error {
 }
 
 type GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfo struct {
+	// The traffic data for each traffic control target.
 	TargetTraffics []*GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics `json:"TargetTraffics,omitempty" xml:"TargetTraffics,omitempty" type:"Repeated"`
-	TaskTraffics   map[string]*TrafficControlTaskTrafficInfoTaskTrafficsValue                             `json:"TaskTraffics,omitempty" xml:"TaskTraffics,omitempty"`
+	// The reported traffic data for the traffic control task.
+	TaskTraffics map[string]*TrafficControlTaskTrafficInfoTaskTrafficsValue `json:"TaskTraffics,omitempty" xml:"TaskTraffics,omitempty"`
 }
 
 func (s GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfo) String() string {
@@ -103,7 +108,10 @@ func (s *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfo) 
 }
 
 type GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics struct {
+	// The detailed data reported for this traffic control target.
 	Data map[string]*TrafficControlTaskTrafficInfoTargetTrafficsDataValue `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The traffic control target ID.
+	//
 	// example:
 	//
 	// 2

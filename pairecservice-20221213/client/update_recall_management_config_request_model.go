@@ -18,11 +18,16 @@ type iUpdateRecallManagementConfigRequest interface {
 }
 
 type UpdateRecallManagementConfigRequest struct {
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// 1
-	InstanceId     *string                                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The network configuration.
 	NetworkConfigs []*UpdateRecallManagementConfigRequestNetworkConfigs `json:"NetworkConfigs,omitempty" xml:"NetworkConfigs,omitempty" type:"Repeated"`
+	// The password.
+	//
 	// example:
 	//
 	// 12345
@@ -78,10 +83,14 @@ func (s *UpdateRecallManagementConfigRequest) Validate() error {
 }
 
 type UpdateRecallManagementConfigRequestNetworkConfigs struct {
+	// The ID of the VPC.
+	//
 	// example:
 	//
 	// vpc-xxx
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// A map of availability zones to VSwitch IDs.
+	//
 	// example:
 	//
 	// cn-hangzhou

@@ -16,10 +16,14 @@ type iCreateRecallManagementServiceVersionResponseBody interface {
 }
 
 type CreateRecallManagementServiceVersionResponseBody struct {
+	// The ID of the recall management service version.
+	//
 	// example:
 	//
 	// 1
 	RecallManagementServiceVersionId *string `json:"RecallManagementServiceVersionId,omitempty" xml:"RecallManagementServiceVersionId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77

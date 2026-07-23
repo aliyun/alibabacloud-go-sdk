@@ -14,6 +14,8 @@ type iDeleteRecallManagementTableRequest interface {
 }
 
 type DeleteRecallManagementTableRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

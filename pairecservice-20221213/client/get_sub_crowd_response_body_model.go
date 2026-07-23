@@ -22,24 +22,32 @@ type iGetSubCrowdResponseBody interface {
 }
 
 type GetSubCrowdResponseBody struct {
+	// The time when the sub-crowd was created.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The number of users in the sub-crowd.
+	//
 	// example:
 	//
 	// 3
 	Quantity *string `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 01D22D08-BA20-5F35-8302-99115F288220
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The source of the sub-crowd. Valid values:
+	//
 	// example:
 	//
 	// ManualInput
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The users in the sub-crowd.
+	//
 	// example:
 	//
 	// user1,user2

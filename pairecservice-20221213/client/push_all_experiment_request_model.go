@@ -14,6 +14,8 @@ type iPushAllExperimentRequest interface {
 }
 
 type PushAllExperimentRequest struct {
+	// The instance ID. Call the ListInstances API to obtain this ID.
+	//
 	// example:
 	//
 	// pairec-cn-abcdefg1234

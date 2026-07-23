@@ -16,10 +16,14 @@ type iCloneFeatureConsistencyCheckJobConfigResponseBody interface {
 }
 
 type CloneFeatureConsistencyCheckJobConfigResponseBody struct {
+	// The ID of the new feature consistency check job configuration.
+	//
 	// example:
 	//
 	// 4
 	FeatureConsistencyCheckId *string `json:"FeatureConsistencyCheckId,omitempty" xml:"FeatureConsistencyCheckId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 74D958EF-3598-56FA-8296-FF1575CE43DF

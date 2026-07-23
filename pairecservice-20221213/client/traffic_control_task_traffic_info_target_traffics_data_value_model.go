@@ -16,10 +16,14 @@ type iTrafficControlTaskTrafficInfoTargetTrafficsDataValue interface {
 }
 
 type TrafficControlTaskTrafficInfoTargetTrafficsDataValue struct {
+	// The reported traffic for this target within the experiment.
+	//
 	// example:
 	//
 	// 80
 	Traffic *float64 `json:"Traffic,omitempty" xml:"Traffic,omitempty"`
+	// The timestamp indicating when the data was reported.
+	//
 	// example:
 	//
 	// 1760319273

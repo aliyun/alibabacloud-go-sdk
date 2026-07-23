@@ -18,14 +18,20 @@ type iCreateRecallManagementServiceRequest interface {
 }
 
 type CreateRecallManagementServiceRequest struct {
+	// **The description for the recall management service.**
+	//
 	// example:
 	//
 	// this is a test recall
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// **The instance ID.**
+	//
 	// example:
 	//
 	// pairec-cn-test123
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// **The name of the recall management service.**
+	//
 	// example:
 	//
 	// hot_global_recall

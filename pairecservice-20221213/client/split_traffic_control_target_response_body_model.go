@@ -14,7 +14,7 @@ type iSplitTrafficControlTargetResponseBody interface {
 }
 
 type SplitTrafficControlTargetResponseBody struct {
-	// Id of the request。
+	// The request ID.
 	//
 	// example:
 	//

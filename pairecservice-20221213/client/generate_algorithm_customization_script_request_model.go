@@ -18,14 +18,24 @@ type iGenerateAlgorithmCustomizationScriptRequest interface {
 }
 
 type GenerateAlgorithmCustomizationScriptRequest struct {
+	// The deployment mode. Valid values:
+	//
+	// - **EasyDeploy**: Performs a one-click deployment.
+	//
+	// - **GenerateScript**: Generates a deployment script.
+	//
 	// example:
 	//
 	// EasyDeploy
 	DeployMode *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
+	// The ID of the instance. To obtain this ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
+	//
 	// example:
 	//
 	// pairec-test-xxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The data types of fields in the JSON configuration.
+	//
 	// example:
 	//
 	// {"item_table":"array"}

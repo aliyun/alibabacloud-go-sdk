@@ -14,6 +14,8 @@ type iListInstanceResourceSchemasRequest interface {
 }
 
 type ListInstanceResourceSchemasRequest struct {
+	// Filters schemas by a name prefix.
+	//
 	// example:
 	//
 	// default

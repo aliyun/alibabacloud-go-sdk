@@ -26,32 +26,58 @@ type iListEngineConfigsRequest interface {
 }
 
 type ListEngineConfigsRequest struct {
+	// The environment. Valid values:
+	//
+	// - **Daily**: the development and test environment.
+	//
+	// - **Pre**: the pre-production environment.
+	//
+	// - **Prod**: the production environment.
+	//
 	// example:
 	//
 	// Pre
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// The instance ID. To obtain this ID, call the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pairec-cn-***test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the engine configuration.
+	//
 	// example:
 	//
 	// engine_config_v1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The status to filter by. Valid values:
+	//
+	// - **Released**: returns only released configurations.
+	//
+	// - **Unreleased**: returns only unreleased configurations.
+	//
 	// example:
 	//
 	// Released
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The version to filter by.
+	//
+	// Set this parameter to `latest` to retrieve the most recently updated version.
+	//
 	// example:
 	//
 	// latest

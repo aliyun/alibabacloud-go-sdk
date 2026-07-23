@@ -32,56 +32,80 @@ type iSyncFeatureConsistencyCheckJobReplayLogRequest interface {
 }
 
 type SyncFeatureConsistencyCheckJobReplayLogRequest struct {
+	// The context features.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// [{\\"Value\\":{\\"FloatFeature\\":0.1}}]
 	ContextFeatures *string `json:"ContextFeatures,omitempty" xml:"ContextFeatures,omitempty"`
+	// The feature consistency check job configuration ID. To obtain this ID, see [ListFeatureConsistencyCheckJobConfigs](https://help.aliyun.com/document_detail/2557567.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3
 	FeatureConsistencyCheckJobConfigId *string `json:"FeatureConsistencyCheckJobConfigId,omitempty" xml:"FeatureConsistencyCheckJobConfigId,omitempty"`
+	// The generated features.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// week_day:1 | userid:3 | itemid:9001 | cate:cat1 | click_5_seq__cate:cat1
 	GeneratedFeatures *string `json:"GeneratedFeatures,omitempty" xml:"GeneratedFeatures,omitempty"`
+	// The instance ID. To obtain this ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pairec-cn-********
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The item ID from the log.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 9010
 	LogItemId *string `json:"LogItemId,omitempty" xml:"LogItemId,omitempty"`
+	// The request ID from the log.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	LogRequestId *string `json:"LogRequestId,omitempty" xml:"LogRequestId,omitempty"`
+	// The request time from the log, provided as a UNIX epoch timestamp.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1693900981465
 	LogRequestTime *int64 `json:"LogRequestTime,omitempty" xml:"LogRequestTime,omitempty"`
+	// The user ID from the log.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1010
 	LogUserId *string `json:"LogUserId,omitempty" xml:"LogUserId,omitempty"`
+	// The raw features.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// author__kv_city_expr_cnt_15d：北京市 | tem__min_age_15d:28
 	RawFeatures *string `json:"RawFeatures,omitempty" xml:"RawFeatures,omitempty"`
+	// The scene name.
+	//
 	// This parameter is required.
 	//
 	// example:

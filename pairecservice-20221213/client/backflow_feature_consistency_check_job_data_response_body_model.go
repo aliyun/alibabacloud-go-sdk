@@ -14,6 +14,8 @@ type iBackflowFeatureConsistencyCheckJobDataResponseBody interface {
 }
 
 type BackflowFeatureConsistencyCheckJobDataResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// BDB621CB-A81E-5D39-8793-39A365CBCC74

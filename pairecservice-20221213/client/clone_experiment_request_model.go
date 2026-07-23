@@ -14,6 +14,8 @@ type iCloneExperimentRequest interface {
 }
 
 type CloneExperimentRequest struct {
+	// The instance ID. Call the ListInstances operation to get the instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

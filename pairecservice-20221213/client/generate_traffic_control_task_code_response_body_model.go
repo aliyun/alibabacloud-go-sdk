@@ -18,14 +18,20 @@ type iGenerateTrafficControlTaskCodeResponseBody interface {
 }
 
 type GenerateTrafficControlTaskCodeResponseBody struct {
+	// The generated Flink code.
+	//
 	// example:
 	//
 	// Create Table xxx.......
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the engine configuration for the pre-release environment is incomplete.
+	//
 	// example:
 	//
 	// False
 	PreNeedConfig *bool `json:"PreNeedConfig,omitempty" xml:"PreNeedConfig,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77

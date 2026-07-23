@@ -18,18 +18,24 @@ type iCloneLaboratoryRequest interface {
 }
 
 type CloneLaboratoryRequest struct {
+	// Specifies whether to clone the experiment groups.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	CloneExperimentGroup *bool `json:"CloneExperimentGroup,omitempty" xml:"CloneExperimentGroup,omitempty"`
+	// The destination environment. Valid values: Daily, Pre (pre-release), and Prod (production).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Daily
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// The instance ID. To obtain this ID, call the `ListInstances` operation.
+	//
 	// This parameter is required.
 	//
 	// example:

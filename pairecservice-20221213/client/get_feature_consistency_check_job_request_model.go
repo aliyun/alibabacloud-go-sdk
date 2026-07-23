@@ -14,6 +14,8 @@ type iGetFeatureConsistencyCheckJobRequest interface {
 }
 
 type GetFeatureConsistencyCheckJobRequest struct {
+	// The instance ID. To obtain the instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
+	//
 	// example:
 	//
 	// pairec-cn-********

@@ -26,30 +26,58 @@ type iListABMetricGroupsRequest interface {
 }
 
 type ListABMetricGroupsRequest struct {
+	// The instance ID. You can call the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation to obtain this ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pairec-cn-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Order      *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The sort order. Valid values:
+	//
+	// - ASC: ascending.
+	//
+	// - DESC: descending.
+	//
+	// example:
+	//
+	// ASC
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Specifies whether to return only real-time A/B metric groups.
+	//
 	// example:
 	//
 	// false
 	Realtime *bool `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
+	// The scene ID. You can call the [ListScenes](\\(~~2402581~~\\)) operation to obtain this ID.
+	//
 	// example:
 	//
 	// 1
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	SortBy  *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The field to sort the results by. Valid values:
+	//
+	// - GmtCreateTime: creation time.
+	//
+	// - GmtModifiedTime: modification time.
+	//
+	// example:
+	//
+	// GmtCreateTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 }
 
 func (s ListABMetricGroupsRequest) String() string {

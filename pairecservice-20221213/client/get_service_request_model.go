@@ -14,6 +14,8 @@ type iGetServiceRequest interface {
 }
 
 type GetServiceRequest struct {
+	// The instance ID. You can call [ListInstances](https://help.aliyun.com/document_detail/2411819.html) to obtain the instance ID.
+	//
 	// example:
 	//
 	// pairec-test-xxx

@@ -16,10 +16,14 @@ type iUpdateRecallManagementServiceRequest interface {
 }
 
 type UpdateRecallManagementServiceRequest struct {
+	// The description of the recall management service.
+	//
 	// example:
 	//
 	// reso-2s416t146ffjc3yefx
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// pairec-cn-test123

@@ -14,6 +14,8 @@ type iUpdateABMetricGroupResponseBody interface {
 }
 
 type UpdateABMetricGroupResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 74D958EF-3598-56FA-8296-FF1575CE43DF

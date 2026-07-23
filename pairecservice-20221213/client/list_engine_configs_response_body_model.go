@@ -18,11 +18,16 @@ type iListEngineConfigsResponseBody interface {
 }
 
 type ListEngineConfigsResponseBody struct {
+	// A list of engine configurations.
 	EngineConfigs []*ListEngineConfigsResponseBodyEngineConfigs `json:"EngineConfigs,omitempty" xml:"EngineConfigs,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 74D958EF-3598-56FA-8296-FF1575CE43DF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 10
@@ -78,39 +83,68 @@ func (s *ListEngineConfigsResponseBody) Validate() error {
 }
 
 type ListEngineConfigsResponseBodyEngineConfigs struct {
+	// The content of the engine configuration.
+	//
 	// example:
 	//
 	// {}
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	// The description of the engine configuration.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the engine configuration.
+	//
 	// example:
 	//
 	// 2
 	EngineConfigId *string `json:"EngineConfigId,omitempty" xml:"EngineConfigId,omitempty"`
+	// The environment. Valid values:
+	//
+	// - **Daily**: the development and test environment.
+	//
+	// - **Pre**: the pre-production environment.
+	//
+	// - **Prod**: the production environment.
+	//
 	// example:
 	//
 	// Pre
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2023-08-07T01:43:42Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 2023-08-27T12:00:00Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The release time.
+	//
 	// example:
 	//
 	// 2023-08-29 12:00:00
 	GmtReleasedTime *string `json:"GmtReleasedTime,omitempty" xml:"GmtReleasedTime,omitempty"`
+	// The name of the engine configuration.
+	//
 	// example:
 	//
 	// engine_config_v1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The status of the engine configuration. Valid values:
+	//
+	// - **Released**: The configuration has been released.
+	//
+	// - **Unreleased**: The configuration has not been released.
+	//
 	// example:
 	//
 	// Released
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The version of the currently released or most recently updated engine configuration.
+	//
 	// example:
 	//
 	// 20230509161300

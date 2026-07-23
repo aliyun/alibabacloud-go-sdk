@@ -18,11 +18,16 @@ type iListRecallManagementServiceVersionsResponseBody interface {
 }
 
 type ListRecallManagementServiceVersionsResponseBody struct {
+	// A list of Recall Management Service versions.
 	RecallManagementServiceVersions []*ListRecallManagementServiceVersionsResponseBodyRecallManagementServiceVersions `json:"RecallManagementServiceVersions,omitempty" xml:"RecallManagementServiceVersions,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 30
@@ -78,19 +83,28 @@ func (s *ListRecallManagementServiceVersionsResponseBody) Validate() error {
 }
 
 type ListRecallManagementServiceVersionsResponseBodyRecallManagementServiceVersions struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	IsEffective     *bool   `json:"IsEffective,omitempty" xml:"IsEffective,omitempty"`
+	// Indicates whether the version is effective.
+	IsEffective *bool `json:"IsEffective,omitempty" xml:"IsEffective,omitempty"`
+	// The version name.
+	//
 	// example:
 	//
 	// version-1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The version ID of the Recall Management Service.
+	//
 	// example:
 	//
 	// 1

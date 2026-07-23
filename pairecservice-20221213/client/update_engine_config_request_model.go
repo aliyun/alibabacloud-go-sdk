@@ -22,6 +22,8 @@ type iUpdateEngineConfigRequest interface {
 }
 
 type UpdateEngineConfigRequest struct {
+	// The content of the engine configuration.
+	//
 	// example:
 	//
 	// {
@@ -37,14 +39,26 @@ type UpdateEngineConfigRequest struct {
 	// }
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The environment.
+	//
+	// - Daily: Daily environment.
+	//
+	// - Pre: Pre-production environment.
+	//
+	// - Prod: Production environment.
+	//
 	// example:
 	//
 	// Pre
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// The instance ID. To get the instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
+	//
 	// example:
 	//
 	// pairec-cn-***test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the engine configuration.
+	//
 	// example:
 	//
 	// engine_config_v1

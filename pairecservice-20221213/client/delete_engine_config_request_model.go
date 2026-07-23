@@ -16,7 +16,14 @@ type iDeleteEngineConfigRequest interface {
 }
 
 type DeleteEngineConfigRequest struct {
+	// Specifies whether to delete all engine configurations with the same name.
+	//
+	// example:
+	//
+	// False
 	DeleteAll *bool `json:"DeleteAll,omitempty" xml:"DeleteAll,omitempty"`
+	// The instance ID. For information about how to obtain the instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
+	//
 	// example:
 	//
 	// pairec-cn-***test1

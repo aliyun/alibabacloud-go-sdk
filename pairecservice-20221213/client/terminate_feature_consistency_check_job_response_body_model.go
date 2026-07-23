@@ -14,6 +14,8 @@ type iTerminateFeatureConsistencyCheckJobResponseBody interface {
 }
 
 type TerminateFeatureConsistencyCheckJobResponseBody struct {
+	// The unique ID generated for the request.
+	//
 	// example:
 	//
 	// A6C01890-54CA-5C49-BC91-AD85A98E4A98

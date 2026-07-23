@@ -14,6 +14,8 @@ type iDeleteCrowdRequest interface {
 }
 
 type DeleteCrowdRequest struct {
+	// Instance ID, which can be obtained by calling the ListInstances API.
+	//
 	// This parameter is required.
 	//
 	// example:

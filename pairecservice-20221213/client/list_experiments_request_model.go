@@ -20,20 +20,32 @@ type iListExperimentsRequest interface {
 }
 
 type ListExperimentsRequest struct {
+	// The ID of the experiment group.
+	//
 	// example:
 	//
 	// 3
 	ExperimentGroupId *string `json:"ExperimentGroupId,omitempty" xml:"ExperimentGroupId,omitempty"`
+	// The instance ID. You can call the ListInstances operation to obtain the ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// pairec-test1
+	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The filter parameter for quick search. All experiments that match the names or tags are returned.
+	//
 	// example:
 	//
 	// experiment_test1
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The status of the experiment. Valid values:
+	//
+	// - Offline
+	//
+	// - Online
+	//
 	// example:
 	//
 	// Offline

@@ -14,6 +14,8 @@ type iDeleteRecallManagementServiceVersionConfigRequest interface {
 }
 
 type DeleteRecallManagementServiceVersionConfigRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// pairec-cn-test123

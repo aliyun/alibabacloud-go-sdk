@@ -18,13 +18,16 @@ type iListLaboratoriesResponseBody interface {
 }
 
 type ListLaboratoriesResponseBody struct {
+	// A list of laboratories.
 	Laboratories []*ListLaboratoriesResponseBodyLaboratories `json:"Laboratories,omitempty" xml:"Laboratories,omitempty" type:"Repeated"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 1C0898E5-9220-5443-B2D9-445FF0688215
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of laboratories.
+	//
 	// example:
 	//
 	// 10
@@ -80,58 +83,106 @@ func (s *ListLaboratoriesResponseBody) Validate() error {
 }
 
 type ListLaboratoriesResponseBodyLaboratories struct {
+	// The bucket count.
+	//
 	// example:
 	//
 	// 100
 	BucketCount *int32 `json:"BucketCount,omitempty" xml:"BucketCount,omitempty"`
+	// The bucketing method.
+	//
+	// - `Uid-UID`: Bucketing by UID (default)
+	//
+	// - `UidHash`: Bucketing by UID hash
+	//
+	// - `Filter`: Bucketing by a filter condition
+	//
 	// example:
 	//
 	// Filter
 	BucketType *string `json:"BucketType,omitempty" xml:"BucketType,omitempty"`
+	// The assigned buckets, specified as numbers or ranges separated by commas.
+	//
 	// example:
 	//
 	// 1,2,3,10-20
 	Buckets *string `json:"Buckets,omitempty" xml:"Buckets,omitempty"`
+	// The crowd ID.
+	//
 	// example:
 	//
 	// 3
 	CrowdId *string `json:"CrowdId,omitempty" xml:"CrowdId,omitempty"`
+	// The debug crowd ID.
+	//
 	// example:
 	//
 	// 3
 	DebugCrowdId *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
+	// The debug users, separated by commas.
+	//
 	// example:
 	//
 	// user1,user2,user3
 	DebugUsers *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
+	// The laboratory description.
+	//
 	// example:
 	//
 	// This is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The laboratory environment.
+	//
+	// - `Daily`: the daily environment
+	//
+	// - `Pre`: the pre-production environment
+	//
+	// - `Prod`: the production environment
+	//
 	// example:
 	//
 	// Daily
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// The filter condition.
+	//
 	// example:
 	//
 	// filter=xxx
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The laboratory ID.
+	//
 	// example:
 	//
 	// 3
 	LaboratoryId *string `json:"LaboratoryId,omitempty" xml:"LaboratoryId,omitempty"`
+	// The laboratory name.
+	//
 	// example:
 	//
 	// laboratory1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The scene ID.
+	//
 	// example:
 	//
 	// 3
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// The laboratory status.
+	//
+	// - `Offline`: The laboratory is offline.
+	//
+	// - `Online`: The laboratory is online.
+	//
 	// example:
 	//
 	// Offline
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The laboratory type.
+	//
+	// - `Base`: A base laboratory.
+	//
+	// - `NonBase`: A non-base laboratory.
+	//
 	// example:
 	//
 	// Base

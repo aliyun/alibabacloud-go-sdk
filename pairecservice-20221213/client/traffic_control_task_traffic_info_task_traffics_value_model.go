@@ -14,6 +14,8 @@ type iTrafficControlTaskTrafficInfoTaskTrafficsValue interface {
 }
 
 type TrafficControlTaskTrafficInfoTaskTrafficsValue struct {
+	// The reported traffic for this experiment.
+	//
 	// example:
 	//
 	// 100

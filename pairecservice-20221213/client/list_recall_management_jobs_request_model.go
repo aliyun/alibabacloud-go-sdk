@@ -30,38 +30,56 @@ type iListRecallManagementJobsRequest interface {
 }
 
 type ListRecallManagementJobsRequest struct {
+	// The filter condition. Filtering is supported only for the `Table` type. For example: `{"RecallManagementTableId":"1"}`
+	//
 	// example:
 	//
 	// {"RecallManagementTableId":"1"}
 	Condition map[string]interface{} `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// pairec-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is not used.
+	//
 	// example:
 	//
 	// 0
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// This parameter is not used.
+	//
 	// example:
 	//
 	// ""
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The sort order. Valid values: `ASC` (ascending) and `DESC` (descending).
+	//
 	// example:
 	//
 	// ASC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The sorting basis. Valid values: `GmtCreateTime` (creation time) and `GmtModifiedTime` (update time).
+	//
 	// example:
 	//
 	// GmtCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The task type.
+	//
 	// example:
 	//
 	// Table

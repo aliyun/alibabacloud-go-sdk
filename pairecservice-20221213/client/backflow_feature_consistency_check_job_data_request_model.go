@@ -34,54 +34,72 @@ type iBackflowFeatureConsistencyCheckJobDataRequest interface {
 }
 
 type BackflowFeatureConsistencyCheckJobDataRequest struct {
+	// The feature consistency check job configuration ID. To obtain the configuration ID, call the [ListFeatureConsistencyCheckJobConfigs](https://help.aliyun.com/document_detail/2557567.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 4
 	FeatureConsistencyCheckJobConfigId *string `json:"FeatureConsistencyCheckJobConfigId,omitempty" xml:"FeatureConsistencyCheckJobConfigId,omitempty"`
+	// The instance ID. To obtain the instance ID, call the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pairec-cn-********
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The item features.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// [\\"{\\\\\\"itemid\\\\\\":{\\\\\\"value\\\\\\":1010,\\\\\\"type\\\\\\":\\\\\\"string\\\\\\"}}\\"]
 	ItemFeatures *string `json:"ItemFeatures,omitempty" xml:"ItemFeatures,omitempty"`
+	// The item ID in the log.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 9010
 	LogItemId *string `json:"LogItemId,omitempty" xml:"LogItemId,omitempty"`
+	// The log request ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	LogRequestId *string `json:"LogRequestId,omitempty" xml:"LogRequestId,omitempty"`
+	// The log request time (UNIX epoch timestamp).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1693900981465
 	LogRequestTime *int64 `json:"LogRequestTime,omitempty" xml:"LogRequestTime,omitempty"`
+	// The user ID in the log.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1010
 	LogUserId *string `json:"LogUserId,omitempty" xml:"LogUserId,omitempty"`
+	// The scene name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// video-feed
 	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	// The scores.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -89,6 +107,8 @@ type BackflowFeatureConsistencyCheckJobDataRequest struct {
 	// [\\"{\\\\\\"dbmtl_probs_is_valid_play\\\\\\":0.00032182207107543945,\\\\\\"dbmtl_y_play_time\\\\\\":0.0043269748210906982}\\"]
 	Scores      *string `json:"Scores,omitempty" xml:"Scores,omitempty"`
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The user features.
+	//
 	// This parameter is required.
 	//
 	// example:

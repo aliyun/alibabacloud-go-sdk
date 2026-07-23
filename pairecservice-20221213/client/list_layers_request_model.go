@@ -16,12 +16,16 @@ type iListLayersRequest interface {
 }
 
 type ListLayersRequest struct {
+	// The instance ID. You can obtain this ID by calling the ListInstances API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The laboratory ID. You can obtain this ID by calling the ListLaboratories API.
+	//
 	// This parameter is required.
 	//
 	// example:

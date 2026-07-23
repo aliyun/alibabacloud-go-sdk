@@ -14,7 +14,13 @@ type iDeleteTableMetaRequest interface {
 }
 
 type DeleteTableMetaRequest struct {
+	// The ID of the instance. To obtain this ID, call the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 实例ID	pairec-cn-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 

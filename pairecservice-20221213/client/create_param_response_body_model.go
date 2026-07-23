@@ -16,6 +16,8 @@ type iCreateParamResponseBody interface {
 }
 
 type CreateParamResponseBody struct {
+	// The parameter ID.
+	//
 	// example:
 	//
 	// 4

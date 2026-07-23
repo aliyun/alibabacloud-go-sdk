@@ -46,37 +46,70 @@ type iGetTableMetaResponseBody interface {
 }
 
 type GetTableMetaResponseBody struct {
+	// Indicates whether the table can be deleted. The value is `false` if other resources reference the table.
+	//
 	// example:
 	//
 	// false
-	CanDelete *bool   `json:"CanDelete,omitempty" xml:"CanDelete,omitempty"`
-	Config    *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	CanDelete *bool `json:"CanDelete,omitempty" xml:"CanDelete,omitempty"`
+	// Additional configurations for the table, provided as a JSON string.
+	//
+	// example:
+	//
+	// {"table_type":"item"}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The table description.
+	//
 	// example:
 	//
 	// this is a test table
-	Description *string                           `json:"Description,omitempty" xml:"Description,omitempty"`
-	Fields      []*GetTableMetaResponseBodyFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The fields in the table.
+	Fields []*GetTableMetaResponseBodyFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2021-12-15:24:33
-	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The import time.
+	//
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
 	GmtImportedTime *string `json:"GmtImportedTime,omitempty" xml:"GmtImportedTime,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 2021-12-15:24:33
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The table module. Valid values:
+	//
+	// - `ABTest`: An A/B testing data table.
+	//
+	// - `ExperimentTool`: An experiment tool table.
+	//
+	// - `DataDiagnosis`: A table for data diagnosis.
+	//
 	// example:
 	//
 	// ABTest
 	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	// The table name.
+	//
 	// example:
 	//
 	// test_table
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 28C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resource ID.
+	//
 	// example:
 	//
 	// reso-wkgo***
@@ -89,15 +122,30 @@ type GetTableMetaResponseBody struct {
 	//
 	// test
 	ResourceUri *string `json:"ResourceUri,omitempty" xml:"ResourceUri,omitempty"`
+	// The table ID.
+	//
+	// example:
+	//
+	// 3
 	TableMetaId *string `json:"TableMetaId,omitempty" xml:"TableMetaId,omitempty"`
+	// The name of the table in the database.
+	//
 	// example:
 	//
 	// table_mysql
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The table type. Valid values:
+	//
+	// - `MaxCompute`
+	//
+	// - `Hologres`
+	//
 	// example:
 	//
 	// MaxCompute
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The URL of the table in Data Map. This parameter is returned only for MaxCompute tables.
+	//
 	// example:
 	//
 	// https://dmc-xxx.com/dm/table/xxx
@@ -279,18 +327,26 @@ func (s *GetTableMetaResponseBody) Validate() error {
 }
 
 type GetTableMetaResponseBodyFields struct {
+	// Whether the field is a dimension field.
+	//
 	// example:
 	//
 	// false
 	IsDimensionField *bool `json:"IsDimensionField,omitempty" xml:"IsDimensionField,omitempty"`
+	// The field meaning.
+	//
 	// example:
 	//
 	// the gender of people
 	Meaning *string `json:"Meaning,omitempty" xml:"Meaning,omitempty"`
+	// The field name.
+	//
 	// example:
 	//
 	// gender
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The field type.
+	//
 	// example:
 	//
 	// BIGINT

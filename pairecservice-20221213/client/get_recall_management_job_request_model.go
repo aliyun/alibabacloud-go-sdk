@@ -14,6 +14,8 @@ type iGetRecallManagementJobRequest interface {
 }
 
 type GetRecallManagementJobRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

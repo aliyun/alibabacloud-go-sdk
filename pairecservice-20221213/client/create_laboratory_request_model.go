@@ -36,60 +36,84 @@ type iCreateLaboratoryRequest interface {
 }
 
 type CreateLaboratoryRequest struct {
+	// The number of buckets.
+	//
 	// example:
 	//
 	// 24
 	BucketCount *int32 `json:"BucketCount,omitempty" xml:"BucketCount,omitempty"`
+	// The bucketing method. Valid values: ● `UidHash`: by UID hash (default) ● `Uid`: by UID ● `Filter`: filter-based
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// UidHash
 	BucketType *string `json:"BucketType,omitempty" xml:"BucketType,omitempty"`
+	// The assigned bucket numbers.
+	//
 	// example:
 	//
 	// 1,2,3,10-20
 	Buckets *string `json:"Buckets,omitempty" xml:"Buckets,omitempty"`
+	// The debug crowd ID.
+	//
 	// example:
 	//
 	// 3
 	DebugCrowdId *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
+	// The UIDs of debug users, separated by commas. Each UID must belong to an Alibaba Cloud primary account or a RAM user.
+	//
 	// example:
 	//
 	// 1124512470******,1124512471******,1124512472******
 	DebugUsers *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
+	// The laboratory description.
+	//
 	// example:
 	//
 	// This is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The environment. Valid values: ● `Daily`: daily ● `Pre`: staging ● `Prod`: production
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Daily
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// The filter.
+	//
 	// example:
 	//
 	// filter=xxx
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The instance ID. To get it, call the `ListInstances` operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The laboratory name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// laboratory1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The scene ID. To get it, call the `ListScenes` operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// The laboratory type. Valid values: `Base` and `NonBase`.
+	//
 	// This parameter is required.
 	//
 	// example:

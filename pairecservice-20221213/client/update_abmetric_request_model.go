@@ -48,75 +48,140 @@ type iUpdateABMetricRequest interface {
 }
 
 type UpdateABMetricRequest struct {
+	// Specifies whether to aggregate by user dimension when calculating significance. Two aggregation methods are supported: by user and by sample.
+	//
+	// example:
+	//
+	// True
 	AggregationByUser *bool `json:"AggregationByUser,omitempty" xml:"AggregationByUser,omitempty"`
+	// The metric definition.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sum(click_cnt)
 	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	// The denominator used in significance calculation.
+	//
 	// example:
 	//
 	// pv
 	Denominator *string `json:"Denominator,omitempty" xml:"Denominator,omitempty"`
+	// The metric description.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// pv 指标
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The instance ID. You can obtain it by calling the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pairec-cn-test123
-	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IsBinomialDistribution *bool   `json:"IsBinomialDistribution,omitempty" xml:"IsBinomialDistribution,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether the current metric follows a binomial distribution when the metric type is a derived metric. If set to true, the mean and variance of the metric are calculated based on the binomial distribution.
+	//
+	// example:
+	//
+	// False
+	IsBinomialDistribution *bool `json:"IsBinomialDistribution,omitempty" xml:"IsBinomialDistribution,omitempty"`
+	// The left metric ID of the derived metric.
+	//
 	// example:
 	//
 	// 2
 	LeftMetricId *string `json:"LeftMetricId,omitempty" xml:"LeftMetricId,omitempty"`
+	// The metric name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pv
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NeedSignificance *bool   `json:"NeedSignificance,omitempty" xml:"NeedSignificance,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Specifies whether to calculate significance.
+	//
+	// example:
+	//
+	// True
+	NeedSignificance *bool `json:"NeedSignificance,omitempty" xml:"NeedSignificance,omitempty"`
+	// The numerator used in significance calculation.
+	//
 	// example:
 	//
 	// click
 	Numerator *string `json:"Numerator,omitempty" xml:"Numerator,omitempty"`
+	// The operator for derived metric calculation. Valid values:
+	//
+	// - Plus: addition
+	//
+	// - Minus: subtraction
+	//
+	// - Multiplication: multiplication
+	//
+	// - Division: division
+	//
 	// example:
 	//
 	// Division
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// Specifies whether the metric is a real-time metric. Valid values:
+	//
+	// - true
+	//
+	// - false
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// false
 	Realtime *bool `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
+	// The ID of the data source for the write-back data table. You can obtain it by calling the ListInstanceResources operation.
+	//
 	// example:
 	//
 	// 3
 	ResultResourceId *string `json:"ResultResourceId,omitempty" xml:"ResultResourceId,omitempty"`
+	// The right metric ID of the derived metric.
+	//
 	// example:
 	//
 	// 3
 	RightMetricId *string `json:"RightMetricId,omitempty" xml:"RightMetricId,omitempty"`
+	// The scene ID. You can obtain it by calling the [ListScenes](https://help.aliyun.com/document_detail/2402581.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// The statistical period.
+	//
 	// example:
 	//
 	// 1
 	StatisticsCycle *int32 `json:"StatisticsCycle,omitempty" xml:"StatisticsCycle,omitempty"`
+	// The data table ID. You can obtain it by calling the ListTableMetas operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2
 	TableMetaId *string `json:"TableMetaId,omitempty" xml:"TableMetaId,omitempty"`
+	// The metric type. Valid values:
+	//
+	// - Single: single metric.
+	//
+	// - Derived: derived metric.
+	//
 	// This parameter is required.
 	//
 	// example:

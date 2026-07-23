@@ -20,15 +20,21 @@ type iUpdateRecallManagementServiceVersionConfigRequest interface {
 }
 
 type UpdateRecallManagementServiceVersionConfigRequest struct {
+	// The type of the recall management version configuration. Valid values are `Recall` for the recall configuration and `Merge` for the merge configuration.
+	//
 	// example:
 	//
 	// Recall
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// pairec-cn-test123
-	InstanceId   *string                                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MergeConfig  *UpdateRecallManagementServiceVersionConfigRequestMergeConfig  `json:"MergeConfig,omitempty" xml:"MergeConfig,omitempty" type:"Struct"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The merge configuration.
+	MergeConfig *UpdateRecallManagementServiceVersionConfigRequestMergeConfig `json:"MergeConfig,omitempty" xml:"MergeConfig,omitempty" type:"Struct"`
+	// The recall configuration.
 	RecallConfig *UpdateRecallManagementServiceVersionConfigRequestRecallConfig `json:"RecallConfig,omitempty" xml:"RecallConfig,omitempty" type:"Struct"`
 }
 
@@ -91,24 +97,36 @@ func (s *UpdateRecallManagementServiceVersionConfigRequest) Validate() error {
 }
 
 type UpdateRecallManagementServiceVersionConfigRequestMergeConfig struct {
+	// Additional configurations for the merge. Reserved for future use.
+	//
 	// example:
 	//
 	// {"":""}
 	ExtendedConfig *string `json:"ExtendedConfig,omitempty" xml:"ExtendedConfig,omitempty"`
+	// The filter expression.
+	//
 	// example:
 	//
 	// age>20
-	FilterExpression               *string   `json:"FilterExpression,omitempty" xml:"FilterExpression,omitempty"`
+	FilterExpression *string `json:"FilterExpression,omitempty" xml:"FilterExpression,omitempty"`
+	// A list of recall management table IDs to use for filtering.
 	FilterRecallManagementTableIds []*string `json:"FilterRecallManagementTableIds,omitempty" xml:"FilterRecallManagementTableIds,omitempty" type:"Repeated"`
+	// The ID of the item recall management table.
+	//
 	// example:
 	//
 	// 2
-	ItemRecallManagementTableId *string   `json:"ItemRecallManagementTableId,omitempty" xml:"ItemRecallManagementTableId,omitempty"`
-	ItemTableFields             []*string `json:"ItemTableFields,omitempty" xml:"ItemTableFields,omitempty" type:"Repeated"`
+	ItemRecallManagementTableId *string `json:"ItemRecallManagementTableId,omitempty" xml:"ItemRecallManagementTableId,omitempty"`
+	// The output fields from the item table.
+	ItemTableFields []*string `json:"ItemTableFields,omitempty" xml:"ItemTableFields,omitempty" type:"Repeated"`
+	// The merge type. Valid values: `Weight` and `Alternate`.
+	//
 	// example:
 	//
 	// Weight
 	MergeType *string `json:"MergeType,omitempty" xml:"MergeType,omitempty"`
+	// The ID of the recall management service version configuration.
+	//
 	// example:
 	//
 	// 4
@@ -191,55 +209,82 @@ func (s *UpdateRecallManagementServiceVersionConfigRequestMergeConfig) Validate(
 }
 
 type UpdateRecallManagementServiceVersionConfigRequestRecallConfig struct {
+	// The recall description.
+	//
 	// example:
 	//
 	// this is etrec recall
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The extended configuration. Reserved for future use.
+	//
 	// example:
 	//
 	// {"":""}
 	ExtendedConfig *string `json:"ExtendedConfig,omitempty" xml:"ExtendedConfig,omitempty"`
+	// The data format of the item condition.
+	//
 	// example:
 	//
 	// ["type":"equal"]
 	ItemConditionArray *string `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
+	// The item condition expression.
+	//
 	// example:
 	//
 	// age>20
 	ItemConditionExpression *string `json:"ItemConditionExpression,omitempty" xml:"ItemConditionExpression,omitempty"`
+	// The item vector field.
+	//
 	// example:
 	//
 	// item_embedding
 	ItemVectorField *string `json:"ItemVectorField,omitempty" xml:"ItemVectorField,omitempty"`
+	// The ID of the item vector recall management table.
+	//
 	// example:
 	//
 	// 2
 	ItemVectorRecallManagementTableId *string `json:"ItemVectorRecallManagementTableId,omitempty" xml:"ItemVectorRecallManagementTableId,omitempty"`
+	// The recall name.
+	//
 	// example:
 	//
 	// etrec
-	Name      *string                                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// A list of operators.
 	Operators []*UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperators `json:"Operators,omitempty" xml:"Operators,omitempty" type:"Repeated"`
+	// The priority. A smaller value indicates a higher priority.
+	//
 	// example:
 	//
 	// 2
 	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The ID of the recall management table.
+	//
 	// example:
 	//
 	// 1
 	RecallManagementTableId *string `json:"RecallManagementTableId,omitempty" xml:"RecallManagementTableId,omitempty"`
+	// The recall type.
+	//
 	// example:
 	//
 	// X2I
 	RecallType *string `json:"RecallType,omitempty" xml:"RecallType,omitempty"`
+	// The sort fields.
+	//
 	// example:
 	//
 	// name
 	SortFields *string `json:"SortFields,omitempty" xml:"SortFields,omitempty"`
+	// The user vector field.
+	//
 	// example:
 	//
 	// user_embedding
 	UserVectorField *string `json:"UserVectorField,omitempty" xml:"UserVectorField,omitempty"`
+	// The ID of the user vector recall management table.
+	//
 	// example:
 	//
 	// 3
@@ -394,13 +439,19 @@ func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfig) Validate
 }
 
 type UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperators struct {
+	// The configuration for the `Feature` operator.
 	FeatureConfig *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsFeatureConfig `json:"FeatureConfig,omitempty" xml:"FeatureConfig,omitempty" type:"Struct"`
-	FilterConfig  *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsFilterConfig  `json:"FilterConfig,omitempty" xml:"FilterConfig,omitempty" type:"Struct"`
-	JoinConfig    *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsJoinConfig    `json:"JoinConfig,omitempty" xml:"JoinConfig,omitempty" type:"Struct"`
+	// The configuration for the `Filter` operator.
+	FilterConfig *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsFilterConfig `json:"FilterConfig,omitempty" xml:"FilterConfig,omitempty" type:"Struct"`
+	// The configuration for the `Join` operator.
+	JoinConfig *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsJoinConfig `json:"JoinConfig,omitempty" xml:"JoinConfig,omitempty" type:"Struct"`
+	// The operator type.
+	//
 	// example:
 	//
 	// Filter
-	OperatorType  *string                                                                              `json:"OperatorType,omitempty" xml:"OperatorType,omitempty"`
+	OperatorType *string `json:"OperatorType,omitempty" xml:"OperatorType,omitempty"`
+	// The configuration for the `Trigger` operator.
 	TriggerConfig *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsTriggerConfig `json:"TriggerConfig,omitempty" xml:"TriggerConfig,omitempty" type:"Struct"`
 }
 
@@ -482,14 +533,20 @@ func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperators)
 }
 
 type UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsFeatureConfig struct {
+	// The feature expression.
+	//
 	// example:
 	//
 	// category=3
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// The feature name.
+	//
 	// example:
 	//
 	// city
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The feature type.
+	//
 	// example:
 	//
 	// string
@@ -536,6 +593,8 @@ func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsF
 }
 
 type UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsFilterConfig struct {
+	// The filter expression.
+	//
 	// example:
 	//
 	// age>20
@@ -564,11 +623,16 @@ func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsF
 }
 
 type UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsJoinConfig struct {
+	// The join field.
+	//
 	// example:
 	//
 	// item_id
-	Field        *string   `json:"Field,omitempty" xml:"Field,omitempty"`
+	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	// The fields to return from the join.
 	OutputFields []*string `json:"OutputFields,omitempty" xml:"OutputFields,omitempty" type:"Repeated"`
+	// The ID of the table to join.
+	//
 	// example:
 	//
 	// 3
@@ -615,18 +679,26 @@ func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsJ
 }
 
 type UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsTriggerConfig struct {
+	// The field name.
+	//
 	// example:
 	//
 	// user_id
 	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	// The maximum number of fields.
+	//
 	// example:
 	//
 	// 20
 	FieldQuantityLimit *int32 `json:"FieldQuantityLimit,omitempty" xml:"FieldQuantityLimit,omitempty"`
+	// Specifies whether to perform a random sort.
+	//
 	// example:
 	//
 	// false
 	IsRandSort *bool `json:"IsRandSort,omitempty" xml:"IsRandSort,omitempty"`
+	// The sort field.
+	//
 	// example:
 	//
 	// create_time

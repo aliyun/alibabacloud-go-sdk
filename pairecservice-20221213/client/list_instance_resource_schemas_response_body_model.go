@@ -18,11 +18,16 @@ type iListInstanceResourceSchemasResponseBody interface {
 }
 
 type ListInstanceResourceSchemasResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
-	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Schemas   []*ListInstanceResourceSchemasResponseBodySchemas `json:"Schemas,omitempty" xml:"Schemas,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of schemas.
+	Schemas []*ListInstanceResourceSchemasResponseBodySchemas `json:"Schemas,omitempty" xml:"Schemas,omitempty" type:"Repeated"`
+	// The total count of schemas.
+	//
 	// example:
 	//
 	// 10
@@ -78,6 +83,8 @@ func (s *ListInstanceResourceSchemasResponseBody) Validate() error {
 }
 
 type ListInstanceResourceSchemasResponseBodySchemas struct {
+	// The schema name.
+	//
 	// example:
 	//
 	// default

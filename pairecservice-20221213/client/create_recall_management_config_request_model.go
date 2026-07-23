@@ -20,15 +20,22 @@ type iCreateRecallManagementConfigRequest interface {
 }
 
 type CreateRecallManagementConfigRequest struct {
+	// **The instance ID.**
+	//
 	// example:
 	//
 	// learn-pairec-xxx
-	InstanceId     *string                                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// **The network configurations.**
 	NetworkConfigs []*CreateRecallManagementConfigRequestNetworkConfigs `json:"NetworkConfigs,omitempty" xml:"NetworkConfigs,omitempty" type:"Repeated"`
+	// **The password.**
+	//
 	// example:
 	//
 	// 12345
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// **The user name.**
+	//
 	// example:
 	//
 	// zhhangsan
@@ -93,8 +100,9 @@ func (s *CreateRecallManagementConfigRequest) Validate() error {
 }
 
 type CreateRecallManagementConfigRequestNetworkConfigs struct {
+	// A map of availability zones to VSwitch IDs.
 	VSwitchIds map[string]*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	// Vpc id
+	// The VPC ID.
 	//
 	// example:
 	//

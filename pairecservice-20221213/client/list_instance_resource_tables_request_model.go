@@ -14,6 +14,8 @@ type iListInstanceResourceTablesRequest interface {
 }
 
 type ListInstanceResourceTablesRequest struct {
+	// The MaxCompute schema.
+	//
 	// example:
 	//
 	// jackal

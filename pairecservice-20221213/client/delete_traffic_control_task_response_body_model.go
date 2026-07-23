@@ -14,6 +14,8 @@ type iDeleteTrafficControlTaskResponseBody interface {
 }
 
 type DeleteTrafficControlTaskResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77

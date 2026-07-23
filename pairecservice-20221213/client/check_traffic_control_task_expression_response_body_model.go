@@ -18,14 +18,20 @@ type iCheckTrafficControlTaskExpressionResponseBody interface {
 }
 
 type CheckTrafficControlTaskExpressionResponseBody struct {
+	// Indicates whether the expression is valid.
+	//
 	// example:
 	//
 	// true
 	IsValie *bool `json:"IsValie,omitempty" xml:"IsValie,omitempty"`
+	// If `IsValid` is `false`, this field provides the reason for the failure.
+	//
 	// example:
 	//
 	// ""
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77

@@ -14,6 +14,8 @@ type iDeleteLayerRequest interface {
 }
 
 type DeleteLayerRequest struct {
+	// Instance ID, which can be obtained by calling the ListInstances API.
+	//
 	// example:
 	//
 	// pairec-cn-abcdefg1234

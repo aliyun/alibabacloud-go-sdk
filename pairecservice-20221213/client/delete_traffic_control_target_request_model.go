@@ -14,6 +14,8 @@ type iDeleteTrafficControlTargetRequest interface {
 }
 
 type DeleteTrafficControlTargetRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// pairec-1324***

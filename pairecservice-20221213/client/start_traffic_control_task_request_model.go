@@ -16,10 +16,14 @@ type iStartTrafficControlTaskRequest interface {
 }
 
 type StartTrafficControlTaskRequest struct {
+	// The target environment. Valid values:
+	//
 	// example:
 	//
 	// Pre
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// pairec-123***

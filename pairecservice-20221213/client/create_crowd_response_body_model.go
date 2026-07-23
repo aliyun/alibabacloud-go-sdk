@@ -16,11 +16,13 @@ type iCreateCrowdResponseBody interface {
 }
 
 type CreateCrowdResponseBody struct {
+	// The crowd ID.
+	//
 	// example:
 	//
 	// 3
 	CrowdId *string `json:"CrowdId,omitempty" xml:"CrowdId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

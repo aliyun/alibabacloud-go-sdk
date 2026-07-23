@@ -72,113 +72,170 @@ type iUpdateTrafficControlTaskRequest interface {
 }
 
 type UpdateTrafficControlTaskRequest struct {
+	// The behavior table ID.
+	//
 	// example:
 	//
 	// 1
 	BehaviorTableMetaId *string `json:"BehaviorTableMetaId,omitempty" xml:"BehaviorTableMetaId,omitempty"`
+	// The control granularity.
+	//
 	// example:
 	//
 	// Global
 	ControlGranularity *string `json:"ControlGranularity,omitempty" xml:"ControlGranularity,omitempty"`
+	// The control logic.
+	//
 	// example:
 	//
 	// Guaranteed
 	ControlLogic *string `json:"ControlLogic,omitempty" xml:"ControlLogic,omitempty"`
+	// The control type.
+	//
 	// example:
 	//
 	// Percent
 	ControlType *string `json:"ControlType,omitempty" xml:"ControlType,omitempty"`
+	// The description of the traffic control plan.
+	//
 	// example:
 	//
 	// this is a test
-	Description       *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// A list of effective scene IDs.
 	EffectiveSceneIds []*int32 `json:"EffectiveSceneIds,omitempty" xml:"EffectiveSceneIds,omitempty" type:"Repeated"`
+	// The end time.
+	//
 	// example:
 	//
 	// 2024-04-25
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The execution time. Valid values: `Permanent` (runs indefinitely) and `TimeRange` (runs within a specified period). If you select `TimeRange`, you must also specify `StartTime` and `EndTime`.
+	//
 	// example:
 	//
 	// Permanent
 	ExecutionTime *string `json:"ExecutionTime,omitempty" xml:"ExecutionTime,omitempty"`
+	// The Flink resource ID.
+	//
 	// example:
 	//
 	// resource-xxx
 	FlinkResourceId *string `json:"FlinkResourceId,omitempty" xml:"FlinkResourceId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// pairec-1324***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The item conditions, specified in an array format.
+	//
 	// example:
 	//
 	// [{"field":"status","option":"=","value":"1"}]
 	ItemConditionArray *string `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
+	// The item conditions, specified as an expression.
+	//
 	// example:
 	//
 	// status=1
 	ItemConditionExpress *string `json:"ItemConditionExpress,omitempty" xml:"ItemConditionExpress,omitempty"`
+	// The item condition type.
+	//
 	// example:
 	//
 	// Array
 	ItemConditionType *string `json:"ItemConditionType,omitempty" xml:"ItemConditionType,omitempty"`
+	// The item table ID.
+	//
 	// example:
 	//
 	// 3
 	ItemTableMetaId *string `json:"ItemTableMetaId,omitempty" xml:"ItemTableMetaId,omitempty"`
+	// The name of the traffic control plan.
+	//
 	// example:
 	//
 	// plan-1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// A comma-separated list of pre-release experiment IDs.
+	//
 	// example:
 	//
 	// 3,4
 	PreExperimentIds *string `json:"PreExperimentIds,omitempty" xml:"PreExperimentIds,omitempty"`
+	// A comma-separated list of production experiment IDs.
+	//
 	// example:
 	//
 	// 1,2
 	ProdExperimentIds *string `json:"ProdExperimentIds,omitempty" xml:"ProdExperimentIds,omitempty"`
+	// The scene ID.
+	//
 	// example:
 	//
 	// 1
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// The engine service ID.
+	//
 	// example:
 	//
 	// 4
-	ServiceId  *string  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// A list of associated engine service IDs.
 	ServiceIds []*int32 `json:"ServiceIds,omitempty" xml:"ServiceIds,omitempty" type:"Repeated"`
+	// The start time.
+	//
 	// example:
 	//
 	// 2024-03-25
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The conditions for behavior statistics, specified in an array format.
+	//
 	// example:
 	//
 	// click=exposure
 	StatisBaeaviorConditionArray *string `json:"StatisBaeaviorConditionArray,omitempty" xml:"StatisBaeaviorConditionArray,omitempty"`
+	// The conditions for behavior statistics, specified in an array format.
+	//
 	// example:
 	//
 	// click=exposure
 	StatisBehaviorConditionArray *string `json:"StatisBehaviorConditionArray,omitempty" xml:"StatisBehaviorConditionArray,omitempty"`
+	// The conditions for behavior statistics, specified as an expression.
+	//
 	// example:
 	//
 	// click=30
 	StatisBehaviorConditionExpress *string `json:"StatisBehaviorConditionExpress,omitempty" xml:"StatisBehaviorConditionExpress,omitempty"`
+	// The condition type for behavior statistics.
+	//
 	// example:
 	//
 	// Array
-	StatisBehaviorConditionType *string                                                 `json:"StatisBehaviorConditionType,omitempty" xml:"StatisBehaviorConditionType,omitempty"`
-	TrafficControlTargets       []*UpdateTrafficControlTaskRequestTrafficControlTargets `json:"TrafficControlTargets,omitempty" xml:"TrafficControlTargets,omitempty" type:"Repeated"`
+	StatisBehaviorConditionType *string `json:"StatisBehaviorConditionType,omitempty" xml:"StatisBehaviorConditionType,omitempty"`
+	// A list of traffic control targets.
+	TrafficControlTargets []*UpdateTrafficControlTaskRequestTrafficControlTargets `json:"TrafficControlTargets,omitempty" xml:"TrafficControlTargets,omitempty" type:"Repeated"`
+	// The conditions for the target user group, specified in an array format.
+	//
 	// example:
 	//
 	// [{"field":"gender","option":"=","value":"male"}]
 	UserConditionArray *string `json:"UserConditionArray,omitempty" xml:"UserConditionArray,omitempty"`
+	// The conditions for the target user group, specified as an expression.
+	//
 	// example:
 	//
 	// age<=30&&(3<=level<=6)&&gender=male
 	UserConditionExpress *string `json:"UserConditionExpress,omitempty" xml:"UserConditionExpress,omitempty"`
+	// The condition type for the target user group.
+	//
 	// example:
 	//
 	// Array
 	UserConditionType *string `json:"UserConditionType,omitempty" xml:"UserConditionType,omitempty"`
+	// The user table ID.
+	//
 	// example:
 	//
 	// 2
@@ -477,54 +534,80 @@ func (s *UpdateTrafficControlTaskRequest) Validate() error {
 }
 
 type UpdateTrafficControlTaskRequestTrafficControlTargets struct {
+	// The end time of the traffic control target.
+	//
 	// example:
 	//
 	// 2026-02-06T18:02:57.487556956+08:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The event for the traffic control target.
+	//
 	// example:
 	//
 	// exposure
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// The item conditions, specified in an array format.
+	//
 	// example:
 	//
 	// [{"field":"status","option":"=","value":"1"}]
 	ItemConditionArray *string `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
+	// The item conditions, specified as an expression.
+	//
 	// example:
 	//
 	// age>20
 	ItemConditionExpress *string `json:"ItemConditionExpress,omitempty" xml:"ItemConditionExpress,omitempty"`
+	// The item condition type.
+	//
 	// example:
 	//
 	// Array
 	ItemConditionType *string `json:"ItemConditionType,omitempty" xml:"ItemConditionType,omitempty"`
+	// The name of the traffic control target.
+	//
 	// example:
 	//
 	// target-1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Indicates whether this is a new item recall.
+	//
 	// example:
 	//
 	// false
 	NewProductRegulation *bool `json:"NewProductRegulation,omitempty" xml:"NewProductRegulation,omitempty"`
+	// The recall policy name.
+	//
 	// example:
 	//
 	// hot_recall
 	RecallName *string `json:"RecallName,omitempty" xml:"RecallName,omitempty"`
+	// The start time of the traffic control target.
+	//
 	// example:
 	//
 	// 2026-02-10T09:16:03.893+08:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The statistical period.
+	//
 	// example:
 	//
 	// 1
 	StatisPeriod *string `json:"StatisPeriod,omitempty" xml:"StatisPeriod,omitempty"`
+	// The status.
+	//
 	// example:
 	//
 	// Enable
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tolerance range for the traffic control target.
+	//
 	// example:
 	//
 	// 10
 	ToleranceValue *int64 `json:"ToleranceValue,omitempty" xml:"ToleranceValue,omitempty"`
+	// The value of the traffic control target.
+	//
 	// example:
 	//
 	// 30

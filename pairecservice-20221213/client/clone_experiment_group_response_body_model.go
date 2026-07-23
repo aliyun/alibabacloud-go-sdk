@@ -16,11 +16,13 @@ type iCloneExperimentGroupResponseBody interface {
 }
 
 type CloneExperimentGroupResponseBody struct {
+	// The ID of the cloned experiment group.
+	//
 	// example:
 	//
 	// 3
 	ExperimentGroupId *string `json:"ExperimentGroupId,omitempty" xml:"ExperimentGroupId,omitempty"`
-	// Id of the request
+	// The request ID, used for tracking and troubleshooting.
 	//
 	// example:
 	//

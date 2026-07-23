@@ -28,34 +28,50 @@ type iListTrafficControlTargetTrafficHistoryRequest interface {
 }
 
 type ListTrafficControlTargetTrafficHistoryRequest struct {
+	// The end of the time range.
+	//
 	// example:
 	//
 	// 2024-01-10 13:13:20
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The target environment. Valid values: Daily, Pre, and Prod.
+	//
 	// example:
 	//
 	// Pre
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// The ID of the experiment group.
+	//
 	// example:
 	//
 	// 2
 	ExperimentGroupId *string `json:"ExperimentGroupId,omitempty" xml:"ExperimentGroupId,omitempty"`
+	// The ID of the experiment.
+	//
 	// example:
 	//
 	// ER_All
 	ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// pairec-1324***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the item.
+	//
 	// example:
 	//
 	// 1001
 	ItemId *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	// The start of the time range.
+	//
 	// example:
 	//
 	// 2024-01-01 13:13:20
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The threshold value.
+	//
 	// example:
 	//
 	// 20

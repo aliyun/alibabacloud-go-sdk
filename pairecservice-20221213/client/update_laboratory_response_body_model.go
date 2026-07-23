@@ -14,7 +14,7 @@ type iUpdateLaboratoryResponseBody interface {
 }
 
 type UpdateLaboratoryResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

@@ -60,97 +60,142 @@ type iGetRecallManagementTableResponseBody interface {
 }
 
 type GetRecallManagementTableResponseBody struct {
+	// Specifies whether the table can be deleted.
+	//
 	// example:
 	//
 	// true
 	CanDelete *bool `json:"CanDelete,omitempty" xml:"CanDelete,omitempty"`
+	// Additional configurations for the table.
+	//
 	// example:
 	//
 	// {"item_id":""}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The data source.
+	//
 	// example:
 	//
 	// Api
 	DataSource *string `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
+	// The data table description.
+	//
 	// example:
 	//
 	// this is a test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to enable the fluctuation threshold for the data size.
+	//
 	// example:
 	//
 	// false
 	EnableDataSizeFluctuationThreshold *bool `json:"EnableDataSizeFluctuationThreshold,omitempty" xml:"EnableDataSizeFluctuationThreshold,omitempty"`
+	// Specifies whether to enable the fluctuation threshold for the row count.
+	//
 	// example:
 	//
 	// true
-	EnableRowCountFluctuationThreshold *bool                                         `json:"EnableRowCountFluctuationThreshold,omitempty" xml:"EnableRowCountFluctuationThreshold,omitempty"`
-	Fields                             []*GetRecallManagementTableResponseBodyFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	EnableRowCountFluctuationThreshold *bool `json:"EnableRowCountFluctuationThreshold,omitempty" xml:"EnableRowCountFluctuationThreshold,omitempty"`
+	// A list of fields.
+	Fields []*GetRecallManagementTableResponseBodyFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The index effective time.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	IndexEffectiveTime *string `json:"IndexEffectiveTime,omitempty" xml:"IndexEffectiveTime,omitempty"`
+	// The index version ID.
+	//
 	// example:
 	//
 	// 20250701
 	IndexVersionId *string `json:"IndexVersionId,omitempty" xml:"IndexVersionId,omitempty"`
+	// The maximum data size fluctuation threshold.
+	//
 	// example:
 	//
 	// 100
 	MaxDataSizeFluctuationThreshold *int32 `json:"MaxDataSizeFluctuationThreshold,omitempty" xml:"MaxDataSizeFluctuationThreshold,omitempty"`
+	// The maximum row count fluctuation threshold.
+	//
 	// example:
 	//
 	// 100
 	MaxRowCountFluctuationThreshold *int32 `json:"MaxRowCountFluctuationThreshold,omitempty" xml:"MaxRowCountFluctuationThreshold,omitempty"`
+	// The MaxCompute project name.
+	//
 	// example:
 	//
 	// test
 	MaxcomputeProjectName *string `json:"MaxcomputeProjectName,omitempty" xml:"MaxcomputeProjectName,omitempty"`
-	// maxcompute schema。
+	// The MaxCompute schema.
 	//
 	// example:
 	//
 	// default
 	MaxcomputeSchema *string `json:"MaxcomputeSchema,omitempty" xml:"MaxcomputeSchema,omitempty"`
+	// The MaxCompute table name.
+	//
 	// example:
 	//
 	// table-1
 	MaxcomputeTableName *string `json:"MaxcomputeTableName,omitempty" xml:"MaxcomputeTableName,omitempty"`
+	// The minimum data size fluctuation threshold.
+	//
 	// example:
 	//
 	// 10
 	MinDataSizeFluctuationThreshold *int32 `json:"MinDataSizeFluctuationThreshold,omitempty" xml:"MinDataSizeFluctuationThreshold,omitempty"`
+	// The minimum row count fluctuation threshold.
+	//
 	// example:
 	//
 	// 10
 	MinRowCountFluctuationThreshold *int32 `json:"MinRowCountFluctuationThreshold,omitempty" xml:"MinRowCountFluctuationThreshold,omitempty"`
+	// The data table name.
+	//
 	// example:
 	//
 	// table-123
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The partition fields.
+	//
 	// example:
 	//
 	// dt
 	PartitionFields *string `json:"PartitionFields,omitempty" xml:"PartitionFields,omitempty"`
+	// The data table ID.
+	//
 	// example:
 	//
 	// 3
 	RecallManagementTableId *string `json:"RecallManagementTableId,omitempty" xml:"RecallManagementTableId,omitempty"`
+	// The recall type.
+	//
 	// example:
 	//
 	// X2I
 	RecallType *string `json:"RecallType,omitempty" xml:"RecallType,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The table type.
+	//
 	// example:
 	//
 	// Recall
@@ -395,19 +440,28 @@ func (s *GetRecallManagementTableResponseBody) Validate() error {
 }
 
 type GetRecallManagementTableResponseBodyFields struct {
+	// A list of field attributes.
 	Attributes []*string `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
+	// The field name.
+	//
 	// example:
 	//
 	// age
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The field type.
+	//
 	// example:
 	//
 	// STRING
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The vector dimension.
+	//
 	// example:
 	//
 	// 32
 	VectorDimension *int32 `json:"VectorDimension,omitempty" xml:"VectorDimension,omitempty"`
+	// The vector metric type.
+	//
 	// example:
 	//
 	// L2

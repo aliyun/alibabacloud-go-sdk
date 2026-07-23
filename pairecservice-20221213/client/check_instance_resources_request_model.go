@@ -19,12 +19,48 @@ type iCheckInstanceResourcesRequest interface {
 
 type CheckInstanceResourcesRequest struct {
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource type. Valid values:
+	//
+	// - Hologres
+	//
+	// - EAS
+	//
+	// - BE
+	//
+	// - Rec
+	//
+	// - Platform
+	//
+	// - SLS
+	//
+	// - DataHub
+	//
+	// - Kafka
+	//
+	// - Flinkvvp
+	//
+	// - ACR
+	//
+	// - OSS
+	//
+	// - DataWorks
+	//
+	// - PAI
+	//
+	// - MaxCompute
+	//
+	// - GraphCompute
+	//
+	// - Redis
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OSS
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The resource URI.
+	//
 	// example:
 	//
 	// bucket-test-123

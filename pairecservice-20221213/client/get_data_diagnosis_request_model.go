@@ -14,6 +14,8 @@ type iGetDataDiagnosisRequest interface {
 }
 
 type GetDataDiagnosisRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

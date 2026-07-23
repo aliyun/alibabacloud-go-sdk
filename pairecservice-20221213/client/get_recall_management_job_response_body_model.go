@@ -28,28 +28,50 @@ type iGetRecallManagementJobResponseBody interface {
 }
 
 type GetRecallManagementJobResponseBody struct {
+	// The time when the job ended.
+	//
 	// example:
 	//
 	// 2021-12-15T23:24:33.132
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The log of the job.
+	//
 	// example:
 	//
 	// "success"
 	Log *string `json:"Log,omitempty" xml:"Log,omitempty"`
+	// The recall management job ID.
+	//
 	// example:
 	//
 	// 1
-	RecallManagementJobId     *string                                                      `json:"RecallManagementJobId,omitempty" xml:"RecallManagementJobId,omitempty"`
+	RecallManagementJobId *string `json:"RecallManagementJobId,omitempty" xml:"RecallManagementJobId,omitempty"`
+	// Details of the recall management table.
 	RecallManagementTableInfo *GetRecallManagementJobResponseBodyRecallManagementTableInfo `json:"RecallManagementTableInfo,omitempty" xml:"RecallManagementTableInfo,omitempty" type:"Struct"`
-	RecallManagerTableInfo    *GetRecallManagementJobResponseBodyRecallManagerTableInfo    `json:"RecallManagerTableInfo,omitempty" xml:"RecallManagerTableInfo,omitempty" type:"Struct"`
+	// Details of the recall management table.
+	RecallManagerTableInfo *GetRecallManagementJobResponseBodyRecallManagerTableInfo `json:"RecallManagerTableInfo,omitempty" xml:"RecallManagerTableInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The time when the job started.
+	//
 	// example:
 	//
 	// 2021-12-15T22:24:33.132
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the job. Valid values are:
+	//
+	// - `Init`: Initializing.
+	//
+	// - `Running`: Running.
+	//
+	// - `Success`: Successful.
+	//
+	// - `Failed`: Failed.
+	//
 	// example:
 	//
 	// Running
@@ -151,18 +173,26 @@ func (s *GetRecallManagementJobResponseBody) Validate() error {
 }
 
 type GetRecallManagementJobResponseBodyRecallManagementTableInfo struct {
+	// The data version.
+	//
 	// example:
 	//
 	// ds=20250701
 	DataVersion *string `json:"DataVersion,omitempty" xml:"DataVersion,omitempty"`
+	// The recall management table version ID.
+	//
 	// example:
 	//
 	// 20250101000
 	RecallManagementTableVersionId *string `json:"RecallManagementTableVersionId,omitempty" xml:"RecallManagementTableVersionId,omitempty"`
+	// The data size of the source table.
+	//
 	// example:
 	//
 	// 10000
 	SourceTableDataSize *string `json:"SourceTableDataSize,omitempty" xml:"SourceTableDataSize,omitempty"`
+	// The number of rows in the source table.
+	//
 	// example:
 	//
 	// 100
@@ -218,18 +248,26 @@ func (s *GetRecallManagementJobResponseBodyRecallManagementTableInfo) Validate()
 }
 
 type GetRecallManagementJobResponseBodyRecallManagerTableInfo struct {
+	// The data version.
+	//
 	// example:
 	//
 	// ds=20250701
 	DataVersion *string `json:"DataVersion,omitempty" xml:"DataVersion,omitempty"`
+	// The recall management table version ID.
+	//
 	// example:
 	//
 	// 20250101000
 	RecallManagerTableVersionId *string `json:"RecallManagerTableVersionId,omitempty" xml:"RecallManagerTableVersionId,omitempty"`
+	// The data size of the source table.
+	//
 	// example:
 	//
 	// 10000
 	SourceTableDataSize *string `json:"SourceTableDataSize,omitempty" xml:"SourceTableDataSize,omitempty"`
+	// The number of rows in the source table.
+	//
 	// example:
 	//
 	// 100

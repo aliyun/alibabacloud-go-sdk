@@ -16,10 +16,13 @@ type iQueryTrafficControlTaskItemReportResponseBody interface {
 }
 
 type QueryTrafficControlTaskItemReportResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
-	RequestId                     *string                                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// An array of item control reports.
 	TrafficControlTaskItemReports []*QueryTrafficControlTaskItemReportResponseBodyTrafficControlTaskItemReports `json:"TrafficControlTaskItemReports,omitempty" xml:"TrafficControlTaskItemReports,omitempty" type:"Repeated"`
 }
 
@@ -63,42 +66,62 @@ func (s *QueryTrafficControlTaskItemReportResponseBody) Validate() error {
 }
 
 type QueryTrafficControlTaskItemReportResponseBodyTrafficControlTaskItemReports struct {
+	// The actual number of controlled items.
+	//
 	// example:
 	//
 	// 4
 	ActualItemControlNum *int64 `json:"ActualItemControlNum,omitempty" xml:"ActualItemControlNum,omitempty"`
+	// The actual traffic of controlled items.
+	//
 	// example:
 	//
 	// 500
 	ActualItemControlTraffic *int64 `json:"ActualItemControlTraffic,omitempty" xml:"ActualItemControlTraffic,omitempty"`
+	// The number of items that reached the control target.
+	//
 	// example:
 	//
 	// 6
 	DoneItemControlNum *int64 `json:"DoneItemControlNum,omitempty" xml:"DoneItemControlNum,omitempty"`
+	// The number of items that reached the control target, as a percentage of the expected number of controlled items.
+	//
 	// example:
 	//
 	// 20%
 	DoneItemControlPercentage *string `json:"DoneItemControlPercentage,omitempty" xml:"DoneItemControlPercentage,omitempty"`
+	// The actual number of controlled items as a percentage of the expected number.
+	//
 	// example:
 	//
 	// 10%
 	ItemControlNumPercentage *string `json:"ItemControlNumPercentage,omitempty" xml:"ItemControlNumPercentage,omitempty"`
+	// The actual traffic from controlled items as a percentage of the expected traffic.
+	//
 	// example:
 	//
 	// 20%
 	ItemControlTrafficPercentage *string `json:"ItemControlTrafficPercentage,omitempty" xml:"ItemControlTrafficPercentage,omitempty"`
+	// The expected number of controlled items.
+	//
 	// example:
 	//
 	// 10
 	OughtItemControlNum *int64 `json:"OughtItemControlNum,omitempty" xml:"OughtItemControlNum,omitempty"`
+	// The expected traffic of controlled items.
+	//
 	// example:
 	//
 	// 1000
 	OughtItemControlTraffic *int64 `json:"OughtItemControlTraffic,omitempty" xml:"OughtItemControlTraffic,omitempty"`
+	// The ID of the traffic control target.
+	//
 	// example:
 	//
 	// 3
 	TrafficControlTargetId *string `json:"TrafficControlTargetId,omitempty" xml:"TrafficControlTargetId,omitempty"`
+	// The name of the traffic control target.
+	//
 	// example:
 	//
 	// item-1

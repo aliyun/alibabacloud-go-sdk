@@ -14,6 +14,8 @@ type iDeleteABMetricRequest interface {
 }
 
 type DeleteABMetricRequest struct {
+	// The instance ID. You can get this ID by calling the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:

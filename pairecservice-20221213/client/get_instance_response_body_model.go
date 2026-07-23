@@ -36,44 +36,66 @@ type iGetInstanceResponseBody interface {
 }
 
 type GetInstanceResponseBody struct {
+	// The billing method of the instance. The value is fixed as Subscription.
+	//
 	// example:
 	//
 	// Subscription
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The commodity code of the instance.
+	//
 	// example:
 	//
 	// airec_developers_public_cn
-	CommodityCode *string                        `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	Config        *GetInstanceResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// The instance configurations.
+	Config *GetInstanceResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// The time when the instance expires.
+	//
 	// example:
 	//
 	// 2022-12-14 00:00:00.0
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// The time when the instance was created.
+	//
 	// example:
 	//
 	// 2022-10-13 17:34:52.0
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time when the instance was last updated.
+	//
 	// example:
 	//
 	// 2022-11-05 09:02:30.0
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// pairec-test1
-	InstanceId    *string                               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The operating tool configurations.
 	OperatingTool *GetInstanceResponseBodyOperatingTool `json:"OperatingTool,omitempty" xml:"OperatingTool,omitempty" type:"Struct"`
+	// The region ID. Valid values:<br>● cn-shenzhen: Shenzhen<br>● cn-hangzhou: Hangzhou<br>● cn-beijing: Beijing<br>● cn-shanghai: Shanghai<br><br><br><br>
+	//
 	// example:
 	//
 	// cn-shenzhen
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The instance status. Valid values:<br>● Initializing<br>● Stopped<br>● Running<br><br><br>
+	//
 	// example:
 	//
 	// Initializing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The instance type. Valid values:<br>● basic: Basic<br>● highlevel: High-level<br>● advanced: Advanced<br>● standard: Standard<br><br><br><br>
+	//
 	// example:
 	//
 	// basic
@@ -211,9 +233,12 @@ func (s *GetInstanceResponseBody) Validate() error {
 }
 
 type GetInstanceResponseBodyConfig struct {
+	// The list of modeling environments.
 	DataManagements []*GetInstanceResponseBodyConfigDataManagements `json:"DataManagements,omitempty" xml:"DataManagements,omitempty" type:"Repeated"`
-	Engines         []*GetInstanceResponseBodyConfigEngines         `json:"Engines,omitempty" xml:"Engines,omitempty" type:"Repeated"`
-	Monitors        []*GetInstanceResponseBodyConfigMonitors        `json:"Monitors,omitempty" xml:"Monitors,omitempty" type:"Repeated"`
+	// The list of service engines.
+	Engines []*GetInstanceResponseBodyConfigEngines `json:"Engines,omitempty" xml:"Engines,omitempty" type:"Repeated"`
+	// The list of monitoring components.
+	Monitors []*GetInstanceResponseBodyConfigMonitors `json:"Monitors,omitempty" xml:"Monitors,omitempty" type:"Repeated"`
 }
 
 func (s GetInstanceResponseBodyConfig) String() string {
@@ -283,11 +308,16 @@ func (s *GetInstanceResponseBodyConfig) Validate() error {
 }
 
 type GetInstanceResponseBodyConfigDataManagements struct {
+	// The component code.
+	//
 	// example:
 	//
 	// storage
-	ComponentCode *string                `json:"ComponentCode,omitempty" xml:"ComponentCode,omitempty"`
-	Meta          map[string]interface{} `json:"Meta,omitempty" xml:"Meta,omitempty"`
+	ComponentCode *string `json:"ComponentCode,omitempty" xml:"ComponentCode,omitempty"`
+	// The metadata.
+	Meta map[string]interface{} `json:"Meta,omitempty" xml:"Meta,omitempty"`
+	// The component type.
+	//
 	// example:
 	//
 	// OSS
@@ -334,11 +364,16 @@ func (s *GetInstanceResponseBodyConfigDataManagements) Validate() error {
 }
 
 type GetInstanceResponseBodyConfigEngines struct {
+	// The component code.
+	//
 	// example:
 	//
 	// feature
-	ComponentCode *string                `json:"ComponentCode,omitempty" xml:"ComponentCode,omitempty"`
-	Meta          map[string]interface{} `json:"Meta,omitempty" xml:"Meta,omitempty"`
+	ComponentCode *string `json:"ComponentCode,omitempty" xml:"ComponentCode,omitempty"`
+	// The metadata.
+	Meta map[string]interface{} `json:"Meta,omitempty" xml:"Meta,omitempty"`
+	// The component type.
+	//
 	// example:
 	//
 	// Hologres
@@ -385,11 +420,16 @@ func (s *GetInstanceResponseBodyConfigEngines) Validate() error {
 }
 
 type GetInstanceResponseBodyConfigMonitors struct {
+	// The component code.
+	//
 	// example:
 	//
 	// featuresets
-	ComponentCode *string                `json:"ComponentCode,omitempty" xml:"ComponentCode,omitempty"`
-	Meta          map[string]interface{} `json:"Meta,omitempty" xml:"Meta,omitempty"`
+	ComponentCode *string `json:"ComponentCode,omitempty" xml:"ComponentCode,omitempty"`
+	// The metadata.
+	Meta map[string]interface{} `json:"Meta,omitempty" xml:"Meta,omitempty"`
+	// The component type.
+	//
 	// example:
 	//
 	// Platform
@@ -436,6 +476,15 @@ func (s *GetInstanceResponseBodyConfigMonitors) Validate() error {
 }
 
 type GetInstanceResponseBodyOperatingTool struct {
+	// Indicates whether the operating tool is enabled for the instance. Valid values:
+	//
+	// - True: Enabled
+	//
+	// - False: Disabled
+	//
+	// example:
+	//
+	// True
 	IsEnable *bool `json:"IsEnable,omitempty" xml:"IsEnable,omitempty"`
 }
 

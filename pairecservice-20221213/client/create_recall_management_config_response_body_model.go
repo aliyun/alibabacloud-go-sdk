@@ -14,6 +14,8 @@ type iCreateRecallManagementConfigResponseBody interface {
 }
 
 type CreateRecallManagementConfigResponseBody struct {
+	// The Request ID.
+	//
 	// example:
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77

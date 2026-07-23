@@ -18,11 +18,16 @@ type iGetInstanceResourceTableResponseBody interface {
 }
 
 type GetInstanceResourceTableResponseBody struct {
+	// The list of fields in the data table.
 	Fields []*GetInstanceResourceTableResponseBodyFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 74D958EF-3598-56FA-8296-FF1575CE43DF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The table name.
+	//
 	// example:
 	//
 	// test_table
@@ -78,19 +83,32 @@ func (s *GetInstanceResourceTableResponseBody) Validate() error {
 }
 
 type GetInstanceResourceTableResponseBodyFields struct {
+	// Indicates whether the field is a dimension field.
+	//
 	// example:
 	//
 	// false
 	IsDimensionField *bool `json:"IsDimensionField,omitempty" xml:"IsDimensionField,omitempty"`
+	// Indicates whether the field is a partition field.
+	//
+	// example:
+	//
+	// true
 	IsPartitionField *bool `json:"IsPartitionField,omitempty" xml:"IsPartitionField,omitempty"`
+	// The meaning of the field.
+	//
 	// example:
 	//
 	// ""
 	Meaning *string `json:"Meaning,omitempty" xml:"Meaning,omitempty"`
+	// The field name.
+	//
 	// example:
 	//
 	// age
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The field type.
+	//
 	// example:
 	//
 	// BIGINT

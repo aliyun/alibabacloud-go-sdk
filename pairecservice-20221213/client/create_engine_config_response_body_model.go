@@ -16,10 +16,14 @@ type iCreateEngineConfigResponseBody interface {
 }
 
 type CreateEngineConfigResponseBody struct {
+	// The ID of the engine config.
+	//
 	// example:
 	//
 	// 1
 	EngineConfigId *string `json:"EngineConfigId,omitempty" xml:"EngineConfigId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// E15A1443-7917-5BE0-AE70-25538ECF398D

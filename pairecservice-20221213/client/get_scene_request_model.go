@@ -14,6 +14,8 @@ type iGetSceneRequest interface {
 }
 
 type GetSceneRequest struct {
+	// The instance ID. You can get this ID by calling the ListInstances operation.
+	//
 	// example:
 	//
 	// pairec-cn-abcdefg1234

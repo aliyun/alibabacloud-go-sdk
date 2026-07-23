@@ -16,10 +16,14 @@ type iCreateDataDiagnosisResponseBody interface {
 }
 
 type CreateDataDiagnosisResponseBody struct {
+	// The ID of the data diagnosis task.
+	//
 	// example:
 	//
 	// 1
 	DataDiagnosisId *string `json:"DataDiagnosisId,omitempty" xml:"DataDiagnosisId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77

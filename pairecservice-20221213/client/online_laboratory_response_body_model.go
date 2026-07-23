@@ -14,7 +14,7 @@ type iOnlineLaboratoryResponseBody interface {
 }
 
 type OnlineLaboratoryResponseBody struct {
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//

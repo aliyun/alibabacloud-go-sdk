@@ -18,11 +18,16 @@ type iListTableMetasResponseBody interface {
 }
 
 type ListTableMetasResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
-	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of data tables.
 	TableMetas []*ListTableMetasResponseBodyTableMetas `json:"TableMetas,omitempty" xml:"TableMetas,omitempty" type:"Repeated"`
+	// The total number of data tables.
+	//
 	// example:
 	//
 	// 20
@@ -78,36 +83,64 @@ func (s *ListTableMetasResponseBody) Validate() error {
 }
 
 type ListTableMetasResponseBodyTableMetas struct {
+	// Indicates whether the data table can be deleted. A value of `false` indicates that the table is in use by other resources.
+	//
 	// example:
 	//
 	// true
-	CanDelete *bool   `json:"CanDelete,omitempty" xml:"CanDelete,omitempty"`
-	Config    *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	CanDelete *bool `json:"CanDelete,omitempty" xml:"CanDelete,omitempty"`
+	// The additional configurations for the data table.
+	//
+	// example:
+	//
+	// {"table_type":"item"}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The description of the data table.
+	//
 	// example:
 	//
 	// this is a test table
-	Description *string                                       `json:"Description,omitempty" xml:"Description,omitempty"`
-	Fields      []*ListTableMetasResponseBodyTableMetasFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The fields in the data table.
+	Fields []*ListTableMetasResponseBodyTableMetasFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// The time when the data table was created.
+	//
 	// example:
 	//
 	// 2021-12-12 12:24:33
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time when the fields were imported.
+	//
 	// example:
 	//
 	// imprecation
 	GmtImportedTime *string `json:"GmtImportedTime,omitempty" xml:"GmtImportedTime,omitempty"`
+	// The time when the data table was last modified.
+	//
 	// example:
 	//
 	// 2021-12-12 12:24:33
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The module of the data table. Valid values:
+	//
+	// - ABTest: A/B testing
+	//
+	// - ExperimentTool: Experiment tool
+	//
+	// - DataDiagnosis: data diagnosis
+	//
 	// example:
 	//
 	// ABTest
 	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	// The name of the data table.
+	//
 	// example:
 	//
 	// test_table
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The resource ID.
+	//
 	// example:
 	//
 	// reso-2s416t***
@@ -120,18 +153,30 @@ type ListTableMetasResponseBodyTableMetas struct {
 	//
 	// test
 	ResourceUri *string `json:"ResourceUri,omitempty" xml:"ResourceUri,omitempty"`
+	// The ID of the data table.
+	//
 	// example:
 	//
 	// 3
 	TableMetaId *string `json:"TableMetaId,omitempty" xml:"TableMetaId,omitempty"`
+	// The name of the table in the database.
+	//
 	// example:
 	//
 	// table_mysql
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The type of the data table. Valid values:
+	//
+	// - MaxCompute
+	//
+	// - Hologres
+	//
 	// example:
 	//
 	// MaxCompute
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The URL of the table in Data Map. This parameter is returned only for MaxCompute data tables.
+	//
 	// example:
 	//
 	// https://dmc-xxx.com/dm/table/xxx
@@ -304,18 +349,26 @@ func (s *ListTableMetasResponseBodyTableMetas) Validate() error {
 }
 
 type ListTableMetasResponseBodyTableMetasFields struct {
+	// Indicates whether the field is a dimension field.
+	//
 	// example:
 	//
 	// false
 	IsDimensionField *bool `json:"IsDimensionField,omitempty" xml:"IsDimensionField,omitempty"`
+	// The business meaning of the field.
+	//
 	// example:
 	//
 	// the gender of people
 	Meaning *string `json:"Meaning,omitempty" xml:"Meaning,omitempty"`
+	// The name of the field.
+	//
 	// example:
 	//
 	// gender
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The data type of the field.
+	//
 	// example:
 	//
 	// BIGINT

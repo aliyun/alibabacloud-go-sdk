@@ -14,6 +14,8 @@ type iStopTrafficControlTargetRequest interface {
 }
 
 type StopTrafficControlTargetRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// pairec-1324***

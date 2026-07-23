@@ -20,24 +20,32 @@ type iCreateDataDiagnosisJobsRequest interface {
 }
 
 type CreateDataDiagnosisJobsRequest struct {
+	// The data diagnosis ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3
 	DataDiagnosisId *string `json:"DataDiagnosisId,omitempty" xml:"DataDiagnosisId,omitempty"`
+	// The end date for the job.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2022-02-01
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// learn-pairec-xxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The start date for the job.
+	//
 	// This parameter is required.
 	//
 	// example:

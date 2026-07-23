@@ -49,6 +49,8 @@ type iCreateABMetricRequest interface {
 
 type CreateABMetricRequest struct {
 	AggregationByUser *bool `json:"AggregationByUser,omitempty" xml:"AggregationByUser,omitempty"`
+	// The metric definition.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -59,8 +61,16 @@ type CreateABMetricRequest struct {
 	//
 	// pv
 	Denominator *string `json:"Denominator,omitempty" xml:"Denominator,omitempty"`
+	// The metric description.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// pv指标
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The instance ID. Call the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation to obtain this ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -68,10 +78,14 @@ type CreateABMetricRequest struct {
 	// pairec-cn-test1
 	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IsBinomialDistribution *bool   `json:"IsBinomialDistribution,omitempty" xml:"IsBinomialDistribution,omitempty"`
+	// The ID of the left metric used to calculate the derived metric.
+	//
 	// example:
 	//
 	// 2
 	LeftMetricId *string `json:"LeftMetricId,omitempty" xml:"LeftMetricId,omitempty"`
+	// The metric name.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -83,40 +97,72 @@ type CreateABMetricRequest struct {
 	//
 	// click
 	Numerator *string `json:"Numerator,omitempty" xml:"Numerator,omitempty"`
+	// The operator used to calculate the derived metric. Valid values:
+	//
+	// - `Plus`: Addition
+	//
+	// - `Minus`: Subtraction
+	//
+	// - `Multiplication`: Multiplication
+	//
+	// - `Division`: Division
+	//
 	// example:
 	//
 	// Division
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// Specifies whether the metric is a real-time metric. Valid values:
+	//
+	// - `true`: The metric is real-time.
+	//
+	// - `false`: The metric is not real-time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// false
 	Realtime *bool `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
+	// The data source ID to which the results are written back. Call the ListInstanceResources operation to obtain this ID.
+	//
 	// example:
 	//
 	// 3
 	ResultResourceId *string `json:"ResultResourceId,omitempty" xml:"ResultResourceId,omitempty"`
+	// The ID of the right metric used to calculate the derived metric.
+	//
 	// example:
 	//
 	// 3
 	RightMetricId *string `json:"RightMetricId,omitempty" xml:"RightMetricId,omitempty"`
+	// The scene ID. Call the [ListScenes](https://help.aliyun.com/document_detail/2402581.html) operation to obtain this ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// The statistics cycle.
+	//
 	// example:
 	//
 	// 1
 	StatisticsCycle *int32 `json:"StatisticsCycle,omitempty" xml:"StatisticsCycle,omitempty"`
+	// The data table ID. Call the ListTableMetas operation to obtain this ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2
 	TableMetaId *string `json:"TableMetaId,omitempty" xml:"TableMetaId,omitempty"`
+	// The metric type. Valid values:
+	//
+	// - `Single`: A single metric.
+	//
+	// - `Derived`: A derived metric.
+	//
 	// This parameter is required.
 	//
 	// example:
