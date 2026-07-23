@@ -1022,6 +1022,90 @@ func (client *Client) DeviceUpdate(request *DeviceUpdateRequest) (_result *Devic
 
 // Summary:
 //
+// 并行仲裁的仲裁结果上传
+//
+// @param tmpReq - InterruptForArbitrationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InterruptForArbitrationResponse
+func (client *Client) InterruptForArbitrationWithOptions(tmpReq *InterruptForArbitrationRequest, runtime *dara.RuntimeOptions) (_result *InterruptForArbitrationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &InterruptForArbitrationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Interrupt) {
+		request.InterruptShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Interrupt, dara.String("Interrupt"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.ChatId) {
+		query["ChatId"] = request.ChatId
+	}
+
+	if !dara.IsNil(request.HubRequestId) {
+		query["HubRequestId"] = request.HubRequestId
+	}
+
+	if !dara.IsNil(request.InterruptShrink) {
+		query["Interrupt"] = request.InterruptShrink
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["SessionId"] = request.SessionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("InterruptForArbitration"),
+		Version:     dara.String("2025-09-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &InterruptForArbitrationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 并行仲裁的仲裁结果上传
+//
+// @param request - InterruptForArbitrationRequest
+//
+// @return InterruptForArbitrationResponse
+func (client *Client) InterruptForArbitration(request *InterruptForArbitrationRequest) (_result *InterruptForArbitrationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &InterruptForArbitrationResponse{}
+	_body, _err := client.InterruptForArbitrationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 指令列表
 //
 // @param request - ListCommandRequest
