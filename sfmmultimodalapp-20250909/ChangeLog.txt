@@ -1,3 +1,6 @@
+2026-07-23 Version: v1.4.1
+- Generated golang 2025-09-09 for SfmMultiModalApp.
+
 2026-07-23 Version: v1.4.0
 - Support API InterruptForArbitration.
 
