@@ -24,7 +24,11 @@ type iCreateRuleShrinkRequest interface {
 }
 
 type CreateRuleShrinkRequest struct {
-	// The description of the event bus.
+	// The description of the event rule.
+	//
+	// example:
+	//
+	// SMQ filter rule
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the event bus.
 	//
@@ -34,17 +38,49 @@ type CreateRuleShrinkRequest struct {
 	//
 	// MyEventBus
 	EventBusName *string `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
-	// The event targets.
+	// A list of event targets.
 	EventTargetsShrink *string `json:"EventTargets,omitempty" xml:"EventTargets,omitempty"`
-	// The event pattern, in JSON format. Valid values: stringEqual and stringExpression. You can specify up to five expressions in the map data structure in each field.
-	//
-	// You can specify up to five expressions in the map data structure in each field.
+	// The event pattern, in JSON format. Supported pattern types are `stringEqual` and `stringExpression`. Each field can contain a maximum of five expressions in a map structure.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// {\\"source\\": [{\\"prefix\\": \\"acs.\\"}],\\"type\\": [{\\"prefix\\":\\"oss:ObjectReplication\\"}],\\"subject\\":[{\\"prefix\\":\\"acs:oss:cn-hangzhou:123456789098****:my-movie-bucket/\\", \\"suffix\\":\\".txt\\"}]}
+	// {
+	//
+	//   "source": [
+	//
+	//     {
+	//
+	//       "prefix": "acs."
+	//
+	//     }
+	//
+	//   ],
+	//
+	//   "type": [
+	//
+	//     {
+	//
+	//       "prefix": "oss:ObjectReplication"
+	//
+	//     }
+	//
+	//   ],
+	//
+	//   "subject": [
+	//
+	//     {
+	//
+	//       "prefix": "acs:oss:cn-hangzhou:123456789098****:my-movie-bucket/",
+	//
+	//       "suffix": ".txt"
+	//
+	//     }
+	//
+	//   ]
+	//
+	// }
 	FilterPattern *string `json:"FilterPattern,omitempty" xml:"FilterPattern,omitempty"`
 	// The name of the event rule.
 	//
@@ -52,9 +88,9 @@ type CreateRuleShrinkRequest struct {
 	//
 	// example:
 	//
-	// MNSRule
+	// SMQRule
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The status of the event rule. Valid values: ENABLE: enables the event rule. It is the default status of the event rule. DISABLE: disables the event rule.
+	// The status of the event rule. Valid values: `ENABLE`: The rule is enabled. This is the default value. `DISABLE`: The rule is disabled.
 	//
 	// example:
 	//

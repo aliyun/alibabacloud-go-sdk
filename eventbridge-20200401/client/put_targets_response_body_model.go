@@ -22,35 +22,31 @@ type iPutTargetsResponseBody interface {
 }
 
 type PutTargetsResponseBody struct {
-	// The response code. Valid values:
+	// The response code.
 	//
-	// 	- Success: The call succeeded.
+	// - Success: The request was successful.
 	//
-	// 	- Other codes: The call failed. For more information about error codes, see Error codes.
+	// - Other values indicate an error. For details, see Error codes.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned result.
+	// The returned data.
 	Data *PutTargetsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message that is returned if the request failed.
+	// The error message.
 	//
 	// example:
 	//
 	// The event rule not existed!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The unique ID that Alibaba Cloud generates for the request.
 	//
 	// example:
 	//
 	// 6FB52207-7621-5292-BDF2-A17E2E984160
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// 	- **true**: The request is successful.
-	//
-	// 	- **false**: The request failed.
+	// Returns true if the operation is successful.
 	//
 	// example:
 	//
@@ -121,13 +117,13 @@ func (s *PutTargetsResponseBody) Validate() error {
 }
 
 type PutTargetsResponseBodyData struct {
-	// The ID of the failed event target.
+	// Details about the event targets that failed to be processed.
 	ErrorEntries []*PutTargetsResponseBodyDataErrorEntries `json:"ErrorEntries,omitempty" xml:"ErrorEntries,omitempty" type:"Repeated"`
-	// The number of failed event targets. Valid values:
+	// The number of event targets that failed to be processed. A value of 0 indicates that all event targets were processed successfully.
 	//
-	// 	- 0: All event targets succeeded.
+	// -
 	//
-	// 	- An integer other than 0: indicates the number of failed event targets.
+	// -
 	//
 	// example:
 	//
@@ -181,13 +177,13 @@ type PutTargetsResponseBodyDataErrorEntries struct {
 	//
 	// Mlm123456JHd2RsRoKw
 	EntryId *string `json:"EntryId,omitempty" xml:"EntryId,omitempty"`
-	// The error code returned.
+	// The error code.
 	//
 	// example:
 	//
 	// EventRuleTargetIdDuplicate
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
+	// The description of the error.
 	//
 	// example:
 	//

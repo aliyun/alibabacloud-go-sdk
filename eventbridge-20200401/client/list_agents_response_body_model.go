@@ -22,19 +22,28 @@ type iListAgentsResponseBody interface {
 }
 
 type ListAgentsResponseBody struct {
+	// The API status code or POP error code. Valid values: Success: The operation was successful.
+	//
 	// example:
 	//
 	// Success
-	Code *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *ListAgentsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// Failed to list agents
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID. Alibaba Cloud generates a unique identifier for the request.
+	//
 	// example:
 	//
 	// 7DA60DED-CD36-5837-B848-C01A23D2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returns true if the operation is successful.
+	//
 	// example:
 	//
 	// true
@@ -104,15 +113,26 @@ func (s *ListAgentsResponseBody) Validate() error {
 }
 
 type ListAgentsResponseBodyData struct {
+	// The list of agents.
 	Agents []*Agent `json:"Agents,omitempty" xml:"Agents,omitempty" type:"Repeated"`
+	// The ID of the first record.
+	//
 	// example:
 	//
 	// uat-agent
 	FirstId *string `json:"FirstId,omitempty" xml:"FirstId,omitempty"`
+	// Indicates whether more pages are available. Valid values:
+	//
+	// - true: More pages are available.
+	//
+	// - false: No more pages are available.
+	//
 	// example:
 	//
 	// false
 	HasMore *string `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
+	// The ID of the last record.
+	//
 	// example:
 	//
 	// last-agent

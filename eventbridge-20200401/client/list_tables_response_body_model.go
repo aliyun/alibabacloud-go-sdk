@@ -22,22 +22,32 @@ type iListTablesResponseBody interface {
 }
 
 type ListTablesResponseBody struct {
+	// Response code
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Response data
+	//
 	// example:
 	//
 	// {"Tables":[{"Name":"my_table","Comment":"测试事件表"}],"NextToken":"10","Total":1}
 	Data *ListTablesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// API response message
+	//
 	// example:
 	//
 	// Operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 34AD682D-5B91-5773-8132-AA38C130****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether successful
+	//
 	// example:
 	//
 	// true
@@ -107,11 +117,16 @@ func (s *ListTablesResponseBody) Validate() error {
 }
 
 type ListTablesResponseBodyData struct {
+	// Next page token
+	//
 	// example:
 	//
 	// 10
-	NextToken *string  `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Tables    []*Table `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Table entities. Each element represents a specific table, including but not limited to information such as table name and table ID.
+	Tables []*Table `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	// Total count
+	//
 	// example:
 	//
 	// 1

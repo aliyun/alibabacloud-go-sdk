@@ -24,7 +24,35 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"us-west-1":             dara.String("eventbridge-console.us-west-1.aliyuncs.com"),
+		"us-east-1":             dara.String("eventbridge-console.us-east-1.aliyuncs.com"),
+		"eu-west-1":             dara.String("eventbridge-console.eu-west-1.aliyuncs.com"),
+		"eu-central-1":          dara.String("eventbridge-console.eu-central-1.aliyuncs.com"),
+		"cn-zhangjiakou":        dara.String("eventbridge-console.cn-zhangjiakou.aliyuncs.com"),
+		"cn-wulanchabu":         dara.String("eventbridge-console.cn-wulanchabu.aliyuncs.com"),
+		"cn-shenzhen-finance-1": dara.String("eventbridge-console.cn-shenzhen-finance-1.aliyuncs.com"),
+		"cn-shenzhen":           dara.String("eventbridge-console.cn-shenzhen.aliyuncs.com"),
+		"cn-shanghai-finance-1": dara.String("eventbridge-console.cn-shanghai-finance-1.aliyuncs.com"),
+		"cn-shanghai":           dara.String("eventbridge-console.cn-shanghai.aliyuncs.com"),
+		"cn-qingdao":            dara.String("eventbridge-console.cn-qingdao.aliyuncs.com"),
+		"cn-huhehaote":          dara.String("eventbridge-console.cn-huhehaote.aliyuncs.com"),
+		"cn-hongkong":           dara.String("eventbridge-console.cn-hongkong.aliyuncs.com"),
+		"cn-heyuan":             dara.String("eventbridge-console.cn-heyuan.aliyuncs.com"),
+		"cn-hangzhou":           dara.String("eventbridge-console.cn-hangzhou.aliyuncs.com"),
+		"cn-guangzhou":          dara.String("eventbridge-console.cn-guangzhou.aliyuncs.com"),
+		"cn-chengdu":            dara.String("eventbridge-console.cn-chengdu.aliyuncs.com"),
+		"cn-beijing-finance-1":  dara.String("eventbridge-console.cn-beijing-finance-1.aliyuncs.com"),
+		"cn-beijing":            dara.String("eventbridge-console.cn-beijing.aliyuncs.com"),
+		"ap-southeast-7":        dara.String("eventbridge-console.ap-southeast-7.aliyuncs.com"),
+		"ap-southeast-6":        dara.String("eventbridge-console.ap-southeast-6.aliyuncs.com"),
+		"ap-southeast-5":        dara.String("eventbridge-console.ap-southeast-5.aliyuncs.com"),
+		"ap-southeast-3":        dara.String("eventbridge-console.ap-southeast-3.aliyuncs.com"),
+		"ap-southeast-1":        dara.String("eventbridge-console.ap-southeast-1.aliyuncs.com"),
+		"ap-northeast-2":        dara.String("eventbridge-console.ap-northeast-2.aliyuncs.com"),
+		"ap-northeast-1":        dara.String("eventbridge-console.ap-northeast-1.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +86,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 用自然语言查询事件数据。输入问题后系统自动生成SQL并执行，返回结构化结果；若问题含糊则返回澄清提示。支持通过ConversationId进行多轮追问。
+// Queries data using natural language.
 //
 // @param request - AskLumaRequest
 //
@@ -114,7 +142,7 @@ func (client *Client) AskLumaWithOptions(request *AskLumaRequest, runtime *dara.
 
 // Summary:
 //
-// 用自然语言查询事件数据。输入问题后系统自动生成SQL并执行，返回结构化结果；若问题含糊则返回澄清提示。支持通过ConversationId进行多轮追问。
+// Queries data using natural language.
 //
 // @param request - AskLumaRequest
 //
@@ -132,7 +160,11 @@ func (client *Client) AskLuma(request *AskLumaRequest) (_result *AskLumaResponse
 
 // Summary:
 //
-// Checks whether a service-linked role is created for an Alibaba Cloud account.
+// Checks whether a service-linked role is authorized for an account.
+//
+// Description:
+//
+// Checks for a service-linked role by name.
 //
 // @param request - CheckServiceLinkedRoleForProductRequest
 //
@@ -176,7 +208,11 @@ func (client *Client) CheckServiceLinkedRoleForProductWithOptions(request *Check
 
 // Summary:
 //
-// Checks whether a service-linked role is created for an Alibaba Cloud account.
+// Checks whether a service-linked role is authorized for an account.
+//
+// Description:
+//
+// Checks for a service-linked role by name.
 //
 // @param request - CheckServiceLinkedRoleForProductRequest
 //
@@ -194,7 +230,7 @@ func (client *Client) CheckServiceLinkedRoleForProduct(request *CheckServiceLink
 
 // Summary:
 //
-// 查询历史会话
+// Creates a custom agent.
 //
 // @param tmpReq - CreateAgentRequest
 //
@@ -256,7 +292,7 @@ func (client *Client) CreateAgentWithOptions(tmpReq *CreateAgentRequest, runtime
 
 // Summary:
 //
-// 查询历史会话
+// Creates a custom agent.
 //
 // @param request - CreateAgentRequest
 //
@@ -362,11 +398,11 @@ func (client *Client) CreateApiDestination(request *CreateApiDestinationRequest)
 
 // Summary:
 //
-// Creates a connection.
+// Creates a connection configuration.
 //
 // Description:
 //
-// You can call this API operation to create a connection.
+// Creates a connection configuration.
 //
 // @param tmpReq - CreateConnectionRequest
 //
@@ -444,11 +480,11 @@ func (client *Client) CreateConnectionWithOptions(tmpReq *CreateConnectionReques
 
 // Summary:
 //
-// Creates a connection.
+// Creates a connection configuration.
 //
 // Description:
 //
-// You can call this API operation to create a connection.
+// Creates a connection configuration.
 //
 // @param request - CreateConnectionRequest
 //
@@ -540,11 +576,11 @@ func (client *Client) CreateEventBus(request *CreateEventBusRequest) (_result *C
 
 // Summary:
 //
-// Creates an event source.
+// Creates an external event source.
 //
 // Description:
 //
-// You can call this operation to create an event source.
+// Creates an external event source.
 //
 // @param tmpReq - CreateEventSourceRequest
 //
@@ -678,11 +714,11 @@ func (client *Client) CreateEventSourceWithOptions(tmpReq *CreateEventSourceRequ
 
 // Summary:
 //
-// Creates an event source.
+// Creates an external event source.
 //
 // Description:
 //
-// You can call this operation to create an event source.
+// Creates an external event source.
 //
 // @param request - CreateEventSourceRequest
 //
@@ -704,7 +740,7 @@ func (client *Client) CreateEventSource(request *CreateEventSourceRequest) (_res
 //
 // Description:
 //
-// You can call this API operation to create an event stream.
+// Creates an event stream.
 //
 // @param tmpReq - CreateEventStreamingRequest
 //
@@ -747,6 +783,10 @@ func (client *Client) CreateEventStreamingWithOptions(tmpReq *CreateEventStreami
 
 	if !dara.IsNil(request.FilterPattern) {
 		body["FilterPattern"] = request.FilterPattern
+	}
+
+	if !dara.IsNil(request.Metadata) {
+		body["Metadata"] = request.Metadata
 	}
 
 	if !dara.IsNil(request.RunOptionsShrink) {
@@ -798,7 +838,7 @@ func (client *Client) CreateEventStreamingWithOptions(tmpReq *CreateEventStreami
 //
 // Description:
 //
-// You can call this API operation to create an event stream.
+// Creates an event stream.
 //
 // @param request - CreateEventStreamingRequest
 //
@@ -816,7 +856,7 @@ func (client *Client) CreateEventStreaming(request *CreateEventStreamingRequest)
 
 // Summary:
 //
-// 创建命名空间
+// # Create Namespace
 //
 // @param request - CreateNamespaceRequest
 //
@@ -874,7 +914,7 @@ func (client *Client) CreateNamespaceWithOptions(request *CreateNamespaceRequest
 
 // Summary:
 //
-// 创建命名空间
+// # Create Namespace
 //
 // @param request - CreateNamespaceRequest
 //
@@ -896,7 +936,7 @@ func (client *Client) CreateNamespace(request *CreateNamespaceRequest) (_result 
 //
 // Description:
 //
-// You can call this API operation to create an event rule.
+// Creates an event rule.
 //
 // @param tmpReq - CreateRuleRequest
 //
@@ -970,7 +1010,7 @@ func (client *Client) CreateRuleWithOptions(tmpReq *CreateRuleRequest, runtime *
 //
 // Description:
 //
-// You can call this API operation to create an event rule.
+// Creates an event rule.
 //
 // @param request - CreateRuleRequest
 //
@@ -988,11 +1028,11 @@ func (client *Client) CreateRule(request *CreateRuleRequest) (_result *CreateRul
 
 // Summary:
 //
-// Creates a service-linked role for your cloud service.
+// Creates the service-linked role (SLR) that is associated with a specified product.
 //
 // Description:
 //
-// You can call this API operation to create a service-linked role for your cloud service.
+// Creates the service-linked role (SLR) that is associated with a specified product.
 //
 // @param request - CreateServiceLinkedRoleForProductRequest
 //
@@ -1036,11 +1076,11 @@ func (client *Client) CreateServiceLinkedRoleForProductWithOptions(request *Crea
 
 // Summary:
 //
-// Creates a service-linked role for your cloud service.
+// Creates the service-linked role (SLR) that is associated with a specified product.
 //
 // Description:
 //
-// You can call this API operation to create a service-linked role for your cloud service.
+// Creates the service-linked role (SLR) that is associated with a specified product.
 //
 // @param request - CreateServiceLinkedRoleForProductRequest
 //
@@ -1058,7 +1098,11 @@ func (client *Client) CreateServiceLinkedRoleForProduct(request *CreateServiceLi
 
 // Summary:
 //
-// 创建表
+// # Create a data catalog
+//
+// Description:
+//
+// Creates an event target under the specified rule.
 //
 // @param tmpReq - CreateTableRequest
 //
@@ -1136,7 +1180,11 @@ func (client *Client) CreateTableWithOptions(tmpReq *CreateTableRequest, runtime
 
 // Summary:
 //
-// 创建表
+// # Create a data catalog
+//
+// Description:
+//
+// Creates an event target under the specified rule.
 //
 // @param request - CreateTableRequest
 //
@@ -1154,7 +1202,7 @@ func (client *Client) CreateTable(request *CreateTableRequest) (_result *CreateT
 
 // Summary:
 //
-// # DeleteAgent
+// Deletes a custom agent.
 //
 // @param request - DeleteAgentRequest
 //
@@ -1198,7 +1246,7 @@ func (client *Client) DeleteAgentWithOptions(request *DeleteAgentRequest, runtim
 
 // Summary:
 //
-// # DeleteAgent
+// Deletes a custom agent.
 //
 // @param request - DeleteAgentRequest
 //
@@ -1356,11 +1404,79 @@ func (client *Client) DeleteConnection(request *DeleteConnectionRequest) (_resul
 
 // Summary:
 //
+// Deletes a data integration job.
+//
+// @param tmpReq - DeleteEventAnalysisJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEventAnalysisJobResponse
+func (client *Client) DeleteEventAnalysisJobWithOptions(tmpReq *DeleteEventAnalysisJobRequest, runtime *dara.RuntimeOptions) (_result *DeleteEventAnalysisJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteEventAnalysisJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SourceResource) {
+		request.SourceResourceShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceResource, dara.String("SourceResource"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.SourceResourceShrink) {
+		body["SourceResource"] = request.SourceResourceShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteEventAnalysisJob"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteEventAnalysisJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a data integration job.
+//
+// @param request - DeleteEventAnalysisJobRequest
+//
+// @return DeleteEventAnalysisJobResponse
+func (client *Client) DeleteEventAnalysisJob(request *DeleteEventAnalysisJobRequest) (_result *DeleteEventAnalysisJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteEventAnalysisJobResponse{}
+	_body, _err := client.DeleteEventAnalysisJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an event bus.
 //
 // Description:
 //
-// You can call this API operation to delete an event bus.
+// Deletes an event bus.
 //
 // @param request - DeleteEventBusRequest
 //
@@ -1408,7 +1524,7 @@ func (client *Client) DeleteEventBusWithOptions(request *DeleteEventBusRequest, 
 //
 // Description:
 //
-// You can call this API operation to delete an event bus.
+// Deletes an event bus.
 //
 // @param request - DeleteEventBusRequest
 //
@@ -1426,11 +1542,73 @@ func (client *Client) DeleteEventBus(request *DeleteEventBusRequest) (_result *D
 
 // Summary:
 //
+// Deletes an EventHouse Runtime.
+//
+// @param request - DeleteEventHouseRuntimeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEventHouseRuntimeResponse
+func (client *Client) DeleteEventHouseRuntimeWithOptions(request *DeleteEventHouseRuntimeRequest, runtime *dara.RuntimeOptions) (_result *DeleteEventHouseRuntimeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteEventHouseRuntime"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteEventHouseRuntimeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an EventHouse Runtime.
+//
+// @param request - DeleteEventHouseRuntimeRequest
+//
+// @return DeleteEventHouseRuntimeResponse
+func (client *Client) DeleteEventHouseRuntime(request *DeleteEventHouseRuntimeRequest) (_result *DeleteEventHouseRuntimeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteEventHouseRuntimeResponse{}
+	_body, _err := client.DeleteEventHouseRuntimeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an event source.
 //
 // Description:
 //
-// You can call this API operation to delete an event source.
+// Deletes an event source.
 //
 // @param request - DeleteEventSourceRequest
 //
@@ -1482,7 +1660,7 @@ func (client *Client) DeleteEventSourceWithOptions(request *DeleteEventSourceReq
 //
 // Description:
 //
-// You can call this API operation to delete an event source.
+// Deletes an event source.
 //
 // @param request - DeleteEventSourceRequest
 //
@@ -1504,7 +1682,7 @@ func (client *Client) DeleteEventSource(request *DeleteEventSourceRequest) (_res
 //
 // Description:
 //
-// You can call this API operation to delete an event stream.
+// Deletes an event stream.
 //
 // @param request - DeleteEventStreamingRequest
 //
@@ -1552,7 +1730,7 @@ func (client *Client) DeleteEventStreamingWithOptions(request *DeleteEventStream
 //
 // Description:
 //
-// You can call this API operation to delete an event stream.
+// Deletes an event stream.
 //
 // @param request - DeleteEventStreamingRequest
 //
@@ -1570,7 +1748,7 @@ func (client *Client) DeleteEventStreaming(request *DeleteEventStreamingRequest)
 
 // Summary:
 //
-// 删除命名空间
+// # Delete Namespace
 //
 // @param request - DeleteNamespaceRequest
 //
@@ -1624,7 +1802,7 @@ func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest
 
 // Summary:
 //
-// 删除命名空间
+// # Delete Namespace
 //
 // @param request - DeleteNamespaceRequest
 //
@@ -1716,7 +1894,7 @@ func (client *Client) DeleteRule(request *DeleteRuleRequest) (_result *DeleteRul
 
 // Summary:
 //
-// 删除表
+// # Delete table
 //
 // @param request - DeleteTableRequest
 //
@@ -1774,7 +1952,7 @@ func (client *Client) DeleteTableWithOptions(request *DeleteTableRequest, runtim
 
 // Summary:
 //
-// 删除表
+// # Delete table
 //
 // @param request - DeleteTableRequest
 //
@@ -1950,7 +2128,11 @@ func (client *Client) DisableRule(request *DisableRuleRequest) (_result *Disable
 
 // Summary:
 //
-// Discovers the schema and simple data of an event source (such as MySQL).
+// Discovers the schema and simple data of an event source, such as MySQL.
+//
+// Description:
+//
+// Discovers information about an event source.
 //
 // @param tmpReq - DiscoverEventSourceRequest
 //
@@ -2000,7 +2182,11 @@ func (client *Client) DiscoverEventSourceWithOptions(tmpReq *DiscoverEventSource
 
 // Summary:
 //
-// Discovers the schema and simple data of an event source (such as MySQL).
+// Discovers the schema and simple data of an event source, such as MySQL.
+//
+// Description:
+//
+// Discovers information about an event source.
 //
 // @param request - DiscoverEventSourceRequest
 //
@@ -2092,7 +2278,7 @@ func (client *Client) EnableRule(request *EnableRuleRequest) (_result *EnableRul
 
 // Summary:
 //
-// # EventCenterQueryEvents
+// Queries events from the event center.
 //
 // @param tmpReq - EventCenterQueryEventsRequest
 //
@@ -2156,7 +2342,7 @@ func (client *Client) EventCenterQueryEventsWithOptions(tmpReq *EventCenterQuery
 
 // Summary:
 //
-// # EventCenterQueryEvents
+// Queries events from the event center.
 //
 // @param request - EventCenterQueryEventsRequest
 //
@@ -2174,7 +2360,7 @@ func (client *Client) EventCenterQueryEvents(request *EventCenterQueryEventsRequ
 
 // Summary:
 //
-// 获取当前Agent的基本信息，包括名称、描述和已绑定的数据目录列表。用于了解当前接入点的能力范围。
+// Retrieves agent metadata.
 //
 // @param request - GetAgentRequest
 //
@@ -2218,7 +2404,7 @@ func (client *Client) GetAgentWithOptions(request *GetAgentRequest, runtime *dar
 
 // Summary:
 //
-// 获取当前Agent的基本信息，包括名称、描述和已绑定的数据目录列表。用于了解当前接入点的能力范围。
+// Retrieves agent metadata.
 //
 // @param request - GetAgentRequest
 //
@@ -2306,7 +2492,7 @@ func (client *Client) GetApiDestination(request *GetApiDestinationRequest) (_res
 
 // Summary:
 //
-// 获取指定数据目录的详细信息，包括目录名称和描述。传入Name即可查询。
+// # Get data catalog
 //
 // @param request - GetCatalogRequest
 //
@@ -2356,7 +2542,7 @@ func (client *Client) GetCatalogWithOptions(request *GetCatalogRequest, runtime 
 
 // Summary:
 //
-// 获取指定数据目录的详细信息，包括目录名称和描述。传入Name即可查询。
+// # Get data catalog
 //
 // @param request - GetCatalogRequest
 //
@@ -2374,11 +2560,11 @@ func (client *Client) GetCatalog(request *GetCatalogRequest) (_result *GetCatalo
 
 // Summary:
 //
-// Queries the configurations of a connection.
+// Queries the configuration information of a single connection.
 //
 // Description:
 //
-// You can call this API operation to query the configurations of a connection.
+// Queries the configuration information of a single connection.
 //
 // @param request - GetConnectionRequest
 //
@@ -2422,11 +2608,11 @@ func (client *Client) GetConnectionWithOptions(request *GetConnectionRequest, ru
 
 // Summary:
 //
-// Queries the configurations of a connection.
+// Queries the configuration information of a single connection.
 //
 // Description:
 //
-// You can call this API operation to query the configurations of a connection.
+// Queries the configuration information of a single connection.
 //
 // @param request - GetConnectionRequest
 //
@@ -2514,11 +2700,73 @@ func (client *Client) GetEventBus(request *GetEventBusRequest) (_result *GetEven
 
 // Summary:
 //
-// Queries the details of an event stream.
+// Queries the status and operation progress of an EventHouse Runtime.
+//
+// @param request - GetEventHouseRuntimeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEventHouseRuntimeResponse
+func (client *Client) GetEventHouseRuntimeWithOptions(request *GetEventHouseRuntimeRequest, runtime *dara.RuntimeOptions) (_result *GetEventHouseRuntimeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetEventHouseRuntime"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetEventHouseRuntimeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the status and operation progress of an EventHouse Runtime.
+//
+// @param request - GetEventHouseRuntimeRequest
+//
+// @return GetEventHouseRuntimeResponse
+func (client *Client) GetEventHouseRuntime(request *GetEventHouseRuntimeRequest) (_result *GetEventHouseRuntimeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetEventHouseRuntimeResponse{}
+	_body, _err := client.GetEventHouseRuntimeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of an event stream.
 //
 // Description:
 //
-// You can call this API operation to query the details of an event stream.
+// Retrieves the details of an event stream.
 //
 // @param request - GetEventStreamingRequest
 //
@@ -2562,11 +2810,11 @@ func (client *Client) GetEventStreamingWithOptions(request *GetEventStreamingReq
 
 // Summary:
 //
-// Queries the details of an event stream.
+// Retrieves the details of an event stream.
 //
 // Description:
 //
-// You can call this API operation to query the details of an event stream.
+// Retrieves the details of an event stream.
 //
 // @param request - GetEventStreamingRequest
 //
@@ -2584,7 +2832,7 @@ func (client *Client) GetEventStreaming(request *GetEventStreamingRequest) (_res
 
 // Summary:
 //
-// 获取指定命名空间的详细信息。需传入Catalog和Name。
+// # Get namespace
 //
 // @param request - GetNamespaceRequest
 //
@@ -2638,7 +2886,7 @@ func (client *Client) GetNamespaceWithOptions(request *GetNamespaceRequest, runt
 
 // Summary:
 //
-// 获取指定命名空间的详细信息。需传入Catalog和Name。
+// # Get namespace
 //
 // @param request - GetNamespaceRequest
 //
@@ -2656,11 +2904,11 @@ func (client *Client) GetNamespace(request *GetNamespaceRequest) (_result *GetNa
 
 // Summary:
 //
-// Queries the details of an event rule.
+// Retrieves the details of an event rule.
 //
 // Description:
 //
-// You can call this API operation to query the details of an event rule.
+// Gets the details of an event rule.
 //
 // @param request - GetRuleRequest
 //
@@ -2708,11 +2956,11 @@ func (client *Client) GetRuleWithOptions(request *GetRuleRequest, runtime *dara.
 
 // Summary:
 //
-// Queries the details of an event rule.
+// Retrieves the details of an event rule.
 //
 // Description:
 //
-// You can call this API operation to query the details of an event rule.
+// Gets the details of an event rule.
 //
 // @param request - GetRuleRequest
 //
@@ -2730,7 +2978,7 @@ func (client *Client) GetRule(request *GetRuleRequest) (_result *GetRuleResponse
 
 // Summary:
 //
-// 获取指定数据表的完整结构，包括所有列的名称、类型和描述。在编写查询前调用此工具了解表结构。
+// # Get Table
 //
 // @param request - GetTableRequest
 //
@@ -2788,7 +3036,7 @@ func (client *Client) GetTableWithOptions(request *GetTableRequest, runtime *dar
 
 // Summary:
 //
-// 获取指定数据表的完整结构，包括所有列的名称、类型和描述。在编写查询前调用此工具了解表结构。
+// # Get Table
 //
 // @param request - GetTableRequest
 //
@@ -2806,7 +3054,7 @@ func (client *Client) GetTable(request *GetTableRequest) (_result *GetTableRespo
 
 // Summary:
 //
-// 查询 Agent 列表
+// Retrieves a list of custom agents.
 //
 // @param request - ListAgentsRequest
 //
@@ -2858,7 +3106,7 @@ func (client *Client) ListAgentsWithOptions(request *ListAgentsRequest, runtime 
 
 // Summary:
 //
-// 查询 Agent 列表
+// Retrieves a list of custom agents.
 //
 // @param request - ListAgentsRequest
 //
@@ -3011,7 +3259,7 @@ func (client *Client) ListApiDestinations(request *ListApiDestinationsRequest) (
 
 // Summary:
 //
-// 列出当前Agent可访问的所有数据目录。每个Catalog是一个独立的数据源，内含多个命名空间和表。支持分页。
+// # Query data catalog list
 //
 // @param request - ListCatalogsRequest
 //
@@ -3059,7 +3307,7 @@ func (client *Client) ListCatalogsWithOptions(request *ListCatalogsRequest, runt
 
 // Summary:
 //
-// 列出当前Agent可访问的所有数据目录。每个Catalog是一个独立的数据源，内含多个命名空间和表。支持分页。
+// # Query data catalog list
 //
 // @param request - ListCatalogsRequest
 //
@@ -3077,11 +3325,11 @@ func (client *Client) ListCatalogs(request *ListCatalogsRequest) (_result *ListC
 
 // Summary:
 //
-// Queries connections.
+// Queries the list of connection configurations.
 //
 // Description:
 //
-// You can call this API operation to query connections.
+// Queries the list of connection configurations.
 //
 // @param request - ListConnectionsRequest
 //
@@ -3137,11 +3385,11 @@ func (client *Client) ListConnectionsWithOptions(request *ListConnectionsRequest
 
 // Summary:
 //
-// Queries connections.
+// Queries the list of connection configurations.
 //
 // Description:
 //
-// You can call this API operation to query connections.
+// Queries the list of connection configurations.
 //
 // @param request - ListConnectionsRequest
 //
@@ -3237,11 +3485,77 @@ func (client *Client) ListEventBuses(request *ListEventBusesRequest) (_result *L
 
 // Summary:
 //
+// Queries the list of EventHouse runtimes.
+//
+// @param request - ListEventHouseRuntimesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEventHouseRuntimesResponse
+func (client *Client) ListEventHouseRuntimesWithOptions(request *ListEventHouseRuntimesRequest, runtime *dara.RuntimeOptions) (_result *ListEventHouseRuntimesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListEventHouseRuntimes"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListEventHouseRuntimesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of EventHouse runtimes.
+//
+// @param request - ListEventHouseRuntimesRequest
+//
+// @return ListEventHouseRuntimesResponse
+func (client *Client) ListEventHouseRuntimes(request *ListEventHouseRuntimesRequest) (_result *ListEventHouseRuntimesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListEventHouseRuntimesResponse{}
+	_body, _err := client.ListEventHouseRuntimesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries event streams.
 //
 // Description:
 //
-// You can call this API operation to query event streams.
+// Queries event streams.
 //
 // @param request - ListEventStreamingsRequest
 //
@@ -3309,7 +3623,7 @@ func (client *Client) ListEventStreamingsWithOptions(request *ListEventStreaming
 //
 // Description:
 //
-// You can call this API operation to query event streams.
+// Queries event streams.
 //
 // @param request - ListEventStreamingsRequest
 //
@@ -3327,7 +3641,7 @@ func (client *Client) ListEventStreamings(request *ListEventStreamingsRequest) (
 
 // Summary:
 //
-// 列出指定数据目录下的所有命名空间。命名空间用于组织同一目录内的表，类似数据库中的schema。支持分页。
+// # Query namespace list
 //
 // @param request - ListNamespacesRequest
 //
@@ -3379,7 +3693,7 @@ func (client *Client) ListNamespacesWithOptions(request *ListNamespacesRequest, 
 
 // Summary:
 //
-// 列出指定数据目录下的所有命名空间。命名空间用于组织同一目录内的表，类似数据库中的schema。支持分页。
+// # Query namespace list
 //
 // @param request - ListNamespacesRequest
 //
@@ -3479,7 +3793,7 @@ func (client *Client) ListRules(request *ListRulesRequest) (_result *ListRulesRe
 
 // Summary:
 //
-// 列出指定命名空间下的数据表，支持按表名模糊搜索。返回表名和描述列表，支持分页。
+// # Query table list
 //
 // @param request - ListTablesRequest
 //
@@ -3535,7 +3849,7 @@ func (client *Client) ListTablesWithOptions(request *ListTablesRequest, runtime 
 
 // Summary:
 //
-// 列出指定命名空间下的数据表，支持按表名模糊搜索。返回表名和描述列表，支持分页。
+// # Query table list
 //
 // @param request - ListTablesRequest
 //
@@ -3631,11 +3945,11 @@ func (client *Client) ListTargets(request *ListTargetsRequest) (_result *ListTar
 
 // Summary:
 //
-// Queries all custom event sources.
+// This operation queries all custom event sources.
 //
 // Description:
 //
-// You can call this API operation to query custom event sources.
+// Queries all custom event sources.
 //
 // @param request - ListUserDefinedEventSourcesRequest
 //
@@ -3691,11 +4005,11 @@ func (client *Client) ListUserDefinedEventSourcesWithOptions(request *ListUserDe
 
 // Summary:
 //
-// Queries all custom event sources.
+// This operation queries all custom event sources.
 //
 // Description:
 //
-// You can call this API operation to query custom event sources.
+// Queries all custom event sources.
 //
 // @param request - ListUserDefinedEventSourcesRequest
 //
@@ -3713,11 +4027,11 @@ func (client *Client) ListUserDefinedEventSources(request *ListUserDefinedEventS
 
 // Summary:
 //
-// Stops an event stream that is running.
+// Pauses a running event stream.
 //
 // Description:
 //
-// You can call this API operation to stop an event stream that is running.
+// Pauses a running event stream.
 //
 // @param request - PauseEventStreamingRequest
 //
@@ -3761,11 +4075,11 @@ func (client *Client) PauseEventStreamingWithOptions(request *PauseEventStreamin
 
 // Summary:
 //
-// Stops an event stream that is running.
+// Pauses a running event stream.
 //
 // Description:
 //
-// You can call this API operation to stop an event stream that is running.
+// Pauses a running event stream.
 //
 // @param request - PauseEventStreamingRequest
 //
@@ -3783,7 +4097,7 @@ func (client *Client) PauseEventStreaming(request *PauseEventStreamingRequest) (
 
 // Summary:
 //
-// 轮询AskLuma的异步查询结果。传入AskLuma返回的MessageId，获取执行状态和最终结果；状态为RUNNING时应立即重试，无需退避。
+// Polls for natural language query results.
 //
 // @param request - PollAskResultRequest
 //
@@ -3831,7 +4145,7 @@ func (client *Client) PollAskResultWithOptions(request *PollAskResultRequest, ru
 
 // Summary:
 //
-// 轮询AskLuma的异步查询结果。传入AskLuma返回的MessageId，获取执行状态和最终结果；状态为RUNNING时应立即重试，无需退避。
+// Polls for natural language query results.
 //
 // @param request - PollAskResultRequest
 //
@@ -3849,11 +4163,11 @@ func (client *Client) PollAskResult(request *PollAskResultRequest) (_result *Pol
 
 // Summary:
 //
-// Creates or updates event targets under a rule.
+// Create or update event targets for the specified rule.
 //
 // Description:
 //
-// You can call this API operation to create or update event targets under a rule.
+// Creates or updates event targets for a specified rule.
 //
 // @param tmpReq - PutTargetsRequest
 //
@@ -3911,11 +4225,11 @@ func (client *Client) PutTargetsWithOptions(tmpReq *PutTargetsRequest, runtime *
 
 // Summary:
 //
-// Creates or updates event targets under a rule.
+// Create or update event targets for the specified rule.
 //
 // Description:
 //
-// You can call this API operation to create or update event targets under a rule.
+// Creates or updates event targets for a specified rule.
 //
 // @param request - PutTargetsRequest
 //
@@ -3933,7 +4247,7 @@ func (client *Client) PutTargets(request *PutTargetsRequest) (_result *PutTarget
 
 // Summary:
 //
-// 查询历史会话
+// Queries the history logs of natural language queries.
 //
 // @param request - QueryAskLumaLogRequest
 //
@@ -3985,7 +4299,7 @@ func (client *Client) QueryAskLumaLogWithOptions(request *QueryAskLumaLogRequest
 
 // Summary:
 //
-// 查询历史会话
+// Queries the history logs of natural language queries.
 //
 // @param request - QueryAskLumaLogRequest
 //
@@ -4081,7 +4395,7 @@ func (client *Client) QueryEvent(request *QueryEventRequest) (_result *QueryEven
 
 // Summary:
 //
-// 直接执行SQL语句查询事件仓数据。适用于已知确切SQL的场景，无需自然语言转换，无对话上下文。返回结构化结果集。
+// # Query event store data
 //
 // @param request - QueryEventHouseRequest
 //
@@ -4129,7 +4443,7 @@ func (client *Client) QueryEventHouseWithOptions(request *QueryEventHouseRequest
 
 // Summary:
 //
-// 直接执行SQL语句查询事件仓数据。适用于已知确切SQL的场景，无需自然语言转换，无对话上下文。返回结构化结果集。
+// # Query event store data
 //
 // @param request - QueryEventHouseRequest
 //
@@ -4299,11 +4613,11 @@ func (client *Client) QueryTracedEventByEventId(request *QueryTracedEventByEvent
 
 // Summary:
 //
-// Queries event traces by time range.
+// This operation queries `event trace` data within a `time range`.
 //
 // Description:
 //
-// You can call this API operation to query event traces by time range.
+// Queries for event traces within a specified time range.
 //
 // @param request - QueryTracedEventsRequest
 //
@@ -4379,11 +4693,11 @@ func (client *Client) QueryTracedEventsWithOptions(request *QueryTracedEventsReq
 
 // Summary:
 //
-// Queries event traces by time range.
+// This operation queries `event trace` data within a `time range`.
 //
 // Description:
 //
-// You can call this API operation to query event traces by time range.
+// Queries for event traces within a specified time range.
 //
 // @param request - QueryTracedEventsRequest
 //
@@ -4401,11 +4715,11 @@ func (client *Client) QueryTracedEvents(request *QueryTracedEventsRequest) (_res
 
 // Summary:
 //
-// Enables a created or deactivated event stream.
+// Enables a created or disabled event stream.
 //
 // Description:
 //
-// You can call this API operation to enable a created or deactivated event stream.
+// Enables a created or disabled event stream.
 //
 // @param request - StartEventStreamingRequest
 //
@@ -4449,11 +4763,11 @@ func (client *Client) StartEventStreamingWithOptions(request *StartEventStreamin
 
 // Summary:
 //
-// Enables a created or deactivated event stream.
+// Enables a created or disabled event stream.
 //
 // Description:
 //
-// You can call this API operation to enable a created or deactivated event stream.
+// Enables a created or disabled event stream.
 //
 // @param request - StartEventStreamingRequest
 //
@@ -4471,11 +4785,11 @@ func (client *Client) StartEventStreaming(request *StartEventStreamingRequest) (
 
 // Summary:
 //
-// Checks whether the event pattern matches the provided JSON format.
+// Tests if an event pattern matches a given event.
 //
 // Description:
 //
-// You can call this API operation to check whether the event pattern matches the provided JSON format.
+// Use this action to test an event pattern before you apply it to a rule.
 //
 // @param request - TestEventPatternRequest
 //
@@ -4523,11 +4837,11 @@ func (client *Client) TestEventPatternWithOptions(request *TestEventPatternReque
 
 // Summary:
 //
-// Checks whether the event pattern matches the provided JSON format.
+// Tests if an event pattern matches a given event.
 //
 // Description:
 //
-// You can call this API operation to check whether the event pattern matches the provided JSON format.
+// Use this action to test an event pattern before you apply it to a rule.
 //
 // @param request - TestEventPatternRequest
 //
@@ -4545,11 +4859,11 @@ func (client *Client) TestEventPattern(request *TestEventPatternRequest) (_resul
 
 // Summary:
 //
-// Checks whether event source configurations are available.
+// Checks whether the event source configuration is active.
 //
 // Description:
 //
-// You can call this API operation to query all custom event sources.
+// Returns a list of all external event sources.
 //
 // @param tmpReq - TestEventSourceConfigRequest
 //
@@ -4599,11 +4913,11 @@ func (client *Client) TestEventSourceConfigWithOptions(tmpReq *TestEventSourceCo
 
 // Summary:
 //
-// Checks whether event source configurations are available.
+// Checks whether the event source configuration is active.
 //
 // Description:
 //
-// You can call this API operation to query all custom event sources.
+// Returns a list of all external event sources.
 //
 // @param request - TestEventSourceConfigRequest
 //
@@ -4621,7 +4935,7 @@ func (client *Client) TestEventSourceConfig(request *TestEventSourceConfigReques
 
 // Summary:
 //
-// 查询历史会话
+// Updates a custom agent.
 //
 // @param tmpReq - UpdateAgentRequest
 //
@@ -4687,7 +5001,7 @@ func (client *Client) UpdateAgentWithOptions(tmpReq *UpdateAgentRequest, runtime
 
 // Summary:
 //
-// 查询历史会话
+// Updates a custom agent.
 //
 // @param request - UpdateAgentRequest
 //
@@ -4793,11 +5107,11 @@ func (client *Client) UpdateApiDestination(request *UpdateApiDestinationRequest)
 
 // Summary:
 //
-// Updates a connection.
+// Updates the connection configuration.
 //
 // Description:
 //
-// You can call this API operation to update a connection.
+// Updates the connection configuration.
 //
 // @param tmpReq - UpdateConnectionRequest
 //
@@ -4875,11 +5189,11 @@ func (client *Client) UpdateConnectionWithOptions(tmpReq *UpdateConnectionReques
 
 // Summary:
 //
-// Updates a connection.
+// Updates the connection configuration.
 //
 // Description:
 //
-// You can call this API operation to update a connection.
+// Updates the connection configuration.
 //
 // @param request - UpdateConnectionRequest
 //
@@ -4962,6 +5276,72 @@ func (client *Client) UpdateEventBus(request *UpdateEventBusRequest) (_result *U
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateEventBusResponse{}
 	_body, _err := client.UpdateEventBusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates an EventHouse Runtime.
+//
+// @param request - UpdateEventHouseRuntimeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateEventHouseRuntimeResponse
+func (client *Client) UpdateEventHouseRuntimeWithOptions(request *UpdateEventHouseRuntimeRequest, runtime *dara.RuntimeOptions) (_result *UpdateEventHouseRuntimeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Cu) {
+		query["Cu"] = request.Cu
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateEventHouseRuntime"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateEventHouseRuntimeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates an EventHouse Runtime.
+//
+// @param request - UpdateEventHouseRuntimeRequest
+//
+// @return UpdateEventHouseRuntimeResponse
+func (client *Client) UpdateEventHouseRuntime(request *UpdateEventHouseRuntimeRequest) (_result *UpdateEventHouseRuntimeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateEventHouseRuntimeResponse{}
+	_body, _err := client.UpdateEventHouseRuntimeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5131,11 +5511,11 @@ func (client *Client) UpdateEventSource(request *UpdateEventSourceRequest) (_res
 
 // Summary:
 //
-// Modifies the information about an event stream, such as the basic information and the information about the event source, event filtering rule, and event target.
+// Modifies the basic information, event source information, event filtering pattern, or event target information of an event stream.
 //
 // Description:
 //
-// You can call this API operation to modify the information about an event stream, such as the basic information and the information about the event source, event filtering rule, and event target.
+// Modifies the basic information, event source information, event filtering pattern, or event target information of an event stream.
 //
 // @param tmpReq - UpdateEventStreamingRequest
 //
@@ -5180,6 +5560,10 @@ func (client *Client) UpdateEventStreamingWithOptions(tmpReq *UpdateEventStreami
 		body["FilterPattern"] = request.FilterPattern
 	}
 
+	if !dara.IsNil(request.Metadata) {
+		body["Metadata"] = request.Metadata
+	}
+
 	if !dara.IsNil(request.RunOptionsShrink) {
 		body["RunOptions"] = request.RunOptionsShrink
 	}
@@ -5221,11 +5605,11 @@ func (client *Client) UpdateEventStreamingWithOptions(tmpReq *UpdateEventStreami
 
 // Summary:
 //
-// Modifies the information about an event stream, such as the basic information and the information about the event source, event filtering rule, and event target.
+// Modifies the basic information, event source information, event filtering pattern, or event target information of an event stream.
 //
 // Description:
 //
-// You can call this API operation to modify the information about an event stream, such as the basic information and the information about the event source, event filtering rule, and event target.
+// Modifies the basic information, event source information, event filtering pattern, or event target information of an event stream.
 //
 // @param request - UpdateEventStreamingRequest
 //
@@ -5243,7 +5627,11 @@ func (client *Client) UpdateEventStreaming(request *UpdateEventStreamingRequest)
 
 // Summary:
 //
-// This API operation allows you to query event streams.
+// # Querying an event stream
+//
+// Description:
+//
+// Updates the billing method, compute unit (CU) resources, and other configurations of an event stream.
 //
 // @param request - UpdateEventStreamingBusinessOptionRequest
 //
@@ -5299,7 +5687,11 @@ func (client *Client) UpdateEventStreamingBusinessOptionWithOptions(request *Upd
 
 // Summary:
 //
-// This API operation allows you to query event streams.
+// # Querying an event stream
+//
+// Description:
+//
+// Updates the billing method, compute unit (CU) resources, and other configurations of an event stream.
 //
 // @param request - UpdateEventStreamingBusinessOptionRequest
 //
@@ -5317,7 +5709,7 @@ func (client *Client) UpdateEventStreamingBusinessOption(request *UpdateEventStr
 
 // Summary:
 //
-// 修改命名空间
+// # Modify namespace
 //
 // @param request - UpdateNamespaceRequest
 //
@@ -5375,7 +5767,7 @@ func (client *Client) UpdateNamespaceWithOptions(request *UpdateNamespaceRequest
 
 // Summary:
 //
-// 修改命名空间
+// # Modify namespace
 //
 // @param request - UpdateNamespaceRequest
 //
@@ -5479,7 +5871,11 @@ func (client *Client) UpdateRule(request *UpdateRuleRequest) (_result *UpdateRul
 
 // Summary:
 //
-// 修改表
+// # Update table
+//
+// Description:
+//
+// Updates the configuration of an event rule.
 //
 // @param tmpReq - UpdateTableRequest
 //
@@ -5589,7 +5985,11 @@ func (client *Client) UpdateTableWithOptions(tmpReq *UpdateTableRequest, runtime
 
 // Summary:
 //
-// 修改表
+// # Update table
+//
+// Description:
+//
+// Updates the configuration of an event rule.
 //
 // @param request - UpdateTableRequest
 //

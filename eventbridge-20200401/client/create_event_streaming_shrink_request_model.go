@@ -15,6 +15,8 @@ type iCreateEventStreamingShrinkRequest interface {
 	GetEventStreamingName() *string
 	SetFilterPattern(v string) *CreateEventStreamingShrinkRequest
 	GetFilterPattern() *string
+	SetMetadata(v string) *CreateEventStreamingShrinkRequest
+	GetMetadata() *string
 	SetRunOptionsShrink(v string) *CreateEventStreamingShrinkRequest
 	GetRunOptionsShrink() *string
 	SetSinkShrink(v string) *CreateEventStreamingShrinkRequest
@@ -42,22 +44,55 @@ type CreateEventStreamingShrinkRequest struct {
 	//
 	// myeventstreaming
 	EventStreamingName *string `json:"EventStreamingName,omitempty" xml:"EventStreamingName,omitempty"`
-	// The rule that is used to filter events. If you leave this parameter empty, all events are matched.
+	// The event filtering rule. If not specified, all events are matched.
 	//
-	// This parameter is required.
+	// example:
+	//
+	// {
+	//
+	// "source": [
+	//
+	// {
+	//
+	// "prefix": "acs:mns"
+	//
+	// }
+	//
+	// ],
+	//
+	// "type": [
+	//
+	// {
+	//
+	// "prefix": "mns:Queue"
+	//
+	// }
+	//
+	// ],
+	//
+	// "subject": [
+	//
+	// {
+	//
+	// "prefix": "acs:mns:cn-hangzhou:123456789098****:queues/zeus"
+	//
+	// }
+	//
+	// ]
+	//
+	// }
 	FilterPattern *string `json:"FilterPattern,omitempty" xml:"FilterPattern,omitempty"`
-	// The parameters that are configured for the runtime environment.
+	Metadata      *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// The runtime environment parameters.
 	RunOptionsShrink *string `json:"RunOptions,omitempty" xml:"RunOptions,omitempty"`
-	// The event target. You must and can specify only one event target.
-	//
-	// This parameter is required.
+	// The event target. You must select exactly one Sink type.
 	SinkShrink *string `json:"Sink,omitempty" xml:"Sink,omitempty"`
-	// The event provider, which is also known as the event source. You must and can specify only one event source.
-	//
-	// This parameter is required.
-	SourceShrink     *string                                  `json:"Source,omitempty" xml:"Source,omitempty"`
-	Tags             []*CreateEventStreamingShrinkRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TransformsShrink *string                                  `json:"Transforms,omitempty" xml:"Transforms,omitempty"`
+	// The event provider. You must select exactly one Source type.
+	SourceShrink *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The tag list. A maximum of 20 items are supported.
+	Tags []*CreateEventStreamingShrinkRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The Transform-related configurations.
+	TransformsShrink *string `json:"Transforms,omitempty" xml:"Transforms,omitempty"`
 }
 
 func (s CreateEventStreamingShrinkRequest) String() string {
@@ -78,6 +113,10 @@ func (s *CreateEventStreamingShrinkRequest) GetEventStreamingName() *string {
 
 func (s *CreateEventStreamingShrinkRequest) GetFilterPattern() *string {
 	return s.FilterPattern
+}
+
+func (s *CreateEventStreamingShrinkRequest) GetMetadata() *string {
+	return s.Metadata
 }
 
 func (s *CreateEventStreamingShrinkRequest) GetRunOptionsShrink() *string {
@@ -112,6 +151,11 @@ func (s *CreateEventStreamingShrinkRequest) SetEventStreamingName(v string) *Cre
 
 func (s *CreateEventStreamingShrinkRequest) SetFilterPattern(v string) *CreateEventStreamingShrinkRequest {
 	s.FilterPattern = &v
+	return s
+}
+
+func (s *CreateEventStreamingShrinkRequest) SetMetadata(v string) *CreateEventStreamingShrinkRequest {
+	s.Metadata = &v
 	return s
 }
 
@@ -154,7 +198,9 @@ func (s *CreateEventStreamingShrinkRequest) Validate() error {
 }
 
 type CreateEventStreamingShrinkRequestTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

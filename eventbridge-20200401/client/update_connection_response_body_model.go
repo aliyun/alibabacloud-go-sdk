@@ -18,11 +18,11 @@ type iUpdateConnectionResponseBody interface {
 }
 
 type UpdateConnectionResponseBody struct {
-	// The response code. Valid value: 200, which indicates that the request was successful.
+	// The API status code or POP error code. Description: 200 indicates success.
 	//
 	// example:
 	//
-	// Success
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned message.
 	//
@@ -30,7 +30,7 @@ type UpdateConnectionResponseBody struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

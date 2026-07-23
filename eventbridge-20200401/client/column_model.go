@@ -20,18 +20,26 @@ type iColumn interface {
 }
 
 type Column struct {
+	// Whether the value is NULL. When true, it should be treated as NULL.
+	//
 	// example:
 	//
 	// false
 	IsNull *bool `json:"IsNull,omitempty" xml:"IsNull,omitempty"`
+	// Column name.
+	//
 	// example:
 	//
 	// index
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Column type.
+	//
 	// example:
 	//
 	// text
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Column value.
+	//
 	// example:
 	//
 	// product_info

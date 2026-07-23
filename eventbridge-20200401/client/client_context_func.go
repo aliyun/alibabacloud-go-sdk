@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 用自然语言查询事件数据。输入问题后系统自动生成SQL并执行，返回结构化结果；若问题含糊则返回澄清提示。支持通过ConversationId进行多轮追问。
+// Queries data using natural language.
 //
 // @param request - AskLumaRequest
 //
@@ -65,7 +65,11 @@ func (client *Client) AskLumaWithContext(ctx context.Context, request *AskLumaRe
 
 // Summary:
 //
-// Checks whether a service-linked role is created for an Alibaba Cloud account.
+// Checks whether a service-linked role is authorized for an account.
+//
+// Description:
+//
+// Checks for a service-linked role by name.
 //
 // @param request - CheckServiceLinkedRoleForProductRequest
 //
@@ -109,7 +113,7 @@ func (client *Client) CheckServiceLinkedRoleForProductWithContext(ctx context.Co
 
 // Summary:
 //
-// 查询历史会话
+// Creates a custom agent.
 //
 // @param tmpReq - CreateAgentRequest
 //
@@ -237,11 +241,11 @@ func (client *Client) CreateApiDestinationWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Creates a connection.
+// Creates a connection configuration.
 //
 // Description:
 //
-// You can call this API operation to create a connection.
+// Creates a connection configuration.
 //
 // @param tmpReq - CreateConnectionRequest
 //
@@ -371,11 +375,11 @@ func (client *Client) CreateEventBusWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// Creates an event source.
+// Creates an external event source.
 //
 // Description:
 //
-// You can call this operation to create an event source.
+// Creates an external event source.
 //
 // @param tmpReq - CreateEventSourceRequest
 //
@@ -513,7 +517,7 @@ func (client *Client) CreateEventSourceWithContext(ctx context.Context, tmpReq *
 //
 // Description:
 //
-// You can call this API operation to create an event stream.
+// Creates an event stream.
 //
 // @param tmpReq - CreateEventStreamingRequest
 //
@@ -556,6 +560,10 @@ func (client *Client) CreateEventStreamingWithContext(ctx context.Context, tmpRe
 
 	if !dara.IsNil(request.FilterPattern) {
 		body["FilterPattern"] = request.FilterPattern
+	}
+
+	if !dara.IsNil(request.Metadata) {
+		body["Metadata"] = request.Metadata
 	}
 
 	if !dara.IsNil(request.RunOptionsShrink) {
@@ -603,7 +611,7 @@ func (client *Client) CreateEventStreamingWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// 创建命名空间
+// # Create Namespace
 //
 // @param request - CreateNamespaceRequest
 //
@@ -665,7 +673,7 @@ func (client *Client) CreateNamespaceWithContext(ctx context.Context, request *C
 //
 // Description:
 //
-// You can call this API operation to create an event rule.
+// Creates an event rule.
 //
 // @param tmpReq - CreateRuleRequest
 //
@@ -735,11 +743,11 @@ func (client *Client) CreateRuleWithContext(ctx context.Context, tmpReq *CreateR
 
 // Summary:
 //
-// Creates a service-linked role for your cloud service.
+// Creates the service-linked role (SLR) that is associated with a specified product.
 //
 // Description:
 //
-// You can call this API operation to create a service-linked role for your cloud service.
+// Creates the service-linked role (SLR) that is associated with a specified product.
 //
 // @param request - CreateServiceLinkedRoleForProductRequest
 //
@@ -783,7 +791,11 @@ func (client *Client) CreateServiceLinkedRoleForProductWithContext(ctx context.C
 
 // Summary:
 //
-// 创建表
+// # Create a data catalog
+//
+// Description:
+//
+// Creates an event target under the specified rule.
 //
 // @param tmpReq - CreateTableRequest
 //
@@ -861,7 +873,7 @@ func (client *Client) CreateTableWithContext(ctx context.Context, tmpReq *Create
 
 // Summary:
 //
-// # DeleteAgent
+// Deletes a custom agent.
 //
 // @param request - DeleteAgentRequest
 //
@@ -1001,11 +1013,61 @@ func (client *Client) DeleteConnectionWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// Deletes a data integration job.
+//
+// @param tmpReq - DeleteEventAnalysisJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEventAnalysisJobResponse
+func (client *Client) DeleteEventAnalysisJobWithContext(ctx context.Context, tmpReq *DeleteEventAnalysisJobRequest, runtime *dara.RuntimeOptions) (_result *DeleteEventAnalysisJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteEventAnalysisJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SourceResource) {
+		request.SourceResourceShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceResource, dara.String("SourceResource"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.SourceResourceShrink) {
+		body["SourceResource"] = request.SourceResourceShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteEventAnalysisJob"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteEventAnalysisJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an event bus.
 //
 // Description:
 //
-// You can call this API operation to delete an event bus.
+// Deletes an event bus.
 //
 // @param request - DeleteEventBusRequest
 //
@@ -1049,11 +1111,55 @@ func (client *Client) DeleteEventBusWithContext(ctx context.Context, request *De
 
 // Summary:
 //
+// Deletes an EventHouse Runtime.
+//
+// @param request - DeleteEventHouseRuntimeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEventHouseRuntimeResponse
+func (client *Client) DeleteEventHouseRuntimeWithContext(ctx context.Context, request *DeleteEventHouseRuntimeRequest, runtime *dara.RuntimeOptions) (_result *DeleteEventHouseRuntimeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteEventHouseRuntime"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteEventHouseRuntimeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an event source.
 //
 // Description:
 //
-// You can call this API operation to delete an event source.
+// Deletes an event source.
 //
 // @param request - DeleteEventSourceRequest
 //
@@ -1105,7 +1211,7 @@ func (client *Client) DeleteEventSourceWithContext(ctx context.Context, request 
 //
 // Description:
 //
-// You can call this API operation to delete an event stream.
+// Deletes an event stream.
 //
 // @param request - DeleteEventStreamingRequest
 //
@@ -1149,7 +1255,7 @@ func (client *Client) DeleteEventStreamingWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 删除命名空间
+// # Delete Namespace
 //
 // @param request - DeleteNamespaceRequest
 //
@@ -1255,7 +1361,7 @@ func (client *Client) DeleteRuleWithContext(ctx context.Context, request *Delete
 
 // Summary:
 //
-// 删除表
+// # Delete table
 //
 // @param request - DeleteTableRequest
 //
@@ -1427,7 +1533,11 @@ func (client *Client) DisableRuleWithContext(ctx context.Context, request *Disab
 
 // Summary:
 //
-// Discovers the schema and simple data of an event source (such as MySQL).
+// Discovers the schema and simple data of an event source, such as MySQL.
+//
+// Description:
+//
+// Discovers information about an event source.
 //
 // @param tmpReq - DiscoverEventSourceRequest
 //
@@ -1529,7 +1639,7 @@ func (client *Client) EnableRuleWithContext(ctx context.Context, request *Enable
 
 // Summary:
 //
-// # EventCenterQueryEvents
+// Queries events from the event center.
 //
 // @param tmpReq - EventCenterQueryEventsRequest
 //
@@ -1593,7 +1703,7 @@ func (client *Client) EventCenterQueryEventsWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 获取当前Agent的基本信息，包括名称、描述和已绑定的数据目录列表。用于了解当前接入点的能力范围。
+// Retrieves agent metadata.
 //
 // @param request - GetAgentRequest
 //
@@ -1685,7 +1795,7 @@ func (client *Client) GetApiDestinationWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 获取指定数据目录的详细信息，包括目录名称和描述。传入Name即可查询。
+// # Get data catalog
 //
 // @param request - GetCatalogRequest
 //
@@ -1735,11 +1845,11 @@ func (client *Client) GetCatalogWithContext(ctx context.Context, request *GetCat
 
 // Summary:
 //
-// Queries the configurations of a connection.
+// Queries the configuration information of a single connection.
 //
 // Description:
 //
-// You can call this API operation to query the configurations of a connection.
+// Queries the configuration information of a single connection.
 //
 // @param request - GetConnectionRequest
 //
@@ -1831,11 +1941,55 @@ func (client *Client) GetEventBusWithContext(ctx context.Context, request *GetEv
 
 // Summary:
 //
-// Queries the details of an event stream.
+// Queries the status and operation progress of an EventHouse Runtime.
+//
+// @param request - GetEventHouseRuntimeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEventHouseRuntimeResponse
+func (client *Client) GetEventHouseRuntimeWithContext(ctx context.Context, request *GetEventHouseRuntimeRequest, runtime *dara.RuntimeOptions) (_result *GetEventHouseRuntimeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetEventHouseRuntime"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetEventHouseRuntimeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of an event stream.
 //
 // Description:
 //
-// You can call this API operation to query the details of an event stream.
+// Retrieves the details of an event stream.
 //
 // @param request - GetEventStreamingRequest
 //
@@ -1879,7 +2033,7 @@ func (client *Client) GetEventStreamingWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 获取指定命名空间的详细信息。需传入Catalog和Name。
+// # Get namespace
 //
 // @param request - GetNamespaceRequest
 //
@@ -1933,11 +2087,11 @@ func (client *Client) GetNamespaceWithContext(ctx context.Context, request *GetN
 
 // Summary:
 //
-// Queries the details of an event rule.
+// Retrieves the details of an event rule.
 //
 // Description:
 //
-// You can call this API operation to query the details of an event rule.
+// Gets the details of an event rule.
 //
 // @param request - GetRuleRequest
 //
@@ -1985,7 +2139,7 @@ func (client *Client) GetRuleWithContext(ctx context.Context, request *GetRuleRe
 
 // Summary:
 //
-// 获取指定数据表的完整结构，包括所有列的名称、类型和描述。在编写查询前调用此工具了解表结构。
+// # Get Table
 //
 // @param request - GetTableRequest
 //
@@ -2043,7 +2197,7 @@ func (client *Client) GetTableWithContext(ctx context.Context, request *GetTable
 
 // Summary:
 //
-// 查询 Agent 列表
+// Retrieves a list of custom agents.
 //
 // @param request - ListAgentsRequest
 //
@@ -2155,7 +2309,7 @@ func (client *Client) ListApiDestinationsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 列出当前Agent可访问的所有数据目录。每个Catalog是一个独立的数据源，内含多个命名空间和表。支持分页。
+// # Query data catalog list
 //
 // @param request - ListCatalogsRequest
 //
@@ -2203,11 +2357,11 @@ func (client *Client) ListCatalogsWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Queries connections.
+// Queries the list of connection configurations.
 //
 // Description:
 //
-// You can call this API operation to query connections.
+// Queries the list of connection configurations.
 //
 // @param request - ListConnectionsRequest
 //
@@ -2319,11 +2473,59 @@ func (client *Client) ListEventBusesWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
+// Queries the list of EventHouse runtimes.
+//
+// @param request - ListEventHouseRuntimesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEventHouseRuntimesResponse
+func (client *Client) ListEventHouseRuntimesWithContext(ctx context.Context, request *ListEventHouseRuntimesRequest, runtime *dara.RuntimeOptions) (_result *ListEventHouseRuntimesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListEventHouseRuntimes"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListEventHouseRuntimesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries event streams.
 //
 // Description:
 //
-// You can call this API operation to query event streams.
+// Queries event streams.
 //
 // @param request - ListEventStreamingsRequest
 //
@@ -2387,7 +2589,7 @@ func (client *Client) ListEventStreamingsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 列出指定数据目录下的所有命名空间。命名空间用于组织同一目录内的表，类似数据库中的schema。支持分页。
+// # Query namespace list
 //
 // @param request - ListNamespacesRequest
 //
@@ -2499,7 +2701,7 @@ func (client *Client) ListRulesWithContext(ctx context.Context, request *ListRul
 
 // Summary:
 //
-// 列出指定命名空间下的数据表，支持按表名模糊搜索。返回表名和描述列表，支持分页。
+// # Query table list
 //
 // @param request - ListTablesRequest
 //
@@ -2615,11 +2817,11 @@ func (client *Client) ListTargetsWithContext(ctx context.Context, request *ListT
 
 // Summary:
 //
-// Queries all custom event sources.
+// This operation queries all custom event sources.
 //
 // Description:
 //
-// You can call this API operation to query custom event sources.
+// Queries all custom event sources.
 //
 // @param request - ListUserDefinedEventSourcesRequest
 //
@@ -2675,11 +2877,11 @@ func (client *Client) ListUserDefinedEventSourcesWithContext(ctx context.Context
 
 // Summary:
 //
-// Stops an event stream that is running.
+// Pauses a running event stream.
 //
 // Description:
 //
-// You can call this API operation to stop an event stream that is running.
+// Pauses a running event stream.
 //
 // @param request - PauseEventStreamingRequest
 //
@@ -2723,7 +2925,7 @@ func (client *Client) PauseEventStreamingWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 轮询AskLuma的异步查询结果。传入AskLuma返回的MessageId，获取执行状态和最终结果；状态为RUNNING时应立即重试，无需退避。
+// Polls for natural language query results.
 //
 // @param request - PollAskResultRequest
 //
@@ -2771,11 +2973,11 @@ func (client *Client) PollAskResultWithContext(ctx context.Context, request *Pol
 
 // Summary:
 //
-// Creates or updates event targets under a rule.
+// Create or update event targets for the specified rule.
 //
 // Description:
 //
-// You can call this API operation to create or update event targets under a rule.
+// Creates or updates event targets for a specified rule.
 //
 // @param tmpReq - PutTargetsRequest
 //
@@ -2833,7 +3035,7 @@ func (client *Client) PutTargetsWithContext(ctx context.Context, tmpReq *PutTarg
 
 // Summary:
 //
-// 查询历史会话
+// Queries the history logs of natural language queries.
 //
 // @param request - QueryAskLumaLogRequest
 //
@@ -2941,7 +3143,7 @@ func (client *Client) QueryEventWithContext(ctx context.Context, request *QueryE
 
 // Summary:
 //
-// 直接执行SQL语句查询事件仓数据。适用于已知确切SQL的场景，无需自然语言转换，无对话上下文。返回结构化结果集。
+// # Query event store data
 //
 // @param request - QueryEventHouseRequest
 //
@@ -3097,11 +3299,11 @@ func (client *Client) QueryTracedEventByEventIdWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries event traces by time range.
+// This operation queries `event trace` data within a `time range`.
 //
 // Description:
 //
-// You can call this API operation to query event traces by time range.
+// Queries for event traces within a specified time range.
 //
 // @param request - QueryTracedEventsRequest
 //
@@ -3177,11 +3379,11 @@ func (client *Client) QueryTracedEventsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Enables a created or deactivated event stream.
+// Enables a created or disabled event stream.
 //
 // Description:
 //
-// You can call this API operation to enable a created or deactivated event stream.
+// Enables a created or disabled event stream.
 //
 // @param request - StartEventStreamingRequest
 //
@@ -3225,11 +3427,11 @@ func (client *Client) StartEventStreamingWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Checks whether the event pattern matches the provided JSON format.
+// Tests if an event pattern matches a given event.
 //
 // Description:
 //
-// You can call this API operation to check whether the event pattern matches the provided JSON format.
+// Use this action to test an event pattern before you apply it to a rule.
 //
 // @param request - TestEventPatternRequest
 //
@@ -3277,11 +3479,11 @@ func (client *Client) TestEventPatternWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Checks whether event source configurations are available.
+// Checks whether the event source configuration is active.
 //
 // Description:
 //
-// You can call this API operation to query all custom event sources.
+// Returns a list of all external event sources.
 //
 // @param tmpReq - TestEventSourceConfigRequest
 //
@@ -3331,7 +3533,7 @@ func (client *Client) TestEventSourceConfigWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 查询历史会话
+// Updates a custom agent.
 //
 // @param tmpReq - UpdateAgentRequest
 //
@@ -3463,11 +3665,11 @@ func (client *Client) UpdateApiDestinationWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Updates a connection.
+// Updates the connection configuration.
 //
 // Description:
 //
-// You can call this API operation to update a connection.
+// Updates the connection configuration.
 //
 // @param tmpReq - UpdateConnectionRequest
 //
@@ -3587,6 +3789,54 @@ func (client *Client) UpdateEventBusWithContext(ctx context.Context, request *Up
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateEventBusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates an EventHouse Runtime.
+//
+// @param request - UpdateEventHouseRuntimeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateEventHouseRuntimeResponse
+func (client *Client) UpdateEventHouseRuntimeWithContext(ctx context.Context, request *UpdateEventHouseRuntimeRequest, runtime *dara.RuntimeOptions) (_result *UpdateEventHouseRuntimeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Cu) {
+		query["Cu"] = request.Cu
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateEventHouseRuntime"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateEventHouseRuntimeResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3735,11 +3985,11 @@ func (client *Client) UpdateEventSourceWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Modifies the information about an event stream, such as the basic information and the information about the event source, event filtering rule, and event target.
+// Modifies the basic information, event source information, event filtering pattern, or event target information of an event stream.
 //
 // Description:
 //
-// You can call this API operation to modify the information about an event stream, such as the basic information and the information about the event source, event filtering rule, and event target.
+// Modifies the basic information, event source information, event filtering pattern, or event target information of an event stream.
 //
 // @param tmpReq - UpdateEventStreamingRequest
 //
@@ -3784,6 +4034,10 @@ func (client *Client) UpdateEventStreamingWithContext(ctx context.Context, tmpRe
 		body["FilterPattern"] = request.FilterPattern
 	}
 
+	if !dara.IsNil(request.Metadata) {
+		body["Metadata"] = request.Metadata
+	}
+
 	if !dara.IsNil(request.RunOptionsShrink) {
 		body["RunOptions"] = request.RunOptionsShrink
 	}
@@ -3825,7 +4079,11 @@ func (client *Client) UpdateEventStreamingWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// This API operation allows you to query event streams.
+// # Querying an event stream
+//
+// Description:
+//
+// Updates the billing method, compute unit (CU) resources, and other configurations of an event stream.
 //
 // @param request - UpdateEventStreamingBusinessOptionRequest
 //
@@ -3881,7 +4139,7 @@ func (client *Client) UpdateEventStreamingBusinessOptionWithContext(ctx context.
 
 // Summary:
 //
-// 修改命名空间
+// # Modify namespace
 //
 // @param request - UpdateNamespaceRequest
 //
@@ -4003,7 +4261,11 @@ func (client *Client) UpdateRuleWithContext(ctx context.Context, request *Update
 
 // Summary:
 //
-// 修改表
+// # Update table
+//
+// Description:
+//
+// Updates the configuration of an event rule.
 //
 // @param tmpReq - UpdateTableRequest
 //

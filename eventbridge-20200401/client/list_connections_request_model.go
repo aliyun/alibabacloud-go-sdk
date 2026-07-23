@@ -20,29 +20,29 @@ type iListConnectionsRequest interface {
 }
 
 type ListConnectionsRequest struct {
-	// The key word that you specify to query connections. Connections can be queried by prefixes.
+	// The name prefix of the connection configurations to query. Supports prefix matching.
 	//
 	// example:
 	//
 	// connection-name
 	ConnectionNamePrefix *string `json:"ConnectionNamePrefix,omitempty" xml:"ConnectionNamePrefix,omitempty"`
-	// The maximum number of entries to be returned in a single call. You can use this parameter and the NextToken parameter to implement paging.
+	// The maximum number of entries to return on each page. Can be used together with NextToken to implement pagination.
 	//
-	// 	- Default value: 10.
+	// - Default value: 10
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// If you set the Limit parameter and excess return values exist, this parameter is returned.
+	// When MaxResults is specified, NextToken is returned if there are more results to fetch.
 	//
-	// 	- Default value: 0.
+	// - NextToken starts from 0 by default. Default value: 0.
 	//
 	// example:
 	//
 	// 0
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 按连接类型过滤查询结果。可选值：Http、MySQL、PostgreSQL、Elasticsearch。不传则返回所有类型
+	// Filters query results by connection type. Valid values: Http, MySQL, PostgreSQL, Elasticsearch. If left empty, connections of all types are returned.
 	//
 	// example:
 	//

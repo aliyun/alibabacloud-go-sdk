@@ -22,19 +22,28 @@ type iGetCatalogResponseBody interface {
 }
 
 type GetCatalogResponseBody struct {
+	// Response code. 200 indicates success.
+	//
 	// example:
 	//
 	// 200
-	Code *string  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Catalog details
 	Data *Catalog `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Response message
+	//
 	// example:
 	//
 	// Operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 34AD682D-5B91-5773-8132-AA38C130****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful
+	//
 	// example:
 	//
 	// true

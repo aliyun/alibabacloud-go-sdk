@@ -26,7 +26,7 @@ type UpdateRuleResponseBody struct {
 	//
 	// example:
 	//
-	// 200
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The result of the operation.
 	//

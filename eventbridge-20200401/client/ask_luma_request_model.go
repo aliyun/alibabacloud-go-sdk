@@ -20,21 +20,33 @@ type iAskLumaRequest interface {
 }
 
 type AskLumaRequest struct {
+	// The name of the agent.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// demo-luma-agent
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	// The conversation ID. This parameter is required for multi-turn conversations.
+	//
 	// example:
 	//
 	// conv_1474xxx32_593b9d08-9
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// The maximum number of rows to return.
+	//
 	// example:
 	//
 	// 100
 	MaxRows *int32 `json:"MaxRows,omitempty" xml:"MaxRows,omitempty"`
+	// The natural language question.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 帮我统计一下最近的订单数据。
 	Question *string `json:"Question,omitempty" xml:"Question,omitempty"`
 }
 

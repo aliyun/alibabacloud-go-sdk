@@ -15,6 +15,8 @@ type iAguiMessage interface {
 	GetId() *string
 	SetMetadata(v *AguiMessageMetadata) *AguiMessage
 	GetMetadata() *AguiMessageMetadata
+	SetReasoning(v string) *AguiMessage
+	GetReasoning() *string
 	SetRole(v string) *AguiMessage
 	GetRole() *string
 	SetToolCallId(v string) *AguiMessage
@@ -24,21 +26,35 @@ type iAguiMessage interface {
 }
 
 type AguiMessage struct {
+	// The text content of the message.
+	//
+	// example:
+	//
+	// 根据您的问题，我将查询过去7天的事件量...
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The unique identifier of the message.
+	//
 	// example:
 	//
 	// msg_123456_a1b2c3d4
-	Id       *string              `json:"Id,omitempty" xml:"Id,omitempty"`
-	Metadata *AguiMessageMetadata `json:"Metadata,omitempty" xml:"Metadata,omitempty" type:"Struct"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The extension metadata.
+	Metadata  *AguiMessageMetadata `json:"Metadata,omitempty" xml:"Metadata,omitempty" type:"Struct"`
+	Reasoning *string              `json:"Reasoning,omitempty" xml:"Reasoning,omitempty"`
+	// The role of the message.
+	//
 	// example:
 	//
 	// assistant
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The associated tool invocation ID.
+	//
 	// example:
 	//
 	// call_xxx
-	ToolCallId *string                 `json:"ToolCallId,omitempty" xml:"ToolCallId,omitempty"`
-	ToolCalls  []*AguiMessageToolCalls `json:"ToolCalls,omitempty" xml:"ToolCalls,omitempty" type:"Repeated"`
+	ToolCallId *string `json:"ToolCallId,omitempty" xml:"ToolCallId,omitempty"`
+	// The tool invocation list.
+	ToolCalls []*AguiMessageToolCalls `json:"ToolCalls,omitempty" xml:"ToolCalls,omitempty" type:"Repeated"`
 }
 
 func (s AguiMessage) String() string {
@@ -59,6 +75,10 @@ func (s *AguiMessage) GetId() *string {
 
 func (s *AguiMessage) GetMetadata() *AguiMessageMetadata {
 	return s.Metadata
+}
+
+func (s *AguiMessage) GetReasoning() *string {
+	return s.Reasoning
 }
 
 func (s *AguiMessage) GetRole() *string {
@@ -85,6 +105,11 @@ func (s *AguiMessage) SetId(v string) *AguiMessage {
 
 func (s *AguiMessage) SetMetadata(v *AguiMessageMetadata) *AguiMessage {
 	s.Metadata = v
+	return s
+}
+
+func (s *AguiMessage) SetReasoning(v string) *AguiMessage {
+	s.Reasoning = &v
 	return s
 }
 
@@ -122,6 +147,7 @@ func (s *AguiMessage) Validate() error {
 }
 
 type AguiMessageMetadata struct {
+	// The extension data.
 	Attachments *AguiMessageMetadataAttachments `json:"Attachments,omitempty" xml:"Attachments,omitempty" type:"Struct"`
 }
 
@@ -152,10 +178,14 @@ func (s *AguiMessageMetadata) Validate() error {
 }
 
 type AguiMessageMetadataAttachments struct {
+	// The name of the extension data.
+	//
 	// example:
 	//
 	// acs:eventbridge:cn-hangzhou:12345:eventhouse/system-rocketmq/namespace/rmq-cn-xxx/table/order
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the extension data.
+	//
 	// example:
 	//
 	// inner-resource/event-table
@@ -193,11 +223,16 @@ func (s *AguiMessageMetadataAttachments) Validate() error {
 }
 
 type AguiMessageToolCalls struct {
+	// The tool calling function.
 	Function *AguiMessageToolCallsFunction `json:"Function,omitempty" xml:"Function,omitempty" type:"Struct"`
+	// The tool calling ID.
+	//
 	// example:
 	//
 	// call_xxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The tool calling type.
+	//
 	// example:
 	//
 	// function
@@ -249,10 +284,14 @@ func (s *AguiMessageToolCalls) Validate() error {
 }
 
 type AguiMessageToolCallsFunction struct {
+	// The arguments of the tool calling function.
+	//
 	// example:
 	//
 	// {}
 	Arguments *string `json:"Arguments,omitempty" xml:"Arguments,omitempty"`
+	// The name of the tool calling function.
+	//
 	// example:
 	//
 	// discoverMetadata

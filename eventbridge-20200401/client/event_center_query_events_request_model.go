@@ -30,13 +30,13 @@ type EventCenterQueryEventsRequest struct {
   // 
   // default
   BusName *string `json:"BusName,omitempty" xml:"BusName,omitempty"`
-  // The number of entries per page. Valid values: 0 to 10000. Default value: 100.
+  // The maximum number of results to return. Valid values: 0 to 10,000. The default value is 100.
   // 
   // example:
   // 
   // 100
   MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-  // 用来标记当前开始读取的位置。置空表示从头开始。
+  // The token to retrieve the next page of results.
   // 
   // example:
   // 
@@ -104,11 +104,11 @@ type EventCenterQueryEventsRequestBody struct {
   Parameters *EventCenterQueryEventsRequestBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
   // The query type. Valid values:
   // 
-  // 	- **timeseries**: queries time series data.
+  // - **timeseries**: queries time series data.
   // 
-  // 	- **table**: queries table data.
+  // - **table**: queries table data.
   // 
-  // 	- **timeseries_and_table**: queries time series data and table data at the same time.
+  // - **timeseries_and_table**: queries both time series data and table data.
   // 
   // This parameter is required.
   // 
@@ -171,51 +171,51 @@ func (s *EventCenterQueryEventsRequestBody) Validate() error {
 }
 
 type EventCenterQueryEventsRequestBodyParameters struct {
-  // Specifies whether to further split the dataset based on the column name.
+  // An array of column names to use as dimensions for splitting the dataset.
   Breakdowns []*string `json:"Breakdowns,omitempty" xml:"Breakdowns,omitempty" type:"Repeated"`
-  // The operator that is used to calculate the specified column.
+  // The calculations to perform on specified columns.
   Calculations []*EventCenterQueryEventsRequestBodyParametersCalculations `json:"Calculations,omitempty" xml:"Calculations,omitempty" type:"Repeated"`
-  // The timestamp that specifies the end of the time range to query. Unit: milliseconds.
+  // The end timestamp for the event query. Unit: milliseconds.
   // 
   // example:
   // 
   // 1687861201814
   EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-  // The logic used to filter the combination of conditions.
+  // The logical operator for combining filter conditions.
   // 
   // example:
   // 
   // AND
   FilterCombination *string `json:"FilterCombination,omitempty" xml:"FilterCombination,omitempty"`
-  // The filter conditions.
+  // A list of filter conditions.
   Filters []*EventCenterQueryEventsRequestBodyParametersFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-  // The minimum time unit for querying time series data. Minimum value: 1. Unit: seconds. The value of this parameter is a recommended value. The actual value returned shall prevail.
+  // The time granularity, in seconds, for querying time series data. The minimum value is 1. This is a suggested value; the actual granularity is returned in the response.
   // 
   // example:
   // 
   // 30
   Granularity *int `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
-  // The maximum number of events to query. Valid values: 1 to 10000.
+  // The maximum number of events to query. Valid values: 1 to 10,000.
   // 
   // example:
   // 
   // 100
   Limit *int `json:"Limit,omitempty" xml:"Limit,omitempty"`
-  // The offset of the start position for this query. The offset starts from 0.
+  // The starting position of the query. The count starts from 0.
   // 
   // example:
   // 
   // 0
   Offset *int `json:"Offset,omitempty" xml:"Offset,omitempty"`
-  // The order of the query results. This parameter is valid only if you set QueryType to table.
+  // The sort order for the query results. This parameter applies only when QueryType is set to table.
   Orders []*EventCenterQueryEventsRequestBodyParametersOrders `json:"Orders,omitempty" xml:"Orders,omitempty" type:"Repeated"`
-  // The timestamp that specifies the beginning of the time range to query. Unit: milliseconds.
+  // The start timestamp for the event query. Unit: milliseconds.
   // 
   // example:
   // 
   // 1687860901814
   StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-  // The time range during which events are queried. Minimum value: 1000. Unit: milliseconds.
+  // The time range. Unit: milliseconds. The minimum value is 1,000.
   // 
   // example:
   // 
@@ -413,10 +413,13 @@ type EventCenterQueryEventsRequestBodyParametersFilters struct {
   // 
   // source
   Column *string `json:"Column,omitempty" xml:"Column,omitempty"`
+  // The logical operator for combining nested filters.
+  // 
   // example:
   // 
   // AND
   NestedFilterCombination *string `json:"NestedFilterCombination,omitempty" xml:"NestedFilterCombination,omitempty"`
+  // A list of nested filters.
   NestedFilters []*EventCenterQueryEventsRequestBodyParametersFiltersNestedFilters `json:"NestedFilters,omitempty" xml:"NestedFilters,omitempty" type:"Repeated"`
   // The operator.
   // 
@@ -424,7 +427,7 @@ type EventCenterQueryEventsRequestBodyParametersFilters struct {
   // 
   // =
   Op *string `json:"Op,omitempty" xml:"Op,omitempty"`
-  // The values that are used together with the operator.
+  // The values to use with the operator.
   Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -495,8 +498,11 @@ func (s *EventCenterQueryEventsRequestBodyParametersFilters) Validate() error {
 }
 
 type EventCenterQueryEventsRequestBodyParametersFiltersNestedFilters struct {
+  // The column name.
   Column *string `json:"Column,omitempty" xml:"Column,omitempty"`
+  // The operator.
   Op *string `json:"Op,omitempty" xml:"Op,omitempty"`
+  // A list of values to use with the operator.
   Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -546,7 +552,7 @@ type EventCenterQueryEventsRequestBodyParametersOrders struct {
   // 
   // source
   Column *string `json:"Column,omitempty" xml:"Column,omitempty"`
-  // Specifies whether to sort the query results in descending order.
+  // Specifies whether to sort the results in descending order.
   // 
   // example:
   // 

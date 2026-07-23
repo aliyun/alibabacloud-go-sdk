@@ -16,10 +16,14 @@ type iConstraints interface {
 }
 
 type Constraints struct {
+	// Start of the query time window (Unix milliseconds)
+	//
 	// example:
 	//
 	// 1717200000000
 	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// End of the query time window (Unix milliseconds)
+	//
 	// example:
 	//
 	// 1717200000000

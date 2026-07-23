@@ -16,12 +16,16 @@ type iPollAskResultRequest interface {
 }
 
 type PollAskResultRequest struct {
+	// The name of the agent.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// demo-luma-agent
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	// The message ID.
+	//
 	// This parameter is required.
 	//
 	// example:

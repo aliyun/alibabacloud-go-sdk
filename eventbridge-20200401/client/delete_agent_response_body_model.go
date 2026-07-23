@@ -18,14 +18,22 @@ type iDeleteAgentResponseBody interface {
 }
 
 type DeleteAgentResponseBody struct {
+	// The API status or POP error code. Valid values:
+	//
+	// - Success: the operation is successful.
+	//
 	// example:
 	//
 	// AgentNotFound
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Agent with name \\"xxx\\" not found for account 1186xxx
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B896B484-F16D-59DE-9E23-DD0E5C361108

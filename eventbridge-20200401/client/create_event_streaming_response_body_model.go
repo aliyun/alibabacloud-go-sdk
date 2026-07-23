@@ -22,19 +22,19 @@ type iCreateEventStreamingResponseBody interface {
 }
 
 type CreateEventStreamingResponseBody struct {
-	// The response code. Valid values:
+	// The returned code. Valid values:
 	//
-	// 	- Success: The request is successful.
+	// - Success: The request was successful.
 	//
-	// 	- Other codes: The request failed. For more information about error codes, see Error codes.
+	// - Other values: An error occurred. For more information, see Error codes.
 	//
 	// example:
 	//
-	// 200
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *CreateEventStreamingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned error message.
+	// The error message.
 	//
 	// example:
 	//
@@ -44,9 +44,9 @@ type CreateEventStreamingResponseBody struct {
 	//
 	// example:
 	//
-	// B896B484-F16D-59DE-9E23-DD0E5C361108
+	// B896B484-F16D-59DE-9E23-DD0E5C36****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation is successful. The value true indicates that the operation is successful.
+	// Indicates whether the operation was successful. The value true is returned if the operation was successful.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *CreateEventStreamingResponseBody) Validate() error {
 }
 
 type CreateEventStreamingResponseBodyData struct {
-	// The ARN of the event stream.
+	// The Alibaba Cloud Resource Name (ARN) of the event stream.
 	//
 	// example:
 	//

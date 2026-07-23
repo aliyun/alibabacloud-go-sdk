@@ -41,6 +41,10 @@ type iUpdateEventSourceShrinkRequest interface {
 
 type UpdateEventSourceShrinkRequest struct {
 	// The description of the event source.
+	//
+	// example:
+	//
+	// RabbitMQ event source
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The event bus with which the event source is associated.
 	//

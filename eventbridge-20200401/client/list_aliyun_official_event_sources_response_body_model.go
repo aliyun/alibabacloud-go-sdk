@@ -152,21 +152,25 @@ type ListAliyunOfficialEventSourcesResponseBodyDataEventSourceList struct {
 	//
 	// example:
 	//
-	// acs:eventbridge:cn-hangzhou:SYSTEM:eventsource/acs.aliyuncvc
+	// acs:eventbridge:cn-hangzhou:SYSTEM:eventbus/default/eventsource/acs.arms
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
 	// The time when the event source was created. Unit: milliseconds.
 	//
 	// example:
 	//
-	// 1607071602000
+	// 1602730025890
 	Ctime *float32 `json:"Ctime,omitempty" xml:"Ctime,omitempty"`
 	// The description of the event source.
+	//
+	// example:
+	//
+	// Elastic Compute Service
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the event source to which the event type belongs.
 	//
 	// example:
 	//
-	// acs.aliyuncvc
+	// default
 	EventBusName *string `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
 	// The event types.
 	EventTypes []*ListAliyunOfficialEventSourcesResponseBodyDataEventSourceListEventTypes `json:"EventTypes,omitempty" xml:"EventTypes,omitempty" type:"Repeated"`
@@ -174,13 +178,13 @@ type ListAliyunOfficialEventSourcesResponseBodyDataEventSourceList struct {
 	//
 	// example:
 	//
-	// E-MapReduce
+	// Application Real-Time Monitoring Service
 	FullName *string `json:"FullName,omitempty" xml:"FullName,omitempty"`
 	// The name of the event source.
 	//
 	// example:
 	//
-	// acs.aliyuncvc
+	// acs.arms
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The status of the event source. Valid value: Activated.
 	//
@@ -192,7 +196,7 @@ type ListAliyunOfficialEventSourcesResponseBodyDataEventSourceList struct {
 	//
 	// example:
 	//
-	// 1
+	// AliyunOfficial
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -303,25 +307,25 @@ type ListAliyunOfficialEventSourcesResponseBodyDataEventSourceListEventTypes str
 	//
 	// example:
 	//
-	// name
+	// acs.arms
 	EventSourceName *string `json:"EventSourceName,omitempty" xml:"EventSourceName,omitempty"`
 	// The name of the group to which the event type belongs.
 	//
 	// example:
 	//
-	// aliyuncvc:MeetingEvent
+	// ActionTrail
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The full name of the event type.
 	//
 	// example:
 	//
-	// aliyuncvc:MeetingEvent:MeetingStateEvent
+	// arms:ActionTrail:AliyunServiceEvent
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The short name of the event type.
 	//
 	// example:
 	//
-	// MeetingStateEvent
+	// AliyunServiceEven
 	ShortName *string `json:"ShortName,omitempty" xml:"ShortName,omitempty"`
 }
 

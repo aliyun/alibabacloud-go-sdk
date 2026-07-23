@@ -38,7 +38,7 @@ type CreateApiDestinationResponseBody struct {
 	//
 	// example:
 	//
-	// 5DAF96FB-A4B6-548C-B999-0BFDCB2261B9
+	// 5DAF96FB-A4B6-548C-B999-0BFDCB22****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

@@ -20,12 +20,27 @@ type iCreateAgentShrinkRequest interface {
 }
 
 type CreateAgentShrinkRequest struct {
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the event bus.
+	//
+	// example:
+	//
+	// 连接配置描述信息
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The associated metadata.
 	MetadataShrink *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// The name of the agent.
+	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// my-agent
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// You are an IoT data analytics assistant...
+	//
+	// example:
+	//
+	// 我想要她，你这样增加请求头获取用户IP CF-Connecting-IP%3B
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
 }
 

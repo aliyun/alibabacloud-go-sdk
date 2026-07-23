@@ -20,12 +20,27 @@ type iCreateAgentRequest interface {
 }
 
 type CreateAgentRequest struct {
-	Description *string                     `json:"Description,omitempty" xml:"Description,omitempty"`
-	Metadata    *CreateAgentRequestMetadata `json:"Metadata,omitempty" xml:"Metadata,omitempty" type:"Struct"`
+	// The description of the event bus.
+	//
+	// example:
+	//
+	// 连接配置描述信息
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The associated metadata.
+	Metadata *CreateAgentRequestMetadata `json:"Metadata,omitempty" xml:"Metadata,omitempty" type:"Struct"`
+	// The name of the agent.
+	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// my-agent
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// You are an IoT data analytics assistant...
+	//
+	// example:
+	//
+	// 我想要她，你这样增加请求头获取用户IP CF-Connecting-IP%3B
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
 }
 
@@ -83,6 +98,7 @@ func (s *CreateAgentRequest) Validate() error {
 }
 
 type CreateAgentRequestMetadata struct {
+	// The array of attached metadata objects.
 	Attachments []*CreateAgentRequestMetadataAttachments `json:"Attachments,omitempty" xml:"Attachments,omitempty" type:"Repeated"`
 }
 
@@ -117,10 +133,14 @@ func (s *CreateAgentRequestMetadata) Validate() error {
 }
 
 type CreateAgentRequestMetadataAttachments struct {
+	// The ARN of the attached metadata object.
+	//
 	// example:
 	//
 	// acs:eventbridge:cn-hangzhou:12345:eventhouse/system-rocketmq/namespace/rmq-cn-XXX/table/order
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The object type of the attached metadata.
+	//
 	// example:
 	//
 	// inner-resource/event-table

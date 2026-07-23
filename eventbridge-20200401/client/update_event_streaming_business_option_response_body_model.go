@@ -22,22 +22,36 @@ type iUpdateEventStreamingBusinessOptionResponseBody interface {
 }
 
 type UpdateEventStreamingBusinessOptionResponseBody struct {
+	// The status code returned.
+	//
+	// - Success: The request was successful.
+	//
+	// - Other values indicate an error. For more information, see the Error codes section.
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the configuration was updated. Valid values: true and false.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error message returned if the request fails.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 34AD682D-5B91-5773-8132-AA38C130****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values: true and false.
+	//
 	// example:
 	//
 	// true

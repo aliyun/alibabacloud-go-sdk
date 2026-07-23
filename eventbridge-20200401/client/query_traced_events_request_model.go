@@ -30,7 +30,7 @@ type iQueryTracedEventsRequest interface {
 }
 
 type QueryTracedEventsRequest struct {
-	// The end of the time range when event traces are queried. Unit: milliseconds.
+	// The end of the time range for the query, specified as a UNIX timestamp in milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -58,35 +58,34 @@ type QueryTracedEventsRequest struct {
 	//
 	// eventbridge:Events:HTTPEvent
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The maximum number of entries to return in a request. You can use this parameter and NextToken to implement paging.
-	//
-	// >  A maximum of 100 entries can be returned in a request.
+	// The maximum number of entries to return per page. Use this parameter with NextToken to paginate the results.	Notice: The maximum value is 100.
 	//
 	// example:
 	//
 	// 50
 	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// The name of the event rule that is matched.
+	// The name of the matched rule.
 	//
 	// example:
 	//
 	// test-mnsrule
 	MatchedRule *string `json:"MatchedRule,omitempty" xml:"MatchedRule,omitempty"`
-	// If you configure Limit and excess return values exist, this parameter is returned.
+	// The token for retrieving the next page of results. It is returned in the response to a previous request if more results are available.
 	//
 	// example:
 	//
 	// 1000
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The beginning of the time range to query event traces. Unit: milliseconds.
+	// The beginning of the time range for the query, specified as a UNIX timestamp in milliseconds.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1661773509000
-	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Subject   *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The event subject.
+	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
 }
 
 func (s QueryTracedEventsRequest) String() string {

@@ -16,10 +16,14 @@ type iQueryEventHouseRequest interface {
 }
 
 type QueryEventHouseRequest struct {
+	// The maximum number of rows to return. If a LIMIT clause is already specified in the SQL statement, the SQL\\"s own LIMIT takes precedence.
+	//
 	// example:
 	//
 	// 10
 	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The query statement. Typically uses a three-part table name in the format catalog.namespace.table.
+	//
 	// This parameter is required.
 	//
 	// example:

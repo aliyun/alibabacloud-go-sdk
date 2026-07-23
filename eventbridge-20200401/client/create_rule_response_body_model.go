@@ -22,15 +22,15 @@ type iCreateRuleResponseBody interface {
 }
 
 type CreateRuleResponseBody struct {
-	// The returned HTTP status code. The HTTP status code 200 indicates that the request is successful.
+	// The response code. The value Success indicates that the request is successful. Other values indicate that the request failed. For more information about error codes, see Error codes.
 	//
 	// example:
 	//
-	// 200
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The response data.
 	Data *CreateRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned error message.
+	// The error message.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type CreateRuleResponseBody struct {
 	//
 	// 1AD6D598-7506-5D2C-81EA-30E3241A903A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values: true and false.
+	// Indicates whether the operation is successful. A value of true indicates that the operation is successful.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *CreateRuleResponseBody) Validate() error {
 }
 
 type CreateRuleResponseBodyData struct {
-	// The ARN of the event rule. The ARN is used for authorization.
+	// The ARN of the event rule, which is used for authorization.
 	//
 	// example:
 	//

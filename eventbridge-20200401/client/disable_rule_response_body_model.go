@@ -36,7 +36,7 @@ type DisableRuleResponseBody struct {
 	//
 	// example:
 	//
-	// C36345A1-75F3-5A1A-BFCF-33B8271971FA
+	// C36345A1-75F3-5A1A-BFCF-33B82719****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the operation is successful. Valid values: true and false.
 	//

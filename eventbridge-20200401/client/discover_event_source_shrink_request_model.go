@@ -14,6 +14,7 @@ type iDiscoverEventSourceShrinkRequest interface {
 }
 
 type DiscoverEventSourceShrinkRequest struct {
+	// The MySQL source parameters.
 	SourceMySQLParametersShrink *string `json:"SourceMySQLParameters,omitempty" xml:"SourceMySQLParameters,omitempty"`
 }
 

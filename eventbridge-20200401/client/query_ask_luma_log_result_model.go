@@ -18,9 +18,12 @@ type iQueryAskLumaLogResult interface {
 }
 
 type QueryAskLumaLogResult struct {
+	// The log entries returned by the query.
 	Entries []*AskLumaLogEntry `json:"Entries,omitempty" xml:"Entries,omitempty" type:"Repeated"`
-	HasMore *bool              `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
-	LastKey *string            `json:"LastKey,omitempty" xml:"LastKey,omitempty"`
+	// Specifies whether more results are available. The value is `true` if more results can be retrieved, and `false` otherwise.
+	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
+	// The token to use for retrieving the next page of results. If present, pass this value as the `LastKey` parameter in a subsequent request to fetch more data. This field is omitted when all results have been retrieved.
+	LastKey *string `json:"LastKey,omitempty" xml:"LastKey,omitempty"`
 }
 
 func (s QueryAskLumaLogResult) String() string {

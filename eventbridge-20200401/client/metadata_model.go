@@ -14,6 +14,7 @@ type iMetadata interface {
 }
 
 type Metadata struct {
+	// Associated data
 	Attachments []*MetadataAttachments `json:"Attachments,omitempty" xml:"Attachments,omitempty" type:"Repeated"`
 }
 
@@ -48,10 +49,14 @@ func (s *Metadata) Validate() error {
 }
 
 type MetadataAttachments struct {
+	// ARN of the associated data
+	//
 	// example:
 	//
 	// acs:eventbridge:cn-hangzhou:12345:eventhouse/system-rocketmq/namespace/rmq-cn-xxx/table/order
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// Data type
+	//
 	// example:
 	//
 	// inner-resource/event-table

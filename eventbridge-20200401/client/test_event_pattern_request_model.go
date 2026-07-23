@@ -16,7 +16,7 @@ type iTestEventPatternRequest interface {
 }
 
 type TestEventPatternRequest struct {
-	// The event.
+	// The event to test, which must be a JSON string.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type TestEventPatternRequest struct {
 	//
 	// }
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
-	// The event pattern.
+	// The event pattern to test, which must be a JSON string.
 	//
 	// This parameter is required.
 	//

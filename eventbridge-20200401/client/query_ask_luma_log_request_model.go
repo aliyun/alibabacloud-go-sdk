@@ -18,14 +18,20 @@ type iQueryAskLumaLogRequest interface {
 }
 
 type QueryAskLumaLogRequest struct {
+	// The cursor. Set this parameter to the messageId of the last entry on the previous page.
+	//
 	// example:
 	//
 	// eyJ0cyI6MTcxN...
 	After *string `json:"After,omitempty" xml:"After,omitempty"`
+	// The agent name. If this parameter is not specified, logs of all agents are queried.
+	//
 	// example:
 	//
 	// demo-luma-agent
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	// The number of entries to return. Default value: 20. Maximum value: 50.
+	//
 	// example:
 	//
 	// 10

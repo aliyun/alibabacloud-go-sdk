@@ -34,7 +34,7 @@ type PutTargetsRequest struct {
 	//
 	// ssr-send-to-vendor-test01
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The event targets to be created or updated. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
+	// A list of event targets to create or update. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
 	//
 	// This parameter is required.
 	Targets []*PutTargetsRequestTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
@@ -89,9 +89,9 @@ func (s *PutTargetsRequest) Validate() error {
 }
 
 type PutTargetsRequestTargets struct {
-	// The concurrency configuration.
+	// The concurrency control settings.
 	ConcurrentConfig *PutTargetsRequestTargetsConcurrentConfig `json:"ConcurrentConfig,omitempty" xml:"ConcurrentConfig,omitempty" type:"Struct"`
-	// The dead-letter queue. Events that are not processed or whose maximum retries are exceeded are written to the dead-letter queue. You can use queues in ApsaraMQ for RocketMQ, Simple Message Queue (SMQ, formerly MNS), and ApsaraMQ for Kafka as dead-letter queues. You can also use event buses in EventBridge as dead-letter queues.
+	// The dead-letter queue (DLQ) to which events are sent after all retry attempts fail. Supported DLQ types include Message Queue for Apache RocketMQ, Message Service (MNS), Message Queue for Apache Kafka, and EventBridge.
 	DeadLetterQueue *PutTargetsRequestTargetsDeadLetterQueue `json:"DeadLetterQueue,omitempty" xml:"DeadLetterQueue,omitempty" type:"Struct"`
 	// The endpoint of the event target.
 	//
@@ -101,15 +101,15 @@ type PutTargetsRequestTargets struct {
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
 	// The fault tolerance policy. Valid values:
 	//
-	// 	- **ALL**: allows fault tolerance. If an error occurs, event processing is not blocked. If the message exceeds the number of retries specified by the retry policy, the message is delivered to a dead-letter queue or discarded based on your configurations.
+	// - **ALL**: Enables fault tolerance. If an error occurs, execution continues. After the retry attempts defined by the retry strategy are exhausted, the event is sent to the configured dead-letter queue or discarded.
 	//
-	// 	- **NONE**: prohibits fault tolerance. If an error occurs and the message exceeds the number of retries specified by the retry policy, event processing is blocked.
+	// - **NONE**: Disables fault tolerance. If an error persists after all retry attempts fail, execution is blocked.
 	//
 	// example:
 	//
 	// ALL
 	ErrorsTolerance *string `json:"ErrorsTolerance,omitempty" xml:"ErrorsTolerance,omitempty"`
-	// The ID of the event target.
+	// The custom ID of the event target.
 	//
 	// This parameter is required.
 	//
@@ -117,13 +117,13 @@ type PutTargetsRequestTargets struct {
 	//
 	// Mlm123456JHd2RsRoKw
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The parameters that are configured for the event target.
+	// A list of parameters for the event target.
 	ParamList []*PutTargetsRequestTargetsParamList `json:"ParamList,omitempty" xml:"ParamList,omitempty" type:"Repeated"`
-	// The retry policy to be used to push events. Valid values:
+	// The retry strategy for pushing events. Valid values:
 	//
-	// 	- **BACKOFF_RETRY**: backoff retry. A failed event can be retried up to three times. The interval between two consecutive retries is a random value from 10 seconds to 20 seconds.
+	// - **BACKOFF_RETRY**: The event is retried up to three times at random intervals between 10 and 20 seconds.
 	//
-	// 	- **EXPONENTIAL_DECAY_RETRY**: exponential decay retry. A failed event can be retried up to 176 times. The interval between two consecutive retries exponentially increases to a maximum of 512 seconds. The total retry time is 1 day. The specific retry intervals are 1, 2, 4, 8, 16, 32, 64, 128, 256, and 512 seconds. The interval of 512 seconds is used for 167 retries.
+	// - **EXPONENTIAL_DECAY_RETRY**: The event is retried up to 176 times over 24 hours. The retry interval starts at 1 second, doubles with each attempt (1, 2, 4, ..., 256 seconds), and is capped at 512 seconds for all subsequent retries.
 	//
 	// example:
 	//
@@ -243,7 +243,7 @@ func (s *PutTargetsRequestTargets) Validate() error {
 }
 
 type PutTargetsRequestTargetsConcurrentConfig struct {
-	// The concurrency.
+	// The maximum number of concurrent executions for the event target.
 	//
 	// example:
 	//
@@ -273,16 +273,32 @@ func (s *PutTargetsRequestTargetsConcurrentConfig) Validate() error {
 }
 
 type PutTargetsRequestTargetsDeadLetterQueue struct {
-	// The Alibaba Cloud Resource Name (ARN) of the dead-letter queue. Events that are not processed or whose maximum retries are exceeded are written to the dead-letter queue.
+	// The Alibaba Cloud Resource Name (ARN) of the dead-letter queue.
 	//
 	// example:
 	//
-	// acs:mns:cn-hangzhou:123456789098****:/queues/deadletterqueue or acs:mq:cn-hangzhou:123456789098****:/instances/MQ_INST_123456789098****_BX8QbBPL/topic/deadlettertopic or acs:alikafka:cn-hangzhou:123456789098****:instance/alikafka_post-cn-123456/topic/deadlettertopic or acs:eventbridge:cn-hangzhou:123456789098****:eventbus/deadletterbus
-	Arn             *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	Network         *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	// Acs:mns:cn-hangzhou:123456789098****:/queues/deadletterqueue
+	//
+	// or
+	//
+	// acs:mq:cn-hangzhou:123456789098****:/instances/MQ_INST_123456789098****_BX8QbBPL/topic/deadlettertopic
+	//
+	// or
+	//
+	// acs:alikafka:cn-hangzhou:123456789098****:instance/alikafka_post-cn-123456/topic/deadlettertopic
+	//
+	// or
+	//
+	// acs:eventbridge:cn-hangzhou:123456789098****:eventbus/deadletterbus
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The network type of the dead-letter queue.
+	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	// The security group ID.
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	VSwitchIds      *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The VSwitch IDs.
+	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	// The VPC ID.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s PutTargetsRequestTargetsDeadLetterQueue) String() string {
@@ -343,25 +359,25 @@ func (s *PutTargetsRequestTargetsDeadLetterQueue) Validate() error {
 }
 
 type PutTargetsRequestTargetsParamList struct {
-	// The format of input parameters for the event target. For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.html).
+	// The format of the parameter value. For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.html).
 	//
 	// example:
 	//
 	// TEMPLATE
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// The resource key of the event target. For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.html).
+	// The key of the parameter. For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.html).
 	//
 	// example:
 	//
 	// body
 	ResourceKey *string `json:"ResourceKey,omitempty" xml:"ResourceKey,omitempty"`
-	// The structure of the template for the event target.
+	// The template for the parameter value. This parameter applies only when `Form` is set to `TEMPLATE`.
 	//
 	// example:
 	//
 	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The event target.
+	// The value of the parameter.
 	//
 	// example:
 	//

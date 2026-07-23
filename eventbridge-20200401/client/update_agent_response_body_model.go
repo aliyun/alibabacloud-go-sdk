@@ -22,19 +22,32 @@ type iUpdateAgentResponseBody interface {
 }
 
 type UpdateAgentResponseBody struct {
+	// The response code. Valid values:
+	//
+	// - Success: The operation was successful.
+	//
+	// - Other values: An error code was returned. For more information, see error codes.
+	//
 	// example:
 	//
 	// Success
-	Code *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the operation was successful.
 	Data *UpdateAgentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// InvalidArgument
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 382E6272-XXXXX-A8AF0BFAC1A5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returns true if the operation is successful.
+	//
 	// example:
 	//
 	// true

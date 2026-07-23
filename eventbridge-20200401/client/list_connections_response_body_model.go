@@ -20,21 +20,21 @@ type iListConnectionsResponseBody interface {
 }
 
 type ListConnectionsResponseBody struct {
-	// The HTTP status code. The value Success indicates that the request is successful.
+	// The API status or POP error code. Valid values: Success: The request was successful.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The list of returned connection configurations.
 	Data *ListConnectionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The returned message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use the ID to troubleshoot issues.
+	// Common parameter. The ID of each request is unique and can be used for troubleshooting and issue locating.
 	//
 	// example:
 	//
@@ -96,21 +96,21 @@ func (s *ListConnectionsResponseBody) Validate() error {
 }
 
 type ListConnectionsResponseBodyData struct {
-	// The connections.
+	// The list of returned connection configurations.
 	Connections []*ListConnectionsResponseBodyDataConnections `json:"Connections,omitempty" xml:"Connections,omitempty" type:"Repeated"`
-	// The number of entries returned per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *float32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// If excess return values exist, this parameter is returned.
+	// If there are more results to fetch, NextToken is returned.
 	//
 	// example:
 	//
 	// 0
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -176,41 +176,41 @@ func (s *ListConnectionsResponseBodyData) Validate() error {
 }
 
 type ListConnectionsResponseBodyDataConnections struct {
-	// The parameters that are returned for authentication.
+	// The data structure of authentication parameters.
 	AuthParameters *ListConnectionsResponseBodyDataConnectionsAuthParameters `json:"AuthParameters,omitempty" xml:"AuthParameters,omitempty" type:"Struct"`
-	// The connection name.
+	// The name of the connection configuration.
 	//
 	// example:
 	//
 	// connection-name
 	ConnectionName *string `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
-	// The connection description.
+	// The description of the connection configuration.
 	//
 	// example:
 	//
-	// The description of the connection.
+	// Description of the connection configuration
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the connection was created.
+	// The timestamp when the data source was created.
 	//
 	// example:
 	//
 	// 1592838994234
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The ID of the connection.
+	// The ID of the connection configuration.
 	//
 	// example:
 	//
 	// 1141093
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The parameters that are returned for the network.
+	// The data structure of the network configuration.
 	NetworkParameters *ListConnectionsResponseBodyDataConnectionsNetworkParameters `json:"NetworkParameters,omitempty" xml:"NetworkParameters,omitempty" type:"Struct"`
-	// 数据源连接参数（JSON 对象）。仅数据源类型连接返回，Http 类型为空。字段定义参考 GetConnectionType 返回的 ParamsSchema
+	// The data source connection parameters (JSON object). This field is only returned for data source type connections and is empty for Http type. For field definitions, refer to the ParamsSchema returned by GetConnectionType.
 	//
 	// example:
 	//
 	// {"HostName":"xxx.mysql.rds.aliyuncs.com","Port":"3306","User":"root","Password":"xxx","DatabaseName":"demo_db"}
 	Parameters interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// 连接类型。可选值：Http、MySQL、PostgreSQL、Elasticsearch
+	// The connection type. Valid values: Http, MySQL, PostgreSQL, Elasticsearch.
 	//
 	// example:
 	//
@@ -313,23 +313,23 @@ func (s *ListConnectionsResponseBodyDataConnections) Validate() error {
 }
 
 type ListConnectionsResponseBodyDataConnectionsAuthParameters struct {
-	// The parameters that are returned for API key authentication.
+	// The data structure of API key authentication parameters.
 	ApiKeyAuthParameters *ListConnectionsResponseBodyDataConnectionsAuthParametersApiKeyAuthParameters `json:"ApiKeyAuthParameters,omitempty" xml:"ApiKeyAuthParameters,omitempty" type:"Struct"`
-	// The authentication method. Valid values:
+	// The authentication type. Valid values:
 	//
-	// 	- BASIC_AUTH: basic authentication.
+	// - BASIC: BASIC_AUTH
 	//
-	// 	- API_KEY_AUTH: API key authentication.
+	// - API KEY: API_KEY_AUTH
 	//
-	// 	- OAUTH_AUTH: OAuth authentication.
+	// - OAUTH: OAUTH_AUTH
 	//
 	// example:
 	//
 	// BASIC_AUTH
 	AuthorizationType *string `json:"AuthorizationType,omitempty" xml:"AuthorizationType,omitempty"`
-	// The parameters that are returned for basic authentication.
+	// The data structure of basic authentication parameters.
 	BasicAuthParameters *ListConnectionsResponseBodyDataConnectionsAuthParametersBasicAuthParameters `json:"BasicAuthParameters,omitempty" xml:"BasicAuthParameters,omitempty" type:"Struct"`
-	// The parameters that are returned for OAuth authentication.
+	// The data structure of OAuth request parameters.
 	OAuthParameters *ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParameters `json:"OAuthParameters,omitempty" xml:"OAuthParameters,omitempty" type:"Struct"`
 }
 
@@ -442,13 +442,13 @@ func (s *ListConnectionsResponseBodyDataConnectionsAuthParametersApiKeyAuthParam
 }
 
 type ListConnectionsResponseBodyDataConnectionsAuthParametersBasicAuthParameters struct {
-	// The password for basic authentication.
+	// The password used for basic authentication.
 	//
 	// example:
 	//
 	// admin
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The username for basic authentication.
+	// The username used for basic authentication.
 	//
 	// example:
 	//
@@ -487,27 +487,27 @@ func (s *ListConnectionsResponseBodyDataConnectionsAuthParametersBasicAuthParame
 }
 
 type ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParameters struct {
-	// The endpoint that is used to obtain the OAuth token.
+	// The endpoint URL for obtaining the OAuth token.
 	//
 	// example:
 	//
 	// http://localhost:8080/oauth/token
 	AuthorizationEndpoint *string `json:"AuthorizationEndpoint,omitempty" xml:"AuthorizationEndpoint,omitempty"`
-	// The parameters that are returned for the client.
+	// The data structure of client parameters.
 	ClientParameters *ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParametersClientParameters `json:"ClientParameters,omitempty" xml:"ClientParameters,omitempty" type:"Struct"`
-	// The HTTP request method. Valid values:
+	// The HTTP method used for the request. Valid values:
 	//
-	// 	- GET
+	// - GET
 	//
-	// 	- POST
+	// - POST
 	//
-	// 	- HEAD
+	// - HEAD
 	//
 	// example:
 	//
 	// POST
 	HttpMethod *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
-	// The request parameters of OAuth authentication.
+	// The request parameters used for OAuth authentication.
 	OAuthHttpParameters *ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParametersOAuthHttpParameters `json:"OAuthHttpParameters,omitempty" xml:"OAuthHttpParameters,omitempty" type:"Struct"`
 }
 
@@ -576,7 +576,7 @@ type ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParametersClie
 	//
 	// ClientID
 	ClientID *string `json:"ClientID,omitempty" xml:"ClientID,omitempty"`
-	// The AccessKey secret of the client.
+	// The client secret of the application.
 	//
 	// example:
 	//
@@ -615,11 +615,11 @@ func (s *ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParameters
 }
 
 type ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParametersOAuthHttpParameters struct {
-	// The parameters that are configured for the request.
+	// The list of request parameter data structures.
 	BodyParameters []*ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParametersOAuthHttpParametersBodyParameters `json:"BodyParameters,omitempty" xml:"BodyParameters,omitempty" type:"Repeated"`
-	// The parameters that are returned for the request header.
+	// The list of header parameters.
 	HeaderParameters []*ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParametersOAuthHttpParametersHeaderParameters `json:"HeaderParameters,omitempty" xml:"HeaderParameters,omitempty" type:"Repeated"`
-	// The parameters that are returned for the request path.
+	// The data structure of query string parameters.
 	QueryStringParameters []*ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParametersOAuthHttpParametersQueryStringParameters `json:"QueryStringParameters,omitempty" xml:"QueryStringParameters,omitempty" type:"Repeated"`
 }
 
@@ -690,19 +690,19 @@ func (s *ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParameters
 }
 
 type ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParametersOAuthHttpParametersBodyParameters struct {
-	// Indicates whether authentication is enabled.
+	// Specifies whether the value is used for authentication.
 	//
 	// example:
 	//
 	// false
 	IsValueSecret *string `json:"IsValueSecret,omitempty" xml:"IsValueSecret,omitempty"`
-	// The key of the request body.
+	// The key of the body request parameter.
 	//
 	// example:
 	//
 	// name
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the request body.
+	// The value of the body request parameter.
 	//
 	// example:
 	//
@@ -750,19 +750,19 @@ func (s *ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParameters
 }
 
 type ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParametersOAuthHttpParametersHeaderParameters struct {
-	// Indicates whether authentication is enabled.
+	// Specifies whether the value is used for authentication.
 	//
 	// example:
 	//
 	// false
 	IsValueSecret *string `json:"IsValueSecret,omitempty" xml:"IsValueSecret,omitempty"`
-	// The key of the request header.
+	// The key of the header parameter.
 	//
 	// example:
 	//
 	// name
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the request header.
+	// The value of the header parameter.
 	//
 	// example:
 	//
@@ -810,19 +810,19 @@ func (s *ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParameters
 }
 
 type ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParametersOAuthHttpParametersQueryStringParameters struct {
-	// Indicates whether authentication is enabled.
+	// Specifies whether the value is used for authentication.
 	//
 	// example:
 	//
 	// false
 	IsValueSecret *string `json:"IsValueSecret,omitempty" xml:"IsValueSecret,omitempty"`
-	// The key of the request path.
+	// The key of the query string parameter.
 	//
 	// example:
 	//
 	// name
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the request path.
+	// The value of the query string parameter.
 	//
 	// example:
 	//
@@ -870,9 +870,9 @@ func (s *ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParameters
 }
 
 type ListConnectionsResponseBodyDataConnectionsNetworkParameters struct {
-	// 	- PublicNetwork: the Internet.
+	// - Public network: PublicNetwork
 	//
-	// 	- PrivateNetwork: virtual private cloud (VPC).
+	// - Virtual private cloud: PrivateNetwork
 	//
 	// example:
 	//
@@ -884,7 +884,7 @@ type ListConnectionsResponseBodyDataConnectionsNetworkParameters struct {
 	//
 	// eb-167adad548759-security_grop/sg-bp1addad26peuh9qh9rtyb
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The VPC ID.
+	// The ID of the virtual private cloud (VPC).
 	//
 	// example:
 	//

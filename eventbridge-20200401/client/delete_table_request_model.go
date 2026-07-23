@@ -20,19 +20,19 @@ type iDeleteTableRequest interface {
 }
 
 type DeleteTableRequest struct {
-	// 表所属的数据目录名称。可通过 ListCatalogs 获取
+	// Data catalog the table belongs to
 	//
 	// example:
 	//
 	// my_catalog
 	Catalog *string `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
-	// 用于保证请求幂等性的Token。建议使用 UUID
+	// Idempotent token
 	//
 	// example:
 	//
 	// 1e9b8f60-3a2c-4d7e-9f1b-8c3d5e7a2b4f
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 要删除的事件表名称。删除后不可恢复，表中的所有数据将被永久清除。需同时指定所属 Catalog 和 Namespace。可通过 ListTables 获取
+	// Table name
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type DeleteTableRequest struct {
 	//
 	// my_table
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 表所属的命名空间名称。可通过 ListNamespaces 获取
+	// Namespace the table belongs to
 	//
 	// example:
 	//

@@ -16,10 +16,13 @@ type iQueryAttachment interface {
 }
 
 type QueryAttachment struct {
+	// Query statement
+	//
 	// example:
 	//
 	// "SELECT city, COUNT(*) AS cnt FROM events GROUP BY city"
-	Query  *string          `json:"Query,omitempty" xml:"Query,omitempty"`
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// Query execution result
 	Result *ExecutionResult `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 

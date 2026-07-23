@@ -22,16 +22,28 @@ type iExecutionResult interface {
 }
 
 type ExecutionResult struct {
+  // Whether truncated due to the maxRows limit
+  // 
   // example:
   // 
   // false
   IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+  // Number of rows returned this time
+  // 
   // example:
   // 
   // 2
   RowCount *int32 `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
+  // Two-dimensional array, one array per row
+  // 
+  // example:
+  // 
+  // [["北京",120],["上海",98]]
   Rows *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
+  // Schema information
   Schema []*SchemaColumn `json:"Schema,omitempty" xml:"Schema,omitempty" type:"Repeated"`
+  // Total number of rows that meet the criteria. Different from RowCount when IsTruncated=true
+  // 
   // example:
   // 
   // 2

@@ -14,6 +14,8 @@ type iCheckServiceLinkedRoleForProductRequest interface {
 }
 
 type CheckServiceLinkedRoleForProductRequest struct {
+	// The name of the service-linked role (SLR) for the cloud product.
+	//
 	// example:
 	//
 	// AliyunServiceRoleForEventBridgeConnectVPC

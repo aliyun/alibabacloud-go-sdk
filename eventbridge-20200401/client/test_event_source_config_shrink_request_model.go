@@ -14,7 +14,7 @@ type iTestEventSourceConfigShrinkRequest interface {
 }
 
 type TestEventSourceConfigShrinkRequest struct {
-	// The parameters that are configured if you specify MySQL as the event source.
+	// The parameters for the MySQL source.
 	SourceMySQLParametersShrink *string `json:"SourceMySQLParameters,omitempty" xml:"SourceMySQLParameters,omitempty"`
 }
 

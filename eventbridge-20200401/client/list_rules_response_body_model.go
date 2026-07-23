@@ -44,7 +44,7 @@ type ListRulesResponseBody struct {
 	//
 	// example:
 	//
-	// C7043799-F4DA-5290-9249-97C359876D97
+	// C7043799-F4DA-5290-9249-97C35987****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values: true and false.
 	//
@@ -361,13 +361,13 @@ type ListRulesResponseBodyDataRulesTargets struct {
 	//
 	// example:
 	//
-	// 177
+	// Mlm123456JHd2Rs****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The transformer that is used to push events.
 	//
 	// example:
 	//
-	// MATCHED_EVENT
+	// PARAM_TRANSFORMER
 	PushSelector *string `json:"PushSelector,omitempty" xml:"PushSelector,omitempty"`
 	// The type of the event target. For more information, see [Event target parameters.](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
 	//

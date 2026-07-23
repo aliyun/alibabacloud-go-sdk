@@ -40,49 +40,82 @@ type iAskLumaLogEntry interface {
 }
 
 type AskLumaLogEntry struct {
+	// Agent name
+	//
 	// example:
 	//
 	// my-agent
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	// Whether clarification is needed
+	//
 	// example:
 	//
 	// false
-	ClarificationNeeded   *bool    `json:"ClarificationNeeded,omitempty" xml:"ClarificationNeeded,omitempty"`
-	ClarificationQuestion *string  `json:"ClarificationQuestion,omitempty" xml:"ClarificationQuestion,omitempty"`
-	Content               *Content `json:"Content,omitempty" xml:"Content,omitempty"`
+	ClarificationNeeded *bool `json:"ClarificationNeeded,omitempty" xml:"ClarificationNeeded,omitempty"`
+	// Clarification question text
+	//
+	// example:
+	//
+	// 您指的是哪张表？
+	ClarificationQuestion *string `json:"ClarificationQuestion,omitempty" xml:"ClarificationQuestion,omitempty"`
+	// Structured result body
+	Content *Content `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Conversation ID
+	//
 	// example:
 	//
 	// conv_xxx
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// Creation time (milliseconds)
+	//
 	// example:
 	//
 	// 1717200000000
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// Invocation duration (milliseconds)
+	//
 	// example:
 	//
 	// 3200
 	DurationMs *int64 `json:"DurationMs,omitempty" xml:"DurationMs,omitempty"`
+	// Error code
+	//
 	// example:
 	//
 	// ExecutionFailed
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Error details
+	//
 	// example:
 	//
 	// Agent with name \\"xxx\\" not found for account 1186xxx
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Whether it is an error
+	//
 	// example:
 	//
 	// false
 	IsError *bool `json:"IsError,omitempty" xml:"IsError,omitempty"`
+	// Message ID
+	//
 	// example:
 	//
 	// msg_xxx
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	Question  *string `json:"Question,omitempty" xml:"Question,omitempty"`
+	// Input question
+	//
+	// example:
+	//
+	// 帮我统计一下最近的订单数据。
+	Question *string `json:"Question,omitempty" xml:"Question,omitempty"`
+	// Log source
+	//
 	// example:
 	//
 	// MCP, CHAT
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// Execution status
+	//
 	// example:
 	//
 	// RUNNING, SUCCEEDED, FAILED, TIMEOUT

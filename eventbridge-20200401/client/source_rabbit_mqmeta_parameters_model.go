@@ -29,6 +29,8 @@ type iSourceRabbitMQMetaParameters interface {
 	GetRegex() *string
 	SetSecurityGroupId(v string) *SourceRabbitMQMetaParameters
 	GetSecurityGroupId() *string
+	SetSyncMetaType(v string) *SourceRabbitMQMetaParameters
+	GetSyncMetaType() *string
 	SetUsername(v string) *SourceRabbitMQMetaParameters
 	GetUsername() *string
 	SetVSwitchIds(v string) *SourceRabbitMQMetaParameters
@@ -50,6 +52,7 @@ type SourceRabbitMQMetaParameters struct {
 	Password        *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	Regex           *string `json:"Regex,omitempty" xml:"Regex,omitempty"`
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SyncMetaType    *string `json:"SyncMetaType,omitempty" xml:"SyncMetaType,omitempty"`
 	Username        *string `json:"Username,omitempty" xml:"Username,omitempty"`
 	VSwitchIds      *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
 	VirtualHostName *string `json:"VirtualHostName,omitempty" xml:"VirtualHostName,omitempty"`
@@ -102,6 +105,10 @@ func (s *SourceRabbitMQMetaParameters) GetRegex() *string {
 
 func (s *SourceRabbitMQMetaParameters) GetSecurityGroupId() *string {
 	return s.SecurityGroupId
+}
+
+func (s *SourceRabbitMQMetaParameters) GetSyncMetaType() *string {
+	return s.SyncMetaType
 }
 
 func (s *SourceRabbitMQMetaParameters) GetUsername() *string {
@@ -167,6 +174,11 @@ func (s *SourceRabbitMQMetaParameters) SetRegex(v string) *SourceRabbitMQMetaPar
 
 func (s *SourceRabbitMQMetaParameters) SetSecurityGroupId(v string) *SourceRabbitMQMetaParameters {
 	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *SourceRabbitMQMetaParameters) SetSyncMetaType(v string) *SourceRabbitMQMetaParameters {
+	s.SyncMetaType = &v
 	return s
 }
 

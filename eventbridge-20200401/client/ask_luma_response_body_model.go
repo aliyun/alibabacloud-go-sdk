@@ -22,19 +22,28 @@ type iAskLumaResponseBody interface {
 }
 
 type AskLumaResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// AgentNotFound
-	Code *string        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response body.
 	Data *AskLumaResult `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error message. This value is null if the request is successful.
+	//
 	// example:
 	//
 	// Agent with name \\"xxx\\" not found for account 1186xxx
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 97FB3BAE-XXXXXX-36435495B7EB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true

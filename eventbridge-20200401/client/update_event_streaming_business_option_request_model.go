@@ -20,18 +20,30 @@ type iUpdateEventStreamingBusinessOptionRequest interface {
 }
 
 type UpdateEventStreamingBusinessOptionRequest struct {
+	// The billing mode. Valid values are CapacityUnitMode for the CU mode and EventNumMode for the pay-by-event mode.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// CapacityUnitMode
 	BusinessMode *string `json:"BusinessMode,omitempty" xml:"BusinessMode,omitempty"`
+	// The name of the event stream.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rocketmq-sync
 	EventStreamingName *string `json:"EventStreamingName,omitempty" xml:"EventStreamingName,omitempty"`
+	// The maximum number of CUs.
+	//
 	// example:
 	//
 	// 2
 	MaxCapacityUnitCount *int64 `json:"MaxCapacityUnitCount,omitempty" xml:"MaxCapacityUnitCount,omitempty"`
+	// The minimum number of CUs.
+	//
 	// example:
 	//
 	// 1

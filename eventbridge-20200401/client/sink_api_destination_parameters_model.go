@@ -22,11 +22,16 @@ type iSinkApiDestinationParameters interface {
 }
 
 type SinkApiDestinationParameters struct {
-	BodyParameters        *SinkApiDestinationParametersBodyParameters        `json:"BodyParameters,omitempty" xml:"BodyParameters,omitempty" type:"Struct"`
-	HeaderParameters      *SinkApiDestinationParametersHeaderParameters      `json:"HeaderParameters,omitempty" xml:"HeaderParameters,omitempty" type:"Struct"`
-	Name                  *string                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parameters for the HTTP request body, specified as key-value pairs.
+	BodyParameters *SinkApiDestinationParametersBodyParameters `json:"BodyParameters,omitempty" xml:"BodyParameters,omitempty" type:"Struct"`
+	// The custom HTTP header parameters to add to the request, specified as key-value pairs.
+	HeaderParameters *SinkApiDestinationParametersHeaderParameters `json:"HeaderParameters,omitempty" xml:"HeaderParameters,omitempty" type:"Struct"`
+	// The name of the API destination.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The query string parameters to add to the endpoint URL, specified as key-value pairs.
 	QueryStringParameters *SinkApiDestinationParametersQueryStringParameters `json:"QueryStringParameters,omitempty" xml:"QueryStringParameters,omitempty" type:"Struct"`
-	Timeout               *int32                                             `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The timeout for the API call, in seconds. If the endpoint does not respond within this period, the call fails. The valid range is 1 to 60.
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s SinkApiDestinationParameters) String() string {
@@ -102,9 +107,12 @@ func (s *SinkApiDestinationParameters) Validate() error {
 }
 
 type SinkApiDestinationParametersBodyParameters struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// Defines how the parameter\\"s value is created. Use `CONSTANT` to specify a static string in the `value` field. Use `JSONPATH` to extract data from the event payload with a JSONPath expression in the `value` field. Use `TEMPLATE` to build the value from the `template` field.
+	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// The template to use to build the parameter value. This field is used only when the `form` is set to `TEMPLATE`. You can use variables, such as `${event.id}`, in the template to reference event data.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The static value or JSONPath expression for the parameter. This field applies only when the `form` is set to `CONSTANT` or `JSONPATH`.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s SinkApiDestinationParametersBodyParameters) String() string {
@@ -147,9 +155,12 @@ func (s *SinkApiDestinationParametersBodyParameters) Validate() error {
 }
 
 type SinkApiDestinationParametersHeaderParameters struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// Defines how the parameter\\"s value is created. Use `CONSTANT` to specify a static string in the `value` field. Use `JSONPATH` to extract data from the event payload with a JSONPath expression in the `value` field. Use `TEMPLATE` to build the value from the `template` field.
+	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// The template to use to build the parameter value. This field is used only when the `form` is set to `TEMPLATE`. You can use variables, such as `${event.id}`, in the template to reference event data.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The static value or JSONPath expression for the parameter. This field applies only when the `form` is set to `CONSTANT` or `JSONPATH`.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s SinkApiDestinationParametersHeaderParameters) String() string {
@@ -192,9 +203,12 @@ func (s *SinkApiDestinationParametersHeaderParameters) Validate() error {
 }
 
 type SinkApiDestinationParametersQueryStringParameters struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// Defines how the parameter\\"s value is created. Use `CONSTANT` to specify a static string in the `value` field. Use `JSONPATH` to extract data from the event payload with a JSONPath expression in the `value` field. Use `TEMPLATE` to build the value from the `template` field.
+	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// The template to use to build the parameter value. This field is used only when the `form` is set to `TEMPLATE`. You can use variables, such as `${event.id}`, in the template to reference event data.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The static value or JSONPath expression for the parameter. This field applies only when the `form` is set to `CONSTANT` or `JSONPATH`.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s SinkApiDestinationParametersQueryStringParameters) String() string {

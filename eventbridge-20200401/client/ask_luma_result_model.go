@@ -34,37 +34,60 @@ type iAskLumaResult interface {
 }
 
 type AskLumaResult struct {
+	// Whether clarification is needed
+	//
 	// example:
 	//
 	// false
-	ClarificationNeeded   *bool        `json:"ClarificationNeeded,omitempty" xml:"ClarificationNeeded,omitempty"`
-	ClarificationQuestion *string      `json:"ClarificationQuestion,omitempty" xml:"ClarificationQuestion,omitempty"`
-	Constraints           *Constraints `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
-	Content               *Content     `json:"Content,omitempty" xml:"Content,omitempty"`
+	ClarificationNeeded *bool `json:"ClarificationNeeded,omitempty" xml:"ClarificationNeeded,omitempty"`
+	// Clarification question text
+	//
+	// example:
+	//
+	// 您指的是哪个数据库中的员工表？
+	ClarificationQuestion *string `json:"ClarificationQuestion,omitempty" xml:"ClarificationQuestion,omitempty"`
+	// Query constraints
+	Constraints *Constraints `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
+	// Structured result body
+	Content *Content `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Conversation identifier, used for multi-turn follow-up questions
+	//
 	// example:
 	//
 	// conv_xxx
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// Error code
+	//
 	// example:
 	//
 	// ExecutionFailed, Timeout, RateLimited, InternalError, ConversationExpired
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Error details
+	//
 	// example:
 	//
 	// Agent with name \\"xxx\\" not found for account 1186xxx
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Whether it is an error. false = query succeeded or clarification (including empty result set); true = execution failed / timeout / rate limited / internal error
+	//
 	// example:
 	//
 	// false
 	IsError *bool `json:"IsError,omitempty" xml:"IsError,omitempty"`
+	// Message identifier, used for PollAskResult polling
+	//
 	// example:
 	//
 	// msg_xxx
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// Execution status
+	//
 	// example:
 	//
 	// RUNNING, SUCCEEDED, FAILED, TIMEOUT
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Whether the result was truncated due to exceeding the storage limit. Only appears in large result set scenarios
+	//
 	// example:
 	//
 	// true

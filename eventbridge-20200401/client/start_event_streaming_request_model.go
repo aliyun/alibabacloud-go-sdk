@@ -14,7 +14,7 @@ type iStartEventStreamingRequest interface {
 }
 
 type StartEventStreamingRequest struct {
-	// The name of the event stream that you want to enable.
+	// The name of the event stream to enable.
 	//
 	// This parameter is required.
 	//

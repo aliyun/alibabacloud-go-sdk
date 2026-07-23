@@ -24,19 +24,21 @@ type iListEventStreamingsRequest interface {
 }
 
 type ListEventStreamingsRequest struct {
-	// The maximum number of entries to be returned in a call. You can use this parameter and NextToken to implement paging. A maximum of 100 entries can be returned in a call.
+	// The maximum number of entries returned per request. You can use this parameter together with NextToken to implement paging.
+	//
+	// 	Notice: The maximum number of entries returned per request cannot exceed 100.
 	//
 	// example:
 	//
 	// 10
 	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// The name of the event stream that you want to query.
+	// The name prefix of the event stream.
 	//
 	// example:
 	//
 	// name
 	NamePrefix *string `json:"NamePrefix,omitempty" xml:"NamePrefix,omitempty"`
-	// If you configure Limit and excess return values exist, this parameter is returned.
+	// If the number of entries exceeds the value of Limit, a NextToken is returned.
 	//
 	// example:
 	//
@@ -48,9 +50,10 @@ type ListEventStreamingsRequest struct {
 	//
 	// acs:fc:cn-hangzhou:118609547428****:services/fw1.LATEST/functions/log1
 	SinkArn *string `json:"SinkArn,omitempty" xml:"SinkArn,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the event source.
-	SourceArn *string                           `json:"SourceArn,omitempty" xml:"SourceArn,omitempty"`
-	Tags      []*ListEventStreamingsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The ARN of the event source.
+	SourceArn *string `json:"SourceArn,omitempty" xml:"SourceArn,omitempty"`
+	// The tags used for filtering.
+	Tags []*ListEventStreamingsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListEventStreamingsRequest) String() string {
@@ -129,10 +132,14 @@ func (s *ListEventStreamingsRequest) Validate() error {
 }
 
 type ListEventStreamingsRequestTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// mns
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// mnstest

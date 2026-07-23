@@ -30,7 +30,7 @@ type UpdateEventSourceResponseBody struct {
 	//
 	// example:
 	//
-	// 200
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The result of the operation.
 	//
@@ -48,7 +48,7 @@ type UpdateEventSourceResponseBody struct {
 	//
 	// example:
 	//
-	// c057d379-ea65-41ec-a8a8-90627a968204
+	// c057d379-ea65-41ec-a8a8-90627a9****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the operation is successful. The value true indicates that the operation is successful.
 	//

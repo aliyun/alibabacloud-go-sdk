@@ -22,19 +22,32 @@ type iCreateAgentResponseBody interface {
 }
 
 type CreateAgentResponseBody struct {
+	// The response code. Valid values:
+	//
+	// - Success: The request was successful.
+	//
+	// - Other values: An error occurred. For more information, see Error codes.
+	//
 	// example:
 	//
 	// Success
-	Code *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *CreateAgentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// Agent with name \\"XXX\\" already exists for account 12345
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B896B484-XXXXXX-DD0E5C361108
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values: true: The request was successful. false: The request failed.
+	//
 	// example:
 	//
 	// true

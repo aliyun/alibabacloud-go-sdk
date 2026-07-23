@@ -11,6 +11,12 @@ type iSourceRabbitMQMsgSyncParameters interface {
 	GoString() string
 	SetBodyDataType(v string) *SourceRabbitMQMsgSyncParameters
 	GetBodyDataType() *string
+	SetCloudMigrationTaskId(v string) *SourceRabbitMQMsgSyncParameters
+	GetCloudMigrationTaskId() *string
+	SetDstClusterHost(v string) *SourceRabbitMQMsgSyncParameters
+	GetDstClusterHost() *string
+	SetDstClusterType(v string) *SourceRabbitMQMsgSyncParameters
+	GetDstClusterType() *string
 	SetEndpoint(v string) *SourceRabbitMQMsgSyncParameters
 	GetEndpoint() *string
 	SetInstanceId(v string) *SourceRabbitMQMsgSyncParameters
@@ -25,8 +31,16 @@ type iSourceRabbitMQMsgSyncParameters interface {
 	GetPassword() *string
 	SetPrefetchCount(v string) *SourceRabbitMQMsgSyncParameters
 	GetPrefetchCount() *string
+	SetRegex(v string) *SourceRabbitMQMsgSyncParameters
+	GetRegex() *string
 	SetSecurityGroupId(v string) *SourceRabbitMQMsgSyncParameters
 	GetSecurityGroupId() *string
+	SetSrcClusterHost(v string) *SourceRabbitMQMsgSyncParameters
+	GetSrcClusterHost() *string
+	SetSrcClusterType(v string) *SourceRabbitMQMsgSyncParameters
+	GetSrcClusterType() *string
+	SetSyncMetaType(v string) *SourceRabbitMQMsgSyncParameters
+	GetSyncMetaType() *string
 	SetUsername(v string) *SourceRabbitMQMsgSyncParameters
 	GetUsername() *string
 	SetVSwitchIds(v string) *SourceRabbitMQMsgSyncParameters
@@ -38,19 +52,26 @@ type iSourceRabbitMQMsgSyncParameters interface {
 }
 
 type SourceRabbitMQMsgSyncParameters struct {
-	BodyDataType    *string `json:"BodyDataType,omitempty" xml:"BodyDataType,omitempty"`
-	Endpoint        *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceType    *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	NetworkType     *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	OrderConsume    *string `json:"OrderConsume,omitempty" xml:"OrderConsume,omitempty"`
-	Password        *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	PrefetchCount   *string `json:"PrefetchCount,omitempty" xml:"PrefetchCount,omitempty"`
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	Username        *string `json:"Username,omitempty" xml:"Username,omitempty"`
-	VSwitchIds      *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	VirtualHostName *string `json:"VirtualHostName,omitempty" xml:"VirtualHostName,omitempty"`
-	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	BodyDataType         *string `json:"BodyDataType,omitempty" xml:"BodyDataType,omitempty"`
+	CloudMigrationTaskId *string `json:"CloudMigrationTaskId,omitempty" xml:"CloudMigrationTaskId,omitempty"`
+	DstClusterHost       *string `json:"DstClusterHost,omitempty" xml:"DstClusterHost,omitempty"`
+	DstClusterType       *string `json:"DstClusterType,omitempty" xml:"DstClusterType,omitempty"`
+	Endpoint             *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceType         *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	NetworkType          *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	OrderConsume         *string `json:"OrderConsume,omitempty" xml:"OrderConsume,omitempty"`
+	Password             *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	PrefetchCount        *string `json:"PrefetchCount,omitempty" xml:"PrefetchCount,omitempty"`
+	Regex                *string `json:"Regex,omitempty" xml:"Regex,omitempty"`
+	SecurityGroupId      *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SrcClusterHost       *string `json:"SrcClusterHost,omitempty" xml:"SrcClusterHost,omitempty"`
+	SrcClusterType       *string `json:"SrcClusterType,omitempty" xml:"SrcClusterType,omitempty"`
+	SyncMetaType         *string `json:"SyncMetaType,omitempty" xml:"SyncMetaType,omitempty"`
+	Username             *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	VSwitchIds           *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	VirtualHostName      *string `json:"VirtualHostName,omitempty" xml:"VirtualHostName,omitempty"`
+	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s SourceRabbitMQMsgSyncParameters) String() string {
@@ -63,6 +84,18 @@ func (s SourceRabbitMQMsgSyncParameters) GoString() string {
 
 func (s *SourceRabbitMQMsgSyncParameters) GetBodyDataType() *string {
 	return s.BodyDataType
+}
+
+func (s *SourceRabbitMQMsgSyncParameters) GetCloudMigrationTaskId() *string {
+	return s.CloudMigrationTaskId
+}
+
+func (s *SourceRabbitMQMsgSyncParameters) GetDstClusterHost() *string {
+	return s.DstClusterHost
+}
+
+func (s *SourceRabbitMQMsgSyncParameters) GetDstClusterType() *string {
+	return s.DstClusterType
 }
 
 func (s *SourceRabbitMQMsgSyncParameters) GetEndpoint() *string {
@@ -93,8 +126,24 @@ func (s *SourceRabbitMQMsgSyncParameters) GetPrefetchCount() *string {
 	return s.PrefetchCount
 }
 
+func (s *SourceRabbitMQMsgSyncParameters) GetRegex() *string {
+	return s.Regex
+}
+
 func (s *SourceRabbitMQMsgSyncParameters) GetSecurityGroupId() *string {
 	return s.SecurityGroupId
+}
+
+func (s *SourceRabbitMQMsgSyncParameters) GetSrcClusterHost() *string {
+	return s.SrcClusterHost
+}
+
+func (s *SourceRabbitMQMsgSyncParameters) GetSrcClusterType() *string {
+	return s.SrcClusterType
+}
+
+func (s *SourceRabbitMQMsgSyncParameters) GetSyncMetaType() *string {
+	return s.SyncMetaType
 }
 
 func (s *SourceRabbitMQMsgSyncParameters) GetUsername() *string {
@@ -115,6 +164,21 @@ func (s *SourceRabbitMQMsgSyncParameters) GetVpcId() *string {
 
 func (s *SourceRabbitMQMsgSyncParameters) SetBodyDataType(v string) *SourceRabbitMQMsgSyncParameters {
 	s.BodyDataType = &v
+	return s
+}
+
+func (s *SourceRabbitMQMsgSyncParameters) SetCloudMigrationTaskId(v string) *SourceRabbitMQMsgSyncParameters {
+	s.CloudMigrationTaskId = &v
+	return s
+}
+
+func (s *SourceRabbitMQMsgSyncParameters) SetDstClusterHost(v string) *SourceRabbitMQMsgSyncParameters {
+	s.DstClusterHost = &v
+	return s
+}
+
+func (s *SourceRabbitMQMsgSyncParameters) SetDstClusterType(v string) *SourceRabbitMQMsgSyncParameters {
+	s.DstClusterType = &v
 	return s
 }
 
@@ -153,8 +217,28 @@ func (s *SourceRabbitMQMsgSyncParameters) SetPrefetchCount(v string) *SourceRabb
 	return s
 }
 
+func (s *SourceRabbitMQMsgSyncParameters) SetRegex(v string) *SourceRabbitMQMsgSyncParameters {
+	s.Regex = &v
+	return s
+}
+
 func (s *SourceRabbitMQMsgSyncParameters) SetSecurityGroupId(v string) *SourceRabbitMQMsgSyncParameters {
 	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *SourceRabbitMQMsgSyncParameters) SetSrcClusterHost(v string) *SourceRabbitMQMsgSyncParameters {
+	s.SrcClusterHost = &v
+	return s
+}
+
+func (s *SourceRabbitMQMsgSyncParameters) SetSrcClusterType(v string) *SourceRabbitMQMsgSyncParameters {
+	s.SrcClusterType = &v
+	return s
+}
+
+func (s *SourceRabbitMQMsgSyncParameters) SetSyncMetaType(v string) *SourceRabbitMQMsgSyncParameters {
+	s.SyncMetaType = &v
 	return s
 }
 

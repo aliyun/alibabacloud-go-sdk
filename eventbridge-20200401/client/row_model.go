@@ -14,6 +14,7 @@ type iRow interface {
 }
 
 type Row struct {
+	// Column data for each row.
 	Columns []*Column `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
 }
 

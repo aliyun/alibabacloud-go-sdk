@@ -41,6 +41,10 @@ type iUpdateEventSourceRequest interface {
 
 type UpdateEventSourceRequest struct {
 	// The description of the event source.
+	//
+	// example:
+	//
+	// RabbitMQ event source
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The event bus with which the event source is associated.
 	//
@@ -390,7 +394,7 @@ type UpdateEventSourceRequestSourceKafkaParameters struct {
 	//
 	// example:
 	//
-	// cbwp-bp1o3m66wcjgbkssm3k5m
+	// cbwp-bp1o3m66wcjgbkssm3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The maximum number of consumers.
 	//
@@ -420,7 +424,7 @@ type UpdateEventSourceRequestSourceKafkaParameters struct {
 	//
 	// example:
 	//
-	// sg-5wz3mjgo9wpvdnwpwnhkjdjwn
+	// sg-5wz3mjgo9wpvdnwpwnhkj****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The name of the topic on the Message Queue for Apache Kafka instance.
 	//
@@ -432,13 +436,13 @@ type UpdateEventSourceRequestSourceKafkaParameters struct {
 	//
 	// example:
 	//
-	// vsw-bp1xyntcxiwplhqxjybuk
+	// vsw-bp1xyntcxiwplhqxj****
 	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
 	// The ID of the VPC in which the Message Queue for Apache Kafka instance resides. This parameter is required only if you set Network to PublicNetwork.
 	//
 	// example:
 	//
-	// vpc-2zefu4vfmx6siogujmo0b
+	// vpc-2zefu4vfmx6sioguj****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -709,7 +713,7 @@ type UpdateEventSourceRequestSourceRabbitMQParameters struct {
 	//
 	// example:
 	//
-	// bastionhost-cn-7mz2zkyff09
+	// bastionhost-cn-7mz2zky****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the queue on the Message Queue for RabbitMQ instance. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
 	//
@@ -802,7 +806,7 @@ type UpdateEventSourceRequestSourceRocketMQParameters struct {
 	//
 	// example:
 	//
-	// dbaudit-cn-i7m2nx2or01
+	// dbaudit-cn-i7m2nx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// None.
 	//
@@ -848,7 +852,7 @@ type UpdateEventSourceRequestSourceRocketMQParameters struct {
 	//
 	// example:
 	//
-	// vpc-bp1a4gmlk31hyg6ptl3ss
+	// vpc-bp1a4gmlk31hyg6pt****
 	InstanceVpcId *string `json:"InstanceVpcId,omitempty" xml:"InstanceVpcId,omitempty"`
 	// The offset from which message consumption starts. Valid values:
 	//

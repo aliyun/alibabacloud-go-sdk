@@ -15,6 +15,8 @@ type iUpdateEventStreamingShrinkRequest interface {
 	GetEventStreamingName() *string
 	SetFilterPattern(v string) *UpdateEventStreamingShrinkRequest
 	GetFilterPattern() *string
+	SetMetadata(v string) *UpdateEventStreamingShrinkRequest
+	GetMetadata() *string
 	SetRunOptionsShrink(v string) *UpdateEventStreamingShrinkRequest
 	GetRunOptionsShrink() *string
 	SetSinkShrink(v string) *UpdateEventStreamingShrinkRequest
@@ -40,9 +42,7 @@ type UpdateEventStreamingShrinkRequest struct {
 	//
 	// myeventstreaming
 	EventStreamingName *string `json:"EventStreamingName,omitempty" xml:"EventStreamingName,omitempty"`
-	// The rule that is used to filter events. If you leave this parameter empty, all events are matched.
-	//
-	// This parameter is required.
+	// The event filtering rule. If you do not specify this parameter, all events are matched. For more information, see [https://www.alibabacloud.com/help/en/eventbridge/user-guide/event-patterns](https://www.alibabacloud.com/help/en/eventbridge/user-guide/event-patterns)
 	//
 	// example:
 	//
@@ -80,16 +80,14 @@ type UpdateEventStreamingShrinkRequest struct {
 	//
 	// }
 	FilterPattern *string `json:"FilterPattern,omitempty" xml:"FilterPattern,omitempty"`
-	// The parameters that are configured for the runtime environment.
+	Metadata      *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// The runtime parameters.
 	RunOptionsShrink *string `json:"RunOptions,omitempty" xml:"RunOptions,omitempty"`
-	// The event target. You must and can specify only one event target.
-	//
-	// This parameter is required.
+	// The event target. You must select one and only one Sink type.
 	SinkShrink *string `json:"Sink,omitempty" xml:"Sink,omitempty"`
-	// The event provider, which is also known as the event source. You must and can specify only one event source.
-	//
-	// This parameter is required.
-	SourceShrink     *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The event provider. You must select one and only one Source type.
+	SourceShrink *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The Transform-related configurations.
 	TransformsShrink *string `json:"Transforms,omitempty" xml:"Transforms,omitempty"`
 }
 
@@ -111,6 +109,10 @@ func (s *UpdateEventStreamingShrinkRequest) GetEventStreamingName() *string {
 
 func (s *UpdateEventStreamingShrinkRequest) GetFilterPattern() *string {
 	return s.FilterPattern
+}
+
+func (s *UpdateEventStreamingShrinkRequest) GetMetadata() *string {
+	return s.Metadata
 }
 
 func (s *UpdateEventStreamingShrinkRequest) GetRunOptionsShrink() *string {
@@ -141,6 +143,11 @@ func (s *UpdateEventStreamingShrinkRequest) SetEventStreamingName(v string) *Upd
 
 func (s *UpdateEventStreamingShrinkRequest) SetFilterPattern(v string) *UpdateEventStreamingShrinkRequest {
 	s.FilterPattern = &v
+	return s
+}
+
+func (s *UpdateEventStreamingShrinkRequest) SetMetadata(v string) *UpdateEventStreamingShrinkRequest {
+	s.Metadata = &v
 	return s
 }
 

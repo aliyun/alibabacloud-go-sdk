@@ -20,13 +20,17 @@ type iDeleteEventStreamingResponseBody interface {
 }
 
 type DeleteEventStreamingResponseBody struct {
-	// The returned response code. The value Success indicates that the request is successful.
+	// The return code. \\`Success\\` is returned if the request is successful. Otherwise, an error code is returned. For more information about error codes, see Error codes.
+	//
+	// Success: The request is successful.
+	//
+	// Other codes indicate that the request failed. For more information about error codes, see Error codes.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned error message.
+	// The error message.
 	//
 	// example:
 	//
@@ -38,7 +42,7 @@ type DeleteEventStreamingResponseBody struct {
 	//
 	// 499A9ACF-70CD-5D43-87F3-1B60529EE446
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation is successful. Valid values: true and false.
+	// Returns true if the operation is successful.
 	//
 	// example:
 	//

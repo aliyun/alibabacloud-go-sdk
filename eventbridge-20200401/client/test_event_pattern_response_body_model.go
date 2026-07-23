@@ -22,15 +22,15 @@ type iTestEventPatternResponseBody interface {
 }
 
 type TestEventPatternResponseBody struct {
-	// The returned response code. The value Success indicates that the request is successful. Other values indicate that the request failed. For more information about error codes, see Error codes.
+	// The return code. `Success` indicates that the call was successful. For more information about other return codes, see Error codes.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned result.
+	// The result of the test.
 	Data *TestEventPatternResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message returned if the request failed.
+	// The error message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -38,7 +38,7 @@ type TestEventPatternResponseBody struct {
 	//
 	// 96D7C0AB-DCE5-5E82-96B8-4725E1706BB1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation is successful. If the operation is successful, the value true is returned.
+	// Indicates if the request was successful.
 	//
 	// example:
 	//
@@ -109,7 +109,7 @@ func (s *TestEventPatternResponseBody) Validate() error {
 }
 
 type TestEventPatternResponseBodyData struct {
-	// The value true indicates that the event pattern matches the provided JSON format. The value false indicates that the event pattern does not match the provided JSON format.
+	// Indicates if the event matches the event pattern.
 	//
 	// example:
 	//

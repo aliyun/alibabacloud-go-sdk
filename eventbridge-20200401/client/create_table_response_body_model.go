@@ -22,22 +22,32 @@ type iCreateTableResponseBody interface {
 }
 
 type CreateTableResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
+	//
 	// example:
 	//
 	// {"TableARN":"acs:eventbridge:cn-hangzhou:123456789:catalog/my_catalog/namespace/my_namespace/table/my_table"}
 	Data *CreateTableResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// Operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 34AD682D-5B91-5773-8132-AA38C130****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -107,6 +117,8 @@ func (s *CreateTableResponseBody) Validate() error {
 }
 
 type CreateTableResponseBodyData struct {
+	// The ARN of the table.
+	//
 	// example:
 	//
 	// acs:eventbridge:cn-hangzhou:123456789:catalog/my_catalog/namespace/my_namespace/table/my_table

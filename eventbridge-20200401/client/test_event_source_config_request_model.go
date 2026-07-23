@@ -14,7 +14,7 @@ type iTestEventSourceConfigRequest interface {
 }
 
 type TestEventSourceConfigRequest struct {
-	// The parameters that are configured if you specify MySQL as the event source.
+	// The parameters for the MySQL source.
 	SourceMySQLParameters *TestEventSourceConfigRequestSourceMySQLParameters `json:"SourceMySQLParameters,omitempty" xml:"SourceMySQLParameters,omitempty" type:"Struct"`
 }
 
@@ -45,6 +45,7 @@ func (s *TestEventSourceConfigRequest) Validate() error {
 }
 
 type TestEventSourceConfigRequestSourceMySQLParameters struct {
+	// The list of allowed CIDR blocks.
 	AllowedCIDRs *string `json:"AllowedCIDRs,omitempty" xml:"AllowedCIDRs,omitempty"`
 	// The database name.
 	//
@@ -52,7 +53,7 @@ type TestEventSourceConfigRequestSourceMySQLParameters struct {
 	//
 	// database1
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The endpoint of the database.
+	// The database endpoint.
 	//
 	// example:
 	//
@@ -60,23 +61,17 @@ type TestEventSourceConfigRequestSourceMySQLParameters struct {
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	// The network type.
 	//
-	// Valid values:
-	//
-	// 	- PrivateNetwork
-	//
-	// 	- PublicNetwork
-	//
 	// example:
 	//
 	// PrivateNetwork
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The password that is used for authentication.
+	// The password for the specified username.
 	//
 	// example:
 	//
 	// 1234xxx
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The port that is used to connect to the database.
+	// The database connection port.
 	//
 	// example:
 	//
@@ -88,32 +83,33 @@ type TestEventSourceConfigRequestSourceMySQLParameters struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the security group.
+	// The security group ID.
 	//
 	// example:
 	//
 	// sg-xxx
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	SnapshotMode    *string `json:"SnapshotMode,omitempty" xml:"SnapshotMode,omitempty"`
-	// The table name. The name must be prefixed with the database name. ${DatabaseName}.${TableName}
+	// The snapshot mode.
+	SnapshotMode *string `json:"SnapshotMode,omitempty" xml:"SnapshotMode,omitempty"`
+	// The table name. The name must be prefixed with the database name in the ${DatabaseName}.${TableName} format.
 	//
 	// example:
 	//
 	// database1.table1
 	TableNames *string `json:"TableNames,omitempty" xml:"TableNames,omitempty"`
-	// The username that is used to log on to the database.
+	// The username for the database.
 	//
 	// example:
 	//
 	// user***
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
-	// The vSwitch ID.
+	// The vSwitch IDs.
 	//
 	// example:
 	//
 	// vsw-bp1gb7xxx
 	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	// The virtual private cloud (VPC) ID.
+	// The VPC ID.
 	//
 	// example:
 	//

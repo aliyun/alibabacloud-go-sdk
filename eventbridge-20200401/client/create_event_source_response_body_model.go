@@ -22,19 +22,19 @@ type iCreateEventSourceResponseBody interface {
 }
 
 type CreateEventSourceResponseBody struct {
-	// The returned response code. Valid values:
+	// The response code.
 	//
-	// 	- Success: The request is successful.
+	// - `Success`: The request was successful.
 	//
-	// 	- Other codes: The request failed. For more information about error codes, see Error codes.
+	// - Other values indicate errors. For more information, see the "Error codes" section.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The data returned by the request.
 	Data *CreateEventSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned error message.
+	// The error message returned if the request is unsuccessful.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type CreateEventSourceResponseBody struct {
 	//
 	// 2922208e-e1c6-43ee-bfd1-aca50263bc8a
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation is successful. The value true indicates that the operation is successful.
+	// Indicates whether the request was successful. A value of `true` indicates that the request was successful.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *CreateEventSourceResponseBody) Validate() error {
 }
 
 type CreateEventSourceResponseBodyData struct {
-	// The Alibaba Cloud Resource Name (ARN) of the resource.
+	// The Alibaba Cloud Resource Name (ARN) of the event source.
 	//
 	// example:
 	//

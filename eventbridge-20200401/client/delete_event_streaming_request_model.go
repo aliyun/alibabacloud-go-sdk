@@ -14,7 +14,7 @@ type iDeleteEventStreamingRequest interface {
 }
 
 type DeleteEventStreamingRequest struct {
-	// The name of the event stream that you want to delete.
+	// The name of the event stream to delete.
 	//
 	// This parameter is required.
 	//

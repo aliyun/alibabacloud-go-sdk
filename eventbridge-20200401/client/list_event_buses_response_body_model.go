@@ -44,7 +44,7 @@ type ListEventBusesResponseBody struct {
 	//
 	// example:
 	//
-	// D1DCF64A-3F2C-5323-ADCB-3F4DF30FAD2D
+	// D1DCF64A-3F2C-5323-ADCB-3F4DF30F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the operation was successful. If the operation was successful, the value true is returned.
 	//
@@ -198,7 +198,7 @@ type ListEventBusesResponseBodyDataEventBuses struct {
 	//
 	// example:
 	//
-	// acs:eventbridge:cn-hangzhou:123456789098***:eventbus/default
+	// acs:eventbridge:cn-hangzhou:12345678909****:eventbus/default
 	EventBusARN *string `json:"EventBusARN,omitempty" xml:"EventBusARN,omitempty"`
 	// The name of the event bus.
 	//

@@ -30,13 +30,13 @@ type EventCenterQueryEventsShrinkRequest struct {
   // 
   // default
   BusName *string `json:"BusName,omitempty" xml:"BusName,omitempty"`
-  // The number of entries per page. Valid values: 0 to 10000. Default value: 100.
+  // The maximum number of results to return. Valid values: 0 to 10,000. The default value is 100.
   // 
   // example:
   // 
   // 100
   MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-  // 用来标记当前开始读取的位置。置空表示从头开始。
+  // The token to retrieve the next page of results.
   // 
   // example:
   // 

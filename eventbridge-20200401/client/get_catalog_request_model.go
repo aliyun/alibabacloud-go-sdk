@@ -16,13 +16,13 @@ type iGetCatalogRequest interface {
 }
 
 type GetCatalogRequest struct {
-	// 用于保证请求幂等性的Token。建议使用 UUID
+	// Idempotency token
 	//
 	// example:
 	//
 	// 1e9b8f60-3a2c-4d7e-9f1b-8c3d5e7a2b4f
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 要查询的数据目录名称。可通过 ListCatalogs 接口获取已有目录列表
+	// Data catalog name
 	//
 	// This parameter is required.
 	//

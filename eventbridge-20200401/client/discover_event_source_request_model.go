@@ -14,6 +14,7 @@ type iDiscoverEventSourceRequest interface {
 }
 
 type DiscoverEventSourceRequest struct {
+	// The MySQL source parameters.
 	SourceMySQLParameters *DiscoverEventSourceRequestSourceMySQLParameters `json:"SourceMySQLParameters,omitempty" xml:"SourceMySQLParameters,omitempty" type:"Struct"`
 }
 
@@ -44,54 +45,80 @@ func (s *DiscoverEventSourceRequest) Validate() error {
 }
 
 type DiscoverEventSourceRequestSourceMySQLParameters struct {
+	// The database name.
+	//
 	// example:
 	//
 	// database1
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// The database endpoint.
+	//
 	// example:
 	//
 	// rm-xxx.mysql.rds.aliyuncs.com
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// The maximum number of entries to return on each page.
+	//
 	// example:
 	//
 	// 20
 	Limit *string `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The network type.
+	//
 	// example:
 	//
 	// PrivateNetwork
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// The offset for paging the query results.
+	//
 	// example:
 	//
 	// 30
 	Offset *string `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// The database password.
+	//
 	// example:
 	//
 	// 1234xxx
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The connection port of the database.
+	//
 	// example:
 	//
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The security group ID.
+	//
 	// example:
 	//
 	// sg-bp1ic0vsbwyv176e9inx
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The name of the database table. The database name must be added as a prefix in the ${DatabaseName}.${TableName} format.
+	//
 	// example:
 	//
 	// database1.table1
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The database username.
+	//
 	// example:
 	//
 	// user1
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
+	// The vSwitch ID.
+	//
 	// example:
 	//
 	// vsw-gw824tpaptxtlo256lqub
 	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	// The ID of the Virtual Private Cloud (VPC).
+	//
 	// example:
 	//
 	// vpc-uf6hwiei8u5uil3bfahc1

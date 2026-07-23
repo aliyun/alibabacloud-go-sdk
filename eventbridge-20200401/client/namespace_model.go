@@ -20,7 +20,7 @@ type iNamespace interface {
 }
 
 type Namespace struct {
-	// 命名空间所属的数据目录名称
+	// The name of the data catalog to which the namespace belongs
 	//
 	// This parameter is required.
 	//
@@ -28,19 +28,19 @@ type Namespace struct {
 	//
 	// my_catalog
 	Catalog *string `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
-	// 命名空间的备注描述信息
+	// The description information of the namespace
 	//
 	// example:
 	//
 	// 测试命名空间
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// 命名空间的唯一标识名称
+	// The unique identifier name of the namespace
 	//
 	// example:
 	//
 	// my_namespace
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 命名空间的扩展属性
+	// The extended properties of the namespace
 	//
 	// example:
 	//

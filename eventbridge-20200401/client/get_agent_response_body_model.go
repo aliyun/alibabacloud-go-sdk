@@ -22,22 +22,32 @@ type iGetAgentResponseBody interface {
 }
 
 type GetAgentResponseBody struct {
+	// The API status or POP error code. Valid values: Success: succeeded.
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned result.
+	//
 	// example:
 	//
 	// true
 	Data *Agent `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Agent with name \\"xxx\\" not found for account 1186xxx
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E0FFAB67-XXXXXX-CAD4D37448C4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returns true if the operation is successful.
+	//
 	// example:
 	//
 	// true

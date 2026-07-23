@@ -38,7 +38,7 @@ type ListApiDestinationsResponseBody struct {
 	//
 	// example:
 	//
-	// 96D7C0AB-DCE5-5E82-96B8-4725E1706BB1
+	// 96D7C0AB-DCE5-5E82-96B8-4725E170****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

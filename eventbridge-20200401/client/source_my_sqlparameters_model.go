@@ -38,19 +38,32 @@ type iSourceMySQLParameters interface {
 }
 
 type SourceMySQLParameters struct {
-	DatabaseName         *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	HostName             *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// The name of the database.
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// The hostname or IP address of the database server.
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// Indicates whether to include schema changes.
 	IncludeSchemaChanges *string `json:"IncludeSchemaChanges,omitempty" xml:"IncludeSchemaChanges,omitempty"`
-	NetworkType          *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	Password             *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	Port                 *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SecurityGroupId      *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	SnapshotMode         *string `json:"SnapshotMode,omitempty" xml:"SnapshotMode,omitempty"`
-	TableNames           *string `json:"TableNames,omitempty" xml:"TableNames,omitempty"`
-	User                 *string `json:"User,omitempty" xml:"User,omitempty"`
-	VSwitchIds           *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The network type.
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// The password for the user.
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The database server port.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The ID of the region that contains the data source.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the security group.
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The snapshot mode.
+	SnapshotMode *string `json:"SnapshotMode,omitempty" xml:"SnapshotMode,omitempty"`
+	// The names of tables to synchronize. Separate multiple table names with a comma.
+	TableNames *string `json:"TableNames,omitempty" xml:"TableNames,omitempty"`
+	// The database username.
+	User *string `json:"User,omitempty" xml:"User,omitempty"`
+	// The VSwitch IDs. Separate multiple IDs with a comma.
+	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	// The ID of the VPC.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s SourceMySQLParameters) String() string {

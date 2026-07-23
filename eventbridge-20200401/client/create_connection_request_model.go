@@ -24,9 +24,9 @@ type iCreateConnectionRequest interface {
 }
 
 type CreateConnectionRequest struct {
-	// The parameters that are configured for authentication.
+	// The authentication configuration.
 	AuthParameters *CreateConnectionRequestAuthParameters `json:"AuthParameters,omitempty" xml:"AuthParameters,omitempty" type:"Struct"`
-	// The name of the connection. The name must be 2 to 127 characters in length.
+	// The connection configuration name. Maximum length: 127 characters. Minimum length: 2 characters.
 	//
 	// This parameter is required.
 	//
@@ -34,23 +34,23 @@ type CreateConnectionRequest struct {
 	//
 	// connection-name
 	ConnectionName *string `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
-	// The description of the connection. The description can be up to 255 characters in length.
+	// The description of the connection configuration. Maximum length: 255 characters.
 	//
 	// example:
 	//
 	// demo
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The parameters that are configured for the network.
+	// The network configuration.
 	//
 	// This parameter is required.
 	NetworkParameters *CreateConnectionRequestNetworkParameters `json:"NetworkParameters,omitempty" xml:"NetworkParameters,omitempty" type:"Struct"`
-	// 数据源连接参数（JSON 对象），Type 为数据源类型时必填，Http 类型不需要。具体字段定义请调用 GetConnectionType 接口，参考返回结果中的 ParamsSchema
+	// The data source connection parameters (JSON object). This parameter is required when Type is set to a data source type. This parameter is not required for the Http type. For specific field definitions, call the GetConnectionType operation and refer to ParamsSchema in the response.
 	//
 	// example:
 	//
 	// {"HostName":"xxx.mysql.rds.aliyuncs.com","Port":"3306","User":"root","Password":"xxx","DatabaseName":"demo_db"}
 	Parameters interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// 连接类型。可选值：MySQL、PostgreSQL、Elasticsearch、Http。数据源类型连接必填，不传默认为 Http。Http 类型用于 API Destination 等 HTTP 协议目标；数据源类型用于集成广场的数据连接
+	// The connection type. Valid values: MySQL, PostgreSQL, Elasticsearch, and Http. This parameter is required for data source connections. If this parameter is not specified, the default value Http is used. The Http type is used for HTTP protocol targets such as API Destination. Data source types are used for data connections in the integration marketplace.
 	//
 	// example:
 	//
@@ -135,23 +135,23 @@ func (s *CreateConnectionRequest) Validate() error {
 }
 
 type CreateConnectionRequestAuthParameters struct {
-	// The parameters that are configured for API key authentication.
+	// The API key authentication configuration.
 	ApiKeyAuthParameters *CreateConnectionRequestAuthParametersApiKeyAuthParameters `json:"ApiKeyAuthParameters,omitempty" xml:"ApiKeyAuthParameters,omitempty" type:"Struct"`
-	// The authentication type. Valid values:
+	// The authentication type:
 	//
-	// 	- BASIC: basic authentication. Basic authentication is a simple authentication scheme built into the HTTP protocol. When you use the HTTP protocol for communications, the authentication method that the HTTP server uses to authenticate user identities on the client is defined in the protocol. The request header is in the Authorization: Basic Base64-encoded string (`Username:Password`) format. If you use this authentication method, you must configure Username and Password.
+	// - BASIC: BASIC_AUTH. This authorization method is a basic authorization method implemented by browsers in compliance with the HTTP protocol. During HTTP communication, the HTTP protocol defines a basic authentication method that allows an HTTP server to authenticate clients. Add `Authorization: Basic Base64Encoded(username:password)` in the fixed format to the request header. Username and Password are required.
 	//
-	// 	- API_KEY_AUTH: API key authentication. The request header is in the Token: Token value format. If you use this authentication method, you must configure ApiKeyName and ApiKeyValue.
+	// - API KEY: API_KEY_AUTH. Add `Token: TokenValue` in the fixed format to the request header. ApiKeyName and ApiKeyValue are required.
 	//
-	// 	- OAUTH_AUTH: OAuth authentication. OAuth2.0 is an authentication mechanism. In normal cases, a system that does not use OAuth2.0 can access the resources of the server from the client. To ensure access security, access tokens are used to authenticate users in OAuth 2.0. The client must use an access token to access protected resources. This way, OAuth 2.0 protects resources from being accessed from malicious clients and improves system security. If you use this authentication method, you must configure AuthorizationEndpoint, OAuthHttpParameters, and HttpMethod.
+	// - OAUTH: OAUTH_AUTH. OAuth 2.0 is an authorization mechanism. In a system that does not use an authorization mechanism such as OAuth 2.0, the client can directly access resources on the resource server. To ensure secure data access, an Access Token mechanism is added. The client must carry an Access Token to access protected resources. OAuth 2.0 prevents resources from being accessed by malicious clients, which improves system security. AuthorizationEndpoint, OAuthHttpParameters, and HttpMethod are required.
 	//
 	// example:
 	//
 	// BASIC_AUTH
 	AuthorizationType *string `json:"AuthorizationType,omitempty" xml:"AuthorizationType,omitempty"`
-	// The parameters that are configured for basic authentication.
+	// The basic authentication configuration.
 	BasicAuthParameters *CreateConnectionRequestAuthParametersBasicAuthParameters `json:"BasicAuthParameters,omitempty" xml:"BasicAuthParameters,omitempty" type:"Struct"`
-	// The parameters that are configured for OAuth authentication.
+	// The OAuth authentication configuration.
 	OAuthParameters *CreateConnectionRequestAuthParametersOAuthParameters `json:"OAuthParameters,omitempty" xml:"OAuthParameters,omitempty" type:"Struct"`
 }
 
@@ -219,7 +219,7 @@ func (s *CreateConnectionRequestAuthParameters) Validate() error {
 }
 
 type CreateConnectionRequestAuthParametersApiKeyAuthParameters struct {
-	// The key of the API key.
+	// The key name of the API key.
 	//
 	// example:
 	//
@@ -309,33 +309,33 @@ func (s *CreateConnectionRequestAuthParametersBasicAuthParameters) Validate() er
 }
 
 type CreateConnectionRequestAuthParametersOAuthParameters struct {
-	// The endpoint of the authorized client. The endpoint can be up to 127 characters in length.
+	// The authorization endpoint URL. Maximum length: 127 characters.
 	//
 	// example:
 	//
 	// http://localhost:8080/oauth/token
 	AuthorizationEndpoint *string `json:"AuthorizationEndpoint,omitempty" xml:"AuthorizationEndpoint,omitempty"`
-	// The parameters that are configured for the client.
+	// The client parameter configuration.
 	ClientParameters *CreateConnectionRequestAuthParametersOAuthParametersClientParameters `json:"ClientParameters,omitempty" xml:"ClientParameters,omitempty" type:"Struct"`
-	// The HTTP request method. Valid values:
+	// The HTTP method. Valid values:
 	//
-	// 	- GET
+	// - GET
 	//
-	// 	- POST
+	// - POST
 	//
-	// 	- HEAD
+	// - HEAD
 	//
-	// 	- DELETE
+	// - DELETE
 	//
-	// 	- PUT
+	// - PUT
 	//
-	// 	- PATCH
+	// - PATCH
 	//
 	// example:
 	//
 	// POST
 	HttpMethod *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
-	// The request parameters of OAuth authentication.
+	// The OAuth authentication request parameters.
 	OAuthHttpParameters *CreateConnectionRequestAuthParametersOAuthParametersOAuthHttpParameters `json:"OAuthHttpParameters,omitempty" xml:"OAuthHttpParameters,omitempty" type:"Struct"`
 }
 
@@ -404,7 +404,7 @@ type CreateConnectionRequestAuthParametersOAuthParametersClientParameters struct
 	//
 	// ClientID
 	ClientID *string `json:"ClientID,omitempty" xml:"ClientID,omitempty"`
-	// The AccessKey secret of the client.
+	// The client secret of the application.
 	//
 	// example:
 	//
@@ -443,11 +443,11 @@ func (s *CreateConnectionRequestAuthParametersOAuthParametersClientParameters) V
 }
 
 type CreateConnectionRequestAuthParametersOAuthParametersOAuthHttpParameters struct {
-	// The parameters that are configured for the request body.
+	// The list of body request parameter configurations.
 	BodyParameters []*CreateConnectionRequestAuthParametersOAuthParametersOAuthHttpParametersBodyParameters `json:"BodyParameters,omitempty" xml:"BodyParameters,omitempty" type:"Repeated"`
-	// The parameters that are configured for the request header.
+	// The list of header parameter configurations.
 	HeaderParameters []*CreateConnectionRequestAuthParametersOAuthParametersOAuthHttpParametersHeaderParameters `json:"HeaderParameters,omitempty" xml:"HeaderParameters,omitempty" type:"Repeated"`
-	// The parameters that are configured for the request path.
+	// The structure of the URI of the request path parameters.
 	QueryStringParameters []*CreateConnectionRequestAuthParametersOAuthParametersOAuthHttpParametersQueryStringParameters `json:"QueryStringParameters,omitempty" xml:"QueryStringParameters,omitempty" type:"Repeated"`
 }
 
@@ -518,19 +518,19 @@ func (s *CreateConnectionRequestAuthParametersOAuthParametersOAuthHttpParameters
 }
 
 type CreateConnectionRequestAuthParametersOAuthParametersOAuthHttpParametersBodyParameters struct {
-	// Specifies whether to enable authentication.
+	// Specifies whether the value is a secret.
 	//
 	// example:
 	//
 	// false
 	IsValueSecret *string `json:"IsValueSecret,omitempty" xml:"IsValueSecret,omitempty"`
-	// The key of the request body.
+	// The key of the body request parameter.
 	//
 	// example:
 	//
 	// keyDemo
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the request body.
+	// The value of the body request parameter.
 	//
 	// example:
 	//
@@ -578,19 +578,19 @@ func (s *CreateConnectionRequestAuthParametersOAuthParametersOAuthHttpParameters
 }
 
 type CreateConnectionRequestAuthParametersOAuthParametersOAuthHttpParametersHeaderParameters struct {
-	// Specifies whether to enable authentication.
+	// Specifies whether the value is a secret.
 	//
 	// example:
 	//
 	// false
 	IsValueSecret *string `json:"IsValueSecret,omitempty" xml:"IsValueSecret,omitempty"`
-	// The key of the request header.
+	// The key of the header parameter.
 	//
 	// example:
 	//
 	// keyDemo
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the request header.
+	// The value of the header parameter.
 	//
 	// example:
 	//
@@ -638,19 +638,19 @@ func (s *CreateConnectionRequestAuthParametersOAuthParametersOAuthHttpParameters
 }
 
 type CreateConnectionRequestAuthParametersOAuthParametersOAuthHttpParametersQueryStringParameters struct {
-	// Specifies whether to enable authentication.
+	// Specifies whether the value is a secret.
 	//
 	// example:
 	//
 	// false
 	IsValueSecret *string `json:"IsValueSecret,omitempty" xml:"IsValueSecret,omitempty"`
-	// The key of the request path.
+	// The key of the URI of the request path parameter.
 	//
 	// example:
 	//
 	// keyDemo
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the request path.
+	// The value of the URI of the request path parameter.
 	//
 	// example:
 	//
@@ -698,11 +698,11 @@ func (s *CreateConnectionRequestAuthParametersOAuthParametersOAuthHttpParameters
 }
 
 type CreateConnectionRequestNetworkParameters struct {
-	// 	- PublicNetwork: the Internet.
+	// - Public network: PublicNetwork
 	//
-	// 	- PrivateNetwork: virtual private cloud (VPC).
+	// - Virtual private cloud (VPC): PrivateNetwork
 	//
-	// >  If you set this parameter to PrivateNetwork, you must also configure VpcId, VswitchId, and SecurityGroupId.
+	// 	Notice: If you select PrivateNetwork, VpcId, VswitcheId, and SecurityGroupId are required.
 	//
 	// This parameter is required.
 	//
@@ -716,7 +716,7 @@ type CreateConnectionRequestNetworkParameters struct {
 	//
 	// eb-167adad548759-security_grop/sg-bp1addad26peuh9qh9****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The VPC ID.
+	// The ID of the VPC.
 	//
 	// example:
 	//
