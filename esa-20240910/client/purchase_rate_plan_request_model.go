@@ -21,6 +21,8 @@ type iPurchaseRatePlanRequest interface {
 	GetChargeType() *string
 	SetCoverage(v string) *PurchaseRatePlanRequest
 	GetCoverage() *string
+	SetOveragePolicy(v string) *PurchaseRatePlanRequest
+	GetOveragePolicy() *string
 	SetPeriod(v int32) *PurchaseRatePlanRequest
 	GetPeriod() *int32
 	SetPlanCode(v string) *PurchaseRatePlanRequest
@@ -40,9 +42,7 @@ type PurchaseRatePlanRequest struct {
 	//
 	// 1
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// Specifies whether to enable automatic payment.
-	//
-	// Set this parameter to true when you directly call this operation.
+	// Specifies whether to enable automatic payment. Set this parameter to true when you directly call this operation.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type PurchaseRatePlanRequest struct {
 	//
 	// - true: Auto-renewal is enabled.
 	//
-	// - false: Auto-renewal is disabled.
+	// - false: Auto-renewal is not enabled.
 	//
 	// example:
 	//
@@ -87,10 +87,9 @@ type PurchaseRatePlanRequest struct {
 	// example:
 	//
 	// domestic
-	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
-	// The purchase period, in months.
-	//
-	// This parameter is required when you directly call this operation.
+	Coverage      *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
+	OveragePolicy *string `json:"OveragePolicy,omitempty" xml:"OveragePolicy,omitempty"`
+	// The purchase period, in months. This parameter is required when you directly call this operation.
 	//
 	// example:
 	//
@@ -98,7 +97,7 @@ type PurchaseRatePlanRequest struct {
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The plan code.
 	//
-	// China site
+	// Chinese site
 	//
 	// - Free Edition: entranceplan
 	//
@@ -106,7 +105,7 @@ type PurchaseRatePlanRequest struct {
 	//
 	// - Standard: standardplan
 	//
-	// - Premium: advancedplan
+	// - Advanced: advancedplan
 	//
 	// International site
 	//
@@ -114,7 +113,7 @@ type PurchaseRatePlanRequest struct {
 	//
 	// - Pro: standardplan
 	//
-	// - Premium: advancedpla.
+	// - Premium: advancedpla
 	//
 	// example:
 	//
@@ -122,7 +121,7 @@ type PurchaseRatePlanRequest struct {
 	PlanCode *string `json:"PlanCode,omitempty" xml:"PlanCode,omitempty"`
 	// The plan name.
 	//
-	// China site
+	// Chinese site
 	//
 	// - Free Edition: entranceplan
 	//
@@ -130,7 +129,7 @@ type PurchaseRatePlanRequest struct {
 	//
 	// - Standard: medium
 	//
-	// - Premium: high
+	// - Advanced: high
 	//
 	// International site
 	//
@@ -140,7 +139,7 @@ type PurchaseRatePlanRequest struct {
 	//
 	// - Premium: vipplan_intl
 	//
-	// > Note: For Enterprise Edition plans, the plan name is provided after backend configuration.
+	// Note: For Enterprise Edition plans, the plan name is provided after backend configuration.
 	//
 	// example:
 	//
@@ -196,6 +195,10 @@ func (s *PurchaseRatePlanRequest) GetCoverage() *string {
 	return s.Coverage
 }
 
+func (s *PurchaseRatePlanRequest) GetOveragePolicy() *string {
+	return s.OveragePolicy
+}
+
 func (s *PurchaseRatePlanRequest) GetPeriod() *int32 {
 	return s.Period
 }
@@ -243,6 +246,11 @@ func (s *PurchaseRatePlanRequest) SetChargeType(v string) *PurchaseRatePlanReque
 
 func (s *PurchaseRatePlanRequest) SetCoverage(v string) *PurchaseRatePlanRequest {
 	s.Coverage = &v
+	return s
+}
+
+func (s *PurchaseRatePlanRequest) SetOveragePolicy(v string) *PurchaseRatePlanRequest {
+	s.OveragePolicy = &v
 	return s
 }
 

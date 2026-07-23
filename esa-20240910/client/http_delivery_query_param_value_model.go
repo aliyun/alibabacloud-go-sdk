@@ -14,7 +14,6 @@ type iHttpDeliveryQueryParamValue interface {
 }
 
 type HttpDeliveryQueryParamValue struct {
-	// The static variable.
 	StaticValue *string `json:"StaticValue,omitempty" xml:"StaticValue,omitempty"`
 }
 

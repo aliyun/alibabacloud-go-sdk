@@ -14,7 +14,7 @@ type iDeleteUserDeliveryTaskRequest interface {
 }
 
 type DeleteUserDeliveryTaskRequest struct {
-	// The name of the delivery task.
+	// The task name.
 	//
 	// This parameter is required.
 	//

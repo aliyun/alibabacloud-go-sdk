@@ -40,13 +40,13 @@ type iCreateUserDeliveryTaskShrinkRequest interface {
 type CreateUserDeliveryTaskShrinkRequest struct {
 	// The real-time log type. Valid values:
 	//
-	// - **dcdn_log_access_l1*	- (default): access log.
+	// - **dcdn_log_access_l1 (default)**: access logs.
 	//
-	// - **dcdn_log_er**: edge function log.
+	// - **dcdn_log_er**: edge function logs.
 	//
-	// - **dcdn_log_waf**: WAF log.
+	// - **dcdn_log_waf**: security protection logs.
 	//
-	// - **dcdn_log_ipa**: Layer-4 acceleration log.
+	// - **dcdn_log_ipa**: Layer 4 acceleration logs.
 	//
 	// This parameter is required.
 	//
@@ -64,19 +64,19 @@ type CreateUserDeliveryTaskShrinkRequest struct {
 	//
 	// cn
 	DataCenter *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
-	// The log delivery destination. Valid values:
+	// The delivery type. Valid values:
 	//
-	// - **sls**: Log Service (SLS).
+	// - **sls**: Alibaba Cloud Simple Log Service.
 	//
-	// - **http**: an HTTP service.
+	// - **http**: HTTP service.
 	//
-	// - **aws3**: Amazon S3.
+	// - **aws3**: Amazon S3 service.
 	//
-	// - **oss**: Object Storage Service (OSS).
+	// - **oss**: Alibaba Cloud Object Storage Service.
 	//
-	// - **kafka**: Kafka.
+	// - **kafka**: Kafka service.
 	//
-	// - **aws3cmpt**: an S3-compatible service.
+	// - **aws3cmpt**: Amazon S3-compatible service.
 	//
 	// This parameter is required.
 	//
@@ -85,13 +85,13 @@ type CreateUserDeliveryTaskShrinkRequest struct {
 	// sls
 	DeliveryType *string `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
 	Details      *string `json:"Details,omitempty" xml:"Details,omitempty"`
-	// The log discard rate. Defaults to 0.
+	// The discard rate. Default value: 0.
 	//
 	// example:
 	//
 	// 0
 	DiscardRate *float32 `json:"DiscardRate,omitempty" xml:"DiscardRate,omitempty"`
-	// The fields to be delivered. Separate multiple fields with a comma.
+	// The fields to be selected, separated by commas (,).
 	//
 	// This parameter is required.
 	//
@@ -100,15 +100,15 @@ type CreateUserDeliveryTaskShrinkRequest struct {
 	// user_agent,ip_address,ip_port
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
 	FilterVer *string `json:"FilterVer,omitempty" xml:"FilterVer,omitempty"`
-	// Configuration for delivering logs to an HTTP or HTTPS endpoint.
+	// The HTTP delivery configuration parameters.
 	HttpDeliveryShrink *string `json:"HttpDelivery,omitempty" xml:"HttpDelivery,omitempty"`
-	// Configuration for delivering logs to Kafka.
+	// The Kafka delivery configuration parameters.
 	KafkaDeliveryShrink *string `json:"KafkaDelivery,omitempty" xml:"KafkaDelivery,omitempty"`
-	// Configuration for delivering logs to Object Storage Service (OSS).
+	// The OSS delivery configuration parameters.
 	OssDeliveryShrink *string `json:"OssDelivery,omitempty" xml:"OssDelivery,omitempty"`
-	// Configuration for delivering logs to Amazon S3 or an S3-compatible service.
+	// The S3 or S3-compatible delivery configuration parameters.
 	S3DeliveryShrink *string `json:"S3Delivery,omitempty" xml:"S3Delivery,omitempty"`
-	// Configuration for delivering logs to Log Service (SLS).
+	// The SLS delivery configuration.
 	SlsDeliveryShrink *string `json:"SlsDelivery,omitempty" xml:"SlsDelivery,omitempty"`
 	// The task name.
 	//

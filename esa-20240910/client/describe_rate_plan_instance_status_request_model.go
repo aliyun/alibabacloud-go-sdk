@@ -11,15 +11,18 @@ type iDescribeRatePlanInstanceStatusRequest interface {
 	GoString() string
 	SetInstanceId(v string) *DescribeRatePlanInstanceStatusRequest
 	GetInstanceId() *string
+	SetResourceOwner(v int64) *DescribeRatePlanInstanceStatusRequest
+	GetResourceOwner() *int64
 }
 
 type DescribeRatePlanInstanceStatusRequest struct {
-	// The instance ID, which can be obtained by calling the [ListUserRatePlanInstances](~~ListUserRatePlanInstances~~) operation.
+	// The instance ID. You can obtain the ID by calling the [ListUserRatePlanInstances](~~ListUserRatePlanInstances~~) operation.
 	//
 	// example:
 	//
 	// xcdn-91fknmb80f0g***
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ResourceOwner *int64  `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
 }
 
 func (s DescribeRatePlanInstanceStatusRequest) String() string {
@@ -34,8 +37,17 @@ func (s *DescribeRatePlanInstanceStatusRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *DescribeRatePlanInstanceStatusRequest) GetResourceOwner() *int64 {
+	return s.ResourceOwner
+}
+
 func (s *DescribeRatePlanInstanceStatusRequest) SetInstanceId(v string) *DescribeRatePlanInstanceStatusRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeRatePlanInstanceStatusRequest) SetResourceOwner(v int64) *DescribeRatePlanInstanceStatusRequest {
+	s.ResourceOwner = &v
 	return s
 }
 

@@ -16,15 +16,15 @@ type iGetSiteLogDeliveryQuotaRequest interface {
 }
 
 type GetSiteLogDeliveryQuotaRequest struct {
-	// The log category. Valid values:
+	// The type of real-time logs. Valid values:
 	//
-	// 1. dcdn_log_access_l1 (default): access logs.
+	// - **dcdn_log_access_l1 (default)**: access logs.
 	//
-	// 2. dcdn_log_er: Edge Routine logs.
+	// - **dcdn_log_er**: edge function logs.
 	//
-	// 3. dcdn_log_waf: firewall logs.
+	// - **dcdn_log_waf**: security protection logs.
 	//
-	// 4. dcdn_log_ipa: TCP/UDP proxy logs.
+	// - **dcdn_log_ipa**: Layer 4 acceleration logs.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type GetSiteLogDeliveryQuotaRequest struct {
 	//
 	// dcdn_log_access_l1
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
 	//
 	// This parameter is required.
 	//

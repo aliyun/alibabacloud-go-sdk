@@ -40,13 +40,13 @@ type iCreateSiteDeliveryTaskShrinkRequest interface {
 type CreateSiteDeliveryTaskShrinkRequest struct {
 	// The business type. Valid values:
 	//
-	// - **dcdn_log_access_l1*	- (default): access log.
+	// - **dcdn_log_access_l1*	- (default): Access logs.
 	//
-	// - **dcdn_log_er**: edge function log.
+	// - **dcdn_log_er**: Edge Routine logs.
 	//
-	// - **dcdn_log_waf**: WAF protection log.
+	// - **dcdn_log_waf**: Security protection logs.
 	//
-	// - **dcdn_log_ipa**: Layer-4 acceleration log.
+	// - **dcdn_log_ipa**: Layer 4 acceleration logs.
 	//
 	// This parameter is required.
 	//
@@ -56,27 +56,27 @@ type CreateSiteDeliveryTaskShrinkRequest struct {
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
 	// The data center. Valid values:
 	//
-	// - **cn**: Chinese mainland.
+	// - **cn**: The Chinese mainland.
 	//
-	// - **oversea**: regions outside the Chinese mainland.
+	// - **oversea**: Outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn
 	DataCenter *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
-	// The type of the delivery destination. Valid values:
+	// The delivery type. Valid values:
 	//
-	// - **sls**: Log Service.
+	// - **sls**: Simple Log Service.
 	//
-	// - **http**: an HTTP service.
+	// - **http**: HTTP service.
 	//
 	// - **aws3**: Amazon S3.
 	//
-	// - **oss**: Object Storage Service.
+	// - **oss**: Object Storage Service (OSS).
 	//
-	// - **kafka**: a Kafka service.
+	// - **kafka**: Kafka service.
 	//
-	// - **aws3cmpt**: an Amazon S3-compatible service.
+	// - **aws3cmpt**: Amazon S3-compatible service.
 	//
 	// This parameter is required.
 	//
@@ -84,13 +84,13 @@ type CreateSiteDeliveryTaskShrinkRequest struct {
 	//
 	// sls
 	DeliveryType *string `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
-	// The discard rate. If you do not specify this parameter, the default value 0 is used.
+	// The discard rate. If you do not specify this parameter, the default value is 0.
 	//
 	// example:
 	//
 	// 0.0
 	DiscardRate *float32 `json:"DiscardRate,omitempty" xml:"DiscardRate,omitempty"`
-	// The log fields for delivery. Separate multiple fields with a comma (,).
+	// The log fields to be delivered, separated by commas (,).
 	//
 	// This parameter is required.
 	//
@@ -99,15 +99,15 @@ type CreateSiteDeliveryTaskShrinkRequest struct {
 	// user_agent,ip_adress,ip_port
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
 	FilterVer *string `json:"FilterVer,omitempty" xml:"FilterVer,omitempty"`
-	// The parameters for delivering logs to an HTTP server.
+	// The HTTP delivery configuration parameters.
 	HttpDeliveryShrink *string `json:"HttpDelivery,omitempty" xml:"HttpDelivery,omitempty"`
-	// The parameters for delivering logs to a Kafka cluster.
+	// The Kafka delivery configuration parameters.
 	KafkaDeliveryShrink *string `json:"KafkaDelivery,omitempty" xml:"KafkaDelivery,omitempty"`
-	// The parameters for delivering logs to Object Storage Service (OSS).
+	// The OSS delivery configuration.
 	OssDeliveryShrink *string `json:"OssDelivery,omitempty" xml:"OssDelivery,omitempty"`
-	// The parameters for delivering logs to an Amazon S3 bucket or an S3-compatible service.
+	// The configuration parameters for S3 or S3-compatible delivery.
 	S3DeliveryShrink *string `json:"S3Delivery,omitempty" xml:"S3Delivery,omitempty"`
-	// The ID of the site. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to query the site ID.
 	//
 	// This parameter is required.
 	//
@@ -115,9 +115,9 @@ type CreateSiteDeliveryTaskShrinkRequest struct {
 	//
 	// 12312312112***
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The parameters for delivering logs to Log Service.
+	// The Simple Log Service delivery configuration.
 	SlsDeliveryShrink *string `json:"SlsDelivery,omitempty" xml:"SlsDelivery,omitempty"`
-	// The task name.
+	// The name of the task.
 	//
 	// This parameter is required.
 	//

@@ -89,7 +89,7 @@ type ListPagesRequestQueryArgs struct {
 	//
 	// application/json
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// The keyword used for fuzzy matching against the name or description of custom pages.
+	// The fuzzy match string for the name or description of a custom page.
 	//
 	// example:
 	//

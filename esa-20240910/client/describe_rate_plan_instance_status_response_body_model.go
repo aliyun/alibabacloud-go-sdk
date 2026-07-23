@@ -26,19 +26,19 @@ type DescribeRatePlanInstanceStatusResponseBody struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The instance status. Valid values:
 	//
-	// 	- running: The instance is running.
+	// - running: Running.
 	//
-	// 	- renewing: The instance is being renewed.
+	// - renewing: Being renewed.
 	//
-	// 	- upgrading: The configuration of the instance is being upgraded.
+	// - upgrading: Being upgraded.
 	//
-	// 	- releasePrepaidService: The instance is released due to expiration.
+	// - releasePrepaidService: Released due to prepaid expiration.
 	//
-	// 	- creating: The instance is being created.
+	// - creating: Being created.
 	//
-	// 	- downgrading: The configuration of the instance is being downgraded.
+	// - downgrading: Being downgraded.
 	//
-	// 	- ceasePrepaidService: The instance has expired.
+	// - ceasePrepaidService: Suspended due to prepaid expiration.
 	//
 	// example:
 	//

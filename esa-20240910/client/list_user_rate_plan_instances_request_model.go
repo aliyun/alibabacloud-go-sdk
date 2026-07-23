@@ -13,6 +13,8 @@ type iListUserRatePlanInstancesRequest interface {
 	GetCheckRemainingSiteQuota() *string
 	SetInstanceId(v string) *ListUserRatePlanInstancesRequest
 	GetInstanceId() *string
+	SetIsShared(v bool) *ListUserRatePlanInstancesRequest
+	GetIsShared() *bool
 	SetPageNumber(v int32) *ListUserRatePlanInstancesRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListUserRatePlanInstancesRequest
@@ -23,6 +25,8 @@ type iListUserRatePlanInstancesRequest interface {
 	GetPlanType() *string
 	SetRemainingExpireDays(v int32) *ListUserRatePlanInstancesRequest
 	GetRemainingExpireDays() *int32
+	SetResourceOwner(v int64) *ListUserRatePlanInstancesRequest
+	GetResourceOwner() *int64
 	SetSortBy(v string) *ListUserRatePlanInstancesRequest
 	GetSortBy() *string
 	SetSortOrder(v string) *ListUserRatePlanInstancesRequest
@@ -44,25 +48,26 @@ type ListUserRatePlanInstancesRequest struct {
 	//
 	// true
 	CheckRemainingSiteQuota *string `json:"CheckRemainingSiteQuota,omitempty" xml:"CheckRemainingSiteQuota,omitempty"`
-	// The plan instance ID. You can obtain the ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The plan instance ID. You can obtain this value by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// example:
 	//
 	// sp-xcdn-96wblslz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number to return in a paged query. Default value: **1**. Valid values: **1*	- to **100000**. Settings for paging take effect only when this parameter is specified.
+	IsShared   *bool   `json:"IsShared,omitempty" xml:"IsShared,omitempty"`
+	// The page number settings for paging. Default value: **1**. Valid values: **1 to 100000**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paged query. Valid values: 1 to 500. This parameter is used for paging.
+	// The number of entries per page for paging. Valid values: 1 to 500.
 	//
 	// example:
 	//
 	// 500
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The plan name in English.
+	// The plan name (English).
 	//
 	// example:
 	//
@@ -70,9 +75,9 @@ type ListUserRatePlanInstancesRequest struct {
 	PlanNameEn *string `json:"PlanNameEn,omitempty" xml:"PlanNameEn,omitempty"`
 	// The plan type. Valid values:
 	//
-	// - normal: fixed-version plan
+	// - normal: fixed edition plan
 	//
-	// - enterprise: Enterprise Edition plan.
+	// - enterprise: enterprise edition plan
 	//
 	// example:
 	//
@@ -84,11 +89,12 @@ type ListUserRatePlanInstancesRequest struct {
 	//
 	// 30
 	RemainingExpireDays *int32 `json:"RemainingExpireDays,omitempty" xml:"RemainingExpireDays,omitempty"`
-	// The field by which to sort the results. By default, results are sorted by purchase time. Valid values:
+	ResourceOwner       *int64 `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
+	// The sort field. By default, results are sorted by purchase time. Valid values:
 	//
-	// - **CreateTime**: purchase time.
+	// - **CreateTime**: Purchase time.
 	//
-	// - **ExpireTime**: expiration time.
+	// - **ExpireTime**: Expiration time.
 	//
 	// example:
 	//
@@ -96,9 +102,9 @@ type ListUserRatePlanInstancesRequest struct {
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	// The sort order. Default value: desc. Valid values:
 	//
-	// - **asc**: ascending order.
+	// - **asc**: Ascending order.
 	//
-	// - **desc**: descending order.
+	// - **desc**: Descending order.
 	//
 	// example:
 	//
@@ -106,13 +112,13 @@ type ListUserRatePlanInstancesRequest struct {
 	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
 	// The instance status. Valid values:
 	//
-	// - **online**: The plan instance is in normal service.
+	// - **online**: Normal service status.
 	//
-	// - **offline**: The plan instance has expired but has not exceeded the grace period and is not active.
+	// - **offline**: Expired but not overdue, in an inactive state.
 	//
-	// - **disable**: The plan instance has been released.
+	// - **disable**: Released.
 	//
-	// - **overdue**: The plan instance has an overdue payment.
+	// - **overdue**: Overdue payment.
 	//
 	// if can be null:
 	// false
@@ -123,17 +129,17 @@ type ListUserRatePlanInstancesRequest struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The plan subscription type. Valid values:
 	//
-	// - entranceplan: Free Edition (Chinese mainland)
+	// - Free Edition (Chinese mainland): entranceplan
 	//
-	// - entranceplan_intl: Free Edition (International)
+	// - Free Edition (International): entranceplan_intl
 	//
-	// - basicplan: Basic Edition
+	// - Basic Edition: basicplan
 	//
-	// - standardplan: Standard Edition
+	// - Standard Edition: standardplan
 	//
-	// - advancedplan: Premium Edition
+	// - Premium Edition: advancedplan
 	//
-	// - enterpriseplan: Enterprise Edition.
+	// - Enterprise Edition: enterpriseplan
 	//
 	// example:
 	//
@@ -157,6 +163,10 @@ func (s *ListUserRatePlanInstancesRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *ListUserRatePlanInstancesRequest) GetIsShared() *bool {
+	return s.IsShared
+}
+
 func (s *ListUserRatePlanInstancesRequest) GetPageNumber() *int32 {
 	return s.PageNumber
 }
@@ -175,6 +185,10 @@ func (s *ListUserRatePlanInstancesRequest) GetPlanType() *string {
 
 func (s *ListUserRatePlanInstancesRequest) GetRemainingExpireDays() *int32 {
 	return s.RemainingExpireDays
+}
+
+func (s *ListUserRatePlanInstancesRequest) GetResourceOwner() *int64 {
+	return s.ResourceOwner
 }
 
 func (s *ListUserRatePlanInstancesRequest) GetSortBy() *string {
@@ -203,6 +217,11 @@ func (s *ListUserRatePlanInstancesRequest) SetInstanceId(v string) *ListUserRate
 	return s
 }
 
+func (s *ListUserRatePlanInstancesRequest) SetIsShared(v bool) *ListUserRatePlanInstancesRequest {
+	s.IsShared = &v
+	return s
+}
+
 func (s *ListUserRatePlanInstancesRequest) SetPageNumber(v int32) *ListUserRatePlanInstancesRequest {
 	s.PageNumber = &v
 	return s
@@ -225,6 +244,11 @@ func (s *ListUserRatePlanInstancesRequest) SetPlanType(v string) *ListUserRatePl
 
 func (s *ListUserRatePlanInstancesRequest) SetRemainingExpireDays(v int32) *ListUserRatePlanInstancesRequest {
 	s.RemainingExpireDays = &v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesRequest) SetResourceOwner(v int64) *ListUserRatePlanInstancesRequest {
+	s.ResourceOwner = &v
 	return s
 }
 

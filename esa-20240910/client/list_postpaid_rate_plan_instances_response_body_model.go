@@ -144,31 +144,31 @@ type ListPostpaidRatePlanInstancesResponseBodyInstanceInfo struct {
 	BillingMethod *string `json:"BillingMethod,omitempty" xml:"BillingMethod,omitempty"`
 	// The billing mode. Valid values:
 	//
-	//  	- POSTPAY: pay-as-you-go.
+	//  	- POSTPAY: Pay-as-you-go.
 	//
 	// example:
 	//
 	// POSTPAY
 	BillingMode *string `json:"BillingMode,omitempty" xml:"BillingMode,omitempty"`
-	// The acceleration regions to which sites can be associated with this instance. Multiple values are separated by commas (,). Valid values:
+	// The acceleration regions to which the instance can bindable sites. Multiple values are separated by commas (,). Valid values:
 	//
-	// - domestic: the Chinese mainland.
+	// - domestic: The Chinese mainland.
 	//
-	// - overseas: global (excluding the Chinese mainland).
+	// - overseas: Global (excluding the Chinese mainland).
 	//
-	// - global: global (including the Chinese mainland).
+	// - global: Global (including the Chinese mainland).
 	//
 	// example:
 	//
 	// domestic
 	Coverages *string `json:"Coverages,omitempty" xml:"Coverages,omitempty"`
-	// The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time when the instance was created. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2026-04-19T11:15:20Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The scheduled specification change time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The scheduled specification change time. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -180,13 +180,14 @@ type ListPostpaidRatePlanInstancesResponseBodyInstanceInfo struct {
 	//
 	// sp-xcdn-96wblslz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The plan name in English.
+	OwnerId    *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The English name of the plan.
 	//
 	// example:
 	//
 	// basic
 	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
-	// The plan name in Chinese.
+	// The Chinese name of the plan.
 	//
 	// example:
 	//
@@ -201,7 +202,8 @@ type ListPostpaidRatePlanInstancesResponseBodyInstanceInfo struct {
 	// example:
 	//
 	// normal
-	PlanType *string `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
+	PlanType  *string `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
+	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// The site quota.
 	//
 	// example:
@@ -250,6 +252,10 @@ func (s *ListPostpaidRatePlanInstancesResponseBodyInstanceInfo) GetInstanceId() 
 	return s.InstanceId
 }
 
+func (s *ListPostpaidRatePlanInstancesResponseBodyInstanceInfo) GetOwnerId() *string {
+	return s.OwnerId
+}
+
 func (s *ListPostpaidRatePlanInstancesResponseBodyInstanceInfo) GetPlanName() *string {
 	return s.PlanName
 }
@@ -260,6 +266,10 @@ func (s *ListPostpaidRatePlanInstancesResponseBodyInstanceInfo) GetPlanNameCn() 
 
 func (s *ListPostpaidRatePlanInstancesResponseBodyInstanceInfo) GetPlanType() *string {
 	return s.PlanType
+}
+
+func (s *ListPostpaidRatePlanInstancesResponseBodyInstanceInfo) GetShareType() *string {
+	return s.ShareType
 }
 
 func (s *ListPostpaidRatePlanInstancesResponseBodyInstanceInfo) GetSiteQuota() *string {
@@ -304,6 +314,11 @@ func (s *ListPostpaidRatePlanInstancesResponseBodyInstanceInfo) SetInstanceId(v 
 	return s
 }
 
+func (s *ListPostpaidRatePlanInstancesResponseBodyInstanceInfo) SetOwnerId(v string) *ListPostpaidRatePlanInstancesResponseBodyInstanceInfo {
+	s.OwnerId = &v
+	return s
+}
+
 func (s *ListPostpaidRatePlanInstancesResponseBodyInstanceInfo) SetPlanName(v string) *ListPostpaidRatePlanInstancesResponseBodyInstanceInfo {
 	s.PlanName = &v
 	return s
@@ -316,6 +331,11 @@ func (s *ListPostpaidRatePlanInstancesResponseBodyInstanceInfo) SetPlanNameCn(v 
 
 func (s *ListPostpaidRatePlanInstancesResponseBodyInstanceInfo) SetPlanType(v string) *ListPostpaidRatePlanInstancesResponseBodyInstanceInfo {
 	s.PlanType = &v
+	return s
+}
+
+func (s *ListPostpaidRatePlanInstancesResponseBodyInstanceInfo) SetShareType(v string) *ListPostpaidRatePlanInstancesResponseBodyInstanceInfo {
+	s.ShareType = &v
 	return s
 }
 
@@ -368,7 +388,7 @@ type ListPostpaidRatePlanInstancesResponseBodyInstanceInfoSites struct {
 	//
 	// - offline: The site is offline.
 	//
-	// - moved: The site has been replaced.
+	// - moved: The site has been superseded.
 	//
 	// example:
 	//

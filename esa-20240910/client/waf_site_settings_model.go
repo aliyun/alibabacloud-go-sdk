@@ -38,17 +38,17 @@ type WafSiteSettings struct {
 	BotManagement *WafSiteSettingsBotManagement `json:"BotManagement,omitempty" xml:"BotManagement,omitempty" type:"Struct"`
 	// The client IP identification.
 	ClientIpIdentifier *WafSiteSettingsClientIpIdentifier `json:"ClientIpIdentifier,omitempty" xml:"ClientIpIdentifier,omitempty" type:"Struct"`
-	// The configuration for disabling the security module.
+	// The disable security module configuration.
 	DisableSecurityModule *WafSiteSettingsDisableSecurityModule `json:"DisableSecurityModule,omitempty" xml:"DisableSecurityModule,omitempty" type:"Struct"`
 	// The request body inspection configuration. Controls the deep packet inspection behavior of WAF for HTTP request bodies. After this feature is enabled, content-based matching rules such as SQL injection and XSS detection take effect on request bodies.
 	//
-	// This structure can contain the following fields:
+	// This configuration can contain the following fields:
 	//
-	// - Id: The unique identifier of the built-in inspection rule.
+	// - `Id`: The unique identifier of the built-in inspection rule.
 	//
-	// - SizeLimit: The maximum size of the request body to inspect.
+	// - `SizeLimit`: The maximum size of the request body to inspect.
 	//
-	// - Action: The action to take when the request body exceeds the size limit.
+	// - `Action`: The action to take when the request body exceeds the size limit.
 	RequestBodyInspection *WafSiteSettingsRequestBodyInspection `json:"RequestBodyInspection,omitempty" xml:"RequestBodyInspection,omitempty" type:"Struct"`
 	// The security level.
 	SecurityLevel *WafSiteSettingsSecurityLevel `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty" type:"Struct"`
@@ -243,7 +243,7 @@ type WafSiteSettingsBandwidthAbuseProtection struct {
 	//
 	// 10000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The status of the bandwidth abuse protection rule.
+	// The switch status of the bandwidth abuse protection rule.
 	//
 	// example:
 	//
@@ -648,19 +648,19 @@ func (s *WafSiteSettingsDisableSecurityModule) Validate() error {
 }
 
 type WafSiteSettingsRequestBodyInspection struct {
-	// The action to take when the request body size exceeds SizeLimit.
+	// The action to take when the request body size exceeds `SizeLimit`.
 	//
-	// Common valid values (the complete list is determined by the server-side configuration):
+	// Common values (the complete enumeration is subject to the server-side configuration):
 	//
-	// - allow: allows the request without performing deep packet inspection on the portion that exceeds the limit.
+	// - `allow`: Allow directly without performing deep packet inspection on the excess portion.
 	//
-	// > The complete enumeration is determined by the WAF server-side configuration.
+	// > The complete enum is subject to the WAF server-side configuration.
 	//
 	// example:
 	//
 	// allow
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The request body inspection rule ID, which is the unique identifier of the built-in rule. When request body inspection is enabled, the server uses this ID to associate the matching logic of the built-in inspection rule. The valid values are based on the built-in rule list of WAF.
+	// The request body inspection rule ID (unique identifier of the built-in rule). When request body inspection is enabled, the server uses this ID to associate the matching logic of the built-in inspection rule. The ID value is subject to the WAF built-in rule list.
 	//
 	// example:
 	//
@@ -668,11 +668,11 @@ type WafSiteSettingsRequestBodyInspection struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The maximum size of the request body to inspect, in bytes.
 	//
-	// - If the request body is less than or equal to this value, the entire content is subject to WAF matching.
+	// - When the request body is less than or equal to this value, the entire content is subject to WAF matching.
 	//
-	// - If the request body exceeds this value, the action specified in the Action field is taken, such as inspecting only the first N bytes, rejecting the request, or allowing the request.
+	// - When the request body exceeds this value, the action specified in the `Action` field is taken (for example, inspect only the first N bytes, reject, or allow directly).
 	//
-	// > The valid value range and default value are determined by the WAF server-side configuration.
+	// > The specific value range and default value are subject to the WAF server-side configuration.
 	//
 	// example:
 	//
@@ -720,6 +720,7 @@ func (s *WafSiteSettingsRequestBodyInspection) Validate() error {
 }
 
 type WafSiteSettingsSecurityLevel struct {
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The security level value.
 	//
 	// example:
@@ -736,8 +737,17 @@ func (s WafSiteSettingsSecurityLevel) GoString() string {
 	return s.String()
 }
 
+func (s *WafSiteSettingsSecurityLevel) GetId() *int64 {
+	return s.Id
+}
+
 func (s *WafSiteSettingsSecurityLevel) GetValue() *string {
 	return s.Value
+}
+
+func (s *WafSiteSettingsSecurityLevel) SetId(v int64) *WafSiteSettingsSecurityLevel {
+	s.Id = &v
+	return s
 }
 
 func (s *WafSiteSettingsSecurityLevel) SetValue(v string) *WafSiteSettingsSecurityLevel {

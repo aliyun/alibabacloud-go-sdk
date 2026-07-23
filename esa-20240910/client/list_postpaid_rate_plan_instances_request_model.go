@@ -17,6 +17,8 @@ type iListPostpaidRatePlanInstancesRequest interface {
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListPostpaidRatePlanInstancesRequest
 	GetPageSize() *int32
+	SetResourceOwner(v int64) *ListPostpaidRatePlanInstancesRequest
+	GetResourceOwner() *int64
 	SetSortBy(v string) *ListPostpaidRatePlanInstancesRequest
 	GetSortBy() *string
 	SetSortOrder(v string) *ListPostpaidRatePlanInstancesRequest
@@ -38,7 +40,7 @@ type ListPostpaidRatePlanInstancesRequest struct {
 	//
 	// true
 	CheckRemainingSiteQuota *string `json:"CheckRemainingSiteQuota,omitempty" xml:"CheckRemainingSiteQuota,omitempty"`
-	// The instance ID. Specify this parameter to query a specific instance.
+	// The instance ID. Use this parameter to query a specific instance.
 	//
 	// example:
 	//
@@ -55,8 +57,9 @@ type ListPostpaidRatePlanInstancesRequest struct {
 	// example:
 	//
 	// 12
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The field by which to sort the results. Valid values:
+	PageSize      *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceOwner *int64 `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
+	// The field by which to sort results. Valid values:
 	//
 	// - CreateTime: sorted by creation time
 	//
@@ -118,6 +121,10 @@ func (s *ListPostpaidRatePlanInstancesRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *ListPostpaidRatePlanInstancesRequest) GetResourceOwner() *int64 {
+	return s.ResourceOwner
+}
+
 func (s *ListPostpaidRatePlanInstancesRequest) GetSortBy() *string {
 	return s.SortBy
 }
@@ -151,6 +158,11 @@ func (s *ListPostpaidRatePlanInstancesRequest) SetPageNumber(v int32) *ListPostp
 
 func (s *ListPostpaidRatePlanInstancesRequest) SetPageSize(v int32) *ListPostpaidRatePlanInstancesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListPostpaidRatePlanInstancesRequest) SetResourceOwner(v int64) *ListPostpaidRatePlanInstancesRequest {
+	s.ResourceOwner = &v
 	return s
 }
 

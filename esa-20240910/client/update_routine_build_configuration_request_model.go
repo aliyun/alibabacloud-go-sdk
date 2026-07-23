@@ -19,6 +19,8 @@ type iUpdateRoutineBuildConfigurationRequest interface {
 	GetEnvironmentVariables() map[string]*string
 	SetGitAccountId(v int64) *UpdateRoutineBuildConfigurationRequest
 	GetGitAccountId() *int64
+	SetGitPlatform(v string) *UpdateRoutineBuildConfigurationRequest
+	GetGitPlatform() *string
 	SetInstallCommand(v string) *UpdateRoutineBuildConfigurationRequest
 	GetInstallCommand() *string
 	SetIsPrivate(v bool) *UpdateRoutineBuildConfigurationRequest
@@ -44,7 +46,7 @@ type UpdateRoutineBuildConfigurationRequest struct {
 	//
 	// /root/user
 	AssetsDirectory *string `json:"AssetsDirectory,omitempty" xml:"AssetsDirectory,omitempty"`
-	// The branches that trigger a build. Set this parameter to 	- for all branches. To specify multiple branches, separate branch names with commas.
+	// The branches that trigger a build. Set this to 	- for all branches. To specify multiple branches, separate branch names with commas.
 	//
 	// example:
 	//
@@ -54,9 +56,13 @@ type UpdateRoutineBuildConfigurationRequest struct {
 	//
 	// example:
 	//
-	// npm xxx
+	// npm run build
 	BuildCommand *string `json:"BuildCommand,omitempty" xml:"BuildCommand,omitempty"`
 	// The environment variables.
+	//
+	// example:
+	//
+	// 100
 	EnvironmentVariables map[string]*string `json:"EnvironmentVariables,omitempty" xml:"EnvironmentVariables,omitempty"`
 	// The Git account ID.
 	//
@@ -64,11 +70,17 @@ type UpdateRoutineBuildConfigurationRequest struct {
 	//
 	// 4580717755793600
 	GitAccountId *int64 `json:"GitAccountId,omitempty" xml:"GitAccountId,omitempty"`
+	// The Git platform. Valid values: github, gitee, and upload.
+	//
+	// example:
+	//
+	// github
+	GitPlatform *string `json:"GitPlatform,omitempty" xml:"GitPlatform,omitempty"`
 	// The install command.
 	//
 	// example:
 	//
-	// npm install xxx
+	// npm install
 	InstallCommand *string `json:"InstallCommand,omitempty" xml:"InstallCommand,omitempty"`
 	// Specifies whether the repository is private. Valid values:
 	//
@@ -80,7 +92,7 @@ type UpdateRoutineBuildConfigurationRequest struct {
 	//
 	// false
 	IsPrivate *bool `json:"IsPrivate,omitempty" xml:"IsPrivate,omitempty"`
-	// The Node.js version. Valid values: `22.x`, `20.x`, `18.x`, `16.x`, `14.x`, and `12.x`.
+	// The Node.js version. Valid values: `22.x`, `20.x`, `18.x`, `16.x`, `14.x`, `12.x`.
 	//
 	// example:
 	//
@@ -104,7 +116,7 @@ type UpdateRoutineBuildConfigurationRequest struct {
 	//
 	// /root/admin
 	RootDirectory *string `json:"RootDirectory,omitempty" xml:"RootDirectory,omitempty"`
-	// The path of the ER entry file.
+	// The ER entry file path.
 	//
 	// example:
 	//
@@ -146,6 +158,10 @@ func (s *UpdateRoutineBuildConfigurationRequest) GetEnvironmentVariables() map[s
 
 func (s *UpdateRoutineBuildConfigurationRequest) GetGitAccountId() *int64 {
 	return s.GitAccountId
+}
+
+func (s *UpdateRoutineBuildConfigurationRequest) GetGitPlatform() *string {
+	return s.GitPlatform
 }
 
 func (s *UpdateRoutineBuildConfigurationRequest) GetInstallCommand() *string {
@@ -202,6 +218,11 @@ func (s *UpdateRoutineBuildConfigurationRequest) SetEnvironmentVariables(v map[s
 
 func (s *UpdateRoutineBuildConfigurationRequest) SetGitAccountId(v int64) *UpdateRoutineBuildConfigurationRequest {
 	s.GitAccountId = &v
+	return s
+}
+
+func (s *UpdateRoutineBuildConfigurationRequest) SetGitPlatform(v string) *UpdateRoutineBuildConfigurationRequest {
+	s.GitPlatform = &v
 	return s
 }
 

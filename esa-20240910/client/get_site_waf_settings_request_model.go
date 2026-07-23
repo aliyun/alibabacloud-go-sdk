@@ -18,19 +18,19 @@ type iGetSiteWafSettingsRequest interface {
 }
 
 type GetSiteWafSettingsRequest struct {
-	// Specifies the configuration path. If not provided, all configurations will be retrieved.
+	// The configuration path. If this parameter is not specified, all configurations are retrieved.
 	//
 	// example:
 	//
 	// bot_management
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+	// The site ID. You can obtain the site ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// example:
 	//
 	// 1
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Site version.
+	// The site version.
 	//
 	// example:
 	//

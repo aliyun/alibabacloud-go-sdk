@@ -156,7 +156,7 @@ type ListPagesResponseBodyPages struct {
 	//
 	// a custom deny page
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the custom response page. You can call the [ListPages](https://help.aliyun.com/document_detail/2850223.html) operation to obtain the ID.
+	// The ID of the custom response page. You can obtain this value by calling the [ListPages](https://help.aliyun.com/document_detail/2850223.html) operation.
 	//
 	// example:
 	//
@@ -168,13 +168,17 @@ type ListPagesResponseBodyPages struct {
 	//
 	// custom
 	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	// example:
+	//
+	// {}
+	Moderation *ListPagesResponseBodyPagesModeration `json:"Moderation,omitempty" xml:"Moderation,omitempty" type:"Struct"`
 	// The name of the custom response page.
 	//
 	// example:
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The time when the custom response page was last modified.
+	// The last modification time of the custom response page.
 	//
 	// Format: RFC 3339 / ISO 8601, UTC time zone (ending with Z).
 	//
@@ -214,6 +218,10 @@ func (s *ListPagesResponseBodyPages) GetKind() *string {
 	return s.Kind
 }
 
+func (s *ListPagesResponseBodyPages) GetModeration() *ListPagesResponseBodyPagesModeration {
+	return s.Moderation
+}
+
 func (s *ListPagesResponseBodyPages) GetName() *string {
 	return s.Name
 }
@@ -247,6 +255,11 @@ func (s *ListPagesResponseBodyPages) SetKind(v string) *ListPagesResponseBodyPag
 	return s
 }
 
+func (s *ListPagesResponseBodyPages) SetModeration(v *ListPagesResponseBodyPagesModeration) *ListPagesResponseBodyPages {
+	s.Moderation = v
+	return s
+}
+
 func (s *ListPagesResponseBodyPages) SetName(v string) *ListPagesResponseBodyPages {
 	s.Name = &v
 	return s
@@ -258,5 +271,51 @@ func (s *ListPagesResponseBodyPages) SetUpdateTime(v string) *ListPagesResponseB
 }
 
 func (s *ListPagesResponseBodyPages) Validate() error {
+	if s.Moderation != nil {
+		if err := s.Moderation.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type ListPagesResponseBodyPagesModeration struct {
+	// example:
+	//
+	// []
+	Reasons []*string `json:"Reasons,omitempty" xml:"Reasons,omitempty" type:"Repeated"`
+	// example:
+	//
+	// pending
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListPagesResponseBodyPagesModeration) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListPagesResponseBodyPagesModeration) GoString() string {
+	return s.String()
+}
+
+func (s *ListPagesResponseBodyPagesModeration) GetReasons() []*string {
+	return s.Reasons
+}
+
+func (s *ListPagesResponseBodyPagesModeration) GetStatus() *string {
+	return s.Status
+}
+
+func (s *ListPagesResponseBodyPagesModeration) SetReasons(v []*string) *ListPagesResponseBodyPagesModeration {
+	s.Reasons = v
+	return s
+}
+
+func (s *ListPagesResponseBodyPagesModeration) SetStatus(v string) *ListPagesResponseBodyPagesModeration {
+	s.Status = &v
+	return s
+}
+
+func (s *ListPagesResponseBodyPagesModeration) Validate() error {
 	return dara.Validate(s)
 }

@@ -22,21 +22,21 @@ type iCreateSiteDeliveryTaskResponseBody interface {
 type CreateSiteDeliveryTaskResponseBody struct {
 	// The data center. Valid values:
 	//
-	// - **cn**: Chinese mainland.
+	// - **cn**: The Chinese mainland.
 	//
-	// - **Overseas**: regions outside the Chinese mainland.
+	// - **oversea**: Outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn
 	DataCenter *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 9358E852-992D-5BC7-8BD7-975CA02773A8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API to obtain this ID.
+	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to query the site ID.
 	//
 	// example:
 	//

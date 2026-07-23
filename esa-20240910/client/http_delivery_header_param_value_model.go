@@ -14,7 +14,6 @@ type iHttpDeliveryHeaderParamValue interface {
 }
 
 type HttpDeliveryHeaderParamValue struct {
-	// The static variable.
 	StaticValue *string `json:"StaticValue,omitempty" xml:"StaticValue,omitempty"`
 }
 

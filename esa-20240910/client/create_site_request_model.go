@@ -17,6 +17,8 @@ type iCreateSiteRequest interface {
 	GetInstanceId() *string
 	SetResourceGroupId(v string) *CreateSiteRequest
 	GetResourceGroupId() *string
+	SetResourceOwner(v int64) *CreateSiteRequest
+	GetResourceOwner() *int64
 	SetSiteName(v string) *CreateSiteRequest
 	GetSiteName() *string
 }
@@ -48,7 +50,7 @@ type CreateSiteRequest struct {
 	//
 	// domestic
 	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
-	// The instance ID. You can obtain the instance ID by calling the [ListUserRatePlanInstances](https://help.aliyun.com/document_detail/2852398.html) operation. You must specify at least one of the instance ID and site ID. If both are specified, the instance ID takes precedence.
+	// The instance ID. You can call the [ListUserRatePlanInstances](https://help.aliyun.com/document_detail/2852398.html) operation to obtain the instance ID. You must specify at least one of the instance ID and site ID. If both are specified, the instance ID takes precedence.
 	//
 	// This parameter is required.
 	//
@@ -62,6 +64,7 @@ type CreateSiteRequest struct {
 	//
 	// rg-acfmw4znnok****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwner   *int64  `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
 	// The site name.
 	//
 	// This parameter is required.
@@ -96,6 +99,10 @@ func (s *CreateSiteRequest) GetResourceGroupId() *string {
 	return s.ResourceGroupId
 }
 
+func (s *CreateSiteRequest) GetResourceOwner() *int64 {
+	return s.ResourceOwner
+}
+
 func (s *CreateSiteRequest) GetSiteName() *string {
 	return s.SiteName
 }
@@ -117,6 +124,11 @@ func (s *CreateSiteRequest) SetInstanceId(v string) *CreateSiteRequest {
 
 func (s *CreateSiteRequest) SetResourceGroupId(v string) *CreateSiteRequest {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateSiteRequest) SetResourceOwner(v int64) *CreateSiteRequest {
+	s.ResourceOwner = &v
 	return s
 }
 

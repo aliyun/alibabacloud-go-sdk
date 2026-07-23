@@ -24,25 +24,25 @@ type CreateUserDeliveryTaskResponseBody struct {
 	//
 	// - **cn**: Chinese mainland.
 	//
-	// - **sg**: Global (excluding Chinese mainland).
+	// - **sg**: global (excluding the Chinese mainland).
 	//
 	// example:
 	//
 	// cn
 	DataCenter *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
-	// A unique identifier for the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 2CCD40B1-3F20-5FF0-8A67-E3F34B87744F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The current status of the task.
+	// The task status.
 	//
 	// example:
 	//
 	// online
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The name of the task.
+	// The task name.
 	//
 	// example:
 	//

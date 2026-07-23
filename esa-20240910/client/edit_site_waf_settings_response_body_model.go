@@ -14,7 +14,7 @@ type iEditSiteWafSettingsResponseBody interface {
 }
 
 type EditSiteWafSettingsResponseBody struct {
-  // Request ID.
+  // The request ID.
   // 
   // example:
   // 

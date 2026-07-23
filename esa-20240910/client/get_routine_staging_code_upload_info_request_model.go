@@ -22,7 +22,7 @@ type GetRoutineStagingCodeUploadInfoRequest struct {
 	//
 	// the description of code
 	CodeDescription *string `json:"CodeDescription,omitempty" xml:"CodeDescription,omitempty"`
-	// The routine name.
+	// The name of the Edge Routine.
 	//
 	// This parameter is required.
 	//

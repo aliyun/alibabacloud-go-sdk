@@ -16,7 +16,7 @@ type iDeleteSiteDeliveryTaskRequest interface {
 }
 
 type DeleteSiteDeliveryTaskRequest struct {
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID. You can obtain the site ID by calling [ListSites](https://help.aliyun.com/document_detail/2850189.html).
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteSiteDeliveryTaskRequest struct {
 	//
 	// 123456******
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The name of the delivery task.
+	// The task name.
 	//
 	// This parameter is required.
 	//
