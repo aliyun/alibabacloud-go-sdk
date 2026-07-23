@@ -24,7 +24,7 @@ type iSetDeletionProtectionRequest interface {
 type SetDeletionProtectionRequest struct {
 	// The description of deletion protection.
 	//
-	// > This parameter is available only when EnableDeletionProtection is set to true.
+	// > This parameter is valid only when EnableDeletionProtection is set to true.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type SetDeletionProtectionRequest struct {
 	//
 	// - true: enables deletion protection.
 	//
-	// - false: disables deletion protection. This is the default value.
+	// - false (default): disables deletion protection.
 	//
 	// This parameter is required.
 	//
@@ -49,9 +49,9 @@ type SetDeletionProtectionRequest struct {
 	// key-hzz65f3a68554s6ms****
 	KeyId         *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	KmsInstanceId *string `json:"KmsInstanceId,omitempty" xml:"KmsInstanceId,omitempty"`
-	// The ARN of the CMK for which you want to configure deletion protection.<br>
+	// The ARN of the CMK for which you want to set deletion protection.
 	//
-	// You can call the [DescribeKey](https://help.aliyun.com/document_detail/28952.html) operation to query the ARN of the CMK.<br><br>
+	// You can call the [DescribeKey](https://help.aliyun.com/document_detail/28952.html) operation to query the CMK ARN (Arn).
 	//
 	// example:
 	//

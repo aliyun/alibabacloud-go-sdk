@@ -63,9 +63,7 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"ap-southeast-6":        dara.String("kms.ap-southeast-6.aliyuncs.com"),
 		"ap-southeast-5":        dara.String("kms.ap-southeast-5.aliyuncs.com"),
 		"ap-southeast-3":        dara.String("kms.ap-southeast-3.aliyuncs.com"),
-		"ap-southeast-2":        dara.String("kms.ap-southeast-2.aliyuncs.com"),
 		"ap-southeast-1":        dara.String("kms.ap-southeast-1.aliyuncs.com"),
-		"ap-south-1":            dara.String("kms.ap-south-1.aliyuncs.com"),
 		"ap-northeast-2":        dara.String("kms.ap-northeast-2.aliyuncs.com"),
 		"ap-northeast-1":        dara.String("kms.ap-northeast-1.aliyuncs.com"),
 	}
@@ -4191,6 +4189,92 @@ func (client *Client) GetKmsInstanceQuotaInfos(request *GetKmsInstanceQuotaInfos
 
 // Summary:
 //
+// Retrieves the plaintext of a managed data key (DK).
+//
+// Description:
+//
+// For information about the access policy that must be granted to a RAM user or RAM role to call this operation, refer to access control.
+//
+// This operation can be called through a shared gateway. For more information, refer to Alibaba Cloud SDK.
+//
+// - Shared gateway: Access KMS through public or VPC endpoints.
+//
+// @param request - GetManagedDataKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetManagedDataKeyResponse
+func (client *Client) GetManagedDataKeyWithOptions(request *GetManagedDataKeyRequest, runtime *dara.RuntimeOptions) (_result *GetManagedDataKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DataKeyName) {
+		query["DataKeyName"] = request.DataKeyName
+	}
+
+	if !dara.IsNil(request.DataKeyVersionId) {
+		query["DataKeyVersionId"] = request.DataKeyVersionId
+	}
+
+	if !dara.IsNil(request.UseLatest) {
+		query["UseLatest"] = request.UseLatest
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetManagedDataKey"),
+		Version:     dara.String("2016-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetManagedDataKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the plaintext of a managed data key (DK).
+//
+// Description:
+//
+// For information about the access policy that must be granted to a RAM user or RAM role to call this operation, refer to access control.
+//
+// This operation can be called through a shared gateway. For more information, refer to Alibaba Cloud SDK.
+//
+// - Shared gateway: Access KMS through public or VPC endpoints.
+//
+// @param request - GetManagedDataKeyRequest
+//
+// @return GetManagedDataKeyResponse
+func (client *Client) GetManagedDataKey(request *GetManagedDataKeyRequest) (_result *GetManagedDataKeyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetManagedDataKeyResponse{}
+	_body, _err := client.GetManagedDataKeyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the parameters that are used to import key material for a customer master key (CMK).
 //
 // Description:
@@ -5316,6 +5400,92 @@ func (client *Client) ListKmsInstances(request *ListKmsInstancesRequest) (_resul
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListKmsInstancesResponse{}
 	_body, _err := client.ListKmsInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists the key versions of a specified managed data key (DK).
+//
+// Description:
+//
+// For details about the access policy required when a RAM user or RAM role invokes this operation, refer to access control.
+//
+// This operation can be invoked through the shared gateway. For more information, refer to Alibaba Cloud SDK.
+//
+// - Shared gateway: Access KMS through public or VPC endpoints.
+//
+// @param request - ListManagedDataKeyVersionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListManagedDataKeyVersionsResponse
+func (client *Client) ListManagedDataKeyVersionsWithOptions(request *ListManagedDataKeyVersionsRequest, runtime *dara.RuntimeOptions) (_result *ListManagedDataKeyVersionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DataKeyName) {
+		query["DataKeyName"] = request.DataKeyName
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListManagedDataKeyVersions"),
+		Version:     dara.String("2016-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListManagedDataKeyVersionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists the key versions of a specified managed data key (DK).
+//
+// Description:
+//
+// For details about the access policy required when a RAM user or RAM role invokes this operation, refer to access control.
+//
+// This operation can be invoked through the shared gateway. For more information, refer to Alibaba Cloud SDK.
+//
+// - Shared gateway: Access KMS through public or VPC endpoints.
+//
+// @param request - ListManagedDataKeyVersionsRequest
+//
+// @return ListManagedDataKeyVersionsResponse
+func (client *Client) ListManagedDataKeyVersions(request *ListManagedDataKeyVersionsRequest) (_result *ListManagedDataKeyVersionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListManagedDataKeyVersionsResponse{}
+	_body, _err := client.ListManagedDataKeyVersionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6484,11 +6654,11 @@ func (client *Client) ScheduleKeyDeletion(request *ScheduleKeyDeletionRequest) (
 //
 // Description:
 //
-// - For more information about the access policy required for a RAM user or RAM role to call this API operation, see [Resource Access Management](https://help.aliyun.com/document_detail/2767210.html).
+// - For details about the access policy that must be granted to a Resource Access Management (RAM) user or RAM role to invoke this operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
-// - After you enable deletion protection for a CMK, you cannot delete it. To delete the CMK, you must first disable deletion protection.
+// - After you enable deletion protection for a CMK, you cannot delete the CMK. To delete the CMK, disable deletion protection first.
 //
-// - Before you call the SetDeletionProtection operation, ensure that the CMK is not in the PendingDeletion state. You can call the [DescribeKey](https://help.aliyun.com/document_detail/28952.html) operation to query the status of the CMK.
+// - Before you invoke the SetDeletionProtection operation, make sure that the CMK is not in the PendingDeletion state. You can invoke the [DescribeKey](https://help.aliyun.com/document_detail/28952.html) operation to query the status (KeyState) of the CMK.
 //
 // @param request - SetDeletionProtectionRequest
 //
@@ -6552,11 +6722,11 @@ func (client *Client) SetDeletionProtectionWithOptions(request *SetDeletionProte
 //
 // Description:
 //
-// - For more information about the access policy required for a RAM user or RAM role to call this API operation, see [Resource Access Management](https://help.aliyun.com/document_detail/2767210.html).
+// - For details about the access policy that must be granted to a Resource Access Management (RAM) user or RAM role to invoke this operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
-// - After you enable deletion protection for a CMK, you cannot delete it. To delete the CMK, you must first disable deletion protection.
+// - After you enable deletion protection for a CMK, you cannot delete the CMK. To delete the CMK, disable deletion protection first.
 //
-// - Before you call the SetDeletionProtection operation, ensure that the CMK is not in the PendingDeletion state. You can call the [DescribeKey](https://help.aliyun.com/document_detail/28952.html) operation to query the status of the CMK.
+// - Before you invoke the SetDeletionProtection operation, make sure that the CMK is not in the PendingDeletion state. You can invoke the [DescribeKey](https://help.aliyun.com/document_detail/28952.html) operation to query the status (KeyState) of the CMK.
 //
 // @param request - SetDeletionProtectionRequest
 //
