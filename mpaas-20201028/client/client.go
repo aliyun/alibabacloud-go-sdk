@@ -8707,6 +8707,80 @@ func (client *Client) QueryMgsTestreqbodyautogen(request *QueryMgsTestreqbodyaut
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询小游戏信息(含资质)
+//
+// @param request - QueryMiniGameInfoByAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryMiniGameInfoByAppResponse
+func (client *Client) QueryMiniGameInfoByAppWithOptions(request *QueryMiniGameInfoByAppRequest, runtime *dara.RuntimeOptions) (_result *QueryMiniGameInfoByAppResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.MiniProgramCode) {
+		body["MiniProgramCode"] = request.MiniProgramCode
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryMiniGameInfoByApp"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryMiniGameInfoByAppResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询小游戏信息(含资质)
+//
+// @param request - QueryMiniGameInfoByAppRequest
+//
+// @return QueryMiniGameInfoByAppResponse
+func (client *Client) QueryMiniGameInfoByApp(request *QueryMiniGameInfoByAppRequest) (_result *QueryMiniGameInfoByAppResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryMiniGameInfoByAppResponse{}
+	_body, _err := client.QueryMiniGameInfoByAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - QueryMpsSchedulerListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
