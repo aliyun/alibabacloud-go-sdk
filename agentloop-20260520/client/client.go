@@ -841,6 +841,224 @@ func (client *Client) CreateEvaluatorSkill(name *string, request *CreateEvaluato
 
 // Summary:
 //
+// Creates an experiment plan.
+//
+// Description:
+//
+// Calls CreateExperimentPlan to create an experiment plan under a specified AgentSpace. Use this operation to define the configuration of an offline or online experiment, including the data source, optional evaluators, and experiment groups required for online experiments. After the plan is created, call CreateExperimentRun to start execution.
+//
+// @param request - CreateExperimentPlanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateExperimentPlanResponse
+func (client *Client) CreateExperimentPlanWithOptions(agentSpace *string, request *CreateExperimentPlanRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateExperimentPlanResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DatasetId) {
+		body["datasetId"] = request.DatasetId
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Evaluators) {
+		body["evaluators"] = request.Evaluators
+	}
+
+	if !dara.IsNil(request.ExperimentType) {
+		body["experimentType"] = request.ExperimentType
+	}
+
+	if !dara.IsNil(request.Experiments) {
+		body["experiments"] = request.Experiments
+	}
+
+	if !dara.IsNil(request.Input) {
+		body["input"] = request.Input
+	}
+
+	if !dara.IsNil(request.PlanName) {
+		body["planName"] = request.PlanName
+	}
+
+	if !dara.IsNil(request.QuerySql) {
+		body["querySql"] = request.QuerySql
+	}
+
+	if !dara.IsNil(request.SelectedItemIds) {
+		body["selectedItemIds"] = request.SelectedItemIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateExperimentPlan"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/experiments/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/plans"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateExperimentPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an experiment plan.
+//
+// Description:
+//
+// Calls CreateExperimentPlan to create an experiment plan under a specified AgentSpace. Use this operation to define the configuration of an offline or online experiment, including the data source, optional evaluators, and experiment groups required for online experiments. After the plan is created, call CreateExperimentRun to start execution.
+//
+// @param request - CreateExperimentPlanRequest
+//
+// @return CreateExperimentPlanResponse
+func (client *Client) CreateExperimentPlan(agentSpace *string, request *CreateExperimentPlanRequest) (_result *CreateExperimentPlanResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateExperimentPlanResponse{}
+	_body, _err := client.CreateExperimentPlanWithOptions(agentSpace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Executes an experiment.
+//
+// Description:
+//
+// Calls CreateExperimentRun to initiate an experiment execution based on an existing experiment plan. For online experiments, you typically only need to pass `experimentPlanId`. For offline experiments, you need to pass `offlineExperiments` (1 to 5 items).
+//
+// @param request - CreateExperimentRunRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateExperimentRunResponse
+func (client *Client) CreateExperimentRunWithOptions(agentSpace *string, request *CreateExperimentRunRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateExperimentRunResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CompletedAt) {
+		body["completedAt"] = request.CompletedAt
+	}
+
+	if !dara.IsNil(request.CompletedTasks) {
+		body["completedTasks"] = request.CompletedTasks
+	}
+
+	if !dara.IsNil(request.ExecutedAt) {
+		body["executedAt"] = request.ExecutedAt
+	}
+
+	if !dara.IsNil(request.ExperimentPlanId) {
+		body["experimentPlanId"] = request.ExperimentPlanId
+	}
+
+	if !dara.IsNil(request.FailedTasks) {
+		body["failedTasks"] = request.FailedTasks
+	}
+
+	if !dara.IsNil(request.OfflineExperiments) {
+		body["offlineExperiments"] = request.OfflineExperiments
+	}
+
+	if !dara.IsNil(request.RecordName) {
+		body["recordName"] = request.RecordName
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TotalTasks) {
+		body["totalTasks"] = request.TotalTasks
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateExperimentRun"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/experimentruns/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/execute"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateExperimentRunResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Executes an experiment.
+//
+// Description:
+//
+// Calls CreateExperimentRun to initiate an experiment execution based on an existing experiment plan. For online experiments, you typically only need to pass `experimentPlanId`. For offline experiments, you need to pass `offlineExperiments` (1 to 5 items).
+//
+// @param request - CreateExperimentRunRequest
+//
+// @return CreateExperimentRunResponse
+func (client *Client) CreateExperimentRun(agentSpace *string, request *CreateExperimentRunRequest) (_result *CreateExperimentRunResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateExperimentRunResponse{}
+	_body, _err := client.CreateExperimentRunWithOptions(agentSpace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a pipeline.
 //
 // @param request - CreatePipelineRequest
@@ -1430,6 +1648,142 @@ func (client *Client) DeleteEvaluatorSkill(name *string, skillName *string, requ
 	headers := make(map[string]*string)
 	_result = &DeleteEvaluatorSkillResponse{}
 	_body, _err := client.DeleteEvaluatorSkillWithOptions(name, skillName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an experiment plan.
+//
+// Description:
+//
+// Calls DeleteExperimentPlan to delete a specified experiment plan. After deletion, no new executions can be initiated based on this plan. Existing experiment records can still be queried.
+//
+// @param request - DeleteExperimentPlanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteExperimentPlanResponse
+func (client *Client) DeleteExperimentPlanWithOptions(agentSpace *string, planId *string, request *DeleteExperimentPlanRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteExperimentPlanResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteExperimentPlan"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/experiments/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/plans/" + dara.PercentEncode(dara.StringValue(planId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteExperimentPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an experiment plan.
+//
+// Description:
+//
+// Calls DeleteExperimentPlan to delete a specified experiment plan. After deletion, no new executions can be initiated based on this plan. Existing experiment records can still be queried.
+//
+// @param request - DeleteExperimentPlanRequest
+//
+// @return DeleteExperimentPlanResponse
+func (client *Client) DeleteExperimentPlan(agentSpace *string, planId *string, request *DeleteExperimentPlanRequest) (_result *DeleteExperimentPlanResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteExperimentPlanResponse{}
+	_body, _err := client.DeleteExperimentPlanWithOptions(agentSpace, planId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an experiment record.
+//
+// Description:
+//
+// Calls DeleteExperimentRun to delete a specified experiment run record. Deleting the record does not delete the experiment plan to which it belongs.
+//
+// @param request - DeleteExperimentRunRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteExperimentRunResponse
+func (client *Client) DeleteExperimentRunWithOptions(agentSpace *string, recordId *string, request *DeleteExperimentRunRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteExperimentRunResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteExperimentRun"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/experimentruns/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/records/" + dara.PercentEncode(dara.StringValue(recordId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteExperimentRunResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an experiment record.
+//
+// Description:
+//
+// Calls DeleteExperimentRun to delete a specified experiment run record. Deleting the record does not delete the experiment plan to which it belongs.
+//
+// @param request - DeleteExperimentRunRequest
+//
+// @return DeleteExperimentRunResponse
+func (client *Client) DeleteExperimentRun(agentSpace *string, recordId *string, request *DeleteExperimentRunRequest) (_result *DeleteExperimentRunResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteExperimentRunResponse{}
+	_body, _err := client.DeleteExperimentRunWithOptions(agentSpace, recordId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2154,6 +2508,142 @@ func (client *Client) GetEvaluatorSkill(name *string, skillName *string, request
 	headers := make(map[string]*string)
 	_result = &GetEvaluatorSkillResponse{}
 	_body, _err := client.GetEvaluatorSkillWithOptions(name, skillName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Query an experiment plan
+//
+// Description:
+//
+// Calls the GetExperimentPlan operation to query the complete configuration of a specified experiment plan, including experiment groups, data sources, evaluators, and timestamps.
+//
+// @param request - GetExperimentPlanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetExperimentPlanResponse
+func (client *Client) GetExperimentPlanWithOptions(agentSpace *string, planId *string, request *GetExperimentPlanRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetExperimentPlanResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetExperimentPlan"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/experiments/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/plans/" + dara.PercentEncode(dara.StringValue(planId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetExperimentPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Query an experiment plan
+//
+// Description:
+//
+// Calls the GetExperimentPlan operation to query the complete configuration of a specified experiment plan, including experiment groups, data sources, evaluators, and timestamps.
+//
+// @param request - GetExperimentPlanRequest
+//
+// @return GetExperimentPlanResponse
+func (client *Client) GetExperimentPlan(agentSpace *string, planId *string, request *GetExperimentPlanRequest) (_result *GetExperimentPlanResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetExperimentPlanResponse{}
+	_body, _err := client.GetExperimentPlanWithOptions(agentSpace, planId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of an experiment run record.
+//
+// Description:
+//
+// Calls GetExperimentRun to query the details of a specific experiment run record, including the status, progress, configuration snapshot, and associated evaluation task ID.
+//
+// @param request - GetExperimentRunRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetExperimentRunResponse
+func (client *Client) GetExperimentRunWithOptions(agentSpace *string, recordId *string, request *GetExperimentRunRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetExperimentRunResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetExperimentRun"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/experimentruns/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/records/" + dara.PercentEncode(dara.StringValue(recordId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetExperimentRunResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of an experiment run record.
+//
+// Description:
+//
+// Calls GetExperimentRun to query the details of a specific experiment run record, including the status, progress, configuration snapshot, and associated evaluation task ID.
+//
+// @param request - GetExperimentRunRequest
+//
+// @return GetExperimentRunResponse
+func (client *Client) GetExperimentRun(agentSpace *string, recordId *string, request *GetExperimentRunRequest) (_result *GetExperimentRunResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetExperimentRunResponse{}
+	_body, _err := client.GetExperimentRunWithOptions(agentSpace, recordId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2980,6 +3470,202 @@ func (client *Client) ListEvaluators(request *ListEvaluatorsRequest) (_result *L
 	headers := make(map[string]*string)
 	_result = &ListEvaluatorsResponse{}
 	_body, _err := client.ListEvaluatorsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of experiment plans.
+//
+// Description:
+//
+// Calls ListExperimentPlans to query the list of experiment plans under a specified AgentSpace for the current account. Supports fuzzy match by plan name, filtering by status, and pagination using `offset`/`limit`.
+//
+// @param request - ListExperimentPlansRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListExperimentPlansResponse
+func (client *Client) ListExperimentPlansWithOptions(agentSpace *string, request *ListExperimentPlansRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListExperimentPlansResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Limit) {
+		query["limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Offset) {
+		query["offset"] = request.Offset
+	}
+
+	if !dara.IsNil(request.PlanName) {
+		query["planName"] = request.PlanName
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListExperimentPlans"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/experiments/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/plans"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListExperimentPlansResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of experiment plans.
+//
+// Description:
+//
+// Calls ListExperimentPlans to query the list of experiment plans under a specified AgentSpace for the current account. Supports fuzzy match by plan name, filtering by status, and pagination using `offset`/`limit`.
+//
+// @param request - ListExperimentPlansRequest
+//
+// @return ListExperimentPlansResponse
+func (client *Client) ListExperimentPlans(agentSpace *string, request *ListExperimentPlansRequest) (_result *ListExperimentPlansResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListExperimentPlansResponse{}
+	_body, _err := client.ListExperimentPlansWithOptions(agentSpace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of experiment run records.
+//
+// Description:
+//
+// Calls ListExperimentRuns to query experiment run records under a specified AgentSpace for the current account. You can filter results by status, dataset, plan name, or experiment name, and use `page`/`pageSize` for pagination.
+//
+// @param request - ListExperimentRunsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListExperimentRunsResponse
+func (client *Client) ListExperimentRunsWithOptions(agentSpace *string, request *ListExperimentRunsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListExperimentRunsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DatasetId) {
+		query["datasetId"] = request.DatasetId
+	}
+
+	if !dara.IsNil(request.ExperimentName) {
+		query["experimentName"] = request.ExperimentName
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Page) {
+		query["page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.PlanName) {
+		query["planName"] = request.PlanName
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListExperimentRuns"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/experimentruns/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/records"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListExperimentRunsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of experiment run records.
+//
+// Description:
+//
+// Calls ListExperimentRuns to query experiment run records under a specified AgentSpace for the current account. You can filter results by status, dataset, plan name, or experiment name, and use `page`/`pageSize` for pagination.
+//
+// @param request - ListExperimentRunsRequest
+//
+// @return ListExperimentRunsResponse
+func (client *Client) ListExperimentRuns(agentSpace *string, request *ListExperimentRunsRequest) (_result *ListExperimentRunsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListExperimentRunsResponse{}
+	_body, _err := client.ListExperimentRunsWithOptions(agentSpace, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4188,6 +4874,220 @@ func (client *Client) UpdateEvaluatorSkill(name *string, skillName *string, requ
 	headers := make(map[string]*string)
 	_result = &UpdateEvaluatorSkillResponse{}
 	_body, _err := client.UpdateEvaluatorSkillWithOptions(name, skillName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates an experiment plan.
+//
+// Description:
+//
+// Calls UpdateExperimentPlan to update a specified experiment plan. Fields that are not passed remain unchanged. Only plans created by the current account can be updated.
+//
+// @param request - UpdateExperimentPlanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateExperimentPlanResponse
+func (client *Client) UpdateExperimentPlanWithOptions(agentSpace *string, planId *string, request *UpdateExperimentPlanRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateExperimentPlanResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DatasetId) {
+		body["datasetId"] = request.DatasetId
+	}
+
+	if !dara.IsNil(request.DatasetProject) {
+		body["datasetProject"] = request.DatasetProject
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Evaluators) {
+		body["evaluators"] = request.Evaluators
+	}
+
+	if !dara.IsNil(request.ExperimentType) {
+		body["experimentType"] = request.ExperimentType
+	}
+
+	if !dara.IsNil(request.Experiments) {
+		body["experiments"] = request.Experiments
+	}
+
+	if !dara.IsNil(request.Input) {
+		body["input"] = request.Input
+	}
+
+	if !dara.IsNil(request.PlanName) {
+		body["planName"] = request.PlanName
+	}
+
+	if !dara.IsNil(request.QuerySql) {
+		body["querySql"] = request.QuerySql
+	}
+
+	if !dara.IsNil(request.SelectedItemIds) {
+		body["selectedItemIds"] = request.SelectedItemIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateExperimentPlan"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/experiments/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/plans/" + dara.PercentEncode(dara.StringValue(planId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateExperimentPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates an experiment plan.
+//
+// Description:
+//
+// Calls UpdateExperimentPlan to update a specified experiment plan. Fields that are not passed remain unchanged. Only plans created by the current account can be updated.
+//
+// @param request - UpdateExperimentPlanRequest
+//
+// @return UpdateExperimentPlanResponse
+func (client *Client) UpdateExperimentPlan(agentSpace *string, planId *string, request *UpdateExperimentPlanRequest) (_result *UpdateExperimentPlanResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateExperimentPlanResponse{}
+	_body, _err := client.UpdateExperimentPlanWithOptions(agentSpace, planId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates an experiment run.
+//
+// Description:
+//
+// Calls UpdateExperimentRun to update the name, status, and task counts of an experiment record. Fields that are not specified remain unchanged. Typical sequence for offline experiments: running → progress writeback → completed.
+//
+// @param request - UpdateExperimentRunRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateExperimentRunResponse
+func (client *Client) UpdateExperimentRunWithOptions(agentSpace *string, recordId *string, request *UpdateExperimentRunRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateExperimentRunResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CompletedAt) {
+		body["completedAt"] = request.CompletedAt
+	}
+
+	if !dara.IsNil(request.CompletedTasks) {
+		body["completedTasks"] = request.CompletedTasks
+	}
+
+	if !dara.IsNil(request.ExecutedAt) {
+		body["executedAt"] = request.ExecutedAt
+	}
+
+	if !dara.IsNil(request.FailedTasks) {
+		body["failedTasks"] = request.FailedTasks
+	}
+
+	if !dara.IsNil(request.RecordName) {
+		body["recordName"] = request.RecordName
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TotalTasks) {
+		body["totalTasks"] = request.TotalTasks
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateExperimentRun"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/experimentruns/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/records/" + dara.PercentEncode(dara.StringValue(recordId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateExperimentRunResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates an experiment run.
+//
+// Description:
+//
+// Calls UpdateExperimentRun to update the name, status, and task counts of an experiment record. Fields that are not specified remain unchanged. Typical sequence for offline experiments: running → progress writeback → completed.
+//
+// @param request - UpdateExperimentRunRequest
+//
+// @return UpdateExperimentRunResponse
+func (client *Client) UpdateExperimentRun(agentSpace *string, recordId *string, request *UpdateExperimentRunRequest) (_result *UpdateExperimentRunResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateExperimentRunResponse{}
+	_body, _err := client.UpdateExperimentRunWithOptions(agentSpace, recordId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
