@@ -28,7 +28,7 @@ type StartDataAgentAccuracyTestTaskRequest struct {
 	//
 	// at-106n4rg17gv9fxxxxxxxxxx
 	AccuracyTestInsId *string `json:"AccuracyTestInsId,omitempty" xml:"AccuracyTestInsId,omitempty"`
-	// The accuracy test sample.
+	// The accuracy test sample file.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type StartDataAgentAccuracyTestTaskRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the workspace.
+	// The workspace ID.
 	//
 	// example:
 	//

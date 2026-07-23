@@ -22,7 +22,7 @@ type iFileUploadCallbackResponseBody interface {
 }
 
 type FileUploadCallbackResponseBody struct {
-	// The returned struct.
+	// The response struct.
 	Data *FileUploadCallbackResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
@@ -30,19 +30,19 @@ type FileUploadCallbackResponseBody struct {
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned when the call fails.
+	// The error message returned if the call failed.
 	//
 	// example:
 	//
 	// Specified parameter Tid is not valid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// 841BC14F-8E21-56B0-A7D6-593C5841AC84
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. The following values are returned:
+	// Indicates whether the request was successful. Valid values:
 	//
 	// - **true**: The request was successful.
 	//

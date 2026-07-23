@@ -129,12 +129,14 @@ type UpdateDataAgentAccuracyTestResponseBodyData struct {
 	//
 	// cu0cs*******mf
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// The data source. We recommend that you configure this in the custom agent.
+	// The data source. We recommend that you configure this parameter in a custom agent.
 	//
 	// example:
 	//
 	// [{\\"DataSourceType\\":\\"database\\",\\"RegionId\\":\\"cn-hangzhou\\",\\"DmsInstanceId\\":\\"27xxxxx\\",\\"DmsDatabaseId\\":\\"752xxxxx\\",\\"Database\\":\\"employees\\",\\"Tables\\":[\\"employees\\",\\"salaries\\",\\"departments\\"]}]
-	Dataset *string `json:"Dataset,omitempty" xml:"Dataset,omitempty"`
+	Dataset    *string `json:"Dataset,omitempty" xml:"Dataset,omitempty"`
+	Datasource *string `json:"Datasource,omitempty" xml:"Datasource,omitempty"`
+	Desc       *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
 	// The accuracy evaluation criteria. An empty value indicates the default criteria.
 	//
 	// example:
@@ -146,13 +148,16 @@ type UpdateDataAgentAccuracyTestResponseBodyData struct {
 	// example:
 	//
 	// f-8*******01m
-	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	FileId        *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	MaxConcurrent *int32  `json:"MaxConcurrent,omitempty" xml:"MaxConcurrent,omitempty"`
 	// The analysis mode.
 	//
 	// example:
 	//
 	// 0
-	Mode *int32 `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	Mode       *int32  `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NeedDelete *bool   `json:"NeedDelete,omitempty" xml:"NeedDelete,omitempty"`
 	// The workspace ID.
 	//
 	// example:
@@ -181,6 +186,14 @@ func (s *UpdateDataAgentAccuracyTestResponseBodyData) GetDataset() *string {
 	return s.Dataset
 }
 
+func (s *UpdateDataAgentAccuracyTestResponseBodyData) GetDatasource() *string {
+	return s.Datasource
+}
+
+func (s *UpdateDataAgentAccuracyTestResponseBodyData) GetDesc() *string {
+	return s.Desc
+}
+
 func (s *UpdateDataAgentAccuracyTestResponseBodyData) GetEvaluationPrompt() *string {
 	return s.EvaluationPrompt
 }
@@ -189,8 +202,20 @@ func (s *UpdateDataAgentAccuracyTestResponseBodyData) GetFileId() *string {
 	return s.FileId
 }
 
+func (s *UpdateDataAgentAccuracyTestResponseBodyData) GetMaxConcurrent() *int32 {
+	return s.MaxConcurrent
+}
+
 func (s *UpdateDataAgentAccuracyTestResponseBodyData) GetMode() *int32 {
 	return s.Mode
+}
+
+func (s *UpdateDataAgentAccuracyTestResponseBodyData) GetName() *string {
+	return s.Name
+}
+
+func (s *UpdateDataAgentAccuracyTestResponseBodyData) GetNeedDelete() *bool {
+	return s.NeedDelete
 }
 
 func (s *UpdateDataAgentAccuracyTestResponseBodyData) GetWorkspaceId() *string {
@@ -212,6 +237,16 @@ func (s *UpdateDataAgentAccuracyTestResponseBodyData) SetDataset(v string) *Upda
 	return s
 }
 
+func (s *UpdateDataAgentAccuracyTestResponseBodyData) SetDatasource(v string) *UpdateDataAgentAccuracyTestResponseBodyData {
+	s.Datasource = &v
+	return s
+}
+
+func (s *UpdateDataAgentAccuracyTestResponseBodyData) SetDesc(v string) *UpdateDataAgentAccuracyTestResponseBodyData {
+	s.Desc = &v
+	return s
+}
+
 func (s *UpdateDataAgentAccuracyTestResponseBodyData) SetEvaluationPrompt(v string) *UpdateDataAgentAccuracyTestResponseBodyData {
 	s.EvaluationPrompt = &v
 	return s
@@ -222,8 +257,23 @@ func (s *UpdateDataAgentAccuracyTestResponseBodyData) SetFileId(v string) *Updat
 	return s
 }
 
+func (s *UpdateDataAgentAccuracyTestResponseBodyData) SetMaxConcurrent(v int32) *UpdateDataAgentAccuracyTestResponseBodyData {
+	s.MaxConcurrent = &v
+	return s
+}
+
 func (s *UpdateDataAgentAccuracyTestResponseBodyData) SetMode(v int32) *UpdateDataAgentAccuracyTestResponseBodyData {
 	s.Mode = &v
+	return s
+}
+
+func (s *UpdateDataAgentAccuracyTestResponseBodyData) SetName(v string) *UpdateDataAgentAccuracyTestResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateDataAgentAccuracyTestResponseBodyData) SetNeedDelete(v bool) *UpdateDataAgentAccuracyTestResponseBodyData {
+	s.NeedDelete = &v
 	return s
 }
 

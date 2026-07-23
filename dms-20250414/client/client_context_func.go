@@ -659,6 +659,10 @@ func (client *Client) CreateDataAgentAccuracyTestWithContext(ctx context.Context
 		query["Dataset"] = request.Dataset
 	}
 
+	if !dara.IsNil(request.Datasource) {
+		query["Datasource"] = request.Datasource
+	}
+
 	if !dara.IsNil(request.Desc) {
 		query["Desc"] = request.Desc
 	}
@@ -854,7 +858,7 @@ func (client *Client) CreateDataAgentSessionWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Creates a DataAgent collaborative workspace.
+// Creates a DataAgent workspace.
 //
 // @param request - CreateDataAgentWorkspaceRequest
 //
@@ -1290,6 +1294,50 @@ func (client *Client) DeleteCustomAgentWithContext(ctx context.Context, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteCustomAgentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Releases a DataAgent seat.
+//
+// @param request - DeleteDataAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDataAgentResponse
+func (client *Client) DeleteDataAgentWithContext(ctx context.Context, request *DeleteDataAgentRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DMSUnit) {
+		query["DMSUnit"] = request.DMSUnit
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDataAgent"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDataAgentResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1976,6 +2024,62 @@ func (client *Client) DescribeCustomAgentWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// Queries DataAgent metrics.
+//
+// @param request - DescribeDataAgentMetricsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDataAgentMetricsResponse
+func (client *Client) DescribeDataAgentMetricsWithContext(ctx context.Context, request *DescribeDataAgentMetricsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDataAgentMetricsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.MetricNames) {
+		query["MetricNames"] = request.MetricNames
+	}
+
+	if !dara.IsNil(request.MetricType) {
+		query["MetricType"] = request.MetricType
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDataAgentMetrics"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeDataAgentMetricsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the description of a DataAgent session.
 //
 // @param request - DescribeDataAgentSessionRequest
@@ -2076,7 +2180,7 @@ func (client *Client) DescribeDocumentWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # DescribeFileUploadSignature
+// Retrieves the signature information for file uploads.
 //
 // @param request - DescribeFileUploadSignatureRequest
 //
@@ -2097,6 +2201,10 @@ func (client *Client) DescribeFileUploadSignatureWithContext(ctx context.Context
 
 	if !dara.IsNil(request.DmsUnit) {
 		query["DmsUnit"] = request.DmsUnit
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -2212,7 +2320,7 @@ func (client *Client) DescribeKnowledgeBaseUploadSignatureWithContext(ctx contex
 
 // Summary:
 //
-// # FileUploadCallback
+// Calls back after a file is uploaded.
 //
 // @param request - FileUploadCallbackRequest
 //
@@ -2251,6 +2359,10 @@ func (client *Client) FileUploadCallbackWithContext(ctx context.Context, request
 		query["UploadLocation"] = request.UploadLocation
 	}
 
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2266,6 +2378,50 @@ func (client *Client) FileUploadCallbackWithContext(ctx context.Context, request
 		BodyType:    dara.String("json"),
 	}
 	_result = &FileUploadCallbackResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries agent information by install token.
+//
+// @param request - GetAgenticAgentByInstallTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgenticAgentByInstallTokenResponse
+func (client *Client) GetAgenticAgentByInstallTokenWithContext(ctx context.Context, request *GetAgenticAgentByInstallTokenRequest, runtime *dara.RuntimeOptions) (_result *GetAgenticAgentByInstallTokenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstallToken) {
+		query["InstallToken"] = request.InstallToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAgenticAgentByInstallToken"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAgenticAgentByInstallTokenResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3467,13 +3623,11 @@ func (client *Client) ListDataAgentAccuracyTestResultsWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries the running status of self-test tasks by paging.
+// Queries the running status of accuracy test nodes by using paging.
 //
 // Description:
 //
-// Queries the running status of self-test tasks by paging.
-//
-// If AccuracyTestInsId or AccuracyTestTaskId is empty, all test tasks are queried.
+// Queries the running status of self-test nodes by using paging. If AccuracyTestInsId or AccuracyTestTaskId is empty, all test nodes are queried.
 //
 // @param request - ListDataAgentAccuracyTestTasksRequest
 //
@@ -3781,7 +3935,7 @@ func (client *Client) ListDataAgentWorkspaceMemberWithContext(ctx context.Contex
 
 // Summary:
 //
-// Lists user-uploaded files in a data center, excluding databases.
+// Retrieves the list of files uploaded by users in the data center. Only file types are supported. Database types are not supported.
 //
 // @param request - ListDataCenterDatabaseRequest
 //
@@ -3814,6 +3968,10 @@ func (client *Client) ListDataCenterDatabaseWithContext(ctx context.Context, req
 
 	if !dara.IsNil(request.SearchKey) {
 		query["SearchKey"] = request.SearchKey
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -5385,13 +5543,13 @@ func (client *Client) SaveWorkspaceCodeWithContext(ctx context.Context, request 
 //
 // - `message_type` defaults to `primary`. Set it to `additional` or `cancel` when you need to append information or cancel a session.
 //
-// - The `reply_to` field indicates which Agent message this message is responding to. The default value is `0`.
+// - The `reply_to` field indicates which agent message this message is responding to. The default value is `0`.
 //
 // - When `message_type` is `additional`, the `question` field is required.
 //
 // - `quoted_message` can be used to quote the content of a previous user message.
 //
-// - The `data_source`, `dms_user`, `db_metadata`, and `session_config` fields are optional but provide more detailed context information.
+// - Fields such as `data_source`, `dms_user`, `db_metadata`, and `session_config` are optional but provide more detailed context information.
 //
 // @param tmpReq - SendChatMessageRequest
 //
@@ -5878,6 +6036,10 @@ func (client *Client) UpdateDataAgentAccuracyTestWithContext(ctx context.Context
 
 	if !dara.IsNil(request.Dataset) {
 		query["Dataset"] = request.Dataset
+	}
+
+	if !dara.IsNil(request.Datasource) {
+		query["Datasource"] = request.Datasource
 	}
 
 	if !dara.IsNil(request.Desc) {

@@ -236,8 +236,9 @@ type ListDataAgentAccuracyTestInstancesResponseBodyData struct {
 	// example:
 	//
 	// 20282*****7591
-	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The test set file ID.
+	Creator    *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	Datasource *string `json:"Datasource,omitempty" xml:"Datasource,omitempty"`
+	// The ID of the test set file.
 	//
 	// example:
 	//
@@ -261,7 +262,7 @@ type ListDataAgentAccuracyTestInstancesResponseBodyData struct {
 	//
 	// CHINESE
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The maximum number of concurrent sessions during testing.
+	// The maximum number of concurrent sessions during the test.
 	//
 	// example:
 	//
@@ -279,7 +280,7 @@ type ListDataAgentAccuracyTestInstancesResponseBodyData struct {
 	//
 	// Agent测试名称
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Specifies whether sessions are displayed after analysis. This feature is not currently supported.
+	// Specifies whether sessions are displayed after analysis. This parameter is not supported.
 	//
 	// example:
 	//
@@ -311,6 +312,10 @@ func (s *ListDataAgentAccuracyTestInstancesResponseBodyData) GetAgentId() *strin
 
 func (s *ListDataAgentAccuracyTestInstancesResponseBodyData) GetCreator() *string {
 	return s.Creator
+}
+
+func (s *ListDataAgentAccuracyTestInstancesResponseBodyData) GetDatasource() *string {
+	return s.Datasource
 }
 
 func (s *ListDataAgentAccuracyTestInstancesResponseBodyData) GetFileId() *string {
@@ -361,6 +366,11 @@ func (s *ListDataAgentAccuracyTestInstancesResponseBodyData) SetAgentId(v string
 
 func (s *ListDataAgentAccuracyTestInstancesResponseBodyData) SetCreator(v string) *ListDataAgentAccuracyTestInstancesResponseBodyData {
 	s.Creator = &v
+	return s
+}
+
+func (s *ListDataAgentAccuracyTestInstancesResponseBodyData) SetDatasource(v string) *ListDataAgentAccuracyTestInstancesResponseBodyData {
+	s.Datasource = &v
 	return s
 }
 

@@ -15,10 +15,10 @@ type iAgenticCatalog interface {
 	GetCatalogType() *string
 	SetCatalogUuid(v string) *AgenticCatalog
 	GetCatalogUuid() *string
-	SetDataSourceType(v string) *AgenticCatalog
-	GetDataSourceType() *string
 	SetDataSourceUuid(v string) *AgenticCatalog
 	GetDataSourceUuid() *string
+	SetDbType(v string) *AgenticCatalog
+	GetDbType() *string
 	SetDescription(v string) *AgenticCatalog
 	GetDescription() *string
 	SetName(v string) *AgenticCatalog
@@ -34,28 +34,17 @@ type iAgenticCatalog interface {
 }
 
 type AgenticCatalog struct {
-	// A collection of key-value pairs that represents business attributes for the catalog, such as the data owner or department.
 	CatalogBizAttrs map[string]interface{} `json:"CatalogBizAttrs,omitempty" xml:"CatalogBizAttrs,omitempty"`
-	// The type of the catalog. For example, `INTERNAL_METADATA` or `THIRD_PARTY`.
-	CatalogType *string `json:"CatalogType,omitempty" xml:"CatalogType,omitempty"`
-	// The unique identifier (UUID) of the catalog. This parameter is system-generated and output-only.
-	CatalogUuid *string `json:"CatalogUuid,omitempty" xml:"CatalogUuid,omitempty"`
-	// The type of the data source associated with the catalog. For example, `MySQL`, `PostgreSQL`, or `OSS`.
-	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// The unique identifier (UUID) of the associated data source.
-	DataSourceUuid *string `json:"DataSourceUuid,omitempty" xml:"DataSourceUuid,omitempty"`
-	// The description of the catalog. It can be up to 2,048 characters long.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The display name of the catalog. The name can be up to 256 characters long.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// A collection of key-value pairs that represents additional technical properties for the catalog.
-	Properties map[string]interface{} `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	// The ID of the region where the catalog is located. For example, `cn-hangzhou`.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The current state of the catalog. Valid values are: `0` (Creating), `1` (Active), `2` (Deleting), and `3` (Error).
-	State *int32 `json:"State,omitempty" xml:"State,omitempty"`
-	// The storage location for the catalog\\"s metadata, such as a database name or a file path.
-	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
+	CatalogType     *string                `json:"CatalogType,omitempty" xml:"CatalogType,omitempty"`
+	CatalogUuid     *string                `json:"CatalogUuid,omitempty" xml:"CatalogUuid,omitempty"`
+	DataSourceUuid  *string                `json:"DataSourceUuid,omitempty" xml:"DataSourceUuid,omitempty"`
+	DbType          *string                `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	Description     *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name            *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+	Properties      map[string]interface{} `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	RegionId        *string                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	State           *int32                 `json:"State,omitempty" xml:"State,omitempty"`
+	StorageLocation *string                `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
 }
 
 func (s AgenticCatalog) String() string {
@@ -78,12 +67,12 @@ func (s *AgenticCatalog) GetCatalogUuid() *string {
 	return s.CatalogUuid
 }
 
-func (s *AgenticCatalog) GetDataSourceType() *string {
-	return s.DataSourceType
-}
-
 func (s *AgenticCatalog) GetDataSourceUuid() *string {
 	return s.DataSourceUuid
+}
+
+func (s *AgenticCatalog) GetDbType() *string {
+	return s.DbType
 }
 
 func (s *AgenticCatalog) GetDescription() *string {
@@ -125,13 +114,13 @@ func (s *AgenticCatalog) SetCatalogUuid(v string) *AgenticCatalog {
 	return s
 }
 
-func (s *AgenticCatalog) SetDataSourceType(v string) *AgenticCatalog {
-	s.DataSourceType = &v
+func (s *AgenticCatalog) SetDataSourceUuid(v string) *AgenticCatalog {
+	s.DataSourceUuid = &v
 	return s
 }
 
-func (s *AgenticCatalog) SetDataSourceUuid(v string) *AgenticCatalog {
-	s.DataSourceUuid = &v
+func (s *AgenticCatalog) SetDbType(v string) *AgenticCatalog {
+	s.DbType = &v
 	return s
 }
 

@@ -32,7 +32,7 @@ type ListDataAgentAccuracyTestTasksRequest struct {
 	//
 	// at-106n4rg17gv9fxxxxxxxxxx
 	AccuracyTestInsId *string `json:"AccuracyTestInsId,omitempty" xml:"AccuracyTestInsId,omitempty"`
-	// The task ID used for exact filtering.
+	// Filters by the exact task ID.
 	//
 	// example:
 	//

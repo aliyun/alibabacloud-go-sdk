@@ -22,21 +22,21 @@ type iListDataCenterDatabaseResponseBody interface {
 }
 
 type ListDataCenterDatabaseResponseBody struct {
-	// The list of databases.
+	// The response struct.
 	Data []*ListDataCenterDatabaseResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error code returned if the request fails.
+	// The error code returned if the request failed.
 	//
 	// example:
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the request fails.
+	// The error message.
 	//
 	// example:
 	//
 	// Specified parameter Tid is not valid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
@@ -121,84 +121,84 @@ func (s *ListDataCenterDatabaseResponseBody) Validate() error {
 }
 
 type ListDataCenterDatabaseResponseBodyData struct {
-	// The description of the database.
+	// The database description.
 	//
 	// example:
 	//
 	// This is a sample database.
 	DatabaseDesc *string `json:"DatabaseDesc,omitempty" xml:"DatabaseDesc,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
-	// - If `ImportType` is `FILE`, this is the file name.
+	// - When ImportType is FILE, this parameter indicates the file name.
 	//
 	// example:
 	//
 	// diamonds.csv
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The ID of the database.
+	// The database ID.
 	//
 	// example:
 	//
 	// 6kv159u9vtpvl**********b8
 	DbId *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	// - If `ImportType` is `FILE`:
+	// - When ImportType is FILE:
 	//
-	//   - The file format, such as `csv`, `xlsx`, or `xls`.
+	//   - File type: dbType indicates the file format, such as csv, xlsx, or xls.
 	//
 	// example:
 	//
 	// csv
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The time the database description was last updated.
+	// The time when the database description was last updated.
 	//
 	// example:
 	//
 	// 2025-12-11T14:04:32.000+00:00
 	DescUpdateTime *string `json:"DescUpdateTime,omitempty" xml:"DescUpdateTime,omitempty"`
-	// The ID of the database in DMS.
+	// The ID of the Data Management database that hosts the instance.
 	//
-	// - This parameter is not returned if `ImportType` is `FILE`.
+	//   - This parameter is not returned when ImportType is FILE.
 	//
 	// example:
 	//
 	// 73088962
 	DmsDbId *int64 `json:"DmsDbId,omitempty" xml:"DmsDbId,omitempty"`
-	// The ID of the DMS instance that manages the database.
+	// The ID of the Data Management instance that hosts the instance.
 	//
-	// - This parameter is not returned if `ImportType` is `FILE`.
+	//   - This parameter is not returned when ImportType is FILE.
 	//
 	// example:
 	//
 	// 2740966
 	DmsInstanceId *int64  `json:"DmsInstanceId,omitempty" xml:"DmsInstanceId,omitempty"`
 	DownloadLink  *string `json:"DownloadLink,omitempty" xml:"DownloadLink,omitempty"`
-	// The time the entry was created.
+	// The time when the file was created.
 	//
 	// example:
 	//
 	// 2025-12-11T14:04:32.000+00:00
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The import type. Valid values:
+	// The import type.
 	//
-	// - FILE
+	//   - FILE
 	//
-	// - RDS
+	//   - RDS
 	//
-	// - ADB
+	//   - ADB
 	//
-	// - PolarDB
+	//   - PolarDB
 	//
-	// - Hologres
+	//   - Hologres
 	//
-	// - DMS
+	//   - DMS
 	//
 	// example:
 	//
 	// FILE
 	ImportType *string `json:"ImportType,omitempty" xml:"ImportType,omitempty"`
-	// The name of the instance.
+	// The instance name.
 	//
-	// - If `ImportType` is `FILE`, this parameter specifies the file ID in the data center.
+	// - When ImportType is FILE, this parameter indicates the file ID in the data center.
 	//
 	// example:
 	//
@@ -216,7 +216,7 @@ type ListDataCenterDatabaseResponseBodyData struct {
 	// N
 	IsInternal *string `json:"IsInternal,omitempty" xml:"IsInternal,omitempty"`
 	OssBucket  *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	// The size of the file, in bytes.
+	// The file size, in bytes.
 	//
 	// example:
 	//

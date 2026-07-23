@@ -15,6 +15,8 @@ type iOpenClawInstanceQuotaVO interface {
 	GetDeepResearchCallQuota() *string
 	SetDeepResearchCallUsed(v string) *OpenClawInstanceQuotaVO
 	GetDeepResearchCallUsed() *string
+	SetInstanceDesc(v string) *OpenClawInstanceQuotaVO
+	GetInstanceDesc() *string
 	SetInstanceGmtCreate(v string) *OpenClawInstanceQuotaVO
 	GetInstanceGmtCreate() *string
 	SetInstanceId(v string) *OpenClawInstanceQuotaVO
@@ -33,33 +35,25 @@ type iOpenClawInstanceQuotaVO interface {
 	GetSkillPlanCallQuota() *string
 	SetSkillPlanCallUsed(v string) *OpenClawInstanceQuotaVO
 	GetSkillPlanCallUsed() *string
+	SetStatus(v int32) *OpenClawInstanceQuotaVO
+	GetStatus() *int32
 }
 
 type OpenClawInstanceQuotaVO struct {
-	// The Alibaba Cloud account UID.
-	AliyunAccountUid *string `json:"AliyunAccountUid,omitempty" xml:"AliyunAccountUid,omitempty"`
-	// The total quota for deep research calls.
+	AliyunAccountUid      *string `json:"AliyunAccountUid,omitempty" xml:"AliyunAccountUid,omitempty"`
 	DeepResearchCallQuota *string `json:"DeepResearchCallQuota,omitempty" xml:"DeepResearchCallQuota,omitempty"`
-	// The number of deep research calls used.
-	DeepResearchCallUsed *string `json:"DeepResearchCallUsed,omitempty" xml:"DeepResearchCallUsed,omitempty"`
-	// The instance creation time.
-	InstanceGmtCreate *string `json:"InstanceGmtCreate,omitempty" xml:"InstanceGmtCreate,omitempty"`
-	// The instance ID.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance name.
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The timestamp of the last metering event.
-	LastMeteringTime *string `json:"LastMeteringTime,omitempty" xml:"LastMeteringTime,omitempty"`
-	// The total quota for model calls.
-	ModelCallQuota *string `json:"ModelCallQuota,omitempty" xml:"ModelCallQuota,omitempty"`
-	// The number of model calls used.
-	ModelCallUsed *string `json:"ModelCallUsed,omitempty" xml:"ModelCallUsed,omitempty"`
-	// The day of the month on which the quota refreshes.
-	RefreshDay *string `json:"RefreshDay,omitempty" xml:"RefreshDay,omitempty"`
-	// The total quota for skill plan calls.
-	SkillPlanCallQuota *string `json:"SkillPlanCallQuota,omitempty" xml:"SkillPlanCallQuota,omitempty"`
-	// The number of skill plan calls used.
-	SkillPlanCallUsed *string `json:"SkillPlanCallUsed,omitempty" xml:"SkillPlanCallUsed,omitempty"`
+	DeepResearchCallUsed  *string `json:"DeepResearchCallUsed,omitempty" xml:"DeepResearchCallUsed,omitempty"`
+	InstanceDesc          *string `json:"InstanceDesc,omitempty" xml:"InstanceDesc,omitempty"`
+	InstanceGmtCreate     *string `json:"InstanceGmtCreate,omitempty" xml:"InstanceGmtCreate,omitempty"`
+	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName          *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	LastMeteringTime      *string `json:"LastMeteringTime,omitempty" xml:"LastMeteringTime,omitempty"`
+	ModelCallQuota        *string `json:"ModelCallQuota,omitempty" xml:"ModelCallQuota,omitempty"`
+	ModelCallUsed         *string `json:"ModelCallUsed,omitempty" xml:"ModelCallUsed,omitempty"`
+	RefreshDay            *string `json:"RefreshDay,omitempty" xml:"RefreshDay,omitempty"`
+	SkillPlanCallQuota    *string `json:"SkillPlanCallQuota,omitempty" xml:"SkillPlanCallQuota,omitempty"`
+	SkillPlanCallUsed     *string `json:"SkillPlanCallUsed,omitempty" xml:"SkillPlanCallUsed,omitempty"`
+	Status                *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s OpenClawInstanceQuotaVO) String() string {
@@ -80,6 +74,10 @@ func (s *OpenClawInstanceQuotaVO) GetDeepResearchCallQuota() *string {
 
 func (s *OpenClawInstanceQuotaVO) GetDeepResearchCallUsed() *string {
 	return s.DeepResearchCallUsed
+}
+
+func (s *OpenClawInstanceQuotaVO) GetInstanceDesc() *string {
+	return s.InstanceDesc
 }
 
 func (s *OpenClawInstanceQuotaVO) GetInstanceGmtCreate() *string {
@@ -118,6 +116,10 @@ func (s *OpenClawInstanceQuotaVO) GetSkillPlanCallUsed() *string {
 	return s.SkillPlanCallUsed
 }
 
+func (s *OpenClawInstanceQuotaVO) GetStatus() *int32 {
+	return s.Status
+}
+
 func (s *OpenClawInstanceQuotaVO) SetAliyunAccountUid(v string) *OpenClawInstanceQuotaVO {
 	s.AliyunAccountUid = &v
 	return s
@@ -130,6 +132,11 @@ func (s *OpenClawInstanceQuotaVO) SetDeepResearchCallQuota(v string) *OpenClawIn
 
 func (s *OpenClawInstanceQuotaVO) SetDeepResearchCallUsed(v string) *OpenClawInstanceQuotaVO {
 	s.DeepResearchCallUsed = &v
+	return s
+}
+
+func (s *OpenClawInstanceQuotaVO) SetInstanceDesc(v string) *OpenClawInstanceQuotaVO {
+	s.InstanceDesc = &v
 	return s
 }
 
@@ -175,6 +182,11 @@ func (s *OpenClawInstanceQuotaVO) SetSkillPlanCallQuota(v string) *OpenClawInsta
 
 func (s *OpenClawInstanceQuotaVO) SetSkillPlanCallUsed(v string) *OpenClawInstanceQuotaVO {
 	s.SkillPlanCallUsed = &v
+	return s
+}
+
+func (s *OpenClawInstanceQuotaVO) SetStatus(v int32) *OpenClawInstanceQuotaVO {
+	s.Status = &v
 	return s
 }
 

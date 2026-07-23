@@ -17,6 +17,10 @@ type iDmsGatewayOrder interface {
 	GetCommodityCode() *string
 	SetExpireTime(v string) *DmsGatewayOrder
 	GetExpireTime() *string
+	SetFreeOrder(v bool) *DmsGatewayOrder
+	GetFreeOrder() *bool
+	SetGmtCreate(v string) *DmsGatewayOrder
+	GetGmtCreate() *string
 	SetInstanceId(v string) *DmsGatewayOrder
 	GetInstanceId() *string
 	SetInstanceType(v string) *DmsGatewayOrder
@@ -36,6 +40,8 @@ type DmsGatewayOrder struct {
 	ChargeType    *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	ExpireTime    *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	FreeOrder     *bool   `json:"FreeOrder,omitempty" xml:"FreeOrder,omitempty"`
+	GmtCreate     *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceType  *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	OrderId       *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
@@ -66,6 +72,14 @@ func (s *DmsGatewayOrder) GetCommodityCode() *string {
 
 func (s *DmsGatewayOrder) GetExpireTime() *string {
 	return s.ExpireTime
+}
+
+func (s *DmsGatewayOrder) GetFreeOrder() *bool {
+	return s.FreeOrder
+}
+
+func (s *DmsGatewayOrder) GetGmtCreate() *string {
+	return s.GmtCreate
 }
 
 func (s *DmsGatewayOrder) GetInstanceId() *string {
@@ -109,6 +123,16 @@ func (s *DmsGatewayOrder) SetCommodityCode(v string) *DmsGatewayOrder {
 
 func (s *DmsGatewayOrder) SetExpireTime(v string) *DmsGatewayOrder {
 	s.ExpireTime = &v
+	return s
+}
+
+func (s *DmsGatewayOrder) SetFreeOrder(v bool) *DmsGatewayOrder {
+	s.FreeOrder = &v
+	return s
+}
+
+func (s *DmsGatewayOrder) SetGmtCreate(v string) *DmsGatewayOrder {
+	s.GmtCreate = &v
 	return s
 }
 

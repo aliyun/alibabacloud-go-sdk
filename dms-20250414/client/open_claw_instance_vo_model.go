@@ -9,6 +9,8 @@ type iOpenClawInstanceVO interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAgentType(v string) *OpenClawInstanceVO
+	GetAgentType() *string
 	SetAliyunAccountUid(v string) *OpenClawInstanceVO
 	GetAliyunAccountUid() *string
 	SetAuthType(v string) *OpenClawInstanceVO
@@ -41,6 +43,10 @@ type iOpenClawInstanceVO interface {
 	GetLockTime() *string
 	SetMemorySize(v int32) *OpenClawInstanceVO
 	GetMemorySize() *int32
+	SetModelCallQuota(v int64) *OpenClawInstanceVO
+	GetModelCallQuota() *int64
+	SetModelCallUsed(v int64) *OpenClawInstanceVO
+	GetModelCallUsed() *int64
 	SetOpenclawToken(v string) *OpenClawInstanceVO
 	GetOpenclawToken() *string
 	SetOwnerUid(v string) *OpenClawInstanceVO
@@ -60,6 +66,7 @@ type iOpenClawInstanceVO interface {
 }
 
 type OpenClawInstanceVO struct {
+	AgentType         *string                      `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
 	AliyunAccountUid  *string                      `json:"AliyunAccountUid,omitempty" xml:"AliyunAccountUid,omitempty"`
 	AuthType          *string                      `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
 	BasicAuthPassword *string                      `json:"BasicAuthPassword,omitempty" xml:"BasicAuthPassword,omitempty"`
@@ -76,6 +83,8 @@ type OpenClawInstanceVO struct {
 	LastActiveTime    *string                      `json:"LastActiveTime,omitempty" xml:"LastActiveTime,omitempty"`
 	LockTime          *string                      `json:"LockTime,omitempty" xml:"LockTime,omitempty"`
 	MemorySize        *int32                       `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
+	ModelCallQuota    *int64                       `json:"ModelCallQuota,omitempty" xml:"ModelCallQuota,omitempty"`
+	ModelCallUsed     *int64                       `json:"ModelCallUsed,omitempty" xml:"ModelCallUsed,omitempty"`
 	OpenclawToken     *string                      `json:"OpenclawToken,omitempty" xml:"OpenclawToken,omitempty"`
 	OwnerUid          *string                      `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
 	PublicDomain      *string                      `json:"PublicDomain,omitempty" xml:"PublicDomain,omitempty"`
@@ -92,6 +101,10 @@ func (s OpenClawInstanceVO) String() string {
 
 func (s OpenClawInstanceVO) GoString() string {
 	return s.String()
+}
+
+func (s *OpenClawInstanceVO) GetAgentType() *string {
+	return s.AgentType
 }
 
 func (s *OpenClawInstanceVO) GetAliyunAccountUid() *string {
@@ -158,6 +171,14 @@ func (s *OpenClawInstanceVO) GetMemorySize() *int32 {
 	return s.MemorySize
 }
 
+func (s *OpenClawInstanceVO) GetModelCallQuota() *int64 {
+	return s.ModelCallQuota
+}
+
+func (s *OpenClawInstanceVO) GetModelCallUsed() *int64 {
+	return s.ModelCallUsed
+}
+
 func (s *OpenClawInstanceVO) GetOpenclawToken() *string {
 	return s.OpenclawToken
 }
@@ -188,6 +209,11 @@ func (s *OpenClawInstanceVO) GetTrialExpireTime() *string {
 
 func (s *OpenClawInstanceVO) GetVariables() *string {
 	return s.Variables
+}
+
+func (s *OpenClawInstanceVO) SetAgentType(v string) *OpenClawInstanceVO {
+	s.AgentType = &v
+	return s
 }
 
 func (s *OpenClawInstanceVO) SetAliyunAccountUid(v string) *OpenClawInstanceVO {
@@ -267,6 +293,16 @@ func (s *OpenClawInstanceVO) SetLockTime(v string) *OpenClawInstanceVO {
 
 func (s *OpenClawInstanceVO) SetMemorySize(v int32) *OpenClawInstanceVO {
 	s.MemorySize = &v
+	return s
+}
+
+func (s *OpenClawInstanceVO) SetModelCallQuota(v int64) *OpenClawInstanceVO {
+	s.ModelCallQuota = &v
+	return s
+}
+
+func (s *OpenClawInstanceVO) SetModelCallUsed(v int64) *OpenClawInstanceVO {
+	s.ModelCallUsed = &v
 	return s
 }
 

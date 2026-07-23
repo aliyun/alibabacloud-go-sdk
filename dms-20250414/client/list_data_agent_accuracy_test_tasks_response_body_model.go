@@ -206,7 +206,7 @@ func (s *ListDataAgentAccuracyTestTasksResponseBody) Validate() error {
 }
 
 type ListDataAgentAccuracyTestTasksResponseBodyData struct {
-	// The instance ID of the accuracy test to which the task belongs.
+	// The accuracy test instance ID to which the task belongs.
 	//
 	// example:
 	//

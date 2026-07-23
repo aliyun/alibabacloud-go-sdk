@@ -21,22 +21,24 @@ type iFileUploadCallbackRequest interface {
 	GetOssBucket() *string
 	SetUploadLocation(v string) *FileUploadCallbackRequest
 	GetUploadLocation() *string
+	SetWorkspaceId(v string) *FileUploadCallbackRequest
+	GetWorkspaceId() *string
 }
 
 type FileUploadCallbackRequest struct {
-	// For frontend use only.
+	// Used only by the frontend.
 	//
 	// example:
 	//
 	// TrailCenter
 	CallFrom *string `json:"CallFrom,omitempty" xml:"CallFrom,omitempty"`
-	// The current DMS unit.
+	// The current Data Management unit.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	DmsUnit *string `json:"DmsUnit,omitempty" xml:"DmsUnit,omitempty"`
-	// The file size in bytes.
+	// The file size, in bytes.
 	//
 	// example:
 	//
@@ -51,14 +53,15 @@ type FileUploadCallbackRequest struct {
 	// conversion_metrics.csv
 	Filename  *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
 	OssBucket *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	// The full path for the file upload.
+	// The full path of the uploaded file.
 	//
-	// - Format: This path is formed by appending the file name to the UploadDir value returned by the DescribeFileUploadSignature operation.
+	// - Format: The UploadDir field returned by the DescribeFileUploadSignature operation concatenated with the file name.
 	//
 	// - Example: ${UploadDir}/${Filename}
 	//
 	// This parameter is required.
 	UploadLocation *string `json:"UploadLocation,omitempty" xml:"UploadLocation,omitempty"`
+	WorkspaceId    *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s FileUploadCallbackRequest) String() string {
@@ -93,6 +96,10 @@ func (s *FileUploadCallbackRequest) GetUploadLocation() *string {
 	return s.UploadLocation
 }
 
+func (s *FileUploadCallbackRequest) GetWorkspaceId() *string {
+	return s.WorkspaceId
+}
+
 func (s *FileUploadCallbackRequest) SetCallFrom(v string) *FileUploadCallbackRequest {
 	s.CallFrom = &v
 	return s
@@ -120,6 +127,11 @@ func (s *FileUploadCallbackRequest) SetOssBucket(v string) *FileUploadCallbackRe
 
 func (s *FileUploadCallbackRequest) SetUploadLocation(v string) *FileUploadCallbackRequest {
 	s.UploadLocation = &v
+	return s
+}
+
+func (s *FileUploadCallbackRequest) SetWorkspaceId(v string) *FileUploadCallbackRequest {
+	s.WorkspaceId = &v
 	return s
 }
 

@@ -23,6 +23,8 @@ type iDataAgentBillingInstance interface {
 	GetExpireTime() *int64
 	SetFreeAgentSeats(v int32) *DataAgentBillingInstance
 	GetFreeAgentSeats() *int32
+	SetFreeLLM(v int32) *DataAgentBillingInstance
+	GetFreeLLM() *int32
 	SetGmtCreated(v int64) *DataAgentBillingInstance
 	GetGmtCreated() *int64
 	SetGmtModified(v int64) *DataAgentBillingInstance
@@ -49,6 +51,7 @@ type DataAgentBillingInstance struct {
 	CommodityCode                 *string   `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	ExpireTime                    *int64    `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	FreeAgentSeats                *int32    `json:"FreeAgentSeats,omitempty" xml:"FreeAgentSeats,omitempty"`
+	FreeLLM                       *int32    `json:"FreeLLM,omitempty" xml:"FreeLLM,omitempty"`
 	GmtCreated                    *int64    `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
 	GmtModified                   *int64    `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	IsDefault                     *bool     `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
@@ -93,6 +96,10 @@ func (s *DataAgentBillingInstance) GetExpireTime() *int64 {
 
 func (s *DataAgentBillingInstance) GetFreeAgentSeats() *int32 {
 	return s.FreeAgentSeats
+}
+
+func (s *DataAgentBillingInstance) GetFreeLLM() *int32 {
+	return s.FreeLLM
 }
 
 func (s *DataAgentBillingInstance) GetGmtCreated() *int64 {
@@ -159,6 +166,11 @@ func (s *DataAgentBillingInstance) SetExpireTime(v int64) *DataAgentBillingInsta
 
 func (s *DataAgentBillingInstance) SetFreeAgentSeats(v int32) *DataAgentBillingInstance {
 	s.FreeAgentSeats = &v
+	return s
+}
+
+func (s *DataAgentBillingInstance) SetFreeLLM(v int32) *DataAgentBillingInstance {
+	s.FreeLLM = &v
 	return s
 }
 

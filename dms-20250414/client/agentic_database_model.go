@@ -15,12 +15,12 @@ type iAgenticDatabase interface {
 	GetCatalogType() *string
 	SetCatalogUuid(v string) *AgenticDatabase
 	GetCatalogUuid() *string
-	SetDataSourceType(v string) *AgenticDatabase
-	GetDataSourceType() *string
 	SetDatabaseBizAttrs(v map[string]interface{}) *AgenticDatabase
 	GetDatabaseBizAttrs() map[string]interface{}
 	SetDatabaseUuid(v string) *AgenticDatabase
 	GetDatabaseUuid() *string
+	SetDbType(v string) *AgenticDatabase
+	GetDbType() *string
 	SetDescription(v string) *AgenticDatabase
 	GetDescription() *string
 	SetEngineMeta(v *AgenticDatabaseEngineMeta) *AgenticDatabase
@@ -48,12 +48,11 @@ type AgenticDatabase struct {
 	CatalogType *string `json:"CatalogType,omitempty" xml:"CatalogType,omitempty"`
 	// The unique identifier of the catalog.
 	CatalogUuid *string `json:"CatalogUuid,omitempty" xml:"CatalogUuid,omitempty"`
-	// The data source type, such as `MySQL` or `PostgreSQL`.
-	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
 	// The database\\"s business attributes.
 	DatabaseBizAttrs map[string]interface{} `json:"DatabaseBizAttrs,omitempty" xml:"DatabaseBizAttrs,omitempty"`
 	// The unique identifier of the database.
 	DatabaseUuid *string `json:"DatabaseUuid,omitempty" xml:"DatabaseUuid,omitempty"`
+	DbType       *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
 	// The database description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The metadata for the database engine.
@@ -94,16 +93,16 @@ func (s *AgenticDatabase) GetCatalogUuid() *string {
 	return s.CatalogUuid
 }
 
-func (s *AgenticDatabase) GetDataSourceType() *string {
-	return s.DataSourceType
-}
-
 func (s *AgenticDatabase) GetDatabaseBizAttrs() map[string]interface{} {
 	return s.DatabaseBizAttrs
 }
 
 func (s *AgenticDatabase) GetDatabaseUuid() *string {
 	return s.DatabaseUuid
+}
+
+func (s *AgenticDatabase) GetDbType() *string {
+	return s.DbType
 }
 
 func (s *AgenticDatabase) GetDescription() *string {
@@ -157,11 +156,6 @@ func (s *AgenticDatabase) SetCatalogUuid(v string) *AgenticDatabase {
 	return s
 }
 
-func (s *AgenticDatabase) SetDataSourceType(v string) *AgenticDatabase {
-	s.DataSourceType = &v
-	return s
-}
-
 func (s *AgenticDatabase) SetDatabaseBizAttrs(v map[string]interface{}) *AgenticDatabase {
 	s.DatabaseBizAttrs = v
 	return s
@@ -169,6 +163,11 @@ func (s *AgenticDatabase) SetDatabaseBizAttrs(v map[string]interface{}) *Agentic
 
 func (s *AgenticDatabase) SetDatabaseUuid(v string) *AgenticDatabase {
 	s.DatabaseUuid = &v
+	return s
+}
+
+func (s *AgenticDatabase) SetDbType(v string) *AgenticDatabase {
+	s.DbType = &v
 	return s
 }
 

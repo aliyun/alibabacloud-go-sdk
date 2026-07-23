@@ -113,7 +113,7 @@ func (s *CreateDataAgentWorkspaceResponseBody) Validate() error {
 }
 
 type CreateDataAgentWorkspaceResponseBodyData struct {
-	// The time when the workspace was created. The value is a UNIX timestamp in seconds.
+	// The creation time of the workspace. This value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -124,9 +124,14 @@ type CreateDataAgentWorkspaceResponseBodyData struct {
 	// example:
 	//
 	// 20282*****7591
-	Creator               *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	IsSessionShareEnabled *bool   `json:"IsSessionShareEnabled,omitempty" xml:"IsSessionShareEnabled,omitempty"`
-	// The time when the workspace was last modified. The value is a UNIX timestamp in seconds.
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// Indicates whether session sharing is enabled within the workspace.
+	//
+	// example:
+	//
+	// true
+	IsSessionShareEnabled *bool `json:"IsSessionShareEnabled,omitempty" xml:"IsSessionShareEnabled,omitempty"`
+	// The most recent modification time of the workspace. This value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -138,13 +143,22 @@ type CreateDataAgentWorkspaceResponseBodyData struct {
 	//
 	// owner
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	// The number of members in the workspace.
+	// The total number of members in the workspace.
 	//
 	// example:
 	//
 	// 11
-	TotalMember *int64  `json:"TotalMember,omitempty" xml:"TotalMember,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	TotalMember *int64 `json:"TotalMember,omitempty" xml:"TotalMember,omitempty"`
+	// The workspace type. Valid values:
+	//
+	// - personal: personal workspace.
+	//
+	// - common/null: multi-user collaborative workspace.
+	//
+	// example:
+	//
+	// personal/common
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The description of the workspace.
 	//
 	// example:

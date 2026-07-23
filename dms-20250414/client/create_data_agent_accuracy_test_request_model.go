@@ -13,6 +13,8 @@ type iCreateDataAgentAccuracyTestRequest interface {
 	GetCustomAgentId() *string
 	SetDataset(v string) *CreateDataAgentAccuracyTestRequest
 	GetDataset() *string
+	SetDatasource(v string) *CreateDataAgentAccuracyTestRequest
+	GetDatasource() *string
 	SetDesc(v string) *CreateDataAgentAccuracyTestRequest
 	GetDesc() *string
 	SetDmsUnit(v string) *CreateDataAgentAccuracyTestRequest
@@ -38,7 +40,7 @@ type iCreateDataAgentAccuracyTestRequest interface {
 }
 
 type CreateDataAgentAccuracyTestRequest struct {
-	// The ID of the custom agent for which you want to run the accuracy test.
+	// The ID of the custom agent to be tested for accuracy.
 	//
 	// example:
 	//
@@ -48,8 +50,14 @@ type CreateDataAgentAccuracyTestRequest struct {
 	//
 	// example:
 	//
-	// [{\\"DataSourceType\\":\\"database\\",\\"RegionId\\":\\"cn-hangzhou\\",\\"DmsInstanceId\\":\\"27xxx49\\",\\"DmsDatabaseId\\":\\"75xxx6\\",\\"Database\\":\\"employees\\",\\"Tables\\":[\\"employees\\",\\"salaries\\",\\"departments\\"]}]
+	// null
 	Dataset *string `json:"Dataset,omitempty" xml:"Dataset,omitempty"`
+	// example:
+	//
+	// [{"isInternal":"N","TableIds":["51***70","51***71"],"DataSourceType":"database","Database":"internal_data_employees","DmsInstanceId":"27***5","DmsDatabaseId":"71***04","Tables":["employees","salaries"],"FileId":"rm-
+	//
+	// ***","DbName":"internal_data_employees","CatalogName":"def","RegionId":"cn-hangzhou","Engine":"mysql"}]
+	Datasource *string `json:"Datasource,omitempty" xml:"Datasource,omitempty"`
 	// The description.
 	//
 	// example:
@@ -98,7 +106,7 @@ type CreateDataAgentAccuracyTestRequest struct {
 	//
 	// Test01
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Specifies whether sessions are displayed after the analysis. This parameter is not supported.
+	// Specifies whether sessions are displayed after analysis. This parameter is not supported.
 	//
 	// example:
 	//
@@ -132,6 +140,10 @@ func (s *CreateDataAgentAccuracyTestRequest) GetCustomAgentId() *string {
 
 func (s *CreateDataAgentAccuracyTestRequest) GetDataset() *string {
 	return s.Dataset
+}
+
+func (s *CreateDataAgentAccuracyTestRequest) GetDatasource() *string {
+	return s.Datasource
 }
 
 func (s *CreateDataAgentAccuracyTestRequest) GetDesc() *string {
@@ -185,6 +197,11 @@ func (s *CreateDataAgentAccuracyTestRequest) SetCustomAgentId(v string) *CreateD
 
 func (s *CreateDataAgentAccuracyTestRequest) SetDataset(v string) *CreateDataAgentAccuracyTestRequest {
 	s.Dataset = &v
+	return s
+}
+
+func (s *CreateDataAgentAccuracyTestRequest) SetDatasource(v string) *CreateDataAgentAccuracyTestRequest {
+	s.Datasource = &v
 	return s
 }
 

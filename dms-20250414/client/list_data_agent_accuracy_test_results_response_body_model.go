@@ -170,7 +170,8 @@ type ListDataAgentAccuracyTestResultsResponseBodyData struct {
 	// example:
 	//
 	// 9
-	CorrectCount *int64 `json:"CorrectCount,omitempty" xml:"CorrectCount,omitempty"`
+	CorrectCount *int64  `json:"CorrectCount,omitempty" xml:"CorrectCount,omitempty"`
+	FailedCount  *string `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
 	// The page number.
 	//
 	// example:
@@ -182,7 +183,8 @@ type ListDataAgentAccuracyTestResultsResponseBodyData struct {
 	// example:
 	//
 	// 50
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize     *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PendingCount *string `json:"PendingCount,omitempty" xml:"PendingCount,omitempty"`
 	// The total number of results.
 	//
 	// example:
@@ -221,12 +223,20 @@ func (s *ListDataAgentAccuracyTestResultsResponseBodyData) GetCorrectCount() *in
 	return s.CorrectCount
 }
 
+func (s *ListDataAgentAccuracyTestResultsResponseBodyData) GetFailedCount() *string {
+	return s.FailedCount
+}
+
 func (s *ListDataAgentAccuracyTestResultsResponseBodyData) GetPageNumber() *int64 {
 	return s.PageNumber
 }
 
 func (s *ListDataAgentAccuracyTestResultsResponseBodyData) GetPageSize() *int64 {
 	return s.PageSize
+}
+
+func (s *ListDataAgentAccuracyTestResultsResponseBodyData) GetPendingCount() *string {
+	return s.PendingCount
 }
 
 func (s *ListDataAgentAccuracyTestResultsResponseBodyData) GetTotalElements() *int32 {
@@ -257,6 +267,11 @@ func (s *ListDataAgentAccuracyTestResultsResponseBodyData) SetCorrectCount(v int
 	return s
 }
 
+func (s *ListDataAgentAccuracyTestResultsResponseBodyData) SetFailedCount(v string) *ListDataAgentAccuracyTestResultsResponseBodyData {
+	s.FailedCount = &v
+	return s
+}
+
 func (s *ListDataAgentAccuracyTestResultsResponseBodyData) SetPageNumber(v int64) *ListDataAgentAccuracyTestResultsResponseBodyData {
 	s.PageNumber = &v
 	return s
@@ -264,6 +279,11 @@ func (s *ListDataAgentAccuracyTestResultsResponseBodyData) SetPageNumber(v int64
 
 func (s *ListDataAgentAccuracyTestResultsResponseBodyData) SetPageSize(v int64) *ListDataAgentAccuracyTestResultsResponseBodyData {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListDataAgentAccuracyTestResultsResponseBodyData) SetPendingCount(v string) *ListDataAgentAccuracyTestResultsResponseBodyData {
+	s.PendingCount = &v
 	return s
 }
 
@@ -297,19 +317,20 @@ type ListDataAgentAccuracyTestResultsResponseBodyDataContent struct {
 	//
 	// 692abb8f-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 	AccuracyTestTaskId *string `json:"AccuracyTestTaskId,omitempty" xml:"AccuracyTestTaskId,omitempty"`
-	// The actual answer returned by the agent.
+	// The actual answer from the agent.
 	//
 	// example:
 	//
 	// 在公司历史职位记录中，共有97,750名员工曾拥有Senior Engineer头衔。
 	AgentResult *string `json:"AgentResult,omitempty" xml:"AgentResult,omitempty"`
+	AgentSql    *string `json:"AgentSql,omitempty" xml:"AgentSql,omitempty"`
 	// The expected answer.
 	//
 	// example:
 	//
 	// 97750
 	AnswerResult *string `json:"AnswerResult,omitempty" xml:"AnswerResult,omitempty"`
-	// The expected SQL statement.
+	// The expected SQL.
 	//
 	// example:
 	//
@@ -344,7 +365,8 @@ type ListDataAgentAccuracyTestResultsResponseBodyDataContent struct {
 	// example:
 	//
 	// at-emhnbwewfngrxxxxxxxxxx
-	ResultId *string `json:"ResultId,omitempty" xml:"ResultId,omitempty"`
+	ResultId  *string `json:"ResultId,omitempty" xml:"ResultId,omitempty"`
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 	// The subtask ID.
 	//
 	// example:
@@ -367,6 +389,10 @@ func (s *ListDataAgentAccuracyTestResultsResponseBodyDataContent) GetAccuracyTes
 
 func (s *ListDataAgentAccuracyTestResultsResponseBodyDataContent) GetAgentResult() *string {
 	return s.AgentResult
+}
+
+func (s *ListDataAgentAccuracyTestResultsResponseBodyDataContent) GetAgentSql() *string {
+	return s.AgentSql
 }
 
 func (s *ListDataAgentAccuracyTestResultsResponseBodyDataContent) GetAnswerResult() *string {
@@ -397,6 +423,10 @@ func (s *ListDataAgentAccuracyTestResultsResponseBodyDataContent) GetResultId() 
 	return s.ResultId
 }
 
+func (s *ListDataAgentAccuracyTestResultsResponseBodyDataContent) GetSessionId() *string {
+	return s.SessionId
+}
+
 func (s *ListDataAgentAccuracyTestResultsResponseBodyDataContent) GetSubtaskId() *string {
 	return s.SubtaskId
 }
@@ -408,6 +438,11 @@ func (s *ListDataAgentAccuracyTestResultsResponseBodyDataContent) SetAccuracyTes
 
 func (s *ListDataAgentAccuracyTestResultsResponseBodyDataContent) SetAgentResult(v string) *ListDataAgentAccuracyTestResultsResponseBodyDataContent {
 	s.AgentResult = &v
+	return s
+}
+
+func (s *ListDataAgentAccuracyTestResultsResponseBodyDataContent) SetAgentSql(v string) *ListDataAgentAccuracyTestResultsResponseBodyDataContent {
+	s.AgentSql = &v
 	return s
 }
 
@@ -443,6 +478,11 @@ func (s *ListDataAgentAccuracyTestResultsResponseBodyDataContent) SetRecommendat
 
 func (s *ListDataAgentAccuracyTestResultsResponseBodyDataContent) SetResultId(v string) *ListDataAgentAccuracyTestResultsResponseBodyDataContent {
 	s.ResultId = &v
+	return s
+}
+
+func (s *ListDataAgentAccuracyTestResultsResponseBodyDataContent) SetSessionId(v string) *ListDataAgentAccuracyTestResultsResponseBodyDataContent {
+	s.SessionId = &v
 	return s
 }
 

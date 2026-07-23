@@ -32,7 +32,7 @@ type iListDataAgentAccuracyTestResultsRequest interface {
 }
 
 type ListDataAgentAccuracyTestResultsRequest struct {
-	// The instance ID of the accuracy test to which the task belongs.
+	// The instance ID of the accuracy test.
 	//
 	// example:
 	//

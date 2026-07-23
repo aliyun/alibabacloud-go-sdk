@@ -24,7 +24,7 @@ type iStartDataAgentAccuracyTestTaskResponseBody interface {
 type StartDataAgentAccuracyTestTaskResponseBody struct {
 	// The response struct.
 	Data *StartDataAgentAccuracyTestTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned if the request fails.
+	// The error code returned if the request failed.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type StartDataAgentAccuracyTestTaskResponseBody struct {
 	//
 	// D94F5232-xxx-EH0H28FGGI5I
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - True: The request is successful.
+	// - True: The request was successful.
 	//
-	// - False: The request fails.
+	// - False: The request failed.
 	//
 	// example:
 	//

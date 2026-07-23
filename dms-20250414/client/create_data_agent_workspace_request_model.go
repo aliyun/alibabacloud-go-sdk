@@ -25,15 +25,20 @@ type CreateDataAgentWorkspaceRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	DMSUnit               *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	IsSessionShareEnabled *bool   `json:"IsSessionShareEnabled,omitempty" xml:"IsSessionShareEnabled,omitempty"`
-	// The description of the collaborative workspace.
+	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
+	// Specifies whether session sharing is enabled within the workspace.
+	//
+	// example:
+	//
+	// true
+	IsSessionShareEnabled *bool `json:"IsSessionShareEnabled,omitempty" xml:"IsSessionShareEnabled,omitempty"`
+	// The description of the workspace.
 	//
 	// example:
 	//
 	// Space for test
 	WorkspaceDesc *string `json:"WorkspaceDesc,omitempty" xml:"WorkspaceDesc,omitempty"`
-	// The name of the collaborative workspace.
+	// The name of the workspace.
 	//
 	// example:
 	//

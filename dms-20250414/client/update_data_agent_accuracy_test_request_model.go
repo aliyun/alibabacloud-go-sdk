@@ -15,6 +15,8 @@ type iUpdateDataAgentAccuracyTestRequest interface {
 	GetCustomerAgentId() *string
 	SetDataset(v string) *UpdateDataAgentAccuracyTestRequest
 	GetDataset() *string
+	SetDatasource(v string) *UpdateDataAgentAccuracyTestRequest
+	GetDatasource() *string
 	SetDesc(v string) *UpdateDataAgentAccuracyTestRequest
 	GetDesc() *string
 	SetDmsUnit(v string) *UpdateDataAgentAccuracyTestRequest
@@ -55,14 +57,15 @@ type UpdateDataAgentAccuracyTestRequest struct {
 	// example:
 	//
 	// [{\\"DataSourceType\\":\\"database\\",\\"RegionId\\":\\"cn-hangzhou\\",\\"DmsInstanceId\\":\\"27xxxxx\\",\\"DmsDatabaseId\\":\\"752xxxxx\\",\\"Database\\":\\"employees\\",\\"Tables\\":[\\"employees\\",\\"salaries\\",\\"departments\\"]}]
-	Dataset *string `json:"Dataset,omitempty" xml:"Dataset,omitempty"`
+	Dataset    *string `json:"Dataset,omitempty" xml:"Dataset,omitempty"`
+	Datasource *string `json:"Datasource,omitempty" xml:"Datasource,omitempty"`
 	// The description.
 	//
 	// example:
 	//
 	// null
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// The current DMS unit.
+	// The current Data Management unit.
 	//
 	// example:
 	//
@@ -138,6 +141,10 @@ func (s *UpdateDataAgentAccuracyTestRequest) GetDataset() *string {
 	return s.Dataset
 }
 
+func (s *UpdateDataAgentAccuracyTestRequest) GetDatasource() *string {
+	return s.Datasource
+}
+
 func (s *UpdateDataAgentAccuracyTestRequest) GetDesc() *string {
 	return s.Desc
 }
@@ -190,6 +197,11 @@ func (s *UpdateDataAgentAccuracyTestRequest) SetCustomerAgentId(v string) *Updat
 
 func (s *UpdateDataAgentAccuracyTestRequest) SetDataset(v string) *UpdateDataAgentAccuracyTestRequest {
 	s.Dataset = &v
+	return s
+}
+
+func (s *UpdateDataAgentAccuracyTestRequest) SetDatasource(v string) *UpdateDataAgentAccuracyTestRequest {
+	s.Datasource = &v
 	return s
 }
 

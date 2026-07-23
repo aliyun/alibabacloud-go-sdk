@@ -23,27 +23,16 @@ type iAgenticTableBaseInfo interface {
 	GetQualifiedName() *string
 	SetTableType(v string) *AgenticTableBaseInfo
 	GetTableType() *string
-	SetTableUuid(v string) *AgenticTableBaseInfo
-	GetTableUuid() *string
 }
 
 type AgenticTableBaseInfo struct {
-	// The catalog type.
-	CatalogType *string `json:"CatalogType,omitempty" xml:"CatalogType,omitempty"`
-	// The database\\"s unique identifier.
-	DatabaseUuid *string `json:"DatabaseUuid,omitempty" xml:"DatabaseUuid,omitempty"`
-	// The table description.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The engine metadata.
-	EngineMeta *AgenticTableEngineMeta `json:"EngineMeta,omitempty" xml:"EngineMeta,omitempty"`
-	// The table name.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The table\\"s qualified name.
-	QualifiedName *string `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
-	// The table type.
-	TableType *string `json:"TableType,omitempty" xml:"TableType,omitempty"`
-	// The table\\"s unique identifier.
-	TableUuid *string `json:"TableUuid,omitempty" xml:"TableUuid,omitempty"`
+	CatalogType   *string                 `json:"CatalogType,omitempty" xml:"CatalogType,omitempty"`
+	DatabaseUuid  *string                 `json:"DatabaseUuid,omitempty" xml:"DatabaseUuid,omitempty"`
+	Description   *string                 `json:"Description,omitempty" xml:"Description,omitempty"`
+	EngineMeta    *AgenticTableEngineMeta `json:"EngineMeta,omitempty" xml:"EngineMeta,omitempty"`
+	Name          *string                 `json:"Name,omitempty" xml:"Name,omitempty"`
+	QualifiedName *string                 `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
+	TableType     *string                 `json:"TableType,omitempty" xml:"TableType,omitempty"`
 }
 
 func (s AgenticTableBaseInfo) String() string {
@@ -82,10 +71,6 @@ func (s *AgenticTableBaseInfo) GetTableType() *string {
 	return s.TableType
 }
 
-func (s *AgenticTableBaseInfo) GetTableUuid() *string {
-	return s.TableUuid
-}
-
 func (s *AgenticTableBaseInfo) SetCatalogType(v string) *AgenticTableBaseInfo {
 	s.CatalogType = &v
 	return s
@@ -118,11 +103,6 @@ func (s *AgenticTableBaseInfo) SetQualifiedName(v string) *AgenticTableBaseInfo 
 
 func (s *AgenticTableBaseInfo) SetTableType(v string) *AgenticTableBaseInfo {
 	s.TableType = &v
-	return s
-}
-
-func (s *AgenticTableBaseInfo) SetTableUuid(v string) *AgenticTableBaseInfo {
-	s.TableUuid = &v
 	return s
 }
 

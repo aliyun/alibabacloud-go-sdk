@@ -30,7 +30,7 @@ type CreateDataAgentAccuracyTestResponseBody struct {
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message returned if the call failed.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *CreateDataAgentAccuracyTestResponseBody) Validate() error {
 }
 
 type CreateDataAgentAccuracyTestResponseBodyData struct {
-	// The instance ID of the accuracy test.
+	// The accuracy test instance ID.
 	//
 	// example:
 	//

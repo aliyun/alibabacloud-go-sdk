@@ -19,16 +19,18 @@ type iListDataCenterDatabaseRequest interface {
 	GetLanguage() *string
 	SetSearchKey(v string) *ListDataCenterDatabaseRequest
 	GetSearchKey() *string
+	SetWorkspaceId(v string) *ListDataCenterDatabaseRequest
+	GetWorkspaceId() *string
 }
 
 type ListDataCenterDatabaseRequest struct {
-	// This parameter is for internal use.
+	// Used only by the frontend.
 	//
 	// example:
 	//
 	// Frontend only
 	CallFrom *string `json:"CallFrom,omitempty" xml:"CallFrom,omitempty"`
-	// The DMS unit.
+	// The current Data Management unit.
 	//
 	// example:
 	//
@@ -36,24 +38,25 @@ type ListDataCenterDatabaseRequest struct {
 	DmsUnit *string `json:"DmsUnit,omitempty" xml:"DmsUnit,omitempty"`
 	// The import type.
 	//
-	// - FILE
+	//   - FILE
 	//
 	// example:
 	//
 	// FILE
 	ImportType *string `json:"ImportType,omitempty" xml:"ImportType,omitempty"`
-	// This parameter is for internal use.
+	// Used only by the frontend.
 	//
 	// example:
 	//
 	// Frontend only
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The keyword for a fuzzy search for databases.
+	// The keyword for fuzzy match of databases.
 	//
 	// example:
 	//
 	// testdb
-	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	SearchKey   *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListDataCenterDatabaseRequest) String() string {
@@ -84,6 +87,10 @@ func (s *ListDataCenterDatabaseRequest) GetSearchKey() *string {
 	return s.SearchKey
 }
 
+func (s *ListDataCenterDatabaseRequest) GetWorkspaceId() *string {
+	return s.WorkspaceId
+}
+
 func (s *ListDataCenterDatabaseRequest) SetCallFrom(v string) *ListDataCenterDatabaseRequest {
 	s.CallFrom = &v
 	return s
@@ -106,6 +113,11 @@ func (s *ListDataCenterDatabaseRequest) SetLanguage(v string) *ListDataCenterDat
 
 func (s *ListDataCenterDatabaseRequest) SetSearchKey(v string) *ListDataCenterDatabaseRequest {
 	s.SearchKey = &v
+	return s
+}
+
+func (s *ListDataCenterDatabaseRequest) SetWorkspaceId(v string) *ListDataCenterDatabaseRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
