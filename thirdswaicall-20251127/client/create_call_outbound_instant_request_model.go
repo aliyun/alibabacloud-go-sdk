@@ -1,0 +1,102 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iCreateCallOutboundInstantRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetCalledNumber(v string) *CreateCallOutboundInstantRequest
+	GetCalledNumber() *string
+	SetCustomerName(v string) *CreateCallOutboundInstantRequest
+	GetCustomerName() *string
+	SetEncryptCall(v bool) *CreateCallOutboundInstantRequest
+	GetEncryptCall() *bool
+	SetPromptVariables(v string) *CreateCallOutboundInstantRequest
+	GetPromptVariables() *string
+	SetTaskId(v int64) *CreateCallOutboundInstantRequest
+	GetTaskId() *int64
+}
+
+type CreateCallOutboundInstantRequest struct {
+	// example:
+	//
+	// 13800138000
+	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// example:
+	//
+	// 张三
+	CustomerName *string `json:"CustomerName,omitempty" xml:"CustomerName,omitempty"`
+	// example:
+	//
+	// false
+	EncryptCall *bool `json:"EncryptCall,omitempty" xml:"EncryptCall,omitempty"`
+	// example:
+	//
+	// {"start":"2220"}
+	PromptVariables *string `json:"PromptVariables,omitempty" xml:"PromptVariables,omitempty"`
+	// example:
+	//
+	// 132
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s CreateCallOutboundInstantRequest) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateCallOutboundInstantRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCallOutboundInstantRequest) GetCalledNumber() *string {
+	return s.CalledNumber
+}
+
+func (s *CreateCallOutboundInstantRequest) GetCustomerName() *string {
+	return s.CustomerName
+}
+
+func (s *CreateCallOutboundInstantRequest) GetEncryptCall() *bool {
+	return s.EncryptCall
+}
+
+func (s *CreateCallOutboundInstantRequest) GetPromptVariables() *string {
+	return s.PromptVariables
+}
+
+func (s *CreateCallOutboundInstantRequest) GetTaskId() *int64 {
+	return s.TaskId
+}
+
+func (s *CreateCallOutboundInstantRequest) SetCalledNumber(v string) *CreateCallOutboundInstantRequest {
+	s.CalledNumber = &v
+	return s
+}
+
+func (s *CreateCallOutboundInstantRequest) SetCustomerName(v string) *CreateCallOutboundInstantRequest {
+	s.CustomerName = &v
+	return s
+}
+
+func (s *CreateCallOutboundInstantRequest) SetEncryptCall(v bool) *CreateCallOutboundInstantRequest {
+	s.EncryptCall = &v
+	return s
+}
+
+func (s *CreateCallOutboundInstantRequest) SetPromptVariables(v string) *CreateCallOutboundInstantRequest {
+	s.PromptVariables = &v
+	return s
+}
+
+func (s *CreateCallOutboundInstantRequest) SetTaskId(v int64) *CreateCallOutboundInstantRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *CreateCallOutboundInstantRequest) Validate() error {
+	return dara.Validate(s)
+}
