@@ -16,13 +16,13 @@ type iGetBackupStatusResponseBody interface {
 }
 
 type GetBackupStatusResponseBody struct {
-	// Audit result data.
+	// The audit result data.
 	//
 	// example:
 	//
 	// True
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
+	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//

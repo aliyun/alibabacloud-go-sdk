@@ -42,86 +42,91 @@ type iCreatePreCheckRequest interface {
 }
 
 type CreatePreCheckRequest struct {
+	// The filter configuration for each bucket. The value can be parsed as a JSON map. The key is the bucket name, and the value is the filter configuration, which includes prefix/suffix filters and a list of filter strings.
+	//
+	// example:
+	//
+	// "{\\"test-bucket1\\":{\\"prefixFilterType\\":\\"include\\",\\"prefixFilters\\":[\\"test1\\"]},\\"test-bucket2\\":{\\"prefixFilterType\\":\\"exclude\\",\\"prefixFilters\\":[\\"test2\\"]}}"
 	BucketPrefixFilterConfig *string `json:"BucketPrefixFilterConfig,omitempty" xml:"BucketPrefixFilterConfig,omitempty"`
-	// Buckets.
+	// The OSS buckets.
 	//
 	// example:
 	//
 	// [{\\"Bucket\\":\\"bucket01-test\\",\\"Region\\":\\"cn-beijing\\"}]
 	Buckets *string `json:"Buckets,omitempty" xml:"Buckets,omitempty"`
-	// Whether to deduplicate historical detected tasks.
+	// Specifies whether to deduplicate against historically scanned tasks.
 	//
 	// example:
 	//
 	// true
 	DistinctHistoryTasks *bool `json:"DistinctHistoryTasks,omitempty" xml:"DistinctHistoryTasks,omitempty"`
-	// Task end time.
+	// The task end time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2023-12-18 10:08:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Whether it is a scheduled scan task.
+	// Specifies whether the task is a scheduled scan task.
 	//
 	// example:
 	//
 	// false
 	IsInc *bool `json:"IsInc,omitempty" xml:"IsInc,omitempty"`
-	// Media type.
+	// The media asset type.
 	//
 	// example:
 	//
 	// 1
 	MediaType *int32 `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// Prefix filter type.
+	// The prefix filter type.
 	//
 	// example:
 	//
 	// all
 	PrefixFilterType *string `json:"PrefixFilterType,omitempty" xml:"PrefixFilterType,omitempty"`
-	// Prefixes.
+	// The prefixes.
 	//
 	// example:
 	//
 	// dir1,dir2
 	PrefixFilters *string `json:"PrefixFilters,omitempty" xml:"PrefixFilters,omitempty"`
-	// Priority.
+	// The priority.
 	//
 	// example:
 	//
 	// 0
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Scan limit count.
+	// The maximum number of items to scan.
 	//
 	// example:
 	//
 	// 10
 	ScanLimit *int64 `json:"ScanLimit,omitempty" xml:"ScanLimit,omitempty"`
-	// Whether to scan images without file extensions.
+	// Specifies whether to scan images without file extensions.
 	//
 	// example:
 	//
 	// true
 	ScanNoFileType *bool `json:"ScanNoFileType,omitempty" xml:"ScanNoFileType,omitempty"`
-	// Scan service code.
+	// The scan service code.
 	//
 	// example:
 	//
 	// baselineCheck
 	ScanService *string `json:"ScanService,omitempty" xml:"ScanService,omitempty"`
-	// Task start time.
+	// The task start time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2023-12-17 10:08:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// Task name.
+	// The task name.
 	//
 	// example:
 	//

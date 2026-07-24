@@ -16,9 +16,9 @@ type iGetServiceLabelConfigResponseBody interface {
 }
 
 type GetServiceLabelConfigResponseBody struct {
-	// Returned data.
+	// The returned data.
 	Data []interface{} `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// ID assigned by the backend, used to uniquely identify a request. It can be used for troubleshooting.
+	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//

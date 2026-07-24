@@ -22,30 +22,39 @@ type iAddKeywordsRequest interface {
 }
 
 type AddKeywordsRequest struct {
-	// The keywords to be added.
+	// The keywords. Separate multiple keywords with
+	//
+	// .
 	//
 	// example:
 	//
-	// keywords
+	// Keyword1\\nKeyword2
 	Keywords *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
-	// The name of the keyword file.
+	// The keyword file name.
 	//
 	// example:
 	//
 	// upload/1e5353c0-0d91-40ba-9d41-ae7abd3fe561.txt
 	KeywordsObject *string `json:"KeywordsObject,omitempty" xml:"KeywordsObject,omitempty"`
-	// The id of keyword library.
+	// The keyword library ID.
 	//
 	// example:
 	//
 	// customxx_xxxx
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
-	// Region ID
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The library code.
+	//
+	// - desensitize: masking library
+	//
+	// example:
+	//
+	// desensitize
 	TenantCode *string `json:"TenantCode,omitempty" xml:"TenantCode,omitempty"`
 }
 

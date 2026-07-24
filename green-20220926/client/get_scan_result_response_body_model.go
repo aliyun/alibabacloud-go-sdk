@@ -24,33 +24,33 @@ type iGetScanResultResponseBody interface {
 }
 
 type GetScanResultResponseBody struct {
-	// Error code, consistent with HTTP status.
+	// The error code, which is consistent with the HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Returned data.
+	// The returned data.
 	Data *GetScanResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Further description of the error code.
+	// The further description of the error code.
 	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
+	// The ID assigned by the backend that uniquely identifies a request. You can use this ID for troubleshooting.
 	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Success indicator
+	// The success flag.
 	//
 	// example:
 	//
@@ -130,21 +130,21 @@ func (s *GetScanResultResponseBody) Validate() error {
 }
 
 type GetScanResultResponseBodyData struct {
-	// Current page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Data for the current page.
+	// The data on the current page.
 	Items []*GetScanResultResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// Number of items per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Total number of records.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -210,318 +210,347 @@ func (s *GetScanResultResponseBodyData) Validate() error {
 }
 
 type GetScanResultResponseBodyDataItems struct {
+	// The AccountId input parameter from the customer.
+	//
+	// example:
+	//
+	// accountIdtest123
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// Automated review labels.
+	// The machine-assisted moderation labels.
 	//
 	// example:
 	//
 	// porn
 	ApiLabels *string `json:"ApiLabels,omitempty" xml:"ApiLabels,omitempty"`
-	// Machine review time.
+	// The machine-assisted moderation time. The value is a Unix/POSIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1755501226
 	ApiRequestTime *string `json:"ApiRequestTime,omitempty" xml:"ApiRequestTime,omitempty"`
-	// Automated review risk level.
+	// The machine-assisted moderation risk level.
 	//
 	// example:
 	//
 	// high
 	ApiRiskLevel *string `json:"ApiRiskLevel,omitempty" xml:"ApiRiskLevel,omitempty"`
-	// Automated review service
+	// The machine-assisted moderation service.
 	//
 	// example:
 	//
 	// basecheckLine
 	ApiService *string `json:"ApiService,omitempty" xml:"ApiService,omitempty"`
-	// Automated review task ID.
+	// The machine-assisted moderation task ID.
 	//
 	// example:
 	//
 	// xxx
 	ApiTaskId *string `json:"ApiTaskId,omitempty" xml:"ApiTaskId,omitempty"`
+	// appId
+	//
 	// example:
 	//
 	// agent_01
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// Attack level, returned based on the set high and low risk scores. The return values include:
+	// The attack level, returned based on the configured risk score thresholds. Valid values:
 	//
-	// - high: High risk
+	// - high: high risk.
 	//
-	// - medium: Medium risk
+	// - medium: medium risk.
 	//
-	// - low: Low risk
 	//
-	// - none: No risk detected
+	//
+	// - low: low risk.
+	//
+	// - none: no risk detected.
 	//
 	// example:
 	//
 	// none
 	AttackLevel *string `json:"AttackLevel,omitempty" xml:"AttackLevel,omitempty"`
-	// Content.
+	// The Bailian request ID.
+	//
+	// example:
+	//
+	// 93a2f484-ac61-9b2e-9765-88600c83c1ea
+	BailianRequestId *string `json:"BailianRequestId,omitempty" xml:"BailianRequestId,omitempty"`
+	// The content.
 	//
 	// example:
 	//
 	// xxx
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Data Id
+	// dataId
 	//
 	// example:
 	//
 	// 4f27b8cc7c4544cb90b41882a5b36326
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	// Segment end time (in seconds).
+	// The segment end time, in seconds.
 	//
 	// example:
 	//
 	// 22
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Feedback information.
+	// The extended information.
+	//
+	// example:
+	//
+	// multiImage
+	Ext *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	// The feedback information.
 	//
 	// example:
 	//
 	// xxx
 	ExtFeedback *string `json:"ExtFeedback,omitempty" xml:"ExtFeedback,omitempty"`
-	// Additional parameters.
+	// The reserved parameter.
 	//
 	// example:
 	//
 	// {}
 	Extra map[string]interface{} `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	// Frame count.
+	// The frame count.
 	//
 	// example:
 	//
 	// 20
 	FrameCount *int64 `json:"FrameCount,omitempty" xml:"FrameCount,omitempty"`
-	// Creation time.
+	// The creation time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2023-08-11 09:00:19
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// Multimodal file URLs.
+	// The multimodal file URLs.
 	GuardFileUrls []*string `json:"GuardFileUrls,omitempty" xml:"GuardFileUrls,omitempty" type:"Repeated"`
-	// Multimodal image URLs.
+	// The multimodal image URLs.
 	GuardImageUrls []*string `json:"GuardImageUrls,omitempty" xml:"GuardImageUrls,omitempty" type:"Repeated"`
-	// Image labels.
+	// The image labels.
 	ImageLabels []map[string]interface{} `json:"ImageLabels,omitempty" xml:"ImageLabels,omitempty" type:"Repeated"`
-	// Image service.
+	// The image service.
 	//
 	// example:
 	//
 	// baselineCheck
 	ImageService *string `json:"ImageService,omitempty" xml:"ImageService,omitempty"`
-	// URL
+	// url
 	//
 	// example:
 	//
 	// https://www.aliyuncs.com/xxx.png
-	ImageUrl  *string   `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// imageUrls
 	ImageUrls []*string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty" type:"Repeated"`
-	// Labels.
+	// The labels.
 	//
 	// example:
 	//
 	// nonLabel
 	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The LiveId input parameter from the customer.
+	//
+	// example:
+	//
+	// liveIdtest123
 	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
-	// Malicious file risk level.
+	// The risk level of the malicious file.
 	//
 	// example:
 	//
 	// high
 	MaliciousFileLevel *string `json:"MaliciousFileLevel,omitempty" xml:"MaliciousFileLevel,omitempty"`
-	// Malicious URL risk level.
+	// The risk level of the malicious URL.
 	//
 	// example:
 	//
 	// high
 	MaliciousUrlLevel *string `json:"MaliciousUrlLevel,omitempty" xml:"MaliciousUrlLevel,omitempty"`
-	// Whether it is a pure manual review.
+	// Indicates whether only manual review is used.
 	//
 	// example:
 	//
 	// false
 	ManualOnly *bool `json:"ManualOnly,omitempty" xml:"ManualOnly,omitempty"`
-	// No labels
+	// No labels.
 	NoLabels []*string `json:"NoLabels,omitempty" xml:"NoLabels,omitempty" type:"Repeated"`
-	// Frame offset value.
+	// The frame capture offset value.
 	//
 	// example:
 	//
 	// 1
 	Offset *int64 `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	// Page number.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// Request source.
+	// The request source.
 	//
 	// example:
 	//
 	// online_test
 	RequestFrom *string `json:"RequestFrom,omitempty" xml:"RequestFrom,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Request time.
+	// The request time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2023-08-11 09:00:19
 	RequestTime *string `json:"RequestTime,omitempty" xml:"RequestTime,omitempty"`
-	// Resource type.
+	// The resource type.
 	//
 	// example:
 	//
 	// text
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// Return collection.
+	// The result set.
 	Result []*GetScanResultResponseBodyDataItemsResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// Review labels.
+	// The review labels.
 	//
 	// example:
 	//
 	// porn
 	ReviewLabels *string `json:"ReviewLabels,omitempty" xml:"ReviewLabels,omitempty"`
-	// Review status.
+	// The review status.
 	//
 	// example:
 	//
 	// high
 	ReviewRiskLevel *string `json:"ReviewRiskLevel,omitempty" xml:"ReviewRiskLevel,omitempty"`
-	// Review time.
+	// The review time. The value is a Unix/POSIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1755501226
 	ReviewTime *string `json:"ReviewTime,omitempty" xml:"ReviewTime,omitempty"`
-	// Reviewer.
+	// The reviewer.
 	//
 	// example:
 	//
 	// xx
 	ReviewUid *string `json:"ReviewUid,omitempty" xml:"ReviewUid,omitempty"`
-	// Whether it has been reviewed.
+	// Indicates whether the content has been reviewed.
 	//
 	// example:
 	//
 	// false
 	Reviewed *bool `json:"Reviewed,omitempty" xml:"Reviewed,omitempty"`
-	// Risk level, returned based on the set high and low risk scores. The return values include:
+	// The risk level, returned based on the configured risk score thresholds. Valid values:
 	//
-	// - high: High risk
+	// - high: high risk.
 	//
-	// - medium: Medium risk
+	// - medium: medium risk.
 	//
-	// - low: Low risk
 	//
-	// - none: No risk detected
+	//
+	// - low: low risk.
+	//
+	// - none: no risk detected.
 	//
 	// example:
 	//
 	// none
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// Details of the detected risk.
+	// The details of the matched risk.
 	//
 	// example:
 	//
 	// 色情服务
 	RiskTips *string `json:"RiskTips,omitempty" xml:"RiskTips,omitempty"`
-	// Keywords of the detected risk.
+	// The matched risk keywords.
 	//
 	// example:
 	//
 	// 色情_低俗词
 	RiskWords *string `json:"RiskWords,omitempty" xml:"RiskWords,omitempty"`
-	// Details of the result.
+	// The result details.
 	//
 	// example:
 	//
 	// {}
 	ScanResult *string `json:"ScanResult,omitempty" xml:"ScanResult,omitempty"`
-	// Score.
+	// The score.
 	//
 	// example:
 	//
 	// 25
 	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
-	// Sensitive level, returned based on the set high and low risk scores. The return values include:
+	// The sensitivity level, returned based on the configured risk score thresholds. Valid values:
 	//
-	// - **S1**: Indicates low sensitivity.
+	// - **S1**: Low sensitivity.
 	//
-	// - **S2**: Indicates medium sensitivity.
+	// - **S2**: Medium sensitivity.
 	//
-	// - **S3**: Indicates high sensitivity.
+	// - **S3**: Moderately high sensitivity.
 	//
-	// - **S4**: Indicates very high sensitivity.
+	// - **S4**: High sensitivity.
 	//
-	// - **S0**: Indicates no sensitivity.
+	// - **S0**: Not sensitive.
 	//
 	// example:
 	//
 	// S0
 	SensitiveLevel *string `json:"SensitiveLevel,omitempty" xml:"SensitiveLevel,omitempty"`
-	// Service code.
+	// The service code.
 	//
 	// example:
 	//
 	// baselineCheck
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// Segment start time (in seconds).
+	// The segment start time, in seconds.
 	//
 	// example:
 	//
 	// 11
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// Suggestion.
+	// The suggestion.
 	//
 	// example:
 	//
 	// review
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-	// Task ID.
+	// The task ID.
 	//
 	// example:
 	//
 	// vi_s_EbrXb716LyBpkfwxyX5xyh-1A6RY9
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// Text labels.
+	// The text labels.
 	TextLabels []map[string]interface{} `json:"TextLabels,omitempty" xml:"TextLabels,omitempty" type:"Repeated"`
-	// Thumbnail URL.
+	// The thumbnail URL.
 	//
 	// example:
 	//
 	// https://www.aliyuncs.com/xxx.png
 	Thumbnail *string `json:"Thumbnail,omitempty" xml:"Thumbnail,omitempty"`
-	// Timestamp.
+	// The timestamp.
 	//
 	// example:
 	//
 	// 00:00:40-00:00:42
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// Task URL
+	// The task URL.
 	//
 	// example:
 	//
 	// https://www.aliyuncs.com/xxx.png
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// Voice labels.
+	// The audio labels.
 	VoiceLabels []map[string]interface{} `json:"VoiceLabels,omitempty" xml:"VoiceLabels,omitempty" type:"Repeated"`
-	// Whether audio detection is enabled.
+	// Indicates whether audio detection is enabled.
 	//
 	// example:
 	//
 	// True
 	VoiceScanOpened *bool `json:"VoiceScanOpened,omitempty" xml:"VoiceScanOpened,omitempty"`
-	// Voice service.
+	// The audio service.
 	//
 	// example:
 	//
@@ -569,6 +598,10 @@ func (s *GetScanResultResponseBodyDataItems) GetAttackLevel() *string {
 	return s.AttackLevel
 }
 
+func (s *GetScanResultResponseBodyDataItems) GetBailianRequestId() *string {
+	return s.BailianRequestId
+}
+
 func (s *GetScanResultResponseBodyDataItems) GetContent() *string {
 	return s.Content
 }
@@ -579,6 +612,10 @@ func (s *GetScanResultResponseBodyDataItems) GetDataId() *string {
 
 func (s *GetScanResultResponseBodyDataItems) GetEndTime() *string {
 	return s.EndTime
+}
+
+func (s *GetScanResultResponseBodyDataItems) GetExt() *string {
+	return s.Ext
 }
 
 func (s *GetScanResultResponseBodyDataItems) GetExtFeedback() *string {
@@ -801,6 +838,11 @@ func (s *GetScanResultResponseBodyDataItems) SetAttackLevel(v string) *GetScanRe
 	return s
 }
 
+func (s *GetScanResultResponseBodyDataItems) SetBailianRequestId(v string) *GetScanResultResponseBodyDataItems {
+	s.BailianRequestId = &v
+	return s
+}
+
 func (s *GetScanResultResponseBodyDataItems) SetContent(v string) *GetScanResultResponseBodyDataItems {
 	s.Content = &v
 	return s
@@ -813,6 +855,11 @@ func (s *GetScanResultResponseBodyDataItems) SetDataId(v string) *GetScanResultR
 
 func (s *GetScanResultResponseBodyDataItems) SetEndTime(v string) *GetScanResultResponseBodyDataItems {
 	s.EndTime = &v
+	return s
+}
+
+func (s *GetScanResultResponseBodyDataItems) SetExt(v string) *GetScanResultResponseBodyDataItems {
+	s.Ext = &v
 	return s
 }
 
@@ -1055,19 +1102,19 @@ func (s *GetScanResultResponseBodyDataItems) Validate() error {
 }
 
 type GetScanResultResponseBodyDataItemsResult struct {
-	// Confidence score, ranging from 0 to 100, with two decimal places.
+	// The confidence score, ranging from 0 to 100, rounded to two decimal places.
 	//
 	// example:
 	//
 	// 50.0
 	Confidence *string `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	// Description of the Label field.
+	// The description of the Label field.
 	//
 	// example:
 	//
 	// 疑似色情内容
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Label.
+	// The labels.
 	//
 	// example:
 	//

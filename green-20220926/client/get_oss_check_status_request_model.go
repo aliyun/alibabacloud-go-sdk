@@ -14,7 +14,7 @@ type iGetOssCheckStatusRequest interface {
 }
 
 type GetOssCheckStatusRequest struct {
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//

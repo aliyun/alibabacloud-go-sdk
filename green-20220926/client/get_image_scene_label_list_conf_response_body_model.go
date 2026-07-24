@@ -16,9 +16,9 @@ type iGetImageSceneLabelListConfResponseBody interface {
 }
 
 type GetImageSceneLabelListConfResponseBody struct {
-	// Returned data.
+	// The returned data.
 	Data []interface{} `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
+	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//

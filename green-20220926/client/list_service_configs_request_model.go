@@ -22,26 +22,37 @@ type iListServiceConfigsRequest interface {
 }
 
 type ListServiceConfigsRequest struct {
-	// Category.
+	// The classification.
 	//
 	// example:
 	//
 	// guard-scene
-	Classify       *string `json:"Classify,omitempty" xml:"Classify,omitempty"`
+	Classify *string `json:"Classify,omitempty" xml:"Classify,omitempty"`
+	// The protection type. Valid values:
+	//
+	// - modelProtection: model protection.
+	//
+	// - agentRealtimeProtection: agent real-time protection.
+	//
+	// - agentBehaviorAudit: agent behavior audit.
+	//
+	// example:
+	//
+	// modelProtection
 	ProtectionType *string `json:"ProtectionType,omitempty" xml:"ProtectionType,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource type.
+	// The resource type.
 	//
 	// example:
 	//
 	// text
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// Usage status.
+	// The usage status.
 	//
 	// example:
 	//

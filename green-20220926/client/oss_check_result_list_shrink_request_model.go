@@ -30,51 +30,51 @@ type iOssCheckResultListShrinkRequest interface {
 }
 
 type OssCheckResultListShrinkRequest struct {
-	// Page size.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Start date.
+	// The end time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2023-10-21 16:08:38
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// Region ID.
+	// The number of completed items.
 	//
 	// example:
 	//
 	// 55
 	FinishNum *int64 `json:"FinishNum,omitempty" xml:"FinishNum,omitempty"`
-	// Query condition.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// End date.
+	// The query condition.
 	//
 	// example:
 	//
 	// {}
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// Sort field.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Current page number.
+	// The sort field.
 	SortShrink *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// System-defined parameter. Value: **OssCheckResultList**.
+	// The start time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2023-08-21 16:08:38
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	// Number of completed items.
+	// The task status.
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iGetKeywordImportResultRequest interface {
 }
 
 type GetKeywordImportResultRequest struct {
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Task ID.
+	// The task ID.
 	//
 	// example:
 	//

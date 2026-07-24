@@ -28,41 +28,41 @@ type iExportScanResultRequest interface {
 }
 
 type ExportScanResultRequest struct {
-  // Current page number.
+  // The current page number.
   // 
   // example:
   // 
   // 1
   CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-  // End time of the query, in the format yyyy-MM-dd HH:mm:ss.
+  // The end time of the query. Format: yyyy-MM-dd HH:mm:ss.
   // 
   // example:
   // 
   // 2024-03-11 10:00:00
   EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-  // Page size.
+  // The number of entries per page.
   // 
   // example:
   // 
   // 20
   PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-  // Query content.
+  // The query content.
   Query map[string]*string `json:"Query,omitempty" xml:"Query,omitempty"`
-  // Region ID.
+  // The region ID.
   // 
   // example:
   // 
   // cn-shanghai
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-  // Resource type.
+  // The resource type.
   // 
   // example:
   // 
   // text
   ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-  // Sort fields.
+  // The sort field.
   Sort map[string]*string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-  // Start time of the query, in the format yyyy-MM-dd HH:mm:ss.
+  // The start time of the query. Format: yyyy-MM-dd HH:mm:ss.
   // 
   // example:
   // 

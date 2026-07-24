@@ -22,20 +22,36 @@ type iCreateAnswerLibRequest interface {
 }
 
 type CreateAnswerLibRequest struct {
+	// The name of the proxy answer library.
+	//
+	// example:
+	//
+	// 测试代答库
 	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the storage space.
+	//
 	// example:
 	//
 	// oss-cip-shanghai
 	SampleBucket *string `json:"SampleBucket,omitempty" xml:"SampleBucket,omitempty"`
+	// The file name of the proxy answer sample to be added.
+	//
 	// example:
 	//
 	// data/xxx.xlsx
 	SampleObject *string `json:"SampleObject,omitempty" xml:"SampleObject,omitempty"`
-	Samples      *string `json:"Samples,omitempty" xml:"Samples,omitempty"`
+	// The samples to be added.
+	//
+	// example:
+	//
+	// 代答答案1\\n代答答案2
+	Samples *string `json:"Samples,omitempty" xml:"Samples,omitempty"`
 }
 
 func (s CreateAnswerLibRequest) String() string {

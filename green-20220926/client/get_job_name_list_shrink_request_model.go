@@ -22,27 +22,27 @@ type iGetJobNameListShrinkRequest interface {
 }
 
 type GetJobNameListShrinkRequest struct {
-	// End date.
+	// The end time. Format: `YYYY-MM-DD HH:mm:ss`.
 	//
 	// example:
 	//
 	// 2023-08-24 10:01:55
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// Query condition.
+	// The query condition.
 	//
 	// example:
 	//
 	// {"TaskId":"P_11TL5T"}
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Sort field.
+	// The sort field.
 	SortShrink *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// Start date.
+	// The start time. Format: `YYYY-MM-DD HH:mm:ss`.
 	//
 	// example:
 	//

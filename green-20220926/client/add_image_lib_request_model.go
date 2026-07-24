@@ -22,13 +22,13 @@ type AddImageLibRequest struct {
 	//
 	// example:
 	//
-	// Explicit_Content_Blacklist_Image_lib
+	// 色情内容黑名单图库
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The name of image library
+	// The name of the image library.
 	//
 	// example:
 	//
-	// test_image_lib
+	// 测试图库
 	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
 	// The region ID.
 	//

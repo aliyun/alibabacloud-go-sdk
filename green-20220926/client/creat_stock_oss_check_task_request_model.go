@@ -70,170 +70,175 @@ type iCreatStockOssCheckTaskRequest interface {
 }
 
 type CreatStockOssCheckTaskRequest struct {
+	// The filter configuration for each bucket. The value can be parsed as a JSON map. The key is the bucket name, and the value is the filter configuration, which includes prefix/suffix filters and a list of filter strings.
+	//
+	// example:
+	//
+	// "{\\"test-bucket1\\":{\\"prefixFilterType\\":\\"include\\",\\"prefixFilters\\":[\\"test1\\"]},\\"test-bucket2\\":{\\"prefixFilterType\\":\\"exclude\\",\\"prefixFilters\\":[\\"test2\\"]}}"
 	BucketPrefixFilterConfig *string `json:"BucketPrefixFilterConfig,omitempty" xml:"BucketPrefixFilterConfig,omitempty"`
-	// OSS buckets
+	// The storage buckets.
 	//
 	// example:
 	//
 	// [{\\"Bucket\\":\\"bucket01-test\\",\\"Region\\":\\"cn-beijing\\"}]
 	Buckets *string `json:"Buckets,omitempty" xml:"Buckets,omitempty"`
-	// Callback ID
+	// The notification callback ID.
 	//
 	// example:
 	//
 	// 1751
 	CallbackId *string `json:"CallbackId,omitempty" xml:"CallbackId,omitempty"`
-	// Flag for deduplicating against previously detected tasks.
+	// Specifies whether to deduplicate against historically scanned tasks.
 	//
 	// example:
 	//
 	// true
 	DistinctHistoryTasks *bool `json:"DistinctHistoryTasks,omitempty" xml:"DistinctHistoryTasks,omitempty"`
-	// The end time of the task.
+	// The task end time. Format: `YYYY-MM-DD HH:mm:ss`.
 	//
 	// example:
 	//
 	// 2023-12-18 10:08:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Execute date of scheduled task.
+	// The execution date of the scheduled task. The value is in integer format.
 	//
 	// example:
 	//
 	// 1
 	ExecuteDate *int32 `json:"ExecuteDate,omitempty" xml:"ExecuteDate,omitempty"`
-	// Execute time of scheduled task.
+	// The expected execution time of the scheduled task. Format: `HH:mm:ss-HH:mm:ss`.
 	//
 	// example:
 	//
 	// 01:09:30-01:19:30
 	ExecuteTime *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
-	// Freeze indicator
+	// Specifies whether to freeze files.
 	//
 	// example:
 	//
 	// true
 	Freeze *bool `json:"Freeze,omitempty" xml:"Freeze,omitempty"`
-	// Freeze High-Risk Images
+	// Specifies whether to freeze high-risk images.
 	//
 	// example:
 	//
 	// true
 	FreezeHighRisk1 *bool `json:"FreezeHighRisk1,omitempty" xml:"FreezeHighRisk1,omitempty"`
-	// Freeze High-Risk Audio and Text
+	// Specifies whether to freeze high-risk audio and text.
 	//
 	// example:
 	//
 	// true
 	FreezeHighRisk2 *bool `json:"FreezeHighRisk2,omitempty" xml:"FreezeHighRisk2,omitempty"`
-	// Freeze Medium-Risk Images
+	// Specifies whether to freeze medium-risk images.
 	//
 	// example:
 	//
 	// true
 	FreezeMediumRisk1 *bool `json:"FreezeMediumRisk1,omitempty" xml:"FreezeMediumRisk1,omitempty"`
-	// Freeze Medium-Risk Audio and Text
+	// Specifies whether to freeze medium-risk audio and text.
 	//
 	// example:
 	//
 	// true
 	FreezeMediumRisk2 *bool `json:"FreezeMediumRisk2,omitempty" xml:"FreezeMediumRisk2,omitempty"`
-	// Freeze Restore Path
+	// The path to which frozen files are transferred.
 	//
 	// example:
 	//
 	// test
 	FreezeRestorePath *string `json:"FreezeRestorePath,omitempty" xml:"FreezeRestorePath,omitempty"`
-	// Freeze type
+	// The freeze type.
 	//
 	// example:
 	//
 	// ACL
 	FreezeType *string `json:"FreezeType,omitempty" xml:"FreezeType,omitempty"`
-	// Indicator for scheduled task.
+	// Specifies whether the task is a scheduled scan task.
 	//
 	// example:
 	//
 	// false
 	IsInc *bool `json:"IsInc,omitempty" xml:"IsInc,omitempty"`
-	// Media type.
+	// The media asset type.
 	//
 	// example:
 	//
 	// 1
 	MediaType *int32 `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// Prefix filter type.
+	// The prefix filter type.
 	//
 	// example:
 	//
 	// all
 	PrefixFilterType *string `json:"PrefixFilterType,omitempty" xml:"PrefixFilterType,omitempty"`
-	// Prefix filters
+	// The prefixes.
 	//
 	// example:
 	//
 	// dir1,dir2
 	PrefixFilters *string `json:"PrefixFilters,omitempty" xml:"PrefixFilters,omitempty"`
-	// The priority of the task.
+	// The priority.
 	//
 	// example:
 	//
 	// 0
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// Referer.
+	// Referer。
 	//
 	// example:
 	//
 	// https://www.aliyun.com
 	Referer *string `json:"Referer,omitempty" xml:"Referer,omitempty"`
-	// Region ID
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The scan limit of the task.
+	// The maximum number of files to scan.
 	//
 	// example:
 	//
 	// 10
 	ScanLimit *int64 `json:"ScanLimit,omitempty" xml:"ScanLimit,omitempty"`
-	// Indicator for scanning files without file type.
+	// Specifies whether to scan images without file extensions.
 	//
 	// example:
 	//
 	// true
 	ScanNoFileType *bool `json:"ScanNoFileType,omitempty" xml:"ScanNoFileType,omitempty"`
-	// Scan resource type.
+	// The type of files to scan.
 	//
 	// example:
 	//
 	// 0
 	ScanResourceType *string `json:"ScanResourceType,omitempty" xml:"ScanResourceType,omitempty"`
-	// The code of scan service.
+	// The scan service code.
 	//
 	// example:
 	//
 	// baselineCheck
 	ScanService *string `json:"ScanService,omitempty" xml:"ScanService,omitempty"`
-	// The start time of the task.
+	// The task start time. Format: `YYYY-MM-DD HH:mm:ss`.
 	//
 	// example:
 	//
 	// 2023-12-17 10:08:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// Task Cycle
+	// The scheduling cycle.
 	//
 	// example:
 	//
 	// 0
 	TaskCycle *int32 `json:"TaskCycle,omitempty" xml:"TaskCycle,omitempty"`
-	// The name of the task.
+	// The task name.
 	//
 	// example:
 	//
-	// image task 20240709101602004
+	// 图片任务 20240709101602004
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// Task type.
+	// The task type.
 	//
 	// example:
 	//

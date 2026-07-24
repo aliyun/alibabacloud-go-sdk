@@ -18,14 +18,20 @@ type iUpdateOssCheckResultsBatchFeedbackRequest interface {
 }
 
 type UpdateOssCheckResultsBatchFeedbackRequest struct {
+	// Feedback.
+	//
 	// example:
 	//
 	// misreport
 	Feedback *string `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
+	// Result items.
+	//
 	// example:
 	//
 	// []
 	Items *string `json:"Items,omitempty" xml:"Items,omitempty"`
+	// Parent job ID.
+	//
 	// example:
 	//
 	// P_XHDUS

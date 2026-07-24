@@ -16,9 +16,9 @@ type iGetBucketsListResponseBody interface {
 }
 
 type GetBucketsListResponseBody struct {
-	// Returned data.
+	// The returned data.
 	Data []*GetBucketsListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Backend-assigned ID, used to uniquely identify a request. Can be used for troubleshooting.
+	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ func (s *GetBucketsListResponseBody) Validate() error {
 }
 
 type GetBucketsListResponseBodyData struct {
-	// OSS file storage bucket name.
+	// The name of the OSS bucket in which files are stored.
 	//
 	// example:
 	//
 	// bucket_test
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//

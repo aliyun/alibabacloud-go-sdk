@@ -22,35 +22,35 @@ type iCopyServiceConfigRequest interface {
 }
 
 type CopyServiceConfigRequest struct {
-	// Region ID
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource type.
+	// The resource type.
 	//
 	// example:
 	//
 	// text
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// Service code.
+	// The service code.
 	//
 	// example:
 	//
 	// nickname_detection
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// Service description
+	// The service description.
 	//
 	// example:
 	//
-	// test
+	// 服务备注
 	ServiceDesc *string `json:"ServiceDesc,omitempty" xml:"ServiceDesc,omitempty"`
 	// The service name.
 	//
 	// example:
 	//
-	// test_name
+	// 用户昵称检测
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 

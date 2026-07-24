@@ -22,27 +22,27 @@ type iGetServiceConfigResponseBody interface {
 }
 
 type GetServiceConfigResponseBody struct {
-	// Error code.
+	// The error code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Returned data.
+	// The returned data.
 	Data *GetServiceConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Further description of the error code.
+	// The further description of the error code.
 	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Success indicator.
+	// The success flag.
 	//
 	// example:
 	//
@@ -113,27 +113,27 @@ func (s *GetServiceConfigResponseBody) Validate() error {
 }
 
 type GetServiceConfigResponseBodyData struct {
-	// Custom service details
+	// The custom service details.
 	CustomServiceConf *GetServiceConfigResponseBodyDataCustomServiceConf `json:"CustomServiceConf,omitempty" xml:"CustomServiceConf,omitempty" type:"Struct"`
-	// Modification time.
+	// The modification time.
 	//
 	// example:
 	//
 	// 2024-05-06 03:07:44
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Resource type.
+	// The resource type.
 	//
 	// example:
 	//
 	// text
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// Service code.
+	// The service code.
 	//
 	// example:
 	//
 	// nickname_detection
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// UID.
+	// UID。
 	//
 	// example:
 	//
@@ -204,13 +204,13 @@ func (s *GetServiceConfigResponseBodyData) Validate() error {
 }
 
 type GetServiceConfigResponseBodyDataCustomServiceConf struct {
-	// Ignore word libraries.
+	// The ignored keyword libraries.
 	KeywordFilterLibs []*string `json:"KeywordFilterLibs,omitempty" xml:"KeywordFilterLibs,omitempty" type:"Repeated"`
-	// Hit word libraries.
+	// The hit keyword libraries.
 	KeywordHitLibs []*string `json:"KeywordHitLibs,omitempty" xml:"KeywordHitLibs,omitempty" type:"Repeated"`
-	// Human-machine review configuration.
+	// The machine-assisted moderation configuration.
 	ManualMachineConfig *GetServiceConfigResponseBodyDataCustomServiceConfManualMachineConfig `json:"ManualMachineConfig,omitempty" xml:"ManualMachineConfig,omitempty" type:"Struct"`
-	// Hit similar text libraries.
+	// The hit similar text libraries.
 	SimilarTextHitLibs []*string `json:"SimilarTextHitLibs,omitempty" xml:"SimilarTextHitLibs,omitempty" type:"Repeated"`
 }
 
@@ -268,25 +268,25 @@ func (s *GetServiceConfigResponseBodyDataCustomServiceConf) Validate() error {
 }
 
 type GetServiceConfigResponseBodyDataCustomServiceConfManualMachineConfig struct {
-	// Risk levels.
+	// The risk levels.
 	AuditRiskLevels []*string `json:"AuditRiskLevels,omitempty" xml:"AuditRiskLevels,omitempty" type:"Repeated"`
-	// Callback notification ID
+	// The callback notification ID.
 	//
 	// example:
 	//
 	// 123
 	CallbackId *int64 `json:"CallbackId,omitempty" xml:"CallbackId,omitempty"`
-	// Whether to enable. Values:
+	// Specifies whether to enable the feature. Valid values:
 	//
-	// - **true**: Enabled
+	// - **true**: Enabled.
 	//
-	// - **false**: Disabled
+	// - **false**: Disabled.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// Manual review service
+	// The manual review service.
 	//
 	// example:
 	//

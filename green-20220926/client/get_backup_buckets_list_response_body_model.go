@@ -16,9 +16,9 @@ type iGetBackupBucketsListResponseBody interface {
 }
 
 type GetBackupBucketsListResponseBody struct {
-	// Returned data.
+	// The returned data.
 	Data []*GetBackupBucketsListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Backend-assigned ID, used to uniquely identify a request. Can be used for troubleshooting.
+	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ func (s *GetBackupBucketsListResponseBody) Validate() error {
 }
 
 type GetBackupBucketsListResponseBodyData struct {
-	// OSS file storage bucket name.
+	// The name of the OSS bucket where files are stored.
 	//
 	// example:
 	//
 	// gj-bucket1
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// Region.
+	// The region.
 	//
 	// example:
 	//

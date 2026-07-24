@@ -16,9 +16,9 @@ type iGetOssCheckStatResponseBody interface {
 }
 
 type GetOssCheckStatResponseBody struct {
-	// Bar chart
+	// The bar chart data.
 	BarChart *GetOssCheckStatResponseBodyBarChart `json:"BarChart,omitempty" xml:"BarChart,omitempty" type:"Struct"`
-	// ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
+	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,9 +62,9 @@ func (s *GetOssCheckStatResponseBody) Validate() error {
 }
 
 type GetOssCheckStatResponseBodyBarChart struct {
-	// X values of the coordinates.
+	// The X value of the coordinate point.
 	X []*string `json:"X,omitempty" xml:"X,omitempty" type:"Repeated"`
-	// Y values of the coordinates.
+	// The Y value of the coordinate point.
 	Y []*GetOssCheckStatResponseBodyBarChartY `json:"Y,omitempty" xml:"Y,omitempty" type:"Repeated"`
 }
 
@@ -108,9 +108,9 @@ func (s *GetOssCheckStatResponseBodyBarChart) Validate() error {
 }
 
 type GetOssCheckStatResponseBodyBarChartY struct {
-	// Data.
+	// The data.
 	Data []*int64 `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Name.
+	// The name.
 	//
 	// example:
 	//

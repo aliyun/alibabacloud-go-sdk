@@ -18,19 +18,19 @@ type iGetServiceLabelConfigRequest interface {
 }
 
 type GetServiceLabelConfigRequest struct {
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource type.
+	// The resource type.
 	//
 	// example:
 	//
 	// text
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// Service code.
+	// The service code.
 	//
 	// example:
 	//

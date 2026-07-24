@@ -22,31 +22,31 @@ type iExportTextScanResultResponseBody interface {
 }
 
 type ExportTextScanResultResponseBody struct {
-  // Error code.
+  // The error code.
   // 
   // example:
   // 
   // 200
   Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-  // Exported results.
+  // The export result.
   // 
   // example:
   // 
   // https://oss-cip-shanghai.oss-cn-shanghai.aliyuncs.com/portal_data/production/scanResult/text/textScanResult_aliow2MAdWXCakCxlitVY8Lnn-1A9KEw.xlsx
   Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-  // Further description of the error code.
+  // The description of the error code.
   // 
   // example:
   // 
   // OK
   Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-  // ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
+  // The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
   // 
   // example:
   // 
   // AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // Success indicator.
+  // Indicates whether the request was successful.
   // 
   // example:
   // 

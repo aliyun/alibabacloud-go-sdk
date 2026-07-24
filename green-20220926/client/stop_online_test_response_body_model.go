@@ -22,22 +22,32 @@ type iStopOnlineTestResponseBody interface {
 }
 
 type StopOnlineTestResponseBody struct {
+	// Backend-assigned ID used as the UUID of a Request. It can be used for troubleshooting.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Service encoding
+	//
 	// example:
 	//
-	// VideoModeration
+	// baselineCheck
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// Detection Job ID
+	//
 	// example:
 	//
 	// xxxxx-xxxxx
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Detection Status
+	//
 	// example:
 	//
 	// SUCCESS
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// Detection URL
+	//
 	// example:
 	//
 	// https://xxxxxxxx.com/data/data.png

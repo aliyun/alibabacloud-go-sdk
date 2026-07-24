@@ -16,11 +16,14 @@ type iGetPromptTestResultResponseBody interface {
 }
 
 type GetPromptTestResultResponseBody struct {
+	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*GetPromptTestResultResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result.
+	Result []*GetPromptTestResultResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s GetPromptTestResultResponseBody) String() string {
@@ -63,8 +66,26 @@ func (s *GetPromptTestResultResponseBody) Validate() error {
 }
 
 type GetPromptTestResultResponseBodyResult struct {
-	Content      *string                                              `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The content.
+	//
+	// example:
+	//
+	// 测试文本
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The labels.
 	LabelDetails []*GetPromptTestResultResponseBodyResultLabelDetails `json:"LabelDetails,omitempty" xml:"LabelDetails,omitempty" type:"Repeated"`
+	// The risk level, which is returned based on the configured high and low risk scores. Valid values:
+	//
+	// - high: High risk.
+	//
+	// - medium: Medium risk.
+	//
+	//
+	//
+	// - low: Low risk.
+	//
+	//  - none: No risk detected.
+	//
 	// example:
 	//
 	// high
@@ -120,11 +141,23 @@ func (s *GetPromptTestResultResponseBodyResult) Validate() error {
 }
 
 type GetPromptTestResultResponseBodyResultLabelDetails struct {
+	// The label description.
+	//
+	// example:
+	//
+	// 暴恐
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The labels.
+	//
 	// example:
 	//
 	// terrorism
-	Label  *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The reason why the model determined this risk level for the text.
+	//
+	// example:
+	//
+	// 该文本涉及暴力恐怖信息
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 }
 

@@ -22,27 +22,27 @@ type iListServiceConfigsResponseBody interface {
 }
 
 type ListServiceConfigsResponseBody struct {
-	// Error code.
+	// The error code.
 	//
 	// example:
 	//
 	// 400
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Returned data.
+	// The returned data.
 	Data []*ListServiceConfigsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Further description of the error code.
+	// The description of the error code.
 	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
+	// The request ID assigned by the backend, which uniquely identifies the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Success indicator.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -117,70 +117,79 @@ func (s *ListServiceConfigsResponseBody) Validate() error {
 }
 
 type ListServiceConfigsResponseBodyData struct {
-	// Category.
+	// The classification.
 	//
 	// example:
 	//
 	// guard-scene
 	Classify *string `json:"Classify,omitempty" xml:"Classify,omitempty"`
-	// Main service.
+	// The primary service.
 	//
 	// example:
 	//
 	// nickname_detection
 	CopyFrom *string `json:"CopyFrom,omitempty" xml:"CopyFrom,omitempty"`
-	// Service configuration.
+	// The service configuration.
 	CustomServiceConf *ListServiceConfigsResponseBodyDataCustomServiceConf `json:"CustomServiceConf,omitempty" xml:"CustomServiceConf,omitempty" type:"Struct"`
-	// Modification time.
+	// The modification time.
 	//
 	// example:
 	//
 	// 2023-07-11 15:40:04
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Options.
+	// The options.
 	//
 	// example:
 	//
 	// {}
 	Option map[string]interface{} `json:"Option,omitempty" xml:"Option,omitempty"`
-	// Resource type.
+	// The resource type.
 	//
 	// example:
 	//
 	// text
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	SceneType    *string `json:"SceneType,omitempty" xml:"SceneType,omitempty"`
-	// Service code.
+	// The scene type. Valid values:
+	//
+	// - recommended_scene: recommended scenario.
+	//
+	// - all_scene: all scenarios.
+	//
+	// example:
+	//
+	// all_scene
+	SceneType *string `json:"SceneType,omitempty" xml:"SceneType,omitempty"`
+	// The service code.
 	//
 	// example:
 	//
 	// nickname_detection
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// Service description.
+	// The service description.
 	//
 	// example:
 	//
 	// 服务描述
 	ServiceDesc *string `json:"ServiceDesc,omitempty" xml:"ServiceDesc,omitempty"`
-	// Service name.
+	// The service name.
 	//
 	// example:
 	//
 	// 服务名称
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// Service type.
+	// The service type.
 	//
 	// example:
 	//
 	// plus
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	// UID.
+	// UID。
 	//
 	// example:
 	//
 	// 1674*****0071291
 	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
-	// Usage status
+	// The usage status.
 	//
 	// example:
 	//
@@ -323,21 +332,21 @@ func (s *ListServiceConfigsResponseBodyData) Validate() error {
 }
 
 type ListServiceConfigsResponseBodyDataCustomServiceConf struct {
-	// Audio service.
+	// The audio service.
 	//
 	// example:
 	//
 	// audio_media_detection
 	AudioService *string `json:"AudioService,omitempty" xml:"AudioService,omitempty"`
-	// Image services.
+	// The image service.
 	ImageService []*string `json:"ImageService,omitempty" xml:"ImageService,omitempty" type:"Repeated"`
-	// Ignored word libraries.
+	// The ignored keyword library.
 	KeywordFilterLibs []*string `json:"KeywordFilterLibs,omitempty" xml:"KeywordFilterLibs,omitempty" type:"Repeated"`
-	// Hit word libraries.
+	// The hit keyword library.
 	KeywordHitLibs []*string `json:"KeywordHitLibs,omitempty" xml:"KeywordHitLibs,omitempty" type:"Repeated"`
-	// Service rules
+	// The service rules.
 	Rules []*ListServiceConfigsResponseBodyDataCustomServiceConfRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// Hit similar text libraries.
+	// The hit similar text library.
 	SimilarTextHitLibs []*string `json:"SimilarTextHitLibs,omitempty" xml:"SimilarTextHitLibs,omitempty" type:"Repeated"`
 }
 
@@ -417,15 +426,15 @@ func (s *ListServiceConfigsResponseBodyDataCustomServiceConf) Validate() error {
 }
 
 type ListServiceConfigsResponseBodyDataCustomServiceConfRules struct {
-	// Image review rule.
+	// The image moderation rule.
 	ImageScanRule *ListServiceConfigsResponseBodyDataCustomServiceConfRulesImageScanRule `json:"ImageScanRule,omitempty" xml:"ImageScanRule,omitempty" type:"Struct"`
-	// Index.
+	// The ordinal number.
 	//
 	// example:
 	//
 	// 1
 	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
-	// Text review rule.
+	// The text moderation rule.
 	TextScanRule *ListServiceConfigsResponseBodyDataCustomServiceConfRulesTextScanRule `json:"TextScanRule,omitempty" xml:"TextScanRule,omitempty" type:"Struct"`
 }
 
@@ -479,7 +488,7 @@ func (s *ListServiceConfigsResponseBodyDataCustomServiceConfRules) Validate() er
 }
 
 type ListServiceConfigsResponseBodyDataCustomServiceConfRulesImageScanRule struct {
-	// Image services.
+	// The image service.
 	Services []*string `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
 }
 
@@ -505,7 +514,7 @@ func (s *ListServiceConfigsResponseBodyDataCustomServiceConfRulesImageScanRule) 
 }
 
 type ListServiceConfigsResponseBodyDataCustomServiceConfRulesTextScanRule struct {
-	// Text services.
+	// The text services.
 	Services []*string `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
 }
 

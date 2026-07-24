@@ -20,24 +20,31 @@ type iUpdateKeywordLibRequest interface {
 }
 
 type UpdateKeywordLibRequest struct {
-	// Library ID.
+	// The ID of the keyword library.
 	//
 	// example:
 	//
 	// custom_xxxx
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
-	// Keyword library name.
+	// The name of the keyword library.
 	//
 	// example:
 	//
-	// 测试库
+	// TestLibrary.
 	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The keyword library code.
+	//
+	// - desensitize: desensitization keyword library
+	//
+	// example:
+	//
+	// desensitize
 	TenantCode *string `json:"TenantCode,omitempty" xml:"TenantCode,omitempty"`
 }
 

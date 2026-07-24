@@ -22,27 +22,27 @@ type iAddKeywordLibResponseBody interface {
 }
 
 type AddKeywordLibResponseBody struct {
-	// Status code
+	// The error code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *AddKeywordLibResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message that is returned in response to the request.
+	// The description of the error code.
 	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// The request ID.
+	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Success indicator.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -113,9 +113,9 @@ func (s *AddKeywordLibResponseBody) Validate() error {
 }
 
 type AddKeywordLibResponseBodyData struct {
-	// Result.
+	// The result.
 	KeywordsResult *AddKeywordLibResponseBodyDataKeywordsResult `json:"KeywordsResult,omitempty" xml:"KeywordsResult,omitempty" type:"Struct"`
-	// The id of the keyword library.
+	// The ID of the keyword library.
 	//
 	// example:
 	//
@@ -174,49 +174,49 @@ func (s *AddKeywordLibResponseBodyData) Validate() error {
 }
 
 type AddKeywordLibResponseBodyDataKeywordsResult struct {
-	// Internationalization key.
+	// The internationalization key.
 	//
 	// example:
 	//
 	// xxx
 	I18nKey *string `json:"I18nKey,omitempty" xml:"I18nKey,omitempty"`
-	// List of keywords that are too long or too short.
+	// The list of keywords with invalid length.
 	IllegalLengthKeywords []*string `json:"IllegalLengthKeywords,omitempty" xml:"IllegalLengthKeywords,omitempty" type:"Repeated"`
-	// Invalid keyword count
+	// The number of invalid keywords.
 	//
 	// example:
 	//
 	// 133
 	InvalidCount *int32 `json:"InvalidCount,omitempty" xml:"InvalidCount,omitempty"`
-	// List of invalid keywords
+	// The list of invalid keywords.
 	InvalidKeywords []*string `json:"InvalidKeywords,omitempty" xml:"InvalidKeywords,omitempty" type:"Repeated"`
-	// The id of the keyword library.
+	// The ID of the keyword library.
 	//
 	// example:
 	//
 	// customxx_xxxx
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
-	// Duplicate keyword count
+	// The number of duplicate keywords.
 	//
 	// example:
 	//
 	// 118
 	RepeatCount *int32 `json:"RepeatCount,omitempty" xml:"RepeatCount,omitempty"`
-	// List of duplicate keywords
+	// The list of duplicate keywords.
 	RepeatKeywords []*string `json:"RepeatKeywords,omitempty" xml:"RepeatKeywords,omitempty" type:"Repeated"`
-	// Successful keyword count
+	// The number of successful keywords.
 	//
 	// example:
 	//
 	// 278
 	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
-	// The tips.
+	// The prompt information.
 	//
 	// example:
 	//
 	// xxx
 	Tips *string `json:"Tips,omitempty" xml:"Tips,omitempty"`
-	// The total number of keywords.
+	// The total count.
 	//
 	// example:
 	//

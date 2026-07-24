@@ -42,13 +42,13 @@ type GetServiceConfResponseBody struct {
 	//
 	// guard-scene
 	Classify *string `json:"Classify,omitempty" xml:"Classify,omitempty"`
-	// Error code, consistent with HTTP status.
+	// Error code, consistent with the HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Service details
+	// Service details.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type GetServiceConfResponseBody struct {
 	//
 	// {}
 	Option map[string]interface{} `json:"Option,omitempty" xml:"Option,omitempty"`
-	// ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
+	// The ID assigned by the backend to uniquely identify a request. It can be used for troubleshooting.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type GetServiceConfResponseBody struct {
 	//
 	// plus
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	// Success indicator
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

@@ -24,37 +24,37 @@ type iUpdateScanResultFeedbackRequest interface {
 }
 
 type UpdateScanResultFeedbackRequest struct {
-	// Feedback
+	// The feedback.
 	//
 	// example:
 	//
 	// missOut
 	Feedback *string `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
-	// Labels.
+	// The labels.
 	//
 	// example:
 	//
 	// abuse
 	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 46232656-984E-****-A648-B1D0667B6C3E
 	QueryRequestId *string `json:"QueryRequestId,omitempty" xml:"QueryRequestId,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource Type
+	// The resource type.
 	//
 	// example:
 	//
 	// text
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// Risk Level
+	// The risk level.
 	//
 	// example:
 	//

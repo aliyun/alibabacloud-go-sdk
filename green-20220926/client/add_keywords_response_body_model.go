@@ -22,27 +22,27 @@ type iAddKeywordsResponseBody interface {
 }
 
 type AddKeywordsResponseBody struct {
-	// Return code. A return of 200 represents success.
+	// The error code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *AddKeywordsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message that is returned in response to the request.
+	// The description of the error code.
 	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
+	// The request ID. Alibaba Cloud generates a unique identifier for each request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Success indicator.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -113,9 +113,9 @@ func (s *AddKeywordsResponseBody) Validate() error {
 }
 
 type AddKeywordsResponseBodyData struct {
-	// Result.
+	// The result.
 	KeywordsResult *AddKeywordsResponseBodyDataKeywordsResult `json:"KeywordsResult,omitempty" xml:"KeywordsResult,omitempty" type:"Struct"`
-	// The ID of the keyword library.
+	// The keyword library ID.
 	//
 	// example:
 	//
@@ -174,21 +174,21 @@ func (s *AddKeywordsResponseBodyData) Validate() error {
 }
 
 type AddKeywordsResponseBodyDataKeywordsResult struct {
-	// Internationalization key.
+	// The internationalization key.
 	//
 	// example:
 	//
 	// xxx
 	I18nKey *string `json:"I18nKey,omitempty" xml:"I18nKey,omitempty"`
-	// List of keywords that are too long or too short.
+	// The list of keywords with excessive or insufficient length.
 	IllegalLengthKeywords []*string `json:"IllegalLengthKeywords,omitempty" xml:"IllegalLengthKeywords,omitempty" type:"Repeated"`
-	// Invalid keyword count
+	// The number of invalid keywords.
 	//
 	// example:
 	//
 	// 1
 	InvalidCount *int32 `json:"InvalidCount,omitempty" xml:"InvalidCount,omitempty"`
-	// List of invalid keywords
+	// The list of invalid keywords.
 	InvalidKeywords []*string `json:"InvalidKeywords,omitempty" xml:"InvalidKeywords,omitempty" type:"Repeated"`
 	// The keyword library ID.
 	//
@@ -196,33 +196,33 @@ type AddKeywordsResponseBodyDataKeywordsResult struct {
 	//
 	// customxx_xxxx
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
-	// The progress percentage of the task.
+	// The task progress percentage.
 	//
 	// example:
 	//
 	// 100
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// Duplicate keyword count
+	// The number of duplicate keywords.
 	//
 	// example:
 	//
 	// 1
 	RepeatCount *int32 `json:"RepeatCount,omitempty" xml:"RepeatCount,omitempty"`
-	// List of duplicate keywords
+	// The list of duplicate keywords.
 	RepeatKeywords []*string `json:"RepeatKeywords,omitempty" xml:"RepeatKeywords,omitempty" type:"Repeated"`
-	// The success count of the keywords.
+	// The number of successful additions.
 	//
 	// example:
 	//
 	// 6
 	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
-	// The tips.
+	// The prompt information.
 	//
 	// example:
 	//
 	// xxxxx
 	Tips *string `json:"Tips,omitempty" xml:"Tips,omitempty"`
-	// The total count of the keywords.
+	// The total count.
 	//
 	// example:
 	//

@@ -22,27 +22,27 @@ type iGetOssCheckResultDetailResponseBody interface {
 }
 
 type GetOssCheckResultDetailResponseBody struct {
-	// Error code, consistent with HTTP status.
+	// The error code, which is consistent with the HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Detailed data.
+	// The details data.
 	Data *GetOssCheckResultDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Further description of the error code.
+	// The further description of the error code.
 	//
 	// example:
 	//
 	// success
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// Backend-assigned ID used to uniquely identify a request. Can be used for troubleshooting.
+	// The ID assigned by the backend to uniquely identify a request. This ID can be used to troubleshoot issues.
 	//
 	// example:
 	//
 	// 62E97001-1255-50A9-8E1E-4FD05473D952
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Success indicator.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -113,149 +113,149 @@ func (s *GetOssCheckResultDetailResponseBody) Validate() error {
 }
 
 type GetOssCheckResultDetailResponseBodyData struct {
-	// Bucket name.
+	// The storage bucket.
 	//
 	// example:
 	//
 	// oss-tmp
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// Error code, consistent with HTTP status.
+	// The error code, which is consistent with the HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Audio and video detection type.
+	// The audio and video detection type.
 	//
 	// example:
 	//
 	// audio
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// Primary service.
+	// The primary service.
 	//
 	// example:
 	//
 	// audio_media_detection
 	CopyFrom *string `json:"CopyFrom,omitempty" xml:"CopyFrom,omitempty"`
-	// Freeze status.
+	// The freeze status.
 	//
 	// example:
 	//
 	// UNFREEZED
 	FreezeStatus *string `json:"FreezeStatus,omitempty" xml:"FreezeStatus,omitempty"`
-	// Freeze type.
+	// The freeze type.
 	//
 	// example:
 	//
 	// COPY
 	FreezeType *string `json:"FreezeType,omitempty" xml:"FreezeType,omitempty"`
-	// Image URL.
+	// The image URL.
 	//
 	// example:
 	//
 	// http://www.aliyuncs.com/test.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// Whether to copy.
+	// Indicates whether the content is copied.
 	//
 	// example:
 	//
 	// true
 	IsCopy *bool `json:"IsCopy,omitempty" xml:"IsCopy,omitempty"`
-	// Job name.
+	// The task name.
 	//
 	// example:
 	//
 	// dhT20X2310
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// Labels.
+	// The labels.
 	LabelDetails []*GetOssCheckResultDetailResponseBodyDataLabelDetails `json:"LabelDetails,omitempty" xml:"LabelDetails,omitempty" type:"Repeated"`
-	// Labels.
+	// The labels.
 	LabelDetails2 []*GetOssCheckResultDetailResponseBodyDataLabelDetails2 `json:"LabelDetails2,omitempty" xml:"LabelDetails2,omitempty" type:"Repeated"`
-	// Image labels.
+	// The image labels.
 	Labels []*string `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// Text labels.
+	// The text labels.
 	Labels2 []*string `json:"Labels2,omitempty" xml:"Labels2,omitempty" type:"Repeated"`
-	// Manual handling status.
+	// The manual disposition status.
 	//
 	// example:
 	//
 	// FREEZE
 	ManualFreezeAction *string `json:"ManualFreezeAction,omitempty" xml:"ManualFreezeAction,omitempty"`
-	// Handling time.
+	// The disposition time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2025-08-09 12:00:00
 	ManualOperateTime *string `json:"ManualOperateTime,omitempty" xml:"ManualOperateTime,omitempty"`
-	// Handler.
+	// The operator who performed the disposition.
 	//
 	// example:
 	//
 	// xx
 	ManualOperator *string `json:"ManualOperator,omitempty" xml:"ManualOperator,omitempty"`
-	// File MD5.
+	// The MD5 hash of the file.
 	//
 	// example:
 	//
 	// f6e2e1946f06310c8a0cc443a05819f3
 	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	// Further description of the error code.
+	// The further description of the error code.
 	//
 	// example:
 	//
 	// success
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// Object name.
+	// The object name.
 	//
 	// example:
 	//
 	// 1748396909030.jpg
 	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	// Image risk level
+	// The image risk level.
 	//
 	// example:
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// Overall risk level.
+	// The overall risk level.
 	//
 	// example:
 	//
 	// low
 	RiskLevel0 *string `json:"RiskLevel0,omitempty" xml:"RiskLevel0,omitempty"`
-	// Text risk level
+	// The text risk level.
 	//
 	// example:
 	//
 	// medium
 	RiskLevel2 *string `json:"RiskLevel2,omitempty" xml:"RiskLevel2,omitempty"`
-	// Detailed scan results.
+	// The result details.
 	//
 	// example:
 	//
 	// {}
 	ScanResult *string `json:"ScanResult,omitempty" xml:"ScanResult,omitempty"`
-	// Detection service information
+	// The detection service information.
 	ScanServiceInfos []*GetOssCheckResultDetailResponseBodyDataScanServiceInfos `json:"ScanServiceInfos,omitempty" xml:"ScanServiceInfos,omitempty" type:"Repeated"`
-	// Service code.
+	// The service code.
 	//
 	// example:
 	//
 	// audio_media_detection_01
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// Service name.
+	// The service name.
 	//
 	// example:
 	//
 	// 服务名称
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// Task ID.
+	// The task ID.
 	//
 	// example:
 	//
 	// P_Z7OLMN
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// Task URL.
+	// The task URL.
 	//
 	// example:
 	//
@@ -555,19 +555,19 @@ func (s *GetOssCheckResultDetailResponseBodyData) Validate() error {
 }
 
 type GetOssCheckResultDetailResponseBodyDataLabelDetails struct {
-	// Confidence score, 0 to 100, retained to two decimal places.
+	// The confidence score, ranging from 0 to 100, rounded to two decimal places.
 	//
 	// example:
 	//
 	// 50
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	// Label description.
+	// The label description.
 	//
 	// example:
 	//
 	// 涉政
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Label.
+	// The labels.
 	//
 	// example:
 	//
@@ -615,19 +615,19 @@ func (s *GetOssCheckResultDetailResponseBodyDataLabelDetails) Validate() error {
 }
 
 type GetOssCheckResultDetailResponseBodyDataLabelDetails2 struct {
-	// Confidence score, 0 to 100, retained to two decimal places.
+	// The confidence score, ranging from 0 to 100, rounded to two decimal places.
 	//
 	// example:
 	//
 	// 50
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	// Label description.
+	// The label description.
 	//
 	// example:
 	//
 	// 涉政
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Label.
+	// The labels.
 	//
 	// example:
 	//
@@ -675,25 +675,25 @@ func (s *GetOssCheckResultDetailResponseBodyDataLabelDetails2) Validate() error 
 }
 
 type GetOssCheckResultDetailResponseBodyDataScanServiceInfos struct {
-	// Main service.
+	// The primary service.
 	//
 	// example:
 	//
 	// audio_media_detection
 	CopyFrom *string `json:"CopyFrom,omitempty" xml:"CopyFrom,omitempty"`
-	// Whether to copy.
+	// Indicates whether the content is copied.
 	//
 	// example:
 	//
 	// true
 	IsCopy *bool `json:"IsCopy,omitempty" xml:"IsCopy,omitempty"`
-	// Service code.
+	// The service code.
 	//
 	// example:
 	//
 	// audio_media_detection_01
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// Service name.
+	// The service name.
 	//
 	// example:
 	//

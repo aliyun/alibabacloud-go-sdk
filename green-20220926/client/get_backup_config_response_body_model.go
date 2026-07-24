@@ -46,35 +46,35 @@ type GetBackupConfigResponseBody struct {
 	//
 	// 0
 	BackupMode *int32 `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
-	// File server OSS Bucket.
+	// File server OSS bucket.
 	//
 	// example:
 	//
 	// buckect_test
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// Whether it is enabled. Values:
+	// Indicates whether the feature is enabled. Valid values:
 	//
-	// - **true**: Enabled
+	// - **true**: Enabled.
 	//
-	// - **false**: Disabled
+	// - **false**: Disabled.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// Whether to enable backup.
+	// Indicates whether backup is enabled.
 	//
 	// example:
 	//
 	// True
 	EnableBackup *bool `json:"EnableBackup,omitempty" xml:"EnableBackup,omitempty"`
-	// Whether to enable audio backup.
+	// Indicates whether audio backup is enabled.
 	//
 	// example:
 	//
 	// True
 	EnableBackupVoice *bool `json:"EnableBackupVoice,omitempty" xml:"EnableBackupVoice,omitempty"`
-	// Expiration time in seconds.
+	// Expiration time, in seconds.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type GetBackupConfigResponseBody struct {
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
+	// The ID assigned by the backend to uniquely identify a request. It can be used for troubleshooting.
 	//
 	// example:
 	//

@@ -22,19 +22,28 @@ type iQueryAnswerSampleByPageResponseBody interface {
 }
 
 type QueryAnswerSampleByPageResponseBody struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32                                      `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*QueryAnswerSampleByPageResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The data on the current page.
+	Items []*QueryAnswerSampleByPageResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 58
@@ -108,15 +117,26 @@ func (s *QueryAnswerSampleByPageResponseBody) Validate() error {
 }
 
 type QueryAnswerSampleByPageResponseBodyItems struct {
+	// The answer.
+	//
+	// example:
+	//
+	// 答案
 	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2023-07-31 06:16:06
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The primary key ID.
+	//
 	// example:
 	//
 	// 1666
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the proxy answer library.
+	//
 	// example:
 	//
 	// custom_xxxx

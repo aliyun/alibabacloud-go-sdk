@@ -14,6 +14,8 @@ type iGetTuneProposalByIdRequest interface {
 }
 
 type GetTuneProposalByIdRequest struct {
+	// The primary key ID.
+	//
 	// example:
 	//
 	// prop-xxxxxxxx

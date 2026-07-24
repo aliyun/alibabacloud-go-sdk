@@ -34,67 +34,67 @@ type iQueryCallbackResponseBody interface {
 }
 
 type QueryCallbackResponseBody struct {
-	// Encryption algorithm.
+	// The encryption algorithm.
 	//
 	// example:
 	//
 	// SHA256
 	CryptType *string `json:"CryptType,omitempty" xml:"CryptType,omitempty"`
-	// Whether there is an OSS detection task.
+	// Indicates whether an OSS detection task exists.
 	//
 	// example:
 	//
 	// false
 	ExistsOssCheckTask *bool `json:"ExistsOssCheckTask,omitempty" xml:"ExistsOssCheckTask,omitempty"`
-	// Creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2022-11-30 16:30:29
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// Modification time.
+	// The modification time.
 	//
 	// example:
 	//
 	// 2024-06-03 15:20:14
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Primary key ID.
+	// The primary key ID.
 	//
 	// example:
 	//
 	// 11234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Name.
+	// The name.
 	//
 	// example:
 	//
 	// 回调通知
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
+	// The ID assigned by the backend to uniquely identify a request. This ID can be used to troubleshoot issues.
 	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Result scope.
+	// The result scope.
 	//
 	// example:
 	//
 	// all
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// Seed.
+	// Seed。
 	//
 	// example:
 	//
 	// cb2MysbJTAAIf6gB3u4vpIEU-1ySnnf
 	Seed *string `json:"Seed,omitempty" xml:"Seed,omitempty"`
-	// UID.
+	// UID。
 	//
 	// example:
 	//
 	// 19964*****086772
 	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
-	// Callback URL.
+	// The callback URL.
 	//
 	// example:
 	//

@@ -28,45 +28,45 @@ type iListImagesFromLibRequest interface {
 }
 
 type ListImagesFromLibRequest struct {
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// End date.
+	// The end time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2023-08-24 10:01:55
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// Image ID.
+	// The image ID.
 	//
 	// example:
 	//
 	// 112
 	ImgId *string `json:"ImgId,omitempty" xml:"ImgId,omitempty"`
-	// Gallery ID.
+	// The image library ID.
 	//
 	// example:
 	//
 	// custom_xxxx
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
-	// Page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Sort field.
+	// The sort field.
 	Sort map[string]*string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// Start date.
+	// The start time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//

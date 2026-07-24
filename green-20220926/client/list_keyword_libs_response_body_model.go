@@ -22,27 +22,27 @@ type iListKeywordLibsResponseBody interface {
 }
 
 type ListKeywordLibsResponseBody struct {
-	// Error code.
+	// The error code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Returned data.
+	// The returned data.
 	Data []*ListKeywordLibsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Further description of the error code.
+	// The description of the error code.
 	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
+	// The request ID assigned by the backend, which uniquely identifies the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Success indicator.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -117,37 +117,37 @@ func (s *ListKeywordLibsResponseBody) Validate() error {
 }
 
 type ListKeywordLibsResponseBodyData struct {
-	// Modification time.
+	// The modification time.
 	//
 	// example:
 	//
 	// 2022-11-30 16:30:29
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Number of keywords.
+	// The number of keywords.
 	//
 	// example:
 	//
 	// 10
 	KeywordCount *string `json:"KeywordCount,omitempty" xml:"KeywordCount,omitempty"`
-	// Library ID.
+	// The library ID.
 	//
 	// example:
 	//
 	// custom_xxxxx
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
-	// Library name.
+	// The library name.
 	//
 	// example:
 	//
 	// 测试
 	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
-	// Service codes.
+	// The service codes.
 	//
 	// example:
 	//
 	// service1,service2
 	ServiceCodes *string `json:"ServiceCodes,omitempty" xml:"ServiceCodes,omitempty"`
-	// UID.
+	// UID。
 	//
 	// example:
 	//

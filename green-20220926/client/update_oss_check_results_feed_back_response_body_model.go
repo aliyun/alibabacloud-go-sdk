@@ -16,10 +16,14 @@ type iUpdateOssCheckResultsFeedBackResponseBody interface {
 }
 
 type UpdateOssCheckResultsFeedBackResponseBody struct {
+	// Return Result.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID assigned by the backend to uniquely identify a request. It can be used for troubleshooting.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****

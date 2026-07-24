@@ -26,43 +26,43 @@ type iGetOssCheckStatusResponseBody interface {
 }
 
 type GetOssCheckStatusResponseBody struct {
-	// Bid.
+	// Bid。
 	//
 	// example:
 	//
 	// 26842
 	Bid *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
-	// Whether a product has been activated on Alibaba Cloud.
+	// Indicates whether the service is activated on Alibaba Cloud.
 	//
 	// example:
 	//
 	// True
 	Buy *bool `json:"Buy,omitempty" xml:"Buy,omitempty"`
-	// Commodity code.
+	// The commodity code.
 	//
 	// example:
 	//
 	// xxx
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// Whether there is an outstanding payment.
+	// Indicates whether the account has an overdue payment.
 	//
 	// example:
 	//
 	// False
 	Indebt *bool `json:"Indebt,omitempty" xml:"Indebt,omitempty"`
-	// Whether internal security is authorized.
+	// Indicates whether Security Center is authorized.
 	//
 	// example:
 	//
 	// True
 	RamStatus *string `json:"RamStatus,omitempty" xml:"RamStatus,omitempty"`
-	// ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
+	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether log analysis function is authorized.
+	// Indicates whether the log analysis feature is authorized.
 	//
 	// example:
 	//

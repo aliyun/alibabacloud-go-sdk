@@ -30,51 +30,51 @@ type iListImagesFromLibResponseBody interface {
 }
 
 type ListImagesFromLibResponseBody struct {
-	// Error code, consistent with HTTP status.
+	// The error code, which is consistent with the HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Current page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// HTTP status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Data of the current page.
+	// The data on the current page.
 	Items []*ListImagesFromLibResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// Further description of the error code.
+	// The further description of the error code.
 	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// Page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
+	// The backend-assigned ID that uniquely identifies a request. This ID can be used for troubleshooting.
 	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Success indicator.
+	// The success flag.
 	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total number of images.
+	// The total number of images.
 	//
 	// example:
 	//
@@ -185,25 +185,25 @@ func (s *ListImagesFromLibResponseBody) Validate() error {
 }
 
 type ListImagesFromLibResponseBodyItems struct {
-	// Creation time.
+	// The creation time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2022-11-30 16:30:29
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// Image ID.
+	// The image ID.
 	//
 	// example:
 	//
 	// 112
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// Image URL.
+	// The URL of the image.
 	//
 	// example:
 	//
 	// https://oss-cip-shanghai.oss-cn-shanghai.aliyuncs.com/image/upload/IMG_2123.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// Thumbnail URL.
+	// The URL of the thumbnail.
 	//
 	// example:
 	//

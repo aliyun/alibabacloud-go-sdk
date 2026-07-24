@@ -22,30 +22,37 @@ type iDeleteKeywordRequest interface {
 }
 
 type DeleteKeywordRequest struct {
-	// The ids\\" list of keywords.
+	// The IDs of the keywords to delete.
 	//
 	// example:
 	//
 	// [6715465]
 	KeywordIdList *string `json:"KeywordIdList,omitempty" xml:"KeywordIdList,omitempty"`
-	// The ids of keywords.
+	// The IDs of the keywords to delete.
 	//
 	// example:
 	//
 	// [16754493]
 	KeywordIds *string `json:"KeywordIds,omitempty" xml:"KeywordIds,omitempty"`
-	// Library id
+	// The ID of the keyword library.
 	//
 	// example:
 	//
 	// customxx_xxxx
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
-	// Region ID
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The code of the keyword library.
+	//
+	// - desensitize: masking keyword library.
+	//
+	// example:
+	//
+	// desensitize
 	TenantCode *string `json:"TenantCode,omitempty" xml:"TenantCode,omitempty"`
 }
 

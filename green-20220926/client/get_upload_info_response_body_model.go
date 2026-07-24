@@ -31,6 +31,8 @@ type iGetUploadInfoResponseBody interface {
 	GetPolicy() *string
 	SetRequestId(v string) *GetUploadInfoResponseBody
 	GetRequestId() *string
+	SetSecurityToken(v string) *GetUploadInfoResponseBody
+	GetSecurityToken() *string
 	SetSignature(v string) *GetUploadInfoResponseBody
 	GetSignature() *string
 	SetSuccess(v bool) *GetUploadInfoResponseBody
@@ -38,79 +40,80 @@ type iGetUploadInfoResponseBody interface {
 }
 
 type GetUploadInfoResponseBody struct {
-	// Upload authorization ID.
+	// The upload authorization ID.
 	//
 	// example:
 	//
 	// LTAI5t9HM*****EXQmw3DVH
 	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
-	// Error code, consistent with HTTP status.
+	// The error code, consistent with the HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// In seconds.
+	// Unit: seconds.
 	//
 	// example:
 	//
 	// 900
 	Expire *int64 `json:"Expire,omitempty" xml:"Expire,omitempty"`
-	// Folder name.
+	// The file name.
 	//
 	// example:
 	//
 	// image/upload/xxx
 	Folder *string `json:"Folder,omitempty" xml:"Folder,omitempty"`
-	// Upload host.
+	// The upload host.
 	//
 	// example:
 	//
 	// https://oss-cip-shanghai.oss-cn-shanghai.aliyuncs.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// HTTP status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Key used for uploading files.
+	// The key used for file upload.
 	//
 	// example:
 	//
 	// image/upload/xxx
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Further description of the error code.
+	// The further description of the error code.
 	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// Used for front-end image upload.
+	// Used for frontend image upload.
 	//
 	// example:
 	//
 	// 测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// OSS upload file Policy.
+	// The OSS file upload policy.
 	//
 	// example:
 	//
 	// xxxx
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
+	// The backend-assigned ID that uniquely identifies a request. This ID can be used for troubleshooting.
 	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Upload signature information.
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The upload signature information.
 	//
 	// example:
 	//
 	// iyu7VHblYj+mEF9p46cdGOlNPAw=
 	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
-	// Success indicator.
+	// The success flag.
 	//
 	// example:
 	//
@@ -168,6 +171,10 @@ func (s *GetUploadInfoResponseBody) GetPolicy() *string {
 
 func (s *GetUploadInfoResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *GetUploadInfoResponseBody) GetSecurityToken() *string {
+	return s.SecurityToken
 }
 
 func (s *GetUploadInfoResponseBody) GetSignature() *string {
@@ -230,6 +237,11 @@ func (s *GetUploadInfoResponseBody) SetPolicy(v string) *GetUploadInfoResponseBo
 
 func (s *GetUploadInfoResponseBody) SetRequestId(v string) *GetUploadInfoResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *GetUploadInfoResponseBody) SetSecurityToken(v string) *GetUploadInfoResponseBody {
+	s.SecurityToken = &v
 	return s
 }
 

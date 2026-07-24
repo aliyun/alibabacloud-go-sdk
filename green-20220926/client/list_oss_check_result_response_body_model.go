@@ -22,27 +22,27 @@ type iListOssCheckResultResponseBody interface {
 }
 
 type ListOssCheckResultResponseBody struct {
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Data of the current page.
+	// The data on the current page.
 	Items []*ListOssCheckResultResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// Page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
+	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of records.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -117,125 +117,129 @@ func (s *ListOssCheckResultResponseBody) Validate() error {
 }
 
 type ListOssCheckResultResponseBodyItems struct {
-	// Storage space.
+	// The OSS bucket.
 	//
 	// example:
 	//
 	// tmp
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// Error code, consistent with HTTP status.
+	// The error code, which is consistent with the HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Audio and video detection type.
+	// The audio and video detection type.
 	//
 	// example:
 	//
 	// audio
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// Primary service.
+	// The primary service.
 	//
 	// example:
 	//
 	// audio_media_detection
 	CopyFrom *string `json:"CopyFrom,omitempty" xml:"CopyFrom,omitempty"`
-	// Freeze status.
+	// The freeze status.
 	//
 	// example:
 	//
 	// FREEZED
 	FreezeStatus *string `json:"FreezeStatus,omitempty" xml:"FreezeStatus,omitempty"`
-	// Freeze type.
+	// The freeze type.
 	//
 	// example:
 	//
 	// ACL
 	FreezeType *string `json:"FreezeType,omitempty" xml:"FreezeType,omitempty"`
-	// Image URL address.
+	// The URL of the image.
 	//
 	// example:
 	//
 	// http://www.aliyuncs.com/test.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// Whether to copy.
+	// Indicates whether the task is copied.
 	//
 	// example:
 	//
 	// true
 	IsCopy *bool `json:"IsCopy,omitempty" xml:"IsCopy,omitempty"`
-	// Job name.
+	// The task name.
 	//
 	// example:
 	//
 	// dhT20X2310
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// Image labels.
+	// The list of labels hit by video frames.
+	LabelDetails []*ListOssCheckResultResponseBodyItemsLabelDetails `json:"LabelDetails,omitempty" xml:"LabelDetails,omitempty" type:"Repeated"`
+	// The list of labels hit by video audio.
+	LabelDetails2 []*ListOssCheckResultResponseBodyItemsLabelDetails2 `json:"LabelDetails2,omitempty" xml:"LabelDetails2,omitempty" type:"Repeated"`
+	// The image labels.
 	Labels []*string `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// Text labels.
+	// The text labels.
 	Labels2 []*string `json:"Labels2,omitempty" xml:"Labels2,omitempty" type:"Repeated"`
-	// File MD5.
+	// The MD5 hash of the file.
 	//
 	// example:
 	//
 	// 54416c9b159df4a60ae03c04ccb94cb5
 	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	// Further description of the error code.
+	// The description of the error code.
 	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// Object name.
+	// The object name.
 	//
 	// example:
 	//
 	// 1713014531569_958.png.jpeg
 	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	// Image risk level
+	// The image risk level.
 	//
 	// example:
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// Overall risk level
+	// The overall risk level.
 	//
 	// example:
 	//
 	// low
 	RiskLevel0 *string `json:"RiskLevel0,omitempty" xml:"RiskLevel0,omitempty"`
-	// Text risk level
+	// The text risk level.
 	//
 	// example:
 	//
 	// none
 	RiskLevel2 *string `json:"RiskLevel2,omitempty" xml:"RiskLevel2,omitempty"`
-	// Details of the result.
+	// The scan result details.
 	//
 	// example:
 	//
 	// {}
 	ScanResult *string `json:"ScanResult,omitempty" xml:"ScanResult,omitempty"`
-	// Service code.
+	// The service code.
 	//
 	// example:
 	//
 	// audio_media_detection_01
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// Service name.
+	// The service name.
 	//
 	// example:
 	//
 	// 服务名称
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// Task ID.
+	// The task ID.
 	//
 	// example:
 	//
 	// EP6TI7_au_Zo25ITvCbkocNuF801QOQX
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// Task URL.
+	// The task URL.
 	//
 	// example:
 	//
@@ -285,6 +289,14 @@ func (s *ListOssCheckResultResponseBodyItems) GetIsCopy() *bool {
 
 func (s *ListOssCheckResultResponseBodyItems) GetJobName() *string {
 	return s.JobName
+}
+
+func (s *ListOssCheckResultResponseBodyItems) GetLabelDetails() []*ListOssCheckResultResponseBodyItemsLabelDetails {
+	return s.LabelDetails
+}
+
+func (s *ListOssCheckResultResponseBodyItems) GetLabelDetails2() []*ListOssCheckResultResponseBodyItemsLabelDetails2 {
+	return s.LabelDetails2
 }
 
 func (s *ListOssCheckResultResponseBodyItems) GetLabels() []*string {
@@ -384,6 +396,16 @@ func (s *ListOssCheckResultResponseBodyItems) SetJobName(v string) *ListOssCheck
 	return s
 }
 
+func (s *ListOssCheckResultResponseBodyItems) SetLabelDetails(v []*ListOssCheckResultResponseBodyItemsLabelDetails) *ListOssCheckResultResponseBodyItems {
+	s.LabelDetails = v
+	return s
+}
+
+func (s *ListOssCheckResultResponseBodyItems) SetLabelDetails2(v []*ListOssCheckResultResponseBodyItemsLabelDetails2) *ListOssCheckResultResponseBodyItems {
+	s.LabelDetails2 = v
+	return s
+}
+
 func (s *ListOssCheckResultResponseBodyItems) SetLabels(v []*string) *ListOssCheckResultResponseBodyItems {
 	s.Labels = v
 	return s
@@ -450,5 +472,113 @@ func (s *ListOssCheckResultResponseBodyItems) SetUrl(v string) *ListOssCheckResu
 }
 
 func (s *ListOssCheckResultResponseBodyItems) Validate() error {
+	if s.LabelDetails != nil {
+		for _, item := range s.LabelDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LabelDetails2 != nil {
+		for _, item := range s.LabelDetails2 {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ListOssCheckResultResponseBodyItemsLabelDetails struct {
+	// The description of the label.
+	//
+	// example:
+	//
+	// 影音娱乐类
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The label hit by the video frame.
+	//
+	// example:
+	//
+	// logo_streaming
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+}
+
+func (s ListOssCheckResultResponseBodyItemsLabelDetails) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListOssCheckResultResponseBodyItemsLabelDetails) GoString() string {
+	return s.String()
+}
+
+func (s *ListOssCheckResultResponseBodyItemsLabelDetails) GetDescription() *string {
+	return s.Description
+}
+
+func (s *ListOssCheckResultResponseBodyItemsLabelDetails) GetLabel() *string {
+	return s.Label
+}
+
+func (s *ListOssCheckResultResponseBodyItemsLabelDetails) SetDescription(v string) *ListOssCheckResultResponseBodyItemsLabelDetails {
+	s.Description = &v
+	return s
+}
+
+func (s *ListOssCheckResultResponseBodyItemsLabelDetails) SetLabel(v string) *ListOssCheckResultResponseBodyItemsLabelDetails {
+	s.Label = &v
+	return s
+}
+
+func (s *ListOssCheckResultResponseBodyItemsLabelDetails) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListOssCheckResultResponseBodyItemsLabelDetails2 struct {
+	// The description of the label.
+	//
+	// example:
+	//
+	// 辱骂内容
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The label hit by the audio.
+	//
+	// example:
+	//
+	// abuse
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+}
+
+func (s ListOssCheckResultResponseBodyItemsLabelDetails2) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListOssCheckResultResponseBodyItemsLabelDetails2) GoString() string {
+	return s.String()
+}
+
+func (s *ListOssCheckResultResponseBodyItemsLabelDetails2) GetDescription() *string {
+	return s.Description
+}
+
+func (s *ListOssCheckResultResponseBodyItemsLabelDetails2) GetLabel() *string {
+	return s.Label
+}
+
+func (s *ListOssCheckResultResponseBodyItemsLabelDetails2) SetDescription(v string) *ListOssCheckResultResponseBodyItemsLabelDetails2 {
+	s.Description = &v
+	return s
+}
+
+func (s *ListOssCheckResultResponseBodyItemsLabelDetails2) SetLabel(v string) *ListOssCheckResultResponseBodyItemsLabelDetails2 {
+	s.Label = &v
+	return s
+}
+
+func (s *ListOssCheckResultResponseBodyItemsLabelDetails2) Validate() error {
 	return dara.Validate(s)
 }

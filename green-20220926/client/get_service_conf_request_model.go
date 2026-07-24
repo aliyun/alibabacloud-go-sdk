@@ -22,7 +22,7 @@ type iGetServiceConfRequest interface {
 }
 
 type GetServiceConfRequest struct {
-	// Query default configuration
+	// Queries the default configuration.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type GetServiceConfRequest struct {
 	//
 	// image
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// Audit scenario.
+	// Moderation scenario.
 	//
 	// example:
 	//

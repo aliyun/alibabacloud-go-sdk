@@ -22,27 +22,27 @@ type iGetOssCheckFreezeResultResponseBody interface {
 }
 
 type GetOssCheckFreezeResultResponseBody struct {
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Data of the current page.
+	// The data on the current page.
 	Items []*GetOssCheckFreezeResultResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// Page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Backend-assigned ID, used to uniquely identify a request. Can be used for troubleshooting.
+	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// F0A594BB-FA7A-580F-AE9E-A4188E092823
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total count.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,169 +117,187 @@ func (s *GetOssCheckFreezeResultResponseBody) Validate() error {
 }
 
 type GetOssCheckFreezeResultResponseBodyItems struct {
-	// Storage space.
+	// The OSS bucket.
 	//
 	// example:
 	//
 	// tmp
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// Error code, consistent with HTTP status.
+	// The error code, which is consistent with the HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Audio and video detection type.
+	// The audio or video scan type.
 	//
 	// example:
 	//
 	// audio
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// Primary service.
+	// The primary service.
 	//
 	// example:
 	//
 	// audio_media_detection
 	CopyFrom *string `json:"CopyFrom,omitempty" xml:"CopyFrom,omitempty"`
-	// Feedback.
+	// The feedback. Valid values:
+	//
+	// - misreport: False positive (not a violation).
+	//
+	// - missOut: Missed violation.
 	//
 	// example:
 	//
 	// misreport
 	Feedback *string `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
-	// Whether frozen.
+	// Indicates whether the object is frozen.
 	//
 	// example:
 	//
 	// true
 	Freeze *bool `json:"Freeze,omitempty" xml:"Freeze,omitempty"`
-	// Freeze status.
+	// The freeze status.
 	//
 	// example:
 	//
 	// FREEZED
 	FreezeStatus *string `json:"FreezeStatus,omitempty" xml:"FreezeStatus,omitempty"`
-	// Freeze type.
+	// The freeze type.
 	//
 	// example:
 	//
 	// ACL
 	FreezeType *string `json:"FreezeType,omitempty" xml:"FreezeType,omitempty"`
-	// Image URL address.
+	// The URL of the image.
 	//
 	// example:
 	//
 	// http://www.aliyuncs.com/test.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// Whether to copy.
+	// Indicates whether the task is copied.
 	//
 	// example:
 	//
 	// true
 	IsCopy *bool `json:"IsCopy,omitempty" xml:"IsCopy,omitempty"`
-	// Job name.
+	// The task name.
 	//
 	// example:
 	//
 	// dhT20X2310
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// Labels.
+	// The label details.
 	LabelDetails []*GetOssCheckFreezeResultResponseBodyItemsLabelDetails `json:"LabelDetails,omitempty" xml:"LabelDetails,omitempty" type:"Repeated"`
-	// Image labels.
+	// The image labels.
 	Labels []*string `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// Text labels.
+	// The text labels.
 	Labels2 []*string `json:"Labels2,omitempty" xml:"Labels2,omitempty" type:"Repeated"`
-	// Manual disposal status.
+	// The manual action status. Valid values:
+	//
+	// - FREEZE: Frozen.
+	//
+	// - UNFREEZE: Unfrozen.
 	//
 	// example:
 	//
 	// FREEZE
 	ManualFreezeAction *string `json:"ManualFreezeAction,omitempty" xml:"ManualFreezeAction,omitempty"`
-	// Disposal time.
+	// The action time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2025-08-09 12:00:00
 	ManualOperateTime *string `json:"ManualOperateTime,omitempty" xml:"ManualOperateTime,omitempty"`
-	// Operator.
+	// The operator who performed the action.
 	//
 	// example:
 	//
 	// xx
 	ManualOperator *string `json:"ManualOperator,omitempty" xml:"ManualOperator,omitempty"`
-	// File\\"s MD5.
+	// The MD5 hash of the file.
 	//
 	// example:
 	//
 	// 54416c9b159df4a60ae03c04ccb94cb5
 	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	// Further description of the error code.
+	// The detailed description of the error code.
 	//
 	// example:
 	//
 	// success
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// Object name.
+	// The object name.
 	//
 	// example:
 	//
 	// 1713014531569_958.png.jpeg
 	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// F0A594BB-FA7A-580F-AE9E-A4188E092823
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Image risk level.
+	// The image risk level.
 	//
 	// example:
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// Overall risk level.
+	// The overall risk level.
 	//
 	// example:
 	//
 	// low
 	RiskLevel0 *string `json:"RiskLevel0,omitempty" xml:"RiskLevel0,omitempty"`
-	// Text risk level.
+	// The text risk level.
 	//
 	// example:
 	//
 	// none
 	RiskLevel2 *string `json:"RiskLevel2,omitempty" xml:"RiskLevel2,omitempty"`
-	// Details of the result.
+	// The scan result details.
 	//
 	// example:
 	//
 	// {}
 	ScanResult *string `json:"ScanResult,omitempty" xml:"ScanResult,omitempty"`
-	// Service code.
+	// The service code.
 	//
 	// example:
 	//
 	// audio_media_detection_01
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// Service name.
+	// The service name.
 	//
 	// example:
 	//
 	// 服务名称
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// System disposal status.
+	// The system action status. Valid values:
+	//
+	// - FREEZING: Freezing in progress.
+	//
+	// - FREEZED: Frozen.
+	//
+	// - UNFREEZED: Unfrozen.
+	//
+	// - NONE: No action taken.
+	//
+	// - UNFREEZING: Unfreezing in progress.
 	//
 	// example:
 	//
 	// FREEZED
 	SysDisposalStatus *string `json:"SysDisposalStatus,omitempty" xml:"SysDisposalStatus,omitempty"`
-	// Task ID.
+	// The task ID.
 	//
 	// example:
 	//
 	// P_BT3FHS
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// Task URL.
+	// The task URL.
 	//
 	// example:
 	//
@@ -579,19 +597,19 @@ func (s *GetOssCheckFreezeResultResponseBodyItems) Validate() error {
 }
 
 type GetOssCheckFreezeResultResponseBodyItemsLabelDetails struct {
-	// Confidence.
+	// The confidence level.
 	//
 	// example:
 	//
 	// 50
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	// Label description.
+	// The label description.
 	//
 	// example:
 	//
 	// 涉政
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Label.
+	// The label details.
 	//
 	// example:
 	//

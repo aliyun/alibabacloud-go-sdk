@@ -16,8 +16,14 @@ type iConfigBucketPrefixFilterConfigValue interface {
 }
 
 type ConfigBucketPrefixFilterConfigValue struct {
-	PrefixFilterType *string   `json:"PrefixFilterType,omitempty" xml:"PrefixFilterType,omitempty"`
-	PrefixFilters    []*string `json:"PrefixFilters,omitempty" xml:"PrefixFilters,omitempty" type:"Repeated"`
+	// The prefix filter type.
+	//
+	// example:
+	//
+	// all
+	PrefixFilterType *string `json:"PrefixFilterType,omitempty" xml:"PrefixFilterType,omitempty"`
+	// The prefix list.
+	PrefixFilters []*string `json:"PrefixFilters,omitempty" xml:"PrefixFilters,omitempty" type:"Repeated"`
 }
 
 func (s ConfigBucketPrefixFilterConfigValue) String() string {

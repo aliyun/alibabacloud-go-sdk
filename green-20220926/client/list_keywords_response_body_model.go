@@ -22,27 +22,27 @@ type iListKeywordsResponseBody interface {
 }
 
 type ListKeywordsResponseBody struct {
-	// Error code.
+	// The error code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Returned data.
+	// The returned data.
 	Data *ListKeywordsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Further description of the error code.
+	// The description of the error code.
 	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
+	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Success flag.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -113,21 +113,21 @@ func (s *ListKeywordsResponseBody) Validate() error {
 }
 
 type ListKeywordsResponseBodyData struct {
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Data of the current page.
+	// The data on the current page.
 	Items []*ListKeywordsResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// Page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Total count.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -193,38 +193,39 @@ func (s *ListKeywordsResponseBodyData) Validate() error {
 }
 
 type ListKeywordsResponseBodyDataItems struct {
-	// Creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2023-06-03 14:43:03
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// Modification time.
+	// The modification time.
 	//
 	// example:
 	//
 	// 2023-06-03 14:43:03
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Primary key ID.
+	// The primary key ID.
 	//
 	// example:
 	//
 	// 112
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Keyword library ID.
+	// The keyword library ID.
 	//
 	// example:
 	//
 	// custom_xxxx
 	KeywordLibId *string `json:"KeywordLibId,omitempty" xml:"KeywordLibId,omitempty"`
-	// Keyword data ID.
+	// The keyword data ID.
 	//
 	// example:
 	//
 	// 4205334
-	KeywordMd5Id *int64                                       `json:"KeywordMd5Id,omitempty" xml:"KeywordMd5Id,omitempty"`
-	Properties   *ListKeywordsResponseBodyDataItemsProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
-	// Keyword.
+	KeywordMd5Id *int64 `json:"KeywordMd5Id,omitempty" xml:"KeywordMd5Id,omitempty"`
+	// The properties.
+	Properties *ListKeywordsResponseBodyDataItemsProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
+	// The keyword.
 	//
 	// example:
 	//
@@ -313,6 +314,11 @@ func (s *ListKeywordsResponseBodyDataItems) Validate() error {
 }
 
 type ListKeywordsResponseBodyDataItemsProperties struct {
+	// The properties.
+	//
+	// example:
+	//
+	// xxx
 	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
 }
 

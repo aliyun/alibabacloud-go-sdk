@@ -18,14 +18,20 @@ type iDeleteAnswerSampleRequest interface {
 }
 
 type DeleteAnswerSampleRequest struct {
+	// The IDs of the proxy answers to delete.
+	//
 	// example:
 	//
 	// [15463605]
 	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// The ID of the proxy answer library.
+	//
 	// example:
 	//
 	// alxxx
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shanghai

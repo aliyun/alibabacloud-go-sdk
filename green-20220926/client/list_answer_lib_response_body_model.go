@@ -16,7 +16,10 @@ type iListAnswerLibResponseBody interface {
 }
 
 type ListAnswerLibResponseBody struct {
+	// The returned data.
 	Data []*ListAnswerLibResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
@@ -63,18 +66,29 @@ func (s *ListAnswerLibResponseBody) Validate() error {
 }
 
 type ListAnswerLibResponseBodyData struct {
+	// The number of proxy answers.
+	//
 	// example:
 	//
 	// 100
 	AnswerCount *int32 `json:"AnswerCount,omitempty" xml:"AnswerCount,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 2024-06-03 18:15:01
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the proxy answer library.
+	//
 	// example:
 	//
 	// alxxx
-	LibId   *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// The name of the library.
+	//
+	// example:
+	//
+	// 代答库名称
 	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
 	// UID。
 	//

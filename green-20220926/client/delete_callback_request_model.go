@@ -16,7 +16,7 @@ type iDeleteCallbackRequest interface {
 }
 
 type DeleteCallbackRequest struct {
-	// callback id.
+	// The ID of the message notification data.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteCallbackRequest struct {
 	//
 	// 1480
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Region ID
+	// The region ID.
 	//
 	// example:
 	//

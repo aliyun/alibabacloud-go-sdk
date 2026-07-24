@@ -18,11 +18,20 @@ type iModifyAnswerLibRequest interface {
 }
 
 type ModifyAnswerLibRequest struct {
+	// The ID of the proxy response library.
+	//
 	// example:
 	//
 	// custom_xxxx
-	LibId   *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// The name of the library.
+	//
+	// example:
+	//
+	// 测试库
 	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shanghai

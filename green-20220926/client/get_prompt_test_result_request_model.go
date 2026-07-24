@@ -22,19 +22,32 @@ type iGetPromptTestResultRequest interface {
 }
 
 type GetPromptTestResultRequest struct {
+	// The configuration item.
+	//
 	// example:
 	//
 	// {\\"enable\\":false}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// image
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The service code.
+	//
 	// example:
 	//
 	// baselineCheck
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The text content.
+	//
+	// example:
+	//
+	// 测试文本
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The business type.
+	//
 	// example:
 	//
 	// custom_llm_template

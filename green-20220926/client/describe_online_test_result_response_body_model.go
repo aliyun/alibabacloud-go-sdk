@@ -32,33 +32,50 @@ type iDescribeOnlineTestResultResponseBody interface {
 }
 
 type DescribeOnlineTestResultResponseBody struct {
+	// The audio data.
 	AudioData *DescribeOnlineTestResultResponseBodyAudioData `json:"AudioData,omitempty" xml:"AudioData,omitempty" type:"Struct"`
+	// The video frame data.
 	FrameData *DescribeOnlineTestResultResponseBodyFrameData `json:"FrameData,omitempty" xml:"FrameData,omitempty" type:"Struct"`
+	// The detection time, represented as a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1725761005419
 	ModerationTime *string `json:"ModerationTime,omitempty" xml:"ModerationTime,omitempty"`
+	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The risk level.
+	//
 	// example:
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The service code.
+	//
 	// example:
 	//
-	// VideoModeration
-	ServiceCode *string                                            `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// videoDetection
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// The list of detection results.
 	SummaryList []*DescribeOnlineTestResultResponseBodySummaryList `json:"SummaryList,omitempty" xml:"SummaryList,omitempty" type:"Repeated"`
+	// The ID of the detection task.
+	//
 	// example:
 	//
 	// xxxxx-xxxxx
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The detection status.
+	//
 	// example:
 	//
 	// SUCCESS
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The detection URL.
+	//
 	// example:
 	//
 	// https://xxxxxxxxx.com/data/data.png
@@ -187,6 +204,8 @@ func (s *DescribeOnlineTestResultResponseBody) Validate() error {
 }
 
 type DescribeOnlineTestResultResponseBodyAudioData struct {
+	// The timestamp.
+	//
 	// example:
 	//
 	// 1724378510396
@@ -215,10 +234,14 @@ func (s *DescribeOnlineTestResultResponseBodyAudioData) Validate() error {
 }
 
 type DescribeOnlineTestResultResponseBodyFrameData struct {
+	// The timestamp.
+	//
 	// example:
 	//
 	// 1725761005419
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	// The detection URL.
+	//
 	// example:
 	//
 	// https://xxxxxxxxx.com/data/data.mp4
@@ -256,15 +279,22 @@ func (s *DescribeOnlineTestResultResponseBodyFrameData) Validate() error {
 }
 
 type DescribeOnlineTestResultResponseBodySummaryList struct {
+	// The resource type.
+	//
 	// example:
 	//
 	// video
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The risk level.
+	//
 	// example:
 	//
 	// high
-	RiskLevel        *string           `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The risk level summary.
 	RiskLevelSummary map[string]*int64 `json:"RiskLevelSummary,omitempty" xml:"RiskLevelSummary,omitempty"`
+	// The number of shards.
+	//
 	// example:
 	//
 	// 10

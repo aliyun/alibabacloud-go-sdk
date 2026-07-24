@@ -22,27 +22,27 @@ type iGetKeywordLibResponseBody interface {
 }
 
 type GetKeywordLibResponseBody struct {
-	// Error code.
+	// The error code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Returned data content.
+	// The returned data.
 	Data *GetKeywordLibResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Further description of the error code.
+	// The description of the error code.
 	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
+	// The request ID assigned by the backend, which uniquely identifies the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Success indicator.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -113,31 +113,31 @@ func (s *GetKeywordLibResponseBody) Validate() error {
 }
 
 type GetKeywordLibResponseBodyData struct {
-	// Last modified time.
+	// The last modification time.
 	//
 	// example:
 	//
 	// 2024-01-29 10:26:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Number of keywords.
+	// The number of keywords.
 	//
 	// example:
 	//
 	// 100
 	KeywordCount *string `json:"KeywordCount,omitempty" xml:"KeywordCount,omitempty"`
-	// Keyword library ID.
+	// The keyword library ID.
 	//
 	// example:
 	//
 	// customxx_xxx
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
-	// Library name
+	// The library name.
 	//
 	// example:
 	//
-	// 测试词库
+	// TestLibrary.
 	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
-	// Primary account ID
+	// The Alibaba Cloud account ID.
 	//
 	// example:
 	//

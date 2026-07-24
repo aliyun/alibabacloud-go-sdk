@@ -24,13 +24,15 @@ type iAddKeywordLibRequest interface {
 }
 
 type AddKeywordLibRequest struct {
-	// Keywords, with multiple keywords separated by \\n.
+	// The keywords. Separate multiple keywords with
+	//
+	// .
 	//
 	// example:
 	//
-	// keywords1\\nkeywords2
+	// keyword1\\nkeyword2
 	Keywords *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
-	// The name of the keywords file.
+	// The name of the keyword file.
 	//
 	// example:
 	//
@@ -40,15 +42,27 @@ type AddKeywordLibRequest struct {
 	//
 	// example:
 	//
-	// test_keyword_lib
-	LibName    *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
+	// TestLibrary.
+	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
+	// The properties.
+	//
+	// example:
+	//
+	// {"attribute":"xx"}
 	Properties *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	// Region ID
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The library code.
+	//
+	// - desensitize: desensitization library
+	//
+	// example:
+	//
+	// desensitize
 	TenantCode *string `json:"TenantCode,omitempty" xml:"TenantCode,omitempty"`
 }
 

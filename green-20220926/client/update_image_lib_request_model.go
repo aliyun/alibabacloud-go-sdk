@@ -22,31 +22,31 @@ type iUpdateImageLibRequest interface {
 }
 
 type UpdateImageLibRequest struct {
-	// Comment information for the library.
+	// The remarks of the image library.
 	//
 	// example:
 	//
 	// 备注
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// Exemption from review configuration.
+	// The review-free configuration.
 	//
 	// example:
 	//
 	// 0
 	FreeInspection *int32 `json:"FreeInspection,omitempty" xml:"FreeInspection,omitempty"`
-	// Library ID.
+	// The ID of the image library.
 	//
 	// example:
 	//
 	// custom_xxxx
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
-	// Library name.
+	// The name of the image library.
 	//
 	// example:
 	//
 	// 测试图库
 	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//

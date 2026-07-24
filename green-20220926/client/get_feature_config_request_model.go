@@ -22,31 +22,31 @@ type iGetFeatureConfigRequest interface {
 }
 
 type GetFeatureConfigRequest struct {
-	// Query conditions.
+	// The query condition.
 	//
 	// example:
 	//
 	// {\\"Lang\\":\\"zh\\",\\"CategoryType\\":1,\\"Default\\":false,\\"ParentCategoryId\\":1720}
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// Region ID
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource type.
+	// The resource type.
 	//
 	// example:
 	//
 	// text
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// Service code.
+	// The service code.
 	//
 	// example:
 	//
 	// llm_query_moderation
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// Type
+	// The type.
 	//
 	// example:
 	//

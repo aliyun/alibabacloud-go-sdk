@@ -32,61 +32,79 @@ type iExportCipStatsRequest interface {
 }
 
 type ExportCipStatsRequest struct {
-  // Whether to support monthly indexing. Values: -**true**: Supported. -**false**: Not supported.
+  // Specifies whether monthly indexing is supported. Valid values:
+  // 
+  // - **true**: Supported.
+  // 
+  // - **false**: Not supported.
   // 
   // example:
   // 
   // true
   ByMonth *bool `json:"ByMonth,omitempty" xml:"ByMonth,omitempty"`
-  // The end time of the query, in the format yyyy-MM-dd HH:mm:ss.
+  // The end time of the query. Format: yyyy-MM-dd HH:mm:ss.
   // 
   // example:
   // 
   // 2024-04-16 09:00:00
   EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-  // Export type. Values: -**level**: Export by risk level. -**label**: Export by label.
+  // The export type. Valid values:
+  // 
+  // - **level**: export by risk level.
+  // 
+  // - **label**: export by label.
   // 
   // example:
   // 
   // label
   ExportType *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
-  // The label of the task to be exported.
+  // The task label to export.
   // 
   // example:
   // 
   // xx
   Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-  // Region ID.
+  // The region ID.
   // 
   // example:
   // 
   // cn-shanghai
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-  // Resource type.
+  // The resource type.
   // 
   // example:
   // 
   // text
   ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-  // Service code.
+  // The service code.
   // 
   // example:
   // 
   // baselineCheck
   ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-  // The start time of the query, in the format yyyy-MM-dd HH:mm:ss.
+  // The start time of the query. Format: yyyy-MM-dd HH:mm:ss.
   // 
   // example:
   // 
   // 2024-04-15 09:00:00
   StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-  // Sub-account UID.
+  // The UID of the RAM user.
   // 
   // example:
   // 
   // 268220485413130979
   SubUid *string `json:"SubUid,omitempty" xml:"SubUid,omitempty"`
-  // Type, values: -**cip**: Content Security Invocation Count Statistics. -**risk_level**: Content Security Risk Level Statistics. -**content_moderation**: AI Safety Guardrail Content Compliance Risk Level and Label Statistics. -**sensitive_data**: AI Safety Guardrail Sensitive Data Risk Level and Label Statistics. -**prompt_attack**: AI Safety Guardrail Prompt Word Risk Level and Label Statistics.
+  // The type. Valid values:
+  // 
+  // - **cip**: Content Moderation invocation volume statistics.
+  // 
+  // - **risk_level**: Content Moderation risk level statistics.
+  // 
+  // - **content_moderation**: AI safety guardrail content compliance risk level and tag statistics.
+  // 
+  // - **sensitive_data**: AI safety guardrail sensitive data risk level and tag statistics.
+  // 
+  // - **prompt_attack**: AI safety guardrail prompt risk level and tag statistics.
   // 
   // example:
   // 

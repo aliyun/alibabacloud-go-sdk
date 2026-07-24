@@ -20,15 +20,22 @@ type iCreateAnswerLibResponseBody interface {
 }
 
 type CreateAnswerLibResponseBody struct {
+	// The ID of the proxy answer library.
+	//
 	// example:
 	//
 	// alxxxx
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *CreateAnswerLibResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result.
+	Result *CreateAnswerLibResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// The task ID.
+	//
 	// example:
 	//
 	// alAxbbxxxx-xxx
@@ -89,36 +96,54 @@ func (s *CreateAnswerLibResponseBody) Validate() error {
 }
 
 type CreateAnswerLibResponseBodyResult struct {
+	// The internationalization key.
+	//
 	// example:
 	//
 	// xxx
-	I18nKey              *string   `json:"I18nKey,omitempty" xml:"I18nKey,omitempty"`
+	I18nKey *string `json:"I18nKey,omitempty" xml:"I18nKey,omitempty"`
+	// The list of invalid proxy answers.
 	IllegalLengthSamples []*string `json:"IllegalLengthSamples,omitempty" xml:"IllegalLengthSamples,omitempty" type:"Repeated"`
+	// The number of invalid samples.
+	//
 	// example:
 	//
 	// 1
 	InvalidCount *int32 `json:"InvalidCount,omitempty" xml:"InvalidCount,omitempty"`
+	// The ID of the proxy answer library.
+	//
 	// example:
 	//
 	// alxxxx
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// The task progress percentage.
+	//
 	// example:
 	//
 	// 100
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The number of duplicate samples.
+	//
 	// example:
 	//
 	// 1
-	RepeatCount   *int32    `json:"RepeatCount,omitempty" xml:"RepeatCount,omitempty"`
+	RepeatCount *int32 `json:"RepeatCount,omitempty" xml:"RepeatCount,omitempty"`
+	// The list of duplicate proxy answers.
 	RepeatSamples []*string `json:"RepeatSamples,omitempty" xml:"RepeatSamples,omitempty" type:"Repeated"`
+	// The number of successful samples.
+	//
 	// example:
 	//
 	// 8
 	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// alAaaaxxx-xxx
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The total count.
+	//
 	// example:
 	//
 	// 10

@@ -10,7 +10,7 @@ import (
 
 // Summary:
 //
-// 添加代答样本
+// Adds a proxy answer.
 //
 // @param request - AddAnswerSampleRequest
 //
@@ -66,7 +66,7 @@ func (client *Client) AddAnswerSampleWithContext(ctx context.Context, request *A
 
 // Summary:
 //
-// # Create Image Library
+// Creates an image library.
 //
 // @param request - AddImageLibRequest
 //
@@ -120,7 +120,7 @@ func (client *Client) AddImageLibWithContext(ctx context.Context, request *AddIm
 
 // Summary:
 //
-// # Add image to image lib
+// Adds images in batches.
 //
 // @param request - AddImages2LibRequest
 //
@@ -174,7 +174,7 @@ func (client *Client) AddImages2LibWithContext(ctx context.Context, request *Add
 
 // Summary:
 //
-// # Create keyword library
+// Creates a keyword library.
 //
 // @param request - AddKeywordLibRequest
 //
@@ -240,7 +240,7 @@ func (client *Client) AddKeywordLibWithContext(ctx context.Context, request *Add
 
 // Summary:
 //
-// # Add keywords
+// Adds keywords.
 //
 // @param request - AddKeywordsRequest
 //
@@ -302,7 +302,7 @@ func (client *Client) AddKeywordsWithContext(ctx context.Context, request *AddKe
 
 // Summary:
 //
-// Add keywords to keyword library.
+// Adds keywords.
 //
 // @param request - AddKeywordsToLibRequest
 //
@@ -368,7 +368,7 @@ func (client *Client) AddKeywordsToLibWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Cancel OSS detection task
+// Cancels an OSS scan task.
 //
 // @param request - CancelStockOssCheckTaskRequest
 //
@@ -416,7 +416,55 @@ func (client *Client) CancelStockOssCheckTaskWithContext(ctx context.Context, re
 
 // Summary:
 //
-// copy service config
+// Confirms the activation of AI application protection.
+//
+// @param request - ConfirmAiAppScanRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfirmAiAppScanResponse
+func (client *Client) ConfirmAiAppScanWithContext(ctx context.Context, request *ConfirmAiAppScanRequest, runtime *dara.RuntimeOptions) (_result *ConfirmAiAppScanResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CommodityCode) {
+		query["CommodityCode"] = request.CommodityCode
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ConfirmAiAppScan"),
+		Version:     dara.String("2022-09-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ConfirmAiAppScanResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Copies a service.
 //
 // @param request - CopyServiceConfigRequest
 //
@@ -478,7 +526,7 @@ func (client *Client) CopyServiceConfigWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # Create stock oss check task
+// Creates an OSS scan task.
 //
 // @param request - CreatStockOssCheckTaskRequest
 //
@@ -634,7 +682,7 @@ func (client *Client) CreatStockOssCheckTaskWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 创建代答库
+// Creates a proxy answer library.
 //
 // @param request - CreateAnswerLibRequest
 //
@@ -696,7 +744,7 @@ func (client *Client) CreateAnswerLibWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// # Create a new message notification
+// Creates a message notification.
 //
 // @param request - CreateCallbackRequest
 //
@@ -758,7 +806,17 @@ func (client *Client) CreateCallbackWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// 创建图库
+// Creates an image library.
+//
+// Description:
+//
+// Before using this operation, complete the following steps:
+//
+// 1. [Activate Content Moderation Enhanced Edition](https://common-buy.aliyun.com/?commodityCode=lvwang_cip_public_cn).
+//
+// 2. Understand the [billing methods and pricing](https://help.aliyun.com/document_detail/467826.html?#section-h06-qz6-1pt) of Image Moderation Enhanced Edition.
+//
+// 3. For more information about API operations and parameters, see [API reference](https://help.aliyun.com/document_detail/467829.html).
 //
 // @param request - CreateImageLibRequest
 //
@@ -868,7 +926,7 @@ func (client *Client) CreateOnlineTestWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Check before creating an OSS scan task
+// Performs a pre-check before creating an OSS scan task.
 //
 // @param request - CreatePreCheckRequest
 //
@@ -970,7 +1028,7 @@ func (client *Client) CreatePreCheckWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// 删除代答库
+// Deletes a proxy answer library.
 //
 // @param request - DeleteAnswerLibRequest
 //
@@ -1018,7 +1076,7 @@ func (client *Client) DeleteAnswerLibWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// 删除代答答案
+// Deletes proxy answers.
 //
 // @param request - DeleteAnswerSampleRequest
 //
@@ -1072,7 +1130,7 @@ func (client *Client) DeleteAnswerSampleWithContext(ctx context.Context, request
 
 // Summary:
 //
-// delete callback
+// Deletes a message notification.
 //
 // @param request - DeleteCallbackRequest
 //
@@ -1184,7 +1242,7 @@ func (client *Client) DeleteFeatureConfigWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Delete images from library.
+// Deletes images in batches.
 //
 // @param request - DeleteImagesFromLibRequest
 //
@@ -1238,7 +1296,7 @@ func (client *Client) DeleteImagesFromLibWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Delete keyword
+// Deletes keywords.
 //
 // @param request - DeleteKeywordRequest
 //
@@ -1300,7 +1358,7 @@ func (client *Client) DeleteKeywordWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// # Delete Keyword Library
+// Deletes a keyword library.
 //
 // @param request - DeleteKeywordLibRequest
 //
@@ -1402,7 +1460,7 @@ func (client *Client) DeleteOnlineTestWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 查询在线测试结果
+// Queries the detection results of online moderation.
 //
 // @param request - DescribeOnlineTestResultRequest
 //
@@ -1522,7 +1580,7 @@ func (client *Client) DescribeOssV2ResultWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 导出代答答案
+// Exports proxy answer responses.
 //
 // @param request - ExportAnswerSampleRequest
 //
@@ -1572,7 +1630,7 @@ func (client *Client) ExportAnswerSampleWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Export Call Volume
+// Exports call usage statistics.
 //
 // @param request - ExportCipStatsRequest
 //
@@ -1654,7 +1712,7 @@ func (client *Client) ExportCipStatsWithContext(ctx context.Context, request *Ex
 
 // Summary:
 //
-// # Export Keywords
+// Exports keywords.
 //
 // @param request - ExportKeywordRequest
 //
@@ -1708,7 +1766,7 @@ func (client *Client) ExportKeywordWithContext(ctx context.Context, request *Exp
 
 // Summary:
 //
-// # OSS Usage Statistics Export
+// Exports OSS usage statistics.
 //
 // @param request - ExportOssCheckStatRequest
 //
@@ -1770,7 +1828,7 @@ func (client *Client) ExportOssCheckStatWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Export OSS scan results
+// Exports OSS scan results.
 //
 // @param tmpReq - ExportResultRequest
 //
@@ -1850,7 +1908,7 @@ func (client *Client) ExportResultWithContext(ctx context.Context, tmpReq *Expor
 
 // Summary:
 //
-// # Export scan results, Excel file
+// Exports call results as an Excel file.
 //
 // @param tmpReq - ExportScanResultRequest
 //
@@ -1934,7 +1992,7 @@ func (client *Client) ExportScanResultWithContext(ctx context.Context, tmpReq *E
 
 // Summary:
 //
-// # Export text scan results, Excel file
+// Exports call results as an Excel file.
 //
 // @param tmpReq - ExportTextScanResultRequest
 //
@@ -1998,7 +2056,7 @@ func (client *Client) ExportTextScanResultWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// 获取代答样本导入进度
+// Retrieves the import progress of proxy answer samples.
 //
 // @param request - GetAnswerImportProgressRequest
 //
@@ -2046,7 +2104,7 @@ func (client *Client) GetAnswerImportProgressWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Evidence Transfer to Get User\\"s Bucket List
+// Retrieves the list of user buckets for evidence dumping.
 //
 // @param request - GetBackupBucketsListRequest
 //
@@ -2142,7 +2200,7 @@ func (client *Client) GetBackupConfigWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// # User Backup Authorization Verification
+// Verifies user authorization.
 //
 // @param request - GetBackupStatusRequest
 //
@@ -2186,7 +2244,7 @@ func (client *Client) GetBackupStatusWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// # Get User OSS Scan Bucket List
+// Lists buckets.
 //
 // @param request - GetBucketsListRequest
 //
@@ -2230,7 +2288,7 @@ func (client *Client) GetBucketsListWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// # Query Call Volume
+// Queries the call volume.
 //
 // @param request - GetCipStatsRequest
 //
@@ -2312,7 +2370,7 @@ func (client *Client) GetCipStatsWithContext(ctx context.Context, request *GetCi
 
 // Summary:
 //
-// # Get Scheduled  OSS Scan  Task Estimated Execution Time
+// Retrieves the estimated execution time of a scheduled task.
 //
 // @param request - GetExecuteTimeRequest
 //
@@ -2356,7 +2414,7 @@ func (client *Client) GetExecuteTimeWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// # Get Feature Configuration
+// Retrieves feature configurations.
 //
 // @param request - GetFeatureConfigRequest
 //
@@ -2418,7 +2476,7 @@ func (client *Client) GetFeatureConfigWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Get Image Rule Label Information
+// Retrieves image rule tag information.
 //
 // @param request - GetImageSceneLabelConfRequest
 //
@@ -2462,7 +2520,7 @@ func (client *Client) GetImageSceneLabelConfWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # Get Image Rule Label Information
+// Retrieves image rule tag information.
 //
 // @param request - GetImageSceneLabelListConfRequest
 //
@@ -2510,7 +2568,7 @@ func (client *Client) GetImageSceneLabelListConfWithContext(ctx context.Context,
 
 // Summary:
 //
-// # OSS scheduled scan detection cycle query
+// Queries the scheduled scan detection cycle for OSS.
 //
 // @param tmpReq - GetJobNameListRequest
 //
@@ -2576,7 +2634,7 @@ func (client *Client) GetJobNameListWithContext(ctx context.Context, tmpReq *Get
 
 // Summary:
 //
-// # Query the result of keyword import
+// Queries the result of a keyword import task.
 //
 // @param request - GetKeywordImportResultRequest
 //
@@ -2626,7 +2684,7 @@ func (client *Client) GetKeywordImportResultWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # Keyword Library Information
+// Retrieves keyword library information.
 //
 // @param request - GetKeywordLibRequest
 //
@@ -2680,7 +2738,7 @@ func (client *Client) GetKeywordLibWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// # Query OSS freeze result
+// Queries the results of OSS scan and freeze operations.
 //
 // @param tmpReq - GetOssCheckFreezeResultRequest
 //
@@ -2762,7 +2820,7 @@ func (client *Client) GetOssCheckFreezeResultWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// # OSS result details
+// Retrieves the detailed information of OSS check results.
 //
 // @param request - GetOssCheckResultDetailRequest
 //
@@ -2830,7 +2888,7 @@ func (client *Client) GetOssCheckResultDetailWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # OSS Check Usage Statistics
+// Queries OSS usage statistics.
 //
 // @param request - GetOssCheckStatRequest
 //
@@ -2892,7 +2950,7 @@ func (client *Client) GetOssCheckStatWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// # Get User OSS check user status
+// Queries the OSS detection status of a user.
 //
 // @param request - GetOssCheckStatusRequest
 //
@@ -2936,7 +2994,7 @@ func (client *Client) GetOssCheckStatusWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询oss扫描任务详情
+// Queries the details of an OSS scan task.
 //
 // @param request - GetOssCheckTaskInfoRequest
 //
@@ -2980,7 +3038,7 @@ func (client *Client) GetOssCheckTaskInfoWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 测试特性配置
+// Tests the attribute configuration.
 //
 // @param request - GetPromptTestResultRequest
 //
@@ -3040,7 +3098,7 @@ func (client *Client) GetPromptTestResultWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # User OSS Check Task Pending Inspection Information
+// Queries the information about files pending detection for a user.
 //
 // @param request - GetScanNumRequest
 //
@@ -3092,7 +3150,7 @@ func (client *Client) GetScanNumWithContext(ctx context.Context, request *GetSca
 
 // Summary:
 //
-// # Query the Scan results
+// Queries the detection results.
 //
 // @param tmpReq - GetScanResultRequest
 //
@@ -3176,7 +3234,7 @@ func (client *Client) GetScanResultWithContext(ctx context.Context, tmpReq *GetS
 
 // Summary:
 //
-// # Get a Single Service Configuration
+// # Get a Single Service
 //
 // @param request - GetServiceConfRequest
 //
@@ -3238,7 +3296,7 @@ func (client *Client) GetServiceConfWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// # Get a Single Service Configuration
+// Retrieves a single service.
 //
 // @param request - GetServiceConfigRequest
 //
@@ -3292,7 +3350,7 @@ func (client *Client) GetServiceConfigWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Get the label configuration of a single service
+// Retrieves the tag configuration of a single service.
 //
 // @param request - GetServiceLabelConfigRequest
 //
@@ -3346,7 +3404,7 @@ func (client *Client) GetServiceLabelConfigWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Query OSS Scan Task List
+// Queries the list of OSS scan tasks.
 //
 // @param tmpReq - GetStockOssCheckTasksListRequest
 //
@@ -3430,7 +3488,7 @@ func (client *Client) GetStockOssCheckTasksListWithContext(ctx context.Context, 
 
 // Summary:
 //
-// # Query the invocation result
+// Queries the call results.
 //
 // @param tmpReq - GetTextScanResultRequest
 //
@@ -3510,7 +3568,11 @@ func (client *Client) GetTextScanResultWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 获取开关配置调优意见
+// Retrieves tuning suggestions for switch configurations.
+//
+// Description:
+//
+// API operation is used together with the enhanced image moderation API. After you call the enhanced image moderation API, call API operation to retrieve additional detection information. API operation is free of charge.
 //
 // @param request - GetTuneProposalByIdRequest
 //
@@ -3554,7 +3616,7 @@ func (client *Client) GetTuneProposalByIdWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Get the corresponding information for file upload
+// Retrieves the relevant information for file upload.
 //
 // @param request - GetUploadInfoRequest
 //
@@ -3608,7 +3670,7 @@ func (client *Client) GetUploadInfoWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// 获取上传链接
+// # Obtain an upload link
 //
 // @param request - GetUploadLinkRequest
 //
@@ -3652,7 +3714,7 @@ func (client *Client) GetUploadLinkWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// # Get User Purchase Status
+// Retrieves the purchase status of a user.
 //
 // @param request - GetUserBuyStatusRequest
 //
@@ -3702,7 +3764,7 @@ func (client *Client) GetUserBuyStatusWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 代答库列表
+// Queries the list of proxy answer libraries.
 //
 // @param request - ListAnswerLibRequest
 //
@@ -3746,7 +3808,7 @@ func (client *Client) ListAnswerLibWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// # Get Callback List
+// Queries the list of message notifications.
 //
 // @param request - ListCallbackRequest
 //
@@ -3790,7 +3852,7 @@ func (client *Client) ListCallbackWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// # Image Library List
+// Queries the list of image libraries.
 //
 // @param request - ListImageLibRequest
 //
@@ -3840,7 +3902,7 @@ func (client *Client) ListImageLibWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// # Paged Image List
+// Queries a paginated list of images.
 //
 // @param tmpReq - ListImagesFromLibRequest
 //
@@ -3920,7 +3982,7 @@ func (client *Client) ListImagesFromLibWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// # Keyword Library List
+// Queries the list of keyword libraries.
 //
 // @param request - ListKeywordLibsRequest
 //
@@ -3968,7 +4030,7 @@ func (client *Client) ListKeywordLibsWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// # Query Keyword List
+// Queries a list of keywords.
 //
 // @param tmpReq - ListKeywordsRequest
 //
@@ -4044,7 +4106,7 @@ func (client *Client) ListKeywordsWithContext(ctx context.Context, tmpReq *ListK
 
 // Summary:
 //
-// query OSS scan result list
+// Queries OSS scan results.
 //
 // @param tmpReq - ListOssCheckResultRequest
 //
@@ -4126,7 +4188,7 @@ func (client *Client) ListOssCheckResultWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// # Get Service List
+// Retrieves the service list.
 //
 // @param request - ListServiceConfigsRequest
 //
@@ -4327,7 +4389,7 @@ func (client *Client) MarkOssV2ResultWithContext(ctx context.Context, request *M
 
 // Summary:
 //
-// 更新代答库
+// Updates a proxy response library.
 //
 // @param request - ModifyAnswerLibRequest
 //
@@ -4379,7 +4441,7 @@ func (client *Client) ModifyAnswerLibWithContext(ctx context.Context, request *M
 
 // Summary:
 //
-// # Modify Message Notification
+// Modifies a message notification.
 //
 // @param request - ModifyCallbackRequest
 //
@@ -4445,7 +4507,7 @@ func (client *Client) ModifyCallbackWithContext(ctx context.Context, request *Mo
 
 // Summary:
 //
-// # Save Feature Configuration
+// Saves an attribute configuration.
 //
 // @param request - ModifyFeatureConfigRequest
 //
@@ -4515,7 +4577,7 @@ func (client *Client) ModifyFeatureConfigWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Edit Service
+// Edits a service.
 //
 // @param request - ModifyServiceInfoRequest
 //
@@ -4577,7 +4639,7 @@ func (client *Client) ModifyServiceInfoWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # OSS scan result query
+// Retrieves the list of OSS detection results.
 //
 // @param tmpReq - OssCheckResultListRequest
 //
@@ -4659,7 +4721,7 @@ func (client *Client) OssCheckResultListWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 分页查询代答样本
+// Queries proxy answer samples by paging.
 //
 // @param tmpReq - QueryAnswerSampleByPageRequest
 //
@@ -4729,7 +4791,7 @@ func (client *Client) QueryAnswerSampleByPageWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// # Query a Single Callback Configuration
+// Queries a single callback configuration.
 //
 // @param request - QueryCallbackRequest
 //
@@ -4783,7 +4845,7 @@ func (client *Client) QueryCallbackWithContext(ctx context.Context, request *Que
 
 // Summary:
 //
-// # Paginated Query of Message Notification List
+// Message notification.
 //
 // @param request - QueryCallbackByPageRequest
 //
@@ -4837,7 +4899,7 @@ func (client *Client) QueryCallbackByPageWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 停止在线测试
+// # Abort an online Detection Job
 //
 // @param request - StopOnlineTestRequest
 //
@@ -4889,7 +4951,7 @@ func (client *Client) StopOnlineTestWithContext(ctx context.Context, request *St
 
 // Summary:
 //
-// # Update Evidence Backup Configuration
+// Updates the evidence transfer configuration.
 //
 // @param request - UpdateBackupConfigRequest
 //
@@ -4945,7 +5007,7 @@ func (client *Client) UpdateBackupConfigWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Edit Image Library
+// Edits an image library.
 //
 // @param request - UpdateImageLibRequest
 //
@@ -5007,7 +5069,7 @@ func (client *Client) UpdateImageLibWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// # Edit Image Library Free Inspection Configuration
+// Edits the inspection-exempt configuration of an image library.
 //
 // @param tmpReq - UpdateImageLibFreeInspectionRequest
 //
@@ -5067,7 +5129,7 @@ func (client *Client) UpdateImageLibFreeInspectionWithContext(ctx context.Contex
 
 // Summary:
 //
-// # Edit Keyword Library
+// Edits a keyword library.
 //
 // @param request - UpdateKeywordLibRequest
 //
@@ -5125,7 +5187,7 @@ func (client *Client) UpdateKeywordLibWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 批量反馈任务
+// # Batch update OSS detection result feedback
 //
 // @param request - UpdateOssCheckResultsBatchFeedbackRequest
 //
@@ -5177,7 +5239,7 @@ func (client *Client) UpdateOssCheckResultsBatchFeedbackWithContext(ctx context.
 
 // Summary:
 //
-// oss结果反馈
+// # Update OSS detection result feedback
 //
 // @param request - UpdateOssCheckResultsFeedBackRequest
 //
@@ -5237,7 +5299,7 @@ func (client *Client) UpdateOssCheckResultsFeedBackWithContext(ctx context.Conte
 
 // Summary:
 //
-// 批量冻结任务
+// Freezes OSS scan results in batches.
 //
 // @param request - UpdateOssCheckResultsFreezeRequest
 //
@@ -5305,7 +5367,7 @@ func (client *Client) UpdateOssCheckResultsFreezeWithContext(ctx context.Context
 
 // Summary:
 //
-// 批量解冻任务
+// Unfreezes OSS detection results in batches.
 //
 // @param request - UpdateOssCheckResultsUnfreezeRequest
 //
@@ -5365,7 +5427,7 @@ func (client *Client) UpdateOssCheckResultsUnfreezeWithContext(ctx context.Conte
 
 // Summary:
 //
-// # Feedback on Scan Results
+// Submits feedback on detection results.
 //
 // @param request - UpdateScanResultFeedbackRequest
 //
@@ -5431,7 +5493,7 @@ func (client *Client) UpdateScanResultFeedbackWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 更新服务
+// Updates a service.
 //
 // @param request - UpdateServiceConfigRequest
 //

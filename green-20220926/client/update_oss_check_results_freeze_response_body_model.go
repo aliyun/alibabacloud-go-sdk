@@ -16,7 +16,10 @@ type iUpdateOssCheckResultsFreezeResponseBody interface {
 }
 
 type UpdateOssCheckResultsFreezeResponseBody struct {
+	// The returned data.
 	Data *UpdateOssCheckResultsFreezeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
@@ -59,18 +62,26 @@ func (s *UpdateOssCheckResultsFreezeResponseBody) Validate() error {
 }
 
 type UpdateOssCheckResultsFreezeResponseBodyData struct {
+	// The number of invalid records.
+	//
 	// example:
 	//
 	// 1
 	InvalidCount *int32 `json:"InvalidCount,omitempty" xml:"InvalidCount,omitempty"`
+	// The number of duplicate records.
+	//
 	// example:
 	//
 	// 1
 	RepeatCount *int32 `json:"RepeatCount,omitempty" xml:"RepeatCount,omitempty"`
+	// The number of successful operations.
+	//
 	// example:
 	//
 	// 5
 	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 5

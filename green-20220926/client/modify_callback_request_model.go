@@ -24,13 +24,13 @@ type iModifyCallbackRequest interface {
 }
 
 type ModifyCallbackRequest struct {
-	// Encryption algorithm.
+	// The encryption algorithm.
 	//
 	// example:
 	//
 	// SHA256
 	CryptType *string `json:"CryptType,omitempty" xml:"CryptType,omitempty"`
-	// Primary key ID.
+	// The primary key ID.
 	//
 	// This parameter is required.
 	//
@@ -38,25 +38,25 @@ type ModifyCallbackRequest struct {
 	//
 	// 112
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Name.
+	// The name.
 	//
 	// example:
 	//
 	// 回调通知
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Result scope.
+	// The result scope.
 	//
 	// example:
 	//
 	// all
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// Callback URL.
+	// The callback URL.
 	//
 	// example:
 	//

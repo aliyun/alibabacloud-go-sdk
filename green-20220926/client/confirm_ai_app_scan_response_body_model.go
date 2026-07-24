@@ -5,18 +5,18 @@ import (
 	"github.com/alibabacloud-go/tea/dara"
 )
 
-type iCopyServiceConfigResponseBody interface {
+type iConfirmAiAppScanResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetData(v bool) *CopyServiceConfigResponseBody
+	SetData(v bool) *ConfirmAiAppScanResponseBody
 	GetData() *bool
-	SetRequestId(v string) *CopyServiceConfigResponseBody
+	SetRequestId(v string) *ConfirmAiAppScanResponseBody
 	GetRequestId() *string
 }
 
-type CopyServiceConfigResponseBody struct {
-	// The returned data.
+type ConfirmAiAppScanResponseBody struct {
+	// The response data.
 	//
 	// example:
 	//
@@ -30,32 +30,32 @@ type CopyServiceConfigResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
-func (s CopyServiceConfigResponseBody) String() string {
+func (s ConfirmAiAppScanResponseBody) String() string {
 	return dara.Prettify(s)
 }
 
-func (s CopyServiceConfigResponseBody) GoString() string {
+func (s ConfirmAiAppScanResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CopyServiceConfigResponseBody) GetData() *bool {
+func (s *ConfirmAiAppScanResponseBody) GetData() *bool {
 	return s.Data
 }
 
-func (s *CopyServiceConfigResponseBody) GetRequestId() *string {
+func (s *ConfirmAiAppScanResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
-func (s *CopyServiceConfigResponseBody) SetData(v bool) *CopyServiceConfigResponseBody {
+func (s *ConfirmAiAppScanResponseBody) SetData(v bool) *ConfirmAiAppScanResponseBody {
 	s.Data = &v
 	return s
 }
 
-func (s *CopyServiceConfigResponseBody) SetRequestId(v string) *CopyServiceConfigResponseBody {
+func (s *ConfirmAiAppScanResponseBody) SetRequestId(v string) *ConfirmAiAppScanResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *CopyServiceConfigResponseBody) Validate() error {
+func (s *ConfirmAiAppScanResponseBody) Validate() error {
 	return dara.Validate(s)
 }

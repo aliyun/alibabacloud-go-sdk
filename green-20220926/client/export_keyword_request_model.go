@@ -18,18 +18,25 @@ type iExportKeywordRequest interface {
 }
 
 type ExportKeywordRequest struct {
-  // Keyword library ID.
+  // The keyword library ID.
   // 
   // example:
   // 
   // customxx_xxxx
   LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
-  // Region ID.
+  // The region ID.
   // 
   // example:
   // 
   // cn-shanghai
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+  // The vocabulary encoding.
+  // 
+  // - desensitize: sensitive data masking vocabulary
+  // 
+  // example:
+  // 
+  // desensitize
   TenantCode *string `json:"TenantCode,omitempty" xml:"TenantCode,omitempty"`
 }
 

@@ -16,13 +16,13 @@ type iCreateCallbackResponseBody interface {
 }
 
 type CreateCallbackResponseBody struct {
-	// Returned data.
+	// The returned data.
 	//
 	// example:
 	//
 	// True
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Backend-assigned ID, used to uniquely identify a request. Can be used for troubleshooting.
+	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//

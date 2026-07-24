@@ -22,6 +22,8 @@ type iLlmStreamChatRequest interface {
 }
 
 type LlmStreamChatRequest struct {
+	// channel
+	//
 	// example:
 	//
 	// guardCustomTest

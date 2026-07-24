@@ -22,19 +22,19 @@ type iDeleteKeywordResponseBody interface {
 }
 
 type DeleteKeywordResponseBody struct {
-	// The returned status code.
+	// The error code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	//
 	// example:
 	//
 	// True
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Response message for this request.
+	// The description of the error code.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DeleteKeywordResponseBody struct {
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Success indicator.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

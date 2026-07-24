@@ -22,31 +22,31 @@ type iCreateCallbackRequest interface {
 }
 
 type CreateCallbackRequest struct {
-	// Encryption algorithm.
+	// The encryption algorithm.
 	//
 	// example:
 	//
 	// SHA256
 	CryptType *string `json:"CryptType,omitempty" xml:"CryptType,omitempty"`
-	// Plan name.
+	// The name of the scheme.
 	//
 	// example:
 	//
 	// 消息通知1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Review result.
+	// The moderation result.
 	//
 	// example:
 	//
 	// all
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// Callback URL.
+	// The callback URL.
 	//
 	// example:
 	//

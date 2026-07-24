@@ -24,33 +24,33 @@ type iOssCheckResultListResponseBody interface {
 }
 
 type OssCheckResultListResponseBody struct {
-	// Backend-assigned ID, used to uniquely identify a request. Can be used for troubleshooting.
+	// The authorization status.
 	//
 	// example:
 	//
 	// OK
 	AuthStatus *string `json:"AuthStatus,omitempty" xml:"AuthStatus,omitempty"`
-	// Page size.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Current page number.
+	// The data on the current page.
 	Items []*OssCheckResultListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// Total number of records.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Task status.
+	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Authorization status.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -134,95 +134,95 @@ func (s *OssCheckResultListResponseBody) Validate() error {
 }
 
 type OssCheckResultListResponseBodyItems struct {
-	// Data of the current page.
+	// The name of the OSS bucket.
 	//
 	// example:
 	//
 	// tmp
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// Service code.
+	// The status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Primary service.
+	// The audio and video detection type.
 	//
 	// example:
 	//
 	// audio
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// Whether to copy.
+	// The primary service.
 	//
 	// example:
 	//
 	// audio_media_detection
 	CopyFrom *string `json:"CopyFrom,omitempty" xml:"CopyFrom,omitempty"`
-	// Details of the result.
+	// The URL of the image.
 	//
 	// example:
 	//
 	// http://www.aliyuncs.com/test.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// Service name.
+	// Indicates whether the task is copied.
 	//
 	// example:
 	//
 	// true
 	IsCopy *bool `json:"IsCopy,omitempty" xml:"IsCopy,omitempty"`
-	// Image URL.
+	// The task name.
 	//
 	// example:
 	//
 	// dhT20X2310
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// Further description of the error code.
+	// The image labels.
 	Labels []*string `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// Job name.
+	// The text labels.
 	Labels2 []*string `json:"Labels2,omitempty" xml:"Labels2,omitempty" type:"Repeated"`
-	// Object name.
+	// The MD5 hash of the file.
 	//
 	// example:
 	//
 	// 54416c9b159df4a60ae03c04ccb94cb5
 	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	// Status code. 200 indicates success.
+	// The description of the error code.
 	//
 	// example:
 	//
 	// success
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// OSS Bucket name.
+	// The object name.
 	//
 	// example:
 	//
 	// 1713014531569_958.png.jpeg
 	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	// Image labels.
+	// The result details.
 	//
 	// example:
 	//
 	// {}
 	ScanResult *string `json:"ScanResult,omitempty" xml:"ScanResult,omitempty"`
-	// File MD5.
+	// The service code.
 	//
 	// example:
 	//
 	// audio_media_detection_01
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// Task ID.
+	// The service name.
 	//
 	// example:
 	//
 	// 服务名称
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// Task URL.
+	// The task ID.
 	//
 	// example:
 	//
 	// P_XHDUS
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// Text labels.
+	// The task URL.
 	//
 	// example:
 	//

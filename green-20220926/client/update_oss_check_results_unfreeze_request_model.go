@@ -22,22 +22,32 @@ type iUpdateOssCheckResultsUnfreezeRequest interface {
 }
 
 type UpdateOssCheckResultsUnfreezeRequest struct {
+	// The end time. Format: YYYY-MM-DD HH:mm:ss.
+	//
 	// example:
 	//
 	// 2023-10-21 16:08:38
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The frozen items.
+	//
 	// example:
 	//
 	// []
 	FreezeItems *string `json:"FreezeItems,omitempty" xml:"FreezeItems,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The start time. Format: YYYY-MM-DD HH:mm:ss.
+	//
 	// example:
 	//
 	// 2023-08-21 16:08:38
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// P_B6YRVD

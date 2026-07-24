@@ -24,33 +24,33 @@ type iGetFeatureConfigResponseBody interface {
 }
 
 type GetFeatureConfigResponseBody struct {
-	// Status code
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Returned data.
+	// The returned data.
 	Data *GetFeatureConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// HTTP status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Response message for this request.
+	// The response message for this request.
 	//
 	// example:
 	//
 	// success
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
+	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Success indicator
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -130,27 +130,27 @@ func (s *GetFeatureConfigResponseBody) Validate() error {
 }
 
 type GetFeatureConfigResponseBodyData struct {
-	// List of feature configurations
+	// The list of feature configurations.
 	FeatureConf []map[string]interface{} `json:"FeatureConf,omitempty" xml:"FeatureConf,omitempty" type:"Repeated"`
-	// Resource type.
+	// The resource type.
 	//
 	// example:
 	//
 	// text
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// Service code.
+	// The service code.
 	//
 	// example:
 	//
 	// llm_query_moderation
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// Type
+	// The type.
 	//
 	// example:
 	//
 	// custom_llm_template
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// UID.
+	// UID。
 	//
 	// example:
 	//

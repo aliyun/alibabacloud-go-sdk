@@ -44,6 +44,11 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"cn-shenzhen-finance-1": dara.String("green.aliyuncs.com"),
 		"cn-shanghai-finance-1": dara.String("green.aliyuncs.com"),
 		"cn-north-2-gov-1":      dara.String("green.aliyuncs.com"),
+		"cn-shenzhen":           dara.String("green-cip.cn-shenzhen.aliyuncs.com"),
+		"cn-shanghai":           dara.String("green-cip.cn-shanghai.aliyuncs.com"),
+		"cn-hangzhou":           dara.String("green-cip.cn-hangzhou.aliyuncs.com"),
+		"cn-beijing":            dara.String("green-cip.cn-beijing.aliyuncs.com"),
+		"ap-southeast-1":        dara.String("green-cip.ap-southeast-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -78,7 +83,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 添加代答样本
+// Adds a proxy answer.
 //
 // @param request - AddAnswerSampleRequest
 //
@@ -134,7 +139,7 @@ func (client *Client) AddAnswerSampleWithOptions(request *AddAnswerSampleRequest
 
 // Summary:
 //
-// 添加代答样本
+// Adds a proxy answer.
 //
 // @param request - AddAnswerSampleRequest
 //
@@ -152,7 +157,7 @@ func (client *Client) AddAnswerSample(request *AddAnswerSampleRequest) (_result 
 
 // Summary:
 //
-// # Create Image Library
+// Creates an image library.
 //
 // @param request - AddImageLibRequest
 //
@@ -206,7 +211,7 @@ func (client *Client) AddImageLibWithOptions(request *AddImageLibRequest, runtim
 
 // Summary:
 //
-// # Create Image Library
+// Creates an image library.
 //
 // @param request - AddImageLibRequest
 //
@@ -224,7 +229,7 @@ func (client *Client) AddImageLib(request *AddImageLibRequest) (_result *AddImag
 
 // Summary:
 //
-// # Add image to image lib
+// Adds images in batches.
 //
 // @param request - AddImages2LibRequest
 //
@@ -278,7 +283,7 @@ func (client *Client) AddImages2LibWithOptions(request *AddImages2LibRequest, ru
 
 // Summary:
 //
-// # Add image to image lib
+// Adds images in batches.
 //
 // @param request - AddImages2LibRequest
 //
@@ -296,7 +301,7 @@ func (client *Client) AddImages2Lib(request *AddImages2LibRequest) (_result *Add
 
 // Summary:
 //
-// # Create keyword library
+// Creates a keyword library.
 //
 // @param request - AddKeywordLibRequest
 //
@@ -362,7 +367,7 @@ func (client *Client) AddKeywordLibWithOptions(request *AddKeywordLibRequest, ru
 
 // Summary:
 //
-// # Create keyword library
+// Creates a keyword library.
 //
 // @param request - AddKeywordLibRequest
 //
@@ -380,7 +385,7 @@ func (client *Client) AddKeywordLib(request *AddKeywordLibRequest) (_result *Add
 
 // Summary:
 //
-// # Add keywords
+// Adds keywords.
 //
 // @param request - AddKeywordsRequest
 //
@@ -442,7 +447,7 @@ func (client *Client) AddKeywordsWithOptions(request *AddKeywordsRequest, runtim
 
 // Summary:
 //
-// # Add keywords
+// Adds keywords.
 //
 // @param request - AddKeywordsRequest
 //
@@ -460,7 +465,7 @@ func (client *Client) AddKeywords(request *AddKeywordsRequest) (_result *AddKeyw
 
 // Summary:
 //
-// Add keywords to keyword library.
+// Adds keywords.
 //
 // @param request - AddKeywordsToLibRequest
 //
@@ -526,7 +531,7 @@ func (client *Client) AddKeywordsToLibWithOptions(request *AddKeywordsToLibReque
 
 // Summary:
 //
-// Add keywords to keyword library.
+// Adds keywords.
 //
 // @param request - AddKeywordsToLibRequest
 //
@@ -544,7 +549,7 @@ func (client *Client) AddKeywordsToLib(request *AddKeywordsToLibRequest) (_resul
 
 // Summary:
 //
-// # Cancel OSS detection task
+// Cancels an OSS scan task.
 //
 // @param request - CancelStockOssCheckTaskRequest
 //
@@ -592,7 +597,7 @@ func (client *Client) CancelStockOssCheckTaskWithOptions(request *CancelStockOss
 
 // Summary:
 //
-// # Cancel OSS detection task
+// Cancels an OSS scan task.
 //
 // @param request - CancelStockOssCheckTaskRequest
 //
@@ -610,7 +615,73 @@ func (client *Client) CancelStockOssCheckTask(request *CancelStockOssCheckTaskRe
 
 // Summary:
 //
-// copy service config
+// Confirms the activation of AI application protection.
+//
+// @param request - ConfirmAiAppScanRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfirmAiAppScanResponse
+func (client *Client) ConfirmAiAppScanWithOptions(request *ConfirmAiAppScanRequest, runtime *dara.RuntimeOptions) (_result *ConfirmAiAppScanResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CommodityCode) {
+		query["CommodityCode"] = request.CommodityCode
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ConfirmAiAppScan"),
+		Version:     dara.String("2022-09-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ConfirmAiAppScanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Confirms the activation of AI application protection.
+//
+// @param request - ConfirmAiAppScanRequest
+//
+// @return ConfirmAiAppScanResponse
+func (client *Client) ConfirmAiAppScan(request *ConfirmAiAppScanRequest) (_result *ConfirmAiAppScanResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ConfirmAiAppScanResponse{}
+	_body, _err := client.ConfirmAiAppScanWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Copies a service.
 //
 // @param request - CopyServiceConfigRequest
 //
@@ -672,7 +743,7 @@ func (client *Client) CopyServiceConfigWithOptions(request *CopyServiceConfigReq
 
 // Summary:
 //
-// copy service config
+// Copies a service.
 //
 // @param request - CopyServiceConfigRequest
 //
@@ -690,7 +761,7 @@ func (client *Client) CopyServiceConfig(request *CopyServiceConfigRequest) (_res
 
 // Summary:
 //
-// # Create stock oss check task
+// Creates an OSS scan task.
 //
 // @param request - CreatStockOssCheckTaskRequest
 //
@@ -846,7 +917,7 @@ func (client *Client) CreatStockOssCheckTaskWithOptions(request *CreatStockOssCh
 
 // Summary:
 //
-// # Create stock oss check task
+// Creates an OSS scan task.
 //
 // @param request - CreatStockOssCheckTaskRequest
 //
@@ -864,7 +935,7 @@ func (client *Client) CreatStockOssCheckTask(request *CreatStockOssCheckTaskRequ
 
 // Summary:
 //
-// 创建代答库
+// Creates a proxy answer library.
 //
 // @param request - CreateAnswerLibRequest
 //
@@ -926,7 +997,7 @@ func (client *Client) CreateAnswerLibWithOptions(request *CreateAnswerLibRequest
 
 // Summary:
 //
-// 创建代答库
+// Creates a proxy answer library.
 //
 // @param request - CreateAnswerLibRequest
 //
@@ -944,7 +1015,7 @@ func (client *Client) CreateAnswerLib(request *CreateAnswerLibRequest) (_result 
 
 // Summary:
 //
-// # Create a new message notification
+// Creates a message notification.
 //
 // @param request - CreateCallbackRequest
 //
@@ -1006,7 +1077,7 @@ func (client *Client) CreateCallbackWithOptions(request *CreateCallbackRequest, 
 
 // Summary:
 //
-// # Create a new message notification
+// Creates a message notification.
 //
 // @param request - CreateCallbackRequest
 //
@@ -1024,7 +1095,17 @@ func (client *Client) CreateCallback(request *CreateCallbackRequest) (_result *C
 
 // Summary:
 //
-// 创建图库
+// Creates an image library.
+//
+// Description:
+//
+// Before using this operation, complete the following steps:
+//
+// 1. [Activate Content Moderation Enhanced Edition](https://common-buy.aliyun.com/?commodityCode=lvwang_cip_public_cn).
+//
+// 2. Understand the [billing methods and pricing](https://help.aliyun.com/document_detail/467826.html?#section-h06-qz6-1pt) of Image Moderation Enhanced Edition.
+//
+// 3. For more information about API operations and parameters, see [API reference](https://help.aliyun.com/document_detail/467829.html).
 //
 // @param request - CreateImageLibRequest
 //
@@ -1078,7 +1159,17 @@ func (client *Client) CreateImageLibWithOptions(request *CreateImageLibRequest, 
 
 // Summary:
 //
-// 创建图库
+// Creates an image library.
+//
+// Description:
+//
+// Before using this operation, complete the following steps:
+//
+// 1. [Activate Content Moderation Enhanced Edition](https://common-buy.aliyun.com/?commodityCode=lvwang_cip_public_cn).
+//
+// 2. Understand the [billing methods and pricing](https://help.aliyun.com/document_detail/467826.html?#section-h06-qz6-1pt) of Image Moderation Enhanced Edition.
+//
+// 3. For more information about API operations and parameters, see [API reference](https://help.aliyun.com/document_detail/467829.html).
 //
 // @param request - CreateImageLibRequest
 //
@@ -1170,7 +1261,7 @@ func (client *Client) CreateOnlineTest(request *CreateOnlineTestRequest) (_resul
 
 // Summary:
 //
-// # Check before creating an OSS scan task
+// Performs a pre-check before creating an OSS scan task.
 //
 // @param request - CreatePreCheckRequest
 //
@@ -1272,7 +1363,7 @@ func (client *Client) CreatePreCheckWithOptions(request *CreatePreCheckRequest, 
 
 // Summary:
 //
-// # Check before creating an OSS scan task
+// Performs a pre-check before creating an OSS scan task.
 //
 // @param request - CreatePreCheckRequest
 //
@@ -1290,7 +1381,7 @@ func (client *Client) CreatePreCheck(request *CreatePreCheckRequest) (_result *C
 
 // Summary:
 //
-// 删除代答库
+// Deletes a proxy answer library.
 //
 // @param request - DeleteAnswerLibRequest
 //
@@ -1338,7 +1429,7 @@ func (client *Client) DeleteAnswerLibWithOptions(request *DeleteAnswerLibRequest
 
 // Summary:
 //
-// 删除代答库
+// Deletes a proxy answer library.
 //
 // @param request - DeleteAnswerLibRequest
 //
@@ -1356,7 +1447,7 @@ func (client *Client) DeleteAnswerLib(request *DeleteAnswerLibRequest) (_result 
 
 // Summary:
 //
-// 删除代答答案
+// Deletes proxy answers.
 //
 // @param request - DeleteAnswerSampleRequest
 //
@@ -1410,7 +1501,7 @@ func (client *Client) DeleteAnswerSampleWithOptions(request *DeleteAnswerSampleR
 
 // Summary:
 //
-// 删除代答答案
+// Deletes proxy answers.
 //
 // @param request - DeleteAnswerSampleRequest
 //
@@ -1428,7 +1519,7 @@ func (client *Client) DeleteAnswerSample(request *DeleteAnswerSampleRequest) (_r
 
 // Summary:
 //
-// delete callback
+// Deletes a message notification.
 //
 // @param request - DeleteCallbackRequest
 //
@@ -1478,7 +1569,7 @@ func (client *Client) DeleteCallbackWithOptions(request *DeleteCallbackRequest, 
 
 // Summary:
 //
-// delete callback
+// Deletes a message notification.
 //
 // @param request - DeleteCallbackRequest
 //
@@ -1576,7 +1667,7 @@ func (client *Client) DeleteFeatureConfig(request *DeleteFeatureConfigRequest) (
 
 // Summary:
 //
-// Delete images from library.
+// Deletes images in batches.
 //
 // @param request - DeleteImagesFromLibRequest
 //
@@ -1630,7 +1721,7 @@ func (client *Client) DeleteImagesFromLibWithOptions(request *DeleteImagesFromLi
 
 // Summary:
 //
-// Delete images from library.
+// Deletes images in batches.
 //
 // @param request - DeleteImagesFromLibRequest
 //
@@ -1648,7 +1739,7 @@ func (client *Client) DeleteImagesFromLib(request *DeleteImagesFromLibRequest) (
 
 // Summary:
 //
-// # Delete keyword
+// Deletes keywords.
 //
 // @param request - DeleteKeywordRequest
 //
@@ -1710,7 +1801,7 @@ func (client *Client) DeleteKeywordWithOptions(request *DeleteKeywordRequest, ru
 
 // Summary:
 //
-// # Delete keyword
+// Deletes keywords.
 //
 // @param request - DeleteKeywordRequest
 //
@@ -1728,7 +1819,7 @@ func (client *Client) DeleteKeyword(request *DeleteKeywordRequest) (_result *Del
 
 // Summary:
 //
-// # Delete Keyword Library
+// Deletes a keyword library.
 //
 // @param request - DeleteKeywordLibRequest
 //
@@ -1782,7 +1873,7 @@ func (client *Client) DeleteKeywordLibWithOptions(request *DeleteKeywordLibReque
 
 // Summary:
 //
-// # Delete Keyword Library
+// Deletes a keyword library.
 //
 // @param request - DeleteKeywordLibRequest
 //
@@ -1866,7 +1957,7 @@ func (client *Client) DeleteOnlineTest(request *DeleteOnlineTestRequest) (_resul
 
 // Summary:
 //
-// 查询在线测试结果
+// Queries the detection results of online moderation.
 //
 // @param request - DescribeOnlineTestResultRequest
 //
@@ -1918,7 +2009,7 @@ func (client *Client) DescribeOnlineTestResultWithOptions(request *DescribeOnlin
 
 // Summary:
 //
-// 查询在线测试结果
+// Queries the detection results of online moderation.
 //
 // @param request - DescribeOnlineTestResultRequest
 //
@@ -2022,7 +2113,7 @@ func (client *Client) DescribeOssV2Result(request *DescribeOssV2ResultRequest) (
 
 // Summary:
 //
-// 导出代答答案
+// Exports proxy answer responses.
 //
 // @param request - ExportAnswerSampleRequest
 //
@@ -2072,7 +2163,7 @@ func (client *Client) ExportAnswerSampleWithOptions(request *ExportAnswerSampleR
 
 // Summary:
 //
-// 导出代答答案
+// Exports proxy answer responses.
 //
 // @param request - ExportAnswerSampleRequest
 //
@@ -2090,7 +2181,7 @@ func (client *Client) ExportAnswerSample(request *ExportAnswerSampleRequest) (_r
 
 // Summary:
 //
-// # Export Call Volume
+// Exports call usage statistics.
 //
 // @param request - ExportCipStatsRequest
 //
@@ -2172,7 +2263,7 @@ func (client *Client) ExportCipStatsWithOptions(request *ExportCipStatsRequest, 
 
 // Summary:
 //
-// # Export Call Volume
+// Exports call usage statistics.
 //
 // @param request - ExportCipStatsRequest
 //
@@ -2190,7 +2281,7 @@ func (client *Client) ExportCipStats(request *ExportCipStatsRequest) (_result *E
 
 // Summary:
 //
-// # Export Keywords
+// Exports keywords.
 //
 // @param request - ExportKeywordRequest
 //
@@ -2244,7 +2335,7 @@ func (client *Client) ExportKeywordWithOptions(request *ExportKeywordRequest, ru
 
 // Summary:
 //
-// # Export Keywords
+// Exports keywords.
 //
 // @param request - ExportKeywordRequest
 //
@@ -2262,7 +2353,7 @@ func (client *Client) ExportKeyword(request *ExportKeywordRequest) (_result *Exp
 
 // Summary:
 //
-// # OSS Usage Statistics Export
+// Exports OSS usage statistics.
 //
 // @param request - ExportOssCheckStatRequest
 //
@@ -2324,7 +2415,7 @@ func (client *Client) ExportOssCheckStatWithOptions(request *ExportOssCheckStatR
 
 // Summary:
 //
-// # OSS Usage Statistics Export
+// Exports OSS usage statistics.
 //
 // @param request - ExportOssCheckStatRequest
 //
@@ -2342,7 +2433,7 @@ func (client *Client) ExportOssCheckStat(request *ExportOssCheckStatRequest) (_r
 
 // Summary:
 //
-// # Export OSS scan results
+// Exports OSS scan results.
 //
 // @param tmpReq - ExportResultRequest
 //
@@ -2422,7 +2513,7 @@ func (client *Client) ExportResultWithOptions(tmpReq *ExportResultRequest, runti
 
 // Summary:
 //
-// # Export OSS scan results
+// Exports OSS scan results.
 //
 // @param request - ExportResultRequest
 //
@@ -2440,7 +2531,7 @@ func (client *Client) ExportResult(request *ExportResultRequest) (_result *Expor
 
 // Summary:
 //
-// # Export scan results, Excel file
+// Exports call results as an Excel file.
 //
 // @param tmpReq - ExportScanResultRequest
 //
@@ -2524,7 +2615,7 @@ func (client *Client) ExportScanResultWithOptions(tmpReq *ExportScanResultReques
 
 // Summary:
 //
-// # Export scan results, Excel file
+// Exports call results as an Excel file.
 //
 // @param request - ExportScanResultRequest
 //
@@ -2542,7 +2633,7 @@ func (client *Client) ExportScanResult(request *ExportScanResultRequest) (_resul
 
 // Summary:
 //
-// # Export text scan results, Excel file
+// Exports call results as an Excel file.
 //
 // @param tmpReq - ExportTextScanResultRequest
 //
@@ -2606,7 +2697,7 @@ func (client *Client) ExportTextScanResultWithOptions(tmpReq *ExportTextScanResu
 
 // Summary:
 //
-// # Export text scan results, Excel file
+// Exports call results as an Excel file.
 //
 // @param request - ExportTextScanResultRequest
 //
@@ -2624,7 +2715,7 @@ func (client *Client) ExportTextScanResult(request *ExportTextScanResultRequest)
 
 // Summary:
 //
-// 获取代答样本导入进度
+// Retrieves the import progress of proxy answer samples.
 //
 // @param request - GetAnswerImportProgressRequest
 //
@@ -2672,7 +2763,7 @@ func (client *Client) GetAnswerImportProgressWithOptions(request *GetAnswerImpor
 
 // Summary:
 //
-// 获取代答样本导入进度
+// Retrieves the import progress of proxy answer samples.
 //
 // @param request - GetAnswerImportProgressRequest
 //
@@ -2690,7 +2781,7 @@ func (client *Client) GetAnswerImportProgress(request *GetAnswerImportProgressRe
 
 // Summary:
 //
-// Evidence Transfer to Get User\\"s Bucket List
+// Retrieves the list of user buckets for evidence dumping.
 //
 // @param request - GetBackupBucketsListRequest
 //
@@ -2734,7 +2825,7 @@ func (client *Client) GetBackupBucketsListWithOptions(request *GetBackupBucketsL
 
 // Summary:
 //
-// Evidence Transfer to Get User\\"s Bucket List
+// Retrieves the list of user buckets for evidence dumping.
 //
 // @param request - GetBackupBucketsListRequest
 //
@@ -2822,7 +2913,7 @@ func (client *Client) GetBackupConfig(request *GetBackupConfigRequest) (_result 
 
 // Summary:
 //
-// # User Backup Authorization Verification
+// Verifies user authorization.
 //
 // @param request - GetBackupStatusRequest
 //
@@ -2866,7 +2957,7 @@ func (client *Client) GetBackupStatusWithOptions(request *GetBackupStatusRequest
 
 // Summary:
 //
-// # User Backup Authorization Verification
+// Verifies user authorization.
 //
 // @param request - GetBackupStatusRequest
 //
@@ -2884,7 +2975,7 @@ func (client *Client) GetBackupStatus(request *GetBackupStatusRequest) (_result 
 
 // Summary:
 //
-// # Get User OSS Scan Bucket List
+// Lists buckets.
 //
 // @param request - GetBucketsListRequest
 //
@@ -2928,7 +3019,7 @@ func (client *Client) GetBucketsListWithOptions(request *GetBucketsListRequest, 
 
 // Summary:
 //
-// # Get User OSS Scan Bucket List
+// Lists buckets.
 //
 // @param request - GetBucketsListRequest
 //
@@ -2946,7 +3037,7 @@ func (client *Client) GetBucketsList(request *GetBucketsListRequest) (_result *G
 
 // Summary:
 //
-// # Query Call Volume
+// Queries the call volume.
 //
 // @param request - GetCipStatsRequest
 //
@@ -3028,7 +3119,7 @@ func (client *Client) GetCipStatsWithOptions(request *GetCipStatsRequest, runtim
 
 // Summary:
 //
-// # Query Call Volume
+// Queries the call volume.
 //
 // @param request - GetCipStatsRequest
 //
@@ -3046,7 +3137,7 @@ func (client *Client) GetCipStats(request *GetCipStatsRequest) (_result *GetCipS
 
 // Summary:
 //
-// # Get Scheduled  OSS Scan  Task Estimated Execution Time
+// Retrieves the estimated execution time of a scheduled task.
 //
 // @param request - GetExecuteTimeRequest
 //
@@ -3090,7 +3181,7 @@ func (client *Client) GetExecuteTimeWithOptions(request *GetExecuteTimeRequest, 
 
 // Summary:
 //
-// # Get Scheduled  OSS Scan  Task Estimated Execution Time
+// Retrieves the estimated execution time of a scheduled task.
 //
 // @param request - GetExecuteTimeRequest
 //
@@ -3108,7 +3199,7 @@ func (client *Client) GetExecuteTime(request *GetExecuteTimeRequest) (_result *G
 
 // Summary:
 //
-// # Get Feature Configuration
+// Retrieves feature configurations.
 //
 // @param request - GetFeatureConfigRequest
 //
@@ -3170,7 +3261,7 @@ func (client *Client) GetFeatureConfigWithOptions(request *GetFeatureConfigReque
 
 // Summary:
 //
-// # Get Feature Configuration
+// Retrieves feature configurations.
 //
 // @param request - GetFeatureConfigRequest
 //
@@ -3188,7 +3279,7 @@ func (client *Client) GetFeatureConfig(request *GetFeatureConfigRequest) (_resul
 
 // Summary:
 //
-// # Get Image Rule Label Information
+// Retrieves image rule tag information.
 //
 // @param request - GetImageSceneLabelConfRequest
 //
@@ -3232,7 +3323,7 @@ func (client *Client) GetImageSceneLabelConfWithOptions(request *GetImageSceneLa
 
 // Summary:
 //
-// # Get Image Rule Label Information
+// Retrieves image rule tag information.
 //
 // @param request - GetImageSceneLabelConfRequest
 //
@@ -3250,7 +3341,7 @@ func (client *Client) GetImageSceneLabelConf(request *GetImageSceneLabelConfRequ
 
 // Summary:
 //
-// # Get Image Rule Label Information
+// Retrieves image rule tag information.
 //
 // @param request - GetImageSceneLabelListConfRequest
 //
@@ -3298,7 +3389,7 @@ func (client *Client) GetImageSceneLabelListConfWithOptions(request *GetImageSce
 
 // Summary:
 //
-// # Get Image Rule Label Information
+// Retrieves image rule tag information.
 //
 // @param request - GetImageSceneLabelListConfRequest
 //
@@ -3316,7 +3407,7 @@ func (client *Client) GetImageSceneLabelListConf(request *GetImageSceneLabelList
 
 // Summary:
 //
-// # OSS scheduled scan detection cycle query
+// Queries the scheduled scan detection cycle for OSS.
 //
 // @param tmpReq - GetJobNameListRequest
 //
@@ -3382,7 +3473,7 @@ func (client *Client) GetJobNameListWithOptions(tmpReq *GetJobNameListRequest, r
 
 // Summary:
 //
-// # OSS scheduled scan detection cycle query
+// Queries the scheduled scan detection cycle for OSS.
 //
 // @param request - GetJobNameListRequest
 //
@@ -3400,7 +3491,7 @@ func (client *Client) GetJobNameList(request *GetJobNameListRequest) (_result *G
 
 // Summary:
 //
-// # Query the result of keyword import
+// Queries the result of a keyword import task.
 //
 // @param request - GetKeywordImportResultRequest
 //
@@ -3450,7 +3541,7 @@ func (client *Client) GetKeywordImportResultWithOptions(request *GetKeywordImpor
 
 // Summary:
 //
-// # Query the result of keyword import
+// Queries the result of a keyword import task.
 //
 // @param request - GetKeywordImportResultRequest
 //
@@ -3468,7 +3559,7 @@ func (client *Client) GetKeywordImportResult(request *GetKeywordImportResultRequ
 
 // Summary:
 //
-// # Keyword Library Information
+// Retrieves keyword library information.
 //
 // @param request - GetKeywordLibRequest
 //
@@ -3522,7 +3613,7 @@ func (client *Client) GetKeywordLibWithOptions(request *GetKeywordLibRequest, ru
 
 // Summary:
 //
-// # Keyword Library Information
+// Retrieves keyword library information.
 //
 // @param request - GetKeywordLibRequest
 //
@@ -3540,7 +3631,7 @@ func (client *Client) GetKeywordLib(request *GetKeywordLibRequest) (_result *Get
 
 // Summary:
 //
-// # Query OSS freeze result
+// Queries the results of OSS scan and freeze operations.
 //
 // @param tmpReq - GetOssCheckFreezeResultRequest
 //
@@ -3622,7 +3713,7 @@ func (client *Client) GetOssCheckFreezeResultWithOptions(tmpReq *GetOssCheckFree
 
 // Summary:
 //
-// # Query OSS freeze result
+// Queries the results of OSS scan and freeze operations.
 //
 // @param request - GetOssCheckFreezeResultRequest
 //
@@ -3640,7 +3731,7 @@ func (client *Client) GetOssCheckFreezeResult(request *GetOssCheckFreezeResultRe
 
 // Summary:
 //
-// # OSS result details
+// Retrieves the detailed information of OSS check results.
 //
 // @param request - GetOssCheckResultDetailRequest
 //
@@ -3708,7 +3799,7 @@ func (client *Client) GetOssCheckResultDetailWithOptions(request *GetOssCheckRes
 
 // Summary:
 //
-// # OSS result details
+// Retrieves the detailed information of OSS check results.
 //
 // @param request - GetOssCheckResultDetailRequest
 //
@@ -3726,7 +3817,7 @@ func (client *Client) GetOssCheckResultDetail(request *GetOssCheckResultDetailRe
 
 // Summary:
 //
-// # OSS Check Usage Statistics
+// Queries OSS usage statistics.
 //
 // @param request - GetOssCheckStatRequest
 //
@@ -3788,7 +3879,7 @@ func (client *Client) GetOssCheckStatWithOptions(request *GetOssCheckStatRequest
 
 // Summary:
 //
-// # OSS Check Usage Statistics
+// Queries OSS usage statistics.
 //
 // @param request - GetOssCheckStatRequest
 //
@@ -3806,7 +3897,7 @@ func (client *Client) GetOssCheckStat(request *GetOssCheckStatRequest) (_result 
 
 // Summary:
 //
-// # Get User OSS check user status
+// Queries the OSS detection status of a user.
 //
 // @param request - GetOssCheckStatusRequest
 //
@@ -3850,7 +3941,7 @@ func (client *Client) GetOssCheckStatusWithOptions(request *GetOssCheckStatusReq
 
 // Summary:
 //
-// # Get User OSS check user status
+// Queries the OSS detection status of a user.
 //
 // @param request - GetOssCheckStatusRequest
 //
@@ -3868,7 +3959,7 @@ func (client *Client) GetOssCheckStatus(request *GetOssCheckStatusRequest) (_res
 
 // Summary:
 //
-// 查询oss扫描任务详情
+// Queries the details of an OSS scan task.
 //
 // @param request - GetOssCheckTaskInfoRequest
 //
@@ -3912,7 +4003,7 @@ func (client *Client) GetOssCheckTaskInfoWithOptions(request *GetOssCheckTaskInf
 
 // Summary:
 //
-// 查询oss扫描任务详情
+// Queries the details of an OSS scan task.
 //
 // @param request - GetOssCheckTaskInfoRequest
 //
@@ -3930,7 +4021,7 @@ func (client *Client) GetOssCheckTaskInfo(request *GetOssCheckTaskInfoRequest) (
 
 // Summary:
 //
-// 测试特性配置
+// Tests the attribute configuration.
 //
 // @param request - GetPromptTestResultRequest
 //
@@ -3990,7 +4081,7 @@ func (client *Client) GetPromptTestResultWithOptions(request *GetPromptTestResul
 
 // Summary:
 //
-// 测试特性配置
+// Tests the attribute configuration.
 //
 // @param request - GetPromptTestResultRequest
 //
@@ -4008,7 +4099,7 @@ func (client *Client) GetPromptTestResult(request *GetPromptTestResultRequest) (
 
 // Summary:
 //
-// # User OSS Check Task Pending Inspection Information
+// Queries the information about files pending detection for a user.
 //
 // @param request - GetScanNumRequest
 //
@@ -4060,7 +4151,7 @@ func (client *Client) GetScanNumWithOptions(request *GetScanNumRequest, runtime 
 
 // Summary:
 //
-// # User OSS Check Task Pending Inspection Information
+// Queries the information about files pending detection for a user.
 //
 // @param request - GetScanNumRequest
 //
@@ -4078,7 +4169,7 @@ func (client *Client) GetScanNum(request *GetScanNumRequest) (_result *GetScanNu
 
 // Summary:
 //
-// # Query the Scan results
+// Queries the detection results.
 //
 // @param tmpReq - GetScanResultRequest
 //
@@ -4162,7 +4253,7 @@ func (client *Client) GetScanResultWithOptions(tmpReq *GetScanResultRequest, run
 
 // Summary:
 //
-// # Query the Scan results
+// Queries the detection results.
 //
 // @param request - GetScanResultRequest
 //
@@ -4180,7 +4271,7 @@ func (client *Client) GetScanResult(request *GetScanResultRequest) (_result *Get
 
 // Summary:
 //
-// # Get a Single Service Configuration
+// # Get a Single Service
 //
 // @param request - GetServiceConfRequest
 //
@@ -4242,7 +4333,7 @@ func (client *Client) GetServiceConfWithOptions(request *GetServiceConfRequest, 
 
 // Summary:
 //
-// # Get a Single Service Configuration
+// # Get a Single Service
 //
 // @param request - GetServiceConfRequest
 //
@@ -4260,7 +4351,7 @@ func (client *Client) GetServiceConf(request *GetServiceConfRequest) (_result *G
 
 // Summary:
 //
-// # Get a Single Service Configuration
+// Retrieves a single service.
 //
 // @param request - GetServiceConfigRequest
 //
@@ -4314,7 +4405,7 @@ func (client *Client) GetServiceConfigWithOptions(request *GetServiceConfigReque
 
 // Summary:
 //
-// # Get a Single Service Configuration
+// Retrieves a single service.
 //
 // @param request - GetServiceConfigRequest
 //
@@ -4332,7 +4423,7 @@ func (client *Client) GetServiceConfig(request *GetServiceConfigRequest) (_resul
 
 // Summary:
 //
-// # Get the label configuration of a single service
+// Retrieves the tag configuration of a single service.
 //
 // @param request - GetServiceLabelConfigRequest
 //
@@ -4386,7 +4477,7 @@ func (client *Client) GetServiceLabelConfigWithOptions(request *GetServiceLabelC
 
 // Summary:
 //
-// # Get the label configuration of a single service
+// Retrieves the tag configuration of a single service.
 //
 // @param request - GetServiceLabelConfigRequest
 //
@@ -4404,7 +4495,7 @@ func (client *Client) GetServiceLabelConfig(request *GetServiceLabelConfigReques
 
 // Summary:
 //
-// # Query OSS Scan Task List
+// Queries the list of OSS scan tasks.
 //
 // @param tmpReq - GetStockOssCheckTasksListRequest
 //
@@ -4488,7 +4579,7 @@ func (client *Client) GetStockOssCheckTasksListWithOptions(tmpReq *GetStockOssCh
 
 // Summary:
 //
-// # Query OSS Scan Task List
+// Queries the list of OSS scan tasks.
 //
 // @param request - GetStockOssCheckTasksListRequest
 //
@@ -4506,7 +4597,7 @@ func (client *Client) GetStockOssCheckTasksList(request *GetStockOssCheckTasksLi
 
 // Summary:
 //
-// # Query the invocation result
+// Queries the call results.
 //
 // @param tmpReq - GetTextScanResultRequest
 //
@@ -4586,7 +4677,7 @@ func (client *Client) GetTextScanResultWithOptions(tmpReq *GetTextScanResultRequ
 
 // Summary:
 //
-// # Query the invocation result
+// Queries the call results.
 //
 // @param request - GetTextScanResultRequest
 //
@@ -4604,7 +4695,11 @@ func (client *Client) GetTextScanResult(request *GetTextScanResultRequest) (_res
 
 // Summary:
 //
-// 获取开关配置调优意见
+// Retrieves tuning suggestions for switch configurations.
+//
+// Description:
+//
+// API operation is used together with the enhanced image moderation API. After you call the enhanced image moderation API, call API operation to retrieve additional detection information. API operation is free of charge.
 //
 // @param request - GetTuneProposalByIdRequest
 //
@@ -4648,7 +4743,11 @@ func (client *Client) GetTuneProposalByIdWithOptions(request *GetTuneProposalByI
 
 // Summary:
 //
-// 获取开关配置调优意见
+// Retrieves tuning suggestions for switch configurations.
+//
+// Description:
+//
+// API operation is used together with the enhanced image moderation API. After you call the enhanced image moderation API, call API operation to retrieve additional detection information. API operation is free of charge.
 //
 // @param request - GetTuneProposalByIdRequest
 //
@@ -4666,7 +4765,7 @@ func (client *Client) GetTuneProposalById(request *GetTuneProposalByIdRequest) (
 
 // Summary:
 //
-// # Get the corresponding information for file upload
+// Retrieves the relevant information for file upload.
 //
 // @param request - GetUploadInfoRequest
 //
@@ -4720,7 +4819,7 @@ func (client *Client) GetUploadInfoWithOptions(request *GetUploadInfoRequest, ru
 
 // Summary:
 //
-// # Get the corresponding information for file upload
+// Retrieves the relevant information for file upload.
 //
 // @param request - GetUploadInfoRequest
 //
@@ -4738,7 +4837,7 @@ func (client *Client) GetUploadInfo(request *GetUploadInfoRequest) (_result *Get
 
 // Summary:
 //
-// 获取上传链接
+// # Obtain an upload link
 //
 // @param request - GetUploadLinkRequest
 //
@@ -4782,7 +4881,7 @@ func (client *Client) GetUploadLinkWithOptions(request *GetUploadLinkRequest, ru
 
 // Summary:
 //
-// 获取上传链接
+// # Obtain an upload link
 //
 // @param request - GetUploadLinkRequest
 //
@@ -4800,7 +4899,7 @@ func (client *Client) GetUploadLink(request *GetUploadLinkRequest) (_result *Get
 
 // Summary:
 //
-// # Get User Purchase Status
+// Retrieves the purchase status of a user.
 //
 // @param request - GetUserBuyStatusRequest
 //
@@ -4850,7 +4949,7 @@ func (client *Client) GetUserBuyStatusWithOptions(request *GetUserBuyStatusReque
 
 // Summary:
 //
-// # Get User Purchase Status
+// Retrieves the purchase status of a user.
 //
 // @param request - GetUserBuyStatusRequest
 //
@@ -4868,7 +4967,7 @@ func (client *Client) GetUserBuyStatus(request *GetUserBuyStatusRequest) (_resul
 
 // Summary:
 //
-// 代答库列表
+// Queries the list of proxy answer libraries.
 //
 // @param request - ListAnswerLibRequest
 //
@@ -4912,7 +5011,7 @@ func (client *Client) ListAnswerLibWithOptions(request *ListAnswerLibRequest, ru
 
 // Summary:
 //
-// 代答库列表
+// Queries the list of proxy answer libraries.
 //
 // @param request - ListAnswerLibRequest
 //
@@ -4930,7 +5029,7 @@ func (client *Client) ListAnswerLib(request *ListAnswerLibRequest) (_result *Lis
 
 // Summary:
 //
-// # Get Callback List
+// Queries the list of message notifications.
 //
 // @param request - ListCallbackRequest
 //
@@ -4974,7 +5073,7 @@ func (client *Client) ListCallbackWithOptions(request *ListCallbackRequest, runt
 
 // Summary:
 //
-// # Get Callback List
+// Queries the list of message notifications.
 //
 // @param request - ListCallbackRequest
 //
@@ -4992,7 +5091,7 @@ func (client *Client) ListCallback(request *ListCallbackRequest) (_result *ListC
 
 // Summary:
 //
-// # Image Library List
+// Queries the list of image libraries.
 //
 // @param request - ListImageLibRequest
 //
@@ -5042,7 +5141,7 @@ func (client *Client) ListImageLibWithOptions(request *ListImageLibRequest, runt
 
 // Summary:
 //
-// # Image Library List
+// Queries the list of image libraries.
 //
 // @param request - ListImageLibRequest
 //
@@ -5060,7 +5159,7 @@ func (client *Client) ListImageLib(request *ListImageLibRequest) (_result *ListI
 
 // Summary:
 //
-// # Paged Image List
+// Queries a paginated list of images.
 //
 // @param tmpReq - ListImagesFromLibRequest
 //
@@ -5140,7 +5239,7 @@ func (client *Client) ListImagesFromLibWithOptions(tmpReq *ListImagesFromLibRequ
 
 // Summary:
 //
-// # Paged Image List
+// Queries a paginated list of images.
 //
 // @param request - ListImagesFromLibRequest
 //
@@ -5158,7 +5257,7 @@ func (client *Client) ListImagesFromLib(request *ListImagesFromLibRequest) (_res
 
 // Summary:
 //
-// # Keyword Library List
+// Queries the list of keyword libraries.
 //
 // @param request - ListKeywordLibsRequest
 //
@@ -5206,7 +5305,7 @@ func (client *Client) ListKeywordLibsWithOptions(request *ListKeywordLibsRequest
 
 // Summary:
 //
-// # Keyword Library List
+// Queries the list of keyword libraries.
 //
 // @param request - ListKeywordLibsRequest
 //
@@ -5224,7 +5323,7 @@ func (client *Client) ListKeywordLibs(request *ListKeywordLibsRequest) (_result 
 
 // Summary:
 //
-// # Query Keyword List
+// Queries a list of keywords.
 //
 // @param tmpReq - ListKeywordsRequest
 //
@@ -5300,7 +5399,7 @@ func (client *Client) ListKeywordsWithOptions(tmpReq *ListKeywordsRequest, runti
 
 // Summary:
 //
-// # Query Keyword List
+// Queries a list of keywords.
 //
 // @param request - ListKeywordsRequest
 //
@@ -5318,7 +5417,7 @@ func (client *Client) ListKeywords(request *ListKeywordsRequest) (_result *ListK
 
 // Summary:
 //
-// query OSS scan result list
+// Queries OSS scan results.
 //
 // @param tmpReq - ListOssCheckResultRequest
 //
@@ -5400,7 +5499,7 @@ func (client *Client) ListOssCheckResultWithOptions(tmpReq *ListOssCheckResultRe
 
 // Summary:
 //
-// query OSS scan result list
+// Queries OSS scan results.
 //
 // @param request - ListOssCheckResultRequest
 //
@@ -5418,7 +5517,7 @@ func (client *Client) ListOssCheckResult(request *ListOssCheckResultRequest) (_r
 
 // Summary:
 //
-// # Get Service List
+// Retrieves the service list.
 //
 // @param request - ListServiceConfigsRequest
 //
@@ -5480,7 +5579,7 @@ func (client *Client) ListServiceConfigsWithOptions(request *ListServiceConfigsR
 
 // Summary:
 //
-// # Get Service List
+// Retrieves the service list.
 //
 // @param request - ListServiceConfigsRequest
 //
@@ -5673,7 +5772,7 @@ func (client *Client) MarkOssV2Result(request *MarkOssV2ResultRequest) (_result 
 
 // Summary:
 //
-// 更新代答库
+// Updates a proxy response library.
 //
 // @param request - ModifyAnswerLibRequest
 //
@@ -5725,7 +5824,7 @@ func (client *Client) ModifyAnswerLibWithOptions(request *ModifyAnswerLibRequest
 
 // Summary:
 //
-// 更新代答库
+// Updates a proxy response library.
 //
 // @param request - ModifyAnswerLibRequest
 //
@@ -5743,7 +5842,7 @@ func (client *Client) ModifyAnswerLib(request *ModifyAnswerLibRequest) (_result 
 
 // Summary:
 //
-// # Modify Message Notification
+// Modifies a message notification.
 //
 // @param request - ModifyCallbackRequest
 //
@@ -5809,7 +5908,7 @@ func (client *Client) ModifyCallbackWithOptions(request *ModifyCallbackRequest, 
 
 // Summary:
 //
-// # Modify Message Notification
+// Modifies a message notification.
 //
 // @param request - ModifyCallbackRequest
 //
@@ -5827,7 +5926,7 @@ func (client *Client) ModifyCallback(request *ModifyCallbackRequest) (_result *M
 
 // Summary:
 //
-// # Save Feature Configuration
+// Saves an attribute configuration.
 //
 // @param request - ModifyFeatureConfigRequest
 //
@@ -5897,7 +5996,7 @@ func (client *Client) ModifyFeatureConfigWithOptions(request *ModifyFeatureConfi
 
 // Summary:
 //
-// # Save Feature Configuration
+// Saves an attribute configuration.
 //
 // @param request - ModifyFeatureConfigRequest
 //
@@ -5915,7 +6014,7 @@ func (client *Client) ModifyFeatureConfig(request *ModifyFeatureConfigRequest) (
 
 // Summary:
 //
-// # Edit Service
+// Edits a service.
 //
 // @param request - ModifyServiceInfoRequest
 //
@@ -5977,7 +6076,7 @@ func (client *Client) ModifyServiceInfoWithOptions(request *ModifyServiceInfoReq
 
 // Summary:
 //
-// # Edit Service
+// Edits a service.
 //
 // @param request - ModifyServiceInfoRequest
 //
@@ -5995,7 +6094,7 @@ func (client *Client) ModifyServiceInfo(request *ModifyServiceInfoRequest) (_res
 
 // Summary:
 //
-// # OSS scan result query
+// Retrieves the list of OSS detection results.
 //
 // @param tmpReq - OssCheckResultListRequest
 //
@@ -6077,7 +6176,7 @@ func (client *Client) OssCheckResultListWithOptions(tmpReq *OssCheckResultListRe
 
 // Summary:
 //
-// # OSS scan result query
+// Retrieves the list of OSS detection results.
 //
 // @param request - OssCheckResultListRequest
 //
@@ -6095,7 +6194,7 @@ func (client *Client) OssCheckResultList(request *OssCheckResultListRequest) (_r
 
 // Summary:
 //
-// 分页查询代答样本
+// Queries proxy answer samples by paging.
 //
 // @param tmpReq - QueryAnswerSampleByPageRequest
 //
@@ -6165,7 +6264,7 @@ func (client *Client) QueryAnswerSampleByPageWithOptions(tmpReq *QueryAnswerSamp
 
 // Summary:
 //
-// 分页查询代答样本
+// Queries proxy answer samples by paging.
 //
 // @param request - QueryAnswerSampleByPageRequest
 //
@@ -6183,7 +6282,7 @@ func (client *Client) QueryAnswerSampleByPage(request *QueryAnswerSampleByPageRe
 
 // Summary:
 //
-// # Query a Single Callback Configuration
+// Queries a single callback configuration.
 //
 // @param request - QueryCallbackRequest
 //
@@ -6237,7 +6336,7 @@ func (client *Client) QueryCallbackWithOptions(request *QueryCallbackRequest, ru
 
 // Summary:
 //
-// # Query a Single Callback Configuration
+// Queries a single callback configuration.
 //
 // @param request - QueryCallbackRequest
 //
@@ -6255,7 +6354,7 @@ func (client *Client) QueryCallback(request *QueryCallbackRequest) (_result *Que
 
 // Summary:
 //
-// # Paginated Query of Message Notification List
+// Message notification.
 //
 // @param request - QueryCallbackByPageRequest
 //
@@ -6309,7 +6408,7 @@ func (client *Client) QueryCallbackByPageWithOptions(request *QueryCallbackByPag
 
 // Summary:
 //
-// # Paginated Query of Message Notification List
+// Message notification.
 //
 // @param request - QueryCallbackByPageRequest
 //
@@ -6327,7 +6426,7 @@ func (client *Client) QueryCallbackByPage(request *QueryCallbackByPageRequest) (
 
 // Summary:
 //
-// 停止在线测试
+// # Abort an online Detection Job
 //
 // @param request - StopOnlineTestRequest
 //
@@ -6379,7 +6478,7 @@ func (client *Client) StopOnlineTestWithOptions(request *StopOnlineTestRequest, 
 
 // Summary:
 //
-// 停止在线测试
+// # Abort an online Detection Job
 //
 // @param request - StopOnlineTestRequest
 //
@@ -6397,7 +6496,7 @@ func (client *Client) StopOnlineTest(request *StopOnlineTestRequest) (_result *S
 
 // Summary:
 //
-// # Update Evidence Backup Configuration
+// Updates the evidence transfer configuration.
 //
 // @param request - UpdateBackupConfigRequest
 //
@@ -6453,7 +6552,7 @@ func (client *Client) UpdateBackupConfigWithOptions(request *UpdateBackupConfigR
 
 // Summary:
 //
-// # Update Evidence Backup Configuration
+// Updates the evidence transfer configuration.
 //
 // @param request - UpdateBackupConfigRequest
 //
@@ -6471,7 +6570,7 @@ func (client *Client) UpdateBackupConfig(request *UpdateBackupConfigRequest) (_r
 
 // Summary:
 //
-// # Edit Image Library
+// Edits an image library.
 //
 // @param request - UpdateImageLibRequest
 //
@@ -6533,7 +6632,7 @@ func (client *Client) UpdateImageLibWithOptions(request *UpdateImageLibRequest, 
 
 // Summary:
 //
-// # Edit Image Library
+// Edits an image library.
 //
 // @param request - UpdateImageLibRequest
 //
@@ -6551,7 +6650,7 @@ func (client *Client) UpdateImageLib(request *UpdateImageLibRequest) (_result *U
 
 // Summary:
 //
-// # Edit Image Library Free Inspection Configuration
+// Edits the inspection-exempt configuration of an image library.
 //
 // @param tmpReq - UpdateImageLibFreeInspectionRequest
 //
@@ -6611,7 +6710,7 @@ func (client *Client) UpdateImageLibFreeInspectionWithOptions(tmpReq *UpdateImag
 
 // Summary:
 //
-// # Edit Image Library Free Inspection Configuration
+// Edits the inspection-exempt configuration of an image library.
 //
 // @param request - UpdateImageLibFreeInspectionRequest
 //
@@ -6629,7 +6728,7 @@ func (client *Client) UpdateImageLibFreeInspection(request *UpdateImageLibFreeIn
 
 // Summary:
 //
-// # Edit Keyword Library
+// Edits a keyword library.
 //
 // @param request - UpdateKeywordLibRequest
 //
@@ -6687,7 +6786,7 @@ func (client *Client) UpdateKeywordLibWithOptions(request *UpdateKeywordLibReque
 
 // Summary:
 //
-// # Edit Keyword Library
+// Edits a keyword library.
 //
 // @param request - UpdateKeywordLibRequest
 //
@@ -6705,7 +6804,7 @@ func (client *Client) UpdateKeywordLib(request *UpdateKeywordLibRequest) (_resul
 
 // Summary:
 //
-// 批量反馈任务
+// # Batch update OSS detection result feedback
 //
 // @param request - UpdateOssCheckResultsBatchFeedbackRequest
 //
@@ -6757,7 +6856,7 @@ func (client *Client) UpdateOssCheckResultsBatchFeedbackWithOptions(request *Upd
 
 // Summary:
 //
-// 批量反馈任务
+// # Batch update OSS detection result feedback
 //
 // @param request - UpdateOssCheckResultsBatchFeedbackRequest
 //
@@ -6775,7 +6874,7 @@ func (client *Client) UpdateOssCheckResultsBatchFeedback(request *UpdateOssCheck
 
 // Summary:
 //
-// oss结果反馈
+// # Update OSS detection result feedback
 //
 // @param request - UpdateOssCheckResultsFeedBackRequest
 //
@@ -6835,7 +6934,7 @@ func (client *Client) UpdateOssCheckResultsFeedBackWithOptions(request *UpdateOs
 
 // Summary:
 //
-// oss结果反馈
+// # Update OSS detection result feedback
 //
 // @param request - UpdateOssCheckResultsFeedBackRequest
 //
@@ -6853,7 +6952,7 @@ func (client *Client) UpdateOssCheckResultsFeedBack(request *UpdateOssCheckResul
 
 // Summary:
 //
-// 批量冻结任务
+// Freezes OSS scan results in batches.
 //
 // @param request - UpdateOssCheckResultsFreezeRequest
 //
@@ -6921,7 +7020,7 @@ func (client *Client) UpdateOssCheckResultsFreezeWithOptions(request *UpdateOssC
 
 // Summary:
 //
-// 批量冻结任务
+// Freezes OSS scan results in batches.
 //
 // @param request - UpdateOssCheckResultsFreezeRequest
 //
@@ -6939,7 +7038,7 @@ func (client *Client) UpdateOssCheckResultsFreeze(request *UpdateOssCheckResults
 
 // Summary:
 //
-// 批量解冻任务
+// Unfreezes OSS detection results in batches.
 //
 // @param request - UpdateOssCheckResultsUnfreezeRequest
 //
@@ -6999,7 +7098,7 @@ func (client *Client) UpdateOssCheckResultsUnfreezeWithOptions(request *UpdateOs
 
 // Summary:
 //
-// 批量解冻任务
+// Unfreezes OSS detection results in batches.
 //
 // @param request - UpdateOssCheckResultsUnfreezeRequest
 //
@@ -7017,7 +7116,7 @@ func (client *Client) UpdateOssCheckResultsUnfreeze(request *UpdateOssCheckResul
 
 // Summary:
 //
-// # Feedback on Scan Results
+// Submits feedback on detection results.
 //
 // @param request - UpdateScanResultFeedbackRequest
 //
@@ -7083,7 +7182,7 @@ func (client *Client) UpdateScanResultFeedbackWithOptions(request *UpdateScanRes
 
 // Summary:
 //
-// # Feedback on Scan Results
+// Submits feedback on detection results.
 //
 // @param request - UpdateScanResultFeedbackRequest
 //
@@ -7101,7 +7200,7 @@ func (client *Client) UpdateScanResultFeedback(request *UpdateScanResultFeedback
 
 // Summary:
 //
-// 更新服务
+// Updates a service.
 //
 // @param request - UpdateServiceConfigRequest
 //
@@ -7187,7 +7286,7 @@ func (client *Client) UpdateServiceConfigWithOptions(request *UpdateServiceConfi
 
 // Summary:
 //
-// 更新服务
+// Updates a service.
 //
 // @param request - UpdateServiceConfigRequest
 //

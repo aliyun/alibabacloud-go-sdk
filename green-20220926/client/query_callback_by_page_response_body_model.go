@@ -22,27 +22,27 @@ type iQueryCallbackByPageResponseBody interface {
 }
 
 type QueryCallbackByPageResponseBody struct {
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Data of the current page.
+	// The data on the current page.
 	Items []*QueryCallbackByPageResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// Page size.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
+	// The ID assigned by the backend to uniquely identify a request. This ID can be used to troubleshoot issues.
 	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of records.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -117,55 +117,55 @@ func (s *QueryCallbackByPageResponseBody) Validate() error {
 }
 
 type QueryCallbackByPageResponseBodyItems struct {
-	// Encryption algorithm.
+	// The encryption algorithm.
 	//
 	// example:
 	//
 	// SHA256
 	CryptType *string `json:"CryptType,omitempty" xml:"CryptType,omitempty"`
-	// Creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2024-06-03 15:20:14
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// Modification time.
+	// The modification time.
 	//
 	// example:
 	//
 	// 2024-06-03 15:20:14
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Primary key ID.
+	// The primary key ID.
 	//
 	// example:
 	//
 	// 1697
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Name.
+	// The name.
 	//
 	// example:
 	//
 	// 消息通知
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Result scope.
+	// The result scope.
 	//
 	// example:
 	//
 	// all
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// Seed.
+	// Seed。
 	//
 	// example:
 	//
 	// cb6gYS8GXj4Vn4Y4FN0Y8R5M-1x46Mq
 	Seed *string `json:"Seed,omitempty" xml:"Seed,omitempty"`
-	// UID.
+	// UID。
 	//
 	// example:
 	//
 	// 12161*****398900
 	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
-	// Callback URL.
+	// The callback URL.
 	//
 	// example:
 	//

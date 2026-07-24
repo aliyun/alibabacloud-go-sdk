@@ -26,43 +26,43 @@ type iGetOssCheckResultDetailRequest interface {
 }
 
 type GetOssCheckResultDetailRequest struct {
-	// Bucket name.
+	// The storage bucket.
 	//
 	// example:
 	//
 	// oss-tmp
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// Media type.
+	// The media asset type.
 	//
 	// example:
 	//
 	// 1
 	MediaType *int32 `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// Object name.
+	// The object name.
 	//
 	// example:
 	//
 	// 1748396909030.jpg
 	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	// Parent task ID.
+	// The parent task ID.
 	//
 	// example:
 	//
 	// P_RZQ66T
 	ParentTaskId *string `json:"ParentTaskId,omitempty" xml:"ParentTaskId,omitempty"`
-	// Query request ID.
+	// The request ID of the query.
 	//
 	// example:
 	//
 	// 62E97001-1255-50A9-8E1E-4FD05473D952
 	QueryRequestId *string `json:"QueryRequestId,omitempty" xml:"QueryRequestId,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Service code.
+	// The service code.
 	//
 	// example:
 	//

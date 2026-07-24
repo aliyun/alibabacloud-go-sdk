@@ -20,25 +20,25 @@ type iUpdateBackupConfigRequest interface {
 }
 
 type UpdateBackupConfigRequest struct {
-	// Evidence backup configuration.
+	// The evidence transfer configuration.
 	//
 	// example:
 	//
 	// {}
 	BackupConfig *string `json:"BackupConfig,omitempty" xml:"BackupConfig,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource type.
+	// The resource type.
 	//
 	// example:
 	//
 	// video
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// Service code.
+	// The service code.
 	//
 	// example:
 	//

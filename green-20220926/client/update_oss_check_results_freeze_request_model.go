@@ -26,27 +26,44 @@ type iUpdateOssCheckResultsFreezeRequest interface {
 }
 
 type UpdateOssCheckResultsFreezeRequest struct {
+	// The end time. Format: YYYY-MM-DD HH:mm:ss.
+	//
 	// example:
 	//
 	// 2023-10-21 16:08:38
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The items to freeze.
+	//
 	// example:
 	//
 	// []
-	FreezeItems       *string `json:"FreezeItems,omitempty" xml:"FreezeItems,omitempty"`
+	FreezeItems *string `json:"FreezeItems,omitempty" xml:"FreezeItems,omitempty"`
+	// The directory to which the frozen files are moved.
+	//
+	// example:
+	//
+	// uploadTest/
 	FreezeRestorePath *string `json:"FreezeRestorePath,omitempty" xml:"FreezeRestorePath,omitempty"`
+	// The freeze type.
+	//
 	// example:
 	//
 	// ACL
 	FreezeType *string `json:"FreezeType,omitempty" xml:"FreezeType,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The start time. Format: YYYY-MM-DD HH:mm:ss.
+	//
 	// example:
 	//
 	// 2023-08-21 16:08:38
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// P_15BU42

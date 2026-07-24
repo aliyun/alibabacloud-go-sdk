@@ -18,14 +18,20 @@ type iStopOnlineTestRequest interface {
 }
 
 type StopOnlineTestRequest struct {
+	// Resource type
+	//
 	// example:
 	//
 	// image
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// Service encoding
+	//
 	// example:
 	//
-	// VideoModeration
+	// baselineCheck
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// Detection TaskId
+	//
 	// example:
 	//
 	// xxxxx-xxxxx

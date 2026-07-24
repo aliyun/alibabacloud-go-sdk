@@ -24,23 +24,34 @@ type iGetCipStatsResponseBody interface {
 }
 
 type GetCipStatsResponseBody struct {
+	// The error code, which is the same as the HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *GetCipStatsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The further description of the error code.
+	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The request ID assigned by the backend. You can use this ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True
@@ -119,12 +130,18 @@ func (s *GetCipStatsResponseBody) Validate() error {
 }
 
 type GetCipStatsResponseBodyData struct {
+	// The label usage chart.
 	LabelStatChart []*GetCipStatsResponseBodyDataLabelStatChart `json:"LabelStatChart,omitempty" xml:"LabelStatChart,omitempty" type:"Repeated"`
-	TotalStat      map[string]map[string]interface{}            `json:"TotalStat,omitempty" xml:"TotalStat,omitempty"`
-	Uids           []*string                                    `json:"Uids,omitempty" xml:"Uids,omitempty" type:"Repeated"`
-	X              []*string                                    `json:"X,omitempty" xml:"X,omitempty" type:"Repeated"`
-	Y              []*GetCipStatsResponseBodyDataY              `json:"Y,omitempty" xml:"Y,omitempty" type:"Repeated"`
-	Z              []*GetCipStatsResponseBodyDataZ              `json:"Z,omitempty" xml:"Z,omitempty" type:"Repeated"`
+	// The total count by category.
+	TotalStat map[string]map[string]interface{} `json:"TotalStat,omitempty" xml:"TotalStat,omitempty"`
+	// The list of UIDs.
+	Uids []*string `json:"Uids,omitempty" xml:"Uids,omitempty" type:"Repeated"`
+	// The X value of the coordinate point.
+	X []*string `json:"X,omitempty" xml:"X,omitempty" type:"Repeated"`
+	// The Y value of the coordinate point.
+	Y []*GetCipStatsResponseBodyDataY `json:"Y,omitempty" xml:"Y,omitempty" type:"Repeated"`
+	// The hit data.
+	Z []*GetCipStatsResponseBodyDataZ `json:"Z,omitempty" xml:"Z,omitempty" type:"Repeated"`
 }
 
 func (s GetCipStatsResponseBodyData) String() string {
@@ -221,20 +238,30 @@ func (s *GetCipStatsResponseBodyData) Validate() error {
 }
 
 type GetCipStatsResponseBodyDataLabelStatChart struct {
+	// The image label statistics.
 	ImageTreeChar []*GetCipStatsResponseBodyDataLabelStatChartImageTreeChar `json:"ImageTreeChar,omitempty" xml:"ImageTreeChar,omitempty" type:"Repeated"`
+	// The service code.
+	//
 	// example:
 	//
 	// nickNameDetection
-	ServiceCode   *string                                                   `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// The text label statistics.
 	TextTreeChart []*GetCipStatsResponseBodyDataLabelStatChartTextTreeChart `json:"TextTreeChart,omitempty" xml:"TextTreeChart,omitempty" type:"Repeated"`
+	// The total count.
+	//
 	// example:
 	//
 	// 117
-	TotalCount     *int64                                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TreeChart      []*GetCipStatsResponseBodyDataLabelStatChartTreeChart      `json:"TreeChart,omitempty" xml:"TreeChart,omitempty" type:"Repeated"`
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The tree view.
+	TreeChart []*GetCipStatsResponseBodyDataLabelStatChartTreeChart `json:"TreeChart,omitempty" xml:"TreeChart,omitempty" type:"Repeated"`
+	// The audio tree view.
 	VoiceTreeChart []*GetCipStatsResponseBodyDataLabelStatChartVoiceTreeChart `json:"VoiceTreeChart,omitempty" xml:"VoiceTreeChart,omitempty" type:"Repeated"`
-	X              []*string                                                  `json:"X,omitempty" xml:"X,omitempty" type:"Repeated"`
-	Y              []*GetCipStatsResponseBodyDataLabelStatChartY              `json:"Y,omitempty" xml:"Y,omitempty" type:"Repeated"`
+	// The X value of the coordinate point.
+	X []*string `json:"X,omitempty" xml:"X,omitempty" type:"Repeated"`
+	// The Y value of the coordinate point.
+	Y []*GetCipStatsResponseBodyDataLabelStatChartY `json:"Y,omitempty" xml:"Y,omitempty" type:"Repeated"`
 }
 
 func (s GetCipStatsResponseBodyDataLabelStatChart) String() string {
@@ -367,9 +394,24 @@ func (s *GetCipStatsResponseBodyDataLabelStatChart) Validate() error {
 }
 
 type GetCipStatsResponseBodyDataLabelStatChartImageTreeChar struct {
+	// The description.
+	//
+	// example:
+	//
+	// 未检测出风险
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The label.
+	//
+	// example:
+	//
+	// nonLabel
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The label proportion.
+	//
+	// example:
+	//
+	// 0.0274
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetCipStatsResponseBodyDataLabelStatChartImageTreeChar) String() string {
@@ -412,9 +454,24 @@ func (s *GetCipStatsResponseBodyDataLabelStatChartImageTreeChar) Validate() erro
 }
 
 type GetCipStatsResponseBodyDataLabelStatChartTextTreeChart struct {
+	// The description.
+	//
+	// example:
+	//
+	// 未检测出风险
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The label.
+	//
+	// example:
+	//
+	// nonLabel
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The proportion.
+	//
+	// example:
+	//
+	// 0.0274
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetCipStatsResponseBodyDataLabelStatChartTextTreeChart) String() string {
@@ -457,11 +514,20 @@ func (s *GetCipStatsResponseBodyDataLabelStatChartTextTreeChart) Validate() erro
 }
 
 type GetCipStatsResponseBodyDataLabelStatChartTreeChart struct {
+	// The label description.
+	//
+	// example:
+	//
+	// 疑似政治人物
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The label.
+	//
 	// example:
 	//
 	// nickNameDetection
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The score.
+	//
 	// example:
 	//
 	// 99.91
@@ -508,11 +574,20 @@ func (s *GetCipStatsResponseBodyDataLabelStatChartTreeChart) Validate() error {
 }
 
 type GetCipStatsResponseBodyDataLabelStatChartVoiceTreeChart struct {
+	// The label description.
+	//
+	// example:
+	//
+	// 疑似特定歌曲
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The label.
+	//
 	// example:
 	//
 	// nickNameDetection
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The score.
+	//
 	// example:
 	//
 	// 99.91
@@ -559,7 +634,10 @@ func (s *GetCipStatsResponseBodyDataLabelStatChartVoiceTreeChart) Validate() err
 }
 
 type GetCipStatsResponseBodyDataLabelStatChartY struct {
+	// The returned data.
 	Data []*int64 `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The name.
+	//
 	// example:
 	//
 	// nickNameDetection
@@ -597,7 +675,10 @@ func (s *GetCipStatsResponseBodyDataLabelStatChartY) Validate() error {
 }
 
 type GetCipStatsResponseBodyDataY struct {
+	// The returned data.
 	Data []*int64 `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The name.
+	//
 	// example:
 	//
 	// nickNameDetection
@@ -635,7 +716,10 @@ func (s *GetCipStatsResponseBodyDataY) Validate() error {
 }
 
 type GetCipStatsResponseBodyDataZ struct {
+	// The count.
 	Data []*int64 `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The service code.
+	//
 	// example:
 	//
 	// nickNameDetection

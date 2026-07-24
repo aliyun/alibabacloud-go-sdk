@@ -18,14 +18,20 @@ type iDescribeOnlineTestResultRequest interface {
 }
 
 type DescribeOnlineTestResultRequest struct {
+	// The resource type.
+	//
 	// example:
 	//
 	// image
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The service code.
+	//
 	// example:
 	//
-	// VideoModeration
+	// videoDetection
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// The ID of the detection task.
+	//
 	// example:
 	//
 	// xxxxx-xxxxx

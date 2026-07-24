@@ -14,7 +14,7 @@ type iGetBucketsListRequest interface {
 }
 
 type GetBucketsListRequest struct {
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//

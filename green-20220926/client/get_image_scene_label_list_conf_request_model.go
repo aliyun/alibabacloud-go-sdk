@@ -16,13 +16,13 @@ type iGetImageSceneLabelListConfRequest interface {
 }
 
 type GetImageSceneLabelListConfRequest struct {
-	// Service code.
+	// The service code.
 	//
 	// example:
 	//
 	// baselineCheck
 	ImageServiceCode *string `json:"ImageServiceCode,omitempty" xml:"ImageServiceCode,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//

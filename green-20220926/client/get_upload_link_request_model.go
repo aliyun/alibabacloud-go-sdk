@@ -14,6 +14,8 @@ type iGetUploadLinkRequest interface {
 }
 
 type GetUploadLinkRequest struct {
+	// Upload Link address
+	//
 	// example:
 	//
 	// http://www.aliyuncs.com/test.mp3

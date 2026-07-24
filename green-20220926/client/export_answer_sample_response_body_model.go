@@ -16,10 +16,14 @@ type iExportAnswerSampleResponseBody interface {
 }
 
 type ExportAnswerSampleResponseBody struct {
+  // The returned data.
+  // 
   // example:
   // 
   // True
   Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+  // The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+  // 
   // example:
   // 
   // AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****

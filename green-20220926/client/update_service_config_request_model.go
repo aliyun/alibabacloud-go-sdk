@@ -34,40 +34,68 @@ type iUpdateServiceConfigRequest interface {
 }
 
 type UpdateServiceConfigRequest struct {
+	// The document configuration.
+	//
 	// example:
 	//
 	// {}
 	FileConfig *string `json:"FileConfig,omitempty" xml:"FileConfig,omitempty"`
+	// The keyword filter libraries.
+	//
 	// example:
 	//
 	// []
 	KeywordFilterLibs *string `json:"KeywordFilterLibs,omitempty" xml:"KeywordFilterLibs,omitempty"`
+	// The keyword hit libraries.
+	//
 	// example:
 	//
 	// []
-	KeywordHitLibs      *string `json:"KeywordHitLibs,omitempty" xml:"KeywordHitLibs,omitempty"`
+	KeywordHitLibs *string `json:"KeywordHitLibs,omitempty" xml:"KeywordHitLibs,omitempty"`
+	// The machine-assisted moderation configuration.
+	//
+	// example:
+	//
+	// {}
 	ManualMachineConfig *string `json:"ManualMachineConfig,omitempty" xml:"ManualMachineConfig,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// image
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The moderation scenario.
+	//
 	// example:
 	//
 	// pornographic
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// The scenario configuration.
+	//
 	// example:
 	//
 	// {}
 	SceneConfig *string `json:"SceneConfig,omitempty" xml:"SceneConfig,omitempty"`
+	// The service code.
+	//
 	// example:
 	//
 	// baselineCheck
-	ServiceCode   *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// The service configuration.
+	//
+	// example:
+	//
+	// {}
 	ServiceConfig *string `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty"`
+	// The video configuration.
+	//
 	// example:
 	//
 	// {}

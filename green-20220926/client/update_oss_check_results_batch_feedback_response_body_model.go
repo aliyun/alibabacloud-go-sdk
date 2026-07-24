@@ -24,26 +24,38 @@ type iUpdateOssCheckResultsBatchFeedbackResponseBody interface {
 }
 
 type UpdateOssCheckResultsBatchFeedbackResponseBody struct {
+	// Quantity of invalid items.
+	//
 	// example:
 	//
 	// 1
 	InvalidCount *int32 `json:"InvalidCount,omitempty" xml:"InvalidCount,omitempty"`
+	// Quantity of duplicates.
+	//
 	// example:
 	//
 	// 1
 	RepeatCount *int32 `json:"RepeatCount,omitempty" xml:"RepeatCount,omitempty"`
+	// The ID assigned by the backend to uniquely identify a request. It can be used for troubleshooting.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Number of succeeded items.
+	//
 	// example:
 	//
 	// 8
 	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	// Tips message.
+	//
 	// example:
 	//
 	// xxxxx
 	Tips *string `json:"Tips,omitempty" xml:"Tips,omitempty"`
+	// Total quantity.
+	//
 	// example:
 	//
 	// 10

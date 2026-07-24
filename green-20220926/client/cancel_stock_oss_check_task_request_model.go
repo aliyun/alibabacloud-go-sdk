@@ -16,7 +16,7 @@ type iCancelStockOssCheckTaskRequest interface {
 }
 
 type CancelStockOssCheckTaskRequest struct {
-	// Region ID
+	// The region ID.
 	//
 	// example:
 	//

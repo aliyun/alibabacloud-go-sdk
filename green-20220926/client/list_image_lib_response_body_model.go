@@ -26,34 +26,39 @@ type iListImageLibResponseBody interface {
 }
 
 type ListImageLibResponseBody struct {
-	// Error code, consistent with HTTP status.
+	// The error code, which is consistent with the HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// HTTP status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// List of image library information.
-	LibList     []*ListImageLibResponseBodyLibList `json:"LibList,omitempty" xml:"LibList,omitempty" type:"Repeated"`
-	MaxLibCount *int32                             `json:"MaxLibCount,omitempty" xml:"MaxLibCount,omitempty"`
-	// Further description of the error code.
+	// The list of image library information.
+	LibList []*ListImageLibResponseBodyLibList `json:"LibList,omitempty" xml:"LibList,omitempty" type:"Repeated"`
+	// The maximum number of libraries supported.
+	//
+	// example:
+	//
+	// 5
+	MaxLibCount *int32 `json:"MaxLibCount,omitempty" xml:"MaxLibCount,omitempty"`
+	// The further description of the error code.
 	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
+	// The backend-assigned ID that uniquely identifies a request. This ID can be used for troubleshooting.
 	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Success indicator.
+	// The success flag.
 	//
 	// example:
 	//
@@ -146,43 +151,43 @@ func (s *ListImageLibResponseBody) Validate() error {
 }
 
 type ListImageLibResponseBodyLibList struct {
-	// Comment.
+	// The remarks.
 	//
 	// example:
 	//
 	// 备注
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// Exempt from inspection configuration.
+	// The review-free configuration.
 	//
 	// example:
 	//
 	// 1
 	FreeInspection *int32 `json:"FreeInspection,omitempty" xml:"FreeInspection,omitempty"`
-	// Creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2024-06-03 15:20:14
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// Modification time.
+	// The modification time.
 	//
 	// example:
 	//
 	// 2024-06-03 15:20:14
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Number of images in the library.
+	// The number of images in the library.
 	//
 	// example:
 	//
 	// 1
 	ImageNum *int64 `json:"ImageNum,omitempty" xml:"ImageNum,omitempty"`
-	// Library ID.
+	// The image library ID.
 	//
 	// example:
 	//
 	// custom_xxxx
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
-	// Library name.
+	// The image library name.
 	//
 	// example:
 	//

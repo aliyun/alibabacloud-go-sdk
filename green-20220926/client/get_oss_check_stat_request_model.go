@@ -22,31 +22,31 @@ type iGetOssCheckStatRequest interface {
 }
 
 type GetOssCheckStatRequest struct {
-	// Whether to query by month.
+	// Specifies whether to query by month.
 	//
 	// example:
 	//
 	// true
 	ByMonth *bool `json:"ByMonth,omitempty" xml:"ByMonth,omitempty"`
-	// End date.
+	// The end time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2023-08-24 10:01:55
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// Parent task ID.
+	// The parent task ID.
 	//
 	// example:
 	//
 	// P_UNHBH
 	ParentTaskId *string `json:"ParentTaskId,omitempty" xml:"ParentTaskId,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Start date.
+	// The start time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//

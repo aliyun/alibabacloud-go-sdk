@@ -14,6 +14,8 @@ type iListAnswerLibRequest interface {
 }
 
 type ListAnswerLibRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shanghai

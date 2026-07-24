@@ -32,37 +32,80 @@ type iGetCipStatsRequest interface {
 }
 
 type GetCipStatsRequest struct {
+	// Specifies whether monthly indexing is supported. Valid values:
+	//
+	// - true: Supported.
+	//
+	// - false: Not supported.
+	//
 	// example:
 	//
 	// true
 	ByMonth *bool `json:"ByMonth,omitempty" xml:"ByMonth,omitempty"`
+	// The end time of the query. Format: yyyy-MM-dd HH:mm:ss.
+	//
 	// example:
 	//
 	// 2024-03-11 10:00:00
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The label.
+	//
 	// example:
 	//
 	// xx
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The query condition.
+	//
+	// example:
+	//
+	// {}
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// text
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	ServiceCode  *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// The service code.
+	//
+	// example:
+	//
+	// baselineCheck
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// The start time of the query. Format: yyyy-MM-dd HH:mm:ss.
+	//
 	// example:
 	//
 	// 2024-03-10 10:00:00
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// The UID of the RAM user.
+	//
 	// example:
 	//
 	// 253552244990701265
 	SubUid *string `json:"SubUid,omitempty" xml:"SubUid,omitempty"`
-	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type. Valid values:
+	//
+	// - **cip**: Content Moderation invocation usage statistics.
+	//
+	// - **risk_level**: Content Moderation risk level statistics.
+	//
+	// - **content_moderation**: AI safety guardrail content compliance risk level and tag statistics.
+	//
+	// - **sensitive_data**: AI safety guardrail sensitive data risk level and tag statistics.
+	//
+	// - **prompt_attack**: AI safety guardrail prompt risk level and tag statistics.
+	//
+	// example:
+	//
+	// risk_level
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetCipStatsRequest) String() string {

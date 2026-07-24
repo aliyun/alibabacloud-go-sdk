@@ -18,18 +18,25 @@ type iGetKeywordLibRequest interface {
 }
 
 type GetKeywordLibRequest struct {
-	// Keyword library ID.
+	// The keyword library ID.
 	//
 	// example:
 	//
 	// customxx_xxx
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The library code.
+	//
+	// - desensitize: masking library
+	//
+	// example:
+	//
+	// desensitize
 	TenantCode *string `json:"TenantCode,omitempty" xml:"TenantCode,omitempty"`
 }
 

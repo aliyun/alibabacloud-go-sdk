@@ -24,23 +24,34 @@ type iCreateImageLibResponseBody interface {
 }
 
 type CreateImageLibResponseBody struct {
+	// The error code, which is consistent with the HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *CreateImageLibResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The further description of the error code.
+	//
 	// example:
 	//
 	// success
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True
@@ -119,6 +130,8 @@ func (s *CreateImageLibResponseBody) Validate() error {
 }
 
 type CreateImageLibResponseBodyData struct {
+	// The ID of the custom image library.
+	//
 	// example:
 	//
 	// 138xxxxx

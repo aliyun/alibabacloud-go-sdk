@@ -16,12 +16,19 @@ type iListKeywordLibsRequest interface {
 }
 
 type ListKeywordLibsRequest struct {
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The library code.
+	//
+	// - desensitize: desensitization library.
+	//
+	// example:
+	//
+	// desensitize
 	TenantCode *string `json:"TenantCode,omitempty" xml:"TenantCode,omitempty"`
 }
 

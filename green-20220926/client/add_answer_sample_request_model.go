@@ -20,19 +20,30 @@ type iAddAnswerSampleRequest interface {
 }
 
 type AddAnswerSampleRequest struct {
+	// The ID of the proxy answer library.
+	//
 	// example:
 	//
 	// alxxxx
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The file name of the proxy answer sample to be added.
+	//
 	// example:
 	//
 	// data/xxx.xlsx
 	SampleObject *string `json:"SampleObject,omitempty" xml:"SampleObject,omitempty"`
-	Samples      *string `json:"Samples,omitempty" xml:"Samples,omitempty"`
+	// The samples to be added.
+	//
+	// example:
+	//
+	// 代答答案1\\n代答答案2
+	Samples *string `json:"Samples,omitempty" xml:"Samples,omitempty"`
 }
 
 func (s AddAnswerSampleRequest) String() string {

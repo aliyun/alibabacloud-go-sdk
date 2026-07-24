@@ -18,19 +18,19 @@ type iGetScanNumRequest interface {
 }
 
 type GetScanNumRequest struct {
-	// Storage space.
+	// The storage space.
 	//
 	// example:
 	//
 	// tmpsample
 	Buckets *string `json:"Buckets,omitempty" xml:"Buckets,omitempty"`
-	// Media type.
+	// The media asset type.
 	//
 	// example:
 	//
-	// image
+	// 1
 	MediaType *int32 `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//

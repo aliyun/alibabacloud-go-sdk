@@ -16,9 +16,9 @@ type iListCallbackResponseBody interface {
 }
 
 type ListCallbackResponseBody struct {
-	// Returned data.
+	// The returned data.
 	Data []*ListCallbackResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Backend-assigned ID, used to uniquely identify a request. Can be used for troubleshooting.
+	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -66,55 +66,55 @@ func (s *ListCallbackResponseBody) Validate() error {
 }
 
 type ListCallbackResponseBodyData struct {
-	// Encryption algorithm.
+	// The encryption algorithm.
 	//
 	// example:
 	//
 	// SHA256
 	CryptType *string `json:"CryptType,omitempty" xml:"CryptType,omitempty"`
-	// Creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2024-06-03 15:20:14
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// Modification time.
+	// The modification time.
 	//
 	// example:
 	//
 	// 2024-06-03 15:20:14
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Primary key ID.
+	// The primary key ID.
 	//
 	// example:
 	//
 	// 11234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Name.
+	// The name.
 	//
 	// example:
 	//
 	// 回调通知
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Result scope.
+	// The result scope.
 	//
 	// example:
 	//
 	// all
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// Seed.
+	// Seed。
 	//
 	// example:
 	//
 	// cbupVnpBjkgjFxfINMHKkrHS-1zZPUm
 	Seed *string `json:"Seed,omitempty" xml:"Seed,omitempty"`
-	// UID.
+	// UID。
 	//
 	// example:
 	//
 	// 16537*****831937
 	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
-	// Callback URL.
+	// The callback URL.
 	//
 	// example:
 	//

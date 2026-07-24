@@ -16,10 +16,14 @@ type iDeleteAnswerLibRequest interface {
 }
 
 type DeleteAnswerLibRequest struct {
+	// The ID of the proxy answer library.
+	//
 	// example:
 	//
 	// alxxx
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shanghai

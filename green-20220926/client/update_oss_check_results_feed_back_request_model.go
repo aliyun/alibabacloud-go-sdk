@@ -22,22 +22,32 @@ type iUpdateOssCheckResultsFeedBackRequest interface {
 }
 
 type UpdateOssCheckResultsFeedBackRequest struct {
+	// Feedback.
+	//
 	// example:
 	//
 	// misreport
 	Feedback *string `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
+	// The request ID to query.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	QueryRequestId *string `json:"QueryRequestId,omitempty" xml:"QueryRequestId,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Service code.
+	//
 	// example:
 	//
 	// baselineCheck
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// Job ID.
+	//
 	// example:
 	//
 	// P_7SCUK8

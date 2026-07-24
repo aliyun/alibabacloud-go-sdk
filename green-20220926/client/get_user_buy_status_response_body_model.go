@@ -22,27 +22,27 @@ type iGetUserBuyStatusResponseBody interface {
 }
 
 type GetUserBuyStatusResponseBody struct {
-	// Error code.
+	// The error code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Returned data.
+	// The returned data.
 	Data *GetUserBuyStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Further description of the error code.
+	// The description of the error code.
 	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// ID assigned by the backend to uniquely identify a request. It can be used for troubleshooting.
+	// The ID assigned by the backend to uniquely identify the request. This ID can be used to troubleshoot issues.
 	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Success indicator.
+	// The success flag.
 	//
 	// example:
 	//
@@ -113,26 +113,31 @@ func (s *GetUserBuyStatusResponseBody) Validate() error {
 }
 
 type GetUserBuyStatusResponseBodyData struct {
-	// Bid.
+	// Bid。
 	//
 	// example:
 	//
 	// 26842
 	Bid *int64 `json:"Bid,omitempty" xml:"Bid,omitempty"`
-	// Indicates whether the product has been activated on Alibaba Cloud.
+	// Indicates whether the commodity is activated on Alibaba Cloud.
 	//
 	// example:
 	//
 	// True
 	Buy *bool `json:"Buy,omitempty" xml:"Buy,omitempty"`
-	// Indicates whether there is an outstanding payment.
+	// Indicates whether there is an overdue payment.
 	//
 	// example:
 	//
 	// False
-	Indebt     *bool   `json:"Indebt,omitempty" xml:"Indebt,omitempty"`
+	Indebt *bool `json:"Indebt,omitempty" xml:"Indebt,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// xxx-xxx-xxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Tag.
+	// The label.
 	//
 	// example:
 	//

@@ -16,10 +16,14 @@ type iGetAnswerImportProgressRequest interface {
 }
 
 type GetAnswerImportProgressRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// alAxbbxxxx-xxx

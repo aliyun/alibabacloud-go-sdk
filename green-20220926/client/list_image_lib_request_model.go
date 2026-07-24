@@ -16,12 +16,17 @@ type iListImageLibRequest interface {
 }
 
 type ListImageLibRequest struct {
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The selected service identifier.
+	//
+	// example:
+	//
+	// response_security_check
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
 }
 

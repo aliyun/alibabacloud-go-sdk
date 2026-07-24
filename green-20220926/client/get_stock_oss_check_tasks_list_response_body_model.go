@@ -22,27 +22,27 @@ type iGetStockOssCheckTasksListResponseBody interface {
 }
 
 type GetStockOssCheckTasksListResponseBody struct {
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Data of the current page.
+	// The data on the current page.
 	Items []*GetStockOssCheckTasksListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// Page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Backend-assigned ID used to uniquely identify a request. Can be used for troubleshooting.
+	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of records.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -117,87 +117,87 @@ func (s *GetStockOssCheckTasksListResponseBody) Validate() error {
 }
 
 type GetStockOssCheckTasksListResponseBodyItems struct {
-	// Storage space.
+	// The OSS bucket.
 	//
 	// example:
 	//
 	// tmp
 	Buckets *string `json:"Buckets,omitempty" xml:"Buckets,omitempty"`
-	// Configuration items.
+	// The configuration item.
 	Config *GetStockOssCheckTasksListResponseBodyItemsConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-	// End time.
+	// The end time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2024-01-10 11:42:31
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Number of completed tasks.
+	// The number of completed tasks.
 	//
 	// example:
 	//
 	// 2
 	FinishNum *int64 `json:"FinishNum,omitempty" xml:"FinishNum,omitempty"`
-	// Whether it is a scheduled scan task
+	// Indicates whether the task is a scheduled scan task.
 	//
 	// example:
 	//
 	// false
 	IsInc *bool `json:"IsInc,omitempty" xml:"IsInc,omitempty"`
-	// Next execution time of the scheduled task
+	// The next execution time of the scheduled task. Format: HH:mm:ss.
 	//
 	// example:
 	//
 	// 02:00:00
 	LastExecuteDate *string `json:"LastExecuteDate,omitempty" xml:"LastExecuteDate,omitempty"`
-	// Media type.
+	// The media asset type.
 	//
 	// example:
 	//
 	// video
 	MediaType *int32 `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// Last execution time of the scheduled task
+	// The last execution time of the scheduled task. Format: HH:mm:ss.
 	//
 	// example:
 	//
 	// 02:00:00
 	NextExecuteDate *string `json:"NextExecuteDate,omitempty" xml:"NextExecuteDate,omitempty"`
-	// Total number of files in the bucket
+	// The total number of files in the bucket.
 	//
 	// example:
 	//
 	// 10
 	ObjectNum *int64 `json:"ObjectNum,omitempty" xml:"ObjectNum,omitempty"`
-	// Number of scan tasks.
+	// The number of scan tasks.
 	//
 	// example:
 	//
 	// 10
 	SearchNum *int64 `json:"SearchNum,omitempty" xml:"SearchNum,omitempty"`
-	// Start time.
+	// The start time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2023-12-21 15:30:19
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// Task status.
+	// The task status.
 	//
 	// example:
 	//
 	// 4
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Task ID.
+	// The task ID.
 	//
 	// example:
 	//
 	// P_XHDUS
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// Task name.
+	// The task name.
 	//
 	// example:
 	//
 	// 图片定时任务20231205135716797
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// Task type
+	// The task type.
 	//
 	// example:
 	//
@@ -358,133 +358,133 @@ func (s *GetStockOssCheckTasksListResponseBodyItems) Validate() error {
 }
 
 type GetStockOssCheckTasksListResponseBodyItemsConfig struct {
-	// Callback notification ID
+	// The callback notification ID.
 	//
 	// example:
 	//
 	// 3942
 	CallbackId *int64 `json:"CallbackId,omitempty" xml:"CallbackId,omitempty"`
-	// Whether to deduplicate historical detected tasks.
+	// Specifies whether to deduplicate historically scanned tasks.
 	//
 	// example:
 	//
 	// false
 	DistinctHistoryTasks *bool `json:"DistinctHistoryTasks,omitempty" xml:"DistinctHistoryTasks,omitempty"`
-	// End time.
+	// The end time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2024-01-10 11:42:31
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Scheduled task execution date.
+	// The execution date of the scheduled task.
 	//
 	// example:
 	//
 	// 1
 	ExecuteDate *int32 `json:"ExecuteDate,omitempty" xml:"ExecuteDate,omitempty"`
-	// Scheduled task expected execution time.
+	// The expected execution time of the scheduled task. Format: HH:mm:ss.
 	//
 	// example:
 	//
 	// 02:00:00
 	ExecuteTime *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
-	// Whether to freeze
+	// Specifies whether to freeze files.
 	//
 	// example:
 	//
 	// false
 	Freeze *bool `json:"Freeze,omitempty" xml:"Freeze,omitempty"`
-	// Freeze high-risk images
+	// Specifies whether to freeze high-risk images.
 	//
 	// example:
 	//
 	// true
 	FreezeHighRisk1 *bool `json:"FreezeHighRisk1,omitempty" xml:"FreezeHighRisk1,omitempty"`
-	// Freeze high-risk audio and text
+	// Specifies whether to freeze high-risk audio and text.
 	//
 	// example:
 	//
 	// true
 	FreezeHighRisk2 *bool `json:"FreezeHighRisk2,omitempty" xml:"FreezeHighRisk2,omitempty"`
-	// Freeze medium-risk images
+	// Specifies whether to freeze medium-risk images.
 	//
 	// example:
 	//
 	// true
 	FreezeMediumRisk1 *bool `json:"FreezeMediumRisk1,omitempty" xml:"FreezeMediumRisk1,omitempty"`
-	// Freeze medium-risk audio and text
+	// Specifies whether to freeze medium-risk audio and text.
 	//
 	// example:
 	//
 	// true
 	FreezeMediumRisk2 *bool `json:"FreezeMediumRisk2,omitempty" xml:"FreezeMediumRisk2,omitempty"`
-	// Storage path for transfer
+	// The transfer path.
 	//
 	// example:
 	//
 	// /backup
 	FreezeRestorePath *string `json:"FreezeRestorePath,omitempty" xml:"FreezeRestorePath,omitempty"`
-	// Freeze type
+	// The freeze type.
 	//
 	// example:
 	//
 	// ACL
 	FreezeType *string `json:"FreezeType,omitempty" xml:"FreezeType,omitempty"`
-	// Prefix filter type.
+	// The prefix filter type.
 	//
 	// example:
 	//
 	// all
 	PrefixFilterType *string `json:"PrefixFilterType,omitempty" xml:"PrefixFilterType,omitempty"`
-	// Prefixes.
+	// The prefix.
 	PrefixFilters []*string `json:"PrefixFilters,omitempty" xml:"PrefixFilters,omitempty" type:"Repeated"`
-	// Priority.
+	// The priority.
 	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// Referer
+	// Referer。
 	//
 	// example:
 	//
 	// *
 	Referer *string `json:"Referer,omitempty" xml:"Referer,omitempty"`
-	// Scan limit quantity.
+	// The maximum number of files to scan.
 	//
 	// example:
 	//
 	// 10
 	ScanLimit *int64 `json:"ScanLimit,omitempty" xml:"ScanLimit,omitempty"`
-	// Whether to scan images without file extensions.
+	// Specifies whether to scan images without file name extensions.
 	//
 	// example:
 	//
 	// true
 	ScanNoFileType *bool `json:"ScanNoFileType,omitempty" xml:"ScanNoFileType,omitempty"`
-	// Scanned file type.
+	// The type of files to scan.
 	//
 	// example:
 	//
 	// 0
 	ScanResourceType *int32 `json:"ScanResourceType,omitempty" xml:"ScanResourceType,omitempty"`
-	// Scan service code
+	// The scan service code.
 	ScanService []*string `json:"ScanService,omitempty" xml:"ScanService,omitempty" type:"Repeated"`
-	// Scan service information
+	// The scan service information.
 	ScanServiceInfos []*GetStockOssCheckTasksListResponseBodyItemsConfigScanServiceInfos `json:"ScanServiceInfos,omitempty" xml:"ScanServiceInfos,omitempty" type:"Repeated"`
-	// Start time.
+	// The start time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2023-12-21 15:30:19
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// Scheduling date.
+	// The scheduling date.
 	//
 	// example:
 	//
 	// 0
 	TaskCycle *int32 `json:"TaskCycle,omitempty" xml:"TaskCycle,omitempty"`
-	// Manual freeze configuration
+	// The manual freeze configuration.
 	UserFreezeConfig *GetStockOssCheckTasksListResponseBodyItemsConfigUserFreezeConfig `json:"UserFreezeConfig,omitempty" xml:"UserFreezeConfig,omitempty" type:"Struct"`
 }
 
@@ -731,25 +731,25 @@ func (s *GetStockOssCheckTasksListResponseBodyItemsConfig) Validate() error {
 }
 
 type GetStockOssCheckTasksListResponseBodyItemsConfigScanServiceInfos struct {
-	// Primary service.
+	// The primary service.
 	//
 	// example:
 	//
 	// baselineCheck
 	CopyFrom *string `json:"CopyFrom,omitempty" xml:"CopyFrom,omitempty"`
-	// Whether to copy.
+	// Indicates whether the service is a copy.
 	//
 	// example:
 	//
 	// false
 	IsCopy *bool `json:"IsCopy,omitempty" xml:"IsCopy,omitempty"`
-	// Service code.
+	// The service code.
 	//
 	// example:
 	//
 	// baselineCheck_01
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// Service name.
+	// The service name.
 	//
 	// example:
 	//
@@ -806,13 +806,13 @@ func (s *GetStockOssCheckTasksListResponseBodyItemsConfigScanServiceInfos) Valid
 }
 
 type GetStockOssCheckTasksListResponseBodyItemsConfigUserFreezeConfig struct {
-	// Storage path for transfer
+	// The transfer path.
 	//
 	// example:
 	//
 	// /backup
 	FreezeRestorePath *string `json:"FreezeRestorePath,omitempty" xml:"FreezeRestorePath,omitempty"`
-	// Freeze type
+	// The freeze type.
 	//
 	// example:
 	//

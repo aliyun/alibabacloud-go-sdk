@@ -16,13 +16,13 @@ type iGetUserBuyStatusRequest interface {
 }
 
 type GetUserBuyStatusRequest struct {
-	// Commodity code.
+	// The commodity code.
 	//
 	// example:
 	//
 	// lvwang_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
