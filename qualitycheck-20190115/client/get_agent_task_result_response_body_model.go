@@ -44,7 +44,7 @@ type GetAgentTaskResultResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. You can use this field to determine whether the request succeeded:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The request succeeded.
 	//
 	// - **false/null**: The request failed.
 	//
@@ -413,6 +413,7 @@ type GetAgentTaskResultResponseBodyDataResponse struct {
 	ServiceInspectionResponse *GetAgentTaskResultResponseBodyDataResponseServiceInspectionResponse `json:"ServiceInspectionResponse,omitempty" xml:"ServiceInspectionResponse,omitempty" type:"Struct"`
 	// The tag categorization result.
 	TagCategoryResponse *GetAgentTaskResultResponseBodyDataResponseTagCategoryResponse `json:"TagCategoryResponse,omitempty" xml:"TagCategoryResponse,omitempty" type:"Struct"`
+	VoiceprintResponse  *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponse  `json:"VoiceprintResponse,omitempty" xml:"VoiceprintResponse,omitempty" type:"Struct"`
 }
 
 func (s GetAgentTaskResultResponseBodyDataResponse) String() string {
@@ -439,6 +440,10 @@ func (s *GetAgentTaskResultResponseBodyDataResponse) GetTagCategoryResponse() *G
 	return s.TagCategoryResponse
 }
 
+func (s *GetAgentTaskResultResponseBodyDataResponse) GetVoiceprintResponse() *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponse {
+	return s.VoiceprintResponse
+}
+
 func (s *GetAgentTaskResultResponseBodyDataResponse) SetCustomerPromptResponse(v *GetAgentTaskResultResponseBodyDataResponseCustomerPromptResponse) *GetAgentTaskResultResponseBodyDataResponse {
 	s.CustomerPromptResponse = v
 	return s
@@ -456,6 +461,11 @@ func (s *GetAgentTaskResultResponseBodyDataResponse) SetServiceInspectionRespons
 
 func (s *GetAgentTaskResultResponseBodyDataResponse) SetTagCategoryResponse(v *GetAgentTaskResultResponseBodyDataResponseTagCategoryResponse) *GetAgentTaskResultResponseBodyDataResponse {
 	s.TagCategoryResponse = v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponse) SetVoiceprintResponse(v *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponse) *GetAgentTaskResultResponseBodyDataResponse {
+	s.VoiceprintResponse = v
 	return s
 }
 
@@ -480,6 +490,11 @@ func (s *GetAgentTaskResultResponseBodyDataResponse) Validate() error {
 			return err
 		}
 	}
+	if s.VoiceprintResponse != nil {
+		if err := s.VoiceprintResponse.Validate(); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
@@ -488,7 +503,7 @@ type GetAgentTaskResultResponseBodyDataResponseCustomerPromptResponse struct {
 	//
 	// example:
 	//
-	// 175/xl the fabric feels very comfortable, looks slim when worn, great clothes super good-looking, quality and feel are top-notch, very satisfied with this purchase.
+	// 175/xl the fabric feels very comfortable, looks quite slim when worn, great clothes super good-looking, quality and feel are top-notch, very satisfied with this purchase.
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
@@ -561,7 +576,7 @@ type GetAgentTaskResultResponseBodyDataResponseFieldResponseFieldVoList struct {
 	//
 	// example:
 	//
-	// Determined by the first sentence of the agent.
+	// Determined based on the first sentence of the agent.
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
 	// The field value.
 	//
@@ -673,7 +688,7 @@ type GetAgentTaskResultResponseBodyDataResponseServiceInspectionResponseServiceI
 	//
 	// example:
 	//
-	// Determined by the first sentence of the agent.
+	// Determined based on the first sentence of the agent.
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
 }
 
@@ -779,7 +794,7 @@ type GetAgentTaskResultResponseBodyDataResponseTagCategoryResponseTagCategoryVoL
 	//
 	// example:
 	//
-	// Determined by the first sentence of the agent.
+	// Determined based on the first sentence of the agent.
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
 	// The list of matched labels.
 	ResultLabels []*string `json:"ResultLabels,omitempty" xml:"ResultLabels,omitempty" type:"Repeated"`
@@ -839,5 +854,268 @@ func (s *GetAgentTaskResultResponseBodyDataResponseTagCategoryResponseTagCategor
 }
 
 func (s *GetAgentTaskResultResponseBodyDataResponseTagCategoryResponseTagCategoryVoList) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetAgentTaskResultResponseBodyDataResponseVoiceprintResponse struct {
+	Dialogue []*GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogue `json:"Dialogue,omitempty" xml:"Dialogue,omitempty" type:"Repeated"`
+	Errors   []*GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseErrors   `json:"Errors,omitempty" xml:"Errors,omitempty" type:"Repeated"`
+}
+
+func (s GetAgentTaskResultResponseBodyDataResponseVoiceprintResponse) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetAgentTaskResultResponseBodyDataResponseVoiceprintResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponse) GetDialogue() []*GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogue {
+	return s.Dialogue
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponse) GetErrors() []*GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseErrors {
+	return s.Errors
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponse) SetDialogue(v []*GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogue) *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponse {
+	s.Dialogue = v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponse) SetErrors(v []*GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseErrors) *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponse {
+	s.Errors = v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponse) Validate() error {
+	if s.Dialogue != nil {
+		for _, item := range s.Dialogue {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Errors != nil {
+		for _, item := range s.Errors {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogue struct {
+	Additions *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions `json:"Additions,omitempty" xml:"Additions,omitempty" type:"Struct"`
+	Begin     *int64                                                                         `json:"Begin,omitempty" xml:"Begin,omitempty"`
+	End       *int64                                                                         `json:"End,omitempty" xml:"End,omitempty"`
+	Words     *string                                                                        `json:"Words,omitempty" xml:"Words,omitempty"`
+}
+
+func (s GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogue) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogue) GoString() string {
+	return s.String()
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogue) GetAdditions() *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions {
+	return s.Additions
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogue) GetBegin() *int64 {
+	return s.Begin
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogue) GetEnd() *int64 {
+	return s.End
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogue) GetWords() *string {
+	return s.Words
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogue) SetAdditions(v *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions) *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogue {
+	s.Additions = v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogue) SetBegin(v int64) *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogue {
+	s.Begin = &v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogue) SetEnd(v int64) *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogue {
+	s.End = &v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogue) SetWords(v string) *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogue {
+	s.Words = &v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogue) Validate() error {
+	if s.Additions != nil {
+		if err := s.Additions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions struct {
+	Age                 *string  `json:"Age,omitempty" xml:"Age,omitempty"`
+	AgeGroup            *string  `json:"AgeGroup,omitempty" xml:"AgeGroup,omitempty"`
+	AgeScore            *float32 `json:"AgeScore,omitempty" xml:"AgeScore,omitempty"`
+	BestVoiceprintScore *float32 `json:"BestVoiceprintScore,omitempty" xml:"BestVoiceprintScore,omitempty"`
+	Emotion             *string  `json:"Emotion,omitempty" xml:"Emotion,omitempty"`
+	EmotionScore        *float32 `json:"EmotionScore,omitempty" xml:"EmotionScore,omitempty"`
+	Gender              *string  `json:"Gender,omitempty" xml:"Gender,omitempty"`
+	GenderScore         *float32 `json:"GenderScore,omitempty" xml:"GenderScore,omitempty"`
+	IsKnownVoiceprint   *bool    `json:"IsKnownVoiceprint,omitempty" xml:"IsKnownVoiceprint,omitempty"`
+	Speaker             *string  `json:"Speaker,omitempty" xml:"Speaker,omitempty"`
+}
+
+func (s GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions) GoString() string {
+	return s.String()
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions) GetAge() *string {
+	return s.Age
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions) GetAgeGroup() *string {
+	return s.AgeGroup
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions) GetAgeScore() *float32 {
+	return s.AgeScore
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions) GetBestVoiceprintScore() *float32 {
+	return s.BestVoiceprintScore
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions) GetEmotion() *string {
+	return s.Emotion
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions) GetEmotionScore() *float32 {
+	return s.EmotionScore
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions) GetGender() *string {
+	return s.Gender
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions) GetGenderScore() *float32 {
+	return s.GenderScore
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions) GetIsKnownVoiceprint() *bool {
+	return s.IsKnownVoiceprint
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions) GetSpeaker() *string {
+	return s.Speaker
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions) SetAge(v string) *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions {
+	s.Age = &v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions) SetAgeGroup(v string) *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions {
+	s.AgeGroup = &v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions) SetAgeScore(v float32) *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions {
+	s.AgeScore = &v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions) SetBestVoiceprintScore(v float32) *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions {
+	s.BestVoiceprintScore = &v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions) SetEmotion(v string) *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions {
+	s.Emotion = &v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions) SetEmotionScore(v float32) *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions {
+	s.EmotionScore = &v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions) SetGender(v string) *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions {
+	s.Gender = &v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions) SetGenderScore(v float32) *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions {
+	s.GenderScore = &v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions) SetIsKnownVoiceprint(v bool) *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions {
+	s.IsKnownVoiceprint = &v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions) SetSpeaker(v string) *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions {
+	s.Speaker = &v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseErrors struct {
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseErrors) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseErrors) GoString() string {
+	return s.String()
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseErrors) GetCode() *string {
+	return s.Code
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseErrors) GetMessage() *string {
+	return s.Message
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseErrors) SetCode(v string) *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseErrors {
+	s.Code = &v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseErrors) SetMessage(v string) *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseErrors {
+	s.Message = &v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseErrors) Validate() error {
 	return dara.Validate(s)
 }
