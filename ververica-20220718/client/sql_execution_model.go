@@ -36,33 +36,20 @@ type iSqlExecution interface {
 }
 
 type SqlExecution struct {
-	// Specifies whether to enable batch mode.
-	BatchMode *bool `json:"batchMode,omitempty" xml:"batchMode,omitempty"`
-	// The description of the SQL execution.
+	BatchMode   *bool   `json:"batchMode,omitempty" xml:"batchMode,omitempty"`
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The message returned for the SQL execution.
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The name of the SQL execution.
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The namespace.
-	//
+	Message     *string `json:"message,omitempty" xml:"message,omitempty"`
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
 	// example:
 	//
 	// default-namespace
-	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// The name of the session cluster.
-	SessionClusterName *string `json:"sessionClusterName,omitempty" xml:"sessionClusterName,omitempty"`
-	// The SQL execution ID.
-	SqlExecutionId *string `json:"sqlExecutionId,omitempty" xml:"sqlExecutionId,omitempty"`
-	// The SQL file ID.
-	SqlFileId *string `json:"sqlFileId,omitempty" xml:"sqlFileId,omitempty"`
-	// The SQL script content.
-	SqlScript *string `json:"sqlScript,omitempty" xml:"sqlScript,omitempty"`
-	// The state of the SQL execution.
-	State      *string         `json:"state,omitempty" xml:"state,omitempty"`
-	Statements []*SqlStatement `json:"statements,omitempty" xml:"statements,omitempty" type:"Repeated"`
-	// The workspace ID.
-	//
+	Namespace          *string         `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	SessionClusterName *string         `json:"sessionClusterName,omitempty" xml:"sessionClusterName,omitempty"`
+	SqlExecutionId     *string         `json:"sqlExecutionId,omitempty" xml:"sqlExecutionId,omitempty"`
+	SqlFileId          *string         `json:"sqlFileId,omitempty" xml:"sqlFileId,omitempty"`
+	SqlScript          *string         `json:"sqlScript,omitempty" xml:"sqlScript,omitempty"`
+	State              *string         `json:"state,omitempty" xml:"state,omitempty"`
+	Statements         []*SqlStatement `json:"statements,omitempty" xml:"statements,omitempty" type:"Repeated"`
 	// example:
 	//
 	// edcef******b4f

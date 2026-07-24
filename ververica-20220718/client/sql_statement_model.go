@@ -22,16 +22,11 @@ type iSqlStatement interface {
 }
 
 type SqlStatement struct {
-	// The index of the SQL statement.
-	Index *int32 `json:"index,omitempty" xml:"index,omitempty"`
-	// The message returned for the SQL statement.
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The SQL script content.
-	SqlScript *string `json:"sqlScript,omitempty" xml:"sqlScript,omitempty"`
-	// The status of the SQL statement.
+	Index       *int32  `json:"index,omitempty" xml:"index,omitempty"`
+	Message     *string `json:"message,omitempty" xml:"message,omitempty"`
+	SqlScript   *string `json:"sqlScript,omitempty" xml:"sqlScript,omitempty"`
 	StatusState *string `json:"statusState,omitempty" xml:"statusState,omitempty"`
-	// The type of the SQL statement.
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Type        *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s SqlStatement) String() string {

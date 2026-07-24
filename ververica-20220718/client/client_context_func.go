@@ -603,6 +603,61 @@ func (client *Client) CreateSessionClusterWithContext(ctx context.Context, names
 
 // Summary:
 //
+// Creates a SQL query script job file.
+//
+// Description:
+//
+// The original interface for creating deployment targets only supports creating deployment targets with fixed resources or elastic resources. The new interface supports creating deployment targets with fixed resources, elastic resources, or mixed pattern.
+//
+// @param request - CreateSqlFileRequest
+//
+// @param headers - CreateSqlFileHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSqlFileResponse
+func (client *Client) CreateSqlFileWithContext(ctx context.Context, namespace *string, request *CreateSqlFileRequest, headers *CreateSqlFileHeaders, runtime *dara.RuntimeOptions) (_result *CreateSqlFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.Workspace) {
+		realHeaders["workspace"] = dara.String(dara.ToString(dara.StringValue(headers.Workspace)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateSqlFile"),
+		Version:     dara.String("2022-07-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/namespaces/" + dara.PercentEncode(dara.StringValue(namespace)) + "/sql-file"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateSqlFileResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Parses all user-defined function (UDF) methods in your JAR or Python file and creates an artifact configuration for a UDF.
 //
 // @param request - CreateUdfArtifactRequest
@@ -779,6 +834,66 @@ func (client *Client) DeleteDeploymentWithContext(ctx context.Context, namespace
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteDeploymentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes the deployment instance information of a job in a specified workspace and namespace based on the deployed job name.
+//
+// Description:
+//
+// Deletes the deployment instance information of a job in a specified workspace and namespace based on the deployed job name. This operation is applicable to scenarios where you want to quickly locate job details by deployment identifier.
+//
+// @param request - DeleteDeploymentByNameRequest
+//
+// @param headers - DeleteDeploymentByNameHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDeploymentByNameResponse
+func (client *Client) DeleteDeploymentByNameWithContext(ctx context.Context, namespace *string, request *DeleteDeploymentByNameRequest, headers *DeleteDeploymentByNameHeaders, runtime *dara.RuntimeOptions) (_result *DeleteDeploymentByNameResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DeploymentName) {
+		query["deploymentName"] = request.DeploymentName
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.Workspace) {
+		realHeaders["workspace"] = dara.String(dara.ToString(dara.StringValue(headers.Workspace)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDeploymentByName"),
+		Version:     dara.String("2022-07-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/namespaces/" + dara.PercentEncode(dara.StringValue(namespace)) + "/deployments/deleteDeployment/byName"),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDeploymentByNameResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1125,6 +1240,60 @@ func (client *Client) DeleteSessionClusterWithContext(ctx context.Context, names
 
 // Summary:
 //
+// Deletes a created SQL query script file.
+//
+// Description:
+//
+// Queries the list of deployed jobs that are associated with a specified job label and their details. Exact matching by labelKey and labelValue is supported.
+//
+// @param request - DeleteSqlFileRequest
+//
+// @param headers - DeleteSqlFileHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSqlFileResponse
+func (client *Client) DeleteSqlFileWithContext(ctx context.Context, namespace *string, sqlFileId *string, request *DeleteSqlFileRequest, headers *DeleteSqlFileHeaders, runtime *dara.RuntimeOptions) (_result *DeleteSqlFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.Workspace) {
+		realHeaders["workspace"] = dara.String(dara.ToString(dara.StringValue(headers.Workspace)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteSqlFile"),
+		Version:     dara.String("2022-07-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/namespaces/" + dara.PercentEncode(dara.StringValue(namespace)) + "/sql-file/" + dara.PercentEncode(dara.StringValue(sqlFileId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteSqlFileResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a user-defined function (UDF) resource. You must delete all UDFs registered with the resource before you can delete the resource.
 //
 // @param headers - DeleteUdfArtifactHeaders
@@ -1361,6 +1530,56 @@ func (client *Client) ExecuteSqlStatementWithContext(ctx context.Context, namesp
 		BodyType:    dara.String("json"),
 	}
 	_result = &ExecuteSqlStatementResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the execution result of an SQL data query submitted through the platform.
+//
+// @param request - FetchSqlExecutionResultRequest
+//
+// @param headers - FetchSqlExecutionResultHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FetchSqlExecutionResultResponse
+func (client *Client) FetchSqlExecutionResultWithContext(ctx context.Context, namespace *string, sqlExecutionId *string, request *FetchSqlExecutionResultRequest, headers *FetchSqlExecutionResultHeaders, runtime *dara.RuntimeOptions) (_result *FetchSqlExecutionResultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.Workspace) {
+		realHeaders["workspace"] = dara.String(dara.ToString(dara.StringValue(headers.Workspace)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("FetchSqlExecutionResult"),
+		Version:     dara.String("2022-07-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/namespaces/" + dara.PercentEncode(dara.StringValue(namespace)) + "/sql-execution/" + dara.PercentEncode(dara.StringValue(sqlExecutionId)) + "%3AfetchSqlExecutionResult"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &FetchSqlExecutionResultResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2677,6 +2896,56 @@ func (client *Client) GetSessionClusterWithContext(ctx context.Context, namespac
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSessionClusterResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of a created SQL query script.
+//
+// @param request - GetSqlFileRequest
+//
+// @param headers - GetSqlFileHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSqlFileResponse
+func (client *Client) GetSqlFileWithContext(ctx context.Context, namespace *string, sqlFileId *string, request *GetSqlFileRequest, headers *GetSqlFileHeaders, runtime *dara.RuntimeOptions) (_result *GetSqlFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.Workspace) {
+		realHeaders["workspace"] = dara.String(dara.ToString(dara.StringValue(headers.Workspace)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSqlFile"),
+		Version:     dara.String("2022-07-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/namespaces/" + dara.PercentEncode(dara.StringValue(namespace)) + "/sql-file/" + dara.PercentEncode(dara.StringValue(sqlFileId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSqlFileResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4120,6 +4389,56 @@ func (client *Client) StopSessionClusterWithContext(ctx context.Context, namespa
 
 // Summary:
 //
+// Executes an SQL query script task.
+//
+// @param request - StopSqlExecutionRequest
+//
+// @param headers - StopSqlExecutionHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopSqlExecutionResponse
+func (client *Client) StopSqlExecutionWithContext(ctx context.Context, namespace *string, sqlExecutionId *string, request *StopSqlExecutionRequest, headers *StopSqlExecutionHeaders, runtime *dara.RuntimeOptions) (_result *StopSqlExecutionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.Workspace) {
+		realHeaders["workspace"] = dara.String(dara.ToString(dara.StringValue(headers.Workspace)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StopSqlExecution"),
+		Version:     dara.String("2022-07-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/namespaces/" + dara.PercentEncode(dara.StringValue(namespace)) + "/sql-execution/" + dara.PercentEncode(dara.StringValue(sqlExecutionId)) + "%3Astop"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StopSqlExecutionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 提交sql调试
 //
 // @param request - SubmitSqlPreviewRequest
@@ -4218,6 +4537,63 @@ func (client *Client) UpdateDeploymentWithContext(ctx context.Context, namespace
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateDeploymentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the details and configuration parameters of a deployment job by its name.
+//
+// @param request - UpdateDeploymentByNameRequest
+//
+// @param headers - UpdateDeploymentByNameHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDeploymentByNameResponse
+func (client *Client) UpdateDeploymentByNameWithContext(ctx context.Context, namespace *string, request *UpdateDeploymentByNameRequest, headers *UpdateDeploymentByNameHeaders, runtime *dara.RuntimeOptions) (_result *UpdateDeploymentByNameResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DeploymentName) {
+		query["deploymentName"] = request.DeploymentName
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.Workspace) {
+		realHeaders["workspace"] = dara.String(dara.ToString(dara.StringValue(headers.Workspace)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDeploymentByName"),
+		Version:     dara.String("2022-07-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/namespaces/" + dara.PercentEncode(dara.StringValue(namespace)) + "/deployments/updateDeployment/byName"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDeploymentByNameResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4579,6 +4955,57 @@ func (client *Client) UpdateSessionClusterWithContext(ctx context.Context, names
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateSessionClusterResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a created SQL query script.
+//
+// @param request - UpdateSqlFileRequest
+//
+// @param headers - UpdateSqlFileHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSqlFileResponse
+func (client *Client) UpdateSqlFileWithContext(ctx context.Context, namespace *string, sqlFileId *string, request *UpdateSqlFileRequest, headers *UpdateSqlFileHeaders, runtime *dara.RuntimeOptions) (_result *UpdateSqlFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.Workspace) {
+		realHeaders["workspace"] = dara.String(dara.ToString(dara.StringValue(headers.Workspace)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateSqlFile"),
+		Version:     dara.String("2022-07-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/namespaces/" + dara.PercentEncode(dara.StringValue(namespace)) + "/sql-file/" + dara.PercentEncode(dara.StringValue(sqlFileId))),
+		Method:      dara.String("PATCH"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateSqlFileResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

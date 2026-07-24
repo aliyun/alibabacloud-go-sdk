@@ -18,12 +18,9 @@ type iStartSqlExecutionResult interface {
 }
 
 type StartSqlExecutionResult struct {
-	// Indicates whether the SQL execution is newly created.
-	NewlyCreated *bool `json:"newlyCreated,omitempty" xml:"newlyCreated,omitempty"`
-	// The SQL execution ID.
+	NewlyCreated   *bool   `json:"newlyCreated,omitempty" xml:"newlyCreated,omitempty"`
 	SqlExecutionId *string `json:"sqlExecutionId,omitempty" xml:"sqlExecutionId,omitempty"`
-	// Indicates whether the SQL execution is successful.
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	Success        *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s StartSqlExecutionResult) String() string {

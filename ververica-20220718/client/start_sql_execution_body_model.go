@@ -18,12 +18,9 @@ type iStartSqlExecutionBody interface {
 }
 
 type StartSqlExecutionBody struct {
-	// The description of the SQL execution.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The SQL file ID.
-	SqlFileId *string `json:"sqlFileId,omitempty" xml:"sqlFileId,omitempty"`
-	// The SQL script content.
-	SqlScript *string `json:"sqlScript,omitempty" xml:"sqlScript,omitempty"`
+	SqlFileId   *string `json:"sqlFileId,omitempty" xml:"sqlFileId,omitempty"`
+	SqlScript   *string `json:"sqlScript,omitempty" xml:"sqlScript,omitempty"`
 }
 
 func (s StartSqlExecutionBody) String() string {
