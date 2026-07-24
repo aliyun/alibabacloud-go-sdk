@@ -116,19 +116,25 @@ type FaceDuplicationCheckIntlResponseBodyResult struct {
 	DuplicateFace *string `json:"DuplicateFace,omitempty" xml:"DuplicateFace,omitempty"`
 	// The related result information.
 	ExtFaceInfo *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty" type:"Struct"`
-	// The estimated age of the face. The prediction may fail and no value is returned in some cases.
+	// The estimated age of the face. This value may not be returned if the prediction fails.
 	//
 	// example:
 	//
 	// 30
 	FaceAge *string `json:"FaceAge,omitempty" xml:"FaceAge,omitempty"`
-	// Indicates whether the captured face involves a liveness attack. Valid values: Y (attack detected) and N (no attack detected). This field is returned when passive liveness detection is enabled.
+	// Indicates whether the captured face involves a liveness attack. Valid values:
+	//
+	// - Y: Attack detected.
+	//
+	// - N: No attack detected.
+	//
+	// This field is returned only when passive liveness detection is enabled.
 	//
 	// example:
 	//
 	// N
 	FaceAttack *string `json:"FaceAttack,omitempty" xml:"FaceAttack,omitempty"`
-	// The probability of a passive liveness detection attack. The value ranges from 0 to 100. This field is returned when passive liveness detection is enabled.
+	// The probability of a passive liveness detection attack on the face. The value ranges from 0 to 100. This field is returned only when passive liveness detection is enabled.
 	//
 	// example:
 	//
@@ -140,11 +146,11 @@ type FaceDuplicationCheckIntlResponseBodyResult struct {
 	//
 	// 98
 	FaceComparisonScore *string `json:"FaceComparisonScore,omitempty" xml:"FaceComparisonScore,omitempty"`
-	// The predicted gender of the face image. The prediction may fail and no value is returned in some cases. Valid values:
+	// The predicted gender of the face. This value may not be returned if the prediction fails. Valid values:
 	//
-	// - M: Male.
+	// - M: male
 	//
-	// - F: Female.
+	// - F: female
 	//
 	// example:
 	//
@@ -160,7 +166,7 @@ type FaceDuplicationCheckIntlResponseBodyResult struct {
 	//
 	// Y
 	FacePassed *string `json:"FacePassed,omitempty" xml:"FacePassed,omitempty"`
-	// The FACEID returned only when the customer has enabled automatic registration and the face is registered.
+	// The FACEID returned only when automatic registration is enabled and the face is successfully registered.
 	//
 	// example:
 	//
@@ -176,7 +182,7 @@ type FaceDuplicationCheckIntlResponseBodyResult struct {
 	//
 	// 0
 	FaceRegistrationResult *int32 `json:"FaceRegistrationResult,omitempty" xml:"FaceRegistrationResult,omitempty"`
-	// The verification result description. For more information, refer to the ResultObject.SubCode error code description.
+	// The verification result description. For more information, see the ResultObject.SubCode error code description.
 	//
 	// example:
 	//

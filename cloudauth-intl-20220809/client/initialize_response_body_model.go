@@ -104,7 +104,7 @@ type InitializeResponseBodyResult struct {
 	ClientCfg *string `json:"ClientCfg,omitempty" xml:"ClientCfg,omitempty"`
 	// The authentication standard encryption protocol.
 	//
-	// > This field is required when you use iframe embedding for H5 web page integration.
+	// > This field is required when integrating H5 web pages using iframe embedding.
 	//
 	// example:
 	//

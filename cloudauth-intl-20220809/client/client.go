@@ -3516,7 +3516,7 @@ func (client *Client) FaceCrossCompareIntl(request *FaceCrossCompareIntlRequest)
 
 // Summary:
 //
-// Performs face duplication check (FaceDuplicationCheckIntl) for scenarios where SDK integration is not feasible. Submits face images through the API to verify whether a user is a real person, compare the face against a retained face image for identity verification, search a face library to determine whether the face already exists, and automatically register the face in a specified face library after successful verification.
+// Performs face duplication check (FaceDuplicationCheckIntl) for scenarios where SDK integration is not feasible. Submits face images through the API to verify whether a user is a real person, compare the face against a stored face image for identity verification, search a face library to determine whether the face already exists, and automatically register the face in a specified face library after successful verification.
 //
 // @param request - FaceDuplicationCheckIntlRequest
 //
@@ -3538,6 +3538,10 @@ func (client *Client) FaceDuplicationCheckIntlWithOptions(request *FaceDuplicati
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AutoRegistration) {
 		body["AutoRegistration"] = request.AutoRegistration
+	}
+
+	if !dara.IsNil(request.FaceAttributeCheck) {
+		body["FaceAttributeCheck"] = request.FaceAttributeCheck
 	}
 
 	if !dara.IsNil(request.FaceGroupCodes) {
@@ -3626,7 +3630,7 @@ func (client *Client) FaceDuplicationCheckIntlWithOptions(request *FaceDuplicati
 
 // Summary:
 //
-// Performs face duplication check (FaceDuplicationCheckIntl) for scenarios where SDK integration is not feasible. Submits face images through the API to verify whether a user is a real person, compare the face against a retained face image for identity verification, search a face library to determine whether the face already exists, and automatically register the face in a specified face library after successful verification.
+// Performs face duplication check (FaceDuplicationCheckIntl) for scenarios where SDK integration is not feasible. Submits face images through the API to verify whether a user is a real person, compare the face against a stored face image for identity verification, search a face library to determine whether the face already exists, and automatically register the face in a specified face library after successful verification.
 //
 // @param request - FaceDuplicationCheckIntlRequest
 //
@@ -3722,7 +3726,7 @@ func (client *Client) FaceGuardRisk(request *FaceGuardRiskRequest) (_result *Fac
 
 // Summary:
 //
-// Provides the server-side passive liveness detection API.
+// Provides the server-side API for passive liveness detection.
 //
 // @param request - FaceLivenessRequest
 //
@@ -3739,6 +3743,10 @@ func (client *Client) FaceLivenessWithOptions(request *FaceLivenessRequest, runt
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Crop) {
 		query["Crop"] = request.Crop
+	}
+
+	if !dara.IsNil(request.FaceAttributeCheck) {
+		query["FaceAttributeCheck"] = request.FaceAttributeCheck
 	}
 
 	if !dara.IsNil(request.FacePictureUrl) {
@@ -3800,7 +3808,7 @@ func (client *Client) FaceLivenessWithOptions(request *FaceLivenessRequest, runt
 
 // Summary:
 //
-// Provides the server-side passive liveness detection API.
+// Provides the server-side API for passive liveness detection.
 //
 // @param request - FaceLivenessRequest
 //
@@ -3818,7 +3826,7 @@ func (client *Client) FaceLiveness(request *FaceLivenessRequest) (_result *FaceL
 
 // Summary:
 //
-// Detects whether a face in an image is from a real person by using an API operation. This service combines the Qwen-VL large model for in-depth forgery risk detection to determine face liveness.
+// Detects whether a face in an image is from a real person by using the API operation. This service combines the Qwen-VL large model for in-depth forgery risk detection to determine face liveness.
 //
 // Description:
 //
@@ -3837,6 +3845,10 @@ func (client *Client) FaceLivenessV2WithOptions(request *FaceLivenessV2Request, 
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.FaceAttributeCheck) {
+		query["FaceAttributeCheck"] = request.FaceAttributeCheck
+	}
+
 	if !dara.IsNil(request.FacePictureFile) {
 		query["FacePictureFile"] = request.FacePictureFile
 	}
@@ -3892,7 +3904,7 @@ func (client *Client) FaceLivenessV2WithOptions(request *FaceLivenessV2Request, 
 
 // Summary:
 //
-// Detects whether a face in an image is from a real person by using an API operation. This service combines the Qwen-VL large model for in-depth forgery risk detection to determine face liveness.
+// Detects whether a face in an image is from a real person by using the API operation. This service combines the Qwen-VL large model for in-depth forgery risk detection to determine face liveness.
 //
 // Description:
 //
@@ -4021,7 +4033,7 @@ func (client *Client) FaceLivenessV2Advance(request *FaceLivenessV2AdvanceReques
 
 // Summary:
 //
-// Performs real face detection by using face images obtained in advance through the API operation. The algorithm identifies whether a face is a screen recapture or printed photo to detect basic presentation liveness attacks that render fake faces, and supports comparison with another face image to authenticate whether they belong to the same person.
+// Performs real face detection by using face images obtained in advance through an API operation. The algorithm identifies whether a face is a screen recapture or printed photo to detect basic presentation liveness attacks that render such attack types, and supports comparison with another face image to authenticate whether they belong to the same person.
 //
 // Description:
 //
@@ -4042,6 +4054,10 @@ func (client *Client) FaceVerifyIntlWithOptions(request *FaceVerifyIntlRequest, 
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoRegistration) {
 		query["AutoRegistration"] = request.AutoRegistration
+	}
+
+	if !dara.IsNil(request.FaceAttributeCheck) {
+		query["FaceAttributeCheck"] = request.FaceAttributeCheck
 	}
 
 	if !dara.IsNil(request.FaceGroupCodes) {
@@ -4127,7 +4143,7 @@ func (client *Client) FaceVerifyIntlWithOptions(request *FaceVerifyIntlRequest, 
 
 // Summary:
 //
-// Performs real face detection by using face images obtained in advance through the API operation. The algorithm identifies whether a face is a screen recapture or printed photo to detect basic presentation liveness attacks that render fake faces, and supports comparison with another face image to authenticate whether they belong to the same person.
+// Performs real face detection by using face images obtained in advance through an API operation. The algorithm identifies whether a face is a screen recapture or printed photo to detect basic presentation liveness attacks that render such attack types, and supports comparison with another face image to authenticate whether they belong to the same person.
 //
 // Description:
 //
@@ -4781,6 +4797,10 @@ func (client *Client) InitializeWithOptions(tmpReq *InitializeRequest, runtime *
 		query["Authorize"] = request.Authorize
 	}
 
+	if !dara.IsNil(request.AutoDocPageConfig) {
+		query["AutoDocPageConfig"] = request.AutoDocPageConfig
+	}
+
 	if !dara.IsNil(request.AutoRegistration) {
 		query["AutoRegistration"] = request.AutoRegistration
 	}
@@ -4847,6 +4867,10 @@ func (client *Client) InitializeWithOptions(tmpReq *InitializeRequest, runtime *
 
 	if !dara.IsNil(request.ExperienceCode) {
 		query["ExperienceCode"] = request.ExperienceCode
+	}
+
+	if !dara.IsNil(request.FaceAttributeCheck) {
+		query["FaceAttributeCheck"] = request.FaceAttributeCheck
 	}
 
 	if !dara.IsNil(request.FaceGroupCodes) {
@@ -5071,6 +5095,10 @@ func (client *Client) InitializeV2WithOptions(tmpReq *InitializeV2Request, runti
 		query["Authorize"] = request.Authorize
 	}
 
+	if !dara.IsNil(request.AutoDocPageConfig) {
+		query["AutoDocPageConfig"] = request.AutoDocPageConfig
+	}
+
 	if !dara.IsNil(request.AutoRegistration) {
 		query["AutoRegistration"] = request.AutoRegistration
 	}
@@ -5137,6 +5165,10 @@ func (client *Client) InitializeV2WithOptions(tmpReq *InitializeV2Request, runti
 
 	if !dara.IsNil(request.ExperienceCode) {
 		query["ExperienceCode"] = request.ExperienceCode
+	}
+
+	if !dara.IsNil(request.FaceAttributeCheck) {
+		query["FaceAttributeCheck"] = request.FaceAttributeCheck
 	}
 
 	if !dara.IsNil(request.FaceGroupCodes) {

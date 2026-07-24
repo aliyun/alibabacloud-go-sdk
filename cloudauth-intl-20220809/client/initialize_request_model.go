@@ -13,6 +13,8 @@ type iInitializeRequest interface {
 	GetAppQualityCheck() *string
 	SetAuthorize(v string) *InitializeRequest
 	GetAuthorize() *string
+	SetAutoDocPageConfig(v string) *InitializeRequest
+	GetAutoDocPageConfig() *string
 	SetAutoRegistration(v string) *InitializeRequest
 	GetAutoRegistration() *string
 	SetCallbackToken(v string) *InitializeRequest
@@ -47,6 +49,8 @@ type iInitializeRequest interface {
 	GetEmail() *string
 	SetExperienceCode(v string) *InitializeRequest
 	GetExperienceCode() *string
+	SetFaceAttributeCheck(v string) *InitializeRequest
+	GetFaceAttributeCheck() *string
 	SetFaceGroupCodes(v string) *InitializeRequest
 	GetFaceGroupCodes() *string
 	SetFacePictureBase64(v string) *InitializeRequest
@@ -124,37 +128,38 @@ type iInitializeRequest interface {
 }
 
 type InitializeRequest struct {
-	// <warning>This feature is **not supported by the Web SDK**. To use this feature, integrate the App SDK.</warning>
+	// <warning>This feature is **not supported by Web SDK**. To use this feature, refer to App SDK integration.</warning>
 	//
 	// Specifies whether to enable strict face quality detection:
 	//
-	// - Y: enabled (default)
+	// - Y: enable (default)
 	//
-	// - N: disabled.
+	// - N: do not enable
 	//
 	// example:
 	//
 	// N
 	AppQualityCheck *string `json:"AppQualityCheck,omitempty" xml:"AppQualityCheck,omitempty"`
-	// Specifies whether to enable authoritative identity verification. Currently, this applies only to second-generation ID cards in the Chinese mainland. This is an input parameter for the IDV product.
+	// Specifies whether to enable authoritative identity verification. Currently, this applies only to second-generation ID cards in the Chinese mainland. (IDV product input parameter)
 	//
 	// example:
 	//
 	// Y
-	Authorize *string `json:"Authorize,omitempty" xml:"Authorize,omitempty"`
-	// Specifies whether to enable auto-registration.
+	Authorize         *string `json:"Authorize,omitempty" xml:"Authorize,omitempty"`
+	AutoDocPageConfig *string `json:"AutoDocPageConfig,omitempty" xml:"AutoDocPageConfig,omitempty"`
+	// Specifies whether to enable automatic registration.
 	//
 	// example:
 	//
 	// 0
 	AutoRegistration *string `json:"AutoRegistration,omitempty" xml:"AutoRegistration,omitempty"`
-	// The security token used for anti-replay and anti-tampering verification. If this parameter is specified, the CallbackToken field is included in the callback URL.
+	// The security token used for anti-replay and anti-tampering verification. If this parameter is passed in, the CallbackToken field is displayed in the callback URL.
 	//
 	// example:
 	//
 	// 7ca5c68d869344ea8eeb30cdfd544544-6358700
 	CallbackToken *string `json:"CallbackToken,omitempty" xml:"CallbackToken,omitempty"`
-	// The callback URL for the authentication result. The callback request method is GET by default. The callback URL must start with https. After the authentication is complete, the platform calls back this URL and automatically appends the transactionId, passed, and subcode fields.
+	// The callback notification URL for the authentication result. The default callback request method is GET, and the callback URL must start with https. After authentication is completed, the platform calls back this URL and automatically adds the transactionId, passed, and subcode fields.
 	//
 	// example:
 	//
@@ -162,15 +167,15 @@ type InitializeRequest struct {
 	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
 	// Specifies whether to enable the adaptive color-changing window frame.
 	//
-	// - **Y**: enabled
+	// - **Y**: enable
 	//
-	// - **N**: disabled.
+	// - **N**: do not enable
 	//
 	// example:
 	//
 	// N
 	ChameleonFrameEnable *string `json:"ChameleonFrameEnable,omitempty" xml:"ChameleonFrameEnable,omitempty"`
-	// Specifies whether to enable cropping. This is an input parameter for the IDV product.
+	// Specifies whether to crop. (IDV product input parameter)
 	//
 	// example:
 	//
@@ -184,7 +189,7 @@ type InitializeRequest struct {
 	//
 	// -
 	DateOfBirth *string `json:"DateOfBirth,omitempty" xml:"DateOfBirth,omitempty"`
-	// The expiration date on the document.
+	// The expiry date on the document.
 	//
 	// Required when **MRTDInput*	- = 2.
 	//
@@ -196,7 +201,7 @@ type InitializeRequest struct {
 	//
 	// example:
 	//
-	// 张三
+	// John Smith.
 	DocName *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
 	// The document number of the user.
 	//
@@ -208,9 +213,9 @@ type InitializeRequest struct {
 	DocPageConfig []*string `json:"DocPageConfig,omitempty" xml:"DocPageConfig,omitempty" type:"Repeated"`
 	// The document capture photo mode.
 	//
-	// - manual: manual photo capture.
+	// - manual: manual capture.
 	//
-	// - auto: automatic photo capture (default).
+	// - auto: automatic capture (default).
 	//
 	// example:
 	//
@@ -218,21 +223,21 @@ type InitializeRequest struct {
 	DocScanMode *string `json:"DocScanMode,omitempty" xml:"DocScanMode,omitempty"`
 	// The document type.
 	//
-	// >For the eKYC_PRO and ID_OCR_MAX solutions, see the official documentation: https://www.alibabacloud.com/help/zh/ekyc/latest/certificate-code-table?spm=a2c63.p38356.help-menu-445633.d_2_8_2_0.279147abwKAWbr
+	// >For eKYC_PRO and ID_OCR_MAX solutions, see the official documentation: https://www.alibabacloud.com/help/zh/ekyc/latest/certificate-code-table?spm=a2c63.p38356.help-menu-445633.d_2_8_2_0.279147abwKAWbr
 	//
-	// >For the ID_OCR, eKYC, and eKYC_MIN solutions, see the document type list in the official documentation: https://www.alibabacloud.com/help/zh/ekyc/latest/gnhekqy05ni51m4c?spm=a2c63.p38356.help-menu-445633.d_2_3_1_0_0_0.6243244777KoZ7.
+	// >For ID_OCR, eKYC, and eKYC_MIN solutions, see the official documentation for the document type list: https://www.alibabacloud.com/help/zh/ekyc/latest/gnhekqy05ni51m4c?spm=a2c63.p38356.help-menu-445633.d_2_3_1_0_0_0.6243244777KoZ7
 	//
 	// example:
 	//
 	// 00000001
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
-	// Specifies whether to save an evidence video.
+	// Specifies whether to store the verification video.
 	//
 	// - N: not required (default).
 	//
-	// - Y: a face verification video (1 to 2 seconds) is captured during the authentication process and returned through the query API.
+	// - Y: during authentication, the system simultaneously captures the user\\"s face verification video (1–2s video file) and returns it through the query operation.
 	//
-	// > Because video files are large, the system discards the video file when the network is unstable to prioritize the transmission of images required for authentication.
+	// > Because video files are large, the system discards video files when the network is unstable to prioritize the transmission of essential authentication images.
 	//
 	// example:
 	//
@@ -246,17 +251,17 @@ type InitializeRequest struct {
 	//
 	// -
 	DocumentNumber *string `json:"DocumentNumber,omitempty" xml:"DocumentNumber,omitempty"`
-	// Specifies whether the recognition result page is editable during the document OCR recognition step:
+	// Specifies whether the recognition result page is editable during the document OCR recognition phase:
 	//
 	// - **0**: not editable
 	//
-	// - **1*	- (default): editable.
+	// - **1*	- (default): editable
 	//
 	// example:
 	//
 	// 0
 	EditOcrResult *string `json:"EditOcrResult,omitempty" xml:"EditOcrResult,omitempty"`
-	// The Indonesian email address. This field takes effect only when Authorize is set to T.
+	// The Indonesian email address. This field takes effect only when Authorize=T.
 	//
 	// >
 	//
@@ -271,7 +276,8 @@ type InitializeRequest struct {
 	// example:
 	//
 	// 9be7b7d0180041219e5ab03ac6dab5fb
-	ExperienceCode *string `json:"ExperienceCode,omitempty" xml:"ExperienceCode,omitempty"`
+	ExperienceCode     *string `json:"ExperienceCode,omitempty" xml:"ExperienceCode,omitempty"`
+	FaceAttributeCheck *string `json:"FaceAttributeCheck,omitempty" xml:"FaceAttributeCheck,omitempty"`
 	// The face libraries for comparison.
 	//
 	// example:
@@ -284,13 +290,13 @@ type InitializeRequest struct {
 	//
 	// Base64
 	FacePictureBase64 *string `json:"FacePictureBase64,omitempty" xml:"FacePictureBase64,omitempty"`
-	// The URL of the face photo. The URL must be a publicly accessible HTTP or HTTPS link.
+	// The face photo URL. A publicly accessible HTTP or HTTPS link.
 	//
 	// example:
 	//
 	// ***
 	FacePictureUrl *string `json:"FacePictureUrl,omitempty" xml:"FacePictureUrl,omitempty"`
-	// The face registration library.
+	// The registration face library.
 	//
 	// example:
 	//
@@ -302,13 +308,13 @@ type InitializeRequest struct {
 	//
 	// 0.5
 	FaceVerifyThreshold *string `json:"FaceVerifyThreshold,omitempty" xml:"FaceVerifyThreshold,omitempty"`
-	// The face image quality. This is an input parameter for the IDV product.
+	// The face image quality. (IDV product input parameter)
 	//
 	// example:
 	//
 	// Y
 	IdFaceQuality *string `json:"IdFaceQuality,omitempty" xml:"IdFaceQuality,omitempty"`
-	// Specifies whether to enable document anti-spoofing detection. This is an input parameter for the IDV product.
+	// Specifies whether to enable document anti-forgery detection. (IDV product input parameter)
 	//
 	// example:
 	//
@@ -322,49 +328,49 @@ type InitializeRequest struct {
 	//
 	// - **2**: loose mode
 	//
-	// - **3*	- (default): quality detection disabled.
+	// - **3*	- (default): disable quality detection
 	//
 	// example:
 	//
 	// 0
 	IdThreshold *string `json:"IdThreshold,omitempty" xml:"IdThreshold,omitempty"`
-	// The language configuration. This is an input parameter for the IDV product.
+	// The language configuration. (IDV product input parameter)
 	//
 	// example:
 	//
 	// en
 	LanguageConfig *string `json:"LanguageConfig,omitempty" xml:"LanguageConfig,omitempty"`
-	// The input source for MRTD verification parameters. This parameter is required for decrypting information when reading document chip data via NFC.
+	// The MRTD verification parameter input source. This parameter is required to decrypt information when reading document chip information via NFC.
 	//
 	// - **0**: user input
 	//
 	// - **1**: OCR reading
 	//
-	// - **2**: API input.
+	// - **2**: API input
 	//
 	// example:
 	//
 	// 0
 	MRTDInput *string `json:"MRTDInput,omitempty" xml:"MRTDInput,omitempty"`
-	// The merchant-defined unique business ID used for subsequent troubleshooting. The value can contain letters and digits with a maximum length of 32 characters. Make sure the value is unique.
+	// The merchant-defined unique business ID used for subsequent troubleshooting. The value can contain letters and digits with a maximum length of 32 characters. Ensure that the value is unique.
 	//
 	// example:
 	//
 	// e0c34a***353888
 	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
-	// Your custom user ID or another identifier that can identify a specific user, such as a phone number or email address. We strongly recommend that you desensitize this field value in advance, such as by hashing the value.
+	// Your custom user ID or other identifier that can identify a specific user, such as a phone number or email address. We strongly recommend that you desensitize this field value in advance, such as by hashing the value.
 	//
 	// example:
 	//
 	// 1221****6543
 	MerchantUserId *string `json:"MerchantUserId,omitempty" xml:"MerchantUserId,omitempty"`
-	// The MetaInfo environment parameter. Obtain this value by using the client SDK.
+	// The Metainfo environment parameter, which must be obtained through the client SDK.
 	//
 	// example:
 	//
 	// {\\"bioMetaInfo\\":\\"4.1.0:2916352,0\\",\\"deviceType\\":\\"web\\",\\"ua\\":\\"Mozilla/5.0 (Macintosh
 	MetaInfo *string `json:"MetaInfo,omitempty" xml:"MetaInfo,omitempty"`
-	// The Indonesian phone number. The format must start with +62 followed by 9 to 11 digits. This field takes effect only when Authorize is set to T.
+	// The Indonesian phone number. The format must be verified (starting with +62, followed by 9–11 digits). This field takes effect only when Authorize=T.
 	//
 	// >
 	//
@@ -374,7 +380,7 @@ type InitializeRequest struct {
 	//
 	// +6281293671234
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	// The type of liveness detection:
+	// The type of liveness detection to perform:
 	//
 	// - **LIVENESS*	- (default): blink action liveness detection.
 	//
@@ -384,13 +390,13 @@ type InitializeRequest struct {
 	//
 	// > - For supported SDK versions, see [SDK release notes](https://www.alibabacloud.com/help/zh/ekyc/latest/sdk-publishing-record?spm=a2c63.p38356.0.i99).
 	//
-	// > - Colorful liveness dual detection is not supported on PC.
+	// > - PC does not support colorful liveness dual detection.
 	//
 	// example:
 	//
 	// PHOTINUS_LIVENESS
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// Specifies whether to enable OCR. This is an input parameter for the IDV product.
+	// Specifies whether to enable OCR. (IDV product input parameter)
 	//
 	// example:
 	//
@@ -400,19 +406,19 @@ type InitializeRequest struct {
 	//
 	// 0: no (default)
 	//
-	// 1: yes.
+	// 1: yes
 	//
 	// example:
 	//
 	// 0
 	OcrValueStandard *string `json:"OcrValueStandard,omitempty" xml:"OcrValueStandard,omitempty"`
-	// The capture page configuration. Use commas (,) to connect multiple pages. Valid values:
+	// The collection page configuration. Use commas to connect multiple pages. Valid values:
 	//
-	// - **01**: portrait side of the document
+	// - **01**: document portrait page
 	//
-	// - **01,02**: portrait side and back side of the document
+	// - **01,02**: document portrait page and back page
 	//
-	// > When this value is set to 01,02, only Chinese ID cards and Vietnamese ID cards are supported.
+	// > When this value is set to 01,02, only Chinese ID cards and Vietnamese ID cards are currently supported.
 	//
 	// example:
 	//
@@ -420,14 +426,14 @@ type InitializeRequest struct {
 	Pages *string `json:"Pages,omitempty" xml:"Pages,omitempty"`
 	// Specifies whether to allow a degraded processing method when compatibility issues occur during mobile H5 authentication.
 	//
-	// - **url (default)**: degradation supported. The page displays the authentication URL, and the user can copy the URL or switch browsers to continue authentication.
+	// - **url (default)**: supports degradation. The page displays the authentication URL, and the user can copy the URL or switch browsers to continue authentication.
 	//
-	// - **keep**: degradation not supported. The error reason is returned directly and the authentication flow ends.
+	// - **keep**: does not support degradation. Directly returns the error reason and ends the authentication flow.
 	//
 	//
 	// >
 	//
-	// > - This switch is not supported on PC.
+	// > - PC does not support this switch.
 	//
 	// > - If the business scenario involves completing authentication within an in-app embedded web page, set this parameter to keep to disallow URL degradation.
 	//
@@ -435,21 +441,21 @@ type InitializeRequest struct {
 	//
 	// url
 	ProcedurePriority *string `json:"ProcedurePriority,omitempty" xml:"ProcedurePriority,omitempty"`
-	// The product solution to use.
+	// The product solution to be integrated.
 	//
-	// >For more information, see the official documentation: https://www.alibabacloud.com/help/zh/ekyc/latest/product-introduction?spm=a2c63.p38356.0.i1.
+	// >For more information, see the official documentation: https://www.alibabacloud.com/help/zh/ekyc/latest/product-introduction?spm=a2c63.p38356.0.i1
 	//
 	// example:
 	//
 	// eKYC
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The order of document and face capture:
+	// Specifies the order of document and face capture:
 	//
 	// - DOC_FACE (default)
 	//
 	// - FACE_DOC
 	//
-	// Note: This parameter is required only when ProductCode is set to KYC_GLOBAL.
+	// Note: This parameter is required only when ProductCode is KYC_GLOBAL.
 	//
 	// example:
 	//
@@ -473,7 +479,7 @@ type InitializeRequest struct {
 	//
 	// 0
 	SaveFacePicture *string `json:"SaveFacePicture,omitempty" xml:"SaveFacePicture,omitempty"`
-	// The scene code. This is an input parameter for the IDV product.
+	// The scene code. (IDV product input parameter)
 	//
 	// example:
 	//
@@ -483,17 +489,17 @@ type InitializeRequest struct {
 	//
 	// 01: normal pattern (default).
 	//
-	// 02: safe mode, a relatively strict pattern that is active for high-risk scenarios. This is an input parameter for the IDV product.
+	// 02: safe mode, a relatively strict pattern that is active for high-risk scenarios. (IDV product input parameter)
 	//
 	// example:
 	//
 	// 01
 	SecurityLevel *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
-	// Specifies whether to display the album upload entry during the document OCR recognition step:
+	// Specifies whether to display the album upload entry during the document OCR recognition phase:
 	//
 	// - **1**: display (default)
 	//
-	// - **0**: do not display.
+	// - **0**: do not display
 	//
 	// example:
 	//
@@ -503,23 +509,23 @@ type InitializeRequest struct {
 	//
 	// - **1**: display (default)
 	//
-	// - **0**: do not display.
+	// - **0**: do not display
 	//
 	// example:
 	//
 	// 1
 	ShowGuidePage *string `json:"ShowGuidePage,omitempty" xml:"ShowGuidePage,omitempty"`
-	// Specifies whether to display the recognition result page during the document OCR recognition step:
+	// Specifies whether to display the recognition result page during the document OCR recognition phase:
 	//
 	// - **1**: display (default)
 	//
-	// - **0**: do not display.
+	// - **0**: do not display
 	//
 	// example:
 	//
 	// 1
 	ShowOcrResult *string `json:"ShowOcrResult,omitempty" xml:"ShowOcrResult,omitempty"`
-	// The custom UI configuration. Convert your custom UI configuration to a JSON string based on the configuration template and pass it in through this parameter. For more information, see [IDV UI style customization](https://www.alibabacloud.com/help/zh/ekyc/latest/idv-kyc-custom-skin?spm=a2c63.p38356.0.i60).
+	// The custom UI configuration. Convert your custom UI configuration to a JSON string based on the configuration template and pass it in through this operation. For more information, see [IDV UI style customization](https://www.alibabacloud.com/help/zh/ekyc/latest/idv-kyc-custom-skin?spm=a2c63.p38356.0.i60).
 	//
 	// example:
 	//
@@ -541,7 +547,7 @@ type InitializeRequest struct {
 	//
 	// base64
 	TargetFacePicture *string `json:"TargetFacePicture,omitempty" xml:"TargetFacePicture,omitempty"`
-	// The URL of the portrait image. The URL must be a publicly accessible HTTP or HTTPS link.
+	// The portrait image URL. A publicly accessible HTTP or HTTPS link.
 	//
 	// example:
 	//
@@ -549,9 +555,9 @@ type InitializeRequest struct {
 	TargetFacePictureUrl *string `json:"TargetFacePictureUrl,omitempty" xml:"TargetFacePictureUrl,omitempty"`
 	// The custom action pool configuration for liveness detection.
 	//
-	// This parameter is required when Model is set to TEMPLATE.
+	// This parameter is required when Model is TEMPLATE.
 	//
-	// Configuration rule: separate multiple action codes with commas (,). Best practices: include at least one frontal face action (such as blink) and no more than 3 actions in total.
+	// Configuration rule: separate multiple action codes with commas. Best Practices: include at least one frontal face action (such as blink), and do not exceed 3 actions in total.
 	//
 	// Action lookup table:
 	//
@@ -567,7 +573,7 @@ type InitializeRequest struct {
 	//
 	// - Move Closer: 06
 	//
-	// - Photinus: 07.
+	// - Photinus: 07
 	//
 	// example:
 	//
@@ -575,7 +581,7 @@ type InitializeRequest struct {
 	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
 	// The number of actions randomly selected from TemplateConfig.
 	//
-	// This parameter takes effect only when TemplateType is set to Ran.
+	// Takes effect only when TemplateType is Ran.
 	//
 	// - Validation rules:
 	//
@@ -587,21 +593,21 @@ type InitializeRequest struct {
 	TemplateRanCount *string `json:"TemplateRanCount,omitempty" xml:"TemplateRanCount,omitempty"`
 	// The execution order of liveness detection actions in TemplateConfig.
 	//
-	// This parameter is required when Model is set to TEMPLATE.
+	// This parameter is required when Model is TEMPLATE.
 	//
-	// - Seq: actions are executed in the order configured in TemplateConfig from left to right.
+	// - Seq: executes in the order configured in TemplateConfig from left to right.
 	//
-	// - Ran: actions are executed in random order. When this option is selected, TemplateConfig must contain more than one action.
+	// - Ran: executes in random order. When this option is selected, TemplateConfig must contain more than one action.
 	//
 	// example:
 	//
 	// Seq
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
-	// Specifies whether to enable NFC verification when **DocType*	- is set to 01000000 (global passport).
+	// When **DocType*	- = 01000000 (global passport), specifies whether to enable NFC verification.
 	//
-	// - **Y**: enabled
+	// - **Y*	- (enable)
 	//
-	// - **N**: disabled.
+	// - **N*	- (do not enable)
 	//
 	// example:
 	//
@@ -629,6 +635,10 @@ func (s *InitializeRequest) GetAppQualityCheck() *string {
 
 func (s *InitializeRequest) GetAuthorize() *string {
 	return s.Authorize
+}
+
+func (s *InitializeRequest) GetAutoDocPageConfig() *string {
+	return s.AutoDocPageConfig
 }
 
 func (s *InitializeRequest) GetAutoRegistration() *string {
@@ -697,6 +707,10 @@ func (s *InitializeRequest) GetEmail() *string {
 
 func (s *InitializeRequest) GetExperienceCode() *string {
 	return s.ExperienceCode
+}
+
+func (s *InitializeRequest) GetFaceAttributeCheck() *string {
+	return s.FaceAttributeCheck
 }
 
 func (s *InitializeRequest) GetFaceGroupCodes() *string {
@@ -857,6 +871,11 @@ func (s *InitializeRequest) SetAuthorize(v string) *InitializeRequest {
 	return s
 }
 
+func (s *InitializeRequest) SetAutoDocPageConfig(v string) *InitializeRequest {
+	s.AutoDocPageConfig = &v
+	return s
+}
+
 func (s *InitializeRequest) SetAutoRegistration(v string) *InitializeRequest {
 	s.AutoRegistration = &v
 	return s
@@ -939,6 +958,11 @@ func (s *InitializeRequest) SetEmail(v string) *InitializeRequest {
 
 func (s *InitializeRequest) SetExperienceCode(v string) *InitializeRequest {
 	s.ExperienceCode = &v
+	return s
+}
+
+func (s *InitializeRequest) SetFaceAttributeCheck(v string) *InitializeRequest {
+	s.FaceAttributeCheck = &v
 	return s
 }
 

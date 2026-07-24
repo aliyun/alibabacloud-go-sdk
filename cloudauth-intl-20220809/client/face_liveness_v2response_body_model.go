@@ -20,13 +20,13 @@ type iFaceLivenessV2ResponseBody interface {
 }
 
 type FaceLivenessV2ResponseBody struct {
-	// The return code.
+	// The response code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The return message.
+	// The response message.
 	//
 	// example:
 	//
@@ -100,9 +100,9 @@ type FaceLivenessV2ResponseBodyResult struct {
 	ExtFaceInfo *FaceLivenessV2ResponseBodyResultExtFaceInfo `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty" type:"Struct"`
 	// Indicates whether the authentication is passed. Valid values:
 	//
-	// - Y: passed.
+	// - Y: Passed.
 	//
-	// - N: not passed.
+	// - N: Not passed.
 	//
 	// example:
 	//
@@ -205,13 +205,13 @@ type FaceLivenessV2ResponseBodyResultExtFaceInfo struct {
 	//
 	// 79.04
 	FaceQualityScore *float64 `json:"FaceQualityScore,omitempty" xml:"FaceQualityScore,omitempty"`
-	// The algorithm score for illumination as a quality sub-dimension. Valid values: 0 to 100. A higher value indicates better quality.
+	// The algorithm score for illumination, which is a sub-dimension of quality assessment. Valid values: 0 to 100. A higher value indicates better quality.
 	//
 	// example:
 	//
 	// 97.43
 	IlluminationScore *float64 `json:"IlluminationScore,omitempty" xml:"IlluminationScore,omitempty"`
-	// The algorithm score for key area occlusion as a quality sub-dimension. Valid values: 0 to 100. A higher value indicates better quality.
+	// The algorithm score for key area occlusion, which is a sub-dimension of quality assessment. Valid values: 0 to 100. A higher value indicates better quality.
 	//
 	// example:
 	//
@@ -223,13 +223,13 @@ type FaceLivenessV2ResponseBodyResultExtFaceInfo struct {
 	//
 	// Y
 	OcclusionResult *string `json:"OcclusionResult,omitempty" xml:"OcclusionResult,omitempty"`
-	// The algorithm score for occlusion as a quality sub-dimension. Valid values: 0 to 100. A higher value indicates better quality.
+	// The algorithm score for occlusion, which is a sub-dimension of quality assessment. Valid values: 0 to 100. A higher value indicates better quality.
 	//
 	// example:
 	//
 	// 50.26
 	OcclusionScore *float64 `json:"OcclusionScore,omitempty" xml:"OcclusionScore,omitempty"`
-	// The algorithm score for image sharpness as a quality sub-dimension. Valid values: 0 to 100. A higher value indicates better quality.
+	// The image sharpness score, which is a sub-dimension of quality assessment. Valid values: 0 to 100. A higher value indicates better quality.
 	//
 	// example:
 	//

@@ -20,13 +20,13 @@ type iFaceVerifyIntlResponseBody interface {
 }
 
 type FaceVerifyIntlResponseBody struct {
-	// The response code.
+	// The return code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The return message.
 	//
 	// example:
 	//
@@ -116,7 +116,7 @@ type FaceVerifyIntlResponseBodyResult struct {
 	DuplicateFace *string `json:"DuplicateFace,omitempty" xml:"DuplicateFace,omitempty"`
 	// The additional face result information.
 	ExtFaceInfo *FaceVerifyIntlResponseBodyResultExtFaceInfo `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty" type:"Struct"`
-	// The predicted reference age of the face. Prediction may fail and the value may not be returned.
+	// The estimated age of the face. This value may not be returned if the prediction fails.
 	//
 	// example:
 	//
@@ -124,9 +124,9 @@ type FaceVerifyIntlResponseBodyResult struct {
 	FaceAge *int64 `json:"FaceAge,omitempty" xml:"FaceAge,omitempty"`
 	// Indicates whether the captured face involves a liveness attack. Valid values:
 	//
-	// - Y: attack detected.
+	// - Y: Attack detected.
 	//
-	// - N: no attack detected.
+	// - N: No attack detected.
 	//
 	// This field is returned only when passive liveness detection is enabled.
 	//
@@ -146,11 +146,11 @@ type FaceVerifyIntlResponseBodyResult struct {
 	//
 	// 95.0
 	FaceComparisonScore *float64 `json:"FaceComparisonScore,omitempty" xml:"FaceComparisonScore,omitempty"`
-	// The predicted gender of the face image. Prediction may fail and the value may not be returned. Valid values:
+	// The predicted gender of the face image. This value may not be returned if the prediction fails. Valid values:
 	//
-	// - M: male.
+	// - M: Male.
 	//
-	// - F: female.
+	// - F: Female.
 	//
 	// example:
 	//
@@ -158,15 +158,15 @@ type FaceVerifyIntlResponseBodyResult struct {
 	FaceGender *string `json:"FaceGender,omitempty" xml:"FaceGender,omitempty"`
 	// The final verification result. Valid values:
 	//
-	// - Y: passed.
+	// - Y: Passed.
 	//
-	// - N: not passed.
+	// - N: Not passed.
 	//
 	// example:
 	//
 	// Y
 	FacePassed *string `json:"FacePassed,omitempty" xml:"FacePassed,omitempty"`
-	// The corresponding face ID returned only when the customer has enabled automatic registration and the face is registered successfully.
+	// The face ID returned only when the customer has enabled automatic registration and the face is registered successfully.
 	//
 	// example:
 	//
@@ -174,9 +174,9 @@ type FaceVerifyIntlResponseBodyResult struct {
 	FaceRegistrationId *string `json:"FaceRegistrationId,omitempty" xml:"FaceRegistrationId,omitempty"`
 	// The face registration result. Valid values:
 	//
-	// - 0: failed.
+	// - 0: Failed.
 	//
-	// - 1: succeeded.
+	// - 1: Succeeded.
 	//
 	// example:
 	//

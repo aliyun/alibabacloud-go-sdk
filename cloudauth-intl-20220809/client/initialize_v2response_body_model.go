@@ -104,13 +104,13 @@ type InitializeV2ResponseBodyResult struct {
 	ClientCfg *string `json:"ClientCfg,omitempty" xml:"ClientCfg,omitempty"`
 	// The standard authentication encryption protocol.
 	//
-	// > This field is required when you use iframe embedding for H5 web page integration.
+	// > This field is required for H5 web integration using iframe embedding.
 	//
 	// example:
 	//
 	// hksb7ba1b28130d24e015d*********
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The unique ID of the authentication request.
+	// The unique identifier of the authentication request.
 	//
 	// example:
 	//

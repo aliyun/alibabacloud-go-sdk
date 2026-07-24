@@ -13,6 +13,8 @@ type iInitializeV2ShrinkRequest interface {
 	GetAppQualityCheck() *string
 	SetAuthorize(v string) *InitializeV2ShrinkRequest
 	GetAuthorize() *string
+	SetAutoDocPageConfig(v string) *InitializeV2ShrinkRequest
+	GetAutoDocPageConfig() *string
 	SetAutoRegistration(v string) *InitializeV2ShrinkRequest
 	GetAutoRegistration() *string
 	SetCallbackToken(v string) *InitializeV2ShrinkRequest
@@ -47,6 +49,8 @@ type iInitializeV2ShrinkRequest interface {
 	GetEmail() *string
 	SetExperienceCode(v string) *InitializeV2ShrinkRequest
 	GetExperienceCode() *string
+	SetFaceAttributeCheck(v string) *InitializeV2ShrinkRequest
+	GetFaceAttributeCheck() *string
 	SetFaceGroupCodes(v string) *InitializeV2ShrinkRequest
 	GetFaceGroupCodes() *string
 	SetFacePictureBase64(v string) *InitializeV2ShrinkRequest
@@ -128,13 +132,13 @@ type iInitializeV2ShrinkRequest interface {
 }
 
 type InitializeV2ShrinkRequest struct {
-	// <warning>This feature is **not supported by the Web SDK**. To use this feature, use the App SDK.</warning>
+	// <warning>This feature is **not supported by Web SDK**. To use this feature, use the App SDK.</warning>
 	//
 	// Specifies whether to enable strict face quality detection:
 	//
 	// - Y: enable (default)
 	//
-	// - N: disable.
+	// - N: do not enable
 	//
 	// example:
 	//
@@ -145,7 +149,8 @@ type InitializeV2ShrinkRequest struct {
 	// example:
 	//
 	// T
-	Authorize *string `json:"Authorize,omitempty" xml:"Authorize,omitempty"`
+	Authorize         *string `json:"Authorize,omitempty" xml:"Authorize,omitempty"`
+	AutoDocPageConfig *string `json:"AutoDocPageConfig,omitempty" xml:"AutoDocPageConfig,omitempty"`
 	// Specifies whether to enable auto-registration.
 	//
 	// example:
@@ -158,7 +163,7 @@ type InitializeV2ShrinkRequest struct {
 	//
 	// 7ca5c68d869344ea8eeb30cdfd544544-6358700
 	CallbackToken *string `json:"CallbackToken,omitempty" xml:"CallbackToken,omitempty"`
-	// The callback URL for the authentication result. The callback request method is GET by default. The callback URL must start with https. After the authentication is complete, the platform calls back this URL and automatically appends the transactionId, passed, and subcode fields.
+	// The callback URL for authentication results. The default callback request method is GET, and the callback URL must start with https. After authentication is complete, the platform calls back this URL and automatically appends the transactionId, passed, and subcode fields.
 	//
 	// example:
 	//
@@ -168,7 +173,7 @@ type InitializeV2ShrinkRequest struct {
 	//
 	// - **Y**: enable
 	//
-	// - **N**: disable.
+	// - **N**: do not enable
 	//
 	// example:
 	//
@@ -188,7 +193,7 @@ type InitializeV2ShrinkRequest struct {
 	//
 	// -
 	DateOfBirth *string `json:"DateOfBirth,omitempty" xml:"DateOfBirth,omitempty"`
-	// The expiration date on the document.
+	// The expiry date on the document.
 	//
 	// Required when **MRTDInput*	- = 2.
 	//
@@ -200,7 +205,7 @@ type InitializeV2ShrinkRequest struct {
 	//
 	// example:
 	//
-	// 张**
+	// Zhang**
 	DocName *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
 	// The document number of the user.
 	//
@@ -208,7 +213,7 @@ type InitializeV2ShrinkRequest struct {
 	//
 	// 410***************
 	DocNo *string `json:"DocNo,omitempty" xml:"DocNo,omitempty"`
-	// The custom configuration for whether to capture additional pages.
+	// The custom configuration for collecting additional pages.
 	//
 	// example:
 	//
@@ -226,21 +231,21 @@ type InitializeV2ShrinkRequest struct {
 	DocScanMode *string `json:"DocScanMode,omitempty" xml:"DocScanMode,omitempty"`
 	// The document type.
 	//
-	// >For the eKYC_PRO and ID_OCR_MAX solutions, see the official documentation: https://www.alibabacloud.com/help/zh/ekyc/latest/certificate-code-table?spm=a2c63.p38356.help-menu-445633.d_2_8_2_0.279147abwKAWbr
+	// >For eKYC_PRO and ID_OCR_MAX solutions, see the official documentation: https://www.alibabacloud.com/help/zh/ekyc/latest/certificate-code-table?spm=a2c63.p38356.help-menu-445633.d_2_8_2_0.279147abwKAWbr
 	//
-	// >For the ID_OCR, eKYC, and eKYC_MIN solutions, see the document type list in the official documentation: https://www.alibabacloud.com/help/zh/ekyc/latest/gnhekqy05ni51m4c?spm=a2c63.p38356.help-menu-445633.d_2_3_1_0_0_0.6243244777KoZ7.
+	// >For ID_OCR, eKYC, and eKYC_MIN solutions, see the official documentation for the document type list: https://www.alibabacloud.com/help/zh/ekyc/latest/gnhekqy05ni51m4c?spm=a2c63.p38356.help-menu-445633.d_2_3_1_0_0_0.6243244777KoZ7
 	//
 	// example:
 	//
 	// 00000001
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
-	// Specifies whether to save an evidence video.
+	// Specifies whether to record an evidence video.
 	//
 	// - N: not required (default).
 	//
-	// - Y: a face scanning video (1 to 2 seconds) is captured during the authentication process and returned through the query operation.
+	// - Y: a face verification video (1–2 seconds) is captured during authentication and returned through the query API.
 	//
-	// > Because video files are large, the system discards video files when the network is unstable to prioritize the transmission of images required for authentication.
+	// > Because video files are large, the system discards video files when the network is unstable to prioritize the transmission of essential authentication images.
 	//
 	// example:
 	//
@@ -258,7 +263,7 @@ type InitializeV2ShrinkRequest struct {
 	//
 	// - **0**: not editable
 	//
-	// - **1*	- (default): editable.
+	// - **1*	- (default): editable
 	//
 	// example:
 	//
@@ -279,7 +284,8 @@ type InitializeV2ShrinkRequest struct {
 	// example:
 	//
 	// 9be7b7d0180041219e5ab03ac6dab5fb
-	ExperienceCode *string `json:"ExperienceCode,omitempty" xml:"ExperienceCode,omitempty"`
+	ExperienceCode     *string `json:"ExperienceCode,omitempty" xml:"ExperienceCode,omitempty"`
+	FaceAttributeCheck *string `json:"FaceAttributeCheck,omitempty" xml:"FaceAttributeCheck,omitempty"`
 	// The face libraries for comparison.
 	//
 	// example:
@@ -336,7 +342,7 @@ type InitializeV2ShrinkRequest struct {
 	//
 	// - 2: loose mode
 	//
-	// - 3 (default): disable quality detection.
+	// - 3 (default): disable quality detection
 	//
 	// example:
 	//
@@ -348,13 +354,13 @@ type InitializeV2ShrinkRequest struct {
 	//
 	// en
 	LanguageConfig *string `json:"LanguageConfig,omitempty" xml:"LanguageConfig,omitempty"`
-	// The input source for MRTD verification parameters. This parameter is required to decrypt information when reading document chip information through NFC.
+	// The input source for MRTD verification parameters. This parameter is required for decrypting information when reading document chip data via NFC.
 	//
 	// - **0**: user input
 	//
 	// - **1**: OCR reading
 	//
-	// - **2**: passed in through the operation.
+	// - **2**: API input
 	//
 	// example:
 	//
@@ -366,7 +372,7 @@ type InitializeV2ShrinkRequest struct {
 	//
 	// e0c34a***353888
 	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
-	// A custom user ID or other identifier that can identify a specific user, such as a phone number or email address. We strongly recommend that you mask this field value in advance, for example, by hashing the value.
+	// A custom user ID or other identifier that can identify a specific user, such as a phone number or email address. We strongly recommend that you desensitize this field value in advance, for example, by hashing the value.
 	//
 	// example:
 	//
@@ -388,7 +394,7 @@ type InitializeV2ShrinkRequest struct {
 	//
 	// +6281293671234
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	// The type of liveness detection:
+	// The type of liveness detection to perform:
 	//
 	// - **LIVENESS*	- (default): blink action liveness detection.
 	//
@@ -414,17 +420,17 @@ type InitializeV2ShrinkRequest struct {
 	//
 	// 0: no (default)
 	//
-	// 1: yes.
+	// 1: yes
 	//
 	// example:
 	//
 	// 0
 	OcrValueStandard *string `json:"OcrValueStandard,omitempty" xml:"OcrValueStandard,omitempty"`
-	// The capture page configuration. Use commas to connect multiple pages. Valid values:
+	// The collection page configuration. Use commas to connect multiple pages. Valid values:
 	//
-	// - **01**: the portrait side of the document
+	// - **01**: document portrait page
 	//
-	// - **01,02**: the portrait side and the back side of the document
+	// - **01,02**: document portrait page and back page
 	//
 	// > When this value is set to 01,02, only Chinese ID cards and Vietnamese ID cards are supported.
 	//
@@ -443,7 +449,7 @@ type InitializeV2ShrinkRequest struct {
 	//
 	// > - This switch is not supported on PC.
 	//
-	// > - If the common scenarios involve completing authentication within an in-app web page, set this parameter to keep to disallow URL degradation.
+	// > - If the business scenario involves completing authentication within an in-app web page, set this parameter to keep to disallow URL degradation.
 	//
 	// example:
 	//
@@ -451,19 +457,19 @@ type InitializeV2ShrinkRequest struct {
 	ProcedurePriority *string `json:"ProcedurePriority,omitempty" xml:"ProcedurePriority,omitempty"`
 	// The product solution to use.
 	//
-	// 	Note: For more information, see the official documentation: https://www.alibabacloud.com/help/zh/ekyc/latest/product-introduction?spm=a2c63.p38356.0.i1.
+	// 	Note: For more information, see the official documentation: https://www.alibabacloud.com/help/zh/ekyc/latest/product-introduction?spm=a2c63.p38356.0.i1
 	//
 	// example:
 	//
 	// eKYC
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The order of document and face capture:
+	// The order of document and face verification:
 	//
 	// - DOC_FACE (default)
 	//
 	// - FACE_DOC
 	//
-	// Note: Pass this parameter only when ProductCode is KYC_GLOBAL.
+	// Note: This parameter is required only when ProductCode is KYC_GLOBAL.
 	//
 	// example:
 	//
@@ -507,7 +513,7 @@ type InitializeV2ShrinkRequest struct {
 	//
 	// - **1**: display (default)
 	//
-	// - **0**: do not display.
+	// - **0**: do not display
 	//
 	// example:
 	//
@@ -517,7 +523,7 @@ type InitializeV2ShrinkRequest struct {
 	//
 	// - **1**: display (default)
 	//
-	// - **0**: do not display.
+	// - **0**: do not display
 	//
 	// example:
 	//
@@ -527,7 +533,7 @@ type InitializeV2ShrinkRequest struct {
 	//
 	// - **1**: display (default)
 	//
-	// - **0**: do not display.
+	// - **0**: do not display
 	//
 	// example:
 	//
@@ -555,7 +561,7 @@ type InitializeV2ShrinkRequest struct {
 	//
 	// base64
 	TargetFacePicture *string `json:"TargetFacePicture,omitempty" xml:"TargetFacePicture,omitempty"`
-	// The file stream of the reference face image.
+	// The file stream of the target face image.
 	//
 	// example:
 	//
@@ -569,11 +575,11 @@ type InitializeV2ShrinkRequest struct {
 	TargetFacePictureUrl *string `json:"TargetFacePictureUrl,omitempty" xml:"TargetFacePictureUrl,omitempty"`
 	// The custom action pool configuration for liveness detection.
 	//
-	// Pass this parameter when Model is set to TEMPLATE.
+	// Required when Model is TEMPLATE.
 	//
-	// Configuration rule: separate multiple action codes with commas. Best practices: include at least one frontal face action (such as blink) and no more than 3 actions in total.
+	// Configuration rule: separate multiple action codes with commas. Best practice: include at least one frontal face action (such as blink), and do not exceed 3 actions in total.
 	//
-	// Action lookup table:
+	// Action code table:
 	//
 	// - Blink: 01
 	//
@@ -587,15 +593,15 @@ type InitializeV2ShrinkRequest struct {
 	//
 	// - Move Closer: 06
 	//
-	// - Photinus: 07.
+	// - Photinus: 07
 	//
 	// example:
 	//
 	// 01,02,07
 	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
-	// The number of actions randomly selected from TemplateConfig.
+	// The number of actions to randomly select from TemplateConfig.
 	//
-	// This parameter takes effect only when TemplateType is set to Ran.
+	// Takes effect only when TemplateType is Ran.
 	//
 	// - Validation rules:
 	//
@@ -607,7 +613,7 @@ type InitializeV2ShrinkRequest struct {
 	TemplateRanCount *string `json:"TemplateRanCount,omitempty" xml:"TemplateRanCount,omitempty"`
 	// The execution order of liveness detection actions in TemplateConfig.
 	//
-	// Pass this parameter when Model is set to TEMPLATE.
+	// Required when Model is TEMPLATE.
 	//
 	// - Seq: execute in the order configured in TemplateConfig from left to right.
 	//
@@ -619,9 +625,9 @@ type InitializeV2ShrinkRequest struct {
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 	// Specifies whether to enable NFC verification when **DocType*	- = 01000000 (global passport).
 	//
-	// - **Y**: enable
+	// - **Y*	- (enable)
 	//
-	// - **N**: disable.
+	// - **N*	- (do not enable)
 	//
 	// example:
 	//
@@ -649,6 +655,10 @@ func (s *InitializeV2ShrinkRequest) GetAppQualityCheck() *string {
 
 func (s *InitializeV2ShrinkRequest) GetAuthorize() *string {
 	return s.Authorize
+}
+
+func (s *InitializeV2ShrinkRequest) GetAutoDocPageConfig() *string {
+	return s.AutoDocPageConfig
 }
 
 func (s *InitializeV2ShrinkRequest) GetAutoRegistration() *string {
@@ -717,6 +727,10 @@ func (s *InitializeV2ShrinkRequest) GetEmail() *string {
 
 func (s *InitializeV2ShrinkRequest) GetExperienceCode() *string {
 	return s.ExperienceCode
+}
+
+func (s *InitializeV2ShrinkRequest) GetFaceAttributeCheck() *string {
+	return s.FaceAttributeCheck
 }
 
 func (s *InitializeV2ShrinkRequest) GetFaceGroupCodes() *string {
@@ -885,6 +899,11 @@ func (s *InitializeV2ShrinkRequest) SetAuthorize(v string) *InitializeV2ShrinkRe
 	return s
 }
 
+func (s *InitializeV2ShrinkRequest) SetAutoDocPageConfig(v string) *InitializeV2ShrinkRequest {
+	s.AutoDocPageConfig = &v
+	return s
+}
+
 func (s *InitializeV2ShrinkRequest) SetAutoRegistration(v string) *InitializeV2ShrinkRequest {
 	s.AutoRegistration = &v
 	return s
@@ -967,6 +986,11 @@ func (s *InitializeV2ShrinkRequest) SetEmail(v string) *InitializeV2ShrinkReques
 
 func (s *InitializeV2ShrinkRequest) SetExperienceCode(v string) *InitializeV2ShrinkRequest {
 	s.ExperienceCode = &v
+	return s
+}
+
+func (s *InitializeV2ShrinkRequest) SetFaceAttributeCheck(v string) *InitializeV2ShrinkRequest {
+	s.FaceAttributeCheck = &v
 	return s
 }
 

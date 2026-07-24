@@ -9,6 +9,8 @@ type iFaceLivenessV2Request interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetFaceAttributeCheck(v string) *FaceLivenessV2Request
+	GetFaceAttributeCheck() *string
 	SetFacePictureBase64(v string) *FaceLivenessV2Request
 	GetFacePictureBase64() *string
 	SetFacePictureFile(v string) *FaceLivenessV2Request
@@ -26,6 +28,7 @@ type iFaceLivenessV2Request interface {
 }
 
 type FaceLivenessV2Request struct {
+	FaceAttributeCheck *string `json:"FaceAttributeCheck,omitempty" xml:"FaceAttributeCheck,omitempty"`
 	// The Base64-encoded face image.
 	//
 	// > **Note**
@@ -90,6 +93,10 @@ func (s FaceLivenessV2Request) GoString() string {
 	return s.String()
 }
 
+func (s *FaceLivenessV2Request) GetFaceAttributeCheck() *string {
+	return s.FaceAttributeCheck
+}
+
 func (s *FaceLivenessV2Request) GetFacePictureBase64() *string {
 	return s.FacePictureBase64
 }
@@ -116,6 +123,11 @@ func (s *FaceLivenessV2Request) GetMerchantUserId() *string {
 
 func (s *FaceLivenessV2Request) GetProductCode() *string {
 	return s.ProductCode
+}
+
+func (s *FaceLivenessV2Request) SetFaceAttributeCheck(v string) *FaceLivenessV2Request {
+	s.FaceAttributeCheck = &v
+	return s
 }
 
 func (s *FaceLivenessV2Request) SetFacePictureBase64(v string) *FaceLivenessV2Request {
