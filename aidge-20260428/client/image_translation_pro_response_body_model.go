@@ -22,15 +22,15 @@ type iImageTranslationProResponseBody interface {
 }
 
 type ImageTranslationProResponseBody struct {
-	// The response code. 200 indicates a successful call. For other response codes, see the error code information.
+	// The response code. 200 indicates a successful call. For other response codes, refer to the error code information.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The translation result data. ResultList contains the URL of the translation result. GenFiles contains EditInfo with the recognized text information.
+	// The translation result data. ResultList contains the URLs of translation results, and GenFiles contains EditInfo with the recognized text information.
 	Data *ImageTranslationProResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. Returns "Success" for successful calls. Returns specific error information for exceptions, such as "The content contains sensitive data. Try other input."
+	// The error message. "Success" is returned for successful calls. Specific error information is returned for failed calls, such as "The content contains sensitive data. Try other input."
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ImageTranslationProResponseBody struct {
 	//
 	// 61785C32-80C2-19A3-9E55-2C3702C84B40
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. true indicates success. false indicates failure.
+	// Indicates whether the call is successful. true indicates success, and false indicates failure.
 	//
 	// example:
 	//
@@ -113,17 +113,17 @@ func (s *ImageTranslationProResponseBody) Validate() error {
 }
 
 type ImageTranslationProResponseBodyData struct {
-	// The editor protocol, including translation result files and editing information.
+	// The editor protocol, which contains translation result files and editing information.
 	GenFiles []*ImageTranslationProResponseBodyDataGenFiles `json:"GenFiles,omitempty" xml:"GenFiles,omitempty" type:"Repeated"`
 	// The list of image translation results.
 	ResultList []*ImageTranslationProResponseBodyDataResultList `json:"ResultList,omitempty" xml:"ResultList,omitempty" type:"Repeated"`
-	// The asynchronous task ID. Not returned for synchronous calls.
+	// The asynchronous task ID. This parameter is not returned for synchronous calls.
 	//
 	// example:
 	//
 	// abc123-task-id
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The usage information, including the number of processed images.
+	// The usage information, which contains the number of processed images.
 	UsageMap map[string]*int64 `json:"UsageMap,omitempty" xml:"UsageMap,omitempty"`
 }
 
@@ -194,7 +194,7 @@ func (s *ImageTranslationProResponseBodyData) Validate() error {
 }
 
 type ImageTranslationProResponseBodyDataGenFiles struct {
-	// The editor information, including recognized text areas, product areas, fonts, and other information.
+	// The editor information, which contains recognition information such as text areas, product areas, and fonts.
 	EditInfo *ImageTranslationProResponseBodyDataGenFilesEditInfo `json:"EditInfo,omitempty" xml:"EditInfo,omitempty" type:"Struct"`
 	// The collection of translation results.
 	ResultList []*ImageTranslationProResponseBodyDataGenFilesResultList `json:"ResultList,omitempty" xml:"ResultList,omitempty" type:"Repeated"`
@@ -264,9 +264,9 @@ type ImageTranslationProResponseBodyDataGenFilesEditInfo struct {
 	Font []*string `json:"Font,omitempty" xml:"Font,omitempty" type:"Repeated"`
 	// The coordinate information of the product bounding box area.
 	GoodsRects *ImageTranslationProResponseBodyDataGenFilesEditInfoGoodsRects `json:"GoodsRects,omitempty" xml:"GoodsRects,omitempty" type:"Struct"`
-	// The list of translation target languages.
+	// The list of target languages for translation.
 	Languages []*string `json:"Languages,omitempty" xml:"Languages,omitempty" type:"Repeated"`
-	// The URL of the image with all text removed.
+	// The URL of the image after all text has been erased.
 	//
 	// example:
 	//
@@ -274,7 +274,7 @@ type ImageTranslationProResponseBodyDataGenFilesEditInfo struct {
 	RepairedUrl *string `json:"RepairedUrl,omitempty" xml:"RepairedUrl,omitempty"`
 	// The collection of global IDs of translated images.
 	ResultImageIds []*string `json:"ResultImageIds,omitempty" xml:"ResultImageIds,omitempty" type:"Repeated"`
-	// The list of text boxes, including all recognized text area information.
+	// The list of text boxes, which contains information about all recognized text areas.
 	TextAreas []*ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreas `json:"TextAreas,omitempty" xml:"TextAreas,omitempty" type:"Repeated"`
 }
 
@@ -459,7 +459,7 @@ type ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreas struct {
 	//
 	// example:
 	//
-	// 萌趣造型·清脆响铃
+	// Cute Shape · Crisp Bell.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The font size.
 	//
@@ -479,7 +479,7 @@ type ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreas struct {
 	//
 	// 1
 	LineCount *int32 `json:"LineCount,omitempty" xml:"LineCount,omitempty"`
-	// The list of translated texts. Each element corresponds to the translation result for one target language.
+	// The list of translated texts. Each element corresponds to the translation result for a target language.
 	Texts []*ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
 	// The vertical layout mode. Valid values: center, top, down.
 	//
@@ -574,7 +574,7 @@ func (s *ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreas) Validate(
 }
 
 type ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTexts struct {
-	// The color of the translated text.
+	// The text color after translation.
 	//
 	// example:
 	//
@@ -606,12 +606,6 @@ type ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTexts struct {
 	//
 	// 1
 	LineCount *int32 `json:"LineCount,omitempty" xml:"LineCount,omitempty"`
-	// The Ovis model error message and execution time.
-	//
-	// example:
-	//
-	// | ovis time: 0.748
-	OvisErrMsg *string `json:"OvisErrMsg,omitempty" xml:"OvisErrMsg,omitempty"`
 	// The coordinates of the text box area.
 	TextRect *ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTextsTextRect `json:"TextRect,omitempty" xml:"TextRect,omitempty" type:"Struct"`
 	// Indicates whether the TextItem is valid. The item is invalid when this value does not exist or is false.
@@ -666,10 +660,6 @@ func (s *ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTexts) GetL
 	return s.LineCount
 }
 
-func (s *ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTexts) GetOvisErrMsg() *string {
-	return s.OvisErrMsg
-}
-
 func (s *ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTexts) GetTextRect() *ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTextsTextRect {
 	return s.TextRect
 }
@@ -713,11 +703,6 @@ func (s *ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTexts) SetL
 
 func (s *ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTexts) SetLineCount(v int32) *ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTexts {
 	s.LineCount = &v
-	return s
-}
-
-func (s *ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTexts) SetOvisErrMsg(v string) *ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTexts {
-	s.OvisErrMsg = &v
 	return s
 }
 
@@ -942,7 +927,7 @@ type ImageTranslationProResponseBodyDataGenFilesResultList struct {
 	//
 	// http://dashscope-a717.oss-cn-beijing.aliyuncs.com/xxx.jpg
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// The translation target language.
+	// The target language for translation.
 	//
 	// example:
 	//
@@ -987,7 +972,7 @@ type ImageTranslationProResponseBodyDataResultList struct {
 	//
 	// http://dashscope-a717.oss-cn-beijing.aliyuncs.com/xxx.jpg
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// The target language of the image translation.
+	// The target language for image translation.
 	//
 	// example:
 	//

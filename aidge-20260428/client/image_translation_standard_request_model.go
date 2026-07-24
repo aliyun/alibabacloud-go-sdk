@@ -26,7 +26,7 @@ type iImageTranslationStandardRequest interface {
 }
 
 type ImageTranslationStandardRequest struct {
-	// The intervention glossary ID. Optional. You must create the glossary separately in the console and provide its ID. If the provided glossary ID is empty, the translation results will not be modified.
+	// The glossary ID. Optional. Create a glossary in the console and provide its ID. If the glossary ID is empty, the translation results are not modified.
 	//
 	// example:
 	//
@@ -34,25 +34,19 @@ type ImageTranslationStandardRequest struct {
 	Glossary *string `json:"Glossary,omitempty" xml:"Glossary,omitempty"`
 	// - Image URL: Must be publicly accessible.
 	//
-	// - Format: png, jpeg, jpg, bmp, webp
-	//
-	// - Pixels: Width and height must not exceed 4000
-	//
-	// - File size: Original file ≤ 10 MB
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://images-na.ssl-images-amazon.com/images/I/41bKsNBDcwL.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// Specifies whether to translate text on the image subject. Optional. Default value: false. This helps protect information and avoids translating embedded information such as product names.
+	// Specifies whether to translate text on the main subject of the image. Optional. Default value: false. This helps you protect information by avoiding translation of embedded information such as product names.
 	//
 	// example:
 	//
 	// false
 	IncludingProductArea *bool `json:"IncludingProductArea,omitempty" xml:"IncludingProductArea,omitempty"`
-	// The source language code. Required. For supported language directions, see the supported language direction list.
+	// The source language code. Required. For supported language pairs, see the supported language pair list.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +54,7 @@ type ImageTranslationStandardRequest struct {
 	//
 	// en
 	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
-	// The target language code. Required. For supported language directions, see the supported language direction list.
+	// The target language code. Required. For supported language pairs, see the supported language pair list.
 	//
 	// This parameter is required.
 	//
@@ -68,13 +62,13 @@ type ImageTranslationStandardRequest struct {
 	//
 	// ko
 	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
-	// Specifies whether to translate brand names on the image. Optional. Default value: false. This helps protect brand name information from being translated.
+	// Specifies whether to translate brand names on the image. Optional. Default value: false. This helps you protect brand name information from being translated.
 	//
 	// example:
 	//
 	// false
 	TranslatingBrandInTheProduct *bool `json:"TranslatingBrandInTheProduct,omitempty" xml:"TranslatingBrandInTheProduct,omitempty"`
-	// Specifies whether to return layer information such as text position, font, and color. When set to true, layer information is returned for secondary editing through an image editor. Default value: false.
+	// Specifies whether to return layer information such as text position, font, and color. When set to true, layer information is returned for integration with image editors for secondary editing. Default value: false.
 	//
 	// example:
 	//

@@ -30,19 +30,19 @@ type ImageTranslationStandardResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The translation result data, including the translated image URL and usage information.
 	Data *ImageTranslationStandardResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. Returns "Success" for successful calls and specific error information for exceptions.
+	// The error message. Returns "Success" for successful calls, and returns specific error information for failed calls.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID, used to identify a unique request call.
+	// The request ID, which uniquely identifies the request.
 	//
 	// example:
 	//
 	// 1CEC4D94-905A-1ED1-A7B4-1BFEFFB3D850
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. A value of true indicates success. A value of false indicates failure.
+	// Indicates whether the call is successful. A value of true indicates success, and a value of false indicates failure.
 	//
 	// example:
 	//
@@ -121,7 +121,7 @@ type ImageTranslationStandardResponseBodyData struct {
 	//
 	// http://dashscope-a717.oss-cn-beijing.aliyuncs.com/xxx.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// The usage information, including the number of processed images.
+	// The usage information, including the number of images processed.
 	//
 	// example:
 	//
@@ -180,7 +180,7 @@ type ImageTranslationStandardResponseBodyDataEditInfo struct {
 	//
 	// ["NotoSansSC-Bold"]
 	Font []*string `json:"Font,omitempty" xml:"Font,omitempty" type:"Repeated"`
-	// The product area rectangle.
+	// The product area rectangles.
 	GoodsRects *ImageTranslationStandardResponseBodyDataEditInfoGoodsRects `json:"GoodsRects,omitempty" xml:"GoodsRects,omitempty" type:"Struct"`
 	// The product image URL.
 	//
@@ -572,12 +572,6 @@ type ImageTranslationStandardResponseBodyDataEditInfoTextAreasTexts struct {
 	//
 	// 1
 	LineCount *int32 `json:"LineCount,omitempty" xml:"LineCount,omitempty"`
-	// The OVIS error message.
-	//
-	// example:
-	//
-	// desc
-	OvisErrMsg *string `json:"OvisErrMsg,omitempty" xml:"OvisErrMsg,omitempty"`
 	// The text area.
 	TextRect *ImageTranslationStandardResponseBodyDataEditInfoTextAreasTextsTextRect `json:"TextRect,omitempty" xml:"TextRect,omitempty" type:"Struct"`
 	// Indicates whether the text is valid.
@@ -590,7 +584,7 @@ type ImageTranslationStandardResponseBodyDataEditInfoTextAreasTexts struct {
 	//
 	// example:
 	//
-	// Solid wood wardrobe.
+	// Solid Wood Wardrobe.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 	// The vertical layout.
 	//
@@ -630,10 +624,6 @@ func (s *ImageTranslationStandardResponseBodyDataEditInfoTextAreasTexts) GetLang
 
 func (s *ImageTranslationStandardResponseBodyDataEditInfoTextAreasTexts) GetLineCount() *int32 {
 	return s.LineCount
-}
-
-func (s *ImageTranslationStandardResponseBodyDataEditInfoTextAreasTexts) GetOvisErrMsg() *string {
-	return s.OvisErrMsg
 }
 
 func (s *ImageTranslationStandardResponseBodyDataEditInfoTextAreasTexts) GetTextRect() *ImageTranslationStandardResponseBodyDataEditInfoTextAreasTextsTextRect {
@@ -679,11 +669,6 @@ func (s *ImageTranslationStandardResponseBodyDataEditInfoTextAreasTexts) SetLang
 
 func (s *ImageTranslationStandardResponseBodyDataEditInfoTextAreasTexts) SetLineCount(v int32) *ImageTranslationStandardResponseBodyDataEditInfoTextAreasTexts {
 	s.LineCount = &v
-	return s
-}
-
-func (s *ImageTranslationStandardResponseBodyDataEditInfoTextAreasTexts) SetOvisErrMsg(v string) *ImageTranslationStandardResponseBodyDataEditInfoTextAreasTexts {
-	s.OvisErrMsg = &v
 	return s
 }
 
