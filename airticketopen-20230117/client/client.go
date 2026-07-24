@@ -24,7 +24,7 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +58,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 账号资金流水
+// Queries the account fund flow list.
 //
 // @param request - AccountFlowListRequest
 //
@@ -130,7 +130,7 @@ func (client *Client) AccountFlowListWithOptions(request *AccountFlowListRequest
 
 // Summary:
 //
-// 账号资金流水
+// Queries the account fund flow list.
 //
 // @param request - AccountFlowListRequest
 //
@@ -149,11 +149,7 @@ func (client *Client) AccountFlowList(request *AccountFlowListRequest) (_result 
 
 // Summary:
 //
-// # Ancillary - Suggestion
-//
-// Description:
-//
-// search ancillary for selected solution, you should enter the solution_id returned by enrich.
+// Recommends ancillary products.
 //
 // @param request - AncillarySuggestRequest
 //
@@ -213,11 +209,7 @@ func (client *Client) AncillarySuggestWithOptions(request *AncillarySuggestReque
 
 // Summary:
 //
-// # Ancillary - Suggestion
-//
-// Description:
-//
-// search ancillary for selected solution, you should enter the solution_id returned by enrich.
+// Recommends ancillary products.
 //
 // @param request - AncillarySuggestRequest
 //
@@ -236,17 +228,7 @@ func (client *Client) AncillarySuggest(request *AncillarySuggestRequest) (_resul
 
 // Summary:
 //
-// # Transaction-Reservation
-//
-// Description:
-//
-// Enter solution_id returned by enrich, ancillary_id returned by ancillarySuggest(optional), passengers information and contact information, the book interface will create an order wait for pay.
-//
-// There are two issues should be noticed:
-//
-// 1. the solution_id must be processed by pricing.
-//
-// 2. the order created by book interface should be pay within 30 minutes, otherwise the order will be closed.
+// Creates a booking order.
 //
 // @param tmpReq - BookRequest
 //
@@ -336,17 +318,7 @@ func (client *Client) BookWithOptions(tmpReq *BookRequest, headers *BookHeaders,
 
 // Summary:
 //
-// # Transaction-Reservation
-//
-// Description:
-//
-// Enter solution_id returned by enrich, ancillary_id returned by ancillarySuggest(optional), passengers information and contact information, the book interface will create an order wait for pay.
-//
-// There are two issues should be noticed:
-//
-// 1. the solution_id must be processed by pricing.
-//
-// 2. the order created by book interface should be pay within 30 minutes, otherwise the order will be closed.
+// Creates a booking order.
 //
 // @param request - BookRequest
 //
@@ -365,11 +337,7 @@ func (client *Client) Book(request *BookRequest) (_result *BookResponse, _err er
 
 // Summary:
 //
-// # Transaction - Unpaid Cancellation
-//
-// Description:
-//
-// close an unpaid order
+// Cancels an unpaid order.
 //
 // @param request - CancelRequest
 //
@@ -429,11 +397,7 @@ func (client *Client) CancelWithOptions(request *CancelRequest, headers *CancelH
 
 // Summary:
 //
-// # Transaction - Unpaid Cancellation
-//
-// Description:
-//
-// close an unpaid order
+// Cancels an unpaid order.
 //
 // @param request - CancelRequest
 //
@@ -452,7 +416,7 @@ func (client *Client) Cancel(request *CancelRequest) (_result *CancelResponse, _
 
 // Summary:
 //
-// 改签-Apply
+// Submits a change application.
 //
 // @param tmpReq - ChangeApplyRequest
 //
@@ -546,7 +510,7 @@ func (client *Client) ChangeApplyWithOptions(tmpReq *ChangeApplyRequest, headers
 
 // Summary:
 //
-// 改签-Apply
+// Submits a change application.
 //
 // @param request - ChangeApplyRequest
 //
@@ -565,7 +529,7 @@ func (client *Client) ChangeApply(request *ChangeApplyRequest) (_result *ChangeA
 
 // Summary:
 //
-// 改签-取消
+// Cancel the change order.
 //
 // @param request - ChangeCancelRequest
 //
@@ -625,7 +589,7 @@ func (client *Client) ChangeCancelWithOptions(request *ChangeCancelRequest, head
 
 // Summary:
 //
-// 改签-取消
+// Cancel the change order.
 //
 // @param request - ChangeCancelRequest
 //
@@ -644,7 +608,7 @@ func (client *Client) ChangeCancel(request *ChangeCancelRequest) (_result *Chang
 
 // Summary:
 //
-// 改签-确认
+// Confirms a flight change order.
 //
 // @param request - ChangeConfirmRequest
 //
@@ -704,7 +668,7 @@ func (client *Client) ChangeConfirmWithOptions(request *ChangeConfirmRequest, he
 
 // Summary:
 //
-// 改签-确认
+// Confirms a flight change order.
 //
 // @param request - ChangeConfirmRequest
 //
@@ -723,7 +687,7 @@ func (client *Client) ChangeConfirm(request *ChangeConfirmRequest) (_result *Cha
 
 // Summary:
 //
-// # Change-Detail
+// Retrieves the details of a flight change order.
 //
 // @param request - ChangeDetailRequest
 //
@@ -783,7 +747,7 @@ func (client *Client) ChangeDetailWithOptions(request *ChangeDetailRequest, head
 
 // Summary:
 //
-// # Change-Detail
+// Retrieves the details of a flight change order.
 //
 // @param request - ChangeDetailRequest
 //
@@ -802,7 +766,7 @@ func (client *Client) ChangeDetail(request *ChangeDetailRequest) (_result *Chang
 
 // Summary:
 //
-// 改签单列表-关于买家账号
+// Queries a paging list of change order summaries by buyer account.
 //
 // @param request - ChangeDetailListOfBuyerRequest
 //
@@ -874,7 +838,7 @@ func (client *Client) ChangeDetailListOfBuyerWithOptions(request *ChangeDetailLi
 
 // Summary:
 //
-// 改签单列表-关于买家账号
+// Queries a paging list of change order summaries by buyer account.
 //
 // @param request - ChangeDetailListOfBuyerRequest
 //
@@ -893,7 +857,7 @@ func (client *Client) ChangeDetailListOfBuyer(request *ChangeDetailListOfBuyerRe
 
 // Summary:
 //
-// 改签单列表-关于正向订单
+// Queries the list of change orders by the original order number.
 //
 // @param request - ChangeDetailListOfOrderNumRequest
 //
@@ -961,7 +925,7 @@ func (client *Client) ChangeDetailListOfOrderNumWithOptions(request *ChangeDetai
 
 // Summary:
 //
-// 改签单列表-关于正向订单
+// Queries the list of change orders by the original order number.
 //
 // @param request - ChangeDetailListOfOrderNumRequest
 //
@@ -980,7 +944,11 @@ func (client *Client) ChangeDetailListOfOrderNum(request *ChangeDetailListOfOrde
 
 // Summary:
 //
-// 数据收集-低价航班信息
+// Collects lowest-price flight information.
+//
+// Description:
+//
+// Collects lowest-price flight information.
 //
 // @param tmpReq - CollectFlightLowestPriceRequest
 //
@@ -1046,7 +1014,11 @@ func (client *Client) CollectFlightLowestPriceWithOptions(tmpReq *CollectFlightL
 
 // Summary:
 //
-// 数据收集-低价航班信息
+// Collects lowest-price flight information.
+//
+// Description:
+//
+// Collects lowest-price flight information.
 //
 // @param request - CollectFlightLowestPriceRequest
 //
@@ -1065,11 +1037,11 @@ func (client *Client) CollectFlightLowestPrice(request *CollectFlightLowestPrice
 
 // Summary:
 //
-// # Search-Enrich
+// Find richer quote information for the itinerary, including free baggage allowance, refund and change rules, and baggage through-check rules.
 //
 // Description:
 //
-// Choose either `solution_id` or `journey_param_list` in the parameters, and `solution_id` needs to be obtained from the Search interface.
+// In the input parameters, choose either solution_id or journey_param_list. solution_id must be obtained from the Search API.
 //
 // @param tmpReq - EnrichRequest
 //
@@ -1155,11 +1127,11 @@ func (client *Client) EnrichWithOptions(tmpReq *EnrichRequest, headers *EnrichHe
 
 // Summary:
 //
-// # Search-Enrich
+// Find richer quote information for the itinerary, including free baggage allowance, refund and change rules, and baggage through-check rules.
 //
 // Description:
 //
-// Choose either `solution_id` or `journey_param_list` in the parameters, and `solution_id` needs to be obtained from the Search interface.
+// In the input parameters, choose either solution_id or journey_param_list. solution_id must be obtained from the Search API.
 //
 // @param request - EnrichRequest
 //
@@ -1178,7 +1150,7 @@ func (client *Client) Enrich(request *EnrichRequest) (_result *EnrichResponse, _
 
 // Summary:
 //
-// 附件上传
+// Uploads a file as an attachment image. The file size is limited to 300 KB or less.
 //
 // @param request - FileUploadRequest
 //
@@ -1242,7 +1214,7 @@ func (client *Client) FileUploadWithOptions(request *FileUploadRequest, headers 
 
 // Summary:
 //
-// 附件上传
+// Uploads a file as an attachment image. The file size is limited to 300 KB or less.
 //
 // @param request - FileUploadRequest
 //
@@ -1261,7 +1233,7 @@ func (client *Client) FileUpload(request *FileUploadRequest) (_result *FileUploa
 
 // Summary:
 //
-// 航变信息-关于订单
+// Queries flight change information by order number.
 //
 // @param request - FlightChangeOfOrderRequest
 //
@@ -1321,7 +1293,7 @@ func (client *Client) FlightChangeOfOrderWithOptions(request *FlightChangeOfOrde
 
 // Summary:
 //
-// 航变信息-关于订单
+// Queries flight change information by order number.
 //
 // @param request - FlightChangeOfOrderRequest
 //
@@ -1340,7 +1312,7 @@ func (client *Client) FlightChangeOfOrder(request *FlightChangeOfOrderRequest) (
 
 // Summary:
 //
-// # Get Token
+// Obtains a token for API calls. The token is valid for 2 hours.
 //
 // @param request - GetTokenRequest
 //
@@ -1391,7 +1363,7 @@ func (client *Client) GetTokenWithOptions(request *GetTokenRequest, headers map[
 
 // Summary:
 //
-// # Get Token
+// Obtains a token for API calls. The token is valid for 2 hours.
 //
 // @param request - GetTokenRequest
 //
@@ -1410,7 +1382,11 @@ func (client *Client) GetToken(request *GetTokenRequest) (_result *GetTokenRespo
 
 // Summary:
 //
-// 航程行李直挂
+// Queries luggage through-check information for an itinerary.
+//
+// Description:
+//
+// Queries luggage through-check information for an itinerary. Provide itinerary information as input, and the API returns whether luggage through-check is supported for the itinerary. Luggage through-check applies to transfer and stopover scenarios.
 //
 // @param tmpReq - LuggageDirectRequest
 //
@@ -1476,7 +1452,11 @@ func (client *Client) LuggageDirectWithOptions(tmpReq *LuggageDirectRequest, hea
 
 // Summary:
 //
-// 航程行李直挂
+// Queries luggage through-check information for an itinerary.
+//
+// Description:
+//
+// Queries luggage through-check information for an itinerary. Provide itinerary information as input, and the API returns whether luggage through-check is supported for the itinerary. Luggage through-check applies to transfer and stopover scenarios.
 //
 // @param request - LuggageDirectRequest
 //
@@ -1495,11 +1475,7 @@ func (client *Client) LuggageDirect(request *LuggageDirectRequest) (_result *Lug
 
 // Summary:
 //
-// # Trade-Order Details
-//
-// Description:
-//
-// query order detail
+// Queries order details.
 //
 // @param request - OrderDetailRequest
 //
@@ -1563,11 +1539,7 @@ func (client *Client) OrderDetailWithOptions(request *OrderDetailRequest, header
 
 // Summary:
 //
-// # Trade-Order Details
-//
-// Description:
-//
-// query order detail
+// Queries order details.
 //
 // @param request - OrderDetailRequest
 //
@@ -1586,11 +1558,7 @@ func (client *Client) OrderDetail(request *OrderDetailRequest) (_result *OrderDe
 
 // Summary:
 //
-// # Trade - Order List
-//
-// Description:
-//
-// query order list
+// Queries the order list.
 //
 // @param request - OrderListRequest
 //
@@ -1666,11 +1634,7 @@ func (client *Client) OrderListWithOptions(request *OrderListRequest, headers *O
 
 // Summary:
 //
-// # Trade - Order List
-//
-// Description:
-//
-// query order list
+// Queries the order list.
 //
 // @param request - OrderListRequest
 //
@@ -1689,11 +1653,7 @@ func (client *Client) OrderList(request *OrderListRequest) (_result *OrderListRe
 
 // Summary:
 //
-// # Transaction - Seat and Price Verification
-//
-// Description:
-//
-// Check is price and remaining seats of solution you selected has changed. You should enter the solution_id returned by enrich.
+// Verifies seat availability and pricing. If the price has changed, the developer can proceed with Book at the updated price. If the price has not changed, the order is placed at the original price.
 //
 // @param request - PricingRequest
 //
@@ -1753,11 +1713,7 @@ func (client *Client) PricingWithOptions(request *PricingRequest, headers *Prici
 
 // Summary:
 //
-// # Transaction - Seat and Price Verification
-//
-// Description:
-//
-// Check is price and remaining seats of solution you selected has changed. You should enter the solution_id returned by enrich.
+// Verifies seat availability and pricing. If the price has changed, the developer can proceed with Book at the updated price. If the price has not changed, the order is placed at the original price.
 //
 // @param request - PricingRequest
 //
@@ -1776,7 +1732,7 @@ func (client *Client) Pricing(request *PricingRequest) (_result *PricingResponse
 
 // Summary:
 //
-// # Ticket Refund - Application
+// Submits a refund application for an air ticket.
 //
 // @param tmpReq - RefundApplyRequest
 //
@@ -1862,7 +1818,7 @@ func (client *Client) RefundApplyWithOptions(tmpReq *RefundApplyRequest, headers
 
 // Summary:
 //
-// # Ticket Refund - Application
+// Submits a refund application for an air ticket.
 //
 // @param request - RefundApplyRequest
 //
@@ -1881,7 +1837,7 @@ func (client *Client) RefundApply(request *RefundApplyRequest) (_result *RefundA
 
 // Summary:
 //
-// # Refund - Detail
+// Retrieves the details of a refund order.
 //
 // @param request - RefundDetailRequest
 //
@@ -1941,7 +1897,7 @@ func (client *Client) RefundDetailWithOptions(request *RefundDetailRequest, head
 
 // Summary:
 //
-// # Refund - Detail
+// Retrieves the details of a refund order.
 //
 // @param request - RefundDetailRequest
 //
@@ -1960,7 +1916,7 @@ func (client *Client) RefundDetail(request *RefundDetailRequest) (_result *Refun
 
 // Summary:
 //
-// # Refund - Detail List
+// Queries the details of refund orders.
 //
 // @param request - RefundDetailListRequest
 //
@@ -2036,7 +1992,7 @@ func (client *Client) RefundDetailListWithOptions(request *RefundDetailListReque
 
 // Summary:
 //
-// # Refund - Detail List
+// Queries the details of refund orders.
 //
 // @param request - RefundDetailListRequest
 //
@@ -2055,11 +2011,7 @@ func (client *Client) RefundDetailList(request *RefundDetailListRequest) (_resul
 
 // Summary:
 //
-// # Search
-//
-// Description:
-//
-// Enter the information of departure, arrival, departure date, passenger number and cabin, return the lowest price for each flight.
+// Searches for flight quotes and returns the lowest price across multiple flights. Note that the response of this operation does not include refund and change rules, free baggage allowance, or baggage through-check rules.
 //
 // @param tmpReq - SearchRequest
 //
@@ -2149,11 +2101,7 @@ func (client *Client) SearchWithOptions(tmpReq *SearchRequest, headers *SearchHe
 
 // Summary:
 //
-// # Search
-//
-// Description:
-//
-// Enter the information of departure, arrival, departure date, passenger number and cabin, return the lowest price for each flight.
+// Searches for flight quotes and returns the lowest price across multiple flights. Note that the response of this operation does not include refund and change rules, free baggage allowance, or baggage through-check rules.
 //
 // @param request - SearchRequest
 //
@@ -2172,7 +2120,7 @@ func (client *Client) Search(request *SearchRequest) (_result *SearchResponse, _
 
 // Summary:
 //
-// 标准搜索
+// Search and quote prices, currently providing the lowest price across multiple flights. Note that this API response includes refund/change rules, free baggage allowance, and baggage through-check rules.
 //
 // @param tmpReq - StandardSearchRequest
 //
@@ -2262,7 +2210,7 @@ func (client *Client) StandardSearchWithOptions(tmpReq *StandardSearchRequest, h
 
 // Summary:
 //
-// 标准搜索
+// Search and quote prices, currently providing the lowest price across multiple flights. Note that this API response includes refund/change rules, free baggage allowance, and baggage through-check rules.
 //
 // @param request - StandardSearchRequest
 //
@@ -2281,7 +2229,7 @@ func (client *Client) StandardSearch(request *StandardSearchRequest) (_result *S
 
 // Summary:
 //
-// # Transaction - Payment and Ticket Issuance
+// Pays for and issues a ticket.
 //
 // @param request - TicketingRequest
 //
@@ -2341,7 +2289,7 @@ func (client *Client) TicketingWithOptions(request *TicketingRequest, headers *T
 
 // Summary:
 //
-// # Transaction - Payment and Ticket Issuance
+// Pays for and issues a ticket.
 //
 // @param request - TicketingRequest
 //
@@ -2360,11 +2308,11 @@ func (client *Client) Ticketing(request *TicketingRequest) (_result *TicketingRe
 
 // Summary:
 //
-// # Transaction - Pre-payment verification
+// Performs a pre-ticketing check. This operation is optional.
 //
 // Description:
 //
-// Pre-check for Ticketing, this interface is optional to use.
+// Performs a pre-ticketing check. This operation is optional.
 //
 // @param request - TicketingCheckRequest
 //
@@ -2424,11 +2372,11 @@ func (client *Client) TicketingCheckWithOptions(request *TicketingCheckRequest, 
 
 // Summary:
 //
-// # Transaction - Pre-payment verification
+// Performs a pre-ticketing check. This operation is optional.
 //
 // Description:
 //
-// Pre-check for Ticketing, this interface is optional to use.
+// Performs a pre-ticketing check. This operation is optional.
 //
 // @param request - TicketingCheckRequest
 //
@@ -2447,7 +2395,11 @@ func (client *Client) TicketingCheck(request *TicketingCheckRequest) (_result *T
 
 // Summary:
 //
-// 航程过境签
+// Queries transit visa requirements for a flight itinerary. You provide flight information, and the API returns whether a transit visa is required for the itinerary. Only transfer or stopover segments are valid input parameters (transfers or stopovers passing through a third country). The supported passenger type defaults to Chinese mainland travelers.
+//
+// Description:
+//
+// Queries transit visa requirements for a flight itinerary. You provide flight information, and the API returns whether a transit visa is required for the itinerary. Only transfer or stopover segments are valid input parameters (transfers or stopovers passing through a third country). The supported passenger type defaults to Chinese mainland travelers.
 //
 // @param tmpReq - TransitVisaRequest
 //
@@ -2513,7 +2465,11 @@ func (client *Client) TransitVisaWithOptions(tmpReq *TransitVisaRequest, headers
 
 // Summary:
 //
-// 航程过境签
+// Queries transit visa requirements for a flight itinerary. You provide flight information, and the API returns whether a transit visa is required for the itinerary. Only transfer or stopover segments are valid input parameters (transfers or stopovers passing through a third country). The supported passenger type defaults to Chinese mainland travelers.
+//
+// Description:
+//
+// Queries transit visa requirements for a flight itinerary. You provide flight information, and the API returns whether a transit visa is required for the itinerary. Only transfer or stopover segments are valid input parameters (transfers or stopovers passing through a third country). The supported passenger type defaults to Chinese mainland travelers.
 //
 // @param request - TransitVisaRequest
 //

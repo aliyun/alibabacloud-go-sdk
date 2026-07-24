@@ -16,13 +16,13 @@ type iOrderDetailRequest interface {
 }
 
 type OrderDetailRequest struct {
-	// order number created by book
+	// The order number.
 	//
 	// example:
 	//
 	// 4966***617111
 	OrderNum *int64 `json:"order_num,omitempty" xml:"order_num,omitempty"`
-	// external order number(customized by buyer when book)
+	// The external order number.
 	//
 	// example:
 	//

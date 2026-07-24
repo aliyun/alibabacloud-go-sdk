@@ -26,39 +26,39 @@ type iTicketingResponseBody interface {
 }
 
 type TicketingResponseBody struct {
-	// request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 51593418-8C73-5E47-8BA8-3F1D4A00CC0B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// data
+	// The data returned for a successful request.
 	Data *TicketingResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// error code
+	// The business error code.
 	//
 	// example:
 	//
 	// null
 	ErrorCode *string `json:"error_code,omitempty" xml:"error_code,omitempty"`
-	// error data
+	// The data returned for a failed request.
 	//
 	// example:
 	//
 	// null
 	ErrorData interface{} `json:"error_data,omitempty" xml:"error_data,omitempty"`
-	// error message
+	// The error message.
 	//
 	// example:
 	//
 	// null
 	ErrorMsg *string `json:"error_msg,omitempty" xml:"error_msg,omitempty"`
-	// http reqeust has been processed successfully，status code is 200
+	// The HTTP status code. The value is always 200 for successful requests.
 	//
 	// example:
 	//
 	// 200
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// true represents success, false represents failure
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -147,7 +147,7 @@ func (s *TicketingResponseBody) Validate() error {
 }
 
 type TicketingResponseBodyData struct {
-	// order number
+	// The order number.
 	//
 	// example:
 	//
@@ -157,7 +157,7 @@ type TicketingResponseBodyData struct {
 	//
 	// 1757404878000
 	PayTime *int64 `json:"pay_time,omitempty" xml:"pay_time,omitempty"`
-	// transaction serial number
+	// The transaction number.
 	//
 	// example:
 	//

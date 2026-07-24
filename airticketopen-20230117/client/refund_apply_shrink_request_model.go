@@ -20,7 +20,7 @@ type iRefundApplyShrinkRequest interface {
 }
 
 type RefundApplyShrinkRequest struct {
-	// Order number
+	// The order number.
 	//
 	// This parameter is required.
 	//
@@ -28,17 +28,15 @@ type RefundApplyShrinkRequest struct {
 	//
 	// 4966***617111
 	OrderNum *int64 `json:"order_num,omitempty" xml:"order_num,omitempty"`
-	// Itinerary for which a refund is being requested
+	// The journeys for the refund application.
 	//
 	// This parameter is required.
 	RefundJourneysShrink *string `json:"refund_journeys,omitempty" xml:"refund_journeys,omitempty"`
-	// List of passengers applying for a refund
+	// The list of passengers for the refund application.
 	//
 	// This parameter is required.
 	RefundPassengerListShrink *string `json:"refund_passenger_list,omitempty" xml:"refund_passenger_list,omitempty"`
-	// Refund type - involuntary or voluntary.
-	//
-	// attachments are required for involuntary refund application.
+	// The refund type. Attachments are required for involuntary refund applications.
 	//
 	// This parameter is required.
 	RefundTypeShrink *string `json:"refund_type,omitempty" xml:"refund_type,omitempty"`

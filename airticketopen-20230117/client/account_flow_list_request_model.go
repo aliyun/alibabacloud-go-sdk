@@ -20,20 +20,28 @@ type iAccountFlowListRequest interface {
 }
 
 type AccountFlowListRequest struct {
+	// The number of days to search. Maximum value: 30. Valid values: 0 to 30.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	DayNum *int32 `json:"day_num,omitempty" xml:"day_num,omitempty"`
+	// The page index.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"page_index,omitempty" xml:"page_index,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// The start search timestamp, effective to the day. Specify a 13-digit UTC timestamp.
+	//
 	// This parameter is required.
 	//
 	// example:

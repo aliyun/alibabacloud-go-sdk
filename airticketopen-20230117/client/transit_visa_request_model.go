@@ -14,6 +14,7 @@ type iTransitVisaRequest interface {
 }
 
 type TransitVisaRequest struct {
+	// The list of flight segments that constitute an itinerary. Maximum size: 2.
 	FlightSegmentParamList []*TransitVisaRequestFlightSegmentParamList `json:"flight_segment_param_list,omitempty" xml:"flight_segment_param_list,omitempty" type:"Repeated"`
 }
 
@@ -48,64 +49,88 @@ func (s *TransitVisaRequest) Validate() error {
 }
 
 type TransitVisaRequestFlightSegmentParamList struct {
+	// The three-letter IATA code of the arrival airport.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// SIN
 	ArrivalAirport *string `json:"arrival_airport,omitempty" xml:"arrival_airport,omitempty"`
+	// The arrival terminal.
+	//
 	// example:
 	//
 	// T1
 	ArrivalTerminal *string `json:"arrival_terminal,omitempty" xml:"arrival_terminal,omitempty"`
+	// The arrival time. A 13-digit UNIX timestamp.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1705285430445
 	ArrivalTime *int64 `json:"arrival_time,omitempty" xml:"arrival_time,omitempty"`
+	// Indicates whether the flight is a codeshare flight.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	CodeShare *bool `json:"code_share,omitempty" xml:"code_share,omitempty"`
+	// The three-letter IATA code of the departure airport.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// HGH
 	DepartureAirport *string `json:"departure_airport,omitempty" xml:"departure_airport,omitempty"`
+	// The departure terminal.
+	//
 	// example:
 	//
 	// T1
 	DepartureTerminal *string `json:"departure_terminal,omitempty" xml:"departure_terminal,omitempty"`
+	// The departure time. A 13-digit UNIX timestamp.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1705285430445
 	DepartureTime *int64 `json:"departure_time,omitempty" xml:"departure_time,omitempty"`
+	// The marketing airline.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// CZ
 	MarketingAirline *string `json:"marketing_airline,omitempty" xml:"marketing_airline,omitempty"`
+	// The flight number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// CZ616
 	MarketingFlightNo *string `json:"marketing_flight_no,omitempty" xml:"marketing_flight_no,omitempty"`
+	// The operating airline.
+	//
 	// example:
 	//
 	// CZ
 	OperatingAirline *string `json:"operating_airline,omitempty" xml:"operating_airline,omitempty"`
+	// The three-letter IATA codes of stopover cities.
+	//
 	// example:
 	//
 	// SEL,HKG
 	StopCityList *string `json:"stop_city_list,omitempty" xml:"stop_city_list,omitempty"`
+	// The ticketing airline.
+	//
 	// example:
 	//
 	// CZ

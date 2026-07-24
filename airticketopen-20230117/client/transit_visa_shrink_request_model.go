@@ -14,6 +14,7 @@ type iTransitVisaShrinkRequest interface {
 }
 
 type TransitVisaShrinkRequest struct {
+	// The list of flight segments that constitute an itinerary. Maximum size: 2.
 	FlightSegmentParamListShrink *string `json:"flight_segment_param_list,omitempty" xml:"flight_segment_param_list,omitempty"`
 }
 

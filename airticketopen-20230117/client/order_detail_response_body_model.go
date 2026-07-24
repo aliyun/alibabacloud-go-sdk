@@ -26,39 +26,39 @@ type iOrderDetailResponseBody interface {
 }
 
 type OrderDetailResponseBody struct {
-	// request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 51593418-8C73-5E47-8BA8-3F1D4A00CC0B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// data
+	// The data returned for a successful request.
 	Data *OrderDetailResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// error code
+	// The business error code.
 	//
 	// example:
 	//
 	// null
 	ErrorCode *string `json:"error_code,omitempty" xml:"error_code,omitempty"`
-	// error data
+	// The data returned with the error.
 	//
 	// example:
 	//
 	// null
 	ErrorData interface{} `json:"error_data,omitempty" xml:"error_data,omitempty"`
-	// error message
+	// The error message.
 	//
 	// example:
 	//
 	// null
 	ErrorMsg *string `json:"error_msg,omitempty" xml:"error_msg,omitempty"`
-	// http request has been processed successfully，status code is 200
+	// The HTTP status code. The value is always 200 for successful requests.
 	//
 	// example:
 	//
 	// 200
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// true represents success, false represents failure
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -147,103 +147,103 @@ func (s *OrderDetailResponseBody) Validate() error {
 }
 
 type OrderDetailResponseBodyData struct {
-	// ancillary product fulfillment details
+	// The ancillary product fulfillment details.
 	AncillaryItemDetailList []*OrderDetailResponseBodyDataAncillaryItemDetailList `json:"ancillary_item_detail_list,omitempty" xml:"ancillary_item_detail_list,omitempty" type:"Repeated"`
-	// baggage rule mapping, key is passenger type, value is baggage allowance details
+	// The mapping of passenger types to baggage rules.
 	BaggageAllowanceMap map[string]*DataBaggageAllowanceMapValue `json:"baggage_allowance_map,omitempty" xml:"baggage_allowance_map,omitempty"`
-	// book time(timestamp)
+	// The booking time (order creation time). The value is a 13-digit timestamp.
 	//
 	// example:
 	//
 	// 1677210784000
 	BookTime *int64 `json:"book_time,omitempty" xml:"book_time,omitempty"`
-	// flight product fulfillment details
+	// The flight ticket fulfillment details.
 	FlightItemDetailList []*OrderDetailResponseBodyDataFlightItemDetailList `json:"flight_item_detail_list,omitempty" xml:"flight_item_detail_list,omitempty" type:"Repeated"`
-	// order number created by book
+	// The order number.
 	//
 	// example:
 	//
 	// 4966***617111
 	OrderNum *int64 `json:"order_num,omitempty" xml:"order_num,omitempty"`
-	// order status
+	// The order status. Valid values:
 	//
-	// 1: order creation in process;
+	// - 1: Booking in progress.
 	//
-	// 2: order creation successful;
+	// - 2: Booking succeeded.
 	//
-	// 3: order paid;
+	// - 3: Order paid.
 	//
-	// 4: order successful;
+	// - 4: Order succeeded.
 	//
-	// 5: order closed
+	// - 5: Order closed.
 	//
 	// example:
 	//
 	// 4
 	OrderStatus *int32 `json:"order_status,omitempty" xml:"order_status,omitempty"`
-	// external order number(customized by buyer when book)
+	// The external order number.
 	//
 	// example:
 	//
 	// x091-2023-0220-j-0001
 	OutOrderNum *string `json:"out_order_num,omitempty" xml:"out_order_num,omitempty"`
-	// the information about all passenger of current order
+	// The passenger list.
 	PassengerList []*OrderDetailResponseBodyDataPassengerList `json:"passenger_list,omitempty" xml:"passenger_list,omitempty" type:"Repeated"`
-	// payment status
+	// The payment status. Valid values:
 	//
-	// 1: payment in process;
+	// - 0: Initialized.
 	//
-	// 2: deduction successful;
+	// - 1: Created.
 	//
-	// 3: paid to the seller;
+	// - 2: Payment succeeded.
 	//
-	// 4: transaction closed
+	// - 4: Transaction closed.
 	//
 	// example:
 	//
 	// 2
 	PayStatus *int32 `json:"pay_status,omitempty" xml:"pay_status,omitempty"`
-	// pay time(timestamp)
+	// The payment time. The value is a 13-digit timestamp.
 	//
 	// example:
 	//
 	// 1677210788000
 	PayTime *int64 `json:"pay_time,omitempty" xml:"pay_time,omitempty"`
-	// discount amount
+	// The discount amount. Unit: CNY.
 	//
 	// example:
 	//
 	// 10
 	PromotionPrice *float64 `json:"promotion_price,omitempty" xml:"promotion_price,omitempty"`
-	// actual payment amount
+	// The actual payment amount. Unit: CNY.
 	//
 	// example:
 	//
 	// 3000
 	RealPayPrice *float64 `json:"real_pay_price,omitempty" xml:"real_pay_price,omitempty"`
-	// change and refund policy mapping, key is passenger type, value is change and refund policy details
+	// The mapping of passenger types to refund and change rules.
 	RefundChangeRuleMap map[string]*DataRefundChangeRuleMapValue `json:"refund_change_rule_map,omitempty" xml:"refund_change_rule_map,omitempty"`
-	// buyer nickname
+	// The buyer nickname.
 	//
 	// example:
 	//
 	// nick
 	SessionNick *string `json:"session_nick,omitempty" xml:"session_nick,omitempty"`
-	// the solution buyer booked
+	// The flight information.
 	Solution *OrderDetailResponseBodyDataSolution `json:"solution,omitempty" xml:"solution,omitempty" type:"Struct"`
-	// order success time(timestamp)
+	// The ticketing time. The value is a 13-digit timestamp. This parameter has a value only after ticketing is complete.
 	//
 	// example:
 	//
 	// 1677210786000
 	SucceedTime *int64 `json:"succeed_time,omitempty" xml:"succeed_time,omitempty"`
-	// total price of current order
+	// The total order price. Unit: CNY.
 	//
 	// example:
 	//
 	// 3000
 	TotalPrice *float64 `json:"total_price,omitempty" xml:"total_price,omitempty"`
-	// transaction number
+	// The transaction number.
 	//
 	// example:
 	//
@@ -458,11 +458,11 @@ func (s *OrderDetailResponseBodyData) Validate() error {
 }
 
 type OrderDetailResponseBodyDataAncillaryItemDetailList struct {
-	// the ancillary buyer booked
+	// The ancillary product details.
 	Ancillary *OrderDetailResponseBodyDataAncillaryItemDetailListAncillary `json:"ancillary,omitempty" xml:"ancillary,omitempty" type:"Struct"`
-	// passenger
+	// The passenger information.
 	Passenger *OrderDetailResponseBodyDataAncillaryItemDetailListPassenger `json:"passenger,omitempty" xml:"passenger,omitempty" type:"Struct"`
-	// segment ID list, these segments share the same ancillary
+	// The segment IDs to which the ancillary product applies.
 	SegmentIdList []*string `json:"segment_id_list,omitempty" xml:"segment_id_list,omitempty" type:"Repeated"`
 }
 
@@ -516,19 +516,19 @@ func (s *OrderDetailResponseBodyDataAncillaryItemDetailList) Validate() error {
 }
 
 type OrderDetailResponseBodyDataAncillaryItemDetailListAncillary struct {
-	// ancillay_id
+	// The ancillary product ID.
 	//
 	// example:
 	//
 	// MDY2NTAxLCJleHAiOjE2NxNzM3MDEsIm5ix
 	AncillaryId *string `json:"ancillary_id,omitempty" xml:"ancillary_id,omitempty"`
-	// ancillary product type currently supports 4: paid luggage
+	// The ancillary product type. Currently supported value: 4 (paid baggage).
 	//
 	// example:
 	//
 	// 4
 	AncillaryType *int32 `json:"ancillary_type,omitempty" xml:"ancillary_type,omitempty"`
-	// Ancillary Service Details
+	// The baggage ancillary details.
 	BaggageAncillary *OrderDetailResponseBodyDataAncillaryItemDetailListAncillaryBaggageAncillary `json:"baggage_ancillary,omitempty" xml:"baggage_ancillary,omitempty" type:"Struct"`
 }
 
@@ -577,27 +577,27 @@ func (s *OrderDetailResponseBodyDataAncillaryItemDetailListAncillary) Validate()
 }
 
 type OrderDetailResponseBodyDataAncillaryItemDetailListAncillaryBaggageAncillary struct {
-	// Number of luggage pieces. Values can be: 3, 2, 1, 0, -2. -2 indicates weight-based calculation.
+	// The number of baggage pieces. Valid values: 3, 2, 1, 0, and -2. A value of -2 indicates weight-based calculation.
 	//
 	// example:
 	//
 	// 0
 	BaggageAmount *int32 `json:"baggage_amount,omitempty" xml:"baggage_amount,omitempty"`
-	// Luggage weight, 0-50. When isAllWeght=true, it indicates the total weight of all items.
+	// The baggage weight, ranging from 0 to 50. When isAllWeight is set to true, this value represents the total weight of all pieces.
 	//
 	// example:
 	//
 	// 0
 	BaggageWeight *int32 `json:"baggage_weight,omitempty" xml:"baggage_weight,omitempty"`
-	// Unit of luggage weight
+	// The baggage weight unit.
 	//
 	// example:
 	//
 	// KG
 	BaggageWeightUnit *string `json:"baggage_weight_unit,omitempty" xml:"baggage_weight_unit,omitempty"`
-	// whether all luggage weight
+	// Indicates whether the weight represents the total weight of all baggage pieces.
 	IsAllWeight *bool `json:"is_all_weight,omitempty" xml:"is_all_weight,omitempty"`
-	// Total Price
+	// The total price.
 	//
 	// example:
 	//
@@ -663,51 +663,61 @@ func (s *OrderDetailResponseBodyDataAncillaryItemDetailListAncillaryBaggageAncil
 }
 
 type OrderDetailResponseBodyDataAncillaryItemDetailListPassenger struct {
-	// date of birth (yyyyMMdd)
+	// The date of birth in yyyyMMdd format.
 	//
 	// example:
 	//
 	// 20020301
 	Birthday *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
-	// travel document
+	// The credential information.
 	Credential *OrderDetailResponseBodyDataAncillaryItemDetailListPassengerCredential `json:"credential,omitempty" xml:"credential,omitempty" type:"Struct"`
-	// first name
+	// The first name.
 	//
 	// example:
 	//
 	// SAN
 	FirstName *string `json:"first_name,omitempty" xml:"first_name,omitempty"`
-	// gender 0: male; 1: female
+	// The gender. Valid values:
+	//
+	// - 0: MALE.
+	//
+	// - 1: FEMALE.
 	//
 	// example:
 	//
 	// 0
 	Gender *int32 `json:"gender,omitempty" xml:"gender,omitempty"`
-	// last name
+	// The last name.
 	//
 	// example:
 	//
 	// ZHANG
 	LastName *string `json:"last_name,omitempty" xml:"last_name,omitempty"`
-	// country code for mobile phone number
+	// The country code of the mobile phone number.
 	//
 	// example:
 	//
 	// 86
 	MobileCountryCode *string `json:"mobile_country_code,omitempty" xml:"mobile_country_code,omitempty"`
-	// mobile phone number
+	// The mobile phone number.
 	//
 	// example:
 	//
 	// 183******96
 	MobilePhoneNumber *string `json:"mobile_phone_number,omitempty" xml:"mobile_phone_number,omitempty"`
-	// nationality
+	// The two-letter nationality code.
 	//
 	// example:
 	//
 	// CN
 	Nationality *string `json:"nationality,omitempty" xml:"nationality,omitempty"`
-	// passenger type 0: adult; 1: child; 8: infant
+	// The passenger type. Valid values:
+	//
+	// - 0: adult.
+	//
+	// - 1: child.
+	//
+	// - 8: infant.
 	//
 	// example:
 	//
@@ -814,25 +824,39 @@ func (s *OrderDetailResponseBodyDataAncillaryItemDetailListPassenger) Validate()
 }
 
 type OrderDetailResponseBodyDataAncillaryItemDetailListPassengerCredential struct {
-	// place of issue, two-letter code
+	// The place of issuance, represented as a two-letter code.
 	//
 	// example:
 	//
 	// CN
 	CertIssuePlace *string `json:"cert_issue_place,omitempty" xml:"cert_issue_place,omitempty"`
-	// travel document number
+	// The credential number.
 	//
 	// example:
 	//
 	// E1***5674
 	CredentialNum *string `json:"credential_num,omitempty" xml:"credential_num,omitempty"`
-	// travel document type , only support "1"(1 means passport) currently.
+	// The credential type. Valid values:
+	//
+	// - 0: ID card.
+	//
+	// - 1: passport.
+	//
+	// - 4: Home Return Permit.
+	//
+	// - 5: Mainland Travel Permit for Taiwan Residents.
+	//
+	// - 6: Exit-Entry Permit for Hong Kong and Macao Residents.
+	//
+	// - 12: Taiwan Travel Permit.
+	//
+	// - 19: no credential.
 	//
 	// example:
 	//
 	// 1
 	CredentialType *int32 `json:"credential_type,omitempty" xml:"credential_type,omitempty"`
-	// expiration date
+	// The credential expiration date.
 	//
 	// example:
 	//
@@ -889,23 +913,23 @@ func (s *OrderDetailResponseBodyDataAncillaryItemDetailListPassengerCredential) 
 }
 
 type OrderDetailResponseBodyDataFlightItemDetailList struct {
-	// b PNR(airline booking code) list
+	// The list of bPnr values.
 	BPnrList []*string `json:"b_pnr_list,omitempty" xml:"b_pnr_list,omitempty" type:"Repeated"`
-	// c PNR(airline booking code) list
+	// The list of cPnr values.
 	CPnrList []*string `json:"c_pnr_list,omitempty" xml:"c_pnr_list,omitempty" type:"Repeated"`
-	// flight price information for current passenger
+	// The passenger price information.
 	FlightPrice *OrderDetailResponseBodyDataFlightItemDetailListFlightPrice `json:"flight_price,omitempty" xml:"flight_price,omitempty" type:"Struct"`
-	// RBD information in flight segment dimension
+	// The list of segment-cabin information.
 	FlightSegmentCabinRelation []*OrderDetailResponseBodyDataFlightItemDetailListFlightSegmentCabinRelation `json:"flight_segment_cabin_relation,omitempty" xml:"flight_segment_cabin_relation,omitempty" type:"Repeated"`
-	// passenger
+	// The passenger information.
 	Passenger *OrderDetailResponseBodyDataFlightItemDetailListPassenger `json:"passenger,omitempty" xml:"passenger,omitempty" type:"Struct"`
-	// ticketing airline
+	// The ticketing airline. Multiple ticketing airlines may be concatenated.
 	//
 	// example:
 	//
 	// HO
 	TicketAirLine *string `json:"ticket_air_line,omitempty" xml:"ticket_air_line,omitempty"`
-	// ticket number list
+	// The list of ticket numbers.
 	TicketNos []*string `json:"ticket_nos,omitempty" xml:"ticket_nos,omitempty" type:"Repeated"`
 }
 
@@ -1004,13 +1028,13 @@ func (s *OrderDetailResponseBodyDataFlightItemDetailList) Validate() error {
 }
 
 type OrderDetailResponseBodyDataFlightItemDetailListFlightPrice struct {
-	// selling price
+	// The selling price. Unit: CNY.
 	//
 	// example:
 	//
 	// 300
 	SellPrice *float64 `json:"sell_price,omitempty" xml:"sell_price,omitempty"`
-	// tax
+	// The tax.
 	//
 	// example:
 	//
@@ -1049,31 +1073,31 @@ func (s *OrderDetailResponseBodyDataFlightItemDetailListFlightPrice) Validate() 
 }
 
 type OrderDetailResponseBodyDataFlightItemDetailListFlightSegmentCabinRelation struct {
-	// RBD
+	// The cabin.
 	//
 	// example:
 	//
 	// V
 	Cabin *string `json:"cabin,omitempty" xml:"cabin,omitempty"`
-	// cabin class
+	// The cabin class.
 	//
 	// example:
 	//
 	// Y
 	CabinClass *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
-	// cabin class description
+	// The cabin class description.
 	//
 	// example:
 	//
 	// economy class
 	CabinClassName *string `json:"cabin_class_name,omitempty" xml:"cabin_class_name,omitempty"`
-	// availability
+	// The number of available tickets.
 	//
 	// example:
 	//
 	// A
 	CabinQuantity *string `json:"cabin_quantity,omitempty" xml:"cabin_quantity,omitempty"`
-	// segment ID format: flight no.+departure airport[IATA airport code]+arrival airport[IATA airport code]+departure time(yyMMddHHmm)
+	// The segment ID.
 	//
 	// example:
 	//
@@ -1139,51 +1163,61 @@ func (s *OrderDetailResponseBodyDataFlightItemDetailListFlightSegmentCabinRelati
 }
 
 type OrderDetailResponseBodyDataFlightItemDetailListPassenger struct {
-	// date of birth (yyyyMMdd)
+	// The date of birth in yyyyMMdd format.
 	//
 	// example:
 	//
 	// 20020301
 	Birthday *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
-	// travel document
+	// The credential information.
 	Credential *OrderDetailResponseBodyDataFlightItemDetailListPassengerCredential `json:"credential,omitempty" xml:"credential,omitempty" type:"Struct"`
-	// first name
+	// The first name.
 	//
 	// example:
 	//
 	// SAN
 	FirstName *string `json:"first_name,omitempty" xml:"first_name,omitempty"`
-	// gender 0: MALE; 1: FEMALE
+	// The gender. Valid values:
+	//
+	// - 0: MALE.
+	//
+	// - 1: FEMALE.
 	//
 	// example:
 	//
 	// 0
 	Gender *int32 `json:"gender,omitempty" xml:"gender,omitempty"`
-	// last name
+	// The last name.
 	//
 	// example:
 	//
 	// ZHANG
 	LastName *string `json:"last_name,omitempty" xml:"last_name,omitempty"`
-	// mobile country code
+	// The country code of the mobile phone number.
 	//
 	// example:
 	//
 	// 86
 	MobileCountryCode *string `json:"mobile_country_code,omitempty" xml:"mobile_country_code,omitempty"`
-	// mobile phone number
+	// The mobile phone number.
 	//
 	// example:
 	//
 	// 183******96
 	MobilePhoneNumber *string `json:"mobile_phone_number,omitempty" xml:"mobile_phone_number,omitempty"`
-	// nationality (two-letter code)
+	// The two-letter nationality code.
 	//
 	// example:
 	//
 	// CN
 	Nationality *string `json:"nationality,omitempty" xml:"nationality,omitempty"`
-	// passenger type 0: adult; 1: child; 8: infant
+	// The passenger type. Valid values:
+	//
+	// - 0: adult.
+	//
+	// - 1: child.
+	//
+	// - 8: infant.
 	//
 	// example:
 	//
@@ -1290,25 +1324,39 @@ func (s *OrderDetailResponseBodyDataFlightItemDetailListPassenger) Validate() er
 }
 
 type OrderDetailResponseBodyDataFlightItemDetailListPassengerCredential struct {
-	// place of issue, two-letter code
+	// The place of issuance, represented as a two-letter code.
 	//
 	// example:
 	//
 	// CN
 	CertIssuePlace *string `json:"cert_issue_place,omitempty" xml:"cert_issue_place,omitempty"`
-	// travel document number
+	// The credential number.
 	//
 	// example:
 	//
 	// E1***5674
 	CredentialNum *string `json:"credential_num,omitempty" xml:"credential_num,omitempty"`
-	// travel document type , only support "1"(1 means passport) currently.
+	// The credential type. Valid values:
+	//
+	// - 0: ID card.
+	//
+	// - 1: passport.
+	//
+	// - 4: Home Return Permit.
+	//
+	// - 5: Mainland Travel Permit for Taiwan Residents.
+	//
+	// - 6: Exit-Entry Permit for Hong Kong and Macao Residents.
+	//
+	// - 12: Taiwan Travel Permit.
+	//
+	// - 19: no credential.
 	//
 	// example:
 	//
 	// 1
 	CredentialType *int32 `json:"credential_type,omitempty" xml:"credential_type,omitempty"`
-	// expiration date
+	// The credential expiration date.
 	//
 	// example:
 	//
@@ -1365,51 +1413,61 @@ func (s *OrderDetailResponseBodyDataFlightItemDetailListPassengerCredential) Val
 }
 
 type OrderDetailResponseBodyDataPassengerList struct {
-	// date of birth (yyyyMMdd)
+	// The date of birth in yyyyMMdd format.
 	//
 	// example:
 	//
 	// 20020301
 	Birthday *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
-	// travel document
+	// The credential information.
 	Credential *OrderDetailResponseBodyDataPassengerListCredential `json:"credential,omitempty" xml:"credential,omitempty" type:"Struct"`
-	// first name
+	// The first name.
 	//
 	// example:
 	//
 	// SAN
 	FirstName *string `json:"first_name,omitempty" xml:"first_name,omitempty"`
-	// gender 0: MALE; 1: FEMALE
+	// The gender. Valid values:
+	//
+	// - 0: MALE.
+	//
+	// - 1: FEMALE.
 	//
 	// example:
 	//
 	// 0
 	Gender *int32 `json:"gender,omitempty" xml:"gender,omitempty"`
-	// last name
+	// The last name.
 	//
 	// example:
 	//
 	// ZHANG
 	LastName *string `json:"last_name,omitempty" xml:"last_name,omitempty"`
-	// mobile country code
+	// The country code of the mobile phone number.
 	//
 	// example:
 	//
 	// 86
 	MobileCountryCode *string `json:"mobile_country_code,omitempty" xml:"mobile_country_code,omitempty"`
-	// mobile phone number
+	// The mobile phone number.
 	//
 	// example:
 	//
 	// 183******96
 	MobilePhoneNumber *string `json:"mobile_phone_number,omitempty" xml:"mobile_phone_number,omitempty"`
-	// nationality (two-letter code)
+	// The two-letter nationality code.
 	//
 	// example:
 	//
 	// CN
 	Nationality *string `json:"nationality,omitempty" xml:"nationality,omitempty"`
-	// passenger type 0: adult; 1: child; 8: infant
+	// The passenger type. Valid values:
+	//
+	// - 0: adult.
+	//
+	// - 1: child.
+	//
+	// - 8: infant.
 	//
 	// example:
 	//
@@ -1516,25 +1574,39 @@ func (s *OrderDetailResponseBodyDataPassengerList) Validate() error {
 }
 
 type OrderDetailResponseBodyDataPassengerListCredential struct {
-	// place of issue, two-letter code
+	// The place of issuance, represented as a two-letter code.
 	//
 	// example:
 	//
 	// CN
 	CertIssuePlace *string `json:"cert_issue_place,omitempty" xml:"cert_issue_place,omitempty"`
-	// travel document number
+	// The credential number.
 	//
 	// example:
 	//
 	// E1***5674
 	CredentialNum *string `json:"credential_num,omitempty" xml:"credential_num,omitempty"`
-	// travel document type , only support "1"(1 means passport) currently.
+	// The credential type. Valid values:
+	//
+	// - 0: ID card.
+	//
+	// - 1: passport.
+	//
+	// - 4: Home Return Permit.
+	//
+	// - 5: Mainland Travel Permit for Taiwan Residents.
+	//
+	// - 6: Exit-Entry Permit for Hong Kong and Macao Residents.
+	//
+	// - 12: Taiwan Travel Permit.
+	//
+	// - 19: no credential.
 	//
 	// example:
 	//
 	// 1
 	CredentialType *int32 `json:"credential_type,omitempty" xml:"credential_type,omitempty"`
-	// expiration date
+	// The credential expiration date.
 	//
 	// example:
 	//
@@ -1591,52 +1663,51 @@ func (s *OrderDetailResponseBodyDataPassengerListCredential) Validate() error {
 }
 
 type OrderDetailResponseBodyDataSolution struct {
-	// adult fare
+	// The unit price for an adult.
 	//
 	// example:
 	//
 	// 300
 	AdultPrice *float64 `json:"adult_price,omitempty" xml:"adult_price,omitempty"`
-	// adult tax
+	// The tax for an adult.
 	//
 	// example:
 	//
 	// 30
 	AdultTax *float64 `json:"adult_tax,omitempty" xml:"adult_tax,omitempty"`
-	// child fare
+	// The unit price for a child.
 	//
 	// example:
 	//
 	// 200
 	ChildPrice *float64 `json:"child_price,omitempty" xml:"child_price,omitempty"`
-	// child tax
+	// The tax for a child.
 	//
 	// example:
 	//
 	// 20
 	ChildTax *float64 `json:"child_tax,omitempty" xml:"child_tax,omitempty"`
-	// infant fare
+	// The unit price for an infant.
 	//
 	// example:
 	//
 	// 100
 	InfantPrice *float64 `json:"infant_price,omitempty" xml:"infant_price,omitempty"`
-	// infant tax
+	// The tax for an infant.
 	//
 	// example:
 	//
 	// 10
 	InfantTax *float64 `json:"infant_tax,omitempty" xml:"infant_tax,omitempty"`
-	// journey list
+	// The journey list.
 	JourneyList []*OrderDetailResponseBodyDataSolutionJourneyList `json:"journey_list,omitempty" xml:"journey_list,omitempty" type:"Repeated"`
-	// through check-in baggage policy
+	// The baggage through-check rules.
 	SegmentBaggageCheckInInfoList []*OrderDetailResponseBodyDataSolutionSegmentBaggageCheckInInfoList `json:"segment_baggage_check_in_info_list,omitempty" xml:"segment_baggage_check_in_info_list,omitempty" type:"Repeated"`
-	// baggage rule list
+	// The complimentary baggage rules.
 	SegmentBaggageMappingList []*OrderDetailResponseBodyDataSolutionSegmentBaggageMappingList `json:"segment_baggage_mapping_list,omitempty" xml:"segment_baggage_mapping_list,omitempty" type:"Repeated"`
-	// change and refund policy
+	// The refund and change rules.
 	SegmentRefundChangeRuleMappingList []*OrderDetailResponseBodyDataSolutionSegmentRefundChangeRuleMappingList `json:"segment_refund_change_rule_mapping_list,omitempty" xml:"segment_refund_change_rule_mapping_list,omitempty" type:"Repeated"`
-	// Quotation Attributes
-	SolutionAttribute *OrderDetailResponseBodyDataSolutionSolutionAttribute `json:"solution_attribute,omitempty" xml:"solution_attribute,omitempty" type:"Struct"`
+	SolutionAttribute                  *OrderDetailResponseBodyDataSolutionSolutionAttribute                    `json:"solution_attribute,omitempty" xml:"solution_attribute,omitempty" type:"Struct"`
 	// solution_id
 	//
 	// example:
@@ -1807,9 +1878,9 @@ func (s *OrderDetailResponseBodyDataSolution) Validate() error {
 }
 
 type OrderDetailResponseBodyDataSolutionJourneyList struct {
-	// segment list
+	// The segment information.
 	SegmentList []*OrderDetailResponseBodyDataSolutionJourneyListSegmentList `json:"segment_list,omitempty" xml:"segment_list,omitempty" type:"Repeated"`
-	// number of transfers
+	// The number of transfers.
 	//
 	// example:
 	//
@@ -1857,133 +1928,133 @@ func (s *OrderDetailResponseBodyDataSolutionJourneyList) Validate() error {
 }
 
 type OrderDetailResponseBodyDataSolutionJourneyListSegmentList struct {
-	// arrival airport code (capitalized)
+	// The three-letter IATA code of the arrival airport (uppercase).
 	//
 	// example:
 	//
 	// MFM
 	ArrivalAirport *string `json:"arrival_airport,omitempty" xml:"arrival_airport,omitempty"`
-	// arrival city code (capitalized)
+	// The three-letter IATA code of the arrival city (uppercase).
 	//
 	// example:
 	//
 	// MFM
 	ArrivalCity *string `json:"arrival_city,omitempty" xml:"arrival_city,omitempty"`
-	// arrival terminal
+	// The arrival terminal.
 	//
 	// example:
 	//
 	// T1
 	ArrivalTerminal *string `json:"arrival_terminal,omitempty" xml:"arrival_terminal,omitempty"`
-	// arrival time in string format (yyyy-MM-dd HH:mm:ss)
+	// The arrival date and time in string format (yyyy-MM-dd HH:mm:ss).
 	//
 	// example:
 	//
 	// 2023-03-10 10:40:00
 	ArrivalTime *string `json:"arrival_time,omitempty" xml:"arrival_time,omitempty"`
-	// availability
+	// The number of remaining seats.
 	//
 	// example:
 	//
 	// 7
 	Availability *string `json:"availability,omitempty" xml:"availability,omitempty"`
-	// RBD
+	// The cabin.
 	//
 	// example:
 	//
 	// V
 	Cabin *string `json:"cabin,omitempty" xml:"cabin,omitempty"`
-	// cabin class
+	// The cabin class.
 	//
 	// example:
 	//
 	// Y
 	CabinClass *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
-	// code share or not
+	// Indicates whether the flight is a codeshare flight.
 	//
 	// example:
 	//
 	// false
 	CodeShare *bool `json:"code_share,omitempty" xml:"code_share,omitempty"`
-	// departure airport code (capitalized)
+	// The three-letter IATA code of the departure airport (uppercase).
 	//
 	// example:
 	//
 	// PVG
 	DepartureAirport *string `json:"departure_airport,omitempty" xml:"departure_airport,omitempty"`
-	// departure city code (capitalized)
+	// The three-letter IATA code of the departure city (uppercase).
 	//
 	// example:
 	//
 	// SHA
 	DepartureCity *string `json:"departure_city,omitempty" xml:"departure_city,omitempty"`
-	// departure terminal
+	// The departure terminal.
 	//
 	// example:
 	//
 	// T2
 	DepartureTerminal *string `json:"departure_terminal,omitempty" xml:"departure_terminal,omitempty"`
-	// departure time in string format (yyyy-MM-dd HH:mm:ss)
+	// The departure date and time in string format (yyyy-MM-dd HH:mm:ss).
 	//
 	// example:
 	//
 	// 2023-03-10 07:55:00
 	DepartureTime *string `json:"departure_time,omitempty" xml:"departure_time,omitempty"`
-	// equipment type
+	// The aircraft type.
 	//
 	// example:
 	//
 	// 32Q
 	EquipType *string `json:"equip_type,omitempty" xml:"equip_type,omitempty"`
-	// flight time, unit: minute
+	// The flight duration. Unit: minutes.
 	//
 	// example:
 	//
 	// 165
 	FlightDuration *int32 `json:"flight_duration,omitempty" xml:"flight_duration,omitempty"`
-	// marketing airline code (eg: KA)
+	// The marketing airline code (for example, HO).
 	//
 	// example:
 	//
 	// HO
 	MarketingAirline *string `json:"marketing_airline,omitempty" xml:"marketing_airline,omitempty"`
-	// marketing airline flight no. (eg: KA5809)
+	// The marketing flight number (for example, HO1295).
 	//
 	// example:
 	//
 	// HO1295
 	MarketingFlightNo *string `json:"marketing_flight_no,omitempty" xml:"marketing_flight_no,omitempty"`
-	// marketing airline flight no. (eg: 5809)
+	// The numeric marketing flight number (for example, 1295).
 	//
 	// example:
 	//
 	// 1295
 	MarketingFlightNoInt *int32 `json:"marketing_flight_no_int,omitempty" xml:"marketing_flight_no_int,omitempty"`
-	// operating airline code (eg: CX)
+	// The operating airline code (for example, CX).
 	//
 	// example:
 	//
 	// HO
 	OperatingAirline *string `json:"operating_airline,omitempty" xml:"operating_airline,omitempty"`
-	// operating airline flight no. (eg: CX601)
+	// The operating flight number (for example, CX601).
 	//
 	// example:
 	//
 	// HO1295
 	OperatingFlightNo *string `json:"operating_flight_no,omitempty" xml:"operating_flight_no,omitempty"`
-	// segment ID format: flight no.+departure airport[IATA airport code]+arrival airport[IATA airport code]+departure time(MMdd)
+	// The segment ID. Format: flight number + departure airport + arrival airport + departure date (MMdd).
 	//
 	// example:
 	//
 	// HO1295-PVG-MFM-20230310
 	SegmentId *string `json:"segment_id,omitempty" xml:"segment_id,omitempty"`
-	// stop city list when stop_quantity > 1 , use “,” for seperation
+	// The list of stopover cities. This parameter has a value when stopQuantity is greater than 0. Multiple cities are separated by commas.
 	//
 	// example:
 	//
 	// SEL,HKG
 	StopCityList *string `json:"stop_city_list,omitempty" xml:"stop_city_list,omitempty"`
-	// number of stops
+	// The number of stopover cities.
 	//
 	// example:
 	//
@@ -2202,21 +2273,21 @@ func (s *OrderDetailResponseBodyDataSolutionJourneyListSegmentList) Validate() e
 }
 
 type OrderDetailResponseBodyDataSolutionSegmentBaggageCheckInInfoList struct {
-	// through check-in baggage policy type
+	// The baggage through-check rule type. Valid values:
 	//
-	// 1. baggage through check-in between segments
+	// - 1: baggage is checked through between segments.
 	//
-	// 2. baggage re-check-in needed between segments
+	// - 2: baggage must be rechecked between segments.
 	//
-	// 3. baggage through check-in at stop city ( applies for stop flight )
+	// - 3: baggage is checked through at stopover cities.
 	//
-	// 4. baggage re-checkin needed at stop city ( applies for stop flight )
+	// - 4: baggage must be rechecked at stopover cities.
 	//
 	// example:
 	//
 	// 1
 	LuggageDirectInfoType *int32 `json:"luggage_direct_info_type,omitempty" xml:"luggage_direct_info_type,omitempty"`
-	// segment id list. all the listed segment ids share the same baggage through check-in policy
+	// The list of segment IDs. These segments share the same baggage through-check rule.
 	SegmentIdList []*string `json:"segment_id_list,omitempty" xml:"segment_id_list,omitempty" type:"Repeated"`
 }
 
@@ -2251,9 +2322,9 @@ func (s *OrderDetailResponseBodyDataSolutionSegmentBaggageCheckInInfoList) Valid
 }
 
 type OrderDetailResponseBodyDataSolutionSegmentBaggageMappingList struct {
-	// baggage rule mapping, key is passenger type, value is baggage allowance details
+	// The mapping of passenger types to complimentary baggage allowances.
 	PassengerBaggageAllowanceMapping map[string]*DataSolutionSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue `json:"passenger_baggage_allowance_mapping,omitempty" xml:"passenger_baggage_allowance_mapping,omitempty"`
-	// segment id list. all the listed segment ids share the same baggage rule
+	// The list of segment IDs. These segments share the same complimentary baggage rule.
 	SegmentIdList []*string `json:"segment_id_list,omitempty" xml:"segment_id_list,omitempty" type:"Repeated"`
 }
 
@@ -2288,9 +2359,9 @@ func (s *OrderDetailResponseBodyDataSolutionSegmentBaggageMappingList) Validate(
 }
 
 type OrderDetailResponseBodyDataSolutionSegmentRefundChangeRuleMappingList struct {
-	// change and refund policy mapping, key is passenger type, value is change and refund policy details
+	// The mapping of passenger types to refund and change rules.
 	RefundChangeRuleMap map[string]*DataSolutionSegmentRefundChangeRuleMappingListRefundChangeRuleMapValue `json:"refund_change_rule_map,omitempty" xml:"refund_change_rule_map,omitempty"`
-	// segment id list. all the listed segment ids share the same change and refund policy
+	// The list of segment IDs. These segments share the same refund and change rule.
 	SegmentIdList []*string `json:"segment_id_list,omitempty" xml:"segment_id_list,omitempty" type:"Repeated"`
 }
 
@@ -2325,10 +2396,8 @@ func (s *OrderDetailResponseBodyDataSolutionSegmentRefundChangeRuleMappingList) 
 }
 
 type OrderDetailResponseBodyDataSolutionSolutionAttribute struct {
-	// Issue ticket time related
-	IssueTimeInfo *OrderDetailResponseBodyDataSolutionSolutionAttributeIssueTimeInfo `json:"issue_time_info,omitempty" xml:"issue_time_info,omitempty" type:"Struct"`
-	// Supply source type 1: Self-operated; 2: Agent; 3: Flagship store
-	SupplySourceType *string `json:"supply_source_type,omitempty" xml:"supply_source_type,omitempty"`
+	IssueTimeInfo    *OrderDetailResponseBodyDataSolutionSolutionAttributeIssueTimeInfo `json:"issue_time_info,omitempty" xml:"issue_time_info,omitempty" type:"Struct"`
+	SupplySourceType *string                                                            `json:"supply_source_type,omitempty" xml:"supply_source_type,omitempty"`
 }
 
 func (s OrderDetailResponseBodyDataSolutionSolutionAttribute) String() string {
@@ -2367,10 +2436,8 @@ func (s *OrderDetailResponseBodyDataSolutionSolutionAttribute) Validate() error 
 }
 
 type OrderDetailResponseBodyDataSolutionSolutionAttributeIssueTimeInfo struct {
-	// Issue ticket type: 1: after payment; 2: before departure; -1: unknown
 	IssueTicketType *int32 `json:"issue_ticket_type,omitempty" xml:"issue_ticket_type,omitempty"`
-	// Estimated issue ticket time, unit: minutes
-	IssueTimeLimit *int32 `json:"issue_time_limit,omitempty" xml:"issue_time_limit,omitempty"`
+	IssueTimeLimit  *int32 `json:"issue_time_limit,omitempty" xml:"issue_time_limit,omitempty"`
 }
 
 func (s OrderDetailResponseBodyDataSolutionSolutionAttributeIssueTimeInfo) String() string {

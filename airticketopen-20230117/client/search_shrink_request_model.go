@@ -24,47 +24,35 @@ type iSearchShrinkRequest interface {
 }
 
 type SearchShrinkRequest struct {
-	// adult passenger amount 1-9
+	// The number of adult passengers. Valid values: 1 to 9.
 	//
 	// example:
 	//
 	// 2
 	Adults *int32 `json:"adults,omitempty" xml:"adults,omitempty"`
-	// itinerary list
+	// The journey array.
 	//
 	// This parameter is required.
 	AirLegsShrink *string `json:"air_legs,omitempty" xml:"air_legs,omitempty"`
-	// cabin class
-	//
-	// 1. **ALL_CABIN*	- : all cabin class
-	//
-	// 2. **Y*	- : economy class
-	//
-	// 3. **FC*	- : first class and business class
-	//
-	// 4. **S*	- : premium economy class
-	//
-	// 5. **YS*	- : economy class and premium economy class
-	//
-	// 6. **YSC*	- : economy class, premium economy class and business class
+	// The cabin class. Valid values: ALL_CABIN: all cabin classes. Y: economy class. FC: first class and business class. S: premium economy class. YS: economy class and premium economy class. YSC: economy class, premium economy class, and business class.
 	//
 	// example:
 	//
 	// ALL_CABIN
 	CabinClass *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
-	// child passenger amount 0-9
+	// The number of child passengers. Valid values: 0 to 9.
 	//
 	// example:
 	//
 	// 1
 	Children *int32 `json:"children,omitempty" xml:"children,omitempty"`
-	// infant passenger amount 0-9
+	// The number of infant passengers. Valid values: 0 to 9.
 	//
 	// example:
 	//
 	// 1
 	Infants *int32 `json:"infants,omitempty" xml:"infants,omitempty"`
-	// search controls
+	// The search control options. This parameter is optional.
 	SearchControlOptionsShrink *string `json:"search_control_options,omitempty" xml:"search_control_options,omitempty"`
 }
 

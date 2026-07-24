@@ -24,33 +24,33 @@ type iEnrichShrinkRequest interface {
 }
 
 type EnrichShrinkRequest struct {
-  // Number of adult passengers (1-9)
+  // Number of adult passengers 1-9
   // 
   // example:
   // 
   // 1
   Adults *int32 `json:"adults,omitempty" xml:"adults,omitempty"`
-  // Cabin class: ALL_CABIN: All cabin classes; Y: Economy; FC: First Class and Business Class; S: Premium Economy; YS: Economy and Premium Economy; YSC: Economy, Premium Economy, and Business Class;
+  // Cabin class ALL_CABIN: all cabin classes; Y: economy; FC: first class and business class; S: premium economy; YS: economy and premium economy; YSC: economy, premium economy, and business class;
   // 
   // example:
   // 
   // ALL_CABIN
   CabinClass *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
-  // Number of child passengers (0-9)
+  // Number of child passengers 0-9
   // 
   // example:
   // 
   // 1
   Children *int32 `json:"children,omitempty" xml:"children,omitempty"`
-  // Number of infant passengers (0-9)
+  // Number of infant passengers 0-9
   // 
   // example:
   // 
   // 1
   Infants *int32 `json:"infants,omitempty" xml:"infants,omitempty"`
-  // Trip information
+  // Journey information
   JourneyParamListShrink *string `json:"journey_param_list,omitempty" xml:"journey_param_list,omitempty"`
-  // The `solution_id` returned by the Search interface
+  // solution_id returned by Search
   // 
   // example:
   // 

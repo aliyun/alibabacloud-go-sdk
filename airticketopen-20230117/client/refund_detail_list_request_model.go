@@ -22,25 +22,25 @@ type iRefundDetailListRequest interface {
 }
 
 type RefundDetailListRequest struct {
-	// Order number
+	// The order number.
 	//
 	// example:
 	//
 	// 49884*****950
 	OrderNum *int64 `json:"order_num,omitempty" xml:"order_num,omitempty"`
-	// Page index
+	// The page index.
 	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"page_index,omitempty" xml:"page_index,omitempty"`
-	// Page size
+	// The page size.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	// Refund order creation start time, UTC timestamp
+	// The start time for refund order creation. The value is a UTC timestamp.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type RefundDetailListRequest struct {
 	//
 	// 1677229002000
 	RefundCreateBeginTime *int64 `json:"refund_create_begin_time,omitempty" xml:"refund_create_begin_time,omitempty"`
-	// Refund order creation end time, UTC timestamp
+	// The end time for refund order creation. The value is a UTC timestamp.
 	//
 	// This parameter is required.
 	//

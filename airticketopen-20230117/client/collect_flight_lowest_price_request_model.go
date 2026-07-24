@@ -14,6 +14,8 @@ type iCollectFlightLowestPriceRequest interface {
 }
 
 type CollectFlightLowestPriceRequest struct {
+	// The lowest-price flight information.
+	//
 	// This parameter is required.
 	LowestPriceFlightInfoList []*CollectFlightLowestPriceRequestLowestPriceFlightInfoList `json:"lowest_price_flight_info_list,omitempty" xml:"lowest_price_flight_info_list,omitempty" type:"Repeated"`
 }
@@ -49,60 +51,86 @@ func (s *CollectFlightLowestPriceRequest) Validate() error {
 }
 
 type CollectFlightLowestPriceRequestLowestPriceFlightInfoList struct {
+	// The arrival city.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MFM
 	ArrivalCity *string `json:"arrival_city,omitempty" xml:"arrival_city,omitempty"`
+	// The departure city.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// SHA
 	DepartureCity *string `json:"departure_city,omitempty" xml:"departure_city,omitempty"`
+	// The departure date. Format: yyyy-MM-dd.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2024-11-11
 	DepartureDate *string `json:"departure_date,omitempty" xml:"departure_date,omitempty"`
+	// The list of outbound flight numbers. Multiple segments are split by commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// CA123,CA456
 	DepartureFlightNumber *string `json:"departure_flight_number,omitempty" xml:"departure_flight_number,omitempty"`
+	// The lowest competitor price in the market, including fare and taxes. The currency is USD.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 100.0
 	MarketTotalPrice *float64 `json:"market_total_price,omitempty" xml:"market_total_price,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 123456789dacd
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	// The return date for round-trip scenarios. Format: yyyy-MM-dd.
+	//
 	// example:
 	//
 	// 2024-11-11
 	ReturnDate *string `json:"return_date,omitempty" xml:"return_date,omitempty"`
+	// The list of return flight numbers. Multiple segments are split by commas (,).
+	//
 	// example:
 	//
 	// CA123,CA456
 	ReturnFlightNumber *string `json:"return_flight_number,omitempty" xml:"return_flight_number,omitempty"`
+	// The solution_id returned by Search/Enrich.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eJwz8DeySEo0NjQ01TU3TU7TNTFINNO1SE5O0jVKM0hKNjEwTElLNYwz0A32cNT1dfPVNTIwMjYwNjRQ8/A3NLI01Q0Ic0cRBwBVFxJJ
 	SolutionId *string `json:"solution_id,omitempty" xml:"solution_id,omitempty"`
+	// The Suez quoted price, including fare and taxes. The currency is USD.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 100.1
 	SuezTotalPrice *float64 `json:"suez_total_price,omitempty" xml:"suez_total_price,omitempty"`
+	// The trip type. Valid values:
+	//
+	// - 1: one-way
+	//
+	// - 2: round-trip.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -26,39 +26,39 @@ type iEnrichResponseBody interface {
 }
 
 type EnrichResponseBody struct {
-  // request RequestId
+  // Request RequestId
   // 
   // example:
   // 
   // 51593418-8C73-5E47-8BA8-3F1D4A00CC0B
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // correctly processed return data
+  // Data returned on successful processing
   Data *EnrichResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-  // business error code
+  // Business error code
   // 
   // example:
   // 
   // null
   ErrorCode *string `json:"error_code,omitempty" xml:"error_code,omitempty"`
-  // Data carried in error handling
+  // Data carried on error processing
   // 
   // example:
   // 
   // null
   ErrorData interface{} `json:"error_data,omitempty" xml:"error_data,omitempty"`
-  // error message
+  // Error message
   // 
   // example:
   // 
   // null
   ErrorMsg *string `json:"error_msg,omitempty" xml:"error_msg,omitempty"`
-  // http request successful, status value is 200
+  // When HTTP request succeeds, status value is always 200
   // 
   // example:
   // 
   // 200
   Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-  // whether the request was successful
+  // Whether successful
   // 
   // example:
   // 
@@ -147,7 +147,7 @@ func (s *EnrichResponseBody) Validate() error {
 }
 
 type EnrichResponseBodyData struct {
-  // search quotation results
+  // Search and inquiry results
   SolutionList []*EnrichResponseBodyDataSolutionList `json:"solution_list,omitempty" xml:"solution_list,omitempty" type:"Repeated"`
 }
 
@@ -182,51 +182,51 @@ func (s *EnrichResponseBodyData) Validate() error {
 }
 
 type EnrichResponseBodyDataSolutionList struct {
-  // adult unit price
+  // Adult unit price
   // 
   // example:
   // 
   // 500
   AdultPrice *float64 `json:"adult_price,omitempty" xml:"adult_price,omitempty"`
-  // adult tax
+  // Adult tax
   // 
   // example:
   // 
   // 100
   AdultTax *float64 `json:"adult_tax,omitempty" xml:"adult_tax,omitempty"`
-  // child unit price
+  // Child unit price
   // 
   // example:
   // 
   // 100
   ChildPrice *float64 `json:"child_price,omitempty" xml:"child_price,omitempty"`
-  // child tax
+  // Child tax
   // 
   // example:
   // 
   // 100
   ChildTax *float64 `json:"child_tax,omitempty" xml:"child_tax,omitempty"`
-  // infant unit price
+  // Infant unit price
   // 
   // example:
   // 
   // 500
   InfantPrice *float64 `json:"infant_price,omitempty" xml:"infant_price,omitempty"`
-  // infant tax
+  // Infant tax
   // 
   // example:
   // 
   // 100
   InfantTax *float64 `json:"infant_tax,omitempty" xml:"infant_tax,omitempty"`
-  // journey
+  // Journey
   JourneyList []*EnrichResponseBodyDataSolutionListJourneyList `json:"journey_list,omitempty" xml:"journey_list,omitempty" type:"Repeated"`
-  // Baggage check-in rules
+  // Baggage through-check rules
   SegmentBaggageCheckInInfoList []*EnrichResponseBodyDataSolutionListSegmentBaggageCheckInInfoList `json:"segment_baggage_check_in_info_list,omitempty" xml:"segment_baggage_check_in_info_list,omitempty" type:"Repeated"`
-  // Free baggage rules
+  // Free baggage allowance rules
   SegmentBaggageMappingList []*EnrichResponseBodyDataSolutionListSegmentBaggageMappingList `json:"segment_baggage_mapping_list,omitempty" xml:"segment_baggage_mapping_list,omitempty" type:"Repeated"`
   // Refund and change rules
   SegmentRefundChangeRuleMappingList []*EnrichResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList `json:"segment_refund_change_rule_mapping_list,omitempty" xml:"segment_refund_change_rule_mapping_list,omitempty" type:"Repeated"`
-  // Quotation attributes
+  // Quote attributes
   SolutionAttribute *EnrichResponseBodyDataSolutionListSolutionAttribute `json:"solution_attribute,omitempty" xml:"solution_attribute,omitempty" type:"Struct"`
   // solution_id
   // 
@@ -398,9 +398,9 @@ func (s *EnrichResponseBodyDataSolutionList) Validate() error {
 }
 
 type EnrichResponseBodyDataSolutionListJourneyList struct {
-  // segment information
+  // Segment information
   SegmentList []*EnrichResponseBodyDataSolutionListJourneyListSegmentList `json:"segment_list,omitempty" xml:"segment_list,omitempty" type:"Repeated"`
-  // number of transfers
+  // Number of transfers
   // 
   // example:
   // 
@@ -448,73 +448,73 @@ func (s *EnrichResponseBodyDataSolutionListJourneyList) Validate() error {
 }
 
 type EnrichResponseBodyDataSolutionListJourneyListSegmentList struct {
-  // Three-letter code of the arrival airport (uppercase)
+  // Flight arrival airport code (3-letter uppercase)
   // 
   // example:
   // 
   // MFM
   ArrivalAirport *string `json:"arrival_airport,omitempty" xml:"arrival_airport,omitempty"`
-  // Three-letter code of the arrival city (uppercase)
+  // Flight arrival city code (3-letter uppercase)
   // 
   // example:
   // 
   // MFM
   ArrivalCity *string `json:"arrival_city,omitempty" xml:"arrival_city,omitempty"`
-  // Arrival terminal of the flight
+  // Flight arrival terminal
   // 
   // example:
   // 
   // null
   ArrivalTerminal *string `json:"arrival_terminal,omitempty" xml:"arrival_terminal,omitempty"`
-  // Arrival date and time in string format (yyyy-MM-dd HH:mm:ss)
+  // Flight arrival date and time, string format (yyyy-MM-dd HH:mm:ss)
   // 
   // example:
   // 
   // 2023-03-10 10:40:00
   ArrivalTime *string `json:"arrival_time,omitempty" xml:"arrival_time,omitempty"`
-  // Number of remaining seats. The value range is 1,2,3,4,5,6,7,8,9,A; A indicates more than 9 seats available.
+  // Remaining seats. Value range: 1,2,3,4,5,6,7,8,9,A; A indicates more than 9 remaining seats.
   // 
   // example:
   // 
   // 7
   Availability *string `json:"availability,omitempty" xml:"availability,omitempty"`
-  // Cabin class
+  // Booking class
   // 
   // example:
   // 
   // V
   Cabin *string `json:"cabin,omitempty" xml:"cabin,omitempty"`
-  // Cabin grade
+  // Cabin class
   // 
   // example:
   // 
   // Y
   CabinClass *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
-  // Whether it is a code-share flight
+  // Whether it is a codeshare flight
   // 
   // example:
   // 
   // false
   CodeShare *bool `json:"code_share,omitempty" xml:"code_share,omitempty"`
-  // Three-letter code of the departure airport (uppercase)
+  // Flight departure airport code (3-letter uppercase)
   // 
   // example:
   // 
   // PVG
   DepartureAirport *string `json:"departure_airport,omitempty" xml:"departure_airport,omitempty"`
-  // Three-letter code of the departure city (uppercase)
+  // Flight departure city code (3-letter uppercase)
   // 
   // example:
   // 
   // SHA
   DepartureCity *string `json:"departure_city,omitempty" xml:"departure_city,omitempty"`
-  // Departure terminal of the flight
+  // Flight departure terminal
   // 
   // example:
   // 
   // T2
   DepartureTerminal *string `json:"departure_terminal,omitempty" xml:"departure_terminal,omitempty"`
-  // Departure date and time in string format (yyyy-MM-dd HH:mm:ss)
+  // Flight departure date and time, string format (yyyy-MM-dd HH:mm:ss)
   // 
   // example:
   // 
@@ -526,49 +526,49 @@ type EnrichResponseBodyDataSolutionListJourneyListSegmentList struct {
   // 
   // 32Q
   EquipType *string `json:"equip_type,omitempty" xml:"equip_type,omitempty"`
-  // Flight duration in minutes
+  // Flight duration, unit: minutes
   // 
   // example:
   // 
   // 165
   FlightDuration *int32 `json:"flight_duration,omitempty" xml:"flight_duration,omitempty"`
-  // Marketing airline (e.g., KA)
+  // Marketing carrier airline (e.g., KA)
   // 
   // example:
   // 
   // HO
   MarketingAirline *string `json:"marketing_airline,omitempty" xml:"marketing_airline,omitempty"`
-  // Marketing flight number (e.g., KA5809)
+  // Marketing carrier flight number (e.g., KA5809)
   // 
   // example:
   // 
   // HO1295
   MarketingFlightNo *string `json:"marketing_flight_no,omitempty" xml:"marketing_flight_no,omitempty"`
-  // Marketing flight number in digits (e.g., 5809)
+  // Marketing carrier numeric flight number (e.g., 5809)
   // 
   // example:
   // 
   // 1295
   MarketingFlightNoInt *int32 `json:"marketing_flight_no_int,omitempty" xml:"marketing_flight_no_int,omitempty"`
-  // Operating airline (e.g., CX)
+  // Operating carrier airline (e.g., CX)
   // 
   // example:
   // 
   // HO
   OperatingAirline *string `json:"operating_airline,omitempty" xml:"operating_airline,omitempty"`
-  // Operating flight number (e.g., CX601)
+  // Operating carrier flight number (e.g., CX601)
   // 
   // example:
   // 
   // HO1295
   OperatingFlightNo *string `json:"operating_flight_no,omitempty" xml:"operating_flight_no,omitempty"`
-  // segment ID format: flight number + departure airport + arrival airport + departure date (MMdd)
+  // Segment ID format: flight number + departure airport + arrival airport + departure date (MMdd)
   // 
   // example:
   // 
   // HO1295-PVG-MFM-20230310
   SegmentId *string `json:"segment_id,omitempty" xml:"segment_id,omitempty"`
-  // List of stopover cities, with values when stopQuantity > 0, separated by commas
+  // Stopover city list, has value when stopQuantity > 0, multiple values separated by commas
   // 
   // example:
   // 
@@ -793,13 +793,13 @@ func (s *EnrichResponseBodyDataSolutionListJourneyListSegmentList) Validate() er
 }
 
 type EnrichResponseBodyDataSolutionListSegmentBaggageCheckInInfoList struct {
-  // Baggage check-in rule type 1: Direct baggage between segments; 2: Re-check baggage between segments; 3: Direct baggage at stopover cities; 4: Re-check baggage at stopover cities
+  // Baggage through-check rule type 1: baggage through-checked between segments; 2: baggage re-checked between segments; 3: baggage through-checked at stopover city; 4: baggage re-checked at stopover city
   // 
   // example:
   // 
   // 1
   LuggageDirectInfoType *int32 `json:"luggage_direct_info_type,omitempty" xml:"luggage_direct_info_type,omitempty"`
-  // List of segment IDs that use the same baggage check-in rule
+  // Segment ID list. These segment IDs share the same baggage through-check rules
   SegmentIdList []*string `json:"segment_id_list,omitempty" xml:"segment_id_list,omitempty" type:"Repeated"`
 }
 
@@ -834,9 +834,9 @@ func (s *EnrichResponseBodyDataSolutionListSegmentBaggageCheckInInfoList) Valida
 }
 
 type EnrichResponseBodyDataSolutionListSegmentBaggageMappingList struct {
-  // Mapping of passenger type to free baggage allowance
+  // Passenger type to free baggage allowance mapping
   PassengerBaggageAllowanceMapping map[string]*DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue `json:"passenger_baggage_allowance_mapping,omitempty" xml:"passenger_baggage_allowance_mapping,omitempty"`
-  // List of segment IDs that use the same free baggage allowance rule
+  // Segment ID list. These segment IDs share the same free baggage allowance rules
   SegmentIdList []*string `json:"segment_id_list,omitempty" xml:"segment_id_list,omitempty" type:"Repeated"`
 }
 
@@ -871,9 +871,9 @@ func (s *EnrichResponseBodyDataSolutionListSegmentBaggageMappingList) Validate()
 }
 
 type EnrichResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList struct {
-  // Passenger type - refund and change rule mapping
+  // Passenger type to refund and change rules mapping
   RefundChangeRuleMap map[string]*DataSolutionListSegmentRefundChangeRuleMappingListRefundChangeRuleMapValue `json:"refund_change_rule_map,omitempty" xml:"refund_change_rule_map,omitempty"`
-  // Segment ID list. These segment IDs use the same refund and change rules.
+  // Segment ID list. These segment IDs share the same refund and change rules
   SegmentIdList []*string `json:"segment_id_list,omitempty" xml:"segment_id_list,omitempty" type:"Repeated"`
 }
 
@@ -908,9 +908,8 @@ func (s *EnrichResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList) V
 }
 
 type EnrichResponseBodyDataSolutionListSolutionAttribute struct {
-  // Issue ticket time related
   IssueTimeInfo *EnrichResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo `json:"issue_time_info,omitempty" xml:"issue_time_info,omitempty" type:"Struct"`
-  // Supply source type 1: Self-operated; 2: Agent; 3: Flagship store
+  // Supply source type 1: self-operated; 2: agent; 3: flagship store
   // 
   // example:
   // 
@@ -954,9 +953,7 @@ func (s *EnrichResponseBodyDataSolutionListSolutionAttribute) Validate() error {
 }
 
 type EnrichResponseBodyDataSolutionListSolutionAttributeIssueTimeInfo struct {
-  // Issue ticket type:  1: after payment; 2: before departure; -1: unknown
   IssueTicketType *int32 `json:"issue_ticket_type,omitempty" xml:"issue_ticket_type,omitempty"`
-  // Estimated issue ticket time, unit: minutes
   IssueTimeLimit *int32 `json:"issue_time_limit,omitempty" xml:"issue_time_limit,omitempty"`
 }
 

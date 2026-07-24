@@ -26,27 +26,40 @@ type iChangeApplyResponseBody interface {
 }
 
 type ChangeApplyResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 51593418-8C73-5E47-8BA8-3F1D4A00CC0B
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *ChangeApplyResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned for a successful request.
+	Data *ChangeApplyResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The business error code.
+	//
 	// example:
 	//
 	// null
 	ErrorCode *string `json:"error_code,omitempty" xml:"error_code,omitempty"`
+	// The data returned with the error.
+	//
 	// example:
 	//
 	// null
 	ErrorData interface{} `json:"error_data,omitempty" xml:"error_data,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// null
 	ErrorMsg *string `json:"error_msg,omitempty" xml:"error_msg,omitempty"`
+	// The HTTP status code. The value is always 200 for successful requests.
+	//
 	// example:
 	//
 	// 200
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
@@ -134,7 +147,10 @@ func (s *ChangeApplyResponseBody) Validate() error {
 }
 
 type ChangeApplyResponseBodyData struct {
+	// The list of change order application results.
 	ChangeOrders []*ChangeApplyResponseBodyDataChangeOrders `json:"change_orders,omitempty" xml:"change_orders,omitempty" type:"Repeated"`
+	// The order number.
+	//
 	// example:
 	//
 	// 4988430***950
@@ -181,18 +197,29 @@ func (s *ChangeApplyResponseBodyData) Validate() error {
 }
 
 type ChangeApplyResponseBodyDataChangeOrders struct {
+	// The change order number.
+	//
 	// example:
 	//
 	// 49884*****950
 	ChangeOrderNum *int64 `json:"change_order_num,omitempty" xml:"change_order_num,omitempty"`
+	// The change order status. Valid values:
+	//
+	// - 0: Change order created.
+	//
+	// - 5: Change order creation failed.
+	//
 	// example:
 	//
 	// 0
 	ChangeOrderStatus *int32 `json:"change_order_status,omitempty" xml:"change_order_status,omitempty"`
+	// The reason for the change order creation failure.
+	//
 	// example:
 	//
 	// desc reason
-	FailReason *string                                              `json:"fail_reason,omitempty" xml:"fail_reason,omitempty"`
+	FailReason *string `json:"fail_reason,omitempty" xml:"fail_reason,omitempty"`
+	// The passenger information of the change order.
 	Passengers []*ChangeApplyResponseBodyDataChangeOrdersPassengers `json:"passengers,omitempty" xml:"passengers,omitempty" type:"Repeated"`
 }
 
@@ -254,14 +281,20 @@ func (s *ChangeApplyResponseBodyDataChangeOrders) Validate() error {
 }
 
 type ChangeApplyResponseBodyDataChangeOrdersPassengers struct {
+	// The document number.
+	//
 	// example:
 	//
 	// 411***********4411
 	Document *string `json:"document,omitempty" xml:"document,omitempty"`
+	// The first name of the passenger.
+	//
 	// example:
 	//
 	// SAN
 	FirstName *string `json:"first_name,omitempty" xml:"first_name,omitempty"`
+	// The last name of the passenger.
+	//
 	// example:
 	//
 	// ZHANG

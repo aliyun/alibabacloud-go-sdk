@@ -14,7 +14,7 @@ type iChangeDetailRequest interface {
 }
 
 type ChangeDetailRequest struct {
-	// Change order number
+	// The change order number.
 	//
 	// This parameter is required.
 	//

@@ -30,26 +30,38 @@ type ChangeCancelResponseBody struct {
 	//
 	// 51593418-8C73-5E47-8BA8-3F1D4A00CC0B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned for a successful request.
+	//
 	// example:
 	//
 	// null
 	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// Business error code
+	//
 	// example:
 	//
 	// null
 	ErrorCode *string `json:"error_code,omitempty" xml:"error_code,omitempty"`
+	// The data returned for a failed request.
+	//
 	// example:
 	//
 	// null
 	ErrorData interface{} `json:"error_data,omitempty" xml:"error_data,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// null
 	ErrorMsg *string `json:"error_msg,omitempty" xml:"error_msg,omitempty"`
+	// If the HTTP request is successful, the status value is 200.
+	//
 	// example:
 	//
 	// 200
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true

@@ -24,24 +24,35 @@ type iStandardSearchRequest interface {
 }
 
 type StandardSearchRequest struct {
+	// Number of adult passengers, range 1-9
+	//
 	// example:
 	//
 	// 2
 	Adults *int32 `json:"adults,omitempty" xml:"adults,omitempty"`
+	// Journey array. At least one of departure_city and departure_airport_list must be non-empty; when departure_airport_list has values, they must belong to the same city. At least one of arrival_city and arrival_airport_list must be non-empty; when arrival_airport_list has values, they must belong to the same city.
+	//
 	// This parameter is required.
 	AirLegs []*StandardSearchRequestAirLegs `json:"air_legs,omitempty" xml:"air_legs,omitempty" type:"Repeated"`
+	// Defaults to ALL_CABIN if not specified. Cabin class ALL_CABIN: All cabin classes; Y: Economy class; FC: First class and Business class; S: Premium Economy class; YS: Economy class and Premium Economy class; YSC: Economy class, Premium Economy class, and Business class;
+	//
 	// example:
 	//
 	// ALL_CABIN
 	CabinClass *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	// Number of child passengers, range 0-9
+	//
 	// example:
 	//
 	// 1
 	Children *int32 `json:"children,omitempty" xml:"children,omitempty"`
+	// Number of infant passengers, range 0-9
+	//
 	// example:
 	//
 	// 1
-	Infants              *int32                                     `json:"infants,omitempty" xml:"infants,omitempty"`
+	Infants *int32 `json:"infants,omitempty" xml:"infants,omitempty"`
+	// Search control options, optional
 	SearchControlOptions *StandardSearchRequestSearchControlOptions `json:"search_control_options,omitempty" xml:"search_control_options,omitempty" type:"Struct"`
 }
 
@@ -126,22 +137,32 @@ func (s *StandardSearchRequest) Validate() error {
 }
 
 type StandardSearchRequestAirLegs struct {
+	// Arrival airport three-letter code
+	//
 	// example:
 	//
 	// MFM
 	ArrivalAirportList []*string `json:"arrival_airport_list,omitempty" xml:"arrival_airport_list,omitempty" type:"Repeated"`
+	// Arrival city three-letter code
+	//
 	// example:
 	//
 	// MFM
 	ArrivalCity *string `json:"arrival_city,omitempty" xml:"arrival_city,omitempty"`
+	// Departure airport three-letter code
+	//
 	// example:
 	//
 	// PVG
 	DepartureAirportList []*string `json:"departure_airport_list,omitempty" xml:"departure_airport_list,omitempty" type:"Repeated"`
+	// Departure city three-letter code
+	//
 	// example:
 	//
 	// SHA
 	DepartureCity *string `json:"departure_city,omitempty" xml:"departure_city,omitempty"`
+	// Departure date (e.g.: yyyyMMdd)
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -208,14 +229,20 @@ func (s *StandardSearchRequestAirLegs) Validate() error {
 }
 
 type StandardSearchRequestSearchControlOptions struct {
+	// Excluded airlines list
+	//
 	// example:
 	//
 	// 7C
 	AirlineExcludedList []*string `json:"airline_excluded_list,omitempty" xml:"airline_excluded_list,omitempty" type:"Repeated"`
+	// Preferred airlines list
+	//
 	// example:
 	//
 	// FD
 	AirlinePreferList []*string `json:"airline_prefer_list,omitempty" xml:"airline_prefer_list,omitempty" type:"Repeated"`
+	// Ticketing service quality
+	//
 	// example:
 	//
 	// A1

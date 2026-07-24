@@ -24,47 +24,35 @@ type iSearchRequest interface {
 }
 
 type SearchRequest struct {
-	// adult passenger amount 1-9
+	// The number of adult passengers. Valid values: 1 to 9.
 	//
 	// example:
 	//
 	// 2
 	Adults *int32 `json:"adults,omitempty" xml:"adults,omitempty"`
-	// itinerary list
+	// The journey array.
 	//
 	// This parameter is required.
 	AirLegs []*SearchRequestAirLegs `json:"air_legs,omitempty" xml:"air_legs,omitempty" type:"Repeated"`
-	// cabin class
-	//
-	// 1. **ALL_CABIN*	- : all cabin class
-	//
-	// 2. **Y*	- : economy class
-	//
-	// 3. **FC*	- : first class and business class
-	//
-	// 4. **S*	- : premium economy class
-	//
-	// 5. **YS*	- : economy class and premium economy class
-	//
-	// 6. **YSC*	- : economy class, premium economy class and business class
+	// The cabin class. Valid values: ALL_CABIN: all cabin classes. Y: economy class. FC: first class and business class. S: premium economy class. YS: economy class and premium economy class. YSC: economy class, premium economy class, and business class.
 	//
 	// example:
 	//
 	// ALL_CABIN
 	CabinClass *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
-	// child passenger amount 0-9
+	// The number of child passengers. Valid values: 0 to 9.
 	//
 	// example:
 	//
 	// 1
 	Children *int32 `json:"children,omitempty" xml:"children,omitempty"`
-	// infant passenger amount 0-9
+	// The number of infant passengers. Valid values: 0 to 9.
 	//
 	// example:
 	//
 	// 1
 	Infants *int32 `json:"infants,omitempty" xml:"infants,omitempty"`
-	// search controls
+	// The search control options. This parameter is optional.
 	SearchControlOptions *SearchRequestSearchControlOptions `json:"search_control_options,omitempty" xml:"search_control_options,omitempty" type:"Struct"`
 }
 
@@ -149,31 +137,31 @@ func (s *SearchRequest) Validate() error {
 }
 
 type SearchRequestAirLegs struct {
-	// arrival airport [IATA airport code] list
+	// The list of three-letter codes of arrival airports.
 	//
 	// example:
 	//
 	// MFM
 	ArrivalAirportList []*string `json:"arrival_airport_list,omitempty" xml:"arrival_airport_list,omitempty" type:"Repeated"`
-	// arrival city code
+	// The three-letter code of the arrival city.
 	//
 	// example:
 	//
 	// MFM
 	ArrivalCity *string `json:"arrival_city,omitempty" xml:"arrival_city,omitempty"`
-	// departure airport [IATA airport code] list
+	// The list of three-letter codes of departure airports.
 	//
 	// example:
 	//
 	// PVG
 	DepartureAirportList []*string `json:"departure_airport_list,omitempty" xml:"departure_airport_list,omitempty" type:"Repeated"`
-	// departure city code
+	// The three-letter code of the departure city.
 	//
 	// example:
 	//
 	// SHA
 	DepartureCity *string `json:"departure_city,omitempty" xml:"departure_city,omitempty"`
-	// departure date (eg: yyyyMMdd)
+	// The departure date (for example, yyyyMMdd).
 	//
 	// This parameter is required.
 	//
@@ -241,19 +229,19 @@ func (s *SearchRequestAirLegs) Validate() error {
 }
 
 type SearchRequestSearchControlOptions struct {
-	// excluded airlines list
+	// The list of excluded airlines.
 	//
 	// example:
 	//
 	// 7C
 	AirlineExcludedList []*string `json:"airline_excluded_list,omitempty" xml:"airline_excluded_list,omitempty" type:"Repeated"`
-	// preferred airlines list
+	// The list of preferred airlines.
 	//
 	// example:
 	//
 	// FD
 	AirlinePreferList []*string `json:"airline_prefer_list,omitempty" xml:"airline_prefer_list,omitempty" type:"Repeated"`
-	// service quality
+	// The service quality identifier.
 	//
 	// example:
 	//

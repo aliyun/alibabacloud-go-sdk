@@ -26,39 +26,39 @@ type iGetTokenResponseBody interface {
 }
 
 type GetTokenResponseBody struct {
-	// Request RequestId
+	// The request ID.
 	//
 	// example:
 	//
 	// 51593418-8C73-5E47-8BA8-3F1D4A00CC0B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Correctly processed return data
+	// The data returned for a successful request.
 	Data *GetTokenResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Business error code
+	// The business error code.
 	//
 	// example:
 	//
 	// null
 	ErrorCode *string `json:"error_code,omitempty" xml:"error_code,omitempty"`
-	// Data carried during error handling
+	// The data returned with an error response.
 	//
 	// example:
 	//
 	// null
 	ErrorData interface{} `json:"error_data,omitempty" xml:"error_data,omitempty"`
-	// Error message
+	// The error message.
 	//
 	// example:
 	//
 	// null
 	ErrorMsg *string `json:"error_msg,omitempty" xml:"error_msg,omitempty"`
-	// When the HTTP request is successful, the status value is 200.
+	// The HTTP status code. The value is always 200 for successful HTTP requests.
 	//
 	// example:
 	//
 	// 200
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// Whether it is correct
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -147,13 +147,13 @@ func (s *GetTokenResponseBody) Validate() error {
 }
 
 type GetTokenResponseBodyData struct {
-	// Remaining valid time of the token in seconds
+	// The remaining validity period of the token. Unit: seconds.
 	//
 	// example:
 	//
 	// 7200
 	ExpireTime *int64 `json:"expire_time,omitempty" xml:"expire_time,omitempty"`
-	// Timestamp of token generation in seconds
+	// The UNIX timestamp when the token was generated. Unit: seconds.
 	//
 	// example:
 	//

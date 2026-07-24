@@ -16,6 +16,8 @@ type iFileUploadRequest interface {
 }
 
 type FileUploadRequest struct {
+	// The Base64-encoded string of the attachment image file. Supported image types: .jpg, .png, and .jpeg.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -26,6 +28,8 @@ type FileUploadRequest struct {
 	//
 	// SR/kULQZHsDDd2zgA9RRTsEQF2OSxFFFx2P/2Q==
 	FileContent *string `json:"file_content,omitempty" xml:"file_content,omitempty"`
+	// The forward order number.
+	//
 	// This parameter is required.
 	//
 	// example:

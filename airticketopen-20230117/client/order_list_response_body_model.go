@@ -26,39 +26,39 @@ type iOrderListResponseBody interface {
 }
 
 type OrderListResponseBody struct {
-	// request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 51593418-8C73-5E47-8BA8-3F1D4A00CC0B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// data
+	// The data returned for a successful request.
 	Data *OrderListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// error code
+	// The business error code.
 	//
 	// example:
 	//
 	// null
 	ErrorCode *string `json:"error_code,omitempty" xml:"error_code,omitempty"`
-	// error data
+	// The data returned with the error.
 	//
 	// example:
 	//
 	// null
 	ErrorData interface{} `json:"error_data,omitempty" xml:"error_data,omitempty"`
-	// error message
+	// The error message.
 	//
 	// example:
 	//
 	// null
 	ErrorMsg *string `json:"error_msg,omitempty" xml:"error_msg,omitempty"`
-	// http reqeust has been processed successfully，status code is 200
+	// The HTTP status code. The value is always 200 for successful requests.
 	//
 	// example:
 	//
 	// 200
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// true represents success, false represents failure
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -147,9 +147,9 @@ func (s *OrderListResponseBody) Validate() error {
 }
 
 type OrderListResponseBodyData struct {
-	// order list
+	// The data list.
 	List []*OrderListResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
-	// information of pagination
+	// The pagination information.
 	Pagination *OrderListResponseBodyDataPagination `json:"pagination,omitempty" xml:"pagination,omitempty" type:"Struct"`
 }
 
@@ -198,93 +198,91 @@ func (s *OrderListResponseBodyData) Validate() error {
 }
 
 type OrderListResponseBodyDataList struct {
-	// book time(timestamp)
+	// The booking time (order creation time). The value is a 13-digit UNIX timestamp.
 	//
 	// example:
 	//
 	// 1677210784000
 	BookTime *int64 `json:"book_time,omitempty" xml:"book_time,omitempty"`
-	// order number created by book
+	// The order number.
 	//
 	// example:
 	//
 	// 4966***617111
 	OrderNum *int64 `json:"order_num,omitempty" xml:"order_num,omitempty"`
-	// order status
+	// The order status. Valid values:
 	//
-	// 1: order reservation in process
+	// - 2: order creation succeeded.
 	//
-	// 2: order reservation successful
+	// - 3: order paid.
 	//
-	// 3: order paid
+	// - 4: order succeeded.
 	//
-	// 4: order successful
-	//
-	// 5: order closed
+	// - 5: order closed.
 	//
 	// example:
 	//
 	// 4
 	OrderStatus *string `json:"order_status,omitempty" xml:"order_status,omitempty"`
-	// external order number(customized by buyer when book)
+	// The external order number.
 	//
 	// example:
 	//
 	// x091-2023-0220-j-0001
 	OutOrderNum *string `json:"out_order_num,omitempty" xml:"out_order_num,omitempty"`
-	// the information about all passenger of current order
+	// The passenger list.
 	PassengerList []*OrderListResponseBodyDataListPassengerList `json:"passenger_list,omitempty" xml:"passenger_list,omitempty" type:"Repeated"`
-	// payment status
+	// The payment status. Valid values:
 	//
-	// 1: payment in process
+	// - 0: initialized.
 	//
-	// 2: deduction successful
+	// - 1: creation succeeded.
 	//
-	// 3: paid to the seller
+	// - 2: payment succeeded.
 	//
-	// 4: transaction closed
+	// - 4: transaction closed.
 	//
 	// example:
 	//
 	// 2
 	PayStatus *string `json:"pay_status,omitempty" xml:"pay_status,omitempty"`
-	// pay time(timestamp)
+	// The payment time. The value is a 13-digit UNIX timestamp.
 	//
 	// example:
 	//
 	// 1677210788000
 	PayTime *int64 `json:"pay_time,omitempty" xml:"pay_time,omitempty"`
-	// discount amount
+	// The discount amount. Unit: yuan.
 	//
 	// example:
 	//
 	// 10
 	PromotionPrice *float64 `json:"promotion_price,omitempty" xml:"promotion_price,omitempty"`
-	// actual payment amount
+	// The actual payment amount. Unit: yuan.
 	//
 	// example:
 	//
 	// 3000
 	RealPayPrice *float64 `json:"real_pay_price,omitempty" xml:"real_pay_price,omitempty"`
-	// buyer nickname
+	// The buyer nickname.
 	//
 	// example:
 	//
 	// nick
 	SessionNick *string `json:"session_nick,omitempty" xml:"session_nick,omitempty"`
-	// order success time(timestamp)
+	// The ticketing time. The value is a 13-digit UNIX timestamp.
 	//
 	// example:
 	//
 	// 1677210786000
 	SucceedTime *int64 `json:"succeed_time,omitempty" xml:"succeed_time,omitempty"`
-	// total price of current order
+	// The total price of the order. Unit: yuan.
 	//
 	// example:
 	//
 	// 3000
 	TotalPrice *float64 `json:"total_price,omitempty" xml:"total_price,omitempty"`
-	// transaction number
+	// The transaction serial number.
 	//
 	// example:
 	//
@@ -431,51 +429,61 @@ func (s *OrderListResponseBodyDataList) Validate() error {
 }
 
 type OrderListResponseBodyDataListPassengerList struct {
-	// date of birth (yyyyMMdd)
+	// The date of birth in the yyyyMMdd format.
 	//
 	// example:
 	//
 	// 20020301
 	Birthday *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
-	// credential
+	// The credential information.
 	Credential *OrderListResponseBodyDataListPassengerListCredential `json:"credential,omitempty" xml:"credential,omitempty" type:"Struct"`
-	// first name
+	// The first name.
 	//
 	// example:
 	//
 	// SAN
 	FirstName *string `json:"first_name,omitempty" xml:"first_name,omitempty"`
-	// gender 0: MALE; 1: FEMALE
+	// The gender. Valid values:
+	//
+	// - 0: MALE.
+	//
+	// - 1: FEMALE.
 	//
 	// example:
 	//
 	// 0
 	Gender *int32 `json:"gender,omitempty" xml:"gender,omitempty"`
-	// last name
+	// The last name.
 	//
 	// example:
 	//
 	// ZHANG
 	LastName *string `json:"last_name,omitempty" xml:"last_name,omitempty"`
-	// mobile country code
+	// The country code of the mobile phone number.
 	//
 	// example:
 	//
 	// 86
 	MobileCountryCode *string `json:"mobile_country_code,omitempty" xml:"mobile_country_code,omitempty"`
-	// mobile phone number
+	// The mobile phone number.
 	//
 	// example:
 	//
 	// 183******96
 	MobilePhoneNumber *string `json:"mobile_phone_number,omitempty" xml:"mobile_phone_number,omitempty"`
-	// nationality (two-letter code)
+	// The two-letter nationality code.
 	//
 	// example:
 	//
 	// CN
 	Nationality *string `json:"nationality,omitempty" xml:"nationality,omitempty"`
-	// passenger type 0: adult; 1: child; 8: infant
+	// The passenger type. Valid values:
+	//
+	// - 0: adult.
+	//
+	// - 1: child.
+	//
+	// - 8: infant.
 	//
 	// example:
 	//
@@ -582,25 +590,61 @@ func (s *OrderListResponseBodyDataListPassengerList) Validate() error {
 }
 
 type OrderListResponseBodyDataListPassengerListCredential struct {
-	// issuing place (two-letter code)
+	// The place of issue, represented as a two-letter code.
 	//
 	// example:
 	//
 	// CN
 	CertIssuePlace *string `json:"cert_issue_place,omitempty" xml:"cert_issue_place,omitempty"`
-	// credential number
+	// The credential number.
 	//
 	// example:
 	//
 	// E1***5674
 	CredentialNum *string `json:"credential_num,omitempty" xml:"credential_num,omitempty"`
-	// credential type , only support "1"(1 means passport) currently.
+	// The credential type. Valid values:
+	//
+	// - 0: ID card.
+	//
+	// - 1: passport.
+	//
+	// - 2: student ID.
+	//
+	// - 3: military ID.
+	//
+	// - 4: Home Return Permit.
+	//
+	// - 5: Taiwan Compatriot Permit.
+	//
+	// - 6: Hong Kong and Macao Travel Permit.
+	//
+	// - 7: international seafarer certificate.
+	//
+	// - 8: Foreigner Permanent Residence Card.
+	//
+	// - 10: police officer ID.
+	//
+	// - 11: soldier ID.
+	//
+	// - 12: Taiwan Travel Permit.
+	//
+	// - 13: Taiwan Entry Permit.
+	//
+	// - 14: household register.
+	//
+	// - 15: birth certificate.
+	//
+	// - 16: driver license.
+	//
+	// - 17: Hong Kong and Macao Resident Residence Permit.
+	//
+	// - 18: Taiwan Resident Residence Permit.
 	//
 	// example:
 	//
 	// 1
 	CredentialType *int32 `json:"credential_type,omitempty" xml:"credential_type,omitempty"`
-	// credential expiration date
+	// The credential expiration date.
 	//
 	// example:
 	//
@@ -657,25 +701,25 @@ func (s *OrderListResponseBodyDataListPassengerListCredential) Validate() error 
 }
 
 type OrderListResponseBodyDataPagination struct {
-	// current page index
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"current_page,omitempty" xml:"current_page,omitempty"`
-	// page size
+	// The number of records per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	// the number of total orders
+	// The total number of records.
 	//
 	// example:
 	//
 	// 5
 	TotalCount *int32 `json:"total_count,omitempty" xml:"total_count,omitempty"`
-	// the number of total pages
+	// The total number of pages.
 	//
 	// example:
 	//

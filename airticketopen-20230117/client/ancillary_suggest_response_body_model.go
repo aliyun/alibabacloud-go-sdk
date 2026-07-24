@@ -26,39 +26,39 @@ type iAncillarySuggestResponseBody interface {
 }
 
 type AncillarySuggestResponseBody struct {
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 51593418-8C73-5E47-8BA8-3F1D4A00CC0B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Properly processed return data
+	// The data returned for a successful request.
 	Data *AncillarySuggestResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// error code
+	// The business error code.
 	//
 	// example:
 	//
 	// null
 	ErrorCode *string `json:"error_code,omitempty" xml:"error_code,omitempty"`
-	// Data carried in error handling
+	// The data returned with the error.
 	//
 	// example:
 	//
 	// null
 	ErrorData interface{} `json:"error_data,omitempty" xml:"error_data,omitempty"`
-	// Error message
+	// The error message.
 	//
 	// example:
 	//
 	// null
 	ErrorMsg *string `json:"error_msg,omitempty" xml:"error_msg,omitempty"`
-	// http request successful, status value is always 200
+	// The HTTP status code. The value is always 200 for successful requests.
 	//
 	// example:
 	//
 	// 200
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// true represents success, false represents failure
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -147,9 +147,9 @@ func (s *AncillarySuggestResponseBody) Validate() error {
 }
 
 type AncillarySuggestResponseBodyData struct {
-	// ancillary detail list
+	// The mapping between flights and ancillary products.
 	SegAncillaryMapList []*AncillarySuggestResponseBodyDataSegAncillaryMapList `json:"seg_ancillary_map_list,omitempty" xml:"seg_ancillary_map_list,omitempty" type:"Repeated"`
-	// solution_id, equals to solution_id in request
+	// The solution_id of the flight.
 	//
 	// example:
 	//
@@ -197,9 +197,9 @@ func (s *AncillarySuggestResponseBodyData) Validate() error {
 }
 
 type AncillarySuggestResponseBodyDataSegAncillaryMapList struct {
-	// Ancillary product
+	// The ancillary product.
 	Ancillary *AncillarySuggestResponseBodyDataSegAncillaryMapListAncillary `json:"ancillary,omitempty" xml:"ancillary,omitempty" type:"Struct"`
-	// Segment ID list, these segments share the same ancillary
+	// The list of segment IDs. These segments share the same ancillary product.
 	SegmentIdList []*string `json:"segment_id_list,omitempty" xml:"segment_id_list,omitempty" type:"Repeated"`
 }
 
@@ -239,19 +239,19 @@ func (s *AncillarySuggestResponseBodyDataSegAncillaryMapList) Validate() error {
 }
 
 type AncillarySuggestResponseBodyDataSegAncillaryMapListAncillary struct {
-	// Ancillary product ID
+	// The ancillary product ID.
 	//
 	// example:
 	//
 	// eJwz8DeySEo0NjQ01TU3TU
 	AncillaryId *string `json:"ancillary_id,omitempty" xml:"ancillary_id,omitempty"`
-	// Ancillary product type. currently supports 4: paid luggage
+	// The ancillary product type. Currently supported value: 4 (paid baggage).
 	//
 	// example:
 	//
 	// 4
 	AncillaryType *int32 `json:"ancillary_type,omitempty" xml:"ancillary_type,omitempty"`
-	// Baggage details
+	// The baggage ancillary details.
 	BaggageAncillary *AncillarySuggestResponseBodyDataSegAncillaryMapListAncillaryBaggageAncillary `json:"baggage_ancillary,omitempty" xml:"baggage_ancillary,omitempty" type:"Struct"`
 }
 
@@ -300,31 +300,31 @@ func (s *AncillarySuggestResponseBodyDataSegAncillaryMapListAncillary) Validate(
 }
 
 type AncillarySuggestResponseBodyDataSegAncillaryMapListAncillaryBaggageAncillary struct {
-	// baggage quantity, values such as: 3, 2, 1, 0, -2.     -2 indicates weight-based
+	// The number of baggage pieces. Valid values: 3, 2, 1, 0, and -2. A value of -2 indicates weight-based calculation.
 	//
 	// example:
 	//
 	// 0
 	BaggageAmount *int32 `json:"baggage_amount,omitempty" xml:"baggage_amount,omitempty"`
-	// Baggage weight, 0-50. When isAllWeight=true, it represents the total weight of all baggages.
+	// The baggage weight, ranging from 0 to 50. If isAllWeight is set to true, this value represents the total weight of all pieces.
 	//
 	// example:
 	//
 	// 0
 	BaggageWeight *int32 `json:"baggage_weight,omitempty" xml:"baggage_weight,omitempty"`
-	// Unit of baggage weight
+	// The unit of baggage weight.
 	//
 	// example:
 	//
 	// KG
 	BaggageWeightUnit *string `json:"baggage_weight_unit,omitempty" xml:"baggage_weight_unit,omitempty"`
-	// Whether the weight is for all baggages
+	// Indicates whether the weight represents the total weight of all baggage pieces.
 	//
 	// example:
 	//
 	// true
 	IsAllWeight *bool `json:"is_all_weight,omitempty" xml:"is_all_weight,omitempty"`
-	// Total price
+	// The total price.
 	//
 	// example:
 	//

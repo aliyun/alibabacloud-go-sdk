@@ -29,24 +29,35 @@ type FlightChangeOfOrderResponseBody struct {
 	// example:
 	//
 	// 51593418-8C73-5E47-8BA8-3F1D4A00CC0B
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      []*FlightChangeOfOrderResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned for a successful request.
+	Data []*FlightChangeOfOrderResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The business error code.
+	//
 	// example:
 	//
 	// null
 	ErrorCode *string `json:"error_code,omitempty" xml:"error_code,omitempty"`
+	// The data returned with the error.
+	//
 	// example:
 	//
 	// null
 	ErrorData interface{} `json:"error_data,omitempty" xml:"error_data,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// null
 	ErrorMsg *string `json:"error_msg,omitempty" xml:"error_msg,omitempty"`
+	// The HTTP status code. The value is always 200 for successful requests.
+	//
 	// example:
 	//
 	// 200
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
@@ -138,7 +149,10 @@ func (s *FlightChangeOfOrderResponseBody) Validate() error {
 }
 
 type FlightChangeOfOrderResponseBodyData struct {
+	// The flight change information.
 	FlightChangeDetail *FlightChangeOfOrderResponseBodyDataFlightChangeDetail `json:"flight_change_detail,omitempty" xml:"flight_change_detail,omitempty" type:"Struct"`
+	// The order number.
+	//
 	// example:
 	//
 	// 4966***617111
@@ -181,54 +195,84 @@ func (s *FlightChangeOfOrderResponseBodyData) Validate() error {
 }
 
 type FlightChangeOfOrderResponseBodyDataFlightChangeDetail struct {
+	// The reason for the flight change.
+	//
 	// example:
 	//
 	// 天气
 	ChangeReason *string `json:"change_reason,omitempty" xml:"change_reason,omitempty"`
+	// The time of the flight change in string format (yyyy-MM-dd HH:mm:ss).
+	//
 	// example:
 	//
 	// 2023-02-01 10:01:00
 	ChangeTime *string `json:"change_time,omitempty" xml:"change_time,omitempty"`
+	// The type of the flight change. Valid values:
+	//
+	// - 1: cancellation
+	//
+	// - 2: schedule change.
+	//
 	// example:
 	//
 	// 1
 	ChangeType *int32 `json:"change_type,omitempty" xml:"change_type,omitempty"`
+	// The three-letter IATA code of the new arrival airport (uppercase).
+	//
 	// example:
 	//
 	// MFM
 	NewArrivalAirport *string `json:"new_arrival_airport,omitempty" xml:"new_arrival_airport,omitempty"`
+	// The arrival date and time of the new flight in string format (yyyy-MM-dd HH:mm:ss).
+	//
 	// example:
 	//
 	// 2023-02-01 15:01:00
 	NewArrivalTime *string `json:"new_arrival_time,omitempty" xml:"new_arrival_time,omitempty"`
+	// The three-letter IATA code of the new departure airport (uppercase).
+	//
 	// example:
 	//
 	// PVG
 	NewDepartureAirport *string `json:"new_departure_airport,omitempty" xml:"new_departure_airport,omitempty"`
+	// The departure date and time of the new flight in string format (yyyy-MM-dd HH:mm:ss).
+	//
 	// example:
 	//
 	// 2023-02-01 13:01:00
 	NewDepartureTime *string `json:"new_departure_time,omitempty" xml:"new_departure_time,omitempty"`
+	// The new flight number.
+	//
 	// example:
 	//
 	// HO1295
 	NewFlightNo *string `json:"new_flight_no,omitempty" xml:"new_flight_no,omitempty"`
+	// The three-letter IATA code of the original arrival airport (uppercase).
+	//
 	// example:
 	//
 	// MFM
 	OldArrivalAirport *string `json:"old_arrival_airport,omitempty" xml:"old_arrival_airport,omitempty"`
+	// The arrival date and time of the original flight in string format (yyyy-MM-dd HH:mm:ss).
+	//
 	// example:
 	//
 	// 023-02-01 14:01:00
 	OldArrivalTime *string `json:"old_arrival_time,omitempty" xml:"old_arrival_time,omitempty"`
+	// The three-letter IATA code of the original departure airport (uppercase).
+	//
 	// example:
 	//
 	// PVG
 	OldDepartureAirport *string `json:"old_departure_airport,omitempty" xml:"old_departure_airport,omitempty"`
+	// The departure date and time of the original flight in string format (yyyy-MM-dd HH:mm:ss).
+	//
 	// example:
 	//
 	// 2023-02-01 12:01:00
 	OldDepartureTime *string `json:"old_departure_time,omitempty" xml:"old_departure_time,omitempty"`
+	// The original flight number.
+	//
 	// example:
 	//
 	// HO1295

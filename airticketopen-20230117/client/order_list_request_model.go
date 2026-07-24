@@ -22,45 +22,43 @@ type iOrderListRequest interface {
 }
 
 type OrderListRequest struct {
-	// latest booking time (timestamp)
+	// The query end time. The value is a 13-digit UNIX timestamp.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1677229006000
+	BookTimeEnd *int64 `json:"book_time_end,omitempty" xml:"book_time_end,omitempty"`
+	// The query start time. The value is a 13-digit UNIX timestamp.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1677229005000
-	BookTimeEnd *int64 `json:"book_time_end,omitempty" xml:"book_time_end,omitempty"`
-	// earliest book time(timestamp)
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 1677227005000
 	BookTimeStart *int64 `json:"book_time_start,omitempty" xml:"book_time_start,omitempty"`
-	// pagination query parameters, from which page to start querying,querying starts with 0
+	// The page index. The value starts from 1.
 	//
 	// example:
 	//
-	// 0
+	// 1
 	PageIndex *int32 `json:"page_index,omitempty" xml:"page_index,omitempty"`
-	// pagination query parameters, how many orders to return
+	// The page size.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	// which order status will be query
+	// The order status. Valid values:
 	//
-	// 1: order reservation in process
+	// - 2: order creation succeeded.
 	//
-	// 2: order reservation successful
+	// - 3: order paid.
 	//
-	// 3: order paid
+	// - 4: order succeeded.
 	//
-	// 4: order successful
-	//
-	// 5: order closed
+	// - 5: order closed.
 	//
 	// example:
 	//

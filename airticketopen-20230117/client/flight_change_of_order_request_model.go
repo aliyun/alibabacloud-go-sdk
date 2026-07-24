@@ -14,6 +14,8 @@ type iFlightChangeOfOrderRequest interface {
 }
 
 type FlightChangeOfOrderRequest struct {
+	// The order number.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -24,22 +24,38 @@ type iChangeApplyRequest interface {
 }
 
 type ChangeApplyRequest struct {
+	// The list of passengers for the change.
+	//
 	// This parameter is required.
 	ChangePassengerList []*ChangeApplyRequestChangePassengerList `json:"change_passenger_list,omitempty" xml:"change_passenger_list,omitempty" type:"Repeated"`
+	// The target journey for the change.
+	//
 	// This parameter is required.
 	ChangedJourneys []*ChangeApplyRequestChangedJourneys `json:"changed_journeys,omitempty" xml:"changed_journeys,omitempty" type:"Repeated"`
+	// The contact information for the change.
+	//
 	// This parameter is required.
 	Contact *ChangeApplyRequestContact `json:"contact,omitempty" xml:"contact,omitempty" type:"Struct"`
+	// The order number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 4988430***950
 	OrderNum *int64 `json:"order_num,omitempty" xml:"order_num,omitempty"`
+	// The buyer remarks.
+	//
 	// example:
 	//
 	// remark desc
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	// The change type. Valid values:
+	//
+	// - 0: voluntary change
+	//
+	// - 1: flight schedule change or flight cancellation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -138,16 +154,22 @@ func (s *ChangeApplyRequest) Validate() error {
 }
 
 type ChangeApplyRequestChangePassengerList struct {
+	// The document number.
+	//
 	// example:
 	//
 	// 411***********4411
 	Document *string `json:"document,omitempty" xml:"document,omitempty"`
+	// The first name of the passenger.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// SAN
 	FirstName *string `json:"first_name,omitempty" xml:"first_name,omitempty"`
+	// The last name of the passenger.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -196,6 +218,7 @@ func (s *ChangeApplyRequestChangePassengerList) Validate() error {
 }
 
 type ChangeApplyRequestChangedJourneys struct {
+	// The list of target segments for the change.
 	SegmentList []*ChangeApplyRequestChangedJourneysSegmentList `json:"segment_list,omitempty" xml:"segment_list,omitempty" type:"Repeated"`
 }
 
@@ -230,60 +253,102 @@ func (s *ChangeApplyRequestChangedJourneys) Validate() error {
 }
 
 type ChangeApplyRequestChangedJourneysSegmentList struct {
+	// The three-letter IATA code of the arrival airport.
+	//
 	// example:
 	//
 	// MFM
 	ArrivalAirport *string `json:"arrival_airport,omitempty" xml:"arrival_airport,omitempty"`
+	// The three-letter IATA code of the arrival city.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MFM
 	ArrivalCity *string `json:"arrival_city,omitempty" xml:"arrival_city,omitempty"`
+	// The arrival terminal of the flight.
+	//
 	// example:
 	//
 	// T1
 	ArriveTerminal *string `json:"arrive_terminal,omitempty" xml:"arrive_terminal,omitempty"`
+	// (该属性废弃)航班到达日期时间，utc时间戳
+	//
 	// example:
 	//
 	// 1677232999000
-	ArriveTime    *int64  `json:"arrive_time,omitempty" xml:"arrive_time,omitempty"`
+	ArriveTime *int64 `json:"arrive_time,omitempty" xml:"arrive_time,omitempty"`
+	// (必填参数)航班到达日期时间，航班的旅行时间，格式：yyyy-MM-dd HH:mm:ss
+	//
+	// example:
+	//
+	// 2024-03-20 12:30:00
 	ArriveTimeStr *string `json:"arrive_time_str,omitempty" xml:"arrive_time_str,omitempty"`
+	// Indicates whether the flight is a codeshare flight.
+	//
 	// example:
 	//
 	// false
 	CodeShare *bool `json:"code_share,omitempty" xml:"code_share,omitempty"`
+	// The three-letter IATA code of the departure airport.
+	//
 	// example:
 	//
 	// PVG
 	DepartureAirport *string `json:"departure_airport,omitempty" xml:"departure_airport,omitempty"`
+	// The three-letter IATA code of the departure city.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// SHA
 	DepartureCity *string `json:"departure_city,omitempty" xml:"departure_city,omitempty"`
+	// The departure date (for example, yyyyMMdd).
+	//
+	// [_single.params.changed_journeys.items.segment_list.items.departure_time.desc](Deprecated) The departure date and time of the flight, in UTC timestamp.
+	//
+	// [_single.params.changed_journeys.items.segment_list.items.departure_time_str.desc](Required) The departure date and time of the flight, in local travel time. Format: yyyy-MM-dd HH:mm:ss.
+	//
+	// [_single.params.changed_journeys.items.segment_list.items.arrive_time.desc](Deprecated) The arrival date and time of the flight, in UTC timestamp.
+	//
+	// [_single.params.changed_journeys.items.segment_list.items.arrive_time_str.desc](Required) The arrival date and time of the flight, in local travel time. Format: yyyy-MM-dd HH:mm:ss.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20230320
 	DepartureDate *string `json:"departure_date,omitempty" xml:"departure_date,omitempty"`
+	// The departure terminal of the flight.
+	//
 	// example:
 	//
 	// T2
 	DepartureTerminal *string `json:"departure_terminal,omitempty" xml:"departure_terminal,omitempty"`
+	// (该属性废弃)航班起飞日期，utc时间戳
+	//
 	// example:
 	//
 	// 1677232998000
-	DepartureTime    *int64  `json:"departure_time,omitempty" xml:"departure_time,omitempty"`
+	DepartureTime *int64 `json:"departure_time,omitempty" xml:"departure_time,omitempty"`
+	// (必填参数)航班起飞日期时间，航班的旅行时间，格式：yyyy-MM-dd HH:mm:ss
+	//
+	// example:
+	//
+	// 2024-03-20 09:30:00
 	DepartureTimeStr *string `json:"departure_time_str,omitempty" xml:"departure_time_str,omitempty"`
+	// The marketing flight number (such as KA5809).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// HO1295
 	MarketingFlightNo *string `json:"marketing_flight_no,omitempty" xml:"marketing_flight_no,omitempty"`
+	// The operating flight number (such as CX601).
+	//
 	// example:
 	//
 	// HO1295
@@ -429,14 +494,20 @@ func (s *ChangeApplyRequestChangedJourneysSegmentList) Validate() error {
 }
 
 type ChangeApplyRequestContact struct {
+	// The email address.
+	//
 	// example:
 	//
 	// gao******@gmail.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// The country calling code.
+	//
 	// example:
 	//
 	// 86
 	MobileCountryCode *string `json:"mobile_country_code,omitempty" xml:"mobile_country_code,omitempty"`
+	// The mobile phone number of the contact.
+	//
 	// example:
 	//
 	// 183*****92

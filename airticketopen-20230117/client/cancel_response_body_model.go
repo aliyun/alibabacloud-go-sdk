@@ -26,39 +26,39 @@ type iCancelResponseBody interface {
 }
 
 type CancelResponseBody struct {
-	// request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 51593418-8C73-5E47-8BA8-3F1D4A00CC0B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// data
+	// The data returned for a successful request.
 	Data *CancelResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// error code
+	// The business error code.
 	//
 	// example:
 	//
 	// null
 	ErrorCode *string `json:"error_code,omitempty" xml:"error_code,omitempty"`
-	// error data
+	// The data returned for a failed request.
 	//
 	// example:
 	//
 	// null
 	ErrorData interface{} `json:"error_data,omitempty" xml:"error_data,omitempty"`
-	// error message
+	// The error message.
 	//
 	// example:
 	//
 	// null
 	ErrorMsg *string `json:"error_msg,omitempty" xml:"error_msg,omitempty"`
-	// http reqeust has been processed successfully，status code is 200
+	// The HTTP status code. The value is always 200 for successful HTTP requests.
 	//
 	// example:
 	//
 	// 200
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// true represents success, false represents failure
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -147,7 +147,7 @@ func (s *CancelResponseBody) Validate() error {
 }
 
 type CancelResponseBodyData struct {
-	// order number
+	// The order number.
 	//
 	// example:
 	//

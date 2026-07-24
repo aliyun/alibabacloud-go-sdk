@@ -24,33 +24,33 @@ type iEnrichRequest interface {
 }
 
 type EnrichRequest struct {
-  // Number of adult passengers (1-9)
+  // Number of adult passengers 1-9
   // 
   // example:
   // 
   // 1
   Adults *int32 `json:"adults,omitempty" xml:"adults,omitempty"`
-  // Cabin class: ALL_CABIN: All cabin classes; Y: Economy; FC: First Class and Business Class; S: Premium Economy; YS: Economy and Premium Economy; YSC: Economy, Premium Economy, and Business Class;
+  // Cabin class ALL_CABIN: all cabin classes; Y: economy; FC: first class and business class; S: premium economy; YS: economy and premium economy; YSC: economy, premium economy, and business class;
   // 
   // example:
   // 
   // ALL_CABIN
   CabinClass *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
-  // Number of child passengers (0-9)
+  // Number of child passengers 0-9
   // 
   // example:
   // 
   // 1
   Children *int32 `json:"children,omitempty" xml:"children,omitempty"`
-  // Number of infant passengers (0-9)
+  // Number of infant passengers 0-9
   // 
   // example:
   // 
   // 1
   Infants *int32 `json:"infants,omitempty" xml:"infants,omitempty"`
-  // Trip information
+  // Journey information
   JourneyParamList []*EnrichRequestJourneyParamList `json:"journey_param_list,omitempty" xml:"journey_param_list,omitempty" type:"Repeated"`
-  // The `solution_id` returned by the Search interface
+  // solution_id returned by Search
   // 
   // example:
   // 
@@ -134,7 +134,7 @@ func (s *EnrichRequest) Validate() error {
 }
 
 type EnrichRequestJourneyParamList struct {
-  // Arrival city three-letter code (uppercase)
+  // Arrival city code (3-letter uppercase)
   // 
   // This parameter is required.
   // 
@@ -142,7 +142,7 @@ type EnrichRequestJourneyParamList struct {
   // 
   // MFM
   ArrivalCity *string `json:"arrival_city,omitempty" xml:"arrival_city,omitempty"`
-  // Departure city three-letter code (uppercase)
+  // Departure city code (3-letter uppercase)
   // 
   // This parameter is required.
   // 
@@ -158,7 +158,7 @@ type EnrichRequestJourneyParamList struct {
   // 
   // 20230310
   DepartureDate *string `json:"departure_date,omitempty" xml:"departure_date,omitempty"`
-  // Specified segment information for this trip
+  // Specified segment information for this journey
   // 
   // This parameter is required.
   SegmentParamList []*EnrichRequestJourneyParamListSegmentParamList `json:"segment_param_list,omitempty" xml:"segment_param_list,omitempty" type:"Repeated"`
@@ -222,44 +222,42 @@ func (s *EnrichRequestJourneyParamList) Validate() error {
 }
 
 type EnrichRequestJourneyParamListSegmentParamList struct {
-  // Flight arrival airport three-letter code (uppercase)
+  // Flight arrival airport code (3-letter uppercase)
   // 
   // example:
   // 
   // MFM
   ArrivalAirport *string `json:"arrival_airport,omitempty" xml:"arrival_airport,omitempty"`
-  // Flight arrival city three-letter code (uppercase)
+  // Flight arrival city code (3-letter uppercase)
   // 
   // example:
   // 
   // MFM
   ArrivalCity *string `json:"arrival_city,omitempty" xml:"arrival_city,omitempty"`
-  // Cabin
+  // Booking class
   // 
   // example:
   // 
   // V
   Cabin *string `json:"cabin,omitempty" xml:"cabin,omitempty"`
-  // Child cabin
+  // Child booking class
   // 
   // example:
   // 
   // E
   ChildCabin *string `json:"child_cabin,omitempty" xml:"child_cabin,omitempty"`
-  // Flight departure airport three-letter code (uppercase)
+  // Flight departure airport code (3-letter uppercase)
   // 
   // example:
   // 
   // PVG
   DepartureAirport *string `json:"departure_airport,omitempty" xml:"departure_airport,omitempty"`
-  // Flight departure city three-letter code (uppercase)
+  // Flight departure city code (3-letter uppercase)
   // 
   // example:
   // 
   // SHA
   DepartureCity *string `json:"departure_city,omitempty" xml:"departure_city,omitempty"`
-  // String, flight departure date (yyyy-MM-dd), either departure_date or departure_time, with departure_time preferred for greater accuracy
-  // 
   // example:
   // 
   // 2023-03-10
@@ -270,7 +268,7 @@ type EnrichRequestJourneyParamListSegmentParamList struct {
   // 
   // 2023-03-10 07:55:00
   DepartureTime *string `json:"departure_time,omitempty" xml:"departure_time,omitempty"`
-  // Marketing flight number (e.g., KA5809)
+  // Marketing carrier flight number (e.g., KA5809)
   // 
   // This parameter is required.
   // 

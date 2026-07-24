@@ -14,7 +14,7 @@ type iAncillarySuggestRequest interface {
 }
 
 type AncillarySuggestRequest struct {
-	// solution_id returned by enrich
+	// The solution_id of the flight.
 	//
 	// This parameter is required.
 	//

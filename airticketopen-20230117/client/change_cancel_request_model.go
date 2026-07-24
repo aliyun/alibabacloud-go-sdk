@@ -14,6 +14,8 @@ type iChangeCancelRequest interface {
 }
 
 type ChangeCancelRequest struct {
+	// Change order number
+	//
 	// This parameter is required.
 	//
 	// example:

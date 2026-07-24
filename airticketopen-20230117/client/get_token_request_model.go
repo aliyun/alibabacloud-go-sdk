@@ -16,7 +16,7 @@ type iGetTokenRequest interface {
 }
 
 type GetTokenRequest struct {
-	// appKey
+	// The appKey.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetTokenRequest struct {
 	//
 	// fu1bltcu3400iurywuri
 	AppKey *string `json:"app_key,omitempty" xml:"app_key,omitempty"`
-	// appSecret
+	// The appSecret.
 	//
 	// This parameter is required.
 	//

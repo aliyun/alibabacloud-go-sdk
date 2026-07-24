@@ -26,39 +26,39 @@ type iBookResponseBody interface {
 }
 
 type BookResponseBody struct {
-	// request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 51593418-8C73-5E47-8BA8-3F1D4A00CC0B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// data
+	// The data returned for a successful request.
 	Data *BookResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// error code
+	// The business error code.
 	//
 	// example:
 	//
 	// null
 	ErrorCode *string `json:"error_code,omitempty" xml:"error_code,omitempty"`
-	// error data
+	// The data returned with the error.
 	//
 	// example:
 	//
 	// null
 	ErrorData *BookResponseBodyErrorData `json:"error_data,omitempty" xml:"error_data,omitempty" type:"Struct"`
-	// error message
+	// The error message.
 	//
 	// example:
 	//
 	// null
 	ErrorMsg *string `json:"error_msg,omitempty" xml:"error_msg,omitempty"`
-	// http reqeust has been processed successfully，status code is 200
+	// The HTTP status code. The value is always 200 for successful HTTP requests.
 	//
 	// example:
 	//
 	// 200
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// true represents success, false represents failure
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -152,7 +152,7 @@ func (s *BookResponseBody) Validate() error {
 }
 
 type BookResponseBodyData struct {
-	// order information list
+	// The list of order information.
 	OrderList []*BookResponseBodyDataOrderList `json:"order_list,omitempty" xml:"order_list,omitempty" type:"Repeated"`
 }
 
@@ -188,7 +188,7 @@ func (s *BookResponseBodyData) Validate() error {
 
 type BookResponseBodyDataOrderList struct {
 	OrderAttribute *BookResponseBodyDataOrderListOrderAttribute `json:"order_attribute,omitempty" xml:"order_attribute,omitempty" type:"Struct"`
-	// order number
+	// The order number.
 	//
 	// example:
 	//
@@ -329,7 +329,7 @@ func (s *BookResponseBodyDataOrderListOrderAttributeAbaPayLockRateInfo) Validate
 }
 
 type BookResponseBodyErrorData struct {
-	// order information list. When the same input parameters are used to repeat a Book, if the booking has already been successful, the order number will be returned.
+	// The list of order information. If you call the Book operation again with the same parameters after a successful booking, the order number is returned.
 	OrderList []*BookResponseBodyErrorDataOrderList `json:"order_list,omitempty" xml:"order_list,omitempty" type:"Repeated"`
 }
 
@@ -365,7 +365,7 @@ func (s *BookResponseBodyErrorData) Validate() error {
 
 type BookResponseBodyErrorDataOrderList struct {
 	OrderAttribute *BookResponseBodyErrorDataOrderListOrderAttribute `json:"order_attribute,omitempty" xml:"order_attribute,omitempty" type:"Struct"`
-	// order number
+	// The order number.
 	//
 	// example:
 	//

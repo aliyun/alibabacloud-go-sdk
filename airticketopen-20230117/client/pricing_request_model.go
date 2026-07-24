@@ -14,7 +14,7 @@ type iPricingRequest interface {
 }
 
 type PricingRequest struct {
-	// solution_id returned by Enrich
+	// solution_id.
 	//
 	// This parameter is required.
 	//

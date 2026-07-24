@@ -20,18 +20,26 @@ type iChangeDetailListOfBuyerRequest interface {
 }
 
 type ChangeDetailListOfBuyerRequest struct {
+	// The page index.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"page_index,omitempty" xml:"page_index,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// The start time for change order creation. The value is a 13-digit UTC timestamp.
+	//
 	// example:
 	//
 	// 1677415276000
 	UtcCreateBegin *int64 `json:"utc_create_begin,omitempty" xml:"utc_create_begin,omitempty"`
+	// The end time for change order creation. The value is a 13-digit UTC timestamp.
+	//
 	// example:
 	//
 	// 1677415279000

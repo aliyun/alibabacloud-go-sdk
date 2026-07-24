@@ -18,16 +18,22 @@ type iChangeDetailListOfOrderNumRequest interface {
 }
 
 type ChangeDetailListOfOrderNumRequest struct {
+	// The order number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 4988430***700
 	OrderNum *int64 `json:"order_num,omitempty" xml:"order_num,omitempty"`
+	// The page index.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"page_index,omitempty" xml:"page_index,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 20

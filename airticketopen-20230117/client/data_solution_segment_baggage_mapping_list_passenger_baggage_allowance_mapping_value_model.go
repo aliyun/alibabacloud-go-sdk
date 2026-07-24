@@ -44,49 +44,49 @@ type iDataSolutionSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue
 }
 
 type DataSolutionSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue struct {
-	// checked baggage quantity
+	// 托运行李件数
 	//
 	// example:
 	//
 	// 1
 	BaggageAmount *int32 `json:"baggage_amount,omitempty" xml:"baggage_amount,omitempty"`
-	// checked baggage weight
+	// 托运行李重量
 	//
 	// example:
 	//
 	// 10
 	BaggageWeight *int32 `json:"baggage_weight,omitempty" xml:"baggage_weight,omitempty"`
-	// checked baggage weight unit
+	// 托运行李重量单位
 	//
 	// example:
 	//
 	// KG
 	BaggageWeightUnit *string `json:"baggage_weight_unit,omitempty" xml:"baggage_weight_unit,omitempty"`
-	// Whether the weight is for all baggages
+	// 是否所有托运行李重量
 	//
 	// example:
 	//
 	// true
 	IsAllWeight *bool `json:"is_all_weight,omitempty" xml:"is_all_weight,omitempty"`
-	// carry-on baggage quantity
+	// 手提行李件数
 	//
 	// example:
 	//
 	// 1
 	CarryOnAmount *int32 `json:"carry_on_amount,omitempty" xml:"carry_on_amount,omitempty"`
-	// carry-on baggage weight
+	// 手提行李重量
 	//
 	// example:
 	//
 	// 5
 	CarryOnWeight *int32 `json:"carry_on_weight,omitempty" xml:"carry_on_weight,omitempty"`
-	// carry-on baggage weight unit
+	// 手提行李重量单位
 	//
 	// example:
 	//
 	// KG
 	CarryOnWeightUnit *string `json:"carry_on_weight_unit,omitempty" xml:"carry_on_weight_unit,omitempty"`
-	// Whether the weight is for all baggages
+	// 是否所有手提行李重量
 	//
 	// example:
 	//

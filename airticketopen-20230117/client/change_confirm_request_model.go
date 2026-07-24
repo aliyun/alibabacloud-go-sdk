@@ -14,6 +14,8 @@ type iChangeConfirmRequest interface {
 }
 
 type ChangeConfirmRequest struct {
+	// The change order number.
+	//
 	// This parameter is required.
 	//
 	// example:

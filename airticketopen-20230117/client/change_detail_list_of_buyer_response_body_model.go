@@ -29,24 +29,35 @@ type ChangeDetailListOfBuyerResponseBody struct {
 	// example:
 	//
 	// 51593418-8C73-5E47-8BA8-3F1D4A00CC0B
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *ChangeDetailListOfBuyerResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned for a successful request.
+	Data *ChangeDetailListOfBuyerResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The business error code.
+	//
 	// example:
 	//
 	// null
 	ErrorCode *string `json:"error_code,omitempty" xml:"error_code,omitempty"`
+	// The data returned with the error.
+	//
 	// example:
 	//
 	// null
 	ErrorData interface{} `json:"error_data,omitempty" xml:"error_data,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// null
 	ErrorMsg *string `json:"error_msg,omitempty" xml:"error_msg,omitempty"`
+	// The HTTP status code. The value is always 200 for successful HTTP requests.
+	//
 	// example:
 	//
 	// 200
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
@@ -134,7 +145,9 @@ func (s *ChangeDetailListOfBuyerResponseBody) Validate() error {
 }
 
 type ChangeDetailListOfBuyerResponseBodyData struct {
-	List       []*ChangeDetailListOfBuyerResponseBodyDataList     `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	// The data list.
+	List []*ChangeDetailListOfBuyerResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	// The pagination information.
 	Pagination *ChangeDetailListOfBuyerResponseBodyDataPagination `json:"pagination,omitempty" xml:"pagination,omitempty" type:"Struct"`
 }
 
@@ -183,26 +196,60 @@ func (s *ChangeDetailListOfBuyerResponseBodyData) Validate() error {
 }
 
 type ChangeDetailListOfBuyerResponseBodyDataList struct {
+	// The change order number.
+	//
 	// example:
 	//
 	// 4988430***950
 	ChangeOrderNum *int64 `json:"change_order_num,omitempty" xml:"change_order_num,omitempty"`
+	// The order number.
+	//
 	// example:
 	//
 	// 4988430***971
 	OrderNum *int64 `json:"order_num,omitempty" xml:"order_num,omitempty"`
+	// The application order status. Valid values:
+	//
+	// - 0: initial state
+	//
+	// - 1: pending payment
+	//
+	// - 2: payment successful
+	//
+	// - 3: change successful
+	//
+	// - 4: change closed.
+	//
 	// example:
 	//
 	// 2
 	OrderStatus *int32 `json:"order_status,omitempty" xml:"order_status,omitempty"`
+	// The payment status. Valid values:
+	//
+	// - 0: initial state
+	//
+	// - 1: pending payment
+	//
+	// - 2: payment successful
+	//
+	// - 3: transaction successful
+	//
+	// - 4: paid order closed successfully
+	//
+	// - 5: unpaid order closed successfully.
+	//
 	// example:
 	//
 	// 2
 	PayStatus *int32 `json:"pay_status,omitempty" xml:"pay_status,omitempty"`
+	// The transaction number.
+	//
 	// example:
 	//
 	// hkduendkd-2023-dj0
 	TransactionNo *string `json:"transaction_no,omitempty" xml:"transaction_no,omitempty"`
+	// The order creation time. The value is a UTC timestamp.
+	//
 	// example:
 	//
 	// 1677415274000
@@ -276,18 +323,26 @@ func (s *ChangeDetailListOfBuyerResponseBodyDataList) Validate() error {
 }
 
 type ChangeDetailListOfBuyerResponseBodyDataPagination struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"current_page,omitempty" xml:"current_page,omitempty"`
+	// The number of records per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 5
 	TotalCount *int32 `json:"total_count,omitempty" xml:"total_count,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 1

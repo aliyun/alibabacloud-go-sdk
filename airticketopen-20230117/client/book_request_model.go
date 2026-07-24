@@ -22,11 +22,11 @@ type iBookRequest interface {
 }
 
 type BookRequest struct {
-	// contact information
+	// The contact information.
 	//
 	// This parameter is required.
 	Contact *BookRequestContact `json:"contact,omitempty" xml:"contact,omitempty" type:"Struct"`
-	// external order number(buyer customization)
+	// The external order number.
 	//
 	// This parameter is required.
 	//
@@ -34,13 +34,13 @@ type BookRequest struct {
 	//
 	// x091-2023-0220-j-0001
 	OutOrderNum *string `json:"out_order_num,omitempty" xml:"out_order_num,omitempty"`
-	// passenger-ancillary purchase relationship
+	// The mapping between passengers and ancillary purchases.
 	PassengerAncillaryPurchaseMapList []*BookRequestPassengerAncillaryPurchaseMapList `json:"passenger_ancillary_purchase_map_list,omitempty" xml:"passenger_ancillary_purchase_map_list,omitempty" type:"Repeated"`
-	// passenger list
+	// The list of passengers.
 	//
 	// This parameter is required.
 	PassengerList []*BookRequestPassengerList `json:"passenger_list,omitempty" xml:"passenger_list,omitempty" type:"Repeated"`
-	// solution_id returned by Enrich
+	// solution_id.
 	//
 	// This parameter is required.
 	//
@@ -131,31 +131,31 @@ func (s *BookRequest) Validate() error {
 }
 
 type BookRequestContact struct {
-	// email address
+	// The email address.
 	//
 	// example:
 	//
 	// gao******@gmail.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
-	// first name
+	// The first name.
 	//
 	// example:
 	//
 	// SAN
 	FirstName *string `json:"first_name,omitempty" xml:"first_name,omitempty"`
-	// last name
+	// The last name.
 	//
 	// example:
 	//
 	// ZHANG
 	LastName *string `json:"last_name,omitempty" xml:"last_name,omitempty"`
-	// country code
+	// The country calling code.
 	//
 	// example:
 	//
 	// 86
 	MobileCountryCode *string `json:"mobile_country_code,omitempty" xml:"mobile_country_code,omitempty"`
-	// mobile phone number
+	// The mobile phone number.
 	//
 	// example:
 	//
@@ -221,9 +221,9 @@ func (s *BookRequestContact) Validate() error {
 }
 
 type BookRequestPassengerAncillaryPurchaseMapList struct {
-	// ancillary information
+	// The ancillary product object for the booking request.
 	BookAncillaryReqItem *BookRequestPassengerAncillaryPurchaseMapListBookAncillaryReqItem `json:"book_ancillary_req_item,omitempty" xml:"book_ancillary_req_item,omitempty" type:"Struct"`
-	// passenger list for unified ancillary purchases
+	// The list of passengers who purchase the same ancillary product.
 	PassengerList []*BookRequestPassengerAncillaryPurchaseMapListPassengerList `json:"passenger_list,omitempty" xml:"passenger_list,omitempty" type:"Repeated"`
 }
 
@@ -272,13 +272,13 @@ func (s *BookRequestPassengerAncillaryPurchaseMapList) Validate() error {
 }
 
 type BookRequestPassengerAncillaryPurchaseMapListBookAncillaryReqItem struct {
-	// ancillary product ID, returned by AncillarySuggest.
+	// The ancillary product ID.
 	//
 	// example:
 	//
 	// MDY2NTAxLCJleHAiOjE2NxNzM3MDEsIm5ix
 	AncillaryId *string `json:"ancillary_id,omitempty" xml:"ancillary_id,omitempty"`
-	// type of ancillary product, only support "4"(4 means paid baggage) currently.
+	// The ancillary product type. Currently supported value: 4 (paid baggage). More types will be supported in the future.
 	//
 	// example:
 	//
@@ -317,15 +317,15 @@ func (s *BookRequestPassengerAncillaryPurchaseMapListBookAncillaryReqItem) Valid
 }
 
 type BookRequestPassengerAncillaryPurchaseMapListPassengerList struct {
-	// date of birth (yyyyMMdd)
+	// The date of birth in yyyyMMdd format.
 	//
 	// example:
 	//
 	// 20020320
 	Birthday *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
-	// travel document
+	// The credential information.
 	Credential *BookRequestPassengerAncillaryPurchaseMapListPassengerListCredential `json:"credential,omitempty" xml:"credential,omitempty" type:"Struct"`
-	// first name
+	// The first name.
 	//
 	// This parameter is required.
 	//
@@ -333,13 +333,17 @@ type BookRequestPassengerAncillaryPurchaseMapListPassengerList struct {
 	//
 	// SAN
 	FirstName *string `json:"first_name,omitempty" xml:"first_name,omitempty"`
-	// gender 0: male; 1: female
+	// The gender. Valid values:
+	//
+	// - 0: MALE
+	//
+	// - 1: FEMALE.
 	//
 	// example:
 	//
 	// 1
 	Gender *int32 `json:"gender,omitempty" xml:"gender,omitempty"`
-	// last name
+	// The last name.
 	//
 	// This parameter is required.
 	//
@@ -347,7 +351,7 @@ type BookRequestPassengerAncillaryPurchaseMapListPassengerList struct {
 	//
 	// ZHANG
 	LastName *string `json:"last_name,omitempty" xml:"last_name,omitempty"`
-	// country code for mobile phone number
+	// The country calling code for the mobile phone number.
 	//
 	// This parameter is required.
 	//
@@ -355,7 +359,7 @@ type BookRequestPassengerAncillaryPurchaseMapListPassengerList struct {
 	//
 	// 86
 	MobileCountryCode *string `json:"mobile_country_code,omitempty" xml:"mobile_country_code,omitempty"`
-	// mobile phone number
+	// The mobile phone number.
 	//
 	// This parameter is required.
 	//
@@ -363,13 +367,19 @@ type BookRequestPassengerAncillaryPurchaseMapListPassengerList struct {
 	//
 	// 182******92
 	MobilePhoneNumber *string `json:"mobile_phone_number,omitempty" xml:"mobile_phone_number,omitempty"`
-	// nationality
+	// The nationality.
 	//
 	// example:
 	//
 	// CN
 	Nationality *string `json:"nationality,omitempty" xml:"nationality,omitempty"`
-	// passenger type 0: adult; 1: child; 8: Infant
+	// The passenger type. Valid values:
+	//
+	// - 0: adult
+	//
+	// - 1: child
+	//
+	// - 8: infant.
 	//
 	// This parameter is required.
 	//
@@ -478,25 +488,61 @@ func (s *BookRequestPassengerAncillaryPurchaseMapListPassengerList) Validate() e
 }
 
 type BookRequestPassengerAncillaryPurchaseMapListPassengerListCredential struct {
-	// place of issue, two-letter code
+	// The place of issue. Use a two-letter country code.
 	//
 	// example:
 	//
 	// CN
 	CertIssuePlace *string `json:"cert_issue_place,omitempty" xml:"cert_issue_place,omitempty"`
-	// travel document number
+	// The credential number.
 	//
 	// example:
 	//
 	// E1***5673
 	CredentialNum *string `json:"credential_num,omitempty" xml:"credential_num,omitempty"`
-	// travel document type , only support "1"(1 means passport) currently
+	// The credential type. Valid values:
+	//
+	// - 0: ID card
+	//
+	// - 1: passport
+	//
+	// - 2: student ID
+	//
+	// - 3: military ID
+	//
+	// - 4: Home Return Permit
+	//
+	// - 5: Taiwan Compatriot Permit
+	//
+	// - 6: Hong Kong and Macau Travel Permit
+	//
+	// - 7: international seafarer certificate
+	//
+	// - 8: foreigner permanent residence permit
+	//
+	// - 10: police officer certificate
+	//
+	// - 11: soldier certificate
+	//
+	// - 12: Taiwan Travel Permit
+	//
+	// - 13: Taiwan Entry Permit
+	//
+	// - 14: household register
+	//
+	// - 15: birth certificate
+	//
+	// - 16: driver license
+	//
+	// - 17: Hong Kong and Macau resident residence permit
+	//
+	// - 18: Taiwan resident residence permit.
 	//
 	// example:
 	//
 	// 1
 	CredentialType *int32 `json:"credential_type,omitempty" xml:"credential_type,omitempty"`
-	// expiration date
+	// The expiration date of the credential.
 	//
 	// example:
 	//
@@ -553,15 +599,15 @@ func (s *BookRequestPassengerAncillaryPurchaseMapListPassengerListCredential) Va
 }
 
 type BookRequestPassengerList struct {
-	// date of birth (yyyyMMdd)
+	// The date of birth in yyyyMMdd format.
 	//
 	// example:
 	//
 	// 20200320
 	Birthday *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
-	// travel document
+	// The credential information.
 	Credential *BookRequestPassengerListCredential `json:"credential,omitempty" xml:"credential,omitempty" type:"Struct"`
-	// first name
+	// The first name.
 	//
 	// This parameter is required.
 	//
@@ -569,13 +615,17 @@ type BookRequestPassengerList struct {
 	//
 	// SAN
 	FirstName *string `json:"first_name,omitempty" xml:"first_name,omitempty"`
-	// gender 0: MALE; 1: FEMALE
+	// The gender. Valid values:
+	//
+	// - 0: MALE
+	//
+	// - 1: FEMALE.
 	//
 	// example:
 	//
 	// 0
 	Gender *int32 `json:"gender,omitempty" xml:"gender,omitempty"`
-	// last name
+	// The last name.
 	//
 	// This parameter is required.
 	//
@@ -583,7 +633,7 @@ type BookRequestPassengerList struct {
 	//
 	// ZHANG
 	LastName *string `json:"last_name,omitempty" xml:"last_name,omitempty"`
-	// mobile country code
+	// The country calling code for the mobile phone number.
 	//
 	// This parameter is required.
 	//
@@ -591,7 +641,7 @@ type BookRequestPassengerList struct {
 	//
 	// 86
 	MobileCountryCode *string `json:"mobile_country_code,omitempty" xml:"mobile_country_code,omitempty"`
-	// mobile phone number
+	// The mobile phone number.
 	//
 	// This parameter is required.
 	//
@@ -599,13 +649,19 @@ type BookRequestPassengerList struct {
 	//
 	// 183******95
 	MobilePhoneNumber *string `json:"mobile_phone_number,omitempty" xml:"mobile_phone_number,omitempty"`
-	// nationality (two-letter code)
+	// The nationality. Use a two-letter country code.
 	//
 	// example:
 	//
 	// CN
 	Nationality *string `json:"nationality,omitempty" xml:"nationality,omitempty"`
-	// passenger type 0: adult; 1: child; 8: infant
+	// The passenger type. Valid values:
+	//
+	// - 0: adult
+	//
+	// - 1: child
+	//
+	// - 8: infant.
 	//
 	// This parameter is required.
 	//
@@ -714,25 +770,39 @@ func (s *BookRequestPassengerList) Validate() error {
 }
 
 type BookRequestPassengerListCredential struct {
-	// place of issue, two-letter code
+	// The place of issue. Use a two-letter country code.
 	//
 	// example:
 	//
 	// CN
 	CertIssuePlace *string `json:"cert_issue_place,omitempty" xml:"cert_issue_place,omitempty"`
-	// travel document number
+	// The credential number.
 	//
 	// example:
 	//
 	// E1***5674
 	CredentialNum *string `json:"credential_num,omitempty" xml:"credential_num,omitempty"`
-	// travel document type , only support "1"(1 means passport) currently.
+	// The credential type. Valid values:
+	//
+	// - 0: ID card
+	//
+	// - 1: passport
+	//
+	// - 4: Home Return Permit
+	//
+	// - 5: Taiwan Compatriot Permit
+	//
+	// - 6: Hong Kong and Macau Travel Permit
+	//
+	// - 12: Taiwan Travel Permit
+	//
+	// - 19: no credential.
 	//
 	// example:
 	//
 	// 1
 	CredentialType *int32 `json:"credential_type,omitempty" xml:"credential_type,omitempty"`
-	// expiration date
+	// The expiration date of the credential.
 	//
 	// example:
 	//

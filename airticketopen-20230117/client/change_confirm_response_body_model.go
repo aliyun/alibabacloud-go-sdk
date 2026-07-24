@@ -29,24 +29,35 @@ type ChangeConfirmResponseBody struct {
 	// example:
 	//
 	// 51593418-8C73-5E47-8BA8-3F1D4A00CC0B
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *ChangeConfirmResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned for a successful request.
+	Data *ChangeConfirmResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The business error code.
+	//
 	// example:
 	//
 	// null
 	ErrorCode *string `json:"error_code,omitempty" xml:"error_code,omitempty"`
+	// The data returned for a failed request.
+	//
 	// example:
 	//
 	// null
 	ErrorData interface{} `json:"error_data,omitempty" xml:"error_data,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// null
 	ErrorMsg *string `json:"error_msg,omitempty" xml:"error_msg,omitempty"`
+	// The HTTP status code. The value is always 200 for successful requests.
+	//
 	// example:
 	//
 	// 200
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
@@ -134,6 +145,8 @@ func (s *ChangeConfirmResponseBody) Validate() error {
 }
 
 type ChangeConfirmResponseBodyData struct {
+	// The payment amount for the flight change.
+	//
 	// example:
 	//
 	// 30
@@ -142,6 +155,8 @@ type ChangeConfirmResponseBodyData struct {
 	//
 	// 1756797933000
 	PayTime *int64 `json:"pay_time,omitempty" xml:"pay_time,omitempty"`
+	// The payment transaction number for the flight change.
+	//
 	// example:
 	//
 	// hkduendkd-2023-dj0

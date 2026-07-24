@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 账号资金流水
+// Queries the account fund flow list.
 //
 // @param request - AccountFlowListRequest
 //
@@ -81,11 +81,7 @@ func (client *Client) AccountFlowListWithContext(ctx context.Context, request *A
 
 // Summary:
 //
-// # Ancillary - Suggestion
-//
-// Description:
-//
-// search ancillary for selected solution, you should enter the solution_id returned by enrich.
+// Recommends ancillary products.
 //
 // @param request - AncillarySuggestRequest
 //
@@ -145,17 +141,7 @@ func (client *Client) AncillarySuggestWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Transaction-Reservation
-//
-// Description:
-//
-// Enter solution_id returned by enrich, ancillary_id returned by ancillarySuggest(optional), passengers information and contact information, the book interface will create an order wait for pay.
-//
-// There are two issues should be noticed:
-//
-// 1. the solution_id must be processed by pricing.
-//
-// 2. the order created by book interface should be pay within 30 minutes, otherwise the order will be closed.
+// Creates a booking order.
 //
 // @param tmpReq - BookRequest
 //
@@ -245,11 +231,7 @@ func (client *Client) BookWithContext(ctx context.Context, tmpReq *BookRequest, 
 
 // Summary:
 //
-// # Transaction - Unpaid Cancellation
-//
-// Description:
-//
-// close an unpaid order
+// Cancels an unpaid order.
 //
 // @param request - CancelRequest
 //
@@ -309,7 +291,7 @@ func (client *Client) CancelWithContext(ctx context.Context, request *CancelRequ
 
 // Summary:
 //
-// 改签-Apply
+// Submits a change application.
 //
 // @param tmpReq - ChangeApplyRequest
 //
@@ -403,7 +385,7 @@ func (client *Client) ChangeApplyWithContext(ctx context.Context, tmpReq *Change
 
 // Summary:
 //
-// 改签-取消
+// Cancel the change order.
 //
 // @param request - ChangeCancelRequest
 //
@@ -463,7 +445,7 @@ func (client *Client) ChangeCancelWithContext(ctx context.Context, request *Chan
 
 // Summary:
 //
-// 改签-确认
+// Confirms a flight change order.
 //
 // @param request - ChangeConfirmRequest
 //
@@ -523,7 +505,7 @@ func (client *Client) ChangeConfirmWithContext(ctx context.Context, request *Cha
 
 // Summary:
 //
-// # Change-Detail
+// Retrieves the details of a flight change order.
 //
 // @param request - ChangeDetailRequest
 //
@@ -583,7 +565,7 @@ func (client *Client) ChangeDetailWithContext(ctx context.Context, request *Chan
 
 // Summary:
 //
-// 改签单列表-关于买家账号
+// Queries a paging list of change order summaries by buyer account.
 //
 // @param request - ChangeDetailListOfBuyerRequest
 //
@@ -655,7 +637,7 @@ func (client *Client) ChangeDetailListOfBuyerWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 改签单列表-关于正向订单
+// Queries the list of change orders by the original order number.
 //
 // @param request - ChangeDetailListOfOrderNumRequest
 //
@@ -723,7 +705,11 @@ func (client *Client) ChangeDetailListOfOrderNumWithContext(ctx context.Context,
 
 // Summary:
 //
-// 数据收集-低价航班信息
+// Collects lowest-price flight information.
+//
+// Description:
+//
+// Collects lowest-price flight information.
 //
 // @param tmpReq - CollectFlightLowestPriceRequest
 //
@@ -789,11 +775,11 @@ func (client *Client) CollectFlightLowestPriceWithContext(ctx context.Context, t
 
 // Summary:
 //
-// # Search-Enrich
+// Find richer quote information for the itinerary, including free baggage allowance, refund and change rules, and baggage through-check rules.
 //
 // Description:
 //
-// Choose either `solution_id` or `journey_param_list` in the parameters, and `solution_id` needs to be obtained from the Search interface.
+// In the input parameters, choose either solution_id or journey_param_list. solution_id must be obtained from the Search API.
 //
 // @param tmpReq - EnrichRequest
 //
@@ -879,7 +865,7 @@ func (client *Client) EnrichWithContext(ctx context.Context, tmpReq *EnrichReque
 
 // Summary:
 //
-// 附件上传
+// Uploads a file as an attachment image. The file size is limited to 300 KB or less.
 //
 // @param request - FileUploadRequest
 //
@@ -943,7 +929,7 @@ func (client *Client) FileUploadWithContext(ctx context.Context, request *FileUp
 
 // Summary:
 //
-// 航变信息-关于订单
+// Queries flight change information by order number.
 //
 // @param request - FlightChangeOfOrderRequest
 //
@@ -1003,7 +989,7 @@ func (client *Client) FlightChangeOfOrderWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Get Token
+// Obtains a token for API calls. The token is valid for 2 hours.
 //
 // @param request - GetTokenRequest
 //
@@ -1054,7 +1040,11 @@ func (client *Client) GetTokenWithContext(ctx context.Context, request *GetToken
 
 // Summary:
 //
-// 航程行李直挂
+// Queries luggage through-check information for an itinerary.
+//
+// Description:
+//
+// Queries luggage through-check information for an itinerary. Provide itinerary information as input, and the API returns whether luggage through-check is supported for the itinerary. Luggage through-check applies to transfer and stopover scenarios.
 //
 // @param tmpReq - LuggageDirectRequest
 //
@@ -1120,11 +1110,7 @@ func (client *Client) LuggageDirectWithContext(ctx context.Context, tmpReq *Lugg
 
 // Summary:
 //
-// # Trade-Order Details
-//
-// Description:
-//
-// query order detail
+// Queries order details.
 //
 // @param request - OrderDetailRequest
 //
@@ -1188,11 +1174,7 @@ func (client *Client) OrderDetailWithContext(ctx context.Context, request *Order
 
 // Summary:
 //
-// # Trade - Order List
-//
-// Description:
-//
-// query order list
+// Queries the order list.
 //
 // @param request - OrderListRequest
 //
@@ -1268,11 +1250,7 @@ func (client *Client) OrderListWithContext(ctx context.Context, request *OrderLi
 
 // Summary:
 //
-// # Transaction - Seat and Price Verification
-//
-// Description:
-//
-// Check is price and remaining seats of solution you selected has changed. You should enter the solution_id returned by enrich.
+// Verifies seat availability and pricing. If the price has changed, the developer can proceed with Book at the updated price. If the price has not changed, the order is placed at the original price.
 //
 // @param request - PricingRequest
 //
@@ -1332,7 +1310,7 @@ func (client *Client) PricingWithContext(ctx context.Context, request *PricingRe
 
 // Summary:
 //
-// # Ticket Refund - Application
+// Submits a refund application for an air ticket.
 //
 // @param tmpReq - RefundApplyRequest
 //
@@ -1418,7 +1396,7 @@ func (client *Client) RefundApplyWithContext(ctx context.Context, tmpReq *Refund
 
 // Summary:
 //
-// # Refund - Detail
+// Retrieves the details of a refund order.
 //
 // @param request - RefundDetailRequest
 //
@@ -1478,7 +1456,7 @@ func (client *Client) RefundDetailWithContext(ctx context.Context, request *Refu
 
 // Summary:
 //
-// # Refund - Detail List
+// Queries the details of refund orders.
 //
 // @param request - RefundDetailListRequest
 //
@@ -1554,11 +1532,7 @@ func (client *Client) RefundDetailListWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Search
-//
-// Description:
-//
-// Enter the information of departure, arrival, departure date, passenger number and cabin, return the lowest price for each flight.
+// Searches for flight quotes and returns the lowest price across multiple flights. Note that the response of this operation does not include refund and change rules, free baggage allowance, or baggage through-check rules.
 //
 // @param tmpReq - SearchRequest
 //
@@ -1648,7 +1622,7 @@ func (client *Client) SearchWithContext(ctx context.Context, tmpReq *SearchReque
 
 // Summary:
 //
-// 标准搜索
+// Search and quote prices, currently providing the lowest price across multiple flights. Note that this API response includes refund/change rules, free baggage allowance, and baggage through-check rules.
 //
 // @param tmpReq - StandardSearchRequest
 //
@@ -1738,7 +1712,7 @@ func (client *Client) StandardSearchWithContext(ctx context.Context, tmpReq *Sta
 
 // Summary:
 //
-// # Transaction - Payment and Ticket Issuance
+// Pays for and issues a ticket.
 //
 // @param request - TicketingRequest
 //
@@ -1798,11 +1772,11 @@ func (client *Client) TicketingWithContext(ctx context.Context, request *Ticketi
 
 // Summary:
 //
-// # Transaction - Pre-payment verification
+// Performs a pre-ticketing check. This operation is optional.
 //
 // Description:
 //
-// Pre-check for Ticketing, this interface is optional to use.
+// Performs a pre-ticketing check. This operation is optional.
 //
 // @param request - TicketingCheckRequest
 //
@@ -1862,7 +1836,11 @@ func (client *Client) TicketingCheckWithContext(ctx context.Context, request *Ti
 
 // Summary:
 //
-// 航程过境签
+// Queries transit visa requirements for a flight itinerary. You provide flight information, and the API returns whether a transit visa is required for the itinerary. Only transfer or stopover segments are valid input parameters (transfers or stopovers passing through a third country). The supported passenger type defaults to Chinese mainland travelers.
+//
+// Description:
+//
+// Queries transit visa requirements for a flight itinerary. You provide flight information, and the API returns whether a transit visa is required for the itinerary. Only transfer or stopover segments are valid input parameters (transfers or stopovers passing through a third country). The supported passenger type defaults to Chinese mainland travelers.
 //
 // @param tmpReq - TransitVisaRequest
 //

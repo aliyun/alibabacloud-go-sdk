@@ -14,7 +14,7 @@ type iTicketingCheckRequest interface {
 }
 
 type TicketingCheckRequest struct {
-	// order number
+	// The order number.
 	//
 	// This parameter is required.
 	//

@@ -24,22 +24,38 @@ type iChangeApplyShrinkRequest interface {
 }
 
 type ChangeApplyShrinkRequest struct {
+	// The list of passengers for the change.
+	//
 	// This parameter is required.
 	ChangePassengerListShrink *string `json:"change_passenger_list,omitempty" xml:"change_passenger_list,omitempty"`
+	// The target journey for the change.
+	//
 	// This parameter is required.
 	ChangedJourneysShrink *string `json:"changed_journeys,omitempty" xml:"changed_journeys,omitempty"`
+	// The contact information for the change.
+	//
 	// This parameter is required.
 	ContactShrink *string `json:"contact,omitempty" xml:"contact,omitempty"`
+	// The order number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 4988430***950
 	OrderNum *int64 `json:"order_num,omitempty" xml:"order_num,omitempty"`
+	// The buyer remarks.
+	//
 	// example:
 	//
 	// remark desc
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	// The change type. Valid values:
+	//
+	// - 0: voluntary change
+	//
+	// - 1: flight schedule change or flight cancellation.
+	//
 	// This parameter is required.
 	//
 	// example:

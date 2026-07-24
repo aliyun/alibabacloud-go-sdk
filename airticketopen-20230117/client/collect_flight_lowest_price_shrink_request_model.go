@@ -14,6 +14,8 @@ type iCollectFlightLowestPriceShrinkRequest interface {
 }
 
 type CollectFlightLowestPriceShrinkRequest struct {
+	// The lowest-price flight information.
+	//
 	// This parameter is required.
 	LowestPriceFlightInfoListShrink *string `json:"lowest_price_flight_info_list,omitempty" xml:"lowest_price_flight_info_list,omitempty"`
 }

@@ -26,27 +26,40 @@ type iTransitVisaResponseBody interface {
 }
 
 type TransitVisaResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 51593418-8C73-5E47-8BA8-3F1D4A00CC0B
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      []*TransitVisaResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned for a successful request.
+	Data []*TransitVisaResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The business error code.
+	//
 	// example:
 	//
 	// null
 	ErrorCode *string `json:"error_code,omitempty" xml:"error_code,omitempty"`
+	// The data returned with an error response.
+	//
 	// example:
 	//
 	// null
 	ErrorData interface{} `json:"error_data,omitempty" xml:"error_data,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// null
 	ErrorMsg *string `json:"error_msg,omitempty" xml:"error_msg,omitempty"`
+	// The HTTP status code. The value is always 200 for successful HTTP requests.
+	//
 	// example:
 	//
 	// 200
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -138,10 +151,18 @@ func (s *TransitVisaResponseBody) Validate() error {
 }
 
 type TransitVisaResponseBodyData struct {
+	// The three-letter IATA code of the stopover or transfer city.
+	//
 	// example:
 	//
 	// HGH
 	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	// The transit visa type. Valid values:
+	//
+	// - 0: no transit visa required.
+	//
+	// - 1: transit visa required.
+	//
 	// example:
 	//
 	// 1

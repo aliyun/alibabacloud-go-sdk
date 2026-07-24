@@ -20,13 +20,13 @@ type iDataRefundChangeRuleMapValue interface {
 }
 
 type DataRefundChangeRuleMapValue struct {
-	// refund rule for fully-unused tickets
+	// 全程未使用退票规则
 	RefundRuleAllUnusedList []*DataRefundChangeRuleMapValueRefundRuleAllUnusedList `json:"refund_rule_all_unused_list,omitempty" xml:"refund_rule_all_unused_list,omitempty" type:"Repeated"`
-	// refund rule for partially-used tickets
+	// 部分未使用退票规则
 	RefundRulePartUnusedList []*DataRefundChangeRuleMapValueRefundRulePartUnusedList `json:"refund_rule_part_unused_list,omitempty" xml:"refund_rule_part_unused_list,omitempty" type:"Repeated"`
-	// change rule for inbound segment unused tickets
+	// 回程未使用改签规则
 	ChangeRuleInUnusedList []*DataRefundChangeRuleMapValueChangeRuleInUnusedList `json:"change_rule_in_unused_list,omitempty" xml:"change_rule_in_unused_list,omitempty" type:"Repeated"`
-	// change rule for outbound-flight-unused tickets
+	// 去程未使用改签规则
 	ChangeRuleOutUnusedList []*DataRefundChangeRuleMapValueChangeRuleOutUnusedList `json:"change_rule_out_unused_list,omitempty" xml:"change_rule_out_unused_list,omitempty" type:"Repeated"`
 }
 
@@ -115,49 +115,49 @@ func (s *DataRefundChangeRuleMapValue) Validate() error {
 }
 
 type DataRefundChangeRuleMapValueRefundRuleAllUnusedList struct {
-	// type: 0 - fully-unused ticket; 1 - partially used ticket
+	// 该退票规则适用航程使用类型 0:全程未使用; 1:部分未使用
 	//
 	// example:
 	//
 	// 0
 	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
-	// time unit: day/hour
+	// 时间单位：day/hour
 	//
 	// example:
 	//
 	// hour
 	TimeUnit *string `json:"time_unit,omitempty" xml:"time_unit,omitempty"`
-	// applicable refund rule start time, time unit (day/hour)
+	// 该退票规则适用于的退票时间区间开始时间，单位（天/小时）
 	//
 	// example:
 	//
 	// 36
 	RuleStartTime *int32 `json:"rule_start_time,omitempty" xml:"rule_start_time,omitempty"`
-	// applicable refund rule end time, time unit (day/hour)
+	// 该退票规则适用于的退票时间区间结束时间，单位（天/小时）
 	//
 	// example:
 	//
 	// 12
 	RuleEndTime *int32 `json:"rule_end_time,omitempty" xml:"rule_end_time,omitempty"`
-	// whether refundable X-Y hour(day) before departure
+	// 起飞前X-Y小时(天) 可否退票
 	//
 	// example:
 	//
 	// true
 	CanRefund *bool `json:"can_refund,omitempty" xml:"can_refund,omitempty"`
-	// refund fee X-Y hour(day) before departure
+	// 起飞前X-Y小时(天) 退票手续费
 	//
 	// example:
 	//
 	// 200
 	RefundFee *float64 `json:"refund_fee,omitempty" xml:"refund_fee,omitempty"`
-	// whether tax is fully refundable X-Y hour(day) before departure
+	// 起飞前X-Y小时(天) 是否全额退税
 	//
 	// example:
 	//
 	// true
 	CanReturnAllTax *bool `json:"can_return_all_tax,omitempty" xml:"can_return_all_tax,omitempty"`
-	// tax amount refundable X-Y hour(day) before departure
+	// 起飞前X-Y小时(天) 可部分退税金额
 	//
 	// example:
 	//
@@ -250,49 +250,49 @@ func (s *DataRefundChangeRuleMapValueRefundRuleAllUnusedList) Validate() error {
 }
 
 type DataRefundChangeRuleMapValueRefundRulePartUnusedList struct {
-	// type: 0 - fully-unused ticket; 1 - partially used ticket
+	// 该退票规则适用航程使用类型 0:全程未使用; 1:部分未使用
 	//
 	// example:
 	//
 	// 0
 	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
-	// time unit: day/hour
+	// 时间单位：day/hour
 	//
 	// example:
 	//
 	// hour
 	TimeUnit *string `json:"time_unit,omitempty" xml:"time_unit,omitempty"`
-	// applicable refund rule start time, time unit (day/hour)
+	// 该退票规则适用于的退票时间区间开始时间，单位（天/小时）
 	//
 	// example:
 	//
 	// 36
 	RuleStartTime *int32 `json:"rule_start_time,omitempty" xml:"rule_start_time,omitempty"`
-	// applicable refund rule end time, time unit (day/hour)
+	// 该退票规则适用于的退票时间区间结束时间，单位（天/小时）
 	//
 	// example:
 	//
 	// 12
 	RuleEndTime *int32 `json:"rule_end_time,omitempty" xml:"rule_end_time,omitempty"`
-	// whether refundable X-Y hour(day) before departure
+	// 起飞前X-Y小时(天) 可否退票
 	//
 	// example:
 	//
 	// true
 	CanRefund *bool `json:"can_refund,omitempty" xml:"can_refund,omitempty"`
-	// refund fee X-Y hour(day) before departure
+	// 起飞前X-Y小时(天) 退票手续费
 	//
 	// example:
 	//
 	// 200
 	RefundFee *float64 `json:"refund_fee,omitempty" xml:"refund_fee,omitempty"`
-	// whether tax is fully refundable X-Y hour(day) before departure
+	// 起飞前X-Y小时(天) 是否全额退税
 	//
 	// example:
 	//
 	// true
 	CanReturnAllTax *bool `json:"can_return_all_tax,omitempty" xml:"can_return_all_tax,omitempty"`
-	// tax amount refundable X-Y hour(day) before departure
+	// 起飞前X-Y小时(天) 可部分退税金额
 	//
 	// example:
 	//
@@ -385,37 +385,37 @@ func (s *DataRefundChangeRuleMapValueRefundRulePartUnusedList) Validate() error 
 }
 
 type DataRefundChangeRuleMapValueChangeRuleInUnusedList struct {
-	// type: 2 - outbound segment unused; 3 - inbound segment unused
+	// 该改签规则适用航程使用类型 2:去程未使用; 3:回程未使用
 	//
 	// example:
 	//
 	// 2
 	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
-	// time unit: day/hour
+	// 时间单位：day/hour
 	//
 	// example:
 	//
 	// hour
 	TimeUnit *string `json:"time_unit,omitempty" xml:"time_unit,omitempty"`
-	// applicable change rule start time, time unit (day/hour)
+	// 该退票规则适用于的退票时间区间开始时间，单位（天/小时）
 	//
 	// example:
 	//
 	// 36
 	RuleStartTime *int32 `json:"rule_start_time,omitempty" xml:"rule_start_time,omitempty"`
-	// applicable change rule end time, time unit (day/hour)
+	// 该退票规则适用于的退票时间区间结束时间，单位（天/小时）
 	//
 	// example:
 	//
 	// 12
 	RuleEndTime *int32 `json:"rule_end_time,omitempty" xml:"rule_end_time,omitempty"`
-	// whether changeable X-Y hour(day) before departure
+	// 起飞前X-Y小时(天) 可否可以改签
 	//
 	// example:
 	//
 	// true
 	CanChange *bool `json:"can_change,omitempty" xml:"can_change,omitempty"`
-	// change fee X-Y hour(day) before departure
+	// 起飞前X-Y小时(天) 改签费
 	//
 	// example:
 	//
@@ -490,37 +490,37 @@ func (s *DataRefundChangeRuleMapValueChangeRuleInUnusedList) Validate() error {
 }
 
 type DataRefundChangeRuleMapValueChangeRuleOutUnusedList struct {
-	// type: 2 - outbound segment unused; 3 - inbound segment unused
+	// 该改签规则适用航程使用类型 2:去程未使用; 3:回程未使用
 	//
 	// example:
 	//
 	// 2
 	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
-	// time unit: day/hour
+	// 时间单位：day/hour
 	//
 	// example:
 	//
 	// hour
 	TimeUnit *string `json:"time_unit,omitempty" xml:"time_unit,omitempty"`
-	// applicable change rule start time, time unit (day/hour)
+	// 该退票规则适用于的退票时间区间开始时间，单位（天/小时）
 	//
 	// example:
 	//
 	// 36
 	RuleStartTime *int32 `json:"rule_start_time,omitempty" xml:"rule_start_time,omitempty"`
-	// applicable change rule end time, time unit (day/hour)
+	// 该退票规则适用于的退票时间区间结束时间，单位（天/小时）
 	//
 	// example:
 	//
 	// 12
 	RuleEndTime *int32 `json:"rule_end_time,omitempty" xml:"rule_end_time,omitempty"`
-	// whether changeable X-Y hour(day) before departure
+	// 起飞前X-Y小时(天) 可否可以改签
 	//
 	// example:
 	//
 	// true
 	CanChange *bool `json:"can_change,omitempty" xml:"can_change,omitempty"`
-	// change fee X-Y hour(day) before departure
+	// 起飞前X-Y小时(天) 改签费
 	//
 	// example:
 	//

@@ -22,11 +22,11 @@ type iBookShrinkRequest interface {
 }
 
 type BookShrinkRequest struct {
-	// contact information
+	// The contact information.
 	//
 	// This parameter is required.
 	ContactShrink *string `json:"contact,omitempty" xml:"contact,omitempty"`
-	// external order number(buyer customization)
+	// The external order number.
 	//
 	// This parameter is required.
 	//
@@ -34,13 +34,13 @@ type BookShrinkRequest struct {
 	//
 	// x091-2023-0220-j-0001
 	OutOrderNum *string `json:"out_order_num,omitempty" xml:"out_order_num,omitempty"`
-	// passenger-ancillary purchase relationship
+	// The mapping between passengers and ancillary purchases.
 	PassengerAncillaryPurchaseMapListShrink *string `json:"passenger_ancillary_purchase_map_list,omitempty" xml:"passenger_ancillary_purchase_map_list,omitempty"`
-	// passenger list
+	// The list of passengers.
 	//
 	// This parameter is required.
 	PassengerListShrink *string `json:"passenger_list,omitempty" xml:"passenger_list,omitempty"`
-	// solution_id returned by Enrich
+	// solution_id.
 	//
 	// This parameter is required.
 	//
