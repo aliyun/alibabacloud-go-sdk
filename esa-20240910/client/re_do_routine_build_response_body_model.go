@@ -18,7 +18,7 @@ type iReDoRoutineBuildResponseBody interface {
 }
 
 type ReDoRoutineBuildResponseBody struct {
-	// The workflow execution ID.
+	// The ID of the build task in Yunxiao.
 	//
 	// example:
 	//

@@ -64,7 +64,7 @@ type GetRoutineBuildResponseBody struct {
 	//
 	// /root/user
 	AssetsDirectory *string `json:"AssetsDirectory,omitempty" xml:"AssetsDirectory,omitempty"`
-	// The build branch.
+	// The branch used for the build.
 	//
 	// example:
 	//
@@ -130,13 +130,13 @@ type GetRoutineBuildResponseBody struct {
 	//
 	// 22.x
 	NodeVersion *string `json:"NodeVersion,omitempty" xml:"NodeVersion,omitempty"`
-	// The pipeline ID.
+	// The pipeline ID in Yunxiao.
 	//
 	// example:
 	//
 	// 4371588
 	PipelineId *int64 `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// The pipeline run ID.
+	// The build task ID in Yunxiao.
 	//
 	// example:
 	//

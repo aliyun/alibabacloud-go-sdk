@@ -26,7 +26,7 @@ type iListRoutineBuildsResponseBody interface {
 type ListRoutineBuildsResponseBody struct {
 	// The list of ER build tasks.
 	Data []*ListRoutineBuildsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The page number, same as the PageIndex request parameter.
+	// The page number, which is the same as the PageIndex request parameter.
 	//
 	// example:
 	//
@@ -164,7 +164,7 @@ type ListRoutineBuildsResponseBodyData struct {
 	//
 	// Add static files.
 	CommitMessage *string `json:"CommitMessage,omitempty" xml:"CommitMessage,omitempty"`
-	// The creation time, in ISO 8601 format using UTC time. Format: yyyy-MM-ddTHH:mm:ssZ.
+	// The creation time, in the ISO 8601 format in UTC. The format is yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
@@ -200,19 +200,19 @@ type ListRoutineBuildsResponseBodyData struct {
 	//
 	// false
 	IsPrivate *bool `json:"IsPrivate,omitempty" xml:"IsPrivate,omitempty"`
-	// The Node.js version. Valid values: `22.x`, `20.x`, `18.x`, `16.x`, `14.x`, and `12.x`.
+	// The Node.js version. Valid values: `22.x`, `20.x`, `18.x`, `16.x`, `14.x`, `12.x`.
 	//
 	// example:
 	//
 	// 22.x
 	NodeVersion *string `json:"NodeVersion,omitempty" xml:"NodeVersion,omitempty"`
-	// The pipeline ID.
+	// The Yunxiao pipeline ID.
 	//
 	// example:
 	//
 	// 3850166
 	PipelineId *int64 `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// The pipeline execution ID.
+	// The Yunxiao build task ID.
 	//
 	// example:
 	//
@@ -278,7 +278,7 @@ type ListRoutineBuildsResponseBodyData struct {
 	//
 	// test
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The modification time, in ISO 8601 format using UTC time. Format: yyyy-MM-ddTHH:mm:ssZ.
+	// The modification time, in the ISO 8601 format in UTC. The format is yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
