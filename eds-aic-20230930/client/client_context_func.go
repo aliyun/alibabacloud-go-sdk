@@ -665,6 +665,90 @@ func (client *Client) CheckResourceStockWithContext(ctx context.Context, request
 
 // Summary:
 //
+// Creates an AI cloud phone.
+//
+// @param request - CreateAICloudPhoneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAICloudPhoneResponse
+func (client *Client) CreateAICloudPhoneWithContext(ctx context.Context, request *CreateAICloudPhoneRequest, runtime *dara.RuntimeOptions) (_result *CreateAICloudPhoneResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Amount) {
+		query["Amount"] = request.Amount
+	}
+
+	if !dara.IsNil(request.AutoPay) {
+		query["AutoPay"] = request.AutoPay
+	}
+
+	if !dara.IsNil(request.BandwidthPackageId) {
+		query["BandwidthPackageId"] = request.BandwidthPackageId
+	}
+
+	if !dara.IsNil(request.BizRegionId) {
+		query["BizRegionId"] = request.BizRegionId
+	}
+
+	if !dara.IsNil(request.ImageId) {
+		query["ImageId"] = request.ImageId
+	}
+
+	if !dara.IsNil(request.InstanceGroupName) {
+		query["InstanceGroupName"] = request.InstanceGroupName
+	}
+
+	if !dara.IsNil(request.InstanceGroupSpec) {
+		query["InstanceGroupSpec"] = request.InstanceGroupSpec
+	}
+
+	if !dara.IsNil(request.Period) {
+		query["Period"] = request.Period
+	}
+
+	if !dara.IsNil(request.PeriodUnit) {
+		query["PeriodUnit"] = request.PeriodUnit
+	}
+
+	if !dara.IsNil(request.PolicyGroupId) {
+		query["PolicyGroupId"] = request.PolicyGroupId
+	}
+
+	if !dara.IsNil(request.PromotionId) {
+		query["PromotionId"] = request.PromotionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAICloudPhone"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAICloudPhoneResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates pay-as-you-go or subscription cloud phone instance groups. An instance group can manage multiple instances. You can organize instances with the same functional purpose into the same instance group for unified management.
 //
 // Description:
@@ -2872,6 +2956,14 @@ func (client *Client) DescribeCreditDetailWithContext(ctx context.Context, reque
 		query["InstanceIds"] = request.InstanceIds
 	}
 
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
 	if !dara.IsNil(request.PackageIds) {
 		query["PackageIds"] = request.PackageIds
 	}
@@ -3533,7 +3625,7 @@ func (client *Client) DescribeMetricTopWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Retrieves the details of one or more node packages.
+// Queries the details of node packages.
 //
 // @param request - DescribeMobileAgentPackageRequest
 //
@@ -5478,6 +5570,10 @@ func (client *Client) ModifyJVSInstanceWithContext(ctx context.Context, request 
 
 	if !dara.IsNil(request.CreditConfig) {
 		query["CreditConfig"] = request.CreditConfig
+	}
+
+	if !dara.IsNil(request.ImageId) {
+		query["ImageId"] = request.ImageId
 	}
 
 	if !dara.IsNil(request.InstanceIds) {

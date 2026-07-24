@@ -13,6 +13,8 @@ type iModifyJVSInstanceRequest interface {
 	GetApplyToAll() *bool
 	SetCreditConfig(v []*ModifyJVSInstanceRequestCreditConfig) *ModifyJVSInstanceRequest
 	GetCreditConfig() []*ModifyJVSInstanceRequestCreditConfig
+	SetImageId(v string) *ModifyJVSInstanceRequest
+	GetImageId() *string
 	SetInstanceIds(v []*string) *ModifyJVSInstanceRequest
 	GetInstanceIds() []*string
 	SetInstanceName(v string) *ModifyJVSInstanceRequest
@@ -26,11 +28,12 @@ type ModifyJVSInstanceRequest struct {
 	//
 	// true
 	ApplyToAll *bool `json:"ApplyToAll,omitempty" xml:"ApplyToAll,omitempty"`
-	// The credit limit configuration. New configurations overwrite existing ones.
+	// The credit limit configuration. Subsequent configurations overwrite previous ones.
 	CreditConfig []*ModifyJVSInstanceRequestCreditConfig `json:"CreditConfig,omitempty" xml:"CreditConfig,omitempty" type:"Repeated"`
-	// A list of instance IDs.
+	ImageId      *string                                 `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The list of instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The new instance name.
+	// The instance name.
 	//
 	// example:
 	//
@@ -54,6 +57,10 @@ func (s *ModifyJVSInstanceRequest) GetCreditConfig() []*ModifyJVSInstanceRequest
 	return s.CreditConfig
 }
 
+func (s *ModifyJVSInstanceRequest) GetImageId() *string {
+	return s.ImageId
+}
+
 func (s *ModifyJVSInstanceRequest) GetInstanceIds() []*string {
 	return s.InstanceIds
 }
@@ -69,6 +76,11 @@ func (s *ModifyJVSInstanceRequest) SetApplyToAll(v bool) *ModifyJVSInstanceReque
 
 func (s *ModifyJVSInstanceRequest) SetCreditConfig(v []*ModifyJVSInstanceRequestCreditConfig) *ModifyJVSInstanceRequest {
 	s.CreditConfig = v
+	return s
+}
+
+func (s *ModifyJVSInstanceRequest) SetImageId(v string) *ModifyJVSInstanceRequest {
+	s.ImageId = &v
 	return s
 }
 
@@ -102,7 +114,13 @@ type ModifyJVSInstanceRequestCreditConfig struct {
 	//
 	// 10
 	CreditLimit *int64 `json:"CreditLimit,omitempty" xml:"CreditLimit,omitempty"`
-	// The credit limit period.
+	// The dimension of the current credit. Valid values:
+	//
+	// - total: total usage limit.
+	//
+	// - month: monthly. The limit resets based on the resource activation time cycle.
+	//
+	// - day: daily. The limit resets at 00:00.
 	//
 	// example:
 	//

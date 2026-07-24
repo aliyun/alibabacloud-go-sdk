@@ -22,7 +22,7 @@ type iDescribeMobileAgentPackageResponseBody interface {
 }
 
 type DescribeMobileAgentPackageResponseBody struct {
-	// The status code. A value of 200 indicates that the request was successful.
+	// The status code. A value of 200 indicates success.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type DescribeMobileAgentPackageResponseBody struct {
 	//
 	// Success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// A list of packages.
+	// The list of package information.
 	PackageList []*DescribeMobileAgentPackageResponseBodyPackageList `json:"PackageList,omitempty" xml:"PackageList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -125,7 +125,7 @@ type DescribeMobileAgentPackageResponseBodyPackageList struct {
 	ExpiredAt *string `json:"ExpiredAt,omitempty" xml:"ExpiredAt,omitempty"`
 	// The list of node instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The total package credit.
+	// The credit quota of the package.
 	//
 	// example:
 	//
@@ -149,8 +149,10 @@ type DescribeMobileAgentPackageResponseBodyPackageList struct {
 	// example:
 	//
 	// ACTIVE
-	PackageStatus *string `json:"PackageStatus,omitempty" xml:"PackageStatus,omitempty"`
-	// The amount of credit used.
+	PackageStatus   *string `json:"PackageStatus,omitempty" xml:"PackageStatus,omitempty"`
+	PeriodEndTime   *string `json:"PeriodEndTime,omitempty" xml:"PeriodEndTime,omitempty"`
+	PeriodStartTime *string `json:"PeriodStartTime,omitempty" xml:"PeriodStartTime,omitempty"`
+	// The number of credits that have been used.
 	//
 	// example:
 	//
@@ -194,6 +196,14 @@ func (s *DescribeMobileAgentPackageResponseBodyPackageList) GetPackageStatus() *
 	return s.PackageStatus
 }
 
+func (s *DescribeMobileAgentPackageResponseBodyPackageList) GetPeriodEndTime() *string {
+	return s.PeriodEndTime
+}
+
+func (s *DescribeMobileAgentPackageResponseBodyPackageList) GetPeriodStartTime() *string {
+	return s.PeriodStartTime
+}
+
 func (s *DescribeMobileAgentPackageResponseBodyPackageList) GetUsedCredit() *string {
 	return s.UsedCredit
 }
@@ -230,6 +240,16 @@ func (s *DescribeMobileAgentPackageResponseBodyPackageList) SetPackageSpecName(v
 
 func (s *DescribeMobileAgentPackageResponseBodyPackageList) SetPackageStatus(v string) *DescribeMobileAgentPackageResponseBodyPackageList {
 	s.PackageStatus = &v
+	return s
+}
+
+func (s *DescribeMobileAgentPackageResponseBodyPackageList) SetPeriodEndTime(v string) *DescribeMobileAgentPackageResponseBodyPackageList {
+	s.PeriodEndTime = &v
+	return s
+}
+
+func (s *DescribeMobileAgentPackageResponseBodyPackageList) SetPeriodStartTime(v string) *DescribeMobileAgentPackageResponseBodyPackageList {
+	s.PeriodStartTime = &v
 	return s
 }
 

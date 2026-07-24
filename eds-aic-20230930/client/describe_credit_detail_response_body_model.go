@@ -63,7 +63,8 @@ func (s *DescribeCreditDetailResponseBody) Validate() error {
 
 type DescribeCreditDetailResponseBodyData struct {
 	// The credit change details.
-	Details []*DescribeCreditDetailResponseBodyDataDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
+	Details   []*DescribeCreditDetailResponseBodyDataDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
+	NextToken *string                                        `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The page number. Default value: 1.
 	//
 	// example:
@@ -102,6 +103,10 @@ func (s *DescribeCreditDetailResponseBodyData) GetDetails() []*DescribeCreditDet
 	return s.Details
 }
 
+func (s *DescribeCreditDetailResponseBodyData) GetNextToken() *string {
+	return s.NextToken
+}
+
 func (s *DescribeCreditDetailResponseBodyData) GetPageNum() *int32 {
 	return s.PageNum
 }
@@ -120,6 +125,11 @@ func (s *DescribeCreditDetailResponseBodyData) GetTotalCreditChange() *string {
 
 func (s *DescribeCreditDetailResponseBodyData) SetDetails(v []*DescribeCreditDetailResponseBodyDataDetails) *DescribeCreditDetailResponseBodyData {
 	s.Details = v
+	return s
+}
+
+func (s *DescribeCreditDetailResponseBodyData) SetNextToken(v string) *DescribeCreditDetailResponseBodyData {
+	s.NextToken = &v
 	return s
 }
 
@@ -157,6 +167,8 @@ func (s *DescribeCreditDetailResponseBodyData) Validate() error {
 }
 
 type DescribeCreditDetailResponseBodyDataDetails struct {
+	ApiKeyName   *string `json:"ApiKeyName,omitempty" xml:"ApiKeyName,omitempty"`
+	CachedTokens *int64  `json:"CachedTokens,omitempty" xml:"CachedTokens,omitempty"`
 	// The time when the change occurred.
 	//
 	// example:
@@ -173,26 +185,32 @@ type DescribeCreditDetailResponseBodyDataDetails struct {
 	//
 	// example:
 	//
-	// 打开小红书
+	// Open Xiaohongshu.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InputTokens *int64  `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
 	// The instance ID.
 	//
 	// example:
 	//
 	// acp-12oe0l75vl7o5****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The credit or resource plan ID.
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	ModelId      *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	OutputTokens *int64  `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// The ID of the credit or plan package.
 	//
 	// example:
 	//
 	// cmag-0c1g77wjljl9h****
 	PackageId *string `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The task ID, which is globally unique.
 	//
 	// example:
 	//
 	// t-1fr0k51pozyr5****
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TotalTokens *int64  `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
 }
 
 func (s DescribeCreditDetailResponseBodyDataDetails) String() string {
@@ -201,6 +219,14 @@ func (s DescribeCreditDetailResponseBodyDataDetails) String() string {
 
 func (s DescribeCreditDetailResponseBodyDataDetails) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCreditDetailResponseBodyDataDetails) GetApiKeyName() *string {
+	return s.ApiKeyName
+}
+
+func (s *DescribeCreditDetailResponseBodyDataDetails) GetCachedTokens() *int64 {
+	return s.CachedTokens
 }
 
 func (s *DescribeCreditDetailResponseBodyDataDetails) GetChangeTime() *string {
@@ -215,16 +241,50 @@ func (s *DescribeCreditDetailResponseBodyDataDetails) GetDescription() *string {
 	return s.Description
 }
 
+func (s *DescribeCreditDetailResponseBodyDataDetails) GetInputTokens() *int64 {
+	return s.InputTokens
+}
+
 func (s *DescribeCreditDetailResponseBodyDataDetails) GetInstanceId() *string {
 	return s.InstanceId
+}
+
+func (s *DescribeCreditDetailResponseBodyDataDetails) GetInstanceName() *string {
+	return s.InstanceName
+}
+
+func (s *DescribeCreditDetailResponseBodyDataDetails) GetModelId() *string {
+	return s.ModelId
+}
+
+func (s *DescribeCreditDetailResponseBodyDataDetails) GetOutputTokens() *int64 {
+	return s.OutputTokens
 }
 
 func (s *DescribeCreditDetailResponseBodyDataDetails) GetPackageId() *string {
 	return s.PackageId
 }
 
+func (s *DescribeCreditDetailResponseBodyDataDetails) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *DescribeCreditDetailResponseBodyDataDetails) GetTaskId() *string {
 	return s.TaskId
+}
+
+func (s *DescribeCreditDetailResponseBodyDataDetails) GetTotalTokens() *int64 {
+	return s.TotalTokens
+}
+
+func (s *DescribeCreditDetailResponseBodyDataDetails) SetApiKeyName(v string) *DescribeCreditDetailResponseBodyDataDetails {
+	s.ApiKeyName = &v
+	return s
+}
+
+func (s *DescribeCreditDetailResponseBodyDataDetails) SetCachedTokens(v int64) *DescribeCreditDetailResponseBodyDataDetails {
+	s.CachedTokens = &v
+	return s
 }
 
 func (s *DescribeCreditDetailResponseBodyDataDetails) SetChangeTime(v string) *DescribeCreditDetailResponseBodyDataDetails {
@@ -242,8 +302,28 @@ func (s *DescribeCreditDetailResponseBodyDataDetails) SetDescription(v string) *
 	return s
 }
 
+func (s *DescribeCreditDetailResponseBodyDataDetails) SetInputTokens(v int64) *DescribeCreditDetailResponseBodyDataDetails {
+	s.InputTokens = &v
+	return s
+}
+
 func (s *DescribeCreditDetailResponseBodyDataDetails) SetInstanceId(v string) *DescribeCreditDetailResponseBodyDataDetails {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeCreditDetailResponseBodyDataDetails) SetInstanceName(v string) *DescribeCreditDetailResponseBodyDataDetails {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeCreditDetailResponseBodyDataDetails) SetModelId(v string) *DescribeCreditDetailResponseBodyDataDetails {
+	s.ModelId = &v
+	return s
+}
+
+func (s *DescribeCreditDetailResponseBodyDataDetails) SetOutputTokens(v int64) *DescribeCreditDetailResponseBodyDataDetails {
+	s.OutputTokens = &v
 	return s
 }
 
@@ -252,8 +332,18 @@ func (s *DescribeCreditDetailResponseBodyDataDetails) SetPackageId(v string) *De
 	return s
 }
 
+func (s *DescribeCreditDetailResponseBodyDataDetails) SetRequestId(v string) *DescribeCreditDetailResponseBodyDataDetails {
+	s.RequestId = &v
+	return s
+}
+
 func (s *DescribeCreditDetailResponseBodyDataDetails) SetTaskId(v string) *DescribeCreditDetailResponseBodyDataDetails {
 	s.TaskId = &v
+	return s
+}
+
+func (s *DescribeCreditDetailResponseBodyDataDetails) SetTotalTokens(v int64) *DescribeCreditDetailResponseBodyDataDetails {
+	s.TotalTokens = &v
 	return s
 }
 

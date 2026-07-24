@@ -13,6 +13,10 @@ type iDescribeCreditDetailRequest interface {
 	GetEndTime() *int64
 	SetInstanceIds(v []*string) *DescribeCreditDetailRequest
 	GetInstanceIds() []*string
+	SetMaxResults(v int32) *DescribeCreditDetailRequest
+	GetMaxResults() *int32
+	SetNextToken(v string) *DescribeCreditDetailRequest
+	GetNextToken() *string
 	SetPackageIds(v []*string) *DescribeCreditDetailRequest
 	GetPackageIds() []*string
 	SetPageNum(v string) *DescribeCreditDetailRequest
@@ -32,7 +36,9 @@ type DescribeCreditDetailRequest struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The list of instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The list of resource plan or credit booster pack IDs.
+	MaxResults  *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken   *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The list of plan packages or credit top-up packages.
 	PackageIds []*string `json:"PackageIds,omitempty" xml:"PackageIds,omitempty" type:"Repeated"`
 	// The page number. Default value: 1.
 	//
@@ -70,6 +76,14 @@ func (s *DescribeCreditDetailRequest) GetInstanceIds() []*string {
 	return s.InstanceIds
 }
 
+func (s *DescribeCreditDetailRequest) GetMaxResults() *int32 {
+	return s.MaxResults
+}
+
+func (s *DescribeCreditDetailRequest) GetNextToken() *string {
+	return s.NextToken
+}
+
 func (s *DescribeCreditDetailRequest) GetPackageIds() []*string {
 	return s.PackageIds
 }
@@ -93,6 +107,16 @@ func (s *DescribeCreditDetailRequest) SetEndTime(v int64) *DescribeCreditDetailR
 
 func (s *DescribeCreditDetailRequest) SetInstanceIds(v []*string) *DescribeCreditDetailRequest {
 	s.InstanceIds = v
+	return s
+}
+
+func (s *DescribeCreditDetailRequest) SetMaxResults(v int32) *DescribeCreditDetailRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeCreditDetailRequest) SetNextToken(v string) *DescribeCreditDetailRequest {
+	s.NextToken = &v
 	return s
 }
 
