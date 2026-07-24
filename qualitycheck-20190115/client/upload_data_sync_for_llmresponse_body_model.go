@@ -22,11 +22,31 @@ type iUploadDataSyncForLLMResponseBody interface {
 }
 
 type UploadDataSyncForLLMResponseBody struct {
-	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *UploadDataSyncForLLMResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The result code. A value of 200 indicates success. Other values indicate failure. You can use this field to determine the cause of failure.
+	//
+	// example:
+	//
+	// 200
+	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *UploadDataSyncForLLMResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message if the request fails. The value is **successful*	- if the request succeeds.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 3CEA0495-341B-4482-9AD9-8191EF4***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values: true: The request was successful. false/null: The request failed.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UploadDataSyncForLLMResponseBody) String() string {
@@ -222,6 +242,7 @@ func (s *UploadDataSyncForLLMResponseBodyDataResultInfoRules) Validate() error {
 type UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfo struct {
 	ConditionInfo *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfoConditionInfo `json:"ConditionInfo,omitempty" xml:"ConditionInfo,omitempty" type:"Struct"`
 	Hit           *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfoHit           `json:"Hit,omitempty" xml:"Hit,omitempty" type:"Struct"`
+	Name          *string                                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
 	Rid           *string                                                                      `json:"Rid,omitempty" xml:"Rid,omitempty"`
 	Tid           *string                                                                      `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
@@ -242,6 +263,10 @@ func (s *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfo) GetHit(
 	return s.Hit
 }
 
+func (s *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfo) GetName() *string {
+	return s.Name
+}
+
 func (s *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfo) GetRid() *string {
 	return s.Rid
 }
@@ -257,6 +282,11 @@ func (s *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfo) SetCond
 
 func (s *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfo) SetHit(v *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfoHit) *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfo {
 	s.Hit = v
+	return s
+}
+
+func (s *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfo) SetName(v string) *UploadDataSyncForLLMResponseBodyDataResultInfoRulesRuleHitInfo {
+	s.Name = &v
 	return s
 }
 

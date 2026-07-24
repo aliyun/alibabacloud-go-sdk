@@ -18,7 +18,7 @@ type iUploadDataSyncRequest interface {
 type UploadDataSyncRequest struct {
 	// The business space ID.
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
-	// A JSON string that contains the custom parameters for the operation. See the **jsonStr attributes*	- section for details.
+	// A JSON string that contains all custom parameters for this operation. For more information, see the **jsonStr property description*	- below.
 	//
 	// This parameter is required.
 	//

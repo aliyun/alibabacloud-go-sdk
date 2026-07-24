@@ -22,26 +22,26 @@ type iUploadDataSyncResponseBody interface {
 }
 
 type UploadDataSyncResponseBody struct {
-	// The result `code`. A value of **200*	- indicates that the request was successful. Other values indicate failure. Use this field to identify the cause of the failure.
+	// The result code. A value of **200*	- indicates success. Other values indicate failure. You can use this field to determine the cause of failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data *UploadDataSyncResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message. If the request succeeds, the value is **successful**. Otherwise, this parameter provides error details.
+	// The error details when an error occurs. The value is **successful*	- when the request succeeds.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The `request ID`.
+	// The request ID.
 	//
 	// example:
 	//
 	// 4987D326-83D9-4A42-B9A5-0B27F9B***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Specifies whether the request succeeded. `true` indicates success; `false` or `null` indicates failure.
+	// Indicates whether the request was successful. Valid values: true and false/null.
 	//
 	// example:
 	//
@@ -283,6 +283,7 @@ type UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfo struct {
 	ConditionInfo *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoConditionInfo `json:"ConditionInfo,omitempty" xml:"ConditionInfo,omitempty" type:"Struct"`
 	Hit           *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoHit           `json:"Hit,omitempty" xml:"Hit,omitempty" type:"Struct"`
 	LlmResponse   *string                                                                `json:"LlmResponse,omitempty" xml:"LlmResponse,omitempty"`
+	Name          *string                                                                `json:"Name,omitempty" xml:"Name,omitempty"`
 	Rid           *string                                                                `json:"Rid,omitempty" xml:"Rid,omitempty"`
 	Tid           *string                                                                `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
@@ -307,6 +308,10 @@ func (s *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfo) GetLlmRespons
 	return s.LlmResponse
 }
 
+func (s *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfo) GetName() *string {
+	return s.Name
+}
+
 func (s *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfo) GetRid() *string {
 	return s.Rid
 }
@@ -327,6 +332,11 @@ func (s *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfo) SetHit(v *Upl
 
 func (s *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfo) SetLlmResponse(v string) *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfo {
 	s.LlmResponse = &v
+	return s
+}
+
+func (s *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfo) SetName(v string) *UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfo {
+	s.Name = &v
 	return s
 }
 

@@ -42,7 +42,7 @@ type GetAgentTaskResultResponseBody struct {
 	//
 	// F190ADE9-619A-447D-84E3-7E241A5C428E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. You can use this field to determine whether the request was successful:
+	// Indicates whether the request was successful. You can use this field to determine whether the request succeeded:
 	//
 	// - **true**: The request was successful.
 	//
@@ -117,6 +117,8 @@ func (s *GetAgentTaskResultResponseBody) Validate() error {
 }
 
 type GetAgentTaskResultResponseBodyData struct {
+	Dialogues    []*GetAgentTaskResultResponseBodyDataDialogues `json:"Dialogues,omitempty" xml:"Dialogues,omitempty" type:"Repeated"`
+	ErrorMessage *string                                        `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The number of input tokens.
 	//
 	// example:
@@ -135,7 +137,7 @@ type GetAgentTaskResultResponseBodyData struct {
 	//
 	// 200
 	OutputTokens *string `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
-	// The result of the computing task.
+	// The result of the computation task.
 	Response *GetAgentTaskResultResponseBodyDataResponse `json:"Response,omitempty" xml:"Response,omitempty" type:"Struct"`
 	// The task status. Valid values:
 	//
@@ -191,6 +193,14 @@ func (s GetAgentTaskResultResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *GetAgentTaskResultResponseBodyData) GetDialogues() []*GetAgentTaskResultResponseBodyDataDialogues {
+	return s.Dialogues
+}
+
+func (s *GetAgentTaskResultResponseBodyData) GetErrorMessage() *string {
+	return s.ErrorMessage
+}
+
 func (s *GetAgentTaskResultResponseBodyData) GetInputTokens() *string {
 	return s.InputTokens
 }
@@ -229,6 +239,16 @@ func (s *GetAgentTaskResultResponseBodyData) GetTyxmTurboCount() *string {
 
 func (s *GetAgentTaskResultResponseBodyData) GetVid() *string {
 	return s.Vid
+}
+
+func (s *GetAgentTaskResultResponseBodyData) SetDialogues(v []*GetAgentTaskResultResponseBodyDataDialogues) *GetAgentTaskResultResponseBodyData {
+	s.Dialogues = v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyData) SetErrorMessage(v string) *GetAgentTaskResultResponseBodyData {
+	s.ErrorMessage = &v
+	return s
 }
 
 func (s *GetAgentTaskResultResponseBodyData) SetInputTokens(v string) *GetAgentTaskResultResponseBodyData {
@@ -282,6 +302,15 @@ func (s *GetAgentTaskResultResponseBodyData) SetVid(v string) *GetAgentTaskResul
 }
 
 func (s *GetAgentTaskResultResponseBodyData) Validate() error {
+	if s.Dialogues != nil {
+		for _, item := range s.Dialogues {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.Response != nil {
 		if err := s.Response.Validate(); err != nil {
 			return err
@@ -290,10 +319,95 @@ func (s *GetAgentTaskResultResponseBodyData) Validate() error {
 	return nil
 }
 
+type GetAgentTaskResultResponseBodyDataDialogues struct {
+	Begin        *int64  `json:"Begin,omitempty" xml:"Begin,omitempty"`
+	EmotionValue *int32  `json:"EmotionValue,omitempty" xml:"EmotionValue,omitempty"`
+	End          *int64  `json:"End,omitempty" xml:"End,omitempty"`
+	HourMinSec   *string `json:"HourMinSec,omitempty" xml:"HourMinSec,omitempty"`
+	Role         *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	SpeechRate   *int32  `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	Words        *string `json:"Words,omitempty" xml:"Words,omitempty"`
+}
+
+func (s GetAgentTaskResultResponseBodyDataDialogues) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetAgentTaskResultResponseBodyDataDialogues) GoString() string {
+	return s.String()
+}
+
+func (s *GetAgentTaskResultResponseBodyDataDialogues) GetBegin() *int64 {
+	return s.Begin
+}
+
+func (s *GetAgentTaskResultResponseBodyDataDialogues) GetEmotionValue() *int32 {
+	return s.EmotionValue
+}
+
+func (s *GetAgentTaskResultResponseBodyDataDialogues) GetEnd() *int64 {
+	return s.End
+}
+
+func (s *GetAgentTaskResultResponseBodyDataDialogues) GetHourMinSec() *string {
+	return s.HourMinSec
+}
+
+func (s *GetAgentTaskResultResponseBodyDataDialogues) GetRole() *string {
+	return s.Role
+}
+
+func (s *GetAgentTaskResultResponseBodyDataDialogues) GetSpeechRate() *int32 {
+	return s.SpeechRate
+}
+
+func (s *GetAgentTaskResultResponseBodyDataDialogues) GetWords() *string {
+	return s.Words
+}
+
+func (s *GetAgentTaskResultResponseBodyDataDialogues) SetBegin(v int64) *GetAgentTaskResultResponseBodyDataDialogues {
+	s.Begin = &v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataDialogues) SetEmotionValue(v int32) *GetAgentTaskResultResponseBodyDataDialogues {
+	s.EmotionValue = &v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataDialogues) SetEnd(v int64) *GetAgentTaskResultResponseBodyDataDialogues {
+	s.End = &v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataDialogues) SetHourMinSec(v string) *GetAgentTaskResultResponseBodyDataDialogues {
+	s.HourMinSec = &v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataDialogues) SetRole(v string) *GetAgentTaskResultResponseBodyDataDialogues {
+	s.Role = &v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataDialogues) SetSpeechRate(v int32) *GetAgentTaskResultResponseBodyDataDialogues {
+	s.SpeechRate = &v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataDialogues) SetWords(v string) *GetAgentTaskResultResponseBodyDataDialogues {
+	s.Words = &v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataDialogues) Validate() error {
+	return dara.Validate(s)
+}
+
 type GetAgentTaskResultResponseBodyDataResponse struct {
 	// The result of the custom prompt.
 	CustomerPromptResponse *GetAgentTaskResultResponseBodyDataResponseCustomerPromptResponse `json:"CustomerPromptResponse,omitempty" xml:"CustomerPromptResponse,omitempty" type:"Struct"`
-	// The property extraction result.
+	// The field extraction result.
 	FieldResponse *GetAgentTaskResultResponseBodyDataResponseFieldResponse `json:"FieldResponse,omitempty" xml:"FieldResponse,omitempty" type:"Struct"`
 	// The service quality inspection result.
 	ServiceInspectionResponse *GetAgentTaskResultResponseBodyDataResponseServiceInspectionResponse `json:"ServiceInspectionResponse,omitempty" xml:"ServiceInspectionResponse,omitempty" type:"Struct"`
@@ -374,7 +488,7 @@ type GetAgentTaskResultResponseBodyDataResponseCustomerPromptResponse struct {
 	//
 	// example:
 	//
-	// 175/xl面料摸着很舒服,穿起来看着也挺修身的挺好的好衣服超好看,质量手感没得说一级棒,很满意的一次购物。
+	// 175/xl the fabric feels very comfortable, looks slim when worn, great clothes super good-looking, quality and feel are top-notch, very satisfied with this purchase.
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
@@ -400,7 +514,7 @@ func (s *GetAgentTaskResultResponseBodyDataResponseCustomerPromptResponse) Valid
 }
 
 type GetAgentTaskResultResponseBodyDataResponseFieldResponse struct {
-	// The list of properties.
+	// The list of fields.
 	FieldVoList []*GetAgentTaskResultResponseBodyDataResponseFieldResponseFieldVoList `json:"FieldVoList,omitempty" xml:"FieldVoList,omitempty" type:"Repeated"`
 }
 
@@ -435,7 +549,7 @@ func (s *GetAgentTaskResultResponseBodyDataResponseFieldResponse) Validate() err
 }
 
 type GetAgentTaskResultResponseBodyDataResponseFieldResponseFieldVoList struct {
-	// The property name.
+	// The field name.
 	//
 	// example:
 	//
@@ -447,9 +561,9 @@ type GetAgentTaskResultResponseBodyDataResponseFieldResponseFieldVoList struct {
 	//
 	// example:
 	//
-	// 通过客服第一句话判断
+	// Determined by the first sentence of the agent.
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
-	// The property value.
+	// The field value.
 	//
 	// example:
 	//
@@ -545,9 +659,9 @@ type GetAgentTaskResultResponseBodyDataResponseServiceInspectionResponseServiceI
 	//
 	// example:
 	//
-	// 服务态度
+	// Service attitude.
 	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	// Indicates whether a match is found.
+	// Indicates whether the tag is matched.
 	//
 	// example:
 	//
@@ -559,7 +673,7 @@ type GetAgentTaskResultResponseBodyDataResponseServiceInspectionResponseServiceI
 	//
 	// example:
 	//
-	// 通过客服第一句话判断
+	// Determined by the first sentence of the agent.
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
 }
 
@@ -612,7 +726,7 @@ func (s *GetAgentTaskResultResponseBodyDataResponseServiceInspectionResponseServ
 }
 
 type GetAgentTaskResultResponseBodyDataResponseTagCategoryResponse struct {
-	// The list of labels.
+	// The list of tags.
 	TagCategoryVoList []*GetAgentTaskResultResponseBodyDataResponseTagCategoryResponseTagCategoryVoList `json:"TagCategoryVoList,omitempty" xml:"TagCategoryVoList,omitempty" type:"Repeated"`
 }
 
@@ -647,13 +761,13 @@ func (s *GetAgentTaskResultResponseBodyDataResponseTagCategoryResponse) Validate
 }
 
 type GetAgentTaskResultResponseBodyDataResponseTagCategoryResponseTagCategoryVoList struct {
-	// The label dimension.
+	// The tag dimension.
 	//
 	// example:
 	//
-	// 客户意图
+	// Customer intent.
 	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	// Indicates whether a match is found.
+	// Indicates whether the tag is matched.
 	//
 	// example:
 	//
@@ -665,7 +779,7 @@ type GetAgentTaskResultResponseBodyDataResponseTagCategoryResponseTagCategoryVoL
 	//
 	// example:
 	//
-	// 通过客服第一句话判断
+	// Determined by the first sentence of the agent.
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
 	// The list of matched labels.
 	ResultLabels []*string `json:"ResultLabels,omitempty" xml:"ResultLabels,omitempty" type:"Repeated"`

@@ -16,8 +16,19 @@ type iUploadDataSyncForLLMRequest interface {
 }
 
 type UploadDataSyncForLLMRequest struct {
+	// The business space ID.
+	//
+	// example:
+	//
+	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// The complete JSON string. For more information about the content, see the following details.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {\\"tickets\\":[{\\"dialogue\\":[{\\"role\\":\\"Agent\\",\\"words\\":\\"Yes\\",\\"end\\":0,\\"beginTime\\":1783909236618,\\"begin\\":0}],\\"tid\\":\\"20260713-20240612032225161783909236618\\"}],\\"commonRuleIds\\":[\\"20773\\"]}
 	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
 }
 
