@@ -40,7 +40,7 @@ type SubmitVideoGenerationJobRequest struct {
 	//
 	// 9:16
 	AspectRatio *string `json:"AspectRatio,omitempty" xml:"AspectRatio,omitempty"`
-	// The idempotency token.
+	// The idempotence parameter.
 	//
 	// example:
 	//
@@ -56,15 +56,15 @@ type SubmitVideoGenerationJobRequest struct {
 	//
 	// - Prompt: String. Required. The prompt.
 	//
-	// - Medias: The media list.
+	// - Medias: The list of media items.
 	//
-	//   - When JobType is image_to_video, this field is required. Only 1 Media item is needed.
+	//   - When JobType is set to image_to_video, this field is required. Only 1 Media item is needed.
 	//
-	//   - When JobType is first_last_frame, this field is required. Only 2 Media items are needed.
+	//   - When JobType is set to first_last_frame, this field is required. Only 2 Media items are needed.
 	//
-	//   - When JobType is reference_to_video, this field is required. A maximum of 9 Media items are supported.
+	//   - When JobType is set to reference_to_video, this field is required. A maximum of 9 Media items are supported.
 	//
-	// > The Media structure contains: Type, the media type (String). Valid values: `image`, `video`, or `audio`. URL, the media download URL (String).
+	// > The Media struct contains: Type, the media type, String, valid values are `image`/`video`/`audio`. URL, the media download URL, String.
 	//
 	// >
 	//
@@ -72,7 +72,7 @@ type SubmitVideoGenerationJobRequest struct {
 	//
 	// {"Prompt":"图1在篮球场上，用图2来了个灌篮","Medias":[{"Type":"image","Url":"https://xxx/xxx.jpg"},{"Type":"image","Url":"https://xxx/xxx.jpg"}]}
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	// The task function parameters. No configuration is required at this time.
+	// The task feature parameters. No configuration is required at this time.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type SubmitVideoGenerationJobRequest struct {
 	//
 	// 720P
 	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
-	// The scenario type. Currently only `general` is supported.
+	// The scene type. Currently only `general` is supported.
 	//
 	// example:
 	//

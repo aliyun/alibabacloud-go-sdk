@@ -62,13 +62,13 @@ func (s *GetImageGenerationJobResponseBody) Validate() error {
 }
 
 type GetImageGenerationJobResponseBodyImageGenerationJob struct {
-	// The video aspect ratio.
+	// The aspect ratio of the video.
 	//
 	// example:
 	//
 	// 16:9
 	AspectRatio *string `json:"AspectRatio,omitempty" xml:"AspectRatio,omitempty"`
-	// The error message. This parameter is returned only when the task is in the Failed state.
+	// The error message. The value is of the String type. This parameter is returned when the task is in the Failed state.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type GetImageGenerationJobResponseBodyImageGenerationJob struct {
 	//
 	// fdc7f121056249c2b64e04bba27bcc8c
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The task feature configuration. No configuration is required at this time.
+	// The task feature configuration. You do not need to set this parameter.
 	//
 	// example:
 	//
@@ -110,13 +110,13 @@ type GetImageGenerationJobResponseBodyImageGenerationJob struct {
 	//
 	// 1
 	N *string `json:"N,omitempty" xml:"N,omitempty"`
-	// The generation result in JSON string format. Fields:
+	// The generation result. The value is a JSON string that contains the following fields:
 	//
-	// - Medias: a list of media information (Media objects). Fields of a Media object:
+	// - Medias: a list of media information (Media objects). A Media object contains the following fields:
 	//
-	//   - MediaId: String. The media asset ID.
+	//   - MediaId: the media asset ID. The value is of the String type.
 	//
-	//   - OutputUrl: String. The media URL (with authentication string).
+	//   - OutputUrl: the media URL (with an authentication string). The value is of the String type.
 	//
 	// example:
 	//
@@ -128,7 +128,7 @@ type GetImageGenerationJobResponseBodyImageGenerationJob struct {
 	//
 	// 1K
 	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
-	// The scenario type. Currently, only `general` is supported.
+	// The scene type. Currently, only `general` is supported.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type GetImageGenerationJobResponseBodyImageGenerationJob struct {
 	//
 	// Executing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The custom business information.
+	// The user business information.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iResumeYikeStoryboardJobRequest interface {
 }
 
 type ResumeYikeStoryboardJobRequest struct {
-	// The ID of the snapshot task.
+	// The ID of the screenshot job.
 	//
 	// example:
 	//

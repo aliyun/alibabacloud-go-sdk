@@ -241,7 +241,7 @@ func (client *Client) CreateYikeAssetUploadWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 创建一刻云剪辑工程
+// Creates a cloud editing project.
 //
 // @param request - CreateYikeEditingProjectRequest
 //
@@ -507,9 +507,7 @@ func (client *Client) DeleteYikeAssetMediaInfosWithContext(ctx context.Context, 
 //
 // Description:
 //
-// ## Request description
-//
-// This API is used to generate a video narrated by a virtual human based on the provided text content and other parameters such as digital human information and common scenario type. You must specify key configuration items including the text type (original script or narration script), output dimensions, and resolution. You can also choose whether to add subtitles or specify the output language. In addition, you can pass custom parameters through the `UserData` field, which are returned as-is in the callback.
+// The AI generation-related operations in the 2026-03-19 version of the API will be discontinued soon. Upgrade to the 2026-07-07 version.
 //
 // @param request - GetImageGenerationJobRequest
 //
@@ -553,7 +551,11 @@ func (client *Client) GetImageGenerationJobWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries a video generation task.
+// Queries an AI video generation task.
+//
+// Description:
+//
+// The AI generation-related operations in the 2026-03-19 API version will be deprecated soon. Upgrade to the 2026-07-07 version.
 //
 // @param request - GetVideoGenerationJobRequest
 //
@@ -722,6 +724,54 @@ func (client *Client) GetYikeAgentJobWithContext(ctx context.Context, request *G
 
 // Summary:
 //
+// 查询一刻口播任务预估积分
+//
+// @param request - GetYikeAgentJobEstimatedCreditRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetYikeAgentJobEstimatedCreditResponse
+func (client *Client) GetYikeAgentJobEstimatedCreditWithContext(ctx context.Context, request *GetYikeAgentJobEstimatedCreditRequest, runtime *dara.RuntimeOptions) (_result *GetYikeAgentJobEstimatedCreditResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.JobAction) {
+		body["JobAction"] = request.JobAction
+	}
+
+	if !dara.IsNil(request.JobParams) {
+		body["JobParams"] = request.JobParams
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetYikeAgentJobEstimatedCredit"),
+		Version:     dara.String("2026-03-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetYikeAgentJobEstimatedCreditResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the content information of a media asset.
 //
 // @param request - GetYikeAssetMediaInfoRequest
@@ -756,6 +806,50 @@ func (client *Client) GetYikeAssetMediaInfoWithContext(ctx context.Context, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetYikeAssetMediaInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询一刻任务实际消耗积分
+//
+// @param request - GetYikeJobCreditRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetYikeJobCreditResponse
+func (client *Client) GetYikeJobCreditWithContext(ctx context.Context, request *GetYikeJobCreditRequest, runtime *dara.RuntimeOptions) (_result *GetYikeJobCreditResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		body["JobId"] = request.JobId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetYikeJobCredit"),
+		Version:     dara.String("2026-03-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetYikeJobCreditResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1294,7 +1388,7 @@ func (client *Client) RegisterYikeAssetMediaInfoWithContext(ctx context.Context,
 
 // Summary:
 //
-// Resumes the execution of a storyboard task.
+// Resumes the execution of a storyboard job.
 //
 // @param request - ResumeYikeStoryboardJobRequest
 //
@@ -1486,9 +1580,7 @@ func (client *Client) SubYikeUserCreditWithContext(ctx context.Context, request 
 //
 // Description:
 //
-// ## Request description
-//
-// This API is used to generate a video narrated by a virtual human based on the provided text content and other parameters (such as digital human information and application scenario type). You must specify key configuration items such as the text type (original script or narration script), output dimensions, and resolution. You can also choose whether to add subtitles or specify the output language. In addition, you can pass custom parameters through the `UserData` field, which are returned as-is in the callback.
+// The AI generation API operations in the 2026-03-19 version will be deprecated soon. Upgrade to the 2026-07-07 version.
 //
 // @param request - SubmitImageGenerationJobRequest
 //
@@ -1568,13 +1660,11 @@ func (client *Client) SubmitImageGenerationJobWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Submits a video generation task.
+// Submits an AI video generation task.
 //
 // Description:
 //
-// ## Request description
-//
-// This API generates a video featuring a virtual human speaking based on the provided text content and other parameters (such as digital human information and common scenarios type). You must specify the text type (original script or spoken script), output dimensions, resolution, and other key configuration items. You can also choose whether to add subtitles or specify the output language. Additionally, you can pass custom parameters through the `UserData` field, which are returned as-is in the callback.
+// The current version will be deprecated soon. Use the latest version by visiting this [link](https://api.aliyun.com/document/Yike/2026-07-07/SubmitVideoGenerationJob).
 //
 // @param request - SubmitVideoGenerationJobRequest
 //
@@ -2080,7 +2170,7 @@ func (client *Client) SubmitYikeVoiceNarratorJobWithContext(ctx context.Context,
 
 // Summary:
 //
-// # Update a Yike project
+// Updates a China Short Video (Yike) project.
 //
 // @param request - UpdateYikeProductionRequest
 //

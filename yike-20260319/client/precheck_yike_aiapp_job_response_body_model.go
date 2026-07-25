@@ -24,7 +24,7 @@ type PrecheckYikeAIAppJobResponseBody struct {
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The parameters that failed the pre-check. This parameter is returned only when the pre-check fails.
+	// The check results returned when the pre-check fails. Only the parameters that failed the check are returned.
 	Result []*PrecheckYikeAIAppJobResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// The pre-check result. Valid values:
 	//
@@ -87,7 +87,7 @@ func (s *PrecheckYikeAIAppJobResponseBody) Validate() error {
 }
 
 type PrecheckYikeAIAppJobResponseBodyResult struct {
-	// The cause of the parameter check failure.
+	// The cause of the parameter check exception.
 	//
 	// example:
 	//

@@ -16,10 +16,14 @@ type iCreateYikeEditingProjectResponseBody interface {
 }
 
 type CreateYikeEditingProjectResponseBody struct {
+	// The ID of the online editing project.
+	//
 	// example:
 	//
 	// ***545bc38a94aa9840c89aff017b***
 	EditingProjectId *string `json:"EditingProjectId,omitempty" xml:"EditingProjectId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******

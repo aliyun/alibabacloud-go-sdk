@@ -74,7 +74,7 @@ type GetVideoGenerationJobResponseBodyVideoGenerationJob struct {
 	//
 	// 5
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The error message. This parameter is returned only when the task is in the Failed state.
+	// The error message. This parameter is returned when the task is in the Failed state.
 	//
 	// example:
 	//
@@ -92,7 +92,7 @@ type GetVideoGenerationJobResponseBodyVideoGenerationJob struct {
 	//
 	// fdc7f121056249c2b64e04bba27bcc8c
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The task feature configuration. This parameter does not need to be set.
+	// The task feature configuration. You do not need to set this parameter.
 	//
 	// example:
 	//
@@ -118,11 +118,11 @@ type GetVideoGenerationJobResponseBodyVideoGenerationJob struct {
 	N *int32 `json:"N,omitempty" xml:"N,omitempty"`
 	// The generation result. The value is a JSON string that contains the following fields:
 	//
-	// Medias: a list of Media objects. Each Media object contains the following fields:
+	// Medias: a list of media information (Media objects). A Media object contains the following fields:
 	//
 	// MediaId: String. The media asset ID.
 	//
-	// OutputUrl: String. The media URL (with the authentication string).
+	// OutputUrl: String. The media URL (with an authentication string).
 	//
 	// example:
 	//
@@ -156,7 +156,7 @@ type GetVideoGenerationJobResponseBodyVideoGenerationJob struct {
 	//
 	// Executing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The user business information.
+	// The custom business information.
 	//
 	// example:
 	//
