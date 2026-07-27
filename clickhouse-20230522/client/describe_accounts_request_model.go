@@ -11,10 +11,10 @@ type iDescribeAccountsRequest interface {
 	GoString() string
 	SetDBInstanceId(v string) *DescribeAccountsRequest
 	GetDBInstanceId() *string
-	SetPageNumber(v string) *DescribeAccountsRequest
-	GetPageNumber() *string
-	SetPageSize(v string) *DescribeAccountsRequest
-	GetPageSize() *string
+	SetPageNumber(v int32) *DescribeAccountsRequest
+	GetPageNumber() *int32
+	SetPageSize(v int32) *DescribeAccountsRequest
+	GetPageSize() *int32
 	SetProduct(v string) *DescribeAccountsRequest
 	GetProduct() *string
 	SetRegionId(v string) *DescribeAccountsRequest
@@ -35,7 +35,7 @@ type DescribeAccountsRequest struct {
 	// example:
 	//
 	// 1
-	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
 	// - **30*	- (default)
@@ -47,8 +47,8 @@ type DescribeAccountsRequest struct {
 	// example:
 	//
 	// 30
-	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The code of the cloud service.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The product code.
 	//
 	// example:
 	//
@@ -74,11 +74,11 @@ func (s *DescribeAccountsRequest) GetDBInstanceId() *string {
 	return s.DBInstanceId
 }
 
-func (s *DescribeAccountsRequest) GetPageNumber() *string {
+func (s *DescribeAccountsRequest) GetPageNumber() *int32 {
 	return s.PageNumber
 }
 
-func (s *DescribeAccountsRequest) GetPageSize() *string {
+func (s *DescribeAccountsRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
@@ -95,12 +95,12 @@ func (s *DescribeAccountsRequest) SetDBInstanceId(v string) *DescribeAccountsReq
 	return s
 }
 
-func (s *DescribeAccountsRequest) SetPageNumber(v string) *DescribeAccountsRequest {
+func (s *DescribeAccountsRequest) SetPageNumber(v int32) *DescribeAccountsRequest {
 	s.PageNumber = &v
 	return s
 }
 
-func (s *DescribeAccountsRequest) SetPageSize(v string) *DescribeAccountsRequest {
+func (s *DescribeAccountsRequest) SetPageSize(v int32) *DescribeAccountsRequest {
 	s.PageSize = &v
 	return s
 }

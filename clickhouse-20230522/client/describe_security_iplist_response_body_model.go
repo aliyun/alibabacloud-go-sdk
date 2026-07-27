@@ -16,7 +16,7 @@ type iDescribeSecurityIPListResponseBody interface {
 }
 
 type DescribeSecurityIPListResponseBody struct {
-	// The data returned.
+	// The returned result.
 	Data *DescribeSecurityIPListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -74,7 +74,7 @@ type DescribeSecurityIPListResponseBodyData struct {
 	//
 	// Cluster test
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The whitelist groups.
+	// The list of whitelist groups.
 	GroupItems []*DescribeSecurityIPListResponseBodyDataGroupItems `json:"GroupItems,omitempty" xml:"GroupItems,omitempty" type:"Repeated"`
 }
 
@@ -139,13 +139,13 @@ type DescribeSecurityIPListResponseBodyDataGroupItems struct {
 	//
 	// test
 	GroupTag *string `json:"GroupTag,omitempty" xml:"GroupTag,omitempty"`
-	// The IP addresses in the whitelist group.
+	// The list of IP addresses in the whitelist group.
 	//
 	// example:
 	//
 	// 127.0.XX.XX
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	// The IP address type.
+	// The type of the IP address.
 	//
 	// example:
 	//

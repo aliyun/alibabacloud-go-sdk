@@ -16,7 +16,7 @@ type iDescribeAccountsResponseBody interface {
 }
 
 type DescribeAccountsResponseBody struct {
-	// The result returned.
+	// The returned result.
 	Data *DescribeAccountsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *DescribeAccountsResponseBody) Validate() error {
 }
 
 type DescribeAccountsResponseBodyData struct {
-	// The database accounts.
+	// The list of accounts.
 	Accounts []*DescribeAccountsResponseBodyDataAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -82,7 +82,7 @@ type DescribeAccountsResponseBodyData struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -148,7 +148,7 @@ func (s *DescribeAccountsResponseBodyData) Validate() error {
 }
 
 type DescribeAccountsResponseBodyDataAccounts struct {
-	// The username of the database account.
+	// The database account.
 	//
 	// example:
 	//
@@ -156,27 +156,27 @@ type DescribeAccountsResponseBodyDataAccounts struct {
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
 	// The type of the database account. Valid values:
 	//
-	// - **1**: standard account
+	// - **1**: Standard account.
 	//
-	// - **6**: privileged account
+	// - **6**: Privileged account.
 	//
 	// example:
 	//
 	// 1
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// The description.
+	// The description of the account.
 	//
 	// example:
 	//
 	// For testing
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The state of the database account. Valid values:
+	// The account status. Valid values:
 	//
-	// - **0**: The database account is being created.
+	// - **0**: Being created.
 	//
-	// - **1**: The database account is in use.
+	// - **1**: In use.
 	//
-	// - **3**: The database account is being deleted.
+	// - **3**: Being deleted.
 	//
 	// example:
 	//

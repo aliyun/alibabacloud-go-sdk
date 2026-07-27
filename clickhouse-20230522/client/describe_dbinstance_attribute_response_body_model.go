@@ -16,7 +16,7 @@ type iDescribeDBInstanceAttributeResponseBody interface {
 }
 
 type DescribeDBInstanceAttributeResponseBody struct {
-	// The returned data.
+	// The response data.
 	Data *DescribeDBInstanceAttributeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -74,29 +74,25 @@ type DescribeDBInstanceAttributeResponseBodyData struct {
 	//
 	// PD39050615820269****
 	Bid *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
-	// The edition of the cluster. Valid value:
-	//
-	// - `enterprise`: enterprise edition
+	// The category. Valid values:
 	//
 	// example:
 	//
 	// enterprise
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The billing method of the cluster.
-	//
-	// enterprise edition clusters are billed on a pay-as-you-go basis.
+	// The billing method.
 	//
 	// example:
 	//
 	// POSTPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The status of the ClickObserve service.
+	// The ClickObserve service status.
 	//
 	// example:
 	//
 	// activation
 	ClickObserveServiceStatus *string `json:"ClickObserveServiceStatus,omitempty" xml:"ClickObserveServiceStatus,omitempty"`
-	// The creation time of the cluster, in `YYYY-MM-DDTHH:mm:ssZ` format.
+	// The creation time of the cluster. Format: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
@@ -108,19 +104,13 @@ type DescribeDBInstanceAttributeResponseBodyData struct {
 	//
 	// cc-bp100p4q1g9z3****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// Whether deletion protection is enabled.
+	// Indicates whether deletion protection is enabled.
 	//
 	// example:
 	//
 	// 0/1
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	// The deployment architecture of the cluster. Valid values: `single_az` and `multi_az`.
-	//
-	// - `single_az`: The nodes are deployed in the primary zone specified by `ZoneId`.
-	//
-	// - `multi_az`: The nodes are deployed across the zones specified in `MultiZones`.
-	//
-	// Keeper nodes are always deployed across the zones specified in `MultiZones`.
+	// The zone deployment status of the cluster. Valid values: single_az and multi_az.
 	//
 	// example:
 	//
@@ -132,13 +122,13 @@ type DescribeDBInstanceAttributeResponseBodyData struct {
 	//
 	// cluster test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// A comma-separated list of disabled database ports.
+	// The disabled database ports. Multiple ports are separated by commas (,).
 	//
 	// example:
 	//
 	// 9001,8123
 	DisabledPorts *string `json:"DisabledPorts,omitempty" xml:"DisabledPorts,omitempty"`
-	// The engine.
+	// The engine type.
 	//
 	// example:
 	//
@@ -150,23 +140,21 @@ type DescribeDBInstanceAttributeResponseBodyData struct {
 	//
 	// 23.8.1.41495_6
 	EngineMinorVersion *string `json:"EngineMinorVersion,omitempty" xml:"EngineMinorVersion,omitempty"`
-	// The engine version.
+	// The DPI engine version.
 	//
 	// example:
 	//
 	// 23.8
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The expiration time of the cluster, in `YYYY-MM-DDTHH:mm:ssZ` format.
-	//
-	// > Pay-as-you-go clusters do not expire. An empty string is returned.
+	// The expiration time of the cluster. Format: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2024-04-17T08:14:48Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// A list of Langfuse instance IDs.
+	// The list of Langfuse instance IDs.
 	LangfuseInstanceIds []*string `json:"LangfuseInstanceIds,omitempty" xml:"LangfuseInstanceIds,omitempty" type:"Repeated"`
-	// The latest minor version of the cluster engine.
+	// The latest minor engine version.
 	//
 	// example:
 	//
@@ -178,7 +166,7 @@ type DescribeDBInstanceAttributeResponseBodyData struct {
 	//
 	// 0
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// The reason for the lock.
+	// The lock reason.
 	//
 	// example:
 	//
@@ -196,7 +184,7 @@ type DescribeDBInstanceAttributeResponseBodyData struct {
 	//
 	// 11:00Z
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	// The zones for a multi-zone deployment.
+	// The multi-zone information.
 	MultiZones []*DescribeDBInstanceAttributeResponseBodyDataMultiZones `json:"MultiZones,omitempty" xml:"MultiZones,omitempty" type:"Repeated"`
 	// The number of nodes.
 	//
@@ -204,21 +192,21 @@ type DescribeDBInstanceAttributeResponseBodyData struct {
 	//
 	// 2
 	NodeCount *string `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
-	// The maximum number of nodes for auto scaling of a serverless cluster.
+	// The maximum elastic scaling value for serverless nodes.
 	//
 	// example:
 	//
 	// 32
 	NodeScaleMax *string `json:"NodeScaleMax,omitempty" xml:"NodeScaleMax,omitempty"`
-	// The minimum number of nodes for auto scaling of a serverless cluster.
+	// The minimum elastic scaling value for serverless nodes.
 	//
 	// example:
 	//
 	// 4
 	NodeScaleMin *string `json:"NodeScaleMin,omitempty" xml:"NodeScaleMin,omitempty"`
-	// The cluster nodes.
+	// The node information.
 	Nodes []*DescribeDBInstanceAttributeResponseBodyDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	// The storage capacity of Object Storage Service (OSS).
+	// The object storage size.
 	//
 	// example:
 	//
@@ -236,31 +224,31 @@ type DescribeDBInstanceAttributeResponseBodyData struct {
 	//
 	// rg-acfmzygvt54****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The maximum value for serverless auto scaling.
+	// The maximum scaling value for serverless elastic scaling.
 	//
 	// example:
 	//
 	// 32
 	ScaleMax *int32 `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
-	// The minimum value for serverless auto scaling.
+	// The minimum scaling value for serverless elastic scaling.
 	//
 	// example:
 	//
 	// 8
 	ScaleMin *int32 `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
-	// The status of the instance.
+	// The instance status.
 	//
 	// example:
 	//
 	// ACTIVATION
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The provisioned storage, in GB.
+	// The pre-purchased storage quota, in GB.
 	//
 	// example:
 	//
 	// 100
 	StorageQuota *string `json:"StorageQuota,omitempty" xml:"StorageQuota,omitempty"`
-	// The storage space, in GB.
+	// The storage size. Unit: GB.
 	//
 	// example:
 	//
@@ -272,7 +260,7 @@ type DescribeDBInstanceAttributeResponseBodyData struct {
 	//
 	// 100
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The cluster tags.
+	// The tag information.
 	Tags []*DescribeDBInstanceAttributeResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The vSwitch ID.
 	//
@@ -280,7 +268,7 @@ type DescribeDBInstanceAttributeResponseBodyData struct {
 	//
 	// vsw-uf67ij56zm9x4uc6hmilg
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The VPC ID.
+	// VPC ID。
 	//
 	// example:
 	//
@@ -698,7 +686,7 @@ func (s *DescribeDBInstanceAttributeResponseBodyData) Validate() error {
 }
 
 type DescribeDBInstanceAttributeResponseBodyDataMultiZones struct {
-	// An array of vSwitch IDs.
+	// The array of vSwitch IDs.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 	// The zone ID.
 	//
@@ -739,7 +727,7 @@ func (s *DescribeDBInstanceAttributeResponseBodyDataMultiZones) Validate() error
 }
 
 type DescribeDBInstanceAttributeResponseBodyDataNodes struct {
-	// The status of the node.
+	// The running status of the node.
 	//
 	// example:
 	//

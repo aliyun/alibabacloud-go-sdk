@@ -16,7 +16,7 @@ type iDescribeProcessListResponseBody interface {
 }
 
 type DescribeProcessListResponseBody struct {
-	// The data object.
+	// The returned result.
 	Data *DescribeProcessListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -76,7 +76,7 @@ type DescribeProcessListResponseBodyData struct {
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	// The result set.
 	ResultSet []*DescribeProcessListResponseBodyDataResultSet `json:"ResultSet,omitempty" xml:"ResultSet,omitempty" type:"Repeated"`
-	// The total number of entries that match the filter criteria.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ func (s *DescribeProcessListResponseBodyData) Validate() error {
 }
 
 type DescribeProcessListResponseBodyDataResultSet struct {
-	// The address from which the query was initiated.
+	// The query address.
 	//
 	// example:
 	//
@@ -154,25 +154,25 @@ type DescribeProcessListResponseBodyDataResultSet struct {
 	//
 	// \\"79f7e40b-87e2-4ef4-b6df-21889a3a030e\\"
 	InitialQueryId *string `json:"InitialQueryId,omitempty" xml:"InitialQueryId,omitempty"`
-	// The user who initiated the query.
+	// The query user.
 	//
 	// example:
 	//
 	// bany
 	InitialUser *string `json:"InitialUser,omitempty" xml:"InitialUser,omitempty"`
-	// The query statement.
+	// The statement that is being queried.
 	//
 	// example:
 	//
 	// select 	- from test
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// The execution duration of the query, in milliseconds (ms).
+	// The minimum query duration. Minimum value: **1000**. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1000
 	QueryDurationMs *int64 `json:"QueryDurationMs,omitempty" xml:"QueryDurationMs,omitempty"`
-	// The start time of the query. The time is in UTC and follows the `yyyy-MM-ddTHH:mm:ssZ` format.
+	// The time when the query started. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
 	//
 	// example:
 	//

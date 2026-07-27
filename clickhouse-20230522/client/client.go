@@ -74,7 +74,7 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"eu-west-1":                   dara.String("clickhouse.eu-west-1.aliyuncs.com"),
 		"eu-central-1":                dara.String("clickhouse.eu-central-1.aliyuncs.com"),
 		"cn-zhangjiakou":              dara.String("clickhouse.cn-zhangjiakou.aliyuncs.com"),
-		"cn-wulanchabu":               dara.String("clickhouse.aliyuncs.com"),
+		"cn-wulanchabu":               dara.String("clickhouse.cn-wulanchabu.aliyuncs.com"),
 		"cn-huhehaote":                dara.String("clickhouse.cn-huhehaote.aliyuncs.com"),
 		"cn-guangzhou":                dara.String("clickhouse.cn-guangzhou.aliyuncs.com"),
 		"cn-chengdu":                  dara.String("clickhouse.cn-chengdu.aliyuncs.com"),
@@ -1974,7 +1974,7 @@ func (client *Client) DescribeAccountAuthority(request *DescribeAccountAuthority
 
 // Summary:
 //
-// Queries database accounts for an ApsaraDB for ClickHouse cluster.
+// Queries the list of database accounts for a specified ApsaraDB for ClickHouse cluster.
 //
 // @param request - DescribeAccountsRequest
 //
@@ -2034,7 +2034,7 @@ func (client *Client) DescribeAccountsWithOptions(request *DescribeAccountsReque
 
 // Summary:
 //
-// Queries database accounts for an ApsaraDB for ClickHouse cluster.
+// Queries the list of database accounts for a specified ApsaraDB for ClickHouse cluster.
 //
 // @param request - DescribeAccountsRequest
 //
@@ -2204,7 +2204,7 @@ func (client *Client) DescribeBackups(request *DescribeBackupsRequest) (_result 
 
 // Summary:
 //
-// Call DescribeDBInstanceAttribute to query the details of an ApsaraDB for ClickHouse enterprise edition cluster.
+// Queries the details of an ApsaraDB for ClickHouse cluster.
 //
 // @param request - DescribeDBInstanceAttributeRequest
 //
@@ -2252,7 +2252,7 @@ func (client *Client) DescribeDBInstanceAttributeWithOptions(request *DescribeDB
 
 // Summary:
 //
-// Call DescribeDBInstanceAttribute to query the details of an ApsaraDB for ClickHouse enterprise edition cluster.
+// Queries the details of an ApsaraDB for ClickHouse cluster.
 //
 // @param request - DescribeDBInstanceAttributeRequest
 //
@@ -2554,7 +2554,7 @@ func (client *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (
 
 // Summary:
 //
-// To retrieve the cluster endpoints, call DescribeEndpoints.
+// Calls the DescribeEndpoints operation to query the endpoints of a cluster.
 //
 // @param request - DescribeEndpointsRequest
 //
@@ -2606,7 +2606,7 @@ func (client *Client) DescribeEndpointsWithOptions(request *DescribeEndpointsReq
 
 // Summary:
 //
-// To retrieve the cluster endpoints, call DescribeEndpoints.
+// Calls the DescribeEndpoints operation to query the endpoints of a cluster.
 //
 // @param request - DescribeEndpointsRequest
 //
@@ -3212,7 +3212,7 @@ func (client *Client) DescribeLangfuseUsers(request *DescribeLangfuseUsersReques
 
 // Summary:
 //
-// Describes currently running queries.
+// Calls the DescribeProcessList operation to view queries that are currently running.
 //
 // @param request - DescribeProcessListRequest
 //
@@ -3292,7 +3292,7 @@ func (client *Client) DescribeProcessListWithOptions(request *DescribeProcessLis
 
 // Summary:
 //
-// Describes currently running queries.
+// Calls the DescribeProcessList operation to view queries that are currently running.
 //
 // @param request - DescribeProcessListRequest
 //
@@ -3355,7 +3355,7 @@ func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err 
 
 // Summary:
 //
-// Queries a whitelist.
+// Queries the IP address whitelist of a cluster by calling the DescribeSecurityIPList operation.
 //
 // @param request - DescribeSecurityIPListRequest
 //
@@ -3403,7 +3403,7 @@ func (client *Client) DescribeSecurityIPListWithOptions(request *DescribeSecurit
 
 // Summary:
 //
-// Queries a whitelist.
+// Queries the IP address whitelist of a cluster by calling the DescribeSecurityIPList operation.
 //
 // @param request - DescribeSecurityIPListRequest
 //

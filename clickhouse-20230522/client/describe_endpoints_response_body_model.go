@@ -16,7 +16,7 @@ type iDescribeEndpointsResponseBody interface {
 }
 
 type DescribeEndpointsResponseBody struct {
-	// The response data.
+	// The returned data.
 	Data *DescribeEndpointsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,13 +62,13 @@ func (s *DescribeEndpointsResponseBody) Validate() error {
 }
 
 type DescribeEndpointsResponseBodyData struct {
-	// The endpoints.
+	// The list of endpoint details.
 	Endpoints []*DescribeEndpointsResponseBodyDataEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
 	// The network type of the instance. Valid values:
 	//
-	// - **VPC**
+	// 	- **VPC**: virtual private cloud.
 	//
-	// - **PUBLIC**: Internet.
+	// 	- **PUBLIC**: public network.
 	//
 	// example:
 	//
@@ -116,13 +116,13 @@ func (s *DescribeEndpointsResponseBodyData) Validate() error {
 }
 
 type DescribeEndpointsResponseBodyDataEndpoints struct {
-	// The computing group ID.
+	// The compute group ID.
 	//
 	// example:
 	//
 	// cc-ad321**-clickhouse
 	ComputingGroupId *string `json:"ComputingGroupId,omitempty" xml:"ComputingGroupId,omitempty"`
-	// The instance connection string.
+	// The endpoint of the instance.
 	//
 	// example:
 	//
@@ -142,17 +142,17 @@ type DescribeEndpointsResponseBodyDataEndpoints struct {
 	IPAddress *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
 	// The network type of the endpoint. Valid values:
 	//
-	// - VPC
+	// - VPC: virtual private cloud.
 	//
-	// - PUBLIC: Internet.
+	// - PUBLIC: public network.
 	//
 	// example:
 	//
 	// VPC
 	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	// The ports.
+	// The list of port details.
 	Ports []*DescribeEndpointsResponseBodyDataEndpointsPorts `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
-	// The status of the endpoint.
+	// The status.
 	//
 	// example:
 	//
@@ -164,13 +164,13 @@ type DescribeEndpointsResponseBodyDataEndpoints struct {
 	//
 	// vsw-0xi8829****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The VPC ID.
+	// VPC ID。
 	//
 	// example:
 	//
 	// vpc-uf61z****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The VPC instance ID.
+	// The VPC-connected instance ID.
 	//
 	// example:
 	//
@@ -290,7 +290,7 @@ func (s *DescribeEndpointsResponseBodyDataEndpoints) Validate() error {
 }
 
 type DescribeEndpointsResponseBodyDataEndpointsPorts struct {
-	// The port number. The value varies based on the protocol type. For example:
+	// The access port. Valid values:
 	//
 	// - HttpPort: 8123
 	//

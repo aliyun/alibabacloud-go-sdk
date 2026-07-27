@@ -32,7 +32,7 @@ type iDescribeProcessListRequest interface {
 }
 
 type DescribeProcessListRequest struct {
-	// The computing group ID.
+	// The compute group ID.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type DescribeProcessListRequest struct {
 	//
 	// testuser
 	InitialUser *string `json:"InitialUser,omitempty" xml:"InitialUser,omitempty"`
-	// The keyword in the query statement.
+	// The keyword of the query statement.
 	//
 	// example:
 	//
@@ -70,31 +70,33 @@ type DescribeProcessListRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The minimum query execution duration, in milliseconds (ms). Only queries that run for this duration or longer are returned. The minimum value is 1,000.
+	// The execution duration of slow SQL statements. Unit: ms. Minimum value: 1000 ms.
 	//
 	// example:
 	//
 	// 1000
 	QueryDurationMs *string `json:"QueryDurationMs,omitempty" xml:"QueryDurationMs,omitempty"`
-	// The criteria by which to sort the results. The results are sorted in descending order. Valid values:
+	// Sorts the results in descending order by the specified columns.
 	//
-	// - 0: Sorts by `query_duration_ms`.
+	// - 0: sorts by query_duration_ms only.
 	//
-	// - 1: Sorts by `query_duration_ms` and `query_start_time`.
+	// - 1: sorts by query_duration_ms and query_start_time.
 	//
-	// - 2: Sorts by `query_duration_ms`, `query_start_time`, and `user`.
+	// - 2: sorts by query_duration_ms, query_start_time, and user.
 	//
 	// example:
 	//
 	// 0
 	QueryOrder *int64 `json:"QueryOrder,omitempty" xml:"QueryOrder,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//

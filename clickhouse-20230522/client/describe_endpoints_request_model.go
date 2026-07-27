@@ -18,7 +18,7 @@ type iDescribeEndpointsRequest interface {
 }
 
 type DescribeEndpointsRequest struct {
-	// The computing group ID.
+	// The compute group ID.
 	//
 	// example:
 	//
@@ -33,6 +33,8 @@ type DescribeEndpointsRequest struct {
 	// cc-xxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//

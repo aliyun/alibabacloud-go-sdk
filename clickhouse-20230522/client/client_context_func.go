@@ -1435,7 +1435,7 @@ func (client *Client) DescribeAccountAuthorityWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries database accounts for an ApsaraDB for ClickHouse cluster.
+// Queries the list of database accounts for a specified ApsaraDB for ClickHouse cluster.
 //
 // @param request - DescribeAccountsRequest
 //
@@ -1611,7 +1611,7 @@ func (client *Client) DescribeBackupsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Call DescribeDBInstanceAttribute to query the details of an ApsaraDB for ClickHouse enterprise edition cluster.
+// Queries the details of an ApsaraDB for ClickHouse cluster.
 //
 // @param request - DescribeDBInstanceAttributeRequest
 //
@@ -1871,7 +1871,7 @@ func (client *Client) DescribeDBInstancesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// To retrieve the cluster endpoints, call DescribeEndpoints.
+// Calls the DescribeEndpoints operation to query the endpoints of a cluster.
 //
 // @param request - DescribeEndpointsRequest
 //
@@ -2367,7 +2367,7 @@ func (client *Client) DescribeLangfuseUsersWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Describes currently running queries.
+// Calls the DescribeProcessList operation to view queries that are currently running.
 //
 // @param request - DescribeProcessListRequest
 //
@@ -2447,7 +2447,7 @@ func (client *Client) DescribeProcessListWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries a whitelist.
+// Queries the IP address whitelist of a cluster by calling the DescribeSecurityIPList operation.
 //
 // @param request - DescribeSecurityIPListRequest
 //
