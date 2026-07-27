@@ -256,7 +256,7 @@ type ListRemindsResponseBodyDataReminds struct {
 	//
 	// example:
 	//
-	// Alert Rule
+	// Rule name
 	RemindName *string `json:"RemindName,omitempty" xml:"RemindName,omitempty"`
 	// The condition that triggers an alert. Valid values: FINISHED, UNFINISHED, ERROR, CYCLE_UNFINISHED, and TIMEOUT.
 	//

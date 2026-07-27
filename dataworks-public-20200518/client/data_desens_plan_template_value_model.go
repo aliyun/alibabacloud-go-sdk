@@ -18,23 +18,23 @@ type iDataDesensPlanTemplateValue interface {
 }
 
 type DataDesensPlanTemplateValue struct {
-	// The name of the data masking method.
+	// The name of the Desensitization Method.
 	//
 	// example:
 	//
 	// hash
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether a watermark is added. Valid values:
+	// Indicates whether watermarking is supported. Valid values:
 	//
-	// 	- true: allow
+	// - true: Watermarking is supported.
 	//
-	// 	- false: disallow
+	// - false: Watermarking is not supported.
 	//
 	// example:
 	//
 	// true
 	SupportWaterMark *bool `json:"SupportWaterMark,omitempty" xml:"SupportWaterMark,omitempty"`
-	// The data masking parameters and their descriptions.
+	// A list of Desensitization Parameters and their descriptions.
 	ExtParamTemplate []interface{} `json:"ExtParamTemplate,omitempty" xml:"ExtParamTemplate,omitempty" type:"Repeated"`
 }
 

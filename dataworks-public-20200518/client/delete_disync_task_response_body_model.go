@@ -28,9 +28,9 @@ type DeleteDISyncTaskResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -91,9 +91,9 @@ type DeleteDISyncTaskResponseBodyData struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Indicates whether the synchronization task is deleted. Valid values:
 	//
-	// 	- success: The synchronization task is deleted.
+	// - success: The synchronization task is deleted.
 	//
-	// 	- fail: The synchronization task fails to be deleted. You can troubleshoot the issue based on the failure reason.
+	// - fail: The synchronization task fails to be deleted. You can troubleshoot the issue based on the failure reason.
 	//
 	// example:
 	//

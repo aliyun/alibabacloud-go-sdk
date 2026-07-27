@@ -34,7 +34,7 @@ type UpdateDIJobShrinkRequest struct {
 	//
 	// example:
 	//
-	// Synchronize mysql to hologres
+	// Synchronize MySQL to Hologres
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The settings for the dimension of the synchronization task. The settings include processing policies for DDL messages, policies for data type mappings between source fields and destination fields, and runtime parameters of the synchronization task.
 	JobSettingsShrink *string `json:"JobSettings,omitempty" xml:"JobSettings,omitempty"`

@@ -24,7 +24,7 @@ type iListQualityRulesResponseBody interface {
 }
 
 type ListQualityRulesResponseBody struct {
-	// The list of retrieved rules.
+	// The paginated list of quality rules.
 	Data *ListQualityRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
@@ -44,7 +44,7 @@ type ListQualityRulesResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID. You can troubleshoot errors based on the ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -52,9 +52,9 @@ type ListQualityRulesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -140,13 +140,13 @@ type ListQualityRulesResponseBodyData struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 10. Maximum value: 100.
+	// The number of entries per page. A valid value is 1 to 100. Default value: 10.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The details of the validation rule.
+	// The details of the quality rule.
 	Rules []*ListQualityRulesResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 	// The total number of entries returned.
 	//
@@ -216,9 +216,11 @@ func (s *ListQualityRulesResponseBodyData) Validate() error {
 type ListQualityRulesResponseBodyDataRules struct {
 	// The strength of the monitoring rule. The strength of a monitoring rule indicates the importance of the rule. Valid values:
 	//
-	// 	- 1: The monitoring rule is a strong rule.
+	// - `1`: The monitoring rule is a strong rule.
 	//
-	// 	- 0: The monitoring rule is a weak rule. You can specify the strength of a monitoring rule based on your business requirements. If a monitoring rule is a strong rule and the critical threshold is exceeded, a critical alert is reported and tasks that are associated with the rule are blocked from running.
+	// - `0`: The monitoring rule is a weak rule.
+	//
+	//   You can specify a monitoring rule as a strong rule based on your business requirements. If a strong rule is triggered, a critical alert is reported and the scheduling of the task is blocked.
 	//
 	// example:
 	//
@@ -236,7 +238,7 @@ type ListQualityRulesResponseBodyDataRules struct {
 	//
 	// Verify table rules
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The threshold for a critical alert. The threshold indicates the deviation of the monitoring result from the expected value. You can specify a custom value for the threshold based on your business requirements. If a monitoring rule is a strong rule and the critical threshold is exceeded, a critical alert is reported and tasks that are associated with the rule are blocked from running.
+	// The threshold for a critical alert. The threshold specifies the deviation of a monitoring result from the expected value. You can customize the threshold based on your business requirements. If a strong rule is used and a critical alert is triggered, the scheduling of the task is blocked.
 	//
 	// example:
 	//
@@ -254,7 +256,7 @@ type ListQualityRulesResponseBodyDataRules struct {
 	//
 	// 1000
 	ExpectValue *string `json:"ExpectValue,omitempty" xml:"ExpectValue,omitempty"`
-	// Indicates whether the monitoring is performed based on a fixed value.
+	// Indicates whether a fixed value is used for the check.
 	//
 	// example:
 	//
@@ -272,7 +274,7 @@ type ListQualityRulesResponseBodyDataRules struct {
 	//
 	// history max:40%,history min:10%
 	HistoryWarningThreshold *string `json:"HistoryWarningThreshold,omitempty" xml:"HistoryWarningThreshold,omitempty"`
-	// The monitoring rule ID.
+	// The ID of the monitoring rule.
 	//
 	// example:
 	//
@@ -284,19 +286,19 @@ type ListQualityRulesResponseBodyDataRules struct {
 	//
 	// dt=$[yyyymmdd]
 	MatchExpression *string `json:"MatchExpression,omitempty" xml:"MatchExpression,omitempty"`
-	// The ID of the task that is associated with the partition filter expression.
+	// The ID of the method used to collect sample data.
 	//
 	// example:
 	//
 	// 21
 	MethodId *int32 `json:"MethodId,omitempty" xml:"MethodId,omitempty"`
-	// The method that is used to collect sample data, such as avg, count, sum, min, max, count_distinct, user_defined, table_count, table_size, table_dt_load_count, table_dt_refuseload_count, null_value, null_value/table_count, (table_count-count_distinct)/table_count, or table_count-count_distinct.
+	// The name of the method used to collect sample data, such as `avg`, `count`, `sum`, `min`, `max`, `count_distinct`, `user_defined`, `table_count`, `table_size`, `table_dt_load_count`, `table_dt_refuseload_count`, `null_value`, `null_value/table_count`, `(table_count-count_distinct)/table_count`, or `table_count-count_distinct`.
 	//
 	// example:
 	//
 	// count/table_count
 	MethodName *string `json:"MethodName,omitempty" xml:"MethodName,omitempty"`
-	// The name of the Alibaba Cloud account that is used to configure the monitoring rule.
+	// The ID of the Alibaba Cloud account that is used to configure the monitoring rule.
 	//
 	// example:
 	//
@@ -320,13 +322,13 @@ type ListQualityRulesResponseBodyDataRules struct {
 	//
 	// id
 	Property *string `json:"Property,omitempty" xml:"Property,omitempty"`
-	// The field that is used to associate with monitoring rules at the frontend. This parameter can be ignored.
+	// This parameter is not used. You can ignore this parameter.
 	//
 	// example:
 	//
 	// table_count
 	PropertyKey *string `json:"PropertyKey,omitempty" xml:"PropertyKey,omitempty"`
-	// The ID of the task that is associated with the partition filter expression.
+	// The internal association ID for the rule details.
 	//
 	// example:
 	//
@@ -338,13 +340,13 @@ type ListQualityRulesResponseBodyDataRules struct {
 	//
 	// test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// Rule type:
+	// The type of the monitoring rule. Valid values:
 	//
-	// 	- 0: System template rule
+	// - `0`: The monitoring rule is created by the system.
 	//
-	// 	- 1: Custom SQL rule
+	// - `1`: The monitoring rule is created by a user.
 	//
-	// 	- 1: Custom template rule
+	// - `2`: The monitoring rule is a workspace-level rule.
 	//
 	// example:
 	//
@@ -374,7 +376,7 @@ type ListQualityRulesResponseBodyDataRules struct {
 	//
 	// abs
 	Trend *string `json:"Trend,omitempty" xml:"Trend,omitempty"`
-	// The threshold for a warning alert. The threshold specifies the deviation of the monitoring result from the expected value. You can specify a custom value for the threshold based on your business requirements.
+	// The threshold for a warning alert. The threshold specifies the deviation of a monitoring result from the expected value. You can customize the threshold based on your business requirements.
 	//
 	// example:
 	//

@@ -28,7 +28,7 @@ type ListDataServiceFoldersRequest struct {
 	//
 	// example:
 	//
-	// Keyword in folder names
+	// Folder name keyword
 	FolderNameKeyword *string `json:"FolderNameKeyword,omitempty" xml:"FolderNameKeyword,omitempty"`
 	// The ID of the business process to which the folders belong.
 	//

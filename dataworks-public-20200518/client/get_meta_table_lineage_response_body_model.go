@@ -142,7 +142,7 @@ type GetMetaTableLineageResponseBodyData struct {
 	//
 	// example:
 	//
-	// odps | retail_e_commerce_2 | retail_e_commerce_2 | dws_ec_trd__cate_commodity_gmv_kpy_fy
+	// odps.tt.2
 	NextPrimaryKey *string `json:"NextPrimaryKey,omitempty" xml:"NextPrimaryKey,omitempty"`
 }
 

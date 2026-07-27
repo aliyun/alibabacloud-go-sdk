@@ -24,11 +24,11 @@ type iDeleteQualityFollowerResponseBody interface {
 }
 
 type DeleteQualityFollowerResponseBody struct {
-	// Indicates whether the subscriber was successfully deleted. Valid values:
+	// Indicates whether the follower of the partition filter expression was deleted. Valid values:
 	//
-	// 	- true: The subscriber was successfully deleted.
+	// - `true`: The follower was deleted.
 	//
-	// 	- false: The subscriber failed to be deleted. You can troubleshoot errors based on the error message returned.
+	// - `false`: The follower failed to be deleted. You can troubleshoot the issue based on the error message.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type DeleteQualityFollowerResponseBody struct {
 	//
 	// 401
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned when the subscriber failed to be deleted.
+	// The error message returned if the follower of the partition filter expression fails to be deleted.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type DeleteQualityFollowerResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID. You can troubleshoot errors based on the ID.
+	// The request ID. This parameter is used to troubleshoot issues.
 	//
 	// example:
 	//
@@ -60,9 +60,9 @@ type DeleteQualityFollowerResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - `true`: The request was successful.
 	//
-	// 	- false
+	// - `false`: The request failed.
 	//
 	// example:
 	//

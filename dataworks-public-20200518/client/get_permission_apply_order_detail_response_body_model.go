@@ -16,7 +16,7 @@ type iGetPermissionApplyOrderDetailResponseBody interface {
 }
 
 type GetPermissionApplyOrderDetailResponseBody struct {
-	// Details of the permission request order.
+	// The details of the request order.
 	ApplyOrderDetail *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetail `json:"ApplyOrderDetail,omitempty" xml:"ApplyOrderDetail,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,51 +62,57 @@ func (s *GetPermissionApplyOrderDetailResponseBody) Validate() error {
 }
 
 type GetPermissionApplyOrderDetailResponseBodyApplyOrderDetail struct {
-	// The ID of the Alibaba Cloud account that was used to submit the permission request order.
+	// The UID of the Alibaba Cloud account that submitted the request order.
 	//
 	// example:
 	//
-	// 267842600408993176
+	// 26784260040899****
 	ApplyBaseId *string `json:"ApplyBaseId,omitempty" xml:"ApplyBaseId,omitempty"`
-	// The time when the permission request order was submitted. The value is a UNIX timestamp.
+	// The time when the request order was submitted, displayed as a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1615284086000
 	ApplyTimestamp *int64 `json:"ApplyTimestamp,omitempty" xml:"ApplyTimestamp,omitempty"`
-	// The list of Alibaba Cloud accounts that are used to process the permission request order.
+	// The list of Alibaba Cloud accounts that approved the request order.
 	ApproveAccountList []*GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveAccountList `json:"ApproveAccountList,omitempty" xml:"ApproveAccountList,omitempty" type:"Repeated"`
-	// The content of the permission request.
+	// The specific content of the request.
 	ApproveContent *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContent `json:"ApproveContent,omitempty" xml:"ApproveContent,omitempty" type:"Struct"`
+	// The time when the final approval was completed, displayed as a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1757496687000
 	FinishAapprovalTimestamp *int64 `json:"FinishAapprovalTimestamp,omitempty" xml:"FinishAapprovalTimestamp,omitempty"`
+	// The final approval comment.
+	//
 	// example:
 	//
 	// agree
 	FinishApprovalComment *string `json:"FinishApprovalComment,omitempty" xml:"FinishApprovalComment,omitempty"`
-	// The ID of the permission request order.
+	// The ID of the request order.
 	//
 	// example:
 	//
-	// ad8da78d-8135-455e-9486-27cf213fc140
+	// ad8da78d-8135-455e-9486-27cf213f****
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// The status of the permission request order. Valid values:
+	// The status of the request order. Valid values:
 	//
-	// 	- 1: to be processed
+	// - 1: Pending approval.
 	//
-	// 	- 2: approved and authorized
+	// - 2: Approved and authorization succeeded.
 	//
-	// 	- 3: approved but authorization failed
+	// - 3: Approved but authorization failed.
 	//
-	// 	- 4: rejected
+	// - 4: Rejected.
+	//
+	// - 5: Withdrawn.
 	//
 	// example:
 	//
 	// 2
 	FlowStatus *int32 `json:"FlowStatus,omitempty" xml:"FlowStatus,omitempty"`
-	// The information about the account that is used to request permissions.
+	// The information about the accounts that requested permissions.
 	GranteeObjectList []*GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailGranteeObjectList `json:"GranteeObjectList,omitempty" xml:"GranteeObjectList,omitempty" type:"Repeated"`
 }
 
@@ -227,7 +233,7 @@ func (s *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetail) Validate() e
 }
 
 type GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveAccountList struct {
-	// The ID of the Alibaba Cloud account that is used to process the permission request order.
+	// The UID of the Alibaba Cloud account that approved the request order.
 	//
 	// example:
 	//
@@ -257,25 +263,27 @@ func (s *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveAccount
 }
 
 type GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContent struct {
-	// The reason of the permission request. The administrator processes the request based on the reason.
+	// The reason for the request, used as a reference for the administrator during approval.
 	//
 	// example:
 	//
 	// I need to use this table
 	ApplyReason *string `json:"ApplyReason,omitempty" xml:"ApplyReason,omitempty"`
-	// The expiration time of the permissions that you request. The value is a UNIX timestamp. If LabelSecurity is disabled for the MaxCompute project in which you want to request permissions on the fields of a table, or the security level of the fields is 0 or is lower than or equal to the security level of the Alibaba Cloud account for which you want to request permissions, you can request only permanent permissions.
+	// The expiration time of the requested permissions, displayed as a UNIX timestamp.
+	//
+	// If the MaxCompute project does not have LabelSecurity enabled, or the security level of the requested table field is 0 or less than or equal to the security level of the requesting account, only permanent permissions can be requested.
 	//
 	// example:
 	//
 	// 1617115071885
 	Deadline *int64 `json:"Deadline,omitempty" xml:"Deadline,omitempty"`
-	// The type of the permission request order. The parameter value is 1 and cannot be changed. This value indicates ACL-based authorization.
+	// The type of the request order. Currently, only the value 1 is supported, indicating an object ACL permission request.
 	//
 	// example:
 	//
 	// 1
 	OrderType *int32 `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The information about the project and workspace that are associated with the object on which you request permissions.
+	// The information about the project and workspace to which the requested object belongs.
 	ProjectMeta *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentProjectMeta `json:"ProjectMeta,omitempty" xml:"ProjectMeta,omitempty" type:"Struct"`
 }
 
@@ -333,19 +341,19 @@ func (s *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContent
 }
 
 type GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentProjectMeta struct {
-	// The MaxCompute project to which the object on which you request permissions belongs.
+	// The MaxCompute project in which the requested object resides.
 	//
 	// example:
 	//
 	// aMaxComputeProject
 	MaxComputeProjectName *string `json:"MaxComputeProjectName,omitempty" xml:"MaxComputeProjectName,omitempty"`
-	// The details about the object on which you request permissions.
+	// The detailed information about the requested objects.
 	ObjectMetaList []*GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentProjectMetaObjectMetaList `json:"ObjectMetaList,omitempty" xml:"ObjectMetaList,omitempty" type:"Repeated"`
-	// The ID of the DataWorks workspace that is associated with the object on which you request permissions.
+	// The ID of the DataWorks workspace in which the requested object resides.
 	//
 	// example:
 	//
-	// 12345
+	// 123456
 	WorkspaceId *int32 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -399,9 +407,9 @@ func (s *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContent
 
 type GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentProjectMetaObjectMetaList struct {
 	Actions []*string `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
-	// The information about the column fields in the object on which you request permissions.
+	// The column field information of the requested object.
 	ColumnMetaList []*GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentProjectMetaObjectMetaListColumnMetaList `json:"ColumnMetaList,omitempty" xml:"ColumnMetaList,omitempty" type:"Repeated"`
-	// The name of the table on which you request permissions.
+	// The name of the requested table.
 	//
 	// example:
 	//
@@ -459,19 +467,19 @@ func (s *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContent
 
 type GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentProjectMetaObjectMetaListColumnMetaList struct {
 	ColumnActions []*string `json:"ColumnActions,omitempty" xml:"ColumnActions,omitempty" type:"Repeated"`
-	// The description of the column on which you request permissions.
+	// The description of the requested column.
 	//
 	// example:
 	//
 	// Field description
 	ColumnComment *string `json:"ColumnComment,omitempty" xml:"ColumnComment,omitempty"`
-	// The name of the column on which you request permissions.
+	// The name of the requested column.
 	//
 	// example:
 	//
 	// aColumnName
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	// The security level of the column on which you request permissions. Valid values: 0 to 9.
+	// The security level of the requested column. Valid values: 0 to 9.
 	//
 	// example:
 	//
@@ -528,35 +536,35 @@ func (s *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContent
 }
 
 type GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailGranteeObjectList struct {
-	// The ID of the account that is used to request permissions.
+	// The UID of the Alibaba Cloud account that requested permissions.
 	//
 	// example:
 	//
-	// 267842600408993176
+	// 26784260040899****
 	GranteeId *string `json:"GranteeId,omitempty" xml:"GranteeId,omitempty"`
-	// The name of the account that is used to request permissions. The name is in the same format as that of the account used to access the MaxCompute project.
+	// The name of the Alibaba Cloud account that requested permissions. The format is consistent with the MaxCompute account format.
 	//
-	// 	- If the account is an Alibaba Cloud account, the value is in the ALIYUN$+Account name format.
+	// - Primary account: ALIYUN$+account name.
 	//
-	// 	- If the account is a RAM user, the value is in the RAM$+Account name format.
+	// - RAM user: RAM$+account name.
 	//
 	// example:
 	//
 	// RAM$dataworks_3h1_1:StsRamUser(StsRamUser)
 	GranteeName *string `json:"GranteeName,omitempty" xml:"GranteeName,omitempty"`
-	// The type of the subject that requests permissions. The value is fixed as 1, which indicates users.
+	// The type of the entity that requested permissions. Currently, only 1 (user) is supported.
 	//
 	// example:
 	//
 	// 1
 	GranteeType *int32 `json:"GranteeType,omitempty" xml:"GranteeType,omitempty"`
-	// The subtype of the subject that requests permissions. Valid values:
+	// The subtype of the entity that requested permissions. Valid values:
 	//
-	// 	- 101: production account
+	// - 101: Production Alibaba Cloud account.
 	//
-	// 	- 103: individual account
+	// - 103: Personal Alibaba Cloud account.
 	//
-	// 	- 105: account that requests permissions for others
+	// - 105: Alibaba Cloud account applied on behalf of another user.
 	//
 	// example:
 	//

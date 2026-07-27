@@ -28,19 +28,19 @@ type iDsgQuerySensResultResponseBody interface {
 }
 
 type DsgQuerySensResultResponseBody struct {
-	// The data returned.
+	// The returned data.
 	//
 	// example:
 	//
 	// 1234
 	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error code. The value is the same as that of ErrorCode.
+	// The error code. The value is the same as ErrorCode.
 	//
 	// example:
 	//
 	// 400
 	DynamicErrorCode *string `json:"DynamicErrorCode,omitempty" xml:"DynamicErrorCode,omitempty"`
-	// The error message. The value is the same as that of ErrorMessage.
+	// The error message. The value is the same as ErrorMessage.
 	//
 	// example:
 	//
@@ -64,17 +64,17 @@ type DsgQuerySensResultResponseBody struct {
 	//
 	// 400
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID.
+	// The request ID. It is a unique identifier for the request.
 	//
 	// example:
 	//
 	// 900000001
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- true
+	// - true: successful.
 	//
-	// 	- false
+	// - false: failed.
 	//
 	// example:
 	//

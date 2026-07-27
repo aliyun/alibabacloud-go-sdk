@@ -38,7 +38,7 @@ type ListInnerNodesRequest struct {
 	//
 	// example:
 	//
-	// 1234
+	// 12345
 	OuterNodeId *int64 `json:"OuterNodeId,omitempty" xml:"OuterNodeId,omitempty"`
 	// The page number. Valid values: 1 to 100.
 	//

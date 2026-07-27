@@ -18,8 +18,12 @@ type iRelationshipVO interface {
 }
 
 type RelationshipVO struct {
-	Attributes       map[string]*string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	RelationshipGuid *string            `json:"RelationshipGuid,omitempty" xml:"RelationshipGuid,omitempty"`
+	// Additional attributes.
+	Attributes map[string]*string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// The unique identifier for the relationship.
+	RelationshipGuid *string `json:"RelationshipGuid,omitempty" xml:"RelationshipGuid,omitempty"`
+	// The type of the relationship.
+	//
 	// example:
 	//
 	// sql

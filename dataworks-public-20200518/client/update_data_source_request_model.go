@@ -272,7 +272,7 @@ type UpdateDataSourceRequest struct {
 	//
 	// example:
 	//
-	// {"accessId":"xssssss","accessKey":"xsaxsaxsa","authType":2,"endpoint":"http://service.odps.aliyun.com/api","project":"xsaxsax","tag":"public"}
+	// {"accessId":"*****","accessKey":"*****","authType":2,"endpoint":"http://service.odps.aliyun.com/api","project":"xsaxsax","tag":"public"}
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The ID of the data source. You can call the [ListDataSources](https://help.aliyun.com/document_detail/2780072.html) operation to query the ID.
 	//

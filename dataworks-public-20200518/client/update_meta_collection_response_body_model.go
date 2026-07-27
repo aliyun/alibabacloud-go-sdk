@@ -56,9 +56,9 @@ type UpdateMetaCollectionResponseBody struct {
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true: The request was successful.
+	// - true: The request was successful.
 	//
-	// 	- false: The request failed.
+	// - false: The request failed.
 	//
 	// example:
 	//

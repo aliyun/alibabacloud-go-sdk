@@ -26,33 +26,11 @@ type iCreateQualityEntityRequest interface {
 type CreateQualityEntityRequest struct {
 	// This parameter is deprecated.
 	//
-	// The value 0 indicates that the partition filter expression is at the SQL level, and the system checks data quality after each SQL statement is executed.
-	//
-	// 	- 0
-	//
-	// 	- 1
-	//
 	// example:
 	//
 	// 0
 	EntityLevel *int32 `json:"EntityLevel,omitempty" xml:"EntityLevel,omitempty"`
-	// The type of the compute engine or data source.
-	//
-	// Valid values:
-	//
-	// 	- odps
-	//
-	// 	- emr
-	//
-	// 	- hadoop
-	//
-	// 	- cdh
-	//
-	// 	- analyticdb_for_mysql
-	//
-	// 	- hybriddb_for_postgresql
-	//
-	// 	- holodb
+	// The type of the engine or data source. Valid values: ODPS, EMR, CDH, and HOLO.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +38,7 @@ type CreateQualityEntityRequest struct {
 	//
 	// ODPS
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The partition filter expression.
+	// The partition expression.
 	//
 	// This parameter is required.
 	//
@@ -68,13 +46,13 @@ type CreateQualityEntityRequest struct {
 	//
 	// dt=$[yyyymmdd]
 	MatchExpression *string `json:"MatchExpression,omitempty" xml:"MatchExpression,omitempty"`
-	// The DataWorks workspace ID. You can log on to the DataWorks console to query the ID.
+	// The ID of the DataWorks workspace. You can go to the DataWorks console to obtain the workspace ID.
 	//
 	// example:
 	//
 	// 123
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The name of the compute engine or data source.
+	// The name of the engine or data source.
 	//
 	// This parameter is required.
 	//

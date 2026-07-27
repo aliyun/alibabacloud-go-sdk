@@ -16,9 +16,9 @@ type iGetInstanceErrorRankResponseBody interface {
 }
 
 type GetInstanceErrorRankResponseBody struct {
-	// The ranking data of nodes on which errors occurred.
+	// The error ranking data of nodes.
 	InstanceErrorRank *GetInstanceErrorRankResponseBodyInstanceErrorRank `json:"InstanceErrorRank,omitempty" xml:"InstanceErrorRank,omitempty" type:"Struct"`
-	// The request ID.
+	// The unique ID generated for each request.
 	//
 	// example:
 	//
@@ -62,9 +62,9 @@ func (s *GetInstanceErrorRankResponseBody) Validate() error {
 }
 
 type GetInstanceErrorRankResponseBodyInstanceErrorRank struct {
-	// The ranking data of nodes on which errors occurred within the last month.
+	// The error ranking data of nodes in the last month.
 	ErrorRank []*GetInstanceErrorRankResponseBodyInstanceErrorRankErrorRank `json:"ErrorRank,omitempty" xml:"ErrorRank,omitempty" type:"Repeated"`
-	// The timestamp at which the rankings were updated.
+	// The timestamp when the error ranking was updated.
 	//
 	// example:
 	//
@@ -112,33 +112,37 @@ func (s *GetInstanceErrorRankResponseBodyInstanceErrorRank) Validate() error {
 }
 
 type GetInstanceErrorRankResponseBodyInstanceErrorRankErrorRank struct {
-	// The number of errors that occurred on the node.
+	// The number of errors of the node.
 	//
 	// example:
 	//
 	// 5
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The node ID.
+	// The ID of the node.
 	//
 	// example:
 	//
 	// 9527
 	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The name of the node.
+	//
+	// example:
+	//
+	// Node name
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The ID of the Alibaba Cloud account used by the node owner.
+	// The Alibaba Cloud UID of the node owner.
 	//
 	// example:
 	//
 	// 952795279527
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The type of the node.
+	// The type of the node task.
 	//
 	// example:
 	//
 	// 10
 	PrgType *int32 `json:"PrgType,omitempty" xml:"PrgType,omitempty"`
-	// The DataWorks workspace ID.
+	// The ID of the DataWorks workspace.
 	//
 	// example:
 	//

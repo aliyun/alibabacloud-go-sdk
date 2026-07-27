@@ -224,9 +224,9 @@ type SearchMetaTablesResponseBodyDataDataEntityList struct {
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	// The type of the metatable. Valid values:
 	//
-	// 	- 0: table
+	// - 0: table
 	//
-	// 	- 1: view
+	// - 1: view
 	//
 	// example:
 	//
@@ -234,9 +234,9 @@ type SearchMetaTablesResponseBodyDataDataEntityList struct {
 	EntityType *int32 `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
 	// The type of the environment. Valid values:
 	//
-	// 	- 1: production environment
+	// - 1: production environment
 	//
-	// 	- 0: development environment
+	// - 0: development environment
 	//
 	// example:
 	//

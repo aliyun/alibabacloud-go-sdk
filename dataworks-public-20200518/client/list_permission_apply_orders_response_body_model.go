@@ -16,7 +16,7 @@ type iListPermissionApplyOrdersResponseBody interface {
 }
 
 type ListPermissionApplyOrdersResponseBody struct {
-	// The paginated query results of permission requests.
+	// The paginated query results of permission application orders.
 	ApplyOrders *ListPermissionApplyOrdersResponseBodyApplyOrders `json:"ApplyOrders,omitempty" xml:"ApplyOrders,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *ListPermissionApplyOrdersResponseBody) Validate() error {
 }
 
 type ListPermissionApplyOrdersResponseBodyApplyOrders struct {
-	// The list of permission requests.
+	// The list of permission application orders.
 	ApplyOrder []*ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrder `json:"ApplyOrder,omitempty" xml:"ApplyOrder,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -76,7 +76,7 @@ type ListPermissionApplyOrdersResponseBodyApplyOrders struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of permission requests returned.
+	// The total number of permission application orders returned.
 	//
 	// example:
 	//
@@ -142,19 +142,19 @@ func (s *ListPermissionApplyOrdersResponseBodyApplyOrders) Validate() error {
 }
 
 type ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrder struct {
-	// The Alibaba Cloud account ID of the user who submitted the permission request.
+	// The Alibaba Cloud user UID that submitted the application order.
 	//
 	// example:
 	//
 	// 267842600408993176
 	ApplyBaseId *string `json:"ApplyBaseId,omitempty" xml:"ApplyBaseId,omitempty"`
-	// The time when the permission request was submitted, in Unix timestamp format.
+	// The submission time of the application order, displayed as a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1615284086000
 	ApplyTimestamp *int64 `json:"ApplyTimestamp,omitempty" xml:"ApplyTimestamp,omitempty"`
-	// The content of the permission request.
+	// The content of the application order.
 	ApproveContent *ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrderApproveContent `json:"ApproveContent,omitempty" xml:"ApproveContent,omitempty" type:"Struct"`
 	// The final approval comment.
 	//
@@ -162,27 +162,29 @@ type ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrder struct {
 	//
 	// agree
 	FinishApprovalComment *string `json:"FinishApprovalComment,omitempty" xml:"FinishApprovalComment,omitempty"`
-	// The final approval timestamp. Displayed as a Unix timestamp.
+	// The final approval completion time, displayed as a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1757496687000
 	FinishApprovalTimestamp *int64 `json:"FinishApprovalTimestamp,omitempty" xml:"FinishApprovalTimestamp,omitempty"`
-	// The permission request ID.
+	// The application order ID.
 	//
 	// example:
 	//
 	// ad8da78d-8135-455e-9486-27cf213fc140
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// The status of the permission request. Valid values:
+	// The status of the application order. Valid values:
 	//
-	// 	- 1: Pending approval
+	// - 1: Pending approval.
 	//
-	// 	- 2: Approved and authorization succeeded
+	// - 2: Approved, authorization succeeded.
 	//
-	// 	- 3: Approved but authorization failed
+	// - 3: Approved, authorization failed.
 	//
-	// 	- 4: Rejected
+	// - 4: Rejected.
+	//
+	// - 5: Withdrawn.
 	//
 	// example:
 	//
@@ -271,19 +273,19 @@ func (s *ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrder) Validate() 
 }
 
 type ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrderApproveContent struct {
-	// The reason for the permission request, which is used by administrators for evaluation and approval.
+	// The reason for the application, used by the administrator for evaluation and approval.
 	//
 	// example:
 	//
 	// I need to use this table
 	ApplyReason *string `json:"ApplyReason,omitempty" xml:"ApplyReason,omitempty"`
-	// The type of permission request. Only the value 1 is supported, which indicates an ACL permission request for objects.
+	// The application order type. Currently, only the value 1 is supported, indicating an object ACL permission application.
 	//
 	// example:
 	//
 	// 1
 	OrderType *int32 `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The content of the requested object.
+	// The content of the applied object.
 	ProjectMeta *ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrderApproveContentProjectMeta `json:"ProjectMeta,omitempty" xml:"ProjectMeta,omitempty" type:"Struct"`
 }
 
@@ -332,9 +334,9 @@ func (s *ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrderApproveConten
 }
 
 type ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrderApproveContentProjectMeta struct {
-	// The information about the requested object.
+	// The information about the applied objects.
 	ObjectMetaList []*ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrderApproveContentProjectMetaObjectMetaList `json:"ObjectMetaList,omitempty" xml:"ObjectMetaList,omitempty" type:"Repeated"`
-	// The name of the DataWorks workspace that contains the MaxCompute project for which permissions are requested.
+	// The name of the DataWorks workspace to which the MaxCompute project with the requested permissions belongs.
 	//
 	// example:
 	//
@@ -382,9 +384,9 @@ func (s *ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrderApproveConten
 }
 
 type ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrderApproveContentProjectMetaObjectMetaList struct {
-	// The operation type.
+	// The action types.
 	Actions []*string `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
-	// The name of the requested table.
+	// The name of the applied table.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type GetProjectRequest struct {
 	//
 	// example:
 	//
-	// 27
+	// 466230
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The name of the DataWorks workspace. You can call the [ListProjects](https://help.aliyun.com/document_detail/2780068.html) operation to query the name.
 	//

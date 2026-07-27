@@ -84,11 +84,11 @@ type ListNodesRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The scheduling type. Valid values:
 	//
-	// 	- NORMAL: Nodes are scheduled as expected.
+	// - NORMAL: Nodes are scheduled as expected.
 	//
-	// 	- PAUSE: Nodes are paused.
+	// - PAUSE: Nodes are paused.
 	//
-	// 	- SKIP: Nodes are dry-run. Dry-run nodes are started as scheduled, but the system sets the status of the nodes to successful when it starts to run them.
+	// - SKIP: Nodes are dry-run. Dry-run nodes are started as scheduled, but the system sets the status of the nodes to successful when it starts to run them.
 	//
 	// example:
 	//

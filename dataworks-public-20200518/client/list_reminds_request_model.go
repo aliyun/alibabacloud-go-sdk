@@ -70,7 +70,7 @@ type ListRemindsRequest struct {
 	//
 	// example:
 	//
-	// Keyword
+	// Fuzzy search rule name
 	SearchText *string `json:"SearchText,omitempty" xml:"SearchText,omitempty"`
 }
 

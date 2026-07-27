@@ -24,38 +24,12 @@ type iGetMetaTableProducingTasksResponseBody interface {
 }
 
 type GetMetaTableProducingTasksResponseBody struct {
-	// The output tasks of the metatable.
-	Data []*GetMetaTableProducingTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error code.
-	//
-	// example:
-	//
-	// "0"
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message.
-	//
-	// example:
-	//
-	// SUCCESS
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code returned.
-	//
-	// example:
-	//
-	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 00000-00000-00000-00000
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values: true and false. The value true indicates that the request was successful. The value false indicates that the request failed.
-	//
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data           []*GetMetaTableProducingTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	ErrorCode      *string                                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string                                       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32                                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetMetaTableProducingTasksResponseBody) String() string {
@@ -134,13 +108,7 @@ func (s *GetMetaTableProducingTasksResponseBody) Validate() error {
 }
 
 type GetMetaTableProducingTasksResponseBodyData struct {
-	// The ID of the output task.
-	//
-	// example:
-	//
-	// 9876543210
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The name of the output task.
+	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 

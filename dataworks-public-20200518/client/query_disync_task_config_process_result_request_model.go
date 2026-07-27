@@ -20,9 +20,9 @@ type iQueryDISyncTaskConfigProcessResultRequest interface {
 type QueryDISyncTaskConfigProcessResultRequest struct {
 	// The asynchronous thread ID. You can call the [GenerateDISyncTaskConfigForCreating](https://help.aliyun.com/document_detail/383463.html) or [GenerateDISyncTaskConfigForUpdating](https://help.aliyun.com/document_detail/383464.html) operation to obtain the ID.
 	//
-	// 	- The GenerateDISyncTaskConfigForCreating operation is used to generate the ID of the asynchronous thread that is used to create a real-time synchronization task in Data Integration.
+	// - The GenerateDISyncTaskConfigForCreating operation is used to generate the ID of the asynchronous thread that is used to create a real-time synchronization task in Data Integration.
 	//
-	// 	- The GenerateDISyncTaskConfigForUpdating operation is used to generate the ID of the asynchronous thread that is used to update a real-time synchronization task in Data Integration.
+	// - The GenerateDISyncTaskConfigForUpdating operation is used to generate the ID of the asynchronous thread that is used to update a real-time synchronization task in Data Integration.
 	//
 	// This parameter is required.
 	//
@@ -42,17 +42,17 @@ type QueryDISyncTaskConfigProcessResultRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The type of the object that you want to create or update in Data Integration in asynchronous mode. Valid values:
 	//
-	// 	- DI_REALTIME: real-time synchronization task
+	// - DI_REALTIME: real-time synchronization task
 	//
-	// 	- DI_SOLUTION: synchronization solution DataWorks allows you to create or update real-time synchronization tasks and synchronization solutions in Data Integration only in asynchronous mode.
+	// - DI_SOLUTION: synchronization solution DataWorks allows you to create or update real-time synchronization tasks and synchronization solutions in Data Integration only in asynchronous mode.
 	//
 	// Valid values:
 	//
-	// 	- DI_OFFLINE
+	// - DI_OFFLINE
 	//
-	// 	- DI_REALTIME
+	// - DI_REALTIME
 	//
-	// 	- DI_SOLUTION
+	// - DI_SOLUTION
 	//
 	// This parameter is required.
 	//

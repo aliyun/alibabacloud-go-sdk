@@ -355,7 +355,7 @@ type GetIDEEventDetailResponseBodyEventDetailCommittedFileFilePropertyContent st
 	//
 	// example:
 	//
-	// odps_first
+	// odps_source
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
 	// The ID of the folder to which the file belongs. You can call the [GetFolder](https://help.aliyun.com/document_detail/173952.html) operation to query the details of the file based on the folder ID.
 	//
@@ -803,7 +803,7 @@ type GetIDEEventDetailResponseBodyEventDetailDeletedFile struct {
 	//
 	// example:
 	//
-	// odps_first
+	// odps_source
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
 	// The file ID.
 	//
@@ -998,7 +998,7 @@ type GetIDEEventDetailResponseBodyEventDetailFileExecutionCommand struct {
 	//
 	// example:
 	//
-	// odps_first
+	// odps_source
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
 	// The file ID.
 	//
@@ -1075,7 +1075,7 @@ type GetIDEEventDetailResponseBodyEventDetailTableModel struct {
 	//
 	// example:
 	//
-	// odps_first
+	// odps_source
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
 	// The environment in which the table is used. Valid values:
 	//

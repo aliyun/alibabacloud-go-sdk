@@ -26,7 +26,7 @@ type UpdateTableLevelRequest struct {
 	//
 	// example:
 	//
-	// level description
+	// Level description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the table level. You can call the ListTableLevel operation to query the ID.
 	//
@@ -46,7 +46,7 @@ type UpdateTableLevelRequest struct {
 	//
 	// example:
 	//
-	// level name
+	// Level name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the DataWorks workspace.
 	//

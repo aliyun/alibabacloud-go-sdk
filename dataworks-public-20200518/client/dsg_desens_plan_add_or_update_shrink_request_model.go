@@ -14,7 +14,7 @@ type iDsgDesensPlanAddOrUpdateShrinkRequest interface {
 }
 
 type DsgDesensPlanAddOrUpdateShrinkRequest struct {
-	// A collection of data masking rules that you want to add or modify.
+	// The collection of data masking rules to add or update.
 	//
 	// This parameter is required.
 	DesensRulesShrink *string `json:"DesensRules,omitempty" xml:"DesensRules,omitempty"`

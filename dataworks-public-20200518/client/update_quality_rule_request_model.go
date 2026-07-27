@@ -56,47 +56,49 @@ type iUpdateQualityRuleRequest interface {
 }
 
 type UpdateQualityRuleRequest struct {
-	// The strength of the monitoring rule. The strength of a monitoring rule indicates the importance of the rule. Valid values:
+	// The strength of the quality rule. You can specify a rule as a strong or weak rule based on the importance of the rule. Valid values:
 	//
-	// 	- 1: indicates that the monitoring rule is a strong rule.
+	// - 1: strong rule
 	//
-	// 	- 0: indicates that the monitoring rule is a weak rule. You can specify whether a monitoring rule is a strong rule based on your business requirements. If a monitoring rule is a strong rule and the critical threshold is exceeded, a critical alert is reported and nodes that are associated with the rule are blocked from running.
+	// - 0: weak rule
+	//
+	//   If you specify a rule as a strong rule and a critical alert is triggered for the rule, the scheduling of the associated task is blocked.
 	//
 	// example:
 	//
 	// 0
 	BlockType *int32 `json:"BlockType,omitempty" xml:"BlockType,omitempty"`
-	// The checker ID. Valid values: 2: indicates that the current value is compared with the average value of the previous 7 days. 3: indicates that the current value is compared with the average value of the previous 30 days. 4: indicates that the current value is compared with the value 1 day earlier. 5: indicates that the current value is compared with the value 7 days earlier. 6: indicates that the current value is compared with the value 30 days earlier. 7: indicates the variance between the current value and the value 7 days earlier. 8: indicates the variance between the current value and the value 30 days earlier. 9: indicates that the current value is compared with a fixed value. 10: indicates that the current value is compared with the value 1, 7, or 30 days earlier. 11: indicates that the current value is compared with the value of the previous cycle. You can call the [ListQualityRules](https://help.aliyun.com/document_detail/173995.html) operation to query the ID.
+	// The checker ID. You can call the [ListQualityRules](https://help.aliyun.com/document_detail/173995.html) operation to query the checker ID.
 	//
 	// example:
 	//
 	// 9
 	Checker *int32 `json:"Checker,omitempty" xml:"Checker,omitempty"`
-	// The description of the monitoring rule.
+	// The description of the quality rule.
 	//
 	// example:
 	//
 	// Verify the number of table rows
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The threshold for a critical alert. The threshold indicates the deviation of the monitoring result from the expected value. You can specify a custom value for the threshold based on your business requirements. If a monitoring rule is a strong rule and the critical threshold is exceeded, a critical alert is reported and tasks that are associated with the rule are blocked from running.
+	// The threshold for a critical alert. The threshold specifies the deviation of a check result from the expected value. You can customize the threshold based on your business requirements. If you use a strong rule and a critical alert is triggered, the scheduling of the associated task is blocked.
 	//
 	// example:
 	//
 	// 10
 	CriticalThreshold *string `json:"CriticalThreshold,omitempty" xml:"CriticalThreshold,omitempty"`
-	// The ID of the partition filter expression. You can call the [ListQualityRules](https://help.aliyun.com/document_detail/173995.html) operation to obtain the ID of the partition filter expression.
+	// The ID of the partition filter expression. You can call the [ListQualityRules](https://help.aliyun.com/document_detail/173995.html) operation to query the ID of the partition filter expression.
 	//
 	// example:
 	//
 	// 123
 	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// The expected value of the monitoring rule.
+	// The expected value.
 	//
 	// example:
 	//
 	// 300
 	ExpectValue *string `json:"ExpectValue,omitempty" xml:"ExpectValue,omitempty"`
-	// The monitoring rule ID. You can call the [ListQualityRules](https://help.aliyun.com/document_detail/173995.html) operation to query the ID of the monitoring rule.
+	// The rule ID. You can call the [ListQualityRules](https://help.aliyun.com/document_detail/173995.html) operation to query the rule ID.
 	//
 	// This parameter is required.
 	//
@@ -104,7 +106,7 @@ type UpdateQualityRuleRequest struct {
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The method that is used to collect sample data, such as avg, count, sum, min, max, count_distinct, user_defined, table_count, table_size, table_dt_load_count, table_dt_refuseload_count, null_value, null_value/table_count, (table_count-count_distinct)/table_count, or table_count-count_distinct.
+	// The name of the method used to collect sample data. Valid values: avg, count, sum, min, max, count_distinct, user_defined, table_count, table_size, table_dt_load_count, table_dt_refuseload_count, null_value, null_value/table_count, (table_count-count_distinct)/table_count, and table_count-count_distinct.
 	//
 	// This parameter is required.
 	//
@@ -112,11 +114,11 @@ type UpdateQualityRuleRequest struct {
 	//
 	// table_count
 	MethodName *string `json:"MethodName,omitempty" xml:"MethodName,omitempty"`
-	// Specifies whether to enable the monitoring rule in the production environment. Valid values:
+	// Specifies whether to enable or disable the quality rule. This parameter specifies whether to run the quality rule in the production environment.
 	//
-	// 	- true: The monitoring rule is triggered when the associated auto triggered node that generates the output data starts to run.
+	// - true: The quality rule is triggered when the scheduling task that is associated with the output table of the rule runs.
 	//
-	// 	- false: The monitoring rule is not triggered when the associated auto triggered node that generates the output data starts to run.
+	// - false: The quality rule is not triggered when the scheduling task that is associated with the output table of the rule runs.
 	//
 	// if can be null:
 	// false
@@ -125,19 +127,19 @@ type UpdateQualityRuleRequest struct {
 	//
 	// true
 	OpenSwitch *bool `json:"OpenSwitch,omitempty" xml:"OpenSwitch,omitempty"`
-	// The comparison operator, such as >, >=, =, ≠, <, or <=.
+	// The comparison operator. Valid values: >, >=, =, !=, <, and <=.
 	//
-	// >  If you set the Checker parameter to 9, you must configure the Operator parameter.
+	// > This parameter is required if you set the Checker parameter to 9.
 	//
 	// example:
 	//
 	// >
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// Specifies whether the threshold is a dynamic threshold. Valid values:
+	// Specifies whether to use a dynamic threshold. Valid values:
 	//
-	// 	- 0: The threshold is not a dynamic threshold.
+	// - 0: no
 	//
-	// 	- 2: The threshold is a dynamic threshold.
+	// - 2: yes
 	//
 	// example:
 	//
@@ -149,7 +151,7 @@ type UpdateQualityRuleRequest struct {
 	//
 	// 26
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The name of the compute engine or data source. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the name of the compute engine or data source.
+	// The name of the engine or data source. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the name.
 	//
 	// This parameter is required.
 	//
@@ -171,55 +173,55 @@ type UpdateQualityRuleRequest struct {
 	//
 	// bigint
 	PropertyType *string `json:"PropertyType,omitempty" xml:"PropertyType,omitempty"`
-	// The name of the monitoring rule.
+	// The name of the quality rule.
 	//
 	// example:
 	//
 	// 123
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// Rule type:
+	// The type of the rule. Valid values:
 	//
-	// 	- 0: System template rule
+	// - 0: system template
 	//
-	// 	- 1: Custom SQL rule
+	// - 1: custom SQL
 	//
-	// 	- 4: Custom template rule
+	// - 2: custom template
 	//
 	// example:
 	//
 	// 0
 	RuleType *int32 `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	// The variable settings inserted before the custom rule. Format: x=a,y=b.
+	// The variable settings that are inserted before a custom rule. The settings are in the format of x=a,y=b.
 	//
 	// example:
 	//
 	// x=a,y=b
 	TaskSetting *string `json:"TaskSetting,omitempty" xml:"TaskSetting,omitempty"`
-	// The ID of the monitoring template. You can call the [ListQualityRules](https://help.aliyun.com/document_detail/173995.html) operation to obtain the ID of the monitoring template.
+	// The ID of the template that is used for the check. You can call the [ListQualityRules](https://help.aliyun.com/document_detail/173995.html) operation to query the template ID.
 	//
 	// example:
 	//
 	// 7
 	TemplateId *int32 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The trend of the monitoring result. Valid values:
+	// The trend of the check result. Valid values:
 	//
-	// 	- up: increasing
+	// - up: upward trend
 	//
-	// 	- down: decreasing
+	// - down: downward trend
 	//
-	// 	- abs: absolute value
+	// - abs: absolute value
 	//
 	// example:
 	//
 	// up
 	Trend *string `json:"Trend,omitempty" xml:"Trend,omitempty"`
-	// The threshold for a warning alert. The threshold specifies the deviation of the monitoring result from the expected value. You can specify a custom value for the threshold based on your business requirements.
+	// The threshold for a warning alert. The threshold specifies the deviation of a check result from the expected value. You can customize the threshold based on your business requirements.
 	//
 	// example:
 	//
 	// 5
 	WarningThreshold *string `json:"WarningThreshold,omitempty" xml:"WarningThreshold,omitempty"`
-	// The filter condition or custom SQL statement that is used for monitoring.
+	// The filter condition or custom SQL statement that is used for the check.
 	//
 	// example:
 	//

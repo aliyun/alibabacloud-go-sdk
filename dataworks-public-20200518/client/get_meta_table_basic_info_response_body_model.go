@@ -134,7 +134,7 @@ type GetMetaTableBasicInfoResponseBodyData struct {
 	//
 	// example:
 	//
-	// test
+	// 中文名
 	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
 	// The ID of the EMR cluster.
 	//
@@ -174,9 +174,9 @@ type GetMetaTableBasicInfoResponseBodyData struct {
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	// The type of the environment. Valid values:
 	//
-	// 	- 0: development environment
+	// - 0: development environment
 	//
-	// 	- 1: production environment
+	// - 1: production environment
 	//
 	// example:
 	//
@@ -190,9 +190,9 @@ type GetMetaTableBasicInfoResponseBodyData struct {
 	FavoriteCount *int64 `json:"FavoriteCount,omitempty" xml:"FavoriteCount,omitempty"`
 	// Indicates whether the metatable is a partitioned table. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -200,9 +200,9 @@ type GetMetaTableBasicInfoResponseBodyData struct {
 	IsPartitionTable *bool `json:"IsPartitionTable,omitempty" xml:"IsPartitionTable,omitempty"`
 	// Indicates whether the metatable is a view. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -210,13 +210,13 @@ type GetMetaTableBasicInfoResponseBodyData struct {
 	IsView *bool `json:"IsView,omitempty" xml:"IsView,omitempty"`
 	// The scope in which the metatable is visible. Valid values:
 	//
-	// 	- 0: The metatable is visible to workspace members.
+	// - 0: The metatable is visible to workspace members.
 	//
-	// 	- 1: The metatable is visible to users within the tenant.
+	// - 1: The metatable is visible to users within the tenant.
 	//
-	// 	- 2: The metatable is visible to all tenants.
+	// - 2: The metatable is visible to all tenants.
 	//
-	// 	- 3: The metatable is visible only to the metatable owner.
+	// - 3: The metatable is visible only to the metatable owner.
 	//
 	// example:
 	//
@@ -242,7 +242,7 @@ type GetMetaTableBasicInfoResponseBodyData struct {
 	LastModifyTime *int64 `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
 	// The lifecycle of the table. Unit: day.
 	//
-	// >  If the lifecycle is not set for a MaxCompute table, the return value is 0, indicating that the table is permanently valid.
+	// > If the lifecycle is not set for a MaxCompute table, the return value is 0, indicating that the table is permanently valid.
 	//
 	// example:
 	//

@@ -206,7 +206,7 @@ type GetFileVersionResponseBodyData struct {
 	//
 	// example:
 	//
-	// NORMAL
+	// 0
 	UseType *string `json:"UseType,omitempty" xml:"UseType,omitempty"`
 }
 

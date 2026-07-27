@@ -84,7 +84,7 @@ type ListBaselineStatusesRequest struct {
 	//
 	// example:
 	//
-	// Keyword of the baseline name
+	// Keyword
 	SearchText *string `json:"SearchText,omitempty" xml:"SearchText,omitempty"`
 	// The status of the baseline. Valid values: ERROR, SAFE, DANGEROUS, and OVER. The value ERROR indicates that no nodes are associated with the baseline, or all nodes associated with the baseline are suspended. The value SAFE indicates that nodes finish running before the alerting time. The value DANGEROUS indicates that nodes are still running after the alerting time but before the committed completion time. The value OVER indicates that nodes are still running after the committed completion time. Multiple states are separated by commas (,).
 	//

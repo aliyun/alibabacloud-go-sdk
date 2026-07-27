@@ -28,9 +28,9 @@ type ListInstanceHistoryResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -131,9 +131,9 @@ type ListInstanceHistoryResponseBodyInstances struct {
 	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
 	// Indicates whether the instance is associated with a monitoring rule in Data Quality. Valid values:
 	//
-	// 	- 0: The instance is associated with a monitoring rule in Data Quality.
+	// - 0: The instance is associated with a monitoring rule in Data Quality.
 	//
-	// 	- 1: The instance is not associated with a monitoring rule in Data Quality.
+	// - 1: The instance is not associated with a monitoring rule in Data Quality.
 	//
 	// example:
 	//
@@ -183,21 +183,21 @@ type ListInstanceHistoryResponseBodyInstances struct {
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 	// The status of the node that generates the instance. Valid values:
 	//
-	// 	- NOT_RUN: The node is not run.
+	// - NOT_RUN: The node is not run.
 	//
-	// 	- WAIT_TIME: The node is waiting for the scheduling time to arrive.
+	// - WAIT_TIME: The node is waiting for the scheduling time to arrive.
 	//
-	// 	- WAIT_RESOURCE: The node is waiting for resources.
+	// - WAIT_RESOURCE: The node is waiting for resources.
 	//
-	// 	- RUNNING: The node is running.
+	// - RUNNING: The node is running.
 	//
-	// 	- CHECKING: Data quality is being checked for the node.
+	// - CHECKING: Data quality is being checked for the node.
 	//
-	// 	- CHECKING_CONDITION: Branch conditions are being checked for the node.
+	// - CHECKING_CONDITION: Branch conditions are being checked for the node.
 	//
-	// 	- FAILURE: The node fails to be run.
+	// - FAILURE: The node fails to be run.
 	//
-	// 	- SUCCESS: The node is successfully run.
+	// - SUCCESS: The node is successfully run.
 	//
 	// example:
 	//
@@ -205,21 +205,21 @@ type ListInstanceHistoryResponseBodyInstances struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The scheduling type of the node. Valid values:
 	//
-	// 	- NORMAL(0): The node is an auto triggered node. The scheduling system regularly runs the node.
+	// - NORMAL(0): The node is an auto triggered node. The scheduling system regularly runs the node.
 	//
-	// 	- MANUAL(1): The node is a manually triggered node. The scheduling system does not regularly run the node.
+	// - MANUAL(1): The node is a manually triggered node. The scheduling system does not regularly run the node.
 	//
-	// 	- PAUSE(2): The node is a frozen node. The scheduling system regularly runs the node but sets the status of the node to failed when the scheduling system starts to run the node.
+	// - PAUSE(2): The node is a frozen node. The scheduling system regularly runs the node but sets the status of the node to failed when the scheduling system starts to run the node.
 	//
-	// 	- SKIP(3): The node is a dry-run node. The scheduling system regularly runs the node but sets the status of the node to successful when the scheduling system starts to run the node.
+	// - SKIP(3): The node is a dry-run node. The scheduling system regularly runs the node but sets the status of the node to successful when the scheduling system starts to run the node.
 	//
-	// 	- SKIP_UNCHOOSE(4): The node is an unselected node in a temporary workflow. This type of node exists only in temporary workflows. The scheduling system sets the status of the node to successful when the scheduling system starts to run the node.
+	// - SKIP_UNCHOOSE(4): The node is an unselected node in a temporary workflow. This type of node exists only in temporary workflows. The scheduling system sets the status of the node to successful when the scheduling system starts to run the node.
 	//
-	// 	- SKIP_CYCLE(5): The node is a node that is scheduled by the week or month and is waiting for the scheduling time to arrive. The scheduling system regularly runs the node but sets the status of the node to successful when the scheduling system starts to run the node.
+	// - SKIP_CYCLE(5): The node is a node that is scheduled by the week or month and is waiting for the scheduling time to arrive. The scheduling system regularly runs the node but sets the status of the node to successful when the scheduling system starts to run the node.
 	//
-	// 	- CONDITION_UNCHOOSE(6): The node is not selected by its ancestor branch node and is run as a dry-run node.
+	// - CONDITION_UNCHOOSE(6): The node is not selected by its ancestor branch node and is run as a dry-run node.
 	//
-	// 	- REALTIME_DEPRECATED(7): The node has instances that are generated in real time but deprecated. The scheduling system sets the status of the node to successful.
+	// - REALTIME_DEPRECATED(7): The node has instances that are generated in real time but deprecated. The scheduling system sets the status of the node to successful.
 	//
 	// example:
 	//

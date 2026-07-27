@@ -30,7 +30,7 @@ type iDsgDesensPlanQueryListRequest interface {
 }
 
 type DsgDesensPlanQueryListRequest struct {
-	// The owner of the data masking rule.
+	// The owner of the desensitization rule.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type DsgDesensPlanQueryListRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: 100.
+	// The number of entries to return on each page. The maximum value is 100.
 	//
 	// This parameter is required.
 	//
@@ -52,13 +52,13 @@ type DsgDesensPlanQueryListRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the sensitive field.
+	// The name of the desensitization rule.
 	//
 	// example:
 	//
 	// phone
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The ID of the level-2 data masking scenario. You can call the [DsgSceneQuerySceneListByName](https://help.aliyun.com/document_detail/2786322.html) operation to query the list of IDs.
+	// The ID of the Level-2 data desensitization scene. You can call the [DsgSceneQuerySceneListByName](https://help.aliyun.com/document_detail/2786322.html) operation to obtain this ID.
 	//
 	// This parameter is required.
 	//
@@ -66,11 +66,11 @@ type DsgDesensPlanQueryListRequest struct {
 	//
 	// 123
 	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// The status of the data masking rule. Valid values:
+	// The status of the desensitization rule. Valid values:
 	//
-	// 	- 0: expired
+	// - 0: Inactive
 	//
-	// 	- 1: effective
+	// - 1: Active
 	//
 	// example:
 	//

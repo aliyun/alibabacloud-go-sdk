@@ -24,7 +24,7 @@ type GetBusinessRequest struct {
 	//
 	// example:
 	//
-	// 1000000001
+	// 1000000111
 	BusinessId *int64 `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
 	// The ID of the DataWorks workspace. You can log on to the DataWorks console and go to the Workspace Management page to obtain the ID. You must specify either this parameter or ProjectIdentifier to determine the DataWorks workspace to which the operation is applied.
 	//

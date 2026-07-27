@@ -48,13 +48,13 @@ type RegisterLineageRelationResponseBody struct {
 	//
 	// example:
 	//
-	// EE50E05E-028C-182B-9xxx
+	// EE50E05E-028C-182B-****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//

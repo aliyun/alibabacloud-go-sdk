@@ -28,9 +28,9 @@ type GenerateDISyncTaskConfigForUpdatingResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -97,9 +97,9 @@ type GenerateDISyncTaskConfigForUpdatingResponseBodyData struct {
 	ProcessId *int64 `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
 	// Indicates whether the ID of the asynchronous thread is generated. Valid values:
 	//
-	// 	- success: indicates that the ID of the asynchronous thread is generated.
+	// - success: indicates that the ID of the asynchronous thread is generated.
 	//
-	// 	- fail: indicates that the ID of the asynchronous thread fails to be generated. You can view the reason for the failure and troubleshoot the issue based on the reason.
+	// - fail: indicates that the ID of the asynchronous thread fails to be generated. You can view the reason for the failure and troubleshoot the issue based on the reason.
 	//
 	// example:
 	//

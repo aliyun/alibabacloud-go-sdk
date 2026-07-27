@@ -162,17 +162,17 @@ type ListDIJobsResponseBodyDIJobPagingDIJobs struct {
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
 	// The task status. Valid values:
 	//
-	// 	- Finished
+	// - Finished
 	//
-	// 	- Initialized
+	// - Initialized
 	//
-	// 	- Stopped
+	// - Stopped
 	//
-	// 	- Failed
+	// - Failed
 	//
-	// 	- Running
+	// - Running
 	//
-	// 	- Stopping
+	// - Stopping
 	//
 	// example:
 	//
@@ -180,11 +180,11 @@ type ListDIJobsResponseBodyDIJobPagingDIJobs struct {
 	JobStatus *string `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
 	// The synchronization type. Valid values:
 	//
-	// 	- FullAndRealtimeIncremental: one-time full synchronization and real-time incremental synchronization
+	// - FullAndRealtimeIncremental: one-time full synchronization and real-time incremental synchronization
 	//
-	// 	- RealtimeIncremental: real-time incremental synchronization
+	// - RealtimeIncremental: real-time incremental synchronization
 	//
-	// 	- Full: one-time full synchronization
+	// - Full: one-time full synchronization
 	//
 	// example:
 	//

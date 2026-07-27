@@ -18,13 +18,13 @@ type iGetQualityFollowerRequest interface {
 }
 
 type GetQualityFollowerRequest struct {
-	// The ID of the partition filter expression.
+	// The ID of the partition expression.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 1234
+	// 12345
 	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	// The ID of the DataWorks workspace.
 	//

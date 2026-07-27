@@ -22,21 +22,21 @@ type iGetQualityEntityRequest interface {
 }
 
 type GetQualityEntityRequest struct {
-	// The type of the compute engine or data source. Valid values:
+	// The type of the engine or data source. Valid values:
 	//
-	// 	- cdh
+	// - `cdh`
 	//
-	// 	- analyticdb_for_mysql
+	// - `analyticdb_for_mysql`
 	//
-	// 	- odps
+	// - `odps`
 	//
-	// 	- emr
+	// - `emr`
 	//
-	// 	- hadoop
+	// - `hadoop`
 	//
-	// 	- holodb
+	// - `holodb`
 	//
-	// 	- hybriddb_for_postgresql
+	// - `hybriddb_for_postgresql`
 	//
 	// This parameter is required.
 	//
@@ -44,19 +44,19 @@ type GetQualityEntityRequest struct {
 	//
 	// odps
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The partition filter expression.
+	// The partition expression.
 	//
 	// example:
 	//
 	// dt=$[yyyymmdd]
 	MatchExpression *string `json:"MatchExpression,omitempty" xml:"MatchExpression,omitempty"`
-	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+	// The ID of the DataWorks workspace. To find the workspace ID, log in to the [DataWorks Console](https://workbench.data.aliyun.com/console) and go to the Workspace Configurations page.
 	//
 	// example:
 	//
-	// 12345
+	// 123456
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The name of the compute engine instance or data source. You can obtain the name from data source configurations.
+	// The name of the engine or data source. You can find this name on the Data Source Configuration page.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +64,7 @@ type GetQualityEntityRequest struct {
 	//
 	// autotest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The name of the partitioned table. You can call the [GetMetaTablePartition](https://help.aliyun.com/document_detail/173923.html) operation to obtain the name.
+	// The name of the partitioned table. You can call the [GetMetaTablePartition](https://help.aliyun.com/document_detail/173923.html) operation to get the table name.
 	//
 	// This parameter is required.
 	//

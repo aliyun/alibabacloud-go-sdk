@@ -24,7 +24,7 @@ type ListShiftSchedulesRequest struct {
 	//
 	// example:
 	//
-	// 1933790683****
+	// 1933790683*****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	// The page number. Minimum value:1. Maximum value: 100. Default value: 1.
 	//

@@ -22,7 +22,7 @@ type GetIDEEventDetailRequest struct {
 	//
 	// example:
 	//
-	// 8abcb91f-d266-4073-b907-2ed670378ed1
+	// 8abcb91f-d266-4073-b907-2ed67****1
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
 	// The DataWorks workspace ID. You can obtain the ID from the message.
 	//

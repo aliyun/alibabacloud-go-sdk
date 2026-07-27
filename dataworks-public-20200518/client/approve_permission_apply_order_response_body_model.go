@@ -16,7 +16,7 @@ type iApprovePermissionApplyOrderResponseBody interface {
 }
 
 type ApprovePermissionApplyOrderResponseBody struct {
-	// Indicates whether the permission request order is processed.
+	// Indicates whether the approval is successful.
 	//
 	// example:
 	//

@@ -26,13 +26,13 @@ type ListDataServiceAuthorizedApisRequest struct {
 	//
 	// example:
 	//
-	// My API Name
+	// My API name
 	ApiNameKeyword *string `json:"ApiNameKeyword,omitempty" xml:"ApiNameKeyword,omitempty"`
 	// The page number. Pages start from page 1. Default value: 1.
 	//
 	// example:
 	//
-	// 1
+	// PageNumber
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Default value: 10. Maximum value: 100.
 	//

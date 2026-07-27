@@ -40,9 +40,9 @@ type GenerateDISyncTaskConfigForUpdatingRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The task ID.
 	//
-	// 	- If you set the TaskType parameter to DI_REALTIME, set the TaskId parameter to the value of the FileId parameter for the real-time synchronization task.
+	// - If you set the TaskType parameter to DI_REALTIME, set the TaskId parameter to the value of the FileId parameter for the real-time synchronization task.
 	//
-	// 	- If you set the TaskType parameter to DI_SOLUTION, set the TaskId parameter to the value of the FileId parameter for the synchronization solution.
+	// - If you set the TaskType parameter to DI_SOLUTION, set the TaskId parameter to the value of the FileId parameter for the synchronization solution.
 	//
 	// This parameter is required.
 	//
@@ -52,37 +52,37 @@ type GenerateDISyncTaskConfigForUpdatingRequest struct {
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The script for updating the real-time synchronization task in Data Integration. DataWorks allows you to add or remove tables for a real-time synchronization task in Data Integration only in asynchronous mode. The following types of real-time synchronization tasks are supported:
 	//
-	// 	- Synchronization task that is used to synchronize data from MySQL to MaxCompute
+	// - Synchronization task that is used to synchronize data from MySQL to MaxCompute
 	//
-	// 	- Synchronization task that is used to synchronize data from MySQL data to Kafka
+	// - Synchronization task that is used to synchronize data from MySQL data to Kafka
 	//
-	// 	- Synchronization task that is used to synchronize data from MySQL to Hologres
+	// - Synchronization task that is used to synchronize data from MySQL to Hologres
 	//
 	// The SelectedTables parameter is used to specify tables that you want to synchronize from multiple databases. The Tables parameter is used to specify tables that you want to synchronize from a single database.
 	//
-	// 	- If the script contains the SelectedTables parameter, the system synchronizes data from the tables that you specify in the SelectedTables parameter.
+	// - If the script contains the SelectedTables parameter, the system synchronizes data from the tables that you specify in the SelectedTables parameter.
 	//
-	// 	- If the script contains the Tables parameter, the system synchronizes data from the tables that you specify in the Tables parameter.
+	// - If the script contains the Tables parameter, the system synchronizes data from the tables that you specify in the Tables parameter.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// {      "steps": [         {             "parameter": {                 "connection": [                     {                         "table": [                             "xyx"                         ]                     }                 ]             },             "name": "Reader",             "category": "reader"         }     ] }
+	// {"steps":[{"parameter":{"connection":[{"table":["xyx"]}]},"name":"Reader","category":"reader"}]}
 	TaskParam *string `json:"TaskParam,omitempty" xml:"TaskParam,omitempty"`
 	// The type of the object that you want to update in Data Integration in asynchronous mode. Valid values:
 	//
-	// 	- DI_REALTIME: real-time synchronization task
+	// - DI_REALTIME: real-time synchronization task
 	//
-	// 	- DI_SOLUTION: synchronization solution DataWorks allows you to create or update real-time synchronization tasks in Data Integration only in asynchronous mode.
+	// - DI_SOLUTION: synchronization solution DataWorks allows you to create or update real-time synchronization tasks in Data Integration only in asynchronous mode.
 	//
 	// Valid values:
 	//
-	// 	- DI_OFFLINE
+	// - DI_OFFLINE
 	//
-	// 	- DI_REALTIME
+	// - DI_REALTIME
 	//
-	// 	- DI_SOLUTION
+	// - DI_SOLUTION
 	//
 	// This parameter is required.
 	//

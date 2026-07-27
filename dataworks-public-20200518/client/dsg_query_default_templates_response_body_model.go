@@ -26,25 +26,25 @@ type iDsgQueryDefaultTemplatesResponseBody interface {
 type DsgQueryDefaultTemplatesResponseBody struct {
 	// The data returned.
 	Data []*DsgQueryDefaultTemplatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error code.
+	// The error code returned if the request fails.
 	//
 	// example:
 	//
 	// 1029030003
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message.
+	// The error message returned if the request fails.
 	//
 	// example:
 	//
 	// param error
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code.
+	// The HTTP status code returned.
 	//
 	// example:
 	//
 	// 400
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID. You can use the ID to locate logs and troubleshoot issues.
+	// The Request ID. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -52,9 +52,9 @@ type DsgQueryDefaultTemplatesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -138,13 +138,13 @@ func (s *DsgQueryDefaultTemplatesResponseBody) Validate() error {
 }
 
 type DsgQueryDefaultTemplatesResponseBodyData struct {
-	// The sensitive field type.
+	// The Sensitive Data Type.
 	//
 	// example:
 	//
 	// phone
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// The supported data masking methods and parameter descriptions.
+	// A list of supported Desensitization Methods and their parameter descriptions.
 	DesensPlanTemplate map[string][]*DataDesensPlanTemplateValue `json:"DesensPlanTemplate,omitempty" xml:"DesensPlanTemplate,omitempty"`
 }
 

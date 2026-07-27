@@ -24,7 +24,7 @@ type UpdateTableThemeRequest struct {
 	//
 	// example:
 	//
-	// table folder name
+	// Topic name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The workspace ID.
 	//

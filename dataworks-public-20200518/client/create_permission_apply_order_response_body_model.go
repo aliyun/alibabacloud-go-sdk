@@ -16,7 +16,7 @@ type iCreatePermissionApplyOrderResponseBody interface {
 }
 
 type CreatePermissionApplyOrderResponseBody struct {
-	// The request order ID.
+	// The list of flow IDs.
 	FlowId []*string `json:"FlowId,omitempty" xml:"FlowId,omitempty" type:"Repeated"`
 	// The request ID.
 	//

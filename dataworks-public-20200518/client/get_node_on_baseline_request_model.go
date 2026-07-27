@@ -14,7 +14,7 @@ type iGetNodeOnBaselineRequest interface {
 }
 
 type GetNodeOnBaselineRequest struct {
-	// The baseline ID.
+	// The ID of the baseline.
 	//
 	// This parameter is required.
 	//

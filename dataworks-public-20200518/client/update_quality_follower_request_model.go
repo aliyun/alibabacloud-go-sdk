@@ -22,7 +22,7 @@ type iUpdateQualityFollowerRequest interface {
 }
 
 type UpdateQualityFollowerRequest struct {
-	// The notification method. Valid values: 1, 2, 4, 5, 6, 7, 8, and 9. The value 1 indicates that the notification is sent by email. The value 2 indicates that the notification is sent by email and text message. The value 4 indicates that the notification is sent by a DingTalk chatbot. The value 5 indicates that the notification is sent by a DingTalk chatbot to all members in a DingTalk group. The value 6 indicates that the notification is sent by Lark. The value 7 indicates that the notification is sent by WeCom. The value 8 indicates that the notification is sent by webhook. The value 9 indicates that the notification is sent by phone call.
+	// The notification method. Valid values: 1 (email), 2 (email and SMS), 4 (DingTalk group chatbot), 5 (DingTalk group chatbot with an @all reminder), 6 (Lark), 7 (WeCom), 8 (webhook), and 9 (phone call).
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type UpdateQualityFollowerRequest struct {
 	//
 	// 2
 	AlarmMode *int32 `json:"AlarmMode,omitempty" xml:"AlarmMode,omitempty"`
-	// The name of the subscriber.
+	// The subscriber.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type UpdateQualityFollowerRequest struct {
 	//
 	// 1912232****
 	Follower *string `json:"Follower,omitempty" xml:"Follower,omitempty"`
-	// The ID of the subscription relationship.
+	// The ID of the subscription.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type UpdateQualityFollowerRequest struct {
 	//
 	// 1234
 	FollowerId *int64 `json:"FollowerId,omitempty" xml:"FollowerId,omitempty"`
-	// The DataWorks workspace ID. You can log on to the DataWorks console to obtain the workspace ID.
+	// The ID of the DataWorks workspace. You can log on to the DataWorks console to obtain the ID.
 	//
 	// example:
 	//

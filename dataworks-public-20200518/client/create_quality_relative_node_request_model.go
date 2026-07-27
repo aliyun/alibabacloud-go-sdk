@@ -36,7 +36,7 @@ type CreateQualityRelativeNodeRequest struct {
 	//
 	// ODPS
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The partition filter expression.
+	// The partition expression.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type CreateQualityRelativeNodeRequest struct {
 	//
 	// dt=$[yyyymmdd]
 	MatchExpression *string `json:"MatchExpression,omitempty" xml:"MatchExpression,omitempty"`
-	// The node ID. You can call the [ListNodes](https://help.aliyun.com/document_detail/173979.html) operation to query the ID.
+	// The ID of the scheduling node. You can call the [ListNodes](https://help.aliyun.com/document_detail/173979.html) API to obtain the node ID.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type CreateQualityRelativeNodeRequest struct {
 	//
 	// 12321
 	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The workspace ID.
+	// The ID of the workspace.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type CreateQualityRelativeNodeRequest struct {
 	//
 	// 123
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The name of the compute engine or data source.
+	// The name of the compute engine instance or data source.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +76,7 @@ type CreateQualityRelativeNodeRequest struct {
 	//
 	// dual
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The ID of the workspace to which the node belongs.
+	// The ID of the project to which the node belongs.
 	//
 	// This parameter is required.
 	//
@@ -84,7 +84,7 @@ type CreateQualityRelativeNodeRequest struct {
 	//
 	// 1234
 	TargetNodeProjectId *int64 `json:"TargetNodeProjectId,omitempty" xml:"TargetNodeProjectId,omitempty"`
-	// The name of the workspace to which the node to be associated with the partition filter expression belongs.
+	// The name of the project to which the scheduling node belongs.
 	//
 	// This parameter is required.
 	//

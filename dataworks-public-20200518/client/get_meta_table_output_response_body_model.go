@@ -30,13 +30,13 @@ type GetMetaTableOutputResponseBody struct {
 	//
 	// example:
 	//
-	// 0
+	// 1031203110005
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message.
 	//
 	// example:
 	//
-	// SUCCESS
+	// The specified parameters are invalid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The HTTP status code.
 	//
@@ -48,7 +48,7 @@ type GetMetaTableOutputResponseBody struct {
 	//
 	// example:
 	//
-	// 0000-0000-0000-000
+	// 0bc1ec92159376****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
 	//
@@ -148,7 +148,7 @@ type GetMetaTableOutputResponseBodyData struct {
 	//
 	// example:
 	//
-	// 128
+	// 100
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -214,25 +214,25 @@ type GetMetaTableOutputResponseBodyDataDataEntityList struct {
 	//
 	// example:
 	//
-	// 2022-02-12 0:32:12
+	// 2020-01-01 00:01:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The workspace ID.
 	//
 	// example:
 	//
-	// 128
+	// 333
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The start time.
 	//
 	// example:
 	//
-	// 2022-02-12 0:34:13
+	// 2020-01-01 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The GUID of the MaxCompute table.
 	//
 	// example:
 	//
-	// odps.sample_project.sample_table
+	// odps.engine_name.table_name
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
 	// The task ID.
 	//
@@ -244,13 +244,13 @@ type GetMetaTableOutputResponseBodyDataDataEntityList struct {
 	//
 	// example:
 	//
-	// 987654321
+	// 3521
 	TaskInstanceId *int64 `json:"TaskInstanceId,omitempty" xml:"TaskInstanceId,omitempty"`
 	// The waiting time.
 	//
 	// example:
 	//
-	// 3
+	// 323
 	WaitTime *string `json:"WaitTime,omitempty" xml:"WaitTime,omitempty"`
 }
 

@@ -22,13 +22,13 @@ type iListQualityRulesRequest interface {
 }
 
 type ListQualityRulesRequest struct {
-	// The ID of the partition filter expression. You can call the [GetQualityEntity](https://help.aliyun.com/document_detail/174003.html) operation to query the ID.
+	// The ID of the partition expression. Call the [GetQualityEntity](https://help.aliyun.com/document_detail/174003.html) operation to get this ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 1234
+	// 12345
 	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	// The page number.
 	//
@@ -38,7 +38,7 @@ type ListQualityRulesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 10. Maximum value: 20.
+	// The number of entries to return per page. Default: 10. Maximum: 20.
 	//
 	// This parameter is required.
 	//
@@ -46,13 +46,13 @@ type ListQualityRulesRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The DataWorks workspace ID.
+	// The ID of the DataWorks workspace.
 	//
 	// example:
 	//
 	// 12345
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The name of the compute engine or data source. You can obtain the name from data source configurations.
+	// The name of the engine or data source. You can find this name on the Data Source Configuration page.
 	//
 	// This parameter is required.
 	//

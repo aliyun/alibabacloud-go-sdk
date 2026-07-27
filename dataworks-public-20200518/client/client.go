@@ -83,6 +83,8 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"rus-west-1-pop":              dara.String("dataworks.aliyuncs.com"),
 		"us-east-1":                   dara.String("dataworks.us-east-1.aliyuncs.com"),
 		"us-west-1":                   dara.String("dataworks.us-west-1.aliyuncs.com"),
+		"me-central-1":                dara.String("dataworks.me-central-1.aliyuncs.com"),
+		"ap-northeast-2":              dara.String("dataworks.ap-northeast-2.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -342,9 +344,9 @@ func (client *Client) AddMetaCollectionEntity(request *AddMetaCollectionEntityRe
 //
 // Description:
 //
-//	  For information about how to add an account to a DataWorks workspace as a member, see [Add workspace members and assign roles to them](https://help.aliyun.com/document_detail/136941.html).
+// - Add the target account as a member of the DataWorks workspace. For more information, see [Add members to a DataWorks workspace](https://help.aliyun.com/document_detail/136941.html).
 //
-//		- If you assign a built-in workspace-level role to a member of a DataWorks workspace, the member is automatically granted the permissions of the mapped role of the MaxCompute compute engine in the development environment. For more information, see [Appendix: Mappings between the built-in workspace-level roles of DataWorks and the roles of MaxCompute](https://help.aliyun.com/document_detail/449397.html).
+// - When you add a user to a preset role in a DataWorks workspace, the user is also added as a project role member in the MaxCompute project of the development environment of the workspace. For more information, see [Mappings between workspace-level preset roles and MaxCompute engine permissions](https://help.aliyun.com/document_detail/449397.html).
 //
 // @param request - AddProjectMemberToRoleRequest
 //
@@ -404,9 +406,9 @@ func (client *Client) AddProjectMemberToRoleWithOptions(request *AddProjectMembe
 //
 // Description:
 //
-//	  For information about how to add an account to a DataWorks workspace as a member, see [Add workspace members and assign roles to them](https://help.aliyun.com/document_detail/136941.html).
+// - Add the target account as a member of the DataWorks workspace. For more information, see [Add members to a DataWorks workspace](https://help.aliyun.com/document_detail/136941.html).
 //
-//		- If you assign a built-in workspace-level role to a member of a DataWorks workspace, the member is automatically granted the permissions of the mapped role of the MaxCompute compute engine in the development environment. For more information, see [Appendix: Mappings between the built-in workspace-level roles of DataWorks and the roles of MaxCompute](https://help.aliyun.com/document_detail/449397.html).
+// - When you add a user to a preset role in a DataWorks workspace, the user is also added as a project role member in the MaxCompute project of the development environment of the workspace. For more information, see [Mappings between workspace-level preset roles and MaxCompute engine permissions](https://help.aliyun.com/document_detail/449397.html).
 //
 // @param request - AddProjectMemberToRoleRequest
 //
@@ -620,7 +622,13 @@ func (client *Client) AddToMetaCategory(request *AddToMetaCategoryRequest) (_res
 
 // Summary:
 //
-// Processes a permission request order.
+// Approves a permission request order.
+//
+// Note: The 2020 edition of OpenAPI will be discontinued. Migrate to the 2024 edition OpenAPI ApproveProcessInstance as soon as possible.
+//
+// Description:
+//
+// *Note: The 2020 edition of OpenAPI will be discontinued. Migrate to the 2024 edition OpenAPI [ApproveProcessInstance](https://www.alibabacloud.com/help/en/dataworks/developer-reference/api-dataworks-public-2024-05-18-approveprocessinstance) as soon as possible.**.
 //
 // @param request - ApprovePermissionApplyOrderRequest
 //
@@ -672,7 +680,13 @@ func (client *Client) ApprovePermissionApplyOrderWithOptions(request *ApprovePer
 
 // Summary:
 //
-// Processes a permission request order.
+// Approves a permission request order.
+//
+// Note: The 2020 edition of OpenAPI will be discontinued. Migrate to the 2024 edition OpenAPI ApproveProcessInstance as soon as possible.
+//
+// Description:
+//
+// *Note: The 2020 edition of OpenAPI will be discontinued. Migrate to the 2024 edition OpenAPI [ApproveProcessInstance](https://www.alibabacloud.com/help/en/dataworks/developer-reference/api-dataworks-public-2024-05-18-approveprocessinstance) as soon as possible.**.
 //
 // @param request - ApprovePermissionApplyOrderRequest
 //
@@ -764,7 +778,7 @@ func (client *Client) CallbackExtension(request *CallbackExtensionRequest) (_res
 
 // Summary:
 //
-// Changes the resource group to which a resource belongs.
+// Changes the resource group of a resource.
 //
 // @param request - ChangeResourceManagerResourceGroupRequest
 //
@@ -816,7 +830,7 @@ func (client *Client) ChangeResourceManagerResourceGroupWithOptions(request *Cha
 
 // Summary:
 //
-// Changes the resource group to which a resource belongs.
+// Changes the resource group of a resource.
 //
 // @param request - ChangeResourceManagerResourceGroupRequest
 //
@@ -834,7 +848,7 @@ func (client *Client) ChangeResourceManagerResourceGroup(request *ChangeResource
 
 // Summary:
 //
-// Returns the check events of a file. After you commit your file that is created on the DataStudio page, the system checks the file and returns check events before the system deploys the file. You must determine whether the check can be continued based on the events. You can call this operation to return the check events for the file that you want to deploy to DataWorks.
+// Returns the check events for a file that is pending deployment in DataStudio. After a file is committed, DataWorks checks the file and generates events before deployment. Use the returned events to determine whether the file can proceed with deployment validation.
 //
 // @param request - CheckFileDeploymentRequest
 //
@@ -886,7 +900,7 @@ func (client *Client) CheckFileDeploymentWithOptions(request *CheckFileDeploymen
 
 // Summary:
 //
-// Returns the check events of a file. After you commit your file that is created on the DataStudio page, the system checks the file and returns check events before the system deploys the file. You must determine whether the check can be continued based on the events. You can call this operation to return the check events for the file that you want to deploy to DataWorks.
+// Returns the check events for a file that is pending deployment in DataStudio. After a file is committed, DataWorks checks the file and generates events before deployment. Use the returned events to determine whether the file can proceed with deployment validation.
 //
 // @param request - CheckFileDeploymentRequest
 //
@@ -1327,11 +1341,11 @@ func (client *Client) CreateConnection(request *CreateConnectionRequest) (_resul
 
 // Summary:
 //
-// Creates an alert rule for a Data Integration task of a new version. Only the following type of task is supported: real-time data synchronization from a MySQL database to Hologres.
+// Creates an alert rule for a synchronization task.
 //
 // Description:
 //
-// You can configure alert rules only for tasks that can be used for real-time data synchronization.
+// Alert rules can be configured when your task includes real-time synchronization.
 //
 // @param tmpReq - CreateDIAlarmRuleRequest
 //
@@ -1405,11 +1419,11 @@ func (client *Client) CreateDIAlarmRuleWithOptions(tmpReq *CreateDIAlarmRuleRequ
 
 // Summary:
 //
-// Creates an alert rule for a Data Integration task of a new version. Only the following type of task is supported: real-time data synchronization from a MySQL database to Hologres.
+// Creates an alert rule for a synchronization task.
 //
 // Description:
 //
-// You can configure alert rules only for tasks that can be used for real-time data synchronization.
+// Alert rules can be configured when your task includes real-time synchronization.
 //
 // @param request - CreateDIAlarmRuleRequest
 //
@@ -1657,6 +1671,10 @@ func (client *Client) CreateDISyncTask(request *CreateDISyncTaskRequest) (_resul
 
 // Deprecated: OpenAPI CreateDagComplement is deprecated
 //
+// Summary:
+//
+// Calls CreateDagComplement to create a data backfill workflow.
+//
 // @param request - CreateDagComplementRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1739,6 +1757,10 @@ func (client *Client) CreateDagComplementWithOptions(request *CreateDagComplemen
 
 // Deprecated: OpenAPI CreateDagComplement is deprecated
 //
+// Summary:
+//
+// Calls CreateDagComplement to create a data backfill workflow.
+//
 // @param request - CreateDagComplementRequest
 //
 // @return CreateDagComplementResponse
@@ -1755,6 +1777,10 @@ func (client *Client) CreateDagComplement(request *CreateDagComplementRequest) (
 }
 
 // Deprecated: OpenAPI CreateDagTest is deprecated
+//
+// Summary:
+//
+// Creates a smoke test workflow by calling CreateDagTest.
 //
 // @param request - CreateDagTestRequest
 //
@@ -1813,6 +1839,10 @@ func (client *Client) CreateDagTestWithOptions(request *CreateDagTestRequest, ru
 }
 
 // Deprecated: OpenAPI CreateDagTest is deprecated
+//
+// Summary:
+//
+// Creates a smoke test workflow by calling CreateDagTest.
 //
 // @param request - CreateDagTestRequest
 //
@@ -2367,7 +2397,7 @@ func (client *Client) CreateExportMigration(request *CreateExportMigrationReques
 
 // Summary:
 //
-// Creates a file in DataStudio. You cannot call this operation to create files for Data Integration nodes.
+// Creates a file in DataStudio. This operation does not support creating Data Integration node tasks.
 //
 // @param request - CreateFileRequest
 //
@@ -2466,6 +2496,10 @@ func (client *Client) CreateFileWithOptions(request *CreateFileRequest, runtime 
 		body["InputParameters"] = request.InputParameters
 	}
 
+	if !dara.IsNil(request.OutputList) {
+		body["OutputList"] = request.OutputList
+	}
+
 	if !dara.IsNil(request.OutputParameters) {
 		body["OutputParameters"] = request.OutputParameters
 	}
@@ -2543,7 +2577,7 @@ func (client *Client) CreateFileWithOptions(request *CreateFileRequest, runtime 
 
 // Summary:
 //
-// Creates a file in DataStudio. You cannot call this operation to create files for Data Integration nodes.
+// Creates a file in DataStudio. This operation does not support creating Data Integration node tasks.
 //
 // @param request - CreateFileRequest
 //
@@ -2902,7 +2936,7 @@ func (client *Client) CreateImportMigrationAdvance(request *CreateImportMigratio
 //
 // Summary:
 //
-// Triggers a manually triggered workflow to run. Before you call this operation, make sure that the manually triggered workflow is committed and deployed. You can find the manually triggered workflow on the Operation Center page only after the manually triggered workflow is committed and deployed.
+// The manual workflow must have already been submitted and deployed in the UI, and the Operation Center must be able to find the corresponding manual workflow. Only then can this API be used.
 //
 // @param request - CreateManualDagRequest
 //
@@ -2976,7 +3010,7 @@ func (client *Client) CreateManualDagWithOptions(request *CreateManualDagRequest
 //
 // Summary:
 //
-// Triggers a manually triggered workflow to run. Before you call this operation, make sure that the manually triggered workflow is committed and deployed. You can find the manually triggered workflow on the Operation Center page only after the manually triggered workflow is committed and deployed.
+// The manual workflow must have already been submitted and deployed in the UI, and the Operation Center must be able to find the corresponding manual workflow. Only then can this API be used.
 //
 // @param request - CreateManualDagRequest
 //
@@ -3149,6 +3183,12 @@ func (client *Client) CreateMetaCollection(request *CreateMetaCollectionRequest)
 //
 // Creates a permission request order.
 //
+// Note: The 2020 edition of OpenAPI will be deprecated soon. Migrate to the 2024 edition of OpenAPI as soon as possible — ApplyResourceAccessPermission.
+//
+// Description:
+//
+// *Note: The 2020 edition of OpenAPI will be deprecated soon. Migrate to the 2024 edition of OpenAPI as soon as possible — [ApplyResourceAccessPermission](https://www.alibabacloud.com/help/en/dataworks/developer-reference/api-dataworks-public-2024-05-18-applyresourceaccesspermission).**
+//
 // @param request - CreatePermissionApplyOrderRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3228,6 +3268,12 @@ func (client *Client) CreatePermissionApplyOrderWithOptions(request *CreatePermi
 // Summary:
 //
 // Creates a permission request order.
+//
+// Note: The 2020 edition of OpenAPI will be deprecated soon. Migrate to the 2024 edition of OpenAPI as soon as possible — ApplyResourceAccessPermission.
+//
+// Description:
+//
+// *Note: The 2020 edition of OpenAPI will be deprecated soon. Migrate to the 2024 edition of OpenAPI as soon as possible — [ApplyResourceAccessPermission](https://www.alibabacloud.com/help/en/dataworks/developer-reference/api-dataworks-public-2024-05-18-applyresourceaccesspermission).**
 //
 // @param request - CreatePermissionApplyOrderRequest
 //
@@ -3421,7 +3467,7 @@ func (client *Client) CreateProjectMember(request *CreateProjectMemberRequest) (
 //
 // Summary:
 //
-// Creates a partition filter expression.
+// Creates a partition expression for data quality.
 //
 // @param request - CreateQualityEntityRequest
 //
@@ -3487,7 +3533,7 @@ func (client *Client) CreateQualityEntityWithOptions(request *CreateQualityEntit
 //
 // Summary:
 //
-// Creates a partition filter expression.
+// Creates a partition expression for data quality.
 //
 // @param request - CreateQualityEntityRequest
 //
@@ -3508,7 +3554,7 @@ func (client *Client) CreateQualityEntity(request *CreateQualityEntityRequest) (
 //
 // Summary:
 //
-// Creates a subscriber for a partition filter expression.
+// Adds a follower to a partition expression to receive data quality alerts.
 //
 // @param request - CreateQualityFollowerRequest
 //
@@ -3570,7 +3616,7 @@ func (client *Client) CreateQualityFollowerWithOptions(request *CreateQualityFol
 //
 // Summary:
 //
-// Creates a subscriber for a partition filter expression.
+// Adds a follower to a partition expression to receive data quality alerts.
 //
 // @param request - CreateQualityFollowerRequest
 //
@@ -3591,7 +3637,7 @@ func (client *Client) CreateQualityFollower(request *CreateQualityFollowerReques
 //
 // Summary:
 //
-// Associates a node with a partition filter expression.
+// Creates a Partition Expression Association.
 //
 // @param request - CreateQualityRelativeNodeRequest
 //
@@ -3665,7 +3711,7 @@ func (client *Client) CreateQualityRelativeNodeWithOptions(request *CreateQualit
 //
 // Summary:
 //
-// Associates a node with a partition filter expression.
+// Creates a Partition Expression Association.
 //
 // @param request - CreateQualityRelativeNodeRequest
 //
@@ -3686,7 +3732,7 @@ func (client *Client) CreateQualityRelativeNode(request *CreateQualityRelativeNo
 //
 // Summary:
 //
-// Creates a monitoring rule.
+// Call CreateQualityRule to create a Quality Rule.
 //
 // @param request - CreateQualityRuleRequest
 //
@@ -3808,7 +3854,7 @@ func (client *Client) CreateQualityRuleWithOptions(request *CreateQualityRuleReq
 //
 // Summary:
 //
-// Creates a monitoring rule.
+// Call CreateQualityRule to create a Quality Rule.
 //
 // @param request - CreateQualityRuleRequest
 //
@@ -4164,7 +4210,7 @@ func (client *Client) CreateResourceFileAdvance(request *CreateResourceFileAdvan
 //
 // Summary:
 //
-// Creates a MaxCompute table or view.
+// Creates a MaxCompute table.
 //
 // @param request - CreateTableRequest
 //
@@ -4288,7 +4334,7 @@ func (client *Client) CreateTableWithOptions(request *CreateTableRequest, runtim
 //
 // Summary:
 //
-// Creates a MaxCompute table or view.
+// Creates a MaxCompute table.
 //
 // @param request - CreateTableRequest
 //
@@ -4900,7 +4946,7 @@ func (client *Client) DeleteDIJob(request *DeleteDIJobRequest) (_result *DeleteD
 
 // Summary:
 //
-// Deletes a synchronization task. You can call this operation to delete only a real-time synchronization task.
+// Deletes a real-time synchronization task.
 //
 // Description:
 //
@@ -4956,7 +5002,7 @@ func (client *Client) DeleteDISyncTaskWithOptions(request *DeleteDISyncTaskReque
 
 // Summary:
 //
-// Deletes a synchronization task. You can call this operation to delete only a real-time synchronization task.
+// Deletes a real-time synchronization task.
 //
 // Description:
 //
@@ -5254,7 +5300,7 @@ func (client *Client) DeleteFile(request *DeleteFileRequest) (_result *DeleteFil
 
 // Summary:
 //
-// Deletes a folder from DataStudio.
+// Deletes a folder from the Data Development page.
 //
 // @param request - DeleteFolderRequest
 //
@@ -5306,7 +5352,7 @@ func (client *Client) DeleteFolderWithOptions(request *DeleteFolderRequest, runt
 
 // Summary:
 //
-// Deletes a folder from DataStudio.
+// Deletes a folder from the Data Development page.
 //
 // @param request - DeleteFolderRequest
 //
@@ -5726,7 +5772,7 @@ func (client *Client) DeleteProjectMember(request *DeleteProjectMemberRequest) (
 //
 // Summary:
 //
-// Deletes a partition filter expression.
+// Deletes a partition expression.
 //
 // @param request - DeleteQualityEntityRequest
 //
@@ -5784,7 +5830,7 @@ func (client *Client) DeleteQualityEntityWithOptions(request *DeleteQualityEntit
 //
 // Summary:
 //
-// Deletes a partition filter expression.
+// Deletes a partition expression.
 //
 // @param request - DeleteQualityEntityRequest
 //
@@ -5805,11 +5851,11 @@ func (client *Client) DeleteQualityEntity(request *DeleteQualityEntityRequest) (
 //
 // Summary:
 //
-// Calls DeleteQualityFollower to delete the subscribers of a partition expression.
+// Deletes a Follower from a partition expression.
 //
 // Description:
 //
-// In Data Quality, you must configure monitoring rules based on a partition filter expression. Data Quality uses these rules to detect changes in source data and dirty data generated during the process of extract, transform, and load (ETL). This way, you can prevent tasks from producing unexpected dirty data that affects the smooth running of tasks and business decision-making. You can go to the Manage Subscriptions page to add subscribers for a partition filter expression. When the monitoring rule that is created based on the partition filter expression is triggered, the subscribers can receive notifications and troubleshoot errors at the earliest opportunity. For more information, see [Configure monitoring rules](https://help.aliyun.com/document_detail/73690.html).
+// Data Quality uses partition expressions to determine which monitoring rules to configure. These rules help you immediately detect changes in a data source and identify dirty data generated during ETL processes. These rules can automatically block tasks to prevent dirty data from propagating downstream. This practice prevents tasks from producing unexpected data that could affect normal operations. You can add Followers to a partition expression. When a monitoring rule for that partition expression is triggered, the specified Followers receive a notification, which helps them quickly identify and resolve the issue. For more information, see [Configure monitoring rules](https://help.aliyun.com/document_detail/73690.html).
 //
 // @param request - DeleteQualityFollowerRequest
 //
@@ -5863,11 +5909,11 @@ func (client *Client) DeleteQualityFollowerWithOptions(request *DeleteQualityFol
 //
 // Summary:
 //
-// Calls DeleteQualityFollower to delete the subscribers of a partition expression.
+// Deletes a Follower from a partition expression.
 //
 // Description:
 //
-// In Data Quality, you must configure monitoring rules based on a partition filter expression. Data Quality uses these rules to detect changes in source data and dirty data generated during the process of extract, transform, and load (ETL). This way, you can prevent tasks from producing unexpected dirty data that affects the smooth running of tasks and business decision-making. You can go to the Manage Subscriptions page to add subscribers for a partition filter expression. When the monitoring rule that is created based on the partition filter expression is triggered, the subscribers can receive notifications and troubleshoot errors at the earliest opportunity. For more information, see [Configure monitoring rules](https://help.aliyun.com/document_detail/73690.html).
+// Data Quality uses partition expressions to determine which monitoring rules to configure. These rules help you immediately detect changes in a data source and identify dirty data generated during ETL processes. These rules can automatically block tasks to prevent dirty data from propagating downstream. This practice prevents tasks from producing unexpected data that could affect normal operations. You can add Followers to a partition expression. When a monitoring rule for that partition expression is triggered, the specified Followers receive a notification, which helps them quickly identify and resolve the issue. For more information, see [Configure monitoring rules](https://help.aliyun.com/document_detail/73690.html).
 //
 // @param request - DeleteQualityFollowerRequest
 //
@@ -5888,7 +5934,7 @@ func (client *Client) DeleteQualityFollower(request *DeleteQualityFollowerReques
 //
 // Summary:
 //
-// Disassociates a node from a partition filter expression.
+// DeleteQualityRelativeNode deletes a scheduling association.
 //
 // @param request - DeleteQualityRelativeNodeRequest
 //
@@ -5962,7 +6008,7 @@ func (client *Client) DeleteQualityRelativeNodeWithOptions(request *DeleteQualit
 //
 // Summary:
 //
-// Disassociates a node from a partition filter expression.
+// DeleteQualityRelativeNode deletes a scheduling association.
 //
 // @param request - DeleteQualityRelativeNodeRequest
 //
@@ -5983,7 +6029,7 @@ func (client *Client) DeleteQualityRelativeNode(request *DeleteQualityRelativeNo
 //
 // Summary:
 //
-// Deletes a monitoring rule.
+// Deletes a data quality rule.
 //
 // @param request - DeleteQualityRuleRequest
 //
@@ -6037,7 +6083,7 @@ func (client *Client) DeleteQualityRuleWithOptions(request *DeleteQualityRuleReq
 //
 // Summary:
 //
-// Deletes a monitoring rule.
+// Deletes a data quality rule.
 //
 // @param request - DeleteQualityRuleRequest
 //
@@ -6122,7 +6168,7 @@ func (client *Client) DeleteRecognizeRule(request *DeleteRecognizeRuleRequest) (
 
 // Summary:
 //
-// Deletes a custom alert rule.
+// Deletes a custom monitoring alert rule.
 //
 // @param request - DeleteRemindRequest
 //
@@ -6166,7 +6212,7 @@ func (client *Client) DeleteRemindWithOptions(request *DeleteRemindRequest, runt
 
 // Summary:
 //
-// Deletes a custom alert rule.
+// Deletes a custom monitoring alert rule.
 //
 // @param request - DeleteRemindRequest
 //
@@ -6471,6 +6517,10 @@ func (client *Client) DeployDISyncTask(request *DeployDISyncTaskRequest) (_resul
 //
 // Deploys a file to the production environment.
 //
+// Description:
+//
+// This is an asynchronous operation. A successful call returns a deployment ID. Use this ID with the [GetDeployment](https://help.aliyun.com/document_detail/173950.html) operation to query the execution status and final result of the deployment task.
+//
 // @param request - DeployFileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6530,6 +6580,10 @@ func (client *Client) DeployFileWithOptions(request *DeployFileRequest, runtime 
 // Summary:
 //
 // Deploys a file to the production environment.
+//
+// Description:
+//
+// This is an asynchronous operation. A successful call returns a deployment ID. Use this ID with the [GetDeployment](https://help.aliyun.com/document_detail/173950.html) operation to query the execution status and final result of the deployment task.
 //
 // @param request - DeployFileRequest
 //
@@ -6605,7 +6659,7 @@ func (client *Client) DesensitizeData(request *DesensitizeDataRequest) (_result 
 
 // Summary:
 //
-// Adds or modifies a data masking rule.
+// Call the `DsgDesensPlanAddOrUpdate` API to create or edit a data desensitization rule.
 //
 // @param tmpReq - DsgDesensPlanAddOrUpdateRequest
 //
@@ -6655,7 +6709,7 @@ func (client *Client) DsgDesensPlanAddOrUpdateWithOptions(tmpReq *DsgDesensPlanA
 
 // Summary:
 //
-// Adds or modifies a data masking rule.
+// Call the `DsgDesensPlanAddOrUpdate` API to create or edit a data desensitization rule.
 //
 // @param request - DsgDesensPlanAddOrUpdateRequest
 //
@@ -6745,7 +6799,7 @@ func (client *Client) DsgDesensPlanDelete(request *DsgDesensPlanDeleteRequest) (
 
 // Summary:
 //
-// Queries a list of data masking rules.
+// Call the `DsgDesensPlanQueryList` API to query Data Security Guard\\"s (DSG) data masking rules.
 //
 // @param tmpReq - DsgDesensPlanQueryListRequest
 //
@@ -6791,7 +6845,7 @@ func (client *Client) DsgDesensPlanQueryListWithOptions(tmpReq *DsgDesensPlanQue
 
 // Summary:
 //
-// Queries a list of data masking rules.
+// Call the `DsgDesensPlanQueryList` API to query Data Security Guard\\"s (DSG) data masking rules.
 //
 // @param request - DsgDesensPlanQueryListRequest
 //
@@ -6885,6 +6939,218 @@ func (client *Client) DsgDesensPlanUpdateStatus(request *DsgDesensPlanUpdateStat
 
 // Summary:
 //
+// Queries access behavior details.
+//
+// @param request - DsgGetVisitDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DsgGetVisitDetailResponse
+func (client *Client) DsgGetVisitDetailWithOptions(request *DsgGetVisitDetailRequest, runtime *dara.RuntimeOptions) (_result *DsgGetVisitDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BeginTime) {
+		body["BeginTime"] = request.BeginTime
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.EngineName) {
+		body["EngineName"] = request.EngineName
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		body["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		body["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RuleName) {
+		body["RuleName"] = request.RuleName
+	}
+
+	if !dara.IsNil(request.SensLevel) {
+		body["SensLevel"] = request.SensLevel
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DsgGetVisitDetail"),
+		Version:     dara.String("2020-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DsgGetVisitDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries access behavior details.
+//
+// @param request - DsgGetVisitDetailRequest
+//
+// @return DsgGetVisitDetailResponse
+func (client *Client) DsgGetVisitDetail(request *DsgGetVisitDetailRequest) (_result *DsgGetVisitDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DsgGetVisitDetailResponse{}
+	_body, _err := client.DsgGetVisitDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries access records for data access.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This API operation retrieves all configuration information of a specific security policy by specifying the security policy ID.
+//
+// - Ensure that the value of the `Id` parameter is valid and exists. Otherwise, an error message is returned.
+//
+// - The returned data structure includes basic policy information (such as name and description) and detailed policy content (such as control items and their settings).
+//
+// - Note: Some fields of system default policies may not be modified or deleted.
+//
+// @param request - DsgGetVisitStatRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DsgGetVisitStatResponse
+func (client *Client) DsgGetVisitStatWithOptions(request *DsgGetVisitStatRequest, runtime *dara.RuntimeOptions) (_result *DsgGetVisitStatResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BeginTime) {
+		body["BeginTime"] = request.BeginTime
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.EngineName) {
+		body["EngineName"] = request.EngineName
+	}
+
+	if !dara.IsNil(request.NodeId) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		body["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RuleName) {
+		body["RuleName"] = request.RuleName
+	}
+
+	if !dara.IsNil(request.SensLevel) {
+		body["SensLevel"] = request.SensLevel
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DsgGetVisitStat"),
+		Version:     dara.String("2020-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DsgGetVisitStatResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries access records for data access.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This API operation retrieves all configuration information of a specific security policy by specifying the security policy ID.
+//
+// - Ensure that the value of the `Id` parameter is valid and exists. Otherwise, an error message is returned.
+//
+// - The returned data structure includes basic policy information (such as name and description) and detailed policy content (such as control items and their settings).
+//
+// - Note: Some fields of system default policies may not be modified or deleted.
+//
+// @param request - DsgGetVisitStatRequest
+//
+// @return DsgGetVisitStatResponse
+func (client *Client) DsgGetVisitStat(request *DsgGetVisitStatRequest) (_result *DsgGetVisitStatResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DsgGetVisitStatResponse{}
+	_body, _err := client.DsgGetVisitStatWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of compute engines of different types in the current tenant.
 //
 // @param request - DsgPlatformQueryProjectsAndSchemaFromMetaRequest
@@ -6943,7 +7209,7 @@ func (client *Client) DsgPlatformQueryProjectsAndSchemaFromMeta(request *DsgPlat
 
 // Summary:
 //
-// Queries a list of available sensitive field type templates and the data masking rules supported by the templates. You can refer to the response parameters of this operation to configure a data masking rule.
+// Retrieves available Sensitive Data Type Templates and the Desensitization Rules they support. Use the response from this API to configure your Desensitization Rules.
 //
 // @param request - DsgQueryDefaultTemplatesRequest
 //
@@ -6983,7 +7249,7 @@ func (client *Client) DsgQueryDefaultTemplatesWithOptions(request *DsgQueryDefau
 
 // Summary:
 //
-// Queries a list of available sensitive field type templates and the data masking rules supported by the templates. You can refer to the response parameters of this operation to configure a data masking rule.
+// Retrieves available Sensitive Data Type Templates and the Desensitization Rules they support. Use the response from this API to configure your Desensitization Rules.
 //
 // @param request - DsgQueryDefaultTemplatesRequest
 //
@@ -7001,7 +7267,7 @@ func (client *Client) DsgQueryDefaultTemplates(request *DsgQueryDefaultTemplates
 
 // Summary:
 //
-// Query the status of the masking switch.
+// # Query data masking switch status
 //
 // @param request - DsgQueryDesensStatusListRequest
 //
@@ -7041,7 +7307,7 @@ func (client *Client) DsgQueryDesensStatusListWithOptions(request *DsgQueryDesen
 
 // Summary:
 //
-// Query the status of the masking switch.
+// # Query data masking switch status
 //
 // @param request - DsgQueryDesensStatusListRequest
 //
@@ -7059,17 +7325,243 @@ func (client *Client) DsgQueryDesensStatusList(request *DsgQueryDesensStatusList
 
 // Summary:
 //
-// Queries the identification results of sensitive data.
+// Exports detailed query results.
 //
 // Description:
 //
-// The query capability of the API operation is similar to the query feature in Data Security Guard in the DataWorks console. The API operation can be used to query the identification results of sensitive data of a tenant based on the association with the tenant ID.
+// This API corresponds to the query feature on the Data Security Guard console interface. It retrieves sensitive data identification results for a specified tenant by associating with the tenant ID.
 //
-//   - You can search for a specific identification result based on filter conditions such as data source type and workspace.
+// - Supports filtering by dimensions such as data source type and project workspace.
 //
-//   - You can sort the identification results of sensitive data of a tenant based on the values of a field in ascending or descending order.
+// - Supports ascending or descending sorting on a specific field.
 //
-//   - This operation supports paged query.
+// - Supports paging.
+//
+// @param request - DsgQueryDetailsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DsgQueryDetailsResponse
+func (client *Client) DsgQueryDetailsWithOptions(request *DsgQueryDetailsRequest, runtime *dara.RuntimeOptions) (_result *DsgQueryDetailsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.IpAare) {
+		query["IpAare"] = request.IpAare
+	}
+
+	if !dara.IsNil(request.Rows) {
+		query["Rows"] = request.Rows
+	}
+
+	if !dara.IsNil(request.User) {
+		query["User"] = request.User
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BeginTime) {
+		body["BeginTime"] = request.BeginTime
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.EngineName) {
+		body["EngineName"] = request.EngineName
+	}
+
+	if !dara.IsNil(request.Ip) {
+		body["Ip"] = request.Ip
+	}
+
+	if !dara.IsNil(request.NodeId) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		body["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RuleType) {
+		body["RuleType"] = request.RuleType
+	}
+
+	if !dara.IsNil(request.SensLevel) {
+		body["SensLevel"] = request.SensLevel
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DsgQueryDetails"),
+		Version:     dara.String("2020-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DsgQueryDetailsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Exports detailed query results.
+//
+// Description:
+//
+// This API corresponds to the query feature on the Data Security Guard console interface. It retrieves sensitive data identification results for a specified tenant by associating with the tenant ID.
+//
+// - Supports filtering by dimensions such as data source type and project workspace.
+//
+// - Supports ascending or descending sorting on a specific field.
+//
+// - Supports paging.
+//
+// @param request - DsgQueryDetailsRequest
+//
+// @return DsgQueryDetailsResponse
+func (client *Client) DsgQueryDetails(request *DsgQueryDetailsRequest) (_result *DsgQueryDetailsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DsgQueryDetailsResponse{}
+	_body, _err := client.DsgQueryDetailsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Exports a row-level detailed list query.
+//
+// Description:
+//
+// This API corresponds to the query feature on the Data Protection Umbrella console interface. It retrieves sensitive data identification results for a specified tenant by associating with the tenant ID.
+//
+// - Supports filtering by dimensions such as data source type and project workspace.
+//
+// - Supports ascending or descending sorting on a specific field.
+//
+// - Supports paging query.
+//
+// @param request - DsgQueryRowDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DsgQueryRowDetailResponse
+func (client *Client) DsgQueryRowDetailWithOptions(request *DsgQueryRowDetailRequest, runtime *dara.RuntimeOptions) (_result *DsgQueryRowDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.EngineName) {
+		body["EngineName"] = request.EngineName
+	}
+
+	if !dara.IsNil(request.InstId) {
+		body["InstId"] = request.InstId
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		body["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DsgQueryRowDetail"),
+		Version:     dara.String("2020-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DsgQueryRowDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Exports a row-level detailed list query.
+//
+// Description:
+//
+// This API corresponds to the query feature on the Data Protection Umbrella console interface. It retrieves sensitive data identification results for a specified tenant by associating with the tenant ID.
+//
+// - Supports filtering by dimensions such as data source type and project workspace.
+//
+// - Supports ascending or descending sorting on a specific field.
+//
+// - Supports paging query.
+//
+// @param request - DsgQueryRowDetailRequest
+//
+// @return DsgQueryRowDetailResponse
+func (client *Client) DsgQueryRowDetail(request *DsgQueryRowDetailRequest) (_result *DsgQueryRowDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DsgQueryRowDetailResponse{}
+	_body, _err := client.DsgQueryRowDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the sensitive data identification results from Data Security Guard.
+//
+// Description:
+//
+// This API operation corresponds to the query feature on the Data Security Guard console interface. It retrieves the sensitive data identification results for a specified tenant by associating with the tenant ID.
+//
+// - Supports filtering by data source type, project workspace, and other dimensions.
+//
+// - Supports ascending or descending sorting on a specific field.
+//
+// - Supports paged query.
 //
 // @param request - DsgQuerySensResultRequest
 //
@@ -7177,17 +7669,17 @@ func (client *Client) DsgQuerySensResultWithOptions(request *DsgQuerySensResultR
 
 // Summary:
 //
-// Queries the identification results of sensitive data.
+// Retrieves the sensitive data identification results from Data Security Guard.
 //
 // Description:
 //
-// The query capability of the API operation is similar to the query feature in Data Security Guard in the DataWorks console. The API operation can be used to query the identification results of sensitive data of a tenant based on the association with the tenant ID.
+// This API operation corresponds to the query feature on the Data Security Guard console interface. It retrieves the sensitive data identification results for a specified tenant by associating with the tenant ID.
 //
-//   - You can search for a specific identification result based on filter conditions such as data source type and workspace.
+// - Supports filtering by data source type, project workspace, and other dimensions.
 //
-//   - You can sort the identification results of sensitive data of a tenant based on the values of a field in ascending or descending order.
+// - Supports ascending or descending sorting on a specific field.
 //
-//   - This operation supports paged query.
+// - Supports paged query.
 //
 // @param request - DsgQuerySensResultRequest
 //
@@ -7345,7 +7837,7 @@ func (client *Client) DsgSceneAddOrUpdateScene(request *DsgSceneAddOrUpdateScene
 
 // Summary:
 //
-// Queries a list of data masking scenarios.
+// Call the `DsgSceneQuerySceneListByName` API to retrieve a list of data masking scenarios.
 //
 // @param request - DsgSceneQuerySceneListByNameRequest
 //
@@ -7385,7 +7877,7 @@ func (client *Client) DsgSceneQuerySceneListByNameWithOptions(request *DsgSceneQ
 
 // Summary:
 //
-// Queries a list of data masking scenarios.
+// Call the `DsgSceneQuerySceneListByName` API to retrieve a list of data masking scenarios.
 //
 // @param request - DsgSceneQuerySceneListByNameRequest
 //
@@ -7537,7 +8029,7 @@ func (client *Client) DsgStopSensIdentify(request *DsgStopSensIdentifyRequest) (
 
 // Summary:
 //
-// Updates the status of the masking switch.
+// # Update the status of data masking switches
 //
 // @param tmpReq - DsgUpdateDesensStatusListRequest
 //
@@ -7591,7 +8083,7 @@ func (client *Client) DsgUpdateDesensStatusListWithOptions(tmpReq *DsgUpdateDese
 
 // Summary:
 //
-// Updates the status of the masking switch.
+// # Update the status of data masking switches
 //
 // @param request - DsgUpdateDesensStatusListRequest
 //
@@ -7609,7 +8101,7 @@ func (client *Client) DsgUpdateDesensStatusList(request *DsgUpdateDesensStatusLi
 
 // Summary:
 //
-// Adds or modifies a user group.
+// Creates or updates a user group in Data Security Guard.
 //
 // @param tmpReq - DsgUserGroupAddOrUpdateRequest
 //
@@ -7659,7 +8151,7 @@ func (client *Client) DsgUserGroupAddOrUpdateWithOptions(tmpReq *DsgUserGroupAdd
 
 // Summary:
 //
-// Adds or modifies a user group.
+// Creates or updates a user group in Data Security Guard.
 //
 // @param request - DsgUserGroupAddOrUpdateRequest
 //
@@ -7803,7 +8295,7 @@ func (client *Client) DsgUserGroupGetOdpsRoleGroups(request *DsgUserGroupGetOdps
 
 // Summary:
 //
-// Queries a list of user groups in Data Security Guard.
+// Call `DsgUserGroupQueryList` to query user groups in Data Security Guard (DSG).
 //
 // @param request - DsgUserGroupQueryListRequest
 //
@@ -7843,7 +8335,7 @@ func (client *Client) DsgUserGroupQueryListWithOptions(request *DsgUserGroupQuer
 
 // Summary:
 //
-// Queries a list of user groups in Data Security Guard.
+// Call `DsgUserGroupQueryList` to query user groups in Data Security Guard (DSG).
 //
 // @param request - DsgUserGroupQueryListRequest
 //
@@ -8452,11 +8944,11 @@ func (client *Client) GenerateDISyncTaskConfigForCreating(request *GenerateDISyn
 
 // Summary:
 //
-// Generates the JSON for an asynchronous thread that is used to update a real-time synchronization task in Data Integration.
+// Generates the configuration for updating a real-time synchronization task in Data Integration.
 //
 // Description:
 //
-// DataWorks allows you to use only the [UpdateDISyncTask](https://help.aliyun.com/document_detail/289109.html) operation to update a batch synchronization task in Data Integration. To update a real-time synchronization task, you must first call the GenerateDISyncTaskConfigForUpdating operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the UpdateDISyncTask operation and use the parameters as request parameters to update a real-time synchronization task in Data Integration. DataWorks allows you to create or update real-time synchronization tasks in Data Integration only in asynchronous mode.
+// DataWorks allows you to directly call the [UpdateDISyncTask](https://help.aliyun.com/document_detail/289109.html) operation to update batch synchronization tasks in Data Integration. To update a real-time synchronization task, you must first call the GenerateDISyncTaskConfigForUpdating and [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operations to asynchronously generate the required parameters, and then pass the parameters to the UpdateDISyncTask operation. Only asynchronous updates are supported for real-time synchronization tasks in Data Integration.
 //
 // @param request - GenerateDISyncTaskConfigForUpdatingRequest
 //
@@ -8516,11 +9008,11 @@ func (client *Client) GenerateDISyncTaskConfigForUpdatingWithOptions(request *Ge
 
 // Summary:
 //
-// Generates the JSON for an asynchronous thread that is used to update a real-time synchronization task in Data Integration.
+// Generates the configuration for updating a real-time synchronization task in Data Integration.
 //
 // Description:
 //
-// DataWorks allows you to use only the [UpdateDISyncTask](https://help.aliyun.com/document_detail/289109.html) operation to update a batch synchronization task in Data Integration. To update a real-time synchronization task, you must first call the GenerateDISyncTaskConfigForUpdating operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the UpdateDISyncTask operation and use the parameters as request parameters to update a real-time synchronization task in Data Integration. DataWorks allows you to create or update real-time synchronization tasks in Data Integration only in asynchronous mode.
+// DataWorks allows you to directly call the [UpdateDISyncTask](https://help.aliyun.com/document_detail/289109.html) operation to update batch synchronization tasks in Data Integration. To update a real-time synchronization task, you must first call the GenerateDISyncTaskConfigForUpdating and [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operations to asynchronously generate the required parameters, and then pass the parameters to the UpdateDISyncTask operation. Only asynchronous updates are supported for real-time synchronization tasks in Data Integration.
 //
 // @param request - GenerateDISyncTaskConfigForUpdatingRequest
 //
@@ -8798,7 +9290,7 @@ func (client *Client) GetBaselineKeyPath(request *GetBaselineKeyPathRequest) (_r
 
 // Summary:
 //
-// Queries the details of a baseline instance.
+// Retrieves the status of a baseline instance.
 //
 // @param request - GetBaselineStatusRequest
 //
@@ -8850,7 +9342,7 @@ func (client *Client) GetBaselineStatusWithOptions(request *GetBaselineStatusReq
 
 // Summary:
 //
-// Queries the details of a baseline instance.
+// Retrieves the status of a baseline instance.
 //
 // @param request - GetBaselineStatusRequest
 //
@@ -9001,11 +9493,11 @@ func (client *Client) GetDDLJobStatus(request *GetDDLJobStatusRequest) (_result 
 
 // Summary:
 //
-// Queries the details of an alert rule configured for a new-version synchronization task. Only the following types of tasks are supported: real-time data synchronization from a MySQL database to Hologres.
+// Retrieves the details of an alert rule configured for a synchronization task.
 //
 // Description:
 //
-// You can configure alert rules only for tasks that can be used for real-time data synchronization.
+// Alert rules can be configured when your task includes real-time synchronization.
 //
 // @param request - GetDIAlarmRuleRequest
 //
@@ -9049,11 +9541,11 @@ func (client *Client) GetDIAlarmRuleWithOptions(request *GetDIAlarmRuleRequest, 
 
 // Summary:
 //
-// Queries the details of an alert rule configured for a new-version synchronization task. Only the following types of tasks are supported: real-time data synchronization from a MySQL database to Hologres.
+// Retrieves the details of an alert rule configured for a synchronization task.
 //
 // Description:
 //
-// You can configure alert rules only for tasks that can be used for real-time data synchronization.
+// Alert rules can be configured when your task includes real-time synchronization.
 //
 // @param request - GetDIAlarmRuleRequest
 //
@@ -9207,7 +9699,7 @@ func (client *Client) GetDISyncInstanceInfo(request *GetDISyncInstanceInfoReques
 
 // Summary:
 //
-// Queries the details of a real-time synchronization task or a data synchronization solution.
+// Retrieves the details of a synchronization task or a data synchronization solution.
 //
 // @param request - GetDISyncTaskRequest
 //
@@ -9259,7 +9751,7 @@ func (client *Client) GetDISyncTaskWithOptions(request *GetDISyncTaskRequest, ru
 
 // Summary:
 //
-// Queries the details of a real-time synchronization task or a data synchronization solution.
+// Retrieves the details of a synchronization task or a data synchronization solution.
 //
 // @param request - GetDISyncTaskRequest
 //
@@ -9283,23 +9775,23 @@ func (client *Client) GetDISyncTask(request *GetDISyncTaskRequest) (_result *Get
 //
 // Supported DAG types:
 //
-//   - MANUAL: DAG for a manually triggered workflow
+// - MANUAL: DAG for a manually triggered workflow
 //
-//   - SMOKE_TEST: DAG for a smoke testing workflow
+// - SMOKE_TEST: DAG for a smoke testing workflow
 //
-//   - SUPPLY_DATA: DAG for a data backfill instance
+// - SUPPLY_DATA: DAG for a data backfill instance
 //
-//   - BUSINESS_PROCESS_DAG: DAG for a one-time workflow
+// - BUSINESS_PROCESS_DAG: DAG for a one-time workflow
 //
 // Supported DAG states:
 //
-//   - CREATED
+// - CREATED: The DAG is created.
 //
-//   - RUNNING
+// - RUNNING: The DAG is running.
 //
-//   - FAILURE
+// - FAILURE: The DAG fails to run.
 //
-//   - SUCCESS
+// - SUCCESS: The DAG is successfully run.
 //
 // @param request - GetDagRequest
 //
@@ -9353,23 +9845,23 @@ func (client *Client) GetDagWithOptions(request *GetDagRequest, runtime *dara.Ru
 //
 // Supported DAG types:
 //
-//   - MANUAL: DAG for a manually triggered workflow
+// - MANUAL: DAG for a manually triggered workflow
 //
-//   - SMOKE_TEST: DAG for a smoke testing workflow
+// - SMOKE_TEST: DAG for a smoke testing workflow
 //
-//   - SUPPLY_DATA: DAG for a data backfill instance
+// - SUPPLY_DATA: DAG for a data backfill instance
 //
-//   - BUSINESS_PROCESS_DAG: DAG for a one-time workflow
+// - BUSINESS_PROCESS_DAG: DAG for a one-time workflow
 //
 // Supported DAG states:
 //
-//   - CREATED
+// - CREATED: The DAG is created.
 //
-//   - RUNNING
+// - RUNNING: The DAG is running.
 //
-//   - FAILURE
+// - FAILURE: The DAG fails to run.
 //
-//   - SUCCESS
+// - SUCCESS: The DAG is successfully run.
 //
 // @param request - GetDagRequest
 //
@@ -9387,7 +9879,7 @@ func (client *Client) GetDag(request *GetDagRequest) (_result *GetDagResponse, _
 
 // Summary:
 //
-// Queries the details of a DataService Studio API in the development state.
+// Retrieves the details of a DataService Studio API in the development state.
 //
 // @param request - GetDataServiceApiRequest
 //
@@ -9439,7 +9931,7 @@ func (client *Client) GetDataServiceApiWithOptions(request *GetDataServiceApiReq
 
 // Summary:
 //
-// Queries the details of a DataService Studio API in the development state.
+// Retrieves the details of a DataService Studio API in the development state.
 //
 // @param request - GetDataServiceApiRequest
 //
@@ -9515,7 +10007,7 @@ func (client *Client) GetDataServiceApiTest(request *GetDataServiceApiTestReques
 
 // Summary:
 //
-// Queries the details of an application.
+// Retrieves the details of an application.
 //
 // @param request - GetDataServiceApplicationRequest
 //
@@ -9567,7 +10059,7 @@ func (client *Client) GetDataServiceApplicationWithOptions(request *GetDataServi
 
 // Summary:
 //
-// Queries the details of an application.
+// Retrieves the details of an application.
 //
 // @param request - GetDataServiceApplicationRequest
 //
@@ -9655,7 +10147,7 @@ func (client *Client) GetDataServiceFolder(request *GetDataServiceFolderRequest)
 
 // Summary:
 //
-// Queries a business process.
+// Retrieves the details of a business process.
 //
 // @param request - GetDataServiceGroupRequest
 //
@@ -9707,7 +10199,7 @@ func (client *Client) GetDataServiceGroupWithOptions(request *GetDataServiceGrou
 
 // Summary:
 //
-// Queries a business process.
+// Retrieves the details of a business process.
 //
 // @param request - GetDataServiceGroupRequest
 //
@@ -9725,7 +10217,7 @@ func (client *Client) GetDataServiceGroup(request *GetDataServiceGroupRequest) (
 
 // Summary:
 //
-// Queries the information about a DataService Studio API in the published state.
+// Retrieves the details of a published DataService Studio API.
 //
 // @param request - GetDataServicePublishedApiRequest
 //
@@ -9777,7 +10269,7 @@ func (client *Client) GetDataServicePublishedApiWithOptions(request *GetDataServ
 
 // Summary:
 //
-// Queries the information about a DataService Studio API in the published state.
+// Retrieves the details of a published DataService Studio API.
 //
 // @param request - GetDataServicePublishedApiRequest
 //
@@ -9943,7 +10435,7 @@ func (client *Client) GetDeployment(request *GetDeploymentRequest) (_result *Get
 
 // Summary:
 //
-// Queries the details of an extension.
+// Retrieves the details of an extension.
 //
 // @param request - GetExtensionRequest
 //
@@ -9987,7 +10479,7 @@ func (client *Client) GetExtensionWithOptions(request *GetExtensionRequest, runt
 
 // Summary:
 //
-// Queries the details of an extension.
+// Retrieves the details of an extension.
 //
 // @param request - GetExtensionRequest
 //
@@ -10219,7 +10711,7 @@ func (client *Client) GetFileVersion(request *GetFileVersionRequest) (_result *G
 
 // Summary:
 //
-// Queries the information about a folder.
+// You can call GetFolder to retrieve the details of a folder.
 //
 // @param request - GetFolderRequest
 //
@@ -10275,7 +10767,7 @@ func (client *Client) GetFolderWithOptions(request *GetFolderRequest, runtime *d
 
 // Summary:
 //
-// Queries the information about a folder.
+// You can call GetFolder to retrieve the details of a folder.
 //
 // @param request - GetFolderRequest
 //
@@ -10427,7 +10919,7 @@ func (client *Client) GetInstance(request *GetInstanceRequest) (_result *GetInst
 //
 // Summary:
 //
-// Queries the ranking of the running durations of instances.
+// Queries the ranking of instances by running duration.
 //
 // @param request - GetInstanceConsumeTimeRankRequest
 //
@@ -10477,7 +10969,7 @@ func (client *Client) GetInstanceConsumeTimeRankWithOptions(request *GetInstance
 //
 // Summary:
 //
-// Queries the ranking of the running durations of instances.
+// Queries the ranking of instances by running duration.
 //
 // @param request - GetInstanceConsumeTimeRankRequest
 //
@@ -10573,7 +11065,7 @@ func (client *Client) GetInstanceCountTrend(request *GetInstanceCountTrendReques
 //
 // Summary:
 //
-// Queries the ranking of nodes on which errors occur within the last month.
+// Calls GetInstanceErrorRank to obtain the error ranking of nodes in the last month.
 //
 // @param request - GetInstanceErrorRankRequest
 //
@@ -10619,7 +11111,7 @@ func (client *Client) GetInstanceErrorRankWithOptions(request *GetInstanceErrorR
 //
 // Summary:
 //
-// Queries the ranking of nodes on which errors occur within the last month.
+// Calls GetInstanceErrorRank to obtain the error ranking of nodes in the last month.
 //
 // @param request - GetInstanceErrorRankRequest
 //
@@ -11176,12 +11668,6 @@ func (client *Client) GetMetaColumnLineage(request *GetMetaColumnLineageRequest)
 //
 // Queries the basic metadata information about a compute engine instance.
 //
-// Description:
-//
-// The ID of the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
-//
-// You can log on to the [EMR console](https://emr.console.aliyun.com/?spm=a2c4g.11186623.0.0.965cc5c2GeiHet#/cn-hangzhou) to obtain the ID of the EMR cluster.
-//
 // @param request - GetMetaDBInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11222,12 +11708,6 @@ func (client *Client) GetMetaDBInfoWithOptions(request *GetMetaDBInfoRequest, ru
 //
 // Queries the basic metadata information about a compute engine instance.
 //
-// Description:
-//
-// The ID of the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
-//
-// You can log on to the [EMR console](https://emr.console.aliyun.com/?spm=a2c4g.11186623.0.0.965cc5c2GeiHet#/cn-hangzhou) to obtain the ID of the EMR cluster.
-//
 // @param request - GetMetaDBInfoRequest
 //
 // @return GetMetaDBInfoResponse
@@ -11244,7 +11724,7 @@ func (client *Client) GetMetaDBInfo(request *GetMetaDBInfoRequest) (_result *Get
 
 // Summary:
 //
-// Queries metatables in a compute engine instance.
+// Retrieves all tables in the specified Engine Instance.
 //
 // @param request - GetMetaDBTableListRequest
 //
@@ -11308,7 +11788,7 @@ func (client *Client) GetMetaDBTableListWithOptions(request *GetMetaDBTableListR
 
 // Summary:
 //
-// Queries metatables in a compute engine instance.
+// Retrieves all tables in the specified Engine Instance.
 //
 // @param request - GetMetaDBTableListRequest
 //
@@ -11388,7 +11868,7 @@ func (client *Client) GetMetaTableBasicInfo(request *GetMetaTableBasicInfoReques
 //
 // Description:
 //
-// > This operation will be replaced soon. We recommend that you do not call this operation.
+// > This API operation is not recommended. A new API operation that provides the same capability will be released soon.
 //
 // @param request - GetMetaTableChangeLogRequest
 //
@@ -11460,7 +11940,7 @@ func (client *Client) GetMetaTableChangeLogWithOptions(request *GetMetaTableChan
 //
 // Description:
 //
-// > This operation will be replaced soon. We recommend that you do not call this operation.
+// > This API operation is not recommended. A new API operation that provides the same capability will be released soon.
 //
 // @param request - GetMetaTableChangeLogRequest
 //
@@ -11538,7 +12018,7 @@ func (client *Client) GetMetaTableColumn(request *GetMetaTableColumnRequest) (_r
 //
 // Summary:
 //
-// Queries the complete information about a table, including information about fields in the table.
+// Retrieves complete metadata for a table, including field details.
 //
 // Description:
 //
@@ -11584,7 +12064,7 @@ func (client *Client) GetMetaTableFullInfoWithOptions(request *GetMetaTableFullI
 //
 // Summary:
 //
-// Queries the complete information about a table, including information about fields in the table.
+// Retrieves complete metadata for a table, including field details.
 //
 // Description:
 //
@@ -11903,11 +12383,11 @@ func (client *Client) GetMetaTableOutput(request *GetMetaTableOutputRequest) (_r
 
 // Summary:
 //
-// Obtains a list of partitions in a metatable.
+// Retrieves a list of partitions for a table.
 //
 // Description:
 //
-// You can call this operation to query only the partitions of a metatable in a MaxCompute or E-MapReduce (EMR) compute engine. If you query partitions of a metatable in an EMR compute engine, only DataLake clusters that use Data Lake Formation (DLF) to manage metadata and Hadoop clusters whose cluster version is earlier than 3.41.0 or 5.7.0 are supported.
+// This operation supports only MaxCompute and E-MapReduce (EMR) tables. For EMR, supported cluster types include new data lake clusters that use Data Lake Formation (DLF) for metadata management, and Hadoop clusters with versions earlier than V3.41.0 or V5.7.0.
 //
 // @param tmpReq - GetMetaTablePartitionRequest
 //
@@ -11985,11 +12465,11 @@ func (client *Client) GetMetaTablePartitionWithOptions(tmpReq *GetMetaTableParti
 
 // Summary:
 //
-// Obtains a list of partitions in a metatable.
+// Retrieves a list of partitions for a table.
 //
 // Description:
 //
-// You can call this operation to query only the partitions of a metatable in a MaxCompute or E-MapReduce (EMR) compute engine. If you query partitions of a metatable in an EMR compute engine, only DataLake clusters that use Data Lake Formation (DLF) to manage metadata and Hadoop clusters whose cluster version is earlier than 3.41.0 or 5.7.0 are supported.
+// This operation supports only MaxCompute and E-MapReduce (EMR) tables. For EMR, supported cluster types include new data lake clusters that use Data Lake Formation (DLF) for metadata management, and Hadoop clusters with versions earlier than V3.41.0 or V5.7.0.
 //
 // @param request - GetMetaTablePartitionRequest
 //
@@ -12007,7 +12487,7 @@ func (client *Client) GetMetaTablePartition(request *GetMetaTablePartitionReques
 
 // Summary:
 //
-// Queries the output tasks of a metatable.
+// 获取Table的产出任务列表
 //
 // @param request - GetMetaTableProducingTasksRequest
 //
@@ -12071,7 +12551,7 @@ func (client *Client) GetMetaTableProducingTasksWithOptions(request *GetMetaTabl
 
 // Summary:
 //
-// Queries the output tasks of a metatable.
+// 获取Table的产出任务列表
 //
 // @param request - GetMetaTableProducingTasksRequest
 //
@@ -12479,7 +12959,7 @@ func (client *Client) GetNodeCode(request *GetNodeCodeRequest) (_result *GetNode
 //
 // Summary:
 //
-// Queries the nodes associated with a baseline.
+// Calls the GetNodeOnBaseline operation to query the nodes on a baseline.
 //
 // @param request - GetNodeOnBaselineRequest
 //
@@ -12525,7 +13005,7 @@ func (client *Client) GetNodeOnBaselineWithOptions(request *GetNodeOnBaselineReq
 //
 // Summary:
 //
-// Queries the nodes associated with a baseline.
+// Calls the GetNodeOnBaseline operation to query the nodes on a baseline.
 //
 // @param request - GetNodeOnBaselineRequest
 //
@@ -12881,6 +13361,12 @@ func (client *Client) GetOptionValueForProject(request *GetOptionValueForProject
 //
 // Queries the details of a permission request order.
 //
+// Note: The 2020 version of OpenAPI will be discontinued. Please migrate to the 2024 version of OpenAPI as soon as possible — GetApplicationContents/GetProcessInstance.
+//
+// Description:
+//
+// *Note: The 2020 version of OpenAPI will be discontinued. Please migrate to the 2024 version of OpenAPI as soon as possible — [GetApplicationContents](https://help.aliyun.com/zh/dataworks/developer-reference/api-dataworks-public-2024-05-18-getapplicationcontents?spm=a2c4g.11186623.help-menu-72772.d_1_1_3_12_0_3.75985eba2pEw9l&scm=20140722.H_3040926._.OR_help-T_cn~zh-V_1)/[GetProcessInstance](https://help.aliyun.com/zh/dataworks/developer-reference/api-dataworks-public-2024-05-18-getprocessinstance?spm=a2c4g.11186623.help-menu-72772.d_1_1_3_12_0_4.64e62414k6cKri&scm=20140722.H_3040933._.OR_help-T_cn~zh-V_1).**
+//
 // @param request - GetPermissionApplyOrderDetailRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12924,6 +13410,12 @@ func (client *Client) GetPermissionApplyOrderDetailWithOptions(request *GetPermi
 // Summary:
 //
 // Queries the details of a permission request order.
+//
+// Note: The 2020 version of OpenAPI will be discontinued. Please migrate to the 2024 version of OpenAPI as soon as possible — GetApplicationContents/GetProcessInstance.
+//
+// Description:
+//
+// *Note: The 2020 version of OpenAPI will be discontinued. Please migrate to the 2024 version of OpenAPI as soon as possible — [GetApplicationContents](https://help.aliyun.com/zh/dataworks/developer-reference/api-dataworks-public-2024-05-18-getapplicationcontents?spm=a2c4g.11186623.help-menu-72772.d_1_1_3_12_0_3.75985eba2pEw9l&scm=20140722.H_3040926._.OR_help-T_cn~zh-V_1)/[GetProcessInstance](https://help.aliyun.com/zh/dataworks/developer-reference/api-dataworks-public-2024-05-18-getprocessinstance?spm=a2c4g.11186623.help-menu-72772.d_1_1_3_12_0_4.64e62414k6cKri&scm=20140722.H_3040933._.OR_help-T_cn~zh-V_1).**
 //
 // @param request - GetPermissionApplyOrderDetailRequest
 //
@@ -13076,7 +13568,7 @@ func (client *Client) GetProjectDetail(request *GetProjectDetailRequest) (_resul
 //
 // Summary:
 //
-// Queries the information about a partition filter expression.
+// Call `GetQualityEntity` to retrieve the partition expression.
 //
 // @param request - GetQualityEntityRequest
 //
@@ -13138,7 +13630,7 @@ func (client *Client) GetQualityEntityWithOptions(request *GetQualityEntityReque
 //
 // Summary:
 //
-// Queries the information about a partition filter expression.
+// Call `GetQualityEntity` to retrieve the partition expression.
 //
 // @param request - GetQualityEntityRequest
 //
@@ -13159,7 +13651,7 @@ func (client *Client) GetQualityEntity(request *GetQualityEntityRequest) (_resul
 //
 // Summary:
 //
-// Queries the subscribers of a partition filter expression.
+// Retrieves the followers of a Partition Expression.
 //
 // @param request - GetQualityFollowerRequest
 //
@@ -13213,7 +13705,7 @@ func (client *Client) GetQualityFollowerWithOptions(request *GetQualityFollowerR
 //
 // Summary:
 //
-// Queries the subscribers of a partition filter expression.
+// Retrieves the followers of a Partition Expression.
 //
 // @param request - GetQualityFollowerRequest
 //
@@ -13234,7 +13726,7 @@ func (client *Client) GetQualityFollower(request *GetQualityFollowerRequest) (_r
 //
 // Summary:
 //
-// Queries the information about a monitoring rule.
+// Gets information about a quality rule.
 //
 // @param request - GetQualityRuleRequest
 //
@@ -13288,7 +13780,7 @@ func (client *Client) GetQualityRuleWithOptions(request *GetQualityRuleRequest, 
 //
 // Summary:
 //
-// Queries the information about a monitoring rule.
+// Gets information about a quality rule.
 //
 // @param request - GetQualityRuleRequest
 //
@@ -13308,12 +13800,6 @@ func (client *Client) GetQualityRule(request *GetQualityRuleRequest) (_result *G
 // Summary:
 //
 // Queries the information about a custom alert rule.
-//
-// Description:
-//
-// ## Debugging
-//
-// [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=dataworks-public\\&api=GetRemind\\&type=RPC\\&version=2020-05-18)
 //
 // @param request - GetRemindRequest
 //
@@ -13358,12 +13844,6 @@ func (client *Client) GetRemindWithOptions(request *GetRemindRequest, runtime *d
 // Summary:
 //
 // Queries the information about a custom alert rule.
-//
-// Description:
-//
-// ## Debugging
-//
-// [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=dataworks-public\\&api=GetRemind\\&type=RPC\\&version=2020-05-18)
 //
 // @param request - GetRemindRequest
 //
@@ -13578,12 +14058,6 @@ func (client *Client) GetTopic(request *GetTopicRequest) (_result *GetTopicRespo
 //
 // Queries baseline instances affected by an event.
 //
-// Description:
-//
-// ## Debugging
-//
-// [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=dataworks-public\\&api=GetTopicInfluence\\&type=RPC\\&version=2020-05-18)
-//
 // @param request - GetTopicInfluenceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13627,12 +14101,6 @@ func (client *Client) GetTopicInfluenceWithOptions(request *GetTopicInfluenceReq
 // Summary:
 //
 // Queries baseline instances affected by an event.
-//
-// Description:
-//
-// ## Debugging
-//
-// [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=dataworks-public\\&api=GetTopicInfluence\\&type=RPC\\&version=2020-05-18)
 //
 // @param request - GetTopicInfluenceRequest
 //
@@ -14529,11 +14997,11 @@ func (client *Client) ListConnections(request *ListConnectionsRequest) (_result 
 
 // Summary:
 //
-// Queries a list of alert rules configured for a new-version synchronization task. The following type of task is supported: real-time data synchronization from a MySQL database to Hologres.
+// Retrieves a list of alert rules configured for a synchronization task.
 //
 // Description:
 //
-// You can configure alert rules only for tasks that can be used for real-time data synchronization.
+// Alert rules can be configured when your task includes real-time synchronization.
 //
 // @param request - ListDIAlarmRulesRequest
 //
@@ -14585,11 +15053,11 @@ func (client *Client) ListDIAlarmRulesWithOptions(request *ListDIAlarmRulesReque
 
 // Summary:
 //
-// Queries a list of alert rules configured for a new-version synchronization task. The following type of task is supported: real-time data synchronization from a MySQL database to Hologres.
+// Retrieves a list of alert rules configured for a synchronization task.
 //
 // Description:
 //
-// You can configure alert rules only for tasks that can be used for real-time data synchronization.
+// Alert rules can be configured when your task includes real-time synchronization.
 //
 // @param request - ListDIAlarmRulesRequest
 //
@@ -14607,7 +15075,7 @@ func (client *Client) ListDIAlarmRules(request *ListDIAlarmRulesRequest) (_resul
 
 // Summary:
 //
-// Queries a list of new-version synchronization tasks. The following type of task is supported: real-time data synchronization from a MySQL database to Hologres.
+// Retrieves a list of synchronization tasks.
 //
 // Description:
 //
@@ -14675,7 +15143,7 @@ func (client *Client) ListDIJobsWithOptions(request *ListDIJobsRequest, runtime 
 
 // Summary:
 //
-// Queries a list of new-version synchronization tasks. The following type of task is supported: real-time data synchronization from a MySQL database to Hologres.
+// Retrieves a list of synchronization tasks.
 //
 // Description:
 //
@@ -14775,29 +15243,29 @@ func (client *Client) ListDIProjectConfig(request *ListDIProjectConfigRequest) (
 
 // Summary:
 //
-// Queries the details of directed acyclic graphs (DAGs) for a single data backfill instance based on OpSeq.
+// Retrieves a list of directed acyclic graphs (DAGs) for a data backfill instance by operation sequence number (OpSeq).
 //
 // Description:
 //
 // Supported DAG types:
 //
-//   - MANUAL: DAG for a manually triggered workflow
+// - MANUAL: DAG for a manually triggered workflow
 //
-//   - SMOKE_TEST: DAG for a smoke testing workflow
+// - SMOKE_TEST: DAG for a smoke testing workflow
 //
-//   - SUPPLY_DATA: DAG for a data backfill instance
+// - SUPPLY_DATA: DAG for a data backfill instance
 //
-//   - BUSINESS_PROCESS_DAG: DAG for a one-time workflow
+// - BUSINESS_PROCESS_DAG: DAG for a one-time workflow
 //
 // Supported DAG states:
 //
-//   - CREATED: The DAG is created.
+// - CREATED: The DAG is created.
 //
-//   - RUNNING: The DAG is running.
+// - RUNNING: The DAG is running.
 //
-//   - FAILURE: The DAG fails to run.
+// - FAILURE: The DAG fails to run.
 //
-//   - SUCCESS: The DAG is successfully run.
+// - SUCCESS: The DAG is successfully run.
 //
 // @param request - ListDagsRequest
 //
@@ -14845,29 +15313,29 @@ func (client *Client) ListDagsWithOptions(request *ListDagsRequest, runtime *dar
 
 // Summary:
 //
-// Queries the details of directed acyclic graphs (DAGs) for a single data backfill instance based on OpSeq.
+// Retrieves a list of directed acyclic graphs (DAGs) for a data backfill instance by operation sequence number (OpSeq).
 //
 // Description:
 //
 // Supported DAG types:
 //
-//   - MANUAL: DAG for a manually triggered workflow
+// - MANUAL: DAG for a manually triggered workflow
 //
-//   - SMOKE_TEST: DAG for a smoke testing workflow
+// - SMOKE_TEST: DAG for a smoke testing workflow
 //
-//   - SUPPLY_DATA: DAG for a data backfill instance
+// - SUPPLY_DATA: DAG for a data backfill instance
 //
-//   - BUSINESS_PROCESS_DAG: DAG for a one-time workflow
+// - BUSINESS_PROCESS_DAG: DAG for a one-time workflow
 //
 // Supported DAG states:
 //
-//   - CREATED: The DAG is created.
+// - CREATED: The DAG is created.
 //
-//   - RUNNING: The DAG is running.
+// - RUNNING: The DAG is running.
 //
-//   - FAILURE: The DAG fails to run.
+// - FAILURE: The DAG fails to run.
 //
-//   - SUCCESS: The DAG is successfully run.
+// - SUCCESS: The DAG is successfully run.
 //
 // @param request - ListDagsRequest
 //
@@ -14885,7 +15353,7 @@ func (client *Client) ListDags(request *ListDagsRequest) (_result *ListDagsRespo
 
 // Summary:
 //
-// Queries the APIs on which other users are granted the access permissions.
+// Retrieves a list of APIs on which other users are granted access permissions.
 //
 // @param request - ListDataServiceApiAuthoritiesRequest
 //
@@ -14947,7 +15415,7 @@ func (client *Client) ListDataServiceApiAuthoritiesWithOptions(request *ListData
 
 // Summary:
 //
-// Queries the APIs on which other users are granted the access permissions.
+// Retrieves a list of APIs on which other users are granted access permissions.
 //
 // @param request - ListDataServiceApiAuthoritiesRequest
 //
@@ -15109,7 +15577,7 @@ func (client *Client) ListDataServiceApis(request *ListDataServiceApisRequest) (
 
 // Summary:
 //
-// Queries the basic information of applications.
+// Retrieves a list of applications.
 //
 // @param request - ListDataServiceApplicationsRequest
 //
@@ -15165,7 +15633,7 @@ func (client *Client) ListDataServiceApplicationsWithOptions(request *ListDataSe
 
 // Summary:
 //
-// Queries the basic information of applications.
+// Retrieves a list of applications.
 //
 // @param request - ListDataServiceApplicationsRequest
 //
@@ -15183,7 +15651,7 @@ func (client *Client) ListDataServiceApplications(request *ListDataServiceApplic
 
 // Summary:
 //
-// Queries the APIs that you are authorized to access.
+// Retrieves a list of APIs that you are authorized to access.
 //
 // @param request - ListDataServiceAuthorizedApisRequest
 //
@@ -15245,7 +15713,7 @@ func (client *Client) ListDataServiceAuthorizedApisWithOptions(request *ListData
 
 // Summary:
 //
-// Queries the APIs that you are authorized to access.
+// Retrieves a list of APIs that you are authorized to access.
 //
 // @param request - ListDataServiceAuthorizedApisRequest
 //
@@ -15263,7 +15731,7 @@ func (client *Client) ListDataServiceAuthorizedApis(request *ListDataServiceAuth
 
 // Summary:
 //
-// Queries folders.
+// Retrieves a list of folders.
 //
 // @param request - ListDataServiceFoldersRequest
 //
@@ -15327,7 +15795,7 @@ func (client *Client) ListDataServiceFoldersWithOptions(request *ListDataService
 
 // Summary:
 //
-// Queries folders.
+// Retrieves a list of folders.
 //
 // @param request - ListDataServiceFoldersRequest
 //
@@ -15345,7 +15813,7 @@ func (client *Client) ListDataServiceFolders(request *ListDataServiceFoldersRequ
 
 // Summary:
 //
-// Queries business processes.
+// Retrieves a list of business processes.
 //
 // @param request - ListDataServiceGroupsRequest
 //
@@ -15405,7 +15873,7 @@ func (client *Client) ListDataServiceGroupsWithOptions(request *ListDataServiceG
 
 // Summary:
 //
-// Queries business processes.
+// Retrieves a list of business processes.
 //
 // @param request - ListDataServiceGroupsRequest
 //
@@ -15423,7 +15891,7 @@ func (client *Client) ListDataServiceGroups(request *ListDataServiceGroupsReques
 
 // Summary:
 //
-// Queries a list of APIs in the published state.
+// Retrieves a list of published APIs.
 //
 // @param request - ListDataServicePublishedApisRequest
 //
@@ -15491,7 +15959,7 @@ func (client *Client) ListDataServicePublishedApisWithOptions(request *ListDataS
 
 // Summary:
 //
-// Queries a list of APIs in the published state.
+// Retrieves a list of published APIs.
 //
 // @param request - ListDataServicePublishedApisRequest
 //
@@ -16209,7 +16677,7 @@ func (client *Client) ListFiles(request *ListFilesRequest) (_result *ListFilesRe
 
 // Summary:
 //
-// Queries a list of folders.
+// Call the ListFolders operation to query for folders.
 //
 // @param request - ListFoldersRequest
 //
@@ -16269,7 +16737,7 @@ func (client *Client) ListFoldersWithOptions(request *ListFoldersRequest, runtim
 
 // Summary:
 //
-// Queries a list of folders.
+// Call the ListFolders operation to query for folders.
 //
 // @param request - ListFoldersRequest
 //
@@ -16287,7 +16755,7 @@ func (client *Client) ListFolders(request *ListFoldersRequest) (_result *ListFol
 
 // Summary:
 //
-// Queries information about inner nodes. For example, you can call this operation to query the inner nodes of a node group or a do-while node. You cannot call this operation to query the inner nodes of a PAI node.
+// Retrieves a list of inner nodes within a node group or do-while node. This operation does not support querying the inner nodes of a PAI node.
 //
 // @param request - ListInnerNodesRequest
 //
@@ -16355,7 +16823,7 @@ func (client *Client) ListInnerNodesWithOptions(request *ListInnerNodesRequest, 
 
 // Summary:
 //
-// Queries information about inner nodes. For example, you can call this operation to query the inner nodes of a node group or a do-while node. You cannot call this operation to query the inner nodes of a PAI node.
+// Retrieves a list of inner nodes within a node group or do-while node. This operation does not support querying the inner nodes of a PAI node.
 //
 // @param request - ListInnerNodesRequest
 //
@@ -16443,7 +16911,7 @@ func (client *Client) ListInstanceAmount(request *ListInstanceAmountRequest) (_r
 
 // Summary:
 //
-// Queries information about the historical records of all instances. One historical record is generated if an instance is rerun once.
+// Retrieves the run history of an instance. Each rerun generates a new historical record.
 //
 // @param request - ListInstanceHistoryRequest
 //
@@ -16491,7 +16959,7 @@ func (client *Client) ListInstanceHistoryWithOptions(request *ListInstanceHistor
 
 // Summary:
 //
-// Queries information about the historical records of all instances. One historical record is generated if an instance is rerun once.
+// Retrieves the run history of an instance. Each rerun generates a new historical record.
 //
 // @param request - ListInstanceHistoryRequest
 //
@@ -16927,11 +17395,11 @@ func (client *Client) ListMetaCollectionEntities(request *ListMetaCollectionEnti
 
 // Summary:
 //
-// Queries information about collections. Collections include data albums that are displayed on the Data Map page and categories that are created in the data albums. You can call this API operation to query collections by type.
+// Retrieves a list of collections. Collections include data albums displayed on the Data Map page and categories created in data albums. You can filter collections by type.
 //
 // Description:
 //
-// The type can be ALBUM or ALBUM_CATEGORY. ALBUM indicates data albums. ALBUM_CATEGORY indicates categories.
+// Collections include ALBUM (data album) and ALBUM_CATEGORY (category within a data album).
 //
 // @param request - ListMetaCollectionsRequest
 //
@@ -17007,11 +17475,11 @@ func (client *Client) ListMetaCollectionsWithOptions(request *ListMetaCollection
 
 // Summary:
 //
-// Queries information about collections. Collections include data albums that are displayed on the Data Map page and categories that are created in the data albums. You can call this API operation to query collections by type.
+// Retrieves a list of collections. Collections include data albums displayed on the Data Map page and categories created in data albums. You can filter collections by type.
 //
 // Description:
 //
-// The type can be ALBUM or ALBUM_CATEGORY. ALBUM indicates data albums. ALBUM_CATEGORY indicates categories.
+// Collections include ALBUM (data album) and ALBUM_CATEGORY (category within a data album).
 //
 // @param request - ListMetaCollectionsRequest
 //
@@ -17532,7 +18000,13 @@ func (client *Client) ListNodesByOutput(request *ListNodesByOutputRequest) (_res
 
 // Summary:
 //
-// Queries a list of permission requests.
+// Queries a list of permission application orders.
+//
+// Note: The 2020 version of OpenAPI will be discontinued at a scheduled time. Please migrate to the 2024 version of OpenAPI as soon as possible — ListMyApplications/ListPendingApprovals/ListMyRelatedApprovals.
+//
+// Description:
+//
+// *Note: The 2020 version of OpenAPI will be discontinued at a scheduled time. Please migrate to the 2024 version of OpenAPI as soon as possible — [ListMyApplications](https://help.aliyun.com/zh/dataworks/developer-reference/api-dataworks-public-2024-05-18-listmyapplications?spm=a2c4g.11186623.help-menu-72772.d_1_1_3_12_0_7.1c237afdFAePBC&scm=20140722.H_3040929._.OR_help-T_cn~zh-V_1)/[ListPendingApprovals](https://help.aliyun.com/zh/dataworks/developer-reference/api-dataworks-public-2024-05-18-listpendingapprovals?spm=a2c4g.11186623.help-menu-72772.d_1_1_3_12_0_5.644e11b8FqtyZe&scm=20140722.H_3040932._.OR_help-T_cn~zh-V_1)/[ListMyRelatedApprovals](https://help.aliyun.com/zh/dataworks/developer-reference/api-dataworks-public-2024-05-18-listmyrelatedapprovals?spm=a2c4g.11186623.help-menu-72772.d_1_1_3_12_0_6.62893177dwvvfp&scm=20140722.H_3040931._.OR_help-T_cn~zh-V_1).**
 //
 // @param request - ListPermissionApplyOrdersRequest
 //
@@ -17624,7 +18098,13 @@ func (client *Client) ListPermissionApplyOrdersWithOptions(request *ListPermissi
 
 // Summary:
 //
-// Queries a list of permission requests.
+// Queries a list of permission application orders.
+//
+// Note: The 2020 version of OpenAPI will be discontinued at a scheduled time. Please migrate to the 2024 version of OpenAPI as soon as possible — ListMyApplications/ListPendingApprovals/ListMyRelatedApprovals.
+//
+// Description:
+//
+// *Note: The 2020 version of OpenAPI will be discontinued at a scheduled time. Please migrate to the 2024 version of OpenAPI as soon as possible — [ListMyApplications](https://help.aliyun.com/zh/dataworks/developer-reference/api-dataworks-public-2024-05-18-listmyapplications?spm=a2c4g.11186623.help-menu-72772.d_1_1_3_12_0_7.1c237afdFAePBC&scm=20140722.H_3040929._.OR_help-T_cn~zh-V_1)/[ListPendingApprovals](https://help.aliyun.com/zh/dataworks/developer-reference/api-dataworks-public-2024-05-18-listpendingapprovals?spm=a2c4g.11186623.help-menu-72772.d_1_1_3_12_0_5.644e11b8FqtyZe&scm=20140722.H_3040932._.OR_help-T_cn~zh-V_1)/[ListMyRelatedApprovals](https://help.aliyun.com/zh/dataworks/developer-reference/api-dataworks-public-2024-05-18-listmyrelatedapprovals?spm=a2c4g.11186623.help-menu-72772.d_1_1_3_12_0_6.62893177dwvvfp&scm=20140722.H_3040931._.OR_help-T_cn~zh-V_1).**
 //
 // @param request - ListPermissionApplyOrdersRequest
 //
@@ -17717,7 +18197,7 @@ func (client *Client) ListProgramTypeCount(request *ListProgramTypeCountRequest)
 //
 // Description:
 //
-// An Alibaba Cloud account can assume a role such as the developer, O\\&M engineer, or workspace administrator role in a workspace. For more information, see [Manage members and roles](https://help.aliyun.com/document_detail/136941.html).
+// Your Alibaba Cloud account can have different role permissions such as Developer, O\\&M, and Workspace Administrator in a DataWorks workspace. For more information about workspace role permissions, see [DataWorks role management](https://help.aliyun.com/document_detail/136941.html).
 //
 // @param request - ListProjectIdsRequest
 //
@@ -17765,7 +18245,7 @@ func (client *Client) ListProjectIdsWithOptions(request *ListProjectIdsRequest, 
 //
 // Description:
 //
-// An Alibaba Cloud account can assume a role such as the developer, O\\&M engineer, or workspace administrator role in a workspace. For more information, see [Manage members and roles](https://help.aliyun.com/document_detail/136941.html).
+// Your Alibaba Cloud account can have different role permissions such as Developer, O\\&M, and Workspace Administrator in a DataWorks workspace. For more information about workspace role permissions, see [DataWorks role management](https://help.aliyun.com/document_detail/136941.html).
 //
 // @param request - ListProjectIdsRequest
 //
@@ -17855,12 +18335,6 @@ func (client *Client) ListProjectMembers(request *ListProjectMembersRequest) (_r
 //
 // Queries a list of roles in a DataWorks workspace.
 //
-// Description:
-//
-// ## Debugging
-//
-// [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=dataworks-public\\&api=ListProjectRoles\\&type=RPC\\&version=2020-05-18)
-//
 // @param request - ListProjectRolesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -17904,12 +18378,6 @@ func (client *Client) ListProjectRolesWithOptions(request *ListProjectRolesReque
 // Summary:
 //
 // Queries a list of roles in a DataWorks workspace.
-//
-// Description:
-//
-// ## Debugging
-//
-// [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=dataworks-public\\&api=ListProjectRoles\\&type=RPC\\&version=2020-05-18)
 //
 // @param request - ListProjectRolesRequest
 //
@@ -18009,11 +18477,11 @@ func (client *Client) ListProjects(request *ListProjectsRequest) (_result *ListP
 //
 // Summary:
 //
-// Queries a list of historical check results based on a partition filter expression.
+// Use `ListQualityResultsByEntity` to retrieve validation results based on a partition expression.
 //
 // Description:
 //
-// ***
+// **
 //
 // @param request - ListQualityResultsByEntityRequest
 //
@@ -18083,11 +18551,11 @@ func (client *Client) ListQualityResultsByEntityWithOptions(request *ListQuality
 //
 // Summary:
 //
-// Queries a list of historical check results based on a partition filter expression.
+// Use `ListQualityResultsByEntity` to retrieve validation results based on a partition expression.
 //
 // Description:
 //
-// ***
+// **
 //
 // @param request - ListQualityResultsByEntityRequest
 //
@@ -18108,7 +18576,7 @@ func (client *Client) ListQualityResultsByEntity(request *ListQualityResultsByEn
 //
 // Summary:
 //
-// Queries monitoring results after the data quality of a data source or a compute engine is monitored based on monitoring rules.
+// Validates the quality of a Data Source against Validation Rules and returns the Validation Results.
 //
 // @param request - ListQualityResultsByRuleRequest
 //
@@ -18178,7 +18646,7 @@ func (client *Client) ListQualityResultsByRuleWithOptions(request *ListQualityRe
 //
 // Summary:
 //
-// Queries monitoring results after the data quality of a data source or a compute engine is monitored based on monitoring rules.
+// Validates the quality of a Data Source against Validation Rules and returns the Validation Results.
 //
 // @param request - ListQualityResultsByRuleRequest
 //
@@ -18199,7 +18667,7 @@ func (client *Client) ListQualityResultsByRule(request *ListQualityResultsByRule
 //
 // Summary:
 //
-// Queries monitoring rules based on a partition filter expression.
+// Call ListQualityRules to retrieve quality rules that match a partition expression.
 //
 // @param request - ListQualityRulesRequest
 //
@@ -18261,7 +18729,7 @@ func (client *Client) ListQualityRulesWithOptions(request *ListQualityRulesReque
 //
 // Summary:
 //
-// Queries monitoring rules based on a partition filter expression.
+// Call ListQualityRules to retrieve quality rules that match a partition expression.
 //
 // @param request - ListQualityRulesRequest
 //
@@ -19162,11 +19630,13 @@ func (client *Client) PublishDataServiceApi(request *PublishDataServiceApiReques
 
 // Summary:
 //
-// Queries the execution results of an asynchronous task.
+// Queries the result of an asynchronous task for generating synchronization task configurations.
 //
 // Description:
 //
-// DataWorks allows you to call only the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) operation to create a batch synchronization task or the [UpdateDISyncTask](https://help.aliyun.com/document_detail/289109.html) operation to update a batch synchronization task in Data Integration. To create or update a real-time synchronization task, you must first call the [GenerateDISyncTaskConfigForCreating](https://help.aliyun.com/document_detail/383463.html) or [GenerateDISyncTaskConfigForUpdating](https://help.aliyun.com/document_detail/383464.html) operation to obtain the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the CreateDISyncTask or UpdateDISyncTask operation and use the parameters as request parameters to create or update a real-time synchronization task. DataWorks allows you to create or update real-time synchronization tasks in Data Integration only in asynchronous mode.
+// DataWorks allows you to directly call the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) operation to create or the [UpdateDISyncTask](https://help.aliyun.com/document_detail/289109.html) operation to update batch synchronization tasks in Data Integration. To create or update a real-time synchronization task, you must first call the [GenerateDISyncTaskConfigForCreating](https://help.aliyun.com/document_detail/383463.html), [GenerateDISyncTaskConfigForUpdating](https://help.aliyun.com/document_detail/383464.html), and [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operations to asynchronously generate the required parameters, and then pass the parameters to the CreateDISyncTask or UpdateDISyncTask operation.
+//
+// Only asynchronous creation or update is supported for real-time synchronization tasks in Data Integration.
 //
 // @param request - QueryDISyncTaskConfigProcessResultRequest
 //
@@ -19218,11 +19688,13 @@ func (client *Client) QueryDISyncTaskConfigProcessResultWithOptions(request *Que
 
 // Summary:
 //
-// Queries the execution results of an asynchronous task.
+// Queries the result of an asynchronous task for generating synchronization task configurations.
 //
 // Description:
 //
-// DataWorks allows you to call only the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) operation to create a batch synchronization task or the [UpdateDISyncTask](https://help.aliyun.com/document_detail/289109.html) operation to update a batch synchronization task in Data Integration. To create or update a real-time synchronization task, you must first call the [GenerateDISyncTaskConfigForCreating](https://help.aliyun.com/document_detail/383463.html) or [GenerateDISyncTaskConfigForUpdating](https://help.aliyun.com/document_detail/383464.html) operation to obtain the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the CreateDISyncTask or UpdateDISyncTask operation and use the parameters as request parameters to create or update a real-time synchronization task. DataWorks allows you to create or update real-time synchronization tasks in Data Integration only in asynchronous mode.
+// DataWorks allows you to directly call the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) operation to create or the [UpdateDISyncTask](https://help.aliyun.com/document_detail/289109.html) operation to update batch synchronization tasks in Data Integration. To create or update a real-time synchronization task, you must first call the [GenerateDISyncTaskConfigForCreating](https://help.aliyun.com/document_detail/383463.html), [GenerateDISyncTaskConfigForUpdating](https://help.aliyun.com/document_detail/383464.html), and [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operations to asynchronously generate the required parameters, and then pass the parameters to the CreateDISyncTask or UpdateDISyncTask operation.
+//
+// Only asynchronous creation or update is supported for real-time synchronization tasks in Data Integration.
 //
 // @param request - QueryDISyncTaskConfigProcessResultRequest
 //
@@ -19302,15 +19774,15 @@ func (client *Client) QueryDefaultTemplate(request *QueryDefaultTemplateRequest)
 
 // Summary:
 //
-// Queries information about objects that are created in Data Modeling by using fast modeling language (FML) statements.
+// Retrieves information about Data Modeling objects created by using fast modeling language (FML) statements.
 //
 // Description:
 //
-//	  Each time you call this API operation, you must use FML statements to query information about objects that are created in Data Modeling.
+// - Each time you call this API operation, you must use FML statements to query information about objects that are created in Data Modeling.
 //
-//		- The information about the objects can be queried by page, except for data layers, business processes, and data domains. You can add an offset to the end of an FML statement. The num LIMIT num statement specifies the offset when the information about the objects is queried, and the number of pages to return each time. The offset value must be a multiple of the number of pages.
+// - The information about the objects can be queried by page, except for data layers, business processes, and data domains. You can add an offset to the end of an FML statement. The num LIMIT num statement specifies the offset when the information about the objects is queried, and the number of pages to return each time. The offset value must be a multiple of the number of pages.
 //
-//		- A maximum of 1,000 entries can be returned each time you call this API operation.
+// - A maximum of 1,000 entries can be returned each time you call this API operation.
 //
 // @param request - QueryPublicModelEngineRequest
 //
@@ -19358,15 +19830,15 @@ func (client *Client) QueryPublicModelEngineWithOptions(request *QueryPublicMode
 
 // Summary:
 //
-// Queries information about objects that are created in Data Modeling by using fast modeling language (FML) statements.
+// Retrieves information about Data Modeling objects created by using fast modeling language (FML) statements.
 //
 // Description:
 //
-//	  Each time you call this API operation, you must use FML statements to query information about objects that are created in Data Modeling.
+// - Each time you call this API operation, you must use FML statements to query information about objects that are created in Data Modeling.
 //
-//		- The information about the objects can be queried by page, except for data layers, business processes, and data domains. You can add an offset to the end of an FML statement. The num LIMIT num statement specifies the offset when the information about the objects is queried, and the number of pages to return each time. The offset value must be a multiple of the number of pages.
+// - The information about the objects can be queried by page, except for data layers, business processes, and data domains. You can add an offset to the end of an FML statement. The num LIMIT num statement specifies the offset when the information about the objects is queried, and the number of pages to return each time. The offset value must be a multiple of the number of pages.
 //
-//		- A maximum of 1,000 entries can be returned each time you call this API operation.
+// - A maximum of 1,000 entries can be returned each time you call this API operation.
 //
 // @param request - QueryPublicModelEngineRequest
 //
@@ -19450,7 +19922,7 @@ func (client *Client) QueryRecognizeDataByRuleType(request *QueryRecognizeDataBy
 
 // Summary:
 //
-// Queries the details of a specified sensitive field in Data Security Guard.
+// Retrieves the details of a specified sensitive field in Data Security Guard.
 //
 // @param request - QueryRecognizeRuleDetailRequest
 //
@@ -19498,7 +19970,7 @@ func (client *Client) QueryRecognizeRuleDetailWithOptions(request *QueryRecogniz
 
 // Summary:
 //
-// Queries the details of a specified sensitive field in Data Security Guard.
+// Retrieves the details of a specified sensitive field in Data Security Guard.
 //
 // @param request - QueryRecognizeRuleDetailRequest
 //
@@ -19783,7 +20255,7 @@ func (client *Client) QuerySensNodeInfo(request *QuerySensNodeInfoRequest) (_res
 //
 // Description:
 //
-// This operation is in the trial phase. Users who need to call this operation can apply for it. The users can call this operation after the administrator adds the users to the trial list.
+// This API operation is currently in trial. Users who want to try it out can submit an application. After the administrator adds the user to the trial list, the user can call this operation.
 //
 // @param tmpReq - RegisterLineageRelationRequest
 //
@@ -19837,7 +20309,7 @@ func (client *Client) RegisterLineageRelationWithOptions(tmpReq *RegisterLineage
 //
 // Description:
 //
-// This operation is in the trial phase. Users who need to call this operation can apply for it. The users can call this operation after the administrator adds the users to the trial list.
+// This API operation is currently in trial. Users who want to try it out can submit an application. After the administrator adds the user to the trial list, the user can call this operation.
 //
 // @param request - RegisterLineageRelationRequest
 //
@@ -20065,7 +20537,7 @@ func (client *Client) RestartInstance(request *RestartInstanceRequest) (_result 
 
 // Summary:
 //
-// Calls the ResumeInstance operation to resume a suspended instance.
+// Resumes a suspended instance.
 //
 // @param request - ResumeInstanceRequest
 //
@@ -20113,7 +20585,7 @@ func (client *Client) ResumeInstanceWithOptions(request *ResumeInstanceRequest, 
 
 // Summary:
 //
-// Calls the ResumeInstance operation to resume a suspended instance.
+// Resumes a suspended instance.
 //
 // @param request - ResumeInstanceRequest
 //
@@ -20733,7 +21205,7 @@ func (client *Client) ScanSensitiveData(request *ScanSensitiveDataRequest) (_res
 //
 // Description:
 //
-// You can call this operation to query only metatables in a MaxCompute or E-MapReduce (EMR) compute engine.
+// Only MaxCompute and EMR engine tables are supported for search.
 //
 // @param request - SearchMetaTablesRequest
 //
@@ -20809,7 +21281,7 @@ func (client *Client) SearchMetaTablesWithOptions(request *SearchMetaTablesReque
 //
 // Description:
 //
-// You can call this operation to query only metatables in a MaxCompute or E-MapReduce (EMR) compute engine.
+// Only MaxCompute and EMR engine tables are supported for search.
 //
 // @param request - SearchMetaTablesRequest
 //
@@ -21605,7 +22077,11 @@ func (client *Client) SubmitDataServiceApi(request *SubmitDataServiceApiRequest)
 
 // Summary:
 //
-// Commits a file to the development environment of the scheduling system to generate a task.
+// Submits a file to the development environment to create a corresponding task.
+//
+// Description:
+//
+// This operation is asynchronous. After a successful submission, the system returns a DeploymentId. Call the [GetDeployment](https://help.aliyun.com/document_detail/173950.html) operation with this ID to query the status and final result of the deployment task.
 //
 // @param request - SubmitFileRequest
 //
@@ -21665,7 +22141,11 @@ func (client *Client) SubmitFileWithOptions(request *SubmitFileRequest, runtime 
 
 // Summary:
 //
-// Commits a file to the development environment of the scheduling system to generate a task.
+// Submits a file to the development environment to create a corresponding task.
+//
+// Description:
+//
+// This operation is asynchronous. After a successful submission, the system returns a DeploymentId. Call the [GetDeployment](https://help.aliyun.com/document_detail/173950.html) operation with this ID to query the status and final result of the deployment task.
 //
 // @param request - SubmitFileRequest
 //
@@ -22303,7 +22783,7 @@ func (client *Client) UpdateBusiness(request *UpdateBusinessRequest) (_result *U
 
 // Summary:
 //
-// Updates the configurations of submodules in a workspace. You can configure SPARK parameters.
+// Updates the submodule configurations of a cluster in a workspace. Currently, only Spark parameters are supported.
 //
 // @param tmpReq - UpdateClusterConfigsRequest
 //
@@ -22367,7 +22847,7 @@ func (client *Client) UpdateClusterConfigsWithOptions(tmpReq *UpdateClusterConfi
 
 // Summary:
 //
-// Updates the configurations of submodules in a workspace. You can configure SPARK parameters.
+// Updates the submodule configurations of a cluster in a workspace. Currently, only Spark parameters are supported.
 //
 // @param request - UpdateClusterConfigsRequest
 //
@@ -22468,11 +22948,13 @@ func (client *Client) UpdateConnection(request *UpdateConnectionRequest) (_resul
 
 // Summary:
 //
-// Updates an alert rule for a new-version synchronization task. The following type of task is supported: real-time synchronization of all data in a MySQL database to Hologres.
+// Updates an alert rule for a synchronization task.
 //
 // Description:
 //
-// You can configure alert rules only for tasks that can be used for real-time data synchronization. You must update all fields in the alert rule.
+// Alert rules can be configured when your task includes real-time synchronization.
+//
+// The alert rule is updated as a full-field update. Partial field updates are not supported.
 //
 // @param tmpReq - UpdateDIAlarmRuleRequest
 //
@@ -22546,11 +23028,13 @@ func (client *Client) UpdateDIAlarmRuleWithOptions(tmpReq *UpdateDIAlarmRuleRequ
 
 // Summary:
 //
-// Updates an alert rule for a new-version synchronization task. The following type of task is supported: real-time synchronization of all data in a MySQL database to Hologres.
+// Updates an alert rule for a synchronization task.
 //
 // Description:
 //
-// You can configure alert rules only for tasks that can be used for real-time data synchronization. You must update all fields in the alert rule.
+// Alert rules can be configured when your task includes real-time synchronization.
+//
+// The alert rule is updated as a full-field update. Partial field updates are not supported.
 //
 // @param request - UpdateDIAlarmRuleRequest
 //
@@ -23440,7 +23924,7 @@ func (client *Client) UpdateMetaCategory(request *UpdateMetaCategoryRequest) (_r
 //
 // Description:
 //
-// Only the name and comment of a collection can be updated.
+// Only the Name and Comment fields can be updated.
 //
 // @param request - UpdateMetaCollectionRequest
 //
@@ -23496,7 +23980,7 @@ func (client *Client) UpdateMetaCollectionWithOptions(request *UpdateMetaCollect
 //
 // Description:
 //
-// Only the name and comment of a collection can be updated.
+// Only the Name and Comment fields can be updated.
 //
 // @param request - UpdateMetaCollectionRequest
 //
@@ -23518,7 +24002,7 @@ func (client *Client) UpdateMetaCollection(request *UpdateMetaCollectionRequest)
 //
 // Description:
 //
-// This operation supports MaxCompute tables only.
+// This operation supports only MaxCompute tables.
 //
 // @param request - UpdateMetaTableRequest
 //
@@ -23608,7 +24092,7 @@ func (client *Client) UpdateMetaTableWithOptions(request *UpdateMetaTableRequest
 //
 // Description:
 //
-// This operation supports MaxCompute tables only.
+// This operation supports only MaxCompute tables.
 //
 // @param request - UpdateMetaTableRequest
 //
@@ -23836,7 +24320,7 @@ func (client *Client) UpdateNodeRunMode(request *UpdateNodeRunModeRequest) (_res
 //
 // Summary:
 //
-// Updates a subscription relationship.
+// Updates a subscription.
 //
 // @param request - UpdateQualityFollowerRequest
 //
@@ -23898,7 +24382,7 @@ func (client *Client) UpdateQualityFollowerWithOptions(request *UpdateQualityFol
 //
 // Summary:
 //
-// Updates a subscription relationship.
+// Updates a subscription.
 //
 // @param request - UpdateQualityFollowerRequest
 //
@@ -23919,7 +24403,7 @@ func (client *Client) UpdateQualityFollower(request *UpdateQualityFollowerReques
 //
 // Summary:
 //
-// Updates a monitoring rule.
+// Updates a specified quality rule.
 //
 // @param request - UpdateQualityRuleRequest
 //
@@ -24049,7 +24533,7 @@ func (client *Client) UpdateQualityRuleWithOptions(request *UpdateQualityRuleReq
 //
 // Summary:
 //
-// Updates a monitoring rule.
+// Updates a specified quality rule.
 //
 // @param request - UpdateQualityRuleRequest
 //

@@ -24,7 +24,7 @@ type iCreateQualityFollowerResponseBody interface {
 }
 
 type CreateQualityFollowerResponseBody struct {
-	// The ID of the subscription relationship.
+	// The subscription ID.
 	//
 	// example:
 	//

@@ -189,7 +189,7 @@ type GetMetaTableThemeLevelResponseBodyEntityLevel struct {
 	//
 	// example:
 	//
-	// test
+	// Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the level.
 	//
@@ -205,9 +205,9 @@ type GetMetaTableThemeLevelResponseBodyEntityLevel struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type of the level. Valid values:
 	//
-	// 	- 1: indicates the logical level.
+	// - 1: indicates the logical level.
 	//
-	// 	- 2: indicates the physical level.
+	// - 2: indicates the physical level.
 	//
 	// example:
 	//
@@ -266,9 +266,9 @@ func (s *GetMetaTableThemeLevelResponseBodyEntityLevel) Validate() error {
 type GetMetaTableThemeLevelResponseBodyEntityTheme struct {
 	// The level of the theme. Valid values:
 	//
-	// 	- 1
+	// - 1
 	//
-	// 	- 2
+	// - 2
 	//
 	// example:
 	//

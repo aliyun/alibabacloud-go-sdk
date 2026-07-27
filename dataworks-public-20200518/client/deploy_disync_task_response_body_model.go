@@ -28,7 +28,7 @@ type DeployDISyncTaskResponseBody struct {
 	//
 	// example:
 	//
-	// 0bc1411515937635973****
+	// 0bc14115159376359******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the request. You can query logs and troubleshoot issues based on the ID.
 	//

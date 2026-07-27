@@ -44,7 +44,7 @@ type UpdateMetaTableRequest struct {
 	//
 	// example:
 	//
-	// test
+	// 中文名
 	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
 	// The ID of the category that you want to associate.
 	//

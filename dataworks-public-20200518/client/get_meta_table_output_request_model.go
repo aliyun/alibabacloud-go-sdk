@@ -30,7 +30,7 @@ type GetMetaTableOutputRequest struct {
 	//
 	// example:
 	//
-	// 2022-02-15
+	// 2020-05-27
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
 	// The page number. Valid values: 1 to 30. Default value: 1.
 	//
@@ -50,7 +50,7 @@ type GetMetaTableOutputRequest struct {
 	//
 	// example:
 	//
-	// 2020-02-02
+	// 2020-06-27
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 	// The GUID of the metatable.
 	//
@@ -58,7 +58,7 @@ type GetMetaTableOutputRequest struct {
 	//
 	// example:
 	//
-	// odps.sample_project.sample_table
+	// odps.engine_name.table_name
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
 	// The task ID.
 	//

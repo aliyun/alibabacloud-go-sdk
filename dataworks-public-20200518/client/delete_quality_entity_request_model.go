@@ -20,7 +20,7 @@ type iDeleteQualityEntityRequest interface {
 }
 
 type DeleteQualityEntityRequest struct {
-	// The ID of the partition filter expression.
+	// The ID of the partition expression.
 	//
 	// This parameter is required.
 	//
@@ -28,35 +28,21 @@ type DeleteQualityEntityRequest struct {
 	//
 	// 1234
 	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// The type of the compute engine or data source. The following types are supported: E-MapReduce (EMR), Hologres, AnalyticDB for PostgreSQL, CDH, MaxCompute, Kafka, and DataHub.
-	//
-	// Valid values:
-	//
-	// 	- odps
-	//
-	// 	- emr
-	//
-	// 	- hadoop
-	//
-	// 	- cdh
-	//
-	// 	- hybriddb_for_postgresql
-	//
-	// 	- holodb
+	// The type of the engine or data source. Valid values: E-MapReduce (EMR), Hologres, AnalyticDB for PostgreSQL, CDH, MaxCompute, Kafka, and DataHub.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ODPS
+	// odps
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The DataWorks workspace ID.
+	// The ID of the DataWorks workspace.
 	//
 	// example:
 	//
 	// 12345
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The name of the compute engine or data source.
+	// The name of the engine or data source.
 	//
 	// This parameter is required.
 	//

@@ -22,7 +22,7 @@ type ListTablesResponseBody struct {
 	//
 	// example:
 	//
-	// E25887B7-579C-54A5-9C4F-83A0DE367DD
+	// E25887B7-579C-54A5-9C4F-83A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

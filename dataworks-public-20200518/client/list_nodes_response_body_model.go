@@ -226,7 +226,7 @@ type ListNodesResponseBodyDataNodes struct {
 	//
 	// example:
 	//
-	// odps_first
+	// odps_source
 	Connection *string `json:"Connection,omitempty" xml:"Connection,omitempty"`
 	// The timestamp when the node was created. Unit: milliseconds.
 	//
@@ -266,7 +266,7 @@ type ListNodesResponseBodyDataNodes struct {
 	DqcType *int32 `json:"DqcType,omitempty" xml:"DqcType,omitempty"`
 	// The file ID. You can call the ListFiles operation to query the ID.
 	//
-	// **
+	// \\*\\*
 	//
 	// **Warning*	- This field is deprecated.
 	//
@@ -370,7 +370,7 @@ type ListNodesResponseBodyDataNodes struct {
 	//
 	// example:
 	//
-	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
+	// Default resource group
 	ResGroupName *string `json:"ResGroupName,omitempty" xml:"ResGroupName,omitempty"`
 	// The types of the nodes. You can call the [ListNodes](https://help.aliyun.com/document_detail/173979.html) operation to query the type of the node.
 	//

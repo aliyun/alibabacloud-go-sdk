@@ -244,7 +244,7 @@ type ListTopicsResponseBodyDataTopics struct {
 	//
 	// example:
 	//
-	// Node Name
+	// Node name
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 	// The ID of the Alibaba Cloud account that is used by the node owner.
 	//
@@ -268,7 +268,7 @@ type ListTopicsResponseBodyDataTopics struct {
 	//
 	// example:
 	//
-	// 1234 Error
+	// Error 1234
 	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
 	// The status of the event. Valid values: IGNORE, NEW, FIXING, and RECOVER. The value IGNORE indicates that the event is ignored. The value NEW indicates that the event is a new event. The value FIXING indicates that the event is being processed. The value RECOVER indicates that the event is processed.
 	//

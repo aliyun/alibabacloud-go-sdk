@@ -46,11 +46,11 @@ type CreateDIAlarmRuleShrinkRequest struct {
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// The metric type in the alert rule. Valid values:
 	//
-	// 	- Heartbeat
+	// - Heartbeat
 	//
-	// 	- FailoverCount
+	// - FailoverCount
 	//
-	// 	- Delay
+	// - Delay
 	//
 	// This parameter is required.
 	//

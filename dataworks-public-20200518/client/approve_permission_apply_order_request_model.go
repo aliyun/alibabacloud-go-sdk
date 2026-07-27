@@ -18,25 +18,11 @@ type iApprovePermissionApplyOrderRequest interface {
 }
 
 type ApprovePermissionApplyOrderRequest struct {
-	// The action for the permission request order. Valid values:
+	// The approval action to perform. Valid values:
 	//
-	// 	- 1: approve
+	// - 1: Approve.
 	//
-	// 	- 2: reject
-	//
-	// <!---->
-	//
-	// 	- 0
-	//
-	// 	- 1
-	//
-	// 	- 2\\.
-	//
-	// 	- 3\\.
-	//
-	// 	- 4
-	//
-	// 	- 5
+	// - 2: Reject.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +30,7 @@ type ApprovePermissionApplyOrderRequest struct {
 	//
 	// 1
 	ApproveAction *int32 `json:"ApproveAction,omitempty" xml:"ApproveAction,omitempty"`
-	// The comment on the order.
+	// The remarks for the approval.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +38,7 @@ type ApprovePermissionApplyOrderRequest struct {
 	//
 	// agree
 	ApproveComment *string `json:"ApproveComment,omitempty" xml:"ApproveComment,omitempty"`
-	// The ID of the permission request order. You can call the ListPermissionApplyOrders operation to obtain the order ID.
+	// The ID of the permission request order to approve. You can call the [ListPermissionApplyOrders](https://help.aliyun.com/document_detail/211008.html) operation to obtain the ID.
 	//
 	// This parameter is required.
 	//

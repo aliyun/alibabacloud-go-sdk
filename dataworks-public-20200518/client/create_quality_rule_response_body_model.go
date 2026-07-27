@@ -24,7 +24,7 @@ type iCreateQualityRuleResponseBody interface {
 }
 
 type CreateQualityRuleResponseBody struct {
-	// The ID of the monitoring rule that you created.
+	// The ID of the new rule.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type CreateQualityRuleResponseBody struct {
 	//
 	// ecb967ec-c137-48****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Whether the request succeeded.
 	//
 	// example:
 	//

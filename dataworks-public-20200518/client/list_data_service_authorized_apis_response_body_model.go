@@ -220,7 +220,7 @@ type ListDataServiceAuthorizedApisResponseBodyDataApiAuthorizedList struct {
 	//
 	// example:
 	//
-	// My API Name
+	// My API name
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
 	// The path of the API.
 	//

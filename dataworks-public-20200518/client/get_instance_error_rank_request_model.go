@@ -14,7 +14,7 @@ type iGetInstanceErrorRankRequest interface {
 }
 
 type GetInstanceErrorRankRequest struct {
-	// The DataWorks workspace ID.
+	// The ID of the DataWorks workspace.
 	//
 	// This parameter is required.
 	//

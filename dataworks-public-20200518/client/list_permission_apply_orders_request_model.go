@@ -38,21 +38,21 @@ type iListPermissionApplyOrdersRequest interface {
 }
 
 type ListPermissionApplyOrdersRequest struct {
-	// The type of permission request. Valid values:
+	// The type of the application order. Valid values:
 	//
-	// 	- MaxComputeTable: Permission request for MaxCompute tables
+	// - [MaxComputeTable] MaxCompute table permission application order.
 	//
-	// 	- MaxComputeFunction: Permission request for MaxCompute functions
+	// - [MaxComputeFunction] MaxCompute function application order.
 	//
-	// 	- MaxComputeResource: Permission request for MaxCompute resources
+	// - [MaxComputeResource] MaxCompute resource application order.
 	//
-	// 	- DLFSchema: Permission request for DLF 1.0 schemas
+	// - [DLFSchema] DLF 1.0 schema permission application order.
 	//
-	// 	- DLFTable: Permission request for DLF 1.0 tables
+	// - [DLFTable] DLF 1.0 table permission application order.
 	//
-	// 	- DLFColumn: Permission request for DLF 1.0 columns
+	// - [DLFColumn] DLF 1.0 column permission application order.
 	//
-	// 	- DsApiDeploy: Permission request for publishing data services
+	// - [DsApiDeploy] DataService publishing permission application order.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type ListPermissionApplyOrdersRequest struct {
 	//
 	// hive
 	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
-	// The end of the time range to query. You can query all the permissions request orders that have been submitted before the time. The parameter value is a UNIX timestamp. If you do not specify the parameter, all permission request orders that are submitted before the current time are queried.
+	// The end time for querying application orders, specified as a UNIX timestamp. If this parameter is not specified, application orders up to the current time are queried.
 	//
 	// example:
 	//
@@ -72,45 +72,27 @@ type ListPermissionApplyOrdersRequest struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// This parameter is deprecated and does not take effect.
 	//
-	// Valid values:
-	//
-	// 	- odps
-	//
 	// example:
 	//
 	// odps
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	// The status of the permission request. Valid values:
+	// The status of the application order. Valid values:
 	//
-	// 	- 1: Pending approval
+	// - 1: Pending approval.
 	//
-	// 	- 2: Approved and authorization succeeded
+	// - 2: Approved, authorization succeeded.
 	//
-	// 	- 3: Approved but authorization failed
+	// - 3: Approved, authorization failed.
 	//
-	// 	- 4: Rejected
+	// - 4: Rejected.
 	//
-	// 	- 5: Withdrawn
-	//
-	// Valid values:
-	//
-	// 	- 0
-	//
-	// 	- 1
-	//
-	// 	- 2
-	//
-	// 	- 3
-	//
-	// 	- 4
-	//
-	// 	- 5
+	// - 5: Withdrawn.
 	//
 	// example:
 	//
 	// 1
 	FlowStatus *int32 `json:"FlowStatus,omitempty" xml:"FlowStatus,omitempty"`
-	// The name of the MaxCompute project with which the permission request order is associated. If you do not specify the parameter, the permission request orders of all MaxCompute projects are returned.
+	// The name of the MaxCompute project to which the application order belongs. If this parameter is not specified, application orders from all MaxCompute projects are returned.
 	//
 	// example:
 	//
@@ -118,17 +100,11 @@ type ListPermissionApplyOrdersRequest struct {
 	MaxComputeProjectName *string `json:"MaxComputeProjectName,omitempty" xml:"MaxComputeProjectName,omitempty"`
 	// This parameter is deprecated and does not take effect.
 	//
-	// Valid values:
-	//
-	// 	- 1
-	//
-	// 	- 0
-	//
 	// example:
 	//
 	// 1
 	OrderType *int32 `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The page number for pagination. The value must be a positive integer greater than or equal to 1. Default value: 1.
+	// The page number for paginated queries. The value must be a positive integer greater than or equal to 1. Default value: 1.
 	//
 	// example:
 	//
@@ -140,13 +116,13 @@ type ListPermissionApplyOrdersRequest struct {
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The query type for permission requests. Valid values:
+	// The query type of the application order. Valid values:
 	//
-	// 	- 0: Permission requests submitted by me
+	// - 0: Application orders submitted by me.
 	//
-	// 	- 1: Permission requests pending my approval
+	// - 1: Application orders approved by me.
 	//
-	// 	- 2: All permission requests
+	// - 2: All application orders.
 	//
 	// This parameter is required.
 	//
@@ -154,19 +130,19 @@ type ListPermissionApplyOrdersRequest struct {
 	//
 	// 1
 	QueryType *int32 `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
-	// The beginning of the time range to query. You can query all the permissions request orders that have been submitted after the time. The parameter value is a UNIX timestamp. If you do not specify the parameter, all permission request orders are queried.
+	// The start time for querying application orders, specified as a UNIX timestamp. If this parameter is not specified, all application orders are queried.
 	//
 	// example:
 	//
 	// 1616200471885
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The name of the table with which the permission request order is associated. If you do not specify the parameter, the permission request orders of all tables are returned.
+	// The table name included in the application order. If this parameter is not specified, application orders for all tables are returned.
 	//
 	// example:
 	//
 	// aTableName
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The ID of the workspace to which the permission request belongs. If you do not specify this parameter, permission requests from all workspaces are returned. To obtain the workspace ID, log on to the DataWorks console and navigate to the workspace configuration page.
+	// The ID of the workspace to which the application order belongs. If this parameter is not specified, application orders from all workspaces are returned. You can log on to the DataWorks console and go to the Workspace Settings page to obtain the workspace ID.
 	//
 	// example:
 	//

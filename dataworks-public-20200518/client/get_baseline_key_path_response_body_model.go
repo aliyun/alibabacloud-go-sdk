@@ -150,7 +150,7 @@ type GetBaselineKeyPathResponseBodyData struct {
 	//
 	// example:
 	//
-	// 12345
+	// 123456
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The node ID.
 	//

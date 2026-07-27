@@ -82,7 +82,7 @@ type UpdateTableAddColumnRequestColumn struct {
 	//
 	// example:
 	//
-	// Chinese
+	// 中文
 	ColumnNameCn *string `json:"ColumnNameCn,omitempty" xml:"ColumnNameCn,omitempty"`
 	// The type of the field. For more information, see MaxCompute field types.
 	//

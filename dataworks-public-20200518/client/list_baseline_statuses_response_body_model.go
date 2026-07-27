@@ -226,7 +226,7 @@ type ListBaselineStatusesResponseBodyDataBaselineStatuses struct {
 	//
 	// example:
 	//
-	// DAILY,HOURLY
+	// Baseline type
 	BaselineType *string `json:"BaselineType,omitempty" xml:"BaselineType,omitempty"`
 	// The data timestamp.
 	//

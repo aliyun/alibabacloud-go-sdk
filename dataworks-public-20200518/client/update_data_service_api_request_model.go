@@ -46,7 +46,7 @@ type UpdateDataServiceApiRequest struct {
 	//
 	// example:
 	//
-	// API description
+	// Test API description
 	ApiDescription *string `json:"ApiDescription,omitempty" xml:"ApiDescription,omitempty"`
 	// The ID of the API.
 	//

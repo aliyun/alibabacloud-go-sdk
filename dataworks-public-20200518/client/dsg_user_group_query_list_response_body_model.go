@@ -42,7 +42,7 @@ type DsgUserGroupQueryListResponseBody struct {
 	//
 	// 400
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The pagination information.
+	// The paginated query results.
 	PageData *DsgUserGroupQueryListResponseBodyPageData `json:"PageData,omitempty" xml:"PageData,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -52,9 +52,9 @@ type DsgUserGroupQueryListResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - `true`: The request was successful.
 	//
-	// 	- false
+	// - `false`: The request failed.
 	//
 	// example:
 	//
@@ -134,7 +134,11 @@ func (s *DsgUserGroupQueryListResponseBody) Validate() error {
 }
 
 type DsgUserGroupQueryListResponseBodyPageData struct {
-	// The user groups.
+	// A list of user groups.
+	//
+	// example:
+	//
+	// {     "accounts": [         "role_project_scheduler"     ],     "gmtCreate": "2024-05-10 15:22:18",     "gmtModified": "2024-05-10 15:22:18",     "id": 1955,     "name": "dsg_fin_test-copy",     "owner": "UAT" }
 	Data []*DsgUserGroupQueryListResponseBodyPageDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -148,7 +152,7 @@ type DsgUserGroupQueryListResponseBodyPageData struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of user groups returned.
+	// The total number of user groups.
 	//
 	// example:
 	//
@@ -214,7 +218,7 @@ func (s *DsgUserGroupQueryListResponseBodyPageData) Validate() error {
 }
 
 type DsgUserGroupQueryListResponseBodyPageDataData struct {
-	// The usernames in the user group.
+	// A list of usernames in the user group.
 	Accounts []*string `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Repeated"`
 	// The time when the user group was created.
 	//
@@ -222,13 +226,13 @@ type DsgUserGroupQueryListResponseBodyPageDataData struct {
 	//
 	// 2024-05-10 17:14:44
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the user group was modified.
+	// The time when the user group was last modified.
 	//
 	// example:
 	//
 	// 2024-05-10 17:14:44
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The user group ID.
+	// The ID of the user group.
 	//
 	// example:
 	//

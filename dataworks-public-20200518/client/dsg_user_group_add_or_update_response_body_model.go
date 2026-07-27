@@ -24,23 +24,23 @@ type iDsgUserGroupAddOrUpdateResponseBody interface {
 }
 
 type DsgUserGroupAddOrUpdateResponseBody struct {
-	// The operation result. Valid values:
+	// The result of the operation. Valid values:
 	//
-	// 	- true: The operation is successful.
+	// - `true`: The operation succeeded.
 	//
-	// 	- false: The operation fails.
+	// - `false`: The operation failed.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error code.
+	// The error code that is returned if the request fails.
 	//
 	// example:
 	//
 	// 1029030003
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message.
+	// The error message that is returned if the request fails.
 	//
 	// example:
 	//
@@ -52,17 +52,17 @@ type DsgUserGroupAddOrUpdateResponseBody struct {
 	//
 	// 400
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID. You can use the ID to locate logs and troubleshoot issues.
+	// The ID of the request. This is a common parameter. We recommend that you save this ID. If an issue occurs, you can use the ID to locate logs for troubleshooting.
 	//
 	// example:
 	//
 	// 102400001
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request succeeded. Valid values:
 	//
-	// 	- true
+	// - `true`: The request succeeded.
 	//
-	// 	- false
+	// - `false`: The request failed.
 	//
 	// example:
 	//

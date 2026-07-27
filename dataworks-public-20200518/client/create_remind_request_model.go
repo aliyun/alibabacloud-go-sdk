@@ -110,7 +110,7 @@ type CreateRemindRequest struct {
 	//
 	// example:
 	//
-	// {"hour":23,"minu":59}
+	// {"hour":"23","minu":"59"}
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
 	// The end time of the quiet hours. Specify the time in the hh:mm format. Valid values of hh: [0,23]. Valid values of mm: [0,59].
 	//

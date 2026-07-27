@@ -22,7 +22,7 @@ type ListDIAlarmRulesResponseBody struct {
 	//
 	// example:
 	//
-	// 74C2FECD-5B3A-554A-BCF5-351A36DE9815
+	// 74C2FECD-5B3A-554A-BCF5-35****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -168,11 +168,11 @@ type ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRules struct {
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// The metric type in the alert rule. Valid values:
 	//
-	// 	- Heartbeat
+	// - Heartbeat
 	//
-	// 	- FailoverCount
+	// - FailoverCount
 	//
-	// 	- Delay
+	// - Delay
 	//
 	// example:
 	//
@@ -348,9 +348,9 @@ type ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesNotificationSet
 	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
 	// The severity level. Valid values:
 	//
-	// 	- Warning
+	// - Warning
 	//
-	// 	- Critical
+	// - Critical
 	//
 	// example:
 	//
@@ -391,9 +391,9 @@ func (s *ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesNotificatio
 type ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesNotificationSettingsNotificationReceivers struct {
 	// The recipient type. Valid values: AliyunUid and DingToken.
 	//
-	// 	- If the alert notification method is Mail, Phone, or Sms, the value of this parameter is **AliyunUid**, which indicates the Alibaba Cloud account ID.
+	// - If the alert notification method is Mail, Phone, or Sms, the value of this parameter is **AliyunUid**, which indicates the Alibaba Cloud account ID.
 	//
-	// 	- If the alert notification method is Ding, the value of this parameter is **DingToken**, which indicates the DingTalk chatbot token.
+	// - If the alert notification method is Ding, the value of this parameter is **DingToken**, which indicates the DingTalk chatbot token.
 	//
 	// example:
 	//
@@ -442,9 +442,9 @@ type ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesTriggerConditio
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The severity level. Valid values:
 	//
-	// 	- Warning
+	// - Warning
 	//
-	// 	- Critical
+	// - Critical
 	//
 	// example:
 	//
@@ -452,11 +452,11 @@ type ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesTriggerConditio
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
 	// The alert threshold.
 	//
-	// 	- If the alert rule is for task status, no threshold is used.
+	// - If the alert rule is for task status, no threshold is used.
 	//
-	// 	- If the alert rule is for failovers, the threshold is the number of failovers.
+	// - If the alert rule is for failovers, the threshold is the number of failovers.
 	//
-	// 	- If the alert rule is for latency, the threshold is the latency duration, in seconds.
+	// - If the alert rule is for latency, the threshold is the latency duration, in seconds.
 	//
 	// example:
 	//

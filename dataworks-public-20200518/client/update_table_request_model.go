@@ -70,13 +70,13 @@ type UpdateTableRequest struct {
 	//
 	// example:
 	//
-	// comment
+	// Remarks
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// Specifies whether the table exists. Valid values:
 	//
-	// 	- true: The table exists.
+	// - true: The table exists.
 	//
-	// 	- false: The table does not exist.
+	// - false: The table does not exist.
 	//
 	// This parameter is deprecated. Do not use this parameter.
 	//
@@ -392,6 +392,10 @@ type UpdateTableRequestColumns struct {
 	// abc
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
 	// The display name of the field.
+	//
+	// example:
+	//
+	// 中文
 	ColumnNameCn *string `json:"ColumnNameCn,omitempty" xml:"ColumnNameCn,omitempty"`
 	// The type of the field. For more information, see MaxCompute field types.
 	//
@@ -405,7 +409,7 @@ type UpdateTableRequestColumns struct {
 	//
 	// example:
 	//
-	// comment
+	// 备注
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// Specifies whether the field is a partition field. Valid values: 0 and 1. The value 0 indicates that the field is not a partition field. The value 1 indicates that the field is a partition field.
 	//

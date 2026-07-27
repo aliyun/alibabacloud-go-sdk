@@ -164,9 +164,9 @@ type GetMetaTableFullInfoResponseBodyData struct {
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	// The type of the environment. Valid values:
 	//
-	// 	- 0: indicates that the table resides in the development environment.
+	// - 0: indicates that the table resides in the development environment.
 	//
-	// 	- 1: indicates that the table resides in the production environment.
+	// - 1: indicates that the table resides in the production environment.
 	//
 	// example:
 	//
@@ -174,13 +174,13 @@ type GetMetaTableFullInfoResponseBodyData struct {
 	EnvType *int32 `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// The scope in which the table is visible. Valid values:
 	//
-	// 	- 0: indicates that the table is visible to workspace members.
+	// - 0: indicates that the table is visible to workspace members.
 	//
-	// 	- 1: indicates that the table is visible to users within a tenant.
+	// - 1: indicates that the table is visible to users within a tenant.
 	//
-	// 	- 2: indicates that the table is visible to all tenants.
+	// - 2: indicates that the table is visible to all tenants.
 	//
-	// 	- 3: indicates that the table is visible only to the table owner.
+	// - 3: indicates that the table is visible only to the table owner.
 	//
 	// example:
 	//
@@ -524,9 +524,9 @@ type GetMetaTableFullInfoResponseBodyDataColumnList struct {
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// Indicates whether the field is a foreign key. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -534,9 +534,9 @@ type GetMetaTableFullInfoResponseBodyDataColumnList struct {
 	IsForeignKey *bool `json:"IsForeignKey,omitempty" xml:"IsForeignKey,omitempty"`
 	// Indicates whether the field is a partition field. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -544,9 +544,9 @@ type GetMetaTableFullInfoResponseBodyDataColumnList struct {
 	IsPartitionColumn *bool `json:"IsPartitionColumn,omitempty" xml:"IsPartitionColumn,omitempty"`
 	// Indicates whether the field is a primary key. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type TopTenErrorTimesInstanceRequest struct {
 	//
 	// example:
 	//
-	// 9527
+	// 10000001
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 

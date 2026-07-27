@@ -34,7 +34,7 @@ type CreateDataServiceGroupRequest struct {
 	//
 	// example:
 	//
-	// Test business process
+	// Test workflow
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the business process.
 	//
@@ -42,7 +42,7 @@ type CreateDataServiceGroupRequest struct {
 	//
 	// example:
 	//
-	// Business process name
+	// Workflow name
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The ID of the workspace.
 	//

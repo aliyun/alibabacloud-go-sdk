@@ -24,43 +24,12 @@ type iGetMetaTableProducingTasksRequest interface {
 }
 
 type GetMetaTableProducingTasksRequest struct {
-	// The ID of the EMR cluster. This parameter takes effect only if the DataSourceType parameter is set to emr.
-	//
-	// example:
-	//
-	// C-A_SAMPLE_CLUSTER_ID
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The type of the metatable. Valid values: odps and emr. The value odps indicates that the metatable is a MaxCompute metatable. The value emr indicates that the metatable is an E-MapReduce (EMR) metatable.
-	//
-	// example:
-	//
-	// odps
+	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// The name of the database.
-	//
-	// example:
-	//
-	// default
-	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	// The name of the schema.
-	//
-	// example:
-	//
-	// myschema
-	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The GUID of the MaxCompute metatable.
-	//
+	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	SchemaName     *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// odps.sample_project.sample_table
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	// The name of the metatable.
-	//
-	// example:
-	//
-	// sample_table
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 

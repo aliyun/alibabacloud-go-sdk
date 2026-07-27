@@ -68,7 +68,7 @@ type UpdateUdfFileRequest struct {
 	//
 	// example:
 	//
-	// 10000001
+	// 1000000112
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
 	// The type of the function. Valid values: MATH, AGGREGATE, STRING, DATE, ANALYTIC, and OTHER. This parameter corresponds to the Function Type parameter in the Register Function section of the configuration tab of the function on the DataStudio page.
 	//

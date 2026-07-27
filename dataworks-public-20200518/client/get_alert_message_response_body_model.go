@@ -388,7 +388,7 @@ type GetAlertMessageResponseBodyDataInstances struct {
 	//
 	// example:
 	//
-	// 12312312
+	// 12312****
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The node ID.
 	//

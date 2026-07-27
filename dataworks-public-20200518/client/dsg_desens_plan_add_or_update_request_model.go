@@ -14,7 +14,7 @@ type iDsgDesensPlanAddOrUpdateRequest interface {
 }
 
 type DsgDesensPlanAddOrUpdateRequest struct {
-	// A collection of data masking rules that you want to add or modify.
+	// The collection of data masking rules to add or update.
 	//
 	// This parameter is required.
 	DesensRules []*DsgDesensPlanAddOrUpdateRequestDesensRules `json:"DesensRules,omitempty" xml:"DesensRules,omitempty" type:"Repeated"`
@@ -53,25 +53,25 @@ func (s *DsgDesensPlanAddOrUpdateRequest) Validate() error {
 type DsgDesensPlanAddOrUpdateRequestDesensRules struct {
 	// Specifies whether to add a watermark. Valid values:
 	//
-	// 	- true
+	// - true: Adds a watermark.
 	//
-	// 	- false
+	// - false: Does not add a watermark.
 	//
 	// example:
 	//
 	// true
 	CheckWatermark *bool `json:"CheckWatermark,omitempty" xml:"CheckWatermark,omitempty"`
-	// The sensitive field type.
+	// The sensitive data type.
 	//
 	// example:
 	//
 	// phone
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// The data masking rule.
+	// The configuration of the data masking method.
 	//
 	// This parameter is required.
 	DesensPlan *DsgDesensPlanAddOrUpdateRequestDesensRulesDesensPlan `json:"DesensPlan,omitempty" xml:"DesensPlan,omitempty" type:"Struct"`
-	// The ID of the data masking rule. You can call the [DsgDesensPlanQueryList](https://help.aliyun.com/document_detail/2786578.html) operation to query the ID of the data masking rule.
+	// The data masking rule ID. You can call the [DsgDesensPlanQueryList](https://help.aliyun.com/document_detail/2786578.html) operation to obtain it.
 	//
 	// example:
 	//
@@ -93,20 +93,21 @@ type DsgDesensPlanAddOrUpdateRequestDesensRules struct {
 	//
 	// phone_hash
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The level-2 data masking scenario.
+	// The secondary data masking scenes.
 	//
 	// This parameter is required.
 	SceneIds []*int64 `json:"SceneIds,omitempty" xml:"SceneIds,omitempty" type:"Repeated"`
 	// The status of the data masking rule. Valid values:
 	//
-	// 	- 0: expired
+	// - 0: Disabled
 	//
-	// 	- 1: effective
+	// - 1: Enabled
 	//
 	// example:
 	//
 	// 1
-	Status         *int32                                               `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The associated columns for masking.
 	Columns        []*DsgDesensPlanAddOrUpdateRequestDesensRulesColumns `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
 	EmptyNotDesens *bool                                                `json:"emptyNotDesens,omitempty" xml:"emptyNotDesens,omitempty"`
 }
@@ -228,21 +229,21 @@ func (s *DsgDesensPlanAddOrUpdateRequestDesensRules) Validate() error {
 }
 
 type DsgDesensPlanAddOrUpdateRequestDesensRulesDesensPlan struct {
-	// The masking method configured in the data masking rule. Valid values:
+	// The data masking method. Valid values:
 	//
-	// 	- hash
+	// - hash: hashing
 	//
-	// 	- mapping
+	// - mapping: pseudonymization
 	//
-	// 	- mask
+	// - mask: masking
 	//
-	// 	- charreplacement
+	// - charreplacement: character replacement
 	//
-	// 	- intervalselect
+	// - intervalselect: interval transformation
 	//
-	// 	- decimalpoint
+	// - decimalpoint: rounding
 	//
-	// 	- emptydesens
+	// - emptydesens: nullification
 	//
 	// This parameter is required.
 	//
@@ -250,7 +251,7 @@ type DsgDesensPlanAddOrUpdateRequestDesensRulesDesensPlan struct {
 	//
 	// hash
 	DesensPlanType *string `json:"DesensPlanType,omitempty" xml:"DesensPlanType,omitempty"`
-	// The parameters for the data masking rule.
+	// The parameters for the data masking method.
 	ExtParam map[string]interface{} `json:"ExtParam,omitempty" xml:"ExtParam,omitempty"`
 }
 
@@ -285,13 +286,37 @@ func (s *DsgDesensPlanAddOrUpdateRequestDesensRulesDesensPlan) Validate() error 
 }
 
 type DsgDesensPlanAddOrUpdateRequestDesensRulesColumns struct {
+	// The column name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test_col_dev
 	Column *string `json:"column,omitempty" xml:"column,omitempty"`
+	// The data source type.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// ODPS.ODPS
 	DbType *string `json:"dbType,omitempty" xml:"dbType,omitempty"`
+	// The name of the DataWorks workspace.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test_dev
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	// The table name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test_table_dev
 	Table *string `json:"table,omitempty" xml:"table,omitempty"`
 }
 

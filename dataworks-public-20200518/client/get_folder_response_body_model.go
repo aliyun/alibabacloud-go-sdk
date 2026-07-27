@@ -24,31 +24,34 @@ type iGetFolderResponseBody interface {
 }
 
 type GetFolderResponseBody struct {
+	// The details of the folder.
 	Data *GetFolderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// GetFolder
+	// The error code.
 	//
 	// example:
 	//
 	// Invalid.Tenant.ConnectionNotExists
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The folder ID.
+	// The error message.
 	//
 	// example:
 	//
 	// The connection does not exist.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The path of the folder.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// http://100.67.165.184/business/api/folders/detail
+	// The ID of the request. Use this ID to troubleshoot issues if an error occurs.
 	//
 	// example:
 	//
 	// 0000-ABCD-EFG****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful.
+	//
 	// example:
 	//
 	// true
@@ -127,10 +130,14 @@ func (s *GetFolderResponseBody) Validate() error {
 }
 
 type GetFolderResponseBodyData struct {
+	// The ID of the folder.
+	//
 	// example:
 	//
 	// 2735****
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	// The path of the folder.
+	//
 	// example:
 	//
 	// Business_process/my_first_business_process/MaxCompute/ods_layer

@@ -112,7 +112,7 @@ type GetExtensionResponseBodyExtension struct {
 	//
 	// example:
 	//
-	// 13552
+	// 1355211
 	ProjectTesting *int64 `json:"ProjectTesting,omitempty" xml:"ProjectTesting,omitempty"`
 	// The state of the extension. 0: Testing, 1: Publishing, 3: Disabled, 4: Processing, 5: Approved, 6: Approve Failed
 	//

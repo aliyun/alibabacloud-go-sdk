@@ -24,7 +24,7 @@ type iSubmitFileResponseBody interface {
 }
 
 type SubmitFileResponseBody struct {
-	// The deployment package ID. The ID is used as the value of a specific request parameter when you call the [GetDeployment](https://help.aliyun.com/document_detail/173950.html) operation to query the details of the deployment operation.
+	// The deployment ID. Call the [GetDeployment](https://help.aliyun.com/document_detail/173950.html) operation with this ID to query the deployment details.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type SubmitFileResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID.
+	// The request ID, which is used for troubleshooting.
 	//
 	// example:
 	//

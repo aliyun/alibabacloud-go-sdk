@@ -18,7 +18,7 @@ type iDeleteFolderRequest interface {
 }
 
 type DeleteFolderRequest struct {
-	// DeleteFolder
+	// The ID of the folder. For more information about how to obtain the folder ID, see [ListFolders](https://help.aliyun.com/document_detail/173955.html).
 	//
 	// This parameter is required.
 	//
@@ -26,13 +26,13 @@ type DeleteFolderRequest struct {
 	//
 	// 2eb6f9****
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// Indicates whether the request is successful.
+	// The ID of the DataWorks workspace. To obtain the workspace ID, log on to the DataWorks console and go to the Workspace Management page. You must set this parameter or ProjectIdentifier to specify the DataWorks workspace for the API call.
 	//
 	// example:
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// http://100.67.165.184/business/api/folders/delete
+	// The name of the DataWorks workspace. To obtain the workspace name, log on to the DataWorks console and go to the Workspace Management page. You must set this parameter or ProjectId to specify the DataWorks workspace for the API call.
 	//
 	// example:
 	//

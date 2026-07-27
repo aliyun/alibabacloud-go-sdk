@@ -52,7 +52,7 @@ type CreateTableLevelResponseBody struct {
 	//
 	// example:
 	//
-	// The error message returned.
+	// Request ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
 	//

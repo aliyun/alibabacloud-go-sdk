@@ -22,28 +22,38 @@ type iCreateDagTestRequest interface {
 }
 
 type CreateDagTestRequest struct {
+	// The business date.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2020-05-26 00:00:00
 	Bizdate *string `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
+	// The name of the workflow.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xm_create_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the node.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234
 	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The parameters of the node.
+	//
 	// example:
 	//
 	// bizdate=$bizdate tbods=$tbods
 	NodeParams *string `json:"NodeParams,omitempty" xml:"NodeParams,omitempty"`
+	// The environment of the workspace. Valid values: PROD and DEV.
+	//
 	// This parameter is required.
 	//
 	// example:

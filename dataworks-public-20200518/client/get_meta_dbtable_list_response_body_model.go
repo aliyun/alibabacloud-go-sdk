@@ -16,9 +16,9 @@ type iGetMetaDBTableListResponseBody interface {
 }
 
 type GetMetaDBTableListResponseBody struct {
-	// The metatable information in a compute engine instance.
+	// Information about the tables in the engine instance.
 	Data *GetMetaDBTableListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The unique ID for this request.
 	//
 	// example:
 	//
@@ -68,15 +68,15 @@ type GetMetaDBTableListResponseBodyData struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 10. Maximum value: 100.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of metatables in the compute engine instance.
+	// A list of table details.
 	TableEntityList []*GetMetaDBTableListResponseBodyDataTableEntityList `json:"TableEntityList,omitempty" xml:"TableEntityList,omitempty" type:"Repeated"`
-	// The total number of compute engine instances returned.
+	// The total number of tables.
 	//
 	// example:
 	//
@@ -142,19 +142,19 @@ func (s *GetMetaDBTableListResponseBodyData) Validate() error {
 }
 
 type GetMetaDBTableListResponseBodyDataTableEntityList struct {
-	// The name of the metadatabase.
+	// The name of the database.
 	//
 	// example:
 	//
 	// abc
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The GUID of the metatable.
+	// The unique identifier of the table.
 	//
 	// example:
 	//
 	// odps.engine_name.tname
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	// The name of the metatable.
+	// The name of the table.
 	//
 	// example:
 	//

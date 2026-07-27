@@ -78,7 +78,7 @@ type GetMetaDBInfoResponseBodyData struct {
 	//
 	// example:
 	//
-	// The ID of the compute engine instance. The ID is in the Engine type.Engine name format.
+	// Remarks
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The time when the compute engine instance was created.
 	//
@@ -120,13 +120,13 @@ type GetMetaDBInfoResponseBodyData struct {
 	//
 	// example:
 	//
-	// 23
+	// userId
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The name of the workspace owner.
 	//
 	// example:
 	//
-	// 323
+	// my_name
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
 	// The workspace ID.
 	//
@@ -144,7 +144,7 @@ type GetMetaDBInfoResponseBodyData struct {
 	//
 	// example:
 	//
-	// The storage path of the metadatabase of the EMR cluster.
+	// 测试项目
 	ProjectNameCn *string `json:"ProjectNameCn,omitempty" xml:"ProjectNameCn,omitempty"`
 	// The tenant ID.
 	//

@@ -34,7 +34,7 @@ type CheckMetaPartitionRequest struct {
 	//
 	// example:
 	//
-	// emr
+	// odps
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
 	// The name of the metadatabase.
 	//

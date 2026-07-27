@@ -26,7 +26,7 @@ type ListDataServiceGroupsRequest struct {
 	//
 	// example:
 	//
-	// Test business process
+	// Test workflow
 	GroupNameKeyword *string `json:"GroupNameKeyword,omitempty" xml:"GroupNameKeyword,omitempty"`
 	// The page number. Pages start from page 1. Default value: 1.
 	//

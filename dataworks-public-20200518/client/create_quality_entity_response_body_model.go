@@ -24,7 +24,7 @@ type iCreateQualityEntityResponseBody interface {
 }
 
 type CreateQualityEntityResponseBody struct {
-	// The partition filter expression ID.
+	// The ID of the created partition expression.
 	//
 	// example:
 	//

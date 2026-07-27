@@ -16,12 +16,20 @@ type iDsgUpdateDesensStatusListShrinkRequest interface {
 }
 
 type DsgUpdateDesensStatusListShrinkRequest struct {
+	// The switch status. Valid values:
+	//
+	// 1: enabled
+	//
+	// 0: disabled
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	DesensStatus *int32 `json:"DesensStatus,omitempty" xml:"DesensStatus,omitempty"`
+	// The list of switch IDs.
+	//
 	// This parameter is required.
 	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
 }

@@ -46,19 +46,19 @@ type iDsgQuerySensResultRequest interface {
 }
 
 type DsgQuerySensResultRequest struct {
-	// The name of the field.
+	// The field name.
 	//
 	// example:
 	//
 	// col
 	Col *string `json:"Col,omitempty" xml:"Col,omitempty"`
-	// The type of the database. Valid values:
+	// The database type. Valid values:
 	//
-	// 	- **ODPS.ODPS**
+	// - **ODPS.ODPS**
 	//
-	// 	- **HOLO.POSTGRES**
+	// - **HOLO.POSTGRES**
 	//
-	// 	- **EMR**
+	// - **EMR**
 	//
 	// example:
 	//
@@ -70,33 +70,33 @@ type DsgQuerySensResultRequest struct {
 	//
 	// 3
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The name of a data category.
+	// The classification node name.
 	//
 	// example:
 	//
 	// Personal information
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The sorting method. Valid values:
+	// The sort order. Valid values:
 	//
-	// 	- DESC
+	// - DESC: descending.
 	//
-	// 	- ASC
+	// - ASC: ascending.
 	//
 	// example:
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The field used for sorting.
+	// The field used for sorting. Valid values:
 	//
-	// 	- gmt_create
+	// - gmt_create
 	//
-	// 	- gmt_modified
+	// - gmt_modified
 	//
 	// example:
 	//
 	// gmt_create
 	OrderField *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
-	// The page number. Pages start from page 1.
+	// The page number. Minimum value: 1.
 	//
 	// example:
 	//
@@ -108,29 +108,31 @@ type DsgQuerySensResultRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the workspace name.
+	// The name of the DataWorks workspace. Log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace configuration page to obtain the workspace name.
 	//
 	// example:
 	//
 	// project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The name of the schema.
+	// The schema name.
 	//
 	// example:
 	//
 	// schema
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The sensitivity status of the field.
+	// The sensitivity status of the field. Valid values:
 	//
-	// 	- 1: indicates sensitive.
+	// - sensitive: sensitive.
 	//
-	// 	- \\-1: indicates non-sensitive.
+	// - noIdentify: not identified.
+	//
+	// - noResult: no result.
 	//
 	// example:
 	//
 	// 1
 	SensStatus *string `json:"SensStatus,omitempty" xml:"SensStatus,omitempty"`
-	// The sensitive field ID.
+	// The ID of the sensitive field.
 	//
 	// example:
 	//
@@ -142,19 +144,29 @@ type DsgQuerySensResultRequest struct {
 	//
 	// name
 	SensitiveName *string `json:"SensitiveName,omitempty" xml:"SensitiveName,omitempty"`
-	// The name of the table.
+	// The table name.
 	//
 	// example:
 	//
 	// table
 	Table *string `json:"Table,omitempty" xml:"Table,omitempty"`
-	// The tenant ID. To obtain the tenant ID, perform the following steps: Log on to the [DataWorks console](https://workbench.data.aliyun.com/console). Find your workspace and go to the DataStudio page. On the DataStudio page, click the logon username in the upper-right corner and click User Info in the Menu section.
+	// The tenant ID. Log on to the [DataWorks console](https://workbench.data.aliyun.com/console), go to the DataStudio page, click the username in the upper-right corner, and choose Menu > User Info to obtain the tenant ID.
 	//
 	// example:
 	//
 	// 10241024
-	TenantId  *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	EndDate   *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The query end time in the format of yyyy-MM-dd or yyyy-MM-dd HH:mm:ss.
+	//
+	// example:
+	//
+	// 2026-05-19
+	EndDate *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	// The query start time in the format of yyyy-MM-dd or yyyy-MM-dd HH:mm:ss.
+	//
+	// example:
+	//
+	// 2026-05-19
 	StartDate *string `json:"startDate,omitempty" xml:"startDate,omitempty"`
 }
 

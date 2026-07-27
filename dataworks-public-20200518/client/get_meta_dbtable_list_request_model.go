@@ -24,41 +24,41 @@ type iGetMetaDBTableListRequest interface {
 }
 
 type GetMetaDBTableListRequest struct {
-	// The GUID of the MaxCompute project. Specify the GUID in the `odps.{projectName}` format. You must configure this parameter only if you set the DataSourceType parameter to odps.
+	// The unique identifier for the project, in the format `odps.{projectName}`. This parameter is required only if the `DataSourceType` is set to `odps`.
 	//
 	// example:
 	//
 	// odps.testProjectName
 	AppGuid *string `json:"AppGuid,omitempty" xml:"AppGuid,omitempty"`
-	// The E-MapReduce (EMR) cluster ID. You must configure this parameter only if you set the DataSourceType parameter to emr.
+	// The ID of the E-MapReduce (EMR) cluster. This parameter is required only if the `DataSourceType` is set to `emr`.
 	//
 	// example:
 	//
 	// abc
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The type of the data source. Valid values: odps and emr.
+	// The type of the data source. Valid values: `odps` and `emr`.
 	//
 	// example:
 	//
 	// odps
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// The name of the metadatabase.
+	// The name of the database.
 	//
 	// example:
 	//
 	// abc
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The page number.
+	// The page number to return.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 10. Maximum value: 100.
+	// The number of entries per page. Default value: 10. Maximum value: 1,000.
 	//
 	// example:
 	//
-	// 10
+	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 

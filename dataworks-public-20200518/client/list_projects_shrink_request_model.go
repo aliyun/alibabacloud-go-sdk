@@ -36,7 +36,7 @@ type ListProjectsShrinkRequest struct {
 	//
 	// example:
 	//
-	// rg-acfmzbn7pti3zfa
+	// rg-acfmzbn7pt****
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The tags to add to the workspace.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`

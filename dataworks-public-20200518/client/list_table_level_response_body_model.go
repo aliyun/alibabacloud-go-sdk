@@ -184,7 +184,7 @@ type ListTableLevelResponseBodyTableLevelInfoLevelList struct {
 	//
 	// example:
 	//
-	// test
+	// Level description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The table level ID.
 	//
@@ -202,7 +202,7 @@ type ListTableLevelResponseBodyTableLevelInfoLevelList struct {
 	//
 	// example:
 	//
-	// test
+	// Level 1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the DataWorks workspace.
 	//

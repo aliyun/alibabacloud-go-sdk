@@ -42,9 +42,9 @@ type DsgDesensPlanQueryListResponseBody struct {
 	//
 	// 400
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The pagination information.
+	// The paginated data.
 	PageData *DsgDesensPlanQueryListResponseBodyPageData `json:"PageData,omitempty" xml:"PageData,omitempty" type:"Struct"`
-	// The request ID. You can use the ID to locate logs and troubleshoot issues.
+	// The request ID. You can use this ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -52,9 +52,9 @@ type DsgDesensPlanQueryListResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *DsgDesensPlanQueryListResponseBody) Validate() error {
 }
 
 type DsgDesensPlanQueryListResponseBodyPageData struct {
-	// The information about the data masking rule.
+	// The details of the desensitization rules.
 	Data []*DsgDesensPlanQueryListResponseBodyPageDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -148,7 +148,7 @@ type DsgDesensPlanQueryListResponseBodyPageData struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The number of data masking rules.
+	// The total number of matching desensitization rules.
 	//
 	// example:
 	//
@@ -214,101 +214,101 @@ func (s *DsgDesensPlanQueryListResponseBodyPageData) Validate() error {
 }
 
 type DsgDesensPlanQueryListResponseBodyPageDataData struct {
-	// Indicates whether a watermark is added. Valid values:
+	// Indicates whether to add a watermark. Valid values:
 	//
-	// 	- true
+	// - true: A watermark is added.
 	//
-	// 	- false
+	// - false: No watermark is added.
 	//
 	// example:
 	//
 	// true
 	CheckWatermark *bool `json:"CheckWatermark,omitempty" xml:"CheckWatermark,omitempty"`
-	// The sensitive field type.
+	// The sensitive data type.
 	//
 	// example:
 	//
 	// phone
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// The type of the data masking method.
+	// The desensitization method.
 	//
 	// example:
 	//
 	// HASH
 	DesenMode *string `json:"DesenMode,omitempty" xml:"DesenMode,omitempty"`
-	// The details of the data masking rule.
+	// The details of the desensitization plan.
 	DesensPlan *DsgDesensPlanQueryListResponseBodyPageDataDataDesensPlan `json:"DesensPlan,omitempty" xml:"DesensPlan,omitempty" type:"Struct"`
-	// The data masking rule.
+	// The desensitization rule.
 	//
 	// example:
 	//
 	// HASH
 	DesensRule *string `json:"DesensRule,omitempty" xml:"DesensRule,omitempty"`
-	// The data masking method.
+	// The desensitization method.
 	//
 	// example:
 	//
 	// HASH
 	DesensWay *string `json:"DesensWay,omitempty" xml:"DesensWay,omitempty"`
-	// The time when the data masking rule was created.
+	// The time when the rule was created.
 	//
 	// example:
 	//
 	// 2024-05-09 15:46:20
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the data masking rule was modified.
+	// The time when the rule was last modified.
 	//
 	// example:
 	//
 	// 2024-05-09 15:46:20
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the data masking rule.
+	// The ID of the desensitization rule.
 	//
 	// example:
 	//
 	// 123
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The owner of the data masking rule.
+	// The owner of the desensitization rule.
 	//
 	// example:
 	//
 	// user1
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The name of the data masking rule.
+	// The name of the desensitization rule.
 	//
 	// example:
 	//
 	// phone_hash
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The code of the level-1 data masking scenario to which the rule belongs. Valid values:
+	// The level-1 desensitization scene code. Valid values:
 	//
-	// 	- dataworks_display_desense_code: masking of displayed data in DataStudio and Data Map
+	// - Desensitization for display in Data Development and Data Map: dataworks_display_desense_code
 	//
-	// 	- maxcompute_desense_code: data masking at the MaxCompute compute engine layer
+	// - Desensitization at the MaxCompute engine layer: maxcompute_desense_code
 	//
-	// 	- maxcompute_new_desense_code: data masking at the MaxCompute compute engine layer (new)
+	// - Desensitization at the MaxCompute engine layer (New): maxcompute_new_desense_code
 	//
-	// 	- hologres_display_desense_code: data masking at the Hologres compute engine layer
+	// - Desensitization at the Hologres engine layer: hologres_display_desense_code
 	//
-	// 	- dataworks_data_integration_desense_code: static data masking in Data Integration
+	// - Static desensitization in Data Integration: dataworks_data_integration_desense_code
 	//
-	// 	- dataworks_analysis_desense_code: masking of displayed data in DataAnalysis
+	// - Desensitization for display in Data Analysis: dataworks_analysis_desense_code
 	//
 	// example:
 	//
 	// dataworks_display_desense_code
 	SceneCode *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
-	// The name of the level-2 data masking scenario to which the data masking rule belongs.
+	// The name of the level-2 desensitization scene.
 	//
 	// example:
 	//
 	// test_scene
 	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
-	// The status of the data masking rule. Valid values:
+	// The status of the rule. Valid values:
 	//
-	// 	- 0: expired
+	// - 0: Inactive.
 	//
-	// 	- 1: effective
+	// - 1: Active.
 	//
 	// example:
 	//
@@ -489,13 +489,13 @@ func (s *DsgDesensPlanQueryListResponseBodyPageDataData) Validate() error {
 }
 
 type DsgDesensPlanQueryListResponseBodyPageDataDataDesensPlan struct {
-	// The type of the data masking rule.
+	// The type of the desensitization plan.
 	//
 	// example:
 	//
 	// hash
 	DesensPlanType *string `json:"DesensPlanType,omitempty" xml:"DesensPlanType,omitempty"`
-	// The parameters for the data masking rule. For more information about the parameters, see the [DsgDesensPlanAddOrUpdate](https://help.aliyun.com/document_detail/2786295.html) API reference.
+	// The parameters for the desensitization rule. For details, see the [DsgDesensPlanAddOrUpdate](https://help.aliyun.com/document_detail/2786295.html) operation.
 	ExtParam map[string]interface{} `json:"ExtParam,omitempty" xml:"ExtParam,omitempty"`
 }
 

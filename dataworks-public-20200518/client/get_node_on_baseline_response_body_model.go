@@ -24,7 +24,7 @@ type iGetNodeOnBaselineResponseBody interface {
 }
 
 type GetNodeOnBaselineResponseBody struct {
-	// The list of nodes.
+	// The list of nodes on the baseline.
 	Data []*GetNodeOnBaselineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The error code.
 	//
@@ -44,7 +44,7 @@ type GetNodeOnBaselineResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID.
+	// The unique ID of the request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -134,15 +134,19 @@ func (s *GetNodeOnBaselineResponseBody) Validate() error {
 }
 
 type GetNodeOnBaselineResponseBodyData struct {
-	// The node ID.
+	// The ID of the node.
 	//
 	// example:
 	//
 	// 1234
 	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The name of the node.
+	//
+	// example:
+	//
+	// Node name
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The ID of the Alibaba Cloud account used by the node owner.
+	// The Alibaba Cloud UID of the node owner.
 	//
 	// example:
 	//

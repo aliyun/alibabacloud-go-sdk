@@ -52,13 +52,13 @@ type QueryRecognizeRuleDetailResponseBody struct {
 	//
 	// example:
 	//
-	// 10000001
+	// 100000012
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//

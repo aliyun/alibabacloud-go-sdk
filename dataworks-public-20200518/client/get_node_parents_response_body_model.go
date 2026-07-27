@@ -48,7 +48,7 @@ type GetNodeParentsResponseBody struct {
 	//
 	// example:
 	//
-	// asfasdfs-adfasdf-asfas-dfasdf-asdf
+	// asfsdfas-adfasdf-asfas-dfasdf-asdf
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
 	//

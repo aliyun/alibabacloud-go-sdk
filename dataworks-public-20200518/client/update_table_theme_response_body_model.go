@@ -50,9 +50,9 @@ type UpdateTableThemeResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -60,9 +60,9 @@ type UpdateTableThemeResponseBody struct {
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// Indicates whether the update result is returned. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//

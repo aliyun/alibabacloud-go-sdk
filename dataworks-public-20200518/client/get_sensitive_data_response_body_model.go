@@ -29,6 +29,10 @@ type GetSensitiveDataResponseBody struct {
 	// 	- sensType: the type of the sensitive data.
 	//
 	// 	- sensLevel: the sensitivity level of the sensitive data
+	//
+	// example:
+	//
+	// {      "sensDatas": [       {         "sensLevel": "L1",         "guid": "dsg_demo.animal.dog",         "sensType": " Name"       }      ],     "totalCount": 2171 }
 	SensitiveData map[string]interface{} `json:"SensitiveData,omitempty" xml:"SensitiveData,omitempty"`
 }
 

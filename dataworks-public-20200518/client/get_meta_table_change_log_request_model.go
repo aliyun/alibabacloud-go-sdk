@@ -34,9 +34,9 @@ type GetMetaTableChangeLogRequest struct {
 	ChangeType *string `json:"ChangeType,omitempty" xml:"ChangeType,omitempty"`
 	// The end of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
 	//
-	// 	- By default, the system uses the current time as the value of this parameter if the time that you specify is invalid.
+	// - By default, the system uses the current time as the value of this parameter if the time that you specify is invalid.
 	//
-	// 	- If both the values of the StartDate and EndDate parameters are invalid, the system automatically queries the change logs that are generated within the last 30 days.
+	// - If both the values of the StartDate and EndDate parameters are invalid, the system automatically queries the change logs that are generated within the last 30 days.
 	//
 	// example:
 	//
@@ -62,9 +62,9 @@ type GetMetaTableChangeLogRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The beginning of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
 	//
-	// 	- By default, the system uses the current time as the value of this parameter if the time that you specify is invalid.
+	// - By default, the system uses the current time as the value of this parameter if the time that you specify is invalid.
 	//
-	// 	- If both the values of the StartDate and EndDate parameters are invalid, the system automatically queries the change logs that are generated within the last 30 days.
+	// - If both the values of the StartDate and EndDate parameters are invalid, the system automatically queries the change logs that are generated within the last 30 days.
 	//
 	// example:
 	//

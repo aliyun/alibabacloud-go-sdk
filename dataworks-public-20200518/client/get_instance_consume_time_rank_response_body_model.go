@@ -16,9 +16,9 @@ type iGetInstanceConsumeTimeRankResponseBody interface {
 }
 
 type GetInstanceConsumeTimeRankResponseBody struct {
-	// The ranking record of the running durations of instances.
+	// The ranking records of instance running durations.
 	InstanceConsumeTimeRank *GetInstanceConsumeTimeRankResponseBodyInstanceConsumeTimeRank `json:"InstanceConsumeTimeRank,omitempty" xml:"InstanceConsumeTimeRank,omitempty" type:"Struct"`
-	// The request ID.
+	// The unique ID generated for each request.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *GetInstanceConsumeTimeRankResponseBody) Validate() error {
 }
 
 type GetInstanceConsumeTimeRankResponseBodyInstanceConsumeTimeRank struct {
-	// The ranking data of the running durations of instances.
+	// The ranking data of instance running durations.
 	ConsumeTimeRank []*GetInstanceConsumeTimeRankResponseBodyInstanceConsumeTimeRankConsumeTimeRank `json:"ConsumeTimeRank,omitempty" xml:"ConsumeTimeRank,omitempty" type:"Repeated"`
 	// The timestamp when the ranking was updated.
 	//
@@ -112,7 +112,7 @@ func (s *GetInstanceConsumeTimeRankResponseBodyInstanceConsumeTimeRank) Validate
 }
 
 type GetInstanceConsumeTimeRankResponseBodyInstanceConsumeTimeRankConsumeTimeRank struct {
-	// The data timestamp of the instance.
+	// The data timestamp on which the instance was run.
 	//
 	// example:
 	//
@@ -124,27 +124,31 @@ type GetInstanceConsumeTimeRankResponseBodyInstanceConsumeTimeRankConsumeTimeRan
 	//
 	// 1000
 	Consumed *int64 `json:"Consumed,omitempty" xml:"Consumed,omitempty"`
-	// The instance ID.
+	// The ID of the instance.
 	//
 	// example:
 	//
 	// 95279527
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The node ID.
+	// The ID of the task node.
 	//
 	// example:
 	//
 	// 9527
 	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The name of the node.
+	//
+	// example:
+	//
+	// Node name
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The ID of the Alibaba Cloud account used by the node owner.
+	// The Alibaba Cloud UID of the node owner.
 	//
 	// example:
 	//
 	// 952795279527
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The type of the node.
+	// The type of the task.
 	//
 	// example:
 	//

@@ -18,9 +18,9 @@ type iGetDISyncTaskRequest interface {
 }
 
 type GetDISyncTaskRequest struct {
-	// 	- If you set TaskType to DI_REALTIME, set this parameter to the ID of the real-time synchronization task that you want to deploy.
+	// - If you set TaskType to DI_REALTIME, set this parameter to the ID of the real-time synchronization task that you want to deploy.
 	//
-	// 	- If you set TaskType to DI_SOLUTION, set this parameter to the ID of the data synchronization solution that you want to deploy.
+	// - If you set TaskType to DI_SOLUTION, set this parameter to the ID of the data synchronization solution that you want to deploy.
 	//
 	// You can call the [ListFiles](https://help.aliyun.com/document_detail/173942.html) operation to query the ID of the real-time synchronization task or data synchronization solution.
 	//
@@ -42,9 +42,9 @@ type GetDISyncTaskRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The type of the object that you want to query. Valid values:
 	//
-	// 	- DI_REALTIME: real-time synchronization task
+	// - DI_REALTIME: real-time synchronization task
 	//
-	// 	- DI_SOLUTION: data synchronization solution
+	// - DI_SOLUTION: data synchronization solution
 	//
 	// This parameter is required.
 	//

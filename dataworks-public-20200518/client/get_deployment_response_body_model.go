@@ -185,7 +185,7 @@ type GetDeploymentResponseBodyDataDeployedItems struct {
 	//
 	// example:
 	//
-	// 507642378
+	// 5076****
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
 	// The version of the file.
 	//

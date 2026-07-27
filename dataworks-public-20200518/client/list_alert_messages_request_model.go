@@ -52,7 +52,7 @@ type ListAlertMessagesRequest struct {
 	//
 	// example:
 	//
-	// 123456
+	// 12345
 	AlertUser *string `json:"AlertUser,omitempty" xml:"AlertUser,omitempty"`
 	// The baseline ID. This parameter takes effect if the AlertRuleTypes parameter is set to GLOBAL. You can configure either this parameter or the RemindId parameter.
 	//

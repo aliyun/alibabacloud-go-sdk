@@ -54,7 +54,7 @@ type ListDataServiceApiAuthoritiesResponseBody struct {
 	//
 	// example:
 	//
-	// true
+	// Boolean
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 

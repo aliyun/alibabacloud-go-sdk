@@ -24,19 +24,19 @@ type iDeleteQualityEntityResponseBody interface {
 }
 
 type DeleteQualityEntityResponseBody struct {
-	// The returned result.
+	// Indicates whether the partition expression was successfully deleted.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error code.
+	// The error code returned if the request fails.
 	//
 	// example:
 	//
 	// 401
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message.
+	// The error message returned if the request fails.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type DeleteQualityEntityResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

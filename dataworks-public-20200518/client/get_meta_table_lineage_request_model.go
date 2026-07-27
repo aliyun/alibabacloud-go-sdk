@@ -58,7 +58,7 @@ type GetMetaTableLineageRequest struct {
 	//
 	// example:
 	//
-	// odps.engine_name.table_name1
+	// next_primary_key
 	NextPrimaryKey *string `json:"NextPrimaryKey,omitempty" xml:"NextPrimaryKey,omitempty"`
 	// The number of entries per page. Default value: 10. Maximum value: 100.
 	//

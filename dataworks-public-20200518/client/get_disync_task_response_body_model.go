@@ -28,9 +28,9 @@ type GetDISyncTaskResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- True
+	// - True
 	//
-	// 	- False
+	// - False
 	//
 	// example:
 	//
@@ -85,9 +85,9 @@ func (s *GetDISyncTaskResponseBody) Validate() error {
 type GetDISyncTaskResponseBodyData struct {
 	// The alert rules that are associated with the real-time synchronization task. The value of this parameter is an array.
 	AlarmList []*GetDISyncTaskResponseBodyDataAlarmList `json:"AlarmList,omitempty" xml:"AlarmList,omitempty" type:"Repeated"`
-	// 	- If the TaskType parameter is set to DI_REALTIME, the details of the real-time synchronization task are returned.
+	// - If the TaskType parameter is set to DI_REALTIME, the details of the real-time synchronization task are returned.
 	//
-	// 	- If the TaskType parameter is set to DI_SOLUTION, the value null is returned.
+	// - If the TaskType parameter is set to DI_SOLUTION, the value null is returned.
 	//
 	// example:
 	//
@@ -101,9 +101,9 @@ type GetDISyncTaskResponseBodyData struct {
 	//
 	// fileId:[100] is invalid.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 	- If the TaskType parameter is set to DI_REALTIME, the value null is returned.
+	// - If the TaskType parameter is set to DI_REALTIME, the value null is returned.
 	//
-	// 	- If the TaskType parameter is set to DI_SOLUTION, the details of the data synchronization solution are returned.
+	// - If the TaskType parameter is set to DI_SOLUTION, the details of the data synchronization solution are returned.
 	SolutionDetail *GetDISyncTaskResponseBodyDataSolutionDetail `json:"SolutionDetail,omitempty" xml:"SolutionDetail,omitempty" type:"Struct"`
 	// Indicates whether the details of the real-time synchronization task or data synchronization solution are obtained. Valid values:
 	//
@@ -209,17 +209,17 @@ type GetDISyncTaskResponseBodyDataAlarmList struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The alert type. Valid values:
 	//
-	// 	- taskStatus
+	// - taskStatus
 	//
-	// 	- bizDelay
+	// - bizDelay
 	//
-	// 	- taskFailoverCount
+	// - taskFailoverCount
 	//
-	// 	- ddlUnsupport
+	// - ddlUnsupport
 	//
-	// 	- ddlReport
+	// - ddlReport
 	//
-	// 	- totalDirtyRecordWriteInLines
+	// - totalDirtyRecordWriteInLines
 	//
 	// example:
 	//
@@ -327,9 +327,9 @@ func (s *GetDISyncTaskResponseBodyDataAlarmList) Validate() error {
 type GetDISyncTaskResponseBodyDataAlarmListAlarmRuleList struct {
 	// The calculation method of a metric. Valid values:
 	//
-	// 	- avg
+	// - avg
 	//
-	// 	- max
+	// - max
 	//
 	// example:
 	//
@@ -337,11 +337,11 @@ type GetDISyncTaskResponseBodyDataAlarmListAlarmRuleList struct {
 	Aggregator *string `json:"Aggregator,omitempty" xml:"Aggregator,omitempty"`
 	// The comparison operator, which indicates the method used to compare a metric with the alert rule.
 	//
-	// 	- \\"=\\"
+	// - \\"=\\"
 	//
-	// 	- \\"<\\"
+	// - \\"<\\"
 	//
-	// 	- \\">\\"
+	// - \\">\\"
 	//
 	// example:
 	//
@@ -353,9 +353,9 @@ type GetDISyncTaskResponseBodyDataAlarmListAlarmRuleList struct {
 	//
 	// 3
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 	- WARNING
+	// - WARNING
 	//
-	// 	- CRITICAL
+	// - CRITICAL
 	//
 	// example:
 	//
@@ -529,25 +529,25 @@ type GetDISyncTaskResponseBodyDataSolutionDetail struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the data synchronization solution. Valid values:
 	//
-	// 	- 0: successful
+	// - 0: successful
 	//
-	// 	- 1: not running
+	// - 1: not running
 	//
-	// 	- 2: running
+	// - 2: running
 	//
-	// 	- 3: failed
+	// - 3: failed
 	//
-	// 	- 4: committed
+	// - 4: committed
 	//
-	// 	- 5: pending manual confirmation
+	// - 5: pending manual confirmation
 	//
-	// 	- 6: manually confirmed
+	// - 6: manually confirmed
 	//
-	// 	- 7: others
+	// - 7: others
 	//
-	// 	- 8: waiting
+	// - 8: waiting
 	//
-	// 	- 9: deleted
+	// - 9: deleted
 	//
 	// example:
 	//

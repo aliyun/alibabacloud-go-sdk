@@ -24,37 +24,37 @@ type iDeployFileResponseBody interface {
 }
 
 type DeployFileResponseBody struct {
-	// The ID of the deployment task. The ID is used as the value of a specific request parameter when you call the [GetDeployment](https://help.aliyun.com/document_detail/173950.html) operation to query the details of the deployment task.
+	// The ID of the deployment package. You can then use this ID as a parameter when calling the [GetDeployment](https://help.aliyun.com/document_detail/173950.html) API to obtain the details of the deployment.
 	//
 	// example:
 	//
 	// 30000001
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error code returned.
+	// Error code.
 	//
 	// example:
 	//
 	// Invalid.Tenant.ConnectionNotExists
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
+	// Error message.
 	//
 	// example:
 	//
 	// The connection does not exist.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code returned.
+	// HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request. You can troubleshoot issues based on the ID.
+	// The request ID is used to troubleshoot issues when an error occurs.
 	//
 	// example:
 	//
 	// 0000-ABCD-EFG****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//

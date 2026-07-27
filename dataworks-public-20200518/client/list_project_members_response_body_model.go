@@ -158,15 +158,15 @@ type ListProjectMembersResponseBodyDataProjectMemberList struct {
 	//
 	// example:
 	//
-	// zhangsan
+	// John Doe
 	ProjectMemberName *string `json:"ProjectMemberName,omitempty" xml:"ProjectMemberName,omitempty"`
 	// The type of the member. Valid values:
 	//
-	// 	- 1: USER_ALIYUN, which indicates that the member is an Alibaba Cloud account.
+	// - 1: USER_ALIYUN, which indicates that the member is an Alibaba Cloud account.
 	//
-	// 	- 5: USER_UBACCOUNT, which indicates that the member is a RAM user.
+	// - 5: USER_UBACCOUNT, which indicates that the member is a RAM user.
 	//
-	// 	- 6: USER_STS_ROLE, which indicates that the member is a RAM role.
+	// - 6: USER_STS_ROLE, which indicates that the member is a RAM role.
 	//
 	// example:
 	//
@@ -176,11 +176,11 @@ type ListProjectMembersResponseBodyDataProjectMemberList struct {
 	ProjectRoleList []*ListProjectMembersResponseBodyDataProjectMemberListProjectRoleList `json:"ProjectRoleList,omitempty" xml:"ProjectRoleList,omitempty" type:"Repeated"`
 	// The status of the member. Valid values:
 	//
-	// 	- 0: NORMAL, which indicates that the member is in a normal state.
+	// - 0: NORMAL, which indicates that the member is in a normal state.
 	//
-	// 	- 1: FORBIDDEN, which indicates that the member is disabled.
+	// - 1: FORBIDDEN, which indicates that the member is disabled.
 	//
-	// 	- 2: DELETED, which indicates that the member is deleted.
+	// - 2: DELETED, which indicates that the member is deleted.
 	//
 	// example:
 	//
@@ -280,13 +280,13 @@ type ListProjectMembersResponseBodyDataProjectMemberListProjectRoleList struct {
 	//
 	// example:
 	//
-	// test
+	// Visitor
 	ProjectRoleName *string `json:"ProjectRoleName,omitempty" xml:"ProjectRoleName,omitempty"`
 	// The type of the role. Valid values:
 	//
-	// 	- 0: SYSTEM, which indicates that the role is a built-in role.
+	// - 0: SYSTEM, which indicates that the role is a built-in role.
 	//
-	// 	- 2: USER_CUSTOM, which indicates that the role is a custom role.
+	// - 2: USER_CUSTOM, which indicates that the role is a custom role.
 	//
 	// example:
 	//

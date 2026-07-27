@@ -146,7 +146,7 @@ type GetNodeResponseBodyData struct {
 	//
 	// example:
 	//
-	// odps_first_dev
+	// odps_source_dev
 	Connection *string `json:"Connection,omitempty" xml:"Connection,omitempty"`
 	// The creation time.
 	//
@@ -186,7 +186,7 @@ type GetNodeResponseBodyData struct {
 	DqcType *int32 `json:"DqcType,omitempty" xml:"DqcType,omitempty"`
 	// The file ID.
 	//
-	// **
+	// \\*\\*
 	//
 	// **Warning*	- The field is deprecated.
 	//
@@ -220,17 +220,17 @@ type GetNodeResponseBodyData struct {
 	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The scheduling type of the node. Valid values:
 	//
-	// 	- NORMAL: The node is an auto triggered node.
+	// - NORMAL: The node is an auto triggered node.
 	//
-	// 	- MANUAL: The node is a manually triggered node. Manually triggered nodes cannot be automatically triggered.
+	// - MANUAL: The node is a manually triggered node. Manually triggered nodes cannot be automatically triggered.
 	//
-	// 	- PAUSE: The node is a paused node.
+	// - PAUSE: The node is a paused node.
 	//
-	// 	- SKIP: The node is a dry-run node. Dry-run nodes are started as scheduled but the system sets the status of the nodes to successful when it starts to run them.
+	// - SKIP: The node is a dry-run node. Dry-run nodes are started as scheduled but the system sets the status of the nodes to successful when it starts to run them.
 	//
 	// example:
 	//
-	// The ID of the baseline.
+	// Sql node
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 	// The ID of the node.
 	//
@@ -296,7 +296,7 @@ type GetNodeResponseBodyData struct {
 	//
 	// example:
 	//
-	// The table and partition filter expression in Data Quality that are associated with the node.
+	// Default resource group
 	ResGroupName *string `json:"ResGroupName,omitempty" xml:"ResGroupName,omitempty"`
 	// The ID of the workspace.
 	//

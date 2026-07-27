@@ -32,7 +32,7 @@ type GetProjectResponseBody struct {
 	//
 	// example:
 	//
-	// 0bc1411515937635973****
+	// 1AFAE64E-D1BE-432B-A9****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
@@ -196,19 +196,19 @@ type GetProjectResponseBodyData struct {
 	//
 	// example:
 	//
-	// abc
+	// test_describe
 	ProjectDescription *string `json:"ProjectDescription,omitempty" xml:"ProjectDescription,omitempty"`
 	// The ID of the workspace.
 	//
 	// example:
 	//
-	// 27
+	// 466230
 	ProjectId *int32 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The name of the workspace.
 	//
 	// example:
 	//
-	// abc
+	// test_project
 	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
 	// The mode of the workspace. Valid values:
 	//
@@ -224,7 +224,7 @@ type GetProjectResponseBodyData struct {
 	//
 	// example:
 	//
-	// abc
+	// test_project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// The ID of the Alibaba Cloud account used by the workspace owner.
 	//
@@ -256,7 +256,7 @@ type GetProjectResponseBodyData struct {
 	//
 	// example:
 	//
-	// rg-acfmzbn7pti3zfa
+	// rg-acfmzbn7****
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The default maximum number of automatic reruns that are allowed after an error occurs.
 	//
@@ -618,13 +618,13 @@ type GetProjectResponseBodyDataTags struct {
 	//
 	// example:
 	//
-	// Env
+	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
 	//
 	// example:
 	//
-	// Test
+	// value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

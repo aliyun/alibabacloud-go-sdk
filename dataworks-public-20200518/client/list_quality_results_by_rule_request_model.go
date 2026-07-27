@@ -28,7 +28,7 @@ type iListQualityResultsByRuleRequest interface {
 type ListQualityResultsByRuleRequest struct {
 	// The end of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
 	//
-	// This parameter is used together with the StartDate parameter. The interval between the time specified by this parameter and the time specified by the StartDate parameter cannot exceed 7 days.
+	// You must configure this parameter together with the StartDate parameter. The time range to query cannot exceed 7 days.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type ListQualityResultsByRuleRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 10. Maximum value: 100.
+	// The number of entries per page. Default value: 10. Maximum value: 20.
 	//
 	// This parameter is required.
 	//
@@ -52,13 +52,13 @@ type ListQualityResultsByRuleRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The DataWorks workspace ID.
+	// The ID of the DataWorks workspace.
 	//
 	// example:
 	//
-	// 12345
+	// 123456
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The name of the compute engine or data source for which data quality is monitored.
+	// The name of the compute engine or data source for which you want to perform data quality monitoring.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type ListQualityResultsByRuleRequest struct {
 	//
 	// autotest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The monitoring rule ID. You can use the ID and information such as a partition filter expression to perform a joint query.
+	// The ID of the monitoring rule. You can use the rule ID and a partition filter to query the monitoring results of the rule.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +76,7 @@ type ListQualityResultsByRuleRequest struct {
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The beginning of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
 	//
-	// This parameter is used together with the EndDate parameter. The interval between the time specified by this parameter and the time specified by the EndDate parameter cannot exceed 7 days.
+	// You must configure this parameter together with the EndDate parameter. The time range to query cannot exceed 7 days.
 	//
 	// This parameter is required.
 	//

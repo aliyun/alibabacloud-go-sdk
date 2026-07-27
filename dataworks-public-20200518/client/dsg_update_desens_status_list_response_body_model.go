@@ -24,26 +24,46 @@ type iDsgUpdateDesensStatusListResponseBody interface {
 }
 
 type DsgUpdateDesensStatusListResponseBody struct {
+	// The processing result.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code. Valid values:
+	//
+	// - If the request is successful, the **ErrorCode*	- field is not returned.
+	//
+	// - If the request fails, the **ErrorCode*	- field is returned. For more information, see the **Error codes*	- section of this topic.
+	//
 	// example:
 	//
 	// 1010040007
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// The specified parameters are invalid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// AFBB799F-8578-51C5-A766-E922EDB8XXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - true: The call was successful.
+	//
+	// - false: The call failed.
+	//
 	// example:
 	//
 	// true

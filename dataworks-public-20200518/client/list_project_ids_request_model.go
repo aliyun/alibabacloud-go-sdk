@@ -22,7 +22,7 @@ type ListProjectIdsRequest struct {
 	//
 	// example:
 	//
-	// 171111
+	// 139699392458****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 

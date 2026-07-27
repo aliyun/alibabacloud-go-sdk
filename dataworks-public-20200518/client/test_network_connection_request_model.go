@@ -46,7 +46,7 @@ type TestNetworkConnectionRequest struct {
 	//
 	// example:
 	//
-	// 10000
+	// 100001
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The identifier of the resource group. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/173913.html) operation to query the identifier of the resource group.
 	//

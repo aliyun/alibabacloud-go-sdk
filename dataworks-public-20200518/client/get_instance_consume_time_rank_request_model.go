@@ -16,7 +16,7 @@ type iGetInstanceConsumeTimeRankRequest interface {
 }
 
 type GetInstanceConsumeTimeRankRequest struct {
-	// The data timestamp, accurate to the day. Specify the time in the ISO 8601 standard in the yyyy-MM-dd\\"T\\"HH:mm:ssZ format. The time must be in UTC.
+	// The data timestamp, accurate to the day. The value must be in the yyyy-MM-dd\\"T\\"HH:mm:ssZ format in UTC.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetInstanceConsumeTimeRankRequest struct {
 	//
 	// 2020-09-21T00:00:00+0800
 	Bizdate *string `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
-	// The DataWorks workspace ID.
+	// The ID of the DataWorks workspace.
 	//
 	// This parameter is required.
 	//

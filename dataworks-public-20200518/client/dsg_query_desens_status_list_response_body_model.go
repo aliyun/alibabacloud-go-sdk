@@ -24,23 +24,36 @@ type iDsgQueryDesensStatusListResponseBody interface {
 }
 
 type DsgQueryDesensStatusListResponseBody struct {
+	// Response data details.
 	Data *DsgQueryDesensStatusListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Error code.
+	//
 	// example:
 	//
 	// 400010
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Error message
+	//
+	// .
+	//
 	// example:
 	//
 	// param error
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// AASFDFSDFG-DFSDF-DFSDFD-SDFSDF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the call was successful.
+	//
 	// example:
 	//
 	// true
@@ -119,15 +132,24 @@ func (s *DsgQueryDesensStatusListResponseBody) Validate() error {
 }
 
 type DsgQueryDesensStatusListResponseBodyData struct {
+	// Data masking rule type.
 	PageData []*DsgQueryDesensStatusListResponseBodyDataPageData `json:"PageData,omitempty" xml:"PageData,omitempty" type:"Repeated"`
+	// Page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of records displayed per page
+	//
+	// .
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 100
@@ -192,22 +214,36 @@ func (s *DsgQueryDesensStatusListResponseBodyData) Validate() error {
 }
 
 type DsgQueryDesensStatusListResponseBodyDataPageData struct {
+	// Switch status
+	//
+	// 1: Enabled
+	//
+	// 0: Disabled
+	//
 	// example:
 	//
 	// 1
 	DesensStatus *int32 `json:"DesensStatus,omitempty" xml:"DesensStatus,omitempty"`
+	// Represents project space name or workspace ID depending on the scenario
+	//
 	// example:
 	//
 	// 1
 	HandleSpace *string `json:"HandleSpace,omitempty" xml:"HandleSpace,omitempty"`
+	// Switch ID
+	//
 	// example:
 	//
 	// 56207
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Workspace unique identifier
+	//
 	// example:
 	//
 	// test_space
 	WorkspaceIdentifier *string `json:"WorkspaceIdentifier,omitempty" xml:"WorkspaceIdentifier,omitempty"`
+	// Workspace name
+	//
 	// example:
 	//
 	// test_space

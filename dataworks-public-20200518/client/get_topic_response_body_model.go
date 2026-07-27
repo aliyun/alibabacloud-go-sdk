@@ -242,7 +242,7 @@ type GetTopicResponseBodyData struct {
 	//
 	// example:
 	//
-	// 1234
+	// 123456
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The event ID.
 	//

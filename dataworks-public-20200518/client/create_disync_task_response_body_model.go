@@ -89,13 +89,13 @@ type CreateDISyncTaskResponseBodyData struct {
 	//
 	// example:
 	//
-	// Invalid path: Business Flow/xxxx/Data Integration
+	// Invalid directory path: workflow/xxxx/data integration.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The creation status of the data synchronization task. Valid values:
 	//
-	// 	- success
+	// - success
 	//
-	// 	- fail
+	// - fail
 	//
 	// example:
 	//

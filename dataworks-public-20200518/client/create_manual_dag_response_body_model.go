@@ -16,13 +16,13 @@ type iCreateManualDagResponseBody interface {
 }
 
 type CreateManualDagResponseBody struct {
-	// The ID of the DAG for the manually triggered workflow. You can call an operation with this parameter as a request parameter to query the details and states of the nodes in the manually triggered workflow.
+	// The instance ID of the DAG generated when the manual workflow runs. You can use this DagId together with the relevant API to query the details and status of the internal node instances of this manual workflow run.
 	//
 	// example:
 	//
 	// 700000123123141
 	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//

@@ -62,7 +62,7 @@ type ListMetaCollectionsRequest struct {
 	//
 	// example:
 	//
-	// test
+	// Keyword
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
 	//
@@ -74,7 +74,7 @@ type ListMetaCollectionsRequest struct {
 	//
 	// example:
 	//
-	// test
+	// Sort field
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	// The number of entries per page. Default value: 10. Maximum value: 100.
 	//

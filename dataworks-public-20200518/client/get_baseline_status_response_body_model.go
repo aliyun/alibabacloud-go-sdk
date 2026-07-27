@@ -415,7 +415,7 @@ type GetBaselineStatusResponseBodyDataBlockInstance struct {
 	//
 	// example:
 	//
-	// Node name
+	// 节点名称
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 	// The ID of the Alibaba Cloud account used by the node owner.
 	//

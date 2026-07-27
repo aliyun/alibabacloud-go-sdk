@@ -22,28 +22,38 @@ type iDsgQueryDesensStatusListRequest interface {
 }
 
 type DsgQueryDesensStatusListRequest struct {
+	// Query keyword
+	//
 	// example:
 	//
 	// my
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// Page number
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Primary scene code
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dataworks_display_desense_code
 	SceneCode *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
+	// Scene ID. Only required when querying project workspace switch data.
+	//
 	// example:
 	//
 	// 124

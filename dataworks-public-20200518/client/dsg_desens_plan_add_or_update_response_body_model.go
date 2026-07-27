@@ -24,7 +24,7 @@ type iDsgDesensPlanAddOrUpdateResponseBody interface {
 }
 
 type DsgDesensPlanAddOrUpdateResponseBody struct {
-	// The execution result of adding or modifying a data masking rule.
+	// Indicates whether the add or update operation was successful.
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type DsgDesensPlanAddOrUpdateResponseBody struct {
 	//
 	// 400
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID. You can locate logs and troubleshoot issues based on the ID.
+	// The request ID. You can use the ID to trace logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// 102400001
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values: true false
+	// Indicates whether the request was successful. A value of `true` indicates that the request was successful. A value of `false` indicates that the request failed.
 	//
 	// example:
 	//

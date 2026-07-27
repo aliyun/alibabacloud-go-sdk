@@ -24,7 +24,7 @@ type DeleteFileRequest struct {
 	//
 	// example:
 	//
-	// 10000001
+	// 10000201
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
 	// The name of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to view the workspace name.
 	//

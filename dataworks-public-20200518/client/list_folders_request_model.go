@@ -22,7 +22,7 @@ type iListFoldersRequest interface {
 }
 
 type ListFoldersRequest struct {
-	// The error code.
+	// The number of the page to return. This parameter is used for pagination.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type ListFoldersRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Indicates whether the request was successful.
+	// The number of entries per page. The default value is 10. The maximum value is 100.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type ListFoldersRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 0000-ABCD-EFG****
+	// The path of the parent folder.
 	//
 	// This parameter is required.
 	//
@@ -46,13 +46,13 @@ type ListFoldersRequest struct {
 	//
 	// Business_process/my_first_business_process/MaxCompute
 	ParentFolderPath *string `json:"ParentFolderPath,omitempty" xml:"ParentFolderPath,omitempty"`
-	// The error message.
+	// The ID of the DataWorks workspace. Log on to the DataWorks console and go to the Workspace Management page to obtain the workspace ID. You must set either this parameter or ProjectIdentifier to specify the DataWorks workspace for this API call.
 	//
 	// example:
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The request ID. You can troubleshoot issues based on the ID.
+	// The name of the DataWorks workspace. Log on to the DataWorks console and go to the Workspace Management page to obtain the workspace name. You must set either this parameter or ProjectId to specify the DataWorks workspace for this API call.
 	//
 	// example:
 	//

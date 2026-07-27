@@ -48,7 +48,7 @@ type UpdateWorkbenchEventResultRequest struct {
 	//
 	// example:
 	//
-	// 03400b03-b721-4c34-8727-2d6884077091
+	// 03400b03-b721-4c34-8727-2****1
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
 }
 

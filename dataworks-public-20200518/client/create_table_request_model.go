@@ -68,7 +68,7 @@ type CreateTableRequest struct {
 	//
 	// example:
 	//
-	// reserved
+	// Reserved field
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The list of fields. A maximum of 1,000 fields are supported.
 	//
@@ -78,7 +78,7 @@ type CreateTableRequest struct {
 	//
 	// example:
 	//
-	// comment
+	// Remarks
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The endpoint of MaxCompute.
 	//
@@ -88,9 +88,9 @@ type CreateTableRequest struct {
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
 	// The environment type of the DataWorks workspace. Valid values:
 	//
-	// 	- 0: development environment
+	// - 0: development environment
 	//
-	// 	- 1: production environment
+	// - 1: production environment
 	//
 	// example:
 	//
@@ -98,13 +98,13 @@ type CreateTableRequest struct {
 	EnvType *int32 `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// The storage type of the external table. Valid values:
 	//
-	// 	- 0: Object Storage Service (OSS)
+	// - 0: Object Storage Service (OSS)
 	//
-	// 	- 1: Tablestore
+	// - 1: Tablestore
 	//
-	// 	- 2: Volume
+	// - 2: Volume
 	//
-	// 	- 3: MySQL
+	// - 3: MySQL
 	//
 	// example:
 	//
@@ -118,9 +118,9 @@ type CreateTableRequest struct {
 	HasPart *int32 `json:"HasPart,omitempty" xml:"HasPart,omitempty"`
 	// Specifies whether to create a view or table. Valid values:
 	//
-	// 	- 0: Create a table.
+	// - 0: Create a table.
 	//
-	// 	- 1: Create a view.
+	// - 1: Create a view.
 	//
 	// example:
 	//
@@ -178,11 +178,11 @@ type CreateTableRequest struct {
 	Themes []*CreateTableRequestThemes `json:"Themes,omitempty" xml:"Themes,omitempty" type:"Repeated"`
 	// Specifies whether the table or workspace is visible. Valid values:
 	//
-	// 	- 0: Both the table and workspace are invisible.
+	// - 0: Both the table and workspace are invisible.
 	//
-	// 	- 1: Both the table and workspace are visible.
+	// - 1: Both the table and workspace are visible.
 	//
-	// 	- 2: Only the workspace is visible.
+	// - 2: Only the workspace is visible.
 	//
 	// example:
 	//
@@ -413,7 +413,7 @@ type CreateTableRequestColumns struct {
 	//
 	// example:
 	//
-	// columnName in chinese
+	// 中文名
 	ColumnNameCn *string `json:"ColumnNameCn,omitempty" xml:"ColumnNameCn,omitempty"`
 	// The data type of the field. For information about supported data types, see [Data type editions](https://help.aliyun.com/document_detail/27821.html) in MaxCompute documentation.
 	//
@@ -427,7 +427,7 @@ type CreateTableRequestColumns struct {
 	//
 	// example:
 	//
-	// comment
+	// 备注
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// Specifies whether the field is a partition field.
 	//

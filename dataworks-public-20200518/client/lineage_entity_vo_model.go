@@ -26,37 +26,43 @@ type iLineageEntityVO interface {
 }
 
 type LineageEntityVO struct {
+	// A map of additional key-value attributes for the entity.
+	//
 	// example:
 	//
 	// attribute map
 	Attributes map[string]*string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	// Detail url of entity
+	// A URL for more details about the entity.
 	//
 	// example:
 	//
 	// http://domain.test.url/entity
 	DetailUrl *string `json:"DetailUrl,omitempty" xml:"DetailUrl,omitempty"`
+	// The type of the entity.
+	//
 	// example:
 	//
 	// maxcompute-table
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// Name of entity
+	// The human-readable name of the entity.
 	//
 	// example:
 	//
 	// tableName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The owner of the entity.
+	//
 	// example:
 	//
 	// owner
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// Parent name of entity
+	// The name of the entity\\"s parent container, such as a database.
 	//
 	// example:
 	//
 	// dbName
 	ParentName *string `json:"ParentName,omitempty" xml:"ParentName,omitempty"`
-	// Unique identifier of entity
+	// The unique, fully qualified name of the entity.
 	//
 	// example:
 	//

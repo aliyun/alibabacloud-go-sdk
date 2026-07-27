@@ -24,7 +24,7 @@ type CreateTableLevelRequest struct {
 	//
 	// example:
 	//
-	// The HTTP status code returned.
+	// Level description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The type of the table level. Valid values: 1 and 2. The value 1 indicates the logical level. The value 2 indicates the physical level.
 	//
@@ -40,7 +40,7 @@ type CreateTableLevelRequest struct {
 	//
 	// example:
 	//
-	// The description of the table level.
+	// Level 1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The DataWorks workspace ID.
 	//

@@ -24,21 +24,21 @@ type iGetMetaTablePartitionResponseBody interface {
 }
 
 type GetMetaTablePartitionResponseBody struct {
-	// The returned result.
+	// The returned data.
 	Data *GetMetaTablePartitionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned.
+	// The error code.
 	//
 	// example:
 	//
 	// Invalid.Tenant.ConnectionNotExists
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// The connection does not exist.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
@@ -210,31 +210,31 @@ func (s *GetMetaTablePartitionResponseBodyData) Validate() error {
 }
 
 type GetMetaTablePartitionResponseBodyDataDataEntityList struct {
-	// The comment.
+	// The remarks.
 	//
 	// example:
 	//
-	// test
+	// Remarks
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The time when the partition was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	// The creation time. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1590032868000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The size of the partition. Unit: bytes.
+	// The partition size. Unit: bytes.
 	//
 	// example:
 	//
 	// 19
 	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	// The time when the partition was modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	// The modification time. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1590032868000
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The GUID of the partition.
+	// The unique identifier of the partition.
 	//
 	// example:
 	//
@@ -252,7 +252,7 @@ type GetMetaTablePartitionResponseBodyDataDataEntityList struct {
 	//
 	// pt=20170614
 	PartitionName *string `json:"PartitionName,omitempty" xml:"PartitionName,omitempty"`
-	// The path of the partition.
+	// The directory of the partition.
 	//
 	// example:
 	//
@@ -264,13 +264,13 @@ type GetMetaTablePartitionResponseBodyDataDataEntityList struct {
 	//
 	// abc
 	PartitionType *string `json:"PartitionType,omitempty" xml:"PartitionType,omitempty"`
-	// The number of entries in the partition.
+	// The record count.
 	//
 	// example:
 	//
 	// 233
 	RecordCount *int64 `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
-	// The unique identifier of the metatable.
+	// The unique identifier of the table.
 	//
 	// example:
 	//

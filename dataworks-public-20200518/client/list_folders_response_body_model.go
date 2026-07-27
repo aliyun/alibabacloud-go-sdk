@@ -24,33 +24,33 @@ type iListFoldersResponseBody interface {
 }
 
 type ListFoldersResponseBody struct {
-	// The path of the folder.
+	// A list of folders that meet the specified criteria.
 	Data *ListFoldersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The total number of entries returned.
+	// The error code.
 	//
 	// example:
 	//
 	// Invalid.Tenant.ConnectionNotExists
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The page number.
+	// The error message.
 	//
 	// example:
 	//
 	// The connection does not exist.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The information about the folders.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The number of entries per page.
+	// The ID of the request. Use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 0000-ABCD-****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of folders.
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//
@@ -130,20 +130,21 @@ func (s *ListFoldersResponseBody) Validate() error {
 }
 
 type ListFoldersResponseBodyData struct {
+	// A list of folders.
 	Folders []*ListFoldersResponseBodyDataFolders `json:"Folders,omitempty" xml:"Folders,omitempty" type:"Repeated"`
-	// The folder ID.
+	// The page number of the returned page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// http://100.67.165.184/business/api/folders/list
+	// The number of entries on the returned page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// ListFolders
+	// The total number of entries that meet the filter criteria.
 	//
 	// example:
 	//
@@ -209,10 +210,14 @@ func (s *ListFoldersResponseBodyData) Validate() error {
 }
 
 type ListFoldersResponseBodyDataFolders struct {
+	// The ID of the folder.
+	//
 	// example:
 	//
 	// 2735c2****
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	// The path of the folder.
+	//
 	// example:
 	//
 	// Business_process/my_first_business_process/MaxCompute/ods_layer

@@ -134,7 +134,7 @@ type GetMetaTableIntroWikiResponseBodyData struct {
 	//
 	// example:
 	//
-	// \\# Business requirements\\n\\n\\&lt;a name=\\&quot;xiw5n\\&quot;
+	// # Business requirements\\n\\n&lt;a name=&quot;xiw5n&quot;
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The time when the metatable was created.
 	//

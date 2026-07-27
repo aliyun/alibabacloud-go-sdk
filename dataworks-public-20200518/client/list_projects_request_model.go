@@ -36,7 +36,7 @@ type ListProjectsRequest struct {
 	//
 	// example:
 	//
-	// rg-acfmzbn7pti3zfa
+	// rg-acfmzbn7pt****
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The tags to add to the workspace.
 	Tags []*ListProjectsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -104,13 +104,13 @@ type ListProjectsRequestTags struct {
 	//
 	// example:
 	//
-	// Env
+	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of tag N to add to the workspace.
 	//
 	// example:
 	//
-	// Test
+	// value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

@@ -18,7 +18,7 @@ type iDeleteQualityRuleRequest interface {
 }
 
 type DeleteQualityRuleRequest struct {
-	// The DataWorks workspace ID. You can log on to the DataWorks console and go to the Workspace page to query the ID.
+	// The ID of the DataWorks workspace. You can log on to the DataWorks console and go to the Workspace Management page to obtain the workspace ID.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type DeleteQualityRuleRequest struct {
 	//
 	// autotest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The monitoring rule ID.
+	// The ID of the data quality rule.
 	//
 	// This parameter is required.
 	//

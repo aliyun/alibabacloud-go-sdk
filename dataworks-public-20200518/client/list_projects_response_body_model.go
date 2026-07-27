@@ -22,7 +22,7 @@ type ListProjectsResponseBody struct {
 	//
 	// example:
 	//
-	// 20658801***
+	// 20658801****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -80,7 +80,7 @@ type ListProjectsResponseBodyPageResult struct {
 	//
 	// example:
 	//
-	// 123
+	// 68
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -172,13 +172,13 @@ type ListProjectsResponseBodyPageResultProjectList struct {
 	//
 	// example:
 	//
-	// 1212
+	// 466230
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The name of the workspace.
 	//
 	// example:
 	//
-	// test
+	// test_project
 	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
 	// The display name of the workspace.
 	//
@@ -190,7 +190,7 @@ type ListProjectsResponseBodyPageResultProjectList struct {
 	//
 	// example:
 	//
-	// 122222
+	// 13969939245****
 	ProjectOwnerBaseId *string `json:"ProjectOwnerBaseId,omitempty" xml:"ProjectOwnerBaseId,omitempty"`
 	// The status of the workspace. Valid values:
 	//
@@ -248,7 +248,7 @@ type ListProjectsResponseBodyPageResultProjectList struct {
 	//
 	// example:
 	//
-	// rg-acfmzbn7pti3zfa
+	// rg-acfmzbn7****
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// Indicates whether the MaxCompute tables in the workspace are visible to the users within a tenant. Valid values:
 	//
@@ -417,13 +417,13 @@ type ListProjectsResponseBodyPageResultProjectListTags struct {
 	//
 	// example:
 	//
-	// Env
+	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of tag N added to the workspace.
 	//
 	// example:
 	//
-	// Test
+	// value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

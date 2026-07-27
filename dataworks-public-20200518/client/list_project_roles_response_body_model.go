@@ -82,7 +82,7 @@ type ListProjectRolesResponseBodyProjectRoleList struct {
 	//
 	// example:
 	//
-	// visitor
+	// Visitor
 	ProjectRoleName *string `json:"ProjectRoleName,omitempty" xml:"ProjectRoleName,omitempty"`
 	// The type of the role in the DataWorks workspace.
 	//

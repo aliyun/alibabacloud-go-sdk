@@ -84,7 +84,7 @@ type GetDataServiceGroupResponseBodyGroup struct {
 	//
 	// example:
 	//
-	// Test
+	// Workflow description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The business process ID.
 	//
@@ -96,7 +96,7 @@ type GetDataServiceGroupResponseBodyGroup struct {
 	//
 	// example:
 	//
-	// Test
+	// Workflow name
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The time when the business process was last modified.
 	//

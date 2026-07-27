@@ -24,7 +24,7 @@ type iListQualityResultsByEntityResponseBody interface {
 }
 
 type ListQualityResultsByEntityResponseBody struct {
-	// The data structure of the check results.
+	// The data object that contains the quality check results.
 	Data *ListQualityResultsByEntityResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
@@ -44,7 +44,7 @@ type ListQualityResultsByEntityResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -142,9 +142,9 @@ type ListQualityResultsByEntityResponseBodyData struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The returned check results.
+	// The monitoring rule check results.
 	RuleChecks []*ListQualityResultsByEntityResponseBodyDataRuleChecks `json:"RuleChecks,omitempty" xml:"RuleChecks,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -210,59 +210,59 @@ func (s *ListQualityResultsByEntityResponseBodyData) Validate() error {
 }
 
 type ListQualityResultsByEntityResponseBodyDataRuleChecks struct {
-	// The monitored partition in the data source table.
+	// The expression that specifies the data partition that was checked.
 	//
 	// example:
 	//
 	// ds=20200912
 	ActualExpression *string `json:"ActualExpression,omitempty" xml:"ActualExpression,omitempty"`
-	// The time when the monitoring started.
+	// The start time of the check. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
 	// 1600704000000
 	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	// The data timestamp. In most cases, if the monitored business entity is offline data, the value is one day before the monitoring is performed.
+	// The business date. If the monitored data is offline, the business date is typically the day before the check is performed.
 	//
 	// example:
 	//
 	// 1600704000000
 	BizDate *int64 `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
-	// The strength of the monitoring rule. The strength of a monitoring rule indicates the importance of the rule. Valid values:
+	// The strength of the monitoring rule. Valid values:
 	//
-	// 	- 1: the monitoring rule is a strong rule.
+	// - 1: Strong Rule. If a Strong Rule check generates a critical alert, the associated Scheduling Task is blocked.
 	//
-	// 	- 0: the monitoring rule is a weak rule. You can specify whether a monitoring rule is a strong rule based on your business requirements. If a monitoring rule is a strong rule and the critical threshold is exceeded, a critical alert is reported and tasks that are associated with the rule are blocked from running.
+	// - 0: Weak Rule.
 	//
 	// example:
 	//
 	// 0
 	BlockType *int32 `json:"BlockType,omitempty" xml:"BlockType,omitempty"`
-	// The check result. The value of this parameter is the same as the value of the CheckResultStatus parameter. Valid values:
+	// The check result. This parameter usually has the same value as `CheckResultStatus`. Valid values:
 	//
-	// 	- 0: indicates that the data source table is normal.
+	// - 0: Normal
 	//
-	// 	- 1: indicates that a warning alert is reported.
+	// - 1: Warning
 	//
-	// 	- 2: indicates that a critical alert is reported.
+	// - 2: Critical
 	//
 	// example:
 	//
 	// 0
 	CheckResult *int32 `json:"CheckResult,omitempty" xml:"CheckResult,omitempty"`
-	// The check result of the monitoring rule. Valid values:
+	// The status of the check result. This parameter corresponds to the status displayed in the UI. Valid values:
 	//
-	// 	- 0: indicates that the data source table is normal.
+	// - 0: Normal
 	//
-	// 	- 1: indicates that a warning alert is reported.
+	// - 1: Warning
 	//
-	// 	- 2: indicates that a critical alert is reported.
+	// - 2: Critical
 	//
 	// example:
 	//
 	// 0
 	CheckResultStatus *int32 `json:"CheckResultStatus,omitempty" xml:"CheckResultStatus,omitempty"`
-	// The checker ID.
+	// The ID of the checker.
 	//
 	// example:
 	//
@@ -274,13 +274,13 @@ type ListQualityResultsByEntityResponseBodyDataRuleChecks struct {
 	//
 	// fulx
 	CheckerName *string `json:"CheckerName,omitempty" xml:"CheckerName,omitempty"`
-	// The check type. Valid values:
+	// The type of the checker. Valid values:
 	//
-	// 	- 0: indicates that the monitoring is performed based on a fixed value.
+	// - 0: Fixed Value
 	//
-	// 	- 1: indicates that the monitoring is performed based on a non-fixed value.
+	// - 1: Fluctuation
 	//
-	// 	- 2: indicates that the monitoring is performed based on a dynamic threshold.
+	// - 2: Dynamic Threshold
 	//
 	// example:
 	//
@@ -292,29 +292,29 @@ type ListQualityResultsByEntityResponseBodyDataRuleChecks struct {
 	//
 	// The description of the rule.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The threshold for a critical alert. The threshold indicates the deviation of the check result from the expected value. You can specify a value for the threshold based on your business requirements. If a monitoring rule is a strong rule and the critical threshold is exceeded, a critical alert is reported and tasks that are associated with the rule are blocked from running.
+	// The acceptable deviation from the expected value that triggers a critical alert. This threshold is customizable. If a critical alert is triggered for a Strong Rule, the associated Scheduling Task is blocked.
 	//
 	// example:
 	//
 	// 0.5
 	CriticalThreshold *float32 `json:"CriticalThreshold,omitempty" xml:"CriticalThreshold,omitempty"`
-	// The scheduling frequency. In most cases, the value of this parameter is YMD. This value indicates year, month, and day.
+	// The scheduling cycle. A common value is YMD, which represents year, month, and day.
 	//
 	// example:
 	//
 	// YMD
 	DateType *string `json:"DateType,omitempty" xml:"DateType,omitempty"`
-	// Indicates whether the monitoring is discrete monitoring. Valid values:
+	// Specifies whether the check is a discrete check. Valid values:
 	//
-	// 	- true
+	// - true: The check is a discrete check.
 	//
-	// 	- false
+	// - false: The check is not a discrete check.
 	//
 	// example:
 	//
 	// true
 	DiscreteCheck *bool `json:"DiscreteCheck,omitempty" xml:"DiscreteCheck,omitempty"`
-	// The deadline for querying the check result.
+	// The end time of the check. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
@@ -332,45 +332,45 @@ type ListQualityResultsByEntityResponseBodyDataRuleChecks struct {
 	//
 	// 200
 	ExpectValue *float32 `json:"ExpectValue,omitempty" xml:"ExpectValue,omitempty"`
-	// The node ID.
+	// The Node ID of the Scheduling Task.
 	//
 	// example:
 	//
 	// 1112323123
 	ExternalId *string `json:"ExternalId,omitempty" xml:"ExternalId,omitempty"`
-	// The type of the scheduling system. Only CWF scheduling systems are supported.
+	// The type of the scheduling system. Currently, only CWF is supported.
 	//
 	// example:
 	//
 	// CWF2
 	ExternalType *string `json:"ExternalType,omitempty" xml:"ExternalType,omitempty"`
-	// Indicates whether the monitoring is performed based on a fixed value. Valid values:
+	// Specifies whether the check is based on a fixed value. Valid values:
 	//
-	// 	- true
+	// - true: The check is based on a fixed value.
 	//
-	// 	- false
+	// - false: The check is not based on a fixed value.
 	//
 	// example:
 	//
 	// false
 	FixedCheck *bool `json:"FixedCheck,omitempty" xml:"FixedCheck,omitempty"`
-	// The primary key ID.
+	// The unique ID of the check result.
 	//
 	// example:
 	//
 	// 121212121
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Indicates whether the check result is the same as the predicted result. Valid values:
+	// Specifies whether the result is a predicted value. Valid values:
 	//
-	// 	- true
+	// - true: The result is a predicted value.
 	//
-	// 	- false
+	// - false: The result is not a predicted value.
 	//
 	// example:
 	//
 	// true
 	IsPrediction *bool `json:"IsPrediction,omitempty" xml:"IsPrediction,omitempty"`
-	// The lower limit of the predicted result. The value of this parameter is automatically generated based on the threshold that you specify.
+	// The predicted lower limit. This value is automatically generated after you set a threshold.
 	//
 	// example:
 	//
@@ -382,7 +382,7 @@ type ListQualityResultsByEntityResponseBodyDataRuleChecks struct {
 	//
 	// ds=$[yyyymmdd]
 	MatchExpression *string `json:"MatchExpression,omitempty" xml:"MatchExpression,omitempty"`
-	// The method used to collect sample data, such as such as avg, count, sum, min, max, count_distinct, user_defined, table_count, table_size, table_dt_load_count, table_dt_refuseload_count, null_value, null_value/table_count, (table_count-count_distinct)/table_count, or table_count-count_distinct.
+	// The method for collecting sample data. Valid values include `avg`, `count`, `sum`, `min`, `max`, `count_distinct`, `user_defined`, `table_count`, `table_size`, `table_dt_load_count`, `table_dt_refuseload_count`, `null_value`, `null_value/table_count`, `(table_count-count_distinct)/table_count`, and `table_count-count_distinct`.
 	//
 	// example:
 	//
@@ -394,13 +394,13 @@ type ListQualityResultsByEntityResponseBodyDataRuleChecks struct {
 	//
 	// >
 	Op *string `json:"Op,omitempty" xml:"Op,omitempty"`
-	// The name of the compute engine or data source for which data quality is monitored.
+	// The name of the monitored compute engine or Data Source.
 	//
 	// example:
 	//
 	// autotest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The field whose data quality is checked based on the monitoring rule. This field is a column in the data source table that is monitored.
+	// The name of the monitored column in the Data Source table.
 	//
 	// example:
 	//
@@ -408,13 +408,13 @@ type ListQualityResultsByEntityResponseBodyDataRuleChecks struct {
 	Property *string `json:"Property,omitempty" xml:"Property,omitempty"`
 	// The historical sample values.
 	ReferenceValue []*ListQualityResultsByEntityResponseBodyDataRuleChecksReferenceValue `json:"ReferenceValue,omitempty" xml:"ReferenceValue,omitempty" type:"Repeated"`
-	// The string of the check result.
+	// The check result, returned as a string.
 	//
 	// example:
 	//
 	// test
 	ResultString *string `json:"ResultString,omitempty" xml:"ResultString,omitempty"`
-	// The ID of the monitoring rule.
+	// The monitoring rule ID.
 	//
 	// example:
 	//
@@ -426,7 +426,7 @@ type ListQualityResultsByEntityResponseBodyDataRuleChecks struct {
 	//
 	// The name of the rule.
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The current sample value.
+	// The current sample values.
 	SampleValue []*ListQualityResultsByEntityResponseBodyDataRuleChecksSampleValue `json:"SampleValue,omitempty" xml:"SampleValue,omitempty" type:"Repeated"`
 	// The name of the table that is monitored.
 	//
@@ -434,25 +434,25 @@ type ListQualityResultsByEntityResponseBodyDataRuleChecks struct {
 	//
 	// dual
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The monitoring task ID.
+	// The ID of the check task.
 	//
 	// example:
 	//
 	// 16008552981681a0d6****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The ID of the monitoring template.
+	// The ID of the rule template.
 	//
 	// example:
 	//
 	// 5
 	TemplateId *int32 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The name of the monitoring template.
+	// The name of the rule template.
 	//
 	// example:
 	//
 	// Expected value verification
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The time that was taken to run the monitoring task. Unit: seconds.
+	// The time taken to run the check, in seconds.
 	//
 	// example:
 	//
@@ -464,13 +464,13 @@ type ListQualityResultsByEntityResponseBodyDataRuleChecks struct {
 	//
 	// abs
 	Trend *string `json:"Trend,omitempty" xml:"Trend,omitempty"`
-	// The upper limit of the predicted result. The value of this parameter is automatically generated based on the threshold that you specify.
+	// The predicted upper limit. This value is automatically generated after you set a threshold.
 	//
 	// example:
 	//
 	// 25555
 	UpperValue *float32 `json:"UpperValue,omitempty" xml:"UpperValue,omitempty"`
-	// The threshold for a warning alert. The threshold indicates the deviation of the check result from the expected value. You can customize this threshold based on your business requirements.
+	// The warning threshold. This value indicates the acceptable deviation from the expected value. You can customize this threshold based on your business requirements.
 	//
 	// example:
 	//
@@ -884,31 +884,31 @@ func (s *ListQualityResultsByEntityResponseBodyDataRuleChecks) Validate() error 
 }
 
 type ListQualityResultsByEntityResponseBodyDataRuleChecksReferenceValue struct {
-	// The data timestamp. In most cases, if the monitored business entity is offline data, the value is one day before the monitoring is performed.
+	// The business date. If the monitored data is offline, the business date is typically the day before the check is performed.
 	//
 	// example:
 	//
 	// 2020-12-03
 	BizDate *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
-	// The values of the sample field that are grouped by using the GROUP BY clause. For example, the values of the Gender field are grouped by using the GROUP BY clause. In this case, the values of the DiscreteProperty parameter are Male, Female, and null.
+	// The value of the sample field when a `group by` clause is used. For example, if you group by the gender field, the values for `DiscreteProperty` can be male, female, or null.
 	//
 	// example:
 	//
 	// 0
 	DiscreteProperty *string `json:"DiscreteProperty,omitempty" xml:"DiscreteProperty,omitempty"`
-	// The check result.
+	// The result of a single check.
 	//
 	// example:
 	//
 	// 0
 	SingleCheckResult *int32 `json:"SingleCheckResult,omitempty" xml:"SingleCheckResult,omitempty"`
-	// The threshold.
+	// The threshold that was applied to this historical data point.
 	//
 	// example:
 	//
 	// 0.5
 	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// The check value.
+	// The historical check value.
 	//
 	// example:
 	//
@@ -974,13 +974,13 @@ func (s *ListQualityResultsByEntityResponseBodyDataRuleChecksReferenceValue) Val
 }
 
 type ListQualityResultsByEntityResponseBodyDataRuleChecksSampleValue struct {
-	// The data timestamp. In most cases, if the monitored business entity is offline data, the value is one day before the monitoring is performed.
+	// The business date. If the monitored data is offline, the business date is typically the day before the check is performed.
 	//
 	// example:
 	//
 	// 2020-12-03
 	BizDate *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
-	// The values of the sample field that are grouped by using the GROUP BY clause. For example, the values of the Gender field are grouped by using the GROUP BY clause. In this case, the values of the DiscreteProperty parameter are Male, Female, and null.
+	// The value of the sample field when a `group by` clause is used. For example, if you group by the gender field, the values for `DiscreteProperty` can be male, female, or null.
 	//
 	// example:
 	//

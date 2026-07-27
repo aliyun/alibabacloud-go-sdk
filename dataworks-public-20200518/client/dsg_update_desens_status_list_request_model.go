@@ -16,12 +16,20 @@ type iDsgUpdateDesensStatusListRequest interface {
 }
 
 type DsgUpdateDesensStatusListRequest struct {
+	// The switch status. Valid values:
+	//
+	// 1: enabled
+	//
+	// 0: disabled
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	DesensStatus *int32 `json:"DesensStatus,omitempty" xml:"DesensStatus,omitempty"`
+	// The list of switch IDs.
+	//
 	// This parameter is required.
 	Ids []*int32 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
 }

@@ -46,11 +46,11 @@ type CreateDIAlarmRuleRequest struct {
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// The metric type in the alert rule. Valid values:
 	//
-	// 	- Heartbeat
+	// - Heartbeat
 	//
-	// 	- FailoverCount
+	// - FailoverCount
 	//
-	// 	- Delay
+	// - Delay
 	//
 	// This parameter is required.
 	//
@@ -227,9 +227,9 @@ type CreateDIAlarmRuleRequestNotificationSettingsNotificationChannels struct {
 	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
 	// The severity level. Valid values:
 	//
-	// 	- Warning
+	// - Warning
 	//
-	// 	- Critical
+	// - Critical
 	//
 	// example:
 	//
@@ -270,9 +270,9 @@ func (s *CreateDIAlarmRuleRequestNotificationSettingsNotificationChannels) Valid
 type CreateDIAlarmRuleRequestNotificationSettingsNotificationReceivers struct {
 	// The recipient type. Valid values: AliyunUid and DingToken.
 	//
-	// 	- If the alert notification method is Mail, Phone, or Sms, set this parameter to **AliyunUid**, which specifies the Alibaba Cloud account ID.
+	// - If the alert notification method is Mail, Phone, or Sms, set this parameter to **AliyunUid**, which specifies the Alibaba Cloud account ID.
 	//
-	// 	- If the alert notification method is Ding, set this parameter to **DingToken**, which indicates the DingTalk chatbot token.
+	// - If the alert notification method is Ding, set this parameter to **DingToken**, which indicates the DingTalk chatbot token.
 	//
 	// example:
 	//
@@ -321,9 +321,9 @@ type CreateDIAlarmRuleRequestTriggerConditions struct {
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The severity level. Valid values:
 	//
-	// 	- Warning
+	// - Warning
 	//
-	// 	- Critical
+	// - Critical
 	//
 	// example:
 	//
@@ -331,11 +331,11 @@ type CreateDIAlarmRuleRequestTriggerConditions struct {
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
 	// The alert threshold.
 	//
-	// 	- If the alert rule is for task status, you do not need to specify a threshold.
+	// - If the alert rule is for task status, you do not need to specify a threshold.
 	//
-	// 	- If the alert rule is for failovers, specify the number of failovers.
+	// - If the alert rule is for failovers, specify the number of failovers.
 	//
-	// 	- If the alert rule is for latency, the threshold is the latency duration, in seconds.
+	// - If the alert rule is for latency, the threshold is the latency duration, in seconds.
 	//
 	// example:
 	//

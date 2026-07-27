@@ -24,7 +24,7 @@ type iDsgUserGroupQueryListRequest interface {
 }
 
 type DsgUserGroupQueryListRequest struct {
-	// The keyword of the user group name. A fuzzy match is performed based on the keyword to search for the user group.
+	// A keyword for the user group name. The service performs a fuzzy search to find matching user groups.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type DsgUserGroupQueryListRequest struct {
 	//
 	// user1
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The page number.
+	// The number of the page to return.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type DsgUserGroupQueryListRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the compute engine. If you want to query the information about a MaxCompute user group, you need to configure this parameter.
+	// The name of the MaxCompute project to query for user groups.
 	//
 	// example:
 	//

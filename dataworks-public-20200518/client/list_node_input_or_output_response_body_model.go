@@ -144,7 +144,7 @@ type ListNodeInputOrOutputResponseBodyData struct {
 	//
 	// example:
 	//
-	// 1234667
+	// 12314567
 	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// This parameter does not take effect. You cannot obtain the parameter settings.
 	//

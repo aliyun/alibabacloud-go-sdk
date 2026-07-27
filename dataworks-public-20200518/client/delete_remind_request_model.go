@@ -14,7 +14,7 @@ type iDeleteRemindRequest interface {
 }
 
 type DeleteRemindRequest struct {
-	// The ID of the custom alert rule.
+	// The ID of the custom monitoring alert rule.
 	//
 	// This parameter is required.
 	//

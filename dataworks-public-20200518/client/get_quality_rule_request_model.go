@@ -18,13 +18,13 @@ type iGetQualityRuleRequest interface {
 }
 
 type GetQualityRuleRequest struct {
-	// The DataWorks workspace ID.
+	// The ID of the DataWorks workspace.
 	//
 	// example:
 	//
 	// 12345
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The name of the compute engine or data source.
+	// The name of the engine or data source.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type GetQualityRuleRequest struct {
 	//
 	// autotest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The monitoring rule ID. You can call the [ListQualityRules](https://help.aliyun.com/document_detail/173995.html) operation to query the ID.
+	// The ID of the quality rule. You can call the [ListQualityRules](https://help.aliyun.com/document_detail/173995.html) operation to obtain the ID.
 	//
 	// This parameter is required.
 	//

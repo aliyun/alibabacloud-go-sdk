@@ -25,12 +25,6 @@ type ListTablesRequest struct {
 	// example:
 	//
 	// odps
-	//
-	// emr
-	//
-	// mysql
-	//
-	// holo
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
 	// Pagination information, which specifies the starting point of this read.
 	//

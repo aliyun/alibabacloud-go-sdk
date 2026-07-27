@@ -34,7 +34,7 @@ type CreateTableThemeRequest struct {
 	//
 	// example:
 	//
-	// test
+	// Topic name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the level of the parent table theme.
 	//

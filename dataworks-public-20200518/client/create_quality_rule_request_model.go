@@ -52,11 +52,11 @@ type iCreateQualityRuleRequest interface {
 }
 
 type CreateQualityRuleRequest struct {
-	// The strength type of the monitoring rule. Valid values:
+	// The strength of the rule. Valid values:
 	//
-	// 	- 0: The monitoring rule is a weak rule.
+	// - 0: weak rule
 	//
-	// 	- 1: The monitoring rule is a strong rule.
+	// - 1: strong rule
 	//
 	// This parameter is required.
 	//
@@ -64,19 +64,39 @@ type CreateQualityRuleRequest struct {
 	//
 	// 0
 	BlockType *int32 `json:"BlockType,omitempty" xml:"BlockType,omitempty"`
-	// The checker ID.
+	// The ID of the checker. Valid values:
+	//
+	// - 2: 7-day average fluctuation
+	//
+	// - 3: 30-day average fluctuation
+	//
+	// - 4: day-over-day comparison
+	//
+	// - 5: week-over-week comparison
+	//
+	// - 6: month-over-month comparison
+	//
+	// - 7: 7-day variance fluctuation
+	//
+	// - 8: 30-day variance fluctuation
+	//
+	// - 9: comparison with a fixed value
+	//
+	// - 10: fluctuation detection over 1, 7, and 30 days
+	//
+	// - 11: comparison with the previous cycle
 	//
 	// example:
 	//
 	// 9
 	Checker *int32 `json:"Checker,omitempty" xml:"Checker,omitempty"`
-	// The description of the rule.
+	// The comments of the rule.
 	//
 	// example:
 	//
 	// Verification
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The threshold for a critical alert. The threshold indicates the deviation of the monitoring result from the expected value. You can customize this threshold based on your business requirements. If a strong rule is used and a critical alert is triggered, nodes are blocked.
+	// The critical threshold. It indicates the deviation of the check result from the expected value. You can customize this threshold based on your business requirements. If a strong rule is used and a critical alert is triggered, the scheduling task is blocked.
 	//
 	// example:
 	//
@@ -96,21 +116,21 @@ type CreateQualityRuleRequest struct {
 	//
 	// 0
 	ExpectValue *string `json:"ExpectValue,omitempty" xml:"ExpectValue,omitempty"`
-	// The method used to collect sample data. If you want to use a custom SQL statement as a sampling method, set this parameter to user_defined.
+	// The check method. If you use a custom SQL statement, set this parameter to `user_defined`.
 	//
 	// example:
 	//
 	// count/table_count
 	MethodName *string `json:"MethodName,omitempty" xml:"MethodName,omitempty"`
-	// The comparison operator, such as >, >=, =, ≠, <, or <=.
+	// The comparison operator. Examples: `>`, `>=`, `=`, `<>`, `<`, and `<=`.
 	//
-	// > If you set the Checker parameter to 9, you must configure the Operator parameter.
+	// > If you set the Checker parameter to 9, you must specify the Operator parameter.
 	//
 	// example:
 	//
 	// >
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// Specifies whether the monitoring rule is a dynamic threshold rule. Valid values: 0 and 2. The value 0 indicates that the monitoring rule is not a dynamic threshold rule. The value 2 indicates that the monitoring rule is a dynamic threshold rule.
+	// Specifies whether to use a dynamic threshold. Valid values:
 	//
 	// This parameter is required.
 	//
@@ -118,7 +138,7 @@ type CreateQualityRuleRequest struct {
 	//
 	// 0
 	PredictType *int32 `json:"PredictType,omitempty" xml:"PredictType,omitempty"`
-	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the workspace ID.
 	//
 	// example:
 	//
@@ -132,19 +152,19 @@ type CreateQualityRuleRequest struct {
 	//
 	// autotest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The fields that you want to monitor. If you want to monitor all fields in a table and check the table rows, set this parameter to table_count. If you want to monitor all fields in a table and check the table size, set this parameter to table_size.
+	// The field that is monitored by the rule. To perform a table-level check, set this parameter to `table_count` for the number of rows or `table_size` for the table size.
 	//
 	// example:
 	//
 	// table_id
 	Property *string `json:"Property,omitempty" xml:"Property,omitempty"`
-	// The data type of the fields that you want to monitor. If you want to monitor all fields in a table, set this parameter to table. If you want to monitor only a specific field, set this parameter to bigint.
+	// The data type of the field. For a table-level check, set this parameter to `table`. For a field-level check, set this parameter to a specific data type, such as `bigint`.
 	//
 	// example:
 	//
 	// bigint
 	PropertyType *string `json:"PropertyType,omitempty" xml:"PropertyType,omitempty"`
-	// The name of the monitoring rule.
+	// The name of the rule.
 	//
 	// This parameter is required.
 	//
@@ -152,13 +172,13 @@ type CreateQualityRuleRequest struct {
 	//
 	// 1234
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// Rule type:
+	// The type of the rule. Valid values:
 	//
-	// 	- 0: System template rule
+	// - 0: system template
 	//
-	// 	- 1: Custom SQL rule
+	// - 1: custom SQL
 	//
-	// 	- 4: Custom template rule
+	// - 2: custom template
 	//
 	// This parameter is required.
 	//
@@ -166,31 +186,31 @@ type CreateQualityRuleRequest struct {
 	//
 	// 0
 	RuleType *int32 `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	// The variable settings inserted before the custom rule. Format: x=a,y=b.
+	// The variable settings that are inserted before the custom rule. Format: x=a,y=b.
 	//
 	// example:
 	//
 	// x=a,y=b
 	TaskSetting *string `json:"TaskSetting,omitempty" xml:"TaskSetting,omitempty"`
-	// The template ID.
+	// The ID of the template.
 	//
 	// example:
 	//
 	// 7
 	TemplateId *int32 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The trend of the monitoring result. Valid values:
+	// The trend of the check result. Valid values:
 	//
-	// 	- up: increasing
+	// - `up`: upward trend
 	//
-	// 	- down: decreasing
+	// - `down`: downward trend
 	//
-	// 	- abs: absolute value
+	// - `abs`: absolute value
 	//
 	// example:
 	//
 	// abs
 	Trend *string `json:"Trend,omitempty" xml:"Trend,omitempty"`
-	// The threshold for a warning alert. The threshold indicates the deviation of the monitoring result from the expected value. You can customize this threshold based on your business requirements.
+	// The warning threshold. It indicates the deviation of the check result from the expected value. You can customize this threshold based on your business requirements.
 	//
 	// example:
 	//

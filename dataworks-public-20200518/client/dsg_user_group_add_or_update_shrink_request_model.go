@@ -14,7 +14,7 @@ type iDsgUserGroupAddOrUpdateShrinkRequest interface {
 }
 
 type DsgUserGroupAddOrUpdateShrinkRequest struct {
-	// The information about the user group.
+	// The user groups.
 	//
 	// This parameter is required.
 	UserGroupsShrink *string `json:"UserGroups,omitempty" xml:"UserGroups,omitempty"`

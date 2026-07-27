@@ -194,7 +194,7 @@ type ListNodesByOutputResponseBodyDataNodeList struct {
 	//
 	// example:
 	//
-	// odps_first
+	// odps_source
 	Connection *string `json:"Connection,omitempty" xml:"Connection,omitempty"`
 	// The CRON expression.
 	//

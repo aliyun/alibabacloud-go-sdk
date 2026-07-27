@@ -194,7 +194,7 @@ type GetBaselineConfigResponseBodyData struct {
 	//
 	// example:
 	//
-	// 1234
+	// 123456
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The hour in the committed completion time of the day-level baseline. Valid values: [0, 47].
 	//

@@ -95,7 +95,7 @@ type CreateResourceFileAdvanceRequest struct {
 	//
 	// example:
 	//
-	// 10000
+	// 10111
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// Whether to synchronously Upload resources to the computing engine.
 	//

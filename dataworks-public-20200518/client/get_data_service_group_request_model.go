@@ -32,13 +32,13 @@ type GetDataServiceGroupRequest struct {
 	//
 	// example:
 	//
-	// 10001
+	// 10002
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The tenant ID. This parameter is deprecated.
 	//
 	// example:
 	//
-	// 10002
+	// 10001
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 

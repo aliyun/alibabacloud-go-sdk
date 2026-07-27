@@ -233,13 +233,13 @@ type ListDagsResponseBodyDataDags struct {
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the DAG. Valid values:
 	//
-	// 	- CREATED
+	// - CREATED
 	//
-	// 	- RUNNING
+	// - RUNNING
 	//
-	// 	- FAILURE
+	// - FAILURE
 	//
-	// 	- SUCCESS
+	// - SUCCESS
 	//
 	// example:
 	//
@@ -247,13 +247,13 @@ type ListDagsResponseBodyDataDags struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The type of the DAG. Valid values:
 	//
-	// 	- MANUAL: DAG for a manually triggered workflow
+	// - MANUAL: DAG for a manually triggered workflow
 	//
-	// 	- SMOKE_TEST: DAG for a smoke testing workflow
+	// - SMOKE_TEST: DAG for a smoke testing workflow
 	//
-	// 	- SUPPLY_DATA: DAG for a data backfill instance
+	// - SUPPLY_DATA: DAG for a data backfill instance
 	//
-	// 	- BUSINESS_PROCESS_DAG: DAG for a one-time workflow
+	// - BUSINESS_PROCESS_DAG: DAG for a one-time workflow
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type iUpdateQualityFollowerResponseBody interface {
 }
 
 type UpdateQualityFollowerResponseBody struct {
-	// Indicates whether the update is successful.
+	// Indicates whether the update was successful.
 	//
 	// example:
 	//

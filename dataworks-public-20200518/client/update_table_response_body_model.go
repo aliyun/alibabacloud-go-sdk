@@ -24,9 +24,9 @@ type UpdateTableResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the request task. After a request task is submitted, it is divided into multiple subtasks that are run in sequence. After the current subtask is complete, the next subtask starts to run. After all subtasks are complete, the request task is complete. If a request task is terminated due to one of the following issues, address the issue based on the error code and initiate the request task again:
 	//
-	// 	- The request task fails to be submitted.
+	// - The request task fails to be submitted.
 	//
-	// 	- After the request task is submitted, a subtask fails to run.
+	// - After the request task is submitted, a subtask fails to run.
 	TaskInfo *UpdateTableResponseBodyTaskInfo `json:"TaskInfo,omitempty" xml:"TaskInfo,omitempty" type:"Struct"`
 }
 
@@ -68,9 +68,9 @@ func (s *UpdateTableResponseBody) Validate() error {
 type UpdateTableResponseBodyTaskInfo struct {
 	// The details about the status of the current subtask. Valid values:
 	//
-	// 	- If the current subtask is successful, success is returned.
+	// - If the current subtask is successful, success is returned.
 	//
-	// 	- If the current subtask fails, the error details are displayed.
+	// - If the current subtask fails, the error details are displayed.
 	//
 	// example:
 	//
@@ -84,11 +84,11 @@ type UpdateTableResponseBodyTaskInfo struct {
 	NextTaskId *string `json:"NextTaskId,omitempty" xml:"NextTaskId,omitempty"`
 	// The status of the current subtask. Valid values:
 	//
-	// 	- operating: The subtask is running.
+	// - operating: The subtask is running.
 	//
-	// 	- success: The subtask succeeds.
+	// - success: The subtask succeeds.
 	//
-	// 	- failure: The subtask fails to run. For more information about the error details, see the Content parameter.
+	// - failure: The subtask fails to run. For more information about the error details, see the Content parameter.
 	//
 	// example:
 	//
