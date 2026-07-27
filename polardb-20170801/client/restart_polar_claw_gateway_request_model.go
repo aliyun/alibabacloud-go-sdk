@@ -16,12 +16,20 @@ type iRestartPolarClawGatewayRequest interface {
 }
 
 type RestartPolarClawGatewayRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-xxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The restart mode. Valid values:
+	//
+	// - in-process: lightweight restart without applying environment variable changes. This is the default value.
+	//
+	// - pkill: cold start that applies environment variable changes.
+	//
 	// example:
 	//
 	// in-process

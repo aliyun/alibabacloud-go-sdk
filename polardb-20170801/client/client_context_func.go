@@ -3058,6 +3058,14 @@ func (client *Client) CreateBackupWithContext(ctx context.Context, request *Crea
 //
 // Creates API keys in batches.
 //
+// Description:
+//
+// > 	- Each cluster can have a maximum of three manually created backups at the same time.
+//
+// > 	- If the error message `Exceeding the daily backup times of this DB cluster` is returned, three manually created backups already exist in your cluster. [Delete backups](https://help.aliyun.com/document_detail/98101.html) before calling this operation.
+//
+// > 	- After you call this operation, a backup task is created in the background. If the data volume is large, the backup may take a long time. Wait until the backup is complete.
+//
 // @param request - CreateBatchConsumerRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3081,6 +3089,14 @@ func (client *Client) CreateBatchConsumerWithContext(ctx context.Context, reques
 
 	if !dara.IsNil(request.Count) {
 		query["Count"] = request.Count
+	}
+
+	if !dara.IsNil(request.CreditToken) {
+		query["CreditToken"] = request.CreditToken
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
 	}
 
 	if !dara.IsNil(request.GwClusterId) {
@@ -3639,6 +3655,10 @@ func (client *Client) CreateCronJobPolicyServerlessWithContext(ctx context.Conte
 // Summary:
 //
 // Creates a PolarDB cluster.
+//
+// Description:
+//
+// DBLink can connect two PolarDB for PostgreSQL (Compatible with Oracle) clusters, or connect a PolarDB for PostgreSQL (Compatible with Oracle) cluster to a self-managed PostgreSQL database on an ECS instance. You can use DBLink to query data across clusters.
 //
 // @param request - CreateDBClusterRequest
 //
@@ -5070,6 +5090,70 @@ func (client *Client) CreateGlobalSecurityIPGroupWithContext(ctx context.Context
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateGlobalSecurityIPGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Places an order to purchase a token resource plan and activates a redemption code.
+//
+// @param request - CreateGwConsumerOrderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGwConsumerOrderResponse
+func (client *Client) CreateGwConsumerOrderWithContext(ctx context.Context, request *CreateGwConsumerOrderRequest, runtime *dara.RuntimeOptions) (_result *CreateGwConsumerOrderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.ExpireTime) {
+		query["ExpireTime"] = request.ExpireTime
+	}
+
+	if !dara.IsNil(request.GatewayId) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.KeyCount) {
+		query["KeyCount"] = request.KeyCount
+	}
+
+	if !dara.IsNil(request.PackageSpec) {
+		query["PackageSpec"] = request.PackageSpec
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateGwConsumerOrder"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateGwConsumerOrderResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -10650,7 +10734,7 @@ func (client *Client) DescribeApplicationAttributeWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the log details of an AI application.
+// Queries the details of AI application logs.
 //
 // @param request - DescribeApplicationLogsRequest
 //
@@ -10800,7 +10884,7 @@ func (client *Client) DescribeApplicationParametersWithContext(ctx context.Conte
 
 // Summary:
 //
-// Querying PolarDB AI application performance.
+// Queries the performance of a PolarDB AI application.
 //
 // @param request - DescribeApplicationPerformanceRequest
 //
@@ -24675,7 +24759,7 @@ func (client *Client) ModifyDBClusterResourceGroupWithContext(ctx context.Contex
 
 // Summary:
 //
-// Enables or shuts down the Secure Sockets Layer (SSL) encryption feature for a PolarDB cluster, or updates the CA certificate of a PolarDB cluster.
+// Enables or performs shutdown of the Secure Sockets Layer (SSL) encryption feature for a PolarDB cluster, or updates the CA certificate of a PolarDB cluster.
 //
 // @param request - ModifyDBClusterSSLRequest
 //
@@ -24690,6 +24774,10 @@ func (client *Client) ModifyDBClusterSSLWithContext(ctx context.Context, request
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CertValidDays) {
+		query["CertValidDays"] = request.CertValidDays
+	}
+
 	if !dara.IsNil(request.ConnectionString) {
 		query["ConnectionString"] = request.ConnectionString
 	}

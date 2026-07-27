@@ -48,7 +48,7 @@ type DescribeApplicationLogsRequest struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The instance ID of the subcomponent.
+	// The subcomponent instance ID.
 	//
 	// example:
 	//
@@ -68,13 +68,13 @@ type DescribeApplicationLogsRequest struct {
 	//
 	// 2026-03-25T02:11Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The search keyword. This parameter is used for PolarClaw instances.
+	// The search keyword. This parameter is used for polarclaw instances.
 	//
 	// example:
 	//
 	// Config
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The log level. This parameter is used for PolarClaw instances.
+	// The log level. This parameter is used for polarclaw instances.
 	//
 	// example:
 	//
@@ -111,7 +111,7 @@ type DescribeApplicationLogsRequest struct {
 	//
 	// 2026-03-25T01:57Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The log type. This parameter is used for PolarClaw instances. Currently, only gateway is supported.
+	// The log type. This parameter is used for polarclaw instances. Currently, only gateway is supported.
 	//
 	// example:
 	//

@@ -159,19 +159,55 @@ func (s *CreateBatchConsumerResponseBody) Validate() error {
 }
 
 type CreateBatchConsumerResponseBodyItems struct {
-	// The complete API key. This value is returned only in the current response.
+	// Indicates whether the key is active.
+	//
+	// example:
+	//
+	// true
+	Active *bool `json:"Active,omitempty" xml:"Active,omitempty"`
+	// The full API key. Returned only in this response.
 	//
 	// example:
 	//
 	// xxxxxxxx
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The MD5 hash of the API key.
+	//
+	// example:
+	//
+	// 0769a11c2d474f96fbb527f8e273d3de
+	ApiKeyMd5 *string `json:"ApiKeyMd5,omitempty" xml:"ApiKeyMd5,omitempty"`
+	// The status of the API key. Default value: Active.
+	//
+	// example:
+	//
+	// Active
+	ApiKeyStatus *string `json:"ApiKeyStatus,omitempty" xml:"ApiKeyStatus,omitempty"`
 	// The API key status. Default value: Active.
 	//
 	// example:
 	//
 	// Active
 	ApiStatus *string `json:"ApiStatus,omitempty" xml:"ApiStatus,omitempty"`
-	// The ID of the user group.
+	// The budget limit, which equals the number of credits per package.
+	//
+	// example:
+	//
+	// 3000
+	BudgetLimit *int64 `json:"BudgetLimit,omitempty" xml:"BudgetLimit,omitempty"`
+	// The budget policy ID. Each key has an independent budget policy.
+	//
+	// example:
+	//
+	// 023aacc1effc4b56bb154bfbec6ba9**
+	BudgetPolicyId *string `json:"BudgetPolicyId,omitempty" xml:"BudgetPolicyId,omitempty"`
+	// The used quota.
+	//
+	// example:
+	//
+	// 0
+	BudgetUsed *int64 `json:"BudgetUsed,omitempty" xml:"BudgetUsed,omitempty"`
+	// The user group ID.
 	//
 	// example:
 	//
@@ -189,6 +225,36 @@ type CreateBatchConsumerResponseBodyItems struct {
 	//
 	// test
 	ConsumerTag *string `json:"ConsumerTag,omitempty" xml:"ConsumerTag,omitempty"`
+	// The application description or remarks.
+	//
+	// example:
+	//
+	// myapp
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The expiration time.
+	//
+	// example:
+	//
+	// 2025-06-25T09:37:10Z
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// Indicates whether the key is expired.
+	//
+	// example:
+	//
+	// false
+	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 2024-10-16 16:46:20
+	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The last modification time.
+	//
+	// example:
+	//
+	// 2026-01-04T16:09:29+08:00
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The gateway instance ID.
 	//
 	// example:
@@ -217,12 +283,36 @@ func (s CreateBatchConsumerResponseBodyItems) GoString() string {
 	return s.String()
 }
 
+func (s *CreateBatchConsumerResponseBodyItems) GetActive() *bool {
+	return s.Active
+}
+
 func (s *CreateBatchConsumerResponseBodyItems) GetApiKey() *string {
 	return s.ApiKey
 }
 
+func (s *CreateBatchConsumerResponseBodyItems) GetApiKeyMd5() *string {
+	return s.ApiKeyMd5
+}
+
+func (s *CreateBatchConsumerResponseBodyItems) GetApiKeyStatus() *string {
+	return s.ApiKeyStatus
+}
+
 func (s *CreateBatchConsumerResponseBodyItems) GetApiStatus() *string {
 	return s.ApiStatus
+}
+
+func (s *CreateBatchConsumerResponseBodyItems) GetBudgetLimit() *int64 {
+	return s.BudgetLimit
+}
+
+func (s *CreateBatchConsumerResponseBodyItems) GetBudgetPolicyId() *string {
+	return s.BudgetPolicyId
+}
+
+func (s *CreateBatchConsumerResponseBodyItems) GetBudgetUsed() *int64 {
+	return s.BudgetUsed
 }
 
 func (s *CreateBatchConsumerResponseBodyItems) GetConsumerGroupId() *string {
@@ -237,6 +327,26 @@ func (s *CreateBatchConsumerResponseBodyItems) GetConsumerTag() *string {
 	return s.ConsumerTag
 }
 
+func (s *CreateBatchConsumerResponseBodyItems) GetDescription() *string {
+	return s.Description
+}
+
+func (s *CreateBatchConsumerResponseBodyItems) GetExpireTime() *string {
+	return s.ExpireTime
+}
+
+func (s *CreateBatchConsumerResponseBodyItems) GetExpired() *bool {
+	return s.Expired
+}
+
+func (s *CreateBatchConsumerResponseBodyItems) GetGmtCreated() *string {
+	return s.GmtCreated
+}
+
+func (s *CreateBatchConsumerResponseBodyItems) GetGmtModified() *string {
+	return s.GmtModified
+}
+
 func (s *CreateBatchConsumerResponseBodyItems) GetGwClusterId() *string {
 	return s.GwClusterId
 }
@@ -249,13 +359,43 @@ func (s *CreateBatchConsumerResponseBodyItems) GetStatus() *string {
 	return s.Status
 }
 
+func (s *CreateBatchConsumerResponseBodyItems) SetActive(v bool) *CreateBatchConsumerResponseBodyItems {
+	s.Active = &v
+	return s
+}
+
 func (s *CreateBatchConsumerResponseBodyItems) SetApiKey(v string) *CreateBatchConsumerResponseBodyItems {
 	s.ApiKey = &v
 	return s
 }
 
+func (s *CreateBatchConsumerResponseBodyItems) SetApiKeyMd5(v string) *CreateBatchConsumerResponseBodyItems {
+	s.ApiKeyMd5 = &v
+	return s
+}
+
+func (s *CreateBatchConsumerResponseBodyItems) SetApiKeyStatus(v string) *CreateBatchConsumerResponseBodyItems {
+	s.ApiKeyStatus = &v
+	return s
+}
+
 func (s *CreateBatchConsumerResponseBodyItems) SetApiStatus(v string) *CreateBatchConsumerResponseBodyItems {
 	s.ApiStatus = &v
+	return s
+}
+
+func (s *CreateBatchConsumerResponseBodyItems) SetBudgetLimit(v int64) *CreateBatchConsumerResponseBodyItems {
+	s.BudgetLimit = &v
+	return s
+}
+
+func (s *CreateBatchConsumerResponseBodyItems) SetBudgetPolicyId(v string) *CreateBatchConsumerResponseBodyItems {
+	s.BudgetPolicyId = &v
+	return s
+}
+
+func (s *CreateBatchConsumerResponseBodyItems) SetBudgetUsed(v int64) *CreateBatchConsumerResponseBodyItems {
+	s.BudgetUsed = &v
 	return s
 }
 
@@ -271,6 +411,31 @@ func (s *CreateBatchConsumerResponseBodyItems) SetConsumerId(v string) *CreateBa
 
 func (s *CreateBatchConsumerResponseBodyItems) SetConsumerTag(v string) *CreateBatchConsumerResponseBodyItems {
 	s.ConsumerTag = &v
+	return s
+}
+
+func (s *CreateBatchConsumerResponseBodyItems) SetDescription(v string) *CreateBatchConsumerResponseBodyItems {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateBatchConsumerResponseBodyItems) SetExpireTime(v string) *CreateBatchConsumerResponseBodyItems {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *CreateBatchConsumerResponseBodyItems) SetExpired(v bool) *CreateBatchConsumerResponseBodyItems {
+	s.Expired = &v
+	return s
+}
+
+func (s *CreateBatchConsumerResponseBodyItems) SetGmtCreated(v string) *CreateBatchConsumerResponseBodyItems {
+	s.GmtCreated = &v
+	return s
+}
+
+func (s *CreateBatchConsumerResponseBodyItems) SetGmtModified(v string) *CreateBatchConsumerResponseBodyItems {
+	s.GmtModified = &v
 	return s
 }
 

@@ -9,6 +9,8 @@ type iModifyDBClusterSSLRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCertValidDays(v string) *ModifyDBClusterSSLRequest
+	GetCertValidDays() *string
 	SetConnectionString(v string) *ModifyDBClusterSSLRequest
 	GetConnectionString() *string
 	SetDBClusterId(v string) *ModifyDBClusterSSLRequest
@@ -36,6 +38,10 @@ type iModifyDBClusterSSLRequest interface {
 type ModifyDBClusterSSLRequest struct {
 	// example:
 	//
+	// 1095
+	CertValidDays *string `json:"CertValidDays,omitempty" xml:"CertValidDays,omitempty"`
+	// example:
+	//
 	// xxx
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	// The cluster ID.
@@ -50,7 +56,7 @@ type ModifyDBClusterSSLRequest struct {
 	//
 	// >	- If the cluster is a PolarDB for MySQL cluster, this parameter is required.
 	//
-	// >	- If the cluster is a PolarDB for PostgreSQL cluster or a PolarDB for PostgreSQL (Compatible with Oracle) cluster, you do not need to specify this parameter. SSL encryption is enabled for all endpoints by default.
+	// >	- If the cluster is a PolarDB for PostgreSQL cluster or a PolarDB for PostgreSQL (Compatible with Oracle) cluster, you do not need to specify this parameter. Secure Sockets Layer (SSL) encryption is enabled for all endpoints by default.
 	//
 	// >	- You can call the [DescribeDBClusterSSL](https://help.aliyun.com/document_detail/2319159.html) operation to query endpoint details.
 	//
@@ -58,7 +64,7 @@ type ModifyDBClusterSSLRequest struct {
 	//
 	// pe-******************
 	DBEndpointId *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
-	// The network type of the endpoint. The value must be the same as the network type of the endpoint specified by **DBEndpointId**. Valid values:
+	// The network type of the endpoint. The value must be consistent with the network type of the endpoint specified by the **DBEndpointId*	- parameter. Valid values:
 	//
 	// 	- **Public**: public network
 	//
@@ -68,7 +74,7 @@ type ModifyDBClusterSSLRequest struct {
 	//
 	// >	- If the cluster is a PolarDB for MySQL cluster, this parameter is required.
 	//
-	// >	- If the cluster is a PolarDB for PostgreSQL cluster or a PolarDB for PostgreSQL (Compatible with Oracle) cluster, you do not need to specify this parameter. SSL encryption is enabled for all endpoints by default.
+	// >	- If the cluster is a PolarDB for PostgreSQL cluster or a PolarDB for PostgreSQL (Compatible with Oracle) cluster, you do not need to specify this parameter. Secure Sockets Layer (SSL) encryption is enabled for all endpoints by default.
 	//
 	// example:
 	//
@@ -84,9 +90,9 @@ type ModifyDBClusterSSLRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// Specifies whether to enable automatic SSL certificate rotation. Valid values:
 	//
-	// - **Enable**: enables automatic SSL certificate rotation.
+	// - **Enable**: Enables automatic rotation.
 	//
-	// - **Disable**: disables automatic SSL certificate rotation.
+	// - **Disable**: Disables automatic rotation.
 	//
 	// example:
 	//
@@ -94,13 +100,13 @@ type ModifyDBClusterSSLRequest struct {
 	SSLAutoRotate *string `json:"SSLAutoRotate,omitempty" xml:"SSLAutoRotate,omitempty"`
 	// The SSL status. Valid values:
 	//
-	// 	- **Disable**: shutdown SSL encryption.
+	// 	- **Disable**: Shutdown of Secure Sockets Layer (SSL) encryption.
 	//
-	// 	- **Enable**: enables SSL encryption.
+	// 	- **Enable**: Enables Secure Sockets Layer (SSL) encryption.
 	//
-	// 	- **Update**: updates the CA certificate.
+	// 	- **Update**: Updates the CA certificate.
 	//
-	// > After you enable SSL encryption or update the CA certificate, you must download and configure the certificate. For details, see [Settings for SSL encryption](https://help.aliyun.com/document_detail/153182.html).
+	// > After you enable Secure Sockets Layer (SSL) encryption or update the CA certificate, you must download and configure the certificate. For details, see [Settings for SSL encryption](https://help.aliyun.com/document_detail/153182.html).
 	//
 	// example:
 	//
@@ -114,6 +120,10 @@ func (s ModifyDBClusterSSLRequest) String() string {
 
 func (s ModifyDBClusterSSLRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyDBClusterSSLRequest) GetCertValidDays() *string {
+	return s.CertValidDays
 }
 
 func (s *ModifyDBClusterSSLRequest) GetConnectionString() *string {
@@ -158,6 +168,11 @@ func (s *ModifyDBClusterSSLRequest) GetSSLAutoRotate() *string {
 
 func (s *ModifyDBClusterSSLRequest) GetSSLEnabled() *string {
 	return s.SSLEnabled
+}
+
+func (s *ModifyDBClusterSSLRequest) SetCertValidDays(v string) *ModifyDBClusterSSLRequest {
+	s.CertValidDays = &v
+	return s
 }
 
 func (s *ModifyDBClusterSSLRequest) SetConnectionString(v string) *ModifyDBClusterSSLRequest {

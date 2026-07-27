@@ -83,9 +83,7 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"ap-southeast-6":              dara.String("polardb.ap-southeast-6.aliyuncs.com"),
 		"ap-southeast-5":              dara.String("polardb.ap-southeast-5.aliyuncs.com"),
 		"ap-southeast-3":              dara.String("polardb.ap-southeast-3.aliyuncs.com"),
-		"ap-southeast-2":              dara.String("polardb.ap-southeast-2.aliyuncs.com"),
 		"ap-southeast-1":              dara.String("polardb.ap-southeast-1.aliyuncs.com"),
-		"ap-south-1":                  dara.String("polardb.ap-south-1.aliyuncs.com"),
 		"ap-northeast-2":              dara.String("polardb.ap-northeast-2.aliyuncs.com"),
 		"ap-northeast-1":              dara.String("polardb.ap-northeast-1.aliyuncs.com"),
 	}
@@ -4004,6 +4002,14 @@ func (client *Client) CreateBackup(request *CreateBackupRequest) (_result *Creat
 //
 // Creates API keys in batches.
 //
+// Description:
+//
+// > 	- Each cluster can have a maximum of three manually created backups at the same time.
+//
+// > 	- If the error message `Exceeding the daily backup times of this DB cluster` is returned, three manually created backups already exist in your cluster. [Delete backups](https://help.aliyun.com/document_detail/98101.html) before calling this operation.
+//
+// > 	- After you call this operation, a backup task is created in the background. If the data volume is large, the backup may take a long time. Wait until the backup is complete.
+//
 // @param request - CreateBatchConsumerRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4027,6 +4033,14 @@ func (client *Client) CreateBatchConsumerWithOptions(request *CreateBatchConsume
 
 	if !dara.IsNil(request.Count) {
 		query["Count"] = request.Count
+	}
+
+	if !dara.IsNil(request.CreditToken) {
+		query["CreditToken"] = request.CreditToken
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
 	}
 
 	if !dara.IsNil(request.GwClusterId) {
@@ -4063,6 +4077,14 @@ func (client *Client) CreateBatchConsumerWithOptions(request *CreateBatchConsume
 // Summary:
 //
 // Creates API keys in batches.
+//
+// Description:
+//
+// > 	- Each cluster can have a maximum of three manually created backups at the same time.
+//
+// > 	- If the error message `Exceeding the daily backup times of this DB cluster` is returned, three manually created backups already exist in your cluster. [Delete backups](https://help.aliyun.com/document_detail/98101.html) before calling this operation.
+//
+// > 	- After you call this operation, a backup task is created in the background. If the data volume is large, the backup may take a long time. Wait until the backup is complete.
 //
 // @param request - CreateBatchConsumerRequest
 //
@@ -4730,6 +4752,10 @@ func (client *Client) CreateCronJobPolicyServerless(request *CreateCronJobPolicy
 //
 // Creates a PolarDB cluster.
 //
+// Description:
+//
+// DBLink can connect two PolarDB for PostgreSQL (Compatible with Oracle) clusters, or connect a PolarDB for PostgreSQL (Compatible with Oracle) cluster to a self-managed PostgreSQL database on an ECS instance. You can use DBLink to query data across clusters.
+//
 // @param request - CreateDBClusterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5033,6 +5059,10 @@ func (client *Client) CreateDBClusterWithOptions(request *CreateDBClusterRequest
 // Summary:
 //
 // Creates a PolarDB cluster.
+//
+// Description:
+//
+// DBLink can connect two PolarDB for PostgreSQL (Compatible with Oracle) clusters, or connect a PolarDB for PostgreSQL (Compatible with Oracle) cluster to a self-managed PostgreSQL database on an ECS instance. You can use DBLink to query data across clusters.
 //
 // @param request - CreateDBClusterRequest
 //
@@ -6429,6 +6459,88 @@ func (client *Client) CreateGlobalSecurityIPGroup(request *CreateGlobalSecurityI
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateGlobalSecurityIPGroupResponse{}
 	_body, _err := client.CreateGlobalSecurityIPGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Places an order to purchase a token resource plan and activates a redemption code.
+//
+// @param request - CreateGwConsumerOrderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGwConsumerOrderResponse
+func (client *Client) CreateGwConsumerOrderWithOptions(request *CreateGwConsumerOrderRequest, runtime *dara.RuntimeOptions) (_result *CreateGwConsumerOrderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.ExpireTime) {
+		query["ExpireTime"] = request.ExpireTime
+	}
+
+	if !dara.IsNil(request.GatewayId) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.KeyCount) {
+		query["KeyCount"] = request.KeyCount
+	}
+
+	if !dara.IsNil(request.PackageSpec) {
+		query["PackageSpec"] = request.PackageSpec
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateGwConsumerOrder"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateGwConsumerOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Places an order to purchase a token resource plan and activates a redemption code.
+//
+// @param request - CreateGwConsumerOrderRequest
+//
+// @return CreateGwConsumerOrderResponse
+func (client *Client) CreateGwConsumerOrder(request *CreateGwConsumerOrderRequest) (_result *CreateGwConsumerOrderResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateGwConsumerOrderResponse{}
+	_body, _err := client.CreateGwConsumerOrderWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13676,7 +13788,7 @@ func (client *Client) DescribeApplicationAttribute(request *DescribeApplicationA
 
 // Summary:
 //
-// Queries the log details of an AI application.
+// Queries the details of AI application logs.
 //
 // @param request - DescribeApplicationLogsRequest
 //
@@ -13772,7 +13884,7 @@ func (client *Client) DescribeApplicationLogsWithOptions(request *DescribeApplic
 
 // Summary:
 //
-// Queries the log details of an AI application.
+// Queries the details of AI application logs.
 //
 // @param request - DescribeApplicationLogsRequest
 //
@@ -13862,7 +13974,7 @@ func (client *Client) DescribeApplicationParameters(request *DescribeApplication
 
 // Summary:
 //
-// Querying PolarDB AI application performance.
+// Queries the performance of a PolarDB AI application.
 //
 // @param request - DescribeApplicationPerformanceRequest
 //
@@ -13950,7 +14062,7 @@ func (client *Client) DescribeApplicationPerformanceWithOptions(request *Describ
 
 // Summary:
 //
-// Querying PolarDB AI application performance.
+// Queries the performance of a PolarDB AI application.
 //
 // @param request - DescribeApplicationPerformanceRequest
 //
@@ -31570,7 +31682,7 @@ func (client *Client) ModifyDBClusterResourceGroup(request *ModifyDBClusterResou
 
 // Summary:
 //
-// Enables or shuts down the Secure Sockets Layer (SSL) encryption feature for a PolarDB cluster, or updates the CA certificate of a PolarDB cluster.
+// Enables or performs shutdown of the Secure Sockets Layer (SSL) encryption feature for a PolarDB cluster, or updates the CA certificate of a PolarDB cluster.
 //
 // @param request - ModifyDBClusterSSLRequest
 //
@@ -31585,6 +31697,10 @@ func (client *Client) ModifyDBClusterSSLWithOptions(request *ModifyDBClusterSSLR
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CertValidDays) {
+		query["CertValidDays"] = request.CertValidDays
+	}
+
 	if !dara.IsNil(request.ConnectionString) {
 		query["ConnectionString"] = request.ConnectionString
 	}
@@ -31654,7 +31770,7 @@ func (client *Client) ModifyDBClusterSSLWithOptions(request *ModifyDBClusterSSLR
 
 // Summary:
 //
-// Enables or shuts down the Secure Sockets Layer (SSL) encryption feature for a PolarDB cluster, or updates the CA certificate of a PolarDB cluster.
+// Enables or performs shutdown of the Secure Sockets Layer (SSL) encryption feature for a PolarDB cluster, or updates the CA certificate of a PolarDB cluster.
 //
 // @param request - ModifyDBClusterSSLRequest
 //

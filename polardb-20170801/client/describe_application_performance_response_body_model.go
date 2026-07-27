@@ -38,14 +38,18 @@ type DescribeApplicationPerformanceResponseBody struct {
 	//
 	// supabase
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
-	// The end time of the query. The time is in UTC and follows the `yyyy-MM-ddTHH:mm:ssZ` format.
+	// The end of the time range to query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format (UTC).
 	//
 	// example:
 	//
 	// 2025-05-23T02:21:00Z
-	EndTime  *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The performance metrics.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The data granularity.
+	//
+	// example:
+	//
+	// 60
+	Interval        *string                                                    `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	PerformanceKeys *DescribeApplicationPerformanceResponseBodyPerformanceKeys `json:"PerformanceKeys,omitempty" xml:"PerformanceKeys,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -53,7 +57,7 @@ type DescribeApplicationPerformanceResponseBody struct {
 	//
 	// CDB3258F-B5DE-43C4-8935-CBA0CA******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start time of the query. The time is in UTC and follows the `yyyy-MM-ddTHH:mm:ssZ` format.
+	// The beginning of the time range to query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format (UTC).
 	//
 	// example:
 	//

@@ -36,50 +36,74 @@ type iRestartPolarClawGatewayResponseBody interface {
 }
 
 type RestartPolarClawGatewayResponseBody struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// pa-xxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The approximate downtime of this restart, in milliseconds. This value is returned synchronously.
+	//
 	// example:
 	//
 	// 3235
 	DowntimeMs *int64 `json:"DowntimeMs,omitempty" xml:"DowntimeMs,omitempty"`
+	// The gateway version after the restart. This value is returned synchronously.
+	//
 	// example:
 	//
 	// 2026.5.7
 	GatewayVersion *string `json:"GatewayVersion,omitempty" xml:"GatewayVersion,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The actual restart mode used.
+	//
 	// example:
 	//
 	// in-process
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// Indicates whether the operation was successful.
+	//
 	// example:
 	//
 	// true
 	Ok *bool `json:"Ok,omitempty" xml:"Ok,omitempty"`
+	// The operation name. This value is returned when Async is set to true.
+	//
 	// example:
 	//
 	// RestartPolarClawGateway
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// F45FFACC-xxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the gateway has been confirmed available after the restart. This value is returned synchronously.
+	//
 	// example:
 	//
 	// true
 	Restarted *bool `json:"Restarted,omitempty" xml:"Restarted,omitempty"`
+	// The initial state of the asynchronous task. This value is returned when Async is set to true.
+	//
 	// example:
 	//
 	// pending
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The asynchronous task ID. This value is returned when Async is set to true. You can poll the task status by calling DescribePolarClawTask.
+	//
 	// example:
 	//
 	// 0ee00f56-f467-4d41-858c-ca4ede2c770e

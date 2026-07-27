@@ -24,8 +24,18 @@ type iCreateDBClusterResponseBody interface {
 }
 
 type CreateDBClusterResponseBody struct {
+	// The Agentic cluster description.
+	//
+	// example:
+	//
+	// pagc-***************
 	AgenticDbClusterDescription *string `json:"AgenticDbClusterDescription,omitempty" xml:"AgenticDbClusterDescription,omitempty"`
-	AgenticDbClusterId          *string `json:"AgenticDbClusterId,omitempty" xml:"AgenticDbClusterId,omitempty"`
+	// The Agentic cluster ID.
+	//
+	// example:
+	//
+	// pagc-***************
+	AgenticDbClusterId *string `json:"AgenticDbClusterId,omitempty" xml:"AgenticDbClusterId,omitempty"`
 	// The cluster ID.
 	//
 	// example:

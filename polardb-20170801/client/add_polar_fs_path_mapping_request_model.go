@@ -18,9 +18,9 @@ type iAddPolarFsPathMappingRequest interface {
 }
 
 type AddPolarFsPathMappingRequest struct {
-	// A list of objects, each containing a bucket and its corresponding path.
+	// The bucket and corresponding path information.
 	CustomBucketPathList []*AddPolarFsPathMappingRequestCustomBucketPathList `json:"CustomBucketPathList,omitempty" xml:"CustomBucketPathList,omitempty" type:"Repeated"`
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type AddPolarFsPathMappingRequest struct {
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The ID of the PolarFS instance.
+	// The PolarFS instance ID.
 	//
 	// This parameter is required.
 	//
@@ -87,12 +87,14 @@ func (s *AddPolarFsPathMappingRequest) Validate() error {
 }
 
 type AddPolarFsPathMappingRequestCustomBucketPathList struct {
-	// The name of the bucket.
+	// The bucket name.
 	//
 	// example:
 	//
 	// Bucket1
-	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	Bucket                *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	BucketAccessKeyId     *string `json:"BucketAccessKeyId,omitempty" xml:"BucketAccessKeyId,omitempty"`
+	BucketAccessKeySecret *string `json:"BucketAccessKeySecret,omitempty" xml:"BucketAccessKeySecret,omitempty"`
 	// The custom storage path.
 	//
 	// example:
@@ -113,12 +115,30 @@ func (s *AddPolarFsPathMappingRequestCustomBucketPathList) GetBucket() *string {
 	return s.Bucket
 }
 
+func (s *AddPolarFsPathMappingRequestCustomBucketPathList) GetBucketAccessKeyId() *string {
+	return s.BucketAccessKeyId
+}
+
+func (s *AddPolarFsPathMappingRequestCustomBucketPathList) GetBucketAccessKeySecret() *string {
+	return s.BucketAccessKeySecret
+}
+
 func (s *AddPolarFsPathMappingRequestCustomBucketPathList) GetPath() *string {
 	return s.Path
 }
 
 func (s *AddPolarFsPathMappingRequestCustomBucketPathList) SetBucket(v string) *AddPolarFsPathMappingRequestCustomBucketPathList {
 	s.Bucket = &v
+	return s
+}
+
+func (s *AddPolarFsPathMappingRequestCustomBucketPathList) SetBucketAccessKeyId(v string) *AddPolarFsPathMappingRequestCustomBucketPathList {
+	s.BucketAccessKeyId = &v
+	return s
+}
+
+func (s *AddPolarFsPathMappingRequestCustomBucketPathList) SetBucketAccessKeySecret(v string) *AddPolarFsPathMappingRequestCustomBucketPathList {
+	s.BucketAccessKeySecret = &v
 	return s
 }
 
