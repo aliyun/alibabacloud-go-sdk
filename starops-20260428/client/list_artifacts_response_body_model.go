@@ -20,18 +20,26 @@ type iListArtifactsResponseBody interface {
 }
 
 type ListArtifactsResponseBody struct {
+	// The list of artifacts.
+	//
 	// example:
 	//
 	// [{"path":"reports/summary.pdf","size":1024,"lastModified":"2026-05-25T08:00:00Z","isDirectory":false}]
 	Artifacts []*ListArtifactsResponseBodyArtifacts `json:"artifacts,omitempty" xml:"artifacts,omitempty" type:"Repeated"`
+	// The maximum number of results returned on the current page.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The token for the next page of results. This parameter is returned only if more results are available. To retrieve the next page, use this token in the `nextToken` query parameter of your next request.
+	//
 	// example:
 	//
 	// xxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
@@ -96,18 +104,26 @@ func (s *ListArtifactsResponseBody) Validate() error {
 }
 
 type ListArtifactsResponseBodyArtifacts struct {
+	// Specifies whether the item is a directory. A value of `true` indicates a directory and `false` indicates a file.
+	//
 	// example:
 	//
 	// false
 	IsDirectory *bool `json:"isDirectory,omitempty" xml:"isDirectory,omitempty"`
+	// The time the artifact was last modified, in UTC.
+	//
 	// example:
 	//
 	// 2026-04-30T16:03:54Z
 	LastModified *string `json:"lastModified,omitempty" xml:"lastModified,omitempty"`
+	// The path of the artifact.
+	//
 	// example:
 	//
 	// missions/mission-xxx/artifacts/2026-05/05-01/xxxx.md
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// The size of the artifact in bytes.
+	//
 	// example:
 	//
 	// 21950

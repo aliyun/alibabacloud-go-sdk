@@ -18,11 +18,15 @@ type iCreateThreadRequest interface {
 }
 
 type CreateThreadRequest struct {
+	// Key-value pairs that you can attach to the thread.
 	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	// The title of the thread.
+	//
 	// example:
 	//
 	// test
-	Title     *string                       `json:"title,omitempty" xml:"title,omitempty"`
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// The variables for the thread. You can use them to pass custom data to the digital employee.
 	Variables *CreateThreadRequestVariables `json:"variables,omitempty" xml:"variables,omitempty" type:"Struct"`
 }
 
@@ -71,10 +75,14 @@ func (s *CreateThreadRequest) Validate() error {
 }
 
 type CreateThreadRequestVariables struct {
+	// The name of the Log Service project.
+	//
 	// example:
 	//
 	// project
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	// The name of the workspace.
+	//
 	// example:
 	//
 	// workspace

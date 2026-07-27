@@ -10,7 +10,62 @@ import (
 
 // Summary:
 //
-// 创建对话
+// 创建产物上传凭证
+//
+// Description:
+//
+// 获取上传内容所需链接，适用于大文件。
+//
+// @param request - CreateArtifactUploadTokenRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateArtifactUploadTokenResponse
+func (client *Client) CreateArtifactUploadTokenWithContext(ctx context.Context, name *string, request *CreateArtifactUploadTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateArtifactUploadTokenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ArtifactPath) {
+		query["artifactPath"] = request.ArtifactPath
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateArtifactUploadToken"),
+		Version:     dara.String("2026-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/digitalEmployee/" + dara.PercentEncode(dara.StringValue(name)) + "/artifacts/uploadToken"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateArtifactUploadTokenResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # New conversation
+//
+// Description:
+//
+// Starts a session.
 //
 // @param request - CreateChatRequest
 //
@@ -27,7 +82,11 @@ func (client *Client) CreateChatWithSSECtx(ctx context.Context, request *CreateC
 
 // Summary:
 //
-// 创建对话
+// # New conversation
+//
+// Description:
+//
+// Starts a session.
 //
 // @param request - CreateChatRequest
 //
@@ -90,7 +149,11 @@ func (client *Client) CreateChatWithContext(ctx context.Context, request *Create
 
 // Summary:
 //
-// 创建DigitalEmployee
+// Creates a digital employee.
+//
+// Description:
+//
+// Creates a digital employee.
 //
 // @param request - CreateDigitalEmployeeRequest
 //
@@ -139,6 +202,10 @@ func (client *Client) CreateDigitalEmployeeWithContext(ctx context.Context, requ
 		body["roleArn"] = request.RoleArn
 	}
 
+	if !dara.IsNil(request.SandboxNetworkPolicy) {
+		body["sandboxNetworkPolicy"] = request.SandboxNetworkPolicy
+	}
+
 	if !dara.IsNil(request.Tags) {
 		body["tags"] = request.Tags
 	}
@@ -173,7 +240,11 @@ func (client *Client) CreateDigitalEmployeeWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 创建技能
+// Creates a skill for a digital employee.
+//
+// Description:
+//
+// Creates a new skill for a specified digital employee.
 //
 // @param request - CreateDigitalEmployeeSkillRequest
 //
@@ -240,7 +311,11 @@ func (client *Client) CreateDigitalEmployeeSkillWithContext(ctx context.Context,
 
 // Summary:
 //
-// 创建 MCP 服务
+// Creates an MCP service.
+//
+// Description:
+//
+// Creates an MCP service.
 //
 // @param request - CreateMcpServiceRequest
 //
@@ -311,7 +386,11 @@ func (client *Client) CreateMcpServiceWithContext(ctx context.Context, name *str
 
 // Summary:
 //
-// 创建会话
+// Creates a thread.
+//
+// Description:
+//
+// Creates a thread for a specified digital employee.
 //
 // @param request - CreateThreadRequest
 //
@@ -366,7 +445,7 @@ func (client *Client) CreateThreadWithContext(ctx context.Context, name *string,
 
 // Summary:
 //
-// 创建票据
+// Creates a ticket.
 //
 // @param request - CreateTicketRequest
 //
@@ -417,7 +496,11 @@ func (client *Client) CreateTicketWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// 删除DigitalEmployee
+// Deletes a digital employee.
+//
+// Description:
+//
+// Deletes a digital employee.
 //
 // @param request - DeleteDigitalEmployeeRequest
 //
@@ -458,7 +541,11 @@ func (client *Client) DeleteDigitalEmployeeWithContext(ctx context.Context, name
 
 // Summary:
 //
-// 删除技能
+// Deletes a skill from a digital employee.
+//
+// Description:
+//
+// Deletes a skill from the specified digital employee.
 //
 // @param request - DeleteDigitalEmployeeSkillRequest
 //
@@ -499,7 +586,7 @@ func (client *Client) DeleteDigitalEmployeeSkillWithContext(ctx context.Context,
 
 // Summary:
 //
-// 删除 MCP 服务
+// Deletes an MCP service.
 //
 // @param request - DeleteMcpServiceRequest
 //
@@ -540,7 +627,11 @@ func (client *Client) DeleteMcpServiceWithContext(ctx context.Context, name *str
 
 // Summary:
 //
-// 删除会话
+// This operation deletes a thread.
+//
+// Description:
+//
+// This operation deletes a specified thread.
 //
 // @param request - DeleteThreadRequest
 //
@@ -581,7 +672,7 @@ func (client *Client) DeleteThreadWithContext(ctx context.Context, name *string,
 
 // Summary:
 //
-// 预览远端 MCP 工具列表
+// Retrieves the tool list from a remote MCP server.
 //
 // @param request - FetchRemoteMcpToolsRequest
 //
@@ -632,7 +723,11 @@ func (client *Client) FetchRemoteMcpToolsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 下载小型产物文件
+// Retrieves the content of an artifact.
+//
+// Description:
+//
+// Retrieves the content of an artifact.
 //
 // @param request - GetArtifactRequest
 //
@@ -696,7 +791,58 @@ func (client *Client) GetArtifactWithContext(ctx context.Context, name *string, 
 
 // Summary:
 //
-// 查询 DigitalEmployee
+// 获取产物下载链接
+//
+// @param request - GetArtifactDownloadUrlRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetArtifactDownloadUrlResponse
+func (client *Client) GetArtifactDownloadUrlWithContext(ctx context.Context, name *string, request *GetArtifactDownloadUrlRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetArtifactDownloadUrlResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ArtifactPath) {
+		query["artifactPath"] = request.ArtifactPath
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetArtifactDownloadUrl"),
+		Version:     dara.String("2026-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/digitalEmployee/" + dara.PercentEncode(dara.StringValue(name)) + "/artifacts/downloadUrl"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetArtifactDownloadUrlResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a digital employee.
+//
+// Description:
+//
+// Retrieves a digital employee.
 //
 // @param request - GetDigitalEmployeeRequest
 //
@@ -737,7 +883,11 @@ func (client *Client) GetDigitalEmployeeWithContext(ctx context.Context, name *s
 
 // Summary:
 //
-// 获取技能详情
+// Retrieves the details of a specific skill.
+//
+// Description:
+//
+// Retrieves the details of a specified skill for a digital employee.
 //
 // @param request - GetDigitalEmployeeSkillRequest
 //
@@ -784,7 +934,7 @@ func (client *Client) GetDigitalEmployeeSkillWithContext(ctx context.Context, na
 
 // Summary:
 //
-// 查询 MCP 服务
+// Queries an MCP service.
 //
 // @param request - GetMcpServiceRequest
 //
@@ -825,7 +975,11 @@ func (client *Client) GetMcpServiceWithContext(ctx context.Context, name *string
 
 // Summary:
 //
-// 获取会话
+// Retrieves a thread.
+//
+// Description:
+//
+// Retrieves the details of a thread.
 //
 // @param request - GetThreadRequest
 //
@@ -866,7 +1020,11 @@ func (client *Client) GetThreadWithContext(ctx context.Context, name *string, th
 
 // Summary:
 //
-// 获取会话数据
+// # Get session data
+//
+// Description:
+//
+// Gets session data.
 //
 // @param request - GetThreadDataRequest
 //
@@ -917,7 +1075,11 @@ func (client *Client) GetThreadDataWithContext(ctx context.Context, name *string
 
 // Summary:
 //
-// 列出产物文件
+// Lists artifacts.
+//
+// Description:
+//
+// Lists the artifacts for a specified digital employee.
 //
 // @param request - ListArtifactsRequest
 //
@@ -972,7 +1134,11 @@ func (client *Client) ListArtifactsWithContext(ctx context.Context, name *string
 
 // Summary:
 //
-// 列出技能版本
+// Lists the versions of a skill.
+//
+// Description:
+//
+// Lists the previous versions of a skill.
 //
 // @param request - ListDigitalEmployeeSkillVersionsRequest
 //
@@ -1013,7 +1179,11 @@ func (client *Client) ListDigitalEmployeeSkillVersionsWithContext(ctx context.Co
 
 // Summary:
 //
-// 列出技能
+// Lists the skills of a digital employee.
+//
+// Description:
+//
+// Lists the skills of a specified digital employee.
 //
 // @param request - ListDigitalEmployeeSkillsRequest
 //
@@ -1068,7 +1238,11 @@ func (client *Client) ListDigitalEmployeeSkillsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 列出资源DigitalEmployee
+// Returns a list of digital employees.
+//
+// Description:
+//
+// Lists digital employees.
 //
 // @param tmpReq - ListDigitalEmployeesRequest
 //
@@ -1145,7 +1319,7 @@ func (client *Client) ListDigitalEmployeesWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// 查询数字员工下的 MCP 服务列表
+// Queries the list of MCP services.
 //
 // @param request - ListMcpServicesRequest
 //
@@ -1196,7 +1370,11 @@ func (client *Client) ListMcpServicesWithContext(ctx context.Context, name *stri
 
 // Summary:
 //
-// 列出会话
+// # List sessions
+//
+// Description:
+//
+// # List sessions
 //
 // @param tmpReq - ListThreadsRequest
 //
@@ -1269,7 +1447,11 @@ func (client *Client) ListThreadsWithContext(ctx context.Context, name *string, 
 
 // Summary:
 //
-// 更新UpdateDigitalEmployee
+// Updates a digital employee.
+//
+// Description:
+//
+// Updates a digital employee.
 //
 // @param request - UpdateDigitalEmployeeRequest
 //
@@ -1310,6 +1492,10 @@ func (client *Client) UpdateDigitalEmployeeWithContext(ctx context.Context, name
 		body["roleArn"] = request.RoleArn
 	}
 
+	if !dara.IsNil(request.SandboxNetworkPolicy) {
+		body["sandboxNetworkPolicy"] = request.SandboxNetworkPolicy
+	}
+
 	if !dara.IsNil(request.ToolPolicy) {
 		body["toolPolicy"] = request.ToolPolicy
 	}
@@ -1340,7 +1526,11 @@ func (client *Client) UpdateDigitalEmployeeWithContext(ctx context.Context, name
 
 // Summary:
 //
-// 更新技能
+// Updates a skill for a digital employee.
+//
+// Description:
+//
+// This operation updates a skill for a specified digital employee.
 //
 // @param request - UpdateDigitalEmployeeSkillRequest
 //
@@ -1403,7 +1593,7 @@ func (client *Client) UpdateDigitalEmployeeSkillWithContext(ctx context.Context,
 
 // Summary:
 //
-// 更新 MCP 服务
+// Updates an MCP service.
 //
 // @param request - UpdateMcpServiceRequest
 //
@@ -1470,7 +1660,11 @@ func (client *Client) UpdateMcpServiceWithContext(ctx context.Context, name *str
 
 // Summary:
 //
-// 更新会话
+// Updates a thread.
+//
+// Description:
+//
+// Updates a thread.
 //
 // @param request - UpdateThreadRequest
 //

@@ -21,30 +21,48 @@ type iUpdateDigitalEmployeeRequest interface {
 	GetKnowledges() *UpdateDigitalEmployeeRequestKnowledges
 	SetRoleArn(v string) *UpdateDigitalEmployeeRequest
 	GetRoleArn() *string
+	SetSandboxNetworkPolicy(v *UpdateDigitalEmployeeRequestSandboxNetworkPolicy) *UpdateDigitalEmployeeRequest
+	GetSandboxNetworkPolicy() *UpdateDigitalEmployeeRequestSandboxNetworkPolicy
 	SetToolPolicy(v *UpdateDigitalEmployeeRequestToolPolicy) *UpdateDigitalEmployeeRequest
 	GetToolPolicy() *UpdateDigitalEmployeeRequestToolPolicy
 }
 
 type UpdateDigitalEmployeeRequest struct {
+	// The attributes.
 	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	// The default rule of the digital employee.
+	//
 	// example:
 	//
 	// test
 	DefaultRule *string `json:"defaultRule,omitempty" xml:"defaultRule,omitempty"`
+	// The description of the digital employee.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name of the digital employee.
+	//
 	// example:
 	//
 	// test
-	DisplayName *string                                 `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	Knowledges  *UpdateDigitalEmployeeRequestKnowledges `json:"knowledges,omitempty" xml:"knowledges,omitempty" type:"Struct"`
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The list of knowledge bases.
+	Knowledges *UpdateDigitalEmployeeRequestKnowledges `json:"knowledges,omitempty" xml:"knowledges,omitempty" type:"Struct"`
+	// The ARN of the RAM role.
+	//
 	// example:
 	//
 	// acs:ram::12345678912:role/testrole
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	// 数字员工工具调用安全策略配置。
+	// The list of CIDRs or IP addresses that are allowed to be accessed.
+	//
+	// example:
+	//
+	// {"allowFqdns":["api.example.com"],"allowCidrs":["1.2.3.0/24","8.8.8.8"],"enableAcl":false}
+	SandboxNetworkPolicy *UpdateDigitalEmployeeRequestSandboxNetworkPolicy `json:"sandboxNetworkPolicy,omitempty" xml:"sandboxNetworkPolicy,omitempty" type:"Struct"`
+	// The security policy configuration for tool calling of the digital employee.
 	//
 	// example:
 	//
@@ -84,6 +102,10 @@ func (s *UpdateDigitalEmployeeRequest) GetRoleArn() *string {
 	return s.RoleArn
 }
 
+func (s *UpdateDigitalEmployeeRequest) GetSandboxNetworkPolicy() *UpdateDigitalEmployeeRequestSandboxNetworkPolicy {
+	return s.SandboxNetworkPolicy
+}
+
 func (s *UpdateDigitalEmployeeRequest) GetToolPolicy() *UpdateDigitalEmployeeRequestToolPolicy {
 	return s.ToolPolicy
 }
@@ -118,6 +140,11 @@ func (s *UpdateDigitalEmployeeRequest) SetRoleArn(v string) *UpdateDigitalEmploy
 	return s
 }
 
+func (s *UpdateDigitalEmployeeRequest) SetSandboxNetworkPolicy(v *UpdateDigitalEmployeeRequestSandboxNetworkPolicy) *UpdateDigitalEmployeeRequest {
+	s.SandboxNetworkPolicy = v
+	return s
+}
+
 func (s *UpdateDigitalEmployeeRequest) SetToolPolicy(v *UpdateDigitalEmployeeRequestToolPolicy) *UpdateDigitalEmployeeRequest {
 	s.ToolPolicy = v
 	return s
@@ -126,6 +153,11 @@ func (s *UpdateDigitalEmployeeRequest) SetToolPolicy(v *UpdateDigitalEmployeeReq
 func (s *UpdateDigitalEmployeeRequest) Validate() error {
 	if s.Knowledges != nil {
 		if err := s.Knowledges.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SandboxNetworkPolicy != nil {
+		if err := s.SandboxNetworkPolicy.Validate(); err != nil {
 			return err
 		}
 	}
@@ -138,8 +170,10 @@ func (s *UpdateDigitalEmployeeRequest) Validate() error {
 }
 
 type UpdateDigitalEmployeeRequestKnowledges struct {
+	// The list of Bailian knowledge bases.
 	Bailian []*UpdateDigitalEmployeeRequestKnowledgesBailian `json:"bailian,omitempty" xml:"bailian,omitempty" type:"Repeated"`
-	Sop     []map[string]interface{}                         `json:"sop,omitempty" xml:"sop,omitempty" type:"Repeated"`
+	// The list of SOP knowledge bases.
+	Sop []map[string]interface{} `json:"sop,omitempty" xml:"sop,omitempty" type:"Repeated"`
 }
 
 func (s UpdateDigitalEmployeeRequestKnowledges) String() string {
@@ -182,18 +216,26 @@ func (s *UpdateDigitalEmployeeRequestKnowledges) Validate() error {
 }
 
 type UpdateDigitalEmployeeRequestKnowledgesBailian struct {
+	// The attributes of the knowledge base.
+	//
 	// example:
 	//
 	// test
 	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	// The Bailian index ID.
+	//
 	// example:
 	//
 	// index-xxxx
 	IndexId *string `json:"indexId,omitempty" xml:"indexId,omitempty"`
+	// The region of the knowledge base.
+	//
 	// example:
 	//
 	// cn-beijing
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The Bailian workspace ID.
+	//
 	// example:
 	//
 	// llm-xxxx
@@ -248,8 +290,60 @@ func (s *UpdateDigitalEmployeeRequestKnowledgesBailian) Validate() error {
 	return dara.Validate(s)
 }
 
+type UpdateDigitalEmployeeRequestSandboxNetworkPolicy struct {
+	// The list of CIDRs or IP addresses that are allowed to be accessed.
+	AllowCidrs []*string `json:"allowCidrs,omitempty" xml:"allowCidrs,omitempty" type:"Repeated"`
+	// The list of FQDNs that are allowed to be accessed.
+	AllowFqdns []*string `json:"allowFqdns,omitempty" xml:"allowFqdns,omitempty" type:"Repeated"`
+	// Specifies whether to enable the sandbox network ACL.
+	//
+	// example:
+	//
+	// false
+	EnableAcl *bool `json:"enableAcl,omitempty" xml:"enableAcl,omitempty"`
+}
+
+func (s UpdateDigitalEmployeeRequestSandboxNetworkPolicy) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateDigitalEmployeeRequestSandboxNetworkPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDigitalEmployeeRequestSandboxNetworkPolicy) GetAllowCidrs() []*string {
+	return s.AllowCidrs
+}
+
+func (s *UpdateDigitalEmployeeRequestSandboxNetworkPolicy) GetAllowFqdns() []*string {
+	return s.AllowFqdns
+}
+
+func (s *UpdateDigitalEmployeeRequestSandboxNetworkPolicy) GetEnableAcl() *bool {
+	return s.EnableAcl
+}
+
+func (s *UpdateDigitalEmployeeRequestSandboxNetworkPolicy) SetAllowCidrs(v []*string) *UpdateDigitalEmployeeRequestSandboxNetworkPolicy {
+	s.AllowCidrs = v
+	return s
+}
+
+func (s *UpdateDigitalEmployeeRequestSandboxNetworkPolicy) SetAllowFqdns(v []*string) *UpdateDigitalEmployeeRequestSandboxNetworkPolicy {
+	s.AllowFqdns = v
+	return s
+}
+
+func (s *UpdateDigitalEmployeeRequestSandboxNetworkPolicy) SetEnableAcl(v bool) *UpdateDigitalEmployeeRequestSandboxNetworkPolicy {
+	s.EnableAcl = &v
+	return s
+}
+
+func (s *UpdateDigitalEmployeeRequestSandboxNetworkPolicy) Validate() error {
+	return dara.Validate(s)
+}
+
 type UpdateDigitalEmployeeRequestToolPolicy struct {
-	// Aliyun MCP 工具调用安全策略配置。
+	// The security policy configuration for Aliyun CLI tool calling.
 	//
 	// example:
 	//
@@ -284,13 +378,13 @@ func (s *UpdateDigitalEmployeeRequestToolPolicy) Validate() error {
 }
 
 type UpdateDigitalEmployeeRequestToolPolicyAliyun struct {
-	// 是否启用 Aliyun MCP 工具策略。
+	// Specifies whether to enable the policy.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// Aliyun OpenAPI 工具策略语句列表。
+	// The list of Aliyun CLI tool policy statements.
 	//
 	// example:
 	//
@@ -338,29 +432,31 @@ func (s *UpdateDigitalEmployeeRequestToolPolicyAliyun) Validate() error {
 }
 
 type UpdateDigitalEmployeeRequestToolPolicyAliyunStatements struct {
-	// Aliyun OpenAPI Action 列表，格式为 product:ApiName、product:Prefix	- 或 product:*。
+	// RAM action
 	//
 	// example:
 	//
 	// ["log:GetProject","log:CreateDashboard"]
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
-	// 本条语句对应的 Aliyun OpenAPI API 版本。
+	// Deprecated
+	//
+	// The API version. This parameter is deprecated.
 	//
 	// example:
 	//
-	// 2020-12-30
+	// 2024-03-30
 	ApiVersion *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
-	// 命中该 API 后的执行策略。
+	// The execution policy.
 	//
 	// example:
 	//
 	// user_ack
 	Decision *string `json:"decision,omitempty" xml:"decision,omitempty"`
-	// 本条语句对应的 Aliyun OpenAPI 产品名。
+	// The cloud service code.
 	//
 	// example:
 	//
-	// Sls
+	// Cms
 	Product *string `json:"product,omitempty" xml:"product,omitempty"`
 }
 

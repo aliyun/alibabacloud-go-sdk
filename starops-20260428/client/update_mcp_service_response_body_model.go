@@ -16,10 +16,14 @@ type iUpdateMcpServiceResponseBody interface {
 }
 
 type UpdateMcpServiceResponseBody struct {
+	// The service name of the MCP service.
+	//
 	// example:
 	//
 	// log-query
 	McpServiceName *string `json:"mcpServiceName,omitempty" xml:"mcpServiceName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0B9377D9-C56B-5C2E-A8A4-************

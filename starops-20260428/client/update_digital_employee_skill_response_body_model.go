@@ -14,6 +14,8 @@ type iUpdateDigitalEmployeeSkillResponseBody interface {
 }
 
 type UpdateDigitalEmployeeSkillResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 350779DC-980D-58FD-BECB-D2275D2487CA

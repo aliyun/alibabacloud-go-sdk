@@ -26,31 +26,44 @@ type iListDigitalEmployeesShrinkRequest interface {
 }
 
 type ListDigitalEmployeesShrinkRequest struct {
+	// The display name of the digital employee.
+	//
 	// example:
 	//
 	// test
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The type of the digital employee.
+	//
 	// example:
 	//
 	// custom
 	EmployeeType *string `json:"employeeType,omitempty" xml:"employeeType,omitempty"`
+	// The number of entries to return on each page. Valid values: 1 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The name of the digital employee.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The token that is used to retrieve the next page of results.
+	//
 	// example:
 	//
 	// xxxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-ae******ey
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	TagsShrink      *string `json:"tags,omitempty" xml:"tags,omitempty"`
+	// The tags.
+	TagsShrink *string `json:"tags,omitempty" xml:"tags,omitempty"`
 }
 
 func (s ListDigitalEmployeesShrinkRequest) String() string {

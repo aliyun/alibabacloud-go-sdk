@@ -16,10 +16,14 @@ type iCreateDigitalEmployeeResponseBody interface {
 }
 
 type CreateDigitalEmployeeResponseBody struct {
+	// The name of the digital employee.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 3B311FD9-A60B-55E0-A896-A0C73*********

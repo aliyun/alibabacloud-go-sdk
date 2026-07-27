@@ -24,7 +24,11 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"cn-beijing":     dara.String("starops.cn-beijing.aliyuncs.com"),
+		"ap-southeast-1": dara.String("starops.ap-southeast-1.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +62,85 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 创建对话
+// 创建产物上传凭证
+//
+// Description:
+//
+// 获取上传内容所需链接，适用于大文件。
+//
+// @param request - CreateArtifactUploadTokenRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateArtifactUploadTokenResponse
+func (client *Client) CreateArtifactUploadTokenWithOptions(name *string, request *CreateArtifactUploadTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateArtifactUploadTokenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ArtifactPath) {
+		query["artifactPath"] = request.ArtifactPath
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateArtifactUploadToken"),
+		Version:     dara.String("2026-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/digitalEmployee/" + dara.PercentEncode(dara.StringValue(name)) + "/artifacts/uploadToken"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateArtifactUploadTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建产物上传凭证
+//
+// Description:
+//
+// 获取上传内容所需链接，适用于大文件。
+//
+// @param request - CreateArtifactUploadTokenRequest
+//
+// @return CreateArtifactUploadTokenResponse
+func (client *Client) CreateArtifactUploadToken(name *string, request *CreateArtifactUploadTokenRequest) (_result *CreateArtifactUploadTokenResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateArtifactUploadTokenResponse{}
+	_body, _err := client.CreateArtifactUploadTokenWithOptions(name, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # New conversation
+//
+// Description:
+//
+// Starts a session.
 //
 // @param request - CreateChatRequest
 //
@@ -75,7 +157,11 @@ func (client *Client) CreateChatWithSSE(request *CreateChatRequest, headers map[
 
 // Summary:
 //
-// 创建对话
+// # New conversation
+//
+// Description:
+//
+// Starts a session.
 //
 // @param request - CreateChatRequest
 //
@@ -138,7 +224,11 @@ func (client *Client) CreateChatWithOptions(request *CreateChatRequest, headers 
 
 // Summary:
 //
-// 创建对话
+// # New conversation
+//
+// Description:
+//
+// Starts a session.
 //
 // @param request - CreateChatRequest
 //
@@ -157,7 +247,11 @@ func (client *Client) CreateChat(request *CreateChatRequest) (_result *CreateCha
 
 // Summary:
 //
-// 创建DigitalEmployee
+// Creates a digital employee.
+//
+// Description:
+//
+// Creates a digital employee.
 //
 // @param request - CreateDigitalEmployeeRequest
 //
@@ -206,6 +300,10 @@ func (client *Client) CreateDigitalEmployeeWithOptions(request *CreateDigitalEmp
 		body["roleArn"] = request.RoleArn
 	}
 
+	if !dara.IsNil(request.SandboxNetworkPolicy) {
+		body["sandboxNetworkPolicy"] = request.SandboxNetworkPolicy
+	}
+
 	if !dara.IsNil(request.Tags) {
 		body["tags"] = request.Tags
 	}
@@ -240,7 +338,11 @@ func (client *Client) CreateDigitalEmployeeWithOptions(request *CreateDigitalEmp
 
 // Summary:
 //
-// 创建DigitalEmployee
+// Creates a digital employee.
+//
+// Description:
+//
+// Creates a digital employee.
 //
 // @param request - CreateDigitalEmployeeRequest
 //
@@ -259,7 +361,11 @@ func (client *Client) CreateDigitalEmployee(request *CreateDigitalEmployeeReques
 
 // Summary:
 //
-// 创建技能
+// Creates a skill for a digital employee.
+//
+// Description:
+//
+// Creates a new skill for a specified digital employee.
 //
 // @param request - CreateDigitalEmployeeSkillRequest
 //
@@ -326,7 +432,11 @@ func (client *Client) CreateDigitalEmployeeSkillWithOptions(name *string, reques
 
 // Summary:
 //
-// 创建技能
+// Creates a skill for a digital employee.
+//
+// Description:
+//
+// Creates a new skill for a specified digital employee.
 //
 // @param request - CreateDigitalEmployeeSkillRequest
 //
@@ -345,7 +455,11 @@ func (client *Client) CreateDigitalEmployeeSkill(name *string, request *CreateDi
 
 // Summary:
 //
-// 创建 MCP 服务
+// Creates an MCP service.
+//
+// Description:
+//
+// Creates an MCP service.
 //
 // @param request - CreateMcpServiceRequest
 //
@@ -416,7 +530,11 @@ func (client *Client) CreateMcpServiceWithOptions(name *string, request *CreateM
 
 // Summary:
 //
-// 创建 MCP 服务
+// Creates an MCP service.
+//
+// Description:
+//
+// Creates an MCP service.
 //
 // @param request - CreateMcpServiceRequest
 //
@@ -435,7 +553,11 @@ func (client *Client) CreateMcpService(name *string, request *CreateMcpServiceRe
 
 // Summary:
 //
-// 创建会话
+// Creates a thread.
+//
+// Description:
+//
+// Creates a thread for a specified digital employee.
 //
 // @param request - CreateThreadRequest
 //
@@ -490,7 +612,11 @@ func (client *Client) CreateThreadWithOptions(name *string, request *CreateThrea
 
 // Summary:
 //
-// 创建会话
+// Creates a thread.
+//
+// Description:
+//
+// Creates a thread for a specified digital employee.
 //
 // @param request - CreateThreadRequest
 //
@@ -509,7 +635,7 @@ func (client *Client) CreateThread(name *string, request *CreateThreadRequest) (
 
 // Summary:
 //
-// 创建票据
+// Creates a ticket.
 //
 // @param request - CreateTicketRequest
 //
@@ -560,7 +686,7 @@ func (client *Client) CreateTicketWithOptions(request *CreateTicketRequest, head
 
 // Summary:
 //
-// 创建票据
+// Creates a ticket.
 //
 // @param request - CreateTicketRequest
 //
@@ -579,7 +705,11 @@ func (client *Client) CreateTicket(request *CreateTicketRequest) (_result *Creat
 
 // Summary:
 //
-// 删除DigitalEmployee
+// Deletes a digital employee.
+//
+// Description:
+//
+// Deletes a digital employee.
 //
 // @param request - DeleteDigitalEmployeeRequest
 //
@@ -620,7 +750,11 @@ func (client *Client) DeleteDigitalEmployeeWithOptions(name *string, request *De
 
 // Summary:
 //
-// 删除DigitalEmployee
+// Deletes a digital employee.
+//
+// Description:
+//
+// Deletes a digital employee.
 //
 // @param request - DeleteDigitalEmployeeRequest
 //
@@ -639,7 +773,11 @@ func (client *Client) DeleteDigitalEmployee(name *string, request *DeleteDigital
 
 // Summary:
 //
-// 删除技能
+// Deletes a skill from a digital employee.
+//
+// Description:
+//
+// Deletes a skill from the specified digital employee.
 //
 // @param request - DeleteDigitalEmployeeSkillRequest
 //
@@ -680,7 +818,11 @@ func (client *Client) DeleteDigitalEmployeeSkillWithOptions(name *string, skillN
 
 // Summary:
 //
-// 删除技能
+// Deletes a skill from a digital employee.
+//
+// Description:
+//
+// Deletes a skill from the specified digital employee.
 //
 // @param request - DeleteDigitalEmployeeSkillRequest
 //
@@ -699,7 +841,7 @@ func (client *Client) DeleteDigitalEmployeeSkill(name *string, skillName *string
 
 // Summary:
 //
-// 删除 MCP 服务
+// Deletes an MCP service.
 //
 // @param request - DeleteMcpServiceRequest
 //
@@ -740,7 +882,7 @@ func (client *Client) DeleteMcpServiceWithOptions(name *string, mcpServiceName *
 
 // Summary:
 //
-// 删除 MCP 服务
+// Deletes an MCP service.
 //
 // @param request - DeleteMcpServiceRequest
 //
@@ -759,7 +901,11 @@ func (client *Client) DeleteMcpService(name *string, mcpServiceName *string, req
 
 // Summary:
 //
-// 删除会话
+// This operation deletes a thread.
+//
+// Description:
+//
+// This operation deletes a specified thread.
 //
 // @param request - DeleteThreadRequest
 //
@@ -800,7 +946,11 @@ func (client *Client) DeleteThreadWithOptions(name *string, threadId *string, re
 
 // Summary:
 //
-// 删除会话
+// This operation deletes a thread.
+//
+// Description:
+//
+// This operation deletes a specified thread.
 //
 // @param request - DeleteThreadRequest
 //
@@ -819,7 +969,7 @@ func (client *Client) DeleteThread(name *string, threadId *string, request *Dele
 
 // Summary:
 //
-// 预览远端 MCP 工具列表
+// Retrieves the tool list from a remote MCP server.
 //
 // @param request - FetchRemoteMcpToolsRequest
 //
@@ -870,7 +1020,7 @@ func (client *Client) FetchRemoteMcpToolsWithOptions(request *FetchRemoteMcpTool
 
 // Summary:
 //
-// 预览远端 MCP 工具列表
+// Retrieves the tool list from a remote MCP server.
 //
 // @param request - FetchRemoteMcpToolsRequest
 //
@@ -889,7 +1039,11 @@ func (client *Client) FetchRemoteMcpTools(request *FetchRemoteMcpToolsRequest) (
 
 // Summary:
 //
-// 下载小型产物文件
+// Retrieves the content of an artifact.
+//
+// Description:
+//
+// Retrieves the content of an artifact.
 //
 // @param request - GetArtifactRequest
 //
@@ -953,7 +1107,11 @@ func (client *Client) GetArtifactWithOptions(name *string, request *GetArtifactR
 
 // Summary:
 //
-// 下载小型产物文件
+// Retrieves the content of an artifact.
+//
+// Description:
+//
+// Retrieves the content of an artifact.
 //
 // @param request - GetArtifactRequest
 //
@@ -972,7 +1130,77 @@ func (client *Client) GetArtifact(name *string, request *GetArtifactRequest) (_r
 
 // Summary:
 //
-// 查询 DigitalEmployee
+// 获取产物下载链接
+//
+// @param request - GetArtifactDownloadUrlRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetArtifactDownloadUrlResponse
+func (client *Client) GetArtifactDownloadUrlWithOptions(name *string, request *GetArtifactDownloadUrlRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetArtifactDownloadUrlResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ArtifactPath) {
+		query["artifactPath"] = request.ArtifactPath
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetArtifactDownloadUrl"),
+		Version:     dara.String("2026-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/digitalEmployee/" + dara.PercentEncode(dara.StringValue(name)) + "/artifacts/downloadUrl"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetArtifactDownloadUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取产物下载链接
+//
+// @param request - GetArtifactDownloadUrlRequest
+//
+// @return GetArtifactDownloadUrlResponse
+func (client *Client) GetArtifactDownloadUrl(name *string, request *GetArtifactDownloadUrlRequest) (_result *GetArtifactDownloadUrlResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetArtifactDownloadUrlResponse{}
+	_body, _err := client.GetArtifactDownloadUrlWithOptions(name, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a digital employee.
+//
+// Description:
+//
+// Retrieves a digital employee.
 //
 // @param request - GetDigitalEmployeeRequest
 //
@@ -1013,7 +1241,11 @@ func (client *Client) GetDigitalEmployeeWithOptions(name *string, request *GetDi
 
 // Summary:
 //
-// 查询 DigitalEmployee
+// Retrieves a digital employee.
+//
+// Description:
+//
+// Retrieves a digital employee.
 //
 // @param request - GetDigitalEmployeeRequest
 //
@@ -1032,7 +1264,11 @@ func (client *Client) GetDigitalEmployee(name *string, request *GetDigitalEmploy
 
 // Summary:
 //
-// 获取技能详情
+// Retrieves the details of a specific skill.
+//
+// Description:
+//
+// Retrieves the details of a specified skill for a digital employee.
 //
 // @param request - GetDigitalEmployeeSkillRequest
 //
@@ -1079,7 +1315,11 @@ func (client *Client) GetDigitalEmployeeSkillWithOptions(name *string, skillName
 
 // Summary:
 //
-// 获取技能详情
+// Retrieves the details of a specific skill.
+//
+// Description:
+//
+// Retrieves the details of a specified skill for a digital employee.
 //
 // @param request - GetDigitalEmployeeSkillRequest
 //
@@ -1098,7 +1338,7 @@ func (client *Client) GetDigitalEmployeeSkill(name *string, skillName *string, r
 
 // Summary:
 //
-// 查询 MCP 服务
+// Queries an MCP service.
 //
 // @param request - GetMcpServiceRequest
 //
@@ -1139,7 +1379,7 @@ func (client *Client) GetMcpServiceWithOptions(name *string, mcpServiceName *str
 
 // Summary:
 //
-// 查询 MCP 服务
+// Queries an MCP service.
 //
 // @param request - GetMcpServiceRequest
 //
@@ -1158,7 +1398,11 @@ func (client *Client) GetMcpService(name *string, mcpServiceName *string, reques
 
 // Summary:
 //
-// 获取会话
+// Retrieves a thread.
+//
+// Description:
+//
+// Retrieves the details of a thread.
 //
 // @param request - GetThreadRequest
 //
@@ -1199,7 +1443,11 @@ func (client *Client) GetThreadWithOptions(name *string, threadId *string, reque
 
 // Summary:
 //
-// 获取会话
+// Retrieves a thread.
+//
+// Description:
+//
+// Retrieves the details of a thread.
 //
 // @param request - GetThreadRequest
 //
@@ -1218,7 +1466,11 @@ func (client *Client) GetThread(name *string, threadId *string, request *GetThre
 
 // Summary:
 //
-// 获取会话数据
+// # Get session data
+//
+// Description:
+//
+// Gets session data.
 //
 // @param request - GetThreadDataRequest
 //
@@ -1269,7 +1521,11 @@ func (client *Client) GetThreadDataWithOptions(name *string, threadId *string, r
 
 // Summary:
 //
-// 获取会话数据
+// # Get session data
+//
+// Description:
+//
+// Gets session data.
 //
 // @param request - GetThreadDataRequest
 //
@@ -1288,7 +1544,11 @@ func (client *Client) GetThreadData(name *string, threadId *string, request *Get
 
 // Summary:
 //
-// 列出产物文件
+// Lists artifacts.
+//
+// Description:
+//
+// Lists the artifacts for a specified digital employee.
 //
 // @param request - ListArtifactsRequest
 //
@@ -1343,7 +1603,11 @@ func (client *Client) ListArtifactsWithOptions(name *string, request *ListArtifa
 
 // Summary:
 //
-// 列出产物文件
+// Lists artifacts.
+//
+// Description:
+//
+// Lists the artifacts for a specified digital employee.
 //
 // @param request - ListArtifactsRequest
 //
@@ -1362,7 +1626,11 @@ func (client *Client) ListArtifacts(name *string, request *ListArtifactsRequest)
 
 // Summary:
 //
-// 列出技能版本
+// Lists the versions of a skill.
+//
+// Description:
+//
+// Lists the previous versions of a skill.
 //
 // @param request - ListDigitalEmployeeSkillVersionsRequest
 //
@@ -1403,7 +1671,11 @@ func (client *Client) ListDigitalEmployeeSkillVersionsWithOptions(name *string, 
 
 // Summary:
 //
-// 列出技能版本
+// Lists the versions of a skill.
+//
+// Description:
+//
+// Lists the previous versions of a skill.
 //
 // @param request - ListDigitalEmployeeSkillVersionsRequest
 //
@@ -1422,7 +1694,11 @@ func (client *Client) ListDigitalEmployeeSkillVersions(name *string, skillName *
 
 // Summary:
 //
-// 列出技能
+// Lists the skills of a digital employee.
+//
+// Description:
+//
+// Lists the skills of a specified digital employee.
 //
 // @param request - ListDigitalEmployeeSkillsRequest
 //
@@ -1477,7 +1753,11 @@ func (client *Client) ListDigitalEmployeeSkillsWithOptions(name *string, request
 
 // Summary:
 //
-// 列出技能
+// Lists the skills of a digital employee.
+//
+// Description:
+//
+// Lists the skills of a specified digital employee.
 //
 // @param request - ListDigitalEmployeeSkillsRequest
 //
@@ -1496,7 +1776,11 @@ func (client *Client) ListDigitalEmployeeSkills(name *string, request *ListDigit
 
 // Summary:
 //
-// 列出资源DigitalEmployee
+// Returns a list of digital employees.
+//
+// Description:
+//
+// Lists digital employees.
 //
 // @param tmpReq - ListDigitalEmployeesRequest
 //
@@ -1573,7 +1857,11 @@ func (client *Client) ListDigitalEmployeesWithOptions(tmpReq *ListDigitalEmploye
 
 // Summary:
 //
-// 列出资源DigitalEmployee
+// Returns a list of digital employees.
+//
+// Description:
+//
+// Lists digital employees.
 //
 // @param request - ListDigitalEmployeesRequest
 //
@@ -1592,7 +1880,7 @@ func (client *Client) ListDigitalEmployees(request *ListDigitalEmployeesRequest)
 
 // Summary:
 //
-// 查询数字员工下的 MCP 服务列表
+// Queries the list of MCP services.
 //
 // @param request - ListMcpServicesRequest
 //
@@ -1643,7 +1931,7 @@ func (client *Client) ListMcpServicesWithOptions(name *string, request *ListMcpS
 
 // Summary:
 //
-// 查询数字员工下的 MCP 服务列表
+// Queries the list of MCP services.
 //
 // @param request - ListMcpServicesRequest
 //
@@ -1662,7 +1950,11 @@ func (client *Client) ListMcpServices(name *string, request *ListMcpServicesRequ
 
 // Summary:
 //
-// 列出会话
+// # List sessions
+//
+// Description:
+//
+// # List sessions
 //
 // @param tmpReq - ListThreadsRequest
 //
@@ -1735,7 +2027,11 @@ func (client *Client) ListThreadsWithOptions(name *string, tmpReq *ListThreadsRe
 
 // Summary:
 //
-// 列出会话
+// # List sessions
+//
+// Description:
+//
+// # List sessions
 //
 // @param request - ListThreadsRequest
 //
@@ -1754,7 +2050,11 @@ func (client *Client) ListThreads(name *string, request *ListThreadsRequest) (_r
 
 // Summary:
 //
-// 更新UpdateDigitalEmployee
+// Updates a digital employee.
+//
+// Description:
+//
+// Updates a digital employee.
 //
 // @param request - UpdateDigitalEmployeeRequest
 //
@@ -1795,6 +2095,10 @@ func (client *Client) UpdateDigitalEmployeeWithOptions(name *string, request *Up
 		body["roleArn"] = request.RoleArn
 	}
 
+	if !dara.IsNil(request.SandboxNetworkPolicy) {
+		body["sandboxNetworkPolicy"] = request.SandboxNetworkPolicy
+	}
+
 	if !dara.IsNil(request.ToolPolicy) {
 		body["toolPolicy"] = request.ToolPolicy
 	}
@@ -1825,7 +2129,11 @@ func (client *Client) UpdateDigitalEmployeeWithOptions(name *string, request *Up
 
 // Summary:
 //
-// 更新UpdateDigitalEmployee
+// Updates a digital employee.
+//
+// Description:
+//
+// Updates a digital employee.
 //
 // @param request - UpdateDigitalEmployeeRequest
 //
@@ -1844,7 +2152,11 @@ func (client *Client) UpdateDigitalEmployee(name *string, request *UpdateDigital
 
 // Summary:
 //
-// 更新技能
+// Updates a skill for a digital employee.
+//
+// Description:
+//
+// This operation updates a skill for a specified digital employee.
 //
 // @param request - UpdateDigitalEmployeeSkillRequest
 //
@@ -1907,7 +2219,11 @@ func (client *Client) UpdateDigitalEmployeeSkillWithOptions(name *string, skillN
 
 // Summary:
 //
-// 更新技能
+// Updates a skill for a digital employee.
+//
+// Description:
+//
+// This operation updates a skill for a specified digital employee.
 //
 // @param request - UpdateDigitalEmployeeSkillRequest
 //
@@ -1926,7 +2242,7 @@ func (client *Client) UpdateDigitalEmployeeSkill(name *string, skillName *string
 
 // Summary:
 //
-// 更新 MCP 服务
+// Updates an MCP service.
 //
 // @param request - UpdateMcpServiceRequest
 //
@@ -1993,7 +2309,7 @@ func (client *Client) UpdateMcpServiceWithOptions(name *string, mcpServiceName *
 
 // Summary:
 //
-// 更新 MCP 服务
+// Updates an MCP service.
 //
 // @param request - UpdateMcpServiceRequest
 //
@@ -2012,7 +2328,11 @@ func (client *Client) UpdateMcpService(name *string, mcpServiceName *string, req
 
 // Summary:
 //
-// 更新会话
+// Updates a thread.
+//
+// Description:
+//
+// Updates a thread.
 //
 // @param request - UpdateThreadRequest
 //
@@ -2067,7 +2387,11 @@ func (client *Client) UpdateThreadWithOptions(name *string, threadId *string, re
 
 // Summary:
 //
-// 更新会话
+// Updates a thread.
+//
+// Description:
+//
+// Updates a thread.
 //
 // @param request - UpdateThreadRequest
 //

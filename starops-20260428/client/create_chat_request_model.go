@@ -22,19 +22,28 @@ type iCreateChatRequest interface {
 }
 
 type CreateChatRequest struct {
+	// The operation type. Valid values: `create` (default), `reconnect`, and `stop`.
+	//
 	// example:
 	//
 	// create
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+	// The name of the digital employee.
+	//
 	// example:
 	//
 	// test
-	DigitalEmployeeName *string                      `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
-	Messages            []*CreateChatRequestMessages `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
+	DigitalEmployeeName *string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
+	// The message list.
+	Messages []*CreateChatRequestMessages `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
+	// The session thread ID.
+	//
 	// example:
 	//
 	// thread_id01
 	ThreadId *string `json:"threadId,omitempty" xml:"threadId,omitempty"`
+	// The set of variables.
+	//
 	// example:
 	//
 	// {
@@ -128,15 +137,21 @@ func (s *CreateChatRequest) Validate() error {
 }
 
 type CreateChatRequestMessages struct {
+	// The multimodal content of the message.
 	Contents []*CreateChatRequestMessagesContents `json:"contents,omitempty" xml:"contents,omitempty" type:"Repeated"`
+	// A unique identifier for the message.
+	//
 	// example:
 	//
 	// message_id02
 	MessageId *string `json:"messageId,omitempty" xml:"messageId,omitempty"`
+	// The role of the message.
+	//
 	// example:
 	//
 	// system
-	Role  *string                  `json:"role,omitempty" xml:"role,omitempty"`
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// The tool call list.
 	Tools []map[string]interface{} `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
 }
 
@@ -198,10 +213,14 @@ func (s *CreateChatRequestMessages) Validate() error {
 }
 
 type CreateChatRequestMessagesContents struct {
+	// The content type.
+	//
 	// example:
 	//
 	// text
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The value of the content.
+	//
 	// example:
 	//
 	// test

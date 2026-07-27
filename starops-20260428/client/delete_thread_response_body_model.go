@@ -14,7 +14,7 @@ type iDeleteThreadResponseBody interface {
 }
 
 type DeleteThreadResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

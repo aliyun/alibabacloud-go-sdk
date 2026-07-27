@@ -26,31 +26,49 @@ type iCreateMcpServiceRequest interface {
 }
 
 type CreateMcpServiceRequest struct {
+	// The request body parameters.
+	//
 	// This parameter is required.
 	Connection *CreateMcpServiceRequestConnection `json:"connection,omitempty" xml:"connection,omitempty" type:"Struct"`
+	// The description of the MCP service.
+	//
 	// example:
 	//
-	// test
+	// 通过 MCP 调用日志查询工具。
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name of the MCP service.
+	//
 	// example:
 	//
-	// test
+	// 日志查询
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// Specifies whether to enable the MCP service.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The service name of the MCP service.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// test
+	// log-query
 	McpServiceName *string `json:"mcpServiceName,omitempty" xml:"mcpServiceName,omitempty"`
+	// The request body parameters.
+	//
 	// This parameter is required.
 	Network *CreateMcpServiceRequestNetwork `json:"network,omitempty" xml:"network,omitempty" type:"Struct"`
+	// The list of MCP tools.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// [{"name":"query_logs"}]
 	Tools []*CreateMcpServiceRequestTools `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
 }
 
@@ -149,23 +167,33 @@ func (s *CreateMcpServiceRequest) Validate() error {
 }
 
 type CreateMcpServiceRequestConnection struct {
+	// The request body parameters.
 	Auth *CreateMcpServiceRequestConnectionAuth `json:"auth,omitempty" xml:"auth,omitempty" type:"Struct"`
+	// The access endpoint of the MCP service.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// http://10.0.1.23:8080/mcp
-	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// https://example.com/mcp
+	Endpoint *string            `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	Headers  map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// The platform type of the MCP service. Valid values: AIGateway and Custom.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Custom
 	Platform *string `json:"platform,omitempty" xml:"platform,omitempty"`
+	// The timeout period for requests to the MCP service. Unit: milliseconds.
+	//
 	// example:
 	//
-	// 10000
+	// 5000
 	Timeout *int64 `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	// The transport protocol of the MCP service. Valid values: http and sse.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -190,6 +218,10 @@ func (s *CreateMcpServiceRequestConnection) GetEndpoint() *string {
 	return s.Endpoint
 }
 
+func (s *CreateMcpServiceRequestConnection) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
 func (s *CreateMcpServiceRequestConnection) GetPlatform() *string {
 	return s.Platform
 }
@@ -209,6 +241,11 @@ func (s *CreateMcpServiceRequestConnection) SetAuth(v *CreateMcpServiceRequestCo
 
 func (s *CreateMcpServiceRequestConnection) SetEndpoint(v string) *CreateMcpServiceRequestConnection {
 	s.Endpoint = &v
+	return s
+}
+
+func (s *CreateMcpServiceRequestConnection) SetHeaders(v map[string]*string) *CreateMcpServiceRequestConnection {
+	s.Headers = v
 	return s
 }
 
@@ -237,8 +274,14 @@ func (s *CreateMcpServiceRequestConnection) Validate() error {
 }
 
 type CreateMcpServiceRequestConnectionAuth struct {
-	// key
+	// The request body parameters.
+	//
+	// example:
+	//
+	// {"token":"example-token"}
 	KeyInfo map[string]*string `json:"keyInfo,omitempty" xml:"keyInfo,omitempty"`
+	// The authentication type. Currently, only bearer is supported.
+	//
 	// example:
 	//
 	// bearer
@@ -276,43 +319,61 @@ func (s *CreateMcpServiceRequestConnectionAuth) Validate() error {
 }
 
 type CreateMcpServiceRequestNetwork struct {
+	// The IP address used to access the MCP service over the VPC network.
+	//
 	// example:
 	//
-	// 100.2.243.1
+	// 10.0.0.12
 	AccessIp *string `json:"accessIp,omitempty" xml:"accessIp,omitempty"`
+	// The port used to access the MCP service over the VPC network. Valid values: 1 to 65535.
+	//
 	// example:
 	//
 	// 8080
 	AccessPort *int64 `json:"accessPort,omitempty" xml:"accessPort,omitempty"`
+	// The gateway ID.
+	//
 	// example:
 	//
 	// gw-xxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The MCP Server instance ID.
+	//
 	// example:
 	//
-	// mcp-xxxx
+	// mcp-xxx
 	McpServerId *string `json:"mcpServerId,omitempty" xml:"mcpServerId,omitempty"`
+	// The network access mode of the MCP service. Valid values: public and vpc.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// public
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	// The region where the VPC network resides.
+	//
 	// example:
 	//
-	// cn-zhangjiakou
+	// cn-hangzhou
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The security group ID.
+	//
 	// example:
 	//
-	// sg-xxxx
+	// sg-xxx
 	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
+	// The VPC ID.
+	//
 	// example:
 	//
 	// vpc-xxx
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// The vSwitch ID.
+	//
 	// example:
 	//
-	// vsw-xxxx
+	// vsw-xxx
 	VswId *string `json:"vswId,omitempty" xml:"vswId,omitempty"`
 }
 
@@ -410,34 +471,75 @@ func (s *CreateMcpServiceRequestNetwork) Validate() error {
 }
 
 type CreateMcpServiceRequestTools struct {
+	// The request body parameters.
+	//
+	// example:
+	//
+	// {}
 	Annotations map[string]interface{} `json:"annotations,omitempty" xml:"annotations,omitempty"`
-	Confirm     *bool                  `json:"confirm,omitempty" xml:"confirm,omitempty"`
+	// Specifies whether user confirmation is required before calling the MCP tool.
+	//
 	// example:
 	//
-	// hahahhahaha
+	// false
+	Confirm *bool `json:"confirm,omitempty" xml:"confirm,omitempty"`
+	// The description of the MCP tool.
+	//
+	// example:
+	//
+	// 查询指定日志库中的日志。
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name of the MCP tool.
+	//
 	// example:
 	//
-	// ahahah
+	// 日志查询工具
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// Specifies whether to enable the MCP tool.
+	//
 	// example:
 	//
-	// True
-	Enable    *bool                    `json:"enable,omitempty" xml:"enable,omitempty"`
-	Execution map[string]interface{}   `json:"execution,omitempty" xml:"execution,omitempty"`
-	Icons     []map[string]interface{} `json:"icons,omitempty" xml:"icons,omitempty" type:"Repeated"`
+	// true
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The request body parameters.
+	//
+	// example:
+	//
+	// {}
+	Execution map[string]interface{} `json:"execution,omitempty" xml:"execution,omitempty"`
+	// The list of MCP tool icons.
+	//
+	// example:
+	//
+	// []
+	Icons []map[string]interface{} `json:"icons,omitempty" xml:"icons,omitempty" type:"Repeated"`
+	// The request body parameters.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {"type":"object","properties":{"query":{"type":"string"}},"required":["query"]}
 	InputSchema map[string]interface{} `json:"inputSchema,omitempty" xml:"inputSchema,omitempty"`
+	// The name of the MCP tool.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// agentloop-1654218979e79fb55dbddac2
-	Name         *string                `json:"name,omitempty" xml:"name,omitempty"`
-	OutputSchema map[string]interface{} `json:"outputSchema,omitempty" xml:"outputSchema,omitempty"`
+	// query_logs
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The request body parameters.
+	//
 	// example:
 	//
-	// 1
+	// {"type":"object"}
+	OutputSchema map[string]interface{} `json:"outputSchema,omitempty" xml:"outputSchema,omitempty"`
+	// The title of the MCP tool.
+	//
+	// example:
+	//
+	// 查询日志
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 

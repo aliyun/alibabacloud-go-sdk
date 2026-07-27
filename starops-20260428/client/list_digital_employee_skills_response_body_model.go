@@ -22,21 +22,28 @@ type iListDigitalEmployeeSkillsResponseBody interface {
 }
 
 type ListDigitalEmployeeSkillsResponseBody struct {
+	// The maximum number of entries returned.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token to retrieve the next page of results. If this parameter is not returned, it indicates that no more results are available.
+	//
 	// example:
 	//
 	// sjC5rekx93Ew7K7VcmI3wkBZBYQ-GphB2ilQu3zJCGxoZuicwyJznfo2riTjr-lq
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 0CEC5375-XXXX-XXXX-XXXX-9A629907C1F0
-	RequestId *string                                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Skills    []*ListDigitalEmployeeSkillsResponseBodySkills `json:"skills,omitempty" xml:"skills,omitempty" type:"Repeated"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The list of skills.
+	Skills []*ListDigitalEmployeeSkillsResponseBodySkills `json:"skills,omitempty" xml:"skills,omitempty" type:"Repeated"`
+	// The total number of entries that match the query.
+	//
 	// example:
 	//
 	// 15
@@ -110,28 +117,40 @@ func (s *ListDigitalEmployeeSkillsResponseBody) Validate() error {
 }
 
 type ListDigitalEmployeeSkillsResponseBodySkills struct {
+	// The time at which the skill was created.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 2026-02-06T14:09:11Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The description of the skill.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name of the skill.
+	//
 	// example:
 	//
 	// test
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// Indicates whether the skill is enabled.
+	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The name of the skill.
+	//
 	// example:
 	//
 	// test
 	SkillName *string `json:"skillName,omitempty" xml:"skillName,omitempty"`
+	// The time at which the skill was last updated.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:

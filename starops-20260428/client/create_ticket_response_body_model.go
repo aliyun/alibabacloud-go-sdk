@@ -14,6 +14,8 @@ type iCreateTicketResponseBody interface {
 }
 
 type CreateTicketResponseBody struct {
+	// The passwordless logon ticket.
+	//
 	// example:
 	//
 	// eyJ***************.eyJ******************.KUT****************

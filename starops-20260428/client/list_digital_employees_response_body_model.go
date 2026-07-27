@@ -22,19 +22,28 @@ type iListDigitalEmployeesResponseBody interface {
 }
 
 type ListDigitalEmployeesResponseBody struct {
+	// A list of digital employees.
 	DigitalEmployees []*ListDigitalEmployeesResponseBodyDigitalEmployees `json:"digitalEmployees,omitempty" xml:"digitalEmployees,omitempty" type:"Repeated"`
+	// The maximum number of entries returned.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The token to retrieve the next page of results.
+	//
 	// example:
 	//
 	// xxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The total count.
+	//
 	// example:
 	//
 	// 56
@@ -108,43 +117,64 @@ func (s *ListDigitalEmployeesResponseBody) Validate() error {
 }
 
 type ListDigitalEmployeesResponseBodyDigitalEmployees struct {
+	// The custom attributes of the digital employee.
 	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	// The creation time.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 2025-11-04T08:08:57Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The default rule of the digital employee.
+	//
 	// example:
 	//
 	// test
 	DefaultRule *string `json:"defaultRule,omitempty" xml:"defaultRule,omitempty"`
+	// The description of the digital employee.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name of the digital employee.
+	//
 	// example:
 	//
 	// test
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The type of the digital employee.
+	//
 	// example:
 	//
 	// custom
-	EmployeeType *string                                                     `json:"employeeType,omitempty" xml:"employeeType,omitempty"`
-	Knowledges   *ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges `json:"knowledges,omitempty" xml:"knowledges,omitempty" type:"Struct"`
+	EmployeeType *string `json:"employeeType,omitempty" xml:"employeeType,omitempty"`
+	// A list of knowledge bases.
+	Knowledges *ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges `json:"knowledges,omitempty" xml:"knowledges,omitempty" type:"Struct"`
+	// The name of the digital employee.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-ae******ey
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The RAM role ARN.
+	//
 	// example:
 	//
 	// acs:ram::12345678912:role/testrole
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	Tags    []*Tag  `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// A list of tags.
+	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The modification time.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
@@ -288,8 +318,10 @@ func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) Validate() error {
 }
 
 type ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges struct {
+	// A list of Model Studio knowledge bases.
 	Bailian []*ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledgesBailian `json:"bailian,omitempty" xml:"bailian,omitempty" type:"Repeated"`
-	Sop     []map[string]interface{}                                             `json:"sop,omitempty" xml:"sop,omitempty" type:"Repeated"`
+	// A list of SOP knowledge bases.
+	Sop []map[string]interface{} `json:"sop,omitempty" xml:"sop,omitempty" type:"Repeated"`
 }
 
 func (s ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges) String() string {
@@ -332,18 +364,26 @@ func (s *ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges) Validate() 
 }
 
 type ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledgesBailian struct {
+	// The attributes of the knowledge base.
+	//
 	// example:
 	//
 	// test
 	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	// The ID of the Model Studio index.
+	//
 	// example:
 	//
 	// index-xxxx
 	IndexId *string `json:"indexId,omitempty" xml:"indexId,omitempty"`
+	// The region of the knowledge base.
+	//
 	// example:
 	//
 	// cn-beijing
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The ID of the Model Studio workspace.
+	//
 	// example:
 	//
 	// llm-xxxx

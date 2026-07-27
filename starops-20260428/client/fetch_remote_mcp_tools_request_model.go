@@ -16,9 +16,12 @@ type iFetchRemoteMcpToolsRequest interface {
 }
 
 type FetchRemoteMcpToolsRequest struct {
+	// The request body parameters.
+	//
 	// This parameter is required.
 	Connection *FetchRemoteMcpToolsRequestConnection `json:"connection,omitempty" xml:"connection,omitempty" type:"Struct"`
-	Network    *FetchRemoteMcpToolsRequestNetwork    `json:"network,omitempty" xml:"network,omitempty" type:"Struct"`
+	// The request body parameters.
+	Network *FetchRemoteMcpToolsRequestNetwork `json:"network,omitempty" xml:"network,omitempty" type:"Struct"`
 }
 
 func (s FetchRemoteMcpToolsRequest) String() string {
@@ -62,21 +65,31 @@ func (s *FetchRemoteMcpToolsRequest) Validate() error {
 }
 
 type FetchRemoteMcpToolsRequestConnection struct {
+	// The request body parameters.
 	Auth *FetchRemoteMcpToolsRequestConnectionAuth `json:"auth,omitempty" xml:"auth,omitempty" type:"Struct"`
+	// The access endpoint of the MCP service.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://example.com/mcp
-	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	Endpoint *string            `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	Headers  map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// The MCP service platform type. Valid values: AIGateway and Custom.
+	//
 	// example:
 	//
 	// Custom
 	Platform *string `json:"platform,omitempty" xml:"platform,omitempty"`
+	// The timeout period for requests to the MCP service. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 5000
 	Timeout *int64 `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	// The transport protocol of the MCP service. Valid values: http and sse.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -101,6 +114,10 @@ func (s *FetchRemoteMcpToolsRequestConnection) GetEndpoint() *string {
 	return s.Endpoint
 }
 
+func (s *FetchRemoteMcpToolsRequestConnection) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
 func (s *FetchRemoteMcpToolsRequestConnection) GetPlatform() *string {
 	return s.Platform
 }
@@ -120,6 +137,11 @@ func (s *FetchRemoteMcpToolsRequestConnection) SetAuth(v *FetchRemoteMcpToolsReq
 
 func (s *FetchRemoteMcpToolsRequestConnection) SetEndpoint(v string) *FetchRemoteMcpToolsRequestConnection {
 	s.Endpoint = &v
+	return s
+}
+
+func (s *FetchRemoteMcpToolsRequestConnection) SetHeaders(v map[string]*string) *FetchRemoteMcpToolsRequestConnection {
+	s.Headers = v
 	return s
 }
 
@@ -148,10 +170,14 @@ func (s *FetchRemoteMcpToolsRequestConnection) Validate() error {
 }
 
 type FetchRemoteMcpToolsRequestConnectionAuth struct {
+	// The request body parameters.
+	//
 	// example:
 	//
 	// {"token":"example-token"}
 	KeyInfo map[string]*string `json:"keyInfo,omitempty" xml:"keyInfo,omitempty"`
+	// The authentication type. Currently, only bearer is supported.
+	//
 	// example:
 	//
 	// bearer
@@ -189,38 +215,56 @@ func (s *FetchRemoteMcpToolsRequestConnectionAuth) Validate() error {
 }
 
 type FetchRemoteMcpToolsRequestNetwork struct {
+	// The IP address used to access the MCP service over the VPC network.
+	//
 	// example:
 	//
 	// 10.0.0.12
 	AccessIp *string `json:"accessIp,omitempty" xml:"accessIp,omitempty"`
+	// The port used to access the MCP service over the VPC network. Valid values: 1 to 65535.
+	//
 	// example:
 	//
 	// 8080
 	AccessPort *int64 `json:"accessPort,omitempty" xml:"accessPort,omitempty"`
+	// The gateway ID.
+	//
 	// example:
 	//
 	// gw-xxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The MCP Server instance ID.
+	//
 	// example:
 	//
 	// mcp-xxx
 	McpServerId *string `json:"mcpServerId,omitempty" xml:"mcpServerId,omitempty"`
+	// The network access mode of the MCP service. Valid values: public and vpc.
+	//
 	// example:
 	//
 	// public
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	// The region where the VPC network resides.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The security group ID.
+	//
 	// example:
 	//
 	// sg-xxx
 	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
+	// The VPC ID.
+	//
 	// example:
 	//
 	// vpc-xxx
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// The vSwitch ID.
+	//
 	// example:
 	//
 	// vsw-xxx

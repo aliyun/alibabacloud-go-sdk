@@ -14,6 +14,8 @@ type iGetDigitalEmployeeSkillRequest interface {
 }
 
 type GetDigitalEmployeeSkillRequest struct {
+	// The version of the skill to retrieve. If this parameter is not specified, the latest version is returned.
+	//
 	// example:
 	//
 	// 1770386951147366810

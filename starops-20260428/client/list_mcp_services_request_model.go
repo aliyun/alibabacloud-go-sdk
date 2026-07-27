@@ -16,10 +16,14 @@ type iListMcpServicesRequest interface {
 }
 
 type ListMcpServicesRequest struct {
+	// The maximum number of entries to return in this query.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token for the next query.
+	//
 	// example:
 	//
 	// eyJvZmZzZXQiOjIwfQ==

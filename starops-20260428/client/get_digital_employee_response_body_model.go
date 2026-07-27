@@ -33,6 +33,8 @@ type iGetDigitalEmployeeResponseBody interface {
 	GetResourceGroupId() *string
 	SetRoleArn(v string) *GetDigitalEmployeeResponseBody
 	GetRoleArn() *string
+	SetSandboxNetworkPolicy(v *GetDigitalEmployeeResponseBodySandboxNetworkPolicy) *GetDigitalEmployeeResponseBody
+	GetSandboxNetworkPolicy() *GetDigitalEmployeeResponseBodySandboxNetworkPolicy
 	SetTags(v []*Tag) *GetDigitalEmployeeResponseBody
 	GetTags() []*Tag
 	SetToolPolicy(v *GetDigitalEmployeeResponseBodyToolPolicy) *GetDigitalEmployeeResponseBody
@@ -42,57 +44,88 @@ type iGetDigitalEmployeeResponseBody interface {
 }
 
 type GetDigitalEmployeeResponseBody struct {
+	// The attributes.
 	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	// The creation time.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 2025-03-11T08:21:58Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The default rule of the digital employee.
+	//
 	// example:
 	//
 	// test
 	DefaultRule *string `json:"defaultRule,omitempty" xml:"defaultRule,omitempty"`
+	// The description of the digital employee.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name of the digital employee.
+	//
 	// example:
 	//
 	// test
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The type of the digital employee.
+	//
 	// example:
 	//
 	// custom
-	EmployeeType *string                                   `json:"employeeType,omitempty" xml:"employeeType,omitempty"`
-	Knowledges   *GetDigitalEmployeeResponseBodyKnowledges `json:"knowledges,omitempty" xml:"knowledges,omitempty" type:"Struct"`
+	EmployeeType *string `json:"employeeType,omitempty" xml:"employeeType,omitempty"`
+	// The knowledge base list.
+	Knowledges *GetDigitalEmployeeResponseBodyKnowledges `json:"knowledges,omitempty" xml:"knowledges,omitempty" type:"Struct"`
+	// The name of the digital employee.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0B9377D9-C56B-5C2E-A8A4-************
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-ae******ey
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The ARN of the RAM role.
+	//
 	// example:
 	//
 	// acs:ram::12345678912:role/testrole
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	Tags    []*Tag  `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// 数字员工工具调用安全策略配置。
+	// The sandbox network ACL policy configuration for the digital employee.
+	//
+	// example:
+	//
+	// {"allowFqdns":["api.example.com"],"allowCidrs":["1.2.3.0/24","8.8.8.8"],"enableAcl":false}
+	SandboxNetworkPolicy *GetDigitalEmployeeResponseBodySandboxNetworkPolicy `json:"sandboxNetworkPolicy,omitempty" xml:"sandboxNetworkPolicy,omitempty" type:"Struct"`
+	// The tags.
+	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The tool policy.
 	//
 	// example:
 	//
 	// {"aliyun":{"enable":true,"statements":[{"decision":"user_ack","product":"Sls","apiVersion":"2020-12-30","actions":["log:GetProject","log:CreateDashboard"]}]}}
 	ToolPolicy *GetDigitalEmployeeResponseBodyToolPolicy `json:"toolPolicy,omitempty" xml:"toolPolicy,omitempty" type:"Struct"`
+	// The update time.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
@@ -155,6 +188,10 @@ func (s *GetDigitalEmployeeResponseBody) GetResourceGroupId() *string {
 
 func (s *GetDigitalEmployeeResponseBody) GetRoleArn() *string {
 	return s.RoleArn
+}
+
+func (s *GetDigitalEmployeeResponseBody) GetSandboxNetworkPolicy() *GetDigitalEmployeeResponseBodySandboxNetworkPolicy {
+	return s.SandboxNetworkPolicy
 }
 
 func (s *GetDigitalEmployeeResponseBody) GetTags() []*Tag {
@@ -229,6 +266,11 @@ func (s *GetDigitalEmployeeResponseBody) SetRoleArn(v string) *GetDigitalEmploye
 	return s
 }
 
+func (s *GetDigitalEmployeeResponseBody) SetSandboxNetworkPolicy(v *GetDigitalEmployeeResponseBodySandboxNetworkPolicy) *GetDigitalEmployeeResponseBody {
+	s.SandboxNetworkPolicy = v
+	return s
+}
+
 func (s *GetDigitalEmployeeResponseBody) SetTags(v []*Tag) *GetDigitalEmployeeResponseBody {
 	s.Tags = v
 	return s
@@ -250,6 +292,11 @@ func (s *GetDigitalEmployeeResponseBody) Validate() error {
 			return err
 		}
 	}
+	if s.SandboxNetworkPolicy != nil {
+		if err := s.SandboxNetworkPolicy.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Tags != nil {
 		for _, item := range s.Tags {
 			if item != nil {
@@ -268,8 +315,10 @@ func (s *GetDigitalEmployeeResponseBody) Validate() error {
 }
 
 type GetDigitalEmployeeResponseBodyKnowledges struct {
+	// The Bailian knowledge base list.
 	Bailian []*GetDigitalEmployeeResponseBodyKnowledgesBailian `json:"bailian,omitempty" xml:"bailian,omitempty" type:"Repeated"`
-	Sop     []map[string]interface{}                           `json:"sop,omitempty" xml:"sop,omitempty" type:"Repeated"`
+	// The SOP knowledge base list.
+	Sop []map[string]interface{} `json:"sop,omitempty" xml:"sop,omitempty" type:"Repeated"`
 }
 
 func (s GetDigitalEmployeeResponseBodyKnowledges) String() string {
@@ -312,18 +361,26 @@ func (s *GetDigitalEmployeeResponseBodyKnowledges) Validate() error {
 }
 
 type GetDigitalEmployeeResponseBodyKnowledgesBailian struct {
+	// The knowledge base attributes.
+	//
 	// example:
 	//
 	// test
 	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	// The Bailian index ID.
+	//
 	// example:
 	//
 	// index-xxxx
 	IndexId *string `json:"indexId,omitempty" xml:"indexId,omitempty"`
+	// The region of the knowledge base.
+	//
 	// example:
 	//
 	// cn-beijing
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The Bailian workspace ID.
+	//
 	// example:
 	//
 	// llm-xxxxx
@@ -378,8 +435,60 @@ func (s *GetDigitalEmployeeResponseBodyKnowledgesBailian) Validate() error {
 	return dara.Validate(s)
 }
 
+type GetDigitalEmployeeResponseBodySandboxNetworkPolicy struct {
+	// The list of allowed CIDRs or IP addresses.
+	AllowCidrs []*string `json:"allowCidrs,omitempty" xml:"allowCidrs,omitempty" type:"Repeated"`
+	// The list of allowed FQDNs.
+	AllowFqdns []*string `json:"allowFqdns,omitempty" xml:"allowFqdns,omitempty" type:"Repeated"`
+	// Indicates whether the sandbox network ACL is enabled.
+	//
+	// example:
+	//
+	// false
+	EnableAcl *bool `json:"enableAcl,omitempty" xml:"enableAcl,omitempty"`
+}
+
+func (s GetDigitalEmployeeResponseBodySandboxNetworkPolicy) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetDigitalEmployeeResponseBodySandboxNetworkPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *GetDigitalEmployeeResponseBodySandboxNetworkPolicy) GetAllowCidrs() []*string {
+	return s.AllowCidrs
+}
+
+func (s *GetDigitalEmployeeResponseBodySandboxNetworkPolicy) GetAllowFqdns() []*string {
+	return s.AllowFqdns
+}
+
+func (s *GetDigitalEmployeeResponseBodySandboxNetworkPolicy) GetEnableAcl() *bool {
+	return s.EnableAcl
+}
+
+func (s *GetDigitalEmployeeResponseBodySandboxNetworkPolicy) SetAllowCidrs(v []*string) *GetDigitalEmployeeResponseBodySandboxNetworkPolicy {
+	s.AllowCidrs = v
+	return s
+}
+
+func (s *GetDigitalEmployeeResponseBodySandboxNetworkPolicy) SetAllowFqdns(v []*string) *GetDigitalEmployeeResponseBodySandboxNetworkPolicy {
+	s.AllowFqdns = v
+	return s
+}
+
+func (s *GetDigitalEmployeeResponseBodySandboxNetworkPolicy) SetEnableAcl(v bool) *GetDigitalEmployeeResponseBodySandboxNetworkPolicy {
+	s.EnableAcl = &v
+	return s
+}
+
+func (s *GetDigitalEmployeeResponseBodySandboxNetworkPolicy) Validate() error {
+	return dara.Validate(s)
+}
+
 type GetDigitalEmployeeResponseBodyToolPolicy struct {
-	// Aliyun MCP 工具调用安全策略配置。
+	// The security policy configuration for Aliyun CLI tool calling.
 	//
 	// example:
 	//
@@ -414,13 +523,13 @@ func (s *GetDigitalEmployeeResponseBodyToolPolicy) Validate() error {
 }
 
 type GetDigitalEmployeeResponseBodyToolPolicyAliyun struct {
-	// 是否启用 Aliyun MCP 工具策略。
+	// Indicates whether the policy is enabled.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// Aliyun OpenAPI 工具策略语句列表。
+	// The list of Aliyun CLI tool policy statements.
 	//
 	// example:
 	//
@@ -468,27 +577,27 @@ func (s *GetDigitalEmployeeResponseBodyToolPolicyAliyun) Validate() error {
 }
 
 type GetDigitalEmployeeResponseBodyToolPolicyAliyunStatements struct {
-	// Aliyun OpenAPI Action 列表，格式为 product:ApiName、product:Prefix	- 或 product:*。
+	// The list of RAM actions.
 	//
 	// example:
 	//
 	// ["log:GetProject","log:CreateDashboard"]
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
-	// 本条语句对应的 Aliyun OpenAPI API 版本。
+	// Deprecated
 	//
-	// This parameter is required.
+	// The API version.
 	//
 	// example:
 	//
 	// 2020-12-30
 	ApiVersion *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
-	// 命中该 API 后的执行策略。
+	// The execution policy.
 	//
 	// example:
 	//
 	// user_ack
 	Decision *string `json:"decision,omitempty" xml:"decision,omitempty"`
-	// 本条语句对应的 Aliyun OpenAPI 产品名。
+	// The cloud product code.
 	//
 	// This parameter is required.
 	//

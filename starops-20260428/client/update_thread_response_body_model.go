@@ -18,16 +18,20 @@ type iUpdateThreadResponseBody interface {
 }
 
 type UpdateThreadResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 264C3E89-XXXX-XXXX-XXXX-CE9C2196C7DC
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The ID of the thread.
+	//
 	// example:
 	//
 	// thread-12313
 	ThreadId *string `json:"threadId,omitempty" xml:"threadId,omitempty"`
+	// The version number.
+	//
 	// example:
 	//
 	// 123123

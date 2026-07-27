@@ -16,10 +16,14 @@ type iGetThreadDataRequest interface {
 }
 
 type GetThreadDataRequest struct {
+	// The maximum number of session entries to return. The maximum value is 100.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination cursor.
+	//
 	// example:
 	//
 	// xxxxxxxxxx

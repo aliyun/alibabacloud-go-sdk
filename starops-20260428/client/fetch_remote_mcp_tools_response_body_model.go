@@ -16,10 +16,14 @@ type iFetchRemoteMcpToolsResponseBody interface {
 }
 
 type FetchRemoteMcpToolsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 0B9377D9-C56B-5C2E-A8A4-************
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The raw tools/list response returned by the remote MCP service.
+	//
 	// example:
 	//
 	// {"jsonrpc":"2.0","id":1,"result":{"tools":[]}}

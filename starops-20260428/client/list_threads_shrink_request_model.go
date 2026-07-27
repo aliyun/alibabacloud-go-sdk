@@ -24,20 +24,30 @@ type iListThreadsShrinkRequest interface {
 }
 
 type ListThreadsShrinkRequest struct {
-	FilterShrink   *string `json:"filter,omitempty" xml:"filter,omitempty"`
-	IncludeMission *bool   `json:"includeMission,omitempty" xml:"includeMission,omitempty"`
+	// Filters the results. If this parameter is omitted, the operation returns all threads in the instance.
+	FilterShrink *string `json:"filter,omitempty" xml:"filter,omitempty"`
+	// Specifies whether to include threads created by missions.
+	IncludeMission *bool `json:"includeMission,omitempty" xml:"includeMission,omitempty"`
+	// The maximum number of results to return. Maximum value: 200.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token.
+	//
 	// example:
 	//
 	// xxxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The status of the thread.
+	//
 	// example:
 	//
 	// active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The thread ID.
+	//
 	// example:
 	//
 	// thread-123123

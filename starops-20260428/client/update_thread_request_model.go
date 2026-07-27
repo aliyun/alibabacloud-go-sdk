@@ -18,11 +18,16 @@ type iUpdateThreadRequest interface {
 }
 
 type UpdateThreadRequest struct {
+	// The attributes of the thread.
 	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	// The status of the thread.
+	//
 	// example:
 	//
 	// active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The title of the thread.
+	//
 	// example:
 	//
 	// title

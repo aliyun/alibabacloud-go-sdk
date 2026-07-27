@@ -14,6 +14,8 @@ type iGetArtifactRequest interface {
 }
 
 type GetArtifactRequest struct {
+	// The path to the artifact.
+	//
 	// This parameter is required.
 	//
 	// example:
