@@ -22,7 +22,7 @@ type iListDeliveryTasksShrinkRequest interface {
 }
 
 type ListDeliveryTasksShrinkRequest struct {
-	// Fuzzy search by task name or task ID (LIKE semantics).
+	// Fuzzy search by task name or task ID (like semantics).
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type ListDeliveryTasksShrinkRequest struct {
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token. Leave this parameter empty for the first request. For subsequent requests, pass the nextToken value returned in the previous response.
+	// The pagination token. Leave this parameter empty for the first request. For subsequent requests, pass in the nextToken value returned in the previous response.
 	//
 	// example:
 	//

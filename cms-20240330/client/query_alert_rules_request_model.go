@@ -17,6 +17,8 @@ type iQueryAlertRulesRequest interface {
 	GetMaxResults() *int32
 	SetNextToken(v string) *QueryAlertRulesRequest
 	GetNextToken() *string
+	SetQueryJson(v string) *QueryAlertRulesRequest
+	GetQueryJson() *string
 }
 
 type QueryAlertRulesRequest struct {
@@ -34,12 +36,13 @@ type QueryAlertRulesRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token that marks the position from which you want to start reading data. If you leave this parameter empty, data is read from the beginning.
+	// The token that marks the position from which you want to start reading. If this parameter is left empty, data is read from the beginning.
 	//
 	// example:
 	//
 	// 123456
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	QueryJson *string `json:"queryJson,omitempty" xml:"queryJson,omitempty"`
 }
 
 func (s QueryAlertRulesRequest) String() string {
@@ -66,6 +69,10 @@ func (s *QueryAlertRulesRequest) GetNextToken() *string {
 	return s.NextToken
 }
 
+func (s *QueryAlertRulesRequest) GetQueryJson() *string {
+	return s.QueryJson
+}
+
 func (s *QueryAlertRulesRequest) SetBody(v *QueryAlertRulesInput) *QueryAlertRulesRequest {
 	s.Body = v
 	return s
@@ -83,6 +90,11 @@ func (s *QueryAlertRulesRequest) SetMaxResults(v int32) *QueryAlertRulesRequest 
 
 func (s *QueryAlertRulesRequest) SetNextToken(v string) *QueryAlertRulesRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *QueryAlertRulesRequest) SetQueryJson(v string) *QueryAlertRulesRequest {
+	s.QueryJson = &v
 	return s
 }
 

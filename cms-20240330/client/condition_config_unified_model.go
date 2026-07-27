@@ -11,8 +11,10 @@ type iConditionConfigUnified interface {
 	GoString() string
 	SetAggregate(v string) *ConditionConfigUnified
 	GetAggregate() *string
-	SetCompareList(v []*ApmCompositeCompareConfig) *ConditionConfigUnified
-	GetCompareList() []*ApmCompositeCompareConfig
+	SetAlertCount(v int32) *ConditionConfigUnified
+	GetAlertCount() *int32
+	SetCompareList(v []*CompareList) *ConditionConfigUnified
+	GetCompareList() []*CompareList
 	SetCompositeEscalation(v *CloudMonitoringCompositeEscalation) *ConditionConfigUnified
 	GetCompositeEscalation() *CloudMonitoringCompositeEscalation
 	SetCountOperator(v string) *ConditionConfigUnified
@@ -41,6 +43,12 @@ type iConditionConfigUnified interface {
 	GetMax() *float64
 	SetMin(v float64) *ConditionConfigUnified
 	GetMin() *float64
+	SetNoDataAlertLevel(v string) *ConditionConfigUnified
+	GetNoDataAlertLevel() *string
+	SetNoDataAlertSeverity(v string) *ConditionConfigUnified
+	GetNoDataAlertSeverity() *string
+	SetNoDataAppendValue(v float64) *ConditionConfigUnified
+	GetNoDataAppendValue() *float64
 	SetNoDataPolicy(v string) *ConditionConfigUnified
 	GetNoDataPolicy() *string
 	SetOperator(v string) *ConditionConfigUnified
@@ -55,10 +63,10 @@ type iConditionConfigUnified interface {
 	GetSimpleEscalation() *CloudMonitoringSimpleEscalation
 	SetThreshold(v float64) *ConditionConfigUnified
 	GetThreshold() *float64
-	SetThresholdList(v []*ApmThresholdConfig) *ConditionConfigUnified
-	GetThresholdList() []*ApmThresholdConfig
-	SetTriggers(v []*MetricSetMultiTrigger) *ConditionConfigUnified
-	GetTriggers() []*MetricSetMultiTrigger
+	SetThresholdList(v []*ThresholdList) *ConditionConfigUnified
+	GetThresholdList() []*ThresholdList
+	SetTriggers(v []*Triggers) *ConditionConfigUnified
+	GetTriggers() []*Triggers
 	SetType(v string) *ConditionConfigUnified
 	GetType() *string
 	SetYoyTimeUnit(v string) *ConditionConfigUnified
@@ -69,7 +77,8 @@ type iConditionConfigUnified interface {
 
 type ConditionConfigUnified struct {
 	Aggregate                 *string                              `json:"aggregate,omitempty" xml:"aggregate,omitempty"`
-	CompareList               []*ApmCompositeCompareConfig         `json:"compareList,omitempty" xml:"compareList,omitempty" type:"Repeated"`
+	AlertCount                *int32                               `json:"alertCount,omitempty" xml:"alertCount,omitempty"`
+	CompareList               []*CompareList                       `json:"compareList,omitempty" xml:"compareList,omitempty" type:"Repeated"`
 	CompositeEscalation       *CloudMonitoringCompositeEscalation  `json:"compositeEscalation,omitempty" xml:"compositeEscalation,omitempty"`
 	CountOperator             *string                              `json:"countOperator,omitempty" xml:"countOperator,omitempty"`
 	CountThreshold            *int64                               `json:"countThreshold,omitempty" xml:"countThreshold,omitempty"`
@@ -84,6 +93,9 @@ type ConditionConfigUnified struct {
 	MatchValue                *string                              `json:"matchValue,omitempty" xml:"matchValue,omitempty"`
 	Max                       *float64                             `json:"max,omitempty" xml:"max,omitempty"`
 	Min                       *float64                             `json:"min,omitempty" xml:"min,omitempty"`
+	NoDataAlertLevel          *string                              `json:"noDataAlertLevel,omitempty" xml:"noDataAlertLevel,omitempty"`
+	NoDataAlertSeverity       *string                              `json:"noDataAlertSeverity,omitempty" xml:"noDataAlertSeverity,omitempty"`
+	NoDataAppendValue         *float64                             `json:"noDataAppendValue,omitempty" xml:"noDataAppendValue,omitempty"`
 	NoDataPolicy              *string                              `json:"noDataPolicy,omitempty" xml:"noDataPolicy,omitempty"`
 	Operator                  *string                              `json:"operator,omitempty" xml:"operator,omitempty"`
 	Prometheus                *CloudMonitoringPrometheusEscalation `json:"prometheus,omitempty" xml:"prometheus,omitempty"`
@@ -91,8 +103,8 @@ type ConditionConfigUnified struct {
 	Severity                  *string                              `json:"severity,omitempty" xml:"severity,omitempty"`
 	SimpleEscalation          *CloudMonitoringSimpleEscalation     `json:"simpleEscalation,omitempty" xml:"simpleEscalation,omitempty"`
 	Threshold                 *float64                             `json:"threshold,omitempty" xml:"threshold,omitempty"`
-	ThresholdList             []*ApmThresholdConfig                `json:"thresholdList,omitempty" xml:"thresholdList,omitempty" type:"Repeated"`
-	Triggers                  []*MetricSetMultiTrigger             `json:"triggers,omitempty" xml:"triggers,omitempty" type:"Repeated"`
+	ThresholdList             []*ThresholdList                     `json:"thresholdList,omitempty" xml:"thresholdList,omitempty" type:"Repeated"`
+	Triggers                  []*Triggers                          `json:"triggers,omitempty" xml:"triggers,omitempty" type:"Repeated"`
 	// This parameter is required.
 	Type         *string `json:"type,omitempty" xml:"type,omitempty"`
 	YoyTimeUnit  *string `json:"yoyTimeUnit,omitempty" xml:"yoyTimeUnit,omitempty"`
@@ -111,7 +123,11 @@ func (s *ConditionConfigUnified) GetAggregate() *string {
 	return s.Aggregate
 }
 
-func (s *ConditionConfigUnified) GetCompareList() []*ApmCompositeCompareConfig {
+func (s *ConditionConfigUnified) GetAlertCount() *int32 {
+	return s.AlertCount
+}
+
+func (s *ConditionConfigUnified) GetCompareList() []*CompareList {
 	return s.CompareList
 }
 
@@ -171,6 +187,18 @@ func (s *ConditionConfigUnified) GetMin() *float64 {
 	return s.Min
 }
 
+func (s *ConditionConfigUnified) GetNoDataAlertLevel() *string {
+	return s.NoDataAlertLevel
+}
+
+func (s *ConditionConfigUnified) GetNoDataAlertSeverity() *string {
+	return s.NoDataAlertSeverity
+}
+
+func (s *ConditionConfigUnified) GetNoDataAppendValue() *float64 {
+	return s.NoDataAppendValue
+}
+
 func (s *ConditionConfigUnified) GetNoDataPolicy() *string {
 	return s.NoDataPolicy
 }
@@ -199,11 +227,11 @@ func (s *ConditionConfigUnified) GetThreshold() *float64 {
 	return s.Threshold
 }
 
-func (s *ConditionConfigUnified) GetThresholdList() []*ApmThresholdConfig {
+func (s *ConditionConfigUnified) GetThresholdList() []*ThresholdList {
 	return s.ThresholdList
 }
 
-func (s *ConditionConfigUnified) GetTriggers() []*MetricSetMultiTrigger {
+func (s *ConditionConfigUnified) GetTriggers() []*Triggers {
 	return s.Triggers
 }
 
@@ -224,7 +252,12 @@ func (s *ConditionConfigUnified) SetAggregate(v string) *ConditionConfigUnified 
 	return s
 }
 
-func (s *ConditionConfigUnified) SetCompareList(v []*ApmCompositeCompareConfig) *ConditionConfigUnified {
+func (s *ConditionConfigUnified) SetAlertCount(v int32) *ConditionConfigUnified {
+	s.AlertCount = &v
+	return s
+}
+
+func (s *ConditionConfigUnified) SetCompareList(v []*CompareList) *ConditionConfigUnified {
 	s.CompareList = v
 	return s
 }
@@ -299,6 +332,21 @@ func (s *ConditionConfigUnified) SetMin(v float64) *ConditionConfigUnified {
 	return s
 }
 
+func (s *ConditionConfigUnified) SetNoDataAlertLevel(v string) *ConditionConfigUnified {
+	s.NoDataAlertLevel = &v
+	return s
+}
+
+func (s *ConditionConfigUnified) SetNoDataAlertSeverity(v string) *ConditionConfigUnified {
+	s.NoDataAlertSeverity = &v
+	return s
+}
+
+func (s *ConditionConfigUnified) SetNoDataAppendValue(v float64) *ConditionConfigUnified {
+	s.NoDataAppendValue = &v
+	return s
+}
+
 func (s *ConditionConfigUnified) SetNoDataPolicy(v string) *ConditionConfigUnified {
 	s.NoDataPolicy = &v
 	return s
@@ -334,12 +382,12 @@ func (s *ConditionConfigUnified) SetThreshold(v float64) *ConditionConfigUnified
 	return s
 }
 
-func (s *ConditionConfigUnified) SetThresholdList(v []*ApmThresholdConfig) *ConditionConfigUnified {
+func (s *ConditionConfigUnified) SetThresholdList(v []*ThresholdList) *ConditionConfigUnified {
 	s.ThresholdList = v
 	return s
 }
 
-func (s *ConditionConfigUnified) SetTriggers(v []*MetricSetMultiTrigger) *ConditionConfigUnified {
+func (s *ConditionConfigUnified) SetTriggers(v []*Triggers) *ConditionConfigUnified {
 	s.Triggers = v
 	return s
 }

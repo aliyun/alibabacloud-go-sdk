@@ -17,6 +17,8 @@ type iManageAlertRulesUnifiedActionInput interface {
 	GetAnnotations() map[string]*string
 	SetArmsIntegrationConfig(v *ArmsIntegrationConfig) *ManageAlertRulesUnifiedActionInput
 	GetArmsIntegrationConfig() *ArmsIntegrationConfig
+	SetBizSource(v string) *ManageAlertRulesUnifiedActionInput
+	GetBizSource() *string
 	SetConditionConfig(v *ConditionConfigUnified) *ManageAlertRulesUnifiedActionInput
 	GetConditionConfig() *ConditionConfigUnified
 	SetContentTemplate(v string) *ManageAlertRulesUnifiedActionInput
@@ -31,12 +33,18 @@ type iManageAlertRulesUnifiedActionInput interface {
 	GetLabels() map[string]*string
 	SetNotifyConfig(v *NotifyConfigUnified) *ManageAlertRulesUnifiedActionInput
 	GetNotifyConfig() *NotifyConfigUnified
+	SetObserveResourceConfig(v *ObserveResourceConfig) *ManageAlertRulesUnifiedActionInput
+	GetObserveResourceConfig() *ObserveResourceConfig
 	SetObserveResourceInstanceId(v string) *ManageAlertRulesUnifiedActionInput
 	GetObserveResourceInstanceId() *string
 	SetObserveResourceType(v string) *ManageAlertRulesUnifiedActionInput
 	GetObserveResourceType() *string
 	SetQueryConfig(v *QueryConfigUnified) *ManageAlertRulesUnifiedActionInput
 	GetQueryConfig() *QueryConfigUnified
+	SetRcaConfig(v *AlertRuleRcaConfig) *ManageAlertRulesUnifiedActionInput
+	GetRcaConfig() *AlertRuleRcaConfig
+	SetRegionId(v string) *ManageAlertRulesUnifiedActionInput
+	GetRegionId() *string
 	SetScheduleConfig(v *ScheduleConfigUnified) *ManageAlertRulesUnifiedActionInput
 	GetScheduleConfig() *ScheduleConfigUnified
 	SetUuid(v string) *ManageAlertRulesUnifiedActionInput
@@ -49,24 +57,30 @@ type iManageAlertRulesUnifiedActionInput interface {
 
 type ManageAlertRulesUnifiedActionInput struct {
 	// This parameter is required.
-	Action                    *string                  `json:"action,omitempty" xml:"action,omitempty"`
-	ActionIntegrationConfig   *ActionIntegrationConfig `json:"actionIntegrationConfig,omitempty" xml:"actionIntegrationConfig,omitempty"`
-	Annotations               map[string]*string       `json:"annotations,omitempty" xml:"annotations,omitempty"`
-	ArmsIntegrationConfig     *ArmsIntegrationConfig   `json:"armsIntegrationConfig,omitempty" xml:"armsIntegrationConfig,omitempty"`
-	ConditionConfig           *ConditionConfigUnified  `json:"conditionConfig,omitempty" xml:"conditionConfig,omitempty"`
-	ContentTemplate           *string                  `json:"contentTemplate,omitempty" xml:"contentTemplate,omitempty"`
-	DatasourceConfig          *DatasourceConfigUnified `json:"datasourceConfig,omitempty" xml:"datasourceConfig,omitempty"`
-	DisplayName               *string                  `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	Enabled                   *bool                    `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	Labels                    map[string]*string       `json:"labels,omitempty" xml:"labels,omitempty"`
-	NotifyConfig              *NotifyConfigUnified     `json:"notifyConfig,omitempty" xml:"notifyConfig,omitempty"`
-	ObserveResourceInstanceId *string                  `json:"observeResourceInstanceId,omitempty" xml:"observeResourceInstanceId,omitempty"`
-	ObserveResourceType       *string                  `json:"observeResourceType,omitempty" xml:"observeResourceType,omitempty"`
-	QueryConfig               *QueryConfigUnified      `json:"queryConfig,omitempty" xml:"queryConfig,omitempty"`
-	ScheduleConfig            *ScheduleConfigUnified   `json:"scheduleConfig,omitempty" xml:"scheduleConfig,omitempty"`
-	Uuid                      *string                  `json:"uuid,omitempty" xml:"uuid,omitempty"`
-	UuidList                  []*string                `json:"uuidList,omitempty" xml:"uuidList,omitempty" type:"Repeated"`
-	Workspace                 *string                  `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	Action                  *string                  `json:"action,omitempty" xml:"action,omitempty"`
+	ActionIntegrationConfig *ActionIntegrationConfig `json:"actionIntegrationConfig,omitempty" xml:"actionIntegrationConfig,omitempty"`
+	Annotations             map[string]*string       `json:"annotations,omitempty" xml:"annotations,omitempty"`
+	ArmsIntegrationConfig   *ArmsIntegrationConfig   `json:"armsIntegrationConfig,omitempty" xml:"armsIntegrationConfig,omitempty"`
+	BizSource               *string                  `json:"bizSource,omitempty" xml:"bizSource,omitempty"`
+	ConditionConfig         *ConditionConfigUnified  `json:"conditionConfig,omitempty" xml:"conditionConfig,omitempty"`
+	ContentTemplate         *string                  `json:"contentTemplate,omitempty" xml:"contentTemplate,omitempty"`
+	DatasourceConfig        *DatasourceConfigUnified `json:"datasourceConfig,omitempty" xml:"datasourceConfig,omitempty"`
+	DisplayName             *string                  `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Enabled                 *bool                    `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	Labels                  map[string]*string       `json:"labels,omitempty" xml:"labels,omitempty"`
+	NotifyConfig            *NotifyConfigUnified     `json:"notifyConfig,omitempty" xml:"notifyConfig,omitempty"`
+	ObserveResourceConfig   *ObserveResourceConfig   `json:"observeResourceConfig,omitempty" xml:"observeResourceConfig,omitempty"`
+	// Deprecated
+	ObserveResourceInstanceId *string `json:"observeResourceInstanceId,omitempty" xml:"observeResourceInstanceId,omitempty"`
+	// Deprecated
+	ObserveResourceType *string                `json:"observeResourceType,omitempty" xml:"observeResourceType,omitempty"`
+	QueryConfig         *QueryConfigUnified    `json:"queryConfig,omitempty" xml:"queryConfig,omitempty"`
+	RcaConfig           *AlertRuleRcaConfig    `json:"rcaConfig,omitempty" xml:"rcaConfig,omitempty"`
+	RegionId            *string                `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	ScheduleConfig      *ScheduleConfigUnified `json:"scheduleConfig,omitempty" xml:"scheduleConfig,omitempty"`
+	Uuid                *string                `json:"uuid,omitempty" xml:"uuid,omitempty"`
+	UuidList            []*string              `json:"uuidList,omitempty" xml:"uuidList,omitempty" type:"Repeated"`
+	Workspace           *string                `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s ManageAlertRulesUnifiedActionInput) String() string {
@@ -91,6 +105,10 @@ func (s *ManageAlertRulesUnifiedActionInput) GetAnnotations() map[string]*string
 
 func (s *ManageAlertRulesUnifiedActionInput) GetArmsIntegrationConfig() *ArmsIntegrationConfig {
 	return s.ArmsIntegrationConfig
+}
+
+func (s *ManageAlertRulesUnifiedActionInput) GetBizSource() *string {
+	return s.BizSource
 }
 
 func (s *ManageAlertRulesUnifiedActionInput) GetConditionConfig() *ConditionConfigUnified {
@@ -121,6 +139,10 @@ func (s *ManageAlertRulesUnifiedActionInput) GetNotifyConfig() *NotifyConfigUnif
 	return s.NotifyConfig
 }
 
+func (s *ManageAlertRulesUnifiedActionInput) GetObserveResourceConfig() *ObserveResourceConfig {
+	return s.ObserveResourceConfig
+}
+
 func (s *ManageAlertRulesUnifiedActionInput) GetObserveResourceInstanceId() *string {
 	return s.ObserveResourceInstanceId
 }
@@ -131,6 +153,14 @@ func (s *ManageAlertRulesUnifiedActionInput) GetObserveResourceType() *string {
 
 func (s *ManageAlertRulesUnifiedActionInput) GetQueryConfig() *QueryConfigUnified {
 	return s.QueryConfig
+}
+
+func (s *ManageAlertRulesUnifiedActionInput) GetRcaConfig() *AlertRuleRcaConfig {
+	return s.RcaConfig
+}
+
+func (s *ManageAlertRulesUnifiedActionInput) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *ManageAlertRulesUnifiedActionInput) GetScheduleConfig() *ScheduleConfigUnified {
@@ -169,6 +199,11 @@ func (s *ManageAlertRulesUnifiedActionInput) SetArmsIntegrationConfig(v *ArmsInt
 	return s
 }
 
+func (s *ManageAlertRulesUnifiedActionInput) SetBizSource(v string) *ManageAlertRulesUnifiedActionInput {
+	s.BizSource = &v
+	return s
+}
+
 func (s *ManageAlertRulesUnifiedActionInput) SetConditionConfig(v *ConditionConfigUnified) *ManageAlertRulesUnifiedActionInput {
 	s.ConditionConfig = v
 	return s
@@ -204,6 +239,11 @@ func (s *ManageAlertRulesUnifiedActionInput) SetNotifyConfig(v *NotifyConfigUnif
 	return s
 }
 
+func (s *ManageAlertRulesUnifiedActionInput) SetObserveResourceConfig(v *ObserveResourceConfig) *ManageAlertRulesUnifiedActionInput {
+	s.ObserveResourceConfig = v
+	return s
+}
+
 func (s *ManageAlertRulesUnifiedActionInput) SetObserveResourceInstanceId(v string) *ManageAlertRulesUnifiedActionInput {
 	s.ObserveResourceInstanceId = &v
 	return s
@@ -216,6 +256,16 @@ func (s *ManageAlertRulesUnifiedActionInput) SetObserveResourceType(v string) *M
 
 func (s *ManageAlertRulesUnifiedActionInput) SetQueryConfig(v *QueryConfigUnified) *ManageAlertRulesUnifiedActionInput {
 	s.QueryConfig = v
+	return s
+}
+
+func (s *ManageAlertRulesUnifiedActionInput) SetRcaConfig(v *AlertRuleRcaConfig) *ManageAlertRulesUnifiedActionInput {
+	s.RcaConfig = v
+	return s
+}
+
+func (s *ManageAlertRulesUnifiedActionInput) SetRegionId(v string) *ManageAlertRulesUnifiedActionInput {
+	s.RegionId = &v
 	return s
 }
 
@@ -265,8 +315,18 @@ func (s *ManageAlertRulesUnifiedActionInput) Validate() error {
 			return err
 		}
 	}
+	if s.ObserveResourceConfig != nil {
+		if err := s.ObserveResourceConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.QueryConfig != nil {
 		if err := s.QueryConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RcaConfig != nil {
+		if err := s.RcaConfig.Validate(); err != nil {
 			return err
 		}
 	}

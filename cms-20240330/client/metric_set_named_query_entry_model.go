@@ -9,8 +9,8 @@ type iMetricSetNamedQueryEntry interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetLabelFilters(v []*UmodelLabelFilter) *MetricSetNamedQueryEntry
-	GetLabelFilters() []*UmodelLabelFilter
+	SetLabelFilters(v []*LabelFilters) *MetricSetNamedQueryEntry
+	GetLabelFilters() []*LabelFilters
 	SetMetric(v string) *MetricSetNamedQueryEntry
 	GetMetric() *string
 	SetMetricSet(v string) *MetricSetNamedQueryEntry
@@ -20,10 +20,10 @@ type iMetricSetNamedQueryEntry interface {
 }
 
 type MetricSetNamedQueryEntry struct {
-	LabelFilters []*UmodelLabelFilter `json:"labelFilters,omitempty" xml:"labelFilters,omitempty" type:"Repeated"`
-	Metric       *string              `json:"metric,omitempty" xml:"metric,omitempty"`
-	MetricSet    *string              `json:"metricSet,omitempty" xml:"metricSet,omitempty"`
-	Name         *string              `json:"name,omitempty" xml:"name,omitempty"`
+	LabelFilters []*LabelFilters `json:"labelFilters,omitempty" xml:"labelFilters,omitempty" type:"Repeated"`
+	Metric       *string         `json:"metric,omitempty" xml:"metric,omitempty"`
+	MetricSet    *string         `json:"metricSet,omitempty" xml:"metricSet,omitempty"`
+	Name         *string         `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s MetricSetNamedQueryEntry) String() string {
@@ -34,7 +34,7 @@ func (s MetricSetNamedQueryEntry) GoString() string {
 	return s.String()
 }
 
-func (s *MetricSetNamedQueryEntry) GetLabelFilters() []*UmodelLabelFilter {
+func (s *MetricSetNamedQueryEntry) GetLabelFilters() []*LabelFilters {
 	return s.LabelFilters
 }
 
@@ -50,7 +50,7 @@ func (s *MetricSetNamedQueryEntry) GetName() *string {
 	return s.Name
 }
 
-func (s *MetricSetNamedQueryEntry) SetLabelFilters(v []*UmodelLabelFilter) *MetricSetNamedQueryEntry {
+func (s *MetricSetNamedQueryEntry) SetLabelFilters(v []*LabelFilters) *MetricSetNamedQueryEntry {
 	s.LabelFilters = v
 	return s
 }

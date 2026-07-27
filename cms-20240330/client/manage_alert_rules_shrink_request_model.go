@@ -11,11 +11,14 @@ type iManageAlertRulesShrinkRequest interface {
 	GoString() string
 	SetBodyShrink(v string) *ManageAlertRulesShrinkRequest
 	GetBodyShrink() *string
+	SetCallSource(v string) *ManageAlertRulesShrinkRequest
+	GetCallSource() *string
 }
 
 type ManageAlertRulesShrinkRequest struct {
 	// The request body for managing alert rules. This body is shared by CREATE, UPDATE, PATCH, and BATCH_DELETE operations. Specify fields based on the action.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`
+	CallSource *string `json:"callSource,omitempty" xml:"callSource,omitempty"`
 }
 
 func (s ManageAlertRulesShrinkRequest) String() string {
@@ -30,8 +33,17 @@ func (s *ManageAlertRulesShrinkRequest) GetBodyShrink() *string {
 	return s.BodyShrink
 }
 
+func (s *ManageAlertRulesShrinkRequest) GetCallSource() *string {
+	return s.CallSource
+}
+
 func (s *ManageAlertRulesShrinkRequest) SetBodyShrink(v string) *ManageAlertRulesShrinkRequest {
 	s.BodyShrink = &v
+	return s
+}
+
+func (s *ManageAlertRulesShrinkRequest) SetCallSource(v string) *ManageAlertRulesShrinkRequest {
+	s.CallSource = &v
 	return s
 }
 

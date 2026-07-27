@@ -30,7 +30,7 @@ type iUpdateDeliveryTaskRequest interface {
 }
 
 type UpdateDeliveryTaskRequest struct {
-	// The data source ID, which is the Managed Service for Prometheus instance ID.
+	// The data source ID (Prometheus instance ID).
 	//
 	// example:
 	//
@@ -38,9 +38,13 @@ type UpdateDeliveryTaskRequest struct {
 	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
 	// The additional labels attached to all delivered metrics. The key is the label name and the value is the label value.
 	ExternalLabels map[string]*string `json:"externalLabels,omitempty" xml:"externalLabels,omitempty"`
-	// The metric filter conditions. The entire value is replaced rather than incrementally merged.
+	// The metric filter conditions. The entire value is replaced and not incrementally merged.
 	LabelFilters map[string]*string `json:"labelFilters,omitempty" xml:"labelFilters,omitempty"`
-	// The metric filtering mode.
+	// The metric filtering mode. Valid values:
+	//
+	// - Deny: denied.
+	//
+	// - Allow: allowed.
 	//
 	// example:
 	//
@@ -54,7 +58,13 @@ type UpdateDeliveryTaskRequest struct {
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The list of delivery targets.
 	SinkList []*UpdateDeliveryTaskRequestSinkList `json:"sinkList,omitempty" xml:"sinkList,omitempty" type:"Repeated"`
-	// The task status. This parameter is used to enable or disable the task.
+	// The task status. This parameter is used to start or stop the task. Valid values:
+	//
+	// - Running: running.
+	//
+	// - Enable: enabled.
+	//
+	// - Disable: disabled.
 	//
 	// example:
 	//
@@ -66,7 +76,7 @@ type UpdateDeliveryTaskRequest struct {
 	//
 	// updated desc
 	TaskDescription *string `json:"taskDescription,omitempty" xml:"taskDescription,omitempty"`
-	// The task name. The name can contain letters, digits, underscores (_), and hyphens (-).
+	// The task name. The name can contain letters, digits, underscores (_), and hyphens (-), and can also contain Chinese characters.
 	//
 	// example:
 	//
@@ -177,9 +187,15 @@ func (s *UpdateDeliveryTaskRequest) Validate() error {
 }
 
 type UpdateDeliveryTaskRequestSinkList struct {
-	// The detailed configuration of the delivery target. The meanings of keys and values vary depending on the sinkType.
+	// The detailed configuration of the delivery target. The meanings of the key/value pairs vary depending on the sinkType.
 	SinkConfigs map[string]*string `json:"sinkConfigs,omitempty" xml:"sinkConfigs,omitempty"`
-	// The delivery target type.
+	// The delivery target type. Valid values:
+	//
+	// - AcsMaxCompute: MaxCompute.
+	//
+	// - AcsKafka: Message Queue for Apache Kafka.
+	//
+	// - Prometheus: Managed Service for Prometheus.
 	//
 	// if can be null:
 	// true

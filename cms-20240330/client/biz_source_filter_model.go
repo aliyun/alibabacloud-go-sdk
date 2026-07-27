@@ -5,35 +5,35 @@ import (
 	"github.com/alibabacloud-go/tea/dara"
 )
 
-type iStatusFilter interface {
+type iBizSourceFilter interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetEq(v string) *StatusFilter
+	SetEq(v string) *BizSourceFilter
 	GetEq() *string
 }
 
-type StatusFilter struct {
+type BizSourceFilter struct {
 	Eq *string `json:"eq,omitempty" xml:"eq,omitempty"`
 }
 
-func (s StatusFilter) String() string {
+func (s BizSourceFilter) String() string {
 	return dara.Prettify(s)
 }
 
-func (s StatusFilter) GoString() string {
+func (s BizSourceFilter) GoString() string {
 	return s.String()
 }
 
-func (s *StatusFilter) GetEq() *string {
+func (s *BizSourceFilter) GetEq() *string {
 	return s.Eq
 }
 
-func (s *StatusFilter) SetEq(v string) *StatusFilter {
+func (s *BizSourceFilter) SetEq(v string) *BizSourceFilter {
 	s.Eq = &v
 	return s
 }
 
-func (s *StatusFilter) Validate() error {
+func (s *BizSourceFilter) Validate() error {
 	return dara.Validate(s)
 }

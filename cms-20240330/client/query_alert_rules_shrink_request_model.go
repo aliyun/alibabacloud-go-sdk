@@ -17,6 +17,8 @@ type iQueryAlertRulesShrinkRequest interface {
 	GetMaxResults() *int32
 	SetNextToken(v string) *QueryAlertRulesShrinkRequest
 	GetNextToken() *string
+	SetQueryJson(v string) *QueryAlertRulesShrinkRequest
+	GetQueryJson() *string
 }
 
 type QueryAlertRulesShrinkRequest struct {
@@ -34,12 +36,13 @@ type QueryAlertRulesShrinkRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token that marks the position from which you want to start reading data. If you leave this parameter empty, data is read from the beginning.
+	// The token that marks the position from which you want to start reading. If this parameter is left empty, data is read from the beginning.
 	//
 	// example:
 	//
 	// 123456
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	QueryJson *string `json:"queryJson,omitempty" xml:"queryJson,omitempty"`
 }
 
 func (s QueryAlertRulesShrinkRequest) String() string {
@@ -66,6 +69,10 @@ func (s *QueryAlertRulesShrinkRequest) GetNextToken() *string {
 	return s.NextToken
 }
 
+func (s *QueryAlertRulesShrinkRequest) GetQueryJson() *string {
+	return s.QueryJson
+}
+
 func (s *QueryAlertRulesShrinkRequest) SetBodyShrink(v string) *QueryAlertRulesShrinkRequest {
 	s.BodyShrink = &v
 	return s
@@ -83,6 +90,11 @@ func (s *QueryAlertRulesShrinkRequest) SetMaxResults(v int32) *QueryAlertRulesSh
 
 func (s *QueryAlertRulesShrinkRequest) SetNextToken(v string) *QueryAlertRulesShrinkRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *QueryAlertRulesShrinkRequest) SetQueryJson(v string) *QueryAlertRulesShrinkRequest {
+	s.QueryJson = &v
 	return s
 }
 

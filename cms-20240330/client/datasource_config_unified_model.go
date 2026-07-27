@@ -17,18 +17,24 @@ type iDatasourceConfigUnified interface {
 	GetLegacyType() *string
 	SetProductCategory(v string) *DatasourceConfigUnified
 	GetProductCategory() *string
+	SetProject(v string) *DatasourceConfigUnified
+	GetProject() *string
 	SetRegionId(v string) *DatasourceConfigUnified
 	GetRegionId() *string
+	SetStores(v []*Stores) *DatasourceConfigUnified
+	GetStores() []*Stores
 	SetType(v string) *DatasourceConfigUnified
 	GetType() *string
 }
 
 type DatasourceConfigUnified struct {
-	InstanceId      *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	LegacyRaw       *string `json:"legacyRaw,omitempty" xml:"legacyRaw,omitempty"`
-	LegacyType      *string `json:"legacyType,omitempty" xml:"legacyType,omitempty"`
-	ProductCategory *string `json:"productCategory,omitempty" xml:"productCategory,omitempty"`
-	RegionId        *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	InstanceId      *string   `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	LegacyRaw       *string   `json:"legacyRaw,omitempty" xml:"legacyRaw,omitempty"`
+	LegacyType      *string   `json:"legacyType,omitempty" xml:"legacyType,omitempty"`
+	ProductCategory *string   `json:"productCategory,omitempty" xml:"productCategory,omitempty"`
+	Project         *string   `json:"project,omitempty" xml:"project,omitempty"`
+	RegionId        *string   `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	Stores          []*Stores `json:"stores,omitempty" xml:"stores,omitempty" type:"Repeated"`
 	// This parameter is required.
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
@@ -57,8 +63,16 @@ func (s *DatasourceConfigUnified) GetProductCategory() *string {
 	return s.ProductCategory
 }
 
+func (s *DatasourceConfigUnified) GetProject() *string {
+	return s.Project
+}
+
 func (s *DatasourceConfigUnified) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *DatasourceConfigUnified) GetStores() []*Stores {
+	return s.Stores
 }
 
 func (s *DatasourceConfigUnified) GetType() *string {
@@ -85,8 +99,18 @@ func (s *DatasourceConfigUnified) SetProductCategory(v string) *DatasourceConfig
 	return s
 }
 
+func (s *DatasourceConfigUnified) SetProject(v string) *DatasourceConfigUnified {
+	s.Project = &v
+	return s
+}
+
 func (s *DatasourceConfigUnified) SetRegionId(v string) *DatasourceConfigUnified {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DatasourceConfigUnified) SetStores(v []*Stores) *DatasourceConfigUnified {
+	s.Stores = v
 	return s
 }
 
@@ -96,5 +120,14 @@ func (s *DatasourceConfigUnified) SetType(v string) *DatasourceConfigUnified {
 }
 
 func (s *DatasourceConfigUnified) Validate() error {
-	return dara.Validate(s)
+	if s.Stores != nil {
+		for _, item := range s.Stores {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

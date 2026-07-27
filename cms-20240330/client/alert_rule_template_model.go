@@ -29,6 +29,10 @@ type iAlertRuleTemplate interface {
 	GetIsSystem() *int32
 	SetLabels(v string) *AlertRuleTemplate
 	GetLabels() *string
+	SetNamespace(v string) *AlertRuleTemplate
+	GetNamespace() *string
+	SetProductCategory(v string) *AlertRuleTemplate
+	GetProductCategory() *string
 	SetRuleConfigs(v string) *AlertRuleTemplate
 	GetRuleConfigs() *string
 	SetScenes(v string) *AlertRuleTemplate
@@ -50,25 +54,27 @@ type iAlertRuleTemplate interface {
 }
 
 type AlertRuleTemplate struct {
-	AlertType     *string `json:"alertType,omitempty" xml:"alertType,omitempty"`
-	ApplyCount    *int64  `json:"applyCount,omitempty" xml:"applyCount,omitempty"`
-	BizType       *string `json:"bizType,omitempty" xml:"bizType,omitempty"`
-	Datasource    *string `json:"datasource,omitempty" xml:"datasource,omitempty"`
-	Description   *string `json:"description,omitempty" xml:"description,omitempty"`
-	GmtCreate     *int64  `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	GmtModified   *int64  `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	Id            *int64  `json:"id,omitempty" xml:"id,omitempty"`
-	IsSystem      *int32  `json:"isSystem,omitempty" xml:"isSystem,omitempty"`
-	Labels        *string `json:"labels,omitempty" xml:"labels,omitempty"`
-	RuleConfigs   *string `json:"ruleConfigs,omitempty" xml:"ruleConfigs,omitempty"`
-	Scenes        *string `json:"scenes,omitempty" xml:"scenes,omitempty"`
-	SchemaVersion *string `json:"schemaVersion,omitempty" xml:"schemaVersion,omitempty"`
-	SourceType    *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	Status        *int32  `json:"status,omitempty" xml:"status,omitempty"`
-	SubType       *string `json:"subType,omitempty" xml:"subType,omitempty"`
-	TemplateName  *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
-	UserId        *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	Uuid          *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
+	AlertType       *string `json:"alertType,omitempty" xml:"alertType,omitempty"`
+	ApplyCount      *int64  `json:"applyCount,omitempty" xml:"applyCount,omitempty"`
+	BizType         *string `json:"bizType,omitempty" xml:"bizType,omitempty"`
+	Datasource      *string `json:"datasource,omitempty" xml:"datasource,omitempty"`
+	Description     *string `json:"description,omitempty" xml:"description,omitempty"`
+	GmtCreate       *int64  `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	GmtModified     *int64  `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	Id              *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	IsSystem        *int32  `json:"isSystem,omitempty" xml:"isSystem,omitempty"`
+	Labels          *string `json:"labels,omitempty" xml:"labels,omitempty"`
+	Namespace       *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	ProductCategory *string `json:"productCategory,omitempty" xml:"productCategory,omitempty"`
+	RuleConfigs     *string `json:"ruleConfigs,omitempty" xml:"ruleConfigs,omitempty"`
+	Scenes          *string `json:"scenes,omitempty" xml:"scenes,omitempty"`
+	SchemaVersion   *string `json:"schemaVersion,omitempty" xml:"schemaVersion,omitempty"`
+	SourceType      *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	Status          *int32  `json:"status,omitempty" xml:"status,omitempty"`
+	SubType         *string `json:"subType,omitempty" xml:"subType,omitempty"`
+	TemplateName    *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
+	UserId          *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	Uuid            *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
 }
 
 func (s AlertRuleTemplate) String() string {
@@ -117,6 +123,14 @@ func (s *AlertRuleTemplate) GetIsSystem() *int32 {
 
 func (s *AlertRuleTemplate) GetLabels() *string {
 	return s.Labels
+}
+
+func (s *AlertRuleTemplate) GetNamespace() *string {
+	return s.Namespace
+}
+
+func (s *AlertRuleTemplate) GetProductCategory() *string {
+	return s.ProductCategory
 }
 
 func (s *AlertRuleTemplate) GetRuleConfigs() *string {
@@ -202,6 +216,16 @@ func (s *AlertRuleTemplate) SetIsSystem(v int32) *AlertRuleTemplate {
 
 func (s *AlertRuleTemplate) SetLabels(v string) *AlertRuleTemplate {
 	s.Labels = &v
+	return s
+}
+
+func (s *AlertRuleTemplate) SetNamespace(v string) *AlertRuleTemplate {
+	s.Namespace = &v
+	return s
+}
+
+func (s *AlertRuleTemplate) SetProductCategory(v string) *AlertRuleTemplate {
+	s.ProductCategory = &v
 	return s
 }
 

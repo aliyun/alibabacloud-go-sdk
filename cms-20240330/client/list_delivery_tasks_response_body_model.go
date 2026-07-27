@@ -119,6 +119,8 @@ func (s *ListDeliveryTasksResponseBody) Validate() error {
 type ListDeliveryTasksResponseBodyDeliveryTasks struct {
 	// The creation time.
 	//
+	// The time is in the ISO 8601 standard format (YYYY-MM-DDThh:mm:ssZ) in UTC.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
@@ -178,6 +180,8 @@ type ListDeliveryTasksResponseBodyDeliveryTasks struct {
 	// test-task
 	TaskName *string `json:"taskName,omitempty" xml:"taskName,omitempty"`
 	// The update time.
+	//
+	// The time is in the ISO 8601 standard format (YYYY-MM-DDThh:mm:ssZ) in UTC.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -377,7 +381,7 @@ func (s *ListDeliveryTasksResponseBodyDeliveryTasksExtraInfo) Validate() error {
 type ListDeliveryTasksResponseBodyDeliveryTasksSinkList struct {
 	// The detailed configuration of the delivery target. The meanings of key/value pairs vary depending on the sinkType.
 	SinkConfigs map[string]*string `json:"sinkConfigs,omitempty" xml:"sinkConfigs,omitempty"`
-	// The type of the delivery target.
+	// The delivery target type.
 	//
 	// example:
 	//

@@ -18,12 +18,9 @@ type iUmodelLabelFilter interface {
 }
 
 type UmodelLabelFilter struct {
-	// The key of the label used for filtering.
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The logical operator used to compare the label\\"s value.
+	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	// The value of the label to match.
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+	Value    *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s UmodelLabelFilter) String() string {

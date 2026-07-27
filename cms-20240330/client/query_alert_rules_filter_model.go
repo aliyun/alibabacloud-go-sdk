@@ -9,6 +9,8 @@ type iQueryAlertRulesFilter interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBizSource(v *BizSourceFilter) *QueryAlertRulesFilter
+	GetBizSource() *BizSourceFilter
 	SetDatasourceType(v *DatasourceTypeFilter) *QueryAlertRulesFilter
 	GetDatasourceType() *DatasourceTypeFilter
 	SetDisplayName(v *DisplayNameFilter) *QueryAlertRulesFilter
@@ -17,8 +19,12 @@ type iQueryAlertRulesFilter interface {
 	GetEnabled() *EnabledFilter
 	SetLabels(v *LabelsFilter) *QueryAlertRulesFilter
 	GetLabels() *LabelsFilter
+	SetNotificationChannels(v *NotificationChannelsFilter) *QueryAlertRulesFilter
+	GetNotificationChannels() *NotificationChannelsFilter
 	SetNotifyStrategyId(v *NotifyStrategyIdFilter) *QueryAlertRulesFilter
 	GetNotifyStrategyId() *NotifyStrategyIdFilter
+	SetObserveResourceConfig(v *ObserveResourceConfigFilter) *QueryAlertRulesFilter
+	GetObserveResourceConfig() *ObserveResourceConfigFilter
 	SetObserveResourceGlobalScope(v *ObserveResourceGlobalScopeFilter) *QueryAlertRulesFilter
 	GetObserveResourceGlobalScope() *ObserveResourceGlobalScopeFilter
 	SetObserveResourceInstanceId(v string) *QueryAlertRulesFilter
@@ -38,14 +44,14 @@ type iQueryAlertRulesFilter interface {
 }
 
 type QueryAlertRulesFilter struct {
-	DatasourceType *DatasourceTypeFilter `json:"datasourceType,omitempty" xml:"datasourceType,omitempty"`
-	// Filters alert rules by display name.
-	DisplayName *DisplayNameFilter `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// Filters alert rules by enabled status.
-	Enabled *EnabledFilter `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// Filters alert rules by label.
+	BizSource                  *BizSourceFilter                  `json:"bizSource,omitempty" xml:"bizSource,omitempty"`
+	DatasourceType             *DatasourceTypeFilter             `json:"datasourceType,omitempty" xml:"datasourceType,omitempty"`
+	DisplayName                *DisplayNameFilter                `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Enabled                    *EnabledFilter                    `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	Labels                     *LabelsFilter                     `json:"labels,omitempty" xml:"labels,omitempty"`
+	NotificationChannels       *NotificationChannelsFilter       `json:"notificationChannels,omitempty" xml:"notificationChannels,omitempty"`
 	NotifyStrategyId           *NotifyStrategyIdFilter           `json:"notifyStrategyId,omitempty" xml:"notifyStrategyId,omitempty"`
+	ObserveResourceConfig      *ObserveResourceConfigFilter      `json:"observeResourceConfig,omitempty" xml:"observeResourceConfig,omitempty"`
 	ObserveResourceGlobalScope *ObserveResourceGlobalScopeFilter `json:"observeResourceGlobalScope,omitempty" xml:"observeResourceGlobalScope,omitempty"`
 	// Deprecated
 	//
@@ -54,13 +60,12 @@ type QueryAlertRulesFilter struct {
 	// i-bp1abcxxxxxxxx
 	ObserveResourceInstanceId *string                    `json:"observeResourceInstanceId,omitempty" xml:"observeResourceInstanceId,omitempty"`
 	ObserveResourceList       *ObserveResourceListFilter `json:"observeResourceList,omitempty" xml:"observeResourceList,omitempty"`
-	ObserveResourceType       *ObserveResourceTypeFilter `json:"observeResourceType,omitempty" xml:"observeResourceType,omitempty"`
-	PartitionKey              *PartitionKeyFilter        `json:"partitionKey,omitempty" xml:"partitionKey,omitempty"`
-	SeverityLevels            *SeverityLevelsFilter      `json:"severityLevels,omitempty" xml:"severityLevels,omitempty"`
-	// Filters alert rules by status.
-	Status *StatusFilter `json:"status,omitempty" xml:"status,omitempty"`
-	// Filters alert rules by UUID.
-	Uuid *UuidFilter `json:"uuid,omitempty" xml:"uuid,omitempty"`
+	// Deprecated
+	ObserveResourceType *ObserveResourceTypeFilter `json:"observeResourceType,omitempty" xml:"observeResourceType,omitempty"`
+	PartitionKey        *PartitionKeyFilter        `json:"partitionKey,omitempty" xml:"partitionKey,omitempty"`
+	SeverityLevels      *SeverityLevelsFilter      `json:"severityLevels,omitempty" xml:"severityLevels,omitempty"`
+	Status              *StatusFilter              `json:"status,omitempty" xml:"status,omitempty"`
+	Uuid                *UuidFilter                `json:"uuid,omitempty" xml:"uuid,omitempty"`
 }
 
 func (s QueryAlertRulesFilter) String() string {
@@ -69,6 +74,10 @@ func (s QueryAlertRulesFilter) String() string {
 
 func (s QueryAlertRulesFilter) GoString() string {
 	return s.String()
+}
+
+func (s *QueryAlertRulesFilter) GetBizSource() *BizSourceFilter {
+	return s.BizSource
 }
 
 func (s *QueryAlertRulesFilter) GetDatasourceType() *DatasourceTypeFilter {
@@ -87,8 +96,16 @@ func (s *QueryAlertRulesFilter) GetLabels() *LabelsFilter {
 	return s.Labels
 }
 
+func (s *QueryAlertRulesFilter) GetNotificationChannels() *NotificationChannelsFilter {
+	return s.NotificationChannels
+}
+
 func (s *QueryAlertRulesFilter) GetNotifyStrategyId() *NotifyStrategyIdFilter {
 	return s.NotifyStrategyId
+}
+
+func (s *QueryAlertRulesFilter) GetObserveResourceConfig() *ObserveResourceConfigFilter {
+	return s.ObserveResourceConfig
 }
 
 func (s *QueryAlertRulesFilter) GetObserveResourceGlobalScope() *ObserveResourceGlobalScopeFilter {
@@ -123,6 +140,11 @@ func (s *QueryAlertRulesFilter) GetUuid() *UuidFilter {
 	return s.Uuid
 }
 
+func (s *QueryAlertRulesFilter) SetBizSource(v *BizSourceFilter) *QueryAlertRulesFilter {
+	s.BizSource = v
+	return s
+}
+
 func (s *QueryAlertRulesFilter) SetDatasourceType(v *DatasourceTypeFilter) *QueryAlertRulesFilter {
 	s.DatasourceType = v
 	return s
@@ -143,8 +165,18 @@ func (s *QueryAlertRulesFilter) SetLabels(v *LabelsFilter) *QueryAlertRulesFilte
 	return s
 }
 
+func (s *QueryAlertRulesFilter) SetNotificationChannels(v *NotificationChannelsFilter) *QueryAlertRulesFilter {
+	s.NotificationChannels = v
+	return s
+}
+
 func (s *QueryAlertRulesFilter) SetNotifyStrategyId(v *NotifyStrategyIdFilter) *QueryAlertRulesFilter {
 	s.NotifyStrategyId = v
+	return s
+}
+
+func (s *QueryAlertRulesFilter) SetObserveResourceConfig(v *ObserveResourceConfigFilter) *QueryAlertRulesFilter {
+	s.ObserveResourceConfig = v
 	return s
 }
 
@@ -189,6 +221,11 @@ func (s *QueryAlertRulesFilter) SetUuid(v *UuidFilter) *QueryAlertRulesFilter {
 }
 
 func (s *QueryAlertRulesFilter) Validate() error {
+	if s.BizSource != nil {
+		if err := s.BizSource.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.DatasourceType != nil {
 		if err := s.DatasourceType.Validate(); err != nil {
 			return err
@@ -209,8 +246,18 @@ func (s *QueryAlertRulesFilter) Validate() error {
 			return err
 		}
 	}
+	if s.NotificationChannels != nil {
+		if err := s.NotificationChannels.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.NotifyStrategyId != nil {
 		if err := s.NotifyStrategyId.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ObserveResourceConfig != nil {
+		if err := s.ObserveResourceConfig.Validate(); err != nil {
 			return err
 		}
 	}

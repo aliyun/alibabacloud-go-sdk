@@ -5531,10 +5531,6 @@ func (client *Client) ListDatasetsWithContext(ctx context.Context, workspace *st
 //
 // Retrieves the list of data delivery tasks.
 //
-// Description:
-//
-// Deletes a specified site monitoring task.
-//
 // @param tmpReq - ListDeliveryTasksRequest
 //
 // @param headers - map
@@ -6881,6 +6877,11 @@ func (client *Client) ManageAlertRulesWithContext(ctx context.Context, tmpReq *M
 		request.BodyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Body, dara.String("body"), dara.String("json"))
 	}
 
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CallSource) {
+		query["callSource"] = request.CallSource
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BodyShrink) {
 		body["body"] = request.BodyShrink
@@ -6888,6 +6889,7 @@ func (client *Client) ManageAlertRulesWithContext(ctx context.Context, tmpReq *M
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -7012,7 +7014,7 @@ func (client *Client) PutWorkspaceWithContext(ctx context.Context, workspaceName
 //
 // Description:
 //
-// This topic provides an example on how to query a list of alert templates. The response shows that the alert template list contains two alert templates: `ECS_Template1` and `ECS_Template2`.
+// This topic provides an example of how to query the list of alert templates. The response shows that the alert template list contains two alert templates: `ECS_Template1` and `ECS_Template2`.
 //
 // @param tmpReq - QueryAlertRulesRequest
 //
@@ -7045,6 +7047,10 @@ func (client *Client) QueryAlertRulesWithContext(ctx context.Context, tmpReq *Qu
 
 	if !dara.IsNil(request.NextToken) {
 		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.QueryJson) {
+		query["queryJson"] = request.QueryJson
 	}
 
 	body := map[string]interface{}{}
@@ -7877,11 +7883,7 @@ func (client *Client) UpdateDatasetWithContext(ctx context.Context, workspace *s
 
 // Summary:
 //
-// Updates a data delivery task. The update uses patch semantics: fields that are not specified remain unchanged.
-//
-// Description:
-//
-// Deletes a specified site monitoring task.
+// Updates a data delivery task.
 //
 // @param request - UpdateDeliveryTaskRequest
 //
