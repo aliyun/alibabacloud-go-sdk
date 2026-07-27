@@ -2872,6 +2872,58 @@ func (client *Client) CreateApplicationWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
+// Binds an Agent to a Squad.
+//
+// @param request - CreateApplicationAgentRelationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateApplicationAgentRelationResponse
+func (client *Client) CreateApplicationAgentRelationWithContext(ctx context.Context, request *CreateApplicationAgentRelationRequest, runtime *dara.RuntimeOptions) (_result *CreateApplicationAgentRelationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		query["AgentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.Token) {
+		query["Token"] = request.Token
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateApplicationAgentRelation"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateApplicationAgentRelationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a connection address for a specified application.
 //
 // @param request - CreateApplicationEndpointAddressRequest
@@ -21082,6 +21134,62 @@ func (client *Client) GenerateUpgradeReportForSyncCloneWithContext(ctx context.C
 
 // Summary:
 //
+// Retrieves the Lakebase tenant token (SPG tenant mount URL).
+//
+// @param request - GetLakebaseTenantTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLakebaseTenantTokenResponse
+func (client *Client) GetLakebaseTenantTokenWithContext(ctx context.Context, request *GetLakebaseTenantTokenRequest, runtime *dara.RuntimeOptions) (_result *GetLakebaseTenantTokenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.PolarFsInstanceId) {
+		query["PolarFsInstanceId"] = request.PolarFsInstanceId
+	}
+
+	if !dara.IsNil(request.Subdir) {
+		query["Subdir"] = request.Subdir
+	}
+
+	if !dara.IsNil(request.Tenant) {
+		query["Tenant"] = request.Tenant
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetLakebaseTenantToken"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetLakebaseTenantTokenResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a chat record.
 //
 // @param request - GetPolarAgentRequest
@@ -28263,6 +28371,50 @@ func (client *Client) ResetGlobalDatabaseNetworkWithContext(ctx context.Context,
 		BodyType:    dara.String("json"),
 	}
 	_result = &ResetGlobalDatabaseNetworkResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Restarts an AI cluster.
+//
+// @param request - RestartAIDBClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestartAIDBClusterResponse
+func (client *Client) RestartAIDBClusterWithContext(ctx context.Context, request *RestartAIDBClusterRequest, runtime *dara.RuntimeOptions) (_result *RestartAIDBClusterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RestartAIDBCluster"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RestartAIDBClusterResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
