@@ -66,7 +66,7 @@ func (s *UpdateRowPermissionRequest) Validate() error {
 }
 
 type UpdateRowPermissionRequestUpdateRowPermissionCommand struct {
-	// The mapping fields.
+	// The mapping columns.
 	//
 	// This parameter is required.
 	MappingColumns []*UpdateRowPermissionRequestUpdateRowPermissionCommandMappingColumns `json:"MappingColumns,omitempty" xml:"MappingColumns,omitempty" type:"Repeated"`
@@ -74,7 +74,7 @@ type UpdateRowPermissionRequestUpdateRowPermissionCommand struct {
 	//
 	// example:
 	//
-	// 管控业务数据
+	// Control business data.
 	RowPermissionDesc *string `json:"RowPermissionDesc,omitempty" xml:"RowPermissionDesc,omitempty"`
 	// The row-level permission ID.
 	//
@@ -90,7 +90,7 @@ type UpdateRowPermissionRequestUpdateRowPermissionCommand struct {
 	//
 	// example:
 	//
-	// 业务管控
+	// BusinessControl.
 	RowPermissionName *string `json:"RowPermissionName,omitempty" xml:"RowPermissionName,omitempty"`
 	// The rules.
 	Rules []*UpdateRowPermissionRequestUpdateRowPermissionCommandRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
@@ -192,13 +192,13 @@ func (s *UpdateRowPermissionRequestUpdateRowPermissionCommand) Validate() error 
 }
 
 type UpdateRowPermissionRequestUpdateRowPermissionCommandMappingColumns struct {
-	// The description of the mapping field.
+	// The mapping column description.
 	//
 	// example:
 	//
-	// 业务ID
+	// Business ID.
 	ColumnDesc *string `json:"ColumnDesc,omitempty" xml:"ColumnDesc,omitempty"`
-	// The name of the mapping field.
+	// The mapping column name.
 	//
 	// This parameter is required.
 	//
@@ -206,7 +206,7 @@ type UpdateRowPermissionRequestUpdateRowPermissionCommandMappingColumns struct {
 	//
 	// business_id
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	// The type of the mapping field.
+	// The mapping column type.
 	//
 	// This parameter is required.
 	//
@@ -272,9 +272,9 @@ type UpdateRowPermissionRequestUpdateRowPermissionCommandRules struct {
 	//
 	// example:
 	//
-	// 管控业务ID大于100
+	// Control business ID greater than 100
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The scope type of the rule.
+	// The rule scope type.
 	//
 	// This parameter is required.
 	//
@@ -284,13 +284,11 @@ type UpdateRowPermissionRequestUpdateRowPermissionCommandRules struct {
 	ScopeType *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
 	// The rule status.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The accounts associated with the rule.
+	// The accounts bound to the rule.
 	UserMappingList []*UpdateRowPermissionRequestUpdateRowPermissionCommandRulesUserMappingList `json:"UserMappingList,omitempty" xml:"UserMappingList,omitempty" type:"Repeated"`
 }
 
@@ -379,7 +377,7 @@ func (s *UpdateRowPermissionRequestUpdateRowPermissionCommandRules) Validate() e
 }
 
 type UpdateRowPermissionRequestUpdateRowPermissionCommandRulesExpressions struct {
-	// The name of the mapping field.
+	// The mapping column name.
 	//
 	// This parameter is required.
 	//
@@ -407,9 +405,7 @@ type UpdateRowPermissionRequestUpdateRowPermissionCommandRulesExpressions struct
 	//
 	// EXPRESSION
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The operation values of the expression.
-	//
-	// This parameter is required.
+	// The expression operation values.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -471,7 +467,7 @@ func (s *UpdateRowPermissionRequestUpdateRowPermissionCommandRulesExpressions) V
 }
 
 type UpdateRowPermissionRequestUpdateRowPermissionCommandRulesUserMappingList struct {
-	// The type of the account associated with the rule.
+	// The type of the account bound to the rule.
 	//
 	// This parameter is required.
 	//
@@ -479,7 +475,7 @@ type UpdateRowPermissionRequestUpdateRowPermissionCommandRulesUserMappingList st
 	//
 	// PERSONAL
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// The accounts associated with the rule.
+	// The accounts bound to the rule.
 	//
 	// This parameter is required.
 	Accounts []*UpdateRowPermissionRequestUpdateRowPermissionCommandRulesUserMappingListAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Repeated"`
@@ -525,7 +521,7 @@ func (s *UpdateRowPermissionRequestUpdateRowPermissionCommandRulesUserMappingLis
 }
 
 type UpdateRowPermissionRequestUpdateRowPermissionCommandRulesUserMappingListAccounts struct {
-	// The ID of the account associated with the rule.
+	// The ID of the account bound to the rule.
 	//
 	// This parameter is required.
 	//
@@ -557,7 +553,7 @@ func (s *UpdateRowPermissionRequestUpdateRowPermissionCommandRulesUserMappingLis
 }
 
 type UpdateRowPermissionRequestUpdateRowPermissionCommandTables struct {
-	// The table field.
+	// The table column.
 	//
 	// This parameter is required.
 	//
@@ -565,7 +561,7 @@ type UpdateRowPermissionRequestUpdateRowPermissionCommandTables struct {
 	//
 	// business_id
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	// The name of the mapping field.
+	// The mapping column name.
 	//
 	// This parameter is required.
 	//

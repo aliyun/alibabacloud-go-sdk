@@ -74,8 +74,6 @@ type ListAuthorizedDataServiceApiDetailsRequestListQuery struct {
 	//
 	// The application key.
 	//
-	// 	Notice: Deprecated. Use AppKeyStr instead.</notice>.
-	//
 	// example:
 	//
 	// 200000000

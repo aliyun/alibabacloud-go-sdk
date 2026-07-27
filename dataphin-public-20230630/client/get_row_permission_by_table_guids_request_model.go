@@ -16,11 +16,11 @@ type iGetRowPermissionByTableGuidsRequest interface {
 }
 
 type GetRowPermissionByTableGuidsRequest struct {
-	// Request command
+	// The request command.
 	//
 	// This parameter is required.
 	GetRowPermissionByTableGuidsQuery *GetRowPermissionByTableGuidsRequestGetRowPermissionByTableGuidsQuery `json:"GetRowPermissionByTableGuidsQuery,omitempty" xml:"GetRowPermissionByTableGuidsQuery,omitempty" type:"Struct"`
-	// Tenant ID
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ func (s *GetRowPermissionByTableGuidsRequest) Validate() error {
 }
 
 type GetRowPermissionByTableGuidsRequestGetRowPermissionByTableGuidsQuery struct {
-	// List of table GUIDs
+	// The list of table GUIDs.
 	//
 	// This parameter is required.
 	TableGuids []*string `json:"TableGuids,omitempty" xml:"TableGuids,omitempty" type:"Repeated"`

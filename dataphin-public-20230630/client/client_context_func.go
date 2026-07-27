@@ -589,6 +589,126 @@ func (client *Client) AssignQualityRuleOfAllRuleScopeSchedulesWithContext(ctx co
 
 // Summary:
 //
+// Creates knowledge graph entity records in batches. Online version: v6.1.1.
+//
+// @param tmpReq - BatchCreateKgEntityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchCreateKgEntityResponse
+func (client *Client) BatchCreateKgEntityWithContext(ctx context.Context, tmpReq *BatchCreateKgEntityRequest, runtime *dara.RuntimeOptions) (_result *BatchCreateKgEntityResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &BatchCreateKgEntityShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CreateCommand) {
+		request.CreateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CreateCommand, dara.String("CreateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CreateCommandShrink) {
+		body["CreateCommand"] = request.CreateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchCreateKgEntity"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchCreateKgEntityResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates knowledge graph relationship records in batches. Online version: v6.1.1.
+//
+// @param tmpReq - BatchCreateKgRelationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchCreateKgRelationResponse
+func (client *Client) BatchCreateKgRelationWithContext(ctx context.Context, tmpReq *BatchCreateKgRelationRequest, runtime *dara.RuntimeOptions) (_result *BatchCreateKgRelationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &BatchCreateKgRelationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CreateCommand) {
+		request.CreateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CreateCommand, dara.String("CreateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CreateCommandShrink) {
+		body["CreateCommand"] = request.CreateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchCreateKgRelation"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchCreateKgRelationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Checks the connectivity of a compute source.
 //
 // @param tmpReq - CheckComputeSourceConnectivityRequest
@@ -947,6 +1067,62 @@ func (client *Client) CreateAdHocFileWithContext(ctx context.Context, tmpReq *Cr
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateAdHocFileResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a Basic (single-environment) project.
+//
+// @param tmpReq - CreateBasicProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateBasicProjectResponse
+func (client *Client) CreateBasicProjectWithContext(ctx context.Context, tmpReq *CreateBasicProjectRequest, runtime *dara.RuntimeOptions) (_result *CreateBasicProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateBasicProjectShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CreateCommand) {
+		request.CreateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CreateCommand, dara.String("CreateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CreateCommandShrink) {
+		body["CreateCommand"] = request.CreateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateBasicProject"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateBasicProjectResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1593,6 +1769,62 @@ func (client *Client) CreateDatasetWithContext(ctx context.Context, tmpReq *Crea
 
 // Summary:
 //
+// Creates a Dev-Prod (dual-environment) project.
+//
+// @param tmpReq - CreateDevProdProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDevProdProjectResponse
+func (client *Client) CreateDevProdProjectWithContext(ctx context.Context, tmpReq *CreateDevProdProjectRequest, runtime *dara.RuntimeOptions) (_result *CreateDevProdProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateDevProdProjectShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CreateCommand) {
+		request.CreateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CreateCommand, dara.String("CreateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CreateCommandShrink) {
+		body["CreateCommand"] = request.CreateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDevProdProject"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDevProdProjectResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a menu tree directory. This operation supports features such as compute nodes, data integration, and synchronization tasks.
 //
 // @param tmpReq - CreateDirectoryRequest
@@ -1639,6 +1871,126 @@ func (client *Client) CreateDirectoryWithContext(ctx context.Context, tmpReq *Cr
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateDirectoryResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a knowledge graph entity record. Online version: v6.1.1.
+//
+// @param tmpReq - CreateKgEntityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateKgEntityResponse
+func (client *Client) CreateKgEntityWithContext(ctx context.Context, tmpReq *CreateKgEntityRequest, runtime *dara.RuntimeOptions) (_result *CreateKgEntityResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateKgEntityShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CreateCommand) {
+		request.CreateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CreateCommand, dara.String("CreateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CreateCommandShrink) {
+		body["CreateCommand"] = request.CreateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateKgEntity"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateKgEntityResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a knowledge graph relationship record. Online version: v6.1.1.
+//
+// @param tmpReq - CreateKgRelationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateKgRelationResponse
+func (client *Client) CreateKgRelationWithContext(ctx context.Context, tmpReq *CreateKgRelationRequest, runtime *dara.RuntimeOptions) (_result *CreateKgRelationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateKgRelationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CreateCommand) {
+		request.CreateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CreateCommand, dara.String("CreateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CreateCommandShrink) {
+		body["CreateCommand"] = request.CreateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateKgRelation"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateKgRelationResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1957,7 +2309,7 @@ func (client *Client) CreateResourceWithContext(ctx context.Context, tmpReq *Cre
 //
 // Description:
 //
-// You can query detailed information about published APIs based on the appKey.
+// Queries the details of published APIs by appKey.
 //
 // @param tmpReq - CreateRowPermissionRequest
 //
@@ -3505,6 +3857,166 @@ func (client *Client) DeleteDirectoryWithContext(ctx context.Context, request *D
 
 // Summary:
 //
+// Deletes an entity record. Online version: v6.1.1.
+//
+// @param request - DeleteKgEntityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteKgEntityResponse
+func (client *Client) DeleteKgEntityWithContext(ctx context.Context, request *DeleteKgEntityRequest, runtime *dara.RuntimeOptions) (_result *DeleteKgEntityResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EntityId) {
+		query["EntityId"] = request.EntityId
+	}
+
+	if !dara.IsNil(request.EntityType) {
+		query["EntityType"] = request.EntityType
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteKgEntity"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteKgEntityResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a relationship record. Online version: v6.1.1.
+//
+// @param request - DeleteKgRelationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteKgRelationResponse
+func (client *Client) DeleteKgRelationWithContext(ctx context.Context, request *DeleteKgRelationRequest, runtime *dara.RuntimeOptions) (_result *DeleteKgRelationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.RelationId) {
+		query["RelationId"] = request.RelationId
+	}
+
+	if !dara.IsNil(request.RelationType) {
+		query["RelationType"] = request.RelationType
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteKgRelation"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteKgRelationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a project (applicable to both Basic and Dev-Prod projects).
+//
+// @param request - DeleteProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteProjectResponse
+func (client *Client) DeleteProjectWithContext(ctx context.Context, request *DeleteProjectRequest, runtime *dara.RuntimeOptions) (_result *DeleteProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteProject"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteProjectResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes quality rule objects in batches.
 //
 // Release version: v5.4.2.
@@ -4613,6 +5125,66 @@ func (client *Client) DeleteUserGroupWithContext(ctx context.Context, request *D
 
 // Summary:
 //
+// Executes a custom Cypher query. Online version: v6.2.0.
+//
+// @param tmpReq - ExecKgCypherRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecKgCypherResponse
+func (client *Client) ExecKgCypherWithContext(ctx context.Context, tmpReq *ExecKgCypherRequest, runtime *dara.RuntimeOptions) (_result *ExecKgCypherResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ExecKgCypherShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ExecCommand) {
+		request.ExecCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExecCommand, dara.String("ExecCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ExecCommandShrink) {
+		body["ExecCommand"] = request.ExecCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ExecKgCypher"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ExecKgCypherResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Executes an ad hoc query task.
 //
 // @param tmpReq - ExecuteAdHocTaskRequest
@@ -4783,6 +5355,62 @@ func (client *Client) ExecuteTriggerNodeWithContext(ctx context.Context, request
 		BodyType:    dara.String("json"),
 	}
 	_result = &ExecuteTriggerNodeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 导出知识图谱定义。
+//
+// @param request - ExportKgSchemaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExportKgSchemaResponse
+func (client *Client) ExportKgSchemaWithContext(ctx context.Context, request *ExportKgSchemaRequest, runtime *dara.RuntimeOptions) (_result *ExportKgSchemaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OutputFormat) {
+		query["OutputFormat"] = request.OutputFormat
+	}
+
+	if !dara.IsNil(request.VersionId) {
+		query["VersionId"] = request.VersionId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ExportKgSchema"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ExportKgSchemaResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5403,7 +6031,7 @@ func (client *Client) GetBatchTaskVersionsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 获取指定离线模板ID版本列表。
+// Retrieves the version list of a specified offline template ID. Online version: v6.2.0.
 //
 // @param request - GetBatchTemplateVersionsRequest
 //
@@ -7113,6 +7741,238 @@ func (client *Client) GetInstanceUpDownStreamWithContext(ctx context.Context, tm
 
 // Summary:
 //
+// 获取知识图谱实体记录。
+//
+// @param request - GetKgEntityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetKgEntityResponse
+func (client *Client) GetKgEntityWithContext(ctx context.Context, request *GetKgEntityRequest, runtime *dara.RuntimeOptions) (_result *GetKgEntityResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EntityId) {
+		query["EntityId"] = request.EntityId
+	}
+
+	if !dara.IsNil(request.EntityType) {
+		query["EntityType"] = request.EntityType
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetKgEntity"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetKgEntityResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取图谱模型邻居节点。
+//
+// @param tmpReq - GetKgNeighborRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetKgNeighborResponse
+func (client *Client) GetKgNeighborWithContext(ctx context.Context, tmpReq *GetKgNeighborRequest, runtime *dara.RuntimeOptions) (_result *GetKgNeighborResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetKgNeighborShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.NeighborsQuery) {
+		request.NeighborsQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NeighborsQuery, dara.String("NeighborsQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EntityDataId) {
+		query["EntityDataId"] = request.EntityDataId
+	}
+
+	if !dara.IsNil(request.EntityType) {
+		query["EntityType"] = request.EntityType
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.NeighborsQueryShrink) {
+		body["NeighborsQuery"] = request.NeighborsQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetKgNeighbor"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetKgNeighborResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取知识图谱关系记录。
+//
+// @param request - GetKgRelationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetKgRelationResponse
+func (client *Client) GetKgRelationWithContext(ctx context.Context, request *GetKgRelationRequest, runtime *dara.RuntimeOptions) (_result *GetKgRelationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.RelationId) {
+		query["RelationId"] = request.RelationId
+	}
+
+	if !dara.IsNil(request.RelationType) {
+		query["RelationType"] = request.RelationType
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetKgRelation"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetKgRelationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取图谱模型发布结果。
+//
+// @param request - GetKgSchemaPublishResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetKgSchemaPublishResultResponse
+func (client *Client) GetKgSchemaPublishResultWithContext(ctx context.Context, request *GetKgSchemaPublishResultRequest, runtime *dara.RuntimeOptions) (_result *GetKgSchemaPublishResultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.VersionId) {
+		query["VersionId"] = request.VersionId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetKgSchemaPublishResult"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetKgSchemaPublishResultResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the details of the latest pending submit record.
 //
 // @param tmpReq - GetLatestSubmitDetailRequest
@@ -7341,7 +8201,7 @@ func (client *Client) GetNodeUpDownStreamWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 根据Id查询运行记录
+// Queries an operation log by ID. Available since v6.2.0.
 //
 // @param tmpReq - GetOperationRecordByIdRequest
 //
@@ -8923,7 +9783,7 @@ func (client *Client) GetResourceByVersionWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Release version: v5.4.2.
+// Retrieves row permissions by table GUIDs. Online version: v5.4.2.
 //
 // @param tmpReq - GetRowPermissionByTableGuidsRequest
 //
@@ -10439,6 +11299,66 @@ func (client *Client) GrantResourcePermissionWithContext(ctx context.Context, tm
 
 // Summary:
 //
+// 导入知识图谱定义。
+//
+// @param tmpReq - ImportKgSchemaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImportKgSchemaResponse
+func (client *Client) ImportKgSchemaWithContext(ctx context.Context, tmpReq *ImportKgSchemaRequest, runtime *dara.RuntimeOptions) (_result *ImportKgSchemaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ImportKgSchemaShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ImportCommand) {
+		request.ImportCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ImportCommand, dara.String("ImportCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ImportCommandShrink) {
+		body["ImportCommand"] = request.ImportCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ImportKgSchema"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ImportKgSchemaResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the global roles that can be assigned to tenant members. Only built-in global roles are supported. Custom global roles are not supported.
 //
 // @param request - ListAddableRolesRequest
@@ -10711,7 +11631,13 @@ func (client *Client) ListApiByAppWithContext(ctx context.Context, tmpReq *ListA
 
 // Summary:
 //
-// Queries the list of specific fields for APIs that an application has requested.
+// Queries the specific field list of APIs that an application has requested.
+//
+// Description:
+//
+// ## 请求说明
+//
+// 该 API 允许用户通过提供租户 ID、数据服务应用的AppKey 或应用名称的关键词来已授权给应用的API。支持分页查询，返回的数据包括API的ID、名称、所属项目、已授权的有效期（开发及生产环境）、权限类型、生产及开发环境字段列表（字段/参数名称、参数类型、描述、示例值、是否已授权等）。请注意，分页参数是必填值。
 //
 // @param tmpReq - ListAuthorizedDataServiceApiDetailsRequest
 //
@@ -11801,6 +12727,134 @@ func (client *Client) ListInstancesWithContext(ctx context.Context, tmpReq *List
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListInstancesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries knowledge graph entity records with paging. Online version: v6.1.1.
+//
+// @param tmpReq - ListKgEntityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListKgEntityResponse
+func (client *Client) ListKgEntityWithContext(ctx context.Context, tmpReq *ListKgEntityRequest, runtime *dara.RuntimeOptions) (_result *ListKgEntityResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListKgEntityShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ListQuery) {
+		request.ListQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ListQuery, dara.String("ListQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EntityType) {
+		query["EntityType"] = request.EntityType
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ListQueryShrink) {
+		body["ListQuery"] = request.ListQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListKgEntity"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListKgEntityResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询知识图谱关系记录。
+//
+// @param tmpReq - ListKgRelationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListKgRelationResponse
+func (client *Client) ListKgRelationWithContext(ctx context.Context, tmpReq *ListKgRelationRequest, runtime *dara.RuntimeOptions) (_result *ListKgRelationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListKgRelationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ListQuery) {
+		request.ListQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ListQuery, dara.String("ListQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.RelationType) {
+		query["RelationType"] = request.RelationType
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ListQueryShrink) {
+		body["ListQuery"] = request.ListQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListKgRelation"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListKgRelationResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -13715,6 +14769,66 @@ func (client *Client) PublishDataServiceApiWithContext(ctx context.Context, requ
 
 // Summary:
 //
+// Publishes a knowledge graph model. Online version: v6.2.0.
+//
+// @param tmpReq - PublishKgSchemaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PublishKgSchemaResponse
+func (client *Client) PublishKgSchemaWithContext(ctx context.Context, tmpReq *PublishKgSchemaRequest, runtime *dara.RuntimeOptions) (_result *PublishKgSchemaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &PublishKgSchemaShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.PublishCommand) {
+		request.PublishCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PublishCommand, dara.String("PublishCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.PublishCommandShrink) {
+		body["PublishCommand"] = request.PublishCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PublishKgSchema"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PublishKgSchemaResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Publishes objects in batches.
 //
 // @param tmpReq - PublishObjectListRequest
@@ -14919,6 +16033,62 @@ func (client *Client) UpdateAdHocFileWithContext(ctx context.Context, tmpReq *Up
 
 // Summary:
 //
+// Edits a Basic (single-environment) project. The project name cannot be modified. You must pass in the current project name.
+//
+// @param tmpReq - UpdateBasicProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateBasicProjectResponse
+func (client *Client) UpdateBasicProjectWithContext(ctx context.Context, tmpReq *UpdateBasicProjectRequest, runtime *dara.RuntimeOptions) (_result *UpdateBasicProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateBasicProjectShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpdateCommand) {
+		request.UpdateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateCommand, dara.String("UpdateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UpdateCommandShrink) {
+		body["UpdateCommand"] = request.UpdateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateBasicProject"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateBasicProjectResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates an offline compute node.
 //
 // @param tmpReq - UpdateBatchTaskRequest
@@ -15675,6 +16845,62 @@ func (client *Client) UpdateDatasetWithContext(ctx context.Context, tmpReq *Upda
 
 // Summary:
 //
+// Edits a Dev-Prod (dual-environment) project.
+//
+// @param tmpReq - UpdateDevProdProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDevProdProjectResponse
+func (client *Client) UpdateDevProdProjectWithContext(ctx context.Context, tmpReq *UpdateDevProdProjectRequest, runtime *dara.RuntimeOptions) (_result *UpdateDevProdProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateDevProdProjectShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpdateCommand) {
+		request.UpdateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateCommand, dara.String("UpdateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UpdateCommandShrink) {
+		body["UpdateCommand"] = request.UpdateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDevProdProject"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDevProdProjectResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Moves the file position in the menu tree.
 //
 // @param request - UpdateFileDirectoryRequest
@@ -15777,6 +17003,126 @@ func (client *Client) UpdateFileNameWithContext(ctx context.Context, request *Up
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateFileNameResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Edits a knowledge graph entity record. Online version: v6.1.1.
+//
+// @param tmpReq - UpdateKgEntityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateKgEntityResponse
+func (client *Client) UpdateKgEntityWithContext(ctx context.Context, tmpReq *UpdateKgEntityRequest, runtime *dara.RuntimeOptions) (_result *UpdateKgEntityResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateKgEntityShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpdateCommand) {
+		request.UpdateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateCommand, dara.String("UpdateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UpdateCommandShrink) {
+		body["UpdateCommand"] = request.UpdateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateKgEntity"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateKgEntityResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Edits a knowledge graph relationship record. Online version: v6.1.1.
+//
+// @param tmpReq - UpdateKgRelationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateKgRelationResponse
+func (client *Client) UpdateKgRelationWithContext(ctx context.Context, tmpReq *UpdateKgRelationRequest, runtime *dara.RuntimeOptions) (_result *UpdateKgRelationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateKgRelationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpdateCommand) {
+		request.UpdateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateCommand, dara.String("UpdateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UpdateCommandShrink) {
+		body["UpdateCommand"] = request.UpdateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateKgRelation"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateKgRelationResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -16147,7 +17493,7 @@ func (client *Client) UpdateResourceWithContext(ctx context.Context, tmpReq *Upd
 
 // Summary:
 //
-// Updates a row-level permission.
+// Updates row-level permissions.
 //
 // @param tmpReq - UpdateRowPermissionRequest
 //

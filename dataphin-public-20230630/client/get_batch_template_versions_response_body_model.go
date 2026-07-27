@@ -24,24 +24,34 @@ type iGetBatchTemplateVersionsResponseBody interface {
 }
 
 type GetBatchTemplateVersionsResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
 	Data *GetBatchTemplateVersionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The backend exception details.
+	//
 	// example:
 	//
 	// internal error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetBatchTemplateVersionsResponseBody) String() string {
@@ -116,6 +126,7 @@ func (s *GetBatchTemplateVersionsResponseBody) Validate() error {
 }
 
 type GetBatchTemplateVersionsResponseBodyData struct {
+	// The template version list.
 	TemplateVersionList []*GetBatchTemplateVersionsResponseBodyDataTemplateVersionList `json:"TemplateVersionList,omitempty" xml:"TemplateVersionList,omitempty" type:"Repeated"`
 }
 
@@ -150,68 +161,110 @@ func (s *GetBatchTemplateVersionsResponseBodyData) Validate() error {
 }
 
 type GetBatchTemplateVersionsResponseBodyDataTemplateVersionList struct {
+	// The template submit comment.
+	//
 	// example:
 	//
 	// 初始化提交
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The template content.
+	//
 	// example:
 	//
 	// #!/bin/bash
 	//
 	// echo \\"hello world\\"
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The template description.
+	//
 	// example:
 	//
 	// 用于数据处理的Shell模板
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The version of the compute engine. Currently supported Python versions: Python 2.7 and Python 3.7.
+	//
 	// example:
 	//
 	// Python 3.7
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The template creation time. Format: yyyy-MM-dd HH:mm:ss.
+	//
 	// example:
 	//
 	// 2026-01-01 10:00:00
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The template modification time. Format: yyyy-MM-dd HH:mm:ss.
+	//
 	// example:
 	//
 	// 2026-05-28 15:30:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The template ID, which is the same as the menu tree node ID.
+	//
 	// example:
 	//
 	// 1001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The last modifier of the template.
+	//
 	// example:
 	//
 	// 李四
 	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
+	// The ID of the last modifier of the template.
+	//
 	// example:
 	//
 	// 100002
 	ModifierId *string `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
+	// The template name.
+	//
 	// example:
 	//
 	// 数据处理模板
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The template operator type. Valid values:
+	//
+	// - 10: Shell.
+	//
+	// - 21: Python.
+	//
 	// example:
 	//
 	// 10
 	OperatorType *int32 `json:"OperatorType,omitempty" xml:"OperatorType,omitempty"`
+	// The template owner.
+	//
 	// example:
 	//
 	// 张三
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The template owner ID.
+	//
 	// example:
 	//
 	// 100001
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 123456
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The template status. Valid values:
+	//
+	// - 0: draft.
+	//
+	// - 2: submitted.
+	//
+	// - 100: in development.
+	//
 	// example:
 	//
 	// 2
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The version number.
+	//
 	// example:
 	//
 	// 1

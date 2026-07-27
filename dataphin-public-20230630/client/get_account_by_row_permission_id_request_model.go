@@ -75,8 +75,6 @@ type GetAccountByRowPermissionIdRequestGetAccountByRowPermissionIdQuery struct {
 	// 300001234
 	RowPermissionId *int64 `json:"RowPermissionId,omitempty" xml:"RowPermissionId,omitempty"`
 	// The row-level permission rule IDs.
-	//
-	// This parameter is required.
 	RuleIds []*int64 `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
 }
 

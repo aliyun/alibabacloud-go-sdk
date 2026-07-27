@@ -16,11 +16,11 @@ type iGetRowPermissionByTableGuidsShrinkRequest interface {
 }
 
 type GetRowPermissionByTableGuidsShrinkRequest struct {
-	// Request command
+	// The request command.
 	//
 	// This parameter is required.
 	GetRowPermissionByTableGuidsQueryShrink *string `json:"GetRowPermissionByTableGuidsQuery,omitempty" xml:"GetRowPermissionByTableGuidsQuery,omitempty"`
-	// Tenant ID
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//

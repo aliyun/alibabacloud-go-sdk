@@ -40,9 +40,9 @@ type ListAuthorizedDataServiceApiDetailsResponseBody struct {
 	//
 	// example:
 	//
-	// 非法入参
+	// Invalid input parameter.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID. It is a unique identifier for the request.
+	// The request ID, which uniquely identifies the request.
 	//
 	// example:
 	//
@@ -51,6 +51,10 @@ type ListAuthorizedDataServiceApiDetailsResponseBody struct {
 	// The query result.
 	Result *ListAuthorizedDataServiceApiDetailsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -198,11 +202,11 @@ type ListAuthorizedDataServiceApiDetailsResponseBodyResultData struct {
 	//
 	// example:
 	//
-	// 使用权限
+	// Usage permission.
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	// The list of fields authorized for the API in the development environment.
+	// The list of authorized fields for the API in the development environment.
 	AuthorizedDevReturnParameters []*ListAuthorizedDataServiceApiDetailsResponseBodyResultDataAuthorizedDevReturnParameters `json:"AuthorizedDevReturnParameters,omitempty" xml:"AuthorizedDevReturnParameters,omitempty" type:"Repeated"`
-	// The list of fields authorized for the API in the production environment.
+	// The list of authorized fields for the API in the production environment.
 	AuthorizedProdReturnParameters []*ListAuthorizedDataServiceApiDetailsResponseBodyResultDataAuthorizedProdReturnParameters `json:"AuthorizedProdReturnParameters,omitempty" xml:"AuthorizedProdReturnParameters,omitempty" type:"Repeated"`
 	// The API description.
 	//
@@ -363,7 +367,7 @@ type ListAuthorizedDataServiceApiDetailsResponseBodyResultDataAuthorizedDevRetur
 	//
 	// 1
 	IsAuthorized *int32 `json:"IsAuthorized,omitempty" xml:"IsAuthorized,omitempty"`
-	// The parameter type.
+	// The parameter data type.
 	//
 	// example:
 	//
@@ -453,7 +457,7 @@ type ListAuthorizedDataServiceApiDetailsResponseBodyResultDataAuthorizedProdRetu
 	//
 	// 1
 	IsAuthorized *int32 `json:"IsAuthorized,omitempty" xml:"IsAuthorized,omitempty"`
-	// The parameter type.
+	// The parameter data type.
 	//
 	// example:
 	//

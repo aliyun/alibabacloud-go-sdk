@@ -16,8 +16,12 @@ type iGetOperationRecordByIdShrinkRequest interface {
 }
 
 type GetOperationRecordByIdShrinkRequest struct {
+	// The query command.
+	//
 	// This parameter is required.
 	DetailCommandShrink *string `json:"DetailCommand,omitempty" xml:"DetailCommand,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:

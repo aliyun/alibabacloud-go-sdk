@@ -1,0 +1,108 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iUpdateKgEntityResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetCode(v string) *UpdateKgEntityResponseBody
+	GetCode() *string
+	SetHttpStatusCode(v int32) *UpdateKgEntityResponseBody
+	GetHttpStatusCode() *int32
+	SetMessage(v string) *UpdateKgEntityResponseBody
+	GetMessage() *string
+	SetRequestId(v string) *UpdateKgEntityResponseBody
+	GetRequestId() *string
+	SetSuccess(v bool) *UpdateKgEntityResponseBody
+	GetSuccess() *bool
+}
+
+type UpdateKgEntityResponseBody struct {
+	// The backend response code.
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The backend exception details.
+	//
+	// example:
+	//
+	// internal error
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateKgEntityResponseBody) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateKgEntityResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateKgEntityResponseBody) GetCode() *string {
+	return s.Code
+}
+
+func (s *UpdateKgEntityResponseBody) GetHttpStatusCode() *int32 {
+	return s.HttpStatusCode
+}
+
+func (s *UpdateKgEntityResponseBody) GetMessage() *string {
+	return s.Message
+}
+
+func (s *UpdateKgEntityResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *UpdateKgEntityResponseBody) GetSuccess() *bool {
+	return s.Success
+}
+
+func (s *UpdateKgEntityResponseBody) SetCode(v string) *UpdateKgEntityResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateKgEntityResponseBody) SetHttpStatusCode(v int32) *UpdateKgEntityResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateKgEntityResponseBody) SetMessage(v string) *UpdateKgEntityResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateKgEntityResponseBody) SetRequestId(v string) *UpdateKgEntityResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateKgEntityResponseBody) SetSuccess(v bool) *UpdateKgEntityResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *UpdateKgEntityResponseBody) Validate() error {
+	return dara.Validate(s)
+}

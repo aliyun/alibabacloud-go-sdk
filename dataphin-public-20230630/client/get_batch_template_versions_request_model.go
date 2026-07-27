@@ -20,22 +20,36 @@ type iGetBatchTemplateVersionsRequest interface {
 }
 
 type GetBatchTemplateVersionsRequest struct {
+	// The environment. Valid values:
+	//
+	// - DEV: development environment.
+	//
+	// - PROD: production environment.
+	//
+	// Default value for dev_prod projects: DEV.
+	//
 	// example:
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The template ID.
+	//
 	// This parameter is required.
 	//
 	// example:

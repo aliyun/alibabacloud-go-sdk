@@ -16,8 +16,12 @@ type iGetOperationRecordByIdRequest interface {
 }
 
 type GetOperationRecordByIdRequest struct {
+	// The query command.
+	//
 	// This parameter is required.
 	DetailCommand *GetOperationRecordByIdRequestDetailCommand `json:"DetailCommand,omitempty" xml:"DetailCommand,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,12 +66,16 @@ func (s *GetOperationRecordByIdRequest) Validate() error {
 }
 
 type GetOperationRecordByIdRequestDetailCommand struct {
+	// The operation log ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 987654321
 	OperationId *int64 `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:

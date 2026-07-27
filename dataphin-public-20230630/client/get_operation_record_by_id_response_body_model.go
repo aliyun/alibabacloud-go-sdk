@@ -24,24 +24,34 @@ type iGetOperationRecordByIdResponseBody interface {
 }
 
 type GetOperationRecordByIdResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The backend exception details.
+	//
 	// example:
 	//
 	// internal error
-	Message         *string                                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The operation log details.
 	OperationLogDTO *GetOperationRecordByIdResponseBodyOperationLogDTO `json:"OperationLogDTO,omitempty" xml:"OperationLogDTO,omitempty" type:"Struct"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetOperationRecordByIdResponseBody) String() string {
@@ -116,51 +126,92 @@ func (s *GetOperationRecordByIdResponseBody) Validate() error {
 }
 
 type GetOperationRecordByIdResponseBodyOperationLogDTO struct {
+	// The start time.
+	//
 	// example:
 	//
 	// 2025-01-15 10:30:00
 	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// The code type. Valid values:
+	//
+	// - SQL0: SQL
+	//
+	// - shell1: Shell
+	//
+	// - Python2: Python
+	//
+	// - MR3: MR
+	//
+	// - Spark4: Spark
+	//
 	// example:
 	//
 	// 0
 	CodeType *int32 `json:"CodeType,omitempty" xml:"CodeType,omitempty"`
+	// The execution duration, in milliseconds.
+	//
 	// example:
 	//
 	// 120
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The record ID.
+	//
 	// example:
 	//
 	// 123456
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name.
+	//
 	// example:
 	//
 	// 测试任务
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The object type.
+	//
 	// example:
 	//
 	// onedata-ide
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	// The operation log ID.
+	//
 	// example:
 	//
 	// 987654321
 	OperationId *int64 `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 131211211
-	ProjectId      *int64    `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The list of related tables.
 	RelationTables []*string `json:"RelationTables,omitempty" xml:"RelationTables,omitempty" type:"Repeated"`
+	// The ID of the runner.
+	//
 	// example:
 	//
 	// 30231123
 	Runner *string `json:"Runner,omitempty" xml:"Runner,omitempty"`
+	// The name of the runner.
+	//
 	// example:
 	//
 	// 张三
 	RunnerName *string `json:"RunnerName,omitempty" xml:"RunnerName,omitempty"`
+	// The node status. Valid values:
+	//
+	// - 4: Running.
+	//
+	// - 5: Succeeded.
+	//
+	// - 6: Failed.
+	//
 	// example:
 	//
 	// 5
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tenant ID.
+	//
 	// example:
 	//
 	// 10001

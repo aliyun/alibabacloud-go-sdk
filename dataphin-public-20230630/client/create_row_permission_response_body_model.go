@@ -24,7 +24,7 @@ type iCreateRowPermissionResponseBody interface {
 }
 
 type CreateRowPermissionResponseBody struct {
-	// The error code of the request. OK indicates a successful request.
+	// The error code. A value of OK indicates that the request was successful.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type CreateRowPermissionResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message of the request.
+	// The error message returned if the request failed.
 	//
 	// example:
 	//

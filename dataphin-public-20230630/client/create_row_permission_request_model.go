@@ -16,11 +16,11 @@ type iCreateRowPermissionRequest interface {
 }
 
 type CreateRowPermissionRequest struct {
-	// Request command.
+	// The request command.
 	//
 	// This parameter is required.
 	CreateRowPermissionCommand *CreateRowPermissionRequestCreateRowPermissionCommand `json:"CreateRowPermissionCommand,omitempty" xml:"CreateRowPermissionCommand,omitempty" type:"Struct"`
-	// Tenant ID.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ func (s *CreateRowPermissionRequest) Validate() error {
 }
 
 type CreateRowPermissionRequestCreateRowPermissionCommand struct {
-	// The mapping columns.
+	// The mapping fields.
 	//
 	// This parameter is required.
 	MappingColumns []*CreateRowPermissionRequestCreateRowPermissionCommandMappingColumns `json:"MappingColumns,omitempty" xml:"MappingColumns,omitempty" type:"Repeated"`
@@ -74,7 +74,7 @@ type CreateRowPermissionRequestCreateRowPermissionCommand struct {
 	//
 	// example:
 	//
-	// 管控业务数据
+	// Control business data.
 	RowPermissionDesc *string `json:"RowPermissionDesc,omitempty" xml:"RowPermissionDesc,omitempty"`
 	// The name of the row-level permission.
 	//
@@ -82,7 +82,7 @@ type CreateRowPermissionRequestCreateRowPermissionCommand struct {
 	//
 	// example:
 	//
-	// 业务管控
+	// BusinessControl.
 	RowPermissionName *string `json:"RowPermissionName,omitempty" xml:"RowPermissionName,omitempty"`
 	// The rules.
 	Rules []*CreateRowPermissionRequestCreateRowPermissionCommandRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
@@ -175,13 +175,13 @@ func (s *CreateRowPermissionRequestCreateRowPermissionCommand) Validate() error 
 }
 
 type CreateRowPermissionRequestCreateRowPermissionCommandMappingColumns struct {
-	// The description of the mapping column.
+	// The description of the mapping field.
 	//
 	// example:
 	//
-	// 控制业务ID字段
+	// Controls the business ID field.
 	ColumnDesc *string `json:"ColumnDesc,omitempty" xml:"ColumnDesc,omitempty"`
-	// The name of the mapping column.
+	// The name of the mapping field.
 	//
 	// This parameter is required.
 	//
@@ -189,7 +189,7 @@ type CreateRowPermissionRequestCreateRowPermissionCommandMappingColumns struct {
 	//
 	// business_id
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	// The type of the mapping column.
+	// The type of the mapping field.
 	//
 	// This parameter is required.
 	//
@@ -243,7 +243,7 @@ type CreateRowPermissionRequestCreateRowPermissionCommandRules struct {
 	//
 	// This parameter is required.
 	Expressions []*CreateRowPermissionRequestCreateRowPermissionCommandRulesExpressions `json:"Expressions,omitempty" xml:"Expressions,omitempty" type:"Repeated"`
-	// Specifies whether to delete the rule.
+	// Specifies whether the rule is deleted.
 	//
 	// example:
 	//
@@ -255,7 +255,7 @@ type CreateRowPermissionRequestCreateRowPermissionCommandRules struct {
 	//
 	// example:
 	//
-	// 中台
+	// MiddlePlatform.
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The scope type of the rule.
 	//
@@ -266,8 +266,6 @@ type CreateRowPermissionRequestCreateRowPermissionCommandRules struct {
 	// SELECT_COLUMN
 	ScopeType *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
 	// The status of the rule.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -362,7 +360,7 @@ func (s *CreateRowPermissionRequestCreateRowPermissionCommandRules) Validate() e
 }
 
 type CreateRowPermissionRequestCreateRowPermissionCommandRulesExpressions struct {
-	// The name of the mapping column.
+	// The name of the mapping field.
 	//
 	// This parameter is required.
 	//
@@ -390,9 +388,7 @@ type CreateRowPermissionRequestCreateRowPermissionCommandRulesExpressions struct
 	//
 	// RELATION
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The expression operation values.
-	//
-	// This parameter is required.
+	// The operation values of the expression.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -544,7 +540,7 @@ func (s *CreateRowPermissionRequestCreateRowPermissionCommandRulesUserMappingLis
 }
 
 type CreateRowPermissionRequestCreateRowPermissionCommandTables struct {
-	// The column of the table.
+	// The field of the table.
 	//
 	// This parameter is required.
 	//
@@ -552,7 +548,7 @@ type CreateRowPermissionRequestCreateRowPermissionCommandTables struct {
 	//
 	// business_id
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	// The name of the mapping column.
+	// The name of the mapping field.
 	//
 	// This parameter is required.
 	//

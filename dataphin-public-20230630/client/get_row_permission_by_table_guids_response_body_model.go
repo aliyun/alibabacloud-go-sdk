@@ -24,33 +24,33 @@ type iGetRowPermissionByTableGuidsResponseBody interface {
 }
 
 type GetRowPermissionByTableGuidsResponseBody struct {
-	// Error code. A value of OK indicates that the request was successful
+	// The error code. A value of OK indicates that the request was successful.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Response data
+	// The returned data.
 	Data []*GetRowPermissionByTableGuidsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// HTTP status code of the backend response
+	// The HTTP status code returned by the backend.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Error message
+	// The error message returned if the request failed.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful
+	// Indicates whether the request was successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -130,19 +130,19 @@ func (s *GetRowPermissionByTableGuidsResponseBody) Validate() error {
 }
 
 type GetRowPermissionByTableGuidsResponseBodyData struct {
-	// Row permission description
+	// The row permission description.
 	//
 	// example:
 	//
 	// Restrict query region
 	RowPermissionDesc *string `json:"RowPermissionDesc,omitempty" xml:"RowPermissionDesc,omitempty"`
-	// Row permission ID
+	// The row permission ID.
 	//
 	// example:
 	//
 	// 300000001
 	RowPermissionId *string `json:"RowPermissionId,omitempty" xml:"RowPermissionId,omitempty"`
-	// Row permission name
+	// The row permission name.
 	//
 	// example:
 	//
