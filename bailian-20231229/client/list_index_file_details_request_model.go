@@ -24,15 +24,15 @@ type iListIndexFileDetailsRequest interface {
 }
 
 type ListIndexFileDetailsRequest struct {
-	// Filters the returned file details list by file name. Default value: empty, which means no filtering by file name.
+	// Filters the returned file details list by file name. Default value: empty, which means the results are not filtered by file name.
 	//
 	// example:
 	//
-	// 翻译平台运维文档
+	// TranslationPlatformO&MDocument.
 	DocumentName *string `json:"DocumentName,omitempty" xml:"DocumentName,omitempty"`
 	// Filters the returned file list by file import status. Valid values:
 	//
-	// - INSERT_ERROR: Failed to import to the index.
+	// - INSERT_ERROR: Import to index failed.
 	//
 	// - RUNNING: Index building in progress.
 	//
@@ -44,7 +44,7 @@ type ListIndexFileDetailsRequest struct {
 	//
 	// - DOC_PARSING: Parsing in progress.
 	//
-	// Default value: empty, which means no filtering by file import status.
+	// Default value: empty, which means the results are not filtered by file import status.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type ListIndexFileDetailsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of files to display per page for paging. Maximum value: 10.
+	// The number of files to display per page in a paginated query. Maximum value: 10.
 	//
 	// example:
 	//

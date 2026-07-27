@@ -30,7 +30,7 @@ type ListIndexFileDetailsResponseBody struct {
 	//
 	// InvalidParameter
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data field returned by the operation.
+	// The business data field of the operation.
 	Data *ListIndexFileDetailsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -142,13 +142,13 @@ type ListIndexFileDetailsResponseBodyData struct {
 	//
 	// 79c0alxxxx
 	IndexId *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
-	// The returned page number.
+	// The specified page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The returned number of entries per page.
+	// The specified number of entries per page.
 	//
 	// example:
 	//
@@ -235,19 +235,19 @@ type ListIndexFileDetailsResponseBodyDataDocuments struct {
 	//
 	// DashSplitter
 	ChunkMode *string `json:"ChunkMode,omitempty" xml:"ChunkMode,omitempty"`
-	// The segment length, which is the number of characters in each text chunk.
+	// The chunk length, which is the number of characters in a text chunk.
 	//
 	// example:
 	//
 	// 600
 	ChunkSize *string `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
-	// The error status code for file import.
+	// The file import error status code.
 	//
 	// example:
 	//
 	// 110002
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The file format type. Valid values: pdf, docx, doc, txt, md, pptx, ppt, png, jpg, jpeg, bmp, gif, and EXCEL.
+	// The file format type. Valid values: pdf, docx, doc, txt, md, pptx, ppt, png, jpg, jpeg, bmp, gif, EXCEL.
 	//
 	// example:
 	//
@@ -259,7 +259,7 @@ type ListIndexFileDetailsResponseBodyDataDocuments struct {
 	//
 	// true
 	EnableHeaders *string `json:"EnableHeaders,omitempty" xml:"EnableHeaders,omitempty"`
-	// The time when the file was imported to the knowledge base, in UNIX timestamp format.
+	// The time when the file was imported to the knowledge base, in Unix timestamp format.
 	//
 	// example:
 	//
@@ -271,19 +271,20 @@ type ListIndexFileDetailsResponseBodyDataDocuments struct {
 	//
 	// doc_c134aa2073204a5d936d870bf960f56axxxxxxxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The error message for file import.
+	// The file import error message.
 	//
 	// example:
 	//
 	// check fileUrlKey[file_path] / fileNameKey[null] / fileExtensionKey[file_extension] is invalid
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message         *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	MetaExtractInfo *string `json:"MetaExtractInfo,omitempty" xml:"MetaExtractInfo,omitempty"`
 	// The file name.
 	//
 	// example:
 	//
-	// 翻译平台运维文档
+	// TranslationPlatformO&MDocument.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The overlap length between segments.
+	// The chunk overlap length.
 	//
 	// example:
 	//
@@ -363,6 +364,10 @@ func (s *ListIndexFileDetailsResponseBodyDataDocuments) GetMessage() *string {
 	return s.Message
 }
 
+func (s *ListIndexFileDetailsResponseBodyDataDocuments) GetMetaExtractInfo() *string {
+	return s.MetaExtractInfo
+}
+
 func (s *ListIndexFileDetailsResponseBodyDataDocuments) GetName() *string {
 	return s.Name
 }
@@ -424,6 +429,11 @@ func (s *ListIndexFileDetailsResponseBodyDataDocuments) SetId(v string) *ListInd
 
 func (s *ListIndexFileDetailsResponseBodyDataDocuments) SetMessage(v string) *ListIndexFileDetailsResponseBodyDataDocuments {
 	s.Message = &v
+	return s
+}
+
+func (s *ListIndexFileDetailsResponseBodyDataDocuments) SetMetaExtractInfo(v string) *ListIndexFileDetailsResponseBodyDataDocuments {
+	s.MetaExtractInfo = &v
 	return s
 }
 
