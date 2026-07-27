@@ -9,6 +9,8 @@ type iModifyInstanceSSLRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBranchName(v string) *ModifyInstanceSSLRequest
+	GetBranchName() *string
 	SetCAType(v string) *ModifyInstanceSSLRequest
 	GetCAType() *string
 	SetInstanceName(v string) *ModifyInstanceSSLRequest
@@ -24,17 +26,16 @@ type iModifyInstanceSSLRequest interface {
 }
 
 type ModifyInstanceSSLRequest struct {
-	// Enables or disables SSL. Valid values:
+	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	// The certificate type. Currently, only **custom*	- is supported, which indicates that a custom certificate is used.
 	//
-	// 	- **1**: enables SSL.
-	//
-	// 	- **0**: disables SSL.
+	// > This parameter is required when **SSLEnabled*	- is set to **1**.
 	//
 	// example:
 	//
 	// custom
 	CAType *string `json:"CAType,omitempty" xml:"CAType,omitempty"`
-	// The region ID of the instance.
+	// The instance ID of the AI application.
 	//
 	// This parameter is required.
 	//
@@ -42,13 +43,17 @@ type ModifyInstanceSSLRequest struct {
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The operation that you want to perform. Set the value to **ModifyInstanceSSL**.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the RDS Supabase instance.
+	// Specifies whether to enable or disable SSL. Valid values:
+	//
+	// 	- **1**: Enable SSL.
+	//
+	// 	- **0**: Disable SSL.
 	//
 	// This parameter is required.
 	//
@@ -56,17 +61,17 @@ type ModifyInstanceSSLRequest struct {
 	//
 	// 1
 	SSLEnabled *int32 `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
-	// The certificate type. Only **custom*	- is supported.
+	// The content of the custom certificate.
 	//
-	// >  This parameter is required if **SSLEnabled*	- is set to **1**.
+	// > This parameter is required when **CAType*	- is set to **custom**.
 	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----MIID*****QqEP-----END CERTIFICATE-----
 	ServerCert *string `json:"ServerCert,omitempty" xml:"ServerCert,omitempty"`
-	// The content of the custom certificate.
+	// The private key of the certificate.
 	//
-	// >  This parameter is required if **CAType*	- is set to **custom**.
+	// > This parameter is required when **CAType*	- is set to **custom**.
 	//
 	// example:
 	//
@@ -80,6 +85,10 @@ func (s ModifyInstanceSSLRequest) String() string {
 
 func (s ModifyInstanceSSLRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyInstanceSSLRequest) GetBranchName() *string {
+	return s.BranchName
 }
 
 func (s *ModifyInstanceSSLRequest) GetCAType() *string {
@@ -104,6 +113,11 @@ func (s *ModifyInstanceSSLRequest) GetServerCert() *string {
 
 func (s *ModifyInstanceSSLRequest) GetServerKey() *string {
 	return s.ServerKey
+}
+
+func (s *ModifyInstanceSSLRequest) SetBranchName(v string) *ModifyInstanceSSLRequest {
+	s.BranchName = &v
+	return s
 }
 
 func (s *ModifyInstanceSSLRequest) SetCAType(v string) *ModifyInstanceSSLRequest {

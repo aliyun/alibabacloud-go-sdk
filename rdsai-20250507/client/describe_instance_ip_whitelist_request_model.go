@@ -9,6 +9,8 @@ type iDescribeInstanceIpWhitelistRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBranchName(v string) *DescribeInstanceIpWhitelistRequest
+	GetBranchName() *string
 	SetGroupName(v string) *DescribeInstanceIpWhitelistRequest
 	GetGroupName() *string
 	SetInstanceName(v string) *DescribeInstanceIpWhitelistRequest
@@ -18,14 +20,20 @@ type iDescribeInstanceIpWhitelistRequest interface {
 }
 
 type DescribeInstanceIpWhitelistRequest struct {
+	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	// The group name.
+	//
+	// example:
+	//
+	// default
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The region ID of the instance.
+	// The instance ID of the AI application.
 	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeInstanceIpWhitelist**.
+	// The region ID.
 	//
 	// example:
 	//
@@ -41,6 +49,10 @@ func (s DescribeInstanceIpWhitelistRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeInstanceIpWhitelistRequest) GetBranchName() *string {
+	return s.BranchName
+}
+
 func (s *DescribeInstanceIpWhitelistRequest) GetGroupName() *string {
 	return s.GroupName
 }
@@ -51,6 +63,11 @@ func (s *DescribeInstanceIpWhitelistRequest) GetInstanceName() *string {
 
 func (s *DescribeInstanceIpWhitelistRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *DescribeInstanceIpWhitelistRequest) SetBranchName(v string) *DescribeInstanceIpWhitelistRequest {
+	s.BranchName = &v
+	return s
 }
 
 func (s *DescribeInstanceIpWhitelistRequest) SetGroupName(v string) *DescribeInstanceIpWhitelistRequest {

@@ -9,6 +9,10 @@ type iDescribeInstanceIpWhitelistResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBranchName(v string) *DescribeInstanceIpWhitelistResponseBody
+	GetBranchName() *string
+	SetDbIpWhiteListGroups(v []*DescribeInstanceIpWhitelistResponseBodyDbIpWhiteListGroups) *DescribeInstanceIpWhitelistResponseBody
+	GetDbIpWhiteListGroups() []*DescribeInstanceIpWhitelistResponseBodyDbIpWhiteListGroups
 	SetInstanceName(v string) *DescribeInstanceIpWhitelistResponseBody
 	GetInstanceName() *string
 	SetIpWhiteListGroups(v []*DescribeInstanceIpWhitelistResponseBodyIpWhiteListGroups) *DescribeInstanceIpWhitelistResponseBody
@@ -18,13 +22,15 @@ type iDescribeInstanceIpWhitelistResponseBody interface {
 }
 
 type DescribeInstanceIpWhitelistResponseBody struct {
-	// The ID of the RDS Supabase instance.
+	BranchName          *string                                                       `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	DbIpWhiteListGroups []*DescribeInstanceIpWhitelistResponseBodyDbIpWhiteListGroups `json:"DbIpWhiteListGroups,omitempty" xml:"DbIpWhiteListGroups,omitempty" type:"Repeated"`
+	// The instance ID of the AI application.
 	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The IP address whitelists.
+	// The IP whitelist groups.
 	IpWhiteListGroups []*DescribeInstanceIpWhitelistResponseBodyIpWhiteListGroups `json:"IpWhiteListGroups,omitempty" xml:"IpWhiteListGroups,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -42,6 +48,14 @@ func (s DescribeInstanceIpWhitelistResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeInstanceIpWhitelistResponseBody) GetBranchName() *string {
+	return s.BranchName
+}
+
+func (s *DescribeInstanceIpWhitelistResponseBody) GetDbIpWhiteListGroups() []*DescribeInstanceIpWhitelistResponseBodyDbIpWhiteListGroups {
+	return s.DbIpWhiteListGroups
+}
+
 func (s *DescribeInstanceIpWhitelistResponseBody) GetInstanceName() *string {
 	return s.InstanceName
 }
@@ -52,6 +66,16 @@ func (s *DescribeInstanceIpWhitelistResponseBody) GetIpWhiteListGroups() []*Desc
 
 func (s *DescribeInstanceIpWhitelistResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *DescribeInstanceIpWhitelistResponseBody) SetBranchName(v string) *DescribeInstanceIpWhitelistResponseBody {
+	s.BranchName = &v
+	return s
+}
+
+func (s *DescribeInstanceIpWhitelistResponseBody) SetDbIpWhiteListGroups(v []*DescribeInstanceIpWhitelistResponseBodyDbIpWhiteListGroups) *DescribeInstanceIpWhitelistResponseBody {
+	s.DbIpWhiteListGroups = v
+	return s
 }
 
 func (s *DescribeInstanceIpWhitelistResponseBody) SetInstanceName(v string) *DescribeInstanceIpWhitelistResponseBody {
@@ -70,6 +94,15 @@ func (s *DescribeInstanceIpWhitelistResponseBody) SetRequestId(v string) *Descri
 }
 
 func (s *DescribeInstanceIpWhitelistResponseBody) Validate() error {
+	if s.DbIpWhiteListGroups != nil {
+		for _, item := range s.DbIpWhiteListGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.IpWhiteListGroups != nil {
 		for _, item := range s.IpWhiteListGroups {
 			if item != nil {
@@ -82,14 +115,49 @@ func (s *DescribeInstanceIpWhitelistResponseBody) Validate() error {
 	return nil
 }
 
+type DescribeInstanceIpWhitelistResponseBodyDbIpWhiteListGroups struct {
+	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	IpWhitelist *string `json:"IpWhitelist,omitempty" xml:"IpWhitelist,omitempty"`
+}
+
+func (s DescribeInstanceIpWhitelistResponseBodyDbIpWhiteListGroups) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeInstanceIpWhitelistResponseBodyDbIpWhiteListGroups) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceIpWhitelistResponseBodyDbIpWhiteListGroups) GetGroupName() *string {
+	return s.GroupName
+}
+
+func (s *DescribeInstanceIpWhitelistResponseBodyDbIpWhiteListGroups) GetIpWhitelist() *string {
+	return s.IpWhitelist
+}
+
+func (s *DescribeInstanceIpWhitelistResponseBodyDbIpWhiteListGroups) SetGroupName(v string) *DescribeInstanceIpWhitelistResponseBodyDbIpWhiteListGroups {
+	s.GroupName = &v
+	return s
+}
+
+func (s *DescribeInstanceIpWhitelistResponseBodyDbIpWhiteListGroups) SetIpWhitelist(v string) *DescribeInstanceIpWhitelistResponseBodyDbIpWhiteListGroups {
+	s.IpWhitelist = &v
+	return s
+}
+
+func (s *DescribeInstanceIpWhitelistResponseBodyDbIpWhiteListGroups) Validate() error {
+	return dara.Validate(s)
+}
+
 type DescribeInstanceIpWhitelistResponseBodyIpWhiteListGroups struct {
-	// The IP address whitelist name.
+	// The group name.
 	//
 	// example:
 	//
 	// default
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The IP addresses or CIDR blocks in the whitelist.
+	// The list of IP addresses.
 	//
 	// example:
 	//

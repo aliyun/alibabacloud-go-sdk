@@ -9,6 +9,8 @@ type iDescribeInstanceStorageConfigResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBranchName(v string) *DescribeInstanceStorageConfigResponseBody
+	GetBranchName() *string
 	SetConfigList(v []*DescribeInstanceStorageConfigResponseBodyConfigList) *DescribeInstanceStorageConfigResponseBody
 	GetConfigList() []*DescribeInstanceStorageConfigResponseBodyConfigList
 	SetInstanceName(v string) *DescribeInstanceStorageConfigResponseBody
@@ -18,9 +20,10 @@ type iDescribeInstanceStorageConfigResponseBody interface {
 }
 
 type DescribeInstanceStorageConfigResponseBody struct {
-	// The storage configurations.
+	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	// The list of storage configurations.
 	ConfigList []*DescribeInstanceStorageConfigResponseBodyConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Repeated"`
-	// The ID of the RDS Supabase instance.
+	// The instance ID of the AI application.
 	//
 	// example:
 	//
@@ -42,6 +45,10 @@ func (s DescribeInstanceStorageConfigResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeInstanceStorageConfigResponseBody) GetBranchName() *string {
+	return s.BranchName
+}
+
 func (s *DescribeInstanceStorageConfigResponseBody) GetConfigList() []*DescribeInstanceStorageConfigResponseBodyConfigList {
 	return s.ConfigList
 }
@@ -52,6 +59,11 @@ func (s *DescribeInstanceStorageConfigResponseBody) GetInstanceName() *string {
 
 func (s *DescribeInstanceStorageConfigResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *DescribeInstanceStorageConfigResponseBody) SetBranchName(v string) *DescribeInstanceStorageConfigResponseBody {
+	s.BranchName = &v
+	return s
 }
 
 func (s *DescribeInstanceStorageConfigResponseBody) SetConfigList(v []*DescribeInstanceStorageConfigResponseBodyConfigList) *DescribeInstanceStorageConfigResponseBody {
@@ -83,21 +95,21 @@ func (s *DescribeInstanceStorageConfigResponseBody) Validate() error {
 }
 
 type DescribeInstanceStorageConfigResponseBodyConfigList struct {
-	// The configuration item name. Valid values:
+	// The name of the configuration item. Valid values:
 	//
-	// 	- **AWS_SESSION_TOKEN**: temporary OSS access token (session token).
+	// - **AWS_SESSION_TOKEN**: the temporary access token (Session Token) of OSS.
 	//
-	// 	- **AWS_ACCESS_KEY_ID**: the AccessKey ID of OSS.
+	// - **AWS_ACCESS_KEY_ID**: the AccessKey ID of OSS.
 	//
-	// 	- **AWS_SECRET_ACCESS_KEY**: the AccessKey secret of OSS.
+	// - **AWS_SECRET_ACCESS_KEY**: the AccessKey Secret of OSS.
 	//
-	// 	- **GLOBAL_S3_BUCKET**: the name of the OSS bucket.
+	// - **GLOBAL_S3_BUCKET**: the bucket name of OSS.
 	//
-	// 	- **TENANT_ID**: the tenant ID of the OSS Prefix (prefix or directory).
+	// - **TENANT_ID**: the tenant ID of the OSS prefix (prefix or directory).
 	//
-	// 	- **GLOBAL_S3_ENDPOINT**: the endpoint of OSS.
+	// - **GLOBAL_S3_ENDPOINT**: the endpoint of OSS.
 	//
-	// 	- **REGION**: the region of OSS.
+	// - **REGION**: the region of OSS.
 	//
 	// example:
 	//

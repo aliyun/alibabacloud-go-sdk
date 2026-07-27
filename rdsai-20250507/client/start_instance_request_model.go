@@ -9,6 +9,8 @@ type iStartInstanceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBranchName(v string) *StartInstanceRequest
+	GetBranchName() *string
 	SetInstanceName(v string) *StartInstanceRequest
 	GetInstanceName() *string
 	SetRegionId(v string) *StartInstanceRequest
@@ -16,13 +18,14 @@ type iStartInstanceRequest interface {
 }
 
 type StartInstanceRequest struct {
-	// The region ID.
+	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	// The instance ID of the AI application.
 	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The operation that you want to perform. Set the value to **StartInstance**.
+	// The region ID.
 	//
 	// example:
 	//
@@ -38,12 +41,21 @@ func (s StartInstanceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *StartInstanceRequest) GetBranchName() *string {
+	return s.BranchName
+}
+
 func (s *StartInstanceRequest) GetInstanceName() *string {
 	return s.InstanceName
 }
 
 func (s *StartInstanceRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *StartInstanceRequest) SetBranchName(v string) *StartInstanceRequest {
+	s.BranchName = &v
+	return s
 }
 
 func (s *StartInstanceRequest) SetInstanceName(v string) *StartInstanceRequest {

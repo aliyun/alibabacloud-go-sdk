@@ -9,6 +9,8 @@ type iModifyInstanceAuthConfigResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBranchName(v string) *ModifyInstanceAuthConfigResponseBody
+	GetBranchName() *string
 	SetInstanceName(v string) *ModifyInstanceAuthConfigResponseBody
 	GetInstanceName() *string
 	SetRequestId(v string) *ModifyInstanceAuthConfigResponseBody
@@ -16,7 +18,8 @@ type iModifyInstanceAuthConfigResponseBody interface {
 }
 
 type ModifyInstanceAuthConfigResponseBody struct {
-	// The ID of the RDS Supabase instance.
+	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	// The instance ID of the AI application.
 	//
 	// example:
 	//
@@ -38,12 +41,21 @@ func (s ModifyInstanceAuthConfigResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyInstanceAuthConfigResponseBody) GetBranchName() *string {
+	return s.BranchName
+}
+
 func (s *ModifyInstanceAuthConfigResponseBody) GetInstanceName() *string {
 	return s.InstanceName
 }
 
 func (s *ModifyInstanceAuthConfigResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *ModifyInstanceAuthConfigResponseBody) SetBranchName(v string) *ModifyInstanceAuthConfigResponseBody {
+	s.BranchName = &v
+	return s
 }
 
 func (s *ModifyInstanceAuthConfigResponseBody) SetInstanceName(v string) *ModifyInstanceAuthConfigResponseBody {

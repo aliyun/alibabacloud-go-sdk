@@ -9,6 +9,8 @@ type iStopInstanceResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBranchName(v string) *StopInstanceResponseBody
+	GetBranchName() *string
 	SetInstanceName(v string) *StopInstanceResponseBody
 	GetInstanceName() *string
 	SetRequestId(v string) *StopInstanceResponseBody
@@ -16,7 +18,8 @@ type iStopInstanceResponseBody interface {
 }
 
 type StopInstanceResponseBody struct {
-	// The ID of the RDS Supabase instance.
+	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	// The instance ID of the AI application.
 	//
 	// example:
 	//
@@ -38,12 +41,21 @@ func (s StopInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *StopInstanceResponseBody) GetBranchName() *string {
+	return s.BranchName
+}
+
 func (s *StopInstanceResponseBody) GetInstanceName() *string {
 	return s.InstanceName
 }
 
 func (s *StopInstanceResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *StopInstanceResponseBody) SetBranchName(v string) *StopInstanceResponseBody {
+	s.BranchName = &v
+	return s
 }
 
 func (s *StopInstanceResponseBody) SetInstanceName(v string) *StopInstanceResponseBody {

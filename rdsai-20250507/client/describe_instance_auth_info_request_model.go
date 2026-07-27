@@ -9,6 +9,8 @@ type iDescribeInstanceAuthInfoRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBranchName(v string) *DescribeInstanceAuthInfoRequest
+	GetBranchName() *string
 	SetInstanceName(v string) *DescribeInstanceAuthInfoRequest
 	GetInstanceName() *string
 	SetRegionId(v string) *DescribeInstanceAuthInfoRequest
@@ -16,13 +18,14 @@ type iDescribeInstanceAuthInfoRequest interface {
 }
 
 type DescribeInstanceAuthInfoRequest struct {
+	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
 	// The instance ID of the AI application.
 	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The region ID.
+	// The region.
 	//
 	// example:
 	//
@@ -38,12 +41,21 @@ func (s DescribeInstanceAuthInfoRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeInstanceAuthInfoRequest) GetBranchName() *string {
+	return s.BranchName
+}
+
 func (s *DescribeInstanceAuthInfoRequest) GetInstanceName() *string {
 	return s.InstanceName
 }
 
 func (s *DescribeInstanceAuthInfoRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *DescribeInstanceAuthInfoRequest) SetBranchName(v string) *DescribeInstanceAuthInfoRequest {
+	s.BranchName = &v
+	return s
 }
 
 func (s *DescribeInstanceAuthInfoRequest) SetInstanceName(v string) *DescribeInstanceAuthInfoRequest {

@@ -9,6 +9,8 @@ type iModifyInstanceStorageConfigResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBranchName(v string) *ModifyInstanceStorageConfigResponseBody
+	GetBranchName() *string
 	SetInstanceName(v string) *ModifyInstanceStorageConfigResponseBody
 	GetInstanceName() *string
 	SetRequestId(v string) *ModifyInstanceStorageConfigResponseBody
@@ -16,7 +18,8 @@ type iModifyInstanceStorageConfigResponseBody interface {
 }
 
 type ModifyInstanceStorageConfigResponseBody struct {
-	// The ID of the RDS Supabase instance.
+	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	// The instance ID of the AI application.
 	//
 	// example:
 	//
@@ -38,12 +41,21 @@ func (s ModifyInstanceStorageConfigResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyInstanceStorageConfigResponseBody) GetBranchName() *string {
+	return s.BranchName
+}
+
 func (s *ModifyInstanceStorageConfigResponseBody) GetInstanceName() *string {
 	return s.InstanceName
 }
 
 func (s *ModifyInstanceStorageConfigResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *ModifyInstanceStorageConfigResponseBody) SetBranchName(v string) *ModifyInstanceStorageConfigResponseBody {
+	s.BranchName = &v
+	return s
 }
 
 func (s *ModifyInstanceStorageConfigResponseBody) SetInstanceName(v string) *ModifyInstanceStorageConfigResponseBody {

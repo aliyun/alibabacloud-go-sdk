@@ -9,6 +9,8 @@ type iModifyInstanceConfigRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBranchName(v string) *ModifyInstanceConfigRequest
+	GetBranchName() *string
 	SetClientToken(v string) *ModifyInstanceConfigRequest
 	GetClientToken() *string
 	SetConfigName(v string) *ModifyInstanceConfigRequest
@@ -22,25 +24,26 @@ type iModifyInstanceConfigRequest interface {
 }
 
 type ModifyInstanceConfigRequest struct {
-	// The ID of the RDS Supabase instance.
+	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	// The idempotency parameter.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
+	// The name of the configuration item to modify. This parameter is used together with ConfigValue.
 	//
 	// example:
 	//
 	// eip、nat
 	ConfigName *string `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
-	// The name of the configuration item that you want to modify. Configure this parameter together with the ConfigValue parameter.
+	// The value of the configuration item to modify. This parameter is used together with ConfigName.
 	//
 	// example:
 	//
 	// on、off
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
-	// The region ID of the instance.
+	// The instance ID of the AI application.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +51,7 @@ type ModifyInstanceConfigRequest struct {
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The operation that you want to perform. Set the value to **ModifyInstanceConfig**.
+	// The region ID.
 	//
 	// example:
 	//
@@ -62,6 +65,10 @@ func (s ModifyInstanceConfigRequest) String() string {
 
 func (s ModifyInstanceConfigRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyInstanceConfigRequest) GetBranchName() *string {
+	return s.BranchName
 }
 
 func (s *ModifyInstanceConfigRequest) GetClientToken() *string {
@@ -82,6 +89,11 @@ func (s *ModifyInstanceConfigRequest) GetInstanceName() *string {
 
 func (s *ModifyInstanceConfigRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *ModifyInstanceConfigRequest) SetBranchName(v string) *ModifyInstanceConfigRequest {
+	s.BranchName = &v
+	return s
 }
 
 func (s *ModifyInstanceConfigRequest) SetClientToken(v string) *ModifyInstanceConfigRequest {

@@ -9,10 +9,16 @@ type iModifyAppInstanceShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBranchName(v string) *ModifyAppInstanceShrinkRequest
+	GetBranchName() *string
 	SetClientToken(v string) *ModifyAppInstanceShrinkRequest
 	GetClientToken() *string
 	SetComponentsShrink(v string) *ModifyAppInstanceShrinkRequest
 	GetComponentsShrink() *string
+	SetDBInstanceName(v string) *ModifyAppInstanceShrinkRequest
+	GetDBInstanceName() *string
+	SetInstanceClass(v string) *ModifyAppInstanceShrinkRequest
+	GetInstanceClass() *string
 	SetInstanceName(v string) *ModifyAppInstanceShrinkRequest
 	GetInstanceName() *string
 	SetRegionId(v string) *ModifyAppInstanceShrinkRequest
@@ -20,11 +26,14 @@ type iModifyAppInstanceShrinkRequest interface {
 }
 
 type ModifyAppInstanceShrinkRequest struct {
+	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
 	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	ComponentsShrink *string `json:"Components,omitempty" xml:"Components,omitempty"`
+	DBInstanceName   *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	InstanceClass    *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
 	// example:
 	//
 	// ra-8moov5lxba****
@@ -43,12 +52,24 @@ func (s ModifyAppInstanceShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyAppInstanceShrinkRequest) GetBranchName() *string {
+	return s.BranchName
+}
+
 func (s *ModifyAppInstanceShrinkRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
 func (s *ModifyAppInstanceShrinkRequest) GetComponentsShrink() *string {
 	return s.ComponentsShrink
+}
+
+func (s *ModifyAppInstanceShrinkRequest) GetDBInstanceName() *string {
+	return s.DBInstanceName
+}
+
+func (s *ModifyAppInstanceShrinkRequest) GetInstanceClass() *string {
+	return s.InstanceClass
 }
 
 func (s *ModifyAppInstanceShrinkRequest) GetInstanceName() *string {
@@ -59,6 +80,11 @@ func (s *ModifyAppInstanceShrinkRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *ModifyAppInstanceShrinkRequest) SetBranchName(v string) *ModifyAppInstanceShrinkRequest {
+	s.BranchName = &v
+	return s
+}
+
 func (s *ModifyAppInstanceShrinkRequest) SetClientToken(v string) *ModifyAppInstanceShrinkRequest {
 	s.ClientToken = &v
 	return s
@@ -66,6 +92,16 @@ func (s *ModifyAppInstanceShrinkRequest) SetClientToken(v string) *ModifyAppInst
 
 func (s *ModifyAppInstanceShrinkRequest) SetComponentsShrink(v string) *ModifyAppInstanceShrinkRequest {
 	s.ComponentsShrink = &v
+	return s
+}
+
+func (s *ModifyAppInstanceShrinkRequest) SetDBInstanceName(v string) *ModifyAppInstanceShrinkRequest {
+	s.DBInstanceName = &v
+	return s
+}
+
+func (s *ModifyAppInstanceShrinkRequest) SetInstanceClass(v string) *ModifyAppInstanceShrinkRequest {
+	s.InstanceClass = &v
 	return s
 }
 

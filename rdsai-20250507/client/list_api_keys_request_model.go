@@ -30,7 +30,7 @@ type ListApiKeysRequest struct {
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// The number of entries per page.
+	// The number of records per page.
 	//
 	// example:
 	//

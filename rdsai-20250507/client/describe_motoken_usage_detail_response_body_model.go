@@ -26,7 +26,7 @@ type iDescribeMOTokenUsageDetailResponseBody interface {
 }
 
 type DescribeMOTokenUsageDetailResponseBody struct {
-	// The cursor for the next page. An empty value indicates the last page.
+	// The cursor for the next page. An empty value indicates that the current page is the last page.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type DescribeMOTokenUsageDetailResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of records returned.
+	// The list of records in the response.
 	Records []*DescribeMOTokenUsageDetailResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -52,7 +52,7 @@ type DescribeMOTokenUsageDetailResponseBody struct {
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329241C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records that match the query conditions.
+	// The total number of records that match the query conditions. This parameter is optional and may not be returned by default.
 	//
 	// example:
 	//
@@ -151,6 +151,12 @@ func (s *DescribeMOTokenUsageDetailResponseBody) Validate() error {
 }
 
 type DescribeMOTokenUsageDetailResponseBodyRecords struct {
+	// The number of input tokens that hit the cache.
+	//
+	// example:
+	//
+	// 8000
+	CacheTokens *float64 `json:"CacheTokens,omitempty" xml:"CacheTokens,omitempty"`
 	// The consumer associated with the API key.
 	//
 	// example:
@@ -215,6 +221,10 @@ func (s DescribeMOTokenUsageDetailResponseBodyRecords) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeMOTokenUsageDetailResponseBodyRecords) GetCacheTokens() *float64 {
+	return s.CacheTokens
+}
+
 func (s *DescribeMOTokenUsageDetailResponseBodyRecords) GetConsumerName() *string {
 	return s.ConsumerName
 }
@@ -249,6 +259,11 @@ func (s *DescribeMOTokenUsageDetailResponseBodyRecords) GetRequestTime() *string
 
 func (s *DescribeMOTokenUsageDetailResponseBodyRecords) GetTotalTokens() *float64 {
 	return s.TotalTokens
+}
+
+func (s *DescribeMOTokenUsageDetailResponseBodyRecords) SetCacheTokens(v float64) *DescribeMOTokenUsageDetailResponseBodyRecords {
+	s.CacheTokens = &v
+	return s
 }
 
 func (s *DescribeMOTokenUsageDetailResponseBodyRecords) SetConsumerName(v string) *DescribeMOTokenUsageDetailResponseBodyRecords {

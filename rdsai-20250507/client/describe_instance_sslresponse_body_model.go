@@ -9,6 +9,8 @@ type iDescribeInstanceSSLResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBranchName(v string) *DescribeInstanceSSLResponseBody
+	GetBranchName() *string
 	SetCAType(v string) *DescribeInstanceSSLResponseBody
 	GetCAType() *string
 	SetInstanceName(v string) *DescribeInstanceSSLResponseBody
@@ -24,13 +26,14 @@ type iDescribeInstanceSSLResponseBody interface {
 }
 
 type DescribeInstanceSSLResponseBody struct {
-	// The type of the certificate. Set the value to **custom**, which indicates that a custom certificate is used.
+	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	// The certificate type. The value is **custom**, which indicates that a custom certificate is used.
 	//
 	// example:
 	//
 	// custom
 	CAType *string `json:"CAType,omitempty" xml:"CAType,omitempty"`
-	// The ID of the RDS Supabase instance.
+	// The instance ID of the AI application.
 	//
 	// example:
 	//
@@ -42,17 +45,17 @@ type DescribeInstanceSSLResponseBody struct {
 	//
 	// 32DEFB4A-861F-5D1D-ADD5-918E4FD7AB8C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Specifies whether to enable SSL encryption. Valid values:
+	// Indicates whether SSL is enabled. Valid values:
 	//
-	// 	- **1**: enables SSL encryption.
+	// 	- **1**: Enabled.
 	//
-	// 	- **0**: disables SSL encryption.
+	// 	- **0**: Disabled.
 	//
 	// example:
 	//
 	// 1
 	SSLEnabled *string `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
-	// The content of the custom certificate.
+	// The custom certificate content.
 	//
 	// example:
 	//
@@ -72,6 +75,10 @@ func (s DescribeInstanceSSLResponseBody) String() string {
 
 func (s DescribeInstanceSSLResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInstanceSSLResponseBody) GetBranchName() *string {
+	return s.BranchName
 }
 
 func (s *DescribeInstanceSSLResponseBody) GetCAType() *string {
@@ -96,6 +103,11 @@ func (s *DescribeInstanceSSLResponseBody) GetServerCert() *string {
 
 func (s *DescribeInstanceSSLResponseBody) GetServerKey() *string {
 	return s.ServerKey
+}
+
+func (s *DescribeInstanceSSLResponseBody) SetBranchName(v string) *DescribeInstanceSSLResponseBody {
+	s.BranchName = &v
+	return s
 }
 
 func (s *DescribeInstanceSSLResponseBody) SetCAType(v string) *DescribeInstanceSSLResponseBody {

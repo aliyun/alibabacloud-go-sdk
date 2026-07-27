@@ -9,6 +9,8 @@ type iModifyInstanceAuthConfigShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBranchName(v string) *ModifyInstanceAuthConfigShrinkRequest
+	GetBranchName() *string
 	SetConfigListShrink(v string) *ModifyInstanceAuthConfigShrinkRequest
 	GetConfigListShrink() *string
 	SetInstanceName(v string) *ModifyInstanceAuthConfigShrinkRequest
@@ -18,15 +20,16 @@ type iModifyInstanceAuthConfigShrinkRequest interface {
 }
 
 type ModifyInstanceAuthConfigShrinkRequest struct {
-	// The ID of the RDS Supabase instance.
+	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	// The list of authentication configurations.
 	ConfigListShrink *string `json:"ConfigList,omitempty" xml:"ConfigList,omitempty"`
-	// The region ID.
+	// The instance ID of the AI application.
 	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The operation that you want to perform. Set the value to **ModifyInstanceAuthConfig**.
+	// The region.
 	//
 	// example:
 	//
@@ -42,6 +45,10 @@ func (s ModifyInstanceAuthConfigShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyInstanceAuthConfigShrinkRequest) GetBranchName() *string {
+	return s.BranchName
+}
+
 func (s *ModifyInstanceAuthConfigShrinkRequest) GetConfigListShrink() *string {
 	return s.ConfigListShrink
 }
@@ -52,6 +59,11 @@ func (s *ModifyInstanceAuthConfigShrinkRequest) GetInstanceName() *string {
 
 func (s *ModifyInstanceAuthConfigShrinkRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *ModifyInstanceAuthConfigShrinkRequest) SetBranchName(v string) *ModifyInstanceAuthConfigShrinkRequest {
+	s.BranchName = &v
+	return s
 }
 
 func (s *ModifyInstanceAuthConfigShrinkRequest) SetConfigListShrink(v string) *ModifyInstanceAuthConfigShrinkRequest {

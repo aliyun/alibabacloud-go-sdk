@@ -9,6 +9,8 @@ type iDescribeInstanceStorageConfigRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBranchName(v string) *DescribeInstanceStorageConfigRequest
+	GetBranchName() *string
 	SetInstanceName(v string) *DescribeInstanceStorageConfigRequest
 	GetInstanceName() *string
 	SetRegionId(v string) *DescribeInstanceStorageConfigRequest
@@ -16,7 +18,8 @@ type iDescribeInstanceStorageConfigRequest interface {
 }
 
 type DescribeInstanceStorageConfigRequest struct {
-	// The region ID.
+	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	// The instance ID of the AI application.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +27,7 @@ type DescribeInstanceStorageConfigRequest struct {
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeInstanceStorageConfig**.
+	// The region ID.
 	//
 	// example:
 	//
@@ -40,12 +43,21 @@ func (s DescribeInstanceStorageConfigRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeInstanceStorageConfigRequest) GetBranchName() *string {
+	return s.BranchName
+}
+
 func (s *DescribeInstanceStorageConfigRequest) GetInstanceName() *string {
 	return s.InstanceName
 }
 
 func (s *DescribeInstanceStorageConfigRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *DescribeInstanceStorageConfigRequest) SetBranchName(v string) *DescribeInstanceStorageConfigRequest {
+	s.BranchName = &v
+	return s
 }
 
 func (s *DescribeInstanceStorageConfigRequest) SetInstanceName(v string) *DescribeInstanceStorageConfigRequest {

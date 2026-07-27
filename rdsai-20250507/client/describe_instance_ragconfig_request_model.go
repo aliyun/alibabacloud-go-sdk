@@ -9,6 +9,8 @@ type iDescribeInstanceRAGConfigRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBranchName(v string) *DescribeInstanceRAGConfigRequest
+	GetBranchName() *string
 	SetInstanceName(v string) *DescribeInstanceRAGConfigRequest
 	GetInstanceName() *string
 	SetRegionId(v string) *DescribeInstanceRAGConfigRequest
@@ -16,7 +18,8 @@ type iDescribeInstanceRAGConfigRequest interface {
 }
 
 type DescribeInstanceRAGConfigRequest struct {
-	// The region ID.
+	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	// The instance ID of the AI application.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +27,7 @@ type DescribeInstanceRAGConfigRequest struct {
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeInstanceRAGConfig**.
+	// The region ID.
 	//
 	// example:
 	//
@@ -40,12 +43,21 @@ func (s DescribeInstanceRAGConfigRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeInstanceRAGConfigRequest) GetBranchName() *string {
+	return s.BranchName
+}
+
 func (s *DescribeInstanceRAGConfigRequest) GetInstanceName() *string {
 	return s.InstanceName
 }
 
 func (s *DescribeInstanceRAGConfigRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *DescribeInstanceRAGConfigRequest) SetBranchName(v string) *DescribeInstanceRAGConfigRequest {
+	s.BranchName = &v
+	return s
 }
 
 func (s *DescribeInstanceRAGConfigRequest) SetInstanceName(v string) *DescribeInstanceRAGConfigRequest {

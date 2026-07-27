@@ -9,6 +9,8 @@ type iModifyInstanceStorageConfigRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBranchName(v string) *ModifyInstanceStorageConfigRequest
+	GetBranchName() *string
 	SetClientToken(v string) *ModifyInstanceStorageConfigRequest
 	GetClientToken() *string
 	SetConfigList(v []*ModifyInstanceStorageConfigRequestConfigList) *ModifyInstanceStorageConfigRequest
@@ -20,15 +22,16 @@ type iModifyInstanceStorageConfigRequest interface {
 }
 
 type ModifyInstanceStorageConfigRequest struct {
-	// The value of the configuration item.
+	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, which ensures that the request is not repeated.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the RDS Supabase instance.
+	// The list of storage configurations.
 	ConfigList []*ModifyInstanceStorageConfigRequestConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Repeated"`
-	// The region ID.
+	// The instance ID of the AI application.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +39,7 @@ type ModifyInstanceStorageConfigRequest struct {
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The operation that you want to perform. Set the value to **ModifyInstanceStorageConfig**.
+	// The region ID.
 	//
 	// example:
 	//
@@ -50,6 +53,10 @@ func (s ModifyInstanceStorageConfigRequest) String() string {
 
 func (s ModifyInstanceStorageConfigRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyInstanceStorageConfigRequest) GetBranchName() *string {
+	return s.BranchName
 }
 
 func (s *ModifyInstanceStorageConfigRequest) GetClientToken() *string {
@@ -66,6 +73,11 @@ func (s *ModifyInstanceStorageConfigRequest) GetInstanceName() *string {
 
 func (s *ModifyInstanceStorageConfigRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *ModifyInstanceStorageConfigRequest) SetBranchName(v string) *ModifyInstanceStorageConfigRequest {
+	s.BranchName = &v
+	return s
 }
 
 func (s *ModifyInstanceStorageConfigRequest) SetClientToken(v string) *ModifyInstanceStorageConfigRequest {
@@ -104,19 +116,19 @@ func (s *ModifyInstanceStorageConfigRequest) Validate() error {
 type ModifyInstanceStorageConfigRequestConfigList struct {
 	// The name of the configuration item. Valid values:
 	//
-	// - **AWS_SESSION_TOKEN*	- (optional): The temporary session token for OSS. If this parameter is not provided, validation is performed using the AccessKey ID and AccessKey secret.
+	// - **AWS_SESSION_TOKEN*	- (optional): the temporary access token (Session Token) for OSS. If this parameter is not specified, AccessKey ID and AccessKey Secret are used for authentication.
 	//
-	// - **AWS_ACCESS_KEY_ID**: The AccessKey ID for OSS.
+	// - **AWS_ACCESS_KEY_ID**: the AccessKey ID for OSS.
 	//
-	// - **AWS_SECRET_ACCESS_KEY**: The AccessKey secret for OSS.
+	// - **AWS_SECRET_ACCESS_KEY**: the AccessKey Secret for OSS.
 	//
-	// - **GLOBAL_S3_BUCKET**: The bucket name in OSS.
+	// - **GLOBAL_S3_BUCKET**: the bucket name of OSS.
 	//
-	// - **TENANT_ID**: The folder name in OSS. No manual creation is required.
+	// - **TENANT_ID**: the OSS directory name. You do not need to create it in advance.
 	//
-	// - **GLOBAL_S3_ENDPOINT**: The endpoint (access domain name) for OSS.
+	// - **GLOBAL_S3_ENDPOINT**: the endpoint of OSS.
 	//
-	// - **REGION**: The region of OSS.
+	// - **REGION**: the region of OSS.
 	//
 	// example:
 	//

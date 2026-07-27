@@ -9,6 +9,8 @@ type iModifyInstanceIpWhitelistResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBranchName(v string) *ModifyInstanceIpWhitelistResponseBody
+	GetBranchName() *string
 	SetInstanceName(v string) *ModifyInstanceIpWhitelistResponseBody
 	GetInstanceName() *string
 	SetRequestId(v string) *ModifyInstanceIpWhitelistResponseBody
@@ -16,7 +18,8 @@ type iModifyInstanceIpWhitelistResponseBody interface {
 }
 
 type ModifyInstanceIpWhitelistResponseBody struct {
-	// The ID of the RDS Supabase instance.
+	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	// The instance ID of the AI application.
 	//
 	// example:
 	//
@@ -38,12 +41,21 @@ func (s ModifyInstanceIpWhitelistResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyInstanceIpWhitelistResponseBody) GetBranchName() *string {
+	return s.BranchName
+}
+
 func (s *ModifyInstanceIpWhitelistResponseBody) GetInstanceName() *string {
 	return s.InstanceName
 }
 
 func (s *ModifyInstanceIpWhitelistResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *ModifyInstanceIpWhitelistResponseBody) SetBranchName(v string) *ModifyInstanceIpWhitelistResponseBody {
+	s.BranchName = &v
+	return s
 }
 
 func (s *ModifyInstanceIpWhitelistResponseBody) SetInstanceName(v string) *ModifyInstanceIpWhitelistResponseBody {

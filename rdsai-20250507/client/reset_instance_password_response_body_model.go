@@ -9,6 +9,8 @@ type iResetInstancePasswordResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBranchName(v string) *ResetInstancePasswordResponseBody
+	GetBranchName() *string
 	SetInstanceName(v string) *ResetInstancePasswordResponseBody
 	GetInstanceName() *string
 	SetRequestId(v string) *ResetInstancePasswordResponseBody
@@ -16,7 +18,8 @@ type iResetInstancePasswordResponseBody interface {
 }
 
 type ResetInstancePasswordResponseBody struct {
-	// The ID of the RDS Supabase instance.
+	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	// The instance ID of the AI application.
 	//
 	// example:
 	//
@@ -38,12 +41,21 @@ func (s ResetInstancePasswordResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ResetInstancePasswordResponseBody) GetBranchName() *string {
+	return s.BranchName
+}
+
 func (s *ResetInstancePasswordResponseBody) GetInstanceName() *string {
 	return s.InstanceName
 }
 
 func (s *ResetInstancePasswordResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *ResetInstancePasswordResponseBody) SetBranchName(v string) *ResetInstancePasswordResponseBody {
+	s.BranchName = &v
+	return s
 }
 
 func (s *ResetInstancePasswordResponseBody) SetInstanceName(v string) *ResetInstancePasswordResponseBody {

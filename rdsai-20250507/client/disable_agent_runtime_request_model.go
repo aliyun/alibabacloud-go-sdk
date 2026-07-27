@@ -9,6 +9,8 @@ type iDisableAgentRuntimeRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBranchName(v string) *DisableAgentRuntimeRequest
+	GetBranchName() *string
 	SetClientToken(v string) *DisableAgentRuntimeRequest
 	GetClientToken() *string
 	SetInstanceName(v string) *DisableAgentRuntimeRequest
@@ -18,13 +20,14 @@ type iDisableAgentRuntimeRequest interface {
 }
 
 type DisableAgentRuntimeRequest struct {
-	// An idempotent parameter.
+	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	// The idempotence parameter.
 	//
 	// example:
 	//
 	// 0c593ea1-3bea-11e9-b96b-88**********
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the AI application instance.
+	// The instance ID of the AI application.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +35,7 @@ type DisableAgentRuntimeRequest struct {
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The ID of the region where the instance is located.
+	// The region ID of the instance.
 	//
 	// example:
 	//
@@ -48,6 +51,10 @@ func (s DisableAgentRuntimeRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DisableAgentRuntimeRequest) GetBranchName() *string {
+	return s.BranchName
+}
+
 func (s *DisableAgentRuntimeRequest) GetClientToken() *string {
 	return s.ClientToken
 }
@@ -58,6 +65,11 @@ func (s *DisableAgentRuntimeRequest) GetInstanceName() *string {
 
 func (s *DisableAgentRuntimeRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *DisableAgentRuntimeRequest) SetBranchName(v string) *DisableAgentRuntimeRequest {
+	s.BranchName = &v
+	return s
 }
 
 func (s *DisableAgentRuntimeRequest) SetClientToken(v string) *DisableAgentRuntimeRequest {

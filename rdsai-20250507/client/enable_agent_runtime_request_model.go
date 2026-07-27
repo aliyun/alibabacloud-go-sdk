@@ -9,6 +9,8 @@ type iEnableAgentRuntimeRequest interface {
   dara.Model
   String() string
   GoString() string
+  SetBranchName(v string) *EnableAgentRuntimeRequest
+  GetBranchName() *string 
   SetClientToken(v string) *EnableAgentRuntimeRequest
   GetClientToken() *string 
   SetInstanceName(v string) *EnableAgentRuntimeRequest
@@ -22,7 +24,8 @@ type iEnableAgentRuntimeRequest interface {
 }
 
 type EnableAgentRuntimeRequest struct {
-  // The idempotence parameter.
+  BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+  // The idempotency parameter.
   // 
   // example:
   // 
@@ -44,11 +47,11 @@ type EnableAgentRuntimeRequest struct {
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
   // The security group ID used to create an endpoint.
   // 
-  // **If not specified**: The system automatically creates a security group named **sg-aliyun-rds-created-supabase-sandbox*	- in the VPC where the instance resides. No manual operation is required.
+  // **If not specified**: The system performs automatic creation of a security group named **sg-aliyun-rds-created-supabase-sandbox*	- in the VPC where the instance resides. No manual operation is required.
   // 
-  // **If specified**: Ensure that the specified security group allows the CIDR block of the VPC where the Supabase instance resides (both inbound and outbound directions must be allowed). Otherwise, network connectivity issues may occur.
+  // **If specified**: Make sure that the specified security group allows the CIDR block of the VPC where the Supabase instance resides (both inbound and outbound directions must be allowed). Otherwise, network connectivity issues may occur.
   // 
-  // 	Notice: The endpoint is created only once. When the first Supabase instance in a VPC enables the sandbox and Edge Routine capabilities, the system automatically creates the endpoint. When subsequent Supabase instances in the same VPC enable this capability, the existing endpoint is reused and no new endpoint is created.
+  // 	Notice: The endpoint is created only once. When the first Supabase instance in a VPC enables the sandbox and Edge Routine function, the system performs automatic creation of the endpoint. When other Supabase instances in the same VPC enable this capability later, the existing endpoint is reused and no new endpoint is created.
   // 
   // example:
   // 
@@ -56,7 +59,7 @@ type EnableAgentRuntimeRequest struct {
   SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
   // The vSwitch ID used to create an endpoint. If this parameter is not specified, the vSwitch of the Supabase instance is used by default.
   // 
-  // 	Notice: The endpoint is created only once. When the first Supabase instance in a VPC enables the sandbox and Edge Routine capabilities, the system automatically creates the endpoint. When subsequent Supabase instances in the same VPC enable this capability, the existing endpoint is reused and no new endpoint is created.
+  // 	Notice: The endpoint is created only once. When the first Supabase instance in a VPC enables the sandbox and Edge Routine function, the system performs automatic creation of the endpoint. When other Supabase instances in the same VPC enable this capability later, the existing endpoint is reused and no new endpoint is created.
   // 
   // example:
   // 
@@ -70,6 +73,10 @@ func (s EnableAgentRuntimeRequest) String() string {
 
 func (s EnableAgentRuntimeRequest) GoString() string {
   return s.String()
+}
+
+func (s *EnableAgentRuntimeRequest) GetBranchName() *string  {
+  return s.BranchName
 }
 
 func (s *EnableAgentRuntimeRequest) GetClientToken() *string  {
@@ -90,6 +97,11 @@ func (s *EnableAgentRuntimeRequest) GetSecurityGroupId() *string  {
 
 func (s *EnableAgentRuntimeRequest) GetVSwitchId() *string  {
   return s.VSwitchId
+}
+
+func (s *EnableAgentRuntimeRequest) SetBranchName(v string) *EnableAgentRuntimeRequest {
+  s.BranchName = &v
+  return s
 }
 
 func (s *EnableAgentRuntimeRequest) SetClientToken(v string) *EnableAgentRuntimeRequest {

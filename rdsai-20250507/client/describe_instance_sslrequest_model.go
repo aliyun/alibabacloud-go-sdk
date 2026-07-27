@@ -9,6 +9,8 @@ type iDescribeInstanceSSLRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBranchName(v string) *DescribeInstanceSSLRequest
+	GetBranchName() *string
 	SetInstanceName(v string) *DescribeInstanceSSLRequest
 	GetInstanceName() *string
 	SetRegionId(v string) *DescribeInstanceSSLRequest
@@ -16,7 +18,8 @@ type iDescribeInstanceSSLRequest interface {
 }
 
 type DescribeInstanceSSLRequest struct {
-	// The region ID of the instance.
+	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	// The instance ID of the AI application.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +27,7 @@ type DescribeInstanceSSLRequest struct {
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeInstanceSSL**.
+	// The region ID.
 	//
 	// example:
 	//
@@ -40,12 +43,21 @@ func (s DescribeInstanceSSLRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeInstanceSSLRequest) GetBranchName() *string {
+	return s.BranchName
+}
+
 func (s *DescribeInstanceSSLRequest) GetInstanceName() *string {
 	return s.InstanceName
 }
 
 func (s *DescribeInstanceSSLRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *DescribeInstanceSSLRequest) SetBranchName(v string) *DescribeInstanceSSLRequest {
+	s.BranchName = &v
+	return s
 }
 
 func (s *DescribeInstanceSSLRequest) SetInstanceName(v string) *DescribeInstanceSSLRequest {

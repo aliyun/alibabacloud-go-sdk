@@ -20,15 +20,15 @@ type iGetConversationsResponseBody interface {
 }
 
 type GetConversationsResponseBody struct {
-	// The returned results.
+	// The request result.
 	Data []*GetConversationsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Indicates whether the current page is followed by a page.
+	// Indicates whether there is a next page.
 	//
 	// example:
 	//
 	// true
 	HasMore *string `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100. Default value: 100.
+	// The number of entries per page for a paged query. Valid values: 1 to 100. Default value: 100.
 	//
 	// example:
 	//
@@ -100,30 +100,32 @@ func (s *GetConversationsResponseBody) Validate() error {
 }
 
 type GetConversationsResponseBodyData struct {
-	// The creation time of the conversation.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1764055092
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	// The ID of the history conversation.
+	// The ID of the historical conversation.
 	//
 	// example:
 	//
 	// 60b335ca-124d-4ee1-864b-de554987****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The introduction to the conversation.
+	// The conversation introduction.
 	//
 	// example:
 	//
 	// 测试搜索RDS资源
 	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
-	// The name of the history conversation.
+	IsRunning    *bool   `json:"IsRunning,omitempty" xml:"IsRunning,omitempty"`
+	// The name of the historical conversation.
 	//
 	// example:
 	//
 	// 搜索RDS资源。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	UpdatedAt *string `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
 }
 
 func (s GetConversationsResponseBodyData) String() string {
@@ -146,8 +148,16 @@ func (s *GetConversationsResponseBodyData) GetIntroduction() *string {
 	return s.Introduction
 }
 
+func (s *GetConversationsResponseBodyData) GetIsRunning() *bool {
+	return s.IsRunning
+}
+
 func (s *GetConversationsResponseBodyData) GetName() *string {
 	return s.Name
+}
+
+func (s *GetConversationsResponseBodyData) GetUpdatedAt() *string {
+	return s.UpdatedAt
 }
 
 func (s *GetConversationsResponseBodyData) SetCreatedAt(v string) *GetConversationsResponseBodyData {
@@ -165,8 +175,18 @@ func (s *GetConversationsResponseBodyData) SetIntroduction(v string) *GetConvers
 	return s
 }
 
+func (s *GetConversationsResponseBodyData) SetIsRunning(v bool) *GetConversationsResponseBodyData {
+	s.IsRunning = &v
+	return s
+}
+
 func (s *GetConversationsResponseBodyData) SetName(v string) *GetConversationsResponseBodyData {
 	s.Name = &v
+	return s
+}
+
+func (s *GetConversationsResponseBodyData) SetUpdatedAt(v string) *GetConversationsResponseBodyData {
+	s.UpdatedAt = &v
 	return s
 }
 

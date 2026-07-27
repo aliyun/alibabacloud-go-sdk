@@ -30,37 +30,37 @@ type iChatMessagesResponseBody interface {
 }
 
 type ChatMessagesResponseBody struct {
-	// The content of the generated answer.
+	// The answer content.
 	//
 	// example:
 	//
-	// 您询问的实例rm-bp14as9914vd3***	- 磁盘使用率为23%，暂时不需要进行扩容。如果您需要进一步查看某个实例的详细配置、性能监控或进行其他操作，请告诉我你的具体需求！
+	// The disk usage of instance rm-bp14as9914vd3***	- is 23%, and capacity expansion is not required at this time. If you need to view the detailed configuration or performance monitoring of an instance, or perform other operations, let me know your specific requirements!
 	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
-	// The ID of the conversation.
+	// The conversation ID.
 	//
 	// example:
 	//
 	// 9cbbe885-b240-4803-9d15-6781a3fd****
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// The time when the message was created. This value is a UNIX timestamp.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1763986004
 	CreatedAt *int64 `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	// The event associated with the message.
+	// The event.
 	//
 	// example:
 	//
 	// MysqlIOException
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
-	// The ID of the message, which is distinct from `MessageId`.
+	// The message ID.
 	//
 	// example:
 	//
 	// 60b335ca-124d-4ee1-864b-de554987****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The unique ID of the message.
+	// The message ID.
 	//
 	// example:
 	//
@@ -70,15 +70,15 @@ type ChatMessagesResponseBody struct {
 	//
 	// example:
 	//
-	// 以后会下线，不用关注。
+	// This field will be deprecated. Ignore it.
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the asynchronous task.
+	// The asynchronous task ID.
 	//
 	// example:
 	//

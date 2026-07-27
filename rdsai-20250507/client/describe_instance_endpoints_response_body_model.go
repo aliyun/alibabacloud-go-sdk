@@ -9,6 +9,8 @@ type iDescribeInstanceEndpointsResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBranchName(v string) *DescribeInstanceEndpointsResponseBody
+	GetBranchName() *string
 	SetDBInstanceEndpoints(v []*DescribeInstanceEndpointsResponseBodyDBInstanceEndpoints) *DescribeInstanceEndpointsResponseBody
 	GetDBInstanceEndpoints() []*DescribeInstanceEndpointsResponseBodyDBInstanceEndpoints
 	SetInstanceEndpoints(v []*DescribeInstanceEndpointsResponseBodyInstanceEndpoints) *DescribeInstanceEndpointsResponseBody
@@ -20,11 +22,12 @@ type iDescribeInstanceEndpointsResponseBody interface {
 }
 
 type DescribeInstanceEndpointsResponseBody struct {
-	// The information about the endpoints of the RDS instance.
+	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	// The endpoints of the database instance.
 	DBInstanceEndpoints []*DescribeInstanceEndpointsResponseBodyDBInstanceEndpoints `json:"DBInstanceEndpoints,omitempty" xml:"DBInstanceEndpoints,omitempty" type:"Repeated"`
-	// The information about the endpoints of the RDS Supabase instance.
+	// The endpoints of the AI application instance.
 	InstanceEndpoints []*DescribeInstanceEndpointsResponseBodyInstanceEndpoints `json:"InstanceEndpoints,omitempty" xml:"InstanceEndpoints,omitempty" type:"Repeated"`
-	// The ID of the RDS Supabase instance.
+	// The instance ID of the AI application.
 	//
 	// example:
 	//
@@ -46,6 +49,10 @@ func (s DescribeInstanceEndpointsResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeInstanceEndpointsResponseBody) GetBranchName() *string {
+	return s.BranchName
+}
+
 func (s *DescribeInstanceEndpointsResponseBody) GetDBInstanceEndpoints() []*DescribeInstanceEndpointsResponseBodyDBInstanceEndpoints {
 	return s.DBInstanceEndpoints
 }
@@ -60,6 +67,11 @@ func (s *DescribeInstanceEndpointsResponseBody) GetInstanceName() *string {
 
 func (s *DescribeInstanceEndpointsResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *DescribeInstanceEndpointsResponseBody) SetBranchName(v string) *DescribeInstanceEndpointsResponseBody {
+	s.BranchName = &v
+	return s
 }
 
 func (s *DescribeInstanceEndpointsResponseBody) SetDBInstanceEndpoints(v []*DescribeInstanceEndpointsResponseBodyDBInstanceEndpoints) *DescribeInstanceEndpointsResponseBody {
@@ -105,23 +117,23 @@ func (s *DescribeInstanceEndpointsResponseBody) Validate() error {
 }
 
 type DescribeInstanceEndpointsResponseBodyDBInstanceEndpoints struct {
-	// The endpoint of the RDS instance.
+	// The endpoint.
 	//
 	// example:
 	//
 	// pgm-xxxx.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The network type of the RDS instance. Valid values:
+	// The network type. Valid values:
 	//
-	// 	- **public**: Internet
+	// - **public**: Internet.
 	//
-	// 	- **vpc**: VPC
+	// - **vpc**: private network.
 	//
 	// example:
 	//
 	// vpc
 	IpType *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
-	// The port used to access the RDS instance.
+	// The connection port.
 	//
 	// example:
 	//
@@ -169,29 +181,29 @@ func (s *DescribeInstanceEndpointsResponseBodyDBInstanceEndpoints) Validate() er
 }
 
 type DescribeInstanceEndpointsResponseBodyInstanceEndpoints struct {
-	// The endpoint of the RDS Supabase instance.
+	// The endpoint.
 	//
 	// example:
 	//
 	// 8.152.XXX.XXX:8000
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The IP address used to access the RDS Supabase instance.
+	// The IP address.
 	//
 	// example:
 	//
 	// 8.152.XXX.XXX
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
-	// The network type of the RDS Supabase instance. Valid values:
+	// The network type. Valid values:
 	//
-	// 	- **public**: Internet
+	// - **public**: Internet.
 	//
-	// 	- **vpc**: VPC
+	// - **vpc**: private network.
 	//
 	// example:
 	//
 	// public
 	IpType *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
-	// The port used to access the RDS Supabase instance.
+	// The connection port.
 	//
 	// example:
 	//

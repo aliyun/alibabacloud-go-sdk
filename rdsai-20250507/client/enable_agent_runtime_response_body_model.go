@@ -9,6 +9,8 @@ type iEnableAgentRuntimeResponseBody interface {
   dara.Model
   String() string
   GoString() string
+  SetBranchName(v string) *EnableAgentRuntimeResponseBody
+  GetBranchName() *string 
   SetInstanceName(v string) *EnableAgentRuntimeResponseBody
   GetInstanceName() *string 
   SetRequestId(v string) *EnableAgentRuntimeResponseBody
@@ -16,6 +18,7 @@ type iEnableAgentRuntimeResponseBody interface {
 }
 
 type EnableAgentRuntimeResponseBody struct {
+  BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
   // The instance ID of the AI application.
   // 
   // example:
@@ -38,12 +41,21 @@ func (s EnableAgentRuntimeResponseBody) GoString() string {
   return s.String()
 }
 
+func (s *EnableAgentRuntimeResponseBody) GetBranchName() *string  {
+  return s.BranchName
+}
+
 func (s *EnableAgentRuntimeResponseBody) GetInstanceName() *string  {
   return s.InstanceName
 }
 
 func (s *EnableAgentRuntimeResponseBody) GetRequestId() *string  {
   return s.RequestId
+}
+
+func (s *EnableAgentRuntimeResponseBody) SetBranchName(v string) *EnableAgentRuntimeResponseBody {
+  s.BranchName = &v
+  return s
 }
 
 func (s *EnableAgentRuntimeResponseBody) SetInstanceName(v string) *EnableAgentRuntimeResponseBody {

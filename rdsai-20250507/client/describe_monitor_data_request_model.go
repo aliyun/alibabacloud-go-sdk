@@ -24,9 +24,9 @@ type iDescribeMonitorDataRequest interface {
 }
 
 type DescribeMonitorDataRequest struct {
-	// The names of the API keys to use for filtering the data. If this parameter is not specified, data from all keys is returned.
+	// The API key name.
 	ApiKeyName []*string `json:"ApiKeyName,omitempty" xml:"ApiKeyName,omitempty" type:"Repeated"`
-	// The end of the query time range, specified as a Unix timestamp in seconds.
+	// The end time. Format: Timestamp.
 	//
 	// This parameter is required.
 	//
@@ -34,31 +34,35 @@ type DescribeMonitorDataRequest struct {
 	//
 	// 1627269085
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The instance ID.
+	// The instance name.
 	//
 	// example:
 	//
 	// rds_copilot***_public_cn-*********6
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The aggregation interval for monitoring data, in seconds. Default: 15.
+	// The statistical period. Default value: 15s.
 	//
 	// example:
 	//
 	// 15
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The metric to query. Valid values:
+	// The metric to query.
 	//
-	// - `pv`
+	// - pv
 	//
-	// - `uv`
+	// - uv
 	//
-	// - `qps`
+	// - qps
 	//
-	// - `success_rate`
+	// - success_rate
 	//
-	// - `rt`
+	// - rt
 	//
-	// - `rate_limited_count`
+	// - rate_limited_count
+	//
+	// - tpm
+	//
+	// - cache
 	//
 	// This parameter is required.
 	//
@@ -66,7 +70,7 @@ type DescribeMonitorDataRequest struct {
 	//
 	// ● pv
 	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
-	// The start of the query time range, specified as a Unix timestamp in seconds.
+	// The start time. Format: Timestamp.
 	//
 	// This parameter is required.
 	//

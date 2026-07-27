@@ -13,6 +13,10 @@ type iDescribeAppInstanceAttributeResponseBody interface {
 	GetAppName() *string
 	SetAppType(v string) *DescribeAppInstanceAttributeResponseBody
 	GetAppType() *string
+	SetBranchName(v string) *DescribeAppInstanceAttributeResponseBody
+	GetBranchName() *string
+	SetBranchingEnabled(v string) *DescribeAppInstanceAttributeResponseBody
+	GetBranchingEnabled() *string
 	SetComponents(v []*DescribeAppInstanceAttributeResponseBodyComponents) *DescribeAppInstanceAttributeResponseBody
 	GetComponents() []*DescribeAppInstanceAttributeResponseBodyComponents
 	SetDBInstanceName(v string) *DescribeAppInstanceAttributeResponseBody
@@ -71,9 +75,11 @@ type DescribeAppInstanceAttributeResponseBody struct {
 	// example:
 	//
 	// supabase
-	AppType    *string                                               `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	Components []*DescribeAppInstanceAttributeResponseBodyComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
-	// The instance ID of the ApsaraDB RDS for PostgreSQL database to which the AI application is connected.
+	AppType          *string                                               `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	BranchName       *string                                               `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	BranchingEnabled *string                                               `json:"BranchingEnabled,omitempty" xml:"BranchingEnabled,omitempty"`
+	Components       []*DescribeAppInstanceAttributeResponseBodyComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+	// The instance ID of the RDS PostgreSQL database to which the AI application is connected.
 	//
 	// example:
 	//
@@ -165,6 +171,14 @@ func (s *DescribeAppInstanceAttributeResponseBody) GetAppName() *string {
 
 func (s *DescribeAppInstanceAttributeResponseBody) GetAppType() *string {
 	return s.AppType
+}
+
+func (s *DescribeAppInstanceAttributeResponseBody) GetBranchName() *string {
+	return s.BranchName
+}
+
+func (s *DescribeAppInstanceAttributeResponseBody) GetBranchingEnabled() *string {
+	return s.BranchingEnabled
 }
 
 func (s *DescribeAppInstanceAttributeResponseBody) GetComponents() []*DescribeAppInstanceAttributeResponseBodyComponents {
@@ -262,6 +276,16 @@ func (s *DescribeAppInstanceAttributeResponseBody) SetAppName(v string) *Describ
 
 func (s *DescribeAppInstanceAttributeResponseBody) SetAppType(v string) *DescribeAppInstanceAttributeResponseBody {
 	s.AppType = &v
+	return s
+}
+
+func (s *DescribeAppInstanceAttributeResponseBody) SetBranchName(v string) *DescribeAppInstanceAttributeResponseBody {
+	s.BranchName = &v
+	return s
+}
+
+func (s *DescribeAppInstanceAttributeResponseBody) SetBranchingEnabled(v string) *DescribeAppInstanceAttributeResponseBody {
+	s.BranchingEnabled = &v
 	return s
 }
 

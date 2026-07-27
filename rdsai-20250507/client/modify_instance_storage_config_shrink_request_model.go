@@ -9,6 +9,8 @@ type iModifyInstanceStorageConfigShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBranchName(v string) *ModifyInstanceStorageConfigShrinkRequest
+	GetBranchName() *string
 	SetClientToken(v string) *ModifyInstanceStorageConfigShrinkRequest
 	GetClientToken() *string
 	SetConfigListShrink(v string) *ModifyInstanceStorageConfigShrinkRequest
@@ -20,15 +22,16 @@ type iModifyInstanceStorageConfigShrinkRequest interface {
 }
 
 type ModifyInstanceStorageConfigShrinkRequest struct {
-	// The value of the configuration item.
+	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, which ensures that the request is not repeated.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the RDS Supabase instance.
+	// The list of storage configurations.
 	ConfigListShrink *string `json:"ConfigList,omitempty" xml:"ConfigList,omitempty"`
-	// The region ID.
+	// The instance ID of the AI application.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +39,7 @@ type ModifyInstanceStorageConfigShrinkRequest struct {
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The operation that you want to perform. Set the value to **ModifyInstanceStorageConfig**.
+	// The region ID.
 	//
 	// example:
 	//
@@ -50,6 +53,10 @@ func (s ModifyInstanceStorageConfigShrinkRequest) String() string {
 
 func (s ModifyInstanceStorageConfigShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyInstanceStorageConfigShrinkRequest) GetBranchName() *string {
+	return s.BranchName
 }
 
 func (s *ModifyInstanceStorageConfigShrinkRequest) GetClientToken() *string {
@@ -66,6 +73,11 @@ func (s *ModifyInstanceStorageConfigShrinkRequest) GetInstanceName() *string {
 
 func (s *ModifyInstanceStorageConfigShrinkRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *ModifyInstanceStorageConfigShrinkRequest) SetBranchName(v string) *ModifyInstanceStorageConfigShrinkRequest {
+	s.BranchName = &v
+	return s
 }
 
 func (s *ModifyInstanceStorageConfigShrinkRequest) SetClientToken(v string) *ModifyInstanceStorageConfigShrinkRequest {

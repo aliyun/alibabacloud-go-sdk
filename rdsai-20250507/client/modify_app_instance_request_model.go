@@ -9,10 +9,16 @@ type iModifyAppInstanceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBranchName(v string) *ModifyAppInstanceRequest
+	GetBranchName() *string
 	SetClientToken(v string) *ModifyAppInstanceRequest
 	GetClientToken() *string
 	SetComponents(v []*ModifyAppInstanceRequestComponents) *ModifyAppInstanceRequest
 	GetComponents() []*ModifyAppInstanceRequestComponents
+	SetDBInstanceName(v string) *ModifyAppInstanceRequest
+	GetDBInstanceName() *string
+	SetInstanceClass(v string) *ModifyAppInstanceRequest
+	GetInstanceClass() *string
 	SetInstanceName(v string) *ModifyAppInstanceRequest
 	GetInstanceName() *string
 	SetRegionId(v string) *ModifyAppInstanceRequest
@@ -20,11 +26,14 @@ type iModifyAppInstanceRequest interface {
 }
 
 type ModifyAppInstanceRequest struct {
+	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
-	ClientToken *string                               `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Components  []*ModifyAppInstanceRequestComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+	ClientToken    *string                               `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Components     []*ModifyAppInstanceRequestComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+	DBInstanceName *string                               `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	InstanceClass  *string                               `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
 	// example:
 	//
 	// ra-8moov5lxba****
@@ -43,12 +52,24 @@ func (s ModifyAppInstanceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyAppInstanceRequest) GetBranchName() *string {
+	return s.BranchName
+}
+
 func (s *ModifyAppInstanceRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
 func (s *ModifyAppInstanceRequest) GetComponents() []*ModifyAppInstanceRequestComponents {
 	return s.Components
+}
+
+func (s *ModifyAppInstanceRequest) GetDBInstanceName() *string {
+	return s.DBInstanceName
+}
+
+func (s *ModifyAppInstanceRequest) GetInstanceClass() *string {
+	return s.InstanceClass
 }
 
 func (s *ModifyAppInstanceRequest) GetInstanceName() *string {
@@ -59,6 +80,11 @@ func (s *ModifyAppInstanceRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *ModifyAppInstanceRequest) SetBranchName(v string) *ModifyAppInstanceRequest {
+	s.BranchName = &v
+	return s
+}
+
 func (s *ModifyAppInstanceRequest) SetClientToken(v string) *ModifyAppInstanceRequest {
 	s.ClientToken = &v
 	return s
@@ -66,6 +92,16 @@ func (s *ModifyAppInstanceRequest) SetClientToken(v string) *ModifyAppInstanceRe
 
 func (s *ModifyAppInstanceRequest) SetComponents(v []*ModifyAppInstanceRequestComponents) *ModifyAppInstanceRequest {
 	s.Components = v
+	return s
+}
+
+func (s *ModifyAppInstanceRequest) SetDBInstanceName(v string) *ModifyAppInstanceRequest {
+	s.DBInstanceName = &v
+	return s
+}
+
+func (s *ModifyAppInstanceRequest) SetInstanceClass(v string) *ModifyAppInstanceRequest {
+	s.InstanceClass = &v
 	return s
 }
 

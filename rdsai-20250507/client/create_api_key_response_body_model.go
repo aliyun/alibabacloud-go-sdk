@@ -20,21 +20,21 @@ type iCreateApiKeyResponseBody interface {
 }
 
 type CreateApiKeyResponseBody struct {
-	// The response data.
+	// The returned data.
 	Data *CreateApiKeyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// The request result.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *CreateApiKeyResponseBody) Validate() error {
 }
 
 type CreateApiKeyResponseBodyData struct {
-	// The endpoint for model invocation.
+	// The URL for model invocation.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type CreateApiKeyResponseBodyData struct {
 	BaseUrl *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
 	// The list of custom API keys.
 	CustomKeyList []*CreateApiKeyResponseBodyDataCustomKeyList `json:"CustomKeyList,omitempty" xml:"CustomKeyList,omitempty" type:"Repeated"`
-	// The system-generated API key.
+	// The system-generated key.
 	//
 	// example:
 	//
@@ -161,38 +161,38 @@ func (s *CreateApiKeyResponseBodyData) Validate() error {
 }
 
 type CreateApiKeyResponseBodyDataCustomKeyList struct {
-	// The API key.
+	// Api Key
 	//
 	// example:
 	//
 	// sk-rds-*****
 	ApiKey          *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
 	DailyTokenQuota *int64  `json:"DailyTokenQuota,omitempty" xml:"DailyTokenQuota,omitempty"`
-	// The API key name.
+	// The name of the API key.
 	//
 	// example:
 	//
 	// api-*****
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
-	// The quota ratio. This parameter takes effect only when **LimitType*	- is set to **ratio**.
+	// The quota percentage.
 	//
 	// example:
 	//
 	// 0.2
 	LimitRate *float32 `json:"LimitRate,omitempty" xml:"LimitRate,omitempty"`
-	// The quota allocation method. Valid values:
+	// The quota type. Valid values:
 	//
-	// - **fixed**: The quota is a fixed value.
+	// - **fixed**: by fixed value.
 	//
-	// - **ratio**: The quota is specified as a ratio of the total available resources.
+	// - **ratio**: by percentage.
 	//
-	// - **auto**: The quota is automatically allocated.
+	// - **auto**: automatic allocation.
 	//
 	// example:
 	//
 	// fixed
 	LimitType *string `json:"LimitType,omitempty" xml:"LimitType,omitempty"`
-	// The token quota for the API key.
+	// The quota for the current key.
 	//
 	// example:
 	//

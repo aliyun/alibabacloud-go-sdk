@@ -9,6 +9,8 @@ type iDescribeAppInstanceAttributeRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBranchName(v string) *DescribeAppInstanceAttributeRequest
+	GetBranchName() *string
 	SetInstanceName(v string) *DescribeAppInstanceAttributeRequest
 	GetInstanceName() *string
 	SetRegionId(v string) *DescribeAppInstanceAttributeRequest
@@ -16,6 +18,7 @@ type iDescribeAppInstanceAttributeRequest interface {
 }
 
 type DescribeAppInstanceAttributeRequest struct {
+	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
 	// The instance ID of the AI application.
 	//
 	// example:
@@ -38,12 +41,21 @@ func (s DescribeAppInstanceAttributeRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeAppInstanceAttributeRequest) GetBranchName() *string {
+	return s.BranchName
+}
+
 func (s *DescribeAppInstanceAttributeRequest) GetInstanceName() *string {
 	return s.InstanceName
 }
 
 func (s *DescribeAppInstanceAttributeRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *DescribeAppInstanceAttributeRequest) SetBranchName(v string) *DescribeAppInstanceAttributeRequest {
+	s.BranchName = &v
+	return s
 }
 
 func (s *DescribeAppInstanceAttributeRequest) SetInstanceName(v string) *DescribeAppInstanceAttributeRequest {

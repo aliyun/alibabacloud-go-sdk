@@ -9,6 +9,8 @@ type iModifyInstanceRAGConfigResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBranchName(v string) *ModifyInstanceRAGConfigResponseBody
+	GetBranchName() *string
 	SetInstanceName(v string) *ModifyInstanceRAGConfigResponseBody
 	GetInstanceName() *string
 	SetRequestId(v string) *ModifyInstanceRAGConfigResponseBody
@@ -18,7 +20,8 @@ type iModifyInstanceRAGConfigResponseBody interface {
 }
 
 type ModifyInstanceRAGConfigResponseBody struct {
-	// The ID of the RDS Supabase instance.
+	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	// The instance ID of the AI application.
 	//
 	// example:
 	//
@@ -30,11 +33,11 @@ type ModifyInstanceRAGConfigResponseBody struct {
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329241C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the RAG agent.
+	// The RAG Agent status. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Enabled.
 	//
-	// 	- **false**
+	// - **false**: Disabled.
 	//
 	// example:
 	//
@@ -50,6 +53,10 @@ func (s ModifyInstanceRAGConfigResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyInstanceRAGConfigResponseBody) GetBranchName() *string {
+	return s.BranchName
+}
+
 func (s *ModifyInstanceRAGConfigResponseBody) GetInstanceName() *string {
 	return s.InstanceName
 }
@@ -60,6 +67,11 @@ func (s *ModifyInstanceRAGConfigResponseBody) GetRequestId() *string {
 
 func (s *ModifyInstanceRAGConfigResponseBody) GetStatus() *string {
 	return s.Status
+}
+
+func (s *ModifyInstanceRAGConfigResponseBody) SetBranchName(v string) *ModifyInstanceRAGConfigResponseBody {
+	s.BranchName = &v
+	return s
 }
 
 func (s *ModifyInstanceRAGConfigResponseBody) SetInstanceName(v string) *ModifyInstanceRAGConfigResponseBody {

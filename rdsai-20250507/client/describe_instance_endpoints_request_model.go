@@ -9,6 +9,8 @@ type iDescribeInstanceEndpointsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBranchName(v string) *DescribeInstanceEndpointsRequest
+	GetBranchName() *string
 	SetInstanceName(v string) *DescribeInstanceEndpointsRequest
 	GetInstanceName() *string
 	SetRegionId(v string) *DescribeInstanceEndpointsRequest
@@ -16,13 +18,14 @@ type iDescribeInstanceEndpointsRequest interface {
 }
 
 type DescribeInstanceEndpointsRequest struct {
-	// The region ID.
+	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	// The instance ID of the AI application.
 	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeInstanceEndpoints**.
+	// The region ID.
 	//
 	// example:
 	//
@@ -38,12 +41,21 @@ func (s DescribeInstanceEndpointsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeInstanceEndpointsRequest) GetBranchName() *string {
+	return s.BranchName
+}
+
 func (s *DescribeInstanceEndpointsRequest) GetInstanceName() *string {
 	return s.InstanceName
 }
 
 func (s *DescribeInstanceEndpointsRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *DescribeInstanceEndpointsRequest) SetBranchName(v string) *DescribeInstanceEndpointsRequest {
+	s.BranchName = &v
+	return s
 }
 
 func (s *DescribeInstanceEndpointsRequest) SetInstanceName(v string) *DescribeInstanceEndpointsRequest {

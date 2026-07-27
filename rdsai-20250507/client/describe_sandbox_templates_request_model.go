@@ -9,6 +9,8 @@ type iDescribeSandboxTemplatesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBranchName(v string) *DescribeSandboxTemplatesRequest
+	GetBranchName() *string
 	SetInstanceName(v string) *DescribeSandboxTemplatesRequest
 	GetInstanceName() *string
 	SetMaxResults(v int32) *DescribeSandboxTemplatesRequest
@@ -26,7 +28,8 @@ type iDescribeSandboxTemplatesRequest interface {
 }
 
 type DescribeSandboxTemplatesRequest struct {
-	// The ID of the RDS Supabase instance.
+	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	// The instance ID of the AI application.
 	//
 	// This parameter is required.
 	//
@@ -34,13 +37,13 @@ type DescribeSandboxTemplatesRequest struct {
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// This parameter is reserved.
+	// A reserved parameter. You do not need to specify this parameter.
 	//
 	// example:
 	//
 	// None
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token used to retrieve the next page of results. You do not need to specify this parameter for the first request.
+	// The pagination token.
 	//
 	// example:
 	//
@@ -52,7 +55,7 @@ type DescribeSandboxTemplatesRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size.
+	// The number of records per page.
 	//
 	// example:
 	//
@@ -66,7 +69,7 @@ type DescribeSandboxTemplatesRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the sandbox template.
+	// The sandbox template name.
 	//
 	// example:
 	//
@@ -80,6 +83,10 @@ func (s DescribeSandboxTemplatesRequest) String() string {
 
 func (s DescribeSandboxTemplatesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeSandboxTemplatesRequest) GetBranchName() *string {
+	return s.BranchName
 }
 
 func (s *DescribeSandboxTemplatesRequest) GetInstanceName() *string {
@@ -108,6 +115,11 @@ func (s *DescribeSandboxTemplatesRequest) GetRegionId() *string {
 
 func (s *DescribeSandboxTemplatesRequest) GetTemplateName() *string {
 	return s.TemplateName
+}
+
+func (s *DescribeSandboxTemplatesRequest) SetBranchName(v string) *DescribeSandboxTemplatesRequest {
+	s.BranchName = &v
+	return s
 }
 
 func (s *DescribeSandboxTemplatesRequest) SetInstanceName(v string) *DescribeSandboxTemplatesRequest {

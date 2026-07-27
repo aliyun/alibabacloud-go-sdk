@@ -26,13 +26,13 @@ type iDescribeSandboxTemplatesResponseBody interface {
 }
 
 type DescribeSandboxTemplatesResponseBody struct {
-	// This parameter is reserved.
+	// A reserved parameter. You do not need to specify this parameter.
 	//
 	// example:
 	//
 	// None
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token to retrieve the next page of results. If this parameter is empty, all results have been returned.
+	// The position from which to start the current read. An empty value indicates that the read starts from the beginning.
 	//
 	// example:
 	//
@@ -44,21 +44,21 @@ type DescribeSandboxTemplatesResponseBody struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on the current page.
+	// The number of records per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of sandbox templates.
+	// The list of sandbox templates.
 	SandboxTemplates []*DescribeSandboxTemplatesResponseBodySandboxTemplates `json:"SandboxTemplates,omitempty" xml:"SandboxTemplates,omitempty" type:"Repeated"`
-	// The total number of entries that match the query.
+	// The total number of records that match the query conditions. This is an optional response element and may not be returned by default.
 	//
 	// example:
 	//
@@ -152,38 +152,38 @@ func (s *DescribeSandboxTemplatesResponseBody) Validate() error {
 
 type DescribeSandboxTemplatesResponseBodySandboxTemplates struct {
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
-	// The default number of CPUs for a sandbox created from this template.
+	// The number of CPUs for the sandbox created by using this template.
 	//
 	// example:
 	//
 	// 2
 	DefaultCpu *string `json:"DefaultCpu,omitempty" xml:"DefaultCpu,omitempty"`
-	// The default memory size for a sandbox created from this template.
+	// The memory size of the sandbox created by using this template.
 	//
 	// example:
 	//
 	// 4Gi
 	DefaultMemory *string `json:"DefaultMemory,omitempty" xml:"DefaultMemory,omitempty"`
-	// The description of the sandbox template.
+	// The sandbox template description.
 	//
 	// example:
 	//
 	// code-interpreter-vpc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether sandboxes created from this template can access resources in the VPC of the parent RDS Supabase instance.
+	// Indicates whether the sandbox created by using this template can access resources within the VPC where Supabase resides.
 	//
 	// example:
 	//
 	// true
 	EnableVpcAccess *string `json:"EnableVpcAccess,omitempty" xml:"EnableVpcAccess,omitempty"`
-	// The name of the sandbox template.
+	// The sandbox template name.
 	//
 	// example:
 	//
 	// code-interpreter
 	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Replicas *int64  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
-	// The ID of the sandbox template. Use this ID when you create a sandbox.
+	// The sandbox template ID. Specify this ID when you create a sandbox by using this template.
 	//
 	// example:
 	//

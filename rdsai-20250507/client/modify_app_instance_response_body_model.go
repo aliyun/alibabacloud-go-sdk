@@ -9,6 +9,8 @@ type iModifyAppInstanceResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBranchName(v string) *ModifyAppInstanceResponseBody
+	GetBranchName() *string
 	SetComponents(v []*ModifyAppInstanceResponseBodyComponents) *ModifyAppInstanceResponseBody
 	GetComponents() []*ModifyAppInstanceResponseBodyComponents
 	SetInstanceName(v string) *ModifyAppInstanceResponseBody
@@ -18,6 +20,7 @@ type iModifyAppInstanceResponseBody interface {
 }
 
 type ModifyAppInstanceResponseBody struct {
+	BranchName *string                                    `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
 	Components []*ModifyAppInstanceResponseBodyComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -37,6 +40,10 @@ func (s ModifyAppInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyAppInstanceResponseBody) GetBranchName() *string {
+	return s.BranchName
+}
+
 func (s *ModifyAppInstanceResponseBody) GetComponents() []*ModifyAppInstanceResponseBodyComponents {
 	return s.Components
 }
@@ -47,6 +54,11 @@ func (s *ModifyAppInstanceResponseBody) GetInstanceName() *string {
 
 func (s *ModifyAppInstanceResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *ModifyAppInstanceResponseBody) SetBranchName(v string) *ModifyAppInstanceResponseBody {
+	s.BranchName = &v
+	return s
 }
 
 func (s *ModifyAppInstanceResponseBody) SetComponents(v []*ModifyAppInstanceResponseBodyComponents) *ModifyAppInstanceResponseBody {

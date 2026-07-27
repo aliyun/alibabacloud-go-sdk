@@ -9,6 +9,8 @@ type iRestartInstanceResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBranchName(v string) *RestartInstanceResponseBody
+	GetBranchName() *string
 	SetInstanceName(v string) *RestartInstanceResponseBody
 	GetInstanceName() *string
 	SetRequestId(v string) *RestartInstanceResponseBody
@@ -16,7 +18,8 @@ type iRestartInstanceResponseBody interface {
 }
 
 type RestartInstanceResponseBody struct {
-	// The ID of the RDS Supabase instance.
+	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	// The instance ID of the AI application.
 	//
 	// example:
 	//
@@ -38,12 +41,21 @@ func (s RestartInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *RestartInstanceResponseBody) GetBranchName() *string {
+	return s.BranchName
+}
+
 func (s *RestartInstanceResponseBody) GetInstanceName() *string {
 	return s.InstanceName
 }
 
 func (s *RestartInstanceResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *RestartInstanceResponseBody) SetBranchName(v string) *RestartInstanceResponseBody {
+	s.BranchName = &v
+	return s
 }
 
 func (s *RestartInstanceResponseBody) SetInstanceName(v string) *RestartInstanceResponseBody {

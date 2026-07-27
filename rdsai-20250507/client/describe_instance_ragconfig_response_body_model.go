@@ -9,6 +9,8 @@ type iDescribeInstanceRAGConfigResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBranchName(v string) *DescribeInstanceRAGConfigResponseBody
+	GetBranchName() *string
 	SetConfigList(v []*DescribeInstanceRAGConfigResponseBodyConfigList) *DescribeInstanceRAGConfigResponseBody
 	GetConfigList() []*DescribeInstanceRAGConfigResponseBodyConfigList
 	SetInstanceName(v string) *DescribeInstanceRAGConfigResponseBody
@@ -20,9 +22,10 @@ type iDescribeInstanceRAGConfigResponseBody interface {
 }
 
 type DescribeInstanceRAGConfigResponseBody struct {
-	// The RAG agent configurations.
+	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	// The list of RAG Agent configurations.
 	ConfigList []*DescribeInstanceRAGConfigResponseBodyConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Repeated"`
-	// The ID of the RDS Supabase instance.
+	// The instance ID of the AI application.
 	//
 	// example:
 	//
@@ -34,11 +37,11 @@ type DescribeInstanceRAGConfigResponseBody struct {
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329241C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the RAG agent.
+	// The RAG Agent status. Valid values:
 	//
-	// 	- **true**: RAG agent is enabled.
+	// - **true**: Enabled.
 	//
-	// 	- **false**: RAG agent is disabled.
+	// - **false**: Disabled.
 	//
 	// example:
 	//
@@ -52,6 +55,10 @@ func (s DescribeInstanceRAGConfigResponseBody) String() string {
 
 func (s DescribeInstanceRAGConfigResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInstanceRAGConfigResponseBody) GetBranchName() *string {
+	return s.BranchName
 }
 
 func (s *DescribeInstanceRAGConfigResponseBody) GetConfigList() []*DescribeInstanceRAGConfigResponseBodyConfigList {
@@ -68,6 +75,11 @@ func (s *DescribeInstanceRAGConfigResponseBody) GetRequestId() *string {
 
 func (s *DescribeInstanceRAGConfigResponseBody) GetStatus() *bool {
 	return s.Status
+}
+
+func (s *DescribeInstanceRAGConfigResponseBody) SetBranchName(v string) *DescribeInstanceRAGConfigResponseBody {
+	s.BranchName = &v
+	return s
 }
 
 func (s *DescribeInstanceRAGConfigResponseBody) SetConfigList(v []*DescribeInstanceRAGConfigResponseBodyConfigList) *DescribeInstanceRAGConfigResponseBody {

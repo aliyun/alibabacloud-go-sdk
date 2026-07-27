@@ -9,6 +9,8 @@ type iModifyInstanceSSLResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBranchName(v string) *ModifyInstanceSSLResponseBody
+	GetBranchName() *string
 	SetInstanceName(v string) *ModifyInstanceSSLResponseBody
 	GetInstanceName() *string
 	SetRequestId(v string) *ModifyInstanceSSLResponseBody
@@ -16,7 +18,8 @@ type iModifyInstanceSSLResponseBody interface {
 }
 
 type ModifyInstanceSSLResponseBody struct {
-	// The ID of the RDS Supabase instance.
+	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	// The instance ID of the AI application.
 	//
 	// example:
 	//
@@ -38,12 +41,21 @@ func (s ModifyInstanceSSLResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyInstanceSSLResponseBody) GetBranchName() *string {
+	return s.BranchName
+}
+
 func (s *ModifyInstanceSSLResponseBody) GetInstanceName() *string {
 	return s.InstanceName
 }
 
 func (s *ModifyInstanceSSLResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *ModifyInstanceSSLResponseBody) SetBranchName(v string) *ModifyInstanceSSLResponseBody {
+	s.BranchName = &v
+	return s
 }
 
 func (s *ModifyInstanceSSLResponseBody) SetInstanceName(v string) *ModifyInstanceSSLResponseBody {
