@@ -30,79 +30,65 @@ type iEticketInfo interface {
 }
 
 type EticketInfo struct {
-  // The number of available units.
+  // The number of unredeemed voucher electronic credentials.
   // 
   // example:
   // 
   // 0
   AvailableNum *int64 `json:"availableNum,omitempty" xml:"availableNum,omitempty"`
-  // The unique code for the e-ticket.
+  // The code of the voucher electronic credential.
   // 
   // example:
   // 
   // taobao******tpg
   Code *string `json:"code,omitempty" xml:"code,omitempty"`
-  // The status of the e-ticket.
+  // The status of the voucher electronic credential.
   // 
-  // > Valid enum values:
-  // 
-  // >
+  // > Valid values:
   // 
   // > - 1: valid
   // 
-  // >
-  // 
   // > - -1: redeemed
-  // 
-  // >
   // 
   // > - -2: expired
   // 
-  // >
-  // 
-  // > - -5: expired
-  // 
-  // >
-  // 
-  // > - -8: expired
+  // > - 100: locked
   // 
   // example:
   // 
   // -1
   CodeStatus *int64 `json:"codeStatus,omitempty" xml:"codeStatus,omitempty"`
-  // The end time of the e-ticket validity period.
+  // The end time of the validity period for the voucher electronic credential.
   // 
   // example:
   // 
   // 2026-08-02T23:59:59.000+08:00
   EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-  // The number of locked units.
+  // The number of voucher electronic credentials in locked status.
   // 
   // example:
   // 
   // 0
   LockNum *int64 `json:"lockNum,omitempty" xml:"lockNum,omitempty"`
-  // The URL of the QR code image for the e-ticket.
-  // 
-  // > This field is not currently populated. Distributors must generate the QR code using the `code` field.
+  // The URL of the QR code image for the voucher electronic credential.
   // 
   // example:
   // 
   // http://qrcode.alicdn.com/img.jpg
   QrcodeUrl *string `json:"qrcodeUrl,omitempty" xml:"qrcodeUrl,omitempty"`
-  // The start time of the e-ticket validity period.
+  // The start time of the validity period for the voucher electronic credential.
   // 
   // example:
   // 
   // 2026-02-04T00:00:00.000+08:00
   StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-  // The time the e-ticket was redeemed.
+  // The redemption time of the voucher electronic credential.
   // 
   // example:
   // 
   // 2026-02-04T15:07:59.000+08:00
   UseTime *string `json:"useTime,omitempty" xml:"useTime,omitempty"`
-  // The number of redeemed units.
+  // The number of redeemed voucher electronic credentials.
   // 
   // example:
   // 

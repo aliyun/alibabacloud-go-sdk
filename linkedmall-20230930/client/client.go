@@ -1326,11 +1326,11 @@ func (client *Client) QueryChildDivisionCode(request *QueryChildDivisionCodeRequ
 
 // Summary:
 //
-// Queries a list of orders.
+// Lists orders.
 //
 // Description:
 //
-// Queries a list of orders.
+// Lists orders.
 //
 // @param request - QueryOrdersRequest
 //
@@ -1372,11 +1372,11 @@ func (client *Client) QueryOrdersWithOptions(request *QueryOrdersRequest, header
 
 // Summary:
 //
-// Queries a list of orders.
+// Lists orders.
 //
 // Description:
 //
-// Queries a list of orders.
+// Lists orders.
 //
 // @param request - QueryOrdersRequest
 //

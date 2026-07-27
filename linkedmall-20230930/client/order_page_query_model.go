@@ -11,6 +11,8 @@ type iOrderPageQuery interface {
 	GoString() string
 	SetOrderIdList(v []*string) *OrderPageQuery
 	GetOrderIdList() []*string
+	SetOutPurchaseOrderId(v string) *OrderPageQuery
+	GetOutPurchaseOrderId() *string
 	SetPageNumber(v int32) *OrderPageQuery
 	GetPageNumber() *int32
 	SetPageSize(v int32) *OrderPageQuery
@@ -20,9 +22,15 @@ type iOrderPageQuery interface {
 }
 
 type OrderPageQuery struct {
-	// Collection of primary order IDs
+	// The collection of primary order IDs.
 	OrderIdList []*string `json:"orderIdList,omitempty" xml:"orderIdList,omitempty" type:"Repeated"`
-	// Page number
+	// The external purchase order ID.
+	//
+	// example:
+	//
+	// 6692****56121
+	OutPurchaseOrderId *string `json:"outPurchaseOrderId,omitempty" xml:"outPurchaseOrderId,omitempty"`
+	// The page number.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +38,7 @@ type OrderPageQuery struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// Quantity per page
+	// The number of entries per page.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +46,7 @@ type OrderPageQuery struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Purchase order ID
+	// The purchase order ID.
 	//
 	// example:
 	//
@@ -58,6 +66,10 @@ func (s *OrderPageQuery) GetOrderIdList() []*string {
 	return s.OrderIdList
 }
 
+func (s *OrderPageQuery) GetOutPurchaseOrderId() *string {
+	return s.OutPurchaseOrderId
+}
+
 func (s *OrderPageQuery) GetPageNumber() *int32 {
 	return s.PageNumber
 }
@@ -72,6 +84,11 @@ func (s *OrderPageQuery) GetPurchaseOrderId() *string {
 
 func (s *OrderPageQuery) SetOrderIdList(v []*string) *OrderPageQuery {
 	s.OrderIdList = v
+	return s
+}
+
+func (s *OrderPageQuery) SetOutPurchaseOrderId(v string) *OrderPageQuery {
+	s.OutPurchaseOrderId = &v
 	return s
 }
 

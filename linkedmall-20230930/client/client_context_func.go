@@ -821,11 +821,11 @@ func (client *Client) QueryChildDivisionCodeWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries a list of orders.
+// Lists orders.
 //
 // Description:
 //
-// Queries a list of orders.
+// Lists orders.
 //
 // @param request - QueryOrdersRequest
 //
