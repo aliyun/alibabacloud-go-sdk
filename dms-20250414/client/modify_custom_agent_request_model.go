@@ -37,14 +37,15 @@ type iModifyCustomAgentRequest interface {
 	GetTextReportConfig() *string
 	SetWebReportConfig(v string) *ModifyCustomAgentRequest
 	GetWebReportConfig() *string
+	SetWebReportTheme(v string) *ModifyCustomAgentRequest
+	GetWebReportTheme() *string
 	SetWorkspaceId(v string) *ModifyCustomAgentRequest
 	GetWorkspaceId() *string
 }
 
 type ModifyCustomAgentRequest struct {
-	// The callback configuration.
 	CallbackConfig *ModifyCustomAgentRequestCallbackConfig `json:"CallbackConfig,omitempty" xml:"CallbackConfig,omitempty" type:"Struct"`
-	// The ID of the custom agent.
+	// The custom agent ID.
 	//
 	// This parameter is required.
 	//
@@ -58,224 +59,57 @@ type ModifyCustomAgentRequest struct {
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	// The data scope for the agent, specified in a **JSON-formatted string**.
-	//
-	// - General parameters:
-	//
-	//   - `tableFlag`: Set this to `true` to specify the data scope.
-	//
-	//   - `scope`: The value must be `personal`.
-	//
-	//   - `personal`: The parameters for files or databases.
-	//
-	// **For files**, use the following parameters:
-	//
-	// - `DataSourceType`: The value must be `remote_data_center`.
-	//
-	// - `FileId`: The file ID.
-	//
-	// - `Database`: The database name returned by the `ListDataCenterTable` operation. This is typically the file name.
-	//
-	// - `Tables`: The table names returned by the `ListDataCenterTable` operation.
-	//
-	// - `TableIds`: The table IDs returned by the `ListDataCenterTable` operation.
-	//
-	// - `RegionId`: The current region.
-	//
-	// ```
-	//
-	// {
-	//
-	//   "tableFlag": true,
-	//
-	//   "scope": "personal",
-	//
-	//   "personal": {
-	//
-	//     "DataSourceType": "remote_data_center",
-	//
-	//     "FileId": "f-f0jksn001ibmkoo********6v2zn6",
-	//
-	//     "Database": "diamonds.csv",
-	//
-	//     "Tables": [
-	//
-	//       "diamonds"
-	//
-	//     ],
-	//
-	//     "TableIds": [
-	//
-	//       "35hfn94pxl********50pi"
-	//
-	//     ],
-	//
-	//     "RegionId": "cn-hangzhou"
-	//
-	//   }
-	//
-	// }
-	//
-	// ```
-	//
-	// **For databases**, use the following parameters:
-	//
-	// - `DataSourceType`: The value must be `database`.
-	//
-	// - `DmsInstanceId`: The ID of the DMS instance, which is returned by the data center API.
-	//
-	// - `DmsDatabaseId`: The ID of the DMS database, which is returned by the data center API.
-	//
-	// - `FileId`: The instance name. This parameter is deprecated.
-	//
-	// - `DbName`: The database name returned by the data center API.
-	//
-	// - `Database`: The database name returned by the data center API.
-	//
-	// - `Tables`: The table names returned by the data center API.
-	//
-	// - `TableIds`: The table IDs returned by the data center API.
-	//
-	// - `Engine`: The database engine type. Valid values: `mysql` and `postgresql`.
-	//
-	// - `RegionId`: The current region.
-	//
-	// ```
-	//
-	// {
-	//
-	//   "tableFlag": true,
-	//
-	//   "scope": "personal",
-	//
-	//   "personal": {
-	//
-	//     "DataSourceType": "database",
-	//
-	//     "DmsInstanceId": "284***8",
-	//
-	//     "DmsDatabaseId": "769***45",
-	//
-	//     "FileId": "pgm-bp15095e*******6t",
-	//
-	//     "DbName": "pg_catalog",
-	//
-	//     "Database": "pg_catalog",
-	//
-	//     "Tables": [
-	//
-	//       "pg_aggregate"
-	//
-	//     ],
-	//
-	//     "TableIds": [
-	//
-	//       "5263****31"
-	//
-	//     ],
-	//
-	//     "Engine": "postgresql",
-	//
-	//     "RegionId": "cn-hangzhou"
-	//
-	//   }
-	//
-	// }
-	//
-	// ```
+	// The specified data scope, in **JSON string format**.
 	//
 	// example:
 	//
 	// {
-	//
-	//   "tableFlag" : true,
-	//
-	//   "scope" : "personal",
-	//
-	//   "personal" : {
-	//
-	//     "DataSourceType" : "remote_data_center",
-	//
-	//     "FileId" : "f-5qlrwaw10********s3gpw1z",
-	//
-	//     "Database" : "测试表格******.xlsx",
-	//
-	//     "Tables" : [ "Sheet1" ],
-	//
-	//     "TableIds" : [ "******" ],
-	//
-	//     "RegionId" : "cn-hangzhou"
-	//
-	//   }
-	//
-	// }
 	DataJson *string `json:"DataJson,omitempty" xml:"DataJson,omitempty"`
 	// The description of the custom agent.
 	//
 	// example:
 	//
-	// Agent测试描述
+	// AgentTestDescription.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The execution configuration.
 	ExecutionConfig *ModifyCustomAgentRequestExecutionConfig `json:"ExecutionConfig,omitempty" xml:"ExecutionConfig,omitempty" type:"Struct"`
-	// The system instruction for the custom agent.
-	//
-	// - The maximum length is 10,000 characters.
+	// The instruction.
 	//
 	// example:
 	//
-	// 分析框架：
-	//
-	// 1、需按日、周、月维度监控核心指标（GMV、订单量、UV、转化率），分析趋势变化及同比/环比波动；
-	//
-	// 2、划分新老客、渠道、地域进行拆解，识别增长来源与短板；
-	//
-	// 3、结合用户行为路径（浏览→加购→支付）开展漏斗分析，定位流失环节；
+	// Analysis framework:
 	Instruction *string `json:"Instruction,omitempty" xml:"Instruction,omitempty"`
-	// A text-based knowledge base for the custom agent.
-	//
-	// - The maximum length is 10,000 characters.
+	// The knowledge.
 	//
 	// example:
 	//
-	// 核心指标定义：
-	//
-	// 1、GMV（成交总额）指订单金额总和，含已支付及未支付成功订单；
-	//
-	// 2、订单量为每日有效下单笔数；
-	//
-	// 3、UV（独立访客）指访问网站或APP的去重用户数；
-	//
-	// 4、转化率=支付订单数 / UV，反映流量转化效率；
+	// Core metric definitions:
 	Knowledge *string `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
-	// The configurations for the external knowledge base.
+	// The external knowledge bases.
 	KnowledgeConfigList []*ModifyCustomAgentRequestKnowledgeConfigList `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty" type:"Repeated"`
 	// The name of the custom agent.
 	//
 	// example:
 	//
-	// Agent测试名称
+	// AgentTestName.
 	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	RelatedSessionId *string `json:"RelatedSessionId,omitempty" xml:"RelatedSessionId,omitempty"`
-	// The configuration for the scheduled task.
+	// The scheduled task configuration.
 	ScheduleTaskConfig *ModifyCustomAgentRequestScheduleTaskConfig `json:"ScheduleTaskConfig,omitempty" xml:"ScheduleTaskConfig,omitempty" type:"Struct"`
-	// The formatting instructions for the text report.
-	//
-	// - The maximum length is 10,000 characters.
+	// The text report format.
 	//
 	// example:
 	//
-	// 文字报告要求所有数字不使用阿拉伯数字，全部转为中文数字
+	// The text report requires all numbers to be written in Chinese characters instead of Arabic numerals.
 	TextReportConfig *string `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
-	// The formatting instructions for the web report.
-	//
-	// - The maximum length is 50,000 characters.
+	// The web report format.
 	//
 	// example:
 	//
-	// 网页报告要求所有数字不使用阿拉伯数字，全部转为中文数字
+	// The web report requires all numbers to be written in Chinese characters instead of Arabic numerals.
 	WebReportConfig *string `json:"WebReportConfig,omitempty" xml:"WebReportConfig,omitempty"`
-	// The ID of the workspace.
+	WebReportTheme  *string `json:"WebReportTheme,omitempty" xml:"WebReportTheme,omitempty"`
+	// The workspace ID.
 	//
 	// example:
 	//
@@ -345,6 +179,10 @@ func (s *ModifyCustomAgentRequest) GetTextReportConfig() *string {
 
 func (s *ModifyCustomAgentRequest) GetWebReportConfig() *string {
 	return s.WebReportConfig
+}
+
+func (s *ModifyCustomAgentRequest) GetWebReportTheme() *string {
+	return s.WebReportTheme
 }
 
 func (s *ModifyCustomAgentRequest) GetWorkspaceId() *string {
@@ -421,6 +259,11 @@ func (s *ModifyCustomAgentRequest) SetWebReportConfig(v string) *ModifyCustomAge
 	return s
 }
 
+func (s *ModifyCustomAgentRequest) SetWebReportTheme(v string) *ModifyCustomAgentRequest {
+	s.WebReportTheme = &v
+	return s
+}
+
 func (s *ModifyCustomAgentRequest) SetWorkspaceId(v string) *ModifyCustomAgentRequest {
 	s.WorkspaceId = &v
 	return s
@@ -455,16 +298,11 @@ func (s *ModifyCustomAgentRequest) Validate() error {
 }
 
 type ModifyCustomAgentRequestCallbackConfig struct {
-	// The arguments for the callback.
-	CallbackArgs *string `json:"CallbackArgs,omitempty" xml:"CallbackArgs,omitempty"`
-	// The prompt to use for the callback.
+	CallbackArgs   *string `json:"CallbackArgs,omitempty" xml:"CallbackArgs,omitempty"`
 	CallbackPrompt *string `json:"CallbackPrompt,omitempty" xml:"CallbackPrompt,omitempty"`
-	// The timestamp of the callback.
-	CallbackTime *int32 `json:"CallbackTime,omitempty" xml:"CallbackTime,omitempty"`
-	// The ID of the tool to call.
-	ToolId *string `json:"ToolId,omitempty" xml:"ToolId,omitempty"`
-	// The callback type.
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	CallbackTime   *int32  `json:"CallbackTime,omitempty" xml:"CallbackTime,omitempty"`
+	ToolId         *string `json:"ToolId,omitempty" xml:"ToolId,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ModifyCustomAgentRequestCallbackConfig) String() string {
@@ -525,7 +363,7 @@ func (s *ModifyCustomAgentRequestCallbackConfig) Validate() error {
 }
 
 type ModifyCustomAgentRequestExecutionConfig struct {
-	// Specifies whether to prevent the agent from asking for user input during execution.
+	// Specifies whether to disable user inquiries during the process.
 	//
 	// example:
 	//
@@ -537,13 +375,13 @@ type ModifyCustomAgentRequestExecutionConfig struct {
 	//
 	// true
 	SkipPlan *bool `json:"SkipPlan,omitempty" xml:"SkipPlan,omitempty"`
-	// Specifies whether to skip all SQL confirmation steps.
+	// Specifies whether to skip all SQL confirmations.
 	//
 	// example:
 	//
 	// true
 	SkipSqlConfirm *bool `json:"SkipSqlConfirm,omitempty" xml:"SkipSqlConfirm,omitempty"`
-	// Specifies whether to skip the confirmation for web report generation.
+	// Specifies whether to skip the web report rendering confirmation.
 	//
 	// example:
 	//
@@ -602,15 +440,12 @@ func (s *ModifyCustomAgentRequestExecutionConfig) Validate() error {
 type ModifyCustomAgentRequestKnowledgeConfigList struct {
 	// The access type.
 	//
-	// - `mcp`: Connects via the MCP service.
-	//
 	// example:
 	//
 	// mcp
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
-	// The UUID of the knowledge base.
-	KbUuid *string `json:"KbUuid,omitempty" xml:"KbUuid,omitempty"`
-	// The ID of the MCP server.
+	KbUuid     *string `json:"KbUuid,omitempty" xml:"KbUuid,omitempty"`
+	// The ID of the MCP Server.
 	//
 	// example:
 	//
@@ -658,7 +493,7 @@ func (s *ModifyCustomAgentRequestKnowledgeConfigList) Validate() error {
 }
 
 type ModifyCustomAgentRequestScheduleTaskConfig struct {
-	// The cron expression for the scheduled task.
+	// The cron expression for time-based scheduling.
 	//
 	// example:
 	//
@@ -668,9 +503,9 @@ type ModifyCustomAgentRequestScheduleTaskConfig struct {
 	//
 	// example:
 	//
-	// 分析一下这份数据，给出简报
+	// Analyze this data and provide a brief report.
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// The ID of a previous session to use as a reference.
+	// The ID of the referenced historical session.
 	//
 	// example:
 	//

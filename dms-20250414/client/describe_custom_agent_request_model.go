@@ -16,13 +16,13 @@ type iDescribeCustomAgentRequest interface {
 }
 
 type DescribeCustomAgentRequest struct {
-	// The ID of the custom agent.
+	// The custom agent ID.
 	//
 	// example:
 	//
 	// ca-4y3ca4khkcu**********ysf
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
-	// The ID of the workspace.
+	// The workspace ID.
 	//
 	// example:
 	//

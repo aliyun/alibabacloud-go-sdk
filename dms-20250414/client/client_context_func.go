@@ -522,7 +522,7 @@ func (client *Client) CreateAirflowLoginTokenWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Create a custom agent in your personal space or a workspace.
+// Creates a custom agent in a personal space or workspace.
 //
 // @param tmpReq - CreateCustomAgentRequest
 //
@@ -605,6 +605,10 @@ func (client *Client) CreateCustomAgentWithContext(ctx context.Context, tmpReq *
 
 	if !dara.IsNil(request.WebReportConfig) {
 		query["WebReportConfig"] = request.WebReportConfig
+	}
+
+	if !dara.IsNil(request.WebReportTheme) {
+		query["WebReportTheme"] = request.WebReportTheme
 	}
 
 	if !dara.IsNil(request.WorkspaceId) {
@@ -1976,7 +1980,7 @@ func (client *Client) DeleteWorkspaceCodeWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// `DescribeCustomAgent` retrieves the details of a custom agent by its agent ID.
+// Retrieves the details of a custom agent by custom agent ID.
 //
 // @param request - DescribeCustomAgentRequest
 //
@@ -5093,7 +5097,7 @@ func (client *Client) ListWorkspaceCodeWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # Modify a custom agent in a personal space or workspace
+// Modifies a custom agent in a personal space or workspace.
 //
 // @param tmpReq - ModifyCustomAgentRequest
 //
@@ -5180,6 +5184,10 @@ func (client *Client) ModifyCustomAgentWithContext(ctx context.Context, tmpReq *
 
 	if !dara.IsNil(request.WebReportConfig) {
 		query["WebReportConfig"] = request.WebReportConfig
+	}
+
+	if !dara.IsNil(request.WebReportTheme) {
+		query["WebReportTheme"] = request.WebReportTheme
 	}
 
 	if !dara.IsNil(request.WorkspaceId) {
@@ -5537,19 +5545,7 @@ func (client *Client) SaveWorkspaceCodeWithContext(ctx context.Context, request 
 //
 // Description:
 //
-// ## Request description
-//
-// - `agent_id` and `session_id` are required fields.
-//
-// - `message_type` defaults to `primary`. Set it to `additional` or `cancel` when you need to append information or cancel a session.
-//
-// - The `reply_to` field indicates which agent message this message is responding to. The default value is `0`.
-//
-// - When `message_type` is `additional`, the `question` field is required.
-//
-// - `quoted_message` can be used to quote the content of a previous user message.
-//
-// - Fields such as `data_source`, `dms_user`, `db_metadata`, and `session_config` are optional but provide more detailed context information.
+// ## Request description.
 //
 // @param tmpReq - SendChatMessageRequest
 //

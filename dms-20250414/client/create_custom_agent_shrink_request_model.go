@@ -35,234 +35,71 @@ type iCreateCustomAgentShrinkRequest interface {
 	GetTextReportConfig() *string
 	SetWebReportConfig(v string) *CreateCustomAgentShrinkRequest
 	GetWebReportConfig() *string
+	SetWebReportTheme(v string) *CreateCustomAgentShrinkRequest
+	GetWebReportTheme() *string
 	SetWorkspaceId(v string) *CreateCustomAgentShrinkRequest
 	GetWorkspaceId() *string
 }
 
 type CreateCustomAgentShrinkRequest struct {
 	CallbackConfigShrink *string `json:"CallbackConfig,omitempty" xml:"CallbackConfig,omitempty"`
-	// The ID of the DMS unit.
+	// The current DMS unit.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	// The data range, specified as a **JSON string**.
-	//
-	// - General parameters
-	//
-	//   - `tableFlag`: Set to `true` to specify a data range.
-	//
-	//   - `scope`: The value must be `personal`.
-	//
-	//   - `personal`: Contains the parameters for a file or database.
-	//
-	// **File type**: Use the following parameters.
-	//
-	// - `DataSourceType`: The value must be `remote_data_center`.
-	//
-	// - `FileId`: The ID of the file.
-	//
-	// - `Database`: The name of the database returned by the `ListDataCenterTable` operation. This is typically the file name.
-	//
-	// - `Tables`: The names of the tables returned by the `ListDataCenterTable` operation.
-	//
-	// - `TableIds`: The table IDs returned by the `ListDataCenterTable` operation.
-	//
-	// - `RegionId`: The current region.
-	//
-	// ```
-	//
-	// {
-	//
-	//   "tableFlag": true,
-	//
-	//   "scope": "personal",
-	//
-	//   "personal": {
-	//
-	//     "DataSourceType": "remote_data_center",
-	//
-	//     "FileId": "f-f0jksn001ibmkoo********6v2zn6",
-	//
-	//     "Database": "diamonds.csv",
-	//
-	//     "Tables": [
-	//
-	//       "diamonds"
-	//
-	//     ],
-	//
-	//     "TableIds": [
-	//
-	//       "35hfn94pxl********50pi"
-	//
-	//     ],
-	//
-	//     "RegionId": "cn-hangzhou"
-	//
-	//   }
-	//
-	// }
-	//
-	// ```
-	//
-	// **Database type**: Use the following parameters.
-	//
-	// - `DataSourceType`: The value must be `database`.
-	//
-	// - `DmsInstanceId`: The ID of the DMS instance returned by the data center API.
-	//
-	// - `DmsDatabaseId`: The ID of the DMS database returned by the data center API.
-	//
-	// - `FileId`: The instance name. This parameter is deprecated.
-	//
-	// - `DbName`: The name of the database returned by the data center API.
-	//
-	// - `Database`: The name of the database returned by the data center API.
-	//
-	// - `Tables`: The names of the tables returned by the data center API.
-	//
-	// - `TableIds`: The table IDs returned by the data center API.
-	//
-	// - `Engine`: The database engine. Valid values: `mysql` and `postgresql`.
-	//
-	// - `RegionId`: The current region.
-	//
-	// ```
-	//
-	// {
-	//
-	//   "tableFlag": true,
-	//
-	//   "scope": "personal",
-	//
-	//   "personal": {
-	//
-	//     "DataSourceType": "database",
-	//
-	//     "DmsInstanceId": "284***8",
-	//
-	//     "DmsDatabaseId": "769***45",
-	//
-	//     "FileId": "pgm-bp15095e*******6t",
-	//
-	//     "DbName": "pg_catalog",
-	//
-	//     "Database": "pg_catalog",
-	//
-	//     "Tables": [
-	//
-	//       "pg_aggregate"
-	//
-	//     ],
-	//
-	//     "TableIds": [
-	//
-	//       "5263****31"
-	//
-	//     ],
-	//
-	//     "Engine": "postgresql",
-	//
-	//     "RegionId": "cn-hangzhou"
-	//
-	//   }
-	//
-	// }
-	//
-	// ```
+	// The specified data scope, in **JSON string format**.
 	//
 	// example:
 	//
 	// {
-	//
-	//   "tableFlag" : true,
-	//
-	//   "scope" : "personal",
-	//
-	//   "personal" : {
-	//
-	//     "DataSourceType" : "remote_data_center",
-	//
-	//     "FileId" : "f-5qlrwaw10********s3gpw1z",
-	//
-	//     "Database" : "测试表格******.xlsx",
-	//
-	//     "Tables" : [ "Sheet1" ],
-	//
-	//     "TableIds" : [ "******" ],
-	//
-	//     "RegionId" : "cn-hangzhou"
-	//
-	//   }
-	//
-	// }
 	DataJson *string `json:"DataJson,omitempty" xml:"DataJson,omitempty"`
 	// The description of the custom agent.
 	//
 	// example:
 	//
-	// Agent测试描述
+	// AgentTestDescription.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The execution configuration.
 	ExecutionConfigShrink *string `json:"ExecutionConfig,omitempty" xml:"ExecutionConfig,omitempty"`
-	// The instruction for the custom agent.
-	//
-	// - Maximum length: 10,000 characters.
+	// The instruction.
 	//
 	// example:
 	//
-	// 核心指标定义：
-	//
-	// 1、GMV（成交总额）指订单金额总和，含已支付及未支付成功订单；
-	//
-	// 2、订单量为每日有效下单笔数；
-	//
-	// 3、UV（独立访客）指访问网站或APP的去重用户数；
-	//
-	// 4、转化率=支付订单数 / UV，反映流量转化效率；
+	// Core metric definitions:
 	Instruction *string `json:"Instruction,omitempty" xml:"Instruction,omitempty"`
-	// The knowledge for the custom agent.
-	//
-	// - Maximum length: 10,000 characters.
+	// The knowledge.
 	//
 	// example:
 	//
-	// 核心指标定义：
-	//
-	// 1、GMV（成交总额）指订单金额总和，含已支付及未支付成功订单；
-	//
-	// 2、订单量为每日有效下单笔数；
-	//
-	// 3、UV（独立访客）指访问网站或APP的去重用户数；
-	//
-	// 4、转化率=支付订单数 / UV，反映流量转化效率；
+	// Core metric definitions:
 	Knowledge *string `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
-	// A list of external knowledge bases.
+	// The external knowledge base configurations.
 	KnowledgeConfigListShrink *string `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty"`
 	// The name of the custom agent.
 	//
 	// example:
 	//
-	// Agent测试名称
+	// AgentTestName.
 	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	RelatedSessionId *string `json:"RelatedSessionId,omitempty" xml:"RelatedSessionId,omitempty"`
-	// The configuration for the scheduled task.
+	// The scheduled task configuration.
 	ScheduleTaskConfigShrink *string `json:"ScheduleTaskConfig,omitempty" xml:"ScheduleTaskConfig,omitempty"`
-	// The formatting requirements for the text report.
+	// The text report format.
 	//
 	// example:
 	//
-	// 文字报告要求所有数字不使用阿拉伯数字，全部转为中文数字
+	// The text report requires all numbers to be written in Chinese characters instead of Arabic numerals.
 	TextReportConfig *string `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
-	// The formatting requirements for the web report.
+	// The web report format.
 	//
 	// example:
 	//
-	// 网页报告要求所有数字不使用阿拉伯数字，全部转为中文数字
+	// The web report requires all numbers to be written in Chinese characters instead of Arabic numerals.
 	WebReportConfig *string `json:"WebReportConfig,omitempty" xml:"WebReportConfig,omitempty"`
-	// The ID of the workspace.
+	WebReportTheme  *string `json:"WebReportTheme,omitempty" xml:"WebReportTheme,omitempty"`
+	// The workspace ID.
 	//
 	// example:
 	//
@@ -328,6 +165,10 @@ func (s *CreateCustomAgentShrinkRequest) GetTextReportConfig() *string {
 
 func (s *CreateCustomAgentShrinkRequest) GetWebReportConfig() *string {
 	return s.WebReportConfig
+}
+
+func (s *CreateCustomAgentShrinkRequest) GetWebReportTheme() *string {
+	return s.WebReportTheme
 }
 
 func (s *CreateCustomAgentShrinkRequest) GetWorkspaceId() *string {
@@ -396,6 +237,11 @@ func (s *CreateCustomAgentShrinkRequest) SetTextReportConfig(v string) *CreateCu
 
 func (s *CreateCustomAgentShrinkRequest) SetWebReportConfig(v string) *CreateCustomAgentShrinkRequest {
 	s.WebReportConfig = &v
+	return s
+}
+
+func (s *CreateCustomAgentShrinkRequest) SetWebReportTheme(v string) *CreateCustomAgentShrinkRequest {
+	s.WebReportTheme = &v
 	return s
 }
 

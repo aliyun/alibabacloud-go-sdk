@@ -394,6 +394,7 @@ type ListCustomAgentResponseBodyDataContent struct {
 	//
 	// 网页报告要求所有数字不使用阿拉伯数字，全部转为中文数字
 	WebReportConfig *string `json:"WebReportConfig,omitempty" xml:"WebReportConfig,omitempty"`
+	WebReportTheme  *string `json:"WebReportTheme,omitempty" xml:"WebReportTheme,omitempty"`
 	// The workspace ID.
 	//
 	// example:
@@ -524,6 +525,10 @@ func (s *ListCustomAgentResponseBodyDataContent) GetTextReportConfig() *string {
 
 func (s *ListCustomAgentResponseBodyDataContent) GetWebReportConfig() *string {
 	return s.WebReportConfig
+}
+
+func (s *ListCustomAgentResponseBodyDataContent) GetWebReportTheme() *string {
+	return s.WebReportTheme
 }
 
 func (s *ListCustomAgentResponseBodyDataContent) GetWorkspaceId() *string {
@@ -672,6 +677,11 @@ func (s *ListCustomAgentResponseBodyDataContent) SetTextReportConfig(v string) *
 
 func (s *ListCustomAgentResponseBodyDataContent) SetWebReportConfig(v string) *ListCustomAgentResponseBodyDataContent {
 	s.WebReportConfig = &v
+	return s
+}
+
+func (s *ListCustomAgentResponseBodyDataContent) SetWebReportTheme(v string) *ListCustomAgentResponseBodyDataContent {
+	s.WebReportTheme = &v
 	return s
 }
 
