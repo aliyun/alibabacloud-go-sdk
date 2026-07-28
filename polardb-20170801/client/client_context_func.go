@@ -718,6 +718,72 @@ func (client *Client) BindPolarClawAgentWithContext(ctx context.Context, request
 
 // Summary:
 //
+// Associates resource control.
+//
+// Description:
+//
+// ## Operation description
+//
+// This API operation associates an agent (specified by `AgentId`) of PolarClaw (identified by `ApplicationId`) with a specified communication channel (`Channel`). You can also specify an account ID (`ChannelAccountId`) within the channel.
+//
+// @param request - BindResourceControlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BindResourceControlResponse
+func (client *Client) BindResourceControlWithContext(ctx context.Context, request *BindResourceControlRequest, runtime *dara.RuntimeOptions) (_result *BindResourceControlResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceControlName) {
+		query["ResourceControlName"] = request.ResourceControlName
+	}
+
+	if !dara.IsNil(request.TargetType) {
+		query["TargetType"] = request.TargetType
+	}
+
+	if !dara.IsNil(request.TargetValue) {
+		query["TargetValue"] = request.TargetValue
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BindResourceControl"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BindResourceControlResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Cancels O\\\\\\&M events at a time.
 //
 // @param request - CancelActiveOperationTasksRequest
@@ -6020,6 +6086,72 @@ func (client *Client) CreateRateLimitPolicyWithContext(ctx context.Context, requ
 
 // Summary:
 //
+// Creates a resource control.
+//
+// Description:
+//
+// ## Operation description
+//
+// You can call this operation to define and create a cron job. The cron job is triggered periodically based on a specified schedule and carries specific messages or instructions. Advanced options such as custom execution frequency, time zone settings, and alert mechanisms for failures are supported. You can also configure the message content, target channel, and recipients.
+//
+// @param request - CreateResourceControlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateResourceControlResponse
+func (client *Client) CreateResourceControlWithContext(ctx context.Context, request *CreateResourceControlRequest, runtime *dara.RuntimeOptions) (_result *CreateResourceControlResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CpuCount) {
+		query["CpuCount"] = request.CpuCount
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.MaxCpu) {
+		query["MaxCpu"] = request.MaxCpu
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceControlName) {
+		query["ResourceControlName"] = request.ResourceControlName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateResourceControl"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateResourceControlResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Ccreates a service-linked role.
 //
 // @param request - CreateServiceLinkedRoleRequest
@@ -8918,6 +9050,62 @@ func (client *Client) DeleteRateLimitPolicyWithContext(ctx context.Context, requ
 
 // Summary:
 //
+// Deletes a resource control.
+//
+// Description:
+//
+// > The cluster must be in the Running state. Otherwise, the operation fails.
+//
+// @param request - DeleteResourceControlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteResourceControlResponse
+func (client *Client) DeleteResourceControlWithContext(ctx context.Context, request *DeleteResourceControlRequest, runtime *dara.RuntimeOptions) (_result *DeleteResourceControlResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceControlName) {
+		query["ResourceControlName"] = request.ResourceControlName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteResourceControl"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteResourceControlResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes SQL throttling rules.
 //
 // @param request - DeleteSQLRateLimitingRulesRequest
@@ -11186,6 +11374,54 @@ func (client *Client) DescribeApplicationSessionIdsWithContext(ctx context.Conte
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeApplicationSessionIdsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the usage of an AI application.
+//
+// @param request - DescribeApplicationUsageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApplicationUsageResponse
+func (client *Client) DescribeApplicationUsageWithContext(ctx context.Context, request *DescribeApplicationUsageRequest, runtime *dara.RuntimeOptions) (_result *DescribeApplicationUsageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.Days) {
+		query["Days"] = request.Days
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeApplicationUsage"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeApplicationUsageResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -22671,6 +22907,72 @@ func (client *Client) ModifyApplicationDescriptionWithContext(ctx context.Contex
 
 // Summary:
 //
+// Modifies the endpoint address of a PolarDB application.
+//
+// @param tmpReq - ModifyApplicationEndpointAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyApplicationEndpointAddressResponse
+func (client *Client) ModifyApplicationEndpointAddressWithContext(ctx context.Context, tmpReq *ModifyApplicationEndpointAddressRequest, runtime *dara.RuntimeOptions) (_result *ModifyApplicationEndpointAddressResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ModifyApplicationEndpointAddressShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.NewPorts) {
+		request.NewPortsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NewPorts, dara.String("NewPorts"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.EndpointId) {
+		query["EndpointId"] = request.EndpointId
+	}
+
+	if !dara.IsNil(request.NetType) {
+		query["NetType"] = request.NetType
+	}
+
+	if !dara.IsNil(request.NewConnectionStringPrefix) {
+		query["NewConnectionStringPrefix"] = request.NewConnectionStringPrefix
+	}
+
+	if !dara.IsNil(request.NewPortsShrink) {
+		query["NewPorts"] = request.NewPortsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyApplicationEndpointAddress"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyApplicationEndpointAddressResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the configuration parameters of a sub-component within a specified PolarDB application.
 //
 // @param tmpReq - ModifyApplicationParameterRequest
@@ -27173,6 +27475,70 @@ func (client *Client) ModifyRateLimitPolicyWithContext(ctx context.Context, requ
 
 // Summary:
 //
+// Modifies resource control.
+//
+// Description:
+//
+// > You can also modify the automatic backup policy of a PolarDB cluster in the console. For more information, see [Backup settings](https://help.aliyun.com/document_detail/280422.html).
+//
+// @param request - ModifyResourceControlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyResourceControlResponse
+func (client *Client) ModifyResourceControlWithContext(ctx context.Context, request *ModifyResourceControlRequest, runtime *dara.RuntimeOptions) (_result *ModifyResourceControlResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CpuCount) {
+		query["CpuCount"] = request.CpuCount
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.MaxCpu) {
+		query["MaxCpu"] = request.MaxCpu
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceControlName) {
+		query["ResourceControlName"] = request.ResourceControlName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyResourceControl"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyResourceControlResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies a cross-cloud resource plan.
 //
 // @param request - ModifyResourcePackageRequest
@@ -29537,6 +29903,72 @@ func (client *Client) UnbindPolarClawAgentWithContext(ctx context.Context, reque
 
 // Summary:
 //
+// Unbinds a resource control.
+//
+// Description:
+//
+// > 	- Only the privileged user of a PolarDB for MySQL cluster can be reset.
+//
+// > 	- If the privileged user encounters issues, such as permissions being unexpectedly revoked (REVOKE), you can reset the permissions of the privileged user to restore it to normal.
+//
+// @param request - UnbindResourceControlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnbindResourceControlResponse
+func (client *Client) UnbindResourceControlWithContext(ctx context.Context, request *UnbindResourceControlRequest, runtime *dara.RuntimeOptions) (_result *UnbindResourceControlResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceControlName) {
+		query["ResourceControlName"] = request.ResourceControlName
+	}
+
+	if !dara.IsNil(request.TargetType) {
+		query["TargetType"] = request.TargetType
+	}
+
+	if !dara.IsNil(request.TargetValue) {
+		query["TargetValue"] = request.TargetValue
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UnbindResourceControl"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UnbindResourceControlResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Uninstalls a PolarClaw plugin.
 //
 // @param request - UninstallPolarClawPluginRequest
@@ -30207,6 +30639,54 @@ func (client *Client) UpdatePolarClawSkillWithContext(ctx context.Context, tmpRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdatePolarClawSkillResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Upgrades an application to a new version.
+//
+// @param request - UpgradeApplicationVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpgradeApplicationVersionResponse
+func (client *Client) UpgradeApplicationVersionWithContext(ctx context.Context, request *UpgradeApplicationVersionRequest, runtime *dara.RuntimeOptions) (_result *UpgradeApplicationVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.UpgradePolicy) {
+		query["UpgradePolicy"] = request.UpgradePolicy
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpgradeApplicationVersion"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpgradeApplicationVersionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
