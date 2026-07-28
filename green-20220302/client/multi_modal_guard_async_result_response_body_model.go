@@ -276,7 +276,7 @@ func (s *MultiModalGuardAsyncResultResponseBodyDataAudioResult) Validate() error
 }
 
 type MultiModalGuardAsyncResultResponseBodyDataAudioResultSliceDetails struct {
-	// The detection details.
+	// The moderation details.
 	Detail []*MultiModalGuardAsyncResultResponseBodyDataAudioResultSliceDetailsDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
 	// The end time of the segment, in seconds.
 	//
@@ -290,7 +290,7 @@ type MultiModalGuardAsyncResultResponseBodyDataAudioResultSliceDetails struct {
 	//
 	// 0
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The moderation recommendation. Valid values:
+	// The recommended action. Valid values:
 	//
 	// - block: Block the content.
 	//
@@ -308,7 +308,7 @@ type MultiModalGuardAsyncResultResponseBodyDataAudioResultSliceDetails struct {
 	//
 	// example:
 	//
-	// 今天天气真不错
+	// The weather is really nice today.
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	// The temporary URL of the audio segment file.
 	//
@@ -408,9 +408,9 @@ type MultiModalGuardAsyncResultResponseBodyDataAudioResultSliceDetailsDetail str
 	//
 	// high
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The list of detection results.
+	// The list of moderation results.
 	Result []*MultiModalGuardAsyncResultResponseBodyDataAudioResultSliceDetailsDetailResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// The moderation recommendation. Valid values:
+	// The recommended action. Valid values:
 	//
 	// - block: Block the content.
 	//
@@ -424,9 +424,9 @@ type MultiModalGuardAsyncResultResponseBodyDataAudioResultSliceDetailsDetail str
 	//
 	// block
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-	// The detection type. Valid values:
+	// The moderation type. Valid values:
 	//
-	// - contentModeration: content compliance detection
+	// - contentModeration: content compliance moderation
 	//
 	// - promptAttack: prompt attack detection
 	//
@@ -510,9 +510,9 @@ type MultiModalGuardAsyncResultResponseBodyDataAudioResultSliceDetailsDetailResu
 	//
 	// example:
 	//
-	// 毒品
+	// drugs.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The extended information of the detection result.
+	// The extended information of the moderation result.
 	//
 	// example:
 	//
@@ -598,7 +598,7 @@ func (s *MultiModalGuardAsyncResultResponseBodyDataAudioResultSliceDetailsDetail
 }
 
 type MultiModalGuardAsyncResultResponseBodyDataFrameResult struct {
-	// The frame detection results.
+	// The frame moderation results.
 	Frames []*MultiModalGuardAsyncResultResponseBodyDataFrameResultFrames `json:"Frames,omitempty" xml:"Frames,omitempty" type:"Repeated"`
 	// The number of segments.
 	//
@@ -606,7 +606,7 @@ type MultiModalGuardAsyncResultResponseBodyDataFrameResult struct {
 	//
 	// 2
 	SliceNum *int32 `json:"SliceNum,omitempty" xml:"SliceNum,omitempty"`
-	// The moderation recommendation. Valid values:
+	// The recommended action. Valid values:
 	//
 	// - block: Block the content.
 	//
@@ -671,12 +671,16 @@ func (s *MultiModalGuardAsyncResultResponseBodyDataFrameResult) Validate() error
 }
 
 type MultiModalGuardAsyncResultResponseBodyDataFrameResultFrames struct {
-	// The list of detection results.
+	// The list of moderation results.
 	Detail []*MultiModalGuardAsyncResultResponseBodyDataFrameResultFramesDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
+	// The error code.
+	//
 	// example:
 	//
 	// 401
 	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// parameter invalid
@@ -687,7 +691,7 @@ type MultiModalGuardAsyncResultResponseBodyDataFrameResultFrames struct {
 	//
 	// 1.5
 	Offset *float32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	// The moderation recommendation. Valid values:
+	// The recommended action. Valid values:
 	//
 	// - block: Block the content.
 	//
@@ -707,7 +711,7 @@ type MultiModalGuardAsyncResultResponseBodyDataFrameResultFrames struct {
 	//
 	// 1684559739000
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// The temporary URL of the frame.
+	// The temporary URL of the segment.
 	//
 	// example:
 	//
@@ -814,9 +818,9 @@ type MultiModalGuardAsyncResultResponseBodyDataFrameResultFramesDetail struct {
 	//
 	// low
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The detection result.
+	// The moderation result.
 	Result []*MultiModalGuardAsyncResultResponseBodyDataFrameResultFramesDetailResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// The moderation recommendation. Valid values:
+	// The recommended action. Valid values:
 	//
 	// - block: Block the content.
 	//
@@ -830,9 +834,9 @@ type MultiModalGuardAsyncResultResponseBodyDataFrameResultFramesDetail struct {
 	//
 	// watch
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-	// The detection type. Valid values:
+	// The moderation type. Valid values:
 	//
-	// - contentModeration: content compliance detection
+	// - contentModeration: content compliance moderation
 	//
 	// - promptAttack: prompt attack detection
 	//
@@ -916,9 +920,9 @@ type MultiModalGuardAsyncResultResponseBodyDataFrameResultFramesDetailResult str
 	//
 	// example:
 	//
-	// 广告
+	// advertisement.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The extended information of the detection result.
+	// The extended information of the moderation result.
 	//
 	// example:
 	//

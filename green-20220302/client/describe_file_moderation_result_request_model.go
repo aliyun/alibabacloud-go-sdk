@@ -16,15 +16,15 @@ type iDescribeFileModerationResultRequest interface {
 }
 
 type DescribeFileModerationResultRequest struct {
-	// The service for enhanced file moderation.
+	// The service supported by the enhanced file moderation feature.
 	//
 	// example:
 	//
 	// document_detection
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
-	// The parameters for the moderation service, specified as a JSON string.
+	// The parameter set required by the moderation service, in JSON character string format.
 	//
-	// - taskId: Required. The URL of the object to moderate. The URL must be accessible over the public network.
+	// - taskId: Required. The URL of the object to be moderated. Make sure that the URL is accessible over the public network access.
 	//
 	// example:
 	//

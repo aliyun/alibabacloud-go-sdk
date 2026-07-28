@@ -9,6 +9,8 @@ type iMultiModalGuardForBase64Request interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetFileBase64Str(v string) *MultiModalGuardForBase64Request
+	GetFileBase64Str() *string
 	SetImageBase64Str(v string) *MultiModalGuardForBase64Request
 	GetImageBase64Str() *string
 	SetService(v string) *MultiModalGuardForBase64Request
@@ -18,6 +20,7 @@ type iMultiModalGuardForBase64Request interface {
 }
 
 type MultiModalGuardForBase64Request struct {
+	FileBase64Str *string `json:"FileBase64Str,omitempty" xml:"FileBase64Str,omitempty"`
 	// The base64-encoded string of the image.
 	//
 	// example:
@@ -46,6 +49,10 @@ func (s MultiModalGuardForBase64Request) GoString() string {
 	return s.String()
 }
 
+func (s *MultiModalGuardForBase64Request) GetFileBase64Str() *string {
+	return s.FileBase64Str
+}
+
 func (s *MultiModalGuardForBase64Request) GetImageBase64Str() *string {
 	return s.ImageBase64Str
 }
@@ -56,6 +63,11 @@ func (s *MultiModalGuardForBase64Request) GetService() *string {
 
 func (s *MultiModalGuardForBase64Request) GetServiceParameters() *string {
 	return s.ServiceParameters
+}
+
+func (s *MultiModalGuardForBase64Request) SetFileBase64Str(v string) *MultiModalGuardForBase64Request {
+	s.FileBase64Str = &v
+	return s
 }
 
 func (s *MultiModalGuardForBase64Request) SetImageBase64Str(v string) *MultiModalGuardForBase64Request {

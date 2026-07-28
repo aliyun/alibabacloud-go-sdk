@@ -11,7 +11,7 @@ import (
 
 // Summary:
 //
-// # Document review results
+// Queries the document content moderation result.
 //
 // @param request - DescribeFileModerationResultRequest
 //
@@ -910,7 +910,7 @@ func (client *Client) MultiModalGuardAsyncWithContext(ctx context.Context, reque
 //
 // Description:
 //
-// If an API involves fees, add the following bold statement as the first sentence: **Make sure that you fully understand the billing methods and pricing of XXX before you call this operation.*	- In this statement, "pricing" is a hyperlink that points to: https://www.aliyun.com/price/product#/ecs/detail.
+// If the API incurs fees, add the following bold statement as the first sentence: **Before using this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of XXX.**
 //
 // @param request - MultiModalGuardAsyncResultRequest
 //
@@ -958,7 +958,7 @@ func (client *Client) MultiModalGuardAsyncResultWithContext(ctx context.Context,
 
 // Summary:
 //
-// Performs synchronous multimodal content moderation. Supports base64-encoded image strings.
+// Performs synchronous multimodal content moderation. Supports image base64 strings.
 //
 // @param request - MultiModalGuardForBase64Request
 //
@@ -978,6 +978,10 @@ func (client *Client) MultiModalGuardForBase64WithContext(ctx context.Context, r
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.FileBase64Str) {
+		body["FileBase64Str"] = request.FileBase64Str
+	}
+
 	if !dara.IsNil(request.ImageBase64Str) {
 		body["ImageBase64Str"] = request.ImageBase64Str
 	}

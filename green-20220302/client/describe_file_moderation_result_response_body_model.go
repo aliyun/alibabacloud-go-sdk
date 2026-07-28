@@ -20,7 +20,7 @@ type iDescribeFileModerationResultResponseBody interface {
 }
 
 type DescribeFileModerationResultResponseBody struct {
-	// The return code. A value of 200 indicates that the request was successful.
+	// The return code. A value of 200 indicates success.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type DescribeFileModerationResultResponseBody struct {
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
@@ -96,25 +96,25 @@ func (s *DescribeFileModerationResultResponseBody) Validate() error {
 }
 
 type DescribeFileModerationResultResponseBodyData struct {
-	// The AccountId specified in the request.
+	// The AccountId passed in by the customer.
 	//
 	// example:
 	//
 	// accountIdtest123
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The ID of the data.
+	// The data ID.
 	//
 	// example:
 	//
 	// 26769ada6e264e7ba9aa048241e12be9
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	// The document type. This parameter is optional.
+	// Optional. The document type.
 	//
 	// example:
 	//
 	// doc
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
-	// A list of moderation results.
+	// The list of moderation results.
 	PageResult []*DescribeFileModerationResultResponseBodyDataPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Repeated"`
 	// The summary information.
 	PageSummary *DescribeFileModerationResultResponseBodyDataPageSummary `json:"PageSummary,omitempty" xml:"PageSummary,omitempty" type:"Struct"`
@@ -124,7 +124,7 @@ type DescribeFileModerationResultResponseBodyData struct {
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The download URL for the file.
+	// The file download URL.
 	//
 	// example:
 	//
@@ -222,9 +222,9 @@ func (s *DescribeFileModerationResultResponseBodyData) Validate() error {
 }
 
 type DescribeFileModerationResultResponseBodyDataPageResult struct {
-	// The image moderation results.
+	// The image moderation result.
 	ImageResult []*DescribeFileModerationResultResponseBodyDataPageResultImageResult `json:"ImageResult,omitempty" xml:"ImageResult,omitempty" type:"Repeated"`
-	// The URL of the image.
+	// The image URL.
 	//
 	// example:
 	//
@@ -236,7 +236,7 @@ type DescribeFileModerationResultResponseBodyDataPageResult struct {
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The text moderation results.
+	// The text moderation result.
 	TextResult []*DescribeFileModerationResultResponseBodyDataPageResultTextResult `json:"TextResult,omitempty" xml:"TextResult,omitempty" type:"Repeated"`
 	// The URL where the text content is stored.
 	//
@@ -326,7 +326,7 @@ type DescribeFileModerationResultResponseBodyDataPageResultImageResult struct {
 	//
 	// example:
 	//
-	// 这个是标题
+	// This is a title.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The label information.
 	LabelResult []*DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResult `json:"LabelResult,omitempty" xml:"LabelResult,omitempty" type:"Repeated"`
@@ -338,7 +338,7 @@ type DescribeFileModerationResultResponseBodyDataPageResultImageResult struct {
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The service that was called.
+	// The invoked service.
 	//
 	// example:
 	//
@@ -418,7 +418,7 @@ func (s *DescribeFileModerationResultResponseBodyDataPageResultImageResult) Vali
 }
 
 type DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResult struct {
-	// The confidence score.
+	// The risk score.
 	//
 	// example:
 	//
@@ -428,7 +428,7 @@ type DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResul
 	//
 	// example:
 	//
-	// 这个是标题
+	// This is a title.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The label.
 	//
@@ -478,25 +478,25 @@ func (s *DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelR
 }
 
 type DescribeFileModerationResultResponseBodyDataPageResultImageResultLocation struct {
-	// The height of the detected area.
+	// The H value of the coordinate point.
 	//
 	// example:
 	//
 	// 44
 	H *int32 `json:"H,omitempty" xml:"H,omitempty"`
-	// The width of the detected area.
+	// The W value of the coordinate point.
 	//
 	// example:
 	//
 	// 33
 	W *int32 `json:"W,omitempty" xml:"W,omitempty"`
-	// The X coordinate of the point.
+	// The X value of the coordinate point.
 	//
 	// example:
 	//
 	// 11
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
-	// The Y-coordinate of the point.
+	// The Y value of the coordinate point.
 	//
 	// example:
 	//
@@ -557,15 +557,15 @@ type DescribeFileModerationResultResponseBodyDataPageResultTextResult struct {
 	//
 	// example:
 	//
-	// 这是一个标题
+	// This is a title.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The description of the label.
+	// The label descriptions.
 	//
 	// example:
 	//
-	// 疑似广告内容
+	// Suspected advertising content.
 	Descriptions *string `json:"Descriptions,omitempty" xml:"Descriptions,omitempty"`
-	// The value of the label.
+	// The label values.
 	//
 	// example:
 	//
@@ -577,13 +577,13 @@ type DescribeFileModerationResultResponseBodyDataPageResultTextResult struct {
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// Details about the hit risk.
+	// The details of the hit risks.
 	//
 	// example:
 	//
 	// xxx
 	RiskTips *string `json:"RiskTips,omitempty" xml:"RiskTips,omitempty"`
-	// The risk keywords that were hit.
+	// The risk keywords that are hit.
 	//
 	// example:
 	//
@@ -599,9 +599,9 @@ type DescribeFileModerationResultResponseBodyDataPageResultTextResult struct {
 	//
 	// example:
 	//
-	// 吧啦吧啦
+	// blah blah.
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// Information about the text segment.
+	// The text segment information.
 	//
 	// example:
 	//
@@ -710,7 +710,8 @@ type DescribeFileModerationResultResponseBodyDataPageSummary struct {
 	// example:
 	//
 	// 1
-	PageSum *int32 `json:"PageSum,omitempty" xml:"PageSum,omitempty"`
+	PageSum     *int32                                                              `json:"PageSum,omitempty" xml:"PageSum,omitempty"`
+	RiskSummary *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummary `json:"RiskSummary,omitempty" xml:"RiskSummary,omitempty" type:"Struct"`
 	// The text summary information.
 	TextSummary *DescribeFileModerationResultResponseBodyDataPageSummaryTextSummary `json:"TextSummary,omitempty" xml:"TextSummary,omitempty" type:"Struct"`
 }
@@ -731,6 +732,10 @@ func (s *DescribeFileModerationResultResponseBodyDataPageSummary) GetPageSum() *
 	return s.PageSum
 }
 
+func (s *DescribeFileModerationResultResponseBodyDataPageSummary) GetRiskSummary() *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummary {
+	return s.RiskSummary
+}
+
 func (s *DescribeFileModerationResultResponseBodyDataPageSummary) GetTextSummary() *DescribeFileModerationResultResponseBodyDataPageSummaryTextSummary {
 	return s.TextSummary
 }
@@ -745,6 +750,11 @@ func (s *DescribeFileModerationResultResponseBodyDataPageSummary) SetPageSum(v i
 	return s
 }
 
+func (s *DescribeFileModerationResultResponseBodyDataPageSummary) SetRiskSummary(v *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummary) *DescribeFileModerationResultResponseBodyDataPageSummary {
+	s.RiskSummary = v
+	return s
+}
+
 func (s *DescribeFileModerationResultResponseBodyDataPageSummary) SetTextSummary(v *DescribeFileModerationResultResponseBodyDataPageSummaryTextSummary) *DescribeFileModerationResultResponseBodyDataPageSummary {
 	s.TextSummary = v
 	return s
@@ -753,6 +763,11 @@ func (s *DescribeFileModerationResultResponseBodyDataPageSummary) SetTextSummary
 func (s *DescribeFileModerationResultResponseBodyDataPageSummary) Validate() error {
 	if s.ImageSummary != nil {
 		if err := s.ImageSummary.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RiskSummary != nil {
+		if err := s.RiskSummary.Validate(); err != nil {
 			return err
 		}
 	}
@@ -815,7 +830,7 @@ func (s *DescribeFileModerationResultResponseBodyDataPageSummaryImageSummary) Va
 }
 
 type DescribeFileModerationResultResponseBodyDataPageSummaryImageSummaryImageLabels struct {
-	// The description of the label.
+	// The label description.
 	//
 	// example:
 	//
@@ -874,6 +889,265 @@ func (s *DescribeFileModerationResultResponseBodyDataPageSummaryImageSummaryImag
 	return dara.Validate(s)
 }
 
+type DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummary struct {
+	Ext        *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExt          `json:"Ext,omitempty" xml:"Ext,omitempty" type:"Struct"`
+	RiskLabels []*DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryRiskLabels `json:"RiskLabels,omitempty" xml:"RiskLabels,omitempty" type:"Repeated"`
+	RiskLevel  *string                                                                         `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+}
+
+func (s DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummary) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummary) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummary) GetExt() *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExt {
+	return s.Ext
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummary) GetRiskLabels() []*DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryRiskLabels {
+	return s.RiskLabels
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummary) GetRiskLevel() *string {
+	return s.RiskLevel
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummary) SetExt(v *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExt) *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummary {
+	s.Ext = v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummary) SetRiskLabels(v []*DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryRiskLabels) *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummary {
+	s.RiskLabels = v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummary) SetRiskLevel(v string) *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummary {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummary) Validate() error {
+	if s.Ext != nil {
+		if err := s.Ext.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RiskLabels != nil {
+		for _, item := range s.RiskLabels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExt struct {
+	AigcData *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcData `json:"AigcData,omitempty" xml:"AigcData,omitempty" type:"Struct"`
+}
+
+func (s DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExt) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExt) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExt) GetAigcData() *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcData {
+	return s.AigcData
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExt) SetAigcData(v *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcData) *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExt {
+	s.AigcData = v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExt) Validate() error {
+	if s.AigcData != nil {
+		if err := s.AigcData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcData struct {
+	AIGC    *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC `json:"AIGC,omitempty" xml:"AIGC,omitempty" type:"Struct"`
+	Explain *string                                                                            `json:"Explain,omitempty" xml:"Explain,omitempty"`
+}
+
+func (s DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcData) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcData) GetAIGC() *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC {
+	return s.AIGC
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcData) GetExplain() *string {
+	return s.Explain
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcData) SetAIGC(v *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC) *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcData {
+	s.AIGC = v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcData) SetExplain(v string) *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcData {
+	s.Explain = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcData) Validate() error {
+	if s.AIGC != nil {
+		if err := s.AIGC.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC struct {
+	ContentProducer   *string `json:"ContentProducer,omitempty" xml:"ContentProducer,omitempty"`
+	ContentPropagator *string `json:"ContentPropagator,omitempty" xml:"ContentPropagator,omitempty"`
+	Label             *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	ProduceID         *string `json:"ProduceID,omitempty" xml:"ProduceID,omitempty"`
+	PropagateID       *string `json:"PropagateID,omitempty" xml:"PropagateID,omitempty"`
+	ReservedCode1     *string `json:"ReservedCode1,omitempty" xml:"ReservedCode1,omitempty"`
+	ReservedCode2     *string `json:"ReservedCode2,omitempty" xml:"ReservedCode2,omitempty"`
+}
+
+func (s DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC) GetContentProducer() *string {
+	return s.ContentProducer
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC) GetContentPropagator() *string {
+	return s.ContentPropagator
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC) GetLabel() *string {
+	return s.Label
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC) GetProduceID() *string {
+	return s.ProduceID
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC) GetPropagateID() *string {
+	return s.PropagateID
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC) GetReservedCode1() *string {
+	return s.ReservedCode1
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC) GetReservedCode2() *string {
+	return s.ReservedCode2
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC) SetContentProducer(v string) *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC {
+	s.ContentProducer = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC) SetContentPropagator(v string) *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC {
+	s.ContentPropagator = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC) SetLabel(v string) *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC {
+	s.Label = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC) SetProduceID(v string) *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC {
+	s.ProduceID = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC) SetPropagateID(v string) *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC {
+	s.PropagateID = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC) SetReservedCode1(v string) *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC {
+	s.ReservedCode1 = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC) SetReservedCode2(v string) *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC {
+	s.ReservedCode2 = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryRiskLabels struct {
+	Confidence  *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	Label       *string  `json:"Label,omitempty" xml:"Label,omitempty"`
+}
+
+func (s DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryRiskLabels) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryRiskLabels) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryRiskLabels) GetConfidence() *float32 {
+	return s.Confidence
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryRiskLabels) GetDescription() *string {
+	return s.Description
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryRiskLabels) GetLabel() *string {
+	return s.Label
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryRiskLabels) SetConfidence(v float32) *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryRiskLabels {
+	s.Confidence = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryRiskLabels) SetDescription(v string) *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryRiskLabels {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryRiskLabels) SetLabel(v string) *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryRiskLabels {
+	s.Label = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryRiskLabels) Validate() error {
+	return dara.Validate(s)
+}
+
 type DescribeFileModerationResultResponseBodyDataPageSummaryTextSummary struct {
 	// The risk level.
 	//
@@ -925,11 +1199,11 @@ func (s *DescribeFileModerationResultResponseBodyDataPageSummaryTextSummary) Val
 }
 
 type DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabels struct {
-	// The description of the label.
+	// The label descriptions.
 	//
 	// example:
 	//
-	// 未检测出风险
+	// No risk detected.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The label.
 	//
