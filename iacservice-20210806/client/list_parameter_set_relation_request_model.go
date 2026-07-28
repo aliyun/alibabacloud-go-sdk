@@ -16,12 +16,26 @@ type iListParameterSetRelationRequest interface {
 }
 
 type ListParameterSetRelationRequest struct {
+	// The ID of the resource. For ModuleVersion, concatenate <moduleId>-<versionId>.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mod-edf123fr-v3
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// The type of the resource. Valid values:
+	//
+	// - Module
+	//
+	// - ModuleVersion
+	//
+	// - Task
+	//
+	// - SceneTestingTask
+	//
+	// - Stack.
+	//
 	// This parameter is required.
 	//
 	// example:

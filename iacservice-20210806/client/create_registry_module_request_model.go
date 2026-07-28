@@ -26,36 +26,62 @@ type iCreateRegistryModuleRequest interface {
 }
 
 type CreateRegistryModuleRequest struct {
+	// The access permission. Valid values:
+	//
+	// - private: private.
+	//
 	// example:
 	//
 	// private
 	Acl *string `json:"acl,omitempty" xml:"acl,omitempty"`
+	// The idempotence token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// a65451293e64979ba7a4b573950217fe
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// The description of the Registry template.
+	//
 	// example:
 	//
-	// test
+	// description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The name of the Registry template. The name must meet the following requirements:
+	//
+	// - The name must be 3 to 63 characters in length.
+	//
+	// - The name can contain uppercase and lowercase letters, digits, hyphens (-), and underscores (_), and cannot start or end with a hyphen.
+	//
+	// - The name must be unique within the workspace.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// vpc
+	// ModuleName
 	ModuleName *string `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
+	// The workspace name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// test
+	// NamespaceName
 	NamespaceName *string `json:"namespaceName,omitempty" xml:"namespaceName,omitempty"`
+	// The provider type. Valid values:
+	//
+	// - alicloud: Alibaba Cloud.
+	//
 	// example:
 	//
 	// alicloud
 	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
+	// The template type. Valid values:
+	//
+	// - self: custom template.
+	//
 	// example:
 	//
 	// self

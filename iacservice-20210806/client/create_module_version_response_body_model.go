@@ -16,10 +16,14 @@ type iCreateModuleVersionResponseBody interface {
 }
 
 type CreateModuleVersionResponseBody struct {
+	// The template version number.
+	//
 	// example:
 	//
 	// v1
 	ModuleVersion *string `json:"moduleVersion,omitempty" xml:"moduleVersion,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B6ED9F71-7FA8-598E-B64D-4606FB3FCCC9

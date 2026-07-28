@@ -18,14 +18,26 @@ type iGetResourceTypeRequest interface {
 }
 
 type GetResourceTypeRequest struct {
+	// The language of the response. Valid values:
+	//
+	// - zh-CN: Chinese.
+	//
+	// - en-US: English.
+	//
+	// Default value: zh-CN.
+	//
 	// example:
 	//
 	// zh-CN
 	AcceptLanguage *string `json:"acceptLanguage,omitempty" xml:"acceptLanguage,omitempty"`
+	// Specifies whether to filter out read-only properties.
+	//
 	// example:
 	//
 	// false
 	FilterReadOnly *bool `json:"filterReadOnly,omitempty" xml:"filterReadOnly,omitempty"`
+	// The Terraform provider version. If left empty, the latest version is used by default.
+	//
 	// example:
 	//
 	// 1.227.0

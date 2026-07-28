@@ -16,6 +16,7 @@ type iGetTerraformStateDetectionResponseBody interface {
 }
 
 type GetTerraformStateDetectionResponseBody struct {
+	// The job details.
 	Job *GetTerraformStateDetectionResponseBodyJob `json:"job,omitempty" xml:"job,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -61,20 +62,42 @@ func (s *GetTerraformStateDetectionResponseBody) Validate() error {
 }
 
 type GetTerraformStateDetectionResponseBodyJob struct {
+	// The collection of resources with state changes.
 	ChangedResources []*GetTerraformStateDetectionResponseBodyJobChangedResources `json:"changedResources,omitempty" xml:"changedResources,omitempty" type:"Repeated"`
+	// The collection of resources with state drift.
 	DriftedResources []*GetTerraformStateDetectionResponseBodyJobDriftedResources `json:"driftedResources,omitempty" xml:"driftedResources,omitempty" type:"Repeated"`
+	// The error message.
+	//
 	// example:
 	//
 	// planned failed
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The task identifier. For a Stack task, the value is in the format of <$stackId>:<$deploymentName>. For a Task task, the value is <$TaskId>.
+	//
 	// example:
 	//
 	// stack-as181axxxxxx:development_xxxx
 	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// The job status. Valid values:
+	//
+	// - Pending: the initial status after the job is created.
+	//
+	// - PlanQueued: the job is queued because no containers are available after the job is created.
+	//
+	// - Planning: the resource job is in the Plan execution phase.
+	//
+	// - Planned: the resource job has completed the Plan execution.
+	//
+	// - PlannedAndFinished: no differences are found after the Plan execution is complete. The job is in a final status.
+	//
+	// - Errored: the job execution encountered an error and entered a final status.
+	//
 	// example:
 	//
 	// Errored
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The task type.
+	//
 	// example:
 	//
 	// Stack
@@ -166,19 +189,28 @@ func (s *GetTerraformStateDetectionResponseBodyJob) Validate() error {
 }
 
 type GetTerraformStateDetectionResponseBodyJobChangedResources struct {
+	// The collection of attribute changes.
 	AttributeChanges []*GetTerraformStateDetectionResponseBodyJobChangedResourcesAttributeChanges `json:"attributeChanges,omitempty" xml:"attributeChanges,omitempty" type:"Repeated"`
+	// The change type.
+	//
 	// example:
 	//
 	// create
 	ChangedType *string `json:"changedType,omitempty" xml:"changedType,omitempty"`
+	// Indicates whether resource drift exists.
+	//
 	// example:
 	//
 	// false
 	HasDrift *bool `json:"hasDrift,omitempty" xml:"hasDrift,omitempty"`
+	// The Terraform resource ID.
+	//
 	// example:
 	//
 	// vpc-axxxxx
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// The identifier of the resource in the Terraform template. For a Stack task, the value is in the format of <$componetName>:<$resourceName>. For a Task task, the value is <$resourceName>.
+	//
 	// example:
 	//
 	// vpc:alicloud_vpc.default
@@ -252,14 +284,20 @@ func (s *GetTerraformStateDetectionResponseBodyJobChangedResources) Validate() e
 }
 
 type GetTerraformStateDetectionResponseBodyJobChangedResourcesAttributeChanges struct {
+	// The attribute name.
+	//
 	// example:
 	//
 	// vpc_name
 	AttributePath *string `json:"attributePath,omitempty" xml:"attributePath,omitempty"`
+	// The server-side state value.
+	//
 	// example:
 	//
 	// test_remote
 	RemoteValue *string `json:"remoteValue,omitempty" xml:"remoteValue,omitempty"`
+	// The template-declared value.
+	//
 	// example:
 	//
 	// test_hcl
@@ -306,15 +344,22 @@ func (s *GetTerraformStateDetectionResponseBodyJobChangedResourcesAttributeChang
 }
 
 type GetTerraformStateDetectionResponseBodyJobDriftedResources struct {
+	// The collection of attribute drifts.
 	AttributeDrifts []*GetTerraformStateDetectionResponseBodyJobDriftedResourcesAttributeDrifts `json:"attributeDrifts,omitempty" xml:"attributeDrifts,omitempty" type:"Repeated"`
+	// The drift type.
+	//
 	// example:
 	//
 	// update
 	DriftedType *string `json:"driftedType,omitempty" xml:"driftedType,omitempty"`
+	// The Terraform resource ID.
+	//
 	// example:
 	//
 	// vpc-bxxxxx
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// The identifier of the resource in the Terraform template. For a Stack task, the value is in the format of <$componetName>:<$resourceName>. For a Task task, the value is <$resourceName>.
+	//
 	// example:
 	//
 	// vpc:alicloud_vpc.default2
@@ -379,14 +424,20 @@ func (s *GetTerraformStateDetectionResponseBodyJobDriftedResources) Validate() e
 }
 
 type GetTerraformStateDetectionResponseBodyJobDriftedResourcesAttributeDrifts struct {
+	// The attribute name.
+	//
 	// example:
 	//
 	// vpc_name
 	AttributePath *string `json:"attributePath,omitempty" xml:"attributePath,omitempty"`
+	// The server-side state value.
+	//
 	// example:
 	//
 	// test_remote
 	RemoteValue *string `json:"remoteValue,omitempty" xml:"remoteValue,omitempty"`
+	// The value stored in the state file.
+	//
 	// example:
 	//
 	// test_state

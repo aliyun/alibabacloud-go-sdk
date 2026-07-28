@@ -20,15 +20,29 @@ type iJobStatusDetailValue interface {
 }
 
 type JobStatusDetailValue struct {
-	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	// 备注
+	//
 	// example:
 	//
-	// {}
+	// 备注
+	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	// 执行结果
+	//
+	// example:
+	//
+	// Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
 	JobResult *string `json:"jobResult,omitempty" xml:"jobResult,omitempty"`
+	// 到达状态时间
+	//
 	// example:
 	//
 	// 2022-06-13 17:11:34
-	TimeStamps   *string `json:"timeStamps,omitempty" xml:"timeStamps,omitempty"`
+	TimeStamps *string `json:"timeStamps,omitempty" xml:"timeStamps,omitempty"`
+	// 错误详情
+	//
+	// example:
+	//
+	// Error：Cannot import non-existent remote object
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
 }
 

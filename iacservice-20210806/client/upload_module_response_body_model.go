@@ -16,11 +16,18 @@ type iUploadModuleResponseBody interface {
 }
 
 type UploadModuleResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 0DDD8773-5756-5508-BE36-D03DE43E2450
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Version   *string `json:"version,omitempty" xml:"version,omitempty"`
+	// If ResourceType is set to ModuleVersion, this parameter takes effect and returns the version ID after publishing.
+	//
+	// example:
+	//
+	// v1
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s UploadModuleResponseBody) String() string {

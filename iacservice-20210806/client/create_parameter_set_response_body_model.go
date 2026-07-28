@@ -16,10 +16,14 @@ type iCreateParameterSetResponseBody interface {
 }
 
 type CreateParameterSetResponseBody struct {
+	// The ID of the parameter set.
+	//
 	// example:
 	//
 	// pts-3b6cb9fa4751afff89a4b73779e0d
 	ParameterSetId *string `json:"parameterSetId,omitempty" xml:"parameterSetId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7FA0FF4A-ABD4-54F6-BEAC-B4273EBA10A2

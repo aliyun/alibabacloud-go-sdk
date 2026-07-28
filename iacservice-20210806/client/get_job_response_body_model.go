@@ -16,7 +16,10 @@ type iGetJobResponseBody interface {
 }
 
 type GetJobResponseBody struct {
+	// The job details.
 	Job *GetJobResponseBodyJob `json:"job,omitempty" xml:"job,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1435C78A-AED9-53D6-B7A6-E2661D29B1FA
@@ -59,49 +62,210 @@ func (s *GetJobResponseBody) Validate() error {
 }
 
 type GetJobResponseBodyJob struct {
-	AllParameters     []*GetJobResponseBodyJobAllParameters     `json:"allParameters,omitempty" xml:"allParameters,omitempty" type:"Repeated"`
+	AllParameters []*GetJobResponseBodyJobAllParameters `json:"allParameters,omitempty" xml:"allParameters,omitempty" type:"Repeated"`
+	// The list of assertion checks. This parameter applies to scenario-based testing tasks.
 	AssertCheckDetail []*GetJobResponseBodyJobAssertCheckDetail `json:"assertCheckDetail,omitempty" xml:"assertCheckDetail,omitempty" type:"Repeated"`
-	Config            *GetJobResponseBodyJobConfig              `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
+	// The job configuration.
+	Config *GetJobResponseBodyJobConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
+	// The time when the job was created.
+	//
 	// example:
 	//
 	// 2022-08-31T03:38:40Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The job description.
+	//
 	// example:
 	//
-	// test1
-	Description *string                `json:"description,omitempty" xml:"description,omitempty"`
+	// description
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The download URL.
+	//
+	// example:
+	//
+	// url
 	DownloadUrl map[string]interface{} `json:"downloadUrl,omitempty" xml:"downloadUrl,omitempty"`
-	ElapsedTime *int64                 `json:"elapsedTime,omitempty" xml:"elapsedTime,omitempty"`
-	ExecuteType *string                `json:"executeType,omitempty" xml:"executeType,omitempty"`
+	// The execution duration.
+	//
+	// example:
+	//
+	// 3s
+	ElapsedTime *int64 `json:"elapsedTime,omitempty" xml:"elapsedTime,omitempty"`
+	// The execution type. Valid values:
+	//
+	// - Manual: manual execution (default)
+	//
+	// - Auto: automatic execution.
+	//
+	// example:
+	//
+	// Manual
+	ExecuteType *string `json:"executeType,omitempty" xml:"executeType,omitempty"`
+	// Indicates whether the assertion check is passed.
+	//
 	// example:
 	//
 	// true
 	IsPassAssertCheck *bool `json:"isPassAssertCheck,omitempty" xml:"isPassAssertCheck,omitempty"`
+	// The job ID.
+	//
 	// example:
 	//
 	// job-518855d9a058cfff0dc933e6b5767
 	JobId *string `json:"jobId,omitempty" xml:"jobId,omitempty"`
+	// The job type.
+	//
 	// example:
 	//
 	// Default
-	JobType *string                `json:"jobType,omitempty" xml:"jobType,omitempty"`
+	JobType *string `json:"jobType,omitempty" xml:"jobType,omitempty"`
+	// The run logs. The following log content (key values) is currently supported:
+	//
+	// - tf-init.run.error.log
+	//
+	//
+	//
+	// - tf-init.plan.log
+	//
+	// - tf-plan.run.log
+	//
+	// - tf-apply.run.log
+	//
+	//
+	//
+	// - tf-init.apply.log.
 	LogFile map[string]interface{} `json:"logFile,omitempty" xml:"logFile,omitempty"`
+	// The job output.
+	//
 	// example:
 	//
 	// /
-	Output         *string            `json:"output,omitempty" xml:"output,omitempty"`
-	OutputJsonPlan interface{}        `json:"outputJsonPlan,omitempty" xml:"outputJsonPlan,omitempty"`
-	Parameters     map[string]*string `json:"parameters,omitempty" xml:"parameters,omitempty"`
+	Output *string `json:"output,omitempty" xml:"output,omitempty"`
+	// The change details of the Plan phase.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "formatVersion": "1.2",
+	//
+	//     "terraformVersion": "1.5.7",
+	//
+	//     "providerVersion": "1.262.1",
+	//
+	//     "plannedValues": {
+	//
+	//         "root_module": {
+	//
+	//         }
+	//
+	//     },
+	//
+	//     "resourceChanges": [
+	//
+	//         {
+	//
+	//             "address": "alicloud_instance.uuid_ae98dda8_xxxxxxx",
+	//
+	//             "mode": "managed",
+	//
+	//             "type": "alicloud_instance",
+	//
+	//             "name": "uuid_ae98dda8_xxxxxx",
+	//
+	//             "providerName": "registry.terraform.io/aliyun/alicloud",
+	//
+	//             "change": {
+	//
+	//                 "actions": [
+	//
+	//                     "delete"
+	//
+	//                 ],
+	//
+	//                 "before": Object{...},
+	//
+	//                 "after_unknown": {
+	//
+	//                 },
+	//
+	//                 "before_sensitive": Object{...},
+	//
+	//                 "after_sensitive": false
+	//
+	//             },
+	//
+	//             "cloudSpecResourceCode": "ACS::ECS::Instance"
+	//
+	//         }
+	//
+	//     ],
+	//
+	//     "configuration": Object{...}
+	//
+	// }
+	OutputJsonPlan interface{} `json:"outputJsonPlan,omitempty" xml:"outputJsonPlan,omitempty"`
+	// The collection of parameters.
+	Parameters map[string]*string `json:"parameters,omitempty" xml:"parameters,omitempty"`
+	// The job status. Valid values:
+	//
+	// - Pending: the initial status after the job is created.
+	//
+	// - PlanQueued: the job is queued because no available worker is ready after the job is created.
+	//
+	// - Planning: the resource job is in the Plan phase.
+	//
+	// - ConfigProactiveInProgress: compliance pre-check is in progress. The compliance pre-check feature must be enabled for the account.
+	//
+	// - ConfigProactiveSuccess: compliance pre-check succeeded. The compliance pre-check feature must be enabled for the account.
+	//
+	// - Planned: the resource job has completed the Plan phase.
+	//
+	// - PlannedAndFinished: no diff is found after the Plan phase is completed. This is a final status.
+	//
+	// - Confirmed: the resource job is waiting for confirmation after the Plan phase is completed.
+	//
+	// - ApplyQueued: the job is queued because no available worker is ready during execution.
+	//
+	// - Applying: the resource job is in the Apply phase.
+	//
+	// - Applied: the resource job has completed the Apply phase. This is a final status.
+	//
+	// - Errored: the job execution encountered an error. This is a final status.
+	//
+	// - Canceled: the job execution was canceled. This is a final status.
+	//
+	// - Discarded: the plan of the resource job was discarded. This is a final status.
+	//
+	// - ConfigProactiveFailure: compliance pre-check failed. The compliance pre-check feature must be enabled for the account.
+	//
 	// example:
 	//
 	// Errored
-	Status       *string                          `json:"status,omitempty" xml:"status,omitempty"`
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The job status details.
 	StatusDetail map[string]*JobStatusDetailValue `json:"statusDetail,omitempty" xml:"statusDetail,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// task-3b6cb9fa4751a1b9b5f22cbcf4e
-	TaskId                   *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	TaskType                 *string `json:"taskType,omitempty" xml:"taskType,omitempty"`
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// The task type. Valid values:
+	//
+	// - Task: regular task (default)
+	//
+	// - SceneTestingTask: scenario-based testing task.
+	//
+	// example:
+	//
+	// SceneTestingTask
+	TaskType *string `json:"taskType,omitempty" xml:"taskType,omitempty"`
+	// The Terraform provider version.
+	//
+	// example:
+	//
+	// 1.230.0
 	TerraformProviderVersion *string `json:"terraformProviderVersion,omitempty" xml:"terraformProviderVersion,omitempty"`
 }
 
@@ -375,15 +539,42 @@ func (s *GetJobResponseBodyJobAllParameters) Validate() error {
 }
 
 type GetJobResponseBodyJobAssertCheckDetail struct {
+	// The comparison operator. Valid values:
+	//
+	// - eq: equal to
+	//
+	// - n_eq: not equal to
+	//
+	// - ctn: contains
+	//
+	// - n_ctn: does not contain
+	//
+	// - regex: regular expression match.
+	//
 	// example:
 	//
 	// eq
-	Comparison    *string `json:"comparison,omitempty" xml:"comparison,omitempty"`
+	Comparison *string `json:"comparison,omitempty" xml:"comparison,omitempty"`
+	// The expected value.
+	//
+	// example:
+	//
+	// 期望值
 	ExpectedValue *string `json:"expectedValue,omitempty" xml:"expectedValue,omitempty"`
+	// Indicates whether the assertion check is passed.
+	//
 	// example:
 	//
 	// true
 	IsPass *bool `json:"isPass,omitempty" xml:"isPass,omitempty"`
+	// The assertion type. Valid values:
+	//
+	// - state: task status
+	//
+	// - result: execution result
+	//
+	// - resourceChange: resource change.
+	//
 	// example:
 	//
 	// result
@@ -439,24 +630,42 @@ func (s *GetJobResponseBodyJobAssertCheckDetail) Validate() error {
 }
 
 type GetJobResponseBodyJobConfig struct {
+	// Specifies whether to automatically execute the task.
+	//
 	// example:
 	//
 	// true
-	AutoApply          *bool   `json:"autoApply,omitempty" xml:"autoApply,omitempty"`
+	AutoApply *bool `json:"autoApply,omitempty" xml:"autoApply,omitempty"`
+	// Specifies whether compliance pre-check is performed for this job.
+	//
+	// example:
+	//
+	// true
 	HasConfigProactive *string `json:"hasConfigProactive,omitempty" xml:"hasConfigProactive,omitempty"`
+	// Specifies whether to destroy resources.
+	//
 	// example:
 	//
 	// fales
 	IsDestroy *bool `json:"isDestroy,omitempty" xml:"isDestroy,omitempty"`
+	// The template version.
+	//
 	// example:
 	//
 	// v1
 	ModuleVersion *string `json:"moduleVersion,omitempty" xml:"moduleVersion,omitempty"`
+	// The resource change content.
+	//
 	// example:
 	//
-	// {}
+	// +0 ~0 -0
 	ResourcesChanged *string `json:"resourcesChanged,omitempty" xml:"resourcesChanged,omitempty"`
-	SubCommand       *string `json:"subCommand,omitempty" xml:"subCommand,omitempty"`
+	// The operation command.
+	//
+	// example:
+	//
+	// destroy
+	SubCommand *string `json:"subCommand,omitempty" xml:"subCommand,omitempty"`
 }
 
 func (s GetJobResponseBodyJobConfig) String() string {

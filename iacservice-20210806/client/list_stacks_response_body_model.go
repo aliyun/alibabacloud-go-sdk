@@ -22,19 +22,28 @@ type iListStacksResponseBody interface {
 }
 
 type ListStacksResponseBody struct {
+	// The maximum number of results returned.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token. This parameter is empty if no more pages are available.
+	//
 	// example:
 	//
 	// LC4NJL3Ru2bIiRdnbADPQp4dD+2BRJj42DLT6GrZysw=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 3E49127A-BB65-5CCD-AB93-0EC0A43E5446
-	RequestId *string                         `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Stacks    []*ListStacksResponseBodyStacks `json:"stacks,omitempty" xml:"stacks,omitempty" type:"Repeated"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The list of stacks.
+	Stacks []*ListStacksResponseBodyStacks `json:"stacks,omitempty" xml:"stacks,omitempty" type:"Repeated"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 10
@@ -108,38 +117,86 @@ func (s *ListStacksResponseBody) Validate() error {
 }
 
 type ListStacksResponseBodyStacks struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2025-05-07T02:21:28Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The description of the stack.
+	//
 	// example:
 	//
 	// description of stack
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The stack name.
+	//
 	// example:
 	//
 	// stack-test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The creation source. Valid values:
+	//
+	// - OSS: a template stored in Object Storage Service (OSS).
+	//
+	// - IAC_SERVICE_MODULE: a template created in the automation service console.
+	//
 	// example:
 	//
 	// OSS
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The path of the configuration source. The value cannot exceed 1000 characters.
+	//
+	// - If the source is OSS, the value is in the format oss::<file link> and must be a zip file, such as oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip.
+	//
+	// - If the source is IAC_SERVICE_MODULE, the value is a template ID, such as mod-xxxxx.
+	//
 	// example:
 	//
 	// oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip
 	SourcePath *string `json:"sourcePath,omitempty" xml:"sourcePath,omitempty"`
+	// The description of the stack.
+	//
 	// example:
 	//
 	// description of stack
 	StackDescription *string `json:"stackDescription,omitempty" xml:"stackDescription,omitempty"`
+	// The stack ID, which is the unique identifier generated after the stack is created.
+	//
 	// example:
 	//
 	// stack-as1d4vld898ppnqxxxxxx
 	StackId *string `json:"stackId,omitempty" xml:"stackId,omitempty"`
+	// The stack name (deprecated). Use name instead.
+	//
 	// example:
 	//
 	// stack-test
 	StackName *string `json:"stackName,omitempty" xml:"stackName,omitempty"`
+	// The stack status.
+	//
+	// | Name | Description |
+	//
+	// |------|------|
+	//
+	// | Creating | Being created |
+	//
+	// | Created | Creation complete |
+	//
+	// | Waiting | Waiting for deployment |
+	//
+	// | Deploying | Being deployed |
+	//
+	// | Deployed | Deployment complete |
+	//
+	// | Errored | Deployment failed |
+	//
+	// | Deleting | Being deleted |
+	//
+	// | Deleted | Deleted |
+	//
+	// | DeleteFailed | Deletion failed |.
+	//
 	// example:
 	//
 	// Deployed

@@ -14,6 +14,8 @@ type iDeleteModuleResponseBody interface {
 }
 
 type DeleteModuleResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 49DA6457-E545-5095-A930-EB8F0BCD4DAA

@@ -14,6 +14,8 @@ type iAssociateGroupResponseBody interface {
 }
 
 type AssociateGroupResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// B6ED9F71-7FA8-598E-B64D-4606FB3FCCC9

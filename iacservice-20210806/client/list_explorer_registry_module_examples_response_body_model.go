@@ -22,19 +22,34 @@ type iListExplorerRegistryModuleExamplesResponseBody interface {
 }
 
 type ListExplorerRegistryModuleExamplesResponseBody struct {
+	// The list of Explorer community module examples.
 	ExplorerRegistryModuleExamples []*ListExplorerRegistryModuleExamplesResponseBodyExplorerRegistryModuleExamples `json:"explorerRegistryModuleExamples,omitempty" xml:"explorerRegistryModuleExamples,omitempty" type:"Repeated"`
+	// The maximum number of entries per page.
+	//
+	// Valid values: 0 to 200.
+	//
+	// Default value: 100.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token for the next page of results.
+	//
+	// If the total number of entries exceeds the maxResults limit, the data is truncated. You can use nextToken to query the next page of data.
+	//
 	// example:
 	//
 	// VSjwD+sJ8OZJ8fNjV89AZs7o2AdSD25ZQLeWZ8REjXA=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BA8F6459-EED6-556B-8130-D150A3866E56
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 132
@@ -108,30 +123,44 @@ func (s *ListExplorerRegistryModuleExamplesResponseBody) Validate() error {
 }
 
 type ListExplorerRegistryModuleExamplesResponseBodyExplorerRegistryModuleExamples struct {
+	// The example name.
+	//
 	// example:
 	//
 	// 201-use-case-create-actiontrail-trail
 	ExampleName *string `json:"exampleName,omitempty" xml:"exampleName,omitempty"`
+	// The example path.
+	//
 	// example:
 	//
 	// /
 	ExamplePath *string `json:"examplePath,omitempty" xml:"examplePath,omitempty"`
+	// The example schema.
+	//
 	// example:
 	//
 	// {}
 	ExampleSchema map[string]interface{} `json:"exampleSchema,omitempty" xml:"exampleSchema,omitempty"`
+	// The module name.
+	//
 	// example:
 	//
 	// iactestname1
 	ModuleName *string `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
+	// The module version.
+	//
 	// example:
 	//
 	// 1.11.0
 	ModuleVersion *string `json:"moduleVersion,omitempty" xml:"moduleVersion,omitempty"`
+	// The workspace name.
+	//
 	// example:
 	//
 	// alibaba
 	NamespaceName *string `json:"namespaceName,omitempty" xml:"namespaceName,omitempty"`
+	// The status.
+	//
 	// example:
 	//
 	// Available

@@ -16,10 +16,14 @@ type iCreateProjectResponseBody interface {
 }
 
 type CreateProjectResponseBody struct {
+	// The project ID.
+	//
 	// example:
 	//
 	// p-433aead7560572f8d95b25775c
 	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 3E49127A-BB65-5CCD-AB93-0EC0A43E5446

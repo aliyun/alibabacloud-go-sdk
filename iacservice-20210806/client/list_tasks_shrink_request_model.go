@@ -32,10 +32,14 @@ type iListTasksShrinkRequest interface {
 }
 
 type ListTasksShrinkRequest struct {
+	// The group ID.
+	//
 	// example:
 	//
 	// g-59d8d22e78792ffe3d3eb6154d727
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	// The keyword for fuzzy search by task ID or task name.
+	//
 	// example:
 	//
 	// key
@@ -44,24 +48,52 @@ type ListTasksShrinkRequest struct {
 	//
 	// 21a90f5d-a469-4ac4-a8ea-f6e1e7470e6f
 	KmsKeyId *string `json:"kmsKeyId,omitempty" xml:"kmsKeyId,omitempty"`
+	// The module ID.
+	//
 	// example:
 	//
 	// mod-1525e992f1b62139d1c437d64ae
 	ModuleId *string `json:"moduleId,omitempty" xml:"moduleId,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page. Default value: 20. Minimum value: 1. Maximum value: 100.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// p-433aead7560572f8d95b25775c
 	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
-	Status    *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The job status. Valid values:
+	//
+	// - Planning: The job is in the Plan execution phase.
+	//
+	// - Planned: The job has completed the Plan execution.
+	//
+	// - PlannedAndFinished: After the Plan execution is completed, no diff is found, and the job enters the final state.
+	//
+	// - Applying: The job is in the Apply execution phase.
+	//
+	// - Applied: The job has completed the Apply execution.
+	//
+	// - Errored: The job execution encountered errors and entered the final state.
+	//
+	// example:
+	//
+	// Errored
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The list of task tags.
 	TagShrink *string `json:"tag,omitempty" xml:"tag,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// task-433aead756057fffeaba4828f5195

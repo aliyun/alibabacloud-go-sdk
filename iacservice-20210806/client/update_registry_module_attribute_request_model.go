@@ -18,15 +18,27 @@ type iUpdateRegistryModuleAttributeRequest interface {
 }
 
 type UpdateRegistryModuleAttributeRequest struct {
+	// The access permission. Valid values:
+	//
+	// - private: private.
+	//
 	// example:
 	//
 	// private
 	Acl *string `json:"acl,omitempty" xml:"acl,omitempty"`
+	// The idempotence token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
+	//
 	// This parameter is required.
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	//
 	// example:
 	//
-	// test
+	// a65451293e64979ba7a4b573950217fe
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// The description of the Registry template.
+	//
+	// example:
+	//
+	// description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 }
 

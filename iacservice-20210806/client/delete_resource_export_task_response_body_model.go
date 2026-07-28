@@ -14,6 +14,8 @@ type iDeleteResourceExportTaskResponseBody interface {
 }
 
 type DeleteResourceExportTaskResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 136B3926-DD90-5DB2-96EC-8BAD6407D1C9

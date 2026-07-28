@@ -16,8 +16,9 @@ type iGetModuleResponseBody interface {
 }
 
 type GetModuleResponseBody struct {
+	// The template information.
 	Module *GetModuleResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -61,54 +62,100 @@ func (s *GetModuleResponseBody) Validate() error {
 }
 
 type GetModuleResponseBodyModule struct {
+	// The time when the template was created.
+	//
 	// example:
 	//
 	// 2022-09-06T06:11:27Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The template description.
+	//
 	// example:
 	//
-	// test1
-	Description *string                               `json:"description,omitempty" xml:"description,omitempty"`
-	GroupInfo   *GetModuleResponseBodyModuleGroupInfo `json:"groupInfo,omitempty" xml:"groupInfo,omitempty" type:"Struct"`
+	// this is description
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The group information.
+	GroupInfo *GetModuleResponseBodyModuleGroupInfo `json:"groupInfo,omitempty" xml:"groupInfo,omitempty" type:"Struct"`
+	// The latest version number.
+	//
 	// example:
 	//
 	// v1
 	LatestVersion *string `json:"latestVersion,omitempty" xml:"latestVersion,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// mod-4267dcfbf1b6d14625614ddbe15
 	ModuleId *string `json:"moduleId,omitempty" xml:"moduleId,omitempty"`
+	// The template name.
+	//
 	// example:
 	//
-	// abc
+	// ModuleName
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The storage path of the template.
+	//
 	// example:
 	//
 	// /
 	OutputPath *string `json:"outputPath,omitempty" xml:"outputPath,omitempty"`
+	// The template source. Valid values:
+	//
+	// - OSS: Imported from OSS.
+	//
+	// - Registry: Created from a template in the template center.
+	//
+	// - ExportTask: Exported from a resource export task.
+	//
+	// - Upload: Uploaded as a file.
+	//
+	// - Shared: Cloned from a shared template.
+	//
+	// - Editor: Created by using the online editor.
+	//
 	// example:
 	//
 	// OSS
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The source path of the template.
+	//
+	// - If the source is Registry, the value is in the format of <workspace name>/<module name>:<module version>, such as terraform-alicloud-modules/rds:1.0.0.
+	//
+	// - If the source is OSS, the value is in the format of oss::<file link>, such as oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip.
+	//
+	// - If the source is ExportTask, the value is in the format of <export task ID>:<exported version>, such as ex-3b6cb9fa4751afff298da723c24ac:v1.
+	//
 	// example:
 	//
-	// OSS：
-	//
-	// "oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip"
-	//
-	// Registry：
-	//
-	// "alibaba/security-group/alicloud:2.1.0"
+	// oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip
 	SourcePath *string `json:"sourcePath,omitempty" xml:"sourcePath,omitempty"`
+	// The path of the state file that corresponds to the template. Currently, only OSS paths are supported. The value is in the format of oss::<file OSS path>/terraform.tfstate.
+	//
 	// example:
 	//
 	// oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/terraform.tfstate
 	StatePath *string `json:"statePath,omitempty" xml:"statePath,omitempty"`
+	// The template status. Valid values:
+	//
+	// - Creating: The template is being created.
+	//
+	// - Created: The template is created.
+	//
+	// After the template is created, you can publish a version.
+	//
 	// example:
 	//
 	// Created
-	Status *string                            `json:"status,omitempty" xml:"status,omitempty"`
-	Tags   []*GetModuleResponseBodyModuleTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The tags of the template.
+	Tags []*GetModuleResponseBodyModuleTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The version generation strategy. Valid values:
+	//
+	// - Manual: Versions are generated manually. This is the default value.
+	//
+	// - SourcePathUpdated: A new version is generated when the sourcePath is modified.
+	//
 	// example:
 	//
 	// Manual
@@ -259,9 +306,29 @@ func (s *GetModuleResponseBodyModule) Validate() error {
 }
 
 type GetModuleResponseBodyModuleGroupInfo struct {
-	GroupId     *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	GroupName   *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	ProjectId   *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	// The group ID.
+	//
+	// example:
+	//
+	// g-fu1a1ol8cob1oni01ekcloi
+	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	// The group name.
+	//
+	// example:
+	//
+	// groupName
+	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	// The project ID.
+	//
+	// example:
+	//
+	// p-al1d11jlvlsbvr11lf3pqo
+	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	// The project name.
+	//
+	// example:
+	//
+	// projectName
 	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
 }
 
@@ -314,7 +381,17 @@ func (s *GetModuleResponseBodyModuleGroupInfo) Validate() error {
 }
 
 type GetModuleResponseBodyModuleTags struct {
-	TagKey   *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	// The tag key of the template.
+	//
+	// example:
+	//
+	// TestKey
+	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	// The tag value of the template.
+	//
+	// example:
+	//
+	// TestValue
 	TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
 }
 

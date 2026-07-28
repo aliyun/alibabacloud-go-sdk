@@ -18,14 +18,40 @@ type iGenerateModuleResponseBody interface {
 }
 
 type GenerateModuleResponseBody struct {
+	// The generated Terraform HCL template code content.
+	//
 	// example:
 	//
-	// demo
+	// terraform {
+	//
+	//   required_providers {
+	//
+	//     alicloud = {
+	//
+	//       source   = "aliyun/alicloud"
+	//
+	//       version  = "1.260.0"
+	//
+	//     }
+	//
+	//   }
+	//
+	// }
+	//
+	// resource "alicloud_vpc" "default" {
+	//
+	//  vpc_name = "vpc-test"
+	//
+	// }
 	Module *string `json:"module,omitempty" xml:"module,omitempty"`
+	// The variables and resource properties in the generated template code.
+	//
 	// example:
 	//
-	// {}
+	// {"vpc_name":"vpc-test"}
 	Properties map[string]interface{} `json:"properties,omitempty" xml:"properties,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6B40D088-E929-504B-8802-C1759A993FA2

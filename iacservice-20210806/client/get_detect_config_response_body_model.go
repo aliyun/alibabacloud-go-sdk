@@ -16,8 +16,9 @@ type iGetDetectConfigResponseBody interface {
 }
 
 type GetDetectConfigResponseBody struct {
+	// Drift detection configuration information
 	DetectConfig *GetDetectConfigResponseBodyDetectConfig `json:"detectConfig,omitempty" xml:"detectConfig,omitempty" type:"Struct"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
@@ -61,31 +62,50 @@ func (s *GetDetectConfigResponseBody) Validate() error {
 }
 
 type GetDetectConfigResponseBodyDetectConfig struct {
+	// List of alerting addresses
 	AlarmConfigs []*GetDetectConfigResponseBodyDetectConfigAlarmConfigs `json:"alarmConfigs,omitempty" xml:"alarmConfigs,omitempty" type:"Repeated"`
+	// Creation Time.
+	//
 	// example:
 	//
 	// 2026-04-10T02:30:04Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// Cron expression (UTC+8). Required when the trigger type is Cron.
+	//
 	// example:
 	//
 	// 0 0 0 ? 	- 1
 	CronExpression *string `json:"cronExpression,omitempty" xml:"cronExpression,omitempty"`
+	// Description.
+	//
 	// example:
 	//
 	// this is a description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Drift detection configuration ID
+	//
 	// example:
 	//
 	// dc-xxxx
 	DetectConfigId *string `json:"detectConfigId,omitempty" xml:"detectConfigId,omitempty"`
+	// Drift detection configuration name
+	//
 	// example:
 	//
 	// test
 	DetectConfigName *string `json:"detectConfigName,omitempty" xml:"detectConfigName,omitempty"`
+	// Is scheduled detection enabled
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// Trigger type
+	//
+	// - Manual: Execute manually
+	//
+	// - Cron: Trigger on schedule
+	//
 	// example:
 	//
 	// Cron
@@ -186,10 +206,14 @@ func (s *GetDetectConfigResponseBodyDetectConfig) Validate() error {
 }
 
 type GetDetectConfigResponseBodyDetectConfigAlarmConfigs struct {
+	// Alerting address.
+	//
 	// example:
 	//
 	// https://metrichub-cms-cn-hangzhou.aliyuncs.com/event/notify?xxxxx
 	Address *string `json:"address,omitempty" xml:"address,omitempty"`
+	// Alerting method. Currently, only `cms` is supported.
+	//
 	// example:
 	//
 	// cms

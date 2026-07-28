@@ -14,6 +14,8 @@ type iOperateJobResponseBody interface {
 }
 
 type OperateJobResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// E602681C-A811-5787-9DC3-48BED7537071

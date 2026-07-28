@@ -18,14 +18,20 @@ type iCreateResourceExportTaskResponseBody interface {
 }
 
 type CreateResourceExportTaskResponseBody struct {
+	// The resource export task ID.
+	//
 	// example:
 	//
 	// ex-4a1ec8b7003d24528326821be
 	ExportTaskId *string `json:"exportTaskId,omitempty" xml:"exportTaskId,omitempty"`
+	// The resource export version.
+	//
 	// example:
 	//
 	// v1
 	ExportVersion *string `json:"exportVersion,omitempty" xml:"exportVersion,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CFD8C2A8-5BE7-56D2-916D-64039B8E06E3

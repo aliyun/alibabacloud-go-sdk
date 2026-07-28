@@ -22,19 +22,28 @@ type iListRegistryModuleVersionsResponseBody interface {
 }
 
 type ListRegistryModuleVersionsResponseBody struct {
+	// The total number of records.
+	//
 	// example:
 	//
 	// 21
 	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
+	// The number of entries per page in a paged query. Maximum value: 100. Default value: 20.
+	//
 	// example:
 	//
 	// 20
-	MaxResults     *int32                                                  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The list of template versions.
 	ModuleVersions []*ListRegistryModuleVersionsResponseBodyModuleVersions `json:"moduleVersions,omitempty" xml:"moduleVersions,omitempty" type:"Repeated"`
+	// The pagination token. Set this parameter to the NextToken value returned in the previous API call.
+	//
 	// example:
 	//
-	// IbuvZbAXFOiB4nKg8iOH447bhHWDavGTOMijI2Jep7c=
+	// IbuvZ8iOH447bhHWDavGTOMijI2Jep7c=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 8606B880-3485-54E2-89E1-43361C468C85
@@ -108,13 +117,50 @@ func (s *ListRegistryModuleVersionsResponseBody) Validate() error {
 }
 
 type ListRegistryModuleVersionsResponseBodyModuleVersions struct {
-	CreateTime    *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	ModuleName    *string `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 2025-05-28 11:15:57
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The template name.
+	//
+	// example:
+	//
+	// ModuleName
+	ModuleName *string `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
+	// The workspace name.
+	//
+	// example:
+	//
+	// NamespaceName
 	NamespaceName *string `json:"namespaceName,omitempty" xml:"namespaceName,omitempty"`
-	Provider      *string `json:"provider,omitempty" xml:"provider,omitempty"`
-	Source        *string `json:"source,omitempty" xml:"source,omitempty"`
-	SourceUrl     *string `json:"sourceUrl,omitempty" xml:"sourceUrl,omitempty"`
-	Version       *string `json:"version,omitempty" xml:"version,omitempty"`
+	// The provider type. Valid values:
+	//
+	// - alicloud: Alibaba Cloud.
+	//
+	// example:
+	//
+	// alicloud
+	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
+	// The template source, in the format of namespaceName/ModuleName.
+	//
+	// example:
+	//
+	// test_namespace/RegistryModule-test0e
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The source URL of the template.
+	//
+	// example:
+	//
+	// URL
+	SourceUrl *string `json:"sourceUrl,omitempty" xml:"sourceUrl,omitempty"`
+	// The version number.
+	//
+	// example:
+	//
+	// 1.0.0
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s ListRegistryModuleVersionsResponseBodyModuleVersions) String() string {

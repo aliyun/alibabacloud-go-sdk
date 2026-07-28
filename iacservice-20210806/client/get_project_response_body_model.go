@@ -16,7 +16,10 @@ type iGetProjectResponseBody interface {
 }
 
 type GetProjectResponseBody struct {
+	// The project details.
 	Project *GetProjectResponseBodyProject `json:"project,omitempty" xml:"project,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7FA0FF4A-ABD4-54F6-BEAC-B4273EBA10A2
@@ -59,22 +62,32 @@ func (s *GetProjectResponseBody) Validate() error {
 }
 
 type GetProjectResponseBodyProject struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2022-09-06T06:11:27Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The project description. Length: 0 to 1024 characters.
+	//
 	// example:
 	//
 	// abc
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// abc
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// p-433aead7560572f8d95b25775c
 	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	// The number of tasks.
+	//
 	// example:
 	//
 	// 2

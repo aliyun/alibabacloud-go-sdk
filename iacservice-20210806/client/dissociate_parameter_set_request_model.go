@@ -18,14 +18,28 @@ type iDissociateParameterSetRequest interface {
 }
 
 type DissociateParameterSetRequest struct {
+	// The list of parameter set IDs to be associated with the resource. Maximum length: 5.
+	//
 	// This parameter is required.
 	ParameterSetIds []*string `json:"parameterSetIds,omitempty" xml:"parameterSetIds,omitempty" type:"Repeated"`
+	// The resource ID. If the resource type is ModuleVersion, the value is a combination of <moduleId>-<moduleversion>, such as mod-34535345df123fr-v3.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mod-39cd1e5e58c50e79dd8cd901cd
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// The resource type. Valid values:
+	//
+	// - Module: template
+	//
+	// - ModuleVersion: template version
+	//
+	// - Task: node
+	//
+	// - Stack: resource stack.
+	//
 	// This parameter is required.
 	//
 	// example:

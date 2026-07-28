@@ -18,14 +18,20 @@ type iJobsStatusDetailValue interface {
 }
 
 type JobsStatusDetailValue struct {
+	// 备注
+	//
 	// example:
 	//
-	// ""
+	// comment
 	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	// 作业执行结果
+	//
 	// example:
 	//
-	// ""
+	// Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
 	JobResult *string `json:"jobResult,omitempty" xml:"jobResult,omitempty"`
+	// 到达状态时间
+	//
 	// example:
 	//
 	// 2022-06-13 17:11:34

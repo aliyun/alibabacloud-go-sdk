@@ -18,14 +18,24 @@ type iListDetectConfigRelationsRequest interface {
 }
 
 type ListDetectConfigRelationsRequest struct {
+	// Drift detection configuration ID
+	//
 	// example:
 	//
 	// dc-xxxx
 	DetectConfigId *string `json:"detectConfigId,omitempty" xml:"detectConfigId,omitempty"`
+	// Target ID to associate. StackId or TaskId
+	//
 	// example:
 	//
 	// stack-xxxxx
 	TargetId *string `json:"targetId,omitempty" xml:"targetId,omitempty"`
+	// Type of the association target
+	//
+	// - Task: orchestration Job
+	//
+	// - Stack: resource stack
+	//
 	// example:
 	//
 	// Stack

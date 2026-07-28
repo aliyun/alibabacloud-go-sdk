@@ -16,11 +16,14 @@ type iGetResourceExportTaskResponseBody interface {
 }
 
 type GetResourceExportTaskResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// FC49AA8C-0A19-5556-8929-E7447F18D529
-	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Task      *GetResourceExportTaskResponseBodyTask `json:"task,omitempty" xml:"task,omitempty" type:"Struct"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The task information.
+	Task *GetResourceExportTaskResponseBodyTask `json:"task,omitempty" xml:"task,omitempty" type:"Struct"`
 }
 
 func (s GetResourceExportTaskResponseBody) String() string {
@@ -59,66 +62,108 @@ func (s *GetResourceExportTaskResponseBody) Validate() error {
 }
 
 type GetResourceExportTaskResponseBodyTask struct {
+	// The time when the task was created.
+	//
 	// example:
 	//
 	// 2022-06-15T02:44:37Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The task description.
+	//
 	// example:
 	//
-	// demo
+	// this is description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The execution duration.
+	//
 	// example:
 	//
 	// 4533
 	ElapsedTime *int64 `json:"elapsedTime,omitempty" xml:"elapsedTime,omitempty"`
+	// The ID of the resource export task.
+	//
 	// example:
 	//
 	// ex-al1111jlfh53i6mo4o94jj
-	ExportTaskId   *string                                              `json:"exportTaskId,omitempty" xml:"exportTaskId,omitempty"`
+	ExportTaskId *string `json:"exportTaskId,omitempty" xml:"exportTaskId,omitempty"`
+	// Saves the exported template as a module. If this parameter is not set, the template is automatically saved in the registry.
 	ExportToModule *GetResourceExportTaskResponseBodyTaskExportToModule `json:"exportToModule,omitempty" xml:"exportToModule,omitempty" type:"Struct"`
+	// The resource export version.
+	//
 	// example:
 	//
 	// v2
 	ExportVersion *string `json:"exportVersion,omitempty" xml:"exportVersion,omitempty"`
+	// The failure reason.
+	//
 	// example:
 	//
 	// Reason
-	FailedReason *string                                              `json:"failedReason,omitempty" xml:"failedReason,omitempty"`
+	FailedReason *string `json:"failedReason,omitempty" xml:"failedReason,omitempty"`
+	// The values of the include rules for resource export.
 	IncludeRules []*GetResourceExportTaskResponseBodyTaskIncludeRules `json:"includeRules,omitempty" xml:"includeRules,omitempty" type:"Repeated"`
-	Modules      []*GetResourceExportTaskResponseBodyTaskModules      `json:"modules,omitempty" xml:"modules,omitempty" type:"Repeated"`
+	// The module configuration for the exported resources.
+	Modules []*GetResourceExportTaskResponseBodyTaskModules `json:"modules,omitempty" xml:"modules,omitempty" type:"Repeated"`
+	// The task name.
+	//
 	// example:
 	//
 	// vpc_all
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The RAM role.
+	//
 	// example:
 	//
 	// role
 	RamRole *string `json:"ramRole,omitempty" xml:"ramRole,omitempty"`
+	// The task status. Valid values:
+	//
+	// - Available: the task is available and no job is running.
+	//
+	// - Running: a job is currently running.
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The task output path.
+	//
 	// example:
 	//
 	// /
 	TaskOutputPath *string `json:"taskOutputPath,omitempty" xml:"taskOutputPath,omitempty"`
+	// The Terraform context.
+	//
 	// example:
 	//
 	// {}
 	TerraformContext map[string]interface{} `json:"terraformContext,omitempty" xml:"terraformContext,omitempty"`
+	// The Terraform provider version.
+	//
 	// example:
 	//
 	// 1.246.0
 	TerraformProviderVersion *string `json:"terraformProviderVersion,omitempty" xml:"terraformProviderVersion,omitempty"`
+	// The Terraform version.
+	//
 	// example:
 	//
-	// 1.2.6
+	// 1.5.7
 	TerraformVersion *string `json:"terraformVersion,omitempty" xml:"terraformVersion,omitempty"`
+	// The trigger strategy. Valid values:
+	//
+	// - Auto: triggered automatically when rules are modified or the trigger strategy is changed to Auto.
+	//
+	// - Manual: triggered manually.
+	//
+	// Default value: Manual.
+	//
 	// example:
 	//
 	// Manual
-	TriggerStrategy *string                                           `json:"triggerStrategy,omitempty" xml:"triggerStrategy,omitempty"`
-	Variables       []*GetResourceExportTaskResponseBodyTaskVariables `json:"variables,omitempty" xml:"variables,omitempty" type:"Repeated"`
+	TriggerStrategy *string `json:"triggerStrategy,omitempty" xml:"triggerStrategy,omitempty"`
+	// The list of variables. Parameters in the exported resources are set as variables.
+	Variables []*GetResourceExportTaskResponseBodyTaskVariables `json:"variables,omitempty" xml:"variables,omitempty" type:"Repeated"`
 }
 
 func (s GetResourceExportTaskResponseBodyTask) String() string {
@@ -328,14 +373,28 @@ func (s *GetResourceExportTaskResponseBodyTask) Validate() error {
 }
 
 type GetResourceExportTaskResponseBodyTaskExportToModule struct {
+	// The module type in which the exported template is saved. Valid values:
+	//
+	// - OSS: OSS
+	//
+	// - Registry: Terraform Registry.
+	//
 	// example:
 	//
 	// OSS
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The path where the template content is saved.
+	//
+	// - If Source is set to Registry, the format is: "cloudregistry::iacservice//"
+	//
+	// - If Source is set to OSS, the format is: "oss::https://.oss-ap-southeast-1.aliyuncs.com/xxx.zip".
+	//
 	// example:
 	//
-	// alibaba/security-group/alicloud
+	// oss::https://.oss-cn-hangzhou.aliyuncs.com/xxx.zip
 	SourcePath *string `json:"sourcePath,omitempty" xml:"sourcePath,omitempty"`
+	// The path of the state file that corresponds to the module.
+	//
 	// example:
 	//
 	// /
@@ -382,10 +441,25 @@ func (s *GetResourceExportTaskResponseBodyTaskExportToModule) Validate() error {
 }
 
 type GetResourceExportTaskResponseBodyTaskIncludeRules struct {
+	// The name of the include rule for resource export. Valid values:
+	//
+	// - ResourceType: required. The resource type. Example: ALIYUN::VPC::VPC.
+	//
+	// - RegionId: required. The region to which the resource belongs. Only one region is supported. Example: ap-southeast-1.
+	//
+	// - \\<ResourceType>:Id: the resource ID. Example: ALIYUN::VPC::VPC:Id.
+	//
+	// - ResourceGroupId: the resource group ID. Example: rg-1234.
+	//
+	// - ZoneId: the zone to which the resource belongs. Only one zone is supported. Example: ap-southeast-1a.
+	//
+	// By default, the relationship between multiple filter conditions is AND. A resource is considered matched only if all filter conditions are met.
+	//
 	// example:
 	//
-	// ZoneId
-	Key    *string   `json:"key,omitempty" xml:"key,omitempty"`
+	// RegionId
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The values of the include rules for resource export.
 	Values []*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
 }
 
@@ -420,14 +494,24 @@ func (s *GetResourceExportTaskResponseBodyTaskIncludeRules) Validate() error {
 }
 
 type GetResourceExportTaskResponseBodyTaskModules struct {
+	// The module type where the exported template is stored. Two formats are supported: CloudRegistry and OSS. If the ExportToModule parameter is specified, both formats are returned. Otherwise, only CloudRegistry is returned.
+	//
 	// example:
 	//
 	// OSS
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The download URL of the module where the exported template is stored.
+	//
+	// - If Source is set to CloudRegistry, the format is: "cloudregistry::iacservice//"
+	//
+	// - If Source is set to OSS, the format is: "oss::https://.oss-ap-southeast-1.aliyuncs.com/xxx.zip".
+	//
 	// example:
 	//
 	// oss::https://.oss-cn-hangzhou.aliyuncs.com/xxx.zip
 	SourcePath *string `json:"sourcePath,omitempty" xml:"sourcePath,omitempty"`
+	// The version of the module where the exported template is stored.
+	//
 	// example:
 	//
 	// v3
@@ -474,10 +558,13 @@ func (s *GetResourceExportTaskResponseBodyTaskModules) Validate() error {
 }
 
 type GetResourceExportTaskResponseBodyTaskVariables struct {
+	// The list of properties of the Terraform resource that corresponds to the resource type.
 	Properties []*string `json:"properties,omitempty" xml:"properties,omitempty" type:"Repeated"`
+	// The resource type.
+	//
 	// example:
 	//
-	// ALIYUN::Bastionhost::Instance
+	// ALIYUN::VPC::VSwitch
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 }
 

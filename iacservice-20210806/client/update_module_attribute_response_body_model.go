@@ -14,6 +14,8 @@ type iUpdateModuleAttributeResponseBody interface {
 }
 
 type UpdateModuleAttributeResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// CA05185E-6B90-5941-98D4-7212688AECC8

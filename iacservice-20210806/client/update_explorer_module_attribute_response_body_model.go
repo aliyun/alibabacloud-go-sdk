@@ -14,6 +14,8 @@ type iUpdateExplorerModuleAttributeResponseBody interface {
 }
 
 type UpdateExplorerModuleAttributeResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 25B274BA-E672-58C0-8602-541281B6F758

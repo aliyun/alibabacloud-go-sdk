@@ -20,18 +20,38 @@ type iListRegistryNamespacesRequest interface {
 }
 
 type ListRegistryNamespacesRequest struct {
+	// The search keyword. Fuzzy search by workspace name is supported.
+	//
 	// example:
 	//
 	// key
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	// The number of entries per page in a paged query. Maximum value: 100.
+	//
+	// Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The query token. Set this parameter to the NextToken value returned in the previous API call.
+	//
 	// example:
 	//
-	// hg7nXVngyM6tQlfXYzM1uI/7dKNGp1JMgsKtvCagmtY=
+	// hg7nXVngyM6tQtvCagmtY=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The workspace type. Valid values:
+	//
+	// - system: public workspace
+	//
+	// - self: custom workspace
+	//
+	// - shared: shared workspace
+	//
+	// - community: community workspace
+	//
+	// By default, all workspaces are returned.
+	//
 	// example:
 	//
 	// self

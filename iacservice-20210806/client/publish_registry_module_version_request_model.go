@@ -20,24 +20,32 @@ type iPublishRegistryModuleVersionRequest interface {
 }
 
 type PublishRegistryModuleVersionRequest struct {
+	// The idempotence token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// a65451293e64979ba7a4b573950217fe
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// The template name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// oss-bucket
+	// ModuleName
 	ModuleName *string `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
+	// The workspace name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// terraform-alicloud-modules
+	// NamespaceName
 	NamespaceName *string `json:"namespaceName,omitempty" xml:"namespaceName,omitempty"`
+	// The version number. The value must conform to the [semantic version](http://semver.org/) specification, such as 1.0.1. The initial version is 1.0.0.
+	//
 	// This parameter is required.
 	//
 	// example:

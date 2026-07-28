@@ -18,11 +18,16 @@ type iListParameterSetRelationResponseBody interface {
 }
 
 type ListParameterSetRelationResponseBody struct {
+	// The list of parameter sets.
 	ParameterSets []*ListParameterSetRelationResponseBodyParameterSets `json:"parameterSets,omitempty" xml:"parameterSets,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2F24E990-E8D3-5C18-ABEA-C7A3F1831C57
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 5
@@ -78,23 +83,32 @@ func (s *ListParameterSetRelationResponseBody) Validate() error {
 }
 
 type ListParameterSetRelationResponseBodyParameterSets struct {
+	// The time when the parameter set was created.
+	//
 	// example:
 	//
 	// 2022-05-14T10:05:19Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// 123111
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The name of the parameter set.
+	//
 	// example:
 	//
 	// alb_enable_ipv6_4.2
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The ID of the parameter set.
+	//
 	// example:
 	//
 	// pts-kw1b11jlssrabb638ptums
-	ParameterSetId *string            `json:"parameterSetId,omitempty" xml:"parameterSetId,omitempty"`
-	Parameters     map[string]*string `json:"parameters,omitempty" xml:"parameters,omitempty"`
+	ParameterSetId *string `json:"parameterSetId,omitempty" xml:"parameterSetId,omitempty"`
+	// The content of the parameter set.
+	Parameters map[string]*string `json:"parameters,omitempty" xml:"parameters,omitempty"`
 }
 
 func (s ListParameterSetRelationResponseBodyParameterSets) String() string {

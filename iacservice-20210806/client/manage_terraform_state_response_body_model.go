@@ -16,6 +16,8 @@ type iManageTerraformStateResponseBody interface {
 }
 
 type ManageTerraformStateResponseBody struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// job-5fd38c9xxxxx

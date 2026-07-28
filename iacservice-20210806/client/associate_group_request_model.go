@@ -20,16 +20,30 @@ type iAssociateGroupRequest interface {
 }
 
 type AssociateGroupRequest struct {
+	// The idempotence token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
+	//
 	// example:
 	//
 	// a65451293e64979ba7a4b573950217fe
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// p-433aead7560571a87349d054b4
 	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	// The list of resource IDs.
+	//
 	// This parameter is required.
 	ResourceIds []*string `json:"resourceIds,omitempty" xml:"resourceIds,omitempty" type:"Repeated"`
+	// The resource type. Valid values:
+	//
+	// - SceneTestingTask: scenario-based testing task.
+	//
+	// - Task: regular task.
+	//
+	// - Module: template.
+	//
 	// example:
 	//
 	// Task

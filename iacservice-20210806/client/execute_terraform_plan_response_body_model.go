@@ -22,6 +22,8 @@ type ExecuteTerraformPlanResponseBody struct {
   // 
   // 0D298375-F92F-5B65-82E4-EA68F02521F1
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+  // The ID of the state file.
+  // 
   // example:
   // 
   // task-xxxx

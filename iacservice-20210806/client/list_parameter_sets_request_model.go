@@ -20,18 +20,24 @@ type iListParameterSetsRequest interface {
 }
 
 type ListParameterSetsRequest struct {
+	// The keyword for exact match search. The search is case-insensitive.
+	//
 	// example:
 	//
-	// key
+	// vpc
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
 	// example:
 	//
 	// 21a90f5d-a469-4ac4-a8ea-f6e1e7470e6f
 	KmsKeyId *string `json:"kmsKeyId,omitempty" xml:"kmsKeyId,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 200.
+	//
 	// example:
 	//
 	// 20

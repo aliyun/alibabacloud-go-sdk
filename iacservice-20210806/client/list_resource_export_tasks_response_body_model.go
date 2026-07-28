@@ -22,19 +22,28 @@ type iListResourceExportTasksResponseBody interface {
 }
 
 type ListResourceExportTasksResponseBody struct {
+	// The list of export tasks.
 	ExportTasks []*ListResourceExportTasksResponseBodyExportTasks `json:"exportTasks,omitempty" xml:"exportTasks,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 100.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 65287CB9-AC46-5FE7-B785-0106C159DA42
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 330
@@ -108,41 +117,75 @@ func (s *ListResourceExportTasksResponseBody) Validate() error {
 }
 
 type ListResourceExportTasksResponseBodyExportTasks struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2025-02-20T02:10:06Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The description of the export task.
+	//
 	// example:
 	//
-	// demo
+	// this is description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The execution duration.
+	//
 	// example:
 	//
 	// 4243
 	ElapsedTime *int64 `json:"elapsedTime,omitempty" xml:"elapsedTime,omitempty"`
+	// The export status. Valid values:
+	//
+	// - Queue: queued
+	//
+	// - Pending: preparing to run
+	//
+	// - Success: succeeded
+	//
+	// - Errored: failed
+	//
+	// - Canceled: canceled.
+	//
 	// example:
 	//
 	// Success
 	ExportStatus *string `json:"exportStatus,omitempty" xml:"exportStatus,omitempty"`
+	// The ID of the resource export task.
+	//
 	// example:
 	//
 	// ex-kw1a1ol8c0pngjav17q8eri
-	ExportTaskId   *string                                                       `json:"exportTaskId,omitempty" xml:"exportTaskId,omitempty"`
+	ExportTaskId *string `json:"exportTaskId,omitempty" xml:"exportTaskId,omitempty"`
+	// The module to which the exported template is saved. If this parameter is not set, the template is automatically saved in the Registry.
 	ExportToModule *ListResourceExportTasksResponseBodyExportTasksExportToModule `json:"exportToModule,omitempty" xml:"exportToModule,omitempty" type:"Struct"`
+	// The export version.
+	//
 	// example:
 	//
 	// v2
-	ExportVersion *string                                                       `json:"exportVersion,omitempty" xml:"exportVersion,omitempty"`
-	IncludeRules  []*ListResourceExportTasksResponseBodyExportTasksIncludeRules `json:"includeRules,omitempty" xml:"includeRules,omitempty" type:"Repeated"`
-	Modules       []*ListResourceExportTasksResponseBodyExportTasksModules      `json:"modules,omitempty" xml:"modules,omitempty" type:"Repeated"`
+	ExportVersion *string `json:"exportVersion,omitempty" xml:"exportVersion,omitempty"`
+	// The values of the include rules for resource export.
+	IncludeRules []*ListResourceExportTasksResponseBodyExportTasksIncludeRules `json:"includeRules,omitempty" xml:"includeRules,omitempty" type:"Repeated"`
+	// The module configuration of the exported resources.
+	Modules []*ListResourceExportTasksResponseBodyExportTasksModules `json:"modules,omitempty" xml:"modules,omitempty" type:"Repeated"`
+	// The name of the export task.
+	//
 	// example:
 	//
-	// vpc_all
+	// TaskName
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The task status. Valid values:
+	//
+	// - Available: available
+	//
+	// - Running: running.
+	//
 	// example:
 	//
-	// Success
-	Status    *string                                                    `json:"status,omitempty" xml:"status,omitempty"`
+	// Available
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The list of variables. The parameters of the exported resources are set as variables.
 	Variables []*ListResourceExportTasksResponseBodyExportTasksVariables `json:"variables,omitempty" xml:"variables,omitempty" type:"Repeated"`
 }
 
@@ -299,14 +342,28 @@ func (s *ListResourceExportTasksResponseBodyExportTasks) Validate() error {
 }
 
 type ListResourceExportTasksResponseBodyExportTasksExportToModule struct {
+	// The module type to which the exported template is saved. Valid values:
+	//
+	// - OSS: OSS
+	//
+	// - Registry: Terraform Registry.
+	//
 	// example:
 	//
 	// OSS
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The path where the template content is saved.
+	//
+	// - If Source is set to Registry, the format is: "cloudregistry::iacservice//"
+	//
+	// - If Source is set to OSS, the format is: "oss::https://.oss-ap-southeast-1.aliyuncs.com/xxx.zip".
+	//
 	// example:
 	//
-	// alibaba/security-group/alicloud
+	// oss::https://.oss-cn-hangzhou.aliyuncs.com/xxx.zip
 	SourcePath *string `json:"sourcePath,omitempty" xml:"sourcePath,omitempty"`
+	// The path where the template state file is saved.
+	//
 	// example:
 	//
 	// /
@@ -353,10 +410,25 @@ func (s *ListResourceExportTasksResponseBodyExportTasksExportToModule) Validate(
 }
 
 type ListResourceExportTasksResponseBodyExportTasksIncludeRules struct {
+	// The name of the include rule for resource export. Valid values:
+	//
+	// - ResourceType: required. The resource type, such as ALIYUN::VPC::VPC.
+	//
+	// - RegionId: required. The region to which the resource belongs. Only one region is supported, such as ap-southeast-1.
+	//
+	// - \\<ResourceType>:Id: the resource ID, such as ALIYUN::VPC::VPC:Id.
+	//
+	// - ResourceGroupId: the resource group ID, such as rg-1234.
+	//
+	// - ZoneId: the zone to which the resource belongs. Only one zone is supported, such as ap-southeast-1h.
+	//
+	// By default, the relationship between multiple filter conditions is AND. A resource is considered matched only when all filter conditions are met.
+	//
 	// example:
 	//
-	// ZoneId
-	Key    *string   `json:"key,omitempty" xml:"key,omitempty"`
+	// RegionId
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The values of the include rules for resource export.
 	Values []*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
 }
 
@@ -391,14 +463,24 @@ func (s *ListResourceExportTasksResponseBodyExportTasksIncludeRules) Validate() 
 }
 
 type ListResourceExportTasksResponseBodyExportTasksModules struct {
+	// The module type where the exported template is stored. Two formats are supported: CloudRegistry and OSS. If the ExportToModule parameter is specified, both formats are returned. Otherwise, only CloudRegistry is returned.
+	//
 	// example:
 	//
 	// OSS
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The download URL of the module where the exported template is stored.
+	//
+	// - If Source is set to CloudRegistry, the format is: "cloudregistry::iacservice/<exportTaskId>/<Provider Name>"
+	//
+	// - If Source is set to OSS, the format is: "oss::https://<BucketName>.oss-ap-southeast-1.aliyuncs.com/xxx.zip".
+	//
 	// example:
 	//
 	// oss::https://.oss-cn-hangzhou.aliyuncs.com/xxx.zip
 	SourcePath *string `json:"sourcePath,omitempty" xml:"sourcePath,omitempty"`
+	// The version of the module where the exported template is stored.
+	//
 	// example:
 	//
 	// v3
@@ -445,10 +527,13 @@ func (s *ListResourceExportTasksResponseBodyExportTasksModules) Validate() error
 }
 
 type ListResourceExportTasksResponseBodyExportTasksVariables struct {
+	// The list of Terraform resource properties corresponding to the resource type.
 	Properties []*string `json:"properties,omitempty" xml:"properties,omitempty" type:"Repeated"`
+	// The resource type.
+	//
 	// example:
 	//
-	// AliCloud::VPC::VPC
+	// ALIYUN::VPC::VSwitch
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 }
 

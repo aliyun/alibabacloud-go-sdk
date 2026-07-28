@@ -20,18 +20,34 @@ type iValidateModuleResponseBody interface {
 }
 
 type ValidateModuleResponseBody struct {
+	// The validation message.
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The validation ID.
+	//
 	// example:
 	//
 	// BF72A6FB-B07
 	ModuleValidationId *string `json:"moduleValidationId,omitempty" xml:"moduleValidationId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BF72A6FB-B071-5F2E-A036-9D62545B962C
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The validation result. Valid values:
+	//
+	// - Initializing: initialization in progress.
+	//
+	// - Validating: validation in progress.
+	//
+	// - Validated: validation succeeded.
+	//
+	// - Errored: validation failed.
+	//
 	// example:
 	//
 	// Validating

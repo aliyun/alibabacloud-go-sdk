@@ -18,18 +18,28 @@ type iAssociateDetectConfigRequest interface {
 }
 
 type AssociateDetectConfigRequest struct {
+	// Drift detection configuration ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dc-xxxx
 	DetectConfigId *string `json:"detectConfigId,omitempty" xml:"detectConfigId,omitempty"`
+	// Target ID to associate. StackId or TaskId
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// stack-xxxxx
 	TargetId *string `json:"targetId,omitempty" xml:"targetId,omitempty"`
+	// Target type to associate
+	//
+	// - Task: orchestration job
+	//
+	// - Stack: resource stack
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -18,16 +18,26 @@ type iDissociateDetectConfigRequest interface {
 }
 
 type DissociateDetectConfigRequest struct {
+	// Drift detection configuration ID
+	//
 	// example:
 	//
 	// dc-xxxx
 	DetectConfigId *string `json:"detectConfigId,omitempty" xml:"detectConfigId,omitempty"`
+	// ID of the association target. StackId or TaskId
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// stack-xxxx
 	TargetId *string `json:"targetId,omitempty" xml:"targetId,omitempty"`
+	// Type of the association target
+	//
+	// - Task: Orchestration job
+	//
+	// - Stack: Resource stack
+	//
 	// This parameter is required.
 	//
 	// example:

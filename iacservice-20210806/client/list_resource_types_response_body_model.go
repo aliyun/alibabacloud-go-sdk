@@ -22,19 +22,28 @@ type iListResourceTypesResponseBody interface {
 }
 
 type ListResourceTypesResponseBody struct {
+	// The maximum number of entries per page. Valid values: 0 to 200. Default value: 100.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token.
+	//
 	// example:
 	//
 	// LC4NJL3Ru2bIiRdnbADPQp4dD+2BRJj42DLT6GrZysw=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9bcaac3c-420d-4303-87ab-7638c07b0a0b
-	RequestId     *string                                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The resources.
 	ResourceTypes []*ListResourceTypesResponseBodyResourceTypes `json:"resourceTypes,omitempty" xml:"resourceTypes,omitempty" type:"Repeated"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 93
@@ -108,46 +117,79 @@ func (s *ListResourceTypesResponseBody) Validate() error {
 }
 
 type ListResourceTypesResponseBodyResourceTypes struct {
+	// The description.
+	//
+	// example:
+	//
+	// 路由表
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The product name.
+	//
 	// example:
 	//
 	// VPC
-	Product     *string `json:"product,omitempty" xml:"product,omitempty"`
+	Product *string `json:"product,omitempty" xml:"product,omitempty"`
+	// The product name.
+	//
+	// example:
+	//
+	// 专有网络VPC
 	ProductName *string `json:"productName,omitempty" xml:"productName,omitempty"`
+	// The URL of the resource details page.
+	//
 	// example:
 	//
 	// https://vpc.console.aliyun.com/vpc/${RegionId}/route-tables/${RouteTableId}
 	ResourceDetailPageUrl *string `json:"resourceDetailPageUrl,omitempty" xml:"resourceDetailPageUrl,omitempty"`
+	// The URL of the resources page.
+	//
 	// example:
 	//
 	// https://vpc.console.aliyun.com/vpc/${RegionId}/route-tables
 	ResourceListPageUrl *string `json:"resourceListPageUrl,omitempty" xml:"resourceListPageUrl,omitempty"`
 	ResourceType        *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// The resource status.
+	//
 	// example:
 	//
 	// Available
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The version from which the resource status takes effect.
+	//
 	// example:
 	//
 	// 1.0.0
 	StatusStartVersion *string `json:"statusStartVersion,omitempty" xml:"statusStartVersion,omitempty"`
+	// The product subcategory in Terraform.
+	//
 	// example:
 	//
 	// VPC
 	Subcategory *string `json:"subcategory,omitempty" xml:"subcategory,omitempty"`
+	// Specifies whether Terraformer is supported.
+	//
 	// example:
 	//
 	// true
 	SupportTerraformer *string `json:"supportTerraformer,omitempty" xml:"supportTerraformer,omitempty"`
+	// The Terraform provider version.
+	//
 	// example:
 	//
 	// 1.248.0
 	TerraformProviderVersion *string `json:"terraformProviderVersion,omitempty" xml:"terraformProviderVersion,omitempty"`
+	// The resource type in Terraform.
+	//
 	// example:
 	//
 	// alicloud_route_table
 	TerraformResourceType *string `json:"terraformResourceType,omitempty" xml:"terraformResourceType,omitempty"`
-	Title                 *string `json:"title,omitempty" xml:"title,omitempty"`
+	// The title.
+	//
+	// example:
+	//
+	// 路由表
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s ListResourceTypesResponseBodyResourceTypes) String() string {

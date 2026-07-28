@@ -22,19 +22,28 @@ type iListModulesResponseBody interface {
 }
 
 type ListModulesResponseBody struct {
+	// The list of templates.
 	Modules []*ListModulesResponseBodyModules `json:"modules,omitempty" xml:"modules,omitempty" type:"Repeated"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 100.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C617E03B-3DD2-5F0C-A6CF-3028B499A2D5
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 2790
@@ -108,37 +117,74 @@ func (s *ListModulesResponseBody) Validate() error {
 }
 
 type ListModulesResponseBodyModules struct {
+	// The time when the template was created.
+	//
 	// example:
 	//
 	// 2022-01-30T02:14:16Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// Indicates whether deletion protection is enabled. Deletion protection is automatically enabled when the template is associated with a node, which prevents the template from being deleted.
+	//
 	// example:
 	//
 	// false
 	DeletionProtection *bool `json:"deletionProtection,omitempty" xml:"deletionProtection,omitempty"`
+	// The description of the template.
+	//
 	// example:
 	//
-	// description
-	Description *string                                  `json:"description,omitempty" xml:"description,omitempty"`
-	GroupInfo   *ListModulesResponseBodyModulesGroupInfo `json:"groupInfo,omitempty" xml:"groupInfo,omitempty" type:"Struct"`
+	// this is description
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The group information.
+	GroupInfo *ListModulesResponseBodyModulesGroupInfo `json:"groupInfo,omitempty" xml:"groupInfo,omitempty" type:"Struct"`
+	// The latest version number.
+	//
 	// example:
 	//
 	// v1
 	LatestVersion *string `json:"latestVersion,omitempty" xml:"latestVersion,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// mod-518855d9a058cdbd3fd6951d59
 	ModuleId *string `json:"moduleId,omitempty" xml:"moduleId,omitempty"`
-	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The template name.
+	//
+	// example:
+	//
+	// ModuleName
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The template source. Valid values:
+	//
+	// - OSS: imported from OSS.
+	//
+	// - Registry: created from a template in the template center.
+	//
+	// - ExportTask: exported from a resource export task.
+	//
+	// - Upload: uploaded as a file.
+	//
+	// - Shared: cloned from a shared template.
+	//
+	// - Editor: created by using the online editor.
+	//
 	// example:
 	//
 	// OSS
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The template status. Valid values:
+	//
+	// - Creating: the template is being created.
+	//
+	// - Created: the template has been created. You can publish a version after the template is created.
+	//
 	// example:
 	//
 	// Created
-	Status *string                               `json:"status,omitempty" xml:"status,omitempty"`
-	Tags   []*ListModulesResponseBodyModulesTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The list of template tags.
+	Tags []*ListModulesResponseBodyModulesTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
 func (s ListModulesResponseBodyModules) String() string {
@@ -258,9 +304,29 @@ func (s *ListModulesResponseBodyModules) Validate() error {
 }
 
 type ListModulesResponseBodyModulesGroupInfo struct {
-	GroupId     *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	GroupName   *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	ProjectId   *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	// The group ID.
+	//
+	// example:
+	//
+	// g-kw1a58tb5m2j7rpsa6j25
+	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	// The group name.
+	//
+	// example:
+	//
+	// groupName
+	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	// The project ID.
+	//
+	// example:
+	//
+	// p-fu1a50tjdaff2lppddqsm
+	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	// The project name.
+	//
+	// example:
+	//
+	// projectName
 	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
 }
 
@@ -313,10 +379,30 @@ func (s *ListModulesResponseBodyModulesGroupInfo) Validate() error {
 }
 
 type ListModulesResponseBodyModulesTags struct {
-	Key      *string `json:"key,omitempty" xml:"key,omitempty"`
-	TagKey   *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	// The tag key of the template.
+	//
+	// example:
+	//
+	// TestKey
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag key of the template.
+	//
+	// example:
+	//
+	// TestKey
+	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	// The tag value of the template.
+	//
+	// example:
+	//
+	// TestValue
 	TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
-	Value    *string `json:"value,omitempty" xml:"value,omitempty"`
+	// The tag value of the template.
+	//
+	// example:
+	//
+	// TestValue
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s ListModulesResponseBodyModulesTags) String() string {

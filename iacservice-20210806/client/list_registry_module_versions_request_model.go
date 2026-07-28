@@ -20,22 +20,30 @@ type iListRegistryModuleVersionsRequest interface {
 }
 
 type ListRegistryModuleVersionsRequest struct {
+	// The number of entries per page in a paged query. Maximum value: 100. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The Registry template name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ecs-rds
+	// ModuleName
 	ModuleName *string `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
+	// The workspace name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// terraform-alicloud-modules
+	// MamespaceName
 	NamespaceName *string `json:"namespaceName,omitempty" xml:"namespaceName,omitempty"`
+	// The pagination token. Set this parameter to the NextToken value returned in the previous API call.
+	//
 	// example:
 	//
 	// TRkuCaTw/VsEHrnCZgrBA0ftQSEJU/lzo2ei7MJjplg=

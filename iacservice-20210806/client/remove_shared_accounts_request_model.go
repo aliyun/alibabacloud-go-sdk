@@ -18,19 +18,33 @@ type iRemoveSharedAccountsRequest interface {
 }
 
 type RemoveSharedAccountsRequest struct {
+	// The list of Alibaba Cloud account IDs.
+	//
 	// This parameter is required.
 	AccountIds []*int64 `json:"accountIds,omitempty" xml:"accountIds,omitempty" type:"Repeated"`
+	// The ID of the resource to unshare.
+	//
+	//  - If the type is Namespace, set this parameter to the workspace name.
+	//
+	// - If the type is RegistryModule, set this parameter to \\<namespaceName>/\\<ModuleName>.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// test_namespace
+	// terraform-alicloud-modules/mongodb
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// The resource type. Valid values:
+	//
+	// - RegistryModule: Registry template.
+	//
+	// - Namespace: workspace.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Namespace
+	// RegistryModule
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 }
 

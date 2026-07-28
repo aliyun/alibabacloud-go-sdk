@@ -14,6 +14,8 @@ type iUpdateProjectResponseBody interface {
 }
 
 type UpdateProjectResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// C62888F6-254D-5589-BF05-0D9EE698C187

@@ -18,12 +18,24 @@ type iDissociateGroupRequest interface {
 }
 
 type DissociateGroupRequest struct {
+	// The idempotence token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
+	//
 	// example:
 	//
 	// 2daf4227f747cbf11a5501f18cc5e004
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// The list of resource IDs.
+	//
 	// This parameter is required.
 	ResourceIds []*string `json:"resourceIds,omitempty" xml:"resourceIds,omitempty" type:"Repeated"`
+	// The resource type. Valid values:
+	//
+	// - Module: template.
+	//
+	// - SceneTestingTask: scenario-based testing task.
+	//
+	// - Task: regular task.
+	//
 	// example:
 	//
 	// Task

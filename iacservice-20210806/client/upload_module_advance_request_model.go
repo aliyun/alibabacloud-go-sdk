@@ -23,19 +23,28 @@ type iUploadModuleAdvanceRequest interface {
 }
 
 type UploadModuleAdvanceRequest struct {
+	// The template content.
 	Code map[string]*string `json:"code,omitempty" xml:"code,omitempty"`
+	// The module ID. This parameter is valid and required when resourceType is set to Module.
+	//
 	// example:
 	//
 	// mod-kw1018ogp2m3qp22b3k31d
 	ModuleId *string `json:"moduleId,omitempty" xml:"moduleId,omitempty"`
+	// The name of the module. This parameter is valid and required when resourceType is set to RegistryModule.
+	//
 	// example:
 	//
 	// RegistryModule-test0ef88
 	ModuleName *string `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
+	// The workspace name. This parameter is valid and required when resourceType is set to RegistryModule.
+	//
 	// example:
 	//
 	// test_namespace
 	NamespaceName *string `json:"namespaceName,omitempty" xml:"namespaceName,omitempty"`
+	// The local zip file to upload. The file size cannot exceed 10 MB.
+	//
 	// example:
 	//
 	// url

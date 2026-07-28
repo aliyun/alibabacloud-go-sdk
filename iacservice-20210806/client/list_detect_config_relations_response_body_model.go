@@ -18,13 +18,16 @@ type iListDetectConfigRelationsResponseBody interface {
 }
 
 type ListDetectConfigRelationsResponseBody struct {
+	// List of associations
 	DetectConfigRelations []*ListDetectConfigRelationsResponseBodyDetectConfigRelations `json:"detectConfigRelations,omitempty" xml:"detectConfigRelations,omitempty" type:"Repeated"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
 	// 0D797DC3-FF04-5C21-81EB-XXXXXXXXX
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 5
@@ -80,26 +83,42 @@ func (s *ListDetectConfigRelationsResponseBody) Validate() error {
 }
 
 type ListDetectConfigRelationsResponseBodyDetectConfigRelations struct {
+	// Association time
+	//
 	// example:
 	//
 	// 2026-04-08T08:53:07.000+00:00
 	AttachDate *string `json:"attachDate,omitempty" xml:"attachDate,omitempty"`
+	// Drift detection configuration ID
+	//
 	// example:
 	//
 	// dc-xxxx
 	DetectConfigId *string `json:"detectConfigId,omitempty" xml:"detectConfigId,omitempty"`
+	// Whether enabled
+	//
 	// example:
 	//
 	// true
 	Enabled *string `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// Target ID. StackId or TaskId
+	//
 	// example:
 	//
 	// stack-xxxx
 	TargetId *string `json:"targetId,omitempty" xml:"targetId,omitempty"`
+	// Target name
+	//
 	// example:
 	//
 	// stack-name-xxx
 	TargetName *string `json:"targetName,omitempty" xml:"targetName,omitempty"`
+	// Target type
+	//
+	// - Task: orchestration job
+	//
+	// - Stack: resource stack
+	//
 	// example:
 	//
 	// Stack

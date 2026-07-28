@@ -18,14 +18,20 @@ type iUpdateResourceExportTaskAttributeResponseBody interface {
 }
 
 type UpdateResourceExportTaskAttributeResponseBody struct {
+	// The ID of the resource export task.
+	//
 	// example:
 	//
 	// ex-kw161ol8te1n701e1igt8q8
 	ExportTaskId *string `json:"exportTaskId,omitempty" xml:"exportTaskId,omitempty"`
+	// The version of the export task.
+	//
 	// example:
 	//
 	// v1
 	ExportVersion *string `json:"exportVersion,omitempty" xml:"exportVersion,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B43F08A7-F2A3-54D3-BDA4-69C9F32A7B9F

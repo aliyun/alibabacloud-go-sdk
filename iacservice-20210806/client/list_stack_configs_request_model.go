@@ -20,18 +20,50 @@ type iListStackConfigsRequest interface {
 }
 
 type ListStackConfigsRequest struct {
+	// The maximum number of records to read in this request. Default value: 20. Maximum value: 200.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token that marks the position from which to start reading. Leave empty to start from the beginning.
+	//
 	// example:
 	//
 	// s8UVlnE23gZvjCvCwkoZ7Z4dD+2BRJj42DLT6GrZysw=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The status of the stack configuration.
+	//
+	// | Name | Description |
+	//
+	// |------|------|
+	//
+	// | Creating | Being created. |
+	//
+	// | Created | Created. |
+	//
+	// | Waiting | Waiting for deployment. |
+	//
+	// | Deploying | Being deployed. |
+	//
+	// | Deployed | Deployed. |
+	//
+	// | Errored | Deployment failed. |
+	//
+	// | Deleting | Being deleted. |
+	//
+	// | Deleted | Deleted. |
+	//
+	// | DeleteFailed | Deletion failed. |
+	//
+	// | DetectTriggered | Drift detection triggered. |.
+	//
 	// example:
 	//
 	// Deployed
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The version number of the stack configuration, such as v1. The initial value is v1. The version number increments each time the stack is updated or refreshed and the configuration changes.
+	//
 	// example:
 	//
 	// v4

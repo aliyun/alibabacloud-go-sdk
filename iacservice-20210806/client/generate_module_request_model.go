@@ -26,30 +26,55 @@ type iGenerateModuleRequest interface {
 }
 
 type GenerateModuleRequest struct {
+	// The generation source. Valid values:
+	//
+	// - Resource: Generates a Terraform HCL template based on resource properties.
+	//
+	// - VariableToCode: Generates a final Terraform HCL template by combining variables with an existing Terraform HCL template.
+	//
+	// - CodeToVariable: Extracts variable information from a Terraform HCL template.
+	//
+	// - Module: Generates Terraform Module code based on variables.
+	//
 	// example:
 	//
 	// Resource
-	GenerateSource *string                `json:"generateSource,omitempty" xml:"generateSource,omitempty"`
-	Parameters     map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
+	GenerateSource *string `json:"generateSource,omitempty" xml:"generateSource,omitempty"`
+	// The collection of parameters, passed in key:value format, such as {"vpc_name":"vpc-test"}.
+	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The syntax. Valid values:
+	//
+	// - hcl (default).
+	//
 	// example:
 	//
-	// terraform
+	// hcl
 	Syntax *string `json:"syntax,omitempty" xml:"syntax,omitempty"`
+	// The existing Terraform HCL template content.
+	//
 	// example:
 	//
-	// generateSource ==
+	// terraform {
+	//
+	// }
 	Template *string `json:"template,omitempty" xml:"template,omitempty"`
+	// The Terraform provider version.
+	//
 	// example:
 	//
-	// 1.189.0
+	// 1.260.0
 	TerraformProviderVersion *string `json:"terraformProviderVersion,omitempty" xml:"terraformProviderVersion,omitempty"`
+	// The Terraform resource type.
+	//
 	// example:
 	//
-	// alicloud_db_instance
+	// alicloud_vpc
 	TerraformResourceType *string `json:"terraformResourceType,omitempty" xml:"terraformResourceType,omitempty"`
 }
 

@@ -22,17 +22,32 @@ type iListTerraformProviderVersionsResponseBody interface {
 }
 
 type ListTerraformProviderVersionsResponseBody struct {
-	MaxResults *int32  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	NextToken  *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The maximum number of records retrieved in a single request.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token for the next page. An empty value indicates that no more pages are available.
+	//
+	// example:
+	//
+	// rnD7wyAII+yDi0UGlV519J4dD+2BRJj42DLT6GrZysw=
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 73588ebb-9d40-4660-a59f-764636ae6034
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 50
-	TotalCount *int32                                               `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
-	Versions   []*ListTerraformProviderVersionsResponseBodyVersions `json:"versions,omitempty" xml:"versions,omitempty" type:"Repeated"`
+	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	// The list of versions.
+	Versions []*ListTerraformProviderVersionsResponseBodyVersions `json:"versions,omitempty" xml:"versions,omitempty" type:"Repeated"`
 }
 
 func (s ListTerraformProviderVersionsResponseBody) String() string {
@@ -102,9 +117,24 @@ func (s *ListTerraformProviderVersionsResponseBody) Validate() error {
 }
 
 type ListTerraformProviderVersionsResponseBodyVersions struct {
+	// The publish time.
+	//
+	// example:
+	//
+	// 2025-01-24T05:06:51Z
 	PublishedTime *string `json:"publishedTime,omitempty" xml:"publishedTime,omitempty"`
-	Status        *string `json:"status,omitempty" xml:"status,omitempty"`
-	Version       *string `json:"version,omitempty" xml:"version,omitempty"`
+	// The status.
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The version.
+	//
+	// example:
+	//
+	// 1.242.0
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s ListTerraformProviderVersionsResponseBodyVersions) String() string {

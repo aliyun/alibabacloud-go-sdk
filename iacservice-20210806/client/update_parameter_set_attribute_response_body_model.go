@@ -14,6 +14,8 @@ type iUpdateParameterSetAttributeResponseBody interface {
 }
 
 type UpdateParameterSetAttributeResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 81CF7E18-D318-5670-9A4D-C08476BC4899

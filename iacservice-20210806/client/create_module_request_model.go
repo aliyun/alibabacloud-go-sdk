@@ -30,44 +30,84 @@ type iCreateModuleRequest interface {
 }
 
 type CreateModuleRequest struct {
+	// The idempotency parameter. We recommend that you use a UUID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// a65451293e64979ba7a4b573950217fe
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// The description of the template. The description can be up to 256 characters in length.
+	//
 	// example:
 	//
-	// test
-	Description *string                       `json:"description,omitempty" xml:"description,omitempty"`
-	GroupInfo   *CreateModuleRequestGroupInfo `json:"groupInfo,omitempty" xml:"groupInfo,omitempty" type:"Struct"`
+	// ECS instance module
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The project group information to which the template belongs.
+	GroupInfo *CreateModuleRequestGroupInfo `json:"groupInfo,omitempty" xml:"groupInfo,omitempty" type:"Struct"`
+	// The name of the template. The name must meet the following requirements:
+	//
+	// - The name must be 2 to 128 characters in length.
+	//
+	// - The name can contain letters, digits, Chinese characters, hyphens (-), underscores (_), and periods (.). The name cannot start or end with a hyphen, underscore, or period.
+	//
+	// - The name must be unique among all templates under the current account.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// test
+	// my-ecs-module
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The source from which the template is created. Valid values:
+	//
+	// - OSS: imports from a ZIP file stored in OSS.
+	//
+	// - Registry: creates from a module in the template registry.
+	//
+	// - ExportTask: references a template exported by a resource export task.
+	//
+	// - Editor: creates a blank template that supports online editing.
+	//
+	// - Upload: uploads a local template file to generate the template.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OSS
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The path of the template source. This parameter takes effect when source is set to Registry, OSS, or ExportTask.
+	//
+	// - If source is set to Registry, the value is in the format of \\<workspace name>/\\<module name>:\\<module version>. Example: terraform-alicloud-modules/rds:1.0.0.
+	//
+	// - If source is set to OSS, the value is in the format of oss::<file URL>. The file must be a ZIP file. Example: oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip.
+	//
+	// - If source is set to ExportTask, the value is in the format of \\<export task ID>:\\<exported version>. Example: ex-3b6cb9fa4751afff298da723c24ac:v1.
+	//
+	// - If source is set to Editor or Upload, leave this parameter empty.
+	//
 	// example:
 	//
-	// OSS：
-	//
-	// "oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip"
-	//
-	// Registry：
-	//
-	// "alibaba/security-group/alicloud:2.1.0"
+	// oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip
 	SourcePath *string `json:"sourcePath,omitempty" xml:"sourcePath,omitempty"`
+	// The path of the State file that corresponds to the template. This parameter is valid only when source is set to OSS.
+	//
+	// The value is in the format of oss::\\<OSS file path>/terraform.tfstate.
+	//
 	// example:
 	//
 	// oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/terraform.tfstate
-	StatePath *string                    `json:"statePath,omitempty" xml:"statePath,omitempty"`
-	Tags      []*CreateModuleRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	StatePath *string `json:"statePath,omitempty" xml:"statePath,omitempty"`
+	// The list of tags for the template.
+	Tags []*CreateModuleRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The version generation strategy. Valid values:
+	//
+	// - Manual: manually generates a version. This is the default value.
+	//
+	// - SourcePathUpdated: generates a new version when sourcePath is modified.
+	//
 	// example:
 	//
 	// Manual
@@ -182,10 +222,14 @@ func (s *CreateModuleRequest) Validate() error {
 }
 
 type CreateModuleRequestGroupInfo struct {
+	// The group ID.
+	//
 	// example:
 	//
 	// g-5fd38c9b92d541a7083a86432e2
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// p-433aead75605713865c386cb9d
@@ -223,7 +267,17 @@ func (s *CreateModuleRequestGroupInfo) Validate() error {
 }
 
 type CreateModuleRequestTags struct {
-	TagKey   *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	// The tag key of the template.
+	//
+	// example:
+	//
+	// TestKey
+	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	// The tag value of the template.
+	//
+	// example:
+	//
+	// TestValue
 	TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
 }
 

@@ -22,26 +22,50 @@ type iListResourcesRequest interface {
 }
 
 type ListResourcesRequest struct {
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 200.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The type of the resource source. Valid values:
+	//
+	// - ExportTaskId: resource export ID
+	//
+	// - TaskId: Module execution task ID
+	//
+	// - StatePath: the OSS path where the resource state is stored.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// TaskId
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	// The specific value of the resource source.
+	//
+	// - If sourceType is set to ExportTaskId, the format is ExportTaskId:Version.
+	//
+	// - If sourceType is set to TaskId, the format is TaskId.
+	//
+	// - If sourceType is set to StatePath, the format is the download URL of the State file.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// task-235436dsfdgd
 	SourceValue *string `json:"sourceValue,omitempty" xml:"sourceValue,omitempty"`
+	// The specification that resource properties follow in the response. Valid values: CloudSpec, Terraform.
+	//
+	// Default value: CloudSpec.
+	//
 	// This parameter is required.
 	//
 	// example:

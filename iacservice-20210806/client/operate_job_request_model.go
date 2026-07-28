@@ -16,12 +16,23 @@ type iOperateJobRequest interface {
 }
 
 type OperateJobRequest struct {
+	// The description. The length is 0 to 128 characters.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dasd
-	Comment  *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	// The task type. Valid values:
+	//
+	// - Task: regular task (default).
+	//
+	// - SceneTestingTask: scenario-based testing task.
+	//
+	// example:
+	//
+	// Task
 	TaskType *string `json:"taskType,omitempty" xml:"taskType,omitempty"`
 }
 

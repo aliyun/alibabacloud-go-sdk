@@ -26,21 +26,38 @@ type iListModulesShrinkRequest interface {
 }
 
 type ListModulesShrinkRequest struct {
+	// The group ID.
+	//
+	// example:
+	//
+	// g-kw1a50tj8rk7cki2q8bbat
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	// The search keyword. Fuzzy match is supported for template names.
+	//
 	// example:
 	//
 	// key
 	Keyword    *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
 	ModuleName *string `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 100.
+	//
 	// example:
 	//
 	// 20
-	PageSize  *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The project ID.
+	//
+	// example:
+	//
+	// p-al1c58tb2lu9oej36kclvf
 	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	// The list of template tags.
 	TagShrink *string `json:"tag,omitempty" xml:"tag,omitempty"`
 }
 

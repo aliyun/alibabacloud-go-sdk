@@ -18,15 +18,27 @@ type iUpdateRegistryNamespaceAttributeRequest interface {
 }
 
 type UpdateRegistryNamespaceAttributeRequest struct {
+	// The access permission. Valid values:
+	//
+	// - private: private access.
+	//
 	// example:
 	//
 	// private
 	Acl *string `json:"acl,omitempty" xml:"acl,omitempty"`
+	// The idempotence token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
+	//
 	// This parameter is required.
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	//
 	// example:
 	//
-	// 123
+	// 2da11a5501f18cc5e004
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// The description of the workspace.
+	//
+	// example:
+	//
+	// description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 }
 

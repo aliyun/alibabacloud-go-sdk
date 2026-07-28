@@ -14,6 +14,8 @@ type iGetResourceExportTaskRequest interface {
 }
 
 type GetResourceExportTaskRequest struct {
+	// The export version.
+	//
 	// example:
 	//
 	// v3

@@ -22,19 +22,28 @@ type iListRegistryNamespacesResponseBody interface {
 }
 
 type ListRegistryNamespacesResponseBody struct {
+	// The total number of records.
+	//
 	// example:
 	//
 	// 53
 	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
+	// The maximum number of records returned at a time.
+	//
 	// example:
 	//
 	// 24
-	MaxResults *int32                                          `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The list of workspaces.
 	Namespaces []*ListRegistryNamespacesResponseBodyNamespaces `json:"namespaces,omitempty" xml:"namespaces,omitempty" type:"Repeated"`
+	// The token for the next page. A value of null indicates that no more pages are available.
+	//
 	// example:
 	//
-	// IPTL1Zpr1andEF4lQ3XAYFTgtpI04QQpc5dyKpESXBc=
+	// IPTL1XAYFTgtpI04QQpc5dyKpESXBc=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5FFB0033-A016-5A9D-9283-C123AAA7F71D
@@ -108,31 +117,46 @@ func (s *ListRegistryNamespacesResponseBody) Validate() error {
 }
 
 type ListRegistryNamespacesResponseBodyNamespaces struct {
+	// The permissions.
+	//
 	// example:
 	//
 	// private
 	Acl *string `json:"acl,omitempty" xml:"acl,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2025-01-15T02:16:58Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The workspace description.
+	//
 	// example:
 	//
-	// dd
+	// description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The administrator name.
+	//
 	// example:
 	//
 	// admin
 	Maintainer *string `json:"maintainer,omitempty" xml:"maintainer,omitempty"`
+	// The number of Registry templates in the workspace.
+	//
 	// example:
 	//
 	// 21
 	Modules *int32 `json:"modules,omitempty" xml:"modules,omitempty"`
+	// The workspace name.
+	//
 	// example:
 	//
-	// test_namespace
-	NamespaceName  *string  `json:"namespaceName,omitempty" xml:"namespaceName,omitempty"`
+	// NamespaceName
+	NamespaceName *string `json:"namespaceName,omitempty" xml:"namespaceName,omitempty"`
+	// The list of shared accounts.
 	SharedAccounts []*int64 `json:"sharedAccounts,omitempty" xml:"sharedAccounts,omitempty" type:"Repeated"`
+	// The workspace type.
+	//
 	// example:
 	//
 	// shared

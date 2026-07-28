@@ -26,30 +26,52 @@ type iListProductsRequest interface {
 }
 
 type ListProductsRequest struct {
+	// The keyword for searching products. Fuzzy match is supported.
+	//
 	// example:
 	//
 	// ECS
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	// The maximum number of results per page. Valid values: 0 to 200. Default value: 100.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token.
+	//
 	// example:
 	//
 	// eyJ0b2tlbiI6IjEwMjM0NTY3ODkwIn0=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The sort order. Valid values:
+	//
+	// - Normal: default sorting (default value)
+	//
+	// - Top: sorted by popularity.
+	//
 	// example:
 	//
 	// Normal
 	Sort *string `json:"sort,omitempty" xml:"sort,omitempty"`
+	// The status. Valid values:
+	//
+	// - Available
+	//
+	// - Deprecated.
+	//
 	// example:
 	//
 	// Available
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Specifies whether Terraformer is supported.
+	//
 	// example:
 	//
 	// true
 	SupportTerraformer *bool `json:"supportTerraformer,omitempty" xml:"supportTerraformer,omitempty"`
+	// The Terraform Provider version. If this parameter is left empty, the latest version is used by default.
+	//
 	// example:
 	//
 	// 1.227.0

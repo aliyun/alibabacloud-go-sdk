@@ -34,47 +34,82 @@ type iListResourceTypesRequest interface {
 }
 
 type ListResourceTypesRequest struct {
+	// The language of the response. Valid values:
+	//
+	// - zh-CN: Chinese.
+	//
+	// - en-US: English.
+	//
+	// Default value: zh-CN.
+	//
 	// example:
 	//
 	// zh-CN
 	AcceptLanguage *string `json:"acceptLanguage,omitempty" xml:"acceptLanguage,omitempty"`
+	// The keyword for searching resource codes or names. Fuzzy match is supported.
+	//
 	// example:
 	//
 	// vpc
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	// The maximum number of entries per page. Valid values: 0 to 200. Default value: 100.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token.
+	//
 	// example:
 	//
 	// tokenForNextPage
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The product code. Fuzzy match is supported.
+	//
 	// example:
 	//
 	// ECS
 	Product *string `json:"product,omitempty" xml:"product,omitempty"`
+	// The order in which resource types are returned. Valid values:
+	//
+	// - Normal (default): returned in normal order.
+	//
+	// - Top: returned in order of popularity.
+	//
 	// example:
 	//
 	// Normal
 	Sort *string `json:"sort,omitempty" xml:"sort,omitempty"`
+	// The status filter list. Valid values:
+	//
+	// - Available
+	//
+	// - Deprecated.
+	//
 	// example:
 	//
 	// Available,Deprecated
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The product subcategory in Terraform.
+	//
 	// example:
 	//
 	// compute
 	Subcategory *string `json:"subcategory,omitempty" xml:"subcategory,omitempty"`
+	// Specifies whether Terraformer is supported.
+	//
 	// example:
 	//
 	// true
 	SupportTerraformer *bool `json:"supportTerraformer,omitempty" xml:"supportTerraformer,omitempty"`
+	// The Terraform provider version. If this parameter is left empty, the latest version is used by default.
+	//
 	// example:
 	//
 	// 1.227.0
-	TerraformProviderVersion *string   `json:"terraformProviderVersion,omitempty" xml:"terraformProviderVersion,omitempty"`
-	TerraformResourceTypes   []*string `json:"terraformResourceTypes,omitempty" xml:"terraformResourceTypes,omitempty" type:"Repeated"`
+	TerraformProviderVersion *string `json:"terraformProviderVersion,omitempty" xml:"terraformProviderVersion,omitempty"`
+	// The Terraform resources.
+	TerraformResourceTypes []*string `json:"terraformResourceTypes,omitempty" xml:"terraformResourceTypes,omitempty" type:"Repeated"`
 }
 
 func (s ListResourceTypesRequest) String() string {

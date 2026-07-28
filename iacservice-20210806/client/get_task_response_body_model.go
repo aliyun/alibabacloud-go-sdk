@@ -16,13 +16,14 @@ type iGetTaskResponseBody interface {
 }
 
 type GetTaskResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// C24C498A-09CF-54D3-8972-8DC074CF8614
-	RequestId *string                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Task      *GetTaskResponseBodyTask `json:"task,omitempty" xml:"task,omitempty" type:"Struct"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The task information.
+	Task *GetTaskResponseBodyTask `json:"task,omitempty" xml:"task,omitempty" type:"Struct"`
 }
 
 func (s GetTaskResponseBody) String() string {
@@ -61,65 +62,143 @@ func (s *GetTaskResponseBody) Validate() error {
 }
 
 type GetTaskResponseBodyTask struct {
+	// Indicates whether the task is automatically executed.
+	//
 	// example:
 	//
 	// true
 	AutoApply *bool `json:"autoApply,omitempty" xml:"autoApply,omitempty"`
+	// Indicates whether automatic deletion is enabled. When enabled, resources are automatically destroyed after the task is completed.
+	//
 	// example:
 	//
 	// false
 	AutoDestroy *bool `json:"autoDestroy,omitempty" xml:"autoDestroy,omitempty"`
+	// The time when the task was created.
+	//
 	// example:
 	//
 	// 2022-06-15T02:44:37Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The job ID of the current task.
+	//
 	// example:
 	//
 	// job-absdf
-	CurrentJobId       *string `json:"currentJobId,omitempty" xml:"currentJobId,omitempty"`
-	CurrentJobStatus   *string `json:"currentJobStatus,omitempty" xml:"currentJobStatus,omitempty"`
-	DeletionProtection *bool   `json:"deletionProtection,omitempty" xml:"deletionProtection,omitempty"`
+	CurrentJobId *string `json:"currentJobId,omitempty" xml:"currentJobId,omitempty"`
+	// The current job status.
+	//
 	// example:
 	//
-	// demo
-	Description         *string                           `json:"description,omitempty" xml:"description,omitempty"`
-	GroupInfo           *GetTaskResponseBodyTaskGroupInfo `json:"groupInfo,omitempty" xml:"groupInfo,omitempty" type:"Struct"`
-	InitModuleState     *bool                             `json:"initModuleState,omitempty" xml:"initModuleState,omitempty"`
-	LatestModuleVersion *string                           `json:"latestModuleVersion,omitempty" xml:"latestModuleVersion,omitempty"`
+	// Planned
+	CurrentJobStatus *string `json:"currentJobStatus,omitempty" xml:"currentJobStatus,omitempty"`
+	// Indicates whether deletion protection is enabled.
+	//
+	// example:
+	//
+	// true
+	DeletionProtection *bool `json:"deletionProtection,omitempty" xml:"deletionProtection,omitempty"`
+	// The description of the task.
+	//
+	// example:
+	//
+	// this is description
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The group information.
+	GroupInfo *GetTaskResponseBodyTaskGroupInfo `json:"groupInfo,omitempty" xml:"groupInfo,omitempty" type:"Struct"`
+	// Specifies whether to use a state file. Default value: false. This parameter is applicable to templates that originate from resource export. Only one task can use this parameter at a time.
+	//
+	// example:
+	//
+	// false
+	InitModuleState *bool `json:"initModuleState,omitempty" xml:"initModuleState,omitempty"`
+	// The latest version number of the template.
+	//
+	// example:
+	//
+	// v3
+	LatestModuleVersion *string `json:"latestModuleVersion,omitempty" xml:"latestModuleVersion,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// mod-4267dcfbf1b6d14625614ddbe15
-	ModuleId   *string `json:"moduleId,omitempty" xml:"moduleId,omitempty"`
+	ModuleId *string `json:"moduleId,omitempty" xml:"moduleId,omitempty"`
+	// The template name.
+	//
+	// example:
+	//
+	// moduleName
 	ModuleName *string `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
+	// The template version.
+	//
 	// example:
 	//
 	// v2
-	ModuleVersion      *string   `json:"moduleVersion,omitempty" xml:"moduleVersion,omitempty"`
-	Name               *string   `json:"name,omitempty" xml:"name,omitempty"`
-	ProtectionStrategy []*string `json:"protectionStrategy,omitempty" xml:"protectionStrategy,omitempty" type:"Repeated"`
+	ModuleVersion *string `json:"moduleVersion,omitempty" xml:"moduleVersion,omitempty"`
+	// The task name.
+	//
 	// example:
 	//
-	// {}
-	RamRole                *string `json:"ramRole,omitempty" xml:"ramRole,omitempty"`
-	SkipPropertyValidation *bool   `json:"skipPropertyValidation,omitempty" xml:"skipPropertyValidation,omitempty"`
+	// TaskName
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The list of resource protection strategies.
+	ProtectionStrategy []*string `json:"protectionStrategy,omitempty" xml:"protectionStrategy,omitempty" type:"Repeated"`
+	// The RAM role.
+	//
+	// example:
+	//
+	// role
+	RamRole *string `json:"ramRole,omitempty" xml:"ramRole,omitempty"`
+	// Specifies whether to skip enumeration value validation. Default value: false.
+	//
+	// example:
+	//
+	// false
+	SkipPropertyValidation *bool `json:"skipPropertyValidation,omitempty" xml:"skipPropertyValidation,omitempty"`
+	SkipRegionValidation   *bool `json:"skipRegionValidation,omitempty" xml:"skipRegionValidation,omitempty"`
+	// The task status. Valid values:
+	//
+	// - Available: the task is available and no job is running.
+	//
+	// - Running: a job is currently running.
+	//
 	// example:
 	//
 	// Running
-	Status      *string                             `json:"status,omitempty" xml:"status,omitempty"`
-	Tags        []*GetTaskResponseBodyTaskTags      `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The list of task tags.
+	Tags []*GetTaskResponseBodyTaskTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The task backend configuration. After this parameter is configured, runtime log information is saved to the specified OSS bucket.
 	TaskBackend *GetTaskResponseBodyTaskTaskBackend `json:"taskBackend,omitempty" xml:"taskBackend,omitempty" type:"Struct"`
+	// The task ID.
+	//
 	// example:
 	//
 	// task-433aead756057154bda7f1c2e98
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// The task output path.
+	//
 	// example:
 	//
 	// /
 	TaskOutputPath *string `json:"taskOutputPath,omitempty" xml:"taskOutputPath,omitempty"`
+	// The Terraform version.
+	//
 	// example:
 	//
-	// 1.2.6
+	// 1.5.7
 	TerraformVersion *string `json:"terraformVersion,omitempty" xml:"terraformVersion,omitempty"`
+	// The job trigger method. Valid values:
+	//
+	// - Manual: manually triggered (default).
+	//
+	// - NewVersion: triggered when a new template version is published.
+	//
+	// - ParameterSetUpdated: triggered when the parameter set content changes or the parameter set attach relationship changes.
+	//
+	// - Auto: automatically triggered when the task properties change, such as task creation, execution version change, or job trigger policy change (when changed from another value to Auto).
+	//
 	// example:
 	//
 	// Manual
@@ -200,6 +279,10 @@ func (s *GetTaskResponseBodyTask) GetRamRole() *string {
 
 func (s *GetTaskResponseBodyTask) GetSkipPropertyValidation() *bool {
 	return s.SkipPropertyValidation
+}
+
+func (s *GetTaskResponseBodyTask) GetSkipRegionValidation() *bool {
+	return s.SkipRegionValidation
 }
 
 func (s *GetTaskResponseBodyTask) GetStatus() *string {
@@ -315,6 +398,11 @@ func (s *GetTaskResponseBodyTask) SetSkipPropertyValidation(v bool) *GetTaskResp
 	return s
 }
 
+func (s *GetTaskResponseBodyTask) SetSkipRegionValidation(v bool) *GetTaskResponseBodyTask {
+	s.SkipRegionValidation = &v
+	return s
+}
+
 func (s *GetTaskResponseBodyTask) SetStatus(v string) *GetTaskResponseBodyTask {
 	s.Status = &v
 	return s
@@ -374,18 +462,26 @@ func (s *GetTaskResponseBodyTask) Validate() error {
 }
 
 type GetTaskResponseBodyTaskGroupInfo struct {
+	// The group ID.
+	//
 	// example:
 	//
 	// g-59d8d22e78792ffe3d3eb6154d727
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	// The group name.
+	//
 	// example:
 	//
 	// abc
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// p-433aead756057fff47ecbfd94d76
 	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// abc
@@ -441,7 +537,17 @@ func (s *GetTaskResponseBodyTaskGroupInfo) Validate() error {
 }
 
 type GetTaskResponseBodyTaskTags struct {
-	TagKey   *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	// The tag key of the task.
+	//
+	// example:
+	//
+	// TestKey
+	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	// The tag value of the task.
+	//
+	// example:
+	//
+	// TestValue
 	TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
 }
 
@@ -476,9 +582,24 @@ func (s *GetTaskResponseBodyTaskTags) Validate() error {
 }
 
 type GetTaskResponseBodyTaskTaskBackend struct {
+	// The endpoint information.
+	//
+	// example:
+	//
+	// ss-cn-beijing.aliyuncs.com
 	BucketEndpoint *string `json:"bucketEndpoint,omitempty" xml:"bucketEndpoint,omitempty"`
-	BucketName     *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
-	ObjectPath     *string `json:"objectPath,omitempty" xml:"objectPath,omitempty"`
+	// The bucket name.
+	//
+	// example:
+	//
+	// iac-runtime-test
+	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
+	// The object path.
+	//
+	// example:
+	//
+	// /log
+	ObjectPath *string `json:"objectPath,omitempty" xml:"objectPath,omitempty"`
 }
 
 func (s GetTaskResponseBodyTaskTaskBackend) String() string {

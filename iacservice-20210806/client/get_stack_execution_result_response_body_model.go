@@ -25,8 +25,11 @@ type GetStackExecutionResultResponseBody struct {
 	// example:
 	//
 	// F2D40488-3F74-568B-87EC-1C04D098DF8B
-	RequestId    *string                                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The execution results of the triggered stacks.
 	StackResults []*GetStackExecutionResultResponseBodyStackResults `json:"stackResults,omitempty" xml:"stackResults,omitempty" type:"Repeated"`
+	// The unique ID of the trigger.
+	//
 	// example:
 	//
 	// event-xxx
@@ -92,19 +95,36 @@ func (s *GetStackExecutionResultResponseBody) Validate() error {
 }
 
 type GetStackExecutionResultResponseBodyStackResults struct {
+	// The deployment results of the stack.
 	Deployments []*GetStackExecutionResultResponseBodyStackResultsDeployments `json:"deployments,omitempty" xml:"deployments,omitempty" type:"Repeated"`
+	// The error message.
+	//
 	// example:
 	//
 	// No corresponding Stack found.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The unique identifier of the stack.
+	//
 	// example:
 	//
 	// stack-al181av2bloah5s53hacbp4
 	StackId *string `json:"stackId,omitempty" xml:"stackId,omitempty"`
+	// The stack name.
+	//
 	// example:
 	//
 	// stack-demo
 	StackName *string `json:"stackName,omitempty" xml:"stackName,omitempty"`
+	// The execution status of the stack. Valid values:
+	//
+	// - Deploying: deploying
+	//
+	// - Errored: deployment failed
+	//
+	// - Deployed: deployment completed
+	//
+	// - Waiting: waiting for deployment.
+	//
 	// example:
 	//
 	// Deployed
@@ -178,18 +198,26 @@ func (s *GetStackExecutionResultResponseBodyStackResults) Validate() error {
 }
 
 type GetStackExecutionResultResponseBodyStackResultsDeployments struct {
+	// The deployment name.
+	//
 	// example:
 	//
 	// prod
 	DeploymentName *string `json:"deploymentName,omitempty" xml:"deploymentName,omitempty"`
+	// The result of the deployment task.
+	//
 	// example:
 	//
 	// Service returned null result
 	JobResult *string `json:"jobResult,omitempty" xml:"jobResult,omitempty"`
+	// The deployment status.
+	//
 	// example:
 	//
 	// Applied
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The URL to view the deployment details.
+	//
 	// example:
 	//
 	// https://iacnext.console.aliyun.com/stack/stack-al181av2bloah5s53hacbp4/details?deploymentName=production&deploymentNo=6&configVersion=v1

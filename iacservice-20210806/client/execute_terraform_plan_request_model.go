@@ -18,12 +18,16 @@ type iExecuteTerraformPlanRequest interface {
 }
 
 type ExecuteTerraformPlanRequest struct {
+  // The idempotency token. Format: [0-9a-zA-Z-]{1,64}. We recommend that you use a UUID.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // a65451293e64979ba7a4b573950217fe
   ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+  // The Terraform code to execute. If the execution content has not changed, you can specify only stateId.
+  // 
   // example:
   // 
   // terraform {
@@ -58,6 +62,8 @@ type ExecuteTerraformPlanRequest struct {
   // 
   // }
   Code *string `json:"code,omitempty" xml:"code,omitempty"`
+  // The ID of the state file. If this parameter is specified, the Plan command continues to run based on the existing state file.
+  // 
   // example:
   // 
   // task-xxx

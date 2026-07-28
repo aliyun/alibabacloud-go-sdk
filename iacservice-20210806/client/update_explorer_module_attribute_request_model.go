@@ -18,14 +18,20 @@ type iUpdateExplorerModuleAttributeRequest interface {
 }
 
 type UpdateExplorerModuleAttributeRequest struct {
+	// The idempotence token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
+	//
 	// example:
 	//
 	// a65451293e64979ba7a4b573950217fe
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// The template description. Length: 0 to 255 characters.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The template name. Length: 1 to 128 characters. The name must be unique.
+	//
 	// example:
 	//
 	// test

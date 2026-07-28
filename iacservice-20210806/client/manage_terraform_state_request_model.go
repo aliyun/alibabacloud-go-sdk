@@ -24,34 +24,54 @@ type iManageTerraformStateRequest interface {
 }
 
 type ManageTerraformStateRequest struct {
+	// The action to perform on the state file. Supports import and removal. Valid values:
+	//
+	// - Import
+	//
+	// - StateRemove.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Import
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+	// The idempotence token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// a65451293e64979ba7a4b573950217fe
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// The task identifier. For Stack tasks, the format is <$stackId>:<$deploymentName>. For Task tasks, the format is <$TaskId>.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// stack-as11xxxxxxxxx:developmentA
 	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// The actual resource ID of the Terraform resource.
+	//
 	// example:
 	//
 	// vsw-xxxxxxxx
 	ImportResourceId *string `json:"importResourceId,omitempty" xml:"importResourceId,omitempty"`
+	// The resource identifier in the Terraform template. For Stack tasks, the format is <$componetName>:<$resourceName>. For Task tasks, the format is <$resourceName>.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// vpc:alicloud_vswitch.vswitches[0]
 	ResourceIdentifier *string `json:"resourceIdentifier,omitempty" xml:"resourceIdentifier,omitempty"`
+	// The task type. Valid values:
+	//
+	// - Stack
+	//
+	// - Task.
+	//
 	// This parameter is required.
 	//
 	// example:

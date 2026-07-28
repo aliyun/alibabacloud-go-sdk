@@ -22,19 +22,28 @@ type iListGroupResponseBody interface {
 }
 
 type ListGroupResponseBody struct {
+	// The total number of records.
+	//
 	// example:
 	//
 	// 3
-	Count  *int64                         `json:"count,omitempty" xml:"count,omitempty"`
+	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
+	// The list of service group IDs.
 	Groups []*ListGroupResponseBodyGroups `json:"groups,omitempty" xml:"groups,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The page size, which indicates the maximum number of results returned per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B6ED9F71-7FA8-598E-B64D-4606FB3FCCC9
@@ -108,39 +117,58 @@ func (s *ListGroupResponseBody) Validate() error {
 }
 
 type ListGroupResponseBodyGroups struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2022-09-14T07:19:13Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The group description.
+	//
 	// example:
 	//
 	// OK
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The group ID.
+	//
 	// example:
 	//
 	// g-148e7853433574fffe9fec72ed9b73
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	// Indicates whether the group is the default group.
+	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"isDefault,omitempty" xml:"isDefault,omitempty"`
+	// The number of templates.
+	//
 	// example:
 	//
 	// 1
 	ModuleCnt *int64 `json:"moduleCnt,omitempty" xml:"moduleCnt,omitempty"`
+	// The group name.
+	//
 	// example:
 	//
 	// 1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// p-4267dcfbf1b6d126edcadf0e949
 	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	// The number of scenario-based testing tasks.
+	//
 	// example:
 	//
 	// 1
-	SceneTestingTaskCnt *int64                             `json:"sceneTestingTaskCnt,omitempty" xml:"sceneTestingTaskCnt,omitempty"`
-	Tags                []*ListGroupResponseBodyGroupsTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	SceneTestingTaskCnt *int64 `json:"sceneTestingTaskCnt,omitempty" xml:"sceneTestingTaskCnt,omitempty"`
+	// The tags.
+	Tags []*ListGroupResponseBodyGroupsTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The number of tasks.
+	//
 	// example:
 	//
 	// 3
@@ -259,7 +287,17 @@ func (s *ListGroupResponseBodyGroups) Validate() error {
 }
 
 type ListGroupResponseBodyGroupsTags struct {
-	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// key
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// iac
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

@@ -20,10 +20,30 @@ type iListTerraformProviderVersionsRequest interface {
 }
 
 type ListTerraformProviderVersionsRequest struct {
-	Keyword    *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
-	MaxResults *int32  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	NextToken  *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	Usage      *string `json:"usage,omitempty" xml:"usage,omitempty"`
+	// The keyword for searching versions. Fuzzy match is supported.
+	//
+	// example:
+	//
+	// key
+	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	// The maximum number of records to retrieve in a single request.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token for the next page. A value of null indicates that no more pages are available.
+	//
+	// example:
+	//
+	// ar9lHbaidqWequN5orMba54dD+2BRJj42DLT6GrZysw=
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The usage. Set to Explorer to retrieve meta information.
+	//
+	// example:
+	//
+	// Explorer
+	Usage *string `json:"usage,omitempty" xml:"usage,omitempty"`
 }
 
 func (s ListTerraformProviderVersionsRequest) String() string {

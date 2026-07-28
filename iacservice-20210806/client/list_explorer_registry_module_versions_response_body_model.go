@@ -22,19 +22,34 @@ type iListExplorerRegistryModuleVersionsResponseBody interface {
 }
 
 type ListExplorerRegistryModuleVersionsResponseBody struct {
+	// The list of Explorer community module versions.
 	ExplorerRegistryModuleVersions []*ListExplorerRegistryModuleVersionsResponseBodyExplorerRegistryModuleVersions `json:"explorerRegistryModuleVersions,omitempty" xml:"explorerRegistryModuleVersions,omitempty" type:"Repeated"`
+	// The maximum number of entries per page.
+	//
+	// Valid values: 0 to 200.
+	//
+	// Default value: 100.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token for the next page of results.
+	//
+	// If the total number of entries exceeds the maxResults limit, the data is truncated. You can use nextToken to query the next page of data.
+	//
 	// example:
 	//
 	// oIM6ssGyh00noi5zoDR1hJ4dD+2BRJj42DLT6GrZysw=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F2D40488-3F74-568B-87EC-1C04D098DF8B
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 22
@@ -108,30 +123,44 @@ func (s *ListExplorerRegistryModuleVersionsResponseBody) Validate() error {
 }
 
 type ListExplorerRegistryModuleVersionsResponseBodyExplorerRegistryModuleVersions struct {
+	// The module details.
+	//
 	// example:
 	//
 	// {}
 	ModuleDetail map[string]interface{} `json:"moduleDetail,omitempty" xml:"moduleDetail,omitempty"`
+	// The module file.
+	//
 	// example:
 	//
 	// {}
 	ModuleFile map[string]interface{} `json:"moduleFile,omitempty" xml:"moduleFile,omitempty"`
+	// The module name.
+	//
 	// example:
 	//
 	// eip-slb-ecs-polardb
 	ModuleName *string `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
+	// The workspace name.
+	//
 	// example:
 	//
 	// namespace-test
 	NamespaceName *string `json:"namespaceName,omitempty" xml:"namespaceName,omitempty"`
+	// The resource properties.
+	//
 	// example:
 	//
 	// {}
 	Properties map[string]interface{} `json:"properties,omitempty" xml:"properties,omitempty"`
+	// The source.
+	//
 	// example:
 	//
 	// test_namespace/RegistryModule-test4
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The version number.
+	//
 	// example:
 	//
 	// 1.5.0

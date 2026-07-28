@@ -22,23 +22,32 @@ type iListModuleVersionResponseBody interface {
 }
 
 type ListModuleVersionResponseBody struct {
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 100.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 792171BB-1A68-5148-8B9B-C7C728E1E98B
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 6
-	TotalCount *int32                                   `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
-	Versions   []*ListModuleVersionResponseBodyVersions `json:"versions,omitempty" xml:"versions,omitempty" type:"Repeated"`
+	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	// The list of version information.
+	Versions []*ListModuleVersionResponseBodyVersions `json:"versions,omitempty" xml:"versions,omitempty" type:"Repeated"`
 }
 
 func (s ListModuleVersionResponseBody) String() string {
@@ -108,26 +117,38 @@ func (s *ListModuleVersionResponseBody) Validate() error {
 }
 
 type ListModuleVersionResponseBodyVersions struct {
+	// The time when the version was created.
+	//
 	// example:
 	//
 	// 2022-05-13T02:21:49Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The version description.
+	//
 	// example:
 	//
-	// description
+	// this is description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// mod-55f1739d9050fffed3ec3a2c4a5e5
 	ModuleId *string `json:"moduleId,omitempty" xml:"moduleId,omitempty"`
+	// The template version number.
+	//
 	// example:
 	//
 	// v3
 	ModuleVersion *string `json:"moduleVersion,omitempty" xml:"moduleVersion,omitempty"`
+	// The version name.
+	//
 	// example:
 	//
-	// name
+	// versionName
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The source path of the version.
+	//
 	// example:
 	//
 	// oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip

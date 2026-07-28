@@ -26,27 +26,44 @@ type iUpdateDetectConfigRequest interface {
 }
 
 type UpdateDetectConfigRequest struct {
+	// **Alert address list**
 	AlarmConfigs []*UpdateDetectConfigRequestAlarmConfigs `json:"alarmConfigs,omitempty" xml:"alarmConfigs,omitempty" type:"Repeated"`
+	// Idempotent token, format: [0-9a-zA-Z-]{1,64}. We recommend using a UUID.
+	//
 	// example:
 	//
 	// a65451293e64979ba7a4b573950217fe
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// **Cron expression (UTC+8)**. Required when the trigger type is Cron.
+	//
 	// example:
 	//
 	// 0 0 0 ? 	- 1
 	CronExpression *string `json:"cronExpression,omitempty" xml:"cronExpression,omitempty"`
+	// **Description**
+	//
 	// example:
 	//
 	// this is description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Drift detection name
+	//
 	// example:
 	//
 	// test
 	DetectConfigName *string `json:"detectConfigName,omitempty" xml:"detectConfigName,omitempty"`
+	// **Whether the detection feature is enabled. The default value is true.**
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// **Trigger type*	-
+	//
+	// 	- Manual: Execute manually
+	//
+	// 	- Cron: Trigger periodically
+	//
 	// example:
 	//
 	// Manual
@@ -138,10 +155,16 @@ func (s *UpdateDetectConfigRequest) Validate() error {
 }
 
 type UpdateDetectConfigRequestAlarmConfigs struct {
+	// Alert address.
+	//
 	// example:
 	//
 	// example@example.com
 	Address *string `json:"address,omitempty" xml:"address,omitempty"`
+	// Alerting method.
+	//
+	// Currently, only `cms` is supported.
+	//
 	// example:
 	//
 	// cms

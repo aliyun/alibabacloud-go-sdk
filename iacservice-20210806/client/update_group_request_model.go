@@ -40,49 +40,76 @@ type iUpdateGroupRequest interface {
 }
 
 type UpdateGroupRequest struct {
+	// Specifies whether to automatically delete the group.
+	//
 	// example:
 	//
 	// true
 	AutoDestroy *bool `json:"autoDestroy,omitempty" xml:"autoDestroy,omitempty"`
+	// Specifies whether to enable the automatic trigger policy. Valid values: - **true**: enabled. - **false**: disabled.
+	//
 	// example:
 	//
 	// true
 	AutoTrigger *bool `json:"autoTrigger,omitempty" xml:"autoTrigger,omitempty"`
+	// The idempotency token. Format: [0-9a-zA-Z-]{1,64}. We recommend that you use a UUID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// a65451293e64979ba7a4b573950217fe
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// The group description.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Specifies whether to forcibly use the group configuration.
+	//
 	// example:
 	//
 	// true
 	ForcedSetting *bool `json:"forcedSetting,omitempty" xml:"forcedSetting,omitempty"`
+	// The group name.
+	//
 	// example:
 	//
 	// test
-	Name                 *string                           `json:"name,omitempty" xml:"name,omitempty"`
-	NotifyConfig         []*UpdateGroupRequestNotifyConfig `json:"notifyConfig,omitempty" xml:"notifyConfig,omitempty" type:"Repeated"`
-	NotifyOperationTypes []*string                         `json:"notifyOperationTypes,omitempty" xml:"notifyOperationTypes,omitempty" type:"Repeated"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The notification configuration.
+	NotifyConfig []*UpdateGroupRequestNotifyConfig `json:"notifyConfig,omitempty" xml:"notifyConfig,omitempty" type:"Repeated"`
+	// The list of notification operation types.
+	NotifyOperationTypes []*string `json:"notifyOperationTypes,omitempty" xml:"notifyOperationTypes,omitempty" type:"Repeated"`
+	// The RAM role (1-128 characters). The system assumes this role to execute the template when a new job is triggered. This parameter is required when the job trigger method is not manual.
+	//
 	// example:
 	//
 	// {}
-	RamRole           *string   `json:"ramRole,omitempty" xml:"ramRole,omitempty"`
+	RamRole *string `json:"ramRole,omitempty" xml:"ramRole,omitempty"`
+	// The list of export fields for the report.
 	ReportExportField []*string `json:"reportExportField,omitempty" xml:"reportExportField,omitempty" type:"Repeated"`
+	// The export path for the execution report. OSS paths are supported.
+	//
 	// example:
 	//
 	// /
 	ReportExportPath *string `json:"reportExportPath,omitempty" xml:"reportExportPath,omitempty"`
+	// The Terraform Provider version. Select a Terraform Provider version. Nodes in the group execute plans based on the specified Terraform Provider version. The version configured on a node takes higher priority.
+	//
 	// example:
 	//
 	// 1.183.0
-	TerraformProviderVersion *string                            `json:"terraformProviderVersion,omitempty" xml:"terraformProviderVersion,omitempty"`
-	TriggerConfig            []*UpdateGroupRequestTriggerConfig `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty" type:"Repeated"`
-	TriggerResourceType      []*string                          `json:"triggerResourceType,omitempty" xml:"triggerResourceType,omitempty" type:"Repeated"`
+	TerraformProviderVersion *string `json:"terraformProviderVersion,omitempty" xml:"terraformProviderVersion,omitempty"`
+	// The trigger policy. This parameter cannot be empty when autoTrigger is set to true.
+	TriggerConfig []*UpdateGroupRequestTriggerConfig `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty" type:"Repeated"`
+	// The resource type that triggers execution. Valid values:
+	//
+	// - Task: regular node.
+	//
+	// - SceneTestingTask: scenario-based testing node.
+	TriggerResourceType []*string `json:"triggerResourceType,omitempty" xml:"triggerResourceType,omitempty" type:"Repeated"`
 }
 
 func (s UpdateGroupRequest) String() string {
@@ -242,10 +269,14 @@ func (s *UpdateGroupRequest) Validate() error {
 }
 
 type UpdateGroupRequestNotifyConfig struct {
+	// The path configuration for notifications.
+	//
 	// example:
 	//
 	// /
 	NotifyPath *string `json:"notifyPath,omitempty" xml:"notifyPath,omitempty"`
+	// The notification type. Valid values: DingDing.
+	//
 	// example:
 	//
 	// DingDing
@@ -283,10 +314,18 @@ func (s *UpdateGroupRequestNotifyConfig) Validate() error {
 }
 
 type UpdateGroupRequestTriggerConfig struct {
+	// The trigger strategy. Valid values:
+	//
+	// - ProviderNewVersion: triggered when a new Provider version is released.
+	//
+	// - Cron: triggered on a schedule.
+	//
 	// example:
 	//
 	// Cron
 	TriggerStrategy *string `json:"triggerStrategy,omitempty" xml:"triggerStrategy,omitempty"`
+	// The policy value that must be maintained for scheduled triggers. This value is a cron expression.
+	//
 	// example:
 	//
 	// 0 0 	- 	- 	- ？

@@ -16,10 +16,14 @@ type iCreateTaskResponseBody interface {
 }
 
 type CreateTaskResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// CD478792-6952-5A1C-9F57-78932BF0FAC6
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The node ID.
+	//
 	// example:
 	//
 	// task-433aead756057fffeaba4828f5195

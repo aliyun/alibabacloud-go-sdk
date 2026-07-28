@@ -22,21 +22,30 @@ type iListStackConfigsResponseBody interface {
 }
 
 type ListStackConfigsResponseBody struct {
+	// The list of stack configurations.
 	Configs []*ListStackConfigsResponseBodyConfigs `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
+	// The maximum number of records returned in this request.
+	//
 	// example:
 	//
 	// 24
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The position from which the current call starts reading. An empty value indicates that all data has been read.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// jIFUaFVhy2VD6whh5GaY854dD+2BRJj42DLT6GrZysw=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9BEDBCF8-03BE-5A59-AC93-9263942B37E8
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The total number of records that match the request conditions. This parameter is optional and may not be returned by default.
+	//
 	// example:
 	//
 	// 43
@@ -110,25 +119,61 @@ func (s *ListStackConfigsResponseBody) Validate() error {
 }
 
 type ListStackConfigsResponseBodyConfigs struct {
+	// The component configuration.
 	ComponentConfig *ListStackConfigsResponseBodyConfigsComponentConfig `json:"componentConfig,omitempty" xml:"componentConfig,omitempty" type:"Struct"`
+	// The content of the component configuration.
+	//
 	// example:
 	//
 	// format_version: IaCService/2021-08-06\\ndescription: create ALB \\nvariable:\\n  - name: region\\n    type: string\\n ...
 	ComponentContent *string `json:"componentContent,omitempty" xml:"componentContent,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2025-08-15T16:14:06Z
-	CreateTime       *string                                              `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The deployment configuration.
 	DeploymentConfig *ListStackConfigsResponseBodyConfigsDeploymentConfig `json:"deploymentConfig,omitempty" xml:"deploymentConfig,omitempty" type:"Struct"`
+	// The content of the deployment configuration.
+	//
 	// example:
 	//
 	// format_version: IaCService/2021-08-06\\ndescription: create ALB\\nupstream_input:\\n  - name: stack_network\\n ...
 	DeploymentContent *string `json:"deploymentContent,omitempty" xml:"deploymentContent,omitempty"`
 	FailedReason      *string `json:"failedReason,omitempty" xml:"failedReason,omitempty"`
+	// The status of the stack configuration.
+	//
+	// | Name | Description |
+	//
+	// |------|------|
+	//
+	// | Creating | Being created. |
+	//
+	// | Created | Created. |
+	//
+	// | Waiting | Waiting for deployment. |
+	//
+	// | Deploying | Being deployed. |
+	//
+	// | Deployed | Deployed. |
+	//
+	// | Errored | Deployment failed. |
+	//
+	// | Deleting | Being deleted. |
+	//
+	// | Deleted | Deleted. |
+	//
+	// | DeleteFailed | Deletion failed. |
+	//
+	// | DetectTriggered | Drift detection triggered. |.
+	//
 	// example:
 	//
 	// Deployed
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The configuration version number, such as v1. The initial value is v1. The version number increments each time the stack is updated or refreshed and the configuration changes.
+	//
 	// example:
 	//
 	// v1
@@ -230,9 +275,12 @@ func (s *ListStackConfigsResponseBodyConfigs) Validate() error {
 }
 
 type ListStackConfigsResponseBodyConfigsComponentConfig struct {
+	// The list of components.
 	Component []*ListStackConfigsResponseBodyConfigsComponentConfigComponent `json:"component,omitempty" xml:"component,omitempty" type:"Repeated"`
-	Output    []*ListStackConfigsResponseBodyConfigsComponentConfigOutput    `json:"output,omitempty" xml:"output,omitempty" type:"Repeated"`
-	Variable  []*ListStackConfigsResponseBodyConfigsComponentConfigVariable  `json:"variable,omitempty" xml:"variable,omitempty" type:"Repeated"`
+	// The list of component outputs.
+	Output []*ListStackConfigsResponseBodyConfigsComponentConfigOutput `json:"output,omitempty" xml:"output,omitempty" type:"Repeated"`
+	// The list of component variables.
+	Variable []*ListStackConfigsResponseBodyConfigsComponentConfigVariable `json:"variable,omitempty" xml:"variable,omitempty" type:"Repeated"`
 }
 
 func (s ListStackConfigsResponseBodyConfigsComponentConfig) String() string {
@@ -302,6 +350,8 @@ func (s *ListStackConfigsResponseBodyConfigsComponentConfig) Validate() error {
 }
 
 type ListStackConfigsResponseBodyConfigsComponentConfigComponent struct {
+	// The component name.
+	//
 	// example:
 	//
 	// log
@@ -330,18 +380,26 @@ func (s *ListStackConfigsResponseBodyConfigsComponentConfigComponent) Validate()
 }
 
 type ListStackConfigsResponseBodyConfigsComponentConfigOutput struct {
+	// The output description.
+	//
 	// example:
 	//
 	// the name of sls project
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The output name.
+	//
 	// example:
 	//
 	// project_name
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The output type.
+	//
 	// example:
 	//
 	// string
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The output value.
+	//
 	// example:
 	//
 	// log-test
@@ -397,19 +455,33 @@ func (s *ListStackConfigsResponseBodyConfigsComponentConfigOutput) Validate() er
 }
 
 type ListStackConfigsResponseBodyConfigsComponentConfigVariable struct {
+	// The default value.
+	//
 	// example:
 	//
 	// ap-southeast-3
 	Default *string `json:"default,omitempty" xml:"default,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// region of sls project
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The variable name.
+	//
 	// example:
 	//
 	// region
 	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
 	Sensitive *bool   `json:"sensitive,omitempty" xml:"sensitive,omitempty"`
+	// The variable type, such as:
+	//
+	// - string
+	//
+	// - list(string)
+	//
+	// - map(string).
+	//
 	// example:
 	//
 	// string
@@ -474,8 +546,11 @@ func (s *ListStackConfigsResponseBodyConfigsComponentConfigVariable) Validate() 
 }
 
 type ListStackConfigsResponseBodyConfigsDeploymentConfig struct {
-	Deployment    []*ListStackConfigsResponseBodyConfigsDeploymentConfigDeployment    `json:"deployment,omitempty" xml:"deployment,omitempty" type:"Repeated"`
+	// The list of deployments.
+	Deployment []*ListStackConfigsResponseBodyConfigsDeploymentConfigDeployment `json:"deployment,omitempty" xml:"deployment,omitempty" type:"Repeated"`
+	// The list of outputs.
 	PublishOutput []*ListStackConfigsResponseBodyConfigsDeploymentConfigPublishOutput `json:"publishOutput,omitempty" xml:"publishOutput,omitempty" type:"Repeated"`
+	// The list of upstream inputs.
 	UpstreamInput []*ListStackConfigsResponseBodyConfigsDeploymentConfigUpstreamInput `json:"upstreamInput,omitempty" xml:"upstreamInput,omitempty" type:"Repeated"`
 }
 
@@ -546,6 +621,8 @@ func (s *ListStackConfigsResponseBodyConfigsDeploymentConfig) Validate() error {
 }
 
 type ListStackConfigsResponseBodyConfigsDeploymentConfigDeployment struct {
+	// The deployment name.
+	//
 	// example:
 	//
 	// production
@@ -574,22 +651,32 @@ func (s *ListStackConfigsResponseBodyConfigsDeploymentConfigDeployment) Validate
 }
 
 type ListStackConfigsResponseBodyConfigsDeploymentConfigPublishOutput struct {
+	// The output description.
+	//
 	// example:
 	//
 	// the name of sls project
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The output name.
+	//
 	// example:
 	//
 	// project_name
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The actual output value after the stack deployment is complete.
+	//
 	// example:
 	//
 	// log-test
 	Result *string `json:"result,omitempty" xml:"result,omitempty"`
+	// The output type, such as string or list(string).
+	//
 	// example:
 	//
 	// string
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The original definition of the output value. Currently, string or list(string) is supported. You can reference a deployment output in the format: deployment.{deploymentName}.{deploymentOutputName}.
+	//
 	// example:
 	//
 	// deployment.production.project_name
@@ -654,10 +741,14 @@ func (s *ListStackConfigsResponseBodyConfigsDeploymentConfigPublishOutput) Valid
 }
 
 type ListStackConfigsResponseBodyConfigsDeploymentConfigUpstreamInput struct {
+	// The input name.
+	//
 	// example:
 	//
 	// network
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The input source. Currently, only an upstream stack can be specified. The format is {iacEndpoint}/{accountId}/{upstreamStackName}.
+	//
 	// example:
 	//
 	// IacEndpoint/156718871222312/stack_network

@@ -22,19 +22,28 @@ type iListProductsResponseBody interface {
 }
 
 type ListProductsResponseBody struct {
+	// The pagination token.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The maximum number of results per page. Valid values: 0 to 200. Default value: 100.
+	//
 	// example:
 	//
 	// 30BaZ9ekYWXJdqshYecA++coNg7qT1Zbm3RfLyFIZeY=
-	NextToken *string                             `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	Products  []*ListProductsResponseBodyProducts `json:"products,omitempty" xml:"products,omitempty" type:"Repeated"`
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The product list.
+	Products []*ListProductsResponseBodyProducts `json:"products,omitempty" xml:"products,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9bcaac3c-420d-4303-87ab-7638c07b0a0b
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 134
@@ -108,37 +117,68 @@ func (s *ListProductsResponseBody) Validate() error {
 }
 
 type ListProductsResponseBodyProducts struct {
+	// The first-level category name.
+	//
+	// example:
+	//
+	// 企业应用
 	FirstCategoryName *string `json:"firstCategoryName,omitempty" xml:"firstCategoryName,omitempty"`
+	// The first-level category name in English.
+	//
 	// example:
 	//
 	// Enterprise application
 	FirstCategoryNameEn *string `json:"firstCategoryNameEn,omitempty" xml:"firstCategoryNameEn,omitempty"`
+	// The product name.
+	//
 	// example:
 	//
 	// MSE
-	Product     *string `json:"product,omitempty" xml:"product,omitempty"`
+	Product *string `json:"product,omitempty" xml:"product,omitempty"`
+	// The product name.
+	//
+	// example:
+	//
+	// 微服务引擎
 	ProductName *string `json:"productName,omitempty" xml:"productName,omitempty"`
+	// The product name in English.
+	//
 	// example:
 	//
 	// Microservices Engine
-	ProductNameEn      *string `json:"productNameEn,omitempty" xml:"productNameEn,omitempty"`
+	ProductNameEn *string `json:"productNameEn,omitempty" xml:"productNameEn,omitempty"`
+	// The second-level category name.
+	//
+	// example:
+	//
+	// 应用服务
 	SecondCategoryName *string `json:"secondCategoryName,omitempty" xml:"secondCategoryName,omitempty"`
+	// The second-level category name in English.
+	//
 	// example:
 	//
 	// Application service
 	SecondCategoryNameEn *string `json:"secondCategoryNameEn,omitempty" xml:"secondCategoryNameEn,omitempty"`
+	// The status.
+	//
 	// example:
 	//
 	// Available
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The product category in Terraform.
+	//
 	// example:
 	//
 	// Microservice_Engine(MSE)
 	Subcategory *string `json:"subcategory,omitempty" xml:"subcategory,omitempty"`
+	// Specifies whether Terraformer is supported.
+	//
 	// example:
 	//
 	// true
 	SupportTerraformer *bool `json:"supportTerraformer,omitempty" xml:"supportTerraformer,omitempty"`
+	// The Terraform Provider version.
+	//
 	// example:
 	//
 	// 1.229.0

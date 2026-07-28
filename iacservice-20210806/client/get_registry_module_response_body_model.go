@@ -16,7 +16,10 @@ type iGetRegistryModuleResponseBody interface {
 }
 
 type GetRegistryModuleResponseBody struct {
+	// The Registry module.
 	RegistryModule *GetRegistryModuleResponseBodyRegistryModule `json:"registryModule,omitempty" xml:"registryModule,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5B5AD471-5036-581B-AC9B-7D5EECED877A
@@ -59,18 +62,86 @@ func (s *GetRegistryModuleResponseBody) Validate() error {
 }
 
 type GetRegistryModuleResponseBodyRegistryModule struct {
-	Acl            *string  `json:"acl,omitempty" xml:"acl,omitempty"`
-	CreateTime     *string  `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Description    *string  `json:"description,omitempty" xml:"description,omitempty"`
-	Downloads      *int32   `json:"downloads,omitempty" xml:"downloads,omitempty"`
-	ModuleName     *string  `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
-	NamespaceName  *string  `json:"namespaceName,omitempty" xml:"namespaceName,omitempty"`
-	Provider       *string  `json:"provider,omitempty" xml:"provider,omitempty"`
+	// The permission. Valid values:
+	//
+	// - private: private.
+	//
+	// example:
+	//
+	// private
+	Acl *string `json:"acl,omitempty" xml:"acl,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 2025-05-28 13:39:05
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The module description.
+	//
+	// example:
+	//
+	// description
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The number of downloads.
+	//
+	// example:
+	//
+	// 23
+	Downloads *int32 `json:"downloads,omitempty" xml:"downloads,omitempty"`
+	// The module name.
+	//
+	// example:
+	//
+	// ecs-cluster
+	ModuleName *string `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
+	// The workspace name.
+	//
+	// example:
+	//
+	// NamespaceName
+	NamespaceName *string `json:"namespaceName,omitempty" xml:"namespaceName,omitempty"`
+	// The provider type. Valid values:
+	//
+	// - alicloud: Alibaba Cloud.
+	//
+	// example:
+	//
+	// alicloud
+	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
+	// The list of accounts with which the Registry module is shared.
 	SharedAccounts []*int64 `json:"sharedAccounts,omitempty" xml:"sharedAccounts,omitempty" type:"Repeated"`
-	Source         *string  `json:"source,omitempty" xml:"source,omitempty"`
-	SourceUrl      *string  `json:"sourceUrl,omitempty" xml:"sourceUrl,omitempty"`
-	Type           *string  `json:"type,omitempty" xml:"type,omitempty"`
-	Version        *string  `json:"version,omitempty" xml:"version,omitempty"`
+	// The module source, which is a concatenation of <NamespaceName>/<ModuleName>.
+	//
+	// example:
+	//
+	// namespaceName/ModuleName
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The module source URL.
+	//
+	// example:
+	//
+	// URL
+	SourceUrl *string `json:"sourceUrl,omitempty" xml:"sourceUrl,omitempty"`
+	// The workspace type. Valid values:
+	//
+	// - system: public module
+	//
+	// - self: custom module
+	//
+	// - shared: shared module
+	//
+	// - community: community module.
+	//
+	// example:
+	//
+	// system
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The latest version.
+	//
+	// example:
+	//
+	// 1.0.0
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s GetRegistryModuleResponseBodyRegistryModule) String() string {

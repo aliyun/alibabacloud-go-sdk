@@ -16,7 +16,10 @@ type iGetRegistryModuleVersionResponseBody interface {
 }
 
 type GetRegistryModuleVersionResponseBody struct {
+	// The version information.
 	ModuleVersion *GetRegistryModuleVersionResponseBodyModuleVersion `json:"moduleVersion,omitempty" xml:"moduleVersion,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 62DF26B0-53F0-5747-9D7F-FEF444FB4E24
@@ -59,15 +62,62 @@ func (s *GetRegistryModuleVersionResponseBody) Validate() error {
 }
 
 type GetRegistryModuleVersionResponseBodyModuleVersion struct {
-	CreateTime    *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	DetailUrl     *string `json:"detailUrl,omitempty" xml:"detailUrl,omitempty"`
-	Downloads     *string `json:"downloads,omitempty" xml:"downloads,omitempty"`
-	ModuleName    *string `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 2025-02-08T02:22:16Z
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The product page URL.
+	//
+	// example:
+	//
+	// URL
+	DetailUrl *string `json:"detailUrl,omitempty" xml:"detailUrl,omitempty"`
+	// The number of downloads.
+	//
+	// example:
+	//
+	// 24
+	Downloads *string `json:"downloads,omitempty" xml:"downloads,omitempty"`
+	// The template name.
+	//
+	// example:
+	//
+	// ecs-cluster
+	ModuleName *string `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
+	// The workspace name.
+	//
+	// example:
+	//
+	// alibabacloud
 	NamespaceName *string `json:"namespaceName,omitempty" xml:"namespaceName,omitempty"`
-	Provider      *string `json:"provider,omitempty" xml:"provider,omitempty"`
-	Source        *string `json:"source,omitempty" xml:"source,omitempty"`
-	SourceUrl     *string `json:"sourceUrl,omitempty" xml:"sourceUrl,omitempty"`
-	Version       *string `json:"version,omitempty" xml:"version,omitempty"`
+	// The provider type. Valid values:
+	//
+	// - alicloud: Alibaba Cloud.
+	//
+	// example:
+	//
+	// alicloud
+	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
+	// The template source.
+	//
+	// example:
+	//
+	// namespaceName/ModuleName
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The template source URL.
+	//
+	// example:
+	//
+	// URL
+	SourceUrl *string `json:"sourceUrl,omitempty" xml:"sourceUrl,omitempty"`
+	// The version number.
+	//
+	// example:
+	//
+	// 1.0.0
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s GetRegistryModuleVersionResponseBodyModuleVersion) String() string {

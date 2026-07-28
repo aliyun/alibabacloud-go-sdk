@@ -14,6 +14,8 @@ type iUpdateRegistryModuleAttributeResponseBody interface {
 }
 
 type UpdateRegistryModuleAttributeResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 127A5B81-D1E7-5E33-8D44-B89507C4B81F

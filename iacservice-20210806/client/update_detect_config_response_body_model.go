@@ -14,6 +14,8 @@ type iUpdateDetectConfigResponseBody interface {
 }
 
 type UpdateDetectConfigResponseBody struct {
+	// Request ID
+	//
 	// example:
 	//
 	// valueA

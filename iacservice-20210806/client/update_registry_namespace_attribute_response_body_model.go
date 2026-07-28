@@ -16,10 +16,14 @@ type iUpdateRegistryNamespaceAttributeResponseBody interface {
 }
 
 type UpdateRegistryNamespaceAttributeResponseBody struct {
+	// The workspace name.
+	//
 	// example:
 	//
-	// test
+	// NamespaceName
 	NamespaceName *string `json:"namespaceName,omitempty" xml:"namespaceName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CA5C5B39-D1DC-5309-8E97-B9A91DA21094

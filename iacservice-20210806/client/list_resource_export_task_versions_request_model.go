@@ -22,22 +22,42 @@ type iListResourceExportTaskVersionsRequest interface {
 }
 
 type ListResourceExportTaskVersionsRequest struct {
+	// The export version number.
+	//
 	// example:
 	//
 	// v1
 	ExportVersion *string `json:"exportVersion,omitempty" xml:"exportVersion,omitempty"`
+	// The search keyword. Fuzzy match is supported for export version names.
+	//
 	// example:
 	//
 	// key
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 100.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The export status. Valid values:
+	//
+	// - Queue: queued
+	//
+	// - Pending: preparing to run
+	//
+	// - Success: succeeded
+	//
+	// - Errored: failed
+	//
+	// - Canceled: canceled.
+	//
 	// example:
 	//
 	// Errored

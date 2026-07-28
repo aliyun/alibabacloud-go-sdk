@@ -14,6 +14,8 @@ type iDeleteRegistryNamespaceResponseBody interface {
 }
 
 type DeleteRegistryNamespaceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 1D0CD708-E433-5F13-8A42-823C95FC756C

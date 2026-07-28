@@ -26,6 +26,8 @@ type iListStacksRequest interface {
 }
 
 type ListStacksRequest struct {
+	// The keyword used to perform a fuzzy search by stack name.
+	//
 	// example:
 	//
 	// key
@@ -34,22 +36,56 @@ type ListStacksRequest struct {
 	//
 	// 21a90f5d-a469-4ac4-a8ea-f6e1e7470e6f
 	KmsKeyId *string `json:"kmsKeyId,omitempty" xml:"kmsKeyId,omitempty"`
+	// The maximum number of results to return. Default value: 100. Maximum value: 200.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token. This parameter is empty if no more pages are available.
+	//
 	// example:
 	//
 	// LC4NJL3Ru2bIiRdnbADPQp4dD+2BRJj42DLT6GrZysw=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 200.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The stack status.
+	//
+	// | Name | Description |
+	//
+	// |------|------|
+	//
+	// | Creating | Being created |
+	//
+	// | Created | Creation complete |
+	//
+	// | Waiting | Waiting for deployment |
+	//
+	// | Deploying | Being deployed |
+	//
+	// | Deployed | Deployment complete |
+	//
+	// | Errored | Deployment failed |
+	//
+	// | Deleting | Being deleted |
+	//
+	// | Deleted | Deleted |
+	//
+	// | DeleteFailed | Deletion failed |
+	//
+	// | DetectTriggered | Drift detection triggered |.
+	//
 	// example:
 	//
 	// Deployed

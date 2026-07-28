@@ -16,10 +16,14 @@ type iCreateStackResponseBody interface {
 }
 
 type CreateStackResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 79284133-D4BA-56B3-954C-D538256F7EAA
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The stack ID. This is the unique identifier of the stack after it is created.
+	//
 	// example:
 	//
 	// stack-as1d4vld898ppnqbxxxxx

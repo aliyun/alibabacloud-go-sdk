@@ -18,11 +18,24 @@ type iAddSharedAccountsRequest interface {
 }
 
 type AddSharedAccountsRequest struct {
+	// The list of Alibaba Cloud account IDs.
 	AccountIds []*int64 `json:"accountIds,omitempty" xml:"accountIds,omitempty" type:"Repeated"`
+	// The ID of the shared resource.
+	//
+	//  - If the type is Namespace, set this parameter to the workspace name.
+	//
+	// - If the type is RegistryModule, set this parameter to \\<namespaceName>/\\<ModuleName>.
+	//
 	// example:
 	//
-	// Public
+	// terraform-alicloud-modules/mongodb
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// The resource type. Valid values:
+	//
+	// - RegistryModule: Registry template.
+	//
+	// - Namespace: workspace.
+	//
 	// example:
 	//
 	// RegistryModule

@@ -22,29 +22,47 @@ type iCreateRegistryNamespaceRequest interface {
 }
 
 type CreateRegistryNamespaceRequest struct {
+	// The access permission. Valid values:
+	//
+	// - private: private access.
+	//
 	// example:
 	//
 	// private
 	Acl *string `json:"acl,omitempty" xml:"acl,omitempty"`
+	// The idempotence token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// a65451293e64979ba7a4b573950217fe
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// The workspace description.
+	//
 	// example:
 	//
-	// test
+	// description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The administrator name.
+	//
 	// example:
 	//
 	// admin
 	Maintainer *string `json:"maintainer,omitempty" xml:"maintainer,omitempty"`
+	// The workspace name. The name must meet the following requirements:
+	//
+	// - The name must be 3 to 63 characters in length.
+	//
+	// - The name can contain uppercase and lowercase letters, digits, hyphens (-), and underscores (_), and cannot start or end with a hyphen.
+	//
+	// - The name must be unique within the global workspace resources.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// iac
+	// NamespaceName
 	NamespaceName *string `json:"namespaceName,omitempty" xml:"namespaceName,omitempty"`
 }
 

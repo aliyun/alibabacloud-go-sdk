@@ -22,19 +22,34 @@ type iListExplorerRegistryModulesResponseBody interface {
 }
 
 type ListExplorerRegistryModulesResponseBody struct {
+	// The list of Explorer community modules.
 	ExplorerRegistryModules []*ListExplorerRegistryModulesResponseBodyExplorerRegistryModules `json:"explorerRegistryModules,omitempty" xml:"explorerRegistryModules,omitempty" type:"Repeated"`
+	// The maximum number of entries per page.
+	//
+	// Valid values: 0 to 200.
+	//
+	// Default value: 100.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token for the next page of results.
+	//
+	// If the total number of entries exceeds the maxResults limit, the data is truncated. You can use nextToken to query the next page of data.
+	//
 	// example:
 	//
 	// DxEkv+3w0EDAQgcRFBp8Ep4dD+2BRJj42DLT6GrZysw=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1A662F56-CA76-55F6-869D-7F26293B8E67
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 170
@@ -108,30 +123,44 @@ func (s *ListExplorerRegistryModulesResponseBody) Validate() error {
 }
 
 type ListExplorerRegistryModulesResponseBodyExplorerRegistryModules struct {
+	// The description.
+	//
 	// example:
 	//
 	// demo
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The number of downloads.
+	//
 	// example:
 	//
 	// 34
 	Downloads *int64 `json:"downloads,omitempty" xml:"downloads,omitempty"`
+	// The latest version number.
+	//
 	// example:
 	//
 	// v1
 	LatestVersion *string `json:"latestVersion,omitempty" xml:"latestVersion,omitempty"`
+	// The module name.
+	//
 	// example:
 	//
 	// terraform-alicloud-modules/mongodb
 	ModuleName *string `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
+	// The workspace name.
+	//
 	// example:
 	//
 	// test_namespace
 	NamespaceName *string `json:"namespaceName,omitempty" xml:"namespaceName,omitempty"`
+	// The source.
+	//
 	// example:
 	//
 	// terraform-alicloud-modules/mongodb/alicloud
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The status.
+	//
 	// example:
 	//
 	// Default

@@ -42,57 +42,100 @@ type iCreateGroupRequest interface {
 }
 
 type CreateGroupRequest struct {
+	// Specifies whether to delete the group after creation.
+	//
 	// example:
 	//
 	// true
 	AutoDestroy *bool `json:"autoDestroy,omitempty" xml:"autoDestroy,omitempty"`
+	// Specifies whether to enable the automatic trigger policy. Valid values:
+	//
+	// - **true**: enabled.
+	//
+	// - **false**: disabled.
+	//
 	// example:
 	//
 	// true
 	AutoTrigger *bool `json:"autoTrigger,omitempty" xml:"autoTrigger,omitempty"`
+	// The idempotence token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// a65451293e64979ba7a4b573950217fe
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// The description of the group.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Specifies whether to forcibly use the group configuration.
+	//
 	// example:
 	//
 	// true
 	ForcedSetting *bool `json:"forcedSetting,omitempty" xml:"forcedSetting,omitempty"`
+	// The name of the group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
-	Name                 *string                           `json:"name,omitempty" xml:"name,omitempty"`
-	NotifyConfig         []*CreateGroupRequestNotifyConfig `json:"notifyConfig,omitempty" xml:"notifyConfig,omitempty" type:"Repeated"`
-	NotifyOperationTypes []*string                         `json:"notifyOperationTypes,omitempty" xml:"notifyOperationTypes,omitempty" type:"Repeated"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The notification configuration.
+	NotifyConfig []*CreateGroupRequestNotifyConfig `json:"notifyConfig,omitempty" xml:"notifyConfig,omitempty" type:"Repeated"`
+	// The list of notification operation types.
+	NotifyOperationTypes []*string `json:"notifyOperationTypes,omitempty" xml:"notifyOperationTypes,omitempty" type:"Repeated"`
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// p-433aead7560571a87349d054b4
 	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	// The RAM role (1-128 characters).
+	//
+	// The system assumes this role to execute the template when a new job is triggered.
+	//
+	// This parameter is required when the job trigger method is not manual.
+	//
 	// example:
 	//
 	// ramName
-	RamRole           *string   `json:"ramRole,omitempty" xml:"ramRole,omitempty"`
+	RamRole *string `json:"ramRole,omitempty" xml:"ramRole,omitempty"`
+	// The list of export fields for the report.
 	ReportExportField []*string `json:"reportExportField,omitempty" xml:"reportExportField,omitempty" type:"Repeated"`
+	// The export address for the execution report. OSS addresses are supported.
+	//
+	// https://<OSS bucket address>/<path>.
+	//
 	// example:
 	//
 	// https://test.oss-cn-hangzhou.aliyuncs.com/test/test
 	ReportExportPath *string `json:"reportExportPath,omitempty" xml:"reportExportPath,omitempty"`
+	// The Terraform Provider version.
+	//
+	// Select a Terraform Provider version. The version configured on the task takes higher priority.
+	//
 	// example:
 	//
 	// 1.189.0
-	TerraformProviderVersion *string                            `json:"terraformProviderVersion,omitempty" xml:"terraformProviderVersion,omitempty"`
-	TriggerConfig            []*CreateGroupRequestTriggerConfig `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty" type:"Repeated"`
-	TriggerResourceType      []*string                          `json:"triggerResourceType,omitempty" xml:"triggerResourceType,omitempty" type:"Repeated"`
+	TerraformProviderVersion *string `json:"terraformProviderVersion,omitempty" xml:"terraformProviderVersion,omitempty"`
+	// The trigger policy.
+	//
+	// This parameter cannot be empty when autoTrigger is set to true.
+	TriggerConfig []*CreateGroupRequestTriggerConfig `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty" type:"Repeated"`
+	// The resource type for triggered execution. Valid values:
+	//
+	// - Task: regular task.
+	//
+	// - SceneTestingTask: scenario-based testing task.
+	TriggerResourceType []*string `json:"triggerResourceType,omitempty" xml:"triggerResourceType,omitempty" type:"Repeated"`
 }
 
 func (s CreateGroupRequest) String() string {
@@ -261,10 +304,16 @@ func (s *CreateGroupRequest) Validate() error {
 }
 
 type CreateGroupRequestNotifyConfig struct {
+	// The path configuration for notifications.
+	//
 	// example:
 	//
 	// /
 	NotifyPath *string `json:"notifyPath,omitempty" xml:"notifyPath,omitempty"`
+	// The notification type:
+	//
+	// DingDing.
+	//
 	// example:
 	//
 	// DingDing
@@ -302,10 +351,18 @@ func (s *CreateGroupRequestNotifyConfig) Validate() error {
 }
 
 type CreateGroupRequestTriggerConfig struct {
+	// The trigger policy. Valid values:
+	//
+	// - ProviderNewVersion: triggered when a new Provider version is released.
+	//
+	// - Cron: triggered on a schedule.
+	//
 	// example:
 	//
 	// Cron
 	TriggerStrategy *string `json:"triggerStrategy,omitempty" xml:"triggerStrategy,omitempty"`
+	// The policy value to maintain for scheduled triggering. This is a cron expression.
+	//
 	// example:
 	//
 	// 0 0 19 	- 	- ？

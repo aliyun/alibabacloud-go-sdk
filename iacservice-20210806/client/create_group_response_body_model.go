@@ -16,10 +16,14 @@ type iCreateGroupResponseBody interface {
 }
 
 type CreateGroupResponseBody struct {
+	// The group ID.
+	//
 	// example:
 	//
 	// g-4267dcfbf1b6d128c87adf0e95f
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E2D0E863-1651-5E58-823F-B451C8C24615

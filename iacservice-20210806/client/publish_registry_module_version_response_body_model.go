@@ -16,10 +16,14 @@ type iPublishRegistryModuleVersionResponseBody interface {
 }
 
 type PublishRegistryModuleVersionResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 36E1679B-4D91-5AF6-B505-B5D4ACDF75BD
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The version number.
+	//
 	// example:
 	//
 	// 1.1.1

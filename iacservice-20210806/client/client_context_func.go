@@ -10,7 +10,11 @@ import (
 
 // Summary:
 //
-// 新增共享账号信息
+// Adds shared accounts.
+//
+// Description:
+//
+// Per-user call frequency: 100 calls per second.
 //
 // @param request - AddSharedAccountsRequest
 //
@@ -65,7 +69,7 @@ func (client *Client) AddSharedAccountsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 将参数集关联资源
+// # Associate drift detection configuration
 //
 // @param request - AssociateDetectConfigRequest
 //
@@ -120,7 +124,7 @@ func (client *Client) AssociateDetectConfigWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 分组关联
+// Associates resources with a group.
 //
 // @param request - AssociateGroupRequest
 //
@@ -179,7 +183,17 @@ func (client *Client) AssociateGroupWithContext(ctx context.Context, groupId *st
 
 // Summary:
 //
-// 将参数集关联资源
+// Associates parameter sets.
+//
+// Description:
+//
+// After creating a parameter set, you need to associate it with a resource. Valid values for the resource type:
+//
+// - Module: template
+//
+// - ModuleVersion: template version
+//
+// - Task: node.
 //
 // @param request - AssociateParameterSetRequest
 //
@@ -234,7 +248,11 @@ func (client *Client) AssociateParameterSetWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 取消资源导出任务
+// Cancels a resource export task.
+//
+// Description:
+//
+// Single-user call frequency: 100 calls per second.
 //
 // @param request - CancelResourceExportTaskRequest
 //
@@ -281,7 +299,19 @@ func (client *Client) CancelResourceExportTaskWithContext(ctx context.Context, e
 
 // Summary:
 //
-// 创建偏差检测配置
+// Creates a drift detection configuration that supports manual or scheduled triggering.
+//
+// Description:
+//
+// ## Request Description
+//
+// - When `triggerType` is set to `Cron`, a valid `cronExpression` must be provided.
+//
+// - Each element in the `alarmConfigs` list must specify the alerting method `type` and the corresponding alerting address `address`.
+//
+// - If the `enabled` parameter is not explicitly set, its default value is `true`, meaning newly created detection configurations are enabled by default.
+//
+// - It is recommended to use a UUID as the value of `clientToken` to ensure request idempotence.
 //
 // @param request - CreateDetectConfigRequest
 //
@@ -352,7 +382,7 @@ func (client *Client) CreateDetectConfigWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 创建分组
+// Creates a group.
 //
 // @param request - CreateGroupRequest
 //
@@ -455,7 +485,11 @@ func (client *Client) CreateGroupWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
-// 创建作业
+// Creates a job and runs a task.
+//
+// Description:
+//
+// Single-user call frequency: 100 calls per second.
 //
 // @param request - CreateJobRequest
 //
@@ -514,7 +548,11 @@ func (client *Client) CreateJobWithContext(ctx context.Context, taskId *string, 
 
 // Summary:
 //
-// # Create Module
+// Creates a Terraform template. Multiple source methods are supported, such as OSS import, Registry import, file upload, and online editing.
+//
+// Description:
+//
+// Single-user call frequency: 100 calls per second.
 //
 // @param request - CreateModuleRequest
 //
@@ -593,7 +631,15 @@ func (client *Client) CreateModuleWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// Publish a template version.
+// Publishes a new version for a specified template.
+//
+// Description:
+//
+// ## Operation description
+//
+// - Use the `clientToken` parameter to ensure idempotence of the request and prevent duplicate submissions caused by network retries.
+//
+// - Use semantic versioning (such as `v1.0.0`).
 //
 // @param request - CreateModuleVersionRequest
 //
@@ -648,7 +694,21 @@ func (client *Client) CreateModuleVersionWithContext(ctx context.Context, module
 
 // Summary:
 //
-// 创建参数集
+// Adds a new parameter set. You can set the name, description, and parameter list.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This operation creates a new parameter set.
+//
+// - The name field is required and can be up to 128 characters in length.
+//
+// - Each element in the parameters array must contain the name field. Other fields are optional.
+//
+// - Use the clientToken field to ensure the idempotence of the request.
+//
+// - The request header must contain authentication information to ensure secure access.
 //
 // @param request - CreateParameterSetRequest
 //
@@ -707,7 +767,7 @@ func (client *Client) CreateParameterSetWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 创建项目
+// Creates a project.
 //
 // @param request - CreateProjectRequest
 //
@@ -762,7 +822,11 @@ func (client *Client) CreateProjectWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// 创建RegistryModule
+// Creates a Registry template.
+//
+// Description:
+//
+// Per-user call frequency: 100 calls per second.
 //
 // @param request - CreateRegistryModuleRequest
 //
@@ -833,7 +897,11 @@ func (client *Client) CreateRegistryModuleWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 创建工作空间
+// Creates a workspace.
+//
+// Description:
+//
+// Single-user call frequency: 100 calls per second.
 //
 // @param request - CreateRegistryNamespaceRequest
 //
@@ -896,7 +964,11 @@ func (client *Client) CreateRegistryNamespaceWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 创建导出任务
+// Creates a resource export task.
+//
+// Description:
+//
+// Single-user call frequency: 100 calls per second.
 //
 // @param request - CreateResourceExportTaskRequest
 //
@@ -979,7 +1051,7 @@ func (client *Client) CreateResourceExportTaskWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 创建资源栈
+// Creates a resource stack and triggers deployment.
 //
 // @param request - CreateStackRequest
 //
@@ -1006,6 +1078,10 @@ func (client *Client) CreateStackWithContext(ctx context.Context, request *Creat
 
 	if !dara.IsNil(request.Name) {
 		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ParameterSetIds) {
+		body["parameterSetIds"] = request.ParameterSetIds
 	}
 
 	if !dara.IsNil(request.RamRole) {
@@ -1050,7 +1126,11 @@ func (client *Client) CreateStackWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
-// 创建任务
+// Creates a node.
+//
+// Description:
+//
+// Single-user call frequency: 100 calls per second.
 //
 // @param request - CreateTaskRequest
 //
@@ -1119,12 +1199,20 @@ func (client *Client) CreateTaskWithContext(ctx context.Context, request *Create
 		body["skipPropertyValidation"] = request.SkipPropertyValidation
 	}
 
+	if !dara.IsNil(request.SkipRegionValidation) {
+		body["skipRegionValidation"] = request.SkipRegionValidation
+	}
+
 	if !dara.IsNil(request.Tags) {
 		body["tags"] = request.Tags
 	}
 
 	if !dara.IsNil(request.TaskBackend) {
 		body["taskBackend"] = request.TaskBackend
+	}
+
+	if !dara.IsNil(request.TerraformProviderVersion) {
+		body["terraformProviderVersion"] = request.TerraformProviderVersion
 	}
 
 	if !dara.IsNil(request.TerraformVersion) {
@@ -1161,7 +1249,7 @@ func (client *Client) CreateTaskWithContext(ctx context.Context, request *Create
 
 // Summary:
 //
-// 删除偏差检测配置
+// # Delete drift detection configuration
 //
 // @param request - DeleteDetectConfigRequest
 //
@@ -1202,7 +1290,7 @@ func (client *Client) DeleteDetectConfigWithContext(ctx context.Context, detectC
 
 // Summary:
 //
-// 删除分组
+// Deletes a group.
 //
 // @param request - DeleteGroupRequest
 //
@@ -1243,7 +1331,15 @@ func (client *Client) DeleteGroupWithContext(ctx context.Context, groupId *strin
 
 // Summary:
 //
-// 删除模板
+// Deletes a specified template and all its versions.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This operation deletes a specified template.
+//
+// - Deletion is irreversible. Proceed with caution.
 //
 // @param request - DeleteModuleRequest
 //
@@ -1284,7 +1380,11 @@ func (client *Client) DeleteModuleWithContext(ctx context.Context, moduleId *str
 
 // Summary:
 //
-// 删除参数集
+// Deletes a specified parameter set by parameter set ID.
+//
+// Description:
+//
+// Deletes a specified parameter set.
 //
 // @param request - DeleteParameterSetRequest
 //
@@ -1325,7 +1425,7 @@ func (client *Client) DeleteParameterSetWithContext(ctx context.Context, paramet
 
 // Summary:
 //
-// 删除项目
+// Deletes a project.
 //
 // @param request - DeleteProjectRequest
 //
@@ -1366,7 +1466,11 @@ func (client *Client) DeleteProjectWithContext(ctx context.Context, projectId *s
 
 // Summary:
 //
-// 删除RegistryModule
+// Deletes a Registry template.
+//
+// Description:
+//
+// Single-user call frequency: 100 calls per second.
 //
 // @param request - DeleteRegistryModuleRequest
 //
@@ -1407,7 +1511,11 @@ func (client *Client) DeleteRegistryModuleWithContext(ctx context.Context, names
 
 // Summary:
 //
-// 删除RegistryModule版本
+// Deletes a Registry template version.
+//
+// Description:
+//
+// Single-user call frequency: 100 calls per second.
 //
 // @param request - DeleteRegistryModuleVersionRequest
 //
@@ -1448,7 +1556,11 @@ func (client *Client) DeleteRegistryModuleVersionWithContext(ctx context.Context
 
 // Summary:
 //
-// 删除工作空间
+// Deletes a workspace.
+//
+// Description:
+//
+// Single-user call frequency: 100 calls per second.
 //
 // @param request - DeleteRegistryNamespaceRequest
 //
@@ -1489,7 +1601,11 @@ func (client *Client) DeleteRegistryNamespaceWithContext(ctx context.Context, na
 
 // Summary:
 //
-// 删除资源导出任务
+// Deletes a resource export task.
+//
+// Description:
+//
+// Single-user call frequency: 100 calls per second.
 //
 // @param request - DeleteResourceExportTaskRequest
 //
@@ -1530,7 +1646,7 @@ func (client *Client) DeleteResourceExportTaskWithContext(ctx context.Context, e
 
 // Summary:
 //
-// 删除资源栈
+// Deletes a stack.
 //
 // @param request - DeleteStackRequest
 //
@@ -1577,7 +1693,13 @@ func (client *Client) DeleteStackWithContext(ctx context.Context, stackId *strin
 
 // Summary:
 //
-// 删除任务
+// Deletes a node.
+//
+// Description:
+//
+// Single-user call frequency: 100 calls per second.
+//
+// Deletes a node. If the node has resources that have not been destroyed, the node cannot be deleted.
 //
 // @param request - DeleteTaskRequest
 //
@@ -1618,7 +1740,11 @@ func (client *Client) DeleteTaskWithContext(ctx context.Context, taskId *string,
 
 // Summary:
 //
-// 发起状态文件一致性检测
+// Initiates a state file consistency check.
+//
+// Description:
+//
+// This API is used to perform drift detection on the state files of resource orchestration tasks and stack tasks in the automated service desk.
 //
 // @param request - DetectTerraformStateRequest
 //
@@ -1673,7 +1799,7 @@ func (client *Client) DetectTerraformStateWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 解除参数集关联资源关系
+// # Disassociate drift detection configuration
 //
 // @param request - DissociateDetectConfigRequest
 //
@@ -1728,7 +1854,7 @@ func (client *Client) DissociateDetectConfigWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 取消关联分组
+// Dissociates a resource group.
 //
 // @param request - DissociateGroupRequest
 //
@@ -1783,7 +1909,7 @@ func (client *Client) DissociateGroupWithContext(ctx context.Context, projectId 
 
 // Summary:
 //
-// 解除参数集关联资源关系
+// Dissociates a parameter set from other resources.
 //
 // @param request - DissociateParameterSetRequest
 //
@@ -1838,7 +1964,11 @@ func (client *Client) DissociateParameterSetWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 执行RegistryModule
+// Executes a Module officially provided by Alibaba Cloud Terraform.
+//
+// Description:
+//
+// This API operation is used to execute Terraform Module code to create or update cloud resources. Before using this API operation, make sure that all required authentication information is correctly configured and that the Terraform code corresponding to the Module meets the expected functional requirements.
 //
 // @param request - ExecuteRegistryModuleRequest
 //
@@ -1889,7 +2019,11 @@ func (client *Client) ExecuteRegistryModuleWithContext(ctx context.Context, name
 
 // Summary:
 //
-// 执行资源导出任务
+// Runs a resource export task.
+//
+// Description:
+//
+// Single-user call frequency: 100 calls per second.
 //
 // @param request - ExecuteResourceExportTaskRequest
 //
@@ -1936,7 +2070,13 @@ func (client *Client) ExecuteResourceExportTaskWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 执行TerraformApply
+// Executes TerraformApply.
+//
+// Description:
+//
+// Executes the Terraform Apply command to create or update cloud resources based on the provided Terraform code. This API can handle complex scenarios such as operations that depend on a previous state.
+//
+// Before calling this API, ensure that all required authentication information is properly configured and that the Terraform code meets the expected functional requirements.
 //
 // @param request - ExecuteTerraformApplyRequest
 //
@@ -1991,7 +2131,11 @@ func (client *Client) ExecuteTerraformApplyWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 执行TerraformDestroy
+// Executes Terraform Destroy.
+//
+// Description:
+//
+// Executes the Terraform Destroy command to destroy resources created by Terraform.
 //
 // @param request - ExecuteTerraformDestroyRequest
 //
@@ -2042,7 +2186,13 @@ func (client *Client) ExecuteTerraformDestroyWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 执行TerraformPlan
+// Executes a Terraform plan.
+//
+// Description:
+//
+// Executes a Terraform Plan command by using the provided Terraform code to create or update cloud resources. This API operation can handle complex scenarios such as operations that depend on a previous state.
+//
+// Before calling this API operation, ensure that all required authentication information is properly configured and that the Terraform code meets the expected functional requirements.
 //
 // @param request - ExecuteTerraformPlanRequest
 //
@@ -2097,7 +2247,7 @@ func (client *Client) ExecuteTerraformPlanWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 生成模板
+// Generates Terraform HCL template code.
 //
 // @param request - GenerateModuleRequest
 //
@@ -2168,7 +2318,7 @@ func (client *Client) GenerateModuleWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// 偏差检测配置详情
+// # Retrieve drift detection configuration
 //
 // @param request - GetDetectConfigRequest
 //
@@ -2209,7 +2359,11 @@ func (client *Client) GetDetectConfigWithContext(ctx context.Context, detectConf
 
 // Summary:
 //
-// 获取Terraform运行结果
+// Retrieves the result of a Terraform run.
+//
+// Description:
+//
+// Retrieves the result of a Terraform run.
 //
 // @param request - GetExecuteStateRequest
 //
@@ -2250,7 +2404,7 @@ func (client *Client) GetExecuteStateWithContext(ctx context.Context, stateId *s
 
 // Summary:
 //
-// 查询分组
+// Queries a group.
 //
 // @param request - GetGroupRequest
 //
@@ -2291,7 +2445,11 @@ func (client *Client) GetGroupWithContext(ctx context.Context, groupId *string, 
 
 // Summary:
 //
-// 作业详情
+// Retrieves job information.
+//
+// Description:
+//
+// Single-user call frequency: 100 calls per second.
 //
 // @param request - GetJobRequest
 //
@@ -2338,7 +2496,13 @@ func (client *Client) GetJobWithContext(ctx context.Context, taskId *string, job
 
 // Summary:
 //
-// # Get Module Details
+// Queries the details of a specified template.
+//
+// Description:
+//
+// ## Operation description
+//
+// You can call this operation to query the details of a specified template, including but not limited to the template name, description, source, status, and latest version. You must specify the template ID and include authentication information in the request.
 //
 // @param request - GetModuleRequest
 //
@@ -2379,7 +2543,13 @@ func (client *Client) GetModuleWithContext(ctx context.Context, moduleId *string
 
 // Summary:
 //
-// 模板版本详情
+// Queries the details of a specific version of a specified template.
+//
+// Description:
+//
+// ## Operation description
+//
+// You can call this operation to query the details of a specific version of a specified template, including the version number, description, and release time. Make sure that the template ID and version number are correct.
 //
 // @param request - GetModuleVersionRequest
 //
@@ -2420,7 +2590,17 @@ func (client *Client) GetModuleVersionWithContext(ctx context.Context, moduleId 
 
 // Summary:
 //
-// 参数集详情
+// Retrieves the details of a parameter set by parameter set ID.
+//
+// Description:
+//
+// ## Description
+//
+// - This operation retrieves detailed parameter set information by specifying a parameterSetId.
+//
+// - Authentication is required to call this operation.
+//
+// - If the request succeeds, the response includes detailed data such as the parameter set name, description, and parameter list.
 //
 // @param request - GetParameterSetRequest
 //
@@ -2461,7 +2641,7 @@ func (client *Client) GetParameterSetWithContext(ctx context.Context, parameterS
 
 // Summary:
 //
-// 查询项目
+// Queries a project.
 //
 // @param request - GetProjectRequest
 //
@@ -2502,7 +2682,62 @@ func (client *Client) GetProjectWithContext(ctx context.Context, projectId *stri
 
 // Summary:
 //
-// 获取RegistryModule信息
+// Retrieves the resource documentation of a Terraform provider.
+//
+// @param request - GetProviderDocumentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetProviderDocumentResponse
+func (client *Client) GetProviderDocumentWithContext(ctx context.Context, request *GetProviderDocumentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetProviderDocumentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProviderVersion) {
+		query["providerVersion"] = request.ProviderVersion
+	}
+
+	if !dara.IsNil(request.TerraformResourceType) {
+		query["terraformResourceType"] = request.TerraformResourceType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetProviderDocument"),
+		Version:     dara.String("2021-08-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/version/terraform/provider/document"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetProviderDocumentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a Registry module.
+//
+// Description:
+//
+// Single-user call frequency: 200 calls per second.
 //
 // @param request - GetRegistryModuleRequest
 //
@@ -2543,7 +2778,11 @@ func (client *Client) GetRegistryModuleWithContext(ctx context.Context, namespac
 
 // Summary:
 //
-// 获取RegistryModule版本信息
+// Queries a Registry template version.
+//
+// Description:
+//
+// Single-user call frequency: 200 calls per second.
 //
 // @param request - GetRegistryModuleVersionRequest
 //
@@ -2584,7 +2823,11 @@ func (client *Client) GetRegistryModuleVersionWithContext(ctx context.Context, n
 
 // Summary:
 //
-// 获取工作空间信息
+// Queries a workspace.
+//
+// Description:
+//
+// Single-user call frequency: 200 calls per second.
 //
 // @param request - GetRegistryNamespaceRequest
 //
@@ -2625,7 +2868,11 @@ func (client *Client) GetRegistryNamespaceWithContext(ctx context.Context, names
 
 // Summary:
 //
-// 查询导出任务详情
+// Queries the details of a resource export task.
+//
+// Description:
+//
+// Single-user call frequency: 100 calls per second.
 //
 // @param request - GetResourceExportTaskRequest
 //
@@ -2672,7 +2919,11 @@ func (client *Client) GetResourceExportTaskWithContext(ctx context.Context, expo
 
 // Summary:
 //
-// 获取资源类型信息
+// Retrieves resource type information.
+//
+// Description:
+//
+// ## Request description.
 //
 // @param request - GetResourceTypeRequest
 //
@@ -2727,7 +2978,7 @@ func (client *Client) GetResourceTypeWithContext(ctx context.Context, resourceTy
 
 // Summary:
 //
-// 获取资源栈
+// Queries a stack.
 //
 // @param request - GetStackRequest
 //
@@ -2768,7 +3019,7 @@ func (client *Client) GetStackWithContext(ctx context.Context, stackId *string, 
 
 // Summary:
 //
-// 部署详情接口
+// Queries the list of deployments for a stack.
 //
 // @param request - GetStackDeploymentsRequest
 //
@@ -2835,7 +3086,7 @@ func (client *Client) GetStackDeploymentsWithContext(ctx context.Context, stackI
 
 // Summary:
 //
-// 获取资源栈部署结果
+// Retrieves the trigger result of a stack.
 //
 // @param request - GetStackExecutionResultRequest
 //
@@ -2876,7 +3127,11 @@ func (client *Client) GetStackExecutionResultWithContext(ctx context.Context, tr
 
 // Summary:
 //
-// 查询任务详情
+// Retrieves the details of a task.
+//
+// Description:
+//
+// Single-user call frequency: 100 calls per second.
 //
 // @param request - GetTaskRequest
 //
@@ -2917,7 +3172,11 @@ func (client *Client) GetTaskWithContext(ctx context.Context, taskId *string, re
 
 // Summary:
 //
-// 获取状态文件检测结果
+// Retrieves the detection result of a state file.
+//
+// Description:
+//
+// This API is used to retrieve the detection results of state files for resource orchestration tasks and stack tasks on the automation service desk.
 //
 // @param request - GetTerraformStateDetectionRequest
 //
@@ -2958,7 +3217,7 @@ func (client *Client) GetTerraformStateDetectionWithContext(ctx context.Context,
 
 // Summary:
 //
-// 关联到资源的偏差检测配置列表
+// # List drift detection associations
 //
 // @param request - ListDetectConfigRelationsRequest
 //
@@ -3013,7 +3272,7 @@ func (client *Client) ListDetectConfigRelationsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 偏差检测配置列表
+// # List drift detection configurations
 //
 // @param request - ListDetectConfigsRequest
 //
@@ -3068,7 +3327,29 @@ func (client *Client) ListDetectConfigsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 获取Explorer的egistryModule版本示例列表
+// Retrieves the list of official Terraform Module examples.
+//
+// Description:
+//
+// This operation queries the example information of Terraform Modules officially provided by Alibaba Cloud.
+//
+// You can use the `maxResults` parameter to adjust the maximum number of entries to return.
+//
+// - If `nextToken` is not included in the response, no more data is available. Otherwise, more data is available. To query the next page, set the `nextToken` parameter of the ListExplorerRegistryModuleExamples operation to the `nextToken` value returned in the previous response. If the `NextToken` parameter is not specified, the first page of data is returned by default.
+//
+// - You can use keyword, namespaceName, moduleName, moduleVersion, and exampleName as conditional filter settings to narrow down the search scope. Multiple filter conditions have a logical `AND` relationship, and only resources that meet all filter conditions are returned.
+//
+//   - keyword: optional. Searches by keyword and supports fuzzy match on exampleName. For example, if keyword is set to ecs, module examples whose names contain ecs are returned.
+//
+//   - namespaceName: optional. Filters module examples by a specific workspace. For example, if namespaceName is set to alibaba, module examples in the alibaba workspace are returned.
+//
+//   - moduleName: optional. Filters module examples by a specific module name. For example, if moduleName is set to ecs, module examples whose module name is ecs are returned.
+//
+//   - moduleVersion: optional. Filters module examples by a specific module version. For example, if moduleVersion is set to 1.0.0, module examples whose module version is 1.0.0 are returned.
+//
+//   - exampleName: optional. Filters module examples by a specific example name. For example, if exampleName is set to ecs, module examples whose example name is ecs are returned.
+//
+// The response contains the request ID, total number of entries, data of the current page, and pagination information, which facilitates processing of query results.
 //
 // @param request - ListExplorerRegistryModuleExamplesRequest
 //
@@ -3139,7 +3420,27 @@ func (client *Client) ListExplorerRegistryModuleExamplesWithContext(ctx context.
 
 // Summary:
 //
-// 获取Explorer的egistryModule版本列表
+// Lists the version information of official Terraform modules provided by Alibaba Cloud.
+//
+// Description:
+//
+// This operation queries the version information of official Terraform modules provided by Alibaba Cloud.
+//
+// You can use the `maxResults` parameter to adjust the maximum number of entries to return.
+//
+// - If `nextToken` is not included in the response, no more data is available. Otherwise, more data is available. To query the next page, set the `nextToken` parameter of the ListExplorerRegistryModules operation to the `nextToken` value returned in the previous response. If the `NextToken` parameter is not specified, the first page of data is returned by default.
+//
+// - You can use keyword, namespaceName, moduleName, and moduleVersion as conditional filter Settings to narrow the search scope. Multiple filter conditions have a logical `AND` relationship. Only resources that meet all filter conditions are returned.
+//
+//   - keyword: optional. Performs a fuzzy match on the module name. For example, if keyword is set to ecs, modules whose names contain ecs are returned.
+//
+//   - namespaceName: optional. Filters modules by a specific workspace. For example, if namespaceName is set to alibaba, modules whose workspace is alibaba are returned. When moduleName is specified, namespaceName must also be specified. You can call the ListExplorerRegistryModule operation to obtain the namespaceName information.
+//
+//   - moduleName: optional. Filters modules by a specific name. For example, if moduleName is set to ecs, modules whose name is ecs are returned.
+//
+//   - moduleVersion: optional. Filters modules by a specific version. For example, if moduleVersion is set to 1.0.0, modules whose version is 1.0.0 are returned.
+//
+// The response contains the request ID, total number of entries, data on the current page, and pagination information, which facilitates the processing of query results.
 //
 // @param request - ListExplorerRegistryModuleVersionsRequest
 //
@@ -3206,7 +3507,23 @@ func (client *Client) ListExplorerRegistryModuleVersionsWithContext(ctx context.
 
 // Summary:
 //
-// 获取Explorer的Registry Module列表
+// Lists information about official Terraform modules provided by Alibaba Cloud.
+//
+// Description:
+//
+// This operation queries information about official Terraform modules provided by Alibaba Cloud.
+//
+// You can use the `maxResults` parameter to adjust the maximum number of entries to return.
+//
+// - If the `nextToken` parameter is not included in the response, no more data is available. Otherwise, more data is available. To query the next page, set the `nextToken` parameter of the ListExplorerRegistryModules operation to the `nextToken` value returned in the previous response. If you do not specify the `NextToken` parameter, the first page of data is returned by default.
+//
+// - You can use keyword and moduleName as filter conditions to narrow the search scope. Multiple filter conditions are evaluated by using a logical `AND`. Only resources that meet all filter conditions are returned.
+//
+//   - keyword: optional. Searches by keyword through fuzzy matching against ModuleName. For example, if keyword is set to ecs, modules whose names contain ecs are returned.
+//
+//   - moduleName: optional. Filters modules by a specific name. For example, if moduleName is set to ecs, only the module whose name is exactly ecs is returned.
+//
+// The response contains the request ID, total number of entries, data of the current page, and pagination information, which facilitates the processing of query results.
 //
 // @param request - ListExplorerRegistryModulesRequest
 //
@@ -3269,7 +3586,7 @@ func (client *Client) ListExplorerRegistryModulesWithContext(ctx context.Context
 
 // Summary:
 //
-// 查询分组列表
+// Queries the list of groups.
 //
 // @param tmpReq - ListGroupRequest
 //
@@ -3338,7 +3655,11 @@ func (client *Client) ListGroupWithContext(ctx context.Context, tmpReq *ListGrou
 
 // Summary:
 //
-// 作业列表
+// Queries a list of jobs.
+//
+// Description:
+//
+// Single-user call frequency: 100 calls per second.
 //
 // @param request - ListJobsRequest
 //
@@ -3401,7 +3722,11 @@ func (client *Client) ListJobsWithContext(ctx context.Context, taskId *string, r
 
 // Summary:
 //
-// 模板版本列表
+// Retrieves a list of template versions.
+//
+// Description:
+//
+// Single-user call frequency: 100 calls per second.
 //
 // @param request - ListModuleVersionRequest
 //
@@ -3456,7 +3781,25 @@ func (client *Client) ListModuleVersionWithContext(ctx context.Context, moduleId
 
 // Summary:
 //
-// 列举模板
+// Retrieves a list of templates for the current user, with support for pagination and conditional filtering.
+//
+// Description:
+//
+// ## Operation description
+//
+// This operation lists all Terraform templates for the current user. You can specify query parameters to implement pagination, fuzzy match template names, and filter templates by source or status. You can also filter templates by tag for more granular results.
+//
+// ### Notes
+//
+// - Use the pageNumber and pageSize parameters to control the number of returned results.
+//
+// - Use the name parameter to perform a fuzzy match on template names.
+//
+// - Use the source parameter to filter templates by source, such as OSS import or file upload.
+//
+// - Use the status parameter to filter templates by status, such as Created or Published.
+//
+// - Tag-based filtering requires a JSON-formatted string, for example, `[{"key":"env","value":"prod"}]`.
 //
 // @param tmpReq - ListModulesRequest
 //
@@ -3533,7 +3876,7 @@ func (client *Client) ListModulesWithContext(ctx context.Context, tmpReq *ListMo
 
 // Summary:
 //
-// 关联到资源的参数集列表
+// Lists the parameter sets associated with a resource.
 //
 // @param request - ListParameterSetRelationRequest
 //
@@ -3584,7 +3927,19 @@ func (client *Client) ListParameterSetRelationWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 参数集列表
+// Queries and retrieves a paginated list of parameter sets with keyword search support.
+//
+// Description:
+//
+// ## Operation description
+//
+// This operation queries all parameter sets in the system. You can filter results by keyword and paginate the results. Authentication information is required.
+//
+// ### Notes
+//
+// - The keyword parameter can be used to perform a fuzzy match on parameter sets by name or description.
+//
+// - Pagination is controlled by pageNumber and pageSize. Results start from the first page by default. Set pageSize to a reasonable value to avoid performance issues.
 //
 // @param request - ListParameterSetsRequest
 //
@@ -3643,7 +3998,19 @@ func (client *Client) ListParameterSetsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 所有产品列表
+// Queries the list of all products.
+//
+// Description:
+//
+// ## Operation description
+//
+// - **Keyword search**: Use the `keyword` parameter for fuzzy matching.
+//
+// - **Paged query**: Use `nextToken` for pagination and `maxResults` to specify the maximum number of results per page (default: 100, maximum: 200).
+//
+// - **Terraform Provider version**: The optional `terraformProviderVersion` parameter filters products associated with a specific Provider version.
+//
+// - **Response structure**: The response contains the request ID, total number of entries, data of the current page, and pagination information for easy processing of query results.
 //
 // @param request - ListProductsRequest
 //
@@ -3714,7 +4081,7 @@ func (client *Client) ListProductsWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// 查询项目列表
+// Queries the list of projects.
 //
 // @param tmpReq - ListProjectRequest
 //
@@ -3779,7 +4146,11 @@ func (client *Client) ListProjectWithContext(ctx context.Context, tmpReq *ListPr
 
 // Summary:
 //
-// 获取RegistryModule版本列表
+// Queries the list of Registry template versions.
+//
+// Description:
+//
+// Single-user call frequency: 200 calls per second.
 //
 // @param request - ListRegistryModuleVersionsRequest
 //
@@ -3838,7 +4209,11 @@ func (client *Client) ListRegistryModuleVersionsWithContext(ctx context.Context,
 
 // Summary:
 //
-// 获取RegistryModule列表
+// Queries a list of registry modules.
+//
+// Description:
+//
+// Single-user call frequency: 200 calls per second.
 //
 // @param request - ListRegistryModulesRequest
 //
@@ -3905,7 +4280,11 @@ func (client *Client) ListRegistryModulesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 获取工作空间列表
+// Queries the list of workspaces.
+//
+// Description:
+//
+// Single-user call frequency: 200 calls per second.
 //
 // @param request - ListRegistryNamespacesRequest
 //
@@ -3964,7 +4343,11 @@ func (client *Client) ListRegistryNamespacesWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 获取任务版本列表
+// Retrieves the list of versions for a resource export task.
+//
+// Description:
+//
+// Single-user call frequency: 100 calls per second.
 //
 // @param request - ListResourceExportTaskVersionsRequest
 //
@@ -4027,7 +4410,11 @@ func (client *Client) ListResourceExportTaskVersionsWithContext(ctx context.Cont
 
 // Summary:
 //
-// 查询导出任务列表
+// Queries the list of resource export tasks.
+//
+// Description:
+//
+// Rate limit per user: 100 calls per second.
 //
 // @param request - ListResourceExportTasksRequest
 //
@@ -4086,7 +4473,13 @@ func (client *Client) ListResourceExportTasksWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 资源类型列表
+// Queries a list of resource types by filter conditions with pagination support.
+//
+// Description:
+//
+// ## Operation description
+//
+// This API operation allows you to perform a conditional query for a list of resource types based on conditions such as product code, Terraform provider version, child class, status, and keyword. The results include detailed information about each resource, such as the product code, status, status effective version, child class, Terraform provider version, and resource type code. Paging is supported to facilitate handling large amounts of data.
 //
 // @param tmpReq - ListResourceTypesRequest
 //
@@ -4179,7 +4572,7 @@ func (client *Client) ListResourceTypesWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 资源列表
+// Retrieves the resources of a node.
 //
 // @param request - ListResourcesRequest
 //
@@ -4242,7 +4635,7 @@ func (client *Client) ListResourcesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// 查询资源栈配置列表
+// Queries the list of stack configurations.
 //
 // @param request - ListStackConfigsRequest
 //
@@ -4301,7 +4694,7 @@ func (client *Client) ListStackConfigsWithContext(ctx context.Context, stackId *
 
 // Summary:
 //
-// 列举资源栈
+// Queries the list of stacks.
 //
 // @param request - ListStacksRequest
 //
@@ -4372,7 +4765,11 @@ func (client *Client) ListStacksWithContext(ctx context.Context, request *ListSt
 
 // Summary:
 //
-// 任务列表
+// Queries a list of tasks.
+//
+// Description:
+//
+// The maximum number of times that a single user can call this operation per second: 100.
 //
 // @param tmpReq - ListTasksRequest
 //
@@ -4461,7 +4858,7 @@ func (client *Client) ListTasksWithContext(ctx context.Context, tmpReq *ListTask
 
 // Summary:
 //
-// terraformProvider版本
+// Retrieves the list of Terraform provider versions.
 //
 // @param request - ListTerraformProviderVersionsRequest
 //
@@ -4520,7 +4917,13 @@ func (client *Client) ListTerraformProviderVersionsWithContext(ctx context.Conte
 
 // Summary:
 //
-// 支持状态文件的资源导入和移除
+// Supports resource import and removal for state files.
+//
+// Description:
+//
+// This API is used to manage state files for resource orchestration tasks and stack tasks on the automated service desk.
+//
+// Before using this API, make sure that all required authentication information is correctly configured and that the Terraform code meets the expected functional requirements.
 //
 // @param request - ManageTerraformStateRequest
 //
@@ -4587,7 +4990,13 @@ func (client *Client) ManageTerraformStateWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 控制作业
+// After a job is created, you can perform the **Cancel*	- operation to stop the job while it is running.
+//
+// After a job reaches the pending confirmation state, you can perform the **Abolish*	- operation to stop the job, or perform the **Execute*	- operation to continue the job execution.
+//
+// Description:
+//
+// Per-user call frequency: 100 calls per second.
 //
 // @param request - OperateJobRequest
 //
@@ -4638,7 +5047,11 @@ func (client *Client) OperateJobWithContext(ctx context.Context, taskId *string,
 
 // Summary:
 //
-// 发布RegistryModule版本
+// Publishes a Registry template version.
+//
+// Description:
+//
+// Single-user call frequency: 100 calls per second.
 //
 // @param request - PublishRegistryModuleVersionRequest
 //
@@ -4697,7 +5110,11 @@ func (client *Client) PublishRegistryModuleVersionWithContext(ctx context.Contex
 
 // Summary:
 //
-// 删除共享账号信息
+// Removes a shared account.
+//
+// Description:
+//
+// Single-user call frequency: 100 calls per second.
 //
 // @param tmpReq - RemoveSharedAccountsRequest
 //
@@ -4758,7 +5175,7 @@ func (client *Client) RemoveSharedAccountsWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// 触发资源栈部署
+// # Trigger Stack execution
 //
 // @param request - TriggerStackExecutionRequest
 //
@@ -4821,7 +5238,19 @@ func (client *Client) TriggerStackExecutionWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 更新偏差检测配置
+// Updates the drift detection configuration information for the specified ID.
+//
+// Description:
+//
+// ## Request Description
+//
+// - `detectConfigId` is a required parameter used to identify the specific detection configuration to update.
+//
+// - When `triggerType` is set to `Cron`, a valid `cronExpression` must be provided.
+//
+// - Each element in the `alarmConfigs` list must include an alert type (`type`) and an address (`address`).
+//
+// - If you do not want to change certain properties (such as `name`, `description`, etc.), you can omit these fields from the request body.
 //
 // @param request - UpdateDetectConfigRequest
 //
@@ -4892,7 +5321,11 @@ func (client *Client) UpdateDetectConfigWithContext(ctx context.Context, detectC
 
 // Summary:
 //
-// 修改ExplorerModule
+// Updates an Explorer template.
+//
+// Description:
+//
+// Updates an Explorer template.
 //
 // @param request - UpdateExplorerModuleAttributeRequest
 //
@@ -4947,7 +5380,7 @@ func (client *Client) UpdateExplorerModuleAttributeWithContext(ctx context.Conte
 
 // Summary:
 //
-// 修改分组
+// Modifies a group.
 //
 // @param request - UpdateGroupRequest
 //
@@ -5046,7 +5479,19 @@ func (client *Client) UpdateGroupWithContext(ctx context.Context, groupId *strin
 
 // Summary:
 //
-// # Update Module
+// Updates the name, description, tags, and other information of a specified template.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This operation allows you to modify the basic attributes of an existing template, including but not limited to the template name, description, and tags.
+//
+// - The update operation does not affect the content or version information of the template.
+//
+// - To enable or disable deletion protection, use the deletionProtection parameter.
+//
+// - Use clientToken to ensure the idempotence of the request and avoid duplicate submissions caused by network issues.
 //
 // @param request - UpdateModuleAttributeRequest
 //
@@ -5121,7 +5566,21 @@ func (client *Client) UpdateModuleAttributeWithContext(ctx context.Context, modu
 
 // Summary:
 //
-// 更新参数集
+// Updates the attributes of a specified parameter set, such as the name and description.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This operation allows you to modify the basic information of an existing parameter set, including the name and description.
+//
+// - If the request includes the parameters field, the parameter list in the parameter set is updated.
+//
+// - The clientToken field can be used to ensure the idempotence of the request.
+//
+// - The update operation requires a valid parameterSetId as a path parameter.
+//
+// - The request must include authentication information to pass identity verification.
 //
 // @param request - UpdateParameterSetAttributeRequest
 //
@@ -5176,7 +5635,7 @@ func (client *Client) UpdateParameterSetAttributeWithContext(ctx context.Context
 
 // Summary:
 //
-// 修改项目
+// Updates project information.
 //
 // @param request - UpdateProjectRequest
 //
@@ -5231,7 +5690,11 @@ func (client *Client) UpdateProjectWithContext(ctx context.Context, projectId *s
 
 // Summary:
 //
-// 修改RegistryModule
+// Updates a Registry template.
+//
+// Description:
+//
+// Single-user call frequency: 100 calls per second.
 //
 // @param request - UpdateRegistryModuleAttributeRequest
 //
@@ -5286,7 +5749,11 @@ func (client *Client) UpdateRegistryModuleAttributeWithContext(ctx context.Conte
 
 // Summary:
 //
-// 修改工作空间
+// Modifies a workspace.
+//
+// Description:
+//
+// Single-user call frequency: 100 calls per second.
 //
 // @param request - UpdateRegistryNamespaceAttributeRequest
 //
@@ -5341,7 +5808,11 @@ func (client *Client) UpdateRegistryNamespaceAttributeWithContext(ctx context.Co
 
 // Summary:
 //
-// 更新导出任务
+// Modifies a resource export task.
+//
+// Description:
+//
+// Single-user call frequency: 100 calls per second.
 //
 // @param request - UpdateResourceExportTaskAttributeRequest
 //
@@ -5424,7 +5895,7 @@ func (client *Client) UpdateResourceExportTaskAttributeWithContext(ctx context.C
 
 // Summary:
 //
-// 更新资源栈
+// Modifies a stack. When the configuration changes, a stack deployment is triggered.
 //
 // @param request - UpdateStackRequest
 //
@@ -5491,7 +5962,11 @@ func (client *Client) UpdateStackWithContext(ctx context.Context, stackId *strin
 
 // Summary:
 //
-// 修改任务
+// Updates the properties of a task.
+//
+// Description:
+//
+// Single-user call frequency: 100 calls per second.
 //
 // @param request - UpdateTaskAttributeRequest
 //
@@ -5552,8 +6027,16 @@ func (client *Client) UpdateTaskAttributeWithContext(ctx context.Context, taskId
 		body["skipPropertyValidation"] = request.SkipPropertyValidation
 	}
 
+	if !dara.IsNil(request.SkipRegionValidation) {
+		body["skipRegionValidation"] = request.SkipRegionValidation
+	}
+
 	if !dara.IsNil(request.Tags) {
 		body["tags"] = request.Tags
+	}
+
+	if !dara.IsNil(request.TerraformProviderVersion) {
+		body["terraformProviderVersion"] = request.TerraformProviderVersion
 	}
 
 	if !dara.IsNil(request.TerraformVersion) {
@@ -5590,7 +6073,7 @@ func (client *Client) UpdateTaskAttributeWithContext(ctx context.Context, taskId
 
 // Summary:
 //
-// 模版上传
+// Uploads a template.
 //
 // @param request - UploadModuleRequest
 //
@@ -5655,7 +6138,11 @@ func (client *Client) UploadModuleWithContext(ctx context.Context, resourceType 
 
 // Summary:
 //
-// 模版预检
+// Performs a dry run on a template.
+//
+// Description:
+//
+// Performs a dry run on the content of a Terraform configuration file.
 //
 // @param request - ValidateModuleRequest
 //
@@ -5672,7 +6159,11 @@ func (client *Client) ValidateModuleWithSSECtx(ctx context.Context, request *Val
 
 // Summary:
 //
-// 模版预检
+// Performs a dry run on a template.
+//
+// Description:
+//
+// Performs a dry run on the content of a Terraform configuration file.
 //
 // @param request - ValidateModuleRequest
 //

@@ -16,6 +16,8 @@ type iDetectTerraformStateResponseBody interface {
 }
 
 type DetectTerraformStateResponseBody struct {
+	// The ID of the detection task.
+	//
 	// example:
 	//
 	// job-dcsdxxxxxx

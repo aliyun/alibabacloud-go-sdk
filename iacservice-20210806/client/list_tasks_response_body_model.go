@@ -22,22 +22,31 @@ type iListTasksResponseBody interface {
 }
 
 type ListTasksResponseBody struct {
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page. Default value: 20. Minimum value: 1. Maximum value: 100.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 98610149-488B-5E48-B981-8D4CE1AF77CD
-	RequestId *string                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Tasks     []*ListTasksResponseBodyTasks `json:"tasks,omitempty" xml:"tasks,omitempty" type:"Repeated"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The list of tasks.
+	Tasks []*ListTasksResponseBodyTasks `json:"tasks,omitempty" xml:"tasks,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
-	// 5
+	// 55
 	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
@@ -108,40 +117,82 @@ func (s *ListTasksResponseBody) Validate() error {
 }
 
 type ListTasksResponseBodyTasks struct {
+	// Indicates whether the task is automatically executed.
+	//
+	// example:
+	//
+	// false
 	AutoApply *bool `json:"autoApply,omitempty" xml:"autoApply,omitempty"`
+	// The time when the task was created.
+	//
 	// example:
 	//
 	// 2022-07-11T15:09:53Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The job ID of the current task.
+	//
 	// example:
 	//
 	// job-123asd
 	CurrentJobId *string `json:"currentJobId,omitempty" xml:"currentJobId,omitempty"`
+	// The current job status.
+	//
 	// example:
 	//
 	// Pending
-	CurrentJobStatus    *string                              `json:"currentJobStatus,omitempty" xml:"currentJobStatus,omitempty"`
-	DeletionProtection  *bool                                `json:"deletionProtection,omitempty" xml:"deletionProtection,omitempty"`
-	GroupInfo           *ListTasksResponseBodyTasksGroupInfo `json:"groupInfo,omitempty" xml:"groupInfo,omitempty" type:"Struct"`
-	LatestModuleVersion *string                              `json:"latestModuleVersion,omitempty" xml:"latestModuleVersion,omitempty"`
+	CurrentJobStatus *string `json:"currentJobStatus,omitempty" xml:"currentJobStatus,omitempty"`
+	// Indicates whether deletion protection is enabled. Deletion protection is automatically enabled when managed resources are included.
+	//
+	// example:
+	//
+	// false
+	DeletionProtection *bool `json:"deletionProtection,omitempty" xml:"deletionProtection,omitempty"`
+	// The task group information.
+	GroupInfo *ListTasksResponseBodyTasksGroupInfo `json:"groupInfo,omitempty" xml:"groupInfo,omitempty" type:"Struct"`
+	// The latest version of the module.
+	//
+	// example:
+	//
+	// v3
+	LatestModuleVersion *string `json:"latestModuleVersion,omitempty" xml:"latestModuleVersion,omitempty"`
+	// The module ID.
+	//
 	// example:
 	//
 	// mod-518855d9a058c331e9c60bc0ce
-	ModuleId   *string `json:"moduleId,omitempty" xml:"moduleId,omitempty"`
+	ModuleId *string `json:"moduleId,omitempty" xml:"moduleId,omitempty"`
+	// The module name.
+	//
+	// example:
+	//
+	// mod-name
 	ModuleName *string `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
+	// The module version.
+	//
 	// example:
 	//
 	// v1
 	ModuleVersion *string `json:"moduleVersion,omitempty" xml:"moduleVersion,omitempty"`
+	// The task name.
+	//
 	// example:
 	//
-	// abc
+	// TaskName
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The task status. Valid values:
+	//
+	// - Available: The task is available, and no job is running.
+	//
+	// - Running: The task is running, and the current job is in progress.
+	//
 	// example:
 	//
 	// Running
-	Status *string                           `json:"status,omitempty" xml:"status,omitempty"`
-	Tags   []*ListTasksResponseBodyTasksTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The list of task tags.
+	Tags []*ListTasksResponseBodyTasksTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The task ID.
+	//
 	// example:
 	//
 	// task-1525e992f1b621b0ca51647876e
@@ -301,18 +352,26 @@ func (s *ListTasksResponseBodyTasks) Validate() error {
 }
 
 type ListTasksResponseBodyTasksGroupInfo struct {
+	// The group ID.
+	//
 	// example:
 	//
 	// g-4267dcfbf1b6d1e0652bfbbe995
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	// The group name.
+	//
 	// example:
 	//
 	// abc
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// p-433aead7560571cf1b2bfbbe92b
 	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// abc
@@ -368,10 +427,30 @@ func (s *ListTasksResponseBodyTasksGroupInfo) Validate() error {
 }
 
 type ListTasksResponseBodyTasksTags struct {
-	Key      *string `json:"key,omitempty" xml:"key,omitempty"`
-	TagKey   *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	// The tag key of the task.
+	//
+	// example:
+	//
+	// name
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag key of the module.
+	//
+	// example:
+	//
+	// name
+	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	// The tag value of the task.
+	//
+	// example:
+	//
+	// iac-demo
 	TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
-	Value    *string `json:"value,omitempty" xml:"value,omitempty"`
+	// The tag value of the task.
+	//
+	// example:
+	//
+	// iac-demo
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s ListTasksResponseBodyTasksTags) String() string {

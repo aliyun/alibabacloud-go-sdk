@@ -14,6 +14,8 @@ type iDeleteStackResponseBody interface {
 }
 
 type DeleteStackResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// C7070EC3-DF66-58BA-A1DD-A8574FF53143

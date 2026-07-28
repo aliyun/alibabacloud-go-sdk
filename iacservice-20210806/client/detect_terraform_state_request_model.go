@@ -18,18 +18,28 @@ type iDetectTerraformStateRequest interface {
 }
 
 type DetectTerraformStateRequest struct {
+	// The idempotence token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// a65451293e64979ba7a4b573950217fe
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// The task identifier. For a Stack task, the format is <$stackId>:<$deploymentName>. For a Task task, the format is <$TaskId>.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// stack-as11xxxxxxxxx:developmentA
 	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// The task type. Valid values:
+	//
+	// - Stack
+	//
+	// - Task.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,10 +16,14 @@ type iCreateDetectConfigResponseBody interface {
 }
 
 type CreateDetectConfigResponseBody struct {
+	// Drift detection configuration ID
+	//
 	// example:
 	//
 	// dc-xxxx
 	DetectConfigId *string `json:"detectConfigId,omitempty" xml:"detectConfigId,omitempty"`
+	// request ID
+	//
 	// example:
 	//
 	// String

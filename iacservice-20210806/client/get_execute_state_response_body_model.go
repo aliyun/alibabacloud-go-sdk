@@ -22,10 +22,14 @@ type iGetExecuteStateResponseBody interface {
 }
 
 type GetExecuteStateResponseBody struct {
+	// The error message.
+	//
 	// example:
 	//
 	// Your account does not have enough balance to order postpaid product.
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The run log.
+	//
 	// example:
 	//
 	// {"tf-plan.run.log":"xxx"}
@@ -36,10 +40,38 @@ type GetExecuteStateResponseBody struct {
 	//
 	// B4672AE3-C313-5B7A-BB24-45345570D398
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The state file content.
+	//
 	// example:
 	//
 	// {"version": 4, "terraform_version": "1.5.7", "serial": 3, "lineage": "cb71b0b2-1ec2-6483-d409-8cae23186ec6",  "outputs": {}, "resources": [], "check_results": null}
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	// The status. Valid values:
+	//
+	// - Pending: ready to start.
+	//
+	// - PlanQueued: the plan task has been created but is waiting in the queue because no workflow is available.
+	//
+	// - ApplyQueued: the apply task has been created but is waiting in the queue because no workflow is available.
+	//
+	// - Planning: the plan phase is being executed.
+	//
+	// - Planned: the plan execution is complete.
+	//
+	// - Confirmed: the plan has been confirmed after execution.
+	//
+	// - PlannedAndFinished: the plan execution is complete and no diff was found. The job is in a terminal state.
+	//
+	// - Applying: the apply phase is being executed.
+	//
+	// - Applied: the apply execution is complete.
+	//
+	// - Discarded: the task has been discarded. This is a terminal state.
+	//
+	// - Errored: the execution encountered an error. This is a terminal state.
+	//
+	// - Canceled: the execution has been canceled. This is a terminal state.
+	//
 	// example:
 	//
 	// Pending

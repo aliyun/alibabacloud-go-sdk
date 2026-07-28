@@ -14,6 +14,8 @@ type iExecuteResourceExportTaskRequest interface {
 }
 
 type ExecuteResourceExportTaskRequest struct {
+  // The idempotence token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
+  // 
   // This parameter is required.
   // 
   // example:

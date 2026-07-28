@@ -14,6 +14,8 @@ type iAddSharedAccountsResponseBody interface {
 }
 
 type AddSharedAccountsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 0D797DC3-FF04-5C21-81EB-XXXXXXXXX

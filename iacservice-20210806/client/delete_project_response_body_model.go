@@ -14,6 +14,8 @@ type iDeleteProjectResponseBody interface {
 }
 
 type DeleteProjectResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// BF72A6FB-B071-5F2E-A036-9D62545B962C

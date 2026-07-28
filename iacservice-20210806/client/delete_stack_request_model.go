@@ -14,6 +14,8 @@ type iDeleteStackRequest interface {
 }
 
 type DeleteStackRequest struct {
+	// Specifies whether to synchronously clean up resources managed by the stack. By default, resources are not cleaned up.
+	//
 	// example:
 	//
 	// true

@@ -22,19 +22,28 @@ type iListParameterSetsResponseBody interface {
 }
 
 type ListParameterSetsResponseBody struct {
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 200.
+	//
 	// example:
 	//
 	// 20
-	PageSize      *int32                                        `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The parameter sets.
 	ParameterSets []*ListParameterSetsResponseBodyParameterSets `json:"parameterSets,omitempty" xml:"parameterSets,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4E188A8C-D77A-53F2-9578-E9AD8ABF2FA9
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 50
@@ -108,28 +117,40 @@ func (s *ListParameterSetsResponseBody) Validate() error {
 }
 
 type ListParameterSetsResponseBodyParameterSets struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2022-05-14T10:05:19Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// Indicates whether deletion protection is enabled.
+	//
 	// example:
 	//
 	// false
 	DeletionProtection *bool `json:"deletionProtection,omitempty" xml:"deletionProtection,omitempty"`
+	// The description of the parameter set.
+	//
 	// example:
 	//
-	// OK
+	// This is parameterSet
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The name of the parameter set.
+	//
 	// example:
 	//
-	// 12
+	// demo
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The ID of the parameter set.
+	//
 	// example:
 	//
 	// pts-433aead756057ea135b21e89c
-	ParameterSetId *string                                                   `json:"parameterSetId,omitempty" xml:"parameterSetId,omitempty"`
-	Parameters     []*ListParameterSetsResponseBodyParameterSetsParameters   `json:"parameters,omitempty" xml:"parameters,omitempty" type:"Repeated"`
-	RelationList   []*ListParameterSetsResponseBodyParameterSetsRelationList `json:"relationList,omitempty" xml:"relationList,omitempty" type:"Repeated"`
+	ParameterSetId *string `json:"parameterSetId,omitempty" xml:"parameterSetId,omitempty"`
+	// The parameters in the parameter set.
+	Parameters []*ListParameterSetsResponseBodyParameterSetsParameters `json:"parameters,omitempty" xml:"parameters,omitempty" type:"Repeated"`
+	// The relationships associated with the parameter set.
+	RelationList []*ListParameterSetsResponseBodyParameterSetsRelationList `json:"relationList,omitempty" xml:"relationList,omitempty" type:"Repeated"`
 }
 
 func (s ListParameterSetsResponseBodyParameterSets) String() string {
@@ -226,22 +247,34 @@ func (s *ListParameterSetsResponseBodyParameterSets) Validate() error {
 }
 
 type ListParameterSetsResponseBodyParameterSetsParameters struct {
+	// The parameter name.
+	//
 	// example:
 	//
 	// region
 	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
 	Secret *bool   `json:"secret,omitempty" xml:"secret,omitempty"`
+	// The parameter set status. Valid values:
+	//
+	// HAS_VALUE (default): A specific value is defined.
+	//
+	// EXPLICIT_NULL: The value is explicitly set to null.
+	//
 	// example:
 	//
 	// HAS_VALUE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The parameter type (string/number/bool/map(string)/list(string)).
+	//
 	// example:
 	//
 	// string
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The parameter value.
+	//
 	// example:
 	//
-	// 111
+	// cn-beijing
 	Value interface{} `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -303,14 +336,26 @@ func (s *ListParameterSetsResponseBodyParameterSetsParameters) Validate() error 
 }
 
 type ListParameterSetsResponseBodyParameterSetsRelationList struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2022-06-09T03:46:18Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The resource ID. When the resource type is ModuleVersion, the value is a concatenation of <moduleId>-<moduleversion>, such as mod-34535345df123fr-v3.
+	//
 	// example:
 	//
 	// task-433aead756057ffdf5326bf1e12ed
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// The resource type. Valid values:
+	//
+	// - Module: template
+	//
+	// - ModuleVersion: template version
+	//
+	// - Task: task.
+	//
 	// example:
 	//
 	// Module

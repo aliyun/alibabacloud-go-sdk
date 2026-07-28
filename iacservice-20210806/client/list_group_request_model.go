@@ -22,20 +22,32 @@ type iListGroupRequest interface {
 }
 
 type ListGroupRequest struct {
+	// The search keyword. Name-based search is supported.
+	//
+	// example:
+	//
+	// test-case2
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of results to return per page. Default value: 20. Minimum value: 1. Maximum value: 100.
+	//
 	// example:
 	//
 	// 200
 	PageSize *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// p-14e80de4866bf7ffed0c4072ed9b37
-	ProjectId *string                `json:"projectId,omitempty" xml:"projectId,omitempty"`
-	Tag       []*ListGroupRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
+	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	// The list of tags.
+	Tag []*ListGroupRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
 }
 
 func (s ListGroupRequest) String() string {
@@ -105,7 +117,17 @@ func (s *ListGroupRequest) Validate() error {
 }
 
 type ListGroupRequestTag struct {
-	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// key
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// test
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

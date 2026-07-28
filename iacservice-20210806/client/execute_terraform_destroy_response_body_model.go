@@ -22,6 +22,8 @@ type ExecuteTerraformDestroyResponseBody struct {
   // 
   // BF72A6FB-B071-5F2E-A036-9D62545B962C
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+  // The state file ID.
+  // 
   // example:
   // 
   // task-xxxx

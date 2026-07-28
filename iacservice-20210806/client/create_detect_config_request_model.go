@@ -26,28 +26,44 @@ type iCreateDetectConfigRequest interface {
 }
 
 type CreateDetectConfigRequest struct {
+	// List of alerting addresses
 	AlarmConfigs []*CreateDetectConfigRequestAlarmConfigs `json:"alarmConfigs,omitempty" xml:"alarmConfigs,omitempty" type:"Repeated"`
+	// Idempotence token, format: `[0-9a-zA-Z-]{1,64}`. It is recommended to use a UUID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// a65451293e64979ba7a4b573950217fe
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// Cron expression (UTC+8). Required when trigger type is `Cron`.
+	//
 	// example:
 	//
 	// 0 0 0 ? 	- 1
 	CronExpression *string `json:"cronExpression,omitempty" xml:"cronExpression,omitempty"`
+	// Description, up to 256 characters in length.
+	//
 	// example:
 	//
 	// example
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Detection configuration Name
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	DetectConfigName *string `json:"detectConfigName,omitempty" xml:"detectConfigName,omitempty"`
-	Enabled          *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// Whether the Detection feature is Enabled. The default value is `true`.
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// Trigger type
+	//
+	// - Manual: Execute manually
+	//
+	// - Cron: Trigger on a schedule
+	//
 	// example:
 	//
 	// Manual
@@ -139,10 +155,14 @@ func (s *CreateDetectConfigRequest) Validate() error {
 }
 
 type CreateDetectConfigRequestAlarmConfigs struct {
+	// Alerting address.
+	//
 	// example:
 	//
 	// https://metrichub-cms-cn-hangzhou.aliyuncs.com/event/notify?xxxxx
 	Address *string `json:"address,omitempty" xml:"address,omitempty"`
+	// Alerting method. Currently only `cms` is supported.
+	//
 	// example:
 	//
 	// cms

@@ -22,19 +22,28 @@ type iListResourcesResponseBody interface {
 }
 
 type ListResourcesResponseBody struct {
+	// The resource information.
 	Resources []*ListResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 200.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 67585D9B-EFA5-5E51-BAB1-8FF07DA1B36F
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 9
@@ -108,57 +117,88 @@ func (s *ListResourcesResponseBody) Validate() error {
 }
 
 type ListResourcesResponseBodyResources struct {
+	// The Alibaba Cloud account ID.
+	//
 	// example:
 	//
 	// 365845
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2024-05-03T02:22:59Z
-	CreateTime           *string   `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The dependent resources.
 	DependsOnResourceIds []*string `json:"dependsOnResourceIds,omitempty" xml:"dependsOnResourceIds,omitempty" type:"Repeated"`
+	// The product code.
+	//
 	// example:
 	//
 	// ECS
 	ProductCode *string `json:"productCode,omitempty" xml:"productCode,omitempty"`
+	// The resource properties.
+	//
 	// example:
 	//
 	// {}
 	Properties map[string]interface{} `json:"properties,omitempty" xml:"properties,omitempty"`
+	// The property variables.
+	//
 	// example:
 	//
 	// {}
 	PropertyVariables map[string]interface{} `json:"propertyVariables,omitempty" xml:"propertyVariables,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The resource ARN.
+	//
 	// example:
 	//
 	// acs:vpc:cn-hangzhou:12345:test
 	ResourceArn *string `json:"resourceArn,omitempty" xml:"resourceArn,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-aekzyqyghofqbxy
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The resource ID.
+	//
 	// example:
 	//
 	// i-efegsewrttfd
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// The resource name.
+	//
 	// example:
 	//
 	// test
-	ResourceName    *string `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
+	ResourceName *string `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
+	// The URL of the resources page.
+	//
+	// example:
+	//
+	// https:://ecs.aliyncs.com
 	ResourcePageUrl *string `json:"resourcePageUrl,omitempty" xml:"resourcePageUrl,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// Task
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// The status.
+	//
 	// example:
 	//
 	// enable
-	Status *string                                   `json:"status,omitempty" xml:"status,omitempty"`
-	Tags   []*ListResourcesResponseBodyResourcesTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The tags.
+	Tags []*ListResourcesResponseBodyResourcesTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// terraform arn
 	//
 	// example:
@@ -171,6 +211,8 @@ type ListResourcesResponseBodyResources struct {
 	//
 	// alicloud_vpc
 	TerraformCode *string `json:"terraformCode,omitempty" xml:"terraformCode,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-a
@@ -361,10 +403,14 @@ func (s *ListResourcesResponseBodyResources) Validate() error {
 }
 
 type ListResourcesResponseBodyResourcesTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// test
 	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// test

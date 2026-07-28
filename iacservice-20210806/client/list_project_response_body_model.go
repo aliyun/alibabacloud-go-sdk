@@ -22,19 +22,28 @@ type iListProjectResponseBody interface {
 }
 
 type ListProjectResponseBody struct {
+	// The total number of records.
+	//
 	// example:
 	//
 	// 3
 	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 100.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int64                             `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The list of projects.
 	Projects []*ListProjectResponseBodyProjects `json:"projects,omitempty" xml:"projects,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 136B3926-DD90-5DB2-96EC-8BAD6407D1C9
@@ -108,23 +117,34 @@ func (s *ListProjectResponseBody) Validate() error {
 }
 
 type ListProjectResponseBodyProjects struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2022-05-10T10:08:34Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The project description.
+	//
 	// example:
 	//
 	// abc
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// 1234
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// p-148e7853433574fffe9fec72ed9b72
-	ProjectId *string                                `json:"projectId,omitempty" xml:"projectId,omitempty"`
-	Tags      []*ListProjectResponseBodyProjectsTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	// The tags.
+	Tags []*ListProjectResponseBodyProjectsTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The number of tasks.
+	//
 	// example:
 	//
 	// 2
@@ -207,7 +227,17 @@ func (s *ListProjectResponseBodyProjects) Validate() error {
 }
 
 type ListProjectResponseBodyProjectsTags struct {
-	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// key
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// test
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

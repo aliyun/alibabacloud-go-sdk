@@ -16,7 +16,10 @@ type iGetRegistryNamespaceResponseBody interface {
 }
 
 type GetRegistryNamespaceResponseBody struct {
+	// The workspace information.
 	Namespace *GetRegistryNamespaceResponseBodyNamespace `json:"namespace,omitempty" xml:"namespace,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 26684763-5BAB-58C8-BA4F-9D622AB7AD14
@@ -59,31 +62,46 @@ func (s *GetRegistryNamespaceResponseBody) Validate() error {
 }
 
 type GetRegistryNamespaceResponseBodyNamespace struct {
+	// The permissions.
+	//
 	// example:
 	//
 	// private
 	Acl *string `json:"acl,omitempty" xml:"acl,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2025-03-20T02:18:29Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The description of the workspace.
+	//
 	// example:
 	//
-	// demo
+	// description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The name of the administrator.
+	//
 	// example:
 	//
 	// admin
 	Maintainer *string `json:"maintainer,omitempty" xml:"maintainer,omitempty"`
+	// The number of Registry templates in the workspace.
+	//
 	// example:
 	//
 	// 21
 	Modules *int32 `json:"modules,omitempty" xml:"modules,omitempty"`
+	// The name of the workspace.
+	//
 	// example:
 	//
-	// test_namespace
-	NamespaceName  *string  `json:"namespaceName,omitempty" xml:"namespaceName,omitempty"`
+	// NamespaceName
+	NamespaceName *string `json:"namespaceName,omitempty" xml:"namespaceName,omitempty"`
+	// The list of shared accounts.
 	SharedAccounts []*int64 `json:"sharedAccounts,omitempty" xml:"sharedAccounts,omitempty" type:"Repeated"`
+	// The type of the workspace.
+	//
 	// example:
 	//
 	// share

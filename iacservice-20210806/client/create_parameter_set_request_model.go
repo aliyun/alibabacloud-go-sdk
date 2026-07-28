@@ -20,22 +20,29 @@ type iCreateParameterSetRequest interface {
 }
 
 type CreateParameterSetRequest struct {
+	// The idempotency token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// a65451293e64979ba7a4b573950217fe
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// The description of the parameter set. Maximum length: 1024 characters.
+	//
 	// example:
 	//
-	// test
+	// This is parameterSet
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The name of the parameter set. Maximum length: 128 characters.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// test
-	Name       *string                                `json:"name,omitempty" xml:"name,omitempty"`
+	// demo
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The list of parameters.
 	Parameters []*CreateParameterSetRequestParameters `json:"parameters,omitempty" xml:"parameters,omitempty" type:"Repeated"`
 }
 
@@ -97,22 +104,34 @@ func (s *CreateParameterSetRequest) Validate() error {
 }
 
 type CreateParameterSetRequestParameters struct {
+	// The parameter name.
+	//
 	// example:
 	//
-	// test1121
+	// region
 	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
 	Secret *bool   `json:"secret,omitempty" xml:"secret,omitempty"`
+	// The parameter set status. Valid values:
+	//
+	// - HAS_VALUE (default): Defines a specific value.
+	//
+	// - EXPLICIT_NULL: Explicitly sets the value to null.
+	//
 	// example:
 	//
 	// HAS_VALUE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The parameter type. Valid values: string, number, bool, map(string), and list(string).
+	//
 	// example:
 	//
 	// string
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The parameter value. Use JSON for complex types.
+	//
 	// example:
 	//
-	// test
+	// cn-hangzhou
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

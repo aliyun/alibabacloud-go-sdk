@@ -14,7 +14,7 @@ type iDissociateDetectConfigResponseBody interface {
 }
 
 type DissociateDetectConfigResponseBody struct {
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//

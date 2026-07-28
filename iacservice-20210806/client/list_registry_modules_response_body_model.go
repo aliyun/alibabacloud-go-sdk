@@ -22,19 +22,28 @@ type iListRegistryModulesResponseBody interface {
 }
 
 type ListRegistryModulesResponseBody struct {
+	// The total number of records.
+	//
 	// example:
 	//
 	// 173
 	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
+	// The maximum number of entries returned.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The token for the next page. A value of null indicates that no more pages are available.
+	//
 	// example:
 	//
-	// LC4NJL3Ru2bIiRdnbADPQp4dD+2BRJj42DLT6GrZysw=
-	NextToken       *string                                           `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// iRdnbADPQp4dD+2BRJj42DLT6GrZysw=
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The list of registry modules.
 	RegistryModules []*ListRegistryModulesResponseBodyRegistryModules `json:"registryModules,omitempty" xml:"registryModules,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D25216A9-C0F7-5A3A-A7E4-2B3D4F3A355D
@@ -108,18 +117,74 @@ func (s *ListRegistryModulesResponseBody) Validate() error {
 }
 
 type ListRegistryModulesResponseBodyRegistryModules struct {
-	Acl            *string  `json:"acl,omitempty" xml:"acl,omitempty"`
-	CreateTime     *string  `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Description    *string  `json:"description,omitempty" xml:"description,omitempty"`
-	Downloads      *int32   `json:"downloads,omitempty" xml:"downloads,omitempty"`
-	ModuleName     *string  `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
-	NamespaceName  *string  `json:"namespaceName,omitempty" xml:"namespaceName,omitempty"`
-	Provider       *string  `json:"provider,omitempty" xml:"provider,omitempty"`
+	// The permission. A value of private indicates that the module is private.
+	//
+	// example:
+	//
+	// private
+	Acl *string `json:"acl,omitempty" xml:"acl,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 2025-06-10 16:16:04
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The description of the registry module.
+	//
+	// example:
+	//
+	// description
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The number of downloads.
+	//
+	// example:
+	//
+	// 32
+	Downloads *int32 `json:"downloads,omitempty" xml:"downloads,omitempty"`
+	// The name of the registry module.
+	//
+	// example:
+	//
+	// ModuleName
+	ModuleName *string `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
+	// The workspace name.
+	//
+	// example:
+	//
+	// NamespaceName
+	NamespaceName *string `json:"namespaceName,omitempty" xml:"namespaceName,omitempty"`
+	// The provider type. A value of alicloud indicates Alibaba Cloud.
+	//
+	// example:
+	//
+	// alicloud
+	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
+	// The list of accounts with which the registry module is shared.
 	SharedAccounts []*int64 `json:"sharedAccounts,omitempty" xml:"sharedAccounts,omitempty" type:"Repeated"`
-	Source         *string  `json:"source,omitempty" xml:"source,omitempty"`
-	SourceUrl      *string  `json:"sourceUrl,omitempty" xml:"sourceUrl,omitempty"`
-	Type           *string  `json:"type,omitempty" xml:"type,omitempty"`
-	Version        *string  `json:"version,omitempty" xml:"version,omitempty"`
+	// The module source.
+	//
+	// example:
+	//
+	// namespaceName/ModuleName
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The module source URL.
+	//
+	// example:
+	//
+	// URL
+	SourceUrl *string `json:"sourceUrl,omitempty" xml:"sourceUrl,omitempty"`
+	// The templatetype.
+	//
+	// example:
+	//
+	// system
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The latest version number.
+	//
+	// example:
+	//
+	// 1.0.0
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s ListRegistryModulesResponseBodyRegistryModules) String() string {

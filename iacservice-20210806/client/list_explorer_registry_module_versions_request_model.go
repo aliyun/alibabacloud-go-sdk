@@ -24,26 +24,44 @@ type iListExplorerRegistryModuleVersionsRequest interface {
 }
 
 type ListExplorerRegistryModuleVersionsRequest struct {
+	// The search keyword. Fuzzy match is supported based on the module name.
+	//
 	// example:
 	//
 	// key
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	// The maximum number of entries per page.
+	//
+	// Valid values: 0 to 200.
+	//
+	// Default value: 100.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The name of the module.
+	//
 	// example:
 	//
 	// vpc
 	ModuleName *string `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
+	// The version of the module.
+	//
 	// example:
 	//
 	// 1.11.0
 	ModuleVersion *string `json:"moduleVersion,omitempty" xml:"moduleVersion,omitempty"`
+	// The name of the workspace to which the module belongs.
+	//
 	// example:
 	//
 	// alibaba
 	NamespaceName *string `json:"namespaceName,omitempty" xml:"namespaceName,omitempty"`
+	// The pagination token for the next page of results.
+	//
+	// If the total number of entries exceeds the maxResults limit, the data is truncated. You can use nextToken to query the next page of data.
+	//
 	// example:
 	//
 	// lJTuhMWkNH89zZWyYM9GjpAbgRb+bPPPwN0Q3pclzKI=

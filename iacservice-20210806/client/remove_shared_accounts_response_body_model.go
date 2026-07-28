@@ -14,6 +14,8 @@ type iRemoveSharedAccountsResponseBody interface {
 }
 
 type RemoveSharedAccountsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 8294F4ED-8DBA-5441-B3F2-61C3C5374990

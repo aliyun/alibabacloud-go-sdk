@@ -22,6 +22,8 @@ type ExecuteRegistryModuleResponseBody struct {
   // 
   // 79284133-D4BA-56B3-954C-D538256F7EAA
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+  // The state file ID.
+  // 
   // example:
   // 
   // task-xxxx

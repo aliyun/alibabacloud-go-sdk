@@ -16,12 +16,14 @@ type iTriggerStackExecutionResponseBody interface {
 }
 
 type TriggerStackExecutionResponseBody struct {
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
 	// F2D40488-3F74-568B-87EC-1C04D098DF8B
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Unique ID of the trigger.
+	//
 	// example:
 	//
 	// event-xxxx

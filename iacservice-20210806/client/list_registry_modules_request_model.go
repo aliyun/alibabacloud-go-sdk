@@ -24,23 +24,43 @@ type iListRegistryModulesRequest interface {
 }
 
 type ListRegistryModulesRequest struct {
+	// The search keyword. Fuzzy search by module name is supported.
+	//
 	// example:
 	//
 	// key
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	// The number of entries per page in a paged query. Maximum value: 100. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The workspace name.
+	//
 	// example:
 	//
-	// test_namespace
+	// NamespaceName
 	NamespaceName *string `json:"namespaceName,omitempty" xml:"namespaceName,omitempty"`
+	// The pagination token. Set this parameter to the NextToken value returned in the previous API call.
+	//
 	// example:
 	//
 	// NFzbQCa7/yd7rAuSo5xZb54dD+2BRJj42DLT6GrZysw=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	Status    *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The workspace type. Valid values:
+	//
+	// - system: public module
+	//
+	// - self: custom module
+	//
+	// - shared: shared module
+	//
+	// - community: community module
+	//
+	// By default, all types are returned.
+	//
 	// example:
 	//
 	// system

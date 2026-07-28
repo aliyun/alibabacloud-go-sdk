@@ -16,10 +16,14 @@ type iCreateRegistryNamespaceResponseBody interface {
 }
 
 type CreateRegistryNamespaceResponseBody struct {
+	// The workspace name.
+	//
 	// example:
 	//
-	// iac
+	// NamespaceName
 	NamespaceName *string `json:"namespaceName,omitempty" xml:"namespaceName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B4672AE3-C313-5B7A-BB24-45345570D398

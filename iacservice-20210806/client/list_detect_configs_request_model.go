@@ -18,14 +18,20 @@ type iListDetectConfigsRequest interface {
 }
 
 type ListDetectConfigsRequest struct {
+	// Name of the drift detection configuration (fuzzy match).
+	//
 	// example:
 	//
 	// test
 	DetectConfigName *string `json:"detectConfigName,omitempty" xml:"detectConfigName,omitempty"`
+	// Maximum number of records to retrieve in a single request. Valid range: 1–200. Default value: 100.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// Query credential (Token). Set this parameter to the NextToken value returned by the previous API call.
+	//
 	// example:
 	//
 	// 30BaZ9ekYWXJdqshYecA++coNg7qT1Zbm3RfLyFIZeY=

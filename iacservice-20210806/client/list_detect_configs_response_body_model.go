@@ -22,21 +22,28 @@ type iListDetectConfigsResponseBody interface {
 }
 
 type ListDetectConfigsResponseBody struct {
+	// List of drift detection configurations
 	DetectConfigs []*ListDetectConfigsResponseBodyDetectConfigs `json:"detectConfigs,omitempty" xml:"detectConfigs,omitempty" type:"Repeated"`
+	// Maximum number of records to retrieve in a single request.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// Paging nextToken.
+	//
 	// example:
 	//
 	// 30BaZ9ekYWXJdqshYecA++coNg7qT1Zbm3RfLyFIZeY=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// Id of the request
+	// ID of the request.
 	//
 	// example:
 	//
 	// 79284133-D4BA-56B3-954C-D538256F7EAA
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 82
@@ -110,31 +117,50 @@ func (s *ListDetectConfigsResponseBody) Validate() error {
 }
 
 type ListDetectConfigsResponseBodyDetectConfigs struct {
+	// List of alerting addresses
 	AlarmConfigs []*ListDetectConfigsResponseBodyDetectConfigsAlarmConfigs `json:"alarmConfigs,omitempty" xml:"alarmConfigs,omitempty" type:"Repeated"`
+	// Creation Time.
+	//
 	// example:
 	//
 	// 2026-04-10T02:30:04Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// Cron expression (UTC+8). Required when the trigger type is Cron.
+	//
 	// example:
 	//
 	// 0 0 0 ? 	- 1
 	CronExpression *string `json:"cronExpression,omitempty" xml:"cronExpression,omitempty"`
+	// Description.
+	//
 	// example:
 	//
 	// this is a description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Drift detection configuration ID
+	//
 	// example:
 	//
 	// dc-xxxx
 	DetectConfigId *string `json:"detectConfigId,omitempty" xml:"detectConfigId,omitempty"`
+	// Name of the drift detection configuration.
+	//
 	// example:
 	//
 	// test
 	DetectConfigName *string `json:"detectConfigName,omitempty" xml:"detectConfigName,omitempty"`
+	// Whether drift detection is enabled.
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// Trigger type
+	//
+	// - Manual: Execute manually
+	//
+	// - Cron: Trigger on schedule
+	//
 	// example:
 	//
 	// Cron
@@ -235,10 +261,14 @@ func (s *ListDetectConfigsResponseBodyDetectConfigs) Validate() error {
 }
 
 type ListDetectConfigsResponseBodyDetectConfigsAlarmConfigs struct {
+	// Alerting address.
+	//
 	// example:
 	//
 	// https://metrichub-cms-cn-hangzhou.aliyuncs.com/event/notify?xxxxx
 	Address *string `json:"address,omitempty" xml:"address,omitempty"`
+	// Alerting method. Currently only `cms` is supported.
+	//
 	// example:
 	//
 	// cms

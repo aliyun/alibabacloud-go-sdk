@@ -35,10 +35,14 @@ type iCreateTaskRequest interface {
 	GetRamRole() *string
 	SetSkipPropertyValidation(v bool) *CreateTaskRequest
 	GetSkipPropertyValidation() *bool
+	SetSkipRegionValidation(v bool) *CreateTaskRequest
+	GetSkipRegionValidation() *bool
 	SetTags(v []*CreateTaskRequestTags) *CreateTaskRequest
 	GetTags() []*CreateTaskRequestTags
 	SetTaskBackend(v *CreateTaskRequestTaskBackend) *CreateTaskRequest
 	GetTaskBackend() *CreateTaskRequestTaskBackend
+	SetTerraformProviderVersion(v string) *CreateTaskRequest
+	GetTerraformProviderVersion() *string
 	SetTerraformVersion(v string) *CreateTaskRequest
 	GetTerraformVersion() *string
 	SetTriggerStrategy(v string) *CreateTaskRequest
@@ -46,60 +50,121 @@ type iCreateTaskRequest interface {
 }
 
 type CreateTaskRequest struct {
+	// Specifies whether to automatically execute the node. Default value: false.
+	//
+	// - true: After the preview is complete (terraform plan), the execution (terraform apply) is automatically performed without manual confirmation.
+	//
+	// - false: After the preview is complete (terraform plan), manual confirmation is required before the execution (terraform apply) starts.
+	//
 	// example:
 	//
-	// true
+	// false
 	AutoApply *bool `json:"autoApply,omitempty" xml:"autoApply,omitempty"`
+	// Specifies whether to automatically destroy resources after creation. Default value: false.
+	//
+	// - true: After the execution is complete (terraform apply), the destroy operation (terraform destroy) is automatically performed without manual confirmation.
+	//
+	// - false: After the execution is complete (terraform apply), no further action is taken.
+	//
 	// example:
 	//
 	// true
 	AutoDestroy *bool `json:"autoDestroy,omitempty" xml:"autoDestroy,omitempty"`
+	// The idempotency token. Format: [0-9a-zA-Z-]{1,64}. We recommend that you use a UUID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// a65451293e64979ba7a4b573950217fe
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// The description of the node.
+	//
 	// example:
 	//
-	// demo
-	Description     *string                     `json:"description,omitempty" xml:"description,omitempty"`
-	GroupInfo       *CreateTaskRequestGroupInfo `json:"groupInfo,omitempty" xml:"groupInfo,omitempty" type:"Struct"`
-	InitModuleState *bool                       `json:"initModuleState,omitempty" xml:"initModuleState,omitempty"`
+	// this is description
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The project group information.
+	GroupInfo *CreateTaskRequestGroupInfo `json:"groupInfo,omitempty" xml:"groupInfo,omitempty" type:"Struct"`
+	// Specifies whether to use a state file. Default value: false. This parameter is applicable when the template originates from resource export. Only one node can use this parameter.
+	//
+	// example:
+	//
+	// false
+	InitModuleState *bool `json:"initModuleState,omitempty" xml:"initModuleState,omitempty"`
+	// The template ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// mod-148e7853433574fff6b316f4eb737e
+	// mod-144fff6b316f4eb737e
 	ModuleId *string `json:"moduleId,omitempty" xml:"moduleId,omitempty"`
+	// The template version.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// v1
 	ModuleVersion *string `json:"moduleVersion,omitempty" xml:"moduleVersion,omitempty"`
+	// The node name. The name must meet the following requirements:
+	//
+	// - The name must be 2 to 128 characters in length.
+	//
+	// - The name can contain letters, digits, Chinese characters, hyphens (-), underscores (_), and periods (.). The name cannot start or end with a hyphen, underscore, or period.
+	//
+	// - The name must be unique among all node resources within the current account.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// test
-	Name               *string   `json:"name,omitempty" xml:"name,omitempty"`
-	ParameterSetIds    []*string `json:"parameterSetIds,omitempty" xml:"parameterSetIds,omitempty" type:"Repeated"`
+	// TaskName
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The collection of associated parameter set IDs.
+	ParameterSetIds []*string `json:"parameterSetIds,omitempty" xml:"parameterSetIds,omitempty" type:"Repeated"`
+	// The list of resource protection strategies.
 	ProtectionStrategy []*string `json:"protectionStrategy,omitempty" xml:"protectionStrategy,omitempty" type:"Repeated"`
+	// The RAM role. The system assumes this role to execute the template when a new job is triggered. This parameter is required when the job trigger method is not manual.
+	//
 	// example:
 	//
-	// {}
-	RamRole                *string                       `json:"ramRole,omitempty" xml:"ramRole,omitempty"`
-	SkipPropertyValidation *bool                         `json:"skipPropertyValidation,omitempty" xml:"skipPropertyValidation,omitempty"`
-	Tags                   []*CreateTaskRequestTags      `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	TaskBackend            *CreateTaskRequestTaskBackend `json:"taskBackend,omitempty" xml:"taskBackend,omitempty" type:"Struct"`
+	// RoleName
+	RamRole *string `json:"ramRole,omitempty" xml:"ramRole,omitempty"`
+	// Specifies whether to skip enumeration value validation. Default value: false.
+	//
 	// example:
 	//
-	// 1.2.6
+	// true
+	SkipPropertyValidation *bool `json:"skipPropertyValidation,omitempty" xml:"skipPropertyValidation,omitempty"`
+	SkipRegionValidation   *bool `json:"skipRegionValidation,omitempty" xml:"skipRegionValidation,omitempty"`
+	// The list of tags for the node.
+	Tags []*CreateTaskRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The node backend configuration. After this parameter is configured, runtime log information is saved to the specified OSS bucket.
+	TaskBackend              *CreateTaskRequestTaskBackend `json:"taskBackend,omitempty" xml:"taskBackend,omitempty" type:"Struct"`
+	TerraformProviderVersion *string                       `json:"terraformProviderVersion,omitempty" xml:"terraformProviderVersion,omitempty"`
+	// The Terraform version. Call the **ListAvailableTerraformVersions*	- operation to obtain the list of supported versions. Default value: 1.5.7.
+	//
+	// example:
+	//
+	// 1.5.7
 	TerraformVersion *string `json:"terraformVersion,omitempty" xml:"terraformVersion,omitempty"`
+	// The job trigger method. Valid values:
+	//
+	// - Manual: manual trigger (default).
+	//
+	// - NewVersion: triggered when a new template version is published.
+	//
+	// - ParameterSetUpdated: triggered when the parameter set content changes or the parameter set attach relationship changes.
+	//
+	// - Auto: automatically triggered when the node properties change, such as node creation, execution version change, or job trigger policy change (when changed from another value to Auto).
+	//
+	// The **ramRole*	- parameter is required when the trigger method is not manual.
+	//
 	// example:
 	//
-	// Always
+	// Manual
 	TriggerStrategy *string `json:"triggerStrategy,omitempty" xml:"triggerStrategy,omitempty"`
 }
 
@@ -163,12 +228,20 @@ func (s *CreateTaskRequest) GetSkipPropertyValidation() *bool {
 	return s.SkipPropertyValidation
 }
 
+func (s *CreateTaskRequest) GetSkipRegionValidation() *bool {
+	return s.SkipRegionValidation
+}
+
 func (s *CreateTaskRequest) GetTags() []*CreateTaskRequestTags {
 	return s.Tags
 }
 
 func (s *CreateTaskRequest) GetTaskBackend() *CreateTaskRequestTaskBackend {
 	return s.TaskBackend
+}
+
+func (s *CreateTaskRequest) GetTerraformProviderVersion() *string {
+	return s.TerraformProviderVersion
 }
 
 func (s *CreateTaskRequest) GetTerraformVersion() *string {
@@ -244,6 +317,11 @@ func (s *CreateTaskRequest) SetSkipPropertyValidation(v bool) *CreateTaskRequest
 	return s
 }
 
+func (s *CreateTaskRequest) SetSkipRegionValidation(v bool) *CreateTaskRequest {
+	s.SkipRegionValidation = &v
+	return s
+}
+
 func (s *CreateTaskRequest) SetTags(v []*CreateTaskRequestTags) *CreateTaskRequest {
 	s.Tags = v
 	return s
@@ -251,6 +329,11 @@ func (s *CreateTaskRequest) SetTags(v []*CreateTaskRequestTags) *CreateTaskReque
 
 func (s *CreateTaskRequest) SetTaskBackend(v *CreateTaskRequestTaskBackend) *CreateTaskRequest {
 	s.TaskBackend = v
+	return s
+}
+
+func (s *CreateTaskRequest) SetTerraformProviderVersion(v string) *CreateTaskRequest {
+	s.TerraformProviderVersion = &v
 	return s
 }
 
@@ -288,13 +371,17 @@ func (s *CreateTaskRequest) Validate() error {
 }
 
 type CreateTaskRequestGroupInfo struct {
+	// The group ID.
+	//
 	// example:
 	//
-	// g-5fd38c9b92d541a7083a86432e2
+	// g-5fd38c9b83a86432e2
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
-	// project-433aead7560572057e5d9167608
+	// p-433aeade5d9167608
 	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
 }
 
@@ -329,7 +416,17 @@ func (s *CreateTaskRequestGroupInfo) Validate() error {
 }
 
 type CreateTaskRequestTags struct {
-	TagKey   *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	// The tag key of the node.
+	//
+	// example:
+	//
+	// TestKey
+	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	// The tag value of the node.
+	//
+	// example:
+	//
+	// TestValue
 	TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
 }
 
@@ -364,9 +461,24 @@ func (s *CreateTaskRequestTags) Validate() error {
 }
 
 type CreateTaskRequestTaskBackend struct {
+	// The endpoint information.
+	//
+	// example:
+	//
+	// ss-cn-beijing.aliyuncs.com
 	BucketEndpoint *string `json:"bucketEndpoint,omitempty" xml:"bucketEndpoint,omitempty"`
-	BucketName     *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
-	ObjectPath     *string `json:"objectPath,omitempty" xml:"objectPath,omitempty"`
+	// The bucket name.
+	//
+	// example:
+	//
+	// iac-runtime-test
+	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
+	// The object path.
+	//
+	// example:
+	//
+	// /log
+	ObjectPath *string `json:"objectPath,omitempty" xml:"objectPath,omitempty"`
 }
 
 func (s CreateTaskRequestTaskBackend) String() string {

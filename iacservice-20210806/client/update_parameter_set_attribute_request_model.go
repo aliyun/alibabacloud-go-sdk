@@ -18,16 +18,21 @@ type iUpdateParameterSetAttributeRequest interface {
 }
 
 type UpdateParameterSetAttributeRequest struct {
+	// The description of the parameter set. Maximum length: 1024 characters.
+	//
 	// example:
 	//
-	// test
+	// This is parameterSet
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The name of the parameter set. Maximum length: 128 characters.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// test
-	Name       *string                                         `json:"name,omitempty" xml:"name,omitempty"`
+	// demo
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The parameter list.
 	Parameters []*UpdateParameterSetAttributeRequestParameters `json:"parameters,omitempty" xml:"parameters,omitempty" type:"Repeated"`
 }
 
@@ -80,22 +85,34 @@ func (s *UpdateParameterSetAttributeRequest) Validate() error {
 }
 
 type UpdateParameterSetAttributeRequestParameters struct {
+	// The parameter name.
+	//
 	// example:
 	//
-	// t
+	// region
 	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
 	Secret *bool   `json:"secret,omitempty" xml:"secret,omitempty"`
+	// The parameter set status. Valid values:
+	//
+	// - HAS_VALUE (default): Defines a specific value.
+	//
+	// - EXPLICIT_NULL: Explicitly set to null.
+	//
 	// example:
 	//
 	// HAS_VALUE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The parameter type. Valid values: string, number, bool, map(string), and list(string).
+	//
 	// example:
 	//
 	// string
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The parameter value. Use JSON for complex types.
+	//
 	// example:
 	//
-	// vpc-bp1mjm9exduos1bipw9x6
+	// cn-zhangjiakou
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
