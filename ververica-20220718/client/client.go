@@ -220,6 +220,110 @@ func (client *Client) CancelSqlPreview(namespace *string, request *CancelSqlPrev
 
 // Summary:
 //
+// Initiates a streaming conversation with an AI Agent.
+//
+// @param request - ChatAiAgentRequest
+//
+// @param headers - ChatAiAgentHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChatAiAgentResponse
+func (client *Client) ChatAiAgentWithSSE(namespace *string, request *ChatAiAgentRequest, headers *ChatAiAgentHeaders, runtime *dara.RuntimeOptions, _yield chan *ChatAiAgentResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.chatAiAgentWithSSE_opYieldFunc(_yield, _yieldErr, namespace, request, headers, runtime)
+	return
+}
+
+// Summary:
+//
+// Initiates a streaming conversation with an AI Agent.
+//
+// @param request - ChatAiAgentRequest
+//
+// @param headers - ChatAiAgentHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChatAiAgentResponse
+func (client *Client) ChatAiAgentWithOptions(namespace *string, request *ChatAiAgentRequest, headers *ChatAiAgentHeaders, runtime *dara.RuntimeOptions) (_result *ChatAiAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.HitlDecisions) {
+		body["hitlDecisions"] = request.HitlDecisions
+	}
+
+	if !dara.IsNil(request.Refs) {
+		body["refs"] = request.Refs
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		body["sessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.UserMessage) {
+		body["userMessage"] = request.UserMessage
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.Workspace) {
+		realHeaders["workspace"] = dara.String(dara.ToString(dara.StringValue(headers.Workspace)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ChatAiAgent"),
+		Version:     dara.String("2022-07-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/advisor/v2/namespaces/" + dara.PercentEncode(dara.StringValue(namespace)) + "/ai-agent/stream/agent/v2/chat"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ChatAiAgentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Initiates a streaming conversation with an AI Agent.
+//
+// @param request - ChatAiAgentRequest
+//
+// @return ChatAiAgentResponse
+func (client *Client) ChatAiAgent(namespace *string, request *ChatAiAgentRequest) (_result *ChatAiAgentResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &ChatAiAgentHeaders{}
+	_result = &ChatAiAgentResponse{}
+	_body, _err := client.ChatAiAgentWithOptions(namespace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a deployment.
 //
 // @param request - CreateDeploymentRequest
@@ -2572,6 +2676,75 @@ func (client *Client) GetAppliedScheduledPlan(namespace *string, request *GetApp
 
 // Summary:
 //
+// Queries the Autopilot tuning configuration. Returns the enabled status and full configuration. Does not affect the existing V2 configuration.
+//
+// @param request - GetAutopilotPolicyRequest
+//
+// @param headers - GetAutopilotPolicyHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAutopilotPolicyResponse
+func (client *Client) GetAutopilotPolicyWithOptions(namespace *string, deploymentId *string, request *GetAutopilotPolicyRequest, headers *GetAutopilotPolicyHeaders, runtime *dara.RuntimeOptions) (_result *GetAutopilotPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.Workspace) {
+		realHeaders["workspace"] = dara.String(dara.ToString(dara.StringValue(headers.Workspace)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAutopilotPolicy"),
+		Version:     dara.String("2022-07-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/autopilot/v2/namespaces/" + dara.PercentEncode(dara.StringValue(namespace)) + "/deployments/" + dara.PercentEncode(dara.StringValue(deploymentId)) + "/autopilotpolicy-describe"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAutopilotPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the Autopilot tuning configuration. Returns the enabled status and full configuration. Does not affect the existing V2 configuration.
+//
+// @param request - GetAutopilotPolicyRequest
+//
+// @return GetAutopilotPolicyResponse
+func (client *Client) GetAutopilotPolicy(namespace *string, deploymentId *string, request *GetAutopilotPolicyRequest) (_result *GetAutopilotPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &GetAutopilotPolicyHeaders{}
+	_result = &GetAutopilotPolicyResponse{}
+	_body, _err := client.GetAutopilotPolicyWithOptions(namespace, deploymentId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the details of a specified catalog or all catalogs.
 //
 // @param request - GetCatalogsRequest
@@ -4362,6 +4535,97 @@ func (client *Client) HotUpdateJob(namespace *string, jobId *string) (_result *H
 	headers := &HotUpdateJobHeaders{}
 	_result = &HotUpdateJobResponse{}
 	_body, _err := client.HotUpdateJobWithOptions(namespace, jobId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the Autopilot tuning history records.
+//
+// @param request - ListAutopilotTuningHistoriesRequest
+//
+// @param headers - ListAutopilotTuningHistoriesHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAutopilotTuningHistoriesResponse
+func (client *Client) ListAutopilotTuningHistoriesWithOptions(namespace *string, deploymentId *string, request *ListAutopilotTuningHistoriesRequest, headers *ListAutopilotTuningHistoriesHeaders, runtime *dara.RuntimeOptions) (_result *ListAutopilotTuningHistoriesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["endTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["startTime"] = request.StartTime
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.AcceptLanguage) {
+		realHeaders["Accept-Language"] = dara.String(dara.ToString(dara.StringValue(headers.AcceptLanguage)))
+	}
+
+	if !dara.IsNil(headers.Workspace) {
+		realHeaders["workspace"] = dara.String(dara.ToString(dara.StringValue(headers.Workspace)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAutopilotTuningHistories"),
+		Version:     dara.String("2022-07-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/autopilot/v2/namespaces/" + dara.PercentEncode(dara.StringValue(namespace)) + "/deployments/" + dara.PercentEncode(dara.StringValue(deploymentId)) + "/tuninghistories"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAutopilotTuningHistoriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the Autopilot tuning history records.
+//
+// @param request - ListAutopilotTuningHistoriesRequest
+//
+// @return ListAutopilotTuningHistoriesResponse
+func (client *Client) ListAutopilotTuningHistories(namespace *string, deploymentId *string, request *ListAutopilotTuningHistoriesRequest) (_result *ListAutopilotTuningHistoriesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &ListAutopilotTuningHistoriesHeaders{}
+	_result = &ListAutopilotTuningHistoriesResponse{}
+	_body, _err := client.ListAutopilotTuningHistoriesWithOptions(namespace, deploymentId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6162,6 +6426,85 @@ func (client *Client) SubmitSqlPreview(namespace *string, request *SubmitSqlPrev
 
 // Summary:
 //
+// Updates an Autopilot tuning policy.
+//
+// @param request - UpdateAutopilotPolicyRequest
+//
+// @param headers - UpdateAutopilotPolicyHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAutopilotPolicyResponse
+func (client *Client) UpdateAutopilotPolicyWithOptions(namespace *string, deploymentId *string, request *UpdateAutopilotPolicyRequest, headers *UpdateAutopilotPolicyHeaders, runtime *dara.RuntimeOptions) (_result *UpdateAutopilotPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Enabled) {
+		body["enabled"] = request.Enabled
+	}
+
+	if !dara.IsNil(request.PolicyConfig) {
+		body["policyConfig"] = request.PolicyConfig
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.Workspace) {
+		realHeaders["workspace"] = dara.String(dara.ToString(dara.StringValue(headers.Workspace)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAutopilotPolicy"),
+		Version:     dara.String("2022-07-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/autopilot/v2/namespaces/" + dara.PercentEncode(dara.StringValue(namespace)) + "/deployments/" + dara.PercentEncode(dara.StringValue(deploymentId)) + "/autopilotpolicy-update"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAutopilotPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates an Autopilot tuning policy.
+//
+// @param request - UpdateAutopilotPolicyRequest
+//
+// @return UpdateAutopilotPolicyResponse
+func (client *Client) UpdateAutopilotPolicy(namespace *string, deploymentId *string, request *UpdateAutopilotPolicyRequest) (_result *UpdateAutopilotPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &UpdateAutopilotPolicyHeaders{}
+	_result = &UpdateAutopilotPolicyResponse{}
+	_body, _err := client.UpdateAutopilotPolicyWithOptions(namespace, deploymentId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates information about a deployment.
 //
 // @param request - UpdateDeploymentRequest
@@ -7160,4 +7503,74 @@ func (client *Client) ValidateSqlStatement(namespace *string, request *ValidateS
 	}
 	_result = _body
 	return _result, _err
+}
+
+func (client *Client) chatAiAgentWithSSE_opYieldFunc(_yield chan *ChatAiAgentResponse, _yieldErr chan error, namespace *string, request *ChatAiAgentRequest, headers *ChatAiAgentHeaders, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.HitlDecisions) {
+		body["hitlDecisions"] = request.HitlDecisions
+	}
+
+	if !dara.IsNil(request.Refs) {
+		body["refs"] = request.Refs
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		body["sessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.UserMessage) {
+		body["userMessage"] = request.UserMessage
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.Workspace) {
+		realHeaders["workspace"] = dara.String(dara.ToString(dara.StringValue(headers.Workspace)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ChatAiAgent"),
+		Version:     dara.String("2022-07-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/advisor/v2/namespaces/" + dara.PercentEncode(dara.StringValue(namespace)) + "/ai-agent/stream/agent/v2/chat"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
 }
