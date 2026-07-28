@@ -9,6 +9,10 @@ type iCreateOpenSingleDataResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccessDeniedDetail(v string) *CreateOpenSingleDataResponseBody
+	GetAccessDeniedDetail() *string
+	SetHttpStatusCode(v int32) *CreateOpenSingleDataResponseBody
+	GetHttpStatusCode() *int32
 	SetRequestId(v string) *CreateOpenSingleDataResponseBody
 	GetRequestId() *string
 	SetResult(v bool) *CreateOpenSingleDataResponseBody
@@ -20,10 +24,12 @@ type iCreateOpenSingleDataResponseBody interface {
 }
 
 type CreateOpenSingleDataResponseBody struct {
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result        *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	ResultCode    *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	HttpStatusCode     *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result             *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	ResultCode         *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	ResultMessage      *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
 }
 
 func (s CreateOpenSingleDataResponseBody) String() string {
@@ -32,6 +38,14 @@ func (s CreateOpenSingleDataResponseBody) String() string {
 
 func (s CreateOpenSingleDataResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateOpenSingleDataResponseBody) GetAccessDeniedDetail() *string {
+	return s.AccessDeniedDetail
+}
+
+func (s *CreateOpenSingleDataResponseBody) GetHttpStatusCode() *int32 {
+	return s.HttpStatusCode
 }
 
 func (s *CreateOpenSingleDataResponseBody) GetRequestId() *string {
@@ -48,6 +62,16 @@ func (s *CreateOpenSingleDataResponseBody) GetResultCode() *string {
 
 func (s *CreateOpenSingleDataResponseBody) GetResultMessage() *string {
 	return s.ResultMessage
+}
+
+func (s *CreateOpenSingleDataResponseBody) SetAccessDeniedDetail(v string) *CreateOpenSingleDataResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *CreateOpenSingleDataResponseBody) SetHttpStatusCode(v int32) *CreateOpenSingleDataResponseBody {
+	s.HttpStatusCode = &v
+	return s
 }
 
 func (s *CreateOpenSingleDataResponseBody) SetRequestId(v string) *CreateOpenSingleDataResponseBody {
