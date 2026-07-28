@@ -28,31 +28,50 @@ type iDescribeNisInspectionReportStatusResponseBody interface {
 }
 
 type DescribeNisInspectionReportStatusResponseBody struct {
+	// The end time.
+	//
 	// example:
 	//
 	// 2024-07-18 15:13:07
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The type of inspection plan used for the task.
+	//
 	// example:
 	//
 	// basic
 	InspectionProject *string `json:"InspectionProject,omitempty" xml:"InspectionProject,omitempty"`
+	// The ID of the inspection report.
+	//
 	// example:
 	//
 	// nir-2ca527b8de114ba4afb9
 	InspectionReportId *string `json:"InspectionReportId,omitempty" xml:"InspectionReportId,omitempty"`
+	// The ID of the inspection task.
+	//
 	// example:
 	//
 	// ni-8svmpe0yso****r7fh79
-	InspectionTaskId   *string `json:"InspectionTaskId,omitempty" xml:"InspectionTaskId,omitempty"`
+	InspectionTaskId *string `json:"InspectionTaskId,omitempty" xml:"InspectionTaskId,omitempty"`
+	// The name of the inspection task.
+	//
+	// example:
+	//
+	// Default
 	InspectionTaskName *string `json:"InspectionTaskName,omitempty" xml:"InspectionTaskName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A7F0D6EC-E19E-58AC-AC9F-08036763960F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
 	// 2024-07-18 15:12:28
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the inspection report.
+	//
 	// example:
 	//
 	// Finish

@@ -18,14 +18,20 @@ type iDescribeNisTrafficRankingRequest interface {
 }
 
 type DescribeNisTrafficRankingRequest struct {
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token. Set this parameter to the value of NextToken returned by the previous API call.
+	//
 	// example:
 	//
 	// 2A07PfBPlzmmNi/75Qca9SK73UfY48/+WBiREjfVfXqMQxtV8XckOg5lk7F2bhC+
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the traffic ranking analysis result. Set this parameter to the value returned by the StartNisTrafficRanking operation.
+	//
 	// This parameter is required.
 	//
 	// example:

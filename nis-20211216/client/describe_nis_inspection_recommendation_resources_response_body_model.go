@@ -24,23 +24,34 @@ type iDescribeNisInspectionRecommendationResourcesResponseBody interface {
 }
 
 type DescribeNisInspectionRecommendationResourcesResponseBody struct {
+	// The ID of the inspection report.
+	//
 	// example:
 	//
 	// nir-ffd1af****196d0
 	InspectionReportId *string `json:"InspectionReportId,omitempty" xml:"InspectionReportId,omitempty"`
+	// The maximum number of entries returned on each page. Maximum value: 100. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token to start the next query.
+	//
 	// example:
 	//
 	// qt0DqY2lXxwBt9/ROQoS/7J9p90D1vF2vFbwzb/1oSWr3AxcM6/KpObZ7Z1PZdcV
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A7F0D6EC-E19E-58AC-AC9F-08036763960F
-	RequestId    *string                                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of resources.
 	ResourceList []*DescribeNisInspectionRecommendationResourcesResponseBodyResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`
+	// The total number of resources.
+	//
 	// example:
 	//
 	// 192
@@ -123,14 +134,23 @@ func (s *DescribeNisInspectionRecommendationResourcesResponseBody) Validate() er
 }
 
 type DescribeNisInspectionRecommendationResourcesResponseBodyResourceList struct {
+	// The details of the abnormal item.
+	//
 	// example:
 	//
 	// {ResourceId: "ngw-p0wn04hi4****q2us6q7q"}
 	AnalysisData *string `json:"AnalysisData,omitempty" xml:"AnalysisData,omitempty"`
+	// The ID of the abnormal instance.
+	//
 	// example:
 	//
 	// ngw-p0wn04hi4****q2us6q7q
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The name of the instance.
+	//
+	// example:
+	//
+	// Public NAT gateway
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 }
 

@@ -16,12 +16,16 @@ type iUpdateNisInspectionTaskRequest interface {
 }
 
 type UpdateNisInspectionTaskRequest struct {
+	// The ID of the inspection task.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ni-8svmpe0yso2bhzr7fh79
 	InspectionTaskId *string `json:"InspectionTaskId,omitempty" xml:"InspectionTaskId,omitempty"`
+	// The running status of the task.
+	//
 	// example:
 	//
 	// Active

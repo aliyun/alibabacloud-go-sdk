@@ -26,27 +26,40 @@ type iDescribeNisTrafficRankingResponseBody interface {
 }
 
 type DescribeNisTrafficRankingResponseBody struct {
+	// The list of traffic ranking analysis results.
 	FlowRankingList []*DescribeNisTrafficRankingResponseBodyFlowRankingList `json:"FlowRankingList,omitempty" xml:"FlowRankingList,omitempty" type:"Repeated"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token for the next query.
+	//
 	// example:
 	//
 	// LoeJLhK0fsDqYoXkXieZUqB2vWnccJtVnsyKu9KxFFOMQxtV8XckOg5lk7F2bhC+
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the traffic ranking analysis result.
+	//
 	// example:
 	//
 	// task-7619ecb1db9148bab9f4
 	NisTrafficRankingId *string `json:"NisTrafficRankingId,omitempty" xml:"NisTrafficRankingId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4DAC4BE1-BEEA-5D84-BE06-E1B796F3B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task running status.
+	//
 	// example:
 	//
 	// Complete
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 72
@@ -138,169 +151,391 @@ func (s *DescribeNisTrafficRankingResponseBody) Validate() error {
 }
 
 type DescribeNisTrafficRankingResponseBodyFlowRankingList struct {
+	// The instance resource to which the EIP is bound.
+	//
+	//    - This field is returned only when Internet Shared Bandwidth metric analysis is queried.
+	//
 	// example:
 	//
 	// ngw-ufwerthgvc*****
 	BindingResourceId *string `json:"BindingResourceId,omitempty" xml:"BindingResourceId,omitempty"`
+	// The type of the instance resource to which the EIP is attached.
+	//
+	//    - This field is returned only when Internet Shared Bandwidth metric analysis is queried.
+	//
+	//    - Valid values:
+	//
+	//       - EIP_ECS: Elastic Compute Service (ECS) instance type.
+	//
+	//       - EIP_ENI: Server Load Balancer (SLB) instance type.
+	//
+	//       - EIP_NAT: NAT gateway instance type.
+	//
+	//       - EIP_SLB: elastic network interface (ENI) instance type.
+	//
+	//       - HAVIP_ECS: high availability (HA) virtual IP address type.
+	//
+	//       - TARGET_IP: IP address type.
+	//
 	// example:
 	//
 	// EIP_NAT
 	BindingResourceType *string `json:"BindingResourceType,omitempty" xml:"BindingResourceType,omitempty"`
+	// The bandwidth.
+	//
+	//    - This field is returned for VPC, TR, or Internet Shared Bandwidth analysis.
+	//
 	// example:
 	//
 	// 100
-	Bytes              *float64 `json:"Bytes,omitempty" xml:"Bytes,omitempty"`
-	BytesIncrease      *float64 `json:"BytesIncrease,omitempty" xml:"BytesIncrease,omitempty"`
+	Bytes *float64 `json:"Bytes,omitempty" xml:"Bytes,omitempty"`
+	// The bandwidth increase.
+	//
+	//    - This field is returned only when TrafficScenario is set to TRFlowlog and the Order by field is BytesIncrease or BytesIncreaseRatio.
+	//
+	// example:
+	//
+	// 12345
+	BytesIncrease *float64 `json:"BytesIncrease,omitempty" xml:"BytesIncrease,omitempty"`
+	// The bandwidth increase ratio.
+	//
+	//    - This field is returned only when TrafficScenario is set to TRFlowlog and the Order by field is BytesIncrease or BytesIncreaseRatio.
+	//
+	// example:
+	//
+	// 0.5
 	BytesIncreaseRatio *float64 `json:"BytesIncreaseRatio,omitempty" xml:"BytesIncreaseRatio,omitempty"`
+	// The traffic proportion.
+	//
+	//    - This field is returned only when TR or VPC flow log analysis is performed.
+	//
 	// example:
 	//
 	// 0.2
 	BytesRate *float64 `json:"BytesRate,omitempty" xml:"BytesRate,omitempty"`
-	CenId     *string  `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The CEN instance ID.
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The autonomous system number.
+	//
+	//   - This field is returned only when VPC flow log analysis is performed for the VPC Internet scenario.
+	//
 	// example:
 	//
 	// 45102
-	ClientAsn      *string `json:"ClientAsn,omitempty" xml:"ClientAsn,omitempty"`
-	ClientCity     *string `json:"ClientCity,omitempty" xml:"ClientCity,omitempty"`
-	ClientCountry  *string `json:"ClientCountry,omitempty" xml:"ClientCountry,omitempty"`
-	ClientIsp      *string `json:"ClientIsp,omitempty" xml:"ClientIsp,omitempty"`
+	ClientAsn *string `json:"ClientAsn,omitempty" xml:"ClientAsn,omitempty"`
+	// The city where the client is located.
+	//
+	//   - This field is returned only when VPC flow log analysis is performed for the VPC Internet scenario.
+	//
+	// example:
+	//
+	// Kowloon.
+	ClientCity *string `json:"ClientCity,omitempty" xml:"ClientCity,omitempty"`
+	// The country where the client is located.
+	//
+	//   - This field is returned only when VPC flow log analysis is performed for the VPC Internet scenario.
+	//
+	// example:
+	//
+	// China.
+	ClientCountry *string `json:"ClientCountry,omitempty" xml:"ClientCountry,omitempty"`
+	// The network service provider.
+	//
+	//   - This field is returned only when VPC flow log analysis is performed for the VPC Internet scenario.
+	//
+	// example:
+	//
+	// Alibaba Cloud.
+	ClientIsp *string `json:"ClientIsp,omitempty" xml:"ClientIsp,omitempty"`
+	// The province where the client is located.
+	//
+	//   - This field is returned only when VPC flow log analysis is performed for the VPC Internet scenario.
+	//
+	// example:
+	//
+	// Hong Kong Special Administrative Region.
 	ClientProvince *string `json:"ClientProvince,omitempty" xml:"ClientProvince,omitempty"`
+	// The destination IP address.
+	//
+	//    - This field is returned only when 2-tuple analysis is performed for TR or VPC flow log analysis.
+	//
 	// example:
 	//
 	// 192.168.***.0
 	DestinationIp *string `json:"DestinationIp,omitempty" xml:"DestinationIp,omitempty"`
+	// The destination port.
+	//
+	//    - This field is returned only when 5-tuple analysis is performed for TR or VPC flow log analysis.
+	//
 	// example:
 	//
 	// 23
 	DestinationPort *string `json:"DestinationPort,omitempty" xml:"DestinationPort,omitempty"`
+	// The destination region ID.
+	//
+	//    - This field is returned only when TR flow log analysis is performed.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	DestinationRegionNo *string `json:"DestinationRegionNo,omitempty" xml:"DestinationRegionNo,omitempty"`
+	// The traffic direction based on the Alibaba Cloud network resource instance. Valid values:
+	//
+	// - **in**: inbound traffic.
+	//
+	// - **out**: outbound traffic.
+	//
 	// example:
 	//
 	// in
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The Differentiated Services Code Point (DSCP) value.
+	//
+	//    - This field is returned only when TR flow log analysis is performed.
+	//
 	// example:
 	//
 	// 0
 	Dscp *string `json:"Dscp,omitempty" xml:"Dscp,omitempty"`
+	// The ECS instance ID of the management node.
+	//
+	//    - This field is returned only when VPC flow log analysis is performed.
+	//
 	// example:
 	//
 	// i-uf6i1zi6yhq7h***
 	EcsId *string `json:"EcsId,omitempty" xml:"EcsId,omitempty"`
+	// The EIP ID associated with the Internet Shared Bandwidth instance.
+	//
+	//    - This field is returned only when Internet Shared Bandwidth metric analysis is queried.
+	//
 	// example:
 	//
 	// eip-fb6wzjl9hm****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The elastic network interface (ENI) ID.
+	//
+	//    - This field is returned only when VPC flow log analysis is performed.
+	//
 	// example:
 	//
 	// eni-8vbf2jxul***
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
+	// The number of packets.
+	//
+	//    - This field is returned for VPC, TR, or CBWP flow log analysis.
+	//
 	// example:
 	//
 	// 100
-	Packets *float64 `json:"Packets,omitempty" xml:"Packets,omitempty"`
+	Packets              *float64 `json:"Packets,omitempty" xml:"Packets,omitempty"`
+	PacketsIncrease      *float64 `json:"PacketsIncrease,omitempty" xml:"PacketsIncrease,omitempty"`
+	PacketsIncreaseRatio *float64 `json:"PacketsIncreaseRatio,omitempty" xml:"PacketsIncreaseRatio,omitempty"`
+	// The number of packets dropped due to blackhole routing.
+	//
+	//    - This field is returned only when TR flow log analysis is performed.
+	//
 	// example:
 	//
 	// 4
 	PacketsLostBlackhole *float64 `json:"PacketsLostBlackhole,omitempty" xml:"PacketsLostBlackhole,omitempty"`
+	// The number of packets dropped due to no route.
+	//
+	//    - This field is returned only when TR flow log analysis is performed.
+	//
 	// example:
 	//
 	// 2
 	PacketsLostNoRoute *float64 `json:"PacketsLostNoRoute,omitempty" xml:"PacketsLostNoRoute,omitempty"`
+	// The number of packets dropped due to TTL expiration.
+	//
+	//    - This field is returned only when TR flow log analysis is performed.
+	//
 	// example:
 	//
 	// 7
 	PacketsLostTTLExpired *float64 `json:"PacketsLostTTLExpired,omitempty" xml:"PacketsLostTTLExpired,omitempty"`
+	// The network protocol.
+	//
+	//    - This field is returned only when 5-tuple analysis is performed for TR or VPC flow log analysis.
+	//
 	// example:
 	//
 	// TCP
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The public IP address of the associated EIP.
+	//
+	//    - This field is returned only when Internet Shared Bandwidth metric analysis is queried.
+	//
 	// example:
 	//
 	// 118.31.***.86
 	PublicIpAddress *string `json:"PublicIpAddress,omitempty" xml:"PublicIpAddress,omitempty"`
+	// The region where the flow log resides.
+	//
+	//   - This field is returned only when VPC flow log analysis is performed.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The TCP RTT.
+	//
+	//    - This field is returned only when VPC flow log analysis is performed.
+	//
 	// example:
 	//
 	// 2
-	RoundTripTime *float64 `json:"RoundTripTime,omitempty" xml:"RoundTripTime,omitempty"`
+	RoundTripTime         *float64 `json:"RoundTripTime,omitempty" xml:"RoundTripTime,omitempty"`
+	RoundTripTimeIncrease *float64 `json:"RoundTripTimeIncrease,omitempty" xml:"RoundTripTimeIncrease,omitempty"`
+	// The source IP address.
+	//
+	//    - This field is returned only when 2-tuple analysis is performed for TR or VPC flow log analysis.
+	//
 	// example:
 	//
 	// 47.92.245.***
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The source port.
+	//
+	//    - This field is returned only when 5-tuple analysis is performed for TR or VPC flow log analysis.
+	//
 	// example:
 	//
 	// 5432
 	SourcePort *string `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
+	// The source region ID.
+	//
+	//    - This field is returned only when TR flow log analysis is performed.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	SourceRegionNo *string `json:"SourceRegionNo,omitempty" xml:"SourceRegionNo,omitempty"`
+	// The traffic path.
+	//
+	//    - This field is returned only when 2-tuple or 5-tuple analysis is performed for VPC flow log analysis.
+	//
 	// example:
 	//
 	// all
 	TrafficPath *string `json:"TrafficPath,omitempty" xml:"TrafficPath,omitempty"`
+	// The network instance connection ID.
+	//
+	//    - This field is returned only when TR flow log analysis is performed.
+	//
 	// example:
 	//
 	// tr-attach-bfde1cd4cj***
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
+	// The account ID of the destination cloud resource instance connected to the transit router.
+	//
+	//    - This field is returned only when TR flow log analysis is performed.
+	//
 	// example:
 	//
 	// 1906814138****
 	TransitRouterDestinationAccountId *string `json:"TransitRouterDestinationAccountId,omitempty" xml:"TransitRouterDestinationAccountId,omitempty"`
+	// The zone of the destination resource connected to the transit router.
+	//
+	//    - This field is returned only for the VPC connection traffic scenario under TR flow log analysis.
+	//
 	// example:
 	//
 	// cn-hangzhou-j
 	TransitRouterDestinationAvailableZone *string `json:"TransitRouterDestinationAvailableZone,omitempty" xml:"TransitRouterDestinationAvailableZone,omitempty"`
+	// The ENI ID of the destination resource connected to the transit router.
+	//
+	//    - This field is returned only for the VPC connection traffic scenario under TR flow log analysis.
+	//
 	// example:
 	//
 	// eni-fdbf2jxulm***
 	TransitRouterDestinationNetworkInterface *string `json:"TransitRouterDestinationNetworkInterface,omitempty" xml:"TransitRouterDestinationNetworkInterface,omitempty"`
+	// The ID of the destination cloud resource instance connected to the transit router.
+	//
+	//    - This field is returned only when TR flow log analysis is performed.
+	//
 	// example:
 	//
 	// tr-attach-bfve1cd4cjp****
 	TransitRouterDestinationResourceId *string `json:"TransitRouterDestinationResourceId,omitempty" xml:"TransitRouterDestinationResourceId,omitempty"`
+	// The vSwitch ID of the destination resource connected to the transit router.
+	//
+	//    - This field is returned only for the VPC connection traffic scenario under TR flow log analysis.
+	//
 	// example:
 	//
 	// vsw-2zeekevlhxpqxu****
 	TransitRouterDestinationVSwitchId *string `json:"TransitRouterDestinationVSwitchId,omitempty" xml:"TransitRouterDestinationVSwitchId,omitempty"`
+	// The transit router instance ID.
+	//
+	//    - This field is returned only when TR flow log analysis is performed.
+	//
 	// example:
 	//
 	// tr-2zefvwy2fz3444***
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	// The transit router peering connection instance ID.
+	//
+	//    - This field is returned only when TR flow log analysis is performed.
+	//
 	// example:
 	//
 	// tr-attach-okvj1cd4cjp***
 	TransitRouterPairAttachmentId *string `json:"TransitRouterPairAttachmentId,omitempty" xml:"TransitRouterPairAttachmentId,omitempty"`
+	// The account ID of the source cloud resource instance connected to the transit router.
+	//
+	//    - This field is returned only when TR flow log analysis is performed.
+	//
 	// example:
 	//
 	// 1906814138***
 	TransitRouterSourceAccountId *string `json:"TransitRouterSourceAccountId,omitempty" xml:"TransitRouterSourceAccountId,omitempty"`
+	// The zone of the source resource connected to the transit router.
+	//
+	//    - This field is returned only for the VPC connection traffic scenario under TR flow log analysis.
+	//
 	// example:
 	//
 	// cn-hangzhou-j
 	TransitRouterSourceAvailableZone *string `json:"TransitRouterSourceAvailableZone,omitempty" xml:"TransitRouterSourceAvailableZone,omitempty"`
+	// The ENI ID of the source resource connected to the transit router.
+	//
+	//    - This field is returned only for the VPC connection traffic scenario under TR flow log analysis.
+	//
 	// example:
 	//
 	// eni-8vbf2jxulma***
 	TransitRouterSourceNetworkInterface *string `json:"TransitRouterSourceNetworkInterface,omitempty" xml:"TransitRouterSourceNetworkInterface,omitempty"`
+	// The ID of the source cloud resource instance connected to the transit router.
+	//
+	//    - This field is returned only when TR flow log analysis is performed.
+	//
 	// example:
 	//
 	// tr-attach-hvve1cd4cjpj***
 	TransitRouterSourceResourceId *string `json:"TransitRouterSourceResourceId,omitempty" xml:"TransitRouterSourceResourceId,omitempty"`
+	// The vSwitch ID of the source resource connected to the transit router.
+	//
+	//    - This field is returned only for the VPC connection traffic scenario under TR flow log analysis.
+	//
 	// example:
 	//
 	// vsw-ikfdkevlhxpqxuz****
 	TransitRouterSourceVSwitchId *string `json:"TransitRouterSourceVSwitchId,omitempty" xml:"TransitRouterSourceVSwitchId,omitempty"`
+	// The vSwitch ID.
+	//
+	//    - This field is returned only when VPC flow log analysis is performed.
+	//
 	// example:
 	//
 	// vsw-2zeekevlh****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The virtual private cloud (VPC) ID.
+	//
+	//    - This field is returned only when VPC flow log analysis is performed.
+	//
 	// example:
 	//
 	// vpc-m5ec6i0h5xss***
@@ -399,6 +634,14 @@ func (s *DescribeNisTrafficRankingResponseBodyFlowRankingList) GetPackets() *flo
 	return s.Packets
 }
 
+func (s *DescribeNisTrafficRankingResponseBodyFlowRankingList) GetPacketsIncrease() *float64 {
+	return s.PacketsIncrease
+}
+
+func (s *DescribeNisTrafficRankingResponseBodyFlowRankingList) GetPacketsIncreaseRatio() *float64 {
+	return s.PacketsIncreaseRatio
+}
+
 func (s *DescribeNisTrafficRankingResponseBodyFlowRankingList) GetPacketsLostBlackhole() *float64 {
 	return s.PacketsLostBlackhole
 }
@@ -425,6 +668,10 @@ func (s *DescribeNisTrafficRankingResponseBodyFlowRankingList) GetRegionId() *st
 
 func (s *DescribeNisTrafficRankingResponseBodyFlowRankingList) GetRoundTripTime() *float64 {
 	return s.RoundTripTime
+}
+
+func (s *DescribeNisTrafficRankingResponseBodyFlowRankingList) GetRoundTripTimeIncrease() *float64 {
+	return s.RoundTripTimeIncrease
 }
 
 func (s *DescribeNisTrafficRankingResponseBodyFlowRankingList) GetSourceIp() *string {
@@ -608,6 +855,16 @@ func (s *DescribeNisTrafficRankingResponseBodyFlowRankingList) SetPackets(v floa
 	return s
 }
 
+func (s *DescribeNisTrafficRankingResponseBodyFlowRankingList) SetPacketsIncrease(v float64) *DescribeNisTrafficRankingResponseBodyFlowRankingList {
+	s.PacketsIncrease = &v
+	return s
+}
+
+func (s *DescribeNisTrafficRankingResponseBodyFlowRankingList) SetPacketsIncreaseRatio(v float64) *DescribeNisTrafficRankingResponseBodyFlowRankingList {
+	s.PacketsIncreaseRatio = &v
+	return s
+}
+
 func (s *DescribeNisTrafficRankingResponseBodyFlowRankingList) SetPacketsLostBlackhole(v float64) *DescribeNisTrafficRankingResponseBodyFlowRankingList {
 	s.PacketsLostBlackhole = &v
 	return s
@@ -640,6 +897,11 @@ func (s *DescribeNisTrafficRankingResponseBodyFlowRankingList) SetRegionId(v str
 
 func (s *DescribeNisTrafficRankingResponseBodyFlowRankingList) SetRoundTripTime(v float64) *DescribeNisTrafficRankingResponseBodyFlowRankingList {
 	s.RoundTripTime = &v
+	return s
+}
+
+func (s *DescribeNisTrafficRankingResponseBodyFlowRankingList) SetRoundTripTimeIncrease(v float64) *DescribeNisTrafficRankingResponseBodyFlowRankingList {
+	s.RoundTripTimeIncrease = &v
 	return s
 }
 

@@ -22,19 +22,28 @@ type iListNisInspectionTaskReportsResponseBody interface {
 }
 
 type ListNisInspectionTaskReportsResponseBody struct {
+	// The list of inspection reports.
 	InspectionReportList []*ListNisInspectionTaskReportsResponseBodyInspectionReportList `json:"InspectionReportList,omitempty" xml:"InspectionReportList,omitempty" type:"Repeated"`
+	// The number of entries returned per page. Valid values: 1 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If this parameter is not returned, it indicates that no more results are available.
+	//
 	// example:
 	//
 	// hKrS+MVXkuOgztXnvdml194Cz/lMNdmr+DEh0th6dVlNEo/F148UPCh2itDku7Qj
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0D213AF9-7B8A-51A8-B411-2D797A1A447B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 34
@@ -108,6 +117,8 @@ func (s *ListNisInspectionTaskReportsResponseBody) Validate() error {
 }
 
 type ListNisInspectionTaskReportsResponseBodyInspectionReportList struct {
+	// The ID of the inspection report.
+	//
 	// example:
 	//
 	// nir-7c3dd178738a429abe6d

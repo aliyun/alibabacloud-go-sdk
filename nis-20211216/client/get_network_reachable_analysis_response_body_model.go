@@ -628,13 +628,13 @@ type GetNetworkReachableAnalysisResponseBody struct {
 	NetworkReachableAnalysisResult *string `json:"NetworkReachableAnalysisResult,omitempty" xml:"NetworkReachableAnalysisResult,omitempty"`
 	// The state of the task for analyzing network reachability. Valid values:
 	//
-	// 	- **init**: The task is in progress.
+	// - **init**: The task is in progress.
 	//
-	// 	- **finish**: The task is complete.
+	// - **finish**: The task is complete.
 	//
-	// 	- **error**: An analysis error occurred.
+	// - **error**: An analysis error occurred.
 	//
-	// 	- **timeout**: The task timed out.
+	// - **timeout**: The task timed out.
 	//
 	// example:
 	//
@@ -642,9 +642,9 @@ type GetNetworkReachableAnalysisResponseBody struct {
 	NetworkReachableAnalysisStatus *string `json:"NetworkReachableAnalysisStatus,omitempty" xml:"NetworkReachableAnalysisStatus,omitempty"`
 	// Indicates whether the network path is reachable. Valid values:
 	//
-	// 	- **true**: The network path is reachable.
+	// - **true**: The network path is reachable.
 	//
-	// 	- **false**: The network path is unreachable.
+	// - **false**: The network path is unreachable.
 	//
 	// example:
 	//

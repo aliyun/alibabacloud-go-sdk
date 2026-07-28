@@ -21,10 +21,6 @@ type DeleteNetworkPathResponseBody struct {
 	// - **true**: Delete Success.
 	//
 	// - **false**: Delete Fail.
-	//
-	// example:
-	//
-	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The request ID.
 	//

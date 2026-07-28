@@ -36,54 +36,74 @@ type iGetNisNetworkRankingShrinkRequest interface {
 }
 
 type GetNisNetworkRankingShrinkRequest struct {
+	// The member account IDs explicitly passed.
 	AccountIds []*string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	// The start timestamp, in **ms**. If not specified, the last hour is queried by default.
+	//
 	// example:
 	//
 	// 1684373600099
 	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// The network traffic direction based on Alibaba Cloud resources. Valid values:
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// in
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The end timestamp, in **ms**. If not specified, the last hour is queried by default. If only BeginTime is specified, the one hour after BeginTime is queried.
+	//
 	// example:
 	//
 	// 1684379093000
-	EndTime      *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Specifies filter conditions for focused network traffic analysis.
 	FilterShrink *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The dimension for metric ranking. Valid values vary by scenario:
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Protocol
 	GroupBy *string `json:"GroupBy,omitempty" xml:"GroupBy,omitempty"`
+	// The metric for ranking Internet traffic. Case-sensitive. Valid values:
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// bps
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// This parameter is required.
+	// The region where the resource resides.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The Alibaba Cloud network resource type used for traffic forwarding. Valid values:
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// AccessInternetIpV4
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The sort order. Default value: desc. Valid values:
+	//
 	// example:
 	//
 	// desc
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The number of top-ranked entries to display. Default value: **10**. Maximum value: **100**.
+	//
 	// example:
 	//
 	// 10
 	TopN *int32 `json:"TopN,omitempty" xml:"TopN,omitempty"`
+	// Specifies whether to use multi-account access mode. This is a reserved parameter and is not currently supported.
+	//
 	// example:
 	//
 	// false

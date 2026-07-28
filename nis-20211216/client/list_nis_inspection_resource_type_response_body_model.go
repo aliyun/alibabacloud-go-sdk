@@ -16,10 +16,13 @@ type iListNisInspectionResourceTypeResponseBody interface {
 }
 
 type ListNisInspectionResourceTypeResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// D5E98683-355B-5867-8D3D-A24755F6895B
-	RequestId        *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resource types for inspection.
 	ResourceTypeList []*ListNisInspectionResourceTypeResponseBodyResourceTypeList `json:"ResourceTypeList,omitempty" xml:"ResourceTypeList,omitempty" type:"Repeated"`
 }
 
@@ -63,6 +66,8 @@ func (s *ListNisInspectionResourceTypeResponseBody) Validate() error {
 }
 
 type ListNisInspectionResourceTypeResponseBodyResourceTypeList struct {
+	// The resource type.
+	//
 	// example:
 	//
 	// EIP

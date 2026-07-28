@@ -54,7 +54,7 @@ type GetTransitRouterFlowTopNRequest struct {
 	//
 	// example:
 	//
-	// cenbwp-ia8kw1zjv4hyal*****
+	// cenbwp-ia8kw1zjv4hyal****
 	BandwithPackageId *string `json:"BandwithPackageId,omitempty" xml:"BandwithPackageId,omitempty"`
 	// The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. The maximum time range that you can query is 24 hours.
 	//

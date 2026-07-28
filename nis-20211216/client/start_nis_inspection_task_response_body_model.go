@@ -16,10 +16,14 @@ type iStartNisInspectionTaskResponseBody interface {
 }
 
 type StartNisInspectionTaskResponseBody struct {
+	// The inspection report ID.
+	//
 	// example:
 	//
-	// nir-9923e262c106461d86ad
+	// nir-9923e262c106461d****
 	InspectionReportId *string `json:"InspectionReportId,omitempty" xml:"InspectionReportId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A7F0D6EC-E19E-58AC-AC9F-08036763960F

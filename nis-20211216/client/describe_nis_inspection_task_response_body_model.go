@@ -34,43 +34,72 @@ type iDescribeNisInspectionTaskResponseBody interface {
 }
 
 type DescribeNisInspectionTaskResponseBody struct {
+	// The configuration of the inspected resources.
 	CheckResourceList []*DescribeNisInspectionTaskResponseBodyCheckResourceList `json:"CheckResourceList,omitempty" xml:"CheckResourceList,omitempty" type:"Repeated"`
+	// The time when the task was created.
+	//
 	// example:
 	//
 	// 2024-07-01 10:00:57
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The inspection interval. The unit is **day**.
+	//
 	// example:
 	//
 	// 1
 	InspectionInterval *string `json:"InspectionInterval,omitempty" xml:"InspectionInterval,omitempty"`
+	// The name of the inspection task.
+	//
 	// example:
 	//
 	// Default
 	InspectionName *string `json:"InspectionName,omitempty" xml:"InspectionName,omitempty"`
+	// The type of inspection plan for the task. Valid values: basic and customized.
+	//
 	// example:
 	//
 	// basic
 	InspectionProject *string `json:"InspectionProject,omitempty" xml:"InspectionProject,omitempty"`
+	// The ID of the inspection task.
+	//
 	// example:
 	//
 	// ni-8svmpe0yso2bhzr7fh79
 	InspectionTaskId *string `json:"InspectionTaskId,omitempty" xml:"InspectionTaskId,omitempty"`
+	// The time when the inspection task was triggered.
+	//
 	// example:
 	//
 	// 2024-07-01 15:15:57
 	InspectionTriggerTime *string `json:"InspectionTriggerTime,omitempty" xml:"InspectionTriggerTime,omitempty"`
+	// The ID of the latest report.
+	//
 	// example:
 	//
 	// nir-7c3dd178738a429abe6d
 	LastUpdateReportId *string `json:"LastUpdateReportId,omitempty" xml:"LastUpdateReportId,omitempty"`
+	// The time when the task was last updated.
+	//
 	// example:
 	//
 	// 2024-07-01 10:00:59
 	LastUpdateTime *string `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A7F0D6EC-E19E-58AC-AC9F-08036763960F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The running status of the task.
+	//
+	// Creating
+	//
+	// Active
+	//
+	// Running
+	//
+	// Inactive
+	//
 	// example:
 	//
 	// Active
@@ -198,10 +227,14 @@ func (s *DescribeNisInspectionTaskResponseBody) Validate() error {
 }
 
 type DescribeNisInspectionTaskResponseBodyCheckResourceList struct {
+	// The inspection rule.
+	//
 	// example:
 	//
 	// CheckAll
 	CheckScope *string `json:"CheckScope,omitempty" xml:"CheckScope,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// EIP

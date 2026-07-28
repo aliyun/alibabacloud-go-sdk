@@ -16,10 +16,14 @@ type iUpdateNisInspectionTaskResponseBody interface {
 }
 
 type UpdateNisInspectionTaskResponseBody struct {
+	// The update result.
+	//
 	// example:
 	//
 	// True
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A7F0D6EC-E19E-58AC-AC9F-08036763960F

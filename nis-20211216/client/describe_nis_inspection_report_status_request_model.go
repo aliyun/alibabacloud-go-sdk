@@ -14,6 +14,8 @@ type iDescribeNisInspectionReportStatusRequest interface {
 }
 
 type DescribeNisInspectionReportStatusRequest struct {
+	// The ID of the inspection report.
+	//
 	// This parameter is required.
 	//
 	// example:

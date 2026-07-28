@@ -14,6 +14,8 @@ type iDeleteNisInspectionReportRequest interface {
 }
 
 type DeleteNisInspectionReportRequest struct {
+	// The ID of the inspection report.
+	//
 	// This parameter is required.
 	//
 	// example:

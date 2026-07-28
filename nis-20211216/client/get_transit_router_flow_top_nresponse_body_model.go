@@ -70,7 +70,7 @@ type GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN struct {
 	//
 	// example:
 	//
-	// 118639953821xxxx
+	// 118639953821****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The ID of the CEN bandwidth plan.
 	//

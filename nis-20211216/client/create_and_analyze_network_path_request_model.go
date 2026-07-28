@@ -34,11 +34,11 @@ type iCreateAndAnalyzeNetworkPathRequest interface {
 type CreateAndAnalyzeNetworkPathRequest struct {
 	// The protocol type. Valid values:
 	//
-	// 	- **tcp**: Transmission Control Protocol (TCP)
+	// - **tcp**: Transmission Control Protocol (TCP)
 	//
-	// 	- **udp**: User Datagram Protocol (UDP)
+	// - **udp**: User Datagram Protocol (UDP)
 	//
-	// 	- **icmp**: Internet Control Message Protocol (ICMP)
+	// - **icmp**: Internet Control Message Protocol (ICMP)
 	//
 	// example:
 	//
@@ -72,15 +72,15 @@ type CreateAndAnalyzeNetworkPathRequest struct {
 	SourcePort *int32 `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
 	// The type of the source resource. Valid values:
 	//
-	// 	- **ecs**: the Elastic Compute Service (ECS) instance
+	// - **ecs**: the Elastic Compute Service (ECS) instance
 	//
-	// 	- **internetIp**: the public IP address
+	// - **internetIp**: the public IP address
 	//
-	// 	- **vsw**: the vSwitch
+	// - **vsw**: the vSwitch
 	//
-	// 	- **vpn**: the VPN gateway
+	// - **vpn**: the VPN gateway
 	//
-	// 	- **vbr**: the virtual border router (VBR)
+	// - **vbr**: the virtual border router (VBR)
 	//
 	// This parameter is required.
 	//
@@ -108,17 +108,17 @@ type CreateAndAnalyzeNetworkPathRequest struct {
 	TargetPort *int32 `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
 	// The type of the destination resource. Valid values:
 	//
-	// 	- **ecs**: the ECS instance
+	// - **ecs**: the ECS instance
 	//
-	// 	- **internetIp**: the public IP address
+	// - **internetIp**: the public IP address
 	//
-	// 	- **vsw**: the vSwitch
+	// - **vsw**: the vSwitch
 	//
-	// 	- **vpn**: the VPN gateway
+	// - **vpn**: the VPN gateway
 	//
-	// 	- **vbr**: the VBR
+	// - **vbr**: the VBR
 	//
-	// 	- **clb**: the Classic Load Balancer (CLB) instance
+	// - **clb**: the Classic Load Balancer (CLB) instance
 	//
 	// example:
 	//

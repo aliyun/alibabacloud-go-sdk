@@ -22,19 +22,28 @@ type iListNisInspectionTasksResponseBody interface {
 }
 
 type ListNisInspectionTasksResponseBody struct {
+	// The list of network inspection tasks.
 	InspectionTaskList []*ListNisInspectionTasksResponseBodyInspectionTaskList `json:"InspectionTaskList,omitempty" xml:"InspectionTaskList,omitempty" type:"Repeated"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token to retrieve the next page of results. If the value of this parameter is not empty, it indicates that there are more results to retrieve. If this parameter is empty, all results have been returned.
+	//
 	// example:
 	//
 	// hKrS+MVXkuOgztXnvdml194Cz/lMNdmr+DEh0th6dVlNEo/F148UPCh2itDku7Qj
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A7F0D6EC-E19E-58AC-AC9F-08036763960F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 5
@@ -108,23 +117,46 @@ func (s *ListNisInspectionTasksResponseBody) Validate() error {
 }
 
 type ListNisInspectionTasksResponseBodyInspectionTaskList struct {
+	// The time when the task was created.
+	//
 	// example:
 	//
 	// 2024-06-18 00:14:46
-	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The name of the network inspection task.
+	//
+	// example:
+	//
+	// NIS inspection
 	InspectionName *string `json:"InspectionName,omitempty" xml:"InspectionName,omitempty"`
+	// The type of inspection solution that the network inspection task uses. Valid values: basic and customized.
+	//
 	// example:
 	//
 	// basic
 	InspectionProject *string `json:"InspectionProject,omitempty" xml:"InspectionProject,omitempty"`
+	// The ID of the network inspection task.
+	//
 	// example:
 	//
 	// ni-8svm******hzr7fh79
 	InspectionTaskId *string `json:"InspectionTaskId,omitempty" xml:"InspectionTaskId,omitempty"`
+	// The ID of the latest report.
+	//
 	// example:
 	//
 	// nir-b4c4c9******8a25e
 	LastUpdateReportId *string `json:"LastUpdateReportId,omitempty" xml:"LastUpdateReportId,omitempty"`
+	// The running status of the task. Valid values:
+	//
+	// Creating: The task is being created.
+	//
+	// - Active
+	//
+	// - Running
+	//
+	// - Inactive
+	//
 	// example:
 	//
 	// Active

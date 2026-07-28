@@ -16,10 +16,14 @@ type iDeleteNisInspectionReportResponseBody interface {
 }
 
 type DeleteNisInspectionReportResponseBody struct {
+	// The result of the deletion.
+	//
 	// example:
 	//
 	// True
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D5E98683-355B-5867-8D3D-A24755F6895B

@@ -24,23 +24,46 @@ type iListNisInspectionTasksRequest interface {
 }
 
 type ListNisInspectionTasksRequest struct {
+	// The name of the network inspection task.
+	//
+	// example:
+	//
+	// NIS inspection
 	InspectionName *string `json:"InspectionName,omitempty" xml:"InspectionName,omitempty"`
+	// The type of inspection solution that the network inspection task uses. Valid values: basic and customized.
+	//
 	// example:
 	//
 	// basic
 	InspectionProject *string `json:"InspectionProject,omitempty" xml:"InspectionProject,omitempty"`
+	// The ID of the network inspection task.
+	//
 	// example:
 	//
 	// ni-8svm******hzr7fh79
 	InspectionTaskId *string `json:"InspectionTaskId,omitempty" xml:"InspectionTaskId,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to retrieve the next page of results. Set this parameter to the NextToken value returned from a previous call.
+	//
 	// example:
 	//
 	// hKrS+MVXkuOgztXnvdml1/R9jhHkiH8eW3CfaOYU0CEL7yiT0zae6J8v1zYNg+d1
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The running status of the task. Valid values:
+	//
+	// - Creating
+	//
+	// - Active
+	//
+	// - Running
+	//
+	// - Inactive
+	//
 	// example:
 	//
 	// Active

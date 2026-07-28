@@ -16,10 +16,14 @@ type iStartNisTrafficRankingResponseBody interface {
 }
 
 type StartNisTrafficRankingResponseBody struct {
+	// The result ID of this traffic ranking analysis. Call the DescribeNisTrafficRanking operation to obtain the final analysis result.
+	//
 	// example:
 	//
 	// task-6462a7b4c4a54b****
 	NisTrafficRankingId *string `json:"NisTrafficRankingId,omitempty" xml:"NisTrafficRankingId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4DAC4BE1-BEEA-5D84-BE06-E1B796F3B941

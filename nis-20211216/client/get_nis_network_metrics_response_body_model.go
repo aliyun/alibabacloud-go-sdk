@@ -16,7 +16,10 @@ type iGetNisNetworkMetricsResponseBody interface {
 }
 
 type GetNisNetworkMetricsResponseBody struct {
+	// The cloud network metric trends data object.
 	Data *GetNisNetworkMetricsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D5E98683-355B-5867-8D3D-A24755F6895B
@@ -59,7 +62,10 @@ func (s *GetNisNetworkMetricsResponseBody) Validate() error {
 }
 
 type GetNisNetworkMetricsResponseBodyData struct {
+	// The collection of metric trends data.
 	Metrics []*GetNisNetworkMetricsResponseBodyDataMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	// The unit.
+	//
 	// example:
 	//
 	// Bits/Second
@@ -106,10 +112,14 @@ func (s *GetNisNetworkMetricsResponseBodyData) Validate() error {
 }
 
 type GetNisNetworkMetricsResponseBodyDataMetrics struct {
+	// The timestamp of the data in milliseconds.
+	//
 	// example:
 	//
 	// 1690684091100
 	TimeStamp *int64 `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	// The metric value.
+	//
 	// example:
 	//
 	// 88

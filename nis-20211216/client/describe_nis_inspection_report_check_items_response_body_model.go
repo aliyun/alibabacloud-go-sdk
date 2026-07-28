@@ -24,23 +24,34 @@ type iDescribeNisInspectionReportCheckItemsResponseBody interface {
 }
 
 type DescribeNisInspectionReportCheckItemsResponseBody struct {
+	// The list of check items.
 	CheckItemList []*DescribeNisInspectionReportCheckItemsResponseBodyCheckItemList `json:"CheckItemList,omitempty" xml:"CheckItemList,omitempty" type:"Repeated"`
+	// The ID of the inspection report.
+	//
 	// example:
 	//
 	// nir-ffd1af****196d0
 	InspectionReportId *string `json:"InspectionReportId,omitempty" xml:"InspectionReportId,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// example:
 	//
 	// hKrS+MVXkuOgztXnvdml194Cz/lMNdmr+DEh0th6dVlNEo/F148UPCh2itDku7Qj
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D5E98683-355B-5867-8D3D-A24755F6895B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 11
@@ -123,22 +134,40 @@ func (s *DescribeNisInspectionReportCheckItemsResponseBody) Validate() error {
 }
 
 type DescribeNisInspectionReportCheckItemsResponseBodyCheckItemList struct {
+	// The category of the check item.
+	//
 	// example:
 	//
 	// stability
 	CategoryCode *string `json:"CategoryCode,omitempty" xml:"CategoryCode,omitempty"`
+	// The code of the check item.
+	//
 	// example:
 	//
 	// item_nat_water_level_check
-	CheckItemCode   *string                                                                          `json:"CheckItemCode,omitempty" xml:"CheckItemCode,omitempty"`
-	CheckItemName   *string                                                                          `json:"CheckItemName,omitempty" xml:"CheckItemName,omitempty"`
+	CheckItemCode *string `json:"CheckItemCode,omitempty" xml:"CheckItemCode,omitempty"`
+	// The name of the check item.
+	//
+	// example:
+	//
+	// NAT high-availability deployment check
+	CheckItemName *string `json:"CheckItemName,omitempty" xml:"CheckItemName,omitempty"`
+	// The list of check results that indicates the number of risks at each risk level.
 	CheckResultList []*DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListCheckResultList `json:"CheckResultList,omitempty" xml:"CheckResultList,omitempty" type:"Repeated"`
-	Description     *string                                                                          `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the check item.
+	//
+	// example:
+	//
+	// 无
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// example:
 	//
 	// item_ep_high_availability_check_description
-	DescriptionCode    *string                                                                             `json:"DescriptionCode,omitempty" xml:"DescriptionCode,omitempty"`
+	DescriptionCode *string `json:"DescriptionCode,omitempty" xml:"DescriptionCode,omitempty"`
+	// The list of results for abnormal check items.
 	RecommendationList []*DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendationList `json:"RecommendationList,omitempty" xml:"RecommendationList,omitempty" type:"Repeated"`
+	// The resource type associated with the check item.
+	//
 	// example:
 	//
 	// NAT
@@ -248,10 +277,25 @@ func (s *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemList) Validat
 }
 
 type DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListCheckResultList struct {
+	// The number of risks at the specified risk level in the inspection report.
+	//
 	// example:
 	//
 	// 0
-	Count     *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The risk level. Valid values:
+	//
+	// - **HighRisk**
+	//
+	// - **MediumRisk**
+	//
+	// - **LowRisk**
+	//
+	// - **NoRisk**
+	//
+	// example:
+	//
+	// LowRisk
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
@@ -286,17 +330,52 @@ func (s *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListCheckResu
 }
 
 type DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendationList struct {
+	// The description of the abnormal item.
+	//
+	// example:
+	//
+	// Multiple cross-zone resources share a single NAT gateway.
 	Abnormality *string `json:"Abnormality,omitempty" xml:"Abnormality,omitempty"`
-	Metadata    *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	Reason      *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	ReasonCode  *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// The metadata of the resource that corresponds to the abnormal item.
+	//
+	// example:
+	//
+	// {"Columns":[{"ColumnType":"id","ColumnTitle":"Resource ID","ColumnValue":"ResourceId"},{"ColumnType":"az","ColumnTitle":"NAT Deployment Zone","ColumnValue":"NatAZ"},{"ColumnType":"array.az","ColumnTitle":"Resource Deployment Zone","ColumnValue":"ForwardsAZs"},{"ColumnType":"region","ColumnTitle":"Region","ColumnValue":"RegionNo"}]}
+	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// The cause of the abnormality.
+	//
+	// example:
+	//
+	// Multiple cross-zone resources share a single NAT gateway.
+	Reason     *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// The inspection item is abnormal.
+	//
 	// example:
 	//
 	// nat_snat_cross_az_warn
 	RecommendationCode *string `json:"RecommendationCode,omitempty" xml:"RecommendationCode,omitempty"`
-	RiskLevel          *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	Suggestion         *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-	SuggestionCode     *string `json:"SuggestionCode,omitempty" xml:"SuggestionCode,omitempty"`
+	// The risk level. Valid values:
+	//
+	// - **HighRisk**
+	//
+	// - **MediumRisk**
+	//
+	// - **LowRisk**
+	//
+	// - **NoRisk**
+	//
+	// example:
+	//
+	// LowRisk
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The optimization suggestions.
+	//
+	// example:
+	//
+	// Deploy NAT gateways in all zones where resources reside.
+	Suggestion     *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	SuggestionCode *string `json:"SuggestionCode,omitempty" xml:"SuggestionCode,omitempty"`
 }
 
 func (s DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendationList) String() string {

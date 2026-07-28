@@ -80,7 +80,7 @@ type GetInternetTupleRequest struct {
 	//
 	// example:
 	//
-	// Alibaba
+	// 阿里巴巴
 	CloudIsp *string `json:"CloudIsp,omitempty" xml:"CloudIsp,omitempty"`
 	// The local port.
 	//
@@ -140,7 +140,7 @@ type GetInternetTupleRequest struct {
 	//
 	// example:
 	//
-	// Hangzhou
+	// 杭州市
 	OtherCity *string `json:"OtherCity,omitempty" xml:"OtherCity,omitempty"`
 	// The remote country.
 	//
@@ -148,7 +148,7 @@ type GetInternetTupleRequest struct {
 	//
 	// example:
 	//
-	// China
+	// 中国
 	OtherCountry *string `json:"OtherCountry,omitempty" xml:"OtherCountry,omitempty"`
 	// The remote IP address.
 	//
@@ -164,7 +164,7 @@ type GetInternetTupleRequest struct {
 	//
 	// example:
 	//
-	// China Mobile
+	// 移动
 	OtherIsp *string `json:"OtherIsp,omitempty" xml:"OtherIsp,omitempty"`
 	// The remote port.
 	//

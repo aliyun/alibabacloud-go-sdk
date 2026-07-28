@@ -26,30 +26,42 @@ type iDescribeNisInspectionReportCheckItemsRequest interface {
 }
 
 type DescribeNisInspectionReportCheckItemsRequest struct {
+	// The category of the check item.
+	//
 	// example:
 	//
 	// stability
 	CategoryCode *string `json:"CategoryCode,omitempty" xml:"CategoryCode,omitempty"`
+	// The ID of the inspection report.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// nir-ffd1af****196d0
 	InspectionReportId *string `json:"InspectionReportId,omitempty" xml:"InspectionReportId,omitempty"`
+	// The language of the content. Valid values: zh-CN and en-US.
+	//
 	// example:
 	//
 	// zh-CN
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The maximum number of entries to return on each page. Maximum value: 100. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. Set this parameter to the NextToken value returned from the previous call.
+	//
 	// example:
 	//
 	// hKrS+MVXkuOgztXnvdml16/uO3mvCyHxSjzdhx9VRUC+8umDTIV2Wg9TTOUrR7ve
-	NextToken    *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The resource type.
 	ResourceType []*string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty" type:"Repeated"`
-	RiskLevel    []*string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty" type:"Repeated"`
+	// A collection of risk levels.
+	RiskLevel []*string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty" type:"Repeated"`
 }
 
 func (s DescribeNisInspectionReportCheckItemsRequest) String() string {

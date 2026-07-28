@@ -22,24 +22,34 @@ type iDescribeNisInspectionRecommendationResourcesRequest interface {
 }
 
 type DescribeNisInspectionRecommendationResourcesRequest struct {
+	// The ID of the inspection report.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// nir-ffd1af****196d0
 	InspectionReportId *string `json:"InspectionReportId,omitempty" xml:"InspectionReportId,omitempty"`
+	// The language to use.
+	//
 	// example:
 	//
 	// zh-CN
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The maximum number of entries to return on each page. Maximum value: 100. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to query the next page of results. Set this parameter to the NextToken value returned from the last API call.
+	//
 	// example:
 	//
 	// hKrS+MVXkuOgztXnvdml16/uO3mvCyHxSjzdhx9VRUC+8umDTIV2Wg9TTOUrR7ve
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The recommendation code for the abnormal item.
+	//
 	// This parameter is required.
 	//
 	// example:

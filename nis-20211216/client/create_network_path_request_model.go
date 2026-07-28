@@ -44,7 +44,7 @@ type CreateNetworkPathRequest struct {
 	//
 	// example:
 	//
-	// Analyze the path from ECS to ECS
+	// Analysis ECS to ECS path
 	NetworkPathDescription *string `json:"NetworkPathDescription,omitempty" xml:"NetworkPathDescription,omitempty"`
 	// The name of the network path.
 	//
@@ -56,11 +56,11 @@ type CreateNetworkPathRequest struct {
 	NetworkPathName *string `json:"NetworkPathName,omitempty" xml:"NetworkPathName,omitempty"`
 	// The protocol type. Valid values:
 	//
-	// 	- **tcp**: Transmission Control Protocol (TCP)
+	// - **tcp**: Transmission Control Protocol (TCP)
 	//
-	// 	- **udp**: User Datagram Protocol (UDP)
+	// - **udp**: User Datagram Protocol (UDP)
 	//
-	// 	- **icmp**: Internet Control Message Protocol (ICMP)
+	// - **icmp**: Internet Control Message Protocol (ICMP)
 	//
 	// example:
 	//
@@ -100,15 +100,15 @@ type CreateNetworkPathRequest struct {
 	SourcePort *int32 `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
 	// The type of the source resource. Valid values:
 	//
-	// 	- **ecs**: the Elastic Compute Service (ECS) instance
+	// - **ecs**: the Elastic Compute Service (ECS) instance
 	//
-	// 	- **internetIp**: the public IP address
+	// - **internetIp**: the public IP address
 	//
-	// 	- **vsw**: the vSwitch
+	// - **vsw**: the vSwitch
 	//
-	// 	- **vpn**: the VPN gateway
+	// - **vpn**: the VPN gateway
 	//
-	// 	- **vbr**: the virtual border router (VBR)
+	// - **vbr**: the virtual border router (VBR)
 	//
 	// This parameter is required.
 	//
@@ -128,7 +128,7 @@ type CreateNetworkPathRequest struct {
 	//
 	// example:
 	//
-	// 192.168.0.210
+	// 192.168.XX.XX
 	TargetIpAddress *string `json:"TargetIpAddress,omitempty" xml:"TargetIpAddress,omitempty"`
 	// The destination port.
 	//
@@ -138,17 +138,17 @@ type CreateNetworkPathRequest struct {
 	TargetPort *int32 `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
 	// The type of the destination resource. Valid values:
 	//
-	// 	- **ecs**: the ECS instance
+	// - **ecs**: the ECS instance
 	//
-	// 	- **internetIp**: the public IP address
+	// - **internetIp**: the public IP address
 	//
-	// 	- **vsw**: the vSwitch
+	// - **vsw**: the vSwitch
 	//
-	// 	- **vpn**: the VPN gateway
+	// - **vpn**: the VPN gateway
 	//
-	// 	- **vbr**: the VBR
+	// - **vbr**: the VBR
 	//
-	// 	- **clb**: the Classic Load Balancer (CLB) instance
+	// - **clb**: the Classic Load Balancer (CLB) instance
 	//
 	// example:
 	//

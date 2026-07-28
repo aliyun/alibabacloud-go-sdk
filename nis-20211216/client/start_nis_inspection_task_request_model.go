@@ -14,6 +14,8 @@ type iStartNisInspectionTaskRequest interface {
 }
 
 type StartNisInspectionTaskRequest struct {
+	// The inspection task ID.
+	//
 	// This parameter is required.
 	//
 	// example:

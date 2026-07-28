@@ -14,6 +14,8 @@ type iDeleteNisInspectionTaskRequest interface {
 }
 
 type DeleteNisInspectionTaskRequest struct {
+	// The ID of the inspection task.
+	//
 	// This parameter is required.
 	//
 	// example:

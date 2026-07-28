@@ -26,30 +26,51 @@ type iDescribeNisInspectionReportSummaryResponseBody interface {
 }
 
 type DescribeNisInspectionReportSummaryResponseBody struct {
+	// The end time.
+	//
 	// example:
 	//
 	// 2024-06-03 09:36:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the inspection report.
+	//
 	// example:
 	//
 	// nir-38abb318b27b49cc9a01
 	InspectionReportId *string `json:"InspectionReportId,omitempty" xml:"InspectionReportId,omitempty"`
+	// The ID of the inspection task.
+	//
 	// example:
 	//
 	// ni-8svmpe0yso2bhzr7fh79
 	InspectionTaskId *string `json:"InspectionTaskId,omitempty" xml:"InspectionTaskId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4838F3F2-30E1-5D82-B25A-B9FE33BC3E25
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
 	// 2024-06-03 09:35:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the task. Valid values:
+	//
+	// - Creating
+	//
+	// - Active
+	//
+	// - Running
+	//
+	// - Inactive
+	//
 	// example:
 	//
 	// Active
-	Status  *string                                                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The summary information.
 	Summary *DescribeNisInspectionReportSummaryResponseBodySummary `json:"Summary,omitempty" xml:"Summary,omitempty" type:"Struct"`
 }
 
@@ -134,16 +155,22 @@ func (s *DescribeNisInspectionReportSummaryResponseBody) Validate() error {
 }
 
 type DescribeNisInspectionReportSummaryResponseBodySummary struct {
+	// The number of inspection items.
+	//
 	// example:
 	//
 	// 11
 	CheckItemCount *int32 `json:"CheckItemCount,omitempty" xml:"CheckItemCount,omitempty"`
+	// The number of inspected resources.
+	//
 	// example:
 	//
 	// 123
-	CheckResourceCount *int32                                                                  `json:"CheckResourceCount,omitempty" xml:"CheckResourceCount,omitempty"`
-	PassRateSummary    []*DescribeNisInspectionReportSummaryResponseBodySummaryPassRateSummary `json:"PassRateSummary,omitempty" xml:"PassRateSummary,omitempty" type:"Repeated"`
-	RiskSummary        []*DescribeNisInspectionReportSummaryResponseBodySummaryRiskSummary     `json:"RiskSummary,omitempty" xml:"RiskSummary,omitempty" type:"Repeated"`
+	CheckResourceCount *int32 `json:"CheckResourceCount,omitempty" xml:"CheckResourceCount,omitempty"`
+	// The pass rate summary.
+	PassRateSummary []*DescribeNisInspectionReportSummaryResponseBodySummaryPassRateSummary `json:"PassRateSummary,omitempty" xml:"PassRateSummary,omitempty" type:"Repeated"`
+	// The risk summary.
+	RiskSummary []*DescribeNisInspectionReportSummaryResponseBodySummaryRiskSummary `json:"RiskSummary,omitempty" xml:"RiskSummary,omitempty" type:"Repeated"`
 }
 
 func (s DescribeNisInspectionReportSummaryResponseBodySummary) String() string {
@@ -213,10 +240,14 @@ func (s *DescribeNisInspectionReportSummaryResponseBodySummary) Validate() error
 }
 
 type DescribeNisInspectionReportSummaryResponseBodySummaryPassRateSummary struct {
+	// The pass rate.
+	//
 	// example:
 	//
 	// 0.98
 	PassRate *float64 `json:"PassRate,omitempty" xml:"PassRate,omitempty"`
+	// The scope of the pass rate.
+	//
 	// example:
 	//
 	// Stability
@@ -254,18 +285,26 @@ func (s *DescribeNisInspectionReportSummaryResponseBodySummaryPassRateSummary) V
 }
 
 type DescribeNisInspectionReportSummaryResponseBodySummaryRiskSummary struct {
+	// The number of resources associated with the risk.
+	//
 	// example:
 	//
 	// 0
 	ResourceCount *int32 `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty"`
+	// The number of risks.
+	//
 	// example:
 	//
 	// 3
 	RiskCount *int32 `json:"RiskCount,omitempty" xml:"RiskCount,omitempty"`
+	// The risk level.
+	//
 	// example:
 	//
 	// HighRisk
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The risk type.
+	//
 	// example:
 	//
 	// StabilityRisk

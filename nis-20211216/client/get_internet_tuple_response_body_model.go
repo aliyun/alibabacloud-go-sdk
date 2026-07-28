@@ -90,13 +90,13 @@ type GetInternetTupleResponseBodyData struct {
 	//
 	// example:
 	//
-	// Nanjing
+	// 南京市
 	CloudCity *string `json:"CloudCity,omitempty" xml:"CloudCity,omitempty"`
 	// The local country or region.
 	//
 	// example:
 	//
-	// China
+	// 中国
 	CloudCountry *string `json:"CloudCountry,omitempty" xml:"CloudCountry,omitempty"`
 	// The local IP address.
 	//
@@ -108,7 +108,7 @@ type GetInternetTupleResponseBodyData struct {
 	//
 	// example:
 	//
-	// China Mobile
+	// 移动
 	CloudIsp *string `json:"CloudIsp,omitempty" xml:"CloudIsp,omitempty"`
 	// The local port.
 	//
@@ -126,7 +126,7 @@ type GetInternetTupleResponseBodyData struct {
 	//
 	// example:
 	//
-	// Jiangsu
+	// 江苏省
 	CloudProvince *string `json:"CloudProvince,omitempty" xml:"CloudProvince,omitempty"`
 	// The direction of Internet traffic. Valid values:
 	//
@@ -172,13 +172,13 @@ type GetInternetTupleResponseBodyData struct {
 	//
 	// example:
 	//
-	// Austin
+	// 奥斯汀
 	OtherCity *string `json:"OtherCity,omitempty" xml:"OtherCity,omitempty"`
 	// The remote country or region.
 	//
 	// example:
 	//
-	// United States
+	// 美国
 	OtherCountry *string `json:"OtherCountry,omitempty" xml:"OtherCountry,omitempty"`
 	// The remote IP address.
 	//
@@ -208,7 +208,7 @@ type GetInternetTupleResponseBodyData struct {
 	//
 	// example:
 	//
-	// Texas
+	// 得克萨斯州
 	OtherProvince *string `json:"OtherProvince,omitempty" xml:"OtherProvince,omitempty"`
 	// The outbound traffic volume. Unit: bytes.
 	//
