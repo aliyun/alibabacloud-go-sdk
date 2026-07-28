@@ -15,23 +15,40 @@ type iDescribeChatMessageRequest interface {
 	GetRegionId() *string
 	SetSessionId(v string) *DescribeChatMessageRequest
 	GetSessionId() *string
+	SetSkill(v string) *DescribeChatMessageRequest
+	GetSkill() *string
 	SetTimezone(v string) *DescribeChatMessageRequest
 	GetTimezone() *string
 }
 
 type DescribeChatMessageRequest struct {
+	// The question statement submitted by the user.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// How to set reasonable annual plan goals?
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The Alibaba Cloud region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// df94eec5-3d95-435c-87d4-43e8bb3f9519
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// if can be null:
+	// true
+	Skill *string `json:"Skill,omitempty" xml:"Skill,omitempty"`
+	// The time zone.
+	//
 	// example:
 	//
 	// Asia/Shanghai
@@ -58,6 +75,10 @@ func (s *DescribeChatMessageRequest) GetSessionId() *string {
 	return s.SessionId
 }
 
+func (s *DescribeChatMessageRequest) GetSkill() *string {
+	return s.Skill
+}
+
 func (s *DescribeChatMessageRequest) GetTimezone() *string {
 	return s.Timezone
 }
@@ -74,6 +95,11 @@ func (s *DescribeChatMessageRequest) SetRegionId(v string) *DescribeChatMessageR
 
 func (s *DescribeChatMessageRequest) SetSessionId(v string) *DescribeChatMessageRequest {
 	s.SessionId = &v
+	return s
+}
+
+func (s *DescribeChatMessageRequest) SetSkill(v string) *DescribeChatMessageRequest {
+	s.Skill = &v
 	return s
 }
 

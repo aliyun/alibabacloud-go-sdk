@@ -26,12 +26,17 @@ type iGetEmbodiedAIPlatformResourceUsageInfoResponseBody interface {
 }
 
 type GetEmbodiedAIPlatformResourceUsageInfoResponseBody struct {
-	AcuDetails *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyAcuDetails   `json:"AcuDetails,omitempty" xml:"AcuDetails,omitempty" type:"Struct"`
+	AcuDetails *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyAcuDetails `json:"AcuDetails,omitempty" xml:"AcuDetails,omitempty" type:"Struct"`
+	// The GPU usage details.
 	GpuDetails []*GetEmbodiedAIPlatformResourceUsageInfoResponseBodyGpuDetails `json:"GpuDetails,omitempty" xml:"GpuDetails,omitempty" type:"Repeated"`
+	// The maximum number of embodiments that can be registered.
+	//
 	// example:
 	//
 	// 3
 	MaxRegisteredDevices *int64 `json:"MaxRegisteredDevices,omitempty" xml:"MaxRegisteredDevices,omitempty"`
+	// The number of registered embodiments.
+	//
 	// example:
 	//
 	// 1
@@ -41,8 +46,10 @@ type GetEmbodiedAIPlatformResourceUsageInfoResponseBody struct {
 	// example:
 	//
 	// B47EED99-BFA5-529D-8D85-A6642421D390
-	RequestId    *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SlbTraffic   *GetEmbodiedAIPlatformResourceUsageInfoResponseBodySlbTraffic   `json:"SlbTraffic,omitempty" xml:"SlbTraffic,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The network resource usage information.
+	SlbTraffic *GetEmbodiedAIPlatformResourceUsageInfoResponseBodySlbTraffic `json:"SlbTraffic,omitempty" xml:"SlbTraffic,omitempty" type:"Struct"`
+	// The storage resource usage information.
 	StorageUsage *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyStorageUsage `json:"StorageUsage,omitempty" xml:"StorageUsage,omitempty" type:"Struct"`
 }
 
@@ -201,11 +208,20 @@ func (s *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyAcuDetails) Validate(
 }
 
 type GetEmbodiedAIPlatformResourceUsageInfoResponseBodyGpuDetails struct {
+	// The GPU allocation unit.
+	//
+	// example:
+	//
+	// 1
 	AllocatedUnit *int32 `json:"AllocatedUnit,omitempty" xml:"AllocatedUnit,omitempty"`
+	// The GPU model.
+	//
 	// example:
 	//
 	// ADB.MLLarge.2
 	GpuModel *string `json:"GpuModel,omitempty" xml:"GpuModel,omitempty"`
+	// The number of GPUs of this model currently in use.
+	//
 	// example:
 	//
 	// 1
@@ -252,10 +268,14 @@ func (s *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyGpuDetails) Validate(
 }
 
 type GetEmbodiedAIPlatformResourceUsageInfoResponseBodySlbTraffic struct {
+	// The upstream bandwidth traffic over the public network. Unit: bytes.
+	//
 	// example:
 	//
 	// 0
 	TotalBytesIn *int64 `json:"TotalBytesIn,omitempty" xml:"TotalBytesIn,omitempty"`
+	// The downstream bandwidth traffic over the public network. Unit: bytes.
+	//
 	// example:
 	//
 	// 0
@@ -293,7 +313,9 @@ func (s *GetEmbodiedAIPlatformResourceUsageInfoResponseBodySlbTraffic) Validate(
 }
 
 type GetEmbodiedAIPlatformResourceUsageInfoResponseBodyStorageUsage struct {
+	// The NAS storage usage.
 	Nas *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyStorageUsageNas `json:"Nas,omitempty" xml:"Nas,omitempty" type:"Struct"`
+	// The OSS storage usage.
 	Oss *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyStorageUsageOss `json:"Oss,omitempty" xml:"Oss,omitempty" type:"Struct"`
 }
 
@@ -338,6 +360,8 @@ func (s *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyStorageUsage) Validat
 }
 
 type GetEmbodiedAIPlatformResourceUsageInfoResponseBodyStorageUsageNas struct {
+	// The NAS standard storage usage. Unit: bytes.
+	//
 	// example:
 	//
 	// 0
@@ -366,6 +390,8 @@ func (s *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyStorageUsageNas) Vali
 }
 
 type GetEmbodiedAIPlatformResourceUsageInfoResponseBodyStorageUsageOss struct {
+	// The OSS standard storage usage. Unit: bytes.
+	//
 	// example:
 	//
 	// 0

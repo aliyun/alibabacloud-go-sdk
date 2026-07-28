@@ -26,6 +26,8 @@ type iModifyEmbodiedAIPlatformShrinkRequest interface {
 }
 
 type ModifyEmbodiedAIPlatformShrinkRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -33,20 +35,31 @@ type ModifyEmbodiedAIPlatformShrinkRequest struct {
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	DeviceCount *string `json:"DeviceCount,omitempty" xml:"DeviceCount,omitempty"`
+	// The name of the embodied intelligence multimodal data platform.
+	//
+	// > The name can contain lowercase letters, digits, and underscores (_). It must start with a letter and end with a letter or digit. The name can be up to 16 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eap_platform
-	PlatformName         *string `json:"PlatformName,omitempty" xml:"PlatformName,omitempty"`
+	PlatformName *string `json:"PlatformName,omitempty" xml:"PlatformName,omitempty"`
+	// The Ray specification information of the platform.
 	RayConfigShrink      *string `json:"RayConfig,omitempty" xml:"RayConfig,omitempty"`
 	RayTrainConfigShrink *string `json:"RayTrainConfig,omitempty" xml:"RayTrainConfig,omitempty"`
+	// The region ID.
+	//
+	// > You can call the DescribeRegions operation to query the region ID of a specified Data Lakehouse Edition cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The Webserver specification of the platform.
+	//
 	// example:
 	//
 	// large

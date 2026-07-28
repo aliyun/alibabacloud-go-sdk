@@ -10,7 +10,7 @@ import (
 
 // Summary:
 //
-// 创建指标平台
+// Creates a metric analysis platform.
 //
 // @param tmpReq - CreateAgentPlatformRequest
 //
@@ -72,7 +72,11 @@ func (client *Client) CreateAgentPlatformWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 创建具身智能平台
+// Creates an embodied intelligence multimodal data platform.
+//
+// Description:
+//
+// Queries the actual resource amount corresponding to the backend of the instance ontology count.
 //
 // @param tmpReq - CreateEmbodiedAIPlatformRequest
 //
@@ -150,7 +154,7 @@ func (client *Client) CreateEmbodiedAIPlatformWithContext(ctx context.Context, t
 
 // Summary:
 //
-// 删除指标平台
+// Deletes a metrics platform.
 //
 // @param request - DeleteAgentPlatformRequest
 //
@@ -202,7 +206,7 @@ func (client *Client) DeleteAgentPlatformWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 删除具身智能平台
+// Deletes an embodied intelligence platform.
 //
 // @param request - DeleteEmbodiedAIPlatformRequest
 //
@@ -254,7 +258,11 @@ func (client *Client) DeleteEmbodiedAIPlatformWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 对ADB-MySQL提供产品RAG检索和实例分析、运维诊断
+// Queries multi-turn conversations for instance kernel diagnostics.
+//
+// Description:
+//
+// Queries multi-turn conversations for instance kernel diagnostics.
 //
 // @param request - DescribeChatMessageRequest
 //
@@ -269,7 +277,11 @@ func (client *Client) DescribeChatMessageWithSSECtx(ctx context.Context, request
 
 // Summary:
 //
-// 对ADB-MySQL提供产品RAG检索和实例分析、运维诊断
+// Queries multi-turn conversations for instance kernel diagnostics.
+//
+// Description:
+//
+// Queries multi-turn conversations for instance kernel diagnostics.
 //
 // @param request - DescribeChatMessageRequest
 //
@@ -294,6 +306,10 @@ func (client *Client) DescribeChatMessageWithContext(ctx context.Context, reques
 
 	if !dara.IsNil(request.SessionId) {
 		query["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.Skill) {
+		query["Skill"] = request.Skill
 	}
 
 	if !dara.IsNil(request.Timezone) {
@@ -325,7 +341,11 @@ func (client *Client) DescribeChatMessageWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 查询具身智能平台设备资源分配方案
+// # Query the resource allocation plan for Embodied Intelligence platform devices
+//
+// Description:
+//
+// # Used to view the actual resource amount corresponding to the backend of the instance ontology count
 //
 // @param request - DescribeEapDeviceResourceAllocationRequest
 //
@@ -377,7 +397,7 @@ func (client *Client) DescribeEapDeviceResourceAllocationWithContext(ctx context
 
 // Summary:
 //
-// 查询具身智能平台
+// Queries embodied intelligence multimodal data platforms.
 //
 // @param request - DescribeEmbodiedAIPlatformsRequest
 //
@@ -457,7 +477,7 @@ func (client *Client) DescribeEmbodiedAIPlatformsWithContext(ctx context.Context
 
 // Summary:
 //
-// 查询具身智能平台资源用量
+// Queries the resource usage information of an embodied intelligence platform.
 //
 // @param request - GetEmbodiedAIPlatformResourceUsageInfoRequest
 //
@@ -517,7 +537,7 @@ func (client *Client) GetEmbodiedAIPlatformResourceUsageInfoWithContext(ctx cont
 
 // Summary:
 //
-// 解锁具身智能平台
+// Locks an embodied intelligence platform.
 //
 // @param request - LockEmbodiedAIPlatformRequest
 //
@@ -569,7 +589,7 @@ func (client *Client) LockEmbodiedAIPlatformWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 修改变配指标平台
+// Upgrades or downgrades the specifications of a metric platform.
 //
 // @param tmpReq - ModifyAgentPlatformRequest
 //
@@ -631,7 +651,7 @@ func (client *Client) ModifyAgentPlatformWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 变配具身智能平台
+// Modifies the specifications of an embodied intelligence platform.
 //
 // @param tmpReq - ModifyEmbodiedAIPlatformRequest
 //
@@ -709,7 +729,7 @@ func (client *Client) ModifyEmbodiedAIPlatformWithContext(ctx context.Context, t
 
 // Summary:
 //
-// 重置具身智能平台密码
+// Resets the admin password for the embodied intelligence platform.
 //
 // @param request - ResetEmbodiedAIPlatformPasswordRequest
 //
@@ -765,7 +785,7 @@ func (client *Client) ResetEmbodiedAIPlatformPasswordWithContext(ctx context.Con
 
 // Summary:
 //
-// 解锁具身智能平台
+// Unlocks an embodied intelligence platform.
 //
 // @param request - UnlockEmbodiedAIPlatformRequest
 //
@@ -834,6 +854,10 @@ func (client *Client) describeChatMessageWithSSECtx_opYieldFunc(_yield chan *Des
 
 	if !dara.IsNil(request.SessionId) {
 		query["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.Skill) {
+		query["Skill"] = request.Skill
 	}
 
 	if !dara.IsNil(request.Timezone) {

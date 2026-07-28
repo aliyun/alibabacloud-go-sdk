@@ -32,44 +32,72 @@ type iDescribeEmbodiedAIPlatformsRequest interface {
 }
 
 type DescribeEmbodiedAIPlatformsRequest struct {
+	// The cluster ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The end time of platform creation, used to filter query results. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 2025-12-01T03:05Z
-	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Use PageSize and PageNumber for pagination.
+	//
+	// example:
+	//
+	// 30
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Use PageSize and PageNumber for pagination.
+	//
+	// example:
+	//
+	// 298a7d5473b128dfe0b5e8707e******
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page in a paged query. Default value: 30.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the embodied intelligence multimodal data platform.
+	//
 	// example:
 	//
 	// platform1
 	PlatformName *string `json:"PlatformName,omitempty" xml:"PlatformName,omitempty"`
+	// The region ID of the instance.
+	//
+	// > You can call the DescribeRegions operation to query the region ID of a specified Data Lakehouse Edition cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The start time of platform creation, used to filter query results. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 2025-12-01T02:05Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The running status of the platform.
+	//
 	// example:
 	//
 	// running

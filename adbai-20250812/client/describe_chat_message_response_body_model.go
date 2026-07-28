@@ -52,76 +52,114 @@ type iDescribeChatMessageResponseBody interface {
 }
 
 type DescribeChatMessageResponseBody struct {
+	// The backend error code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The completion time.
+	//
 	// example:
 	//
 	// 2026-03-18T02:01:56Z
-	CompletedAt *string                                   `json:"CompletedAt,omitempty" xml:"CompletedAt,omitempty"`
-	Content     []*DescribeChatMessageResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
+	CompletedAt *string `json:"CompletedAt,omitempty" xml:"CompletedAt,omitempty"`
+	// The task content.
+	Content []*DescribeChatMessageResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2026-03-18T02:01:56Z
-	CreatedAt *string                              `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	Data      *DescribeChatMessageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The result set.
+	Data *DescribeChatMessageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Indicates whether the content is incremental.
+	//
 	// example:
 	//
 	// false
 	Delta *bool `json:"Delta,omitempty" xml:"Delta,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Failed to get sse streaming, please try again later.
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// The message ID.
+	//
 	// example:
 	//
 	// 97616
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The index.
+	//
 	// example:
 	//
 	// 2
 	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The message ID.
+	//
 	// example:
 	//
 	// msg_294c8b98-dc64-4c82-9417-e03522a631f6
 	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+	// The message object.
+	//
 	// example:
 	//
 	// content
 	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	// The content output.
+	//
 	// example:
 	//
 	// [{"type": "text", "text": "Skill not found: instance_health_inspection"}]
 	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B47EED99-BFA5-529D-8D85-A6642421D390
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The message role.
+	//
 	// example:
 	//
 	// assistant
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The sequence number of the message.
+	//
 	// example:
 	//
 	// 1
 	SequenceNumber *int64 `json:"SequenceNumber,omitempty" xml:"SequenceNumber,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// 593b51eef93b443fb2ba2a6dc68b737b
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The message status.
+	//
 	// example:
 	//
 	// created
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The text content.
+	//
 	// example:
 	//
 	// ：-636 KB
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The message type.
+	//
 	// example:
 	//
 	// text
@@ -335,39 +373,58 @@ func (s *DescribeChatMessageResponseBody) Validate() error {
 }
 
 type DescribeChatMessageResponseBodyContent struct {
+	// The result set.
 	Data *DescribeChatMessageResponseBodyContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Indicates whether the content is incremental.
+	//
 	// example:
 	//
 	// false
 	Delta *bool `json:"Delta,omitempty" xml:"Delta,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Failed to get sse streaming, please try again later.
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// The index.
+	//
 	// example:
 	//
 	// 0
 	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The message ID.
+	//
 	// example:
 	//
 	// msg_294c8b98-dc64-4c82-9417-e03522a631f6
 	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+	// The message object.
+	//
 	// example:
 	//
 	// content
 	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	// The sequence number of the message.
+	//
 	// example:
 	//
 	// 1
 	SequenceNumber *int64 `json:"SequenceNumber,omitempty" xml:"SequenceNumber,omitempty"`
+	// The message status.
+	//
 	// example:
 	//
 	// completed
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The text content.
+	//
 	// example:
 	//
 	// 3 MB\\n-
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The message type.
+	//
 	// example:
 	//
 	// text
@@ -482,14 +539,20 @@ func (s *DescribeChatMessageResponseBodyContent) Validate() error {
 }
 
 type DescribeChatMessageResponseBodyContentData struct {
+	// The ID of the data API operation that is called.
+	//
 	// example:
 	//
 	// call_e0e9ee423c7e4ba88d058fd6
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// The name of the data API operation that is called.
+	//
 	// example:
 	//
 	// describeScalingRecommendation
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The output of the data API operation that is called.
+	//
 	// example:
 	//
 	// [{"type": "text", "text": "Skill not found: instance_health_inspection"}]
@@ -536,18 +599,26 @@ func (s *DescribeChatMessageResponseBodyContentData) Validate() error {
 }
 
 type DescribeChatMessageResponseBodyData struct {
+	// The parameters of the data API operation that is called.
+	//
 	// example:
 	//
 	// {"instanceName": "amv-bp1b9y9xhvpzm9p0", "pageNumber": 1, "pageSize": 10}
 	Arguments *string `json:"Arguments,omitempty" xml:"Arguments,omitempty"`
+	// The ID of the data API operation that is called.
+	//
 	// example:
 	//
 	// call_1891f1689bc44ab292aadff3
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// The name of the data API operation that is called.
+	//
 	// example:
 	//
 	// describeScalingRecommendation
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The output of the data API operation that is called.
+	//
 	// example:
 	//
 	// [{"type": "text", "text": "Skill not found: instance_health_inspection"}]

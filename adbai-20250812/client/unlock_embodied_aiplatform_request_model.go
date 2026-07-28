@@ -18,18 +18,28 @@ type iUnlockEmbodiedAIPlatformRequest interface {
 }
 
 type UnlockEmbodiedAIPlatformRequest struct {
+	// The instance cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The name of the embodied intelligence multimodal data platform.
+	//
+	// > The name must start with a lowercase letter and end with a lowercase letter or digit. It can contain lowercase letters, digits, and underscores. The name can be up to 16 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// platform1
 	PlatformName *string `json:"PlatformName,omitempty" xml:"PlatformName,omitempty"`
+	// The region ID.
+	//
+	// > You can call the DescribeRegions operation to query the region ID of a specified Data Lakehouse Edition cluster.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -26,27 +26,40 @@ type iDescribeEmbodiedAIPlatformsResponseBody interface {
 }
 
 type DescribeEmbodiedAIPlatformsResponseBody struct {
+	// Use the paged query parameters PageSize, PageNumber, and TotalCount for paging.
+	//
 	// example:
 	//
 	// 30
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Use the paged query parameters PageSize, PageNumber, and TotalCount for paging.
+	//
 	// example:
 	//
-	// 298a7d5473b128dfe0b5e8707e******
+	// 9c3158c2e8acf616501bd5ee05******
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 30
-	PageSize  *int32                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The list of embodied intelligence multimodal data platforms.
 	Platforms []*DescribeEmbodiedAIPlatformsResponseBodyPlatforms `json:"Platforms,omitempty" xml:"Platforms,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B47EED99-BFA5-529D-8D85-A6642421D390
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of platforms.
+	//
 	// example:
 	//
 	// 50
@@ -138,21 +151,31 @@ func (s *DescribeEmbodiedAIPlatformsResponseBody) Validate() error {
 }
 
 type DescribeEmbodiedAIPlatformsResponseBodyPlatforms struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2025-12-01 14:55:36
-	CreateTime *int64                                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EapConfig  *DescribeEmbodiedAIPlatformsResponseBodyPlatformsEapConfig `json:"EapConfig,omitempty" xml:"EapConfig,omitempty" type:"Struct"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The webserver configuration of the platform.
+	EapConfig *DescribeEmbodiedAIPlatformsResponseBodyPlatformsEapConfig `json:"EapConfig,omitempty" xml:"EapConfig,omitempty" type:"Struct"`
+	// The lake storage name.
+	//
 	// example:
 	//
 	// adb-lake-cn-beijing-5q1w******
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
+	// The platform name.
+	//
 	// example:
 	//
 	// platform1
-	PlatformName   *string                                                         `json:"PlatformName,omitempty" xml:"PlatformName,omitempty"`
+	PlatformName *string `json:"PlatformName,omitempty" xml:"PlatformName,omitempty"`
+	// The Ray specification information of the platform.
 	RayConfig      *DescribeEmbodiedAIPlatformsResponseBodyPlatformsRayConfig      `json:"RayConfig,omitempty" xml:"RayConfig,omitempty" type:"Struct"`
 	RayTrainConfig *DescribeEmbodiedAIPlatformsResponseBodyPlatformsRayTrainConfig `json:"RayTrainConfig,omitempty" xml:"RayTrainConfig,omitempty" type:"Struct"`
+	// The running status.
+	//
 	// example:
 	//
 	// running
@@ -250,10 +273,14 @@ func (s *DescribeEmbodiedAIPlatformsResponseBodyPlatforms) Validate() error {
 }
 
 type DescribeEmbodiedAIPlatformsResponseBodyPlatformsEapConfig struct {
+	// The public network access address of the platform webserver.
+	//
 	// example:
 	//
 	// http://amv-2z******-***-roboto.ads.example.com:80
 	WebserverAddress *string `json:"WebserverAddress,omitempty" xml:"WebserverAddress,omitempty"`
+	// The webserver specification of the platform.
+	//
 	// example:
 	//
 	// large
@@ -291,35 +318,54 @@ func (s *DescribeEmbodiedAIPlatformsResponseBodyPlatformsEapConfig) Validate() e
 }
 
 type DescribeEmbodiedAIPlatformsResponseBodyPlatformsRayConfig struct {
+	// The Ray cluster type. Valid values:
+	//
+	// - BASIC: basic type without high availability.
+	//
+	// - HIGH_AVAILABILITY: high-availability type.
+	//
 	// example:
 	//
 	// BASIC
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The disk size of the head node.
+	//
 	// example:
 	//
 	// 100G
 	HeadDiskCapacity *string `json:"HeadDiskCapacity,omitempty" xml:"HeadDiskCapacity,omitempty"`
+	// The node specifications of the head node.
+	//
 	// example:
 	//
 	// large
 	HeadSpec *string `json:"HeadSpec,omitempty" xml:"HeadSpec,omitempty"`
+	// The resource type of the head node.
+	//
 	// example:
 	//
 	// CPU
 	HeadSpecType *string `json:"HeadSpecType,omitempty" xml:"HeadSpecType,omitempty"`
+	// The Ray cluster address.
+	//
 	// example:
 	//
 	// http://ray-cluster-address.example.com
 	RayClusterAddress *string `json:"RayClusterAddress,omitempty" xml:"RayClusterAddress,omitempty"`
+	// The Ray Dashboard address.
+	//
 	// example:
 	//
 	// http://ray-dashboard-address.example.com
 	RayDashboardAddress *string `json:"RayDashboardAddress,omitempty" xml:"RayDashboardAddress,omitempty"`
+	// The Ray Grafana address.
+	//
 	// example:
 	//
 	// http://ray-grafana-address.example.com
-	RayGrafanaAddress *string                                                                  `json:"RayGrafanaAddress,omitempty" xml:"RayGrafanaAddress,omitempty"`
-	WorkerGroups      []*DescribeEmbodiedAIPlatformsResponseBodyPlatformsRayConfigWorkerGroups `json:"WorkerGroups,omitempty" xml:"WorkerGroups,omitempty" type:"Repeated"`
+	RayGrafanaAddress *string `json:"RayGrafanaAddress,omitempty" xml:"RayGrafanaAddress,omitempty"`
+	// The list of Ray worker group configurations.
+	WorkerGroups []*DescribeEmbodiedAIPlatformsResponseBodyPlatformsRayConfigWorkerGroups `json:"WorkerGroups,omitempty" xml:"WorkerGroups,omitempty" type:"Repeated"`
 }
 
 func (s DescribeEmbodiedAIPlatformsResponseBodyPlatformsRayConfig) String() string {
@@ -416,30 +462,44 @@ func (s *DescribeEmbodiedAIPlatformsResponseBodyPlatformsRayConfig) Validate() e
 }
 
 type DescribeEmbodiedAIPlatformsResponseBodyPlatformsRayConfigWorkerGroups struct {
+	// The allocation unit.
+	//
 	// example:
 	//
 	// 1
 	AllocateUnit *string `json:"AllocateUnit,omitempty" xml:"AllocateUnit,omitempty"`
+	// The name of the worker group.
+	//
 	// example:
 	//
 	// worker1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The maximum number of workers.
+	//
 	// example:
 	//
 	// 2
 	MaxWorkerQuantity *int32 `json:"MaxWorkerQuantity,omitempty" xml:"MaxWorkerQuantity,omitempty"`
+	// The minimum number of workers.
+	//
 	// example:
 	//
 	// 1
 	MinWorkerQuantity *int32 `json:"MinWorkerQuantity,omitempty" xml:"MinWorkerQuantity,omitempty"`
+	// The disk size of each worker.
+	//
 	// example:
 	//
 	// 100G
 	WorkerDiskCapacity *string `json:"WorkerDiskCapacity,omitempty" xml:"WorkerDiskCapacity,omitempty"`
+	// The worker resource model.
+	//
 	// example:
 	//
 	// large
 	WorkerSpecName *string `json:"WorkerSpecName,omitempty" xml:"WorkerSpecName,omitempty"`
+	// The Ray worker resource type.
+	//
 	// example:
 	//
 	// CPU

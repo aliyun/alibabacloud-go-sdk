@@ -14,6 +14,8 @@ type iCreateEmbodiedAIPlatformResponseBody interface {
 }
 
 type CreateEmbodiedAIPlatformResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 19E994DC-A816-56DB-9F90-5F8E403DD19D

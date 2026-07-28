@@ -24,7 +24,15 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"cn-shenzhen":    dara.String("adbai.cn-shenzhen.aliyuncs.com"),
+		"cn-shanghai":    dara.String("adbai.cn-shanghai.aliyuncs.com"),
+		"cn-hangzhou":    dara.String("adbai.cn-hangzhou.aliyuncs.com"),
+		"cn-beijing":     dara.String("adbai.cn-beijing.aliyuncs.com"),
+		"ap-southeast-1": dara.String("adbai.ap-southeast-1.aliyuncs.com"),
+		"ap-northeast-1": dara.String("adbai.ap-northeast-1.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +66,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 创建指标平台
+// Creates a metric analysis platform.
 //
 // @param tmpReq - CreateAgentPlatformRequest
 //
@@ -120,7 +128,7 @@ func (client *Client) CreateAgentPlatformWithOptions(tmpReq *CreateAgentPlatform
 
 // Summary:
 //
-// 创建指标平台
+// Creates a metric analysis platform.
 //
 // @param request - CreateAgentPlatformRequest
 //
@@ -138,7 +146,11 @@ func (client *Client) CreateAgentPlatform(request *CreateAgentPlatformRequest) (
 
 // Summary:
 //
-// 创建具身智能平台
+// Creates an embodied intelligence multimodal data platform.
+//
+// Description:
+//
+// Queries the actual resource amount corresponding to the backend of the instance ontology count.
 //
 // @param tmpReq - CreateEmbodiedAIPlatformRequest
 //
@@ -216,7 +228,11 @@ func (client *Client) CreateEmbodiedAIPlatformWithOptions(tmpReq *CreateEmbodied
 
 // Summary:
 //
-// 创建具身智能平台
+// Creates an embodied intelligence multimodal data platform.
+//
+// Description:
+//
+// Queries the actual resource amount corresponding to the backend of the instance ontology count.
 //
 // @param request - CreateEmbodiedAIPlatformRequest
 //
@@ -234,7 +250,7 @@ func (client *Client) CreateEmbodiedAIPlatform(request *CreateEmbodiedAIPlatform
 
 // Summary:
 //
-// 删除指标平台
+// Deletes a metrics platform.
 //
 // @param request - DeleteAgentPlatformRequest
 //
@@ -286,7 +302,7 @@ func (client *Client) DeleteAgentPlatformWithOptions(request *DeleteAgentPlatfor
 
 // Summary:
 //
-// 删除指标平台
+// Deletes a metrics platform.
 //
 // @param request - DeleteAgentPlatformRequest
 //
@@ -304,7 +320,7 @@ func (client *Client) DeleteAgentPlatform(request *DeleteAgentPlatformRequest) (
 
 // Summary:
 //
-// 删除具身智能平台
+// Deletes an embodied intelligence platform.
 //
 // @param request - DeleteEmbodiedAIPlatformRequest
 //
@@ -356,7 +372,7 @@ func (client *Client) DeleteEmbodiedAIPlatformWithOptions(request *DeleteEmbodie
 
 // Summary:
 //
-// 删除具身智能平台
+// Deletes an embodied intelligence platform.
 //
 // @param request - DeleteEmbodiedAIPlatformRequest
 //
@@ -374,7 +390,11 @@ func (client *Client) DeleteEmbodiedAIPlatform(request *DeleteEmbodiedAIPlatform
 
 // Summary:
 //
-// 对ADB-MySQL提供产品RAG检索和实例分析、运维诊断
+// Queries multi-turn conversations for instance kernel diagnostics.
+//
+// Description:
+//
+// Queries multi-turn conversations for instance kernel diagnostics.
 //
 // @param request - DescribeChatMessageRequest
 //
@@ -389,7 +409,11 @@ func (client *Client) DescribeChatMessageWithSSE(request *DescribeChatMessageReq
 
 // Summary:
 //
-// 对ADB-MySQL提供产品RAG检索和实例分析、运维诊断
+// Queries multi-turn conversations for instance kernel diagnostics.
+//
+// Description:
+//
+// Queries multi-turn conversations for instance kernel diagnostics.
 //
 // @param request - DescribeChatMessageRequest
 //
@@ -414,6 +438,10 @@ func (client *Client) DescribeChatMessageWithOptions(request *DescribeChatMessag
 
 	if !dara.IsNil(request.SessionId) {
 		query["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.Skill) {
+		query["Skill"] = request.Skill
 	}
 
 	if !dara.IsNil(request.Timezone) {
@@ -445,7 +473,11 @@ func (client *Client) DescribeChatMessageWithOptions(request *DescribeChatMessag
 
 // Summary:
 //
-// 对ADB-MySQL提供产品RAG检索和实例分析、运维诊断
+// Queries multi-turn conversations for instance kernel diagnostics.
+//
+// Description:
+//
+// Queries multi-turn conversations for instance kernel diagnostics.
 //
 // @param request - DescribeChatMessageRequest
 //
@@ -463,7 +495,11 @@ func (client *Client) DescribeChatMessage(request *DescribeChatMessageRequest) (
 
 // Summary:
 //
-// 查询具身智能平台设备资源分配方案
+// # Query the resource allocation plan for Embodied Intelligence platform devices
+//
+// Description:
+//
+// # Used to view the actual resource amount corresponding to the backend of the instance ontology count
 //
 // @param request - DescribeEapDeviceResourceAllocationRequest
 //
@@ -515,7 +551,11 @@ func (client *Client) DescribeEapDeviceResourceAllocationWithOptions(request *De
 
 // Summary:
 //
-// 查询具身智能平台设备资源分配方案
+// # Query the resource allocation plan for Embodied Intelligence platform devices
+//
+// Description:
+//
+// # Used to view the actual resource amount corresponding to the backend of the instance ontology count
 //
 // @param request - DescribeEapDeviceResourceAllocationRequest
 //
@@ -533,7 +573,7 @@ func (client *Client) DescribeEapDeviceResourceAllocation(request *DescribeEapDe
 
 // Summary:
 //
-// 查询具身智能平台
+// Queries embodied intelligence multimodal data platforms.
 //
 // @param request - DescribeEmbodiedAIPlatformsRequest
 //
@@ -613,7 +653,7 @@ func (client *Client) DescribeEmbodiedAIPlatformsWithOptions(request *DescribeEm
 
 // Summary:
 //
-// 查询具身智能平台
+// Queries embodied intelligence multimodal data platforms.
 //
 // @param request - DescribeEmbodiedAIPlatformsRequest
 //
@@ -631,7 +671,7 @@ func (client *Client) DescribeEmbodiedAIPlatforms(request *DescribeEmbodiedAIPla
 
 // Summary:
 //
-// 查询具身智能平台资源用量
+// Queries the resource usage information of an embodied intelligence platform.
 //
 // @param request - GetEmbodiedAIPlatformResourceUsageInfoRequest
 //
@@ -691,7 +731,7 @@ func (client *Client) GetEmbodiedAIPlatformResourceUsageInfoWithOptions(request 
 
 // Summary:
 //
-// 查询具身智能平台资源用量
+// Queries the resource usage information of an embodied intelligence platform.
 //
 // @param request - GetEmbodiedAIPlatformResourceUsageInfoRequest
 //
@@ -709,7 +749,7 @@ func (client *Client) GetEmbodiedAIPlatformResourceUsageInfo(request *GetEmbodie
 
 // Summary:
 //
-// 解锁具身智能平台
+// Locks an embodied intelligence platform.
 //
 // @param request - LockEmbodiedAIPlatformRequest
 //
@@ -761,7 +801,7 @@ func (client *Client) LockEmbodiedAIPlatformWithOptions(request *LockEmbodiedAIP
 
 // Summary:
 //
-// 解锁具身智能平台
+// Locks an embodied intelligence platform.
 //
 // @param request - LockEmbodiedAIPlatformRequest
 //
@@ -779,7 +819,7 @@ func (client *Client) LockEmbodiedAIPlatform(request *LockEmbodiedAIPlatformRequ
 
 // Summary:
 //
-// 修改变配指标平台
+// Upgrades or downgrades the specifications of a metric platform.
 //
 // @param tmpReq - ModifyAgentPlatformRequest
 //
@@ -841,7 +881,7 @@ func (client *Client) ModifyAgentPlatformWithOptions(tmpReq *ModifyAgentPlatform
 
 // Summary:
 //
-// 修改变配指标平台
+// Upgrades or downgrades the specifications of a metric platform.
 //
 // @param request - ModifyAgentPlatformRequest
 //
@@ -859,7 +899,7 @@ func (client *Client) ModifyAgentPlatform(request *ModifyAgentPlatformRequest) (
 
 // Summary:
 //
-// 变配具身智能平台
+// Modifies the specifications of an embodied intelligence platform.
 //
 // @param tmpReq - ModifyEmbodiedAIPlatformRequest
 //
@@ -937,7 +977,7 @@ func (client *Client) ModifyEmbodiedAIPlatformWithOptions(tmpReq *ModifyEmbodied
 
 // Summary:
 //
-// 变配具身智能平台
+// Modifies the specifications of an embodied intelligence platform.
 //
 // @param request - ModifyEmbodiedAIPlatformRequest
 //
@@ -955,7 +995,7 @@ func (client *Client) ModifyEmbodiedAIPlatform(request *ModifyEmbodiedAIPlatform
 
 // Summary:
 //
-// 重置具身智能平台密码
+// Resets the admin password for the embodied intelligence platform.
 //
 // @param request - ResetEmbodiedAIPlatformPasswordRequest
 //
@@ -1011,7 +1051,7 @@ func (client *Client) ResetEmbodiedAIPlatformPasswordWithOptions(request *ResetE
 
 // Summary:
 //
-// 重置具身智能平台密码
+// Resets the admin password for the embodied intelligence platform.
 //
 // @param request - ResetEmbodiedAIPlatformPasswordRequest
 //
@@ -1029,7 +1069,7 @@ func (client *Client) ResetEmbodiedAIPlatformPassword(request *ResetEmbodiedAIPl
 
 // Summary:
 //
-// 解锁具身智能平台
+// Unlocks an embodied intelligence platform.
 //
 // @param request - UnlockEmbodiedAIPlatformRequest
 //
@@ -1081,7 +1121,7 @@ func (client *Client) UnlockEmbodiedAIPlatformWithOptions(request *UnlockEmbodie
 
 // Summary:
 //
-// 解锁具身智能平台
+// Unlocks an embodied intelligence platform.
 //
 // @param request - UnlockEmbodiedAIPlatformRequest
 //
@@ -1116,6 +1156,10 @@ func (client *Client) describeChatMessageWithSSE_opYieldFunc(_yield chan *Descri
 
 	if !dara.IsNil(request.SessionId) {
 		query["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.Skill) {
+		query["Skill"] = request.Skill
 	}
 
 	if !dara.IsNil(request.Timezone) {

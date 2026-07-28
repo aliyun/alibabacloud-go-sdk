@@ -20,19 +20,28 @@ type iModifyAgentPlatformShrinkRequest interface {
 }
 
 type ModifyAgentPlatformShrinkRequest struct {
+	// The parameters required for upgrading or downgrading the metric platform.
 	AiPlatformConfigShrink *string `json:"AiPlatformConfig,omitempty" xml:"AiPlatformConfig,omitempty"`
+	// The instance cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The name of the metric platform.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_platform
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The region ID.
+	//
+	// > You can call the DescribeRegions operation to query the region ID of a specified Data Lakehouse Edition cluster.
+	//
 	// This parameter is required.
 	//
 	// example:

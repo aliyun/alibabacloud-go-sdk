@@ -20,24 +20,34 @@ type iResetEmbodiedAIPlatformPasswordRequest interface {
 }
 
 type ResetEmbodiedAIPlatformPasswordRequest struct {
+	// The cluster ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The new password for the admin user of the embodied intelligence platform.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123*******
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The name of the embodied intelligence multimodal data platform.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// platform1
 	PlatformName *string `json:"PlatformName,omitempty" xml:"PlatformName,omitempty"`
+	// The region ID of the instance.
+	//
+	// > You can call the DescribeRegions operation to query the region ID of a specified Data Lakehouse Edition cluster.
+	//
 	// This parameter is required.
 	//
 	// example:

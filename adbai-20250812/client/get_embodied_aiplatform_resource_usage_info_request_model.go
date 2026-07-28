@@ -22,28 +22,40 @@ type iGetEmbodiedAIPlatformResourceUsageInfoRequest interface {
 }
 
 type GetEmbodiedAIPlatformResourceUsageInfoRequest struct {
+	// The instance cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The end of the time range for querying network resource usage. Format: yyyy-MM-ddTHH:mmZ.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 2026-01-20T01:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The name of the embodied intelligence platform.
+	//
 	// example:
 	//
 	// platform1
 	PlatformName *string `json:"PlatformName,omitempty" xml:"PlatformName,omitempty"`
+	// The region ID of the instance.
+	//
+	// > You can call the DescribeRegions operation to query the region ID of a specified Data Lakehouse Edition cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The start of the time range for querying network resource usage. Format: yyyy-MM-ddTHH:mmZ.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:

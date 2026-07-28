@@ -18,18 +18,26 @@ type iDeleteAgentPlatformRequest interface {
 }
 
 type DeleteAgentPlatformRequest struct {
+	// The instance cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The name of the intelligent alert event recording. The name must be fewer than 48 characters in length and can contain letters, digits, and the following special characters: hyphens (-), underscores (_), at signs (@), periods (.), and colons (:).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_platform
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The region ID.
+	//
+	// > You can call the DescribeRegions operation to query the region ID of a specified Data Lakehouse Edition cluster.
+	//
 	// This parameter is required.
 	//
 	// example:

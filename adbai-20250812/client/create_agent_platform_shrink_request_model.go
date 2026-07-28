@@ -20,20 +20,30 @@ type iCreateAgentPlatformShrinkRequest interface {
 }
 
 type CreateAgentPlatformShrinkRequest struct {
+	// The parameters required to create the metric analysis platform.
+	//
 	// This parameter is required.
 	AiPlatformConfigShrink *string `json:"AiPlatformConfig,omitempty" xml:"AiPlatformConfig,omitempty"`
+	// The instance cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The name of the metric analysis platform.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testplatform
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The region ID.
+	//
+	// > You can call the DescribeRegions operation to query the region ID of a specified Data Lakehouse Edition cluster.
+	//
 	// example:
 	//
 	// cn-beijing

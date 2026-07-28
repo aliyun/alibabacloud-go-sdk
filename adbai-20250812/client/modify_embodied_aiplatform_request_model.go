@@ -26,6 +26,8 @@ type iModifyEmbodiedAIPlatformRequest interface {
 }
 
 type ModifyEmbodiedAIPlatformRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -33,20 +35,31 @@ type ModifyEmbodiedAIPlatformRequest struct {
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	DeviceCount *string `json:"DeviceCount,omitempty" xml:"DeviceCount,omitempty"`
+	// The name of the embodied intelligence multimodal data platform.
+	//
+	// > The name can contain lowercase letters, digits, and underscores (_). It must start with a letter and end with a letter or digit. The name can be up to 16 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eap_platform
-	PlatformName   *string                                        `json:"PlatformName,omitempty" xml:"PlatformName,omitempty"`
+	PlatformName *string `json:"PlatformName,omitempty" xml:"PlatformName,omitempty"`
+	// The Ray specification information of the platform.
 	RayConfig      *ModifyEmbodiedAIPlatformRequestRayConfig      `json:"RayConfig,omitempty" xml:"RayConfig,omitempty" type:"Struct"`
 	RayTrainConfig *ModifyEmbodiedAIPlatformRequestRayTrainConfig `json:"RayTrainConfig,omitempty" xml:"RayTrainConfig,omitempty" type:"Struct"`
+	// The region ID.
+	//
+	// > You can call the DescribeRegions operation to query the region ID of a specified Data Lakehouse Edition cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The Webserver specification of the platform.
+	//
 	// example:
 	//
 	// large
@@ -139,14 +152,23 @@ func (s *ModifyEmbodiedAIPlatformRequest) Validate() error {
 }
 
 type ModifyEmbodiedAIPlatformRequestRayConfig struct {
+	// The type of the Ray cluster. Valid values:
+	//
+	// - BASIC: basic type, which does not support high availability.
+	//
+	// - HIGH_AVAILABILITY: high-availability type.
+	//
 	// example:
 	//
 	// BASIC
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The node specifications of the head node.
+	//
 	// example:
 	//
 	// xlarge
-	HeadSpec     *string                                                 `json:"HeadSpec,omitempty" xml:"HeadSpec,omitempty"`
+	HeadSpec *string `json:"HeadSpec,omitempty" xml:"HeadSpec,omitempty"`
+	// The configuration information of Ray worker groups.
 	WorkerGroups []*ModifyEmbodiedAIPlatformRequestRayConfigWorkerGroups `json:"WorkerGroups,omitempty" xml:"WorkerGroups,omitempty" type:"Repeated"`
 }
 
@@ -199,30 +221,44 @@ func (s *ModifyEmbodiedAIPlatformRequestRayConfig) Validate() error {
 }
 
 type ModifyEmbodiedAIPlatformRequestRayConfigWorkerGroups struct {
+	// The allocation unit.
+	//
 	// example:
 	//
 	// 1
 	AllocateUnit *string `json:"AllocateUnit,omitempty" xml:"AllocateUnit,omitempty"`
+	// The name of the worker group.
+	//
 	// example:
 	//
 	// test
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The maximum number of workers.
+	//
 	// example:
 	//
 	// 2
 	MaxWorkerQuantity *int32 `json:"MaxWorkerQuantity,omitempty" xml:"MaxWorkerQuantity,omitempty"`
+	// The minimum number of workers.
+	//
 	// example:
 	//
 	// 1
 	MinWorkerQuantity *int32 `json:"MinWorkerQuantity,omitempty" xml:"MinWorkerQuantity,omitempty"`
+	// The disk size of the worker node.
+	//
 	// example:
 	//
 	// 100G
 	WorkerDiskCapacity *string `json:"WorkerDiskCapacity,omitempty" xml:"WorkerDiskCapacity,omitempty"`
+	// The node specifications of the worker node.
+	//
 	// example:
 	//
 	// xlarge
 	WorkerSpecName *string `json:"WorkerSpecName,omitempty" xml:"WorkerSpecName,omitempty"`
+	// The resource type of the worker node.
+	//
 	// example:
 	//
 	// CPU

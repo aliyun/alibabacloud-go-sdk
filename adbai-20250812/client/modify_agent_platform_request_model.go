@@ -20,19 +20,28 @@ type iModifyAgentPlatformRequest interface {
 }
 
 type ModifyAgentPlatformRequest struct {
+	// The parameters required for upgrading or downgrading the metric platform.
 	AiPlatformConfig *ModifyAgentPlatformRequestAiPlatformConfig `json:"AiPlatformConfig,omitempty" xml:"AiPlatformConfig,omitempty" type:"Struct"`
+	// The instance cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The name of the metric platform.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_platform
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The region ID.
+	//
+	// > You can call the DescribeRegions operation to query the region ID of a specified Data Lakehouse Edition cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -95,26 +104,38 @@ func (s *ModifyAgentPlatformRequest) Validate() error {
 }
 
 type ModifyAgentPlatformRequestAiPlatformConfig struct {
+	// The API key of the model for the inference service that the metric analysis platform depends on.
+	//
 	// example:
 	//
 	// 3760d3**************************
 	ServeApiKey *string `json:"ServeApiKey,omitempty" xml:"ServeApiKey,omitempty"`
+	// The endpoint of the embedding model for the inference service that the metric analysis platform depends on.
+	//
 	// example:
 	//
 	// http://111.xx.xx.xx:8100/inferenceservice/emb
 	ServeEmbeddingEndpoint *string `json:"ServeEmbeddingEndpoint,omitempty" xml:"ServeEmbeddingEndpoint,omitempty"`
+	// The name of the embedding model for the inference service that the metric analysis platform depends on.
+	//
 	// example:
 	//
 	// Qwen3-Embedding-8B
 	ServeEmbeddingModelName *string `json:"ServeEmbeddingModelName,omitempty" xml:"ServeEmbeddingModelName,omitempty"`
+	// The endpoint of the base model for the inference service that the metric analysis platform depends on.
+	//
 	// example:
 	//
 	// http://111.xx.xx.xx:8100/inferenceservice/base
 	ServeEndpoint *string `json:"ServeEndpoint,omitempty" xml:"ServeEndpoint,omitempty"`
+	// The name of the base model for the inference service that the metric analysis platform depends on.
+	//
 	// example:
 	//
 	// Qwen3-235B-A22B-Instruct-2507
 	ServeModelName *string `json:"ServeModelName,omitempty" xml:"ServeModelName,omitempty"`
+	// The specification of the metric analysis platform.
+	//
 	// example:
 	//
 	// large

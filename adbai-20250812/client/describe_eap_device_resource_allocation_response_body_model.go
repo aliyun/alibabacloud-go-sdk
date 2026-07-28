@@ -16,6 +16,7 @@ type iDescribeEapDeviceResourceAllocationResponseBody interface {
 }
 
 type DescribeEapDeviceResourceAllocationResponseBody struct {
+	// List of specification recommendations.
 	Items []*DescribeEapDeviceResourceAllocationResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -65,58 +66,86 @@ func (s *DescribeEapDeviceResourceAllocationResponseBody) Validate() error {
 }
 
 type DescribeEapDeviceResourceAllocationResponseBodyItems struct {
+	// Total number of devices
+	//
 	// example:
 	//
 	// 3
 	DeviceCount *int32 `json:"DeviceCount,omitempty" xml:"DeviceCount,omitempty"`
+	// Total ACU count for the Ray Cluster Head of the Embodied Intelligence platform
+	//
 	// example:
 	//
 	// 2.0
 	HeadAcu *float64 `json:"HeadAcu,omitempty" xml:"HeadAcu,omitempty"`
+	// Number of vCPU cores for the Ray Cluster Head node on the Intelligent Embodiment platform
+	//
 	// example:
 	//
 	// 2
 	HeadCpu *int32 `json:"HeadCpu,omitempty" xml:"HeadCpu,omitempty"`
+	// Ray Cluster Head specification of the Embodied Intelligence platform
+	//
 	// example:
 	//
 	// "medium"
 	HeadSpecName *string `json:"HeadSpecName,omitempty" xml:"HeadSpecName,omitempty"`
+	// Total number of ACUs actually deployed on the Intelligent Embodiment platform
+	//
 	// example:
 	//
 	// 26
 	TotalAcu *float64 `json:"TotalAcu,omitempty" xml:"TotalAcu,omitempty"`
+	// Total number of vCPU cores actually deployed on the Intelligent Embodiment platform
+	//
 	// example:
 	//
 	// 26
 	TotalDeployedCpu *int32 `json:"TotalDeployedCpu,omitempty" xml:"TotalDeployedCpu,omitempty"`
+	// Total target number of vCPU cores
+	//
 	// example:
 	//
 	// 24
 	TotalTargetCpu *int32 `json:"TotalTargetCpu,omitempty" xml:"TotalTargetCpu,omitempty"`
+	// Total ACU count for the Embodied Intelligence platform
+	//
 	// example:
 	//
 	// 8.0
 	WebserverAcu *float64 `json:"WebserverAcu,omitempty" xml:"WebserverAcu,omitempty"`
+	// Total number of vCPU cores for the Embodied Intelligence platform
+	//
 	// example:
 	//
 	// 8
 	WebserverCpu *int32 `json:"WebserverCpu,omitempty" xml:"WebserverCpu,omitempty"`
+	// Webserver specification of the Embodied Intelligence platform.
+	//
 	// example:
 	//
 	// "xlarge"
 	WebserverSpecName *string `json:"WebserverSpecName,omitempty" xml:"WebserverSpecName,omitempty"`
+	// Total ACU count per Ray Cluster Worker of the Embodied Intelligence platform
+	//
 	// example:
 	//
 	// 16.0
 	WorkerAcu *float64 `json:"WorkerAcu,omitempty" xml:"WorkerAcu,omitempty"`
+	// Total number of Ray Cluster Worker nodes on the Intelligent Embodiment platform
+	//
 	// example:
 	//
 	// 2
 	WorkerCount *int32 `json:"WorkerCount,omitempty" xml:"WorkerCount,omitempty"`
+	// Number of vCPU cores per Ray Cluster Worker of the Embodied Intelligence platform
+	//
 	// example:
 	//
 	// 8
 	WorkerCpu *int32 `json:"WorkerCpu,omitempty" xml:"WorkerCpu,omitempty"`
+	// Ray Cluster Worker specification of the Embodied Intelligence platform
+	//
 	// example:
 	//
 	// "xlarge"
