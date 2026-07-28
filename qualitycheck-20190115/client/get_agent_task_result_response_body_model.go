@@ -42,11 +42,11 @@ type GetAgentTaskResultResponseBody struct {
 	//
 	// F190ADE9-619A-447D-84E3-7E241A5C428E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. You can use this field to determine whether the request succeeded:
+	// Indicates whether the request was successful. You can use this field to determine whether the request was successful:
 	//
-	// - **true**: The request succeeded.
+	// - **true**: successful.
 	//
-	// - **false/null**: The request failed.
+	// - **false/null**: failed.
 	//
 	// example:
 	//
@@ -119,35 +119,23 @@ func (s *GetAgentTaskResultResponseBody) Validate() error {
 type GetAgentTaskResultResponseBodyData struct {
 	Dialogues    []*GetAgentTaskResultResponseBodyDataDialogues `json:"Dialogues,omitempty" xml:"Dialogues,omitempty" type:"Repeated"`
 	ErrorMessage *string                                        `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The number of input tokens.
-	//
-	// example:
-	//
-	// 100
-	InputTokens *string `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
 	// The request ID returned by the large language model service.
 	//
 	// example:
 	//
 	// 106C6CA0-282D-4AF7-85F0-D2D24***
 	LlmRequestId *string `json:"LlmRequestId,omitempty" xml:"LlmRequestId,omitempty"`
-	// The number of output tokens.
-	//
-	// example:
-	//
-	// 200
-	OutputTokens *string `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
 	// The result of the computation task.
 	Response *GetAgentTaskResultResponseBodyDataResponse `json:"Response,omitempty" xml:"Response,omitempty" type:"Struct"`
 	// The task status. Valid values:
 	//
-	// - 1: pending
+	// - 1: pending.
 	//
-	// - 2: running
+	// - 2: running.
 	//
-	// - 3: succeeded
+	// - 3: succeeded.
 	//
-	// - 4: failed
+	// - 4: failed.
 	//
 	// example:
 	//
@@ -158,25 +146,8 @@ type GetAgentTaskResultResponseBodyData struct {
 	// example:
 	//
 	// A6BEC8D-9A5B-4BE5-8432-4F635E***
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The total number of tokens.
-	//
-	// example:
-	//
-	// 300
-	TotalTokens *string `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
-	// The number of times the plus model is used.
-	//
-	// example:
-	//
-	// 1
-	TyxmPlusCount *string `json:"TyxmPlusCount,omitempty" xml:"TyxmPlusCount,omitempty"`
-	// The number of times the turbo model is used.
-	//
-	// example:
-	//
-	// 1
-	TyxmTurboCount *string `json:"TyxmTurboCount,omitempty" xml:"TyxmTurboCount,omitempty"`
+	TaskId *string                                  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Usage  *GetAgentTaskResultResponseBodyDataUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 	// The session ID.
 	//
 	// example:
@@ -201,16 +172,8 @@ func (s *GetAgentTaskResultResponseBodyData) GetErrorMessage() *string {
 	return s.ErrorMessage
 }
 
-func (s *GetAgentTaskResultResponseBodyData) GetInputTokens() *string {
-	return s.InputTokens
-}
-
 func (s *GetAgentTaskResultResponseBodyData) GetLlmRequestId() *string {
 	return s.LlmRequestId
-}
-
-func (s *GetAgentTaskResultResponseBodyData) GetOutputTokens() *string {
-	return s.OutputTokens
 }
 
 func (s *GetAgentTaskResultResponseBodyData) GetResponse() *GetAgentTaskResultResponseBodyDataResponse {
@@ -225,16 +188,8 @@ func (s *GetAgentTaskResultResponseBodyData) GetTaskId() *string {
 	return s.TaskId
 }
 
-func (s *GetAgentTaskResultResponseBodyData) GetTotalTokens() *string {
-	return s.TotalTokens
-}
-
-func (s *GetAgentTaskResultResponseBodyData) GetTyxmPlusCount() *string {
-	return s.TyxmPlusCount
-}
-
-func (s *GetAgentTaskResultResponseBodyData) GetTyxmTurboCount() *string {
-	return s.TyxmTurboCount
+func (s *GetAgentTaskResultResponseBodyData) GetUsage() *GetAgentTaskResultResponseBodyDataUsage {
+	return s.Usage
 }
 
 func (s *GetAgentTaskResultResponseBodyData) GetVid() *string {
@@ -251,18 +206,8 @@ func (s *GetAgentTaskResultResponseBodyData) SetErrorMessage(v string) *GetAgent
 	return s
 }
 
-func (s *GetAgentTaskResultResponseBodyData) SetInputTokens(v string) *GetAgentTaskResultResponseBodyData {
-	s.InputTokens = &v
-	return s
-}
-
 func (s *GetAgentTaskResultResponseBodyData) SetLlmRequestId(v string) *GetAgentTaskResultResponseBodyData {
 	s.LlmRequestId = &v
-	return s
-}
-
-func (s *GetAgentTaskResultResponseBodyData) SetOutputTokens(v string) *GetAgentTaskResultResponseBodyData {
-	s.OutputTokens = &v
 	return s
 }
 
@@ -281,18 +226,8 @@ func (s *GetAgentTaskResultResponseBodyData) SetTaskId(v string) *GetAgentTaskRe
 	return s
 }
 
-func (s *GetAgentTaskResultResponseBodyData) SetTotalTokens(v string) *GetAgentTaskResultResponseBodyData {
-	s.TotalTokens = &v
-	return s
-}
-
-func (s *GetAgentTaskResultResponseBodyData) SetTyxmPlusCount(v string) *GetAgentTaskResultResponseBodyData {
-	s.TyxmPlusCount = &v
-	return s
-}
-
-func (s *GetAgentTaskResultResponseBodyData) SetTyxmTurboCount(v string) *GetAgentTaskResultResponseBodyData {
-	s.TyxmTurboCount = &v
+func (s *GetAgentTaskResultResponseBodyData) SetUsage(v *GetAgentTaskResultResponseBodyDataUsage) *GetAgentTaskResultResponseBodyData {
+	s.Usage = v
 	return s
 }
 
@@ -313,6 +248,11 @@ func (s *GetAgentTaskResultResponseBodyData) Validate() error {
 	}
 	if s.Response != nil {
 		if err := s.Response.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
 			return err
 		}
 	}
@@ -407,7 +347,7 @@ func (s *GetAgentTaskResultResponseBodyDataDialogues) Validate() error {
 type GetAgentTaskResultResponseBodyDataResponse struct {
 	// The result of the custom prompt.
 	CustomerPromptResponse *GetAgentTaskResultResponseBodyDataResponseCustomerPromptResponse `json:"CustomerPromptResponse,omitempty" xml:"CustomerPromptResponse,omitempty" type:"Struct"`
-	// The field extraction result.
+	// The property extraction result.
 	FieldResponse *GetAgentTaskResultResponseBodyDataResponseFieldResponse `json:"FieldResponse,omitempty" xml:"FieldResponse,omitempty" type:"Struct"`
 	// The service quality inspection result.
 	ServiceInspectionResponse *GetAgentTaskResultResponseBodyDataResponseServiceInspectionResponse `json:"ServiceInspectionResponse,omitempty" xml:"ServiceInspectionResponse,omitempty" type:"Struct"`
@@ -503,7 +443,7 @@ type GetAgentTaskResultResponseBodyDataResponseCustomerPromptResponse struct {
 	//
 	// example:
 	//
-	// 175/xl the fabric feels very comfortable, looks quite slim when worn, great clothes super good-looking, quality and feel are top-notch, very satisfied with this purchase.
+	// 175/XL the fabric feels very comfortable, looks slim when worn, great clothes super good-looking, quality and feel are top-notch, very satisfied with this purchase.
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
@@ -529,7 +469,7 @@ func (s *GetAgentTaskResultResponseBodyDataResponseCustomerPromptResponse) Valid
 }
 
 type GetAgentTaskResultResponseBodyDataResponseFieldResponse struct {
-	// The list of fields.
+	// The list of properties.
 	FieldVoList []*GetAgentTaskResultResponseBodyDataResponseFieldResponseFieldVoList `json:"FieldVoList,omitempty" xml:"FieldVoList,omitempty" type:"Repeated"`
 }
 
@@ -564,7 +504,7 @@ func (s *GetAgentTaskResultResponseBodyDataResponseFieldResponse) Validate() err
 }
 
 type GetAgentTaskResultResponseBodyDataResponseFieldResponseFieldVoList struct {
-	// The field name.
+	// The property name.
 	//
 	// example:
 	//
@@ -578,7 +518,7 @@ type GetAgentTaskResultResponseBodyDataResponseFieldResponseFieldVoList struct {
 	//
 	// Determined based on the first sentence of the agent.
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
-	// The field value.
+	// The property value.
 	//
 	// example:
 	//
@@ -676,7 +616,7 @@ type GetAgentTaskResultResponseBodyDataResponseServiceInspectionResponseServiceI
 	//
 	// Service attitude.
 	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	// Indicates whether the tag is matched.
+	// Indicates whether the label is matched.
 	//
 	// example:
 	//
@@ -741,7 +681,7 @@ func (s *GetAgentTaskResultResponseBodyDataResponseServiceInspectionResponseServ
 }
 
 type GetAgentTaskResultResponseBodyDataResponseTagCategoryResponse struct {
-	// The list of tags.
+	// The list of labels.
 	TagCategoryVoList []*GetAgentTaskResultResponseBodyDataResponseTagCategoryResponseTagCategoryVoList `json:"TagCategoryVoList,omitempty" xml:"TagCategoryVoList,omitempty" type:"Repeated"`
 }
 
@@ -776,13 +716,13 @@ func (s *GetAgentTaskResultResponseBodyDataResponseTagCategoryResponse) Validate
 }
 
 type GetAgentTaskResultResponseBodyDataResponseTagCategoryResponseTagCategoryVoList struct {
-	// The tag dimension.
+	// The label dimension.
 	//
 	// example:
 	//
 	// Customer intent.
 	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	// Indicates whether the tag is matched.
+	// Indicates whether the label is matched.
 	//
 	// example:
 	//
@@ -1117,5 +1057,70 @@ func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseErrors) Set
 }
 
 func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseErrors) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetAgentTaskResultResponseBodyDataUsage struct {
+	InputTokens    *string `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	OutputTokens   *string `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	TotalTokens    *string `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
+	TymxPlusCount  *string `json:"TymxPlusCount,omitempty" xml:"TymxPlusCount,omitempty"`
+	TymxTurboCount *string `json:"TymxTurboCount,omitempty" xml:"TymxTurboCount,omitempty"`
+}
+
+func (s GetAgentTaskResultResponseBodyDataUsage) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetAgentTaskResultResponseBodyDataUsage) GoString() string {
+	return s.String()
+}
+
+func (s *GetAgentTaskResultResponseBodyDataUsage) GetInputTokens() *string {
+	return s.InputTokens
+}
+
+func (s *GetAgentTaskResultResponseBodyDataUsage) GetOutputTokens() *string {
+	return s.OutputTokens
+}
+
+func (s *GetAgentTaskResultResponseBodyDataUsage) GetTotalTokens() *string {
+	return s.TotalTokens
+}
+
+func (s *GetAgentTaskResultResponseBodyDataUsage) GetTymxPlusCount() *string {
+	return s.TymxPlusCount
+}
+
+func (s *GetAgentTaskResultResponseBodyDataUsage) GetTymxTurboCount() *string {
+	return s.TymxTurboCount
+}
+
+func (s *GetAgentTaskResultResponseBodyDataUsage) SetInputTokens(v string) *GetAgentTaskResultResponseBodyDataUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataUsage) SetOutputTokens(v string) *GetAgentTaskResultResponseBodyDataUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataUsage) SetTotalTokens(v string) *GetAgentTaskResultResponseBodyDataUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataUsage) SetTymxPlusCount(v string) *GetAgentTaskResultResponseBodyDataUsage {
+	s.TymxPlusCount = &v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataUsage) SetTymxTurboCount(v string) *GetAgentTaskResultResponseBodyDataUsage {
+	s.TymxTurboCount = &v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataUsage) Validate() error {
 	return dara.Validate(s)
 }

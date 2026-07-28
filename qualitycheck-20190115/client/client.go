@@ -1988,72 +1988,6 @@ func (client *Client) DeleteDataSet(request *DeleteDataSetRequest) (_result *Del
 
 // Summary:
 //
-// Delete a speech recognition quality check task.
-//
-// @param request - DeletePrecisionTaskRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DeletePrecisionTaskResponse
-func (client *Client) DeletePrecisionTaskWithOptions(request *DeletePrecisionTaskRequest, runtime *dara.RuntimeOptions) (_result *DeletePrecisionTaskResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.BaseMeAgentId) {
-		query["BaseMeAgentId"] = request.BaseMeAgentId
-	}
-
-	if !dara.IsNil(request.JsonStr) {
-		query["JsonStr"] = request.JsonStr
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("DeletePrecisionTask"),
-		Version:     dara.String("2019-01-15"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &DeletePrecisionTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Delete a speech recognition quality check task.
-//
-// @param request - DeletePrecisionTaskRequest
-//
-// @return DeletePrecisionTaskResponse
-func (client *Client) DeletePrecisionTask(request *DeletePrecisionTaskRequest) (_result *DeletePrecisionTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeletePrecisionTaskResponse{}
-	_body, _err := client.DeletePrecisionTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // You can delete a quality check plan from the Quality Check Plan Management page by clicking the Delete button on the right side of the plan. The Apsara Stack API endpoint is ip:port/api/qcs/DeleteQualityCheckScheme.json.
 //
 // @param request - DeleteQualityCheckSchemeRequest
@@ -2891,7 +2825,7 @@ func (client *Client) GetAgent(request *GetAgentRequest) (_result *GetAgentRespo
 
 // Summary:
 //
-// Retrieves the task result of an agent node.
+// Retrieves the task result of an Agent node.
 //
 // @param request - GetAgentTaskResultRequest
 //
@@ -2939,7 +2873,7 @@ func (client *Client) GetAgentTaskResultWithOptions(request *GetAgentTaskResultR
 
 // Summary:
 //
-// Retrieves the task result of an agent node.
+// Retrieves the task result of an Agent node.
 //
 // @param request - GetAgentTaskResultRequest
 //
@@ -3410,72 +3344,6 @@ func (client *Client) GetNextResultToVerify(request *GetNextResultToVerifyReques
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetNextResultToVerifyResponse{}
 	_body, _err := client.GetNextResultToVerifyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Retrieves the details of a (speech recognition) detection task.
-//
-// @param request - GetPrecisionTaskRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetPrecisionTaskResponse
-func (client *Client) GetPrecisionTaskWithOptions(request *GetPrecisionTaskRequest, runtime *dara.RuntimeOptions) (_result *GetPrecisionTaskResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.BaseMeAgentId) {
-		query["BaseMeAgentId"] = request.BaseMeAgentId
-	}
-
-	if !dara.IsNil(request.JsonStr) {
-		query["JsonStr"] = request.JsonStr
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("GetPrecisionTask"),
-		Version:     dara.String("2019-01-15"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &GetPrecisionTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Retrieves the details of a (speech recognition) detection task.
-//
-// @param request - GetPrecisionTaskRequest
-//
-// @return GetPrecisionTaskResponse
-func (client *Client) GetPrecisionTask(request *GetPrecisionTaskRequest) (_result *GetPrecisionTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetPrecisionTaskResponse{}
-	_body, _err := client.GetPrecisionTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4278,77 +4146,6 @@ func (client *Client) GetSchemeTaskConfig(request *GetSchemeTaskConfigRequest) (
 	return _result, _err
 }
 
-// Deprecated: OpenAPI GetScoreInfo is deprecated
-//
-// Summary:
-//
-// Retrieves information about all scoring items.
-//
-// @param request - GetScoreInfoRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetScoreInfoResponse
-func (client *Client) GetScoreInfoWithOptions(request *GetScoreInfoRequest, runtime *dara.RuntimeOptions) (_result *GetScoreInfoResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.BaseMeAgentId) {
-		query["BaseMeAgentId"] = request.BaseMeAgentId
-	}
-
-	if !dara.IsNil(request.JsonStr) {
-		query["JsonStr"] = request.JsonStr
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("GetScoreInfo"),
-		Version:     dara.String("2019-01-15"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &GetScoreInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI GetScoreInfo is deprecated
-//
-// Summary:
-//
-// Retrieves information about all scoring items.
-//
-// @param request - GetScoreInfoRequest
-//
-// @return GetScoreInfoResponse
-// Deprecated
-func (client *Client) GetScoreInfo(request *GetScoreInfoRequest) (_result *GetScoreInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetScoreInfoResponse{}
-	_body, _err := client.GetScoreInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 // Deprecated: OpenAPI GetSkillGroupConfig is deprecated
 //
 // Summary:
@@ -4898,72 +4695,6 @@ func (client *Client) ListDataSet(request *ListDataSetRequest) (_result *ListDat
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListDataSetResponse{}
 	_body, _err := client.ListDataSetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Retrieve the list of speech recognition precision tasks. Set the service endpoint to Hangzhou (cn-hangzhou).
-//
-// @param request - ListPrecisionTaskRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ListPrecisionTaskResponse
-func (client *Client) ListPrecisionTaskWithOptions(request *ListPrecisionTaskRequest, runtime *dara.RuntimeOptions) (_result *ListPrecisionTaskResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.BaseMeAgentId) {
-		query["BaseMeAgentId"] = request.BaseMeAgentId
-	}
-
-	if !dara.IsNil(request.JsonStr) {
-		query["JsonStr"] = request.JsonStr
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("ListPrecisionTask"),
-		Version:     dara.String("2019-01-15"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &ListPrecisionTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Retrieve the list of speech recognition precision tasks. Set the service endpoint to Hangzhou (cn-hangzhou).
-//
-// @param request - ListPrecisionTaskRequest
-//
-// @return ListPrecisionTaskResponse
-func (client *Client) ListPrecisionTask(request *ListPrecisionTaskRequest) (_result *ListPrecisionTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListPrecisionTaskResponse{}
-	_body, _err := client.ListPrecisionTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6168,72 +5899,6 @@ func (client *Client) SubmitComplaint(request *SubmitComplaintRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &SubmitComplaintResponse{}
 	_body, _err := client.SubmitComplaintWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a speech recognition evaluation task. The service endpoint is China East 1 (Hangzhou) (cn-hangzhou).
-//
-// @param request - SubmitPrecisionTaskRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return SubmitPrecisionTaskResponse
-func (client *Client) SubmitPrecisionTaskWithOptions(request *SubmitPrecisionTaskRequest, runtime *dara.RuntimeOptions) (_result *SubmitPrecisionTaskResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.BaseMeAgentId) {
-		query["BaseMeAgentId"] = request.BaseMeAgentId
-	}
-
-	if !dara.IsNil(request.JsonStr) {
-		query["JsonStr"] = request.JsonStr
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("SubmitPrecisionTask"),
-		Version:     dara.String("2019-01-15"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &SubmitPrecisionTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a speech recognition evaluation task. The service endpoint is China East 1 (Hangzhou) (cn-hangzhou).
-//
-// @param request - SubmitPrecisionTaskRequest
-//
-// @return SubmitPrecisionTaskResponse
-func (client *Client) SubmitPrecisionTask(request *SubmitPrecisionTaskRequest) (_result *SubmitPrecisionTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SubmitPrecisionTaskResponse{}
-	_body, _err := client.SubmitPrecisionTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8376,138 +8041,6 @@ func (client *Client) UploadRule(request *UploadRuleRequest) (_result *UploadRul
 	runtime := &dara.RuntimeOptions{}
 	_result = &UploadRuleResponse{}
 	_body, _err := client.UploadRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Saves the verification result of a single file.
-//
-// @param request - VerifyFileRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return VerifyFileResponse
-func (client *Client) VerifyFileWithOptions(request *VerifyFileRequest, runtime *dara.RuntimeOptions) (_result *VerifyFileResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.BaseMeAgentId) {
-		query["BaseMeAgentId"] = request.BaseMeAgentId
-	}
-
-	if !dara.IsNil(request.JsonStr) {
-		query["JsonStr"] = request.JsonStr
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("VerifyFile"),
-		Version:     dara.String("2019-01-15"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &VerifyFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Saves the verification result of a single file.
-//
-// @param request - VerifyFileRequest
-//
-// @return VerifyFileResponse
-func (client *Client) VerifyFile(request *VerifyFileRequest) (_result *VerifyFileResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &VerifyFileResponse{}
-	_body, _err := client.VerifyFileWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Save the verification result for a single sentence.
-//
-// @param request - VerifySentenceRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return VerifySentenceResponse
-func (client *Client) VerifySentenceWithOptions(request *VerifySentenceRequest, runtime *dara.RuntimeOptions) (_result *VerifySentenceResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.BaseMeAgentId) {
-		query["BaseMeAgentId"] = request.BaseMeAgentId
-	}
-
-	if !dara.IsNil(request.JsonStr) {
-		query["JsonStr"] = request.JsonStr
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("VerifySentence"),
-		Version:     dara.String("2019-01-15"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &VerifySentenceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Save the verification result for a single sentence.
-//
-// @param request - VerifySentenceRequest
-//
-// @return VerifySentenceResponse
-func (client *Client) VerifySentence(request *VerifySentenceRequest) (_result *VerifySentenceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &VerifySentenceResponse{}
-	_body, _err := client.VerifySentenceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

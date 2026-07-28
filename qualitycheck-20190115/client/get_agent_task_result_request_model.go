@@ -16,7 +16,7 @@ type iGetAgentTaskResultRequest interface {
 }
 
 type GetAgentTaskResultRequest struct {
-	// The ID of the business workspace.
+	// The ID of the business space.
 	//
 	// example:
 	//

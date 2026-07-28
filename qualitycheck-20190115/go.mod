@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/qualitycheck-20190115/v10
+module github.com/alibabacloud-go/qualitycheck-20190115/v11
 
 go 1.14
 
