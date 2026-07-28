@@ -18,7 +18,7 @@ type iModifyInstanceConfigRequest interface {
 }
 
 type ModifyInstanceConfigRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type ModifyInstanceConfigRequest struct {
 	//
 	// c-123xxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The reason for the update.
+	// The reason for the modification.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type ModifyInstanceConfigRequest struct {
 	//
 	// for test
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// User-defined configuration.
+	// The custom user configuration.
 	//
 	// example:
 	//

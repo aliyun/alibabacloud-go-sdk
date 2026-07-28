@@ -20,15 +20,21 @@ type iUpdateInstanceResponseBody interface {
 }
 
 type UpdateInstanceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ABCD-1234-5678-EFGH
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The operation result.
+	//
 	// example:
 	//
 	// true
 	Data    *bool   `json:"data,omitempty" xml:"data,omitempty"`
 	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

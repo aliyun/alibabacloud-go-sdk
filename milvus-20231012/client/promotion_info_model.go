@@ -26,13 +26,20 @@ type iPromotionInfo interface {
 }
 
 type PromotionInfo struct {
-	CanPromFee          *string `json:"canPromFee,omitempty" xml:"canPromFee,omitempty"`
-	IsSelected          *bool   `json:"isSelected,omitempty" xml:"isSelected,omitempty"`
-	PromotionDesc       *string `json:"promotionDesc,omitempty" xml:"promotionDesc,omitempty"`
-	PromotionName       *string `json:"promotionName,omitempty" xml:"promotionName,omitempty"`
+	// The fee that can be covered by the promotion.
+	CanPromFee *string `json:"canPromFee,omitempty" xml:"canPromFee,omitempty"`
+	// Indicates whether the promotion is selected.
+	IsSelected *bool `json:"isSelected,omitempty" xml:"isSelected,omitempty"`
+	// The description of the promotion.
+	PromotionDesc *string `json:"promotionDesc,omitempty" xml:"promotionDesc,omitempty"`
+	// The name of the promotion.
+	PromotionName *string `json:"promotionName,omitempty" xml:"promotionName,omitempty"`
+	// The code of the promotion option.
 	PromotionOptionCode *string `json:"promotionOptionCode,omitempty" xml:"promotionOptionCode,omitempty"`
-	PromotionOptionNo   *string `json:"promotionOptionNo,omitempty" xml:"promotionOptionNo,omitempty"`
-	Selected            *bool   `json:"selected,omitempty" xml:"selected,omitempty"`
+	// The number of the promotion option.
+	PromotionOptionNo *string `json:"promotionOptionNo,omitempty" xml:"promotionOptionNo,omitempty"`
+	// Indicates whether the promotion is selected.
+	Selected *bool `json:"selected,omitempty" xml:"selected,omitempty"`
 }
 
 func (s PromotionInfo) String() string {

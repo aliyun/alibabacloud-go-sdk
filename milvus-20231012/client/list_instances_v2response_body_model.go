@@ -24,23 +24,34 @@ type iListInstancesV2ResponseBody interface {
 }
 
 type ListInstancesV2ResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ABCD-1234-5678-EFGH
-	RequestId *string           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of instances.
 	Instances []*InstanceDetail `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
+	// The maximum number of records to retrieve in a single request.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token (not currently enabled).
+	//
 	// example:
 	//
 	// None
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 15

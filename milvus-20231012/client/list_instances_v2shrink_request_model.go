@@ -30,39 +30,56 @@ type iListInstancesV2ShrinkRequest interface {
 }
 
 type ListInstancesV2ShrinkRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// c-123xxx
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The cluster name.
+	//
 	// example:
 	//
 	// milvus-test
 	InstanceName *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
+	// The maximum number of records to retrieve in a single request.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token for the next request (not currently enabled).
+	//
 	// example:
 	//
 	// None
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-123xxx
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	TagShrink       *string `json:"tag,omitempty" xml:"tag,omitempty"`
+	// The list of tags in JSON format.
+	TagShrink *string `json:"tag,omitempty" xml:"tag,omitempty"`
 }
 
 func (s ListInstancesV2ShrinkRequest) String() string {

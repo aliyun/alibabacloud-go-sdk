@@ -16,10 +16,14 @@ type iListAclGroupsRequest interface {
 }
 
 type ListAclGroupsRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// c-123xxx
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing

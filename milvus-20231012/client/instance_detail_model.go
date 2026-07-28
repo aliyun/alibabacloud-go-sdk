@@ -58,11 +58,16 @@ type iInstanceDetail interface {
 }
 
 type InstanceDetail struct {
+	// The automatic backup configuration.
+	//
 	// example:
 	//
 	// true
-	AutoBackup *bool                       `json:"autoBackup,omitempty" xml:"autoBackup,omitempty"`
+	AutoBackup *bool `json:"autoBackup,omitempty" xml:"autoBackup,omitempty"`
+	// The component information.
 	Components []*InstanceDetailComponents `json:"components,omitempty" xml:"components,omitempty" type:"Repeated"`
+	// The configuration.
+	//
 	// example:
 	//
 	// rootCoord:
@@ -71,34 +76,48 @@ type InstanceDetail struct {
 	//
 	//     maxPartitionNum: 4096
 	Configuration *string `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	// The creation time.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 2025-04-27T02:04:25Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The instance version.
+	//
 	// example:
 	//
 	// 2.5
 	DbVersion *string `json:"dbVersion,omitempty" xml:"dbVersion,omitempty"`
+	// Indicates whether data encryption is enabled.
+	//
 	// example:
 	//
 	// false
 	Encrypted *bool `json:"encrypted,omitempty" xml:"encrypted,omitempty"`
+	// The expiration time.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 2025-04-27T02:04:25Z
 	ExpireTime *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	// Indicates whether high availability is enabled.
+	//
 	// example:
 	//
 	// true
 	Ha *bool `json:"ha,omitempty" xml:"ha,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// c-xxx
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// milvus-test
@@ -109,41 +128,74 @@ type InstanceDetail struct {
 	//
 	// key-xxx
 	KmsKeyId *string `json:"kmsKeyId,omitempty" xml:"kmsKeyId,omitempty"`
+	// The multi-zone deployment mode.
+	//
 	// example:
 	//
 	// Single
 	MultiZoneMode *string `json:"multiZoneMode,omitempty" xml:"multiZoneMode,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 4751
 	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
+	// The billing method. Valid values: PayAsYouGo: pay-as-you-go billing method. Subscription: subscription.
+	//
 	// example:
 	//
 	// PayAsYouGo
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-aek3dcgyq7pnqwa
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The running time.
+	//
 	// example:
 	//
 	// 1
-	RunningTime      *int64    `json:"runningTime,omitempty" xml:"runningTime,omitempty"`
+	RunningTime *int64 `json:"runningTime,omitempty" xml:"runningTime,omitempty"`
+	// The security group IDs.
 	SecurityGroupIds []*string `json:"securityGroupIds,omitempty" xml:"securityGroupIds,omitempty" type:"Repeated"`
+	// The instance status. Valid values:
+	//
+	// - creating: Being created.
+	//
+	// - running: Running.
+	//
+	// - updating: Being upgraded. This includes specification changes, configuration changes, and public network access changes.
+	//
+	// - disable: Unavailable. The cluster has expired and requires renewal to reactivate.
+	//
+	// - deleting: Being deleted.
+	//
+	// - deleted: Deleted.
+	//
 	// example:
 	//
 	// running
-	Status     *string                     `json:"status,omitempty" xml:"status,omitempty"`
-	Tags       []*InstanceDetailTags       `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The tags.
+	Tags []*InstanceDetailTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The vSwitch IDs.
 	VSwitchIds []*InstanceDetailVSwitchIds `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
+	// The VPC ID.
+	//
 	// example:
 	//
 	// vpc-xxx
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// The zone ID of the instance.
+	//
 	// example:
 	//
 	// cn-hangzhou-i
@@ -397,23 +449,35 @@ func (s *InstanceDetail) Validate() error {
 }
 
 type InstanceDetailComponents struct {
+	// The number of CUs.
+	//
 	// example:
 	//
 	// 4
 	CuNum *int32 `json:"cuNum,omitempty" xml:"cuNum,omitempty"`
+	// The CU type.
+	//
 	// example:
 	//
 	// general
-	CuType *string `json:"cuType,omitempty" xml:"cuType,omitempty"`
+	CuType   *string                           `json:"cuType,omitempty" xml:"cuType,omitempty"`
+	DataDisk *InstanceDetailComponentsDataDisk `json:"dataDisk,omitempty" xml:"dataDisk,omitempty" type:"Struct"`
+	// The disk size type for the Query Node. Set this parameter to Large for storage-optimized configurations, and to Normal for other configurations.
+	//
 	// example:
 	//
 	// Normal
-	DiskSizeType *string `json:"diskSizeType,omitempty" xml:"diskSizeType,omitempty"`
-	PayType      *string `json:"payType,omitempty" xml:"payType,omitempty"`
+	DiskSizeType *string                             `json:"diskSizeType,omitempty" xml:"diskSizeType,omitempty"`
+	PayType      *string                             `json:"payType,omitempty" xml:"payType,omitempty"`
+	PodsList     []*InstanceDetailComponentsPodsList `json:"podsList,omitempty" xml:"podsList,omitempty" type:"Repeated"`
+	// The number of replicas.
+	//
 	// example:
 	//
 	// 1
 	Replica *int32 `json:"replica,omitempty" xml:"replica,omitempty"`
+	// The component type.
+	//
 	// example:
 	//
 	// data
@@ -436,12 +500,20 @@ func (s *InstanceDetailComponents) GetCuType() *string {
 	return s.CuType
 }
 
+func (s *InstanceDetailComponents) GetDataDisk() *InstanceDetailComponentsDataDisk {
+	return s.DataDisk
+}
+
 func (s *InstanceDetailComponents) GetDiskSizeType() *string {
 	return s.DiskSizeType
 }
 
 func (s *InstanceDetailComponents) GetPayType() *string {
 	return s.PayType
+}
+
+func (s *InstanceDetailComponents) GetPodsList() []*InstanceDetailComponentsPodsList {
+	return s.PodsList
 }
 
 func (s *InstanceDetailComponents) GetReplica() *int32 {
@@ -462,6 +534,11 @@ func (s *InstanceDetailComponents) SetCuType(v string) *InstanceDetailComponents
 	return s
 }
 
+func (s *InstanceDetailComponents) SetDataDisk(v *InstanceDetailComponentsDataDisk) *InstanceDetailComponents {
+	s.DataDisk = v
+	return s
+}
+
 func (s *InstanceDetailComponents) SetDiskSizeType(v string) *InstanceDetailComponents {
 	s.DiskSizeType = &v
 	return s
@@ -469,6 +546,11 @@ func (s *InstanceDetailComponents) SetDiskSizeType(v string) *InstanceDetailComp
 
 func (s *InstanceDetailComponents) SetPayType(v string) *InstanceDetailComponents {
 	s.PayType = &v
+	return s
+}
+
+func (s *InstanceDetailComponents) SetPodsList(v []*InstanceDetailComponentsPodsList) *InstanceDetailComponents {
+	s.PodsList = v
 	return s
 }
 
@@ -483,14 +565,122 @@ func (s *InstanceDetailComponents) SetType(v string) *InstanceDetailComponents {
 }
 
 func (s *InstanceDetailComponents) Validate() error {
+	if s.DataDisk != nil {
+		if err := s.DataDisk.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PodsList != nil {
+		for _, item := range s.PodsList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type InstanceDetailComponentsDataDisk struct {
+	Enabled          *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	PerformanceLevel *string `json:"performanceLevel,omitempty" xml:"performanceLevel,omitempty"`
+	Size             *int32  `json:"size,omitempty" xml:"size,omitempty"`
+	StorageClass     *string `json:"storageClass,omitempty" xml:"storageClass,omitempty"`
+}
+
+func (s InstanceDetailComponentsDataDisk) String() string {
+	return dara.Prettify(s)
+}
+
+func (s InstanceDetailComponentsDataDisk) GoString() string {
+	return s.String()
+}
+
+func (s *InstanceDetailComponentsDataDisk) GetEnabled() *bool {
+	return s.Enabled
+}
+
+func (s *InstanceDetailComponentsDataDisk) GetPerformanceLevel() *string {
+	return s.PerformanceLevel
+}
+
+func (s *InstanceDetailComponentsDataDisk) GetSize() *int32 {
+	return s.Size
+}
+
+func (s *InstanceDetailComponentsDataDisk) GetStorageClass() *string {
+	return s.StorageClass
+}
+
+func (s *InstanceDetailComponentsDataDisk) SetEnabled(v bool) *InstanceDetailComponentsDataDisk {
+	s.Enabled = &v
+	return s
+}
+
+func (s *InstanceDetailComponentsDataDisk) SetPerformanceLevel(v string) *InstanceDetailComponentsDataDisk {
+	s.PerformanceLevel = &v
+	return s
+}
+
+func (s *InstanceDetailComponentsDataDisk) SetSize(v int32) *InstanceDetailComponentsDataDisk {
+	s.Size = &v
+	return s
+}
+
+func (s *InstanceDetailComponentsDataDisk) SetStorageClass(v string) *InstanceDetailComponentsDataDisk {
+	s.StorageClass = &v
+	return s
+}
+
+func (s *InstanceDetailComponentsDataDisk) Validate() error {
+	return dara.Validate(s)
+}
+
+type InstanceDetailComponentsPodsList struct {
+	PodId   *string `json:"podId,omitempty" xml:"podId,omitempty"`
+	PodName *string `json:"podName,omitempty" xml:"podName,omitempty"`
+}
+
+func (s InstanceDetailComponentsPodsList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s InstanceDetailComponentsPodsList) GoString() string {
+	return s.String()
+}
+
+func (s *InstanceDetailComponentsPodsList) GetPodId() *string {
+	return s.PodId
+}
+
+func (s *InstanceDetailComponentsPodsList) GetPodName() *string {
+	return s.PodName
+}
+
+func (s *InstanceDetailComponentsPodsList) SetPodId(v string) *InstanceDetailComponentsPodsList {
+	s.PodId = &v
+	return s
+}
+
+func (s *InstanceDetailComponentsPodsList) SetPodName(v string) *InstanceDetailComponentsPodsList {
+	s.PodName = &v
+	return s
+}
+
+func (s *InstanceDetailComponentsPodsList) Validate() error {
 	return dara.Validate(s)
 }
 
 type InstanceDetailTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// k1
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// v1
@@ -528,10 +718,14 @@ func (s *InstanceDetailTags) Validate() error {
 }
 
 type InstanceDetailVSwitchIds struct {
+	// The vSwitch IDs.
+	//
 	// example:
 	//
 	// vsw-xxx
 	VswId *string `json:"vswId,omitempty" xml:"vswId,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-i

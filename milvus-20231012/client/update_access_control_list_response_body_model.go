@@ -26,13 +26,13 @@ type iUpdateAccessControlListResponseBody interface {
 }
 
 type UpdateAccessControlListResponseBody struct {
-	// The detailed information about the failed permission verification.
+	// The details of the access denial.
 	//
 	// example:
 	//
 	// {     "PolicyType": "AccountLevelIdentityBasedPolicy",     "AuthPrincipalOwnerId": "xxxx",     "EncodedDiagnosticMessage": "xxxx",     "AuthPrincipalType": "SubUser",     "AuthPrincipalDisplayName": "xxxx",     "NoPermissionType": "ImplicitDeny",     "AuthAction": "milvus:xxxx" }
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The returned result.
+	// The returned data.
 	//
 	// example:
 	//
@@ -44,19 +44,19 @@ type UpdateAccessControlListResponseBody struct {
 	//
 	// The format of cidr is illegal.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The error code returned.
+	// The error code.
 	//
 	// example:
 	//
 	// ILLEGAL.MilvusCidrFormat
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The HTTP status code.
+	// The HTTP status code of the request.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -26,30 +26,44 @@ type iCreateAclGroupResponseBody interface {
 }
 
 type CreateAclGroupResponseBody struct {
+	// Details about the access denial. This parameter is returned only if a request is denied due to insufficient RAM permissions.
+	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
+	// The data returned for the request.
+	//
 	// example:
 	//
 	// {\\"instanceId\\": \\"c-fa521a2393de4623\\", \\"orderId\\": \\"271129670950939\\"}
 	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// The error code returned if the request fails.
+	//
 	// example:
 	//
 	// 0
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message returned if the request fails.
+	//
 	// example:
 	//
 	// [%60wget Nds0v6lx.popscan.xaliyun.com%60]
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The unique ID generated for the request. Use this ID for troubleshooting.
+	//
 	// example:
 	//
 	// BE7E95C4-10DE-5EA7-9D10-2D3E0FCCE68C
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates if the request succeeded, where a value of `true` means success.
+	//
 	// example:
 	//
 	// true

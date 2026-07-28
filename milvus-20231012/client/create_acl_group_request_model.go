@@ -20,18 +20,26 @@ type iCreateAclGroupRequest interface {
 }
 
 type CreateAclGroupRequest struct {
+	// Specify one or more CIDR blocks, separated by commas.
+	//
 	// example:
 	//
 	// 140.205.11.0/24,140.205.11.2
 	Cidrs *string `json:"cidrs,omitempty" xml:"cidrs,omitempty"`
+	// The name of the ACL group.
+	//
 	// example:
 	//
 	// test
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// c-xxxx
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

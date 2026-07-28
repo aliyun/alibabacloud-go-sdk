@@ -16,10 +16,14 @@ type iDeleteInstanceRequest interface {
 }
 
 type DeleteInstanceRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

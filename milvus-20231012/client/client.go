@@ -24,7 +24,18 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"eu-central-1":   dara.String("milvus.eu-central-1.aliyuncs.com"),
+		"cn-zhangjiakou": dara.String("milvus.cn-zhangjiakou.aliyuncs.com"),
+		"cn-wulanchabu":  dara.String("milvus.cn-wulanchabu.aliyuncs.com"),
+		"cn-shenzhen":    dara.String("milvus.cn-shenzhen.aliyuncs.com"),
+		"cn-shanghai":    dara.String("milvus.cn-shanghai.aliyuncs.com"),
+		"cn-hongkong":    dara.String("milvus.cn-hongkong.aliyuncs.com"),
+		"cn-hangzhou":    dara.String("milvus.cn-hangzhou.aliyuncs.com"),
+		"cn-beijing":     dara.String("milvus.cn-beijing.aliyuncs.com"),
+		"ap-southeast-1": dara.String("milvus.ap-southeast-1.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +69,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 资源转组
+// Changes the resource group of a resource.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -121,7 +132,7 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 
 // Summary:
 //
-// 资源转组
+// Changes the resource group of a resource.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -140,7 +151,7 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 
 // Summary:
 //
-// 创建白名单分组
+// Creates an ACL group.
 //
 // @param request - CreateAclGroupRequest
 //
@@ -199,7 +210,7 @@ func (client *Client) CreateAclGroupWithOptions(request *CreateAclGroupRequest, 
 
 // Summary:
 //
-// 创建白名单分组
+// Creates an ACL group.
 //
 // @param request - CreateAclGroupRequest
 //
@@ -218,7 +229,7 @@ func (client *Client) CreateAclGroup(request *CreateAclGroupRequest) (_result *C
 
 // Summary:
 //
-// # Create a service role for Milvus to access other cloud products
+// Creates the server role required by Milvus to access other cloud products.
 //
 // @param headers - map
 //
@@ -251,7 +262,7 @@ func (client *Client) CreateDefaultRoleWithOptions(headers map[string]*string, r
 
 // Summary:
 //
-// # Create a service role for Milvus to access other cloud products
+// Creates the server role required by Milvus to access other cloud products.
 //
 // @return CreateDefaultRoleResponse
 func (client *Client) CreateDefaultRole() (_result *CreateDefaultRoleResponse, _err error) {
@@ -268,7 +279,7 @@ func (client *Client) CreateDefaultRole() (_result *CreateDefaultRoleResponse, _
 
 // Summary:
 //
-// 创建实例
+// Creates a cluster instance.
 //
 // @param request - CreateInstanceRequest
 //
@@ -421,7 +432,7 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 // Summary:
 //
-// 创建实例
+// Creates a cluster instance.
 //
 // @param request - CreateInstanceRequest
 //
@@ -440,7 +451,7 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 
 // Summary:
 //
-// 删除实例
+// Deletes an instance.
 //
 // @param request - DeleteInstanceRequest
 //
@@ -491,7 +502,7 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 
 // Summary:
 //
-// 删除实例
+// Deletes an instance.
 //
 // @param request - DeleteInstanceRequest
 //
@@ -642,7 +653,7 @@ func (client *Client) DescribeInstanceConfigs(request *DescribeInstanceConfigsRe
 
 // Summary:
 //
-// 获取实例详情
+// Retrieves the details of an instance.
 //
 // @param request - GetInstanceRequest
 //
@@ -693,7 +704,7 @@ func (client *Client) GetInstanceWithOptions(request *GetInstanceRequest, header
 
 // Summary:
 //
-// 获取实例详情
+// Retrieves the details of an instance.
 //
 // @param request - GetInstanceRequest
 //
@@ -712,7 +723,7 @@ func (client *Client) GetInstance(request *GetInstanceRequest) (_result *GetInst
 
 // Summary:
 //
-// Get the details of an instance.
+// Retrieves the details of a single instance.
 //
 // @param request - GetInstanceDetailRequest
 //
@@ -759,7 +770,7 @@ func (client *Client) GetInstanceDetailWithOptions(request *GetInstanceDetailReq
 
 // Summary:
 //
-// Get the details of an instance.
+// Retrieves the details of a single instance.
 //
 // @param request - GetInstanceDetailRequest
 //
@@ -778,7 +789,7 @@ func (client *Client) GetInstanceDetail(request *GetInstanceDetailRequest) (_res
 
 // Summary:
 //
-// 获取当前用户下的分组信息和内容
+// Retrieves one or more access control list (ACL) groups.
 //
 // @param request - ListAclGroupsRequest
 //
@@ -829,7 +840,7 @@ func (client *Client) ListAclGroupsWithOptions(request *ListAclGroupsRequest, he
 
 // Summary:
 //
-// 获取当前用户下的分组信息和内容
+// Retrieves one or more access control list (ACL) groups.
 //
 // @param request - ListAclGroupsRequest
 //
@@ -848,7 +859,7 @@ func (client *Client) ListAclGroups(request *ListAclGroupsRequest) (_result *Lis
 
 // Summary:
 //
-// Get the list of Milvus instances under the current account.
+// Retrieves a list of Milvus instances in the current account.
 //
 // @param tmpReq - ListInstancesRequest
 //
@@ -925,7 +936,7 @@ func (client *Client) ListInstancesWithOptions(tmpReq *ListInstancesRequest, hea
 
 // Summary:
 //
-// Get the list of Milvus instances under the current account.
+// Retrieves a list of Milvus instances in the current account.
 //
 // @param request - ListInstancesRequest
 //
@@ -944,7 +955,7 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 
 // Summary:
 //
-// 根据集群ID或者名称搜索集群
+// Searches for clusters by cluster ID or name.
 //
 // @param tmpReq - ListInstancesV2Request
 //
@@ -1029,7 +1040,7 @@ func (client *Client) ListInstancesV2WithOptions(tmpReq *ListInstancesV2Request,
 
 // Summary:
 //
-// 根据集群ID或者名称搜索集群
+// Searches for clusters by cluster ID or name.
 //
 // @param request - ListInstancesV2Request
 //
@@ -1048,7 +1059,7 @@ func (client *Client) ListInstancesV2(request *ListInstancesV2Request) (_result 
 
 // Summary:
 //
-// Update the configuration parameters of each component of Milvus.
+// Modifies the configuration parameters for Milvus components.
 //
 // @param request - ModifyInstanceConfigRequest
 //
@@ -1103,7 +1114,7 @@ func (client *Client) ModifyInstanceConfigWithOptions(request *ModifyInstanceCon
 
 // Summary:
 //
-// Update the configuration parameters of each component of Milvus.
+// Modifies the configuration parameters for Milvus components.
 //
 // @param request - ModifyInstanceConfigRequest
 //
@@ -1122,7 +1133,7 @@ func (client *Client) ModifyInstanceConfig(request *ModifyInstanceConfigRequest)
 
 // Summary:
 //
-// 打标
+// Adds tags to resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -1181,7 +1192,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, head
 
 // Summary:
 //
-// 打标
+// Adds tags to resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -1200,7 +1211,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// 删除标签
+// Remove resource tags.
 //
 // @param tmpReq - UnTagResourcesRequest
 //
@@ -1273,7 +1284,7 @@ func (client *Client) UnTagResourcesWithOptions(tmpReq *UnTagResourcesRequest, h
 
 // Summary:
 //
-// 删除标签
+// Remove resource tags.
 //
 // @param request - UnTagResourcesRequest
 //
@@ -1292,7 +1303,7 @@ func (client *Client) UnTagResources(request *UnTagResourcesRequest) (_result *U
 
 // Summary:
 //
-// # Configure Public IP Address Whitelist
+// Sets the IP address whitelist for public access to a Milvus instance.
 //
 // @param request - UpdateAccessControlListRequest
 //
@@ -1347,7 +1358,7 @@ func (client *Client) UpdateAccessControlListWithOptions(request *UpdateAccessCo
 
 // Summary:
 //
-// # Configure Public IP Address Whitelist
+// Sets the IP address whitelist for public access to a Milvus instance.
 //
 // @param request - UpdateAccessControlListRequest
 //
@@ -1366,7 +1377,7 @@ func (client *Client) UpdateAccessControlList(request *UpdateAccessControlListRe
 
 // Summary:
 //
-// 修改分组内的白名单
+// Modifies the CIDR blocks in a specified allow list group.
 //
 // @param request - UpdateAclGroupCidrsRequest
 //
@@ -1421,7 +1432,7 @@ func (client *Client) UpdateAclGroupCidrsWithOptions(request *UpdateAclGroupCidr
 
 // Summary:
 //
-// 修改分组内的白名单
+// Modifies the CIDR blocks in a specified allow list group.
 //
 // @param request - UpdateAclGroupCidrsRequest
 //
@@ -1440,7 +1451,7 @@ func (client *Client) UpdateAclGroupCidrs(request *UpdateAclGroupCidrsRequest) (
 
 // Summary:
 //
-// 更新实例
+// Updates an instance.
 //
 // @param request - UpdateInstanceRequest
 //
@@ -1521,7 +1532,7 @@ func (client *Client) UpdateInstanceWithOptions(request *UpdateInstanceRequest, 
 
 // Summary:
 //
-// 更新实例
+// Updates an instance.
 //
 // @param request - UpdateInstanceRequest
 //
@@ -1540,7 +1551,7 @@ func (client *Client) UpdateInstance(request *UpdateInstanceRequest) (_result *U
 
 // Summary:
 //
-// Modifies the name of an instance.
+// Changes the name of an instance.
 //
 // @param request - UpdateInstanceNameRequest
 //
@@ -1591,7 +1602,7 @@ func (client *Client) UpdateInstanceNameWithOptions(request *UpdateInstanceNameR
 
 // Summary:
 //
-// Modifies the name of an instance.
+// Changes the name of an instance.
 //
 // @param request - UpdateInstanceNameRequest
 //
@@ -1610,7 +1621,7 @@ func (client *Client) UpdateInstanceName(request *UpdateInstanceNameRequest) (_r
 
 // Summary:
 //
-// Enable or disable Internet access for Milvus.
+// Enables or disables public network access for a Milvus instance.
 //
 // @param request - UpdatePublicNetworkStatusRequest
 //
@@ -1669,7 +1680,7 @@ func (client *Client) UpdatePublicNetworkStatusWithOptions(request *UpdatePublic
 
 // Summary:
 //
-// Enable or disable Internet access for Milvus.
+// Enables or disables public network access for a Milvus instance.
 //
 // @param request - UpdatePublicNetworkStatusRequest
 //

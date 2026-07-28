@@ -28,15 +28,15 @@ type iListInstancesResponseBody interface {
 }
 
 type ListInstancesResponseBody struct {
-	// The detailed information about the failed permission verification.
+	// Details for an access denial error.
 	//
 	// example:
 	//
 	// {     "PolicyType": "AccountLevelIdentityBasedPolicy",     "AuthPrincipalOwnerId": "xxxx",     "EncodedDiagnosticMessage": "xxxx",     "AuthPrincipalType": "SubUser",     "AuthPrincipalDisplayName": "xxxx",     "NoPermissionType": "ImplicitDeny",     "AuthAction": "milvus:xxxx" }
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The returned result.
+	// An array of instance objects.
 	Data []*ListInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error code returned.
+	// The error code.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type ListInstancesResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type ListInstancesResponseBody struct {
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number.
+	// The total number of instances found.
 	//
 	// example:
 	//
@@ -168,11 +168,13 @@ func (s *ListInstancesResponseBody) Validate() error {
 }
 
 type ListInstancesResponseBodyData struct {
+	// Indicates whether automatic backup is enabled.
+	//
 	// example:
 	//
 	// true
 	AutoBackup *bool `json:"AutoBackup,omitempty" xml:"AutoBackup,omitempty"`
-	// The start time.
+	// The creation time of the instance.
 	//
 	// example:
 	//
@@ -186,73 +188,75 @@ type ListInstancesResponseBodyData struct {
 	//
 	// milvus-test
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The expiration time.
+	// The expiration time of the instance.
 	//
 	// example:
 	//
 	// 1721232000000
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// c-123xxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The status of the bastion host. Valid values:
+	// The instance status. Valid values:
 	//
-	// 	- creating.
+	// - `creating`: The instance is being created.
 	//
-	// 	- running.
+	// - `running`: The instance is running.
 	//
-	// 	- updating. Cluster scaling (up/down), configuration changes, and enabling/disabling public network access.
+	// - `updating`: The instance is being updated. This includes scaling the instance, changing configurations, or modifying public network access.
 	//
-	// 	- disable. The cluster has expired and needs to be renewed for activation.
+	// - `disable`: The instance is unavailable because it has expired and requires renewal.
 	//
-	// 	- deleting.
+	// - `deleting`: The instance is being deleted.
 	//
-	// 	- deleted.
+	// - `deleted`: The instance has been deleted.
 	//
 	// example:
 	//
 	// running
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	// The node type.
+	//
 	// example:
 	//
 	// perf
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// Indicates whether Internet access is enabled.
+	// Indicates whether public network access is enabled.
 	//
 	// example:
 	//
 	// true
 	OpenPublicNet *bool `json:"OpenPublicNet,omitempty" xml:"OpenPublicNet,omitempty"`
-	// The specification details. Valid values:
+	// The instance edition. Valid values:
 	//
-	// 	- trial.
+	// - `trial`: Trial Edition.
 	//
-	// 	- standard.
+	// - `standard`: Standard Edition.
 	//
 	// example:
 	//
 	// trial
 	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	// The billing method of the instance. Valid values:
+	// The billing method. Valid values:
 	//
-	// 	- 0: pay-as-you-go
+	// - `0`: pay-as-you-go.
 	//
-	// 	- 1: subscription
+	// - `1`: subscription.
 	//
 	// example:
 	//
 	// 1
 	PayType *int32 `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The commodity code.
+	// The product code.
 	//
 	// example:
 	//
 	// milvus_milvuspre_public_cn
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The region code.
+	// The region ID.
 	//
 	// example:
 	//
@@ -264,7 +268,7 @@ type ListInstancesResponseBodyData struct {
 	//
 	// rg-123xxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The runtime.
+	// The duration the instance has been running.
 	//
 	// example:
 	//
@@ -275,23 +279,26 @@ type ListInstancesResponseBodyData struct {
 	// example:
 	//
 	// sg-123xxx
-	SgId            *string                              `json:"SgId,omitempty" xml:"SgId,omitempty"`
-	Tags            []*ListInstancesResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TemplateVersion *string                              `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	Version         *string                              `json:"Version,omitempty" xml:"Version,omitempty"`
-	// The virtual private cloud (VPC) ID.
+	SgId *string `json:"SgId,omitempty" xml:"SgId,omitempty"`
+	// The tags attached to the instance.
+	Tags []*ListInstancesResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The template version.
+	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	// The instance version.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The VPC ID.
 	//
 	// example:
 	//
 	// vpc-123xxx
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the vSwitch.
+	// The vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-123xxx
 	VswId *string `json:"VswId,omitempty" xml:"VswId,omitempty"`
-	// The zone.
+	// The zone ID.
 	//
 	// example:
 	//
@@ -524,13 +531,13 @@ func (s *ListInstancesResponseBodyData) Validate() error {
 }
 
 type ListInstancesResponseBodyDataClusterInfo struct {
-	// The port of the Attu component.
+	// The Attu port.
 	//
 	// example:
 	//
 	// 3000
 	AttuPort *int32 `json:"AttuPort,omitempty" xml:"AttuPort,omitempty"`
-	// The public IP address.
+	// The public endpoint.
 	//
 	// example:
 	//
@@ -542,7 +549,7 @@ type ListInstancesResponseBodyDataClusterInfo struct {
 	//
 	// c-123xxx-internal.milvus.aliyuncs.com
 	IntranetUrl *string `json:"IntranetUrl,omitempty" xml:"IntranetUrl,omitempty"`
-	// The resource details.
+	// A list of resource details for the instance\\"s components.
 	MilvusResourceInfoList []*ListInstancesResponseBodyDataClusterInfoMilvusResourceInfoList `json:"MilvusResourceInfoList,omitempty" xml:"MilvusResourceInfoList,omitempty" type:"Repeated"`
 	// The proxy port.
 	//
@@ -550,13 +557,13 @@ type ListInstancesResponseBodyDataClusterInfo struct {
 	//
 	// 19530
 	ProxyPort *int32 `json:"ProxyPort,omitempty" xml:"ProxyPort,omitempty"`
-	// The number of CUs.
+	// The total number of CUs.
 	//
 	// example:
 	//
 	// 24
 	TotalCuNum *int32 `json:"TotalCuNum,omitempty" xml:"TotalCuNum,omitempty"`
-	// The total capacity of the disk.
+	// The total disk size in GB.
 	//
 	// example:
 	//
@@ -649,19 +656,19 @@ func (s *ListInstancesResponseBodyDataClusterInfo) Validate() error {
 }
 
 type ListInstancesResponseBodyDataClusterInfoMilvusResourceInfoList struct {
-	// The type of the component. Valid values:
+	// The component type. Valid values:
 	//
-	// 	- standalone
+	// - `standalone`
 	//
-	// 	- proxy
+	// - `proxy`
 	//
-	// 	- mix_coordinator
+	// - `mix_coordinator`
 	//
-	// 	- query
+	// - `query`
 	//
-	// 	- index
+	// - `index`
 	//
-	// 	- data
+	// - `data`
 	//
 	// example:
 	//
@@ -673,7 +680,7 @@ type ListInstancesResponseBodyDataClusterInfoMilvusResourceInfoList struct {
 	//
 	// 16
 	CuNum *int32 `json:"CuNum,omitempty" xml:"CuNum,omitempty"`
-	// The disk size.
+	// The disk size in GB.
 	//
 	// example:
 	//
@@ -751,10 +758,14 @@ func (s *ListInstancesResponseBodyDataClusterInfoMilvusResourceInfoList) Validat
 }
 
 type ListInstancesResponseBodyDataTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// value1

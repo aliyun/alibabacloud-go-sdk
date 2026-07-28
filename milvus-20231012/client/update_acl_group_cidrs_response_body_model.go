@@ -26,30 +26,44 @@ type iUpdateAclGroupCidrsResponseBody interface {
 }
 
 type UpdateAclGroupCidrsResponseBody struct {
+	// Details about why access was denied. Returned only when RAM denies access due to insufficient permissions.
+	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
+	// A value of `true` indicates that the operation was successful.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// 0
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// [RDS%22]
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CB356AEE-6B3F-5FC8-9C2C-7B2D881EA9E2
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

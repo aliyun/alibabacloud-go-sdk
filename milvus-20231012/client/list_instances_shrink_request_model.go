@@ -38,19 +38,19 @@ type ListInstancesShrinkRequest struct {
 	//
 	// milvus-test
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region code.
+	// The region ID.
 	//
 	// example:
 	//
@@ -62,7 +62,8 @@ type ListInstancesShrinkRequest struct {
 	//
 	// rg-123xxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	TagShrink       *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The tags used to filter instances.
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s ListInstancesShrinkRequest) String() string {

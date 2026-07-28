@@ -26,25 +26,25 @@ type iCreateDefaultRoleResponseBody interface {
 }
 
 type CreateDefaultRoleResponseBody struct {
-	// The details about the failed permission verification.
+	// Details about the access denial.
 	//
 	// example:
 	//
 	// { "PolicyType": "AccountLevelIdentityBasedPolicy", "AuthPrincipalOwnerId": "xxxx", "EncodedDiagnosticMessage": "xxxx", "AuthPrincipalType": "SubUser", "AuthPrincipalDisplayName": "xxxx", "NoPermissionType": "ImplicitDeny", "AuthAction": "milvus:xxxx" }
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The returned result.
+	// The returned data.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error code
+	// The error code.
 	//
 	// example:
 	//
 	// Instance.NotFound
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//

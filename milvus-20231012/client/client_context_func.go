@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 资源转组
+// Changes the resource group of a resource.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -72,7 +72,7 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 创建白名单分组
+// Creates an ACL group.
 //
 // @param request - CreateAclGroupRequest
 //
@@ -131,7 +131,7 @@ func (client *Client) CreateAclGroupWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// # Create a service role for Milvus to access other cloud products
+// Creates the server role required by Milvus to access other cloud products.
 //
 // @param headers - map
 //
@@ -164,7 +164,7 @@ func (client *Client) CreateDefaultRoleWithContext(ctx context.Context, headers 
 
 // Summary:
 //
-// 创建实例
+// Creates a cluster instance.
 //
 // @param request - CreateInstanceRequest
 //
@@ -317,7 +317,7 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// 删除实例
+// Deletes an instance.
 //
 // @param request - DeleteInstanceRequest
 //
@@ -462,7 +462,7 @@ func (client *Client) DescribeInstanceConfigsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 获取实例详情
+// Retrieves the details of an instance.
 //
 // @param request - GetInstanceRequest
 //
@@ -513,7 +513,7 @@ func (client *Client) GetInstanceWithContext(ctx context.Context, request *GetIn
 
 // Summary:
 //
-// Get the details of an instance.
+// Retrieves the details of a single instance.
 //
 // @param request - GetInstanceDetailRequest
 //
@@ -560,7 +560,7 @@ func (client *Client) GetInstanceDetailWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 获取当前用户下的分组信息和内容
+// Retrieves one or more access control list (ACL) groups.
 //
 // @param request - ListAclGroupsRequest
 //
@@ -611,7 +611,7 @@ func (client *Client) ListAclGroupsWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Get the list of Milvus instances under the current account.
+// Retrieves a list of Milvus instances in the current account.
 //
 // @param tmpReq - ListInstancesRequest
 //
@@ -688,7 +688,7 @@ func (client *Client) ListInstancesWithContext(ctx context.Context, tmpReq *List
 
 // Summary:
 //
-// 根据集群ID或者名称搜索集群
+// Searches for clusters by cluster ID or name.
 //
 // @param tmpReq - ListInstancesV2Request
 //
@@ -773,7 +773,7 @@ func (client *Client) ListInstancesV2WithContext(ctx context.Context, tmpReq *Li
 
 // Summary:
 //
-// Update the configuration parameters of each component of Milvus.
+// Modifies the configuration parameters for Milvus components.
 //
 // @param request - ModifyInstanceConfigRequest
 //
@@ -828,7 +828,7 @@ func (client *Client) ModifyInstanceConfigWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 打标
+// Adds tags to resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -887,7 +887,7 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// 删除标签
+// Remove resource tags.
 //
 // @param tmpReq - UnTagResourcesRequest
 //
@@ -960,7 +960,7 @@ func (client *Client) UnTagResourcesWithContext(ctx context.Context, tmpReq *UnT
 
 // Summary:
 //
-// # Configure Public IP Address Whitelist
+// Sets the IP address whitelist for public access to a Milvus instance.
 //
 // @param request - UpdateAccessControlListRequest
 //
@@ -1015,7 +1015,7 @@ func (client *Client) UpdateAccessControlListWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 修改分组内的白名单
+// Modifies the CIDR blocks in a specified allow list group.
 //
 // @param request - UpdateAclGroupCidrsRequest
 //
@@ -1070,7 +1070,7 @@ func (client *Client) UpdateAclGroupCidrsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 更新实例
+// Updates an instance.
 //
 // @param request - UpdateInstanceRequest
 //
@@ -1151,7 +1151,7 @@ func (client *Client) UpdateInstanceWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// Modifies the name of an instance.
+// Changes the name of an instance.
 //
 // @param request - UpdateInstanceNameRequest
 //
@@ -1202,7 +1202,7 @@ func (client *Client) UpdateInstanceNameWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Enable or disable Internet access for Milvus.
+// Enables or disables public network access for a Milvus instance.
 //
 // @param request - UpdatePublicNetworkStatusRequest
 //

@@ -18,11 +18,16 @@ type iUpdateAclGroupCidrsRequest interface {
 }
 
 type UpdateAclGroupCidrsRequest struct {
+	// The name of the allow list group.
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// c-xxxx
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The new CIDR blocks for the allow list group. To specify multiple CIDR blocks, separate them with a comma.
+	//
 	// example:
 	//
 	// 140.205.11.0/24,140.205.11.2

@@ -20,15 +20,22 @@ type iListAclGroupsResponseBody interface {
 }
 
 type ListAclGroupsResponseBody struct {
+	// Details about the access denial. Returned only for requests denied due to insufficient RAM permissions.
+	//
 	// example:
 	//
 	// None
-	AccessDeniedDetail *string                          `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
-	Data               []*ListAclGroupsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
+	// The response data.
+	Data []*ListAclGroupsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int64 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 66A13C31-473A-5B3A-8974-0B07A40649CF
@@ -93,23 +100,34 @@ func (s *ListAclGroupsResponseBody) Validate() error {
 }
 
 type ListAclGroupsResponseBodyData struct {
+	// The CIDR blocks in the group.
 	Cidrs []*string `json:"cidrs,omitempty" xml:"cidrs,omitempty" type:"Repeated"`
+	// The timestamp of the group\\"s creation.
+	//
 	// example:
 	//
 	// 2022-10-17T13:53:27Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The group name.
+	//
 	// example:
 	//
 	// test
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	// The group ID.
+	//
 	// example:
 	//
 	// 376774
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// c-xxx
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The ID of the Alibaba Cloud account. This parameter is read-only.
+	//
 	// example:
 	//
 	// 50832118

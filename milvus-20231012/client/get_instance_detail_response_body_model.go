@@ -26,15 +26,15 @@ type iGetInstanceDetailResponseBody interface {
 }
 
 type GetInstanceDetailResponseBody struct {
-	// The detailed information about the failed permission verification.
+	// The details of the permission verification failure.
 	//
 	// example:
 	//
 	// {     "PolicyType": "AccountLevelIdentityBasedPolicy",     "AuthPrincipalOwnerId": "xxxx",     "EncodedDiagnosticMessage": "xxxx",     "AuthPrincipalType": "SubUser",     "AuthPrincipalDisplayName": "xxxx",     "NoPermissionType": "ImplicitDeny",     "AuthAction": "milvus:xxxx" }
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The returned result.
+	// The response data.
 	Data *GetInstanceDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned.
+	// The error code.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type GetInstanceDetailResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -147,7 +147,7 @@ func (s *GetInstanceDetailResponseBody) Validate() error {
 }
 
 type GetInstanceDetailResponseBodyData struct {
-	// AclId for Public Network Access Control.
+	// The ACL ID for public network access control.
 	//
 	// example:
 	//
@@ -159,13 +159,13 @@ type GetInstanceDetailResponseBodyData struct {
 	//
 	// 1716863508000
 	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	// The name of the bucket.
+	// The bucket name.
 	//
 	// example:
 	//
 	// milvus-test
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// The address of the bucket.
+	// The bucket path.
 	//
 	// example:
 	//
@@ -179,6 +179,8 @@ type GetInstanceDetailResponseBodyData struct {
 	//
 	// aliyun-test
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// Indicates whether high availability is enabled.
+	//
 	// example:
 	//
 	// true
@@ -191,7 +193,7 @@ type GetInstanceDetailResponseBodyData struct {
 	// 1721664000000
 	ExpireTime       *int64                                             `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	HighAvailability *GetInstanceDetailResponseBodyDataHighAvailability `json:"HighAvailability,omitempty" xml:"HighAvailability,omitempty" type:"Struct"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
@@ -199,31 +201,22 @@ type GetInstanceDetailResponseBodyData struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The instance status. Valid values:
 	//
-	// 	- creating.
-	//
-	// 	- running.
-	//
-	// 	- updating. Cluster scaling (up/down), configuration changes, and enabling/disabling public network access.
-	//
-	// 	- disable. The cluster has expired and needs to be renewed for activation.
-	//
-	// 	- deleting.
-	//
-	// 	- deleted.
-	//
 	// example:
 	//
 	// running
-	InstanceStatus     *string                                         `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	KmsKeyId           *string                                         `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
-	MaintainablePeriod *string                                         `json:"MaintainablePeriod,omitempty" xml:"MaintainablePeriod,omitempty"`
-	MeasureConfig      *GetInstanceDetailResponseBodyDataMeasureConfig `json:"MeasureConfig,omitempty" xml:"MeasureConfig,omitempty" type:"Struct"`
-	MultiZoneMode      *string                                         `json:"MultiZoneMode,omitempty" xml:"MultiZoneMode,omitempty"`
+	InstanceStatus     *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	KmsKeyId           *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	MaintainablePeriod *string `json:"MaintainablePeriod,omitempty" xml:"MaintainablePeriod,omitempty"`
+	// The configuration information.
+	MeasureConfig *GetInstanceDetailResponseBodyDataMeasureConfig `json:"MeasureConfig,omitempty" xml:"MeasureConfig,omitempty" type:"Struct"`
+	MultiZoneMode *string                                         `json:"MultiZoneMode,omitempty" xml:"MultiZoneMode,omitempty"`
+	// The node type. Valid values:
+	//
 	// example:
 	//
 	// perf
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// Indicates whether Internet access is enabled.
+	// Indicates whether public network access is enabled.
 	//
 	// example:
 	//
@@ -231,19 +224,11 @@ type GetInstanceDetailResponseBodyData struct {
 	OpenPublicNet *bool `json:"OpenPublicNet,omitempty" xml:"OpenPublicNet,omitempty"`
 	// The specification details. Valid values:
 	//
-	// 	- trial.
-	//
-	// 	- standard.
-	//
 	// example:
 	//
 	// standard
 	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	// The billing method of the instance. Valid values:
-	//
-	// 	- 0: pay-as-you-go
-	//
-	// 	- 1: subscription
+	// The billing type. Valid values:
 	//
 	// example:
 	//
@@ -255,7 +240,7 @@ type GetInstanceDetailResponseBodyData struct {
 	//
 	// milvus_milvuspre_public_cn
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The region code.
+	// The region.
 	//
 	// example:
 	//
@@ -267,7 +252,7 @@ type GetInstanceDetailResponseBodyData struct {
 	//
 	// rg-123xxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The runtime.
+	// The running time.
 	//
 	// example:
 	//
@@ -278,34 +263,35 @@ type GetInstanceDetailResponseBodyData struct {
 	// example:
 	//
 	// sg-123xxx
-	SgId *string                                  `json:"SgId,omitempty" xml:"SgId,omitempty"`
+	SgId *string `json:"SgId,omitempty" xml:"SgId,omitempty"`
+	// The tag information.
 	Tags []*GetInstanceDetailResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The version of the software stack.
+	// The software stack version.
 	//
 	// example:
 	//
 	// 2.4.1-1.0-0.0.1
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	// User-defined configuration.
+	// The user-defined configuration.
 	//
 	// example:
 	//
 	// dataCoord:\\n  segment:\\n    maxSize: 1024
 	UserConfig *string                                       `json:"UserConfig,omitempty" xml:"UserConfig,omitempty"`
 	VSwitches  []*GetInstanceDetailResponseBodyDataVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
-	// The kernel version.
+	// The Milvus version.
 	//
 	// example:
 	//
 	// 2.4
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	// The virtual private cloud (VPC) ID.
+	// The VPC ID.
 	//
 	// example:
 	//
 	// vpc-123xxx
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the vSwitch.
+	// The vSwitch ID.
 	//
 	// example:
 	//
@@ -316,7 +302,8 @@ type GetInstanceDetailResponseBodyData struct {
 	// example:
 	//
 	// cn-beijing-g
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneId                     *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	MaintainablePeriodTimeZone *string `json:"maintainablePeriodTimeZone,omitempty" xml:"maintainablePeriodTimeZone,omitempty"`
 }
 
 func (s GetInstanceDetailResponseBodyData) String() string {
@@ -457,6 +444,10 @@ func (s *GetInstanceDetailResponseBodyData) GetVswId() *string {
 
 func (s *GetInstanceDetailResponseBodyData) GetZoneId() *string {
 	return s.ZoneId
+}
+
+func (s *GetInstanceDetailResponseBodyData) GetMaintainablePeriodTimeZone() *string {
+	return s.MaintainablePeriodTimeZone
 }
 
 func (s *GetInstanceDetailResponseBodyData) SetAclId(v string) *GetInstanceDetailResponseBodyData {
@@ -624,6 +615,11 @@ func (s *GetInstanceDetailResponseBodyData) SetZoneId(v string) *GetInstanceDeta
 	return s
 }
 
+func (s *GetInstanceDetailResponseBodyData) SetMaintainablePeriodTimeZone(v string) *GetInstanceDetailResponseBodyData {
+	s.MaintainablePeriodTimeZone = &v
+	return s
+}
+
 func (s *GetInstanceDetailResponseBodyData) Validate() error {
 	if s.ClusterInfo != nil {
 		if err := s.ClusterInfo.Validate(); err != nil {
@@ -662,19 +658,19 @@ func (s *GetInstanceDetailResponseBodyData) Validate() error {
 }
 
 type GetInstanceDetailResponseBodyDataClusterInfo struct {
-	// The port of the Attu component.
+	// The Attu component port.
 	//
 	// example:
 	//
 	// 3000
 	AttuPort *int32 `json:"AttuPort,omitempty" xml:"AttuPort,omitempty"`
-	// The public IP address.
+	// The public network address.
 	//
 	// example:
 	//
 	// c-123xxx-.milvus.aliyuncs.com
 	InternetUrl *string `json:"InternetUrl,omitempty" xml:"InternetUrl,omitempty"`
-	// The internal IP address.
+	// The internal network address.
 	//
 	// example:
 	//
@@ -682,13 +678,13 @@ type GetInstanceDetailResponseBodyDataClusterInfo struct {
 	IntranetUrl *string `json:"IntranetUrl,omitempty" xml:"IntranetUrl,omitempty"`
 	// The resource details.
 	MilvusResourceInfoList []*GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList `json:"MilvusResourceInfoList,omitempty" xml:"MilvusResourceInfoList,omitempty" type:"Repeated"`
-	// The size of the data stored in OSS.
+	// The OSS storage data size.
 	//
 	// example:
 	//
 	// 125.15 GB
 	OssStorageSize *string `json:"OssStorageSize,omitempty" xml:"OssStorageSize,omitempty"`
-	// The timestamp when the OSS metric is stored.
+	// The timestamp of the OSS storage metric.
 	//
 	// example:
 	//
@@ -706,7 +702,7 @@ type GetInstanceDetailResponseBodyDataClusterInfo struct {
 	//
 	// 24
 	TotalCuNum *int32 `json:"TotalCuNum,omitempty" xml:"TotalCuNum,omitempty"`
-	// The total number of disks.
+	// The total disk size.
 	//
 	// example:
 	//
@@ -819,28 +815,18 @@ func (s *GetInstanceDetailResponseBodyDataClusterInfo) Validate() error {
 type GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList struct {
 	// The component type. Valid values:
 	//
-	// 	- standalone
-	//
-	// 	- proxy
-	//
-	// 	- mix_coordinator
-	//
-	// 	- query
-	//
-	// 	- index
-	//
-	// 	- data
-	//
 	// example:
 	//
-	// QueryNode
+	// standalone
 	ComponentType *string `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
-	// The number of CUs.
+	// The number of compute units (CUs).
 	//
 	// example:
 	//
 	// 8
 	CuNum *int32 `json:"CuNum,omitempty" xml:"CuNum,omitempty"`
+	// The CU specifications. Valid values:
+	//
 	// example:
 	//
 	// 4
@@ -865,6 +851,19 @@ type GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList struct {
 	// 2
 	Replica *int32  `json:"Replica,omitempty" xml:"Replica,omitempty"`
 	ZoneId  *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// true
+	DataDiskEnabled *bool `json:"dataDiskEnabled,omitempty" xml:"dataDiskEnabled,omitempty"`
+	// example:
+	//
+	// 100
+	DataDiskSize *int32 `json:"dataDiskSize,omitempty" xml:"dataDiskSize,omitempty"`
+	// example:
+	//
+	// alicloud-disk-essd-pl1
+	DataDiskStorageClass *string                                                                       `json:"dataDiskStorageClass,omitempty" xml:"dataDiskStorageClass,omitempty"`
+	PodsList             []*GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoListPodsList `json:"podsList,omitempty" xml:"podsList,omitempty" type:"Repeated"`
 }
 
 func (s GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList) String() string {
@@ -907,6 +906,22 @@ func (s *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList) Get
 	return s.ZoneId
 }
 
+func (s *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList) GetDataDiskEnabled() *bool {
+	return s.DataDiskEnabled
+}
+
+func (s *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList) GetDataDiskSize() *int32 {
+	return s.DataDiskSize
+}
+
+func (s *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList) GetDataDiskStorageClass() *string {
+	return s.DataDiskStorageClass
+}
+
+func (s *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList) GetPodsList() []*GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoListPodsList {
+	return s.PodsList
+}
+
 func (s *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList) SetComponentType(v string) *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList {
 	s.ComponentType = &v
 	return s
@@ -947,7 +962,71 @@ func (s *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList) Set
 	return s
 }
 
+func (s *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList) SetDataDiskEnabled(v bool) *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList {
+	s.DataDiskEnabled = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList) SetDataDiskSize(v int32) *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList {
+	s.DataDiskSize = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList) SetDataDiskStorageClass(v string) *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList {
+	s.DataDiskStorageClass = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList) SetPodsList(v []*GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoListPodsList) *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList {
+	s.PodsList = v
+	return s
+}
+
 func (s *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList) Validate() error {
+	if s.PodsList != nil {
+		for _, item := range s.PodsList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoListPodsList struct {
+	PodId   *string `json:"podId,omitempty" xml:"podId,omitempty"`
+	PodName *string `json:"podName,omitempty" xml:"podName,omitempty"`
+}
+
+func (s GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoListPodsList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoListPodsList) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoListPodsList) GetPodId() *string {
+	return s.PodId
+}
+
+func (s *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoListPodsList) GetPodName() *string {
+	return s.PodName
+}
+
+func (s *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoListPodsList) SetPodId(v string) *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoListPodsList {
+	s.PodId = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoListPodsList) SetPodName(v string) *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoListPodsList {
+	s.PodName = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoListPodsList) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -1007,42 +1086,62 @@ func (s *GetInstanceDetailResponseBodyDataHighAvailability) Validate() error {
 }
 
 type GetInstanceDetailResponseBodyDataMeasureConfig struct {
+	// The number of CUs for the Data node.
+	//
 	// example:
 	//
 	// 4
 	DataNodeCuNum *int32 `json:"DataNodeCuNum,omitempty" xml:"DataNodeCuNum,omitempty"`
+	// The number of replicas for the Data node.
+	//
 	// example:
 	//
 	// 2
 	DataNodeReplica *int32 `json:"DataNodeReplica,omitempty" xml:"DataNodeReplica,omitempty"`
+	// The number of CUs for the Index node.
+	//
 	// example:
 	//
 	// 4
 	IndexNodeCuNum *int32 `json:"IndexNodeCuNum,omitempty" xml:"IndexNodeCuNum,omitempty"`
+	// The number of replicas for the Index node.
+	//
 	// example:
 	//
 	// 2
 	IndexNodeReplica *int32 `json:"IndexNodeReplica,omitempty" xml:"IndexNodeReplica,omitempty"`
+	// The number of CUs for the MixCoordinator node.
+	//
 	// example:
 	//
 	// 4
 	MixCoodinatorNodeCuNum *int32 `json:"MixCoodinatorNodeCuNum,omitempty" xml:"MixCoodinatorNodeCuNum,omitempty"`
+	// The number of replicas for the MixCoordinator node.
+	//
 	// example:
 	//
 	// 2
 	MixCoodinatorNodeReplica *int32 `json:"MixCoodinatorNodeReplica,omitempty" xml:"MixCoodinatorNodeReplica,omitempty"`
+	// The number of CUs for the Proxy node.
+	//
 	// example:
 	//
 	// 4
 	ProxyNodeCuNum *int32 `json:"ProxyNodeCuNum,omitempty" xml:"ProxyNodeCuNum,omitempty"`
+	// The number of replicas for the Proxy node.
+	//
 	// example:
 	//
 	// 2
 	ProxyNodeReplica *int32 `json:"ProxyNodeReplica,omitempty" xml:"ProxyNodeReplica,omitempty"`
+	// The number of CUs for the Query node.
+	//
 	// example:
 	//
 	// 4
 	QueryNodeCuNum *int32 `json:"QueryNodeCuNum,omitempty" xml:"QueryNodeCuNum,omitempty"`
+	// The number of replicas for the Query node.
+	//
 	// example:
 	//
 	// 2
@@ -1152,10 +1251,14 @@ func (s *GetInstanceDetailResponseBodyDataMeasureConfig) Validate() error {
 }
 
 type GetInstanceDetailResponseBodyDataTags struct {
+	// The key of the tag.
+	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
+	//
 	// example:
 	//
 	// value1

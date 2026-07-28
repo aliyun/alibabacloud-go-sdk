@@ -28,14 +28,22 @@ type iScalingRule interface {
 }
 
 type ScalingRule struct {
-	AdjustInfos     []*ScalingRuleAdjustInfos `json:"adjustInfos,omitempty" xml:"adjustInfos,omitempty" type:"Repeated"`
-	CronStr         *string                   `json:"cronStr,omitempty" xml:"cronStr,omitempty"`
-	Disabled        *bool                     `json:"disabled,omitempty" xml:"disabled,omitempty"`
-	EndTime         *int64                    `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	RuleId          *string                   `json:"ruleId,omitempty" xml:"ruleId,omitempty"`
-	ScalingRuleName *string                   `json:"scalingRuleName,omitempty" xml:"scalingRuleName,omitempty"`
-	StartTime       *int64                    `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	TimeZone        *string                   `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
+	// The adjustment information of the scaling rule.
+	AdjustInfos []*ScalingRuleAdjustInfos `json:"adjustInfos,omitempty" xml:"adjustInfos,omitempty" type:"Repeated"`
+	// The cron expression for the scaling schedule.
+	CronStr *string `json:"cronStr,omitempty" xml:"cronStr,omitempty"`
+	// Indicates whether the scaling rule is disabled.
+	Disabled *bool `json:"disabled,omitempty" xml:"disabled,omitempty"`
+	// The end time of the scaling rule. Unit: milliseconds.
+	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The ID of the scaling rule.
+	RuleId *string `json:"ruleId,omitempty" xml:"ruleId,omitempty"`
+	// The name of the scaling rule.
+	ScalingRuleName *string `json:"scalingRuleName,omitempty" xml:"scalingRuleName,omitempty"`
+	// The start time of the scaling rule. Unit: milliseconds.
+	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The time zone of the scaling rule.
+	TimeZone *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
 }
 
 func (s ScalingRule) String() string {
@@ -132,8 +140,10 @@ func (s *ScalingRule) Validate() error {
 }
 
 type ScalingRuleAdjustInfos struct {
+	// The type of the component to be adjusted.
 	ComponentType *string `json:"componentType,omitempty" xml:"componentType,omitempty"`
-	TargetValue   *string `json:"targetValue,omitempty" xml:"targetValue,omitempty"`
+	// The target value for the adjustment.
+	TargetValue *string `json:"targetValue,omitempty" xml:"targetValue,omitempty"`
 }
 
 func (s ScalingRuleAdjustInfos) String() string {

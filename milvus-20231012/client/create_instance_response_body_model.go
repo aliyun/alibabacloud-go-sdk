@@ -18,11 +18,16 @@ type iCreateInstanceResponseBody interface {
 }
 
 type CreateInstanceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ABCD-1234-5678-EFGH
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *CreateInstanceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Data *CreateInstanceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -74,8 +79,18 @@ func (s *CreateInstanceResponseBody) Validate() error {
 }
 
 type CreateInstanceResponseBodyData struct {
+	// The instance ID.
+	//
+	// example:
+	//
+	// c-xxx
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	OrderId    *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
+	// The order ID.
+	//
+	// example:
+	//
+	// xxx
+	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
 }
 
 func (s CreateInstanceResponseBodyData) String() string {

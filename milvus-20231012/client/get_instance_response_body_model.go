@@ -18,11 +18,16 @@ type iGetInstanceResponseBody interface {
 }
 
 type GetInstanceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ABCD-1234-5678-EFGH
-	RequestId *string         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Instance  *InstanceDetail `json:"instance,omitempty" xml:"instance,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The instance details.
+	Instance *InstanceDetail `json:"instance,omitempty" xml:"instance,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

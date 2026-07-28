@@ -38,19 +38,32 @@ type iScalingActivity interface {
 }
 
 type ScalingActivity struct {
-	ComponentTypes       *string `json:"componentTypes,omitempty" xml:"componentTypes,omitempty"`
-	Description          *string `json:"description,omitempty" xml:"description,omitempty"`
-	EndTime              *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	InstanceId           *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	PolicyType           *string `json:"policyType,omitempty" xml:"policyType,omitempty"`
-	ScalingActivityId    *string `json:"scalingActivityId,omitempty" xml:"scalingActivityId,omitempty"`
+	// The types of components involved in the scaling activity.
+	ComponentTypes *string `json:"componentTypes,omitempty" xml:"componentTypes,omitempty"`
+	// The description of the scaling activity.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The end time of the scaling activity.
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The type of the scaling policy.
+	PolicyType *string `json:"policyType,omitempty" xml:"policyType,omitempty"`
+	// The ID of the scaling activity.
+	ScalingActivityId *string `json:"scalingActivityId,omitempty" xml:"scalingActivityId,omitempty"`
+	// The state of the scaling activity.
 	ScalingActivityState *string `json:"scalingActivityState,omitempty" xml:"scalingActivityState,omitempty"`
-	ScalingPolicyId      *string `json:"scalingPolicyId,omitempty" xml:"scalingPolicyId,omitempty"`
-	ScalingRuleDetail    *string `json:"scalingRuleDetail,omitempty" xml:"scalingRuleDetail,omitempty"`
-	ScalingRuleId        *string `json:"scalingRuleId,omitempty" xml:"scalingRuleId,omitempty"`
-	ScalingRuleName      *string `json:"scalingRuleName,omitempty" xml:"scalingRuleName,omitempty"`
-	StartTime            *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	TimeZone             *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
+	// The ID of the scaling policy.
+	ScalingPolicyId *string `json:"scalingPolicyId,omitempty" xml:"scalingPolicyId,omitempty"`
+	// The details of the scaling rule.
+	ScalingRuleDetail *string `json:"scalingRuleDetail,omitempty" xml:"scalingRuleDetail,omitempty"`
+	// The ID of the scaling rule.
+	ScalingRuleId *string `json:"scalingRuleId,omitempty" xml:"scalingRuleId,omitempty"`
+	// The name of the scaling rule that triggered the activity.
+	ScalingRuleName *string `json:"scalingRuleName,omitempty" xml:"scalingRuleName,omitempty"`
+	// The start time of the scaling activity.
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The time zone of the scaling activity.
+	TimeZone *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
 }
 
 func (s ScalingActivity) String() string {

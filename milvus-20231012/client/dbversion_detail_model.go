@@ -18,9 +18,12 @@ type iDBVersionDetail interface {
 }
 
 type DBVersionDetail struct {
-	Specs   []*DBVersionDetailSpecs `json:"specs,omitempty" xml:"specs,omitempty" type:"Repeated"`
-	Status  *string                 `json:"status,omitempty" xml:"status,omitempty"`
-	Version *string                 `json:"version,omitempty" xml:"version,omitempty"`
+	// The specifications supported by the version.
+	Specs []*DBVersionDetailSpecs `json:"specs,omitempty" xml:"specs,omitempty" type:"Repeated"`
+	// The status of the version.
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The version number.
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s DBVersionDetail) String() string {
@@ -72,11 +75,16 @@ func (s *DBVersionDetail) Validate() error {
 }
 
 type DBVersionDetailSpecs struct {
-	ComponentSpecs  []*DBVersionDetailSpecsComponentSpecs `json:"componentSpecs,omitempty" xml:"componentSpecs,omitempty" type:"Repeated"`
-	IsHA            *bool                                 `json:"isHA,omitempty" xml:"isHA,omitempty"`
-	IsStandalone    *bool                                 `json:"isStandalone,omitempty" xml:"isStandalone,omitempty"`
-	IsStandalonePro *bool                                 `json:"isStandalonePro,omitempty" xml:"isStandalonePro,omitempty"`
-	ZoneMode        *string                               `json:"zoneMode,omitempty" xml:"zoneMode,omitempty"`
+	// The component specifications.
+	ComponentSpecs []*DBVersionDetailSpecsComponentSpecs `json:"componentSpecs,omitempty" xml:"componentSpecs,omitempty" type:"Repeated"`
+	// Indicates whether the high availability (HA) edition is supported.
+	IsHA *bool `json:"isHA,omitempty" xml:"isHA,omitempty"`
+	// Indicates whether the Standalone edition is supported.
+	IsStandalone *bool `json:"isStandalone,omitempty" xml:"isStandalone,omitempty"`
+	// Indicates whether the Standalone Pro edition is supported.
+	IsStandalonePro *bool `json:"isStandalonePro,omitempty" xml:"isStandalonePro,omitempty"`
+	// The zone mode of the specification.
+	ZoneMode *string `json:"zoneMode,omitempty" xml:"zoneMode,omitempty"`
 }
 
 func (s DBVersionDetailSpecs) String() string {
@@ -146,13 +154,20 @@ func (s *DBVersionDetailSpecs) Validate() error {
 }
 
 type DBVersionDetailSpecsComponentSpecs struct {
-	DefaultReplicas *int32    `json:"defaultReplicas,omitempty" xml:"defaultReplicas,omitempty"`
-	MaxReplicas     *int32    `json:"maxReplicas,omitempty" xml:"maxReplicas,omitempty"`
-	MinReplicas     *int32    `json:"minReplicas,omitempty" xml:"minReplicas,omitempty"`
-	Name            *string   `json:"name,omitempty" xml:"name,omitempty"`
-	Specs           []*string `json:"specs,omitempty" xml:"specs,omitempty" type:"Repeated"`
-	Step            *int32    `json:"step,omitempty" xml:"step,omitempty"`
-	Type            *string   `json:"type,omitempty" xml:"type,omitempty"`
+	// The default number of replicas for the component.
+	DefaultReplicas *int32 `json:"defaultReplicas,omitempty" xml:"defaultReplicas,omitempty"`
+	// The maximum number of replicas for the component.
+	MaxReplicas *int32 `json:"maxReplicas,omitempty" xml:"maxReplicas,omitempty"`
+	// The minimum number of replicas for the component.
+	MinReplicas *int32 `json:"minReplicas,omitempty" xml:"minReplicas,omitempty"`
+	// The name of the component.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The available specifications for the component.
+	Specs []*string `json:"specs,omitempty" xml:"specs,omitempty" type:"Repeated"`
+	// The step size for scaling the number of replicas.
+	Step *int32 `json:"step,omitempty" xml:"step,omitempty"`
+	// The type of the component.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s DBVersionDetailSpecsComponentSpecs) String() string {

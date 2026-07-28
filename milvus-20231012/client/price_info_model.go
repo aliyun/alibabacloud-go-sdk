@@ -28,14 +28,22 @@ type iPriceInfo interface {
 }
 
 type PriceInfo struct {
-	Currency           *string                  `json:"currency,omitempty" xml:"currency,omitempty"`
-	DiscountAmount     *string                  `json:"discountAmount,omitempty" xml:"discountAmount,omitempty"`
-	OptionalPromotions []*PromotionInfo         `json:"optionalPromotions,omitempty" xml:"optionalPromotions,omitempty" type:"Repeated"`
-	OriginalAmount     *string                  `json:"originalAmount,omitempty" xml:"originalAmount,omitempty"`
-	PriceModules       []*PriceInfoPriceModules `json:"priceModules,omitempty" xml:"priceModules,omitempty" type:"Repeated"`
-	Rules              []*PriceInfoRules        `json:"rules,omitempty" xml:"rules,omitempty" type:"Repeated"`
-	TaxAmount          *string                  `json:"taxAmount,omitempty" xml:"taxAmount,omitempty"`
-	TradeAmount        *string                  `json:"tradeAmount,omitempty" xml:"tradeAmount,omitempty"`
+	// The currency of the price.
+	Currency *string `json:"currency,omitempty" xml:"currency,omitempty"`
+	// The discount amount.
+	DiscountAmount *string `json:"discountAmount,omitempty" xml:"discountAmount,omitempty"`
+	// The optional promotions.
+	OptionalPromotions []*PromotionInfo `json:"optionalPromotions,omitempty" xml:"optionalPromotions,omitempty" type:"Repeated"`
+	// The original price.
+	OriginalAmount *string `json:"originalAmount,omitempty" xml:"originalAmount,omitempty"`
+	// The price modules.
+	PriceModules []*PriceInfoPriceModules `json:"priceModules,omitempty" xml:"priceModules,omitempty" type:"Repeated"`
+	// The pricing rules.
+	Rules []*PriceInfoRules `json:"rules,omitempty" xml:"rules,omitempty" type:"Repeated"`
+	// The tax amount.
+	TaxAmount *string `json:"taxAmount,omitempty" xml:"taxAmount,omitempty"`
+	// The actual trade price.
+	TradeAmount *string `json:"tradeAmount,omitempty" xml:"tradeAmount,omitempty"`
 }
 
 func (s PriceInfo) String() string {
@@ -150,8 +158,10 @@ func (s *PriceInfo) Validate() error {
 }
 
 type PriceInfoPriceModules struct {
+	// The original amount of the price module.
 	OriginalAmount *string `json:"originalAmount,omitempty" xml:"originalAmount,omitempty"`
-	Type           *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The type of the price module.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s PriceInfoPriceModules) String() string {
@@ -185,8 +195,11 @@ func (s *PriceInfoPriceModules) Validate() error {
 }
 
 type PriceInfoRules struct {
+	// The amount associated with the pricing rule.
 	Amount *string `json:"amount,omitempty" xml:"amount,omitempty"`
-	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The name of the pricing rule.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The ID of the pricing rule.
 	RuleId *string `json:"ruleId,omitempty" xml:"ruleId,omitempty"`
 }
 

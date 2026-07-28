@@ -20,18 +20,26 @@ type iDeleteInstanceResponseBody interface {
 }
 
 type DeleteInstanceResponseBody struct {
+	// The unique request ID.
+	//
 	// example:
 	//
 	// ABCD-1234-5678-EFGH
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// c-xxxx
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 123456
 	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

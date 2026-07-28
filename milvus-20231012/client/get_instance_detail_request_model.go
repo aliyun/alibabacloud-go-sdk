@@ -14,7 +14,7 @@ type iGetInstanceDetailRequest interface {
 }
 
 type GetInstanceDetailRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//

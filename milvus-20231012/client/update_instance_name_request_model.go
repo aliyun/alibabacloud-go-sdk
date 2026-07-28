@@ -16,7 +16,7 @@ type iUpdateInstanceNameRequest interface {
 }
 
 type UpdateInstanceNameRequest struct {
-	// The instance ID.
+	// The name of the instance.
 	//
 	// This parameter is required.
 	//

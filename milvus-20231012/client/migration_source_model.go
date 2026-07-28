@@ -18,8 +18,11 @@ type iMigrationSource interface {
 }
 
 type MigrationSource struct {
+	// The authentication information of the migration source.
 	AuthInfo *MigrationSourceAuthInfo `json:"authInfo,omitempty" xml:"authInfo,omitempty" type:"Struct"`
-	Database *string                  `json:"database,omitempty" xml:"database,omitempty"`
+	// The name of the database to migrate.
+	Database *string `json:"database,omitempty" xml:"database,omitempty"`
+	// The endpoint information of the migration source.
 	Endpoint *MigrationSourceEndpoint `json:"endpoint,omitempty" xml:"endpoint,omitempty" type:"Struct"`
 }
 
@@ -73,9 +76,13 @@ func (s *MigrationSource) Validate() error {
 }
 
 type MigrationSourceAuthInfo struct {
+	// The authentication type.
 	AuthType *string `json:"authType,omitempty" xml:"authType,omitempty"`
+	// The password used for authentication.
 	Password *string `json:"password,omitempty" xml:"password,omitempty"`
-	Token    *string `json:"token,omitempty" xml:"token,omitempty"`
+	// The token used for authentication.
+	Token *string `json:"token,omitempty" xml:"token,omitempty"`
+	// The username used for authentication.
 	Username *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
@@ -128,8 +135,10 @@ func (s *MigrationSourceAuthInfo) Validate() error {
 }
 
 type MigrationSourceEndpoint struct {
+	// The endpoint address of the migration source.
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	Port     *string `json:"port,omitempty" xml:"port,omitempty"`
+	// The port number of the migration source.
+	Port *string `json:"port,omitempty" xml:"port,omitempty"`
 }
 
 func (s MigrationSourceEndpoint) String() string {

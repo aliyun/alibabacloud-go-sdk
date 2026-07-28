@@ -18,19 +18,19 @@ type iUpdateAccessControlListRequest interface {
 }
 
 type UpdateAccessControlListRequest struct {
-	// The ID of public network access control
+	// The public access control ID.
 	//
 	// example:
 	//
 	// acl-123xxx
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The CIDR blocks.
+	// The CIDR block.
 	//
 	// example:
 	//
-	// 192.168.1.0/24,172.16.0.0/16
+	// ``192.168.**.**``/24,``172.1.**.**``/16
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//

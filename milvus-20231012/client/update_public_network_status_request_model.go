@@ -20,15 +20,15 @@ type iUpdatePublicNetworkStatusRequest interface {
 }
 
 type UpdatePublicNetworkStatusRequest struct {
-	// The CIDR blocks.
+	// The CIDR block.
 	//
 	// example:
 	//
 	// ``192.168.**.**``/24,``172.1.**.**``/16
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	// The component type. Valid values:
+	// The component type. Valid value:
 	//
-	// 	- Proxy
+	// - Proxy
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type UpdatePublicNetworkStatusRequest struct {
 	//
 	// Proxy
 	ComponentType *string `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type UpdatePublicNetworkStatusRequest struct {
 	//
 	// c-123xxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Enable /disable the Internet.
+	// Specifies whether to enable public network access.
 	//
 	// This parameter is required.
 	//
