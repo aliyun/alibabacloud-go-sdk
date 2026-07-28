@@ -131,6 +131,8 @@ type iJobItem interface {
 	GetWorkspaceId() *string
 	SetWorkspaceName(v string) *JobItem
 	GetWorkspaceName() *string
+	SetSupportedProfilingTypes(v string) *JobItem
+	GetSupportedProfilingTypes() *string
 }
 
 type JobItem struct {
@@ -172,57 +174,57 @@ type JobItem struct {
 	//
 	// false
 	EnablePreemptibleJob *bool `json:"EnablePreemptibleJob,omitempty" xml:"EnablePreemptibleJob,omitempty"`
-	// Indicates whether Debugger analysis is enabled.
+	// Indicates whether debugger analysis is enabled.
 	//
 	// example:
 	//
 	// false
 	EnabledDebugger *bool `json:"EnabledDebugger,omitempty" xml:"EnabledDebugger,omitempty"`
-	// The environment variables injected at job runtime.
+	// The environment variables injected into the job at runtime.
 	Envs map[string]*string `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	// The time when the job was created, in UTC format.
+	// The job creation time in UTC format.
 	//
 	// example:
 	//
 	// 2025-04-16T07:25:34Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The time when the job failed, in UTC format.
+	// The time when the job failed (UTC).
 	//
 	// example:
 	//
 	// null
 	GmtFailedTime *string `json:"GmtFailedTime,omitempty" xml:"GmtFailedTime,omitempty"`
-	// The time when the job finished, in UTC format.
+	// The time when the job finished (UTC).
 	//
 	// example:
 	//
 	// 2025-04-16T07:28:20Z
 	GmtFinishTime *string `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
-	// The time when the job was last modified, in UTC format.
+	// The time when the job was modified (UTC).
 	//
 	// example:
 	//
 	// 2025-04-16T07:28:22Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The time when the job started running, in UTC format.
+	// The time when the job started running in UTC format.
 	//
 	// example:
 	//
 	// 2025-04-16T07:26:41Z
 	GmtRunningTime *string `json:"GmtRunningTime,omitempty" xml:"GmtRunningTime,omitempty"`
-	// The time when the job was stopped, in UTC format.
+	// The time when the job was stopped (UTC).
 	//
 	// example:
 	//
 	// null
 	GmtStoppedTime *string `json:"GmtStoppedTime,omitempty" xml:"GmtStoppedTime,omitempty"`
-	// The time when the job was submitted, in UTC format.
+	// The job submission time in UTC format.
 	//
 	// example:
 	//
 	// 2025-04-16T07:26:14Z
 	GmtSubmittedTime *string `json:"GmtSubmittedTime,omitempty" xml:"GmtSubmittedTime,omitempty"`
-	// The time when the job completed successfully, in UTC format.
+	// The time when the job completed successfully in UTC format.
 	//
 	// example:
 	//
@@ -240,32 +242,16 @@ type JobItem struct {
 	//
 	// dlc-20210126170216-********
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The maximum running duration of the job.
+	// The maximum job running duration.
 	//
 	// example:
 	//
 	// 0
 	JobMaxRunningTimeMinutes *int64              `json:"JobMaxRunningTimeMinutes,omitempty" xml:"JobMaxRunningTimeMinutes,omitempty"`
 	JobReplicaStatuses       []*JobReplicaStatus `json:"JobReplicaStatuses,omitempty" xml:"JobReplicaStatuses,omitempty" type:"Repeated"`
-	// The node configurations of the job at runtime.
+	// The node configurations for the job at runtime.
 	JobSpecs []*JobSpec `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
 	// The job type. Valid values:
-	//
-	// - TFJob
-	//
-	// - PyTorchJob
-	//
-	// - MPIJob
-	//
-	// - XGBoostJob
-	//
-	// - OneFlowJob
-	//
-	// - ElasticBatchJob
-	//
-	// - RayJob
-	//
-	// - SlurmJob
 	//
 	// example:
 	//
@@ -279,7 +265,7 @@ type JobItem struct {
 	NodeCount *string `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
 	// The node names.
 	NodeNames []*string `json:"NodeNames,omitempty" xml:"NodeNames,omitempty" type:"Repeated"`
-	// The pods.
+	// Pods。
 	Pods []*PodItem `json:"Pods,omitempty" xml:"Pods,omitempty" type:"Repeated"`
 	// The job priority.
 	//
@@ -287,19 +273,13 @@ type JobItem struct {
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The reason code for the current job status. Valid values:
-	//
-	// - InvalidParameter
-	//
-	// - JobSucceeded
-	//
-	// - JobStoppedByUser
+	// The reason code for the job entering its current status. Valid values:
 	//
 	// example:
 	//
 	// JobStoppedByUser
 	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	// The detailed description of the reason for the current job status.
+	// The detailed description of the reason for the job entering its current status.
 	//
 	// example:
 	//
@@ -341,7 +321,7 @@ type JobItem struct {
 	//
 	// my_resource_group
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// The resource quota name.
+	// The resource name.
 	//
 	// example:
 	//
@@ -365,23 +345,19 @@ type JobItem struct {
 	Settings *JobSettings `json:"Settings,omitempty" xml:"Settings,omitempty"`
 	// The job status. Valid values:
 	//
-	// - Succeeded
-	//
-	// - Failed
-	//
 	// example:
 	//
 	// Stopped
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The job status transition history.
+	// The job status transition information.
 	StatusHistory []*StatusTransitionItem `json:"StatusHistory,omitempty" xml:"StatusHistory,omitempty" type:"Repeated"`
-	// The job substatus, such as the preemption retry status.
+	// The job sub-status, such as preemption retry status.
 	//
 	// example:
 	//
 	// Restarting
 	SubStatus *string `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
-	// The system environment variable configurations.
+	// The system environment variable configuration.
 	SystemEnvs   map[string]*string `json:"SystemEnvs,omitempty" xml:"SystemEnvs,omitempty"`
 	TemplateId   *string            `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	TemplateName *string            `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
@@ -391,7 +367,7 @@ type JobItem struct {
 	//
 	// ****93955616****
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The directory where the third-party library file Requirements.txt is located.
+	// The directory where the third-party library file requirements.txt is located.
 	//
 	// example:
 	//
@@ -429,7 +405,7 @@ type JobItem struct {
 	//
 	// vpc-1
 	UserVpc *JobItemUserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
-	// The username of the user who submitted the job.
+	// The username of the job submitter.
 	//
 	// example:
 	//
@@ -453,6 +429,10 @@ type JobItem struct {
 	//
 	// dlc-workspace
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	// example:
+	//
+	// sysom
+	SupportedProfilingTypes *string `json:"supportedProfilingTypes,omitempty" xml:"supportedProfilingTypes,omitempty"`
 }
 
 func (s JobItem) String() string {
@@ -705,6 +685,10 @@ func (s *JobItem) GetWorkspaceId() *string {
 
 func (s *JobItem) GetWorkspaceName() *string {
 	return s.WorkspaceName
+}
+
+func (s *JobItem) GetSupportedProfilingTypes() *string {
+	return s.SupportedProfilingTypes
 }
 
 func (s *JobItem) SetAccessibility(v string) *JobItem {
@@ -1012,6 +996,11 @@ func (s *JobItem) SetWorkspaceName(v string) *JobItem {
 	return s
 }
 
+func (s *JobItem) SetSupportedProfilingTypes(v string) *JobItem {
+	s.SupportedProfilingTypes = &v
+	return s
+}
+
 func (s *JobItem) Validate() error {
 	if s.CodeSource != nil {
 		if err := s.CodeSource.Validate(); err != nil {
@@ -1099,7 +1088,7 @@ type JobItemCodeSource struct {
 	//
 	// code-20210111103721-********
 	CodeSourceId *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
-	// The commit ID of the code repository used for this job.
+	// The commit ID of the code repository used by this job.
 	//
 	// example:
 	//
@@ -1207,11 +1196,7 @@ func (s *JobItemDataSources) Validate() error {
 }
 
 type JobItemUserVpc struct {
-	// The default routing. Valid values:
-	//
-	// - eth0: uses the default network interface controller (NIC) to access external networks through the public gateway.
-	//
-	// - eth1: uses the user elastic network interfaces (ENIs) to access external networks through the private gateway.
+	// The default route. Valid values:
 	//
 	// example:
 	//

@@ -81,7 +81,7 @@ type JobSettings struct {
 	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
 	// The DataJuicer task configuration.
 	DataJuicerConfig *DataJuicerConfig `json:"DataJuicerConfig,omitempty" xml:"DataJuicerConfig,omitempty"`
-	// Specifies whether to skip the inventory check. Valid values:
+	// Specifies whether to skip inventory check. Valid values:
 	//
 	// - true
 	//
@@ -97,7 +97,7 @@ type JobSettings struct {
 	//
 	// 535.54.03
 	Driver *string `json:"Driver,omitempty" xml:"Driver,omitempty"`
-	// The CPU affinity setting. This setting takes effect only when general-purpose subscription computing resources are used.
+	// The CPU affinity setting. This setting is effective only when using general computing subscription resources.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type JobSettings struct {
 	//
 	// false
 	EnableErrorMonitoringInAIMaster *bool `json:"EnableErrorMonitoringInAIMaster,omitempty" xml:"EnableErrorMonitoringInAIMaster,omitempty"`
-	// Specifies whether OSS append writes are allowed. Valid values:
+	// Specifies whether to allow OSS append write. Valid values:
 	//
 	// - true
 	//
@@ -124,7 +124,7 @@ type JobSettings struct {
 	//
 	// true
 	EnableOssAppend *bool `json:"EnableOssAppend,omitempty" xml:"EnableOssAppend,omitempty"`
-	// Specifies whether the job is allowed to use RDMA. Valid values:
+	// Specifies whether to allow the job to use RDMA. Valid values:
 	//
 	// - true
 	//
@@ -144,7 +144,7 @@ type JobSettings struct {
 	//
 	// true
 	EnableSanityCheck *bool `json:"EnableSanityCheck,omitempty" xml:"EnableSanityCheck,omitempty"`
-	// Specifies whether the job is allowed to use tidal resources. Valid values:
+	// Specifies whether to allow the job to use tidal resources. Valid values:
 	//
 	// - true
 	//
@@ -154,27 +154,27 @@ type JobSettings struct {
 	//
 	// true
 	EnableTideResource *bool `json:"EnableTideResource,omitempty" xml:"EnableTideResource,omitempty"`
-	// The configuration parameters for fault tolerance monitoring after it is enabled. For example, you can specify whether to enable log hang-based detection.
+	// The configuration parameters for fault tolerance monitoring after it is enabled, such as whether to enable log hang-based detection.
 	//
 	// example:
 	//
 	// --enable-log-hang-detection true
 	ErrorMonitoringArgs *string `json:"ErrorMonitoringArgs,omitempty" xml:"ErrorMonitoringArgs,omitempty"`
-	// The duration (in minutes) for which the job is retained after it ends.
+	// The retention duration after job completion, in minutes.
 	//
 	// example:
 	//
 	// 30
 	JobReservedMinutes *int32 `json:"JobReservedMinutes,omitempty" xml:"JobReservedMinutes,omitempty"`
-	// The retention policy after the job ends.
+	// The retention policy after job completion.
 	//
 	// example:
 	//
 	// Always
 	JobReservedPolicy *string `json:"JobReservedPolicy,omitempty" xml:"JobReservedPolicy,omitempty"`
-	// The output model configuration. This parameter currently takes effect only in federated training scenarios.
+	// The output model configuration. This parameter is currently effective only in federated training scenarios.
 	ModelConfig *ModelConfig `json:"ModelConfig,omitempty" xml:"ModelConfig,omitempty"`
-	// The oversold resource usage mode for the job (not accepted, acceptable, or only accepted).
+	// The oversold resource usage mode for the job (reject/accept/only accept).
 	//
 	// example:
 	//

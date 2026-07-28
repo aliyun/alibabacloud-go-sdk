@@ -103,14 +103,16 @@ type iGetJobResponseBody interface {
 	GetWorkspaceId() *string
 	SetWorkspaceName(v string) *GetJobResponseBody
 	GetWorkspaceName() *string
+	SetSupportedProfilingTypes(v string) *GetJobResponseBody
+	GetSupportedProfilingTypes() *string
 }
 
 type GetJobResponseBody struct {
 	// The visibility of the job. Valid values:
 	//
-	// - PUBLIC: Visible to all members in the workspace.
+	// - PUBLIC: Visible to all users in this workspace.
 	//
-	// - PRIVATE (default): Visible only to you and administrators in the workspace.
+	// - PRIVATE (default): Visible only to you and administrators in this workspace.
 	//
 	// example:
 	//
@@ -202,7 +204,7 @@ type GetJobResponseBody struct {
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The job replica statuses.
 	JobReplicaStatuses []*JobReplicaStatus `json:"JobReplicaStatuses,omitempty" xml:"JobReplicaStatuses,omitempty" type:"Repeated"`
-	// The node configurations in the job. For more information, see the **JobSpecs*	- parameter in the CreateJob API.
+	// The node configurations in the job. Refer to **JobSpecs*	- in the CreateJob API.
 	JobSpecs []*JobSpec `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
 	// The job type. Specified by the JobType parameter in the [CreateJob](https://help.aliyun.com/document_detail/459672.html) API.
 	//
@@ -210,7 +212,7 @@ type GetJobResponseBody struct {
 	//
 	// TFJob
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// All nodes running in the job.
+	// All pods running in the job.
 	Pods []*GetJobResponseBodyPods `json:"Pods,omitempty" xml:"Pods,omitempty" type:"Repeated"`
 	// The priority of the job. Valid values: 1 to 9.
 	//
@@ -218,7 +220,7 @@ type GetJobResponseBody struct {
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The status detail code, which categorizes the sub-status under the current status (Status).
+	// The status detail code, which is a classification of the sub-status under the current status (Status).
 	//
 	// example:
 	//
@@ -315,7 +317,7 @@ type GetJobResponseBody struct {
 	//
 	// GAR***W134
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The folder that contains the third-party library (requirements.txt) file.
+	// The folder where the third-party library (requirements.txt) file is located.
 	//
 	// example:
 	//
@@ -349,6 +351,10 @@ type GetJobResponseBody struct {
 	//
 	// dlc-workspace
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	// example:
+	//
+	// sysom
+	SupportedProfilingTypes *string `json:"supportedProfilingTypes,omitempty" xml:"supportedProfilingTypes,omitempty"`
 }
 
 func (s GetJobResponseBody) String() string {
@@ -545,6 +551,10 @@ func (s *GetJobResponseBody) GetWorkspaceId() *string {
 
 func (s *GetJobResponseBody) GetWorkspaceName() *string {
 	return s.WorkspaceName
+}
+
+func (s *GetJobResponseBody) GetSupportedProfilingTypes() *string {
+	return s.SupportedProfilingTypes
 }
 
 func (s *GetJobResponseBody) SetAccessibility(v string) *GetJobResponseBody {
@@ -779,6 +789,11 @@ func (s *GetJobResponseBody) SetWorkspaceId(v string) *GetJobResponseBody {
 
 func (s *GetJobResponseBody) SetWorkspaceName(v string) *GetJobResponseBody {
 	s.WorkspaceName = &v
+	return s
+}
+
+func (s *GetJobResponseBody) SetSupportedProfilingTypes(v string) *GetJobResponseBody {
+	s.SupportedProfilingTypes = &v
 	return s
 }
 
@@ -1063,13 +1078,13 @@ type GetJobResponseBodyPods struct {
 	//
 	// 2021-01-12T14:36:01Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The node finish time (UTC).
+	// The pod finish time (UTC).
 	//
 	// example:
 	//
 	// 2021-01-12T15:36:05Z
 	GmtFinishTime *string `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
-	// The node start time (UTC).
+	// The pod start time (UTC).
 	//
 	// example:
 	//
@@ -1077,7 +1092,7 @@ type GetJobResponseBodyPods struct {
 	GmtStartTime *string `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
 	// The historical pods.
 	HistoryPods []*GetJobResponseBodyPodsHistoryPods `json:"HistoryPods,omitempty" xml:"HistoryPods,omitempty" type:"Repeated"`
-	// The network IP address of the node.
+	// The network IP address of the pod.
 	//
 	// example:
 	//
@@ -1085,7 +1100,7 @@ type GetJobResponseBodyPods struct {
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The node name.
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The node ID. You can use this ID with the GetPodLogs and GetPodEvents APIs to retrieve detailed logs and events for the node.
+	// The pod ID. You can use this ID with the GetPodLogs and GetPodEvents APIs to retrieve detailed logs and events of the pod.
 	//
 	// example:
 	//
@@ -1105,7 +1120,7 @@ type GetJobResponseBodyPods struct {
 	//
 	// Normal
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The node status. Valid values:
+	// The pod status. Valid values:
 	//
 	// - Pending
 	//
@@ -1131,12 +1146,16 @@ type GetJobResponseBodyPods struct {
 	//
 	// Normal
 	SubStatus *string `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
-	// The node type, which corresponds to a JobSpec in the JobSpecs parameter of CreateJob.
+	// The pod type, which corresponds to a JobSpec in the JobSpecs parameter of CreateJob.
 	//
 	// example:
 	//
 	// Worker
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// sysom
+	SupportedProfilingTypes *string `json:"supportedProfilingTypes,omitempty" xml:"supportedProfilingTypes,omitempty"`
 }
 
 func (s GetJobResponseBodyPods) String() string {
@@ -1201,6 +1220,10 @@ func (s *GetJobResponseBodyPods) GetSubStatus() *string {
 
 func (s *GetJobResponseBodyPods) GetType() *string {
 	return s.Type
+}
+
+func (s *GetJobResponseBodyPods) GetSupportedProfilingTypes() *string {
+	return s.SupportedProfilingTypes
 }
 
 func (s *GetJobResponseBodyPods) SetDuration(v float64) *GetJobResponseBodyPods {
@@ -1270,6 +1293,11 @@ func (s *GetJobResponseBodyPods) SetSubStatus(v string) *GetJobResponseBodyPods 
 
 func (s *GetJobResponseBodyPods) SetType(v string) *GetJobResponseBodyPods {
 	s.Type = &v
+	return s
+}
+
+func (s *GetJobResponseBodyPods) SetSupportedProfilingTypes(v string) *GetJobResponseBodyPods {
+	s.SupportedProfilingTypes = &v
 	return s
 }
 
@@ -1366,6 +1394,10 @@ type GetJobResponseBodyPodsHistoryPods struct {
 	//
 	// Worker
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// sysom
+	SupportedProfilingTypes *string `json:"supportedProfilingTypes,omitempty" xml:"supportedProfilingTypes,omitempty"`
 }
 
 func (s GetJobResponseBodyPodsHistoryPods) String() string {
@@ -1426,6 +1458,10 @@ func (s *GetJobResponseBodyPodsHistoryPods) GetSubStatus() *string {
 
 func (s *GetJobResponseBodyPodsHistoryPods) GetType() *string {
 	return s.Type
+}
+
+func (s *GetJobResponseBodyPodsHistoryPods) GetSupportedProfilingTypes() *string {
+	return s.SupportedProfilingTypes
 }
 
 func (s *GetJobResponseBodyPodsHistoryPods) SetDuration(v float64) *GetJobResponseBodyPodsHistoryPods {
@@ -1493,6 +1529,11 @@ func (s *GetJobResponseBodyPodsHistoryPods) SetType(v string) *GetJobResponseBod
 	return s
 }
 
+func (s *GetJobResponseBodyPodsHistoryPods) SetSupportedProfilingTypes(v string) *GetJobResponseBodyPodsHistoryPods {
+	s.SupportedProfilingTypes = &v
+	return s
+}
+
 func (s *GetJobResponseBodyPodsHistoryPods) Validate() error {
 	if s.PodIps != nil {
 		for _, item := range s.PodIps {
@@ -1517,7 +1558,7 @@ type GetJobResponseBodyRestartRecord struct {
 	OccurTime *string `json:"OccurTime,omitempty" xml:"OccurTime,omitempty"`
 	// The reason.
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The restart duration, in seconds.
+	// The restart duration.
 	RestartDurationInSec *int64 `json:"RestartDurationInSec,omitempty" xml:"RestartDurationInSec,omitempty"`
 	// The restart failure reason.
 	RestartFailReason *string `json:"RestartFailReason,omitempty" xml:"RestartFailReason,omitempty"`
@@ -1640,7 +1681,7 @@ func (s *GetJobResponseBodyRestartRecord) Validate() error {
 }
 
 type GetJobResponseBodyRestartRecordDetailErrorInfoList struct {
-	// The job-level blacklist.
+	// The job blacklist.
 	AddJobLevelBlacklist *bool `json:"AddJobLevelBlacklist,omitempty" xml:"AddJobLevelBlacklist,omitempty"`
 	// The node blacklist.
 	AddNodeToBlacklist *bool `json:"AddNodeToBlacklist,omitempty" xml:"AddNodeToBlacklist,omitempty"`
@@ -1756,9 +1797,9 @@ func (s *GetJobResponseBodyRestartRecordDetailErrorInfoList) Validate() error {
 type GetJobResponseBodyUserVpc struct {
 	// The default routing. This parameter is valid only for general computing resources. Valid values:
 	//
-	// eth0: uses the default network interface controller (NIC) to access external networks through the public gateway.
+	// eth0: uses the default network interface controller (NIC) to access external networks through a public gateway.
 	//
-	// eth1: uses the user elastic network interfaces (ENIs) to access external networks through the private gateway.
+	// eth1: uses the user elastic network interfaces (ENIs) to access external networks through a private gateway.
 	DefaultRoute *string `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
 	// The extended CIDR blocks, for example, 192.168.0.1/24.
 	ExtendedCidrs []*string `json:"ExtendedCidrs,omitempty" xml:"ExtendedCidrs,omitempty" type:"Repeated"`

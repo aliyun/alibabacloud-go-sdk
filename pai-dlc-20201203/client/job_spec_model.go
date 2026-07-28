@@ -15,6 +15,8 @@ type iJobSpec interface {
 	GetAutoScalingSpec() *AutoScalingSpec
 	SetConsiderInSuccessPolicy(v bool) *JobSpec
 	GetConsiderInSuccessPolicy() *bool
+	SetDriver(v string) *JobSpec
+	GetDriver() *string
 	SetEcsSpec(v string) *JobSpec
 	GetEcsSpec() *string
 	SetElasticSpotSpecs(v []*ElasticSpotSpec) *JobSpec
@@ -58,12 +60,13 @@ type iJobSpec interface {
 }
 
 type JobSpec struct {
-	// The scheduling node assignment configuration.
+	// The assigned scheduling node configuration.
 	AssignNodeSpec *AssignNodeSpec `json:"AssignNodeSpec,omitempty" xml:"AssignNodeSpec,omitempty"`
 	// The auto scaling configuration.
 	AutoScalingSpec *AutoScalingSpec `json:"AutoScalingSpec,omitempty" xml:"AutoScalingSpec,omitempty"`
-	// Specifies whether to consider this role when determining job success. This parameter takes effect only when the success policy is set to Partial.
-	ConsiderInSuccessPolicy *bool `json:"ConsiderInSuccessPolicy,omitempty" xml:"ConsiderInSuccessPolicy,omitempty"`
+	// Specifies whether this role is considered when determining job success. This parameter takes effect only when the success policy is set to Partial.
+	ConsiderInSuccessPolicy *bool   `json:"ConsiderInSuccessPolicy,omitempty" xml:"ConsiderInSuccessPolicy,omitempty"`
+	Driver                  *string `json:"Driver,omitempty" xml:"Driver,omitempty"`
 	// The hardware specifications of the worker. Visit [PAI-DLC billing](https://help.aliyun.com/document_detail/171758.html) for the detailed list of specifications.	Notice: Prices vary depending on the specifications.
 	//
 	// example:
@@ -113,7 +116,7 @@ type JobSpec struct {
 	// The dependencies required before this role starts.
 	StartupDependencies []*StartupDependency `json:"StartupDependencies,omitempty" xml:"StartupDependencies,omitempty" type:"Repeated"`
 	SystemDisk          *SystemDisk          `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty"`
-	// Type is closely related to Job Type. Different Job Types support different Worker Types.
+	// Type is closely related to Job Type. Different job types support different worker types.
 	//
 	// - **TFJob**: Supports Chief, PS, Worker, Evaluator, and GraphLearn.
 	//
@@ -161,6 +164,10 @@ func (s *JobSpec) GetAutoScalingSpec() *AutoScalingSpec {
 
 func (s *JobSpec) GetConsiderInSuccessPolicy() *bool {
 	return s.ConsiderInSuccessPolicy
+}
+
+func (s *JobSpec) GetDriver() *string {
+	return s.Driver
 }
 
 func (s *JobSpec) GetEcsSpec() *string {
@@ -255,6 +262,11 @@ func (s *JobSpec) SetAutoScalingSpec(v *AutoScalingSpec) *JobSpec {
 
 func (s *JobSpec) SetConsiderInSuccessPolicy(v bool) *JobSpec {
 	s.ConsiderInSuccessPolicy = &v
+	return s
+}
+
+func (s *JobSpec) SetDriver(v string) *JobSpec {
+	s.Driver = &v
 	return s
 }
 

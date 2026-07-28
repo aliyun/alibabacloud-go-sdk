@@ -9,13 +9,13 @@ import (
 
 // Summary:
 //
-// Creates a job and runs it in a cluster. You can specify the datasource config, code source configuration, startup command, and compute resource configuration for each node on which the job runs.
+// Creates a job and runs it in a cluster. You can specify the datasource config, code source configuration, startup command, and compute resource configuration for each node of the job.
 //
 // Description:
 //
-// Before you call this operation, make sure that you are familiar with the billing and [pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC.
+// Make sure that you are familiar with the billing and [pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC before you call this operation.
 //
-//	Notice: The total length of CreateJob request parameters, including system-generated parameters, cannot exceed 65,536 bytes..
+//	Notice: The total length of CreateJob request parameters (including system-generated parameters) cannot exceed 65,536 bytes.
 //
 // @param request - CreateJobRequest
 //
@@ -711,7 +711,7 @@ func (client *Client) GetDashboardWithContext(ctx context.Context, jobId *string
 
 // Summary:
 //
-// Retrieves the detailed configuration and runtime information of a DLC job.
+// Retrieves the detailed configuration and runtime information of a job.
 //
 // @param request - GetJobRequest
 //
@@ -1870,6 +1870,10 @@ func (client *Client) ListJobsWithContext(ctx context.Context, tmpReq *ListJobsR
 
 	if !dara.IsNil(request.ResourceId) {
 		query["ResourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.ResourceIds) {
+		query["ResourceIds"] = request.ResourceIds
 	}
 
 	if !dara.IsNil(request.ResourceQuotaName) {

@@ -18,9 +18,16 @@ type iSignalTarget interface {
 }
 
 type SignalTarget struct {
+	// The pod name. Required when Scope is set to pods.
 	PodNames []*string `json:"PodNames,omitempty" xml:"PodNames,omitempty" type:"Repeated"`
-	Roles    []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
-	Scope    *string   `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The role information. Required when Scope is set to roles.
+	Roles []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	// The send scope.
+	//
+	// example:
+	//
+	// pods
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
 }
 
 func (s SignalTarget) String() string {

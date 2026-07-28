@@ -21,6 +21,8 @@ type iContainerSpec interface {
 	GetName() *string
 	SetResources(v *ResourceRequirements) *ContainerSpec
 	GetResources() *ResourceRequirements
+	SetSecurityContext(v *SecurityContext) *ContainerSpec
+	GetSecurityContext() *SecurityContext
 	SetWorkingDir(v string) *ContainerSpec
 	GetWorkingDir() *string
 }
@@ -45,7 +47,8 @@ type ContainerSpec struct {
 	// data-init
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The container resources.
-	Resources *ResourceRequirements `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	Resources       *ResourceRequirements `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	SecurityContext *SecurityContext      `json:"SecurityContext,omitempty" xml:"SecurityContext,omitempty"`
 	// The working directory in the container.
 	//
 	// example:
@@ -86,6 +89,10 @@ func (s *ContainerSpec) GetResources() *ResourceRequirements {
 	return s.Resources
 }
 
+func (s *ContainerSpec) GetSecurityContext() *SecurityContext {
+	return s.SecurityContext
+}
+
 func (s *ContainerSpec) GetWorkingDir() *string {
 	return s.WorkingDir
 }
@@ -120,6 +127,11 @@ func (s *ContainerSpec) SetResources(v *ResourceRequirements) *ContainerSpec {
 	return s
 }
 
+func (s *ContainerSpec) SetSecurityContext(v *SecurityContext) *ContainerSpec {
+	s.SecurityContext = v
+	return s
+}
+
 func (s *ContainerSpec) SetWorkingDir(v string) *ContainerSpec {
 	s.WorkingDir = &v
 	return s
@@ -137,6 +149,11 @@ func (s *ContainerSpec) Validate() error {
 	}
 	if s.Resources != nil {
 		if err := s.Resources.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SecurityContext != nil {
+		if err := s.SecurityContext.Validate(); err != nil {
 			return err
 		}
 	}

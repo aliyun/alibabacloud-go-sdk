@@ -66,15 +66,15 @@ type iCreateJobRequest interface {
 type CreateJobRequest struct {
 	// The visibility of the job. Valid values:
 	//
-	// - PUBLIC: visible to all members in the workspace.
+	// - PUBLIC: visible to all members in this workspace.
 	//
-	// - PRIVATE: visible only to you and administrators in the workspace.
+	// - PRIVATE: visible only to you and administrators in this workspace.
 	//
 	// example:
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// The code source used by this job. Before the job nodes start, DLC automatically downloads the code configured in the code source and mounts it to a local directory of the container.
+	// The code source used by this job. Before the job nodes start, DLC automatically downloads the code configured in the code source and mounts it to a local directory in the container.
 	CodeSource *CreateJobRequestCodeSource `json:"CodeSource,omitempty" xml:"CodeSource,omitempty" type:"Struct"`
 	// The access credential configuration.
 	CredentialConfig *CredentialConfig             `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
@@ -88,7 +88,7 @@ type CreateJobRequest struct {
 	// “”
 	DebuggerConfigContent *string `json:"DebuggerConfigContent,omitempty" xml:"DebuggerConfigContent,omitempty"`
 	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the job. The name must meet the following requirements:
+	// The name of the job. The naming conventions are as follows:
 	//
 	// - The name cannot exceed 256 characters in length.
 	//
@@ -104,13 +104,13 @@ type CreateJobRequest struct {
 	ElasticSpec *JobElasticSpec `json:"ElasticSpec,omitempty" xml:"ElasticSpec,omitempty"`
 	// The environment variable configuration.
 	Envs map[string]*string `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	// The maximum running duration of the job, in minutes.
+	// The maximum running time of the job. Unit: minutes.
 	//
 	// example:
 	//
 	// 1024
 	JobMaxRunningTimeMinutes *int64 `json:"JobMaxRunningTimeMinutes,omitempty" xml:"JobMaxRunningTimeMinutes,omitempty"`
-	// The various runtime configurations of the job, such as the image address, startup command, node resource declarations, and number of replicas.
+	// **JobSpecs*	- describes various configurations for job runtime, such as image address, startup command, node resource declarations, and replica count.
 	//
 	// A DLC job consists of different types of nodes. Nodes of the same type share identical configurations, which is called a JobSpec. **JobSpecs*	- describes the configurations of all node types and is an array of JobSpec objects.
 	//
@@ -134,7 +134,7 @@ type CreateJobRequest struct {
 	//
 	// - RayJob
 	//
-	// - DataJuicerJob.
+	// - DataJuicerJob
 	//
 	// This parameter is required.
 	//
@@ -142,13 +142,13 @@ type CreateJobRequest struct {
 	//
 	// TFJob
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The additional configuration for this node. You can use this parameter to adjust the behavior of mounted data sources. For example, if the node has an OSS data source mounted, you can set this parameter to `fs.oss.download.thread.concurrency=4,fs.oss.download.queue.size=16` to overwrite the default JindoFS parameter settings.
+	// The additional configuration for this node. You can use this parameter to adjust the behavior of mounted data sources. For example, if the node has an OSS-type data source mounted, you can set this parameter to `fs.oss.download.thread.concurrency=4,fs.oss.download.queue.size=16` to overwrite the default JindoFS parameter settings.
 	//
 	// example:
 	//
 	// key1=value1,key2=value2
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	// The priority of the job. This parameter is optional. Default value: 1. Valid values: 1 to 9.
+	// The priority of the job. This is an optional parameter. Default value: 1. Valid values: 1 to 9.
 	//
 	// - 1: the lowest priority.
 	//
@@ -158,11 +158,11 @@ type CreateJobRequest struct {
 	//
 	// 8
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The resource group ID. This parameter is optional.
+	// The resource group ID. This is an optional parameter.
 	//
-	// - If this parameter is left empty, the job is submitted to the public resource group.
+	// - If the value is empty, the job is submitted to the public resource group.
 	//
-	// - If the current workspace has an attached resource quota, you can specify the corresponding resource quota ID. For details about how to query the resource quota ID, see [Manage resource quotas](https://help.aliyun.com/document_detail/2651299.html).
+	// - If the current workspace has a resource quota attached, you can specify the corresponding resource quota ID. For details about how to query the resource quota ID, see [Manage resource quotas](https://help.aliyun.com/document_detail/2651299.html).
 	//
 	// example:
 	//
@@ -174,11 +174,11 @@ type CreateJobRequest struct {
 	SchedulingStrategy *string `json:"SchedulingStrategy,omitempty" xml:"SchedulingStrategy,omitempty"`
 	// The additional parameter settings for the job.
 	Settings *JobSettings `json:"Settings,omitempty" xml:"Settings,omitempty"`
-	// The success policy for distributed multi-node jobs. Only TensorFlow multi-node jobs support this parameter. Valid values:
+	// The success policy for distributed multi-node jobs. Currently, only TensorFlow multi-node jobs support this parameter.
 	//
-	// - ChiefWorker: the entire job is considered successful when the Chief pod finishes successfully.
+	// - ChiefWorker: the entire job is considered successful as long as the Chief pod finishes successfully.
 	//
-	// - AllWorkers (default): the entire job is considered successful only when all Worker pods finish successfully.
+	// - AllWorkers (default): the entire job is considered successful only when all Workers finish successfully.
 	//
 	// example:
 	//
@@ -196,7 +196,7 @@ type CreateJobRequest struct {
 	//
 	// 1
 	TemplateVersion *int32 `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	// The name of the folder that contains the third-party Python library file (requirements.txt). Before running the specified UserCommand on each node, PAI-DLC retrieves the requirements.txt file from the specified folder and runs `pip install -r` to install the libraries.
+	// The folder name where the third-party Python library (requirements.txt) file is located. Before running the specified UserCommand on each node, PAI-DLC retrieves the requirements.txt file from the specified folder and runs `pip install -r` to install the libraries.
 	//
 	// example:
 	//
@@ -214,7 +214,7 @@ type CreateJobRequest struct {
 	UserCommand *string `json:"UserCommand,omitempty" xml:"UserCommand,omitempty"`
 	// The user VPC configuration.
 	UserVpc *CreateJobRequestUserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
-	// The workspace ID. <props="china">For information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html)..
+	// The workspace ID. <props="china">For information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
 	//
 	// example:
 	//
@@ -521,25 +521,26 @@ func (s *CreateJobRequest) Validate() error {
 }
 
 type CreateJobRequestCodeSource struct {
-	// The branch of the code repository referenced at runtime. This parameter is optional. By default, the branch configured in the code source is used.
+	// The branch of the code repository referenced when this job runs. This is an optional parameter. By default, the branch configured in the code source is used.
 	//
 	// example:
 	//
 	// master
 	Branch *string `json:"Branch,omitempty" xml:"Branch,omitempty"`
-	// The code source ID. <props="china">For information about how to obtain the code source ID, see [ListCodeSources](https://help.aliyun.com/document_detail/459922.html)..
+	// The code source ID. <props="china">For information about how to obtain the code source ID, see [ListCodeSources](https://help.aliyun.com/document_detail/459922.html).
 	//
 	// example:
 	//
 	// code-20210111103721-xxxxxxx
 	CodeSourceId *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
-	// The commit ID of the code to download for this job. This parameter is optional. By default, the commit ID configured in the code source is used.
+	// The commit ID of the code to download for this job. This is an optional parameter. By default, the CommitID configured in the code source is used.
 	//
 	// example:
 	//
 	// 44da109b5******
-	Commit *string `json:"Commit,omitempty" xml:"Commit,omitempty"`
-	// The mount path for this job. This parameter is optional. By default, the mount path configured in the code source is used.
+	Commit            *string `json:"Commit,omitempty" xml:"Commit,omitempty"`
+	IsSharedMountPath *bool   `json:"IsSharedMountPath,omitempty" xml:"IsSharedMountPath,omitempty"`
+	// The mount path for this job. This is an optional parameter. By default, the mount path configured in the code source is used.
 	//
 	// example:
 	//
@@ -567,6 +568,10 @@ func (s *CreateJobRequestCodeSource) GetCommit() *string {
 	return s.Commit
 }
 
+func (s *CreateJobRequestCodeSource) GetIsSharedMountPath() *bool {
+	return s.IsSharedMountPath
+}
+
 func (s *CreateJobRequestCodeSource) GetMountPath() *string {
 	return s.MountPath
 }
@@ -583,6 +588,11 @@ func (s *CreateJobRequestCodeSource) SetCodeSourceId(v string) *CreateJobRequest
 
 func (s *CreateJobRequestCodeSource) SetCommit(v string) *CreateJobRequestCodeSource {
 	s.Commit = &v
+	return s
+}
+
+func (s *CreateJobRequestCodeSource) SetIsSharedMountPath(v bool) *CreateJobRequestCodeSource {
+	s.IsSharedMountPath = &v
 	return s
 }
 
@@ -642,7 +652,7 @@ func (s *CreateJobRequestCustomEnvs) Validate() error {
 
 type CreateJobRequestDataSources struct {
 	AccessPointId *string `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
-	// The ID of the data source. <props="china">For information about how to obtain the data source ID, see [ListDatasets](https://help.aliyun.com/document_detail/457222.html)..
+	// The ID of the data source. <props="china">For information about how to obtain the data source ID, see [ListDatasets](https://help.aliyun.com/document_detail/457222.html).
 	//
 	// example:
 	//
@@ -651,13 +661,13 @@ type CreateJobRequestDataSources struct {
 	DataSourceVersion *string `json:"DataSourceVersion,omitempty" xml:"DataSourceVersion,omitempty"`
 	EnableCache       *bool   `json:"EnableCache,omitempty" xml:"EnableCache,omitempty"`
 	MountAccess       *string `json:"MountAccess,omitempty" xml:"MountAccess,omitempty"`
-	// The mount path for this job. This parameter is optional. By default, the mount path configured in the data source is used.
+	// The mount path for this job. This is an optional parameter. By default, the mount path configured in the data source is used.
 	//
 	// example:
 	//
 	// /root/data
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	// The custom dataset mount properties. Only OSS is supported.
+	// Custom dataset mount properties. Currently, only OSS is supported.
 	//
 	// example:
 	//
@@ -778,7 +788,7 @@ type CreateJobRequestUserVpc struct {
 	//
 	// - eth0: uses the default network interface controller (NIC) to access external networks through the public gateway.
 	//
-	// - eth1: uses the user elastic network interfaces (ENIs) to access external networks through the private gateway. For the specific configuration method, see [Configure a DSW instance to access the Internet through a dedicated public gateway](https://help.aliyun.com/document_detail/2525343.html).
+	// - eth1: uses the user elastic network interfaces (ENIs) to access external networks through the private gateway. For the configuration method, see [Configure a DSW instance to access the Internet through a dedicated public gateway](https://help.aliyun.com/document_detail/2525343.html).
 	//
 	// example:
 	//
@@ -786,7 +796,7 @@ type CreateJobRequestUserVpc struct {
 	DefaultRoute *string `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
 	// The extended CIDR blocks.
 	//
-	// - If the vSwitch ID is empty, this parameter is not required. The system automatically obtains all CIDR blocks under the VPC.
+	// - If the vSwitch ID is empty, this parameter is optional. The system automatically retrieves all CIDR blocks under the VPC.
 	//
 	// - If the vSwitch ID is specified, this parameter is required. Specify all CIDR blocks under the VPC.
 	ExtendedCIDRs []*string `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
@@ -796,9 +806,9 @@ type CreateJobRequestUserVpc struct {
 	//
 	// sg-abcdef****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The ID of the user vSwitch. This parameter is optional.
+	// The ID of the user vSwitch. This is an optional parameter.
 	//
-	// - If this parameter is left empty, the system automatically selects an appropriate vSwitch based on inventory.
+	// - If the value is empty, the system automatically selects an appropriate vSwitch based on inventory availability.
 	//
 	// - You can also specify a vSwitch ID.
 	//

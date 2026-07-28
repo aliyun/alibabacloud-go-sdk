@@ -35,6 +35,8 @@ type iPodItem interface {
 	GetSubStatus() *string
 	SetType(v string) *PodItem
 	GetType() *string
+	SetSupportedProfilingTypes(v string) *PodItem
+	GetSupportedProfilingTypes() *string
 }
 
 type PodItem struct {
@@ -75,6 +77,10 @@ type PodItem struct {
 	//
 	// Worker
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// sysom
+	SupportedProfilingTypes *string `json:"supportedProfilingTypes,omitempty" xml:"supportedProfilingTypes,omitempty"`
 }
 
 func (s PodItem) String() string {
@@ -135,6 +141,10 @@ func (s *PodItem) GetSubStatus() *string {
 
 func (s *PodItem) GetType() *string {
 	return s.Type
+}
+
+func (s *PodItem) GetSupportedProfilingTypes() *string {
+	return s.SupportedProfilingTypes
 }
 
 func (s *PodItem) SetGmtCreateTime(v string) *PodItem {
@@ -199,6 +209,11 @@ func (s *PodItem) SetSubStatus(v string) *PodItem {
 
 func (s *PodItem) SetType(v string) *PodItem {
 	s.Type = &v
+	return s
+}
+
+func (s *PodItem) SetSupportedProfilingTypes(v string) *PodItem {
+	s.SupportedProfilingTypes = &v
 	return s
 }
 
