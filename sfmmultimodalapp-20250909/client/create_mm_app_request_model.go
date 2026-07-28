@@ -314,6 +314,7 @@ func (s *CreateMmAppRequestConversationConfig) Validate() error {
 }
 
 type CreateMmAppRequestModelConfig struct {
+	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
 	// example:
 	//
 	// 5
@@ -337,6 +338,10 @@ func (s CreateMmAppRequestModelConfig) GoString() string {
 	return s.String()
 }
 
+func (s *CreateMmAppRequestModelConfig) GetAppType() *string {
+	return s.AppType
+}
+
 func (s *CreateMmAppRequestModelConfig) GetHistoryLimit() *int32 {
 	return s.HistoryLimit
 }
@@ -351,6 +356,11 @@ func (s *CreateMmAppRequestModelConfig) GetOpenWebSearch() *bool {
 
 func (s *CreateMmAppRequestModelConfig) GetTextModal() *string {
 	return s.TextModal
+}
+
+func (s *CreateMmAppRequestModelConfig) SetAppType(v string) *CreateMmAppRequestModelConfig {
+	s.AppType = &v
+	return s
 }
 
 func (s *CreateMmAppRequestModelConfig) SetHistoryLimit(v int32) *CreateMmAppRequestModelConfig {
