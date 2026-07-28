@@ -2303,6 +2303,14 @@ func (client *Client) CreateMdsCubeResourceWithOptions(request *CreateMdsCubeRes
 		body["FileUrl"] = request.FileUrl
 	}
 
+	if !dara.IsNil(request.HarmonyMaxVersion) {
+		body["HarmonyMaxVersion"] = request.HarmonyMaxVersion
+	}
+
+	if !dara.IsNil(request.HarmonyMinVersion) {
+		body["HarmonyMinVersion"] = request.HarmonyMinVersion
+	}
+
 	if !dara.IsNil(request.IosMaxVersion) {
 		body["IosMaxVersion"] = request.IosMaxVersion
 	}

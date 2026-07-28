@@ -19,6 +19,10 @@ type iCreateMdsCubeResourceRequest interface {
 	GetExtendInfo() *string
 	SetFileUrl(v string) *CreateMdsCubeResourceRequest
 	GetFileUrl() *string
+	SetHarmonyMaxVersion(v string) *CreateMdsCubeResourceRequest
+	GetHarmonyMaxVersion() *string
+	SetHarmonyMinVersion(v string) *CreateMdsCubeResourceRequest
+	GetHarmonyMinVersion() *string
 	SetIosMaxVersion(v string) *CreateMdsCubeResourceRequest
 	GetIosMaxVersion() *string
 	SetIosMinVersion(v string) *CreateMdsCubeResourceRequest
@@ -49,6 +53,8 @@ type CreateMdsCubeResourceRequest struct {
 	AppId                   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	ExtendInfo              *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
 	FileUrl                 *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	HarmonyMaxVersion       *string `json:"HarmonyMaxVersion,omitempty" xml:"HarmonyMaxVersion,omitempty"`
+	HarmonyMinVersion       *string `json:"HarmonyMinVersion,omitempty" xml:"HarmonyMinVersion,omitempty"`
 	IosMaxVersion           *string `json:"IosMaxVersion,omitempty" xml:"IosMaxVersion,omitempty"`
 	IosMinVersion           *string `json:"IosMinVersion,omitempty" xml:"IosMinVersion,omitempty"`
 	MockDataUrl             *string `json:"MockDataUrl,omitempty" xml:"MockDataUrl,omitempty"`
@@ -88,6 +94,14 @@ func (s *CreateMdsCubeResourceRequest) GetExtendInfo() *string {
 
 func (s *CreateMdsCubeResourceRequest) GetFileUrl() *string {
 	return s.FileUrl
+}
+
+func (s *CreateMdsCubeResourceRequest) GetHarmonyMaxVersion() *string {
+	return s.HarmonyMaxVersion
+}
+
+func (s *CreateMdsCubeResourceRequest) GetHarmonyMinVersion() *string {
+	return s.HarmonyMinVersion
 }
 
 func (s *CreateMdsCubeResourceRequest) GetIosMaxVersion() *string {
@@ -156,6 +170,16 @@ func (s *CreateMdsCubeResourceRequest) SetExtendInfo(v string) *CreateMdsCubeRes
 
 func (s *CreateMdsCubeResourceRequest) SetFileUrl(v string) *CreateMdsCubeResourceRequest {
 	s.FileUrl = &v
+	return s
+}
+
+func (s *CreateMdsCubeResourceRequest) SetHarmonyMaxVersion(v string) *CreateMdsCubeResourceRequest {
+	s.HarmonyMaxVersion = &v
+	return s
+}
+
+func (s *CreateMdsCubeResourceRequest) SetHarmonyMinVersion(v string) *CreateMdsCubeResourceRequest {
+	s.HarmonyMinVersion = &v
 	return s
 }
 
