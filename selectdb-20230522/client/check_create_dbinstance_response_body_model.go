@@ -14,6 +14,8 @@ type iCheckCreateDBInstanceResponseBody interface {
 }
 
 type CheckCreateDBInstanceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ADF42B18-43FD-5100-83A9-BE81AB70C863

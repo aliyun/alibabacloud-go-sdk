@@ -29,6 +29,10 @@ type iModifySecurityIPListResponseBody interface {
 
 type ModifySecurityIPListResponseBody struct {
 	// The name of the instance.
+	//
+	// example:
+	//
+	// Instance test
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	// The name of the whitelist.
 	//

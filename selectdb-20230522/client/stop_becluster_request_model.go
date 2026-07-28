@@ -20,18 +20,24 @@ type iStopBEClusterRequest interface {
 }
 
 type StopBEClusterRequest struct {
+	// Cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

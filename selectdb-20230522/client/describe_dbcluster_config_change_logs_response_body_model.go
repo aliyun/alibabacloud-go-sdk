@@ -22,24 +22,28 @@ type iDescribeDBClusterConfigChangeLogsResponseBody interface {
 }
 
 type DescribeDBClusterConfigChangeLogsResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// failed
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The information returned.
+	// The returned data.
 	Data *DescribeDBClusterConfigChangeLogsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The dynamic code. This parameter is not returned.
+	// The dynamic code. This parameter is not used. Ignore this parameter.
 	//
 	// example:
 	//
 	// 0
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic message. This parameter is not returned.
+	// The dynamic message. This parameter is not used. Ignore this parameter.
 	//
 	// example:
 	//
 	// An error occurred while processing your request.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F8900A96-67F7-5274-A41B-7722E1ECF8C9
@@ -113,8 +117,10 @@ type DescribeDBClusterConfigChangeLogsResponseBodyData struct {
 	//
 	// example:
 	//
-	// selectdb-cn-wny3li00g02-be
+	// selectdb-cn-7213c8****-be
 	DbClusterId *string `json:"DbClusterId,omitempty" xml:"DbClusterId,omitempty"`
+	// The numeric ID of the instance.
+	//
 	// example:
 	//
 	// 6585
@@ -123,7 +129,7 @@ type DescribeDBClusterConfigChangeLogsResponseBodyData struct {
 	//
 	// example:
 	//
-	// selectdb-cn-wny3li00g02
+	// selectdb-cn-7213c8****
 	DbInstanceName *string `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
 	// The parameter change logs.
 	ParamChangeLogs []*DescribeDBClusterConfigChangeLogsResponseBodyDataParamChangeLogs `json:"ParamChangeLogs,omitempty" xml:"ParamChangeLogs,omitempty" type:"Repeated"`
@@ -202,36 +208,44 @@ func (s *DescribeDBClusterConfigChangeLogsResponseBodyData) Validate() error {
 }
 
 type DescribeDBClusterConfigChangeLogsResponseBodyDataParamChangeLogs struct {
+	// The time when the task was created. The time is in GMT.
+	//
 	// example:
 	//
 	// 2022-10-11T08:53:32Z
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The time when the task was last modified. The time is in GMT.
+	//
 	// example:
 	//
 	// 2024-03-08T10:08Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the change log.
+	// The ID of the change record.
 	//
 	// example:
 	//
 	// 617975
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Indicates whether the modification has taken effect.
+	// Indicates whether the configuration has taken effect.
 	//
 	// example:
 	//
 	// false
 	IsApplied *bool `json:"IsApplied,omitempty" xml:"IsApplied,omitempty"`
-	// The parameter name.
+	// The name of the configuration item.
 	//
 	// example:
 	//
 	// cumulative_compaction_rounds_for_each_base_compaction_round
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The new parameter value.
+	//
 	// example:
 	//
 	// 12
 	NewValue *string `json:"NewValue,omitempty" xml:"NewValue,omitempty"`
+	// The original parameter value.
+	//
 	// example:
 	//
 	// 10

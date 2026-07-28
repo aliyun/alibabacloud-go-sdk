@@ -16,8 +16,9 @@ type iDeleteVirtualClusterResponseBody interface {
 }
 
 type DeleteVirtualClusterResponseBody struct {
+	// The returned data.
 	Data *DeleteVirtualClusterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -61,10 +62,14 @@ func (s *DeleteVirtualClusterResponseBody) Validate() error {
 }
 
 type DeleteVirtualClusterResponseBodyData struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// selectdb-cn-wny3li0****-be
 	DbClusterId *string `json:"DbClusterId,omitempty" xml:"DbClusterId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****

@@ -18,13 +18,16 @@ type iModifyDBClusterResponseBody interface {
 }
 
 type ModifyDBClusterResponseBody struct {
-	// 代表资源一级ID的资源属性字段
+	// The instance ID.
 	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
-	DBInstanceId *string                          `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Data         *ModifyDBClusterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The returned data.
+	Data *ModifyDBClusterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0BF61F90-ACED-55DF-A6FE-56714B2BFCF6
@@ -76,14 +79,20 @@ func (s *ModifyDBClusterResponseBody) Validate() error {
 }
 
 type ModifyDBClusterResponseBodyData struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 219396937240838

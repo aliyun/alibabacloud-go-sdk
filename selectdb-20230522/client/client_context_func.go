@@ -69,7 +69,7 @@ func (client *Client) AllocateInstancePublicConnectionWithContext(ctx context.Co
 
 // Summary:
 //
-// 资源转组
+// Moves a specified database instance to a different resource group.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -125,7 +125,7 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Performs a precheck before an ApsaraDB for SelectDB instance is created.
+// Performs a precheck on the resources required to create an ApsaraDB for SelectDB instance.
 //
 // @param request - CheckCreateDBInstanceRequest
 //
@@ -231,10 +231,6 @@ func (client *Client) CheckCreateDBInstanceWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
-// Summary:
-//
-// 判断指定 IP 是否已经存在于网络白名单组
-//
 // @param request - CheckIpExistsInSecurityIpListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -273,7 +269,7 @@ func (client *Client) CheckIpExistsInSecurityIpListWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the service-linked role of ApsaraDB for SelectDB.
+// Call this operation to check the service-linked role.
 //
 // @param request - CheckServiceLinkedRoleRequest
 //
@@ -321,11 +317,13 @@ func (client *Client) CheckServiceLinkedRoleWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Creates a cluster in an ApsaraDB for SelectDB instance.
+// Creates a cluster for a specified ApsaraDB for SelectDB instance.
 //
 // Description:
 //
-// > : For an instance that uses the pay-as-you-go billing method, you can create only pay-as-you-go clusters. For an instance that uses the subscription billing method, you can create pay-as-you-go or subscription clusters.
+//	Warning:
+//
+// Pay-as-you-go instances support only pay-as-you-go clusters. Subscription instances support both pay-as-you-go and subscription clusters.
 //
 // @param request - CreateDBClusterRequest
 //
@@ -445,9 +443,9 @@ func (client *Client) CreateDBClusterWithContext(ctx context.Context, request *C
 //
 // This operation is supported only for instances that use the zone-redundant storage (ZRS) feature and meet the following requirements:
 //
-//   - The instance clusters reside in different zones.
+// - The instance clusters reside in different zones.
 //
-//   - The billing method of the instance clusters is consistent.
+// - The billing method of the instance clusters is consistent.
 //
 // @param request - CreateDBClusterBindingRequest
 //
@@ -504,6 +502,10 @@ func (client *Client) CreateDBClusterBindingWithContext(ctx context.Context, req
 // Summary:
 //
 // Creates an ApsaraDB for SelectDB instance.
+//
+// Description:
+//
+// Subscription instances cannot be deleted.
 //
 // @param tmpReq - CreateDBInstanceRequest
 //
@@ -659,7 +661,7 @@ func (client *Client) CreateDBInstanceWithContext(ctx context.Context, tmpReq *C
 
 // Summary:
 //
-// Creates a scheduled scaling rule.
+// Creates a time-based scaling rule.
 //
 // @param request - CreateElasticRuleRequest
 //
@@ -727,7 +729,7 @@ func (client *Client) CreateElasticRuleWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Creates a service-linked role for ApsaraDB for SelectDB.
+// Call this operation to create a service-linked role.
 //
 // @param request - CreateServiceLinkedRoleForSelectDBRequest
 //
@@ -775,7 +777,15 @@ func (client *Client) CreateServiceLinkedRoleForSelectDBWithContext(ctx context.
 
 // Summary:
 //
-// 创建虚拟集群
+// Creates a virtual cluster.
+//
+// Description:
+//
+// This operation is supported only for instances that use zone-redundant storage. The following conditions must also be met:
+//
+// - The minor engine version of the instance is 4.0.7 or later.
+//
+// - The primary and standby clusters are in different zones.
 //
 // @param request - CreateVirtualClusterRequest
 //
@@ -953,7 +963,11 @@ func (client *Client) DeleteDBClusterBindingWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Deletes an ApsaraDB for SelectDB instance.
+// Deletes a specified ApsaraDB SelectDB instance.
+//
+// Description:
+//
+// Subscription instances cannot be deleted.
 //
 // @param request - DeleteDBInstanceRequest
 //
@@ -1071,7 +1085,11 @@ func (client *Client) DeleteElasticRuleWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 删除虚拟集群
+// Deletes a virtual cluster.
+//
+// Description:
+//
+// > - This operation deletes only the virtual cluster. It **does not*	- delete the attached primary or secondary cluster.
 //
 // @param request - DeleteVirtualClusterRequest
 //
@@ -1123,7 +1141,7 @@ func (client *Client) DeleteVirtualClusterWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the information about all instance specifications.
+// Retrieves all instance type information.
 //
 // @param request - DescribeAllDBInstanceClassRequest
 //
@@ -1227,7 +1245,7 @@ func (client *Client) DescribeDBClusterConfigWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the configuration change logs of a cluster in an ApsaraDB for SelectDB instance.
+// Queries the change logs for cluster configurations.
 //
 // @param request - DescribeDBClusterConfigChangeLogsRequest
 //
@@ -1291,7 +1309,7 @@ func (client *Client) DescribeDBClusterConfigChangeLogsWithContext(ctx context.C
 
 // Summary:
 //
-// 获取集群的各规格缓存限制
+// Queries the cache limits for each cluster specification.
 //
 // @param request - DescribeDBClusterStorageLimitationRequest
 //
@@ -1343,7 +1361,7 @@ func (client *Client) DescribeDBClusterStorageLimitationWithContext(ctx context.
 
 // Summary:
 //
-// Queries the details about an ApsaraDB for SelectDB instance.
+// Gets the details of a specified instance.
 //
 // @param request - DescribeDBInstanceAttributeRequest
 //
@@ -1395,7 +1413,7 @@ func (client *Client) DescribeDBInstanceAttributeWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the network information about an ApsaraDB for SelectDB instance.
+// Queries the network information of a specified ApsaraDB SelectDB instance.
 //
 // @param request - DescribeDBInstanceNetInfoRequest
 //
@@ -1447,7 +1465,7 @@ func (client *Client) DescribeDBInstanceNetInfoWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the information about ApsaraDB for SelectDB instances.
+// Queries instances.
 //
 // @param tmpReq - DescribeDBInstancesRequest
 //
@@ -1569,6 +1587,126 @@ func (client *Client) DescribeElasticRulesWithContext(ctx context.Context, reque
 
 // Summary:
 //
+// Retrieves the Profile analysis for a query.
+//
+// Description:
+//
+// We recommend using the visual interface to run a query and obtain its QueryID. For more information, see [query audit](https://help.aliyun.com/zh/selectdb/audit-queries).
+//
+//	Notice:
+//
+// # Version limitations
+//
+// - Version 3.0 is not supported.
+//
+// - This feature is not available for instances created before 2025-08-01. To enable this feature for an older instance, please submit a ticket.
+//
+// @param request - DescribeProfileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeProfileResponse
+func (client *Client) DescribeProfileWithContext(ctx context.Context, request *DescribeProfileRequest, runtime *dara.RuntimeOptions) (_result *DescribeProfileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.QueryId) {
+		query["QueryId"] = request.QueryId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeProfile"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeProfileResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the execution plan (Explain) for a query.
+//
+// @param request - DescribeQueryExplainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeQueryExplainResponse
+func (client *Client) DescribeQueryExplainWithContext(ctx context.Context, request *DescribeQueryExplainRequest, runtime *dara.RuntimeOptions) (_result *DescribeQueryExplainResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.Mode) {
+		query["Mode"] = request.Mode
+	}
+
+	if !dara.IsNil(request.QueryId) {
+		query["QueryId"] = request.QueryId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeQueryExplain"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeQueryExplainResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries available regions and zones.
 //
 // @param request - DescribeRegionsRequest
@@ -1661,7 +1799,127 @@ func (client *Client) DescribeSecurityIPListWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # DescribeVSwitches
+// Retrieve slow query statistics for a time range.
+//
+// @param request - DescribeSlowQueryStatsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSlowQueryStatsResponse
+func (client *Client) DescribeSlowQueryStatsWithContext(ctx context.Context, request *DescribeSlowQueryStatsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSlowQueryStatsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.ThresholdMs) {
+		query["ThresholdMs"] = request.ThresholdMs
+	}
+
+	if !dara.IsNil(request.TopN) {
+		query["TopN"] = request.TopN
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSlowQueryStats"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSlowQueryStatsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取表结构
+//
+// @param request - DescribeTableSchemaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTableSchemaResponse
+func (client *Client) DescribeTableSchemaWithContext(ctx context.Context, request *DescribeTableSchemaRequest, runtime *dara.RuntimeOptions) (_result *DescribeTableSchemaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.Database) {
+		query["Database"] = request.Database
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Table) {
+		query["Table"] = request.Table
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeTableSchema"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeTableSchemaResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries vSwitches in a specified zone.
 //
 // @param request - DescribeVSwitchesRequest
 //
@@ -1729,7 +1987,7 @@ func (client *Client) DescribeVSwitchesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # DescribeZones
+// Describes the available zones.
 //
 // @param request - DescribeZonesRequest
 //
@@ -1845,7 +2103,7 @@ func (client *Client) EnDisableScalingRulesWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the pricing for creating a cluster in an ApsaraDB for SelectDB instance.
+// Queries pricing information for creating a new cluster in a SelectDB instance.
 //
 // @param request - GetCreateBEClusterInquiryRequest
 //
@@ -1885,7 +2143,7 @@ func (client *Client) GetCreateBEClusterInquiryWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the pricing for changing the specifications of a cluster in an ApsaraDB for SelectDB instance.
+// Retrieves the pricing information for creating a new cluster in a specified ApsaraDB for SelectDB instance.
 //
 // @param request - GetModifyBEClusterInquiryRequest
 //
@@ -1925,7 +2183,7 @@ func (client *Client) GetModifyBEClusterInquiryWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Modifies the name of a cluster in an ApsaraDB for SelectDB instance.
+// Modifies the cluster name of an ApsaraDB SelectDB instance.
 //
 // @param request - ModifyBEClusterAttributeRequest
 //
@@ -1989,7 +2247,7 @@ func (client *Client) ModifyBEClusterAttributeWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Scales a cluster in an ApsaraDB for SelectDB instance.
+// Scales out or in a specified ApsaraDB for SelectDB cluster.
 //
 // @param request - ModifyDBClusterRequest
 //
@@ -2073,7 +2331,7 @@ func (client *Client) ModifyDBClusterWithContext(ctx context.Context, request *M
 
 // Summary:
 //
-// Modifies the configurations of a cluster in an ApsaraDB for SelectDB instance.
+// Modifies the cluster configuration.
 //
 // @param request - ModifyDBClusterConfigRequest
 //
@@ -2341,7 +2599,19 @@ func (client *Client) ModifySecurityIPListWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 修改虚拟集群
+// Modifies a virtual cluster.
+//
+// Description:
+//
+// - You can modify the primary cluster independently.
+//
+// - You can modify the standby cluster independently.
+//
+// - You can switch between the primary and standby clusters.
+//
+//	Warning:
+//
+// You cannot modify both the primary and standby clusters in the same operation.
 //
 // @param request - ModifyVirtualClusterRequest
 //
@@ -2457,7 +2727,7 @@ func (client *Client) ReleaseInstancePublicConnectionWithContext(ctx context.Con
 
 // Summary:
 //
-// Resets the password of an account for an ApsaraDB for SelectDB instance.
+// Resets the password for a database account in an ApsaraDB for SelectDB instance.
 //
 // @param request - ResetAccountPasswordRequest
 //
@@ -2497,7 +2767,7 @@ func (client *Client) ResetAccountPasswordWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Restarts a cluster in an ApsaraDB for SelectDB instance.
+// Restarts the cluster of a specified ApsaraDB for SelectDB instance.
 //
 // @param request - RestartDBClusterRequest
 //
@@ -2563,7 +2833,7 @@ func (client *Client) RestartDBClusterWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Starts a cluster in an ApsaraDB for SelectDB instance.
+// Starts a specified ApsaraDB SelectDB cluster.
 //
 // @param request - StartBEClusterRequest
 //
@@ -2619,7 +2889,7 @@ func (client *Client) StartBEClusterWithContext(ctx context.Context, request *St
 
 // Summary:
 //
-// Stops a cluster in an ApsaraDB for SelectDB instance.
+// Stops a specified ApsaraDB SelectDB cluster.
 //
 // @param request - StopBEClusterRequest
 //
@@ -2675,7 +2945,7 @@ func (client *Client) StopBEClusterWithContext(ctx context.Context, request *Sto
 
 // Summary:
 //
-// 资源打用户标签
+// Adds tags to one or more instances.
 //
 // @param request - TagResourcesRequest
 //
@@ -2731,7 +3001,7 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// 资源去除用户标签
+// Removes tags from instances.
 //
 // @param request - UntagResourcesRequest
 //
@@ -2791,7 +3061,17 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 
 // Summary:
 //
-// # UpgradeDBInstanceDeployScheme
+// Upgrades a locally redundant instance to a zone-redundant instance.
+//
+// Description:
+//
+// When an instance is upgraded to a zone-redundant architecture, its storage is also upgraded to be zone-redundant. The unit price for storage changes. For more information, see [Billing items and pricing](https://help.aliyun.com/zh/selectdb/product-overview/billing-item-new-version).
+//
+// > Version requirements
+//
+// >
+//
+// > - The minor version of the instance must be 4.0.4 or later.
 //
 // @param tmpReq - UpgradeDBInstanceDeploySchemeRequest
 //
@@ -2853,7 +3133,7 @@ func (client *Client) UpgradeDBInstanceDeploySchemeWithContext(ctx context.Conte
 
 // Summary:
 //
-// Updates the database engine version of an ApsaraDB for SelectDB instance.
+// Upgrades the database version of a specified ApsaraDB SelectDB instance.
 //
 // @param request - UpgradeDBInstanceEngineVersionRequest
 //

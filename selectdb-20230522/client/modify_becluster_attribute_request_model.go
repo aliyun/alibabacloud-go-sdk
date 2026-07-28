@@ -24,25 +24,25 @@ type iModifyBEClusterAttributeRequest interface {
 }
 
 type ModifyBEClusterAttributeRequest struct {
+	// Cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-xxxb9f2w-be
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The attribute type of the instance. Set this parameter to DBInstanceDescription.
+	// Attribute type to modify.
 	//
-	// Valid values:
-	//
-	// 	- MaintainTime
-	//
-	// 	- DBInstanceDescription
+	// Set to DBInstanceDescription.
 	//
 	// This parameter is required.
 	//
@@ -50,6 +50,8 @@ type ModifyBEClusterAttributeRequest struct {
 	//
 	// DBInstanceDescription
 	InstanceAttributeType *string `json:"InstanceAttributeType,omitempty" xml:"InstanceAttributeType,omitempty"`
+	// Region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -57,7 +59,7 @@ type ModifyBEClusterAttributeRequest struct {
 	// cn-hangzhou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The new name of the cluster.
+	// Target cluster name.
 	//
 	// This parameter is required.
 	//

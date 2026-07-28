@@ -31,6 +31,10 @@ type iDescribeDBInstancesRequest interface {
 
 type DescribeDBInstancesRequest struct {
 	// The description of the instance.
+	//
+	// example:
+	//
+	// New instance test
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
 	// The instance ID. Separate multiple instance IDs with commas (,).
 	//
@@ -40,17 +44,17 @@ type DescribeDBInstancesRequest struct {
 	DBInstanceIds *string `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty"`
 	// The state of the instance. Valid values:
 	//
-	// 	- **CREATING**: The instance is being created.
+	// - **CREATING**: The instance is being created.
 	//
-	// 	- **ACTIVATION**: The instance is running.
+	// - **ACTIVATION**: The instance is running.
 	//
-	// 	- **RESOURCE_CHANGING**: The resource configuration of the instance is being changed.
+	// - **RESOURCE_CHANGING**: The instance is being upgraded or downgraded.
 	//
-	// 	- **ORDER_PREPARING**: The order is being confirmed.
+	// - **ORDER_PREPARING**: The order is being confirmed.
 	//
-	// 	- **READONLY_RESOURCE_CHANGING**: The resource configuration of the instance is being changed and the instance is write-locked.
+	// - **READONLY_RESOURCE_CHANGING**: The instance configuration is being changed, and the instance is write-locked.
 	//
-	// 	- **DELETING**: The instance is being deleted.
+	// - **DELETING**: The instance is being deleted.
 	//
 	// example:
 	//
@@ -62,19 +66,19 @@ type DescribeDBInstancesRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values:
+	// The number of entries to return on each page. Valid values:
 	//
-	// 	- **30*	- (default)
+	// - **30*	- (default)
 	//
-	// 	- **50**
+	// - **50**
 	//
-	// 	- **100**
+	// - **100**
 	//
 	// example:
 	//
 	// 30
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the instance.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -82,14 +86,15 @@ type DescribeDBInstancesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-4690g37929****
-	ResourceGroupId *string                          `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerId *int64                           `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Tag             []*DescribeDBInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The list of tags of instances.
+	Tag []*DescribeDBInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDBInstancesRequest) String() string {
@@ -195,10 +200,14 @@ func (s *DescribeDBInstancesRequest) Validate() error {
 }
 
 type DescribeDBInstancesRequestTag struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// testKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// testValue

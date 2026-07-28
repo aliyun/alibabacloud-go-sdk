@@ -85,9 +85,9 @@ func (s *DescribeSecurityIPListResponseBody) Validate() error {
 type DescribeSecurityIPListResponseBodyGroupItems struct {
 	// The IP address type. Valid values:
 	//
-	// 	- ipv4
+	// - ipv4
 	//
-	// 	- ipv6 (not supported)
+	// - ipv6 (not supported)
 	//
 	// example:
 	//

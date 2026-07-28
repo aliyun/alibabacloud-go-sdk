@@ -26,29 +26,40 @@ type iDescribeVSwitchesResponseBody interface {
 }
 
 type DescribeVSwitchesResponseBody struct {
+	// The list of results.
 	Items []*DescribeVSwitchesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to start the next query. If this parameter is empty, all results have been returned.
+	//
 	// example:
 	//
 	// 459a0909c0315bfbe0b5e8707e68181f
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries on the current page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 4773E4EC-025D-509F-AEA9-D53123FDFB0F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 15
@@ -140,14 +151,20 @@ func (s *DescribeVSwitchesResponseBody) Validate() error {
 }
 
 type DescribeVSwitchesResponseBodyItems struct {
+	// The vSwitch ID.
+	//
 	// example:
 	//
 	// vsw-bp1usf8eabhvibkkfde96
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The vSwitch name.
+	//
 	// example:
 	//
 	// subnet
 	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-i

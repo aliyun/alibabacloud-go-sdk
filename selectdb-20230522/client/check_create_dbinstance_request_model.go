@@ -46,101 +46,134 @@ type iCheckCreateDBInstanceRequest interface {
 }
 
 type CheckCreateDBInstanceRequest struct {
+	// The reserved cache size, in GB.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 200
 	CacheSize *int32 `json:"CacheSize,omitempty" xml:"CacheSize,omitempty"`
+	// The billing method of the instance. Valid values:
+	//
+	// - **Postpaid**: pay-as-you-go.
+	//
+	// - **Prepaid**: subscription.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// A client-generated token that is used to ensure the idempotence of the request. The token must be unique among different requests. The token can be up to 64 ASCII characters in length and cannot contain non-ASCII characters.
+	//
 	// example:
 	//
 	// AB
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The connection string of the instance.
+	//
 	// example:
 	//
 	// selectdb-cn-7213c8y****-public.selectdbfe.pre.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The specifications of the instance. Valid values:
+	// The instance type. Valid values:
 	//
-	// 	- **selectdb.xlarge**: 4 CPU cores and 32 GB of memory.
+	// - **selectdb.xlarge**: 4 cores, 32 GB.
 	//
-	// 	- **selectdb.2xlarge**: 8 CPU cores and 64 GB of memory.
+	// - **selectdb.2xlarge**: 8 cores, 64 GB.
 	//
-	// 	- **selectdb.4xlarge**: 16 CPU cores and 128 GB of memory.
+	// - **selectdb.4xlarge**: 16 cores, 128 GB.
 	//
-	// 	- **selectdb.8xlarge**: 32 CPU cores and 256 GB of memory.
+	// - **selectdb.8xlarge**: 32 cores, 256 GB.
 	//
-	// 	- **selectdb.16xlarge**: 64 CPU cores and 512 GB of memory.
+	// - **selectdb.16xlarge**: 64 cores, 512 GB.
 	//
-	// 	- **selectdb.24xlarge**: 96 CPU cores and 768 GB of memory.
+	// - **selectdb.24xlarge**: 96 cores, 768 GB.
 	//
-	// 	- **selectdb.32xlarge**: 128 CPU cores and 1,024 GB of memory.
+	// - **selectdb.32xlarge**: 128 cores, 1024 GB.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb.xlarge
-	DBInstanceClass       *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	// The description of the instance.
+	//
+	// example:
+	//
+	// New instance test
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	// The database engine of the instance.
+	// The database engine type.
 	//
 	// example:
 	//
 	// SelectDB
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The version of the database engine.
+	// The database engine version.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 2.4
+	// 3.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The unit of the subscription duration. Valid values:
+	//
+	// - **Year**
+	//
+	// - **Month**
+	//
+	// > This parameter is required and takes effect only when **ChargeType*	- is set to **Prepaid**.
+	//
 	// example:
 	//
 	// Month
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-4690g37929****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The IP address whitelist for the instance. Separate multiple IP addresses with commas (,).
+	//
 	// example:
 	//
 	// 172.16.XX.XX/12,192.168.XX.XX/22
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	// The subscription duration of the instance. Valid values:
+	// The subscription duration. Valid values:
 	//
-	// 	- If Period is set to Year, valid values of UsedTime are 1, 2, 3, 4, and 5.
+	// - If Period is set to Year, valid values are 1, 2, 3, 4, and 5.
 	//
-	// 	- If Period is set to Month, valid values of UsedTime are 1 to 12.
+	// - If Period is set to Month, valid values are integers from 1 to 12.
 	//
-	// >  This parameter takes effect and is required only if ChargeType is set to Prepaid.
+	// > This parameter is required and takes effect only when ChargeType is set to Prepaid.
 	//
 	// example:
 	//
 	// 1
 	UsedTime *int32 `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	// The vSwitch ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// vsw-bp1gzt31twhlo0sa5****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// VPC ID。
+	// The VPC ID.
 	//
 	// This parameter is required.
 	//
@@ -148,6 +181,8 @@ type CheckCreateDBInstanceRequest struct {
 	//
 	// vpc-bp175iuvg8nxqraf2****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The zone ID.
+	//
 	// This parameter is required.
 	//
 	// example:

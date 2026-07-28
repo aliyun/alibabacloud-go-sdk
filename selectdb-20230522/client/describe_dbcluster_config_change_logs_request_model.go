@@ -24,7 +24,7 @@ type iDescribeDBClusterConfigChangeLogsRequest interface {
 }
 
 type DescribeDBClusterConfigChangeLogsRequest struct {
-	// The configuration file that you want to modify. For a compute cluster, set the value to be.conf. For a frontend (FE) cluster, set the value to fe.conf.
+	// The configuration file that was modified. The value is \\`be.conf\\` for a compute cluster and \\`fe.conf\\` for an FE cluster.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type DescribeDBClusterConfigChangeLogsRequest struct {
 	//
 	// example:
 	//
-	// selectdb-cn-7213c8yvv09-be
+	// selectdb-cn-7213c8****-be
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The instance ID.
 	//
@@ -44,29 +44,31 @@ type DescribeDBClusterConfigChangeLogsRequest struct {
 	//
 	// example:
 	//
-	// selectdb-cn-jia3ma3b003
+	// selectdb-cn-7213c8****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The end of the time range to query. Format: yyyy-MM-dd HH:mm:ss.
+	// The end time to query change logs. The format is \\`yyyy-MM-dd HH:mm:ss\\`.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 2023-05-08T15:59:59Z
+	// 2023-05-08 15:59:59
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query. Format: yyyy-MM-dd HH:mm:ss.
+	// The start time to query change logs. The format is \\`yyyy-MM-dd HH:mm:ss\\`.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 2023-04-25T09:48:23Z
+	// 2023-04-25 09:48:23
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 

@@ -19,6 +19,10 @@ type iAllocateInstancePublicConnectionResponseBody interface {
 
 type AllocateInstancePublicConnectionResponseBody struct {
 	// The name of the instance.
+	//
+	// example:
+	//
+	// New instance test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The request ID.
 	//

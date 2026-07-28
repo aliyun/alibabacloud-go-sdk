@@ -18,7 +18,7 @@ type iDescribeDBInstanceNetInfoRequest interface {
 }
 
 type DescribeDBInstanceNetInfoRequest struct {
-	// The instance ID.
+	// Instance ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DescribeDBInstanceNetInfoRequest struct {
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The region ID of the instance.
+	// Region ID.
 	//
 	// This parameter is required.
 	//

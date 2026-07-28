@@ -26,9 +26,9 @@ type DeleteElasticRuleResponseBody struct {
 	//
 	// Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//

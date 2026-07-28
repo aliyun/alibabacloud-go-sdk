@@ -14,6 +14,8 @@ type iStopBEClusterResponseBody interface {
 }
 
 type StopBEClusterResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// BC854513-E85E-54F3-9842-B9CCD3308CDD

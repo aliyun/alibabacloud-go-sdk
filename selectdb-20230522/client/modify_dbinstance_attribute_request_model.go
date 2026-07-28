@@ -32,9 +32,9 @@ type ModifyDBInstanceAttributeRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The instance parameter to be modified. Valid values:
 	//
-	// 	- **MaintainTime**: Modify the maintenance window of the instance in the hh:mm-hh:mm format.
+	// - **MaintainTime**: Modify the maintenance window of the instance in the hh:mm-hh:mm format.
 	//
-	// 	- **DBInstanceDescription**: Modify the description of the instance.
+	// - **DBInstanceDescription**: Modify the description of the instance.
 	//
 	// This parameter is required.
 	//
@@ -53,9 +53,9 @@ type ModifyDBInstanceAttributeRequest struct {
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The new value of the instance parameter to be modified. Examples:
 	//
-	// 	- If InstanceAttributeType is set to MaintainTime, you can set Value to 00:00-06:00.
+	// - If InstanceAttributeType is set to MaintainTime, you can set Value to 00:00-06:00.
 	//
-	// 	- If InstanceAttributeType is set to DBInstanceDescription, you can set Value to testdb.
+	// - If InstanceAttributeType is set to DBInstanceDescription, you can set Value to testdb.
 	//
 	// This parameter is required.
 	//

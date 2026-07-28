@@ -26,7 +26,7 @@ type iCreateElasticRuleRequest interface {
 }
 
 type CreateElasticRuleRequest struct {
-	// The rule for computing resources of the required cluster.
+	// The target compute resource class for the cluster.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type CreateElasticRuleRequest struct {
 	//
 	// selectdb-cn-7213cjv****
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	// The time when you want to execute the scheduled scaling rule.
+	// The start time of the time-based scaling rule.
 	//
 	// This parameter is required.
 	//
@@ -58,11 +58,7 @@ type CreateElasticRuleRequest struct {
 	//
 	// 00:00
 	ElasticRuleStartTime *string `json:"ElasticRuleStartTime,omitempty" xml:"ElasticRuleStartTime,omitempty"`
-	// The execution cycle.
-	//
-	// Valid value:
-	//
-	// 	- Day
+	// The execution epoch.
 	//
 	// This parameter is required.
 	//

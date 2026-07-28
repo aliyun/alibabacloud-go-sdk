@@ -16,7 +16,10 @@ type iCreateDBClusterResponseBody interface {
 }
 
 type CreateDBClusterResponseBody struct {
+	// The data returned.
 	Data *CreateDBClusterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F8900A96-67F7-5274-A41B-7722E1ECF8C9
@@ -59,14 +62,20 @@ func (s *CreateDBClusterResponseBody) Validate() error {
 }
 
 type CreateDBClusterResponseBodyData struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// selectdb-cn-1ls3sg0po0****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 219543646290345

@@ -20,14 +20,20 @@ type iUpgradeDBInstanceDeploySchemeRequest interface {
 }
 
 type UpgradeDBInstanceDeploySchemeRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// A list of multi-zone configurations.
+	//
 	// This parameter is required.
 	MultiZone []*UpgradeDBInstanceDeploySchemeRequestMultiZone `json:"MultiZone,omitempty" xml:"MultiZone,omitempty" type:"Repeated"`
+	// The ID of the region where the instance resides.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -95,8 +101,12 @@ func (s *UpgradeDBInstanceDeploySchemeRequest) Validate() error {
 }
 
 type UpgradeDBInstanceDeploySchemeRequestMultiZone struct {
+	// The vSwitch ID.
+	//
 	// This parameter is required.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	// The zone ID.
+	//
 	// This parameter is required.
 	//
 	// example:

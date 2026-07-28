@@ -24,7 +24,34 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"us-west-1":             dara.String("selectdb.us-west-1.aliyuncs.com"),
+		"us-east-1":             dara.String("selectdb.us-east-1.aliyuncs.com"),
+		"na-south-1":            dara.String("selectdb.na-south-1.aliyuncs.com"),
+		"eu-west-1":             dara.String("selectdb.eu-west-1.aliyuncs.com"),
+		"eu-central-1":          dara.String("selectdb.eu-central-1.aliyuncs.com"),
+		"cn-zhangjiakou":        dara.String("selectdb.cn-zhangjiakou.aliyuncs.com"),
+		"cn-wulanchabu":         dara.String("selectdb.cn-wulanchabu.aliyuncs.com"),
+		"cn-shenzhen":           dara.String("selectdb.cn-shenzhen.aliyuncs.com"),
+		"cn-shanghai-finance-1": dara.String("selectdb.cn-shanghai-finance-1.aliyuncs.com"),
+		"cn-shanghai":           dara.String("selectdb.cn-shanghai.aliyuncs.com"),
+		"cn-qingdao":            dara.String("selectdb.cn-qingdao.aliyuncs.com"),
+		"cn-huhehaote":          dara.String("selectdb.cn-huhehaote.aliyuncs.com"),
+		"cn-hongkong":           dara.String("selectdb.cn-hongkong.aliyuncs.com"),
+		"cn-heyuan":             dara.String("selectdb.aliyuncs.com"),
+		"cn-hangzhou":           dara.String("selectdb.aliyuncs.com"),
+		"cn-guangzhou":          dara.String("selectdb.cn-guangzhou.aliyuncs.com"),
+		"cn-chengdu":            dara.String("selectdb.cn-chengdu.aliyuncs.com"),
+		"cn-beijing":            dara.String("selectdb.cn-beijing.aliyuncs.com"),
+		"ap-southeast-7":        dara.String("selectdb.aliyuncs.com"),
+		"ap-southeast-6":        dara.String("selectdb.ap-southeast-6.aliyuncs.com"),
+		"ap-southeast-5":        dara.String("selectdb.ap-southeast-5.aliyuncs.com"),
+		"ap-southeast-3":        dara.String("selectdb.aliyuncs.com"),
+		"ap-southeast-1":        dara.String("selectdb.ap-southeast-1.aliyuncs.com"),
+		"ap-northeast-2":        dara.String("selectdb.aliyuncs.com"),
+		"ap-northeast-1":        dara.String("selectdb.ap-northeast-1.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -136,7 +163,7 @@ func (client *Client) AllocateInstancePublicConnection(request *AllocateInstance
 
 // Summary:
 //
-// 资源转组
+// Moves a specified database instance to a different resource group.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -192,7 +219,7 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 
 // Summary:
 //
-// 资源转组
+// Moves a specified database instance to a different resource group.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -210,7 +237,7 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 
 // Summary:
 //
-// Performs a precheck before an ApsaraDB for SelectDB instance is created.
+// Performs a precheck on the resources required to create an ApsaraDB for SelectDB instance.
 //
 // @param request - CheckCreateDBInstanceRequest
 //
@@ -318,7 +345,7 @@ func (client *Client) CheckCreateDBInstanceWithOptions(request *CheckCreateDBIns
 
 // Summary:
 //
-// Performs a precheck before an ApsaraDB for SelectDB instance is created.
+// Performs a precheck on the resources required to create an ApsaraDB for SelectDB instance.
 //
 // @param request - CheckCreateDBInstanceRequest
 //
@@ -334,10 +361,6 @@ func (client *Client) CheckCreateDBInstance(request *CheckCreateDBInstanceReques
 	return _result, _err
 }
 
-// Summary:
-//
-// 判断指定 IP 是否已经存在于网络白名单组
-//
 // @param request - CheckIpExistsInSecurityIpListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -374,10 +397,6 @@ func (client *Client) CheckIpExistsInSecurityIpListWithOptions(request *CheckIpE
 	return _result, _err
 }
 
-// Summary:
-//
-// 判断指定 IP 是否已经存在于网络白名单组
-//
 // @param request - CheckIpExistsInSecurityIpListRequest
 //
 // @return CheckIpExistsInSecurityIpListResponse
@@ -394,7 +413,7 @@ func (client *Client) CheckIpExistsInSecurityIpList(request *CheckIpExistsInSecu
 
 // Summary:
 //
-// Queries the service-linked role of ApsaraDB for SelectDB.
+// Call this operation to check the service-linked role.
 //
 // @param request - CheckServiceLinkedRoleRequest
 //
@@ -442,7 +461,7 @@ func (client *Client) CheckServiceLinkedRoleWithOptions(request *CheckServiceLin
 
 // Summary:
 //
-// Queries the service-linked role of ApsaraDB for SelectDB.
+// Call this operation to check the service-linked role.
 //
 // @param request - CheckServiceLinkedRoleRequest
 //
@@ -460,11 +479,13 @@ func (client *Client) CheckServiceLinkedRole(request *CheckServiceLinkedRoleRequ
 
 // Summary:
 //
-// Creates a cluster in an ApsaraDB for SelectDB instance.
+// Creates a cluster for a specified ApsaraDB for SelectDB instance.
 //
 // Description:
 //
-// > : For an instance that uses the pay-as-you-go billing method, you can create only pay-as-you-go clusters. For an instance that uses the subscription billing method, you can create pay-as-you-go or subscription clusters.
+//	Warning:
+//
+// Pay-as-you-go instances support only pay-as-you-go clusters. Subscription instances support both pay-as-you-go and subscription clusters.
 //
 // @param request - CreateDBClusterRequest
 //
@@ -578,11 +599,13 @@ func (client *Client) CreateDBClusterWithOptions(request *CreateDBClusterRequest
 
 // Summary:
 //
-// Creates a cluster in an ApsaraDB for SelectDB instance.
+// Creates a cluster for a specified ApsaraDB for SelectDB instance.
 //
 // Description:
 //
-// > : For an instance that uses the pay-as-you-go billing method, you can create only pay-as-you-go clusters. For an instance that uses the subscription billing method, you can create pay-as-you-go or subscription clusters.
+//	Warning:
+//
+// Pay-as-you-go instances support only pay-as-you-go clusters. Subscription instances support both pay-as-you-go and subscription clusters.
 //
 // @param request - CreateDBClusterRequest
 //
@@ -606,9 +629,9 @@ func (client *Client) CreateDBCluster(request *CreateDBClusterRequest) (_result 
 //
 // This operation is supported only for instances that use the zone-redundant storage (ZRS) feature and meet the following requirements:
 //
-//   - The instance clusters reside in different zones.
+// - The instance clusters reside in different zones.
 //
-//   - The billing method of the instance clusters is consistent.
+// - The billing method of the instance clusters is consistent.
 //
 // @param request - CreateDBClusterBindingRequest
 //
@@ -670,9 +693,9 @@ func (client *Client) CreateDBClusterBindingWithOptions(request *CreateDBCluster
 //
 // This operation is supported only for instances that use the zone-redundant storage (ZRS) feature and meet the following requirements:
 //
-//   - The instance clusters reside in different zones.
+// - The instance clusters reside in different zones.
 //
-//   - The billing method of the instance clusters is consistent.
+// - The billing method of the instance clusters is consistent.
 //
 // @param request - CreateDBClusterBindingRequest
 //
@@ -691,6 +714,10 @@ func (client *Client) CreateDBClusterBinding(request *CreateDBClusterBindingRequ
 // Summary:
 //
 // Creates an ApsaraDB for SelectDB instance.
+//
+// Description:
+//
+// Subscription instances cannot be deleted.
 //
 // @param tmpReq - CreateDBInstanceRequest
 //
@@ -848,6 +875,10 @@ func (client *Client) CreateDBInstanceWithOptions(tmpReq *CreateDBInstanceReques
 //
 // Creates an ApsaraDB for SelectDB instance.
 //
+// Description:
+//
+// Subscription instances cannot be deleted.
+//
 // @param request - CreateDBInstanceRequest
 //
 // @return CreateDBInstanceResponse
@@ -864,7 +895,7 @@ func (client *Client) CreateDBInstance(request *CreateDBInstanceRequest) (_resul
 
 // Summary:
 //
-// Creates a scheduled scaling rule.
+// Creates a time-based scaling rule.
 //
 // @param request - CreateElasticRuleRequest
 //
@@ -932,7 +963,7 @@ func (client *Client) CreateElasticRuleWithOptions(request *CreateElasticRuleReq
 
 // Summary:
 //
-// Creates a scheduled scaling rule.
+// Creates a time-based scaling rule.
 //
 // @param request - CreateElasticRuleRequest
 //
@@ -950,7 +981,7 @@ func (client *Client) CreateElasticRule(request *CreateElasticRuleRequest) (_res
 
 // Summary:
 //
-// Creates a service-linked role for ApsaraDB for SelectDB.
+// Call this operation to create a service-linked role.
 //
 // @param request - CreateServiceLinkedRoleForSelectDBRequest
 //
@@ -998,7 +1029,7 @@ func (client *Client) CreateServiceLinkedRoleForSelectDBWithOptions(request *Cre
 
 // Summary:
 //
-// Creates a service-linked role for ApsaraDB for SelectDB.
+// Call this operation to create a service-linked role.
 //
 // @param request - CreateServiceLinkedRoleForSelectDBRequest
 //
@@ -1016,7 +1047,15 @@ func (client *Client) CreateServiceLinkedRoleForSelectDB(request *CreateServiceL
 
 // Summary:
 //
-// 创建虚拟集群
+// Creates a virtual cluster.
+//
+// Description:
+//
+// This operation is supported only for instances that use zone-redundant storage. The following conditions must also be met:
+//
+// - The minor engine version of the instance is 4.0.7 or later.
+//
+// - The primary and standby clusters are in different zones.
 //
 // @param request - CreateVirtualClusterRequest
 //
@@ -1076,7 +1115,15 @@ func (client *Client) CreateVirtualClusterWithOptions(request *CreateVirtualClus
 
 // Summary:
 //
-// 创建虚拟集群
+// Creates a virtual cluster.
+//
+// Description:
+//
+// This operation is supported only for instances that use zone-redundant storage. The following conditions must also be met:
+//
+// - The minor engine version of the instance is 4.0.7 or later.
+//
+// - The primary and standby clusters are in different zones.
 //
 // @param request - CreateVirtualClusterRequest
 //
@@ -1248,7 +1295,11 @@ func (client *Client) DeleteDBClusterBinding(request *DeleteDBClusterBindingRequ
 
 // Summary:
 //
-// Deletes an ApsaraDB for SelectDB instance.
+// Deletes a specified ApsaraDB SelectDB instance.
+//
+// Description:
+//
+// Subscription instances cannot be deleted.
 //
 // @param request - DeleteDBInstanceRequest
 //
@@ -1302,7 +1353,11 @@ func (client *Client) DeleteDBInstanceWithOptions(request *DeleteDBInstanceReque
 
 // Summary:
 //
-// Deletes an ApsaraDB for SelectDB instance.
+// Deletes a specified ApsaraDB SelectDB instance.
+//
+// Description:
+//
+// Subscription instances cannot be deleted.
 //
 // @param request - DeleteDBInstanceRequest
 //
@@ -1402,7 +1457,11 @@ func (client *Client) DeleteElasticRule(request *DeleteElasticRuleRequest) (_res
 
 // Summary:
 //
-// 删除虚拟集群
+// Deletes a virtual cluster.
+//
+// Description:
+//
+// > - This operation deletes only the virtual cluster. It **does not*	- delete the attached primary or secondary cluster.
 //
 // @param request - DeleteVirtualClusterRequest
 //
@@ -1454,7 +1513,11 @@ func (client *Client) DeleteVirtualClusterWithOptions(request *DeleteVirtualClus
 
 // Summary:
 //
-// 删除虚拟集群
+// Deletes a virtual cluster.
+//
+// Description:
+//
+// > - This operation deletes only the virtual cluster. It **does not*	- delete the attached primary or secondary cluster.
 //
 // @param request - DeleteVirtualClusterRequest
 //
@@ -1472,7 +1535,7 @@ func (client *Client) DeleteVirtualCluster(request *DeleteVirtualClusterRequest)
 
 // Summary:
 //
-// Queries the information about all instance specifications.
+// Retrieves all instance type information.
 //
 // @param request - DescribeAllDBInstanceClassRequest
 //
@@ -1520,7 +1583,7 @@ func (client *Client) DescribeAllDBInstanceClassWithOptions(request *DescribeAll
 
 // Summary:
 //
-// Queries the information about all instance specifications.
+// Retrieves all instance type information.
 //
 // @param request - DescribeAllDBInstanceClassRequest
 //
@@ -1612,7 +1675,7 @@ func (client *Client) DescribeDBClusterConfig(request *DescribeDBClusterConfigRe
 
 // Summary:
 //
-// Queries the configuration change logs of a cluster in an ApsaraDB for SelectDB instance.
+// Queries the change logs for cluster configurations.
 //
 // @param request - DescribeDBClusterConfigChangeLogsRequest
 //
@@ -1676,7 +1739,7 @@ func (client *Client) DescribeDBClusterConfigChangeLogsWithOptions(request *Desc
 
 // Summary:
 //
-// Queries the configuration change logs of a cluster in an ApsaraDB for SelectDB instance.
+// Queries the change logs for cluster configurations.
 //
 // @param request - DescribeDBClusterConfigChangeLogsRequest
 //
@@ -1694,7 +1757,7 @@ func (client *Client) DescribeDBClusterConfigChangeLogs(request *DescribeDBClust
 
 // Summary:
 //
-// 获取集群的各规格缓存限制
+// Queries the cache limits for each cluster specification.
 //
 // @param request - DescribeDBClusterStorageLimitationRequest
 //
@@ -1746,7 +1809,7 @@ func (client *Client) DescribeDBClusterStorageLimitationWithOptions(request *Des
 
 // Summary:
 //
-// 获取集群的各规格缓存限制
+// Queries the cache limits for each cluster specification.
 //
 // @param request - DescribeDBClusterStorageLimitationRequest
 //
@@ -1764,7 +1827,7 @@ func (client *Client) DescribeDBClusterStorageLimitation(request *DescribeDBClus
 
 // Summary:
 //
-// Queries the details about an ApsaraDB for SelectDB instance.
+// Gets the details of a specified instance.
 //
 // @param request - DescribeDBInstanceAttributeRequest
 //
@@ -1816,7 +1879,7 @@ func (client *Client) DescribeDBInstanceAttributeWithOptions(request *DescribeDB
 
 // Summary:
 //
-// Queries the details about an ApsaraDB for SelectDB instance.
+// Gets the details of a specified instance.
 //
 // @param request - DescribeDBInstanceAttributeRequest
 //
@@ -1834,7 +1897,7 @@ func (client *Client) DescribeDBInstanceAttribute(request *DescribeDBInstanceAtt
 
 // Summary:
 //
-// Queries the network information about an ApsaraDB for SelectDB instance.
+// Queries the network information of a specified ApsaraDB SelectDB instance.
 //
 // @param request - DescribeDBInstanceNetInfoRequest
 //
@@ -1886,7 +1949,7 @@ func (client *Client) DescribeDBInstanceNetInfoWithOptions(request *DescribeDBIn
 
 // Summary:
 //
-// Queries the network information about an ApsaraDB for SelectDB instance.
+// Queries the network information of a specified ApsaraDB SelectDB instance.
 //
 // @param request - DescribeDBInstanceNetInfoRequest
 //
@@ -1904,7 +1967,7 @@ func (client *Client) DescribeDBInstanceNetInfo(request *DescribeDBInstanceNetIn
 
 // Summary:
 //
-// Queries the information about ApsaraDB for SelectDB instances.
+// Queries instances.
 //
 // @param tmpReq - DescribeDBInstancesRequest
 //
@@ -1986,7 +2049,7 @@ func (client *Client) DescribeDBInstancesWithOptions(tmpReq *DescribeDBInstances
 
 // Summary:
 //
-// Queries the information about ApsaraDB for SelectDB instances.
+// Queries instances.
 //
 // @param request - DescribeDBInstancesRequest
 //
@@ -2053,6 +2116,174 @@ func (client *Client) DescribeElasticRules(request *DescribeElasticRulesRequest)
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeElasticRulesResponse{}
 	_body, _err := client.DescribeElasticRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the Profile analysis for a query.
+//
+// Description:
+//
+// We recommend using the visual interface to run a query and obtain its QueryID. For more information, see [query audit](https://help.aliyun.com/zh/selectdb/audit-queries).
+//
+//	Notice:
+//
+// # Version limitations
+//
+// - Version 3.0 is not supported.
+//
+// - This feature is not available for instances created before 2025-08-01. To enable this feature for an older instance, please submit a ticket.
+//
+// @param request - DescribeProfileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeProfileResponse
+func (client *Client) DescribeProfileWithOptions(request *DescribeProfileRequest, runtime *dara.RuntimeOptions) (_result *DescribeProfileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.QueryId) {
+		query["QueryId"] = request.QueryId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeProfile"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeProfileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the Profile analysis for a query.
+//
+// Description:
+//
+// We recommend using the visual interface to run a query and obtain its QueryID. For more information, see [query audit](https://help.aliyun.com/zh/selectdb/audit-queries).
+//
+//	Notice:
+//
+// # Version limitations
+//
+// - Version 3.0 is not supported.
+//
+// - This feature is not available for instances created before 2025-08-01. To enable this feature for an older instance, please submit a ticket.
+//
+// @param request - DescribeProfileRequest
+//
+// @return DescribeProfileResponse
+func (client *Client) DescribeProfile(request *DescribeProfileRequest) (_result *DescribeProfileResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeProfileResponse{}
+	_body, _err := client.DescribeProfileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the execution plan (Explain) for a query.
+//
+// @param request - DescribeQueryExplainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeQueryExplainResponse
+func (client *Client) DescribeQueryExplainWithOptions(request *DescribeQueryExplainRequest, runtime *dara.RuntimeOptions) (_result *DescribeQueryExplainResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.Mode) {
+		query["Mode"] = request.Mode
+	}
+
+	if !dara.IsNil(request.QueryId) {
+		query["QueryId"] = request.QueryId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeQueryExplain"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeQueryExplainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the execution plan (Explain) for a query.
+//
+// @param request - DescribeQueryExplainRequest
+//
+// @return DescribeQueryExplainResponse
+func (client *Client) DescribeQueryExplain(request *DescribeQueryExplainRequest) (_result *DescribeQueryExplainResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeQueryExplainResponse{}
+	_body, _err := client.DescribeQueryExplainWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2190,7 +2421,163 @@ func (client *Client) DescribeSecurityIPList(request *DescribeSecurityIPListRequ
 
 // Summary:
 //
-// # DescribeVSwitches
+// Retrieve slow query statistics for a time range.
+//
+// @param request - DescribeSlowQueryStatsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSlowQueryStatsResponse
+func (client *Client) DescribeSlowQueryStatsWithOptions(request *DescribeSlowQueryStatsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSlowQueryStatsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.ThresholdMs) {
+		query["ThresholdMs"] = request.ThresholdMs
+	}
+
+	if !dara.IsNil(request.TopN) {
+		query["TopN"] = request.TopN
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSlowQueryStats"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSlowQueryStatsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieve slow query statistics for a time range.
+//
+// @param request - DescribeSlowQueryStatsRequest
+//
+// @return DescribeSlowQueryStatsResponse
+func (client *Client) DescribeSlowQueryStats(request *DescribeSlowQueryStatsRequest) (_result *DescribeSlowQueryStatsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeSlowQueryStatsResponse{}
+	_body, _err := client.DescribeSlowQueryStatsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取表结构
+//
+// @param request - DescribeTableSchemaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTableSchemaResponse
+func (client *Client) DescribeTableSchemaWithOptions(request *DescribeTableSchemaRequest, runtime *dara.RuntimeOptions) (_result *DescribeTableSchemaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.Database) {
+		query["Database"] = request.Database
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Table) {
+		query["Table"] = request.Table
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeTableSchema"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeTableSchemaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取表结构
+//
+// @param request - DescribeTableSchemaRequest
+//
+// @return DescribeTableSchemaResponse
+func (client *Client) DescribeTableSchema(request *DescribeTableSchemaRequest) (_result *DescribeTableSchemaResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeTableSchemaResponse{}
+	_body, _err := client.DescribeTableSchemaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries vSwitches in a specified zone.
 //
 // @param request - DescribeVSwitchesRequest
 //
@@ -2258,7 +2645,7 @@ func (client *Client) DescribeVSwitchesWithOptions(request *DescribeVSwitchesReq
 
 // Summary:
 //
-// # DescribeVSwitches
+// Queries vSwitches in a specified zone.
 //
 // @param request - DescribeVSwitchesRequest
 //
@@ -2276,7 +2663,7 @@ func (client *Client) DescribeVSwitches(request *DescribeVSwitchesRequest) (_res
 
 // Summary:
 //
-// # DescribeZones
+// Describes the available zones.
 //
 // @param request - DescribeZonesRequest
 //
@@ -2328,7 +2715,7 @@ func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, ru
 
 // Summary:
 //
-// # DescribeZones
+// Describes the available zones.
 //
 // @param request - DescribeZonesRequest
 //
@@ -2428,7 +2815,7 @@ func (client *Client) EnDisableScalingRules(request *EnDisableScalingRulesReques
 
 // Summary:
 //
-// Queries the pricing for creating a cluster in an ApsaraDB for SelectDB instance.
+// Queries pricing information for creating a new cluster in a SelectDB instance.
 //
 // @param request - GetCreateBEClusterInquiryRequest
 //
@@ -2468,7 +2855,7 @@ func (client *Client) GetCreateBEClusterInquiryWithOptions(request *GetCreateBEC
 
 // Summary:
 //
-// Queries the pricing for creating a cluster in an ApsaraDB for SelectDB instance.
+// Queries pricing information for creating a new cluster in a SelectDB instance.
 //
 // @param request - GetCreateBEClusterInquiryRequest
 //
@@ -2486,7 +2873,7 @@ func (client *Client) GetCreateBEClusterInquiry(request *GetCreateBEClusterInqui
 
 // Summary:
 //
-// Queries the pricing for changing the specifications of a cluster in an ApsaraDB for SelectDB instance.
+// Retrieves the pricing information for creating a new cluster in a specified ApsaraDB for SelectDB instance.
 //
 // @param request - GetModifyBEClusterInquiryRequest
 //
@@ -2526,7 +2913,7 @@ func (client *Client) GetModifyBEClusterInquiryWithOptions(request *GetModifyBEC
 
 // Summary:
 //
-// Queries the pricing for changing the specifications of a cluster in an ApsaraDB for SelectDB instance.
+// Retrieves the pricing information for creating a new cluster in a specified ApsaraDB for SelectDB instance.
 //
 // @param request - GetModifyBEClusterInquiryRequest
 //
@@ -2544,7 +2931,7 @@ func (client *Client) GetModifyBEClusterInquiry(request *GetModifyBEClusterInqui
 
 // Summary:
 //
-// Modifies the name of a cluster in an ApsaraDB for SelectDB instance.
+// Modifies the cluster name of an ApsaraDB SelectDB instance.
 //
 // @param request - ModifyBEClusterAttributeRequest
 //
@@ -2608,7 +2995,7 @@ func (client *Client) ModifyBEClusterAttributeWithOptions(request *ModifyBEClust
 
 // Summary:
 //
-// Modifies the name of a cluster in an ApsaraDB for SelectDB instance.
+// Modifies the cluster name of an ApsaraDB SelectDB instance.
 //
 // @param request - ModifyBEClusterAttributeRequest
 //
@@ -2626,7 +3013,7 @@ func (client *Client) ModifyBEClusterAttribute(request *ModifyBEClusterAttribute
 
 // Summary:
 //
-// Scales a cluster in an ApsaraDB for SelectDB instance.
+// Scales out or in a specified ApsaraDB for SelectDB cluster.
 //
 // @param request - ModifyDBClusterRequest
 //
@@ -2710,7 +3097,7 @@ func (client *Client) ModifyDBClusterWithOptions(request *ModifyDBClusterRequest
 
 // Summary:
 //
-// Scales a cluster in an ApsaraDB for SelectDB instance.
+// Scales out or in a specified ApsaraDB for SelectDB cluster.
 //
 // @param request - ModifyDBClusterRequest
 //
@@ -2728,7 +3115,7 @@ func (client *Client) ModifyDBCluster(request *ModifyDBClusterRequest) (_result 
 
 // Summary:
 //
-// Modifies the configurations of a cluster in an ApsaraDB for SelectDB instance.
+// Modifies the cluster configuration.
 //
 // @param request - ModifyDBClusterConfigRequest
 //
@@ -2796,7 +3183,7 @@ func (client *Client) ModifyDBClusterConfigWithOptions(request *ModifyDBClusterC
 
 // Summary:
 //
-// Modifies the configurations of a cluster in an ApsaraDB for SelectDB instance.
+// Modifies the cluster configuration.
 //
 // @param request - ModifyDBClusterConfigRequest
 //
@@ -3068,7 +3455,19 @@ func (client *Client) ModifySecurityIPList(request *ModifySecurityIPListRequest)
 
 // Summary:
 //
-// 修改虚拟集群
+// Modifies a virtual cluster.
+//
+// Description:
+//
+// - You can modify the primary cluster independently.
+//
+// - You can modify the standby cluster independently.
+//
+// - You can switch between the primary and standby clusters.
+//
+//	Warning:
+//
+// You cannot modify both the primary and standby clusters in the same operation.
 //
 // @param request - ModifyVirtualClusterRequest
 //
@@ -3128,7 +3527,19 @@ func (client *Client) ModifyVirtualClusterWithOptions(request *ModifyVirtualClus
 
 // Summary:
 //
-// 修改虚拟集群
+// Modifies a virtual cluster.
+//
+// Description:
+//
+// - You can modify the primary cluster independently.
+//
+// - You can modify the standby cluster independently.
+//
+// - You can switch between the primary and standby clusters.
+//
+//	Warning:
+//
+// You cannot modify both the primary and standby clusters in the same operation.
 //
 // @param request - ModifyVirtualClusterRequest
 //
@@ -3220,7 +3631,7 @@ func (client *Client) ReleaseInstancePublicConnection(request *ReleaseInstancePu
 
 // Summary:
 //
-// Resets the password of an account for an ApsaraDB for SelectDB instance.
+// Resets the password for a database account in an ApsaraDB for SelectDB instance.
 //
 // @param request - ResetAccountPasswordRequest
 //
@@ -3260,7 +3671,7 @@ func (client *Client) ResetAccountPasswordWithOptions(request *ResetAccountPassw
 
 // Summary:
 //
-// Resets the password of an account for an ApsaraDB for SelectDB instance.
+// Resets the password for a database account in an ApsaraDB for SelectDB instance.
 //
 // @param request - ResetAccountPasswordRequest
 //
@@ -3278,7 +3689,7 @@ func (client *Client) ResetAccountPassword(request *ResetAccountPasswordRequest)
 
 // Summary:
 //
-// Restarts a cluster in an ApsaraDB for SelectDB instance.
+// Restarts the cluster of a specified ApsaraDB for SelectDB instance.
 //
 // @param request - RestartDBClusterRequest
 //
@@ -3344,7 +3755,7 @@ func (client *Client) RestartDBClusterWithOptions(request *RestartDBClusterReque
 
 // Summary:
 //
-// Restarts a cluster in an ApsaraDB for SelectDB instance.
+// Restarts the cluster of a specified ApsaraDB for SelectDB instance.
 //
 // @param request - RestartDBClusterRequest
 //
@@ -3362,7 +3773,7 @@ func (client *Client) RestartDBCluster(request *RestartDBClusterRequest) (_resul
 
 // Summary:
 //
-// Starts a cluster in an ApsaraDB for SelectDB instance.
+// Starts a specified ApsaraDB SelectDB cluster.
 //
 // @param request - StartBEClusterRequest
 //
@@ -3418,7 +3829,7 @@ func (client *Client) StartBEClusterWithOptions(request *StartBEClusterRequest, 
 
 // Summary:
 //
-// Starts a cluster in an ApsaraDB for SelectDB instance.
+// Starts a specified ApsaraDB SelectDB cluster.
 //
 // @param request - StartBEClusterRequest
 //
@@ -3436,7 +3847,7 @@ func (client *Client) StartBECluster(request *StartBEClusterRequest) (_result *S
 
 // Summary:
 //
-// Stops a cluster in an ApsaraDB for SelectDB instance.
+// Stops a specified ApsaraDB SelectDB cluster.
 //
 // @param request - StopBEClusterRequest
 //
@@ -3492,7 +3903,7 @@ func (client *Client) StopBEClusterWithOptions(request *StopBEClusterRequest, ru
 
 // Summary:
 //
-// Stops a cluster in an ApsaraDB for SelectDB instance.
+// Stops a specified ApsaraDB SelectDB cluster.
 //
 // @param request - StopBEClusterRequest
 //
@@ -3510,7 +3921,7 @@ func (client *Client) StopBECluster(request *StopBEClusterRequest) (_result *Sto
 
 // Summary:
 //
-// 资源打用户标签
+// Adds tags to one or more instances.
 //
 // @param request - TagResourcesRequest
 //
@@ -3566,7 +3977,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 
 // Summary:
 //
-// 资源打用户标签
+// Adds tags to one or more instances.
 //
 // @param request - TagResourcesRequest
 //
@@ -3584,7 +3995,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// 资源去除用户标签
+// Removes tags from instances.
 //
 // @param request - UntagResourcesRequest
 //
@@ -3644,7 +4055,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 
 // Summary:
 //
-// 资源去除用户标签
+// Removes tags from instances.
 //
 // @param request - UntagResourcesRequest
 //
@@ -3662,7 +4073,17 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// # UpgradeDBInstanceDeployScheme
+// Upgrades a locally redundant instance to a zone-redundant instance.
+//
+// Description:
+//
+// When an instance is upgraded to a zone-redundant architecture, its storage is also upgraded to be zone-redundant. The unit price for storage changes. For more information, see [Billing items and pricing](https://help.aliyun.com/zh/selectdb/product-overview/billing-item-new-version).
+//
+// > Version requirements
+//
+// >
+//
+// > - The minor version of the instance must be 4.0.4 or later.
 //
 // @param tmpReq - UpgradeDBInstanceDeploySchemeRequest
 //
@@ -3724,7 +4145,17 @@ func (client *Client) UpgradeDBInstanceDeploySchemeWithOptions(tmpReq *UpgradeDB
 
 // Summary:
 //
-// # UpgradeDBInstanceDeployScheme
+// Upgrades a locally redundant instance to a zone-redundant instance.
+//
+// Description:
+//
+// When an instance is upgraded to a zone-redundant architecture, its storage is also upgraded to be zone-redundant. The unit price for storage changes. For more information, see [Billing items and pricing](https://help.aliyun.com/zh/selectdb/product-overview/billing-item-new-version).
+//
+// > Version requirements
+//
+// >
+//
+// > - The minor version of the instance must be 4.0.4 or later.
 //
 // @param request - UpgradeDBInstanceDeploySchemeRequest
 //
@@ -3742,7 +4173,7 @@ func (client *Client) UpgradeDBInstanceDeployScheme(request *UpgradeDBInstanceDe
 
 // Summary:
 //
-// Updates the database engine version of an ApsaraDB for SelectDB instance.
+// Upgrades the database version of a specified ApsaraDB SelectDB instance.
 //
 // @param request - UpgradeDBInstanceEngineVersionRequest
 //
@@ -3806,7 +4237,7 @@ func (client *Client) UpgradeDBInstanceEngineVersionWithOptions(request *Upgrade
 
 // Summary:
 //
-// Updates the database engine version of an ApsaraDB for SelectDB instance.
+// Upgrades the database version of a specified ApsaraDB SelectDB instance.
 //
 // @param request - UpgradeDBInstanceEngineVersionRequest
 //

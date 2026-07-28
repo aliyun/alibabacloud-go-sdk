@@ -143,7 +143,7 @@ type DescribeElasticRulesResponseBodyDataRules struct {
 	//
 	// Valid value:
 	//
-	// 	- Day
+	// - Day
 	//
 	// example:
 	//

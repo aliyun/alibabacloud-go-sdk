@@ -16,10 +16,14 @@ type iCheckServiceLinkedRoleResponseBody interface {
 }
 
 type CheckServiceLinkedRoleResponseBody struct {
+	// Indicates whether the service-linked role has been created.
+	//
 	// example:
 	//
 	// False
 	HasServiceLinkedRole *bool `json:"HasServiceLinkedRole,omitempty" xml:"HasServiceLinkedRole,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 1F455133-981E-5AD0-80EB-26EA1EF3C65F

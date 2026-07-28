@@ -22,19 +22,28 @@ type iDescribeDBClusterStorageLimitationResponseBody interface {
 }
 
 type DescribeDBClusterStorageLimitationResponseBody struct {
+	// The details of the access denial. This field is returned only when the RAM verification fails.
+	//
 	// example:
 	//
 	// failed
-	AccessDeniedDetail *string                                             `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Data               *DescribeDBClusterStorageLimitationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The returned data.
+	Data *DescribeDBClusterStorageLimitationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The dynamic code. This parameter is not used. Ignore this parameter.
+	//
 	// example:
 	//
 	// 0
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic message. This parameter is not used. Ignore this parameter.
+	//
 	// example:
 	//
 	// An error occurred while processing your request.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4773E4EC-025D-509F-AEA9-D53123FDFB0F
@@ -104,6 +113,7 @@ func (s *DescribeDBClusterStorageLimitationResponseBody) Validate() error {
 }
 
 type DescribeDBClusterStorageLimitationResponseBodyData struct {
+	// The list of cache specifications.
 	ClassCodeList []*DescribeDBClusterStorageLimitationResponseBodyDataClassCodeList `json:"ClassCodeList,omitempty" xml:"ClassCodeList,omitempty" type:"Repeated"`
 }
 
@@ -138,30 +148,44 @@ func (s *DescribeDBClusterStorageLimitationResponseBodyData) Validate() error {
 }
 
 type DescribeDBClusterStorageLimitationResponseBodyDataClassCodeList struct {
+	// The specification code.
+	//
 	// example:
 	//
 	// selectdb.xlarge
 	ClassCode *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
+	// The number of vCPU cores.
+	//
 	// example:
 	//
 	// 4
 	CpuCores *int32 `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
+	// The default cache size in GB.
+	//
 	// example:
 	//
 	// 8
 	DefaultStorageInGB *int32 `json:"DefaultStorageInGB,omitempty" xml:"DefaultStorageInGB,omitempty"`
+	// The maximum cache size in GB.
+	//
 	// example:
 	//
 	// 16
 	MaxStorageInGB *int32 `json:"MaxStorageInGB,omitempty" xml:"MaxStorageInGB,omitempty"`
+	// The memory size in GB.
+	//
 	// example:
 	//
 	// 16
 	MemoryInGB *int32 `json:"MemoryInGB,omitempty" xml:"MemoryInGB,omitempty"`
+	// The minimum cache size in GB.
+	//
 	// example:
 	//
 	// 2
 	MinStorageInGB *int32 `json:"MinStorageInGB,omitempty" xml:"MinStorageInGB,omitempty"`
+	// The cache step size in GB.
+	//
 	// example:
 	//
 	// 1

@@ -20,11 +20,16 @@ type iDescribeZonesResponseBody interface {
 }
 
 type DescribeZonesResponseBody struct {
+	// The list of results.
 	Items []*DescribeZonesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The number of entries per page for a paged query.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token for the next page of results. If this parameter is empty, all results have been returned.
+	//
 	// example:
 	//
 	// 40831b4f-d91d-4796-9589-ad306ec528d5
@@ -95,10 +100,14 @@ func (s *DescribeZonesResponseBody) Validate() error {
 }
 
 type DescribeZonesResponseBodyItems struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-beijing-i

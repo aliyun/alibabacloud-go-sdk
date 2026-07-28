@@ -22,7 +22,7 @@ type iResetAccountPasswordRequest interface {
 }
 
 type ResetAccountPasswordRequest struct {
-	// The database account of the instance.
+	// The database account.
 	//
 	// This parameter is required.
 	//
@@ -30,13 +30,13 @@ type ResetAccountPasswordRequest struct {
 	//
 	// admin
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The password of the database account. Requirements:
+	// The password of the database account. The password must meet the following requirements:
 	//
-	// 	- The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	// - The password must consist of at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	//
-	// 	- The following special characters can be used: ! @ # $ % ^ & \\	- ( ) _ + - =
+	// - The special characters are !@#$%^&\\*()_+-=.
 	//
-	// 	- The password must be 8 to 32 characters in length.
+	// - The password must be 8 to 32 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type ResetAccountPasswordRequest struct {
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The region ID of the instance.
+	// The region ID.
 	//
 	// This parameter is required.
 	//

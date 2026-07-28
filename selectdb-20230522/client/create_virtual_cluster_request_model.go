@@ -22,6 +22,8 @@ type iCreateVirtualClusterRequest interface {
 }
 
 type CreateVirtualClusterRequest struct {
+	// The ID of the primary cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -30,24 +32,32 @@ type CreateVirtualClusterRequest struct {
 	//
 	// -be
 	ActiveClusterId *string `json:"ActiveClusterId,omitempty" xml:"ActiveClusterId,omitempty"`
+	// The name of the cluster. The name must start with a letter and be up to 64 characters long. It can contain letters (case-insensitive), digits, and underscores (_). The name cannot contain two or more consecutive underscores. The cluster name must be unique within the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// vcg_demo
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the standby cluster.
+	//
 	// This parameter is required.
 	//
 	// example:

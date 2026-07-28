@@ -117,6 +117,10 @@ func (s *DescribeRegionsResponseBodyRegionModelList) Validate() error {
 
 type DescribeRegionsResponseBodyRegionModelListZones struct {
 	// The zone description.
+	//
+	// example:
+	//
+	// 北京H可用区
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Indicates whether the VPC is disabled.
 	//
@@ -131,6 +135,10 @@ type DescribeRegionsResponseBodyRegionModelListZones struct {
 	// test
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The zone name.
+	//
+	// example:
+	//
+	// Beijing H
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The region ID.
 	//

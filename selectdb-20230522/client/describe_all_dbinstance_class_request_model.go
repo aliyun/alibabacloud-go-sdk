@@ -16,6 +16,8 @@ type iDescribeAllDBInstanceClassRequest interface {
 }
 
 type DescribeAllDBInstanceClassRequest struct {
+	// Region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

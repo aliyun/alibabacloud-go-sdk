@@ -90,7 +90,7 @@ type ModifyElasticRuleResponseBodyData struct {
 	//
 	// Valid value:
 	//
-	// 	- Day
+	// - Day
 	//
 	// example:
 	//

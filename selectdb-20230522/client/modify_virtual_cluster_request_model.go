@@ -22,28 +22,38 @@ type iModifyVirtualClusterRequest interface {
 }
 
 type ModifyVirtualClusterRequest struct {
+	// The ID of the primary cluster.
+	//
 	// example:
 	//
 	// selectdb-o2yg***-be
 	ActiveClusterId *string `json:"ActiveClusterId,omitempty" xml:"ActiveClusterId,omitempty"`
+	// The virtual cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-vcg-b****-be
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the standby cluster.
+	//
 	// example:
 	//
 	// selectdb-pu6y****-be

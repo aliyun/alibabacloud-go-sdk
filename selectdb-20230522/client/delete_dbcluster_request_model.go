@@ -22,13 +22,15 @@ type iDeleteDBClusterRequest interface {
 }
 
 type DeleteDBClusterRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-xxxb9f2w-be
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// 代表资源一级ID的资源属性字段
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -36,13 +38,15 @@ type DeleteDBClusterRequest struct {
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 代表资源组的资源属性字段
+	// The resource group ID.
 	//
 	// example:
 	//

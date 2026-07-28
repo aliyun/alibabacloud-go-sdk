@@ -117,7 +117,7 @@ type DescribeDBClusterConfigResponseBodyData struct {
 	//
 	// example:
 	//
-	// selectdb-cn-wny3li00g02-be
+	// selectdb-cn-wny3li0****-be
 	DbClusterId *string `json:"DbClusterId,omitempty" xml:"DbClusterId,omitempty"`
 	// The numeric ID of the instance.
 	//
@@ -129,7 +129,7 @@ type DescribeDBClusterConfigResponseBodyData struct {
 	//
 	// example:
 	//
-	// selectdb-cn-wny3li00g02
+	// selectdb-cn-wny3li0****
 	DbInstanceName *string `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
 	// The details about each parameter returned.
 	Params []*DescribeDBClusterConfigResponseBodyDataParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
@@ -209,6 +209,10 @@ func (s *DescribeDBClusterConfigResponseBodyData) Validate() error {
 
 type DescribeDBClusterConfigResponseBodyDataParams struct {
 	// The comments on the parameter.
+	//
+	// example:
+	//
+	// 存储引擎并发扫描硬盘的线程数。采用线程池统一管理。
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The default value of the parameter.
 	//
@@ -241,6 +245,10 @@ type DescribeDBClusterConfigResponseBodyDataParams struct {
 	// [0-20000]
 	Optional *string `json:"Optional,omitempty" xml:"Optional,omitempty"`
 	// The category of the parameter.
+	//
+	// example:
+	//
+	// Query
 	ParamCategory *string `json:"ParamCategory,omitempty" xml:"ParamCategory,omitempty"`
 	// The current value of the parameter.
 	//

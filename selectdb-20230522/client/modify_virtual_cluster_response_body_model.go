@@ -16,8 +16,9 @@ type iModifyVirtualClusterResponseBody interface {
 }
 
 type ModifyVirtualClusterResponseBody struct {
+	// The returned data.
 	Data *ModifyVirtualClusterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -61,10 +62,14 @@ func (s *ModifyVirtualClusterResponseBody) Validate() error {
 }
 
 type ModifyVirtualClusterResponseBodyData struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// selectdb-vcg-b****-be
 	DbClusterId *string `json:"DbClusterId,omitempty" xml:"DbClusterId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****

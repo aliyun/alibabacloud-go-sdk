@@ -14,6 +14,8 @@ type iStartBEClusterResponseBody interface {
 }
 
 type StartBEClusterResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// F203FA74-3041-589F-BE66-E570793A0C91

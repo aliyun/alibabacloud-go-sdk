@@ -16,7 +16,7 @@ type iGetCreateBEClusterInquiryResponseBody interface {
 }
 
 type GetCreateBEClusterInquiryResponseBody struct {
-	// The information returned.
+	// The returned data.
 	Data *GetCreateBEClusterInquiryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -70,7 +70,7 @@ type GetCreateBEClusterInquiryResponseBodyData struct {
 	Currency           *string                                                        `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	OptionalPromotions []*GetCreateBEClusterInquiryResponseBodyDataOptionalPromotions `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty" type:"Repeated"`
 	PricingRules       map[string]*string                                             `json:"PricingRules,omitempty" xml:"PricingRules,omitempty"`
-	// The amount of money.
+	// The amount.
 	//
 	// example:
 	//

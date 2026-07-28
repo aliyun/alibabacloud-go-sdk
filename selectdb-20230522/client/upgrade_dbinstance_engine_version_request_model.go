@@ -24,7 +24,7 @@ type iUpgradeDBInstanceEngineVersionRequest interface {
 }
 
 type UpgradeDBInstanceEngineVersionRequest struct {
-	// The instance ID.
+	// Instance ID.
 	//
 	// This parameter is required.
 	//
@@ -32,16 +32,21 @@ type UpgradeDBInstanceEngineVersionRequest struct {
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The database engine version of the instance.
+	// Database version.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2.4
-	EngineVersion     *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	ParallelOperation *bool   `json:"ParallelOperation,omitempty" xml:"ParallelOperation,omitempty"`
-	// The region ID of the instance.
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// Specifies whether to perform parallel operations on cluster nodes
+	//
+	// example:
+	//
+	// false
+	ParallelOperation *bool `json:"ParallelOperation,omitempty" xml:"ParallelOperation,omitempty"`
+	// Region ID.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +55,11 @@ type UpgradeDBInstanceEngineVersionRequest struct {
 	// cn-hangzhou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The update mode. If you do not specify this parameter, the system immediately updates the database engine version. If you set this parameter to 1, the system updates the database engine version during the maintenance window.
+	// Upgrade method.
+	//
+	// - If you do not specify this parameter, the system immediately upgrades the instance.
+	//
+	// - If you set this parameter to 1, the system upgrades the instance during the maintenance window.
 	//
 	// example:
 	//

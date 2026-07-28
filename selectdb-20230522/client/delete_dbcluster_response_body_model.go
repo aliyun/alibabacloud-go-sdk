@@ -16,7 +16,10 @@ type iDeleteDBClusterResponseBody interface {
 }
 
 type DeleteDBClusterResponseBody struct {
+	// The returned data.
 	Data *DeleteDBClusterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F203FA74-3041-589F-BE66-E570793A0C91
@@ -59,10 +62,14 @@ func (s *DeleteDBClusterResponseBody) Validate() error {
 }
 
 type DeleteDBClusterResponseBodyData struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 220088764060782

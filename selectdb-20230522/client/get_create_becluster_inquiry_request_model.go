@@ -36,19 +36,13 @@ type iGetCreateBEClusterInquiryRequest interface {
 }
 
 type GetCreateBEClusterInquiryRequest struct {
-	// The size of the elastic cache.
+	// The elastic cache space.
 	//
 	// example:
 	//
 	// 200
 	CacheSize *int64 `json:"CacheSize,omitempty" xml:"CacheSize,omitempty"`
 	// The billing method.
-	//
-	// Valid values:
-	//
-	// 	- PREPAY: subscription
-	//
-	// 	- POSTPAY: pay-as-you-go
 	//
 	// This parameter is required.
 	//
@@ -58,21 +52,11 @@ type GetCreateBEClusterInquiryRequest struct {
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The commodity code.
 	//
-	// Valid values:
-	//
-	// 	- selectdb_pre_public_intl: subscription commodity on the international site (alibabacloud.com)
-	//
-	// 	- selectdb_go_public_cn: pay-as-you-go commodity on the China site (aliyun.com)
-	//
-	// 	- selectdb_go_public_intl: pay-as-you-go commodity on the international site (alibabacloud.com)
-	//
-	// 	- selectdb_pre_public_cn: subscription commodity on the China site (aliyun.com).
-	//
 	// example:
 	//
 	// selectdb_go_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The number of elastic CPU cores.
+	// The elastic computing resources.
 	//
 	// example:
 	//
@@ -86,31 +70,19 @@ type GetCreateBEClusterInquiryRequest struct {
 	//
 	// selectdb-cn-xxx
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	// The size of the reserved cache.
+	// The reserved cache space.
 	//
 	// example:
 	//
 	// 200
 	PreCacheSize *int64 `json:"PreCacheSize,omitempty" xml:"PreCacheSize,omitempty"`
-	// The number of reserved CPU cores.
+	// The reserved computing resources.
 	//
 	// example:
 	//
 	// 4
 	PreComputeSize *int64 `json:"PreComputeSize,omitempty" xml:"PreComputeSize,omitempty"`
 	// The billing cycle.
-	//
-	// Valid values:
-	//
-	// 	- Month
-	//
-	// 	- Year
-	//
-	// 	- Minute
-	//
-	// 	- Hour
-	//
-	// 	- Day
 	//
 	// This parameter is required.
 	//
@@ -122,7 +94,7 @@ type GetCreateBEClusterInquiryRequest struct {
 	//
 	// 2374923467
 	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
-	// The number of clusters to be created.
+	// The quantity.
 	//
 	// This parameter is required.
 	//

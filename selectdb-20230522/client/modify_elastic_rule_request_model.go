@@ -62,7 +62,7 @@ type ModifyElasticRuleRequest struct {
 	//
 	// Valid value:
 	//
-	// 	- Day
+	// - Day
 	//
 	// example:
 	//

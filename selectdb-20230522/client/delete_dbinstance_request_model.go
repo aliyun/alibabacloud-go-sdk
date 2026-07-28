@@ -18,12 +18,16 @@ type iDeleteDBInstanceRequest interface {
 }
 
 type DeleteDBInstanceRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

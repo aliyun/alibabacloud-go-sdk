@@ -42,30 +42,52 @@ type ModifyDBClusterRequest struct {
 	CacheSize        *string `json:"CacheSize,omitempty" xml:"CacheSize,omitempty"`
 	ClusterNodeCount *int32  `json:"ClusterNodeCount,omitempty" xml:"ClusterNodeCount,omitempty"`
 	ClusterNodeType  *string `json:"ClusterNodeType,omitempty" xml:"ClusterNodeType,omitempty"`
+	// The instance class of the cluster. Valid values:
+	//
+	// - **selectdb.xlarge**: 4 cores, 32 GB memory.
+	//
+	// - **selectdb.2xlarge**: 8 cores, 64 GB memory.
+	//
+	// - **selectdb.4xlarge**: 16 cores, 128 GB memory.
+	//
+	// - **selectdb.8xlarge**: 32 cores, 256 GB memory.
+	//
+	// - **selectdb.16xlarge**: 16 cores, 512 GB memory.
+	//
+	// - **selectdb.24xlarge**: 24 cores, 768 GB memory.
+	//
+	// - **selectdb.32xlarge**: 32 cores, 1024 GB memory.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb.2xlarge
 	DBClusterClass *string `json:"DBClusterClass,omitempty" xml:"DBClusterClass,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-xxxb9f2w-be
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The database engine of the instance. Set the value to selectdb.
+	// The database type. The value is fixed to selectdb.
 	//
 	// example:
 	//
 	// selectdb
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -48,12 +48,20 @@ type iCreateDBClusterRequest interface {
 }
 
 type CreateDBClusterRequest struct {
+	// The reserved cache size.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 200
 	CacheSize *string `json:"CacheSize,omitempty" xml:"CacheSize,omitempty"`
+	// The billing method of the cluster. Valid values:
+	//
+	// - **Postpaid**: pay-as-you-go.
+	//
+	// - **Prepaid**: subscription.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,19 +70,37 @@ type CreateDBClusterRequest struct {
 	ChargeType       *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	ClusterNodeCount *int32  `json:"ClusterNodeCount,omitempty" xml:"ClusterNodeCount,omitempty"`
 	ClusterNodeType  *string `json:"ClusterNodeType,omitempty" xml:"ClusterNodeType,omitempty"`
+	// The instance type of the cluster. Valid values:
+	//
+	// - **selectdb.xlarge**: 4 cores, 32 GB.
+	//
+	// - **selectdb.2xlarge**: 8 cores, 64 GB.
+	//
+	// - **selectdb.4xlarge**: 16 cores, 128 GB.
+	//
+	// - **selectdb.8xlarge**: 32 cores, 256 GB.
+	//
+	// - **selectdb.16xlarge**: 64 cores, 512 GB.
+	//
+	// - **selectdb.24xlarge**: 96 cores, 768 GB.
+	//
+	// - **selectdb.32xlarge**: 128 cores, 1024 GB.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb.2xlarge
 	DBClusterClass *string `json:"DBClusterClass,omitempty" xml:"DBClusterClass,omitempty"`
+	// The description of the cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testdb
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
-	// 代表资源一级ID的资源属性字段
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -82,22 +108,34 @@ type CreateDBClusterRequest struct {
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The database engine of the instance.
+	// The database engine type.
 	//
 	// example:
 	//
 	// selectdb
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The database engine version.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2.4
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The billing cycle of the subscription cluster. Valid values:
+	//
+	// - **Year**: The cluster is billed on a yearly basis.
+	//
+	// - **Month**: The cluster is billed on a monthly basis.
+	//
+	// > This parameter is required and takes effect only when **ChargeType*	- is set to **Prepaid**.
+	//
 	// example:
 	//
 	// Month
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -107,17 +145,27 @@ type CreateDBClusterRequest struct {
 	ResourceOwnerId *int64   `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	ScaleMax        *float64 `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
 	ScaleMin        *float64 `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
+	// The subscription duration of the subscription cluster. Valid values:
+	//
+	// - If Period is set to Year, valid values for UsedTime are 1, 2, 3, and 5.
+	//
+	// - If Period is set to Month, the value of UsedTime can be an integer from 1 to 9.
+	//
+	// > This parameter is required and takes effect only when ChargeType is set to Prepaid.
+	//
 	// example:
 	//
 	// 1
 	UsedTime *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	// The vSwitch ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// vsw-bp1gzt31twhlo0sa5****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// VPC ID.
+	// The VPC ID.
 	//
 	// This parameter is required.
 	//
@@ -125,6 +173,8 @@ type CreateDBClusterRequest struct {
 	//
 	// vpc-bp175iuvg8nxqraf2****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The zone ID.
+	//
 	// This parameter is required.
 	//
 	// example:

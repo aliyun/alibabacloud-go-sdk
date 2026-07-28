@@ -16,7 +16,7 @@ type iGetModifyBEClusterInquiryResponseBody interface {
 }
 
 type GetModifyBEClusterInquiryResponseBody struct {
-	// The information returned.
+	// The returned data.
 	Data *GetModifyBEClusterInquiryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -70,13 +70,13 @@ type GetModifyBEClusterInquiryResponseBodyData struct {
 	Currency           *string                                                        `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	OptionalPromotions []*GetModifyBEClusterInquiryResponseBodyDataOptionalPromotions `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty" type:"Repeated"`
 	PricingRules       map[string]*string                                             `json:"PricingRules,omitempty" xml:"PricingRules,omitempty"`
-	// The estimated refund amount when the subscription cluster of a subscription instance is changed to a pay-as-you-go cluster.
+	// The estimated refund amount when you change the billing method of a subscription cluster to pay-as-you-go.
 	//
 	// example:
 	//
 	// -100
 	RefundAmount *string `json:"RefundAmount,omitempty" xml:"RefundAmount,omitempty"`
-	// The amount of money.
+	// The amount.
 	//
 	// example:
 	//
@@ -161,11 +161,11 @@ type GetModifyBEClusterInquiryResponseBodyDataOptionalPromotions struct {
 	OptionCode *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
 	// example:
 	//
-	// 通用优惠券可抵扣100
+	// General coupon deducts 100
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
 	// example:
 	//
-	// 通用优惠券
+	// General coupon
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
 	// example:
 	//

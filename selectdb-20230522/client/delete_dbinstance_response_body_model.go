@@ -14,6 +14,8 @@ type iDeleteDBInstanceResponseBody interface {
 }
 
 type DeleteDBInstanceResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// BD0D0B17-C145-5B91-BFC2-6791927EE973

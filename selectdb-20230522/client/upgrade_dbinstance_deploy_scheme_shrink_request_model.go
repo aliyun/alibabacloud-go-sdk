@@ -20,14 +20,20 @@ type iUpgradeDBInstanceDeploySchemeShrinkRequest interface {
 }
 
 type UpgradeDBInstanceDeploySchemeShrinkRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// A list of multi-zone configurations.
+	//
 	// This parameter is required.
 	MultiZoneShrink *string `json:"MultiZone,omitempty" xml:"MultiZone,omitempty"`
+	// The ID of the region where the instance resides.
+	//
 	// This parameter is required.
 	//
 	// example:

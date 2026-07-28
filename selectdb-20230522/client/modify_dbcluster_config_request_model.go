@@ -26,40 +26,52 @@ type iModifyDBClusterConfigRequest interface {
 }
 
 type ModifyDBClusterConfigRequest struct {
+	// Configuration file to modify. For compute clusters, it is fixed as be.conf. For fe clusters, it is fixed as fe.conf.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// be.conf
 	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
+	// Cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// selectdb-cn-7213c8yvv09-be
+	// selectdb-cn-7213c8*****-be
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// selectdb-xxxd8a5h60y
+	// selectdb-cn-7213c8*****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// Specifies whether to perform parallel operations on the cluster node.
+	// Whether to operate cluster nodes in parallel
 	//
 	// example:
 	//
 	// false
 	ParallelOperation *bool `json:"ParallelOperation,omitempty" xml:"ParallelOperation,omitempty"`
+	// JSON string of parameters and parameter values.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// [{\\"name\\":\\"param1\\",\\"value\\":\\"1234577777\\"},{\\"name\\":\\"param2\\",\\"value\\":\\"${yyyyMMdd}\\"}]
+	// {"param1_name":"param1_value","param2_name":"param2_value"}
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Upgrade method. If not specified, the upgrade will be performed immediately. If set to 1, the upgrade will be performed during the maintenance window.
+	//
 	// example:
 	//
 	// 1
