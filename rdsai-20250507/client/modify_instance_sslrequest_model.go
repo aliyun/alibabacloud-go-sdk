@@ -51,9 +51,9 @@ type ModifyInstanceSSLRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Specifies whether to enable or disable SSL. Valid values:
 	//
-	// 	- **1**: Enable SSL.
+	// 	- **1**: Enable.
 	//
-	// 	- **0**: Disable SSL.
+	// 	- **0**: Disable.
 	//
 	// This parameter is required.
 	//
@@ -61,7 +61,7 @@ type ModifyInstanceSSLRequest struct {
 	//
 	// 1
 	SSLEnabled *int32 `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
-	// The content of the custom certificate.
+	// The custom certificate content.
 	//
 	// > This parameter is required when **CAType*	- is set to **custom**.
 	//

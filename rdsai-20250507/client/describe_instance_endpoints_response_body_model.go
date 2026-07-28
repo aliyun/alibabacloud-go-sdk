@@ -187,6 +187,7 @@ type DescribeInstanceEndpointsResponseBodyInstanceEndpoints struct {
 	//
 	// 8.152.XXX.XXX:8000
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	Domain           *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The IP address.
 	//
 	// example:
@@ -223,6 +224,10 @@ func (s *DescribeInstanceEndpointsResponseBodyInstanceEndpoints) GetConnectionSt
 	return s.ConnectionString
 }
 
+func (s *DescribeInstanceEndpointsResponseBodyInstanceEndpoints) GetDomain() *string {
+	return s.Domain
+}
+
 func (s *DescribeInstanceEndpointsResponseBodyInstanceEndpoints) GetIP() *string {
 	return s.IP
 }
@@ -237,6 +242,11 @@ func (s *DescribeInstanceEndpointsResponseBodyInstanceEndpoints) GetPort() *stri
 
 func (s *DescribeInstanceEndpointsResponseBodyInstanceEndpoints) SetConnectionString(v string) *DescribeInstanceEndpointsResponseBodyInstanceEndpoints {
 	s.ConnectionString = &v
+	return s
+}
+
+func (s *DescribeInstanceEndpointsResponseBodyInstanceEndpoints) SetDomain(v string) *DescribeInstanceEndpointsResponseBodyInstanceEndpoints {
+	s.Domain = &v
 	return s
 }
 

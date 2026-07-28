@@ -19,6 +19,8 @@ type iDescribeInstanceSSLResponseBody interface {
 	GetRequestId() *string
 	SetSSLEnabled(v string) *DescribeInstanceSSLResponseBody
 	GetSSLEnabled() *string
+	SetSSLExpiredTime(v string) *DescribeInstanceSSLResponseBody
+	GetSSLExpiredTime() *string
 	SetServerCert(v string) *DescribeInstanceSSLResponseBody
 	GetServerCert() *string
 	SetServerKey(v string) *DescribeInstanceSSLResponseBody
@@ -54,7 +56,8 @@ type DescribeInstanceSSLResponseBody struct {
 	// example:
 	//
 	// 1
-	SSLEnabled *string `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
+	SSLEnabled     *string `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
+	SSLExpiredTime *string `json:"SSLExpiredTime,omitempty" xml:"SSLExpiredTime,omitempty"`
 	// The custom certificate content.
 	//
 	// example:
@@ -97,6 +100,10 @@ func (s *DescribeInstanceSSLResponseBody) GetSSLEnabled() *string {
 	return s.SSLEnabled
 }
 
+func (s *DescribeInstanceSSLResponseBody) GetSSLExpiredTime() *string {
+	return s.SSLExpiredTime
+}
+
 func (s *DescribeInstanceSSLResponseBody) GetServerCert() *string {
 	return s.ServerCert
 }
@@ -127,6 +134,11 @@ func (s *DescribeInstanceSSLResponseBody) SetRequestId(v string) *DescribeInstan
 
 func (s *DescribeInstanceSSLResponseBody) SetSSLEnabled(v string) *DescribeInstanceSSLResponseBody {
 	s.SSLEnabled = &v
+	return s
+}
+
+func (s *DescribeInstanceSSLResponseBody) SetSSLExpiredTime(v string) *DescribeInstanceSSLResponseBody {
+	s.SSLExpiredTime = &v
 	return s
 }
 

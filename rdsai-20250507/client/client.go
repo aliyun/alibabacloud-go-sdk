@@ -2241,7 +2241,7 @@ func (client *Client) DescribeInstanceRAGConfig(request *DescribeInstanceRAGConf
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engine
 //
 // # RDS PostgreSQL
 //
@@ -2303,7 +2303,7 @@ func (client *Client) DescribeInstanceSSLWithOptions(request *DescribeInstanceSS
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engine
 //
 // # RDS PostgreSQL
 //
@@ -4993,15 +4993,15 @@ func (client *Client) ModifyInstanceStorageConfig(request *ModifyInstanceStorage
 
 // Summary:
 //
-// Modifies the SSL settings of RDS Supabase instances in batches.
+// Batch modifies the SSL configurations of RDS AI application instances.
 //
 // Description:
 //
-// ### 适用引擎
+// ### Applicable engine
 //
 // # RDS PostgreSQL
 //
-// ### 相关功能文档
+// ### Related documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -5073,15 +5073,15 @@ func (client *Client) ModifyInstancesSSLWithOptions(tmpReq *ModifyInstancesSSLRe
 
 // Summary:
 //
-// Modifies the SSL settings of RDS Supabase instances in batches.
+// Batch modifies the SSL configurations of RDS AI application instances.
 //
 // Description:
 //
-// ### 适用引擎
+// ### Applicable engine
 //
 // # RDS PostgreSQL
 //
-// ### 相关功能文档
+// ### Related documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //

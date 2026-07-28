@@ -13,10 +13,12 @@ type iModifyInstancesSSLResponseBody interface {
 	GetInstanceNames() []*string
 	SetRequestId(v string) *ModifyInstancesSSLResponseBody
 	GetRequestId() *string
+	SetSSLExpiredTime(v string) *ModifyInstancesSSLResponseBody
+	GetSSLExpiredTime() *string
 }
 
 type ModifyInstancesSSLResponseBody struct {
-	// The RDS Supabase instances whose SSL settings are modified.
+	// The list of instance IDs of AI applications that were successfully modified.
 	//
 	// example:
 	//
@@ -33,7 +35,8 @@ type ModifyInstancesSSLResponseBody struct {
 	// example:
 	//
 	// 32DEFB4A-xxxx-ADD5-918E4FD7AB8C
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SSLExpiredTime *string `json:"SSLExpiredTime,omitempty" xml:"SSLExpiredTime,omitempty"`
 }
 
 func (s ModifyInstancesSSLResponseBody) String() string {
@@ -52,6 +55,10 @@ func (s *ModifyInstancesSSLResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *ModifyInstancesSSLResponseBody) GetSSLExpiredTime() *string {
+	return s.SSLExpiredTime
+}
+
 func (s *ModifyInstancesSSLResponseBody) SetInstanceNames(v []*string) *ModifyInstancesSSLResponseBody {
 	s.InstanceNames = v
 	return s
@@ -59,6 +66,11 @@ func (s *ModifyInstancesSSLResponseBody) SetInstanceNames(v []*string) *ModifyIn
 
 func (s *ModifyInstancesSSLResponseBody) SetRequestId(v string) *ModifyInstancesSSLResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyInstancesSSLResponseBody) SetSSLExpiredTime(v string) *ModifyInstancesSSLResponseBody {
+	s.SSLExpiredTime = &v
 	return s
 }
 

@@ -15,6 +15,8 @@ type iModifyInstanceSSLResponseBody interface {
 	GetInstanceName() *string
 	SetRequestId(v string) *ModifyInstanceSSLResponseBody
 	GetRequestId() *string
+	SetSSLExpiredTime(v string) *ModifyInstanceSSLResponseBody
+	GetSSLExpiredTime() *string
 }
 
 type ModifyInstanceSSLResponseBody struct {
@@ -30,7 +32,8 @@ type ModifyInstanceSSLResponseBody struct {
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329241C
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SSLExpiredTime *string `json:"SSLExpiredTime,omitempty" xml:"SSLExpiredTime,omitempty"`
 }
 
 func (s ModifyInstanceSSLResponseBody) String() string {
@@ -53,6 +56,10 @@ func (s *ModifyInstanceSSLResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *ModifyInstanceSSLResponseBody) GetSSLExpiredTime() *string {
+	return s.SSLExpiredTime
+}
+
 func (s *ModifyInstanceSSLResponseBody) SetBranchName(v string) *ModifyInstanceSSLResponseBody {
 	s.BranchName = &v
 	return s
@@ -65,6 +72,11 @@ func (s *ModifyInstanceSSLResponseBody) SetInstanceName(v string) *ModifyInstanc
 
 func (s *ModifyInstanceSSLResponseBody) SetRequestId(v string) *ModifyInstanceSSLResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyInstanceSSLResponseBody) SetSSLExpiredTime(v string) *ModifyInstanceSSLResponseBody {
+	s.SSLExpiredTime = &v
 	return s
 }
 

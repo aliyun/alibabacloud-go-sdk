@@ -24,15 +24,15 @@ type iModifyInstancesSSLShrinkRequest interface {
 }
 
 type ModifyInstancesSSLShrinkRequest struct {
-	// The certificate type. Only **custom*	- is supported.
+	// The certificate type. Currently, only **custom*	- is supported, which indicates a custom certificate.
 	//
-	// >  This parameter is required if **SSLEnabled*	- is set to **1**.
+	// > This parameter is required when **SSLEnabled*	- is set to **1**.
 	//
 	// example:
 	//
 	// custom
 	CAType *string `json:"CAType,omitempty" xml:"CAType,omitempty"`
-	// The information about the RDS Supabase instances that you want to configure. You can specify up to 10 instances.
+	// The list of instance IDs of AI applications. A maximum of 10 instance IDs are supported.
 	//
 	// This parameter is required.
 	//
@@ -52,11 +52,11 @@ type ModifyInstancesSSLShrinkRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Enables or disables SSL. Valid values:
+	// Specifies whether to enable or disable SSL. Valid values:
 	//
-	// 	- **1**: enable
+	// 	- **1**: Enable.
 	//
-	// 	- **0**: disable
+	// 	- **0**: Disable.
 	//
 	// This parameter is required.
 	//
@@ -64,9 +64,9 @@ type ModifyInstancesSSLShrinkRequest struct {
 	//
 	// 1
 	SSLEnabled *int32 `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
-	// The content of the custom certificate.
+	// The custom certificate content.
 	//
-	// >  This parameter is required if **CAType*	- is set to **custom**.
+	// > This parameter is required when **CAType*	- is set to **custom**.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type ModifyInstancesSSLShrinkRequest struct {
 	ServerCert *string `json:"ServerCert,omitempty" xml:"ServerCert,omitempty"`
 	// The private key of the certificate.
 	//
-	// >  This parameter is required if **CAType*	- is set to **custom**.
+	// > This parameter is required when **CAType*	- is set to **custom**.
 	//
 	// example:
 	//
