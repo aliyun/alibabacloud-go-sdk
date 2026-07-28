@@ -30,7 +30,7 @@ type GetVpcPrefixListAssociationsResponseBody struct {
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The pagination token. Valid values:
 	//
-	// - If **NextToken*	- is empty, no subsequent query exists.
+	// - If **NextToken*	- is empty, no subsequent query is required.
 	//
 	// - If **NextToken*	- is returned, the value indicates the token for the next query.
 	//
@@ -175,17 +175,17 @@ type GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation struct {
 	ResourceUid *string `json:"ResourceUid,omitempty" xml:"ResourceUid,omitempty"`
 	// The association status of the prefix list. Valid values:
 	//
-	// - **Created**: The association is created.
+	// - **Created**: succeeded.
 	//
-	// - **ModifyFailed**: The association is not updated to the latest version.
+	// - **ModifyFailed**: not associated with the latest version.
 	//
-	// - **Creating**: The association is being created.
+	// - **Creating**: being created.
 	//
-	// - **Modifying**: The association is being modified.
+	// - **Modifying**: being modified.
 	//
-	// - **Deleting**: The association is being deleted.
+	// - **Deleting**: being deleted.
 	//
-	// - **Deleted**: The association is deleted.
+	// - **Deleted**: deleted.
 	//
 	// example:
 	//

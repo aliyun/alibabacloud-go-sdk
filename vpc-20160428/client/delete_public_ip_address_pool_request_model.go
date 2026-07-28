@@ -36,11 +36,11 @@ type DeletePublicIpAddressPoolRequest struct {
 	//
 	// 0c593ea1-3bea-11e9-b96b-88e9fe60000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// - **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, an HTTP 2xx status code is returned and the operation is directly performed.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type DeletePublicIpAddressPoolRequest struct {
 	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the IP address pool.
+	// The instance ID of the IPAM pool.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type DeletePublicIpAddressPoolRequest struct {
 	//
 	// pippool-6wetvn6fumkgycssx****
 	PublicIpAddressPoolId *string `json:"PublicIpAddressPoolId,omitempty" xml:"PublicIpAddressPoolId,omitempty"`
-	// The ID of the region where you want to create the IP address pool.
+	// The region ID of the IP address pool.
 	//
 	// This parameter is required.
 	//

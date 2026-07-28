@@ -34,7 +34,7 @@ type iModifyVSwitchAttributeRequest interface {
 }
 
 type ModifyVSwitchAttributeRequest struct {
-	// The new description for the vSwitch.
+	// The new description of the vSwitch.
 	//
 	// The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
@@ -42,19 +42,19 @@ type ModifyVSwitchAttributeRequest struct {
 	//
 	// This is my vswitch.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to enable the IPv6 feature for the vSwitch. Valid values:
+	// Specifies whether to enable IPv6 for the vSwitch. Valid values:
 	//
-	// 	- **true**: enables the IPv6 feature.
+	// - **true**: enables IPv6. The VPC to which the vSwitch belongs must have IPv6 enabled. You must also specify Ipv6CidrBlock to assign an IPv6 CIDR block to the vSwitch.
 	//
-	// 	- **false**: disables the IPv6 feature. This is the default value.
+	// - **false*	- (default): disables IPv6. When you disable IPv6 for the vSwitch, make sure that no IPv6 addresses are in use. You cannot specify Ipv6CidrBlock at the same time.
 	//
 	// example:
 	//
 	// false
 	EnableIPv6 *bool `json:"EnableIPv6,omitempty" xml:"EnableIPv6,omitempty"`
-	// The last eight bits of the IPv6 CIDR block of the vSwitch. Valid values: **0*	- to **255**.
+	// The last 8 bits of the IPv6 CIDR block of the vSwitch. Valid values: **0*	- to **255**.
 	//
-	// You can set this parameter only when the IPv6 feature is enabled for the virtual private cloud (VPC) to which the vSwitch belongs.
+	// You can specify this parameter only when the VPC to which the vSwitch belongs has IPv6 enabled. This parameter is used to assign an IPv6 CIDR block to the vSwitch. After the IPv6 CIDR block is allocated, it cannot be changed to another CIDR block. Make sure that the CIDR block does not overlap with those of other vSwitches in the same VPC.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type ModifyVSwitchAttributeRequest struct {
 	Ipv6CidrBlock *int32  `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
 	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the vSwitch is deployed. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// The region ID of the vSwitch. You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list.
 	//
 	// example:
 	//
@@ -78,9 +78,9 @@ type ModifyVSwitchAttributeRequest struct {
 	//
 	// vsw-25nacdfvue4****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The new name for the vSwitch.
+	// The new name of the vSwitch.
 	//
-	// The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
+	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type ModifyVSwitchAttributeRequest struct {
 	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
 	// The IPv6 CIDR block of the VPC to which the vSwitch belongs.
 	//
-	// You can set this parameter only when the IPv6 feature is enabled for the VPC.
+	// If the VPC has multiple IPv6 CIDR blocks, you can specify this parameter to indicate the IPv6 CIDR block range for the vSwitch. If you do not specify this parameter, the IPv6 CIDR block assigned when IPv6 was enabled for the VPC is used.
 	//
 	// example:
 	//

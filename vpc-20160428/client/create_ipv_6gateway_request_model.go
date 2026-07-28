@@ -85,7 +85,7 @@ type CreateIpv6GatewayRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The tags of the resource.
 	Tag []*CreateIpv6GatewayRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the VPC for which you want to enable IPv6 and create the IPv6 gateway.
+	// The ID of the VPC for which you want to enable IPv6.
 	//
 	// This parameter is required.
 	//
@@ -227,7 +227,7 @@ func (s *CreateIpv6GatewayRequest) Validate() error {
 type CreateIpv6GatewayRequestTag struct {
 	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	// The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -235,7 +235,7 @@ type CreateIpv6GatewayRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

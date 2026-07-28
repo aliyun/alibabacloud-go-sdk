@@ -36,7 +36,7 @@ type DeletePhysicalConnectionRequest struct {
 	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The instance ID of the Express Connect circuit instance.
+	// The instance ID of the Express Connect circuit.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type DeletePhysicalConnectionRequest struct {
 	PhysicalConnectionId *string `json:"PhysicalConnectionId,omitempty" xml:"PhysicalConnectionId,omitempty"`
 	// The region ID of the Express Connect circuit.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//

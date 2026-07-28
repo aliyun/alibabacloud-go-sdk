@@ -30,7 +30,7 @@ type iDescribeEipMonitorDataRequest interface {
 }
 
 type DescribeEipMonitorDataRequest struct {
-	// The ID of the EIP.
+	// The instance ID of the EIP.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +38,9 @@ type DescribeEipMonitorDataRequest struct {
 	//
 	// eip-2zeerraiwb7uj6idcfv****
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	// The end of the time range to query. The time must be in UTC. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. For example, `2013-01-10T12:00:00Z` specifies 20:00:00 (UTC+8) on January 10, 2013.
+	// The end time of the data to retrieve. Specify the time in UTC in the ISO 8601 standard format: `YYYY-MM-DDThh:mm:ssZ`. For example, `2013-01-10T12:00:00Z` represents 20:00:00 (UTC+8) on January 10, 2013.
 	//
-	// If the value of seconds (ss) is not 00, the end time is automatically rounded up to the next minute.
+	// If the specified time is not on the minute, the end time is automatically rounded up to the next minute.
 	//
 	// This parameter is required.
 	//
@@ -50,17 +50,19 @@ type DescribeEipMonitorDataRequest struct {
 	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The duration of each monitoring data entry. Unit: seconds. Valid values: **60*	- (default), **300**, **900**, and **3600**.
+	// The duration of each monitoring data entry. Unit: seconds. Valid values: **60*	- (default), **300**, **900**, or **3600**.
 	//
-	// 	- If the value of **(EndTime*	- - **StartTime**)/**Period*	- is greater than 200, a maximum of 200 monitoring data entries are returned at a time.
+	// - If (**EndTime*	- – **StartTime**) / **Period*	- is less than or equal to 400, all monitoring data from the start time to the end time is returned.
 	//
-	// 	- If the value of (**EndTime*	- - **StartTime**)/**Period*	- is less than or equal to 200, only the monitoring data collected between the start time and end time is returned.
+	// - If (**EndTime*	- – **StartTime**) / **Period*	- is greater than 400, monitoring data cannot be returned.
 	//
 	// example:
 	//
 	// 60
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The ID of the region to which the EIP belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// The region ID of the EIP.
+	//
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// example:
 	//
@@ -68,9 +70,9 @@ type DescribeEipMonitorDataRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The beginning of the time range to query. The time must be in UTC. Specify the time in the ISO 8601 standard in `YYYY-MM-DDThh:mm:ssZ` format. For example, `2013-01-10T12:00:00Z` specifies 20:00:00 (UTC+8) on January 10, 2013.
+	// The start time of the data to retrieve. Specify the time in UTC in the ISO 8601 standard format: `YYYY-MM-DDThh:mm:ssZ`. For example, `2013-01-10T12:00:00Z` represents 20:00:00 (UTC+8) on January 10, 2013.
 	//
-	// If the value of seconds (ss) is not 00, the start time is automatically rounded up to the next minute.
+	// If the specified time is not on the minute, the start time is automatically rounded up to the next minute.
 	//
 	// This parameter is required.
 	//

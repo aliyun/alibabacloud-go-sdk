@@ -26,9 +26,11 @@ type iDeleteEnhancedVpnGatewayRequest interface {
 }
 
 type DeleteEnhancedVpnGatewayRequest struct {
-	// The client token used to ensure the idempotence of the request.<br> You can generate this token by using your client, but you must ensure that it is unique for each request. The token can contain only ASCII characters and must not exceed 64 characters in length.<br>
+	// The client token that is used to ensure the idempotence of the request.<br>
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// The client generates the value of this parameter. The value must be unique among different requests and cannot exceed 64 ASCII characters in length.
+	//
+	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request is different.
 	//
 	// example:
 	//
@@ -36,9 +38,9 @@ type DeleteEnhancedVpnGatewayRequest struct {
 	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the enhanced VPN gateway is deployed.
+	// The region ID of the enhanced VPN gateway instance.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +50,7 @@ type DeleteEnhancedVpnGatewayRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the enhanced VPN gateway.
+	// The ID of the enhanced VPN gateway instance.
 	//
 	// This parameter is required.
 	//

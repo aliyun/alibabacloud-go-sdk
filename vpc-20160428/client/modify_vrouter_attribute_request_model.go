@@ -30,7 +30,7 @@ type iModifyVRouterAttributeRequest interface {
 type ModifyVRouterAttributeRequest struct {
 	// The description of the vRouter.
 	//
-	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+	// The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
@@ -38,9 +38,9 @@ type ModifyVRouterAttributeRequest struct {
 	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the vRouter.
+	// The region ID of the vRouter to modify.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type ModifyVRouterAttributeRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The vRouter ID.
+	// The ID of the vRouter.
 	//
 	// This parameter is required.
 	//

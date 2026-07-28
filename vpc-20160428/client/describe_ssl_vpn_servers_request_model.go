@@ -50,7 +50,7 @@ type DescribeSslVpnServersRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in paging query. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page for paging query. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type DescribeSslVpnServersRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the SSL server.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//

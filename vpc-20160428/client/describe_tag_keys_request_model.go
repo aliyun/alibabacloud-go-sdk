@@ -32,7 +32,7 @@ type iDescribeTagKeysRequest interface {
 }
 
 type DescribeTagKeysRequest struct {
-	// The tag keys.
+	// The tag key.
 	//
 	// example:
 	//
@@ -44,11 +44,11 @@ type DescribeTagKeysRequest struct {
 	//
 	// 50
 	MaxResult *int32 `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
-	// The token that is used for the next query. Valid values:
+	// The pagination token. Valid values:
 	//
-	// 	- If this is your first query or no next query is to be sent, ignore this parameter.
+	// - If this is the first query or no subsequent query exists, leave this parameter empty.
 	//
-	// 	- If a subsequent query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
+	// - If a subsequent query exists, set the value to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type DescribeTagKeysRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the resource.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -66,25 +66,25 @@ type DescribeTagKeysRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource IDs. You can specify up to 20 resource IDs.
+	// The resource ID. You can specify up to 50 resource IDs.
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The resource type. Valid values:
 	//
-	// 	- **VPC**: virtual private cloud (VPC)
+	// - **VPC**: virtual private cloud (VPC) instance.
 	//
-	// 	- **VSWITCH**: vSwitch
+	// - **VSWITCH**: vSwitch instance.
 	//
-	// 	- **ROUTETABLE**: route table
+	// - **ROUTETABLE**: route table instance.
 	//
-	// 	- **EIP**: elastic IP address (EIP)
+	// - **EIP**: Elastic IP Address (EIP) instance.
 	//
-	// 	- **VpnGateway**: VPN gateway
+	// - **VpnGateWay**: VPN gateway instance.
 	//
-	// 	- **NATGATEWAY**: NAT gateway
+	// - **NATGATEWAY**: NAT gateway instance.
 	//
-	// 	- **COMMONBANDWIDTHPACKAGE**: EIP bandwidth plan
+	// - **COMMONBANDWIDTHPACKAGE**: Internet Shared Bandwidth instance.
 	//
 	// example:
 	//

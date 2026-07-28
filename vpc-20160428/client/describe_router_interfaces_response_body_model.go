@@ -28,7 +28,7 @@ type DescribeRouterInterfacesResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page for paging queries. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeRouterInterfacesResponseBody struct {
 	// C7F6FCBD-F9CC-4501-8EF3-CDC9577CAE45
 	RequestId          *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RouterInterfaceSet *DescribeRouterInterfacesResponseBodyRouterInterfaceSet `json:"RouterInterfaceSet,omitempty" xml:"RouterInterfaceSet,omitempty" type:"Struct"`
-	// The number of entries returned.
+	// The total number of entries returned.
 	//
 	// example:
 	//

@@ -76,17 +76,17 @@ type ModifySslVpnServerResponseBody struct {
 	//
 	// 0
 	Connections *int32 `json:"Connections,omitempty" xml:"Connections,omitempty"`
-	// The creation time of the SSL-VPN server.
+	// The time when the SSL-VPN server was created.
 	//
 	// example:
 	//
 	// 1492753580000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether two-factor authentication is enabled.
+	// Indicates whether two-factor identity authentication is enabled.
 	//
-	// - **true**: Enabled.
+	// - **true**: enabled.
 	//
-	// - **false*	- (default): Not enabled.
+	// - **false*	- (default): not enabled.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type ModifySslVpnServerResponseBody struct {
 	//
 	// app_my6g4qmvnwxzj2f****
 	IDaaSApplicationId *string `json:"IDaaSApplicationId,omitempty" xml:"IDaaSApplicationId,omitempty"`
-	// The ID of the IDaaS EIAM instance.
+	// The instance ID of the IDaaS EIAM instance.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type ModifySslVpnServerResponseBody struct {
 	IDaaSInstanceId *string `json:"IDaaSInstanceId,omitempty" xml:"IDaaSInstanceId,omitempty"`
 	// The version of the IDaaS EIAM instance.
 	//
-	// - This parameter is returned only when the SSL server is bound to an IDaaS EIAM 2.0 instance. The only valid value is **EIAM 2.0**.
+	// - This parameter is returned only when the SSL server is bound to an IDaaS EIAM 2.0 instance. The value is **EIAM 2.0**.
 	//
 	// - If the SSL server is bound to an IDaaS EIAM 1.0 instance, this parameter is not returned.
 	//
@@ -120,7 +120,7 @@ type ModifySslVpnServerResponseBody struct {
 	//
 	// 47.98.XX.XX
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	// The local subnet.
+	// The local CIDR block.
 	//
 	// example:
 	//
@@ -164,7 +164,7 @@ type ModifySslVpnServerResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the resource group to which the SSL-VPN server belongs.
 	//
-	// The resource group of the SSL-VPN server is the same as that of the associated VPN gateway instance. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource group information.
+	// The SSL-VPN server belongs to the same resource group as the associated VPN gateway instance. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource group information.
 	//
 	// example:
 	//
@@ -176,7 +176,7 @@ type ModifySslVpnServerResponseBody struct {
 	//
 	// vss-bp18q7hzj6largv4v****
 	SslVpnServerId *string `json:"SslVpnServerId,omitempty" xml:"SslVpnServerId,omitempty"`
-	// The ID of the VPN gateway instance.
+	// The instance ID of the VPN gateway.
 	//
 	// example:
 	//

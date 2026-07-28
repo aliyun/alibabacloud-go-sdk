@@ -30,9 +30,9 @@ type iModifyRouterInterfaceSpecRequest interface {
 type ModifyRouterInterfaceSpecRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
+	// Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may differ for each API request.
+	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may vary for each API request.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type ModifyRouterInterfaceSpecRequest struct {
 	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region where the router interface is deployed.
+	// The region where the router interface is located.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type ModifyRouterInterfaceSpecRequest struct {
 	//
 	// ri-2zeo3xzyf38r4urzd****
 	RouterInterfaceId *string `json:"RouterInterfaceId,omitempty" xml:"RouterInterfaceId,omitempty"`
-	// The specification of the router interface. The following table describes the available specifications and the corresponding bandwidths:
+	// The specification of the router interface. The following specifications and their corresponding bandwidths are available:
 	//
 	// 	- **Mini.2**: 2 Mbps
 	//
@@ -86,7 +86,7 @@ type ModifyRouterInterfaceSpecRequest struct {
 	//
 	// 	- **Xlarge.1**: 10000 Mbps
 	//
-	// > If **Role*	- is set to **AcceptingSide*	- (accepter), set **Spec*	- to **Negative**.
+	// > If **Role*	- is set to **AcceptingSide*	- (accepter VPC), set **Spec*	- to **Negative**.
 	//
 	// This parameter is required.
 	//

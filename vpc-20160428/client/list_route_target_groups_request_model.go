@@ -30,33 +30,31 @@ type iListRouteTargetGroupsRequest interface {
 }
 
 type ListRouteTargetGroupsRequest struct {
-	// Client token used to ensure idempotence of the request. Generate a unique parameter value from your client to ensure uniqueness across different requests. ClientToken only supports ASCII characters. Note: If you do not specify this, the system will automatically use the RequestId of the API request as the ClientToken identifier. The RequestId is different for each API request.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters. If you do not specify this parameter, the system uses the RequestId of the API request as the ClientToken. The RequestId may be different for each API request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Page size, with a range of **1*	- to **50**. Default value: **50**.
+	// The number of entries per page. Valid values: **1*	- to **50**. Default value: **50**.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Route target group member instance ID.
-	//
-	// Filters the route target groups that contain the specified member instance ID.
+	// The ID of a route target group member instance. This parameter filters route target groups that contain the specified member instance ID.
 	//
 	// example:
 	//
 	// ep-xxxx
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
-	// Token for the next query. Value: If it is the first query or there is no next query, this field does not need to be filled. If there is a next query, the value should be the NextToken returned from the previous API call.
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. If not all results are returned in a query, a value is returned for NextToken. In the next query, set NextToken to this value.
 	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region ID of the VPC to which the route target group belongs. You can obtain the region ID by calling the DescribeRegions interface.
+	// The region ID of the VPC to which the route target group belongs. You can call the DescribeRegions operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -64,17 +62,17 @@ type ListRouteTargetGroupsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource group ID. For more information about resource groups, see What is a Resource Group?
+	// The ID of the resource group. For more information about resource groups, see What is a resource group.
 	//
 	// example:
 	//
 	// rg-acfmxazdjdhd****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// List of route target group instance IDs.
+	// The list of route target group IDs.
 	//
-	// Up to 50 instance IDs can be queried at a time.
+	// You can specify up to 50 instance IDs in a single query.
 	RouteTargetGroupIds []*string `json:"RouteTargetGroupIds,omitempty" xml:"RouteTargetGroupIds,omitempty" type:"Repeated"`
-	// List of tags.
+	// The list of tags.
 	Tag []*ListRouteTargetGroupsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the VPC to which the route target group belongs.
 	//
@@ -187,17 +185,17 @@ func (s *ListRouteTargetGroupsRequest) Validate() error {
 }
 
 type ListRouteTargetGroupsRequestTag struct {
-	// Resource tag key. Up to 20 tag keys are supported. If you need to pass this value, you cannot input an empty string.
+	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// A tag key can have up to 128 characters and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceJoshua
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Resource tag value. Up to 20 tag values are supported. If you need to pass this value, you can input an empty string.
+	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// A tag value can have up to 128 characters and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

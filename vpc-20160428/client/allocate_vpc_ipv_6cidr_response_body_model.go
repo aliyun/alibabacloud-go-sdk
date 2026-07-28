@@ -16,7 +16,7 @@ type iAllocateVpcIpv6CidrResponseBody interface {
 }
 
 type AllocateVpcIpv6CidrResponseBody struct {
-	// The IPv6 CIDR block that is reserved.
+	// The reserved IPv6 CIDR block.
 	//
 	// example:
 	//

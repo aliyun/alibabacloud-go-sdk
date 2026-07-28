@@ -24,25 +24,25 @@ type iDescribeHighDefinitionMonitorLogAttributeResponseBody interface {
 }
 
 type DescribeHighDefinitionMonitorLogAttributeResponseBody struct {
-	// The ID of the instance whose fine-grained monitoring configurations you want to query.
+	// The instance ID for which high-precision second-level monitoring is queried.
 	//
 	// example:
 	//
 	// eip-wz9fi6qboho9fwgx7****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of instance for which you want to query fine-grained monitoring. Only **EIP*	- may be returned.
+	// The type of the instance for which high-precision second-level monitoring is queried. The value is **EIP**.
 	//
 	// example:
 	//
 	// EIP
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The name of the project.
+	// The name of the LogProject.
 	//
 	// example:
 	//
 	// hdmonitor-cn-shenzhen-1658206966225390
 	LogProject *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
-	// The name of the Logstore.
+	// The name of the LogStore.
 	//
 	// example:
 	//
@@ -54,11 +54,11 @@ type DescribeHighDefinitionMonitorLogAttributeResponseBody struct {
 	//
 	// 54B48E3D-DF70-471B-AA93-08E683A1B457
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation is performed. Valid values:
+	// Indicates whether the call was successful.
 	//
-	// 	- **true**
+	// - **true**: The call was successful.
 	//
-	// 	- **false**
+	// - **false**: The call failed.
 	//
 	// example:
 	//

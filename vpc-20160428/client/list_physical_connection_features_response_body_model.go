@@ -16,7 +16,7 @@ type iListPhysicalConnectionFeaturesResponseBody interface {
 }
 
 type ListPhysicalConnectionFeaturesResponseBody struct {
-	// The list of Express Connect circuit features.
+	// The list of Express Connect circuit attributes.
 	PhysicalConnectionFeatures []*ListPhysicalConnectionFeaturesResponseBodyPhysicalConnectionFeatures `json:"PhysicalConnectionFeatures,omitempty" xml:"PhysicalConnectionFeatures,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,33 +66,33 @@ func (s *ListPhysicalConnectionFeaturesResponseBody) Validate() error {
 }
 
 type ListPhysicalConnectionFeaturesResponseBodyPhysicalConnectionFeatures struct {
-	// The feature key of the Express Connect circuit. Valid values:
+	// The attribute key of the Express Connect circuit. Valid values:
 	//
-	// 	- **SubifRateLimit**: subinterface throttling
+	// - **SubifRateLimit**: sub-interface rate limiting.
 	//
-	// 	- **BFD Capability**: Bidirectional Forwarding Detection (BFD)
+	// - **BFD能力**: Bidirectional Forwarding Detection (BFD) capability.
 	//
-	// 	- **DualStack**: Dual stack
+	// - **DualStack**: the capability to support both IPv4 and IPv6.
 	//
-	// 	- **CEN**: When a virtual border router (VBR) is attached to a Cloud Enterprise Network (CEN) instance and BGP routes are advertised on the user side, attributes such as **as-path*	- and **community*	- are carried.
+	// - **CEN**: when a Virtual Border Router (VBR) is attached to a Cloud Enterprise Network (CEN) instance, the original route attributes such as **as-path*	- and **community*	- can be carried when advertising BGP routes to the user side.
 	//
-	// 	- **CENv6**: When a VBR is attached to an IPv6 CEN instance and BGP routes are advertised on the user side, attributes such as **as-path*	- and **community*	- are carried.
+	// - **CENv6**: when a VBR is attached to an IPv6-enabled CEN instance, the original route attributes such as **as-path*	- and **community*	- can be carried when advertising BGP routes to the user side.
 	//
-	// 	- **QOS**: The device supports configuring QOS policies on physical ports.
+	// - **QOS**: the device supports configuring QoS policies on physical ports.
 	//
-	// 	- **MSHA**: The device supports fast switching groups between two VBRs.
+	// - **MSHA**: the device supports configuring a fast failover group between two VBRs.
 	//
-	// 	- **MULTI_MS_HA**: The device supports a maximum of eight VBRs that can be added to the same ECR.
+	// - **MULTI_MS_HA**: the device supports configuring a fast failover group among up to 8 VBRs. These VBRs must be added to the same Express Connect Router (ECR).
 	//
 	// example:
 	//
 	// SubifRateLimit
 	FeatureKey *string `json:"FeatureKey,omitempty" xml:"FeatureKey,omitempty"`
-	// The feature value of the Express Connect circuit. Valid values:
+	// The attribute value of the Express Connect circuit. Valid values:
 	//
-	// 	- **OK**: Supported
+	// - **OK**: Supported.
 	//
-	// 	- **NOK**: Not supported
+	// - **NOK**: Not supported.
 	//
 	// example:
 	//

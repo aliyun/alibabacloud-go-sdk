@@ -23,7 +23,7 @@ type iDescribeEipAddressesResponseBody interface {
 
 type DescribeEipAddressesResponseBody struct {
 	EipAddresses *DescribeEipAddressesResponseBodyEipAddresses `json:"EipAddresses,omitempty" xml:"EipAddresses,omitempty" type:"Struct"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeEipAddressesResponseBody struct {
 	//
 	// 4EC47282-1B74-4534-BD0E-403F3EE64CAF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

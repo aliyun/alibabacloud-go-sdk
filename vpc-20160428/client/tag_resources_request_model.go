@@ -30,7 +30,7 @@ type iTagResourcesRequest interface {
 type TagResourcesRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the resource.
+	// The region ID of the resource to which you want to create and bind tags.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
 	//
@@ -40,7 +40,7 @@ type TagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource ID. You can specify at most 20 IDs.
+	// The resource IDs. You can specify up to 50 resource IDs.
 	//
 	// This parameter is required.
 	//
@@ -52,19 +52,46 @@ type TagResourcesRequest struct {
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The resource type. Valid values:
 	//
-	// 	- **VPC**: a VPC
+	// - **VPC**: virtual private cloud (VPC) instance.
 	//
-	// 	- **VSWITCH**: a vSwitch
+	// - **VSWITCH**: virtual switch instance.
 	//
-	// 	- **ROUTETABLE**: a route table
+	// - **ROUTETABLE**: route table instance.
 	//
-	// 	- **EIP**: an EIP
+	// - **EIP**: elastic IP address (EIP) instance.
 	//
-	// 	- **VpnGateway**: a VPN gateway
+	// - **VPNGATEWAY**: VPN gateway instance.
 	//
-	// 	- **NATGATEWAY**: a NAT gateway
+	// - **NATGATEWAY**: NAT gateway instance.
 	//
-	// 	- **COMMONBANDWIDTHPACKAGE**: an EIP bandwidth plan
+	// - **COMMONBANDWIDTHPACKAGE**: Internet Shared Bandwidth instance.
+	//
+	// - **PREFIXLIST**: prefix list instance.
+	//
+	// - **PUBLICIPADDRESSPOOL**: IP address pool instance.
+	//
+	// - **IPV4GATEWAY**: IPv4 gateway instance.
+	//
+	// - **IPV6GATEWAY**: IPv6 gateway instance.
+	//
+	// - **NETWORKACL**: network ACL instance.
+	//
+	// - **TRAFFICMIRRORFILTER**: traffic mirror filter instance.
+	//
+	// - **TRAFFICMIRRORSESSION**: traffic mirror session instance.
+	//
+	// - **FLOWLOG**: flow log instance.
+	//
+	// - **HAVIP**: high-availability (HA) virtual IP address instance.
+	//
+	// - **DHCPOPTIONSSET**: DHCP options set instance.
+	//
+	// - **GATEWAYENDPOINT**: gateway endpoint instance.
+	//
+	// - **IPV6ADDRESS**: IPv6 address instance.
+	//
+	//
+	// > The resource type value is case-insensitive.
 	//
 	// This parameter is required.
 	//
@@ -176,21 +203,21 @@ func (s *TagResourcesRequest) Validate() error {
 }
 
 type TagResourcesRequestTag struct {
-	// The key of the tag that is added to the resource. You can specify at most 20 tag keys.
+	// The tag key of the resource. You must specify at least 1 and can specify up to 20 tag keys.
 	//
-	// The key cannot exceed 128 characters in length. The key cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	// The tag key can be up to 128 characters in length, and cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
 	//
-	// > When you call this operation, the **Tag.N.Key*	- parameter is required and cannot be an empty string.
+	// > The **Tag.N.Key*	- parameter is required when you call this operation, and cannot be an empty string.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag that is added to the resource. You can specify at most 20 tag values.
+	// The tag value of the resource. You must specify at least 1 and can specify up to 20 tag values.
 	//
-	// The tag value cannot exceed 128 characters in length. The value cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length, and cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
 	//
-	// > When you call this operation, the **Tag.N.Value*	- parameter is required and can be an empty string.
+	// > The **Tag.N.Value*	- parameter is required when you call this operation, and can be an empty string.
 	//
 	// example:
 	//

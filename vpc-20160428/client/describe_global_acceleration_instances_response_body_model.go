@@ -23,13 +23,13 @@ type iDescribeGlobalAccelerationInstancesResponseBody interface {
 
 type DescribeGlobalAccelerationInstancesResponseBody struct {
 	GlobalAccelerationInstances *DescribeGlobalAccelerationInstancesResponseBodyGlobalAccelerationInstances `json:"GlobalAccelerationInstances,omitempty" xml:"GlobalAccelerationInstances,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeGlobalAccelerationInstancesResponseBody struct {
 	//
 	// 6B4EE38D-C75B-4E1F-844E-863A94430676
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

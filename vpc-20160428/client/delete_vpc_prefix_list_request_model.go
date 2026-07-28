@@ -30,19 +30,19 @@ type iDeleteVpcPrefixListRequest interface {
 type DeleteVpcPrefixListRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, the system uses **RequestId*	- as **ClientToken**. **RequestId*	- may be different for each API request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request may be different.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to check the request without performing the operation. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: checks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails to pass the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run without deleting the prefix list. The system checks the required parameters, request syntax, and business restrictions. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
 	//
-	// 	- **false*	- (default): sends the request. If the request passes the check, a 2xx HTTP status code is returned and the operation is performed.
+	// - **false*	- (default): performs a dry run and sends the request. If the check succeeds, an HTTP 2xx status code is returned and the prefix list is deleted.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DeleteVpcPrefixListRequest struct {
 	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the prefix list that you want to delete.
+	// The instance ID of the prefix list to delete.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type DeleteVpcPrefixListRequest struct {
 	//
 	// pl-0b78hw45f****
 	PrefixListId *string `json:"PrefixListId,omitempty" xml:"PrefixListId,omitempty"`
-	// The region ID of the prefix list.
+	// The region ID of the prefix list to delete.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
 	//

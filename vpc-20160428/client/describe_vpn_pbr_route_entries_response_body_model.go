@@ -22,13 +22,13 @@ type iDescribeVpnPbrRouteEntriesResponseBody interface {
 }
 
 type DescribeVpnPbrRouteEntriesResponseBody struct {
-	// The page number.
+	// The page number of the list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page in a paging query.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type DescribeVpnPbrRouteEntriesResponseBody struct {
 	//
 	// 5BE01CD7-5A50-472D-AC14-CA181C5C03BE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of entries returned.
+	// The total number of entries in the list.
 	//
 	// example:
 	//

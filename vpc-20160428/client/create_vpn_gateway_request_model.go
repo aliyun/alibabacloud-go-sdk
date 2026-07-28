@@ -86,7 +86,7 @@ type CreateVpnGatewayRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
+	// > If you do not specify this parameter, the system uses the **RequestId*	- as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
@@ -96,9 +96,9 @@ type CreateVpnGatewayRequest struct {
 	//
 	// - If the current region supports dual-tunnel IPsec-VPN connections, this parameter is required.
 	//
-	// - You must specify two vSwitches in different zones within the VPC associated with the VPN VPC-connected instance to implement zone-level disaster recovery for IPsec-VPN connections.
+	// - You must specify two vSwitches in different zones from the VPC associated with the VPN VPC-connected instance to implement zone-level disaster recovery for IPsec-VPN connections.
 	//
-	// - For regions that support only one zone, zone-level disaster recovery is not supported. Specify two different vSwitches in the same zone to achieve high availability for IPsec-VPN connections. You can also specify the same vSwitch.
+	// - For regions that support only one zone, zone-level disaster recovery is not supported. Specify two different vSwitches in the same zone to implement high availability for IPsec-VPN connections. You can also specify the same vSwitch.
 	//
 	// For information about the regions and zones that support dual-tunnel IPsec-VPN connections, see [Upgrade an IPsec-VPN connection to dual-tunnel mode](https://help.aliyun.com/document_detail/2358946.html).
 	//
@@ -126,11 +126,11 @@ type CreateVpnGatewayRequest struct {
 	//
 	// false
 	EnableSsl *bool `json:"EnableSsl,omitempty" xml:"EnableSsl,omitempty"`
-	// <props="china">The billing method of the VPN gateway. Set the value to **PREPAY**, which specifies the subscription billing method.
+	// <props="china">The billing method of the VPN gateway. Set the value to **PREPAY*	- (subscription).
 	//
-	// <props="intl">The billing method of the VPN gateway. Set the value to **POSTPAY**, which specifies the pay-as-you-go billing method.
+	// <props="intl">The billing method of the VPN gateway. Set the value to **POSTPAY*	- (pay-as-you-go billing method).
 	//
-	// <props="partner">The billing method of the VPN gateway. Set the value to **POSTPAY**, which specifies the pay-as-you-go billing method.
+	// <props="partner">The billing method of the VPN gateway. Set the value to **POSTPAY*	- (pay-as-you-go billing method).
 	//
 	// <props="china">This parameter is required when you create a VPN gateway.
 	//
@@ -162,7 +162,7 @@ type CreateVpnGatewayRequest struct {
 	//
 	// <props="china">
 	//
-	// > This parameter is required if **InstanceChargeType*	- is set to **PREPAY**..
+	// > This parameter is required if the **InstanceChargeType*	- parameter is set to **PREPAY**.
 	//
 	// example:
 	//
@@ -182,9 +182,9 @@ type CreateVpnGatewayRequest struct {
 	//
 	// - If you do not specify a resource group ID, the VPN gateway belongs to the default resource group after it is created.
 	//
-	// - After the VPN gateway is created, if you create SSL servers, SSL client certificates, IPsec servers, or IPsec-VPN connections (when the IPsec-VPN connection is associated with the VPN gateway) under the VPN gateway, these resources belong to the same resource group as the VPN gateway. The resource group of these resources cannot be modified.
+	// - After the VPN gateway is created, if you create SSL servers, SSL client certificates, IPsec servers, or IPsec-VPN connections (when the IPsec-VPN connection is bindded to the VPN gateway) under the VPN gateway, these resources belong to the same resource group as the VPN gateway. The resource group of these resources cannot be modified.
 	//
-	//   If you change the resource group of the VPN gateway, the resource group of the preceding resources is also changed.
+	//   If you modify the resource group of the VPN gateway, the resource group of the preceding resources is also modified.
 	//
 	// example:
 	//
@@ -202,7 +202,7 @@ type CreateVpnGatewayRequest struct {
 	//
 	// - In regions that support dual-tunnel IPsec-VPN connections, this parameter is required. You must specify a vSwitch and also specify the **DisasterRecoveryVSwitchId*	- parameter.
 	//
-	// - In regions that support only single-tunnel IPsec-VPN connections, if you do not specify a vSwitch, the system automatically selects a vSwitch from the VPC.
+	// - In regions that support single-tunnel IPsec-VPN connections, if you do not specify a vSwitch, the system automatically selects a vSwitch from the VPC.
 	//
 	// example:
 	//
@@ -220,7 +220,7 @@ type CreateVpnGatewayRequest struct {
 	//
 	// - **Normal*	- (default): standard.
 	//
-	// <props="china">- **NationalStandard**: Chinese SM-based..
+	// <props="china">- **NationalStandard**: Chinese SM-based.
 	//
 	// example:
 	//

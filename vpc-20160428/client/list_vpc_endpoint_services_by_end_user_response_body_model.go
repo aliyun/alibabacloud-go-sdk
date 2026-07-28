@@ -22,29 +22,29 @@ type iListVpcEndpointServicesByEndUserResponseBody interface {
 }
 
 type ListVpcEndpointServicesByEndUserResponseBody struct {
-	// The number of entries returned per page.
+	// The number of entries per page in a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used for the next query. Valid values:
+	// The token for the next query. Valid values:
 	//
-	// 	- If no value is returned for **NextToken**, no next queries are sent.
+	// - If **NextToken*	- is empty, no next query exists.
 	//
-	// 	- If **NextToken*	- is returned, the value is the token that is used for the next query.
+	// - If **NextToken*	- is returned, the value indicates the token for the next query.
 	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0AB1129F-32C1-5E4D-9E22-E4A859CA46EB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of entries returned.
+	// The list of available endpoint services.
 	Services []*ListVpcEndpointServicesByEndUserResponseBodyServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
 	// The total number of entries returned.
 	//
@@ -127,13 +127,13 @@ type ListVpcEndpointServicesByEndUserResponseBodyServices struct {
 	//
 	// {   \\"Version\\" : \\"1\\",   \\"Statement\\" : [ {     \\"Effect\\" : \\"Allow\\",     \\"Action\\" : \\"*\\",     \\"Principal\\" : \\"*\\",     \\"Resource\\" : \\"*\\"   } ] }
 	DefaultPolicyDocument *string `json:"DefaultPolicyDocument,omitempty" xml:"DefaultPolicyDocument,omitempty"`
-	// The domain name of the cloud service to which the endpoint service belongs.
+	// The domain name of the cloud service associated with the endpoint service in the queried region.
 	//
 	// example:
 	//
 	// oss-admin.aliyuncs.com
 	ServiceDomain *string `json:"ServiceDomain,omitempty" xml:"ServiceDomain,omitempty"`
-	// The ID of the endpoint service.
+	// The instance ID of the endpoint service.
 	//
 	// example:
 	//
@@ -145,11 +145,11 @@ type ListVpcEndpointServicesByEndUserResponseBodyServices struct {
 	//
 	// com.aliyun.cn-hangzhou.oss
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// Indicate whether the endpoint service supports the access policy. Valid values:
+	// Indicates whether the endpoint service supports access policies. Valid values:
 	//
-	// 	- **false**
+	// - **false**: Access policies are not supported.
 	//
-	// 	- **true**
+	// - **true**: Access policies are supported.
 	//
 	// example:
 	//

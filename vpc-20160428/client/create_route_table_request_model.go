@@ -34,11 +34,11 @@ type iCreateRouteTableRequest interface {
 }
 
 type CreateRouteTableRequest struct {
-	// The type of the route table. Valid values:
+	// The type of the route table to create. Valid values:
 	//
-	// 	- **VSwitch*	- (default): vSwitch route table
+	// - **VSwitch*	- (default): vSwitch route table.
 	//
-	// 	- **Gateway**: gateway route table
+	// - **Gateway**: gateway route table.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type CreateRouteTableRequest struct {
 	AssociateType *string `json:"AssociateType,omitempty" xml:"AssociateType,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, **ClientToken*	- is set to the value of **RequestId**. The value of **RequestId*	- in each API request may be different.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type CreateRouteTableRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the route table.
 	//
-	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+	// The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
@@ -64,9 +64,9 @@ type CreateRouteTableRequest struct {
 	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the virtual private cloud (VPC) to which the custom route table belongs.
+	// The region ID of the VPC to which the route table belongs.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -78,7 +78,7 @@ type CreateRouteTableRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The name of the route table.
 	//
-	// The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
+	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
@@ -217,17 +217,17 @@ func (s *CreateRouteTableRequest) Validate() error {
 }
 
 type CreateRouteTableRequestTag struct {
-	// The tag key. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
+	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
+	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

@@ -32,21 +32,21 @@ type iModifyVSwitchCidrReservationAttributeRequest interface {
 }
 
 type ModifyVSwitchCidrReservationAttributeRequest struct {
-	// A client token used to ensure the idempotence of the request.
+	// The client token that is used to ensure the idempotence of the request.
 	//
-	// Generate a unique value from your client for this parameter to guarantee uniqueness across different requests. ClientToken supports only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may differ for each API request.
+	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may vary for each API request.
 	//
 	// example:
 	//
 	// 02fb3da4-230e-11e9-8e44-0016e04115b
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run of the request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// - **true**: Sends a dry run request without creating any resource (performing the API operation). The system checks whether required parameters are specified, whether the request format is valid, and whether business limits are met. If the check fails, an error is returned. If the check passes, the error code `DryRunOperation` is returned.
+	// - **true**: performs a dry run. The system checks the required parameters, request syntax, and business restrictions. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
 	//
-	// - **false*	- (default): Sends a normal request. If the check passes, an HTTP 2xx status code is returned and the operation is performed.
+	// - **false*	- (default): performs a dry run and sends the request. If the check succeeds, an HTTP 2xx status code is returned and the operation is performed.
 	//
 	// example:
 	//
@@ -54,9 +54,9 @@ type ModifyVSwitchCidrReservationAttributeRequest struct {
 	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the vSwitch is deployed.
+	// The region ID of the vSwitch.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -66,15 +66,15 @@ type ModifyVSwitchCidrReservationAttributeRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The new description of the reserved CIDR block. The default value is empty.
+	// The description of the reserved CIDR block for a vSwitch that you want to modify. If you do not specify this parameter, the description is empty. The default value is empty.
 	//
-	// The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
+	// The description must be 2 to 256 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// ReservationDescription
 	VSwitchCidrReservationDescription *string `json:"VSwitchCidrReservationDescription,omitempty" xml:"VSwitchCidrReservationDescription,omitempty"`
-	// The ID of the reserved CIDR block.
+	// The instance ID of the reserved CIDR block for a vSwitch that you want to modify.
 	//
 	// This parameter is required.
 	//
@@ -82,9 +82,9 @@ type ModifyVSwitchCidrReservationAttributeRequest struct {
 	//
 	// vcr-bp1m12saqteraw3rp****
 	VSwitchCidrReservationId *string `json:"VSwitchCidrReservationId,omitempty" xml:"VSwitchCidrReservationId,omitempty"`
-	// The new name of the reserved CIDR block.
+	// The name of the reserved CIDR block for a vSwitch that you want to modify.
 	//
-	// The name must be 2 to 128 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+	// The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It can contain digits, underscores (_), and hyphens (-).
 	//
 	// example:
 	//

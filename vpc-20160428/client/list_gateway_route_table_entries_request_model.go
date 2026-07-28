@@ -30,7 +30,7 @@ type iListGatewayRouteTableEntriesRequest interface {
 }
 
 type ListGatewayRouteTableEntriesRequest struct {
-	// The destination CIDR block of the route entry in the gateway route table that you want to query.
+	// The destination CIDR block of the route entry in the gateway route table to query.
 	//
 	// example:
 	//

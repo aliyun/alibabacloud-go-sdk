@@ -17,6 +17,8 @@ type iCreateFlowLogRequest interface {
 	GetFlowLogName() *string
 	SetIpVersion(v string) *CreateFlowLogRequest
 	GetIpVersion() *string
+	SetLogFormat(v string) *CreateFlowLogRequest
+	GetLogFormat() *string
 	SetLogStoreName(v string) *CreateFlowLogRequest
 	GetLogStoreName() *string
 	SetOwnerAccount(v string) *CreateFlowLogRequest
@@ -74,6 +76,7 @@ type CreateFlowLogRequest struct {
 	//
 	// IPv4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	LogFormat *string `json:"LogFormat,omitempty" xml:"LogFormat,omitempty"`
 	// The name of the Logstore that stores the captured traffic.
 	//
 	// - The Logstore name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
@@ -114,7 +117,7 @@ type CreateFlowLogRequest struct {
 	//
 	// rg-acfmxazdjdhd****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the resource from which to capture traffic.
+	// The ID of the resource whose traffic you want to capture.
 	//
 	// This parameter is required.
 	//
@@ -124,7 +127,7 @@ type CreateFlowLogRequest struct {
 	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of resource from which to capture traffic. Valid values:
+	// The type of the resource whose traffic you want to capture. Valid values:
 	//
 	// - **NetworkInterface**: network interface controller (NIC).
 	//
@@ -192,6 +195,10 @@ func (s *CreateFlowLogRequest) GetFlowLogName() *string {
 
 func (s *CreateFlowLogRequest) GetIpVersion() *string {
 	return s.IpVersion
+}
+
+func (s *CreateFlowLogRequest) GetLogFormat() *string {
+	return s.LogFormat
 }
 
 func (s *CreateFlowLogRequest) GetLogStoreName() *string {
@@ -263,6 +270,11 @@ func (s *CreateFlowLogRequest) SetFlowLogName(v string) *CreateFlowLogRequest {
 
 func (s *CreateFlowLogRequest) SetIpVersion(v string) *CreateFlowLogRequest {
 	s.IpVersion = &v
+	return s
+}
+
+func (s *CreateFlowLogRequest) SetLogFormat(v string) *CreateFlowLogRequest {
+	s.LogFormat = &v
 	return s
 }
 
@@ -345,17 +357,17 @@ func (s *CreateFlowLogRequest) Validate() error {
 }
 
 type CreateFlowLogRequestTag struct {
-	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	// The tag key of the resource. You can specify up to 20 tag keys. Do not specify an empty string.
 	//
-	// The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// A tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+	// The tag value of the resource. You can specify up to 20 tag values. You can specify an empty string.
 	//
-	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
 	//
 	// example:
 	//

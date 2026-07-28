@@ -44,7 +44,7 @@ type iCreateExpressCloudConnectionRequest interface {
 }
 
 type CreateExpressCloudConnectionRequest struct {
-	// The bandwidth for ECC, which corresponds to the bandwidth for the underlying circuit.
+	// The bandwidth of the Express Cloud Connection instance, which corresponds to the bandwidth of the underlying physical connection.
 	//
 	// Unit: Mbit/s.
 	//
@@ -54,33 +54,33 @@ type CreateExpressCloudConnectionRequest struct {
 	//
 	// 2
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The email address of the contact who applies for ECC.
+	// The email address of the contact person for the Express Cloud Connection application.
 	//
 	// example:
 	//
 	// XX@example.com
 	ContactMail *string `json:"ContactMail,omitempty" xml:"ContactMail,omitempty"`
-	// The phone number of the contact who applies for ECC.
+	// The phone number of the contact person for the Express Cloud Connection application.
 	//
 	// example:
 	//
 	// 132*********
 	ContactTel *string `json:"ContactTel,omitempty" xml:"ContactTel,omitempty"`
-	// The description of ECC.
+	// The description of the Express Cloud Connection instance.
 	//
-	// The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+	// The description must be 2 to 256 characters in length and must start with a letter or a Chinese character, but cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// 高速上云服务
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID card number of the contact who applies for ECC.
+	// The ID card number of the contact person for the Express Cloud Connection application.
 	//
 	// example:
 	//
 	// 32*****************
 	IDCardNo *string `json:"IDCardNo,omitempty" xml:"IDCardNo,omitempty"`
-	// The Internet service provider (ISP) for the data center.
+	// The network service provider of the IDC.
 	//
 	// This parameter is required.
 	//
@@ -88,9 +88,9 @@ type CreateExpressCloudConnectionRequest struct {
 	//
 	// CU
 	IdcSP *string `json:"IdcSP,omitempty" xml:"IdcSP,omitempty"`
-	// The name of the ECC instance.
+	// The name of the Express Cloud Connection instance.
 	//
-	// The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter but cannot start with `http://` or `https://`.
+	// The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-), but cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
@@ -98,15 +98,15 @@ type CreateExpressCloudConnectionRequest struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The city where the data center is located.
+	// The city where the on-premises IDC is located.
 	//
 	// example:
 	//
 	// 杭州
 	PeerCity *string `json:"PeerCity,omitempty" xml:"PeerCity,omitempty"`
-	// The geographical location of the data center.
+	// The geographic location of the on-premises data center.
 	//
-	// > It must be accurate to house number-floor-room number-server rack number.
+	// >The location must be accurate to the street number, floor, room number, and rack number.
 	//
 	// This parameter is required.
 	//
@@ -114,29 +114,29 @@ type CreateExpressCloudConnectionRequest struct {
 	//
 	// **市**区/县**路**号**物业或楼宇名称**座**楼层**房间号**机柜号**机柜名称**设备**端口
 	PeerLocation *string `json:"PeerLocation,omitempty" xml:"PeerLocation,omitempty"`
-	// The port of the Express Connect circuit. Valid values:
+	// The port type of the Express Connect circuit. Valid values:
 	//
-	// 	- 100Base-T
+	// 	- 100Base-T: 100M Ethernet port
 	//
-	// 	- 1000Base-T
+	// 	- 1000Base-T (default): GE electrical port
 	//
-	// 	- 1000Base-LX
+	// 	- 1000Base-LX: GE single-mode optical port (10 km)
 	//
-	// 	- 10GBase-T
+	// 	- 10GBase-T: 10 GE electrical port
 	//
-	// 	- 10GBase-LR
+	// 	- 10GBase-LR: 10 GE single-mode optical port (10 km)
 	//
 	// example:
 	//
 	// 100Base-T
 	PortType *string `json:"PortType,omitempty" xml:"PortType,omitempty"`
-	// The ID of the standby Express Connect circuit.
+	// The instance ID of the redundant Express Cloud Connection circuit.
 	//
 	// example:
 	//
 	// ecc-d****
 	RedundantEccId *string `json:"RedundantEccId,omitempty" xml:"RedundantEccId,omitempty"`
-	// The region ID of the ECC instance.
+	// The region ID of the Express Cloud Connection instance.
 	//
 	// This parameter is required.
 	//

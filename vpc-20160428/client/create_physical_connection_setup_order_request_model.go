@@ -34,7 +34,7 @@ type iCreatePhysicalConnectionSetupOrderRequest interface {
 }
 
 type CreatePhysicalConnectionSetupOrderRequest struct {
-	// The ID of the access point.
+	// The access point ID.
 	//
 	// This parameter is required.
 	//
@@ -42,11 +42,11 @@ type CreatePhysicalConnectionSetupOrderRequest struct {
 	//
 	// ap-cn-beijing-ft-A
 	AccessPointId *string `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
-	// Specifies whether to enable automatic payments. Valid values:
+	// Specifies whether to enable automatic payment. Valid values:
 	//
-	// 	- **false*	- (default): disables automatic payment.
+	// - **false*	- (default): disables automatic payment.
 	//
-	// 	- **true**
+	// - **true**: enables automatic payment.
 	//
 	// example:
 	//
@@ -54,27 +54,27 @@ type CreatePhysicalConnectionSetupOrderRequest struct {
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	// Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may vary for each API request.
 	//
 	// example:
 	//
 	// 318BB676-0A2B-43A0-9AD8-F1D34E93750F
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The connectivity provider of the Express Connect circuit. Valid values:
+	// The carrier that provides the physical connection. Valid values:
 	//
-	// 	- **CT**: China Telecom
+	// - **CT**: China Telecom
 	//
-	// 	- **CU**: China Unicom
+	// - **CU**: China Unicom
 	//
-	// 	- **CM**: China Mobile
+	// - **CM**: China Mobile
 	//
-	// 	- **CO**: other connectivity providers in the Chinese mainland
+	// - **CO**: other carriers in the Chinese mainland
 	//
-	// 	- **Equinix**: Equinix
+	// - **Equinix**: Equinix
 	//
-	// 	- **Other**: other connectivity providers outside the Chinese mainland
+	// - **Other**: other carriers outside the Chinese mainland
 	//
 	// This parameter is required.
 	//
@@ -86,27 +86,27 @@ type CreatePhysicalConnectionSetupOrderRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The port type of the Express Connect circuit. Valid values:
 	//
-	// 	- **100Base-T**: 100 Mbit/s copper Ethernet port
+	// - **100Base-T**: 100M Ethernet port.
 	//
-	// 	- **1000Base-T*	- (default): 1,000 Mbit/s copper Ethernet port
+	// - **1000Base-T*	- (default): 1 GE port.
 	//
-	// 	- **1000Base-LX**: 1,000 Mbit/s single-mode optical port (10 km)
+	// - **1000Base-LX**: GE single-mode optical port (10 km).
 	//
-	// 	- **10GBase-T**: 10,000 Mbit/s copper Ethernet port
+	// - **10GBase-T**: 10 GE port.
 	//
-	// 	- **10GBase-LR**: 10,000 Mbit/s single-mode optical port (10 km)
+	// - **10GBase-LR**: 10 GE single-mode optical port (10 km).
 	//
-	// 	- **40GBase-LR**: 40,000 Mbit/s single-mode optical port
+	// - **40GBase-LR**: 40 GE single-mode optical port.
 	//
-	// 	- **100GBase-LR**: 100,000 Mbit/s single-mode optical port
+	// - **100GBase-LR**: 100 GE single-mode optical port.
 	//
-	// >  Whether 40GBase-LR and 100GBase-LR ports can be created depends on resource supplies. For more information, contact your account manager.
+	// > 40GBase-LR and 100GBase-LR ports are created based on the actual port availability. Contact your account manager for details.
 	//
 	// example:
 	//
 	// 100Base-T
 	PortType *string `json:"PortType,omitempty" xml:"PortType,omitempty"`
-	// The ID of the redundant physical connection. The redundant physical connection must be in the **Allocated**, **Confirmed**, or **Enabled*	- state.
+	// The ID of the redundant Express Connect circuit. The circuit must be in the **Allocated**, **Confirmed**, or **Enabled*	- state.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type CreatePhysicalConnectionSetupOrderRequest struct {
 	RedundantPhysicalConnectionId *string `json:"RedundantPhysicalConnectionId,omitempty" xml:"RedundantPhysicalConnectionId,omitempty"`
 	// The region ID of the Express Connect circuit.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//

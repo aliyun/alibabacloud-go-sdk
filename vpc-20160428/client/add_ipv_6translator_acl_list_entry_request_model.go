@@ -28,15 +28,15 @@ type iAddIPv6TranslatorAclListEntryRequest interface {
 }
 
 type AddIPv6TranslatorAclListEntryRequest struct {
-	// The remarks of the ACL entry.
+	// The description of the access control policy group entry.
 	//
-	// It must be 2 to 100 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+	// The description must be 2 to 100 characters in length and must start with an uppercase letter, lowercase letter, or Chinese character. It can contain digits, underscores (_), and hyphens (-).
 	//
 	// example:
 	//
 	// clientIP1
 	AclEntryComment *string `json:"AclEntryComment,omitempty" xml:"AclEntryComment,omitempty"`
-	// The IPv6 address or IPv6 CIDR block that you want to add to the ACL entry, for example, 12XX:0:0:XXXX::0102 or 12XX:0:0:XXXX::/60.
+	// The IPv6 address or IPv6 CIDR block to add to the access control policy group entry. Example: 12XX:0:0:XXXX::0102 or 12XX:0:0:XXXX::/60.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type AddIPv6TranslatorAclListEntryRequest struct {
 	//
 	// 12XX:0:0:XXXX::0102
 	AclEntryIp *string `json:"AclEntryIp,omitempty" xml:"AclEntryIp,omitempty"`
-	// The ID of the ACL to which you want to add the IP entry.
+	// The ID of the access control policy group to which the IP entry belongs.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type AddIPv6TranslatorAclListEntryRequest struct {
 	AclId        *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the ACL.
+	// The region ID of the access control policy group.
 	//
 	// This parameter is required.
 	//

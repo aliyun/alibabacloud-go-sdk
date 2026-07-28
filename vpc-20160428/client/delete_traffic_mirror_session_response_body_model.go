@@ -14,7 +14,7 @@ type iDeleteTrafficMirrorSessionResponseBody interface {
 }
 
 type DeleteTrafficMirrorSessionResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

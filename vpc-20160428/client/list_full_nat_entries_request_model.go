@@ -46,75 +46,75 @@ type iListFullNatEntriesRequest interface {
 type ListFullNatEntriesRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- as the **ClientToken**. The **RequestId*	- of each API request may be different.
 	//
 	// example:
 	//
 	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the FULLNAT entry that you want to query.
+	// The ID of the FULLNAT entry to query.
 	//
 	// example:
 	//
 	// fullnat-gw8fz23jezpbblf1j****
 	FullNatEntryId *string `json:"FullNatEntryId,omitempty" xml:"FullNatEntryId,omitempty"`
-	// The name of the FULLNAT entry that you want to query. You can specify at most 20 names.
+	// The names of the FULLNAT entries to query. You can specify up to 20 names.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, hyphens (-), and underscores (_). The name must start with a letter or Chinese character.
 	FullNatEntryNames []*string `json:"FullNatEntryNames,omitempty" xml:"FullNatEntryNames,omitempty" type:"Repeated"`
-	// The ID of the FULLNAT table to which the FULLNAT entries to be queried belong.
+	// The ID of the FULLNAT table to which the FULLNAT entries belong.
 	//
-	// >  You must specify at least one of **FullNatTableId*	- and **NatGatewayId**.
+	// > You must specify at least one of **FullNatTableId*	- and **NatGatewayId**.
 	//
 	// example:
 	//
 	// fulltb-gw88z7hhlv43rmb26****
 	FullNatTableId *string `json:"FullNatTableId,omitempty" xml:"FullNatTableId,omitempty"`
-	// The protocol of the packets that are forwarded by the port. Valid values:
+	// The protocol type of the Redirection Port. Valid values:
 	//
-	// 	- **TCP**
+	// - **TCP**: forwards TCP packets.
 	//
-	// 	- **UDP**
+	// - **UDP**: forwards UDP packets.
 	//
 	// example:
 	//
 	// TCP
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	// The number of entries per page. Valid values: **1*	- to **100**. Default value: **20**.
+	// The number of entries per page for a paged query. Valid values: **1*	- to **100**. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The ID of the NAT gateway.
+	// The ID of the NAT gateway to query.
 	//
-	// >  You must specify at least one of **FullNatTableId*	- and **NatGatewayId**.
+	// > You must specify at least one of **FullNatTableId*	- and **NatGatewayId**.
 	//
 	// example:
 	//
 	// ngw-bp1uewa15k4iy5770****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The NAT IP address that provides address translation in FULLNAT entries.
+	// The NAT IP address in the FULLNAT entry to query.
 	//
 	// example:
 	//
 	// 10.0.XX.XX
 	NatIp *string `json:"NatIp,omitempty" xml:"NatIp,omitempty"`
-	// The frontend port to be modified in the mapping of FULLNAT port. Valid values: **1*	- to **65535**.
+	// The frontend port in the FULLNAT entry to query. Valid values: 1 to 65535.
 	//
 	// example:
 	//
 	// 443
 	NatIpPort *string `json:"NatIpPort,omitempty" xml:"NatIpPort,omitempty"`
-	// The ID of the elastic network interface (ENI) that you want to query.
+	// The IDs of the elastic network interfaces (ENIs) to query.
 	NetworkInterfaceIds []*string `json:"NetworkInterfaceIds,omitempty" xml:"NetworkInterfaceIds,omitempty" type:"Repeated"`
 	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// 	- You do not need to specify this parameter for the first request.
+	// - You do not need to specify this parameter for the first request or if no next query exists.
 	//
-	// 	- You must specify the token that is obtained from the previous query as the value of the **NextToken*	- parameter.
+	// - If a next query exists, set the value to the **NextToken*	- value returned in the previous API call.
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type ListFullNatEntriesRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the virtual private cloud (VPC) NAT gateway to which the FULLNAT entries to be queried belong.
+	// The region ID of the VPC NAT gateway to which the FULLNAT entries belong.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
 	//

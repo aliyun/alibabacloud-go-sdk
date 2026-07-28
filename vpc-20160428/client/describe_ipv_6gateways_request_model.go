@@ -52,13 +52,13 @@ type DescribeIpv6GatewaysRequest struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -222,7 +222,7 @@ func (s *DescribeIpv6GatewaysRequest) Validate() error {
 type DescribeIpv6GatewaysRequestTags struct {
 	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The tag key can be up to 128 characters in length, and cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
+	// A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -230,7 +230,7 @@ type DescribeIpv6GatewaysRequestTags struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length, and cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

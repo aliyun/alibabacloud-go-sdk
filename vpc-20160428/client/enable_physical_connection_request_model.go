@@ -28,11 +28,11 @@ type iEnablePhysicalConnectionRequest interface {
 }
 
 type EnablePhysicalConnectionRequest struct {
-  // Specifies whether to bypass the service provider (SP) subscription lifecycle. Valid values:
+  // Specifies whether to skip the SP (order lifecycle). Valid values:
   // 
-  // - **true**: Bypasses the SP subscription lifecycle. This means the instance is no longer managed by the Alibaba Cloud subscription system.
+  // - **true**: Skips the SP. The Alibaba Cloud billing system no longer manages this instance, and the instance can be used free of charge.
   // 
-  // - **false*	- (default): Does not bypass the SP subscription lifecycle.
+  // - **false*	- (default): Does not skip the SP.
   // 
   // > To use this feature, contact your account manager.
   // 
@@ -40,9 +40,9 @@ type EnablePhysicalConnectionRequest struct {
   // 
   // false
   ByPassSp *bool `json:"ByPassSp,omitempty" xml:"ByPassSp,omitempty"`
-  // A client-generated token that is used to ensure the idempotence of the request.
+  // The client token that is used to ensure the idempotence of the request.
   // 
-  // The token must be unique across requests. The token can contain a maximum of 64 ASCII characters.
+  // The client generates the value of this parameter. Make sure that the value is unique among different requests. The value can be up to 64 ASCII characters in length.
   // 
   // example:
   // 
@@ -50,7 +50,7 @@ type EnablePhysicalConnectionRequest struct {
   ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
   OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
   OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-  // The ID of the physical connection.
+  // The ID of the Express Connect circuit.
   // 
   // This parameter is required.
   // 
@@ -58,9 +58,9 @@ type EnablePhysicalConnectionRequest struct {
   // 
   // pc-2zeoaxkq3x****
   PhysicalConnectionId *string `json:"PhysicalConnectionId,omitempty" xml:"PhysicalConnectionId,omitempty"`
-  // The ID of the region where the physical connection is located.
+  // The region where the Express Connect circuit resides.
   // 
-  // You can call `DescribeRegions` to get the latest region IDs.
+  // You can call the DescribeRegions operation to query the region ID.
   // 
   // This parameter is required.
   // 

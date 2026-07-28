@@ -14,7 +14,7 @@ type iAssociateRouteTableWithGatewayResponseBody interface {
 }
 
 type AssociateRouteTableWithGatewayResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

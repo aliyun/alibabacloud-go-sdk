@@ -32,19 +32,19 @@ type iDeleteFullNatEntryRequest interface {
 type DeleteFullNatEntryRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- as the **ClientToken**. The **RequestId*	- of each API request may be different.
 	//
 	// example:
 	//
 	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, the related error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	// - **true**: sends a check request without deleting the FULLNAT entry. The system checks the required parameters, request syntax, and limits. The check items include whether your AccessKey pair is valid, whether the RAM user has the authorization to perform the operation, and whether the required parameters are specified. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
 	//
-	// 	- **false**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// - **false*	- (default): sends a normal request. After the request passes the check, a 2xx HTTP status code is returned and the FULLNAT entry is deleted.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type DeleteFullNatEntryRequest struct {
 	//
 	// fullnat-gw8fz23jezpbblf1j****
 	FullNatEntryId *string `json:"FullNatEntryId,omitempty" xml:"FullNatEntryId,omitempty"`
-	// The ID of the FULLNAT table to which the FULLNAT entry to be deleted belongs.
+	// The ID of the FULLNAT table to which the FULLNAT entry that you want to delete belongs.
 	//
 	// This parameter is required.
 	//
@@ -68,9 +68,9 @@ type DeleteFullNatEntryRequest struct {
 	FullNatTableId *string `json:"FullNatTableId,omitempty" xml:"FullNatTableId,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the VPC NAT gateway to which the FULLNAT entry to be deleted belongs.
+	// The region ID of the VPC NAT gateway to which the FULLNAT entry that you want to delete belongs.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent list of regions.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//

@@ -48,19 +48,19 @@ type iModifyFullNatEntryAttributeRequest interface {
 }
 
 type ModifyFullNatEntryAttributeRequest struct {
-	// The backend domain name of the FULLNAT address translation that needs to be modified.
+	// The backend domain name to be modified for FULLNAT address translation.
 	//
 	// example:
 	//
 	// xxx.com
 	AccessDomain *string `json:"AccessDomain,omitempty" xml:"AccessDomain,omitempty"`
-	// The backend IP address to be modified in FULLNAT address translation.
+	// The backend IP address to be modified for FULLNAT address translation.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	AccessIp *string `json:"AccessIp,omitempty" xml:"AccessIp,omitempty"`
-	// The backend port to be modified in FULLNAT port mapping. Valid values: **1*	- to **65535**.
+	// The backend port to be modified for FULLNAT port mapping. Valid values: **1*	- to **65535**.
 	//
 	// example:
 	//
@@ -70,17 +70,17 @@ type ModifyFullNatEntryAttributeRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
 	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run without modifying the FULLNAT entry. The system checks the AccessKey pair, the authorization of the Resource Access Management (RAM) user, and the required parameters. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// - **false*	- (default): sends a Normal request. If the check succeeds, a 2xx HTTP status code is returned and the FULLNAT entry is modified.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type ModifyFullNatEntryAttributeRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The new description of the FULLNAT entry.
 	//
-	// You can leave this parameter empty or enter a description. If you enter a description, the description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	// The description can be empty or 2 to 256 characters in length. It cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
@@ -104,13 +104,13 @@ type ModifyFullNatEntryAttributeRequest struct {
 	FullNatEntryId *string `json:"FullNatEntryId,omitempty" xml:"FullNatEntryId,omitempty"`
 	// The new name of the FULLNAT entry.
 	//
-	// The name must be 2 to 128 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+	// The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// modify
 	FullNatEntryName *string `json:"FullNatEntryName,omitempty" xml:"FullNatEntryName,omitempty"`
-	// The ID of the FULLNAT table to be modified.
+	// The ID of the FULLNAT table to which the FULLNAT entry belongs.
 	//
 	// This parameter is required.
 	//
@@ -118,11 +118,11 @@ type ModifyFullNatEntryAttributeRequest struct {
 	//
 	// fulltb-gw88z7hhlv43rmb26****
 	FullNatTableId *string `json:"FullNatTableId,omitempty" xml:"FullNatTableId,omitempty"`
-	// The protocol of the packets that are forwarded by the port. Valid values:
+	// The protocol type of the Redirection Port. Valid values:
 	//
-	// 	- **TCP**: TCP
+	// - **TCP**: forwards TCP packets.
 	//
-	// 	- **UDP**
+	// - **UDP**: forwards UDP packets.
 	//
 	// example:
 	//
@@ -134,13 +134,13 @@ type ModifyFullNatEntryAttributeRequest struct {
 	//
 	// 192.168.XX.XX
 	NatIp *string `json:"NatIp,omitempty" xml:"NatIp,omitempty"`
-	// The frontend port to be modified in FULLNAT port mapping. Valid values: **1*	- to **65535**.
+	// The frontend port to be modified for FULLNAT port mapping. Valid values: **1*	- to **65535**.
 	//
 	// example:
 	//
 	// 80
 	NatIpPort *string `json:"NatIpPort,omitempty" xml:"NatIpPort,omitempty"`
-	// The ID of the elastic network interface (ENI) to be modified.
+	// The ID of the elastic network interfaces (ENIs), also known as the network interface controller (NIC), to be modified.
 	//
 	// example:
 	//
@@ -148,7 +148,7 @@ type ModifyFullNatEntryAttributeRequest struct {
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the Virtual Private Cloud (VPC) NAT gateway to which the FULLNAT entry to be modified belongs.
+	// The region ID of the VPC NAT gateway to which the FULLNAT entry belongs.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
 	//

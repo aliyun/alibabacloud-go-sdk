@@ -20,17 +20,17 @@ type iListTrafficMirrorSessionsResponseBody interface {
 }
 
 type ListTrafficMirrorSessionsResponseBody struct {
-	// The token that is used for the next query. Valid values:
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// 	- If no value is returned for **NextToken**, no next queries are sent.
+	// - If **NextToken*	- is empty, no next query exists.
 	//
-	// 	- If a value of **NextToken*	- is returned, the value is the token that is used for the subsequent query.
+	// - If **NextToken*	- has a value, the value is the token for the next query.
 	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListTrafficMirrorSessionsResponseBody struct {
 	//
 	// 1
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The details about the traffic mirror session.
+	// The details of traffic mirror sessions.
 	TrafficMirrorSessions []*ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessions `json:"TrafficMirrorSessions,omitempty" xml:"TrafficMirrorSessions,omitempty" type:"Repeated"`
 }
 
@@ -104,23 +104,27 @@ func (s *ListTrafficMirrorSessionsResponseBody) Validate() error {
 }
 
 type ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessions struct {
-	// The time when the session is created.
+	// The time when the traffic mirror session was created.
 	//
 	// example:
 	//
 	// 2023-09-05T15:26Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// Indicates whether the traffic mirror session was enabled.
+	// Indicates whether the traffic mirror session is enabled. Valid values:
 	//
-	// 	- **false*	-
+	// - **false*	- (default): The traffic mirror session is not enabled.
 	//
-	// 	- **true**
+	// - **true**: The traffic mirror session is enabled.
 	//
 	// example:
 	//
 	// false
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The maximum transmission unit.
+	// The length of the original packet to be mirrored (excluding the VXLAN packet length). Default value: **1500**. Valid values: **64*	- to **8500**. Unit: bytes.
+	//
+	// - This parameter affects the packet length received by the traffic mirror destination. For more information, see the mirrored packet length and MTU limits in [Traffic mirroring overview](https://help.aliyun.com/document_detail/207513.html).
+	//
+	// - This parameter is available only in specific regions. For more information, see the mirrored packet length parameter description in [Create and manage traffic mirrors](https://help.aliyun.com/document_detail/207514.html).
 	//
 	// example:
 	//
@@ -134,25 +138,25 @@ type ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessions struct {
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The ID of the resource group to which the traffic mirror session belongs.
+	// The ID of the resource group to which the traffic mirroring session belongs.
 	//
 	// example:
 	//
 	// rg-bp67acfmxazb4ph****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tag list.
+	// The tags.
 	Tags []*ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessionsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The ID of the filter.
+	// The instance ID of the traffic mirror filter.
 	//
 	// example:
 	//
 	// tmf-j6cmls82xnc86vtpe****
 	TrafficMirrorFilterId *string `json:"TrafficMirrorFilterId,omitempty" xml:"TrafficMirrorFilterId,omitempty"`
-	// The status of the traffic mirror session.
+	// The business status of the traffic mirror session. Valid values:
 	//
-	// 	- **Normal**
+	// - **Normal**: Normal.
 	//
-	// 	- **FinancialLocked**
+	// - **FinancialLocked**: financial lock.
 	//
 	// example:
 	//
@@ -164,7 +168,7 @@ type ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessions struct {
 	//
 	// This is a session.
 	TrafficMirrorSessionDescription *string `json:"TrafficMirrorSessionDescription,omitempty" xml:"TrafficMirrorSessionDescription,omitempty"`
-	// The ID of the traffic mirror session.
+	// The instance ID of the traffic mirror session.
 	//
 	// example:
 	//
@@ -178,37 +182,37 @@ type ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessions struct {
 	TrafficMirrorSessionName *string `json:"TrafficMirrorSessionName,omitempty" xml:"TrafficMirrorSessionName,omitempty"`
 	// The status of the traffic mirror session. Valid values:
 	//
-	// 	- **Creating**
+	// - **Creating**: being created.
 	//
-	// 	- **Created**
+	// - **Created**: created.
 	//
-	// 	- **Modifying**
+	// - **Modifying**: being modified.
 	//
-	// 	- **Deleting**
+	// - **Deleting**: being deleted.
 	//
 	// example:
 	//
 	// Created
 	TrafficMirrorSessionStatus *string `json:"TrafficMirrorSessionStatus,omitempty" xml:"TrafficMirrorSessionStatus,omitempty"`
-	// The ID of the traffic mirror source.
+	// The instance IDs of the traffic mirror sources.
 	TrafficMirrorSourceIds []*string `json:"TrafficMirrorSourceIds,omitempty" xml:"TrafficMirrorSourceIds,omitempty" type:"Repeated"`
-	// The ID of the traffic mirror destination.
+	// The instance ID of the traffic mirror destination.
 	//
 	// example:
 	//
 	// eni-j6c2fp57q8rr47rp****
 	TrafficMirrorTargetId *string `json:"TrafficMirrorTargetId,omitempty" xml:"TrafficMirrorTargetId,omitempty"`
-	// The type of the traffic mirror destination. Valid values:
+	// The traffic mirror destination type. Valid values:
 	//
-	// 	- **NetworkInterface**: an elastic network interface (ENI)
+	// - **NetworkInterface**: network interface controller (NIC).
 	//
-	// 	- **SLB**: an internal-facing Server Load Balancer (SLB) instance
+	// - **SLB**: internal-facing SLB instance.
 	//
 	// example:
 	//
 	// NetworkInterface
 	TrafficMirrorTargetType *string `json:"TrafficMirrorTargetType,omitempty" xml:"TrafficMirrorTargetType,omitempty"`
-	// You can specify VNIs to distinguish different mirrored traffic.
+	// The VNI used to distinguish different mirrored data.
 	//
 	// example:
 	//

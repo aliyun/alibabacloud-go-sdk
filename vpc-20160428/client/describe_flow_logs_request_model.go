@@ -52,7 +52,7 @@ type iDescribeFlowLogsRequest interface {
 type DescribeFlowLogsRequest struct {
 	// The description of the flow log.
 	//
-	// The description must be 1 to 256 characters long and cannot start with `http://` or `https://`.
+	// The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ type DescribeFlowLogsRequest struct {
 	FlowLogId *string `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
 	// The name of the flow log.
 	//
-	// The name must be 1 to 128 characters long and cannot start with `http://` or `https://`.
+	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// myFlowlog
 	FlowLogName *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
-	// The Logstore that stores the captured traffic.
+	// The name of the Logstore that stores the captured traffic.
 	//
 	// example:
 	//
@@ -80,19 +80,19 @@ type DescribeFlowLogsRequest struct {
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number, with a default value of **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of items per page in a paginated query, with a maximum value of **50*	- and a default value of **20**.
+	// The number of entries per page in paging queries. Maximum value: **50**. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The Project that manages the captured traffic.
+	// The name of the project that manages the captured traffic.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ type DescribeFlowLogsRequest struct {
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// The region ID of the flow log.
 	//
-	// You can obtain the region ID by calling the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) interface.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -108,13 +108,13 @@ type DescribeFlowLogsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID of the flow log.
+	// The ID of the resource group to which the flow log belongs.
 	//
 	// example:
 	//
 	// rg-bp67acfmxazb4ph****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The resource ID of the traffic to capture.
+	// The ID of the resource whose traffic you want to capture.
 	//
 	// example:
 	//
@@ -122,25 +122,31 @@ type DescribeFlowLogsRequest struct {
 	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The resource type of the traffic to capture. Values:
+	// The resource type of the traffic to catch. Valid values:
 	//
-	// - **NetworkInterface**: Elastic Network Interface (ENI).
 	//
-	// - **VSwitch**: All ENIs within a VSwitch.
 	//
-	// - **VPC**: All ENIs within a VPC.
+	// - **NetworkInterface**: network interface controller (NIC).
+	//
+	//
+	//
+	// - **VSwitch**: all network interface controllers (NICs) in a vSwitch.
+	//
+	//
+	//
+	// - **VPC**: all network interface controllers (NICs) in a virtual private cloud (VPC).
 	//
 	// example:
 	//
 	// NetworkInterface
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The status of the flow log. Values:
+	// The status of the flow log. Valid values:
 	//
-	// - **Active**: The flow log is in an active state.
+	// - **Active**: The flow log is active.
 	//
 	// - **Activating**: The flow log is being created.
 	//
-	// - **Inactive**: The flow log is in an inactive state.
+	// - **Inactive**: The flow log is inactive.
 	//
 	// example:
 	//
@@ -148,19 +154,25 @@ type DescribeFlowLogsRequest struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The list of tags.
 	Tags []*DescribeFlowLogsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The type of traffic to collect. Values:
+	// The traffic type to collect. Valid values:
 	//
-	// - **All**: All traffic.
 	//
-	// - **Allow**: Traffic allowed by access control.
 	//
-	// - **Drop**: Traffic denied by access control.
+	// - **All**: all traffic.
+	//
+	//
+	//
+	// - **Allow**: traffic allowed by access control.
+	//
+	//
+	//
+	// - **Drop**: traffic denied by access control.
 	//
 	// example:
 	//
 	// All
 	TrafficType *string `json:"TrafficType,omitempty" xml:"TrafficType,omitempty"`
-	// The ID of the VPC for which you want to view the flow log.
+	// The ID of the VPC for which you want to query flow logs.
 	//
 	// example:
 	//
@@ -361,17 +373,17 @@ func (s *DescribeFlowLogsRequest) Validate() error {
 }
 
 type DescribeFlowLogsRequestTags struct {
-	// The key of the tag. Up to 20 tag keys are supported. If you need to pass this value, it cannot be an empty string.
+	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// A tag key can have up to 128 characters and cannot start with `aliyun` or `acs:`. It also cannot contain `http://` or `https://`.
+	// A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag. Up to 20 tag values are supported. If you need to pass this value, it can be an empty string.
+	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// A tag value can have up to 128 characters and cannot start with `aliyun` or `acs:`. It also cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

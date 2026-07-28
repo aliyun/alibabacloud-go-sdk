@@ -30,11 +30,11 @@ type iUntagResourcesForExpressConnectRequest interface {
 }
 
 type UntagResourcesForExpressConnectRequest struct {
-	// Specifies whether to remove all tags from the specified resource. Valid values:
+	// Specifies whether to unbind all tags from the resource. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Unbinds all tags from the resource.
 	//
-	// 	- **false*	- (default)
+	// - **false*	- (default): Does not unbind all tags from the resource.
 	//
 	// example:
 	//
@@ -42,9 +42,9 @@ type UntagResourcesForExpressConnectRequest struct {
 	All          *bool   `json:"All,omitempty" xml:"All,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region in which the resource is deployed.
+	// The region ID of the resource.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -52,19 +52,21 @@ type UntagResourcesForExpressConnectRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IDs of the resources from which you want to remove tags.
+	// The list of resource IDs.
 	//
 	// This parameter is required.
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the resource. Valid values:
+	// The resource type. Valid values:
 	//
-	// 	- **PHYSICALCONNECTION**: Express Connect circuit.
+	// - **PHYSICALCONNECTION**: Express Connect circuit instance.
 	//
-	// 	- **VIRTUALBORDERROUTER**: virtual border router (VBR).
+	// - **VIRTUALBORDERROUTER**: Virtual Border Router.
 	//
-	// 	- **ROUTERINTERFACE**: router interface.
+	// - **ROUTERINTERFACE**: VBR uplink.
+	//
+	// - **TRAFFICQOS**: QoS policy.
 	//
 	// This parameter is required.
 	//
@@ -72,7 +74,7 @@ type UntagResourcesForExpressConnectRequest struct {
 	//
 	// PHYSICALCONNECTION
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags to remove from the specified resource.
+	// The list of tag keys for the resource.
 	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 

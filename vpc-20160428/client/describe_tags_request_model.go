@@ -42,7 +42,7 @@ type DescribeTagsRequest struct {
 	//
 	// - If this is the first query or no subsequent query exists, leave this parameter empty.
 	//
-	// - If a subsequent query exists, set this parameter to the NextToken value returned by the previous API call.
+	// - If a subsequent query exists, set the value to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//

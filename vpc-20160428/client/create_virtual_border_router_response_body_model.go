@@ -16,13 +16,13 @@ type iCreateVirtualBorderRouterResponseBody interface {
 }
 
 type CreateVirtualBorderRouterResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 4EC47282-1B74-4534-BD0E-403F3EE64CAF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the VBR.
+	// The instance ID of the VBR.
 	//
 	// example:
 	//

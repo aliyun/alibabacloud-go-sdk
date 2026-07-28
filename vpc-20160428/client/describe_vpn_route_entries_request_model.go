@@ -38,7 +38,7 @@ type DescribeVpnRouteEntriesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page for paging queries. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DescribeVpnRouteEntriesRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the VPN gateway instance.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	// You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type DescribeVpnRouteEntriesRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The destination type of the routing entry. Valid values:
+	// The type of the route entry. Valid values:
 	//
 	// - **custom*	- (default): queries the destination routes of the VPN gateway instance.
 	//

@@ -60,27 +60,27 @@ type iModifyVpnAttachmentAttributeResponseBody interface {
 }
 
 type ModifyVpnAttachmentAttributeResponseBody struct {
-	// The ID of the Cloud Enterprise Network (CEN) instance to which the transit router associated with the IPsec-VPN connection belongs.
+	// The ID of the Cloud Enterprise Network (CEN) instance to which the transit router (vRouter) associated with the IPsec-VPN connection belongs.
 	//
 	// example:
 	//
 	// cen-c2r3m3zxkumoqz****
 	AttachInstanceId *string `json:"AttachInstanceId,omitempty" xml:"AttachInstanceId,omitempty"`
-	// The type of the resource that is associated with the IPsec-VPN connection. Valid values:
+	// The type of resource that the IPsec-VPN connection is associated with.
 	//
-	// 	- **CEN**: The IPsec-VPN connection is associated with a transit router.
+	// - **CEN**: The IPsec-VPN connection is associated with a transit router instance.
 	//
-	// 	- **VPNGW**: The IPsec-VPN connection is associated with a VPN gateway.
+	// - **VPNGW**: The IPsec-VPN connection is associated with a VPN gateway instance.
 	//
-	// 	- **NO_ASSOCIATED**: The IPsec-VPN connection is not associated with any resource.
+	// - **NO_ASSOCIATED**: The IPsec-VPN connection is not associated with any resource.
 	//
 	// example:
 	//
 	// CEN
 	AttachType *string `json:"AttachType,omitempty" xml:"AttachType,omitempty"`
-	// The timestamp generated when the IPsec-VPN connection was established. Unit: milliseconds.
+	// The timestamp when the IPsec-VPN connection was created. Unit: milliseconds.
 	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	// The timestamp follows the UNIX time format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
@@ -100,21 +100,21 @@ type ModifyVpnAttachmentAttributeResponseBody struct {
 	//
 	// desctest
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether IPsec negotiations immediately start after the configuration takes effect. Valid values:
+	// Indicates whether the IPsec-VPN connection configuration takes effect immediately.
 	//
-	// 	- **true**
+	// - **true**: The configuration takes effect immediately.
 	//
-	// 	- **false**
+	// - **false**: The configuration does not take effect immediately.
 	//
 	// example:
 	//
 	// false
 	EffectImmediately *bool `json:"EffectImmediately,omitempty" xml:"EffectImmediately,omitempty"`
-	// Indicates whether the DPD feature is enabled for the IPsec-VPN connection.
+	// Indicates whether DPD is enabled for the IPsec-VPN connection.
 	//
-	// 	- **true**: The feature is enabled.
+	// - **true**: enabled.
 	//
-	// 	- **false**: The feature is disabled.
+	// - **false**: disabled.
 	//
 	// This parameter is returned only for single-tunnel IPsec-VPN connections.
 	//
@@ -122,11 +122,11 @@ type ModifyVpnAttachmentAttributeResponseBody struct {
 	//
 	// true
 	EnableDpd *bool `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
-	// Specifies whether to enable NAT traversal for the IPsec-VPN connection.
+	// Indicates whether NAT traversal is enabled for the IPsec-VPN connection.
 	//
-	// 	- **true**: The feature is enabled.
+	// - **true**: enabled.
 	//
-	// 	- **false**: The feature is disabled.
+	// - **false**: disabled.
 	//
 	// This parameter is returned only for single-tunnel IPsec-VPN connections.
 	//
@@ -134,27 +134,27 @@ type ModifyVpnAttachmentAttributeResponseBody struct {
 	//
 	// true
 	EnableNatTraversal *bool `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
-	// Specifies whether to enable Border Gateway Protocol (BGP) for tunnels.
+	// The enabling status of tunnel BGP.
 	//
-	// 	- **true**: The feature is enabled.
+	// - **true**: Enabled.
 	//
-	// 	- **false**: The feature is disabled.
+	// - **false**: Not enabled.
 	//
-	// This parameter is returned only by dual-tunnel IPsec-VPN connections.
+	// This parameter is returned only for IPsec-VPN connections in dual-tunnel pattern.
 	//
 	// example:
 	//
 	// false
 	EnableTunnelsBgp *bool `json:"EnableTunnelsBgp,omitempty" xml:"EnableTunnelsBgp,omitempty"`
-	// The configuration of Phase 1 negotiations.
+	// The Phase 1 negotiation configuration.
 	//
-	// **IkeConfig*	- parameters are returned only for single-tunnel IPsec-VPN connections.
+	// The parameters in the **IkeConfig*	- array are returned only for single-tunnel IPsec-VPN connections.
 	IkeConfig *ModifyVpnAttachmentAttributeResponseBodyIkeConfig `json:"IkeConfig,omitempty" xml:"IkeConfig,omitempty" type:"Struct"`
-	// The configuration of Phase 2 negotiations.
+	// The Phase 2 negotiation configuration.
 	//
-	// **IpsecConfig*	- parameters are returned only for single-tunnel IPsec-VPN connections.
+	// The parameters in the **IpsecConfig*	- array are returned only for single-tunnel IPsec-VPN connections.
 	IpsecConfig *ModifyVpnAttachmentAttributeResponseBodyIpsecConfig `json:"IpsecConfig,omitempty" xml:"IpsecConfig,omitempty" type:"Struct"`
-	// The CIDR block on the Alibaba Cloud side that communicates with the on-premises data center is required, such as CIDR blocks of VPCs.
+	// The CIDR block on the Alibaba Cloud side that communicates with the on-premises data center, such as the VPC CIDR block.
 	//
 	// example:
 	//
@@ -166,17 +166,17 @@ type ModifyVpnAttachmentAttributeResponseBody struct {
 	//
 	// nametest
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The network type of the IPsec-VPN connection. Valid values:
+	// The network type of the IPsec-VPN connection.
 	//
-	// 	- **public**: an encrypted connection over the Internet
+	// - **public**: public network.
 	//
-	// 	- **private**: an encrypted connection over private networks
+	// - **private**: private network.
 	//
 	// example:
 	//
 	// public
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The CIDR block of the on-premises data center that communicates with Alibaba Cloud is required.
+	// The CIDR block on the on-premises data center side that communicates with Alibaba Cloud.
 	//
 	// example:
 	//
@@ -190,7 +190,7 @@ type ModifyVpnAttachmentAttributeResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the resource group to which the IPsec-VPN connection belongs.
 	//
-	// You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource groups.
+	// You can call [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) to query resource group information.
 	//
 	// example:
 	//
@@ -198,37 +198,37 @@ type ModifyVpnAttachmentAttributeResponseBody struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The bandwidth specification of the IPsec-VPN connection.
 	//
-	// A value of **M*	- in the response indicates **Mbit/s**.
+	// **M*	- in the return value indicates the unit **Mbps**.
 	//
 	// example:
 	//
 	// 1000M
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The state of the IPsec-VPN connection. Valid values:
+	// The status of the IPsec-VPN connection.
 	//
-	// 	- **ike_sa_not_established**: Phase 1 negotiations failed.
+	// - **ike_sa_not_established**: Phase 1 negotiation failed.
 	//
-	// 	- **ike_sa_established**: Phase 1 negotiations succeeded.
+	// - **ike_sa_established**: Phase 1 negotiation succeeded.
 	//
-	// 	- **ipsec_sa_not_established**: Phase 2 negotiations failed.
+	// - **ipsec_sa_not_established**: Phase 2 negotiation failed.
 	//
-	// 	- **ipsec_sa_established**: Phase 2 negotiations succeeded.
+	// - **ipsec_sa_established**: Phase 2 negotiation succeeded.
 	//
 	// example:
 	//
 	// ike_sa_not_established
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tunnel configurations of the IPsec-VPN connection.
+	// The tunnel configuration of the IPsec-VPN connection.
 	//
-	// **TunnelOptionsSpecification*	- parameters are returned only for dual-tunnel IPsec-VPN connections.
+	// The parameters in the **TunnelOptionsSpecification*	- array are returned only for dual-tunnel IPsec-VPN connections.
 	TunnelOptionsSpecification []*ModifyVpnAttachmentAttributeResponseBodyTunnelOptionsSpecification `json:"TunnelOptionsSpecification,omitempty" xml:"TunnelOptionsSpecification,omitempty" type:"Repeated"`
-	// The health check configurations of the IPsec-VPN connection.
+	// The health check configuration of the IPsec-VPN connection.
 	//
-	// **VcoHealthCheck*	- parameters are returned only for single-tunnel IPsec-VPC connections.
+	// The parameters in the **VcoHealthCheck*	- array are returned only for single-tunnel IPsec-VPN connections.
 	VcoHealthCheck *ModifyVpnAttachmentAttributeResponseBodyVcoHealthCheck `json:"VcoHealthCheck,omitempty" xml:"VcoHealthCheck,omitempty" type:"Struct"`
-	// The BGP configurations of the IPsec-VPN connection.
+	// The BGP configuration of the IPsec-VPN connection.
 	//
-	// **VpnBgpConfig*	- parameters are returned only for single-tunnel IPsec-VPN connections.
+	// The parameters in the **VpnBgpConfig*	- array are returned only for single-tunnel IPsec-VPN connections.
 	VpnBgpConfig *ModifyVpnAttachmentAttributeResponseBodyVpnBgpConfig `json:"VpnBgpConfig,omitempty" xml:"VpnBgpConfig,omitempty" type:"Struct"`
 	// The ID of the IPsec-VPN connection.
 	//
@@ -236,9 +236,9 @@ type ModifyVpnAttachmentAttributeResponseBody struct {
 	//
 	// vco-p0w5112fgnl2ihlmf****
 	VpnConnectionId *string `json:"VpnConnectionId,omitempty" xml:"VpnConnectionId,omitempty"`
-	// The ID of the VPN gateway that is associated with the IPsec-VPN connection.
+	// The ID of the VPN gateway instance associated with the IPsec-VPN connection.
 	//
-	// **vpn-not-exist**: The IPsec-VPN connection is not associated with a VPN Gateway.
+	// **vpn-not-exist**: The IPsec-VPN connection is not associated with a VPN gateway instance.
 	//
 	// example:
 	//
@@ -504,19 +504,19 @@ func (s *ModifyVpnAttachmentAttributeResponseBody) Validate() error {
 }
 
 type ModifyVpnAttachmentAttributeResponseBodyIkeConfig struct {
-	// The authentication algorithm that is used in Phase 1 negotiations.
+	// The authentication algorithm for Phase 1 negotiation.
 	//
 	// example:
 	//
 	// sha1
 	IkeAuthAlg *string `json:"IkeAuthAlg,omitempty" xml:"IkeAuthAlg,omitempty"`
-	// The encryption algorithm that is used in Phase 1 negotiations.
+	// The encryption algorithm for Phase 1 negotiation.
 	//
 	// example:
 	//
 	// aes
 	IkeEncAlg *string `json:"IkeEncAlg,omitempty" xml:"IkeEncAlg,omitempty"`
-	// The SA lifetime that is determined by Phase 1 negotiations. Unit: seconds.
+	// The lifetime of the SA negotiated in Phase 1. Unit: seconds.
 	//
 	// example:
 	//
@@ -524,47 +524,47 @@ type ModifyVpnAttachmentAttributeResponseBodyIkeConfig struct {
 	IkeLifetime *int64 `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
 	// The IKE negotiation mode.
 	//
-	// 	- **main:*	- This mode offers higher security during negotiations.
+	// - **main**: main mode. The negotiation process is highly secure.
 	//
-	// 	- **aggressive**: This mode is faster with a higher success rate.
+	// - **aggressive**: aggressive mode. The negotiation is fast and has a high success rate.
 	//
 	// example:
 	//
 	// main
 	IkeMode *string `json:"IkeMode,omitempty" xml:"IkeMode,omitempty"`
-	// The DH key exchange algorithm that is used in Phase 1 negotiations.
+	// The Diffie-Hellman key exchange algorithm used in Phase 1 negotiation.
 	//
 	// example:
 	//
 	// group2
 	IkePfs *string `json:"IkePfs,omitempty" xml:"IkePfs,omitempty"`
-	// The version of the IKE protocol.
+	// The IKE protocol version.
 	//
-	// 	- **ikev1**
+	// - **ikev1**
 	//
-	// 	- **ikev2**
+	// - **ikev2**
 	//
-	// Compared with IKEv1, IKEv2 simplifies the SA negotiation process and provides better support for scenarios with multiple CIDR blocks.
+	// Compared with IKEv1, IKEv2 simplifies the SA negotiation process and provides better support for multi-CIDR-block scenarios.
 	//
 	// example:
 	//
 	// ikev1
 	IkeVersion *string `json:"IkeVersion,omitempty" xml:"IkeVersion,omitempty"`
-	// The identifier of the IPsec-VPN connection on the Alibaba Cloud side.
+	// The identifier on the Alibaba Cloud side of the IPsec-VPN connection.
 	//
 	// example:
 	//
 	// 47.XX.XX.1
 	LocalId *string `json:"LocalId,omitempty" xml:"LocalId,omitempty"`
-	// Enter a pre-shared key that is used for identity authentication between Alibaba Cloud and the data center.
+	// The pre-shared key used for identity authentication between the Alibaba Cloud IPsec-VPN connection and the on-premises data center.
 	//
-	// >  The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the on-premises data center. Otherwise, connections between the on-premises data center and Alibaba Cloud cannot be established.
+	// > The pre-shared key on the IPsec-VPN connection side must be the same as the authentication key on the on-premises data center side. Otherwise, a connection cannot be established between the on-premises data center and the VPN gateway.
 	//
 	// example:
 	//
 	// 1234***
 	Psk *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
-	// The identifier of the IPsec-VPN connection on the data center side.
+	// The identifier on the on-premises data center side of the IPsec-VPN connection.
 	//
 	// example:
 	//
@@ -666,25 +666,25 @@ func (s *ModifyVpnAttachmentAttributeResponseBodyIkeConfig) Validate() error {
 }
 
 type ModifyVpnAttachmentAttributeResponseBodyIpsecConfig struct {
-	// The authentication algorithm that is used in Phase 2 negotiations.
+	// The authentication algorithm for Phase 2 negotiation.
 	//
 	// example:
 	//
 	// md5
 	IpsecAuthAlg *string `json:"IpsecAuthAlg,omitempty" xml:"IpsecAuthAlg,omitempty"`
-	// The encryption algorithm that is used in Phase 2 negotiations.
+	// The encryption algorithm for Phase 2 negotiation.
 	//
 	// example:
 	//
 	// aes
 	IpsecEncAlg *string `json:"IpsecEncAlg,omitempty" xml:"IpsecEncAlg,omitempty"`
-	// The SA lifetime that is determined by Phase 2 negotiations. Unit: seconds.
+	// The lifetime of the SA negotiated in Phase 2. Unit: seconds.
 	//
 	// example:
 	//
 	// 86400
 	IpsecLifetime *int64 `json:"IpsecLifetime,omitempty" xml:"IpsecLifetime,omitempty"`
-	// The DH key exchange algorithm that is used in Phase 2 negotiations.
+	// The Diffie-Hellman key exchange algorithm used in Phase 2 negotiation.
 	//
 	// example:
 	//
@@ -741,61 +741,61 @@ func (s *ModifyVpnAttachmentAttributeResponseBodyIpsecConfig) Validate() error {
 }
 
 type ModifyVpnAttachmentAttributeResponseBodyTunnelOptionsSpecification struct {
-	// The ID of the customer gateway that is associated with the tunnel.
+	// The customer gateway ID associated with the tunnel.
 	//
 	// example:
 	//
 	// cgw-p0w2jemrcj5u61un8****
 	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
-	// Whether the DPD feature is enabled for the tunnel.
+	// Indicates whether DPD is enabled for the tunnel.
 	//
-	// 	- **true**: The feature is enabled.
+	// - **true**: enabled.
 	//
-	// 	- **false**: The feature is disabled.
+	// - **false**: disabled.
 	//
 	// example:
 	//
 	// true
 	EnableDpd *bool `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
-	// Indicates whether traversal feature is enabled for the tunnel. Valid values:
+	// Indicates whether NAT traversal is enabled for the tunnel.
 	//
-	// 	- **true**: The feature is enabled.
+	// - **true**: enabled.
 	//
-	// 	- **false**: The feature is disabled.
+	// - **false**: disabled.
 	//
 	// example:
 	//
 	// true
 	EnableNatTraversal *bool `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
-	// The IP address on the Alibaba Cloud side.
+	// The gateway IP address on the Alibaba Cloud side of the tunnel.
 	//
 	// example:
 	//
 	// 47.XX.XX.66
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	// The tunnel role. Valid values:
+	// The role of the tunnel.
 	//
-	// 	- **master**: The tunnel is an active tunnel.
+	// - **master**: The tunnel is the active tunnel.
 	//
-	// 	- **slave**: The tunnel is a standby tunnel.
+	// - **slave**: The tunnel is the standby tunnel.
 	//
 	// example:
 	//
 	// master
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The status of the tunnel. Valid values:
+	// The status of the tunnel.
 	//
-	// 	- **active**: The tunnel is active.
+	// - **active**: normal.
 	//
-	// 	- **updating**: The tunnel is being updated.
+	// - **updating**: being updated.
 	//
-	// 	- **deleting:*	- The tunnel is being deleted.
+	// - **deleting**: being deleted.
 	//
 	// example:
 	//
 	// active
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// BGP configuration.
+	// The BGP configuration of the tunnel.
 	TunnelBgpConfig *ModifyVpnAttachmentAttributeResponseBodyTunnelOptionsSpecificationTunnelBgpConfig `json:"TunnelBgpConfig,omitempty" xml:"TunnelBgpConfig,omitempty" type:"Struct"`
 	// The tunnel ID.
 	//
@@ -803,19 +803,19 @@ type ModifyVpnAttachmentAttributeResponseBodyTunnelOptionsSpecification struct {
 	//
 	// tun-0jod7plwf2a0o9lvu****
 	TunnelId *string `json:"TunnelId,omitempty" xml:"TunnelId,omitempty"`
-	// The configurations of Phase 1 negotiations.
+	// The configuration of Phase 1 negotiation.
 	TunnelIkeConfig *ModifyVpnAttachmentAttributeResponseBodyTunnelOptionsSpecificationTunnelIkeConfig `json:"TunnelIkeConfig,omitempty" xml:"TunnelIkeConfig,omitempty" type:"Struct"`
-	// The order in which the tunnel was created.
+	// The creation order of the tunnel.
 	//
-	// 	- **1**: Tunnel 1.
+	// - **1**: the first tunnel.
 	//
-	// 	- **2**: Tunnel 2.
+	// - **2**: the second tunnel.
 	//
 	// example:
 	//
 	// 1
 	TunnelIndex *int32 `json:"TunnelIndex,omitempty" xml:"TunnelIndex,omitempty"`
-	// The configurations of Phase 2 negotiations.
+	// The configuration of Phase 2 negotiation.
 	TunnelIpsecConfig *ModifyVpnAttachmentAttributeResponseBodyTunnelOptionsSpecificationTunnelIpsecConfig `json:"TunnelIpsecConfig,omitempty" xml:"TunnelIpsecConfig,omitempty" type:"Struct"`
 }
 
@@ -946,25 +946,27 @@ func (s *ModifyVpnAttachmentAttributeResponseBodyTunnelOptionsSpecification) Val
 }
 
 type ModifyVpnAttachmentAttributeResponseBodyTunnelOptionsSpecificationTunnelBgpConfig struct {
-	// The ASN on the Alibaba Cloud side.
+	// The autonomous system number on the local end (Alibaba Cloud side) of the tunnel.
+	//
+	// [_single.resp.200.props.TunnelOptionsSpecification.items.TunnelBgpConfig.LocalBgpI
 	//
 	// example:
 	//
 	// 65530
 	LocalAsn *int64 `json:"LocalAsn,omitempty" xml:"LocalAsn,omitempty"`
-	// The BGP IP address of the tunnel on the Alibaba Cloud side.
+	// The BGP address on the Alibaba Cloud side of the tunnel.
 	//
 	// example:
 	//
 	// 169.254.10.1
 	LocalBgpIp *string `json:"LocalBgpIp,omitempty" xml:"LocalBgpIp,omitempty"`
-	// The ASN of the tunnel peer.
+	// The autonomous system number of the tunnel peer.
 	//
 	// example:
 	//
 	// 65531
 	PeerAsn *int64 `json:"PeerAsn,omitempty" xml:"PeerAsn,omitempty"`
-	// The BGP IP address of the tunnel peer.
+	// The BGP address of the tunnel peer.
 	//
 	// example:
 	//
@@ -1054,29 +1056,29 @@ type ModifyVpnAttachmentAttributeResponseBodyTunnelOptionsSpecificationTunnelIke
 	//
 	// 86400
 	IkeLifetime *int64 `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
-	// The negotiation mode of IKE. Valid values:
+	// The negotiation mode of the IKE version. Valid values:
 	//
-	// 	- **main:*	- This mode offers higher security during negotiations.
+	// - **main**: Main mode. This mode offers high negotiation security.
 	//
-	// 	- **aggressive**: This mode is faster with a higher success rate.
+	// - **aggressive**: Aggressive mode. This mode supports fast negotiation and a higher success rate.
 	//
 	// example:
 	//
 	// main
 	IkeMode *string `json:"IkeMode,omitempty" xml:"IkeMode,omitempty"`
-	// The Diffie-Hellman (DH) group in the IKE phase.
+	// The DH group in the IKE phase.
 	//
 	// example:
 	//
 	// group2
 	IkePfs *string `json:"IkePfs,omitempty" xml:"IkePfs,omitempty"`
-	// The version of the IKE protocol.
+	// The IKE protocol version.
 	//
 	// example:
 	//
 	// ikev2
 	IkeVersion *string `json:"IkeVersion,omitempty" xml:"IkeVersion,omitempty"`
-	// The identifier of the tunnel on the Alibaba Cloud side.
+	// The identifier on the Alibaba Cloud side of the tunnel.
 	//
 	// example:
 	//
@@ -1088,7 +1090,7 @@ type ModifyVpnAttachmentAttributeResponseBodyTunnelOptionsSpecificationTunnelIke
 	//
 	// 123456****
 	Psk *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
-	// The peer identifier.
+	// The identifier of the tunnel peer.
 	//
 	// example:
 	//
@@ -1265,45 +1267,45 @@ func (s *ModifyVpnAttachmentAttributeResponseBodyTunnelOptionsSpecificationTunne
 }
 
 type ModifyVpnAttachmentAttributeResponseBodyVcoHealthCheck struct {
-	// The destination IP address that is used for health checks.
+	// The destination IP address of the health check.
 	//
 	// example:
 	//
 	// 192.168.1.1
 	Dip *string `json:"Dip,omitempty" xml:"Dip,omitempty"`
-	// Indicates whether the health check feature is enabled for the IPsec-VPN connection. Valid values:
+	// Indicates whether health checks are enabled for the IPsec-VPN connection.
 	//
-	// 	- **true**
+	// - **true**: enabled.
 	//
-	// 	- **false**
+	// - **false**: disabled.
 	//
 	// example:
 	//
 	// true
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The interval between two consecutive health check retries. Unit: seconds.
+	// The retry interval of the health check. Unit: seconds.
 	//
 	// example:
 	//
 	// 3
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// Indicates whether advertised routes are withdrawn when the health check fails. Valid values:
+	// Indicates whether published routes are withdrawn when the health check fails.
 	//
-	// 	- **revoke_route**: Advertised routes are withdrawn.
+	// - **revoke_route**: Published routes are withdrawn.
 	//
-	// 	- **reserve_route**: Advertised routes are not withdrawn.
+	// - **reserve_route**: Published routes are not withdrawn.
 	//
 	// example:
 	//
 	// revoke_route
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The maximum number of health check retries.
+	// The number of health check retries.
 	//
 	// example:
 	//
 	// 3
 	Retry *int32 `json:"Retry,omitempty" xml:"Retry,omitempty"`
-	// The source IP address that is used for health checks.
+	// The source IP address of the health check.
 	//
 	// example:
 	//
@@ -1378,17 +1380,17 @@ func (s *ModifyVpnAttachmentAttributeResponseBodyVcoHealthCheck) Validate() erro
 }
 
 type ModifyVpnAttachmentAttributeResponseBodyVpnBgpConfig struct {
-	// Indicates whether BGP is enabled for the IPsec-VPN connection. Valid values:
+	// Indicates whether BGP is enabled for the IPsec-VPN connection.
 	//
-	// 	- **true**
+	// - **true**: enabled.
 	//
-	// 	- **false**
+	// - **false**: disabled.
 	//
 	// example:
 	//
 	// true
 	EnableBgp *string `json:"EnableBgp,omitempty" xml:"EnableBgp,omitempty"`
-	// The ASN on the Alibaba Cloud side.
+	// The autonomous system number on the Alibaba Cloud side.
 	//
 	// example:
 	//
@@ -1400,29 +1402,29 @@ type ModifyVpnAttachmentAttributeResponseBodyVpnBgpConfig struct {
 	//
 	// 169.254.11.1
 	LocalBgpIp *string `json:"LocalBgpIp,omitempty" xml:"LocalBgpIp,omitempty"`
-	// The ASN on the data center side.
+	// The autonomous system number on the on-premises data center side.
 	//
 	// example:
 	//
 	// 65535
 	PeerAsn *int64 `json:"PeerAsn,omitempty" xml:"PeerAsn,omitempty"`
-	// The BGP IP address on the data center side.
+	// The BGP IP address on the on-premises data center side.
 	//
 	// example:
 	//
 	// 169.254.11.2
 	PeerBgpIp *string `json:"PeerBgpIp,omitempty" xml:"PeerBgpIp,omitempty"`
-	// The negotiation state of BGP. Valid values:
+	// The BGP negotiation status.
 	//
-	// 	- **success**: normal
+	// - **success**: normal.
 	//
-	// 	- **false**: abnormal
+	// - **false**: abnormal.
 	//
 	// example:
 	//
 	// false
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The CIDR block of the IPsec tunnel.
+	// The IPsec tunnel CIDR block.
 	//
 	// example:
 	//

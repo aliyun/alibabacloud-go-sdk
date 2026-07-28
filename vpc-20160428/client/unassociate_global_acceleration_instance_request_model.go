@@ -26,7 +26,7 @@ type iUnassociateGlobalAccelerationInstanceRequest interface {
 }
 
 type UnassociateGlobalAccelerationInstanceRequest struct {
-	// The ID of the GA instance.
+	// The ID of the Alibaba Cloud Global Accelerator (GA) instance.
 	//
 	// This parameter is required.
 	//
@@ -34,13 +34,13 @@ type UnassociateGlobalAccelerationInstanceRequest struct {
 	//
 	// ga-1sxeedefrr33****
 	GlobalAccelerationInstanceId *string `json:"GlobalAccelerationInstanceId,omitempty" xml:"GlobalAccelerationInstanceId,omitempty"`
-	// The backend server type. Valid values:
+	// The type of the instance to disassociate. Valid values:
 	//
-	// 	- **RemoteEcsInstance**: Elastic Compute Service (ECS) instance
+	// - **RemoteEcsInstance**: ECS instance.
 	//
-	// 	- **RemoteSlbInstance**: Server Load Balancer (SLB) instance
+	// - **RemoteSlbInstance**: load balancing instance.
 	//
-	// 	- **RemoteEniInstance**: elastic network interface (ENI)
+	// - **RemoteEniInstance**: network interface controller (NIC) instance.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type UnassociateGlobalAccelerationInstanceRequest struct {
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the GA instance.
+	// The region where the Alibaba Cloud Global Accelerator (GA) instance is deployed.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//

@@ -34,11 +34,11 @@ type iDescribeRouterInterfacesRequest interface {
 type DescribeRouterInterfacesRequest struct {
 	// The filter information.
 	Filter []*DescribeRouterInterfacesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// Specifies whether renewal data is included. Valid values:
+	// Specifies whether to include renewal data. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false*	- (default)
+	// - **false*	- (default)
 	//
 	// example:
 	//
@@ -51,7 +51,7 @@ type DescribeRouterInterfacesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page for paging queries. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
@@ -59,7 +59,7 @@ type DescribeRouterInterfacesRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the router interface.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -67,9 +67,9 @@ type DescribeRouterInterfacesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource Group ID.
+	// The resource group ID.
 	//
-	// For more information about resource groups, please refer to [What is a Resource Group?](https://help.aliyun.com/document_detail/94475.html)
+	// For more information about resource groups, see [What is a resource group?](https://help.aliyun.com/document_detail/2381067.html).
 	//
 	// example:
 	//
@@ -202,35 +202,35 @@ func (s *DescribeRouterInterfacesRequest) Validate() error {
 }
 
 type DescribeRouterInterfacesRequestFilter struct {
-	// The filter conditions. You can specify up to five filter conditions. The following filter conditions are supported:
+	// The filter condition. You can specify up to 5 filter conditions. The following filter conditions are supported:
 	//
-	// 	- **RouterInterfaceId**: the ID of the router interface.
+	// - **RouterInterfaceId**: the router interface ID.
 	//
-	// 	- **RouterId**: the ID of the router.
+	// - **RouterId**: the router ID.
 	//
-	// 	- **RouterType**: the router type. Valid values: **VRouter*	- and **VBR**.
+	// - **RouterType**: the router type. Valid values: **VRouter*	- and **VBR**.
 	//
-	// 	- **RouterInterfaceOwnerId**: the ID of the Alibaba Cloud account to which the router interface belongs.
+	// - **RouterInterfaceOwnerId**: the ID of the account that owns the router interface.
 	//
-	// 	- **OppositeInterfaceId**: the ID of the peer router interface.
+	// - **OppositeInterfaceId**: the peer router interface ID.
 	//
-	// 	- **OppositeRouterType**: the type of the peer router interface. Valid values: **VRouter*	- and **VBR**.
+	// - **OppositeRouterType**: the peer router interface type. Valid values: **VRouter*	- and **VBR**.
 	//
-	// 	- **OppositeRouterId**: the ID of the peer router.
+	// - **OppositeRouterId**: the peer router interface ID.
 	//
-	// 	- **OppositeInterfaceOwnerId**: the ID of the Alibaba Cloud account to which the peer router interface belongs.
+	// - **OppositeInterfaceOwnerId**: the ID of the account that owns the peer router interface.
 	//
-	// 	- **Status**: the status of the router interface.
+	// - **Status**: the router interface status.
 	//
-	// 	- **Name**: the name of the router interface.
+	// - **Name**: the router interface name.
 	//
-	// >  The logical operator among multiple values in a filter condition is OR. In this case, the filter condition is met if one of the values is matched. The logical operator among filter conditions is AND. Only routers that meet all the filter conditions are queried.
+	// > Multiple values for a filter condition are evaluated by using the OR operator. A result is returned if any of the values match. Filter conditions are evaluated by using the AND operator. A result is returned only if all filter conditions are matched.
 	//
 	// example:
 	//
 	// Filter.1.Status
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Specifies the value in the filter condition based on the key. You can specify multiple filter values for one key. The logical operator among filter values is OR. If one filter value is matched, the filter condition is matched.
+	// The filter value based on the specified Key. You can specify multiple filter values for a Key. Multiple filter values are evaluated by using the OR operator. A result is returned if any of the filter values match.
 	//
 	// example:
 	//
@@ -269,17 +269,17 @@ func (s *DescribeRouterInterfacesRequestFilter) Validate() error {
 }
 
 type DescribeRouterInterfacesRequestTags struct {
-	// The key of the resource tag. At least one tag key must be entered, and a maximum of 20 tag keys are supported. If this value needs to be passed in, it cannot be an empty string.
+	// The tag key of the resource. You must specify at least 1 tag key and can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// A tag key can support up to 128 characters, cannot start with \\"aliyun\\" or \\"acs:\\", and cannot contain \\"http://\\" or \\"https://\\".
+	// The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the resource tag. A maximum of 20 tag values can be entered. If this value needs to be passed in, an empty string can be entered.
+	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// A maximum of 128 characters are supported, it cannot start with \\"aliyun\\" or \\"acs:\\", and it cannot contain \\"http://\\" or \\"https://\\".
+	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

@@ -26,13 +26,13 @@ type iModifyExpressCloudConnectionBandwidthRequest interface {
 }
 
 type ModifyExpressCloudConnectionBandwidthRequest struct {
-	// The bandwidth of the ECC instance.
+	// The bandwidth of the Express Cloud Connection (ECC) instance.
 	//
 	// example:
 	//
 	// 2
 	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The ID of the ECC instance.
+	// The instance ID of the Express Cloud Connection (ECC) instance.
 	//
 	// This parameter is required.
 	//

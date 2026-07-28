@@ -32,7 +32,7 @@ type iCreateVpnRouteEntryResponseBody interface {
 type CreateVpnRouteEntryResponseBody struct {
 	// The timestamp when the destination route was created. Unit: milliseconds.
 	//
-	// The timestamp follows the UNIX timestamp format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The timestamp follows the UNIX timestamp format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC to the time when the destination route was created.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type CreateVpnRouteEntryResponseBody struct {
 	//
 	// vco-bp15oes1py4i66rmd****
 	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
-	// The tunneling protocol. Set the value to **Ipsec*	- (IPsec tunneling protocol).
+	// The tunneling protocol. Set the value to **Ipsec*	- (IPsec tunneling).
 	//
 	// example:
 	//
@@ -70,9 +70,9 @@ type CreateVpnRouteEntryResponseBody struct {
 	RouteDest *string `json:"RouteDest,omitempty" xml:"RouteDest,omitempty"`
 	// The publish status of the destination route.
 	//
-	// - **published**: The destination route has been published to the route table of the VPC.
+	// - **published**: The destination route is published to the VPC route table.
 	//
-	// - **normal**: The destination route has not been published to the route table of the VPC.
+	// - **normal**: The destination route is not published to the VPC route table.
 	//
 	// example:
 	//

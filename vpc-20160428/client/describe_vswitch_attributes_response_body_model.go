@@ -50,13 +50,13 @@ type iDescribeVSwitchAttributesResponseBody interface {
 }
 
 type DescribeVSwitchAttributesResponseBody struct {
-	// The number of available IP addresses.
+	// The number of active IP addresses.
 	//
 	// example:
 	//
 	// 12
 	AvailableIpAddressCount *int64 `json:"AvailableIpAddressCount,omitempty" xml:"AvailableIpAddressCount,omitempty"`
-	// The CIDR block of the vSwitch.
+	// The private network address range of the vSwitch.
 	//
 	// example:
 	//
@@ -74,13 +74,11 @@ type DescribeVSwitchAttributesResponseBody struct {
 	//
 	// abc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether IPv6 is enabled for the vSwitch. If you enable IPv6, you must configure the IPv6 CIDR block of the vSwitch. Valid values:
+	// Indicates whether the IPv6 CIDR block is enabled for the vSwitch. Valid values:
 	//
-	// 	- **true**
+	// - **true**: enabled.
 	//
-	// 	- **false**
-	//
-	// This field is returned only when IPv6 is enabled for the vSwitch.
+	// - **false**: not enabled.
 	//
 	// example:
 	//
@@ -94,21 +92,23 @@ type DescribeVSwitchAttributesResponseBody struct {
 	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
 	// Indicates whether the vSwitch is the default vSwitch. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The vSwitch is the default vSwitch.
 	//
-	// 	- **false**
+	// - **false**: The vSwitch is not the default vSwitch.
 	//
 	// example:
 	//
 	// false
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The network access control list (ACL) rules.
+	// The network ACL rules.
 	//
 	// example:
 	//
 	// 1
 	NetworkAclId *string `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the resource belongs.
+	// The Alibaba Cloud account ID of the resource ownership.
+	//
+	// 	Notice: This value is of the Long type. Precision loss may occur in certain programming languages. Use this value with caution.
 	//
 	// example:
 	//
@@ -120,21 +120,21 @@ type DescribeVSwitchAttributesResponseBody struct {
 	//
 	// 7B48B4B9-1EAD-469F-B488-594DAB4B6A1A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group to which the ACL belongs.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-acfmxazb4ph****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The information about the route table that is associated with the vSwitch.
+	// The route table information of the vSwitch.
 	RouteTable *DescribeVSwitchAttributesResponseBodyRouteTable `json:"RouteTable,omitempty" xml:"RouteTable,omitempty" type:"Struct"`
-	// Indicates whether the vSwitch is shared.
+	// The sharing type of the vSwitch.
 	//
-	// 	- If no value is returned, the vSwitch is a regular vSwitch.
+	// - If the value is empty, the vSwitch is a private vSwitch.
 	//
-	// 	- If **Shared*	- is returned, the vSwitch is shared.
+	// - If the value is **Shared**, the vSwitch is a shared vSwitch.
 	//
-	// 	- If **Sharing*	- is returned, the vSwitch is being shared.
+	// - If the value is **Sharing**, the vSwitch is being shared with other accounts.
 	//
 	// example:
 	//
@@ -142,22 +142,22 @@ type DescribeVSwitchAttributesResponseBody struct {
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// The status of the vSwitch. Valid values:
 	//
-	// 	- **Pending**
+	// - **Pending**: being configured.
 	//
-	// 	- **Available**
+	// - **Available**: active.
 	//
 	// example:
 	//
 	// Pending
 	Status *string                                    `json:"Status,omitempty" xml:"Status,omitempty"`
 	Tags   *DescribeVSwitchAttributesResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The vSwitch ID.
+	// The ID of the vSwitch.
 	//
 	// example:
 	//
 	// vsw-25b7pv15t****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The vSwitch name.
+	// The name of the vSwitch.
 	//
 	// example:
 	//
@@ -169,7 +169,7 @@ type DescribeVSwitchAttributesResponseBody struct {
 	//
 	// vpc-257gq642n****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the zone to which the vSwitch belongs.
+	// The zone to which the vSwitch belongs.
 	//
 	// example:
 	//
@@ -371,7 +371,7 @@ func (s *DescribeVSwitchAttributesResponseBody) Validate() error {
 }
 
 type DescribeVSwitchAttributesResponseBodyRouteTable struct {
-	// The ID of the route table that is associated with the vSwitch.
+	// The ID of the route table associated with the vSwitch.
 	//
 	// example:
 	//
@@ -379,9 +379,9 @@ type DescribeVSwitchAttributesResponseBodyRouteTable struct {
 	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
 	// The type of the route table. Valid values:
 	//
-	// 	- **System**
+	// - **System**: system route table.
 	//
-	// 	- **Custom**
+	// - **Custom**: custom route table.
 	//
 	// example:
 	//

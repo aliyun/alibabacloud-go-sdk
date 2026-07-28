@@ -23,7 +23,7 @@ type iDescribeIPv6TranslatorAclListsResponseBody interface {
 
 type DescribeIPv6TranslatorAclListsResponseBody struct {
 	Ipv6TranslatorAcls *DescribeIPv6TranslatorAclListsResponseBodyIpv6TranslatorAcls `json:"Ipv6TranslatorAcls,omitempty" xml:"Ipv6TranslatorAcls,omitempty" type:"Struct"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//

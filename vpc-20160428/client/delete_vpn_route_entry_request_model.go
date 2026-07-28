@@ -38,13 +38,13 @@ type DeleteVpnRouteEntryRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
 	// d7d24a21-f4ba-4454-9173-b3828dae492b
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The next hop of the destination-based route.
+	// The next hop of the destination route.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type DeleteVpnRouteEntryRequest struct {
 	//
 	// vco-bp15oes1py4i66rmd****
 	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
-	// The tunneling protocol. Set the value to **Ipsec**.
+	// The tunneling protocol. Valid values: **Ipsec*	- (IPsec tunneling protocol).
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type DeleteVpnRouteEntryRequest struct {
 	OverlayMode  *string `json:"OverlayMode,omitempty" xml:"OverlayMode,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the VPN gateway is created. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// The region ID of the VPN gateway instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ type DeleteVpnRouteEntryRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The destination CIDR block of the destination-based route.
+	// The destination CIDR block of the destination route.
 	//
 	// This parameter is required.
 	//
@@ -86,11 +86,11 @@ type DeleteVpnRouteEntryRequest struct {
 	//
 	// vpn-bp1a3kqjiiq9legfx****
 	VpnGatewayId *string `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
-	// The weight of the destination-based route. Valid values:
+	// The weight of the destination route. Valid values:
 	//
-	// 	- **0**: a low priority
+	// - **0**: low priority.
 	//
-	// 	- **100**: a high priority
+	// - **100**: high priority.
 	//
 	// This parameter is required.
 	//

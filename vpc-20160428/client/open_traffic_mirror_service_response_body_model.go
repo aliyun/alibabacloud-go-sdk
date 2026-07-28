@@ -18,13 +18,13 @@ type iOpenTrafficMirrorServiceResponseBody interface {
 }
 
 type OpenTrafficMirrorServiceResponseBody struct {
-	// The error code.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information returned after traffic mirror is enabled.
+	// The message returned after the traffic mirroring feature is activated.
 	//
 	// example:
 	//

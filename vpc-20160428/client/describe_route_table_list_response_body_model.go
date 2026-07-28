@@ -22,7 +22,7 @@ type iDescribeRouteTableListResponseBody interface {
 }
 
 type DescribeRouteTableListResponseBody struct {
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//

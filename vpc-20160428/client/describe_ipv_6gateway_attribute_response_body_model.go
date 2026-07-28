@@ -42,13 +42,13 @@ type iDescribeIpv6GatewayAttributeResponseBody interface {
 }
 
 type DescribeIpv6GatewayAttributeResponseBody struct {
-	// The status of the IPv6 gateway. Valid values:
+	// The business status of the IPv6 gateway. Valid values:
 	//
-	// 	- **Normal**
+	// - **Normal**: Normal.
 	//
-	// 	- **FinancialLocked**
+	// - **FinancialLocked**: financial lock.
 	//
-	// 	- **SecurityLocked**
+	// - **SecurityLocked**: security lock.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type DescribeIpv6GatewayAttributeResponseBody struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the IPv6 gateway expires.
+	// The expiration time of the IPv6 gateway.
 	//
 	// example:
 	//
@@ -74,19 +74,20 @@ type DescribeIpv6GatewayAttributeResponseBody struct {
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	// The ID of the gateway route table associated with the IPv6 gateway.
 	//
-	// >  This parameter is available only when the IPv6 gateway is associated with a gateway route table.
+	//
+	// > This parameter is displayed only for IPv6 gateways that are associated with a gateway route table.
 	//
 	// example:
 	//
 	// vtb-5ts0ohchwkp3dydt2****
 	GatewayRouteTableId *string `json:"GatewayRouteTableId,omitempty" xml:"GatewayRouteTableId,omitempty"`
-	// The metering method of the IPv6 gateway.
+	// The billing method of the IPv6 gateway.
 	//
 	// example:
 	//
 	// PostPaid
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// The ID of the IPv6 gateway.
+	// The instance ID of the IPv6 gateway.
 	//
 	// example:
 	//
@@ -98,27 +99,27 @@ type DescribeIpv6GatewayAttributeResponseBody struct {
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the Alibaba Cloud account to which the IPv6 gateway belongs.
+	// The Alibaba Cloud account ID of the IPv6 gateway owner.
 	//
-	// >  This value is of the Long type. In some languages, the precision may be lost. Use this value with caution.
+	// 	Notice: This value is of the Long type. Precision loss may occur in certain programming languages. Use this value with caution.
 	//
 	// example:
 	//
 	// 2546073170691****
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the IPv6 gateway is deployed.
+	// The region ID of the IPv6 gateway.
 	//
 	// example:
 	//
 	// cn-huhehaote
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -126,16 +127,16 @@ type DescribeIpv6GatewayAttributeResponseBody struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The status of the IPv6 gateway. Valid values:
 	//
-	// 	- **Pending**
+	// - **Pending**: being configured.
 	//
-	// 	- **Available**
+	// - **Available**: active.
 	//
 	// example:
 	//
 	// Available
 	Status *string                                       `json:"Status,omitempty" xml:"Status,omitempty"`
 	Tags   *DescribeIpv6GatewayAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The ID of the virtual private cloud (VPC) to which the IPv6 gateway belongs.
+	// The ID of the VPC to which the IPv6 gateway belongs.
 	//
 	// example:
 	//

@@ -32,17 +32,17 @@ type iListTagResourcesForExpressConnectRequest interface {
 }
 
 type ListTagResourcesForExpressConnectRequest struct {
-	// The number of entries per page. Valid values: **1*	- to **100**. Default value: **20**.
+	// The number of entries per page for a paged query. Valid values: **1*	- to **100**. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The token for the next query. Valid values:
 	//
-	// 	- You do not need to specify this parameter for the first request.
+	// - If this is the first query or no next query exists, leave this parameter empty.
 	//
-	// 	- You must specify the token that is obtained from the previous query as the value of **NextToken**.
+	// - If a next query exists, set this parameter to the **NextToken*	- value returned by the previous API call.
 	//
 	// example:
 	//
@@ -50,9 +50,9 @@ type ListTagResourcesForExpressConnectRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region to which the resource resides.
+	// The region ID of the resource.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -60,17 +60,19 @@ type ListTagResourcesForExpressConnectRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource IDs.
+	// The list of resource IDs.
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the resource. Valid values:
+	// The resource type. Valid values:
 	//
-	// 	- **PHYSICALCONNECTION**: Express Connect circuit.
+	// - **PHYSICALCONNECTION**: Express Connect circuit instance.
 	//
-	// 	- **VIRTUALBORDERROUTER**: virtual border router (VBR).
+	// - **VIRTUALBORDERROUTER**: Virtual Border Router.
 	//
-	// 	- **ROUTERINTERFACE**: router interface.
+	// - **ROUTERINTERFACE**: VBR uplink.
+	//
+	// - **TRAFFICQOS**: QoS policy.
 	//
 	// This parameter is required.
 	//
@@ -78,7 +80,7 @@ type ListTagResourcesForExpressConnectRequest struct {
 	//
 	// PHYSICALCONNECTION
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags.
+	// The list of tags.
 	Tag []*ListTagResourcesForExpressConnectRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -194,17 +196,17 @@ func (s *ListTagResourcesForExpressConnectRequest) Validate() error {
 }
 
 type ListTagResourcesForExpressConnectRequestTag struct {
-	// The key of the tag to add to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
+	// The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag to add to the resource. You can specify up to 20 tag values The tag value can be an empty string.
+	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
+	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

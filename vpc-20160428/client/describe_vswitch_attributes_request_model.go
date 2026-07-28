@@ -26,11 +26,11 @@ type iDescribeVSwitchAttributesRequest interface {
 }
 
 type DescribeVSwitchAttributesRequest struct {
-	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run without querying the vSwitch configuration. The system checks the required parameters, request format, and service limits. If the request fails the dry run, the corresponding error is returned. If the request passes the dry run, the error code `DryRunOperation` is returned.
 	//
-	// 	- **false*	- (default): sends a request and performs a dry run. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// - **false*	- (default): performs a dry run and sends the request. If the request passes the dry run, an HTTP 2xx status code is returned and the vSwitch configuration is queried.
 	//
 	// example:
 	//
@@ -38,9 +38,9 @@ type DescribeVSwitchAttributesRequest struct {
 	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the VPC to which the vSwitch belongs.
+	// The region ID of the VPC to which the route table belongs.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type DescribeVSwitchAttributesRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the vSwitch.
+	// The ID of the vSwitch to query.
 	//
 	// This parameter is required.
 	//

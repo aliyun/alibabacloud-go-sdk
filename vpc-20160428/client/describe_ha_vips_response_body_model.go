@@ -23,7 +23,7 @@ type iDescribeHaVipsResponseBody interface {
 
 type DescribeHaVipsResponseBody struct {
 	HaVips *DescribeHaVipsResponseBodyHaVips `json:"HaVips,omitempty" xml:"HaVips,omitempty" type:"Struct"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeHaVipsResponseBody struct {
 	//
 	// 33E480C5-B46F-4CA5-B6FD-D77C746E86AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

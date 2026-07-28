@@ -32,7 +32,7 @@ type iModifyRouteTableAttributesRequest interface {
 type ModifyRouteTableAttributesRequest struct {
 	// The description of the route table.
 	//
-	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+	// The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type ModifyRouteTableAttributesRequest struct {
 	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the virtual private cloud (VPC) to which the custom route table belongs.
+	// The region ID of the VPC to which the route table belongs.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -52,11 +52,11 @@ type ModifyRouteTableAttributesRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Indicates whether to enable route propagation to receive dynamic routes. Valid values:
+	// Specifies whether to receive dynamic routes by enabling or disabling route propagation. Valid values:
 	//
-	// - **true*	- (default): enables route propagation.
+	// - **true*	- (default): enabled.
 	//
-	// - **false**: disables route propagation.
+	// - **false**: disabled.
 	//
 	// if can be null:
 	// true

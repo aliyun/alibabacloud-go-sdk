@@ -26,7 +26,7 @@ type iCancelCommonBandwidthPackageIpBandwidthRequest interface {
 }
 
 type CancelCommonBandwidthPackageIpBandwidthRequest struct {
-	// The ID of the Internet Shared Bandwidth instance.
+	// The instance ID of the Internet Shared Bandwidth instance.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type CancelCommonBandwidthPackageIpBandwidthRequest struct {
 	//
 	// cbwp-bp13d0m4e2qv8xxxxxxxx
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// The ID of the EIP that is associated with the Internet Shared Bandwidth instance.
+	// The instance ID of the EIP that has been added to the Internet Shared Bandwidth instance.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type CancelCommonBandwidthPackageIpBandwidthRequest struct {
 	EipId        *string `json:"EipId,omitempty" xml:"EipId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the Internet Shared Bandwidth instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// The region ID of the Internet Shared Bandwidth instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//

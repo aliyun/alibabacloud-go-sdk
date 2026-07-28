@@ -24,30 +24,30 @@ type iDescribeVpnConnectionLogsResponseBody interface {
 }
 
 type DescribeVpnConnectionLogsResponseBody struct {
-	// The number of entries on the current page.
+	// The number of log entries on the current page.
 	//
 	// example:
 	//
 	// 10
 	Count *int32                                     `json:"Count,omitempty" xml:"Count,omitempty"`
 	Data  *DescribeVpnConnectionLogsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Indicates whether the log is accurate. Valid values:
+	// Indicates whether the queried logs are accurate. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Accurate.
 	//
-	// 	- **false**
+	// - **false**: Not accurate.
 	//
 	// example:
 	//
 	// true
 	IsCompleted *bool `json:"IsCompleted,omitempty" xml:"IsCompleted,omitempty"`
-	// The page number.
+	// The page number of the list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page for paging.
 	//
 	// example:
 	//

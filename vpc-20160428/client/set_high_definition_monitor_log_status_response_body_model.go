@@ -22,11 +22,11 @@ type SetHighDefinitionMonitorLogStatusResponseBody struct {
 	//
 	// 54B48E3D-DF70-471B-AA93-08E683A1B457
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation is performed. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The call was successful.
 	//
-	// 	- **false**
+	// - **false**: The call failed.
 	//
 	// example:
 	//

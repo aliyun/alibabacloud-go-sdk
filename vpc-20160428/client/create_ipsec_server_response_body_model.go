@@ -26,25 +26,25 @@ type iCreateIpsecServerResponseBody interface {
 type CreateIpsecServerResponseBody struct {
 	// The time when the IPsec server was created.
 	//
-	// T is used as a delimiter. Z indicates that the time is in UTC.
+	// T is the separator and Z indicates UTC.
 	//
 	// example:
 	//
 	// 2021-02-22T03:24:28Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The IPsec server ID.
+	// The ID of the IPsec server.
 	//
 	// example:
 	//
 	// iss-bp1jougp8cfsbo8y9****
 	IpsecServerId *string `json:"IpsecServerId,omitempty" xml:"IpsecServerId,omitempty"`
-	// The IPsec server name.
+	// The name of the IPsec server.
 	//
 	// example:
 	//
 	// test
 	IpsecServerName *string `json:"IpsecServerName,omitempty" xml:"IpsecServerName,omitempty"`
-	// The ID of the region where the VPN gateway is deployed.
+	// The region ID of the VPN gateway.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type CreateIpsecServerResponseBody struct {
 	//
 	// 690A967E-D4CD-4B69-8C78-94FE828BA10B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the VPN gateway.
+	// The instance ID of the VPN gateway.
 	//
 	// example:
 	//

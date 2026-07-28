@@ -24,11 +24,11 @@ type iGrantInstanceToVbrRequest interface {
 }
 
 type GrantInstanceToVbrRequest struct {
-	// The scope of VBR instances that accept the authorization. Valid values:
+	// The scope of VBR instances to be granted authorization. Valid values:
 	//
-	// - **All**: Grants authorization of the VPC instance to all VBR instances in the specified region under the specified Alibaba Cloud account. In this case, the **VbrInstanceIds*	- parameter can be left empty.
+	// - **All**: Grants authorization of the VPC-connected instance to all VBR instances in the specified region under the specified Alibaba Cloud account. In this case, the **VbrInstanceIds*	- parameter can be left empty.
 	//
-	// - **Specify**: Grants authorization of the VPC instance to the specified VBR instances. In this case, the **VbrInstanceIds*	- parameter is required.
+	// - **Specify**: Grants authorization of the VPC-connected instance to the specified VBR instances. In this case, the **VbrInstanceIds*	- parameter is required.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type GrantInstanceToVbrRequest struct {
 	//
 	// All
 	GrantType *string `json:"GrantType,omitempty" xml:"GrantType,omitempty"`
-	// The ID of the VPC instance for which authorization is to be granted.
+	// The ID of the VPC-connected instance for which to grant authorization.
 	//
 	// This parameter is required.
 	//
@@ -44,9 +44,9 @@ type GrantInstanceToVbrRequest struct {
 	//
 	// vpc-bp1lqhq93q8evjpky****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the VPC instance for which authorization is to be granted.
+	// The region ID of the VPC-connected instance for which to grant authorization.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
+	// You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//

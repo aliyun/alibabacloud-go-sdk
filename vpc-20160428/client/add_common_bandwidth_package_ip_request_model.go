@@ -40,17 +40,17 @@ type AddCommonBandwidthPackageIpRequest struct {
 	//
 	// cbwp-2ze2ic1xd2qeqasdf****
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// The client token used to ensure the idempotence of the request.
+	// The client token that is used to ensure the idempotence of the request.
 	//
-	// Generate a unique value for this parameter from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- is different for each API request.
+	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
 	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Performs a dry run without actually executing the operation.
+	// Specifies whether to perform a dry run without actually executing the operation.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type AddCommonBandwidthPackageIpRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the EIP instance.
 	//
-	// You can call the [DescribeEipAddresses](https://help.aliyun.com/document_detail/36018.html) API to query the ID of the EIP instance.
+	// You can call [DescribeEipAddresses](https://help.aliyun.com/document_detail/36018.html) to query the ID of the EIP instance.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type AddCommonBandwidthPackageIpRequest struct {
 	//
 	// eip-2zeerraiwb7uqwed****
 	IpInstanceId *string `json:"IpInstanceId,omitempty" xml:"IpInstanceId,omitempty"`
-	// The IP type. Valid value: **EIP**, which indicates that an EIP is added to the Internet Shared Bandwidth instance.
+	// The IP type. Valid values: **EIP**, which indicates that an EIP is added to the Internet Shared Bandwidth instance.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type AddCommonBandwidthPackageIpRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the Internet Shared Bandwidth instance.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) API to obtain the region ID.
+	// You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
 	//
 	// This parameter is required.
 	//

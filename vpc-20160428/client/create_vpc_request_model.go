@@ -54,11 +54,11 @@ type iCreateVpcRequest interface {
 }
 
 type CreateVpcRequest struct {
-	// VPC CIDR.
+	// The CIDR block of the VPC.
 	//
-	// - We recommend using the private IPv4 address specified in RFC 1918 as the primary IPv4 CIDR block of the VPC with a recommended mask length of 16 to 28 bits. For example, 10.0.0.0/16, 172.16.0.0/16, and 192.168.0.0/16.
+	// - We recommend that you use an IPv4 address specified in RFC 1918 as the primary IPv4 CIDR block of the VPC. The subnet mask must be 16 to 28 bits in length. Examples: 10.0.0.0/16, 172.16.0.0/16, and 192.168.0.0/16.
 	//
-	// - You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, or their subnets as the primary IPv4 CIDR block.
+	// - You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, or their subnets as the primary IPv4 CIDR block of the virtual private cloud (VPC).
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type CreateVpcRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
@@ -82,27 +82,27 @@ type CreateVpcRequest struct {
 	//
 	// This is my first Vpc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run without creating the VPC. The system checks the required parameters, request format, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// - **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// - **false*	- (default): performs a Normal request and sends the request. If the request passes the check, an HTTP 2xx status code is returned and the system proceeds to create a VPC.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Whether to enable the DNS hostname feature. Values:
+	// Specifies whether to enable the DNS hostname feature. Valid values:
 	//
-	// - **false*	- (default): Not enabled.
+	// - **false*	- (default): disabled.
 	//
-	// - **true**: Enabled.
+	// - **true**: enabled.
 	//
 	// example:
 	//
 	// false
 	EnableDnsHostname *bool `json:"EnableDnsHostname,omitempty" xml:"EnableDnsHostname,omitempty"`
-	// Indicates whether IPv6 is enabled. Valid values:
+	// Specifies whether to enable IPv6. Valid values:
 	//
 	// - **false*	- (default): disabled.
 	//
@@ -112,33 +112,33 @@ type CreateVpcRequest struct {
 	//
 	// false
 	EnableIpv6 *bool `json:"EnableIpv6,omitempty" xml:"EnableIpv6,omitempty"`
-	// Allocate VPC from the IPAM address pool by inputting a mask.
+	// The subnet mask used to allocate a CIDR block from the IPAM pool to the VPC.
 	//
-	// > When creating a VPC with a specified IPAM address pool, at least one of the parameters CidrBlock or Ipv4CidrMask must be provided.
+	// > When you create a VPC by specifying an IPAM pool, you must specify at least one of CidrBlock or Ipv4CidrMask.
 	//
 	// example:
 	//
 	// 12
 	Ipv4CidrMask *int32 `json:"Ipv4CidrMask,omitempty" xml:"Ipv4CidrMask,omitempty"`
-	// The ID of the IP Address Manager (IPAM) pool of the IPv4 type.
+	// The instance ID of the IPv4 IPAM pool.
 	//
 	// example:
 	//
 	// ipam-pool-sycmt3p2a9v63i****
 	Ipv4IpamPoolId *string `json:"Ipv4IpamPoolId,omitempty" xml:"Ipv4IpamPoolId,omitempty"`
-	// The IPv6 CIDR block of the VPC. If you enable IPv6 for a VPC, the system allocates an IPv6 CIDR block. To specify an IPv6 CIDR block, you must call the [AllocateVpcIpv6Cidr](https://help.aliyun.com/document_detail/448916.html) operation to reserve the specified IPv6 CIDR block.
+	// The IPv6 CIDR block of the VPC. When you enable IPv6 for the VPC, the system will assign an IPv6 CIDR block. To specify an IPv6 CIDR block, you need to first invoke the [AllocateVpcIpv6Cidr](https://help.aliyun.com/document_detail/448916.html) operation to reserve the specified IPv6 CIDR block, and then pass it in.
 	//
 	// example:
 	//
 	// 2408:XXXX:0:6a::/56
 	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
-	// Add an IPv6 CIDR block from the IPAM pool to the VPC by entering a mask.
+	// The subnet mask used to add an IPv6 CIDR block to the VPC from the IPAM pool.
 	//
 	// example:
 	//
 	// 56
 	Ipv6CidrMask *int32 `json:"Ipv6CidrMask,omitempty" xml:"Ipv6CidrMask,omitempty"`
-	// The ID of the IP Address Manager (IPAM) pool of the IPv6 type.
+	// The instance ID of the IPv6 IPAM pool.
 	//
 	// example:
 	//
@@ -146,15 +146,15 @@ type CreateVpcRequest struct {
 	Ipv6IpamPoolId *string `json:"Ipv6IpamPoolId,omitempty" xml:"Ipv6IpamPoolId,omitempty"`
 	// The type of the IPv6 CIDR block of the VPC. Valid values:
 	//
-	// - **BGP*	- (default)
+	// - **BGP*	- (default): Alibaba Cloud BGP IPv6.
 	//
-	// - **ChinaMobile**
+	// - **ChinaMobile**: China Mobile (single ISP).
 	//
-	// - **ChinaUnicom**
+	// - **ChinaUnicom**: China Unicom (single ISP).
 	//
-	// - **ChinaTelecom**
+	// - **ChinaTelecom**: China Telecom (single ISP).
 	//
-	// > If you are allowed to use single-ISP bandwidth, you can set the value to **ChinaTelecom**, **ChinaUnicom**, or **ChinaMobile**.
+	// > If your account is included in the China single-ISP bandwidth whitelist, you can set this parameter to **ChinaTelecom*	- (China Telecom), **ChinaUnicom*	- (China Unicom), or **ChinaMobile*	- (China Mobile).
 	//
 	// example:
 	//
@@ -162,7 +162,7 @@ type CreateVpcRequest struct {
 	Ipv6Isp      *string `json:"Ipv6Isp,omitempty" xml:"Ipv6Isp,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region to which the VPC belongs.
+	// The region ID of the VPC.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
 	//
@@ -172,9 +172,9 @@ type CreateVpcRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
-	// For more information about resource groups, see [What is a resource group?](https://help.aliyun.com/document_detail/94475.html)
+	// For more information about resource groups, see [What is a resource group?](https://help.aliyun.com/document_detail/2381067.html).
 	//
 	// example:
 	//
@@ -182,11 +182,11 @@ type CreateVpcRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tag of the resource.
+	// The tags of the resource.
 	Tag []*CreateVpcRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The user CIDR block. Separate user CIDR blocks with commas (,). You can specify up to three user CIDR blocks.
+	// The user CIDR block. Separate multiple CIDR blocks with commas (,). You can specify up to three CIDR blocks.
 	//
-	// For more information about user CIDR blocks, see the `What is a user CIDR block?` section in [VPC FAQ](https://help.aliyun.com/document_detail/185311.html).
+	// For more information about user CIDR blocks, see the `What is a user CIDR block?` section in [virtual private cloud (VPC) FAQ](https://help.aliyun.com/document_detail/185311.html).
 	//
 	// example:
 	//
@@ -413,17 +413,17 @@ func (s *CreateVpcRequest) Validate() error {
 }
 
 type CreateVpcRequestTag struct {
-	// The key of tag N to add to the resource. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The tag key can be at most 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N to add to the resource. You can specify at most 20 tag values. The tag value can be an empty string.
+	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length, but cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
+	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

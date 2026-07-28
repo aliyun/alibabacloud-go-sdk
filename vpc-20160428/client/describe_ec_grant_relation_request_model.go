@@ -22,11 +22,11 @@ type iDescribeEcGrantRelationRequest interface {
 }
 
 type DescribeEcGrantRelationRequest struct {
-	// The ID of the instance.
+	// The instance ID of the instance for which you want to query authorization relationships.
 	//
-	// 	- If you set **InstanceType*	- to **VBR**, specify a VBR ID.
+	// - If **InstanceType*	- is set to **VBR**, set this parameter to the VBR instance ID.
 	//
-	// 	- If you set **InstanceType*	- to **VPC**, specify a VPC ID.
+	// - If **InstanceType*	- is set to **VPC**, set this parameter to the VPC-connected instance ID.
 	//
 	// This parameter is required.
 	//
@@ -34,11 +34,11 @@ type DescribeEcGrantRelationRequest struct {
 	//
 	// vbr-bp12mw1f8k3jgygk9****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of instance. Valid values:
+	// The type of instance for which you want to query authorization relationships. Valid values:
 	//
-	// 	- **VBR**: queries the permissions that are granted to a VBR.
+	// - **VBR**: Virtual Border Router (VBR) instance. Queries the VPC-connected instances that have granted authorization to the VBR instance.
 	//
-	// 	- **VPC**: queries the permissions that are granted from a VPC.
+	// - **VPC**: virtual private cloud (VPC) instance. Queries the VBR instances to which the VPC-connected instance has granted authorization.
 	//
 	// This parameter is required.
 	//
@@ -46,23 +46,23 @@ type DescribeEcGrantRelationRequest struct {
 	//
 	// VBR
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number of the list. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the instance is deployed.
+	// The region ID of the VBR instance for which you want to query authorization relationships.
 	//
-	// 	- If **InstanceType*	- is set to **VBR**, this parameter is required.
+	// - If **InstanceType*	- is set to **VBR**, this parameter is required.
 	//
-	// 	- If **InstanceType*	- is set to **VPC**, you can ignore this parameter.
+	// - If **InstanceType*	- is set to **VPC**, this parameter is not required.
 	//
 	// example:
 	//

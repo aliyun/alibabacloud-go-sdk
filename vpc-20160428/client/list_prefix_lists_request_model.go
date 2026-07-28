@@ -34,17 +34,17 @@ type iListPrefixListsRequest interface {
 }
 
 type ListPrefixListsRequest struct {
-	// The number of entries per page. Valid values: **1*	- to **100**. Default value: **20**.
+	// The number of entries per page for a paged query. Valid values: **1*	- to **100**. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	// The pagination token. Valid values:
 	//
-	// 	- You do not need to specify this parameter for the first request.
+	// - If this is the first request or no subsequent query exists, leave this parameter empty.
 	//
-	// 	- You must specify the token that is obtained from the previous query as the value of NextToken.
+	// - If a subsequent query exists, set this parameter to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type ListPrefixListsRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The IDs of prefix lists to be queried. Valid values of **N*	- are **1*	- to **100**, which specifies that you can query up to 100 prefix lists at a time.
+	// The IDs of the prefix lists to query. Valid values of **N**: **1*	- to **100**. You can query up to 100 prefix lists at a time.
 	//
 	// example:
 	//
@@ -66,9 +66,9 @@ type ListPrefixListsRequest struct {
 	//
 	// name
 	PrefixListName *string `json:"PrefixListName,omitempty" xml:"PrefixListName,omitempty"`
-	// The ID of the region where you want to query prefix lists.
+	// The ID of the region in which to query prefix lists.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -209,17 +209,17 @@ func (s *ListPrefixListsRequest) Validate() error {
 }
 
 type ListPrefixListsRequestTags struct {
-	// The tag key. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+	// A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. You can specify up to 20 tag values. The tag value can be an empty string.
+	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

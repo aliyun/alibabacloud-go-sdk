@@ -44,39 +44,39 @@ type iModifyIPv6TranslatorEntryRequest interface {
 }
 
 type ModifyIPv6TranslatorEntryRequest struct {
-	// The ID of the associated ACL.
+	// The ID of the associated access control policy group.
 	//
 	// example:
 	//
 	// ipv6transacl-bp1de27sou71g0lf****
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// Specifies whether to enable access control lists (ACLs). Valid values:
+	// Specifies whether to enable access control. Valid values:
 	//
-	// 	- **on**
+	// - **on**: enabled.
 	//
-	// 	- **off**
+	// - **off**: disabled.
 	//
 	// example:
 	//
 	// off
 	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	// The ACL type. Valid values:
+	// The type of the access control policy. Valid values:
 	//
-	// 	- **white**: a whitelist. IPv6 addresses in the ACL are allowed to access backend services.
+	// - **white**: allows the IPv6 addresses in the access control policy group to access backend services.
 	//
-	// 	- **black**: a blacklist. IPv6 addresses in the ACL are not allowed to access backend services.
+	// - **black**: denies the IPv6 addresses in the access control policy group from accessing backend services.
 	//
 	// example:
 	//
 	// white
 	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	// The port that is used by the IPv6 address allocated to the IPv6 Translation Service instance.
+	// The port used by the IPv6 address allocated by the IPv6 Translation Service instance.
 	//
 	// example:
 	//
 	// 80
 	AllocateIpv6Port *int32 `json:"AllocateIpv6Port,omitempty" xml:"AllocateIpv6Port,omitempty"`
-	// The public IPv4 address that needs to provide IPv6 services.
+	// The public IPv4 address that needs to provide IPv6 services. This is the IPv4 address of the IPv4-only server.
 	//
 	// example:
 	//
@@ -88,31 +88,31 @@ type ModifyIPv6TranslatorEntryRequest struct {
 	//
 	// 80
 	BackendIpv4Port *int32 `json:"BackendIpv4Port,omitempty" xml:"BackendIpv4Port,omitempty"`
-	// The maximum bandwidth specified in the IPv6 mapping entry. Unit: Mbit/s. Valid values:
+	// The maximum bandwidth of the IPv6 Translation Service mapping entry. Unit: Mbit/s. Valid values:
 	//
-	// 	- **-1*	- (default): does not limit the maximum bandwidth specified in the IPv6 mapping entry.
+	// - **-1*	- (default): does not limit the maximum bandwidth of the mapping entry.
 	//
-	// 	- **1*	- to **200**: changes the maximum bandwidth specified in the IPv6 mapping entry.
+	// - **1*	- to **200**: the bandwidth value of the mapping entry.
 	//
-	// > The sum of maximum bandwidth values specified in all IPv6 entries cannot exceed the maximum bandwidth supported by the instance.
+	// > The sum of the maximum bandwidth values of all IPv6 Translation Service mapping entries cannot exceed the maximum bandwidth of the instance.
 	//
 	// example:
 	//
 	// 10
 	EntryBandwidth *int32 `json:"EntryBandwidth,omitempty" xml:"EntryBandwidth,omitempty"`
-	// The description of the IPv6 mapping entry. It must be 2 to 100 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It cannot start with http:// or [https://](https://。).
+	// The description of the IPv6 Translation Service mapping entry. The description must be 2 to 100 characters in length and must start with a letter or a Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with http:// or https://.
 	//
 	// example:
 	//
 	// entrydescription
 	EntryDescription *string `json:"EntryDescription,omitempty" xml:"EntryDescription,omitempty"`
-	// The name of the IPv6 mapping entry. It must be 2 to 100 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It cannot start with http:// or [https://](https://。).
+	// The name of the IPv6 Translation Service mapping entry. The name must be 2 to 100 characters in length and must start with a letter or a Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with http:// or https://.
 	//
 	// example:
 	//
 	// entry1
 	EntryName *string `json:"EntryName,omitempty" xml:"EntryName,omitempty"`
-	// The ID of the IPv6 mapping entry.
+	// The ID of the IPv6 Translation Service mapping entry.
 	//
 	// This parameter is required.
 	//
@@ -122,7 +122,7 @@ type ModifyIPv6TranslatorEntryRequest struct {
 	Ipv6TranslatorEntryId *string `json:"Ipv6TranslatorEntryId,omitempty" xml:"Ipv6TranslatorEntryId,omitempty"`
 	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region of the IPv6 Translation Service instance. You can call the DescribeRegions operation to query the most recent region list.
+	// The region of the IPv6 Translation Service instance. You can call the DescribeRegions operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -132,11 +132,11 @@ type ModifyIPv6TranslatorEntryRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The protocol. Valid values:
+	// The protocol type. Valid values:
 	//
-	// 	- **tcp**
+	// - **tcp**: forwards TCP packets.
 	//
-	// 	- **udp**
+	// - **udp**: forwards UDP packets.
 	//
 	// example:
 	//

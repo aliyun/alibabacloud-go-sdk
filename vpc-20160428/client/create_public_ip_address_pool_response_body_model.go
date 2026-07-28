@@ -20,7 +20,7 @@ type iCreatePublicIpAddressPoolResponseBody interface {
 }
 
 type CreatePublicIpAddressPoolResponseBody struct {
-	// The ID of the IP address pool.
+	// The instance ID of the IPAM pool.
 	//
 	// example:
 	//
@@ -28,7 +28,7 @@ type CreatePublicIpAddressPoolResponseBody struct {
 	PublicIpAddressPoolId *string `json:"PublicIpAddressPoolId,omitempty" xml:"PublicIpAddressPoolId,omitempty"`
 	// Deprecated
 	//
-	// The ID of the IP address pool.
+	// The instance ID of the IPAM pool.
 	//
 	// example:
 	//

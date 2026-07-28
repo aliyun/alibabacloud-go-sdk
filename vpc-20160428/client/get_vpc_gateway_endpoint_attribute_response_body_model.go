@@ -36,7 +36,7 @@ type iGetVpcGatewayEndpointAttributeResponseBody interface {
 }
 
 type GetVpcGatewayEndpointAttributeResponseBody struct {
-	// The time when the endpoint was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	// The time when the gateway endpoint was created. The time is displayed in UTC in the YYYY-MM-DDThh:mm:ssZ format.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type GetVpcGatewayEndpointAttributeResponseBody struct {
 	//
 	// test
 	EndpointDescription *string `json:"EndpointDescription,omitempty" xml:"EndpointDescription,omitempty"`
-	// The ID of the gateway endpoint.
+	// The endpoint instance ID of the gateway endpoint.
 	//
 	// example:
 	//
@@ -62,17 +62,17 @@ type GetVpcGatewayEndpointAttributeResponseBody struct {
 	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
 	// The status of the gateway endpoint. Valid values:
 	//
-	// 	- **Creating**
+	// - **Creating**: being created.
 	//
-	// 	- **Created**
+	// - **Created**: created and in a normal state.
 	//
-	// 	- **Modifying**
+	// - **Modifying**: being modified.
 	//
-	// 	- **Associating**
+	// - **Associating**: being associated.
 	//
-	// 	- **Dissociating**
+	// - **Dissociating**: being disassociated.
 	//
-	// 	- **Deleting**
+	// - **Deleting**: being deleted.
 	//
 	// example:
 	//
@@ -96,17 +96,17 @@ type GetVpcGatewayEndpointAttributeResponseBody struct {
 	//
 	// rg-acfmxvfvazb4p****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the route table associated with the gateway endpoint.
+	// The IDs of the route tables associated with the gateway endpoint.
 	RouteTables []*string `json:"RouteTables,omitempty" xml:"RouteTables,omitempty" type:"Repeated"`
-	// The name of the endpoint service.
+	// The service name of the endpoint service.
 	//
 	// example:
 	//
 	// com.aliyun.cn-hangzhou.oss
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The tag list.
+	// The list of tags.
 	Tags []*GetVpcGatewayEndpointAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The ID of the virtual private cloud (VPC) to which the gateway endpoint belongs.
+	// The ID of the VPC to which the gateway endpoint belongs.
 	//
 	// example:
 	//
@@ -244,13 +244,13 @@ func (s *GetVpcGatewayEndpointAttributeResponseBody) Validate() error {
 }
 
 type GetVpcGatewayEndpointAttributeResponseBodyTags struct {
-	// The key of tag N added to the resource.
+	// The tag key.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N added to the resource.
+	// The tag value.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iCreateExpressCloudConnectionResponseBody interface {
 }
 
 type CreateExpressCloudConnectionResponseBody struct {
-	// The ID of the ECC instance.
+	// The instance ID of the Express Cloud Connection.
 	//
 	// example:
 	//

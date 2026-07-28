@@ -16,7 +16,7 @@ type iCreateBgpGroupResponseBody interface {
 }
 
 type CreateBgpGroupResponseBody struct {
-	// The ID of the BGP group.
+	// The ID of the created BGP group.
 	//
 	// example:
 	//

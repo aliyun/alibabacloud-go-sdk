@@ -14,7 +14,7 @@ type iModifyCommonBandwidthPackageAttributeResponseBody interface {
 }
 
 type ModifyCommonBandwidthPackageAttributeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

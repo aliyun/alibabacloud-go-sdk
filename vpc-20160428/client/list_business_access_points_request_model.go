@@ -14,9 +14,9 @@ type iListBusinessAccessPointsRequest interface {
 }
 
 type ListBusinessAccessPointsRequest struct {
-	// The region ID of the Express Connect circuit.
+	// The region ID of the Express Connect circuit instance.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// example:
 	//

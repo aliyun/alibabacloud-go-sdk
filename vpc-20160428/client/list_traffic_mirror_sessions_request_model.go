@@ -46,27 +46,27 @@ type iListTrafficMirrorSessionsRequest interface {
 }
 
 type ListTrafficMirrorSessionsRequest struct {
-	// Specifies whether to enable the traffic mirror session. Valid values:
+	// Specifies whether the traffic mirror session is enabled. Valid values:
 	//
-	// 	- **false**: does not enable the traffic mirror session.
+	// - **false*	- (default): The traffic mirror session is not enabled.
 	//
-	// 	- **true**: enables the traffic mirror session.
+	// - **true**: The traffic mirror session is enabled.
 	//
 	// example:
 	//
 	// false
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The maximum number of entries to return. Valid values: **1*	- to **100**. Default value: **10**.
+	// The maximum number of entries to return in this query. Valid values: **1*	- to **100**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used for the next query. Valid values:
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// 	- If this is your first query and no next queries are to be sent, ignore this parameter.
+	// - You do not need to specify this parameter for the first request or if no next query exists.
 	//
-	// 	- If a next query is to be sent, set the value to the value of NextToken that is returned from the last call.
+	// - If a next query exists, set the value to the NextToken value returned in the previous API call.
 	//
 	// example:
 	//
@@ -74,15 +74,15 @@ type ListTrafficMirrorSessionsRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The priority of the traffic mirror session. Valid values: **1*	- to **32766**.
+	// The priority of traffic mirror session. Valid values: **1*	- to **32766**.
 	//
-	// A smaller value indicates a higher priority. You cannot specify identical priorities for traffic mirror sessions that are created in the same region by using the same account.
+	// A smaller value indicates a higher priority. The priority of traffic mirror session created by the same account in the same region must be unique.
 	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The ID of the region to which the traffic mirror session belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about regions that support traffic mirror, see [Overview of traffic mirror](https://help.aliyun.com/document_detail/207513.html).
+	// The region ID of the traffic mirror session. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID. For information about the regions that support traffic mirroring, see [Traffic mirroring overview](https://help.aliyun.com/document_detail/207513.html).
 	//
 	// This parameter is required.
 	//
@@ -90,7 +90,7 @@ type ListTrafficMirrorSessionsRequest struct {
 	//
 	// cn-hongkong
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the mirrored traffic belongs.
+	// The ID of the resource group to which the traffic mirroring session belongs.
 	//
 	// example:
 	//
@@ -98,15 +98,15 @@ type ListTrafficMirrorSessionsRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tags of the resource.
+	// The tags.
 	Tags []*ListTrafficMirrorSessionsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The ID of the traffic mirror filter.
+	// The instance ID of the traffic mirror filter.
 	//
 	// example:
 	//
 	// tmf-j6cmls82xnc86vtpe****
 	TrafficMirrorFilterId *string `json:"TrafficMirrorFilterId,omitempty" xml:"TrafficMirrorFilterId,omitempty"`
-	// The IDs of the traffic mirror session. The maximum value of N is 100, which indicates that you can query up to 100 traffic mirror sessions at a time.
+	// The instance IDs of traffic mirror sessions. The maximum value of **N*	- is **100**, which means you can query up to 100 traffic mirror sessions.
 	//
 	// example:
 	//
@@ -114,25 +114,25 @@ type ListTrafficMirrorSessionsRequest struct {
 	TrafficMirrorSessionIds []*string `json:"TrafficMirrorSessionIds,omitempty" xml:"TrafficMirrorSessionIds,omitempty" type:"Repeated"`
 	// The name of the traffic mirror session.
 	//
-	// The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
+	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// abc
 	TrafficMirrorSessionName *string `json:"TrafficMirrorSessionName,omitempty" xml:"TrafficMirrorSessionName,omitempty"`
-	// The ID of the traffic mirror source. You can specify only an elastic network interface (ENI) as the mirror source.
+	// The instance ID of the traffic mirror source. Currently, elastic network interfaces (ENIs) are supported as traffic mirror sources.
 	//
 	// example:
 	//
 	// eni-j6c8znm5l1yt4sox*****
 	TrafficMirrorSourceId *string `json:"TrafficMirrorSourceId,omitempty" xml:"TrafficMirrorSourceId,omitempty"`
-	// The ID of the traffic mirror destination. You can specify only an ENI or a Server Load Balancer (SLB) instance as a traffic mirror destination.
+	// The instance ID of the traffic mirror destination. Currently, elastic network interfaces (ENIs) and internal-facing SLB instances are supported as traffic mirror destinations. Elastic network interfaces are also referred to as network interface controllers (NICs).
 	//
 	// example:
 	//
 	// eni-j6c2fp57q8rr47rp****
 	TrafficMirrorTargetId *string `json:"TrafficMirrorTargetId,omitempty" xml:"TrafficMirrorTargetId,omitempty"`
-	// The VXLAN network identifier (VNI) that is used to distinguish different mirrored traffic. Valid values: **0*	- to **16777215**. You can use VNIs to identify mirrored traffic from different sessions at the traffic mirror destination. You can specify a custom VNI or use a random VNI that is allocated by the system. If you want the system to randomly allocate a VNI, ignore this parameter.
+	// The Virtual Network Identifier (VNI) used to distinguish different mirrored data. Valid values: **0*	- to **16777215**. You can use the VNI to identify mirrored data from different sessions at the traffic mirror destination. You can specify a custom VNI value or let the system randomly assign one. To let the system randomly assign a value, do not specify this parameter.
 	//
 	// example:
 	//
@@ -315,17 +315,17 @@ func (s *ListTrafficMirrorSessionsRequest) Validate() error {
 }
 
 type ListTrafficMirrorSessionsRequestTags struct {
-	// The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+	// The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
+	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter but cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

@@ -64,7 +64,7 @@ type UnassociateEipAddressRequest struct {
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
 	// The instance ID of the cloud resource from which to disassociate the EIP.
 	//
-	// You can enter the instance ID of a NAT gateway, Classic Load Balancer (CLB) instance, ECS instance, secondary elastic network interface controller (NIC), high availability virtual IP address instance, or an IP address.
+	// You can enter the instance ID of a NAT gateway, Classic Load Balancer (CLB) instance, ECS instance, secondary elastic network interface controller (NIC), high-availability virtual IP address, or an IP address.
 	//
 	// example:
 	//
@@ -74,13 +74,13 @@ type UnassociateEipAddressRequest struct {
 	//
 	// - **EcsInstance*	- (default): an ECS instance in a virtual private cloud (VPC).
 	//
-	// - **SlbInstance**: a load balancing instance in a virtual private cloud (VPC).
+	// - **SlbInstance**: an SLB instance in a virtual private cloud (VPC).
 	//
 	// - **NetworkInterface**: a secondary elastic network interface controller (NIC) in a virtual private cloud (VPC).
 	//
 	// - **Nat**: a NAT gateway.
 	//
-	// - **HaVip**: a high availability virtual IP address.
+	// - **HaVip**: a high-availability virtual IP address.
 	//
 	// - **IpAddress**: an IP address.
 	//
@@ -90,7 +90,7 @@ type UnassociateEipAddressRequest struct {
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The private IP address of the ECS instance or secondary elastic network interface controller (NIC) instance from which to disassociate the EIP.
+	// The private IP address of the ECS instance or secondary elastic network interface controller (NIC) from which to disassociate the EIP.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type UnassociateEipAddressRequest struct {
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 	// The region ID of the EIP to disassociate.
 	//
-	//  You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query region IDs.
+	//  You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
 	//
 	// example:
 	//

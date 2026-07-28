@@ -18,19 +18,19 @@ type iCreateIpv4GatewayResponseBody interface {
 }
 
 type CreateIpv4GatewayResponseBody struct {
-	// The ID of the IPv4 gateway.
+	// The instance ID of the IPv4 gateway.
 	//
 	// example:
 	//
 	// ipv4gw-5tsnc6s4ogsedtp3k****
 	Ipv4GatewayId *string `json:"Ipv4GatewayId,omitempty" xml:"Ipv4GatewayId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// F282742B-1BBB-5F63-A3AF-E92EC575A1A6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//

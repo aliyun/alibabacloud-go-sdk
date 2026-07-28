@@ -26,17 +26,17 @@ type iDescribePhysicalConnectionLOARequest interface {
 }
 
 type DescribePhysicalConnectionLOARequest struct {
-	// A client token that ensures the idempotence of the request.
+	// The client token that is used to ensure the idempotence of the request.
 	//
-	// Your client generates this value, which must be unique for each request and have a maximum length of 64 ASCII characters.
+	// The client generates the value. The value must be unique among different requests and cannot exceed 64 ASCII characters in length.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. Each API request has a unique **RequestId**.
+	// > If you do not specify this parameter, the system uses the **RequestId*	- as the **ClientToken**. The **RequestId*	- may differ for each API request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the physical connection instance.
+	// The instance ID of the Express Connect circuit.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,9 @@ type DescribePhysicalConnectionLOARequest struct {
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the physical connection is located. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to get a list of available region IDs.
+	// The region ID of the Express Connect circuit.
+	//
+	// You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
 	//
 	// This parameter is required.
 	//

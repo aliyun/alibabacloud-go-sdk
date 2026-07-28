@@ -22,7 +22,7 @@ type iAssociateMacSecKeyRequest interface {
 }
 
 type AssociateMacSecKeyRequest struct {
-	// The key secret. This parameter accepts only hexadecimal characters. Lowercase letters are automatically converted to uppercase. The cipher suite determines the required length of the key secret: 32 hexadecimal characters for GCM-AES-128 or GCM-AES-XPN-128, and 64 hexadecimal characters for GCM-AES-256 or GCM-AES-XPN-256.
+	// The passphrase. Only hexadecimal characters are supported. Lowercase characters are automatically transformed to uppercase. If the encryption algorithm type is GCM-AES-128 or GCM-AES-XPN-128, the length must be 32 hexadecimal characters. If the encryption algorithm type is GCM-AES-256 or GCM-AES-XPN-256, the length must be 64 hexadecimal characters.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type AssociateMacSecKeyRequest struct {
 	//
 	// 0123456789ABCDEF0123456789ABCDEF
 	Cak *string `json:"Cak,omitempty" xml:"Cak,omitempty"`
-	// The cipher suite. Valid values:
+	// The encryption algorithm type. Valid values:
 	//
 	// - GCM-AES-128
 	//
@@ -46,7 +46,7 @@ type AssociateMacSecKeyRequest struct {
 	//
 	// GCM-AES-128
 	CipherSuite *string `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
-	// The key name. This parameter accepts only hexadecimal characters. Lowercase letters are automatically converted to uppercase. The cipher suite determines the required length of the key name: 32 hexadecimal characters for GCM-AES-128 or GCM-AES-XPN-128, and 64 hexadecimal characters for GCM-AES-256 or GCM-AES-XPN-256.
+	// The key name. Only hexadecimal characters are supported. Lowercase characters are automatically converted to uppercase. If the encryption algorithm type is GCM-AES-128 or GCM-AES-XPN-128, the length must be 32 hexadecimal characters. If the encryption algorithm type is GCM-AES-256 or GCM-AES-XPN-256, the length must be 64 hexadecimal characters.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type AssociateMacSecKeyRequest struct {
 	//
 	// 0123456789ABCDEF0123456789ABCDEF
 	Ckn *string `json:"Ckn,omitempty" xml:"Ckn,omitempty"`
-	// The ID of the Express Connect physical connection.
+	// The ID of the Express Connect circuit.
 	//
 	// This parameter is required.
 	//
@@ -62,9 +62,9 @@ type AssociateMacSecKeyRequest struct {
 	//
 	// pc-bp1hp0wr072f6****
 	PhysicalConnectionId *string `json:"PhysicalConnectionId,omitempty" xml:"PhysicalConnectionId,omitempty"`
-	// The region ID of the Express Connect physical connection.
+	// The region ID of the Express Connect circuit.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to obtain the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//

@@ -34,9 +34,9 @@ type iCreateExpressConnectTrafficQosQueueRequest interface {
 type CreateExpressConnectTrafficQosQueueRequest struct {
 	// The bandwidth percentage of the QoS queue.
 	//
-	// 	- When the QoS queue type is **Medium**, this parameter is required. Valid values: 1 to 100.
+	// 	- If the QoS queue type is **Medium**, this parameter is required. Valid values: 1 to 100.
 	//
-	// 	- When the QoS queue type is **Default**, this parameter is set to "-".
+	// 	- If the QoS queue type is **Default**, this parameter is set to "-".
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type CreateExpressConnectTrafficQosQueueRequest struct {
 	QueueType *string `json:"QueueType,omitempty" xml:"QueueType,omitempty"`
 	// The region ID of the QoS policy.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//

@@ -24,7 +24,7 @@ type iGetPhysicalConnectionServiceStatusRequest interface {
 type GetPhysicalConnectionServiceStatusRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region for which you want to query the status of outbound data transfer billing.
+	// The ID of the region for which you want to query whether outbound traffic billing is enabled.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
 	//

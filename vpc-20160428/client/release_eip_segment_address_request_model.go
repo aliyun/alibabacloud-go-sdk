@@ -38,7 +38,7 @@ type ReleaseEipSegmentAddressRequest struct {
 	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the contiguous EIP group. You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
+	// The region ID of the contiguous EIPs. You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
 	//
 	// This parameter is required.
 	//

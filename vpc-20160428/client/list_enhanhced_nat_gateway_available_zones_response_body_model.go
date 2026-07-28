@@ -16,7 +16,7 @@ type iListEnhanhcedNatGatewayAvailableZonesResponseBody interface {
 }
 
 type ListEnhanhcedNatGatewayAvailableZonesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ func (s *ListEnhanhcedNatGatewayAvailableZonesResponseBody) Validate() error {
 }
 
 type ListEnhanhcedNatGatewayAvailableZonesResponseBodyZones struct {
-	// The name of the zone.
+	// The zone name.
 	//
 	// example:
 	//
 	// 中东1 可用区A
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The ID of the zone where the instance is deployed.
+	// The zone ID.
 	//
 	// example:
 	//

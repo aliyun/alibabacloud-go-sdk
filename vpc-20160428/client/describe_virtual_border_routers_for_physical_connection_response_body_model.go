@@ -22,13 +22,13 @@ type iDescribeVirtualBorderRoutersForPhysicalConnectionResponseBody interface {
 }
 
 type DescribeVirtualBorderRoutersForPhysicalConnectionResponseBody struct {
-	// The page number. Default value: **1**.
+	// The page number of the list. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type DescribeVirtualBorderRoutersForPhysicalConnectionResponseBody struct {
 	//
 	// 7C5AE8B3-A2D8-428D-A2FF-93A225C0821E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of entries returned.
+	// The total number of entries in the list.
 	//
 	// example:
 	//

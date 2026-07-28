@@ -44,7 +44,7 @@ type AllocateIpv6AddressRequest struct {
 	//
 	// 	- IPv6Address (default): The instance is a single IPv6 address.
 	//
-	// 	- IPv6Prefix: The instance is an IPv6 prefix CIDR block.
+	// 	- IPv6Prefix: The instance is an IPv6 CIDR block.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type AllocateIpv6AddressRequest struct {
 	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type AllocateIpv6AddressRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
-	// - true: performs a dry run. The system checks the required parameters, request syntax, and business restrictions. If the check fails, the corresponding error is returned. If the check succeeds, the error code DryRunOperation is returned.
+	// - true: performs a dry run. The system checks the required parameters, request syntax, and business restrictions. If the check fails, the corresponding error is returned. If the check succeeds, the DryRunOperation error code is returned.
 	//
 	// - false (default): performs a dry run and sends the request. If the check succeeds, an HTTP 2xx status code is returned and the operation is performed.
 	//
@@ -108,7 +108,7 @@ type AllocateIpv6AddressRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The list of tags for the resource.
+	// The tags of the resource.
 	Tag []*AllocateIpv6AddressRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the vSwitch to which the IPv6 address belongs.
 	//
@@ -268,17 +268,17 @@ func (s *AllocateIpv6AddressRequest) Validate() error {
 }
 
 type AllocateIpv6AddressRequestTag struct {
-	// The tag key of the resource. You can specify up to 20 tag keys. Do not pass in an empty string.
+	// The tag key of the resource. You can specify up to 20 tag keys. Do not specify an empty string.
 	//
-	// A tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
+	// A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the resource. You can specify up to 20 tag values. You can pass in an empty string.
+	// The tag value of the resource. You can specify up to 20 tag values. You can specify an empty string.
 	//
-	// The tag value can be up to 128 characters in length and cannot start with aliyun or acs:, or contain http:// or https://.
+	// The tag value can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
 	//
 	// example:
 	//

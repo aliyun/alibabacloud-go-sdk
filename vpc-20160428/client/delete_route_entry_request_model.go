@@ -46,13 +46,13 @@ type DeleteRouteEntryRequest struct {
 	//
 	// **true**: performs a dry run without deleting the route. The system checks the AccessKey pair, the authorization of the Resource Access Management (RAM) user, and the required parameters. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
 	//
-	// **false*	- (default): sends a normal request. After the check succeeds, a 2xx HTTP status code is returned and the route is deleted.
+	// **false*	- (default): sends a Normal request. If the check succeeds, a 2xx HTTP status code is returned and the route entry is deleted.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the next hop instance.
 	//
-	// - To delete a non-ECMP route, specify **NextHopId**. Do not specify **NextHopList**.
+	// - To delete a non-ECMP route, specify **NextHopId**. You do not need to specify **NextHopList**.
 	//
-	// - To delete an ECMP route, specify **NextHopList**. Do not specify **NextHopId**.
+	// - To delete an ECMP route, specify **NextHopList**. You do not need to specify **NextHopId**.
 	//
 	// example:
 	//

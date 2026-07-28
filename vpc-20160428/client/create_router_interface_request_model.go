@@ -72,9 +72,11 @@ type iCreateRouterInterfaceRequest interface {
 type CreateRouterInterfaceRequest struct {
 	// The ID of the access point to which the VBR belongs.
 	//
-	// You can call the [DescribeAccessPoints](https://help.aliyun.com/document_detail/36062.html) operation to obtain the IDs of access points.
+	// You can call the [DescribeAccessPoints](https://help.aliyun.com/document_detail/36062.html) operation to query the access point ID of the Express Connect circuit.
 	//
-	// >  This parameter is required if the VBR is connected to an Express Connect circuit.
+	//
+	//
+	// > This parameter is required in Express Connect circuit scenarios.
 	//
 	// example:
 	//
@@ -82,11 +84,13 @@ type CreateRouterInterfaceRequest struct {
 	AccessPointId *string `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
 	// Specifies whether to enable automatic payment. Valid values:
 	//
-	// 	- **false*	- (default): The automatic payment is disabled. If you select this option, you must go to the Order Center to complete the payment after an order is generated.
 	//
-	// 	- **true**: The automatic payment is enabled. Payments are automatically complete after an order is generated.
 	//
-	// >  This parameter is required if **InstanceChargeType*	- is set to **PrePaid**.
+	// - **false*	- (default): Automatic payment is disabled. After an order is generated, go to the Order Center to complete the payment.
+	//
+	// - **true**: Automatic payment is enabled. The order is automatically paid.
+	//
+	// > This parameter is required when **InstanceChargeType*	- is set to **PrePaid**.
 	//
 	// example:
 	//
@@ -94,9 +98,9 @@ type CreateRouterInterfaceRequest struct {
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// Specifies whether to enable auto-renewal. Valid values:
 	//
-	// 	- **false*	- (default)
+	// - **false*	- (default): Auto-renewal is disabled.
 	//
-	// 	- **true**
+	// - **true**: Auto-renewal is enabled.
 	//
 	// example:
 	//
@@ -104,9 +108,9 @@ type CreateRouterInterfaceRequest struct {
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+	// The client generates the value of this parameter. Ensure that the value is unique among different requests.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	// > If you do not specify this parameter, the system uses the RequestId of the API request as the ClientToken. The RequestId may be different for each API request.
 	//
 	// example:
 	//
@@ -114,39 +118,37 @@ type CreateRouterInterfaceRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the router interface.
 	//
-	// The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+	// The description must be 2 to 256 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// abcabc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether the VBR that is created in the Fast Link mode is uplinked to the router interface. The Fast Link mode helps automatically connect router interfaces that are created for the VBR and its peer VPC. Valid values:
+	// Specifies whether the router interface on the VBR is created in fast link mode. Fast link mode allows the router interfaces on the VBR and VPC to be automatically connected after they are created. Valid values:
 	//
-	// 	- **true**
+	// - **true**: yes.
 	//
-	// 	- **false**
+	// - **false*	- (default): no.
 	//
-	// >
+	// > - This parameter takes effect only when **RouterType*	- is set to **VBR*	- and **OppositeRouterType*	- is set to **VRouter**.
 	//
-	// 	- This parameter takes effect only if **RouterType*	- is set to **VBR*	- and **OppositeRouterType*	- is set to **VRouter**.
-	//
-	// 	- If **FastLinkMode*	- is set to **true**, **Role*	- must be set to **InitiatingSide**. In this case, **AccessPointId**, **OppositeRouterType**, **OpppsiteRouterId**, and **OppositeInterfaceOwnerId*	- are required.
+	// > - When **FastLinkMode*	- is set to **true**, **Role*	- must be set to **InitiatingSide**, and **AccessPointId**, **OppositeRouterType**, **OppositeRouterId**, and **OppositeInterfaceOwnerId*	- are required.
 	//
 	// example:
 	//
 	// false
 	FastLinkMode *bool `json:"FastLinkMode,omitempty" xml:"FastLinkMode,omitempty"`
-	// The source IP address that is used to perform health checks. The source IP address must be an idle IP address of the local virtual private cloud (VPC).
+	// The source IP address for health checks. The IP address must be an unused IP address in the local VPC.
 	//
-	// >  You can set this parameter when an Express Connect circuit is used.
+	// > You can specify this parameter in Express Connect circuit scenarios.
 	//
 	// example:
 	//
 	// 192.168.0.6
 	HealthCheckSourceIp *string `json:"HealthCheckSourceIp,omitempty" xml:"HealthCheckSourceIp,omitempty"`
-	// The destination IP address that is used to perform health checks.
+	// The destination IP address for health checks.
 	//
-	// >  This parameter is required if you specify **HealthCheckSourceIp**
+	// > This parameter is required when **HealthCheckSourceIp*	- is specified.
 	//
 	// example:
 	//
@@ -154,9 +156,9 @@ type CreateRouterInterfaceRequest struct {
 	HealthCheckTargetIp *string `json:"HealthCheckTargetIp,omitempty" xml:"HealthCheckTargetIp,omitempty"`
 	// The billing method of the router interface. Valid values:
 	//
-	// 	- **PrePaid**: subscription
+	// - **PrePaid**: subscription.
 	//
-	// 	- **PostPaid**: pay-as-you-go
+	// - **PostPaid**: pay-as-you-go.
 	//
 	// example:
 	//
@@ -164,7 +166,7 @@ type CreateRouterInterfaceRequest struct {
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
 	// The name of the router interface.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+	// The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
@@ -172,7 +174,7 @@ type CreateRouterInterfaceRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the access point to which the peer belongs.
 	//
-	// >  This parameter is required if the peer router interface is associated with a VBR. The specified value cannot be changed after the router interface is created.
+	// > This parameter is required when the peer router interface is on a VBR. This parameter cannot be modified after the router interface is created.
 	//
 	// example:
 	//
@@ -184,13 +186,13 @@ type CreateRouterInterfaceRequest struct {
 	//
 	// ri-2zeo3xzyf38r4urzd****
 	OppositeInterfaceId *string `json:"OppositeInterfaceId,omitempty" xml:"OppositeInterfaceId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the peer router interface belongs.
+	// The Alibaba Cloud account ID of the owner of the peer router interface.
 	//
 	// example:
 	//
 	// 253460731706911258
 	OppositeInterfaceOwnerId *string `json:"OppositeInterfaceOwnerId,omitempty" xml:"OppositeInterfaceOwnerId,omitempty"`
-	// The ID of the region in which the acceptor is deployed.
+	// The region ID of the accepter.
 	//
 	// This parameter is required.
 	//
@@ -204,11 +206,11 @@ type CreateRouterInterfaceRequest struct {
 	//
 	// vrt-bp1lhl0taikrteen8****
 	OppositeRouterId *string `json:"OppositeRouterId,omitempty" xml:"OppositeRouterId,omitempty"`
-	// The type of router that is associated with the peer router interface. Valid values:
+	// The type of the router associated with the peer router interface. Valid values:
 	//
-	// 	- **VRouter**
+	// - **VRouter**: vRouter.
 	//
-	// 	- **VBR**
+	// - **VBR**: Virtual Border Router.
 	//
 	// example:
 	//
@@ -218,11 +220,11 @@ type CreateRouterInterfaceRequest struct {
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The subscription duration. Valid values:
 	//
-	// 	- Valid values when PricingCycle is set to Month: **1 to 9**.
+	// - If you select monthly billing, the valid values are **1*	- to **9**.
 	//
-	// 	- Valid values when PricingCycle is set to Year: **1 to 3**.
+	// - If you select yearly billing, the valid values are **1*	- to **3**.
 	//
-	// >  This parameter is required if **InstanceChargeType*	- is set to **PrePaid**.
+	// > This parameter is required when **InstanceChargeType*	- is set to **PrePaid**.
 	//
 	// example:
 	//
@@ -230,19 +232,19 @@ type CreateRouterInterfaceRequest struct {
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The billing cycle of the subscription. Valid values:
 	//
-	// 	- **Month*	- (default)
+	// - **Month*	- (default): monthly billing.
 	//
-	// 	- **Year**
+	// - **Year**: yearly billing.
 	//
-	// >  This parameter is required if **InstanceChargeType*	- is set to **PrePaid**.
+	// > This parameter is required when **InstanceChargeType*	- is set to **PrePaid**.
 	//
 	// example:
 	//
 	// Month
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	// The ID of the region to which the router interface belongs.
+	// The region ID of the router interface.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -250,9 +252,9 @@ type CreateRouterInterfaceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
-	// For more information about resource group, see [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html)
+	// For more information about resource groups, see [What is a resource group?](https://help.aliyun.com/document_detail/2381067.html).
 	//
 	// example:
 	//
@@ -262,9 +264,11 @@ type CreateRouterInterfaceRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The role of the router interface. Valid values:
 	//
-	// 	- **InitiatingSide**: requester
 	//
-	// 	- **AcceptingSide**: acceptor
+	//
+	// - **InitiatingSide**: requester.
+	//
+	// - **AcceptingSide**: accepter.
 	//
 	// This parameter is required.
 	//
@@ -272,7 +276,7 @@ type CreateRouterInterfaceRequest struct {
 	//
 	// InitiatingSide
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The ID of the router that is associated with the router interface.
+	// The ID of the router associated with the router interface.
 	//
 	// This parameter is required.
 	//
@@ -280,11 +284,11 @@ type CreateRouterInterfaceRequest struct {
 	//
 	// vbr-m5ebm6g9ptc9mly1c****
 	RouterId *string `json:"RouterId,omitempty" xml:"RouterId,omitempty"`
-	// The type of router that is associated with the router interface. Valid values:
+	// The type of the router associated with the router interface. Valid values:
 	//
-	// 	- **VRouter**
+	// - **VRouter**: vRouter.
 	//
-	// 	- **VBR**
+	// - **VBR**: Virtual Border Router.
 	//
 	// This parameter is required.
 	//
@@ -292,33 +296,37 @@ type CreateRouterInterfaceRequest struct {
 	//
 	// VRouter
 	RouterType *string `json:"RouterType,omitempty" xml:"RouterType,omitempty"`
-	// The specification of the router interface and the corresponding bandwidth. Valid values:
+	// The specification of the router interface. The available specifications and corresponding bandwidth values are as follows:
 	//
-	// 	- **Mini.2**: 2 Mbit/s
 	//
-	// 	- **Mini.5**: 5 Mbit/s
 	//
-	// 	- **Small.1**: 10 Mbit/s
+	// - **Mini.2**: 2 Mbps
 	//
-	// 	- **Small.2**: 20 Mbit/s
+	// - **Mini.5**: 5 Mbps
 	//
-	// 	- **Small.5**: 50 Mbit/s
+	// - **Small.1**: 10 Mbps
 	//
-	// 	- **Middle.1**: 100 Mbit/s
+	// - **Small.2**: 20 Mbps
 	//
-	// 	- **Middle.2**: 200 Mbit/s
 	//
-	// 	- **Middle.5**: 500 Mbit/s
 	//
-	// 	- **Large.1**: 1,000 Mbit/s
+	// - **Small.5**: 50 Mbps
 	//
-	// 	- **Large.2**: 2,000 Mbit/s
+	// - **Middle.1**: 100 Mbps
 	//
-	// 	- **Large.5**: 5,000 Mbit/s
+	// - **Middle.2**: 200 Mbps
 	//
-	// 	- **Xlarge.1**: 10,000 Mbit/s
+	// - **Middle.5**: 500 Mbps
 	//
-	// >  If **Role*	- is set to **AcceptingSide**, set **Spec*	- to **Negative**. This indicates that you do not need to specify the specification when you create an acceptor router interface.
+	// - **Large.1**: 1000 Mbps
+	//
+	// - **Large.2**: 2000 Mbps
+	//
+	// - **Large.5**: 5000 Mbps
+	//
+	// - **Xlarge.1**: 10000 Mbps
+	//
+	// > When **Role*	- is set to **AcceptingSide*	- (accepter), set **Spec*	- to **Negative**. No specification is required when you create an accepter router interface.
 	//
 	// This parameter is required.
 	//
@@ -326,7 +334,7 @@ type CreateRouterInterfaceRequest struct {
 	//
 	// Mini.2
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The tag to add to the resource.
+	// The tags of the resource.
 	Tags []*CreateRouterInterfaceRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -613,17 +621,17 @@ func (s *CreateRouterInterfaceRequest) Validate() error {
 }
 
 type CreateRouterInterfaceRequestTags struct {
-	// The tag key to add to the resource. You must enter at least one tag key. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	// The tag key of the resource. You must specify at least 1 and can specify at most 20 tag keys. The tag key cannot be an empty string.
 	//
-	// A tag key can be at most 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// A tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value to add to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+	// The tag value of the resource. You can specify at most 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

@@ -24,37 +24,37 @@ type iListIpsecServerLogsResponseBody interface {
 }
 
 type ListIpsecServerLogsResponseBody struct {
-	// The number of entries on the current page.
+	// The number of log entries on the current page.
 	//
 	// example:
 	//
 	// 10
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// Log information list.
+	// The list of log entries.
 	Data []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Indicates whether the log is accurate. Valid values:
+	// Indicates whether the queried logs are accurate. Valid values:
 	//
-	// 	- **true**: accurate
+	// - **true**: Accurate.
 	//
-	// 	- **false**: inaccurate
+	// - **false**: Not accurate.
 	//
 	// example:
 	//
 	// true
 	IsCompleted *bool `json:"IsCompleted,omitempty" xml:"IsCompleted,omitempty"`
-	// The page number of the returned page.
+	// The page number of the list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page for paging.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

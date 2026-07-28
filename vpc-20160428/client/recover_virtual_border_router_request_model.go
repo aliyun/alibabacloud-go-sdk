@@ -28,7 +28,7 @@ type iRecoverVirtualBorderRouterRequest interface {
 type RecoverVirtualBorderRouterRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client generates the value. The value must be unique among different requests and cannot exceed 64 ASCII characters in length.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type RecoverVirtualBorderRouterRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the VBR.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type RecoverVirtualBorderRouterRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the VBR.
+	// The VBR instance ID.
 	//
 	// This parameter is required.
 	//

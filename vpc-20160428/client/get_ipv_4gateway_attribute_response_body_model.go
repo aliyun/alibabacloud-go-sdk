@@ -42,33 +42,33 @@ type GetIpv4GatewayAttributeResponseBody struct {
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// Indicates whether the IPv4 gateway is activated. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The IPv4 gateway is activated.
 	//
-	// 	- **false**
+	// - **false**: The IPv4 gateway is not activated.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The description of the IPv4 gateway.
+	// The description of the IPv4 gateway instance.
 	//
 	// example:
 	//
 	// new
 	Ipv4GatewayDescription *string `json:"Ipv4GatewayDescription,omitempty" xml:"Ipv4GatewayDescription,omitempty"`
-	// The ID of the IPv4 gateway.
+	// The instance ID of the IPv4 gateway.
 	//
 	// example:
 	//
 	// ipv4gw-5tsnc6s4ogsedtp3k****
 	Ipv4GatewayId *string `json:"Ipv4GatewayId,omitempty" xml:"Ipv4GatewayId,omitempty"`
-	// The name of the IPv4 gateway.
+	// The name of the IPv4 gateway instance.
 	//
 	// example:
 	//
 	// name
 	Ipv4GatewayName *string `json:"Ipv4GatewayName,omitempty" xml:"Ipv4GatewayName,omitempty"`
-	// The ID of the route table associated with the IPv4 gateway.
+	// The ID of the route table associated with the IPv4 gateway instance.
 	//
 	// example:
 	//
@@ -86,19 +86,19 @@ type GetIpv4GatewayAttributeResponseBody struct {
 	//
 	// rg-bp67acfmxazb4ph****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The status of the IPv4 gateway. Valid values:
+	// The status of the IPv4 gateway instance. Valid values:
 	//
-	// 	- **Creating**
+	// - **Creating**: The IPv4 gateway is being created.
 	//
-	// 	- **Created**
+	// - **Created**: The IPv4 gateway is created and available.
 	//
-	// 	- **Modifying**
+	// - **Modifying**: The IPv4 gateway is being modified.
 	//
-	// 	- **Deleting**
+	// - **Deleting**: The IPv4 gateway is being deleted.
 	//
-	// 	- **Deleted**
+	// - **Deleted**: The IPv4 gateway is deleted.
 	//
-	// 	- **Activating**
+	// - **Activating**: The IPv4 gateway is being activated.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type GetIpv4GatewayAttributeResponseBody struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The tag list.
 	Tags []*GetIpv4GatewayAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The ID of the VPC with which the IPv4 gateway is associated.
+	// The ID of the VPC associated with the IPv4 gateway instance.
 	//
 	// example:
 	//
@@ -235,13 +235,13 @@ func (s *GetIpv4GatewayAttributeResponseBody) Validate() error {
 }
 
 type GetIpv4GatewayAttributeResponseBodyTags struct {
-	// The key of tag N added to the resource.
+	// The tag key.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N added to the resource.
+	// The tag value.
 	//
 	// example:
 	//

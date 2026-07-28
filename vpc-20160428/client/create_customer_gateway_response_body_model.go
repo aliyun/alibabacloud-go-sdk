@@ -24,15 +24,15 @@ type iCreateCustomerGatewayResponseBody interface {
 }
 
 type CreateCustomerGatewayResponseBody struct {
-	// The timestamp generated when the customer gateway was created. Unit: milliseconds.
+	// The timestamp when the customer gateway was created. Unit: milliseconds.
 	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	// The timestamp is in the UNIX format and represents the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
 	// 1493363486000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the customer gateway.
+	// The instance ID of the customer gateway instance.
 	//
 	// example:
 	//

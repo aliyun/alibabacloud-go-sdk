@@ -30,19 +30,19 @@ type DescribeFailoverTestJobsResponseBody struct {
 	//
 	// 10
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The list of failover tests.
+	// The list of failover test jobs.
 	FailoverTestJobList []*DescribeFailoverTestJobsResponseBodyFailoverTestJobList `json:"FailoverTestJobList,omitempty" xml:"FailoverTestJobList,omitempty" type:"Repeated"`
-	// The number of entries per page. Valid values: **1 to 100**. Default value: 20.
+	// The number of entries per page for paginated queries. Valid values: **1 to 100**. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+	// The token for the next query. Valid values:
 	//
-	// 	- If no value is returned for **NextToken**, no next queries are sent.
+	// - Leave this parameter empty for the first query or if no next query exists.
 	//
-	// 	- If a value is returned for **NextToken**, the value is used to retrieve a new page of results.
+	// - If a next query exists, set this parameter to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type DescribeFailoverTestJobsResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of entries returned.
+	// The total number of entries in the list.
 	//
 	// example:
 	//
@@ -138,75 +138,75 @@ func (s *DescribeFailoverTestJobsResponseBody) Validate() error {
 }
 
 type DescribeFailoverTestJobsResponseBodyFailoverTestJobList struct {
-	// The description of the failover test.
+	// The description of the failover test job.
 	//
-	// The description must be 0 to 256 characters in length and cannot start with \\*\\*http:// **or*	- https://\\*\\*.
+	// The description is 0 to 256 characters in length and cannot start with **http://*	- or **https://**.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The duration of the failover test. Unit: minutes. Valid values: **1 to 4320**.
+	// The test duration. Unit: minutes. Valid values: **1 to 4320**.
 	//
 	// example:
 	//
 	// 60
 	JobDuration *string `json:"JobDuration,omitempty" xml:"JobDuration,omitempty"`
-	// The ID of the failover test.
+	// The failover test job ID.
 	//
 	// example:
 	//
 	// ftj-bp1yh6mvi13aq3g8w****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Indicates whether the failover test is performed immediately. Valid values:
+	// The failover test type. Valid values:
 	//
-	// 	- **StartNow**
+	// - **StartNow**: The test starts immediately after the failover test job is created.
 	//
-	// 	- **StartLater**
+	// - **StartLater**: Only the test job is created. The test is not started.
 	//
 	// example:
 	//
 	// StartNow
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The name of the failover test.
+	// The name of the failover test job.
 	//
-	// The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
+	// The name is 0 to 128 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The IDs of the failover test resources.
+	// The list of failover test resource IDs.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the failover test resource. Only **PHYSICALCONNECTION*	- is returned.
+	// The failover test resource type. Valid values: **PHYSICALCONNECTION**: Express Connect circuit.
 	//
 	// example:
 	//
 	// PHYSICALCONNECTION
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The beginning of the fault drill task. The time must be in UTC. Specify the time in the ISO 8601 standard in `YYYY-MM-DDThh:mm:ssZ` format.
+	// The start time of the failover test job. The time is displayed in UTC in the YYYY-MM-DDThh:mm:ssZ format based on the ISO 8601 standard.
 	//
 	// example:
 	//
 	// 2023-11-21T14:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the failover test. Valid values:
+	// The status of the failover test job. Valid values:
 	//
-	// 	- **Init**
+	// - **Init**: Pending.
 	//
-	// 	- **Starting**
+	// - **Starting**: Starting.
 	//
-	// 	- **Testing**
+	// - **Testing**: In progress.
 	//
-	// 	- **Stopping**
+	// - **Stopping**: Stopping.
 	//
-	// 	- **Stopped**
+	// - **Stopped**: Completed.
 	//
 	// example:
 	//
 	// Init
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The end of the fault drill task. The time must be in UTC. Specify the time in the ISO 8601 standard in `YYYY-MM-DDThh:mm:ssZ` format.
+	// The end time of the failover test job. The time is displayed in UTC in the YYYY-MM-DDThh:mm:ssZ format based on the ISO 8601 standard.
 	//
 	// example:
 	//

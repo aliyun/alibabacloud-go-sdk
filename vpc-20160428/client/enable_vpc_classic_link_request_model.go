@@ -28,9 +28,9 @@ type iEnableVpcClassicLinkRequest interface {
 type EnableVpcClassicLinkRequest struct {
   // The client token that is used to ensure the idempotence of the request.
   // 
-  // You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+  // You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
   // 
-  // >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+  // > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request may be different.
   // 
   // example:
   // 
@@ -40,7 +40,7 @@ type EnableVpcClassicLinkRequest struct {
   OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
   // The region ID of the VPC for which you want to enable ClassicLink.
   // 
-  // You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+  // You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
   // 
   // This parameter is required.
   // 
@@ -50,7 +50,7 @@ type EnableVpcClassicLinkRequest struct {
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
   ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
   ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-  // The ID of the VPC.
+  // The ID of the VPC for which you want to enable ClassicLink.
   // 
   // This parameter is required.
   // 

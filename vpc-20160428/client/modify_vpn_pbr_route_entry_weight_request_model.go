@@ -44,7 +44,7 @@ type ModifyVpnPbrRouteEntryWeightRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- value as the **ClientToken*	- value. The **RequestId*	- of each API request is different.
 	//
 	// example:
 	//
@@ -52,9 +52,9 @@ type ModifyVpnPbrRouteEntryWeightRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The new weight of the policy-based route. Valid values:
 	//
-	// 	- **100**: The IPsec-VPN connection associated with the policy-based route serves as an active connection.
+	// - **100**: The IPsec-VPN connection associated with the policy-based route serves as the active connection.
 	//
-	// 	- **0**: The IPsec-VPN connection associated with the policy-based route serves as a standby connection.
+	// - **0**: The IPsec-VPN connection associated with the policy-based route serves as the standby connection.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ type ModifyVpnPbrRouteEntryWeightRequest struct {
 	//
 	// vco-bp15oes1py4i66rmd****
 	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
-	// The tunneling protocol. The value is set to **Ipsec**, which indicates the IPsec tunneling protocol.
+	// The tunneling protocol. Set the value to **Ipsec*	- (IPsec tunneling protocol).
 	//
 	// example:
 	//
@@ -78,19 +78,21 @@ type ModifyVpnPbrRouteEntryWeightRequest struct {
 	OverlayMode  *string `json:"OverlayMode,omitempty" xml:"OverlayMode,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The priority of the policy-based route.
+	// Policy priority of the policy-based route.
 	//
-	// 	- If the route was not assigned a priority, this parameter is optional.
+	// - If no priority was previously configured for the policy-based route, you do not need to specify this parameter.
 	//
-	// 	- If the route was assigned a priority, this parameter is optional.
+	// - If a priority was previously configured for the policy-based route, this parameter is optional.
 	//
-	//         If you specify this parameter, set the value to the priority that was assigned to the policy-based route. Otherwise, the operation fails.
+	//
+	//
+	//    If you specify this parameter, enter policy priority that was previously configured for the policy-based route. If you enter a different value, the operation fails.
 	//
 	// example:
 	//
 	// 10
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The ID of the region where the VPN gateway is created. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// The region ID of the VPN gateway instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -116,7 +118,7 @@ type ModifyVpnPbrRouteEntryWeightRequest struct {
 	//
 	// 192.168.1.0/24
 	RouteSource *string `json:"RouteSource,omitempty" xml:"RouteSource,omitempty"`
-	// The ID of the VPN gateway.
+	// The instance ID of the VPN gateway.
 	//
 	// This parameter is required.
 	//
@@ -126,9 +128,9 @@ type ModifyVpnPbrRouteEntryWeightRequest struct {
 	VpnGatewayId *string `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
 	// The original weight of the policy-based route. Valid values:
 	//
-	// 	- **100**: The IPsec-VPN connection associated with the policy-based route serves as an active connection.
+	// - **100**: The IPsec-VPN connection associated with the policy-based route serves as the active connection.
 	//
-	// 	- **0**: The IPsec-VPN connection associated with the policy-based route serves as a standby connection.
+	// - **0**: The IPsec-VPN connection associated with the policy-based route serves as the standby connection.
 	//
 	// This parameter is required.
 	//

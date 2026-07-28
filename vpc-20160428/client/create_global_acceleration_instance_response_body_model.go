@@ -18,13 +18,13 @@ type iCreateGlobalAccelerationInstanceResponseBody interface {
 }
 
 type CreateGlobalAccelerationInstanceResponseBody struct {
-	// The ID of the GA instance.
+	// The ID of the Alibaba Cloud Global Accelerator (GA) instance.
 	//
 	// example:
 	//
 	// ga-bp1fi6sq7npnicmjj****
 	GlobalAccelerationInstanceId *string `json:"GlobalAccelerationInstanceId,omitempty" xml:"GlobalAccelerationInstanceId,omitempty"`
-	// The public IP address of the GA instance.
+	// The public IP address of the Alibaba Cloud Global Accelerator (GA) instance.
 	//
 	// If **BandwidthType*	- is set to **Sharing**, this parameter is not returned.
 	//

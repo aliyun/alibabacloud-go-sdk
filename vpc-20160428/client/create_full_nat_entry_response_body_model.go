@@ -16,7 +16,7 @@ type iCreateFullNatEntryResponseBody interface {
 }
 
 type CreateFullNatEntryResponseBody struct {
-	// The FULLNAT entry ID.
+	// The ID of the FULLNAT entry.
 	//
 	// example:
 	//

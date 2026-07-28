@@ -26,37 +26,33 @@ type iUpdateVirtualPhysicalConnectionRequest interface {
 type UpdateVirtualPhysicalConnectionRequest struct {
 	// Specifies whether to perform a dry run. Valid values:
 	//
-	// - **true**: Performs a dry run to check for required parameters, the request format, and the instance status. The VLAN ID of the virtual physical connection is not modified. If the check fails, an error message is returned. If it passes, the request ID is returned.
+	// - **true**: performs a dry run without modifying the VLAN ID of the shared Express Connect circuit. The system checks whether required parameters are specified, whether the request format is valid, and whether the instance status is valid. If the check fails, the corresponding error is returned. If the check succeeds, the corresponding request ID is returned.
 	//
-	// - **false*	- (default): Sends the request. If the check passes, the VLAN ID of the virtual physical connection is modified.
+	// - **false*	- (default): sends a normal request. After the request passes the check, the VLAN ID of the shared Express Connect circuit is modified.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The expected bandwidth of the virtual physical connection. The new bandwidth takes effect only after the payment is complete.
+	// The expected bandwidth value of the shared Express Connect circuit. The bandwidth value takes effect only after payment is completed.
 	//
 	// Valid values: **50M**, **100M**, **200M**, **300M**, **400M**, **500M**, **1G**, **2G**, **5G**, **8G**, and **10G**.
 	//
 	// <props="china">
 	//
-	// > Bandwidth settings of **2G**, **5G**, **8G**, and **10G*	- are not enabled by default. To use these settings, contact your account manager.
-	//
-	//
+	// > The bandwidth values **2G**, **5G**, **8G**, and **10G*	- are not available by default. To use these values, contact your account manager.
 	//
 	// <props="intl">
 	//
-	// > Bandwidth settings of **2G**, **5G**, **8G**, and **10G*	- are not enabled by default. To use these settings, contact your account manager.
+	// > The bandwidth values **2G**, **5G**, **8G**, and **10G*	- are not available by default. To use these values, contact your account manager.
 	//
-	//
-	//
-	// Units: **M*	- indicates Mbps and **G*	- indicates Gbps.
+	// Unit: **M*	- indicates Mbit/s and **G*	- indicates Gbit/s.
 	//
 	// example:
 	//
 	// 50M
 	ExpectSpec *string `json:"ExpectSpec,omitempty" xml:"ExpectSpec,omitempty"`
-	// The ID of the virtual physical connection instance.
+	// The instance ID of the shared Express Connect circuit.
 	//
 	// This parameter is required.
 	//
@@ -64,9 +60,9 @@ type UpdateVirtualPhysicalConnectionRequest struct {
 	//
 	// pc-bp1mrgfbtmc9brre7****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the region where the virtual physical connection is deployed.
+	// The region ID of the shared Express Connect circuit.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain region IDs.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -74,21 +70,21 @@ type UpdateVirtualPhysicalConnectionRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The client token that ensures the idempotence of the request.
+	// The client token that is used to ensure the idempotence of the request.
 	//
-	// A client-generated value that must be unique across requests. The client token can contain only ASCII characters.
+	// Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the request as the **ClientToken**. The **RequestId*	- is different for each request.
+	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request may be different.
 	//
 	// example:
 	//
 	// CBCE910E-D396-4944-8****
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	// The VLAN ID of the virtual physical connection. Valid values: **0*	- to **2999**.
+	// The VLAN ID of the shared Express Connect circuit. Valid values: **0*	- to **2999**.
 	//
-	// - If you set the VLAN ID to **0**, the physical switch port of the Virtual Border Router (VBR) operates in Layer 3 routed interface mode. In this mode, one physical connection corresponds to one VBR.
+	// - If the VLAN ID is **0**, the physical vSwitch port of the Virtual Border Router (VBR) does not use VLAN mode but uses Layer 3 vRouter interface mode. In Layer 3 vRouter interface mode, each Express Connect circuit corresponds to one VBR.
 	//
-	// - If you set the VLAN ID to a value from **1*	- to **2999**, the physical switch port of the VBR uses a VLAN-based Layer 3 subinterface. In this mode, each VLAN ID corresponds to one VBR. The physical connection can be attached to VPCs that belong to different accounts. VBRs in different VLANs are isolated at Layer 2 and cannot communicate with each other.
+	// - If the VLAN ID is **1*	- to **2999**, the physical vSwitch port of the VBR uses VLAN-based Layer 3 subinterfaces. In Layer 3 subinterface mode, each VLAN ID corresponds to one VBR. In this case, the Express Connect circuit of the VBR can connect to VPCs under multiple accounts. VBRs in different VLANs have network isolation at Layer 2 and cannot communicate with each other.
 	//
 	// This parameter is required.
 	//

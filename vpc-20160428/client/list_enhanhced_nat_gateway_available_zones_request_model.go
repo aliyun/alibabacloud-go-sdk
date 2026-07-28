@@ -26,25 +26,25 @@ type iListEnhanhcedNatGatewayAvailableZonesRequest interface {
 }
 
 type ListEnhanhcedNatGatewayAvailableZonesRequest struct {
-	// The language to display the results. Valid values:
+	// The language of the response. Valid values:
 	//
-	// 	- **zh-CN*	- (default): Chinese
+	// - **zh-CN*	- (default): Chinese.
 	//
-	// 	- **en-US**: English
+	// - **en-US**: English.
 	//
 	// example:
 	//
 	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The filter information. You can specify a filter key and a filter value.
+	// The filter information. You can specify key-value pairs to filter the query results.
 	Filter       []*ListEnhanhcedNatGatewayAvailableZonesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
 	OwnerAccount *string                                               `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64                                                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region that you want to query.
+	// The ID of the region to query.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
 	//
-	// In this example, zones that support NAT gateways in the UAE (Dubai) region are queried.
+	// This example queries the zones available for NAT gateway resources in the UAE (Dubai) region.
 	//
 	// This parameter is required.
 	//
@@ -141,15 +141,15 @@ func (s *ListEnhanhcedNatGatewayAvailableZonesRequest) Validate() error {
 }
 
 type ListEnhanhcedNatGatewayAvailableZonesRequestFilter struct {
-	// The filter key. Only **PrivateLinkEnabled*	- is supported.
+	// The filter condition. Currently, only **PrivateLinkEnabled*	- is supported.
 	//
 	// example:
 	//
 	// PrivateLinkEnabled
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the filter key.
+	// The filter value that corresponds to the filter condition.
 	//
-	// >  If the filter key is set to **PrivateLinkEnabled**, you must specify a filter value. Valid values: **true*	- and **false**.
+	// > If the filter condition is **PrivateLinkEnabled**, you must specify a filter value. Valid values: **true*	- and **false**.
 	//
 	// example:
 	//

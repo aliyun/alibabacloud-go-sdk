@@ -36,41 +36,43 @@ type iListVirtualPhysicalConnectionsRequest interface {
 }
 
 type ListVirtualPhysicalConnectionsRequest struct {
-	// Indicates whether the tenant has accepted the virtual physical connection. Valid values:
+	// Indicates whether the shared Express Connect circuits have been confirmed and accepted by the tenant. Valid values:
 	//
-	// - **true**: The connection has been accepted.
+	// - **true**: Yes.
 	//
-	// - **false**: The connection has not been accepted.
+	// - **false**: No.
 	//
 	// example:
 	//
 	// true
 	IsConfirmed *bool `json:"IsConfirmed,omitempty" xml:"IsConfirmed,omitempty"`
-	// The number of entries to return per page. Valid values: **1*	- to **100**. Default value: **20**.
+	// The number of entries per page when you query results by page. Valid values: **1*	- to **100**. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token used to retrieve the next page of results. Valid values:
+	// Specifies whether a next query token is available. Valid values:
 	//
-	// - Leave this parameter empty for the first request.
+	// - You do not need to specify this parameter for the first query or if no next query is available.
 	//
-	// - For subsequent requests, set this parameter to the `NextToken` value returned from the previous request.
+	// - If a next query is available, set this parameter to the NextToken value returned in the previous API call.
 	//
 	// example:
 	//
 	// dd20****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the physical connection associated with the virtual physical connection.
+	// The ID of the Express Connect circuit associated with the shared Express Connect circuits.
+	//
+	// In the following content of this topic, the Express Connect circuit associated with the shared Express Connect circuits is referred to as the Express Connect circuit, to distinguish it from the shared Express Connect circuits.
 	//
 	// example:
 	//
 	// pc-bp1ciz7ekd2grn1as****
 	PhysicalConnectionId *string `json:"PhysicalConnectionId,omitempty" xml:"PhysicalConnectionId,omitempty"`
-	// The ID of the region where the virtual physical connection is located.
+	// The region ID of the shared Express Connect circuits.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the latest list of regions.
+	// You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -78,45 +80,45 @@ type ListVirtualPhysicalConnectionsRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the virtual physical connection belongs.
+	// The ID of the resource group to which the shared Express Connect circuits belong.
 	//
 	// example:
 	//
 	// rg-acfmxazb4p****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The list of tags.
+	// The tag list.
 	Tags []*ListVirtualPhysicalConnectionsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The Alibaba Cloud accounts that own the virtual physical connections.
+	// The Alibaba Cloud account information of the shared Express Connect circuits owner.
 	//
 	// example:
 	//
 	// 189xxx
 	VirtualPhysicalConnectionAliUids []*string `json:"VirtualPhysicalConnectionAliUids,omitempty" xml:"VirtualPhysicalConnectionAliUids,omitempty" type:"Repeated"`
-	// The business status of the virtual physical connection. Valid values:
+	// The business status of the shared Express Connect circuits. Valid values:
 	//
-	// - **Normal**: The connection is operating normally.
+	// - **Normal**: Normal.
 	//
-	// - **FinancialLocked**: The connection is locked due to an overdue payment.
+	// - **FinancialLocked**: financial lock.
 	//
-	// - **SecurityLocked**: The connection is locked for security reasons.
+	// - **SecurityLocked**: Locked for security reasons.
 	//
 	// example:
 	//
 	// Normal
 	VirtualPhysicalConnectionBusinessStatus *string `json:"VirtualPhysicalConnectionBusinessStatus,omitempty" xml:"VirtualPhysicalConnectionBusinessStatus,omitempty"`
-	// The IDs of the virtual physical connections.
+	// The shared Express Connect circuits information.
 	//
 	// example:
 	//
 	// pc-xxx
 	VirtualPhysicalConnectionIds []*string `json:"VirtualPhysicalConnectionIds,omitempty" xml:"VirtualPhysicalConnectionIds,omitempty" type:"Repeated"`
-	// The business statuses of the virtual physical connections.
+	// The business status information of the shared Express Connect circuits.
 	//
 	// example:
 	//
 	// pc-xxx
 	VirtualPhysicalConnectionStatuses []*string `json:"VirtualPhysicalConnectionStatuses,omitempty" xml:"VirtualPhysicalConnectionStatuses,omitempty" type:"Repeated"`
-	// The VLAN IDs of the virtual physical connections.
+	// The VLAN ID of the shared Express Connect circuits.
 	//
 	// example:
 	//
@@ -254,17 +256,17 @@ func (s *ListVirtualPhysicalConnectionsRequest) Validate() error {
 }
 
 type ListVirtualPhysicalConnectionsRequestTags struct {
-	// The key of the tag. You can specify up to 20 tags. The tag key cannot be an empty string.
+	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The key can be up to 64 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	// The tag key can be up to 64 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The tag key cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag. You can specify up to 20 tags. The tag value can be an empty string.
+	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// The value can be up to 128 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The tag value cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

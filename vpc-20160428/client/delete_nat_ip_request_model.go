@@ -34,9 +34,9 @@ type iDeleteNatIpRequest interface {
 type DeleteNatIpRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system uses the **RequestId*	- as the **ClientToken**. The **RequestId*	- may differ for each API request.
+	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may differ for each API request.
 	//
 	// example:
 	//
@@ -46,13 +46,13 @@ type DeleteNatIpRequest struct {
 	//
 	// - **true**: performs a dry run without deleting the NAT IP address. The system checks the AccessKey pair, the authorization of the Resource Access Management (RAM) user, and the required parameters. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
 	//
-	// - **false*	- (default): sends a Normal request. After the request passes the check, a 2xx HTTP status code is returned and the NAT IP address is deleted.
+	// - **false*	- (default): sends a Normal request. After the check succeeds, a 2xx HTTP status code is returned and the NAT IP address is deleted.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The IP prefix to delete.
+	// The IP prefix address to delete.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type DeleteNatIpRequest struct {
 	//
 	// ngw-gw8v16wgvtq26vh59****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The instance ID of the NAT IP address that you want to delete.
+	// The instance ID of the NAT IP address to delete.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type DeleteNatIpRequest struct {
 	NatIpId      *string `json:"NatIpId,omitempty" xml:"NatIpId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the NAT gateway to which the NAT IP address belongs.
+	// The region ID of the NAT gateway instance to which the NAT IP address belongs.
 	//
 	// You can call [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) to query the region ID.
 	//

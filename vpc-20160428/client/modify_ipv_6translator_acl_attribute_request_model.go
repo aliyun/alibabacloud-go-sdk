@@ -28,7 +28,7 @@ type iModifyIPv6TranslatorAclAttributeRequest interface {
 }
 
 type ModifyIPv6TranslatorAclAttributeRequest struct {
-	// The ID of the ACL that you want to modify.
+	// The ID of the access control policy group to modify.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type ModifyIPv6TranslatorAclAttributeRequest struct {
 	//
 	// ipv6transacl-bp1de2****
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The name of the ACL.
+	// The name of the access control policy group.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type ModifyIPv6TranslatorAclAttributeRequest struct {
 	AclName *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// Generate a parameter value from your client to ensure that the value is unique among different requests. ClientToken supports only ASCII characters.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type ModifyIPv6TranslatorAclAttributeRequest struct {
 	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region of the IPv6 Translation Service instance. You can call the DescribeRegions operation to query the most recent region list.
+	// The region of the IPv6 Translation Service instance. You can call the DescribeRegions operation to query region IDs.
 	//
 	// This parameter is required.
 	//

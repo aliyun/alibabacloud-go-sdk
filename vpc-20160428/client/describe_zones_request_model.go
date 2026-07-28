@@ -26,13 +26,13 @@ type iDescribeZonesRequest interface {
 }
 
 type DescribeZonesRequest struct {
-	// The language used in the **LocalName*	- parameter. Valid values:
+	// The display language of the zone name **LocalName*	- in the response. Valid values:
 	//
-	// 	- **zh-cn**: Chinese
+	// - **zh-cn**: Chinese.
 	//
-	// 	- **en-us**: English
+	// - **en-us**: English.
 	//
-	// 	- **ja**: Japanese
+	// - **ja**: Japanese.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type DescribeZonesRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the zone. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// The ID of the region where the zones reside. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type DescribeZonesRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The zone type. Default value: **AvailabilityZone**.
+	// The type of zones to query. Default value: **AvailabilityZone**, which indicates a standard cloud zone.
 	//
 	// example:
 	//

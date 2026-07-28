@@ -28,7 +28,7 @@ type iDescribeIPv6TranslatorAclListAttributesRequest interface {
 }
 
 type DescribeIPv6TranslatorAclListAttributesRequest struct {
-	// The ACL ID.
+	// The ID of the access control policy group.
 	//
 	// This parameter is required.
 	//
@@ -38,19 +38,19 @@ type DescribeIPv6TranslatorAclListAttributesRequest struct {
 	AclId        *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page when paging is used. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region of the ACL.
+	// The region of the access control policy group.
 	//
 	// This parameter is required.
 	//

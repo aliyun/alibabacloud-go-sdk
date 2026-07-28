@@ -22,13 +22,13 @@ type iDiagnoseVpnConnectionsResponseBody interface {
 }
 
 type DiagnoseVpnConnectionsResponseBody struct {
-	// The page number.
+	// The page number of the list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page in a paged query.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type DiagnoseVpnConnectionsResponseBody struct {
 	//
 	// B8094E1E-935B-1397-96A8-4F87A5D1BF29
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of entries returned.
+	// The total number of entries in the list.
 	//
 	// example:
 	//
 	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The diagnostic information.
+	// The diagnostic information list of IPsec-VPN connections.
 	VpnConnections []*DiagnoseVpnConnectionsResponseBodyVpnConnections `json:"VpnConnections,omitempty" xml:"VpnConnections,omitempty" type:"Repeated"`
 }
 
@@ -117,7 +117,7 @@ func (s *DiagnoseVpnConnectionsResponseBody) Validate() error {
 }
 
 type DiagnoseVpnConnectionsResponseBodyVpnConnections struct {
-	// The cause of the error.
+	// The error reason.
 	//
 	// example:
 	//
@@ -129,39 +129,39 @@ type DiagnoseVpnConnectionsResponseBodyVpnConnections struct {
 	//
 	// Phase1NegotiationTimeout
 	FailedReasonCode *string `json:"FailedReasonCode,omitempty" xml:"FailedReasonCode,omitempty"`
-	// The timestamp when the current error occurred on the IPsec-VPN connection. Unit: millisecond.
+	// The timestamp when the current error occurred on the IPsec-VPN connection. Unit: milliseconds.
 	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The timestamp is in UNIX format and represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC to the time when the current error occurred on the IPsec-VPN connection.
 	//
 	// example:
 	//
 	// 1673581161000
 	FailedTime *int64 `json:"FailedTime,omitempty" xml:"FailedTime,omitempty"`
-	// If the values of the parameters configured for the IPsec-VPN connection and the peer gateway device do not match, this parameter indicates the value of the parameters configured for the IPsec-VPN connection.
+	// The parameter value configured on the IPsec-VPN connection when the parameter values configured on the IPsec-VPN connection and the peer gateway device do not match.
 	//
 	// example:
 	//
 	// SHA256
 	MismatchLocalParam *string `json:"MismatchLocalParam,omitempty" xml:"MismatchLocalParam,omitempty"`
-	// If the parameter values configured for the IPsec-VPN connection and the peer gateway device do not match, this parameter indicates the value of the parameter configured for the peer gateway device.
+	// The parameter value configured on the peer gateway device when the parameter values configured on the IPsec-VPN connection and the peer gateway device do not match.
 	//
 	// example:
 	//
 	// SHA
 	MismatchRemoteParam *string `json:"MismatchRemoteParam,omitempty" xml:"MismatchRemoteParam,omitempty"`
-	// The error level. Valid values:
+	// The severity level of the current error.
 	//
-	// 	- **Critical**
+	// - **Critical**: Critical. Troubleshoot the issue immediately.
 	//
-	// 	- **Warn**
+	// - **Warn**: Warning. Troubleshoot the issue as soon as possible.
 	//
-	// 	- **Normal**
+	// - **Normal**: Normal.
 	//
 	// example:
 	//
 	// Warn
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	// The log information about the error.
+	// The log information related to the current error.
 	//
 	// example:
 	//

@@ -220,7 +220,7 @@ type GetVpnGatewayDiagnoseResultResponseBodyDiagnoseResult struct {
 	//
 	// - **VcoConfigConsistency**: IPsec configuration consistency.
 	//
-	// - **VcoUserInternetIpConnectivity**: public connectivity of the customer gateway.
+	// - **VcoUserInternetIpConnectivity**: public network connectivity of the customer gateway.
 	//
 	// - **VcoPrivateConnectivity**: private network connectivity.
 	//
@@ -238,55 +238,55 @@ type GetVpnGatewayDiagnoseResultResponseBodyDiagnoseResult struct {
 	//
 	// - **VpnRouteQuota**:
 	//
-	//     - **quotaName**: the ID of the destination route quota.
+	//     - **quotaName**: The destination route quota ID.
 	//
-	//     - **quantity**: the number of destination routes that the current VPN gateway instance supports.
+	//     - **quantity**: The number of destination routes that the current VPN gateway instance supports.
 	//
-	//     - **used**: the number of destination routes that have been created for the current VPN gateway instance.
+	//     - **used**: The number of destination routes that have been created for the current VPN gateway instance.
 	//
 	// - **VpnIPsecQuota**:
 	//
-	//     - **quotaName**: the ID of the IPsec-VPN connection quota.
+	//     - **quotaName**: The IPsec-VPN connection quota ID.
 	//
-	//     - **quantity**: the number of IPsec-VPN connections that the current VPN gateway instance supports.
+	//     - **quantity**: The number of IPsec-VPN connections that the current VPN gateway instance supports.
 	//
-	//     - **used**: the number of IPsec-VPN connections that have been created for the current VPN gateway instance.
+	//     - **used**: The number of IPsec-VPN connections that have been created for the current VPN gateway instance.
 	//
 	// - **VpnPbrRouteQuota**:
 	//
-	//     - **quotaName**: the ID of the policy-based route quota.
+	//     - **quotaName**: The policy-based route quota ID.
 	//
-	//     - **quantity**: the number of policy-based routes that the current VPN gateway instance supports.
+	//     - **quantity**: The number of policy-based routes that the current VPN gateway instance supports.
 	//
-	//     - **used**: the number of policy-based routes that have been created for the current VPN gateway instance.
+	//     - **used**: The number of policy-based routes that have been created for the current VPN gateway instance.
 	//
 	// - **VcoConfigConsistency**:
 	//
-	//     - **vcoLackConf**: the system cannot obtain the configuration of the peer end of the IPsec-VPN connection.
+	//     - **vcoLackConf**: The system cannot obtain the configuration of the peer end of the IPsec-VPN connection.
 	//
-	//     - **vcoRunningConf**: the configuration that has been added to the peer end of the IPsec-VPN connection.
+	//     - **vcoRunningConf**: The configuration that has been added to the peer end of the IPsec-VPN connection.
 	//
-	//     - **vcoDiffConf**: the list of configurations that are inconsistent between the local end and the peer end of the IPsec-VPN connection.
+	//     - **vcoDiffConf**: The list of configurations that are inconsistent between the local end and the peer end of the IPsec-VPN connection.
 	//
-	//     - **vcoConf**: the configuration that has been added to the local end of the IPsec-VPN connection.
+	//     - **vcoConf**: The configuration that has been added to the local end of the IPsec-VPN connection.
 	//
 	// - **VcoUserInternetIpConnectivity**:
 	//
-	//     - **targetIp**: the public IP address of the customer gateway.
+	//     - **targetIp**: The public IP address of the customer gateway.
 	//
-	//     - **rtt**: the latency when the system accesses the public IP address of the customer gateway. Unit: ms.
+	//     - **rtt**: The latency when the system accesses the public IP address of the customer gateway. Unit: ms.
 	//
-	//     - **lossRate**: the packet loss rate when the system accesses the public IP address of the customer gateway.
+	//     - **lossRate**: The packet loss rate when the system accesses the public IP address of the customer gateway.
 	//
 	// - **VcoPrivateConnectivity**:
 	//
-	//     - **targetIp**: the source IP address.
+	//     - **targetIp**: The source IP address.
 	//
-	//     - **srcIp**: the destination IP address.
+	//     - **srcIp**: The destination IP address.
 	//
-	//     - **rtt**: the latency when the source IP address accesses the destination IP address. Unit: ms.
+	//     - **rtt**: The latency when the source IP address accesses the destination IP address. Unit: ms.
 	//
-	//     - **lossRate**: the packet loss rate when the source IP address accesses the destination IP address.
+	//     - **lossRate**: The packet loss rate when the source IP address accesses the destination IP address.
 	//
 	// example:
 	//

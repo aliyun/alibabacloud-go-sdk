@@ -32,27 +32,27 @@ type iDescribeCustomerGatewayResponseBody interface {
 }
 
 type DescribeCustomerGatewayResponseBody struct {
-	// The autonomous system number (ASN) of the gateway device in the data center.
+	// The autonomous system number of the on-premises data center gateway device.
 	//
 	// example:
 	//
 	// 65535
 	Asn *int64 `json:"Asn,omitempty" xml:"Asn,omitempty"`
-	// The authentication key of the Border Gateway Protocol (BGP) routing protocol for the gateway device in the data center.
+	// The authentication key of the BGP routing protocol for the on-premises data center gateway device.
 	//
 	// example:
 	//
 	// AuthKey****
 	AuthKey *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
-	// The timestamp generated when the customer gateway was created. Unit: milliseconds.
+	// The timestamp when the customer gateway was created. Unit: milliseconds.
 	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	// The timestamp is in the UNIX format and represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC to the time when the customer gateway was created.
 	//
 	// example:
 	//
 	// 1492747187000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the customer gateway.
+	// The instance ID of the customer gateway.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type DescribeCustomerGatewayResponseBody struct {
 	//
 	// desctest
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The IP address of the gateway device in the data center.
+	// The IP address of the on-premises data center gateway device.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type DescribeCustomerGatewayResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the resource group to which the customer gateway belongs.
 	//
-	// You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource groups.
+	// You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource group information.
 	//
 	// example:
 	//

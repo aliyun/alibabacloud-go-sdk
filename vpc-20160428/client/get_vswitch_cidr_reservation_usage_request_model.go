@@ -28,17 +28,17 @@ type iGetVSwitchCidrReservationUsageRequest interface {
 }
 
 type GetVSwitchCidrReservationUsageRequest struct {
-	// The number of entries to return on each page. Valid values: **1*	- to **100**. Default value: **10**.
+	// The number of entries per page in a paged query. Valid values: **1*	- to **100**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	// The pagination token. Valid values:
 	//
-	// 	- You do not need to specify this parameter for the first request.
+	// - Leave this parameter empty for the first query or if no subsequent query is required.
 	//
-	// 	- If a value is returned for NextToken, specify the value in the next request to retrieve a new page of results.
+	// - If a subsequent query is required, set this parameter to the NextToken value returned in the previous API call.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type GetVSwitchCidrReservationUsageRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the vSwitch.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type GetVSwitchCidrReservationUsageRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the reserved CIDR block.
+	// The instance ID of the reserved CIDR block for a vSwitch that you want to query.
 	//
 	// This parameter is required.
 	//

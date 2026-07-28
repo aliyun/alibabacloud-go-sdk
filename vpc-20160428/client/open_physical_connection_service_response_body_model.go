@@ -14,7 +14,7 @@ type iOpenPhysicalConnectionServiceResponseBody interface {
 }
 
 type OpenPhysicalConnectionServiceResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

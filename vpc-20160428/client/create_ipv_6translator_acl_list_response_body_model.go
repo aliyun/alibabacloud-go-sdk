@@ -16,7 +16,7 @@ type iCreateIPv6TranslatorAclListResponseBody interface {
 }
 
 type CreateIPv6TranslatorAclListResponseBody struct {
-	// The ACL ID.
+	// The ID of the access control policy group.
 	//
 	// example:
 	//

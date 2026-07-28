@@ -26,7 +26,7 @@ type iDescribeSslVpnClientCertRequest interface {
 type DescribeSslVpnClientCertRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the SSL client certificate. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// The region ID of the SSL client certificate to query. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type DescribeSslVpnClientCertRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the SSL client certificate that you want to query.
+	// The ID of the SSL client certificate to query.
 	//
 	// This parameter is required.
 	//

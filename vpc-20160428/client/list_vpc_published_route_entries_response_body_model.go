@@ -18,23 +18,23 @@ type iListVpcPublishedRouteEntriesResponseBody interface {
 }
 
 type ListVpcPublishedRouteEntriesResponseBody struct {
-	// Indicates whether there is a token for the next query. Values:
+	// The token for the next query. Valid values:
 	//
-	// - If **NextToken*	- is empty, it means there is no next query.
+	// - If **NextToken*	- is empty, no next query exists.
 	//
-	// - If **NextToken*	- has a return value, this value indicates the token for the start of the next query.
+	// - If **NextToken*	- has a value, the value indicates the token for the next query.
 	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 1D0971B2-A35A-42C1-A44C-E91360C36C0B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// List of route entry publishing status information.
+	// The list of route entry publish status information.
 	RouteEntries []*ListVpcPublishedRouteEntriesResponseBodyRouteEntries `json:"RouteEntries,omitempty" xml:"RouteEntries,omitempty" type:"Repeated"`
 }
 
@@ -99,9 +99,9 @@ type ListVpcPublishedRouteEntriesResponseBodyRouteEntries struct {
 	//
 	// rte-bp1mnnr2al0naomnpv****
 	RouteEntryId *string `json:"RouteEntryId,omitempty" xml:"RouteEntryId,omitempty"`
-	// List of route entry publishing status information in the publishing targets.
+	// The list of publish status information for the route entry in publish targets.
 	RoutePublishTargets []*ListVpcPublishedRouteEntriesResponseBodyRouteEntriesRoutePublishTargets `json:"RoutePublishTargets,omitempty" xml:"RoutePublishTargets,omitempty" type:"Repeated"`
-	// The ID of the route table.
+	// The route table ID.
 	//
 	// example:
 	//
@@ -167,19 +167,19 @@ func (s *ListVpcPublishedRouteEntriesResponseBodyRouteEntries) Validate() error 
 }
 
 type ListVpcPublishedRouteEntriesResponseBodyRouteEntriesRoutePublishTargets struct {
-	// The publishing status of the route entry in the publishing target.
+	// The publish status of the route entry in the publish target.
 	//
 	// example:
 	//
 	// Published
 	PublishStatus *string `json:"PublishStatus,omitempty" xml:"PublishStatus,omitempty"`
-	// The ID of the route publishing target instance.
+	// The instance ID of the route publish target.
 	//
 	// example:
 	//
 	// ecr-xvuqdfma6x57ei****
 	PublishTargetInstanceId *string `json:"PublishTargetInstanceId,omitempty" xml:"PublishTargetInstanceId,omitempty"`
-	// The type of the route publishing target.
+	// The route publish target.
 	//
 	// example:
 	//

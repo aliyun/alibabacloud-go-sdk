@@ -24,7 +24,7 @@ type iCreateNatGatewayResponseBody interface {
 type CreateNatGatewayResponseBody struct {
 	ForwardTableIds *CreateNatGatewayResponseBodyForwardTableIds `json:"ForwardTableIds,omitempty" xml:"ForwardTableIds,omitempty" type:"Struct"`
 	FullNatTableIds *CreateNatGatewayResponseBodyFullNatTableIds `json:"FullNatTableIds,omitempty" xml:"FullNatTableIds,omitempty" type:"Struct"`
-	// The instance ID of the NAT gateway.
+	// The instance ID of the created NAT gateway.
 	//
 	// example:
 	//

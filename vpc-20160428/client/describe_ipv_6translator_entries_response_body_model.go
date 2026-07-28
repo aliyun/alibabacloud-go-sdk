@@ -23,13 +23,13 @@ type iDescribeIPv6TranslatorEntriesResponseBody interface {
 
 type DescribeIPv6TranslatorEntriesResponseBody struct {
 	Ipv6TranslatorEntries *DescribeIPv6TranslatorEntriesResponseBodyIpv6TranslatorEntries `json:"Ipv6TranslatorEntries,omitempty" xml:"Ipv6TranslatorEntries,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeIPv6TranslatorEntriesResponseBody struct {
 	//
 	// 54B48E3D-DF70-471B-AA93-08E683A1B45
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

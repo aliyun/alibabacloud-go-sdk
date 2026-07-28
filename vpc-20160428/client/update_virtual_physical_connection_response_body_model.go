@@ -22,11 +22,11 @@ type UpdateVirtualPhysicalConnectionResponseBody struct {
 	//
 	// 7035627E-1C1D-5BC7-A830-F897A35912D1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the VLAN ID of the virtual physical connection was successfully modified.
+	// Indicates whether the VLAN ID of the shared Express Connect circuit is modified.
 	//
-	// - **true**: The VLAN ID was modified.
+	// - **true**: The VLAN ID is modified.
 	//
-	// - **false**: The VLAN ID was not modified.
+	// - **false**: The VLAN ID failed to be modified.
 	//
 	// example:
 	//

@@ -42,11 +42,11 @@ type iListPublicIpAddressPoolsRequest interface {
 }
 
 type ListPublicIpAddressPoolsRequest struct {
-	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run without querying available IP address pool information. The system checks whether the required parameters are specified, whether the request format is valid, and whether business restrictions are met. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
 	//
-	// 	- **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// - **false*	- (default): performs a dry run and sends the request. If the check succeeds, an HTTP 2xx status code is returned and the operation is performed.
 	//
 	// example:
 	//
@@ -54,51 +54,51 @@ type ListPublicIpAddressPoolsRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The line type. Valid values:
 	//
-	// 	- **BGP*	- (default): BGP (Multi-ISP) line
+	// - **BGP*	- (default): BGP (multi-ISP) line.
 	//
-	// 	- **BGP_PRO**: BGP (Multi-ISP) Pro line
+	// - **BGP_PRO**: BGP (multi-ISP) Pro line.
 	//
-	// For more information about the BGP (Multi-ISP) line and BGP (Multi-ISP) Pro line, see the "Line types" section of [What is EIP?](https://help.aliyun.com/document_detail/32321.html)
+	// For more information about BGP (multi-ISP) lines and BGP (multi-ISP) Pro lines, see [EIP line types](https://help.aliyun.com/document_detail/32321.html).
 	//
-	// If you are allowed to use single-ISP bandwidth, you can also choose one of the following values:
+	// If you are a whitelist user of single-ISP bandwidth, you can also select the following types:
 	//
-	// 	- **ChinaTelecom**
+	// - **ChinaTelecom**: China Telecom
 	//
-	// 	- **ChinaUnicom**
+	// - **ChinaUnicom**: China Unicom
 	//
-	// 	- **ChinaMobile**
+	// - **ChinaMobile**: China Mobile
 	//
-	// 	- **ChinaTelecom_L2**
+	// - **ChinaTelecom_L2**: China Telecom L2
 	//
-	// 	- **ChinaUnicom_L2**
+	// - **ChinaUnicom_L2**: China Unicom L2
 	//
-	// 	- **ChinaMobile_L2**
+	// - **ChinaMobile_L2**: China Mobile L2
 	//
-	// If your services are deployed in China East 1 Finance, this parameter is required and you must set the parameter to **BGP_FinanceCloud**.
+	// If you are a China (Hangzhou) Finance Cloud user, this field is required. Set the value to **BGP_FinanceCloud**.
 	//
 	// example:
 	//
 	// BGP
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// The maximum number of entries to return. Valid values: **10*	- to **100**. Default value: **10**.
+	// The maximum number of entries to return in this request. Valid values: **10*	- to **100**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The name of the IP address pool.
+	// The name of the IP address pool instance.
 	//
-	// If you enter a name, the name must be 1 to 128 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+	// The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// AddressPoolName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// 	- You do not need to specify this parameter for the first request.
+	// - You do not need to specify this parameter for the first request or if no subsequent request is to be sent.
 	//
-	// 	- You must specify the token that is obtained from the previous query as the value of NextToken.
+	// - If a subsequent request is to be sent, set the value to the NextToken value returned in the previous API call.
 	//
 	// example:
 	//
@@ -106,13 +106,13 @@ type ListPublicIpAddressPoolsRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The IDs of the IP address pool.
+	// The list of IP address pool instance IDs.
 	//
-	// You can enter up to 100 IDs.
+	// You can specify up to 100 IP address pool instance IDs.
 	PublicIpAddressPoolIds []*string `json:"PublicIpAddressPoolIds,omitempty" xml:"PublicIpAddressPoolIds,omitempty" type:"Repeated"`
-	// The ID of the region in which the IP address pool that you want to query resides.
+	// The region ID of the IP address pool that you want to query.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//
@@ -128,29 +128,29 @@ type ListPublicIpAddressPoolsRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Specifies whether to enable Anti-DDoS Pro/Premium. Valid values:
+	// Specifies whether to enable Anti-DDoS (Enhanced). Valid values:
 	//
-	// 	- **false**
+	// - **false**: disabled.
 	//
-	// 	- **true**
+	// - **true**: enabled.
 	//
 	// example:
 	//
 	// true
 	SecurityProtectionEnabled *bool `json:"SecurityProtectionEnabled,omitempty" xml:"SecurityProtectionEnabled,omitempty"`
-	// The status of the IP address pool. Valid values:
+	// The instance status of the IPAM pool. Valid values:
 	//
-	// 	- **Created**
+	// - **Created**: active.
 	//
-	// 	- **Deleting**
+	// - **Deleting**: being deleted.
 	//
-	// 	- **Modifying**
+	// - **Modifying**: being modified.
 	//
 	// example:
 	//
 	// Created
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags to add to the resource.
+	// The list of tags.
 	Tags []*ListPublicIpAddressPoolsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -311,17 +311,17 @@ func (s *ListPublicIpAddressPoolsRequest) Validate() error {
 }
 
 type ListPublicIpAddressPoolsRequestTags struct {
-	// The tag key to add to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// A tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value to add to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

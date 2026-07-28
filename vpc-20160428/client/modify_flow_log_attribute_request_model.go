@@ -19,6 +19,8 @@ type iModifyFlowLogAttributeRequest interface {
 	GetFlowLogName() *string
 	SetIpVersion(v string) *ModifyFlowLogAttributeRequest
 	GetIpVersion() *string
+	SetLogFormat(v string) *ModifyFlowLogAttributeRequest
+	GetLogFormat() *string
 	SetOwnerAccount(v string) *ModifyFlowLogAttributeRequest
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *ModifyFlowLogAttributeRequest
@@ -46,7 +48,7 @@ type ModifyFlowLogAttributeRequest struct {
 	//
 	// This is my Flowlog.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the flow log.
+	// The flow log ID.
 	//
 	// This parameter is required.
 	//
@@ -62,21 +64,18 @@ type ModifyFlowLogAttributeRequest struct {
 	//
 	// myFlowlog
 	FlowLogName *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
-	// The version of the IP address. Valid values:
-	//
-	// 	- **IPV4**: the IPv4 address.
-	//
-	// 	- **DualStack**: includes IPv4 and IPv6 address
+	// The IP address version of the traffic captured by the flow log.
 	//
 	// example:
 	//
 	// IPv4
 	IpVersion    *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	LogFormat    *string `json:"LogFormat,omitempty" xml:"LogFormat,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the flow log is created.
+	// The region ID of the flow log.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -114,6 +113,10 @@ func (s *ModifyFlowLogAttributeRequest) GetFlowLogName() *string {
 
 func (s *ModifyFlowLogAttributeRequest) GetIpVersion() *string {
 	return s.IpVersion
+}
+
+func (s *ModifyFlowLogAttributeRequest) GetLogFormat() *string {
+	return s.LogFormat
 }
 
 func (s *ModifyFlowLogAttributeRequest) GetOwnerAccount() *string {
@@ -158,6 +161,11 @@ func (s *ModifyFlowLogAttributeRequest) SetFlowLogName(v string) *ModifyFlowLogA
 
 func (s *ModifyFlowLogAttributeRequest) SetIpVersion(v string) *ModifyFlowLogAttributeRequest {
 	s.IpVersion = &v
+	return s
+}
+
+func (s *ModifyFlowLogAttributeRequest) SetLogFormat(v string) *ModifyFlowLogAttributeRequest {
+	s.LogFormat = &v
 	return s
 }
 

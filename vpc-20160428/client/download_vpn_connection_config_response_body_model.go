@@ -22,7 +22,7 @@ type DownloadVpnConnectionConfigResponseBody struct {
 	//
 	// 0C68048B-0F70-40DA-B8AE-1B79B5CF62E3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The configurations of the peer gateway device.
+	// The configuration of the peer gateway device of the IPsec-VPN connection.
 	VpnConnectionConfig *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfig `json:"VpnConnectionConfig,omitempty" xml:"VpnConnectionConfig,omitempty" type:"Struct"`
 }
 
@@ -63,9 +63,9 @@ func (s *DownloadVpnConnectionConfigResponseBody) Validate() error {
 
 type DownloadVpnConnectionConfigResponseBodyVpnConnectionConfig struct {
 	BgpConfigs *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigBgpConfigs `json:"BgpConfigs,omitempty" xml:"BgpConfigs,omitempty" type:"Struct"`
-	// The configurations of Phase 1 negotiations.
+	// The configuration of Phase 1 negotiation.
 	IkeConfig *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigIkeConfig `json:"IkeConfig,omitempty" xml:"IkeConfig,omitempty" type:"Struct"`
-	// The configurations of Phase 2 negotiations.
+	// The configuration of Phase 2 negotiation.
 	IpsecConfig *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigIpsecConfig `json:"IpsecConfig,omitempty" xml:"IpsecConfig,omitempty" type:"Struct"`
 	// The identifier of the customer gateway.
 	//
@@ -73,7 +73,7 @@ type DownloadVpnConnectionConfigResponseBodyVpnConnectionConfig struct {
 	//
 	// 139.196.XX.XX
 	Local *string `json:"Local,omitempty" xml:"Local,omitempty"`
-	// The CIDR block on the data center side.
+	// The CIDR block on the on-premises data center side.
 	//
 	// example:
 	//
@@ -85,7 +85,7 @@ type DownloadVpnConnectionConfigResponseBodyVpnConnectionConfig struct {
 	//
 	// 116.62.XX.XX
 	Remote *string `json:"Remote,omitempty" xml:"Remote,omitempty"`
-	// The CIDR block on the virtual private cloud (VPC) side.
+	// The CIDR block on the VPC side.
 	//
 	// example:
 	//
@@ -308,19 +308,19 @@ func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigBgpConfigsBgp
 }
 
 type DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigIkeConfig struct {
-	// The authentication algorithm in the IKE phase.
+	// The IKE phase authentication algorithm.
 	//
 	// example:
 	//
 	// sha1
 	IkeAuthAlg *string `json:"IkeAuthAlg,omitempty" xml:"IkeAuthAlg,omitempty"`
-	// The encryption algorithm in the IKE phase.
+	// The IKE phase encryption algorithm.
 	//
 	// example:
 	//
 	// aes
 	IkeEncAlg *string `json:"IkeEncAlg,omitempty" xml:"IkeEncAlg,omitempty"`
-	// The lifetime in the IKE phase. Unit: seconds.
+	// The IKE phase lifetime. Unit: seconds.
 	//
 	// example:
 	//
@@ -328,9 +328,9 @@ type DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigIkeConfig struct 
 	IkeLifetime *int64 `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
 	// The IKE negotiation mode. Valid values:
 	//
-	// 	- **main**: This mode offers higher security during negotiations.
+	// - **main**: Main mode. This mode provides high security during negotiation.
 	//
-	// 	- **aggressive**: This mode is faster and has a higher success rate.
+	// - **aggressive**: Aggressive mode. This mode supports fast negotiation and a higher success rate.
 	//
 	// example:
 	//
@@ -342,7 +342,7 @@ type DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigIkeConfig struct 
 	//
 	// group2
 	IkePfs *string `json:"IkePfs,omitempty" xml:"IkePfs,omitempty"`
-	// The IKE version.
+	// The version of the IKE protocol.
 	//
 	// example:
 	//
@@ -462,19 +462,19 @@ func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigIkeConfig) Va
 }
 
 type DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigIpsecConfig struct {
-	// The authentication algorithm in the IPsec phase.
+	// The IPsec phase authentication algorithm.
 	//
 	// example:
 	//
 	// sha1
 	IpsecAuthAlg *string `json:"IpsecAuthAlg,omitempty" xml:"IpsecAuthAlg,omitempty"`
-	// The encryption algorithm in the IPsec phase.
+	// The IPsec phase encryption algorithm.
 	//
 	// example:
 	//
 	// aes
 	IpsecEncAlg *string `json:"IpsecEncAlg,omitempty" xml:"IpsecEncAlg,omitempty"`
-	// The lifetime in the IPsec phase. Unit: seconds.
+	// The IPsec phase lifetime. Unit: seconds.
 	//
 	// example:
 	//
@@ -571,28 +571,11 @@ func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfig
 }
 
 type DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfig struct {
-	// 第一阶段协商的配置信息。
-	IkeConfig *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIkeConfig `json:"IkeConfig,omitempty" xml:"IkeConfig,omitempty" type:"Struct"`
-	// 第二阶段协商的配置信息。
+	IkeConfig   *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIkeConfig   `json:"IkeConfig,omitempty" xml:"IkeConfig,omitempty" type:"Struct"`
 	IpsecConfig *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIpsecConfig `json:"IpsecConfig,omitempty" xml:"IpsecConfig,omitempty" type:"Struct"`
-	// 本地IDC侧隧道的标识。
-	//
-	// example:
-	//
-	// 47.21.XX.XX
-	Local *string `json:"Local,omitempty" xml:"Local,omitempty"`
-	// 阿里云侧隧道的标识。
-	//
-	// example:
-	//
-	// 47.24.XX.XX
-	Remote *string `json:"Remote,omitempty" xml:"Remote,omitempty"`
-	// 隧道ID。
-	//
-	// example:
-	//
-	// tun-opsqc4d97wni27****
-	TunnelId *string `json:"TunnelId,omitempty" xml:"TunnelId,omitempty"`
+	Local       *string                                                                                         `json:"Local,omitempty" xml:"Local,omitempty"`
+	Remote      *string                                                                                         `json:"Remote,omitempty" xml:"Remote,omitempty"`
+	TunnelId    *string                                                                                         `json:"TunnelId,omitempty" xml:"TunnelId,omitempty"`
 }
 
 func (s DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfig) String() string {
@@ -663,64 +646,15 @@ func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfig
 }
 
 type DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIkeConfig struct {
-	// IKE阶段认证算法。
-	//
-	// example:
-	//
-	// sha1
-	IkeAuthAlg *string `json:"IkeAuthAlg,omitempty" xml:"IkeAuthAlg,omitempty"`
-	// IKE阶段加密算法。
-	//
-	// example:
-	//
-	// aes
-	IkeEncAlg *string `json:"IkeEncAlg,omitempty" xml:"IkeEncAlg,omitempty"`
-	// IKE阶段生存时间。单位：秒。
-	//
-	// example:
-	//
-	// 86400
-	IkeLifetime *int64 `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
-	// IKE协商模式。
-	//
-	// - **main**：主模式，协商过程安全性高。
-	//
-	// - **aggressive**：野蛮模式，协商快速且协商成功率高。
-	//
-	// example:
-	//
-	// main
-	IkeMode *string `json:"IkeMode,omitempty" xml:"IkeMode,omitempty"`
-	// IKE阶段DH分组。
-	//
-	// example:
-	//
-	// group2
-	IkePfs *string `json:"IkePfs,omitempty" xml:"IkePfs,omitempty"`
-	// IKE协议的版本。
-	//
-	// example:
-	//
-	// ikev2
-	IkeVersion *string `json:"IkeVersion,omitempty" xml:"IkeVersion,omitempty"`
-	// 本地IDC侧隧道的标识。
-	//
-	// example:
-	//
-	// 47.21.XX.XX
-	LocalId *string `json:"LocalId,omitempty" xml:"LocalId,omitempty"`
-	// 预共享密钥。
-	//
-	// example:
-	//
-	// pgw6dy7d1i8i****
-	Psk *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
-	// 阿里云侧隧道的标识。
-	//
-	// example:
-	//
-	// 47.24.XX.XX
-	RemoteId *string `json:"RemoteId,omitempty" xml:"RemoteId,omitempty"`
+	IkeAuthAlg  *string `json:"IkeAuthAlg,omitempty" xml:"IkeAuthAlg,omitempty"`
+	IkeEncAlg   *string `json:"IkeEncAlg,omitempty" xml:"IkeEncAlg,omitempty"`
+	IkeLifetime *int64  `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
+	IkeMode     *string `json:"IkeMode,omitempty" xml:"IkeMode,omitempty"`
+	IkePfs      *string `json:"IkePfs,omitempty" xml:"IkePfs,omitempty"`
+	IkeVersion  *string `json:"IkeVersion,omitempty" xml:"IkeVersion,omitempty"`
+	LocalId     *string `json:"LocalId,omitempty" xml:"LocalId,omitempty"`
+	Psk         *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
+	RemoteId    *string `json:"RemoteId,omitempty" xml:"RemoteId,omitempty"`
 }
 
 func (s DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIkeConfig) String() string {
@@ -817,30 +751,10 @@ func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfig
 }
 
 type DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIpsecConfig struct {
-	// IPsec阶段认证算法。
-	//
-	// example:
-	//
-	// sha1
-	IpsecAuthAlg *string `json:"IpsecAuthAlg,omitempty" xml:"IpsecAuthAlg,omitempty"`
-	// IPsec阶段加密算法。
-	//
-	// example:
-	//
-	// aes
-	IpsecEncAlg *string `json:"IpsecEncAlg,omitempty" xml:"IpsecEncAlg,omitempty"`
-	// IPsec阶段生存时间。单位：秒。
-	//
-	// example:
-	//
-	// 86400
-	IpsecLifetime *int64 `json:"IpsecLifetime,omitempty" xml:"IpsecLifetime,omitempty"`
-	// IPsec阶段DH分组。
-	//
-	// example:
-	//
-	// group2
-	IpsecPfs *string `json:"IpsecPfs,omitempty" xml:"IpsecPfs,omitempty"`
+	IpsecAuthAlg  *string `json:"IpsecAuthAlg,omitempty" xml:"IpsecAuthAlg,omitempty"`
+	IpsecEncAlg   *string `json:"IpsecEncAlg,omitempty" xml:"IpsecEncAlg,omitempty"`
+	IpsecLifetime *int64  `json:"IpsecLifetime,omitempty" xml:"IpsecLifetime,omitempty"`
+	IpsecPfs      *string `json:"IpsecPfs,omitempty" xml:"IpsecPfs,omitempty"`
 }
 
 func (s DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTunnelConfigIpsecConfig) String() string {

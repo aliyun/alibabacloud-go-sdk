@@ -14,7 +14,7 @@ type iRemoveGlobalAccelerationInstanceIpResponseBody interface {
 }
 
 type RemoveGlobalAccelerationInstanceIpResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

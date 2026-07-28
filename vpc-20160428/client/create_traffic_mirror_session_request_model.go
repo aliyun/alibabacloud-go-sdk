@@ -52,9 +52,9 @@ type iCreateTrafficMirrorSessionRequest interface {
 type CreateTrafficMirrorSessionRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must ensure that the value is unique among all requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, the system uses **RequestId*	- as **ClientToken**. **RequestId*	- might be different for each API request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
@@ -62,9 +62,9 @@ type CreateTrafficMirrorSessionRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs a dry run. The system checks the required parameters, request format, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): performs a dry run and sends the request. If the request passes the dry run, the operation is performed.
+	// - **false*	- (default): performs a dry run and sends the request. If the request passes the dry run, the traffic mirror session is created.
 	//
 	// example:
 	//
@@ -72,9 +72,9 @@ type CreateTrafficMirrorSessionRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Specifies whether to enable the traffic mirror session. Valid values:
 	//
-	// 	- **false*	- (default): does not enable the traffic mirror session.
+	// - **false*	- (default): does not enable the traffic mirror session.
 	//
-	// 	- **true**: enables the traffic mirror session.
+	// - **true**: enables the traffic mirror session.
 	//
 	// example:
 	//
@@ -82,17 +82,19 @@ type CreateTrafficMirrorSessionRequest struct {
 	Enabled      *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The maximum transmission unit.
+	// The maximum length of the mirrored original packet, excluding the VXLAN packet length. Default value: **1500**. Valid values: **64*	- to **8500**. Unit: bytes.
 	//
-	// Valid values: **64 to 9600**. Default value: **1500**.
+	// - This parameter affects the length of packets received at the traffic mirror destination. For more information, see the mirrored packet length and MTU limits in [Traffic mirroring overview](https://help.aliyun.com/document_detail/207513.html).
+	//
+	// - This parameter is available only in specific regions. For more information, see the description of the mirrored packet length parameter in [Create and manage traffic mirrors](https://help.aliyun.com/document_detail/207514.html).
 	//
 	// example:
 	//
 	// 1500
 	PacketLength *int32 `json:"PacketLength,omitempty" xml:"PacketLength,omitempty"`
-	// The priority of the traffic mirror session. Valid values: **1*	- to **32766**.
+	// The priority of traffic mirror session. Valid values: **1*	- to **32766**.
 	//
-	// A smaller value indicates a higher priority. You cannot specify identical priorities for traffic mirror sessions that are created in the same region by using the same account.
+	// A smaller value indicates a higher priority. The priorities of traffic mirror sessions created in the same region under the same account must be unique.
 	//
 	// This parameter is required.
 	//
@@ -100,7 +102,7 @@ type CreateTrafficMirrorSessionRequest struct {
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The ID of the region to which the traffic mirror session belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about regions that support traffic mirror, see [Overview of traffic mirror](https://help.aliyun.com/document_detail/207513.html).
+	// The region ID of the traffic mirror session. You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list. For information about the regions that support traffic mirroring, see [Traffic mirroring overview](https://help.aliyun.com/document_detail/207513.html).
 	//
 	// This parameter is required.
 	//
@@ -108,7 +110,7 @@ type CreateTrafficMirrorSessionRequest struct {
 	//
 	// cn-hongkong
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the mirrored traffic belongs.
+	// The ID of the resource group to which the traffic mirroring instance belongs.
 	//
 	// example:
 	//
@@ -116,9 +118,9 @@ type CreateTrafficMirrorSessionRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tag of the resource.
+	// The tags of the resource.
 	Tag []*CreateTrafficMirrorSessionRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the filter.
+	// The instance ID of the traffic mirror filter.
 	//
 	// This parameter is required.
 	//
@@ -136,13 +138,13 @@ type CreateTrafficMirrorSessionRequest struct {
 	TrafficMirrorSessionDescription *string `json:"TrafficMirrorSessionDescription,omitempty" xml:"TrafficMirrorSessionDescription,omitempty"`
 	// The name of the traffic mirror session.
 	//
-	// The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
+	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// test
 	TrafficMirrorSessionName *string `json:"TrafficMirrorSessionName,omitempty" xml:"TrafficMirrorSessionName,omitempty"`
-	// The ID of the traffic mirror source. You can specify only an elastic network interface (ENI) as the traffic mirror source. The default value of **N*	- is **1**, which indicates that you can add only one traffic mirror source to a traffic mirror session.
+	// The instance ID of the traffic mirror source. Elastic network interfaces (ENIs) are supported as traffic mirror sources. The default value of **N*	- is **1**, which indicates that only one traffic mirror source can be added to a traffic mirror session.
 	//
 	// This parameter is required.
 	//
@@ -150,7 +152,7 @@ type CreateTrafficMirrorSessionRequest struct {
 	//
 	// eni-j6c2fp57q8rr47rp****
 	TrafficMirrorSourceIds []*string `json:"TrafficMirrorSourceIds,omitempty" xml:"TrafficMirrorSourceIds,omitempty" type:"Repeated"`
-	// The ID of the traffic mirror destination. You can specify only an elastic network interface (ENI) or a Server Load Balancer (SLB) instance as a traffic mirror destination.
+	// The instance ID of the traffic mirror destination. Elastic network interfaces (ENIs) and private network load balancing instances are supported as traffic mirror destinations.
 	//
 	// This parameter is required.
 	//
@@ -160,9 +162,9 @@ type CreateTrafficMirrorSessionRequest struct {
 	TrafficMirrorTargetId *string `json:"TrafficMirrorTargetId,omitempty" xml:"TrafficMirrorTargetId,omitempty"`
 	// The type of the traffic mirror destination. Valid values:
 	//
-	// 	- **NetworkInterface**: an ENI
+	// - **NetworkInterface**: elastic network interface (ENI).
 	//
-	// 	- **SLB**: an SLB instance
+	// - **SLB**: private network load balancing instance.
 	//
 	// This parameter is required.
 	//
@@ -170,9 +172,9 @@ type CreateTrafficMirrorSessionRequest struct {
 	//
 	// NetworkInterface
 	TrafficMirrorTargetType *string `json:"TrafficMirrorTargetType,omitempty" xml:"TrafficMirrorTargetType,omitempty"`
-	// The VXLAN network identifier (VNI). Valid values: **0*	- to **16777215**.
+	// The VXLAN network identifier (VNI) that is used to distinguish mirrored data from different traffic mirror sessions. Valid values: **0*	- to **16777215**.
 	//
-	// You can use VNIs to identify mirrored traffic from different sessions at the traffic mirror destination. You can specify a custom VNI or use a random VNI allocated by the system. If you want the system to randomly allocate a VNI, do not enter a value.
+	// You can use the VNI to identify mirrored data from different sessions at the traffic mirror destination. You can specify a custom VNI or use a system-assigned value. To use a system-assigned value, do not specify this parameter. The system randomly allocates the value.
 	//
 	// example:
 	//
@@ -373,17 +375,17 @@ func (s *CreateTrafficMirrorSessionRequest) Validate() error {
 }
 
 type CreateTrafficMirrorSessionRequestTag struct {
-	// The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
+	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

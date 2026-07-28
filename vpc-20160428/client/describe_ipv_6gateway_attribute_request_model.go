@@ -24,7 +24,7 @@ type iDescribeIpv6GatewayAttributeRequest interface {
 }
 
 type DescribeIpv6GatewayAttributeRequest struct {
-	// The ID of the IPv6 gateway that you want to query.
+	// The ID of the IPv6 gateway to query.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DescribeIpv6GatewayAttributeRequest struct {
 	Ipv6GatewayId *string `json:"Ipv6GatewayId,omitempty" xml:"Ipv6GatewayId,omitempty"`
 	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the IPv6 gateway is deployed. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// The region ID of the IPv6 gateway. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//

@@ -28,7 +28,7 @@ type iCancelPhysicalConnectionRequest interface {
 type CancelPhysicalConnectionRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// The client generates the value of this parameter. Make sure that the value is unique among different requests. The value can be up to 64 ASCII characters in length.
+	// The client generates the value of this parameter. Ensure that the value is unique among different requests. The value can be up to 64 ASCII characters in length.
 	//
 	// example:
 	//

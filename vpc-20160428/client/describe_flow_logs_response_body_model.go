@@ -31,7 +31,7 @@ type DescribeFlowLogsResponseBody struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of items per page in a paginated query.
+	// The number of entries per page in paging queries.
 	//
 	// example:
 	//
@@ -43,9 +43,9 @@ type DescribeFlowLogsResponseBody struct {
 	//
 	// F7DDDC17-FA06-4AC2-8F35-59D2470FCFC1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Values:
+	// Indicates whether the call is successful. Valid values:
 	//
-	// - **true**: The call was successful.
+	// - **true**: The call is successful.
 	//
 	// - **false**: The call failed.
 	//
@@ -53,7 +53,7 @@ type DescribeFlowLogsResponseBody struct {
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The number of entries in the queried flow log list.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -176,6 +176,7 @@ type DescribeFlowLogsResponseBodyFlowLogsFlowLog struct {
 	FlowLogId                  *string                                                 `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
 	FlowLogName                *string                                                 `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
 	IpVersion                  *string                                                 `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	LogFormat                  *string                                                 `json:"LogFormat,omitempty" xml:"LogFormat,omitempty"`
 	LogStoreName               *string                                                 `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
 	ProjectName                *string                                                 `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	RegionId                   *string                                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -231,6 +232,10 @@ func (s *DescribeFlowLogsResponseBodyFlowLogsFlowLog) GetFlowLogName() *string {
 
 func (s *DescribeFlowLogsResponseBodyFlowLogsFlowLog) GetIpVersion() *string {
 	return s.IpVersion
+}
+
+func (s *DescribeFlowLogsResponseBodyFlowLogsFlowLog) GetLogFormat() *string {
+	return s.LogFormat
 }
 
 func (s *DescribeFlowLogsResponseBodyFlowLogsFlowLog) GetLogStoreName() *string {
@@ -319,6 +324,11 @@ func (s *DescribeFlowLogsResponseBodyFlowLogsFlowLog) SetFlowLogName(v string) *
 
 func (s *DescribeFlowLogsResponseBodyFlowLogsFlowLog) SetIpVersion(v string) *DescribeFlowLogsResponseBodyFlowLogsFlowLog {
 	s.IpVersion = &v
+	return s
+}
+
+func (s *DescribeFlowLogsResponseBodyFlowLogsFlowLog) SetLogFormat(v string) *DescribeFlowLogsResponseBodyFlowLogsFlowLog {
+	s.LogFormat = &v
 	return s
 }
 

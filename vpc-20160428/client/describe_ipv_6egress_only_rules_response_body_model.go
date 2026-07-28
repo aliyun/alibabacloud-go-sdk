@@ -29,7 +29,7 @@ type DescribeIpv6EgressOnlyRulesResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page for a paged query. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//

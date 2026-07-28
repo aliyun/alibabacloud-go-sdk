@@ -18,11 +18,11 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
-	// The token for the next query. Valid values:
+	// The pagination token. Valid values:
 	//
-	// - If **NextToken*	- is empty, no next query exists.
+	// - If **NextToken*	- is empty, no subsequent query exists.
 	//
-	// - If **NextToken*	- has a return value, the value is the token used to start the next query.
+	// - If **NextToken*	- is returned, the value indicates the token for the next query.
 	//
 	// example:
 	//

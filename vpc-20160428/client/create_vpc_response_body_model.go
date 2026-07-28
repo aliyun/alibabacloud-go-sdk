@@ -34,13 +34,13 @@ type CreateVpcResponseBody struct {
 	//
 	// rg-acfmxazb4ph6aiy****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the route table that is automatically created by the system after the VPC is created.
+	// The ID of the route table that is automatically created when the VPC is created.
 	//
 	// example:
 	//
 	// vtb-bp145q7glnuzdv****
 	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
-	// The ID of the vRouter that is automatically created by the system after the VPC is created.
+	// The ID of the vRouter that is automatically created when the VPC is created.
 	//
 	// example:
 	//

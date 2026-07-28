@@ -24,13 +24,13 @@ type iCreateVpcGatewayEndpointResponseBody interface {
 }
 
 type CreateVpcGatewayEndpointResponseBody struct {
-	// The time when the gateway endpoint was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	// The time when the gateway endpoint was created. The time is displayed in UTC in the YYYY-MM-DDThh:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2021-08-27T01:58:37Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The ID of the gateway endpoint.
+	// The endpoint instance ID of the gateway endpoint instance.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type CreateVpcGatewayEndpointResponseBody struct {
 	//
 	// rg-acfmxazb4ph****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The name of the endpoint service.
+	// The service name of the endpoint service.
 	//
 	// example:
 	//

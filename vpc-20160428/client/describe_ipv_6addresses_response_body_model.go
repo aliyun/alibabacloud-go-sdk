@@ -23,13 +23,13 @@ type iDescribeIpv6AddressesResponseBody interface {
 
 type DescribeIpv6AddressesResponseBody struct {
 	Ipv6Addresses *DescribeIpv6AddressesResponseBodyIpv6Addresses `json:"Ipv6Addresses,omitempty" xml:"Ipv6Addresses,omitempty" type:"Struct"`
-	// The page number of the returned page. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page for paging queries. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeIpv6AddressesResponseBody struct {
 	//
 	// AA4486A8-B6AE-469E-AB09-820EF8ECFA2B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of returned entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//

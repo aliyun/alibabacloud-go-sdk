@@ -36,31 +36,31 @@ type iListIpv4GatewaysRequest interface {
 }
 
 type ListIpv4GatewaysRequest struct {
-	// The ID of the IPv4 gateway.
+	// The ID of the IPv4 gateway instance that you want to query.
 	//
 	// example:
 	//
 	// ipv4gw-5tsnc6s4ogsedtp3k****
 	Ipv4GatewayId *string `json:"Ipv4GatewayId,omitempty" xml:"Ipv4GatewayId,omitempty"`
-	// The name of the IPv4 gateway.
+	// The name of the IPv4 gateway instance that you want to query.
 	//
-	// The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
+	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// name
 	Ipv4GatewayName *string `json:"Ipv4GatewayName,omitempty" xml:"Ipv4GatewayName,omitempty"`
-	// The number of entries to return on each page. Valid values: **1*	- to **100**. Default value: **10**.
+	// The number of entries per page for a paged query. Valid values: **1*	- to **100**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used for the next query. Valid values:
+	// The pagination token. Valid values:
 	//
-	// 	- If this is your first query and no next queries are to be sent, ignore this parameter.
+	// - If this is the first query or no subsequent query exists, leave this parameter empty.
 	//
-	// 	- If a next query is to be sent, set the value to the value of NextToken that is returned from the last call.
+	// - If a subsequent query exists, set this parameter to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//
@@ -68,9 +68,9 @@ type ListIpv4GatewaysRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the IPv4 gateways to be queried are deployed.
+	// The region ID of the IPv4 gateways that you want to query.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//
@@ -86,9 +86,9 @@ type ListIpv4GatewaysRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tags of the resource.
+	// The tag list.
 	Tags []*ListIpv4GatewaysRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The ID of the virtual private cloud (VPC) with which the IPv4 gateway is associated.
+	// The ID of the VPC associated with the IPv4 gateway instance that you want to query.
 	//
 	// example:
 	//
@@ -226,17 +226,17 @@ func (s *ListIpv4GatewaysRequest) Validate() error {
 }
 
 type ListIpv4GatewaysRequestTags struct {
-	// The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+	// The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. You can specify at most 20 tag values. It can be an empty string.
+	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter but cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

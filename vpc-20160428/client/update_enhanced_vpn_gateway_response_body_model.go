@@ -48,65 +48,64 @@ type iUpdateEnhancedVpnGatewayResponseBody interface {
 }
 
 type UpdateEnhancedVpnGatewayResponseBody struct {
-	// Indicates whether BGP routes are automatically propagated to the VPC. Valid values:
+	// Indicates whether BGP route automatic propagation to the VPC is enabled. Valid values:
 	//
 	// - **true**: Automatic propagation is enabled.
 	//
-	// - **false**: Automatic propagation is disabled.
+	// - **false**: Automatic propagation is not enabled.
 	//
 	// example:
 	//
 	// true
 	AutoPropagate *bool `json:"AutoPropagate,omitempty" xml:"AutoPropagate,omitempty"`
-	// The timestamp when the Enhanced VPN Gateway was created. Unit: milliseconds.<br>
+	// The timestamp when the enhanced VPN gateway instance was created. Unit: milliseconds.<br>
 	//
-	// This value is a Unix timestamp that represents the number of milliseconds that have elapsed since 00:00:00 UTC on January 1, 1970.<br>
+	// The timestamp follows the UNIX time format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
 	// 1492753580000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the Enhanced VPN Gateway.
+	// The description of the enhanced VPN gateway instance.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the second vSwitch with which the Enhanced VPN Gateway is associated.
+	// The ID of the second vSwitch associated with the enhanced VPN gateway instance.
 	//
 	// example:
 	//
 	// vsw-p0w95ql6tmr2ludkt****
 	DisasterRecoveryVSwitchId *string `json:"DisasterRecoveryVSwitchId,omitempty" xml:"DisasterRecoveryVSwitchId,omitempty"`
-	// Indicates whether BGP is enabled for the Enhanced VPN Gateway. Valid values:<br>
+	// The enabling status of the BGP feature for the enhanced VPN gateway. Valid values:<br>
 	//
-	// - **true**: Enabled.
+	// - **true**: enabled.
 	//
-	// - **false**: Disabled.
+	// - **false**: disabled.
 	//
 	// example:
 	//
 	// true
-	EnableBgp *bool `json:"EnableBgp,omitempty" xml:"EnableBgp,omitempty"`
-	// The ENIs created for the Enhanced VPN Gateway.
+	EnableBgp      *bool                                               `json:"EnableBgp,omitempty" xml:"EnableBgp,omitempty"`
 	EniInstanceIds *UpdateEnhancedVpnGatewayResponseBodyEniInstanceIds `json:"EniInstanceIds,omitempty" xml:"EniInstanceIds,omitempty" type:"Struct"`
-	// The type of the Enhanced VPN Gateway. Only **Enhanced.SiteToSite*	- is returned, which indicates an enhanced site-to-site VPN gateway that supports only the IPsec-VPN feature.
+	// The type of the enhanced VPN gateway. Valid values:
 	//
-	// - **Enhanced.SiteToSite**, an enhanced site-to-cloud VPN that supports only the IPsec feature.
+	// - **Enhanced.SiteToSite**: enhanced site-to-cloud VPN that supports only IPsec functionality.
 	//
 	// example:
 	//
 	// Enhanced.SiteToSite
 	GatewayType *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
-	// The name of the Enhanced VPN Gateway.
+	// The name of the enhanced VPN gateway instance.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The network type of the Enhanced VPN Gateway. Valid values:
+	// The network type of the enhanced VPN gateway. Valid values:
 	//
-	// - **public*	- (default): a public gateway.
+	// - **public*	- (default): public VPN gateway.
 	//
 	// example:
 	//
@@ -118,59 +117,58 @@ type UpdateEnhancedVpnGatewayResponseBody struct {
 	//
 	// 54B48E3D-DF70-471B-AA93-08E683A1B457
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group to which the Enhanced VPN Gateway belongs.<br>
+	// The ID of the resource group to which the enhanced VPN gateway instance belongs.<br>
 	//
-	// You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query the details of resource groups.<br>
+	// You can call [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) to query resource group information.
 	//
 	// example:
 	//
 	// rg-acfmzs372yg****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The status of the Enhanced VPN Gateway.
+	// The status of the enhanced VPN gateway.
 	//
-	// - **init**: The gateway is being initialized.
+	// - **init**: initializing.
 	//
-	// - **provisioning**: The gateway is being provisioned.
+	// - **provisioning**: preparing.
 	//
-	// - **active**: The gateway is active.
+	// - **active**: normal.
 	//
-	// - **updating**: The gateway is being updated.
+	// - **updating**: updating.
 	//
-	// - **deleting**: The gateway is being deleted.
+	// - **deleting**: deleting.
 	//
 	// example:
 	//
 	// active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// A JSON string that indicates the features supported by the Enhanced VPN Gateway.
+	// The list of features supported by the enhanced VPN gateway.
 	//
 	// example:
 	//
 	// {"VpnEnableBgp": true}
-	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The tags of the Enhanced VPN Gateway.
+	Tag  *string                                   `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	Tags *UpdateEnhancedVpnGatewayResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The ID of the vSwitch associated with the Enhanced VPN Gateway.
+	// The ID of the vSwitch associated with the enhanced VPN gateway instance.
 	//
 	// example:
 	//
 	// vsw-bp1y9ovl1cu9ou4tv****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC to which the Enhanced VPN Gateway belongs.
+	// The ID of the VPC to which the enhanced VPN gateway instance belongs.
 	//
 	// example:
 	//
 	// vpc-bp1ub1yt9cvakoel****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the Enhanced VPN Gateway.
+	// The ID of the enhanced VPN gateway instance.
 	//
 	// example:
 	//
 	// vpn-bp1q8bgx4xnkm2ogj****
 	VpnGatewayId *string `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
-	// The type of the Enhanced VPN Gateway.
+	// The type of the enhanced VPN gateway.
 	//
-	// - **Normal*	- (default): standard type.
+	// - **Normal*	- (default): standard.
 	//
 	// example:
 	//

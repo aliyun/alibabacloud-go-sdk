@@ -48,13 +48,13 @@ type DescribeSslVpnClientCertsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paged query. Default value: **10**. Valid values: **1*	- to **50**.
+	// The number of entries per page for paging. Default value: **10**. Valid values: **1*	- to **50**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the SSL client certificate that you want to query.
+	// The region ID of the SSL client certificates that you want to query.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//

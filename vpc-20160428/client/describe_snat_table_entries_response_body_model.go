@@ -22,7 +22,7 @@ type iDescribeSnatTableEntriesResponseBody interface {
 }
 
 type DescribeSnatTableEntriesResponseBody struct {
-	// The number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeSnatTableEntriesResponseBody struct {
 	// 6D7E89B1-1C5B-412B-8585-4908E222EED5
 	RequestId        *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SnatTableEntries *DescribeSnatTableEntriesResponseBodySnatTableEntries `json:"SnatTableEntries,omitempty" xml:"SnatTableEntries,omitempty" type:"Struct"`
-	// The number of returned entries.
+	// The total number of entries.
 	//
 	// example:
 	//

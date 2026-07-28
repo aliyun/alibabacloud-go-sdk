@@ -50,17 +50,17 @@ type UpdateTrafficMirrorSessionAttributeRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may differ for each API request.
 	//
 	// example:
 	//
 	// 0c593ea1-3bea-11e9-b96b-88e9fe63****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// 	- **true**: performs a dry run, without performing the actual request. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false**: sends the request. If the request passes the check, a 2xx HTTP status code is returned and the operation is performed. This is the default value.
+	// - **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the configuration of the traffic mirror session is modified.
 	//
 	// example:
 	//
@@ -68,9 +68,9 @@ type UpdateTrafficMirrorSessionAttributeRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Specifies whether to enable the traffic mirror session. Valid values:
 	//
-	// 	- **false*	- (default)
+	// - **false*	- (default): does not enable the traffic mirror session.
 	//
-	// 	- **true**
+	// - **true**: enables the traffic mirror session.
 	//
 	// example:
 	//
@@ -78,23 +78,25 @@ type UpdateTrafficMirrorSessionAttributeRequest struct {
 	Enabled      *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The maximum transmission unit (MTU).
+	// The maximum length of the mirrored original packet, excluding the VXLAN header. Default value: **1500**. Valid values: **64*	- to **8500**. Unit: bytes.
 	//
-	// Valid values: **64 to 9600**. Default value: **1500**.
+	// - The value of this parameter affects the length of packets received at the traffic mirror destination. For more information, see the mirrored packet length and MTU limits in [Traffic mirroring overview](https://help.aliyun.com/document_detail/207513.html).
+	//
+	// - This parameter is available only in specific regions. For more information, see the mirrored packet length parameter description in [Create and manage traffic mirror sessions](https://help.aliyun.com/document_detail/207514.html).
 	//
 	// example:
 	//
 	// 1500
 	PacketLength *int32 `json:"PacketLength,omitempty" xml:"PacketLength,omitempty"`
-	// The new priority of the traffic mirror session. Valid values: **1*	- to **32766**.
+	// The new priority of traffic mirror session. Valid values: **1*	- to **32766**.
 	//
-	// A smaller value indicates a higher priority. You cannot specify identical priorities for traffic mirror sessions that are created in the same region by using the same account.
+	// A smaller value indicates a higher priority. The priorities of traffic mirror sessions created by the same account in the same region must be unique.
 	//
 	// example:
 	//
 	// 2
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The region ID of the traffic mirror session. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about the regions that support traffic mirror, see [Overview of traffic mirror](https://help.aliyun.com/document_detail/207513.html).
+	// The region ID of the traffic mirror session. You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list. For information about the regions that support traffic mirroring, see [Traffic mirroring overview](https://help.aliyun.com/document_detail/207513.html).
 	//
 	// This parameter is required.
 	//
@@ -104,7 +106,7 @@ type UpdateTrafficMirrorSessionAttributeRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the traffic mirror filter.
+	// The instance ID of the new traffic mirror filter.
 	//
 	// example:
 	//
@@ -118,7 +120,7 @@ type UpdateTrafficMirrorSessionAttributeRequest struct {
 	//
 	// This is a new session.
 	TrafficMirrorSessionDescription *string `json:"TrafficMirrorSessionDescription,omitempty" xml:"TrafficMirrorSessionDescription,omitempty"`
-	// The ID of the traffic mirror session.
+	// The instance ID of the traffic mirror session to modify.
 	//
 	// This parameter is required.
 	//
@@ -128,31 +130,31 @@ type UpdateTrafficMirrorSessionAttributeRequest struct {
 	TrafficMirrorSessionId *string `json:"TrafficMirrorSessionId,omitempty" xml:"TrafficMirrorSessionId,omitempty"`
 	// The new name of the traffic mirror session.
 	//
-	// The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
+	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// abc
 	TrafficMirrorSessionName *string `json:"TrafficMirrorSessionName,omitempty" xml:"TrafficMirrorSessionName,omitempty"`
-	// The ID of the traffic mirror destination.
+	// The instance ID of the new traffic mirror destination.
 	//
 	// example:
 	//
 	// eni-j6c2fp57q8rr47rp*****
 	TrafficMirrorTargetId *string `json:"TrafficMirrorTargetId,omitempty" xml:"TrafficMirrorTargetId,omitempty"`
-	// The new type of the traffic mirror destination. Valid values:
+	// The new traffic mirror destination type. Valid values:
 	//
-	// 	- **NetworkInterface**: an elastic network interface (ENI)
+	// - **NetworkInterface**: network interface controller (NIC).
 	//
-	// 	- **SLB**: an internal-facing Server Load Balancer (SLB) instance
+	// - **SLB**: private network load balancing instance.
 	//
 	// example:
 	//
 	// NetworkInterface
 	TrafficMirrorTargetType *string `json:"TrafficMirrorTargetType,omitempty" xml:"TrafficMirrorTargetType,omitempty"`
-	// The VXLAN network identifier (VNI) that is used to distinguish different mirrored traffic. Valid values: **0*	- to **16777215**.
+	// The new VXLAN network identifier (VNI) that is used to distinguish mirrored data from different traffic mirror sessions. Valid values: **0*	- to **16777215**.
 	//
-	// You can use VNIs to identify mirrored traffic from different sessions at the traffic mirror destination. If you do not specify a VNI, the system randomly allocates a VNI. If you want the system to randomly allocate a VNI, ignore this parameter.
+	// You can use the VNI to identify mirrored data from different sessions at the traffic mirror destination. You can specify a custom VNI or use a system-allocated value. If you want the system to randomly allocate a VNI, do not configure this parameter.
 	//
 	// example:
 	//

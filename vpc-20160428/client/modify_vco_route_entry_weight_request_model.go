@@ -38,17 +38,17 @@ type ModifyVcoRouteEntryWeightRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- value as the **ClientToken*	- value. The **RequestId*	- value is different for each API request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-4266****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The new weight of the destination-based route that you want to modify. Valid values:
+	// The new weight of the destination route entry. Valid values:
 	//
-	// 	- **0**: a low priority
+	// - **0**: low priority.
 	//
-	// 	- **100**: a high priority
+	// - **100**: high priority.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type ModifyVcoRouteEntryWeightRequest struct {
 	//
 	// 0
 	NewWeight *int32 `json:"NewWeight,omitempty" xml:"NewWeight,omitempty"`
-	// The next hop of the destination-based route that you want to modify.
+	// The next hop of the destination route entry to modify.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +64,7 @@ type ModifyVcoRouteEntryWeightRequest struct {
 	//
 	// vco-p0w2jpkhi2eeop6q6****
 	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
-	// The tunneling protocol. Set the value to **Ipsec**, which specifies the IPsec tunneling protocol.
+	// The tunneling protocol. Set the value to **Ipsec*	- (default), which specifies the IPsec tunneling protocol.
 	//
 	// example:
 	//
@@ -73,7 +73,7 @@ type ModifyVcoRouteEntryWeightRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	// The region ID of the IPsec-VPN connection.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -83,7 +83,7 @@ type ModifyVcoRouteEntryWeightRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The destination CIDR block of the destination-based route that you want to modify.
+	// The destination CIDR block of the destination route entry to modify.
 	//
 	// This parameter is required.
 	//
@@ -99,11 +99,11 @@ type ModifyVcoRouteEntryWeightRequest struct {
 	//
 	// vco-p0w2jpkhi2eeop6q6****
 	VpnConnectionId *string `json:"VpnConnectionId,omitempty" xml:"VpnConnectionId,omitempty"`
-	// The current weight of the destination-based route that you want to modify. Valid values:
+	// The current weight of the destination route entry to modify. Valid values:
 	//
-	// 	- **0**: a low priority
+	// - **0**: low priority.
 	//
-	// 	- **100**: a high priority
+	// - **100**: high priority.
 	//
 	// This parameter is required.
 	//

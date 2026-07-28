@@ -20,25 +20,25 @@ type iListNatIpCidrsResponseBody interface {
 }
 
 type ListNatIpCidrsResponseBody struct {
-	// The CIDR blocks of the NAT gateway.
+	// The list of NAT CIDR blocks.
 	NatIpCidrs []*ListNatIpCidrsResponseBodyNatIpCidrs `json:"NatIpCidrs,omitempty" xml:"NatIpCidrs,omitempty" type:"Repeated"`
-	// The token that is used for the next query. Valid values:
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// 	- If the value of **NextToken*	- is not returned, it indicates that no next query is to be sent.
+	// - If **NextToken*	- is empty, no subsequent requests exist.
 	//
-	// 	- If the value of **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	// - If **NextToken*	- is returned, the value indicates the token for the next query.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 7479A224-4A28-4895-9604-11F48BCE6A88
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of CIDR blocks that are returned.
+	// The total number of NAT CIDR block entries returned.
 	//
 	// example:
 	//
@@ -104,53 +104,53 @@ func (s *ListNatIpCidrsResponseBody) Validate() error {
 }
 
 type ListNatIpCidrsResponseBodyNatIpCidrs struct {
-	// The time when the CIDR block was created.
+	// The time when the NAT CIDR block was created.
 	//
 	// example:
 	//
 	// 2021-06-28T20:50Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// Indicates whether the CIDR block is the default CIDR block of the NAT gateway. Valid values:
+	// Indicates whether the NAT CIDR block is the default NAT CIDR block. Valid values:
 	//
-	// 	- **true**: The CIDR block is the default CIDR block of the NAT gateway.
+	// - **true**: The NAT CIDR block is the default NAT CIDR block.
 	//
-	// 	- **false**: The CIDR block is not the default CIDR block of the NAT gateway.
+	// - **false**: The NAT CIDR block is not the default NAT CIDR block.
 	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The ID of the VPC NAT gateway.
+	// The instance ID of the VPC NAT gateway to which the NAT CIDR block belongs.
 	//
 	// example:
 	//
 	// ngw-gw8v16wgvtq26vh59****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The CIDR block of the NAT gateway.
+	// The NAT CIDR block.
 	//
 	// example:
 	//
 	// 172.16.0.0/24
 	NatIpCidr *string `json:"NatIpCidr,omitempty" xml:"NatIpCidr,omitempty"`
-	// The description of the CIDR block of the NAT gateway.
+	// The description of the NAT CIDR block.
 	//
 	// example:
 	//
 	// test
 	NatIpCidrDescription *string `json:"NatIpCidrDescription,omitempty" xml:"NatIpCidrDescription,omitempty"`
-	// The ID of the CIDR block of the NAT gateway.
+	// The instance ID of the NAT CIDR block.
 	//
 	// example:
 	//
 	// vpcnatcidr-gw8ov42ei6xh1jys2****
 	NatIpCidrId *string `json:"NatIpCidrId,omitempty" xml:"NatIpCidrId,omitempty"`
-	// The name of the CIDR block of the NAT gateway.
+	// The name of the NAT CIDR block.
 	//
 	// example:
 	//
 	// Name
 	NatIpCidrName *string `json:"NatIpCidrName,omitempty" xml:"NatIpCidrName,omitempty"`
-	// The status of the CIDR block of the NAT gateway. If **Available*	- is returned, it indicates that the CIDR block is available.
+	// The status of the NAT CIDR block. The value is **Available**, which indicates that the NAT CIDR block is available.
 	//
 	// example:
 	//

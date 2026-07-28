@@ -28,11 +28,11 @@ type iDescribePublicIpAddressRequest interface {
 }
 
 type DescribePublicIpAddressRequest struct {
-	// The IP version. Valid values:
+	// The version of the IP protocol. Valid values:
 	//
-	// 	- **IPv4*	- (default)
+	// - **ipv4*	- (default): IPv4.
 	//
-	// 	- **IPv6**
+	// - **ipv6**: IPv6.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type DescribePublicIpAddressRequest struct {
 	IpVersion    *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number of the list. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page in a paged query.
 	//
 	// Valid values: **1*	- to **100**. Default value: **100**.
 	//
@@ -54,7 +54,9 @@ type DescribePublicIpAddressRequest struct {
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region that you want to query. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// The region to query.
+	//
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//

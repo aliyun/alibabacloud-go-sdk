@@ -23,7 +23,7 @@ type iDescribeNatGatewaysResponseBody interface {
 
 type DescribeNatGatewaysResponseBody struct {
 	NatGateways *DescribeNatGatewaysResponseBodyNatGateways `json:"NatGateways,omitempty" xml:"NatGateways,omitempty" type:"Struct"`
-	// The current page number.
+	// The page number.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeNatGatewaysResponseBody struct {
 	//
 	// 4EC47282-1B74-4534-BD0E-403F3EE64CAF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries in the NAT gateway list.
+	// The total number of NAT gateway entries in the list.
 	//
 	// example:
 	//

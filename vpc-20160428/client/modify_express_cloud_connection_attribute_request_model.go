@@ -34,25 +34,25 @@ type iModifyExpressCloudConnectionAttributeRequest interface {
 }
 
 type ModifyExpressCloudConnectionAttributeRequest struct {
-	// The BGP autonomous system number (ASN) to be configured for the Smart Access Gateway (SAG) device.
+	// The local BGP autonomous system (AS) number to be configured on the Smart Access Gateway device.
 	//
 	// example:
 	//
 	// sag-ejfge***
 	BgpAs *string `json:"BgpAs,omitempty" xml:"BgpAs,omitempty"`
-	// The peer IP address when the SAG device is connected to the cloud.
+	// The cloud-side IP address used for peering with the Smart Access Gateway device.
 	//
 	// example:
 	//
 	// ``172.16.**.**``
 	CeIp *string `json:"CeIp,omitempty" xml:"CeIp,omitempty"`
-	// Descriptions of ECC.
+	// The description of the Express Cloud Connection instance.
 	//
 	// example:
 	//
 	// ECC
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the ECC instance.
+	// The instance ID of the Express Cloud Connection instance.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type ModifyExpressCloudConnectionAttributeRequest struct {
 	//
 	// ecc-bp1t9osmuln*******
 	EccId *string `json:"EccId,omitempty" xml:"EccId,omitempty"`
-	// The name of the ECC instance.
+	// The name of the Express Cloud Connection instance.
 	//
 	// example:
 	//
@@ -68,13 +68,13 @@ type ModifyExpressCloudConnectionAttributeRequest struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The on-premises IP address when the SAG device is connected to the cloud.
+	// The local IP address of the Smart Access Gateway device used for peering with the cloud.
 	//
 	// example:
 	//
 	// ``10.10.**.**``
 	PeIp *string `json:"PeIp,omitempty" xml:"PeIp,omitempty"`
-	// The region ID of the ECC instance.
+	// The region ID of the Express Cloud Connection instance.
 	//
 	// This parameter is required.
 	//

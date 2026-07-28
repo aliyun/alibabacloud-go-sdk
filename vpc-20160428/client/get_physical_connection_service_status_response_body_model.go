@@ -16,17 +16,17 @@ type iGetPhysicalConnectionServiceStatusResponseBody interface {
 }
 
 type GetPhysicalConnectionServiceStatusResponseBody struct {
-	// Indicates whether billing for outbound data transfer is enabled. Valid values:
+	// Indicates whether outbound traffic billing is enabled.
 	//
-	// 	- **true**: yes
+	// - **true**: Enabled.
 	//
-	// 	- **false**: no
+	// - **false**: Not enabled.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

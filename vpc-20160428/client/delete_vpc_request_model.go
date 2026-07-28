@@ -34,7 +34,7 @@ type DeleteVpcRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
+	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may vary for each API request.
 	//
 	// example:
 	//
@@ -42,25 +42,25 @@ type DeleteVpcRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
-	// - **true**: performs a dry run without actually deleting the VPC. The system checks whether the required parameters are set, the request format is valid, and business restrictions are met. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
+	// - **true**: performs a dry run without deleting the virtual private cloud (VPC). The system checks the required parameters, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
 	//
-	// - **false*	- (default): performs a dry run and sends the request. If the check succeeds, an HTTP 2xx status code is returned, and the VPC is directly deleted.
+	// - **false*	- (default): sends a Normal request. After the request passes the check, an HTTP 2xx status code is returned and the VPC is deleted.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Specifies whether to forcefully delete the VPC. Valid values:
+	// Specifies whether to force delete the VPC. Valid values:
 	//
-	// - **true**: forcefully deletes the VPC.
+	// - **true**: force deletes the VPC.
 	//
-	// - **false*	- (default): does not forcefully delete the VPC.
+	// - **false*	- (default): does not force delete the VPC.
 	//
-	// The VPC can be forcefully deleted only when the following resources exist in the VPC:
+	// You can force delete a VPC only when the VPC contains only the following resources:
 	//
-	// - The VPC contains only an IPv4 gateway and routes pointing to the IPv4 gateway.
+	// - The VPC contains only an IPv4 gateway and routes that point to the IPv4 gateway.
 	//
-	// - The VPC contains only an IPv6 gateway and routes pointing to the IPv6 gateway.
+	// - The VPC contains only an IPv6 gateway and routes that point to the IPv6 gateway.
 	//
 	// example:
 	//
@@ -68,9 +68,9 @@ type DeleteVpcRequest struct {
 	ForceDelete  *bool   `json:"ForceDelete,omitempty" xml:"ForceDelete,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the VPC to be deleted.
+	// The region ID of the VPC that you want to delete.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type DeleteVpcRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the VPC to be deleted.
+	// The ID of the VPC that you want to delete.
 	//
 	// This parameter is required.
 	//

@@ -20,13 +20,13 @@ type iListDhcpOptionsSetsResponseBody interface {
 }
 
 type ListDhcpOptionsSetsResponseBody struct {
-	// The list of the DHCP options sets.
+	// The list of DHCP options sets.
 	DhcpOptionsSets []*ListDhcpOptionsSetsResponseBodyDhcpOptionsSets `json:"DhcpOptionsSets,omitempty" xml:"DhcpOptionsSets,omitempty" type:"Repeated"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+	// The pagination token. Valid values:
 	//
-	// 	- If **NextToken*	- is empty, no next page exists.
+	// - If **NextToken*	- is empty, no subsequent query exists.
 	//
-	// 	- If a value is returned for **NextToken**, the value is used to retrieve a new page of results.
+	// - If **NextToken*	- is returned, the value indicates the token for the next query.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListDhcpOptionsSetsResponseBody struct {
 	//
 	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -104,19 +104,19 @@ func (s *ListDhcpOptionsSetsResponseBody) Validate() error {
 }
 
 type ListDhcpOptionsSetsResponseBodyDhcpOptionsSets struct {
-	// The number of VPCs with which the DHCP options set is associated.
+	// The number of VPCs associated with the DHCP options set.
 	//
 	// example:
 	//
 	// 2
 	AssociateVpcCount *int32 `json:"AssociateVpcCount,omitempty" xml:"AssociateVpcCount,omitempty"`
-	// The creation time of the DHCP options sets.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2025-08-21 ***
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The details of DHCP options.
+	// The DHCP options configuration.
 	DhcpOptions *ListDhcpOptionsSetsResponseBodyDhcpOptionsSetsDhcpOptions `json:"DhcpOptions,omitempty" xml:"DhcpOptions,omitempty" type:"Struct"`
 	// The description of the DHCP options set.
 	//
@@ -136,7 +136,7 @@ type ListDhcpOptionsSetsResponseBodyDhcpOptionsSets struct {
 	//
 	// test
 	DhcpOptionsSetName *string `json:"DhcpOptionsSetName,omitempty" xml:"DhcpOptionsSetName,omitempty"`
-	// The ID of the Alibaba Cloud account to which the DHCP options set belongs.
+	// The Alibaba Cloud account ID to which the DHCP options set belongs.
 	//
 	// example:
 	//
@@ -150,19 +150,19 @@ type ListDhcpOptionsSetsResponseBodyDhcpOptionsSets struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The status of the DHCP options set. Valid values:
 	//
-	// 	- **Available**
+	// - **Available**: available.
 	//
-	// 	- **InUse**
+	// - **InUse**: in use.
 	//
-	// 	- **Pending**
+	// - **Pending**: being configured.
 	//
-	// 	- **Deleted**
+	// - **Deleted**: deleted.
 	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag list.
+	// The list of tags.
 	Tags []*ListDhcpOptionsSetsResponseBodyDhcpOptionsSetsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -283,7 +283,7 @@ func (s *ListDhcpOptionsSetsResponseBodyDhcpOptionsSets) Validate() error {
 }
 
 type ListDhcpOptionsSetsResponseBodyDhcpOptionsSetsDhcpOptions struct {
-	// The suffix of the hostname.
+	// The hostname suffix.
 	//
 	// example:
 	//
@@ -297,19 +297,19 @@ type ListDhcpOptionsSetsResponseBodyDhcpOptionsSetsDhcpOptions struct {
 	DomainNameServers *string `json:"DomainNameServers,omitempty" xml:"DomainNameServers,omitempty"`
 	// The lease time of the IPv6 DHCP options set.
 	//
-	// 	- If you use hours as the unit, Unit: h. Valid values are **24h to 1176h*	- and **87600h to 175200h**. Default value: **24h**.
+	// - If the lease time is in hours, the unit is h. Valid values: **24h*	- to **1176h*	- and **87600h*	- to **175200h**. Default value: **24h**.
 	//
-	// 	- If you use days as the unit, Unit: d. Valid values are **1d to 49d*	- and **3650d to 7300d**. Default value: **1d**.
+	// - If the lease time is in days, the unit is d. Valid values: **1d*	- to **49d*	- and **3650d*	- to **7300d**. Default value: **1d**.
 	//
 	// example:
 	//
 	// 3650d
 	Ipv6LeaseTime *string `json:"Ipv6LeaseTime,omitempty" xml:"Ipv6LeaseTime,omitempty"`
-	// The lease time of the IPv4 addresses for the DHCP options set.
+	// The lease time of the IPv4 DHCP options set.
 	//
-	// 	- If you use hours as the unit, valid values are **24h to 1176h*	- and **87600h to 175200h**. Default value: **87600h**.
+	// - If the lease time is in hours, the unit is h. Valid values: **24h*	- to **1176h*	- and **87600h*	- to **175200h**. Default value: **87600h**.
 	//
-	// 	- If you use days as the unit, valid values are **1d to 49d*	- and **3650d to 7300d**. Default value: **3650d**.
+	// - If the lease time is in days, the unit is d. Valid values: **1d*	- to **49d*	- and **3650d*	- to **7300d**. Default value: **3650d**.
 	//
 	// example:
 	//
@@ -366,13 +366,13 @@ func (s *ListDhcpOptionsSetsResponseBodyDhcpOptionsSetsDhcpOptions) Validate() e
 }
 
 type ListDhcpOptionsSetsResponseBodyDhcpOptionsSetsTags struct {
-	// The key of tag N added to the resource.
+	// The tag key.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N added to the resource.
+	// The tag value.
 	//
 	// example:
 	//

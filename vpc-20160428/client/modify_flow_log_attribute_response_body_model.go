@@ -16,17 +16,17 @@ type iModifyFlowLogAttributeResponseBody interface {
 }
 
 type ModifyFlowLogAttributeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// F7DDDC17-FA06-4AC2-8F35-59D2470FCFC1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values:
+	// Indicates whether the operation is successful. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: The operation is successful.
 	//
-	// 	- **false**: no
+	// - **false**: The operation failed.
 	//
 	// example:
 	//

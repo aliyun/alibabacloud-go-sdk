@@ -24,33 +24,33 @@ type iDescribeGrantRulesToEcrResponseBody interface {
 }
 
 type DescribeGrantRulesToEcrResponseBody struct {
-	// The total number of entries returned.
+	// The number of entries returned.
 	//
 	// example:
 	//
 	// 0
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The cross-account authorization list of the ECR
+	// The cross-account authorization list of Express Connect Router (ECR).
 	EcrGrantRules []*DescribeGrantRulesToEcrResponseBodyEcrGrantRules `json:"EcrGrantRules,omitempty" xml:"EcrGrantRules,omitempty" type:"Repeated"`
-	// The page number. Default value: **1**.
+	// The page number of the list. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries on each page. Maximum value: 50. Default value: 10.
+	// The number of entries per page in a paged query. Maximum value: 50. Default value: 10.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// C1CCAB91-6AE6-50E3-AAA3-D0E5A2BC6ADE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries in the list.
 	//
 	// example:
 	//
@@ -134,19 +134,19 @@ func (s *DescribeGrantRulesToEcrResponseBody) Validate() error {
 }
 
 type DescribeGrantRulesToEcrResponseBodyEcrGrantRules struct {
-	// The authorization time. The time follows the ISO8601 standard and uses UTC time. The format is YYYY-MM-DDThh:mm:ssZ.
+	// The authorization time. The time is displayed in UTC in the YYYY-MM-DDThh:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2025-09-15T14:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ECR account ID.
+	// The instance ID of the cross-account authorization for the Express Connect Router (ECR).
 	//
 	// example:
 	//
 	// ecr-xxxxxx
 	EcrInstanceId *string `json:"EcrInstanceId,omitempty" xml:"EcrInstanceId,omitempty"`
-	// The ECR account ID.
+	// The authorized user ID for the cross-account authorization of the Express Connect Router (ECR).
 	//
 	// example:
 	//

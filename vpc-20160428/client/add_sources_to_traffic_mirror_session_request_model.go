@@ -34,7 +34,7 @@ type AddSourcesToTrafficMirrorSessionRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- value as the **ClientToken*	- value. The **RequestId*	- value may be different for each API request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request may be different.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type AddSourcesToTrafficMirrorSessionRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the traffic mirror session.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list.
 	//
 	// For more information about the regions that support traffic mirroring, see [Traffic mirroring overview](https://help.aliyun.com/document_detail/207513.html).
 	//
@@ -66,7 +66,7 @@ type AddSourcesToTrafficMirrorSessionRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The instance ID of the traffic mirror session to which you want to increase traffic mirror sources.
+	// The instance ID of the traffic mirror session to which you want to add traffic mirror sources.
 	//
 	// This parameter is required.
 	//
@@ -74,7 +74,7 @@ type AddSourcesToTrafficMirrorSessionRequest struct {
 	//
 	// tms-j6cla50buc44ap8tu****
 	TrafficMirrorSessionId *string `json:"TrafficMirrorSessionId,omitempty" xml:"TrafficMirrorSessionId,omitempty"`
-	// The instance ID of the traffic mirror source to increase. Currently, only elastic network interfaces (ENIs) are supported as traffic mirror sources. The default value of **N*	- is **1**, which indicates that you can add only one traffic mirror source to a traffic mirror session.
+	// The instance ID of the traffic mirror source to add. Currently, elastic network interfaces (ENIs) are supported as traffic mirror sources. The default value of **N*	- is **1**, which indicates that you can add only one traffic mirror source to a traffic mirror session.
 	//
 	// This parameter is required.
 	//

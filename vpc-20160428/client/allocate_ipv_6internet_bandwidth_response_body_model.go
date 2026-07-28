@@ -18,7 +18,7 @@ type iAllocateIpv6InternetBandwidthResponseBody interface {
 }
 
 type AllocateIpv6InternetBandwidthResponseBody struct {
-	// The instance ID of the Internet bandwidth associated with the IPv6 gateway after Internet bandwidth is allocated.
+	// The instance ID of the Internet bandwidth associated with the IPv6 gateway after Internet bandwidth is enabled.
 	//
 	// example:
 	//

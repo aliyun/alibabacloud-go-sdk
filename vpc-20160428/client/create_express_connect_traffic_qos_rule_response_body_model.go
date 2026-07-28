@@ -20,13 +20,13 @@ type iCreateExpressConnectTrafficQosRuleResponseBody interface {
 }
 
 type CreateExpressConnectTrafficQosRuleResponseBody struct {
-	// The ID of the QoS policy.
+	// The QoS policy ID.
 	//
 	// example:
 	//
 	// qos-2giu0a6vd5x0mv****
 	QosId *string `json:"QosId,omitempty" xml:"QosId,omitempty"`
-	// The ID of the QoS queue.
+	// The QoS queue ID.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type CreateExpressConnectTrafficQosRuleResponseBody struct {
 	//
 	// 606998F0-B94D-48FE-8316-ACA81BB230DA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the QoS rule.
+	// The QoS rule ID.
 	//
 	// example:
 	//

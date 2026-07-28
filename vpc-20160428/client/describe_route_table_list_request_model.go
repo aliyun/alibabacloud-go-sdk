@@ -44,13 +44,13 @@ type iDescribeRouteTableListRequest interface {
 type DescribeRouteTableListRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the returned page. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page in a paging query. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type DescribeRouteTableListRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the VPC to which the route table belongs.
 	//
-	// You can call [DescribeRegions](https://www.alibabacloud.com/help/vpc/developer-reference/api-vpc-2016-04-28-describeregions) to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -86,27 +86,27 @@ type DescribeRouteTableListRequest struct {
 	//
 	// doctest
 	RouteTableName *string `json:"RouteTableName,omitempty" xml:"RouteTableName,omitempty"`
-	// The type of the route table.
+	// The type of the route table. Valid values:
 	//
-	// 	- **System**
+	// - **System**: system route table.
 	//
-	// 	- **Custom**
+	// - **Custom**: custom route table.
 	//
 	// example:
 	//
 	// System
 	RouteTableType *string `json:"RouteTableType,omitempty" xml:"RouteTableType,omitempty"`
-	// The ID of vRouter to which the route table belongs.
+	// The ID of the router to which the route table belongs.
 	//
 	// example:
 	//
 	// vrt-bp1lhl0taikrteen8****
 	RouterId *string `json:"RouterId,omitempty" xml:"RouterId,omitempty"`
-	// The type of the router to which the route table belongs. Valid value:
+	// The type of the router to which the route table belongs. Valid values:
 	//
-	// 	- **VRouter*	- (default): a vRouter
+	// - **VRouter*	- (default): vRouter.
 	//
-	// 	- **VBR**: a VBR
+	// - **VBR**: Virtual Border Router.
 	//
 	// example:
 	//
@@ -116,7 +116,7 @@ type DescribeRouteTableListRequest struct {
 	Tag []*DescribeRouteTableListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the VPC to which the route table belongs.
 	//
-	// When this parameter is set, the value of **RouterType*	- is automatically assigned to **VRouter**.
+	// If you specify this parameter, the value of **RouterType*	- is automatically set to **VRouter**.
 	//
 	// example:
 	//
@@ -281,17 +281,17 @@ func (s *DescribeRouteTableListRequest) Validate() error {
 }
 
 type DescribeRouteTableListRequestTag struct {
-	// The value of tag N to add to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	// A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N to add to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

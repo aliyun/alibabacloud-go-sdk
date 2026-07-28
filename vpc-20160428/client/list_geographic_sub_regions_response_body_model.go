@@ -18,13 +18,13 @@ type iListGeographicSubRegionsResponseBody interface {
 }
 
 type ListGeographicSubRegionsResponseBody struct {
-	// The number of entries.
+	// The number of entries in the list.
 	//
 	// example:
 	//
 	// 10
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The region list.
+	// The list of regions to query.
 	GeographicSubRegions []*string `json:"GeographicSubRegions,omitempty" xml:"GeographicSubRegions,omitempty" type:"Repeated"`
 	// The request ID.
 	//

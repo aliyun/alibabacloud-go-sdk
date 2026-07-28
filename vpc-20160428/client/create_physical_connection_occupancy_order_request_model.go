@@ -38,27 +38,27 @@ type iCreatePhysicalConnectionOccupancyOrderRequest interface {
 }
 
 type CreatePhysicalConnectionOccupancyOrderRequest struct {
-	// Specifies whether to enable automatic payments. Valid values:
+	// Specifies whether to enable automatic payment. Valid values:
 	//
-	// 	- **true**: yes Make sure that you have a sufficient balance in your account. Otherwise, your order becomes invalid and is automatically canceled.
+	// - **true**: enables automatic payment. Make sure that your account balance is sufficient. If your account balance is insufficient, an abnormal order is generated and can only be canceled.
 	//
-	// 	- **false**: disables automatic payment. This is the default value.
+	// - **false*	- (default): generates an order without charging.
 	//
 	// example:
 	//
 	// false
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// Whether to enable auto-renewal. Valid values:
+	// Specifies whether to enable auto-renewal. Valid values:
 	//
-	// - **false*	- (**default**): disable auto-renewal.
+	// - **false*	- (default): disables auto-renewal.
 	//
-	// - **true**: enable auto-renewal.
+	// - **true**: enables auto-renewal.
 	//
 	// example:
 	//
 	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The auto-renewal duration. Unit: months. Valid values: **0*	- to **2147483647**. Default Value: **1**.
+	// The auto-renewal duration. Unit: months. Valid values: **0*	- to **2147483647**. Default value: **1**.
 	//
 	// example:
 	//
@@ -66,15 +66,15 @@ type CreatePhysicalConnectionOccupancyOrderRequest struct {
 	AutoRenewDuration *int32 `json:"AutoRenewDuration,omitempty" xml:"AutoRenewDuration,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+	// The client generates the value. The value must be unique among different requests.
 	//
 	// example:
 	//
 	// CBCE910E-D396-4944
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The billing method. Set the value to
+	// The billing method of the instance. Valid values:
 	//
-	// **PrePaid**, which specifies the subscription billing method. If you choose this billing method, make sure that your Alibaba Cloud account supports balance payments or credit payments.
+	// **PrePaid**: subscription. If you select this billing method, make sure that your Alibaba Cloud account supports balance payment or credit payment.
 	//
 	// example:
 	//
@@ -84,15 +84,15 @@ type CreatePhysicalConnectionOccupancyOrderRequest struct {
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The subscription duration.
 	//
-	// 	- If **PricingCycle*	- is set to **Month**, set **Period*	- to a value from **1 to 9**.
+	// - If **PricingCycle*	- is set to **Month**, valid values of **Period*	- are **1 to 9**.
 	//
-	// 	- If **PricingCycle*	- is set to **Year**, set **Period*	- to a value from **1 to 5**.
+	// - If **PricingCycle*	- is set to **Year**, valid values of **Period*	- are **1 to 5**.
 	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The ID of the Express Connect circuit.
+	// The instance ID of the Express Connect circuit.
 	//
 	// This parameter is required.
 	//
@@ -102,9 +102,9 @@ type CreatePhysicalConnectionOccupancyOrderRequest struct {
 	PhysicalConnectionId *string `json:"PhysicalConnectionId,omitempty" xml:"PhysicalConnectionId,omitempty"`
 	// The billing cycle of the subscription. Valid values:
 	//
-	// 	- **Month*	- (default)
+	// - **Month*	- (default): billed on a monthly basis.
 	//
-	// 	- **Year**
+	// - **Year**: billed on a yearly basis.
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ type CreatePhysicalConnectionOccupancyOrderRequest struct {
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 	// The region ID of the Express Connect circuit.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//

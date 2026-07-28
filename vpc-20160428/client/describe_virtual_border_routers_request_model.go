@@ -34,24 +34,24 @@ type iDescribeVirtualBorderRoutersRequest interface {
 type DescribeVirtualBorderRoutersRequest struct {
 	// The filter information.
 	Filter []*DescribeVirtualBorderRoutersRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// Specifies whether to include cross-account Virtual Border Routers.
+	// Specifies whether to include cross-account VBRs.
 	//
-	// - **true**: Included.
+	// - **true**: includes cross-account VBRs.
 	//
-	// - **false*	- (default): Not included.
+	// - **false*	- (default): does not include cross-account VBRs.
 	//
 	// example:
 	//
 	// false
 	IncludeCrossAccountVbr *bool  `json:"IncludeCrossAccountVbr,omitempty" xml:"IncludeCrossAccountVbr,omitempty"`
 	OwnerId                *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number of the list. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page in a paging query. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
@@ -202,25 +202,25 @@ func (s *DescribeVirtualBorderRoutersRequest) Validate() error {
 type DescribeVirtualBorderRoutersRequestFilter struct {
 	// The filter condition. You can specify up to 5 filter conditions. The following filter conditions are supported:
 	//
-	// 	- **PhysicalConnectionId**: instance ID of the Express Connect circuit instance.
+	// 	- **PhysicalConnectionId**: the Express Connect circuit ID.
 	//
-	// 	- **VbrId**: instance ID of the Virtual Border Router instance.
+	// 	- **VbrId**: the VBR ID.
 	//
-	// 	- **Status**: the status of the Virtual Border Router.
+	// 	- **Status**: the VBR status.
 	//
-	// 	- **Name**: the name of the Virtual Border Router.
+	// 	- **Name**: the VBR name.
 	//
-	// 	- **AccessPointId**: instance ID of the access point.
+	// 	- **AccessPointId**: the access point ID.
 	//
-	// 	- **eccId**: instance ID of the Express Cloud Connect instance.
+	// 	- **eccId**: the Express Cloud Connect instance ID.
 	//
-	// 	- **type**: the type of the Express Connect circuit.
+	// 	- **type**: the Express Connect circuit type.
 	//
 	// example:
 	//
 	// Status
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The filter value based on the specified Key. You can specify multiple filter values for a Key. The relationship between filter values is OR, which means that a match is found if any of the filter values is met.
+	// The filter value based on the specified Key. You can specify multiple filter values for a Key. The filter values are evaluated by using a logical OR. A match is found if any of the specified filter values is met.
 	//
 	// example:
 	//
@@ -261,7 +261,7 @@ func (s *DescribeVirtualBorderRoutersRequestFilter) Validate() error {
 type DescribeVirtualBorderRoutersRequestTags struct {
 	// The tag key of the resource. You must specify at least 1 tag key and can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// A tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

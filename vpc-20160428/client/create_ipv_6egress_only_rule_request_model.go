@@ -38,9 +38,9 @@ type iCreateIpv6EgressOnlyRuleRequest interface {
 type CreateIpv6EgressOnlyRuleRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate a token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the value of RequestId as the client token. The value of RequestId is different for each API request.
+	// > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may be different for each API request.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type CreateIpv6EgressOnlyRuleRequest struct {
 	//
 	// ruledescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// A dry run of the request without actually executing it.
+	// Specifies whether to perform a dry run without performing the actual request.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the IPv6 address for which you want to create an egress-only rule.
 	//
@@ -66,13 +66,13 @@ type CreateIpv6EgressOnlyRuleRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of the instance for which you want to create an egress-only rule.
 	//
-	// Default value: **Ipv6Address**
+	// Set the value to **Ipv6Address*	- (default), which indicates the IPv6 address type.
 	//
 	// example:
 	//
 	// Ipv6Address
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The ID of the IPv6 gateway.
+	// The instance ID of the IPv6 gateway.
 	//
 	// This parameter is required.
 	//
@@ -90,7 +90,7 @@ type CreateIpv6EgressOnlyRuleRequest struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region in which the IPv6 gateway is deployed.
+	// The region ID of the IPv6 gateway.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//

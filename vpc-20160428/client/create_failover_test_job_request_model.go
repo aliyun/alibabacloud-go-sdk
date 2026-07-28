@@ -38,15 +38,15 @@ type iCreateFailoverTestJobRequest interface {
 type CreateFailoverTestJobRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The description of the failover test.
+	// The description of the failover test job.
 	//
 	// The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
@@ -54,13 +54,17 @@ type CreateFailoverTestJobRequest struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// If you set the value to true, the system performs only a dry run without actually performing the actual request. If you set the value to false, the system performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// - **true**: sends the request without creating the failover test node. The system checks the request for potential issues, including whether the AccessKey is valid, the authorization of the Resource Access Management (RAM) user, and whether required parameters are specified. If the check fails, the corresponding error is returned. If the check passes, the DryRunOperation error code is returned.
+	//
+	// - **false*	- (default): sends a Normal request, and the failover test job is created after the check passes. A 2xx HTTP status code is returned.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The duration of the failover test. Unit: minutes. Valid values: **1 to 4320**.
+	// The duration of the failover test job. Unit: minutes. Valid values: **1 to 4320**.
 	//
 	// This parameter is required.
 	//
@@ -68,11 +72,11 @@ type CreateFailoverTestJobRequest struct {
 	//
 	// 60
 	JobDuration *int32 `json:"JobDuration,omitempty" xml:"JobDuration,omitempty"`
-	// The type of the failover test. Valid values:
+	// The type of the failover test job. Valid values:
 	//
-	// 	- **StartNow**
+	// - **StartNow**: The failover test starts immediately after the job is created.
 	//
-	// 	- **StartLater**
+	// - **StartLater**: Only the job is created. The failover test does not start.
 	//
 	// This parameter is required.
 	//
@@ -80,7 +84,7 @@ type CreateFailoverTestJobRequest struct {
 	//
 	// StartNow
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The name of the failover test.
+	// The name of the failover test job.
 	//
 	// The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
 	//
@@ -90,20 +94,20 @@ type CreateFailoverTestJobRequest struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the failover test.
+	// The region ID of the failover test job.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IDs of failover test resources. You can add at most 16 resources.
+	// The list of resource IDs to test. You can add up to 16 resources.
 	//
 	// This parameter is required.
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The resource type of the failover test. Set the value to **PHYSICALCONNECTION**.
+	// The type of the resource to test. Valid values: **PHYSICALCONNECTION**: Express Connect circuit.
 	//
 	// This parameter is required.
 	//

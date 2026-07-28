@@ -32,7 +32,7 @@ type iSetHighDefinitionMonitorLogStatusRequest interface {
 }
 
 type SetHighDefinitionMonitorLogStatusRequest struct {
-	// The ID of the instance for which you want to configure fine-grained monitoring.
+	// The instance ID of the instance for which you want to configure high-definition second-level monitoring.
 	//
 	// This parameter is required.
 	//
@@ -40,13 +40,13 @@ type SetHighDefinitionMonitorLogStatusRequest struct {
 	//
 	// eip-wz9fi6qboho9fwgx7****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance type. Set the value to **EIP**.
+	// The type of the instance. Set the value to **EIP**.
 	//
 	// example:
 	//
 	// EIP
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The name of the Simple Log Service (SLS) project.
+	// The name of the LogProject in Simple Log Service.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type SetHighDefinitionMonitorLogStatusRequest struct {
 	//
 	// hdmonitor-cn-shenzhen
 	LogProject *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
-	// The name of the Logstore.
+	// The name of the LogStore in Simple Log Service.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type SetHighDefinitionMonitorLogStatusRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -76,11 +76,11 @@ type SetHighDefinitionMonitorLogStatusRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The status of fine-grained monitoring. Valid values:
+	// The high-definition second-level monitoring status of the instance. Valid values:
 	//
-	// 	- **ON**
+	// - **ON**: Enables high-definition second-level monitoring.
 	//
-	// 	- **OFF**
+	// - **OFF**: Disables high-definition second-level monitoring.
 	//
 	// This parameter is required.
 	//

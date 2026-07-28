@@ -56,9 +56,9 @@ type ModifyForwardEntryRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
-	// - **true**: performs a dry run without modifying the DNAT entry. The system checks the required parameters, request format, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run without modifying the DNAT entry. The system checks the required parameters, request format, and service limits. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
 	//
-	// - **false*	- (default): performs a dry run and sends the request. If the request passes the dry run, an HTTP 2xx status code is returned and the DNAT entry is modified.
+	// - **false*	- (default): performs a dry run and sends the request. After the check succeeds, an HTTP 2xx status code is returned and the DNAT entry is modified.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type ModifyForwardEntryRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// - If you modify a DNAT entry of an Internet NAT gateway, this parameter specifies the public IP address used to provide public network access.
 	//
-	// - If you modify a DNAT entry of a VPC NAT gateway, this parameter specifies the NAT IP address accessed by the external network.
+	// - If you modify a DNAT entry of a VPC NAT gateway, this parameter specifies the NAT IP address accessed by external networks.
 	//
 	// example:
 	//
@@ -80,13 +80,13 @@ type ModifyForwardEntryRequest struct {
 	//
 	//     - If you modify both **ExternalPort*	- and **InternalPort**, and **ExternalPort*	- is set to a port range, **InternalPort*	- must also be set to a port range with the same number of ports. For example, if **ExternalPort*	- is set to `10/20`, **InternalPort*	- must be set to `80/90`.
 	//
-	// - If you modify a DNAT entry of a VPC NAT gateway, this parameter specifies the port accessed by the external network. Valid values: **1*	- to **65535**.
+	// - If you modify a DNAT entry of a VPC NAT gateway, this parameter specifies the port accessed by external networks. Valid values: **1*	- to **65535**.
 	//
 	// example:
 	//
 	// 80
 	ExternalPort *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
-	// The ID of the DNAT entry to be modified.
+	// The ID of the DNAT entry that you want to modify.
 	//
 	// This parameter is required.
 	//
@@ -96,7 +96,7 @@ type ModifyForwardEntryRequest struct {
 	ForwardEntryId *string `json:"ForwardEntryId,omitempty" xml:"ForwardEntryId,omitempty"`
 	// The new name of the DNAT entry.
 	//
-	// The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
+	// The name must be 2 to 128 characters in length and must start with a letter or Chinese character. It cannot start with `http://` or `https://`.
 	//
 	// example:
 	//

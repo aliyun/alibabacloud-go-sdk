@@ -30,7 +30,7 @@ type iAddCommonBandwidthPackageIpsRequest interface {
 }
 
 type AddCommonBandwidthPackageIpsRequest struct {
-	// The ID of the Internet Shared Bandwidth instance.
+	// The instance ID of the Internet Shared Bandwidth instance.
 	//
 	// This parameter is required.
 	//
@@ -42,19 +42,19 @@ type AddCommonBandwidthPackageIpsRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The list of EIPs that you want to associate with the Internet Shared Bandwidth instance.
+	// The list of EIP instance IDs to be added.
 	//
-	// You can specify at most 10 EIP IDs at a time.
+	// You can add up to 10 EIP instance IDs at a time.
 	//
 	// This parameter is required.
 	IpInstanceIds []*string `json:"IpInstanceIds,omitempty" xml:"IpInstanceIds,omitempty" type:"Repeated"`
-	// The IP type. Set the value to **EIP**, which indicates that an EIP is added to the Shared Bandwidth.
+	// The IP type. Set the value to **EIP**, which specifies that EIPs are added to the Internet Shared Bandwidth instance.
 	//
 	// example:
 	//

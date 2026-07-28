@@ -31,29 +31,29 @@ type DescribeVpnSslServerLogsResponseBody struct {
 	// 10
 	Count *int32                                    `json:"Count,omitempty" xml:"Count,omitempty"`
 	Data  *DescribeVpnSslServerLogsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Indicates whether the log is accurate. Valid values:
+	// Indicates whether the queried logs are accurate. Valid values:
 	//
-	// 	- **true**: accurate
+	// - **true**: Accurate.
 	//
-	// 	- **false**: inaccurate
+	// - **false**: Not accurate.
 	//
 	// example:
 	//
 	// true
 	IsCompleted *bool `json:"IsCompleted,omitempty" xml:"IsCompleted,omitempty"`
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

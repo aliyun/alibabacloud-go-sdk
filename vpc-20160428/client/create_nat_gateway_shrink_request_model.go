@@ -66,13 +66,13 @@ type iCreateNatGatewayShrinkRequest interface {
 }
 
 type CreateNatGatewayShrinkRequest struct {
-	// The access mode of the VPC NAT gateway for reverse endpoint access.
+	// The access mode for reverse access to the VPC NAT gateway.
 	//
 	// example:
 	//
 	// MULTI_BINDED
 	AccessModeShrink *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
-	// Subscription-based public NAT gateways are no longer available for purchase. This parameter is deprecated.
+	// Subscription-based Internet NAT gateways are no longer available for purchase. This parameter is no longer used.
 	//
 	// example:
 	//
@@ -81,9 +81,9 @@ type CreateNatGatewayShrinkRequest struct {
 	AvailabilityMode *string `json:"AvailabilityMode,omitempty" xml:"AvailabilityMode,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can create the token, but you must make sure that the token is unique among different requests.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
@@ -91,57 +91,59 @@ type CreateNatGatewayShrinkRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the NAT gateway.
 	//
-	// The description must be 2 to 256 characters in length. It cannot start with `http://` or `https://`.
+	// The description can be empty or 2 to 256 characters in length. It cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// testnat
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Subscription-based public NAT gateways are no longer available for purchase. This parameter is deprecated.
+	// Subscription-based Internet NAT gateways are no longer available for purchase. This parameter is no longer used.
 	//
 	// example:
 	//
 	// 无效参数
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The mode in which the EIP is associated with the NAT gateway. Valid values:
+	// The EIP binding pattern of the NAT gateway. Valid values:
 	//
-	// - **MULTI_BINDED*	- (default): the multi-EIP-to-ENI mode.
+	// - **MULTI_BINDED*	- (default): multi-EIP network interface controller (NIC)-visible pattern.
 	//
-	// - **NAT**: the EIP-to-NAT gateway mode. This mode is compatible with IPv4 gateways.
+	// - **NAT**: EIP normal pattern, compatible with IPv4 gateways.
 	//
-	//   > If the EIP is associated with the NAT gateway in EIP-to-NAT gateway mode, the EIP occupies a private IP address of the vSwitch to which the NAT gateway belongs. Make sure that the vSwitch has sufficient private IP addresses. Otherwise, the EIP fails to be associated. In EIP-to-NAT gateway mode, a NAT gateway can be associated with up to 50 EIPs.
+	//   > When the EIP binding pattern of the NAT gateway is set to EIP normal pattern, each EIP occupies a private IP address in the vSwitch to which the NAT gateway belongs. Make sure that the vSwitch has sufficient private IP addresses. If no idle private IP addresses are available in the vSwitch, new EIPs cannot be attached. In EIP normal pattern, a maximum of 50 EIPs can be attached to the NAT gateway.
 	//
 	// example:
 	//
 	// MULTI_BINDED
 	EipBindMode *string `json:"EipBindMode,omitempty" xml:"EipBindMode,omitempty"`
-	// Specifies whether to enable ICMP reply. Valid values:
+	// Specifies whether to enable ICMP echo reply. Valid values:
 	//
-	// - **true*	- (default): enables ICMP reply.
+	// - **true*	- (default): Enabled.
 	//
-	// - **false**: disables ICMP reply.
+	// - **false**: Disabled.
 	//
 	// example:
 	//
 	// true
 	IcmpReplyEnabled *bool `json:"IcmpReplyEnabled,omitempty" xml:"IcmpReplyEnabled,omitempty"`
-	// The billing method of the NAT gateway. Set the value to:
+	// The billing method of the NAT gateway. Valid values:
 	//
 	// **PostPaid*	- (default): pay-as-you-go.
 	//
-	// For more information, see [Billing of public NAT gateways](https://help.aliyun.com/document_detail/48126.html) and [Billing of VPC NAT gateways](https://help.aliyun.com/document_detail/270913.html).
+	//
+	//
+	// For more information, see [Billing of Internet NAT gateways](https://help.aliyun.com/document_detail/48126.html) and [Billing of VPC NAT gateways](https://help.aliyun.com/document_detail/270913.html).
 	//
 	// example:
 	//
 	// PostPaid
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// The billing method of the NAT gateway. Set the value to **PayByLcu**, which indicates that the NAT gateway is a pay-as-you-go NAT gateway and is measured in LCUs.
+	// The metering method of the NAT gateway. Valid values: **PayByLcu**: pay-by-data-transfer.
 	//
 	// example:
 	//
 	// PayByLcu
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// The IP address prefix. NAT IP addresses are created from the prefix. Use a reserved CIDR block that is not allocated in the vSwitch to which the NAT gateway belongs.
+	// The IP prefix CIDR block used to create NAT IP addresses in batches. Specify an unassigned reserved CIDR block from the vSwitch to which the NAT gateway belongs.
 	//
 	// example:
 	//
@@ -149,31 +151,31 @@ type CreateNatGatewayShrinkRequest struct {
 	Ipv4Prefix *string `json:"Ipv4Prefix,omitempty" xml:"Ipv4Prefix,omitempty"`
 	// The name of the NAT gateway.
 	//
-	// Must be 2 to 128 characters in length, start with a letter or a Chinese character, and can contain digits, underscores (_), and hyphens (-).
+	// The name must be 2 to 128 characters in length and must start with a letter or Chinese character. It can contain digits, underscores (_), and hyphens (-).
 	//
-	// If you do not specify this parameter, the system automatically specifies a name for the NAT gateway.
+	// If you do not specify this parameter, the system assigns a default name to the NAT gateway.
 	//
 	// example:
 	//
 	// fortest
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The private IP address of the NAT gateway. Use an idle IP address from the CIDR block of the vSwitch to which the NAT gateway belongs. If this parameter is left empty, an IP address is randomly assigned.
+	// The private IP address occupied by the NAT gateway. Specify an unallocated IP address from the vSwitch CIDR block to which the NAT gateway belongs. If this parameter is left empty, a random IP address is allocated.
 	//
 	// example:
 	//
 	// 192.168.0.2
 	NatIp *string `json:"NatIp,omitempty" xml:"NatIp,omitempty"`
-	// The type of NAT gateway. Set the value to **Enhanced**, which specifies an enhanced NAT gateway.
+	// The type of the NAT gateway. Valid values: **Enhanced**: enhanced NAT gateway.
 	//
 	// example:
 	//
 	// Enhanced
 	NatType *string `json:"NatType,omitempty" xml:"NatType,omitempty"`
-	// The type of the NAT gateway to be created. Valid values:
+	// The type of NAT gateway to create. Valid values:
 	//
-	// - **internet**: a public NAT gateway
+	// - **internet**: Internet NAT gateway.
 	//
-	// - **intranet**: a VPC NAT gateway
+	// - **intranet**: VPC NAT gateway.
 	//
 	// example:
 	//
@@ -181,7 +183,7 @@ type CreateNatGatewayShrinkRequest struct {
 	NetworkType  *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Subscription-based public NAT gateways are no longer available for purchase. This parameter is no longer used.
+	// Subscription-based Internet NAT gateways are no longer available for purchase. This parameter is no longer used.
 	//
 	// example:
 	//
@@ -189,17 +191,17 @@ type CreateNatGatewayShrinkRequest struct {
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 	// Specifies whether to enable PrivateLink. Valid values:
 	//
-	// - true: enables PrivateLink.
+	// - true: Enabled.
 	//
-	// - false (default): disables PrivateLink.
+	// - false (default): Disabled.
 	//
 	// example:
 	//
 	// false
 	PrivateLinkEnabled *bool `json:"PrivateLinkEnabled,omitempty" xml:"PrivateLinkEnabled,omitempty"`
-	// The ID of the region in which to create the NAT gateway.
+	// The region ID of the NAT gateway.
 	//
-	// Call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -213,23 +215,21 @@ type CreateNatGatewayShrinkRequest struct {
 	//
 	// Specifies whether to enable the firewall feature. Valid values:
 	//
-	// - **false*	- (default): disables the firewall feature.
+	// - **false*	- (default): Disabled.
 	//
-	//   	Notice:
-	//
-	//   This parameter is deprecated.
+	// 	Notice:  This parameter is deprecated.
 	//
 	// example:
 	//
 	// false
 	SecurityProtectionEnabled *bool `json:"SecurityProtectionEnabled,omitempty" xml:"SecurityProtectionEnabled,omitempty"`
-	// Subscription-based public NAT gateways are no longer available for purchase. This parameter is deprecated.
+	// Subscription-based Internet NAT gateways are no longer available for purchase. This parameter is no longer used.
 	//
 	// example:
 	//
 	// 无效参数
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The tags.
+	// The list of tags.
 	//
 	// example:
 	//
@@ -237,19 +237,19 @@ type CreateNatGatewayShrinkRequest struct {
 	Tag []*CreateNatGatewayShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the vSwitch to which the NAT gateway belongs.
 	//
-	// When you create a NAT gateway, you must specify a vSwitch to which the NAT gateway belongs. The system then assigns a private IP address to the NAT gateway from the vSwitch.
+	// When you create a NAT gateway, you must specify the vSwitch to which the NAT gateway belongs. The system allocates an available private IP address from the vSwitch to the NAT gateway.
 	//
-	// - To create a NAT gateway in an existing vSwitch, make sure that the zone to which the vSwitch belongs supports NAT gateways and that the vSwitch has idle IP addresses.
+	// - To create a NAT gateway in an existing vSwitch, make sure that the zone to which the vSwitch belongs supports NAT gateways and the vSwitch has active IP addresses.
 	//
-	// - If you have not created a vSwitch, create a vSwitch in a zone that supports NAT gateways and then specify the vSwitch.
+	// - If you have not created a vSwitch, create a vSwitch in a zone that supports NAT gateways first, and then specify the vSwitch for the NAT gateway.
 	//
-	// > Call the [ListEnhancedNatGatewayAvailableZones](https://help.aliyun.com/document_detail/182292.html) operation to query available zones and [DescribeVSwitches](https://help.aliyun.com/document_detail/35748.html) to query the number of idle IP addresses in a vSwitch.
+	// > You can call the [ListEnhanhcedNatGatewayAvailableZones](https://help.aliyun.com/document_detail/182292.html) operation to query the zones that support NAT gateways, and call the [DescribeVSwitches](https://help.aliyun.com/document_detail/35748.html) operation to query the available IP address count in a vSwitch.
 	//
 	// example:
 	//
 	// vsw-bp1e3se98n9fq8hle****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the virtual private cloud (VPC) where you want to create the NAT gateway.
+	// The ID of the VPC in which you want to create the NAT gateway.
 	//
 	// This parameter is required.
 	//
@@ -524,13 +524,13 @@ func (s *CreateNatGatewayShrinkRequest) Validate() error {
 }
 
 type CreateNatGatewayShrinkRequestTag struct {
-	// The tag key. You can specify up to 20 tag keys. The tag key cannot be an empty string. The tag key must be 1 to 128 characters in length and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+	// The tag key. Specify this parameter in the Tag.N.Key format. N is the index of the tag, with valid values from 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. You can specify up to 20 tag values. The tag value can be an empty string. The tag value must be 0 to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag value. Specify this parameter in the Tag.N.Value format. N is the index of the tag, with valid values from 1 to 20. The tag value cannot be an empty string. The tag value can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
 	//
 	// example:
 	//

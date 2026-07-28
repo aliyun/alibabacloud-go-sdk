@@ -24,17 +24,17 @@ type iListIpsecServersResponseBody interface {
 type ListIpsecServersResponseBody struct {
 	// The list of IPsec servers.
 	IpsecServers []*ListIpsecServersResponseBodyIpsecServers `json:"IpsecServers,omitempty" xml:"IpsecServers,omitempty" type:"Repeated"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 1
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+	// The pagination token. Valid values:
 	//
-	// 	- If no value is returned for **NextToken**, no next queries are sent.
+	// - If **NextToken*	- is empty, no subsequent query is to be sent.
 	//
-	// 	- If a value is returned for **NextToken**, the value can be used in the next request to retrieve a new page of results.
+	// - If **NextToken*	- is returned, the value indicates the token for the next query.
 	//
 	// example:
 	//
@@ -121,7 +121,7 @@ func (s *ListIpsecServersResponseBody) Validate() error {
 }
 
 type ListIpsecServersResponseBodyIpsecServers struct {
-	// The client CIDR block. It refers to the CIDR block that is allocated to the virtual interface of the client.
+	// The client CIDR block, which is the CIDR block from which IP addresses are assigned to the virtual network interface controllers (NICs) of clients.
 	//
 	// example:
 	//
@@ -129,23 +129,23 @@ type ListIpsecServersResponseBodyIpsecServers struct {
 	ClientIpPool *string `json:"ClientIpPool,omitempty" xml:"ClientIpPool,omitempty"`
 	// The time when the IPsec server was created.
 	//
-	// T is used as a delimiter. Z indicates that the time is in UTC.
+	// T is the delimiter. Z indicates UTC.
 	//
 	// example:
 	//
 	// 2018-12-03T10:11:55Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// Indicates whether the current IPsec tunnel is deleted and negotiations are reinitiated. Valid values:
+	// Indicates whether the current IPsec tunnel is deleted and negotiations are reinitiated.
 	//
-	// 	- **true**: immediately initiates negotiations after the configuration is completed.
+	// - **true**: Negotiations are reinitiated after the configuration is complete.
 	//
-	// 	- **false**: initiates negotiations when inbound traffic is detected.
+	// - **false**: Negotiations are reinitiated when traffic is detected.
 	//
 	// example:
 	//
 	// false
 	EffectImmediately *bool `json:"EffectImmediately,omitempty" xml:"EffectImmediately,omitempty"`
-	// The ID of the IDaaS instance.
+	// The instance ID of IDaaS.
 	//
 	// example:
 	//
@@ -161,7 +161,7 @@ type ListIpsecServersResponseBodyIpsecServers struct {
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
 	// The configurations of Phase 2 negotiations.
 	IpsecConfig *ListIpsecServersResponseBodyIpsecServersIpsecConfig `json:"IpsecConfig,omitempty" xml:"IpsecConfig,omitempty" type:"Struct"`
-	// The IPsec server ID.
+	// The ID of the IPsec server.
 	//
 	// example:
 	//
@@ -173,25 +173,25 @@ type ListIpsecServersResponseBodyIpsecServers struct {
 	//
 	// test
 	IpsecServerName *string `json:"IpsecServerName,omitempty" xml:"IpsecServerName,omitempty"`
-	// The local CIDR blocks, which refer to the CIDR blocks on the virtual private cloud (VPC) side.
+	// The local CIDR block, which is the VPC-side CIDR block that needs to communicate with the client CIDR block.
 	//
 	// example:
 	//
 	// 192.168.0.0/16,172.17.0.0/16
 	LocalSubnet *string `json:"LocalSubnet,omitempty" xml:"LocalSubnet,omitempty"`
-	// The number of SSL-VPN connections supported by the VPN gateway.
+	// The maximum number of SSL-VPN connections supported by the VPN gateway.
 	//
-	// >  The number of SSL-VPN connections specified in this parameter includes both SSL-VPN and IPsec-VPN connections. For example, you have five SSL-VPN connections and three SSL clients occupy three SSL-VPN connections. In this case, two clients can connect to the IPsec server.
+	// > SSL-VPN and the IPsec server share SSL-VPN connections. For example, if the maximum number of SSL-VPN connections is 5 and three SSL clients are already connected to SSL-VPN, only two more clients can connect to the IPsec server.
 	//
 	// example:
 	//
 	// 5
 	MaxConnections *int32 `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
-	// Indicates whether two-factor authentication is enabled. Valid values:
+	// Indicates whether two-factor authentication is enabled.
 	//
-	// 	- **true**
+	// - **true**: Two-factor authentication is enabled.
 	//
-	// 	- **false**: The feature is disabled.
+	// - **false**: Two-factor authentication is disabled.
 	//
 	// example:
 	//
@@ -209,13 +209,13 @@ type ListIpsecServersResponseBodyIpsecServers struct {
 	//
 	// pgw6dy7d****
 	Psk *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
-	// Indicates whether pre-shared key authentication is enabled. Only **true*	- may be returned, which indicates that pre-shared key authentication is enabled.
+	// Indicates whether pre-shared key authentication is enabled. The value is **true**, which indicates that pre-shared key authentication is enabled.
 	//
 	// example:
 	//
 	// true
 	PskEnabled *bool `json:"PskEnabled,omitempty" xml:"PskEnabled,omitempty"`
-	// The ID of the region where the IPsec server is created.
+	// The region ID of the IPsec server.
 	//
 	// example:
 	//
@@ -223,7 +223,7 @@ type ListIpsecServersResponseBodyIpsecServers struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the IPsec server belongs.
 	//
-	// You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query the resource group information.
+	// You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource group information.
 	//
 	// example:
 	//
@@ -442,7 +442,7 @@ type ListIpsecServersResponseBodyIpsecServersIkeConfig struct {
 	IkeLifetime *int64 `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
 	// The IKE negotiation mode. Valid values:
 	//
-	// **main**: This mode offers higher security during negotiations.
+	// **main**: main mode. Negotiations are highly secure.
 	//
 	// example:
 	//
@@ -460,13 +460,13 @@ type ListIpsecServersResponseBodyIpsecServersIkeConfig struct {
 	//
 	// ikev2
 	IkeVersion *string `json:"IkeVersion,omitempty" xml:"IkeVersion,omitempty"`
-	// The ID of the IPsec server. The default value is the public IP address of the VPN gateway. Both FQDNs and IP addresses are supported.
+	// The identifier of the IPsec server. FQDN and IP address formats are supported. The default value is the public IP address of the selected VPN gateway.
 	//
 	// example:
 	//
 	// 116.64.XX.XX
 	LocalId *string `json:"LocalId,omitempty" xml:"LocalId,omitempty"`
-	// The identifier of the customer gateway. Both fully qualified domain names (FQDNs) and IP addresses are supported. By default, this parameter is empty.
+	// The identifier of the peer. FQDN and IP address formats are supported. The default value is empty.
 	//
 	// example:
 	//

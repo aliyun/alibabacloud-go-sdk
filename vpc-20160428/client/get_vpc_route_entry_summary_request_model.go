@@ -30,9 +30,9 @@ type iGetVpcRouteEntrySummaryRequest interface {
 type GetVpcRouteEntrySummaryRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the route table.
+	// The ID of the region where the route table resides.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -44,15 +44,19 @@ type GetVpcRouteEntrySummaryRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The type of the route. Valid values:
 	//
-	// 	- **All**: all route types
+	// - **all**: all route types.
 	//
-	// 	- **Custom**: a custom route
+	// - **custom**: custom route.
 	//
-	// 	- **System**: a system route
+	// - **system**: system route.
 	//
-	// 	- **BGP**: a BGP route
+	// - **bgp**: BGP route.
 	//
-	// 	- **CEN**: a Cloud Enterprise Network (CEN) route
+	// - **cen**: Cloud Enterprise Network (CEN) route.
+	//
+	// - **type_vpn_bgp_internal**: VPN BGP route.
+	//
+	// - **ECR**: Express Connect Router (ECR) route.
 	//
 	// This parameter is required.
 	//
@@ -60,13 +64,13 @@ type GetVpcRouteEntrySummaryRequest struct {
 	//
 	// custom
 	RouteEntryType *string `json:"RouteEntryType,omitempty" xml:"RouteEntryType,omitempty"`
-	// The ID of the route table that you want to query.
+	// The ID of the route table to query.
 	//
 	// example:
 	//
 	// vtb-bp145q7glnuzdvzu2****
 	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
-	// The ID of the virtual private cloud (VPC) to which the route table belongs.
+	// The ID of the VPC to which the route table belongs.
 	//
 	// This parameter is required.
 	//

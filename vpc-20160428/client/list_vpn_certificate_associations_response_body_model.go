@@ -22,17 +22,17 @@ type iListVpnCertificateAssociationsResponseBody interface {
 }
 
 type ListVpnCertificateAssociationsResponseBody struct {
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. Valid values:
+	// The token for the next query. Valid values:
 	//
-	// 	- If **NextToken*	- is empty, no next page exists.
+	// - If **NextToken*	- is empty, no next query exists.
 	//
-	// 	- If **NextToken*	- is not empty, the value indicates the token that is used for the next query.
+	// - If **NextToken*	- is returned, the value indicates the token for the next query.
 	//
 	// example:
 	//
@@ -44,13 +44,13 @@ type ListVpnCertificateAssociationsResponseBody struct {
 	//
 	// 197AF2BD-547F-470C-B29A-8400400233EB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of associations.
 	//
 	// example:
 	//
 	// 4
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The association information.
+	// The list of associations.
 	VpnCertificateRelations []*ListVpnCertificateAssociationsResponseBodyVpnCertificateRelations `json:"VpnCertificateRelations,omitempty" xml:"VpnCertificateRelations,omitempty" type:"Repeated"`
 }
 
@@ -121,9 +121,9 @@ func (s *ListVpnCertificateAssociationsResponseBody) Validate() error {
 }
 
 type ListVpnCertificateAssociationsResponseBodyVpnCertificateRelations struct {
-	// The time when the Anycast EIP was associated.
+	// The time when the association was created.
 	//
-	// The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	// The time is displayed in UTC in the YYYY-MM-DDThh:mm:ssZ format.
 	//
 	// example:
 	//
@@ -135,23 +135,23 @@ type ListVpnCertificateAssociationsResponseBodyVpnCertificateRelations struct {
 	//
 	// 6bfe4218-ea1d****
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
-	// The type of the certificate.
+	// The certificate type.
 	//
-	// 	- **Encryption**
+	// - **Encryption**: encryption certificate.
 	//
-	// 	- **Signature**
+	// - **Signature**: signing certificate.
 	//
 	// example:
 	//
 	// Signature
 	CertificateType *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
-	// The ID of the region where the VPN gateway is created.
+	// The region ID of the VPN gateway.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the VPN gateway.
+	// The VPN gateway instance ID.
 	//
 	// example:
 	//

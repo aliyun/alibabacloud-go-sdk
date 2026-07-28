@@ -70,7 +70,7 @@ type ModifyTunnelAttributeResponseBody struct {
 	//
 	// 47.XX.XX.87
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	// The CA certificate of the peer when an IPsec-VPN connection is created with a Chinese SM VPN gateway.
+	// The peer CA certificate when the IPsec-VPN connection is created with a China CA VPN gateway.
 	//
 	// example:
 	//
@@ -94,11 +94,11 @@ type ModifyTunnelAttributeResponseBody struct {
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	// The status of the tunnel.
 	//
-	// - **active**: available.
+	// - **active**: The tunnel is available.
 	//
-	// - **updating**: being updated.
+	// - **updating**: The tunnel is being updated.
 	//
-	// - **deleting**: being deleted.
+	// - **deleting**: The tunnel is being deleted.
 	//
 	// example:
 	//
@@ -398,9 +398,9 @@ type ModifyTunnelAttributeResponseBodyTunnelIkeConfig struct {
 	IkeLifetime *int64 `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
 	// The IKE negotiation mode.
 	//
-	// - **main**: main mode. This mode offers high security during negotiations.
+	// - **main**: main mode. The negotiation process is more secure.
 	//
-	// - **aggressive**: aggressive mode. This mode supports fast negotiations and a higher success rate.
+	// - **aggressive**: aggressive mode. The negotiation is faster and has a higher success rate.
 	//
 	// example:
 	//
@@ -424,7 +424,7 @@ type ModifyTunnelAttributeResponseBodyTunnelIkeConfig struct {
 	//
 	// ikev2
 	IkeVersion *string `json:"IkeVersion,omitempty" xml:"IkeVersion,omitempty"`
-	// The identifier of the local end of the tunnel. It supports FQDN and IP formats. Default value: the IP address of the current tunnel.
+	// The identifier of the local end of the tunnel. The value supports FQDN and IP formats. Default value: the IP address of the current tunnel.
 	//
 	// example:
 	//
@@ -436,7 +436,7 @@ type ModifyTunnelAttributeResponseBodyTunnelIkeConfig struct {
 	//
 	// 123456****
 	Psk *string `json:"Psk,omitempty" xml:"Psk,omitempty"`
-	// The identifier of the peer end of the tunnel. It supports FQDN and IP formats. Default value: the IP address of the customer gateway instance associated with the tunnel.
+	// The identifier of the peer end of the tunnel. The value supports FQDN and IP formats. Default value: the IP address of the customer gateway instance associated with the tunnel.
 	//
 	// example:
 	//

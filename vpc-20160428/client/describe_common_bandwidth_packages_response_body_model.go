@@ -23,13 +23,13 @@ type iDescribeCommonBandwidthPackagesResponseBody interface {
 
 type DescribeCommonBandwidthPackagesResponseBody struct {
 	CommonBandwidthPackages *DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackages `json:"CommonBandwidthPackages,omitempty" xml:"CommonBandwidthPackages,omitempty" type:"Struct"`
-	// The page number.
+	// The page number of the list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page for paging queries.
 	//
 	// example:
 	//

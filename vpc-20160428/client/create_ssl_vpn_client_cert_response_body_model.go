@@ -18,7 +18,7 @@ type iCreateSslVpnClientCertResponseBody interface {
 }
 
 type CreateSslVpnClientCertResponseBody struct {
-	// The name of the SSL-VPN client certificate.
+	// The name of the SSL client certificate.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type CreateSslVpnClientCertResponseBody struct {
 	//
 	// 606998F0-B94D-48FE-8316-ACA81BB230DA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the SSL-VPN client certificate.
+	// The ID of the SSL client certificate.
 	//
 	// example:
 	//

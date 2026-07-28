@@ -24,7 +24,7 @@ type iAssociateVpnGatewayWithCertificateRequest interface {
 }
 
 type AssociateVpnGatewayWithCertificateRequest struct {
-	// The ID of the certificate.
+	// The certificate ID.
 	//
 	// This parameter is required.
 	//
@@ -32,11 +32,11 @@ type AssociateVpnGatewayWithCertificateRequest struct {
 	//
 	// 6bfe4218-ea1d****
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
-	// The type of the certificate. Valid values:
+	// The certificate type. Valid values:
 	//
-	// 	- **Encryption**
+	// - **Encryption**: specifies the SSL certificate as the encryption certificate.
 	//
-	// 	- **Signature**
+	// - **Signature**: specifies the SSL certificate as the signing certificate.
 	//
 	// This parameter is required.
 	//
@@ -46,19 +46,19 @@ type AssociateVpnGatewayWithCertificateRequest struct {
 	CertificateType *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
 	// 0c593ea1-3bea****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request passes the dry run, a request ID is returned. Otherwise, an error message is returned.
+	// - **true**: performs a dry run without performing the actual request. The system checks the required parameters, request syntax, and instance status. If the check fails, the corresponding error is returned. If the check succeeds, the corresponding request ID is returned.
 	//
-	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, the operation is performed.
+	// - **false*	- (default): sends the request. After the request passes the check, the VPN gateway is associated with the certificate.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type AssociateVpnGatewayWithCertificateRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The region ID of the VPN gateway.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -74,9 +74,9 @@ type AssociateVpnGatewayWithCertificateRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the VPN gateway.
+	// The instance ID of the VPN gateway.
 	//
-	// > You can associate only VPN gateways of the SM type with certificates.
+	// >Only Chinese SM VPN gateways support certificate attachment.
 	//
 	// This parameter is required.
 	//

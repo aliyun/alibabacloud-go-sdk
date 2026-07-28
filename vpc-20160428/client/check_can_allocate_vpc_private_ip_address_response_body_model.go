@@ -18,9 +18,9 @@ type iCheckCanAllocateVpcPrivateIpAddressResponseBody interface {
 type CheckCanAllocateVpcPrivateIpAddressResponseBody struct {
 	// Indicates whether the private IP address is available. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The private IP address is not occupied in the specified vSwitch and can be used.
 	//
-	// 	- **false**
+	// - **false**: The private IP address is already occupied in the specified vSwitch and cannot be used.
 	//
 	// example:
 	//

@@ -28,9 +28,9 @@ type iModifyIPv6TranslatorAclListEntryRequest interface {
 }
 
 type ModifyIPv6TranslatorAclListEntryRequest struct {
-	// The remarks of the ACL rule.
+	// The description of the access control policy group entry.
 	//
-	// It must be 2 to 100 characters in length, and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
+	// The description must be 2 to 100 characters in length and must start with a letter or a Chinese character. It can contain digits, underscores (_), or hyphens (-).
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type ModifyIPv6TranslatorAclListEntryRequest struct {
 	//
 	// client IP
 	AclEntryComment *string `json:"AclEntryComment,omitempty" xml:"AclEntryComment,omitempty"`
-	// The ID of the ACL rule to which the IP entry belongs.
+	// The ID of the access control policy group entry that contains the IP entry.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type ModifyIPv6TranslatorAclListEntryRequest struct {
 	//
 	// ipv6transaclentry-bp1jzyn7ra8pyxehd****
 	AclEntryId *string `json:"AclEntryId,omitempty" xml:"AclEntryId,omitempty"`
-	// The ID of the ACL to which the IP entry belongs.
+	// The ID of the access control policy group that contains the IP entry.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type ModifyIPv6TranslatorAclListEntryRequest struct {
 	AclId        *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region of the ACL.
+	// The region of the access control policy group.
 	//
 	// This parameter is required.
 	//

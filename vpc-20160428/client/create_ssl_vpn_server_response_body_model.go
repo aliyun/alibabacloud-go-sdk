@@ -18,7 +18,7 @@ type iCreateSslVpnServerResponseBody interface {
 }
 
 type CreateSslVpnServerResponseBody struct {
-	// The name of the SSL server.
+	// The name of the SSL-VPN server.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type CreateSslVpnServerResponseBody struct {
 	//
 	// E98A9651-7098-40C7-8F85-C818D1EBBA85
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the SSL server.
+	// The ID of the SSL-VPN server.
 	//
 	// example:
 	//

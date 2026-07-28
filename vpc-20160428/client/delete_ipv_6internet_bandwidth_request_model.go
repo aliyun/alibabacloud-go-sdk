@@ -32,9 +32,9 @@ type iDeleteIpv6InternetBandwidthRequest interface {
 type DeleteIpv6InternetBandwidthRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system uses the RequestId of the API request as the ClientToken. The RequestId may differ for each API request.
+	// > If you do not specify this parameter, the system uses the RequestId of the API request as the ClientToken. The RequestId may be different for each API request.
 	//
-	// > -.
+	// > -
 	//
 	// example:
 	//
@@ -42,9 +42,9 @@ type DeleteIpv6InternetBandwidthRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
-	// - **true**: performs a dry run without actually deleting the IPsec server. The system checks the required parameters, request syntax, and business restrictions. If the check fails, the corresponding error message is returned. If the check passes, `DryRunOperation` is returned.
+	// - **true**: performs a dry run without actually deleting the Internet bandwidth. The system checks the required parameters, request syntax, and business restrictions. If the check fails, the corresponding error message is returned. If the check succeeds, `DryRunOperation` is returned.
 	//
-	// - **false*	- (default): performs a dry run and then sends the request. If the check passes, the IPsec server is deleted.
+	// - **false*	- (default): performs a dry run and sends the request. If the check succeeds, the Internet bandwidth is deleted.
 	//
 	// example:
 	//

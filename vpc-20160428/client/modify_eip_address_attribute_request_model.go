@@ -30,7 +30,7 @@ type iModifyEipAddressAttributeRequest interface {
 }
 
 type ModifyEipAddressAttributeRequest struct {
-	// The ID of the pay-as-you-go EIP.
+	// The ID of the pay-as-you-go EIP that you want to modify.
 	//
 	// This parameter is required.
 	//
@@ -38,27 +38,27 @@ type ModifyEipAddressAttributeRequest struct {
 	//
 	// eip-2zeerraiwb7uj6i0d****
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	// The new maximum bandwidth of the EIP. Valid values:
+	// The peak bandwidth of the EIP. Valid values:
 	//
-	// - **1*	- to **200*	- if the metering method is pay-by-data-transfer. Unit: Mbit/s.
+	// - **1*	- to **200**: If the EIP is billed on a pay-by-data-transfer basis. Unit: Mbit/s.
 	//
-	// - **1*	- to **500*	- if the metering method is pay-by-bandwidth. Unit: Mbit/s.
+	// - **1*	- to **500**: If the EIP is billed on a pay-by-bandwidth basis. Unit: Mbit/s.
 	//
 	// example:
 	//
 	// 100
 	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The new description of the EIP.
+	// The description of the EIP that you want to modify.
 	//
-	// The description must be 2 to 256 characters in length and start with a letter. The description cannot start with `http://` or `https://`.
+	// The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// abc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The new name of the EIP.
+	// The name of the EIP that you want to modify.
 	//
-	// The name must be 1 to 128 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-).
+	// The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type ModifyEipAddressAttributeRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the EIP.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// example:
 	//

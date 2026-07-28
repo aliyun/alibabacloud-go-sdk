@@ -14,7 +14,7 @@ type iModifyVSwitchAttributeResponseBody interface {
 }
 
 type ModifyVSwitchAttributeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type CreateVSwitchCidrReservationResponseBody struct {
 	//
 	// 54B48E3D-DF70-471B-AA93-08E683A1B45
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the reserved CIDR block.
+	// The instance ID of the reserved CIDR block for a vSwitch.
 	//
 	// example:
 	//

@@ -26,7 +26,7 @@ type DeleteRouteEntriesResponseBody struct {
 	//
 	// 2
 	FailedCount *int32 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	// The information about the route entry that failed to be deleted.
+	// The information about the route entries that failed to be deleted.
 	FailedRouteEntries []*DeleteRouteEntriesResponseBodyFailedRouteEntries `json:"FailedRouteEntries,omitempty" xml:"FailedRouteEntries,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -34,7 +34,7 @@ type DeleteRouteEntriesResponseBody struct {
 	//
 	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of route entries that were deleted.
+	// The number of route entries that were successfully deleted.
 	//
 	// example:
 	//
@@ -100,25 +100,25 @@ func (s *DeleteRouteEntriesResponseBody) Validate() error {
 }
 
 type DeleteRouteEntriesResponseBodyFailedRouteEntries struct {
-	// The destination CIDR block of the route entry that failed to be deleted. IPv4 and IPv6 CIDR blocks are supported.
+	// The destination CIDR block of the route entry that failed to be deleted. IPv4 CIDR blocks, IPv6 CIDR blocks, and prefix list CIDR blocks are supported.
 	//
 	// example:
 	//
 	// 47.100.XX.XX/24
 	DstCidrBlock *string `json:"DstCidrBlock,omitempty" xml:"DstCidrBlock,omitempty"`
-	// The error code.
+	// The error code returned for the failure.
 	//
 	// example:
 	//
 	// VPC_ROUTER_ENTRY_NOT_EXIST
 	FailedCode *string `json:"FailedCode,omitempty" xml:"FailedCode,omitempty"`
-	// The error message.
+	// The error message returned for the failure.
 	//
 	// example:
 	//
 	// vRouterEntry not exists
 	FailedMessage *string `json:"FailedMessage,omitempty" xml:"FailedMessage,omitempty"`
-	// The ID of the next hop that failed to be deleted.
+	// The instance ID of the next hop that failed to be deleted.
 	//
 	// example:
 	//

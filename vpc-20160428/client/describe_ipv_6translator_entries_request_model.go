@@ -50,51 +50,51 @@ type iDescribeIPv6TranslatorEntriesRequest interface {
 }
 
 type DescribeIPv6TranslatorEntriesRequest struct {
-	// The ID of the network ACL.
+	// The ID of the access control policy group.
 	//
 	// example:
 	//
 	// ipv6transacl-bp1de2****
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// Specifies whether to enable access control lists (ACLs). Valid values:
+	// Specifies whether to enable access control. Valid values:
 	//
-	// 	- **on**
+	// - **on**: enabled.
 	//
-	// 	- **off**
+	// - **off**: disabled.
 	//
 	// example:
 	//
 	// off
 	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	// The ACL type. Valid values:
+	// The type of the access control policy. Valid values:
 	//
-	// 	- **white**: a whitelist. IPv6 addresses in the ACL are allowed to access backend services.
+	// - **white**: allows the IPv6 addresses in the access control policy group to access backend services.
 	//
-	// 	- **black**: a blacklist. IPv6 addresses in the ACL are not allowed to access backend services.
+	// - **black**: denies the IPv6 addresses in the access control policy group from accessing backend services.
 	//
 	// example:
 	//
 	// white
 	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	// The IPv6 address allocated to the IPv6 Translation Service instance.
+	// The IPv6 address allocated by the IPv6 Translation Service instance.
 	//
 	// example:
 	//
 	// 2400:3200:1600::XX
 	AllocateIpv6Addr *string `json:"AllocateIpv6Addr,omitempty" xml:"AllocateIpv6Addr,omitempty"`
-	// The port used by the IPv6 address allocated to the IPv6 Translation Service instance.
+	// The port used by the IPv6 address allocated by the IPv6 Translation Service instance.
 	//
 	// example:
 	//
 	// 80
 	AllocateIpv6Port *int32 `json:"AllocateIpv6Port,omitempty" xml:"AllocateIpv6Port,omitempty"`
-	// The public IPv4 address that needs to provide IPv6 services.
+	// The public IPv4 address that requires IPv6 services.
 	//
 	// example:
 	//
 	// 47.99.XX.XX
 	BackendIpv4Addr *string `json:"BackendIpv4Addr,omitempty" xml:"BackendIpv4Addr,omitempty"`
-	// The port used by the public IPv4 address that needs to provide IPv6 services.
+	// The port used by the public IPv4 address that requires IPv6 services.
 	//
 	// example:
 	//
@@ -102,21 +102,21 @@ type DescribeIPv6TranslatorEntriesRequest struct {
 	BackendIpv4Port *int32 `json:"BackendIpv4Port,omitempty" xml:"BackendIpv4Port,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The name of the IPv6 mapping entry.
+	// The name of the IPv6 Translation mapping entry.
 	//
 	// example:
 	//
 	// entryname
 	EntryName *string `json:"EntryName,omitempty" xml:"EntryName,omitempty"`
-	// The ID of the IPv6 mapping entry.
+	// The ID of the IPv6 Translation mapping entry to query.
 	//
-	// > If **Ipv6TranslatorId*	- and **Ipv6TranslatorEntryId*	- are empty, information about all IPv6 mapping entries is returned. If only **Ipv6TranslatorEntryId*	- is empty, information about the IPv6 mapping entries of the current IPv6 Translation Service instance is returned.
+	// > If both **Ipv6TranslatorId*	- and **Ipv6TranslatorEntryId*	- are empty, all IPv6 Translation mapping entries are returned. If only **Ipv6TranslatorEntryId*	- is empty, all IPv6 Translation mapping entries under the current IPv6 Translation Service instance are returned.
 	//
 	// example:
 	//
@@ -130,19 +130,19 @@ type DescribeIPv6TranslatorEntriesRequest struct {
 	Ipv6TranslatorId *string `json:"Ipv6TranslatorId,omitempty" xml:"Ipv6TranslatorId,omitempty"`
 	OwnerAccount     *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page for paging. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region of the IPv6 Translation Service instance. You can call the **DescribeRegions*	- operation to query the most recent region list.
+	// The region of the IPv6 Translation Service instance. You can call the **DescribeRegions*	- operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -152,7 +152,7 @@ type DescribeIPv6TranslatorEntriesRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The protocol used by the data to be forwarded.
+	// The protocol type used for data forwarding.
 	//
 	// example:
 	//

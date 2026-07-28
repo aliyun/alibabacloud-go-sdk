@@ -46,21 +46,21 @@ type DescribeCommonBandwidthPackagesRequest struct {
 	//
 	// cbwp-2ze2ic1xd2qeqk145****
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and instance status. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: Sends a check request without querying instance information. The system checks whether the required parameters are specified, whether the request format is valid, and whether the instance status is valid. If the check fails, the corresponding error is returned. If the check succeeds, `DryRunOperation` is returned.
 	//
-	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// - **false*	- (default): Sends a normal request. After the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Specifies whether to return the information about pending orders. Valid values:
+	// Specifies whether to include pending subscription data. Valid values:
 	//
-	// 	- **false*	- (default)
+	// -  **false*	- (default): Does not include pending subscription data.
 	//
-	// 	- **true**
+	// - **true**: Includes pending subscription data.
 	//
 	// example:
 	//
@@ -68,25 +68,27 @@ type DescribeCommonBandwidthPackagesRequest struct {
 	IncludeReservationData *bool `json:"IncludeReservationData,omitempty" xml:"IncludeReservationData,omitempty"`
 	// The name of the Internet Shared Bandwidth instance.
 	//
+	// The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
+	//
 	// example:
 	//
 	// test123
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number of the list. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: **1 to 50**. Default value: **10**.
+	// The number of entries per page for paging queries. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the Internet Shared Bandwidth instance resides.
+	// The region ID of the Internet Shared Bandwidth instance.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
@@ -96,7 +98,7 @@ type DescribeCommonBandwidthPackagesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -104,17 +106,19 @@ type DescribeCommonBandwidthPackagesRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Specifies whether to enable Anti-DDoS Pro/Premium. Valid values:
+	// Specifies whether to enable Anti-DDoS (Enhanced). Valid values:
 	//
-	// 	- **false*	- (default)
+	// - **false**: Disabled.
 	//
-	// 	- **true**
+	// - **true**: Enabled.
+	//
+	// > This parameter is deprecated.
 	//
 	// example:
 	//
 	// false
 	SecurityProtectionEnabled *bool `json:"SecurityProtectionEnabled,omitempty" xml:"SecurityProtectionEnabled,omitempty"`
-	// The tags to add to the Internet Shared Bandwidth instance.
+	// The list of tags associated with the Internet Shared Bandwidth instance.
 	Tag []*DescribeCommonBandwidthPackagesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -266,15 +270,15 @@ func (s *DescribeCommonBandwidthPackagesRequest) Validate() error {
 }
 
 type DescribeCommonBandwidthPackagesRequestTag struct {
-	// The tag key to add to the Internet Shared Bandwidth instance. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// KeyTest
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value to add to the Internet Shared Bandwidth instance. You can specify up to 20 tag values. The tag value can be an empty string.
+	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
 	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//

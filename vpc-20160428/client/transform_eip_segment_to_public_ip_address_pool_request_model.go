@@ -66,7 +66,7 @@ type TransformEipSegmentToPublicIpAddressPoolRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID of the IP address pool.
+	// The ID of the resource group to which the IP address pool belongs.
 	//
 	// example:
 	//

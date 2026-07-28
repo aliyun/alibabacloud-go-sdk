@@ -20,17 +20,17 @@ type iListPublicIpAddressPoolsResponseBody interface {
 }
 
 type ListPublicIpAddressPoolsResponseBody struct {
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// 	- If **NextToken*	- is empty, no next page exists.
+	// - If **NextToken*	- is empty, no subsequent request is to be sent.
 	//
-	// 	- If a value is returned for **NextToken**, the value is used to retrieve a new page of results.
+	// - If **NextToken*	- is returned, the value indicates the token for the next query.
 	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The IP address pools.
+	// The list of IP address pool instances.
 	PublicIpAddressPoolList []*ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList `json:"PublicIpAddressPoolList,omitempty" xml:"PublicIpAddressPoolList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -38,7 +38,7 @@ type ListPublicIpAddressPoolsResponseBody struct {
 	//
 	// 4EC47282-1B74-4534-BD0E-403F3EE64CAF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries returned under the current request conditions.
 	//
 	// example:
 	//
@@ -104,43 +104,43 @@ func (s *ListPublicIpAddressPoolsResponseBody) Validate() error {
 }
 
 type ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList struct {
-	// The service type of the IP address pool.
+	// The business type of the IP address pool.
 	//
-	// 	- **CloudBox*	- Only cloud box users can select this type.
+	// - **CloudBox**: CloudBox. Only CloudBox users support this type.
 	//
-	// 	- **Default*	- (default)
+	// - **Default*	- (default): default, indicating a non-special type.
 	//
 	// example:
 	//
 	// CloudBox
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The status of the IP address pool.
+	// The business status of the IP address pool instance.
 	//
-	// 	- **Normal**
+	// - **Normal**: normal.
 	//
-	// 	- **FinancialLocked**
+	// - **FinancialLocked**: locked.
 	//
 	// example:
 	//
 	// Normal
 	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	// The time when the IP address pool was created. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format.
+	// The creation time, in the format of `YYYY-MM-DDThh:mm:ssZ`.
 	//
 	// example:
 	//
 	// 2022-05-10T01:37:38Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the IP address pool.
+	// The description of the IP address pool instance.
 	//
 	// example:
 	//
 	// AddressPoolDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether idle IP addresses exist.
+	// Indicates whether idle IP addresses are available.
 	//
-	// 	- **true**
+	// - **true**: yes.
 	//
-	// 	- **false**
+	// - **false**: no.
 	//
 	// example:
 	//
@@ -148,33 +148,33 @@ type ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList struct {
 	IpAddressRemaining *bool `json:"IpAddressRemaining,omitempty" xml:"IpAddressRemaining,omitempty"`
 	// The line type.
 	//
-	// 	- **BGP**: BGP (Multi-ISP)
+	// - **BGP**: BGP (multi-ISP) line.
 	//
-	// 	- **BGP_PRO**: BGP (Multi-ISP) Pro
+	// - **BGP_PRO**: BGP (multi-ISP) Pro line.
 	//
-	// For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro, see [EIP line types](https://help.aliyun.com/document_detail/32321.html).
+	// For more information about BGP (multi-ISP) lines and BGP (multi-ISP) Pro lines, see [EIP line types](https://help.aliyun.com/document_detail/32321.html).
 	//
-	// If you are allowed to use single-ISP bandwidth, one of the following values may be returned:
+	// If you are a whitelist user of single-ISP bandwidth, the returned type may also be:
 	//
-	// 	- **ChinaTelecom**
+	// - **ChinaTelecom**: China Telecom
 	//
-	// 	- **ChinaUnicom**
+	// - **ChinaUnicom**: China Unicom
 	//
-	// 	- **ChinaMobile**
+	// - **ChinaMobile**: China Mobile
 	//
-	// 	- **ChinaTelecom_L2**
+	// - **ChinaTelecom_L2**: China Telecom L2
 	//
-	// 	- **ChinaUnicom_L2**
+	// - **ChinaUnicom_L2**: China Unicom L2
 	//
-	// 	- **ChinaMobile_L2**
+	// - **ChinaMobile_L2**: China Mobile L2
 	//
-	// If your services are deployed in China East 1 Finance, **BGP_FinanceCloud*	- is returned.
+	// If you are a China (Hangzhou) Finance Cloud user, **BGP_FinanceCloud*	- is returned.
 	//
 	// example:
 	//
 	// BGP
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// The name of the IP address pool.
+	// The name of the IP address pool instance.
 	//
 	// example:
 	//
@@ -186,7 +186,7 @@ type ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList struct {
 	//
 	// 121012345612*****
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the IP address pool.
+	// The instance ID of the IP address pool.
 	//
 	// example:
 	//
@@ -204,35 +204,35 @@ type ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList struct {
 	//
 	// rg-acfmxazb4pcdvf****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The edition of Anti-DDoS.
+	// The security protection level.
 	//
-	// 	- If you do not set this parameter, Anti-DDoS Origin Basic is used.
+	// - If this parameter is empty, the default value is Anti-DDoS Basic.
 	//
-	// 	- If the value is set to **AntiDDoS_Enhanced**, Anti-DDoS Pro/Premium is used.
+	// - If the value is **AntiDDoS_Enhanced**, it indicates Anti-DDoS (Enhanced).
 	SecurityProtectionTypes []*string `json:"SecurityProtectionTypes,omitempty" xml:"SecurityProtectionTypes,omitempty" type:"Repeated"`
 	// The sharing type of the IP address pool.
 	//
-	// 	- If **Shared*	- is returned, the IP address pool is shared.
+	// - **Shared**: The IP address pool is a shared IP address pool.
 	//
-	// 	- If an empty value is returned, the IP address pool is not shared.
+	// - Empty: The IP address pool is not a shared IP address pool.
 	//
 	// example:
 	//
 	// Shared
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	// The status of the IP address pool.
+	// The instance status of the IPAM pool.
 	//
-	// 	- **Created**
+	// - **Created**: active.
 	//
-	// 	- **Deleting**
+	// - **Deleting**: being deleted.
 	//
-	// 	- **Modifying**
+	// - **Modifying**: being modified.
 	//
 	// example:
 	//
 	// Created
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag list.
+	// The list of tags.
 	Tags []*ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The total number of available IP addresses in the public IP address pool.
 	//
@@ -246,17 +246,19 @@ type ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList struct {
 	//
 	// 20
 	UsedIpNum *int32 `json:"UsedIpNum,omitempty" xml:"UsedIpNum,omitempty"`
-	// The user type. Valid values:
+	// The type of the user. Valid values:
 	//
-	// 	- **admin**: An administrator can delete, modify, and query IP address pools, and can assign elastic IP addresses (EIPs) to the pool.
+	// - **admin**: administrator. An administrator can delete, modify, and query IP address pools, and allocate elastic IP addresses (EIPs) from IP address pools.
 	//
-	// 	- **user**: A user can only assign EIPs to the IP address pool and query the IP address pool, but cannot modify or delete the IP address pool.
+	// - **user**: regular user. A regular user can only allocate EIPs from IP address pools and query IP address pools, but cannot modify or delete IP address pools.
 	//
 	// example:
 	//
 	// admin
 	UserType *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
-	// The zone of the IP address pool. This parameter is returned only when the service type of the IP address pool is CloudBox.
+	// The zones of the IP address pool.
+	//
+	// This parameter is returned only when the business type of the IP address pool is CloudBox.
 	Zones []*string `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
@@ -453,13 +455,13 @@ func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) Validate()
 }
 
 type ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolListTags struct {
-	// The key of tag N.
+	// The tag key.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N.
+	// The tag value.
 	//
 	// example:
 	//

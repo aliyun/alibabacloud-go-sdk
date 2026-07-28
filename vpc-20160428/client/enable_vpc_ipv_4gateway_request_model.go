@@ -32,25 +32,25 @@ type iEnableVpcIpv4GatewayRequest interface {
 type EnableVpcIpv4GatewayRequest struct {
   // The client token that is used to ensure the idempotence of the request.
   // 
-  // You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+  // You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
   // 
-  // >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+  // > If you do not specify this parameter, the system automatically uses the **RequestId*	- value as the **ClientToken*	- value. The **RequestId*	- value may be different for each API request.
   // 
   // example:
   // 
   // 123e4567-e89b-12d3-a456-426655440000
   ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-  // Specifies whether to perform a dry run, without performing the actual request. Valid values:
+  // Specifies whether to perform a dry run. Valid values:
   // 
-  // 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+  // - **true**: performs a dry run. The system checks the required parameters, request format, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
   // 
-  // 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+  // - **false*	- (default): sends a normal request, passes the dry run, and returns an HTTP 2xx status code to directly activate IPv4 gateway.
   // 
   // example:
   // 
   // false
   DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-  // The ID of the IPv4 gateway that you want to activate.
+  // The instance ID of the IPv4 gateway that you want to activate.
   // 
   // This parameter is required.
   // 
@@ -62,7 +62,7 @@ type EnableVpcIpv4GatewayRequest struct {
   OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
   // The region ID of the IPv4 gateway.
   // 
-  // You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent list of regions.
+  // You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list.
   // 
   // This parameter is required.
   // 
@@ -72,7 +72,7 @@ type EnableVpcIpv4GatewayRequest struct {
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
   ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
   ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-  // A list of route tables. The system adds a 0.0.0.0/0 route that points to the IPv4 gateway to the route tables.
+  // The list of route tables. The system adds a route entry with the destination CIDR block 0.0.0.0/0 that points to the IPv4 gateway to each route table in the list.
   RouteTableList []*string `json:"RouteTableList,omitempty" xml:"RouteTableList,omitempty" type:"Repeated"`
 }
 

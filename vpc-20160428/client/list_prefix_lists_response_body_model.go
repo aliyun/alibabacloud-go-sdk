@@ -22,17 +22,17 @@ type iListPrefixListsResponseBody interface {
 }
 
 type ListPrefixListsResponseBody struct {
-	// The number of entries per page. Valid values: **1*	- to **100**. Default value: **20**.
+	// The number of entries per page for a paged query. Valid values: **1*	- to **100**. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+	// The pagination token. Valid values:
 	//
-	// 	- If **NextToken*	- is empty, no next page exists.
+	// - If **NextToken*	- is empty, no subsequent query exists.
 	//
-	// 	- If a value is returned for **NextToken**, the value indicates the token that is used for the next request to retrieve a new page of results.
+	// - If **NextToken*	- is returned, the value indicates the token for the next query.
 	//
 	// example:
 	//
@@ -121,7 +121,7 @@ func (s *ListPrefixListsResponseBody) Validate() error {
 }
 
 type ListPrefixListsResponseBodyPrefixLists struct {
-	// The CIDR block specified in the prefix list.
+	// The Classless Inter-Domain Routing (CIDR) block information of the prefix list.
 	CidrBlocks []*string `json:"CidrBlocks,omitempty" xml:"CidrBlocks,omitempty" type:"Repeated"`
 	// The time when the prefix list was created.
 	//
@@ -131,15 +131,15 @@ type ListPrefixListsResponseBodyPrefixLists struct {
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The IP version of the prefix list. Valid values:
 	//
-	// 	- **IPV4**
+	// - **IPV4**: IPv4.
 	//
-	// 	- **IPV6**
+	// - **IPV6**: IPv6.
 	//
 	// example:
 	//
 	// IPV4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The maximum number of CIDR blocks that you can specify in the prefix list.
+	// The maximum number of entries for Classless Inter-Domain Routing (CIDR) blocks in the prefix list.
 	//
 	// example:
 	//
@@ -171,13 +171,13 @@ type ListPrefixListsResponseBodyPrefixLists struct {
 	PrefixListName *string `json:"PrefixListName,omitempty" xml:"PrefixListName,omitempty"`
 	// The status of the prefix list. Valid values:
 	//
-	// 	- **Created**
+	// - **Created**: Created.
 	//
-	// 	- **Deleted**
+	// - **Deleted**: Deleted.
 	//
-	// 	- **Modifying**
+	// - **Modifying**: Being modified.
 	//
-	// >  This parameter is the same as the **Status*	- parameter.
+	// > This parameter has the same meaning and valid values as **Status**.
 	//
 	// example:
 	//
@@ -201,11 +201,11 @@ type ListPrefixListsResponseBodyPrefixLists struct {
 	//
 	// rg-bp67acfmxazb4ph****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Indicates whether the prefix list is shared. Valid values:
+	// The sharing type of the prefix list. Valid values:
 	//
-	// 	- **Shared**: The prefix list is shared.
+	// - **Shared**: The prefix list is a shared prefix list.
 	//
-	// 	- If an empty value is returned, the prefix list is not shared.
+	// - Empty: The prefix list is not a shared prefix list.
 	//
 	// example:
 	//
@@ -213,11 +213,11 @@ type ListPrefixListsResponseBodyPrefixLists struct {
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// The status of the prefix list. Valid values:
 	//
-	// 	- **Created**
+	// - **Created**: Created.
 	//
-	// 	- **Deleted**
+	// - **Deleted**: Deleted.
 	//
-	// 	- **Modifying**
+	// - **Modifying**: Being modified.
 	//
 	// example:
 	//

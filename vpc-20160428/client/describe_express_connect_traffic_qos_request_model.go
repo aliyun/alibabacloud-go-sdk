@@ -38,23 +38,23 @@ type DescribeExpressConnectTrafficQosRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may differ for each API request.
 	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-0016e04115b
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The maximum number of entries to return. Valid values: **1*	- to **100**. Default value: **10**.
+	// The number of entries per page for paginated queries. Valid values: **1*	- to **100**. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The pagination token. Valid values:
 	//
-	// - If no value is returned for NetToken, you do not need to specify this parameter.
+	// 	- Leave this parameter empty for the first query or if no subsequent query is required.
 	//
-	// - If a value is returned for NextToken, you must specify the token that is obtained from the previous query as the value of **NextToken**.
+	// 	- If a next query is to be sent, set the value to the **NextToken*	- value returned in the previous API call.
 	//
 	// example:
 	//
@@ -62,13 +62,13 @@ type DescribeExpressConnectTrafficQosRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The IDs of QoS policies.
+	// The list of QoS policy IDs.
 	QosIdList []*string `json:"QosIdList,omitempty" xml:"QosIdList,omitempty" type:"Repeated"`
-	// The names of QoS policies.
+	// The list of QoS policy names.
 	QosNameList []*string `json:"QosNameList,omitempty" xml:"QosNameList,omitempty" type:"Repeated"`
-	// The ID of the region in which the QoS policy is created.
+	// The region ID of the QoS policy.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -208,17 +208,17 @@ func (s *DescribeExpressConnectTrafficQosRequest) Validate() error {
 }
 
 type DescribeExpressConnectTrafficQosRequestTags struct {
-	// The tag key. You must enter at least one tag key. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	// The tag key of the resource. You must specify at least 1 tag key and can specify at most 20 tag keys. The tag key cannot be an empty string.
 	//
-	// A tag key can be at most 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// A tag key can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag values of the resources. You can specify up to 20 tag values. The tag value can be an empty string.
+	// The tag value of the resource. You can specify at most 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
+	// The tag value can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
 	//
 	// example:
 	//

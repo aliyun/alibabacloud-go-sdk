@@ -14,7 +14,7 @@ type iDeactivateRouterInterfaceResponseBody interface {
 }
 
 type DeactivateRouterInterfaceResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -24,35 +24,35 @@ type iDescribeVcoRouteEntriesResponseBody interface {
 }
 
 type DescribeVcoRouteEntriesResponseBody struct {
-	// The number of the returned page.
+	// The page number of the list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page for paging queries.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// E18980E8-C8C2-31BD-8156-AE2BBDEC87E1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of entries returned.
+	// The total number of entries returned.
 	//
 	// example:
 	//
 	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The list of route entries.
+	// The list of routes.
 	VcoRouteEntries []*DescribeVcoRouteEntriesResponseBodyVcoRouteEntries `json:"VcoRouteEntries,omitempty" xml:"VcoRouteEntries,omitempty" type:"Repeated"`
-	// The information on route entries of the dual-tunnel IPsec connection.
+	// The route statistics of the IPsec-VPN connection in dual-tunnel mode.
 	//
-	// >  This parameter is returned only for IPsec connections in dual-tunnel mode.
+	// > This information is returned only for IPsec-VPN connections in dual-tunnel mode.
 	VpnRouteCounts []*DescribeVcoRouteEntriesResponseBodyVpnRouteCounts `json:"VpnRouteCounts,omitempty" xml:"VpnRouteCounts,omitempty" type:"Repeated"`
 }
 
@@ -141,7 +141,7 @@ func (s *DescribeVcoRouteEntriesResponseBody) Validate() error {
 }
 
 type DescribeVcoRouteEntriesResponseBodyVcoRouteEntries struct {
-	// The list of autonomous system (AS) numbers that the BGP route goes through.
+	// The list of autonomous system (AS) numbers that the BGP route passes through.
 	//
 	// example:
 	//
@@ -153,9 +153,9 @@ type DescribeVcoRouteEntriesResponseBodyVcoRouteEntries struct {
 	//
 	// 65535:65510
 	Community *string `json:"Community,omitempty" xml:"Community,omitempty"`
-	// The timestamp when the route was created.
+	// The timestamp when the destination route was created.
 	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	// The timestamp is in the Unix format and represents the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
@@ -167,11 +167,11 @@ type DescribeVcoRouteEntriesResponseBodyVcoRouteEntries struct {
 	//
 	// vco-p0w2jpkhi2eeop6q6****
 	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
-	// The list of next hops.
+	// The list of next-hop tunnels.
 	//
-	// > - This parameter is returned only by dual-tunnel IPsec connections.
+	// > - This information is returned only for IPsec-VPN connections in dual-tunnel mode.
 	//
-	// > - This parameter is returned only when the tunnel status is **Phase 2 Negotiation Successful**.
+	// > - Tunnel information is returned only when the tunnel status is **Phase 2 negotiations succeeded**.
 	NextHopTunnelIdList []*string `json:"NextHopTunnelIdList,omitempty" xml:"NextHopTunnelIdList,omitempty" type:"Repeated"`
 	// The destination CIDR block of the route.
 	//
@@ -179,11 +179,11 @@ type DescribeVcoRouteEntriesResponseBodyVcoRouteEntries struct {
 	//
 	// 192.168.10.0/24
 	RouteDest *string `json:"RouteDest,omitempty" xml:"RouteDest,omitempty"`
-	// The route type. Valid values:
+	// The type of the route. Valid values:
 	//
-	// 	- **custom**: a destination-based route
+	// - **custom**: destination route.
 	//
-	// 	- **bgp**: a BGP route
+	// - **bgp**: BGP route.
 	//
 	// example:
 	//
@@ -191,19 +191,19 @@ type DescribeVcoRouteEntriesResponseBodyVcoRouteEntries struct {
 	RouteEntryType *string `json:"RouteEntryType,omitempty" xml:"RouteEntryType,omitempty"`
 	// The source of the BGP route. Valid values:
 	//
-	// 	- **CLOUD**: indicates that the current BGP route is learned by the IPsec-VPN connection from the transit router.
+	// - **CLOUD**: The BGP route is learned by the IPsec-VPN connection from the transit router.
 	//
-	// 	- **VPN_BGP**: indicates that the current BGP route is learned by the IPsec-VPN connection from the data center.
+	// - **VPN_BGP**: The BGP route is learned by the IPsec-VPN connection from the on-premises data center.
 	//
 	// example:
 	//
 	// CLOUD
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The status of the route.
+	// The status of the route. Valid values:
 	//
-	// 	- **published**: indicates that the current route is advertised to the transit router.
+	// - **published**: The destination route is published to the transit router instance.
 	//
-	// 	- **Active**: indicates that the current BGP route is available.
+	// - **Active**: The BGP route is available.
 	//
 	// example:
 	//
@@ -215,9 +215,9 @@ type DescribeVcoRouteEntriesResponseBodyVcoRouteEntries struct {
 	//
 	// vco-p0w2jpkhi2eeop6q6****
 	VpnConnectionId *string `json:"VpnConnectionId,omitempty" xml:"VpnConnectionId,omitempty"`
-	// The weight of the destination-based route.
+	// The weight of the destination route.
 	//
-	// >  The current parameter has no effect.
+	// > This parameter is not in use.
 	//
 	// example:
 	//
@@ -337,17 +337,17 @@ func (s *DescribeVcoRouteEntriesResponseBodyVcoRouteEntries) Validate() error {
 }
 
 type DescribeVcoRouteEntriesResponseBodyVpnRouteCounts struct {
-	// The number of route entries.
+	// The number of routes.
 	//
 	// example:
 	//
 	// 3
 	RouteCount *int32 `json:"RouteCount,omitempty" xml:"RouteCount,omitempty"`
-	// The route type. Valid values:
+	// The type of the route. Valid values:
 	//
-	// 	- **custom**: destination-based route.
+	// - **custom**: destination route.
 	//
-	// 	- **bgp**: BGP route.
+	// - **bgp**: BGP route.
 	//
 	// example:
 	//
@@ -355,9 +355,9 @@ type DescribeVcoRouteEntriesResponseBodyVpnRouteCounts struct {
 	RouteEntryType *string `json:"RouteEntryType,omitempty" xml:"RouteEntryType,omitempty"`
 	// The source of the BGP route. Valid values:
 	//
-	// 	- **CLOUD**: The current BGP route is learned by the IPsec connection from the transit router.
+	// - **CLOUD**: The BGP route is learned by the IPsec-VPN connection from the transit router.
 	//
-	// 	- **VPN_BGP**: The current BGP route is learned by the IPsec connection from the data center.
+	// - **VPN_BGP**: The BGP route is learned by the IPsec-VPN connection from the on-premises data center.
 	//
 	// example:
 	//

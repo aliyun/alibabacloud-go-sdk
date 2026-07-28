@@ -14,7 +14,7 @@ type iModifyNatGatewaySpecResponseBody interface {
 }
 
 type ModifyNatGatewaySpecResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

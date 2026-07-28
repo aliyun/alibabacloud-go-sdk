@@ -36,7 +36,7 @@ type iDescribeIpv6EgressOnlyRulesRequest interface {
 }
 
 type DescribeIpv6EgressOnlyRulesRequest struct {
-	// The ID of the IPv6 address for which the IPv6 egress-only rule is configured.
+	// The ID of the IPv6 address for which an IPv6 egress-only rule is configured.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type DescribeIpv6EgressOnlyRulesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page for a paged query. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//

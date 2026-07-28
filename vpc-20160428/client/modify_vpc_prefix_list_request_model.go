@@ -38,29 +38,29 @@ type iModifyVpcPrefixListRequest interface {
 }
 
 type ModifyVpcPrefixListRequest struct {
-	// The information about CIDR blocks to be added to the prefix list.
+	// The list of Classless Inter-Domain Routing blocks to add to the prefix list instance.
 	AddPrefixListEntry []*ModifyVpcPrefixListRequestAddPrefixListEntry `json:"AddPrefixListEntry,omitempty" xml:"AddPrefixListEntry,omitempty" type:"Repeated"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system uses **RequestId*	- as **ClientToken**. **RequestId*	- may be different for each API request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may differ for each API request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to only precheck the request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: checks the request without performing the operation. The system prechecks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run without modifying the prefix list configuration. The system checks the required parameters, request format, and service limits. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): sends the request. If the request passes the check, a 2xx HTTP status code is returned and the operation is performed.
+	// - **false*	- (default): performs a dry run and sends the request. If the check succeeds, an HTTP 2xx status code is returned and the prefix list configuration is modified.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The maximum number of CIDR blocks supported by the prefix list after the configuration of the prefix list is modified.
+	// The new maximum number of Classless Inter-Domain Routing block entries in the prefix list instance.
 	//
 	// example:
 	//
@@ -70,13 +70,13 @@ type ModifyVpcPrefixListRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The new description of the prefix list.
 	//
-	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+	// The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// newdescription
 	PrefixListDescription *string `json:"PrefixListDescription,omitempty" xml:"PrefixListDescription,omitempty"`
-	// The ID of the prefix list.
+	// The instance ID of the prefix list that you want to modify.
 	//
 	// This parameter is required.
 	//
@@ -86,13 +86,13 @@ type ModifyVpcPrefixListRequest struct {
 	PrefixListId *string `json:"PrefixListId,omitempty" xml:"PrefixListId,omitempty"`
 	// The new name of the prefix list.
 	//
-	// The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
+	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// newname
 	PrefixListName *string `json:"PrefixListName,omitempty" xml:"PrefixListName,omitempty"`
-	// The region ID of the prefix list.
+	// The region ID of the prefix list that you want to modify.
 	//
 	// This parameter is required.
 	//
@@ -100,7 +100,7 @@ type ModifyVpcPrefixListRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The information about CIDR blocks to be deleted to the prefix list.
+	// The list of Classless Inter-Domain Routing blocks to delete from the prefix list instance.
 	RemovePrefixListEntry []*ModifyVpcPrefixListRequestRemovePrefixListEntry `json:"RemovePrefixListEntry,omitempty" xml:"RemovePrefixListEntry,omitempty" type:"Repeated"`
 	ResourceOwnerAccount  *string                                            `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId       *int64                                             `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -254,17 +254,17 @@ func (s *ModifyVpcPrefixListRequest) Validate() error {
 }
 
 type ModifyVpcPrefixListRequestAddPrefixListEntry struct {
-	// The CIDR block to be added to the prefix list.
+	// The Classless Inter-Domain Routing block to add to the prefix list instance.
 	//
-	// >  If the CIDR block already exists in the prefix list, you can only modify the description of the CIDR block by setting the **AddPrefixListEntry.N.Description*	- parameter.
+	// > If the Classless Inter-Domain Routing block already exists in the prefix list, only the value of **AddPrefixListEntry.N.Description*	- is modified, which means only the description of the Classless Inter-Domain Routing block is updated.
 	//
 	// example:
 	//
 	// 172.16.0.0/12
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	// The description of the CIDR block to be added to the prefix list.
+	// The description of the Classless Inter-Domain Routing block to add to the prefix list instance.
 	//
-	// The description must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
+	// The description must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
@@ -303,13 +303,13 @@ func (s *ModifyVpcPrefixListRequestAddPrefixListEntry) Validate() error {
 }
 
 type ModifyVpcPrefixListRequestRemovePrefixListEntry struct {
-	// The CIDR block that you want to delete from the prefix list.
+	// The Classless Inter-Domain Routing block to delete from the prefix list instance.
 	//
 	// example:
 	//
 	// 192.168.0.0/16
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	// The description of the CIDR block that you want to delete.
+	// The description of the Classless Inter-Domain Routing block to delete from the prefix list.
 	//
 	// example:
 	//

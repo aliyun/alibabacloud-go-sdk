@@ -22,7 +22,7 @@ type AttachVbrToVpconnResponseBody struct {
 	//
 	// 5356F028-0F5C-56FC-8574-897D24379041
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the hosted connection.
+	// The instance ID of the shared Express Connect circuits.
 	//
 	// example:
 	//

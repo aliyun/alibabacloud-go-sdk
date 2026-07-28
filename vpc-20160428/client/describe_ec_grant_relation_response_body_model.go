@@ -24,21 +24,21 @@ type iDescribeEcGrantRelationResponseBody interface {
 }
 
 type DescribeEcGrantRelationResponseBody struct {
-	// The total number of entries returned.
+	// The number of query results.
 	//
 	// example:
 	//
 	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The query results.
+	// The list of authorization relationship query results.
 	EcGrantRelations []*DescribeEcGrantRelationResponseBodyEcGrantRelations `json:"EcGrantRelations,omitempty" xml:"EcGrantRelations,omitempty" type:"Repeated"`
-	// The page number.
+	// The page number of the list.
 	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page in a paged query.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DescribeEcGrantRelationResponseBody struct {
 	//
 	// E6E90F6B-2B41-5AAF-ABEB-236ADBAAD91D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries in the list.
 	//
 	// example:
 	//
@@ -134,75 +134,75 @@ func (s *DescribeEcGrantRelationResponseBody) Validate() error {
 }
 
 type DescribeEcGrantRelationResponseBodyEcGrantRelations struct {
-	// The ID of the Alibaba Cloud account to which the VPC belongs.
+	// The Alibaba Cloud account ID of the VPC instance owner in the authorization relationship.
 	//
 	// example:
 	//
 	// 1250123456123456
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The time when permissions on the VPC were granted to the VBR.
+	// The time when the VPC-connected instance granted authorization to the VBR instance.
 	//
 	// example:
 	//
 	// 2022-09-02T11:46Z
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The VBRs that have permissions on the VPC. Valid values:
+	// The scope of VBR instances that are granted authorization. Valid values:
 	//
-	// 	- **All**: VBRs that reside in the specified region and belong to the specified Alibaba Cloud account all have permissions on the VPC.
+	// - **All**: The VPC-connected instance is authorized to all VBR instances under the specified region and Alibaba Cloud account.
 	//
-	// 	- **Specify**: Only the specified VBR has permissions on the VPC.
+	// - **Specify**: The VPC-connected instance is authorized to a specified VBR instance.
 	//
 	// example:
 	//
 	// All
 	GrantType *string `json:"GrantType,omitempty" xml:"GrantType,omitempty"`
-	// The ID of the VPC.
+	// The instance ID of the VPC-connected instance in the authorization relationship.
 	//
 	// example:
 	//
 	// vpc-bp1brjuegjc88v3u9****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the VPC.
+	// The name of the VPC instance in the authorization relationship.
 	//
 	// example:
 	//
 	// VPCname
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The ID of the vRouter.
+	// The vRouter ID of the VPC instance in the authorization relationship.
 	//
 	// example:
 	//
 	// vrt-bp1i0yzgjd8ra05ec****
 	InstanceRouterId *string `json:"InstanceRouterId,omitempty" xml:"InstanceRouterId,omitempty"`
-	// The ID of the region where the VPC is deployed.
+	// The region ID of the VPC instance in the authorization relationship.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The query result. Valid values:
+	// The status of the authorization relationship. Valid values:
 	//
-	// 	- **Created**: The VBR has permissions on the VPC.
+	// - **Created**: An authorization relationship exists between the VPC-connected instance and the VBR instance.
 	//
-	// 	- **Deleted**: The VBR does not have permissions on the VPC.
+	// - **Deleted**: No authorization relationship exists between the VPC-connected instance and the VBR instance.
 	//
 	// example:
 	//
 	// Created
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the VBR.
+	// The instance ID of the VBR instance in the authorization relationship.
 	//
 	// example:
 	//
 	// vbr-m5ex0xf63xk8s5bob****
 	VbrInstanceId *string `json:"VbrInstanceId,omitempty" xml:"VbrInstanceId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the VBR belongs.
+	// The Alibaba Cloud account ID of the VBR instance owner.
 	//
 	// example:
 	//
 	// 1210123456123456
 	VbrOwnerUid *int64 `json:"VbrOwnerUid,omitempty" xml:"VbrOwnerUid,omitempty"`
-	// The ID of the region where the VBR is deployed.
+	// The region ID of the VBR instance in the authorization relationship.
 	//
 	// example:
 	//

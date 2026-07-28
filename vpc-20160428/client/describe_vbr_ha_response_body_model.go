@@ -38,7 +38,7 @@ type DescribeVbrHaResponseBody struct {
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The description of the VBR failover group.
 	//
-	// The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+	// The description must be 2 to 256 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
@@ -50,13 +50,13 @@ type DescribeVbrHaResponseBody struct {
 	//
 	// VBRHa
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the other VBR in the VBR failover group.
+	// The instance ID of the other VBR in the VBR failover group.
 	//
 	// example:
 	//
 	// vbr-bp12mw1f8k3jgygk9****
 	PeerVbrId *string `json:"PeerVbrId,omitempty" xml:"PeerVbrId,omitempty"`
-	// The ID of the region in which the VBR is deployed.
+	// The region ID of the VBR.
 	//
 	// example:
 	//
@@ -68,23 +68,23 @@ type DescribeVbrHaResponseBody struct {
 	//
 	// 4EC47282-1B74-4534-BD0E-403F3EE64CAF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the VBR failover group.
+	// The status of the VBR failover group. Valid values:
 	//
-	// 	- **Creating**
+	// - **Creating**: being created.
 	//
-	// 	- **Active**
+	// - **Active**: Normal.
 	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the VBR failover group.
+	// The VBR failover group instance ID.
 	//
 	// example:
 	//
 	// vbrha-sa1sxheuxtd98****
 	VbrHaId *string `json:"VbrHaId,omitempty" xml:"VbrHaId,omitempty"`
-	// The VBR ID.
+	// The VBR instance ID.
 	//
 	// example:
 	//

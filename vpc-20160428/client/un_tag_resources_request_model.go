@@ -30,11 +30,11 @@ type iUnTagResourcesRequest interface {
 }
 
 type UnTagResourcesRequest struct {
-	// Specifies whether to remove all tags from the specified resource. Valid values:
+	// Specifies whether to unbind all tags from the resources. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Unbinds all tags from the resources.
 	//
-	// 	- **false*	- (default)
+	// - **false*	- (default): Does not unbind all tags from the resources.
 	//
 	// example:
 	//
@@ -42,9 +42,9 @@ type UnTagResourcesRequest struct {
 	All          *bool   `json:"All,omitempty" xml:"All,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the resource.
+	// The region ID of the resources.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type UnTagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource ID. You can specify up to 20 resource IDs.
+	// The resource IDs. You can specify up to 50 resource IDs.
 	//
 	// This parameter is required.
 	//
@@ -64,19 +64,45 @@ type UnTagResourcesRequest struct {
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The resource type. Valid values:
 	//
-	// 	- **VPC**
+	// - **VPC**: virtual private cloud (VPC) instance.
 	//
-	// 	- **VSWITCH**
+	// - **VSWITCH**: vSwitch instance.
 	//
-	// 	- **ROUTETABLE**
+	// - **ROUTETABLE**: route table instance.
 	//
-	// 	- **EIP**
+	// - **EIP**: elastic IP address (EIP) instance.
 	//
-	// 	- **VpnGateway**
+	// - **VPNGATEWAY**: VPN gateway instance.
 	//
-	// 	- **NATGATEWAY**
+	// - **NATGATEWAY**: NAT gateway instance.
 	//
-	// 	- **COMMONBANDWIDTHPACKAGE**: EIP bandwidth plan
+	// - **COMMONBANDWIDTHPACKAGE**: Internet Shared Bandwidth instance.
+	//
+	// - **PREFIXLIST**: prefix list instance.
+	//
+	// - **PUBLICIPADDRESSPOOL**: IP address pool instance.
+	//
+	// - **IPV4GATEWAY**: IPv4 gateway instance.
+	//
+	// - **IPV6GATEWAY**: IPv6 gateway instance.
+	//
+	// - **NETWORKACL**: network ACL instance.
+	//
+	// - **TRAFFICMIRRORFILTER**: traffic mirror filter instance.
+	//
+	// - **TRAFFICMIRRORSESSION**: traffic mirror session instance.
+	//
+	// - **FLOWLOG**: flow log instance.
+	//
+	// - **HAVIP**: high-availability virtual IP address (HaVip) instance.
+	//
+	// - **DHCPOPTIONSSET**: DHCP options set instance.
+	//
+	// - **GATEWAYENDPOINT**: gateway endpoint instance.
+	//
+	// - **IPV6ADDRESS**: IPv6 address instance.
+	//
+	// > The resource type value is case-insensitive.
 	//
 	// This parameter is required.
 	//
@@ -84,9 +110,9 @@ type UnTagResourcesRequest struct {
 	//
 	// VPC
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The key of the tag that you want to remove. You can specify at most 20 tag keys. It can be an empty string.
+	// The tag keys to unbind. You can specify up to 20 tag keys.
 	//
-	// The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+	// Each tag key can be up to 128 characters in length, can be an empty string, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

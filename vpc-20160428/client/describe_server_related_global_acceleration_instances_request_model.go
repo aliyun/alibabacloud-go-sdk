@@ -28,9 +28,9 @@ type iDescribeServerRelatedGlobalAccelerationInstancesRequest interface {
 type DescribeServerRelatedGlobalAccelerationInstancesRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the GA instance.
+	// The region where the Alibaba Cloud Global Accelerator (GA) instance resides.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to obtain the region ID.
 	//
 	// This parameter is required.
 	//
@@ -50,9 +50,9 @@ type DescribeServerRelatedGlobalAccelerationInstancesRequest struct {
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
 	// The type of the backend service instance. Valid values:
 	//
-	// 	- **EcsInstance*	- (default): Elastic Compute Service (ECS)
+	// - **EcsInstance*	- (default): ECS instance.
 	//
-	// 	- **SlbInstance**: Server Load Balancer (SLB)
+	// - **SlbInstance**: load balancing instance.
 	//
 	// example:
 	//

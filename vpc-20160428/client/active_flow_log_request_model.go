@@ -34,7 +34,7 @@ type ActiveFlowLogRequest struct {
 	FlowLogId    *string `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the flow log. You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
+	// The region ID of the flow log. You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//

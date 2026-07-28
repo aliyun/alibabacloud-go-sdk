@@ -22,17 +22,17 @@ type iListVSwitchCidrReservationsResponseBody interface {
 }
 
 type ListVSwitchCidrReservationsResponseBody struct {
-	// The number of entries to return per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. Valid values:
+	// The pagination token. Valid values:
 	//
-	// 	- If **NextToken*	- is empty, no next page exists.
+	// - If **NextToken*	- is empty, no subsequent query exists.
 	//
-	// 	- If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
+	// - If **NextToken*	- is returned, the value indicates the token for the next query.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListVSwitchCidrReservationsResponseBody struct {
 	//
 	// 10
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// A list of reserved CIDR blocks.
+	// The list of reserved CIDR blocks for a vSwitch.
 	VSwitchCidrReservations []*ListVSwitchCidrReservationsResponseBodyVSwitchCidrReservations `json:"VSwitchCidrReservations,omitempty" xml:"VSwitchCidrReservations,omitempty" type:"Repeated"`
 }
 
@@ -121,13 +121,13 @@ func (s *ListVSwitchCidrReservationsResponseBody) Validate() error {
 }
 
 type ListVSwitchCidrReservationsResponseBodyVSwitchCidrReservations struct {
-	// The number of used prefixes in the reserved CIDR block.
+	// The number of used prefix CIDR blocks in the reserved CIDR block for a vSwitch.
 	//
 	// example:
 	//
 	// 6
 	AssignedCidrCount *int32 `json:"AssignedCidrCount,omitempty" xml:"AssignedCidrCount,omitempty"`
-	// The number of available prefixes in the reserved CIDR block.
+	// The number of active prefix CIDR blocks in the reserved CIDR block for a vSwitch.
 	//
 	// example:
 	//
@@ -139,11 +139,11 @@ type ListVSwitchCidrReservationsResponseBodyVSwitchCidrReservations struct {
 	//
 	// 2023-03-14T10:02:37Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The IP version of the reserved CIDR block. Valid values:
+	// The IP version of the reserved CIDR block for a vSwitch. Valid values:
 	//
-	// 	- **IPv4*	- (default)
+	// - **IPv4*	- (default): IPv4.
 	//
-	// 	- **IPv6**
+	// - **IPv6**: IPv6.
 	//
 	// example:
 	//
@@ -151,57 +151,57 @@ type ListVSwitchCidrReservationsResponseBodyVSwitchCidrReservations struct {
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 	// The status of the reserved CIDR block. Valid values:
 	//
-	// 	- **Assigning**
+	// - **Assigning**: being allocated.
 	//
-	// 	- **Assigned**
+	// - **Assigned**: allocated.
 	//
-	// 	- **Releasing**
+	// - **Releasing**: being released.
 	//
-	// 	- **Released**
+	// - **Released**: released.
 	//
 	// example:
 	//
 	// Assigned
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags.
+	// The list of tags.
 	Tags []*ListVSwitchCidrReservationsResponseBodyVSwitchCidrReservationsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The type of the reserved CIDR block. Valid value: **prefix**. CIDR blocks are allocated from the reserved CIDR block.
+	// The type of the reserved CIDR block for a vSwitch. Valid values: **prefix*	- (default), which indicates that addresses are allocated by CIDR block.
 	//
 	// example:
 	//
 	// prefix
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The reserved CIDR block.
+	// The reserved CIDR block for a vSwitch.
 	//
 	// example:
 	//
 	// 192.168.1.64/28
 	VSwitchCidrReservationCidr *string `json:"VSwitchCidrReservationCidr,omitempty" xml:"VSwitchCidrReservationCidr,omitempty"`
-	// The description of the reserved CIDR block.
+	// The description of the reserved CIDR block for a vSwitch.
 	//
 	// example:
 	//
 	// ReservationDescription
 	VSwitchCidrReservationDescription *string `json:"VSwitchCidrReservationDescription,omitempty" xml:"VSwitchCidrReservationDescription,omitempty"`
-	// The ID of the reserved CIDR block.
+	// The instance ID of the reserved CIDR block for a vSwitch.
 	//
 	// example:
 	//
 	// vcr-bp1m12saqteraw3rp****
 	VSwitchCidrReservationId *string `json:"VSwitchCidrReservationId,omitempty" xml:"VSwitchCidrReservationId,omitempty"`
-	// The name of the reserved CIDR block.
+	// The name of the reserved CIDR block for a vSwitch.
 	//
 	// example:
 	//
 	// ReservationName
 	VSwitchCidrReservationName *string `json:"VSwitchCidrReservationName,omitempty" xml:"VSwitchCidrReservationName,omitempty"`
-	// The ID of the vSwitch to which the reserved CIDR block belongs.
+	// The ID of the vSwitch to which the reserved CIDR block for a vSwitch belongs.
 	//
 	// example:
 	//
 	// vsw-25navfgbue4g****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The virtual private cloud (VPC) to which the reserved CIDR block belongs.
+	// The ID of the VPC to which the reserved CIDR block for a vSwitch belongs.
 	//
 	// example:
 	//

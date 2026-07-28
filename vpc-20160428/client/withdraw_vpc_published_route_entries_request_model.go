@@ -30,11 +30,11 @@ type iWithdrawVpcPublishedRouteEntriesRequest interface {
 }
 
 type WithdrawVpcPublishedRouteEntriesRequest struct {
-	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run without withdrawing the published routing entry. The system checks the required parameters, request format, and business limits. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
 	//
-	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// - **false*	- (default): sends a normal request. If the check succeeds, an HTTP 2xx status code is returned and the operation to withdraw the VPC published routing entry is performed.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type WithdrawVpcPublishedRouteEntriesRequest struct {
 	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region. Call the DescribeRegions operation to access it.
+	// The region ID of the instance. You can call the DescribeRegions operation to query the region ID.
 	//
 	// example:
 	//
@@ -50,9 +50,9 @@ type WithdrawVpcPublishedRouteEntriesRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The route entries to be withdrawn. Maximum value: 50.
+	// The list of route entries to withdraw. You can specify up to 50 route entries.
 	RouteEntries []*WithdrawVpcPublishedRouteEntriesRequestRouteEntries `json:"RouteEntries,omitempty" xml:"RouteEntries,omitempty" type:"Repeated"`
-	// Target instance ID.
+	// The publish route entry target instance ID.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type WithdrawVpcPublishedRouteEntriesRequest struct {
 	//
 	// ecr-dhw2xsds5****
 	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
-	// The type of target instance.
+	// The type of the route publish target.
 	//
 	// This parameter is required.
 	//
@@ -173,7 +173,7 @@ func (s *WithdrawVpcPublishedRouteEntriesRequest) Validate() error {
 }
 
 type WithdrawVpcPublishedRouteEntriesRequestRouteEntries struct {
-	// The destination CIDR block
+	// The destination CIDR block of the route entry.
 	//
 	// This parameter is required.
 	//
@@ -181,7 +181,7 @@ type WithdrawVpcPublishedRouteEntriesRequestRouteEntries struct {
 	//
 	// 10.0.0.0/24
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	// The ID of the route table.
+	// The route table ID of the route entry.
 	//
 	// This parameter is required.
 	//

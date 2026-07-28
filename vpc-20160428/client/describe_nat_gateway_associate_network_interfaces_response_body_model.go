@@ -33,7 +33,7 @@ type DescribeNatGatewayAssociateNetworkInterfacesResponseBody struct {
 	//
 	// 0
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The number of entries per page for a paged query. Valid values: **1*	- to **100**. Default value: **20**.
+	// The number of entries per page for a paginated query. Valid values: **1*	- to **100**. Default value: **20**.
 	//
 	// example:
 	//

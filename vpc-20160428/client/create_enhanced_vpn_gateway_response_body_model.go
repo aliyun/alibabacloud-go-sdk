@@ -18,7 +18,7 @@ type iCreateEnhancedVpnGatewayResponseBody interface {
 }
 
 type CreateEnhancedVpnGatewayResponseBody struct {
-	// The name of the enhanced VPN gateway.
+	// The name of the VPN gateway.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type CreateEnhancedVpnGatewayResponseBody struct {
 	//
 	// EB2C156A-41F8-49CC-A756-D55AFC8BFD69
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the enhanced VPN gateway instance.
+	// The instance ID of the enhanced VPN gateway.
 	//
 	// example:
 	//

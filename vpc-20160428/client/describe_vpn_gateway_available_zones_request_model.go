@@ -28,7 +28,7 @@ type iDescribeVpnGatewayAvailableZonesRequest interface {
 }
 
 type DescribeVpnGatewayAvailableZonesRequest struct {
-	// The language in which the returned results are displayed. Valid values:
+	// The language of the response. Valid values:
 	//
 	// - **zh-CN**: Chinese.
 	//
@@ -40,11 +40,11 @@ type DescribeVpnGatewayAvailableZonesRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The VPN gateway type. Valid values:
 	//
-	// - **Traditional**: Returns zone information for creating traditional VPN gateways.
+	// - **Traditional**: Returns zone information for zones where traditional VPN gateways can be created.
 	//
-	// - **Enhanced.SiteToSite**: Returns zone information for creating enhanced site-to-cloud VPN gateways.
+	// - **Enhanced.SiteToSite**: Returns zone information for zones where enhanced site-to-cloud VPN gateways can be created.
 	//
-	// - **Default value**: Returns zone information for creating all types of VPN gateways.
+	// - **Default value**: Returns zone information for zones where all types of VPN gateways can be created.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type DescribeVpnGatewayAvailableZonesRequest struct {
 	//
 	// - If the IPsec-VPN connection is associated with a transit router, this parameter specifies the expected bandwidth specification that the IPsec-VPN connection can support.
 	//
-	// Different bandwidth specifications may affect the zone information returned. Valid values:
+	// Different bandwidth specifications may affect the returned zone information. Valid values:
 	//
 	// - **5M**
 	//
@@ -84,7 +84,7 @@ type DescribeVpnGatewayAvailableZonesRequest struct {
 	//
 	// - **500M**
 	//
-	// - **1000M**.
+	// - **1000M**
 	//
 	// This parameter is required.
 	//

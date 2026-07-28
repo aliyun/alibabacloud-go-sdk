@@ -26,17 +26,17 @@ type iDeleteRouteEntriesRequest interface {
 }
 
 type DeleteRouteEntriesRequest struct {
-	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// **true**: performs a dry run without deleting routes. The system checks the AccessKey pair, the authorization of the Resource Access Management (RAM) user, and the required parameters. If the check fails, the corresponding error is returned. If the check passes, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// **false*	- (default): sends a normal request. If the check passes, a 2xx HTTP status code is returned and the routes are deleted.
 	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the route table.
+	// The ID of the region where the route table resides.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type DeleteRouteEntriesRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The information about the routes that you want to delete.
+	// The information about the route entries to delete.
 	RouteEntries []*DeleteRouteEntriesRequestRouteEntries `json:"RouteEntries,omitempty" xml:"RouteEntries,omitempty" type:"Repeated"`
 }
 
@@ -135,31 +135,31 @@ func (s *DeleteRouteEntriesRequest) Validate() error {
 }
 
 type DeleteRouteEntriesRequestRouteEntries struct {
-	// The destination CIDR block of the route that you want to delete. IPv4 and IPv6 CIDR blocks are supported. You can specify up to 50 destination CIDR blocks.
+	// The destination CIDR block of the route entry to delete. IPv4 CIDR blocks, IPv6 CIDR blocks, and prefix list CIDR blocks are supported. You can specify up to 50 destination CIDR blocks.
 	//
-	// >  If **RouteEntryId*	- is not specified, **DstCidrBlock*	- and **NextHop*	- are required.
+	// > If the **RouteEntryId*	- parameter is not specified, the **DstCidrBlock*	- and **NextHop*	- parameters are required.
 	//
 	// example:
 	//
 	// 47.100.XX.XX/24
 	DstCidrBlock *string `json:"DstCidrBlock,omitempty" xml:"DstCidrBlock,omitempty"`
-	// The ID of the next hop that you want to delete. You can specify up to 50 next hop IDs.
+	// The ID of the next hop instance to delete. You can specify up to 50 instance IDs.
 	//
-	// >  If **RouteEntryId*	- is not specified, **DstCidrBlock*	- and **NextHop*	- are required.
+	// > If the **RouteEntryId*	- parameter is not specified, the **DstCidrBlock*	- and **NextHop*	- parameters are required.
 	//
 	// example:
 	//
 	// i-j6c2fp57q8rr4jlu****
 	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
-	// The ID of the route that you want to delete. You can specify up to 50 route IDs.
+	// The ID of the route entry to delete. You can specify up to 50 route entry IDs.
 	//
-	// >  If **RouteEntryId*	- is not specified, **DstCidrBlock*	- and **NextHop*	- are required.
+	// > If the **RouteEntryId*	- parameter is not specified, the **DstCidrBlock*	- and **NextHop*	- parameters are required.
 	//
 	// example:
 	//
 	// rte-bp1mnnr2al0naomnpv****
 	RouteEntryId *string `json:"RouteEntryId,omitempty" xml:"RouteEntryId,omitempty"`
-	// The ID of the route table to which the routes to be deleted belongs. You can specify up to 50 route table IDs.
+	// The ID of the route table that contains the route entry to delete. You can specify up to 50 route table IDs.
 	//
 	// This parameter is required.
 	//

@@ -20,25 +20,25 @@ type iListPublicIpAddressPoolCidrBlocksResponseBody interface {
 }
 
 type ListPublicIpAddressPoolCidrBlocksResponseBody struct {
-	// The token that is used for the next query. Valid values:
+	// The pagination token. Valid values:
 	//
-	// 	- If **NextToken*	- was not returned, it indicates that no additional results exist.
+	// - If **NextToken*	- is empty, no subsequent query exists.
 	//
-	// 	- If **NextToken*	- is returned, the value is the token that is used for the next query.
+	// - If **NextToken*	- is returned, the value indicates the token for the next query.
 	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The total number of entries returned.
+	// The list of CIDR blocks in the IP address pool.
 	PublicIpPoolCidrBlockList []*ListPublicIpAddressPoolCidrBlocksResponseBodyPublicIpPoolCidrBlockList `json:"PublicIpPoolCidrBlockList,omitempty" xml:"PublicIpPoolCidrBlockList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 4EC47282-1B74-4534-BD0E-403F3EE64CAF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The maximum number of entries returned. Valid values: **10*	- to **100**. Default value: **10**.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -104,43 +104,43 @@ func (s *ListPublicIpAddressPoolCidrBlocksResponseBody) Validate() error {
 }
 
 type ListPublicIpAddressPoolCidrBlocksResponseBodyPublicIpPoolCidrBlockList struct {
-	// The ID of the IP address pool.
+	// The CIDR block.
 	//
 	// example:
 	//
 	// 47.0.XX.XX/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The CIDR blocks.
+	// The time when the CIDR block was created. The time is in the `YYYY-MM-DDThh:mm:ssZ` format.
 	//
 	// example:
 	//
 	// 2022-05-10T01:37:38Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The information about the CIDR blocks.
+	// The instance ID of the IPAM pool.
 	//
 	// example:
 	//
 	// pippool-6wetvn6fumkgycssx****
 	PublicIpAddressPoolId *string `json:"PublicIpAddressPoolId,omitempty" xml:"PublicIpAddressPoolId,omitempty"`
-	// The time when the CIDR block was created. The time is displayed in `YYYY-MM-DDThh:mm:ssZ` format.
+	// The status of the CIDR block in the IP address pool. Valid values:
+	//
+	// - **Created**: available.
+	//
+	// - **Deleting**: being deleted.
+	//
+	// - **Modifying**: being modified.
 	//
 	// example:
 	//
 	// Created
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The total number of available IP addresses in the CIDR block.
+	// The total number of available IP addresses in the CIDR block of the IP address pool.
 	//
 	// example:
 	//
 	// 20
 	TotalIpNum *int32 `json:"TotalIpNum,omitempty" xml:"TotalIpNum,omitempty"`
-	// The status of the CIDR block in the IP address pool. Valid values:
-	//
-	// 	- **Created**: available
-	//
-	// 	- **Deleting**: being deleted
-	//
-	// 	- **Modifying**: being modified
+	// The number of used IP addresses in the CIDR block of the IP address pool.
 	//
 	// example:
 	//

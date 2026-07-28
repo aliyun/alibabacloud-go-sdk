@@ -34,7 +34,7 @@ type CreateIPv6TranslatorResponseBody struct {
 	//
 	// test_nat64gw
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The order ID.
+	// The order ID for creating the IPv6 Translation Service instance.
 	//
 	// example:
 	//

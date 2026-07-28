@@ -22,19 +22,21 @@ type iAllocateEipAddressResponseBody interface {
 }
 
 type AllocateEipAddressResponseBody struct {
-	// The EIP ID.
+	// The ID of the EIP instance.
 	//
 	// example:
 	//
 	// eip-25877c70gddh****
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	// The EIP that is allocated. This parameter is returned only when **InstanceChargeType*	- is set to **PostPaid**.
+	// The allocated EIP. This parameter is returned only if **InstanceChargeType*	- is set to **PostPaid**.
 	//
 	// example:
 	//
 	// 192.0.XX.XX
 	EipAddress *string `json:"EipAddress,omitempty" xml:"EipAddress,omitempty"`
-	// The order ID. This parameter is returned only when **InstanceChargeType*	- is set to **PrePaid**.
+	// The order ID. <props="china">This parameter is returned if InstanceChargeType (the billing method of the EIP) is set to PrePaid (subscription). If AutoPay (automatic payment) is not enabled, go to the [Order Center](https://usercenter2.aliyun.com/order/list) to complete the payment.
+	//
+	// <props="intl">This parameter is returned if InstanceChargeType (the billing method of the EIP) is set to PrePaid (subscription). If AutoPay (automatic payment) is not enabled, go to the [Order Center](https://usercenter2-intl.aliyun.com/order/list) to complete the payment.
 	//
 	// example:
 	//
@@ -46,7 +48,7 @@ type AllocateEipAddressResponseBody struct {
 	//
 	// 4EC47282-1B74-4534-BD0E-403F3EE64CAF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group. This parameter is returned only when **InstanceChargeType*	- is set to **PostPaid**.
+	// The resource group ID. This parameter is returned only if **InstanceChargeType*	- is set to **PostPaid**.
 	//
 	// example:
 	//

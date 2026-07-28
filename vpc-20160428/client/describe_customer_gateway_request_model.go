@@ -24,7 +24,7 @@ type iDescribeCustomerGatewayRequest interface {
 }
 
 type DescribeCustomerGatewayRequest struct {
-	// The ID of the customer gateway.
+	// The instance ID of the customer gateway.
 	//
 	// This parameter is required.
 	//
@@ -34,9 +34,9 @@ type DescribeCustomerGatewayRequest struct {
 	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
 	OwnerAccount      *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the customer gateway is deployed.
+	// The region ID of the customer gateway.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//

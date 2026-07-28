@@ -18,17 +18,17 @@ type iDescribeTagKeysResponseBody interface {
 }
 
 type DescribeTagKeysResponseBody struct {
-	// The token that is used for the next query. Valid values:
+	// The pagination token. Valid values:
 	//
-	// 	- If the value of **NextToken*	- is not returned, it indicates that no next query is to be sent.
+	// - If **NextToken*	- is empty, no subsequent query exists.
 	//
-	// 	- If a value of **NextToken*	- is returned, the value is the token that is used for the subsequent query.
+	// - If **NextToken*	- is returned, the value indicates the token for the next query.
 	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

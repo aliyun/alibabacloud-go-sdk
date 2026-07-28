@@ -34,7 +34,7 @@ type iDeleteVcoRouteEntryRequest interface {
 type DeleteVcoRouteEntryRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
 	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- value as the **ClientToken*	- value. The **RequestId*	- value is different for each API request.
 	//
@@ -42,7 +42,7 @@ type DeleteVcoRouteEntryRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-4266****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The next hop of the destination route entry to be deleted.
+	// The next hop of the destination route entry to delete.
 	//
 	// This parameter is required.
 	//
@@ -57,9 +57,9 @@ type DeleteVcoRouteEntryRequest struct {
 	// Ipsec
 	OverlayMode  *string `json:"OverlayMode,omitempty" xml:"OverlayMode,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	// The region ID of the IPsec connection.
+	// The region ID of the IPsec-VPN connection.
 	//
-	// You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query region IDs.
+	// You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -69,7 +69,7 @@ type DeleteVcoRouteEntryRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The destination CIDR block of the destination route entry to be deleted.
+	// The destination CIDR block of the destination route entry to delete.
 	//
 	// This parameter is required.
 	//
@@ -77,7 +77,7 @@ type DeleteVcoRouteEntryRequest struct {
 	//
 	// 192.168.10.0/24
 	RouteDest *string `json:"RouteDest,omitempty" xml:"RouteDest,omitempty"`
-	// The ID of the IPsec connection.
+	// The ID of the IPsec-VPN connection.
 	//
 	// This parameter is required.
 	//
@@ -85,7 +85,7 @@ type DeleteVcoRouteEntryRequest struct {
 	//
 	// vco-p0w5112fgnl2ihlmf****
 	VpnConnectionId *string `json:"VpnConnectionId,omitempty" xml:"VpnConnectionId,omitempty"`
-	// The weight of the destination route entry to be deleted. Valid values:
+	// The weight of the destination route entry to delete. Valid values:
 	//
 	// - **0**: low priority.
 	//

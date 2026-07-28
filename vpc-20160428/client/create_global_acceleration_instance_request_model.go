@@ -34,7 +34,7 @@ type iCreateGlobalAccelerationInstanceRequest interface {
 }
 
 type CreateGlobalAccelerationInstanceRequest struct {
-	// The maximum bandwidth of the GA instance. Set the value to **10**. Unit: Mbit/s.
+	// The peak bandwidth of the Alibaba Cloud Global Accelerator (GA) instance. Unit: Mbit/s. Valid value: **10**.
 	//
 	// This parameter is required.
 	//
@@ -42,11 +42,11 @@ type CreateGlobalAccelerationInstanceRequest struct {
 	//
 	// 10
 	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The bandwidth type. Valid values:
+	// The bandwidth type of the instance. Valid values:
 	//
-	// 	- **Sharing**
+	// - **Sharing**: shared bandwidth.
 	//
-	// 	- **Exclusive**
+	// - **Exclusive**: dedicated bandwidth.
 	//
 	// example:
 	//
@@ -54,23 +54,23 @@ type CreateGlobalAccelerationInstanceRequest struct {
 	BandwidthType *string `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client generates the value of this parameter. Ensure that the value is unique among different requests. The value can be up to 64 ASCII characters in length.
 	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-0016e04115b
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The description of the GA instance.
+	// The description of the Alibaba Cloud Global Accelerator (GA) instance.
 	//
-	// The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+	// The description must be 2 to 256 characters in length and must start with a letter or a Chinese character, but cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// My GA
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the GA instance.
+	// The name of the Alibaba Cloud Global Accelerator (GA) instance.
 	//
-	// The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+	// The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-), but cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
@@ -78,9 +78,9 @@ type CreateGlobalAccelerationInstanceRequest struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the GA instance.
+	// The region where the Alibaba Cloud Global Accelerator (GA) instance resides.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -90,15 +90,19 @@ type CreateGlobalAccelerationInstanceRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The acceleration area. Valid values:
+	// The area where the accelerated service resides. Valid values:
 	//
-	// 	- **china-mainland**
+	// - **china-mainland**: the Chinese mainland.
 	//
-	// 	- **north-america**
+	// - **north-america**: North America.
 	//
-	// 	- **asia-pacific**
 	//
-	// 	- **europe**
+	//
+	// - **asia-pacific**: Asia-Pacific.
+	//
+	//
+	//
+	// - **europe**: Europe.
 	//
 	// This parameter is required.
 	//

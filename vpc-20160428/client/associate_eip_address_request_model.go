@@ -38,7 +38,7 @@ type iAssociateEipAddressRequest interface {
 }
 
 type AssociateEipAddressRequest struct {
-	// The ID of the EIP that you want to associate with an instance.
+	// The ID of the EIP to be associated with the cloud resource instance.
 	//
 	// This parameter is required.
 	//
@@ -48,17 +48,17 @@ type AssociateEipAddressRequest struct {
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate a token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
 	// 0c593ea1-3bea-11e9-b96b-88e9fe63****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the instance with which you want to associate the EIP.
+	// The instance ID of the instance to be associated with the EIP.
 	//
-	// You can enter the ID of a NAT gateway, CLB instance, ECS instance, secondary ENI, HAVIP, or IP address.
+	// You can enter the instance ID of a NAT gateway, a Classic Load Balancer (CLB) instance, an Elastic Compute Service (ECS) instance, a secondary elastic network interface controller (NIC) instance, a high-availability virtual IP address instance, or an IP address.
 	//
 	// This parameter is required.
 	//
@@ -66,29 +66,29 @@ type AssociateEipAddressRequest struct {
 	//
 	// i-2zebb08phyczzawe****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the region in which the instance with which you want to associate the EIP resides.
+	// The region ID of the instance to be associated with the EIP.
 	//
-	// >  This parameter is required only when the EIP is added to a shared Global Accelerator (GA) instance.
+	// > This parameter is required only after the EIP is added to a shared-bandwidth Global Accelerator (GA) instance.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	InstanceRegionId *string `json:"InstanceRegionId,omitempty" xml:"InstanceRegionId,omitempty"`
-	// The type of the instance with which you want to associate the EIP. Valid values:
+	// The type of the instance to be associated with the EIP. Valid values:
 	//
-	// 	- **Nat**: NAT gateway
+	// - **Nat**: NAT gateway.
 	//
-	// 	- **SlbInstance**: CLB instance
+	// - **SlbInstance**: Classic Load Balancer (CLB).
 	//
-	// 	- **EcsInstance*	- (default): ECS instance
+	// - **EcsInstance*	- (default): Elastic Compute Service (ECS).
 	//
-	// 	- **NetworkInterface**: secondary ENI
+	// - **NetworkInterface**: secondary elastic network interface controller (NIC).
 	//
-	// 	- **HaVip**: HAVIP
+	// - **HaVip**: high-availability virtual IP address.
 	//
-	// 	- **IpAddress**: IP address
+	// - **IpAddress**: IP address.
 	//
-	// >  The default value is **EcsInstance**. If the instance with which you want to associate the EIP is not an ECS instance, this parameter is required.
+	// > The default instance type is **EcsInstance**. If the instance type is not **EcsInstance**, this parameter is required.
 	//
 	// example:
 	//
@@ -96,13 +96,14 @@ type AssociateEipAddressRequest struct {
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The association mode. Valid values:
 	//
-	// 	- **NAT*	- (default): NAT mode
+	// - **NAT*	- (default): NAT mode (standard mode).
 	//
-	// 	- **MULTI_BINDED**: multi-EIP-to-ENI mode
+	// - **MULTI_BINDED**: multi-EIP-to-ENI mode.
 	//
-	// 	- **BINDED**: cut-network interface controller mode
+	// - **BINDED**: EIP-to-ENI mode.
 	//
-	// >  This parameter is required only when **InstanceType*	- is set to **NetworkInterface**.
+	//
+	// > This parameter is required only when **InstanceType*	- is set to **NetworkInterface**.
 	//
 	// example:
 	//
@@ -110,15 +111,17 @@ type AssociateEipAddressRequest struct {
 	Mode         *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The IP address in the CIDR block of the vSwitch.
+	// An IP address in the vSwitch CIDR block.
 	//
-	// If you leave this parameter empty, the system allocates a private IP address based on the VPC ID and vSwitch ID.
+	// If you do not specify this parameter, the system automatically assigns a private IP address based on the VPC ID and vSwitch ID.
+	//
+	// > If **InstanceType*	- is set to **NetworkInterface**, this parameter is required. Enter the private IP address to be associated.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	// The ID of the region to which the EIP belongs.
+	// The region ID of the EIP to be associated with the cloud resource instance.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
@@ -128,11 +131,11 @@ type AssociateEipAddressRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the VPC in which an IPv4 gateway is created. The VPC and the EIP must be in the same region.
+	// The ID of the VPC that has the IPv4 gateway feature enabled and is in the same region as the EIP.
 	//
-	// When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations.
+	// When the EIP is associated with an IP address, the system can use the route configuration of the VPC to enable public network access for the associated IP address.
 	//
-	// >  This parameter is required if **InstanceType*	- is set to **IpAddress**, which indicates that the EIP is to be associated with an IP address.
+	// > This parameter is required when **InstanceType*	- is set to **IpAddress**.
 	//
 	// example:
 	//

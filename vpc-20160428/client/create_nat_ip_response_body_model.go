@@ -28,19 +28,19 @@ type CreateNatIpResponseBody struct {
 	//
 	// ""
 	Ipv4Prefix *string `json:"Ipv4Prefix,omitempty" xml:"Ipv4Prefix,omitempty"`
-	// The created NAT IP address.
+	// The NAT IP address that is created.
 	//
 	// example:
 	//
 	// 192.168.0.34
 	NatIp *string `json:"NatIp,omitempty" xml:"NatIp,omitempty"`
-	// The instance ID of the created NAT IP address.
+	// The instance ID of the NAT IP address that is created.
 	//
 	// example:
 	//
 	// vpcnatip-gw8y7q3cpk3fggs8****
 	NatIpId *string `json:"NatIpId,omitempty" xml:"NatIpId,omitempty"`
-	// The NAT IP address information returned after the NAT IP address is created. When you create a NAT IP address by using an IPv4 prefix, all NAT IP address information is returned. When you create a single NAT IP address, we recommend that you use this parameter to obtain the NAT IP address information.
+	// The NAT IP address information returned after creation. When you create NAT IP addresses by using an IPv4 prefix, all NAT IP address information is returned. When you create a single NAT IP address, we recommend that you use this parameter to obtain the NAT IP address information.
 	NatIps []*CreateNatIpResponseBodyNatIps `json:"NatIps,omitempty" xml:"NatIps,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -117,7 +117,7 @@ func (s *CreateNatIpResponseBody) Validate() error {
 }
 
 type CreateNatIpResponseBodyNatIps struct {
-	// The IPv4 prefix in the list of NAT IP addresses created by using an IPv4 prefix.
+	// The IPv4 prefix in the NAT IP address list returned when an IPv4 prefix is created.
 	//
 	// if can be null:
 	// true
@@ -126,13 +126,13 @@ type CreateNatIpResponseBodyNatIps struct {
 	//
 	// 192.168.1.128/28
 	Ipv4Prefix *string `json:"Ipv4Prefix,omitempty" xml:"Ipv4Prefix,omitempty"`
-	// The NAT IP address in the list of NAT IP addresses created by using an IPv4 prefix.
+	// The NAT IP address in the NAT IP address list returned when an IPv4 prefix is created.
 	//
 	// example:
 	//
 	// 192.168.2.128
 	NatIp *string `json:"NatIp,omitempty" xml:"NatIp,omitempty"`
-	// The NAT IP address ID in the list of NAT IP addresses created by using an IPv4 prefix.
+	// The ID of the NAT IP address in the NAT IP address list returned when an IPv4 prefix is created.
 	//
 	// example:
 	//

@@ -28,7 +28,7 @@ type iModifyCommonBandwidthPackageIpBandwidthRequest interface {
 }
 
 type ModifyCommonBandwidthPackageIpBandwidthRequest struct {
-	// The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+	// The maximum bandwidth that can be allocated within the Internet Shared Bandwidth instance. Unit: Mbps.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type ModifyCommonBandwidthPackageIpBandwidthRequest struct {
 	//
 	// 500
 	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The ID of the Internet Shared Bandwidth instance.
+	// The instance ID of the Internet Shared Bandwidth instance.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type ModifyCommonBandwidthPackageIpBandwidthRequest struct {
 	//
 	// cbwp-2zep6hw5d6y8exscd****
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// The ID of the EIP that is associated with the Internet Shared Bandwidth instance.
+	// The instance ID of the EIP that has been added to the Internet Shared Bandwidth instance.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type ModifyCommonBandwidthPackageIpBandwidthRequest struct {
 	EipId        *string `json:"EipId,omitempty" xml:"EipId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the Internet Shared Bandwidth instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// The region ID of the Internet Shared Bandwidth instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//

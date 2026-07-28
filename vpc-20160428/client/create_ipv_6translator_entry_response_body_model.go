@@ -16,7 +16,7 @@ type iCreateIPv6TranslatorEntryResponseBody interface {
 }
 
 type CreateIPv6TranslatorEntryResponseBody struct {
-	// The ID of the IPv6 Translation Service instance.
+	// The instance ID of the IPv6 Translation Service.
 	//
 	// example:
 	//

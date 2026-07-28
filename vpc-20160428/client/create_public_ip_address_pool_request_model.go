@@ -42,11 +42,11 @@ type iCreatePublicIpAddressPoolRequest interface {
 }
 
 type CreatePublicIpAddressPoolRequest struct {
-	// The service type of the IP address pool. Valid values:
+	// The business type of the IP address pool. Valid values:
 	//
-	// 	- **CloudBox*	- Only cloud box users can select this type.
+	// - **CloudBox**: CloudBox. Only CloudBox users can select this type.
 	//
-	// 	- **Default**: This is the default value.
+	// - **Default*	- (default): indicates that the business type is not a special type.
 	//
 	// example:
 	//
@@ -54,15 +54,15 @@ type CreatePublicIpAddressPoolRequest struct {
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate a value, and you must make sure that each request has a unique token value. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the value of **RequestId*	- as the value of **ClientToken**. The value of **RequestId*	- for each API request is different.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
 	// 02fb3da4-130e-11****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The description of the IP address pool.
+	// The description of the IP address pool instance.
 	//
 	// The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
@@ -70,11 +70,11 @@ type CreatePublicIpAddressPoolRequest struct {
 	//
 	// AddressPoolDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to precheck only this request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: prechecks the request without creating an IP address pool. The system checks the required parameters, request format, and service limits. If the request fails to pass the precheck, an error code is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run without creating the IP address pool. The system checks the required parameters, request format, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false**: sends the request. This is the default value. If the request passes the precheck, a 2xx HTTP status code is returned and the IP address pool is created.
+	// - **false*	- (default): performs a dry run and sends the request. If the request passes the dry run, an HTTP 2xx status code is returned and the operation is performed.
 	//
 	// example:
 	//
@@ -82,33 +82,33 @@ type CreatePublicIpAddressPoolRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The line type. Valid values:
 	//
-	// 	- **BGP*	- (default)
+	// - **BGP*	- (default): BGP (Multi-ISP) line.
 	//
-	// 	- **BGP_PRO**
+	// - **BGP_PRO**: BGP (Multi-ISP) Pro line.
 	//
-	// For more information about BGP (Multi-ISP) lines and BGP (Multi-ISP) Pro lines, see the "Line types" section in the [What is EIP?](https://help.aliyun.com/document_detail/32321.html) topic.
+	// For more information about BGP (Multi-ISP) lines and BGP (Multi-ISP) Pro lines, see [EIP line types](https://help.aliyun.com/document_detail/32321.html).
 	//
-	// 	- If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+	// - If you are a whitelist user of single-ISP bandwidth, you can also select the following types:
 	//
-	//     	- **ChinaTelecom**
+	//     - **ChinaTelecom**: China Telecom
 	//
-	//     	- **ChinaUnicom**
+	//     - **ChinaUnicom**: China Unicom
 	//
-	//     	- **ChinaMobile**
+	//     - **ChinaMobile**: China Mobile
 	//
-	//     	- **ChinaTelecom_L2**
+	//     - **ChinaTelecom_L2**: China Telecom L2
 	//
-	//     	- **ChinaUnicom_L2**
+	//     - **ChinaUnicom_L2**: China Unicom L2
 	//
-	//     	- **ChinaMobile_L2**
+	//     - **ChinaMobile_L2**: China Mobile L2
 	//
-	// 	- If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to **BGP_FinanceCloud**.
+	// - If you are a China (Hangzhou) Finance Cloud user, this field is required. Set this parameter to **BGP_FinanceCloud**.
 	//
 	// example:
 	//
 	// BGP
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// The name of the IP address pool.
+	// The name of the IP address pool instance.
 	//
 	// The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
 	//
@@ -118,7 +118,7 @@ type CreatePublicIpAddressPoolRequest struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where you want to create the IP address pool.
+	// The region ID of the IP address pool that you want to create.
 	//
 	// This parameter is required.
 	//
@@ -134,15 +134,17 @@ type CreatePublicIpAddressPoolRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The editions of Anti-DDoS.
+	// The security protection level.
 	//
-	// - If you do not specify this parameter, Anti-DDoS Origin Basic is used.
+	// - If this parameter is left empty, DDoS Protection (Basic) is used by default.
 	//
-	// - If you set the parameter to AntiDDoS_Enhanced, Anti-DDoS Pro/Premium is used.
+	// - If this parameter is set to **AntiDDoS_Enhanced**, DDoS Protection (Enhanced) is used.
 	SecurityProtectionTypes []*string `json:"SecurityProtectionTypes,omitempty" xml:"SecurityProtectionTypes,omitempty" type:"Repeated"`
-	// The tag of the resource.
+	// The tags of the resource.
 	Tag []*CreatePublicIpAddressPoolRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The zone of the IP address pool. If you set **BizType*	- to **CloudBox**, this parameter is required.
+	// The zones of the IP address pool.
+	//
+	// This parameter is required only when **BizType*	- is set to **CloudBox**, which indicates that the business type of the IP address pool is CloudBox.
 	Zones []*string `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
@@ -305,7 +307,7 @@ func (s *CreatePublicIpAddressPoolRequest) Validate() error {
 type CreatePublicIpAddressPoolRequestTag struct {
 	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -313,7 +315,7 @@ type CreatePublicIpAddressPoolRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

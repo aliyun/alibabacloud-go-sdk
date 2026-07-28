@@ -36,17 +36,17 @@ type iDescribeVpnSslServerLogsRequest interface {
 }
 
 type DescribeVpnSslServerLogsRequest struct {
-	// The beginning of the time range to query. The value must be a unix timestamp. For example, 1600738962 specifies 09:42:42 (UTC+8) on September 22, 2020.
+	// The start time of the log. Only UNIX timestamps in seconds are supported. For example, 1600738962 represents 2020-09-22 09:42:42.
 	//
-	// >  If you specify **From**, you must also specify **To*	- or **MinutePeriod**.
+	// > If you specify **From**, you must also specify **To*	- or **MinutePeriod**.
 	//
 	// example:
 	//
 	// 1600738962
 	From *int32 `json:"From,omitempty" xml:"From,omitempty"`
-	// The interval at which log data is queried. Unit: minutes.
+	// The log period. Unit: minutes.
 	//
-	// >  If both **From*	- and **To*	- are not specified, you must specify **MinutePeriod**.
+	// > If you do not specify **From*	- or **To**, you must specify **MinutePeriod**.
 	//
 	// example:
 	//
@@ -54,19 +54,19 @@ type DescribeVpnSslServerLogsRequest struct {
 	MinutePeriod *int32  `json:"MinutePeriod,omitempty" xml:"MinutePeriod,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number of the list. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the SSL server is created. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// The region ID of the SSL server. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -82,9 +82,9 @@ type DescribeVpnSslServerLogsRequest struct {
 	//
 	// vsc-m5euof6s5jy8vs5kd****
 	SslVpnClientCertId *string `json:"SslVpnClientCertId,omitempty" xml:"SslVpnClientCertId,omitempty"`
-	// The end of the time range to query. The value must be a unix timestamp. For example, 1600738962 specifies 09:42:42 (UTC+8) on September 22, 2020.
+	// The end time of the log. Only UNIX timestamps in seconds are supported. For example, 1600738962 represents 2020-09-22 09:42:42.
 	//
-	// >  If you specify **To**, you must also specify **From*	- or **MinutePeriod**.
+	// > If you specify **To**, you must also specify **From*	- or **MinutePeriod**.
 	//
 	// example:
 	//

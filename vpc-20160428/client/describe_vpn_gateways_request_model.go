@@ -42,31 +42,31 @@ type iDescribeVpnGatewaysRequest interface {
 }
 
 type DescribeVpnGatewaysRequest struct {
-	// The payment status of the VPN gateway. Valid values:
+	// The billing status of the VPN gateway. Valid values:
 	//
-	// 	- **Normal**
+	// - **Normal**: Normal.
 	//
-	// 	- **FinancialLocked**
+	// - **FinancialLocked**: locked due to overdue payment.
 	//
 	// example:
 	//
 	// Normal
 	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	// VPN 网关类型，取值：
+	// The type of the VPN gateway. Valid values:
 	//
-	// Traditional：传统型VPN网关，覆盖IPsec功能和SSL功能
+	// - Traditional: a traditional VPN gateway that supports both IPsec-VPN and SSL-VPN features.
 	//
-	// Enhance.SiteToSite：增强型站点入云VPN，只覆盖IPsec功能
+	// - Enhanced.SiteToSite: an enhanced site-to-cloud VPN gateway that supports only the IPsec-VPN feature.
 	//
 	// example:
 	//
-	// Enhance.SiteToSite
+	// Enhanced.SiteToSite
 	GatewayType *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
-	// Specifies whether to return information about pending orders. Valid values:
+	// Specifies whether to include pending order data. Valid values:
 	//
-	// 	- **false*	- (default)
+	// - **false*	- (default): does not include pending order data.
 	//
-	// 	- **true**
+	// - **true**: includes pending order data.
 	//
 	// example:
 	//
@@ -74,13 +74,13 @@ type DescribeVpnGatewaysRequest struct {
 	IncludeReservationData *bool   `json:"IncludeReservationData,omitempty" xml:"IncludeReservationData,omitempty"`
 	OwnerAccount           *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number of the list. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: **1*	- to **50**. Default value: **10**.
+	// The number of entries per page for paging queries. Valid values: **1*	- to **50**. Default value: **10**.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type DescribeVpnGatewaysRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the VPN gateway.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -98,7 +98,7 @@ type DescribeVpnGatewaysRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the VPN gateway belongs.
 	//
-	//  You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query the resource group list.
+	// You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource group IDs.
 	//
 	// example:
 	//
@@ -108,21 +108,21 @@ type DescribeVpnGatewaysRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The status of the VPN gateway. Valid values:
 	//
-	// 	- **init**
+	// - **init**: initializing.
 	//
-	// 	- **provisioning**
+	// - **provisioning**: preparing.
 	//
-	// 	- **active**
+	// - **active**: Normal.
 	//
-	// 	- **updating**
+	// - **updating**: updating.
 	//
-	// 	- **deleting**
+	// - **deleting**: deleting.
 	//
 	// example:
 	//
 	// active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags that are added to the VPN gateway.
+	// The list of tags bound to the VPN gateway.
 	Tag []*DescribeVpnGatewaysRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the virtual private cloud (VPC) to which the VPN gateway belongs.
 	//
@@ -297,7 +297,7 @@ func (s *DescribeVpnGatewaysRequest) Validate() error {
 type DescribeVpnGatewaysRequestTag struct {
 	// The tag key.
 	//
-	// You can specify at most 20 tag keys at a time.
+	// You can specify up to 20 tag keys at a time.
 	//
 	// example:
 	//
@@ -305,7 +305,7 @@ type DescribeVpnGatewaysRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
 	//
-	// Each tag key corresponds to one tag value. You can specify at most 20 tag values at a time.
+	// Each tag key corresponds to one tag value. You can specify up to 20 tag values at a time.
 	//
 	// example:
 	//

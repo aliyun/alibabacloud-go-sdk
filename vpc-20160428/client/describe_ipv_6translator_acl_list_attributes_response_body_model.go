@@ -27,25 +27,25 @@ type iDescribeIPv6TranslatorAclListAttributesResponseBody interface {
 
 type DescribeIPv6TranslatorAclListAttributesResponseBody struct {
 	AclEntries *DescribeIPv6TranslatorAclListAttributesResponseBodyAclEntries `json:"AclEntries,omitempty" xml:"AclEntries,omitempty" type:"Struct"`
-	// The ACL ID.
+	// The ID of the access control policy group.
 	//
 	// example:
 	//
 	// ipv6transacl-bp1de2****
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The name of the ACL.
+	// The name of the access control policy group.
 	//
 	// example:
 	//
 	// acl1
 	AclName *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//

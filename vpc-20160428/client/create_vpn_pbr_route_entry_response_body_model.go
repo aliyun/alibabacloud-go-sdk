@@ -34,45 +34,45 @@ type iCreateVpnPbrRouteEntryResponseBody interface {
 }
 
 type CreateVpnPbrRouteEntryResponseBody struct {
-	// The timestamp generated when the policy-based route was created. Unit: milliseconds.
+	// The timestamp when the policy-based route was created. Unit: milliseconds.
 	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	// The timestamp follows the UNIX timestamp format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
 	// 1492747187000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the route.
+	// The description of the policy-based route.
 	//
 	// example:
 	//
 	// desctest
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The tunneling protocol. The value is **Ipsec**.
+	// The next hop of the policy-based route.
 	//
 	// example:
 	//
 	// vco-bp15oes1py4i66rmd****
 	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
-	// The tunneling protocol. The value is set to **Ipsec**, which indicates the IPsec tunneling protocol.
+	// The tunneling protocol. Set the value to **Ipsec*	- (IPsec tunneling protocol).
 	//
 	// example:
 	//
 	// Ipsec
 	OverlayMode *string `json:"OverlayMode,omitempty" xml:"OverlayMode,omitempty"`
-	// The priority of the policy-based route.
+	// The policy priority of the policy-based routing entry.
 	//
 	// example:
 	//
 	// 10
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The priority of the policy-based route.
+	// The request ID.
 	//
 	// example:
 	//
 	// 5BE01CD7-5A50-472D-AC14-CA181C5C03BE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The VPN gateway ID.
+	// The destination CIDR block of the policy-based route.
 	//
 	// example:
 	//
@@ -84,23 +84,27 @@ type CreateVpnPbrRouteEntryResponseBody struct {
 	//
 	// 192.168.1.0/24
 	RouteSource *string `json:"RouteSource,omitempty" xml:"RouteSource,omitempty"`
-	// The status of the policy-based route.
+	// The publish status of the policy-based route.
 	//
-	// 	- **published**: advertised to the VPC route table.
+	// - **published**: The policy-based route has been published to the VPC route table.
 	//
-	// 	- **normal**: not advertised to the VPC route table.
+	// - **normal**: The policy-based route has not been published to the VPC route table.
 	//
 	// example:
 	//
 	// normal
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The ID of the VPN gateway.
+	// The instance ID of the VPN gateway.
 	//
 	// example:
 	//
 	// vpn-bp1cmw7jh1nfe43m9****
 	VpnInstanceId *string `json:"VpnInstanceId,omitempty" xml:"VpnInstanceId,omitempty"`
-	// The source CIDR block of the policy-based route.
+	// The weight of the policy-based route.
+	//
+	// - **100**: The IPsec-VPN connection associated with the policy-based route serves as the active link.
+	//
+	// - **0**: The IPsec-VPN connection associated with the policy-based route serves as the standby link.
 	//
 	// example:
 	//

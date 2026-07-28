@@ -18,7 +18,7 @@ type iCreateRouterInterfaceResponseBody interface {
 }
 
 type CreateRouterInterfaceResponseBody struct {
-	// The order number. This parameter is returned if InstanceChargeType is set to PrePaid.
+	// The order ID. This parameter is returned when the subscription billing method is selected.
 	//
 	// example:
 	//

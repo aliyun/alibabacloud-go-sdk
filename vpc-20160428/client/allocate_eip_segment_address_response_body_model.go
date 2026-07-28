@@ -16,7 +16,7 @@ type iAllocateEipSegmentAddressResponseBody interface {
 }
 
 type AllocateEipSegmentAddressResponseBody struct {
-	// The ID of the contiguous EIP group.
+	// The instance ID of the contiguous EIP group.
 	//
 	// example:
 	//

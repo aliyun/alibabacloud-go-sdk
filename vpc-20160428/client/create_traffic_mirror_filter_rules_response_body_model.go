@@ -22,7 +22,7 @@ type CreateTrafficMirrorFilterRulesResponseBody struct {
 	EgressRules []*CreateTrafficMirrorFilterRulesResponseBodyEgressRules `json:"EgressRules,omitempty" xml:"EgressRules,omitempty" type:"Repeated"`
 	// The list of inbound rules.
 	IngressRules []*CreateTrafficMirrorFilterRulesResponseBodyIngressRules `json:"IngressRules,omitempty" xml:"IngressRules,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ func (s *CreateTrafficMirrorFilterRulesResponseBody) Validate() error {
 }
 
 type CreateTrafficMirrorFilterRulesResponseBodyEgressRules struct {
-	// The ID of the outbound rule.
+	// The instance ID of the outbound rule.
 	//
 	// example:
 	//
@@ -118,7 +118,7 @@ func (s *CreateTrafficMirrorFilterRulesResponseBodyEgressRules) Validate() error
 }
 
 type CreateTrafficMirrorFilterRulesResponseBodyIngressRules struct {
-	// The ID of the inbound rule.
+	// The instance ID of the inbound rule.
 	//
 	// example:
 	//

@@ -36,7 +36,7 @@ type iListDhcpOptionsSetsRequest interface {
 }
 
 type ListDhcpOptionsSetsRequest struct {
-	// The ID of the DHCP options set. You can specify at most 20 IDs.
+	// The ID of the DHCP options set. You can specify up to 20 DHCP options set IDs.
 	//
 	// example:
 	//
@@ -44,45 +44,15 @@ type ListDhcpOptionsSetsRequest struct {
 	DhcpOptionsSetId []*string `json:"DhcpOptionsSetId,omitempty" xml:"DhcpOptionsSetId,omitempty" type:"Repeated"`
 	// The name of the DHCP options set.
 	//
-	// The name must be 1 to 128 characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
-	//
-	// Valid values:
-	//
-	//
-	//
-	// 	- tf-testAccVpcDhcpOptionsSets-1585169790614573448
-	//
-	//
-	//
-	//     <!-- -->
-	//
-	//
-	//
-	//     :
-	//
-	//
-	//
-	//     <!-- -->
-	//
-	//
-	//
-	//     tf-testAccVpcDhcpOptionsSets-1585169790614573448
-	//
-	//
-	//
-	//     <!-- -->
-	//
-	//
-	//
-	//     .
+	// The name must be 1 to 128 characters in length and must start with a letter or a Chinese character. It can contain digits, underscores (_), and hyphens (-).
 	//
 	// example:
 	//
 	// test
 	DhcpOptionsSetName *string `json:"DhcpOptionsSetName,omitempty" xml:"DhcpOptionsSetName,omitempty"`
-	// The root domain. For example, you can set the value to example.com.
+	// The hostname suffix, such as example.com.
 	//
-	// After a DHCP options set is associated with a virtual private cloud (VPC), the root domain in the DHCP options set is automatically synchronized with the ECS instances in the VPC.
+	// After the DHCP options set is associated with a VPC, the hostname suffix is automatically synchronized to the ECS instances in the associated VPC.
 	//
 	// example:
 	//
@@ -94,11 +64,11 @@ type ListDhcpOptionsSetsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	// The pagination token. Valid values:
 	//
-	// 	- You do not need to specify this parameter for the first request.
+	// - If this is the first query or no subsequent query is required, leave this parameter empty.
 	//
-	// 	- You must specify the token that is obtained from the previous query as the value of the **NextToken*	- parameter.
+	// - If a subsequent query is required, set the value to the **NextToken*	- value returned in the previous API call.
 	//
 	// example:
 	//
@@ -124,7 +94,7 @@ type ListDhcpOptionsSetsRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tag list.
+	// The list of tags.
 	Tags []*ListDhcpOptionsSetsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -258,17 +228,17 @@ func (s *ListDhcpOptionsSetsRequest) Validate() error {
 }
 
 type ListDhcpOptionsSetsRequestTags struct {
-	// The tag key. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The tag key can be up to 64 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The tag key must start with a letter but cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+	// The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
+	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The tag value must start with a letter but cannot start with `aliyun` or `acs:`. The tag value cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

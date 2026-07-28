@@ -18,19 +18,19 @@ type iOpenFlowLogServiceResponseBody interface {
 }
 
 type OpenFlowLogServiceResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information returned after the flow log feature is enabled.
+	// The message returned when the flow log service is activated.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

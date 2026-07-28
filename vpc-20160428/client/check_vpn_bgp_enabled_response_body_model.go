@@ -16,11 +16,11 @@ type iCheckVpnBgpEnabledResponseBody interface {
 }
 
 type CheckVpnBgpEnabledResponseBody struct {
-	// Indicates whether the region supports BGP.
+	// Indicates whether the current region supports the BGP feature.
 	//
-	// 	- **true**
+	// - **true**: Supported.
 	//
-	// 	- **false**
+	// - **false**: Not supported.
 	//
 	// example:
 	//

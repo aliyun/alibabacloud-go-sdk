@@ -24,7 +24,7 @@ type CreateTrafficMirrorFilterResponseBody struct {
 	//
 	// 28DB147D-217B-43E8-9E94-A3F6837DDC8A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group to which the traffic mirror belongs.
+	// The ID of the resource group to which the traffic mirroring filter belongs.
 	//
 	// example:
 	//

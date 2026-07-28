@@ -22,7 +22,7 @@ type iDescribeVpnCrossAccountAuthorizationsResponseBody interface {
 }
 
 type DescribeVpnCrossAccountAuthorizationsResponseBody struct {
-	// The list of cross-account authorization information for the IPsec-VPN connection.
+	// The list of cross-account authorization information of the IPsec-VPN connection.
 	CrossAccountAuthorizations []*DescribeVpnCrossAccountAuthorizationsResponseBodyCrossAccountAuthorizations `json:"CrossAccountAuthorizations,omitempty" xml:"CrossAccountAuthorizations,omitempty" type:"Repeated"`
 	// The page number of the list.
 	//
@@ -30,7 +30,7 @@ type DescribeVpnCrossAccountAuthorizationsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paging query.
+	// The number of entries per page when paging is used.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ type DescribeVpnCrossAccountAuthorizationsResponseBodyCrossAccountAuthorizations
 	//
 	// 1250123456123456
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The instance ID of the CEN instance to which the IPsec-VPN connection authorization is granted.
+	// The instance ID of the CEN instance to which the IPsec-VPN connection grants authorization.
 	//
 	// example:
 	//
@@ -143,9 +143,9 @@ type DescribeVpnCrossAccountAuthorizationsResponseBodyCrossAccountAuthorizations
 	//
 	// 1210123456123456
 	BindUid *int64 `json:"BindUid,omitempty" xml:"BindUid,omitempty"`
-	// The timestamp when the cross-account authorization was created for the IPsec-VPN connection.
+	// The timestamp when the cross-account authorization of the IPsec-VPN connection was created.
 	//
-	// The timestamp is in the UNIX format and represents the total number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC to the time when the cross-account authorization was created.
+	// The timestamp is in the UNIX format and represents the total number of seconds that have elapsed since January 1, 1970, 00:00:00 (UTC) to the time when the cross-account authorization was created.
 	//
 	// example:
 	//

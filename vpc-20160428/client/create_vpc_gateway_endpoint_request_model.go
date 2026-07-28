@@ -44,19 +44,17 @@ type CreateVpcGatewayEndpointRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >
-	//
-	// If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
 	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run without creating the gateway endpoint. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned. The check items include whether the AccessKey pair is valid, whether the Resource Access Management (RAM) user has the required authorization, and whether the required parameters are specified.
 	//
-	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// - **false*	- (default): sends a Normal request. If the request passes the dry run, a 2xx HTTP status code is returned and the gateway endpoint is created.
 	//
 	// example:
 	//
@@ -82,13 +80,21 @@ type CreateVpcGatewayEndpointRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The access policy for the cloud service.
 	//
-	// For more information about the syntax and structure of the access policy, see [Policy syntax and structure](https://help.aliyun.com/document_detail/93739.html).
+	// For more information about the syntax and structure of access policies, see [Policy structure and syntax](https://help.aliyun.com/document_detail/93739.html).
+	//
+	// >
+	//
+	// > - This parameter is required if the selected endpoint service supports access policies.
+	//
+	// > - This parameter must be empty if the selected endpoint service does not support access policies.
+	//
+	// > - You can call the [ListVpcEndpointServicesByEndUser](https://help.aliyun.com/document_detail/448920.html) operation to check whether an endpoint service supports access policies. A value of true for SupportPolicy indicates that access policies are supported.
 	//
 	// example:
 	//
 	// {   "Version" : "1",   "Statement" : [ {     "Effect" : "Allow",     "Resource" : [ "*" ],     "Action" : [ "*" ],     "Principal" : [ "*" ]   } ] }
 	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
-	// The region ID of the gateway endpoint.
+	// The region ID of the gateway endpoint that you want to create.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
 	//
@@ -106,7 +112,7 @@ type CreateVpcGatewayEndpointRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The name of the endpoint service.
+	// The service name of the endpoint service.
 	//
 	// This parameter is required.
 	//
@@ -116,9 +122,9 @@ type CreateVpcGatewayEndpointRequest struct {
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The tags of the resource.
 	Tag []*CreateVpcGatewayEndpointRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the virtual private cloud (VPC) where you want to create the gateway endpoint.
+	// The ID of the VPC for which you want to create the gateway endpoint.
 	//
-	// The VPC and gateway endpoint must be deployed in the same region.
+	// The VPC must be in the same region as the gateway endpoint.
 	//
 	// This parameter is required.
 	//
@@ -276,17 +282,17 @@ func (s *CreateVpcGatewayEndpointRequest) Validate() error {
 }
 
 type CreateVpcGatewayEndpointRequestTag struct {
-	// The key of tag N to add to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N to add to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
+	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

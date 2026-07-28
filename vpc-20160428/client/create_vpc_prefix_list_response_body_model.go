@@ -18,13 +18,13 @@ type iCreateVpcPrefixListResponseBody interface {
 }
 
 type CreateVpcPrefixListResponseBody struct {
-	// The ID of the prefix list.
+	// The instance ID of the prefix list.
 	//
 	// example:
 	//
 	// pl-0b700s2ee3***
 	PrefixListId *string `json:"PrefixListId,omitempty" xml:"PrefixListId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

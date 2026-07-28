@@ -54,67 +54,69 @@ type iModifyExpressConnectTrafficQosRuleRequest interface {
 type ModifyExpressConnectTrafficQosRuleRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
 	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The destination IPv4 CIDR block that matches the QoS rule traffic.
+	// The destination IP address IPv4 CIDR block for traffic matching in the QoS rule.
 	//
-	// > When this parameter is unavailable, specify **SrcIPv6Cidr*	- or **DstIPv6Cidr**.
+	// > This parameter cannot be specified together with **SrcIPv6Cidr*	- or **DstIPv6Cidr**.
 	//
 	// example:
 	//
 	// ``1.1.**.**``/24
 	DstCidr *string `json:"DstCidr,omitempty" xml:"DstCidr,omitempty"`
-	// The destination IPv6 CIDR block that matches the QoS rule traffic.
+	// The destination IP address IPv6 CIDR block for traffic matching in the QoS rule.
 	//
-	// > When this parameter is unavailable, specify **SrcCidr*	- or **DstCidr**.
+	// > This parameter cannot be specified together with **SrcCidr*	- or **DstCidr**.
 	//
 	// example:
 	//
 	// 2001:0db8:1234:****::/64
 	DstIPv6Cidr *string `json:"DstIPv6Cidr,omitempty" xml:"DstIPv6Cidr,omitempty"`
-	// The range of destination ports that match the QoS rule traffic. Valid values: **0*	- to **65535**. If the traffic does not match, the value is -1. You can specify only one port. The start port number must be the same as the end port number. Different protocols correspond to different ports. Valid values:
+	// The destination port range for traffic matching in the QoS rule. Valid values: **0*	- to **65535**. Set the value to -1 if no matching is required. Currently, only a single port number can be specified. The start and end port numbers must be the same. The destination port range is fixed for each protocol type. Valid values:
 	//
-	// 	- **ALL*	- (uneditable): -1/-1.
+	// - **ALL**: -1/-1. Not editable.
 	//
-	// 	- **ICMP(IPv4)*	- (uneditable): -1/-1.
+	// - **ICMP(IPv4)**: -1/-1. Not editable.
 	//
-	// 	- **ICMPv6(IPv6)*	- (uneditable): -1/-1.
+	// - **ICMPv6(IPv6)**: -1/-1. Not editable.
 	//
-	// 	- **TCP*	- (editable): -1/-1.
+	// - **TCP**: -1/-1. Editable.
 	//
-	// 	- **UDP*	- (editable): -1/-1.
+	// - **UDP**: -1/-1. Editable.
 	//
-	// 	- **GRE*	- (uneditable): -1/-1.
+	// - **GRE**: -1/-1. Not editable.
 	//
-	// 	- **SSH*	- (uneditable): 22/22.
+	// - **SSH**: 22/22. Not editable.
 	//
-	// 	- **Telnet*	- (uneditable): 23/23.
+	// - **Telnet**: 23/23. Not editable.
 	//
-	// 	- **HTTP*	- (uneditable): 80/80.
+	// - **HTTP**: 80/80. Not editable.
 	//
-	// 	- **HTTPS*	- (uneditable): 443/443.
+	// - **HTTPS**: 443/443. Not editable.
 	//
-	// 	- **MS SQL*	- (uneditable): 1443/1443.
+	// - **MS SQL**: 1443/1443. Not editable.
 	//
-	// 	- **Oracle*	- (uneditable): 1521/1521.
+	// - **Oracle**: 1521/1521. Not editable.
 	//
-	// 	- **MySql*	- (uneditable): 3306/3306.
+	// - **MySql**: 3306/3306. Not editable.
 	//
-	// 	- **RDP*	- (uneditable): 3389/3389.
+	// - **RDP**: 3389/3389. Not editable.
 	//
-	// 	- **PostgreSQL*	- (uneditable): 5432/5432.
+	// - **PostgreSQL**: 5432/5432. Not editable.
 	//
-	// 	- **Redis*	- (uneditable): 6379/6379.
+	// - **Redis**: 6379/6379. Not editable.
 	//
 	// example:
 	//
 	// -1/-1
 	DstPortRange *string `json:"DstPortRange,omitempty" xml:"DstPortRange,omitempty"`
-	// The DSCP value that matches the QoS rule traffic. Valid values: **0*	- to **63**. If no value is matched, the value is -1.
+	// The DSCP value for traffic matching in the QoS rule. Valid values: **0*	- to **63**. Set the value to -1 if no matching is required.
 	//
 	// example:
 	//
@@ -122,51 +124,51 @@ type ModifyExpressConnectTrafficQosRuleRequest struct {
 	MatchDscp    *int32  `json:"MatchDscp,omitempty" xml:"MatchDscp,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The priority of the QoS rule. Valid values: **1*	- to **9000**. A larger value indicates a higher priority. The priority of each QoS rule must be unique in the same QoS policy.
+	// The priority of the QoS rule. Valid values: **1*	- to **9000**. A larger value indicates a higher priority. The priority of each QoS rule must be unique within the same QoS policy.
 	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The protocol of the QoS rule. Valid values:
+	// The protocol type of the QoS rule. Valid values:
 	//
-	// 	- **ALL**
+	// - **ALL**
 	//
-	// 	- **ICMP(IPv4)**
+	// - **ICMP(IPv4)**
 	//
-	// 	- **ICMPv6(IPv6)**
+	// - **ICMPv6(IPv6)**
 	//
-	// 	- **TCP**
+	// - **TCP**
 	//
-	// 	- **UDP**
+	// - **UDP**
 	//
-	// 	- **GRE**
+	// - **GRE**
 	//
-	// 	- **SSH**
+	// - **SSH**
 	//
-	// 	- **Telnet**
+	// - **Telnet**
 	//
-	// 	- **HTTP**
+	// - **HTTP**
 	//
-	// 	- **HTTPS**
+	// - **HTTPS**
 	//
-	// 	- **MS SQL**
+	// - **MS SQL**
 	//
-	// 	- **Oracle**
+	// - **Oracle**
 	//
-	// 	- **MySql**
+	// - **MySql**
 	//
-	// 	- **RDP**
+	// - **RDP**
 	//
-	// 	- **PostgreSQL**
+	// - **PostgreSQL**
 	//
-	// 	- **Redis**
+	// - **Redis**
 	//
 	// example:
 	//
 	// ALL
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The ID of the QoS policy.
+	// The QoS policy ID.
 	//
 	// This parameter is required.
 	//
@@ -174,7 +176,7 @@ type ModifyExpressConnectTrafficQosRuleRequest struct {
 	//
 	// qos-2giu0a6vd5x0mv****
 	QosId *string `json:"QosId,omitempty" xml:"QosId,omitempty"`
-	// The ID of the QoS queue.
+	// The QoS queue ID.
 	//
 	// This parameter is required.
 	//
@@ -184,7 +186,7 @@ type ModifyExpressConnectTrafficQosRuleRequest struct {
 	QueueId *string `json:"QueueId,omitempty" xml:"QueueId,omitempty"`
 	// The region ID of the QoS policy.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -192,7 +194,7 @@ type ModifyExpressConnectTrafficQosRuleRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The new DSCP value. Valid values: **0*	- to **63**. If you do not change the value, set the value to -1.
+	// The new DSCP value to remark in the traffic. Valid values: **0*	- to **63**. Set the value to -1 if no remarking is required.
 	//
 	// example:
 	//
@@ -207,7 +209,7 @@ type ModifyExpressConnectTrafficQosRuleRequest struct {
 	//
 	// qos-rule-test
 	RuleDescription *string `json:"RuleDescription,omitempty" xml:"RuleDescription,omitempty"`
-	// The ID of the QoS rule.
+	// The QoS rule ID.
 	//
 	// This parameter is required.
 	//
@@ -223,23 +225,23 @@ type ModifyExpressConnectTrafficQosRuleRequest struct {
 	//
 	// qos-rule-test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The source IPv4 CIDR block that matches the QoS rule traffic.
+	// The source IPv4 CIDR block for traffic matching in the QoS rule.
 	//
-	// > When this parameter is unavailable, specify **SrcIPv6Cidr*	- or **DstIPv6Cidr**.
+	// > This parameter cannot be specified together with **SrcIPv6Cidr*	- or **DstIPv6Cidr**.
 	//
 	// example:
 	//
 	// ``1.1.**.**``/24
 	SrcCidr *string `json:"SrcCidr,omitempty" xml:"SrcCidr,omitempty"`
-	// The source IPv6 CIDR block that matches the QoS rule traffic.
+	// The source IPv6 CIDR block for traffic matching in the QoS rule.
 	//
-	// > When this parameter is unavailable, specify **SrcCidr*	- or **DstCidr**.
+	// > This parameter cannot be specified together with **SrcCidr*	- or **DstCidr**.
 	//
 	// example:
 	//
 	// 2001:0db8:1234:****::/64
 	SrcIPv6Cidr *string `json:"SrcIPv6Cidr,omitempty" xml:"SrcIPv6Cidr,omitempty"`
-	// The range of source ports that match the QoS rule traffic. Valid values: **0*	- to **65535**. If the traffic does not match, the value is -1. You can specify only one port. The start port number must be the same as the end port number.
+	// The source port range for traffic matching in the QoS rule. Valid values: **0*	- to **65535**. Set the value to -1 if no matching is required. Currently, only a single port number can be specified. The start and end port numbers must be the same.
 	//
 	// example:
 	//

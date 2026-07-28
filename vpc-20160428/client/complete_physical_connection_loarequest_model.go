@@ -38,9 +38,9 @@ type iCompletePhysicalConnectionLOARequest interface {
 type CompletePhysicalConnectionLOARequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must ensure that it is unique among different requests.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests.
 	//
-	// >  If you do not set this parameter, the system automatically uses **RequestId*	- as **ClientToken**. **RequestId*	- of each API request may be different.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request may be different.
 	//
 	// example:
 	//
@@ -48,15 +48,15 @@ type CompletePhysicalConnectionLOARequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether the construction is completed. Valid values:
 	//
-	// 	- **true**
+	// 	- **true**: The construction is completed.
 	//
-	// 	- **false**
+	// 	- **false**: Line O&M.
 	//
 	// example:
 	//
 	// true
 	FinishWork *bool `json:"FinishWork,omitempty" xml:"FinishWork,omitempty"`
-	// The ID of the Express Connect circuit.
+	// The instance ID of the Express Connect circuit.
 	//
 	// This parameter is required.
 	//
@@ -64,33 +64,33 @@ type CompletePhysicalConnectionLOARequest struct {
 	//
 	// pc-bp10tvlhnwkw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The circuit code provided by the connectivity provider.
+	// The line code of the telecommunications service provider.
 	//
 	// example:
 	//
 	// aaa111****
 	LineCode *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
-	// The label of the cable in the data center.
+	// The cable label in the data center building.
 	//
 	// example:
 	//
 	// bbb222****
 	LineLabel *string `json:"LineLabel,omitempty" xml:"LineLabel,omitempty"`
-	// The contact information about line O\\&M.
+	// The O&M contact information of the line.
 	//
 	// example:
 	//
 	// 1388888****
 	LineSPContactInfo *string `json:"LineSPContactInfo,omitempty" xml:"LineSPContactInfo,omitempty"`
-	// The ISP. Valid values:
+	// The telecommunications service provider. Valid values:
 	//
-	// 	- **China Telecom**
+	// - **中国电信**
 	//
-	// 	- **China Unicom**
+	// - **中国联通**
 	//
-	// 	- **China Mobile**
+	// - **中国移动**
 	//
-	// 	- **Other ISPs in China**
+	// - **中国其他**
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ type CompletePhysicalConnectionLOARequest struct {
 	OwnerId             *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the Express Connect circuit.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//

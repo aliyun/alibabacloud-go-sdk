@@ -50,15 +50,15 @@ type ApplyPhysicalConnectionLOARequest struct {
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	// Generate a unique value from your client to ensure that different requests have unique ClientToken values. ClientToken supports only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request may be different.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The name of the customer company that requires the Express Connect circuit.
+	// The name of the company that accesses the Express Connect circuit.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type ApplyPhysicalConnectionLOARequest struct {
 	//
 	// company
 	CompanyName *string `json:"CompanyName,omitempty" xml:"CompanyName,omitempty"`
-	// The time when construction started. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	// The time when the construction company enters the site. The time is in the ISO 8601 standard and must be in UTC. Format: YYYY-MM-DDThh:mm:ssZ.
 	//
 	// This parameter is required.
 	//
@@ -74,7 +74,7 @@ type ApplyPhysicalConnectionLOARequest struct {
 	//
 	// 2022-02-28T16:00:00Z
 	ConstructionTime *string `json:"ConstructionTime,omitempty" xml:"ConstructionTime,omitempty"`
-	// The ID of the Express Connect circuit.
+	// The instance ID of the Express Connect circuit.
 	//
 	// This parameter is required.
 	//
@@ -84,13 +84,13 @@ type ApplyPhysicalConnectionLOARequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of the Express Connect circuit. Valid values:
 	//
-	// 	- **MSTP**: MSTP line
+	// - **MSTP**: MSTP line.
 	//
-	// 	- **MPLSVPN**: MPLSVPN line
+	// - **MPLSVPN**: MPLSVPN line.
 	//
-	// 	- **FIBRE**: fiber line
+	// - **FIBRE**: fiber optic direct connection.
 	//
-	// 	- **Other**: other types
+	// - **Other**: other type of line.
 	//
 	// This parameter is required.
 	//
@@ -101,8 +101,10 @@ type ApplyPhysicalConnectionLOARequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The information about the construction engineer.
+	//
+	// > This parameter is required. Specify the relevant information.
 	PMInfo []*ApplyPhysicalConnectionLOARequestPMInfo `json:"PMInfo,omitempty" xml:"PMInfo,omitempty" type:"Repeated"`
-	// The geographic location where the Express Connect circuit is deployed.
+	// The geographical location where the Express Connect circuit is deployed.
 	//
 	// example:
 	//
@@ -110,7 +112,7 @@ type ApplyPhysicalConnectionLOARequest struct {
 	PeerLocation *string `json:"PeerLocation,omitempty" xml:"PeerLocation,omitempty"`
 	// The region ID of the Express Connect circuit.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -120,7 +122,7 @@ type ApplyPhysicalConnectionLOARequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The construction company.
+	// The construction company of the Express Connect circuit.
 	//
 	// This parameter is required.
 	//
@@ -278,25 +280,25 @@ func (s *ApplyPhysicalConnectionLOARequest) Validate() error {
 }
 
 type ApplyPhysicalConnectionLOARequestPMInfo struct {
-	// The ID number of the construction engineer. You can specify the ID number of an ID card or an international passport.
+	// The ID number of the construction engineer. You can specify an ID card number or an international passport number.
 	//
-	// You can configure information for up to 16 construction engineers.
+	// You can specify information about up to 16 construction engineers.
 	//
 	// example:
 	//
 	// 5****************9
 	PMCertificateNo *string `json:"PMCertificateNo,omitempty" xml:"PMCertificateNo,omitempty"`
-	// The type of the identity document of the construction engineer. Valid values:
+	// The type of the ID document of the construction engineer. Valid values:
 	//
-	// 	- **IDCard**
+	// - **IDCard**: ID card.
 	//
-	// 	- **Passport**
+	// - **Passport**: international passport.
 	//
 	// example:
 	//
 	// IDCard
 	PMCertificateType *string `json:"PMCertificateType,omitempty" xml:"PMCertificateType,omitempty"`
-	// The contact information about the construction engineer.
+	// The contact information of the construction engineer.
 	//
 	// example:
 	//

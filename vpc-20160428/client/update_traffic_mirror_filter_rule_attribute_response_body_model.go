@@ -14,7 +14,7 @@ type iUpdateTrafficMirrorFilterRuleAttributeResponseBody interface {
 }
 
 type UpdateTrafficMirrorFilterRuleAttributeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

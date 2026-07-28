@@ -114,15 +114,15 @@ type CreateNetworkAclResponseBodyNetworkAclAttribute struct {
 	Resources *CreateNetworkAclResponseBodyNetworkAclAttributeResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
 	// The status of the network ACL. Valid values:
 	//
-	// 	- **Available**
+	// - **Available**: available.
 	//
-	// 	- **Modifying**
+	// - **Modifying**: being modified.
 	//
 	// example:
 	//
 	// Modifying
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the VPC to which the network ACL belongs.
+	// The ID of the VPC associated with the network ACL.
 	//
 	// example:
 	//

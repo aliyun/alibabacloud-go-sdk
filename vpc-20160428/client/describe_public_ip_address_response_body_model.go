@@ -30,37 +30,37 @@ type iDescribePublicIpAddressResponseBody interface {
 }
 
 type DescribePublicIpAddressResponseBody struct {
-	// The HTTP status codes returned.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response messages.
+	// The response message.
 	//
 	// example:
 	//
 	// test
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The page number.
+	// The page number of the list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page in a paged query.
 	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The range of the public IP addresses of the VPC in the region.
+	// The range of public IP addresses in a virtual private cloud (VPC) in the specified region.
 	//
 	// example:
 	//
 	// 110.11.1.0/24
 	PublicIpAddress []*string `json:"PublicIpAddress,omitempty" xml:"PublicIpAddress,omitempty" type:"Repeated"`
-	// The ID of the region to which the public IP addresses belong.
+	// The region ID of the public IP address.
 	//
 	// example:
 	//
@@ -72,17 +72,17 @@ type DescribePublicIpAddressResponseBody struct {
 	//
 	// 54B48E3D-DF70-471B-AA93-08E683A1B45
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values:
+	// Indicates whether the query was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The query was successful.
 	//
-	// 	- **false**
+	// - **false**: The query failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The number of returned entries.
+	// The total number of entries in the list.
 	//
 	// example:
 	//

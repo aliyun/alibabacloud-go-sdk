@@ -26,7 +26,7 @@ type iCreateIPv6TranslatorAclListRequest interface {
 }
 
 type CreateIPv6TranslatorAclListRequest struct {
-	// The ACL name.
+	// The name of the access control policy group.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type CreateIPv6TranslatorAclListRequest struct {
 	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region of the IPv6 Translation Service instance. You can call the DescribeRegions operation to query the most recent region list.
+	// The region of the IPv6 Translation Service instance. You can call the DescribeRegions operation to query region IDs.
 	//
 	// This parameter is required.
 	//

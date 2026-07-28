@@ -52,13 +52,13 @@ type CreateFullNatEntryRequest struct {
 	//
 	// xxx.com
 	AccessDomain *string `json:"AccessDomain,omitempty" xml:"AccessDomain,omitempty"`
-	// The backend IP address to be modified in FULLNAT address translation.
+	// The backend IP address for FULLNAT address translation.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	AccessIp *string `json:"AccessIp,omitempty" xml:"AccessIp,omitempty"`
-	// The backend port to be modified in the mapping of FULLNAT port. Valid values: **1*	- to **65535**.
+	// The backend port for FULLNAT port mapping. Valid values: **1*	- to **65535**.
 	//
 	// This parameter is required.
 	//
@@ -68,19 +68,19 @@ type CreateFullNatEntryRequest struct {
 	AccessPort *string `json:"AccessPort,omitempty" xml:"AccessPort,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate a value, and you must make sure that each request has a unique token value. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the value of **RequestId*	- as the value of **ClientToken**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request may be different.
 	//
 	// example:
 	//
 	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to only precheck this request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: prechecks the request without adding the FULLNAT entry. The system checks whether your AccessKey pair is valid, whether RAM users are granted required permissions, and whether the required parameters are set. If the request fails to pass the precheck, an error code is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+	// - **true**: sends a dry run request. The system checks the request for potential issues, including missing required parameters, invalid parameter values, and whether the Resource Access Management (RAM) user is granted the required authorization. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false**: sends the API request. This is the default value. After the request passes the precheck, a 2XX HTTP status code is returned and the FULLNAT entry is added.
+	// - **false*	- (default): sends a normal request. If the request passes the check, a 2xx HTTP status code is returned and the FULLNAT entry is added.
 	//
 	// example:
 	//
@@ -88,13 +88,13 @@ type CreateFullNatEntryRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The description of the FULLNAT entry.
 	//
-	// This parameter is optional. If you enter a description, the description must be 2 to 256 characters in length, and cannot start with `http://` or `https://`.
+	// The description can be empty or 2 to 256 characters in length. It cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// abc
 	FullNatEntryDescription *string `json:"FullNatEntryDescription,omitempty" xml:"FullNatEntryDescription,omitempty"`
-	// The FULLNAT entry name. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://.
+	// The name of the FULLNAT entry. The name must be 2 to 128 characters in length and must start with a letter or Chinese character. It cannot start with http:// or https://.
 	//
 	// example:
 	//
@@ -108,11 +108,11 @@ type CreateFullNatEntryRequest struct {
 	//
 	// fulltb-gw88z7hhlv43rmb26****
 	FullNatTableId *string `json:"FullNatTableId,omitempty" xml:"FullNatTableId,omitempty"`
-	// The protocol of the packets that are forwarded by the port. Valid values:
+	// The protocol type of the Redirection Port. Valid values:
 	//
-	// 	- **TCP**
+	// -  **TCP**: forwards TCP packets.
 	//
-	// 	- **UDP**
+	// -  **UDP**: forwards UDP packets.
 	//
 	// This parameter is required.
 	//
@@ -128,13 +128,15 @@ type CreateFullNatEntryRequest struct {
 	//
 	// 192.168.XX.XX
 	NatIp *string `json:"NatIp,omitempty" xml:"NatIp,omitempty"`
-	// The frontend port to be modified in the mapping of FULLNAT port. Valid values: **1*	- to **65535**.
+	// The frontend port for FULLNAT port mapping. Valid values: **1*	- to **65535**.
+	//
+	// > If you do not specify this parameter, the system randomly assigns an available port.
 	//
 	// example:
 	//
 	// 80
 	NatIpPort *string `json:"NatIpPort,omitempty" xml:"NatIpPort,omitempty"`
-	// The elastic network interface (ENI) ID.
+	// The ID of the network interface controller (NIC).
 	//
 	// This parameter is required.
 	//
@@ -144,7 +146,7 @@ type CreateFullNatEntryRequest struct {
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the Virtual Private Cloud (VPC) NAT gateway to which the FULLNAT entry to be added belongs.
+	// The region ID of the VPC NAT gateway to which the FULLNAT entry belongs.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
 	//

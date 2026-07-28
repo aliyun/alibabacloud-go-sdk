@@ -28,7 +28,7 @@ type iRemoveIPv6TranslatorAclListEntryRequest interface {
 }
 
 type RemoveIPv6TranslatorAclListEntryRequest struct {
-	// The ID of the ACL entry to be deleted.
+	// The ID of the access control policy entry that you want to delete.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type RemoveIPv6TranslatorAclListEntryRequest struct {
 	//
 	// ipv6transaclentry-bp105jrs****
 	AclEntryId *string `json:"AclEntryId,omitempty" xml:"AclEntryId,omitempty"`
-	// The ID of the ACL to which the ACL entry belongs.
+	// The ID of the access control policy group to which the access control policy entry belongs.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type RemoveIPv6TranslatorAclListEntryRequest struct {
 	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region of the ACL.
+	// The region of the access control policy group.
 	//
 	// This parameter is required.
 	//

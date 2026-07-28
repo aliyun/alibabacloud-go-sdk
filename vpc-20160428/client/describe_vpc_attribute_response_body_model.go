@@ -78,18 +78,18 @@ type DescribeVpcAttributeResponseBody struct {
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
 	// Deprecated
 	//
-	// Indicates whether the ClassicLink feature is enabled. Valid values:
+	// Indicates whether ClassicLink is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**: ClassicLink is enabled.
 	//
-	// 	- **false*	- (default)
+	// - **false*	- (default): ClassicLink is not enabled.
 	//
 	// example:
 	//
 	// false
 	ClassicLinkEnabled *bool                                           `json:"ClassicLinkEnabled,omitempty" xml:"ClassicLinkEnabled,omitempty"`
 	CloudResources     *DescribeVpcAttributeResponseBodyCloudResources `json:"CloudResources,omitempty" xml:"CloudResources,omitempty" type:"Struct"`
-	// The time when the VPC was created.
+	// The creation time of the VPC.
 	//
 	// example:
 	//
@@ -109,35 +109,31 @@ type DescribeVpcAttributeResponseBody struct {
 	DhcpOptionsSetId *string `json:"DhcpOptionsSetId,omitempty" xml:"DhcpOptionsSetId,omitempty"`
 	// The status of the DHCP options set. Valid values:
 	//
-	// 	- **Available**
+	// - **Available**: active.
 	//
-	// 	- **InUse**
+	// - **InUse**: in use.
 	//
-	// 	- **Deleted**
+	// - **Deleted**: deleted.
 	//
-	// 	- **Pending**
+	// - **Pending**: being configured.
 	//
 	// example:
 	//
 	// Available
 	DhcpOptionsSetStatus *string `json:"DhcpOptionsSetStatus,omitempty" xml:"DhcpOptionsSetStatus,omitempty"`
-	// Indicates whether DNS hostname is enabled.
+	// Indicates whether DNS hostnames are enabled.
 	//
 	// example:
 	//
 	// DISABLED
 	DnsHostnameStatus *string `json:"DnsHostnameStatus,omitempty" xml:"DnsHostnameStatus,omitempty"`
-	// Indicates whether the VPC enables IPv6 .
-	//
-	// - true
-	//
-	// - false
+	// Indicates whether IPv6 is enabled.
 	//
 	// example:
 	//
 	// false
 	EnabledIpv6 *bool `json:"EnabledIpv6,omitempty" xml:"EnabledIpv6,omitempty"`
-	// The ID of the IPv4 gateway.
+	// The instance ID of the IPv4 gateway.
 	//
 	// example:
 	//
@@ -152,21 +148,21 @@ type DescribeVpcAttributeResponseBody struct {
 	Ipv6CidrBlocks *DescribeVpcAttributeResponseBodyIpv6CidrBlocks `json:"Ipv6CidrBlocks,omitempty" xml:"Ipv6CidrBlocks,omitempty" type:"Struct"`
 	// Indicates whether the VPC is the default VPC. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The VPC is the default VPC.
 	//
-	// 	- **false*	- (default)
+	// - **false*	- (default): The VPC is not the default VPC.
 	//
 	// example:
 	//
 	// false
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The ID of the Alibaba Cloud account to which the VPC belongs.
+	// The ID of the account to which the VPC belongs.
 	//
 	// example:
 	//
 	// 28311773240248****
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region to which the VPC belongs.
+	// The region ID of the VPC.
 	//
 	// example:
 	//
@@ -178,7 +174,7 @@ type DescribeVpcAttributeResponseBody struct {
 	//
 	// 7486AE4A-129D-43DB-A714-2432C074BA04
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -187,19 +183,21 @@ type DescribeVpcAttributeResponseBody struct {
 	SecondaryCidrBlocks *DescribeVpcAttributeResponseBodySecondaryCidrBlocks `json:"SecondaryCidrBlocks,omitempty" xml:"SecondaryCidrBlocks,omitempty" type:"Struct"`
 	// The status of the VPC. Valid values:
 	//
-	// 	- **Available**
+	// - **Available**: active.
 	//
-	// 	- **Pending**
+	// - **Pending**: being configured.
 	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the VPC supports IPv4 gateways.
+	// Indicates whether the VPC operates in centralized control with IPv4 gateway mode.
 	//
-	// 	- **true**
+	// - **true**: The VPC operates in centralized control with IPv4 gateway mode, where Internet traffic is centrally managed by the IPv4 gateway (activated after the IPv4 gateway is created and routing is configured), or the VPC is a private network-only VPC (the IPv4 gateway is deleted in private mode).
 	//
-	// 	- **false**
+	// - **false**: The VPC operates in Direct Internet Access mode (access mode).
+	//
+	// > For details, see [IPv4 gateway](https://help.aliyun.com/document_detail/376445.html).
 	//
 	// example:
 	//
@@ -207,7 +205,7 @@ type DescribeVpcAttributeResponseBody struct {
 	SupportIpv4Gateway *bool                                      `json:"SupportIpv4Gateway,omitempty" xml:"SupportIpv4Gateway,omitempty"`
 	Tags               *DescribeVpcAttributeResponseBodyTags      `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	UserCidrs          *DescribeVpcAttributeResponseBodyUserCidrs `json:"UserCidrs,omitempty" xml:"UserCidrs,omitempty" type:"Struct"`
-	// The ID of the vRouter that belongs to the VPC.
+	// The ID of the vRouter in the VPC.
 	//
 	// example:
 	//

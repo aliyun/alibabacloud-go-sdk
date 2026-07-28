@@ -26,7 +26,7 @@ type iDeleteIPv6TranslatorAclListRequest interface {
 }
 
 type DeleteIPv6TranslatorAclListRequest struct {
-	// The ID of the ACL that you want to delete.
+	// The ID of the access control policy group to delete.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type DeleteIPv6TranslatorAclListRequest struct {
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among all requests. The token can contain only ASCII characters.
+	// Generate a parameter value from your client to ensure that the value is unique among different requests. ClientToken supports only ASCII characters.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type DeleteIPv6TranslatorAclListRequest struct {
 	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region of the IPv6 translation service instance.
+	// The region of the IPv6 Translation Service instance.
 	//
 	// This parameter is required.
 	//

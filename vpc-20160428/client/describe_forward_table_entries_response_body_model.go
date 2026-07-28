@@ -23,7 +23,7 @@ type iDescribeForwardTableEntriesResponseBody interface {
 
 type DescribeForwardTableEntriesResponseBody struct {
 	ForwardTableEntries *DescribeForwardTableEntriesResponseBodyForwardTableEntries `json:"ForwardTableEntries,omitempty" xml:"ForwardTableEntries,omitempty" type:"Struct"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeForwardTableEntriesResponseBody struct {
 	//
 	// A6C4A8B1-7561-4509-949C-20DEB40D71E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

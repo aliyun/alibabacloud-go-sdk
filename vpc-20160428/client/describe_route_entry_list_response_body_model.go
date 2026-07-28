@@ -18,11 +18,11 @@ type iDescribeRouteEntryListResponseBody interface {
 }
 
 type DescribeRouteEntryListResponseBody struct {
-	// Indicates whether a next query token (Token) exists. Valid values:
+	// The pagination token. Valid values:
 	//
-	// - If **NextToken*	- is empty, no next query exists.
+	// - If **NextToken*	- is empty, no subsequent query exists.
 	//
-	// - If **NextToken*	- has a returned value, the value indicates the token for the next query.
+	// - If **NextToken*	- is returned, the value indicates the token for the next query.
 	//
 	// example:
 	//

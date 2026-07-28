@@ -28,17 +28,17 @@ type iListVpcEndpointServicesByEndUserRequest interface {
 }
 
 type ListVpcEndpointServicesByEndUserRequest struct {
-	// The number of entries to return per page. Valid values: **1*	- to **100**. Default value: **20**.
+	// The number of entries per page in a paged query. Valid values: **1*	- to **100**. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used for the next query. Valid values:
+	// The token for the next query. Valid values:
 	//
-	// 	- If this is your first query and no next queries are to be sent, ignore this parameter.
+	// - Leave this parameter empty for the first query or if no next query exists.
 	//
-	// 	- If a next query is to be performed, set the value to the NextToken value returned in the last call to the ListListenerCertificates operation.
+	// - If a next query exists, set this parameter to the NextToken value returned in the previous API call.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type ListVpcEndpointServicesByEndUserRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the gateway endpoint.
+	// The region ID of the gateway endpoint to query.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type ListVpcEndpointServicesByEndUserRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The name of the endpoint service that you want to query.
+	// The name of the endpoint service to query.
 	//
 	// example:
 	//

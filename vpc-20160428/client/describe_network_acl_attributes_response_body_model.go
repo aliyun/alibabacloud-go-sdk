@@ -16,7 +16,7 @@ type iDescribeNetworkAclAttributesResponseBody interface {
 }
 
 type DescribeNetworkAclAttributesResponseBody struct {
-	// The details of the network ACLs.
+	// The details of the network ACL.
 	NetworkAclAttribute *DescribeNetworkAclAttributesResponseBodyNetworkAclAttribute `json:"NetworkAclAttribute,omitempty" xml:"NetworkAclAttribute,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -88,7 +88,9 @@ type DescribeNetworkAclAttributesResponseBodyNetworkAclAttribute struct {
 	//
 	// acl-1
 	NetworkAclName *string `json:"NetworkAclName,omitempty" xml:"NetworkAclName,omitempty"`
-	// The ID of the Alibaba Cloud account to which the network ACL belongs.
+	// The Alibaba Cloud account ID to which the network ACL belongs.
+	//
+	// 	Notice: This value is of the Long type. Precision loss may occur in certain languages. Use this value with caution.
 	//
 	// example:
 	//
@@ -101,18 +103,18 @@ type DescribeNetworkAclAttributesResponseBodyNetworkAclAttribute struct {
 	// cn-hangzhou
 	RegionId  *string                                                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Resources *DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
-	// The association status of the resource. Valid values:
+	// The status of the associated resource. Valid values:
 	//
-	// 	- **Available**
+	// - **Available**: available.
 	//
-	// 	- **Modifying**
+	// - **Modifying**: being modified.
 	//
 	// example:
 	//
 	// Available
 	Status *string                                                          `json:"Status,omitempty" xml:"Status,omitempty"`
 	Tags   *DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The ID of the VPC to which the network ACL belongs.
+	// The ID of the VPC associated with the network ACL.
 	//
 	// example:
 	//

@@ -46,9 +46,9 @@ type CreateNatIpCidrRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
-	// - **true**: performs a dry run without creating the NAT CIDR block. The system checks the required parameters, request format, and service limits. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run without creating the NAT CIDR block. The system checks whether your AccessKey pair is valid, whether RAM users are granted permissions, and whether the required parameters are specified. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// - **false*	- (default): performs a dry run and sends the request. If the check succeeds, an HTTP 2xx status code is returned and the operation is performed.
+	// - **false*	- (default): performs a dry run and sends the request. If the request passes the dry run, an HTTP 2xx status code is returned and the operation is performed.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type CreateNatIpCidrRequest struct {
 	//
 	// - The subnet mask must be 16 to 32 bits in length.
 	//
-	// - It cannot overlap with the private CIDR block of the VPC to which the VPC NAT gateway belongs. If you want to transform a private endpoint to another address within the VPC private network CIDR block, create a vSwitch in the corresponding VPC private network CIDR block, and then create a new VPC NAT gateway in the vSwitch to provide private network address transform service.
+	// - It cannot overlap with the private CIDR block of the VPC to which the VPC NAT gateway belongs. If you want to transform a private endpoint to another address within the VPC private network CIDR block, create a vSwitch in the corresponding VPC private network CIDR block, and then create a new VPC NAT gateway in the vSwitch to provide private network address transform services.
 	//
 	// - To use a public CIDR block as the NAT CIDR block, the CIDR block must belong to the user CIDR block of the VPC to which the VPC NAT gateway belongs. For more information about user CIDR blocks, see [What is a user CIDR block?](https://help.aliyun.com/document_detail/185311.html).
 	//

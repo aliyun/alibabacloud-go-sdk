@@ -151,47 +151,47 @@ func (s *DescribeSslVpnClientsResponseBody) Validate() error {
 }
 
 type DescribeSslVpnClientsResponseBodyClientInfoList struct {
-	// The SSL client certificate used by the client to establish the SSL-VPN connection to Alibaba Cloud.
+	// The SSL client certificate used when the client establishes an SSL-VPN connection to Alibaba Cloud.
 	//
-	// > If the client uses two-factor identity authentication to establish the SSL-VPN connection to Alibaba Cloud, the value of this parameter is the username of the client.
+	// > If the client uses two-factor identity authentication to establish an SSL-VPN connection to Alibaba Cloud, the value of this parameter is the username of the client.
 	//
 	// example:
 	//
 	// CN=vsc-gw8gkh6gtilf1whgc****
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The timestamp when the client established the SSL-VPN connection to Alibaba Cloud. Unit: milliseconds.
+	// The timestamp when the client establishes an SSL-VPN connection to Alibaba Cloud. Unit: milliseconds.
 	//
-	// The timestamp is in the UNIX format and represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC to the time when the SSL-VPN connection was established.
+	// The timestamp is in the UNIX format and represents the total duration from 00:00:00 on January 1, 1970 (UTC) to the time when the SSL-VPN connection is established.
 	//
 	// example:
 	//
 	// 1670985008000
 	ConnectedTime *int64 `json:"ConnectedTime,omitempty" xml:"ConnectedTime,omitempty"`
-	// The public IP address that the client used to establish the SSL-VPN connection to Alibaba Cloud.
+	// The public IP address that the client uses when establishing an SSL-VPN connection to Alibaba Cloud.
 	//
 	// example:
 	//
 	// 8.XX.XX.15
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The port number that the client used to establish the SSL-VPN connection to Alibaba Cloud.
+	// The port number that the client uses when establishing an SSL-VPN connection to Alibaba Cloud.
 	//
 	// example:
 	//
 	// 4****
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The private IP address that the VPN gateway assigned to the client when the client established an SSL-VPN connection to Alibaba Cloud.
+	// The private IP address that the VPN gateway assigns to the client when the client establishes an SSL-VPN connection to Alibaba Cloud.
 	//
 	// example:
 	//
 	// 10.10.10.10
 	PrivateIp *string `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
-	// The traffic that the VPN gateway received from the client over the SSL-VPN connection. Unit: bytes.
+	// The traffic that the VPN gateway receives from the client over the SSL-VPN connection. Unit: bytes.
 	//
 	// example:
 	//
 	// 60782
 	ReceiveBytes *int64 `json:"ReceiveBytes,omitempty" xml:"ReceiveBytes,omitempty"`
-	// The traffic that the VPN gateway sent to the client over the SSL-VPN connection. Unit: bytes.
+	// The traffic that the VPN gateway sends to the client over the SSL-VPN connection. Unit: bytes.
 	//
 	// example:
 	//

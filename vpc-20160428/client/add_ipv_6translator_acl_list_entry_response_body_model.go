@@ -16,7 +16,7 @@ type iAddIPv6TranslatorAclListEntryResponseBody interface {
 }
 
 type AddIPv6TranslatorAclListEntryResponseBody struct {
-	// The ID of the ACL entry.
+	// The ID of the access control policy group entry.
 	//
 	// example:
 	//

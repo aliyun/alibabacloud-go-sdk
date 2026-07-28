@@ -110,19 +110,19 @@ type DescribeRouterInterfaceAttributeResponseBody struct {
 	//
 	// ap-cn-qingdao-ls-A
 	AccessPointId *string `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
-	// The bandwidth of the router interface. Unit: Mbit/s.
+	// The bandwidth of the router interface. Unit: Mbps.
 	//
 	// example:
 	//
 	// 2
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The status of the router interface. Valid values:
+	// The business status of the router interface. Valid values:
 	//
-	// 	- **Normal**
+	// - **Normal**: Normal.
 	//
-	// 	- **FinancialLocked**
+	// - **FinancialLocked**: locked due to overdue payment.
 	//
-	// 	- **SecurityLocked**
+	// - **SecurityLocked**: locked due to security risk control.
 	//
 	// example:
 	//
@@ -130,9 +130,9 @@ type DescribeRouterInterfaceAttributeResponseBody struct {
 	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
 	// The billing method. Valid values:
 	//
-	// 	- **AfterPay**: pay-as-you-go
+	// - **AfterPay**: pay-as-you-go.
 	//
-	// 	- **PrePaid**: subscription
+	// - **PrePaid**: subscription.
 	//
 	// example:
 	//
@@ -158,9 +158,9 @@ type DescribeRouterInterfaceAttributeResponseBody struct {
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// Indicates whether the connection is a cross-border connection. Valid values:
 	//
-	// 	- **false**
+	// - **false**: The connection is not a cross-border connection.
 	//
-	// 	- **true**
+	// - **true**: The connection is a cross-border connection.
 	//
 	// example:
 	//
@@ -172,83 +172,82 @@ type DescribeRouterInterfaceAttributeResponseBody struct {
 	//
 	// 对端接口
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The end of the time range during which data was queried.
+	// The end time of the data retrieval.
 	//
 	// example:
 	//
 	// 2999-09-08T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Indicates whether the VBR that is created in the Fast Link mode is uplinked to the router interface. The Fast Link mode helps automatically connect router interfaces that are created for the VBR and its peer VPC. Valid values:
+	// Indicates whether the router interface on the VBR was created in fast link mode. Fast link mode allows the router interfaces on the VBR and VPC to be automatically connected after they are created. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The router interface was created in fast link mode.
 	//
-	// 	- **false*	- (default)
+	// - **false*	- (default): The router interface was not created in fast link mode.
 	//
-	// >
 	//
-	// 	- This parameter takes effect only when **RouterType*	- is set to **VBR*	- and **OppositeRouterType*	- is set to **VRouter**.
+	// > -  This parameter takes effect only when **RouterType*	- is set to **VBR*	- and **OppositeRouterType*	- is set to **VRouter**.
 	//
-	// 	- When **FastLinkMode*	- is set to **true**, **Role*	- must be set to **InitiatingSide**. **AccessPointId**, **OppositeRouterType**, **OpppsiteRouterId**, and **OppositeInterfaceOwnerId*	- are required.
+	// - When **FastLinkMode*	- is set to **true**, **Role*	- must be set to **InitiatingSide**, and **AccessPointId**, **OppositeRouterType**, **OpppsiteRouterId**, and **OppositeInterfaceOwnerId*	- are required.
 	//
 	// example:
 	//
 	// false
 	FastLinkMode *string `json:"FastLinkMode,omitempty" xml:"FastLinkMode,omitempty"`
-	// The time when the router interface was modified.
+	// The time when the router interface was last modified.
 	//
 	// example:
 	//
 	// 2022-04-28T10:02:12Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Indicates whether renewal data is included. Valid values:
+	// Indicates whether renewal data exists. Valid values:
 	//
-	// 	- **false**
+	// - **false**: No renewal data exists.
 	//
-	// 	- **true**
+	// - **true**: Renewal data exists.
 	//
 	// example:
 	//
 	// false
 	HasReservationData *string `json:"HasReservationData,omitempty" xml:"HasReservationData,omitempty"`
-	// The rate of health checks. Unit: seconds. The value indicates the interval at which probe packets are sent during a health check.
+	// The health check rate. Unit: seconds. This value indicates the interval between consecutive probe packets sent during a health check.
 	//
 	// example:
 	//
 	// 2
 	HcRate *int32 `json:"HcRate,omitempty" xml:"HcRate,omitempty"`
-	// The healthy threshold. This value indicates the number of probe packets that are sent during a health check. Unit: packets.
+	// The health check threshold. This value indicates the number of probe packets sent during a health check. Unit: packets.
 	//
 	// example:
 	//
 	// 8
 	HcThreshold *int32 `json:"HcThreshold,omitempty" xml:"HcThreshold,omitempty"`
-	// The source IP address that is used for the health check.
+	// The source IP address of the health check.
 	//
 	// example:
 	//
 	// 1.1.XX.XX
 	HealthCheckSourceIp *string `json:"HealthCheckSourceIp,omitempty" xml:"HealthCheckSourceIp,omitempty"`
-	// The status of the health check. Valid values:
+	// The health check status. Valid values:
 	//
-	// 	- **Abnormal**
+	// - **Abnormal**: abnormal.
 	//
-	// 	- **Normal**
+	// - **Normal**: Normal.
 	//
-	// 	- **NoRedundantRoute**
+	// - **NoRedundantRoute**: no redundant route configured.
 	//
-	// 	- **NoHealthCheckConfig**
+	// - **NoHealthCheckConfig**: no health check configured.
 	//
 	// example:
 	//
 	// normal
 	HealthCheckStatus *string `json:"HealthCheckStatus,omitempty" xml:"HealthCheckStatus,omitempty"`
-	// The destination IP address that is used for the health check.
+	// The target IP address of the health check.
 	//
 	// example:
 	//
 	// 2.2.XX.XX
 	HealthCheckTargetIp *string `json:"HealthCheckTargetIp,omitempty" xml:"HealthCheckTargetIp,omitempty"`
-	// The response parameters.
+	// The response message.
 	//
 	// example:
 	//
@@ -266,19 +265,19 @@ type DescribeRouterInterfaceAttributeResponseBody struct {
 	//
 	// ap-cn-qingdao-ls-B
 	OppositeAccessPointId *string `json:"OppositeAccessPointId,omitempty" xml:"OppositeAccessPointId,omitempty"`
-	// The maximum bandwidth of the peer router interface. Unit: Mbit/s.
+	// The bandwidth of the peer router interface. Unit: Mbps.
 	//
 	// example:
 	//
 	// 0
 	OppositeBandwidth *int32 `json:"OppositeBandwidth,omitempty" xml:"OppositeBandwidth,omitempty"`
-	// The service status of the peer router interface. Valid values:
+	// The business status of the peer router interface. Valid values:
 	//
-	// 	- **Normal**
+	// - **Normal**: Normal.
 	//
-	// 	- **FinancialLocked**
+	// - **FinancialLocked**: locked due to overdue payment.
 	//
-	// 	- **SecurityLocked**
+	// - **SecurityLocked**: locked due to security risk control.
 	//
 	// example:
 	//
@@ -290,7 +289,7 @@ type DescribeRouterInterfaceAttributeResponseBody struct {
 	//
 	// ri-bp1xkrzttximaoxbl****
 	OppositeInterfaceId *string `json:"OppositeInterfaceId,omitempty" xml:"OppositeInterfaceId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the peer router interface belongs.
+	// The ID of the account to which the peer router interface belongs.
 	//
 	// example:
 	//
@@ -298,31 +297,31 @@ type DescribeRouterInterfaceAttributeResponseBody struct {
 	OppositeInterfaceOwnerId *string `json:"OppositeInterfaceOwnerId,omitempty" xml:"OppositeInterfaceOwnerId,omitempty"`
 	// The specification of the peer router interface. Valid values:
 	//
-	// 	- **Mini.2**: 2 Mbit/s
+	// - **Mini.2**: 2 Mbps
 	//
-	// 	- **Mini.5**: 5 Mbit/s
+	// - **Mini.5**: 5 Mbps
 	//
-	// 	- **Small.1**: 10 Mbit/s
+	// - **Small.1**: 10 Mbps
 	//
-	// 	- **Small.2**: 20 Mbit/s
+	// - **Small.2**: 20 Mbps
 	//
-	// 	- **Small.5**: 50 Mbit/s
+	// - **Small.5**: 50 Mbps
 	//
-	// 	- **Middle.1**: 100 Mbit/s
+	// - **Middle.1**: 100 Mbps
 	//
-	// 	- **Middle.2**: 200 Mbit/s
+	// - **Middle.2**: 200 Mbps
 	//
-	// 	- **Middle.5**: 500 Mbit/s
+	// - **Middle.5**: 500 Mbps
 	//
-	// 	- **Large.1**: 1,000 Mbit/s
+	// - **Large.1**: 1000 Mbps
 	//
-	// 	- **Large.2**: 2,000 Mbit/s
+	// - **Large.2**: 2000 Mbps
 	//
-	// 	- **Large.5**: 5,000 Mbit/s
+	// - **Large.5**: 5000 Mbps
 	//
-	// 	- **Xlarge.1**: 10,000 Mbit/s
+	// - **Xlarge.1**: 10000 Mbps
 	//
-	// 	- **Negative**: not applicable
+	// - **Negative**: no specification involved.
 	//
 	// example:
 	//
@@ -330,25 +329,25 @@ type DescribeRouterInterfaceAttributeResponseBody struct {
 	OppositeInterfaceSpec *string `json:"OppositeInterfaceSpec,omitempty" xml:"OppositeInterfaceSpec,omitempty"`
 	// The status of the peer router interface. Valid values:
 	//
-	// 	- **Idle**
+	// - **Idle**: not connected.
 	//
-	// 	- **AcceptingConnecting**
+	// - **AcceptingConnecting**: accepting a connection.
 	//
-	// 	- **Connecting**
+	// - **Connecting**: connecting.
 	//
-	// 	- **Activating**
+	// - **Activating**: being activated.
 	//
-	// 	- **Active**
+	// - **Active**: activated.
 	//
-	// 	- **Modifying**
+	// - **Modifying**: being modified.
 	//
-	// 	- **Deactivating**
+	// - **Deactivating**: being frozen.
 	//
-	// 	- **Inactive**
+	// - **Inactive**: frozen.
 	//
-	// 	- **Deleting**
+	// - **Deleting**: being deleted.
 	//
-	// 	- **Deleted**
+	// - **Deleted**: deleted.
 	//
 	// example:
 	//
@@ -368,9 +367,9 @@ type DescribeRouterInterfaceAttributeResponseBody struct {
 	OppositeRouterId *string `json:"OppositeRouterId,omitempty" xml:"OppositeRouterId,omitempty"`
 	// The type of the router to which the peer router interface belongs. Valid values:
 	//
-	// 	- **VRouter**
+	// - **VRouter**: vRouter of a VPC.
 	//
-	// 	- **VBR**
+	// - **VBR**: Virtual Border Router.
 	//
 	// example:
 	//
@@ -388,25 +387,25 @@ type DescribeRouterInterfaceAttributeResponseBody struct {
 	//
 	// 01818199-04F6-47F4-9ADF-7CC824CF57A4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The time when the renewal takes effect.
+	// The renewal active time.
 	//
 	// example:
 	//
 	// 2022-06-11T16:00:00Z
 	ReservationActiveTime *string `json:"ReservationActiveTime,omitempty" xml:"ReservationActiveTime,omitempty"`
-	// The maximum bandwidth after the renewal takes effect. Unit: Mbit/s.
+	// The renewal bandwidth. Unit: Mbps.
 	//
 	// example:
 	//
 	// 100
 	ReservationBandwidth *string `json:"ReservationBandwidth,omitempty" xml:"ReservationBandwidth,omitempty"`
-	// The metering method that is used after the renewal takes effect. Valid values: If **PayByBandwidth*	- is returned, it indicates that the Express Connect circuit is billed on a pay-by-bandwidth basis.
+	// The renewal billing type. Valid values: **PayByBandwidth**, which indicates pay-by-bandwidth.
 	//
 	// example:
 	//
 	// PayByBandwidth
 	ReservationInternetChargeType *string `json:"ReservationInternetChargeType,omitempty" xml:"ReservationInternetChargeType,omitempty"`
-	// The type of the renewal order. Only **RENEW*	- may be returned, which indicates that the order is placed for service renewal.
+	// The type of the renewal order. Valid values: **RENEW**, which indicates a renewal order.
 	//
 	// example:
 	//
@@ -414,13 +413,13 @@ type DescribeRouterInterfaceAttributeResponseBody struct {
 	ReservationOrderType *string `json:"ReservationOrderType,omitempty" xml:"ReservationOrderType,omitempty"`
 	// The resource group ID.
 	//
-	// For more information about resource groups, see [What is a resource group?](https://help.aliyun.com/document_detail/94475.html)
+	// For more information about resource groups, see [What is a resource group?](https://help.aliyun.com/document_detail/2381067.html).
 	//
 	// example:
 	//
 	// rg-acfmxazb4ph6aiy****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The role of the router interface in the peering connection.
+	// The role in the peering connection.
 	//
 	// example:
 	//
@@ -440,9 +439,9 @@ type DescribeRouterInterfaceAttributeResponseBody struct {
 	RouterInterfaceId *string `json:"RouterInterfaceId,omitempty" xml:"RouterInterfaceId,omitempty"`
 	// The type of the router to which the route table belongs. Valid values:
 	//
-	// 	- **VRouter**
+	// - **VRouter**: vRouter of a VPC.
 	//
-	// 	- **VBR**
+	// - **VBR**: Virtual Border Router.
 	//
 	// example:
 	//
@@ -450,29 +449,29 @@ type DescribeRouterInterfaceAttributeResponseBody struct {
 	RouterType *string `json:"RouterType,omitempty" xml:"RouterType,omitempty"`
 	// The specification of the router interface. Valid values:
 	//
-	// 	- **Mini.2**: 2 Mbit/s
+	// - **Mini.2**: 2 Mbps
 	//
-	// 	- **Mini.5**: 5 Mbit/s
+	// - **Mini.5**: 5 Mbps
 	//
-	// 	- **Small.1**: 10 Mbit/s
+	// - **Small.1**: 10 Mbps
 	//
-	// 	- **Small.2**: 20 Mbit/s
+	// - **Small.2**: 20 Mbps
 	//
-	// 	- **Small.5**: 50 Mbit/s
+	// - **Small.5**: 50 Mbps
 	//
-	// 	- **Middle.1**: 100 Mbit/s
+	// - **Middle.1**: 100 Mbps
 	//
-	// 	- **Middle.2**: 200 Mbit/s
+	// - **Middle.2**: 200 Mbps
 	//
-	// 	- **Middle.5**: 500 Mbit/s
+	// - **Middle.5**: 500 Mbps
 	//
-	// 	- **Large.1**: 1,000 Mbit/s
+	// - **Large.1**: 1000 Mbps
 	//
-	// 	- **Large.2**: 2,000 Mbit/s
+	// - **Large.2**: 2000 Mbps
 	//
-	// 	- **Large.5**: 5,000 Mbit/s
+	// - **Large.5**: 5000 Mbps
 	//
-	// 	- **Xlarge.1**: 10,000 Mbit/s
+	// - **Xlarge.1**: 10000 Mbps
 	//
 	// example:
 	//
@@ -480,36 +479,36 @@ type DescribeRouterInterfaceAttributeResponseBody struct {
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	// The status of the router interface. Valid values:
 	//
-	// 	- **Idle**
+	// - **Idle**: not connected.
 	//
-	// 	- **AcceptingConnecting**
+	// - **AcceptingConnecting**: accepting a connection.
 	//
-	// 	- **Connecting**
+	// - **Connecting**: connecting.
 	//
-	// 	- **Activating**
+	// - **Activating**: being activated.
 	//
-	// 	- **Active**
+	// - **Active**: activated.
 	//
-	// 	- **Modifying**
+	// - **Modifying**: being modified.
 	//
-	// 	- **Deactivating**
+	// - **Deactivating**: being frozen.
 	//
-	// 	- **Inactive**
+	// - **Inactive**: frozen.
 	//
-	// 	- **Deleting**
+	// - **Deleting**: being deleted.
 	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the request is successful. Valid values: true and false.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
 	// true
 	Success *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
 	Tags    *DescribeRouterInterfaceAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The ID of the virtual private cloud (VPC) to which the router interface belongs.
+	// The ID of the virtual private cloud (VPC) to which the routing interface belongs.
 	//
 	// example:
 	//

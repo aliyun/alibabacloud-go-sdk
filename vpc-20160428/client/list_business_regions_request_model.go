@@ -16,9 +16,11 @@ type iListBusinessRegionsRequest interface {
 type ListBusinessRegionsRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- **zh-CN*	- (default): Chinese
 	//
-	// 	- **en-US**: English.
+	//
+	// - **zh-CN*	- (default): Chinese.
+	//
+	// - **en-US**: English.
 	//
 	// example:
 	//

@@ -26,7 +26,7 @@ type iRemoveGlobalAccelerationInstanceIpRequest interface {
 }
 
 type RemoveGlobalAccelerationInstanceIpRequest struct {
-	// The ID of the shared-bandwidth instance.
+	// The instance ID of the Internet Shared Bandwidth instance.
 	//
 	// This parameter is required.
 	//
@@ -34,9 +34,9 @@ type RemoveGlobalAccelerationInstanceIpRequest struct {
 	//
 	// ga-m5ex47zwya1sejyni****
 	GlobalAccelerationInstanceId *string `json:"GlobalAccelerationInstanceId,omitempty" xml:"GlobalAccelerationInstanceId,omitempty"`
-	// The ID of the EIP.
+	// The ID of the EIP instance.
 	//
-	// To query the EIP ID, call DescribeEipAddresses.
+	// You can call the [DescribeEipAddresses](https://help.aliyun.com/document_detail/36018.html) operation to query the EIP instance ID.
 	//
 	// This parameter is required.
 	//
@@ -46,9 +46,7 @@ type RemoveGlobalAccelerationInstanceIpRequest struct {
 	IpInstanceId *string `json:"IpInstanceId,omitempty" xml:"IpInstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the shared-bandwidth instance is located.
-	//
-	// To query the region ID, call DescribeRegions.
+	// The region where the Internet Shared Bandwidth instance is located. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//

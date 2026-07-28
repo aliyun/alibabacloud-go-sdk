@@ -30,17 +30,17 @@ type iModifyIPv6TranslatorBandwidthRequest interface {
 }
 
 type ModifyIPv6TranslatorBandwidthRequest struct {
-	// Specifies whether to enable auto-payment for the instance. Valid values:
+	// Specifies whether to automatically pay the bill for the subscription instance. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false*	- (default)
+	// - **false*	- (default)
 	//
 	// example:
 	//
 	// false
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// The maximum bandwidth of the IPv6 Translation Service instance. Valid values: **1*	- to **200**. Unit: Mbit/s.
+	// The peak bandwidth of the IPv6 Translation Service instance. Valid values: **1*	- to **200**. Unit: Mbit/s.
 	//
 	// This parameter is required.
 	//
@@ -50,13 +50,13 @@ type ModifyIPv6TranslatorBandwidthRequest struct {
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the IPv6 Translation Service instance.
+	// The instance ID of the IPv6 transform service.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type ModifyIPv6TranslatorBandwidthRequest struct {
 	Ipv6TranslatorId *string `json:"Ipv6TranslatorId,omitempty" xml:"Ipv6TranslatorId,omitempty"`
 	OwnerAccount     *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region of the IPv6 Translation Service instance. You can call the **DescribeRegions*	- operation to query the most recent region list.
+	// The region of the IPv6 Translation Service instance. You can call the **DescribeRegions*	- operation to query region IDs.
 	//
 	// This parameter is required.
 	//

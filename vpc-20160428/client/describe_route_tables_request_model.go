@@ -72,7 +72,7 @@ type DescribeRouteTablesRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The ID of the route table to query.
 	//
-	// >You must specify at least one of the following parameters: VRouterId, RouteTableId, RouterId, and RouteTableName. You cannot specify both VRouterId and RouterId at the same time.
+	// >You must specify at least one of the following parameters: **VRouterId**, **RouteTableId**, **RouterId**, and **RouteTableName**. You cannot specify both **VRouterId*	- and **RouterId**.
 	//
 	// example:
 	//
@@ -80,9 +80,9 @@ type DescribeRouteTablesRequest struct {
 	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
 	// The name of the route table to query.
 	//
-	// The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-).
+	// The name must be 2 to 128 characters in length and must start with a letter or Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-).
 	//
-	// >You must specify at least one of the following parameters: VRouterId, RouteTableId, RouterId, and RouteTableName. You cannot specify both VRouterId and RouterId at the same time.
+	// >You must specify at least one of the following parameters: **VRouterId**, **RouteTableId**, **RouterId**, and **RouteTableName**. You cannot specify both **VRouterId*	- and **RouterId**.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type DescribeRouteTablesRequest struct {
 	RouteTableName *string `json:"RouteTableName,omitempty" xml:"RouteTableName,omitempty"`
 	// The ID of the router to which the route table belongs.
 	//
-	// >You must specify at least one of the following parameters: VRouterId, RouteTableId, RouterId, and RouteTableName. You cannot specify both VRouterId and RouterId at the same time.
+	// >You must specify at least one of the following parameters: **VRouterId**, **RouteTableId**, **RouterId**, and **RouteTableName**. You cannot specify both **VRouterId*	- and **RouterId**.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type DescribeRouteTablesRequest struct {
 	//
 	// VRouter
 	RouterType *string `json:"RouterType,omitempty" xml:"RouterType,omitempty"`
-	// The destination type of the route to query. Valid values:
+	// The type of the route entry to query. Valid values:
 	//
 	// - **Custom**: custom route.
 	//
@@ -124,7 +124,7 @@ type DescribeRouteTablesRequest struct {
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The ID of the vRouter to query.
 	//
-	// >You must specify at least one of the following parameters: VRouterId, RouteTableId, RouterId, and RouteTableName. You cannot specify both VRouterId and RouterId at the same time.
+	// >You must specify at least one of the following parameters: **VRouterId**, **RouteTableId**, **RouterId**, and **RouteTableName**. You cannot specify both **VRouterId*	- and **RouterId**.
 	//
 	// example:
 	//

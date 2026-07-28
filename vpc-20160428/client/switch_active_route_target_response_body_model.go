@@ -14,7 +14,7 @@ type iSwitchActiveRouteTargetResponseBody interface {
 }
 
 type SwitchActiveRouteTargetResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

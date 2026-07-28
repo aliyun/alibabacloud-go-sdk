@@ -100,17 +100,17 @@ type DescribeSslVpnClientCertResponseBody struct {
 	//
 	// -----END RSA PRIVATE KEY-----
 	ClientKey *string `json:"ClientKey,omitempty" xml:"ClientKey,omitempty"`
-	// The timestamp that indicates when the SSL client certificate was created. Unit: milliseconds.
+	// The timestamp when the SSL client certificate was created. Unit: milliseconds.
 	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	// The timestamp is in the UNIX format and represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
 	// 1552550980000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The timestamp that indicates when the SSL client certificate expires. Unit: milliseconds.
+	// The timestamp when the SSL client certificate expires. Unit: milliseconds.
 	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	// The timestamp is in the UNIX format and represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type DescribeSslVpnClientCertResponseBody struct {
 	//
 	// nametest
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the region where the SSL client certificate is created.
+	// The region ID of the SSL client certificate.
 	//
 	// example:
 	//
@@ -134,9 +134,9 @@ type DescribeSslVpnClientCertResponseBody struct {
 	//
 	// 5BE01CD7-5A50-472D-AC14-CA181C5C03BE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group to which the SSL client certificate belongs.
+	// The resource group ID of the SSL client certificate.
 	//
-	// The SSL client certificate and the SSL server associated with the SSL client certificate belong to the same resource group. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource groups.
+	// The SSL client certificate belongs to the same resource group as its associated SSL server. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource group information.
 	//
 	// example:
 	//
@@ -156,11 +156,11 @@ type DescribeSslVpnClientCertResponseBody struct {
 	SslVpnServerId *string `json:"SslVpnServerId,omitempty" xml:"SslVpnServerId,omitempty"`
 	// The status of the SSL client certificate. Valid values:
 	//
-	// 	- **expiring-soon**
+	// - **expiring-soon**: The certificate will expire within one week.
 	//
-	// 	- **normal**
+	// - **normal**: Normal.
 	//
-	// 	- **expired**
+	// - **expired**: Expired.
 	//
 	// example:
 	//

@@ -34,15 +34,15 @@ type iGetDhcpOptionsSetResponseBody interface {
 }
 
 type GetDhcpOptionsSetResponseBody struct {
-	// The information about the virtual private cloud (VPC) that is associated with the DHCP options set.
+	// The information about the VPCs associated with the DHCP options set.
 	AssociateVpcs []*GetDhcpOptionsSetResponseBodyAssociateVpcs `json:"AssociateVpcs,omitempty" xml:"AssociateVpcs,omitempty" type:"Repeated"`
-	// create time
+	// The creation time.
 	//
 	// example:
 	//
 	// 2025-08-21 ***
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The configuration information about the DHCP options set.
+	// The DHCP options configuration.
 	DhcpOptions *GetDhcpOptionsSetResponseBodyDhcpOptions `json:"DhcpOptions,omitempty" xml:"DhcpOptions,omitempty" type:"Struct"`
 	// The description of the DHCP options set.
 	//
@@ -62,19 +62,19 @@ type GetDhcpOptionsSetResponseBody struct {
 	//
 	// test
 	DhcpOptionsSetName *string `json:"DhcpOptionsSetName,omitempty" xml:"DhcpOptionsSetName,omitempty"`
-	// The ID of the Alibaba Cloud account to which the DHCP options set belongs.
+	// The Alibaba Cloud account ID to which the DHCP options set belongs.
 	//
 	// example:
 	//
 	// 283117732402483989
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group.
+	// The ID of the resource group to which the DHCP options set belongs.
 	//
 	// example:
 	//
@@ -82,19 +82,19 @@ type GetDhcpOptionsSetResponseBody struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The status of the DHCP options set. Valid values:
 	//
-	// 	- **Available**: available
+	// - **Available**: available.
 	//
-	// 	- **InUse**: in use
+	// - **InUse**: in use.
 	//
-	// 	- **Deleted**: deleted
+	// - **Deleted**: deleted.
 	//
-	// 	- **Pending**: being configured
+	// - **Pending**: being configured.
 	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag list.
+	// The tag information.
 	Tags []*GetDhcpOptionsSetResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -233,19 +233,17 @@ func (s *GetDhcpOptionsSetResponseBody) Validate() error {
 }
 
 type GetDhcpOptionsSetResponseBodyAssociateVpcs struct {
-	// The status of the VPC that is associated with the DHCP options set. Valid values:
+	// The status of the VPC associated with the DHCP options set. Valid values:
 	//
+	// - **InUse**: in use.
 	//
-	//
-	// 	- **InUse**: in use
-	//
-	// 	- **Pending**: being configured
+	// - **Pending**: being configured.
 	//
 	// example:
 	//
 	// InUse
 	AssociateStatus *string `json:"AssociateStatus,omitempty" xml:"AssociateStatus,omitempty"`
-	// The ID of the VPC that is associated with the DHCP options set.
+	// The ID of the VPC associated with the DHCP options set.
 	//
 	// example:
 	//
@@ -284,7 +282,7 @@ func (s *GetDhcpOptionsSetResponseBodyAssociateVpcs) Validate() error {
 }
 
 type GetDhcpOptionsSetResponseBodyDhcpOptions struct {
-	// The suffix of the hostname.
+	// The hostname suffix.
 	//
 	// example:
 	//
@@ -296,23 +294,21 @@ type GetDhcpOptionsSetResponseBodyDhcpOptions struct {
 	//
 	// 192.XX.XX.123
 	DomainNameServers *string `json:"DomainNameServers,omitempty" xml:"DomainNameServers,omitempty"`
-	// The lease time of the IPv6 addresses for the DHCP options set.
+	// The lease time of the IPv6 DHCP options set.
 	//
+	// - When the lease time is set in hours: Unit: h. Valid values: **24h to 1176h*	- and **87600h to 175200h**. Default value: **24h**.
 	//
-	//
-	// 	- If you use hours as the unit, Valid values are **24h to 1176h*	- and **87600h to 175200h**. Default value: **87600h**.
-	//
-	// 	- If you use days as the unit, Valid values are **1d to 49d*	- and **3650d to 7300d**. Default value: **3650d**.
+	// - When the lease time is set in days: Unit: d. Valid values: **1d to 49d*	- and **3650d to 7300d**. Default value: **1d**.
 	//
 	// example:
 	//
 	// 3650d
 	Ipv6LeaseTime *string `json:"Ipv6LeaseTime,omitempty" xml:"Ipv6LeaseTime,omitempty"`
-	// The lease time of the IPv4 addresses for the DHCP options set.
+	// The lease time of the IPv4 DHCP options set.
 	//
-	// 	- If you use hours as the unit, valid values are **24h to 1176h*	- and **87600h to 175200h**. Default value: **87600h**.
+	// - When the lease time is set in hours: Unit: h. Valid values: **24h to 1176h*	- and **87600h to 175200h**. Default value: **87600h**.
 	//
-	// 	- If you use days as the unit, valid values are **1d to 49d*	- and **3650d to 7300d**. Default value: **3650d**.
+	// - When the lease time is set in days: Unit: d. Valid values: **1d to 49d*	- and **3650d to 7300d**. Default value: **3650d**.
 	//
 	// example:
 	//

@@ -38,7 +38,7 @@ type DeletePublicIpAddressPoolCidrBlockRequest struct {
 	//
 	// 47.0.XX.XX/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The client token that is used to ensure the idempotency of the request.
+	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
@@ -46,11 +46,11 @@ type DeletePublicIpAddressPoolCidrBlockRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// - **true**: performs only a dry run. The CIDR block is not deleted. The system checks the required parameters, request format, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run without deleting the CIDR block. The system checks the required parameters, request syntax, and business restrictions. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
 	//
-	// - **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, an HTTP 2xx status code is returned and the operation is performed.
+	// - **false*	- (default): performs a dry run and sends the request. If the check succeeds, an HTTP 2xx status code is returned and the operation is performed.
 	//
 	// example:
 	//

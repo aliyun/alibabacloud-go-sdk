@@ -24,7 +24,7 @@ type CreatePhysicalConnectionSetupOrderResponseBody struct {
 	//
 	// 202844382740728
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the Express Connect circuit.
+	// The Express Connect circuit ID.
 	//
 	// example:
 	//

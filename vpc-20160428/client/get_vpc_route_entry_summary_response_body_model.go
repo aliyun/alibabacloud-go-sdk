@@ -16,13 +16,13 @@ type iGetVpcRouteEntrySummaryResponseBody interface {
 }
 
 type GetVpcRouteEntrySummaryResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// DC668356-BCB4-42FD-9BC3-FA2B2E04B634
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the routes in the route tables.
+	// The information about all route tables returned.
 	RouteEntrySummarys []*GetVpcRouteEntrySummaryResponseBodyRouteEntrySummarys `json:"RouteEntrySummarys,omitempty" xml:"RouteEntrySummarys,omitempty" type:"Repeated"`
 }
 
@@ -66,7 +66,7 @@ func (s *GetVpcRouteEntrySummaryResponseBody) Validate() error {
 }
 
 type GetVpcRouteEntrySummaryResponseBodyRouteEntrySummarys struct {
-	// The information about the routes of different types in one route table.
+	// The collection of route entry counts by type in a single route table.
 	EntrySummarys []*GetVpcRouteEntrySummaryResponseBodyRouteEntrySummarysEntrySummarys `json:"EntrySummarys,omitempty" xml:"EntrySummarys,omitempty" type:"Repeated"`
 	// The ID of the route table.
 	//
@@ -116,7 +116,7 @@ func (s *GetVpcRouteEntrySummaryResponseBodyRouteEntrySummarys) Validate() error
 }
 
 type GetVpcRouteEntrySummaryResponseBodyRouteEntrySummarysEntrySummarys struct {
-	// The number of entries returned.
+	// The number of entries in the list.
 	//
 	// example:
 	//
@@ -124,15 +124,23 @@ type GetVpcRouteEntrySummaryResponseBodyRouteEntrySummarysEntrySummarys struct {
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The type of the route. Valid values:
 	//
-	// 	- **All**: all route types
+	// - **all**: all route types.
 	//
-	// 	- **Custom**: a custom route
+	// - **custom**: custom route.
 	//
-	// 	- **System**: a system route
+	// - **system**: system route.
 	//
-	// 	- **BGP**: a BGP route
+	// - **bgp**: BGP route.
 	//
-	// 	- **CEN**: a CEN route
+	// - **cen**: Cloud Enterprise Network (CEN) route.
+	//
+	// - **type_vpn_bgp_internal**: VPN BGP route.
+	//
+	// - **ECR**: Express Connect Router (ECR) route.
+	//
+	//
+	//
+	// > The returned system routes are the system routes in the system route table.
 	//
 	// example:
 	//

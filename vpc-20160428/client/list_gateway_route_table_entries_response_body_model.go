@@ -20,7 +20,7 @@ type iListGatewayRouteTableEntriesResponseBody interface {
 }
 
 type ListGatewayRouteTableEntriesResponseBody struct {
-	// The details of route entries in the gateway route table.
+	// The details of the route entries in the gateway route table.
 	GatewayRouteEntryModels []*ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModels `json:"GatewayRouteEntryModels,omitempty" xml:"GatewayRouteEntryModels,omitempty" type:"Repeated"`
 	// The pagination token. Valid values:
 	//
@@ -144,7 +144,7 @@ type ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModels struct {
 	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
 	// The next hop information.
 	NextHops []*ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModelsNextHops `json:"NextHops,omitempty" xml:"NextHops,omitempty" type:"Repeated"`
-	// The status of the route entry.
+	// The status of the route entry. Valid values:
 	//
 	// - **Pending**: being configured.
 	//
@@ -263,7 +263,7 @@ type ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModelsNextHops str
 	//
 	// - **Instance*	- (default): ECS instance.
 	//
-	// - **HaVip**: high-availability virtual IP address (HaVip).
+	// - **HaVip**: high-availability virtual IP address.
 	//
 	// - **VpnGateway**: VPN gateway.
 	//

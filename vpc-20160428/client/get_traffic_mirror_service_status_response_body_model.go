@@ -16,11 +16,11 @@ type iGetTrafficMirrorServiceStatusResponseBody interface {
 }
 
 type GetTrafficMirrorServiceStatusResponseBody struct {
-	// Indicates whether the traffic mirror feature is enabled. Valid values:
+	// Indicates whether the traffic mirroring feature is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Enabled.
 	//
-	// 	- **false**
+	// - **false**: Not enabled.
 	//
 	// example:
 	//
