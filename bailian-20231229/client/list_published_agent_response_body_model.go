@@ -170,9 +170,12 @@ func (s *ListPublishedAgentResponseBodyData) Validate() error {
 type ListPublishedAgentResponseBodyDataList struct {
 	ApplicationConfig *ListPublishedAgentResponseBodyDataListApplicationConfig `json:"applicationConfig,omitempty" xml:"applicationConfig,omitempty" type:"Struct"`
 	Code              *string                                                  `json:"code,omitempty" xml:"code,omitempty"`
+	Description       *string                                                  `json:"description,omitempty" xml:"description,omitempty"`
 	Instructions      *string                                                  `json:"instructions,omitempty" xml:"instructions,omitempty"`
 	ModelId           *string                                                  `json:"modelId,omitempty" xml:"modelId,omitempty"`
 	Name              *string                                                  `json:"name,omitempty" xml:"name,omitempty"`
+	SubType           *string                                                  `json:"subType,omitempty" xml:"subType,omitempty"`
+	Type              *int32                                                   `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s ListPublishedAgentResponseBodyDataList) String() string {
@@ -191,6 +194,10 @@ func (s *ListPublishedAgentResponseBodyDataList) GetCode() *string {
 	return s.Code
 }
 
+func (s *ListPublishedAgentResponseBodyDataList) GetDescription() *string {
+	return s.Description
+}
+
 func (s *ListPublishedAgentResponseBodyDataList) GetInstructions() *string {
 	return s.Instructions
 }
@@ -203,6 +210,14 @@ func (s *ListPublishedAgentResponseBodyDataList) GetName() *string {
 	return s.Name
 }
 
+func (s *ListPublishedAgentResponseBodyDataList) GetSubType() *string {
+	return s.SubType
+}
+
+func (s *ListPublishedAgentResponseBodyDataList) GetType() *int32 {
+	return s.Type
+}
+
 func (s *ListPublishedAgentResponseBodyDataList) SetApplicationConfig(v *ListPublishedAgentResponseBodyDataListApplicationConfig) *ListPublishedAgentResponseBodyDataList {
 	s.ApplicationConfig = v
 	return s
@@ -210,6 +225,11 @@ func (s *ListPublishedAgentResponseBodyDataList) SetApplicationConfig(v *ListPub
 
 func (s *ListPublishedAgentResponseBodyDataList) SetCode(v string) *ListPublishedAgentResponseBodyDataList {
 	s.Code = &v
+	return s
+}
+
+func (s *ListPublishedAgentResponseBodyDataList) SetDescription(v string) *ListPublishedAgentResponseBodyDataList {
+	s.Description = &v
 	return s
 }
 
@@ -225,6 +245,16 @@ func (s *ListPublishedAgentResponseBodyDataList) SetModelId(v string) *ListPubli
 
 func (s *ListPublishedAgentResponseBodyDataList) SetName(v string) *ListPublishedAgentResponseBodyDataList {
 	s.Name = &v
+	return s
+}
+
+func (s *ListPublishedAgentResponseBodyDataList) SetSubType(v string) *ListPublishedAgentResponseBodyDataList {
+	s.SubType = &v
+	return s
+}
+
+func (s *ListPublishedAgentResponseBodyDataList) SetType(v int32) *ListPublishedAgentResponseBodyDataList {
+	s.Type = &v
 	return s
 }
 

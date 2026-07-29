@@ -1926,17 +1926,17 @@ func (client *Client) DeleteChunk(WorkspaceId *string, request *DeleteChunkReque
 
 // Summary:
 //
-// 删除连接器
+// Deletes a connector.
 //
 // Description:
 //
-// - RAM用户（子账号）需要首先获取阿里云百炼的[API权限](https://help.aliyun.com/document_detail/2848578.html)（需要`AliyunBailianDataFullAccess`，已包括sfm:DeleteConnector权限点），并[加入一个业务空间](https://help.aliyun.com/document_detail/2851098.html)后，方可调用本接口。阿里云账号（主账号）可直接调用无须授权。建议您通过最新版[阿里云百炼SDK](https://api.aliyun.com/api-tools/sdk/bailian?version=2023-12-29)[阿里云百炼SDK](https://api.alibabacloud.com/api-tools/sdk/bailian?version=2023-12-29)来调用本接口。
+// - Resource Access Management (RAM) users must first obtain [API permissions](https://help.aliyun.com/document_detail/2848578.html) for Alibaba Cloud Model Studio (requires `AliyunBailianDataFullAccess`, which includes the sfm:DeleteConnector permission), and [join a workspace](https://help.aliyun.com/document_detail/2851098.html) before calling this operation. Alibaba Cloud accounts can call this operation directly without authorization. Use the latest [Alibaba Cloud Model Studio SDK](https://api.aliyun.com/api-tools/sdk/bailian?version=2023-12-29)[Alibaba Cloud Model Studio SDK](https://api.alibabacloud.com/api-tools/sdk/bailian?version=2023-12-29) to call this operation.
 //
-// - 本接口不具备幂等性。
+// - This operation is not idempotent.
 //
-// **限流说明：**
+// **Throttling:**
 //
-// 本接口频繁调用会被限流，频率请勿超过5次/秒。如遇限流，请稍后重试。
+// This operation is throttled if called too frequently. Do not exceed 5 calls per second. If throttled, retry later.
 //
 // @param request - DeleteConnectorRequest
 //
@@ -1977,17 +1977,17 @@ func (client *Client) DeleteConnectorWithOptions(ConnectorId *string, WorkspaceI
 
 // Summary:
 //
-// 删除连接器
+// Deletes a connector.
 //
 // Description:
 //
-// - RAM用户（子账号）需要首先获取阿里云百炼的[API权限](https://help.aliyun.com/document_detail/2848578.html)（需要`AliyunBailianDataFullAccess`，已包括sfm:DeleteConnector权限点），并[加入一个业务空间](https://help.aliyun.com/document_detail/2851098.html)后，方可调用本接口。阿里云账号（主账号）可直接调用无须授权。建议您通过最新版[阿里云百炼SDK](https://api.aliyun.com/api-tools/sdk/bailian?version=2023-12-29)[阿里云百炼SDK](https://api.alibabacloud.com/api-tools/sdk/bailian?version=2023-12-29)来调用本接口。
+// - Resource Access Management (RAM) users must first obtain [API permissions](https://help.aliyun.com/document_detail/2848578.html) for Alibaba Cloud Model Studio (requires `AliyunBailianDataFullAccess`, which includes the sfm:DeleteConnector permission), and [join a workspace](https://help.aliyun.com/document_detail/2851098.html) before calling this operation. Alibaba Cloud accounts can call this operation directly without authorization. Use the latest [Alibaba Cloud Model Studio SDK](https://api.aliyun.com/api-tools/sdk/bailian?version=2023-12-29)[Alibaba Cloud Model Studio SDK](https://api.alibabacloud.com/api-tools/sdk/bailian?version=2023-12-29) to call this operation.
 //
-// - 本接口不具备幂等性。
+// - This operation is not idempotent.
 //
-// **限流说明：**
+// **Throttling:**
 //
-// 本接口频繁调用会被限流，频率请勿超过5次/秒。如遇限流，请稍后重试。
+// This operation is throttled if called too frequently. Do not exceed 5 calls per second. If throttled, retry later.
 //
 // @param request - DeleteConnectorRequest
 //
@@ -4510,20 +4510,26 @@ func (client *Client) ListPromptTemplates(workspaceId *string, request *ListProm
 //
 // 查询已发布的智能体应用列表
 //
-// @param request - ListPublishedAgentRequest
+// @param tmpReq - ListPublishedAgentRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPublishedAgentResponse
-func (client *Client) ListPublishedAgentWithOptions(workspaceId *string, request *ListPublishedAgentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPublishedAgentResponse, _err error) {
+func (client *Client) ListPublishedAgentWithOptions(workspaceId *string, tmpReq *ListPublishedAgentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPublishedAgentResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &ListPublishedAgentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SubTypes) {
+		request.SubTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SubTypes, dara.String("subTypes"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNo) {
 		query["pageNo"] = request.PageNo
@@ -4531,6 +4537,10 @@ func (client *Client) ListPublishedAgentWithOptions(workspaceId *string, request
 
 	if !dara.IsNil(request.PageSize) {
 		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SubTypesShrink) {
+		query["subTypes"] = request.SubTypesShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{

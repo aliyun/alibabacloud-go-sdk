@@ -13,11 +13,14 @@ type iListPublishedAgentRequest interface {
 	GetPageNo() *int32
 	SetPageSize(v int32) *ListPublishedAgentRequest
 	GetPageSize() *int32
+	SetSubTypes(v []*string) *ListPublishedAgentRequest
+	GetSubTypes() []*string
 }
 
 type ListPublishedAgentRequest struct {
-	PageNo   *int32 `json:"pageNo,omitempty" xml:"pageNo,omitempty"`
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageNo   *int32    `json:"pageNo,omitempty" xml:"pageNo,omitempty"`
+	PageSize *int32    `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	SubTypes []*string `json:"subTypes,omitempty" xml:"subTypes,omitempty" type:"Repeated"`
 }
 
 func (s ListPublishedAgentRequest) String() string {
@@ -36,6 +39,10 @@ func (s *ListPublishedAgentRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *ListPublishedAgentRequest) GetSubTypes() []*string {
+	return s.SubTypes
+}
+
 func (s *ListPublishedAgentRequest) SetPageNo(v int32) *ListPublishedAgentRequest {
 	s.PageNo = &v
 	return s
@@ -43,6 +50,11 @@ func (s *ListPublishedAgentRequest) SetPageNo(v int32) *ListPublishedAgentReques
 
 func (s *ListPublishedAgentRequest) SetPageSize(v int32) *ListPublishedAgentRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListPublishedAgentRequest) SetSubTypes(v []*string) *ListPublishedAgentRequest {
+	s.SubTypes = v
 	return s
 }
 

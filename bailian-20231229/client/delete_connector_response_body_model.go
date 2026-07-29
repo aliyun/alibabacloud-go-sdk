@@ -24,23 +24,38 @@ type iDeleteConnectorResponseBody interface {
 }
 
 type DeleteConnectorResponseBody struct {
+	// The error status code.
+	//
 	// example:
 	//
 	// Index.InvalidParameter
-	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The business data field of the operation.
 	Data *DeleteConnectorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// User not authorized to operate on the specified resource
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 1C139002-0EC5-584C-A755-4B8B9FA080BE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status code returned by the operation.
+	//
 	// example:
 	//
 	// 200
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the operation was successful. Valid values:
+	//
+	// - true: Succeeded.
+	//
+	// - false: Failed.
+	//
 	// example:
 	//
 	// true
@@ -119,6 +134,8 @@ func (s *DeleteConnectorResponseBody) Validate() error {
 }
 
 type DeleteConnectorResponseBodyData struct {
+	// The connector ID.
+	//
 	// example:
 	//
 	// conn_file_e0c9db4030b2465a9478028f7d76cd92_1234
