@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/yike-20260707
+module github.com/alibabacloud-go/yike-20260707/v2
 
 go 1.14
 

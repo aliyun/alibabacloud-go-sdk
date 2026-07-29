@@ -363,6 +363,12 @@ func (client *Client) GetMediaWithContext(ctx context.Context, request *GetMedia
 //
 // 查询媒资内容理解作业
 //
+// Description:
+//
+// ## 请求说明
+//
+// 该API用于查询媒资内容理解作业。
+//
 // @param request - GetMediaComprehensionJobRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -443,6 +449,87 @@ func (client *Client) GetVideoGenerationJobWithContext(ctx context.Context, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetVideoGenerationJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取一刻主账户会员计划及积分情况
+//
+// @param request - GetYikeAccountCreditRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetYikeAccountCreditResponse
+func (client *Client) GetYikeAccountCreditWithContext(ctx context.Context, request *GetYikeAccountCreditRequest, runtime *dara.RuntimeOptions) (_result *GetYikeAccountCreditResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetYikeAccountCredit"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetYikeAccountCreditResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询一刻任务实际消耗积分
+//
+// @param request - GetYikeJobCreditRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetYikeJobCreditResponse
+func (client *Client) GetYikeJobCreditWithContext(ctx context.Context, request *GetYikeJobCreditRequest, runtime *dara.RuntimeOptions) (_result *GetYikeJobCreditResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		body["JobId"] = request.JobId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetYikeJobCredit"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetYikeJobCreditResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -618,10 +705,6 @@ func (client *Client) SearchMediaWithContext(ctx context.Context, request *Searc
 		query["CategoryId"] = request.CategoryId
 	}
 
-	if !dara.IsNil(request.EntityId) {
-		query["EntityId"] = request.EntityId
-	}
-
 	if !dara.IsNil(request.Match) {
 		query["Match"] = request.Match
 	}
@@ -636,10 +719,6 @@ func (client *Client) SearchMediaWithContext(ctx context.Context, request *Searc
 
 	if !dara.IsNil(request.ScrollToken) {
 		query["ScrollToken"] = request.ScrollToken
-	}
-
-	if !dara.IsNil(request.SearchLibName) {
-		query["SearchLibName"] = request.SearchLibName
 	}
 
 	if !dara.IsNil(request.SortBy) {
@@ -752,6 +831,12 @@ func (client *Client) SubmitImageGenerationJobWithContext(ctx context.Context, r
 // Summary:
 //
 // 提交媒资内容理解作业
+//
+// Description:
+//
+// ## 请求说明
+//
+// 该API用于根据提供的媒资文件（比如视频链接）进行内容理解。此外，支持通过`UserData`字段传递自定义参数，在回调时原样返回。
 //
 // @param request - SubmitMediaComprehensionJobRequest
 //
@@ -873,6 +958,96 @@ func (client *Client) SubmitVideoGenerationJobWithContext(ctx context.Context, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubmitVideoGenerationJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交视频翻译任务
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该 API 支持多种视频翻译功能，包括字幕翻译和声音翻译。
+//
+// - `JobType` 参数定义了任务类型，如 `SubtitleTranslate`和`VoiceTranslate` 。
+//
+// - `Input` 和 `Output` 参数分别指定了输入资源和输出路径。
+//
+// - `JobParameters` 包含了语言配置和其他能力开关，如 `SourceLanguage`、`TargetLanguage`、`NeedDetext` 和 `NeedVisualTranslate` 等。
+//
+// - `EditingConfig` 可以用来指定最终剪辑合成的样式配置。
+//
+// - `ClientToken` 是一个可选参数，用于保证请求的幂等性。
+//
+// - 请确保所有必填字段都已正确填写，否则可能会导致请求失败。
+//
+// @param request - SubmitVideoTranslationJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitVideoTranslationJobResponse
+func (client *Client) SubmitVideoTranslationJobWithContext(ctx context.Context, request *SubmitVideoTranslationJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitVideoTranslationJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Input) {
+		body["Input"] = request.Input
+	}
+
+	if !dara.IsNil(request.JobParameters) {
+		body["JobParameters"] = request.JobParameters
+	}
+
+	if !dara.IsNil(request.JobType) {
+		body["JobType"] = request.JobType
+	}
+
+	if !dara.IsNil(request.Output) {
+		body["Output"] = request.Output
+	}
+
+	if !dara.IsNil(request.Title) {
+		body["Title"] = request.Title
+	}
+
+	if !dara.IsNil(request.UserData) {
+		body["UserData"] = request.UserData
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitVideoTranslationJob"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitVideoTranslationJobResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

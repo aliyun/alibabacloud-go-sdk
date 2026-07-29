@@ -11,8 +11,6 @@ type iSearchMediaRequest interface {
 	GoString() string
 	SetCategoryId(v int64) *SearchMediaRequest
 	GetCategoryId() *int64
-	SetEntityId(v string) *SearchMediaRequest
-	GetEntityId() *string
 	SetMatch(v string) *SearchMediaRequest
 	GetMatch() *string
 	SetPageNo(v int32) *SearchMediaRequest
@@ -21,8 +19,6 @@ type iSearchMediaRequest interface {
 	GetPageSize() *int32
 	SetScrollToken(v string) *SearchMediaRequest
 	GetScrollToken() *string
-	SetSearchLibName(v string) *SearchMediaRequest
-	GetSearchLibName() *string
 	SetSortBy(v string) *SearchMediaRequest
 	GetSortBy() *string
 }
@@ -32,10 +28,6 @@ type SearchMediaRequest struct {
 	//
 	// 10
 	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// example:
-	//
-	// BaseMedia
-	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	// example:
 	//
 	// title = \\"中国\\" and utcCreate = [\\"1693367158561\\",\\"1693367158562\\"]
@@ -54,10 +46,6 @@ type SearchMediaRequest struct {
 	ScrollToken *string `json:"ScrollToken,omitempty" xml:"ScrollToken,omitempty"`
 	// example:
 	//
-	// test-1
-	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
-	// example:
-	//
 	// utcCreate:Desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 }
@@ -72,10 +60,6 @@ func (s SearchMediaRequest) GoString() string {
 
 func (s *SearchMediaRequest) GetCategoryId() *int64 {
 	return s.CategoryId
-}
-
-func (s *SearchMediaRequest) GetEntityId() *string {
-	return s.EntityId
 }
 
 func (s *SearchMediaRequest) GetMatch() *string {
@@ -94,21 +78,12 @@ func (s *SearchMediaRequest) GetScrollToken() *string {
 	return s.ScrollToken
 }
 
-func (s *SearchMediaRequest) GetSearchLibName() *string {
-	return s.SearchLibName
-}
-
 func (s *SearchMediaRequest) GetSortBy() *string {
 	return s.SortBy
 }
 
 func (s *SearchMediaRequest) SetCategoryId(v int64) *SearchMediaRequest {
 	s.CategoryId = &v
-	return s
-}
-
-func (s *SearchMediaRequest) SetEntityId(v string) *SearchMediaRequest {
-	s.EntityId = &v
 	return s
 }
 
@@ -129,11 +104,6 @@ func (s *SearchMediaRequest) SetPageSize(v int32) *SearchMediaRequest {
 
 func (s *SearchMediaRequest) SetScrollToken(v string) *SearchMediaRequest {
 	s.ScrollToken = &v
-	return s
-}
-
-func (s *SearchMediaRequest) SetSearchLibName(v string) *SearchMediaRequest {
-	s.SearchLibName = &v
 	return s
 }
 

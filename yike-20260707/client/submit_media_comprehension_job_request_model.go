@@ -16,8 +16,14 @@ type iSubmitMediaComprehensionJobRequest interface {
 }
 
 type SubmitMediaComprehensionJobRequest struct {
+	// example:
+	//
+	// {"ProductName":"Quiet Blender Soymilk Maker","BrandName":"LiangChu","SellingPoints":["Low-noise blending","One-touch self-cleaning"]}
 	JobParams *string `json:"JobParams,omitempty" xml:"JobParams,omitempty"`
-	UserData  *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// example:
+	//
+	// {"NotifyAddress": "http://xxx.callback.url"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s SubmitMediaComprehensionJobRequest) String() string {

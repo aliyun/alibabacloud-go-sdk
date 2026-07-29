@@ -123,10 +123,6 @@ func (s *SearchMediaResponseBody) Validate() error {
 }
 
 type SearchMediaResponseBodyMediaInfoList struct {
-	// example:
-	//
-	// {\\"intField1\\":12,\\"strField1\\":\\"abc\\"}
-	CustomFields     *string                                               `json:"CustomFields,omitempty" xml:"CustomFields,omitempty"`
 	FileInfoList     []*SearchMediaResponseBodyMediaInfoListFileInfoList   `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
 	MediaBasicInfo   *SearchMediaResponseBodyMediaInfoListMediaBasicInfo   `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
 	MediaDynamicInfo *SearchMediaResponseBodyMediaInfoListMediaDynamicInfo `json:"MediaDynamicInfo,omitempty" xml:"MediaDynamicInfo,omitempty" type:"Struct"`
@@ -144,10 +140,6 @@ func (s SearchMediaResponseBodyMediaInfoList) GoString() string {
 	return s.String()
 }
 
-func (s *SearchMediaResponseBodyMediaInfoList) GetCustomFields() *string {
-	return s.CustomFields
-}
-
 func (s *SearchMediaResponseBodyMediaInfoList) GetFileInfoList() []*SearchMediaResponseBodyMediaInfoListFileInfoList {
 	return s.FileInfoList
 }
@@ -162,11 +154,6 @@ func (s *SearchMediaResponseBodyMediaInfoList) GetMediaDynamicInfo() *SearchMedi
 
 func (s *SearchMediaResponseBodyMediaInfoList) GetMediaId() *string {
 	return s.MediaId
-}
-
-func (s *SearchMediaResponseBodyMediaInfoList) SetCustomFields(v string) *SearchMediaResponseBodyMediaInfoList {
-	s.CustomFields = &v
-	return s
 }
 
 func (s *SearchMediaResponseBodyMediaInfoList) SetFileInfoList(v []*SearchMediaResponseBodyMediaInfoListFileInfoList) *SearchMediaResponseBodyMediaInfoList {
@@ -716,7 +703,6 @@ func (s *SearchMediaResponseBodyMediaInfoListMediaBasicInfo) Validate() error {
 
 type SearchMediaResponseBodyMediaInfoListMediaDynamicInfo struct {
 	DynamicMetaData *SearchMediaResponseBodyMediaInfoListMediaDynamicInfoDynamicMetaData `json:"DynamicMetaData,omitempty" xml:"DynamicMetaData,omitempty" type:"Struct"`
-	MediaExtraInfo  *SearchMediaResponseBodyMediaInfoListMediaDynamicInfoMediaExtraInfo  `json:"MediaExtraInfo,omitempty" xml:"MediaExtraInfo,omitempty" type:"Struct"`
 }
 
 func (s SearchMediaResponseBodyMediaInfoListMediaDynamicInfo) String() string {
@@ -731,28 +717,14 @@ func (s *SearchMediaResponseBodyMediaInfoListMediaDynamicInfo) GetDynamicMetaDat
 	return s.DynamicMetaData
 }
 
-func (s *SearchMediaResponseBodyMediaInfoListMediaDynamicInfo) GetMediaExtraInfo() *SearchMediaResponseBodyMediaInfoListMediaDynamicInfoMediaExtraInfo {
-	return s.MediaExtraInfo
-}
-
 func (s *SearchMediaResponseBodyMediaInfoListMediaDynamicInfo) SetDynamicMetaData(v *SearchMediaResponseBodyMediaInfoListMediaDynamicInfoDynamicMetaData) *SearchMediaResponseBodyMediaInfoListMediaDynamicInfo {
 	s.DynamicMetaData = v
-	return s
-}
-
-func (s *SearchMediaResponseBodyMediaInfoListMediaDynamicInfo) SetMediaExtraInfo(v *SearchMediaResponseBodyMediaInfoListMediaDynamicInfoMediaExtraInfo) *SearchMediaResponseBodyMediaInfoListMediaDynamicInfo {
-	s.MediaExtraInfo = v
 	return s
 }
 
 func (s *SearchMediaResponseBodyMediaInfoListMediaDynamicInfo) Validate() error {
 	if s.DynamicMetaData != nil {
 		if err := s.DynamicMetaData.Validate(); err != nil {
-			return err
-		}
-	}
-	if s.MediaExtraInfo != nil {
-		if err := s.MediaExtraInfo.Validate(); err != nil {
 			return err
 		}
 	}
@@ -768,10 +740,6 @@ type SearchMediaResponseBodyMediaInfoListMediaDynamicInfoDynamicMetaData struct 
 	//
 	// BaseMedia
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// example:
-	//
-	// system
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s SearchMediaResponseBodyMediaInfoListMediaDynamicInfoDynamicMetaData) String() string {
@@ -790,10 +758,6 @@ func (s *SearchMediaResponseBodyMediaInfoListMediaDynamicInfoDynamicMetaData) Ge
 	return s.EntityId
 }
 
-func (s *SearchMediaResponseBodyMediaInfoListMediaDynamicInfoDynamicMetaData) GetType() *string {
-	return s.Type
-}
-
 func (s *SearchMediaResponseBodyMediaInfoListMediaDynamicInfoDynamicMetaData) SetData(v string) *SearchMediaResponseBodyMediaInfoListMediaDynamicInfoDynamicMetaData {
 	s.Data = &v
 	return s
@@ -804,117 +768,6 @@ func (s *SearchMediaResponseBodyMediaInfoListMediaDynamicInfoDynamicMetaData) Se
 	return s
 }
 
-func (s *SearchMediaResponseBodyMediaInfoListMediaDynamicInfoDynamicMetaData) SetType(v string) *SearchMediaResponseBodyMediaInfoListMediaDynamicInfoDynamicMetaData {
-	s.Type = &v
-	return s
-}
-
 func (s *SearchMediaResponseBodyMediaInfoListMediaDynamicInfoDynamicMetaData) Validate() error {
-	return dara.Validate(s)
-}
-
-type SearchMediaResponseBodyMediaInfoListMediaDynamicInfoMediaExtraInfo struct {
-	// example:
-	//
-	// ***cd4754a89b6****
-	AiAuditJobId *string `json:"AiAuditJobId,omitempty" xml:"AiAuditJobId,omitempty"`
-	// example:
-	//
-	// normal
-	AiAuditLabel *string `json:"AiAuditLabel,omitempty" xml:"AiAuditLabel,omitempty"`
-	// example:
-	//
-	// Passed
-	AiAuditResult *string `json:"AiAuditResult,omitempty" xml:"AiAuditResult,omitempty"`
-	// example:
-	//
-	// Success
-	AiAuditStatus *string `json:"AiAuditStatus,omitempty" xml:"AiAuditStatus,omitempty"`
-	// example:
-	//
-	// ****aed4739c394b38c***
-	AiAuditTemplate *string `json:"AiAuditTemplate,omitempty" xml:"AiAuditTemplate,omitempty"`
-	// example:
-	//
-	// Init
-	ManualAuditResult *string `json:"ManualAuditResult,omitempty" xml:"ManualAuditResult,omitempty"`
-	// example:
-	//
-	// Init
-	ManualAuditStatus *string `json:"ManualAuditStatus,omitempty" xml:"ManualAuditStatus,omitempty"`
-}
-
-func (s SearchMediaResponseBodyMediaInfoListMediaDynamicInfoMediaExtraInfo) String() string {
-	return dara.Prettify(s)
-}
-
-func (s SearchMediaResponseBodyMediaInfoListMediaDynamicInfoMediaExtraInfo) GoString() string {
-	return s.String()
-}
-
-func (s *SearchMediaResponseBodyMediaInfoListMediaDynamicInfoMediaExtraInfo) GetAiAuditJobId() *string {
-	return s.AiAuditJobId
-}
-
-func (s *SearchMediaResponseBodyMediaInfoListMediaDynamicInfoMediaExtraInfo) GetAiAuditLabel() *string {
-	return s.AiAuditLabel
-}
-
-func (s *SearchMediaResponseBodyMediaInfoListMediaDynamicInfoMediaExtraInfo) GetAiAuditResult() *string {
-	return s.AiAuditResult
-}
-
-func (s *SearchMediaResponseBodyMediaInfoListMediaDynamicInfoMediaExtraInfo) GetAiAuditStatus() *string {
-	return s.AiAuditStatus
-}
-
-func (s *SearchMediaResponseBodyMediaInfoListMediaDynamicInfoMediaExtraInfo) GetAiAuditTemplate() *string {
-	return s.AiAuditTemplate
-}
-
-func (s *SearchMediaResponseBodyMediaInfoListMediaDynamicInfoMediaExtraInfo) GetManualAuditResult() *string {
-	return s.ManualAuditResult
-}
-
-func (s *SearchMediaResponseBodyMediaInfoListMediaDynamicInfoMediaExtraInfo) GetManualAuditStatus() *string {
-	return s.ManualAuditStatus
-}
-
-func (s *SearchMediaResponseBodyMediaInfoListMediaDynamicInfoMediaExtraInfo) SetAiAuditJobId(v string) *SearchMediaResponseBodyMediaInfoListMediaDynamicInfoMediaExtraInfo {
-	s.AiAuditJobId = &v
-	return s
-}
-
-func (s *SearchMediaResponseBodyMediaInfoListMediaDynamicInfoMediaExtraInfo) SetAiAuditLabel(v string) *SearchMediaResponseBodyMediaInfoListMediaDynamicInfoMediaExtraInfo {
-	s.AiAuditLabel = &v
-	return s
-}
-
-func (s *SearchMediaResponseBodyMediaInfoListMediaDynamicInfoMediaExtraInfo) SetAiAuditResult(v string) *SearchMediaResponseBodyMediaInfoListMediaDynamicInfoMediaExtraInfo {
-	s.AiAuditResult = &v
-	return s
-}
-
-func (s *SearchMediaResponseBodyMediaInfoListMediaDynamicInfoMediaExtraInfo) SetAiAuditStatus(v string) *SearchMediaResponseBodyMediaInfoListMediaDynamicInfoMediaExtraInfo {
-	s.AiAuditStatus = &v
-	return s
-}
-
-func (s *SearchMediaResponseBodyMediaInfoListMediaDynamicInfoMediaExtraInfo) SetAiAuditTemplate(v string) *SearchMediaResponseBodyMediaInfoListMediaDynamicInfoMediaExtraInfo {
-	s.AiAuditTemplate = &v
-	return s
-}
-
-func (s *SearchMediaResponseBodyMediaInfoListMediaDynamicInfoMediaExtraInfo) SetManualAuditResult(v string) *SearchMediaResponseBodyMediaInfoListMediaDynamicInfoMediaExtraInfo {
-	s.ManualAuditResult = &v
-	return s
-}
-
-func (s *SearchMediaResponseBodyMediaInfoListMediaDynamicInfoMediaExtraInfo) SetManualAuditStatus(v string) *SearchMediaResponseBodyMediaInfoListMediaDynamicInfoMediaExtraInfo {
-	s.ManualAuditStatus = &v
-	return s
-}
-
-func (s *SearchMediaResponseBodyMediaInfoListMediaDynamicInfoMediaExtraInfo) Validate() error {
 	return dara.Validate(s)
 }

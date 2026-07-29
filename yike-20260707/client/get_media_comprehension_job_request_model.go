@@ -14,6 +14,9 @@ type iGetMediaComprehensionJobRequest interface {
 }
 
 type GetMediaComprehensionJobRequest struct {
+	// example:
+	//
+	// 68ca759e798b40b4903b255*******
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 

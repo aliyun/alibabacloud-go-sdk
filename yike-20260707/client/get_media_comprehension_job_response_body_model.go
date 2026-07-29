@@ -17,7 +17,10 @@ type iGetMediaComprehensionJobResponseBody interface {
 
 type GetMediaComprehensionJobResponseBody struct {
 	MediaComprehensionJob *GetMediaComprehensionJobResponseBodyMediaComprehensionJob `json:"MediaComprehensionJob,omitempty" xml:"MediaComprehensionJob,omitempty" type:"Struct"`
-	RequestId             *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// ******3B-0E1A-586A-AC29-742247******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetMediaComprehensionJobResponseBody) String() string {
@@ -56,13 +59,34 @@ func (s *GetMediaComprehensionJobResponseBody) Validate() error {
 }
 
 type GetMediaComprehensionJobResponseBodyMediaComprehensionJob struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// The specified product does not exist.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	MediaId      *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	Result       *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	State        *string `json:"State,omitempty" xml:"State,omitempty"`
-	UserData     *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// example:
+	//
+	// ******afaa6f37457******
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// ******307e9971f1******
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// example:
+	//
+	// "{\\"source_video_url\\":\\"http://xxx.mp4\\",\\"narrative_overview\\":{******}}"
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// Executing
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// {"NotifyAddress": "http://xxx.callback.url"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s GetMediaComprehensionJobResponseBodyMediaComprehensionJob) String() string {

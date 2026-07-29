@@ -13,8 +13,8 @@ type iListAssetCategoriesResponseBody interface {
 	GetCategories() []*ListAssetCategoriesResponseBodyCategories
 	SetRequestId(v string) *ListAssetCategoriesResponseBody
 	GetRequestId() *string
-	SetTotal(v string) *ListAssetCategoriesResponseBody
-	GetTotal() *string
+	SetTotal(v int64) *ListAssetCategoriesResponseBody
+	GetTotal() *int64
 }
 
 type ListAssetCategoriesResponseBody struct {
@@ -26,7 +26,7 @@ type ListAssetCategoriesResponseBody struct {
 	// example:
 	//
 	// 50
-	Total *string `json:"Total,omitempty" xml:"Total,omitempty"`
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListAssetCategoriesResponseBody) String() string {
@@ -45,7 +45,7 @@ func (s *ListAssetCategoriesResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
-func (s *ListAssetCategoriesResponseBody) GetTotal() *string {
+func (s *ListAssetCategoriesResponseBody) GetTotal() *int64 {
 	return s.Total
 }
 
@@ -59,7 +59,7 @@ func (s *ListAssetCategoriesResponseBody) SetRequestId(v string) *ListAssetCateg
 	return s
 }
 
-func (s *ListAssetCategoriesResponseBody) SetTotal(v string) *ListAssetCategoriesResponseBody {
+func (s *ListAssetCategoriesResponseBody) SetTotal(v int64) *ListAssetCategoriesResponseBody {
 	s.Total = &v
 	return s
 }

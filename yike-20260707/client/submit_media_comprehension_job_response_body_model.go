@@ -18,8 +18,17 @@ type iSubmitMediaComprehensionJobResponseBody interface {
 }
 
 type SubmitMediaComprehensionJobResponseBody struct {
+	// example:
+	//
+	// ""
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// 68ca759e798b40b4903b255********
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
