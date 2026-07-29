@@ -1531,6 +1531,77 @@ func (client *Client) CreateServiceRecordWithContext(ctx context.Context, worksp
 
 // Summary:
 //
+// Creates a ServiceTask (heap dump or LiveDebug diagnostic task) for a specified application.
+//
+// Description:
+//
+// Creates a service task for an application in a specified workspace.
+//
+// Common use cases:
+//
+// - heapdump: Triggers a JVM heap dump.
+//
+// - LiveDebug Probe: Dynamically instruments a target method (log, snapshot, metric, span, etc.).
+//
+// - LiveDebug Command: Performs a one-time active inspection (OGNL, decompilation, thread/memory information, etc.).
+//
+// - LiveDebug Code Replace: Performs hot code replacement.
+//
+// After successful creation, a taskId is returned. You can manage the task by using GetServiceTask, ListServiceTask, or DeleteServiceTask. After a LiveDebug task is created, the configuration is synchronously delivered to ConfigServer.
+//
+// @param request - CreateServiceTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateServiceTaskResponse
+func (client *Client) CreateServiceTaskWithContext(ctx context.Context, workspace *string, serviceId *string, request *CreateServiceTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateServiceTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Ip) {
+		body["ip"] = request.Ip
+	}
+
+	if !dara.IsNil(request.TaskConfig) {
+		body["taskConfig"] = request.TaskConfig
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateServiceTask"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/serviceTask/" + dara.PercentEncode(dara.StringValue(workspace)) + "/" + dara.PercentEncode(dara.StringValue(serviceId)) + "/task"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateServiceTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // To share a console page or embed it into a third-party system without requiring a password, you can call the CreateTicket operation to generate a ticket. You can then use the ticket to create a password-free link.
 //
 // @param request - CreateTicketRequest
@@ -2650,6 +2721,61 @@ func (client *Client) DeleteServiceRecordWithContext(ctx context.Context, worksp
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteServiceRecordResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a specified ServiceTask under a specified application.
+//
+// Description:
+//
+// Deletes a specified service task by taskId.
+//
+// heapdump: Simultaneously deletes the corresponding heap dump record.
+//
+// LiveDebug: After deleting the task record, synchronously updates the live_debug aggregation configuration on ConfigServer.
+//
+// @param request - DeleteServiceTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteServiceTaskResponse
+func (client *Client) DeleteServiceTaskWithContext(ctx context.Context, workspace *string, serviceId *string, taskId *string, request *DeleteServiceTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteServiceTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Type) {
+		query["type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteServiceTask"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/serviceTask/" + dara.PercentEncode(dara.StringValue(workspace)) + "/" + dara.PercentEncode(dara.StringValue(serviceId)) + "/task/" + dara.PercentEncode(dara.StringValue(taskId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteServiceTaskResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4539,6 +4665,59 @@ func (client *Client) GetServiceRecordWithContext(ctx context.Context, workspace
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetServiceRecordResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询ServiceTask
+//
+// Description:
+//
+// 根据 taskId 查询单个服务任务详情。
+//
+// 返回内容随 type 变化：heapdump 返回堆转储任务信息；LiveDebug 返回任务记录及 taskConfig（extraInfo）等字段。
+//
+// @param request - GetServiceTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetServiceTaskResponse
+func (client *Client) GetServiceTaskWithContext(ctx context.Context, workspace *string, serviceId *string, taskId *string, request *GetServiceTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetServiceTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Type) {
+		query["type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetServiceTask"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/serviceTask/" + dara.PercentEncode(dara.StringValue(workspace)) + "/" + dara.PercentEncode(dara.StringValue(serviceId)) + "/task/" + dara.PercentEncode(dara.StringValue(taskId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetServiceTaskResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6630,6 +6809,77 @@ func (client *Client) ListServiceRecordsWithContext(ctx context.Context, workspa
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListServiceRecordsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列举ServiceTask
+//
+// Description:
+//
+// 按任务类型列举应用下的服务任务。
+//
+// - type=heapdump：返回堆转储任务列表
+//
+// - type=pprof：返回 pprof dump 列表（需配合 searchCondition）
+//
+// - type=live_debug_*：返回对应 LiveDebug 任务列表
+//
+// 支持 nextToken / maxResults 分页，以及 searchCondition 过滤。
+//
+// @param request - ListServiceTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListServiceTaskResponse
+func (client *Client) ListServiceTaskWithContext(ctx context.Context, workspace *string, serviceId *string, request *ListServiceTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListServiceTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.SearchCondition) {
+		query["searchCondition"] = request.SearchCondition
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListServiceTask"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/serviceTask/" + dara.PercentEncode(dara.StringValue(workspace)) + "/" + dara.PercentEncode(dara.StringValue(serviceId)) + "/tasks"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListServiceTaskResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
