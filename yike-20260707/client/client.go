@@ -1206,8 +1206,16 @@ func (client *Client) SubmitMediaComprehensionJobWithOptions(request *SubmitMedi
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Input) {
+		query["Input"] = request.Input
+	}
+
 	if !dara.IsNil(request.JobParams) {
 		query["JobParams"] = request.JobParams
+	}
+
+	if !dara.IsNil(request.JobType) {
+		query["JobType"] = request.JobType
 	}
 
 	if !dara.IsNil(request.UserData) {
