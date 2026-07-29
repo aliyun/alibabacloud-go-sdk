@@ -123,7 +123,7 @@ type DescribeSnapshotsResponseBodySnapshots struct {
 	//
 	// example:
 	//
-	// Data Disk Backup
+	// Data disk backup
 	RestorePointName *string `json:"RestorePointName,omitempty" xml:"RestorePointName,omitempty"`
 	// The snapshot ID.
 	//

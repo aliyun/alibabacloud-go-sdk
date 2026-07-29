@@ -321,13 +321,13 @@ func (client *Client) DescribeFingerPrintTemplatesWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the details of cloud computers. Currently, only the region corresponding to the Chinese mainland can be queried (excluding: Nanjing-local region-shutting down).
+// Query detailed information about cloud desktops across multiple regions. You can query only regions in the Chinese mainland (excluding Nanjing – Local Region – Shutting Down).
 //
 // Description:
 //
-//	  This API is a centralized domain name. The endpoint is in the China (Shanghai) region. You cannot call this API operation in other regions.
+// - This API uses a centralized domain name with its endpoint in Shanghai. You cannot call this API from other regions.
 //
-//		- The cloud computer status information in this interface has a delay of 1 to 3 seconds from the actual value.
+// - The cloud desktop status returned by this API may be delayed by 1 to 3 seconds.
 //
 // @param request - DescribeGlobalDesktopsRequest
 //
@@ -447,7 +447,7 @@ func (client *Client) DescribeGlobalDesktopsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries office networks.
+// Query the details of an office network.
 //
 // @param request - DescribeOfficeSitesRequest
 //
@@ -619,11 +619,11 @@ func (client *Client) DescribeSnapshotsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries user resources.
+// Queries the list of resources owned by a user.
 //
 // Description:
 //
-// Before you call this operation, verify supported resource and service types in Alibaba Cloud Workspace.
+// Make sure that you are familiar with the resource types and product types of WUYING before you call this operation.
 //
 // @param request - DescribeUserResourcesRequest
 //
@@ -843,7 +843,7 @@ func (client *Client) EncryptPasswordWithContext(ctx context.Context, request *E
 
 // Summary:
 //
-// Retrieves the logon tokens for enterprise drives.
+// Obtain the logon credential for Enterprise File Gateway.
 //
 // @param request - GetCloudDriveServiceMountTokenRequest
 //
@@ -903,11 +903,11 @@ func (client *Client) GetCloudDriveServiceMountTokenWithContext(ctx context.Cont
 
 // Summary:
 //
-// Retrieves the credential that is used to connect to a cloud computer.
+// Obtains a connection ticket for a cloud computer.
 //
 // Description:
 //
-// The first time you call this operation, the system returns a task ID in the `TaskID` parameter. Use the task ID indicated in the `TaskID` parameter to continue calling this operation until the value of the `TaskStatus` parameter becomes `FINISHED` or `FAILED`. When `TaskStatus` becomes `FINISHED`, the value of the `Ticket` parameter is the ticket that is used to connect the client to the cloud computer.
+// The first time you call this operation, it returns a `TaskID`. You can use this `TaskID` to call the operation again until `TaskStatus` changes to `FINISHED` or `FAILED`. If `TaskStatus` is `FINISHED`, the `Ticket` value is the connection ticket that the client uses to connect to the cloud computer.
 //
 // @param request - GetConnectionTicketRequest
 //
@@ -1015,7 +1015,7 @@ func (client *Client) GetConnectionTicketWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Obtains logon credentials.
+// Retrieves logon credentials.
 //
 // @param tmpReq - GetLoginTokenRequest
 //
@@ -1141,58 +1141,6 @@ func (client *Client) GetLoginTokenWithContext(ctx context.Context, tmpReq *GetL
 
 // Summary:
 //
-// Verifies whether the client\\"s logon session is still active.
-//
-// @param request - IsKeepAliveRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return IsKeepAliveResponse
-func (client *Client) IsKeepAliveWithContext(ctx context.Context, request *IsKeepAliveRequest, runtime *dara.RuntimeOptions) (_result *IsKeepAliveResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.ClientId) {
-		query["ClientId"] = request.ClientId
-	}
-
-	if !dara.IsNil(request.OfficeSiteId) {
-		query["OfficeSiteId"] = request.OfficeSiteId
-	}
-
-	if !dara.IsNil(request.RegionId) {
-		query["RegionId"] = request.RegionId
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("IsKeepAlive"),
-		Version:     dara.String("2020-10-02"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("Anonymous"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &IsKeepAliveResponse{}
-	_body, _err := client.DoRPCRequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
 // 查询Agent需要上报的配置信息
 //
 // @param request - QueryEdsAgentReportConfigRequest
@@ -1245,7 +1193,7 @@ func (client *Client) QueryEdsAgentReportConfigWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Restart cloud computers.
+// You can restart one or more cloud desktops.
 //
 // @param request - RebootDesktopsRequest
 //
@@ -1327,6 +1275,14 @@ func (client *Client) RebootDesktopsWithContext(ctx context.Context, request *Re
 	return _result, _err
 }
 
+// Summary:
+//
+// Purge the logon credential.
+//
+// Description:
+//
+// The validity period of a logon credential (LoginToken) is 8 hours. If the end user does not log off from the client within 8 hours, the client must purge the logon credential.
+//
 // @param request - RefreshLoginTokenRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1447,6 +1403,10 @@ func (client *Client) ReportEdsAgentInfoWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// Report session status.
+//
 // @param request - ReportSessionStatusRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2005,11 +1965,11 @@ func (client *Client) StartRecordContentWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Stops cloud computers.
+// Stops one or more cloud computers.
 //
 // Description:
 //
-// The cloud computers that you want to stop must be in the Running state. After you call this operation, the cloud computers enter the Stopped state.
+// You can stop only cloud computers that are in the Running state. After you call this operation, their state changes to Stopped.
 //
 // @param request - StopDesktopsRequest
 //

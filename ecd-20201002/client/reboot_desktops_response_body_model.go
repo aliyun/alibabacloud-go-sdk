@@ -14,7 +14,7 @@ type iRebootDesktopsResponseBody interface {
 }
 
 type RebootDesktopsResponseBody struct {
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//

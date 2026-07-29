@@ -24,34 +24,46 @@ type iReportSessionStatusRequest interface {
 }
 
 type ReportSessionStatusRequest struct {
+	// End user.
+	//
 	// example:
 	//
 	// liming
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// i-bp167fcodoa90ixn****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Duration of the session change.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1642909143781
 	SessionChangeTime *int64 `json:"SessionChangeTime,omitempty" xml:"SessionChangeTime,omitempty"`
+	// Session ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Session status.
+	//
 	// This parameter is required.
 	//
 	// example:

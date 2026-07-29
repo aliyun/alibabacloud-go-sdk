@@ -25,6 +25,10 @@ type iGetLoginTokenResponseBody interface {
 	GetNextStage() *string
 	SetNickName(v string) *GetLoginTokenResponseBody
 	GetNickName() *string
+	SetOfficeSiteId(v string) *GetLoginTokenResponseBody
+	GetOfficeSiteId() *string
+	SetOfficeSiteName(v string) *GetLoginTokenResponseBody
+	GetOfficeSiteName() *string
 	SetPasswordStrategy(v *GetLoginTokenResponseBodyPasswordStrategy) *GetLoginTokenResponseBody
 	GetPasswordStrategy() *GetLoginTokenResponseBodyPasswordStrategy
 	SetPhone(v string) *GetLoginTokenResponseBody
@@ -52,110 +56,112 @@ type iGetLoginTokenResponseBody interface {
 }
 
 type GetLoginTokenResponseBody struct {
-	// The email address of the user. The system returns the email address in the return value of the LoginToken parameter after the user logs on to the client.
+	// The email address of the user. This value is returned with the LoginToken after logon.
 	//
-	// 	- For a convenience user, the return value is the email address specified when the administrator creates the convenience user.
+	// - For a convenience user, the email address specified when the convenience user was created is returned.
 	//
-	// 	- For an AD user, the return value is in the following format: `Username@Name of the AD domain`.
+	// - For an AD user, the value is returned in the format of `username@AD domain name`.
 	//
 	// example:
 	//
 	// alice
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The account of the convenience user or the AD user.
+	// The convenience account username or AD username.
 	//
 	// example:
 	//
 	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// > This is a parameter only for internal use.
+	// > This is an internal field and is not available for public use.
 	//
 	// example:
 	//
 	// edu
 	Industry *string `json:"Industry,omitempty" xml:"Industry,omitempty"`
-	// The token used to keep the user logged on. After the user logs on to the client and select the Keep Logon option, `KeepAliveToken` is returned when you call the operation. If the user does not select the Keep Logon option, null is returned.
+	// The token used to keep the logon session alive. After a successful logon with the keep-alive option enabled, the operation returns a `KeepAliveToken`. If the keep-alive option is not enabled, an empty value is returned.
 	//
 	// example:
 	//
 	// 006YwvYMsesWWsDBZnVB+Wq9AvJDVIqOY3YCktvtb7+KxMb3ClnNlV8+l/knhZYrXUmeP06IzkjF+IgcZ3vZKOyMprDyFHjCy1r27FRE/U7+geWCl8iQ+yF8GaCRHfJEkC2+ROs93HkT4tfHxyY1J8W7O7ZQGUC/cdCvm+cCP6FIy73IUuPuVR6PcKYXIpEZPW
 	KeepAliveToken *string `json:"KeepAliveToken,omitempty" xml:"KeepAliveToken,omitempty"`
-	// The attribute of the convenience user. For an AD user, null is returned.
+	// The property of the convenience user. If the user is an AD user, an empty value is returned.
 	//
 	// example:
 	//
-	// test:sample
+	// test:wuying
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The logon token.
+	// The logon credential.
 	//
 	// example:
 	//
 	// v18101ac6a9e69c66b04a163031680463660b4b216cd758f34b60b9ad6a7c7f7334b83dd8f75eef4209c68f9f1080b****
 	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
-	// The next stage that is expected to enter. For example, an administrator enables MFA in the EDS console. When an end user enters the password, that is, the end user completes the `ADPassword` stage, this parameter returns `MFAVerify`. This indicates that MFA is required.
+	// The expected next stage. For example, if the administrator has enabled MFA authentication in the Elastic Desktop Service console, after the username and password authentication is passed (the `ADPassword` stage), this parameter returns `MFAVerify`, indicating that MFA authentication is required.
 	//
-	// >  For more information about the authentication stages, see the `CurrentStage` parameter.
+	// > For more information about each authentication stage, see the parameter description of the `CurrentStage` request parameter of this operation.
 	//
 	// example:
 	//
 	// MFAVerify
-	NextStage *string `json:"NextStage,omitempty" xml:"NextStage,omitempty"`
-	NickName  *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	// > This is a parameter only for internal use.
+	NextStage      *string `json:"NextStage,omitempty" xml:"NextStage,omitempty"`
+	NickName       *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	OfficeSiteId   *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
+	// > This is an internal field and is not available for public use.
 	PasswordStrategy *GetLoginTokenResponseBodyPasswordStrategy `json:"PasswordStrategy,omitempty" xml:"PasswordStrategy,omitempty" type:"Struct"`
-	// Enter the mobile number of the convenience user. For an AD user, null is returned.
+	// The phone number of the convenience user. If the user is an AD user, an empty value is returned.
 	//
 	// example:
 	//
 	// 1381111****
 	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
-	// > This is a parameter only for internal use.
+	// > This is an internal field and is not available for public use.
 	Props map[string]*string `json:"Props,omitempty" xml:"Props,omitempty"`
-	// The QR code that is generated when the virtual MFA device is bound. The value is encoded in Base64. This parameter can be empty. This parameter is required only when the CurrentStage parameter is set to `MFABind`.
+	// The QR code of the secret key used when attaching a virtual MFA device. The value uses Base64 encoding. This value can be empty and is used in the `MFABind` stage.
 	//
-	// > For more information about each authentication stage, see the parameter description of the request parameter `CurrentStage`.
+	// > For more information about each authentication stage, see the parameter description of the `CurrentStage` request parameter of this operation.
 	//
 	// example:
 	//
 	// 5OCLLKKOJU5HPBX66H3QCTWY******
 	QrCodePng *string `json:"QrCodePng,omitempty" xml:"QrCodePng,omitempty"`
-	// > This is a parameter only for internal use.
+	// > This is an internal field and is not available for public use.
 	//
 	// example:
 	//
 	// null
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Risk identification information regarding the signin process.
+	// The logon risk identification information.
 	RiskVerifyInfo *GetLoginTokenResponseBodyRiskVerifyInfo `json:"RiskVerifyInfo,omitempty" xml:"RiskVerifyInfo,omitempty" type:"Struct"`
-	// The key that is generated when you bind the virtual MFA device. This parameter is required when the CurrentStage parameter is set to `MFABind`.
+	// The secret key used when attaching a virtual MFA device. This value is used in the `MFABind` stage.
 	//
-	// > For more information about each authentication stage, see the parameter description of the request parameter `CurrentStage`.
+	// > For more information about each authentication stage, see the parameter description of the `CurrentStage` request parameter of this operation.
 	//
 	// example:
 	//
 	// 5OCLLKKOJU5HPBX66H3QCTWYI7MH****
 	Secret *string `json:"Secret,omitempty" xml:"Secret,omitempty"`
-	// The ID of the session. The ID is returned the first time you call the `GetLoginToken` operation in the session. If MFA is required, you must specify this parameter in subsequent stages.
+	// The session ID. This value is returned only when `GetLoginToken` is invoked for the first time within the same session. For subsequent stages that require multiple authentications, pass in this parameter.
 	//
-	// > For more information about each authentication stage, see the parameter description of the request parameter `CurrentStage`.
+	// > For more information about each authentication stage, see the parameter description of the `CurrentStage` request parameter of this operation.
 	//
 	// example:
 	//
 	// d6ec166d-ab93-4286-bf7f-a18bb929****
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// The ID of the Alibaba Cloud account. The ID is used for hardware client authentication.
+	// The Alibaba Cloud account ID. This value is used for hardware terminal identification.
 	//
 	// example:
 	//
 	// 166353906220****
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// > This is a parameter only for internal use.
+	// > This is an internal field and is not available for public use.
 	//
 	// example:
 	//
@@ -202,6 +208,14 @@ func (s *GetLoginTokenResponseBody) GetNextStage() *string {
 
 func (s *GetLoginTokenResponseBody) GetNickName() *string {
 	return s.NickName
+}
+
+func (s *GetLoginTokenResponseBody) GetOfficeSiteId() *string {
+	return s.OfficeSiteId
+}
+
+func (s *GetLoginTokenResponseBody) GetOfficeSiteName() *string {
+	return s.OfficeSiteName
 }
 
 func (s *GetLoginTokenResponseBody) GetPasswordStrategy() *GetLoginTokenResponseBodyPasswordStrategy {
@@ -292,6 +306,16 @@ func (s *GetLoginTokenResponseBody) SetNickName(v string) *GetLoginTokenResponse
 	return s
 }
 
+func (s *GetLoginTokenResponseBody) SetOfficeSiteId(v string) *GetLoginTokenResponseBody {
+	s.OfficeSiteId = &v
+	return s
+}
+
+func (s *GetLoginTokenResponseBody) SetOfficeSiteName(v string) *GetLoginTokenResponseBody {
+	s.OfficeSiteName = &v
+	return s
+}
+
 func (s *GetLoginTokenResponseBody) SetPasswordStrategy(v *GetLoginTokenResponseBodyPasswordStrategy) *GetLoginTokenResponseBody {
 	s.PasswordStrategy = v
 	return s
@@ -367,9 +391,9 @@ func (s *GetLoginTokenResponseBody) Validate() error {
 }
 
 type GetLoginTokenResponseBodyPasswordStrategy struct {
-	// > This is a parameter only for internal use.
+	// > This is an internal field and is not available for public use.
 	TenantAlternativeChars []*string `json:"TenantAlternativeChars,omitempty" xml:"TenantAlternativeChars,omitempty" type:"Repeated"`
-	// > This is a parameter only for internal use.
+	// > This is an internal field and is not available for public use.
 	//
 	// example:
 	//
@@ -408,29 +432,29 @@ func (s *GetLoginTokenResponseBodyPasswordStrategy) Validate() error {
 }
 
 type GetLoginTokenResponseBodyRiskVerifyInfo struct {
-	// The email used for authentication.
+	// The email address used for identity verification when risk verification is triggered.
 	//
 	// example:
 	//
 	// user@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The duration of the lock.
+	// The account lockout duration.
 	//
 	// example:
 	//
 	// 1713749778
 	LastLockDuration *int64 `json:"LastLockDuration,omitempty" xml:"LastLockDuration,omitempty"`
-	// Whether the account is locked or not.
+	// Indicates whether the account is locked.
 	//
 	// example:
 	//
 	// true
 	Locked *string `json:"Locked,omitempty" xml:"Locked,omitempty"`
-	// The mobile number used for authentication.
+	// The phone number used for identity verification when risk verification is triggered.
 	//
 	// example:
 	//
-	// 1388888****
+	// 1381111****
 	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
 }
 

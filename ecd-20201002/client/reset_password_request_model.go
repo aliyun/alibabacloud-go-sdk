@@ -52,7 +52,7 @@ type ResetPasswordRequest struct {
 	//
 	// example:
 	//
-	// liming
+	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	// The office network ID.
 	//
@@ -74,7 +74,7 @@ type ResetPasswordRequest struct {
 	//
 	// example:
 	//
-	// 1827912****
+	// 138****1111
 	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
 }
 

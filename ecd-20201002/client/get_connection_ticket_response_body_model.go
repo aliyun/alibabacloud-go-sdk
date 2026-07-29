@@ -30,29 +30,59 @@ type iGetConnectionTicketResponseBody interface {
 type GetConnectionTicketResponseBody struct {
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
 	P2PToken  *string `json:"P2PToken,omitempty" xml:"P2PToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ticket used to connect to the user instance. Before you use the ticket, decode its content from Base64, save it as an .ica file, and then open the file. The following code provides a Python example:
+	//
+	// ```
+	//
+	// import base64
+	//
+	// response = {
+	//
+	//     "Ticket": "W0VuY29kaW5nXQ0KSW5wdXRFbmNvZGluZz1V********",
+	//
+	//     "RequestId": "1CBAFFAB-B697-4049-A9B1-67E1FC5F****",
+	//
+	// }
+	//
+	// f = open (\\"xxx.ica\\", \\"w\\")
+	//
+	// out = base64.b64decode(response[\\"Ticket\\"])
+	//
+	// f.write(out)
+	//
+	// f.close()
+	//
+	// ```
+	//
 	// example:
 	//
 	// W0VuY29kaW5nXQ0KSW5wdXRFbmNvZGluZz1V********
 	TaskCode *string `json:"TaskCode,omitempty" xml:"TaskCode,omitempty"`
-	// The ID of the task to connect to the cloud computer.
+	// The ID of the cloud computer connection task.
 	//
 	// example:
 	//
 	// 2afbad19-778a-4fc5-9674-1f19c63862da
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the cloud computer connection task.
+	//
 	// example:
 	//
 	// 2afbad19-778a-4fc5-9674-1f19c638****
 	TaskMessage *string `json:"TaskMessage,omitempty" xml:"TaskMessage,omitempty"`
+	// The task status.
+	//
 	// example:
 	//
 	// FINISHED
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// The credentials for connecting to the cloud computer.
+	// The connection ticket for the cloud computer.
 	//
 	// example:
 	//

@@ -16,6 +16,8 @@ type iGetCloudDriveServiceMountTokenResponseBody interface {
 }
 
 type GetCloudDriveServiceMountTokenResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// DC27288A-F9E1-5092-9B5B-71C27D15****
@@ -60,14 +62,20 @@ func (s *GetCloudDriveServiceMountTokenResponseBody) Validate() error {
 }
 
 type GetCloudDriveServiceMountTokenResponseBodyToken struct {
+	// Enterprise File Gateway domain name.
+	//
 	// example:
 	//
 	// h****
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	// Expiration Time.
+	//
 	// example:
 	//
 	// 2022-10-10T04:41:35Z
 	ExpiredAfter *string `json:"ExpiredAfter,omitempty" xml:"ExpiredAfter,omitempty"`
+	// Current status of the Enterprise File Gateway user.
+	//
 	// example:
 	//
 	// enabled
@@ -84,6 +92,8 @@ type GetCloudDriveServiceMountTokenResponseBodyToken struct {
 	//
 	// 6050416754750
 	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	// Used capacity. Unit: GiB.
+	//
 	// example:
 	//
 	// 605089

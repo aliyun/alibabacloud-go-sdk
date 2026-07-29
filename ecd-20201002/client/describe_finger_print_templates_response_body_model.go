@@ -88,7 +88,7 @@ type DescribeFingerPrintTemplatesResponseBodyFingerPrintTemplates struct {
 	//
 	// example:
 	//
-	// liming
+	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	// The index.
 	//

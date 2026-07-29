@@ -42,7 +42,7 @@ type ChangePasswordRequest struct {
 	//
 	// example:
 	//
-	// liming
+	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	// The logon token.
 	//

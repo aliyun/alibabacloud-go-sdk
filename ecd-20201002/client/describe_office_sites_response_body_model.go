@@ -18,6 +18,8 @@ type iDescribeOfficeSitesResponseBody interface {
 type DescribeOfficeSitesResponseBody struct {
 	// The office networks.
 	OfficeSites []*DescribeOfficeSitesResponseBodyOfficeSites `json:"OfficeSites,omitempty" xml:"OfficeSites,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
@@ -76,26 +78,40 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	//
 	// ENTERPRISE
 	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// The allowed connection types for accessing the office network.
+	//
+	// > The VPC connection type depends on the Alibaba Cloud PrivateLink service, which incurs no fee. When this parameter is set to VPC or Any, the system automatically enables the PrivateLink service for you.
+	//
 	// example:
 	//
 	// VPC
 	DesktopAccessType *string `json:"DesktopAccessType,omitempty" xml:"DesktopAccessType,omitempty"`
+	// The endpoint used when connecting to cloud desktops through a VPC.
+	//
 	// example:
 	//
 	// http://ep-bp1s2vmbj55r5rzc****.epsrv-bp1pcfhpwvlpny01****.cn-hangzhou.privatelink.aliyuncs.com
 	DesktopVpcEndpoint *string `json:"DesktopVpcEndpoint,omitempty" xml:"DesktopVpcEndpoint,omitempty"`
+	// Office network ID.
+	//
 	// example:
 	//
 	// cn-hangzhou+dir-363353****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// The type of account system used by the office network.
+	//
 	// example:
 	//
 	// SIMPLE
 	OfficeSiteType *string `json:"OfficeSiteType,omitempty" xml:"OfficeSiteType,omitempty"`
+	// User Account BID.
+	//
 	// example:
 	//
 	// 268****
 	ProviderId *string `json:"ProviderId,omitempty" xml:"ProviderId,omitempty"`
+	// SSO connection.
+	//
 	// example:
 	//
 	// https://eds-cn-shanghai-67****

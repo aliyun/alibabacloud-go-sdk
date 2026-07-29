@@ -9,6 +9,8 @@ type iDescribeUserResourcesResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAgentBriefSummary(v *DescribeUserResourcesResponseBodyAgentBriefSummary) *DescribeUserResourcesResponseBody
+	GetAgentBriefSummary() *DescribeUserResourcesResponseBodyAgentBriefSummary
 	SetMaxResults(v int32) *DescribeUserResourcesResponseBody
 	GetMaxResults() *int32
 	SetNextToken(v string) *DescribeUserResourcesResponseBody
@@ -26,21 +28,22 @@ type iDescribeUserResourcesResponseBody interface {
 }
 
 type DescribeUserResourcesResponseBody struct {
-	// 返回最大数量。
+	AgentBriefSummary *DescribeUserResourcesResponseBodyAgentBriefSummary `json:"AgentBriefSummary,omitempty" xml:"AgentBriefSummary,omitempty" type:"Struct"`
+	// The maximum number of results returned.
 	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	// The token used to start the next query. An empty NextToken indicates that there is no next page.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6nmB7qrRFJ8vmttjxPL****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The resource types that failed to be queried.
+	// The list of resource types that failed to be queried.
 	QueryFailedResourceTypes []*string `json:"QueryFailedResourceTypes,omitempty" xml:"QueryFailedResourceTypes,omitempty" type:"Repeated"`
-	// The version number of the ranking data.
+	// The ranking data version number.
 	//
 	// example:
 	//
@@ -52,9 +55,9 @@ type DescribeUserResourcesResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resources.
+	// The list of resource details.
 	Resources []*DescribeUserResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
-	// 总数。
+	// The total count.
 	//
 	// example:
 	//
@@ -68,6 +71,10 @@ func (s DescribeUserResourcesResponseBody) String() string {
 
 func (s DescribeUserResourcesResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeUserResourcesResponseBody) GetAgentBriefSummary() *DescribeUserResourcesResponseBodyAgentBriefSummary {
+	return s.AgentBriefSummary
 }
 
 func (s *DescribeUserResourcesResponseBody) GetMaxResults() *int32 {
@@ -96,6 +103,11 @@ func (s *DescribeUserResourcesResponseBody) GetResources() []*DescribeUserResour
 
 func (s *DescribeUserResourcesResponseBody) GetTotalCount() *int32 {
 	return s.TotalCount
+}
+
+func (s *DescribeUserResourcesResponseBody) SetAgentBriefSummary(v *DescribeUserResourcesResponseBodyAgentBriefSummary) *DescribeUserResourcesResponseBody {
+	s.AgentBriefSummary = v
+	return s
 }
 
 func (s *DescribeUserResourcesResponseBody) SetMaxResults(v int32) *DescribeUserResourcesResponseBody {
@@ -134,6 +146,11 @@ func (s *DescribeUserResourcesResponseBody) SetTotalCount(v int32) *DescribeUser
 }
 
 func (s *DescribeUserResourcesResponseBody) Validate() error {
+	if s.AgentBriefSummary != nil {
+		if err := s.AgentBriefSummary.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Resources != nil {
 		for _, item := range s.Resources {
 			if item != nil {
@@ -146,66 +163,220 @@ func (s *DescribeUserResourcesResponseBody) Validate() error {
 	return nil
 }
 
+type DescribeUserResourcesResponseBodyAgentBriefSummary struct {
+	AgentBriefs []*DescribeUserResourcesResponseBodyAgentBriefSummaryAgentBriefs `json:"AgentBriefs,omitempty" xml:"AgentBriefs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeUserResourcesResponseBodyAgentBriefSummary) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeUserResourcesResponseBodyAgentBriefSummary) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserResourcesResponseBodyAgentBriefSummary) GetAgentBriefs() []*DescribeUserResourcesResponseBodyAgentBriefSummaryAgentBriefs {
+	return s.AgentBriefs
+}
+
+func (s *DescribeUserResourcesResponseBodyAgentBriefSummary) GetTotalCount() *int32 {
+	return s.TotalCount
+}
+
+func (s *DescribeUserResourcesResponseBodyAgentBriefSummary) SetAgentBriefs(v []*DescribeUserResourcesResponseBodyAgentBriefSummaryAgentBriefs) *DescribeUserResourcesResponseBodyAgentBriefSummary {
+	s.AgentBriefs = v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyAgentBriefSummary) SetTotalCount(v int32) *DescribeUserResourcesResponseBodyAgentBriefSummary {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyAgentBriefSummary) Validate() error {
+	if s.AgentBriefs != nil {
+		for _, item := range s.AgentBriefs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeUserResourcesResponseBodyAgentBriefSummaryAgentBriefs struct {
+	// example:
+	//
+	// ENTERPRISE_JVS
+	AgentPlatform *string `json:"AgentPlatform,omitempty" xml:"AgentPlatform,omitempty"`
+	// example:
+	//
+	// OpenClaw
+	AgentProvider *string `json:"AgentProvider,omitempty" xml:"AgentProvider,omitempty"`
+	// example:
+	//
+	// https://xxx.png
+	AvatarNoResourceUrl *string `json:"AvatarNoResourceUrl,omitempty" xml:"AvatarNoResourceUrl,omitempty"`
+	// example:
+	//
+	// https://abc.com/efg.png
+	AvatarUrl *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
+	// example:
+	//
+	// 2
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// JVS Claw
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// Intelligent Evolution, Happy Shrimp Farming.
+	SubTitle *string `json:"SubTitle,omitempty" xml:"SubTitle,omitempty"`
+	// example:
+	//
+	// https://test.png
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s DescribeUserResourcesResponseBodyAgentBriefSummaryAgentBriefs) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeUserResourcesResponseBodyAgentBriefSummaryAgentBriefs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserResourcesResponseBodyAgentBriefSummaryAgentBriefs) GetAgentPlatform() *string {
+	return s.AgentPlatform
+}
+
+func (s *DescribeUserResourcesResponseBodyAgentBriefSummaryAgentBriefs) GetAgentProvider() *string {
+	return s.AgentProvider
+}
+
+func (s *DescribeUserResourcesResponseBodyAgentBriefSummaryAgentBriefs) GetAvatarNoResourceUrl() *string {
+	return s.AvatarNoResourceUrl
+}
+
+func (s *DescribeUserResourcesResponseBodyAgentBriefSummaryAgentBriefs) GetAvatarUrl() *string {
+	return s.AvatarUrl
+}
+
+func (s *DescribeUserResourcesResponseBodyAgentBriefSummaryAgentBriefs) GetCount() *int32 {
+	return s.Count
+}
+
+func (s *DescribeUserResourcesResponseBodyAgentBriefSummaryAgentBriefs) GetDisplayName() *string {
+	return s.DisplayName
+}
+
+func (s *DescribeUserResourcesResponseBodyAgentBriefSummaryAgentBriefs) GetSubTitle() *string {
+	return s.SubTitle
+}
+
+func (s *DescribeUserResourcesResponseBodyAgentBriefSummaryAgentBriefs) GetUrl() *string {
+	return s.Url
+}
+
+func (s *DescribeUserResourcesResponseBodyAgentBriefSummaryAgentBriefs) SetAgentPlatform(v string) *DescribeUserResourcesResponseBodyAgentBriefSummaryAgentBriefs {
+	s.AgentPlatform = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyAgentBriefSummaryAgentBriefs) SetAgentProvider(v string) *DescribeUserResourcesResponseBodyAgentBriefSummaryAgentBriefs {
+	s.AgentProvider = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyAgentBriefSummaryAgentBriefs) SetAvatarNoResourceUrl(v string) *DescribeUserResourcesResponseBodyAgentBriefSummaryAgentBriefs {
+	s.AvatarNoResourceUrl = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyAgentBriefSummaryAgentBriefs) SetAvatarUrl(v string) *DescribeUserResourcesResponseBodyAgentBriefSummaryAgentBriefs {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyAgentBriefSummaryAgentBriefs) SetCount(v int32) *DescribeUserResourcesResponseBodyAgentBriefSummaryAgentBriefs {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyAgentBriefSummaryAgentBriefs) SetDisplayName(v string) *DescribeUserResourcesResponseBodyAgentBriefSummaryAgentBriefs {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyAgentBriefSummaryAgentBriefs) SetSubTitle(v string) *DescribeUserResourcesResponseBodyAgentBriefSummaryAgentBriefs {
+	s.SubTitle = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyAgentBriefSummaryAgentBriefs) SetUrl(v string) *DescribeUserResourcesResponseBodyAgentBriefSummaryAgentBriefs {
+	s.Url = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyAgentBriefSummaryAgentBriefs) Validate() error {
+	return dara.Validate(s)
+}
+
 type DescribeUserResourcesResponseBodyResources struct {
 	// The access type.
-	//
-	// Valid values:
-	//
-	// 	- INTERNET: access over the Internet.
-	//
-	// 	- VPC: access over an enterprise VPC.
-	//
-	// 	- ANY: access over the Internet or an enterprise VPC.
 	//
 	// example:
 	//
 	// INTERNET
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
-	// The ID of the Alibaba Cloud account.
+	// example:
+	//
+	// https://wuying.aliyun.com/OpenIM/chat?desktopId=ecd-xxxxx
+	AgentImUrl *string `json:"AgentImUrl,omitempty" xml:"AgentImUrl,omitempty"`
+	// The Alibaba Cloud account ID.
 	//
 	// example:
 	//
 	// 194101959****
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The app ID. This parameter is for apps only.
+	// The application ID. This parameter is specific to resources of the App type.
 	//
 	// example:
 	//
 	// app-0001
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The authorization mode of the cloud app.
-	//
-	// Valid values:
-	//
-	// 	- App: authorizes access to apps.
-	//
-	// 	- AppInstanceGroup: authorizes access to delivery groups.
-	//
-	// 	- Session: authorizes access to sessions.
+	// The cloud application authorization mode.
 	//
 	// example:
 	//
 	// App
 	AuthMode *string `json:"AuthMode,omitempty" xml:"AuthMode,omitempty"`
-	// The level-2 resource category. This parameter is for apps only.
+	// The secondary category of the resource. This parameter is specific to resources of the App type.
 	//
 	// example:
 	//
 	// 0
 	CategoryId *int32 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// The level-1 resource category. This parameter is for apps only.
+	// The primary category of the resource. This parameter is specific to resources of the App type.
 	//
 	// example:
 	//
 	// 1
 	CategoryType *int32 `json:"CategoryType,omitempty" xml:"CategoryType,omitempty"`
-	// The drive name. This parameter is for enterprise drives only.
+	// The cloud drive name. This parameter is specific to resources of the CloudDrive type.
 	//
 	// example:
 	//
 	// cn-shanghai+cds-695277****
 	CdsName *string `json:"CdsName,omitempty" xml:"CdsName,omitempty"`
-	// The ID of the centralized resource.
+	// The centralized resource ID.
 	//
 	// example:
 	//
@@ -213,19 +384,13 @@ type DescribeUserResourcesResponseBodyResources struct {
 	CenterResourceId *string `json:"CenterResourceId,omitempty" xml:"CenterResourceId,omitempty"`
 	// The billing method.
 	//
-	// Valid values:
-	//
-	// 	- Postpaid (default): pay-as-you-go.
-	//
-	// 	- PrePaid: subscription.
-	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The client types supported by resources.
+	// The list of client types supported by the resource.
 	Clients []*DescribeUserResourcesResponseBodyResourcesClients `json:"Clients,omitempty" xml:"Clients,omitempty" type:"Repeated"`
-	// The connection attributes in JSON format. The client does not need to process the attributes; they are directly passed to the resource management center when the app resource is created.
+	// The connection properties in JSON string format. The client does not need to parse the content. The value is passed directly to the central resource management service when the application resource establishes a connection.
 	//
 	// example:
 	//
@@ -237,69 +402,67 @@ type DescribeUserResourcesResponseBodyResources struct {
 	//
 	// 2024-12-11T07:12:12Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The cloud computer plans.
+	// The list of cloud desktop package information.
 	DesktopDurationList []*DescribeUserResourcesResponseBodyResourcesDesktopDurationList `json:"DesktopDurationList,omitempty" xml:"DesktopDurationList,omitempty" type:"Repeated"`
-	// The scheduled tasks for cloud computers.
+	// The list of Cloud Desktop scheduled task settings.
 	DesktopTimers []*DescribeUserResourcesResponseBodyResourcesDesktopTimers `json:"DesktopTimers,omitempty" xml:"DesktopTimers,omitempty" type:"Repeated"`
-	// The expiration time of the subscription resource.
+	// The expiration time of subscription resources.
 	//
 	// example:
 	//
 	// 2025-02-22T16:00:00Z
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The ID of the external domain. This parameter is for enterprise drives only.
+	// The external domain ID. This parameter is specific to resources of the CloudDrive type.
 	//
 	// example:
 	//
 	// stg114510
 	ExternalDomainId *string `json:"ExternalDomainId,omitempty" xml:"ExternalDomainId,omitempty"`
-	// The ID of the external user. This parameter is for enterprise drives only.
+	// The external user ID. This parameter is specific to resources of the CloudDrive type.
 	//
 	// example:
 	//
 	// test001
 	ExternalUserId *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
-	// The update info of the cloud computer.
+	// The cloud desktop upgrade information.
 	FotaUpdate *DescribeUserResourcesResponseBodyResourcesFotaUpdate `json:"FotaUpdate,omitempty" xml:"FotaUpdate,omitempty" type:"Struct"`
-	// Indicates whether cross-region access is supported. This parameter is for enterprise drives only.
+	// Indicates whether cross-region access is supported. This parameter is specific to resources of the CloudDrive type.
 	//
 	// example:
 	//
 	// true
 	GlobalStatus *bool `json:"GlobalStatus,omitempty" xml:"GlobalStatus,omitempty"`
-	// Indicates whether an update exists.
+	// Indicates whether an update is available.
 	//
 	// example:
 	//
 	// true
 	HasUpgrade *bool `json:"HasUpgrade,omitempty" xml:"HasUpgrade,omitempty"`
-	// Indicates whether this is a beta version of the hibernation feature.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
+	// Indicates whether the resource is a hibernation beta version.
 	//
 	// example:
 	//
 	// false
 	HibernationBeta *bool `json:"HibernationBeta,omitempty" xml:"HibernationBeta,omitempty"`
-	// The resource icon. This parameter is for apps only.
+	// The resource icon URL. This parameter is specific to resources of the App type.
 	//
 	// example:
 	//
 	// http://example.com/icon.png
 	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	// The time when the resource was last started.
+	// The last time the resource was started.
 	//
 	// example:
 	//
 	// 2025-01-24T03:12:04Z
 	LastStartTime *string `json:"LastStartTime,omitempty" xml:"LastStartTime,omitempty"`
 	// The region name.
+	//
+	// example:
+	//
+	// Singapore.
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The management status.
+	// The list of management statuses.
 	ManagementStatuses []*string `json:"ManagementStatuses,omitempty" xml:"ManagementStatuses,omitempty" type:"Repeated"`
 	// The office network ID.
 	//
@@ -309,55 +472,31 @@ type DescribeUserResourcesResponseBodyResources struct {
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
 	// The order status.
 	//
-	// Valid values:
-	//
-	// 	- Ceased: Your account has an overdue payment.
-	//
-	// 	- Released: The order is closed.
-	//
-	// 	- Expired: The subscription resource has expired.
-	//
-	// 	- Normal: The order is normal.
-	//
 	// example:
 	//
 	// Normal
 	OrderStatus *string `json:"OrderStatus,omitempty" xml:"OrderStatus,omitempty"`
-	// The OS platform.
+	// The operating system platform information.
 	//
 	// example:
 	//
 	// Windows Server 2022
 	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	// The description of the OS platform.
+	// The operating system platform description.
+	//
+	// example:
+	//
+	// Windows Genuine License.
 	OsDescription *string `json:"OsDescription,omitempty" xml:"OsDescription,omitempty"`
-	// The OS type.
-	//
-	// Valid values:
-	//
-	// 	- Linux
-	//
-	// 	- Windows
-	//
-	// 	- Android
+	// The operating system type.
 	//
 	// example:
 	//
 	// Windows
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	// The update info of the OS.
+	// The operating system upgrade information.
 	OsUpdate *DescribeUserResourcesResponseBodyResourcesOsUpdate `json:"OsUpdate,omitempty" xml:"OsUpdate,omitempty" type:"Struct"`
-	// The service type.
-	//
-	// Valid values:
-	//
-	// 	- CloudDesktop: regular cloud computers or cloud computer shares.
-	//
-	// 	- CloudApp: App Streaming
-	//
-	// 	- CloudBrowser: Cloud Browser.
-	//
-	// 	- AndroidCloud: Cloud Phone.
+	// The product type.
 	//
 	// example:
 	//
@@ -365,17 +504,11 @@ type DescribeUserResourcesResponseBodyResources struct {
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The protocol type.
 	//
-	// Valid values:
-	//
-	// 	- HDX
-	//
-	// 	- ASP
-	//
 	// example:
 	//
 	// ASP
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	// The real ID of the cloud computer (from a share). This parameter is returned only when the cloud computer share has ongoing sessions.
+	// The real cloud desktop ID of the shared cloud desktop. This value exists only when the shared cloud desktop has an active session.
 	//
 	// example:
 	//
@@ -387,13 +520,7 @@ type DescribeUserResourcesResponseBodyResources struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The geographical location.
-	//
-	// Valid values:
-	//
-	// 	- Mainland: regions in the Chinese mainland.
-	//
-	// 	- Overseas: regions outside the Chinese mainland, including China (Hong Kong).
+	// The region location.
 	//
 	// example:
 	//
@@ -413,12 +540,6 @@ type DescribeUserResourcesResponseBodyResources struct {
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The resource level.
 	//
-	// Valid values:
-	//
-	// 	- Center: a centralized resource.
-	//
-	// 	- Region: a unit resource.
-	//
 	// example:
 	//
 	// Center
@@ -431,43 +552,11 @@ type DescribeUserResourcesResponseBodyResources struct {
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// The session status.
 	//
-	// Valid values:
-	//
-	// 	- Unknown
-	//
-	// 	- Connected
-	//
-	// 	- Disconnected
-	//
 	// example:
 	//
 	// Connected
 	ResourceSessionStatus *string `json:"ResourceSessionStatus,omitempty" xml:"ResourceSessionStatus,omitempty"`
 	// The resource status.
-	//
-	// Valid values:
-	//
-	// 	- Unknown: The resource status is unknown.
-	//
-	// 	- Stopped: The resource is stopped.
-	//
-	// 	- Failed: The resource failed to be created.
-	//
-	// 	- Starting: The resource is being started.
-	//
-	// 	- Rebuilding: The resource is changing.
-	//
-	// 	- Running: The resource is running.
-	//
-	// 	- Stopping: The resource is being stopped.
-	//
-	// 	- FotaUpdating: The image is being updated.
-	//
-	// 	- Pending: The resource is still being prepared.
-	//
-	// 	- Deleting: The resource is being deleted.
-	//
-	// 	- Unavailable: The resource is unavailable.
 	//
 	// example:
 	//
@@ -475,69 +564,50 @@ type DescribeUserResourcesResponseBodyResources struct {
 	ResourceStatus *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
 	// The resource type.
 	//
-	// Valid values:
-	//
-	// 	- App: cloud apps including App Streaming, Cloud Phone, and Cloud Browser.
-	//
-	// 	- Desktop: cloud computers.
-	//
-	// 	- DesktopGroup: cloud computer shares.
-	//
-	// 	- CloudDrive: enterprise drives.
-	//
 	// example:
 	//
 	// Desktop
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The session type.
 	//
-	// Valid values:
-	//
-	// 	- SINGLE_SESSION
-	//
-	// 	- MULTIPLE_SESSION
-	//
 	// example:
 	//
 	// SINGLE_SESSION
 	SessionType *string `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
-	// The sessions established between users and resources.
+	// The list of resource user session information.
 	Sessions []*DescribeUserResourcesResponseBodyResourcesSessions `json:"Sessions,omitempty" xml:"Sessions,omitempty" type:"Repeated"`
 	// The sub-billing method.
-	//
-	// Valid values:
-	//
-	// 	- monthPackage: monthly subscription.
-	//
-	// 	- PrePaid: hourly plans.
 	//
 	// example:
 	//
 	// PrePaid
-	SubPayType *string `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
+	SubPayType     *string `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
+	SupportAgentIm *bool   `json:"SupportAgentIm,omitempty" xml:"SupportAgentIm,omitempty"`
 	// Indicates whether hibernation is supported.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
 	//
 	// example:
 	//
 	// true
 	SupportHibernation *bool `json:"SupportHibernation,omitempty" xml:"SupportHibernation,omitempty"`
-	// The supported actions. This parameter is returned only for cloud computers or phones.
+	// The list of supported action types. Currently supported only for cloud phones and cloud desktops (including shared cloud desktops).
 	SupportedActions []*string `json:"SupportedActions,omitempty" xml:"SupportedActions,omitempty" type:"Repeated"`
-	// The theme color of the resource. This parameter is for apps only.
+	// The resource theme color. This parameter is specific to resources of the App type.
 	//
 	// example:
 	//
 	// #FFFFFF
 	ThemeColor *string `json:"ThemeColor,omitempty" xml:"ThemeColor,omitempty"`
-	// The custom name of the resource.
+	// The user-defined name.
+	//
+	// example:
+	//
+	// My cloud desktop
 	UserCustomName *string `json:"UserCustomName,omitempty" xml:"UserCustomName,omitempty"`
-	// The resource version. This parameter is for apps only.
+	// The resource version. This parameter is specific to resources of the App type.
+	//
+	// example:
+	//
+	// Resource version.
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -551,6 +621,10 @@ func (s DescribeUserResourcesResponseBodyResources) GoString() string {
 
 func (s *DescribeUserResourcesResponseBodyResources) GetAccessType() *string {
 	return s.AccessType
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) GetAgentImUrl() *string {
+	return s.AgentImUrl
 }
 
 func (s *DescribeUserResourcesResponseBodyResources) GetAliUid() *int64 {
@@ -733,6 +807,10 @@ func (s *DescribeUserResourcesResponseBodyResources) GetSubPayType() *string {
 	return s.SubPayType
 }
 
+func (s *DescribeUserResourcesResponseBodyResources) GetSupportAgentIm() *bool {
+	return s.SupportAgentIm
+}
+
 func (s *DescribeUserResourcesResponseBodyResources) GetSupportHibernation() *bool {
 	return s.SupportHibernation
 }
@@ -755,6 +833,11 @@ func (s *DescribeUserResourcesResponseBodyResources) GetVersion() *string {
 
 func (s *DescribeUserResourcesResponseBodyResources) SetAccessType(v string) *DescribeUserResourcesResponseBodyResources {
 	s.AccessType = &v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBodyResources) SetAgentImUrl(v string) *DescribeUserResourcesResponseBodyResources {
+	s.AgentImUrl = &v
 	return s
 }
 
@@ -983,6 +1066,11 @@ func (s *DescribeUserResourcesResponseBodyResources) SetSubPayType(v string) *De
 	return s
 }
 
+func (s *DescribeUserResourcesResponseBodyResources) SetSupportAgentIm(v bool) *DescribeUserResourcesResponseBodyResources {
+	s.SupportAgentIm = &v
+	return s
+}
+
 func (s *DescribeUserResourcesResponseBodyResources) SetSupportHibernation(v bool) *DescribeUserResourcesResponseBodyResources {
 	s.SupportHibernation = &v
 	return s
@@ -1065,13 +1153,7 @@ type DescribeUserResourcesResponseBodyResourcesClients struct {
 	//
 	// windows
 	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
-	// The status.
-	//
-	// Valid values:
-	//
-	// 	- OFF
-	//
-	// 	- ON
+	// The support status.
 	//
 	// example:
 	//
@@ -1110,19 +1192,19 @@ func (s *DescribeUserResourcesResponseBodyResourcesClients) Validate() error {
 }
 
 type DescribeUserResourcesResponseBodyResourcesDesktopDurationList struct {
-	// The ID of the instance order.
+	// The order instance ID.
 	//
 	// example:
 	//
 	// mdp-0bxls4qpi6bl6****
 	OrderInstanceId *string `json:"OrderInstanceId,omitempty" xml:"OrderInstanceId,omitempty"`
-	// The time when the package was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2025-01-17T07:01Z
 	PackageCreationTime *string `json:"PackageCreationTime,omitempty" xml:"PackageCreationTime,omitempty"`
-	// The expiration time of the package.
+	// The expiration time.
 	//
 	// example:
 	//
@@ -1134,55 +1216,37 @@ type DescribeUserResourcesResponseBodyResourcesDesktopDurationList struct {
 	//
 	// mdp-0bxls4qpi6bl6****
 	PackageId *string `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
-	// The package status.
+	// The status.
 	//
 	// example:
 	//
 	// Available
 	PackageStatus *string `json:"PackageStatus,omitempty" xml:"PackageStatus,omitempty"`
-	// The package type.
-	//
-	// Valid values:
-	//
-	// 	- FREE_PACKAGE: a free package.
-	//
-	// 	- NORMAL_PACKAGE: a paid package (120-hour computing plan).
-	//
-	// 	- POSTPAID_PACKAGE: a pay-as-you-go package (200-hour computing plan).
-	//
-	// 	- Duration: an hourly package.
+	// The duration package type.
 	//
 	// example:
 	//
 	// NORMAL_PACKAGE
 	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	// The policy for the cloud computer status once the monthly package quota is exhausted.
-	//
-	// Valid values:
-	//
-	// 	- Shutdown: The cloud computer enters the Stopped or Hibernated state.
-	//
-	// 	- PostPaid: The cloud computer continues providing services that are billed on the pay-as-you-go basis.
+	// The cloud desktop status policy after the monthly quota of the plan is used up.
 	//
 	// example:
 	//
 	// Postpaid
 	PackageUsedUpStrategy *string `json:"PackageUsedUpStrategy,omitempty" xml:"PackageUsedUpStrategy,omitempty"`
-	// The package\\"s effective end time for the current month.
+	// The end time of the current monthly package.
 	//
 	// example:
 	//
 	// 2025-02-17T15:59Z
 	PeriodEndTime *string `json:"PeriodEndTime,omitempty" xml:"PeriodEndTime,omitempty"`
-	// The package\\"s effective start time for the current month.
+	// The start time of the current monthly package.
 	//
 	// example:
 	//
 	// 2025-01-17T07:01Z
 	PeriodStartTime *string `json:"PeriodStartTime,omitempty" xml:"PeriodStartTime,omitempty"`
-	// The maximum fee for the package in the second phase.
-	//
-	// >  This parameter is returned if you set ResourceType to `POSTPAID_PACKAG` or `FREE_PACKAGE`.
+	// The cap amount for the second-phase package.
 	//
 	// example:
 	//
@@ -1194,7 +1258,7 @@ type DescribeUserResourcesResponseBodyResourcesDesktopDurationList struct {
 	//
 	// 432000
 	TotalDuration *int64 `json:"TotalDuration,omitempty" xml:"TotalDuration,omitempty"`
-	// The subscription duration consumed.
+	// The used duration.
 	//
 	// example:
 	//
@@ -1323,43 +1387,43 @@ func (s *DescribeUserResourcesResponseBodyResourcesDesktopDurationList) Validate
 }
 
 type DescribeUserResourcesResponseBodyResourcesDesktopTimers struct {
-	// Indicates whether to allow end users to configure scheduled tasks on clients.
+	// Indicates whether the client is allowed to configure this setting.
 	//
 	// example:
 	//
 	// false
 	AllowClientSetting *string `json:"AllowClientSetting,omitempty" xml:"AllowClientSetting,omitempty"`
-	// The cron expression specified in the scheduled task.
+	// The cron expression of the scheduled task.
 	//
 	// example:
 	//
 	// 0 30 13 ? 	- 1-7
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	// Indicates whether to forcibly execute the scheduled task.
+	// Indicates whether the task is forcibly executed.
 	//
 	// example:
 	//
 	// false
 	Enforce *bool `json:"Enforce,omitempty" xml:"Enforce,omitempty"`
-	// The time when the scheduled task is executed.
+	// The execution time.
 	//
 	// example:
 	//
 	// 2025-01-21T11:37Z
 	ExecutionTime *string `json:"ExecutionTime,omitempty" xml:"ExecutionTime,omitempty"`
-	// The interval at which the scheduled task is executed.
+	// The interval of the scheduled task.
 	//
 	// example:
 	//
 	// 15
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The type of the scheduled action.
+	// The operation type.
 	//
 	// example:
 	//
 	// Hibernate
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	// The reset option.
+	// The reset type.
 	//
 	// example:
 	//
@@ -1464,25 +1528,25 @@ type DescribeUserResourcesResponseBodyResourcesFotaUpdate struct {
 	//
 	// aliyun
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
-	// The current version number of the cloud computer\\"s image.
+	// The version number of the current image on the cloud desktop.
 	//
 	// example:
 	//
 	// 2.7.0-R-20250122.154826
 	CurrentAppVersion *string `json:"CurrentAppVersion,omitempty" xml:"CurrentAppVersion,omitempty"`
-	// Specifies whether to implement a forced update.
+	// Indicates whether the upgrade is mandatory.
 	//
 	// example:
 	//
 	// false
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
-	// The target version number of the cloud computer\\"s image.
+	// The version number available for upgrade on the cloud desktop.
 	//
 	// example:
 	//
 	// 2.7.0-R-20250125.154826
 	NewAppVersion *string `json:"NewAppVersion,omitempty" xml:"NewAppVersion,omitempty"`
-	// The latest version available for updating the component disk.
+	// The component disk version number available for upgrade.
 	//
 	// example:
 	//
@@ -1494,25 +1558,25 @@ type DescribeUserResourcesResponseBodyResourcesFotaUpdate struct {
 	//
 	// wuying-asp_single_session_desktop_win_x64
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	// The version description of the cloud computer\\"s image.
+	// The release note for the available upgrade version.
 	//
 	// example:
 	//
-	// up
+	// New version.
 	ReleaseNote *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
-	// The English release note for the new image version.
+	// The English release note for the available upgrade version.
 	//
 	// example:
 	//
-	// up
+	// new version
 	ReleaseNoteEn *string `json:"ReleaseNoteEn,omitempty" xml:"ReleaseNoteEn,omitempty"`
-	// The Japanese release note for the new image version.
+	// The Japanese release note for the available upgrade version.
 	//
 	// example:
 	//
-	// up
+	// 新バージョン.
 	ReleaseNoteJp *string `json:"ReleaseNoteJp,omitempty" xml:"ReleaseNoteJp,omitempty"`
-	// The size of the update package for the cloud computer image. Unit: KB.
+	// The installation package size of the available upgrade version. Unit: KB.
 	//
 	// example:
 	//
@@ -1623,27 +1687,27 @@ func (s *DescribeUserResourcesResponseBodyResourcesFotaUpdate) Validate() error 
 }
 
 type DescribeUserResourcesResponseBodyResourcesOsUpdate struct {
-	// The ID of the check task.
+	// The check ID.
 	//
 	// example:
 	//
 	// wua-1740652957251743***
 	CheckId *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	// The patch numbers.
+	// The patch number list information.
 	//
 	// example:
 	//
 	// KB2267***
 	KbListString *string `json:"KbListString,omitempty" xml:"KbListString,omitempty"`
-	// The number of packets.
+	// The number of packages.
 	//
 	// example:
 	//
 	// 1
 	PackageCount *int32 `json:"PackageCount,omitempty" xml:"PackageCount,omitempty"`
-	// The patch packages.
+	// The list of patch package information.
 	Packages []*DescribeUserResourcesResponseBodyResourcesOsUpdatePackages `json:"Packages,omitempty" xml:"Packages,omitempty" type:"Repeated"`
-	// The update categorization URL.
+	// The update catalog URL.
 	//
 	// example:
 	//
@@ -1719,6 +1783,10 @@ func (s *DescribeUserResourcesResponseBodyResourcesOsUpdate) Validate() error {
 
 type DescribeUserResourcesResponseBodyResourcesOsUpdatePackages struct {
 	// The patch description.
+	//
+	// example:
+	//
+	// Install this update to modify the files that are used to detect viruses, spyware, and other potentially unwanted software. Once installed, this item cannot be removed.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The patch number.
 	//
@@ -1727,6 +1795,10 @@ type DescribeUserResourcesResponseBodyResourcesOsUpdatePackages struct {
 	// KB2267***
 	Kb *string `json:"Kb,omitempty" xml:"Kb,omitempty"`
 	// The patch title.
+	//
+	// example:
+	//
+	// Patch for ****.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -1770,25 +1842,26 @@ func (s *DescribeUserResourcesResponseBodyResourcesOsUpdatePackages) Validate() 
 }
 
 type DescribeUserResourcesResponseBodyResourcesSessions struct {
-	// 用户的昵称。
+	LastClientIp *string `json:"LastClientIp,omitempty" xml:"LastClientIp,omitempty"`
+	// The nickname of the user.
 	//
 	// example:
 	//
 	// user-001
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	// The timestamp when the resource session was established.
+	// The time when the resource session was connected.
 	//
 	// example:
 	//
 	// 2025-01-22T11:03:36Z
 	ResourceSessionStartTime *string `json:"ResourceSessionStartTime,omitempty" xml:"ResourceSessionStartTime,omitempty"`
-	// The username used to log on to the resource.
+	// The username logged on to the resource.
 	//
 	// example:
 	//
 	// user001
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The User Principal Name (UPN) of the resource-bound user (if applicable). This parameter is returned only when you query the current user\\"s sessions.
+	// The User Principal Name (UPN) of the user bound to the resource, if available. This value is populated only for the session of the currently queried user.
 	//
 	// example:
 	//
@@ -1802,6 +1875,10 @@ func (s DescribeUserResourcesResponseBodyResourcesSessions) String() string {
 
 func (s DescribeUserResourcesResponseBodyResourcesSessions) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesSessions) GetLastClientIp() *string {
+	return s.LastClientIp
 }
 
 func (s *DescribeUserResourcesResponseBodyResourcesSessions) GetNickName() *string {
@@ -1818,6 +1895,11 @@ func (s *DescribeUserResourcesResponseBodyResourcesSessions) GetUserId() *string
 
 func (s *DescribeUserResourcesResponseBodyResourcesSessions) GetUserPrincipalName() *string {
 	return s.UserPrincipalName
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesSessions) SetLastClientIp(v string) *DescribeUserResourcesResponseBodyResourcesSessions {
+	s.LastClientIp = &v
+	return s
 }
 
 func (s *DescribeUserResourcesResponseBodyResourcesSessions) SetNickName(v string) *DescribeUserResourcesResponseBodyResourcesSessions {
