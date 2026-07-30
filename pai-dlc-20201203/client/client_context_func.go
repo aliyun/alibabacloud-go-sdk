@@ -711,7 +711,7 @@ func (client *Client) GetDashboardWithContext(ctx context.Context, jobId *string
 
 // Summary:
 //
-// Retrieves the detailed configuration and runtime information of a job.
+// Retrieves the detailed configuration and runtime information of a node.
 //
 // @param request - GetJobRequest
 //

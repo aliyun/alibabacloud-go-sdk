@@ -25,6 +25,8 @@ type iJobSettings interface {
 	GetDisableEcsStockCheck() *bool
 	SetDriver(v string) *JobSettings
 	GetDriver() *string
+	SetElasticSpotJobMaxRestartTimes(v int32) *JobSettings
+	GetElasticSpotJobMaxRestartTimes() *int32
 	SetEnableCPUAffinity(v bool) *JobSettings
 	GetEnableCPUAffinity() *bool
 	SetEnableDSWDev(v bool) *JobSettings
@@ -96,7 +98,8 @@ type JobSettings struct {
 	// example:
 	//
 	// 535.54.03
-	Driver *string `json:"Driver,omitempty" xml:"Driver,omitempty"`
+	Driver                        *string `json:"Driver,omitempty" xml:"Driver,omitempty"`
+	ElasticSpotJobMaxRestartTimes *int32  `json:"ElasticSpotJobMaxRestartTimes,omitempty" xml:"ElasticSpotJobMaxRestartTimes,omitempty"`
 	// The CPU affinity setting. This setting is effective only when using general computing subscription resources.
 	//
 	// example:
@@ -172,7 +175,7 @@ type JobSettings struct {
 	//
 	// Always
 	JobReservedPolicy *string `json:"JobReservedPolicy,omitempty" xml:"JobReservedPolicy,omitempty"`
-	// The output model configuration. This parameter is currently effective only in federated training scenarios.
+	// The output model configuration. This parameter is currently effective only in joint training scenarios.
 	ModelConfig *ModelConfig `json:"ModelConfig,omitempty" xml:"ModelConfig,omitempty"`
 	// The oversold resource usage mode for the job (reject/accept/only accept).
 	//
@@ -239,6 +242,10 @@ func (s *JobSettings) GetDisableEcsStockCheck() *bool {
 
 func (s *JobSettings) GetDriver() *string {
 	return s.Driver
+}
+
+func (s *JobSettings) GetElasticSpotJobMaxRestartTimes() *int32 {
+	return s.ElasticSpotJobMaxRestartTimes
 }
 
 func (s *JobSettings) GetEnableCPUAffinity() *bool {
@@ -346,6 +353,11 @@ func (s *JobSettings) SetDisableEcsStockCheck(v bool) *JobSettings {
 
 func (s *JobSettings) SetDriver(v string) *JobSettings {
 	s.Driver = &v
+	return s
+}
+
+func (s *JobSettings) SetElasticSpotJobMaxRestartTimes(v int32) *JobSettings {
+	s.ElasticSpotJobMaxRestartTimes = &v
 	return s
 }
 

@@ -1041,7 +1041,7 @@ func (client *Client) GetDashboard(jobId *string, request *GetDashboardRequest) 
 
 // Summary:
 //
-// Retrieves the detailed configuration and runtime information of a job.
+// Retrieves the detailed configuration and runtime information of a node.
 //
 // @param request - GetJobRequest
 //
@@ -1088,7 +1088,7 @@ func (client *Client) GetJobWithOptions(JobId *string, request *GetJobRequest, h
 
 // Summary:
 //
-// Retrieves the detailed configuration and runtime information of a job.
+// Retrieves the detailed configuration and runtime information of a node.
 //
 // @param request - GetJobRequest
 //

@@ -125,7 +125,7 @@ type ListJobsRequest struct {
 	//
 	// wildcard
 	DisplayNameSearchMode *string `json:"DisplayNameSearchMode,omitempty" xml:"DisplayNameSearchMode,omitempty"`
-	// Specifies whether to filter jobs that have assigned-node execution enabled.
+	// Filters jobs based on whether running on specified nodes is enabled.
 	//
 	// example:
 	//
@@ -143,7 +143,7 @@ type ListJobsRequest struct {
 	//
 	// false
 	FromAllWorkspaces *bool `json:"FromAllWorkspaces,omitempty" xml:"FromAllWorkspaces,omitempty"`
-	// Uses full-text index to retrieve the images field. Supports Chinese and English tokenization.
+	// Retrieves nodes by performing a full-text index on the images field. Supports Chinese and English tokenization.
 	//
 	// example:
 	//
@@ -179,7 +179,7 @@ type ListJobsRequest struct {
 	//
 	// TFJob
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The field name for numeric range filtering. Must be used together with NumericRangeMin or NumericRangeMax.
+	// The field name for numeric range filtering. Must be used together with NumericRangeMin/NumericRangeMax.
 	//
 	// example:
 	//
@@ -207,13 +207,13 @@ type ListJobsRequest struct {
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The off-peak resource information. Valid values:
+	// The idle resource information. Valid values:
 	//
 	// - ForbiddenQuotaOverSold
 	//
 	// - ForceQuotaOverSold
 	//
-	// - AcceptQuotaOverSold-true (true indicates the job actually used off-peak resources)
+	// - AcceptQuotaOverSold-true (true indicates the job actually used idle resources)
 	//
 	// - AcceptQuotaOverSold-false (false indicates the job actually used guaranteed resources)
 	//
@@ -221,7 +221,7 @@ type ListJobsRequest struct {
 	//
 	// ForbiddenQuotaOverSold
 	OversoldInfo *string `json:"OversoldInfo,omitempty" xml:"OversoldInfo,omitempty"`
-	// The page number to return in a paged query. Minimum value: 1. Default value: 1. Paging starts from page 1.
+	// The page number to return in a paged query. Minimum value: 1. Default value: 1.
 	//
 	// example:
 	//
@@ -245,26 +245,26 @@ type ListJobsRequest struct {
 	//
 	// PostPaid
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// Filters jobs created by the specified pipeline ID.
+	// Filters jobs created by the specified workflow ID.
 	//
 	// example:
 	//
 	// flow-*******
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// Uses full-text index to retrieve the node failed reason field. Supports Chinese and English tokenization.
+	// Retrieves nodes by performing a full-text index on the node failed reason field. Supports Chinese and English tokenization.
 	//
 	// example:
 	//
 	// OOM
 	ReasonSearch *string `json:"ReasonSearch,omitempty" xml:"ReasonSearch,omitempty"`
-	// The resource group ID. For information about how to obtain the dedicated resource group ID, see [Manage resource quotas](https://help.aliyun.com/document_detail/2651299.html).
+	// The resource group ID. For information about how to query the dedicated resource group ID, see [Manage resource quotas](https://help.aliyun.com/document_detail/2651299.html).
 	//
 	// example:
 	//
 	// r*****
 	ResourceId  *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceIds *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
-	// The name of the resource quota, used to filter the job list. Supports fuzzy match. Wildcards are not supported. Default value: empty, which indicates no filtering by resource quota.
+	// Filters the job list by the resource quota name. Supports fuzzy match. Wildcards are not supported. Default value: empty, which indicates no filtering by resource quota.
 	//
 	// example:
 	//
@@ -276,7 +276,7 @@ type ListJobsRequest struct {
 	//
 	// true
 	ShowOwn *bool `json:"ShowOwn,omitempty" xml:"ShowOwn,omitempty"`
-	// The field by which to sort results. Valid values:
+	// The field by which to sort results:
 	//
 	// - DisplayName
 	//
@@ -292,7 +292,7 @@ type ListJobsRequest struct {
 	//
 	// GmtCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The start time of the query range. The job creation time is used for filtering. Default value: the current time minus 7 days. If neither StartTime nor EndTime is specified, jobs created in the last 7 days are returned by default.
+	// The start time of the query range. The job creation time is used for filtering. Default value: the current time minus 7 days. If neither StartTime nor EndTime is specified, jobs from the last 7 days are returned by default.
 	//
 	// example:
 	//
@@ -332,7 +332,7 @@ type ListJobsRequest struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The tags used for filtering.
 	Tags map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The template ID, used to filter jobs created from the specified template.
+	// The template ID. Filters jobs created from the specified template.
 	//
 	// example:
 	//
@@ -344,25 +344,25 @@ type ListJobsRequest struct {
 	//
 	// GmtFinishTime
 	TimeRangeField *string `json:"TimeRangeField,omitempty" xml:"TimeRangeField,omitempty"`
-	// Uses full-text index to retrieve the user_command field. Supports Chinese and English tokenization.
+	// Retrieves nodes by performing a full-text index on the user_command field. Supports Chinese and English tokenization.
 	//
 	// example:
 	//
 	// python train.py
 	UserCommandSearch *string `json:"UserCommandSearch,omitempty" xml:"UserCommandSearch,omitempty"`
-	// The user ID of the job submitter, used to filter the job list.
+	// Filters the job list by the user ID of the job submitter.
 	//
 	// example:
 	//
 	// 20**************
 	UserIdForFilter *string `json:"UserIdForFilter,omitempty" xml:"UserIdForFilter,omitempty"`
-	// The username of the job submitter, used to filter the job list. Supports fuzzy match. Wildcards are not supported. Default value: empty, which indicates no filtering by username.
+	// Filters the job list by the username of the job submitter. Supports fuzzy match. Wildcards are not supported. Default value: empty, which indicates no filtering by username.
 	//
 	// example:
 	//
 	// test***
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
-	// The workspace ID.<props="china"> For information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+	// The workspace ID. <props="china">For information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
 	//
 	// example:
 	//
