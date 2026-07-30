@@ -103,7 +103,7 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	AppContentProtection *string `json:"AppContentProtection,omitempty" xml:"AppContentProtection,omitempty"`
 	// The client access IP whitelist.
 	AuthorizeAccessPolicyRules []*DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeAccessPolicyRules `json:"AuthorizeAccessPolicyRules,omitempty" xml:"AuthorizeAccessPolicyRules,omitempty" type:"Repeated"`
-	// The list of security group control rules.
+	// The list of security group rules.
 	AuthorizeSecurityPolicyRules []*DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeSecurityPolicyRules `json:"AuthorizeSecurityPolicyRules,omitempty" xml:"AuthorizeSecurityPolicyRules,omitempty" type:"Repeated"`
 	AutoReconnect                *string                                                                                 `json:"AutoReconnect,omitempty" xml:"AutoReconnect,omitempty"`
 	// Indicates whether local camera redirection is enabled.
@@ -280,7 +280,7 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	//
 	// readwrite
 	LocalDrive *string `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
-	// The maximum reconnection retry time when the cloud desktop is disconnected due to external reasons. Valid values: 30 to 7200. Unit: seconds.
+	// The maximum reconnection retry time when the cloud desktop is disconnected due to objective reasons. Valid values: 30 to 7200. Unit: seconds.
 	//
 	// example:
 	//
@@ -319,7 +319,7 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	//
 	// 30
 	MemorySingleRateLimit *int32 `json:"MemorySingleRateLimit,omitempty" xml:"MemorySingleRateLimit,omitempty"`
-	// Indicates whether the restart button is provided in the cloud desktop floating ball when connecting through a mobile client (Android client<props="china"> and iOS client).
+	// Indicates whether the restart button is provided in the cloud desktop floating ball when connecting through mobile clients (Android client<props="china"> and iOS client).
 	//
 	// > Applicable only to mobile clients V7.4 or later.
 	//
@@ -328,7 +328,7 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	// off
 	MobileRestart  *string `json:"MobileRestart,omitempty" xml:"MobileRestart,omitempty"`
 	MobileSafeMenu *string `json:"MobileSafeMenu,omitempty" xml:"MobileSafeMenu,omitempty"`
-	// Indicates whether the shutdown button is provided in the cloud desktop floating ball when connecting through a mobile client (Android client<props="china"> and iOS client).
+	// Indicates whether the shutdown button is provided in the cloud desktop floating ball when connecting through mobile clients (Android client<props="china"> and iOS client).
 	//
 	// > Applicable only to mobile clients V7.4 or later.
 	//
@@ -358,7 +358,7 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	//
 	// > This feature is in invitational preview and is not publicly available.
 	//
-	// >.
+	// >
 	NetRedirectRule []*DescribeCenterPolicyListResponseBodyDescribePolicyGroupsNetRedirectRule `json:"NetRedirectRule,omitempty" xml:"NetRedirectRule,omitempty" type:"Repeated"`
 	NetworkPrinter  *string                                                                    `json:"NetworkPrinter,omitempty" xml:"NetworkPrinter,omitempty"`
 	// The no-operation disconnect setting.
@@ -415,7 +415,7 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	//
 	// off
 	RecordContent *string `json:"RecordContent,omitempty" xml:"RecordContent,omitempty"`
-	// The expiration period of custom screen recording files. Default value: 30. Unit: days.
+	// The expiration time of custom screen recording files. Default value: 30 days.
 	//
 	// example:
 	//
@@ -447,13 +447,13 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	//
 	// on
 	RecordingAudio *string `json:"RecordingAudio,omitempty" xml:"RecordingAudio,omitempty"`
-	// The duration of each screen recording file. Unit: minutes. Recording files are automatically split and uploaded to the storage space based on the specified duration. Files are rolled over when they reach 300 MB.
+	// The duration of screen recording files. Unit: minutes. Recording files are automatically split and uploaded to the storage space based on the specified duration. Files are rolled over when they reach 300 MB.
 	//
 	// example:
 	//
 	// 10
 	RecordingDuration *int32 `json:"RecordingDuration,omitempty" xml:"RecordingDuration,omitempty"`
-	// The screen recording end time, in the format of HH:MM:SS. This value is meaningful only when Recording is set to period.
+	// The screen recording end time in the format of HH:MM:SS. This value is meaningful only when Recording is set to period.
 	//
 	// example:
 	//
@@ -471,7 +471,7 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	//
 	// 5
 	RecordingFps *int64 `json:"RecordingFps,omitempty" xml:"RecordingFps,omitempty"`
-	// The screen recording start time, in the format of HH:MM:SS. This value is meaningful only when Recording is set to period.
+	// The screen recording start time in the format of HH:MM:SS. This value is meaningful only when Recording is set to period.
 	//
 	// example:
 	//
@@ -483,7 +483,7 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	//
 	// off
 	RecordingUserNotify *string `json:"RecordingUserNotify,omitempty" xml:"RecordingUserNotify,omitempty"`
-	// The notification message displayed to end users about screen recording.
+	// The notification message displayed to end users about screen recording being enabled.
 	//
 	// example:
 	//
@@ -632,7 +632,7 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	//
 	// 0
 	WatermarkColor *int32 `json:"WatermarkColor,omitempty" xml:"WatermarkColor,omitempty"`
-	// If the `WatermarkType` parameter is set to `custom`, you must also specify the custom text content by using the `WatermarkCustomText` parameter.
+	// If the WatermarkType parameter is set to `custom`, you must also specify the custom text content by using the WatermarkCustomText parameter.
 	//
 	// example:
 	//
@@ -2104,7 +2104,7 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) Validate() er
 }
 
 type DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeAccessPolicyRules struct {
-	// The client access IP CIDR block, in IPv4 CIDR notation.
+	// The client access IP CIDR block in IPv4 CIDR format.
 	//
 	// example:
 	//
@@ -2149,43 +2149,43 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeAccess
 }
 
 type DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeSecurityPolicyRules struct {
-	// The target of the security group control rule, which is an IPv4 CIDR block.
+	// The object of the security group rule, which is an IPv4 CIDR block.
 	//
 	// example:
 	//
 	// 47.100.XX.XX/16
 	CidrIp *string `json:"CidrIp,omitempty" xml:"CidrIp,omitempty"`
-	// The description of the security group control rule.
+	// The description of the security group rule.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The protocol type of the security group control rule.
+	// The protocol type of the security group rule.
 	//
 	// example:
 	//
 	// tcp
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	// The authorization policy of the security group control rule.
+	// The authorization policy of the security group rule.
 	//
 	// example:
 	//
 	// accept
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The port range of the security group control rule.
+	// The port range of the security group rule.
 	//
 	// example:
 	//
 	// 22/22
 	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
-	// The priority of the security group control rule. A smaller value indicates a higher priority.
+	// The priority of the security group rule. A smaller value indicates a higher priority.
 	//
 	// example:
 	//
 	// 1
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The direction of the security group control rule.
+	// The direction of the security group rule.
 	//
 	// example:
 	//
@@ -2377,7 +2377,7 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRules struct 
 	//
 	// storage
 	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	// The vendor ID. For more information, see [Valid USB Vendor IDs (VIDs)](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf).
+	// The vendor ID. See [Valid USB Vendor IDs (VIDs)](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf).
 	//
 	// example:
 	//
@@ -2618,7 +2618,7 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroupsUsbSupplyRedirectRu
 	//
 	// 1
 	UsbRuleType *int64 `json:"UsbRuleType,omitempty" xml:"UsbRuleType,omitempty"`
-	// The vendor ID. For more information, see [Valid USB Vendor IDs (VIDs)](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf).
+	// The vendor ID. See [Valid USB Vendor IDs (VIDs)](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf).
 	//
 	// example:
 	//

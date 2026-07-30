@@ -16,7 +16,7 @@ type iDescribeTimerGroupRequest interface {
 }
 
 type DescribeTimerGroupRequest struct {
-	// The ID of the configuration group.
+	// The configuration group ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DescribeTimerGroupRequest struct {
 	//
 	// cg-hs3i1w39o68ma****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the most recent region list.
+	// The region ID. This feature is not region-specific. Set this parameter to `cn-shanghai`.
 	//
 	// example:
 	//

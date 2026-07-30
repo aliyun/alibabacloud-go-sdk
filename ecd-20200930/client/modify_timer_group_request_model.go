@@ -22,13 +22,13 @@ type iModifyTimerGroupRequest interface {
 }
 
 type ModifyTimerGroupRequest struct {
-	// The scheduled task configurations.
+	// The configuration information of scheduled tasks.
 	ConfigTimers []*ModifyTimerGroupRequestConfigTimers `json:"ConfigTimers,omitempty" xml:"ConfigTimers,omitempty" type:"Repeated"`
 	// The description of the configuration group.
 	//
 	// example:
 	//
-	// Scheduled task
+	// ScheduledTask.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The configuration group ID.
 	//
@@ -38,13 +38,13 @@ type ModifyTimerGroupRequest struct {
 	//
 	// cg-i1ruuudp92qpj****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the configuration group.
+	// The configuration group name.
 	//
 	// example:
 	//
-	// Scheduled task
+	// ScheduledTask.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The region ID. This feature is not tied to a specific region, but you must set this parameter to `cn-shanghai`.
+	// The region ID. This feature is not region-specific. Set this parameter to `cn-shanghai`.
 	//
 	// example:
 	//
@@ -119,55 +119,55 @@ func (s *ModifyTimerGroupRequest) Validate() error {
 }
 
 type ModifyTimerGroupRequestConfigTimers struct {
-	// Specifies whether to allow end users to configure scheduled tasks.
+	// Specifies whether to allow end users to configure scheduled tasks on their own.
 	//
 	// example:
 	//
 	// true
 	AllowClientSetting *bool `json:"AllowClientSetting,omitempty" xml:"AllowClientSetting,omitempty"`
-	// The Cron expression for the scheduled task.
+	// The cron expression of the scheduled task.
 	//
-	// > The Cron expression must be in UTC. For example, to schedule a task for 00:00 daily in China Standard Time (UTC+8), set this parameter to `0 0 16 ? 	- 1,2,3,4,5,6,7`.
+	// > Specify the time in UTC. For example, to schedule a task at 00:00 (UTC+8) every day, set this parameter to 0 0 16 ? 	- 1,2,3,4,5,6,7.
 	//
 	// example:
 	//
 	// 0 0 16 ? 	- 1,2,3,4,5,6,7
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	// Specifies whether to force execution. If this parameter is set to `true`, the scheduled task runs regardless of the desktop and connection status.
+	// Specifies whether to forcefully execute the task. If set to true, the scheduled task is forcefully executed regardless of the desktop and connection status.
 	//
 	// example:
 	//
 	// false
 	Enforce *bool `json:"Enforce,omitempty" xml:"Enforce,omitempty"`
-	// The interval, in minutes.
+	// The time interval, in minutes.
 	//
 	// example:
 	//
 	// 10
 	Interval         *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	NotificationTime *int32 `json:"NotificationTime,omitempty" xml:"NotificationTime,omitempty"`
-	// The operation to perform. This parameter applies only if `TimerType` is set to `NoConnect`.
+	// The operation type of the scheduled task. Currently, only disconnect scheduled tasks support this parameter.
 	//
 	// example:
 	//
 	// Shutdown
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	// The process whitelist for advanced inactivity detection. The scheduled task is not triggered if a process from this list is running.
+	// The process whitelist for intelligent detection of no-operation scheduled tasks. If a specified process is running, the no-operation scheduled task is not triggered.
 	ProcessWhitelist []*string `json:"ProcessWhitelist,omitempty" xml:"ProcessWhitelist,omitempty" type:"Repeated"`
-	// Specifies which disks to reset.
+	// The reset type, which determines whether to reset and the scope of cloud disks to reset.
 	//
 	// example:
 	//
 	// RESET_TYPE_SYSTEM
 	ResetType     *string                                             `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
 	SegmentTimers []*ModifyTimerGroupRequestConfigTimersSegmentTimers `json:"SegmentTimers,omitempty" xml:"SegmentTimers,omitempty" type:"Repeated"`
-	// The type of the scheduled task.
+	// The scheduled task type.
 	//
 	// example:
 	//
 	// TimerBoot
 	TimerType *string `json:"TimerType,omitempty" xml:"TimerType,omitempty"`
-	// The method for detecting inactivity.
+	// The trigger configuration type for no-operation scheduled tasks.
 	//
 	// example:
 	//
@@ -296,7 +296,7 @@ func (s *ModifyTimerGroupRequestConfigTimers) Validate() error {
 }
 
 type ModifyTimerGroupRequestConfigTimersSegmentTimers struct {
-	// Timestamp for scheduled task execution. The task runs at the specified time.
+	// The specified time point for fixed-time scheduled task execution. After this parameter is specified, the scheduled task is executed at the specified time point.
 	//
 	// example:
 	//
@@ -304,7 +304,7 @@ type ModifyTimerGroupRequestConfigTimersSegmentTimers struct {
 	AppointmentTimer  *int64  `json:"AppointmentTimer,omitempty" xml:"AppointmentTimer,omitempty"`
 	EndCronExpression *string `json:"EndCronExpression,omitempty" xml:"EndCronExpression,omitempty"`
 	Enforce           *bool   `json:"Enforce,omitempty" xml:"Enforce,omitempty"`
-	// Image ID for image-change scheduled tasks.
+	// The image ID to change to. This parameter is used for image change scheduled tasks.
 	//
 	// example:
 	//
@@ -312,7 +312,7 @@ type ModifyTimerGroupRequestConfigTimersSegmentTimers struct {
 	ImageId    *string   `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	Interval   *int32    `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	IpSegments []*string `json:"IpSegments,omitempty" xml:"IpSegments,omitempty" type:"Repeated"`
-	// Lock screen time for inactivity-based lock screen. Not supported for non-AD desktops.
+	// The lock screen time point for the no-operation lock screen feature. This parameter is not supported for non-AD desktops.
 	//
 	// example:
 	//

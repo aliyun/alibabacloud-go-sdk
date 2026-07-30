@@ -20,13 +20,13 @@ type iDescribeGlobalTimerRecordsResponseBody interface {
 }
 
 type DescribeGlobalTimerRecordsResponseBody struct {
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 2
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. If this parameter is empty, all results have been returned.
+	// The token for the next query. If NextToken is empty, no more results exist.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type DescribeGlobalTimerRecordsResponseBody struct {
 	//
 	// 63740E03-1B4B-5A18-AC27-2745A4F2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned results.
+	// The result information.
 	Results []*DescribeGlobalTimerRecordsResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
@@ -100,7 +100,7 @@ func (s *DescribeGlobalTimerRecordsResponseBody) Validate() error {
 }
 
 type DescribeGlobalTimerRecordsResponseBodyResults struct {
-	// The type of action performed.
+	// The type of action that was performed.
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ type DescribeGlobalTimerRecordsResponseBodyResults struct {
 	//
 	// ccg-0cvfvf6u1enx1****
 	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
-	// The recorded information during the execution of the scheduled task.
+	// The record information during the execution of the scheduled task.
 	//
 	// example:
 	//
@@ -124,18 +124,20 @@ type DescribeGlobalTimerRecordsResponseBodyResults struct {
 	//
 	// 2023-08-03T08:27:29Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The cloud desktop ID.
+	// The cloud computer ID.
 	//
 	// example:
 	//
 	// ecd-0c951fy9arnk9****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The cloud desktop name.
+	// The cloud computer name.
 	//
 	// example:
 	//
 	// DesktopName
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
+	// The display result name.
+	//
 	// example:
 	//
 	// SKIPPED
@@ -156,16 +158,20 @@ type DescribeGlobalTimerRecordsResponseBodyResults struct {
 	//
 	// p-xxx
 	ResourceParentId *string `json:"ResourceParentId,omitempty" xml:"ResourceParentId,omitempty"`
+	// Specifies whether the task can be retried.
+	//
 	// example:
 	//
 	// true
 	Retryable *bool `json:"Retryable,omitempty" xml:"Retryable,omitempty"`
-	// The scheduled task group ID.
+	// The ID of the scheduled task group.
 	//
 	// example:
 	//
 	// ccg-xxxx
 	TimerGroupId *string `json:"TimerGroupId,omitempty" xml:"TimerGroupId,omitempty"`
+	// The timer record ID.
+	//
 	// example:
 	//
 	// t-xxx

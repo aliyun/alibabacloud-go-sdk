@@ -24,25 +24,25 @@ type iDeleteTemplatesResponseBody interface {
 }
 
 type DeleteTemplatesResponseBody struct {
-	// The information about the request denial..
+	// The details about the access denial.
 	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The modification result. If the request was successful, `success` is returned. If the request failed, an error message is returned.
+	// The operation result. The value `success` indicates success. Otherwise, an error message is returned.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The description of the error code.
+	// The error code description.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message returned. This parameter is not returned if the value of Code is `success`.
+	// The error message. This parameter is not returned if Code is `success`.
 	//
 	// example:
 	//
@@ -54,13 +54,11 @@ type DeleteTemplatesResponseBody struct {
 	//
 	// F7E4322D-D679-5ACB-A909-490D2F0E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful. Valid values:
 	//
-	// Valid values:
+	// - true: The call was successful.
 	//
-	// - true: The request is successful.
-	//
-	// - false: The request failed.
+	// - false: The call failed.
 	//
 	// example:
 	//

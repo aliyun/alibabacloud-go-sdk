@@ -24,19 +24,19 @@ type iCreateTemplateResponseBody interface {
 }
 
 type CreateTemplateResponseBody struct {
-	// The execution result of the operation. If the request was successful, `success` is returned. If the request failed, an error message is returned.
+	// The execution result. A value of `success` indicates success. Otherwise, an error message is returned.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The template ID.
+	// The template ID returned after the template is created.
 	//
 	// example:
 	//
 	// b-0cc7rx533*****
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type CreateTemplateResponseBody struct {
 	//
 	// 791CC0D3-1A38-573B-8F5F-********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//

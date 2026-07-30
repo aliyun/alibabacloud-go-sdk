@@ -26,19 +26,19 @@ type iGetConnectionTicketResponseBody interface {
 }
 
 type GetConnectionTicketResponseBody struct {
-	// The ID of the cloud computer.
+	// The cloud computer ID.
 	//
 	// example:
 	//
 	// ecd-gx2x1dhsmucyy****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Before you use the credential, you must Base64 decode the content of the credential, save the credential as an xxx.ica file, and then open the file. Python sample code:
+	// The ticket used to connect to the user instance. Before using the ticket, decode its content with Base64 and save it as an xxx.ica file, then open the file. Python code example:
 	//
 	// ```
 	//
@@ -72,7 +72,7 @@ type GetConnectionTicketResponseBody struct {
 	//
 	// 2afbad19-778a-4fc5-9674-1f19c638****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The ID of the connection task.
+	// The ID of the cloud computer connection task.
 	//
 	// example:
 	//
@@ -80,37 +80,11 @@ type GetConnectionTicketResponseBody struct {
 	TaskMessage *string `json:"TaskMessage,omitempty" xml:"TaskMessage,omitempty"`
 	// The task status.
 	//
-	// Valid values:
-	//
-	// - FAILED: The credential fails to be obtained.
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	// - RUNNING: The credential is being obtained.
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	// - FINISHED: The credential is obtained.
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
 	// example:
 	//
 	// FINISHED
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// The credentials for connecting to the cloud computer.
+	// The connection credential for the cloud computer.
 	//
 	// example:
 	//

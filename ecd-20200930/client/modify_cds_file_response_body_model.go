@@ -22,39 +22,21 @@ type iModifyCdsFileResponseBody interface {
 }
 
 type ModifyCdsFileResponseBody struct {
-	// The execution result of the operation. If the request was successful, `success` is returned. If the request failed, an error message is returned.
+	// The execution result. A value of `success` indicates success. Otherwise, an error message is returned.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Specifies whether data is returned.
+	// Indicates whether data is returned successfully.
 	//
-	// Valid values:
-	//
-	// 	- false: Data fails to be returned.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- true
-	//
-	//     <!-- -->
-	//
-	//     : Data is returned.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// [_single.resp.200.props.Data.enum. false]Failed to return data.
 	//
 	// example:
 	//
 	// true
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The returned error message. This parameter is not returned if the value of Code is `success`.
+	// The error message. This parameter is not returned when Code is `success`.
 	//
 	// example:
 	//
@@ -66,13 +48,7 @@ type ModifyCdsFileResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful.
-	//
-	// Valid value:
-	//
-	// 	- true
-	//
-	// 	- false
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//

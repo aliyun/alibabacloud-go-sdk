@@ -22,7 +22,7 @@ type iModifyTemplateBaseInfoResponseBody interface {
 }
 
 type ModifyTemplateBaseInfoResponseBody struct {
-	// The execution result of the operation. If the request was successful, `success` is returned. If the request failed, an error message is returned.
+	// The execution result. A value of `success` indicates success. Otherwise, an error message is returned.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type ModifyTemplateBaseInfoResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message. This parameter is not returned if the value of Code is `success`.
+	// The error message. This parameter is not returned when Code is `success`.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ModifyTemplateBaseInfoResponseBody struct {
 	//
 	// 3D99C38F-DE7D-5109-BC06-43EC5D*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the operation was successful.
 	//
 	// example:
 	//

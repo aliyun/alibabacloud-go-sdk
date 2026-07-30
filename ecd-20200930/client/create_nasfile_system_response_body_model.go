@@ -22,31 +22,31 @@ type iCreateNASFileSystemResponseBody interface {
 }
 
 type CreateNASFileSystemResponseBody struct {
-	// ID of the NAS file system.
+	// The NAS file system ID.
 	//
 	// example:
 	//
 	// 04f314****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// Name of the NAS file system.
+	// The NAS file system name.
 	//
 	// example:
 	//
 	// testNAS
 	FileSystemName *string `json:"FileSystemName,omitempty" xml:"FileSystemName,omitempty"`
-	// Mount point domain.
+	// The mount target domain name.
 	//
 	// example:
 	//
 	// 04f314****-at***.cn-hangzhou.nas.aliyuncs.com
 	MountTargetDomain *string `json:"MountTargetDomain,omitempty" xml:"MountTargetDomain,omitempty"`
-	// Workspace ID.
+	// The office network ID.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-363353****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

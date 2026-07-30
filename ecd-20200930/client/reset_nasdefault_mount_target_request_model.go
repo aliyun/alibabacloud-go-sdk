@@ -16,7 +16,7 @@ type iResetNASDefaultMountTargetRequest interface {
 }
 
 type ResetNASDefaultMountTargetRequest struct {
-	// The ID of the NAS file system.
+	// The NAS file system ID.
 	//
 	// This parameter is required.
 	//

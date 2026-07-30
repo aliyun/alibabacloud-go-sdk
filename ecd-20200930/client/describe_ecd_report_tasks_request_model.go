@@ -27,13 +27,13 @@ type iDescribeEcdReportTasksRequest interface {
 
 type DescribeEcdReportTasksRequest struct {
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
-	// The number of the page to return. Pages start from page 1. Default value: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries returned per page. Maximum value: 200.
+	// The number of entries per page. Maximum value: 200.
 	//
 	// example:
 	//
@@ -41,23 +41,19 @@ type DescribeEcdReportTasksRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The task status.
 	Status []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
-	// The sub-type of the report export task.
+	// The subtype of the report task.
 	//
 	// example:
 	//
 	// DESKTOP
 	SubType *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
-	// The ID of the report export task.
+	// The report task ID.
 	//
 	// example:
 	//
 	// ret-sfkdsjfi*****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The type of the report.
-	//
-	// Valid value:
-	//
-	// - RESOURCE_REPORT
+	// The report type.
 	//
 	// example:
 	//

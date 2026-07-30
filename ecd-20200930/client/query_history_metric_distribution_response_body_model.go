@@ -18,7 +18,7 @@ type iQueryHistoryMetricDistributionResponseBody interface {
 }
 
 type QueryHistoryMetricDistributionResponseBody struct {
-	// An array of objects, each representing the distribution data for a specific value range.
+	// The distribution list corresponding to resource monitoring.
 	DistributionList []*QueryHistoryMetricDistributionResponseBodyDistributionList `json:"DistributionList,omitempty" xml:"DistributionList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type QueryHistoryMetricDistributionResponseBody struct {
 	//
 	// 2F2BF549-CBD9-1FED-9ABB-086B62D7B293
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of data points that match the query.
+	// The total number of query results.
 	//
 	// example:
 	//
@@ -83,25 +83,25 @@ func (s *QueryHistoryMetricDistributionResponseBody) Validate() error {
 }
 
 type QueryHistoryMetricDistributionResponseBodyDistributionList struct {
-	// The number of data points in this value range.
+	// The count.
 	//
 	// example:
 	//
 	// 40
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The range label that you defined in the request.
+	// The range label.
 	//
 	// example:
 	//
 	// 2F2BF549-CBD9-1FED-9ABB-086B62D7B293
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The maximum value of the value range.
+	// The maximum value.
 	//
 	// example:
 	//
 	// 20
 	Max *float32 `json:"Max,omitempty" xml:"Max,omitempty"`
-	// The minimum value of the value range.
+	// The minimum value.
 	//
 	// example:
 	//

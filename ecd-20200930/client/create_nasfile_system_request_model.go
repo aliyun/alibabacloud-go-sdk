@@ -17,6 +17,8 @@ type iCreateNASFileSystemRequest interface {
 	GetName() *string
 	SetOfficeSiteId(v string) *CreateNASFileSystemRequest
 	GetOfficeSiteId() *string
+	SetProtocolType(v string) *CreateNASFileSystemRequest
+	GetProtocolType() *string
 	SetRegionId(v string) *CreateNASFileSystemRequest
 	GetRegionId() *string
 	SetStorageType(v string) *CreateNASFileSystemRequest
@@ -24,33 +26,25 @@ type iCreateNASFileSystemRequest interface {
 }
 
 type CreateNASFileSystemRequest struct {
-	// Description of the NAS file system.
+	// The description of the NAS file system.
 	//
 	// example:
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Whether the file system is encrypted. Uses KMS service-managed keys to encrypt the file system\\"s on-disk data. No decryption is required when reading and writing encrypted data.
+	// Specifies whether the file system uses a KMS-managed key to encrypt data stored on the file system. Encrypted data does not need to be decrypted during read and write operations.
 	//
 	// example:
 	//
 	// 0
 	EncryptType *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
-	// Name of the NAS file system.
-	//
-	// The file name must follow these rules:
-	//
-	// - Length: 2 to 128 English or Chinese characters.
-	//
-	// - Must start with an uppercase or lowercase letter or a Chinese character, cannot start with http\\:// or https\\://.
-	//
-	// - Can include numbers, underscores (_), or hyphens (-).
+	// The NAS file system name. The name must meet the following requirements: The name must be 2 to 128 characters in length and can contain letters and Chinese characters. The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain digits, underscores (_), or hyphens (-).
 	//
 	// example:
 	//
 	// testNAS
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Workspace ID.
+	// The office network ID.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +52,8 @@ type CreateNASFileSystemRequest struct {
 	//
 	// cn-hangzhou+dir-363353****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// Region ID.
+	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +61,7 @@ type CreateNASFileSystemRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Storage specification type of the NAS file system.
+	// The storage type of the NAS file system.
 	//
 	// example:
 	//
@@ -98,6 +93,10 @@ func (s *CreateNASFileSystemRequest) GetOfficeSiteId() *string {
 	return s.OfficeSiteId
 }
 
+func (s *CreateNASFileSystemRequest) GetProtocolType() *string {
+	return s.ProtocolType
+}
+
 func (s *CreateNASFileSystemRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -123,6 +122,11 @@ func (s *CreateNASFileSystemRequest) SetName(v string) *CreateNASFileSystemReque
 
 func (s *CreateNASFileSystemRequest) SetOfficeSiteId(v string) *CreateNASFileSystemRequest {
 	s.OfficeSiteId = &v
+	return s
+}
+
+func (s *CreateNASFileSystemRequest) SetProtocolType(v string) *CreateNASFileSystemRequest {
+	s.ProtocolType = &v
 	return s
 }
 

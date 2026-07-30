@@ -51,7 +51,7 @@ type iDescribeGlobalDesktopRecordsRequest interface {
 
 type DescribeGlobalDesktopRecordsRequest struct {
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
-	// The cloud desktop IDs. You can specify 1 to 100 IDs.
+	// The cloud desktop ID. You can specify 1 to 100 IDs.
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
 	// The cloud desktop name.
 	//
@@ -60,7 +60,7 @@ type DescribeGlobalDesktopRecordsRequest struct {
 	// DemoComputer
 	DesktopName       *string   `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
 	DesktopStatusList []*string `json:"DesktopStatusList,omitempty" xml:"DesktopStatusList,omitempty" type:"Repeated"`
-	// The cloud desktop type. You can call [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) to query the supported cloud desktop type IDs.
+	// The cloud desktop specification. You can call [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) to query the supported specification IDs for cloud desktops.
 	//
 	// example:
 	//
@@ -87,7 +87,7 @@ type DescribeGlobalDesktopRecordsRequest struct {
 	//
 	// cn-hangzhou+dir-363353****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The sort field. If not specified, results are sorted by creation time in descending order. Valid values:
+	// The sort field. If this parameter is not specified, results are sorted by creation time in descending order. Valid values:
 	//
 	// - uptime: sorts by cloud desktop uptime.
 	//
@@ -95,7 +95,7 @@ type DescribeGlobalDesktopRecordsRequest struct {
 	//
 	// uptime
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The page number for a paged query.
+	// The page number of the current page in a paged query. Paging starts from page 1.
 	//
 	// Default value: 1.
 	//
@@ -109,7 +109,7 @@ type DescribeGlobalDesktopRecordsRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID. Valid values:
+	// The region ID.
 	//
 	// - Shanghai
 	//

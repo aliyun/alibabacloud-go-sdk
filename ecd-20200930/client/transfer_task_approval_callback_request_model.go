@@ -20,13 +20,13 @@ type iTransferTaskApprovalCallbackRequest interface {
 }
 
 type TransferTaskApprovalCallbackRequest struct {
-	// The name of the OSS bucket where the file resides.
+	// The name of the bucket where the file is stored.
 	//
 	// example:
 	//
 	// ed****-17337752804***
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
-	// The region where the OSS bucket storing the file resides.
+	// The region of the bucket where the file is stored.
 	//
 	// example:
 	//
@@ -34,17 +34,11 @@ type TransferTaskApprovalCallbackRequest struct {
 	OssBucketRegionId *string `json:"OssBucketRegionId,omitempty" xml:"OssBucketRegionId,omitempty"`
 	// The approval result.
 	//
-	// Valid values:
-	//
-	// 	- Approved
-	//
-	// 	- Rejected
-	//
 	// example:
 	//
 	// Approved
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// The ID of the transmission task.
+	// The ID of the transfer task.
 	//
 	// example:
 	//

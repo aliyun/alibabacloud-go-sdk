@@ -180,13 +180,13 @@ type DescribeGlobalDesktopRecordsResponseBodySessions struct {
 	//
 	// Linux
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	// The specific operating system version.
+	// The specific operating system model.
 	//
 	// example:
 	//
 	// Windows 10
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// The protocol type. Valid values:
+	// The protocol type.
 	//
 	// - HDX
 	//

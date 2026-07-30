@@ -26,19 +26,19 @@ type DescribeGlobalTimerBatchesResponseBody struct {
 	//
 	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The token to use to retrieve the next page of results. This parameter is returned only when more results are available.
+	// The pagination token for the next query. An empty value indicates that there are no more results.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// E54EB497-D7B7-5F04-B744-D8DFA7B******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of batches.
+	// The list of results.
 	Results []*DescribeGlobalTimerBatchesResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
@@ -100,37 +100,37 @@ func (s *DescribeGlobalTimerBatchesResponseBody) Validate() error {
 }
 
 type DescribeGlobalTimerBatchesResponseBodyResults struct {
-	// The ID of the batch.
+	// The batch ID of the scheduled task execution.
 	//
 	// example:
 	//
 	// ccg-0cvfvf6u1enx1****
 	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
-	// The time when the batch was created.
+	// The time when the record was created.
 	//
 	// example:
 	//
 	// 2023-08-03T08:27:29Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The number of failed tasks.
+	// The number of tasks that failed to execute.
 	//
 	// example:
 	//
 	// 0
 	FailedCount *int32 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	// The number of running tasks.
+	// The number of tasks that are currently running.
 	//
 	// example:
 	//
 	// 0
 	RunningCount *int32 `json:"RunningCount,omitempty" xml:"RunningCount,omitempty"`
-	// The number of skipped tasks.
+	// The number of tasks that were skipped.
 	//
 	// example:
 	//
 	// 0
 	SkippedCount *int32 `json:"SkippedCount,omitempty" xml:"SkippedCount,omitempty"`
-	// The number of successfully executed tasks.
+	// The total number of tasks that were executed successfully.
 	//
 	// example:
 	//

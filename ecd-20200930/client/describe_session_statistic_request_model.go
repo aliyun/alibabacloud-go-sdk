@@ -52,7 +52,7 @@ type DescribeSessionStatisticRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Specifies to search for session information by region ID. This parameter is used to filter desktop information of a specific region.
+	// The region ID used to filter desktop information for a specified region.
 	//
 	// example:
 	//

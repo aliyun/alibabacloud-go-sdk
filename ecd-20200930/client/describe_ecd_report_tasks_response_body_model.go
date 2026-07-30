@@ -18,7 +18,7 @@ type iDescribeEcdReportTasksResponseBody interface {
 }
 
 type DescribeEcdReportTasksResponseBody struct {
-	// The report export tasks.
+	// The list of report tasks.
 	ExportTaskList []*DescribeEcdReportTasksResponseBodyExportTaskList `json:"ExportTaskList,omitempty" xml:"ExportTaskList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -85,7 +85,7 @@ func (s *DescribeEcdReportTasksResponseBody) Validate() error {
 type DescribeEcdReportTasksResponseBodyExportTaskList struct {
 	// The download URL of the report file.
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	// The error code returned.
+	// The error code.
 	//
 	// example:
 	//
@@ -97,13 +97,13 @@ type DescribeEcdReportTasksResponseBodyExportTaskList struct {
 	//
 	// No Data.
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// The time when the task was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2025-07-14T07:46:49.000+00:00
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the task was last modified.
+	// The modification time.
 	//
 	// example:
 	//
@@ -115,39 +115,31 @@ type DescribeEcdReportTasksResponseBodyExportTaskList struct {
 	//
 	// 80
 	Progress *float32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The name of the report file.
+	// The report file name.
 	//
 	// example:
 	//
 	// TestFileName
 	ReportFileName *string `json:"ReportFileName,omitempty" xml:"ReportFileName,omitempty"`
-	// The task status.
+	// The report task status.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The sub-type of the report export task.
-	//
-	// Valid value:
-	//
-	// - DESKTOP: cloud computer
+	// The subtype of the report task.
 	//
 	// example:
 	//
 	// DESKTOP
 	SubType *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
-	// The ID of the report export task.
+	// The report task ID.
 	//
 	// example:
 	//
 	// ret-asdfkjg*****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The type of the report.
-	//
-	// Valid value:
-	//
-	// - RESOURCE_REPORT
+	// The report type.
 	//
 	// example:
 	//

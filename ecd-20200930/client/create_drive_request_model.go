@@ -32,7 +32,7 @@ type iCreateDriveRequest interface {
 }
 
 type CreateDriveRequest struct {
-	// The ID of your Alibaba Cloud account.
+	// The Alibaba Cloud account ID.
 	//
 	// example:
 	//
@@ -44,9 +44,9 @@ type CreateDriveRequest struct {
 	//
 	// test01
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the storage resource.
+	// The storage resource ID.
 	//
-	// > Call the DescribeDrives operation to retrieve the storage resource ID.
+	// > You can call the DescribeDrives operation to obtain this value.
 	//
 	// example:
 	//
@@ -58,9 +58,9 @@ type CreateDriveRequest struct {
 	//
 	// test01
 	DriveName *string `json:"DriveName,omitempty" xml:"DriveName,omitempty"`
-	// The ID of the external storage resource.
+	// The external storage resource ID.
 	//
-	// > Call the DescribeDrives operation to retrieve the external storage resource ID.
+	// > You can call the DescribeDrives operation to obtain this value.
 	//
 	// example:
 	//
@@ -78,25 +78,13 @@ type CreateDriveRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The type of the storage resource.
-	//
-	// Valid values:
-	//
-	// - NAS: File Storage NAS
-	//
-	// - PDS: Drive and Photo Service
+	// The storage resource type.
 	//
 	// example:
 	//
 	// NAS
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The usage of the storage resource.
-	//
-	// Valid values:
-	//
-	// - DESKTOP: data disk space
-	//
-	// - USER_PROFILE: space for personal data of the user
+	// The purpose of the storage resource.
 	//
 	// example:
 	//

@@ -22,9 +22,9 @@ type iDescribeConfigGroupResponseBody interface {
 }
 
 type DescribeConfigGroupResponseBody struct {
-	// The configuration groups.
+	// The configuration group information.
 	Data []*DescribeConfigGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
@@ -36,13 +36,13 @@ type DescribeConfigGroupResponseBody struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of query results.
 	//
 	// example:
 	//
@@ -117,13 +117,13 @@ func (s *DescribeConfigGroupResponseBody) Validate() error {
 }
 
 type DescribeConfigGroupResponseBodyData struct {
-	// The number of resources that are bound to the configuration group.
+	// The number of resources bound to the configuration group.
 	//
 	// example:
 	//
 	// 4
 	BindCount *int32 `json:"BindCount,omitempty" xml:"BindCount,omitempty"`
-	// The number of bound cloud computers.
+	// The quantity information of resources bound to the configuration group.
 	BindCountMap map[string]*int32 `json:"BindCountMap,omitempty" xml:"BindCountMap,omitempty"`
 	// The description of the configuration group.
 	//
@@ -131,65 +131,47 @@ type DescribeConfigGroupResponseBodyData struct {
 	//
 	// Scheduled task information
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the configuration group.
+	// The configuration group ID.
 	//
 	// example:
 	//
 	// ccg-0cid8v30an12****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// Used for frontend display. The system scheduled task description uses a code.
+	// Used for frontend display. The code for the system scheduled task description.
 	//
 	// example:
 	//
 	// INNER_TIMER_10_MINUTES_HIBERNATE_NO_UPDATE_DESC
 	InnerTimerDesc *string `json:"InnerTimerDesc,omitempty" xml:"InnerTimerDesc,omitempty"`
-	// Used for frontend display; maps the system scheduled task name to a code.
+	// Used for frontend display. The mapping code for the system scheduled task name.
 	//
 	// example:
 	//
 	// INNER_TIMER_10_MINUTES_HIBERNATE_NO_UPDATE
 	InnerTimerName *string `json:"InnerTimerName,omitempty" xml:"InnerTimerName,omitempty"`
-	// Used for system scheduled task checks. The current scheduled task does not support detach or attach operations.
+	// Used by system scheduled task check. The current scheduled task does not support unbinding or binding.
 	IsBind *bool `json:"IsBind,omitempty" xml:"IsBind,omitempty"`
-	// Used for system scheduled task checks. The current scheduled task does not support modification.
+	// Used by system scheduled task check. The current scheduled task does not support modification.
 	IsUpdate *bool `json:"IsUpdate,omitempty" xml:"IsUpdate,omitempty"`
-	// The name of the configuration group.
+	// The configuration group name.
 	//
 	// example:
 	//
 	// Scheduled task
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The service type of the configuration group.
-	//
-	// Valid values:
-	//
-	// 	- CLOUD_DESKTOP: the cloud computer service.
+	// The product type used by the configuration group.
 	//
 	// example:
 	//
 	// CLOUD_DESKTOP
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The state of the configuration group.
-	//
-	// Valid values:
-	//
-	// 	- AVAILABLE: The configuration group is available.
-	//
-	// 	- UNAVAILABLE: The configuration group is deleted.
-	//
-	// 	- DELETING: The configuration group is being deleted.
-	//
-	// 	- UPDATING: The configuration group is being modified.
+	// The configuration group status.
 	//
 	// example:
 	//
 	// AVAILABLE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the configuration group.
-	//
-	// Valid values:
-	//
-	// 	- Timer: the scheduled task type.
+	// The configuration group type.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iQueryHistoryActiveUserCountResponseBody interface {
 }
 
 type QueryHistoryActiveUserCountResponseBody struct {
-	// The active user statistics.
+	// The active user count metrics.
 	ActiveUserCount *QueryHistoryActiveUserCountResponseBodyActiveUserCount `json:"ActiveUserCount,omitempty" xml:"ActiveUserCount,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,13 +62,13 @@ func (s *QueryHistoryActiveUserCountResponseBody) Validate() error {
 }
 
 type QueryHistoryActiveUserCountResponseBodyActiveUserCount struct {
-	// The number of daily active users.
+	// The daily active user count.
 	//
 	// example:
 	//
 	// 20
 	DailyActiveUserCount *int32 `json:"DailyActiveUserCount,omitempty" xml:"DailyActiveUserCount,omitempty"`
-	// The number of monthly active users.
+	// The monthly active user count.
 	//
 	// example:
 	//

@@ -58,7 +58,7 @@ type ModifyTemplateRequest struct {
 	AutoRenew    *bool                                `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	ChargeType   *string                              `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	DataDiskList []*ModifyTemplateRequestDataDiskList `json:"DataDiskList,omitempty" xml:"DataDiskList,omitempty" type:"Repeated"`
-	// The default language to set when the WUYING Workspace starts. This parameter is valid only when you create a WUYING Workspace from an OS image.
+	// The default language that is set when the cloud computer starts. This parameter takes effect only when a system image is used to create the cloud computer.
 	//
 	// example:
 	//
@@ -66,15 +66,15 @@ type ModifyTemplateRequest struct {
 	DefaultLanguage *string `json:"DefaultLanguage,omitempty" xml:"DefaultLanguage,omitempty"`
 	// The description of the template. The description must meet the following requirements:
 	//
-	// - It must be 2 to 256 characters in length. It cannot start with `http://` or `https://`.
+	// - The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
-	// - It can contain Chinese characters, letters, digits, spaces, and special characters. Use line breaks to start a new line.
+	// - The description can contain Chinese characters, letters, digits, spaces, and special characters. Line breaks are supported.
 	//
 	// example:
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the WUYING Workspace image. You can find the ID on the Image Management page. OS images and custom images are supported.
+	// The ID of the cloud computer image. You can query the ID on the image management page. System images and custom images are supported.
 	//
 	// example:
 	//
@@ -89,30 +89,30 @@ type ModifyTemplateRequest struct {
 	// pg-gx2x1dhsmthe9****
 	PolicyGroupId       *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
 	PostPaidAfterUsedUp *bool   `json:"PostPaidAfterUsedUp,omitempty" xml:"PostPaidAfterUsedUp,omitempty"`
-	// The region-specific template configurations. You can specify configurations for multiple regions. The system matches the configuration based on the specific region.
+	// The region-specific template configurations. Multiple configurations are supported. The configuration that matches the specific region is used.
 	//
-	// > You can specify configurations for up to 20 regions.
+	// > A maximum of 20 region configurations are supported.
 	RegionConfigList []*ModifyTemplateRequestRegionConfigList `json:"RegionConfigList,omitempty" xml:"RegionConfigList,omitempty" type:"Repeated"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-a5fqjjqaejt***
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Tags for the cloud computer, in key-value format. You can specify up to 20 tags.
+	// The tags of the cloud computer in key-value format. A maximum of 20 tags can be specified.
 	ResourceTagList []*ModifyTemplateRequestResourceTagList `json:"ResourceTagList,omitempty" xml:"ResourceTagList,omitempty" type:"Repeated"`
 	SiteConfigList  []*ModifyTemplateRequestSiteConfigList  `json:"SiteConfigList,omitempty" xml:"SiteConfigList,omitempty" type:"Repeated"`
-	// The type of the system disk.
+	// The type of the system cloud disk.
 	//
-	// > Enhanced SSD (ESSD) disks are supported only by cloud computers with high clock speeds and powerful graphics capabilities.
+	// > Only high-frequency and GPU-accelerated cloud computer specifications support ESSD cloud disks.
 	//
 	// example:
 	//
 	// AutoPL
 	SystemDiskPerformanceLevel *string `json:"SystemDiskPerformanceLevel,omitempty" xml:"SystemDiskPerformanceLevel,omitempty"`
-	// The size of the system disk. Unit: GiB. The value must be between 40 and 500, inclusive. The step size is 10 GiB.
+	// The size of the system cloud disk. Unit: GiB. Valid values: 40 to 500. The value must be a multiple of 10.
 	//
-	// > The system disk size cannot be smaller than the size of the image.
+	// > The system cloud disk size cannot be smaller than the size of the configured image.
 	//
 	// example:
 	//
@@ -128,17 +128,17 @@ type ModifyTemplateRequest struct {
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The name of the template. The name must meet the following requirements:
 	//
-	// - It must be 2 to 126 characters in length.
+	// - The name must be 2 to 126 characters in length and can contain letters and Chinese characters.
 	//
-	// - It must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
+	// - The name must start with a letter or a Chinese character. The name cannot start with `http://` or `https://`.
 	//
-	// - It can contain letters, digits, Chinese characters, colons (:), underscores (_), and hyphens (-). It cannot contain periods (.).
+	// - The name can contain letters, digits, Chinese characters, colons (:), underscores (_), or hyphens (-). Periods (.) are not supported.
 	//
 	// example:
 	//
 	// My cloud desktop template 001
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The ID of the configuration group.
+	// The configuration group ID.
 	//
 	// example:
 	//
@@ -385,9 +385,9 @@ func (s *ModifyTemplateRequest) Validate() error {
 }
 
 type ModifyTemplateRequestDataDiskList struct {
-	// The performance level of the data disk. The default value is `AutoPL`.
+	// The performance level of the data cloud disk. Default value: `AutoPL`.
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	// The size of the data disk. Unit: GiB. The value must be between 40 and 2040, inclusive. The step size is 10 GiB.
+	// The size of the data cloud disk. Unit: GiB. Valid values: 40 to 2040. The value must be a multiple of 10.
 	//
 	// example:
 	//
@@ -426,19 +426,19 @@ func (s *ModifyTemplateRequestDataDiskList) Validate() error {
 }
 
 type ModifyTemplateRequestRegionConfigList struct {
-	// The ID of the workspace.
+	// The office network ID.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-709****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to obtain a list of regions that WUYING Workspace supports.
+	// The region ID. Call [DescribeRegions](~~DescribeRegions~~) to query the list of regions supported by Elastic Desktop Service.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the cloud desktop instance type.
+	// The cloud computer specification ID.
 	//
 	// example:
 	//
@@ -450,19 +450,19 @@ type ModifyTemplateRequestRegionConfigList struct {
 	//
 	// sp-35fvn8m2*****
 	SnapshotPolicyId *string `json:"SnapshotPolicyId,omitempty" xml:"SnapshotPolicyId,omitempty"`
-	// The ID of the vSwitch.
+	// The subnet ID.
 	//
 	// example:
 	//
 	// vsw-adjrehad1****
 	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
-	// Specifies whether to enable disk encryption.
+	// Specifies whether to enable cloud disk encryption.
 	//
 	// example:
 	//
 	// false
 	VolumeEncryptionEnable *bool `json:"VolumeEncryptionEnable,omitempty" xml:"VolumeEncryptionEnable,omitempty"`
-	// The ID of the KMS key to use when disk encryption is enabled.
+	// The ID of the KMS key used when cloud disk encryption is enabled.
 	//
 	// example:
 	//

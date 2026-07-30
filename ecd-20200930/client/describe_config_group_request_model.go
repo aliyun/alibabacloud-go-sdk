@@ -30,55 +30,47 @@ type iDescribeConfigGroupRequest interface {
 }
 
 type DescribeConfigGroupRequest struct {
-	// The ID of the configuration group.
+	// The configuration group ID.
 	//
 	// example:
 	//
 	// cg-i1ruuudp92qpj****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The IDs of the configuration groups.
+	// The list of configuration group IDs.
 	GroupIds []*string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
-	// The name of the configuration group.
+	// The configuration group name.
 	//
 	// example:
 	//
 	// Scheduled task configuration
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page in a paged query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The service type of the configuration group.
-	//
-	// Valid value:
-	//
-	// 	- CLOUD_DESKTOP: the cloud computer service.
+	// The product type used by the configuration group.
 	//
 	// example:
 	//
 	// CLOUD_DESKTOP
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The ID of the region. Set the value to `cn-shanghai`.
+	// The region ID. This feature is not region-specific. Set this parameter to `cn-shanghai`.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The status of the configuration groups.
+	// The list of configuration group statuses.
 	Statuses []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
-	// The type of the configuration group.
-	//
-	// Valid value:
-	//
-	// 	- Timer: the scheduled task type.
+	// The configuration group type.
 	//
 	// example:
 	//

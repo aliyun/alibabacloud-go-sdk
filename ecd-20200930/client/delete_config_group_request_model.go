@@ -16,9 +16,9 @@ type iDeleteConfigGroupRequest interface {
 }
 
 type DeleteConfigGroupRequest struct {
-	// The IDs of the configuration groups that you want to delete.
+	// The list of configuration group IDs to delete.
 	GroupIds []*string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
-	// The ID of the region. Set the value to `cn-shanghai`.
+	// The region ID. This operation is not region-specific. Set this parameter to `cn-shanghai`.
 	//
 	// example:
 	//

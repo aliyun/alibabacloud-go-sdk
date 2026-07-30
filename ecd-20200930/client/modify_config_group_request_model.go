@@ -26,7 +26,7 @@ type ModifyConfigGroupRequest struct {
 	//
 	// Scheduled task
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the configuration group.
+	// The configuration group ID.
 	//
 	// This parameter is required.
 	//
@@ -34,13 +34,13 @@ type ModifyConfigGroupRequest struct {
 	//
 	// cg-i1ruuudp92qpj****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the configuration group.
+	// The configuration group name.
 	//
 	// example:
 	//
 	// Scheduled task
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the region. Set the value to `cn-shanghai`.
+	// The region ID. This operation is not region-specific. Set this parameter to `cn-shanghai`.
 	//
 	// example:
 	//

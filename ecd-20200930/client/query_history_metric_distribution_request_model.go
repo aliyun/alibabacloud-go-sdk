@@ -20,21 +20,21 @@ type iQueryHistoryMetricDistributionRequest interface {
 }
 
 type QueryHistoryMetricDistributionRequest struct {
-	// The end date of the query period. The date must be in the `YYYY-MM-DD` format. The default value is T-1.
+	// The end date for statistics. Format: "YYYY-MM-DD". Default value: T-1.
 	//
 	// example:
 	//
 	// 2026-04-01
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The name of the metric to query.
+	// The monitoring metrics type.
 	//
 	// example:
 	//
 	// LOAD_SCORE
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// An array of custom value ranges.
+	// The custom value ranges.
 	Ranges []*QueryHistoryMetricDistributionRequestRanges `json:"Ranges,omitempty" xml:"Ranges,omitempty" type:"Repeated"`
-	// The start date of the query period. The date must be in the `YYYY-MM-DD` format. The default value is T-1.
+	// The start date for statistics. Format: "YYYY-MM-DD". Default value: T-1.
 	//
 	// example:
 	//
@@ -100,31 +100,31 @@ func (s *QueryHistoryMetricDistributionRequest) Validate() error {
 }
 
 type QueryHistoryMetricDistributionRequestRanges struct {
-	// Specifies whether to include the maximum value in the range. The default value is `false`.
+	// Specifies whether to include the maximum value. Default value: false.
 	//
 	// example:
 	//
 	// false
 	IncludeMax *bool `json:"IncludeMax,omitempty" xml:"IncludeMax,omitempty"`
-	// Specifies whether to include the minimum value in the range. The default value is `true`.
+	// Specifies whether to include the minimum value. Default value: true.
 	//
 	// example:
 	//
 	// true
 	IncludeMin *bool `json:"IncludeMin,omitempty" xml:"IncludeMin,omitempty"`
-	// The label for the value range. This label is returned in the response.
+	// The range label, which is used in the response.
 	//
 	// example:
 	//
 	// label-02\\"
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The maximum value of the value range.
+	// The maximum value.
 	//
 	// example:
 	//
 	// 20
 	Max *float32 `json:"Max,omitempty" xml:"Max,omitempty"`
-	// The minimum value of the value range.
+	// The minimum value.
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iBindConfigGroupResponseBody interface {
 }
 
 type BindConfigGroupResponseBody struct {
-	// The ID of the configuration group.
+	// The configuration group ID.
 	//
 	// example:
 	//
 	// ccg-0chlk9b65lj****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

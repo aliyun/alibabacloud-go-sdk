@@ -40,7 +40,7 @@ type DescribeCenterPolicyListRequest struct {
 	// 1
 	BusinessType *int32  `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
 	ModelLibrary *string `json:"ModelLibrary,omitempty" xml:"ModelLibrary,omitempty"`
-	// The page number of the current page in a paged query. Paging starts from page 1.
+	// The page number of the current page in a paging query.
 	//
 	// Default value: 1.
 	//
@@ -48,7 +48,7 @@ type DescribeCenterPolicyListRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of entries per page in a paged query. Paging is used to return results in batches.
+	// The maximum number of entries per page in a paging query.
 	//
 	// example:
 	//

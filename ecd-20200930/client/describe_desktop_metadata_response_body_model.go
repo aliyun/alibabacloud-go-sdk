@@ -147,7 +147,7 @@ type DescribeDesktopMetadataResponseBodyDesktops struct {
 	//
 	// eds.general.2c8g
 	DesktopType *string `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
-	// The time when the cloud desktop expires. This value is returned only for cloud desktops whose billable methods is subscription.
+	// The time when the cloud desktop expires. This value is returned only for cloud desktops that use the subscription billable method.
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ type DescribeDesktopMetadataResponseBodyDesktops struct {
 	//
 	// example:
 	//
-	// China (Shanghai)
+	// 华东2（上海）
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// The management status of the cloud desktop.
 	ManagementFlags []*string `json:"ManagementFlags,omitempty" xml:"ManagementFlags,omitempty" type:"Repeated"`
@@ -203,7 +203,7 @@ type DescribeDesktopMetadataResponseBodyDesktops struct {
 	//
 	// serverless_new
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
-	// The start time of the cloud desktop.
+	// The time when the cloud desktop was started.
 	//
 	// example:
 	//

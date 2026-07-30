@@ -171,7 +171,7 @@ type CreateEcdReportTaskRequestFilterList struct {
 	//
 	// - PolicyId: the policy ID.
 	//
-	// - Tag:{Tag Key}: the cloud computer tag. To query by multiple tags, pass in multiple Filter objects.
+	// - Tag:{Tag key}: the cloud computer tag. To query by multiple tags, pass in multiple Filter objects.
 	//
 	// example:
 	//

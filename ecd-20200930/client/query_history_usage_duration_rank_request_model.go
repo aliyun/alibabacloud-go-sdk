@@ -28,25 +28,25 @@ type QueryHistoryUsageDurationRankRequest struct {
 	//
 	// 1
 	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The end date of the query in `YYYY-MM-DD` format. You can query data within the last 90 days.
+	// The end date of the query. Format: YYYY-MM-DD. Supports querying data within a maximum of 90 days.
 	//
 	// example:
 	//
 	// 2026-04-19
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The number of entries to return. The default value is 5, and the maximum value is 200.
+	// The number of results to return. Default value: 5. Maximum value: 200.
 	//
 	// example:
 	//
 	// 8
 	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// The token that is used to retrieve the next page of results. You can obtain this token from the response to the previous request.
+	// The paging token for the next query. Obtained from the previous response.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The start date of the query in `YYYY-MM-DD` format. You can query data within the last 90 days.
+	// The start date of the query. Format: YYYY-MM-DD. Supports querying data within a maximum of 90 days.
 	//
 	// example:
 	//

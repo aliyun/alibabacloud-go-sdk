@@ -14,7 +14,7 @@ type iQueryHistoryActiveUserCountRequest interface {
 }
 
 type QueryHistoryActiveUserCountRequest struct {
-	// The date for which to query data, in YYYY-MM-DD format. Default: the previous day (T-1).
+	// The statistical date. Format: "YYYY-MM-DD". Default value: T-1.
 	//
 	// example:
 	//

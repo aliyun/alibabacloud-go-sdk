@@ -1484,7 +1484,7 @@ func (client *Client) BatchModifyEntitlement(request *BatchModifyEntitlementRequ
 
 // Summary:
 //
-// Binds a configuration group to resources.
+// Associates a configuration group with a cloud computer or resource group.
 //
 // @param request - BindConfigGroupRequest
 //
@@ -1536,7 +1536,7 @@ func (client *Client) BindConfigGroupWithOptions(request *BindConfigGroupRequest
 
 // Summary:
 //
-// Binds a configuration group to resources.
+// Associates a configuration group with a cloud computer or resource group.
 //
 // @param request - BindConfigGroupRequest
 //
@@ -4176,7 +4176,7 @@ func (client *Client) CreateCloudDriveUsers(request *CreateCloudDriveUsersReques
 
 // Summary:
 //
-// Create a configuration group. A configuration group contains settings for scheduled tasks on cloud desktops.
+// Creates a configuration group. A configuration group contains the configuration information of scheduled tasks in a cloud computer center.
 //
 // @param request - CreateConfigGroupRequest
 //
@@ -4240,7 +4240,7 @@ func (client *Client) CreateConfigGroupWithOptions(request *CreateConfigGroupReq
 
 // Summary:
 //
-// Create a configuration group. A configuration group contains settings for scheduled tasks on cloud desktops.
+// Creates a configuration group. A configuration group contains the configuration information of scheduled tasks in a cloud computer center.
 //
 // @param request - CreateConfigGroupRequest
 //
@@ -5712,29 +5712,17 @@ func (client *Client) CreateImage(request *CreateImageRequest) (_result *CreateI
 
 // Summary:
 //
-// Create a NAS file system.
+// Creates a NAS file system.
 //
 // Description:
 //
-// <props="china">
+// - You can create one NAS file system for each standard office network to enable file sharing among cloud computers within the office network.
 //
-// - Each standard workspace can create one NAS file system to meet the need for sharing files between cloud desktops in the workspace.
+// - The system performs automatic creation of a general-purpose NAS file system (with storage-optimized and compute-optimized instance storage types, offering capacities of 10 PiB and 1 PiB respectively) and generates a default mount target.
 //
-// - The system will automatically create a general-purpose NAS file system (with storage specifications of Capacity and Performance, with capacities of 10 PiB and 1 PiB respectively) and generate a default mount point.
+// - The NAS file system uses pay-as-you-go billing by default. You are charged based on the actual storage usage. You can also purchase resource plans to offset the storage usage.
 //
-// - The NAS file system uses pay-as-you-go by default. You need to pay for the actual storage usage. You can also purchase resource packages to offset the storage usage.
-//
-// For more information, see [Creating Shared Storage NAS](https://help.aliyun.com/document_detail/214481.html).
-//
-// <props="intl">
-//
-// - Each standard workspace can create one NAS file system to meet the need for sharing files between cloud desktops in the workspace.
-//
-// - The system will automatically create a general-purpose NAS file system (with storage specifications of Capacity and Performance, with capacities of 10 PiB and 1 PiB respectively) and generate a default mount point.
-//
-// - The NAS file system uses pay-as-you-go by default. You need to pay for the actual storage usage. You can also purchase storage packages to offset the storage usage.
-//
-// For more information, see [Creating Shared Storage NAS](https://help.aliyun.com/document_detail/214481.html).
+// For more information, see [Create shared storage NAS](https://help.aliyun.com/document_detail/214481.html).
 //
 // @param request - CreateNASFileSystemRequest
 //
@@ -5763,6 +5751,10 @@ func (client *Client) CreateNASFileSystemWithOptions(request *CreateNASFileSyste
 
 	if !dara.IsNil(request.OfficeSiteId) {
 		query["OfficeSiteId"] = request.OfficeSiteId
+	}
+
+	if !dara.IsNil(request.ProtocolType) {
+		query["ProtocolType"] = request.ProtocolType
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -5798,29 +5790,17 @@ func (client *Client) CreateNASFileSystemWithOptions(request *CreateNASFileSyste
 
 // Summary:
 //
-// Create a NAS file system.
+// Creates a NAS file system.
 //
 // Description:
 //
-// <props="china">
+// - You can create one NAS file system for each standard office network to enable file sharing among cloud computers within the office network.
 //
-// - Each standard workspace can create one NAS file system to meet the need for sharing files between cloud desktops in the workspace.
+// - The system performs automatic creation of a general-purpose NAS file system (with storage-optimized and compute-optimized instance storage types, offering capacities of 10 PiB and 1 PiB respectively) and generates a default mount target.
 //
-// - The system will automatically create a general-purpose NAS file system (with storage specifications of Capacity and Performance, with capacities of 10 PiB and 1 PiB respectively) and generate a default mount point.
+// - The NAS file system uses pay-as-you-go billing by default. You are charged based on the actual storage usage. You can also purchase resource plans to offset the storage usage.
 //
-// - The NAS file system uses pay-as-you-go by default. You need to pay for the actual storage usage. You can also purchase resource packages to offset the storage usage.
-//
-// For more information, see [Creating Shared Storage NAS](https://help.aliyun.com/document_detail/214481.html).
-//
-// <props="intl">
-//
-// - Each standard workspace can create one NAS file system to meet the need for sharing files between cloud desktops in the workspace.
-//
-// - The system will automatically create a general-purpose NAS file system (with storage specifications of Capacity and Performance, with capacities of 10 PiB and 1 PiB respectively) and generate a default mount point.
-//
-// - The NAS file system uses pay-as-you-go by default. You need to pay for the actual storage usage. You can also purchase storage packages to offset the storage usage.
-//
-// For more information, see [Creating Shared Storage NAS](https://help.aliyun.com/document_detail/214481.html).
+// For more information, see [Create shared storage NAS](https://help.aliyun.com/document_detail/214481.html).
 //
 // @param request - CreateNASFileSystemRequest
 //
@@ -7146,15 +7126,15 @@ func (client *Client) CreateSubnet(request *CreateSubnetRequest) (_result *Creat
 
 // Summary:
 //
-// Creates a custom cloud computer template. A cloud computer template (or simply "template") simplifies the process of creating cloud computers by providing a predefined set of configurations. This eliminates the need to manually configure each setting, saving significant time and effort.
+// Creates a custom cloud computer template. A cloud computer template is a collection of cloud computer configurations that reduces the configuration steps and accelerates the creation of cloud computers.
 //
 // Description:
 //
-// When you call this operation, take note of the following item:
+// When you call this operation, note the following items:
 //
-// - Most parameters in templates are optional. When you create a template, Elastic Desktop Service (EDS) does not validate the existence or correctness of the parameter values you specify. The parameter values in the template are only verified when you use the template to create cloud computers.
+// - Most parameters in an instance launch template are optional. When you create a template, Alibaba Cloud does not strictly verify the existence or validity of parameter values. The validity of parameter values is verified only when you create an instance.
 //
-// - For parameters that include the region attribute in the template, it\\"s important to note that if the specified region doesn\\"t match the region where the template is used to create a cloud computer, those parameters will not take effect.
+// - For parameters that have region attributes in the template, if the region does not match when you use the template to create a cloud computer, these parameters do not take effect.
 //
 // @param request - CreateTemplateRequest
 //
@@ -7285,15 +7265,15 @@ func (client *Client) CreateTemplateWithOptions(request *CreateTemplateRequest, 
 
 // Summary:
 //
-// Creates a custom cloud computer template. A cloud computer template (or simply "template") simplifies the process of creating cloud computers by providing a predefined set of configurations. This eliminates the need to manually configure each setting, saving significant time and effort.
+// Creates a custom cloud computer template. A cloud computer template is a collection of cloud computer configurations that reduces the configuration steps and accelerates the creation of cloud computers.
 //
 // Description:
 //
-// When you call this operation, take note of the following item:
+// When you call this operation, note the following items:
 //
-// - Most parameters in templates are optional. When you create a template, Elastic Desktop Service (EDS) does not validate the existence or correctness of the parameter values you specify. The parameter values in the template are only verified when you use the template to create cloud computers.
+// - Most parameters in an instance launch template are optional. When you create a template, Alibaba Cloud does not strictly verify the existence or validity of parameter values. The validity of parameter values is verified only when you create an instance.
 //
-// - For parameters that include the region attribute in the template, it\\"s important to note that if the specified region doesn\\"t match the region where the template is used to create a cloud computer, those parameters will not take effect.
+// - For parameters that have region attributes in the template, if the region does not match when you use the template to create a cloud computer, these parameters do not take effect.
 //
 // @param request - CreateTemplateRequest
 //
@@ -7302,6 +7282,108 @@ func (client *Client) CreateTemplate(request *CreateTemplateRequest) (_result *C
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateTemplateResponse{}
 	_body, _err := client.CreateTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a virtual bridge.
+//
+// Description:
+//
+// Deleting an MFA device unbinds the MFA device, which is equivalent to resetting or disabling the MFA device. The corresponding AD user must bind a new MFA device the next time they log on to a Cloud Desktop.
+//
+// @param request - CreateVirtualBridgeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVirtualBridgeResponse
+func (client *Client) CreateVirtualBridgeWithOptions(request *CreateVirtualBridgeRequest, runtime *dara.RuntimeOptions) (_result *CreateVirtualBridgeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoPay) {
+		query["AutoPay"] = request.AutoPay
+	}
+
+	if !dara.IsNil(request.AutoRenew) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !dara.IsNil(request.BridgeLevel) {
+		query["BridgeLevel"] = request.BridgeLevel
+	}
+
+	if !dara.IsNil(request.OfficeSiteId) {
+		query["OfficeSiteId"] = request.OfficeSiteId
+	}
+
+	if !dara.IsNil(request.PaidCallBackUrl) {
+		query["PaidCallBackUrl"] = request.PaidCallBackUrl
+	}
+
+	if !dara.IsNil(request.Period) {
+		query["Period"] = request.Period
+	}
+
+	if !dara.IsNil(request.PeriodUnit) {
+		query["PeriodUnit"] = request.PeriodUnit
+	}
+
+	if !dara.IsNil(request.PromotionId) {
+		query["PromotionId"] = request.PromotionId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateVirtualBridge"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateVirtualBridgeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a virtual bridge.
+//
+// Description:
+//
+// Deleting an MFA device unbinds the MFA device, which is equivalent to resetting or disabling the MFA device. The corresponding AD user must bind a new MFA device the next time they log on to a Cloud Desktop.
+//
+// @param request - CreateVirtualBridgeRequest
+//
+// @return CreateVirtualBridgeResponse
+func (client *Client) CreateVirtualBridge(request *CreateVirtualBridgeRequest) (_result *CreateVirtualBridgeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateVirtualBridgeResponse{}
+	_body, _err := client.CreateVirtualBridgeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8113,7 +8195,7 @@ func (client *Client) DeleteDirectories(request *DeleteDirectoriesRequest) (_res
 
 // Summary:
 //
-// Deletes a drive.
+// Deletes a cloud drive.
 //
 // @param request - DeleteDriveRequest
 //
@@ -8161,7 +8243,7 @@ func (client *Client) DeleteDriveWithOptions(request *DeleteDriveRequest, runtim
 
 // Summary:
 //
-// Deletes a drive.
+// Deletes a cloud drive.
 //
 // @param request - DeleteDriveRequest
 //
@@ -9253,11 +9335,11 @@ func (client *Client) DeleteSubnet(request *DeleteSubnetRequest) (_result *Delet
 
 // Summary:
 //
-// Deletes custom cloud computer templates.
+// Deletes a custom cloud computer template.
 //
 // Description:
 //
-// Deleting a template does not affect cloud computers created from it or the associated resources.
+// After the template is deleted, cloud computers that were created based on the template are not affected, and resources associated with the template are not affected.
 //
 // @param request - DeleteTemplatesRequest
 //
@@ -9305,11 +9387,11 @@ func (client *Client) DeleteTemplatesWithOptions(request *DeleteTemplatesRequest
 
 // Summary:
 //
-// Deletes custom cloud computer templates.
+// Deletes a custom cloud computer template.
 //
 // Description:
 //
-// Deleting a template does not affect cloud computers created from it or the associated resources.
+// After the template is deleted, cloud computers that were created based on the template are not affected, and resources associated with the template are not affected.
 //
 // @param request - DeleteTemplatesRequest
 //
@@ -9318,6 +9400,80 @@ func (client *Client) DeleteTemplates(request *DeleteTemplatesRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteTemplatesResponse{}
 	_body, _err := client.DeleteTemplatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the status of a virtual bridge.
+//
+// Description:
+//
+// Deleting an MFA device unbinds the MFA device, which is equivalent to resetting or disabling the MFA device. The corresponding AD user must bind a new MFA device when logging on to Cloud Desktop.
+//
+// @param request - DeleteVirtualBridgeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteVirtualBridgeResponse
+func (client *Client) DeleteVirtualBridgeWithOptions(request *DeleteVirtualBridgeRequest, runtime *dara.RuntimeOptions) (_result *DeleteVirtualBridgeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BridgeId) {
+		query["BridgeId"] = request.BridgeId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteVirtualBridge"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteVirtualBridgeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the status of a virtual bridge.
+//
+// Description:
+//
+// Deleting an MFA device unbinds the MFA device, which is equivalent to resetting or disabling the MFA device. The corresponding AD user must bind a new MFA device when logging on to Cloud Desktop.
+//
+// @param request - DeleteVirtualBridgeRequest
+//
+// @return DeleteVirtualBridgeResponse
+func (client *Client) DeleteVirtualBridge(request *DeleteVirtualBridgeRequest) (_result *DeleteVirtualBridgeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteVirtualBridgeResponse{}
+	_body, _err := client.DeleteVirtualBridgeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9859,7 +10015,7 @@ func (client *Client) DescribeCens(request *DescribeCensRequest) (_result *Descr
 
 // Summary:
 //
-// Queries the details of region-free policies.
+// Queries the details of regionless policies.
 //
 // @param request - DescribeCenterPolicyListRequest
 //
@@ -9935,7 +10091,7 @@ func (client *Client) DescribeCenterPolicyListWithOptions(request *DescribeCente
 
 // Summary:
 //
-// Queries the details of region-free policies.
+// Queries the details of regionless policies.
 //
 // @param request - DescribeCenterPolicyListRequest
 //
@@ -10501,7 +10657,7 @@ func (client *Client) DescribeCloudDriveUsers(request *DescribeCloudDriveUsersRe
 
 // Summary:
 //
-// Query the configuration group list information.
+// Queries the list of configuration groups.
 //
 // @param request - DescribeConfigGroupRequest
 //
@@ -10577,7 +10733,7 @@ func (client *Client) DescribeConfigGroupWithOptions(request *DescribeConfigGrou
 
 // Summary:
 //
-// Query the configuration group list information.
+// Queries the list of configuration groups.
 //
 // @param request - DescribeConfigGroupRequest
 //
@@ -10991,7 +11147,7 @@ func (client *Client) DescribeDesktopInfo(request *DescribeDesktopInfoRequest) (
 //
 // Description:
 //
-// This is a centralized API that only supports queries from the Shanghai and Singapore sites.
+// This is a centralized API operation that supports queries only from the Shanghai and Singapore sites.
 //
 // @param request - DescribeDesktopMetadataRequest
 //
@@ -11095,7 +11251,7 @@ func (client *Client) DescribeDesktopMetadataWithOptions(request *DescribeDeskto
 //
 // Description:
 //
-// This is a centralized API that only supports queries from the Shanghai and Singapore sites.
+// This is a centralized API operation that supports queries only from the Shanghai and Singapore sites.
 //
 // @param request - DescribeDesktopMetadataRequest
 //
@@ -12185,7 +12341,7 @@ func (client *Client) DescribeDrives(request *DescribeDrivesRequest) (_result *D
 
 // Summary:
 //
-// Queries data report export tasks.
+// Queries the list of data report export tasks.
 //
 // @param request - DescribeEcdReportTasksRequest
 //
@@ -12253,7 +12409,7 @@ func (client *Client) DescribeEcdReportTasksWithOptions(request *DescribeEcdRepo
 
 // Summary:
 //
-// Queries data report export tasks.
+// Queries the list of data report export tasks.
 //
 // @param request - DescribeEcdReportTasksRequest
 //
@@ -12611,7 +12767,7 @@ func (client *Client) DescribeFotaTasks(request *DescribeFotaTasksRequest) (_res
 
 // Summary:
 //
-// Queries the basic information of all recent cloud desktops and their usage duration records.
+// Queries the basic information about all recent cloud desktops and the corresponding usage duration records.
 //
 // Description:
 //
@@ -12737,7 +12893,7 @@ func (client *Client) DescribeGlobalDesktopRecordsWithOptions(request *DescribeG
 
 // Summary:
 //
-// Queries the basic information of all recent cloud desktops and their usage duration records.
+// Queries the basic information about all recent cloud desktops and the corresponding usage duration records.
 //
 // Description:
 //
@@ -12765,11 +12921,11 @@ func (client *Client) DescribeGlobalDesktopRecords(request *DescribeGlobalDeskto
 
 // Summary:
 //
-// Queries for batch information from the execution history of scheduled tasks and returns aggregated results.
+// Queries the batch information of scheduled task execution history and returns aggregated execution results.
 //
 // Description:
 //
-// - This API uses a centralized endpoint. You can call this API only from the China (Shanghai) or Singapore (Singapore) regions.
+// - This operation uses a centralized endpoint. The access points are Shanghai or Singapore. Calls from other regions are not supported.
 //
 // @param request - DescribeGlobalTimerBatchesRequest
 //
@@ -12837,11 +12993,11 @@ func (client *Client) DescribeGlobalTimerBatchesWithOptions(request *DescribeGlo
 
 // Summary:
 //
-// Queries for batch information from the execution history of scheduled tasks and returns aggregated results.
+// Queries the batch information of scheduled task execution history and returns aggregated execution results.
 //
 // Description:
 //
-// - This API uses a centralized endpoint. You can call this API only from the China (Shanghai) or Singapore (Singapore) regions.
+// - This operation uses a centralized endpoint. The access points are Shanghai or Singapore. Calls from other regions are not supported.
 //
 // @param request - DescribeGlobalTimerBatchesRequest
 //
@@ -12859,7 +13015,7 @@ func (client *Client) DescribeGlobalTimerBatches(request *DescribeGlobalTimerBat
 
 // Summary:
 //
-// This operation queries the scheduled task execution records for EDS across all regions.
+// Queries the execution records of scheduled tasks for cloud computers across regions.
 //
 // @param request - DescribeGlobalTimerRecordsRequest
 //
@@ -12955,7 +13111,7 @@ func (client *Client) DescribeGlobalTimerRecordsWithOptions(request *DescribeGlo
 
 // Summary:
 //
-// This operation queries the scheduled task execution records for EDS across all regions.
+// Queries the execution records of scheduled tasks for cloud computers across regions.
 //
 // @param request - DescribeGlobalTimerRecordsRequest
 //
@@ -13673,7 +13829,7 @@ func (client *Client) DescribeModificationPrice(request *DescribeModificationPri
 
 // Summary:
 //
-// Queries NAS file systems.
+// Queries NAS file system information.
 //
 // @param request - DescribeNASFileSystemsRequest
 //
@@ -13737,7 +13893,7 @@ func (client *Client) DescribeNASFileSystemsWithOptions(request *DescribeNASFile
 
 // Summary:
 //
-// Queries NAS file systems.
+// Queries NAS file system information.
 //
 // @param request - DescribeNASFileSystemsRequest
 //
@@ -13919,6 +14075,96 @@ func (client *Client) DescribeNetworkPackages(request *DescribeNetworkPackagesRe
 
 // Summary:
 //
+// Queries virtual bridge information.
+//
+// Description:
+//
+// Before deleting an office network, ensure that the following operations are completed:
+//
+// - All cloud computers in the office network are released.
+//
+// - Related data that needs to be retained is backed up.
+//
+//	Warning: Related resources and data cannot be recovered after deletion. Proceed with caution.
+//
+// @param request - DescribeOfficeSiteBridgeInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOfficeSiteBridgeInfoResponse
+func (client *Client) DescribeOfficeSiteBridgeInfoWithOptions(request *DescribeOfficeSiteBridgeInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeOfficeSiteBridgeInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BridgeId) {
+		query["BridgeId"] = request.BridgeId
+	}
+
+	if !dara.IsNil(request.OfficeSiteId) {
+		query["OfficeSiteId"] = request.OfficeSiteId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeOfficeSiteBridgeInfo"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeOfficeSiteBridgeInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries virtual bridge information.
+//
+// Description:
+//
+// Before deleting an office network, ensure that the following operations are completed:
+//
+// - All cloud computers in the office network are released.
+//
+// - Related data that needs to be retained is backed up.
+//
+//	Warning: Related resources and data cannot be recovered after deletion. Proceed with caution.
+//
+// @param request - DescribeOfficeSiteBridgeInfoRequest
+//
+// @return DescribeOfficeSiteBridgeInfoResponse
+func (client *Client) DescribeOfficeSiteBridgeInfo(request *DescribeOfficeSiteBridgeInfoRequest) (_result *DescribeOfficeSiteBridgeInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeOfficeSiteBridgeInfoResponse{}
+	_body, _err := client.DescribeOfficeSiteBridgeInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Gets all properties of an office network, including its ID, name, status, and creation time.
 //
 // @param request - DescribeOfficeSitesRequest
@@ -14013,11 +14259,11 @@ func (client *Client) DescribeOfficeSites(request *DescribeOfficeSitesRequest) (
 
 // Summary:
 //
-// Queries metrics such as the online user count and the assigned user count.
+// Queries metrics such as the number of online users and the number of users with assigned desktops.
 //
 // Description:
 //
-// Before you call this operation, make sure that you are familiar with the resource types and product types of Elastic Desktop Service.
+// Make sure that you are familiar with the resource types and product types of WUYING Workspace before you call this operation.
 //
 // @param request - DescribeOnlineUserCountRequest
 //
@@ -14073,11 +14319,11 @@ func (client *Client) DescribeOnlineUserCountWithOptions(request *DescribeOnline
 
 // Summary:
 //
-// Queries metrics such as the online user count and the assigned user count.
+// Queries metrics such as the number of online users and the number of users with assigned desktops.
 //
 // Description:
 //
-// Before you call this operation, make sure that you are familiar with the resource types and product types of Elastic Desktop Service.
+// Make sure that you are familiar with the resource types and product types of WUYING Workspace before you call this operation.
 //
 // @param request - DescribeOnlineUserCountRequest
 //
@@ -15357,13 +15603,13 @@ func (client *Client) DescribeSecurityGroupAttribute(request *DescribeSecurityGr
 
 // Summary:
 //
-// Queries the session statistics of a region.
+// Queries session statistics information across all regions.
 //
 // Description:
 //
-// - This is a central operation and can be called only by using services in the China (Shanghai) region.
+// - This is a centralized API operation that can be called only through the service in the China (Shanghai) region.
 //
-// - You can query session statistics for the past hour.
+// - You can query real-time statistics for up to 1 hour.
 //
 // @param request - DescribeSessionStatisticRequest
 //
@@ -15427,13 +15673,13 @@ func (client *Client) DescribeSessionStatisticWithOptions(request *DescribeSessi
 
 // Summary:
 //
-// Queries the session statistics of a region.
+// Queries session statistics information across all regions.
 //
 // Description:
 //
-// - This is a central operation and can be called only by using services in the China (Shanghai) region.
+// - This is a centralized API operation that can be called only through the service in the China (Shanghai) region.
 //
-// - You can query session statistics for the past hour.
+// - You can query real-time statistics for up to 1 hour.
 //
 // @param request - DescribeSessionStatisticRequest
 //
@@ -15831,7 +16077,7 @@ func (client *Client) DescribeTemplates(request *DescribeTemplatesRequest) (_res
 
 // Summary:
 //
-// Retrieves details for a specified configuration group.
+// Queries the details of a specified configuration group.
 //
 // @param request - DescribeTimerGroupRequest
 //
@@ -15879,7 +16125,7 @@ func (client *Client) DescribeTimerGroupWithOptions(request *DescribeTimerGroupR
 
 // Summary:
 //
-// Retrieves details for a specified configuration group.
+// Queries the details of a specified configuration group.
 //
 // @param request - DescribeTimerGroupRequest
 //
@@ -17437,11 +17683,11 @@ func (client *Client) GetAsyncTask(request *GetAsyncTaskRequest) (_result *GetAs
 
 // Summary:
 //
-// Obtains the credential that is used to connect to a cloud desktop.
+// Retrieves the connection credential for a cloud computer.
 //
 // Description:
 //
-// The cloud computer must be in the Running state. The ticket obtained by calling this operation will expire in 10 minutes.
+// The cloud computer must be in the Running state. The ticket obtained by calling this operation expires after 10 minutes.
 //
 // @param request - GetConnectionTicketRequest
 //
@@ -17521,11 +17767,11 @@ func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicke
 
 // Summary:
 //
-// Obtains the credential that is used to connect to a cloud desktop.
+// Retrieves the connection credential for a cloud computer.
 //
 // Description:
 //
-// The cloud computer must be in the Running state. The ticket obtained by calling this operation will expire in 10 minutes.
+// The cloud computer must be in the Running state. The ticket obtained by calling this operation expires after 10 minutes.
 //
 // @param request - GetConnectionTicketRequest
 //
@@ -18715,6 +18961,92 @@ func (client *Client) ListUserAdOrganizationUnits(request *ListUserAdOrganizatio
 
 // Summary:
 //
+// Queries a list of virtual bridges.
+//
+// Description:
+//
+// After the device is locked, the status of the MFA device changes to locked (LOCKED), and the corresponding AD account cannot log on to the Wuying terminal because the MFA device cannot be authenticated. You can call [UnlockVirtualMFADevice](~~UnlockVirtualMFADevice~~) to unlock the device.
+//
+// @param request - ListVirtualBridgesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVirtualBridgesResponse
+func (client *Client) ListVirtualBridgesWithOptions(request *ListVirtualBridgesRequest, runtime *dara.RuntimeOptions) (_result *ListVirtualBridgesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BridgeId) {
+		query["BridgeId"] = request.BridgeId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.OfficeSiteId) {
+		query["OfficeSiteId"] = request.OfficeSiteId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListVirtualBridges"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListVirtualBridgesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of virtual bridges.
+//
+// Description:
+//
+// After the device is locked, the status of the MFA device changes to locked (LOCKED), and the corresponding AD account cannot log on to the Wuying terminal because the MFA device cannot be authenticated. You can call [UnlockVirtualMFADevice](~~UnlockVirtualMFADevice~~) to unlock the device.
+//
+// @param request - ListVirtualBridgesRequest
+//
+// @return ListVirtualBridgesResponse
+func (client *Client) ListVirtualBridges(request *ListVirtualBridgesRequest) (_result *ListVirtualBridgesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListVirtualBridgesResponse{}
+	_body, _err := client.ListVirtualBridgesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Locks a multi-factor authentication (MFA) device that is in the NORMAL state.
 //
 // Description:
@@ -19427,7 +19759,7 @@ func (client *Client) ModifyBundle(request *ModifyBundleRequest) (_result *Modif
 
 // Summary:
 //
-// Modifies the attributes of a disk file or folder, such as the file name.
+// Modifies the attributes of a cloud disk file or folder, such as the file name.
 //
 // @param request - ModifyCdsFileRequest
 //
@@ -19495,7 +19827,7 @@ func (client *Client) ModifyCdsFileWithOptions(request *ModifyCdsFileRequest, ru
 
 // Summary:
 //
-// Modifies the attributes of a disk file or folder, such as the file name.
+// Modifies the attributes of a cloud disk file or folder, such as the file name.
 //
 // @param request - ModifyCdsFileRequest
 //
@@ -20511,7 +20843,7 @@ func (client *Client) ModifyCloudDriveUsers(request *ModifyCloudDriveUsersReques
 
 // Summary:
 //
-// Modifies the basic information of a configuration group.
+// Modifies the basic information of a configuration group, including the name and description.
 //
 // @param request - ModifyConfigGroupRequest
 //
@@ -20567,7 +20899,7 @@ func (client *Client) ModifyConfigGroupWithOptions(request *ModifyConfigGroupReq
 
 // Summary:
 //
-// Modifies the basic information of a configuration group.
+// Modifies the basic information of a configuration group, including the name and description.
 //
 // @param request - ModifyConfigGroupRequest
 //
@@ -21659,13 +21991,13 @@ func (client *Client) ModifyDesktopsPolicyGroup(request *ModifyDesktopsPolicyGro
 
 // Summary:
 //
-// Modify the performance level of a cloud desktop\\"s system disk or data disk.
+// Modifies the performance level of the system cloud disk or data cloud disk of a cloud computer.
 //
 // Description:
 //
-// When you create a WUYING Workspace, you can define its specifications using a custom template. Graphics and High-frequency workspaces use Enhanced SSDs (ESSDs) by default, which lets you set the disk capacity and performance level. You can modify the performance level of the system disk or data disk as needed.
+// When you create a cloud computer, you can select specifications by creating a custom template. Enterprise Graphics or High Frequency Office cloud computers use ESSDs by default and support setting disk capacity and performance level (PL). You can change the performance level (PL) of the system cloud disk or data cloud disk as needed.
 //
-// > Only Graphics and High-frequency WUYING Workspaces support modifying the disk performance level.
+// > Only Enterprise Graphics and High Frequency Office cloud computers support changing disk performance levels.
 //
 // @param request - ModifyDiskSpecRequest
 //
@@ -21733,13 +22065,13 @@ func (client *Client) ModifyDiskSpecWithOptions(request *ModifyDiskSpecRequest, 
 
 // Summary:
 //
-// Modify the performance level of a cloud desktop\\"s system disk or data disk.
+// Modifies the performance level of the system cloud disk or data cloud disk of a cloud computer.
 //
 // Description:
 //
-// When you create a WUYING Workspace, you can define its specifications using a custom template. Graphics and High-frequency workspaces use Enhanced SSDs (ESSDs) by default, which lets you set the disk capacity and performance level. You can modify the performance level of the system disk or data disk as needed.
+// When you create a cloud computer, you can select specifications by creating a custom template. Enterprise Graphics or High Frequency Office cloud computers use ESSDs by default and support setting disk capacity and performance level (PL). You can change the performance level (PL) of the system cloud disk or data cloud disk as needed.
 //
-// > Only Graphics and High-frequency WUYING Workspaces support modifying the disk performance level.
+// > Only Enterprise Graphics and High Frequency Office cloud computers support changing disk performance levels.
 //
 // @param request - ModifyDiskSpecRequest
 //
@@ -22055,11 +22387,11 @@ func (client *Client) ModifyImagePermission(request *ModifyImagePermissionReques
 
 // Summary:
 //
-// Modifies the mount target of a File Storage NAS (NAS) file system.
+// Modifies the mount target of a NAS file system.
 //
 // Description:
 //
-// When you create a NAS file system, a mount target is automatically generated. By default, the mount target does not need to be changed. If the mount target is deleted by misoperation, you must specify a new mount target for the NAS file system in the workspace. You can call the [CreateMountTarget](https://help.aliyun.com/document_detail/62621.html) operation to create a mount target.
+// When a NAS file system is created, the system automatically generates a mount target. By default, the mount target does not need to be modified. If the mount target is accidentally deleted, you need to specify a new mount target for the NAS file system of the workspace. You can call [CreateMountTarget](https://help.aliyun.com/document_detail/62621.html) to create a mount target.
 //
 // @param request - ModifyNASDefaultMountTargetRequest
 //
@@ -22111,11 +22443,11 @@ func (client *Client) ModifyNASDefaultMountTargetWithOptions(request *ModifyNASD
 
 // Summary:
 //
-// Modifies the mount target of a File Storage NAS (NAS) file system.
+// Modifies the mount target of a NAS file system.
 //
 // Description:
 //
-// When you create a NAS file system, a mount target is automatically generated. By default, the mount target does not need to be changed. If the mount target is deleted by misoperation, you must specify a new mount target for the NAS file system in the workspace. You can call the [CreateMountTarget](https://help.aliyun.com/document_detail/62621.html) operation to create a mount target.
+// When a NAS file system is created, the system automatically generates a mount target. By default, the mount target does not need to be modified. If the mount target is accidentally deleted, you need to specify a new mount target for the NAS file system of the workspace. You can call [CreateMountTarget](https://help.aliyun.com/document_detail/62621.html) to create a mount target.
 //
 // @param request - ModifyNASDefaultMountTargetRequest
 //
@@ -22464,6 +22796,100 @@ func (client *Client) ModifyOfficeSiteAttribute(request *ModifyOfficeSiteAttribu
 	runtime := &dara.RuntimeOptions{}
 	_result = &ModifyOfficeSiteAttributeResponse{}
 	_body, _err := client.ModifyOfficeSiteAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the bridge information for behavior management.
+//
+// Description:
+//
+// Only AD office networks in the `ERROR` or `REGISTERING` state support modifications to domain name and DNS-related parameters, including `DomainName`, `SubDomainName`, `DnsAddress.N`, and `SubDomainDnsAddress.N`.
+//
+// @param request - ModifyOfficeSiteBridgeInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyOfficeSiteBridgeInfoResponse
+func (client *Client) ModifyOfficeSiteBridgeInfoWithOptions(request *ModifyOfficeSiteBridgeInfoRequest, runtime *dara.RuntimeOptions) (_result *ModifyOfficeSiteBridgeInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BridgeId) {
+		query["BridgeId"] = request.BridgeId
+	}
+
+	if !dara.IsNil(request.BridgeLevel) {
+		query["BridgeLevel"] = request.BridgeLevel
+	}
+
+	if !dara.IsNil(request.BridgeType) {
+		query["BridgeType"] = request.BridgeType
+	}
+
+	if !dara.IsNil(request.EnableBridge) {
+		query["EnableBridge"] = request.EnableBridge
+	}
+
+	if !dara.IsNil(request.License) {
+		query["License"] = request.License
+	}
+
+	if !dara.IsNil(request.OfficeSiteId) {
+		query["OfficeSiteId"] = request.OfficeSiteId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyOfficeSiteBridgeInfo"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyOfficeSiteBridgeInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the bridge information for behavior management.
+//
+// Description:
+//
+// Only AD office networks in the `ERROR` or `REGISTERING` state support modifications to domain name and DNS-related parameters, including `DomainName`, `SubDomainName`, `DnsAddress.N`, and `SubDomainDnsAddress.N`.
+//
+// @param request - ModifyOfficeSiteBridgeInfoRequest
+//
+// @return ModifyOfficeSiteBridgeInfoResponse
+func (client *Client) ModifyOfficeSiteBridgeInfo(request *ModifyOfficeSiteBridgeInfoRequest) (_result *ModifyOfficeSiteBridgeInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyOfficeSiteBridgeInfoResponse{}
+	_body, _err := client.ModifyOfficeSiteBridgeInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23305,13 +23731,11 @@ func (client *Client) ModifySecurityGroupAttribute(request *ModifySecurityGroupA
 
 // Summary:
 //
-// Modifies all parameters of a custom WUYING Workspace template.
+// Modifies all parameters of a custom cloud computer template.
 //
 // Description:
 //
-//	Warning:
-//
-// This operation updates all parameters. To ensure compatibility with the default upgrade logic, any parameter that you do not specify is set to empty.
+//	Warning: To ensure compatibility with the logic for unset parameters and default upgrades in templates, this operation uses a full-parameter update logic. In other words, any parameter that is not specified is treated as being set to empty.
 //
 // @param request - ModifyTemplateRequest
 //
@@ -23438,13 +23862,11 @@ func (client *Client) ModifyTemplateWithOptions(request *ModifyTemplateRequest, 
 
 // Summary:
 //
-// Modifies all parameters of a custom WUYING Workspace template.
+// Modifies all parameters of a custom cloud computer template.
 //
 // Description:
 //
-//	Warning:
-//
-// This operation updates all parameters. To ensure compatibility with the default upgrade logic, any parameter that you do not specify is set to empty.
+//	Warning: To ensure compatibility with the logic for unset parameters and default upgrades in templates, this operation uses a full-parameter update logic. In other words, any parameter that is not specified is treated as being set to empty.
 //
 // @param request - ModifyTemplateRequest
 //
@@ -23462,11 +23884,11 @@ func (client *Client) ModifyTemplate(request *ModifyTemplateRequest) (_result *M
 
 // Summary:
 //
-// Modifies the basic information of a custom cloud computer template, including the template name and template description.
+// Modifies the basic information of a custom cloud computer template, including the template name and description.
 //
 // Description:
 //
-// This operation allows you to modify only the name and description of a custom cloud computer template. To change other parameters of the template, call the [ModifyTemplate](https://help.aliyun.com/document_detail/2925841.html) operation.
+// This operation only modifies the name and description of a custom cloud computer template. To modify the parameters of a custom cloud computer template, use [ModifyTemplate](https://help.aliyun.com/document_detail/2925841.html).
 //
 // @param request - ModifyTemplateBaseInfoRequest
 //
@@ -23518,11 +23940,11 @@ func (client *Client) ModifyTemplateBaseInfoWithOptions(request *ModifyTemplateB
 
 // Summary:
 //
-// Modifies the basic information of a custom cloud computer template, including the template name and template description.
+// Modifies the basic information of a custom cloud computer template, including the template name and description.
 //
 // Description:
 //
-// This operation allows you to modify only the name and description of a custom cloud computer template. To change other parameters of the template, call the [ModifyTemplate](https://help.aliyun.com/document_detail/2925841.html) operation.
+// This operation only modifies the name and description of a custom cloud computer template. To modify the parameters of a custom cloud computer template, use [ModifyTemplate](https://help.aliyun.com/document_detail/2925841.html).
 //
 // @param request - ModifyTemplateBaseInfoRequest
 //
@@ -23540,7 +23962,7 @@ func (client *Client) ModifyTemplateBaseInfo(request *ModifyTemplateBaseInfoRequ
 
 // Summary:
 //
-// Modify configuration group settings, such as those for scheduled tasks.
+// Modifies the settings of a configuration group, such as scheduled task configurations.
 //
 // @param request - ModifyTimerGroupRequest
 //
@@ -23600,7 +24022,7 @@ func (client *Client) ModifyTimerGroupWithOptions(request *ModifyTimerGroupReque
 
 // Summary:
 //
-// Modify configuration group settings, such as those for scheduled tasks.
+// Modifies the settings of a configuration group, such as scheduled task configurations.
 //
 // @param request - ModifyTimerGroupRequest
 //
@@ -23774,6 +24196,186 @@ func (client *Client) ModifyUserToDesktopGroup(request *ModifyUserToDesktopGroup
 
 // Summary:
 //
+// Changes the specifications of a virtual bridge.
+//
+// Description:
+//
+// Deleting an MFA device unbinds the MFA device, which is equivalent to resetting or disabling the MFA device. The corresponding AD user must bind a new MFA device when logging on to a cloud desktop.
+//
+// @param request - ModifyVirtualBridgeLevelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyVirtualBridgeLevelResponse
+func (client *Client) ModifyVirtualBridgeLevelWithOptions(request *ModifyVirtualBridgeLevelRequest, runtime *dara.RuntimeOptions) (_result *ModifyVirtualBridgeLevelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoPay) {
+		query["AutoPay"] = request.AutoPay
+	}
+
+	if !dara.IsNil(request.AutoRenew) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !dara.IsNil(request.BridgeId) {
+		query["BridgeId"] = request.BridgeId
+	}
+
+	if !dara.IsNil(request.BridgeLevel) {
+		query["BridgeLevel"] = request.BridgeLevel
+	}
+
+	if !dara.IsNil(request.PaidCallBackUrl) {
+		query["PaidCallBackUrl"] = request.PaidCallBackUrl
+	}
+
+	if !dara.IsNil(request.Period) {
+		query["Period"] = request.Period
+	}
+
+	if !dara.IsNil(request.PeriodUnit) {
+		query["PeriodUnit"] = request.PeriodUnit
+	}
+
+	if !dara.IsNil(request.PromotionId) {
+		query["PromotionId"] = request.PromotionId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyVirtualBridgeLevel"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyVirtualBridgeLevelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Changes the specifications of a virtual bridge.
+//
+// Description:
+//
+// Deleting an MFA device unbinds the MFA device, which is equivalent to resetting or disabling the MFA device. The corresponding AD user must bind a new MFA device when logging on to a cloud desktop.
+//
+// @param request - ModifyVirtualBridgeLevelRequest
+//
+// @return ModifyVirtualBridgeLevelResponse
+func (client *Client) ModifyVirtualBridgeLevel(request *ModifyVirtualBridgeLevelRequest) (_result *ModifyVirtualBridgeLevelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyVirtualBridgeLevelResponse{}
+	_body, _err := client.ModifyVirtualBridgeLevelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the status of a virtual bridge.
+//
+// Description:
+//
+// Only custom images in the active (Available) state can be modified.
+//
+// @param request - ModifyVirtualBridgeStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyVirtualBridgeStatusResponse
+func (client *Client) ModifyVirtualBridgeStatusWithOptions(request *ModifyVirtualBridgeStatusRequest, runtime *dara.RuntimeOptions) (_result *ModifyVirtualBridgeStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BridgeId) {
+		query["BridgeId"] = request.BridgeId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyVirtualBridgeStatus"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyVirtualBridgeStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the status of a virtual bridge.
+//
+// Description:
+//
+// Only custom images in the active (Available) state can be modified.
+//
+// @param request - ModifyVirtualBridgeStatusRequest
+//
+// @return ModifyVirtualBridgeStatusResponse
+func (client *Client) ModifyVirtualBridgeStatus(request *ModifyVirtualBridgeStatusRequest) (_result *ModifyVirtualBridgeStatusResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyVirtualBridgeStatusResponse{}
+	_body, _err := client.ModifyVirtualBridgeStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Moves a file or folder in a cloud disk to a new location.
 //
 // @param request - MoveCdsFileRequest
@@ -23860,17 +24462,17 @@ func (client *Client) MoveCdsFile(request *MoveCdsFileRequest) (_result *MoveCds
 
 // Summary:
 //
-// Queries the historical daily and monthly active user counts for a specified date.
+// Queries the historical daily active user count and monthly active user count for a specified date.
 //
 // Description:
 //
-// ## Usage notes
+// ## Request description
 //
-// - The `AliUid` parameter is automatically resolved from your AccessKey pair and does not need to be specified in the request.
+// - The `AliUid` parameter is automatically parsed from the AK/SK and does not need to be manually provided.
 //
-// - The `BusinessChannel` parameter defaults to Enterprise Edition, but you can select other business channels.
+// - `BusinessChannel` defaults to Enterprise Edition, but you can also select other business channels.
 //
-// - By default, the query returns data for the previous day (T-1). To query for a different day, use the `DataDate` parameter in YYYY-MM-DD format.
+// - `DataDate` supports a custom statistical date and defaults to the previous day (T-1). Ensure that the input format is "YYYY-MM-DD".
 //
 // @param request - QueryHistoryActiveUserCountRequest
 //
@@ -23914,17 +24516,17 @@ func (client *Client) QueryHistoryActiveUserCountWithOptions(request *QueryHisto
 
 // Summary:
 //
-// Queries the historical daily and monthly active user counts for a specified date.
+// Queries the historical daily active user count and monthly active user count for a specified date.
 //
 // Description:
 //
-// ## Usage notes
+// ## Request description
 //
-// - The `AliUid` parameter is automatically resolved from your AccessKey pair and does not need to be specified in the request.
+// - The `AliUid` parameter is automatically parsed from the AK/SK and does not need to be manually provided.
 //
-// - The `BusinessChannel` parameter defaults to Enterprise Edition, but you can select other business channels.
+// - `BusinessChannel` defaults to Enterprise Edition, but you can also select other business channels.
 //
-// - By default, the query returns data for the previous day (T-1). To query for a different day, use the `DataDate` parameter in YYYY-MM-DD format.
+// - `DataDate` supports a custom statistical date and defaults to the previous day (T-1). Ensure that the input format is "YYYY-MM-DD".
 //
 // @param request - QueryHistoryActiveUserCountRequest
 //
@@ -24070,21 +24672,23 @@ func (client *Client) QueryHistoryAvgMetricList(request *QueryHistoryAvgMetricLi
 
 // Summary:
 //
-// Queries the historical distribution of a specific metric over a specified time period.
+// Queries the historical distribution of a specific metric within a specified time range.
 //
 // Description:
 //
-// ## Request
+// ## Operation description
 //
-// This API queries the value distribution for specific metrics, such as CPU usage and memory usage, within a given date range. You can define custom value ranges for more detailed statistics. The API supports both the enterprise edition and commercial edition. By default, it returns statistics for the previous day (T-1).
+// This API operation queries the value distribution of a specific monitoring metrics (such as CPU usage or memory usage) within a specified date range. You can obtain more detailed statistics by defining custom value ranges. Two business channels are supported: Enterprise Edition and Commercial Edition. By default, T-1 (yesterday) data statistics are used.
 //
-// - **BusinessChannel**: Defaults to the enterprise edition. The commercial edition is also available.
+// - **BusinessChannel**: Enterprise Edition by default. Commercial Edition is optional.
 //
-// - **StartDate & EndDate**: Both default to T-1 (the previous day). The date must be in the `YYYY-MM-DD` format.
+// - **StartDate & EndDate**: Default value is T-1, which is yesterday\\"s date. The format must be "YYYY-MM-DD".
 //
-// - **MetricName**: The metric to query. For a list of valid metrics, see the parameter description in this topic.
+// - **MetricName**: The name of the specific metric to query. Refer to the valid metric list provided in the documentation.
 //
-// - **Ranges**: Defines multiple value ranges for a more detailed analysis. For each range, you can set a minimum value, a maximum value, and whether to include these boundary values.
+// - **Ranges**: Allows you to define multiple custom value ranges for more granular data analytics. Each range can have a minimum value, a maximum value, and whether to include border values.
+//
+// ## Settings
 //
 // @param request - QueryHistoryMetricDistributionRequest
 //
@@ -24140,21 +24744,23 @@ func (client *Client) QueryHistoryMetricDistributionWithOptions(request *QueryHi
 
 // Summary:
 //
-// Queries the historical distribution of a specific metric over a specified time period.
+// Queries the historical distribution of a specific metric within a specified time range.
 //
 // Description:
 //
-// ## Request
+// ## Operation description
 //
-// This API queries the value distribution for specific metrics, such as CPU usage and memory usage, within a given date range. You can define custom value ranges for more detailed statistics. The API supports both the enterprise edition and commercial edition. By default, it returns statistics for the previous day (T-1).
+// This API operation queries the value distribution of a specific monitoring metrics (such as CPU usage or memory usage) within a specified date range. You can obtain more detailed statistics by defining custom value ranges. Two business channels are supported: Enterprise Edition and Commercial Edition. By default, T-1 (yesterday) data statistics are used.
 //
-// - **BusinessChannel**: Defaults to the enterprise edition. The commercial edition is also available.
+// - **BusinessChannel**: Enterprise Edition by default. Commercial Edition is optional.
 //
-// - **StartDate & EndDate**: Both default to T-1 (the previous day). The date must be in the `YYYY-MM-DD` format.
+// - **StartDate & EndDate**: Default value is T-1, which is yesterday\\"s date. The format must be "YYYY-MM-DD".
 //
-// - **MetricName**: The metric to query. For a list of valid metrics, see the parameter description in this topic.
+// - **MetricName**: The name of the specific metric to query. Refer to the valid metric list provided in the documentation.
 //
-// - **Ranges**: Defines multiple value ranges for a more detailed analysis. For each range, you can set a minimum value, a maximum value, and whether to include these boundary values.
+// - **Ranges**: Allows you to define multiple custom value ranges for more granular data analytics. Each range can have a minimum value, a maximum value, and whether to include border values.
+//
+// ## Settings
 //
 // @param request - QueryHistoryMetricDistributionRequest
 //
@@ -24172,23 +24778,23 @@ func (client *Client) QueryHistoryMetricDistribution(request *QueryHistoryMetric
 
 // Summary:
 //
-// Queries and ranks historical usage duration by end user or desktop.
+// Queries and sorts historical usage duration by user or desktop dimension.
 //
 // Description:
 //
-// ## Usage notes
+// ## Request description
 //
-// - **Date range**: You can query data within the last 90 days.
+// - **Date range**: Supports querying data within a maximum of 90 days.
 //
-// - **Pagination**: This operation uses the`NextToken` parameter for pagination. To retrieve the next page of results, use the `NextToken` value from the previous response.
+// - **Paged query**: Pagination is implemented through the `NextToken` parameter, which is obtained from the previous response.
 //
-// - **Default and maximum limits**: This operation returns 5 records by default, with a maximum of 200 records per page.
+// - **Default and maximum limits**: 5 records are returned by default, with a maximum of 200.
 //
-// - **Authentication**: This operation uses an AccessKey for authentication.
+// - **Authentication**: Uses AccessKey for identity verification.
 //
-// - **Caller account information**: You do not need to specify an Alibaba Cloud account ID (AliUid). The system automatically resolves it.
+// - **Caller account information**: You do not need to manually pass in AliUid. The system automatically parses it.
 //
-// - **Billing**: This API operation is free of charge.
+// - **Billing**: This API call is free of charge.
 //
 // @param request - QueryHistoryUsageDurationRankRequest
 //
@@ -24248,23 +24854,23 @@ func (client *Client) QueryHistoryUsageDurationRankWithOptions(request *QueryHis
 
 // Summary:
 //
-// Queries and ranks historical usage duration by end user or desktop.
+// Queries and sorts historical usage duration by user or desktop dimension.
 //
 // Description:
 //
-// ## Usage notes
+// ## Request description
 //
-// - **Date range**: You can query data within the last 90 days.
+// - **Date range**: Supports querying data within a maximum of 90 days.
 //
-// - **Pagination**: This operation uses the`NextToken` parameter for pagination. To retrieve the next page of results, use the `NextToken` value from the previous response.
+// - **Paged query**: Pagination is implemented through the `NextToken` parameter, which is obtained from the previous response.
 //
-// - **Default and maximum limits**: This operation returns 5 records by default, with a maximum of 200 records per page.
+// - **Default and maximum limits**: 5 records are returned by default, with a maximum of 200.
 //
-// - **Authentication**: This operation uses an AccessKey for authentication.
+// - **Authentication**: Uses AccessKey for identity verification.
 //
-// - **Caller account information**: You do not need to specify an Alibaba Cloud account ID (AliUid). The system automatically resolves it.
+// - **Caller account information**: You do not need to manually pass in AliUid. The system automatically parses it.
 //
-// - **Billing**: This API operation is free of charge.
+// - **Billing**: This API call is free of charge.
 //
 // @param request - QueryHistoryUsageDurationRankRequest
 //
@@ -25136,6 +25742,104 @@ func (client *Client) RenewNetworkPackages(request *RenewNetworkPackagesRequest)
 
 // Summary:
 //
+// Renews a virtual bridge.
+//
+// Description:
+//
+// After the device is locked, the status of the MFA device changes to locked (LOCKED), and the corresponding AD account cannot log on to the WUYING terminal because the MFA device cannot be authenticated. You can call [UnlockVirtualMFADevice](~~UnlockVirtualMFADevice~~) to unlock the device.
+//
+// @param request - RenewVirtualBridgeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RenewVirtualBridgeResponse
+func (client *Client) RenewVirtualBridgeWithOptions(request *RenewVirtualBridgeRequest, runtime *dara.RuntimeOptions) (_result *RenewVirtualBridgeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoPay) {
+		query["AutoPay"] = request.AutoPay
+	}
+
+	if !dara.IsNil(request.AutoRenew) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !dara.IsNil(request.BridgeId) {
+		query["BridgeId"] = request.BridgeId
+	}
+
+	if !dara.IsNil(request.PaidCallBackUrl) {
+		query["PaidCallBackUrl"] = request.PaidCallBackUrl
+	}
+
+	if !dara.IsNil(request.Period) {
+		query["Period"] = request.Period
+	}
+
+	if !dara.IsNil(request.PeriodUnit) {
+		query["PeriodUnit"] = request.PeriodUnit
+	}
+
+	if !dara.IsNil(request.PromotionId) {
+		query["PromotionId"] = request.PromotionId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RenewVirtualBridge"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RenewVirtualBridgeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Renews a virtual bridge.
+//
+// Description:
+//
+// After the device is locked, the status of the MFA device changes to locked (LOCKED), and the corresponding AD account cannot log on to the WUYING terminal because the MFA device cannot be authenticated. You can call [UnlockVirtualMFADevice](~~UnlockVirtualMFADevice~~) to unlock the device.
+//
+// @param request - RenewVirtualBridgeRequest
+//
+// @return RenewVirtualBridgeResponse
+func (client *Client) RenewVirtualBridge(request *RenewVirtualBridgeRequest) (_result *RenewVirtualBridgeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RenewVirtualBridgeResponse{}
+	_body, _err := client.RenewVirtualBridgeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Resets cloud desktops in a shared cloud desktop group.
 //
 // Description:
@@ -25238,11 +25942,11 @@ func (client *Client) ResetDesktops(request *ResetDesktopsRequest) (_result *Res
 
 // Summary:
 //
-// Resets the mount target of a File Storage NAS (NAS) file system.
+// Resets the mount point of a NAS file system.
 //
 // Description:
 //
-// When you create a NAS file system, a mount target is automatically generated. By default, you do not need to modify the mount target of the NAS file system. If the mount target is disabled, you need to reset the mount target of the NAS file system.
+// When a NAS file system is created, the system automatically generates a mount point. By default, the mount point does not need to be modified. If the mount point is in an inactive state, you need to reset the mount point of the NAS file system.
 //
 // @param request - ResetNASDefaultMountTargetRequest
 //
@@ -25290,11 +25994,11 @@ func (client *Client) ResetNASDefaultMountTargetWithOptions(request *ResetNASDef
 
 // Summary:
 //
-// Resets the mount target of a File Storage NAS (NAS) file system.
+// Resets the mount point of a NAS file system.
 //
 // Description:
 //
-// When you create a NAS file system, a mount target is automatically generated. By default, you do not need to modify the mount target of the NAS file system. If the mount target is disabled, you need to reset the mount target of the NAS file system.
+// When a NAS file system is created, the system automatically generates a mount point. By default, the mount point does not need to be modified. If the mount point is in an inactive state, you need to reset the mount point of the NAS file system.
 //
 // @param request - ResetNASDefaultMountTargetRequest
 //
@@ -25648,7 +26352,7 @@ func (client *Client) SendVerifyCode(request *SendVerifyCodeRequest) (_result *S
 
 // Summary:
 //
-// Configures an auto scaling policy for a multi-session cloud computer. Elastic Desktop Service allows multiple end users to share a cloud computer in a multi-session cloud computer pool. This helps save costs.
+// Sets an automatic scaling policy for multi-session cloud computers. Multi-session cloud computers allow multiple users to connect to the same cloud computer simultaneously, which reduces costs.
 //
 // @param request - SetDesktopGroupScaleTimerRequest
 //
@@ -25700,7 +26404,7 @@ func (client *Client) SetDesktopGroupScaleTimerWithOptions(request *SetDesktopGr
 
 // Summary:
 //
-// Configures an auto scaling policy for a multi-session cloud computer. Elastic Desktop Service allows multiple end users to share a cloud computer in a multi-session cloud computer pool. This helps save costs.
+// Sets an automatic scaling policy for multi-session cloud computers. Multi-session cloud computers allow multiple users to connect to the same cloud computer simultaneously, which reduces costs.
 //
 // @param request - SetDesktopGroupScaleTimerRequest
 //
@@ -26586,7 +27290,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// Queries the transmission and approval result for a submitted file.
+// Submits the approval result for a file transfer task.
 //
 // @param request - TransferTaskApprovalCallbackRequest
 //
@@ -26642,7 +27346,7 @@ func (client *Client) TransferTaskApprovalCallbackWithOptions(request *TransferT
 
 // Summary:
 //
-// Queries the transmission and approval result for a submitted file.
+// Submits the approval result for a file transfer task.
 //
 // @param request - TransferTaskApprovalCallbackRequest
 //

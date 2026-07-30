@@ -24,19 +24,19 @@ type iDescribeNASFileSystemsRequest interface {
 }
 
 type DescribeNASFileSystemsRequest struct {
-	// The IDs of the NAS file systems.
+	// The list of NAS file system IDs.
 	//
 	// example:
 	//
 	// 04f314****
 	FileSystemId []*string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty" type:"Repeated"`
-	// Specifies whether to return only NAS file systems that are compatible with User Profile Management (UPM).
+	// Specifies whether to include only NAS file systems that support UPM in the query results.
 	//
 	// example:
 	//
 	// false
 	MatchCompatibleProfile *bool `json:"MatchCompatibleProfile,omitempty" xml:"MatchCompatibleProfile,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page for a paged query.
 	//
 	// - Maximum value: 100.
 	//
@@ -46,19 +46,19 @@ type DescribeNASFileSystemsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
+	// The pagination token. Set this parameter to the value of NextToken returned in the previous API call.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the office network.
+	// The office network ID.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-363353****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions where Elastic Desktop Service (EDS) is available.
+	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//

@@ -42,7 +42,7 @@ type AttachEndUserRequest struct {
 	//
 	// example:
 	//
-	// 1
+	// 2
 	ClientType *int32 `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
 	// The serial number (SN) of the hardware client.
 	//
@@ -50,7 +50,7 @@ type AttachEndUserRequest struct {
 	//
 	// example:
 	//
-	// 12OERSLDO7M3****
+	// 111810122200F0C24CF7F1BF-*05AY****
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	// The ID of the convenient office network.
 	//
@@ -64,7 +64,7 @@ type AttachEndUserRequest struct {
 	//
 	// example:
 	//
-	// alice
+	// moli
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	// The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by WUYING Workspace.
 	//

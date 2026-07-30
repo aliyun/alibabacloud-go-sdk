@@ -18,19 +18,19 @@ type iCreateConfigGroupResponseBody interface {
 }
 
 type CreateConfigGroupResponseBody struct {
-	// Configuration group ID.
+	// The configuration group ID.
 	//
 	// example:
 	//
 	// ccg-0ctwi5zbswtql****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// Result message.
+	// The creation result.
 	//
 	// example:
 	//
-	// 无
+	// None.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

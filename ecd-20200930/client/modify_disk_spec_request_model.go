@@ -28,15 +28,15 @@ type iModifyDiskSpecRequest interface {
 type ModifyDiskSpecRequest struct {
 	// Specifies whether to enable automatic payment.
 	//
-	// - If set to `true`, ensure your account has a sufficient balance. Otherwise, an abnormal order is generated.
+	// - If you set this parameter to `true`, ensure that your account balance is sufficient. Otherwise, abnormal orders are generated.
 	//
-	// - If set to `false`, log on to the console. Then, go to the **Expenses and Costs*	- page to pay for the order using the returned order ID.
+	// - If you set this parameter to `false`, log on to the console and go to the **Expenses and Costs*	- page to complete the payment based on the returned order ID.
 	//
 	// example:
 	//
 	// false
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// The ID of the cloud desktop.
+	// The cloud computer ID.
 	//
 	// This parameter is required.
 	//
@@ -44,13 +44,13 @@ type ModifyDiskSpecRequest struct {
 	//
 	// ecd-2yjhqxo1monbf****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The promotion ID. Call a pricing inquiry API to get a list of applicable promotion IDs.
+	// The promotion ID. You can call the pricing API to obtain the list of matched promotion IDs.
 	//
 	// example:
 	//
 	// youhuiquan_promotion_option_id_for_blank
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	// The region ID. Call [DescribeRegions](~~DescribeRegions~~) to get a list of supported regions for WUYING Workspace.
+	// The region ID. Call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
@@ -59,13 +59,13 @@ type ModifyDiskSpecRequest struct {
 	// cn-hangzhou
 	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResellerOwnerUid *int64  `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
-	// The performance level of the system disk. You can set the performance level for Graphics or High-frequency workspaces.
+	// The performance level of the system cloud disk. You can set the disk performance level when the cloud computer specification is Enterprise Graphics or High Frequency.
 	//
 	// example:
 	//
 	// PL1
 	RootDiskPerformanceLevel *string `json:"RootDiskPerformanceLevel,omitempty" xml:"RootDiskPerformanceLevel,omitempty"`
-	// The performance level of the data disk. You can set the performance level for Graphics or High-frequency workspaces.
+	// The performance level of the data cloud disk. You can set the disk performance level when the cloud computer specification is Enterprise Graphics or High Frequency.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type DeleteTemplatesRequest struct {
 	//
 	// null
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The IDs of the templates that you want to delete.
+	// The list of template IDs to delete.
 	TemplateIds []*string `json:"TemplateIds,omitempty" xml:"TemplateIds,omitempty" type:"Repeated"`
 }
 

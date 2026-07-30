@@ -24,7 +24,7 @@ type iCreateConfigGroupRequest interface {
 }
 
 type CreateConfigGroupRequest struct {
-	// An array of scheduled task configurations.
+	// The configuration information of scheduled tasks. This parameter is a list.
 	ConfigTimers []*CreateConfigGroupRequestConfigTimers `json:"ConfigTimers,omitempty" xml:"ConfigTimers,omitempty" type:"Repeated"`
 	// The description of the configuration group.
 	//
@@ -40,7 +40,7 @@ type CreateConfigGroupRequest struct {
 	//
 	// Scheduled task group
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The product to which the configuration group applies.
+	// The product type used by the configuration group.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type CreateConfigGroupRequest struct {
 	//
 	// CLOUD_DESKTOP
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The region ID. This feature is not region-specific. You must set this parameter to cn-shanghai.
+	// The region ID. This feature is not region-specific. Set this parameter to `cn-shanghai`.
 	//
 	// example:
 	//
@@ -140,23 +140,21 @@ func (s *CreateConfigGroupRequest) Validate() error {
 }
 
 type CreateConfigGroupRequestConfigTimers struct {
-	// Whether to allow end users to configure the scheduled task.
+	// Specifies whether to allow end users to configure scheduled tasks on their own.
 	//
 	// example:
 	//
 	// true
 	AllowClientSetting *bool `json:"AllowClientSetting,omitempty" xml:"AllowClientSetting,omitempty"`
-	// The cron expression for the scheduled task.
+	// The cron expression of the scheduled task.
 	//
-	// 	Notice:
-	//
-	// The cron expression is based on UTC. For example, to run a task at 00:00 China Standard Time (UTC+8) every day, set this parameter to `0 0 16 ? 	- 1,2,3,4,5,6,7`.
+	// 	Notice: Specify the time in UTC. For example, to specify 00:00 (UTC+8) every day, use 0 0 16 ? 	- 1,2,3,4,5,6,7.</notice>
 	//
 	// example:
 	//
 	// 0 0 16 ? 	- 1,2,3,4,5,6,7
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	// Whether to forcefully execute the scheduled task.
+	// Specifies whether to forcibly execute the task.
 	//
 	// example:
 	//
@@ -169,15 +167,15 @@ type CreateConfigGroupRequestConfigTimers struct {
 	// 10
 	Interval         *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	NotificationTime *int32 `json:"NotificationTime,omitempty" xml:"NotificationTime,omitempty"`
-	// The operation to perform for the scheduled task. This parameter is valid only when `TimerType` is set to `NoConnect`.
+	// The operation type of the scheduled task. Currently, only disconnect scheduled tasks support this parameter.
 	//
 	// example:
 	//
 	// Shutdown
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	// The process whitelist for smart detection. If a process from this whitelist is running, the inactivity-based scheduled task does not run.
+	// The process whitelist for intelligent detection of no-operation scheduled tasks. If a specified process is running, the no-operation scheduled task is not triggered.
 	ProcessWhitelist []*string `json:"ProcessWhitelist,omitempty" xml:"ProcessWhitelist,omitempty" type:"Repeated"`
-	// The reset type for the cloud desktop.
+	// The reset type of the cloud computer.
 	//
 	// example:
 	//
@@ -192,7 +190,7 @@ type CreateConfigGroupRequestConfigTimers struct {
 	//
 	// TIMER_BOOT
 	TimerType *string `json:"TimerType,omitempty" xml:"TimerType,omitempty"`
-	// The trigger condition for inactivity-based scheduled tasks.
+	// The trigger configuration type of the no-operation scheduled task.
 	//
 	// example:
 	//
@@ -321,7 +319,7 @@ func (s *CreateConfigGroupRequestConfigTimers) Validate() error {
 }
 
 type CreateConfigGroupRequestConfigTimersSegmentTimers struct {
-	// The execution time for a one-time scheduled task, specified as a UNIX timestamp in milliseconds.
+	// The specified time point for executing a scheduled task. After this parameter is specified, the scheduled task is executed at the specified time point.
 	//
 	// example:
 	//
@@ -330,7 +328,7 @@ type CreateConfigGroupRequestConfigTimersSegmentTimers struct {
 	CreateSnapshot    *bool   `json:"CreateSnapshot,omitempty" xml:"CreateSnapshot,omitempty"`
 	EndCronExpression *string `json:"EndCronExpression,omitempty" xml:"EndCronExpression,omitempty"`
 	Enforce           *bool   `json:"Enforce,omitempty" xml:"Enforce,omitempty"`
-	// The image ID for a scheduled task that changes the image of a cloud desktop.
+	// The image ID to change to. This parameter is used for image change scheduled tasks.
 	//
 	// example:
 	//
@@ -338,7 +336,7 @@ type CreateConfigGroupRequestConfigTimersSegmentTimers struct {
 	ImageId    *string   `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	Interval   *int32    `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	IpSegments []*string `json:"IpSegments,omitempty" xml:"IpSegments,omitempty" type:"Repeated"`
-	// The amount of inactive time, in seconds, before the screen automatically locks. This parameter applies only to Active Directory desktops.
+	// The lock screen time point for the no-operation lock screen feature. This parameter cannot be used for non-AD desktops.
 	//
 	// example:
 	//

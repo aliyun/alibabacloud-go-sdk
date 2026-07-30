@@ -20,25 +20,25 @@ type iDescribeOnlineUserCountRequest interface {
 }
 
 type DescribeOnlineUserCountRequest struct {
-	// > This parameter is for internal use only.
+	// > This parameter is not publicly available.
 	//
 	// example:
 	//
 	// 1
 	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The office site ID.
+	// The workspace ID.
 	//
 	// example:
 	//
 	// cn-shanghai+dir-631324****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The region ID.
+	// The region ID of the service.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the region to search. This filters the results to show only resources from the specified region.
+	// The region ID used to filter cloud resource information for the specified region.
 	//
 	// example:
 	//

@@ -24,9 +24,9 @@ type DescribeSessionStatisticResponseBody struct {
 	//
 	// C5528624-C6ED-5CA4-A4A2-7C30DBF2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The statistics.
+	// The statistics information.
 	Statistic []*DescribeSessionStatisticResponseBodyStatistic `json:"Statistic,omitempty" xml:"Statistic,omitempty" type:"Repeated"`
-	// The total number of sessions returned.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *DescribeSessionStatisticResponseBody) Validate() error {
 }
 
 type DescribeSessionStatisticResponseBodyStatistic struct {
-	// The total number of sessions in the time range.
+	// The total number of sessions within the interval.
 	//
 	// example:
 	//

@@ -26,27 +26,27 @@ type iDescribeDrivesResponseBody interface {
 }
 
 type DescribeDrivesResponseBody struct {
-	// The response code. The value 200 indicates that the request was successful.
+	// The response code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The total number of storage resources.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 2
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The user-level storage resources.
+	// The list of user-level storage resources.
 	Drives []*DescribeDrivesResponseBodyDrives `json:"Drives,omitempty" xml:"Drives,omitempty" type:"Repeated"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	// The pagination token for the next query. An empty value indicates that there are no more results.
 	//
 	// example:
 	//
@@ -151,13 +151,13 @@ func (s *DescribeDrivesResponseBody) Validate() error {
 }
 
 type DescribeDrivesResponseBodyDrives struct {
-	// The ID of the Alibaba Cloud account.
+	// The Alibaba Cloud account ID.
 	//
 	// example:
 	//
 	// 1202****
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The introduction to the storage resource.
+	// The storage resource description.
 	//
 	// example:
 	//
@@ -165,87 +165,87 @@ type DescribeDrivesResponseBodyDrives struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The number of associated cloud computer pools.
 	//
-	// >  This parameter is returned only if ResourceType is set to NAS and Type is set to USER_PROFILE.
+	// > This parameter is returned only when the storage resource is NAS and the purpose is USER_PROFILE.
 	//
 	// example:
 	//
 	// 1
 	DesktopGroupCount *int32 `json:"DesktopGroupCount,omitempty" xml:"DesktopGroupCount,omitempty"`
-	// The details of the associated cloud computers.
+	// The list of associated cloud computer pool details.
 	//
-	// >  This parameter is returned only if ResourceType is set to NAS and Type is set to USER_PROFILE.
+	// > This parameter is returned only when the storage resource is NAS and the purpose is USER_PROFILE.
 	DesktopGroups []*DescribeDrivesResponseBodyDrivesDesktopGroups `json:"DesktopGroups,omitempty" xml:"DesktopGroups,omitempty" type:"Repeated"`
-	// The ID of the storage resource.
+	// The storage resource ID.
 	//
 	// example:
 	//
 	// dom-aaaa****
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	// The ID of the user-level storage resource.
+	// The user-level storage resource ID.
 	//
 	// example:
 	//
 	// dri-aaaa****
 	DriveId *string `json:"DriveId,omitempty" xml:"DriveId,omitempty"`
-	// Indicates whether the UPM feature is enabled.
+	// Indicates whether the User Profile Management (UPM) feature is enabled.
 	//
 	// example:
 	//
 	// true
 	EnableProfileManagement *bool `json:"EnableProfileManagement,omitempty" xml:"EnableProfileManagement,omitempty"`
-	// The ID of the external storage resource.
+	// The external storage resource ID.
 	//
-	// 	- If ResourceType is set to NAS, the NAS ID is returned for this parameter.
+	// - If the storage resource is NAS, this parameter returns the NAS ID.
 	//
-	// 	- If ResourceType is set to PDS, the PDS ID is returned for this parameter.
+	// - If the storage resource is PDS, this parameter returns the PDS ID.
 	//
 	// example:
 	//
 	// 0976****
 	ExternalDomainId *string `json:"ExternalDomainId,omitempty" xml:"ExternalDomainId,omitempty"`
-	// The ID of the storage resource at the external user level.
+	// The external user-level storage resource ID.
 	//
-	// >  This parameter is returned only if ResourceType is set to PDS.
+	// > This parameter is returned only when the storage resource is PDS.
 	//
 	// example:
 	//
 	// 1100****
 	ExternalDriveId *string `json:"ExternalDriveId,omitempty" xml:"ExternalDriveId,omitempty"`
-	// The ID of the external user.
+	// The external user ID.
 	//
-	// >  This parameter is returned only if ResourceType is set to PDS.
+	// > This parameter is returned only when the storage resource is PDS.
 	//
 	// example:
 	//
 	// user01@cn-hangzhou.120****
 	ExternalUserId *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
-	// The time when the storage resource was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2025-07-02T08:42:26.000+00:00
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the storage resource was modified.
+	// The modification time.
 	//
 	// example:
 	//
 	// 2025-07-07T02:46:04.000+00:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The user ID.
+	// The ID.
 	//
-	// >  You can ignore this parameter.
+	// > You can ignore this parameter.
 	//
 	// example:
 	//
 	// 1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the storage resource.
+	// The storage resource name.
 	//
 	// example:
 	//
 	// test****
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// >  This parameter is deprecated.
+	// > This parameter is deprecated.
 	//
 	// example:
 	//
@@ -253,43 +253,23 @@ type DescribeDrivesResponseBodyDrives struct {
 	ProfileRoaming *bool `json:"ProfileRoaming,omitempty" xml:"ProfileRoaming,omitempty"`
 	// The status of the user-level storage resource.
 	//
-	// Valid values:
-	//
-	// 	- INIT: initializing
-	//
-	// 	- MAINTAIN: maintaining
-	//
-	// 	- DELETING: deleting
-	//
-	// 	- INVALID: invalid
-	//
-	// 	- NORMAL: normal
-	//
-	// 	- FAIL: failed
-	//
 	// example:
 	//
 	// NORMAL
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The total amount of user-level storage capacity.
+	// The total capacity of the user-level storage resource.
 	//
 	// example:
 	//
 	// 536870912000
 	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
-	// The usage of the storage resource.
-	//
-	// Valid values:
-	//
-	// 	- DESKTOP: data disk space
-	//
-	// 	- USER_PROFILE: personal data space
+	// The purpose of the storage resource.
 	//
 	// example:
 	//
 	// USER_PROFILE
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The amount of user-level storage capacity used.
+	// The used capacity of the user-level storage resource.
 	//
 	// example:
 	//
@@ -505,13 +485,13 @@ func (s *DescribeDrivesResponseBodyDrives) Validate() error {
 }
 
 type DescribeDrivesResponseBodyDrivesDesktopGroups struct {
-	// The ID of the cloud computer pool.
+	// The cloud computer pool ID.
 	//
 	// example:
 	//
 	// dg-aaaa****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// The name of the cloud computer pool.
+	// The cloud computer pool name.
 	//
 	// example:
 	//

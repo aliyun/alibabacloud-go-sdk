@@ -18,7 +18,7 @@ type iModifyNASDefaultMountTargetRequest interface {
 }
 
 type ModifyNASDefaultMountTargetRequest struct {
-	// The ID of the NAS file system.
+	// The NAS file system ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type ModifyNASDefaultMountTargetRequest struct {
 	//
 	// 04f314****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The domain name of the mount target.
+	// The mount target domain name.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type ModifyNASDefaultMountTargetRequest struct {
 	//
 	// 0bf744****-xo***.cn-hangzhou.nas.aliyuncs.com
 	MountTargetDomain *string `json:"MountTargetDomain,omitempty" xml:"MountTargetDomain,omitempty"`
-	// The region ID.
+	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//

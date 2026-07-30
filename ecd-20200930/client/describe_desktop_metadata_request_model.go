@@ -82,7 +82,7 @@ type DescribeDesktopMetadataRequest struct {
 	//
 	// false
 	IncludeDesktopGroup *bool `json:"IncludeDesktopGroup,omitempty" xml:"IncludeDesktopGroup,omitempty"`
-	// >This parameter is not yet available.
+	// >This parameter is not yet available for use.
 	//
 	// example:
 	//
@@ -93,7 +93,12 @@ type DescribeDesktopMetadataRequest struct {
 	// example:
 	//
 	// 10
-	MaxResults         *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The private IP address.
+	//
+	// example:
+	//
+	// 192.168.1.1
 	NetworkInterfaceIp *string `json:"NetworkInterfaceIp,omitempty" xml:"NetworkInterfaceIp,omitempty"`
 	// The token for the next query. An empty value indicates that there are no more results.
 	//
