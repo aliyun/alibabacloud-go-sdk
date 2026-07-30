@@ -9,6 +9,8 @@ type iGetGatewayQuotaRuleSubjectUsageRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetFilterFailedRequests(v bool) *GetGatewayQuotaRuleSubjectUsageRequest
+	GetFilterFailedRequests() *bool
 	SetPageNumber(v int32) *GetGatewayQuotaRuleSubjectUsageRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *GetGatewayQuotaRuleSubjectUsageRequest
@@ -16,6 +18,7 @@ type iGetGatewayQuotaRuleSubjectUsageRequest interface {
 }
 
 type GetGatewayQuotaRuleSubjectUsageRequest struct {
+	FilterFailedRequests *bool `json:"filterFailedRequests,omitempty" xml:"filterFailedRequests,omitempty"`
 	// The page number of the detailed consumption (request) records of the consumer within the cycle.
 	//
 	// example:
@@ -38,12 +41,21 @@ func (s GetGatewayQuotaRuleSubjectUsageRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetGatewayQuotaRuleSubjectUsageRequest) GetFilterFailedRequests() *bool {
+	return s.FilterFailedRequests
+}
+
 func (s *GetGatewayQuotaRuleSubjectUsageRequest) GetPageNumber() *int32 {
 	return s.PageNumber
 }
 
 func (s *GetGatewayQuotaRuleSubjectUsageRequest) GetPageSize() *int32 {
 	return s.PageSize
+}
+
+func (s *GetGatewayQuotaRuleSubjectUsageRequest) SetFilterFailedRequests(v bool) *GetGatewayQuotaRuleSubjectUsageRequest {
+	s.FilterFailedRequests = &v
+	return s
 }
 
 func (s *GetGatewayQuotaRuleSubjectUsageRequest) SetPageNumber(v int32) *GetGatewayQuotaRuleSubjectUsageRequest {

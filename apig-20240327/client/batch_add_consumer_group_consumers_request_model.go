@@ -14,6 +14,8 @@ type iBatchAddConsumerGroupConsumersRequest interface {
 }
 
 type BatchAddConsumerGroupConsumersRequest struct {
+	// The list of consumer IDs to add to the consumer group.
+	//
 	// example:
 	//
 	// ["cs-8c13d2b4f8a1"]

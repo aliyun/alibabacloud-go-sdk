@@ -98,7 +98,7 @@ type CreateHttpApiRequest struct {
 	FirstByteTimeout *int32 `json:"firstByteTimeout,omitempty" xml:"firstByteTimeout,omitempty"`
 	// The HTTP Ingress API configuration. This parameter is required and cannot be nil when type is set to HttpIngress. This parameter is not required for other types.
 	IngressConfig *CreateHttpApiRequestIngressConfig `json:"ingressConfig,omitempty" xml:"ingressConfig,omitempty" type:"Struct"`
-	// The model category. This parameter is optional when type is set to LLM or Ai. This parameter is not required for other types.
+	// The model category. This parameter is optional when type is set to LLM or Ai. This parameter is not required for other types. Valid values:
 	//
 	// example:
 	//

@@ -18,14 +18,20 @@ type iListConsumerGroupConsumersRequest interface {
 }
 
 type ListConsumerGroupConsumersRequest struct {
+	// Fuzzy match by consumer name.
+	//
 	// example:
 	//
 	// consumer
 	NameLike *string `json:"nameLike,omitempty" xml:"nameLike,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10

@@ -20,18 +20,26 @@ type iListConsumerGroupsRequest interface {
 }
 
 type ListConsumerGroupsRequest struct {
+	// The gateway type. Valid values: API or AI.
+	//
 	// example:
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
+	// The fuzzy match condition for the consumer group name.
+	//
 	// example:
 	//
 	// api
 	NameLike *string `json:"nameLike,omitempty" xml:"nameLike,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10

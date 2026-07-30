@@ -40,19 +40,19 @@ type iCreateDomainRequest interface {
 }
 
 type CreateDomainRequest struct {
-	// The CA certificate identifier. This parameter is required for Dedicated+HTTPS.
+	// The CA certificate identifier. Optional for Dedicated+HTTPS. Not allowed for Serverless. Not validated for Dedicated+HTTP.
 	//
 	// example:
 	//
 	// 1ef1da5f-38ed-69b3-****-037781890265
 	CaCertIdentifier *string `json:"caCertIdentifier,omitempty" xml:"caCertIdentifier,omitempty"`
-	// The certificate identifier.
+	// The certificate identifier. Required for Dedicated+HTTPS and must pass submission validation. Not allowed for Serverless. Not validated for Dedicated+HTTP.
 	//
 	// example:
 	//
 	// 1ef1da5f-38ed-69b3-****-037781890265
 	CertIdentifier *string `json:"certIdentifier,omitempty" xml:"certIdentifier,omitempty"`
-	// The client CA certificate.
+	// The client CA certificate. Conditionally required for Dedicated+HTTPS when MTLSEnabled is set to true. Not allowed for Serverless. Not validated for Dedicated+HTTP.
 	//
 	// example:
 	//
@@ -66,31 +66,31 @@ type CreateDomainRequest struct {
 	//
 	// -----END CERTIFICATE-----
 	ClientCACert *string `json:"clientCACert,omitempty" xml:"clientCACert,omitempty"`
-	// The domain name scope.
+	// The domain name scope. Optional. If not specified, the default value is Dedicated.
 	//
 	// example:
 	//
 	// Dedicated
 	DomainScope *string `json:"domainScope,omitempty" xml:"domainScope,omitempty"`
-	// Specifies whether to enable forced HTTPS redirect for the HTTPS protocol type. This parameter is required for Serverless and for Dedicated+HTTPS. This parameter is not validated for Dedicated+HTTP.
+	// Specifies whether to enable forced HTTPS redirect for the HTTPS protocol type. This parameter is required for Serverless and for Dedicated+HTTPS. It is not validated for Dedicated+HTTP.
 	//
 	// example:
 	//
 	// false
 	ForceHttps *bool `json:"forceHttps,omitempty" xml:"forceHttps,omitempty"`
-	// The gateway type.
+	// The gateway type. Optional. If not specified, the default value is API.
 	//
 	// example:
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// The HTTP/2 setting.
+	// The HTTP/2 setting. Optional for Dedicated+HTTPS. If not specified, the default value is GlobalConfig. Not allowed for Serverless.
 	//
 	// example:
 	//
 	// Open
 	Http2Option *string `json:"http2Option,omitempty" xml:"http2Option,omitempty"`
-	// Specifies whether to enable mTLS mutual authentication.
+	// Specifies whether to enable mTLS mutual authentication. Optional for Dedicated+HTTPS. When set to true, ClientCACert is required. Not allowed for Serverless.
 	MTLSEnabled *bool `json:"mTLSEnabled,omitempty" xml:"mTLSEnabled,omitempty"`
 	// The domain name.
 	//
@@ -100,7 +100,7 @@ type CreateDomainRequest struct {
 	//
 	// abc.com
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The protocol type supported by the domain name. This parameter is required for Dedicated and only allows HTTP or HTTPS. This parameter is not allowed for Serverless.
+	// The protocol type supported by the domain name. This parameter is required for Dedicated and must not be specified for Serverless.
 	//
 	// example:
 	//
@@ -112,15 +112,15 @@ type CreateDomainRequest struct {
 	//
 	// rg-aekzhiv7derfweq
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The cipher suite configuration.
+	// The cipher suite configuration. Optional for Dedicated+HTTPS and must pass cipher suite validation. Not allowed for Serverless. Set to empty for Dedicated+HTTP.
 	TlsCipherSuitesConfig *TlsCipherSuitesConfig `json:"tlsCipherSuitesConfig,omitempty" xml:"tlsCipherSuitesConfig,omitempty"`
-	// The maximum TLS protocol version. TLS 1.3 is the maximum supported version.
+	// The maximum TLS protocol version. Optional for Dedicated+HTTPS. If not specified, the value is derived from TlsMin and must be greater than or equal to TlsMin. Not allowed for Serverless.
 	//
 	// example:
 	//
 	// TLS1.3
 	TlsMax *string `json:"tlsMax,omitempty" xml:"tlsMax,omitempty"`
-	// The minimum TLS protocol version. TLS 1.0 is the minimum supported version.
+	// The minimum TLS protocol version. Optional for Dedicated+HTTPS. If not specified, the default value is TLS 1.0. Valid values range from TLS 1.0 to TLS 1.3, compatible with TLSv1.x. Not allowed for Serverless.
 	//
 	// example:
 	//

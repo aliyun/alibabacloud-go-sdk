@@ -36,11 +36,11 @@ type AgentServiceConfig struct {
 	//
 	// https://dashscope.aliyuncs.com/api/v1
 	Address *string `json:"address,omitempty" xml:"address,omitempty"`
-	// User-defined configuration
+	// The custom configuration. Required when provider is set to custom.
 	CustomConfig *AgentServiceConfigCustomConfig `json:"customConfig,omitempty" xml:"customConfig,omitempty" type:"Struct"`
-	// The Model Studio service configuration.
+	// The DashScope service configuration. Required when provider is set to qwen. The appCredentials parameter cannot be empty, and each entry must have non-empty appId and apiKey values.
 	DashScopeConfig *AgentServiceConfigDashScopeConfig `json:"dashScopeConfig,omitempty" xml:"dashScopeConfig,omitempty" type:"Struct"`
-	// The Dify service configuration.
+	// The Dify service configuration. Required when provider is set to dify. The botType and apiKey parameters cannot be empty.
 	DifyConfig *AgentServiceConfigDifyConfig `json:"difyConfig,omitempty" xml:"difyConfig,omitempty" type:"Struct"`
 	// Specifies whether to enable health check.
 	//
@@ -48,13 +48,13 @@ type AgentServiceConfig struct {
 	//
 	// true
 	EnableHealthCheck *bool `json:"enableHealthCheck,omitempty" xml:"enableHealthCheck,omitempty"`
-	// Whether to enable outlier detection
+	// Specifies whether to enable outlier detection.
 	//
 	// example:
 	//
 	// true
 	EnableOutlierDetection *bool `json:"enableOutlierDetection,omitempty" xml:"enableOutlierDetection,omitempty"`
-	// The protocol.
+	// The list of communication protocols.
 	Protocols []*string `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
 	// The service provider.
 	//
@@ -166,13 +166,13 @@ func (s *AgentServiceConfig) Validate() error {
 }
 
 type AgentServiceConfigCustomConfig struct {
-	// apiKey
+	// The API key.
 	//
 	// example:
 	//
 	// app-xxx
 	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
-	// API key generation mode.
+	// The key generation mode.
 	//
 	// example:
 	//
@@ -301,7 +301,7 @@ type AgentServiceConfigDifyConfig struct {
 	//
 	// example:
 	//
-	// chatbot
+	// chatflow
 	BotType *string `json:"botType,omitempty" xml:"botType,omitempty"`
 }
 

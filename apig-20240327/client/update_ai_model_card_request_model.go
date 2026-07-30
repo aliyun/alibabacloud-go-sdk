@@ -24,19 +24,28 @@ type iUpdateAiModelCardRequest interface {
 }
 
 type UpdateAiModelCardRequest struct {
+	// The list of invocation paths supported by the model. Each item must include both path and type. The list is overwritten as a whole during updates.
 	AvailablePaths []*UpdateAiModelCardRequestAvailablePaths `json:"availablePaths,omitempty" xml:"availablePaths,omitempty" type:"Repeated"`
-	Credit         *UpdateAiModelCardRequestCredit           `json:"credit,omitempty" xml:"credit,omitempty" type:"Struct"`
+	// The credit billing information of the model. Only the fixed type is supported. The unit is Credits per million tokens. If not specified, all cost values default to 0.
+	Credit *UpdateAiModelCardRequestCredit `json:"credit,omitempty" xml:"credit,omitempty" type:"Struct"`
+	// The model capability switches. Keys must be model capability names supported by the API gateway. Values are Boolean.
+	//
 	// example:
 	//
 	// {"functionCalling":true,"toolChoice":true,"promptCaching":false}
-	Features map[string]interface{}        `json:"features,omitempty" xml:"features,omitempty"`
-	Meta     *UpdateAiModelCardRequestMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
+	Features map[string]interface{} `json:"features,omitempty" xml:"features,omitempty"`
+	// The token limits and input/output modality information of the model.
+	Meta *UpdateAiModelCardRequestMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
+	// The model name. The name must be unique within the same AI gateway instance and model provider. Maximum length: 256 characters.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// qwen-plus
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	// The model provider identifier. The value must reference an existing model provider in the target AI gateway instance. Maximum length: 128 characters.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -131,10 +140,14 @@ func (s *UpdateAiModelCardRequest) Validate() error {
 }
 
 type UpdateAiModelCardRequestAvailablePaths struct {
+	// The model invocation path. Maximum length: 2048 characters.
+	//
 	// example:
 	//
 	// /v1/chat/completions
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// The protocol type of the path. Maximum length: 64 characters.
+	//
 	// example:
 	//
 	// OpenAICompatible
@@ -172,18 +185,26 @@ func (s *UpdateAiModelCardRequestAvailablePaths) Validate() error {
 }
 
 type UpdateAiModelCardRequestCredit struct {
+	// The cache hit token cost in Credits per million tokens. The value must be greater than or equal to 0. Default value: 0.
+	//
 	// example:
 	//
 	// 0.5
 	CacheCost *float32 `json:"cacheCost,omitempty" xml:"cacheCost,omitempty"`
+	// The input token cost in Credits per million tokens. The value must be greater than or equal to 0. Default value: 0.
+	//
 	// example:
 	//
 	// 1.5
 	InputCost *float32 `json:"inputCost,omitempty" xml:"inputCost,omitempty"`
+	// The output token cost in Credits per million tokens. The value must be greater than or equal to 0. Default value: 0.
+	//
 	// example:
 	//
 	// 3
 	OutputCost *float32 `json:"outputCost,omitempty" xml:"outputCost,omitempty"`
+	// The billing type. Only fixed is supported. Default value: fixed.
+	//
 	// example:
 	//
 	// fixed
@@ -239,19 +260,27 @@ func (s *UpdateAiModelCardRequestCredit) Validate() error {
 }
 
 type UpdateAiModelCardRequestMeta struct {
+	// The maximum number of input tokens supported by the model. The value must be greater than or equal to 0.
+	//
 	// example:
 	//
 	// 131072
 	MaxInputTokens *int64 `json:"maxInputTokens,omitempty" xml:"maxInputTokens,omitempty"`
+	// The maximum number of output tokens supported by the model. The value must be greater than or equal to 0.
+	//
 	// example:
 	//
 	// 8192
 	MaxOutputTokens *int64 `json:"maxOutputTokens,omitempty" xml:"maxOutputTokens,omitempty"`
+	// The maximum total number of context tokens supported by the model. The value must be greater than or equal to 0.
+	//
 	// example:
 	//
 	// 131072
-	MaxTokens                 *int64    `json:"maxTokens,omitempty" xml:"maxTokens,omitempty"`
-	SupportedInputModalities  []*string `json:"supportedInputModalities,omitempty" xml:"supportedInputModalities,omitempty" type:"Repeated"`
+	MaxTokens *int64 `json:"maxTokens,omitempty" xml:"maxTokens,omitempty"`
+	// The list of input modalities supported by the model. The list contains up to 16 items, and each item must not be empty.
+	SupportedInputModalities []*string `json:"supportedInputModalities,omitempty" xml:"supportedInputModalities,omitempty" type:"Repeated"`
+	// The list of output modalities supported by the model. The list contains up to 16 items, and each item must not be empty.
 	SupportedOutputModalities []*string `json:"supportedOutputModalities,omitempty" xml:"supportedOutputModalities,omitempty" type:"Repeated"`
 }
 

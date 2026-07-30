@@ -175,7 +175,7 @@ func (client *Client) AddGatewaySecurityGroupRuleWithContext(ctx context.Context
 
 // Summary:
 //
-// 批量添加消费者组成员
+// Adds members to a consumer group in batches.
 //
 // @param request - BatchAddConsumerGroupConsumersRequest
 //
@@ -269,7 +269,7 @@ func (client *Client) BatchDeleteConsumerAuthorizationRuleWithContext(ctx contex
 
 // Summary:
 //
-// 批量移除消费者组成员
+// Removes consumer group members in batches.
 //
 // @param request - BatchRemoveConsumerGroupConsumersRequest
 //
@@ -375,13 +375,13 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 创建AI模型卡片
+// Creates an AI model card.
 //
 // Description:
 //
-// 在指定AI网关实例的已有模型供应商下创建模型卡片。目标网关必须存在、属于当前账号且类型为AI网关，modelProvider必须引用该网关中已存在的模型供应商。
+// Performs model creation for a model card under an existing model provider in a specified AI gateway instance. The target gateway must exist, belong to the current account, and be of the AI gateway type. The modelProvider must reference an existing model provider in the gateway.
 //
-// 同一AI网关实例、同一模型供应商下的modelName必须唯一；单个网关实例最多可创建1000张模型卡片。credit当前仅支持fixed类型，费用单位为Credits/百万Token；未传时type默认为fixed，各项费用默认为0。availablePaths中的每一项必须同时包含path和type。
+// The modelName must be unique within the same AI gateway instance and the same model provider. A maximum of 1000 model cards can be created per gateway instance. The credit parameter currently supports only the fixed type, and the cost unit is Credits per million tokens. If not specified, type defaults to fixed and all cost values default to 0. Each item in availablePaths must include both path and type.
 //
 // @param request - CreateAiModelCardRequest
 //
@@ -452,7 +452,7 @@ func (client *Client) CreateAiModelCardWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 创建AI模型供应商
+// Creates an AI model provider.
 //
 // @param request - CreateAiModelProviderRequest
 //
@@ -468,6 +468,11 @@ func (client *Client) CreateAiModelProviderWithContext(ctx context.Context, requ
 			return _result, _err
 		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DisplayName) {
 		body["displayName"] = request.DisplayName
@@ -487,6 +492,7 @@ func (client *Client) CreateAiModelProviderWithContext(ctx context.Context, requ
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -722,6 +728,20 @@ func (client *Client) CreateConsumerAuthorizationRuleWithContext(ctx context.Con
 //
 // Creates consumer authorization rules.
 //
+// Description:
+//
+// Prerequisites: Before creating consumer authorization rules, prepare resources according to the following dependency chain (the corresponding creation API and ID passing relationships are shown in parentheses):
+//
+// Gateway instance (CreateGateway → gatewayId, gw- prefix)
+//
+// Environment (A default environment is automatically created with the gateway. You can also use CreateEnvironment → environmentId, env- prefix, which requires the gatewayId from step 1)
+//
+// HTTP API (CreateHttpApi → httpApiId, api- prefix)
+//
+// Route and publish (CreateHttpApiRoute → routeId, hr- prefix, belongs to the API in step 3. Then publish to the environment in step 2 by using DeployHttpApi. Unpublished routes cannot be authorized)
+//
+// Consumer (CreateConsumer → consumerId, cs- prefix. Or consumer group consumerGroupId, csg- prefix. Use either consumerId or consumerGroupId)
+//
 // @param request - CreateConsumerAuthorizationRulesRequest
 //
 // @param headers - map
@@ -767,7 +787,7 @@ func (client *Client) CreateConsumerAuthorizationRulesWithContext(ctx context.Co
 
 // Summary:
 //
-// 创建消费者组
+// Creates a consumer group.
 //
 // @param request - CreateConsumerGroupRequest
 //
@@ -1947,7 +1967,7 @@ func (client *Client) CreateSourceWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// 删除AI模型卡片
+// Deletes an AI model card.
 //
 // @param request - DeleteAiModelCardRequest
 //
@@ -1988,7 +2008,7 @@ func (client *Client) DeleteAiModelCardWithContext(ctx context.Context, modelCar
 
 // Summary:
 //
-// 删除AI模型供应商
+// Deletes an AI model provider.
 //
 // @param request - DeleteAiModelProviderRequest
 //
@@ -2095,7 +2115,7 @@ func (client *Client) DeleteConsumerAuthorizationRuleWithContext(ctx context.Con
 
 // Summary:
 //
-// 删除消费者组
+// Deletes a consumer group.
 //
 // @param request - DeleteConsumerGroupRequest
 //
@@ -2927,7 +2947,7 @@ func (client *Client) ExportHttpApiWithContext(ctx context.Context, httpApiId *s
 
 // Summary:
 //
-// 查询AI模型卡片详情
+// Queries the details of an AI model card.
 //
 // @param request - GetAiModelCardRequest
 //
@@ -2968,7 +2988,7 @@ func (client *Client) GetAiModelCardWithContext(ctx context.Context, modelCardId
 
 // Summary:
 //
-// 查询AI模型供应商详情
+// Queries the details of an AI model provider.
 //
 // @param request - GetAiModelProviderRequest
 //
@@ -3075,7 +3095,7 @@ func (client *Client) GetConsumerAuthorizationRuleWithContext(ctx context.Contex
 
 // Summary:
 //
-// 查询消费者组
+// Queries a consumer group.
 //
 // @param request - GetConsumerGroupRequest
 //
@@ -3414,6 +3434,10 @@ func (client *Client) GetGatewayQuotaRuleSubjectUsageWithContext(ctx context.Con
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.FilterFailedRequests) {
+		query["filterFailedRequests"] = request.FilterFailedRequests
+	}
+
 	if !dara.IsNil(request.PageNumber) {
 		query["pageNumber"] = request.PageNumber
 	}
@@ -3845,7 +3869,7 @@ func (client *Client) GetSecretValueWithContext(ctx context.Context, name *strin
 
 // Summary:
 //
-// Retrieves the details of a service.
+// Gets service details.
 //
 // @param headers - map
 //
@@ -4108,7 +4132,7 @@ func (client *Client) InstallPluginWithContext(ctx context.Context, request *Ins
 
 // Summary:
 //
-// 查询AI模型卡片列表
+// Queries the list of AI model cards.
 //
 // @param request - ListAiModelCardsRequest
 //
@@ -4167,7 +4191,7 @@ func (client *Client) ListAiModelCardsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 查询AI模型供应商列表
+// Queries the list of AI model providers.
 //
 // @param request - ListAiModelProvidersRequest
 //
@@ -4281,7 +4305,7 @@ func (client *Client) ListConsumerAuthorizationRulesWithContext(ctx context.Cont
 
 // Summary:
 //
-// 查询消费者组成员列表
+// Queries the member list of a consumer group.
 //
 // @param request - ListConsumerGroupConsumersRequest
 //
@@ -4336,7 +4360,7 @@ func (client *Client) ListConsumerGroupConsumersWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查询消费者组列表
+// Queries the list of consumer groups.
 //
 // @param request - ListConsumerGroupsRequest
 //
@@ -4881,6 +4905,10 @@ func (client *Client) ListGatewaysWithContext(ctx context.Context, tmpReq *ListG
 
 	if !dara.IsNil(request.TagShrink) {
 		query["tag"] = request.TagShrink
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["vpcId"] = request.VpcId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -6616,7 +6644,7 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, tmpReq *Unt
 
 // Summary:
 //
-// 更新AI模型卡片
+// Updates an AI model card.
 //
 // @param request - UpdateAiModelCardRequest
 //
@@ -6683,7 +6711,7 @@ func (client *Client) UpdateAiModelCardWithContext(ctx context.Context, modelCar
 
 // Summary:
 //
-// 更新AI模型供应商
+// Updates an AI model provider.
 //
 // @param request - UpdateAiModelProviderRequest
 //
@@ -6923,7 +6951,7 @@ func (client *Client) UpdateConsumerAuthorizationRuleWithContext(ctx context.Con
 
 // Summary:
 //
-// 更新消费者组
+// Updates a consumer group.
 //
 // @param request - UpdateConsumerGroupRequest
 //

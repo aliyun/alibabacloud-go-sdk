@@ -14,6 +14,8 @@ type iBatchRemoveConsumerGroupConsumersRequest interface {
 }
 
 type BatchRemoveConsumerGroupConsumersRequest struct {
+	// The list of consumer IDs to remove from the consumer group.
+	//
 	// example:
 	//
 	// ["cs-8c13d2b4f8a1"]

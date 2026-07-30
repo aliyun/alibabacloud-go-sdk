@@ -30,23 +30,21 @@ type ListPoliciesRequest struct {
 	//
 	// api-cq7l5s5lhtgi6qasrdc0
 	AttachResourceId *string `json:"attachResourceId,omitempty" xml:"attachResourceId,omitempty"`
-	// The type of the attachment point supported by the policy.
+	// The type of attachment point supported by the policy.
 	//
-	// Valid values:
+	// - HttpApi: HttpApi.
 	//
-	// - HttpApi: HTTP API.
+	// - Operation: Operation of HttpApi.
 	//
-	// - Operation: Operation of an HTTP API.
+	// - GatewayRoute: gateway route.
 	//
-	// - GatewayRoute: Gateway route.
+	// - GatewayService: gateway service.
 	//
-	// - GatewayService: Gateway service.
+	// - GatewayServicePort: gateway service port.
 	//
-	// - GatewayServicePort: Gateway service port.
+	// - Domain: gateway domain name.
 	//
-	// - Domain: Gateway domain name.
-	//
-	// - Gateway: Gateway.
+	// - Gateway: gateway.
 	//
 	// example:
 	//

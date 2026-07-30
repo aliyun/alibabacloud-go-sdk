@@ -20,15 +20,22 @@ type iCreateAiModelProviderResponseBody interface {
 }
 
 type CreateAiModelProviderResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response struct.
 	Data *CreateAiModelProviderResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 464F9EA0-1052-51BD-8187-D292AA2D8D24
@@ -89,32 +96,48 @@ func (s *CreateAiModelProviderResponseBody) Validate() error {
 }
 
 type CreateAiModelProviderResponseBodyData struct {
+	// The list of services bound to the provider.
 	BoundServices []*ServiceInfo `json:"boundServices,omitempty" xml:"boundServices,omitempty" type:"Repeated"`
+	// The display name of the model provider.
+	//
 	// example:
 	//
 	// OpenAI
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The gateway instance ID.
+	//
 	// example:
 	//
 	// gw-ucbx3s2m****
-	GatewayId  *string                                            `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The list of model cards under the provider.
 	ModelCards []*CreateAiModelProviderResponseBodyDataModelCards `json:"modelCards,omitempty" xml:"modelCards,omitempty" type:"Repeated"`
+	// The number of models under the provider.
+	//
 	// example:
 	//
 	// 3
 	ModelCount *int32 `json:"modelCount,omitempty" xml:"modelCount,omitempty"`
+	// The model provider ID.
+	//
 	// example:
 	//
 	// mp-xxx****
 	ModelProviderId *string `json:"modelProviderId,omitempty" xml:"modelProviderId,omitempty"`
+	// The model provider identifier.
+	//
 	// example:
 	//
 	// openai
 	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
+	// The provider source type.
+	//
 	// example:
 	//
 	// custom
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The last update time in the yyyy-MM-ddTHH:mm:ssZ format.
+	//
 	// example:
 	//
 	// 2024-07-03T10:48:00Z
@@ -233,33 +256,56 @@ func (s *CreateAiModelProviderResponseBodyData) Validate() error {
 }
 
 type CreateAiModelProviderResponseBodyDataModelCards struct {
+	// The list of available paths for the model.
 	AvailablePaths []*CreateAiModelProviderResponseBodyDataModelCardsAvailablePaths `json:"availablePaths,omitempty" xml:"availablePaths,omitempty" type:"Repeated"`
-	Credit         *CreateAiModelProviderResponseBodyDataModelCardsCredit           `json:"credit,omitempty" xml:"credit,omitempty" type:"Struct"`
+	// The model credits consumption configuration.
+	Credit *CreateAiModelProviderResponseBodyDataModelCardsCredit `json:"credit,omitempty" xml:"credit,omitempty" type:"Struct"`
+	// The model capability features.
+	//
 	// example:
 	//
 	// {"stream":true,"tools":true}
 	Features map[string]interface{} `json:"features,omitempty" xml:"features,omitempty"`
+	// The gateway instance ID to which the model card belongs.
+	//
 	// example:
 	//
 	// gw-ucbx3s2m****
-	GatewayId *string                                              `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	Meta      *CreateAiModelProviderResponseBodyDataModelCardsMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The model metadata.
+	Meta *CreateAiModelProviderResponseBodyDataModelCardsMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
+	// The model card ID.
+	//
 	// example:
 	//
 	// mc-xxx****
 	ModelCardId *string `json:"modelCardId,omitempty" xml:"modelCardId,omitempty"`
+	// The model name.
+	//
 	// example:
 	//
 	// gpt-4
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	// The model provider identifier to which the model card belongs.
+	//
 	// example:
 	//
 	// openai
 	ModelProvider *string `json:"modelProvider,omitempty" xml:"modelProvider,omitempty"`
+	// The model source.
+	//
 	// example:
 	//
 	// custom
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The URL of the model metadata.
+	//
+	// example:
+	//
+	// https://dashscope-intl.aliyuncs.com
+	SourceURL *string `json:"sourceURL,omitempty" xml:"sourceURL,omitempty"`
+	// The last update time in the yyyy-MM-ddTHH:mm:ssZ format.
+	//
 	// example:
 	//
 	// 2024-07-03T10:48:00Z
@@ -308,6 +354,10 @@ func (s *CreateAiModelProviderResponseBodyDataModelCards) GetModelProvider() *st
 
 func (s *CreateAiModelProviderResponseBodyDataModelCards) GetSource() *string {
 	return s.Source
+}
+
+func (s *CreateAiModelProviderResponseBodyDataModelCards) GetSourceURL() *string {
+	return s.SourceURL
 }
 
 func (s *CreateAiModelProviderResponseBodyDataModelCards) GetUpdateTime() *string {
@@ -359,6 +409,11 @@ func (s *CreateAiModelProviderResponseBodyDataModelCards) SetSource(v string) *C
 	return s
 }
 
+func (s *CreateAiModelProviderResponseBodyDataModelCards) SetSourceURL(v string) *CreateAiModelProviderResponseBodyDataModelCards {
+	s.SourceURL = &v
+	return s
+}
+
 func (s *CreateAiModelProviderResponseBodyDataModelCards) SetUpdateTime(v string) *CreateAiModelProviderResponseBodyDataModelCards {
 	s.UpdateTime = &v
 	return s
@@ -388,10 +443,14 @@ func (s *CreateAiModelProviderResponseBodyDataModelCards) Validate() error {
 }
 
 type CreateAiModelProviderResponseBodyDataModelCardsAvailablePaths struct {
+	// The API path.
+	//
 	// example:
 	//
 	// /v1/chat/completions
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// The path type.
+	//
 	// example:
 	//
 	// chat
@@ -429,18 +488,26 @@ func (s *CreateAiModelProviderResponseBodyDataModelCardsAvailablePaths) Validate
 }
 
 type CreateAiModelProviderResponseBodyDataModelCardsCredit struct {
+	// The credits consumption coefficient for cached tokens.
+	//
 	// example:
 	//
 	// 0.015
 	CacheCost *float32 `json:"cacheCost,omitempty" xml:"cacheCost,omitempty"`
+	// The credits consumption coefficient for input tokens.
+	//
 	// example:
 	//
 	// 0.03
 	InputCost *float32 `json:"inputCost,omitempty" xml:"inputCost,omitempty"`
+	// The credits consumption coefficient for output tokens.
+	//
 	// example:
 	//
 	// 0.06
 	OutputCost *float32 `json:"outputCost,omitempty" xml:"outputCost,omitempty"`
+	// The credits billing type.
+	//
 	// example:
 	//
 	// token
@@ -496,19 +563,27 @@ func (s *CreateAiModelProviderResponseBodyDataModelCardsCredit) Validate() error
 }
 
 type CreateAiModelProviderResponseBodyDataModelCardsMeta struct {
+	// The maximum number of input tokens.
+	//
 	// example:
 	//
 	// 128000
 	MaxInputTokens *int64 `json:"maxInputTokens,omitempty" xml:"maxInputTokens,omitempty"`
+	// The maximum number of output tokens.
+	//
 	// example:
 	//
 	// 4096
 	MaxOutputTokens *int64 `json:"maxOutputTokens,omitempty" xml:"maxOutputTokens,omitempty"`
+	// The maximum total number of tokens.
+	//
 	// example:
 	//
 	// 132096
-	MaxTokens                 *int64    `json:"maxTokens,omitempty" xml:"maxTokens,omitempty"`
-	SupportedInputModalities  []*string `json:"supportedInputModalities,omitempty" xml:"supportedInputModalities,omitempty" type:"Repeated"`
+	MaxTokens *int64 `json:"maxTokens,omitempty" xml:"maxTokens,omitempty"`
+	// The supported input modalities.
+	SupportedInputModalities []*string `json:"supportedInputModalities,omitempty" xml:"supportedInputModalities,omitempty" type:"Repeated"`
+	// The supported output modalities.
 	SupportedOutputModalities []*string `json:"supportedOutputModalities,omitempty" xml:"supportedOutputModalities,omitempty" type:"Repeated"`
 }
 

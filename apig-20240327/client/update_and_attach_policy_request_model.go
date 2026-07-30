@@ -54,7 +54,7 @@ type UpdateAndAttachPolicyRequest struct {
 	//
 	// HttpApi
 	AttachResourceType *string `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
-	// The configuration information. The value is a JSON string.
+	// The configuration information. A JSON string.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type UpdateAndAttachPolicyRequest struct {
 	//
 	// example:
 	//
-	// 这是策略描述。
+	// This is a policy description.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The environment ID.
 	//

@@ -36,7 +36,7 @@ type CreateServiceRequest struct {
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The list of service configurations. At least one service configuration is required.
 	ServiceConfigs []*CreateServiceRequestServiceConfigs `json:"serviceConfigs,omitempty" xml:"serviceConfigs,omitempty" type:"Repeated"`
-	// The service source. Valid values:
+	// The service source type. Valid values:
 	//
 	// - MSE_NACOS: a service in MSE Nacos.
 	//
@@ -137,11 +137,11 @@ type CreateServiceRequestServiceConfigs struct {
 	Addresses []*string `json:"addresses,omitempty" xml:"addresses,omitempty" type:"Repeated"`
 	// The Agent service configuration. This parameter is required when sourceType is set to AGENT.
 	AgentServiceConfig *AgentServiceConfig `json:"agentServiceConfig,omitempty" xml:"agentServiceConfig,omitempty"`
-	// The AI service configuration.
+	// The AI service configuration. This parameter is required when sourceType is set to AI.
 	AiServiceConfig *AiServiceConfig `json:"aiServiceConfig,omitempty" xml:"aiServiceConfig,omitempty"`
 	// The list of DNS server addresses.
 	DnsServers []*string `json:"dnsServers,omitempty" xml:"dnsServers,omitempty" type:"Repeated"`
-	// The service expression type. Identifies the special type or mode of the service.
+	// The service expression type that identifies the special type or mode of the service.
 	//
 	// example:
 	//
@@ -153,13 +153,13 @@ type CreateServiceRequestServiceConfigs struct {
 	//
 	// DEFAULT_GROUP
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	// The model provider ID.
+	// The model provider ID. This parameter is applicable only to AI services.
 	//
 	// example:
 	//
 	// mp-xxx****
 	ModelProviderId *string `json:"modelProviderId,omitempty" xml:"modelProviderId,omitempty"`
-	// The service name.
+	// The service name. This parameter is required when sourceType is set to FC3.
 	//
 	// example:
 	//
@@ -189,7 +189,7 @@ type CreateServiceRequestServiceConfigs struct {
 	//
 	// nacos-instance-001
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// The validation options. Configuration options related to service validation.
+	// The validation options for service verification configuration.
 	ValidationOptions *CreateServiceRequestServiceConfigsValidationOptions `json:"validationOptions,omitempty" xml:"validationOptions,omitempty" type:"Struct"`
 }
 

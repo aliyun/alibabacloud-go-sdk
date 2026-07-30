@@ -26,7 +26,7 @@ type ListGatewaysResponseBody struct {
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The query result of the gateway list.
+	// The gateway list query result.
 	Data *ListGatewaysResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The response message.
 	//
@@ -176,19 +176,13 @@ func (s *ListGatewaysResponseBodyData) Validate() error {
 }
 
 type ListGatewaysResponseBodyDataItems struct {
-	// The billing type. Valid values:
-	//
-	// - POSTPAY: pay-as-you-go.
-	//
-	// - PREPAY: subscription.
+	// The billing method. Valid values:
 	//
 	// example:
 	//
 	// POSTPAY
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
 	// The source from which the gateway was created. Valid values:
-	//
-	// - Console: the console.
 	//
 	// example:
 	//
@@ -200,17 +194,13 @@ type ListGatewaysResponseBodyDataItems struct {
 	//
 	// 1719386834548
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	// The subscription expiration timestamp. Unit: milliseconds.
+	// The expiration timestamp for subscription instances. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 172086834548
 	ExpireTimestamp *int64 `json:"expireTimestamp,omitempty" xml:"expireTimestamp,omitempty"`
-	// The gateway instance edition. Valid values:
-	//
-	// - Professional: standard instance.
-	//
-	// - Serverless: Serverless instance.
+	// The gateway instance edition.
 	//
 	// example:
 	//
@@ -228,7 +218,7 @@ type ListGatewaysResponseBodyDataItems struct {
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// Indicates whether the gateway instance was created before the AI gateway feature was released.
+	// Indicates whether the gateway instance was created before AI gateway was released.
 	//
 	// example:
 	//
@@ -256,33 +246,13 @@ type ListGatewaysResponseBodyDataItems struct {
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The security group information of the gateway.
 	SecurityGroup *ListGatewaysResponseBodyDataItemsSecurityGroup `json:"securityGroup,omitempty" xml:"securityGroup,omitempty" type:"Struct"`
-	// The gateway specification. Valid values:
-	//
-	// - apigw.small.x1: small specification.
+	// The gateway specification.
 	//
 	// example:
 	//
 	// apigw.small.x1
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 	// The gateway status. Valid values:
-	//
-	// - Running: The gateway is running.
-	//
-	// - Creating: The gateway is being created.
-	//
-	// - CreateFailed: The gateway failed to be created.
-	//
-	// - Upgrading: The gateway is being upgraded.
-	//
-	// - UpgradeFailed: The gateway failed to be upgraded.
-	//
-	// - Restarting: The gateway is being restarted.
-	//
-	// - RestartFailed: The gateway failed to be restarted.
-	//
-	// - Deleting: The gateway is being released.
-	//
-	// - DeleteFailed: The gateway failed to be released.
 	//
 	// example:
 	//
@@ -597,19 +567,11 @@ type ListGatewaysResponseBodyDataItemsLoadBalancers struct {
 	Address *string `json:"address,omitempty" xml:"address,omitempty"`
 	// The protocol version. Valid values:
 	//
-	// - ipv4: IPv4.
-	//
-	// - ipv6: IPv6.
-	//
 	// example:
 	//
 	// ipv4
 	AddressIpVersion *string `json:"addressIpVersion,omitempty" xml:"addressIpVersion,omitempty"`
 	// The load balancing address type. Valid values:
-	//
-	// - Internet: public network.
-	//
-	// - Intranet: private network.
 	//
 	// example:
 	//
@@ -633,8 +595,6 @@ type ListGatewaysResponseBodyDataItemsLoadBalancers struct {
 	LoadBalancerId *string `json:"loadBalancerId,omitempty" xml:"loadBalancerId,omitempty"`
 	// The load balancing provisioning pattern of the gateway. Valid values:
 	//
-	// - Managed: managed by the cloud-native API gateway.
-	//
 	// example:
 	//
 	// Managed
@@ -643,19 +603,11 @@ type ListGatewaysResponseBodyDataItemsLoadBalancers struct {
 	Ports []*ListGatewaysResponseBodyDataItemsLoadBalancersPorts `json:"ports,omitempty" xml:"ports,omitempty" type:"Repeated"`
 	// The load balancing status. Valid values:
 	//
-	// - Ready: active.
-	//
-	// - NotCreate: no associated instance.
-	//
 	// example:
 	//
 	// Ready
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The load balancing type of the gateway. Valid values:
-	//
-	// - NLB: Network Load Balancer (NLB).
-	//
-	// - CLB: Classic Load Balancer (CLB).
 	//
 	// example:
 	//
@@ -790,11 +742,7 @@ type ListGatewaysResponseBodyDataItemsLoadBalancersPorts struct {
 	//
 	// 443
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The protocol. Valid values:
-	//
-	// - TCP.
-	//
-	// - UDP.
+	// The protocol.
 	//
 	// example:
 	//

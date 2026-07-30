@@ -20,15 +20,22 @@ type iGetConsumerGroupResponseBody interface {
 }
 
 type GetConsumerGroupResponseBody struct {
+	// The response status code. Ok is returned if the request is successful.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                           `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *GetConsumerGroupResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
@@ -89,30 +96,44 @@ func (s *GetConsumerGroupResponseBody) Validate() error {
 }
 
 type GetConsumerGroupResponseBodyData struct {
+	// The number of consumers in the consumer group.
+	//
 	// example:
 	//
 	// 3
 	ConsumerCount *int64 `json:"consumerCount,omitempty" xml:"consumerCount,omitempty"`
+	// The consumer group ID.
+	//
 	// example:
 	//
 	// csg-8c13d2b4f8a1
 	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+	// The creation time of the consumer group, in Unix millisecond timestamp.
+	//
 	// example:
 	//
 	// 1715769600000
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
+	// The consumer group description.
+	//
 	// example:
 	//
-	// 用于线上 API 调用方分组
+	// Used for online API caller grouping.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The gateway type. Valid values: API or AI.
+	//
 	// example:
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
+	// The consumer group name.
+	//
 	// example:
 	//
 	// api-consumer-group
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The update time of the consumer group, in Unix millisecond timestamp.
+	//
 	// example:
 	//
 	// 1715769600000

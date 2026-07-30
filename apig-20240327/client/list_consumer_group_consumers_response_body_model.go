@@ -20,15 +20,22 @@ type iListConsumerGroupConsumersResponseBody interface {
 }
 
 type ListConsumerGroupConsumersResponseBody struct {
+	// The response status code. Ok is returned if the request is successful.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                                     `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *ListConsumerGroupConsumersResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
@@ -89,15 +96,22 @@ func (s *ListConsumerGroupConsumersResponseBody) Validate() error {
 }
 
 type ListConsumerGroupConsumersResponseBodyData struct {
+	// The consumer group member list.
 	Items []*ListConsumerGroupConsumersResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The total number of consumers that match the filter conditions.
+	//
 	// example:
 	//
 	// 2
@@ -162,26 +176,38 @@ func (s *ListConsumerGroupConsumersResponseBodyData) Validate() error {
 }
 
 type ListConsumerGroupConsumersResponseBodyDataItems struct {
+	// The consumer ID.
+	//
 	// example:
 	//
 	// cs-8c13d2b4f8a1
 	ConsumerId *string `json:"consumerId,omitempty" xml:"consumerId,omitempty"`
+	// The consumer deployment status. Valid values: Processing, Failed, and Success.
+	//
 	// example:
 	//
 	// Success
 	DeployStatus *string `json:"deployStatus,omitempty" xml:"deployStatus,omitempty"`
+	// The consumer description.
+	//
 	// example:
 	//
-	// 线上 API 调用方
+	// Online API caller.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Indicates whether the consumer is enabled.
+	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The time when the consumer joined the consumer group, in Unix millisecond timestamp.
+	//
 	// example:
 	//
 	// 1715769600000
 	JoinTimestamp *int64 `json:"joinTimestamp,omitempty" xml:"joinTimestamp,omitempty"`
+	// The consumer name.
+	//
 	// example:
 	//
 	// api-consumer

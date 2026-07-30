@@ -20,20 +20,28 @@ type iListAiModelProvidersRequest interface {
 }
 
 type ListAiModelProvidersRequest struct {
+	// The ID of the AI gateway instance. The target instance must exist, belong to the current account, and be of the AI gateway type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gw-8c13d2b4f8a1
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The page number. Default value: 1. The value must be greater than or equal to 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page. Default value: 10. Valid values: 1 to 500.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The fuzzy match condition for the model provider identifier. If left empty, all model providers under the current gateway are queried.
+	//
 	// example:
 	//
 	// qwen

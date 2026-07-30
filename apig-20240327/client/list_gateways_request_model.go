@@ -25,6 +25,8 @@ type iListGatewaysRequest interface {
 	GetResourceGroupId() *string
 	SetTag(v []*ListGatewaysRequestTag) *ListGatewaysRequest
 	GetTag() []*ListGatewaysRequestTag
+	SetVpcId(v string) *ListGatewaysRequest
+	GetVpcId() *string
 }
 
 type ListGatewaysRequest struct {
@@ -40,7 +42,7 @@ type ListGatewaysRequest struct {
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// The keyword for full match search. Case-insensitive.
+	// The keyword for full match search. The search is case-insensitive.
 	//
 	// example:
 	//
@@ -64,7 +66,7 @@ type ListGatewaysRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -72,6 +74,12 @@ type ListGatewaysRequest struct {
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The list of tags.
 	Tag []*ListGatewaysRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
+	// The virtual private cloud (VPC) ID.
+	//
+	// example:
+	//
+	// vpc-2zeqrgx6jrlb063y06yjo
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 
 func (s ListGatewaysRequest) String() string {
@@ -114,6 +122,10 @@ func (s *ListGatewaysRequest) GetTag() []*ListGatewaysRequestTag {
 	return s.Tag
 }
 
+func (s *ListGatewaysRequest) GetVpcId() *string {
+	return s.VpcId
+}
+
 func (s *ListGatewaysRequest) SetGatewayId(v string) *ListGatewaysRequest {
 	s.GatewayId = &v
 	return s
@@ -151,6 +163,11 @@ func (s *ListGatewaysRequest) SetResourceGroupId(v string) *ListGatewaysRequest 
 
 func (s *ListGatewaysRequest) SetTag(v []*ListGatewaysRequestTag) *ListGatewaysRequest {
 	s.Tag = v
+	return s
+}
+
+func (s *ListGatewaysRequest) SetVpcId(v string) *ListGatewaysRequest {
+	s.VpcId = &v
 	return s
 }
 

@@ -20,18 +20,26 @@ type iCreateAiModelCardResponseBody interface {
 }
 
 type CreateAiModelCardResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The model card information returned after successful creation.
+	//
 	// example:
 	//
 	// {"modelCardId":"mc-8c13d2b4f8a1","gatewayId":"gw-8c13d2b4f8a1","modelProvider":"qwen","modelName":"qwen-plus","source":"user","credit":{"type":"fixed","inputCost":1.5,"outputCost":3,"cacheCost":0.5},"features":{"functionCalling":true,"toolChoice":true},"meta":{"maxInputTokens":131072,"maxOutputTokens":8192,"maxTokens":131072,"supportedInputModalities":["text","image"],"supportedOutputModalities":["text"]},"availablePaths":[{"path":"/v1/chat/completions","type":"OpenAICompatible"}],"updateTime":"2026-07-14 18:30:00"}
 	Data *CreateAiModelCardResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
@@ -92,42 +100,62 @@ func (s *CreateAiModelCardResponseBody) Validate() error {
 }
 
 type CreateAiModelCardResponseBodyData struct {
+	// The list of invocation paths supported by the model.
+	//
 	// example:
 	//
 	// [{"path":"/v1/chat/completions","type":"OpenAICompatible"}]
 	AvailablePaths []*CreateAiModelCardResponseBodyDataAvailablePaths `json:"availablePaths,omitempty" xml:"availablePaths,omitempty" type:"Repeated"`
+	// The credit billing information of the model.
+	//
 	// example:
 	//
 	// {"type":"fixed","inputCost":1.5,"outputCost":3,"cacheCost":0.5}
 	Credit *CreateAiModelCardResponseBodyDataCredit `json:"credit,omitempty" xml:"credit,omitempty" type:"Struct"`
+	// The model capability switches.
+	//
 	// example:
 	//
 	// {"functionCalling":true,"toolChoice":true}
 	Features map[string]interface{} `json:"features,omitempty" xml:"features,omitempty"`
+	// The AI gateway instance ID to which the model card belongs.
+	//
 	// example:
 	//
 	// gw-8c13d2b4f8a1
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The token limits and input/output modality information of the model.
+	//
 	// example:
 	//
 	// {"maxInputTokens":131072,"maxOutputTokens":8192,"maxTokens":131072,"supportedInputModalities":["text","image"],"supportedOutputModalities":["text"]}
 	Meta *CreateAiModelCardResponseBodyDataMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
+	// The model card ID.
+	//
 	// example:
 	//
 	// mc-8c13d2b4f8a1
 	ModelCardId *string `json:"modelCardId,omitempty" xml:"modelCardId,omitempty"`
+	// The model name.
+	//
 	// example:
 	//
 	// qwen-plus
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	// The model provider identifier.
+	//
 	// example:
 	//
 	// qwen
 	ModelProvider *string `json:"modelProvider,omitempty" xml:"modelProvider,omitempty"`
+	// The source of the model card. Currently, user is returned.
+	//
 	// example:
 	//
 	// user
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The last update time of the model card, in the format of yyyy-MM-dd HH:mm:ss.
+	//
 	// example:
 	//
 	// 2026-07-14 18:30:00
@@ -256,10 +284,14 @@ func (s *CreateAiModelCardResponseBodyData) Validate() error {
 }
 
 type CreateAiModelCardResponseBodyDataAvailablePaths struct {
+	// The model invocation path.
+	//
 	// example:
 	//
 	// /v1/chat/completions
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// The protocol type corresponding to the path.
+	//
 	// example:
 	//
 	// OpenAICompatible
@@ -297,18 +329,26 @@ func (s *CreateAiModelCardResponseBodyDataAvailablePaths) Validate() error {
 }
 
 type CreateAiModelCardResponseBodyDataCredit struct {
+	// The cache hit token cost, in Credits per million tokens.
+	//
 	// example:
 	//
 	// 0.5
 	CacheCost *float32 `json:"cacheCost,omitempty" xml:"cacheCost,omitempty"`
+	// The input token cost, in Credits per million tokens.
+	//
 	// example:
 	//
 	// 1.5
 	InputCost *float32 `json:"inputCost,omitempty" xml:"inputCost,omitempty"`
+	// The output token cost, in Credits per million tokens.
+	//
 	// example:
 	//
 	// 3
 	OutputCost *float32 `json:"outputCost,omitempty" xml:"outputCost,omitempty"`
+	// The billing type. Currently, fixed is returned.
+	//
 	// example:
 	//
 	// fixed
@@ -364,22 +404,32 @@ func (s *CreateAiModelCardResponseBodyDataCredit) Validate() error {
 }
 
 type CreateAiModelCardResponseBodyDataMeta struct {
+	// The maximum number of input tokens supported by the model.
+	//
 	// example:
 	//
 	// 131072
 	MaxInputTokens *int64 `json:"maxInputTokens,omitempty" xml:"maxInputTokens,omitempty"`
+	// The maximum number of output tokens supported by the model.
+	//
 	// example:
 	//
 	// 8192
 	MaxOutputTokens *int64 `json:"maxOutputTokens,omitempty" xml:"maxOutputTokens,omitempty"`
+	// The maximum total number of context tokens supported by the model.
+	//
 	// example:
 	//
 	// 131072
 	MaxTokens *int64 `json:"maxTokens,omitempty" xml:"maxTokens,omitempty"`
+	// The list of input modalities supported by the model.
+	//
 	// example:
 	//
 	// ["text","image"]
 	SupportedInputModalities []*string `json:"supportedInputModalities,omitempty" xml:"supportedInputModalities,omitempty" type:"Repeated"`
+	// The list of output modalities supported by the model.
+	//
 	// example:
 	//
 	// ["text"]

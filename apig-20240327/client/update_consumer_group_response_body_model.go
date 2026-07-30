@@ -18,14 +18,20 @@ type iUpdateConsumerGroupResponseBody interface {
 }
 
 type UpdateConsumerGroupResponseBody struct {
+	// The response status code. Ok is returned if the request is successful.
+	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E

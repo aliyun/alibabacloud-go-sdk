@@ -18,14 +18,20 @@ type iConsumerGroupInfo interface {
 }
 
 type ConsumerGroupInfo struct {
+	// The consumer group ID.
+	//
 	// example:
 	//
 	// csg-8c13d2b4f8a1
 	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+	// The gateway type. Valid values: API or AI.
+	//
 	// example:
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
+	// The consumer group name.
+	//
 	// example:
 	//
 	// api-consumer-group

@@ -20,15 +20,22 @@ type iCreateConsumerGroupResponseBody interface {
 }
 
 type CreateConsumerGroupResponseBody struct {
+	// The response status code. Ok is returned if the request is successful.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                              `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *CreateConsumerGroupResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
@@ -89,10 +96,14 @@ func (s *CreateConsumerGroupResponseBody) Validate() error {
 }
 
 type CreateConsumerGroupResponseBodyData struct {
+	// The consumer group ID.
+	//
 	// example:
 	//
 	// csg-8c13d2b4f8a1
 	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+	// The gateway type. Valid values: API or AI.
+	//
 	// example:
 	//
 	// API

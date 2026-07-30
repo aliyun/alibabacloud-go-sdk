@@ -61,7 +61,7 @@ type CreateConsumerAuthorizationRulesRequestAuthorizationRules struct {
 	//
 	// cs-******
 	ConsumerId *string `json:"consumerId,omitempty" xml:"consumerId,omitempty"`
-	// The expiration mode. Currently, only LongTerm is supported.
+	// The expiration mode. Currently only LongTerm is supported.
 	//
 	// example:
 	//
@@ -73,13 +73,13 @@ type CreateConsumerAuthorizationRulesRequestAuthorizationRules struct {
 	//
 	// 1741162221
 	ExpireTimestamp *int64 `json:"expireTimestamp,omitempty" xml:"expireTimestamp,omitempty"`
-	// The type of the authorization principal.
+	// The principal type.
 	//
 	// example:
 	//
 	// ConsumerGroup
 	PrincipalType *string `json:"principalType,omitempty" xml:"principalType,omitempty"`
-	// The resource identifier, which serves as a unique identifier for space reuse by non-standard code sources.
+	// The resource identifier. Serves as a unique identifier for space reuse by non-standard code sources.
 	ResourceIdentifier *CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier `json:"resourceIdentifier,omitempty" xml:"resourceIdentifier,omitempty" type:"Struct"`
 	// The resource type.
 	//
@@ -182,7 +182,7 @@ type CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier
 	//
 	// api-******
 	ParentResourceId *string `json:"parentResourceId,omitempty" xml:"parentResourceId,omitempty"`
-	// The resource ID.
+	// The ID of the target resource to authorize. The required ID type is determined by resourceType, and the prefix must match.
 	//
 	// example:
 	//

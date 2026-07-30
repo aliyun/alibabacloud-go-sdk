@@ -16,13 +16,16 @@ type iUpdateAiModelProviderRequest interface {
 }
 
 type UpdateAiModelProviderRequest struct {
+	// The display name of the model provider. This parameter is required. The name can be up to 128 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 千问云 / 阿里云百炼
-	DisplayName *string   `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	ServiceIds  []*string `json:"serviceIds,omitempty" xml:"serviceIds,omitempty" type:"Repeated"`
+	// Qwen Cloud / Alibaba Cloud Bailian.
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The complete set of AI service IDs to bind to the model provider. If this parameter is not specified, the existing bindings are retained. If an empty array is specified, all bindings are cleared. Duplicate and empty values are normalized.
+	ServiceIds []*string `json:"serviceIds,omitempty" xml:"serviceIds,omitempty" type:"Repeated"`
 }
 
 func (s UpdateAiModelProviderRequest) String() string {

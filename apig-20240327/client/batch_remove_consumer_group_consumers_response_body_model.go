@@ -20,15 +20,22 @@ type iBatchRemoveConsumerGroupConsumersResponseBody interface {
 }
 
 type BatchRemoveConsumerGroupConsumersResponseBody struct {
+	// The response status code. Ok is returned if the request is successful.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                                            `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *BatchRemoveConsumerGroupConsumersResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
@@ -89,8 +96,11 @@ func (s *BatchRemoveConsumerGroupConsumersResponseBody) Validate() error {
 }
 
 type BatchRemoveConsumerGroupConsumersResponseBodyData struct {
-	FailedConsumerIds  []*string `json:"failedConsumerIds,omitempty" xml:"failedConsumerIds,omitempty" type:"Repeated"`
+	// The list of consumer IDs that failed to be removed.
+	FailedConsumerIds []*string `json:"failedConsumerIds,omitempty" xml:"failedConsumerIds,omitempty" type:"Repeated"`
+	// The list of consumer IDs skipped because they are not in the consumer group.
 	SkippedConsumerIds []*string `json:"skippedConsumerIds,omitempty" xml:"skippedConsumerIds,omitempty" type:"Repeated"`
+	// The list of consumer IDs successfully removed from the consumer group.
 	SuccessConsumerIds []*string `json:"successConsumerIds,omitempty" xml:"successConsumerIds,omitempty" type:"Repeated"`
 }
 

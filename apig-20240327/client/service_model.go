@@ -17,6 +17,8 @@ type iService interface {
 	GetAiServiceConfig() *AiServiceConfig
 	SetCreateTimestamp(v int64) *Service
 	GetCreateTimestamp() *int64
+	SetDnsServers(v []*string) *Service
+	GetDnsServers() []*string
 	SetExpressType(v string) *Service
 	GetExpressType() *string
 	SetGatewayId(v string) *Service
@@ -27,6 +29,8 @@ type iService interface {
 	GetHealthCheck() *ServiceHealthCheck
 	SetHealthStatus(v string) *Service
 	GetHealthStatus() *string
+	SetHealthyPanicThreshold(v float32) *Service
+	GetHealthyPanicThreshold() *float32
 	SetLabelDetails(v []*LabelDetail) *Service
 	GetLabelDetails() []*LabelDetail
 	SetModelProviderId(v string) *Service
@@ -35,6 +39,8 @@ type iService interface {
 	GetName() *string
 	SetNamespace(v string) *Service
 	GetNamespace() *string
+	SetOutlierDetection(v *ServiceOutlierDetection) *Service
+	GetOutlierDetection() *ServiceOutlierDetection
 	SetOutlierEndpoints(v []*string) *Service
 	GetOutlierEndpoints() []*string
 	SetPorts(v []*ServicePorts) *Service
@@ -62,7 +68,7 @@ type iService interface {
 }
 
 type Service struct {
-	// The address information, including IP addresses or domain names.
+	// The address information, including IP addresses or domain name lists.
 	Addresses []*string `json:"addresses,omitempty" xml:"addresses,omitempty" type:"Repeated"`
 	// The agent service configuration.
 	AgentServiceConfig *AgentServiceConfig `json:"agentServiceConfig,omitempty" xml:"agentServiceConfig,omitempty"`
@@ -73,8 +79,9 @@ type Service struct {
 	// example:
 	//
 	// 1725617840096
-	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	// The CloudFlow execution mode.
+	CreateTimestamp *int64    `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
+	DnsServers      []*string `json:"dnsServers,omitempty" xml:"dnsServers,omitempty" type:"Repeated"`
+	// The execution mode of CloudFlow.
 	//
 	// example:
 	//
@@ -86,7 +93,7 @@ type Service struct {
 	//
 	// gw-xxxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The service group name.
+	// The name of the service group.
 	//
 	// example:
 	//
@@ -94,23 +101,20 @@ type Service struct {
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
 	// The health check configuration.
 	HealthCheck *ServiceHealthCheck `json:"healthCheck,omitempty" xml:"healthCheck,omitempty"`
-	// The health check status. Valid values:
-	//
-	// - Healthy
-	//
-	// - Unhealthy
+	// The health check status. Valid values: Healthy and Unhealthy.
 	//
 	// example:
 	//
 	// Healthy
-	HealthStatus *string `json:"healthStatus,omitempty" xml:"healthStatus,omitempty"`
+	HealthStatus          *string  `json:"healthStatus,omitempty" xml:"healthStatus,omitempty"`
+	HealthyPanicThreshold *float32 `json:"healthyPanicThreshold,omitempty" xml:"healthyPanicThreshold,omitempty"`
 	// The label information of the service.
 	LabelDetails []*LabelDetail `json:"labelDetails,omitempty" xml:"labelDetails,omitempty" type:"Repeated"`
 	// example:
 	//
 	// mp-xxxx
 	ModelProviderId *string `json:"modelProviderId,omitempty" xml:"modelProviderId,omitempty"`
-	// The service name.
+	// The name of the service.
 	//
 	// example:
 	//
@@ -121,7 +125,8 @@ type Service struct {
 	// example:
 	//
 	// PUBLIC
-	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	Namespace        *string                  `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	OutlierDetection *ServiceOutlierDetection `json:"outlierDetection,omitempty" xml:"outlierDetection,omitempty" type:"Struct"`
 	// The circuit-broken endpoints.
 	OutlierEndpoints []*string `json:"outlierEndpoints,omitempty" xml:"outlierEndpoints,omitempty" type:"Repeated"`
 	// The list of port information.
@@ -200,6 +205,10 @@ func (s *Service) GetCreateTimestamp() *int64 {
 	return s.CreateTimestamp
 }
 
+func (s *Service) GetDnsServers() []*string {
+	return s.DnsServers
+}
+
 func (s *Service) GetExpressType() *string {
 	return s.ExpressType
 }
@@ -220,6 +229,10 @@ func (s *Service) GetHealthStatus() *string {
 	return s.HealthStatus
 }
 
+func (s *Service) GetHealthyPanicThreshold() *float32 {
+	return s.HealthyPanicThreshold
+}
+
 func (s *Service) GetLabelDetails() []*LabelDetail {
 	return s.LabelDetails
 }
@@ -234,6 +247,10 @@ func (s *Service) GetName() *string {
 
 func (s *Service) GetNamespace() *string {
 	return s.Namespace
+}
+
+func (s *Service) GetOutlierDetection() *ServiceOutlierDetection {
+	return s.OutlierDetection
 }
 
 func (s *Service) GetOutlierEndpoints() []*string {
@@ -304,6 +321,11 @@ func (s *Service) SetCreateTimestamp(v int64) *Service {
 	return s
 }
 
+func (s *Service) SetDnsServers(v []*string) *Service {
+	s.DnsServers = v
+	return s
+}
+
 func (s *Service) SetExpressType(v string) *Service {
 	s.ExpressType = &v
 	return s
@@ -329,6 +351,11 @@ func (s *Service) SetHealthStatus(v string) *Service {
 	return s
 }
 
+func (s *Service) SetHealthyPanicThreshold(v float32) *Service {
+	s.HealthyPanicThreshold = &v
+	return s
+}
+
 func (s *Service) SetLabelDetails(v []*LabelDetail) *Service {
 	s.LabelDetails = v
 	return s
@@ -346,6 +373,11 @@ func (s *Service) SetName(v string) *Service {
 
 func (s *Service) SetNamespace(v string) *Service {
 	s.Namespace = &v
+	return s
+}
+
+func (s *Service) SetOutlierDetection(v *ServiceOutlierDetection) *Service {
+	s.OutlierDetection = v
 	return s
 }
 
@@ -434,6 +466,11 @@ func (s *Service) Validate() error {
 			}
 		}
 	}
+	if s.OutlierDetection != nil {
+		if err := s.OutlierDetection.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Ports != nil {
 		for _, item := range s.Ports {
 			if item != nil {
@@ -455,8 +492,73 @@ func (s *Service) Validate() error {
 	return nil
 }
 
+type ServiceOutlierDetection struct {
+	BaseEjectionTime              *int32 `json:"baseEjectionTime,omitempty" xml:"baseEjectionTime,omitempty"`
+	Enable                        *bool  `json:"enable,omitempty" xml:"enable,omitempty"`
+	FailurePercentageMinimumHosts *int32 `json:"failurePercentageMinimumHosts,omitempty" xml:"failurePercentageMinimumHosts,omitempty"`
+	FailurePercentageThreshold    *int32 `json:"failurePercentageThreshold,omitempty" xml:"failurePercentageThreshold,omitempty"`
+	Interval                      *int32 `json:"interval,omitempty" xml:"interval,omitempty"`
+}
+
+func (s ServiceOutlierDetection) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ServiceOutlierDetection) GoString() string {
+	return s.String()
+}
+
+func (s *ServiceOutlierDetection) GetBaseEjectionTime() *int32 {
+	return s.BaseEjectionTime
+}
+
+func (s *ServiceOutlierDetection) GetEnable() *bool {
+	return s.Enable
+}
+
+func (s *ServiceOutlierDetection) GetFailurePercentageMinimumHosts() *int32 {
+	return s.FailurePercentageMinimumHosts
+}
+
+func (s *ServiceOutlierDetection) GetFailurePercentageThreshold() *int32 {
+	return s.FailurePercentageThreshold
+}
+
+func (s *ServiceOutlierDetection) GetInterval() *int32 {
+	return s.Interval
+}
+
+func (s *ServiceOutlierDetection) SetBaseEjectionTime(v int32) *ServiceOutlierDetection {
+	s.BaseEjectionTime = &v
+	return s
+}
+
+func (s *ServiceOutlierDetection) SetEnable(v bool) *ServiceOutlierDetection {
+	s.Enable = &v
+	return s
+}
+
+func (s *ServiceOutlierDetection) SetFailurePercentageMinimumHosts(v int32) *ServiceOutlierDetection {
+	s.FailurePercentageMinimumHosts = &v
+	return s
+}
+
+func (s *ServiceOutlierDetection) SetFailurePercentageThreshold(v int32) *ServiceOutlierDetection {
+	s.FailurePercentageThreshold = &v
+	return s
+}
+
+func (s *ServiceOutlierDetection) SetInterval(v int32) *ServiceOutlierDetection {
+	s.Interval = &v
+	return s
+}
+
+func (s *ServiceOutlierDetection) Validate() error {
+	return dara.Validate(s)
+}
+
 type ServicePorts struct {
-	// The port name.
+	// The name of the port.
 	//
 	// example:
 	//
