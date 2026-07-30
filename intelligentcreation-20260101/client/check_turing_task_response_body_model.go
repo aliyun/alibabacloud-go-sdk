@@ -22,22 +22,11 @@ type iCheckTuringTaskResponseBody interface {
 }
 
 type CheckTuringTaskResponseBody struct {
-	// example:
-	//
-	// 404
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	ErrorMsg  *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 0E8B1746-AE35-5C4B-A3A8-345B274AE32C
+	ErrorCode *string                            `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg  *string                            `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
 	RequestId *string                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Result    *CheckTuringTaskResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	Success   *bool                              `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s CheckTuringTaskResponseBody) String() string {
@@ -103,23 +92,12 @@ func (s *CheckTuringTaskResponseBody) Validate() error {
 }
 
 type CheckTuringTaskResponseBodyResult struct {
-	// example:
-	//
-	// 500
-	FailCode *string `json:"failCode,omitempty" xml:"failCode,omitempty"`
-	FailMsg  *string `json:"failMsg,omitempty" xml:"failMsg,omitempty"`
-	// example:
-	//
-	// success
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// example:
-	//
-	// 871509423398305792
-	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	// example:
-	//
-	// http://order-45-1318180738.cos.ap-beijing.myqcloud.com/2025/06/09/1a4837f81c594e7790073f22a43439bf.mp4
-	VideoUrl *string `json:"videoUrl,omitempty" xml:"videoUrl,omitempty"`
+	FailBizCode *string `json:"failBizCode,omitempty" xml:"failBizCode,omitempty"`
+	FailCode    *string `json:"failCode,omitempty" xml:"failCode,omitempty"`
+	FailMsg     *string `json:"failMsg,omitempty" xml:"failMsg,omitempty"`
+	Status      *string `json:"status,omitempty" xml:"status,omitempty"`
+	TaskId      *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	VideoUrl    *string `json:"videoUrl,omitempty" xml:"videoUrl,omitempty"`
 }
 
 func (s CheckTuringTaskResponseBodyResult) String() string {
@@ -128,6 +106,10 @@ func (s CheckTuringTaskResponseBodyResult) String() string {
 
 func (s CheckTuringTaskResponseBodyResult) GoString() string {
 	return s.String()
+}
+
+func (s *CheckTuringTaskResponseBodyResult) GetFailBizCode() *string {
+	return s.FailBizCode
 }
 
 func (s *CheckTuringTaskResponseBodyResult) GetFailCode() *string {
@@ -148,6 +130,11 @@ func (s *CheckTuringTaskResponseBodyResult) GetTaskId() *string {
 
 func (s *CheckTuringTaskResponseBodyResult) GetVideoUrl() *string {
 	return s.VideoUrl
+}
+
+func (s *CheckTuringTaskResponseBodyResult) SetFailBizCode(v string) *CheckTuringTaskResponseBodyResult {
+	s.FailBizCode = &v
+	return s
 }
 
 func (s *CheckTuringTaskResponseBodyResult) SetFailCode(v string) *CheckTuringTaskResponseBodyResult {

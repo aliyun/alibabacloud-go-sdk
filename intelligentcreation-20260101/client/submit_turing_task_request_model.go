@@ -24,30 +24,12 @@ type iSubmitTuringTaskRequest interface {
 }
 
 type SubmitTuringTaskRequest struct {
-	// example:
-	//
-	// 5
-	Duration *int32 `json:"duration,omitempty" xml:"duration,omitempty"`
-	// example:
-	//
-	// 82veb0a6wc41asdv80
+	Duration      *int32  `json:"duration,omitempty" xml:"duration,omitempty"`
 	IdempotentKey *string `json:"idempotentKey,omitempty" xml:"idempotentKey,omitempty"`
-	// example:
-	//
-	// https://www.example.com/1.png
-	ImgUrl *string `json:"imgUrl,omitempty" xml:"imgUrl,omitempty"`
-	// example:
-	//
-	// 720P
-	Resolution *string `json:"resolution,omitempty" xml:"resolution,omitempty"`
-	// example:
-	//
-	// basic
-	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// example:
-	//
-	// live-wallpaper
-	TaskType *string `json:"taskType,omitempty" xml:"taskType,omitempty"`
+	ImgUrl        *string `json:"imgUrl,omitempty" xml:"imgUrl,omitempty"`
+	Resolution    *string `json:"resolution,omitempty" xml:"resolution,omitempty"`
+	ResourceType  *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	TaskType      *string `json:"taskType,omitempty" xml:"taskType,omitempty"`
 }
 
 func (s SubmitTuringTaskRequest) String() string {

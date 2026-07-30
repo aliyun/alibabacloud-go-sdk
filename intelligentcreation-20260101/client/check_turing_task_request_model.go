@@ -14,9 +14,6 @@ type iCheckTuringTaskRequest interface {
 }
 
 type CheckTuringTaskRequest struct {
-	// example:
-	//
-	// 871509423398305792
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
 }
 

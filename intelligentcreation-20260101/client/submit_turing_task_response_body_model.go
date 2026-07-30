@@ -22,22 +22,11 @@ type iSubmitTuringTaskResponseBody interface {
 }
 
 type SubmitTuringTaskResponseBody struct {
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// example:
-	//
-	// 400
-	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 551FF252-6CFC-5DDA-9F84-9B07302385C2
+	ErrorCode *string                             `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg  *string                             `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
 	RequestId *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Result    *SubmitTuringTaskResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	Success   *bool                               `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s SubmitTuringTaskResponseBody) String() string {
@@ -103,9 +92,6 @@ func (s *SubmitTuringTaskResponseBody) Validate() error {
 }
 
 type SubmitTuringTaskResponseBodyResult struct {
-	// example:
-	//
-	// 874890065171169280
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
 }
 
