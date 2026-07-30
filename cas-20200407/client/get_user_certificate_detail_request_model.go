@@ -16,13 +16,7 @@ type iGetUserCertificateDetailRequest interface {
 }
 
 type GetUserCertificateDetailRequest struct {
-	// Specifies whether to filter certificate content from the response. Valid values:
-	//
-	// - **true**: The Cert, Key, EncryptCert, EncryptPrivateKey, SignCert, and SignPrivateKey fields are not returned.
-	//
-	// - **false**: All fields are returned.
-	//
-	// Default value: false.
+	// Specifies whether to filter certificate content. If set to **true**, the Cert, Key, EncryptCert, EncryptPrivateKey, SignCert, and SignPrivateKey fields are not returned. If set to **false**, these fields are returned. Default value: false.
 	//
 	// example:
 	//
@@ -30,7 +24,7 @@ type GetUserCertificateDetailRequest struct {
 	CertFilter *bool `json:"CertFilter,omitempty" xml:"CertFilter,omitempty"`
 	// The certificate ID.
 	//
-	// > You can call [ListUserCertificateOrder](https://help.aliyun.com/document_detail/455804.html) to obtain the certificate ID.
+	// > You can obtain this ID by calling [ListUserCertificateOrder](https://help.aliyun.com/document_detail/455804.html).
 	//
 	// This parameter is required.
 	//

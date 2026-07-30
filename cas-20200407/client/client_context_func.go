@@ -2331,7 +2331,7 @@ func (client *Client) GetTaskAttributeWithContext(ctx context.Context, request *
 //
 // Description:
 //
-// The China single-user queries per second (QPS) limit for this operation is 100. If this limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
+// The China single-user QPS limit for this operation is 100 calls per second. If this limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - GetUserCertificateDetailRequest
 //
@@ -2841,7 +2841,7 @@ func (client *Client) ListCompaniesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Retrieves a list of contacts.
+// Retrieves the list of contacts.
 //
 // @param request - ListContactRequest
 //

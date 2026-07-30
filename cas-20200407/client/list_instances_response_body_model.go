@@ -22,7 +22,7 @@ type iListInstancesResponseBody interface {
 }
 
 type ListInstancesResponseBody struct {
-	// The current page number in a paged query.
+	// The current page number in the paged query.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type ListInstancesResponseBody struct {
 	//
 	// 12345678-1234-1234-1234-123456789ABC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of records per page.
+	// The number of records displayed per page.
 	//
 	// example:
 	//
@@ -133,13 +133,13 @@ type ListInstancesResponseBodyInstanceList struct {
 	//
 	// DigiCert
 	Brand *string `json:"Brand,omitempty" xml:"Brand,omitempty"`
-	// The global certificate ID, in the format of certificate ID + "-" + site region ID. This ID is commonly used across Alibaba Cloud services.
+	// The global certificate ID in the format of certificate ID + "-" + site region ID. This ID is commonly used across Alibaba Cloud services.
 	//
 	// - For the China site: certificate ID + "-cn-hangzhou"
 	//
 	// - For the China site: certificate ID + "-ap-southeast-1"
 	//
-	// For example, if the certificate ID is 123, the CertIdentifier on the China site is "123-cn-hangzhou", and the CertIdentifier on the International site is "123-ap-southeast-1".
+	// For example, if the certificate ID is 123, the CertIdentifier for the China site is "123-cn-hangzhou", and the CertIdentifier for the International site is "123-ap-southeast-1".
 	//
 	// example:
 	//
@@ -163,19 +163,19 @@ type ListInstancesResponseBodyInstanceList struct {
 	//
 	// cert-13216408
 	CertificateName *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
-	// The end time of the latest certificate, in timestamp format. If no certificate has been issued, this field is empty.
+	// The end time of the latest certificate. The value is a UNIX timestamp accurate to seconds. If no certificate has been issued, this field is empty.
 	//
 	// example:
 	//
 	// 1801324800000
 	CertificateNotAfter *int64 `json:"CertificateNotAfter,omitempty" xml:"CertificateNotAfter,omitempty"`
-	// The start time of the latest certificate, in timestamp format. If no certificate has been issued, this field is empty.
+	// The start time of the latest certificate. The value is a UNIX timestamp accurate to seconds. If no certificate has been issued, this field is empty.
 	//
 	// example:
 	//
 	// 1776988800000
 	CertificateNotBefore *int64 `json:"CertificateNotBefore,omitempty" xml:"CertificateNotBefore,omitempty"`
-	// The revocation time of the latest certificate, in timestamp format.
+	// The revocation time of the latest certificate. The value is a UNIX timestamp accurate to seconds.
 	//
 	// example:
 	//
@@ -213,7 +213,7 @@ type ListInstancesResponseBodyInstanceList struct {
 	//
 	// 1
 	FullDomainCount *int32 `json:"FullDomainCount,omitempty" xml:"FullDomainCount,omitempty"`
-	// The expiration time of the instance, in timestamp format. If no certificate has been issued, this field is empty.
+	// The expiration time of the instance. The value is a UNIX timestamp accurate to seconds. If no certificate has been issued, this field is empty.
 	//
 	// example:
 	//
@@ -225,7 +225,7 @@ type ListInstancesResponseBodyInstanceList struct {
 	//
 	// cas_dv-cn-123
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The start time of the instance, in timestamp format. If no certificate has been issued, this field is empty.
+	// The start time of the instance. The value is a UNIX timestamp accurate to seconds. If no certificate has been issued, this field is empty.
 	//
 	// example:
 	//
@@ -257,13 +257,13 @@ type ListInstancesResponseBodyInstanceList struct {
 	//
 	// RSA_2048
 	KeyAlgorithm *string `json:"KeyAlgorithm,omitempty" xml:"KeyAlgorithm,omitempty"`
-	// The end time of the instance purchase, in timestamp format. Used to determine the purchase duration of the instance.
+	// The end time of the instance purchase. The value is a UNIX timestamp accurate to seconds. Used to determine the purchase duration of the instance.
 	//
 	// example:
 	//
 	// 1801324800000
 	OrderEndTime *int64 `json:"OrderEndTime,omitempty" xml:"OrderEndTime,omitempty"`
-	// The start time of the instance purchase, in timestamp format. Used to determine the refund time limit.
+	// The start time of the instance purchase. The value is a UNIX timestamp accurate to seconds. Used to determine the refund time limit.
 	//
 	// example:
 	//
@@ -289,19 +289,19 @@ type ListInstancesResponseBodyInstanceList struct {
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	// The instance status. Valid values:
 	//
-	// - **inactive**: pending use.
+	// - **inactive**: Pending use.
 	//
-	// - **pending**: under review. The latest certificate is being reviewed.
+	// - **pending**: Under review. The latest certificate is being reviewed.
 	//
-	// - **willExpire**: about to expire.
+	// - **willExpire**: About to expire.
 	//
-	// - **expired**: expired.
+	// - **expired**: Expired.
 	//
-	// - **refund**: refunded.
+	// - **refund**: Refunded.
 	//
-	// - **normal**: normal.
+	// - **normal**: Normal.
 	//
-	// - **closed**: closed and unavailable.
+	// - **closed**: Closed and unavailable.
 	//
 	// example:
 	//

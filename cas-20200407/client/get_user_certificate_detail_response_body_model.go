@@ -94,7 +94,7 @@ type GetUserCertificateDetailResponseBody struct {
 	//
 	// true
 	BuyInAliyun *bool `json:"BuyInAliyun,omitempty" xml:"BuyInAliyun,omitempty"`
-	// The certificate content that uses a non-Chinese cryptographic algorithm. This field is returned when the CertFilter request parameter is set to false, and is not returned when set to true.
+	// The certificate content that uses a non-Chinese cryptographic algorithm. This field is returned when the CertFilter parameter is set to false, and is not returned when set to true.
 	//
 	// example:
 	//
@@ -108,6 +108,8 @@ type GetUserCertificateDetailResponseBody struct {
 	//
 	// 13781326-cn-hangzhou
 	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
+	// The SHA-2 algorithm value of the certificate.
+	//
 	// example:
 	//
 	// E696C2DB574DF99467A90BEF62B341294A9B0C731D228A0BD38265E1467D8EF0
@@ -130,7 +132,7 @@ type GetUserCertificateDetailResponseBody struct {
 	//
 	// CN
 	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	// The encryption certificate content in PEM format that uses a Chinese cryptographic algorithm. This field is returned when the CertFilter request parameter is set to false, and is not returned when set to true.
+	// The encryption certificate content in PEM format that uses a Chinese cryptographic algorithm. This field is returned when the CertFilter parameter is set to false, and is not returned when set to true.
 	//
 	// example:
 	//
@@ -140,7 +142,7 @@ type GetUserCertificateDetailResponseBody struct {
 	//
 	// -----END CERTIFICATE-----
 	EncryptCert *string `json:"EncryptCert,omitempty" xml:"EncryptCert,omitempty"`
-	// The private key of the encryption certificate in PEM format that uses a Chinese cryptographic algorithm. This field is returned when the CertFilter request parameter is set to false, and is not returned when set to true.
+	// The private key of the encryption certificate in PEM format that uses a Chinese cryptographic algorithm. This field is returned when the CertFilter parameter is set to false, and is not returned when set to true.
 	//
 	// example:
 	//
@@ -150,7 +152,7 @@ type GetUserCertificateDetailResponseBody struct {
 	//
 	// -----END EC PRIVATE KEY-----
 	EncryptPrivateKey *string `json:"EncryptPrivateKey,omitempty" xml:"EncryptPrivateKey,omitempty"`
-	// The certificate expiration date, in the format of YYYY-MM-DD.
+	// The certificate expiration date in the format of YYYY-MM-DD.
 	//
 	// example:
 	//
@@ -190,7 +192,7 @@ type GetUserCertificateDetailResponseBody struct {
 	//
 	// Digicert
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	// The private key that uses a non-Chinese cryptographic algorithm. This field is returned when the CertFilter request parameter is set to false, and is not returned when set to true.
+	// The private key that uses a non-Chinese cryptographic algorithm. This field is returned when the CertFilter parameter is set to false, and is not returned when set to true.
 	//
 	// example:
 	//
@@ -232,7 +234,7 @@ type GetUserCertificateDetailResponseBody struct {
 	//
 	// zhejiang
 	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
-	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use this ID to troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique identifier for each request, which can be used to troubleshoot issues.
 	//
 	// example:
 	//
@@ -262,7 +264,7 @@ type GetUserCertificateDetailResponseBody struct {
 	//
 	// 573415B23243066AD345AE5A57BD0FAE94F598BDD06D906278B5FF318F090FC8
 	Sha2 *string `json:"Sha2,omitempty" xml:"Sha2,omitempty"`
-	// The signing certificate content in PEM format that uses a Chinese cryptographic algorithm. This field is returned when the CertFilter request parameter is set to false, and is not returned when set to true.
+	// The signing certificate content in PEM format that uses a Chinese cryptographic algorithm. This field is returned when the CertFilter parameter is set to false, and is not returned when set to true.
 	//
 	// example:
 	//
@@ -272,7 +274,7 @@ type GetUserCertificateDetailResponseBody struct {
 	//
 	// -----END CERTIFICATE-----
 	SignCert *string `json:"SignCert,omitempty" xml:"SignCert,omitempty"`
-	// The private key of the signing certificate in PEM format that uses a Chinese cryptographic algorithm. This field is returned when the CertFilter request parameter is set to false, and is not returned when set to true.
+	// The private key of the signing certificate in PEM format that uses a Chinese cryptographic algorithm. This field is returned when the CertFilter parameter is set to false, and is not returned when set to true.
 	//
 	// example:
 	//
@@ -282,7 +284,7 @@ type GetUserCertificateDetailResponseBody struct {
 	//
 	// -----END EC PRIVATE KEY-----
 	SignPrivateKey *string `json:"SignPrivateKey,omitempty" xml:"SignPrivateKey,omitempty"`
-	// The certificate issuance date, in the format of YYYY-MM-DD.
+	// The certificate issuance date in the format of YYYY-MM-DD.
 	//
 	// example:
 	//

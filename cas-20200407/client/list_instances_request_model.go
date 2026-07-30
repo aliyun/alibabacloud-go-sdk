@@ -30,7 +30,7 @@ type iListInstancesRequest interface {
 }
 
 type ListInstancesRequest struct {
-	// The certification authority (CA) brand. Valid values: WoSign, CFCA, DigiCert, GeoTrust, GlobalSign, vTrus, and Alibaba.
+	// The CA brand. Valid values: WoSign, CFCA, DigiCert, GeoTrust, GlobalSign, vTrus, and Alibaba.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type ListInstancesRequest struct {
 	//
 	// BUY
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The keyword for fuzzy match. Matches domain names, instance names, or corresponding resource IDs.
+	// The keyword for fuzzy search. Matches domain names, instance names, or corresponding resource IDs.
 	//
 	// example:
 	//
@@ -92,19 +92,19 @@ type ListInstancesRequest struct {
 	ShowSize *int32 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
 	// The instance status. Valid values:
 	//
-	// - **inactive**: pending use.
+	// - **inactive**: Pending use.
 	//
-	// - **pending**: under review. The latest certificate is being reviewed.
+	// - **pending**: Under review. The latest certificate is being reviewed.
 	//
-	// - **willExpire**: about to expire.
+	// - **willExpire**: About to expire.
 	//
-	// - **expired**: expired.
+	// - **expired**: Expired.
 	//
-	// - **refund**: refunded.
+	// - **refund**: Refunded.
 	//
-	// - **normal**: normal.
+	// - **normal**: Normal.
 	//
-	// - **closed**: closed and unavailable.
+	// - **closed**: Closed and unavailable.
 	//
 	// example:
 	//

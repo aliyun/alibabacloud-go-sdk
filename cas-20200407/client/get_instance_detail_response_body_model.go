@@ -134,14 +134,19 @@ type GetInstanceDetailResponseBody struct {
 	//
 	// 123
 	CertificateName *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
-	// The end time of the latest certificate, in timestamp format. This value is empty if no certificate has been issued.
+	// The end time of the latest certificate, in UNIX timestamp format. This value is empty if no certificate has been issued. The value is accurate to the second.
 	//
 	// example:
 	//
 	// 1801324800000
-	CertificateNotAfter  *int64 `json:"CertificateNotAfter,omitempty" xml:"CertificateNotAfter,omitempty"`
+	CertificateNotAfter *int64 `json:"CertificateNotAfter,omitempty" xml:"CertificateNotAfter,omitempty"`
+	// The start time of the latest certificate, in UNIX timestamp format. This value is empty if no certificate has been issued. The value is accurate to the second.
+	//
+	// example:
+	//
+	// 1781568000000
 	CertificateNotBefore *int64 `json:"CertificateNotBefore,omitempty" xml:"CertificateNotBefore,omitempty"`
-	// The revocation time of the latest certificate, in timestamp format.
+	// The revocation time of the latest certificate, in UNIX timestamp format. The value is accurate to the second.
 	//
 	// example:
 	//
@@ -181,7 +186,7 @@ type GetInstanceDetailResponseBody struct {
 	CompanyId *int64 `json:"CompanyId,omitempty" xml:"CompanyId,omitempty"`
 	// The list of contact IDs.
 	ContactIdList []*int64 `json:"ContactIdList,omitempty" xml:"ContactIdList,omitempty" type:"Repeated"`
-	// The code of the country or region where the certificate organization is located. For example, CN indicates China, and US indicates the United States. This field is required when generating a certificate signing request. Default value: CN.
+	// The country or region code of the certificate organization. For example, CN indicates China, and US indicates the United States. This field is required when generating a certificate signing request. Default value: CN.
 	//
 	// example:
 	//
@@ -201,7 +206,7 @@ type GetInstanceDetailResponseBody struct {
 	//
 	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The list of domain names to be validated.
+	// The list of domain validations.
 	DomainValidationList []*GetInstanceDetailResponseBodyDomainValidationList `json:"DomainValidationList,omitempty" xml:"DomainValidationList,omitempty" type:"Repeated"`
 	// The number of exact-match domain names.
 	//
@@ -219,7 +224,7 @@ type GetInstanceDetailResponseBody struct {
 	//
 	// online
 	GenerateCsrMethod *string `json:"GenerateCsrMethod,omitempty" xml:"GenerateCsrMethod,omitempty"`
-	// The expiration time of the instance, in timestamp format. This value is empty if no certificate has been issued.
+	// The expiration time of the instance, in UNIX timestamp format. This value is empty if no certificate has been issued. The value is accurate to the second.
 	//
 	// example:
 	//
@@ -231,7 +236,7 @@ type GetInstanceDetailResponseBody struct {
 	//
 	// cas_dv-cn-123
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The start time of the instance, in timestamp format. This value is empty if no certificate has been issued.
+	// The start time of the instance, in UNIX timestamp format. This value is empty if no certificate has been issued. The value is accurate to the second.
 	//
 	// example:
 	//
@@ -263,13 +268,13 @@ type GetInstanceDetailResponseBody struct {
 	//
 	// RSA_2048
 	KeyAlgorithm *string `json:"KeyAlgorithm,omitempty" xml:"KeyAlgorithm,omitempty"`
-	// The end time of the instance purchase, in timestamp format. This value is used to determine the purchase duration of the instance.
+	// The end time of the instance purchase, in UNIX timestamp format. This value is used to determine the purchase duration of the instance.
 	//
 	// example:
 	//
 	// 1801324800000
 	OrderEndTime *int64 `json:"OrderEndTime,omitempty" xml:"OrderEndTime,omitempty"`
-	// The start time of the instance purchase, in timestamp format. This value is used to determine the refund time limit.
+	// The start time of the instance purchase, in UNIX timestamp format. This value is used to determine the refund time limit. The value is accurate to the second.
 	//
 	// example:
 	//
@@ -333,13 +338,13 @@ type GetInstanceDetailResponseBody struct {
 	//
 	// - payed: the instance upgrade has been paid.
 	//
-	// - issued: the latest certificate has been issued for the upgraded instance.
+	// - issued: the latest certificate has been issued after the instance upgrade.
 	//
 	// example:
 	//
 	// none
 	UpgradeStatus *string `json:"UpgradeStatus,omitempty" xml:"UpgradeStatus,omitempty"`
-	// The validation method for the certificate application. Valid values:
+	// The certificate validation method. Valid values:
 	//
 	// - DNS: DNS validation, using TXT or CNAME.
 	//

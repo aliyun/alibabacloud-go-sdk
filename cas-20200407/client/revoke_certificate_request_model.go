@@ -16,6 +16,9 @@ type iRevokeCertificateRequest interface {
 }
 
 type RevokeCertificateRequest struct {
+	// example:
+	//
+	// 51001
 	CertificateId *int64 `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 	// The ID of the instance.
 	//

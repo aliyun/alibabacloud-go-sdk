@@ -25,6 +25,8 @@ type iGetContactResponseBody interface {
 	GetName() *string
 	SetRequestId(v string) *GetContactResponseBody
 	GetRequestId() *string
+	SetWebhookList(v []*string) *GetContactResponseBody
+	GetWebhookList() []*string
 	SetWebhooks(v string) *GetContactResponseBody
 	GetWebhooks() *string
 }
@@ -48,7 +50,7 @@ type GetContactResponseBody struct {
 	//
 	// 1
 	EmailStatus *int32 `json:"EmailStatus,omitempty" xml:"EmailStatus,omitempty"`
-	// The ID card number of the contact. This parameter is required for the CFCA certificate brand and is not required for other brands.
+	// The ID card number of the contact. This is required for the CFCA certificate brand and not required for other brands.
 	//
 	// example:
 	//
@@ -78,7 +80,9 @@ type GetContactResponseBody struct {
 	//
 	// EECA10D5-BD0F-4EF1-B3EA-B4578E5C6F8E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The webhook URLs of DingTalk, WeCom, or Lark chatbots. The value is a string in list format.
+	// The webhook URLs of DingTalk, WeCom, or Lark chatbots, in list format.
+	WebhookList []*string `json:"WebhookList,omitempty" xml:"WebhookList,omitempty" type:"Repeated"`
+	// The webhook URLs of DingTalk, WeCom, or Lark chatbots, in list format as a string.
 	//
 	// example:
 	//
@@ -126,6 +130,10 @@ func (s *GetContactResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *GetContactResponseBody) GetWebhookList() []*string {
+	return s.WebhookList
+}
+
 func (s *GetContactResponseBody) GetWebhooks() *string {
 	return s.Webhooks
 }
@@ -167,6 +175,11 @@ func (s *GetContactResponseBody) SetName(v string) *GetContactResponseBody {
 
 func (s *GetContactResponseBody) SetRequestId(v string) *GetContactResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *GetContactResponseBody) SetWebhookList(v []*string) *GetContactResponseBody {
+	s.WebhookList = v
 	return s
 }
 

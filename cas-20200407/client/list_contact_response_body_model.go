@@ -171,6 +171,8 @@ type ListContactResponseBodyContactList struct {
 	// John
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The webhook URL.
+	WebhookList []*string `json:"WebhookList,omitempty" xml:"WebhookList,omitempty" type:"Repeated"`
+	// The webhook URL.
 	//
 	// example:
 	//
@@ -210,6 +212,10 @@ func (s *ListContactResponseBodyContactList) GetName() *string {
 	return s.Name
 }
 
+func (s *ListContactResponseBodyContactList) GetWebhookList() []*string {
+	return s.WebhookList
+}
+
 func (s *ListContactResponseBodyContactList) GetWebhooks() *string {
 	return s.Webhooks
 }
@@ -241,6 +247,11 @@ func (s *ListContactResponseBodyContactList) SetMobileStatus(v int32) *ListConta
 
 func (s *ListContactResponseBodyContactList) SetName(v string) *ListContactResponseBodyContactList {
 	s.Name = &v
+	return s
+}
+
+func (s *ListContactResponseBodyContactList) SetWebhookList(v []*string) *ListContactResponseBodyContactList {
+	s.WebhookList = v
 	return s
 }
 
