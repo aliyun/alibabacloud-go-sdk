@@ -84,6 +84,10 @@ type VideoGenerationRequestInput struct {
 	// This parameter is required.
 	Images []*string `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2026 New Slimming Women\\"s Summer Dress with Mid-Length Design, High-Quality Waist Definition for a Slender Look
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -127,8 +131,14 @@ func (s *VideoGenerationRequestInput) Validate() error {
 }
 
 type VideoGenerationRequestIntent struct {
+	// example:
+	//
+	// -
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
-	Goal    *string `json:"Goal,omitempty" xml:"Goal,omitempty"`
+	// example:
+	//
+	// -
+	Goal *string `json:"Goal,omitempty" xml:"Goal,omitempty"`
 }
 
 func (s VideoGenerationRequestIntent) String() string {
@@ -163,10 +173,21 @@ func (s *VideoGenerationRequestIntent) Validate() error {
 
 type VideoGenerationRequestOutput struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1080p
 	Quality *string `json:"Quality,omitempty" xml:"Quality,omitempty"`
-	Ratio   *string `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	// example:
+	//
+	// 9:16
+	Ratio *string `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
 }
 
 func (s VideoGenerationRequestOutput) String() string {

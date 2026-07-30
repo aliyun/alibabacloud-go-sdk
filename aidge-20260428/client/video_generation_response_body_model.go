@@ -24,20 +24,20 @@ type iVideoGenerationResponseBody interface {
 type VideoGenerationResponseBody struct {
 	// example:
 	//
-	// 200
+	// success
 	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data *VideoGenerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// example:
 	//
-	// OK
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// example:
 	//
-	// E1AD60F1-BAC7-546B-9533-E7AD02B16E3F
+	// 70CBEFDF-BB17-1EB3-8A21-569F3124738F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// example:
 	//
-	// True
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -104,6 +104,9 @@ func (s *VideoGenerationResponseBody) Validate() error {
 }
 
 type VideoGenerationResponseBodyData struct {
+	// example:
+	//
+	// 778fa8bd21804828a5d147050e30edac
 	TaskId   *string           `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	UsageMap map[string]*int64 `json:"UsageMap,omitempty" xml:"UsageMap,omitempty"`
 }
