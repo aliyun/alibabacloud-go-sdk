@@ -136,7 +136,7 @@ type QueryAsyncTaskResultResponseBodyData struct {
 	// task-xxxxx
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The usage information.
-	UsageMap map[string]*int64 `json:"UsageMap,omitempty" xml:"UsageMap,omitempty"`
+	UsageMap map[string]interface{} `json:"UsageMap,omitempty" xml:"UsageMap,omitempty"`
 }
 
 func (s QueryAsyncTaskResultResponseBodyData) String() string {
@@ -159,7 +159,7 @@ func (s *QueryAsyncTaskResultResponseBodyData) GetTaskId() *string {
 	return s.TaskId
 }
 
-func (s *QueryAsyncTaskResultResponseBodyData) GetUsageMap() map[string]*int64 {
+func (s *QueryAsyncTaskResultResponseBodyData) GetUsageMap() map[string]interface{} {
 	return s.UsageMap
 }
 
@@ -178,7 +178,7 @@ func (s *QueryAsyncTaskResultResponseBodyData) SetTaskId(v string) *QueryAsyncTa
 	return s
 }
 
-func (s *QueryAsyncTaskResultResponseBodyData) SetUsageMap(v map[string]*int64) *QueryAsyncTaskResultResponseBodyData {
+func (s *QueryAsyncTaskResultResponseBodyData) SetUsageMap(v map[string]interface{}) *QueryAsyncTaskResultResponseBodyData {
 	s.UsageMap = v
 	return s
 }

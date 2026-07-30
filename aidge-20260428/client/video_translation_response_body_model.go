@@ -22,19 +22,28 @@ type iVideoTranslationResponseBody interface {
 }
 
 type VideoTranslationResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// Processing
-	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The asynchronous task submit status.
 	Data *VideoTranslationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The description message.
+	//
 	// example:
 	//
 	// Translation processing
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request trace ID.
+	//
 	// example:
 	//
 	// req_20260608_jkl012
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call is successful. Valid values: true: The call is successful. false: The call failed.
+	//
 	// example:
 	//
 	// True
@@ -104,6 +113,8 @@ func (s *VideoTranslationResponseBody) Validate() error {
 }
 
 type VideoTranslationResponseBodyData struct {
+	// The asynchronous task ID, used for subsequent queries.
+	//
 	// example:
 	//
 	// 0ea3b66e88a543658520c994f08896a0

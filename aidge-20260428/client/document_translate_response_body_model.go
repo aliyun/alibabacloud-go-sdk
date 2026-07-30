@@ -42,7 +42,7 @@ type DocumentTranslateResponseBody struct {
 	//
 	// 39E8A74B-F99E-1195-A5FF-3ECC5F94F304
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values: true: The call is successful. false: The call failed.
+	// Indicates whether the call is successful. true: successful. false: failed.
 	//
 	// example:
 	//

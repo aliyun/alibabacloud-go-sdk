@@ -20,18 +20,26 @@ type iVideoTranslationShrinkRequest interface {
 }
 
 type VideoTranslationShrinkRequest struct {
+	// The array of translation capabilities. Valid values: ["visual"].
+	//
 	// This parameter is required.
 	CapabilitiesShrink *string `json:"Capabilities,omitempty" xml:"Capabilities,omitempty"`
+	// The source language. This parameter is optional. Default value: auto (automatic detection).
+	//
 	// example:
 	//
 	// zh
 	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
+	// The target language. This parameter is required.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ru
 	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
+	// The video URL (MP4/MOV, ≤ 200 MB).
+	//
 	// This parameter is required.
 	//
 	// example:
