@@ -9,13 +9,11 @@ import (
 
 // Summary:
 //
-// 批量获取媒资信息
+// Retrieves information about multiple media assets in a batch.
 //
 // Description:
 //
-// ## 请求说明
-//
-// 该API用于查询媒资内容理解作业。
+// ## Request description.
 //
 // @param request - BatchGetMediasRequest
 //
@@ -63,11 +61,11 @@ func (client *Client) BatchGetMediasWithContext(ctx context.Context, request *Ba
 
 // Summary:
 //
-// 创建分类
+// Creates a media asset category.
 //
 // Description:
 //
-// 分类最多支持三级分类，每级分类最多支持创建 100 个子分类。
+// Categories support up to three levels, and each level supports up to 100 subcategories.
 //
 // @param request - CreateAssetCategoryRequest
 //
@@ -115,11 +113,11 @@ func (client *Client) CreateAssetCategoryWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 删除分类
+// Deletes a media asset category.
 //
 // Description:
 //
-// 此接口会同时删除其子分类（包括二级分类和三级分类），请慎重操作。
+// This operation also deletes all subcategories (including second-level and third-level categories). Proceed with caution.
 //
 // @param request - DeleteAssetCategoryRequest
 //
@@ -163,7 +161,7 @@ func (client *Client) DeleteAssetCategoryWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 删除媒资信息
+// Deletes media asset information.
 //
 // @param request - DeleteMediasRequest
 //
@@ -215,7 +213,7 @@ func (client *Client) DeleteMediasWithContext(ctx context.Context, request *Dele
 
 // Summary:
 //
-// 查询分类
+// Retrieves the information of a specified category and the list of its subcategories (immediate child categories).
 //
 // @param request - GetAssetCategoryRequest
 //
@@ -259,7 +257,7 @@ func (client *Client) GetAssetCategoryWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 查询图片生成任务
+// Queries an image generation task.
 //
 // @param request - GetImageGenerationJobRequest
 //
@@ -361,13 +359,13 @@ func (client *Client) GetMediaWithContext(ctx context.Context, request *GetMedia
 
 // Summary:
 //
-// 查询媒资内容理解作业
+// Queries a media asset content understanding job.
 //
 // Description:
 //
-// ## 请求说明
+// ## Description
 //
-// 该API用于查询媒资内容理解作业。
+// This API is used to query a media asset content understanding job.
 //
 // @param request - GetMediaComprehensionJobRequest
 //
@@ -411,7 +409,51 @@ func (client *Client) GetMediaComprehensionJobWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查询视频生成任务
+// Queries a creative script generation task.
+//
+// @param request - GetRemakeScriptJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRemakeScriptJobResponse
+func (client *Client) GetRemakeScriptJobWithContext(ctx context.Context, request *GetRemakeScriptJobRequest, runtime *dara.RuntimeOptions) (_result *GetRemakeScriptJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetRemakeScriptJob"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetRemakeScriptJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a video generation task.
 //
 // @param request - GetVideoGenerationJobRequest
 //
@@ -459,7 +501,51 @@ func (client *Client) GetVideoGenerationJobWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 获取一刻主账户会员计划及积分情况
+// 查询爆款新视频渲染任务
+//
+// @param request - GetVideoRenderJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVideoRenderJobResponse
+func (client *Client) GetVideoRenderJobWithContext(ctx context.Context, request *GetVideoRenderJobRequest, runtime *dara.RuntimeOptions) (_result *GetVideoRenderJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetVideoRenderJob"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetVideoRenderJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the membership plan and credit information for a Yike primary account.
 //
 // @param request - GetYikeAccountCreditRequest
 //
@@ -496,7 +582,7 @@ func (client *Client) GetYikeAccountCreditWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 查询一刻任务实际消耗积分
+// Queries the actual credit consumption of a task.
 //
 // @param request - GetYikeJobCreditRequest
 //
@@ -540,13 +626,13 @@ func (client *Client) GetYikeJobCreditWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 导入媒资
+// Imports a media asset.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// 该API用于查询媒资内容理解作业。
+// This API is used to query media content understanding jobs.
 //
 // @param request - ImportMediaRequest
 //
@@ -638,7 +724,7 @@ func (client *Client) ImportMediaWithContext(ctx context.Context, request *Impor
 
 // Summary:
 //
-// 列出分类
+// Retrieves a paginated list of categories.
 //
 // @param request - ListAssetCategoriesRequest
 //
@@ -686,7 +772,7 @@ func (client *Client) ListAssetCategoriesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 搜索媒资
+// Returns media asset information that matches the specified filter conditions.
 //
 // @param request - SearchMediaRequest
 //
@@ -750,7 +836,7 @@ func (client *Client) SearchMediaWithContext(ctx context.Context, request *Searc
 
 // Summary:
 //
-// 提交图像生成接口
+// Submits an image generation task.
 //
 // @param request - SubmitImageGenerationJobRequest
 //
@@ -892,7 +978,63 @@ func (client *Client) SubmitMediaComprehensionJobWithContext(ctx context.Context
 
 // Summary:
 //
-// 提交视频生成接口
+// 提交爆款复刻新脚本生成任务
+//
+// Description:
+//
+// 该 API 用于根据内容理解的结果与新商品/模特信息，仿写生成新的口播脚本。此外，支持通过UserData字段传递自定义参数，在回调时原样返回。
+//
+// @param request - SubmitRemakeScriptJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitRemakeScriptJobResponse
+func (client *Client) SubmitRemakeScriptJobWithContext(ctx context.Context, request *SubmitRemakeScriptJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitRemakeScriptJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RemakeParams) {
+		query["RemakeParams"] = request.RemakeParams
+	}
+
+	if !dara.IsNil(request.RemakeType) {
+		query["RemakeType"] = request.RemakeType
+	}
+
+	if !dara.IsNil(request.UserData) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitRemakeScriptJob"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitRemakeScriptJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits a video generation task.
 //
 // @param request - SubmitVideoGenerationJobRequest
 //
@@ -976,25 +1118,77 @@ func (client *Client) SubmitVideoGenerationJobWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 提交视频翻译任务
+// 提交爆款新视频渲染任务
+//
+// @param request - SubmitVideoRenderJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitVideoRenderJobResponse
+func (client *Client) SubmitVideoRenderJobWithContext(ctx context.Context, request *SubmitVideoRenderJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitVideoRenderJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Script) {
+		query["Script"] = request.Script
+	}
+
+	if !dara.IsNil(request.Settings) {
+		query["Settings"] = request.Settings
+	}
+
+	if !dara.IsNil(request.UserData) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitVideoRenderJob"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitVideoRenderJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits a video translation task that supports subtitle translation, voice translation, and on-screen text translation.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该 API 支持多种视频翻译功能，包括字幕翻译和声音翻译。
+// - This API supports multiple video translation features, including subtitle translation and voice translation.
 //
-// - `JobType` 参数定义了任务类型，如 `SubtitleTranslate`和`VoiceTranslate` 。
+// - The `JobType` parameter defines the task type, such as `SubtitleTranslate` and `VoiceTranslate`.
 //
-// - `Input` 和 `Output` 参数分别指定了输入资源和输出路径。
+// - The `Input` and `Output` parameters specify the input resource and output path, respectively.
 //
-// - `JobParameters` 包含了语言配置和其他能力开关，如 `SourceLanguage`、`TargetLanguage`、`NeedDetext` 和 `NeedVisualTranslate` 等。
+// - `JobParameters` contains language configuration and other feature switches, such as `SourceLanguage`, `TargetLanguage`, `NeedDetext`, and `NeedVisualTranslate`.
 //
-// - `EditingConfig` 可以用来指定最终剪辑合成的样式配置。
+// - `EditingConfig` can be used to specify the style configuration for the final editing and compositing.
 //
-// - `ClientToken` 是一个可选参数，用于保证请求的幂等性。
+// - `ClientToken` is an optional parameter used to ensure the idempotence of the request.
 //
-// - 请确保所有必填字段都已正确填写，否则可能会导致请求失败。
+// - Ensure that all required fields are correctly filled in. Otherwise, the request may fail.
 //
 // @param request - SubmitVideoTranslationJobRequest
 //
@@ -1066,11 +1260,11 @@ func (client *Client) SubmitVideoTranslationJobWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 更新媒资分类
+// Updates a media asset category.
 //
 // Description:
 //
-// 创建媒资分类后，可调用本接口通过分类 ID 来定位并更新媒资分类的名称。
+// After you create a media asset category, you can call this operation to locate and update the name of the media asset category by category ID.
 //
 // @param request - UpdateAssetCategoryRequest
 //
@@ -1118,13 +1312,13 @@ func (client *Client) UpdateAssetCategoryWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # UpdateMedia
+// Updates media asset information.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// 该API用于查询媒资内容理解作业。
+// This API is used to query media content understanding jobs.
 //
 // @param request - UpdateMediaRequest
 //

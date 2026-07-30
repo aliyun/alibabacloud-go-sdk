@@ -16,10 +16,14 @@ type iListAssetCategoriesRequest interface {
 }
 
 type ListAssetCategoriesRequest struct {
+	// The current page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The page size. Default value: 10.
+	//
 	// example:
 	//
 	// 10

@@ -18,8 +18,12 @@ type iGetMediaComprehensionJobResponseBody interface {
 }
 
 type GetMediaComprehensionJobResponseBody struct {
-	Job                   *GetMediaComprehensionJobResponseBodyJob                   `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
+	// The media asset content understanding result object.
+	Job *GetMediaComprehensionJobResponseBodyJob `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
+	// The media asset content understanding object. This parameter is deprecated.
 	MediaComprehensionJob *GetMediaComprehensionJobResponseBodyMediaComprehensionJob `json:"MediaComprehensionJob,omitempty" xml:"MediaComprehensionJob,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******
@@ -76,23 +80,44 @@ func (s *GetMediaComprehensionJobResponseBody) Validate() error {
 }
 
 type GetMediaComprehensionJobResponseBodyJob struct {
+	// The error code. This parameter is returned when the job is in the Failed state.
+	//
 	// example:
 	//
 	// 200
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message. This parameter is returned when the job is in the Failed state.
+	//
 	// example:
 	//
 	// The specified product does not exist.
-	ErrorMessage *string   `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	MediaIds     []*string `json:"MediaIds,omitempty" xml:"MediaIds,omitempty" type:"Repeated"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The list of media asset IDs. If the input is a URL, the media asset ID registered after input is returned.
+	MediaIds []*string `json:"MediaIds,omitempty" xml:"MediaIds,omitempty" type:"Repeated"`
+	// The URL of the analysis result file. The file content is in JSON format.
+	//
 	// example:
 	//
-	// "{\\"source_video_url\\":\\"http://xxx.mp4\\",\\"narrative_overview\\":{******}}"
+	// http://xxxx.json
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The file status. Valid values:
+	//
+	// - **Created**: Created.
+	//
+	// - **Executing**: Executing.
+	//
+	// - **Finished**: Finished.
+	//
+	// - **Failed**: Failed.
+	//
+	// - **Deleted**: Deleted.
+	//
 	// example:
 	//
 	// Executing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The user-defined parameter, which is a JSON-formatted string.
+	//
 	// example:
 	//
 	// {"NotifyAddress": "http://xxx.callback.url"}
@@ -166,30 +191,54 @@ func (s *GetMediaComprehensionJobResponseBodyJob) Validate() error {
 }
 
 type GetMediaComprehensionJobResponseBodyMediaComprehensionJob struct {
+	// The error code. This parameter is returned when the job is in the `Failed` state.
+	//
 	// example:
 	//
 	// 200
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message. This parameter is returned when the job is in the Failed state.
+	//
 	// example:
 	//
 	// The specified product does not exist.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The job ID.
+	//
 	// example:
 	//
 	// ******afaa6f37457******
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The media asset ID.
+	//
 	// example:
 	//
 	// ******307e9971f1******
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The analysis result, which is a JSON string.
+	//
 	// example:
 	//
 	// "{\\"source_video_url\\":\\"http://xxx.mp4\\",\\"narrative_overview\\":{******}}"
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The file status. Valid values:
+	//
+	// - **Created**: Created.
+	//
+	// - **Executing**: Executing.
+	//
+	// - **Finished**: Finished.
+	//
+	// - **Failed**: Failed.
+	//
+	// - **Deleted**: Deleted.
+	//
 	// example:
 	//
 	// Executing
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The user-defined parameter, which is a JSON-formatted string.
+	//
 	// example:
 	//
 	// {"NotifyAddress": "http://xxx.callback.url"}

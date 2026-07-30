@@ -16,10 +16,14 @@ type iUpdateMediaResponseBody interface {
 }
 
 type UpdateMediaResponseBody struct {
+	// The ICE media asset ID.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******

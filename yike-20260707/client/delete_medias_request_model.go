@@ -18,11 +18,16 @@ type iDeleteMediasRequest interface {
 }
 
 type DeleteMediasRequest struct {
+	// Specifies whether to delete the physical files at the same time.
+	//
 	// example:
 	//
 	// false
-	DeletePhysicalFiles *bool   `json:"DeletePhysicalFiles,omitempty" xml:"DeletePhysicalFiles,omitempty"`
-	InputURLs           *string `json:"InputURLs,omitempty" xml:"InputURLs,omitempty"`
+	DeletePhysicalFiles *bool `json:"DeletePhysicalFiles,omitempty" xml:"DeletePhysicalFiles,omitempty"`
+	// Not supported.
+	InputURLs *string `json:"InputURLs,omitempty" xml:"InputURLs,omitempty"`
+	// The media asset IDs, separated by commas. Invalid IDs are added to the IgnoredList.
+	//
 	// example:
 	//
 	// ******b48fb04483915d4f2cd8******,******c48fb37407365d4f2cd8******

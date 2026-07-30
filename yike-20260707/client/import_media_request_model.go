@@ -39,50 +39,74 @@ type iImportMediaRequest interface {
 
 type ImportMediaRequest struct {
 	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The cover image URL. This parameter is valid only for video media assets.
+	//
 	// example:
 	//
 	// https://outin-55c9ab3fb1b911ee817b00163e32b0a3.oss-cn-shanghai.aliyuncs.com/60425a2758a971f181385017f0e90102/covers/ice-generated/d4aee2d6c6f84769ac89f18c667699c6-cover.png
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// The description of the media asset.
+	//
 	// example:
 	//
 	// OK
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The dynamic metadata.
+	//
 	// example:
 	//
 	// {}
 	DynamicMetaData *string `json:"DynamicMetaData,omitempty" xml:"DynamicMetaData,omitempty"`
+	// The entity ID.
+	//
 	// example:
 	//
 	// urn:cruise:mock-saml-idp
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The media asset source. Set this parameter to url.
+	//
 	// example:
 	//
 	// url
 	ImportSource *string `json:"ImportSource,omitempty" xml:"ImportSource,omitempty"`
+	// The URL of the media asset.
+	//
 	// example:
 	//
 	// https://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4
 	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
+	// The tags of the media asset. Separate multiple tags with commas.
+	//
 	// example:
 	//
-	// 高级图生视频,AI生成
+	// AdvancedImageToVideo,AIGenerated.
 	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
+	// The type of the media asset.
+	//
 	// example:
 	//
 	// video
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// Specifies whether to overwrite existing media assets.
+	//
 	// example:
 	//
 	// True
 	Overwrite *bool `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
+	// The configuration for registering the media asset.
+	//
 	// example:
 	//
 	// {\\"SearchLibName\\":\\"AiSaasLib_34140718_MA\\"}
 	RegisterConfig *string `json:"RegisterConfig,omitempty" xml:"RegisterConfig,omitempty"`
+	// The title of the media asset.
+	//
 	// example:
 	//
 	// title
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The user data. The maximum size is 1024 bytes.
+	//
 	// example:
 	//
 	// {}

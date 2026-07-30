@@ -32,36 +32,53 @@ type iUpdateMediaRequest interface {
 }
 
 type UpdateMediaRequest struct {
+	// Specifies whether to update the Tags field in append mode.
 	AppendTags *bool  `json:"AppendTags,omitempty" xml:"AppendTags,omitempty"`
 	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The cover image URL. This parameter is valid only for video media assets.
+	//
 	// example:
 	//
 	// https://bullet-time-20240910.oss-cn-shanghai.aliyuncs.com/ice-generated/a97255309a7c71f093d3e7f6d75a6302/snapshots/normal/2a4030b1950443048f3e3f81489d57eb-00001.jpg
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// OK
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The dynamic metadata.
+	//
 	// example:
 	//
 	// {}
 	DynamicMetaData *string `json:"DynamicMetaData,omitempty" xml:"DynamicMetaData,omitempty"`
+	// The media type of the media asset.
+	//
 	// example:
 	//
 	// https://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4
 	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
+	// The media asset ID.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The tags. Separate multiple tags with commas.
+	//
 	// example:
 	//
-	// 剪映动画
+	// CapCut animation.
 	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
+	// The title.
+	//
 	// example:
 	//
 	// title
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The user data. The maximum length is 1024 bytes.
+	//
 	// example:
 	//
 	// {}

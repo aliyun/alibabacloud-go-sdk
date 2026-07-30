@@ -14,6 +14,8 @@ type iGetYikeJobCreditRequest interface {
 }
 
 type GetYikeJobCreditRequest struct {
+	// The task ID.
+	//
 	// This parameter is required.
 	//
 	// example:

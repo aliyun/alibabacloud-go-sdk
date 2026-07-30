@@ -18,11 +18,16 @@ type iListAssetCategoriesResponseBody interface {
 }
 
 type ListAssetCategoriesResponseBody struct {
+	// The list of categories on the current page.
 	Categories []*ListAssetCategoriesResponseBodyCategories `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of categories.
+	//
 	// example:
 	//
 	// 50
@@ -78,18 +83,26 @@ func (s *ListAssetCategoriesResponseBody) Validate() error {
 }
 
 type ListAssetCategoriesResponseBodyCategories struct {
+	// The category ID.
+	//
 	// example:
 	//
 	// 45
 	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The category name.
+	//
 	// example:
 	//
 	// scenery
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// The category level. A level-1 category has a value of 0, a level-2 category has a value of 1, and a level-3 category has a value of 2.
+	//
 	// example:
 	//
 	// 1
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The parent category ID.
+	//
 	// example:
 	//
 	// 10

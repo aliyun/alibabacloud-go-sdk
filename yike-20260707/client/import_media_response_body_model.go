@@ -16,10 +16,14 @@ type iImportMediaResponseBody interface {
 }
 
 type ImportMediaResponseBody struct {
+	// The ICE media asset ID.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****

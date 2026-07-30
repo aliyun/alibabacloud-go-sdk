@@ -24,26 +24,38 @@ type iSearchMediaRequest interface {
 }
 
 type SearchMediaRequest struct {
+	// The category ID. You can obtain the ID by using the following methods:
+	//
 	// example:
 	//
 	// 10
 	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The filter condition. For syntax rules, see [Media asset search protocol](https://www.alibabacloud.com/help/en/ims/developer-reference/media-asset-search-filter-description).
+	//
 	// example:
 	//
-	// title = \\"中国\\" and utcCreate = [\\"1693367158561\\",\\"1693367158562\\"]
+	// title = \\"China\\" and utcCreate = [\\"1693367158561\\",\\"1693367158562\\"]
 	Match *string `json:"Match,omitempty" xml:"Match,omitempty"`
+	// The current page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries to return per page. Default value: 10. Maximum value: 50.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The pagination token. A 32-character string. You do not need to set this parameter for the first search request. When the search request matches data, the server returns this parameter value to record the current position of the search data. Record the returned parameter value and set this parameter in the next search request based on the following requirements or suggestions: This parameter must be set if you want to traverse all data that matches the search conditions. If the PageNo parameter value exceeds 200, set this parameter to optimize search performance. You can only page forward, with a maximum paging distance of 1000 media assets.
+	//
 	// example:
 	//
 	// F8C4F642184DBDA5D93907A70AAE****
 	ScrollToken *string `json:"ScrollToken,omitempty" xml:"ScrollToken,omitempty"`
+	// The sort fields and sort orders, separated by commas (,). Format: field1:Desc,field2:Asc. The direction can only be Asc or Desc.
+	//
 	// example:
 	//
 	// utcCreate:Desc

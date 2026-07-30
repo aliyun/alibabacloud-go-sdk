@@ -28,42 +28,70 @@ type iSubmitVideoTranslationJobRequest interface {
 }
 
 type SubmitVideoTranslationJobRequest struct {
+	// The user-level idempotency key.
+	//
 	// example:
 	//
 	// ****3e761e9d11edba640c42a1b7****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The job description.
+	//
 	// example:
 	//
 	// description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The input configuration JSON string:
+	//
+	// - Video
+	//
+	// - Audio
+	//
+	// - Subtitle
+	//
+	// <notice>Currently, only OSS addresses under the calling account are supported as input.</notice>
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"Video":"oss://bucket/path/input.mp4"}
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// The job parameters JSON string.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"SourceLanguage":"zh","TargetLanguage":"en","NeedDetext":false,"NeedVisualTranslate":false}
 	JobParameters *string `json:"JobParameters,omitempty" xml:"JobParameters,omitempty"`
+	// The job type. Valid values:
+	//
+	// - SubtitleTranslate
+	//
+	// - VoiceTranslate
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// VoiceTranslate
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The output configuration JSON string.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"OssUri":"oss://bucket/output/"}
 	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// If not specified, the service generates a default title.
+	//
 	// example:
 	//
 	// title
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The custom user data JSON string.
+	//
 	// example:
 	//
 	// {}

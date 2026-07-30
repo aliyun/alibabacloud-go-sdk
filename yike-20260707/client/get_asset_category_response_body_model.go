@@ -20,12 +20,18 @@ type iGetAssetCategoryResponseBody interface {
 }
 
 type GetAssetCategoryResponseBody struct {
+	// The category details.
 	Category *GetAssetCategoryResponseBodyCategory `json:"Category,omitempty" xml:"Category,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
-	RequestId     *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of subcategories.
 	SubCategories []*GetAssetCategoryResponseBodySubCategories `json:"SubCategories,omitempty" xml:"SubCategories,omitempty" type:"Repeated"`
+	// The number of subcategories.
+	//
 	// example:
 	//
 	// 5
@@ -95,18 +101,32 @@ func (s *GetAssetCategoryResponseBody) Validate() error {
 }
 
 type GetAssetCategoryResponseBodyCategory struct {
+	// The category ID.
+	//
 	// example:
 	//
 	// 50
 	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The category name.
+	//
 	// example:
 	//
 	// scenery
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// The category level. Valid values:
+	//
+	// - **0**: level-1 category.
+	//
+	// - **1**: level-2 category.
+	//
+	// - **2**: level-3 category.
+	//
 	// example:
 	//
 	// 1
 	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The parent category ID.
+	//
 	// example:
 	//
 	// 10
@@ -162,22 +182,32 @@ func (s *GetAssetCategoryResponseBodyCategory) Validate() error {
 }
 
 type GetAssetCategoryResponseBodySubCategories struct {
+	// The category ID.
+	//
 	// example:
 	//
 	// 55
 	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The category name.
+	//
 	// example:
 	//
 	// sea
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// The category level.
+	//
 	// example:
 	//
 	// 2
 	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The parent category ID.
+	//
 	// example:
 	//
 	// 50
 	ParentId *int64 `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// The total number of subcategories.
+	//
 	// example:
 	//
 	// 0

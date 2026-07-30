@@ -16,7 +16,10 @@ type iCreateAssetCategoryResponseBody interface {
 }
 
 type CreateAssetCategoryResponseBody struct {
+	// The media asset category information.
 	Category *CreateAssetCategoryResponseBodyCategory `json:"Category,omitempty" xml:"Category,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
@@ -59,18 +62,26 @@ func (s *CreateAssetCategoryResponseBody) Validate() error {
 }
 
 type CreateAssetCategoryResponseBodyCategory struct {
+	// The ID of the created category.
+	//
 	// example:
 	//
 	// 45
 	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The media asset category information.
+	//
 	// example:
 	//
 	// see below
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// The category level. The first-level category has a level of 0, the second-level category has a level of 1, and the third-level category has a level of 2.
+	//
 	// example:
 	//
 	// 0
 	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The parent category ID. If the ParentId parameter is set to empty or a value less than 1, the default return value is -1, which indicates that the created category is a root directory.
+	//
 	// example:
 	//
 	// -1

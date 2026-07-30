@@ -16,10 +16,14 @@ type iSubmitVideoGenerationJobResponseBody interface {
 }
 
 type SubmitVideoGenerationJobResponseBody struct {
+	// The task ID.
+	//
 	// example:
 	//
 	// ag_3e761e9d1140c42a1b7****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****

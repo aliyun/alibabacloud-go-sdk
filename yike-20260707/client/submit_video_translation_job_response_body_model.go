@@ -16,10 +16,14 @@ type iSubmitVideoTranslationJobResponseBody interface {
 }
 
 type SubmitVideoTranslationJobResponseBody struct {
+	// `data.JobId`
+	//
 	// example:
 	//
 	// vtj_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// `requestId`
+	//
 	// example:
 	//
 	// request-id

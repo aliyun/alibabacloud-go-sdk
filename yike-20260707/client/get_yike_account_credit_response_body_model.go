@@ -18,8 +18,12 @@ type iGetYikeAccountCreditResponseBody interface {
 }
 
 type GetYikeAccountCreditResponseBody struct {
-	CreditInfo     *GetYikeAccountCreditResponseBodyCreditInfo     `json:"CreditInfo,omitempty" xml:"CreditInfo,omitempty" type:"Struct"`
+	// The credit information.
+	CreditInfo *GetYikeAccountCreditResponseBodyCreditInfo `json:"CreditInfo,omitempty" xml:"CreditInfo,omitempty" type:"Struct"`
+	// The membership information.
 	MembershipInfo *GetYikeAccountCreditResponseBodyMembershipInfo `json:"MembershipInfo,omitempty" xml:"MembershipInfo,omitempty" type:"Struct"`
+	// Id of the request
+	//
 	// example:
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
@@ -76,26 +80,38 @@ func (s *GetYikeAccountCreditResponseBody) Validate() error {
 }
 
 type GetYikeAccountCreditResponseBodyCreditInfo struct {
+	// The total granted credits.
+	//
 	// example:
 	//
 	// 200
 	GrantedCreditQuota *float64 `json:"GrantedCreditQuota,omitempty" xml:"GrantedCreditQuota,omitempty"`
+	// The remaining granted credits.
+	//
 	// example:
 	//
 	// 0
 	GrantedCreditQuotaUsage *float64 `json:"GrantedCreditQuotaUsage,omitempty" xml:"GrantedCreditQuotaUsage,omitempty"`
+	// The total credits of the booster pack.
+	//
 	// example:
 	//
 	// 20000
 	PackCreditQuota *float64 `json:"PackCreditQuota,omitempty" xml:"PackCreditQuota,omitempty"`
+	// The remaining credits of the booster pack.
+	//
 	// example:
 	//
 	// 5000
 	PackCreditQuotaUsage *float64 `json:"PackCreditQuotaUsage,omitempty" xml:"PackCreditQuotaUsage,omitempty"`
+	// The total credits of the membership plan.
+	//
 	// example:
 	//
 	// 10000
 	ResourceCreditQuota *float64 `json:"ResourceCreditQuota,omitempty" xml:"ResourceCreditQuota,omitempty"`
+	// The remaining credits of the membership plan.
+	//
 	// example:
 	//
 	// 2000
@@ -169,14 +185,28 @@ func (s *GetYikeAccountCreditResponseBodyCreditInfo) Validate() error {
 }
 
 type GetYikeAccountCreditResponseBodyMembershipInfo struct {
+	// The end time.
+	//
 	// example:
 	//
 	// 1784179281
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The membership level. Valid values:
+	//
+	// - basic: Basic Edition.
+	//
+	// - standard: Standard Edition.
+	//
+	// - professional: Ultimate Edition.
+	//
+	// - ultra: Ultra Edition.
+	//
 	// example:
 	//
 	// basic
 	Membership *string `json:"Membership,omitempty" xml:"Membership,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
 	// 1784784081

@@ -16,10 +16,14 @@ type iSubmitImageGenerationJobResponseBody interface {
 }
 
 type SubmitImageGenerationJobResponseBody struct {
+	// The task ID.
+	//
 	// example:
 	//
 	// ag_68ca759b4903b255*******
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******

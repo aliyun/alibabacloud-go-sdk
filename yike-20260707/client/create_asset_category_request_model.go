@@ -16,12 +16,20 @@ type iCreateAssetCategoryRequest interface {
 }
 
 type CreateAssetCategoryRequest struct {
+	// The category name.
+	//
+	// Maximum length: 64 bytes.
+	//
+	// UTF-8 encoding.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Third-level subcategory
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// The parent category ID.
+	//
 	// example:
 	//
 	// 5
