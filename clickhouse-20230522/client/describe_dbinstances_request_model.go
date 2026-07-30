@@ -62,6 +62,8 @@ type DescribeDBInstancesRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou

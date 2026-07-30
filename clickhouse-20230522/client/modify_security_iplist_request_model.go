@@ -52,6 +52,8 @@ type ModifySecurityIPListRequest struct {
 	ModifyMode *string `json:"ModifyMode,omitempty" xml:"ModifyMode,omitempty"`
 	// The region ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-beijing

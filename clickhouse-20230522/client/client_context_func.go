@@ -2031,7 +2031,7 @@ func (client *Client) DescribeLangfuseOrgMembershipsWithContext(ctx context.Cont
 
 // Summary:
 //
-// 查询Langfuse实例组织列表
+// Queries the list of organizations for a Langfuse instance.
 //
 // @param request - DescribeLangfuseOrgsRequest
 //

@@ -73,6 +73,8 @@ type ModifyDBInstanceClassRequest struct {
 	NodeScaleMin *int32 `json:"NodeScaleMin,omitempty" xml:"NodeScaleMin,omitempty"`
 	// The region ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou

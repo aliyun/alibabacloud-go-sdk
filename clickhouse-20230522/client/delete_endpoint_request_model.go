@@ -54,6 +54,8 @@ type DeleteEndpointRequest struct {
 	DBInstanceNetType *string `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
 	// The ID of the region.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou

@@ -36,6 +36,8 @@ type DescribeDBInstanceDataSourcesRequest struct {
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	// The region ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou

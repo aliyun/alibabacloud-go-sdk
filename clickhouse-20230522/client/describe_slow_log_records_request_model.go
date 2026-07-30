@@ -74,6 +74,8 @@ type DescribeSlowLogRecordsRequest struct {
 	QueryDurationMs *string `json:"QueryDurationMs,omitempty" xml:"QueryDurationMs,omitempty"`
 	// The region ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou

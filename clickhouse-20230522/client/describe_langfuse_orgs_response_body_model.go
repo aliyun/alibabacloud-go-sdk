@@ -16,7 +16,10 @@ type iDescribeLangfuseOrgsResponseBody interface {
 }
 
 type DescribeLangfuseOrgsResponseBody struct {
+	// The returned result.
 	Data *DescribeLangfuseOrgsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D0CEC6AC-7760-409A-A0D5-E6CD8660E9CC
@@ -59,15 +62,22 @@ func (s *DescribeLangfuseOrgsResponseBody) Validate() error {
 }
 
 type DescribeLangfuseOrgsResponseBodyData struct {
+	// The Langfuse organization information.
 	Organizations []*DescribeLangfuseOrgsResponseBodyDataOrganizations `json:"Organizations,omitempty" xml:"Organizations,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 17
@@ -132,18 +142,26 @@ func (s *DescribeLangfuseOrgsResponseBodyData) Validate() error {
 }
 
 type DescribeLangfuseOrgsResponseBodyDataOrganizations struct {
+	// The time when the Langfuse organization was created.
+	//
 	// example:
 	//
 	// 2026-06-11T10:27:23Z
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The Langfuse organization name.
+	//
 	// example:
 	//
 	// org_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The Langfuse organization ID.
+	//
 	// example:
 	//
 	// cmrbhzx930005jw2q****
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	// The time when the Langfuse organization was last updated.
+	//
 	// example:
 	//
 	// 2026-06-09T10:27:55

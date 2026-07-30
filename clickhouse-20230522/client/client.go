@@ -70,14 +70,18 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"rus-west-1-pop":              dara.String("clickhouse.aliyuncs.com"),
 		"us-east-1":                   dara.String("clickhouse.aliyuncs.com"),
 		"us-west-1":                   dara.String("clickhouse.aliyuncs.com"),
+		"us-southeast-1":              dara.String("clickhouse.us-southeast-1.aliyuncs.com"),
+		"na-south-1":                  dara.String("clickhouse.na-south-1.aliyuncs.com"),
 		"me-central-1":                dara.String("clickhouse.me-central-1.aliyuncs.com"),
 		"eu-west-1":                   dara.String("clickhouse.eu-west-1.aliyuncs.com"),
 		"eu-central-1":                dara.String("clickhouse.eu-central-1.aliyuncs.com"),
 		"cn-zhangjiakou":              dara.String("clickhouse.cn-zhangjiakou.aliyuncs.com"),
+		"cn-wulanchabu-gic-1":         dara.String("clickhouse.cn-wulanchabu-gic-1.aliyuncs.com"),
 		"cn-wulanchabu":               dara.String("clickhouse.cn-wulanchabu.aliyuncs.com"),
 		"cn-huhehaote":                dara.String("clickhouse.cn-huhehaote.aliyuncs.com"),
 		"cn-guangzhou":                dara.String("clickhouse.cn-guangzhou.aliyuncs.com"),
 		"cn-chengdu":                  dara.String("clickhouse.cn-chengdu.aliyuncs.com"),
+		"ap-southeast-8":              dara.String("clickhouse.ap-southeast-8.aliyuncs.com"),
 		"ap-southeast-6":              dara.String("clickhouse.ap-southeast-6.aliyuncs.com"),
 		"ap-southeast-5":              dara.String("clickhouse.ap-southeast-5.aliyuncs.com"),
 		"ap-southeast-3":              dara.String("clickhouse.aliyuncs.com"),
@@ -2768,7 +2772,7 @@ func (client *Client) DescribeLangfuseOrgMemberships(request *DescribeLangfuseOr
 
 // Summary:
 //
-// 查询Langfuse实例组织列表
+// Queries the list of organizations for a Langfuse instance.
 //
 // @param request - DescribeLangfuseOrgsRequest
 //
@@ -2824,7 +2828,7 @@ func (client *Client) DescribeLangfuseOrgsWithOptions(request *DescribeLangfuseO
 
 // Summary:
 //
-// 查询Langfuse实例组织列表
+// Queries the list of organizations for a Langfuse instance.
 //
 // @param request - DescribeLangfuseOrgsRequest
 //

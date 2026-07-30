@@ -56,6 +56,8 @@ type DescribeAccountsRequest struct {
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
 	// The region ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou

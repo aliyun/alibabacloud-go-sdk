@@ -77,6 +77,8 @@ type ModifyDBInstanceConnectionStringRequest struct {
 	DisablePorts *string `json:"DisablePorts,omitempty" xml:"DisablePorts,omitempty"`
 	// The region ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
