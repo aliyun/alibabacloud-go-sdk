@@ -845,7 +845,7 @@ func (client *Client) CreateEvaluatorSkill(name *string, request *CreateEvaluato
 //
 // Description:
 //
-// Calls CreateExperimentPlan to create an experiment plan under a specified AgentSpace. Use this operation to define the configuration of an offline or online experiment, including the data source, optional evaluators, and experiment groups required for online experiments. After the plan is created, call CreateExperimentRun to start execution.
+// Calls CreateExperimentPlan to create an experiment plan under a specified AgentSpace. Use this operation to define the configuration of an offline or online experiment, including the data source, optional evaluators, and experiment groups required for online experiments. After the plan is created, call CreateExperimentRun to start the execution.
 //
 // @param request - CreateExperimentPlanRequest
 //
@@ -884,6 +884,10 @@ func (client *Client) CreateExperimentPlanWithOptions(agentSpace *string, reques
 
 	if !dara.IsNil(request.Input) {
 		body["input"] = request.Input
+	}
+
+	if !dara.IsNil(request.PipelineName) {
+		body["pipelineName"] = request.PipelineName
 	}
 
 	if !dara.IsNil(request.PlanName) {
@@ -928,7 +932,7 @@ func (client *Client) CreateExperimentPlanWithOptions(agentSpace *string, reques
 //
 // Description:
 //
-// Calls CreateExperimentPlan to create an experiment plan under a specified AgentSpace. Use this operation to define the configuration of an offline or online experiment, including the data source, optional evaluators, and experiment groups required for online experiments. After the plan is created, call CreateExperimentRun to start execution.
+// Calls CreateExperimentPlan to create an experiment plan under a specified AgentSpace. Use this operation to define the configuration of an offline or online experiment, including the data source, optional evaluators, and experiment groups required for online experiments. After the plan is created, call CreateExperimentRun to start the execution.
 //
 // @param request - CreateExperimentPlanRequest
 //
@@ -2517,11 +2521,11 @@ func (client *Client) GetEvaluatorSkill(name *string, skillName *string, request
 
 // Summary:
 //
-// # Query an experiment plan
+// Queries an experiment plan.
 //
 // Description:
 //
-// Calls the GetExperimentPlan operation to query the complete configuration of a specified experiment plan, including experiment groups, data sources, evaluators, and timestamps.
+// Calls GetExperimentPlan to query the complete configuration of a specified experiment plan, including experiment groups, data sources, evaluators, and timestamps.
 //
 // @param request - GetExperimentPlanRequest
 //
@@ -2562,11 +2566,11 @@ func (client *Client) GetExperimentPlanWithOptions(agentSpace *string, planId *s
 
 // Summary:
 //
-// # Query an experiment plan
+// Queries an experiment plan.
 //
 // Description:
 //
-// Calls the GetExperimentPlan operation to query the complete configuration of a specified experiment plan, including experiment groups, data sources, evaluators, and timestamps.
+// Calls GetExperimentPlan to query the complete configuration of a specified experiment plan, including experiment groups, data sources, evaluators, and timestamps.
 //
 // @param request - GetExperimentPlanRequest
 //
@@ -3075,23 +3079,33 @@ func (client *Client) ListContextStores(agentSpace *string, request *ListContext
 //
 // Queries a list of datasets.
 //
-// @param request - ListDatasetsRequest
+// @param tmpReq - ListDatasetsRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListDatasetsResponse
-func (client *Client) ListDatasetsWithOptions(agentSpace *string, request *ListDatasetsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDatasetsResponse, _err error) {
+func (client *Client) ListDatasetsWithOptions(agentSpace *string, tmpReq *ListDatasetsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDatasetsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &ListDatasetsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Labels) {
+		request.LabelsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Labels, dara.String("labels"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DatasetName) {
 		query["datasetName"] = request.DatasetName
+	}
+
+	if !dara.IsNil(request.LabelsShrink) {
+		query["labels"] = request.LabelsShrink
 	}
 
 	if !dara.IsNil(request.MaxResults) {
@@ -4930,6 +4944,10 @@ func (client *Client) UpdateExperimentPlanWithOptions(agentSpace *string, planId
 
 	if !dara.IsNil(request.Input) {
 		body["input"] = request.Input
+	}
+
+	if !dara.IsNil(request.PipelineName) {
+		body["pipelineName"] = request.PipelineName
 	}
 
 	if !dara.IsNil(request.PlanName) {

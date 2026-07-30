@@ -21,6 +21,8 @@ type iCreateExperimentPlanRequest interface {
 	GetExperiments() []*ExperimentConfig
 	SetInput(v map[string]interface{}) *CreateExperimentPlanRequest
 	GetInput() map[string]interface{}
+	SetPipelineName(v string) *CreateExperimentPlanRequest
+	GetPipelineName() *string
 	SetPlanName(v string) *CreateExperimentPlanRequest
 	GetPlanName() *string
 	SetQuerySql(v string) *CreateExperimentPlanRequest
@@ -30,7 +32,7 @@ type iCreateExperimentPlanRequest interface {
 }
 
 type CreateExperimentPlanRequest struct {
-	// The associated dataset ID. If this parameter is not specified, the execution phase processes in simple mode.
+	// The ID of the associated dataset. If this parameter is not specified, the execution phase processes in simple mode.
 	//
 	// example:
 	//
@@ -42,7 +44,7 @@ type CreateExperimentPlanRequest struct {
 	//
 	// rca_benchmark_eval_experiment offline experiment.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The evaluator list. If configured, evaluation is automatically triggered when the experiment completes.
+	// The list of evaluators. After configuration, evaluation can be automatically triggered when the experiment completes.
 	//
 	// example:
 	//
@@ -56,7 +58,7 @@ type CreateExperimentPlanRequest struct {
 	//
 	// OFFLINE
 	ExperimentType *string `json:"experimentType,omitempty" xml:"experimentType,omitempty"`
-	// The experiment configuration list. A maximum of 5 entries are supported. For offline experiments, this parameter can be omitted or set to an empty array. For online experiments, at least one entry is required.
+	// The list of experiment configurations. A maximum of 5 configurations are supported. For offline experiments, this parameter can be omitted or set to an empty array. For online experiments, at least one configuration is required.
 	//
 	// This parameter is required.
 	//
@@ -68,9 +70,10 @@ type CreateExperimentPlanRequest struct {
 	//
 	// example:
 	//
-	// {"question": "How do I request a refund?"}
-	Input map[string]interface{} `json:"input,omitempty" xml:"input,omitempty"`
-	// The experiment plan name. The name must be unique within the same AgentSpace under the same account.
+	// {"question": "How do I get a refund?"}
+	Input        map[string]interface{} `json:"input,omitempty" xml:"input,omitempty"`
+	PipelineName *string                `json:"pipelineName,omitempty" xml:"pipelineName,omitempty"`
+	// The experiment plan name. The name must be unique within the same AgentSpace and account.
 	//
 	// This parameter is required.
 	//
@@ -84,7 +87,7 @@ type CreateExperimentPlanRequest struct {
 	//
 	// status=\\"OK\\"
 	QuerySql *string `json:"querySql,omitempty" xml:"querySql,omitempty"`
-	// The list of selected data item IDs in partial dataset mode. Use this parameter together with `datasetId`.
+	// The list of selected data item IDs in partial dataset mode. This parameter must be used together with `datasetId`.
 	//
 	// example:
 	//
@@ -122,6 +125,10 @@ func (s *CreateExperimentPlanRequest) GetExperiments() []*ExperimentConfig {
 
 func (s *CreateExperimentPlanRequest) GetInput() map[string]interface{} {
 	return s.Input
+}
+
+func (s *CreateExperimentPlanRequest) GetPipelineName() *string {
+	return s.PipelineName
 }
 
 func (s *CreateExperimentPlanRequest) GetPlanName() *string {
@@ -163,6 +170,11 @@ func (s *CreateExperimentPlanRequest) SetExperiments(v []*ExperimentConfig) *Cre
 
 func (s *CreateExperimentPlanRequest) SetInput(v map[string]interface{}) *CreateExperimentPlanRequest {
 	s.Input = v
+	return s
+}
+
+func (s *CreateExperimentPlanRequest) SetPipelineName(v string) *CreateExperimentPlanRequest {
+	s.PipelineName = &v
 	return s
 }
 

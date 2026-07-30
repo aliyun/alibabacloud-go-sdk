@@ -38,7 +38,7 @@ type CreateExperimentPlanResponseBody struct {
 	//
 	// 3FE4CD1E-FF41-56BE-B590-7A021D9C1524
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The creation result. The value is `created` if the operation is successful.
+	// The creation result. The value is `created` upon success.
 	//
 	// example:
 	//

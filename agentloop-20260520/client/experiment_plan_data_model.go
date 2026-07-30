@@ -19,6 +19,8 @@ type iExperimentPlanData interface {
   GetExperimentCount() *int32 
   SetExperimentType(v string) *ExperimentPlanData
   GetExperimentType() *string 
+  SetPipelineName(v string) *ExperimentPlanData
+  GetPipelineName() *string 
   SetPlanId(v string) *ExperimentPlanData
   GetPlanId() *string 
   SetPlanName(v string) *ExperimentPlanData
@@ -37,6 +39,7 @@ type ExperimentPlanData struct {
   Description *string `json:"description,omitempty" xml:"description,omitempty"`
   ExperimentCount *int32 `json:"experimentCount,omitempty" xml:"experimentCount,omitempty"`
   ExperimentType *string `json:"experimentType,omitempty" xml:"experimentType,omitempty"`
+  PipelineName *string `json:"pipelineName,omitempty" xml:"pipelineName,omitempty"`
   PlanId *string `json:"planId,omitempty" xml:"planId,omitempty"`
   PlanName *string `json:"planName,omitempty" xml:"planName,omitempty"`
   QuerySql *string `json:"querySql,omitempty" xml:"querySql,omitempty"`
@@ -70,6 +73,10 @@ func (s *ExperimentPlanData) GetExperimentCount() *int32  {
 
 func (s *ExperimentPlanData) GetExperimentType() *string  {
   return s.ExperimentType
+}
+
+func (s *ExperimentPlanData) GetPipelineName() *string  {
+  return s.PipelineName
 }
 
 func (s *ExperimentPlanData) GetPlanId() *string  {
@@ -114,6 +121,11 @@ func (s *ExperimentPlanData) SetExperimentCount(v int32) *ExperimentPlanData {
 
 func (s *ExperimentPlanData) SetExperimentType(v string) *ExperimentPlanData {
   s.ExperimentType = &v
+  return s
+}
+
+func (s *ExperimentPlanData) SetPipelineName(v string) *ExperimentPlanData {
+  s.PipelineName = &v
   return s
 }
 

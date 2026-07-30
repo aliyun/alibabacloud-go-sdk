@@ -144,8 +144,9 @@ type ListDatasetsResponseBodyDatasets struct {
 	// example:
 	//
 	// Product FAQ dataset for semantic search
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	IsFavorite  *bool   `json:"isFavorite,omitempty" xml:"isFavorite,omitempty"`
+	Description *string              `json:"description,omitempty" xml:"description,omitempty"`
+	IsFavorite  *bool                `json:"isFavorite,omitempty" xml:"isFavorite,omitempty"`
+	Labels      map[string][]*string `json:"labels,omitempty" xml:"labels,omitempty"`
 	// The region ID.
 	//
 	// example:
@@ -190,6 +191,10 @@ func (s *ListDatasetsResponseBodyDatasets) GetIsFavorite() *bool {
 	return s.IsFavorite
 }
 
+func (s *ListDatasetsResponseBodyDatasets) GetLabels() map[string][]*string {
+	return s.Labels
+}
+
 func (s *ListDatasetsResponseBodyDatasets) GetRegionId() *string {
 	return s.RegionId
 }
@@ -220,6 +225,11 @@ func (s *ListDatasetsResponseBodyDatasets) SetDescription(v string) *ListDataset
 
 func (s *ListDatasetsResponseBodyDatasets) SetIsFavorite(v bool) *ListDatasetsResponseBodyDatasets {
 	s.IsFavorite = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyDatasets) SetLabels(v map[string][]*string) *ListDatasetsResponseBodyDatasets {
+	s.Labels = v
 	return s
 }
 

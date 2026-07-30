@@ -11,6 +11,8 @@ type iListDatasetsRequest interface {
 	GoString() string
 	SetDatasetName(v string) *ListDatasetsRequest
 	GetDatasetName() *string
+	SetLabels(v map[string][]*string) *ListDatasetsRequest
+	GetLabels() map[string][]*string
 	SetMaxResults(v int32) *ListDatasetsRequest
 	GetMaxResults() *int32
 	SetNextToken(v string) *ListDatasetsRequest
@@ -23,7 +25,8 @@ type ListDatasetsRequest struct {
 	// example:
 	//
 	// product_faq_dataset
-	DatasetName *string `json:"datasetName,omitempty" xml:"datasetName,omitempty"`
+	DatasetName *string              `json:"datasetName,omitempty" xml:"datasetName,omitempty"`
+	Labels      map[string][]*string `json:"labels,omitempty" xml:"labels,omitempty"`
 	// The maximum number of results to return.
 	//
 	// example:
@@ -50,6 +53,10 @@ func (s *ListDatasetsRequest) GetDatasetName() *string {
 	return s.DatasetName
 }
 
+func (s *ListDatasetsRequest) GetLabels() map[string][]*string {
+	return s.Labels
+}
+
 func (s *ListDatasetsRequest) GetMaxResults() *int32 {
 	return s.MaxResults
 }
@@ -60,6 +67,11 @@ func (s *ListDatasetsRequest) GetNextToken() *string {
 
 func (s *ListDatasetsRequest) SetDatasetName(v string) *ListDatasetsRequest {
 	s.DatasetName = &v
+	return s
+}
+
+func (s *ListDatasetsRequest) SetLabels(v map[string][]*string) *ListDatasetsRequest {
+	s.Labels = v
 	return s
 }
 

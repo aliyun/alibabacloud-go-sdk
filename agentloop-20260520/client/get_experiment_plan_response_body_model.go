@@ -23,6 +23,8 @@ type iGetExperimentPlanResponseBody interface {
 	GetExperiments() []*ExperimentConfig
 	SetInput(v map[string]interface{}) *GetExperimentPlanResponseBody
 	GetInput() map[string]interface{}
+	SetPipelineName(v string) *GetExperimentPlanResponseBody
+	GetPipelineName() *string
 	SetPlanId(v string) *GetExperimentPlanResponseBody
 	GetPlanId() *string
 	SetPlanName(v string) *GetExperimentPlanResponseBody
@@ -40,7 +42,7 @@ type iGetExperimentPlanResponseBody interface {
 }
 
 type GetExperimentPlanResponseBody struct {
-	// The creation time, in millisecond Unix timestamp.
+	// The creation time. This value is a millisecond-level UNIX timestamp.
 	//
 	// example:
 	//
@@ -56,7 +58,7 @@ type GetExperimentPlanResponseBody struct {
 	//
 	// example:
 	//
-	// 对比 checkout Agent 基线与优化版本
+	// Compare the checkout Agent baseline with the optimized version.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The list of evaluators.
 	//
@@ -80,8 +82,9 @@ type GetExperimentPlanResponseBody struct {
 	//
 	// example:
 	//
-	// {"question": "如何退款？"}
-	Input map[string]interface{} `json:"input,omitempty" xml:"input,omitempty"`
+	// {"question": "How do I request a refund?"}
+	Input        map[string]interface{} `json:"input,omitempty" xml:"input,omitempty"`
+	PipelineName *string                `json:"pipelineName,omitempty" xml:"pipelineName,omitempty"`
 	// The experiment plan ID.
 	//
 	// example:
@@ -118,7 +121,7 @@ type GetExperimentPlanResponseBody struct {
 	//
 	// stopped
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The update time, in millisecond Unix timestamp.
+	// The update time. This value is a millisecond-level UNIX timestamp.
 	//
 	// example:
 	//
@@ -160,6 +163,10 @@ func (s *GetExperimentPlanResponseBody) GetExperiments() []*ExperimentConfig {
 
 func (s *GetExperimentPlanResponseBody) GetInput() map[string]interface{} {
 	return s.Input
+}
+
+func (s *GetExperimentPlanResponseBody) GetPipelineName() *string {
+	return s.PipelineName
 }
 
 func (s *GetExperimentPlanResponseBody) GetPlanId() *string {
@@ -222,6 +229,11 @@ func (s *GetExperimentPlanResponseBody) SetExperiments(v []*ExperimentConfig) *G
 
 func (s *GetExperimentPlanResponseBody) SetInput(v map[string]interface{}) *GetExperimentPlanResponseBody {
 	s.Input = v
+	return s
+}
+
+func (s *GetExperimentPlanResponseBody) SetPipelineName(v string) *GetExperimentPlanResponseBody {
+	s.PipelineName = &v
 	return s
 }
 

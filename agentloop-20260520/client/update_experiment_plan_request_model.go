@@ -23,6 +23,8 @@ type iUpdateExperimentPlanRequest interface {
 	GetExperiments() []*ExperimentConfig
 	SetInput(v map[string]interface{}) *UpdateExperimentPlanRequest
 	GetInput() map[string]interface{}
+	SetPipelineName(v string) *UpdateExperimentPlanRequest
+	GetPipelineName() *string
 	SetPlanName(v string) *UpdateExperimentPlanRequest
 	GetPlanName() *string
 	SetQuerySql(v string) *UpdateExperimentPlanRequest
@@ -73,7 +75,8 @@ type UpdateExperimentPlanRequest struct {
 	// example:
 	//
 	// {"question": "How do I get a refund?"}
-	Input map[string]interface{} `json:"input,omitempty" xml:"input,omitempty"`
+	Input        map[string]interface{} `json:"input,omitempty" xml:"input,omitempty"`
+	PipelineName *string                `json:"pipelineName,omitempty" xml:"pipelineName,omitempty"`
 	// The experiment plan name.
 	//
 	// example:
@@ -130,6 +133,10 @@ func (s *UpdateExperimentPlanRequest) GetInput() map[string]interface{} {
 	return s.Input
 }
 
+func (s *UpdateExperimentPlanRequest) GetPipelineName() *string {
+	return s.PipelineName
+}
+
 func (s *UpdateExperimentPlanRequest) GetPlanName() *string {
 	return s.PlanName
 }
@@ -174,6 +181,11 @@ func (s *UpdateExperimentPlanRequest) SetExperiments(v []*ExperimentConfig) *Upd
 
 func (s *UpdateExperimentPlanRequest) SetInput(v map[string]interface{}) *UpdateExperimentPlanRequest {
 	s.Input = v
+	return s
+}
+
+func (s *UpdateExperimentPlanRequest) SetPipelineName(v string) *UpdateExperimentPlanRequest {
+	s.PipelineName = &v
 	return s
 }
 
