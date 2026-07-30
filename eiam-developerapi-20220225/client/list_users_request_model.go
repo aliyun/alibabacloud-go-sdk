@@ -18,19 +18,19 @@ type iListUsersRequest interface {
 }
 
 type ListUsersRequest struct {
-	// The ID of the organizational unit.
+	// The organization ID.
 	//
 	// example:
 	//
 	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitId *string `json:"organizationalUnitId,omitempty" xml:"organizationalUnitId,omitempty"`
-	// The page number. Default value: 1.
+	// The page number. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page. Default value: 20. Valid values: 1 to 100.
+	// The number of records to return on each page. The default value is 20. The value must be in the range of 1 to 100.
 	//
 	// example:
 	//

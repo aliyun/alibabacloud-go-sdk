@@ -14,6 +14,8 @@ type iAddUserToOrganizationalUnitsRequest interface {
 }
 
 type AddUserToOrganizationalUnitsRequest struct {
+	// A list of organization IDs.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -14,6 +14,8 @@ type iObtainJwtAuthenticationTokenByDerivedShortTokenRequest interface {
 }
 
 type ObtainJwtAuthenticationTokenByDerivedShortTokenRequest struct {
+	// Derived short token for the JWT authentication token.
+	//
 	// This parameter is required.
 	//
 	// example:

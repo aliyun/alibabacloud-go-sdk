@@ -42,47 +42,47 @@ type GenerateTokenRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ClientId *string `json:"client_id,omitempty" xml:"client_id,omitempty"`
-	// The client secret. This parameter is required if grant_type is set to client_credentials.
+	// The client secret. This parameter is required when \\`grant_type\\` is \\`client_credentials\\` and the \\`client_secret_post\\` method is used.
 	//
 	// example:
 	//
 	// CSEHDcHcrUKHw1CuxkJEHPveWRXBGqVqRsxxxx
 	ClientSecret *string `json:"client_secret,omitempty" xml:"client_secret,omitempty"`
-	// The authorization code. This parameter is required if grant_type is set to authorization_code.
+	// The authorization code. This parameter is required when \\`grant_type\\` is \\`authorization_code\\`.
 	//
 	// example:
 	//
 	// xxxx
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The verification code.
+	// The code verifier. This is used in the authorization code grant type when PKCE is enabled.
 	//
 	// example:
 	//
 	// xxx
 	CodeVerifier *string `json:"code_verifier,omitempty" xml:"code_verifier,omitempty"`
-	// The device code. This parameter is required if grant_type is set to authorization_code.urn:ietf:params:oauth:grant-type:device_code.
+	// The device code. This parameter is required when \\`grant_type\\` is \\`urn:ietf:params:oauth:grant-type:device_code\\` (device flow).
 	//
 	// example:
 	//
 	// xxxx
 	DeviceCode *string `json:"device_code,omitempty" xml:"device_code,omitempty"`
-	// The excluded tags.
+	// The excluded tag.
 	//
 	// example:
 	//
 	// ATxxx
 	ExclusiveTag *string `json:"exclusive_tag,omitempty" xml:"exclusive_tag,omitempty"`
-	// The supported authorization types are as follows:
+	// The authorization grant type. The following types are supported:
 	//
-	// - client_credentials:Client credentials flow, requires client_id and client_secret.
+	// - \\`client_credentials\\`: Client credentials grant. Requires \\`client_id\\` and \\`client_secret\\`.
 	//
-	// - refresh_token:Refresh token flow.
+	// - \\`refresh_token\\`: Refresh token grant.
 	//
-	// - authorization_code:Authorization code flow.
+	// - \\`authorization_code\\`: Authorization code grant.
 	//
-	// - urn:ietf:params:oauth:grant-type:device_code:Device authorization flow.
+	// - \\`urn:ietf:params:oauth:grant-type:device_code\\`: Device flow.
 	//
-	// - password:Password (Resource Owner Password Credentials) flow.
+	// - \\`password\\`: Password grant.
 	//
 	// This parameter is required.
 	//
@@ -90,39 +90,41 @@ type GenerateTokenRequest struct {
 	//
 	// client_credentials
 	GrantType *string `json:"grant_type,omitempty" xml:"grant_type,omitempty"`
-	// The username. This parameter is required if grant_type is set to password. The password authentication type is not supported.
+	// The username. This parameter is required for password mode.
 	//
 	// example:
 	//
 	// xxxxxx
 	Password *string `json:"password,omitempty" xml:"password,omitempty"`
-	// The redirect URI. This parameter is required if grant_type is set to authorization_code. The value of this parameter must be the same as the redirect URI in the request to obtain the authorization code.
+	// The redirection URI. This parameter is required for the authorization code grant type. It must match the redirection URI in the request to get the authorization code.
 	//
 	// example:
 	//
 	// xxx
 	RedirectUri *string `json:"redirect_uri,omitempty" xml:"redirect_uri,omitempty"`
-	// The refreshed token. This parameter is required if grant_type is set to refresh_token.
+	// The refresh token. This parameter is required when \\`grant_type\\` is \\`refresh_token\\` (refresh token grant).
 	//
 	// example:
 	//
 	// ATxxx
 	RefreshToken *string `json:"refresh_token,omitempty" xml:"refresh_token,omitempty"`
-	// The authorization scope. Valid values:
+	// The scope. This parameter is optional. Multiple values are supported. Separate multiple values with spaces.
 	//
-	// 	- openid
+	// Valid values:
 	//
-	// 	- email
+	// - openid
 	//
-	// 	- phone
+	// - email
 	//
-	// 	- profile
+	// - phone
+	//
+	// - profile
 	//
 	// example:
 	//
 	// xxxx
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// The username. This parameter is required if grant_type is set to password. The password authentication type is not supported.
+	// The username. This parameter is required for the password grant type.
 	//
 	// example:
 	//

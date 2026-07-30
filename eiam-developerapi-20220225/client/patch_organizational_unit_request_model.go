@@ -20,7 +20,7 @@ type PatchOrganizationalUnitRequest struct {
 	//
 	// example:
 	//
-	// test organizational unit
+	// 测试组织
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The name of the organizational unit.
 	//

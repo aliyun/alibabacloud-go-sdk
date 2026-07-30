@@ -17,6 +17,10 @@ type iListAuthenticationTokensHeaders interface {
 
 type ListAuthenticationTokensHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// Authentication information. Format: Bearer ${access_token}.
+	//
+	// > Enter an IDaaS-issued Access Token.
+	//
 	// This parameter is required.
 	//
 	// example:

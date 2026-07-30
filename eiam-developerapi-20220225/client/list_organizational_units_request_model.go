@@ -18,19 +18,19 @@ type iListOrganizationalUnitsRequest interface {
 }
 
 type ListOrganizationalUnitsRequest struct {
-	// The page number. Default value: 1.
+	// The page number. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page. Default value: 20. Valid values: 1 to 100.
+	// The number of records on each page. The default value is 20. The value can range from 1 to 100.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The ID of the parent organizational unit.
+	// The parent organization ID.
 	//
 	// This parameter is required.
 	//

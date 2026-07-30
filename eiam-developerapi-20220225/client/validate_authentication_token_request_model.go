@@ -16,12 +16,22 @@ type iValidateAuthenticationTokenRequest interface {
 }
 
 type ValidateAuthenticationTokenRequest struct {
+	// The original authentication token.
+	//
+	// > Pass either the original authentication token or a derived short token.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eyJhbGciOixxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 	Token *string `json:"token,omitempty" xml:"token,omitempty"`
+	// A hint about the type of the authentication token.
+	//
+	// 	Notice:
+	//
+	// No value is currently required for this parameter.
+	//
 	// example:
 	//
 	// -

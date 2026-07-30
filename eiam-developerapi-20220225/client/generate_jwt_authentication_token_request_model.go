@@ -26,27 +26,44 @@ type iGenerateJwtAuthenticationTokenRequest interface {
 }
 
 type GenerateJwtAuthenticationTokenRequest struct {
+	// The \\`aud\\` field of the JWT.
+	//
 	// This parameter is required.
 	Audiences []*string `json:"audiences,omitempty" xml:"audiences,omitempty" type:"Repeated"`
+	// Credential provider identity.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_example_identifier
-	CredentialProviderIdentifier *string                `json:"credentialProviderIdentifier,omitempty" xml:"credentialProviderIdentifier,omitempty"`
-	CustomClaims                 map[string]interface{} `json:"customClaims,omitempty" xml:"customClaims,omitempty"`
+	CredentialProviderIdentifier *string `json:"credentialProviderIdentifier,omitempty" xml:"credentialProviderIdentifier,omitempty"`
+	// Custom claims.
+	//
+	// 	Notice:
+	//
+	// Key-value pairs. Keys must be strings.
+	CustomClaims map[string]interface{} `json:"customClaims,omitempty" xml:"customClaims,omitempty"`
+	// The validity period of the JWT, in seconds.
+	//
 	// example:
 	//
 	// 900
 	Expiration *int32 `json:"expiration,omitempty" xml:"expiration,omitempty"`
+	// Whether the generated JWT needs to include a "derived short token".
+	//
 	// example:
 	//
 	// true
 	IncludeDerivedShortToken *bool `json:"includeDerivedShortToken,omitempty" xml:"includeDerivedShortToken,omitempty"`
+	// The \\`iss\\` field of the JWT.
+	//
 	// example:
 	//
 	// https://test.issuer.com
 	Issuer *string `json:"issuer,omitempty" xml:"issuer,omitempty"`
+	// The \\`sub\\` field of the JWT.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -14,7 +14,7 @@ type iCreateUserResponseBody interface {
 }
 
 type CreateUserResponseBody struct {
-	// The account ID.
+	// The user ID.
 	//
 	// example:
 	//

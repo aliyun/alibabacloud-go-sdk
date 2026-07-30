@@ -26,30 +26,44 @@ type iGenerateTokenByAuthorizationServerResponseBody interface {
 }
 
 type GenerateTokenByAuthorizationServerResponseBody struct {
+	// Access credential.
+	//
 	// example:
 	//
 	// eyJraWQiOiJLRVlLZ0Iyxxxxx
 	AccessToken *string `json:"access_token,omitempty" xml:"access_token,omitempty"`
+	// Expiration time of the access credential, as a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1653288641
 	ExpiresAt *int64 `json:"expires_at,omitempty" xml:"expires_at,omitempty"`
+	// Validity period of the access credential, in seconds.
+	//
 	// example:
 	//
 	// 1200
 	ExpiresIn *int64 `json:"expires_in,omitempty" xml:"expires_in,omitempty"`
+	// Identity credential.
+	//
 	// example:
 	//
 	// eyJraWQiOiJLRVlLZ0Iyxxxxx
 	IdToken *string `json:"id_token,omitempty" xml:"id_token,omitempty"`
+	// Refresh token.
+	//
 	// example:
 	//
 	// ATxxxxx
 	RefreshToken *string `json:"refresh_token,omitempty" xml:"refresh_token,omitempty"`
+	// Scope.
+	//
 	// example:
 	//
 	// openid
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	// Token type.
+	//
 	// example:
 	//
 	// Bearer

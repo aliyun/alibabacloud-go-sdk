@@ -14,6 +14,8 @@ type iRemoveUserFromOrganizationalUnitsRequest interface {
 }
 
 type RemoveUserFromOrganizationalUnitsRequest struct {
+	// The organizational unit IDs.
+	//
 	// This parameter is required.
 	//
 	// example:

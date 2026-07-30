@@ -16,12 +16,22 @@ type iReinstateAuthenticationTokenRequest interface {
 }
 
 type ReinstateAuthenticationTokenRequest struct {
+	// The original authentication token.
+	//
+	// > You can pass either the original authentication token or its derived short token.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eyJhbGciOixxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 	Token *string `json:"token,omitempty" xml:"token,omitempty"`
+	// A hint about the authentication token type.
+	//
+	// 	Notice:
+	//
+	// Do not provide a value for this parameter.
+	//
 	// example:
 	//
 	// -

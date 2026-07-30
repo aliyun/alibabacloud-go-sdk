@@ -16,12 +16,16 @@ type iObtainJwtAuthenticationTokenRequest interface {
 }
 
 type ObtainJwtAuthenticationTokenRequest struct {
+	// The ID of the authentication token.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// atntkn_01kqflm0sxxx8nmdc1cb5dskxxxxx
 	AuthenticationTokenId *string `json:"authenticationTokenId,omitempty" xml:"authenticationTokenId,omitempty"`
+	// The ID of the authentication token consumer.
+	//
 	// This parameter is required.
 	//
 	// example:

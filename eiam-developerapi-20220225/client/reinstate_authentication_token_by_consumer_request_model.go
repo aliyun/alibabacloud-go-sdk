@@ -16,12 +16,16 @@ type iReinstateAuthenticationTokenByConsumerRequest interface {
 }
 
 type ReinstateAuthenticationTokenByConsumerRequest struct {
+	// The ID of the authentication token consumer.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_jwt_subject
 	ConsumerId *string `json:"consumerId,omitempty" xml:"consumerId,omitempty"`
+	// The credential provider identifier.
+	//
 	// This parameter is required.
 	//
 	// example:

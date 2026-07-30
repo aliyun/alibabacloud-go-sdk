@@ -38,53 +38,84 @@ type iObtainJwtAuthenticationTokenResponseBody interface {
 }
 
 type ObtainJwtAuthenticationTokenResponseBody struct {
+	// The ID of the authentication token.
+	//
 	// example:
 	//
 	// atntkn_01kqflm0sxxx8nmdc1cb5dskxxxxx
 	AuthenticationTokenId *string `json:"authenticationTokenId,omitempty" xml:"authenticationTokenId,omitempty"`
+	// The type of the authentication token.
+	//
+	// > The value is always `jwt`, indicating a JWT-based authentication token.
+	//
 	// example:
 	//
 	// jwt
 	AuthenticationTokenType *string `json:"authenticationTokenType,omitempty" xml:"authenticationTokenType,omitempty"`
+	// The ID of the authentication token consumer.
+	//
 	// example:
 	//
 	// test_jwt_subject
 	ConsumerId *string `json:"consumerId,omitempty" xml:"consumerId,omitempty"`
+	// The type of entity that consumes the authentication token. Valid values:
+	//
+	// - `application`: The token is consumed by an application.
+	//
+	// - `custom`: Indicates a user-defined consumer.
+	//
 	// example:
 	//
 	// custom
 	ConsumerType *string `json:"consumerType,omitempty" xml:"consumerType,omitempty"`
+	// The creation time of the authentication token, provided as a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1649830225000
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The ID of the authentication token\\"s creator.
+	//
 	// example:
 	//
 	// app_ngtkgrrxxxxktg5eao6z4xxxxx
 	CreatorId *string `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
+	// The type of the entity that created the authentication token. Valid value:
+	//
+	// - `application`: The token was created by an application.
+	//
 	// example:
 	//
 	// application
 	CreatorType *string `json:"creatorType,omitempty" xml:"creatorType,omitempty"`
+	// The ID of the credential provider.
+	//
 	// example:
 	//
 	// atp_01kr2cmj5gxxx4fvmls2e93dxxxxx
 	CredentialProviderId *string `json:"credentialProviderId,omitempty" xml:"credentialProviderId,omitempty"`
+	// The expiration time of the authentication token, provided as a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1772693568000
 	ExpirationTime *int64 `json:"expirationTime,omitempty" xml:"expirationTime,omitempty"`
-	// EIAM实例ID。
+	// The ID of the instance.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
-	InstanceId *string                                             `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The content of the JWT-based authentication token.
 	JwtContent *ObtainJwtAuthenticationTokenResponseBodyJwtContent `json:"jwtContent,omitempty" xml:"jwtContent,omitempty" type:"Struct"`
+	// Indicates whether the authentication token has been revoked.
+	//
 	// example:
 	//
 	// false
 	Revoked *bool `json:"revoked,omitempty" xml:"revoked,omitempty"`
+	// The time the authentication token was last updated, provided as a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1649830225000
@@ -226,10 +257,14 @@ func (s *ObtainJwtAuthenticationTokenResponseBody) Validate() error {
 }
 
 type ObtainJwtAuthenticationTokenResponseBodyJwtContent struct {
+	// A short token derived from the JWT.
+	//
 	// example:
 	//
 	// sk-Nx2vzxxxxxxxxxxxxxxxxx
 	DerivedShortToken *string `json:"derivedShortToken,omitempty" xml:"derivedShortToken,omitempty"`
+	// The JWT content.
+	//
 	// example:
 	//
 	// eyJhbGciOixxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

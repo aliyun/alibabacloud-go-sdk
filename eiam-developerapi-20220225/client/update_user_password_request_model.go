@@ -14,6 +14,8 @@ type iUpdateUserPasswordRequest interface {
 }
 
 type UpdateUserPasswordRequest struct {
+	// The new password. For the password requirements, see the password policy in the console.
+	//
 	// example:
 	//
 	// xxxx

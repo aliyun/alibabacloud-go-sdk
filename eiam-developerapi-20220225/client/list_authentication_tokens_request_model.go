@@ -24,30 +24,42 @@ type iListAuthenticationTokensRequest interface {
 }
 
 type ListAuthenticationTokensRequest struct {
+	// ID of the authentication token consumer.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// app_ngtkgrrxxxxktg5eao6z4xxxxx
 	ConsumerId *string `json:"consumerId,omitempty" xml:"consumerId,omitempty"`
+	// Credential provider identifier.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_example_identifier
 	CredentialProviderIdentifier *string `json:"credentialProviderIdentifier,omitempty" xml:"credentialProviderIdentifier,omitempty"`
+	// Indicates whether the authentication token is expired.
+	//
 	// example:
 	//
 	// false
 	Expired *bool `json:"expired,omitempty" xml:"expired,omitempty"`
+	// Maximum number of records to return in this paged query.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// Token that marks the start of the next page in a paged query.
+	//
 	// example:
 	//
 	// NTxxxxxexample
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// Indicates whether the authentication token is revoked.
+	//
 	// example:
 	//
 	// false

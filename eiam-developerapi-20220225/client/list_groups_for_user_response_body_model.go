@@ -20,15 +20,22 @@ type iListGroupsForUserResponseBody interface {
 }
 
 type ListGroupsForUserResponseBody struct {
+	// The data object.
 	Data []*ListGroupsForUserResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The maximum number of entries returned on each page.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The token to retrieve the next page of results. If this parameter is not returned, all results have been returned.
+	//
 	// example:
 	//
 	// NTxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 1000
@@ -93,18 +100,26 @@ func (s *ListGroupsForUserResponseBody) Validate() error {
 }
 
 type ListGroupsForUserResponseBodyData struct {
+	// The group ID.
+	//
 	// example:
 	//
 	// user_d6sbsuumeta4h66ec3il7yxxxx
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	// The source ID of the group membership.
+	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	GroupMemberRelationSourceId *string `json:"groupMemberRelationSourceId,omitempty" xml:"groupMemberRelationSourceId,omitempty"`
+	// The source type of the group membership.
+	//
 	// example:
 	//
 	// build_in
 	GroupMemberRelationSourceType *string `json:"groupMemberRelationSourceType,omitempty" xml:"groupMemberRelationSourceType,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx

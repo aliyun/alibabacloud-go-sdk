@@ -16,12 +16,16 @@ type iRevokeAuthenticationTokenByConsumerRequest interface {
 }
 
 type RevokeAuthenticationTokenByConsumerRequest struct {
+	// Consumer ID of the authentication token.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_jwt_subject
 	ConsumerId *string `json:"consumerId,omitempty" xml:"consumerId,omitempty"`
+	// Credential provider identifier.
+	//
 	// This parameter is required.
 	//
 	// example:

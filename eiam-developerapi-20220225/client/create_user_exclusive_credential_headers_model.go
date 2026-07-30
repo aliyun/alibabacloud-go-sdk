@@ -17,6 +17,10 @@ type iCreateUserExclusiveCredentialHeaders interface {
 
 type CreateUserExclusiveCredentialHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The authentication information. Format: Bearer ${access_token}.
+	//
+	// > Enter the Access Token issued by IDaaS.
+	//
 	// This parameter is required.
 	//
 	// example:

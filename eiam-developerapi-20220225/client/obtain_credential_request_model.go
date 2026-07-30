@@ -14,6 +14,8 @@ type iObtainCredentialRequest interface {
 }
 
 type ObtainCredentialRequest struct {
+	// The identifier for the credential to obtain.
+	//
 	// This parameter is required.
 	//
 	// example:

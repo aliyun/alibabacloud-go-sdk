@@ -14,6 +14,8 @@ type iSetUserPrimaryOrganizationalUnitRequest interface {
 }
 
 type SetUserPrimaryOrganizationalUnitRequest struct {
+	// The primary organization ID.
+	//
 	// This parameter is required.
 	//
 	// example:

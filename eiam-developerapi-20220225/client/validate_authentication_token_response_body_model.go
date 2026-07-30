@@ -14,6 +14,8 @@ type iValidateAuthenticationTokenResponseBody interface {
 }
 
 type ValidateAuthenticationTokenResponseBody struct {
+	// Indicates whether the authentication token is valid.
+	//
 	// example:
 	//
 	// true

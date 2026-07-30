@@ -16,12 +16,22 @@ type iRevokeAuthenticationTokenRequest interface {
 }
 
 type RevokeAuthenticationTokenRequest struct {
+	// Original authentication token.
+	//
+	// > You can pass either the original authentication token or a derived short token.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eyJhbGciOixxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 	Token *string `json:"token,omitempty" xml:"token,omitempty"`
+	// Authentication token type hint.
+	//
+	// 	Notice:
+	//
+	// Currently, no value is required.
+	//
 	// example:
 	//
 	// -

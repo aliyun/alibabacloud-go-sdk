@@ -17,6 +17,12 @@ type iRemoveUserFromOrganizationalUnitsHeaders interface {
 
 type RemoveUserFromOrganizationalUnitsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The authorization credential for the request.
+	//
+	// Format: Bearer ${access_token}.
+	//
+	// Example: Bearer ATxxxx.
+	//
 	// This parameter is required.
 	//
 	// example:

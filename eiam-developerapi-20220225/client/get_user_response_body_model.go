@@ -78,7 +78,7 @@ type GetUserResponseBody struct {
 	//
 	// example:
 	//
-	// xxxx
+	// 测试账户
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The display name of the account.
 	//
@@ -186,13 +186,13 @@ type GetUserResponseBody struct {
 	UserSourceId *string `json:"userSourceId,omitempty" xml:"userSourceId,omitempty"`
 	// The source type of the account. Valid values:
 	//
-	// 	- build_in: The account was created in IDaaS.
+	// - build_in: The account was created in IDaaS.
 	//
-	// 	- ding_talk: The account was imported from DingTalk.
+	// - ding_talk: The account was imported from DingTalk.
 	//
-	// 	- ad: The account was imported from Microsoft Active Directory (AD).
+	// - ad: The account was imported from Microsoft Active Directory (AD).
 	//
-	// 	- ldap: The account was imported from a Lightweight Directory Access Protocol (LDAP) service.
+	// - ldap: The account was imported from a Lightweight Directory Access Protocol (LDAP) service.
 	//
 	// example:
 	//

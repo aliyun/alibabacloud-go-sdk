@@ -16,8 +16,9 @@ type iGetApplicationProvisioningScopeResponseBody interface {
 }
 
 type GetApplicationProvisioningScopeResponseBody struct {
+	// The list of group IDs.
 	GroupIds []*string `json:"groupIds,omitempty" xml:"groupIds,omitempty" type:"Repeated"`
-	// The IDs of organizational units.
+	// The list of organization IDs.
 	//
 	// example:
 	//

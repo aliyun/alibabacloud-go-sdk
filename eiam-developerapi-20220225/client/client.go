@@ -24,7 +24,15 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"eu-central-1":   dara.String("eiam-developerapi.eu-central-1.aliyuncs.com"),
+		"cn-hongkong":    dara.String("eiam-developerapi.cn-hongkong.aliyuncs.com"),
+		"cn-hangzhou":    dara.String("eiam-developerapi.cn-hangzhou.aliyuncs.com"),
+		"ap-southeast-5": dara.String("eiam-developerapi.ap-southeast-5.aliyuncs.com"),
+		"ap-southeast-1": dara.String("eiam-developerapi.ap-southeast-1.aliyuncs.com"),
+		"ap-northeast-2": dara.String("eiam-developerapi.ap-northeast-2.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +66,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 将账户加入多个组织
+// Adds an EIAM account to one or more EIAM organizations. These organizations serve as subordinate organizations for the account. If the account is already a member of a specified organization, no update is performed.
 //
 // @param request - AddUserToOrganizationalUnitsRequest
 //
@@ -114,7 +122,7 @@ func (client *Client) AddUserToOrganizationalUnitsWithOptions(instanceId *string
 
 // Summary:
 //
-// 将账户加入多个组织
+// Adds an EIAM account to one or more EIAM organizations. These organizations serve as subordinate organizations for the account. If the account is already a member of a specified organization, no update is performed.
 //
 // @param request - AddUserToOrganizationalUnitsRequest
 //
@@ -374,7 +382,7 @@ func (client *Client) CreateOrganizationalUnit(instanceId *string, applicationId
 
 // Summary:
 //
-// Creates an Employee Identity and Access Management (EIAM) account in an organizational unit.
+// Creates a new EIAM account in a specified organization.
 //
 // @param request - CreateUserRequest
 //
@@ -478,7 +486,7 @@ func (client *Client) CreateUserWithOptions(instanceId *string, applicationId *s
 
 // Summary:
 //
-// Creates an Employee Identity and Access Management (EIAM) account in an organizational unit.
+// Creates a new EIAM account in a specified organization.
 //
 // @param request - CreateUserRequest
 //
@@ -497,7 +505,15 @@ func (client *Client) CreateUser(instanceId *string, applicationId *string, requ
 
 // Summary:
 //
-// 创建账户专属凭据。
+// Creates an account-specific credential.
+//
+// Description:
+//
+// This API uses an Access Token issued by IDaaS for identity authentication and authorization.
+//
+// Ensure that the Access Token you provide has the "Manage Static Credentials" permission for the IDaaS built-in PAM application (Privileged Access Management).
+//
+// > The corresponding scope is `urn:cloud:idaas:pam|credential:manage`.
 //
 // @param request - CreateUserExclusiveCredentialRequest
 //
@@ -542,6 +558,10 @@ func (client *Client) CreateUserExclusiveCredentialWithOptions(instanceId *strin
 		body["description"] = request.Description
 	}
 
+	if !dara.IsNil(request.ReturnCiphertext) {
+		body["returnCiphertext"] = request.ReturnCiphertext
+	}
+
 	realHeaders := make(map[string]*string)
 	if !dara.IsNil(headers.CommonHeaders) {
 		realHeaders = headers.CommonHeaders
@@ -577,7 +597,15 @@ func (client *Client) CreateUserExclusiveCredentialWithOptions(instanceId *strin
 
 // Summary:
 //
-// 创建账户专属凭据。
+// Creates an account-specific credential.
+//
+// Description:
+//
+// This API uses an Access Token issued by IDaaS for identity authentication and authorization.
+//
+// Ensure that the Access Token you provide has the "Manage Static Credentials" permission for the IDaaS built-in PAM application (Privileged Access Management).
+//
+// > The corresponding scope is `urn:cloud:idaas:pam|credential:manage`.
 //
 // @param request - CreateUserExclusiveCredentialRequest
 //
@@ -941,7 +969,15 @@ func (client *Client) EnableUser(instanceId *string, applicationId *string, user
 
 // Summary:
 //
-// 拉取一个有效的OAuth认证令牌。
+// Retrieves a valid OAuth authentication token.
+//
+// Description:
+//
+// This API authenticates and authorizes requests based on an Access Token issued by IDaaS.
+//
+// Ensure that the Access Token you provide has the function authorization to "obtain authentication token" for the IDaaS built-in PAM application (Privileged Access Management).
+//
+// > The corresponding scope is `urn:cloud:idaas:pam|authentication_token:obtain`.
 //
 // @param request - FetchOAuthAuthenticationTokenRequest
 //
@@ -960,6 +996,14 @@ func (client *Client) FetchOAuthAuthenticationTokenWithOptions(instanceId *strin
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CredentialProviderIdentifier) {
 		body["credentialProviderIdentifier"] = request.CredentialProviderIdentifier
+	}
+
+	if !dara.IsNil(request.CustomParameters) {
+		body["customParameters"] = request.CustomParameters
+	}
+
+	if !dara.IsNil(request.ForceAuthentication) {
+		body["forceAuthentication"] = request.ForceAuthentication
 	}
 
 	if !dara.IsNil(request.Scope) {
@@ -1001,7 +1045,15 @@ func (client *Client) FetchOAuthAuthenticationTokenWithOptions(instanceId *strin
 
 // Summary:
 //
-// 拉取一个有效的OAuth认证令牌。
+// Retrieves a valid OAuth authentication token.
+//
+// Description:
+//
+// This API authenticates and authorizes requests based on an Access Token issued by IDaaS.
+//
+// Ensure that the Access Token you provide has the function authorization to "obtain authentication token" for the IDaaS built-in PAM application (Privileged Access Management).
+//
+// > The corresponding scope is `urn:cloud:idaas:pam|authentication_token:obtain`.
 //
 // @param request - FetchOAuthAuthenticationTokenRequest
 //
@@ -1086,7 +1138,15 @@ func (client *Client) GenerateDeviceCode(instanceId *string, applicationId *stri
 
 // Summary:
 //
-// 生成一个有效的JWT认证令牌。
+// Generates a JSON Web Token (JWT) authentication token.
+//
+// Description:
+//
+// This API performs identity authentication and authorization using the Access Token issued by IDaaS.
+//
+// Ensure that the provided Access Token has the authorization to access the "Obtain Authentication Token" feature of the built-in Privileged Access Management (PAM) application in IDaaS.
+//
+// > The corresponding scope is `urn:cloud:idaas:pam|authentication_token:obtain`.
 //
 // @param request - GenerateJwtAuthenticationTokenRequest
 //
@@ -1166,7 +1226,15 @@ func (client *Client) GenerateJwtAuthenticationTokenWithOptions(instanceId *stri
 
 // Summary:
 //
-// 生成一个有效的JWT认证令牌。
+// Generates a JSON Web Token (JWT) authentication token.
+//
+// Description:
+//
+// This API performs identity authentication and authorization using the Access Token issued by IDaaS.
+//
+// Ensure that the provided Access Token has the authorization to access the "Obtain Authentication Token" feature of the built-in Privileged Access Management (PAM) application in IDaaS.
+//
+// > The corresponding scope is `urn:cloud:idaas:pam|authentication_token:obtain`.
 //
 // @param request - GenerateJwtAuthenticationTokenRequest
 //
@@ -1185,11 +1253,179 @@ func (client *Client) GenerateJwtAuthenticationToken(instanceId *string, request
 
 // Summary:
 //
-// Generates a token for accessing an application in an instance.
+// Generates an access token for an application in a specified IDaaS instance based on 
 //
 // Description:
 //
-// The following authorization types are supported: authorization code, device code, refresh token, and client credentials.
+// The following methods are supported: Authorization Code, Device Flow, Refresh Token, Client Credentials, and Password.
+//
+// ### 1. Authorization Code
+//
+// Scenario: This is the standard OAuth 2.0 authorization code flow, which is suitable for web applications with frontend interaction.
+//
+// Example call:
+//
+// ```
+//
+// POST /v2/{instanceId}/{applicationId}/oauth2/token
+//
+// Content-Type: application/x-www-form-urlencoded
+//
+// grant_type=authorization_code
+//
+// &code={authorization_code}
+//
+// &redirect_uri={redirect_uri}
+//
+// &client_id={client_id}
+//
+// &client_secret={client_secret}
+//
+// ```
+//
+// Parameters:
+//
+// ● code: The authorization code obtained from the authorization endpoint.
+//
+// ● redirect_uri: Must be the same as the redirect_uri that was used to obtain the authorization code.
+//
+// ### 1.1 Authorization Code for public clients
+//
+// Scenario: This scenario is suitable for applications that cannot securely store a secret, such as single-page applications (SPAs) or native applications. In this flow, a client_secret is not required, but you must use the Proof Key for Code Exchange (PKCE) mechanism. Example call:
+//
+// ```
+//
+// POST /v2/{instanceId}/{applicationId}/oauth2/token
+//
+// Content-Type: application/x-www-form-urlencoded
+//
+// grant_type=authorization_code
+//
+// &code={authorization_code}
+//
+// &redirect_uri={redirect_uri}
+//
+// &client_id={client_id}
+//
+// &code_verifier={code_verifier}
+//
+// ```
+//
+// Parameters:
+//
+// ● code_verifier: The code verifier for the PKCE mechanism. The client generates it when initiating an authorization request and uses it to derive the \\`code_challenge\\`. When exchanging for a token, you must submit this value. It must be identical to the value used to generate the \\`code_challenge\\`.
+//
+// Java example for generating a code_verifier and code_challenge:
+//
+// ```java
+//
+// String codeVerifier = Base64.getUrlEncoder().withoutPadding().encodeToString(new SecureRandom().generateSeed(43));
+//
+// String codeChallenge = Base64.getUrlEncoder().withoutPadding().encodeToString(java.security.MessageDigest.getInstance("SHA-256").digest(codeVerifier.getBytes()));
+//
+// ```
+//
+// ### 2. Device Flow
+//
+// Scenario: This scenario is suitable for input-constrained devices, such as TVs and IoT devices. Example call:
+//
+// ```
+//
+// POST /v2/{instanceId}/{applicationId}/oauth2/token
+//
+// Content-Type: application/x-www-form-urlencoded
+//
+// grant_type=urn:ietf:params:oauth:grant-type:device_code
+//
+// &device_code={device_code}
+//
+// &client_id={client_id}
+//
+// &client_secret={client_secret}
+//
+// ```
+//
+// To obtain the device code, first call `/oauth2/device/code` to retrieve the device_code and user_code.
+//
+// ### 2.1 Device Flow for public clients
+//
+// Scenario: This scenario is used when interactive logon is not convenient and the client is a public client. Example call:
+//
+// ```
+//
+// POST /v2/{instanceId}/{applicationId}/oauth2/token
+//
+// Content-Type: application/x-www-form-urlencoded
+//
+// grant_type=urn:ietf:params:oauth:grant-type:device_code
+//
+// &device_code={device_code}
+//
+// &client_id={client_id}
+//
+// ```
+//
+// ### 3. Refresh Token
+//
+// Scenario: This scenario uses a refresh_token to obtain a new access_token. Example call:
+//
+// ```
+//
+// POST /v2/{instanceId}/{applicationId}/oauth2/token
+//
+// Content-Type: application/x-www-form-urlencoded
+//
+// grant_type=refresh_token
+//
+// &refresh_token={refresh_token}
+//
+// &client_id={client_id}
+//
+// &client_secret={client_secret}
+//
+// ```
+//
+// ### 4. Client Credentials
+//
+// Scenario: This scenario is for server-to-server authentication without user involvement. Example call:
+//
+// ```
+//
+// POST /v2/{instanceId}/{applicationId}/oauth2/token
+//
+// Content-Type: application/x-www-form-urlencoded
+//
+// grant_type=client_credentials
+//
+// &client_id={client_id}
+//
+// &client_secret={client_secret}
+//
+// &scope={scope}
+//
+// ```
+//
+// ### 5. Password
+//
+// Scenario: This scenario uses traditional username and password authentication. Use this method with caution. Example call:
+//
+// ```
+//
+// POST /v2/{instanceId}/{applicationId}/oauth2/token
+//
+// Content-Type: application/x-www-form-urlencoded
+//
+// grant_type=password
+//
+// &username={username}
+//
+// &password={password}
+//
+// &client_id={client_id}
+//
+// &scope={scope}
+//
+// ```
 //
 // @param request - GenerateTokenRequest
 //
@@ -1280,11 +1516,179 @@ func (client *Client) GenerateTokenWithOptions(instanceId *string, applicationId
 
 // Summary:
 //
-// Generates a token for accessing an application in an instance.
+// Generates an access token for an application in a specified IDaaS instance based on credential information.
 //
 // Description:
 //
-// The following authorization types are supported: authorization code, device code, refresh token, and client credentials.
+// The following methods are supported: Authorization Code, Device Flow, Refresh Token, Client Credentials, and Password.
+//
+// ### 1. Authorization Code
+//
+// Scenario: This is the standard OAuth 2.0 authorization code flow, which is suitable for web applications with frontend interaction.
+//
+// Example call:
+//
+// ```
+//
+// POST /v2/{instanceId}/{applicationId}/oauth2/token
+//
+// Content-Type: application/x-www-form-urlencoded
+//
+// grant_type=authorization_code
+//
+// &code={authorization_code}
+//
+// &redirect_uri={redirect_uri}
+//
+// &client_id={client_id}
+//
+// &client_secret={client_secret}
+//
+// ```
+//
+// Parameters:
+//
+// ● code: The authorization code obtained from the authorization endpoint.
+//
+// ● redirect_uri: Must be the same as the redirect_uri that was used to obtain the authorization code.
+//
+// ### 1.1 Authorization Code for public clients
+//
+// Scenario: This scenario is suitable for applications that cannot securely store a secret, such as single-page applications (SPAs) or native applications. In this flow, a client_secret is not required, but you must use the Proof Key for Code Exchange (PKCE) mechanism. Example call:
+//
+// ```
+//
+// POST /v2/{instanceId}/{applicationId}/oauth2/token
+//
+// Content-Type: application/x-www-form-urlencoded
+//
+// grant_type=authorization_code
+//
+// &code={authorization_code}
+//
+// &redirect_uri={redirect_uri}
+//
+// &client_id={client_id}
+//
+// &code_verifier={code_verifier}
+//
+// ```
+//
+// Parameters:
+//
+// ● code_verifier: The code verifier for the PKCE mechanism. The client generates it when initiating an authorization request and uses it to derive the \\`code_challenge\\`. When exchanging for a token, you must submit this value. It must be identical to the value used to generate the \\`code_challenge\\`.
+//
+// Java example for generating a code_verifier and code_challenge:
+//
+// ```java
+//
+// String codeVerifier = Base64.getUrlEncoder().withoutPadding().encodeToString(new SecureRandom().generateSeed(43));
+//
+// String codeChallenge = Base64.getUrlEncoder().withoutPadding().encodeToString(java.security.MessageDigest.getInstance("SHA-256").digest(codeVerifier.getBytes()));
+//
+// ```
+//
+// ### 2. Device Flow
+//
+// Scenario: This scenario is suitable for input-constrained devices, such as TVs and IoT devices. Example call:
+//
+// ```
+//
+// POST /v2/{instanceId}/{applicationId}/oauth2/token
+//
+// Content-Type: application/x-www-form-urlencoded
+//
+// grant_type=urn:ietf:params:oauth:grant-type:device_code
+//
+// &device_code={device_code}
+//
+// &client_id={client_id}
+//
+// &client_secret={client_secret}
+//
+// ```
+//
+// To obtain the device code, first call `/oauth2/device/code` to retrieve the device_code and user_code.
+//
+// ### 2.1 Device Flow for public clients
+//
+// Scenario: This scenario is used when interactive logon is not convenient and the client is a public client. Example call:
+//
+// ```
+//
+// POST /v2/{instanceId}/{applicationId}/oauth2/token
+//
+// Content-Type: application/x-www-form-urlencoded
+//
+// grant_type=urn:ietf:params:oauth:grant-type:device_code
+//
+// &device_code={device_code}
+//
+// &client_id={client_id}
+//
+// ```
+//
+// ### 3. Refresh Token
+//
+// Scenario: This scenario uses a refresh_token to obtain a new access_token. Example call:
+//
+// ```
+//
+// POST /v2/{instanceId}/{applicationId}/oauth2/token
+//
+// Content-Type: application/x-www-form-urlencoded
+//
+// grant_type=refresh_token
+//
+// &refresh_token={refresh_token}
+//
+// &client_id={client_id}
+//
+// &client_secret={client_secret}
+//
+// ```
+//
+// ### 4. Client Credentials
+//
+// Scenario: This scenario is for server-to-server authentication without user involvement. Example call:
+//
+// ```
+//
+// POST /v2/{instanceId}/{applicationId}/oauth2/token
+//
+// Content-Type: application/x-www-form-urlencoded
+//
+// grant_type=client_credentials
+//
+// &client_id={client_id}
+//
+// &client_secret={client_secret}
+//
+// &scope={scope}
+//
+// ```
+//
+// ### 5. Password
+//
+// Scenario: This scenario uses traditional username and password authentication. Use this method with caution. Example call:
+//
+// ```
+//
+// POST /v2/{instanceId}/{applicationId}/oauth2/token
+//
+// Content-Type: application/x-www-form-urlencoded
+//
+// grant_type=password
+//
+// &username={username}
+//
+// &password={password}
+//
+// &client_id={client_id}
+//
+// &scope={scope}
+//
+// ```
 //
 // @param request - GenerateTokenRequest
 //
@@ -1303,7 +1707,7 @@ func (client *Client) GenerateToken(instanceId *string, applicationId *string, r
 
 // Summary:
 //
-// 实例级授权服务器 Token 端点
+// The token endpoint for an instance-level authorization server.
 //
 // @param request - GenerateTokenByAuthorizationServerRequest
 //
@@ -1410,7 +1814,7 @@ func (client *Client) GenerateTokenByAuthorizationServerWithOptions(instanceId *
 
 // Summary:
 //
-// 实例级授权服务器 Token 端点
+// The token endpoint for an instance-level authorization server.
 //
 // @param request - GenerateTokenByAuthorizationServerRequest
 //
@@ -1429,13 +1833,11 @@ func (client *Client) GenerateTokenByAuthorizationServer(instanceId *string, aut
 
 // Summary:
 //
-// Queries the synchronization scope of an application in an instance.
+// The GetApplicationProvisioningScope operation retrieves the synchronization scope of an application in a specific instance.
 //
 // Description:
 //
-// >
-//
-//   - You can go to the Applications page in the IDaaS console to set the synchronization scope. After an application is created, the application has the permission to call this operation by default.
+// > - You can set the synchronization scope in Application Management in the IDaaS console. After you create an application, you have permission to call this API by default.
 //
 // @param request - GetApplicationProvisioningScopeRequest
 //
@@ -1485,13 +1887,11 @@ func (client *Client) GetApplicationProvisioningScopeWithOptions(instanceId *str
 
 // Summary:
 //
-// Queries the synchronization scope of an application in an instance.
+// The GetApplicationProvisioningScope operation retrieves the synchronization scope of an application in a specific instance.
 //
 // Description:
 //
-// >
-//
-//   - You can go to the Applications page in the IDaaS console to set the synchronization scope. After an application is created, the application has the permission to call this operation by default.
+// > - You can set the synchronization scope in Application Management in the IDaaS console. After you create an application, you have permission to call this API by default.
 //
 // @param request - GetApplicationProvisioningScopeRequest
 //
@@ -1510,7 +1910,7 @@ func (client *Client) GetApplicationProvisioningScope(instanceId *string, applic
 
 // Summary:
 //
-// Queries the details of a group.
+// Retrieves the details of a group.
 //
 // @param request - GetGroupRequest
 //
@@ -1560,7 +1960,7 @@ func (client *Client) GetGroupWithOptions(instanceId *string, applicationId *str
 
 // Summary:
 //
-// Queries the details of a group.
+// Retrieves the details of a group.
 //
 // @param request - GetGroupRequest
 //
@@ -1579,7 +1979,82 @@ func (client *Client) GetGroup(instanceId *string, applicationId *string, groupI
 
 // Summary:
 //
-// Queries the information of an organizational unit.
+// Queries the current status and authorization result of an OAuth authorization session.
+//
+// @param request - GetOAuthAuthorizationSessionRequest
+//
+// @param headers - GetOAuthAuthorizationSessionHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOAuthAuthorizationSessionResponse
+func (client *Client) GetOAuthAuthorizationSessionWithOptions(instanceId *string, request *GetOAuthAuthorizationSessionRequest, headers *GetOAuthAuthorizationSessionHeaders, runtime *dara.RuntimeOptions) (_result *GetOAuthAuthorizationSessionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.SessionUri) {
+		body["sessionUri"] = request.SessionUri
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.Authorization) {
+		realHeaders["Authorization"] = dara.String(dara.ToString(dara.StringValue(headers.Authorization)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetOAuthAuthorizationSession"),
+		Version:     dara.String("2022-02-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v2/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/oauthAuthorizationSessions/_/actions/get"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("Anonymous"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetOAuthAuthorizationSessionResponse{}
+	_body, _err := client.DoROARequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the current status and authorization result of an OAuth authorization session.
+//
+// @param request - GetOAuthAuthorizationSessionRequest
+//
+// @return GetOAuthAuthorizationSessionResponse
+func (client *Client) GetOAuthAuthorizationSession(instanceId *string, request *GetOAuthAuthorizationSessionRequest) (_result *GetOAuthAuthorizationSessionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &GetOAuthAuthorizationSessionHeaders{}
+	_result = &GetOAuthAuthorizationSessionResponse{}
+	_body, _err := client.GetOAuthAuthorizationSessionWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the information about an organizational unit.
 //
 // @param request - GetOrganizationalUnitRequest
 //
@@ -1629,7 +2104,7 @@ func (client *Client) GetOrganizationalUnitWithOptions(instanceId *string, appli
 
 // Summary:
 //
-// Queries the information of an organizational unit.
+// Retrieves the information about an organizational unit.
 //
 // @param request - GetOrganizationalUnitRequest
 //
@@ -1731,7 +2206,7 @@ func (client *Client) GetOrganizationalUnitIdByExternalId(instanceId *string, ap
 
 // Summary:
 //
-// Queries the details of an Employee Identity and Access Management (EIAM) account.
+// Retrieves the details of an Employee Identity and Access Management (EIAM) account.
 //
 // @param request - GetUserRequest
 //
@@ -1781,7 +2256,7 @@ func (client *Client) GetUserWithOptions(instanceId *string, applicationId *stri
 
 // Summary:
 //
-// Queries the details of an Employee Identity and Access Management (EIAM) account.
+// Retrieves the details of an Employee Identity and Access Management (EIAM) account.
 //
 // @param request - GetUserRequest
 //
@@ -2108,7 +2583,7 @@ func (client *Client) GetUserIdByUsername(instanceId *string, applicationId *str
 
 // Summary:
 //
-// Queries the information of a user by using the user token.
+// Retrieves the information about a user by using the user token.
 //
 // @param request - GetUserInfoRequest
 //
@@ -2158,7 +2633,7 @@ func (client *Client) GetUserInfoWithOptions(instanceId *string, applicationId *
 
 // Summary:
 //
-// Queries the information of a user by using the user token.
+// Retrieves the information about a user by using the user token.
 //
 // @param request - GetUserInfoRequest
 //
@@ -2177,7 +2652,15 @@ func (client *Client) GetUserInfo(instanceId *string, applicationId *string, req
 
 // Summary:
 //
-// 列举认证令牌。
+// Lists authentication tokens.
+//
+// Description:
+//
+// This API uses an Access Token issued by IDaaS for identity authentication and authorization.
+//
+// Ensure that the Access Token you provide has the Query authentication tokens permission for the built-in Privileged Access Management (PAM) application in IDaaS.
+//
+// > The required scope is `urn:cloud:idaas:pam|authentication_token:read`.
 //
 // @param request - ListAuthenticationTokensRequest
 //
@@ -2253,7 +2736,15 @@ func (client *Client) ListAuthenticationTokensWithOptions(instanceId *string, re
 
 // Summary:
 //
-// 列举认证令牌。
+// Lists authentication tokens.
+//
+// Description:
+//
+// This API uses an Access Token issued by IDaaS for identity authentication and authorization.
+//
+// Ensure that the Access Token you provide has the Query authentication tokens permission for the built-in Privileged Access Management (PAM) application in IDaaS.
+//
+// > The required scope is `urn:cloud:idaas:pam|authentication_token:read`.
 //
 // @param request - ListAuthenticationTokensRequest
 //
@@ -2272,7 +2763,7 @@ func (client *Client) ListAuthenticationTokens(instanceId *string, request *List
 
 // Summary:
 //
-// Queries information about Employee Identity and Access Management (EIAM) groups by page.
+// Retrieves information about Employee Identity and Access Management (EIAM) groups by page.
 //
 // @param request - ListGroupsRequest
 //
@@ -2336,7 +2827,7 @@ func (client *Client) ListGroupsWithOptions(instanceId *string, applicationId *s
 
 // Summary:
 //
-// Queries information about Employee Identity and Access Management (EIAM) groups by page.
+// Retrieves information about Employee Identity and Access Management (EIAM) groups by page.
 //
 // @param request - ListGroupsRequest
 //
@@ -2355,7 +2846,7 @@ func (client *Client) ListGroups(instanceId *string, applicationId *string, requ
 
 // Summary:
 //
-// 获取账户关联组列表
+// Lists the groups that an EIAM user is a member of.
 //
 // @param request - ListGroupsForUserRequest
 //
@@ -2415,7 +2906,7 @@ func (client *Client) ListGroupsForUserWithOptions(instanceId *string, applicati
 
 // Summary:
 //
-// 获取账户关联组列表
+// Lists the groups that an EIAM user is a member of.
 //
 // @param request - ListGroupsForUserRequest
 //
@@ -2434,7 +2925,7 @@ func (client *Client) ListGroupsForUser(instanceId *string, applicationId *strin
 
 // Summary:
 //
-// Queries the information of all the parent organizational units of an organizational unit.
+// Retrieves the information about all the parent organizational units of an organizational unit.
 //
 // @param request - ListOrganizationalUnitParentIdsRequest
 //
@@ -2484,7 +2975,7 @@ func (client *Client) ListOrganizationalUnitParentIdsWithOptions(instanceId *str
 
 // Summary:
 //
-// Queries the information of all the parent organizational units of an organizational unit.
+// Retrieves the information about all the parent organizational units of an organizational unit.
 //
 // @param request - ListOrganizationalUnitParentIdsRequest
 //
@@ -2503,7 +2994,21 @@ func (client *Client) ListOrganizationalUnitParentIds(instanceId *string, applic
 
 // Summary:
 //
-// Queries the information of Employee Identity and Access Management (EIAM) organizational units by page.
+// Performs a paged query to retrieve organization information from EIAM.
+//
+// Description:
+//
+// To retrieve the direct child organizations of the root organization, set the request parameter as follows:
+//
+// ```
+//
+// {
+//
+//	"parentOrganizationalUnitId": "ou_root"
+//
+// }
+//
+// ```
 //
 // @param request - ListOrganizationalUnitsRequest
 //
@@ -2567,7 +3072,21 @@ func (client *Client) ListOrganizationalUnitsWithOptions(instanceId *string, app
 
 // Summary:
 //
-// Queries the information of Employee Identity and Access Management (EIAM) organizational units by page.
+// Performs a paged query to retrieve organization information from EIAM.
+//
+// Description:
+//
+// To retrieve the direct child organizations of the root organization, set the request parameter as follows:
+//
+// ```
+//
+// {
+//
+//	"parentOrganizationalUnitId": "ou_root"
+//
+// }
+//
+// ```
 //
 // @param request - ListOrganizationalUnitsRequest
 //
@@ -2586,7 +3105,7 @@ func (client *Client) ListOrganizationalUnits(instanceId *string, applicationId 
 
 // Summary:
 //
-// Queries the information of Employee Identity and Access Management (EIAM) accounts by page.
+// Performs a paged query for EIAM account information.
 //
 // @param request - ListUsersRequest
 //
@@ -2650,7 +3169,7 @@ func (client *Client) ListUsersWithOptions(instanceId *string, applicationId *st
 
 // Summary:
 //
-// Queries the information of Employee Identity and Access Management (EIAM) accounts by page.
+// Performs a paged query for EIAM account information.
 //
 // @param request - ListUsersRequest
 //
@@ -2748,7 +3267,15 @@ func (client *Client) ListUsersForGroup(instanceId *string, applicationId *strin
 
 // Summary:
 //
-// 获取云角色（CloudAccountRole）的临时访问凭证
+// Retrieves temporary access credentials for a cloud account role (CloudAccountRole).
+//
+// Description:
+//
+// This API authenticates and authorizes requests based on an Access Token issued by IDaaS.
+//
+// Ensure that the Access Token has the "Obtain Cloud Role Access Credential" permission for the IDaaS built-in PAM application (Privileged Access Management).
+//
+// > The corresponding scope is `urn:cloud:idaas:pam|cloud_account_role:obtain_access_credential`.
 //
 // @param request - ObtainCloudAccountRoleAccessCredentialRequest
 //
@@ -2808,7 +3335,15 @@ func (client *Client) ObtainCloudAccountRoleAccessCredentialWithOptions(instance
 
 // Summary:
 //
-// 获取云角色（CloudAccountRole）的临时访问凭证
+// Retrieves temporary access credentials for a cloud account role (CloudAccountRole).
+//
+// Description:
+//
+// This API authenticates and authorizes requests based on an Access Token issued by IDaaS.
+//
+// Ensure that the Access Token has the "Obtain Cloud Role Access Credential" permission for the IDaaS built-in PAM application (Privileged Access Management).
+//
+// > The corresponding scope is `urn:cloud:idaas:pam|cloud_account_role:obtain_access_credential`.
 //
 // @param request - ObtainCloudAccountRoleAccessCredentialRequest
 //
@@ -2827,7 +3362,15 @@ func (client *Client) ObtainCloudAccountRoleAccessCredential(instanceId *string,
 
 // Summary:
 //
-// 获取凭据明文。
+// Retrieves the plaintext of a secret.
+//
+// Description:
+//
+// This API uses an access token from IDaaS for authentication and authorization.
+//
+// The access token must have permissions to obtain static credentials for the built-in privileged access management (PAM) application in IDaaS.
+//
+// > The required scope is `urn:cloud:idaas:pam|credential:obtain`.
 //
 // @param request - ObtainCredentialRequest
 //
@@ -2883,7 +3426,15 @@ func (client *Client) ObtainCredentialWithOptions(instanceId *string, request *O
 
 // Summary:
 //
-// 获取凭据明文。
+// Retrieves the plaintext of a secret.
+//
+// Description:
+//
+// This API uses an access token from IDaaS for authentication and authorization.
+//
+// The access token must have permissions to obtain static credentials for the built-in privileged access management (PAM) application in IDaaS.
+//
+// > The required scope is `urn:cloud:idaas:pam|credential:obtain`.
 //
 // @param request - ObtainCredentialRequest
 //
@@ -2902,7 +3453,15 @@ func (client *Client) ObtainCredential(instanceId *string, request *ObtainCreden
 
 // Summary:
 //
-// 获取JWT认证令牌明文。
+// Obtains a JWT authentication token.
+//
+// Description:
+//
+// This API requires an access token issued by IDaaS for authentication and authorization.
+//
+// The provided access token must have permission to obtain authentication tokens for the built-in privileged access management (PAM) application in IDaaS.
+//
+// > The corresponding scope is `urn:cloud:idaas:pam|authentication_token:obtain`.
 //
 // @param request - ObtainJwtAuthenticationTokenRequest
 //
@@ -2962,7 +3521,15 @@ func (client *Client) ObtainJwtAuthenticationTokenWithOptions(instanceId *string
 
 // Summary:
 //
-// 获取JWT认证令牌明文。
+// Obtains a JWT authentication token.
+//
+// Description:
+//
+// This API requires an access token issued by IDaaS for authentication and authorization.
+//
+// The provided access token must have permission to obtain authentication tokens for the built-in privileged access management (PAM) application in IDaaS.
+//
+// > The corresponding scope is `urn:cloud:idaas:pam|authentication_token:obtain`.
 //
 // @param request - ObtainJwtAuthenticationTokenRequest
 //
@@ -2981,7 +3548,7 @@ func (client *Client) ObtainJwtAuthenticationToken(instanceId *string, request *
 
 // Summary:
 //
-// 使用派生短令牌查询对应的JWT认证令牌详情。
+// Obtain a JWT authentication token using a derived short token.
 //
 // @param request - ObtainJwtAuthenticationTokenByDerivedShortTokenRequest
 //
@@ -3028,7 +3595,7 @@ func (client *Client) ObtainJwtAuthenticationTokenByDerivedShortTokenWithOptions
 
 // Summary:
 //
-// 使用派生短令牌查询对应的JWT认证令牌详情。
+// Obtain a JWT authentication token using a derived short token.
 //
 // @param request - ObtainJwtAuthenticationTokenByDerivedShortTokenRequest
 //
@@ -3320,7 +3887,19 @@ func (client *Client) PatchUser(instanceId *string, applicationId *string, userI
 
 // Summary:
 //
-// 恢复一个认证令牌。
+// Reinstate an authentication token.
+//
+// Description:
+//
+// This API uses an IDaaS-issued Access Token for identity authentication and authorization.
+//
+// Ensure that the Access Token you provide has the Manage authentication tokens permission for the IDaaS built-in Privileged Access Management (PAM) application.
+//
+// > The required scope is `urn:cloud:idaas:pam|authentication_token:manage`.
+//
+//	Notice:
+//
+// Only JWT authentication tokens support this operation.
 //
 // @param request - ReinstateAuthenticationTokenRequest
 //
@@ -3380,7 +3959,19 @@ func (client *Client) ReinstateAuthenticationTokenWithOptions(instanceId *string
 
 // Summary:
 //
-// 恢复一个认证令牌。
+// Reinstate an authentication token.
+//
+// Description:
+//
+// This API uses an IDaaS-issued Access Token for identity authentication and authorization.
+//
+// Ensure that the Access Token you provide has the Manage authentication tokens permission for the IDaaS built-in Privileged Access Management (PAM) application.
+//
+// > The required scope is `urn:cloud:idaas:pam|authentication_token:manage`.
+//
+//	Notice:
+//
+// Only JWT authentication tokens support this operation.
 //
 // @param request - ReinstateAuthenticationTokenRequest
 //
@@ -3399,7 +3990,19 @@ func (client *Client) ReinstateAuthenticationToken(instanceId *string, request *
 
 // Summary:
 //
-// 基于使用者吊销认证令牌。
+// Reinstate an authentication token for a consumer.
+//
+// Description:
+//
+// This API uses an access token issued by IDaaS to perform identity authentication and authorization.
+//
+// Ensure that the provided access token is authorized to access the Manage Authentication Token feature in the IDaaS built-in PAM (Privileged Access Management) application.
+//
+// > The corresponding scope is `urn:cloud:idaas:pam|authentication_token:manage`.
+//
+//	Notice:
+//
+// This operation supports only JWT-type authentication tokens.
 //
 // @param request - ReinstateAuthenticationTokenByConsumerRequest
 //
@@ -3459,7 +4062,19 @@ func (client *Client) ReinstateAuthenticationTokenByConsumerWithOptions(instance
 
 // Summary:
 //
-// 基于使用者吊销认证令牌。
+// Reinstate an authentication token for a consumer.
+//
+// Description:
+//
+// This API uses an access token issued by IDaaS to perform identity authentication and authorization.
+//
+// Ensure that the provided access token is authorized to access the Manage Authentication Token feature in the IDaaS built-in PAM (Privileged Access Management) application.
+//
+// > The corresponding scope is `urn:cloud:idaas:pam|authentication_token:manage`.
+//
+//	Notice:
+//
+// This operation supports only JWT-type authentication tokens.
 //
 // @param request - ReinstateAuthenticationTokenByConsumerRequest
 //
@@ -3478,7 +4093,7 @@ func (client *Client) ReinstateAuthenticationTokenByConsumer(instanceId *string,
 
 // Summary:
 //
-// 将账户从多个组织移除【不支持移除主组织】
+// Removes an EIAM account from one or more EIAM organizational units. The operation succeeds even if the account is not in the specified organizational units.
 //
 // @param request - RemoveUserFromOrganizationalUnitsRequest
 //
@@ -3534,7 +4149,7 @@ func (client *Client) RemoveUserFromOrganizationalUnitsWithOptions(instanceId *s
 
 // Summary:
 //
-// 将账户从多个组织移除【不支持移除主组织】
+// Removes an EIAM account from one or more EIAM organizational units. The operation succeeds even if the account is not in the specified organizational units.
 //
 // @param request - RemoveUserFromOrganizationalUnitsRequest
 //
@@ -3628,7 +4243,19 @@ func (client *Client) RemoveUsersFromGroup(instanceId *string, applicationId *st
 
 // Summary:
 //
-// 吊销一个认证令牌。
+// Revokes an authentication token.
+//
+// Description:
+//
+// This API uses an Access Token issued by IDaaS to perform identity authentication and authorization.
+//
+// Ensure that the Access Token is authorized to access the "Manage Authentication Tokens" feature of the built-in Privileged Access Management (PAM) application in IDaaS.
+//
+// > The corresponding scope is `urn:cloud:idaas:pam|authentication_token:manage`.
+//
+//	Notice:
+//
+// This operation currently supports only JWT authentication tokens.
 //
 // @param request - RevokeAuthenticationTokenRequest
 //
@@ -3688,7 +4315,19 @@ func (client *Client) RevokeAuthenticationTokenWithOptions(instanceId *string, r
 
 // Summary:
 //
-// 吊销一个认证令牌。
+// Revokes an authentication token.
+//
+// Description:
+//
+// This API uses an Access Token issued by IDaaS to perform identity authentication and authorization.
+//
+// Ensure that the Access Token is authorized to access the "Manage Authentication Tokens" feature of the built-in Privileged Access Management (PAM) application in IDaaS.
+//
+// > The corresponding scope is `urn:cloud:idaas:pam|authentication_token:manage`.
+//
+//	Notice:
+//
+// This operation currently supports only JWT authentication tokens.
 //
 // @param request - RevokeAuthenticationTokenRequest
 //
@@ -3707,7 +4346,19 @@ func (client *Client) RevokeAuthenticationToken(instanceId *string, request *Rev
 
 // Summary:
 //
-// 基于使用者吊销认证令牌。
+// Revokes an authentication token for a consumer.
+//
+// Description:
+//
+// This API uses an access token issued by IDaaS to authenticate and authorize requests.
+//
+// Make sure that the access token you provide has the \\"Manage authentication tokens\\" permission for the built-in Privileged Access Management (PAM) application in IDaaS.
+//
+// > The required scope is `urn:cloud:idaas:pam|authentication_token:manage`.
+//
+//	Notice:
+//
+// This operation can revoke only JWT authentication tokens.
 //
 // @param request - RevokeAuthenticationTokenByConsumerRequest
 //
@@ -3767,7 +4418,19 @@ func (client *Client) RevokeAuthenticationTokenByConsumerWithOptions(instanceId 
 
 // Summary:
 //
-// 基于使用者吊销认证令牌。
+// Revokes an authentication token for a consumer.
+//
+// Description:
+//
+// This API uses an access token issued by IDaaS to authenticate and authorize requests.
+//
+// Make sure that the access token you provide has the \\"Manage authentication tokens\\" permission for the built-in Privileged Access Management (PAM) application in IDaaS.
+//
+// > The required scope is `urn:cloud:idaas:pam|authentication_token:manage`.
+//
+//	Notice:
+//
+// This operation can revoke only JWT authentication tokens.
 //
 // @param request - RevokeAuthenticationTokenByConsumerRequest
 //
@@ -3864,7 +4527,7 @@ func (client *Client) RevokeToken(instanceId *string, applicationId *string, req
 
 // Summary:
 //
-// 将指定组织设置为账户主组织，移除旧主组织，加入新主组织。
+// Sets the primary organization for an EIAM account. This operation removes the account from the old primary organization and adds it to the new one.
 //
 // @param request - SetUserPrimaryOrganizationalUnitRequest
 //
@@ -3920,7 +4583,7 @@ func (client *Client) SetUserPrimaryOrganizationalUnitWithOptions(instanceId *st
 
 // Summary:
 //
-// 将指定组织设置为账户主组织，移除旧主组织，加入新主组织。
+// Sets the primary organization for an EIAM account. This operation removes the account from the old primary organization and adds it to the new one.
 //
 // @param request - SetUserPrimaryOrganizationalUnitRequest
 //
@@ -3939,7 +4602,7 @@ func (client *Client) SetUserPrimaryOrganizationalUnit(instanceId *string, appli
 
 // Summary:
 //
-// 更新账户密码
+// Updates the password for a specified EIAM account.
 //
 // @param request - UpdateUserPasswordRequest
 //
@@ -3995,7 +4658,7 @@ func (client *Client) UpdateUserPasswordWithOptions(instanceId *string, applicat
 
 // Summary:
 //
-// 更新账户密码
+// Updates the password for a specified EIAM account.
 //
 // @param request - UpdateUserPasswordRequest
 //
@@ -4014,7 +4677,13 @@ func (client *Client) UpdateUserPassword(instanceId *string, applicationId *stri
 
 // Summary:
 //
-// 校验认证令牌是否有效。
+// Validates an authentication token.
+//
+// Description:
+//
+//	Notice:
+//
+// This operation is supported only for JSON Web Token (JWT) authentication tokens.
 //
 // @param request - ValidateAuthenticationTokenRequest
 //
@@ -4065,7 +4734,13 @@ func (client *Client) ValidateAuthenticationTokenWithOptions(instanceId *string,
 
 // Summary:
 //
-// 校验认证令牌是否有效。
+// Validates an authentication token.
+//
+// Description:
+//
+//	Notice:
+//
+// This operation is supported only for JSON Web Token (JWT) authentication tokens.
 //
 // @param request - ValidateAuthenticationTokenRequest
 //

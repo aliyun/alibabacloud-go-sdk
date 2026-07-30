@@ -182,11 +182,11 @@ type PatchUserRequestCustomFields struct {
 	FieldValue *string `json:"fieldValue,omitempty" xml:"fieldValue,omitempty"`
 	// The operation to be performed on the field. Valid values:
 	//
-	// 	- add
+	// - add
 	//
-	// 	- replace If you leave the value of the extended field empty, the replace operation is converted to an add operation.
+	// - replace If you leave the value of the extended field empty, the replace operation is converted to an add operation.
 	//
-	// 	- remove
+	// - remove
 	//
 	// example:
 	//

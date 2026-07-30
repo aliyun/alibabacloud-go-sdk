@@ -38,53 +38,53 @@ type iCreateUserRequest interface {
 }
 
 type CreateUserRequest struct {
-	// Custom fields
+	// A list of custom fields for the account.
 	CustomFields []*CreateUserRequestCustomFields `json:"customFields,omitempty" xml:"customFields,omitempty" type:"Repeated"`
-	// The description of the account. The description can be up to 256 characters in length.
+	// The account description. The maximum length is 256 characters.
 	//
 	// example:
 	//
-	// test user
+	// 测试账户
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The display name of the account. The display name can be up to 64 characters in length.
+	// The display name. The maximum length is 128 characters.
 	//
 	// example:
 	//
 	// display_name001
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The email address of the user who owns the account.
+	// The email address. The local-part of the address can contain uppercase and lowercase letters, digits, periods (`.`), underscores (`_`), and hyphens (`-`). The maximum length is 128 characters.
 	//
 	// example:
 	//
 	// example@example.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
-	// Indicates whether the email address is verified. This field is required if an email address is specified. If you have no special requirement, set this parameter to true.
+	// Specifies whether the email is verified. This parameter is required if `email` is set. Typically, set this to `true`.
 	//
 	// example:
 	//
 	// true
 	EmailVerified *bool `json:"emailVerified,omitempty" xml:"emailVerified,omitempty"`
-	// The password of the account. For information about the password rules, go to the Create User panel in the Identity as a Service (IDaaS) console.
+	// The account password. For password complexity rules, see the password policy in the IDaaS console.
 	//
 	// example:
 	//
 	// xxxxx
 	Password *string `json:"password,omitempty" xml:"password,omitempty"`
-	// Configure the initial password
+	// The password initialization configuration.
 	PasswordInitializationConfig *CreateUserRequestPasswordInitializationConfig `json:"passwordInitializationConfig,omitempty" xml:"passwordInitializationConfig,omitempty" type:"Struct"`
-	// The mobile number of the user who owns the account.
+	// The account phone number. It must be 6 to 15 digits long.
 	//
 	// example:
 	//
 	// 156xxxxxxx
 	PhoneNumber *string `json:"phoneNumber,omitempty" xml:"phoneNumber,omitempty"`
-	// Indicates whether the mobile number is verified. This field is required if a mobile number is specified. If you have no special requirement, set this parameter to true.
+	// Specifies whether the phone number is verified. This parameter is required if `phoneNumber` is set. Typically, set this to `true`.
 	//
 	// example:
 	//
 	// true
 	PhoneNumberVerified *bool `json:"phoneNumberVerified,omitempty" xml:"phoneNumberVerified,omitempty"`
-	// The country code of the mobile number. For example, the country code of China is 86 without 00 or +. This parameter is required if a mobile number is specified.
+	// The phone region code. For example, the code for the Chinese mainland is `86`. Do not include a `00` prefix or a plus sign (`+`). This parameter is required if `phoneNumber` is set.
 	//
 	// example:
 	//
@@ -98,13 +98,13 @@ type CreateUserRequest struct {
 	//
 	// ou_wovwffm62xifdziem7an7xxxxx
 	PrimaryOrganizationalUnitId *string `json:"primaryOrganizationalUnitId,omitempty" xml:"primaryOrganizationalUnitId,omitempty"`
-	// The external ID of the account. The external ID can be used to map external data to the data of the account in EIAM of Identity as a Service (IDaaS). By default, the external ID is the account ID.
+	// The external user ID, used to associate the account with an external system. The maximum length is 128 characters. If unspecified, it defaults to the account ID.
 	//
 	// example:
 	//
 	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserExternalId *string `json:"userExternalId,omitempty" xml:"userExternalId,omitempty"`
-	// The username of the account.
+	// The username. It can contain letters, digits, and the following special characters: underscore (`_`), period (`.`), at sign (`@`), and hyphen (`-`). The maximum length is 256 characters.
 	//
 	// This parameter is required.
 	//
@@ -258,13 +258,13 @@ func (s *CreateUserRequest) Validate() error {
 }
 
 type CreateUserRequestCustomFields struct {
-	// Field name
+	// The name of the custom field. You can view the field\\"s data type and value range in the IDaaS console.
 	//
 	// example:
 	//
 	// age
 	FieldName *string `json:"fieldName,omitempty" xml:"fieldName,omitempty"`
-	// Filed value
+	// The value of the custom field.
 	//
 	// example:
 	//
@@ -303,25 +303,39 @@ func (s *CreateUserRequestCustomFields) Validate() error {
 }
 
 type CreateUserRequestPasswordInitializationConfig struct {
-	// Password  forced update
+	// The password forced update status. By default, this feature is disabled. Valid values:
+	//
+	// - `enabled`: Enables the feature.
+	//
+	// - `disabled`: Disables the feature.
 	//
 	// example:
 	//
 	// enabled
 	PasswordForcedUpdateStatus *string `json:"passwordForcedUpdateStatus,omitempty" xml:"passwordForcedUpdateStatus,omitempty"`
-	// Password policy
+	// The priority of the password initialization policy. Valid values:
+	//
+	// - `global`: Uses the instance-level password initialization policy and ignores the custom settings in this request. For more information, see the password initialization policy configuration in the IDaaS console.
+	//
+	// - `custom`: Uses the custom password initialization policy defined in this request. This includes settings for forced password updates, the initialization type, and notification channels.
 	//
 	// example:
 	//
 	// global
 	PasswordInitializationPolicyPriority *string `json:"passwordInitializationPolicyPriority,omitempty" xml:"passwordInitializationPolicyPriority,omitempty"`
-	// Password Initialization Type
+	// The password initialization type. Valid values:
+	//
+	// - `random`: A randomly generated password.
 	//
 	// example:
 	//
 	// random
 	PasswordInitializationType *string `json:"passwordInitializationType,omitempty" xml:"passwordInitializationType,omitempty"`
-	// User Notification Channels
+	// The user notification channels. Valid values:
+	//
+	// - `email`: Email
+	//
+	// - `sms`: SMS
 	//
 	// example:
 	//

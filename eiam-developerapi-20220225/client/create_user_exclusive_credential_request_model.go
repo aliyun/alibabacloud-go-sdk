@@ -23,38 +23,61 @@ type iCreateUserExclusiveCredentialRequest interface {
 	GetCredentialType() *string
 	SetDescription(v string) *CreateUserExclusiveCredentialRequest
 	GetDescription() *string
+	SetReturnCiphertext(v bool) *CreateUserExclusiveCredentialRequest
+	GetReturnCiphertext() *bool
 }
 
 type CreateUserExclusiveCredentialRequest struct {
+	// The credential content.
+	//
 	// This parameter is required.
 	CredentialContent    *CreateUserExclusiveCredentialRequestCredentialContent `json:"credentialContent,omitempty" xml:"credentialContent,omitempty" type:"Struct"`
 	CredentialExternalId *string                                                `json:"credentialExternalId,omitempty" xml:"credentialExternalId,omitempty"`
+	// The credential identifier.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// credential_identifier_test
 	CredentialIdentifier *string `json:"credentialIdentifier,omitempty" xml:"credentialIdentifier,omitempty"`
+	// The credential name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// credential_name
 	CredentialName *string `json:"credentialName,omitempty" xml:"credentialName,omitempty"`
+	// The scenarios label of the credential. Valid values:
+	//
+	// - llm: large language model.
+	//
+	// - saas: third-party SaaS service.
+	//
 	// example:
 	//
 	// llm
 	CredentialScenarioLabel *string `json:"credentialScenarioLabel,omitempty" xml:"credentialScenarioLabel,omitempty"`
+	// The credential type. Valid values:
+	//
+	// - api_key: API Key authentication credential.
+	//
+	// - oauth_client: OAuth client authentication credential.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// api_key
 	CredentialType *string `json:"credentialType,omitempty" xml:"credentialType,omitempty"`
+	// The credential description.
+	//
 	// example:
 	//
 	// credential_description
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	Description      *string `json:"description,omitempty" xml:"description,omitempty"`
+	ReturnCiphertext *bool   `json:"returnCiphertext,omitempty" xml:"returnCiphertext,omitempty"`
 }
 
 func (s CreateUserExclusiveCredentialRequest) String() string {
@@ -93,6 +116,10 @@ func (s *CreateUserExclusiveCredentialRequest) GetDescription() *string {
 	return s.Description
 }
 
+func (s *CreateUserExclusiveCredentialRequest) GetReturnCiphertext() *bool {
+	return s.ReturnCiphertext
+}
+
 func (s *CreateUserExclusiveCredentialRequest) SetCredentialContent(v *CreateUserExclusiveCredentialRequestCredentialContent) *CreateUserExclusiveCredentialRequest {
 	s.CredentialContent = v
 	return s
@@ -128,6 +155,11 @@ func (s *CreateUserExclusiveCredentialRequest) SetDescription(v string) *CreateU
 	return s
 }
 
+func (s *CreateUserExclusiveCredentialRequest) SetReturnCiphertext(v bool) *CreateUserExclusiveCredentialRequest {
+	s.ReturnCiphertext = &v
+	return s
+}
+
 func (s *CreateUserExclusiveCredentialRequest) Validate() error {
 	if s.CredentialContent != nil {
 		if err := s.CredentialContent.Validate(); err != nil {
@@ -138,6 +170,7 @@ func (s *CreateUserExclusiveCredentialRequest) Validate() error {
 }
 
 type CreateUserExclusiveCredentialRequestCredentialContent struct {
+	// The credential content for the API Key credential type.
 	ApiKeyContent *CreateUserExclusiveCredentialRequestCredentialContentApiKeyContent `json:"apiKeyContent,omitempty" xml:"apiKeyContent,omitempty" type:"Struct"`
 }
 
@@ -168,6 +201,8 @@ func (s *CreateUserExclusiveCredentialRequestCredentialContent) Validate() error
 }
 
 type CreateUserExclusiveCredentialRequestCredentialContentApiKeyContent struct {
+	// The value of the API Key.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -17,7 +17,7 @@ type iListOrganizationalUnitsHeaders interface {
 
 type ListOrganizationalUnitsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+	// The authentication information. The value must be in the format of \\`Bearer ${access_token}\\`. Example: \\`Bearer ATxxxx\\`.
 	//
 	// This parameter is required.
 	//

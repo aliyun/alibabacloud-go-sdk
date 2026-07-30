@@ -17,6 +17,10 @@ type iObtainJwtAuthenticationTokenHeaders interface {
 
 type ObtainJwtAuthenticationTokenHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The authentication credential. The format is `Bearer ${access_token}`.
+	//
+	// > Use an access token issued by IDaaS.
+	//
 	// This parameter is required.
 	//
 	// example:

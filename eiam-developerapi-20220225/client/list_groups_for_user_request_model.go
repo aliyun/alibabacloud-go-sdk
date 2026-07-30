@@ -16,11 +16,13 @@ type iListGroupsForUserRequest interface {
 }
 
 type ListGroupsForUserRequest struct {
+	// The number of entries per page. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// nextToken
+	// The token to retrieve the next page of results. Leave this parameter empty to query from the first page.
 	//
 	// example:
 	//

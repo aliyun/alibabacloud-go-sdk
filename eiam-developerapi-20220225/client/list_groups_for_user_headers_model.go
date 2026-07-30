@@ -17,6 +17,12 @@ type iListGroupsForUserHeaders interface {
 
 type ListGroupsForUserHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The authentication information.
+	//
+	// Format: Bearer ${access_token}.
+	//
+	// Example: Bearer ATxxxx.
+	//
 	// This parameter is required.
 	//
 	// example:

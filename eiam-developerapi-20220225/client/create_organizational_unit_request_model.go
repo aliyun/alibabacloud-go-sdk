@@ -24,7 +24,7 @@ type CreateOrganizationalUnitRequest struct {
 	//
 	// example:
 	//
-	// test organizational unit
+	// 测试组织
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The external ID of the organizational unit. The external ID can be used to map external data to the data of the organizational unit in Employee Identity and Access Management (EIAM) of Identity as a Service (IDaaS). By default, the external ID is the organizational unit ID.
 	//

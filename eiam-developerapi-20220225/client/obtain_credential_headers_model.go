@@ -17,6 +17,10 @@ type iObtainCredentialHeaders interface {
 
 type ObtainCredentialHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// Authentication information. The format is `Bearer ${access_token}`.
+	//
+	// > Use an access token issued by IDaaS.
+	//
 	// This parameter is required.
 	//
 	// example:

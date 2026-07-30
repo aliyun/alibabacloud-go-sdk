@@ -17,6 +17,10 @@ type iAddUserToOrganizationalUnitsHeaders interface {
 
 type AddUserToOrganizationalUnitsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The authentication information.
+	//
+	// Format: Bearer ${access_token}.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -30,13 +30,13 @@ type GenerateTokenResponseBody struct {
 	//
 	// ATxxx
 	AccessToken *string `json:"access_token,omitempty" xml:"access_token,omitempty"`
-	// The time when the token expires. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The expiration time. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1653288641
 	ExpiresAt *int64 `json:"expires_at,omitempty" xml:"expires_at,omitempty"`
-	// The remaining validity period of the token. Unit: seconds.
+	// The validity period of the token in seconds.
 	//
 	// example:
 	//
@@ -54,7 +54,11 @@ type GenerateTokenResponseBody struct {
 	//
 	// RTxxx
 	RefreshToken *string `json:"refresh_token,omitempty" xml:"refresh_token,omitempty"`
-	// The type of the token. Valid values: Basic Bearer
+	// The token type. Valid values:
+	//
+	// Basic - Basic type
+	//
+	// Bearer - Bearer type
 	//
 	// example:
 	//
