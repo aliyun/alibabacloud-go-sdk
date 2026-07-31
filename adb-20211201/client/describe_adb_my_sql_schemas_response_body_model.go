@@ -20,11 +20,11 @@ type iDescribeAdbMySqlSchemasResponseBody interface {
 }
 
 type DescribeAdbMySqlSchemasResponseBody struct {
-	// The returned message.
+	// The additional information about the call result. Valid values:
 	//
-	// 	- If the request was successful, a **success*	- message is returned.
+	// - If the request was successful, **Success*	- is returned.
 	//
-	// 	- If the request failed, an error message is returned.
+	// - If the request failed, a specific error code is returned.
 	//
 	// example:
 	//
@@ -36,13 +36,13 @@ type DescribeAdbMySqlSchemasResponseBody struct {
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The queried databases.
+	// The list of databases.
 	Schemas []*string `json:"Schemas,omitempty" xml:"Schemas,omitempty" type:"Repeated"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The call was successful.
 	//
-	// 	- **false**
+	// - **false**: The call failed.
 	//
 	// example:
 	//

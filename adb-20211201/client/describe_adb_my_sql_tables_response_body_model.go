@@ -22,11 +22,11 @@ type iDescribeAdbMySqlTablesResponseBody interface {
 }
 
 type DescribeAdbMySqlTablesResponseBody struct {
-	// Additional information about the call. Valid values:
+	// The additional information about the call result. Valid values:
 	//
-	// - **Success*	- is returned if the request is successful.
+	// - If the request was successful, **Success*	- is returned.
 	//
-	// - A specific error code is returned if the request fails.
+	// - If the request failed, a specific error code is returned.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type DescribeAdbMySqlTablesResponseBody struct {
 	//
 	// 7A7D49E3-5585-5DF8-B62C-75C46B4991DC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type DescribeAdbMySqlTablesResponseBody struct {
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Information about the tables.
+	// The table information.
 	Tables []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
 }
 

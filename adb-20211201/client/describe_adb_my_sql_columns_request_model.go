@@ -9,6 +9,8 @@ type iDescribeAdbMySqlColumnsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCatalog(v string) *DescribeAdbMySqlColumnsRequest
+	GetCatalog() *string
 	SetDBClusterId(v string) *DescribeAdbMySqlColumnsRequest
 	GetDBClusterId() *string
 	SetRegionId(v string) *DescribeAdbMySqlColumnsRequest
@@ -20,9 +22,14 @@ type iDescribeAdbMySqlColumnsRequest interface {
 }
 
 type DescribeAdbMySqlColumnsRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+	// if can be null:
+	// true
+	Catalog *string `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
+	// <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
+	// <props="intl">The ID of the Data Lakehouse Edition cluster.
+	//
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the cluster IDs of all clusters in a specified region.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +39,7 @@ type DescribeAdbMySqlColumnsRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The region ID.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the region ID of a specified cluster.
 	//
 	// This parameter is required.
 	//
@@ -40,13 +47,13 @@ type DescribeAdbMySqlColumnsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
 	// adb_demo
 	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
-	// The name of the table.
+	// The table name.
 	//
 	// example:
 	//
@@ -60,6 +67,10 @@ func (s DescribeAdbMySqlColumnsRequest) String() string {
 
 func (s DescribeAdbMySqlColumnsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeAdbMySqlColumnsRequest) GetCatalog() *string {
+	return s.Catalog
 }
 
 func (s *DescribeAdbMySqlColumnsRequest) GetDBClusterId() *string {
@@ -76,6 +87,11 @@ func (s *DescribeAdbMySqlColumnsRequest) GetSchema() *string {
 
 func (s *DescribeAdbMySqlColumnsRequest) GetTableName() *string {
 	return s.TableName
+}
+
+func (s *DescribeAdbMySqlColumnsRequest) SetCatalog(v string) *DescribeAdbMySqlColumnsRequest {
+	s.Catalog = &v
+	return s
 }
 
 func (s *DescribeAdbMySqlColumnsRequest) SetDBClusterId(v string) *DescribeAdbMySqlColumnsRequest {

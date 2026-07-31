@@ -32,41 +32,41 @@ type DescribeAdbMySqlColumnsResponseBody struct {
 	//
 	// 1
 	ColumnCount *int32 `json:"ColumnCount,omitempty" xml:"ColumnCount,omitempty"`
-	// Details of the columns.
+	// The column information.
 	Columns []*DescribeAdbMySqlColumnsResponseBodyColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
-	// The message returned for the operation. Valid values:
+	// The additional information about the call result. Valid values:
 	//
-	// 	- **Success*	- is returned if the operation is successful.
+	// - If the request was successful, **Success*	- is returned.
 	//
-	// 	- An error message is returned if the operation fails.
+	// - If the request failed, a specific error code is returned.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// A9F013CD-0222-595E-8157-445969B97F03
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
 	// adb_demo
 	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
-	// Indicates whether the operation is successful. Valid values:
+	// Indicates whether the call was successful.
 	//
-	// 	- **true**: The operation is successful.
+	// - **true**: The call was successful.
 	//
-	// 	- **false**: The operation fails.
+	// - **false**: The call failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The name of the table.
+	// The table name.
 	//
 	// example:
 	//
@@ -159,13 +159,13 @@ func (s *DescribeAdbMySqlColumnsResponseBody) Validate() error {
 }
 
 type DescribeAdbMySqlColumnsResponseBodyColumns struct {
-	// The comments of the column.
+	// The column comment.
 	//
 	// example:
 	//
 	// test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The name of the column.
+	// The column name.
 	//
 	// example:
 	//

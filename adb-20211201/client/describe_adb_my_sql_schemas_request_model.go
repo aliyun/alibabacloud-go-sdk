@@ -9,6 +9,8 @@ type iDescribeAdbMySqlSchemasRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCatalog(v string) *DescribeAdbMySqlSchemasRequest
+	GetCatalog() *string
 	SetDBClusterId(v string) *DescribeAdbMySqlSchemasRequest
 	GetDBClusterId() *string
 	SetRegionId(v string) *DescribeAdbMySqlSchemasRequest
@@ -16,7 +18,12 @@ type iDescribeAdbMySqlSchemasRequest interface {
 }
 
 type DescribeAdbMySqlSchemasRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+	// if can be null:
+	// true
+	Catalog *string `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
+	// <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+	//
+	// <props="intl">The ID of the Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +33,7 @@ type DescribeAdbMySqlSchemasRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The region ID.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the region ID of a specified cluster.
 	//
 	// This parameter is required.
 	//
@@ -44,12 +51,21 @@ func (s DescribeAdbMySqlSchemasRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeAdbMySqlSchemasRequest) GetCatalog() *string {
+	return s.Catalog
+}
+
 func (s *DescribeAdbMySqlSchemasRequest) GetDBClusterId() *string {
 	return s.DBClusterId
 }
 
 func (s *DescribeAdbMySqlSchemasRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *DescribeAdbMySqlSchemasRequest) SetCatalog(v string) *DescribeAdbMySqlSchemasRequest {
+	s.Catalog = &v
+	return s
 }
 
 func (s *DescribeAdbMySqlSchemasRequest) SetDBClusterId(v string) *DescribeAdbMySqlSchemasRequest {

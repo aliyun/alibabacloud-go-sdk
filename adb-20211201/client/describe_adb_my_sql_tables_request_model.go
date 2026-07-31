@@ -9,6 +9,8 @@ type iDescribeAdbMySqlTablesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCatalog(v string) *DescribeAdbMySqlTablesRequest
+	GetCatalog() *string
 	SetDBClusterId(v string) *DescribeAdbMySqlTablesRequest
 	GetDBClusterId() *string
 	SetRegionId(v string) *DescribeAdbMySqlTablesRequest
@@ -18,6 +20,9 @@ type iDescribeAdbMySqlTablesRequest interface {
 }
 
 type DescribeAdbMySqlTablesRequest struct {
+	// if can be null:
+	// true
+	Catalog *string `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
 	// <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
 	//
 	// <props="intl">The ID of the Data Lakehouse Edition cluster.
@@ -30,7 +35,7 @@ type DescribeAdbMySqlTablesRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The region ID.
 	//
-	// > Call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the region ID of a cluster.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the region ID of a specified cluster.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +43,7 @@ type DescribeAdbMySqlTablesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// if can be null:
 	// false
@@ -57,6 +62,10 @@ func (s DescribeAdbMySqlTablesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeAdbMySqlTablesRequest) GetCatalog() *string {
+	return s.Catalog
+}
+
 func (s *DescribeAdbMySqlTablesRequest) GetDBClusterId() *string {
 	return s.DBClusterId
 }
@@ -67,6 +76,11 @@ func (s *DescribeAdbMySqlTablesRequest) GetRegionId() *string {
 
 func (s *DescribeAdbMySqlTablesRequest) GetSchema() *string {
 	return s.Schema
+}
+
+func (s *DescribeAdbMySqlTablesRequest) SetCatalog(v string) *DescribeAdbMySqlTablesRequest {
+	s.Catalog = &v
+	return s
 }
 
 func (s *DescribeAdbMySqlTablesRequest) SetDBClusterId(v string) *DescribeAdbMySqlTablesRequest {

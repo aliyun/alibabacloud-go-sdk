@@ -24,7 +24,7 @@ type iCreateApsSlsADBJobResponseBody interface {
 }
 
 type CreateApsSlsADBJobResponseBody struct {
-	// The HTTP status code or the error code.
+	// The API status or POP error code.
 	//
 	// example:
 	//
@@ -36,17 +36,17 @@ type CreateApsSlsADBJobResponseBody struct {
 	//
 	// -
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The response code. The status code 200 indicates that the request was successful.
+	// The HTTP status code returned. A value of 200 indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message. Valid values:
+	// The message returned for the call. Valid values:
 	//
-	// 	- If the request was successful, a success message is returned.
+	// - If the request was successful, **Success*	- is returned.
 	//
-	// 	- If the request failed, an error message is returned.
+	// - If the request failed, the specific error message is returned.
 	//
 	// example:
 	//
@@ -58,11 +58,11 @@ type CreateApsSlsADBJobResponseBody struct {
 	//
 	// ******-3EEC-******-9F06-******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the dry run succeeds. Valid values:
+	// The result of the precheck. Valid values:
 	//
-	// 	- **true**
+	// - **success**: The check passed.
 	//
-	// 	- **false**
+	// - **false**: The check failed.
 	//
 	// example:
 	//
