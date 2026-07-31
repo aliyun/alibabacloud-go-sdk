@@ -2414,6 +2414,47 @@ func (client *Client) DeleteVirtualResourceWithContext(ctx context.Context, Clus
 
 // Summary:
 //
+// Queries the details of a cloud native artifact.
+//
+// @param request - DescribeArtifactRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeArtifactResponse
+func (client *Client) DescribeArtifactWithContext(ctx context.Context, ClusterId *string, ArtifactName *string, request *DescribeArtifactRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeArtifactResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeArtifact"),
+		Version:     dara.String("2021-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/artifacts/" + dara.PercentEncode(dara.StringValue(ClusterId)) + "/" + dara.PercentEncode(dara.StringValue(ArtifactName))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeArtifactResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries details about the configurations of a stress testing task.
 //
 // @param request - DescribeBenchmarkTaskRequest
@@ -2502,7 +2543,7 @@ func (client *Client) DescribeBenchmarkTaskReportWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the details of a private gateway.
+// Queries the details of a dedicated gateway.
 //
 // @param request - DescribeGatewayRequest
 //

@@ -54,37 +54,37 @@ type DescribeGatewayResponseBody struct {
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The time when the private gateway was created. The time is in Coordinated Universal Time (UTC).
+	// The time when the dedicated gateway was created. The time is in UTC.
 	//
 	// example:
 	//
 	// 2020-05-19T14:19:42Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the self-managed cluster.
+	// The self-managed cluster ID.
 	//
 	// example:
 	//
 	// c935eadf284c14c2da57a2a13ad6******
 	ExternalClusterId *string `json:"ExternalClusterId,omitempty" xml:"ExternalClusterId,omitempty"`
-	// The ID of the private gateway.
+	// The dedicated gateway ID.
 	//
 	// example:
 	//
 	// gw-1uhcqmsc7x22******
 	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
-	// The alias of the private gateway.
+	// The alias of the dedicated gateway.
 	//
 	// example:
 	//
 	// mygateway1
 	GatewayName *string `json:"GatewayName,omitempty" xml:"GatewayName,omitempty"`
-	// The instance type of the private gateway.
+	// The instance type used by the dedicated gateway.
 	//
 	// example:
 	//
 	// 2c4g
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The public endpoint.
+	// The public network access domain name.
 	//
 	// example:
 	//
@@ -96,27 +96,27 @@ type DescribeGatewayResponseBody struct {
 	//
 	// true
 	InternetEnabled *bool `json:"InternetEnabled,omitempty" xml:"InternetEnabled,omitempty"`
-	// The status of public network access.
+	// The status of public network access enablement or disablement.
 	//
 	// example:
 	//
 	// Running
 	InternetStatus *string `json:"InternetStatus,omitempty" xml:"InternetStatus,omitempty"`
-	// The private endpoint.
+	// The internal access domain name.
 	//
 	// example:
 	//
 	// gw-1uhcqmsc7x22******-1801786532******-vpc.cn-wulanchabu.pai-eas.aliyuncs.com
 	IntranetDomain  *string `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
 	IntranetEnabled *bool   `json:"IntranetEnabled,omitempty" xml:"IntranetEnabled,omitempty"`
-	// Indicates whether the gateway is the default private gateway.
+	// Indicates whether the dedicated gateway is the default one.
 	//
 	// example:
 	//
 	// true
 	IsDefault *bool                                `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 	Labels    []*DescribeGatewayResponseBodyLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The number of private gateway nodes.
+	// The number of nodes in the dedicated gateway.
 	//
 	// example:
 	//
@@ -128,19 +128,19 @@ type DescribeGatewayResponseBody struct {
 	//
 	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether HTTP to HTTPS redirection is enabled.
+	// Indicates whether HTTP-to-HTTPS redirection is enabled.
 	//
 	// example:
 	//
 	// true
 	SSLRedirectionEnabled *bool `json:"SSLRedirectionEnabled,omitempty" xml:"SSLRedirectionEnabled,omitempty"`
-	// The status of the private gateway.
+	// The status of the dedicated gateway.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the private gateway was last updated. The time is in UTC.
+	// The time when the dedicated gateway was last updated. The time is in UTC.
 	//
 	// example:
 	//
