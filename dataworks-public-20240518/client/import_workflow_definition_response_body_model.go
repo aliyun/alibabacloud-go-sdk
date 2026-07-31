@@ -74,7 +74,7 @@ type ImportWorkflowDefinitionResponseBodyAsyncJob struct {
 	//
 	// 1706581425000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The error message returned when the asynchronous task fails.
+	// The error message when the asynchronous task fails.
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type ImportWorkflowDefinitionResponseBodyAsyncJob struct {
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	// The content that the asynchronous task is expected to return.
 	//
-	// > This field currently contains the ID of the workflow created by the asynchronous task.
+	// > This field currently stores the ID of the workflow created in the asynchronous task.
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type ImportWorkflowDefinitionResponseBodyAsyncJob struct {
 	//
 	// - Create: creates a resource.
 	//
-	// - Cancel: cancels a creation job.
+	// - Cancel: cancels a creation task.
 	//
 	// example:
 	//

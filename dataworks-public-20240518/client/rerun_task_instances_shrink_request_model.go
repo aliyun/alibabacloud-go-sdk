@@ -25,8 +25,13 @@ type RerunTaskInstancesShrinkRequest struct {
 	// this is a comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The list of node instance IDs.
-	IdsShrink       *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
-	UseLatestConfig *bool   `json:"UseLatestConfig,omitempty" xml:"UseLatestConfig,omitempty"`
+	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// Specifies whether to rerun instances with the latest configuration.
+	//
+	// example:
+	//
+	// false
+	UseLatestConfig *bool `json:"UseLatestConfig,omitempty" xml:"UseLatestConfig,omitempty"`
 }
 
 func (s RerunTaskInstancesShrinkRequest) String() string {

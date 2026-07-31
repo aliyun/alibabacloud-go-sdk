@@ -16,12 +16,20 @@ type iDeleteMetaEntityDefRequest interface {
 }
 
 type DeleteMetaEntityDefRequest struct {
+	// The entity type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// custom_entity-customer_api
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// Specifies whether to force delete the entity definition. Default value: false. Valid values:
+	//
+	// - true: Automatically deletes all entity objects created under this entity type.
+	//
+	// - false: Checks whether entity objects exist under this entity type. If objects exist, the deletion is failed.
+	//
 	// example:
 	//
 	// true

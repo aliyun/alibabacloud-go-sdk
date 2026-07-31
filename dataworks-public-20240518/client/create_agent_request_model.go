@@ -9,8 +9,8 @@ type iCreateAgentRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetCallableAgents(v []*string) *CreateAgentRequest
-	GetCallableAgents() []*string
+	SetCallableAgents(v []*CreateAgentRequestCallableAgents) *CreateAgentRequest
+	GetCallableAgents() []*CreateAgentRequestCallableAgents
 	SetDescription(v string) *CreateAgentRequest
 	GetDescription() *string
 	SetDisplayName(v string) *CreateAgentRequest
@@ -21,12 +21,12 @@ type iCreateAgentRequest interface {
 	GetModel() map[string]interface{}
 	SetName(v string) *CreateAgentRequest
 	GetName() *string
-	SetSkills(v []*string) *CreateAgentRequest
-	GetSkills() []*string
+	SetSkills(v []*CreateAgentRequestSkills) *CreateAgentRequest
+	GetSkills() []*CreateAgentRequestSkills
 	SetSystemPrompt(v string) *CreateAgentRequest
 	GetSystemPrompt() *string
-	SetTools(v []*string) *CreateAgentRequest
-	GetTools() []*string
+	SetTools(v []*CreateAgentRequestTools) *CreateAgentRequest
+	GetTools() []*CreateAgentRequestTools
 	SetVisibility(v string) *CreateAgentRequest
 	GetVisibility() *string
 	SetVisibilityScope(v *CreateAgentRequestVisibilityScope) *CreateAgentRequest
@@ -34,25 +34,25 @@ type iCreateAgentRequest interface {
 }
 
 type CreateAgentRequest struct {
-	// The list of sub-Agents that can be called by this Agent.
+	// The list of child Agents that can be called by this Agent.
 	//
 	// example:
 	//
 	// -
-	CallableAgents []*string `json:"CallableAgents,omitempty" xml:"CallableAgents,omitempty" type:"Repeated"`
+	CallableAgents []*CreateAgentRequestCallableAgents `json:"CallableAgents,omitempty" xml:"CallableAgents,omitempty" type:"Repeated"`
 	// The description of the Agent.
 	//
 	// example:
 	//
-	// 数据分析助手
+	// Data analytics assistant
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The display name of the Agent.
 	//
 	// example:
 	//
-	// 我的助手
+	// MyAssistant.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// Extended metadata (key-value pairs).
+	// The extended metadata (key-value pairs).
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type CreateAgentRequest struct {
 	//
 	//         }
 	Model map[string]interface{} `json:"Model,omitempty" xml:"Model,omitempty"`
-	// The name of the Agent. It must be unique under the current account.
+	// The Agent name, which must be unique within the current account.
 	//
 	// This parameter is required.
 	//
@@ -81,19 +81,19 @@ type CreateAgentRequest struct {
 	// example:
 	//
 	// -
-	Skills []*string `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
+	Skills []*CreateAgentRequestSkills `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
 	// The system prompt.
 	//
 	// example:
 	//
-	// 你是一个数据分析助手。
+	// You are a data analytics assistant.
 	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
 	// The list of tools.
 	//
 	// example:
 	//
 	// -
-	Tools []*string `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
+	Tools []*CreateAgentRequestTools `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
 	// The visibility level.<br>
 	//
 	// `TENANT`: Visible within the account.<br>
@@ -106,7 +106,7 @@ type CreateAgentRequest struct {
 	//
 	// TENANT
 	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
-	// The visibility scope. The corresponding field is selected based on Visibility.
+	// The visibility scope. The corresponding field is determined by the Visibility parameter.
 	VisibilityScope *CreateAgentRequestVisibilityScope `json:"VisibilityScope,omitempty" xml:"VisibilityScope,omitempty" type:"Struct"`
 }
 
@@ -118,7 +118,7 @@ func (s CreateAgentRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateAgentRequest) GetCallableAgents() []*string {
+func (s *CreateAgentRequest) GetCallableAgents() []*CreateAgentRequestCallableAgents {
 	return s.CallableAgents
 }
 
@@ -142,7 +142,7 @@ func (s *CreateAgentRequest) GetName() *string {
 	return s.Name
 }
 
-func (s *CreateAgentRequest) GetSkills() []*string {
+func (s *CreateAgentRequest) GetSkills() []*CreateAgentRequestSkills {
 	return s.Skills
 }
 
@@ -150,7 +150,7 @@ func (s *CreateAgentRequest) GetSystemPrompt() *string {
 	return s.SystemPrompt
 }
 
-func (s *CreateAgentRequest) GetTools() []*string {
+func (s *CreateAgentRequest) GetTools() []*CreateAgentRequestTools {
 	return s.Tools
 }
 
@@ -162,7 +162,7 @@ func (s *CreateAgentRequest) GetVisibilityScope() *CreateAgentRequestVisibilityS
 	return s.VisibilityScope
 }
 
-func (s *CreateAgentRequest) SetCallableAgents(v []*string) *CreateAgentRequest {
+func (s *CreateAgentRequest) SetCallableAgents(v []*CreateAgentRequestCallableAgents) *CreateAgentRequest {
 	s.CallableAgents = v
 	return s
 }
@@ -192,7 +192,7 @@ func (s *CreateAgentRequest) SetName(v string) *CreateAgentRequest {
 	return s
 }
 
-func (s *CreateAgentRequest) SetSkills(v []*string) *CreateAgentRequest {
+func (s *CreateAgentRequest) SetSkills(v []*CreateAgentRequestSkills) *CreateAgentRequest {
 	s.Skills = v
 	return s
 }
@@ -202,7 +202,7 @@ func (s *CreateAgentRequest) SetSystemPrompt(v string) *CreateAgentRequest {
 	return s
 }
 
-func (s *CreateAgentRequest) SetTools(v []*string) *CreateAgentRequest {
+func (s *CreateAgentRequest) SetTools(v []*CreateAgentRequestTools) *CreateAgentRequest {
 	s.Tools = v
 	return s
 }
@@ -218,6 +218,33 @@ func (s *CreateAgentRequest) SetVisibilityScope(v *CreateAgentRequestVisibilityS
 }
 
 func (s *CreateAgentRequest) Validate() error {
+	if s.CallableAgents != nil {
+		for _, item := range s.CallableAgents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Skills != nil {
+		for _, item := range s.Skills {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tools != nil {
+		for _, item := range s.Tools {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.VisibilityScope != nil {
 		if err := s.VisibilityScope.Validate(); err != nil {
 			return err
@@ -226,10 +253,100 @@ func (s *CreateAgentRequest) Validate() error {
 	return nil
 }
 
+type CreateAgentRequestCallableAgents struct {
+	// The Agent name.
+	//
+	// example:
+	//
+	// agent-1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s CreateAgentRequestCallableAgents) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateAgentRequestCallableAgents) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAgentRequestCallableAgents) GetName() *string {
+	return s.Name
+}
+
+func (s *CreateAgentRequestCallableAgents) SetName(v string) *CreateAgentRequestCallableAgents {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateAgentRequestCallableAgents) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateAgentRequestSkills struct {
+	// The skill name.
+	//
+	// example:
+	//
+	// skill-1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s CreateAgentRequestSkills) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateAgentRequestSkills) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAgentRequestSkills) GetName() *string {
+	return s.Name
+}
+
+func (s *CreateAgentRequestSkills) SetName(v string) *CreateAgentRequestSkills {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateAgentRequestSkills) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateAgentRequestTools struct {
+	// The McpServer name.
+	//
+	// example:
+	//
+	// server-1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s CreateAgentRequestTools) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateAgentRequestTools) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAgentRequestTools) GetName() *string {
+	return s.Name
+}
+
+func (s *CreateAgentRequestTools) SetName(v string) *CreateAgentRequestTools {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateAgentRequestTools) Validate() error {
+	return dara.Validate(s)
+}
+
 type CreateAgentRequestVisibilityScope struct {
-	// The list of visible project IDs. Takes effect when Visibility is `PROJECT`.
+	// The list of project IDs that have visibility. This parameter takes effect when Visibility is set to `PROJECT`.
 	ProjectIds []*string `json:"ProjectIds,omitempty" xml:"ProjectIds,omitempty" type:"Repeated"`
-	// The list of visible user IDs. Takes effect when Visibility is `USER`.
+	// The list of user IDs that have visibility. This parameter takes effect when Visibility is set to `USER`.
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 

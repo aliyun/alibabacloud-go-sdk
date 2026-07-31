@@ -28,13 +28,13 @@ type iPromptAgentSessionResponseBody interface {
 }
 
 type PromptAgentSessionResponseBody struct {
-	// The error information returned in the SSE frame. The response content conforms to the open-source Agent Client Protocol (ACP) specification. For more information, see https\\://agentclientprotocol.com/protocol/prompt-turn
+	// The SSE frame error message. The returned content conforms to the open-source Agent Client Protocol (ACP) specification. For more information, visit: https://agentclientprotocol.com/protocol/prompt-turn.
 	//
 	// example:
 	//
 	// {"code": 400, "errorCode": "0x50000000001", "message": "not exist session", "data": null}
 	Error interface{} `json:"Error,omitempty" xml:"Error,omitempty"`
-	// The ID passed in by the caller. The value is returned as-is in the response.
+	// The ID passed by the requester. The value is returned as-is.
 	//
 	// example:
 	//
@@ -46,13 +46,13 @@ type PromptAgentSessionResponseBody struct {
 	//
 	// 2.0
 	Jsonrpc *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
-	// The SSE method. The response content conforms to the open-source Agent Client Protocol (ACP) specification. For more information, see https\\://agentclientprotocol.com/protocol/prompt-turn
+	// The SSE method. The returned content conforms to the open-source Agent Client Protocol (ACP) specification. For more information, visit: https://agentclientprotocol.com/protocol/prompt-turn.
 	//
 	// example:
 	//
 	// session/update
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// The SSE params. The response content conforms to the open-source Agent Client Protocol (ACP) specification. For more information, see https\\://agentclientprotocol.com/protocol/prompt-turn
+	// The SSE params. The returned content conforms to the open-source Agent Client Protocol (ACP) specification. For more information, visit: https://agentclientprotocol.com/protocol/prompt-turn.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type PromptAgentSessionResponseBody struct {
 	//
 	// D5D70885-7CC7-594A-80C7-2EF1B00FFB4B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The SSE frame result set. The response content conforms to the open-source Agent Client Protocol (ACP) specification. For more information, see https\\://agentclientprotocol.com/protocol/prompt-turn
+	// The SSE frame result set. The returned content conforms to the open-source Agent Client Protocol (ACP) specification. For more information, visit: https://agentclientprotocol.com/protocol/prompt-turn.
 	//
 	// example:
 	//

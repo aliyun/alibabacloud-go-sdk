@@ -16,11 +16,14 @@ type iCreateSkillResponseBody interface {
 }
 
 type CreateSkillResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 824F80BA-1778-5D8A-BAFF-668A4D9C4CC7
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Skill     *CreateSkillResponseBodySkill `json:"Skill,omitempty" xml:"Skill,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// -
+	Skill *CreateSkillResponseBodySkill `json:"Skill,omitempty" xml:"Skill,omitempty" type:"Struct"`
 }
 
 func (s CreateSkillResponseBody) String() string {
@@ -59,42 +62,59 @@ func (s *CreateSkillResponseBody) Validate() error {
 }
 
 type CreateSkillResponseBodySkill struct {
+	// The SKILL.md body content.
+	//
 	// example:
 	//
 	// -
 	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	// The creator ID.
+	//
 	// example:
 	//
 	// 123456
 	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// The Skill description.
+	//
 	// example:
 	//
 	// 数据分析技能
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The creation time, in millisecond-level UNIX timestamp.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 1780555634000
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The last modification time, in millisecond-level UNIX timestamp.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 12345678901
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The ID of the user who last modified the Skill.
+	//
 	// example:
 	//
 	// 123456
 	ModifierId *string `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
+	// The Skill name.
+	//
 	// example:
 	//
 	// my-skill
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The visibility level.
+	//
 	// example:
 	//
 	// TENANT
-	Visibility      *string                                      `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+	// The visibility scope.
 	VisibilityScope *CreateSkillResponseBodySkillVisibilityScope `json:"VisibilityScope,omitempty" xml:"VisibilityScope,omitempty" type:"Struct"`
 }
 
@@ -197,8 +217,10 @@ func (s *CreateSkillResponseBodySkill) Validate() error {
 }
 
 type CreateSkillResponseBodySkillVisibilityScope struct {
+	// The list of visible project IDs.
 	ProjectIds []*string `json:"ProjectIds,omitempty" xml:"ProjectIds,omitempty" type:"Repeated"`
-	UserIds    []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
+	// The list of visible user IDs. This parameter takes effect only when Visibility is set to `USER`.
+	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 
 func (s CreateSkillResponseBodySkillVisibilityScope) String() string {

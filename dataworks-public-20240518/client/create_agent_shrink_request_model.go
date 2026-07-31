@@ -34,7 +34,7 @@ type iCreateAgentShrinkRequest interface {
 }
 
 type CreateAgentShrinkRequest struct {
-	// The list of sub-Agents that can be called by this Agent.
+	// The list of child Agents that can be called by this Agent.
 	//
 	// example:
 	//
@@ -44,15 +44,15 @@ type CreateAgentShrinkRequest struct {
 	//
 	// example:
 	//
-	// 数据分析助手
+	// Data analytics assistant
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The display name of the Agent.
 	//
 	// example:
 	//
-	// 我的助手
+	// MyAssistant.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// Extended metadata (key-value pairs).
+	// The extended metadata (key-value pairs).
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type CreateAgentShrinkRequest struct {
 	//
 	//         }
 	ModelShrink *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// The name of the Agent. It must be unique under the current account.
+	// The Agent name, which must be unique within the current account.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type CreateAgentShrinkRequest struct {
 	//
 	// example:
 	//
-	// 你是一个数据分析助手。
+	// You are a data analytics assistant.
 	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
 	// The list of tools.
 	//
@@ -106,7 +106,7 @@ type CreateAgentShrinkRequest struct {
 	//
 	// TENANT
 	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
-	// The visibility scope. The corresponding field is selected based on Visibility.
+	// The visibility scope. The corresponding field is determined by the Visibility parameter.
 	VisibilityScopeShrink *string `json:"VisibilityScope,omitempty" xml:"VisibilityScope,omitempty"`
 }
 

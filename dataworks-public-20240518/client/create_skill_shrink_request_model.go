@@ -28,36 +28,57 @@ type iCreateSkillShrinkRequest interface {
 }
 
 type CreateSkillShrinkRequest struct {
+	// The **downloadable URL (HTTP/HTTPS) of the bundle.zip file**. This parameter is mutually exclusive with SkillMdOverride.
+	//
 	// example:
 	//
 	// https://example.com/skill.zip
 	BundleUrl *string `json:"BundleUrl,omitempty" xml:"BundleUrl,omitempty"`
+	// The **Skill description**.
+	//
 	// example:
 	//
 	// 数据分析技能
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The extension metadata in key-value pairs.
+	//
 	// example:
 	//
 	// {"appId":"APP_CWJMV36CT9SAFW1QEHX7"}
 	ExtraShrink *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// The **Skill name**, which must be unique within the current account.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// my-skill
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The SKILL.md body content. This parameter is mutually exclusive with BundleUrl. If no bundle is provided, use this field to create a lightweight Skill that contains only a SKILL.md file.
+	//
 	// example:
 	//
 	// -
 	SkillMdOverride *string `json:"SkillMdOverride,omitempty" xml:"SkillMdOverride,omitempty"`
+	// The **version note**.
+	//
 	// example:
 	//
 	// 初版
 	VersionNote *string `json:"VersionNote,omitempty" xml:"VersionNote,omitempty"`
+	// The **visibility level**. Valid values:
+	//
+	// - TENANT: Visible within the account.
+	//
+	// - PROJECT: Visible to specified projects.
+	//
+	// - USER: Visible to specified users.
+	//
 	// example:
 	//
 	// TENANT
-	Visibility            *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+	// The visibility scope. The corresponding field is determined by the Visibility parameter.
 	VisibilityScopeShrink *string `json:"VisibilityScope,omitempty" xml:"VisibilityScope,omitempty"`
 }
 

@@ -18,7 +18,7 @@ type iPromptAgentSessionRequest interface {
 }
 
 type PromptAgentSessionRequest struct {
-	// The ID passed in by the caller. The value is returned as-is in the response.
+	// The ID passed by the requester. The value is returned as-is.
 	//
 	// example:
 	//
@@ -79,11 +79,13 @@ func (s *PromptAgentSessionRequest) Validate() error {
 }
 
 type PromptAgentSessionRequestParams struct {
-	// The extended metadata.
+	// The extended meta information.
+	//
+	// 	Notice: If the Agent bound to the specified session is named dataworks_ai_assistant_agent (AI Assistant Service), provide the instance ID of the AI Assistant Service in the Context.agent.instanceId field of the extended meta information.
 	Meta *PromptAgentSessionRequestParamsMeta `json:"Meta,omitempty" xml:"Meta,omitempty" type:"Struct"`
-	// The array of user message content blocks. For more information, see https\\://agentclientprotocol.com/protocol/content
+	// The array of user message content blocks. For more information, visit: https://agentclientprotocol.com/protocol/content.
 	Prompt []*PromptAgentSessionRequestParamsPrompt `json:"Prompt,omitempty" xml:"Prompt,omitempty" type:"Repeated"`
-	// The ID of the target session. If the session does not exist, an SSE error frame is returned.
+	// The target session ID. If the session does not exist, an SSE error frame is returned.
 	//
 	// example:
 	//
@@ -145,7 +147,7 @@ func (s *PromptAgentSessionRequestParams) Validate() error {
 }
 
 type PromptAgentSessionRequestParamsMeta struct {
-	// A Map-type value. In custom agent scenarios, you can use this parameter to replace placeholder parameters.
+	// A Map type. In custom Agent scenarios, some placeholder parameters can be replaced through this value.
 	//
 	// example:
 	//
@@ -181,55 +183,55 @@ func (s *PromptAgentSessionRequestParamsMeta) Validate() error {
 }
 
 type PromptAgentSessionRequestParamsPrompt struct {
-	// The description of the file.
+	// The file description.
 	//
 	// example:
 	//
-	// Sales_Order_Details.csv
+	// Effective when Type=resource_link. Example: SalesOrderDetails.csv.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The prompt metadata extended by DataWorks.
+	// The DataWorks extended prompt meta information.
 	Meta *PromptAgentSessionRequestParamsPromptMeta `json:"Meta,omitempty" xml:"Meta,omitempty" type:"Struct"`
 	// The MIME type of the file.
 	//
 	// example:
 	//
-	// text/csv‌
+	// Effective when Type=resource_link. Example: text/csv.
 	MimeType *string `json:"MimeType,omitempty" xml:"MimeType,omitempty"`
 	// The file name.
 	//
 	// example:
 	//
-	// xxx.csv
+	// Effective when Type=resource_link. Example: xxx.csv.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The size of the file. Unit: bytes.
 	//
 	// example:
 	//
-	// 1231231
+	// Effective when Type=resource_link. Example: 1231231
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
 	// **The text content.**
 	//
 	// example:
 	//
-	// Sales in the last 7 days
+	// Effective when Type=text. Example: Sales amount in the last 7 days.
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	// The title of the file.
 	//
 	// example:
 	//
-	// Sales_Order_Details.csv
+	// Effective when Type=resource_link. Example: SalesOrderDetails.csv.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// **The content block type.**
 	//
 	// example:
 	//
-	// text
+	// Currently supported: text, resource_link.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The URI of the file.
 	//
 	// example:
 	//
-	// oss://${bucket}/${ossKey}
+	// Effective when Type=resource_link. Example: oss://${bucket}/${ossKey}
 	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
@@ -332,7 +334,7 @@ func (s *PromptAgentSessionRequestParamsPrompt) Validate() error {
 }
 
 type PromptAgentSessionRequestParamsPromptMeta struct {
-	// Specifies whether to hide the prompt from the user. For example, if a user asks "Sales amount in the last 7 days" in a chat dialog, the calling system may use RAG to retrieve relevant business domain knowledge and append it to the agent context before calling the API. If you do not want to display this supplemental information to the user, set this parameter to true.
+	// Specifies whether to hide this prompt from the user. For example, in a chat dialog box, the user asks a question such as "Sales amount in the last 7 days". Before calling the OpenAPI, the calling system retrieves some business domain knowledge through RAG that needs to be added to the Agent context but should not be displayed to the user. In this case, set this value to true.
 	//
 	// example:
 	//

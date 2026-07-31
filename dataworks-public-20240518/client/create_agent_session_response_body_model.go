@@ -18,7 +18,7 @@ type iCreateAgentSessionResponseBody interface {
 type CreateAgentSessionResponseBody struct {
 	// The JSON-RPC response.
 	JsonRpcResponse *CreateAgentSessionResponseBodyJsonRpcResponse `json:"JsonRpcResponse,omitempty" xml:"JsonRpcResponse,omitempty" type:"Struct"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
@@ -62,19 +62,19 @@ func (s *CreateAgentSessionResponseBody) Validate() error {
 }
 
 type CreateAgentSessionResponseBodyJsonRpcResponse struct {
-	// The request ID provided by the client. This ID is returned in the response without modification.
+	// The request ID passed by the caller. The value is returned as-is.
 	//
 	// example:
 	//
 	// 1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The JSON-RPC version. The value is fixed at `2.0`.
+	// The JSON-RPC version. Fixed value: 2.0.
 	//
 	// example:
 	//
 	// 2.0
 	Jsonrpc *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
-	// The business data. This field is `null` if an error occurs.
+	// The business data. The value is null if an error occurs.
 	Result *CreateAgentSessionResponseBodyJsonRpcResponseResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 

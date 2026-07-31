@@ -22,25 +22,25 @@ type iListDataQualityTemplatesRequest interface {
 }
 
 type ListDataQualityTemplatesRequest struct {
-	// The directory path to which the data quality template belongs.
+	// The catalog path to which the data quality template belongs.
 	//
 	// example:
 	//
 	// /timeliness/ods_layer
 	Catalog *string `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
-	// Fuzzy match for the template rule name.
+	// The template rule name for fuzzy match.
 	//
 	// example:
 	//
 	// table_rows
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of records per page. Default value: 10.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page number of the results. Default value: 1.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//

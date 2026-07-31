@@ -25,8 +25,13 @@ type RerunTaskInstancesRequest struct {
 	// this is a comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The list of node instance IDs.
-	Ids             []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
-	UseLatestConfig *bool    `json:"UseLatestConfig,omitempty" xml:"UseLatestConfig,omitempty"`
+	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	// Specifies whether to rerun instances with the latest configuration.
+	//
+	// example:
+	//
+	// false
+	UseLatestConfig *bool `json:"UseLatestConfig,omitempty" xml:"UseLatestConfig,omitempty"`
 }
 
 func (s RerunTaskInstancesRequest) String() string {

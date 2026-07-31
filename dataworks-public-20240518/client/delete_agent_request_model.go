@@ -14,6 +14,8 @@ type iDeleteAgentRequest interface {
 }
 
 type DeleteAgentRequest struct {
+	// The name of the Agent to delete.
+	//
 	// This parameter is required.
 	//
 	// example:

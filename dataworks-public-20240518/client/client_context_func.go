@@ -732,21 +732,21 @@ func (client *Client) CloneDataSourceWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// # Create Agent
+// Creates an Agent.
 //
 // Description:
 //
-// ## Request Description
+// ## Operation description
 //
-// - **Agent Name**: Must be unique under the current account.
+// - **Agent name**: Must be unique within the current account.
 //
-// - **Model Configuration**: An optional parameter used to specify the model used by the Agent and its related settings.
+// - **Model configuration**: An optional parameter that specifies the model used by the Agent and its related settings.
 //
-// - **Visibility Level**: Defines who can access the Agent. Supports visibility within the account, to specified projects, or to specific users.
+// - **Visibility level**: Defines who can access the Agent. Supported levels include account-wide, project-specific, or user-specific visibility.
 //
-// - **Visibility Scope**: When `PROJECT` or `USER` is selected as the visibility level, the specific project ID or user ID list must be further specified.
+// - **Visibility scope**: When you set the visibility level to `PROJECT` or `USER`, you must specify the list of project IDs or user IDs.
 //
-// - **Other Parameters**: Items such as display name and description are optional and can be filled in based on actual needs.
+// - **Other parameters**: Parameters such as display name and description are optional. Set them as needed.
 //
 // @param tmpReq - CreateAgentRequest
 //
@@ -856,19 +856,25 @@ func (client *Client) CreateAgentWithContext(ctx context.Context, tmpReq *Create
 
 // Summary:
 //
-// Creates a new agent session and returns a session ID.
+// Creates a new agent session and returns the session ID.
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// - This API creates a new agent session.
+// - This operation creates a new agent session.
 //
-// - You must specify the agent name to bind to the session using the `_meta.agent.agentName` parameter.
+// - Use `_meta.agent.agentName` to specify the bound agent name. This parameter is required.
 //
-// - You can specify a session source identifier in the `_meta.config.sessionSource` parameter. This allows you to search for sessions by source later.
+//   - dataworks_data_agent: DataWorks built-in agent — Data Agent, which provides intelligent data development AI capabilities covering the entire workflow of data integration, development, O&M, governance, and analytics.
 //
-// - You can add session tags using the `_meta.config.sessionTags[].sessionTagCode` parameter.
+//   - dataworks_chatbi_agent: DataWorks built-in agent — ChatBI, which uses natural language processing and intelligent analytics technologies to automate the entire analysis workflow from requirement parsing, data extraction, and automatic code generation to visualization report output through conversational interaction.
+//
+//   - dataworks_ai_assistant_agent: DataWorks built-in agent — AI Assistant Service, which is a DataWorks enterprise-grade dedicated AI assistant built on open source frameworks such as OpenClaw and Hermes Agent.
+//
+// - Use `_meta.config.sessionSource` to pass through a session source identifier for subsequent retrieval by source.
+//
+// - Use `_meta.config.sessionTags[].sessionTagCode` to pass in session tags.
 //
 // @param tmpReq - CreateAgentSessionRequest
 //
@@ -2468,7 +2474,7 @@ func (client *Client) CreateDatasetVersionWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Creates a file in DataStudio. You cannot call this operation to create Data Integration nodes.
+// Creates a file in DataStudio. This operation does not support creating Data Integration nodes.
 //
 // @param request - CreateFileRequest
 //
@@ -2565,6 +2571,10 @@ func (client *Client) CreateFileWithContext(ctx context.Context, request *Create
 
 	if !dara.IsNil(request.InputParameters) {
 		body["InputParameters"] = request.InputParameters
+	}
+
+	if !dara.IsNil(request.OutputList) {
+		body["OutputList"] = request.OutputList
 	}
 
 	if !dara.IsNil(request.OutputParameters) {
@@ -4076,17 +4086,99 @@ func (client *Client) CreateSecurityStrategyWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 创建 Skill
+// Saves a reusable semantic task definition. If you use a single-file source, apply for and complete the file upload first. After creation, call RunSemanticJob with the returned Name.
 //
 // Description:
 //
-// ## 请求说明
+// Creates a semantic task definition.
 //
-// - `SkillMdOverride` 与 `BundleUrl` 参数二选一，必须提供其中之一。
+// @param tmpReq - CreateSemanticJobRequest
 //
-// - `Visibility` 可设置为 `TENANT`、`PROJECT` 或 `USER`，分别表示账号内可见、指定项目可见或指定用户可见。
+// @param runtime - runtime options for this request RuntimeOptions
 //
-// - 当 `Visibility` 设置为 `PROJECT` 时，需要通过 `VisibilityScope.ProjectIds` 指定可见的项目 ID 列表；当设置为 `USER` 时，则需通过 `VisibilityScope.UserIds` 指定可见的用户 ID 列表。
+// @return CreateSemanticJobResponse
+func (client *Client) CreateSemanticJobWithContext(ctx context.Context, tmpReq *CreateSemanticJobRequest, runtime *dara.RuntimeOptions) (_result *CreateSemanticJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateSemanticJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ReferenceFileIds) {
+		request.ReferenceFileIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ReferenceFileIds, dara.String("ReferenceFileIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ReferenceFileUris) {
+		request.ReferenceFileUrisShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ReferenceFileUris, dara.String("ReferenceFileUris"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Source) {
+		request.SourceShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Source, dara.String("Source"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.ReferenceFileIdsShrink) {
+		body["ReferenceFileIds"] = request.ReferenceFileIdsShrink
+	}
+
+	if !dara.IsNil(request.ReferenceFileUrisShrink) {
+		body["ReferenceFileUris"] = request.ReferenceFileUrisShrink
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		body["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.SourceShrink) {
+		body["Source"] = request.SourceShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateSemanticJob"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateSemanticJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a new Skill in DataWorks.
+//
+// Description:
+//
+// ## Request description
+//
+// - You must provide either SkillMdOverride or BundleUrl. One of the two parameters is required.
+//
+// - Visibility can be set to `TENANT`, `PROJECT`, or `USER`, which indicate visibility within the account, visibility to specified projects, or visibility to specified users, respectively.
+//
+// - When Visibility is set to `PROJECT`, specify the list of visible project IDs by using VisibilityScope.ProjectIds. When Visibility is set to `USER`, specify the list of visible user IDs by using VisibilityScope.UserIds.
 //
 // @param tmpReq - CreateSkillRequest
 //
@@ -4424,13 +4516,13 @@ func (client *Client) CreateWorkflowInstancesWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 删除 Agent
+// Deletes an Agent.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// 该 API 用于从 DataWorks 中删除指定名称的 Agent。调用此接口时，必须提供要删除的 Agent 的名称。
+// This API operation deletes an Agent with the specified name from DataWorks. When calling this operation, you must provide the name of the Agent to delete.
 //
 // @param request - DeleteAgentRequest
 //
@@ -5730,11 +5822,11 @@ func (client *Client) DeleteMetaCollectionWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 删除自定义实体定义
+// Deletes a metadata entity definition, including custom entity types and extension table types.
 //
 // Description:
 //
-// 需要购买 DataWorks 专业版及以上版本才能使用。
+// DataWorks Professional Edition or a more advanced edition is required.
 //
 // @param request - DeleteMetaEntityDefRequest
 //
@@ -6342,6 +6434,54 @@ func (client *Client) DeleteSecurityStrategyWithContext(ctx context.Context, req
 
 // Summary:
 //
+// Deletes a task definition by the Name of a created task. If the task is running, call KillSemanticJob with the ExecutorJobId of that run and confirm the stop before deletion.
+//
+// Description:
+//
+// Operation description for deleting a semantic task.
+//
+// @param request - DeleteSemanticJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSemanticJobResponse
+func (client *Client) DeleteSemanticJobWithContext(ctx context.Context, request *DeleteSemanticJobRequest, runtime *dara.RuntimeOptions) (_result *DeleteSemanticJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteSemanticJob"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteSemanticJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Delete Skill
 //
 // Description:
@@ -6844,6 +6984,58 @@ func (client *Client) DissociateProjectFromResourceGroupWithContext(ctx context.
 		BodyType:    dara.String("json"),
 	}
 	_result = &DissociateProjectFromResourceGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Returns the download URL of artifacts by node name and an optional run ID after execution completes. If JobRunId is not specified, the result of the latest run of the node is returned.
+//
+// Description:
+//
+// Operation description for retrieving the download URL of semantic task results.
+//
+// @param request - DownloadSemanticResultsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DownloadSemanticResultsResponse
+func (client *Client) DownloadSemanticResultsWithContext(ctx context.Context, request *DownloadSemanticResultsRequest, runtime *dara.RuntimeOptions) (_result *DownloadSemanticResultsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.JobName) {
+		body["JobName"] = request.JobName
+	}
+
+	if !dara.IsNil(request.JobRunId) {
+		body["JobRunId"] = request.JobRunId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DownloadSemanticResults"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DownloadSemanticResultsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -9900,6 +10092,110 @@ func (client *Client) GetSecurityStrategyWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// Queries the executor status and runtime configuration by using the ExecutorJobId returned by RunSemanticJob or ListSemanticJobRuns.
+//
+// Description:
+//
+// Operation description for querying semantic job run details.
+//
+// @param request - GetSemanticJobDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSemanticJobDetailResponse
+func (client *Client) GetSemanticJobDetailWithContext(ctx context.Context, request *GetSemanticJobDetailRequest, runtime *dara.RuntimeOptions) (_result *GetSemanticJobDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ExecutorJobId) {
+		query["ExecutorJobId"] = request.ExecutorJobId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSemanticJobDetail"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSemanticJobDetailResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries execution logs by using the ExecutorJobId returned by RunSemanticJob or ListSemanticJobRuns. The current POP contract exposes only the task and workspace identifiers and returns default log segments.
+//
+// Description:
+//
+// Operation description for querying semantic job run logs.
+//
+// @param request - GetSemanticJobLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSemanticJobLogResponse
+func (client *Client) GetSemanticJobLogWithContext(ctx context.Context, request *GetSemanticJobLogRequest, runtime *dara.RuntimeOptions) (_result *GetSemanticJobLogResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ExecutorJobId) {
+		query["ExecutorJobId"] = request.ExecutorJobId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSemanticJobLog"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSemanticJobLogResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the details of a specified Skill by name, including the body of the SKILL.md file and the bundle\\"s download link.
 //
 // Description:
@@ -10378,15 +10674,15 @@ func (client *Client) ImportCertificateWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Imports a workflow node defined by FlowSpec and its child nodes into DataStudio.
+// Imports a workflow node defined by FlowSpec and its internal child nodes into DataStudio.
 //
 // Description:
 //
 //	Notice:
 //
-// - This operation does not support importing multiple workflows. If more than one workflow is defined in the FlowSpec, all workflows except the first one are ignored.
+// - This operation does not support importing multiple workflows. If more than one workflow is defined in the FlowSpec, all workflows after the first one are ignored.
 //
-// - This is an asynchronous operation. The response returns an asynchronous task object. Call GetJobStatus to query the execution status of the task.
+// - This is an asynchronous operation. Calling this operation returns an asynchronous task object. To query the execution status of the task, call GetJobStatus.
 //
 // @param request - ImportWorkflowDefinitionRequest
 //
@@ -10428,6 +10724,62 @@ func (client *Client) ImportWorkflowDefinitionWithContext(ctx context.Context, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &ImportWorkflowDefinitionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Stops a specified run by using the ExecutorJobId returned by RunSemanticJob or ListSemanticJobRuns. A successful call only indicates that the stop request has been accepted. Query the final status by calling GetSemanticJobDetail.
+//
+// Description:
+//
+// Operation description for stopping a semantic job run.
+//
+// @param request - KillSemanticJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return KillSemanticJobResponse
+func (client *Client) KillSemanticJobWithContext(ctx context.Context, request *KillSemanticJobRequest, runtime *dara.RuntimeOptions) (_result *KillSemanticJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ExecutorJobId) {
+		body["ExecutorJobId"] = request.ExecutorJobId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RetryTimes) {
+		body["RetryTimes"] = request.RetryTimes
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("KillSemanticJob"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &KillSemanticJobResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -11978,11 +12330,11 @@ func (client *Client) ListDataQualityScansWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the list of data quality rule templates in a project.
+// Queries the list of data quality rule templates in a specified project.
 //
 // Description:
 //
-// DataWorks Basic Edition or a higher edition is required.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - ListDataQualityTemplatesRequest
 //
@@ -14958,6 +15310,114 @@ func (client *Client) ListSecurityStrategiesWithContext(ctx context.Context, req
 
 // Summary:
 //
+// Queries the run records of a created node by its Name with paging. The JobRunId in each record is active for retrieving the results of a specific run, and the ExecutorJobId is active for getting details, logs, or stopping the run.
+//
+// Description:
+//
+// Queries the run records of a semantic job.
+//
+// @param request - ListSemanticJobRunsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSemanticJobRunsResponse
+func (client *Client) ListSemanticJobRunsWithContext(ctx context.Context, request *ListSemanticJobRunsRequest, runtime *dara.RuntimeOptions) (_result *ListSemanticJobRunsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.JobName) {
+		body["JobName"] = request.JobName
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSemanticJobRuns"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSemanticJobRunsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries semantics node definitions of the current tenant by paging. The Name, ProjectId, and Source fields in the list items can be used for running/deleting nodes, querying run details, and verifying input scope, respectively.
+//
+// Description:
+//
+// Queries the list of semantic task definitions.
+//
+// @param request - ListSemanticJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSemanticJobsResponse
+func (client *Client) ListSemanticJobsWithContext(ctx context.Context, request *ListSemanticJobsRequest, runtime *dara.RuntimeOptions) (_result *ListSemanticJobsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSemanticJobs"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSemanticJobsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Lists the Skills in your account.
 //
 // Description:
@@ -16103,27 +16563,27 @@ func (client *Client) PreviewDatasetVersionWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Sends a prompt to an existing session and streams the agent response.
+// Sends a user prompt to an existing session and returns the Agent response in streaming mode.
 //
 // Description:
 //
-// ## Request
+// ## Operation description
 //
-// - This API sends a user prompt to a specified session ID and streams the agent\\"s response over SSE (Server-Sent Events).
+// - This API sends a user prompt to a specified session ID and accepts the Agent response in SSE (Server-Sent Events) streaming mode.
 //
-// - The response may include message chunks, thought process, and tool calling status updates.
+// - The response may include message fragments, thinking procedures, tool calling status updates, and other information.
 //
-// - If the specified session does not exist, the API returns a 400 error in an SSE error frame.
+// - If the specified session does not exist, a 400 fault is returned through an SSE error frame.
 //
-// - The `stopReason` field indicates why the agent ended the turn.
+// - The `stopReason` field indicates why the Agent stopped the current conversation turn.
 //
-// - You can use multiple types of content blocks in the prompt, such as text and OSS file download links.
+// - Multiple types of content blocks are supported as prompt input, such as text and OSS file download links.
 //
-// - You can provide additional metadata in the `Meta` parameter to pass more context to the server.
+// - You can optionally provide additional meta information `Meta` to pass more context to the server.
 //
-// - The response content conforms to the open-source Agent Client Protocol (ACP) specification. For more information, see https\\://agentclientprotocol.com
+// - The returned content conforms to the open-source Agent Client Protocol (ACP) specification. For more information, visit: https://agentclientprotocol.com
 //
-// - \\*\\*Review the billing methods and pricing for Data Agent before you use this API\\*\\*: https\\://help.aliyun.com/zh/dataworks/dataworks-data-agent-agent-billing
+// - **Before invoking this API, make sure you fully understand the billing methods and pricing of the Data Agent product**: https://www.alibabacloud.com/help/en/dataworks/dataworks-data-agent-agent-billing
 //
 // @param tmpReq - PromptAgentSessionRequest
 //
@@ -16138,27 +16598,27 @@ func (client *Client) PromptAgentSessionWithSSECtx(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Sends a prompt to an existing session and streams the agent response.
+// Sends a user prompt to an existing session and returns the Agent response in streaming mode.
 //
 // Description:
 //
-// ## Request
+// ## Operation description
 //
-// - This API sends a user prompt to a specified session ID and streams the agent\\"s response over SSE (Server-Sent Events).
+// - This API sends a user prompt to a specified session ID and accepts the Agent response in SSE (Server-Sent Events) streaming mode.
 //
-// - The response may include message chunks, thought process, and tool calling status updates.
+// - The response may include message fragments, thinking procedures, tool calling status updates, and other information.
 //
-// - If the specified session does not exist, the API returns a 400 error in an SSE error frame.
+// - If the specified session does not exist, a 400 fault is returned through an SSE error frame.
 //
-// - The `stopReason` field indicates why the agent ended the turn.
+// - The `stopReason` field indicates why the Agent stopped the current conversation turn.
 //
-// - You can use multiple types of content blocks in the prompt, such as text and OSS file download links.
+// - Multiple types of content blocks are supported as prompt input, such as text and OSS file download links.
 //
-// - You can provide additional metadata in the `Meta` parameter to pass more context to the server.
+// - You can optionally provide additional meta information `Meta` to pass more context to the server.
 //
-// - The response content conforms to the open-source Agent Client Protocol (ACP) specification. For more information, see https\\://agentclientprotocol.com
+// - The returned content conforms to the open-source Agent Client Protocol (ACP) specification. For more information, visit: https://agentclientprotocol.com
 //
-// - \\*\\*Review the billing methods and pricing for Data Agent before you use this API\\*\\*: https\\://help.aliyun.com/zh/dataworks/dataworks-data-agent-agent-billing
+// - **Before invoking this API, make sure you fully understand the billing methods and pricing of the Data Agent product**: https://www.alibabacloud.com/help/en/dataworks/dataworks-data-agent-agent-billing
 //
 // @param tmpReq - PromptAgentSessionRequest
 //
@@ -16860,6 +17320,54 @@ func (client *Client) RollbackParameterWithContext(ctx context.Context, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &RollbackParameterResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits a semantic job for execution by its Name and returns the run identifier and executor identifier. A successful call indicates that the job has been submitted, not that the semantic model results have been generated.
+//
+// Description:
+//
+// *Before using this operation, make sure that you fully understand the [billing method and pricing](https://www.alibabacloud.com/help/en/dataworks/dataworks-data-agent-agent-billing) of model calls used by semantic building.**
+//
+// @param request - RunSemanticJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunSemanticJobResponse
+func (client *Client) RunSemanticJobWithContext(ctx context.Context, request *RunSemanticJobRequest, runtime *dara.RuntimeOptions) (_result *RunSemanticJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunSemanticJob"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RunSemanticJobResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -20212,6 +20720,94 @@ func (client *Client) UpdateSecurityStrategyWithContext(ctx context.Context, tmp
 
 // Summary:
 //
+// Updates a specified Skill and generates a new version.
+//
+// Description:
+//
+// ## Request description
+//
+// This API allows you to update an existing Skill and create a new version based on the current highest version or a specified version. Fields not provided in the request retain their original values. You can update the Skill content by providing either `SkillMdOverride` or `BundleUrl`. You can also set additional information such as the visibility scope.
+//
+// @param tmpReq - UpdateSkillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSkillResponse
+func (client *Client) UpdateSkillWithContext(ctx context.Context, tmpReq *UpdateSkillRequest, runtime *dara.RuntimeOptions) (_result *UpdateSkillResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateSkillShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Extra) {
+		request.ExtraShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Extra, dara.String("Extra"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.VisibilityScope) {
+		request.VisibilityScopeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VisibilityScope, dara.String("VisibilityScope"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BundleUrl) {
+		body["BundleUrl"] = request.BundleUrl
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ExpectedVersion) {
+		body["ExpectedVersion"] = request.ExpectedVersion
+	}
+
+	if !dara.IsNil(request.ExtraShrink) {
+		body["Extra"] = request.ExtraShrink
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.SkillMdOverride) {
+		body["SkillMdOverride"] = request.SkillMdOverride
+	}
+
+	if !dara.IsNil(request.VersionNote) {
+		body["VersionNote"] = request.VersionNote
+	}
+
+	if !dara.IsNil(request.VisibilityScopeShrink) {
+		body["VisibilityScope"] = request.VisibilityScopeShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateSkill"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateSkillResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates the business metadata for a data table in the data map. You can update only the table\\"s Readme and custom attributes.
 //
 // Description:
@@ -20736,6 +21332,62 @@ func (client *Client) UpdateWorkflowDefinitionWithContext(ctx context.Context, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateWorkflowDefinitionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Requests a temporary OSS PUT upload URL. Complete the PUT upload before the URL expires, and then pass the returned FileId to the ReferenceFileIds parameter of CreateSemanticJob.
+//
+// Description:
+//
+// Requests an upload URL for semantic job attachments.
+//
+// @param request - UploadSemanticFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UploadSemanticFileResponse
+func (client *Client) UploadSemanticFileWithContext(ctx context.Context, request *UploadSemanticFileRequest, runtime *dara.RuntimeOptions) (_result *UploadSemanticFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ContentType) {
+		body["ContentType"] = request.ContentType
+	}
+
+	if !dara.IsNil(request.FileName) {
+		body["FileName"] = request.FileName
+	}
+
+	if !dara.IsNil(request.SizeBytes) {
+		body["SizeBytes"] = request.SizeBytes
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UploadSemanticFile"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UploadSemanticFileResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

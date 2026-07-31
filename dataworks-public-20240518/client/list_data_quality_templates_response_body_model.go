@@ -16,9 +16,9 @@ type iListDataQualityTemplatesResponseBody interface {
 }
 
 type ListDataQualityTemplatesResponseBody struct {
-	// Paged query results of data quality rule templates.
+	// The paging query result of data quality rule templates.
 	PageInfo *ListDataQualityTemplatesResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The API request ID, which is generated as a UUID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -70,13 +70,13 @@ type ListDataQualityTemplatesResponseBodyPageInfo struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of pages.
+	// The page size.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -148,7 +148,7 @@ type ListDataQualityTemplatesResponseBodyPageInfoDataQualityTemplates struct {
 	//
 	// 1729816478147
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The creator of the data quality rule template.
+	// The user who created the data quality rule template.
 	//
 	// example:
 	//
@@ -160,13 +160,13 @@ type ListDataQualityTemplatesResponseBodyPageInfoDataQualityTemplates struct {
 	//
 	// 819cf1f8-29be-4f94-a9d0-c5c06c0c3d2a
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The time when the data quality rule template was updated.
+	// The time when the data quality rule template was last updated.
 	//
 	// example:
 	//
 	// 1729816478147
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The last updater of the data quality rule template.
+	// The user who last updated the data quality rule template.
 	//
 	// example:
 	//
@@ -184,7 +184,7 @@ type ListDataQualityTemplatesResponseBodyPageInfoDataQualityTemplates struct {
 	//
 	// 7635
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Specific configurations of the data quality rule template. For more information, see [Data quality Spec configuration description](~2963394~).
+	// The specific configuration of the data quality rule template. For more information, see [Data quality Spec configuration](https://help.aliyun.com/document_detail/2963394.html).
 	//
 	// example:
 	//

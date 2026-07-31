@@ -24,7 +24,7 @@ type iCreateFileResponseBody interface {
 }
 
 type CreateFileResponseBody struct {
-	// The file ID.
+	// The ID of the file after it is created.
 	//
 	// example:
 	//
@@ -48,15 +48,15 @@ type CreateFileResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID. Use this ID to troubleshoot issues.
+	// The unique ID of the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 0000-ABCD-EFG
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call succeeded. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - true: The call succeeded.
+	// - true: The call was successful.
 	//
 	// - false: The call failed.
 	//

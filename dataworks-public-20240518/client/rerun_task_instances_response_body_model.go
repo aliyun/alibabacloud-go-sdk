@@ -22,7 +22,7 @@ type RerunTaskInstancesResponseBody struct {
 	//
 	// 22C97E95-F023-56B5-8852-B1A77A1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result information of the batch operation. The structure is a map in which the key is the node instance ID and the value is the result information.
+	// The result of the batch operation. The structure is a map in which the key is the node instance ID and the value is the result information.
 	SuccessInfo map[string]*SuccessInfoValue `json:"SuccessInfo,omitempty" xml:"SuccessInfo,omitempty"`
 }
 
