@@ -521,7 +521,7 @@ func (client *Client) CancelAgentTaskWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// Modifies the configuration of a cloud phone matrix, including the instance type and the number of cloud phone instances.
+// Modifies the configuration of a cloud phone matrix. Currently, only the instance type and the number of cloud phone instances (the instance count of the cloud phone matrix) can be changed.
 //
 // @param request - ChangeCloudPhoneNodeRequest
 //
@@ -1677,7 +1677,7 @@ func (client *Client) CreatePolicyGroupWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 创建定时任务
+// Creates a scheduled task for an agent.
 //
 // @param tmpReq - CreateScheduledTaskRequest
 //
@@ -3295,7 +3295,7 @@ func (client *Client) DescribeInvocationsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Retrieves details of JVS instances.
+// Queries JVS instance information.
 //
 // @param request - DescribeJVSInstanceRequest
 //
@@ -5564,6 +5564,10 @@ func (client *Client) ModifyJVSInstanceWithContext(ctx context.Context, request 
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentVersion) {
+		query["AgentVersion"] = request.AgentVersion
+	}
+
 	if !dara.IsNil(request.ApplyToAll) {
 		query["ApplyToAll"] = request.ApplyToAll
 	}

@@ -18,15 +18,15 @@ type iDescribeJVSInstanceRequest interface {
 }
 
 type DescribeJVSInstanceRequest struct {
-	// A list of instance IDs.
+	// The list of instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token from a previous request to retrieve the next page of results. Omit this parameter for the first request.
+	// The pagination token.
 	//
 	// example:
 	//

@@ -34,14 +34,14 @@ type iChangeCloudPhoneNodeRequest interface {
 }
 
 type ChangeCloudPhoneNodeRequest struct {
-	// Indicates if automatic payment is enabled. Default: false.
+	// Specifies whether to enable automatic payment. Default value: false.
 	//
 	// example:
 	//
 	// false
 	AutoPay       *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	DisplayConfig *string `json:"DisplayConfig,omitempty" xml:"DisplayConfig,omitempty"`
-	// The downstream bandwidth limit, in Mbps.
+	// The downstream bandwidth throttling. Unit: Mbit/s.
 	//
 	// example:
 	//
@@ -53,19 +53,19 @@ type ChangeCloudPhoneNodeRequest struct {
 	//
 	// ac.max
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The ID of the cloud phone matrix.
+	// The cloud phone matrix ID.
 	//
 	// example:
 	//
 	// cpn-0ugbptfu473fy****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The number of cloud phone instances. Call the [](t2729804.xdita#)operation to query the minimum and maximum number of allowed instances.
+	// The number of cloud phone instances. Call the [DescribeSpec](https://help.aliyun.com/document_detail/2807299.html) operation to query the maximum and minimum instance count limits.
 	//
 	// example:
 	//
 	// 20
 	PhoneCount *int32 `json:"PhoneCount,omitempty" xml:"PhoneCount,omitempty"`
-	// The capacity of the internal storage, in GiB. Valid values: 10 to 4000. If you do not specify this parameter, the current capacity is retained.
+	// The device storage size. Valid values: 10 GiB to 4000 GiB. If this parameter is left empty, the current size is retained.
 	//
 	// example:
 	//
@@ -79,7 +79,7 @@ type ChangeCloudPhoneNodeRequest struct {
 	PromotionId     *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 	ShareDataVolume *int32  `json:"ShareDataVolume,omitempty" xml:"ShareDataVolume,omitempty"`
 	SwapSize        *int32  `json:"SwapSize,omitempty" xml:"SwapSize,omitempty"`
-	// The upstream bandwidth limit, in Mbps.
+	// The upstream bandwidth throttling. Unit: Mbit/s.
 	//
 	// example:
 	//

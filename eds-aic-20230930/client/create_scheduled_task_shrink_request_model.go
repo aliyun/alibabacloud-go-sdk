@@ -24,37 +24,49 @@ type iCreateScheduledTaskShrinkRequest interface {
 }
 
 type CreateScheduledTaskShrinkRequest struct {
+	// The cron expression.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0 0 	- 	- *
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
+	// The list of instance IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ["ai-instance-001"]
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The maximum number of executions.
+	//
 	// example:
 	//
 	// 1
 	MaxExecutions *int32 `json:"MaxExecutions,omitempty" xml:"MaxExecutions,omitempty"`
+	// The run configuration.
+	//
 	// example:
 	//
 	// {"maxSteps":10,"timeoutSeconds":3600}
 	RunConfigShrink *string `json:"RunConfig,omitempty" xml:"RunConfig,omitempty"`
+	// The task name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 自动回复钉钉消息
+	// Auto-reply to DingTalk messages.
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The user prompt.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 打开钉钉，回复前5个未读消息
+	// Open DingTalk and reply to the first 5 unread messages.
 	UserPrompt *string `json:"UserPrompt,omitempty" xml:"UserPrompt,omitempty"`
 }
 

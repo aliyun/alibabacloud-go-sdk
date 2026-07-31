@@ -9,6 +9,8 @@ type iModifyJVSInstanceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAgentVersion(v string) *ModifyJVSInstanceRequest
+	GetAgentVersion() *string
 	SetApplyToAll(v bool) *ModifyJVSInstanceRequest
 	GetApplyToAll() *bool
 	SetCreditConfig(v []*ModifyJVSInstanceRequestCreditConfig) *ModifyJVSInstanceRequest
@@ -22,13 +24,15 @@ type iModifyJVSInstanceRequest interface {
 }
 
 type ModifyJVSInstanceRequest struct {
+	// The target version, such as 2607W1. Set this parameter to latest to automatically resolve to the latest available version.
+	AgentVersion *string `json:"AgentVersion,omitempty" xml:"AgentVersion,omitempty"`
 	// Specifies whether to apply the configuration to all instances.
 	//
 	// example:
 	//
 	// true
 	ApplyToAll *bool `json:"ApplyToAll,omitempty" xml:"ApplyToAll,omitempty"`
-	// The credit limit configuration. Subsequent configurations overwrite previous ones.
+	// The credit quota configuration. If you submit the configuration multiple times, the latest configuration overwrites the previous one.
 	CreditConfig []*ModifyJVSInstanceRequestCreditConfig `json:"CreditConfig,omitempty" xml:"CreditConfig,omitempty" type:"Repeated"`
 	ImageId      *string                                 `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// The list of instance IDs.
@@ -49,6 +53,10 @@ func (s ModifyJVSInstanceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyJVSInstanceRequest) GetAgentVersion() *string {
+	return s.AgentVersion
+}
+
 func (s *ModifyJVSInstanceRequest) GetApplyToAll() *bool {
 	return s.ApplyToAll
 }
@@ -67,6 +75,11 @@ func (s *ModifyJVSInstanceRequest) GetInstanceIds() []*string {
 
 func (s *ModifyJVSInstanceRequest) GetInstanceName() *string {
 	return s.InstanceName
+}
+
+func (s *ModifyJVSInstanceRequest) SetAgentVersion(v string) *ModifyJVSInstanceRequest {
+	s.AgentVersion = &v
+	return s
 }
 
 func (s *ModifyJVSInstanceRequest) SetApplyToAll(v bool) *ModifyJVSInstanceRequest {
@@ -108,7 +121,7 @@ func (s *ModifyJVSInstanceRequest) Validate() error {
 }
 
 type ModifyJVSInstanceRequestCreditConfig struct {
-	// The credit limit.
+	// The quota limit.
 	//
 	// example:
 	//
@@ -116,11 +129,11 @@ type ModifyJVSInstanceRequestCreditConfig struct {
 	CreditLimit *int64 `json:"CreditLimit,omitempty" xml:"CreditLimit,omitempty"`
 	// The dimension of the current credit. Valid values:
 	//
-	// - total: total usage limit.
+	// - total: Total usage limit.
 	//
-	// - month: monthly. The limit resets based on the resource activation time cycle.
+	// - month: Monthly. The quota resets based on the resource activation time cycle.
 	//
-	// - day: daily. The limit resets at 00:00.
+	// - day: Daily. The quota resets at 00:00.
 	//
 	// example:
 	//

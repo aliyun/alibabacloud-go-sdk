@@ -22,19 +22,28 @@ type iCreateScheduledTaskResponseBody interface {
 }
 
 type CreateScheduledTaskResponseBody struct {
+	// The API status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// Success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9A51B1DF-96FF-3BCC-B08C-783161D3****
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tasks     []*CreateScheduledTaskResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of creation results.
+	Tasks []*CreateScheduledTaskResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 1
@@ -108,11 +117,16 @@ func (s *CreateScheduledTaskResponseBody) Validate() error {
 }
 
 type CreateScheduledTaskResponseBodyTasks struct {
+	// The list of batch delivery results for instance scheduled tasks.
 	InstanceResults []*CreateScheduledTaskResponseBodyTasksInstanceResults `json:"InstanceResults,omitempty" xml:"InstanceResults,omitempty" type:"Repeated"`
+	// The scheduled task ID.
+	//
 	// example:
 	//
 	// sch-260705-agb*****
 	ScheduledId *string `json:"ScheduledId,omitempty" xml:"ScheduledId,omitempty"`
+	// The task configuration ID.
+	//
 	// example:
 	//
 	// tsk-260705-0jj*****
@@ -168,14 +182,20 @@ func (s *CreateScheduledTaskResponseBodyTasks) Validate() error {
 }
 
 type CreateScheduledTaskResponseBodyTasksInstanceResults struct {
+	// The error message.
+	//
 	// example:
 	//
 	// privateAccount not exist.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// acp-iuyb1zv1ap6nb****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Indicates whether the operation is successful.
+	//
 	// example:
 	//
 	// true

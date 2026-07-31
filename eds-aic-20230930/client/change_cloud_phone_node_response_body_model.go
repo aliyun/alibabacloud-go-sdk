@@ -18,9 +18,9 @@ type iChangeCloudPhoneNodeResponseBody interface {
 }
 
 type ChangeCloudPhoneNodeResponseBody struct {
-	// Information about the modified cloud phone matrix.
+	// The cloud phone matrix information.
 	NodeInfos []*ChangeCloudPhoneNodeResponseBodyNodeInfos `json:"NodeInfos,omitempty" xml:"NodeInfos,omitempty" type:"Repeated"`
-	// The ID of the order for this change.
+	// The generated order ID.
 	//
 	// example:
 	//
@@ -83,15 +83,15 @@ func (s *ChangeCloudPhoneNodeResponseBody) Validate() error {
 }
 
 type ChangeCloudPhoneNodeResponseBodyNodeInfos struct {
-	// Information about the cloud phone instances.
+	// The cloud phone instance information.
 	InstanceInfos []*ChangeCloudPhoneNodeResponseBodyNodeInfosInstanceInfos `json:"InstanceInfos,omitempty" xml:"InstanceInfos,omitempty" type:"Repeated"`
-	// The ID of the cloud phone matrix.
+	// The cloud phone matrix ID.
 	//
 	// example:
 	//
 	// cpn-e5kxgjyt8s1mb****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The size of the shared storage, in GiB. If the matrix uses independent internal storage, this defaults to a fixed 64 GiB for global files, such as images. If the matrix was configured with shared storage at purchase, this indicates the size of that storage.
+	// When the matrix uses dedicated device storage, a 64 GiB shared storage space is allocated by default (not modifiable) for storing images and other matrix-wide files. When the matrix uses shared device storage (with the size specified at purchase), this storage space is shared by all instances.
 	//
 	// example:
 	//
@@ -154,7 +154,7 @@ type ChangeCloudPhoneNodeResponseBodyNodeInfosInstanceInfos struct {
 	//
 	// cpn-jewjt8xryuitu****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The internal storage capacity, in GiB.
+	// The dedicated device storage capacity.
 	//
 	// example:
 	//
