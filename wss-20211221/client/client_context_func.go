@@ -9,19 +9,15 @@ import (
 
 // Summary:
 //
-// Use this API to order, renew, and modify specific products, such as monthly resource plans for Elastic Desktop Service (EDS) Enterprise Edition.
+// Places, renews, or modifies orders for specific products of Elastic Desktop Service (EDS) Enterprise Edition, such as monthly duration packages.
 //
 // Description:
 //
-// <props="china">
+// <props="china">Before using this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product?#/gws/detail/gws) of EDS.
 //
-// Before calling this API, make sure you understand how Wuying Workspace is billed and its [pricing](https://www.aliyun.com/price/product?#/gws/detail/gws).
+// <props="intl">Before using this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/cloud-desktop?#J_8623712560) of EDS.
 //
-// <props="intl">
-//
-// Before calling this API, make sure you understand how Wuying Workspace is billed and its [pricing](https://www.alibabacloud.com/zh/product/cloud-desktop?#J_8623712560).
-//
-// If you do not specify automatic payment, this API does not handle the payment. You must use the returned order ID to construct a payment URL. The order becomes active and the resource is provisioned only after the payment is complete.
+// If automatic payment is not specified, this operation does not process the payment. You must use the order ID returned by this operation to construct a payment redirect URL and complete the payment before the order takes effect and the resources are provisioned.
 //
 // @param tmpReq - CreateMultiOrderRequest
 //
@@ -311,13 +307,11 @@ func (client *Client) DescribeDeductionStatisticWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries prices for Elastic Desktop Service products, covering order types such as purchase, renewal, configuration change, and cancellation.
+// Queries the prices of Elastic Desktop Service products, including prices for new purchases, renewals, specification changes, and unsubscriptions.
 //
 // Description:
 //
-// <props="china">
-//
-// Before using this interface, ensure you understand the billing methods and [pricing](https://www.aliyun.com/price/product?#/gws/detail/gws) for Wuying Workspace.
+// <props="china">Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product?#/gws/detail/gws) of Elastic Desktop Service.
 //
 // @param request - DescribeMultiPriceRequest
 //

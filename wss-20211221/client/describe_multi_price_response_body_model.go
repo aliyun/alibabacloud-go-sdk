@@ -16,7 +16,7 @@ type iDescribeMultiPriceResponseBody interface {
 }
 
 type DescribeMultiPriceResponseBody struct {
-	// The detailed price information.
+	// The price details.
 	PriceInfo *DescribeMultiPriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -64,7 +64,7 @@ func (s *DescribeMultiPriceResponseBody) Validate() error {
 type DescribeMultiPriceResponseBodyPriceInfo struct {
 	// The price information.
 	Price *DescribeMultiPriceResponseBodyPriceInfoPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
-	// A list of promotion rules.
+	// The promotion rule information.
 	Rules []*DescribeMultiPriceResponseBodyPriceInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -113,7 +113,7 @@ func (s *DescribeMultiPriceResponseBodyPriceInfo) Validate() error {
 }
 
 type DescribeMultiPriceResponseBodyPriceInfoPrice struct {
-	// The currency.
+	// The currency unit.
 	//
 	// China site: CNY.
 	//
@@ -135,19 +135,19 @@ type DescribeMultiPriceResponseBodyPriceInfoPrice struct {
 	//
 	// 6800
 	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	// A list of price details.
+	// The price details.
 	PriceDetails []*DescribeMultiPriceResponseBodyPriceInfoPricePriceDetails `json:"PriceDetails,omitempty" xml:"PriceDetails,omitempty" type:"Repeated"`
-	// A list of promotions.
+	// The promotion information.
 	Promotions []*DescribeMultiPriceResponseBodyPriceInfoPricePromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
-	// A map of instance IDs to their corresponding refund amounts.
+	// The unsubscription instance and pricing details.
 	RefundInstanceIdPriceMap map[string]*float32 `json:"RefundInstanceIdPriceMap,omitempty" xml:"RefundInstanceIdPriceMap,omitempty"`
-	// The refund amount.
+	// The unsubscription price.
 	//
 	// example:
 	//
 	// 60.00
 	RefundPrice *float32 `json:"RefundPrice,omitempty" xml:"RefundPrice,omitempty"`
-	// The trade price, which is the original price minus the discount amount.
+	// The actual payment price. The value is the original price minus the discount amount.
 	//
 	// example:
 	//
@@ -258,15 +258,15 @@ func (s *DescribeMultiPriceResponseBodyPriceInfoPrice) Validate() error {
 }
 
 type DescribeMultiPriceResponseBodyPriceInfoPricePriceDetails struct {
-	// A list of pricing module details.
+	// The pricing module details.
 	ModuleDetails []*DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails `json:"ModuleDetails,omitempty" xml:"ModuleDetails,omitempty" type:"Repeated"`
-	// The sort order.
+	// The sort property.
 	//
 	// example:
 	//
 	// 1
 	OrderItem *int32 `json:"OrderItem,omitempty" xml:"OrderItem,omitempty"`
-	// A breakdown of the price.
+	// The price details.
 	PriceDetail *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail `json:"PriceDetail,omitempty" xml:"PriceDetail,omitempty" type:"Struct"`
 }
 
@@ -340,7 +340,7 @@ type DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails struc
 	//
 	// example:
 	//
-	// 企业办公型-8C32G
+	// Enterprise Office - 8C32G
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
 	// The module value.
 	//
@@ -355,7 +355,7 @@ type DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails struc
 	// 10900
 	OriginalPrice           *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
 	SavingPlanDiscountPrice *float32 `json:"SavingPlanDiscountPrice,omitempty" xml:"SavingPlanDiscountPrice,omitempty"`
-	// The trade price, which is the original price minus the discount amount.
+	// The actual payment price. The value is the original price minus the discount amount.
 	//
 	// example:
 	//
@@ -458,7 +458,7 @@ type DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail struct 
 	// DurationPackage
 	ResourceType             *string  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	SavingPlanRecommendPrice *float32 `json:"SavingPlanRecommendPrice,omitempty" xml:"SavingPlanRecommendPrice,omitempty"`
-	// The trade price, which is the original price minus the discount amount.
+	// The actual payment price. The value is the original price minus the discount amount.
 	//
 	// example:
 	//
@@ -524,29 +524,30 @@ func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail) Va
 }
 
 type DescribeMultiPriceResponseBodyPriceInfoPricePromotions struct {
-	// The option code.
+	ActivityId *string `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
+	// The description of the promotion rule.
 	//
 	// example:
 	//
 	// new
 	OptionCode *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
-	// The promotion description.
+	// The description of the promotion.
 	//
 	// example:
 	//
-	// 促销
+	// Promotion
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
-	// The promotion ID.
+	// The ID of the promotion.
 	//
 	// example:
 	//
 	// youhuiquan_promotion_option_id_for_blank
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	// The promotion name.
+	// The name of the promotion.
 	//
 	// example:
 	//
-	// 优惠活动名称
+	// Promotion name
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
 	// Indicates whether the promotion is selected.
 	//
@@ -562,6 +563,10 @@ func (s DescribeMultiPriceResponseBodyPriceInfoPricePromotions) String() string 
 
 func (s DescribeMultiPriceResponseBodyPriceInfoPricePromotions) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfoPricePromotions) GetActivityId() *string {
+	return s.ActivityId
 }
 
 func (s *DescribeMultiPriceResponseBodyPriceInfoPricePromotions) GetOptionCode() *string {
@@ -582,6 +587,11 @@ func (s *DescribeMultiPriceResponseBodyPriceInfoPricePromotions) GetPromotionNam
 
 func (s *DescribeMultiPriceResponseBodyPriceInfoPricePromotions) GetSelected() *bool {
 	return s.Selected
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfoPricePromotions) SetActivityId(v string) *DescribeMultiPriceResponseBodyPriceInfoPricePromotions {
+	s.ActivityId = &v
+	return s
 }
 
 func (s *DescribeMultiPriceResponseBodyPriceInfoPricePromotions) SetOptionCode(v string) *DescribeMultiPriceResponseBodyPriceInfoPricePromotions {
@@ -614,13 +624,13 @@ func (s *DescribeMultiPriceResponseBodyPriceInfoPricePromotions) Validate() erro
 }
 
 type DescribeMultiPriceResponseBodyPriceInfoRules struct {
-	// The promotion rule description.
+	// The description of the promotion rule.
 	//
 	// example:
 	//
 	// accounts_suspect_users
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The promotion rule ID.
+	// The ID of the promotion rule.
 	//
 	// example:
 	//

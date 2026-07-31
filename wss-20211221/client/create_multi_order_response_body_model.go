@@ -16,9 +16,9 @@ type iCreateMultiOrderResponseBody interface {
 }
 
 type CreateMultiOrderResponseBody struct {
-	// A list of order IDs.
+	// The list of order IDs.
 	OrderIds []*int64 `json:"OrderIds,omitempty" xml:"OrderIds,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

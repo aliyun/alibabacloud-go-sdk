@@ -23,7 +23,7 @@ type iCreateMultiOrderShrinkRequest interface {
 
 type CreateMultiOrderShrinkRequest struct {
 	ChannelCookie *string `json:"ChannelCookie,omitempty" xml:"ChannelCookie,omitempty"`
-	// The items in the order.
+	// The product information.
 	OrderItems []*CreateMultiOrderShrinkRequestOrderItems `json:"OrderItems,omitempty" xml:"OrderItems,omitempty" type:"Repeated"`
 	// The order type.
 	//
@@ -103,7 +103,7 @@ func (s *CreateMultiOrderShrinkRequest) Validate() error {
 }
 
 type CreateMultiOrderShrinkRequestOrderItems struct {
-	// The number of resources to purchase.
+	// The quantity to purchase.
 	//
 	// example:
 	//
@@ -122,22 +122,23 @@ type CreateMultiOrderShrinkRequestOrderItems struct {
 	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	BuyChange *bool `json:"BuyChange,omitempty" xml:"BuyChange,omitempty"`
-	// The components that define the resource.
-	Components  []*CreateMultiOrderShrinkRequestOrderItemsComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
-	InstanceIds []*string                                            `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The subscription period. Valid values:
+	// The product modules.
+	Components      []*CreateMultiOrderShrinkRequestOrderItemsComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+	InstanceIds     []*string                                            `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	PaidCallBackUrl *string                                              `json:"PaidCallBackUrl,omitempty" xml:"PaidCallBackUrl,omitempty"`
+	// The subscription duration. Valid values:
 	//
-	// - If `PeriodUnit` is set to `Year`, the valid values are 1, 2, 3, and 5.
+	// - If `PeriodUnit` is set to `Year`: 1, 2, 3, or 5.
 	//
-	// - If `PeriodUnit` is set to `Month`, the valid values are 1, 2, 3, and 6.
+	// - If `PeriodUnit` is set to `Month`: 1, 2, 3, or 6.
 	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The time unit of the subscription duration.
+	// The unit of the billing cycle for the subscription instance.
 	//
-	// > This parameter is required for prepaid instances and is case-sensitive.
+	// > This parameter is required only when the billing method of the instance is subscription. This parameter is case-sensitive. Make sure that the spelling is correct.
 	//
 	// example:
 	//
@@ -149,13 +150,13 @@ type CreateMultiOrderShrinkRequestOrderItems struct {
 	//
 	// youhuiquan_promotion_option_id_for_blank
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	// A list of resource IDs.
+	// The list of resource IDs.
 	//
-	// > For a monthly duration package, this parameter specifies the IDs of the cloud desktops. This parameter is required unless the `OrderType` is `create`.
+	// > For monthly duration packages, this parameter corresponds to the cloud desktop ID. This parameter is required when OrderType is not `create`.
 	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
-	// The type of the resource.
+	// The resource type.
 	//
-	// > This parameter is case-sensitive.
+	// > This parameter is case-sensitive. Make sure that the spelling is correct.
 	//
 	// This parameter is required.
 	//
@@ -195,6 +196,10 @@ func (s *CreateMultiOrderShrinkRequestOrderItems) GetComponents() []*CreateMulti
 
 func (s *CreateMultiOrderShrinkRequestOrderItems) GetInstanceIds() []*string {
 	return s.InstanceIds
+}
+
+func (s *CreateMultiOrderShrinkRequestOrderItems) GetPaidCallBackUrl() *string {
+	return s.PaidCallBackUrl
 }
 
 func (s *CreateMultiOrderShrinkRequestOrderItems) GetPeriod() *int32 {
@@ -247,6 +252,11 @@ func (s *CreateMultiOrderShrinkRequestOrderItems) SetInstanceIds(v []*string) *C
 	return s
 }
 
+func (s *CreateMultiOrderShrinkRequestOrderItems) SetPaidCallBackUrl(v string) *CreateMultiOrderShrinkRequestOrderItems {
+	s.PaidCallBackUrl = &v
+	return s
+}
+
 func (s *CreateMultiOrderShrinkRequestOrderItems) SetPeriod(v int32) *CreateMultiOrderShrinkRequestOrderItems {
 	s.Period = &v
 	return s
@@ -286,57 +296,57 @@ func (s *CreateMultiOrderShrinkRequestOrderItems) Validate() error {
 }
 
 type CreateMultiOrderShrinkRequestOrderItemsComponents struct {
-	// The key of the component.
+	// The key of the module.
 	//
 	// example:
 	//
 	// RegionId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the component.
+	// The value of the module.
 	//
-	// Example and valid values for the keys of a monthly duration package (Enterprise Edition):
+	// The following example values or valid values are available for each key of the Enterprise Edition monthly duration package:
 	//
 	// - RegionId: cn-shanghai
 	//
 	// - InstanceType: eds.enterprise_office.4c8g
 	//
-	// - DurationType (in hours): Valid values:
+	// - DurationType (hours): [Valid values]
 	//
-	//   - 120
+	//    - 120
 	//
-	//   - 250
+	//    - 250
 	//
-	// - OsType: Valid values:
+	// - OsType: [Valid values]
 	//
-	//   - Windows
+	//    - Windows
 	//
-	//   - Linux
+	//    - Linux
 	//
-	// - RootDiskSize (in GiB): 80
+	// - RootDiskSize (GiB): 80
 	//
-	// - RootDiskCategory: Valid values:
+	// - RootDiskCategory: [Valid values]
 	//
-	//   - cloud_efficiency (Ultra Disk)
+	//    - cloud_efficiency (ultra cloud disk)
 	//
-	//   - cloud_auto (ESSD AutoPL Disk)
+	//    - cloud_auto (ultra-fast cloud disk)
 	//
-	//   - `cloud_essd` (Enhanced SSD). This value is supported only by specific instance types.
+	//    - cloud_essd (enhanced standard SSD. Only specific instance types support this value.)
 	//
-	// - RootPerformanceLevel: Valid values:
+	// - RootPerformanceLevel: [Valid values]
 	//
-	//   - PL0
+	//    - PL0
 	//
-	//   - PL1
+	//    - PL1
 	//
-	//   - PL2
+	//    - PL2
 	//
-	//   - PL3
+	//    - PL3
 	//
-	// - DataDiskSize (in GiB): Same as `RootDiskSize`.
+	// - DataDiskSize (GiB): Valid values are the same as those of RootDiskSize.
 	//
-	// - DataDiskCategory: Same as `RootDiskCategory`.
+	// - DataDiskCategory: Valid values are the same as those of RootDiskCategory.
 	//
-	// - DataPerformanceLevel: Same as `RootPerformanceLevel`.
+	// - DataPerformanceLevel: Valid values are the same as those of RootPerformanceLevel.
 	//
 	// example:
 	//
