@@ -16,12 +16,16 @@ type iResetInstanceKeysRequest interface {
 }
 
 type ResetInstanceKeysRequest struct {
+	// The instance ID of the AI application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

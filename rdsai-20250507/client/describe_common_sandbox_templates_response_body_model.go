@@ -20,18 +20,25 @@ type iDescribeCommonSandboxTemplatesResponseBody interface {
 }
 
 type DescribeCommonSandboxTemplatesResponseBody struct {
+	// A reserved parameter. You do not need to specify this parameter.
+	//
 	// example:
 	//
 	// None
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that indicates the position from which the query starts. Set this parameter to empty to start from the beginning.
+	//
 	// example:
 	//
 	// AAAAAc3HCuYhJi/wvpk4xOr0VLYz/NvD85HpgBeRBCusEIeVQ0dHZH9jr+NP3X9Jx0iSoql55b9nd4PIDm252/a0f+U=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329241C
-	RequestId *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The sandbox templates.
 	Templates []*DescribeCommonSandboxTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
 }
 
@@ -93,22 +100,32 @@ func (s *DescribeCommonSandboxTemplatesResponseBody) Validate() error {
 }
 
 type DescribeCommonSandboxTemplatesResponseBodyTemplates struct {
+	// The default number of CPUs for sandboxes created by using this template.
+	//
 	// example:
 	//
 	// 1
 	DefaultCpu *string `json:"DefaultCpu,omitempty" xml:"DefaultCpu,omitempty"`
+	// The default memory size for sandboxes created by using this template. The unit ends with Gi.
+	//
 	// example:
 	//
 	// 1Gi
 	DefaultMemory *string `json:"DefaultMemory,omitempty" xml:"DefaultMemory,omitempty"`
+	// The default number of prewarmed sandboxes.
+	//
 	// example:
 	//
 	// 1
 	DefaultReplicas *int64 `json:"DefaultReplicas,omitempty" xml:"DefaultReplicas,omitempty"`
+	// The description of the sandbox template.
+	//
 	// example:
 	//
 	// Execute user-provided Python code in the sandbox environment. Runs any Python script the user provides and returns the output.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the sandbox template.
+	//
 	// example:
 	//
 	// desktop

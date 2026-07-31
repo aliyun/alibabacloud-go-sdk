@@ -18,19 +18,19 @@ type iListScheduledTasksRequest interface {
 }
 
 type ListScheduledTasksRequest struct {
-	// The page number. The default value is 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. The default value is 20. The maximum value is 100.
+	// The number of entries per page. Default value: 20. Maximum value: 100.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The scheduled inspection configuration ID.
+	// The ID of the scheduled inspection configuration.
 	//
 	// example:
 	//

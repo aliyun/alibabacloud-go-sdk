@@ -407,7 +407,7 @@ func (client *Client) CreateCustomAgentWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Creates an inspection task for one or more instances.
+// Creates a batch instance inspection task.
 //
 // @param request - CreateInspectionTaskRequest
 //
@@ -452,6 +452,10 @@ func (client *Client) CreateInspectionTaskWithContext(ctx context.Context, reque
 
 	if !dara.IsNil(request.StartTime) {
 		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		query["TemplateId"] = request.TemplateId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -549,15 +553,15 @@ func (client *Client) CreateMOUsageDetailExportWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 创建沙箱模板
+// Creates a sandbox template.
 //
 // Description:
 //
-// ### 适用引擎
+// ### Applicable engine
 //
 // # RDS Supabase
 //
-// ### 相关功能文档
+// ### Related documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -627,17 +631,17 @@ func (client *Client) CreateSandboxTemplateWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Creates a scheduled inspection task for one or more instances.
+// Creates a scheduled inspection configuration for batch instances.
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engine
 //
 // # RDS PostgreSQL
 //
 // ### Related feature documentation
 //
-//	Warning: This API operation may incur charges. Please read the related feature documentation carefully before you proceed.
+//	Warning: This API operation incurs fees. Read the related feature documentation before you perform this operation.
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -692,6 +696,10 @@ func (client *Client) CreateScheduledTaskWithContext(ctx context.Context, reques
 
 	if !dara.IsNil(request.StartTime) {
 		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		query["TemplateId"] = request.TemplateId
 	}
 
 	if !dara.IsNil(request.TimeRange) {
@@ -957,15 +965,15 @@ func (client *Client) DeleteCustomAgentWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 删除沙箱模板
+// Deletes a sandbox template.
 //
 // Description:
 //
-// ### 适用引擎
+// ### Applicable engine
 //
 // # RDS Supabase
 //
-// ### 相关功能文档
+// ### Related documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -1239,15 +1247,15 @@ func (client *Client) DescribeAppInstancesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 查询已支持的沙箱模板列表
+// Queries the list of supported sandbox templates.
 //
 // Description:
 //
-// ### 适用引擎
+// ### Applicable engine
 //
 // # RDS Supabase
 //
-// ### 相关功能文档
+// ### Related documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -2423,7 +2431,7 @@ func (client *Client) GetCustomAgentWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// Queries the content of a specified inspection report.
+// Retrieves the details of an inspection report by report ID.
 //
 // @param request - GetInspectionReportRequest
 //
@@ -2624,7 +2632,7 @@ func (client *Client) GetScheduledInstancesWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Retrieves all inspection reports for a specified scheduled task. You can filter the results by time range and use pagination.
+// Queries all inspection reports under a specified scheduled task, with support for time range filtering and pagination.
 //
 // @param request - GetScheduledReportsRequest
 //
@@ -2732,7 +2740,7 @@ func (client *Client) GetSkillWithContext(ctx context.Context, request *GetSkill
 
 // Summary:
 //
-// Retrieves paginated standalone inspection reports on a specified user\\"s non-scheduled tasks.
+// Queries the list of individual inspection reports for all non-scheduled tasks under a specified user, with pagination support.
 //
 // @param request - GetStandAloneReportsRequest
 //
@@ -2964,7 +2972,7 @@ func (client *Client) ListLLMTokenUsageWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Lists basic information about all inspection configurations for the specified user ID.
+// Queries the list of basic information about all inspection configurations under a specified user UID.
 //
 // @param request - ListScheduledTasksRequest
 //
@@ -3068,15 +3076,15 @@ func (client *Client) ListSkillWithContext(ctx context.Context, request *ListSki
 
 // Summary:
 //
-// 修改RDS AI应用实例
+// Modifies the modules of an RDS AI application instance.
 //
 // Description:
 //
-// ### 适用引擎
+// ### Applicable engine
 //
 // # RDS PostgreSQL
 //
-// ### 相关功能文档
+// ### Related documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -3724,15 +3732,15 @@ func (client *Client) ModifyMessagesFeedbacksWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 修改沙箱模板
+// Modifies a sandbox template.
 //
 // Description:
 //
-// ### 适用引擎
+// ### Applicable engine
 //
 // # RDS Supabase
 //
-// ### 相关功能文档
+// ### Related documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -3843,6 +3851,10 @@ func (client *Client) ModifyScheduledTaskWithContext(ctx context.Context, reques
 
 	if !dara.IsNil(request.StartTime) {
 		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		query["TemplateId"] = request.TemplateId
 	}
 
 	if !dara.IsNil(request.TimeRange) {
@@ -4040,15 +4052,15 @@ func (client *Client) ResetApiKeyWithContext(ctx context.Context, request *Reset
 
 // Summary:
 //
-// 重置RDS AI实例的Keys
+// Resets the keys of an RDS AI instance, including AnonKey, ServiceKey, and JwtSecret. After the reset, the old keys and secret become invalid immediately. Ensure that your applications are adapted accordingly.
 //
 // Description:
 //
-// ### 适用引擎
+// ### Applicable engine
 //
 // # RDS PostgreSQL
 //
-// ### 相关功能文档
+// ### Related documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //

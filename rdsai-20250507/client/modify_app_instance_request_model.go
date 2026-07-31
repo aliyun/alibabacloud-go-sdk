@@ -27,17 +27,24 @@ type iModifyAppInstanceRequest interface {
 
 type ModifyAppInstanceRequest struct {
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	// The idempotency parameter.
+	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
-	ClientToken    *string                               `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The list of modules.
 	Components     []*ModifyAppInstanceRequestComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
 	DBInstanceName *string                               `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	InstanceClass  *string                               `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	// The instance ID of the AI application.
+	//
 	// example:
 	//
 	// ra-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
@@ -129,10 +136,14 @@ func (s *ModifyAppInstanceRequest) Validate() error {
 }
 
 type ModifyAppInstanceRequestComponents struct {
+	// The module status.
+	//
 	// example:
 	//
 	// enable
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The module type.
+	//
 	// example:
 	//
 	// supabase

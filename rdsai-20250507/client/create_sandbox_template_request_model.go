@@ -26,32 +26,46 @@ type iCreateSandboxTemplateRequest interface {
 }
 
 type CreateSandboxTemplateRequest struct {
+	// The number of CPUs for sandboxes created by using this template. Valid values: 1 to 4.
+	//
 	// example:
 	//
 	// 1
 	DefaultCpu *string `json:"DefaultCpu,omitempty" xml:"DefaultCpu,omitempty"`
+	// The memory size for sandboxes created by using this template. Unit: Gi. Valid values: 1Gi to 8Gi.
+	//
 	// example:
 	//
 	// 1Gi
 	DefaultMemory *string `json:"DefaultMemory,omitempty" xml:"DefaultMemory,omitempty"`
+	// The description of the sandbox template. The description must be unique within the VPC.
+	//
 	// example:
 	//
 	// code-interpreter
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The instance ID of the AI application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of prewarmed sandboxes. Valid values: 1 to 1000.
+	//
 	// example:
 	//
 	// 1
 	Replicas *int64 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// The name of the sandbox template.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -30,7 +30,7 @@ type ListScheduledTasksResponseBody struct {
 	//
 	// example:
 	//
-	// 任务信息查询成功
+	// Task information queried successfully
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The page number.
 	//
@@ -50,15 +50,15 @@ type ListScheduledTasksResponseBody struct {
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of scheduled inspection tasks.
+	// The list of scheduled inspection tasks.
 	Schedules []*ListScheduledTasksResponseBodySchedules `json:"Schedules,omitempty" xml:"Schedules,omitempty" type:"Repeated"`
-	// Indicates whether the request was successful.
+	// The request result.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -151,54 +151,54 @@ func (s *ListScheduledTasksResponseBody) Validate() error {
 }
 
 type ListScheduledTasksResponseBodySchedules struct {
-	// The time the task was created, in UTC.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2026-02-04T06:51:24Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the inspection.
+	// The inspection description.
 	//
 	// example:
 	//
-	// 每天凌晨2点自动巡检生产环境RDS实例
+	// Automatically inspect production ApsaraDB RDS instances at 2:00 AM every day
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The inspection frequency. Multiple values are separated by commas. The default is DAILY. Valid values:
+	// The new inspection frequency. Separate multiple values with commas (,). Default value: DAILY. Valid values:
 	//
-	// - DAILY: Every day
+	// 	- DAILY: every day
 	//
-	// - Monday: Monday
+	// 	- Monday: Monday
 	//
-	// - Tuesday: Tuesday
+	// 	- Tuesday: Tuesday
 	//
-	// - Wednesday: Wednesday
+	// 	- Wednesday: Wednesday
 	//
-	// - Thursday: Thursday
+	// 	- Thursday: Thursday
 	//
-	// - Friday: Friday
+	// 	- Friday: Friday
 	//
-	// - Saturday: Saturday
+	// 	- Saturday: Saturday
 	//
-	// - Sunday: Sunday
+	// 	- Sunday: Sunday
 	//
-	// ### Note: The DAILY setting overrides any specified days of the week. For example, if you specify DAILY,Monday, the inspection runs daily.
+	// ### Note: DAILY overrides weekly values. For example, if you specify DAILY,Monday, the backend uses DAILY as the inspection frequency.
 	//
 	// example:
 	//
 	// Monday
 	Frequency       *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
 	InspectionItems *string `json:"InspectionItems,omitempty" xml:"InspectionItems,omitempty"`
-	// The number of instances in the task.
+	// The number of task instances.
 	//
 	// example:
 	//
 	// 1
 	InstanceCount *int64 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	// The name of the task.
+	// The task name.
 	//
 	// example:
 	//
-	// 巡检测试
+	// InspectionTest
 	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ReportLanguage *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
@@ -209,17 +209,19 @@ type ListScheduledTasksResponseBodySchedules struct {
 	//
 	// 9d246af2-a0cd-4f69-857d-3785048f****
 	ScheduledId *string `json:"ScheduledId,omitempty" xml:"ScheduledId,omitempty"`
-	// The task start time, in UTC.
+	// The actual start time of the task.
 	//
 	// example:
 	//
 	// 18:00:00Z
 	TaskStartTime *string `json:"TaskStartTime,omitempty" xml:"TaskStartTime,omitempty"`
-	// The inspection time range in hours. Default: 24. Valid values: 1 to 168.
+	TemplateId    *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName  *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The inspection time range. Default value: the last 24 hours. Valid values: 1 to 168 (up to 7 days).
 	//
 	// example:
 	//
-	// 24小时
+	// 24 hours
 	TimeRange *string `json:"TimeRange,omitempty" xml:"TimeRange,omitempty"`
 }
 
@@ -273,6 +275,14 @@ func (s *ListScheduledTasksResponseBodySchedules) GetScheduledId() *string {
 
 func (s *ListScheduledTasksResponseBodySchedules) GetTaskStartTime() *string {
 	return s.TaskStartTime
+}
+
+func (s *ListScheduledTasksResponseBodySchedules) GetTemplateId() *string {
+	return s.TemplateId
+}
+
+func (s *ListScheduledTasksResponseBodySchedules) GetTemplateName() *string {
+	return s.TemplateName
 }
 
 func (s *ListScheduledTasksResponseBodySchedules) GetTimeRange() *string {
@@ -331,6 +341,16 @@ func (s *ListScheduledTasksResponseBodySchedules) SetScheduledId(v string) *List
 
 func (s *ListScheduledTasksResponseBodySchedules) SetTaskStartTime(v string) *ListScheduledTasksResponseBodySchedules {
 	s.TaskStartTime = &v
+	return s
+}
+
+func (s *ListScheduledTasksResponseBodySchedules) SetTemplateId(v string) *ListScheduledTasksResponseBodySchedules {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ListScheduledTasksResponseBodySchedules) SetTemplateName(v string) *ListScheduledTasksResponseBodySchedules {
+	s.TemplateName = &v
 	return s
 }
 

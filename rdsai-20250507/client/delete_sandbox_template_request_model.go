@@ -18,16 +18,22 @@ type iDeleteSandboxTemplateRequest interface {
 }
 
 type DeleteSandboxTemplateRequest struct {
+	// The instance ID of the AI application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The sandbox template ID.
+	//
 	// This parameter is required.
 	//
 	// example:

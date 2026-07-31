@@ -25,6 +25,8 @@ type iModifyScheduledTaskRequest interface {
 	GetScheduledId() *string
 	SetStartTime(v string) *ModifyScheduledTaskRequest
 	GetStartTime() *string
+	SetTemplateId(v string) *ModifyScheduledTaskRequest
+	GetTemplateId() *string
 	SetTimeRange(v string) *ModifyScheduledTaskRequest
 	GetTimeRange() *string
 }
@@ -34,34 +36,34 @@ type ModifyScheduledTaskRequest struct {
 	//
 	// example:
 	//
-	// 定时RDS实例巡检任务
+	// Scheduled RDS instance inspection task
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The new inspection frequency. Separate multiple values with a comma (,). The default value is DAILY. Valid values:
+	// The new inspection frequency. Separate multiple values with commas (,). Default value: DAILY. Valid values:
 	//
-	// - DAILY: Every day
+	// 	- DAILY: every day
 	//
-	// - Monday: Every Monday
+	// 	- Monday: Monday
 	//
-	// - Tuesday: Every Tuesday
+	// 	- Tuesday: Tuesday
 	//
-	// - Wednesday: Every Wednesday
+	// 	- Wednesday: Wednesday
 	//
-	// - Thursday: Every Thursday
+	// 	- Thursday: Thursday
 	//
-	// - Friday: Every Friday
+	// 	- Friday: Friday
 	//
-	// - Saturday: Every Saturday
+	// 	- Saturday: Saturday
 	//
-	// - Sunday: Every Sunday
+	// 	- Sunday: Sunday
 	//
-	// ### Note: `DAILY` overrides all other day-of-the-week settings. For example, if you specify `DAILY,Monday`, the system uses `DAILY` as the inspection frequency.
+	// ### Note: DAILY overrides weekly values. For example, if you specify DAILY,Monday, the backend uses DAILY as the inspection frequency.
 	//
 	// example:
 	//
 	// Monday
 	Frequency       *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
 	InspectionItems *string `json:"InspectionItems,omitempty" xml:"InspectionItems,omitempty"`
-	// The new instance IDs to associate with the task. Separate multiple IDs with a comma (,).
+	// The new list of associated instance IDs. Separate multiple values with commas (,).
 	//
 	// example:
 	//
@@ -71,7 +73,7 @@ type ModifyScheduledTaskRequest struct {
 	//
 	// example:
 	//
-	// RDS巡检任务
+	// RDS inspection task
 	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ReportLanguage *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
 	// The ID of the scheduled inspection configuration.
@@ -82,13 +84,14 @@ type ModifyScheduledTaskRequest struct {
 	//
 	// 847268a4-196f-416b-aa12-bfe0c115****
 	ScheduledId *string `json:"ScheduledId,omitempty" xml:"ScheduledId,omitempty"`
-	// The new time to run the inspection task. The time must be in the `HH:mm:ssZ` format and in UTC.
+	// The new time to execute the inspection task. Format: HH:mm:ssZ (UTC).
 	//
 	// example:
 	//
 	// 02:00:00Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The inspection time range in hours. The default is 24, which means data from the last 24 hours is inspected. Valid values: 1 to 168. The maximum supported range is 7 days.
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The inspection time range. Default value: the last 24 hours. Valid values: 1 to 168 (up to 7 days).
 	//
 	// example:
 	//
@@ -136,6 +139,10 @@ func (s *ModifyScheduledTaskRequest) GetStartTime() *string {
 	return s.StartTime
 }
 
+func (s *ModifyScheduledTaskRequest) GetTemplateId() *string {
+	return s.TemplateId
+}
+
 func (s *ModifyScheduledTaskRequest) GetTimeRange() *string {
 	return s.TimeRange
 }
@@ -177,6 +184,11 @@ func (s *ModifyScheduledTaskRequest) SetScheduledId(v string) *ModifyScheduledTa
 
 func (s *ModifyScheduledTaskRequest) SetStartTime(v string) *ModifyScheduledTaskRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *ModifyScheduledTaskRequest) SetTemplateId(v string) *ModifyScheduledTaskRequest {
+	s.TemplateId = &v
 	return s
 }
 

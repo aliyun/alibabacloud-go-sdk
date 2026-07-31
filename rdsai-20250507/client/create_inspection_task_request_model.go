@@ -25,66 +25,66 @@ type iCreateInspectionTaskRequest interface {
 	GetReportType() *string
 	SetStartTime(v string) *CreateInspectionTaskRequest
 	GetStartTime() *string
+	SetTemplateId(v string) *CreateInspectionTaskRequest
+	GetTemplateId() *string
 }
 
 type CreateInspectionTaskRequest struct {
-	// The end of the inspection time range. The time must be in UTC and formatted as YYYY-MM-DDTHH:mm:ssZ. If StartTime and EndTime are not specified, the inspection covers the last 24 hours.
+	// The end time of the inspection range. Format: YYYY-MM-DDTHH:mm:ssZ (UTC). Default value: the current time.
 	//
 	// example:
 	//
 	// 2026-01-30T02:10:48Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The inspection items to run, separated by commas. If this parameter is omitted, all inspection items are run.
+	// The list of inspection items. Separate multiple values with commas (,). If this parameter is left empty or not specified, all inspection items are executed.
 	//
-	// ### Inspection items
+	// ### Available inspection items:
 	//
-	// - `instance_info` (instance information)
+	// 	- instance_info (instance information)
 	//
-	// - `resource_usage` (resource usage)
+	// 	- resource_usage (resource usage)
 	//
-	// - `connection_session_management` (connection and session management)
+	// 	- connection_session_management (connection and session management)
 	//
-	// - `performance_metrics` (performance metrics)
+	// 	- performance_metrics (performance metrics)
 	//
-	// - `slow_query_analysis` (slow query analysis)
+	// 	- slow_query_analysis (slow query analysis)
 	//
-	// - `error_log_analysis` (error log analysis)
+	// 	- error_log_analysis (error log analysis)
 	//
-	// - `lock_wait_deadlock_analysis` (lock wait and deadlock analysis)
+	// 	- lock_wait_deadlock_analysis (lock wait and deadlock analysis)
 	//
-	// - `backup_recovery_analysis` (backup and recovery analysis)
+	// 	- backup_recovery_analysis (backup and recovery analysis)
 	//
-	// - `high_availability_disaster_recovery_analysis` (high availability and disaster recovery inspection)
+	// 	- high_availability_disaster_recovery_analysis (high availability and disaster recovery inspection)
 	//
-	// - `security_configuration_analysis` (security configuration inspection)
+	// 	- security_configuration_analysis (security configuration inspection)
 	//
-	// - `storage_engine_analysis` (storage engine inspection)
+	// 	- storage_engine_analysis (storage engine inspection)
 	//
-	// - `schema_object_analysis` (schema and object inspection)
+	// 	- schema_object_analysis (schema and object inspection)
 	//
 	// example:
 	//
 	// instance_info, resource_usage
 	InspectionItems *string `json:"InspectionItems,omitempty" xml:"InspectionItems,omitempty"`
-	// The IDs of the instances to inspect. Separate multiple instance IDs with a comma.
+	// The list of associated instance IDs. Separate multiple IDs with commas (,).
 	//
 	// example:
 	//
 	// rm-2ze6mk259v322****,rm-2zef3b65430j0****
-	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	// The region ID.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The language of the inspection report. Valid values are zh-CN (Simplified Chinese) and en-US (English). The default value is en-US.
+	InstanceIds    *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ReportLanguage *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
 	ReportRegionId *string `json:"ReportRegionId,omitempty" xml:"ReportRegionId,omitempty"`
-	// The format of the inspection report. Valid values are pdf and json. The default value is pdf.
-	ReportType *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
-	// The beginning of the inspection time range. The time must be in UTC and formatted as YYYY-MM-DDTHH:mm:ssZ. If StartTime and EndTime are not specified, the inspection covers the last 24 hours.
+	ReportType     *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
+	// The start time of the inspection range. Format: YYYY-MM-DDTHH:mm:ssZ (UTC). Default value: 24 hours before the current time.
 	//
 	// example:
 	//
 	// 2025-12-28T16:00:00Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s CreateInspectionTaskRequest) String() string {
@@ -127,6 +127,10 @@ func (s *CreateInspectionTaskRequest) GetStartTime() *string {
 	return s.StartTime
 }
 
+func (s *CreateInspectionTaskRequest) GetTemplateId() *string {
+	return s.TemplateId
+}
+
 func (s *CreateInspectionTaskRequest) SetEndTime(v string) *CreateInspectionTaskRequest {
 	s.EndTime = &v
 	return s
@@ -164,6 +168,11 @@ func (s *CreateInspectionTaskRequest) SetReportType(v string) *CreateInspectionT
 
 func (s *CreateInspectionTaskRequest) SetStartTime(v string) *CreateInspectionTaskRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *CreateInspectionTaskRequest) SetTemplateId(v string) *CreateInspectionTaskRequest {
+	s.TemplateId = &v
 	return s
 }
 

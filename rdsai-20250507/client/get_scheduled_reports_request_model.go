@@ -22,25 +22,25 @@ type iGetScheduledReportsRequest interface {
 }
 
 type GetScheduledReportsRequest struct {
-	// The end time of the query range. The time must be in the YYYY-MM-DDTHH:mm:ssZ format.
+	// The end time for filtering (format: YYYY-MM-DDTHH:mm:ssZ). If not specified, no end time filter is applied.
 	//
 	// example:
 	//
 	// 2026-01-25T02:02:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The page number. The default value is 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. The default value is 20, and the maximum value is 100.
+	// The number of entries per page. Default value: 20. Maximum value: 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the inspection task.
+	// The inspection task ID.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type GetScheduledReportsRequest struct {
 	//
 	// 847268a4-196f-416b-aa12-bfe0c115****
 	ScheduledId *string `json:"ScheduledId,omitempty" xml:"ScheduledId,omitempty"`
-	// The start time of the query range. The time must be in the YYYY-MM-DDTHH:mm:ssZ format.
+	// The start time for filtering (format: YYYY-MM-DDTHH:mm:ssZ). If not specified, no start time filter is applied.
 	//
 	// example:
 	//

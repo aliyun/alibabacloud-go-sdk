@@ -24,28 +24,40 @@ type iModifySandboxTemplateRequest interface {
 }
 
 type ModifySandboxTemplateRequest struct {
+	// The number of CPUs for sandboxes created from this template. Valid values: 1 to 4.
+	//
 	// example:
 	//
 	// 1
 	DefaultCpu *string `json:"DefaultCpu,omitempty" xml:"DefaultCpu,omitempty"`
+	// The memory size for sandboxes created from this template. Unit: Gi. Valid values: 1Gi to 8Gi.
+	//
 	// example:
 	//
 	// 1Gi
 	DefaultMemory *string `json:"DefaultMemory,omitempty" xml:"DefaultMemory,omitempty"`
+	// The instance ID of the AI application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The initial number of instances. Valid values: 1 to 1000.
+	//
 	// example:
 	//
 	// 2
 	Replicas *int64 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// The sandbox template ID.
+	//
 	// This parameter is required.
 	//
 	// example:

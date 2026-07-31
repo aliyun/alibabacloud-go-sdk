@@ -20,12 +20,17 @@ type iModifyAppInstanceResponseBody interface {
 }
 
 type ModifyAppInstanceResponseBody struct {
-	BranchName *string                                    `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	// The list of modules.
 	Components []*ModifyAppInstanceResponseBodyComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+	// The instance ID of the AI application.
+	//
 	// example:
 	//
 	// ra-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
@@ -90,10 +95,14 @@ func (s *ModifyAppInstanceResponseBody) Validate() error {
 }
 
 type ModifyAppInstanceResponseBodyComponents struct {
+	// The module status.
+	//
 	// example:
 	//
 	// enable
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The module type.
+	//
 	// example:
 	//
 	// supabase

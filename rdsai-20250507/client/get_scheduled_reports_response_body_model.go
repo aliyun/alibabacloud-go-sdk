@@ -30,21 +30,21 @@ type GetScheduledReportsResponseBody struct {
 	//
 	// example:
 	//
-	// 获取巡检报告列表成功
+	// Successfully retrieved the inspection report list
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The page number. The default value is 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of records per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// A list of inspection reports.
+	// The report details.
 	Reports []*GetScheduledReportsResponseBodyReports `json:"Reports,omitempty" xml:"Reports,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -52,13 +52,13 @@ type GetScheduledReportsResponseBody struct {
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// The request result.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -151,36 +151,35 @@ func (s *GetScheduledReportsResponseBody) Validate() error {
 }
 
 type GetScheduledReportsResponseBodyReports struct {
-	// The time when the report was created, in YYYY-MM-DDTHH:mm:ssZ format.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2025-01-01T22:59:59Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The inspection end time, in YYYY-MM-DDTHH:mm:ssZ format.
+	// The inspection end time (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
 	// 2025-01-01T23:59:59Z
 	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	InspectionItems *string `json:"InspectionItems,omitempty" xml:"InspectionItems,omitempty"`
-	// The region ID.
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ReportLanguage *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
-	ReportType     *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
-	// The inspection start time, in YYYY-MM-DDTHH:mm:ssZ format.
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ReportLanguage  *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
+	ReportType      *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
+	// The inspection start time (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
 	// 2025-01-01T00:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the report.
+	// The status.
 	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The task ID.
+	// The inspection report ID.
 	//
 	// example:
 	//

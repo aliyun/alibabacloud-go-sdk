@@ -18,14 +18,20 @@ type iDescribeCommonSandboxTemplatesRequest interface {
 }
 
 type DescribeCommonSandboxTemplatesRequest struct {
+	// A reserved parameter. You do not need to specify this parameter.
+	//
 	// example:
 	//
 	// None
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that indicates the position from which the query starts. Set this parameter to empty to start from the beginning.
+	//
 	// example:
 	//
 	// AAAAAc3HCuYhJi/wvpk4xOr0VLYz/NvD85HpgBeRBCusEIeVQ0dHZH9jr+NP3X9Jx0iSoql55b9nd4PIDm252/a0f+U=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -577,7 +577,7 @@ func (client *Client) CreateCustomAgent(request *CreateCustomAgentRequest) (_res
 
 // Summary:
 //
-// Creates an inspection task for one or more instances.
+// Creates a batch instance inspection task.
 //
 // @param request - CreateInspectionTaskRequest
 //
@@ -624,6 +624,10 @@ func (client *Client) CreateInspectionTaskWithOptions(request *CreateInspectionT
 		query["StartTime"] = request.StartTime
 	}
 
+	if !dara.IsNil(request.TemplateId) {
+		query["TemplateId"] = request.TemplateId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -649,7 +653,7 @@ func (client *Client) CreateInspectionTaskWithOptions(request *CreateInspectionT
 
 // Summary:
 //
-// Creates an inspection task for one or more instances.
+// Creates a batch instance inspection task.
 //
 // @param request - CreateInspectionTaskRequest
 //
@@ -761,15 +765,15 @@ func (client *Client) CreateMOUsageDetailExport(request *CreateMOUsageDetailExpo
 
 // Summary:
 //
-// 创建沙箱模板
+// Creates a sandbox template.
 //
 // Description:
 //
-// ### 适用引擎
+// ### Applicable engine
 //
 // # RDS Supabase
 //
-// ### 相关功能文档
+// ### Related documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -839,15 +843,15 @@ func (client *Client) CreateSandboxTemplateWithOptions(request *CreateSandboxTem
 
 // Summary:
 //
-// 创建沙箱模板
+// Creates a sandbox template.
 //
 // Description:
 //
-// ### 适用引擎
+// ### Applicable engine
 //
 // # RDS Supabase
 //
-// ### 相关功能文档
+// ### Related documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -867,17 +871,17 @@ func (client *Client) CreateSandboxTemplate(request *CreateSandboxTemplateReques
 
 // Summary:
 //
-// Creates a scheduled inspection task for one or more instances.
+// Creates a scheduled inspection configuration for batch instances.
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engine
 //
 // # RDS PostgreSQL
 //
 // ### Related feature documentation
 //
-//	Warning: This API operation may incur charges. Please read the related feature documentation carefully before you proceed.
+//	Warning: This API operation incurs fees. Read the related feature documentation before you perform this operation.
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -934,6 +938,10 @@ func (client *Client) CreateScheduledTaskWithOptions(request *CreateScheduledTas
 		query["StartTime"] = request.StartTime
 	}
 
+	if !dara.IsNil(request.TemplateId) {
+		query["TemplateId"] = request.TemplateId
+	}
+
 	if !dara.IsNil(request.TimeRange) {
 		query["TimeRange"] = request.TimeRange
 	}
@@ -963,17 +971,17 @@ func (client *Client) CreateScheduledTaskWithOptions(request *CreateScheduledTas
 
 // Summary:
 //
-// Creates a scheduled inspection task for one or more instances.
+// Creates a scheduled inspection configuration for batch instances.
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engine
 //
 // # RDS PostgreSQL
 //
 // ### Related feature documentation
 //
-//	Warning: This API operation may incur charges. Please read the related feature documentation carefully before you proceed.
+//	Warning: This API operation incurs fees. Read the related feature documentation before you perform this operation.
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -1319,15 +1327,15 @@ func (client *Client) DeleteCustomAgent(request *DeleteCustomAgentRequest) (_res
 
 // Summary:
 //
-// 删除沙箱模板
+// Deletes a sandbox template.
 //
 // Description:
 //
-// ### 适用引擎
+// ### Applicable engine
 //
 // # RDS Supabase
 //
-// ### 相关功能文档
+// ### Related documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -1381,15 +1389,15 @@ func (client *Client) DeleteSandboxTemplateWithOptions(request *DeleteSandboxTem
 
 // Summary:
 //
-// 删除沙箱模板
+// Deletes a sandbox template.
 //
 // Description:
 //
-// ### 适用引擎
+// ### Applicable engine
 //
 // # RDS Supabase
 //
-// ### 相关功能文档
+// ### Related documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -1721,15 +1729,15 @@ func (client *Client) DescribeAppInstances(request *DescribeAppInstancesRequest)
 
 // Summary:
 //
-// 查询已支持的沙箱模板列表
+// Queries the list of supported sandbox templates.
 //
 // Description:
 //
-// ### 适用引擎
+// ### Applicable engine
 //
 // # RDS Supabase
 //
-// ### 相关功能文档
+// ### Related documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -1783,15 +1791,15 @@ func (client *Client) DescribeCommonSandboxTemplatesWithOptions(request *Describ
 
 // Summary:
 //
-// 查询已支持的沙箱模板列表
+// Queries the list of supported sandbox templates.
 //
 // Description:
 //
-// ### 适用引擎
+// ### Applicable engine
 //
 // # RDS Supabase
 //
-// ### 相关功能文档
+// ### Related documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -3369,7 +3377,7 @@ func (client *Client) GetCustomAgent(request *GetCustomAgentRequest) (_result *G
 
 // Summary:
 //
-// Queries the content of a specified inspection report.
+// Retrieves the details of an inspection report by report ID.
 //
 // @param request - GetInspectionReportRequest
 //
@@ -3421,7 +3429,7 @@ func (client *Client) GetInspectionReportWithOptions(request *GetInspectionRepor
 
 // Summary:
 //
-// Queries the content of a specified inspection report.
+// Retrieves the details of an inspection report by report ID.
 //
 // @param request - GetInspectionReportRequest
 //
@@ -3646,7 +3654,7 @@ func (client *Client) GetScheduledInstances(request *GetScheduledInstancesReques
 
 // Summary:
 //
-// Retrieves all inspection reports for a specified scheduled task. You can filter the results by time range and use pagination.
+// Queries all inspection reports under a specified scheduled task, with support for time range filtering and pagination.
 //
 // @param request - GetScheduledReportsRequest
 //
@@ -3706,7 +3714,7 @@ func (client *Client) GetScheduledReportsWithOptions(request *GetScheduledReport
 
 // Summary:
 //
-// Retrieves all inspection reports for a specified scheduled task. You can filter the results by time range and use pagination.
+// Queries all inspection reports under a specified scheduled task, with support for time range filtering and pagination.
 //
 // @param request - GetScheduledReportsRequest
 //
@@ -3790,7 +3798,7 @@ func (client *Client) GetSkill(request *GetSkillRequest) (_result *GetSkillRespo
 
 // Summary:
 //
-// Retrieves paginated standalone inspection reports on a specified user\\"s non-scheduled tasks.
+// Queries the list of individual inspection reports for all non-scheduled tasks under a specified user, with pagination support.
 //
 // @param request - GetStandAloneReportsRequest
 //
@@ -3850,7 +3858,7 @@ func (client *Client) GetStandAloneReportsWithOptions(request *GetStandAloneRepo
 
 // Summary:
 //
-// Retrieves paginated standalone inspection reports on a specified user\\"s non-scheduled tasks.
+// Queries the list of individual inspection reports for all non-scheduled tasks under a specified user, with pagination support.
 //
 // @param request - GetStandAloneReportsRequest
 //
@@ -4151,7 +4159,7 @@ func (client *Client) ListLLMTokenUsage(request *ListLLMTokenUsageRequest) (_res
 
 // Summary:
 //
-// Lists basic information about all inspection configurations for the specified user ID.
+// Queries the list of basic information about all inspection configurations under a specified user UID.
 //
 // @param request - ListScheduledTasksRequest
 //
@@ -4203,7 +4211,7 @@ func (client *Client) ListScheduledTasksWithOptions(request *ListScheduledTasksR
 
 // Summary:
 //
-// Lists basic information about all inspection configurations for the specified user ID.
+// Queries the list of basic information about all inspection configurations under a specified user UID.
 //
 // @param request - ListScheduledTasksRequest
 //
@@ -4291,15 +4299,15 @@ func (client *Client) ListSkill(request *ListSkillRequest) (_result *ListSkillRe
 
 // Summary:
 //
-// 修改RDS AI应用实例
+// Modifies the modules of an RDS AI application instance.
 //
 // Description:
 //
-// ### 适用引擎
+// ### Applicable engine
 //
 // # RDS PostgreSQL
 //
-// ### 相关功能文档
+// ### Related documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -4375,15 +4383,15 @@ func (client *Client) ModifyAppInstanceWithOptions(tmpReq *ModifyAppInstanceRequ
 
 // Summary:
 //
-// 修改RDS AI应用实例
+// Modifies the modules of an RDS AI application instance.
 //
 // Description:
 //
-// ### 适用引擎
+// ### Applicable engine
 //
 // # RDS PostgreSQL
 //
-// ### 相关功能文档
+// ### Related documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -5171,15 +5179,15 @@ func (client *Client) ModifyMessagesFeedbacks(request *ModifyMessagesFeedbacksRe
 
 // Summary:
 //
-// 修改沙箱模板
+// Modifies a sandbox template.
 //
 // Description:
 //
-// ### 适用引擎
+// ### Applicable engine
 //
 // # RDS Supabase
 //
-// ### 相关功能文档
+// ### Related documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -5245,15 +5253,15 @@ func (client *Client) ModifySandboxTemplateWithOptions(request *ModifySandboxTem
 
 // Summary:
 //
-// 修改沙箱模板
+// Modifies a sandbox template.
 //
 // Description:
 //
-// ### 适用引擎
+// ### Applicable engine
 //
 // # RDS Supabase
 //
-// ### 相关功能文档
+// ### Related documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -5318,6 +5326,10 @@ func (client *Client) ModifyScheduledTaskWithOptions(request *ModifyScheduledTas
 
 	if !dara.IsNil(request.StartTime) {
 		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		query["TemplateId"] = request.TemplateId
 	}
 
 	if !dara.IsNil(request.TimeRange) {
@@ -5605,15 +5617,15 @@ func (client *Client) ResetApiKey(request *ResetApiKeyRequest) (_result *ResetAp
 
 // Summary:
 //
-// 重置RDS AI实例的Keys
+// Resets the keys of an RDS AI instance, including AnonKey, ServiceKey, and JwtSecret. After the reset, the old keys and secret become invalid immediately. Ensure that your applications are adapted accordingly.
 //
 // Description:
 //
-// ### 适用引擎
+// ### Applicable engine
 //
 // # RDS PostgreSQL
 //
-// ### 相关功能文档
+// ### Related documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -5663,15 +5675,15 @@ func (client *Client) ResetInstanceKeysWithOptions(request *ResetInstanceKeysReq
 
 // Summary:
 //
-// 重置RDS AI实例的Keys
+// Resets the keys of an RDS AI instance, including AnonKey, ServiceKey, and JwtSecret. After the reset, the old keys and secret become invalid immediately. Ensure that your applications are adapted accordingly.
 //
 // Description:
 //
-// ### 适用引擎
+// ### Applicable engine
 //
 // # RDS PostgreSQL
 //
-// ### 相关功能文档
+// ### Related documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //

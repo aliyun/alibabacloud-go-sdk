@@ -29,7 +29,7 @@ type ChatMessagesRequest struct {
 	// fea7bdca-e848-44dd-b1ae-852472b8****
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
 	EventMode      *string `json:"EventMode,omitempty" xml:"EventMode,omitempty"`
-	// The task inputs.
+	// The task input.
 	Inputs *ChatMessagesRequestInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
 	// The parent message ID.
 	//
@@ -43,7 +43,7 @@ type ChatMessagesRequest struct {
 	//
 	// example:
 	//
-	// The disk usage of instance rm-bp14as9914vd3****. Is capacity expansion required?
+	// Disk usage of instance rm-bp14as9914vd3****, whether expansion is needed
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 }
 

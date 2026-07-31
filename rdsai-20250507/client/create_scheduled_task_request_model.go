@@ -29,6 +29,8 @@ type iCreateScheduledTaskRequest interface {
 	GetReportType() *string
 	SetStartTime(v string) *CreateScheduledTaskRequest
 	GetStartTime() *string
+	SetTemplateId(v string) *CreateScheduledTaskRequest
+	GetTemplateId() *string
 	SetTimeRange(v string) *CreateScheduledTaskRequest
 	GetTimeRange() *string
 }
@@ -38,66 +40,64 @@ type CreateScheduledTaskRequest struct {
 	//
 	// example:
 	//
-	// 定时RDS实例巡检任务
+	// Scheduled RDS instance inspection task
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The inspection frequency. Use commas (,) to separate multiple values. The default is DAILY. Valid values:
+	// The inspection frequency. Separate multiple values with commas (,). Default value: DAILY. Valid values:
 	//
-	// - DAILY: Every day
+	// 	- DAILY: every day.
 	//
-	// - Monday: Monday
+	// 	- Monday: Monday.
 	//
-	// - Tuesday: Tuesday
+	// 	- Tuesday: Tuesday.
 	//
-	// - Wednesday: Wednesday
+	// 	- Wednesday: Wednesday.
 	//
-	// - Thursday: Thursday
+	// 	- Thursday: Thursday.
 	//
-	// - Friday: Friday
+	// 	- Friday: Friday.
 	//
-	// - Saturday: Saturday
+	// 	- Saturday: Saturday.
 	//
-	// - Sunday: Sunday
+	// 	- Sunday: Sunday.
 	//
-	// ### Note: DAILY overrides weekly values. For example, if you enter DAILY,Monday, the system uses DAILY as the inspection frequency.
+	// ### Note: DAILY overrides weekly values. For example, if you specify DAILY,Monday, the system uses DAILY as the inspection frequency.
 	//
 	// example:
 	//
 	// Monday
 	Frequency       *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
 	InspectionItems *string `json:"InspectionItems,omitempty" xml:"InspectionItems,omitempty"`
-	// The IDs of the instances for the task. Use commas (,) to separate multiple IDs.
+	// The list of associated instance IDs. Separate multiple IDs with commas (,).
 	//
 	// example:
 	//
 	// rm-2ze6mk259v322****,rm-2zef3b65430j0****
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	// The name of the scheduled inspection task. The maximum length is 64 characters.
+	// The name of the scheduled inspection task. The name can be up to 64 characters in length.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// RDS巡检
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the region.
+	// RDS Inspection
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The report language. The default value is zh-CN. Supported values: zh-CN, zh-TW, ja-JP, and en-US.
+	// The report language. Default value: zh-CN. Valid values: zh-CN, zh-TW, ja-JP, and en-US.
 	//
 	// example:
 	//
 	// zh-CN
 	ReportLanguage *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
-	// The ID of the region where the report is stored.
 	ReportRegionId *string `json:"ReportRegionId,omitempty" xml:"ReportRegionId,omitempty"`
-	// The type of the report.
-	ReportType *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
-	// The execution time for the scheduled inspection task. Specify the time in the HH:mm:ssZ format (UTC time). The default is 02:00:00Z.
+	ReportType     *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
+	// The time to run the inspection task. Format: HH:mm:ssZ (UTC). Default value: 02:00:00Z.
 	//
 	// example:
 	//
 	// 02:00:00Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The time range of data to inspect, in hours. Valid values are from 1 to 168 (7 days). The default is 24.
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The time range for the inspection. Default value: the last 24 hours. Valid values: 1 to 168 (up to 7 days).
 	//
 	// example:
 	//
@@ -153,6 +153,10 @@ func (s *CreateScheduledTaskRequest) GetStartTime() *string {
 	return s.StartTime
 }
 
+func (s *CreateScheduledTaskRequest) GetTemplateId() *string {
+	return s.TemplateId
+}
+
 func (s *CreateScheduledTaskRequest) GetTimeRange() *string {
 	return s.TimeRange
 }
@@ -204,6 +208,11 @@ func (s *CreateScheduledTaskRequest) SetReportType(v string) *CreateScheduledTas
 
 func (s *CreateScheduledTaskRequest) SetStartTime(v string) *CreateScheduledTaskRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *CreateScheduledTaskRequest) SetTemplateId(v string) *CreateScheduledTaskRequest {
+	s.TemplateId = &v
 	return s
 }
 

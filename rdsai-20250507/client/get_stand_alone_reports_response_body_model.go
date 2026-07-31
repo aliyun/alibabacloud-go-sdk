@@ -30,21 +30,21 @@ type GetStandAloneReportsResponseBody struct {
 	//
 	// example:
 	//
-	// 获取巡检报告列表成功
+	// Successfully retrieved the inspection report list
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The page number. The default value is 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. The default value is 20 and the maximum value is 100.
+	// The number of entries per page. Default value: 20. Maximum value: 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// A list of inspection reports.
+	// The list of reports.
 	Reports []*GetStandAloneReportsResponseBodyReports `json:"Reports,omitempty" xml:"Reports,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -52,13 +52,13 @@ type GetStandAloneReportsResponseBody struct {
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// The request result.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of entries across all pages.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -151,41 +151,42 @@ func (s *GetStandAloneReportsResponseBody) Validate() error {
 }
 
 type GetStandAloneReportsResponseBodyReports struct {
-	// The time the inspection task was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2026-01-22T08:20:31Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The end time of the inspection. The time is in UTC and uses the `YYYY-MM-DDTHH:mm:ssZ` format.
+	// The inspection end time (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
 	// 2026-01-23T08:20:31Z
 	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	InspectionItems *string `json:"InspectionItems,omitempty" xml:"InspectionItems,omitempty"`
-	// The ID of the region.
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ReportLanguage *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
-	ReportType     *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
-	// The start time of the inspection. The time is in UTC and uses the `YYYY-MM-DDTHH:mm:ssZ` format.
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ReportLanguage  *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
+	ReportType      *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
+	// The inspection start time (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
 	// 2026-01-23T08:00:31Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the inspection task.
+	// The status.
 	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the inspection task.
+	// The inspection report ID.
 	//
 	// example:
 	//
 	// 0f19210c-7bb8-4e38-a099-f94152df****
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId       *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
 func (s GetStandAloneReportsResponseBodyReports) String() string {
@@ -232,6 +233,14 @@ func (s *GetStandAloneReportsResponseBodyReports) GetTaskId() *string {
 	return s.TaskId
 }
 
+func (s *GetStandAloneReportsResponseBodyReports) GetTemplateId() *string {
+	return s.TemplateId
+}
+
+func (s *GetStandAloneReportsResponseBodyReports) GetTemplateName() *string {
+	return s.TemplateName
+}
+
 func (s *GetStandAloneReportsResponseBodyReports) SetCreatedTime(v string) *GetStandAloneReportsResponseBodyReports {
 	s.CreatedTime = &v
 	return s
@@ -274,6 +283,16 @@ func (s *GetStandAloneReportsResponseBodyReports) SetStatus(v string) *GetStandA
 
 func (s *GetStandAloneReportsResponseBodyReports) SetTaskId(v string) *GetStandAloneReportsResponseBodyReports {
 	s.TaskId = &v
+	return s
+}
+
+func (s *GetStandAloneReportsResponseBodyReports) SetTemplateId(v string) *GetStandAloneReportsResponseBodyReports {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *GetStandAloneReportsResponseBodyReports) SetTemplateName(v string) *GetStandAloneReportsResponseBodyReports {
+	s.TemplateName = &v
 	return s
 }
 

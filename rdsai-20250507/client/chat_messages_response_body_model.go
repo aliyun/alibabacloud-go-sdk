@@ -34,7 +34,7 @@ type ChatMessagesResponseBody struct {
 	//
 	// example:
 	//
-	// The disk usage of instance rm-bp14as9914vd3***	- is 23%, and capacity expansion is not required at this time. If you need to view the detailed configuration or performance monitoring of an instance, or perform other operations, let me know your specific requirements!
+	// The disk usage of instance rm-bp14as9914vd3***	- is 23%, and expansion is not needed at this time. If you need to view the detailed configuration, performance monitoring, or perform other operations for an instance, please let me know your specific requirements!
 	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
 	// The conversation ID.
 	//
@@ -70,7 +70,7 @@ type ChatMessagesResponseBody struct {
 	//
 	// example:
 	//
-	// This field will be deprecated. Ignore it.
+	// Will be deprecated in the future. Ignore this field
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The request ID.
 	//
