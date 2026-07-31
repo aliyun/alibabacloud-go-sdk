@@ -16,13 +16,13 @@ type iGetFailFileRequest interface {
 }
 
 type GetFailFileRequest struct {
-	// The site ID. You can obtain this by calling the [ListSites](~~ListSites~~) operation.
+	// The site ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
 	//
 	// example:
 	//
 	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The file upload task ID. You can obtain this by calling the [UploadFile](https://help.aliyun.com/document_detail/2850466.html) operation to create an upload task, or by calling the [ListUploadTasks](https://help.aliyun.com/document_detail/2851127.html) operation to query existing tasks.
+	// The file upload task ID. You can obtain this ID by calling the [UploadFile](https://help.aliyun.com/document_detail/2850466.html) operation to create an upload task, or by calling the [ListUploadTasks](https://help.aliyun.com/document_detail/2851127.html) operation to query existing tasks.
 	//
 	// example:
 	//

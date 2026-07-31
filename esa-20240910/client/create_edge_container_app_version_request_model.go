@@ -196,7 +196,7 @@ type CreateEdgeContainerAppVersionRequestContainers struct {
 	//
 	// sh poststart.sh "echo hello world"
 	PostStart *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
-	// The command to execute before the container stops. Separate multiple commands with spaces. This command is executed before the service exits and is typically used for cleanup operations.
+	// The command to execute before the container stops. Separate multiple commands with spaces. This command is executed before the service exits and is typically used for cleanup operations before exit.
 	//
 	// example:
 	//
@@ -208,15 +208,15 @@ type CreateEdgeContainerAppVersionRequestContainers struct {
 	//
 	// example:
 	//
-	// 具体字段可参照k8s官方就绪探针的定义。
+	// For specific fields, refer to the official Kubernetes readiness probe definition
 	ProbeContent *CreateEdgeContainerAppVersionRequestContainersProbeContent `json:"ProbeContent,omitempty" xml:"ProbeContent,omitempty" type:"Struct"`
 	// The probe type. Valid values:
 	//
 	// - **exec**: Command-based.
 	//
-	// - **tcpSocket**: TCP-based.
+	// - **tcpSocket**: TCP detection-based.
 	//
-	// - **httpGet**: HTTP-based.
+	// - **httpGet**: HTTP access-based.
 	//
 	// This parameter is required.
 	//
@@ -224,7 +224,7 @@ type CreateEdgeContainerAppVersionRequestContainers struct {
 	//
 	// exec
 	ProbeType *string `json:"ProbeType,omitempty" xml:"ProbeType,omitempty"`
-	// The container specifications. Specifies the computing power specifications. Valid values: 1C2G, 2C4G, 2C8G, 4C8G, 4C16G, 8C16G, and 8C32G.
+	// The container specifications. Specifies the computing specifications. Valid values: 1C2G, 2C4G, 2C8G, 4C8G, 4C16G, 8C16G, and 8C32G.
 	//
 	// This parameter is required.
 	//
@@ -552,11 +552,11 @@ type CreateEdgeContainerAppVersionRequestContainersProbeContent struct {
 	//
 	// [{\\"Content-Type\\":\\"application/json\\"}]
 	HttpHeaders *string `json:"HttpHeaders,omitempty" xml:"HttpHeaders,omitempty"`
-	// The initial delay time for the container probe, in seconds. For example, 5 indicates that the initial delay is set to 5 seconds.
+	// The initial delay time for the container probe. Unit: seconds. For example, 5 indicates that the initial delay time is set to 5 seconds.
 	//
 	// example:
 	//
-	// 1
+	// 5
 	InitialDelaySeconds *int32 `json:"InitialDelaySeconds,omitempty" xml:"InitialDelaySeconds,omitempty"`
 	// The path for the container health check.
 	//
@@ -564,7 +564,7 @@ type CreateEdgeContainerAppVersionRequestContainersProbeContent struct {
 	//
 	// /
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The interval between container health checks, in seconds. For example, 5 indicates that the health check interval is set to 5 seconds.
+	// The interval for the container health check. Unit: seconds. For example, 5 indicates that the health check interval is set to 5 seconds.
 	//
 	// example:
 	//
@@ -588,7 +588,7 @@ type CreateEdgeContainerAppVersionRequestContainersProbeContent struct {
 	//
 	// 1
 	SuccessThreshold *int32 `json:"SuccessThreshold,omitempty" xml:"SuccessThreshold,omitempty"`
-	// The timeout period for the container health check, in seconds. For example, 5 indicates that the timeout is set to 5 seconds.
+	// The timeout period for the container health check. Unit: seconds. For example, 5 indicates that the timeout period is set to 5 seconds.
 	//
 	// example:
 	//

@@ -26,13 +26,13 @@ type iDescribePreloadTasksRequest interface {
 }
 
 type DescribePreloadTasksRequest struct {
-	// The content to prefetch. Exact match is supported.
+	// The query content. Exact match is used.
 	//
 	// example:
 	//
 	// http://a.com/1.jpg?b=2
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The end time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The end time. The date is in ISO 8601 format and uses UTC+0 time in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// > The end time must be later than the start time.
 	//
@@ -46,31 +46,31 @@ type DescribePreloadTasksRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 20. Valid values: 1 to 50.
+	// The page size. Default value: **20**. Maximum value: **50**. Valid values: any integer from **1*	- to **50**.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
 	//
 	// example:
 	//
 	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The start time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The start time. The date is in ISO 8601 format and uses UTC+0 time in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2023-03-22T17:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The task status. Valid values:
+	// The task execution status. Valid values:
 	//
-	// - **Complete**: The task is complete.
+	// - **Complte**: Complete.
 	//
-	// - **Refreshing**: The task is running.
+	// - **Refreshing**: Prefetching.
 	//
-	// - **Failed**: The task failed.
+	// - **Failed**: Prefetch failed.
 	//
 	// example:
 	//

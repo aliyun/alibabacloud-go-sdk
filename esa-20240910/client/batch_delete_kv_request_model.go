@@ -16,11 +16,11 @@ type iBatchDeleteKvRequest interface {
 }
 
 type BatchDeleteKvRequest struct {
-	// List of keys to delete in bulk. You can delete up to 10,000 keys.
+	// The list of key names to delete in batch. A maximum of 10,000 keys can be deleted.
 	//
 	// This parameter is required.
 	Keys []*string `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
-	// Name specified when you call [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html).
+	// The name specified when calling [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html).
 	//
 	// This parameter is required.
 	//

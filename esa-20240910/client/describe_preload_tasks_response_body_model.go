@@ -28,7 +28,7 @@ type DescribePreloadTasksResponseBody struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type DescribePreloadTasksResponseBody struct {
 	//
 	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The tasks.
+	// The task list.
 	Tasks []*DescribePreloadTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,49 +117,49 @@ func (s *DescribePreloadTasksResponseBody) Validate() error {
 }
 
 type DescribePreloadTasksResponseBodyTasks struct {
-	// The prefetched content.
+	// The prefetch object.
 	//
 	// example:
 	//
 	// http://a.com/1.jpg?b=2
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The time when the task was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2023-03-28 14:28:57
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The error message returned upon a prefetch task failure. Valid values:
+	// The error description returned when the prefetch fails. Valid values:
 	//
-	// - **Internal Error**
+	// - **Internal Error**: An internal error occurred.
 	//
-	// - **Origin Timeout**
+	// - **Origin Timeout**: The origin server response timed out.
 	//
-	// - **Origin Return StatusCode 5XX**
+	// - **Origin Return StatusCode 5XX**: The origin server returned a 5xx error code.
 	//
 	// example:
 	//
 	// Internal Error
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The progress of the task, in percentage.
+	// The task completion progress percentage.
 	//
 	// example:
 	//
 	// 100%
 	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
-	// The task status.
+	// The task status. Valid values:
 	//
-	// - **Complete**: The task is complete.
+	// - **Complete**: Complete.
 	//
-	// - **Refreshing**: The task is in progress.
+	// - **Refreshing**: Prefetching.
 	//
-	// - **Failed**: The task failed.
+	// - **Failed**: Prefetch failed.
 	//
 	// example:
 	//
 	// Complete
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the queried task.
+	// The task ID.
 	//
 	// example:
 	//

@@ -18,11 +18,11 @@ type iPreloadCachesShrinkRequest interface {
 }
 
 type PreloadCachesShrinkRequest struct {
-	// The prefetch objects.
+	// The objects to prefetch.
 	ContentShrink *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The default header carried in a prefetch request is Accept-Encoding:gzip. If you want the prefetch request to carry other headers or implement multi-copy prefetching, use this parameter to specify custom prefetch headers.
+	// The default header carried in a prefetch request is Accept-Encoding:gzip. If you want the prefetch request to carry other headers or implement multi-copy prefetching, use this parameter to customize the prefetch headers.
 	HeadersShrink *string `json:"Headers,omitempty" xml:"Headers,omitempty"`
-	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
 	//
 	// example:
 	//

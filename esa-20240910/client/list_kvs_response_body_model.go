@@ -123,7 +123,7 @@ type ListKvsResponseBodyKeys struct {
 	//
 	// Key1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The time when the key was last updated, in ISO 8601 format (for example, 2024-01-01T00:00:00+Z).
+	// The update time of the key in ISO 8601 format (for example, 2024-01-01T00:00:00+Z).
 	//
 	// example:
 	//

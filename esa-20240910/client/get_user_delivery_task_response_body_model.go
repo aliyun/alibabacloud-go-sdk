@@ -40,13 +40,13 @@ type iGetUserDeliveryTaskResponseBody interface {
 type GetUserDeliveryTaskResponseBody struct {
 	// The business type. Valid values:
 	//
-	// - **dcdn_log_access_l1*	- (default): access log.
+	// - **dcdn_log_access_l1*	- (default): access logs.
 	//
-	// - **dcdn_log_er**: edge function log.
+	// - **dcdn_log_er**: Edge Routine function logs.
 	//
-	// - **dcdn_log_waf**: WAF log.
+	// - **dcdn_log_waf**: security protection logs.
 	//
-	// - **dcdn_log_ipa**: Layer 4 acceleration log.
+	// - **dcdn_log_ipa**: Layer 4 acceleration logs.
 	//
 	// example:
 	//
@@ -54,9 +54,9 @@ type GetUserDeliveryTaskResponseBody struct {
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
 	// The data center. Valid values:
 	//
-	// - **cn**: Chinese mainland
+	// - **cn**: the Chinese mainland.
 	//
-	// - **sg**: Global (excluding the Chinese mainland)
+	// - **sg**: global (excluding the Chinese mainland).
 	//
 	// example:
 	//
@@ -64,30 +64,35 @@ type GetUserDeliveryTaskResponseBody struct {
 	DataCenter *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
 	// The delivery type. Valid values:
 	//
-	// - **sls**: Log Service
+	// - **sls**: Alibaba Cloud Simple Log Service.
 	//
-	// - **http**: HTTP service
+	// - **http**: HTTP service.
 	//
-	// - **aws3**: Amazon S3
+	// - **aws3**: Amazon S3 service.
 	//
-	// - **oss**: OSS
+	// - **oss**: Alibaba Cloud Object Storage Service.
 	//
-	// - **kafka**: Kafka service
+	// - **kafka**: Kafka service.
 	//
-	// - **aws3cmpt**: Amazon S3-compatible service
+	// - **aws3cmpt**: Amazon S3-compatible service.
 	//
 	// example:
 	//
 	// oss
 	DeliveryType *string `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
-	Details      *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// The list of Edge Routine PODs.
+	//
+	// example:
+	//
+	// xxx,xxx
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
 	// The discard rate.
 	//
 	// example:
 	//
 	// 0
 	DiscardRate *float32 `json:"DiscardRate,omitempty" xml:"DiscardRate,omitempty"`
-	// A comma-separated list of fields.
+	// The field array.
 	//
 	// example:
 	//
@@ -99,8 +104,44 @@ type GetUserDeliveryTaskResponseBody struct {
 	//
 	// [{"ClientSSLProtocol": {"equals": ["TLSv1.3"]}}]
 	FilterRules *string `json:"FilterRules,omitempty" xml:"FilterRules,omitempty"`
-	FilterVer   *string `json:"FilterVer,omitempty" xml:"FilterVer,omitempty"`
-	RawRule     *string `json:"RawRule,omitempty" xml:"RawRule,omitempty"`
+	// The version of the filter rules.
+	//
+	// > For backward compatibility with legacy filter rules, the default value is v1. Newly created rules use v2.
+	//
+	// example:
+	//
+	// v2
+	FilterVer *string `json:"FilterVer,omitempty" xml:"FilterVer,omitempty"`
+	// The filter rules for the delivery task.
+	//
+	// > New version of delivery filter rules.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "where": {
+	//
+	//     "or": [
+	//
+	//       {
+	//
+	//         "and": [
+	//
+	//           { "key": "site", "operator": "eq", "value": "example.com" },
+	//
+	//           { "key": "status_code", "operator": "in", "value": ["200", "304"] }
+	//
+	//         ]
+	//
+	//       }
+	//
+	//     ]
+	//
+	//   }
+	//
+	// }
+	RawRule *string `json:"RawRule,omitempty" xml:"RawRule,omitempty"`
 	// The request ID.
 	//
 	// example:

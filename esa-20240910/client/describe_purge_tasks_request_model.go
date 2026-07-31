@@ -71,11 +71,11 @@ type DescribePurgeTasksRequest struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The task execution status. Valid values:
 	//
-	// - **Complete**: Completed.
+	// - **Complete**: completed.
 	//
-	// - **Refreshing**: Refreshing.
+	// - **Refreshing**: refreshing.
 	//
-	// - **Failed**: Refresh failed.
+	// - **Failed**: refresh failed.
 	//
 	// example:
 	//

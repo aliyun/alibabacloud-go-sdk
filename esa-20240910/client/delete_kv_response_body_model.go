@@ -14,7 +14,7 @@ type iDeleteKvResponseBody interface {
 }
 
 type DeleteKvResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

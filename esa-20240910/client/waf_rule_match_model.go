@@ -26,35 +26,35 @@ type iWafRuleMatch interface {
 }
 
 type WafRuleMatch struct {
-	// 值大小写不敏感。
+	// Specifies whether the value is case-insensitive.
 	ConvertToLower *bool `json:"ConvertToLower,omitempty" xml:"ConvertToLower,omitempty"`
-	// 逻辑列表。
+	// The logic list.
 	Criteria []*WafRuleMatch `json:"Criteria,omitempty" xml:"Criteria,omitempty" type:"Repeated"`
-	// 逻辑关系。
+	// The logic relationship.
 	//
 	// example:
 	//
 	// and
 	Logic *string `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	// 匹配符。
+	// The match operator.
 	//
 	// example:
 	//
 	// eq
 	MatchOperator *string `json:"MatchOperator,omitempty" xml:"MatchOperator,omitempty"`
-	// 匹配域。
+	// The match field.
 	//
 	// example:
 	//
 	// ip.src
 	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
-	// 匹配值。
+	// The match value.
 	//
 	// example:
 	//
 	// 1.1.1.1
 	MatchValue interface{} `json:"MatchValue,omitempty" xml:"MatchValue,omitempty"`
-	// 匹配结果取反。
+	// Specifies whether to negate the match result.
 	Negate *bool `json:"Negate,omitempty" xml:"Negate,omitempty"`
 }
 

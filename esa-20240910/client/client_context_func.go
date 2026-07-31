@@ -399,7 +399,7 @@ func (client *Client) BatchCreateWafRulesWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Delete key-value pairs in bulk from a specified namespace.
+// Batch deletes key-value pairs from a specified KV namespace based on a specified list of key names.
 //
 // @param tmpReq - BatchDeleteKvRequest
 //
@@ -455,21 +455,21 @@ func (client *Client) BatchDeleteKvWithContext(ctx context.Context, tmpReq *Batc
 
 // Summary:
 //
-// Batch deletes key-value pairs from a specified KV namespace based on a specified list of key names. The maximum request body size is 100 MB.
+// Batch deletes key-value pairs from a specified KV namespace based on a list of key names. The maximum request body size is 100 MB.
 //
 // Description:
 //
 //	Notice:
 //
-// Prerequisites for non-SDK calls: (1) You must have an OSS bucket with read and write permissions. (2) You must be able to generate a pre-signed HTTPS GET URL by using the OSS SDK or API. (3) The uploaded JSON file must use the same format as the BatchDeleteKv request body..
+// Prerequisites for non-SDK calls: (1) You must have an OSS bucket with read and write permissions. (2) You must be able to generate a pre-signed HTTPS GET URL by using the OSS SDK or API. (3) The uploaded JSON file format must be the same as the BatchDeleteKv request body.
 //
-// This operation provides the same functionality as [BatchDeleteKv](https://help.aliyun.com/document_detail/2850204.html), but allows a larger request body. If the request body is small, use the [BatchDeleteKv](https://help.aliyun.com/document_detail/2850204.html) operation to reduce server-side processing time. This operation must be called by using an SDK. For example, when using the Golang SDK, call the BatchDeleteKvWithHighCapacityAdvance function.
+// This operation provides the same functionality as [BatchDeleteKv](https://help.aliyun.com/document_detail/2850204.html), but allows a larger request body. If the request body is small, use the [BatchDeleteKv](https://help.aliyun.com/document_detail/2850204.html) operation directly to reduce server processing time. This operation must be called by using an SDK. For example, when using the Golang SDK, call the BatchDeleteKvWithHighCapacityAdvance function.
 //
 // ```
 //
 // func TestBatchDeleteWithHighCapacity() error {
 //
-//	// Initialize the configuration
+//	// Configuration initialization
 //
 //	cfg := new(openapi.Config)
 //
@@ -485,9 +485,9 @@ func (client *Client) BatchDeleteKvWithContext(ctx context.Context, tmpReq *Batc
 //
 //	}
 //
-//	runtime := &util.RuntimeOptions{}.
+//	runtime := &util.RuntimeOptions{}
 //
-//	// Construct the batch delete request for key-value pairs
+//	// Construct the batch delete key-value pair request
 //
 //	namespace := "test_batch_put"
 //
@@ -511,9 +511,9 @@ func (client *Client) BatchDeleteKvWithContext(ctx context.Context, tmpReq *Batc
 //
 //		return err
 //
-//	}.
+//	}
 //
-//	// If the payload is larger than 2 MB, call the high-capacity operation to delete the key-value pairs
+//	// If the payload is larger than 2 MB, call the high-capacity operation to delete
 //
 //	reqHighCapacity := BatchDeleteKvWithHighCapacityAdvanceRequest{
 //
@@ -533,7 +533,7 @@ func (client *Client) BatchDeleteKvWithContext(ctx context.Context, tmpReq *Batc
 //
 //	return nil
 //
-// }.
+// }
 //
 // @param request - BatchDeleteKvWithHighCapacityRequest
 //
@@ -653,7 +653,7 @@ func (client *Client) BatchGetExpressionFieldsWithContext(ctx context.Context, t
 
 // Summary:
 //
-// Sets multiple key-value pairs in a specified namespace.
+// Batch sets key-value pairs in a specified KV namespace based on a specified list of key names.
 //
 // @param tmpReq - BatchPutKvRequest
 //
@@ -713,13 +713,13 @@ func (client *Client) BatchPutKvWithContext(ctx context.Context, tmpReq *BatchPu
 //
 // Description:
 //
-// This operation provides the same functionality as [BatchPutKv](https://help.aliyun.com/document_detail/2850203.html), but allows larger request bodies. If the request body is small, use the [BatchPutKv](https://help.aliyun.com/document_detail/2850203.html) operation to reduce server-side processing time. This operation must be called by using an SDK. For example, when using the Golang SDK, call the BatchPutKvWithHighCapacityAdvance function.
+// This operation provides the same functionality as [BatchPutKv](https://help.aliyun.com/document_detail/2850203.html), but allows you to upload a larger request body. If the request body is small, use the [BatchPutKv](https://help.aliyun.com/document_detail/2850203.html) operation directly to reduce server processing time. This operation must be called by using an SDK. Taking the Golang SDK as an example, call the BatchPutKvWithHighCapacityAdvance function.
 //
 // ```
 //
 // func TestBatchPutKvWithHighCapacity() error {
 //
-//	// Initialize the configuration
+//	// Configuration initialization
 //
 //	cfg := new(openapi.Config)
 //
@@ -735,9 +735,9 @@ func (client *Client) BatchPutKvWithContext(ctx context.Context, tmpReq *BatchPu
 //
 //	}
 //
-//	runtime := &util.RuntimeOptions{}.
+//	runtime := &util.RuntimeOptions{}
 //
-//	// Construct the key-value pairs for batch upload
+//	// Construct the key-value pairs request for batch upload
 //
 //	namespace := "test_batch_put"
 //
@@ -769,7 +769,7 @@ func (client *Client) BatchPutKvWithContext(ctx context.Context, tmpReq *BatchPu
 //
 //		KvList:    kvList,
 //
-//	}.
+//	}
 //
 //	payload, err := json.Marshal(rawReq)
 //
@@ -777,9 +777,9 @@ func (client *Client) BatchPutKvWithContext(ctx context.Context, tmpReq *BatchPu
 //
 //		return err
 //
-//	}.
+//	}
 //
-//	// If the payload is larger than 2 MB, call the high-capacity operation to upload it
+//	// If the payload is larger than 2 MB, call the high-capacity operation to upload
 //
 //	reqHighCapacity := BatchPutKvWithHighCapacityAdvanceRequest{
 //
@@ -799,7 +799,7 @@ func (client *Client) BatchPutKvWithContext(ctx context.Context, tmpReq *BatchPu
 //
 //	return nil
 //
-// }.
+// }
 //
 // @param request - BatchPutKvWithHighCapacityRequest
 //
@@ -923,7 +923,7 @@ func (client *Client) BatchUpdateWafRulesWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Blocks access to specified URLs.
+// Blocks access to a specified URL.
 //
 // @param tmpReq - BlockObjectRequest
 //
@@ -2691,7 +2691,7 @@ func (client *Client) CreateImageTransformWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Creates a KV namespace in the current account.
+// Creates a key-value (KV) namespace under the current account.
 //
 // @param request - CreateKvNamespaceRequest
 //
@@ -4121,7 +4121,7 @@ func (client *Client) CreateScheduledPreloadExecutionsWithContext(ctx context.Co
 
 // Summary:
 //
-// Add a scheduled prefetch task.
+// Adds a scheduled prefetch task.
 //
 // @param request - CreateScheduledPreloadJobRequest
 //
@@ -6415,7 +6415,7 @@ func (client *Client) DeleteKeylessServerWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Delete a specific key-value pair from a namespace.
+// Deletes a specific key-value pair from a KV namespace.
 //
 // @param request - DeleteKvRequest
 //
@@ -6455,7 +6455,7 @@ func (client *Client) DeleteKvWithContext(ctx context.Context, request *DeleteKv
 
 // Summary:
 //
-// Deletes a namespace from your account.
+// Deletes a single KV namespace owned by the account.
 //
 // @param request - DeleteKvNamespaceRequest
 //
@@ -7293,7 +7293,7 @@ func (client *Client) DeleteRoutineRouteWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Deletes a single scheduled preload plan.
+// Deletes a single scheduled prefetch plan by prefetch plan ID.
 //
 // @param request - DeleteScheduledPreloadExecutionRequest
 //
@@ -7337,7 +7337,7 @@ func (client *Client) DeleteScheduledPreloadExecutionWithContext(ctx context.Con
 
 // Summary:
 //
-// Deletes a specified scheduled preload job.
+// Deletes a specified scheduled prefetch task by task ID.
 //
 // @param request - DeleteScheduledPreloadJobRequest
 //
@@ -8413,7 +8413,7 @@ func (client *Client) DescribeDDoSBpsListWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the peak bits per second (BPS) and packets per second (PPS) data of DDoS attacks at the network layer.
+// Queries the peak BPS and PPS data of DDoS network-layer attacks.
 //
 // @param request - DescribeDDoSBpsMaxRequest
 //
@@ -8989,7 +8989,7 @@ func (client *Client) DescribeHttpDDoSIntelligentRateLimitRulesWithContext(ctx c
 
 // Summary:
 //
-// Queries prefetch tasks by time, task status, or prefetch URL.
+// Queries the details of prefetch tasks. Supports paged query by time, task status, and prefetch URL.
 //
 // @param request - DescribePreloadTasksRequest
 //
@@ -9069,11 +9069,11 @@ func (client *Client) DescribePurgeTasksWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the status of a plan instance.
+// Invokes DescribeRatePlanInstanceStatus to query the instance status of a plan.
 //
 // Description:
 //
-// You can query the status of a plan instance only after you purchase and create the instance.
+// You can query the instance status of a plan only after you purchase and create the plan instance.
 //
 // @param request - DescribeRatePlanInstanceStatusRequest
 //
@@ -9277,15 +9277,15 @@ func (client *Client) DescribeRuleMetadataWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the URLs from which you can download the raw access logs of a website.
+// Queries the download URLs of raw access logs for a specified site.
 //
 // Description:
 //
-// - If you do not specify StartTime and EndTime, log data from the last 24 hours is returned by default. If you specify StartTime and EndTime, log data for the specified time range is returned.
+// - If you do not specify StartTime and EndTime, log data from the past 24 hours is returned by default. If you specify StartTime and EndTime, logs are queried based on the specified time range.
 //
-// - The time granularity for data queries is one hour.
+// - The time granularity for querying data is one hour.
 //
-// - The maximum number of calls per user: 50 calls per second.
+// - The maximum number of times that each user can call this operation per second: 50.
 //
 // - Only log records from the last month can be queried (the time span between the start time and the current time cannot exceed 31 days).
 //
@@ -9507,25 +9507,25 @@ func (client *Client) DescribeSiteTopDataWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Retrieves time series data for WAF event analysis of a website.
+// Retrieves time series data for WAF event analysis of a site.
 //
 // Description:
 //
 // - If you do not specify StartTime and EndTime, this operation returns data from the past 24 hours. If you specify StartTime and EndTime, this operation returns data for the specified time range.
 //
-// - The time granularity of the returned data varies based on the time span between StartTime and EndTime.
+// - The time granularity of returned data varies based on the time span between StartTime and EndTime.
 //
-//   - Less than or equal to 3 hours: returns data at a 1-minute granularity.
+//   - Less than or equal to 3 hours: returns data at 1-minute granularity.
 //
-//   - Greater than 3 hours and less than or equal to 12 hours: returns data at a 5-minute granularity.
+//   - Greater than 3 hours and less than or equal to 12 hours: returns data at 5-minute granularity.
 //
-//   - Greater than 12 hours and less than or equal to 1 day: returns data at a 15-minute granularity.
+//   - Greater than 12 hours and less than or equal to 1 day: returns data at 15-minute granularity.
 //
-//   - Greater than 1 day and less than or equal to 10 days: returns data at an hourly granularity.
+//   - Greater than 1 day and less than or equal to 10 days: returns data at 1-hour granularity.
 //
-//   - Greater than 10 days and less than or equal to 31 days: returns data at a daily granularity.
+//   - Greater than 10 days and less than or equal to 31 days: returns data at 1-day granularity.
 //
-// - Because the number of access requests during the query period may be large, the data analytics results may undergo sampling.
+// - Because the number of access requests during the query period may be large, the data analytics results may be based on sampling.
 //
 // @param tmpReq - DescribeSiteWafTimeSeriesDataRequest
 //
@@ -9777,6 +9777,74 @@ func (client *Client) DescribeUrlObservationDataWithContext(ctx context.Context,
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeUrlObservationDataResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the resource plan information of the current user by calling DescribeUserResourcePackage.
+//
+// @param request - DescribeUserResourcePackageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUserResourcePackageResponse
+func (client *Client) DescribeUserResourcePackageWithContext(ctx context.Context, request *DescribeUserResourcePackageRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserResourcePackageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !dara.IsNil(request.SortField) {
+		query["SortField"] = request.SortField
+	}
+
+	if !dara.IsNil(request.SortRule) {
+		query["SortRule"] = request.SortRule
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeUserResourcePackage"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeUserResourcePackageResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -11905,7 +11973,7 @@ func (client *Client) GetKvWithContext(ctx context.Context, request *GetKvReques
 
 // Summary:
 //
-// Queries the value and time to live (TTL) of a key.
+// Queries the value and TTL information of a key-value pair.
 //
 // @param request - GetKvDetailRequest
 //
@@ -11953,7 +12021,7 @@ func (client *Client) GetKvDetailWithContext(ctx context.Context, request *GetKv
 
 // Summary:
 //
-// Retrieves information about a specific namespace.
+// Queries the information of a KV namespace under an account.
 //
 // @param request - GetKvNamespaceRequest
 //
@@ -12081,7 +12149,7 @@ func (client *Client) GetLoadBalancerWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// Queries the root domain name of a website.
+// Retrieves the primary domain name based on the specified site name.
 //
 // @param request - GetMainDomainNameRequest
 //
@@ -12789,6 +12857,50 @@ func (client *Client) GetRedirectRuleWithContext(ctx context.Context, request *G
 
 // Summary:
 //
+// Queries the scheduled automatic release time.
+//
+// @param request - GetReleaseTimeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetReleaseTimeResponse
+func (client *Client) GetReleaseTimeWithContext(ctx context.Context, request *GetReleaseTimeRequest, runtime *dara.RuntimeOptions) (_result *GetReleaseTimeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetReleaseTime"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetReleaseTimeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Query details of the rewrite URL rule
 //
 // @param request - GetRewriteUrlRuleRequest
@@ -13417,7 +13529,7 @@ func (client *Client) GetSiteCustomLogWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Retrieves the details of a real-time log delivery task.
+// Retrieves the configuration information of a real-time log delivery task.
 //
 // @param request - GetSiteDeliveryTaskRequest
 //
@@ -13847,13 +13959,13 @@ func (client *Client) GetUploadTaskWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// Queries the delivery configuration and status of a task for a specific user.
+// Queries the delivery configuration and status information of a specified task for a user.
 //
 // Description:
 //
-// - **Function**: This operation retrieves detailed delivery information for a specific task of an Alibaba Cloud user, including the task name, discard rate, region, business type, status, delivery type, delivery configuration, and filter rules.
+// - **Features**: This operation retrieves the detailed delivery information of a specified task under an Alibaba Cloud account, including the task name, discard rate, region, business type, status, delivery type and configuration, and filter rules.
 //
-// - **Use case**: Use this operation to review the log processing and delivery configuration for a specific task. This helps you analyze processing efficiency or troubleshoot issues.
+// - **Scenarios**: Use this operation when you need to understand or check the log processing and delivery configuration of a specific task for analyzing processing efficiency or troubleshooting issues.
 //
 // @param request - GetUserDeliveryTaskRequest
 //
@@ -14367,7 +14479,7 @@ func (client *Client) ListAWSRegionInfosWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 查询异步任务列表
+// Queries the list of asynchronous tasks. You can use this operation to query the status of asynchronous tasks triggered by users, such as free certificate applications.
 //
 // @param request - ListAsyncTasksRequest
 //
@@ -15905,7 +16017,7 @@ func (client *Client) ListKeylessServersWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Lists all key-value pairs in a specified KV storage namespace under your account.
+// Lists all key-value pairs in a specified KV namespace under the account.
 //
 // @param request - ListKvsRequest
 //
@@ -17016,7 +17128,7 @@ func (client *Client) ListScheduledPreloadExecutionsWithContext(ctx context.Cont
 
 // Summary:
 //
-// Lists scheduled prefetch tasks for a site.
+// Lists the scheduled prefetch tasks for a site.
 //
 // @param request - ListScheduledPreloadJobsRequest
 //
@@ -18612,7 +18724,7 @@ func (client *Client) OpenErServiceWithContext(ctx context.Context, request *Ope
 
 // Summary:
 //
-// Prefetches resources.
+// Prefetches URLs to warm the cache.
 //
 // @param tmpReq - PreloadCachesRequest
 //
@@ -18926,7 +19038,7 @@ func (client *Client) PurchaseCacheReserveWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 新购DDoS实例
+// Purchases a new Anti-DDoS Pro or Anti-DDoS Premium instance.
 //
 // @param request - PurchaseDDoSInstanceRequest
 //
@@ -20446,9 +20558,9 @@ func (client *Client) StopRoutineBuildWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Stops a single scheduled preload execution plan based on the preload plan ID.
+// Stops a single scheduled prefetch plan by prefetch plan ID.
 //
-// Prerequisites: (1) This API only takes effect when the execution plan status is running. Execution plans in the waiting or failed status cannot be stopped. (2) Whether an execution plan can reach the running status depends on whether the site it belongs to has completed access verification (site Status=active).
+// Prerequisites: (1) This operation takes effect only when the execution plan is in the running state. Execution plans in the waiting or failed state cannot be stopped. (2) Whether an execution plan can reach the running state depends on whether the associated site has passed the access verification (site Status=active).
 //
 // @param request - StopScheduledPreloadExecutionRequest
 //
@@ -20536,7 +20648,7 @@ func (client *Client) StopSiteWithContext(ctx context.Context, request *StopSite
 
 // Summary:
 //
-// Submits a purge or prefetch task after a file that contains resources to be purged or prefetched is uploaded.
+// Starts a cache purge or prefetch task after the file is uploaded successfully.
 //
 // @param request - SubmitUploadTaskRequest
 //
@@ -23698,7 +23810,7 @@ func (client *Client) UpdateRoutineRouteWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Updates a scheduled prefetch plan by prefetch plan ID.
+// Updates a scheduled prefetch plan based on the prefetch plan ID.
 //
 // @param request - UpdateScheduledPreloadExecutionRequest
 //
@@ -23982,7 +24094,7 @@ func (client *Client) UpdateSiteCustomLogWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Updates a site delivery task.
+// Modifies the delivery settings of a real-time log task for a user.
 //
 // @param request - UpdateSiteDeliveryTaskRequest
 //

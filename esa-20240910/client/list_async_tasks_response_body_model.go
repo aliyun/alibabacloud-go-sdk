@@ -24,25 +24,34 @@ type iListAsyncTasksResponseBody interface {
 }
 
 type ListAsyncTasksResponseBody struct {
+	// The task list.
 	AsyncTasks []*ListAsyncTasksResponseBodyAsyncTasks `json:"AsyncTasks,omitempty" xml:"AsyncTasks,omitempty" type:"Repeated"`
+	// The page number of the returned data.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: **1 to 500**. Default value: **20**.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// C370DAF1-C838-4288-A1A0-9A87633D2***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 20
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 2
@@ -125,43 +134,70 @@ func (s *ListAsyncTasksResponseBody) Validate() error {
 }
 
 type ListAsyncTasksResponseBodyAsyncTasks struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2024-09-19 09:36:46
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The last modification time.
+	//
 	// example:
 	//
 	// 2024-09-19 09:37:04
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 4081****752512
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The resource ID.
+	//
 	// example:
 	//
 	// 4081****752512
 	ResourceId *int64 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource name.
+	//
 	// example:
 	//
 	// www.example.com
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// site
-	ResourceType    *string            `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The task description.
 	TaskDescription map[string]*string `json:"TaskDescription,omitempty" xml:"TaskDescription,omitempty"`
+	// The custom identifier that is set to associate with this task.
+	//
 	// example:
 	//
 	// linke-quality-sign
 	TaskKey *string `json:"TaskKey,omitempty" xml:"TaskKey,omitempty"`
+	// The current status of the task. Valid values:
+	//
+	// - in_progress: in progress.
+	//
+	// - success: completed.
+	//
+	// - fail: failed.
+	//
 	// example:
 	//
 	// success
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The task type.
+	//
 	// example:
 	//
 	// free_cert
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 1077***12880

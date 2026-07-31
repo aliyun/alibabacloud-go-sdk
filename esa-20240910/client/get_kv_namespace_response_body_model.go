@@ -30,63 +30,63 @@ type iGetKvNamespaceResponseBody interface {
 }
 
 type GetKvNamespaceResponseBody struct {
-	// The available capacity of the namespace, in bytes.
+	// The available capacity of the KV namespace, in bytes.
 	//
 	// example:
 	//
 	// 1073741824
 	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// The available capacity of the namespace, formatted as a human-readable string.
+	// The available capacity of the KV namespace.
 	//
 	// example:
 	//
 	// 1 GB
 	CapacityString *string `json:"CapacityString,omitempty" xml:"CapacityString,omitempty"`
-	// The used capacity of the namespace, in bytes.
+	// The used capacity of the KV namespace, in bytes.
 	//
 	// example:
 	//
 	// 10048576
 	CapacityUsed *int64 `json:"CapacityUsed,omitempty" xml:"CapacityUsed,omitempty"`
-	// The used capacity of the namespace, formatted as a human-readable string.
+	// The used capacity of the KV namespace.
 	//
 	// example:
 	//
 	// 100 MB
 	CapacityUsedString *string `json:"CapacityUsedString,omitempty" xml:"CapacityUsedString,omitempty"`
-	// The description of the namespace.
+	// The description of the KV namespace.
 	//
 	// example:
 	//
 	// this is a test namespace.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the namespace.
+	// The name of the KV namespace.
 	//
 	// example:
 	//
 	// test_namespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The ID of the namespace.
+	// The ID of the KV namespace.
 	//
 	// example:
 	//
 	// 643355322374688768
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the namespace. Valid values:
+	// The status of the KV namespace. Valid values:
 	//
-	// - **online**: The namespace is active.
+	// - **online**: Normal.
 	//
-	// - **delete**: The namespace is marked for deletion.
+	// - **delete**: Pending deletion.
 	//
-	// - **deleting**: The namespace is being deleted.
+	// - **deleting**: Being deleted.
 	//
-	// - **deleted**: The namespace has been deleted.
+	// - **deleted**: Deleted.
 	//
 	// example:
 	//

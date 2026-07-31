@@ -16,13 +16,18 @@ type iDescribeRatePlanInstanceStatusRequest interface {
 }
 
 type DescribeRatePlanInstanceStatusRequest struct {
-	// The instance ID. You can obtain the ID by calling the [ListUserRatePlanInstances](~~ListUserRatePlanInstances~~) operation.
+	// The instance ID. You can call the [ListUserRatePlanInstances](~~ListUserRatePlanInstances~~) operation to obtain the instance ID.
 	//
 	// example:
 	//
 	// xcdn-91fknmb80f0g***
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ResourceOwner *int64  `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The resource owner account.
+	//
+	// example:
+	//
+	// 1700594193617909
+	ResourceOwner *int64 `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
 }
 
 func (s DescribeRatePlanInstanceStatusRequest) String() string {

@@ -24,26 +24,44 @@ type iListAsyncTasksRequest interface {
 }
 
 type ListAsyncTasksRequest struct {
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of tasks to display per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The resource ID to which the task belongs, such as a site ID. You can obtain the site ID by calling the [ListSites](~~ListSites~~) operation.
+	//
 	// example:
 	//
 	// 4080****3752512
 	ResourceIds *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// site
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The current status of the task. Valid values:
+	//
+	// - in_progress: in progress.
+	//
+	// - success: completed.
+	//
+	// - fail: failed.
+	//
 	// example:
 	//
 	// success
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The task type. For example, the task type for applying for a free certificate is free_cert.
+	//
 	// example:
 	//
 	// free_cert

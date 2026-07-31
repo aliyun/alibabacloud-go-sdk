@@ -36,25 +36,25 @@ type StopScheduledPreloadExecutionResponseBody struct {
 	//
 	// 15685865xxx14622
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The end time of the scheduled preload plan, in ISO 8601 format (e.g., 2024-01-01T00:00:00+Z).
+	// The end time of the scheduled prefetch plan, in ISO 8601 format (for example, 2024-01-01T00:00:00+Z).
 	//
 	// example:
 	//
 	// 2024-05-31T18:10:48.849+08:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The preload plan ID.
+	// The prefetch plan ID.
 	//
 	// example:
 	//
 	// 66599bd7397885b43804901c
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The execution interval between batches in the scheduled preload plan, in seconds.
+	// The interval between each batch execution of the scheduled prefetch plan, in seconds.
 	//
 	// example:
 	//
 	// 60
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The preload task ID.
+	// The prefetch job ID.
 	//
 	// example:
 	//
@@ -66,19 +66,19 @@ type StopScheduledPreloadExecutionResponseBody struct {
 	//
 	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of URLs per batch in the scheduled preload.
+	// The number of URLs prefetched per batch.
 	//
 	// example:
 	//
 	// 10
 	SliceLen *int32 `json:"SliceLen,omitempty" xml:"SliceLen,omitempty"`
-	// The start time of the scheduled preload plan, in ISO 8601 format (e.g., 2024-01-01T00:00:00+Z).
+	// The start time of the scheduled prefetch plan, in ISO 8601 format (for example, 2024-01-01T00:00:00+Z).
 	//
 	// example:
 	//
 	// 2024-05-31T17:10:48.849+08:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the scheduled preload plan. Valid values:
+	// The status of the scheduled prefetch plan. Valid values:
 	//
 	// - **waiting**: Waiting to be executed.
 	//

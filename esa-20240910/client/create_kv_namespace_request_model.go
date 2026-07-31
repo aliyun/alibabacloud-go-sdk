@@ -16,7 +16,7 @@ type iCreateKvNamespaceRequest interface {
 }
 
 type CreateKvNamespaceRequest struct {
-	// An optional description for the KV namespace.
+	// The description of the KV namespace.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iListKvsRequest interface {
 }
 
 type ListKvsRequest struct {
-	// The name specified when you called [CreatevNamespace](https://help.aliyun.com/document_detail/2850317.html).
+	// The name specified when calling [CreatevNamespace](https://help.aliyun.com/document_detail/2850317.html).
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type ListKvsRequest struct {
 	//
 	// 10
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size. Default value: **50**. Maximum value: **100**.
+	// The page size for the returned results. Default value: **50**. Maximum value: **100**.
 	//
 	// example:
 	//

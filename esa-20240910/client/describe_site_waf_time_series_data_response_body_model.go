@@ -28,7 +28,7 @@ type iDescribeSiteWafTimeSeriesDataResponseBody interface {
 type DescribeSiteWafTimeSeriesDataResponseBody struct {
 	// The returned data.
 	Data []*DescribeSiteWafTimeSeriesDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The end time of the returned data.
+	// The end of the time range for the returned data.
 	//
 	// The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC+0.
 	//
@@ -54,7 +54,7 @@ type DescribeSiteWafTimeSeriesDataResponseBody struct {
 	//
 	// 100
 	SamplingRate *float32 `json:"SamplingRate,omitempty" xml:"SamplingRate,omitempty"`
-	// The start time for the data query.
+	// The beginning of the time range to query.
 	//
 	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
 	//
@@ -62,7 +62,7 @@ type DescribeSiteWafTimeSeriesDataResponseBody struct {
 	//
 	// 2023-04-08T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The summarized query data.
+	// The summarized data.
 	SummarizedData []*DescribeSiteWafTimeSeriesDataResponseBodySummarizedData `json:"SummarizedData,omitempty" xml:"SummarizedData,omitempty" type:"Repeated"`
 }
 
@@ -162,7 +162,7 @@ func (s *DescribeSiteWafTimeSeriesDataResponseBody) Validate() error {
 type DescribeSiteWafTimeSeriesDataResponseBodyData struct {
 	// The returned data.
 	DetailData []*DescribeSiteWafTimeSeriesDataResponseBodyDataDetailData `json:"DetailData,omitempty" xml:"DetailData,omitempty" type:"Repeated"`
-	// The query dimension.
+	// The query dimensions.
 	//
 	// example:
 	//
@@ -178,7 +178,7 @@ type DescribeSiteWafTimeSeriesDataResponseBodyData struct {
 	//
 	// example:
 	//
-	// Traffic
+	// Requests
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
 }
 
@@ -309,7 +309,7 @@ type DescribeSiteWafTimeSeriesDataResponseBodySummarizedData struct {
 	//
 	// example:
 	//
-	// Traffic
+	// Requests
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
 	// The aggregated value.
 	//

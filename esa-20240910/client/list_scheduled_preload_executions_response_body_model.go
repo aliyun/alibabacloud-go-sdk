@@ -101,7 +101,7 @@ type ListScheduledPreloadExecutionsResponseBodyExecutions struct {
 	//
 	// 66599bd7397885b43804901c
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The interval between each batch execution of the scheduled prefetch plan. Unit: seconds.
+	// The interval between each batch execution of the scheduled prefetch plan, in seconds.
 	//
 	// example:
 	//

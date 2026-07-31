@@ -20,24 +20,32 @@ type iPurchaseDDoSInstanceRequest interface {
 }
 
 type PurchaseDDoSInstanceRequest struct {
+	// The billing method.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// CleanTraffic
 	DDoSBillingMode *string `json:"DDoSBillingMode,omitempty" xml:"DDoSBillingMode,omitempty"`
+	// The instance specifications for the Chinese mainland.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn_300
 	DDoSBurstableDomesticProtection *string `json:"DDoSBurstableDomesticProtection,omitempty" xml:"DDoSBurstableDomesticProtection,omitempty"`
+	// The instance specifications for outside China.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// overseas_300
 	DDoSBurstableOverseasProtection *string `json:"DDoSBurstableOverseasProtection,omitempty" xml:"DDoSBurstableOverseasProtection,omitempty"`
+	// The site instance.
+	//
 	// This parameter is required.
 	//
 	// example:

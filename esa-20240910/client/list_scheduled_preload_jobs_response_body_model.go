@@ -89,25 +89,25 @@ type ListScheduledPreloadJobsResponseBodyJobs struct {
 	//
 	// 15685865xxx14622
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The task creation time in ISO 8601 format (e.g., 2024-01-01T00:00:00+Z).
+	// The task creation time in ISO 8601 format (for example, 2024-01-01T00:00:00+Z).
 	//
 	// example:
 	//
 	// 2024-06-01T08:53:13Z
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	// The list of prefetch domains.
+	// The list of domain names for prefetch.
 	//
 	// example:
 	//
 	// testurl.com
 	Domains *string `json:"Domains,omitempty" xml:"Domains,omitempty"`
-	// The error information.
+	// The fault error message.
 	//
 	// example:
 	//
 	// invalid domain:test.com
 	ErrorInfo *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
-	// The number of prefetch plans.
+	// The number of prefetch schedules.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ type ListScheduledPreloadJobsResponseBodyJobs struct {
 	//
 	// https://xxxobject.oss-cn-reginon.aliyuncs.com/9d91_xxxxxxxxxxx_158bb6e0f97c477791209bb46bd599f7
 	FailedFileOss *string `json:"FailedFileOss,omitempty" xml:"FailedFileOss,omitempty"`
-	// The URL list file ID (used for downloading).
+	// The URL list file ID, which is used for download.
 	//
 	// example:
 	//
@@ -131,7 +131,11 @@ type ListScheduledPreloadJobsResponseBodyJobs struct {
 	//
 	// 665d3af3621bccf3fe29e1a4
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The URL insertion method.
+	// The URL insertion method. Valid values:
+	//
+	// - oss: URLs are imported in bulk from an OSS file.
+	//
+	// - testBox: URLs are entered one by one in a text box.
 	//
 	// example:
 	//
@@ -143,7 +147,7 @@ type ListScheduledPreloadJobsResponseBodyJobs struct {
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Site ID.
+	// The site ID.
 	//
 	// example:
 	//
@@ -155,7 +159,13 @@ type ListScheduledPreloadJobsResponseBodyJobs struct {
 	//
 	// 1
 	TaskSubmitted *int32 `json:"TaskSubmitted,omitempty" xml:"TaskSubmitted,omitempty"`
-	// The task type (refresh/prefetch).
+	// The task type (refresh or prefetch). Valid values:
+	//
+	// - path: Directory refresh.
+	//
+	// - refresh: URL refresh.
+	//
+	// - preload: URL prefetch.
 	//
 	// example:
 	//

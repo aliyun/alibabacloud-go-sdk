@@ -20,19 +20,19 @@ type iGetMainDomainNameResponseBody interface {
 }
 
 type GetMainDomainNameResponseBody struct {
-	// The level of the domain name.
+	// The level of the input domain name.
 	//
 	// example:
 	//
 	// 2
 	DomainLevel *int32 `json:"DomainLevel,omitempty" xml:"DomainLevel,omitempty"`
-	// The root domain name.
+	// The primary domain name.
 	//
 	// example:
 	//
 	// example.com
 	MainDomainName *string `json:"MainDomainName,omitempty" xml:"MainDomainName,omitempty"`
-	// The host record.
+	// The host record information.
 	//
 	// example:
 	//

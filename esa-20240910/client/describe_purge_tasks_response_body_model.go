@@ -143,11 +143,11 @@ type DescribePurgeTasksResponseBodyTasks struct {
 	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
 	// The status. Valid values:
 	//
-	// - **Complete**: Completed.
+	// - **Complete**: completed.
 	//
-	// - **Refreshing**: Refreshing.
+	// - **Refreshing**: refreshing.
 	//
-	// - **Failed**: Refresh failed.
+	// - **Failed**: refresh failed.
 	//
 	// example:
 	//

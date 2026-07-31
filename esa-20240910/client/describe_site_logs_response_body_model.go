@@ -22,7 +22,7 @@ type DescribeSiteLogsResponseBody struct {
 	//
 	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the website log files.
+	// The site log information.
 	SiteLogDetails []*DescribeSiteLogsResponseBodySiteLogDetails `json:"SiteLogDetails,omitempty" xml:"SiteLogDetails,omitempty" type:"Repeated"`
 }
 
@@ -72,17 +72,17 @@ type DescribeSiteLogsResponseBodySiteLogDetails struct {
 	//
 	// 300
 	LogCount *int32 `json:"LogCount,omitempty" xml:"LogCount,omitempty"`
-	// The details of the website log files.
+	// The site log package information.
 	LogInfos []*DescribeSiteLogsResponseBodySiteLogDetailsLogInfos `json:"LogInfos,omitempty" xml:"LogInfos,omitempty" type:"Repeated"`
-	// Pagination information.
+	// The pagination information.
 	PageInfos *DescribeSiteLogsResponseBodySiteLogDetailsPageInfos `json:"PageInfos,omitempty" xml:"PageInfos,omitempty" type:"Struct"`
-	// The website ID.
+	// The site ID.
 	//
 	// example:
 	//
 	// 123456***
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The website name.
+	// The site name.
 	//
 	// example:
 	//
@@ -168,7 +168,7 @@ type DescribeSiteLogsResponseBodySiteLogDetailsLogInfos struct {
 	//
 	// 2022-11-06T17:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the log file.
+	// The log name.
 	//
 	// example:
 	//
@@ -176,19 +176,20 @@ type DescribeSiteLogsResponseBodySiteLogDetailsLogInfos struct {
 	LogName *string `json:"LogName,omitempty" xml:"LogName,omitempty"`
 	// The log path.
 	//
-	// > Take note of the Expires field (expiration timestamp) in this parameter. If the log download URL expires, you must reobtain the URL.
+	//
+	// > Pay attention to the Expires field (expiration timestamp) in the LogPath response parameter. After the expiration time, the log download link becomes invalid and must be obtained again.
 	//
 	// example:
 	//
 	// example.aliyundoc.com /v1.l1cache/105252530/example.com/2022_11_07/example.com_2022_11_07_000000_020000.gz.xxxxxx?Expires=1636963354&OSSAccessKeyId=LTAIviCc6zy8****&Signature=u0V6foRfZniHE8i%2BHUdxGOhZsK****
 	LogPath *string `json:"LogPath,omitempty" xml:"LogPath,omitempty"`
-	// The size of the log file. Unit: bytes.
+	// The log size, in bytes.
 	//
 	// example:
 	//
 	// 438304768
 	LogSize *int32 `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
-	// The create time.
+	// The start time.
 	//
 	// example:
 	//
@@ -254,7 +255,7 @@ func (s *DescribeSiteLogsResponseBodySiteLogDetailsLogInfos) Validate() error {
 }
 
 type DescribeSiteLogsResponseBodySiteLogDetailsPageInfos struct {
-	// The page number returned.
+	// The page number of the returned data.
 	//
 	// example:
 	//

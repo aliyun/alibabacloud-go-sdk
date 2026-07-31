@@ -18,14 +18,20 @@ type iPurchaseDDoSInstanceResponseBody interface {
 }
 
 type PurchaseDDoSInstanceResponseBody struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// esa-ddos-9tuv*********
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 2223332122***
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F61CDR30-E83C-4FDA-BF73-9A94CDD44229

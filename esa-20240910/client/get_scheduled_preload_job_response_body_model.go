@@ -60,7 +60,7 @@ type GetScheduledPreloadJobResponseBody struct {
 	//
 	// testurl.com
 	Domains *string `json:"Domains,omitempty" xml:"Domains,omitempty"`
-	// The error message.
+	// The error message returned if a fault occurs.
 	//
 	// example:
 	//
@@ -84,7 +84,11 @@ type GetScheduledPreloadJobResponseBody struct {
 	//
 	// 665d3af3621bccf3fe29e1a4
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The URL insertion method.
+	// The URL insertion method. Valid values:
+	//
+	// - oss: Import URLs in bulk from an OSS file.
+	//
+	// - testBox: Enter URLs one by one in a text box.
 	//
 	// example:
 	//
@@ -114,7 +118,13 @@ type GetScheduledPreloadJobResponseBody struct {
 	//
 	// 1
 	TaskSubmitted *int32 `json:"TaskSubmitted,omitempty" xml:"TaskSubmitted,omitempty"`
-	// The task type (refresh or prefetch).
+	// The task type (refresh or prefetch). Valid values:
+	//
+	// - path: Directory refresh.
+	//
+	// - refresh: URL refresh.
+	//
+	// - preload: URL prefetch.
 	//
 	// example:
 	//

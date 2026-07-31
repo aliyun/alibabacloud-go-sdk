@@ -40,11 +40,11 @@ type iCreateSiteDeliveryTaskShrinkRequest interface {
 type CreateSiteDeliveryTaskShrinkRequest struct {
 	// The business type. Valid values:
 	//
-	// - **dcdn_log_access_l1*	- (default): Access logs.
+	// - **dcdn_log_access_l1*	- (default): access logs.
 	//
-	// - **dcdn_log_er**: Edge Routine logs.
+	// - **dcdn_log_er**: Edge Routine function logs.
 	//
-	// - **dcdn_log_waf**: Security protection logs.
+	// - **dcdn_log_waf**: security protection logs.
 	//
 	// - **dcdn_log_ipa**: Layer 4 acceleration logs.
 	//
@@ -56,9 +56,9 @@ type CreateSiteDeliveryTaskShrinkRequest struct {
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
 	// The data center. Valid values:
 	//
-	// - **cn**: The Chinese mainland.
+	// - **cn**: the Chinese mainland.
 	//
-	// - **oversea**: Outside the Chinese mainland.
+	// - **oversea**: outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ type CreateSiteDeliveryTaskShrinkRequest struct {
 	DataCenter *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
 	// The delivery type. Valid values:
 	//
-	// - **sls**: Simple Log Service.
+	// - **sls**: Alibaba Cloud Simple Log Service.
 	//
 	// - **http**: HTTP service.
 	//
-	// - **aws3**: Amazon S3.
+	// - **aws3**: Amazon S3 service.
 	//
-	// - **oss**: Object Storage Service (OSS).
+	// - **oss**: Alibaba Cloud Object Storage Service.
 	//
 	// - **kafka**: Kafka service.
 	//
@@ -84,13 +84,13 @@ type CreateSiteDeliveryTaskShrinkRequest struct {
 	//
 	// sls
 	DeliveryType *string `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
-	// The discard rate. If you do not specify this parameter, the default value is 0.
+	// The discard rate. Default value: 0.
 	//
 	// example:
 	//
 	// 0.0
 	DiscardRate *float32 `json:"DiscardRate,omitempty" xml:"DiscardRate,omitempty"`
-	// The log fields to be delivered, separated by commas (,).
+	// The selected log fields, separated by commas (,).
 	//
 	// This parameter is required.
 	//
@@ -98,6 +98,13 @@ type CreateSiteDeliveryTaskShrinkRequest struct {
 	//
 	// user_agent,ip_adress,ip_port
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	// The filter rule version.
+	//
+	// > For backward compatibility with legacy filter rules, the default value is v1. New tasks use v2.
+	//
+	// example:
+	//
+	// v2
 	FilterVer *string `json:"FilterVer,omitempty" xml:"FilterVer,omitempty"`
 	// The HTTP delivery configuration parameters.
 	HttpDeliveryShrink *string `json:"HttpDelivery,omitempty" xml:"HttpDelivery,omitempty"`
@@ -105,9 +112,9 @@ type CreateSiteDeliveryTaskShrinkRequest struct {
 	KafkaDeliveryShrink *string `json:"KafkaDelivery,omitempty" xml:"KafkaDelivery,omitempty"`
 	// The OSS delivery configuration.
 	OssDeliveryShrink *string `json:"OssDelivery,omitempty" xml:"OssDelivery,omitempty"`
-	// The configuration parameters for S3 or S3-compatible delivery.
+	// The S3/S3-compatible delivery configuration parameters.
 	S3DeliveryShrink *string `json:"S3Delivery,omitempty" xml:"S3Delivery,omitempty"`
-	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to query the site ID.
+	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -115,9 +122,9 @@ type CreateSiteDeliveryTaskShrinkRequest struct {
 	//
 	// 12312312112***
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The Simple Log Service delivery configuration.
+	// The SLS delivery configuration.
 	SlsDeliveryShrink *string `json:"SlsDelivery,omitempty" xml:"SlsDelivery,omitempty"`
-	// The name of the task.
+	// The task name.
 	//
 	// This parameter is required.
 	//

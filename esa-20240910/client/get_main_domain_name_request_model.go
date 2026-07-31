@@ -14,7 +14,7 @@ type iGetMainDomainNameRequest interface {
 }
 
 type GetMainDomainNameRequest struct {
-	// The website name.
+	// The site name.
 	//
 	// This parameter is required.
 	//

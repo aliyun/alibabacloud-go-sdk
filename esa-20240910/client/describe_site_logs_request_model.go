@@ -22,29 +22,29 @@ type iDescribeSiteLogsRequest interface {
 }
 
 type DescribeSiteLogsRequest struct {
-	// The end of the time range to query.
+	// The end time for retrieving logs.
 	//
-	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The date is in ISO 8601 format and uses UTC+0 time in the format of yyyy-MM-ddTHH:mm:ssZ.
 	//
-	// > The end time must be later than the start time.
+	// > Note: The end time must be later than the start time.
 	//
 	// example:
 	//
 	// 2022-11-06T17:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The page number. Pages start from page 1.
+	// The page number to return. Valid values: any integer greater than 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 300. Valid values: 1 to 1000.
+	// The number of entries per page. Default value: 300. Maximum value: 1000. Valid values: any integer from 1 to 1000.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the website. You can call the ListSites operation to obtain.
+	// The site ID, which can be obtained by calling ListSites.
 	//
 	// This parameter is required.
 	//
@@ -52,9 +52,9 @@ type DescribeSiteLogsRequest struct {
 	//
 	// 123456***
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The beginning of the time range to query.
+	// The start time for retrieving logs.
 	//
-	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The date is in ISO 8601 format and uses UTC+0 time in the format of yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//

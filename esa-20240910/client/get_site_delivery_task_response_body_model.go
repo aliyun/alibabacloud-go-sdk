@@ -40,15 +40,15 @@ type iGetSiteDeliveryTaskResponseBody interface {
 }
 
 type GetSiteDeliveryTaskResponseBody struct {
-	// The type of real-time log for Dynamic Route for CDN (DCDN). Valid values:
+	// The real-time log type. Valid values:
 	//
-	// - **dcdn_log_access_l1*	- (default): access log.
+	// - **dcdn_log_access_l1 (default)**: access log.
 	//
-	// - **dcdn_log_er**: edge function log.
+	// - **dcdn_log_er**: Edge Routine function log.
 	//
-	// - **dcdn_log_waf**: WAF log.
+	// - **dcdn_log_waf**: security protection log.
 	//
-	// - **dcdn_log_ipa**: layer 4 acceleration log.
+	// - **dcdn_log_ipa**: Layer 4 acceleration log.
 	//
 	// example:
 	//
@@ -56,9 +56,9 @@ type GetSiteDeliveryTaskResponseBody struct {
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
 	// The data center. Valid values:
 	//
-	// - **cn**: Chinese mainland.
+	// - **cn**: the Chinese mainland.
 	//
-	// - **sg**: Global (excluding Chinese mainland). Note that the value for this region is "sg".
+	// - **sg**: global (excluding the Chinese mainland).
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ type GetSiteDeliveryTaskResponseBody struct {
 	DataCenter *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
 	// The delivery type. Valid values:
 	//
-	// - **sls**: Log Service.
+	// - **sls**: Alibaba Cloud Simple Log Service.
 	//
 	// - **http**: HTTP service.
 	//
-	// - **aws3**: Amazon S3.
+	// - **aws3**: Amazon S3 service.
 	//
-	// - **oss**: Object Storage Service.
+	// - **oss**: Alibaba Cloud Object Storage Service.
 	//
 	// - **kafka**: Kafka service.
 	//
@@ -88,7 +88,7 @@ type GetSiteDeliveryTaskResponseBody struct {
 	//
 	// 0.0
 	DiscardRate *float32 `json:"DiscardRate,omitempty" xml:"DiscardRate,omitempty"`
-	// A comma-separated list of log fields to deliver.
+	// The list of delivery fields.
 	//
 	// example:
 	//
@@ -100,8 +100,44 @@ type GetSiteDeliveryTaskResponseBody struct {
 	//
 	// []
 	FilterRules *string `json:"FilterRules,omitempty" xml:"FilterRules,omitempty"`
-	FilterVer   *string `json:"FilterVer,omitempty" xml:"FilterVer,omitempty"`
-	RawRule     *string `json:"RawRule,omitempty" xml:"RawRule,omitempty"`
+	// The version of the filter rules.
+	//
+	// > For backward compatibility with legacy filter rules, the default value is v1. Newly created tasks use v2.
+	//
+	// example:
+	//
+	// v2
+	FilterVer *string `json:"FilterVer,omitempty" xml:"FilterVer,omitempty"`
+	// The filter rules for the delivery task.
+	//
+	// > The new version of delivery filter rules.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "where": {
+	//
+	//     "or": [
+	//
+	//       {
+	//
+	//         "and": [
+	//
+	//           { "key": "site", "operator": "eq", "value": "example.com" },
+	//
+	//           { "key": "status_code", "operator": "in", "value": ["200", "304"] }
+	//
+	//         ]
+	//
+	//       }
+	//
+	//     ]
+	//
+	//   }
+	//
+	// }
+	RawRule *string `json:"RawRule,omitempty" xml:"RawRule,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -126,11 +162,11 @@ type GetSiteDeliveryTaskResponseBody struct {
 	//
 	// test.***.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// The status of the task. Valid values:
+	// The task status. Valid values:
 	//
-	// - **online**: The task is delivering logs.
+	// - **online**: pushing.
 	//
-	// - **offline**: The task is paused.
+	// - **offline**: push paused.
 	//
 	// example:
 	//

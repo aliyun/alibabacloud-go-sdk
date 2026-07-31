@@ -26,7 +26,7 @@ type DescribeDDoSPriceRequest struct {
 	//
 	// CleanTraffic
 	DDoSBillingMode *string `json:"DDoSBillingMode,omitempty" xml:"DDoSBillingMode,omitempty"`
-	// The instance specifications for the Chinese mainland.
+	// The specification of the instance in the Chinese mainland.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DescribeDDoSPriceRequest struct {
 	//
 	// cn_300
 	DDoSBurstableDomesticProtection *string `json:"DDoSBurstableDomesticProtection,omitempty" xml:"DDoSBurstableDomesticProtection,omitempty"`
-	// The instance specifications for regions outside the Chinese mainland.
+	// The specification of the instance outside the Chinese mainland.
 	//
 	// This parameter is required.
 	//

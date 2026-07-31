@@ -22,7 +22,7 @@ type iDescribeSiteWafTimeSeriesDataRequest interface {
 }
 
 type DescribeSiteWafTimeSeriesDataRequest struct {
-	// The end time for the data query.
+	// The end of the time range to query.
 	//
 	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
 	//
@@ -36,9 +36,9 @@ type DescribeSiteWafTimeSeriesDataRequest struct {
 	//
 	// This parameter is required.
 	Fields []*DescribeSiteWafTimeSeriesDataRequestFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
-	// The time granularity of the queried data, in seconds.
+	// The time granularity for querying data, in seconds.
 	//
-	// Based on the maximum time span of a single query, this parameter supports the following values: 60 (1 minute), 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see the **supported query time granularity*	- section above.
+	// Based on the maximum time span of a single query, this parameter supports the values 60 (1 minute), 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see the **Supported time granularity*	- section above.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type DescribeSiteWafTimeSeriesDataRequest struct {
 	//
 	// 11089268296****
 	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The start time for the data query.
+	// The beginning of the time range to query.
 	//
 	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
 	//
@@ -129,7 +129,7 @@ func (s *DescribeSiteWafTimeSeriesDataRequest) Validate() error {
 }
 
 type DescribeSiteWafTimeSeriesDataRequestFields struct {
-	// The query dimension.
+	// The query dimensions.
 	Dimension []*string `json:"Dimension,omitempty" xml:"Dimension,omitempty" type:"Repeated"`
 	// The metric name.
 	//
@@ -137,7 +137,7 @@ type DescribeSiteWafTimeSeriesDataRequestFields struct {
 	//
 	// example:
 	//
-	// Traffic
+	// Requests
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
 }
 

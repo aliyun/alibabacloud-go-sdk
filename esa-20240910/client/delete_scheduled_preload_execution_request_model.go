@@ -14,7 +14,7 @@ type iDeleteScheduledPreloadExecutionRequest interface {
 }
 
 type DeleteScheduledPreloadExecutionRequest struct {
-	// The preload plan ID.
+	// The prefetch plan ID.
 	//
 	// This parameter is required.
 	//

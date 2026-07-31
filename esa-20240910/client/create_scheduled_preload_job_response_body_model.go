@@ -54,21 +54,21 @@ type CreateScheduledPreloadJobResponseBody struct {
 	//
 	// 2023-06-05T10:04:20+0800
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	// The list of prefetch domains.
+	// The list of domain names for prefetch.
 	//
 	// example:
 	//
 	// testurl.com
 	Domains *string `json:"Domains,omitempty" xml:"Domains,omitempty"`
-	// The error information. Multiple errors are separated by commas:
+	// The error message. Multiple faults are separated by commas. Valid values:
 	//
 	// - **InvalidUrl**: The URL format is invalid.
 	//
-	// - **InvalidDomain**: The domain ownership verification failed.
+	// - **InvalidDomain**: The domain name ownership verification failed.
 	//
-	// - **QuotaExcess**: The quota limit has been exceeded.
+	// - **QuotaExcess**: The quota limit is exceeded.
 	//
-	// - **OtherErrors**: Other errors.
+	// - **OtherErrors**: Other faults.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type CreateScheduledPreloadJobResponseBody struct {
 	//
 	// https://xxxobject.oss-cn-reginon.aliyuncs.com/9d91_xxxxxxxxxxx_158bb6e0f97c477791209bb46bd599f7
 	FailedFileOss *string `json:"FailedFileOss,omitempty" xml:"FailedFileOss,omitempty"`
-	// The URL list file ID, used for downloading.
+	// The URL list file ID, which is used for download.
 	//
 	// example:
 	//
@@ -116,7 +116,7 @@ type CreateScheduledPreloadJobResponseBody struct {
 	//
 	// 190007158391808
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The number of URLs that have been submitted to the system for prefetch tasks.
+	// The number of URLs that have been submitted to the system for prefetch.
 	//
 	// example:
 	//
