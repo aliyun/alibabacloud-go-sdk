@@ -26,27 +26,40 @@ type iGetOssStsTokenResponseBody interface {
 }
 
 type GetOssStsTokenResponseBody struct {
+	// The AccessKey ID of the user.
+	//
 	// example:
 	//
 	// STS.NZeNA1kdCm4QPuAJ9kN******
 	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	// The STS temporary AccessKey secret.
+	//
 	// example:
 	//
 	// 9EStV7fgkSQsPuBi576EmNQXLxJGddL2EGyX********
 	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
+	// The logical OSS bucket name.
+	//
 	// example:
 	//
 	// prod-wy-*****
-	Bucket          *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// The project storage path.
 	ObjectKeyPrefix *string `json:"ObjectKeyPrefix,omitempty" xml:"ObjectKeyPrefix,omitempty"`
+	// The region to which the current OSS bucket belongs.
+	//
 	// example:
 	//
 	// oss-cn-hangzhou
 	OssRegion *string `json:"OssRegion,omitempty" xml:"OssRegion,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The Security Token Service (STS) token.
+	//
 	// example:
 	//
 	// CAISvAN1q6Ft5B2yfSjIr5n2Bez81ZRTgqOGZn6FkHBnXf9qgI6apjz2IH*******

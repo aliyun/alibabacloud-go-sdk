@@ -101,7 +101,7 @@ type ListSkillsResponseBodySkills struct {
 	//
 	// 1.0.0
 	DefaultVersion *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
-	// The description of the skill.
+	// The skill description.
 	//
 	// example:
 	//
@@ -146,7 +146,7 @@ type ListSkillsResponseBodySkills struct {
 	// name****
 	SkillName     *string                                      `json:"SkillName,omitempty" xml:"SkillName,omitempty"`
 	SkillVersions []*ListSkillsResponseBodySkillsSkillVersions `json:"SkillVersions,omitempty" xml:"SkillVersions,omitempty" type:"Repeated"`
-	// The slug identifier of the skill. This value is user-defined and unique within the tenant.
+	// The skill slug identifier, which is user-defined and unique within the tenant.
 	//
 	// example:
 	//
@@ -169,7 +169,8 @@ type ListSkillsResponseBodySkills struct {
 	// example:
 	//
 	// TENANT
-	SupplierType *string `json:"SupplierType,omitempty" xml:"SupplierType,omitempty"`
+	SupplierType     *string                                         `json:"SupplierType,omitempty" xml:"SupplierType,omitempty"`
+	SupportAgentList []*ListSkillsResponseBodySkillsSupportAgentList `json:"SupportAgentList,omitempty" xml:"SupportAgentList,omitempty" type:"Repeated"`
 }
 
 func (s ListSkillsResponseBodySkills) String() string {
@@ -242,6 +243,10 @@ func (s *ListSkillsResponseBodySkills) GetSourceMarketName() *string {
 
 func (s *ListSkillsResponseBodySkills) GetSupplierType() *string {
 	return s.SupplierType
+}
+
+func (s *ListSkillsResponseBodySkills) GetSupportAgentList() []*ListSkillsResponseBodySkillsSupportAgentList {
+	return s.SupportAgentList
 }
 
 func (s *ListSkillsResponseBodySkills) SetApiKey(v string) *ListSkillsResponseBodySkills {
@@ -324,9 +329,23 @@ func (s *ListSkillsResponseBodySkills) SetSupplierType(v string) *ListSkillsResp
 	return s
 }
 
+func (s *ListSkillsResponseBodySkills) SetSupportAgentList(v []*ListSkillsResponseBodySkillsSupportAgentList) *ListSkillsResponseBodySkills {
+	s.SupportAgentList = v
+	return s
+}
+
 func (s *ListSkillsResponseBodySkills) Validate() error {
 	if s.SkillVersions != nil {
 		for _, item := range s.SkillVersions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SupportAgentList != nil {
+		for _, item := range s.SupportAgentList {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -419,5 +438,40 @@ func (s *ListSkillsResponseBodySkillsSkillVersions) SetVersion(v string) *ListSk
 }
 
 func (s *ListSkillsResponseBodySkillsSkillVersions) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListSkillsResponseBodySkillsSupportAgentList struct {
+	TagId    *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListSkillsResponseBodySkillsSupportAgentList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListSkillsResponseBodySkillsSupportAgentList) GoString() string {
+	return s.String()
+}
+
+func (s *ListSkillsResponseBodySkillsSupportAgentList) GetTagId() *string {
+	return s.TagId
+}
+
+func (s *ListSkillsResponseBodySkillsSupportAgentList) GetTagValue() *string {
+	return s.TagValue
+}
+
+func (s *ListSkillsResponseBodySkillsSupportAgentList) SetTagId(v string) *ListSkillsResponseBodySkillsSupportAgentList {
+	s.TagId = &v
+	return s
+}
+
+func (s *ListSkillsResponseBodySkillsSupportAgentList) SetTagValue(v string) *ListSkillsResponseBodySkillsSupportAgentList {
+	s.TagValue = &v
+	return s
+}
+
+func (s *ListSkillsResponseBodySkillsSupportAgentList) Validate() error {
 	return dara.Validate(s)
 }

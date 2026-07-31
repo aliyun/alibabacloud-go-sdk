@@ -14,6 +14,8 @@ type iGetOssStsTokenRequest interface {
 }
 
 type GetOssStsTokenRequest struct {
+	// The file type.
+	//
 	// example:
 	//
 	// SKILL

@@ -18,15 +18,20 @@ type iSetTenantSkillEnabledRequest interface {
 }
 
 type SetTenantSkillEnabledRequest struct {
+	// Specifies whether to enable the skill.
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The skill channel.
+	//
 	// example:
 	//
 	// BUSINESS
-	SkillChannel *string   `json:"SkillChannel,omitempty" xml:"SkillChannel,omitempty"`
-	SkillIds     []*string `json:"SkillIds,omitempty" xml:"SkillIds,omitempty" type:"Repeated"`
+	SkillChannel *string `json:"SkillChannel,omitempty" xml:"SkillChannel,omitempty"`
+	// The list of skill IDs.
+	SkillIds []*string `json:"SkillIds,omitempty" xml:"SkillIds,omitempty" type:"Repeated"`
 }
 
 func (s SetTenantSkillEnabledRequest) String() string {

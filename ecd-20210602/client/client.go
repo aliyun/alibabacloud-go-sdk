@@ -254,11 +254,11 @@ func (client *Client) DeleteTenantSkills(request *DeleteTenantSkillsRequest) (_r
 
 // Summary:
 //
-// 获取 OSS STS 令牌
+// Retrieves a temporary OSS token for authentication.
 //
 // Description:
 //
-// 获取到的SecurityToken有效期为15分钟。
+// The obtained SecurityToken is valid for 15 minutes.
 //
 // @param request - GetOssStsTokenRequest
 //
@@ -302,11 +302,11 @@ func (client *Client) GetOssStsTokenWithOptions(request *GetOssStsTokenRequest, 
 
 // Summary:
 //
-// 获取 OSS STS 令牌
+// Retrieves a temporary OSS token for authentication.
 //
 // Description:
 //
-// 获取到的SecurityToken有效期为15分钟。
+// The obtained SecurityToken is valid for 15 minutes.
 //
 // @param request - GetOssStsTokenRequest
 //
@@ -862,7 +862,7 @@ func (client *Client) SetIdentitySkillSecurity(request *SetIdentitySkillSecurity
 
 // Summary:
 //
-// 设置租户技能启用状态
+// Sets the enabling status of skills at the tenant level.
 //
 // @param request - SetTenantSkillEnabledRequest
 //
@@ -914,7 +914,7 @@ func (client *Client) SetTenantSkillEnabledWithOptions(request *SetTenantSkillEn
 
 // Summary:
 //
-// 设置租户技能启用状态
+// Sets the enabling status of skills at the tenant level.
 //
 // @param request - SetTenantSkillEnabledRequest
 //
